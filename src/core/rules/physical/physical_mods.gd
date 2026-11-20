@@ -34,6 +34,11 @@ static func add(th: ToHit, state: GameState, a: Unit, t: Unit, terrain: bool = t
 			th.add("target in woods", tw, "Woods get in the way of fists and feet too.")
 		if cover and ToHitCalc.in_partial_cover(state.map, t):
 			th.add("partial cover", 1, "The target's legs are under water.")
+		elif BuildingRules.half_inside(state.map, t):
+			th.add("partial cover", 1, "The target stands half inside a one-level building.")
+		var inside := BuildingRules.inside_mod(state.map, t)
+		if inside > 0:
+			th.add("inside a building", inside, "The target is fighting from inside a building: +2.")
 	if t.prone:
 		th.add("target prone", -2, "A 'Mech on the ground next to you is easy to hit: -2.")
 	if ToHitCalc.is_immobile(t):

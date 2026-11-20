@@ -41,16 +41,17 @@ static func direction_to(a: Vector2i, b: Vector2i) -> int:
 
 
 ## Hexes on the straight line from a to b, inclusive (for line of sight).
-static func line(a: Vector2i, b: Vector2i) -> Array[Vector2i]:
+## Hexes on the straight line from a to b. `side` (+1 or -1) picks which
+## hex wins when the line runs exactly along a hexside (divided LOS).
+static func line(a: Vector2i, b: Vector2i, side: float = 1.0) -> Array[Vector2i]:
 	var n := distance(a, b)
 	var out: Array[Vector2i] = []
 	if n == 0:
 		out.append(a)
 		return out
-	# Nudge avoids ties exactly on hex edges; BattleTech's "divided LOS"
-	# rule is handled separately by the LOS module.
-	var ac := Vector3(a.x + 1e-6, a.y + 1e-6, -a.x - a.y - 2e-6)
-	var bc := Vector3(b.x + 1e-6, b.y + 1e-6, -b.x - b.y - 2e-6)
+	var e := 1e-6 * side
+	var ac := Vector3(a.x + e, a.y + e, -a.x - a.y - 2 * e)
+	var bc := Vector3(b.x + e, b.y + e, -b.x - b.y - 2 * e)
 	for i in n + 1:
 		out.append(cube_round(ac.lerp(bc, float(i) / n)))
 	return out

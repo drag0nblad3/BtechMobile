@@ -37,6 +37,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 		if is_kick:
 			t.psr_pending.append({"reason": "was kicked", "mod": 0})
 	state.declared_physical.clear()
+	BuildingDamage.end_phase(state, dice, emit)
 	for step in steps:
 		if step["kind"] == "push":
 			_push(state, dice, emit, step, steps)
@@ -52,6 +53,7 @@ static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Un
 		"kick":
 			hl = HitTable.roll_kick(dice, arc_id)
 			hl["no_cover"] = true
+			hl["kick_table"] = true
 		"full":
 			hl = HitTable.roll(dice, arc_id)
 		_:

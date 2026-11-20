@@ -1,0 +1,17 @@
+{
+  "id": "enforcer_enf4r", "name": "Enforcer", "model": "ENF-4R", "tonnage": 50,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 12, "sprite": "enforcer",
+  "role": "Medium brawler. An AC/10 and a large laser give a heavy punch at medium range; jumps to close in.",
+  "armor": {"HD": 9, "CT": 21, "LT": 16, "RT": 16, "LA": 14, "RA": 14, "LL": 20, "RL": 20},
+  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
+  "missing_actuators": {"RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "RA": ["ac10"],
+    "LA": ["large_laser"],
+    "CT": ["small_laser"],
+    "RT": ["ammo:ac10", "jump_jet"],
+    "LT": ["heat_sink", "heat_sink", "jump_jet"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

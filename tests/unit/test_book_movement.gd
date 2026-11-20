@@ -104,3 +104,55 @@ func test_standing_up_allows_any_facing() -> void:
 	var opts := MovePlanner.plan(s, u, MoveMode.Kind.WALK)
 	check(opts.can_reach(MoveOptions.key(hex_at(1, 1), 3)), "stand facing backward at no extra cost")
 	check_eq(opts.cost[MoveOptions.key(hex_at(1, 1), 3)], 0)
+
+
+func test_drop_prone_after_moving() -> void:
+	events.clear()
+	var s := GameState.new(open_map(5, 8))
+	var u := mech("hunchback_hbk4g", 0, hex_at(2, 6), 0, 1)
+	s.add_unit(u)
+	var opts := MovePlanner.plan(s, u, MoveMode.Kind.WALK)
+	var three := MoveOptions.key(hex_at(2, 3), 0)
+	var four := MoveOptions.key(hex_at(2, 2), 0)
+	check(ProneMoves.can_drop_after(opts, three), "3 of 4 MP leaves 1 to drop")
+	check(not ProneMoves.can_drop_after(opts, four), "no MP left to drop")
+	check(not MoveExecutor.run(s, LoadedDice.new(), _emit, u, four, MoveMode.Kind.WALK, -1, true))
+	check(MoveExecutor.run(s, LoadedDice.new(), _emit, u, three, MoveMode.Kind.WALK, -1, true))
+	check(u.prone and u.coord == hex_at(2, 3), "moved, then dropped")
+	check(events.any(func(e: GameEvent) -> bool: return e.type == GameEvent.WENT_PRONE))
+	var j := mech("griffin_grf1n", 0, hex_at(0, 6), 0, 2)
+	s.add_unit(j)
+	var jo := MovePlanner.plan(s, j, MoveMode.Kind.JUMP)
+	check(not ProneMoves.can_drop_after(jo, MoveOptions.key(hex_at(0, 5), 0)), "not after jumping")
+
+
+func test_destroyed_gyro_turns_one_hexside() -> void:
+	var s := GameState.new(open_map(5, 8))
+	var u := mech("hunchback_hbk4g", 0, hex_at(2, 4), 0, 1)
+	s.add_unit(u)
+	u.prone = true
+	u.gyro_hits = CritEffects.GYRO_KILL
+	var opts := MovePlanner.plan(s, u, MoveMode.Kind.WALK)
+	check_eq(opts.reachable_hexes().keys(), [hex_at(2, 4)], "can't leave its hex")
+	check(opts.can_reach(MoveOptions.key(hex_at(2, 4), 1)))
+	check(not opts.can_reach(MoveOptions.key(hex_at(2, 4), 2)), "only one facing change")
+	events.clear()
+	check(MoveExecutor.run(s, LoadedDice.new(), _emit, u, MoveOptions.key(hex_at(2, 4), 5), MoveMode.Kind.WALK, -1))
+	check(u.prone and u.facing == 5, "turned without trying to stand")
+	check(not events.any(func(e: GameEvent) -> bool: return e.type == GameEvent.STAND))
+	u.gyro_hits = 0
+	u.structure[Location.LL] = 0
+	u.structure[Location.RL] = 0
+	check(MovePlanner.plan(s, u, MoveMode.Kind.WALK).reachable_hexes().size() == 1, "legless: stays put")
+
+
+func test_consciousness_rolled_right_after_the_move() -> void:
+	events.clear()
+	var s := GameState.new(open_map(5, 8))
+	var u := mech("hunchback_hbk4g", 0, hex_at(2, 6), 0, 1)
+	s.add_unit(u)
+	u.pilot.hits = 1
+	u.pilot.roll_owed = true
+	check(MoveExecutor.run(s, LoadedDice.new(), _emit, u, MoveOptions.key(hex_at(2, 5), 0), MoveMode.Kind.WALK, -1))
+	check(events.any(func(e: GameEvent) -> bool: return e.type == GameEvent.CONSCIOUSNESS), "rolled in the Movement Phase")
+	check(not u.pilot.roll_owed)

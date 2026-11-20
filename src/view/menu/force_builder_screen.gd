@@ -100,6 +100,10 @@ func _build_options(parent: Control) -> void:
 				if bot_sides.has(side): bot_sides.erase(side)
 				else: bot_sides.append(side)
 				_refresh(), Vector2(100, 60))
+	var row3 := HBoxContainer.new()
+	box.add_child(row3)
+	for side in 2:
+		UiKit.button(row3, Names.side(side) + " skill", _on_skill.bind(side), Vector2(100, 60))
 	UiKit.button(box, "Explanations", func():
 			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh(), Vector2(0, 60))
 	_status = UiKit.label(box, "", UiKit.SMALL)
@@ -111,6 +115,13 @@ func _next_budget() -> void:
 	var i := ForceBuilder.BUDGETS.find(builder.budget)
 	builder.budget = ForceBuilder.BUDGETS[(i + 1) % ForceBuilder.BUDGETS.size()]
 	_refresh()
+
+
+func _on_skill(side: int) -> void:
+	var ok := builder.next_skill(side)
+	_refresh()
+	if not ok:
+		_status.text = "That skill would put %s over budget" % Names.side(side)
 
 
 func _on_add(side: int, def_id: String) -> void:
@@ -125,7 +136,8 @@ func _on_add(side: int, def_id: String) -> void:
 func _refresh() -> void:
 	for side in 2:
 		UiKit.clear(_rosters[side])
-		_totals[side].text = "%d / %d BV  ·  %d tons" % [builder.bv(side), builder.budget, builder.tons(side)]
+		_totals[side].text = "%d / %d BV  ·  %d tons  ·  %s" % [builder.bv(side), builder.budget,
+				builder.tons(side), BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
 		var ids: Array = builder.rosters[side]
 		for i in ids.size():
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
@@ -139,6 +151,8 @@ func _refresh() -> void:
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
 	if GameSettings.explain_level == ExplainLevel.FULL:
 		_info.text += "\n" + BvText.WHAT_IS_BV
+		_info.text += "\nSkill: better MechWarriors hit and keep their footing more often, and cost more BV (Veteran 3/4 is x%.2f, Elite 2/3 x%.2f, Green 5/6 x%.2f)." % [
+				BvSkill.multiplier(3, 4), BvSkill.multiplier(2, 3), BvSkill.multiplier(5, 6)]
 		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."
 	var balance := builder.balance_text()
 	if balance != "" and GameSettings.explain_level != ExplainLevel.OFF:

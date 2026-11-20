@@ -27,10 +27,10 @@
   {"hex": "1005", "type": "light", "height": 1},
   {"hex": "1107", "type": "medium", "height": 2},
   {"hex": "1110", "type": "heavy", "height": 2},
-  {"hex": "1310", "type": "light", "height": 1},
+  {"hex": "1310", "type": "civilian", "height": 2},
   {"hex": "0510", "type": "medium", "height": 2},
   {"hex": "0712", "type": "light", "height": 1},
   {"hex": "1015", "type": "medium", "height": 2},
-  {"hex": "0516", "type": "light", "height": 1}
+  {"hex": "0516", "type": "civilian", "height": 1}
  ]
 }

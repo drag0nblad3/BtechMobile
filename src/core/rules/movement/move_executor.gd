@@ -6,7 +6,6 @@ extends RefCounted
 
 
 ## Drops a standing 'Mech prone where it is (1 MP, counts as walking).
-## TODO(rules): the book also allows dropping prone after moving.
 static func go_prone(emit: Callable, unit: Unit) -> void:
 	unit.prone = true
 	unit.has_moved = true
@@ -15,26 +14,26 @@ static func go_prone(emit: Callable, unit: Unit) -> void:
 	emit.call(GameEvent.WENT_PRONE, {"unit_id": unit.id})
 
 
-## Returns false if the target can't be reached in this mode.
+## Returns false if the target can't be reached in this mode. `then_prone`
+## drops the 'Mech to the ground at the end (1 MP, no charge).
 static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target: Vector3i,
-		mode: int, charge_target_id: int) -> bool:
+		mode: int, charge_target_id: int, then_prone := false) -> bool:
 	var opts := MovePlanner.plan(state, unit, mode)
 	if not opts.can_reach(target):
 		return false
+	if then_prone and (charge_target_id >= 0 or not ProneMoves.can_drop_after(opts, target)):
+		return false
 	if target == opts.minimum_move:
 		charge_target_id = -1  # minimum movement can't charge (p. 49)
-	var entry := BuildingRules.plan_entry(state.map, unit, opts.path_to(target), mode == MoveMode.Kind.JUMP)
-	var path: Array[Vector3i] = entry["path"]
-	if entry["collapse"]:
-		target = path[path.size() - 1]
-		charge_target_id = -1
+	var path: Array[Vector3i] = opts.path_to(target)
 	var from := opts.start_key()
 	var moved: bool = int(opts.cost[target]) > 0 or target != from
-	if unit.prone and moved and not Psr.try_stand(state, dice, emit, unit):
+	if unit.prone and moved and not opts.turn_only and not Psr.try_stand(state, dice, emit, unit):
 		unit.has_moved = true
 		unit.move_mode = MoveMode.Kind.WALK
 		unit.heat_generated += MoveMode.heat(MoveMode.Kind.WALK, 0)
 		Damage.announce(emit, unit)
+		PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once
 		return true
 	var fall := _action_rolls(state, dice, emit, unit, path, from, mode)
 	if not fall.is_empty():
@@ -53,13 +52,15 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
 	if not fall.is_empty():
 		Fall.fall(state, dice, emit, unit, int(fall["levels"]), fall["reason"])
-	for c: Vector2i in entry["entered"]:
-		if _passes(path, c):
-			BuildingRules.enter(state, dice, emit, unit, c)
+	for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
+		BuildingRules.enter(state, dice, emit, unit, c)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved)
 	Psr.resolve_pending(state, dice, emit, unit)
 	unit.psr_pending.clear()
+	PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once
+	if then_prone and not unit.prone and not unit.destroyed:
+		ProneMoves.drop(emit, unit)
 	if charge_target_id >= 0 and not unit.prone:
 		if not moved:  # charging from the hex next door still spends MP
 			unit.move_mode = mode
@@ -77,10 +78,3 @@ static func _action_rolls(state: GameState, dice: Dice, emit: Callable, unit: Un
 		var keep: int = r["index"] + (0 if r["back"] else 1)
 		return {"end": keep, "levels": r["levels"], "reason": r["reason"]}
 	return {}
-
-
-static func _passes(path: Array[Vector3i], c: Vector2i) -> bool:
-	for k in path:
-		if MoveOptions.coord_of(k) == c:
-			return true
-	return false

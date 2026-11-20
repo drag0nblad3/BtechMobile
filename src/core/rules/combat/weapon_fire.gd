@@ -5,15 +5,21 @@ extends RefCounted
 
 
 ## Resolves every shot declared this phase, in declaration order.
+## Each attacker's building damage is checked once its shots are done.
 static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> void:
+	var prev := -1
 	for d in state.declared_fire:
 		var a := state.unit_by_id(d["attacker_id"])
+		if a.id != prev and prev >= 0:
+			BuildingDamage.check_attacker(state, dice, emit, prev)
+		prev = a.id
 		if d.has("target_hex"):
 			BuildingFire.resolve(state, dice, emit, a, a.weapons[d["weapon_index"]], d["target_hex"], d["to_hit"])
 			continue
 		resolve(state, dice, emit, a, a.weapons[d["weapon_index"]],
 				state.unit_by_id(d["target_id"]), d["to_hit"])
 	state.declared_fire.clear()
+	BuildingDamage.end_phase(state, dice, emit)
 
 
 static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit,
@@ -47,22 +53,35 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		target.outside_heat += w.def.damage
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
-		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name)
+		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, {}, th.cover_hex)
 
 
-## Rolls a hit location and applies one packet of damage. Building walls
-## around the target soak part of it first. `hl.no_cover` skips partial cover
-## (kicks on the Kick table, charges).
+## Rolls a hit location and applies one packet of damage. `cover` is a hill
+## or building hex giving partial cover: leg hits strike it. `hl.no_cover`
+## skips water partial cover (kicks on the Kick table, charges). A standing
+## 'Mech half inside a level 1 building has its leg hits, and any Kick table
+## hit, taken by the building (charges excepted).
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
-		hl: Dictionary = {}, through_walls: bool = true) -> void:
-	var tile := state.map.get_tile(target.coord)
-	if through_walls and tile != null and tile.building != null:
-		amount = BuildingRules.absorb(state, dice, emit, tile, amount, target)
-		if amount <= 0 or target.destroyed:
-			return
+		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
+	if cover != Hex.INVALID and Location.is_leg(hl["loc"]):
+		var ct := state.map.get_tile(cover)
+		if ct != null and ct.building != null:
+			emit.call(GameEvent.BUILDING, {"kind": "cover_hit", "coord": cover, "unit_id": target.id,
+					"name": ct.building.type.name, "damage": amount})
+			BuildingDamage.add(state, source_id, cover, amount)
+		else:
+			emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
+					"source": source, "amount": amount, "loc": hl["loc"], "steps": [], "covered": true, "hill": true})
+		return
+	if BuildingRules.half_inside(state.map, target) and not hl.get("charge", false) \
+			and (Location.is_leg(hl["loc"]) or hl.get("kick_table", false)):
+		emit.call(GameEvent.BUILDING, {"kind": "cover_hit", "coord": target.coord, "unit_id": target.id,
+				"name": state.map.get_tile(target.coord).building.type.name, "damage": amount})
+		BuildingDamage.add(state, source_id, target.coord, amount)
+		return
 	var loc: int = hl["loc"]
 	if Location.is_leg(loc) and not hl.get("no_cover", false) and ToHitCalc.in_partial_cover(state.map, target):
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,

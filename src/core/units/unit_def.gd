@@ -81,6 +81,17 @@ func display_name() -> String:
 	return ("%s %s" % [name, model]).strip_edges()
 
 
+## 0 light (under 40 t), 1 medium, 2 heavy, 3 assault (80 t+).
+static func class_index(tons: int) -> int:
+	if tons < 40:
+		return 0
+	if tons < 60:
+		return 1
+	if tons < 80:
+		return 2
+	return 3
+
+
 func weight_class() -> String:
 	if tonnage < 40:
 		return "Light"

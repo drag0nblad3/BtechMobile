@@ -22,7 +22,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit — `TODO(rules)`: landing on building roofs.
 - ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again; standing frees the facing. Impossible with a
   destroyed gyro or both legs gone.
-- 🟡 Going prone instead of moving (heat as walking) — `TODO(rules)`: TW allows moving first, then dropping for 1 MP.
+- ✅ Dropping prone (`ProneMoves`, p. 51): in place, or at the end of a walk/run with 1 MP to spare (the Prone button uses the previewed move); not after jumping.
+- 🟡 Prone 'Mech that can't stand (destroyed gyro, both legs gone) only turns in its hex, 1 MP a hexside; a destroyed gyro allows one hexside a turn (p. 46) — `TODO(rules)`: a prone 'Mech that could stand can't choose to turn without standing.
 - ✅ Minimum movement (p. 49): running, one hex straight ahead for all MP, even if it costs more.
 - ✅ Movement piloting rolls (`MovePsr`): rolled the moment the hex is entered for running into water, rubble, backward level changes and landing in water (a failure ends the move with a fall); rolled after the move for running 1+ hex with a gyro/hip hit or leg gone, and jumping with gyro, leg or leg actuator damage.
 - ⬜ Skidding: not in the Core Rulebook; `Skid` is kept for an optional rule but never used.
@@ -38,9 +39,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Heat scale effects (MP, to-hit, shutdown, ammo explosion) — `TODO(rules)`: verify thresholds.
 
 ## Line of sight
-- 🟡 Hills block if higher than both units; woods count if at least as high as both;
-  3+ intervening woods points block — `TODO(rules)`: simplified, verify.
-- 🟡 Divided LOS (exactly along hexsides) picks one side — `TODO(rules)`.
+- ✅ LOS levels (p. 57): ground (water bottom) + 2 standing / 1 prone. A hex intervenes if its top (hill; woods +2; building roof) is at least both LOS levels, or at least the attacker's and next to it, or at least the target's and next to it. Intervening hills and buildings block; woods add 1/2 points, 3 block.
+- ✅ Divided LOS (along a hexside): the target's side chooses; the game takes the side worse for the attacker.
+- ✅ Partial cover from terrain (p. 66): a standing target next to a hex one level above its ground, on the line, gets +1 and leg hits strike the cover (a building takes the damage), unless the attacker's LOS level is higher; indirect fire ignores it; civilian buildings and woods give none.
 - 🟡 Units in depth 2+ water (or prone in depth 1) can't be seen — `TODO(rules)`: underwater combat.
 
 ## Weapon attacks
@@ -57,7 +58,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
 - ✅ Flamers (p. 183): a hit deals damage and the same amount of heat to the target; outside heat is capped at 15 per turn.
-- 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter — `TODO(rules)`: a spotter may still charge or DFA.
+- 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter; a 'Mech that declared a charge or DFA can't spot.
 - ⬜ Called shots, aimed shots.
 
 ## Damage
@@ -95,7 +96,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Lasting modifiers: gyro +2, destroyed leg +4 (replaces that leg's actuators), hip/upper/lower leg actuators +1 each; positive mods of other rolls owed in the same phase add on; one roll per leg for actuator hits; an immobile 'Mech falls automatically.
 - ✅ Falls (p. 115): facing unchanged; 1D6 = 1 hits the rear, else the front; ceil(tons/10) × (levels + 1) in 5s, halved in depth 1+ water.
 - ✅ Seatbelt check (p. 117): piloting + 1 per level fallen, nothing else; immobile or over 12 is an automatic hit.
-- 🟡 Consciousness (p. 117): one roll after the phase's damage, PSRs and falls, against the current hit total; wake-up rolls in later End Phases only — `TODO(rules)`: Movement Phase rolls should be immediate.
+- ✅ Consciousness (p. 117): one roll against the current hit total, as soon as a 'Mech's move is over in the Movement Phase, otherwise after the phase's damage, PSRs and falls; wake-up rolls in later End Phases only.
 
 ## Physical attacks
 - ✅ Modifiers (pp. 76-77, `PhysicalMods`): piloting base plus every ranged modifier except heat and sensors (movement, woods, partial cover, prone -2, immobile -4); piloting roll modifiers don't apply.
@@ -113,15 +114,16 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ⬜ Clubs, physical weapons.
 
 ## Buildings
-- ✅ Classes light/medium/heavy/hardened (CF 15/40/90/120), +1/+2/+3/+4 MP to enter, height in levels.
-- 🟡 Entering: a 'Mech heavier than the remaining CF collapses it and stops there; otherwise a
-  piloting roll (+0/+1/+2/+5), failure = CF/10 damage — `TODO(rules)`: verify both.
-- 🟡 Hits on a 'Mech inside: walls soak CF/10, building takes the whole hit — `TODO(rules)`.
-- 🟡 Collapse: hex becomes rubble, the 'Mech inside falls from the roof height — `TODO(rules)`.
+- ✅ Classes (p. 131): civilian, light, medium, heavy, hardened with Threshold 8/10/14/16 and Destroy Check 7+/9+/10+/11+; height in levels; every building hex +1 MP (errata).
+- ✅ Forced entry (p. 132): only heavy enough 'Mechs (medium buildings: medium+, heavy: heavy+, hardened: assault); piloting roll at +1 per hex; failure doesn't fall but forces a Destroy Check, and a destroyed hex comes down on the 'Mech at once.
+- ✅ Civilian buildings: a 'Mech walking or jumping in flattens them (jumps ignore their height); any damage destroys them; rubble only if 4+ levels tall.
+- ✅ Destroy Checks (p. 135): each attacker's damage to a hex is added up; at or over the Threshold it rolls 2D6 (+1 at 21-30 damage, +1 per further 10) once its attacks are done; damage is then forgotten. Hexes destroyed in an attack phase come down at its end.
+- ✅ Targets inside (p. 136): +2 if the building is at least as tall as the 'Mech (2 standing, 1 prone); walls don't soak damage; misses don't hit the building. A standing 'Mech in a level 1 building has partial cover: +1, and leg hits (and Kick table hits, but not charges) strike the building.
+- ✅ Collapse (pp. 136-137): rubble; a 'Mech inside takes half the Threshold per building level above it, 5-point groups from the front. No fall.
+- ✅ Shooting buildings (p. 135): -4, from the next hex always hits, cluster weapons hit with every missile.
 - ✅ Buildings block line of sight like a hill as tall as the roof.
-- 🟡 Shooting buildings (`BuildingFire`): tap a building in the weapon phase; -4 to hit, each hit lowers CF, 0 CF collapses it — `TODO(rules)`: verify -4, no secondary-target cost, 'Mechs inside unhurt until collapse.
-- ⬜ Physical attacks on buildings, standing on roofs, jumping onto buildings, charges and
-  displacement into buildings, basements.
+- 🟡 `TODO(rules)`: careful entry, roofs (landing, support limits), involuntary entry by displacement (Destroy Check), DFA into a level 1 building, fire, Castles Brian.
+- ⬜ Physical attacks on buildings, bridges as structures, basements.
 
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
@@ -137,7 +139,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 
 ## Force building and play
 - ✅ Two sides, up to 4 'Mechs each, Battle Value budget (2000-8000); deploy on opposite edges.
-- 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE, no pilot-skill multiplier).
+- 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE).
+- ✅ Pilot skill adjusts Battle Value (`BvSkill`, multipliers in `data/bv_skill.json`); the force builder cycles Green / Regular / Veteran / Elite per side.
 - ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
   end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
   to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).
@@ -145,4 +148,4 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
 - ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.
-- ⬜ Buildings, bridges as structures, fire and smoke.
+- ⬜ Bridges as structures, fire and smoke.

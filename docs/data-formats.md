@@ -6,8 +6,9 @@
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
 
-Also `"buildings": [{"id", "name", "cf", "move_cost", "psr_mod", "color"}]`: building
-classes light, medium, heavy and hardened.
+Also `"buildings": [{"id", "name", "civilian"?, "threshold", "destroy_tn", "entry_class", "color"}]`:
+building classes civilian, light, medium, heavy and hardened. `entry_class` is the lightest
+weight class (0 light .. 3 assault) that may force its way in.
 
 ## `data/maps/<id>.json`
 ```json
@@ -30,6 +31,10 @@ classes light, medium, heavy and hardened.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
+
+## `data/bv_skill.json`
+`{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;
+the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 
 ## `data/units/<id>.json`
 ```json

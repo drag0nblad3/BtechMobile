@@ -102,16 +102,17 @@ BattleTech (Total Warfare, Standard level). Every uncertain point is marked
 against the book first:
 
 1. Firing-arc and attack-direction boundaries (front = three forward hexsides).
-2. Line of sight with hills and woods (simplified "higher than both" rule).
+2. Line of sight follows the book's LOS-level rules; divided LOS always picks the side
+   worse for the attacker (the defender's choice).
 3. Hit location, cluster, critical-hit and punch/kick tables.
 4. Heat scale thresholds, shutdown restart timing, which ammo bin explodes.
 5. Fall direction, fall pilot-damage roll, leg-loss movement.
 6. Unequal unit counts in alternating movement.
-7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE or
-   pilot-skill multiplier). Our numbers land within about 10% of published values.
-8. Buildings: collapse when a heavier 'Mech enters, wall absorption (CF/10), entry PSR
-   modifiers, collapse damage as a fall.
-9. 'Mech designs (31 in `data/units/`) are written from general knowledge: check armor
+7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE;
+   pilot skill multiplier applied). Our numbers land within about 10% of published values.
+8. Buildings follow the Core Rulebook's Threshold / Destroy Check system; careful
+   entry, roofs and building fires are not modeled yet.
+9. 'Mech designs (38 in `data/units/`) are written from general knowledge: check armor
    split, slot placement and ammo locations against the technical readouts. The Core
    Rulebook has no designs or construction rules. Weapon tons, slots and ranges match its
    weapon tables; every design must add up to its tonnage (`DesignWeight`, engine weights

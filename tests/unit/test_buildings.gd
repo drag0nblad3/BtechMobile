@@ -23,9 +23,9 @@ func test_loads_and_costs_mp() -> void:
 	var s := _state("medium")
 	var tile := s.map.get_tile(hex_at(2, 2))
 	check(tile.building != null, "building placed from its label")
-	check_eq(tile.building.cf, 40)
-	check_eq(tile.building.absorbs(), 4)
-	check_eq(MoveCost.enter_cost(s.map, hex_at(2, 3), hex_at(2, 2), MoveMode.Kind.WALK), 3, "1 + 2 for medium")
+	check_eq(tile.building.type.threshold, 10)
+	check_eq(tile.building.type.destroy_tn, 9)
+	check_eq(MoveCost.enter_cost(s.map, hex_at(2, 3), hex_at(2, 2), MoveMode.Kind.WALK), 2, "1 + 1 for any building")
 	var city := MapLoader.load_file("res://data/maps/city_outskirts.json", terrain())
 	var n := 0
 	for t: MapTile in city.tiles.values():
@@ -44,56 +44,65 @@ func test_blocks_line_of_sight() -> void:
 	check(not LineOfSight.check(s.map, a, b)["blocked"], "one level does not")
 
 
-func test_heavy_mech_collapses_light_building() -> void:
-	var s := _state("light")
-	var u := mech("atlas_as7d", 0, hex_at(2, 4), 0, 1)
+func test_too_light_to_force_entry() -> void:
+	var s := _state("heavy")
+	var light := mech("jenner_jr7d", 0, hex_at(2, 3), 0, 1)
+	s.add_unit(light)
+	var into := MoveOptions.key(hex_at(2, 2), 0)
+	check(not MovePlanner.plan(s, light, MoveMode.Kind.WALK).can_reach(into), "a light 'Mech can't push into a heavy building")
+	light.coord = hex_at(0, 0)
+	var big := mech("warhammer_whm6r", 0, hex_at(2, 3), 0, 2)
+	s.add_unit(big)
+	check(MovePlanner.plan(s, big, MoveMode.Kind.WALK).can_reach(into), "a heavy one can")
+
+
+func test_failed_entry_roll_risks_collapse() -> void:
+	var s := _state("medium", 3)
+	var u := mech("griffin_grf1n", 0, hex_at(2, 2), 0, 1)
 	s.add_unit(u)
-	var path: Array[Vector3i] = [MoveOptions.key(hex_at(2, 3), 0), MoveOptions.key(hex_at(2, 2), 0),
-			MoveOptions.key(hex_at(2, 1), 0)]
-	var entry := BuildingRules.plan_entry(s.map, u, path, false)
-	check(entry["collapse"], "100 t > 15 CF")
-	check_eq((entry["path"] as Array).size(), 2, "move stops in the building")
-	u.coord = hex_at(2, 2)
-	var dice := LoadedDice.new([2])  # falls on its front, then 6s
-	for i in 6:
-		dice.queue_2d6(7)  # 30 fall damage to the center torso
+	var dice := LoadedDice.new()
+	dice.queue_2d6(2)   # entry roll fails (needs 6)
+	dice.queue_2d6(9)   # destroy check passes: it comes down
+	for i in 2:
+		dice.queue_2d6(7)   # collapse damage: 5 x 1 level above = 5, then 6s
 	BuildingRules.enter(s, dice, _emit, u, hex_at(2, 2))
 	var tile := s.map.get_tile(hex_at(2, 2))
 	check(tile.building == null and tile.terrain.id == "rubble", "now rubble")
-	check(u.prone, "Atlas fell")
-	check(not u.destroyed, "survives")
-	check(Explainer.text(events[0], s, ExplainLevel.FULL).contains("heavier"), "explains why")
-
-
-func test_failed_roll_scrapes_walls() -> void:
-	var s := _state("medium")
-	var u := mech("jenner_jr7d", 0, hex_at(2, 2), 0, 1)  # 35 t: under the 40 CF
-	s.add_unit(u)
-	var dice := LoadedDice.new()
-	dice.queue_2d6(2)  # piloting roll fails
-	dice.queue_2d6(7)  # center torso
-	BuildingRules.enter(s, dice, _emit, u, hex_at(2, 2))
+	check(not u.prone, "a failed entry doesn't knock you down")
 	var dmg := 0
 	for e in events:
 		if e.type == GameEvent.DAMAGE:
 			dmg += int(e.data["amount"])
-	check_eq(dmg, 4, "CF 40 / 10")
-	check_eq(s.map.get_tile(hex_at(2, 2)).building.cf, 40, "own walls not damaged")
+	check_eq(dmg, 5, "half of threshold 10, one level above a standing 'Mech")
+	check(Explainer.text(events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.BUILDING)[-1], s, ExplainLevel.FULL).contains("buried"), "explained")
 
 
-func test_walls_soak_hits() -> void:
-	var s := _state("medium")
-	var u := mech("griffin_grf1n", 0, hex_at(2, 2), 0, 1)
+func test_walking_flattens_civilian() -> void:
+	var s := _state("civilian", 2)
+	var u := mech("locust_lct1v", 0, hex_at(2, 2), 0, 1)
 	s.add_unit(u)
-	var before := u.armor[Location.CT]
-	var hl := {"loc": Location.CT, "rear": false, "tac": false}
-	WeaponFire.hit_with(s, LoadedDice.new(), _emit, u, FiringArc.FRONT, 10, 99, "AC/10", hl)
-	check_eq(before - u.armor[Location.CT], 6, "4 of 10 soaked")
-	check_eq(s.map.get_tile(hex_at(2, 2)).building.cf, 30, "building took the hit")
-	for i in 3:
-		WeaponFire.hit_with(s, LoadedDice.new(), _emit, u, FiringArc.FRONT, 10, 99, "AC/10", hl)
-	check(s.map.get_tile(hex_at(2, 2)).building == null, "collapsed at 0 CF")
-	check(u.prone, "fell with it")
+	BuildingRules.enter(s, LoadedDice.new(), _emit, u, hex_at(2, 2))
+	check(s.map.get_tile(hex_at(2, 2)).building == null, "flattened, no roll")
+	check(events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.PSR).is_empty())
+
+
+func test_inside_and_half_inside() -> void:
+	var s := _state("medium", 2)
+	var a := mech("griffin_grf1n", 0, hex_at(2, 5), 0, 1)
+	var t := mech("griffin_grf1n", 1, hex_at(2, 2), 3, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	check_eq(BuildingRules.inside_mod(s.map, t), 2, "two levels hide a standing 'Mech")
+	s.map.get_tile(hex_at(2, 2)).building.height = 1
+	check_eq(BuildingRules.inside_mod(s.map, t), 0, "one level doesn't")
+	check(BuildingRules.half_inside(s.map, t), "but gives partial cover")
+	var hl := {"loc": Location.LL, "rear": false, "tac": false}
+	var before := t.armor[Location.LL]
+	WeaponFire.hit_with(s, LoadedDice.new(), _emit, t, FiringArc.FRONT, 10, a.id, "AC/10", hl)
+	check_eq(t.armor[Location.LL], before, "the walls took the leg hit")
+	check_eq(int(s.building_hits[a.id][hex_at(2, 2)]), 10, "and count toward a Destroy Check")
+	t.prone = true
+	check_eq(BuildingRules.inside_mod(s.map, t), 2, "a prone 'Mech fits inside one level")
 
 
 func test_city_battle_runs() -> void:
@@ -108,6 +117,7 @@ func test_city_battle_runs() -> void:
 		var gc := GameController.new(fb.build(map), seed_value)
 		SimBot.play(gc, 20)
 		check(gc.state.turn > 1, "played")
-		var b := gc.history.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.BUILDING)
+		var b := gc.history.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.BUILDING \
+				or (e.type == GameEvent.PSR and String(e.data["reason"]).begins_with("forcing")))
 		building_events += b.size()
 	check(building_events > 0, "'Mechs fought around the buildings")

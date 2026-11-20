@@ -6,7 +6,7 @@ extends RefCounted
 ## +1 if the spotter also attacks this phase (its own attacks get +1 too).
 ## Terrain counts from the spotter; the shooter's range still applies.
 ## A 'Mech spots one target per turn (p. 62).
-## TODO(rules): a spotter may not charge or DFA that turn (not enforced).
+## A 'Mech that declared a charge or death from above can't spot (p. 62).
 
 
 ## Best friendly 'Mech that can see the target (lowest added modifier), or null.
@@ -15,6 +15,8 @@ static func spotter(state: GameState, attacker: Unit, target: Unit) -> Unit:
 	var best_cost := 99
 	for u in state.units_of_side(attacker.side):
 		if u == attacker or u.destroyed or u.shutdown or not u.pilot.conscious:
+			continue
+		if PhysicalMods.charging(state, u):
 			continue
 		var spots := spotting_target(state, u)
 		if spots >= 0 and spots != target.id:

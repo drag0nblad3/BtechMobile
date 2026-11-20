@@ -28,7 +28,7 @@ const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb,
 const CHARGE_DECLARED := &"charge_declared" # {unit_id, target_id, kind: charge|dfa, need}
 const SKID := &"skid"                     # {unit_id, hexes, wanted} slid after a failed roll
 const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vector3i]}
-const BUILDING := &"building"             # {kind: overweight|scraped|absorbed|collapsed, coord, name, unit_id?, damage?, absorbed?, cf?, height?}
+const BUILDING := &"building"             # {kind: flattened|entry_failed|destroy_check|shot|cover_hit|collapsed, coord, name, unit_id?, damage?, roll?, need?}
 const INTENT := &"intent"                 # {unit_id, text} why a player chose its action
 const GAME_OVER := &"game_over"           # {winner: side or -1}
 

@@ -7,6 +7,8 @@ extends RefCounted
 var mods: Array[Dictionary] = []
 var impossible: String = ""
 var spotter_id: int = -1  ## Indirect fire: the friendly 'Mech spotting.
+var cover_hex: Vector2i = Hex.INVALID  ## Hill or building giving partial cover: leg hits strike it.
+var auto_hit: String = ""  ## Why the shot can't miss (e.g. a building next door); target() is then 2.
 
 
 func add(label: String, value: int, why: String = "") -> void:
@@ -14,6 +16,8 @@ func add(label: String, value: int, why: String = "") -> void:
 
 
 func target() -> int:
+	if auto_hit != "":
+		return 2
 	var n := 0
 	for m in mods:
 		n += int(m["value"])
@@ -40,4 +44,6 @@ func summary() -> String:
 			parts.append("%d %s" % [v, m["label"]])
 		elif v != 0:
 			parts.append("%s%d %s" % ["+" if v > 0 else "", v, m["label"]])
+	if auto_hit != "":
+		return "%s: automatic hit" % auto_hit
 	return "%s = %d" % [" ".join(parts), target()]

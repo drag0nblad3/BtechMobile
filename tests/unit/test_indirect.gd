@@ -76,3 +76,10 @@ func test_spotter_takes_one_target_and_plus_one() -> void:
 	s.declared_fire.append_array(sd)
 	IndirectFire.record(s, sd)
 	check_eq(th.target(), before + 1, "spotter firing added later")
+
+
+func test_charging_mech_cant_spot() -> void:
+	var r := _setup(true)
+	var s: GameState = r[0]
+	s.declared_physical.append({"attacker_id": 3, "kind": "charge", "target_id": 2})
+	check(not ToHitCalc.weapon(s, r[1], _lrm(r[1]), r[2]).possible(), "the only spotter is charging")
