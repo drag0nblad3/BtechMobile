@@ -685,6 +685,12 @@ static func fine(p: VoxelPart) -> void:
 	var scale := p.detail_scale
 	if scale < 2:
 		return
+	# Large armor hulls gain *real* 25mm-scale chamfers; smooth normals alone
+	# cannot fix a 75mm rectangular silhouette. Thin hocks, claws, turret
+	# bores and missile opening rings are deliberately left untouched.
+	var shape := p.detail_style.trim_prefix("v4_")
+	if p.name == "Torso" and shape in ["atlas", "hunchback", "wolverine"]:
+		_chamfer_real_microvoxels(p, 2 if shape != "wolverine" else 1)
 	if p.name.ends_with("_shin"):
 		for y in [-5, -8]:
 			p.paint_box(Vector3i(-2 * scale, y * scale, -3 * scale),
@@ -693,3 +699,34 @@ static func fine(p: VoxelPart) -> void:
 		for y in [-7, -3]:
 			p.paint_box(Vector3i(-3 * scale, y * scale, -4 * scale),
 					Vector3i(3 * scale, y * scale, -4 * scale), 8)
+
+
+## Actual two-axis corner removal AFTER coarse-to-fine refinement. Only
+## armor classes can be cut, and only where a multi-cell panel has spare
+## support inside; never erase open tubes, exposed actuators, or glass.
+static func _chamfer_real_microvoxels(p: VoxelPart, radius: int) -> void:
+	var remove: Array[Vector3i] = []
+	var directions := [Vector3i.RIGHT, Vector3i.UP, Vector3i.BACK]
+	for cell: Vector3i in p.cells:
+		var mat: int = int(p.cells[cell])
+		if mat != 0 and mat != 4 and mat != 6 and mat != 9:
+			continue
+		var boundary_axes := 0
+		var secure_support := 0
+		for axis in directions:
+			var edge_plus := not p.cells.has(cell + axis)
+			var edge_minus := not p.cells.has(cell - axis)
+			if radius == 2:
+				edge_plus = edge_plus or not p.cells.has(cell + axis * 2)
+				edge_minus = edge_minus or not p.cells.has(cell - axis * 2)
+			if edge_plus or edge_minus:
+				boundary_axes += 1
+			else:
+				secure_support += 1
+		# Trim a thick panel's outside corner without severing a thin
+		# actuator shaft or the root of an armor rib. This checks the
+		# two-axis cross-section only; the third axis carries the panel.
+		if boundary_axes >= 2 and secure_support >= 1:
+			remove.append(cell)
+	for cell in remove:
+		p.cells.erase(cell)
