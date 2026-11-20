@@ -125,18 +125,25 @@ func make_hud() -> void:
 	add_button(second, "RIGHT LEG", func(): blast("right_leg"))
 	add_button(second, "SEVER RIGHT", sever_right)
 	add_button(second, "RESET", reset_lab)
+	var back := add_button(second, "MAIN MENU", _open_launcher)
+	back.name = "BackToLauncher"
 	var help := Label.new()
 	help.text = "Tap mech to shoot · right-drag / swipe to orbit · scroll to zoom"
 	help.add_theme_font_size_override("font_size", 12)
 	column.add_child(help)
 
 
-func add_button(parent: HBoxContainer, title: String, action: Callable) -> void:
+func add_button(parent: HBoxContainer, title: String, action: Callable) -> Button:
 	var button := Button.new()
 	button.text = title
 	button.custom_minimum_size = Vector2(118, 52)
 	button.pressed.connect(action)
 	parent.add_child(button)
+	return button
+
+
+func _open_launcher() -> void:
+	get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func blast(key: String) -> void:
