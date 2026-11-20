@@ -156,11 +156,14 @@ func stand() -> void:
 					hock.rotation.x = angles.z
 					ankles[side].rotation.x = angles.w
 		else:
-			hip.rotation.x = 0.25
+			# More upright neutral display pose: the old 0.5-radian knee bend
+			# made the heavy humanoids squat and obscured most thigh armor.
+			# Walking still uses the original two-link gait IK unchanged.
+			hip.rotation.x = 0.12
 			var knee: Node3D = knees[side]
 			if knee.get_parent() == hip:
-				knee.rotation.x = -0.5
-				ankles[side].rotation.x = 0.25
+				knee.rotation.x = -0.24
+				ankles[side].rotation.x = 0.12
 		var shoulder: Node3D = arms[side]
 		if shoulder.get_parent() == _upper:
 			shoulder.rotation.x = 0.0
