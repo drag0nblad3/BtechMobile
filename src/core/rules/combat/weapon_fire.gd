@@ -4,6 +4,15 @@ extends RefCounted
 ## hit locations and damage. `emit` is GameController._emit (type, data).
 
 
+## Resolves every shot declared this phase, in declaration order.
+static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> void:
+	for d in state.declared_fire:
+		var a := state.unit_by_id(d["attacker_id"])
+		resolve(state, dice, emit, a, a.weapons[d["weapon_index"]],
+				state.unit_by_id(d["target_id"]), d["to_hit"])
+	state.declared_fire.clear()
+
+
 static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit,
 		w: MountedWeapon, target: Unit, th: ToHit) -> void:
 	if w.def.uses_ammo() and not attacker.use_ammo(w.def):
