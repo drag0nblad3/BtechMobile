@@ -223,7 +223,7 @@ static func _torso(out: Array[Dictionary]) -> void:
 			_ring(-0.8, 3.3, -4.5, 3.2, x),
 			_ring(2.3, 4.0, -5.1, 4.7, x + side * 0.6),
 			_ring(6.3, 3.5, -5.4, 4.5, x + side * 0.4),
-			_ring(8.3, 2.6, -4.5, 3.9, x)
+			_ring(10.0, 2.6, -4.5, 3.9, x)
 		], 4)
 		_round_tube(out, "shoulder-pivot", side * 13.3, 0.0,
 				-0.9, 2.9, 1.6, 8)
@@ -236,35 +236,35 @@ static func _torso(out: Array[Dictionary]) -> void:
 	# Skull itself: eight detailed silhouette stations. Widest portion is
 	# cheek at Y7, narrow jaw at Y4, domed brow at Y11; not a cube on stalk.
 	_loft(out, "skull-cranium", [
-		_ring(4.8, 2.1, -5.2, 0.2, -0.3),
-		_ring(6.6, 3.1, -7.1, 0.3, -0.3),
-		_ring(8.5, 3.7, -7.6, 0.5, -0.3),
-		_ring(10.9, 3.6, -7.4, 0.5, -0.3),
-		_ring(12.2, 3.2, -6.7, 0.2, -0.3),
-		_ring(13.1, 2.0, -5.6, -0.4, -0.3)
+		_ring(4.8, 2.0, -5.2, 0.2, -0.3),
+		_ring(6.3, 2.6, -7.1, 0.3, -0.3),
+		_ring(7.7, 3.2, -7.6, 0.5, -0.3),
+		_ring(9.2, 3.4, -7.4, 0.5, -0.3),
+		_ring(10.6, 2.8, -6.7, 0.2, -0.3),
+		_ring(11.3, 1.9, -5.6, -0.4, -0.3)
 	], 6)
 	# Sculpt a shallow brow ridge, two deep eye sockets, a projecting nose,
 	# separated cheekbones and a toothed jaw. Separate CSG cutters are meshes.
 	_plate(out, "forehead-brow", [
-		Vector3(-3.1, 10.4, -7.8), Vector3(-2.8, 11.3, -7.6),
-		Vector3(2.8, 11.3, -7.6), Vector3(3.2, 10.4, -7.8)
+		Vector3(-3.0, 9.1, -7.8), Vector3(-2.6, 9.8, -7.6),
+		Vector3(2.6, 9.8, -7.6), Vector3(3.0, 9.1, -7.8)
 	], 0.9, 6)
 	for x in [-1.65, 1.55]:
-		_round_tube(out, "recessed-eye-socket", x, 9.2,
-				-8.6, -6.0, 0.95, 1, 1)
-		_hollow_tube(out, "raised-socket-bezel", x, 9.2,
-				-8.5, -7.6, 1.02, 0.57, 8, 2)
-		_round_tube(out, "inset-red-eye", x, 9.25,
-				-7.9, -7.6, 0.47, 7, 2)
+		_round_tube(out, "recessed-eye-socket", x, 8.15,
+				-8.6, -6.0, 0.65, 1, 1)
+		_hollow_tube(out, "slender-socket-bezel", x, 8.15,
+				-8.45, -7.6, 0.70, 0.36, 8, 2)
+		_round_tube(out, "recessed-red-eye", x, 8.15,
+				-7.9, -7.6, 0.27, 7, 2)
 	for x in [-2.8, 2.4]:
 		_plate(out, "skull-cheek", [
-			Vector3(x - 0.7, 7.6, -7.5), Vector3(x - 0.3, 8.8, -8.0),
-			Vector3(x + 0.7, 8.7, -7.5), Vector3(x + 0.8, 6.3, -7.6)
+			Vector3(x - 0.7, 6.4, -7.5), Vector3(x - 0.3, 8.0, -8.0),
+			Vector3(x + 0.7, 7.8, -7.5), Vector3(x + 0.8, 6.0, -7.6)
 		], 0.9, 6)
 	_plate(out, "nasal-bridge", [
-		Vector3(-0.48, 9.2, -8.1), Vector3(0.5, 9.2, -8.1),
-		Vector3(0.9, 7.6, -8.25), Vector3(0.1, 6.8, -8.55),
-		Vector3(-0.65, 7.6, -8.25)
+		Vector3(-0.48, 8.2, -8.1), Vector3(0.5, 8.2, -8.1),
+		Vector3(0.9, 6.8, -8.25), Vector3(0.1, 6.0, -8.55),
+		Vector3(-0.65, 6.8, -8.25)
 	], 0.8, 6)
 	_plate(out, "clenched-teeth", [
 		Vector3(-2.0, 5.7, -7.5), Vector3(-2.5, 6.6, -7.3),
@@ -272,24 +272,24 @@ static func _torso(out: Array[Dictionary]) -> void:
 	], 0.8, 8)
 	# Torso-mounted AC/20 right, not a fake second gun attached to fist.
 	_hollow_tube(out, "ac20-real-bored-barrel", 8.4, -1.9,
-			-10.7, -4.0, 2.8, 1.12, 8)
+			-10.8, -4.0, 1.9, 0.74, 8)
 	_round_tube(out, "ac20-through-bore", 8.4, -1.9,
-			-10.9, -2.9, 1.12, 1, 1)
+			-11.0, -2.9, 0.74, 1, 1)
 	# The left flank contains the AS7-D five-opening LRM grouping.
-	_loft(out, "lrm-shoulder-housing", [
-		_ring(-3.3, 3.5, -8.2, -4.4, -7.8),
-		_ring(2.7, 3.6, -8.2, -4.4, -7.8)
-	], 9)
+	_loft(out, "raised-lrm-five-pack", [
+		_ring(0.8, 3.1, -7.5, -3.4, -8.0),
+		_ring(6.0, 2.8, -7.6, -3.2, -8.0)
+	], 4)
 	for x in [-9.9, -8.0, -6.1]:
-		for y in [-1.3, 1.2]:
-			if x == -6.1 and y == -1.3:
+		for y in [2.0, 4.3]:
+			if x == -6.1 and y == 2.0:
 				continue
-			_hollow_tube(out, "lrm-port-metal-rim", x, y, -9.0,
-					-5.2, 0.70, 0.42, 8)
+			_hollow_tube(out, "lrm-port-metal-rim", x, y, -9.1,
+					-4.9, 0.70, 0.42, 8)
 			_round_tube(out, "lrm-port-csg-bore", x, y, -9.2,
-					-5.2, 0.43, 1, 1)
-			_round_tube(out, "lrm-rear", x, y, -5.55,
-					-5.3, 0.36, 3, 2)
+					-3.7, 0.43, 1, 1)
+			_round_tube(out, "lrm-rear", x, y, -3.9,
+					-3.7, 0.34, 3, 2)
 	# Rear reactor grilles and descending belt, each angled armor plate.
 	for x in [-6.0, 5.8]:
 		_loft(out, "reactor-duct", [
