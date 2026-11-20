@@ -127,5 +127,6 @@ static func _new_part(parent: Node3D, part_name: String, profile: Dictionary,
 	part.detail_scale = clampi(int(part_detail.get(part_name, detail)), 1, 3)
 	part.detail_style = str(profile.get("shape", ""))
 	part.mesh_enabled = meshes
+	part.surface_mode = "nets" if meshes else "cube"
 	parent.add_child(part)
 	return part
