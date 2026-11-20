@@ -24,6 +24,7 @@ classes light, medium, heavy and hardened.
 `{"weapons": [{"id", "name", "type" (energy|ballistic|missile), "heat", "damage", "missiles"?,
 "group"?, "min"?, "short", "medium", "long", "slots", "ammo_per_ton"?,
 "bv", "ammo_bv"?}]}`
+- `indirect: true` (LRMs) lets the weapon fire without line of sight through a spotter.
 - `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the

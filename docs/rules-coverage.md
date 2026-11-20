@@ -57,7 +57,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
 - 🟡 Flamers deal normal damage — `TODO(rules)`: heat-instead-of-damage option.
-- ⬜ Indirect LRM fire, called shots, aimed shots.
+- 🟡 Indirect LRM fire (`IndirectFire`): a friendly 'Mech with line of sight spots; +1 indirect, + spotter's movement, +1 if the spotter also fires; woods counted from the spotter — `TODO(rules)`: verify.
+- ⬜ Called shots, aimed shots.
 
 ## Damage
 - ✅ Hit location tables (front/rear, left, right) — `TODO(rules)`: verify.
