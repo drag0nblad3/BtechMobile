@@ -154,15 +154,17 @@ func erase_irregular_local_ball(center: Vector3, radius: float, seed: int) -> in
 	rng.seed = seed
 	var axes := Vector3(rng.randf_range(0.83, 1.28),
 			rng.randf_range(0.83, 1.28), rng.randf_range(0.83, 1.28))
-	var cluster_count := rng.randi_range(1, 3)
+	# Distributed gouges and secondary fractures extend the damage footprint
+	# across a meaningful area of this part, not one tiny round puncture.
+	var cluster_count := rng.randi_range(6, 9)
 	var clusters: Array[Vector4] = []
 	for i in cluster_count:
 		clusters.append(Vector4(
-				center.x + rng.randf_range(-0.55, 0.55) * radius,
-				center.y + rng.randf_range(-0.55, 0.55) * radius,
-				center.z + rng.randf_range(-0.55, 0.55) * radius,
-				radius * rng.randf_range(0.32, 0.56)))
-	var extent := radius * 1.75 + voxel_size
+				center.x + rng.randf_range(-1.05, 1.05) * radius,
+				center.y + rng.randf_range(-1.05, 1.05) * radius,
+				center.z + rng.randf_range(-1.05, 1.05) * radius,
+				radius * rng.randf_range(0.34, 0.68)))
+	var extent := radius * 2.0 + voxel_size
 	var low := Vector3i(floori((center.x - extent) / voxel_size),
 			floori((center.y - extent) / voxel_size),
 			floori((center.z - extent) / voxel_size))
