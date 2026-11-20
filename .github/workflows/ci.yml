@@ -17,6 +17,16 @@ jobs:
           set -o pipefail
           godot --headless -s tests/run_tests.gd 2>&1 | tee test.log
           ! grep -E "SCRIPT ERROR|Parse Error" test.log
+      - name: Report per-chassis voxel counts (no rendering)
+        run: |
+          set -o pipefail
+          godot --headless -s tools/voxel_count_report.gd 2>&1 | tee voxel-counts.log
+          [ "$(grep -c '^VOXEL_COUNT|' voxel-counts.log)" -eq 6 ]
+          ! grep -E "SCRIPT ERROR|Parse Error" voxel-counts.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: voxel-counts
+          path: voxel-counts.log
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail
