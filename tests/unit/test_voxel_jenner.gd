@@ -115,3 +115,22 @@ func test_jenner_gait_three_link_ik_reaches_toe_every_phase() -> void:
 	check(VoxelJennerGait.foot_target(0.5).x < -0.35, "rear stride shortened")
 	check(VoxelJennerGait.foot_target(0.82).y >
 			VoxelJennerGait.TOE_HEIGHT + 0.20, "swing clearance too low")
+
+
+func test_jenner_neutral_stance_uses_two_planted_staggered_feet() -> void:
+	var model := VoxelMech.new()
+	model.profile_id = "jenner_jr7d"
+	model.build()
+	model.stand()
+	var l := VoxelJennerGait.foot_target(0.20)
+	var r := VoxelJennerGait.foot_target(0.41)
+	check(is_equal_approx(l.y, VoxelJennerGait.TOE_HEIGHT),
+			"left neutral toe must remain planted")
+	check(is_equal_approx(r.y, VoxelJennerGait.TOE_HEIGHT),
+			"right neutral toe must remain planted")
+	check(l.x - r.x > 0.30, "feet must be offset front-to-back in the neutral pose")
+	check(absf(model.hips[0].rotation.x - model.hips[1].rotation.x) > 0.20,
+			"leg pivots must not be identical in a standing pose")
+	check(is_equal_approx(model.hips[0].position.x, -0.40),
+			"Jenner should use widened hip sockets")
+	model.free()
