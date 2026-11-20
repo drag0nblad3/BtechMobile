@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -41,7 +41,7 @@ jobs:
           godot --headless --quit-after 90 --scene res://scenes/vx_showcase.tscn 2>&1 | tee vx.log
           ! grep -E "SCRIPT ERROR|Parse Error" vx.log
       - name: Render voxel gait comparison
-        if: github.head_ref != 'feature/refined-jenner-voxel-model' && github.ref_name != 'feature/refined-jenner-voxel-model'
+        if: github.event_name == 'workflow_dispatch'
         run: |
           mkdir -p /tmp/voxel-frames
           xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
@@ -61,12 +61,12 @@ jobs:
           ! cmp -s /tmp/voxel-frames/gait_a.png /tmp/voxel-frames/gait_b.png
           ! cmp -s /tmp/voxel-frames/armor_before.png /tmp/voxel-frames/armor_after.png
       - uses: actions/upload-artifact@v4
-        if: github.head_ref != 'feature/refined-jenner-voxel-model' && github.ref_name != 'feature/refined-jenner-voxel-model'
+        if: github.event_name == 'workflow_dispatch'
         with:
           name: voxel-mech-gait-frames
           path: /tmp/voxel-frames/*.png
       - name: Render refined Jenner chassis
-        if: github.head_ref != 'feature/refined-jenner-voxel-model' && github.ref_name != 'feature/refined-jenner-voxel-model'
+        if: github.event_name == 'workflow_dispatch'
         run: |
           mkdir -p /tmp/jenner-frames
           xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
@@ -77,7 +77,7 @@ jobs:
           done
           ! cmp -s /tmp/jenner-frames/jenner_stride_a.png /tmp/jenner-frames/jenner_stride_b.png
       - uses: actions/upload-artifact@v4
-        if: github.head_ref != 'feature/refined-jenner-voxel-model' && github.ref_name != 'feature/refined-jenner-voxel-model'
+        if: github.event_name == 'workflow_dispatch'
         with:
           name: refined-jenner-model-renders
           path: /tmp/jenner-frames/*.png
