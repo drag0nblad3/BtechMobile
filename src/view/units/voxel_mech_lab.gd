@@ -25,6 +25,14 @@ var _distance := 5.8
 var _right_drag := false
 var _touch_dragged := false
 var _last_hit := "No impacts yet"
+const SOLO_FLOOR := Vector3(14.0, 0.26, 14.0)
+const STRESS_FLOOR := Vector3(34.0, 0.26, 28.0)
+var _floor_mesh: BoxMesh
+var _floor_shape: BoxShape3D
+var _solo_grid: Node3D
+var _stress_grid: Node3D
+var _touch_positions: Dictionary = {}
+var _pinch_distance := 0.0
 
 
 func _ready() -> void:
@@ -68,36 +76,59 @@ func make_arena() -> void:
 	ground.name = "HangarFloor"
 	ground.position.y = -0.15
 	add_child(ground)
-	var floor_mesh := BoxMesh.new()
-	floor_mesh.size = Vector3(14, 0.26, 14)
+	_floor_mesh = BoxMesh.new()
+	_floor_mesh.size = SOLO_FLOOR
 	var material := StandardMaterial3D.new()
 	material.albedo_color = Color("293949")
 	material.roughness = 0.9
-	floor_mesh.material = material
+	_floor_mesh.material = material
 	var surface := MeshInstance3D.new()
-	surface.mesh = floor_mesh
+	surface.mesh = _floor_mesh
 	ground.add_child(surface)
 	var collision := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = floor_mesh.size
-	collision.shape = shape
+	_floor_shape = BoxShape3D.new()
+	_floor_shape.size = _floor_mesh.size
+	collision.shape = _floor_shape
 	ground.add_child(collision)
 	var grid_mat := StandardMaterial3D.new()
 	grid_mat.albedo_color = Color("3e6271")
 	grid_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	_solo_grid = Node3D.new()
+	_solo_grid.name = "SoloFloorGrid"
+	add_child(_solo_grid)
+	_stress_grid = Node3D.new()
+	_stress_grid.name = "StressFloorGrid"
+	add_child(_stress_grid)
+	_stress_grid.visible = false
 	for i in range(-6, 7):
-		make_line(Vector3(i, 0.008, 0), Vector3(0.012, 0.012, 12), grid_mat)
-		make_line(Vector3(0, 0.008, i), Vector3(12, 0.012, 0.012), grid_mat)
+		make_line(Vector3(i, 0.008, 0), Vector3(0.012, 0.012, 12),
+				grid_mat, _solo_grid)
+		make_line(Vector3(0, 0.008, i), Vector3(12, 0.012, 0.012),
+				grid_mat, _solo_grid)
+	for x in range(-16, 17, 2):
+		make_line(Vector3(x, 0.008, 0), Vector3(0.012, 0.012, 26),
+				grid_mat, _stress_grid)
+	for z in range(-12, 13, 2):
+		make_line(Vector3(0, 0.008, z), Vector3(32, 0.012, 0.012),
+				grid_mat, _stress_grid)
 
 
-func make_line(pos: Vector3, size: Vector3, material: Material) -> void:
+func set_stress_arena(expanded: bool) -> void:
+	_floor_mesh.size = STRESS_FLOOR if expanded else SOLO_FLOOR
+	_floor_shape.size = _floor_mesh.size
+	_solo_grid.visible = not expanded
+	_stress_grid.visible = expanded
+
+
+func make_line(pos: Vector3, size: Vector3, material: Material,
+		parent: Node3D) -> void:
 	var cube := MeshInstance3D.new()
 	var mesh := BoxMesh.new()
 	mesh.size = size
 	mesh.material = material
 	cube.mesh = mesh
 	cube.position = pos
-	add_child(cube)
+	parent.add_child(cube)
 
 
 func make_camera() -> void:
@@ -191,13 +222,21 @@ func make_hud() -> void:
 	stress_stop_button = add_button(stress_buttons, "STOP / CLEAR", stop_stress_test)
 	stress_stop_button.name = "StopStressButton"
 	stress_stop_button.disabled = true
+	var zoom_buttons := HBoxContainer.new()
+	column.add_child(zoom_buttons)
+	var zoom_in := add_button(zoom_buttons, "ZOOM IN +",
+			func(): zoom_camera(0.80))
+	zoom_in.name = "ZoomInButton"
+	var zoom_out := add_button(zoom_buttons, "ZOOM OUT −",
+			func(): zoom_camera(1.25))
+	zoom_out.name = "ZoomOutButton"
 	stress_info = Label.new()
 	stress_info.name = "StressStats"
 	stress_info.add_theme_font_size_override("font_size", 14)
 	stress_info.text = "20 full-resolution mechs, then continuous random impacts."
 	column.add_child(stress_info)
 	var help := Label.new()
-	help.text = "Shots now carve variable jagged craters · swipe to orbit · scroll to zoom"
+	help.text = "Swipe to orbit · pinch, wheel or +/- to zoom · random crater damage"
 	help.add_theme_font_size_override("font_size", 12)
 	column.add_child(help)
 
@@ -245,9 +284,10 @@ func start_stress_test() -> void:
 	_stress.name = "VoxelStressTest"
 	add_child(_stress)
 	_stress.start(highest)
+	set_stress_arena(true)
 	_orbit = 2.58
 	_elevation = 0.75
-	_distance = 22.5
+	_distance = 38.0
 	update_camera()
 	stress_start_button.disabled = true
 	stress_stop_button.disabled = false
@@ -263,6 +303,7 @@ func stop_stress_test() -> void:
 	# All twenty meshes, voxel data, and any detached debris are disposed.
 	_stress.free()
 	_stress = null
+	set_stress_arena(false)
 	mech.visible = true
 	mech.set_process(true)
 	_orbit = _saved_stress_camera.x
@@ -387,6 +428,28 @@ func _refresh_catalog() -> void:
 	catalog_label.text = "\n".join(lines)
 
 
+## Keep separate zoom limits for the solo inspection and larger stress
+## arena. In particular, mouse wheel must not snap 38m down to 12m.
+func zoom_camera(factor: float) -> void:
+	var low := 12.0 if _stress != null else 3.5
+	var high := 80.0 if _stress != null else 12.0
+	_distance = clampf(_distance * factor, low, high)
+	update_camera()
+
+
+func _update_pinch() -> void:
+	if _touch_positions.size() < 2:
+		_pinch_distance = 0.0
+		return
+	var ids := _touch_positions.keys()
+	var first: Vector2 = _touch_positions[ids[0]]
+	var second: Vector2 = _touch_positions[ids[1]]
+	var separation := first.distance_to(second)
+	if _pinch_distance > 0.0 and separation > 1.0:
+		zoom_camera(_pinch_distance / separation)
+	_pinch_distance = separation
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
@@ -394,28 +457,41 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			fire_at_screen(event.position)
 		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_distance = maxf(3.5, _distance - 0.5)
-			update_camera()
+			zoom_camera(0.90)
 		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_distance = minf(12.0, _distance + 0.5)
-			update_camera()
+			zoom_camera(1.10)
 	elif event is InputEventMouseMotion and _right_drag:
 		_orbit -= event.relative.x * 0.012
 		_elevation = clampf(_elevation + event.relative.y * 0.008, 0.08, 1.10)
 		update_camera()
 	elif event is InputEventScreenDrag:
+		_touch_positions[event.index] = event.position
 		_touch_dragged = true
-		_orbit -= event.relative.x * 0.010
-		_elevation = clampf(_elevation + event.relative.y * 0.007, 0.08, 1.10)
-		update_camera()
+		if _touch_positions.size() >= 2:
+			_update_pinch()
+		else:
+			_orbit -= event.relative.x * 0.010
+			_elevation = clampf(_elevation + event.relative.y * 0.007, 0.08, 1.10)
+			update_camera()
 	elif event is InputEventScreenTouch:
 		if event.pressed:
-			_touch_dragged = false
-		elif not _touch_dragged:
-			fire_at_screen(event.position)
+			if _touch_positions.is_empty():
+				_touch_dragged = false
+			_touch_positions[event.index] = event.position
+			if _touch_positions.size() >= 2:
+				_touch_dragged = true
+			_update_pinch()
+		else:
+			var was_tap := _touch_positions.size() == 1 and not _touch_dragged
+			_touch_positions.erase(event.index)
+			_update_pinch()
+			if was_tap:
+				fire_at_screen(event.position)
 
 
 func fire_at_screen(point: Vector2) -> void:
+	if _stress != null or mech == null:
+		return
 	var origin := camera.project_ray_origin(point)
 	var direction := camera.project_ray_normal(point)
 	var hit := mech.shoot(origin, direction)
