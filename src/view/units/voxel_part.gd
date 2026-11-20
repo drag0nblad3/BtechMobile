@@ -198,7 +198,10 @@ func pick_ray(origin_world: Vector3, direction_world: Vector3) -> Dictionary:
 		return {}
 	if _local_bounds.size == Vector3.ZERO:
 		_update_bounds()
-	var inverse := global_transform.affine_inverse()
+	# An unattached test part has only its local transform. In live scenes
+	# always use global_transform so articulated limbs pick correctly.
+	var world_transform := global_transform if is_inside_tree() else transform
+	var inverse := world_transform.affine_inverse()
 	var origin := inverse * origin_world
 	var direction := (inverse.basis * direction_world).normalized()
 	if direction.length_squared() <= 0.0:
@@ -220,7 +223,7 @@ func pick_ray(origin_world: Vector3, direction_world: Vector3) -> Dictionary:
 				floori(probe.y / voxel_size), floori(probe.z / voxel_size))
 		if cells.has(cell):
 			var point := origin + direction * distance
-			var world_point := global_transform * point
+			var world_point := world_transform * point
 			return {"point": world_point, "cell": cell,
 					"distance": world_point.distance_to(origin_world)}
 		var tx := INF
