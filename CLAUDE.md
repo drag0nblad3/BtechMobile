@@ -24,7 +24,7 @@ Battle mode first; campaign layer later.
 |---|---|
 | `src/core/hex/hex.gd` | Axial hex math, facings (0=N clockwise), mapsheet labels (XXYY, odd-q) |
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth), `BattleMap`, `MapLoader` |
-| `src/core/units/` | `UnitDef` (static design), `UnitDb`, `Unit` (runtime state) |
+| `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode`, `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing), `MoveOptions` |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
@@ -35,7 +35,7 @@ Battle mode first; campaign layer later.
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/hud/battle_hud.gd` | On-screen buttons/labels; emits intent signals only |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput` |
-| `data/` | `terrain.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
+| `data/` | `terrain.json`, `weapons.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `unit/test_*.gd` |
 | `tools/capture.gd` | Render the battle to PNG for visual checks |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |

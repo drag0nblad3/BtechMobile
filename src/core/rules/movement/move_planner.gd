@@ -9,7 +9,7 @@ static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
 	var opts := MoveOptions.new()
 	opts.unit = unit
 	opts.mode = mode
-	opts.budget = MoveMode.budget(unit.def, mode)
+	opts.budget = MoveMode.budget(unit, mode)
 	var start := opts.start_key()
 	opts.cost[start] = 0
 	opts.can_end[start] = true

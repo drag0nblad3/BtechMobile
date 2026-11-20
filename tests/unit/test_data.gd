@@ -10,7 +10,7 @@ func test_terrain_loads() -> void:
 
 func test_units_load() -> void:
 	var db := UnitDb.load_dir()
-	check(db.by_id.size() >= 4, "unit count")
+	check(db.by_id.size() >= 5, "unit count")
 	check_eq(db.get_def("atlas_as7d").walk_mp, 3)
 
 
@@ -29,3 +29,44 @@ func test_water_token() -> void:
 	check_eq(t.depth, 2)
 	check_eq(t.floor_level(), -2)
 	check(t.is_water())
+
+
+func test_every_design_is_legal() -> void:
+	var db := UnitDb.load_dir()
+	for def: UnitDef in db.by_id.values():
+		var hs := 0
+		var jj := 0
+		for loc: int in def.other_items:
+			hs += def.other_items[loc].count("heat_sink")
+			jj += def.other_items[loc].count("jump_jet")
+		check_eq(hs, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS, def.id + " heat sinks")
+		check_eq(jj, def.jump_mp, def.id + " jump jets")
+		check(not def.weapon_mounts.is_empty(), def.id + " has weapons")
+		for loc in Location.COUNT:
+			check(def.armor[loc] <= StructureTable.max_armor(def.tonnage, loc),
+					"%s %s armor over max" % [def.id, Location.code(loc)])
+		var u := Unit.new(1, def, 0, Vector2i.ZERO, 0)
+		check_eq(u.structure[Location.HEAD], 3)
+		for w in u.weapons:
+			if w.def.uses_ammo():
+				check(u.ammo_for(w.def) > 0, "%s ammo for %s" % [def.id, w.def.name])
+
+
+func test_crit_layout() -> void:
+	var u := Unit.new(1, UnitDb.load_dir().get_def("atlas_as7d"), 0, Vector2i.ZERO, 0)
+	var rt: Array = u.slots[Location.RT]
+	check_eq(rt.size(), 12)
+	check_eq(rt[0].name, "AC/20")
+	check_eq(rt[11].kind, CritSlot.Kind.AMMO)
+	check_eq(u.slots[Location.CT][3].kind, CritSlot.Kind.GYRO)
+	check(u.has_working_actuator(Location.LA, "hand"), "atlas has hands")
+	var j := Unit.new(2, UnitDb.load_dir().get_def("jenner_jr7d"), 0, Vector2i.ZERO, 0)
+	check(not j.has_working_actuator(Location.LA, "hand"), "jenner has no hands")
+	check_eq(j.run_mp(), 11)
+
+
+func test_structure_table() -> void:
+	check_eq(StructureTable.points(100, Location.CT), 31)
+	check_eq(StructureTable.points(35, Location.LA), 6)
+	check_eq(StructureTable.points(65, Location.LL), 15)
+	check_eq(StructureTable.max_armor(50, Location.HEAD), 9)

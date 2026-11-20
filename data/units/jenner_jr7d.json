@@ -1,1 +1,15 @@
-{"id": "jenner_jr7d", "name": "Jenner", "model": "JR7-D", "tonnage": 35, "walk_mp": 7, "jump_mp": 5}
+{
+  "id": "jenner_jr7d", "name": "Jenner", "model": "JR7-D", "tonnage": 35,
+  "walk_mp": 7, "jump_mp": 5, "heat_sinks": 10, "sprite": "jenner",
+  "role": "Light striker. Fast and thinly armored; runs hot if it moves flat out and fires everything.",
+  "armor": {"HD": 6, "CT": 15, "LT": 12, "RT": 12, "LA": 6, "RA": 6, "LL": 12, "RL": 12},
+  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "CT": ["srm4", "jump_jet"],
+    "LT": ["ammo:srm4", "jump_jet", "jump_jet"],
+    "RT": ["jump_jet", "jump_jet"],
+    "LA": ["medium_laser", "medium_laser"],
+    "RA": ["medium_laser", "medium_laser"]
+  }
+}
