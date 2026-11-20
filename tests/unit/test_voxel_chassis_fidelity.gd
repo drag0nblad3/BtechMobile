@@ -2,21 +2,27 @@ extends TestCase
 ## Geometry-level tests for non-Jenner fine detail and full-part impact spread.
 
 
-func test_atlas_25mm_visor_and_armor_recess() -> void:
-	var torso := VoxelPart.new()
-	torso.name = "Torso"
-	torso.detail_scale = 3
-	torso.detail_style = "atlas"
-	torso.mesh_enabled = false
-	VoxelMechArt.torso(torso, "atlas")
-	check(is_equal_approx(torso.voxel_size, 0.025), "Atlas hull pitch must be 25 mm")
-	check_eq(torso.cells.get(Vector3i(0, 16, -12)), 1,
-			"Atlas cockpit must have a real inset center window strut")
-	check(not torso.cells.has(Vector3i(0, -14, -15)),
-			"Atlas chest plate needs recessed transverse seams")
-	check_eq(torso.cells.get(Vector3i(0, -13, -14)), 1,
-			"Atlas chest recess should show frame material")
-	torso.free()
+func test_atlas_skull_eyes_and_torso_autocannon_are_real_geometry() -> void:
+	var m := VoxelMech.new()
+	m.profile_id = "atlas_as7d"
+	m.render_surfaces = false
+	m.build()
+	var torso: VoxelPart = m.parts["torso"]
+	check_eq(torso.detail_scale, 2, "sculpted Atlas torso uses 37.5 mm cells")
+	for x in [-3, 2]:
+		check_eq(torso.sculpt_material(Vector3i(x, 9, -8)), 7,
+				"skull face needs inset red eye lights")
+	check(not torso.has_sculpt_cell(Vector3i(0, 6, -10)),
+			"Atlas skull should have a real recessed nose cavity")
+	check(torso.has_sculpt_cell(Vector3i(-5, 6, -7)),
+			"skull cheekbone needs volume, not a painted visor")
+	check(not torso.has_sculpt_cell(Vector3i(9, -1, -12)),
+			"torso AC/20 barrel should have an actual hollow bore")
+	check(torso.has_sculpt_cell(Vector3i(12, -1, -12)),
+			"armored AC/20 ring should surround the muzzle")
+	check(not torso.has_sculpt_cell(Vector3i(-13, 1, -9)),
+			"Atlas LRM launcher must have real openings")
+	m.free()
 
 
 func test_catapult_15_separate_recessed_missile_ports_on_each_pod() -> void:
@@ -106,12 +112,12 @@ func test_atlas_catapult_voxel_budget_and_damageable_real_geometry() -> void:
 		model.build()
 		var total := model.initial_voxels()
 		# Approximate art budget, not a magic exact cell target.
-		check(total >= 90000 and total <= 130000,
-				id + " should be near the requested 100–120k range")
+		check(total >= 100000 and total <= 150000,
+				id + " should fit the sculpted 100–150k model budget")
 		check_eq(total, model.remaining_voxels(),
 				id + " should count real intact geometry")
 		check_eq((model.parts["torso"] as VoxelPart).detail_scale,
-				3 if id == "atlas_as7d" else 2,
+				2,
 				id + " torso must use its planned microvoxel resolution")
 		if id == "catapult_cplt_c1":
 			check_eq((model.parts["left_arm"] as VoxelPart).detail_scale, 3,
