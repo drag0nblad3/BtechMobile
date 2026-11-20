@@ -53,6 +53,7 @@ func _check_stress() -> void:
 			test.progress_text().contains("Hits "),
 			"stress HUD must expose FPS, model count and shot totals"):
 		return
+	var hit_count := test.successful_hits
 	button.pressed.emit()
 	await process_frame
 	if not _require(lab.stress_test == null and lab.mech != null and
@@ -64,7 +65,7 @@ func _check_stress() -> void:
 			"lab controls must return after stop"):
 		return
 	print("VOXEL_STRESS_SMOKE_OK|%s|models=20|voxels=%d|hits=%d|removed=%d" % [
-			profile["id"], best_count * 20, test.successful_hits, removed])
+			profile["id"], best_count * 20, hit_count, removed])
 	quit(0)
 
 
