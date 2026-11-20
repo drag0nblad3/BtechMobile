@@ -8,7 +8,7 @@
       "arm": "standard",
       "hip_width": 0.49,
       "arm_width": 1.01,
-      "voxel_detail": 2,
+      "voxel_detail": 3,
       "voxel_part_detail": {
         "Torso": 3
       },
@@ -24,7 +24,7 @@
       "arm_width": 1.1,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 2,
+        "Torso": 3,
         "left_arm": 3,
         "right_arm": 3
       },
@@ -54,7 +54,11 @@
       "arm_width": 0.86,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 3
+        "Torso": 3,
+        "left_arm": 3,
+        "right_arm": 3,
+        "left_leg": 3,
+        "right_leg": 3
       },
       "height_stretch": 1.38
     },
@@ -84,6 +88,7 @@
       "arm_width": 1.14,
       "voxel_detail": 2,
       "voxel_part_detail": {
+        "Torso": 3,
         "left_arm": 3,
         "right_arm": 3
       },
