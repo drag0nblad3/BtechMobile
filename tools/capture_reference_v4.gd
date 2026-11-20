@@ -8,16 +8,16 @@ const VIEWS := [
 	{"profile": 1, "id": "atlas", "angle": 2.58, "height": 0.25, "distance": 6.0},
 	{"profile": 1, "id": "atlas-front", "angle": PI, "height": 0.17, "distance": 6.0},
 	{"profile": 1, "id": "atlas-side", "angle": PI * 0.5, "height": 0.19, "distance": 6.0},
-	{"profile": 2, "id": "hunchback", "angle": 2.58, "height": 0.24, "distance": 5.8},
-	{"profile": 2, "id": "hunchback-side", "angle": PI * 0.5, "height": 0.19, "distance": 5.8},
-	{"profile": 3, "id": "wolverine", "angle": 2.58, "height": 0.22, "distance": 5.8},
-	{"profile": 3, "id": "wolverine-side", "angle": PI * 0.5, "height": 0.19, "distance": 5.8},
+	{"profile": 2, "id": "hunchback", "angle": 2.58, "height": 0.24, "distance": 7.0},
+	{"profile": 2, "id": "hunchback-side", "angle": PI * 0.5, "height": 0.19, "distance": 7.0},
+	{"profile": 3, "id": "wolverine", "angle": 2.58, "height": 0.22, "distance": 6.9},
+	{"profile": 3, "id": "wolverine-side", "angle": PI * 0.5, "height": 0.19, "distance": 6.9},
 	{"profile": 4, "id": "jenner", "angle": 2.58, "height": 0.21, "distance": 5.7},
 	{"profile": 4, "id": "jenner-side", "angle": PI * 0.5, "height": 0.18, "distance": 5.8},
-	{"profile": 5, "id": "catapult", "angle": 2.58, "height": 0.25, "distance": 6.0},
-	{"profile": 5, "id": "catapult-side", "angle": PI * 0.5, "height": 0.18, "distance": 6.0},
-	{"profile": 0, "id": "prototype", "angle": 2.58, "height": 0.23, "distance": 5.8},
-	{"profile": 0, "id": "prototype-side", "angle": PI * 0.5, "height": 0.18, "distance": 5.8}
+	{"profile": 5, "id": "catapult", "angle": 2.58, "height": 0.25, "distance": 6.7},
+	{"profile": 5, "id": "catapult-side", "angle": PI * 0.5, "height": 0.18, "distance": 6.7},
+	{"profile": 0, "id": "prototype", "angle": 2.58, "height": 0.23, "distance": 7.2},
+	{"profile": 0, "id": "prototype-side", "angle": PI * 0.5, "height": 0.18, "distance": 7.2}
 ]
 
 
@@ -54,7 +54,7 @@ func _set_view() -> void:
 	lab._distance = float(v["distance"])
 	# Taller reference designs: the original lab camera aimed at 1.25m,
 	# clipping heads and making legs look abnormally squat in captures.
-	var target := Vector3(0, 1.65, 0)
+	var target := Vector3(0, 1.90, 0)
 	lab.camera.position = target + Vector3(
 			sin(lab._orbit) * cos(lab._elevation),
 			sin(lab._elevation),
