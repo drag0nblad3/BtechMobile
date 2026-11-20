@@ -115,12 +115,12 @@ geometry measurements after the material, bevel and cavity sculpting passes:
 
 | Visual chassis | Occupied voxels | Recognizable 3D features |
 | --- | ---: | --- |
-| Original test mech | 122,909 | Swept paired sensor canopy, tapered instrumented chest, separate cooling nacelles, a bored test cannon and articulated gauntlets |
-| Atlas AS7-D | 139,111 | *Rounded skull head with recessed glowing red eyes and jaw*, tapered pectoral plates, curved pauldrons, torso AC/20 and missile tubes; 25 mm gauntlets |
-| Hunchback HBK-4G | 149,808 | Seriously asymmetric shoulder hump, recessed left cockpit, circular bored AC/20, offset arms, rounded armor and vented rear equipment |
-| Wolverine WVR-6R | 140,707 | Wedge nose, distinct shoulder armor, six genuine SRM holes, a right-arm open cannon, left manipulator and tapering breastplates |
-| Jenner JR7-D | 124,561 | Long wedge cockpit, large contoured rear engine fairings, four SRM ports, paired laser emitters and exposed three-link digitigrade mechanics |
-| Catapult CPLT-C1 | 113,387 | Sloped bird-like beak and reactor, vented rear jets, twin 15-cell recessed LRM pods and rounded reverse-jointed leg armor |
+| Original test mech | 113,710 | Swept paired sensor canopy, tapered instrumented chest, separate cooling nacelles, a bored test cannon and articulated gauntlets |
+| Atlas AS7-D | 118,546 | *Rounded skull head with recessed glowing red eyes and jaw*, tapered pectoral plates, curved pauldrons, torso AC/20 and missile tubes; 25 mm gauntlets |
+| Hunchback HBK-4G | 147,398 | Seriously asymmetric shoulder hump, recessed left cockpit, circular bored AC/20, offset arms, rounded armor and vented rear equipment |
+| Wolverine WVR-6R | 125,665 | Wedge nose, distinct shoulder armor, six genuine SRM holes, a right-arm open cannon, left manipulator and tapering breastplates |
+| Jenner JR7-D | 127,519 | Long wedge cockpit, large contoured rear engine fairings, four SRM ports, paired laser emitters and exposed three-link digitigrade mechanics |
+| Catapult CPLT-C1 | 107,746 | Sloped bird-like beak and reactor, vented rear jets, twin 15-cell recessed LRM pods and rounded reverse-jointed leg armor |
 
 These counts are not display multipliers or extra damage pixels.
 `VoxelAnatomyV2` now **replaces the old rectilinear skeleton** with
