@@ -3,13 +3,13 @@ extends RefCounted
 ## Applies damage to a 'Mech: armor first, then internal structure, then
 ## whatever is left transfers inward (arm/leg -> side torso -> center torso).
 ## Rear hits use rear armor; structure is shared front and back.
+## Pips actually marked off count toward the 20-damage piloting roll.
 
 
 ## Returns one step per location touched:
 ## {loc, rear, armor, structure, destroyed (location), breached (structure hit)}.
 static func apply(u: Unit, loc: int, amount: int, rear: bool = false) -> Array[Dictionary]:
 	var steps: Array[Dictionary] = []
-	u.damage_this_phase += amount
 	while amount > 0 and loc >= 0 and not u.destroyed:
 		var step := {"loc": loc, "rear": rear, "armor": 0, "structure": 0,
 				"destroyed": false, "breached": false}
@@ -24,12 +24,35 @@ static func apply(u: Unit, loc: int, amount: int, rear: bool = false) -> Array[D
 			amount -= s
 			step["structure"] = s
 			step["breached"] = s > 0
+			u.damage_this_phase += a + s
 			if u.structure[loc] <= 0:
 				step["destroyed"] = true
 				destroy_location(u, loc)
 		steps.append(step)
 		loc = Location.transfer(loc)
 		rear = false
+	return steps
+
+
+## Internal damage (explosions): straight to internal structure, and any
+## excess goes to the next location's structure, skipping armor.
+static func apply_internal(u: Unit, loc: int, amount: int) -> Array[Dictionary]:
+	var steps: Array[Dictionary] = []
+	while amount > 0 and loc >= 0 and not u.destroyed:
+		var step := {"loc": loc, "rear": false, "armor": 0, "structure": 0,
+				"destroyed": false, "breached": false}
+		if not u.is_location_destroyed(loc):
+			var s := mini(u.structure[loc], amount)
+			u.structure[loc] -= s
+			amount -= s
+			u.damage_this_phase += s
+			step["structure"] = s
+			step["breached"] = s > 0
+			if u.structure[loc] <= 0:
+				step["destroyed"] = true
+				destroy_location(u, loc)
+		steps.append(step)
+		loc = Location.transfer(loc)
 	return steps
 
 

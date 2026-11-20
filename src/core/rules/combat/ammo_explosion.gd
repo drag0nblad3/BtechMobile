@@ -1,26 +1,31 @@
 class_name AmmoExplosion
 extends RefCounted
-## An ammo bin explodes: all remaining shots hit its location's internal
-## structure (armor doesn't help), and the pilot takes 2 hits.
+## An ammo bin explodes (book pp. 95-96): its remaining shots' damage, capped
+## at 20, goes straight into internal structure and transfers inward
+## structure-to-structure. If the uncapped damage was over 20 and the last
+## location hit survives, it loses its armor (rear armor for a torso).
+## The MechWarrior takes 1 hit from the feedback.
+
+const CAP := 20
 
 
 static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, bin: AmmoBin) -> void:
-	var dmg := bin.explosion_damage()
+	var base := bin.explosion_damage()
 	bin.shots = 0
 	bin.destroyed = true
-	if dmg <= 0:
+	if base <= 0:
 		return
-	var saved := u.armor[bin.loc]
-	var saved_rear := u.rear_armor[bin.loc]
-	u.armor[bin.loc] = 0
-	u.rear_armor[bin.loc] = 0
-	var steps := Damage.apply(u, bin.loc, dmg)
-	# Armor is bypassed only in the exploding location.
-	if not u.is_location_destroyed(bin.loc):
-		u.armor[bin.loc] = saved
-		u.rear_armor[bin.loc] = saved_rear
+	var dmg := mini(base, CAP)
+	var steps := Damage.apply_internal(u, bin.loc, dmg)
+	if base > CAP and not steps.is_empty() and not u.destroyed:
+		var last: int = steps[-1]["loc"]
+		if not u.is_location_destroyed(last):
+			if Location.HAS_REAR.has(last):
+				u.rear_armor[last] = 0
+			else:
+				u.armor[last] = 0
 	emit.call(GameEvent.AMMO_EXPLOSION, {"unit_id": u.id, "loc": bin.loc,
-			"ammo": bin.weapon.name, "damage": dmg, "steps": steps})
-	PilotDamage.wound(dice, emit, u, 2, "ammo explosion")
+			"ammo": bin.weapon.name, "damage": dmg, "base": base, "steps": steps})
+	PilotDamage.wound(dice, emit, u, 1, "ammo explosion")
 	Damage.announce(emit, u)
 	CriticalHits.after_damage(state, dice, emit, u, steps, false)

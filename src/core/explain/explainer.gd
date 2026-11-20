@@ -142,11 +142,13 @@ static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) ->
 	var res := "HIT" if d["hit"] else "miss"
 	if d["missiles"] > 0:
 		res += ", %d missiles" % d["missiles"]
+	if d.get("heat_added", 0) > 0:
+		res += ", +%d heat to the target" % d["heat_added"]
 	if level == ExplainLevel.OFF:
 		return "%s: %s" % [who, res]
 	var t := "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res]
-	if d["roll"] == 2 and d["need"] <= 2:
-		t += " (a 2 always misses)"
+	if d["need"] <= 2:
+		t += " (2 or less always hits)"
 	return t + ModsText.lines(d["mods"], level, seen)
 
 

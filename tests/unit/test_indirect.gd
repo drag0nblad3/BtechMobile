@@ -50,3 +50,29 @@ func test_spotter_allows_lrms_only() -> void:
 	s.declared_fire.append({"attacker_id": 3, "weapon_index": 0, "target_id": 2})
 	var th2 := ToHitCalc.weapon(s, a, _lrm(a), r[2])
 	check_eq(th2.target(), th.target() + 1, "spotter firing +1")
+
+
+func test_spotter_takes_one_target_and_plus_one() -> void:
+	var r := _setup(true)
+	var s: GameState = r[0]
+	var a: Unit = r[1]
+	s.turn = 1
+	var th := ToHitCalc.weapon(s, a, _lrm(a), r[2])
+	var decl: Array[Dictionary] = [{"attacker_id": a.id, "weapon_index": 0, "target_id": 2, "to_hit": th}]
+	s.declared_fire.append_array(decl)
+	IndirectFire.record(s, decl)
+	check_eq(IndirectFire.spotting_target(s, s.unit_by_id(3)), 2, "Jenner spots the Hunchback")
+	var sp := s.unit_by_id(3)
+	var own := ToHitCalc.weapon(s, sp, sp.weapons[0], r[2])
+	var labels := own.mods.map(func(m: Dictionary) -> String: return m["label"])
+	check(labels.has("spotting"), "spotter's own shot +1")
+	# A second enemy can't be spotted by the same 'Mech this turn.
+	var other := mech("locust_lct1v", 1, hex_at(3, 1), 3, 4)
+	s.add_unit(other)
+	check(IndirectFire.spotter(s, a, other) == null, "one target per turn")
+	# The spotter declaring fire afterwards adds +1 to the earlier indirect shot.
+	var before := th.target()
+	var sd: Array[Dictionary] = [{"attacker_id": 3, "weapon_index": 0, "target_id": 2, "to_hit": own}]
+	s.declared_fire.append_array(sd)
+	IndirectFire.record(s, sd)
+	check_eq(th.target(), before + 1, "spotter firing added later")

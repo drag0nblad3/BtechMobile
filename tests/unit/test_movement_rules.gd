@@ -9,10 +9,13 @@ func test_minimum_movement_one_hex() -> void:
 	s.add_unit(u)
 	u.structure[Location.LL] = 0  # leg gone: walk MP drops
 	u.armor[Location.LL] = 0
-	var budget := MoveMode.budget(u, MoveMode.Kind.WALK)
+	check(not MovePlanner.plan(s, u, MoveMode.Kind.WALK).can_reach(MoveOptions.key(hex_at(1, 1), 0)),
+			"walking can't use minimum movement")
+	var budget := MoveMode.budget(u, MoveMode.Kind.RUN)
 	check(budget >= 1 and budget < 3, "few MP left: %d" % budget)
-	var opts := MovePlanner.plan(s, u, MoveMode.Kind.WALK)
-	check(opts.can_reach(MoveOptions.key(hex_at(1, 1), 0)), "one hex into the woods")
+	var opts := MovePlanner.plan(s, u, MoveMode.Kind.RUN)
+	check(opts.can_reach(MoveOptions.key(hex_at(1, 1), 0)), "one hex into the woods, running")
+	check_eq(opts.minimum_move, MoveOptions.key(hex_at(1, 1), 0))
 	check_eq(opts.cost[MoveOptions.key(hex_at(1, 1), 0)], budget, "uses all MP")
 
 
@@ -37,10 +40,13 @@ func test_wading_and_damaged_running_cost_rolls() -> void:
 	var u := mech("hunchback_hbk4g", 0, hex_at(1, 2), 0, 1)
 	s.add_unit(u)
 	var path: Array[Vector3i] = [MoveOptions.key(hex_at(1, 1), 0)]
-	MovePsr.after_move(s, u, path, MoveMode.Kind.WALK)
-	check_eq(u.psr_pending.size(), 1, "deep water")
-	check_eq(u.psr_pending[0]["mod"], 0, "depth 2 is +0")
-	u.psr_pending.clear()
+	var from := MoveOptions.key(u.coord, 0)
+	check(MovePsr.action_rolls(s, u, path, from, MoveMode.Kind.WALK).is_empty(), "walking in needs no roll")
+	var rolls := MovePsr.action_rolls(s, u, path, from, MoveMode.Kind.RUN)
+	check_eq(rolls.size(), 1, "running into water")
+	check_eq(rolls[0]["mod"], 0)
 	u.gyro_hits = 1
-	MovePsr.after_move(s, u, [] as Array[Vector3i], MoveMode.Kind.RUN)
+	MovePsr.after_move(u, MoveMode.Kind.RUN, 0)
+	check(u.psr_pending.is_empty(), "no roll without running a hex")
+	MovePsr.after_move(u, MoveMode.Kind.RUN, 2)
 	check(u.psr_pending.size() == 1 and String(u.psr_pending[0]["reason"]).contains("gyro"), "running on a hit gyro")

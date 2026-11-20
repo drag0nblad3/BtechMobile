@@ -1,0 +1,84 @@
+class_name ChargeResolve
+extends RefCounted
+## Rolls a declared charge or death from above and deals its damage. Moving
+## the 'Mechs waits until every physical attack of the phase is rolled
+## (book p. 76), so this returns what `PhysicalPhase` should move.
+## - Charge hit: target pushed straight on, attacker takes its hex, both roll
+##   at +2. A miss leaves both where they are.
+## - DFA hit: same, target pushed to the nearest open hexside (destroyed if
+##   none). Prone target: damage on the Rear column of the full table.
+## - DFA miss: target steps to an open adjacent hex, the attacker lands in
+##   its hex and falls 2 levels onto its back (destroyed if nowhere to go).
+
+
+## Returns {kind, attacker, target, dir, hit} for the displacement step, or {}.
+static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary) -> Dictionary:
+	var a := state.unit_by_id(d["attacker_id"])
+	var t := state.unit_by_id(d["target_id"])
+	var kind: String = d["kind"]
+	if a.destroyed or a.prone or t.destroyed or not a.pilot.conscious \
+			or (kind == "charge" and t.prone):
+		return {}  # cancelled (the book has a DFA attacker that fell land as a miss; simplified)
+	var th: ToHit = d["to_hit"]
+	var roll := dice.roll_2d6()
+	var need := th.target()
+	var hit := roll >= need and need <= 12
+	emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id, "kind": kind,
+			"limb": -1, "roll": roll, "need": need, "hit": hit,
+			"damage": d["damage"] if hit else 0, "mods": th.mods})
+	var dir := Hex.direction_to(a.coord, t.coord)
+	var step := {"kind": kind, "attacker": a, "target": t, "dir": dir, "hit": hit}
+	if not hit:
+		return step if kind == "dfa" else {}
+	var t_arc := FiringArc.arc(t.coord, t.facing, a.coord)
+	var dfa_prone := kind == "dfa" and t.prone
+	for p in Damage.clusters(d["damage"], 5):
+		var hl: Dictionary
+		if dfa_prone:
+			hl = HitTable.roll(dice, FiringArc.REAR)
+		elif kind == "dfa":
+			hl = HitTable.roll_punch(dice, t_arc)
+		else:
+			hl = HitTable.roll(dice, t_arc)
+			hl["no_cover"] = true
+		WeaponFire.hit_with(state, dice, emit, t, FiringArc.REAR if dfa_prone else t_arc, p, a.id, kind, hl)
+	for p in Damage.clusters(d["self_damage"], 5):
+		var hl := HitTable.roll_kick(dice, FiringArc.FRONT) if kind == "dfa" else HitTable.roll(dice, FiringArc.FRONT)
+		hl["no_cover"] = true
+		WeaponFire.hit_with(state, dice, emit, a, FiringArc.FRONT, p, a.id, kind + " (self)", hl)
+	return step
+
+
+## Moves the 'Mechs after the phase's attacks. `step` comes from resolve().
+static func displace(state: GameState, dice: Dice, emit: Callable, step: Dictionary) -> void:
+	var a: Unit = step["attacker"]
+	var t: Unit = step["target"]
+	var name := "charge" if step["kind"] == "charge" else "death from above"
+	var from := t.coord
+	if step["kind"] == "charge":
+		if t.destroyed or Displacement.push(state, dice, emit, t, step["dir"]):
+			if not a.destroyed:
+				Displacement.move_to(state, emit, a, from)
+		_rolls(a, t, name)
+		return
+	var moved := t.destroyed or Displacement.push_nearest(state, dice, emit, t, step["dir"])
+	if not moved:
+		var victim := t if step["hit"] else a
+		Damage.destroy_unit(victim, "nowhere to land")
+		Damage.announce(emit, victim)
+		if victim == t and not a.destroyed:
+			Displacement.move_to(state, emit, a, from)
+		return
+	if not a.destroyed:
+		Displacement.move_to(state, emit, a, from)
+	if step["hit"]:
+		_rolls(a, t, name)
+	elif not a.destroyed:
+		Fall.fall(state, dice, emit, a, 2, "missed a death from above", FiringArc.REAR)
+
+
+static func _rolls(a: Unit, t: Unit, name: String) -> void:
+	if not a.prone:
+		a.psr_pending.append({"reason": "made a " + name, "mod": 2})
+	if not t.prone and not t.destroyed:
+		t.psr_pending.append({"reason": "was hit by a " + name, "mod": 2})

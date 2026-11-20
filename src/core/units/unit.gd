@@ -39,6 +39,7 @@ var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
+var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
 var damage_this_phase: int = 0
 ## Piloting rolls owed at the end of this phase: [{reason, mod, auto_fall?}].
 var psr_pending: Array[Dictionary] = []
@@ -71,6 +72,7 @@ func reset_for_turn() -> void:
 	hexes_moved = 0
 	torso_twist = 0
 	heat_generated = 0
+	outside_heat = 0
 	for w in weapons:
 		w.fired = false
 
@@ -127,21 +129,18 @@ func working_heat_sinks() -> int:
 	return maxi(0, def.heat_sinks - heat_sinks_lost)
 
 
-## Walking MP after heat and leg damage.
-## TODO(rules): hip halving and leg loss are simplified (see rules-coverage).
+## Walking MP after leg damage, then heat (book pp. 90, 99): each hip, upper
+## leg, lower leg or foot hit is -1, but leg damage can't go below 1; a
+## destroyed leg sets the base to 1; both legs gone is 0.
 func walk_mp() -> int:
-	var mp := def.walk_mp - HeatScale.mp_penalty(heat)
-	if hip_hits() > 0:
-		mp = ceili(mp / 2.0)
-	mp -= leg_actuator_hits() - hip_hits()
-	if legs_destroyed() > 0:
-		mp = 1 if legs_destroyed() == 1 else 0
-	return maxi(0, mp)
+	if legs_destroyed() >= 2:
+		return 0
+	var base := mini(def.walk_mp, 1) if legs_destroyed() == 1 \
+			else maxi(mini(def.walk_mp, 1), def.walk_mp - leg_actuator_hits())
+	return maxi(0, base - HeatScale.mp_penalty(heat))
 
 
 func run_mp() -> int:
-	if legs_destroyed() > 0:
-		return walk_mp()
 	return ceili(walk_mp() * 1.5)
 
 
@@ -153,6 +152,18 @@ func jump_mp() -> int:
 			if s.kind == CritSlot.Kind.JUMP_JET and (s.hit or is_location_destroyed(loc)):
 				lost += 1
 	return maxi(0, def.jump_mp - lost)
+
+
+## Working jump jets in the legs (they don't fire under water).
+func leg_jump_jets() -> int:
+	var n := 0
+	for loc in [Location.LL, Location.RL]:
+		if is_location_destroyed(loc):
+			continue
+		for s: CritSlot in slots[loc]:
+			if s.kind == CritSlot.Kind.JUMP_JET and not s.hit:
+				n += 1
+	return n
 
 
 ## Direction the torso (and arms) face: legs' facing plus any torso twist.

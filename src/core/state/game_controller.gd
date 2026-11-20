@@ -61,15 +61,9 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 		return false
 	var decl := FireOptions.declare(state, unit, shots)
 	state.declared_fire.append_array(decl)
+	IndirectFire.record(state, decl)
 	unit.has_fired = true
-	var summary := []
-	for d in decl:
-		var sh := {"weapon": unit.weapons[d["weapon_index"]].def.name,
-				"target_id": d["target_id"], "need": d["to_hit"].target()}
-		if d.has("target_hex"):
-			sh["target_hex"] = d["target_hex"]
-		summary.append(sh)
-	_emit(GameEvent.FIRE_DECLARED, {"unit_id": unit.id, "shots": summary})
+	_emit(GameEvent.FIRE_DECLARED, {"unit_id": unit.id, "shots": FireOptions.summary(unit, decl)})
 	_unit_done()
 	return true
 
@@ -136,13 +130,15 @@ func _unit_done() -> void:
 func _roll_initiative() -> void:
 	var r := Initiative.roll(dice, state.sides_alive())
 	state.initiative_rolls = r["rolls"]
-	state.side_order = Initiative.alternating_order(state, r["order"])
+	state.initiative_order.assign(r["order"])
 	_emit(GameEvent.INITIATIVE, r)
 
 
 func _begin_phase(p: int) -> void:
 	_set_phase(p)
 	state.order_index = 0
+	state.side_order = UnequalNumbers.order(UnequalNumbers.eligible(state, _done_in_phase),
+			state.initiative_order)
 	_advance_to_side_with_work()
 
 

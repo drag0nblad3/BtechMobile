@@ -21,7 +21,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 				u.psr_pending.append({"reason": "gyro destroyed", "auto_fall": true, "mod": 0})
 				return "gyro destroyed: falls and can't stand"
 			u.psr_pending.append({"reason": "gyro hit", "mod": 0})
-			return "gyro hit: +3 to piloting rolls"
+			return "gyro hit: +2 to piloting rolls"
 		CritSlot.Kind.COCKPIT:
 			u.pilot.hits = Pilot.MAX_HITS
 			Damage.destroy_unit(u, "cockpit destroyed")
@@ -30,7 +30,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			u.sensor_hits += 1
 			return "sensors hit: +2 to hit" if u.sensor_hits < 2 else "sensors destroyed: can't fire"
 		CritSlot.Kind.LIFE_SUPPORT:
-			return "life support hit: pilot hurt by heat 15+"
+			return "life support hit: pilot hurt at heat 10+ or under water"
 		CritSlot.Kind.ACTUATOR:
 			return _actuator(u, loc, slot)
 		CritSlot.Kind.WEAPON:
@@ -54,7 +54,6 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 static func _actuator(u: Unit, loc: int, slot: CritSlot) -> String:
 	var nice := slot.name.replace("_", " ")
 	if Location.is_leg(loc):
-		var mod := 0
-		u.psr_pending.append({"reason": "%s hit" % nice, "mod": mod})
+		u.psr_pending.append({"reason": "%s hit" % nice, "mod": 0, "leg": loc})
 		return "%s hit: slower, piloting roll" % nice
 	return "%s hit: arm weapons and punches less accurate" % nice

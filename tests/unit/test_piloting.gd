@@ -51,15 +51,15 @@ func test_stand_up_costs_mp() -> void:
 	check(not Psr.can_stand(u), "destroyed gyro")
 
 
-func test_shutdown_falls() -> void:
+func test_shutdown_doesnt_fall() -> void:
 	var u := mech("jenner_jr7d", 0, hex_at(1, 1))
 	var s := GameState.new(open_map(3, 3))
 	s.add_unit(u)
 	u.heat = 30  # 20 after 10 heat sinks
 	var dice := LoadedDice.new()
-	dice.queue_2d6(12)  # ammo explosion roll (4+) passes
-	dice.queue_2d6(2)   # shutdown roll (6+) fails
+	dice.queue_2d6(2)   # shutdown roll (6+) fails: shutdown comes first
+	dice.queue_2d6(12)  # ammo explosion roll passes
 	HeatPhase.run(s, dice, _emit)
 	check(u.shutdown, "shut down")
-	check(u.prone, "fell over")
+	check(not u.prone, "shutting down doesn't knock it over")
 	check(not u.can_act(), "can't act")

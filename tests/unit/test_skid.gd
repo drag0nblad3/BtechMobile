@@ -1,5 +1,5 @@
 extends TestCase
-## Skidding when a running 'Mech turns on pavement.
+## Skid helpers (kept for optional rules; the Core Rulebook move doesn't skid).
 
 var events: Array[GameEvent] = []
 
@@ -32,28 +32,14 @@ func test_find_and_modifier() -> void:
 	check_eq(Skid.modifier(9), 2)
 
 
-func test_failed_roll_slides_and_falls() -> void:
+func test_core_rules_moves_never_skid() -> void:
 	var s := _road()
 	var u := mech("hunchback_hbk4g", 0, hex_at(1, 7), 0, 1)
 	s.add_unit(u)
 	var dice := LoadedDice.new()
-	dice.queue_2d6(2)   # skid roll fails
-	dice.d6_queue.append(1)  # fall direction
-	dice.queue_2d6(7)   # fall damage location
-	var ok := MoveExecutor.run(s, dice, _emit, u, MoveOptions.key(hex_at(1, 3), 1), MoveMode.Kind.RUN, -1)
-	check(ok, "move accepted")
-	check_eq(u.coord, hex_at(1, 1), "slid 2 hexes past the turn")
-	check(u.prone, "fell")
-	var skids := events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.SKID)
-	check_eq(skids.size(), 1)
-	check(Explainer.text(skids[0], s, ExplainLevel.FULL).contains("pavement"), "explained")
-
-
-func test_passed_roll_turns_normally() -> void:
-	var s := _road()
-	var u := mech("hunchback_hbk4g", 0, hex_at(1, 7), 0, 1)
-	s.add_unit(u)
-	MoveExecutor.run(s, LoadedDice.new(), _emit, u, MoveOptions.key(hex_at(1, 3), 1), MoveMode.Kind.RUN, -1)
+	dice.queue_2d6(2)   # would fail a skid roll
+	MoveExecutor.run(s, dice, _emit, u, MoveOptions.key(hex_at(1, 3), 1), MoveMode.Kind.RUN, -1)
 	check_eq(u.coord, hex_at(1, 3))
 	check_eq(u.facing, 1)
 	check(not u.prone, "still standing")
+	check(events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.SKID).is_empty(), "no skid")

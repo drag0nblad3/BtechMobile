@@ -6,6 +6,7 @@ extends RefCounted
 
 var mods: Array[Dictionary] = []
 var impossible: String = ""
+var spotter_id: int = -1  ## Indirect fire: the friendly 'Mech spotting.
 
 
 func add(label: String, value: int, why: String = "") -> void:

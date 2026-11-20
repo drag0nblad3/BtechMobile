@@ -24,7 +24,10 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if not attacker.can_fire(w):
 		th.impossible = "%s can't fire" % w.def.name
 		return th
-	var arc_id := FiringArc.arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), c)
+	if ProneFire.blocked(attacker, w) != "":
+		th.impossible = ProneFire.blocked(attacker, w)
+		return th
+	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), c)
 	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
 		th.impossible = "The building is in your %s arc; %s can't point there" % [FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -65,7 +68,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	w.fired = true
 	attacker.heat_generated += w.def.heat
 	data["roll"] = dice.roll_2d6()
-	data["hit"] = data["roll"] >= th.target() and data["roll"] > 2 and tile != null and tile.building != null
+	data["hit"] = data["roll"] >= th.target() and tile != null and tile.building != null
 	var dmg := w.def.damage
 	if data["hit"] and w.def.is_cluster():
 		data["missiles"] = ClusterTable.hits(w.def.missiles, dice.roll_2d6())
