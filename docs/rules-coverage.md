@@ -94,3 +94,10 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 
 ## Pilots
 - ✅ 6 hits kill; consciousness roll after each hit (3, 5, 7, 10, 11); wake-up roll in End Phase.
+
+## Explanations (learning layer, not a rule)
+- ✅ Every event has log text at three levels: Full (reasons for each number, each reason
+  once per phase; phase intros once per battle), Light (numbers on one line), Off (outcomes).
+- ✅ Advice: move preview (defense gained vs own penalty and heat, walk-vs-run, rear arcs),
+  volley (expected damage, heat after the turn, which weapon to hold), best target,
+  punch vs kick (including the chance of falling after a missed kick).

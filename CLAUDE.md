@@ -32,12 +32,14 @@ Battle mode first; campaign layer later.
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick to-hit, damage), `PhysicalPhase` |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
+| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `DamageText`/`HeatText`/`PilotText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
 | `src/view/shaders/terrain.gdshader` | Triplanar noise terrain |
 | `src/view/units/` | `UnitView` (animation), `UnitsLayer`, `PlaceholderMech` |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
+| `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/battle_hud.gd` | On-screen buttons/labels; emits intent signals only |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput` |
 | `data/` | `terrain.json`, `weapons.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
@@ -60,5 +62,6 @@ Run tests + smoke run before every commit. CI runs both (`.github/workflows/ci.y
 - Coordinates: `Vector2i(q, r)` axial; move-search keys `Vector3i(q, r, facing)`.
 - Levels are integers; water hexes: `level` = surface, `floor_level()` = bottom.
 - Randomness only via the controller's `Dice` (seeded games replay identically).
+- Explanation text is our own wording; never paste rulebook text.
 - Mark unverified rules interpretations with `# TODO(rules): ...` and list them in rules-coverage.
 - Use Godot 4.5 APIs; no C# (experimental on Android).
