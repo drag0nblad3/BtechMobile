@@ -286,7 +286,7 @@ func _process(_delta: float) -> void:
 	var r := mech.gait_foot(mech.gait_phase + 0.5).x
 	info.text = "FPS %d  |  %s: %d / %d voxels  |  %.1f%% intact\nLeft %.2f  Right %.2f  |  %d mm voxels\n%s" % [
 		Engine.get_frames_per_second(), profiles[profile_index]["name"],
-		mech.remaining_voxels(), mech.initial_voxels(),
+		mech.remaining_voxels(), mech.initial_voxels,
 		100.0 * float(mech.remaining_voxels()) / maxf(1.0, float(mech.initial_voxels)),
 		l, r, roundi(VoxelPart.VOXEL_SIZE * 1000.0 / float(mech.parts["torso"].detail_scale)),
 		_last_hit]
