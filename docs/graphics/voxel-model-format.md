@@ -7,6 +7,41 @@ Examples: `data/voxels/hunchback.json` (normal legs) and `data/voxels/catapult.j
 (reverse-jointed legs, missile racks, jump jets). Code: `src/view/vox/`. Test scene: launcher →
 **Claude Voxel Test** (`scenes/vx_showcase.tscn`).
 
+## Collaboration with the procedural Voxel Mech Lab
+
+Both model systems belong to this repository; **any contributor or coding
+agent may modify either**. This JSON format belongs to the standalone
+**Claude Voxel Test** (`src/view/vox/`), while the higher-density procedural
+lab uses `src/view/units/voxel_*.gd` and
+`data/graphics/voxel_chassis.json`. The pipelines are deliberately separate
+until the battle-unit integration is implemented.
+
+Shared geometry conventions:
+- Prefer **real 3D openings** over decorative dark squares. The Catapult's
+  LRM-15 racks now have fifteen cutout tubes and fifteen aligned muzzle
+  coordinates on **each** arm, brought over from the procedural lab's
+  higher-detail Catapult. `VxVolley.MISSILES` is fifteen per rack.
+- Mirror paired parts rather than copying two divergent versions. Confirm
+  both arrays of muzzle positions match actual open cells, with clearance
+  from adjacent torso sections.
+- Use `armor` and `structure` material roles. The lab's
+  `VoxelPart.MATERIAL_ROLES` and `role_counts()` follow the same vocabulary;
+  neither system should make official game-rule decisions from those counts.
+- **Do not copy raw cell positions** between the builds: Claude's files use
+  a single global authoring grid with per-file voxel size; the lab authors
+  local part grids and subdivides selected parts to 37.5 or 25 mm.
+
+**Gameplay authority stays in `src/core/`.** In this format, `VxDamage`
+renders the `Unit`'s armor and structure state; in the procedural lab,
+`VoxelMech.hit_part` is a visual/stress-test interaction, not a replacement
+for Total Warfare damage rolls. Shared visual conventions can be edited
+without changing the rules engine. To change actual combat rules, add an
+isolated `src/core` change with dedicated tests and a rules-coverage update.
+
+Test both pipelines after cross-edits:
+`godot --headless -s tests/run_tests.gd` and the respective lab/showcase
+smoke tests. No APK build or screenshots unless specifically requested.
+
 ## The grid
 - One shared grid for the whole 'Mech: **x right, y up, -z front**. A cell `[x, y, z]`
   fills the cube from `(x, y, z)` to `(x+1, y+1, z+1)`.
