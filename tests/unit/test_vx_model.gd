@@ -109,6 +109,12 @@ func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
 		check_eq(unique.size(), 15, "all fifteen launch tubes must be distinct")
 	var left: Dictionary = m.part("la")["cells"]
 	var right: Dictionary = m.part("ra")["cells"]
+	var left_torso: Dictionary = m.part("lt")["cells"]
+	var right_torso: Dictionary = m.part("rt")["cells"]
+	for c: Vector3i in left:
+		check(not left_torso.has(c), "left pod should clear its parent torso")
+	for c: Vector3i in right:
+		check(not right_torso.has(c), "mirrored right pod should clear its parent")
 	check_eq(left.size(), right.size(), "both racks should share the same shell")
 	for c: Vector3i in left:
 		check(right.has(Vector3i(-c.x - 1, c.y, c.z)),
