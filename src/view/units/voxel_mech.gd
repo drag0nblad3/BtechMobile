@@ -16,6 +16,8 @@ var arms: Array = []
 var walking := false
 var gait_phase := 0.0
 var travel_remaining := 0.0
+var initial_voxels := 0
+var last_impact_seed := -1
 var _chassis: Node3D
 var _upper: Node3D
 var _profile: Dictionary = {}
@@ -52,6 +54,7 @@ func build() -> void:
 	hocks = rig["hocks"]
 	ankles = rig["ankles"]
 	arms = rig["arms"]
+	initial_voxels = remaining_voxels()
 
 
 func is_digitigrade() -> bool:
@@ -180,11 +183,14 @@ func shoot(origin: Vector3, direction: Vector3, radius: float = 0.23) -> Diction
 	return {"part": name_hit, "point": closest["point"], "removed": removed}
 
 
-func hit_part(key: String, point: Vector3, radius: float = 0.23) -> int:
+## seed=-1 gives a fresh random crater; explicit seeds enable deterministic replay.
+func hit_part(key: String, point: Vector3, radius: float = 0.23,
+		seed: int = -1) -> int:
 	if not parts.has(key):
 		return 0
 	var part: VoxelPart = parts[key]
-	var removed := part.erase_ball(point, radius)
+	last_impact_seed = seed if seed >= 0 else randi()
+	var removed := part.erase_crater(point, radius, last_impact_seed)
 	var snapped := false
 	if removed > 0 and sockets.has(key):
 		if part.joint_fraction() < 0.40 or part.cells.size() < 0.30 * part._original_count:
@@ -229,5 +235,6 @@ func _exit_tree() -> void:
 func remaining_voxels() -> int:
 	var count := 0
 	for part: VoxelPart in parts.values():
-		count += part.cells.size()
+		if is_ancestor_of(part):
+			count += part.cells.size()
 	return count
