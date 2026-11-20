@@ -191,27 +191,56 @@ func erase_irregular_local_ball(center: Vector3, radius: float, seed: int) -> in
 	return removed
 
 
-## Uses exact occupied cubes, not the overall component bounding box.
+## 3D grid traversal: visits only cells along the ray, instead of testing
+## every occupied voxel. Critical for higher-density mobile mech geometry.
 func pick_ray(origin_world: Vector3, direction_world: Vector3) -> Dictionary:
+	if cells.is_empty():
+		return {}
+	if _local_bounds.size == Vector3.ZERO:
+		_update_bounds()
 	var inverse := global_transform.affine_inverse()
 	var origin := inverse * origin_world
 	var direction := (inverse.basis * direction_world).normalized()
-	if _local_bounds.size != Vector3.ZERO and not _local_bounds.has_point(origin):
-		if _local_bounds.intersects_ray(origin, direction) == null:
+	if direction.length_squared() <= 0.0:
+		return {}
+	var distance := 0.0
+	if not _local_bounds.has_point(origin):
+		var entry: Variant = _local_bounds.intersects_ray(origin, direction)
+		if entry == null:
 			return {}
-	var best := INF
-	var result: Dictionary = {}
-	for cell: Vector3i in cells:
-		var cube := AABB(Vector3(cell) * voxel_size, Vector3.ONE * voxel_size)
-		var intersection: Variant = cube.intersects_ray(origin, direction)
-		if intersection == null:
-			continue
-		var hit: Vector3 = intersection
-		var distance := (global_transform * hit).distance_to(origin_world)
-		if (hit - origin).dot(direction) >= 0.0 and distance < best:
-			best = distance
-			result = {"point": global_transform * hit, "distance": distance, "cell": cell}
-	return result
+		var entry_point: Vector3 = entry
+		distance = maxf(0.0, (entry_point - origin).dot(direction))
+	# Nudge just past grid boundaries for robust negative-axis traversal.
+	var nudge := voxel_size * 0.0001
+	var probe := origin + direction * (distance + nudge)
+	for step in 1024:
+		if not _local_bounds.has_point(probe):
+			return {}
+		var cell := Vector3i(floori(probe.x / voxel_size),
+				floori(probe.y / voxel_size), floori(probe.z / voxel_size))
+		if cells.has(cell):
+			var point := origin + direction * distance
+			var world_point := global_transform * point
+			return {"point": world_point, "cell": cell,
+					"distance": world_point.distance_to(origin_world)}
+		var tx := INF
+		var ty := INF
+		var tz := INF
+		if absf(direction.x) > 0.0000001:
+			var border_x := (cell.x + (1 if direction.x > 0.0 else 0)) * voxel_size
+			tx = maxf(0.0, (border_x - probe.x) / direction.x)
+		if absf(direction.y) > 0.0000001:
+			var border_y := (cell.y + (1 if direction.y > 0.0 else 0)) * voxel_size
+			ty = maxf(0.0, (border_y - probe.y) / direction.y)
+		if absf(direction.z) > 0.0000001:
+			var border_z := (cell.z + (1 if direction.z > 0.0 else 0)) * voxel_size
+			tz = maxf(0.0, (border_z - probe.z) / direction.z)
+		var advance := minf(tx, minf(ty, tz))
+		if advance == INF:
+			return {}
+		distance += advance + nudge
+		probe = origin + direction * (distance + nudge)
+	return {}
 
 
 func rebuild() -> void:
