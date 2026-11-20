@@ -35,8 +35,8 @@ func test_high_detail_jenner_counts_real_meshless_geometry() -> void:
 	check(high < n * 4, "mixed-detail Jenner must remain within a bounded budget")
 	check(is_equal_approx(detail.parts["torso"].voxel_size, 0.025),
 			"Jenner cockpit now uses genuinely sculpted 25 mm cells")
-	check(is_equal_approx(detail.parts["left_arm"].voxel_size, 0.0375),
-			"Jenner laser pods retain 37.5 mm muzzle detailing")
+	check(is_equal_approx(detail.parts["left_arm"].voxel_size, 0.025),
+			"Jenner's paired laser apertures are now modeled at 25 mm")
 	check_eq(detail.remaining_voxels(), high, "catalog must count actual occupied voxels")
 	check(not detail.parts["torso"].has_node("Surface"),
 			"catalog counting should never build GPU meshes")
