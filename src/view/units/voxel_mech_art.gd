@@ -48,7 +48,8 @@ static func torso(part: VoxelPart, shape: String) -> void:
 	part.seal()
 
 
-static func arm(part: VoxelPart, style: String, side: int) -> void:
+static func arm(part: VoxelPart, style: String, side: int,
+		shape: String = "") -> void:
 	match style:
 		"heavy":
 			part.armor_box(Vector3i(-4, -9, -4), Vector3i(4, 1, 4), 0, 1)
@@ -71,7 +72,6 @@ static func arm(part: VoxelPart, style: String, side: int) -> void:
 			part.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 1, 4), 4)
 			part.fill_box(Vector3i(-2, -7, -11), Vector3i(2, -4, -4), 1)
 			part.fill_box(Vector3i(-3, -7, -11), Vector3i(3, -5, -10), 3)
-	var shape := "prototype" if style == "standard" and side == -1 else ("hunchback" if style == "cannon" else ("wolverine" if style == "wolverine_gun" else ("prototype" if style == "training" else "")))
 	if not shape.is_empty():
 		VoxelRosterSculpt.arm(part, shape, side)
 	part.seal(-2 if style != "missile_pods" else 1)
