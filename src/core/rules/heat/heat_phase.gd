@@ -13,7 +13,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 			continue
 		var before := u.heat
 		var gained := u.heat_generated + ENGINE_HIT_HEAT * u.engine_hits
-		var sinks := u.working_heat_sinks()
+		var sinks := u.working_heat_sinks() + water_cooling(state.map.get_tile(u.coord), u)
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
 				"sinks": sinks, "heat": u.heat, "effects": HeatScale.effects_text(u.heat)})
@@ -22,6 +22,17 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		_ammo_check(state, dice, emit, u)
 		if not u.destroyed:
 			_shutdown_check(state, dice, emit, u)
+
+
+## Extra heat removed by standing in water: depth 1 +2, depth 2+ +4 (max 6).
+## TODO(rules): really depends on heat sinks in submerged locations.
+static func water_cooling(tile: MapTile, u: Unit = null) -> int:
+	if tile == null or not tile.is_water():
+		return 0
+	var extra := 2 if tile.depth == 1 and (u == null or not u.prone) else 4
+	if u != null:
+		extra = mini(extra, u.working_heat_sinks())
+	return mini(extra, 6)
 
 
 static func _ammo_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:

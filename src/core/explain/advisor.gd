@@ -28,11 +28,14 @@ static func move(state: GameState, u: Unit, mode: int, key: Vector3i, opts: Move
 	var cover := LineOfSight.woods_value(tile) if tile else 0
 	if tile and tile.is_water() and tile.depth == 1:
 		cover += 1
+	var cool := HeatPhase.water_cooling(tile, u) if tile else 0
 	if level == ExplainLevel.LIGHT:
 		return "Your shots +%d · enemy shots +%d · heat +%d" % [own, tm + cover, heat]
 	var t := "Moving %d hexes: enemies get +%d to hit you" % [hexes, tm]
 	t += (", +%d more from cover here." % cover) if cover > 0 else "."
 	t += " Your own shots get +%d and you build %d heat." % [own, heat]
+	if cool > 0:
+		t += " Standing in water here sheds %d extra heat." % cool
 	if mode == MoveMode.Kind.RUN and moved:
 		var walk_tm := ToHitCalc.target_movement_mod(mini(hexes, u.walk_mp()))
 		if tm <= walk_tm:

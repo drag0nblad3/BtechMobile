@@ -1,0 +1,22 @@
+{
+ "name": "Dense Forest",
+ "rows": [
+  "c0 c0 c0 r0 c0 c0 c0 c0 c0 c0 c0 c0 c0 c0 c0 c0",
+  "L0 r0 L0 c0 H0 L0 r0 c0 H0 L0 c0 H0 c0 H0 c0 H0",
+  "H0 L0 H0 c0 L0 c0 L0 H0 c0 H0 c0 L0 r0 L0 H0 c0",
+  "L0 H0 c0 c0 H0 H0 c0 c0 H0 c0 c0 L0 H0 c0 c0 L0",
+  "H0 c0 c0 r0 L0 H0 H0 H0 c0 c0 L0 L0 H0 H0 H0 r0",
+  "L0 L0 L0 c0 L0 L0 L0 c0 L0 L0 c0 L0 L0 c0 c0 L0",
+  "H0 r0 H0 c0 L0 c0 r0 H0 H0 H0 L0 c0 c0 H0 H0 H0",
+  "L0 c0 H0 c0 c0 H0 L0 c0 w0d1 H0 L0 c0 H0 L0 c0 H0",
+  "H0 L0 c0 r0 c0 H0 L0 w0d1 w0d2 r0 L0 c0 H0 L0 H0 c0",
+  "L0 H0 L0 c0 c0 L0 c0 w0d1 H0 c0 H0 r0 L0 r0 c0 H0",
+  "H0 c0 H0 c0 c0 c0 H0 H0 c0 L0 H0 c0 c0 L0 H0 c0",
+  "L0 H0 H0 c0 r0 c0 c0 c0 L0 L0 H0 H0 c0 c0 c0 L0",
+  "H0 c0 r0 r0 c0 r0 H0 H0 r0 H0 H0 r0 H0 H0 H0 H0",
+  "L0 L0 c0 c0 H0 H0 L0 c0 L0 c0 r0 H0 L0 L0 c0 c0",
+  "H0 L0 c0 c0 H0 L0 c0 H0 L0 c0 H0 L0 c0 r0 H0 L0",
+  "L0 r0 L0 c0 H0 L0 r0 c0 H0 L0 c0 H0 c0 H0 c0 H0",
+  "c0 c0 c0 r0 c0 c0 c0 c0 c0 c0 c0 c0 c0 c0 c0 c0"
+ ]
+}

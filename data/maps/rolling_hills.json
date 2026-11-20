@@ -1,0 +1,22 @@
+{
+ "name": "Rolling Hills",
+ "rows": [
+  "c1 c1 c1 c1 c1 c1 c1 c1 c0 c0 c0 c1 c1 c1 c1 c1",
+  "c1 c1 c1 c1 c1 c1 c1 c0 c0 c0 c0 c0 c1 c1 c1 c1",
+  "c2 r3 c3 c3 c2 c2 c1 c0 H0 c0 c0 c0 c1 c2 c2 c2",
+  "c2 c2 c2 r2 c2 c1 c0 c0 c0 c0 H0 c0 c1 c2 r3 c3",
+  "c1 c2 c2 c2 c2 c1 c0 c0 c0 c0 c0 c1 c2 c3 L3 c3",
+  "c1 c1 c2 c2 c2 c1 c0 c0 c0 c0 c0 c1 c2 c3 c4 c4",
+  "c0 c1 c2 c2 c2 H1 c1 c0 c0 c0 c1 c2 L3 L4 c4 c4",
+  "c0 c1 c2 c2 c2 c2 c1 H1 c1 c1 c1 r2 c3 c4 L4 L4",
+  "c1 c2 r2 c3 c3 c2 c2 c1 c1 H1 c2 c2 c3 r4 c4 c4",
+  "H1 c2 L3 c3 r3 c3 c2 c2 c1 c1 c2 c2 c3 L3 c4 r3",
+  "c2 c3 c4 c4 L4 c3 r3 c2 c1 c1 c2 c2 c3 c3 c3 L3",
+  "c2 L3 c4 c4 c4 c3 c2 c2 c1 c1 c1 c1 c2 c2 c2 c2",
+  "c3 c4 L4 L4 c4 c3 c2 c1 c1 c0 c0 c1 c1 c2 c2 c2",
+  "c3 r3 c4 c4 L3 L3 c2 c1 H0 c0 c0 c0 c1 c2 c2 c2",
+  "c3 L3 c3 r3 c3 c2 c1 c0 c0 c0 H0 c0 c1 c1 r2 c2",
+  "c1 c1 c1 c1 c1 c1 c0 c0 c0 c0 c0 c0 c1 c1 c1 c1",
+  "c1 c1 c1 c1 c1 c1 c0 c0 c0 c0 c0 c0 c1 c1 c1 c1"
+ ]
+}
