@@ -7,6 +7,8 @@ var profiles: Array[Dictionary] = []
 var profile_index := 0
 var stability_slider: HSlider
 var chassis_selector: OptionButton
+var catalog_label: Label
+var model_counts: Dictionary = {}
 var stability_label: Label
 var camera: Camera3D
 var info: Label
@@ -25,6 +27,7 @@ func _ready() -> void:
 	make_camera()
 	make_hud()
 	mech.start_walk()
+	call_deferred("_populate_model_counts")
 
 
 func _spawn_mech() -> void:
@@ -34,6 +37,41 @@ func _spawn_mech() -> void:
 	mech.upper_stability = stability_slider.value if stability_slider else 0.90
 	add_child(mech)
 	mech.struck.connect(_on_struck)
+	model_counts[mech.profile_id] = mech.initial_voxels
+	_refresh_model_counts()
+
+
+## Compute exact mesh-free geometry totals, one model per frame so the lab
+## does not load six extra mech meshes at once on Android.
+func _populate_model_counts() -> void:
+	for profile in profiles:
+		var id := str(profile["id"])
+		if model_counts.has(id):
+			continue
+		var probe := VoxelMech.new()
+		probe.profile_id = id
+		probe.generate_mesh = false
+		probe.build()
+		model_counts[id] = probe.initial_voxels
+		probe.free()
+		_refresh_model_counts()
+		await get_tree().process_frame
+		if not is_inside_tree():
+			return
+
+
+func _refresh_model_counts() -> void:
+	if chassis_selector == null or catalog_label == null:
+		return
+	var names: Array[String] = []
+	for i in profiles.size():
+		var profile: Dictionary = profiles[i]
+		var id := str(profile["id"])
+		var number := str(model_counts[id]) if model_counts.has(id) else "…"
+		chassis_selector.set_item_text(i, "%s · %s voxels" % [profile["name"], number])
+		names.append("%s %s" % [profile["name"], number])
+	catalog_label.text = "Model voxel counts (intact):\n" + "   |   ".join(names.slice(0, 3)) \
+			+ "\n" + "   |   ".join(names.slice(3, names.size()))
 
 
 func make_arena() -> void:
@@ -130,6 +168,10 @@ func make_hud() -> void:
 	info = Label.new()
 	info.add_theme_font_size_override("font_size", 14)
 	column.add_child(info)
+	catalog_label = Label.new()
+	catalog_label.name = "ModelVoxelCounts"
+	catalog_label.add_theme_font_size_override("font_size", 12)
+	column.add_child(catalog_label)
 	var tuning := HBoxContainer.new()
 	column.add_child(tuning)
 	var selector := OptionButton.new()
@@ -154,6 +196,7 @@ func make_hud() -> void:
 	stability_slider.value = 0.90
 	stability_slider.value_changed.connect(_set_stability)
 	tuning.add_child(stability_slider)
+	_refresh_model_counts()
 	var first := HBoxContainer.new()
 	column.add_child(first)
 	add_button(first, "WALK TEST", func(): mech.start_walk())
@@ -234,15 +277,19 @@ func reset_lab() -> void:
 
 
 func _on_struck(part_name: String, removed: int, detached: bool) -> void:
-	_last_hit = "%s: %d voxels removed%s" % [part_name, removed,
-		" — LIMB DETACHED" if detached else ""]
+	_last_hit = "%s: %d voxels removed (crater seed %d)%s" % [part_name,
+		removed, mech.last_impact_seed, " — LIMB DETACHED" if detached else ""]
 
 
 func _process(_delta: float) -> void:
 	var l := mech.gait_foot(mech.gait_phase).x
 	var r := mech.gait_foot(mech.gait_phase + 0.5).x
-	info.text = "FPS %d  |  Voxels %d  |  Left %.2f  Right %.2f\n%s" % [
-		Engine.get_frames_per_second(), mech.remaining_voxels(), l, r, _last_hit]
+	info.text = "FPS %d  |  %s: %d / %d voxels  |  %.1f%% intact\nLeft %.2f  Right %.2f  |  %d mm voxels\n%s" % [
+		Engine.get_frames_per_second(), profiles[profile_index]["name"],
+		mech.remaining_voxels(), mech.initial_voxels(),
+		100.0 * float(mech.remaining_voxels()) / maxf(1.0, float(mech.initial_voxels)),
+		l, r, roundi(VoxelPart.VOXEL_SIZE * 1000.0 / float(mech.parts["torso"].detail_scale)),
+		_last_hit]
 
 
 func _unhandled_input(event: InputEvent) -> void:
