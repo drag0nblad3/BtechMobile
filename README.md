@@ -20,7 +20,9 @@ paths with facing, and move. Sides alternate by initiative. Combat is next.
    Android SDK, JDK 17 and a debug keystore in *Editor Settings → Export → Android*, then
    use *Project → Export* or the one-click deploy button with a phone plugged in. To get an
    APK without a local setup, run the **Android APK** workflow by hand from the Actions tab.
-   See `docs/PLANNING.md` for details.
+   See `docs/PLANNING.md` for details. **Before the first CI APK build, set up
+   the persistent debug signing secrets** described in [`docs/android-signing.md`](docs/android-signing.md).
+   The builder now refuses to generate an APK if those secrets are missing.
 
 ## Tests
 ```sh

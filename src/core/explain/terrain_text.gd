@@ -74,6 +74,11 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 			if level == ExplainLevel.FULL:
 				t += " Up here it sees and shoots from higher ground, but it can only leave by jumping or crossing to another roof, and a roof too weak for it may give way."
 			return t
+		"fire":
+			var t := "  The %s at %s catches fire!" % [bname, where]
+			if level == ExplainLevel.FULL:
+				t += " It burns for the rest of the battle: moving through costs 2 heat a hex, ending a turn in it 5, and its smoke hides 'Mechs like light woods."
+			return t
 		"careful":
 			var t := "  %s eases into the %s at %s." % [who, bname, where]
 			if level == ExplainLevel.FULL:

@@ -82,3 +82,5 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	emit.call(GameEvent.BUILDING, {"kind": "shot", "coord": c, "name": tile.building.type.name,
 			"damage": dmg, "unit_id": attacker.id})
 	BuildingDamage.add(state, attacker.id, c, dmg)
+	if w.def.heat_damage:
+		Fire.add_heat(state, c, w.def.damage)

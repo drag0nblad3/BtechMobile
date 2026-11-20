@@ -100,6 +100,8 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 	var tw := LineOfSight.woods_value(tile) if tile else 0
 	if tw > 0:
 		th.add("target in woods", tw, "The target is hiding in %s." % tile.terrain.name.to_lower())
+	if Fire.smoke_mod(state.map, target, tw) > 0:
+		th.add("target in smoke", 1, "Smoke from the fire in its hex hides the target: +1, like light woods.")
 	if th.legs_only:
 		th.add("legs only", 0, "Under water only the target's legs can be hit; roll on the Kick table, no partial cover.")
 	elif in_partial_cover(state.map, target):

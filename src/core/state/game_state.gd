@@ -26,6 +26,8 @@ var doomed_buildings: Array[Vector2i] = []
 ## Optional Initiative Die rule and the dice in play: side -> bonus.
 var initiative_die_rule := false
 var initiative_die: Dictionary = {}
+## Heat dealt to hexes this phase (Fire): Vector2i -> int.
+var fire_heat: Dictionary = {}
 ## Spotters for indirect fire: unit id -> {target, turn}.
 var spotting: Dictionary = {}
 var game_over: bool = false
