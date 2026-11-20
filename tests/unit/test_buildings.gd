@@ -153,3 +153,16 @@ func test_shoved_into_building_gets_destroy_check() -> void:
 	var checks := events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.BUILDING and e.data["kind"] == "destroy_check")
 	check_eq(checks.size(), 1, "an immediate destroy check")
 	check(s.map.get_tile(hex_at(2, 2)).building != null, "it holds")
+
+
+func test_smash_in_skips_roll_and_risks_collapse() -> void:
+	var s := _state("medium", 3)
+	var u := mech("griffin_grf1n", 0, hex_at(2, 2), 0, 1)
+	s.add_unit(u)
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)   # destroy check fails (needs 9): the building holds
+	BuildingRules.enter(s, dice, _emit, u, hex_at(2, 2), false, true)
+	check(not events.any(func(e: GameEvent) -> bool: return e.type == GameEvent.PSR), "no entry roll")
+	var kinds := events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.BUILDING).map(func(e: GameEvent) -> String: return e.data["kind"])
+	check(kinds.has("smash") and kinds.has("destroy_check"), "smash, then a destroy check")
+	check(s.map.get_tile(hex_at(2, 2)).building != null, "it holds")

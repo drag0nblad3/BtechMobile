@@ -62,6 +62,11 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 	match d["kind"]:
 		"flattened":
 			return "%s walks straight through the %s at %s, flattening it." % [who, bname, where]
+		"smash":
+			var t := "  %s deliberately crashes through the walls of the %s at %s." % [who, bname, where]
+			if level == ExplainLevel.FULL:
+				t += " Smashing in on purpose skips the entry roll and tests whether the building comes down."
+			return t
 		"entry_failed":
 			var t := "  %s smashes through the walls clumsily." % who
 			if level == ExplainLevel.FULL:
