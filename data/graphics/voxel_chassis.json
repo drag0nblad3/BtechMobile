@@ -10,9 +10,7 @@
       "arm_width": 1.03,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 3,
-        "left_arm": 3,
-        "right_arm": 3
+        "Torso": 3
       }
     },
     {
@@ -38,9 +36,7 @@
       "arm_width": 1.02,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 3,
-        "left_arm": 3,
-        "right_arm": 3
+        "Torso": 3
       }
     },
     {
@@ -53,9 +49,7 @@
       "arm_width": 0.98,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 3,
-        "left_arm": 3,
-        "right_arm": 3
+        "Torso": 3
       }
     },
     {
@@ -68,7 +62,9 @@
       "arm_width": 0.82,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 3
+        "Torso": 3,
+        "left_arm": 3,
+        "right_arm": 3
       }
     },
     {
