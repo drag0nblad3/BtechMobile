@@ -49,6 +49,7 @@ func test_fine_jenner_has_real_micro_cuts_and_paint() -> void:
 	part.detail_style = "jenner"
 	part.mesh_enabled = false
 	VoxelJennerArt.torso(part)
+	part.seal()
 	check_eq(part.cells.get(Vector3i(0, 4, -30)), 1,
 			"fine cockpit center seam should be a single dark voxel")
 	check(not part.cells.has(Vector3i(-2, 1, -42)),
