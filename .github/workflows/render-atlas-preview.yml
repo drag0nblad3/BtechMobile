@@ -1,0 +1,51 @@
+name: Atlas model render preview
+on:
+  push:
+    branches:
+      - preview/atlas-sculpt-nov20
+    paths:
+      - tools/capture_atlas_preview.gd
+      - .github/workflows/render-atlas-preview.yml
+permissions:
+  contents: write
+jobs:
+  atlas-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import scenes and scripts
+        run: godot --headless --import
+      - name: Render original Atlas voxel model, four angles
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/atlas-preview
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x800 \
+            -s tools/capture_atlas_preview.gd -- /tmp/atlas-preview 2>&1 | tee atlas-render.log
+          [ "$(grep -c '^ATLAS_PREVIEW|' atlas-render.log)" -eq 4 ]
+          test -s /tmp/atlas-preview/atlas-three-quarter.png
+          test -s /tmp/atlas-preview/atlas-front.png
+          test -s /tmp/atlas-preview/atlas-side.png
+          test -s /tmp/atlas-preview/atlas-rear.png
+          ! grep -E 'SCRIPT ERROR|Parse Error' atlas-render.log
+      - name: Upload full-resolution actual render artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-voxel-model-four-angles
+          path: /tmp/atlas-preview/*.png
+      - name: Publish previews to the preview-only branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for filename in atlas-three-quarter atlas-front atlas-side atlas-rear; do
+            gh api -X PUT "repos/${GITHUB_REPOSITORY}/contents/docs/previews/${filename}.png" \
+              -f message="Capture actual Atlas voxel geometry: ${filename}" \
+              -f branch="${GITHUB_REF_NAME}" \
+              -f content="$(base64 -w 0 /tmp/atlas-preview/${filename}.png)" \
+              >/dev/null
+          done
