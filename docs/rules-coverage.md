@@ -113,15 +113,16 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ⬜ Clubs, physical weapons.
 
 ## Buildings
-- ✅ Classes light/medium/heavy/hardened (CF 15/40/90/120), +1/+2/+3/+4 MP to enter, height in levels.
-- 🟡 Entering: a 'Mech heavier than the remaining CF collapses it and stops there; otherwise a
-  piloting roll (+0/+1/+2/+5), failure = CF/10 damage — `TODO(rules)`: verify both.
-- 🟡 Hits on a 'Mech inside: walls soak CF/10, building takes the whole hit — `TODO(rules)`.
-- 🟡 Collapse: hex becomes rubble, the 'Mech inside falls from the roof height — `TODO(rules)`.
+- ✅ Classes (p. 131): civilian, light, medium, heavy, hardened with Threshold 8/10/14/16 and Destroy Check 7+/9+/10+/11+; height in levels; every building hex +1 MP (errata).
+- ✅ Forced entry (p. 132): only heavy enough 'Mechs (medium buildings: medium+, heavy: heavy+, hardened: assault); piloting roll at +1 per hex; failure doesn't fall but forces a Destroy Check, and a destroyed hex comes down on the 'Mech at once.
+- ✅ Civilian buildings: a 'Mech walking or jumping in flattens them (jumps ignore their height); any damage destroys them; rubble only if 4+ levels tall.
+- ✅ Destroy Checks (p. 135): each attacker's damage to a hex is added up; at or over the Threshold it rolls 2D6 (+1 at 21-30 damage, +1 per further 10) once its attacks are done; damage is then forgotten. Hexes destroyed in an attack phase come down at its end.
+- ✅ Targets inside (p. 136): +2 if the building is at least as tall as the 'Mech (2 standing, 1 prone); walls don't soak damage; misses don't hit the building. A standing 'Mech in a level 1 building has partial cover: +1, and leg hits (and Kick table hits, but not charges) strike the building.
+- ✅ Collapse (pp. 136-137): rubble; a 'Mech inside takes half the Threshold per building level above it, 5-point groups from the front. No fall.
+- ✅ Shooting buildings (p. 135): -4, from the next hex always hits, cluster weapons hit with every missile.
 - ✅ Buildings block line of sight like a hill as tall as the roof.
-- 🟡 Shooting buildings (`BuildingFire`): tap a building in the weapon phase; -4 to hit, each hit lowers CF, 0 CF collapses it — `TODO(rules)`: verify -4, no secondary-target cost, 'Mechs inside unhurt until collapse.
-- ⬜ Physical attacks on buildings, standing on roofs, jumping onto buildings, charges and
-  displacement into buildings, basements.
+- 🟡 `TODO(rules)`: careful entry, roofs (landing, support limits), involuntary entry by displacement (Destroy Check), DFA into a level 1 building, partial cover from adjacent building hexes (with the LOS work), fire, Castles Brian.
+- ⬜ Physical attacks on buildings, bridges as structures, basements.
 
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
@@ -145,4 +146,4 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
 - ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.
-- ⬜ Buildings, bridges as structures, fire and smoke.
+- ⬜ Bridges as structures, fire and smoke.

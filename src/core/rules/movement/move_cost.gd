@@ -4,7 +4,8 @@ extends RefCounted
 ## Returns PROHIBITED when the move is illegal.
 ## Water depth works as a level change (a water hex's level is its bottom),
 ## plus +1 MP for depth 1 and +2 for depth 2+. Running in is allowed but
-## costs a piloting roll (MovePsr).
+## costs a piloting roll (MovePsr). Building hexes cost +1; who may force
+## their way in is MovePlanner's check (it knows the 'Mech).
 
 const PROHIBITED := -1
 const MAX_LEVEL_CHANGE := 2
@@ -22,7 +23,7 @@ static func enter_cost(map: BattleMap, from: Vector2i, to: Vector2i, _mode: int,
 		return PROHIBITED
 	var cost := 1 + dst.terrain.move_cost + change
 	if dst.building != null:
-		cost += dst.building.type.move_cost
+		cost += 1  # every building hex (errata)
 	if dst.is_water():
 		cost += 1 if dst.depth == 1 else 2
 	return cost

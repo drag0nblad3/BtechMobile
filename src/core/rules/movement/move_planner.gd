@@ -97,6 +97,9 @@ static func _successors(state: GameState, unit: Unit, k: Vector3i, mode: int) ->
 
 ## Units may move through friendly units but not enemy units.
 static func _can_pass(state: GameState, unit: Unit, c: Vector2i) -> bool:
+	var tile := state.map.get_tile(c)
+	if tile != null and tile.building != null and not tile.building.admits(unit.def.tonnage):
+		return false  # too light to force its way into this class (p. 132)
 	var other := state.unit_at(c)
 	return other == null or other == unit or other.side == unit.side
 

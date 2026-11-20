@@ -23,11 +23,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		return false
 	if target == opts.minimum_move:
 		charge_target_id = -1  # minimum movement can't charge (p. 49)
-	var entry := BuildingRules.plan_entry(state.map, unit, opts.path_to(target), mode == MoveMode.Kind.JUMP)
-	var path: Array[Vector3i] = entry["path"]
-	if entry["collapse"]:
-		target = path[path.size() - 1]
-		charge_target_id = -1
+	var path: Array[Vector3i] = opts.path_to(target)
 	var from := opts.start_key()
 	var moved: bool = int(opts.cost[target]) > 0 or target != from
 	if unit.prone and moved and not Psr.try_stand(state, dice, emit, unit):
@@ -53,9 +49,8 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
 	if not fall.is_empty():
 		Fall.fall(state, dice, emit, unit, int(fall["levels"]), fall["reason"])
-	for c: Vector2i in entry["entered"]:
-		if _passes(path, c):
-			BuildingRules.enter(state, dice, emit, unit, c)
+	for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
+		BuildingRules.enter(state, dice, emit, unit, c)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved)
 	Psr.resolve_pending(state, dice, emit, unit)
@@ -77,10 +72,3 @@ static func _action_rolls(state: GameState, dice: Dice, emit: Callable, unit: Un
 		var keep: int = r["index"] + (0 if r["back"] else 1)
 		return {"end": keep, "levels": r["levels"], "reason": r["reason"]}
 	return {}
-
-
-static func _passes(path: Array[Vector3i], c: Vector2i) -> bool:
-	for k in path:
-		if MoveOptions.coord_of(k) == c:
-			return true
-	return false

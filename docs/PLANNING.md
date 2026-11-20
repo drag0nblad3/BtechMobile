@@ -109,8 +109,8 @@ against the book first:
 6. Unequal unit counts in alternating movement.
 7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE or
    pilot-skill multiplier). Our numbers land within about 10% of published values.
-8. Buildings: collapse when a heavier 'Mech enters, wall absorption (CF/10), entry PSR
-   modifiers, collapse damage as a fall.
+8. Buildings follow the Core Rulebook's Threshold / Destroy Check system; careful
+   entry, roofs and building fires are not modeled yet.
 9. 'Mech designs (31 in `data/units/`) are written from general knowledge: check armor
    split, slot placement and ammo locations against the technical readouts. The Core
    Rulebook has no designs or construction rules. Weapon tons, slots and ranges match its

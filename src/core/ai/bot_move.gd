@@ -35,9 +35,7 @@ static func _candidates(state: GameState, u: Unit, opts: MoveOptions) -> Array[V
 				if FiringArc.wedge(c, k.z, enemy.coord) == 0:
 					pick = k
 					break
-		# Don't plan a route that brings a building down on itself.
-		if not BuildingRules.plan_entry(state.map, u, opts.path_to(pick), opts.mode == MoveMode.Kind.JUMP)["collapse"]:
-			out.append(pick)
+		out.append(pick)
 	if enemy and out.size() > MAX_CANDIDATES:
 		out.sort_custom(func(a, b): return Hex.distance(MoveOptions.coord_of(a), enemy.coord) < Hex.distance(MoveOptions.coord_of(b), enemy.coord))
 		out = out.slice(0, MAX_CANDIDATES)
@@ -81,7 +79,7 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	if tile and LineOfSight.woods_value(tile) > 0:
 		reason += ", ends in %s for cover" % tile.terrain.name.to_lower()
 	elif tile and tile.building:
-		reason += ", inside a %s whose walls soak hits" % tile.building.type.name.to_lower()
+		reason += ", inside a %s (+2 to hit it)" % tile.building.type.name.to_lower()
 	u.coord = save[0]
 	u.facing = save[1]
 	u.move_mode = save[2]

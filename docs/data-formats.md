@@ -6,8 +6,9 @@
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
 
-Also `"buildings": [{"id", "name", "cf", "move_cost", "psr_mod", "color"}]`: building
-classes light, medium, heavy and hardened.
+Also `"buildings": [{"id", "name", "civilian"?, "threshold", "destroy_tn", "entry_class", "color"}]`:
+building classes civilian, light, medium, heavy and hardened. `entry_class` is the lightest
+weight class (0 light .. 3 assault) that may force its way in.
 
 ## `data/maps/<id>.json`
 ```json

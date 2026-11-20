@@ -1,9 +1,10 @@
 class_name BuildingFire
 extends RefCounted
-## Shooting a building hex instead of a 'Mech. Buildings can't dodge (-4);
-## every hit lowers the building's CF, and at 0 it collapses.
-## TODO(rules): verify the -4; no secondary-target cost; a 'Mech inside is
-## not hurt by these shots until the building comes down.
+## Shooting a building hex instead of a 'Mech (book p. 135). Buildings
+## can't dodge (-4), shots from the next hex always hit, and cluster
+## weapons hit with every missile. Damage goes to `BuildingDamage`.
+## TODO(rules): no secondary-target cost; a 'Mech inside is not hurt by
+## these shots until the building comes down.
 
 
 ## [{index, weapon, to_hit}] for every weapon against the building at `c`.
@@ -52,6 +53,8 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if Location.is_arm(w.loc):
 		ToHitCalc.add_arm_actuators(th, attacker, w.loc)
 	th.add("building", -4, "A building can't move or dodge: -4.")
+	if dist <= 1:
+		th.auto_hit = "Building next to you"
 	return th
 
 
@@ -71,13 +74,11 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	data["hit"] = data["roll"] >= th.target() and tile != null and tile.building != null
 	var dmg := w.def.damage
 	if data["hit"] and w.def.is_cluster():
-		data["missiles"] = ClusterTable.hits(w.def.missiles, dice.roll_2d6())
+		data["missiles"] = w.def.missiles  # every missile finds a building
 		dmg = data["missiles"] * w.def.damage
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	if not data["hit"]:
 		return
-	var b := tile.building
-	b.cf = maxi(0, b.cf - dmg)
-	emit.call(GameEvent.BUILDING, {"kind": "shot", "coord": c, "name": b.type.name, "damage": dmg, "cf": b.cf})
-	if b.cf == 0:
-		BuildingRules.collapse(state, dice, emit, tile)
+	emit.call(GameEvent.BUILDING, {"kind": "shot", "coord": c, "name": tile.building.type.name,
+			"damage": dmg, "unit_id": attacker.id})
+	BuildingDamage.add(state, attacker.id, c, dmg)

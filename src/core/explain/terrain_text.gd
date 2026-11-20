@@ -36,41 +36,57 @@ static func describe(tile: MapTile, level: int) -> String:
 
 
 static func _building(b: Building, level: int) -> String:
-	var t := "%s, %d level%s tall, %d/%d CF: +%d MP to enter" % [b.type.name, b.height,
-			"" if b.height == 1 else "s", b.cf, b.type.cf, b.type.move_cost]
+	var lv := "%d level%s tall" % [b.height, "" if b.height == 1 else "s"]
+	if b.type.civilian:
+		var c := "%s, %s: +1 MP to enter" % [b.type.name, lv]
+		if level == ExplainLevel.FULL:
+			c += ". It blocks line of sight, but any hit or any 'Mech walking in flattens it."
+		return c
+	var t := "%s, %s: +1 MP to enter, threshold %d, destroy on %d+" % [b.type.name, lv,
+			b.type.threshold, b.type.destroy_tn]
 	if level == ExplainLevel.FULL:
-		t += ". Entering takes a piloting roll (+%d); a 'Mech over %d tons brings it down. " % [
-				b.type.psr_mod, b.cf] \
-				+ "Inside, the walls soak %d damage from every hit. It blocks line of sight like a hill %d level%s high." % [
-				b.absorbs(), b.height, "" if b.height == 1 else "s"]
+		t += ". Only %s 'Mechs or heavier can force their way in, with a piloting roll at +1; failing risks bringing it down on you. " % [
+				["light", "medium", "heavy", "assault"][b.type.entry_class]] \
+				+ ("Inside, you are +2 to hit. " if b.height >= 2 else "Standing in it gives partial cover: hits on your legs strike the walls. ") \
+				+ "If it collapses, a 'Mech inside takes %d per level above it. It blocks line of sight like a hill %s." % [
+				b.collapse_damage(b.height - 1), lv]
 	return t
 
 
 ## Log line for a GameEvent.BUILDING.
 static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 	var where := Hex.label(d["coord"])
-	var who := Names.unit(s.unit_by_id(d["unit_id"])) if d.has("unit_id") else ""
+	var u := s.unit_by_id(int(d.get("unit_id", -1)))
+	var who := Names.unit(u) if u != null else "Someone"
+	var bname := String(d["name"]).to_lower()
 	match d["kind"]:
-		"overweight":
-			var t := "%s crashes through the %s at %s." % [who, String(d["name"]).to_lower(), where]
+		"flattened":
+			return "%s walks straight through the %s at %s, flattening it." % [who, bname, where]
+		"entry_failed":
+			var t := "  %s smashes through the walls clumsily." % who
 			if level == ExplainLevel.FULL:
-				t += " At %d tons it is heavier than the %d CF the building had left, so it stops there and the building comes down." % [
-						s.unit_by_id(d["unit_id"]).def.tonnage, d["cf"]]
+				t += " A failed entry roll doesn't knock you down, but it may bring the building down."
 			return t
-		"scraped":
-			return "  %s scrapes through the walls and takes %d damage." % [who, d["damage"]]
-		"absorbed":
+		"destroy_check":
 			if level == ExplainLevel.OFF:
 				return ""
-			var t := "  The building at %s soaks %d of %d damage (CF left %d)." % [where, d["absorbed"], d["damage"], d["cf"]]
-			if level == ExplainLevel.FULL:
-				t += " Fighting from inside a building trades its walls for your armor."
-			return t
+			var mod := " +%d for %d damage" % [d["mod"], d["damage"]] if int(d["mod"]) > 0 else ""
+			return "  Destroy check on the %s at %s: rolled %d%s, needs %d: %s." % [bname, where,
+					d["roll"], mod, d["need"], "it is coming down" if d["destroyed"] else "it holds"]
 		"shot":
-			var t := "  The %s at %s takes %d damage (CF left %d)." % [String(d["name"]).to_lower(), where, d["damage"], d["cf"]]
+			if level == ExplainLevel.OFF:
+				return ""
+			var t := "  The %s at %s takes %d damage." % [bname, where, d["damage"]]
 			if level == ExplainLevel.FULL:
-				t += " Bringing it down drops anyone inside and opens the line of sight."
+				t += " Enough damage from one 'Mech in a phase earns a roll to bring it down."
 			return t
+		"cover_hit":
+			if level == ExplainLevel.OFF:
+				return ""
+			return "  The walls around %s take %d damage instead of its legs." % [who, d["damage"]]
 		"collapsed":
-			return "The %s at %s collapses into rubble!" % [String(d["name"]).to_lower(), where]
+			var t := "The %s at %s collapses!" % [bname, where]
+			if int(d.get("damage", 0)) > 0 and u != null:
+				t += " %s is buried under it for %d damage." % [who, d["damage"]]
+			return t
 	return ""

@@ -19,6 +19,10 @@ var initiative_rolls: Dictionary = {}  # side -> 2d6 total
 var declared_fire: Array[Dictionary] = []
 ## Physical attacks declared this phase: [{attacker_id, kind, target_id, to_hit, limb}].
 var declared_physical: Array[Dictionary] = []
+## Damage to buildings this phase, per attacker: unit id -> {Vector2i: int}.
+var building_hits: Dictionary = {}
+## Building hexes destroyed in an attack phase; they come down at its end.
+var doomed_buildings: Array[Vector2i] = []
 ## Spotters for indirect fire: unit id -> {target, turn}.
 var spotting: Dictionary = {}
 var game_over: bool = false

@@ -23,7 +23,7 @@ Battle mode first; campaign layer later.
 | Path | What |
 |---|---|
 | `src/core/hex/hex.gd` | Axial hex math, facings (0=N clockwise), mapsheet labels (XXYY, odd-q) |
-| `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (CF, height) |
+| `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (threshold, destroy check, height) |
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check) |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `MoveExecutor` (carries out a move for the controller) |
@@ -31,7 +31,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase`, `HeatShutdown` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs: on entering a hex or after the move), `Skid` (unused optional rule), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push, levels table), `PhysicalMods` (shared checks + modifiers), `Charge` (charge, DFA options), `ChargeResolve` (rolls, damage, displacement), `Displacement` (domino effect, ledges, off-map), `PhysicalPhase` |
-| `src/core/rules/buildings/` | `BuildingRules` (entering, wall absorption, collapse), `BuildingFire` (shooting buildings) |
+| `src/core/rules/buildings/` | `BuildingRules` (entering, inside modifiers, destroy checks, collapse), `BuildingDamage` (per-attacker damage, end-of-phase collapse), `BuildingFire` (shooting buildings) |
 | `src/core/rules/turn/` | `Initiative`, `UnequalNumbers` (who acts when), `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire` |

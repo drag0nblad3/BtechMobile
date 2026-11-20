@@ -88,6 +88,11 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 		th.add("target in woods", tw, "The target is hiding in %s." % tile.terrain.name.to_lower())
 	if in_partial_cover(state.map, target):
 		th.add("partial cover", 1, "The target's legs are under water; leg hits are absorbed.")
+	elif BuildingRules.half_inside(state.map, target):
+		th.add("partial cover", 1, "The target stands half inside a one-level building; leg hits strike the walls.")
+	var inside := BuildingRules.inside_mod(state.map, target)
+	if inside > 0:
+		th.add("inside a building", inside, "The target is fighting from inside a building: +2.")
 	if target.prone:
 		var adjacent := Hex.distance(attacker.coord, target.coord) <= 1
 		th.add("target prone", -2 if adjacent else 1,

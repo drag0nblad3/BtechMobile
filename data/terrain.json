@@ -9,9 +9,10 @@
     {"id": "water", "token": "w", "name": "Water", "move_cost": 0, "water": true, "color": "#4a5a50", "detail_color": "#36443c"}
   ],
   "buildings": [
-    {"id": "light", "name": "Light building", "cf": 15, "move_cost": 1, "psr_mod": 0, "color": "#9a7a56"},
-    {"id": "medium", "name": "Medium building", "cf": 40, "move_cost": 2, "psr_mod": 1, "color": "#7a6450"},
-    {"id": "heavy", "name": "Heavy building", "cf": 90, "move_cost": 3, "psr_mod": 2, "color": "#5a5450"},
-    {"id": "hardened", "name": "Hardened building", "cf": 120, "move_cost": 4, "psr_mod": 5, "color": "#45495a"}
+    {"id": "civilian", "name": "Civilian building", "civilian": true, "threshold": 0, "destroy_tn": 0, "entry_class": 0, "color": "#a89c86"},
+    {"id": "light", "name": "Light building", "threshold": 8, "destroy_tn": 7, "entry_class": 0, "color": "#9a7a56"},
+    {"id": "medium", "name": "Medium building", "threshold": 10, "destroy_tn": 9, "entry_class": 1, "color": "#7a6450"},
+    {"id": "heavy", "name": "Heavy building", "threshold": 14, "destroy_tn": 10, "entry_class": 2, "color": "#5a5450"},
+    {"id": "hardened", "name": "Hardened building", "threshold": 16, "destroy_tn": 11, "entry_class": 3, "color": "#45495a"}
   ]
 }
