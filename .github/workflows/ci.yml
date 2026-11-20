@@ -35,6 +35,11 @@ jobs:
           set -o pipefail
           godot --headless --quit-after 45 --scene res://scenes/voxel_mech_lab.tscn 2>&1 | tee voxel.log
           ! grep -E "SCRIPT ERROR|Parse Error" voxel.log
+      - name: Claude voxel showcase smoke
+        run: |
+          set -o pipefail
+          godot --headless --quit-after 90 --scene res://scenes/vx_showcase.tscn 2>&1 | tee vx.log
+          ! grep -E "SCRIPT ERROR|Parse Error" vx.log
       - name: Render voxel gait comparison
         run: |
           mkdir -p /tmp/voxel-frames
