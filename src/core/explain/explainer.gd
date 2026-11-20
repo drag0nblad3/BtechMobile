@@ -88,12 +88,12 @@ static func _moved(s: GameState, d: Dictionary, level: int) -> String:
 	var hexes: int = d["hexes"]
 	if mode < 0:
 		return "%s stands still." % _u(s, d) + (" Its shots get no movement penalty." if level == ExplainLevel.FULL else "")
-	var t := "%s %s %d hex%s (%d MP)." % [_u(s, d), "ran" if mode == MoveMode.Kind.RUN else "walked",
+	var t := "%s %s %d hex%s (%d MP)." % [_u(s, d), MoveMode.verb(mode),
 			hexes, "" if hexes == 1 else "es", d["mp"]]
 	if level == ExplainLevel.OFF:
 		return t
-	var own := 2 if mode == MoveMode.Kind.RUN else 1
-	var tm := ToHitCalc.target_movement_mod(hexes)
+	var own := MoveMode.attacker_mod(mode)
+	var tm := ToHitCalc.target_movement_mod(hexes, mode == MoveMode.Kind.JUMP)
 	t += " Own shots +%d; enemies +%d to hit it." % [own, tm]
 	if level == ExplainLevel.FULL and tm == 0 and hexes > 0:
 		t += " Moving 3+ hexes would make it harder to hit."

@@ -37,6 +37,7 @@ var has_fired: bool = false
 var has_physical: bool = false
 var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
+var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var damage_this_phase: int = 0
 ## Piloting rolls owed at the end of this phase: [{reason, mod, auto_fall?}].
@@ -68,6 +69,7 @@ func reset_for_turn() -> void:
 	has_physical = false
 	move_mode = -1
 	hexes_moved = 0
+	torso_twist = 0
 	heat_generated = 0
 	for w in weapons:
 		w.fired = false
@@ -141,6 +143,21 @@ func run_mp() -> int:
 	if legs_destroyed() > 0:
 		return walk_mp()
 	return ceili(walk_mp() * 1.5)
+
+
+## Jump MP after jump jet damage.
+func jump_mp() -> int:
+	var lost := 0
+	for loc in Location.COUNT:
+		for s: CritSlot in slots[loc]:
+			if s.kind == CritSlot.Kind.JUMP_JET and (s.hit or is_location_destroyed(loc)):
+				lost += 1
+	return maxi(0, def.jump_mp - lost)
+
+
+## Direction the torso (and arms) face: legs' facing plus any torso twist.
+func torso_facing() -> int:
+	return Hex.rotate(facing, torso_twist)
 
 
 func ammo_for(w: WeaponDef) -> int:

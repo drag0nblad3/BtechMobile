@@ -18,8 +18,10 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Water: depth 1 +1, depth 2+ +3, no running into depth 1+ — `TODO(rules)`: verify
   level-change handling when entering/leaving water.
 - ✅ Stacking: pass through friends, not enemies; one 'Mech per hex at end of movement.
-- ⬜ Backward movement.
-- ⬜ Jumping.
+- 🟡 Backward walking (not running), same costs, at most 1 level change — `TODO(rules)`: verify limit.
+- 🟡 Jumping: 1 MP per hex in a straight line, any landing facing, no deep water or occupied hexes,
+  can't clear terrain above start level + jump MP; heat 1/hex (min 3); +3 own, +1 extra to be hit;
+  jump jet crits reduce jump MP — `TODO(rules)`: verify elevation limits.
 - ✅ Standing up: 2 MP plus a piloting roll; failing means falling again. Impossible with a
   destroyed gyro or both legs gone.
 - ⬜ Going prone voluntarily, minimum movement, lateral shift (optional rule).
@@ -47,7 +49,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Prone target (-2 adjacent, +1 otherwise); immobile target -4; secondary target +1 front / +2 other.
 - ✅ Partial cover from depth 1 water: +1, leg hits absorbed.
 - 🟡 Firing arcs: front = 3 forward hexsides; arms add their side; rear mounts fire rear
-  — `TODO(rules)`: verify arc boundaries; torso twist not implemented.
+  — `TODO(rules)`: verify arc boundaries.
+- ✅ Torso twist one hexside in the weapon phase; leg weapons keep the legs' facing; punches use the torso.
 - ✅ Natural 2 always misses; target > 12 can't be attempted.
 - ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.

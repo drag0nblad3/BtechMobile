@@ -28,6 +28,8 @@ func _process(_delta: float) -> bool:
 		Phase.Kind.MOVEMENT:
 			_scene.movement.on_hex_tapped(u.coord)
 			_scene.movement.on_mode_toggled()
+			if u.id % 3 == 0:
+				_scene.movement.on_mode_toggled()  # jump, if it can
 			var far: Vector2i = u.coord
 			for c: Vector2i in _scene.movement.options.reachable_hexes():
 				if Hex.distance(c, u.coord) > Hex.distance(far, u.coord):
@@ -37,6 +39,8 @@ func _process(_delta: float) -> bool:
 			_scene.movement.on_confirm()
 		_:
 			_scene.attacks.begin()
+			_scene.attacks.on_twist(1)
+			_scene.attacks.on_twist(-1)
 			for e in gc.state.units:
 				if e.side != u.side and not e.destroyed:
 					_scene.attacks.on_hex_tapped(e.coord)

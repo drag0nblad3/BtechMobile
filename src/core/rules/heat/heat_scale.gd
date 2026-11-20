@@ -4,7 +4,6 @@ extends RefCounted
 ## TODO(rules): thresholds are from memory of the classic scale; verify.
 
 const MAX_HEAT := 30
-const MOVE_HEAT := {0: 0, 1: 1, 2: 2}  ## Stand still / walk / run.
 
 
 ## Walking MP lost: -1 at 5+, -2 at 10+, -3 at 15+, -4 at 20+, -5 at 25+.

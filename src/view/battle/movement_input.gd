@@ -7,6 +7,7 @@ signal unit_selected(u: Unit)
 
 const COLOR_WALK := Color(0.25, 0.75, 1.0, 0.33)
 const COLOR_RUN := Color(1.0, 0.6, 0.2, 0.33)
+const COLOR_JUMP := Color(0.7, 0.4, 1.0, 0.33)
 
 var controller: GameController
 var highlighter: HexHighlighter
@@ -40,7 +41,9 @@ func on_hex_tapped(c: Vector2i) -> void:
 func on_mode_toggled() -> void:
 	if selected == null:
 		return
-	mode = MoveMode.Kind.RUN if mode == MoveMode.Kind.WALK else MoveMode.Kind.WALK
+	mode = (mode + 1) % MoveMode.Kind.size()
+	if mode == MoveMode.Kind.JUMP and selected.jump_mp() <= 0:
+		mode = MoveMode.Kind.WALK
 	_replan()
 
 
@@ -112,7 +115,7 @@ func _set_preview(k: Vector3i) -> void:
 
 func _refresh() -> void:
 	var hexes := {}
-	var base := COLOR_RUN if mode == MoveMode.Kind.RUN else COLOR_WALK
+	var base: Color = [COLOR_WALK, COLOR_RUN, COLOR_JUMP][mode]
 	for c in options.reachable_hexes():
 		hexes[c] = base
 	if has_preview:

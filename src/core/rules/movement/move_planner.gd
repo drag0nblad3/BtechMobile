@@ -1,11 +1,14 @@
 class_name MovePlanner
 extends RefCounted
 ## Finds every reachable (hex, facing) for a unit with Dijkstra search.
-## Steps: turn one hexside left/right (1 MP) or move forward into the
-## faced hex (MoveCost). Backward walking is not implemented yet.
+## Steps: turn one hexside left/right (1 MP), move forward into the faced
+## hex, or (walking only) back into the hex behind (MoveCost).
+## Jumping is a separate search (JumpPlanner).
 
 
 static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
+	if mode == MoveMode.Kind.JUMP:
+		return JumpPlanner.plan(state, unit)
 	var opts := MoveOptions.new()
 	opts.unit = unit
 	opts.mode = mode
@@ -47,6 +50,16 @@ static func _successors(state: GameState, unit: Unit, k: Vector3i, mode: int) ->
 	var mp := MoveCost.enter_cost(state.map, c, to, mode)
 	if mp != MoveCost.PROHIBITED and _can_pass(state, unit, to):
 		out.append([MoveOptions.key(to, f), mp])
+	# Backward: walking only, at most one level up or down.
+	# TODO(rules): verify backward level-change limit.
+	if mode == MoveMode.Kind.WALK:
+		var back := Hex.neighbor(c, f + 3)
+		var bmp := MoveCost.enter_cost(state.map, c, back, mode)
+		var src := state.map.get_tile(c)
+		var dst := state.map.get_tile(back)
+		if bmp != MoveCost.PROHIBITED and absi(dst.level - src.level) <= 1 \
+				and _can_pass(state, unit, back):
+			out.append([MoveOptions.key(back, f), bmp])
 	return out
 
 
