@@ -8,7 +8,7 @@ signal all_spawned
 
 const TARGET_COUNT := 20
 const COLUMNS := 5
-const GRID_SPACING := 2.45
+const GRID_SPACING := 3.65  ## Wider 5x4 formation on the expanded hangar floor.
 const SHOT_INTERVAL := 0.30
 const SAMPLE_INTERVAL := 1.0
 
