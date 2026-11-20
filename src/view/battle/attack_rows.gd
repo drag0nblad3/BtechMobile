@@ -14,7 +14,7 @@ static func weapons(state: GameState, attacker: Unit, options: Array, shots: Dic
 		if aim != null and not (typeof(aim) == typeof(here) and aim == here):
 			extra = "  (aimed at %s)" % target_name(state, aim)
 		elif o["to_hit"].possible():
-			extra = "  avg %.1f, %d heat" % [Advisor.expected_damage(w.def, o["to_hit"]), w.def.heat]
+			extra = "  avg %.1f, %d heat" % [Advisor.expected_damage(w, o["to_hit"]), w.def.heat * WeaponModes.shots(w)]
 		var row := {"key": o["index"], "label": w.label(), "to_hit": o["to_hit"], "extra": extra}
 		if WeaponModes.modes(w).size() > 1:
 			row["mode"] = mode_text(w)

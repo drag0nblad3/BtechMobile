@@ -61,7 +61,7 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 		if e.side != u.side and not e.destroyed:
 			for o in FireOptions.for_target(state, e, u):
 				if o["to_hit"].possible():
-					taken += Advisor.expected_damage(o["weapon"].def, o["to_hit"])
+					taken += Advisor.expected_damage(o["weapon"], o["to_hit"])
 	var heat_cost := maxf(0.0, Advisor.projected_heat(u, 0) - 2) * 0.5
 	var score := dealt - DAMAGE_TAKEN_WEIGHT * taken - heat_cost
 	# Close toward the range its weapons like best.

@@ -42,6 +42,20 @@ static func has_artemis(w: MountedWeapon) -> bool:
 	return w.artemis and not w.artemis_lost
 
 
+## Average damage when the attack hits, in the weapon's current mode.
+static func expected_per_hit(w: MountedWeapon) -> float:
+	var d := w.def
+	if d.streak:
+		return float(d.missiles * d.damage)
+	if shots(w) > 1:
+		return ClusterTable.expected(shots(w)) * d.damage
+	if ammo_kind(w) == CLUSTER:
+		return ClusterTable.expected(d.damage)
+	if d.is_cluster():
+		return ClusterTable.expected(d.missiles, ARTEMIS_BONUS if has_artemis(w) else 0) * d.damage
+	return float(d.damage)
+
+
 ## Rolls (if needed) how much of a hit lands: {n, roll, packets}.
 ## n is 0 for a plain single-packet weapon.
 static func cluster(w: MountedWeapon, fired: int, dice: Dice) -> Dictionary:

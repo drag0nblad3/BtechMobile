@@ -6,9 +6,8 @@ extends RefCounted
 
 
 ## Average damage a weapon deals per shot taken (hit chance x damage).
-static func expected_damage(w: WeaponDef, th: ToHit) -> float:
-	var per_hit := ClusterTable.expected(w.missiles) * w.damage if w.is_cluster() else float(w.damage)
-	return th.chance() * per_hit
+static func expected_damage(w: MountedWeapon, th: ToHit) -> float:
+	return th.chance() * WeaponModes.expected_per_hit(w)
 
 
 ## Previewed move: own penalty, defensive bonus, heat, cover.
@@ -83,7 +82,7 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 			th = ToHitCalc.weapon(state, u, w, t, t.id != primary)
 		if not th.possible():
 			continue
-		var ed := expected_damage(w.def, th)
+		var ed := expected_damage(w, th)
 		exp_dmg += ed
 		idx.append(int(sh["weapon"]))
 		if w.def.heat > 0 and ed / w.def.heat < worst_ratio:
@@ -96,7 +95,7 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 	var t := "On average this volley deals %.1f damage. Heat after this turn: %d (%s)." % [exp_dmg, after, eff]
 	if after >= 5 and worst >= 0:
 		var w := u.weapons[worst]
-		var without := projected_heat(u, FireOptions.volley_heat(u, idx) - w.def.heat)
+		var without := projected_heat(u, FireOptions.volley_heat(u, idx) - w.def.heat * WeaponModes.shots(w))
 		t += " Holding the %s (worst damage per heat) would leave %d heat: %s." % [
 				w.def.name, without, HeatScale.effects_text(without)]
 	elif after == 0 and idx.size() < u.weapons.size():
@@ -121,7 +120,7 @@ static func targets(state: GameState, u: Unit, level: int) -> String:
 		var total := 0.0
 		for o in FireOptions.for_target(state, u, e):
 			if o["to_hit"].possible():
-				total += expected_damage(o["weapon"].def, o["to_hit"])
+				total += expected_damage(o["weapon"], o["to_hit"])
 		ranked.append([total, e])
 	ranked.sort_custom(func(a, b): return a[0] > b[0])
 	if ranked.is_empty() or ranked[0][0] <= 0.0:

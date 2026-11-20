@@ -7,7 +7,7 @@ const HEAT_LIMIT := 4    ## Aim to end the turn at or below this (no MP loss).
 const HEAT_STRETCH := 8  ## Accept up to this if the target is nearly dead.
 
 
-## Returns {shots: [{weapon, target_id}], twist, reason}.
+## Returns {shots: [{weapon, target_id}], twist, modes: {weapon index: mode}, reason}.
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	var best := {"shots": [], "twist": 0, "reason": "holds fire: no enemy in range and sight", "value": 0.0}
 	var original := u.torso_twist
@@ -16,22 +16,36 @@ static func plan(state: GameState, u: Unit) -> Dictionary:
 		for e in state.units:
 			if e.side == u.side or e.destroyed:
 				continue
-			var p := _volley(state, u, e)
-			if p["value"] > best["value"]:
-				p["twist"] = twist
-				best = p
+			for ultra in ([true, false] if BotModes.has_ultra(u) else [false]):
+				var before := BotModes.apply(state, u, e, ultra)
+				var p := _volley(state, u, e)
+				if p["value"] > best["value"]:
+					p["twist"] = twist
+					p["modes"] = _modes(u, p["shots"])
+					var note := BotModes.describe(u, p["shots"])
+					if note != "":
+						p["reason"] += "; " + note
+					best = p
+				BotModes.restore(u, before)
 	u.torso_twist = original
 	return best
+
+
+static func _modes(u: Unit, shots: Array) -> Dictionary:
+	var out := {}
+	for sh: Dictionary in shots:
+		out[int(sh["weapon"])] = u.weapons[int(sh["weapon"])].mode
+	return out
 
 
 static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 	var opts := []
 	for o in FireOptions.for_target(state, u, e):
 		if o["to_hit"].possible():
-			var ed := Advisor.expected_damage(o["weapon"].def, o["to_hit"])
+			var ed := Advisor.expected_damage(o["weapon"], o["to_hit"])
 			if ed > 0.0:
 				opts.append([ed, o])
-	opts.sort_custom(func(a, b): return a[0] / maxf(1.0, a[1]["weapon"].def.heat) > b[0] / maxf(1.0, b[1]["weapon"].def.heat))
+	opts.sort_custom(func(a, b): return a[0] / maxf(1.0, _heat(a[1]["weapon"])) > b[0] / maxf(1.0, _heat(b[1]["weapon"])))
 	var limit := HEAT_STRETCH if _fragile(e) else HEAT_LIMIT
 	var shots := []
 	var idx := []
@@ -54,6 +68,10 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 	if not held.is_empty():
 		why += "; holds %s to stay cool" % ", ".join(held)
 	return {"shots": shots, "value": value, "reason": why}
+
+
+static func _heat(w: MountedWeapon) -> float:
+	return float(w.def.heat * WeaponModes.shots(w))
 
 
 static func _damage_fraction(e: Unit) -> float:
