@@ -26,6 +26,14 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		target = path[path.size() - 1]
 		charge_target_id = -1
 	var from := opts.start_key()
+	var skid := Skid.find(state.map, path, from, mode)
+	if not skid.is_empty() and not unit.prone:
+		if Psr.roll(dice, emit, unit, "turning on pavement at a run", skid["mod"]):
+			skid = {}
+		else:
+			path = path.slice(0, skid["index"])
+			target = path[path.size() - 1] if not path.is_empty() else from
+			charge_target_id = -1
 	var mp: int = opts.cost[target]
 	if unit.prone and mp > 0 and not Psr.try_stand(state, dice, emit, unit):
 		unit.has_moved = true
@@ -45,7 +53,17 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	if mp > 0:
 		MovePsr.after_move(state, unit, path, mode)
 	for c: Vector2i in entry["entered"]:
-		BuildingRules.enter(state, dice, emit, unit, c)
+		if _passes(path, c):
+			BuildingRules.enter(state, dice, emit, unit, c)
+	if not skid.is_empty():
+		Skid.slide(state, dice, emit, unit, skid["dir"], skid["hexes"])
 	if charge_target_id >= 0:
 		Charge.declare(state, emit, unit, state.unit_by_id(charge_target_id))
 	return true
+
+
+static func _passes(path: Array[Vector3i], c: Vector2i) -> bool:
+	for k in path:
+		if MoveOptions.coord_of(k) == c:
+			return true
+	return false

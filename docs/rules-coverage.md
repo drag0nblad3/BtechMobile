@@ -27,7 +27,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Going prone instead of moving (heat as walking) — `TODO(rules)`: TW allows moving first, then dropping for 1 MP.
 - 🟡 Minimum movement: with 1+ walking MP, one hex straight ahead or back for all MP — `TODO(rules)`: verify (any one hex?).
 - 🟡 Movement piloting rolls, rolled at end of phase: entering water (depth 1 -1, 2 +0, 3+ +1), running on a damaged gyro or hip, landing a jump on a damaged gyro or legs — `TODO(rules)`: verify triggers and timing.
-- ⬜ Skidding on pavement, lateral shift (optional rule).
+- 🟡 Skidding (`Skid`): turning on pavement while running needs a piloting roll (-1 at 0-2 hexes moved up to +6 at 25+); failure slides half the hexes moved in the old direction, then falls — `TODO(rules)`: only the first turn is rolled; verify slide length.
+- ⬜ Lateral shift (optional rule).
 
 ## Record sheets
 - ✅ Internal structure by tonnage (standard structure).

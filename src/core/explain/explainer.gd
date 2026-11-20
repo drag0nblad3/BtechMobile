@@ -57,6 +57,11 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			if level == ExplainLevel.FULL:
 				t += " It resolves in the Physical Attack Phase; until then it can't fire. Both 'Mechs take damage and must roll to stay up."
 			return t
+		GameEvent.SKID:
+			var t := "%s skids %d hex%s and goes down." % [_u(s, d), d["hexes"], "" if d["hexes"] == 1 else "es"]
+			if level == ExplainLevel.FULL:
+				t += " Turning on pavement at a run is risky; the faster you were going, the harder the roll. Walk, or turn before reaching the road."
+			return t
 		GameEvent.DISPLACED:
 			return "  %s is shoved into %s." % [_u(s, d), Hex.label(MoveOptions.coord_of(d["path"][0]))]
 		GameEvent.DAMAGE:
