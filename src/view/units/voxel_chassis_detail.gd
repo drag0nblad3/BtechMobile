@@ -13,7 +13,6 @@ static func decorate(part: VoxelPart) -> void:
 
 
 static func _atlas(part: VoxelPart) -> void:
-	var scale := part.detail_scale
 	match part.name:
 		"Torso":
 			# 25 mm armored brow; split the Atlas's narrow forward visor.
@@ -67,20 +66,26 @@ static func _atlas(part: VoxelPart) -> void:
 static func _catapult(part: VoxelPart) -> void:
 	match part.name:
 		"Torso":
-			# 25 mm inset forward cockpit with an armored center mullion.
-			part.paint_box(Vector3i(0, 0, -30), Vector3i(0, 5, -30), 1)
-			part.paint_box(Vector3i(-7, 4, -30), Vector3i(6, 5, -30), 2)
-			part.paint_box(Vector3i(-8, -1, -31), Vector3i(7, -1, -31), 4)
-			# Cooling outlets and real narrow armor panel seams.
-			for z in [-5, 0, 5, 10]:
-				part.paint_box(Vector3i(-8, 14, z),
-						Vector3i(7, 14, z), 1)
-			for y in [-12, -6, 0, 6]:
-				part.carve_box(Vector3i(-10, y, -12),
-						Vector3i(9, y, -12))
-			for x in [-15, 14]:
-				part.paint_box(Vector3i(x, -5, 12),
-						Vector3i(x, 8, 12), 5)
+			# 37.5 mm cockpit with a split windshield and raised eyebrow; scale
+			# the marks with the *actual* part resolution, not the pod resolution.
+			var scale := part.detail_scale
+			var front := -10 * scale
+			part.paint_box(Vector3i(0, 0, front),
+					Vector3i(0, 2 * scale - 1, front), 1)
+			part.paint_box(Vector3i(-3 * scale + 1, scale, front),
+					Vector3i(3 * scale - 2, 2 * scale - 1, front), 2)
+			part.paint_box(Vector3i(-3 * scale + 1, -1, front),
+					Vector3i(3 * scale - 2, -1, front), 4)
+			# Engine cooling grilles and recessed horizontal chest plate lines.
+			for z in [-2, 0, 2, 4]:
+				part.paint_box(Vector3i(-4 * scale, 4 * scale, z * scale),
+						Vector3i(3 * scale, 4 * scale, z * scale), 1)
+			for y in [-4, -2, 0, 2]:
+				part.carve_box(Vector3i(-5 * scale, y * scale, -4 * scale),
+						Vector3i(4 * scale, y * scale, -4 * scale))
+			for x in [-5, 4]:
+				part.paint_box(Vector3i(x * scale, -2 * scale, 4 * scale),
+						Vector3i(x * scale, 3 * scale, 4 * scale), 5)
 		"left_arm", "right_arm":
 			_missile_pod(part)
 		"left_leg", "right_leg", "left_leg_shin", "right_leg_shin":
