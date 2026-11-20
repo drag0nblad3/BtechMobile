@@ -144,6 +144,38 @@ static func _round_tube(out: Array[Dictionary], name: String,
 			"phase": phase, "tris": tris})
 
 
+## A genuine WATERTIGHT annular triangle mesh, not a solid cylinder
+## with a painted black muzzle. The centre never acquires any voxels.
+static func _hollow_tube(out: Array[Dictionary], name: String,
+		cx: float, cy: float, zfront: float, zback: float,
+		radius: float, bore: float, material: int,
+		phase: int = 0) -> void:
+	var tris := PackedVector3Array()
+	var sides := 20
+	for i in sides:
+		var a := float(i) * TAU / float(sides)
+		var b := float(i + 1) * TAU / float(sides)
+		var oa := Vector2(cos(a), sin(a)) * radius
+		var ob := Vector2(cos(b), sin(b)) * radius
+		var ia := Vector2(cos(a), sin(a)) * bore
+		var ib := Vector2(cos(b), sin(b)) * bore
+		var pfa := Vector3(cx + oa.x, cy + oa.y, zfront)
+		var pfb := Vector3(cx + ob.x, cy + ob.y, zfront)
+		var pia := Vector3(cx + ia.x, cy + ia.y, zfront)
+		var pib := Vector3(cx + ib.x, cy + ib.y, zfront)
+		var pba := Vector3(cx + oa.x, cy + oa.y, zback)
+		var pbb := Vector3(cx + ob.x, cy + ob.y, zback)
+		var pbi := Vector3(cx + ia.x, cy + ia.y, zback)
+		var pbj := Vector3(cx + ib.x, cy + ib.y, zback)
+		for quad in [[pfa, pfb, pbb, pba],
+				[pia, pbi, pbj, pib], [pfa, pia, pib, pfb],
+				[pba, pbb, pbj, pbi]]:
+			_tri(tris, quad[0], quad[1], quad[2])
+			_tri(tris, quad[0], quad[2], quad[3])
+	out.append({"name": name, "material": material,
+			"phase": phase, "tris": tris})
+
+
 static func part_meshes(part_key: String) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	match part_key:
@@ -220,8 +252,10 @@ static func _torso(out: Array[Dictionary]) -> void:
 	for x in [-1.65, 1.55]:
 		_round_tube(out, "recessed-eye-socket", x, 9.2,
 				-8.6, -6.0, 0.95, 1, 1)
+		_hollow_tube(out, "raised-socket-bezel", x, 9.2,
+				-8.5, -7.6, 1.02, 0.57, 8, 2)
 		_round_tube(out, "inset-red-eye", x, 9.25,
-				-7.6, -6.5, 0.55, 7, 2)
+				-7.9, -7.6, 0.47, 7, 2)
 	for x in [-2.8, 2.4]:
 		_plate(out, "skull-cheek", [
 			Vector3(x - 0.7, 7.6, -7.5), Vector3(x - 0.3, 8.8, -8.0),
@@ -237,10 +271,10 @@ static func _torso(out: Array[Dictionary]) -> void:
 		Vector3(2.3, 6.6, -7.3), Vector3(2.0, 5.7, -7.5)
 	], 0.8, 8)
 	# Torso-mounted AC/20 right, not a fake second gun attached to fist.
-	_round_tube(out, "ac20-coaxial-housing", 8.4, -1.9,
-			-10.7, -4.0, 2.8, 8)
-	_round_tube(out, "ac20-bore", 8.4, -1.9,
-			-10.9, -2.9, 1.10, 1, 1)
+	_hollow_tube(out, "ac20-real-bored-barrel", 8.4, -1.9,
+			-10.7, -4.0, 2.8, 1.12, 8)
+	_round_tube(out, "ac20-through-bore", 8.4, -1.9,
+			-10.9, -2.9, 1.12, 1, 1)
 	# The left flank contains the AS7-D five-opening LRM grouping.
 	_loft(out, "lrm-shoulder-housing", [
 		_ring(-3.3, 3.5, -8.2, -4.4, -7.8),
@@ -250,8 +284,10 @@ static func _torso(out: Array[Dictionary]) -> void:
 		for y in [-1.3, 1.2]:
 			if x == -6.1 and y == -1.3:
 				continue
-			_round_tube(out, "lrm-port", x, y, -9.0,
-					-5.2, 0.55, 1, 1)
+			_hollow_tube(out, "lrm-port-metal-rim", x, y, -9.0,
+					-5.2, 0.70, 0.42, 8)
+			_round_tube(out, "lrm-port-csg-bore", x, y, -9.2,
+					-5.2, 0.43, 1, 1)
 			_round_tube(out, "lrm-rear", x, y, -5.55,
 					-5.3, 0.36, 3, 2)
 	# Rear reactor grilles and descending belt, each angled armor plate.
@@ -299,10 +335,10 @@ static func _arm(out: Array[Dictionary], right: bool) -> void:
 	# In real artwork the right hand has a small laser fixture, but neither
 	# fist houses the enormous AC/20 already in the torso.
 	if right:
-		_round_tube(out, "right-fist-laser", -1.8, -10.0,
-				-7.0, -3.6, 1.15, 8)
+		_hollow_tube(out, "right-fist-laser", -1.8, -10.0,
+				-7.0, -3.6, 1.15, 0.43, 8)
 		_round_tube(out, "laser-bore", -1.8, -10.0,
-				-7.2, -3.0, 0.43, 1, 1)
+				-7.2, -3.0, 0.44, 1, 1)
 
 
 static func _thigh(out: Array[Dictionary]) -> void:
@@ -378,20 +414,27 @@ static func source_mesh(part_key: String) -> ArrayMesh:
 	for entry: Dictionary in components:
 		if int(entry["phase"]) == 1:
 			continue
-		var vertices: PackedVector3Array = entry["tris"]
-		if vertices.is_empty():
+		var input_vertices: PackedVector3Array = entry["tris"]
+		if input_vertices.is_empty():
 			continue
+		var vertices := PackedVector3Array()
 		var normals := PackedVector3Array()
-		for i in range(0, vertices.size(), 3):
-			var a: Vector3 = vertices[i]
-			var b: Vector3 = vertices[i + 1]
-			var c: Vector3 = vertices[i + 2]
+		var colors := PackedColorArray()
+		var material_id: int = int(entry["material"])
+		var palette: Array[Color] = VoxelSilhouetteV3.palette("atlas")
+		for i in range(0, input_vertices.size(), 3):
+			var a: Vector3 = input_vertices[i] * VoxelPart.VOXEL_SIZE
+			var b: Vector3 = input_vertices[i + 1] * VoxelPart.VOXEL_SIZE
+			var c: Vector3 = input_vertices[i + 2] * VoxelPart.VOXEL_SIZE
 			var n := (b - a).cross(c - a).normalized()
-			for _j in 3:
+			for v in [a, b, c]:
+				vertices.append(v)
 				normals.append(n)
+				colors.append(palette[material_id])
 		var arrays: Array = []
 		arrays.resize(Mesh.ARRAY_MAX)
 		arrays[Mesh.ARRAY_VERTEX] = vertices
 		arrays[Mesh.ARRAY_NORMAL] = normals
+		arrays[Mesh.ARRAY_COLOR] = colors
 		mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	return mesh
