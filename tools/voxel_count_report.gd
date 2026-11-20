@@ -15,5 +15,10 @@ func _report() -> void:
 		print("VOXEL_COUNT|%s|%s|%d|%d|%.4f" % [
 			profile["id"], profile["name"], mech.initial_voxels(),
 			mech.detail_level, mech.parts["torso"].voxel_size])
+		if profile["id"] == "atlas_as7d" or profile["id"] == "catapult_cplt_c1":
+			for key: String in mech.parts:
+				var part: VoxelPart = mech.parts[key]
+				print("VOXEL_PART|%s|%s|%d|%d" % [
+						profile["id"], key, part._original_count, part.detail_scale])
 		mech.free()
 	quit()

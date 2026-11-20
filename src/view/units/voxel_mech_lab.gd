@@ -14,6 +14,14 @@ var catalog_label: Label
 var stress_info: Label
 var stress_start_button: Button
 var stress_stop_button: Button
+var stress_count_button: Button
+var stress_count := VoxelStressTest.TARGET_COUNT
+var zoom_in_button: Button
+var zoom_out_button: Button
+var zoom_reset_button: Button
+var _touches: Dictionary = {}
+var _pinch_distance := 0.0
+var _touch_cancel_tap := false
 var _single_model_buttons: Array[Button] = []
 var _stress: VoxelStressTest
 var _saved_stress_camera := Vector3.ZERO
@@ -69,7 +77,7 @@ func make_arena() -> void:
 	ground.position.y = -0.15
 	add_child(ground)
 	var floor_mesh := BoxMesh.new()
-	floor_mesh.size = Vector3(14, 0.26, 14)
+	floor_mesh.size = Vector3(36, 0.26, 36)
 	var material := StandardMaterial3D.new()
 	material.albedo_color = Color("293949")
 	material.roughness = 0.9
@@ -85,9 +93,9 @@ func make_arena() -> void:
 	var grid_mat := StandardMaterial3D.new()
 	grid_mat.albedo_color = Color("3e6271")
 	grid_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	for i in range(-6, 7):
-		make_line(Vector3(i, 0.008, 0), Vector3(0.012, 0.012, 12), grid_mat)
-		make_line(Vector3(0, 0.008, i), Vector3(12, 0.012, 0.012), grid_mat)
+	for i in range(-17, 18):
+		make_line(Vector3(i, 0.008, 0), Vector3(0.016, 0.016, 35), grid_mat)
+		make_line(Vector3(0, 0.008, i), Vector3(35, 0.016, 0.016), grid_mat)
 
 
 func make_line(pos: Vector3, size: Vector3, material: Material) -> void:
@@ -185,7 +193,10 @@ func make_hud() -> void:
 	back.name = "BackToLauncher"
 	var stress_buttons := HBoxContainer.new()
 	column.add_child(stress_buttons)
-	stress_start_button = add_button(stress_buttons, "STRESS TEST ×20", start_stress_test)
+	stress_count_button = add_button(stress_buttons, "COUNT: 20", toggle_stress_count)
+	stress_count_button.name = "StressCountToggle"
+	stress_count_button.tooltip_text = "Switch stress-test population between 20 and 60 mechs"
+	stress_start_button = add_button(stress_buttons, "STRESS TEST", start_stress_test)
 	stress_start_button.name = "StressTestButton"
 	stress_start_button.custom_minimum_size.x = 190
 	stress_stop_button = add_button(stress_buttons, "STOP / CLEAR", stop_stress_test)
@@ -196,8 +207,17 @@ func make_hud() -> void:
 	stress_info.add_theme_font_size_override("font_size", 14)
 	stress_info.text = "20 full-resolution mechs, then continuous random impacts."
 	column.add_child(stress_info)
+	var zoom_row := HBoxContainer.new()
+	zoom_row.name = "ZoomControls"
+	column.add_child(zoom_row)
+	zoom_in_button = add_button(zoom_row, "ZOOM +", func(): zoom_by(0.83))
+	zoom_in_button.name = "ZoomInButton"
+	zoom_out_button = add_button(zoom_row, "ZOOM −", func(): zoom_by(1.20))
+	zoom_out_button.name = "ZoomOutButton"
+	zoom_reset_button = add_button(zoom_row, "FIT VIEW", reset_zoom)
+	zoom_reset_button.name = "ZoomResetButton"
 	var help := Label.new()
-	help.text = "Shots now carve variable jagged craters · swipe to orbit · scroll to zoom"
+	help.text = "Swipe to orbit · pinch or use ZOOM +/− · wheel to zoom · FIT VIEW to reset"
 	help.add_theme_font_size_override("font_size", 12)
 	column.add_child(help)
 
@@ -230,6 +250,17 @@ func _ensure_catalog_counts() -> void:
 		_count_next_profile()
 
 
+func toggle_stress_count() -> void:
+	if _stress != null:
+		return
+	stress_count = (VoxelStressTest.LARGE_TARGET_COUNT
+			if stress_count == VoxelStressTest.TARGET_COUNT
+			else VoxelStressTest.TARGET_COUNT)
+	stress_count_button.text = "COUNT: %d" % stress_count
+	stress_info.text = ("%d full-resolution mechs with random impacts. "
+			+ "60 may exceed phone memory; STOP / CLEAR cancels loading.") % stress_count
+
+
 func start_stress_test() -> void:
 	if _stress != null:
 		return
@@ -244,16 +275,18 @@ func start_stress_test() -> void:
 	_stress = VoxelStressTest.new()
 	_stress.name = "VoxelStressTest"
 	add_child(_stress)
-	_stress.start(highest)
+	_stress.start(highest, stress_count)
 	_orbit = 2.58
 	_elevation = 0.75
-	_distance = 22.5
+	_distance = VoxelStressTest.camera_distance(stress_count)
 	update_camera()
 	stress_start_button.disabled = true
+	stress_count_button.disabled = true
 	stress_stop_button.disabled = false
 	for button in _single_model_buttons:
 		button.disabled = true
-	_last_hit = "Building 20 %s mechs for a full-detail stress test" % highest["name"]
+	_last_hit = "Building %d %s mechs for a full-detail stress test" % [
+			stress_count, highest["name"]]
 
 
 func stop_stress_test() -> void:
@@ -270,6 +303,7 @@ func stop_stress_test() -> void:
 	_distance = _saved_stress_camera.z
 	update_camera()
 	stress_start_button.disabled = false
+	stress_count_button.disabled = false
 	stress_stop_button.disabled = true
 	for button in _single_model_buttons:
 		button.disabled = false
@@ -284,12 +318,15 @@ func _set_stability(value: float) -> void:
 
 func blast(key: String) -> void:
 	var part: VoxelPart = mech.parts[key]
-	# Each scripted shot picks a slightly different impact position, in addition
-	# to the per-voxel irregularity applied by VoxelMech.hit_part.
-	var offset := Vector3(randf_range(-0.13, 0.13),
-			randf_range(-0.11, 0.11), randf_range(-0.10, 0.10))
-	var world_hit := part.to_global(Vector3(0, -0.15, -0.22) + offset)
-	mech.hit_part(key, world_hit, 0.30)
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	# Sample every exposed face of the whole limb/torso, not a tiny fixed
+	# region around (0, -0.15, -0.22).
+	var hit := VoxelStressTest.random_surface_hit(part, rng)
+	if hit.is_empty():
+		return
+	var world_hit: Vector3 = hit["point"]
+	mech.hit_part(key, world_hit, VoxelStressTest.impact_radius(part, rng))
 	flash(world_hit)
 
 
@@ -341,13 +378,13 @@ func _process(_delta: float) -> void:
 		var shots := _stress.shots_attempted
 		var removed := _stress.voxels_removed
 		var original := _stress.original_voxels
-		info.text = "FPS %.0f  |  avg %.1f  |  min %.1f  |  %.1f ms/frame\n%s: %d / 20 spawned  |  %d full-detail voxels\n%d hits / %d shots  |  %d voxels destroyed" % [
+		info.text = "FPS %.0f  |  avg %.1f  |  min %.1f  |  %.1f ms/frame\n%s: %d / %d spawned  |  %d full-detail voxels\n%d hits / %d shots  |  %d voxels destroyed" % [
 			current, average, minimum, 1000.0 / maxf(1.0, current),
-			_stress.profile["name"], spawned, original,
+			_stress.profile["name"], spawned, _stress.target_count, original,
 			_stress.shots_hit, shots, removed]
 		stress_info.text = "Remaining: %d voxels  |  runtime %.1fs  |  %s" % [
 			_stress.remaining_voxels(), _stress.elapsed_seconds,
-			"LOADING" if spawned < VoxelStressTest.TARGET_COUNT else "FIRING RANDOM IMPACTS"]
+			"LOADING" if spawned < _stress.target_count else "FIRING RANDOM IMPACTS"]
 		return
 	var l := mech.gait_foot(mech.gait_phase).x
 	var r := mech.gait_foot(mech.gait_phase + 0.5).x
@@ -387,6 +424,27 @@ func _refresh_catalog() -> void:
 	catalog_label.text = "\n".join(lines)
 
 
+## Mouse wheel, touch buttons, and two-finger pinch use identical camera
+## zoom limits. Stress view allows close inspection and a wide overview.
+func zoom_limits() -> Vector2:
+	return Vector2(7.0, 90.0 if _stress.target_count == VoxelStressTest.LARGE_TARGET_COUNT else 58.0) if _stress != null else Vector2(3.5, 18.0)
+
+
+func zoom_by(ratio: float) -> void:
+	if ratio <= 0.0:
+		return
+	var limits := zoom_limits()
+	_distance = clampf(_distance * ratio, limits.x, limits.y)
+	if camera != null:
+		update_camera()
+
+
+func reset_zoom() -> void:
+	_distance = VoxelStressTest.camera_distance(_stress.target_count) if _stress != null else 5.8
+	if camera != null:
+		update_camera()
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
@@ -394,30 +452,56 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			fire_at_screen(event.position)
 		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_distance = maxf(3.5, _distance - 0.5)
-			update_camera()
+			zoom_by(0.90)
 		elif event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_distance = minf(12.0, _distance + 0.5)
-			update_camera()
+			zoom_by(1.10)
 	elif event is InputEventMouseMotion and _right_drag:
 		_orbit -= event.relative.x * 0.012
 		_elevation = clampf(_elevation + event.relative.y * 0.008, 0.08, 1.10)
 		update_camera()
 	elif event is InputEventScreenDrag:
+		_touches[event.index] = event.position
 		_touch_dragged = true
-		_orbit -= event.relative.x * 0.010
-		_elevation = clampf(_elevation + event.relative.y * 0.007, 0.08, 1.10)
-		update_camera()
+		if _touches.size() >= 2:
+			var points := _touches.values()
+			var new_distance: float = (points[0] as Vector2).distance_to(points[1] as Vector2)
+			if _pinch_distance > 0.01 and new_distance > 0.01:
+				zoom_by(_pinch_distance / new_distance)
+			_pinch_distance = new_distance
+			_touch_cancel_tap = true
+		else:
+			_orbit -= event.relative.x * 0.010
+			_elevation = clampf(_elevation + event.relative.y * 0.007, 0.08, 1.10)
+			update_camera()
 	elif event is InputEventScreenTouch:
 		if event.pressed:
-			_touch_dragged = false
-		elif not _touch_dragged:
-			fire_at_screen(event.position)
+			_touches[event.index] = event.position
+			if _touches.size() >= 2:
+				_touch_cancel_tap = true
+				_touch_dragged = true
+				var points := _touches.values()
+				_pinch_distance = (points[0] as Vector2).distance_to(points[1] as Vector2)
+			else:
+				_touch_dragged = false
+		else:
+			var should_shoot := not _touch_dragged and not _touch_cancel_tap
+			_touches.erase(event.index)
+			if _touches.size() < 2:
+				_pinch_distance = 0.0
+			if _touches.is_empty():
+				_touch_cancel_tap = false
+				_touch_dragged = false
+			if should_shoot:
+				fire_at_screen(event.position)
 
 
 func fire_at_screen(point: Vector2) -> void:
+	if _stress != null or mech == null or camera == null:
+		return
 	var origin := camera.project_ray_origin(point)
 	var direction := camera.project_ray_normal(point)
-	var hit := mech.shoot(origin, direction)
+	# A screen tap still hits the selected surface, but removes a broader
+	# patch of armor instead of only a few high-density microvoxels.
+	var hit := mech.shoot(origin, direction, 0.35)
 	if not hit.is_empty():
 		flash(hit["point"])

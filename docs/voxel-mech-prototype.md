@@ -57,17 +57,24 @@ geometry profiles without changing the core rules. CI also captures
   one-voxel canopy seams, micro-bevels, engine vents and piston color accents.
   Shape is unchanged at mech scale; tiny details are genuinely detachable
   cells, not texture-only decorations.
-- The other five profiles retain their 75 mm grid until they receive model-
-  specific detailed geometry and Android performance profiling. Each profile's
-  `voxel_detail` field controls its build density (1 or 2).
+- **Atlas AS7-D** now has **119,132 real voxels**, including a 25 mm hull and
+  37.5 mm arms and legs, with recessed armor and cockpit details.
+  **Catapult CPLT-C1** has **107,264 real voxels**, including 25 mm LRM pod
+  surfaces and a 37.5 mm hull, with fifteen recessed launch tubes per pod.
+  The test mech, Hunchback and Wolverine remain at 75 mm until refined.
+  The `voxel_part_detail` setting can override the chassis's `voxel_detail`
+  for especially detailed parts; the rest of the chassis keeps its planned
+  physical proportions. The above counts are from a headless Godot run.
 - **All chassis voxel counts** appear in the lab catalog. The selected model
   also reports original count, current count, number of removed voxels and
   current voxel pitch. Counts come directly from occupied cells (no estimates)
   and are measured one model per frame using mesh-free construction to avoid
   building six render meshes during startup.
 - **Variable damage:** every tap or scripted shot uses seeded, asymmetric,
-  jagged local erosion and smaller secondary chips. Scripted blast locations
-  also vary slightly. Tests can pin the random seed to reproduce failures.
+  jagged local erosion and smaller secondary chips. Scripted hits now ray-pick
+  the **entire exposed surface** of the selected body part instead of a tiny
+  region near its center. The crater radius scales with part size (0.25–0.49 m)
+  for broader visible damage. Tests can pin the random seed to reproduce failures.
   Intact distant parts are never altered by a hit.
 - **Fast ray picking:** a bounded voxel-grid traversal replaces an O(total
   voxels) scan for every shot. Erosion visits only a bounded neighborhood
@@ -80,39 +87,45 @@ To avoid generating unsolicited previews, GitHub CI renders screenshots only
 when started explicitly with **Actions → CI → Run workflow**. Normal push and
 pull-request checks still run unit tests and headless scene smokes.
 
-## Twenty-mech performance stress test (04)
+## Selectable 20/60-mech performance stress test (04)
 
-The isolated **Voxel Mech Lab** includes two new touch-sized buttons:
-**STRESS TEST ×20** and **STOP / CLEAR**. Pressing the first one completes
-the real per-chassis voxel-count catalog and automatically chooses whichever
-current model contains the **most occupied voxels** (presently the high-detail
-Jenner JR7-D, 52,830 voxels per intact mech).
+The **Voxel Mech Lab** has a touch-sized **COUNT: 20** button. Tap it to toggle
+between **COUNT: 20** and **COUNT: 60** before starting, then press **STRESS TEST**.
+The count selector locks during the run; **STOP / CLEAR** cancels even while the
+models are still spawning, releases the loaded models, and unlocks selection.
 
-The test creates **20 full-resolution, fully damageable** voxel mechs in a
-5×4 grid, one mech per frame to spread out the loading cost. Mechs stand
-stationary so the test isolates simultaneous high-density geometry and
-repeated mesh rebuilds from impacts. Once all 20 have spawned, a random
-target and random exterior voxel are selected approximately every 0.3 seconds;
-the existing irregular damage algorithm applies each hit. This uses real
-high-resolution meshes, **not** simplified proxies.
+The test computes real voxel counts and always selects the highest-detail
+available chassis (currently **Atlas AS7-D, 119,132 occupied voxels**).
+It creates actual destructible meshes **one per frame** to spread loading cost:
 
-The on-screen performance readout includes current FPS, rolling-run average
-FPS, minimum sampled FPS, approximate milliseconds per frame, loaded model
-count, total occupied voxels, attempted shots, successful hits, destroyed
-voxels, and total remaining voxels. Average/minimum samples start **after**
-all 20 have loaded so model-creation stalls do not pollute steady-state
-damage statistics; watch current FPS during loading to see those stalls.
+- **20:** centered 5×4 formation, 3.65 m spacing, 31.5 m camera fit and
+  **2,382,640 initial occupied voxels** with the current Atlas.
+- **60:** centered 8-column formation spanning eight rows (four mechs centered
+  in the final row), same 3.65 m spacing, 52 m camera fit and
+  **7,147,920 initial occupied voxels** with the current Atlas.
 
-**STOP / CLEAR** immediately deletes the entire stress-test collection,
-returns to the original single model and restores the previous camera.
-The normal lab controls are disabled while the twenty-mech test runs.
-Reset and the main-menu navigation also allow recovery.
+The arena has a **36×36 m** ground plane and grid, with room for either
+formation and its outermost mech armor. All models stand still to isolate
+geometry and repeated damage-mesh rebuild cost from gait CPU load. Once the
+selected population is fully spawned, a random mech and a ray-picked position
+on the full exposed surface of a random surviving body part are damaged about
+every 0.3 seconds. Each broad irregular crater remains confined to the
+selected part.
 
-This test intentionally pushes Android hardware hard: twenty Jenners have
-**1,056,600 intact occupied microvoxels** before damage. Expect memory and
-frame-time spikes; the FPS results must be observed on the actual phone.
-The GitHub headless CI smoke validates real twenty-mech construction, damage
-and UI behavior but cannot establish mobile GPU frame rate.
+The on-screen readout shows loading progress **N / 20** or **N / 60**, current
+FPS, average and minimum sampled FPS, frame time, hit counts, destroyed and
+remaining voxels. Average/minimum sampling begins only after loading finishes.
+
+**ZOOM +**, **ZOOM −**, and **FIT VIEW** work with both populations, along
+with mouse wheel and touch pinch. Stress camera zoom ranges from 7–58 m for
+20 models and 7–90 m for 60. Single-finger orbit still works.
+
+**60 full-detail Atlases may overwhelm mobile RAM, GPU resources, or CPU**,
+particularly on older phones. This is deliberate device stress testing—not
+a performance promise. You can stop partway through loading. The CI smoke
+checks a **partial 60-mech load and cancellation**, then a **full 20-mech
+test with rendered meshes**, random damage, FPS UI and cleanup. It does
+not try to instantiate all sixty high-resolution models in CI.
 
 ## Mechanics demonstrated
 

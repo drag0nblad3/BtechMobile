@@ -1,18 +1,21 @@
 class_name VoxelStressTest
 extends Node3D
-## Real geometry load test: 20 highest-detail chassis and repeated voxel hits.
+## Real geometry load test: selected 20 or 60 high-detail chassis and repeated hits.
 ## Models are constructed one per frame to keep the stop control responsive.
 ## The CPU/GPU cost is intentionally representative of twenty full models.
 
 signal all_spawned
 
-const TARGET_COUNT := 20
+const TARGET_COUNT := 20  ## Default and backwards-compatible smoke-test count.
+const LARGE_TARGET_COUNT := 60
 const COLUMNS := 5
-const GRID_SPACING := 2.45
+const LARGE_COLUMNS := 8
+const GRID_SPACING := 3.65  ## Same comfortable spacing at either population.
 const SHOT_INTERVAL := 0.30
 const SAMPLE_INTERVAL := 1.0
 
 var profile: Dictionary = {}
+var target_count := TARGET_COUNT
 var models: Array[VoxelMech] = []
 var original_voxels := 0
 var voxels_removed := 0
@@ -45,15 +48,31 @@ static func highest_voxel_profile(profiles: Array[Dictionary],
 	return best
 
 
-static func grid_position(index: int) -> Vector3:
-	var column := index % COLUMNS
-	var row := index / COLUMNS
-	return Vector3((float(column) - 2.0) * GRID_SPACING, 0.0,
-			(float(row) - 1.5) * GRID_SPACING)
+static func grid_position(index: int, population: int = TARGET_COUNT) -> Vector3:
+	var columns := LARGE_COLUMNS if population == LARGE_TARGET_COUNT else COLUMNS
+	var rows := ceili(float(population) / float(columns))
+	var row := index / columns
+	var col := index % columns
+	# Center partial last rows too (60 = 8x7 full rows + 4 centered).
+	var row_items := mini(columns, population - row * columns)
+	return Vector3((float(col) - float(row_items - 1) * 0.5) * GRID_SPACING,
+			0.0, (float(row) - float(rows - 1) * 0.5) * GRID_SPACING)
 
 
-func start(chosen_profile: Dictionary, seed: int = -1) -> void:
+static func formation_radius(population: int) -> float:
+	var columns := LARGE_COLUMNS if population == LARGE_TARGET_COUNT else COLUMNS
+	var rows := ceili(float(population) / float(columns))
+	return maxf(float(columns - 1), float(rows - 1)) * GRID_SPACING * 0.5
+
+
+static func camera_distance(population: int) -> float:
+	return 52.0 if population == LARGE_TARGET_COUNT else 31.5
+
+
+func start(chosen_profile: Dictionary, population: int = TARGET_COUNT, seed: int = -1) -> void:
 	assert(profile.is_empty() and not chosen_profile.is_empty())
+	assert(population == TARGET_COUNT or population == LARGE_TARGET_COUNT)
+	target_count = population
 	profile = chosen_profile.duplicate()
 	if seed >= 0:
 		_rng.seed = seed
@@ -69,9 +88,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if profile.is_empty():
 		return
-	if models.size() < TARGET_COUNT:
+	if models.size() < target_count:
 		_spawn_one()
-		if models.size() == TARGET_COUNT:
+		if models.size() == target_count:
 			all_spawned.emit()
 		return
 	elapsed_seconds += delta
@@ -98,7 +117,7 @@ func _spawn_one() -> void:
 	mech.profile_id = str(profile["id"])
 	mech.detail_level = int(profile.get("voxel_detail", 1))
 	mech.upper_stability = 0.98
-	mech.position = grid_position(index)
+	mech.position = grid_position(index, target_count)
 	mech.rotation.y = _rng.randf_range(-0.16, 0.16)
 	add_child(mech)
 	# These are stationary targets; avoid 20 extra idle _process callbacks.
@@ -123,30 +142,75 @@ static func random_surface_cell(part: VoxelPart,
 	return chosen
 
 
+## Hit points are drawn from the WHOLE exposed surface of a part, not a
+## small hand-picked patch near its center. Bounded ray traversal avoids
+## allocating/copying every voxel in a 100k+ cell chassis on each shot.
+static func random_surface_hit(part: VoxelPart,
+		rng: RandomNumberGenerator) -> Dictionary:
+	if part.cells.is_empty():
+		return {}
+	var bounds: AABB = part._local_bounds
+	if bounds.size.length_squared() <= 0.0:
+		return {}
+	for attempt in 48:
+		var origin := bounds.position + Vector3(rng.randf(), rng.randf(),
+				rng.randf()) * bounds.size
+		var direction := Vector3.ZERO
+		var side := rng.randi_range(0, 1)
+		var axis := rng.randi_range(0, 2)
+		var margin := part.voxel_size * 3.0
+		match axis:
+			0:
+				origin.x = bounds.position.x - margin if side == 0 else bounds.end.x + margin
+				direction.x = 1.0 if side == 0 else -1.0
+			1:
+				origin.y = bounds.position.y - margin if side == 0 else bounds.end.y + margin
+				direction.y = 1.0 if side == 0 else -1.0
+			2:
+				origin.z = bounds.position.z - margin if side == 0 else bounds.end.z + margin
+				direction.z = 1.0 if side == 0 else -1.0
+		var hit := part.pick_ray(part.to_global(origin),
+				(part.global_transform.basis * direction).normalized())
+		if not hit.is_empty():
+			return hit
+	return {}
+
+
+## Larger armor areas take correspondingly wider damage without erasing the
+## entire limb at once. A shoulder can suffer a broad crater; a hock stays
+## smaller but still receives a meaningful hit.
+static func impact_radius(part: VoxelPart, rng: RandomNumberGenerator) -> float:
+	var size: Vector3 = part._local_bounds.size
+	var span := maxf(size.x, maxf(size.y, size.z))
+	return clampf(span * rng.randf_range(0.23, 0.31), 0.25, 0.49)
+
+
 func ping_random_model() -> int:
-	if models.size() != TARGET_COUNT:
+	if models.size() != target_count:
 		return 0
 	shots_attempted += 1
-	var index := _rng.randi_range(0, models.size() - 1)
-	var target := models[index]
-	var names := target.parts.keys()
-	if names.is_empty():
-		return 0
-	# Select from all parts, including individual shins, feet and weapon pods.
-	var key: String = names[_rng.randi_range(0, names.size() - 1)]
-	var part: VoxelPart = target.parts[key]
-	if part.cells.is_empty() or not part.is_inside_tree():
-		return 0
-	var cell := random_surface_cell(part, _rng)
-	var local_point := (Vector3(cell) + Vector3.ONE * 0.5) * part.voxel_size
-	var impact_world := part.to_global(local_point)
-	var radius := _rng.randf_range(0.10, 0.19)
-	var removed := target.hit_part(key, impact_world, radius)
-	if removed > 0:
-		shots_hit += 1
-		voxels_removed += removed
-	return removed
-
+	# Continue after a detached or completely shredded part. Every successful
+	# ping must hit an exposed face, with the origin changing across the part.
+	for attempt in 12:
+		var index := _rng.randi_range(0, models.size() - 1)
+		var target: VoxelMech = models[index]
+		var names := target.parts.keys()
+		if names.is_empty():
+			continue
+		var key: String = names[_rng.randi_range(0, names.size() - 1)]
+		var part: VoxelPart = target.parts[key]
+		if not is_instance_valid(part) or not part.is_inside_tree() \
+				or part.cells.is_empty():
+			continue
+		var hit := random_surface_hit(part, _rng)
+		if hit.is_empty():
+			continue
+		var removed := target.hit_part(key, hit["point"], impact_radius(part, _rng))
+		if removed > 0:
+			shots_hit += 1
+			voxels_removed += removed
+		return removed
+	return 0
 
 func remaining_voxels() -> int:
 	return original_voxels - voxels_removed
