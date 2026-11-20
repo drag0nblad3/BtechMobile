@@ -52,3 +52,5 @@ godot --headless --import
 godot --headless -s tests/run_tests.gd -- voxel_gait
 godot --headless --quit-after 45 --scene res://scenes/voxel_mech_lab.tscn
 ```
+
+CI captures `gait_a.png`, `gait_b.png`, `armor_before.png` and `armor_after.png` from Godot via `tools/capture_voxel_lab.gd` for visual review.
