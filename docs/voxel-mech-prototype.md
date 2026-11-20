@@ -92,6 +92,44 @@ pull-request checks still run unit tests and headless scene smokes.
 - CPU side accurate ray–occupied-cube picking; no physics collider per voxel.
 - Deterministic scripted weapon bursts for visual inspection.
 
+## 20-mech GPU/damage stress test
+
+Press **STRESS TEST x20** in Voxel Mech Lab. The lab chooses the profile
+with the highest **actual intact voxel count** (currently Jenner JR7-D at
+52,830 voxels), removes the solo mech, and progressively spawns **20** of that
+profile's real rendered voxel rigs on a 4-column by 5-row grid. The first
+loading stage shows **building N / 20**; it only starts firing after all 20
+are present. The scene camera widens to show the group.
+
+Once populated, the test randomly selects mechs and articulated parts and
+fires five irregular crater hits per second against *actual exposed voxel
+surfaces*. The live HUD shows:
+
+- **FPS**, and the lowest observed FPS after the first second of active stress;
+- loaded mech count and chassis name;
+- attempts, successful damaging hits, total voxels removed and remaining;
+- elapsed time.
+
+The test exercises live mesh rebuilds and visible geometry destruction;
+stopping it releases all 20 models and restores the normal single-mech lab.
+Touch, orbit and zoom still work; unrelated single-mech controls are disabled
+during stress. The button becomes **STOP STRESS TEST** to make cleanup easy.
+
+This is intentionally demanding. Twenty detail-2 Jenners start with
+approximately **1,056,600 occupied microvoxels**. Rendered face counts,
+CPU rebuild spikes, GPU memory, battery impact and heat are not the same as
+voxel counts; measure actual FPS on your target Android device. Spawning is
+progressive so the initial allocation is spread across frames, not a
+guarantee that all phones can sustain the load.
+
+The headless test checks highest-count selection, a complete 20-mech
+population, actual randomized voxel erosion, the live FPS status text and
+stop cleanup without generating screenshots:
+
+```bash
+godot --headless -s tools/voxel_stress_smoke.gd
+```
+
 ## Boundaries and next steps
 
 - `VoxelMechLab` is an isolated art/prototype scene; `UnitView` still uses its
