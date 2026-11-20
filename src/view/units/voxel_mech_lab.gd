@@ -3,6 +3,11 @@ extends Node3D
 ## Isolated runtime test: walk, rotate camera, fire voxel blasts, sever limbs.
 
 var mech: VoxelMech
+var profiles: Array[Dictionary] = []
+var profile_index := 0
+var stability_slider: HSlider
+var chassis_selector: OptionButton
+var stability_label: Label
 var camera: Camera3D
 var info: Label
 var _orbit := 2.58
@@ -14,14 +19,21 @@ var _last_hit := "No impacts yet"
 
 
 func _ready() -> void:
+	profiles = VoxelChassis.all()
 	make_arena()
-	mech = VoxelMech.new()
-	mech.name = "VoxelMech"
-	add_child(mech)
-	mech.struck.connect(_on_struck)
+	_spawn_mech()
 	make_camera()
 	make_hud()
 	mech.start_walk()
+
+
+func _spawn_mech() -> void:
+	mech = VoxelMech.new()
+	mech.name = "VoxelMech"
+	mech.profile_id = str(profiles[profile_index]["id"])
+	mech.upper_stability = stability_slider.value if stability_slider else 0.90
+	add_child(mech)
+	mech.struck.connect(_on_struck)
 
 
 func make_arena() -> void:
@@ -95,7 +107,10 @@ func make_hud() -> void:
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	var panel := PanelContainer.new()
-	panel.position = Vector2(16, 16)
+	panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	panel.offset_left = -620.0
+	panel.offset_right = -16.0
+	panel.offset_top = 16.0
 	layer.add_child(panel)
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.06, 0.09, 0.14, 0.88)
@@ -115,6 +130,30 @@ func make_hud() -> void:
 	info = Label.new()
 	info.add_theme_font_size_override("font_size", 14)
 	column.add_child(info)
+	var tuning := HBoxContainer.new()
+	column.add_child(tuning)
+	var selector := OptionButton.new()
+	selector.name = "ChassisSelector"
+	selector.custom_minimum_size = Vector2(230, 48)
+	for profile in profiles:
+		selector.add_item(str(profile["name"]))
+	selector.selected = profile_index
+	chassis_selector = selector
+	selector.item_selected.connect(_select_chassis)
+	tuning.add_child(selector)
+	stability_label = Label.new()
+	stability_label.text = "Upper stability 90%"
+	stability_label.custom_minimum_size.x = 155
+	tuning.add_child(stability_label)
+	stability_slider = HSlider.new()
+	stability_slider.name = "UpperStability"
+	stability_slider.custom_minimum_size = Vector2(160, 44)
+	stability_slider.min_value = 0.0
+	stability_slider.max_value = 1.0
+	stability_slider.step = 0.05
+	stability_slider.value = 0.90
+	stability_slider.value_changed.connect(_set_stability)
+	tuning.add_child(stability_slider)
 	var first := HBoxContainer.new()
 	column.add_child(first)
 	add_button(first, "WALK TEST", func(): mech.start_walk())
@@ -144,6 +183,18 @@ func add_button(parent: HBoxContainer, title: String, action: Callable) -> Butto
 
 func _open_launcher() -> void:
 	get_tree().change_scene_to_file("res://scenes/launcher.tscn")
+
+
+func _select_chassis(index: int) -> void:
+	profile_index = index
+	if chassis_selector:
+		chassis_selector.select(index)
+	reset_lab()
+
+
+func _set_stability(value: float) -> void:
+	mech.upper_stability = value
+	stability_label.text = "Upper stability %d%%" % roundi(value * 100.0)
 
 
 func blast(key: String) -> void:
@@ -177,10 +228,8 @@ func sever_right() -> void:
 
 func reset_lab() -> void:
 	mech.queue_free()
-	mech = VoxelMech.new()
-	add_child(mech)
-	mech.struck.connect(_on_struck)
-	_last_hit = "Reset: all armor restored"
+	_spawn_mech()
+	_last_hit = "Loaded %s: %s" % [profiles[profile_index]["name"], profiles[profile_index]["gait"]]
 	mech.start_walk()
 
 
@@ -190,8 +239,8 @@ func _on_struck(part_name: String, removed: int, detached: bool) -> void:
 
 
 func _process(_delta: float) -> void:
-	var l := VoxelGait.foot_target(mech.gait_phase).x
-	var r := VoxelGait.foot_target(mech.gait_phase + 0.5).x
+	var l := mech.gait_foot(mech.gait_phase).x
+	var r := mech.gait_foot(mech.gait_phase + 0.5).x
 	info.text = "FPS %d  |  Voxels %d  |  Left %.2f  Right %.2f\n%s" % [
 		Engine.get_frames_per_second(), mech.remaining_voxels(), l, r, _last_hit]
 

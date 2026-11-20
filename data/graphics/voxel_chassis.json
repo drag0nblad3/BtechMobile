@@ -1,0 +1,58 @@
+{
+  "chassis": [
+    {
+      "id": "prototype",
+      "name": "Original test mech",
+      "gait": "humanoid",
+      "shape": "prototype",
+      "arm": "standard",
+      "hip_width": 0.38,
+      "arm_width": 1.03
+    },
+    {
+      "id": "atlas_as7d",
+      "name": "Atlas AS7-D",
+      "gait": "humanoid",
+      "shape": "atlas",
+      "arm": "heavy",
+      "hip_width": 0.44,
+      "arm_width": 1.18
+    },
+    {
+      "id": "hunchback_hbk4g",
+      "name": "Hunchback HBK-4G",
+      "gait": "humanoid",
+      "shape": "hunchback",
+      "arm": "cannon",
+      "hip_width": 0.35,
+      "arm_width": 1.02
+    },
+    {
+      "id": "wolverine_wvr6r",
+      "name": "Wolverine WVR-6R",
+      "gait": "humanoid",
+      "shape": "wolverine",
+      "arm": "standard",
+      "hip_width": 0.36,
+      "arm_width": 0.98
+    },
+    {
+      "id": "jenner_jr7d",
+      "name": "Jenner JR7-D",
+      "gait": "digitigrade",
+      "shape": "jenner",
+      "arm": "lasers",
+      "hip_width": 0.32,
+      "arm_width": 0.82
+    },
+    {
+      "id": "catapult_cplt_c1",
+      "name": "Catapult CPLT-C1",
+      "gait": "digitigrade",
+      "shape": "catapult",
+      "arm": "missile_pods",
+      "hip_width": 0.42,
+      "arm_width": 0.92
+    }
+  ]
+}
