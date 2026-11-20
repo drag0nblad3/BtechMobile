@@ -1,0 +1,13 @@
+{
+  "id": "bushwacker_bswx1", "name": "Bushwacker", "model": "BSW-X1", "tonnage": 55,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 10, "engine_type": "xl", "sprite": "bushwacker",
+  "role": "Fast medium raider: LB 10-X, LRMs and SRMs on an XL engine. Hits hard for its size, but a lost side torso ends it.",
+  "armor": {"HD": 9, "CT": 25, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 23, "RL": 23},
+  "rear_armor": {"CT": 8, "LT": 6, "RT": 6},
+  "equipment": {
+    "RA": ["lb10x_ac", "ammo:lb10x_ac:cluster"],
+    "RT": ["ammo:lb10x_ac", "srm4", "ammo:srm4", "case"],
+    "LT": ["lrm10", "ammo:lrm10", "case"],
+    "LA": ["medium_laser", "medium_laser"]
+  }
+}

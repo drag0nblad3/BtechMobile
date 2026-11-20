@@ -1,0 +1,13 @@
+{
+  "id": "hollander_bzkf3", "name": "Hollander", "model": "BZK-F3", "tonnage": 35,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 10, "engine_type": "xl", "armor_type": "ferro_fibrous", "sprite": "hollander",
+  "role": "A light 'Mech built around one Gauss rifle: heavy-'Mech damage from long range with almost no heat. Thin armor and an XL engine, so keep it at a distance.",
+  "armor": {"HD": 9, "CT": 13, "LT": 9, "RT": 9, "LA": 8, "RA": 8, "LL": 12, "RL": 11},
+  "rear_armor": {"CT": 4, "LT": 3, "RT": 3},
+  "equipment": {
+    "RT": ["gauss_rifle", "ferro_fibrous*2"],
+    "LT": ["ammo:gauss_rifle", "ammo:gauss_rifle", "ferro_fibrous*5"],
+    "RA": ["ferro_fibrous*5"],
+    "LA": ["medium_laser", "ferro_fibrous*2"]
+  }
+}

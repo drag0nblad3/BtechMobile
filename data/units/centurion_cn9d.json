@@ -1,0 +1,13 @@
+{
+  "id": "centurion_cn9d", "name": "Centurion", "model": "CN9-D", "tonnage": 50,
+  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 12, "engine_type": "xl", "sprite": "centurion",
+  "role": "Medium all-rounder with an LB 10-X autocannon (solid slugs or a shotgun spread) and Artemis-guided LRMs. Its XL engine means losing either side torso kills it.",
+  "armor": {"HD": 9, "CT": 24, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 24, "RL": 24},
+  "rear_armor": {"CT": 8, "LT": 6, "RT": 6},
+  "equipment": {
+    "RA": ["lb10x_ac", "ammo:lb10x_ac", "ammo:lb10x_ac:cluster"],
+    "LT": ["lrm10+artemis", "ammo:lrm10", "case"],
+    "CT": ["medium_laser"],
+    "RT": ["medium_laser@rear", "heat_sink", "heat_sink"]
+  }
+}
