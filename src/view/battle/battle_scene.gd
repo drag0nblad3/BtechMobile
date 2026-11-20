@@ -79,6 +79,7 @@ func _wire() -> void:
 	hud.turn_right.connect(movement.on_turn.bind(1))
 	hud.confirm.connect(movement.on_confirm)
 	hud.cancel.connect(movement.clear_selection)
+	hud.charge.connect(movement.on_charge)
 	hud.attack_confirm.connect(attacks.on_confirm)
 	hud.attack_skip.connect(attacks.on_skip)
 	hud.twist_left.connect(attacks.on_twist.bind(-1))
@@ -146,7 +147,7 @@ func _on_event(e: GameEvent) -> void:
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
 	hud.log_view.add_line(explainer.describe(e, s), bold)
 	match e.type:
-		GameEvent.UNIT_MOVED:
+		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:

@@ -32,7 +32,9 @@ func start_turn() -> void:
 
 
 ## Moves a unit to a planned (hex, facing) key. Returns false if illegal.
-func submit_move(unit: Unit, target: Vector3i, mode: int) -> bool:
+## With `charge_target_id`, the move ends in a charge (walk/run) or death from
+## above (jump) against the enemy straight ahead; it must be legal.
+func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT):
 		return false
 	var opts := MovePlanner.plan(state, unit, mode)
@@ -57,8 +59,25 @@ func submit_move(unit: Unit, target: Vector3i, mode: int) -> bool:
 	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved) if mp > 0 else 0
 	_emit(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
+	if charge_target_id >= 0:
+		_declare_charge(unit, state.unit_by_id(charge_target_id))
 	_unit_done()
 	return true
+
+
+## Records a charge/DFA if legal; the unit then skips weapon and physical attacks.
+func _declare_charge(unit: Unit, t: Unit) -> void:
+	var kind := "dfa" if unit.move_mode == MoveMode.Kind.JUMP else "charge"
+	var opt := Charge.option(state, unit, t, kind)
+	if not opt["to_hit"].possible():
+		return
+	opt["attacker_id"] = unit.id
+	opt["target_id"] = t.id
+	state.declared_physical.append(opt)
+	unit.has_fired = true
+	unit.has_physical = true
+	_emit(GameEvent.CHARGE_DECLARED, {"unit_id": unit.id, "target_id": t.id, "kind": kind,
+			"need": opt["to_hit"].target()})
 
 
 ## Declares weapon fire: shots = [{weapon: index, target_id}]. An empty list

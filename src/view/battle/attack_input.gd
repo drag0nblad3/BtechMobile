@@ -143,11 +143,11 @@ func _toggle(key: Variant, on: bool) -> void:
 				primary_id = shots.values()[0] if not shots.is_empty() else -1
 	else:
 		if on:
-			if String(key).begins_with("kick"):
+			if String(key).begins_with("kick") or String(key).begins_with("push"):
 				physical.clear()
 			else:
 				for k: String in physical.keys():
-					if k.begins_with("kick"):
+					if k.begins_with("kick") or k.begins_with("push"):
 						physical.erase(k)
 			physical[key] = true
 		else:
@@ -219,6 +219,9 @@ func _physical_rows() -> Array:
 	var rows := []
 	for o in PhysicalOptions.for_target(controller.state, attacker, target):
 		var key := "%s:%d" % [o["kind"], o["limb"]]
-		rows.append({"key": key, "label": "%s (%s)" % [o["kind"].capitalize(), Location.code(o["limb"])],
-				"to_hit": o["to_hit"], "extra": "  %d dmg" % o["damage"]})
+		var lbl: String = o["kind"].capitalize()
+		if o["limb"] >= 0:
+			lbl += " (%s)" % Location.code(o["limb"])
+		rows.append({"key": key, "label": lbl, "to_hit": o["to_hit"],
+				"extra": "  %d dmg" % o["damage"] if o["damage"] > 0 else "  shove 1 hex"})
 	return rows

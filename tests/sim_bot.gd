@@ -45,7 +45,9 @@ static func _move(gc: GameController, u: Unit) -> void:
 		if d < best_d:
 			best_d = d
 			best = k
-	gc.submit_move(u, best, mode)
+	var ahead := gc.state.unit_at(Hex.neighbor(MoveOptions.coord_of(best), best.z))
+	var charge_id := ahead.id if ahead and ahead.side != u.side and u.id % 3 == 0 else -1
+	gc.submit_move(u, best, mode, charge_id)
 
 
 static func _fire(gc: GameController, u: Unit) -> void:

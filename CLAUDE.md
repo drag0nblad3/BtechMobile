@@ -26,11 +26,11 @@ Battle mode first; campaign layer later.
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth), `BattleMap`, `MapLoader` |
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
-| `src/core/rules/movement/` | `MoveMode`, `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing), `MoveOptions` |
+| `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions` |
 | `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits`, `CritEffects` |
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `Fall`, `PilotDamage` |
-| `src/core/rules/physical/` | `PhysicalOptions` (punch/kick to-hit, damage), `PhysicalPhase` |
+| `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push), `Charge` (charge, DFA), `Displacement`, `PhysicalPhase` |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `DamageText`/`HeatText`/`PilotText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
 | `src/core/forces/` | `ForceBuilder` (tonnage budget, lances, deployment) |

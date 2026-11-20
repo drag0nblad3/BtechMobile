@@ -49,6 +49,14 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return _fired(s, d, level, seen)
 		GameEvent.PHYSICAL:
 			return _physical(s, d, level, seen)
+		GameEvent.CHARGE_DECLARED:
+			var t := "%s will %s %s (%d+)." % [_u(s, d), "charge" if d["kind"] == "charge" else "jump onto",
+					_u(s, d, "target_id"), d["need"]]
+			if level == ExplainLevel.FULL:
+				t += " It resolves in the Physical Attack Phase; until then it can't fire. Both 'Mechs take damage and must roll to stay up."
+			return t
+		GameEvent.DISPLACED:
+			return "  %s is shoved into %s." % [_u(s, d), Hex.label(MoveOptions.coord_of(d["path"][0]))]
 		GameEvent.DAMAGE:
 			return DamageText.damage(s, d, level)
 		GameEvent.CRIT_CHECK:
@@ -126,9 +134,14 @@ static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) ->
 	return t + ModsText.lines(d["mods"], level, seen)
 
 
+const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
+		"charge": "charges", "dfa": "jumps on"}
+
+
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
-	var limb := Location.name_of(d["limb"]).to_lower()
-	var who := "%s %ss %s (%s)" % [_u(s, d, "attacker_id"), d["kind"], _u(s, d, "target_id"), limb]
+	var who := "%s %s %s" % [_u(s, d, "attacker_id"), PHYS_VERBS.get(d["kind"], d["kind"]), _u(s, d, "target_id")]
+	if d["limb"] >= 0:
+		who += " (%s)" % Location.name_of(d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
 	if level == ExplainLevel.OFF:
 		return "%s: %s" % [who, res]

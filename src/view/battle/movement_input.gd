@@ -66,6 +66,30 @@ func on_confirm() -> void:
 		controller.submit_move(u, k, mode)
 
 
+## Enemy straight ahead of the previewed end position, if a charge (or a
+## death from above, when jumping) could be declared there.
+func charge_target() -> Unit:
+	if not has_preview:
+		return null
+	var c := MoveOptions.coord_of(preview)
+	var e := controller.state.unit_at(Hex.neighbor(c, preview.z))
+	if e == null or e.side == selected.side:
+		return null
+	if mode != MoveMode.Kind.JUMP and options.path_to(preview).is_empty():
+		return null
+	return e
+
+
+func on_charge() -> void:
+	var e := charge_target()
+	if e:
+		var u := selected
+		var k := preview
+		var m := mode
+		clear_selection()
+		controller.submit_move(u, k, m, e.id)
+
+
 func clear_selection() -> void:
 	selected = null
 	has_preview = false
@@ -129,8 +153,15 @@ func _refresh() -> void:
 	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s" % [selected.def.display_name(),
 			MoveMode.name_of(mode), spent, options.budget, where,
 			"  |  prone: standing costs 2 MP and a roll" if selected.prone else ""])
+	var ct := charge_target()
+	hud.charge_button.visible = ct != null
+	hud.charge_button.text = "Death from Above" if mode == MoveMode.Kind.JUMP else "Charge"
 	if has_preview:
-		hud.set_tip(Advisor.move(controller.state, selected, mode, preview, options,
-				GameSettings.explain_level))
+		var tip := Advisor.move(controller.state, selected, mode, preview, options,
+				GameSettings.explain_level)
+		if ct:
+			tip += "\n" + Advisor.charge(selected, ct, mode, MoveOptions.hexes_entered(
+					options.path_to(preview), selected.coord), GameSettings.explain_level)
+		hud.set_tip(tip)
 	else:
 		hud.set_tip("Tap a highlighted hex to preview the move." if GameSettings.explain_level != ExplainLevel.OFF else "")

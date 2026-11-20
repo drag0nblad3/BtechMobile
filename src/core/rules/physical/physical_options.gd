@@ -14,7 +14,28 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 		out.append(_punch(state, a, t, arm))
 	for leg in [Location.RL, Location.LL]:
 		out.append(_kick(state, a, t, leg))
+	out.append(_push(state, a, t))
 	return out
+
+
+## Push: both arms, target straight ahead, piloting -1, no damage; the target
+## is shoved one hex back and must roll to stay up.
+static func _push(state: GameState, a: Unit, t: Unit) -> Dictionary:
+	var th := ToHit.new()
+	var opt := {"kind": "push", "limb": -1, "to_hit": th, "damage": 0}
+	if not _common(state, a, t, th):
+		return opt
+	if FiringArc.wedge(a.coord, a.torso_facing(), t.coord) != 0:
+		th.impossible = "Pushes need the target straight ahead"
+	elif t.prone:
+		th.impossible = "Can't push a 'Mech that is already down"
+	elif _arm_fired(a, Location.LA) or _arm_fired(a, Location.RA):
+		th.impossible = "Both arms are needed; one fired a weapon"
+	elif a.is_location_destroyed(Location.LA) or a.is_location_destroyed(Location.RA):
+		th.impossible = "Pushing needs both arms"
+	if th.impossible == "":
+		th.add("push", -1, "Shoving is easier than punching: -1, but does no damage.")
+	return opt
 
 
 static func _common(state: GameState, a: Unit, t: Unit, th: ToHit) -> bool:
@@ -114,9 +135,9 @@ static func declare(state: GameState, a: Unit, attacks: Array) -> Array[Dictiona
 				continue
 			if not opt["to_hit"].possible() or used.has(opt["limb"]) or kicked:
 				continue
-			if opt["kind"] == "kick" and not out.is_empty():
+			if (opt["kind"] == "kick" or opt["kind"] == "push") and not out.is_empty():
 				continue
-			kicked = opt["kind"] == "kick"
+			kicked = opt["kind"] == "kick" or opt["kind"] == "push"
 			used[opt["limb"]] = true
 			opt["attacker_id"] = a.id
 			opt["target_id"] = t.id
