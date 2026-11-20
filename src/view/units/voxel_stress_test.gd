@@ -1,18 +1,21 @@
 class_name VoxelStressTest
 extends Node3D
-## Real geometry load test: 20 highest-detail chassis and repeated voxel hits.
+## Real geometry load test: selected 20 or 60 high-detail chassis and repeated hits.
 ## Models are constructed one per frame to keep the stop control responsive.
 ## The CPU/GPU cost is intentionally representative of twenty full models.
 
 signal all_spawned
 
-const TARGET_COUNT := 20
+const TARGET_COUNT := 20  ## Default and backwards-compatible smoke-test count.
+const LARGE_TARGET_COUNT := 60
 const COLUMNS := 5
-const GRID_SPACING := 3.65  ## Wider 5x4 formation on the expanded hangar floor.
+const LARGE_COLUMNS := 8
+const GRID_SPACING := 3.65  ## Same comfortable spacing at either population.
 const SHOT_INTERVAL := 0.30
 const SAMPLE_INTERVAL := 1.0
 
 var profile: Dictionary = {}
+var target_count := TARGET_COUNT
 var models: Array[VoxelMech] = []
 var original_voxels := 0
 var voxels_removed := 0
@@ -45,15 +48,31 @@ static func highest_voxel_profile(profiles: Array[Dictionary],
 	return best
 
 
-static func grid_position(index: int) -> Vector3:
-	var column := index % COLUMNS
-	var row := index / COLUMNS
-	return Vector3((float(column) - 2.0) * GRID_SPACING, 0.0,
-			(float(row) - 1.5) * GRID_SPACING)
+static func grid_position(index: int, population: int = TARGET_COUNT) -> Vector3:
+	var columns := LARGE_COLUMNS if population == LARGE_TARGET_COUNT else COLUMNS
+	var rows := ceili(float(population) / float(columns))
+	var row := index / columns
+	var col := index % columns
+	# Center partial last rows too (60 = 8x7 full rows + 4 centered).
+	var row_items := mini(columns, population - row * columns)
+	return Vector3((float(col) - float(row_items - 1) * 0.5) * GRID_SPACING,
+			0.0, (float(row) - float(rows - 1) * 0.5) * GRID_SPACING)
 
 
-func start(chosen_profile: Dictionary, seed: int = -1) -> void:
+static func formation_radius(population: int) -> float:
+	var columns := LARGE_COLUMNS if population == LARGE_TARGET_COUNT else COLUMNS
+	var rows := ceili(float(population) / float(columns))
+	return maxf(float(columns - 1), float(rows - 1)) * GRID_SPACING * 0.5
+
+
+static func camera_distance(population: int) -> float:
+	return 52.0 if population == LARGE_TARGET_COUNT else 31.5
+
+
+func start(chosen_profile: Dictionary, population: int = TARGET_COUNT, seed: int = -1) -> void:
 	assert(profile.is_empty() and not chosen_profile.is_empty())
+	assert(population == TARGET_COUNT or population == LARGE_TARGET_COUNT)
+	target_count = population
 	profile = chosen_profile.duplicate()
 	if seed >= 0:
 		_rng.seed = seed
@@ -69,9 +88,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if profile.is_empty():
 		return
-	if models.size() < TARGET_COUNT:
+	if models.size() < target_count:
 		_spawn_one()
-		if models.size() == TARGET_COUNT:
+		if models.size() == target_count:
 			all_spawned.emit()
 		return
 	elapsed_seconds += delta
@@ -98,7 +117,7 @@ func _spawn_one() -> void:
 	mech.profile_id = str(profile["id"])
 	mech.detail_level = int(profile.get("voxel_detail", 1))
 	mech.upper_stability = 0.98
-	mech.position = grid_position(index)
+	mech.position = grid_position(index, target_count)
 	mech.rotation.y = _rng.randf_range(-0.16, 0.16)
 	add_child(mech)
 	# These are stationary targets; avoid 20 extra idle _process callbacks.
@@ -167,7 +186,7 @@ static func impact_radius(part: VoxelPart, rng: RandomNumberGenerator) -> float:
 
 
 func ping_random_model() -> int:
-	if models.size() != TARGET_COUNT:
+	if models.size() != target_count:
 		return 0
 	shots_attempted += 1
 	# Continue after a detached or completely shredded part. Every successful
