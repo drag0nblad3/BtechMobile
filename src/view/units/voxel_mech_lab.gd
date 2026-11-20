@@ -19,6 +19,11 @@ var _distance := 5.8
 var _right_drag := false
 var _touch_dragged := false
 var _last_hit := "No impacts yet"
+var stress_test: VoxelStressTest
+var stress_button: Button
+var stress_render_surfaces := true
+var _single_buttons: Array[Button] = []
+var _saved_camera := Vector3.ZERO
 
 
 func _ready() -> void:
@@ -177,6 +182,19 @@ func make_hud() -> void:
 	add_button(second, "RESET", reset_lab)
 	var back := add_button(second, "MAIN MENU", _open_launcher)
 	back.name = "BackToLauncher"
+	for group in [first, second]:
+		for node in group.get_children():
+			if node is Button and node != back:
+				_single_buttons.append(node)
+	var stress_row := HBoxContainer.new()
+	column.add_child(stress_row)
+	stress_button = add_button(stress_row, "STRESS TEST x20", _toggle_stress_test)
+	stress_button.name = "StressTestButton"
+	stress_button.custom_minimum_size.x = 210
+	var stress_hint := Label.new()
+	stress_hint.text = "20 densest mechs + continuous random damage"
+	stress_hint.add_theme_font_size_override("font_size", 12)
+	stress_row.add_child(stress_hint)
 	var help := Label.new()
 	help.text = "Shots now carve variable jagged craters · swipe to orbit · scroll to zoom"
 	help.add_theme_font_size_override("font_size", 12)
@@ -192,11 +210,86 @@ func add_button(parent: HBoxContainer, title: String, action: Callable) -> Butto
 	return button
 
 
+
+## Use the exact already-generated voxel catalog, not a hard-coded Jenner ID.
+## Generate any unfinished mesh-free counts synchronously on button press.
+func _highest_voxel_profile() -> Dictionary:
+	while _catalog_cursor < profiles.size():
+		_count_next_profile()
+	var best: Dictionary = {}
+	var most := -1
+	for profile in profiles:
+		var count := int(_catalog_counts.get(str(profile["id"]), 0))
+		if count > most:
+			most = count
+			best = profile
+	return best
+
+
+func _toggle_stress_test() -> void:
+	if stress_test != null:
+		_stop_stress_test()
+	else:
+		_start_stress_test()
+
+
+func _start_stress_test() -> void:
+	if stress_test != null:
+		return
+	var profile := _highest_voxel_profile()
+	if profile.is_empty():
+		return
+	# Remove the single mech so the test actually contains exactly 20 models.
+	if mech != null:
+		remove_child(mech)
+		mech.free()
+		mech = null
+	stress_test = VoxelStressTest.new()
+	stress_test.name = "StressPopulation"
+	stress_test.render_surfaces = stress_render_surfaces
+	add_child(stress_test)
+	stress_test.begin(profile)
+	_saved_camera = Vector3(_orbit, _elevation, _distance)
+	_orbit = PI
+	_elevation = 0.68
+	_distance = 25.0
+	update_camera()
+	stress_button.text = "STOP STRESS TEST"
+	chassis_selector.disabled = true
+	stability_slider.editable = false
+	for button in _single_buttons:
+		button.disabled = true
+	_last_hit = "Stress test: %s (20 models)" % profile["name"]
+
+
+func _stop_stress_test() -> void:
+	if stress_test == null:
+		return
+	stress_test.end()
+	remove_child(stress_test)
+	stress_test.free()
+	stress_test = null
+	_orbit = _saved_camera.x
+	_elevation = _saved_camera.y
+	_distance = _saved_camera.z
+	update_camera()
+	stress_button.text = "STRESS TEST x20"
+	chassis_selector.disabled = false
+	stability_slider.editable = true
+	for button in _single_buttons:
+		button.disabled = false
+	_spawn_mech()
+	mech.start_walk()
+	_last_hit = "Stress test stopped; solo mech restored"
+
+
 func _open_launcher() -> void:
 	get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _select_chassis(index: int) -> void:
+	if stress_test != null:
+		_stop_stress_test()
 	profile_index = index
 	if chassis_selector:
 		chassis_selector.select(index)
@@ -242,6 +335,8 @@ func sever_right() -> void:
 
 
 func reset_lab() -> void:
+	if stress_test != null:
+		_stop_stress_test()
 	mech.queue_free()
 	_spawn_mech()
 	_last_hit = "Loaded %s: %s" % [profiles[profile_index]["name"], profiles[profile_index]["gait"]]
@@ -254,6 +349,10 @@ func _on_struck(part_name: String, removed: int, detached: bool) -> void:
 
 
 func _process(_delta: float) -> void:
+	if stress_test != null:
+		if info != null:
+			info.text = stress_test.progress_text()
+		return
 	# Count one mesh-free chassis per frame. This avoids a large up-front stall
 	# and reports exact generated geometry, not estimated authoring volumes.
 	if _catalog_cursor < profiles.size():
@@ -325,6 +424,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func fire_at_screen(point: Vector2) -> void:
+	if stress_test != null or mech == null:
+		return
 	var origin := camera.project_ray_origin(point)
 	var direction := camera.project_ray_normal(point)
 	var hit := mech.shoot(origin, direction)
