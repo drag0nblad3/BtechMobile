@@ -8,10 +8,10 @@ const DAMAGE_TAKEN_WEIGHT := 0.8
 const MAX_CANDIDATES := 60
 
 
-## Returns {key: Vector3i, mode, reason}.
+## Returns {key: Vector3i, mode, reason, charge: target id or -1}.
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	var best := {"key": MoveOptions.key(u.coord, u.facing), "mode": MoveMode.Kind.WALK,
-			"score": -INF, "reason": "stays put"}
+			"score": -INF, "reason": "stays put", "charge": -1}
 	for mode in [MoveMode.Kind.WALK, MoveMode.Kind.RUN, MoveMode.Kind.JUMP]:
 		var opts := MovePlanner.plan(state, u, mode)
 		for k in _candidates(state, u, opts):
@@ -56,6 +56,11 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	u.hexes_moved = hexes
 	u.heat_generated += MoveMode.heat(mode, u.hexes_moved) if moved else 0
 	var dealt: float = BotFire.plan(state, u)["value"]
+	var charge := BotCharge.evaluate(state, u, opts.budget - int(opts.cost.get(k, 0))) if moved else {}
+	if not charge.is_empty() and charge["value"] <= dealt:
+		charge = {}
+	if not charge.is_empty():
+		dealt = charge["value"]
 	var taken := 0.0
 	for e in state.units:
 		if e.side != u.side and not e.destroyed:
@@ -74,7 +79,9 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	var where := "stays at %s" % Hex.label(u.coord) if not moved else "%s to %s" % [
 			MoveMode.name_of(mode).to_lower() + "s", Hex.label(u.coord)]
 	var reason := "%s: can deal about %.1f next phase, risks %.1f" % [where, dealt, taken]
-	if dealt == 0.0 and gap > 0:
+	if not charge.is_empty():
+		reason = "%s and %s" % [where, charge["reason"]]
+	elif dealt == 0.0 and gap > 0:
 		reason = "%s to close in (its weapons work best within %d hexes)" % [where, preferred_range(u)]
 	if tile and LineOfSight.woods_value(tile) > 0:
 		reason += ", ends in %s for cover" % tile.terrain.name.to_lower()
@@ -85,7 +92,7 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	u.move_mode = save[2]
 	u.hexes_moved = save[3]
 	u.heat_generated = save[4]
-	return {"score": score, "reason": reason}
+	return {"score": score, "reason": reason, "charge": charge.get("target_id", -1)}
 
 
 ## Medium range of its hardest-hitting weapon: where it wants to fight.

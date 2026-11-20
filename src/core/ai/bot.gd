@@ -19,7 +19,7 @@ static func act(gc: GameController, side: int) -> bool:
 		Phase.Kind.MOVEMENT:
 			var m := BotMove.plan(s, u)
 			gc.announce(u, m["reason"])
-			return gc.submit_move(u, m["key"], m["mode"])
+			return gc.submit_move(u, m["key"], m["mode"], m.get("charge", -1))
 		Phase.Kind.WEAPON_ATTACK:
 			var f := BotFire.plan(s, u)
 			if f["twist"] != 0:
