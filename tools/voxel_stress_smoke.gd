@@ -17,7 +17,57 @@ func _run() -> void:
 	if lab.stress_start_button.name != "StressTestButton":
 		_fail("Stress button needs a stable UI identifier")
 		return
+	var zoom_in := lab.find_child("ZoomInButton", true, false) as Button
+	var zoom_out := lab.find_child("ZoomOutButton", true, false) as Button
+	if zoom_in == null or zoom_out == null:
+		_fail("Missing touch-sized zoom in/out controls")
+		return
+	if lab._floor_mesh.size != lab.SOLO_FLOOR:
+		_fail("Solo lab floor must start at the original size")
+		return
 	lab.stress_start_button.pressed.emit()
+	if lab._floor_mesh.size != lab.STRESS_FLOOR or not lab._stress_grid.visible:
+		_fail("Stress arena failed to expand the floor and grid")
+		return
+	var initial_distance := lab._distance
+	zoom_in.pressed.emit()
+	if lab._distance >= initial_distance:
+		_fail("Zoom in button did not move camera toward stress arena")
+		return
+	zoom_out.pressed.emit()
+	if absf(lab._distance - initial_distance) > 0.01:
+		_fail("Zoom controls did not reverse properly")
+		return
+	var wheel := InputEventMouseButton.new()
+	wheel.button_index = MOUSE_BUTTON_WHEEL_DOWN
+	wheel.pressed = true
+	lab._unhandled_input(wheel)
+	if lab._distance <= initial_distance or lab._distance > 80.0:
+		_fail("Mouse wheel snapped stress camera to solo distance limits")
+		return
+	var t0 := InputEventScreenTouch.new()
+	t0.index = 0
+	t0.position = Vector2(100, 100)
+	t0.pressed = true
+	lab._unhandled_input(t0)
+	var t1 := InputEventScreenTouch.new()
+	t1.index = 1
+	t1.position = Vector2(200, 100)
+	t1.pressed = true
+	lab._unhandled_input(t1)
+	var pinch_baseline := lab._distance
+	var drag := InputEventScreenDrag.new()
+	drag.index = 1
+	drag.position = Vector2(260, 100)
+	drag.relative = Vector2(60, 0)
+	lab._unhandled_input(drag)
+	if not lab._distance < pinch_baseline:
+		_fail("Two-finger spread did not zoom in")
+		return
+	t1.pressed = false
+	lab._unhandled_input(t1)
+	t0.pressed = false
+	lab._unhandled_input(t0)
 	if lab._stress == null:
 		_fail("Start button did not create stress controller")
 		return
@@ -59,6 +109,9 @@ func _run() -> void:
 		_fail("Live FPS and damage stats are not displayed")
 		return
 	lab.stress_stop_button.pressed.emit()
+	if lab._floor_mesh.size != lab.SOLO_FLOOR or lab._stress_grid.visible:
+		_fail("Stress floor and grid must reset after stopping")
+		return
 	if lab._stress != null or not lab.mech.visible:
 		_fail("Stop did not clear the stress targets and restore lab")
 		return
