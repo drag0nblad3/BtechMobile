@@ -49,6 +49,37 @@ Profile IDs match `data/units/*.json`; as new chassis art is refined, add
 geometry profiles without changing the core rules. CI also captures
 `digitigrade_a.png` and `digitigrade_b.png` at opposite walk phases.
 
+## High-fidelity voxel pass (03)
+
+- **Jenner JR7-D:** selectable chassis profile now uses a genuine **37.5 mm**
+  voxel lattice, compared with the standard 75 mm cells. Resolution is 2× per
+  dimension (up to roughly 8× the original occupied cell count), plus fine
+  one-voxel canopy seams, micro-bevels, engine vents and piston color accents.
+  Shape is unchanged at mech scale; tiny details are genuinely detachable
+  cells, not texture-only decorations.
+- The other five profiles retain their 75 mm grid until they receive model-
+  specific detailed geometry and Android performance profiling. Each profile's
+  `voxel_detail` field controls its build density (1 or 2).
+- **All chassis voxel counts** appear in the lab catalog. The selected model
+  also reports original count, current count, number of removed voxels and
+  current voxel pitch. Counts come directly from occupied cells (no estimates)
+  and are measured one model per frame using mesh-free construction to avoid
+  building six render meshes during startup.
+- **Variable damage:** every tap or scripted shot uses seeded, asymmetric,
+  jagged local erosion and smaller secondary chips. Scripted blast locations
+  also vary slightly. Tests can pin the random seed to reproduce failures.
+  Intact distant parts are never altered by a hit.
+- **Fast ray picking:** a bounded voxel-grid traversal replaces an O(total
+  voxels) scan for every shot. Erosion visits only a bounded neighborhood
+  around the impact and rebuilds only the changed component once.
+- Voxel erosion remains **view-only**; official armor and equipment damage
+  continue to be determined by the rules simulation. High-detail geometry
+  is an art prototype and still needs profiling on physical Android devices.
+
+To avoid generating unsolicited previews, GitHub CI renders screenshots only
+when started explicitly with **Actions → CI → Run workflow**. Normal push and
+pull-request checks still run unit tests and headless scene smokes.
+
 ## Mechanics demonstrated
 
 - Two 0.70m bone segments per leg, knee/ankle pivots and analytic IK.
