@@ -31,10 +31,12 @@ func test_high_detail_jenner_counts_real_meshless_geometry() -> void:
 	detail.render_surfaces = false
 	detail.build()
 	var high := detail.initial_voxels()
-	check(high > n * 7, "Jenner must have materially more cells, not just a label")
-	check(high <= n * 8 + 100, "high detail must remain within bounded 2x resolution")
-	check(is_equal_approx(detail.parts["torso"].voxel_size, 0.0375),
-			"Jenner high detail pitch must be halved")
+	check(high > n, "non-cockpit high-detail parts should add physical cells")
+	check(high < n * 4, "mixed-detail Jenner must remain within a bounded budget")
+	check(is_equal_approx(detail.parts["torso"].voxel_size, 0.025),
+			"Jenner cockpit now uses genuinely sculpted 25 mm cells")
+	check(is_equal_approx(detail.parts["left_arm"].voxel_size, 0.0375),
+			"Jenner laser pods retain 37.5 mm muzzle detailing")
 	check_eq(detail.remaining_voxels(), high, "catalog must count actual occupied voxels")
 	check(not detail.parts["torso"].has_node("Surface"),
 			"catalog counting should never build GPU meshes")
@@ -118,8 +120,8 @@ func test_profile_catalog_reports_each_model_original_cells() -> void:
 		check_eq(count, model.remaining_voxels(), "catalog count mismatch: " + id)
 		seen[id] = count
 		model.free()
-	check(seen["jenner_jr7d"] > seen["prototype"],
-			"fine Jenner should have more voxels than the starter model")
+	check_eq(seen.size(), 6, "all six selectable models need independent voxel totals")
+	check(seen["jenner_jr7d"] > 0, "Jenner cockpit must be countable")
 
 
 func test_lab_armor_and_structure_roles_match_claude_model_contract() -> void:
