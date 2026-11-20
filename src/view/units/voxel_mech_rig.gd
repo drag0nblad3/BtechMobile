@@ -6,9 +6,7 @@ extends RefCounted
 static func build(frame: Node3D, upper: Node3D, profile: Dictionary) -> Dictionary:
 	var rig := {"parts": {}, "sockets": {}, "hips": [], "knees": [],
 			"hocks": [], "ankles": [], "arms": []}
-	var torso := VoxelPart.new()
-	torso.name = "Torso"
-	upper.add_child(torso)
+	var torso := make_part("Torso", upper, profile)
 	VoxelMechArt.torso(torso, str(profile.get("shape", "prototype")))
 	rig["parts"]["torso"] = torso
 	for side in 2:
@@ -29,9 +27,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 			VoxelJennerGait.HIP_HEIGHT if jenner else (VoxelDigitigradeGait.HIP_HEIGHT if digi else 1.36), 0)
 	frame.add_child(hip)
 	rig["hips"].append(hip)
-	var thigh := VoxelPart.new()
-	thigh.name = key
-	hip.add_child(thigh)
+	var thigh := make_part(key, hip, profile)
 	if jenner:
 		VoxelJennerArt.thigh(thigh)
 	else:
@@ -45,9 +41,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	knee.position.y = -(VoxelJennerGait.THIGH if jenner else VoxelGait.THIGH)
 	hip.add_child(knee)
 	rig["knees"].append(knee)
-	var shin := VoxelPart.new()
-	shin.name = key + "_shin"
-	knee.add_child(shin)
+	var shin := make_part(key + "_shin", knee, profile)
 	if jenner:
 		VoxelJennerArt.shin(shin)
 	else:
@@ -63,9 +57,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 		hock.position.y = -(VoxelJennerGait.SHIN if jenner else VoxelDigitigradeGait.SHIN)
 		knee.add_child(hock)
 		rig["hocks"].append(hock)
-		var meta := VoxelPart.new()
-		meta.name = key + "_metatarsal"
-		hock.add_child(meta)
+		var meta := make_part(key + "_metatarsal", hock, profile)
 		if jenner:
 			VoxelJennerArt.metatarsal(meta)
 			meta.seal()
@@ -82,9 +74,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 			(VoxelDigitigradeGait.METATARSAL if digi else VoxelGait.SHIN))
 	end_pivot.add_child(ankle)
 	rig["ankles"].append(ankle)
-	var foot := VoxelPart.new()
-	foot.name = key + "_foot"
-	ankle.add_child(foot)
+	var foot := make_part(key + "_foot", ankle, profile)
 	if jenner:
 		VoxelJennerArt.foot(foot)
 	else:
@@ -103,9 +93,18 @@ static func add_arm(upper: Node3D, rig: Dictionary, side: int,
 	shoulder.position = Vector3((-1.0 if side == 0 else 1.0) * width, 0.17, 0)
 	upper.add_child(shoulder)
 	rig["arms"].append(shoulder)
-	var arm := VoxelPart.new()
-	arm.name = key
-	shoulder.add_child(arm)
+	var arm := make_part(key, shoulder, profile)
 	VoxelMechArt.arm(arm, str(profile.get("arm", "standard")), side)
 	rig["parts"][key] = arm
 	rig["sockets"][key] = shoulder
+
+
+## Resolution is configured at part creation; authoring still uses the familiar
+## 75 mm coarse grid and seal() expands only the chosen chassis.
+static func make_part(name: String, parent: Node3D,
+		profile: Dictionary) -> VoxelPart:
+	var part := VoxelPart.new()
+	part.name = name
+	part.detail_scale = clampi(int(profile.get("voxel_detail", 1)), 1, 2)
+	parent.add_child(part)
+	return part
