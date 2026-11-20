@@ -1,0 +1,12 @@
+# Godot
+game/.godot/
+game/android/
+*.import.bak
+export_credentials.cfg
+
+# Build output and signing keys
+build/
+*.apk
+*.aab
+*.keystore
+*.jks
