@@ -34,6 +34,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	else:
 		thigh.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
 		thigh.fill_box(Vector3i(-4, -3, -4), Vector3i(4, -1, 4), 4)
+	VoxelHighFidelityArt.leg(thigh, str(profile.get("shape", "")), "thigh")
 	thigh.seal(-3)
 	rig["parts"][key] = thigh
 	rig["sockets"][key] = hip
@@ -48,6 +49,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	else:
 		shin.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
 		shin.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 0, 4), 4)
+	VoxelHighFidelityArt.leg(shin, str(profile.get("shape", "")), "shin")
 	shin.seal()
 	rig["parts"][key + "_shin"] = shin
 	rig["sockets"][key + "_shin"] = knee
@@ -82,6 +84,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	else:
 		foot.armor_box(Vector3i(-4, -2, -10 if digi else -9),
 				Vector3i(4, 1, 4), 4, 1)
+	VoxelHighFidelityArt.leg(foot, str(profile.get("shape", "")), "foot")
 	foot.seal()
 	rig["parts"][key + "_foot"] = foot
 
