@@ -86,7 +86,7 @@ static func _disable(u: Unit, s: CritSlot) -> String:
 			s.hit = true
 			return "life support"
 		CritSlot.Kind.HEAT_SINK:
-			u.heat_sinks_lost += 1
+			u.lose_heat_sink(s)
 			return "heat sink"
 		CritSlot.Kind.WEAPON:
 			u.weapons[s.ref].destroyed = true

@@ -136,6 +136,22 @@ func working_heat_sinks() -> int:
 	return maxi(0, def.heat_sinks - heat_sinks_lost)
 
 
+## Heat removed each Heat Phase by the working heat sinks.
+func dissipation() -> int:
+	return working_heat_sinks() * def.heat_per_sink()
+
+
+## A critical hit on a heat sink slot. Returns false when that sink (one of a
+## double's other slots) was already destroyed.
+func lose_heat_sink(slot: CritSlot) -> bool:
+	for loc in Location.COUNT:
+		for s: CritSlot in slots[loc]:
+			if s != slot and s.hit and s.kind == CritSlot.Kind.HEAT_SINK and s.ref == slot.ref:
+				return false
+	heat_sinks_lost += 1
+	return true
+
+
 ## Walking MP after leg damage, then heat (book pp. 90, 99): each hip, upper
 ## leg, lower leg or foot hit is -1, but leg damage can't go below 1; a
 ## destroyed leg sets the base to 1; both legs gone is 0.

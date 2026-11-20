@@ -29,6 +29,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"armor": ceilf(armor_pts / ARMOR_PER_TON * 2.0) / 2.0,
 		"weapons": weapons,
 		"ammo": float(def.ammo_mounts.size()),
+		"case": def.case_locs.size() * 0.5,
 	}
 
 

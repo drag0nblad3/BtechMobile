@@ -46,8 +46,9 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			bin.destroyed = true
 			return "empty ammo bin destroyed"
 		CritSlot.Kind.HEAT_SINK:
-			u.heat_sinks_lost += 1
-			return "heat sink destroyed"
+			if not u.lose_heat_sink(slot):
+				return "part of a heat sink already destroyed"
+			return "heat sink destroyed: -%d heat dissipation" % u.def.heat_per_sink()
 		CritSlot.Kind.JUMP_JET:
 			return "jump jet destroyed"
 	return "no effect"

@@ -39,21 +39,27 @@ static func apply(u: Unit, loc: int, amount: int, rear: bool = false) -> Array[D
 static func apply_internal(u: Unit, loc: int, amount: int) -> Array[Dictionary]:
 	var steps: Array[Dictionary] = []
 	while amount > 0 and loc >= 0 and not u.destroyed:
-		var step := {"loc": loc, "rear": false, "armor": 0, "structure": 0,
-				"destroyed": false, "breached": false}
-		if not u.is_location_destroyed(loc):
-			var s := mini(u.structure[loc], amount)
-			u.structure[loc] -= s
-			amount -= s
-			u.damage_this_phase += s
-			step["structure"] = s
-			step["breached"] = s > 0
-			if u.structure[loc] <= 0:
-				step["destroyed"] = true
-				destroy_location(u, loc)
+		var step := apply_internal_one(u, loc, amount)
+		amount -= int(step["structure"])
 		steps.append(step)
 		loc = Location.transfer(loc)
 	return steps
+
+
+## Internal damage to one location only; returns its step.
+static func apply_internal_one(u: Unit, loc: int, amount: int) -> Dictionary:
+	var step := {"loc": loc, "rear": false, "armor": 0, "structure": 0,
+			"destroyed": false, "breached": false}
+	if not u.is_location_destroyed(loc):
+		var s := mini(u.structure[loc], amount)
+		u.structure[loc] -= s
+		u.damage_this_phase += s
+		step["structure"] = s
+		step["breached"] = s > 0
+		if u.structure[loc] <= 0:
+			step["destroyed"] = true
+			destroy_location(u, loc)
+	return step
 
 
 ## Marks a location (and anything that goes with it) destroyed.

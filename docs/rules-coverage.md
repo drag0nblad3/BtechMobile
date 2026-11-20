@@ -35,7 +35,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Armor per location, rear armor on torsos, maximum armor check.
 - ✅ Critical slot layout: engine, gyro, cockpit, sensors, life support, actuators, equipment.
 - 🟡 Design weight check (`DesignWeight`): structure, engine, gyro, cockpit, heat sinks, jump jets, armor, weapons and ammo add up to the tonnage — `TODO(rules)`: engine weight table is general knowledge, not in the Core Rulebook.
-- 🟡 Heat sinks: single only; `TODO(rules)`: 10 engine-integral for every design.
+- 🟡 Heat sinks: single (1 heat) or double (`"heat_sink_type": "double"`, pp. 89, 103: 2 heat each, 3 slots each, a hit on any slot destroys that sink, 2 extra each under water up to 6); `TODO(rules)`: 10 engine-integral for every design.
 - ⬜ Tonnage / construction validation (engine, armor and equipment weights).
 - 🟡 Heat scale effects (MP, to-hit, shutdown, ammo explosion) — `TODO(rules)`: verify thresholds.
 
@@ -68,6 +68,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Armor → structure → transfer inward; rear armor on torsos.
 - ✅ Side torso destroyed takes its arm; head or CT destroyed destroys the 'Mech.
 - ✅ Ammo explosion (pp. 95-96): remaining shots × damage, capped at 20, into structure, transferring structure-to-structure; over the cap the surviving last location loses its armor (rear for a torso); MechWarrior takes 1 hit.
+- ✅ CASE (`"case"` item, p. 96): an explosion in, or transferred into, a CASE location deals at most 10 to its structure and, if it survives, up to 10 more to its armor (rear for a torso); nothing transfers onward. CASE itself takes a slot and 0.5 t. CASE II is not modelled.
 - ✅ Head hits (p. 117): every hit that damages the head is 1 MechWarrior hit, even if the armor holds.
 - ✅ 20-damage piloting roll counts the armor and structure pips actually marked off, including falls and explosions.
 

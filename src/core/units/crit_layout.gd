@@ -23,10 +23,19 @@ static func build(def: UnitDef) -> Array:
 		var a: Dictionary = def.ammo_mounts[i]
 		var aw: WeaponDef = a["weapon"]
 		_place(out[a["loc"]], CritSlot.new(CritSlot.Kind.AMMO, aw.name + " Ammo", i), def)
+	var sink := 0
 	for loc: int in def.other_items:
 		for item: String in def.other_items[loc]:
-			var k := CritSlot.Kind.HEAT_SINK if item == "heat_sink" else CritSlot.Kind.JUMP_JET
-			_place(out[loc], CritSlot.new(k, item.capitalize()), def)
+			if item == "jump_jet":
+				_place(out[loc], CritSlot.new(CritSlot.Kind.JUMP_JET, "Jump Jet"), def)
+				continue
+			# Each heat sink gets its own ref so the 3 slots of a double share it.
+			var n := "Double Heat Sink" if def.double_heat_sinks else "Heat Sink"
+			for s in (3 if def.double_heat_sinks else 1):
+				_place(out[loc], CritSlot.new(CritSlot.Kind.HEAT_SINK, n, sink), def)
+			sink += 1
+	for loc in def.case_locs:
+		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE"), def)
 	return out
 
 

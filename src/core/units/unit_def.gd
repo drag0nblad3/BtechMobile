@@ -14,6 +14,10 @@ var tonnage: int
 var walk_mp: int
 var jump_mp: int
 var heat_sinks: int = 10
+## Double heat sinks (p. 89): each removes 2 heat and fills 3 slots.
+var double_heat_sinks := false
+## Locations protected by CASE (p. 96).
+var case_locs: Array[int] = []
 var role: String = ""    ## One-line tactical summary for the force builder.
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 var armor: Array[int] = []       ## Per Location, front.
@@ -37,6 +41,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.walk_mp = int(d["walk_mp"])
 	u.jump_mp = int(d.get("jump_mp", 0))
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
+	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.role = d.get("role", "")
 	u.sprite = d.get("sprite", "")
 	var arm: Dictionary = d.get("armor", {})
@@ -53,8 +58,11 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	return u
 
 
-## Items: "<weapon id>", "<weapon id>@rear", "ammo:<weapon id>", "heat_sink", "jump_jet".
+## Items: "<weapon id>", "<weapon id>@rear", "ammo:<weapon id>", "heat_sink", "jump_jet", "case".
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
+	if item == "case":
+		case_locs.append(loc)
+		return
 	if item == "heat_sink" or item == "jump_jet":
 		if not other_items.has(loc):
 			other_items[loc] = []
@@ -107,6 +115,15 @@ func total_armor() -> int:
 	for loc in Location.COUNT:
 		n += armor[loc] + rear_armor[loc]
 	return n
+
+
+## Heat one working heat sink removes.
+func heat_per_sink() -> int:
+	return 2 if double_heat_sinks else 1
+
+
+func has_case(loc: int) -> bool:
+	return case_locs.has(loc)
 
 
 func has_actuator(loc: int, actuator: String) -> bool:

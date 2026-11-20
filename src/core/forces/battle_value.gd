@@ -53,7 +53,7 @@ static func _weapons(def: UnitDef, b: Dictionary) -> void:
 	var move_heat := RUN_HEAT
 	if def.jump_mp > 0:
 		move_heat = maxi(move_heat, maxi(JUMP_HEAT_MIN, def.jump_mp))
-	var capacity := 6 + def.heat_sinks - move_heat
+	var capacity := 6 + def.heat_sinks * def.heat_per_sink() - move_heat
 	b["heat_capacity"] = capacity
 	var mounts := def.weapon_mounts.duplicate()
 	mounts.sort_custom(func(x: Dictionary, y: Dictionary) -> bool:
