@@ -19,9 +19,13 @@
 - **Campaign layer stays separate.** A future `src/campaign/` will build `GameState` from
   campaign data and read results back from it; the battle code doesn't need to know.
 
-## Turn flow (current)
-`start_turn` → Initiative (2d6 per side, ties reroll, loser first) → Movement
-(sides alternate unit by unit) → Weapon/Physical/Heat/End (stubs) → next turn.
+## Turn flow
+`start_turn` → Initiative (2d6 per side, ties reroll, loser first) → Movement →
+Weapon Attack → Physical Attack (sides alternate unit by unit in each) → Heat → End → next turn.
+Attacks are declared in order (`declare_fire`, `declare_physical`) and stored in
+`GameState`; the controller resolves them all when the phase ends, so attacks are
+simultaneous. Rule helpers in `src/core/rules/` (e.g. `WeaponFire`, `HeatPhase`) do the
+work and report through the controller's `_emit` callable; only the controller calls them.
 
 ## Movement search
 `MovePlanner` runs Dijkstra over states `(hex, facing)`. Steps are turn left/right (1 MP)

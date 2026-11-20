@@ -27,6 +27,11 @@ Battle mode first; campaign layer later.
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode`, `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing), `MoveOptions` |
+| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits` |
+| `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
+| `src/core/rules/piloting/` | `Psr` (piloting rolls, falls), `PilotDamage` |
+| `src/core/rules/physical/` | `PhysicalPhase` |
+| `src/core/rules/turn/` | `EndPhase` |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |

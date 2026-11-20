@@ -1,0 +1,70 @@
+class_name Damage
+extends RefCounted
+## Applies damage to a 'Mech: armor first, then internal structure, then
+## whatever is left transfers inward (arm/leg -> side torso -> center torso).
+## Rear hits use rear armor; structure is shared front and back.
+
+
+## Returns one step per location touched:
+## {loc, rear, armor, structure, destroyed (location), breached (structure hit)}.
+static func apply(u: Unit, loc: int, amount: int, rear: bool = false) -> Array[Dictionary]:
+	var steps: Array[Dictionary] = []
+	u.damage_this_phase += amount
+	while amount > 0 and loc >= 0 and not u.destroyed:
+		var step := {"loc": loc, "rear": rear, "armor": 0, "structure": 0,
+				"destroyed": false, "breached": false}
+		if not u.is_location_destroyed(loc):
+			var arm := u.rear_armor if rear and Location.HAS_REAR.has(loc) else u.armor
+			var a := mini(arm[loc], amount)
+			arm[loc] -= a
+			amount -= a
+			step["armor"] = a
+			var s := mini(u.structure[loc], amount)
+			u.structure[loc] -= s
+			amount -= s
+			step["structure"] = s
+			step["breached"] = s > 0
+			if u.structure[loc] <= 0:
+				step["destroyed"] = true
+				destroy_location(u, loc)
+		steps.append(step)
+		loc = Location.transfer(loc)
+		rear = false
+	return steps
+
+
+## Marks a location (and anything that goes with it) destroyed.
+static func destroy_location(u: Unit, loc: int) -> void:
+	u.structure[loc] = 0
+	u.armor[loc] = 0
+	u.rear_armor[loc] = 0
+	for w in u.weapons:
+		if w.loc == loc:
+			w.destroyed = true
+	for a in u.ammo:
+		if a.loc == loc:
+			a.destroyed = true
+	if loc == Location.HEAD:
+		destroy_unit(u, "head destroyed")
+	elif loc == Location.CT:
+		destroy_unit(u, "center torso destroyed")
+	else:
+		var arm := Location.arm_of_torso(loc)
+		if arm >= 0 and not u.is_location_destroyed(arm):
+			destroy_location(u, arm)
+
+
+static func destroy_unit(u: Unit, reason: String) -> void:
+	if u.destroyed:
+		return
+	u.destroyed = true
+	u.destroyed_reason = reason
+
+
+## Splits damage into clusters (e.g. LRMs in groups of 5).
+static func clusters(total: int, size: int) -> Array[int]:
+	var out: Array[int] = []
+	while total > 0:
+		out.append(mini(size, total))
+		total -= size
+	return out
