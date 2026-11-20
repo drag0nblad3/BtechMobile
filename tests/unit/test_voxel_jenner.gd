@@ -40,10 +40,10 @@ func test_jenner_has_three_independent_toe_tips() -> void:
 	for key in ["left_leg_foot", "right_leg_foot"]:
 		var foot: VoxelPart = mech.parts[key]
 		for x in [-3, 0, 3]:
-			check(foot.cells.has(Vector3i(x, -2, -13)), "missing " + key + " toe")
-		check(not foot.cells.has(Vector3i(-1, -2, -13)),
+			check(foot.cells.has(Vector3i(x, -2, -11)), "missing " + key + " toe")
+		check(not foot.cells.has(Vector3i(-1, -2, -11)),
 				"first toe gap must remain open")
-		check(not foot.cells.has(Vector3i(2, -2, -13)),
+		check(not foot.cells.has(Vector3i(2, -2, -11)),
 				"second toe gap must remain open")
 	mech.free()
 
