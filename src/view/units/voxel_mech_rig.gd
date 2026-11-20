@@ -106,5 +106,6 @@ static func make_part(name: String, parent: Node3D,
 	var part := VoxelPart.new()
 	part.name = name
 	part.detail_scale = clampi(int(profile.get("voxel_detail", 1)), 1, 2)
+	part.generate_mesh = not bool(profile.get("count_only", false))
 	parent.add_child(part)
 	return part
