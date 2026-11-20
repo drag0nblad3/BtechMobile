@@ -43,6 +43,9 @@ func build() -> void:
 	_profile = VoxelChassis.find(profile_id)
 	_chassis = Node3D.new()
 	_chassis.name = "Frame"
+	# Vertical-only scene scale corrects the old squat frame without
+	# changing the joint angles, terrain footprint or voxel hit counts.
+	_chassis.scale.y = float(_profile.get("height_stretch", 1.0))
 	add_child(_chassis)
 	_upper = Node3D.new()
 	_upper.name = "UpperBody"
