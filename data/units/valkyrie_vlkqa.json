@@ -1,0 +1,15 @@
+{
+  "id": "valkyrie_vlkqa", "name": "Valkyrie", "model": "VLK-QA", "tonnage": 30,
+  "walk_mp": 5, "jump_mp": 5, "heat_sinks": 11, "sprite": "valkyrie",
+  "role": "Light fire support. Unusually well armored for its size; lobs LRMs from cover and jumps away.",
+  "armor": {"HD": 9, "CT": 15, "LT": 10, "RT": 10, "LA": 8, "RA": 8, "LL": 13, "RL": 13},
+  "rear_armor": {"CT": 4, "LT": 3, "RT": 3},
+  "equipment": {
+    "RA": ["medium_laser"],
+    "LT": ["lrm10", "ammo:lrm10", "jump_jet"],
+    "RT": ["heat_sink", "jump_jet"],
+    "CT": ["jump_jet"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

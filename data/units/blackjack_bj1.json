@@ -1,0 +1,13 @@
+{
+  "id": "blackjack_bj1", "name": "Blackjack", "model": "BJ-1", "tonnage": 45,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 11, "sprite": "blackjack",
+  "role": "Medium line holder. Four medium lasers up close, two AC/2s to plink from far away; runs hot if it fires everything.",
+  "armor": {"HD": 8, "CT": 18, "LT": 14, "RT": 14, "LA": 12, "RA": 12, "LL": 18, "RL": 18},
+  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
+  "equipment": {
+    "LA": ["ac2", "medium_laser", "medium_laser"],
+    "RA": ["ac2", "medium_laser", "medium_laser"],
+    "LT": ["ammo:ac2", "jump_jet", "jump_jet"],
+    "RT": ["heat_sink", "jump_jet", "jump_jet"]
+  }
+}

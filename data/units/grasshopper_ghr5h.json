@@ -1,0 +1,17 @@
+{
+  "id": "grasshopper_ghr5h", "name": "Grasshopper", "model": "GHR-5H", "tonnage": 70,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 22, "sprite": "grasshopper",
+  "role": "Heavy jumper. Thick armor, lots of heat sinks and mostly energy weapons, so it can fight all day without ammo.",
+  "armor": {"HD": 9, "CT": 33, "LT": 22, "RT": 22, "LA": 22, "RA": 22, "LL": 26, "RL": 26},
+  "rear_armor": {"CT": 10, "LT": 8, "RT": 8},
+  "equipment": {
+    "HD": ["lrm5"],
+    "CT": ["large_laser"],
+    "LA": ["medium_laser", "heat_sink", "heat_sink"],
+    "RA": ["medium_laser", "heat_sink", "heat_sink"],
+    "LT": ["medium_laser", "ammo:lrm5", "heat_sink", "heat_sink", "heat_sink", "jump_jet"],
+    "RT": ["medium_laser", "heat_sink", "heat_sink", "heat_sink", "jump_jet"],
+    "LL": ["heat_sink", "jump_jet"],
+    "RL": ["heat_sink", "jump_jet"]
+  }
+}

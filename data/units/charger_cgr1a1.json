@@ -1,0 +1,12 @@
+{
+  "id": "charger_cgr1a1", "name": "Charger", "model": "CGR-1A1", "tonnage": 80,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 10, "sprite": "charger",
+  "role": "Assault rammer. A huge engine makes it fast for its size, but five small lasers barely scratch; it wins by charging.",
+  "armor": {"HD": 9, "CT": 26, "LT": 18, "RT": 18, "LA": 13, "RA": 13, "LL": 22, "RL": 22},
+  "rear_armor": {"CT": 7, "LT": 6, "RT": 6},
+  "equipment": {
+    "HD": ["small_laser"],
+    "LT": ["small_laser", "small_laser"],
+    "RT": ["small_laser", "small_laser"]
+  }
+}
