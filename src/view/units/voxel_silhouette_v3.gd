@@ -279,13 +279,14 @@ static func _jenner_nacelle(p: VoxelPart) -> void:
 	for x in [-5, 4]:
 		for z in [3, 4, 5]:
 			p.carve_box(Vector3i(x, 1, z), Vector3i(x, 3, z))
-	# A real air gap separates the two independent emitter housings.
-	p.carve_box(Vector3i(-3, 0, -9), Vector3i(2, 0, -4))
+	# This gap lies BETWEEN the laser assemblies: lower emitter at
+	# y=-2 and upper at y=1. Never cut across either actual muzzle mouth.
+	p.carve_box(Vector3i(-2, -1, -9), Vector3i(1, -1, -4))
 	for y in [-2, 1]:
-		p.fill_box(Vector3i(-3, y - 1, -10),
-				Vector3i(2, y + 1, -10), 8)
-		p.carve_box(Vector3i(-2, y, -11), Vector3i(1, y, -10))
-		p.fill_box(Vector3i(-2, y, -9), Vector3i(1, y, -9), 2)
+		# Side cheek rails, not an occluding wall over the blue emitters.
+		for x in [-4, 3]:
+			p.fill_box(Vector3i(x, y - 1, -10),
+					Vector3i(x, y + 1, -8), 8)
 
 
 static func _catapult_rack(p: VoxelPart) -> void:
