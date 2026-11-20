@@ -1,4 +1,4 @@
-# Voxel mech prototype 01 — isolated art and destruction lab
+| Catapult CPLT-C1 | 107,746 | Narrow beaked fuselage, widely spaced paired 15-tube LRM pods, birdlike hocks and widened toes |
 
 This prototype is a rendering experiment, not a change to Total Warfare damage rules.
 It lives under `src/view/units/` and `scenes/` and does not modify the
@@ -87,6 +87,26 @@ pull-request checks still run unit tests and headless scene smokes.
 
 ## Sculpted six-chassis roster (05)
 
+A second **reference-guided silhouette pass** followed actual BattleTech
+technical art, recorded in [the reference study](graphics/voxel-reference-study.md).
+It avoids a universal rounded biped shape: the Atlas uses narrow shoulders-to-
+hip armor and a distinct skull/cannon configuration; the Hunchback has a
+dominant squared shoulder-mounted gun; the Wolverine has a tall cockpit and
+raised SRM; the Jenner has a long aircraft nose; the Catapult has paired racks
+and no humanoid weapon arms. The experimental prototype remains intentionally
+asymmetric. Hip widths and weapon mounting points were revised per chassis.
+
+The default visible models now use **boundary-only surface nets** instead of
+square faces for every voxel. Mesh facets follow the actual sampled armor
+volume with smoothed normals, while ray picking, voxel damage, the 20/60-mech
+stress test and counted occupied microcells continue to use the same sparse
+voxel dictionary. The original cube renderer remains available for isolated
+unit tests. Each chassis receives a different neutral showroom armor finish;
+the colors are purely visual, never tactical or faction rules. The new
+geometry and surface-net regression tests also cover hollow openings and
+damage counts. The high-resolution models are still experimental, and Android
+GPU/RAM/thermals remain unverified.
+
 The reference for this pass is Claude's Catapult: real, separately modeled
 weapons, layered armor, actual negative-space ports and structural machinery.
 All six procedural **Voxel Mech Lab** models now contain over 100,000 **actual
@@ -139,14 +159,14 @@ The count selector locks during the run; **STOP / CLEAR** cancels even while the
 models are still spawning, releases the loaded models, and unlocks selection.
 
 The test computes real voxel counts and always selects the highest-detail
-available chassis (currently **Hunchback HBK-4G, 149,808 occupied voxels**).
+available chassis (currently **Hunchback HBK-4G, 147,398 occupied voxels**).
 It creates actual destructible meshes **one per frame** to spread loading cost:
 
 - **20:** centered 5×4 formation, 3.65 m spacing, 31.5 m camera fit and
-  **2,996,160 initial occupied voxels** with the current Hunchback.
+  **2,947,960 initial occupied voxels** with the current Hunchback.
 - **60:** centered 8-column formation spanning eight rows (four mechs centered
   in the final row), same 3.65 m spacing, 52 m camera fit and
-  **8,988,480 initial occupied voxels** with the current Hunchback.
+  **8,843,880 initial occupied voxels** with the current Hunchback.
 
 The arena has a **36×36 m** ground plane and grid, with room for either
 formation and its outermost mech armor. All models stand still to isolate
