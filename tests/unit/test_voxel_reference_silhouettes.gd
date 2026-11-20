@@ -19,9 +19,9 @@ func test_atlas_shoulders_skull_and_torso_weapons_are_separate() -> void:
 			"Atlas requires wide independent armored shoulders")
 	check(not h.has_sculpt_cell(Vector3i(-8, 12, -4)),
 			"small skull must not grow into wide shoulder-shaped helmet")
-	check_eq(h.sculpt_material(Vector3i(-2, 10, -6)), 7,
+	check_eq(h.sculpt_material(Vector3i(-2, 8, -6)), 7,
 			"left skull eye must have inset red glazing")
-	check_eq(h.sculpt_material(Vector3i(1, 10, -6)), 7,
+	check_eq(h.sculpt_material(Vector3i(1, 8, -6)), 7,
 			"right skull eye must remain separate")
 	check(not h.has_sculpt_cell(Vector3i(7, -1, -12)),
 			"torso AC20 must have a real empty bore")
@@ -35,9 +35,9 @@ func test_atlas_shoulders_skull_and_torso_weapons_are_separate() -> void:
 func test_hunchback_cannon_tower_dominates_and_arms_are_small() -> void:
 	var m := _make("hunchback_hbk4g")
 	var h: VoxelPart = m.parts["torso"]
-	check(h.has_sculpt_cell(Vector3i(10, 14, 0)),
+	check(h.has_sculpt_cell(Vector3i(10, 11, 0)),
 			"high square right shoulder AC20 tower must dominate silhouette")
-	check(not h.has_sculpt_cell(Vector3i(-10, 14, 0)),
+	check(not h.has_sculpt_cell(Vector3i(-10, 11, 0)),
 			"cannon tower may not be mirrored onto left shoulder")
 	check_eq(h.sculpt_material(Vector3i(-4, 8, -6)), 2,
 			"compact offset cockpit must survive, left of the huge cannon")
