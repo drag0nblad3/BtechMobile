@@ -20,6 +20,7 @@ static func build(frame: Node3D, upper: Node3D, profile: Dictionary) -> Dictiona
 static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 		profile: Dictionary) -> void:
 	var digi := VoxelChassis.is_digitigrade(profile)
+	var jenner := str(profile.get("shape", "")) == "jenner"
 	var key := "left_leg" if side == 0 else "right_leg"
 	var width := float(profile.get("hip_width", 0.38))
 	var hip := Node3D.new()
@@ -31,8 +32,11 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	var thigh := VoxelPart.new()
 	thigh.name = key
 	hip.add_child(thigh)
-	thigh.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
-	thigh.fill_box(Vector3i(-4, -3, -4), Vector3i(4, -1, 4), 4)
+	if jenner:
+		VoxelJennerArt.thigh(thigh)
+	else:
+		thigh.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
+		thigh.fill_box(Vector3i(-4, -3, -4), Vector3i(4, -1, 4), 4)
 	thigh.seal(-3)
 	rig["parts"][key] = thigh
 	rig["sockets"][key] = hip
@@ -44,8 +48,11 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	var shin := VoxelPart.new()
 	shin.name = key + "_shin"
 	knee.add_child(shin)
-	shin.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
-	shin.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 0, 4), 4)
+	if jenner:
+		VoxelJennerArt.shin(shin)
+	else:
+		shin.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
+		shin.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 0, 4), 4)
 	shin.seal()
 	rig["parts"][key + "_shin"] = shin
 	rig["sockets"][key + "_shin"] = knee
@@ -59,7 +66,11 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 		var meta := VoxelPart.new()
 		meta.name = key + "_metatarsal"
 		hock.add_child(meta)
-		VoxelMechArt.metatarsal(meta)
+		if jenner:
+			VoxelJennerArt.metatarsal(meta)
+			meta.seal()
+		else:
+			VoxelMechArt.metatarsal(meta)
 		rig["parts"][key + "_metatarsal"] = meta
 		rig["sockets"][key + "_metatarsal"] = hock
 		end_pivot = hock
@@ -74,8 +85,11 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	var foot := VoxelPart.new()
 	foot.name = key + "_foot"
 	ankle.add_child(foot)
-	foot.armor_box(Vector3i(-4, -2, -10 if digi else -9),
-			Vector3i(4, 1, 4), 4, 1)
+	if jenner:
+		VoxelJennerArt.foot(foot)
+	else:
+		foot.armor_box(Vector3i(-4, -2, -10 if digi else -9),
+				Vector3i(4, 1, 4), 4, 1)
 	foot.seal()
 	rig["parts"][key + "_foot"] = foot
 
