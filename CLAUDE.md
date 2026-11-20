@@ -19,6 +19,36 @@ Battle mode first; campaign layer later.
   Never changes `GameState` directly.
 - Dependencies point view → core, never core → view.
 
+## Shared voxel work across Claude and ChatGPT
+- **Both agents may edit both implementations.** Claude's JSON/rig/record-sheet
+  pipeline lives in `data/voxels/`, `src/view/vox/`, and
+  `docs/graphics/voxel-model-format.md`; the procedural high-resolution lab
+  lives in `src/view/units/voxel_*.gd`,
+  `data/graphics/voxel_chassis.json`, and
+  `docs/voxel-mech-prototype.md`. Don't treat either set as read-only or
+  assume the two use interchangeable coordinate systems or mesh formats.
+- Before changing an existing chassis, read **both** versions (if available),
+  the relevant tests, and the integration plan in
+  `docs/graphics/voxel-integration-plan.md`. Bring improvements across by
+  adapting coordinates and voxel pitch, not by copying raw cell coordinates.
+  Keep bilateral weapon racks, mirrored pivots, muzzles and physical openings
+  aligned; never create coincident surfaces in parent/child parts.
+- **Two shared visual rules:** material roles are `armor` and `structure`;
+  cosmetic voxels may disappear but only the **real `Unit` record sheet and
+  `GameEvent`s** decide game damage, criticals, limb loss and victory.
+  Claude's `VxDamage` maps record-sheet state to visuals, whereas the
+  procedural lab's `VoxelMech.hit_part` is a **sandbox** for art/stress testing.
+  Do not change `src/core/` or infer combat outcomes from voxel counts in
+  order to reconcile these visual systems.
+- Cross-edit tests: `tests/unit/test_vx_model.gd` (JSON recipes, role-driven
+  damage, mirrored launcher geometry), `tests/unit/test_voxel_detail.gd`
+  and `tests/unit/test_voxel_chassis_fidelity.gd` (procedural density and
+  damage), and `tools/voxel_count_report.gd`. Run the Godot unit and smoke
+  tests, including both isolated lab scenes. Open a PR rather than changing
+  someone else's working branch; inspect `main` before merging.
+- **No Android APK build unless the user explicitly requests it.** Do not
+  generate unsolicited model renders.
+
 ## File map
 | Path | What |
 |---|---|

@@ -15,6 +15,10 @@ const QUADS := [
 ]
 const PALETTE := [Color("4b6a83"), Color("293242"), Color("40ccfa"),
 	Color("d99c42"), Color("718596"), Color("d85f41")]
+## Same material-role convention as Claude's data/voxels/*.json:
+## armor is cosmetic exterior plating; structure exposes the underlying frame.
+## This mapping is view-only and NEVER changes combat hit calculations.
+const MATERIAL_ROLES := ["armor", "structure", "armor", "armor", "armor", "armor"]
 
 var cells: Dictionary = {}  # Vector3i -> palette index
 var joint_cells: Array[Vector3i] = []
@@ -111,6 +115,17 @@ func _update_bounds() -> void:
 				maxi(max_v.z, cell.z))
 	_local_bounds = AABB(Vector3(min_v) * voxel_size,
 			Vector3(max_v - min_v + Vector3i.ONE) * voxel_size)
+
+
+## Claude's VxModel separates armor from structure explicitly. Use the
+## same role names for lab parts so both pipelines can compare visual
+## destruction without feeding geometry back into the rules engine.
+func role_counts() -> Dictionary:
+	var counts := {"armor": 0, "structure": 0}
+	for material_id: int in cells.values():
+		var role: String = MATERIAL_ROLES[material_id]
+		counts[role] = int(counts[role]) + 1
+	return counts
 
 
 func joint_fraction() -> float:
