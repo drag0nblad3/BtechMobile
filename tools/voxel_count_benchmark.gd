@@ -28,7 +28,7 @@ func _benchmark() -> void:
 	var started := Time.get_ticks_msec()
 	var jenner := VoxelMech.new()
 	jenner.profile_id = "jenner_jr7d"
-	jenner.build()
+	root.add_child(jenner)  # _ready builds it; world-space impacts need a live transform.
 	var build_ms := Time.get_ticks_msec() - started
 	var torso: VoxelPart = jenner.parts["torso"]
 	var before := torso.cells.size()
