@@ -57,13 +57,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 
 ## Attacker and target movement.
 static func add_movement(th: ToHit, attacker: Unit, target: Unit) -> void:
-	match attacker.move_mode:
-		MoveMode.Kind.WALK:
-			th.add("you walked", 1, "Walking makes your own aim worse by 1.")
-		MoveMode.Kind.RUN:
-			th.add("you ran", 2, "Running makes your own aim worse by 2. Walking would make it +1.")
-		MoveMode.Kind.JUMP:
-			th.add("you jumped", 3, "Shooting after a jump is hard: +3.")
+	add_attacker_movement(th, attacker)
 	var jumped := target.move_mode == MoveMode.Kind.JUMP
 	var tm := target_movement_mod(target.hexes_moved, jumped)
 	if tm > 0:
@@ -71,18 +65,19 @@ static func add_movement(th: ToHit, attacker: Unit, target: Unit) -> void:
 				"Fast targets are harder to hit: 3-4 hexes +1, 5-6 +2, 7-9 +3, 10+ +4; +1 more if it jumped.")
 
 
+static func add_attacker_movement(th: ToHit, attacker: Unit) -> void:
+	match attacker.move_mode:
+		MoveMode.Kind.WALK:
+			th.add("you walked", 1, "Walking makes your own aim worse by 1.")
+		MoveMode.Kind.RUN:
+			th.add("you ran", 2, "Running makes your own aim worse by 2. Walking would make it +1.")
+		MoveMode.Kind.JUMP:
+			th.add("you jumped", 3, "Shooting after a jump is hard: +3.")
+
+
 static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: Unit,
 		los: Dictionary) -> void:
-	var hp := HeatScale.to_hit_penalty(attacker.heat)
-	if hp > 0:
-		th.add("heat %d" % attacker.heat, hp, "Running hot shakes your targeting: +1 at 8 heat, rising.")
-	if attacker.sensor_hits > 0:
-		th.add("sensor damage", 2 * attacker.sensor_hits, "Damaged sensors make every shot harder.")
-	if attacker.prone:
-		th.add("you are prone", 2, "Firing from the ground is +2.")
-	if los["woods"] > 0:
-		th.add("woods in the way", los["woods"],
-				"Light woods between you add +1 each, heavy woods +2. Three points block the shot.")
+	add_attacker_conditions(th, attacker, los)
 	var tile := state.map.get_tile(target.coord)
 	var tw := LineOfSight.woods_value(tile) if tile else 0
 	if tw > 0:
@@ -95,6 +90,20 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 				"A 'Mech on the ground is easier to hit from next to it (-2), harder from afar (+1).")
 	if target.shutdown or not target.pilot.conscious:
 		th.add("target immobile", -4, "A shut-down or unconscious 'Mech can't dodge: -4.")
+
+
+## Heat, sensors, lying down and woods in the way: true for any target.
+static func add_attacker_conditions(th: ToHit, attacker: Unit, los: Dictionary) -> void:
+	var hp := HeatScale.to_hit_penalty(attacker.heat)
+	if hp > 0:
+		th.add("heat %d" % attacker.heat, hp, "Running hot shakes your targeting: +1 at 8 heat, rising.")
+	if attacker.sensor_hits > 0:
+		th.add("sensor damage", 2 * attacker.sensor_hits, "Damaged sensors make every shot harder.")
+	if attacker.prone:
+		th.add("you are prone", 2, "Firing from the ground is +2.")
+	if los["woods"] > 0:
+		th.add("woods in the way", los["woods"],
+				"Light woods between you add +1 each, heavy woods +2. Three points block the shot.")
 
 
 static func add_arm_actuators(th: ToHit, u: Unit, loc: int) -> void:

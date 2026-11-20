@@ -89,6 +89,13 @@ static func _u(s: GameState, d: Dictionary, key: String = "unit_id") -> String:
 	return Names.unit(s.unit_by_id(d[key]))
 
 
+## A shot's target: a 'Mech, or a building hex.
+static func _target(s: GameState, d: Dictionary) -> String:
+	if d.has("target_hex"):
+		return "the building at %s" % Hex.label(d["target_hex"])
+	return Names.unit(s.unit_by_id(d["target_id"]))
+
+
 static func _initiative(d: Dictionary, level: int) -> String:
 	var parts: Array[String] = []
 	for side: int in d["rolls"]:
@@ -124,12 +131,12 @@ static func _declared(s: GameState, d: Dictionary, level: int) -> String:
 		return "%s holds fire." % _u(s, d)
 	var parts: Array[String] = []
 	for sh: Dictionary in d["shots"]:
-		parts.append("%s at %s (%d+)" % [sh["weapon"], Names.unit(s.unit_by_id(sh["target_id"])), sh["need"]])
+		parts.append("%s at %s (%d+)" % [sh["weapon"], _target(s, sh), sh["need"]])
 	return "%s fires: %s." % [_u(s, d), ", ".join(parts)]
 
 
 static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
-	var who := "%s %s -> %s" % [_u(s, d, "attacker_id"), d["weapon"], _u(s, d, "target_id")]
+	var who := "%s %s -> %s" % [_u(s, d, "attacker_id"), d["weapon"], _target(s, d)]
 	if d.get("no_ammo", false):
 		return "%s: out of ammo." % who
 	var res := "HIT" if d["hit"] else "miss"

@@ -21,7 +21,22 @@ static func check(map: BattleMap, from: Unit, to: Unit) -> Dictionary:
 		out["blocked"] = true
 		out["reason"] = "underwater"
 		return out
-	var line := Hex.line(from.coord, to.coord)
+	return _trace(map, from.coord, to.coord, top, out)
+
+
+## Line of sight from a unit to a hex whose top is at level `height` (e.g. a
+## building's roof). The target hex itself never blocks.
+static func check_hex(map: BattleMap, from: Unit, c: Vector2i, height: int) -> Dictionary:
+	var out := {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0}
+	if _submerged(map, from):
+		out["blocked"] = true
+		out["reason"] = "underwater"
+		return out
+	return _trace(map, from.coord, c, maxi(height_of(map, from), height), out)
+
+
+static func _trace(map: BattleMap, a: Vector2i, b: Vector2i, top: int, out: Dictionary) -> Dictionary:
+	var line := Hex.line(a, b)
 	for i in range(1, line.size() - 1):
 		var tile := map.get_tile(line[i])
 		if tile == null:

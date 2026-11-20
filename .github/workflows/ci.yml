@@ -21,7 +21,8 @@ jobs:
         run: |
           set -o pipefail
           godot --headless -s tools/ui_smoke.gd 2>&1 | tee ui.log
-          grep -q "ui smoke ok" ui.log
+          godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
+          [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
       - name: Smoke run main scene
         run: |

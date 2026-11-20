@@ -16,8 +16,9 @@ static func for_target(state: GameState, attacker: Unit, target: Unit,
 	return out
 
 
-## Validates shots [{weapon, target_id}] into stored declarations, dropping
-## impossible ones. The first listed target is the primary.
+## Validates shots [{weapon, target_id}] (or [{weapon, hex}] for a building)
+## into stored declarations, dropping impossible ones. The first listed
+## 'Mech target is the primary.
 static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	var primary := -1
@@ -25,6 +26,13 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 	for s: Dictionary in shots:
 		var wi: int = s["weapon"]
 		if used.has(wi) or wi < 0 or wi >= attacker.weapons.size():
+			continue
+		if s.has("hex"):  # shooting a building
+			var bth := BuildingFire.to_hit(state, attacker, attacker.weapons[wi], s["hex"])
+			if bth.possible():
+				used[wi] = true
+				out.append({"attacker_id": attacker.id, "weapon_index": wi, "target_id": -1,
+						"target_hex": s["hex"], "to_hit": bth})
 			continue
 		var target := state.unit_by_id(int(s["target_id"]))
 		if target == null or target.side == attacker.side:
