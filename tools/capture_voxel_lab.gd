@@ -56,7 +56,26 @@ func _process(_delta: float) -> bool:
 		stage = 6
 	elif stage == 6 and scene.mech.gait_phase >= 0.58:
 		capture("digitigrade_b.png")
-		return true
+		scene._select_chassis(5)  # Catapult
+		scene._orbit = 2.58
+		scene.update_camera()
+		scene.mech.walking = false
+		scene.mech.position = Vector3.ZERO
+		scene.mech.stand()
+		stage = 7
+	elif stage >= 7 and stage <= 11:
+		var indexes := [5, 1, 2, 3, 4]
+		var names := ["catapult.png", "atlas.png", "hunchback.png",
+				"wolverine.png", "jenner_stand.png"]
+		var idx := stage - 7
+		capture(names[idx])
+		if idx == indexes.size() - 1:
+			return true
+		scene._select_chassis(indexes[idx + 1])
+		scene.mech.walking = false
+		scene.mech.position = Vector3.ZERO
+		scene.mech.stand()
+		stage += 1
 	return false
 
 
