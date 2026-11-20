@@ -7,11 +7,17 @@ var output := "/tmp/silhouette-v3"
 const VIEWS := [
 	{"profile": 1, "id": "atlas", "angle": 2.58, "height": 0.25, "distance": 4.9},
 	{"profile": 1, "id": "atlas-front", "angle": PI, "height": 0.17, "distance": 4.9},
+	{"profile": 1, "id": "atlas-side", "angle": PI * 0.5, "height": 0.19, "distance": 5.2},
 	{"profile": 2, "id": "hunchback", "angle": 2.58, "height": 0.24, "distance": 4.7},
+	{"profile": 2, "id": "hunchback-side", "angle": PI * 0.5, "height": 0.19, "distance": 5.0},
 	{"profile": 3, "id": "wolverine", "angle": 2.58, "height": 0.22, "distance": 4.6},
+	{"profile": 3, "id": "wolverine-side", "angle": PI * 0.5, "height": 0.19, "distance": 5.0},
 	{"profile": 4, "id": "jenner", "angle": 2.58, "height": 0.21, "distance": 4.5},
+	{"profile": 4, "id": "jenner-side", "angle": PI * 0.5, "height": 0.18, "distance": 5.0},
 	{"profile": 5, "id": "catapult", "angle": 2.58, "height": 0.25, "distance": 4.9},
-	{"profile": 0, "id": "prototype", "angle": 2.58, "height": 0.23, "distance": 4.6}
+	{"profile": 5, "id": "catapult-side", "angle": PI * 0.5, "height": 0.18, "distance": 5.2},
+	{"profile": 0, "id": "prototype", "angle": 2.58, "height": 0.23, "distance": 4.6},
+	{"profile": 0, "id": "prototype-side", "angle": PI * 0.5, "height": 0.18, "distance": 5.0}
 ]
 
 
@@ -37,7 +43,8 @@ func _set_view() -> void:
 		quit(0)
 		return
 	var v: Dictionary = VIEWS[stage]
-	lab._select_chassis(int(v["profile"]))
+	if lab.mech == null or lab.profile_index != int(v["profile"]):
+		lab._select_chassis(int(v["profile"]))
 	lab.mech.walking = false
 	lab.mech.position = Vector3.ZERO
 	lab.mech.stand()
