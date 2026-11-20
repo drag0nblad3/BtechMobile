@@ -6,6 +6,7 @@ extends TestCase
 func _atlas() -> VoxelMech:
 	var m := VoxelMech.new()
 	m.profile_id = "atlas_as7d"
+	m.detail_level = int(VoxelChassis.find("atlas_as7d").get("voxel_detail", 2))
 	m.render_surfaces = false
 	m.build()
 	return m
