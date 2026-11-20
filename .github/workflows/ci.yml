@@ -36,7 +36,10 @@ jobs:
             -s tools/capture_voxel_lab.gd -- /tmp/voxel-frames
           test -s /tmp/voxel-frames/gait_a.png
           test -s /tmp/voxel-frames/gait_b.png
+          test -s /tmp/voxel-frames/armor_before.png
+          test -s /tmp/voxel-frames/armor_after.png
           ! cmp -s /tmp/voxel-frames/gait_a.png /tmp/voxel-frames/gait_b.png
+          ! cmp -s /tmp/voxel-frames/armor_before.png /tmp/voxel-frames/armor_after.png
       - uses: actions/upload-artifact@v4
         with:
           name: voxel-mech-gait-frames
