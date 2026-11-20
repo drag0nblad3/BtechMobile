@@ -24,6 +24,31 @@ inspect damage to named components, SEVER RIGHT to test falling physics, WALK
 TEST to repeat alternating steps, and RESET to restore armor. Right-drag or
 swipe to orbit; mouse wheel to zoom.
 
+## Chassis refinement pass (02)
+
+The lab now includes a **chassis selector** and an **Upper stability** slider.
+It loads six profiles from `data/graphics/voxel_chassis.json`: the original
+reference mech plus Atlas AS7-D, Hunchback HBK-4G, Wolverine WVR-6R,
+Jenner JR7-D, and Catapult CPLT-C1. These are initial **procedural blockout
+silhouettes**, not yet exact miniature/technical-readout representations.
+
+- Humanoid mechs retain the original two-link walk.
+- Digitigrade mechs (Jenner and Catapult) have **three distinct links**: thigh,
+  rearward shin, and sloping metatarsal/hock-to-toe link. Analytic IK positions
+  the toe on the ground through stance and raises it during swing.
+- Both leg styles are phase-opposed; the mech's upper chassis and weapons are
+  stabilized independently of leg poses. Default stability is 90% (slight
+  residual sway); set the slider to 100% for a locked torso.
+- Each shape uses different torso/arm voxel layouts: Atlas broad heavy armor,
+  Hunchback asymmetric right shoulder cannon, Wolverine medium body,
+  Jenner compact head and laser mounts, Catapult oversized side missile pods.
+- All parts remain voxel-damageable. The lab is still independent of combat
+  rule events and battlefield UnitView models.
+
+Profile IDs match `data/units/*.json`; as new chassis art is refined, add
+geometry profiles without changing the core rules. CI also captures
+`digitigrade_a.png` and `digitigrade_b.png` at opposite walk phases.
+
 ## Mechanics demonstrated
 
 - Two 0.70m bone segments per leg, knee/ankle pivots and analytic IK.
