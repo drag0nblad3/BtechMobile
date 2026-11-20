@@ -143,7 +143,8 @@ static func _declared(s: GameState, d: Dictionary, level: int) -> String:
 		return "%s holds fire." % _u(s, d)
 	var parts: Array[String] = []
 	for sh: Dictionary in d["shots"]:
-		parts.append("%s at %s (%d+)" % [sh["weapon"], _target(s, sh), sh["need"]])
+		var aim := " aimed at the %s" % Location.name_of(sh["aim"]).to_lower() if sh.has("aim") else ""
+		parts.append("%s at %s%s (%d+)" % [sh["weapon"], _target(s, sh), aim, sh["need"]])
 	return "%s fires: %s." % [_u(s, d), ", ".join(parts)]
 
 
@@ -164,6 +165,11 @@ static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) ->
 		res += "; the Streak never locked on, so it held its missiles (no heat, no ammo used)"
 	if d.get("heat_added", 0) > 0:
 		res += ", +%d heat to the target" % d["heat_added"]
+	if d.has("aim_roll"):
+		res += "; aim roll %d: %s" % [d["aim_roll"], ("lands on the " + Location.name_of(d["aim"]).to_lower())
+				if d["aim_hit"] else "missed the aim, hit location rolled"]
+		if level == ExplainLevel.FULL:
+			res += " (aimed shots need 4+ on 1D6)"
 	if level == ExplainLevel.OFF:
 		return "%s: %s" % [who, res]
 	var t := "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res]

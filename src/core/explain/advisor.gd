@@ -80,6 +80,8 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 		else:
 			var t := state.unit_by_id(int(sh["target_id"]))
 			th = ToHitCalc.weapon(state, u, w, t, t.id != primary)
+			if sh.has("aim") and th.possible() and AimedShot.problem(state, w, t, int(sh["aim"]), th) == "":
+				AimedShot.adjust(th, int(sh["aim"]))
 		if not th.possible():
 			continue
 		var ed := expected_damage(w, th)

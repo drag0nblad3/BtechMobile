@@ -19,6 +19,7 @@ var target: Unit
 var target_hex := Hex.INVALID  ## Building being aimed at, if any.
 var primary_id := -1
 var shots := {}     ## Weapon phase: weapon index -> target id, or building hex (Vector2i).
+var aims := {}  ## Weapon phase: target id -> aimed location (AimPicker).
 var physical := {}  ## Physical phase: "kind:limb" -> true (current target only).
 
 
@@ -49,6 +50,7 @@ func clear() -> void:
 	target_hex = Hex.INVALID
 	primary_id = -1
 	shots.clear()
+	aims.clear()
 	physical.clear()
 	hud.show_attack_controls(false)
 	highlighter.clear()
@@ -129,6 +131,7 @@ func _select(u: Unit) -> void:
 	target_hex = Hex.INVALID
 	primary_id = -1
 	shots.clear()
+	aims.clear()
 	physical.clear()
 	attacker_selected.emit(u)
 	_refresh()
@@ -146,7 +149,9 @@ func _default_shots() -> void:
 func _options() -> Array:
 	if target_hex != Hex.INVALID:
 		return BuildingFire.options(controller.state, attacker, target_hex)
-	return FireOptions.for_target(controller.state, attacker, target, _secondary(target))
+	var opts := FireOptions.for_target(controller.state, attacker, target, _secondary(target))
+	AimPicker.apply(controller.state, target, opts, aims.get(target.id, -1))
+	return opts
 
 
 ## Secondary if the rules would pick another primary once t is added.
@@ -227,8 +232,10 @@ func _refresh() -> void:
 	if weapon:
 		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
 		if not hud.sheet_open:
-			hud.show_side(AttackPanel.build("Weapons at " + Names.unit(target),
-				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode))
+			var panel := AttackPanel.build("Weapons at " + Names.unit(target),
+				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode)
+			hud.show_side(AimPicker.wrap(panel, target, aims.get(target.id, -1), _next_aim)
+					if AimPicker.available(target) else panel)
 	else:
 		hud.set_tip(Advisor.physical(controller.state, attacker, target, level))
 		if not hud.sheet_open:
@@ -237,7 +244,12 @@ func _refresh() -> void:
 
 
 func _shot_list() -> Array:
-	return AttackRows.shot_list(shots, primary_id)
+	return AimPicker.tag(AttackRows.shot_list(shots, primary_id), aims)
+
+
+func _next_aim() -> void:
+	aims[target.id] = AimPicker.next(target, aims.get(target.id, -1))
+	_refresh()
 
 
 func _selected_here() -> Dictionary:

@@ -61,7 +61,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Ammo used per shot; no ammo, no shot.
 - ✅ Flamers (p. 183): a hit deals damage and the same amount of heat to the target; outside heat is capped at 15 per turn.
 - 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter; a 'Mech that declared a charge or DFA can't spot.
-- ⬜ Called shots, aimed shots.
+- ✅ Aimed shots (`AimedShot`, p. 70): against an immobile target, a non-cluster, non-indirect shot (no Ultra double fire, no LB-X cluster rounds) may aim at a location; -4 kept, but a head shot drops it and takes +3; on a hit 1D6 4+ lands there, else the location is rolled; with partial cover legs can't be chosen, the cover modifier is dropped and leg rolls are rerolled. The weapon panel shows an "Aim at" button for immobile targets (`AimPicker`) — `TODO(rules)`: targeting computers; the computer never aims.
 
 ## Damage
 - ✅ Hit location tables (front/rear, left, right) — `TODO(rules)`: verify.
