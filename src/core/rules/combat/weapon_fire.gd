@@ -35,10 +35,16 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name)
 
 
-## Rolls a hit location and applies one packet of damage.
+## Rolls a hit location and applies one packet of damage. Building walls
+## around the target soak part of it first.
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
-		hl: Dictionary = {}) -> void:
+		hl: Dictionary = {}, through_walls: bool = true) -> void:
+	var tile := state.map.get_tile(target.coord)
+	if through_walls and tile != null and tile.building != null:
+		amount = BuildingRules.absorb(state, dice, emit, tile, amount, target)
+		if amount <= 0 or target.destroyed:
+			return
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
 	var loc: int = hl["loc"]

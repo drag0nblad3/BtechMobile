@@ -23,7 +23,7 @@ Battle mode first; campaign layer later.
 | Path | What |
 |---|---|
 | `src/core/hex/hex.gd` | Axial hex math, facings (0=N clockwise), mapsheet labels (XXYY, odd-q) |
-| `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth), `BattleMap`, `MapLoader` |
+| `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (CF, height) |
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions` |
@@ -31,13 +31,14 @@ Battle mode first; campaign layer later.
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push), `Charge` (charge, DFA), `Displacement`, `PhysicalPhase` |
+| `src/core/rules/buildings/` | `BuildingRules` (entering, wall absorption, collapse) |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire` |
 | `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
-| `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
+| `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `BuildingProps`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
 | `src/view/shaders/terrain.gdshader` | Triplanar noise terrain |
 | `src/view/units/` | `UnitView` (animation, prone/wreck pose), `UnitsLayer`, `SpriteMech` (sprite sets from `assets/mechs/`, see `docs/graphics/sprite-integration.md`), `PlaceholderMech` (fallback) |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |

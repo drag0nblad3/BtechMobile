@@ -6,6 +6,9 @@
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
 
+Also `"buildings": [{"id", "name", "cf", "move_cost", "psr_mod", "color"}]`: building
+classes light, medium, heavy and hardened.
+
 ## `data/maps/<id>.json`
 ```json
 {"name": "Test Valley", "rows": ["c0 L1 H2 r0 p0 w0d1 ..."]}
@@ -14,6 +17,8 @@ Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woo
 - Token = terrain token + level, optional `d` + water depth: `c2` clear level 2,
   `w0d2` water surface level 0, depth 2.
 - Columns use "odd-q" offset: even-numbered mapsheet columns (02, 04…) sit half a hex lower.
+- Optional `"buildings": [{"hex": "0703", "type": "medium", "height": 2}]` puts a building
+  of that class, `height` levels tall, on a hex. A collapsed building leaves rubble.
 
 ## `data/weapons.json`
 `{"weapons": [{"id", "name", "type" (energy|ballistic|missile), "heat", "damage", "missiles"?,

@@ -61,6 +61,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return "  %s is shoved into %s." % [_u(s, d), Hex.label(MoveOptions.coord_of(d["path"][0]))]
 		GameEvent.DAMAGE:
 			return DamageText.damage(s, d, level)
+		GameEvent.BUILDING:
+			return TerrainText.building_event(s, d, level)
 		GameEvent.CRIT_CHECK:
 			return DamageText.crit_check(s, d, level)
 		GameEvent.CRITICAL:

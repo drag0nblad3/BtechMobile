@@ -1,7 +1,7 @@
 class_name MapView
 extends Node3D
 ## Renders a BattleMap: one MultiMesh of hex prisms per terrain type,
-## plus woods props and water surfaces from their own helpers.
+## plus woods, water and building props from their own helpers.
 
 const SHADER := preload("res://src/view/shaders/terrain.gdshader")
 const INSET := 0.97  ## Slight gap between hexes shows the grid.
@@ -20,7 +20,15 @@ func build(battle_map: BattleMap) -> void:
 		add_child(_prism_layer(mesh, by_type[terrain], terrain, noise))
 	add_child(WoodsProps.build(map))
 	add_child(WaterSurfaces.build(map))
+	add_child(BuildingProps.build(map))
 	add_child(_ground_plane())
+
+
+## Redraws everything, e.g. after a building collapses into rubble.
+func rebuild() -> void:
+	for c in get_children():
+		c.queue_free()
+	build(map)
 
 
 func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture2D) -> MultiMeshInstance3D:

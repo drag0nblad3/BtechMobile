@@ -7,5 +7,11 @@
     {"id": "pavement", "token": "p", "name": "Pavement", "move_cost": 0, "color": "#6e6e6a", "detail_color": "#5a5a56"},
     {"id": "rubble", "token": "u", "name": "Rubble", "move_cost": 1, "color": "#7a7266", "detail_color": "#5e574c"},
     {"id": "water", "token": "w", "name": "Water", "move_cost": 0, "water": true, "color": "#4a5a50", "detail_color": "#36443c"}
+  ],
+  "buildings": [
+    {"id": "light", "name": "Light building", "cf": 15, "move_cost": 1, "psr_mod": 0, "color": "#9a7a56"},
+    {"id": "medium", "name": "Medium building", "cf": 40, "move_cost": 2, "psr_mod": 1, "color": "#7a6450"},
+    {"id": "heavy", "name": "Heavy building", "cf": 90, "move_cost": 3, "psr_mod": 2, "color": "#5a5450"},
+    {"id": "hardened", "name": "Hardened building", "cf": 120, "move_cost": 4, "psr_mod": 5, "color": "#45495a"}
   ]
 }

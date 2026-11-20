@@ -4,6 +4,7 @@ extends RefCounted
 ##   {"name": "...", "rows": ["c0 c1 L2 w0d1 ...", ...]}
 ## Each row is one mapsheet row (YY), each token one column (XX).
 ## Token = terrain char + level, optionally "d" + water depth.
+## Optional "buildings": [{"hex": "XXYY", "type": "medium", "height": 2}].
 
 
 static func load_file(path: String, terrain: TerrainDb) -> BattleMap:
@@ -22,6 +23,12 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 		for col in tokens.size():
 			var c := Hex.from_offset(Vector2i(col, row))
 			m.tiles[c] = parse_token(tokens[col], c, terrain)
+	m.rubble = terrain.get_type("rubble")
+	for b: Dictionary in data.get("buildings", []):
+		var tile := m.get_tile(Hex.from_label(b["hex"]))
+		var bt: BuildingType = terrain.buildings.get(b.get("type", "medium"))
+		assert(tile != null and bt != null, "Bad building %s" % b)
+		tile.building = Building.new(bt, int(b.get("height", 1)))
 	return m
 
 

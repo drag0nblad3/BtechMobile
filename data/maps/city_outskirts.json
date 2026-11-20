@@ -18,5 +18,19 @@
   "c0 r0 r0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
   "c0 c0 c0 c0 c0 p0 c0 u0 u0 c0 c0 p0 c0 c0 c0 L0",
   "c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 L0 L0"
+ ],
+ "buildings": [
+  {"hex": "0503", "type": "light", "height": 1},
+  {"hex": "0703", "type": "medium", "height": 2},
+  {"hex": "0505", "type": "medium", "height": 2},
+  {"hex": "0705", "type": "heavy", "height": 3},
+  {"hex": "1005", "type": "light", "height": 1},
+  {"hex": "1107", "type": "medium", "height": 2},
+  {"hex": "1110", "type": "heavy", "height": 2},
+  {"hex": "1310", "type": "light", "height": 1},
+  {"hex": "0510", "type": "medium", "height": 2},
+  {"hex": "0712", "type": "light", "height": 1},
+  {"hex": "1015", "type": "medium", "height": 2},
+  {"hex": "0516", "type": "light", "height": 1}
  ]
 }

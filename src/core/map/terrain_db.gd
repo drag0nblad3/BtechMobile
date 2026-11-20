@@ -6,6 +6,7 @@ const DEFAULT_PATH := "res://data/terrain.json"
 
 var by_id: Dictionary = {}     # String -> TerrainType
 var by_token: Dictionary = {}  # String -> TerrainType
+var buildings: Dictionary = {}  # String -> BuildingType
 
 
 static func load_file(path: String = DEFAULT_PATH) -> TerrainDb:
@@ -15,6 +16,9 @@ static func load_file(path: String = DEFAULT_PATH) -> TerrainDb:
 		var t := TerrainType.from_dict(d)
 		db.by_id[t.id] = t
 		db.by_token[t.token] = t
+	for d in data.get("buildings", []):
+		var b := BuildingType.from_dict(d)
+		db.buildings[b.id] = b
 	return db
 
 

@@ -18,6 +18,8 @@ static func enter_cost(map: BattleMap, from: Vector2i, to: Vector2i, mode: int) 
 	if change > MAX_LEVEL_CHANGE:
 		return PROHIBITED
 	var cost := 1 + dst.terrain.move_cost + change
+	if dst.building != null:
+		cost += dst.building.type.move_cost
 	if dst.is_water():
 		# Running MP may not be used to enter Depth 1+ water.
 		if mode == MoveMode.Kind.RUN:
