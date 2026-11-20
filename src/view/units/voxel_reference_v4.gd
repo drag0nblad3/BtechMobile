@@ -116,8 +116,8 @@ static func _atlas(p: VoxelPart) -> void:
 	# mechanical shoulders, instead of spheres along a horizontal T bar.
 	for side in [-1, 1]:
 		var cx := float(side) * 10.4
-		for y in range(0, 7):
-			var w := 3.8 if y < 4 else 3.0
+		for y in range(0, 9):
+			var w := 3.8 if y < 5 else (3.3 if y < 7 else 2.5)
 			section(p, y, cx, 0.0, w, 4.2, 4, 1, 0.38)
 		var sx := -14 if side < 0 else 13
 		hub(p, 0, 1, sx, sx + 2, 2.5, 0.7)
@@ -137,24 +137,25 @@ static func _atlas(p: VoxelPart) -> void:
 					Vector3i(rx + 3, vy, 9))
 	# Skull itself is SMALL compared to shoulder span (8 cells vs 28).
 	# Armored chin joins a visibly narrow reinforced neck at y 4..6.
-	rod(p, Vector3i(0, 4, -2), Vector3i(0, 7, -3), 2.0, 8)
-	for y in range(7, 14):
-		var width := 3.7 if y < 11 else (3.2 if y < 13 else 2.5)
-		section(p, y, -0.5, -3.8, width, 3.7, 6, 8, 0.39)
+	rod(p, Vector3i(0, 3, -2), Vector3i(0, 5, -3), 2.1, 8)
+	for y in range(5, 12):
+		var width := 3.7 if y < 9 else (3.1 if y < 11 else 2.5)
+		var center_z := -3.7 if y < 9 else -3.2
+		section(p, y, -0.5, center_z, width, 3.3, 6, 8, 0.39)
 	# Bone plates and a true projecting eyebrow (not a giant flat helmet).
-	p.fill_box(Vector3i(-4, 11, -7), Vector3i(3, 12, -6), 6)
+	p.fill_box(Vector3i(-4, 9, -7), Vector3i(3, 10, -6), 6)
 	for eye in [-2, 1]:
-		p.carve_box(Vector3i(eye - 1, 9, -8),
-				Vector3i(eye + 1, 10, -6))
-		p.fill_box(Vector3i(eye, 10, -6), Vector3i(eye, 10, -6), 7)
+		p.carve_box(Vector3i(eye - 1, 7, -8),
+				Vector3i(eye + 1, 8, -6))
+		p.fill_box(Vector3i(eye, 8, -6), Vector3i(eye, 8, -6), 7)
 	# Separate cheekbones, nose bridge and gritted lower jaw.
 	for side in [-1, 1]:
 		var xx := -4 if side < 0 else 2
-		p.fill_box(Vector3i(xx, 7, -7), Vector3i(xx + 1, 9, -6), 6)
-	p.carve_box(Vector3i(-1, 7, -8), Vector3i(0, 8, -6))
-	p.fill_box(Vector3i(-3, 6, -6), Vector3i(2, 7, -5), 6)
+		p.fill_box(Vector3i(xx, 5, -7), Vector3i(xx + 1, 7, -6), 6)
+	p.carve_box(Vector3i(-1, 5, -8), Vector3i(0, 6, -6))
+	p.fill_box(Vector3i(-3, 4, -6), Vector3i(2, 5, -5), 6)
 	for x in [-2, 0, 2]:
-		p.fill_box(Vector3i(x, 6, -7), Vector3i(x, 6, -7), 8)
+		p.fill_box(Vector3i(x, 4, -7), Vector3i(x, 4, -7), 8)
 	# Weapons mounted into the massive torso, and NOT in both hands.
 	# AC/20 exposed on the right front, thick bored sleeve.
 	barrel(p, 7, -1, -12, -5, 2.7, 1.2, 8)
@@ -183,14 +184,14 @@ static func _hunchback(p: VoxelPart) -> void:
 	p.fill_box(Vector3i(-4, 8, -7), Vector3i(-4, 8, -7), 1)
 	# Cannon tower high on right: chamfered rectangular broad vertical plate.
 	faceted_box(p, Vector3i(2, 3, -5),
-			Vector3i(13, 15, 6), 4, 2)
-	p.fill_box(Vector3i(3, 14, -3), Vector3i(12, 15, 4), 8)
+			Vector3i(13, 12, 6), 4, 2)
+	p.fill_box(Vector3i(3, 11, -3), Vector3i(12, 12, 4), 8)
 	# Recoil carriage front is square, with circular 20cm bore.
 	faceted_box(p, Vector3i(4, 7, -10),
 			Vector3i(11, 12, -5), 8, 1)
 	barrel(p, 8, 9, -17, -7, 3.0, 1.4, 8)
 	# Ammunition-feed ribbing and exposed cooling machinery on outboard side.
-	for y in [4, 7, 10, 13]:
+	for y in [4, 6, 8, 10]:
 		p.carve_box(Vector3i(13, y, -1),
 				Vector3i(13, y, 5))
 		p.fill_box(Vector3i(12, y, 0),
