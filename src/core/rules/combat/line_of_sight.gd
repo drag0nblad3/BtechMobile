@@ -23,7 +23,7 @@ static func check(map: BattleMap, from: Unit, to: Unit) -> Dictionary:
 		out["blocked"] = true
 		out["reason"] = "underwater"
 		return out
-	var t_floor := _floor(map, to.coord)
+	var t_floor := Roofs.floor_of(map, to)
 	return _best(map, from.coord, to.coord, los_level(map, from), los_level(map, to),
 			t_floor if not to.prone else 999)
 
@@ -39,7 +39,7 @@ static func check_hex(map: BattleMap, from: Unit, c: Vector2i, height: int) -> D
 
 
 static func los_level(map: BattleMap, u: Unit) -> int:
-	return _floor(map, u.coord) + (1 if u.prone else 2)
+	return Roofs.floor_of(map, u) + (1 if u.prone else 2)
 
 
 ## Kept for callers that want the top level a 'Mech occupies.
@@ -104,11 +104,6 @@ static func _intervenes(top: int, a_lvl: int, b_lvl: int, next_a: bool, next_b: 
 
 static func _blank() -> Dictionary:
 	return {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0, "cover": Hex.INVALID}
-
-
-static func _floor(map: BattleMap, c: Vector2i) -> int:
-	var tile := map.get_tile(c)
-	return tile.floor_level() if tile else 0
 
 
 ## Fully under water (depth 2+, or depth 1 while prone).

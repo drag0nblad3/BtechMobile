@@ -10,9 +10,13 @@
   ],
   "buildings": [
     {"id": "civilian", "name": "Civilian building", "civilian": true, "threshold": 0, "destroy_tn": 0, "entry_class": 0, "color": "#a89c86"},
-    {"id": "light", "name": "Light building", "threshold": 8, "destroy_tn": 7, "entry_class": 0, "color": "#9a7a56"},
-    {"id": "medium", "name": "Medium building", "threshold": 10, "destroy_tn": 9, "entry_class": 1, "color": "#7a6450"},
-    {"id": "heavy", "name": "Heavy building", "threshold": 14, "destroy_tn": 10, "entry_class": 2, "color": "#5a5450"},
-    {"id": "hardened", "name": "Hardened building", "threshold": 16, "destroy_tn": 11, "entry_class": 3, "color": "#45495a"}
+    {"id": "light", "name": "Light building", "threshold": 8, "destroy_tn": 7, "entry_class": 0,
+      "roof_support": 0, "color": "#9a7a56"},
+    {"id": "medium", "name": "Medium building", "threshold": 10, "destroy_tn": 9, "entry_class": 1,
+      "roof_support": 1, "color": "#7a6450"},
+    {"id": "heavy", "name": "Heavy building", "threshold": 14, "destroy_tn": 10, "entry_class": 2,
+      "roof_support": 2, "color": "#5a5450"},
+    {"id": "hardened", "name": "Hardened building", "threshold": 16, "destroy_tn": 11, "entry_class": 3,
+      "roof_support": 3, "color": "#45495a"}
   ]
 }

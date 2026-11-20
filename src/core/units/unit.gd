@@ -29,6 +29,7 @@ var destroyed: bool = false
 var destroyed_reason: String = ""
 var destroyed_announced: bool = false
 var prone: bool = false
+var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
 var shutdown: bool = false
 
 # This turn ---------------------------------------------------------------

@@ -67,6 +67,13 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 			if level == ExplainLevel.FULL:
 				t += " A failed entry roll doesn't knock you down, but it may bring the building down."
 			return t
+		"roof":
+			var t := "  %s lands on the roof of the %s at %s." % [who, bname, where]
+			if d.get("over", false):
+				t += " It is too heavy for that roof."
+			if level == ExplainLevel.FULL:
+				t += " Up here it sees and shoots from higher ground, but it can only leave by jumping or crossing to another roof, and a roof too weak for it may give way."
+			return t
 		"careful":
 			var t := "  %s eases into the %s at %s." % [who, bname, where]
 			if level == ExplainLevel.FULL:

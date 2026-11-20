@@ -47,7 +47,7 @@ static func add(th: ToHit, state: GameState, a: Unit, t: Unit, terrain: bool = t
 
 ## Target's ground level minus the attacker's.
 static func level_diff(state: GameState, a: Unit, t: Unit) -> int:
-	return _floor(state, t) - _floor(state, a)
+	return Roofs.floor_of(state.map, t) - Roofs.floor_of(state.map, a)
 
 
 static func limb_fired(a: Unit, loc: int) -> bool:
@@ -72,7 +72,3 @@ static func charging(state: GameState, u: Unit) -> bool:
 			return true
 	return false
 
-
-static func _floor(state: GameState, u: Unit) -> int:
-	var tile := state.map.get_tile(u.coord)
-	return tile.floor_level() if tile else 0

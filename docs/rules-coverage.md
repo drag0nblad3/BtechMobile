@@ -19,7 +19,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Hip hit or destroyed leg: 1 level per hex forward, none backward.
 - ✅ Stacking: pass through friends, not enemies; one 'Mech per hex at end of movement.
 - ✅ Backward walking (not running), same costs, at most 1 level change; any backward level change costs a piloting roll, and a failure falls (in the lower hex).
-- 🟡 Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit — `TODO(rules)`: landing on building roofs.
+- ✅ Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit; 'Mech-scale buildings are landed on, on the roof.
 - ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again; standing frees the facing. Impossible with a
   destroyed gyro or both legs gone.
 - ✅ Dropping prone (`ProneMoves`, p. 51): in place, or at the end of a walk/run with 1 MP to spare (the Prone button uses the previewed move); not after jumping.
@@ -125,7 +125,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Buildings block line of sight like a hill as tall as the roof.
 - ✅ Careful entry (p. 133): running straight into the building hex ahead as the whole move needs no entry roll and works for any building class.
 - ✅ Shoved into a building (p. 132): the 'Mech gets in whatever its weight, and the hex takes an immediate Destroy Check.
-- 🟡 `TODO(rules)`: roofs (landing, support limits), deliberately failing the entry roll, DFA into a level 1 building, fire, Castles Brian.
+- 🟡 Roofs (`Roofs`, pp. 132-137): jump on; walk/run roof to roof at 1 MP (same level, or one down going forward), never off to the ground; heavier than the support limit: Destroy Check at +2 per class over; a collapsing roof drops the 'Mech the building's height; roof height counts for line of sight and physical attacks — `TODO(rules)`: a 'Mech inside and one on the roof of the same hex, shoved onto a roof, sight between roofs and insides.
+- 🟡 `TODO(rules)`: deliberately failing the entry roll, DFA into a level 1 building, fire, Castles Brian.
 - ⬜ Physical attacks on buildings, bridges as structures, basements.
 
 ## Pilots

@@ -46,9 +46,9 @@ static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
 			opts.prev[nk] = k
 			opts.can_end[nk] = _can_end_in(state, unit, MoveOptions.coord_of(nk))
 			heap.push(ng, nk)
-	if mode == MoveMode.Kind.RUN and not unit.prone:
+	if mode == MoveMode.Kind.RUN and not unit.prone and not unit.on_roof:
 		_careful_entry(state, unit, opts, start)
-	if mode == MoveMode.Kind.RUN and opts.budget >= 1 and not unit.prone:
+	if mode == MoveMode.Kind.RUN and opts.budget >= 1 and not unit.prone and not unit.on_roof:
 		_minimum_move(state, unit, opts, start)
 	return opts
 
@@ -101,6 +101,8 @@ static func max_level_change(unit: Unit, backward: bool = false) -> int:
 
 ## Returns [[next_key, mp_cost], ...].
 static func _successors(state: GameState, unit: Unit, k: Vector3i, mode: int) -> Array:
+	if unit.on_roof:
+		return Roofs.successors(state, unit, k, mode)
 	var c := MoveOptions.coord_of(k)
 	var f := k.z
 	var out := [

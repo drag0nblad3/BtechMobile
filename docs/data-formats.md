@@ -6,9 +6,10 @@
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
 
-Also `"buildings": [{"id", "name", "civilian"?, "threshold", "destroy_tn", "entry_class", "color"}]`:
+Also `"buildings": [{"id", "name", "civilian"?, "threshold", "destroy_tn", "entry_class", "roof_support"?, "color"}]`:
 building classes civilian, light, medium, heavy and hardened. `entry_class` is the lightest
-weight class (0 light .. 3 assault) that may force its way in.
+weight class (0 light .. 3 assault) that may force its way in; `roof_support` is the
+heaviest class its roof holds without a Destroy Check (none if missing).
 
 ## `data/maps/<id>.json`
 ```json

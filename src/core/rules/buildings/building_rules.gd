@@ -15,7 +15,8 @@ extends RefCounted
 ##   move needs no roll and works for any class (MovePlanner).
 ## - Displaced into a building: it gets in regardless of class, but the hex
 ##   takes a Destroy Check at once.
-## TODO(rules): roofs; deliberately failing the entry roll.
+## - Roofs: see Roofs.
+## TODO(rules): deliberately failing the entry roll.
 
 
 ## Building hexes a move enters, in order: ground moves enter each one on
@@ -72,10 +73,10 @@ static func displaced_into(state: GameState, dice: Dice, emit: Callable, u: Unit
 ## Destroy Check: 2D6 plus 1 at 21-30 damage and 1 per further 10, against
 ## the class's number. Returns true if the hex is destroyed.
 static func destroy_check(state: GameState, dice: Dice, emit: Callable, c: Vector2i,
-		damage: int, attacker_id: int) -> bool:
+		damage: int, attacker_id: int, extra := 0) -> bool:
 	var b := state.map.get_tile(c).building
 	var roll := dice.roll_2d6()
-	var mod := destroy_mod(damage)
+	var mod := destroy_mod(damage) + extra
 	var ok := roll + mod >= b.type.destroy_tn
 	emit.call(GameEvent.BUILDING, {"kind": "destroy_check", "coord": c, "unit_id": attacker_id,
 			"name": b.type.name, "roll": roll, "mod": mod, "need": b.type.destroy_tn,
@@ -93,7 +94,7 @@ static func destroy_mod(damage: int) -> int:
 ## +2 to hit a 'Mech inside a building at least as tall as it.
 static func inside_mod(map: BattleMap, u: Unit) -> int:
 	var tile := map.get_tile(u.coord)
-	if tile == null or tile.building == null or tile.building.type.civilian:
+	if tile == null or tile.building == null or tile.building.type.civilian or u.on_roof:
 		return 0
 	return 2 if tile.building.height >= (1 if u.prone else 2) else 0
 
@@ -102,7 +103,7 @@ static func inside_mod(map: BattleMap, u: Unit) -> int:
 static func half_inside(map: BattleMap, u: Unit) -> bool:
 	var tile := map.get_tile(u.coord)
 	return tile != null and tile.building != null and not tile.building.type.civilian \
-			and tile.building.height == 1 and not u.prone
+			and tile.building.height == 1 and not u.prone and not u.on_roof
 
 
 ## The hex comes down: rubble for 'Mech-scale buildings (and civilian ones
@@ -117,6 +118,13 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 		tile.terrain = state.map.rubble
 	if inside == null:
 		inside = state.unit_at(tile.coord)
+	if inside != null and inside.on_roof:
+		inside.on_roof = false
+		emit.call(GameEvent.BUILDING, {"kind": "collapsed", "coord": tile.coord, "name": b.type.name,
+				"height": b.height, "damage": 0, "unit_id": -1})
+		if not inside.destroyed:
+			Fall.fall(state, dice, emit, inside, b.height, "the roof gave way")
+		return
 	var dmg := b.collapse_damage(1 if inside != null and inside.prone else 2) if inside != null else 0
 	emit.call(GameEvent.BUILDING, {"kind": "collapsed", "coord": tile.coord, "name": b.type.name,
 			"height": b.height, "damage": dmg, "unit_id": inside.id if inside != null else -1})

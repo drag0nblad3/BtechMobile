@@ -45,6 +45,9 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 			if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(path, unit.coord)
 	unit.coord = MoveOptions.coord_of(target)
 	unit.facing = target.z
+	var on_new_roof := mode == MoveMode.Kind.JUMP and moved and Roofs.has_roof(state.map.get_tile(unit.coord))
+	if mode == MoveMode.Kind.JUMP and moved:
+		unit.on_roof = false
 	unit.has_moved = true
 	unit.move_mode = mode if moved else -1
 	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved) if moved else 0
@@ -52,8 +55,11 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
 	if not fall.is_empty():
 		Fall.fall(state, dice, emit, unit, int(fall["levels"]), fall["reason"])
-	for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
-		BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry)
+	if on_new_roof:
+		Roofs.landed(state, dice, emit, unit)
+	elif not unit.on_roof:
+		for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
+			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved)
 	Psr.resolve_pending(state, dice, emit, unit)

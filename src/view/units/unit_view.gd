@@ -96,4 +96,8 @@ func _turn_delta(from_f: int, to_f: int) -> float:
 
 
 func _hex_pos(c: Vector2i) -> Vector3:
-	return HexLayout.tile_top(map.get_tile(c))
+	var t := map.get_tile(c)
+	var p := HexLayout.tile_top(t)
+	if unit.on_roof and Roofs.has_roof(t):
+		p.y += t.building.height * HexLayout.LEVEL_HEIGHT
+	return p
