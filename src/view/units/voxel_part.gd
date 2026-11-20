@@ -69,6 +69,7 @@ func seal(joint_min_y: int = 1000) -> void:
 			VoxelFineDetail.decorate(self)
 		elif detail_style == "atlas" or detail_style == "catapult":
 			VoxelChassisDetail.decorate(self)
+		VoxelRosterSculpt.fine(self)
 	_original_count = cells.size()
 	joint_cells.clear()
 	for cell: Vector3i in cells:
