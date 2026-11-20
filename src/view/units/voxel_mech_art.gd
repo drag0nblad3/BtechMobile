@@ -44,6 +44,7 @@ static func torso(part: VoxelPart, shape: String) -> void:
 			part.fill_box(Vector3i(6, 0, -4), Vector3i(9, 3, 4), 4)
 			part.fill_box(Vector3i(-8, 2, -3), Vector3i(-5, 4, 3), 5)
 			part.fill_box(Vector3i(4, 2, -3), Vector3i(7, 4, 3), 5)
+	VoxelHighFidelityArt.torso(part, shape)
 	part.seal()
 
 
@@ -70,10 +71,12 @@ static func arm(part: VoxelPart, style: String, side: int) -> void:
 			part.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 1, 4), 4)
 			part.fill_box(Vector3i(-2, -7, -11), Vector3i(2, -4, -4), 1)
 			part.fill_box(Vector3i(-3, -7, -11), Vector3i(3, -5, -10), 3)
+	VoxelHighFidelityArt.arm(part, style, side)
 	part.seal(-2 if style != "missile_pods" else 1)
 
 
 static func metatarsal(part: VoxelPart) -> void:
 	part.armor_box(Vector3i(-2, -4, -2), Vector3i(2, -1, 2), 4, 1)
 	part.fill_box(Vector3i(-3, -1, -3), Vector3i(3, 0, 3), 1)
+	VoxelHighFidelityArt.leg(part, part.detail_style, "hock")
 	part.seal()
