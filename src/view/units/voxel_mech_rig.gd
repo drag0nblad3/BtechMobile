@@ -26,7 +26,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	var hip := Node3D.new()
 	hip.name = key + "_hip"
 	hip.position = Vector3((-1.0 if side == 0 else 1.0) * width,
-			VoxelDigitigradeGait.HIP_HEIGHT if digi else 1.36, 0)
+			VoxelJennerGait.HIP_HEIGHT if jenner else (VoxelDigitigradeGait.HIP_HEIGHT if digi else 1.36), 0)
 	frame.add_child(hip)
 	rig["hips"].append(hip)
 	var thigh := VoxelPart.new()
@@ -42,7 +42,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	rig["sockets"][key] = hip
 	var knee := Node3D.new()
 	knee.name = key + "_knee"
-	knee.position.y = -VoxelGait.THIGH
+	knee.position.y = -(VoxelJennerGait.THIGH if jenner else VoxelGait.THIGH)
 	hip.add_child(knee)
 	rig["knees"].append(knee)
 	var shin := VoxelPart.new()
@@ -60,7 +60,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	if digi:
 		var hock := Node3D.new()
 		hock.name = key + "_hock"
-		hock.position.y = -VoxelDigitigradeGait.SHIN
+		hock.position.y = -(VoxelJennerGait.SHIN if jenner else VoxelDigitigradeGait.SHIN)
 		knee.add_child(hock)
 		rig["hocks"].append(hock)
 		var meta := VoxelPart.new()
@@ -78,8 +78,8 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 		rig["hocks"].append(null)
 	var ankle := Node3D.new()
 	ankle.name = key + "_ankle"
-	ankle.position.y = -(VoxelDigitigradeGait.METATARSAL if digi
-			else VoxelGait.SHIN)
+	ankle.position.y = -(VoxelJennerGait.METATARSAL if jenner else
+			(VoxelDigitigradeGait.METATARSAL if digi else VoxelGait.SHIN))
 	end_pivot.add_child(ankle)
 	rig["ankles"].append(ankle)
 	var foot := VoxelPart.new()
