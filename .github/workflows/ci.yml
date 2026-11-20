@@ -45,6 +45,12 @@ jobs:
           set -o pipefail
           godot --headless --quit-after 45 --scene res://scenes/voxel_mech_lab.tscn 2>&1 | tee voxel.log
           ! grep -E "SCRIPT ERROR|Parse Error" voxel.log
+      - name: Twenty-mech stress test smoke (no rendering)
+        run: |
+          set -o pipefail
+          godot --headless -s tools/voxel_stress_smoke.gd 2>&1 | tee voxel-stress.log
+          grep -q "voxel stress smoke ok" voxel-stress.log
+          ! grep -E "SCRIPT ERROR|Parse Error|VOXEL_STRESS_SMOKE_FAILED" voxel-stress.log
       - name: Claude voxel showcase smoke
         run: |
           set -o pipefail

@@ -11,6 +11,12 @@ var stability_label: Label
 var camera: Camera3D
 var info: Label
 var catalog_label: Label
+var stress_info: Label
+var stress_start_button: Button
+var stress_stop_button: Button
+var _single_model_buttons: Array[Button] = []
+var _stress: VoxelStressTest
+var _saved_stress_camera := Vector3.ZERO
 var _catalog_counts: Dictionary = {}
 var _catalog_cursor := 0
 var _orbit := 2.58
@@ -167,16 +173,29 @@ func make_hud() -> void:
 	tuning.add_child(stability_slider)
 	var first := HBoxContainer.new()
 	column.add_child(first)
-	add_button(first, "WALK TEST", func(): mech.start_walk())
-	add_button(first, "TORSO HIT", func(): blast("torso"))
-	add_button(first, "LEFT LEG", func(): blast("left_leg"))
+	_single_model_buttons.append(add_button(first, "WALK TEST", func(): mech.start_walk()))
+	_single_model_buttons.append(add_button(first, "TORSO HIT", func(): blast("torso")))
+	_single_model_buttons.append(add_button(first, "LEFT LEG", func(): blast("left_leg")))
 	var second := HBoxContainer.new()
 	column.add_child(second)
-	add_button(second, "RIGHT LEG", func(): blast("right_leg"))
-	add_button(second, "SEVER RIGHT", sever_right)
+	_single_model_buttons.append(add_button(second, "RIGHT LEG", func(): blast("right_leg")))
+	_single_model_buttons.append(add_button(second, "SEVER RIGHT", sever_right))
 	add_button(second, "RESET", reset_lab)
 	var back := add_button(second, "MAIN MENU", _open_launcher)
 	back.name = "BackToLauncher"
+	var stress_buttons := HBoxContainer.new()
+	column.add_child(stress_buttons)
+	stress_start_button = add_button(stress_buttons, "STRESS TEST ×20", start_stress_test)
+	stress_start_button.name = "StressTestButton"
+	stress_start_button.custom_minimum_size.x = 190
+	stress_stop_button = add_button(stress_buttons, "STOP / CLEAR", stop_stress_test)
+	stress_stop_button.name = "StopStressButton"
+	stress_stop_button.disabled = true
+	stress_info = Label.new()
+	stress_info.name = "StressStats"
+	stress_info.add_theme_font_size_override("font_size", 14)
+	stress_info.text = "20 full-resolution mechs, then continuous random impacts."
+	column.add_child(stress_info)
 	var help := Label.new()
 	help.text = "Shots now carve variable jagged craters · swipe to orbit · scroll to zoom"
 	help.add_theme_font_size_override("font_size", 12)
@@ -197,10 +216,65 @@ func _open_launcher() -> void:
 
 
 func _select_chassis(index: int) -> void:
+	stop_stress_test()
 	profile_index = index
 	if chassis_selector:
 		chassis_selector.select(index)
 	reset_lab()
+
+
+## Finish cheap cell-only catalog probes if the user presses stress test before
+## the automatic one-per-frame count pass has completed.
+func _ensure_catalog_counts() -> void:
+	while _catalog_cursor < profiles.size():
+		_count_next_profile()
+
+
+func start_stress_test() -> void:
+	if _stress != null:
+		return
+	_ensure_catalog_counts()
+	var highest := VoxelStressTest.highest_voxel_profile(profiles, _catalog_counts)
+	if highest.is_empty():
+		_last_hit = "Stress test unavailable: no chassis voxel counts"
+		return
+	_saved_stress_camera = Vector3(_orbit, _elevation, _distance)
+	mech.visible = false
+	mech.set_process(false)
+	_stress = VoxelStressTest.new()
+	_stress.name = "VoxelStressTest"
+	add_child(_stress)
+	_stress.start(highest)
+	_orbit = 2.58
+	_elevation = 0.75
+	_distance = 22.5
+	update_camera()
+	stress_start_button.disabled = true
+	stress_stop_button.disabled = false
+	for button in _single_model_buttons:
+		button.disabled = true
+	_last_hit = "Building 20 %s mechs for a full-detail stress test" % highest["name"]
+
+
+func stop_stress_test() -> void:
+	if _stress == null:
+		return
+	_stress.set_process(false)
+	# All twenty meshes, voxel data, and any detached debris are disposed.
+	_stress.free()
+	_stress = null
+	mech.visible = true
+	mech.set_process(true)
+	_orbit = _saved_stress_camera.x
+	_elevation = _saved_stress_camera.y
+	_distance = _saved_stress_camera.z
+	update_camera()
+	stress_start_button.disabled = false
+	stress_stop_button.disabled = true
+	for button in _single_model_buttons:
+		button.disabled = false
+	stress_info.text = "Stress test stopped; 20 target mechs cleared."
+	_last_hit = "Returned to the single-mech lab"
 
 
 func _set_stability(value: float) -> void:
@@ -242,6 +316,7 @@ func sever_right() -> void:
 
 
 func reset_lab() -> void:
+	stop_stress_test()
 	mech.queue_free()
 	_spawn_mech()
 	_last_hit = "Loaded %s: %s" % [profiles[profile_index]["name"], profiles[profile_index]["gait"]]
@@ -258,6 +333,22 @@ func _process(_delta: float) -> void:
 	# and reports exact generated geometry, not estimated authoring volumes.
 	if _catalog_cursor < profiles.size():
 		_count_next_profile()
+	if _stress != null:
+		var current := _stress.current_fps()
+		var average := _stress.average_fps
+		var minimum := _stress.min_fps_display()
+		var spawned := _stress.models.size()
+		var shots := _stress.shots_attempted
+		var removed := _stress.voxels_removed
+		var original := _stress.original_voxels
+		info.text = "FPS %.0f  |  avg %.1f  |  min %.1f  |  %.1f ms/frame\n%s: %d / 20 spawned  |  %d full-detail voxels\n%d hits / %d shots  |  %d voxels destroyed" % [
+			current, average, minimum, 1000.0 / maxf(1.0, current),
+			_stress.profile["name"], spawned, original,
+			_stress.shots_hit, shots, removed]
+		stress_info.text = "Remaining: %d voxels  |  runtime %.1fs  |  %s" % [
+			_stress.remaining_voxels(), _stress.elapsed_seconds,
+			"LOADING" if spawned < VoxelStressTest.TARGET_COUNT else "FIRING RANDOM IMPACTS"]
+		return
 	var l := mech.gait_foot(mech.gait_phase).x
 	var r := mech.gait_foot(mech.gait_phase + 0.5).x
 	var initial := mech.initial_voxels()
