@@ -62,6 +62,11 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 			if level == ExplainLevel.FULL:
 				t += " Fighting from inside a building trades its walls for your armor."
 			return t
+		"shot":
+			var t := "  The %s at %s takes %d damage (CF left %d)." % [String(d["name"]).to_lower(), where, d["damage"], d["cf"]]
+			if level == ExplainLevel.FULL:
+				t += " Bringing it down drops anyone inside and opens the line of sight."
+			return t
 		"collapsed":
 			return "The %s at %s collapses into rubble!" % [String(d["name"]).to_lower(), where]
 	return ""

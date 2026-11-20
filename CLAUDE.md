@@ -31,7 +31,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push), `Charge` (charge, DFA), `Displacement`, `PhysicalPhase` |
-| `src/core/rules/buildings/` | `BuildingRules` (entering, wall absorption, collapse) |
+| `src/core/rules/buildings/` | `BuildingRules` (entering, wall absorption, collapse), `BuildingFire` (shooting buildings) |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire` |
@@ -44,12 +44,12 @@ Battle mode first; campaign layer later.
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards) |
-| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `BotDriver` (runs computer sides), `BattleLaunch` |
+| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackRows` (side-panel rows), `BotDriver` (runs computer sides), `BattleLaunch` |
 | `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
 | `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, map=<id>, tutorial) |
-| `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI) |
+| `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |
 | `export_presets.cfg` | Android export preset; `.github/workflows/android.yml` builds an APK on manual run only |

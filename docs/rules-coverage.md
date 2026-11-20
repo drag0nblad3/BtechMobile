@@ -114,7 +114,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Hits on a 'Mech inside: walls soak CF/10, building takes the whole hit — `TODO(rules)`.
 - 🟡 Collapse: hex becomes rubble, the 'Mech inside falls from the roof height — `TODO(rules)`.
 - ✅ Buildings block line of sight like a hill as tall as the roof.
-- ⬜ Attacking buildings directly, standing on roofs, jumping onto buildings, charges and
+- 🟡 Shooting buildings (`BuildingFire`): tap a building in the weapon phase; -4 to hit, each hit lowers CF, 0 CF collapses it — `TODO(rules)`: verify -4, no secondary-target cost, 'Mechs inside unhurt until collapse.
+- ⬜ Physical attacks on buildings, standing on roofs, jumping onto buildings, charges and
   displacement into buildings, basements.
 
 ## Pilots

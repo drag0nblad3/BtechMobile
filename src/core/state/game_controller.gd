@@ -64,8 +64,11 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 	unit.has_fired = true
 	var summary := []
 	for d in decl:
-		summary.append({"weapon": unit.weapons[d["weapon_index"]].def.name,
-				"target_id": d["target_id"], "need": d["to_hit"].target()})
+		var sh := {"weapon": unit.weapons[d["weapon_index"]].def.name,
+				"target_id": d["target_id"], "need": d["to_hit"].target()}
+		if d.has("target_hex"):
+			sh["target_hex"] = d["target_hex"]
+		summary.append(sh)
 	_emit(GameEvent.FIRE_DECLARED, {"unit_id": unit.id, "shots": summary})
 	_unit_done()
 	return true

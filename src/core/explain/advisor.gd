@@ -64,7 +64,7 @@ static func _rear_shots(state: GameState, u: Unit, c: Vector2i, facing: int) -> 
 
 
 ## Volley about to be declared: expected damage and heat consequences.
-## shots: [{weapon: index, target_id}].
+## shots: [{weapon: index, target_id}] or [{weapon, hex}] for a building.
 static func volley(state: GameState, u: Unit, shots: Array, level: int) -> String:
 	if level == ExplainLevel.OFF:
 		return ""
@@ -74,11 +74,15 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 	var worst_ratio := INF
 	var primary := -1
 	for sh: Dictionary in shots:
-		var t := state.unit_by_id(int(sh["target_id"]))
-		if primary < 0:
-			primary = t.id
 		var w := u.weapons[int(sh["weapon"])]
-		var th := ToHitCalc.weapon(state, u, w, t, t.id != primary)
+		var th: ToHit
+		if sh.has("hex"):
+			th = BuildingFire.to_hit(state, u, w, sh["hex"])
+		else:
+			var t := state.unit_by_id(int(sh["target_id"]))
+			if primary < 0:
+				primary = t.id
+			th = ToHitCalc.weapon(state, u, w, t, t.id != primary)
 		if not th.possible():
 			continue
 		var ed := expected_damage(w.def, th)
