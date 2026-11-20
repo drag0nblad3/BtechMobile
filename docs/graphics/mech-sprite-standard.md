@@ -52,3 +52,21 @@ Support intact, damaged and destroyed presentations of gameplay-relevant compone
 - **No assumed elevated view** until in-engine evaluation.
 - The renderer can project a flat texture in perspective, but it **cannot reveal unseen geometry**; changing camera elevation significantly may still require sprite transitions/additional views.
 - Briefs, prompts and internal design notes are production aids for generating assets; the project deliverables are finished in-game graphics.
+
+## Approved first-pass visual target — Mad Dog / Vulture (2026-11-19)
+
+**Decision:** The latest **slightly elevated seven-view gray Mad Dog prototype** is **provisionally approved as the visual target**. It is a style and identity reference, **not yet an export-validated production sprite atlas**. The prototype image was generated in the project conversation; this document records the decision and visual characteristics, but does not embed or store the image binary.
+
+### Selected look
+
+- **Directional camera:** approximately **15° down from horizontal**, preferred over the initial flatter version. This is the **current art target**; final elevation and billboard behavior still require **in-engine comparison** (including 0° and 25° test candidates if useful).
+- **Views:** six hex-facing rotations (0°, 60°, 120°, 180°, 240°, 300°) at one consistent elevation, plus a **true 90° top-down orthographic** view, rotatable by the engine.
+- **Silhouette:** narrow forward-projecting wedge/cockpit nose, twin prominent high shoulder missile pods, compact arm guns, reverse-jointed birdlike legs, and broad segmented feet. Keep these cues recognizable even when variant weapons change.
+- **Visual treatment:** clean illustrated/cel-shaded military-industrial style; crisp armor contours and panel separation, readable mechanical articulation, moderate restrained detail, consistent neutral lighting and no ground shadows.
+- **Palette-swappable zones:** neutral **medium gray primary armor**, **charcoal secondary panels/recesses**, **muted khaki accent plates**, and **dark steel non-recolorable joints/inner frame**. Cockpit glass stays a separate pale teal material; launcher ports and weapon interiors are also separately controlled. Preserve relative light/dark shading inside each color zone so factions can recolor without losing depth.
+- **Faction coloring:** derive multiple faction schemes from the *same art and color-zone masks / indexed palette*, rather than individually redrawing the mech. Recolor main/secondary/accent zones; keep cockpit, steel, and equipment-specific features independently configurable.
+- **Production next steps:** prepare/validate transparent sprites and mechanically consistent silhouettes at the seven views; establish pixel-perfect pivots, aligned component anchors, color-zone masks or indexed palettes, and a manifest before engine integration. Do not assume all images in a generated proof sheet already align or share identical geometry.
+
+### Acceptance state
+
+**Visual style: selected provisionally.** **Final camera elevation, production transparency, pixel alignment, color masks, modular components, damage and in-engine performance: still to be validated.**
