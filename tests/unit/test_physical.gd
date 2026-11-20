@@ -14,7 +14,7 @@ func _setup() -> Array:
 func test_punch_and_kick_numbers() -> void:
 	var r := _setup()
 	var opts := PhysicalOptions.for_target(r[0], r[1], r[2])
-	check_eq(opts.size(), 4)
+	check_eq(opts.size(), 5, "2 punches, 2 kicks, push")
 	var punch: Dictionary = opts[0]
 	check(punch["to_hit"].possible(), punch["to_hit"].summary())
 	check_eq(punch["to_hit"].target(), 5, "piloting 5")

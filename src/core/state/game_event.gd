@@ -23,7 +23,9 @@ const CRIT_CHECK := &"crit_check"         # {unit_id, loc, roll, crits}
 const PSR := &"psr"                       # {unit_id, roll, need, ok, reasons: [String], mods}
 const FALL := &"fall"                     # {unit_id, damage, levels}
 const STAND := &"stand"                   # {unit_id, ok}
-const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, roll, need, hit, damage, mods}
+const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb, roll, need, hit, damage, mods}
+const CHARGE_DECLARED := &"charge_declared" # {unit_id, target_id, kind: charge|dfa, need}
+const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vector3i]}
 const GAME_OVER := &"game_over"           # {winner: side or -1}
 
 var type: StringName

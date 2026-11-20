@@ -94,7 +94,15 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   makes the kicker roll.
 - ✅ Two punches or one kick per turn; adjacent target, front arc (punch: or that arm's side).
 - 🟡 Level differences: only within 1 level — `TODO(rules)`: which table per level difference.
-- ⬜ Charge, death from above, push, club, physical weapons.
+- 🟡 Charge: declared with a walk/run move ending next to an enemy straight ahead; piloting +
+  piloting difference + target movement/terrain; ceil(tons/10) × hexes to the target,
+  ceil(target tons/10) back; both roll at +2; target shoved, attacker follows. No weapon fire.
+- 🟡 Death from above: same with a jump; ceil(tons/10) × 3 (punch table), ceil(tons/5) to own
+  legs, attacker rolls at +4, a miss is an automatic fall.
+- ✅ Push: piloting − 1, target straight ahead, no damage, shoved one hex and must roll.
+- 🟡 Displacement: blocked hexes stop it — `TODO(rules)`: domino effect, falling off ledges,
+  charge/DFA to-hit modifiers and where a missed attacker ends up.
+- ⬜ Clubs, physical weapons.
 
 ## Pilots
 - ✅ 6 hits kill; consciousness roll after each hit (3, 5, 7, 10, 11); wake-up roll in End Phase.
