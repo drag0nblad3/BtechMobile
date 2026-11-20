@@ -148,7 +148,7 @@ static func _hunchback(p: VoxelPart) -> void:
 	hull(p, -8, 3, Vector2(5.4, 5.0), Vector2(8.6, 6.1), 0)
 	# Hunchback's silhouette is deliberately *uneven*: great right-shoulder
 	# autocannon box vs tiny cockpit tucked into the left side.
-	ellipsoid(p, Vector3(7.3, 5.7, 0), Vector3(6.2, 6.2, 5.8), 4)
+	ellipsoid(p, Vector3(7.3, 5.7, 0), Vector3(6.0, 5.8, 5.6), 4)
 	ellipsoid(p, Vector3(-7.8, 0.6, 1), Vector3(4.5, 4.8, 5.1), 0)
 	ellipsoid(p, Vector3(-3.0, 5.7, -4.0), Vector3(3.8, 3.6, 3.9), 4)
 	p.fill_box(Vector3i(-5, 5, -8), Vector3i(-2, 6, -7), 2)
@@ -284,7 +284,7 @@ static func arm(p: VoxelPart, shape: String, side: int) -> void:
 		# Symmetric armored fists, but not large yellow pistol boxes.
 		tube(p, 0, -5, -13, -6, 2.7, 1.1, 8)
 	elif shape == "wolverine" and side == 1:
-		tube(p, 0, -6, -17, -7, 4.4, 1.1, 8)
+		tube(p, 0, -6, -17, -7, 4.7, 1.1, 8)
 	elif shape == "hunchback":
 		if side == 1:
 			# Weapon-side coaxial laser; the opposite arm is a plain fist.
