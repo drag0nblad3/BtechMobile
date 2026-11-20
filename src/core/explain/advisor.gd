@@ -17,11 +17,13 @@ static func move(state: GameState, u: Unit, mode: int, key: Vector3i, opts: Move
 	if level == ExplainLevel.OFF:
 		return ""
 	var path := opts.path_to(key)
-	var hexes := MoveOptions.hexes_entered(path, u.coord)
+	var jump := mode == MoveMode.Kind.JUMP
+	var hexes := Hex.distance(u.coord, MoveOptions.coord_of(key)) if jump \
+			else MoveOptions.hexes_entered(path, u.coord)
 	var moved: bool = opts.cost.get(key, 0) > 0
-	var own := 0 if not moved else (2 if mode == MoveMode.Kind.RUN else 1)
-	var tm := ToHitCalc.target_movement_mod(hexes)
-	var heat: int = 0 if not moved else HeatScale.MOVE_HEAT[mode + 1]
+	var own := MoveMode.attacker_mod(mode) if moved else 0
+	var tm := ToHitCalc.target_movement_mod(hexes, jump and moved)
+	var heat := MoveMode.heat(mode, hexes) if moved else 0
 	var tile := state.map.get_tile(MoveOptions.coord_of(key))
 	var cover := LineOfSight.woods_value(tile) if tile else 0
 	if tile and tile.is_water() and tile.depth == 1:
@@ -37,6 +39,8 @@ static func move(state: GameState, u: Unit, mode: int, key: Vector3i, opts: Move
 			t += " Running here gains no defense over walking but costs +1 to your aim and 1 heat: walk instead."
 		else:
 			t += " Running buys +%d defense over walking, for +1 to your aim and 1 heat." % (tm - walk_tm)
+	if jump and moved:
+		t += " Jumping ignores terrain and lets you land behind enemies, but it is the worst for your own aim (+3) and the hottest."
 	var rear := _rear_shots(state, u, MoveOptions.coord_of(key), key.z)
 	if rear != "":
 		t += " " + rear

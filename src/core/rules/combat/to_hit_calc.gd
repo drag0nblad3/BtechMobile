@@ -14,7 +14,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = "%s can't fire (%s)" % [w.def.name,
 				"no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed"]
 		return th
-	var arc_id := FiringArc.arc(attacker.coord, attacker.facing, target.coord)
+	var arc_id := FiringArc.arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
 	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
@@ -55,10 +55,13 @@ static func add_movement(th: ToHit, attacker: Unit, target: Unit) -> void:
 			th.add("you walked", 1, "Walking makes your own aim worse by 1.")
 		MoveMode.Kind.RUN:
 			th.add("you ran", 2, "Running makes your own aim worse by 2. Walking would make it +1.")
-	var tm := target_movement_mod(target.hexes_moved)
+		MoveMode.Kind.JUMP:
+			th.add("you jumped", 3, "Shooting after a jump is hard: +3.")
+	var jumped := target.move_mode == MoveMode.Kind.JUMP
+	var tm := target_movement_mod(target.hexes_moved, jumped)
 	if tm > 0:
-		th.add("target moved %d hexes" % target.hexes_moved, tm,
-				"Fast targets are harder to hit: 3-4 hexes +1, 5-6 +2, 7-9 +3, 10+ +4.")
+		th.add("target %s %d hexes" % [MoveMode.verb(target.move_mode), target.hexes_moved], tm,
+				"Fast targets are harder to hit: 3-4 hexes +1, 5-6 +2, 7-9 +3, 10+ +4; +1 more if it jumped.")
 
 
 static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: Unit,
@@ -97,7 +100,9 @@ static func add_arm_actuators(th: ToHit, u: Unit, loc: int) -> void:
 
 
 ## Target movement modifier from hexes moved this turn.
-static func target_movement_mod(hexes: int) -> int:
+static func target_movement_mod(hexes: int, jumped: bool = false) -> int:
+	if jumped:
+		return target_movement_mod(hexes) + 1
 	if hexes >= 25:
 		return 6
 	if hexes >= 18:

@@ -16,6 +16,8 @@ signal log_toggled
 signal explain_cycled
 signal attack_confirm
 signal attack_skip
+signal twist_left
+signal twist_right
 signal new_battle
 
 const FONT_SIZE := 24
@@ -31,6 +33,7 @@ var mode_button: Button
 var explain_button: Button
 var attack_button: Button
 var skip_button: Button
+var twist_buttons: Array[Button] = []
 var side_panel: PanelContainer
 var side_box: VBoxContainer
 var log_view: CombatLogView
@@ -82,6 +85,7 @@ func _ready() -> void:
 	_button(move_bar, "Cancel", cancel)
 	_button(move_bar, "Confirm", confirm)
 	attack_bar = _bar(col)
+	twist_buttons = [_button(attack_bar, "◀ Twist", twist_left), _button(attack_bar, "Twist ▶", twist_right)]
 	skip_button = _button(attack_bar, "Hold Fire", attack_skip)
 	attack_button = _button(attack_bar, "Fire", attack_confirm)
 	show_move_controls(false)
@@ -149,6 +153,8 @@ func show_move_controls(visible_: bool) -> void:
 
 func show_attack_controls(visible_: bool, fire_text: String = "Fire", skip_text: String = "Hold Fire") -> void:
 	attack_bar.visible = visible_
+	for b in twist_buttons:
+		b.visible = fire_text == "Fire"
 	attack_button.text = fire_text
 	skip_button.text = skip_text
 

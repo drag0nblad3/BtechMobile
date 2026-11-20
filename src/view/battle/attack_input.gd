@@ -87,6 +87,16 @@ func on_confirm() -> void:
 		controller.declare_physical(u, list)
 
 
+func on_twist(dir: int) -> void:
+	if attacker and is_weapon_phase():
+		controller.set_torso_twist(attacker, clampi(attacker.torso_twist + dir, -1, 1))
+		shots.clear()
+		primary_id = -1
+		if target:
+			_default_shots()
+		_refresh()
+
+
 func on_skip() -> void:
 	if attacker == null:
 		return
@@ -155,14 +165,15 @@ func _refresh() -> void:
 	if target:
 		hexes[target.coord] = Color(1, 0.2, 0.2, 0.55)
 	highlighter.show_hexes(hexes)
+	var twist: String = ["  (torso twisted left)", "", "  (torso twisted right)"][attacker.torso_twist + 1]
 	if target == null:
-		hud.set_info("%s: tap an enemy to aim" % Names.unit(attacker))
+		hud.set_info("%s: tap an enemy to aim%s" % [Names.unit(attacker), twist])
 		hud.set_tip(Advisor.targets(controller.state, attacker, level) if weapon else "Tap an adjacent enemy to punch or kick it.")
 		if not hud.sheet_open:
 			hud.show_side(null)
 		return
-	hud.set_info("%s -> %s (%d hexes)" % [Names.unit(attacker), Names.unit(target),
-			Hex.distance(attacker.coord, target.coord)])
+	hud.set_info("%s -> %s (%d hexes)%s" % [Names.unit(attacker), Names.unit(target),
+			Hex.distance(attacker.coord, target.coord), twist])
 	if weapon:
 		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
 		if not hud.sheet_open:

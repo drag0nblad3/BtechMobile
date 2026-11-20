@@ -40,7 +40,6 @@ static func arc(from: Vector2i, facing: int, to: Vector2i) -> int:
 
 ## Can a weapon in `loc` fire into `arc_id`? Torso, head and leg weapons fire
 ## forward (or backward if rear-mounted); arms also cover their own side.
-## TODO(rules): torso twist not implemented.
 static func weapon_covers(loc: int, rear: bool, arc_id: int) -> bool:
 	if rear:
 		return arc_id == REAR
@@ -51,6 +50,12 @@ static func weapon_covers(loc: int, rear: bool, arc_id: int) -> bool:
 	if loc == Location.RA:
 		return arc_id == RIGHT
 	return false
+
+
+## Facing a weapon's arcs are measured from: legs use the legs' facing,
+## everything else turns with the torso.
+static func weapon_facing(u: Unit, loc: int) -> int:
+	return u.facing if Location.is_leg(loc) else u.torso_facing()
 
 
 static func _world(c: Vector2i) -> Vector2:

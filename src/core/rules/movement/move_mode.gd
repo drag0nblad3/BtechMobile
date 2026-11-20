@@ -1,15 +1,49 @@
 class_name MoveMode
 extends RefCounted
-## Ground movement modes. Jumping gets its own planner later.
+## Movement modes and what each costs: MP budget, heat and the penalty to
+## the mover's own shots this turn.
 
-enum Kind { WALK, RUN }
+enum Kind { WALK, RUN, JUMP }
+
+const NAMES := ["Walk", "Run", "Jump"]
+const VERBS := ["walked", "ran", "jumped"]
 
 
 static func name_of(k: int) -> String:
-	return ["Walk", "Run"][k] if k >= 0 and k < 2 else "-"
+	return NAMES[k] if k >= 0 and k < NAMES.size() else "-"
+
+
+static func verb(k: int) -> String:
+	return VERBS[k] if k >= 0 and k < VERBS.size() else "stood still"
 
 
 ## MP available this turn, after heat and damage. Standing up costs 2 MP.
 static func budget(unit: Unit, k: int) -> int:
+	if k == Kind.JUMP:
+		return 0 if unit.prone else unit.jump_mp()
 	var mp := unit.run_mp() if k == Kind.RUN else unit.walk_mp()
 	return mp - (2 if unit.prone else 0)
+
+
+## To-hit penalty on the mover's own attacks (-1 = stood still).
+static func attacker_mod(k: int) -> int:
+	match k:
+		Kind.WALK:
+			return 1
+		Kind.RUN:
+			return 2
+		Kind.JUMP:
+			return 3
+	return 0
+
+
+## Heat built by moving: walk 1, run 2, jump 1 per hex (minimum 3).
+static func heat(k: int, hexes: int) -> int:
+	match k:
+		Kind.WALK:
+			return 1
+		Kind.RUN:
+			return 2
+		Kind.JUMP:
+			return maxi(3, hexes)
+	return 0

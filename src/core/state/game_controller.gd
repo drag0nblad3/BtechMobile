@@ -44,16 +44,17 @@ func submit_move(unit: Unit, target: Vector3i, mode: int) -> bool:
 	if unit.prone and mp > 0 and not Psr.try_stand(state, dice, _emit_cb, unit):
 		unit.has_moved = true
 		unit.move_mode = MoveMode.Kind.WALK
-		unit.heat_generated += HeatScale.MOVE_HEAT[1]
+		unit.heat_generated += MoveMode.heat(MoveMode.Kind.WALK, 0)
 		Damage.announce(_emit_cb, unit)
 		_unit_done()
 		return true
-	unit.hexes_moved = MoveOptions.hexes_entered(path, unit.coord)
+	unit.hexes_moved = Hex.distance(unit.coord, MoveOptions.coord_of(target)) \
+			if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(path, unit.coord)
 	unit.coord = MoveOptions.coord_of(target)
 	unit.facing = target.z
 	unit.has_moved = true
 	unit.move_mode = mode if mp > 0 else -1
-	unit.heat_generated += HeatScale.MOVE_HEAT[mode + 1] if mp > 0 else 0
+	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved) if mp > 0 else 0
 	_emit(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
 	_unit_done()
@@ -86,6 +87,15 @@ func declare_physical(unit: Unit, attacks: Array) -> bool:
 	state.declared_physical.append_array(decl)
 	unit.has_physical = true
 	_unit_done()
+	return true
+
+
+## Twists the torso one hexside left (-1), right (+1) or back (0) before
+## declaring fire. Arms and torso weapons follow; leg weapons don't.
+func set_torso_twist(unit: Unit, dir: int) -> bool:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone:
+		return false
+	unit.torso_twist = clampi(dir, -1, 1)
 	return true
 
 
