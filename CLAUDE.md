@@ -52,7 +52,7 @@ Battle mode first; campaign layer later.
 | `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, map=<id>, tutorial) |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
-| `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |
+| `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap), `voxel-mech-prototype.md` (lab), `graphics/voxel-integration-plan.md` (voxel art into the battle) |
 | `export_presets.cfg` | Android export preset; `.github/workflows/android.yml` builds an APK on manual run only |
 
 ## Commands
