@@ -5,9 +5,9 @@ extends Node3D
 var mech: VoxelMech
 var camera: Camera3D
 var info: Label
-var _orbit := 0.48
+var _orbit := 2.58
 var _elevation := 0.33
-var _distance := 7.0
+var _distance := 5.8
 var _right_drag := false
 var _touch_dragged := false
 var _last_hit := "No impacts yet"
@@ -31,13 +31,13 @@ func make_arena() -> void:
 	env.background_color = Color("152333")
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color("b5cee8")
-	env.ambient_light_energy = 0.85
+	env.ambient_light_energy = 0.70
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	env_node.environment = env
 	add_child(env_node)
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-56, -32, 0)
-	sun.light_energy = 1.6
+	sun.light_energy = 1.25
 	sun.shadow_enabled = true
 	add_child(sun)
 	var ground := StaticBody3D.new()
