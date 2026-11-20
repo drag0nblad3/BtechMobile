@@ -80,6 +80,35 @@ To avoid generating unsolicited previews, GitHub CI renders screenshots only
 when started explicitly with **Actions → CI → Run workflow**. Normal push and
 pull-request checks still run unit tests and headless scene smokes.
 
+## Atlas and Catapult high-fidelity geometry (05)
+
+Atlas AS7-D and Catapult CPLT-C1 now request a **2× linear-resolution**
+37.5 mm voxel grid, with chassis-specific sculpting instead of empty extra
+cells. The Atlas receives broadened shoulder mantles, separated chest
+plates, a skull-like visor, rear heat exchangers, heavy forearms and
+mechanical leg armor. The Catapult receives a swept cockpit hull, dorsal
+jump-jet housings, articulated leg armor, and **two recessed 15-tube LRM
+launchers** with individually cut mouth openings. Each chassis also has
+microvoxel paint and groove detailing that remains destructible.
+
+This pass targets **100,000–120,000 occupied cells per chassis**, with exact
+counts enforced by unit tests and reported by the existing mesh-free Godot
+voxel-count CI step. These are authentic occupied geometry counts, not a
+render-only scaling trick. The highest-count stress-test chassis is
+selected dynamically; updating Atlas and Catapult may change which model
+it chooses.
+
+**Wider damage:** normal shots, scripted blasts, and the twenty-mech stress
+test now use part-relative impact footprints. A torso or launcher pod
+receives a larger patch of irregular gouges and multiple secondary fractures
+instead of one small circular hole. Voxels are still erased exclusively
+from the selected part, with random seed control retained for test
+reproduction. Damage is bounded to an impact neighborhood for performance.
+
+This is deliberately heavier geometry. Test and measure phone memory,
+loading times and FPS before applying high detail to every battle unit.
+No Android APK build is part of this source-only change.
+
 ## Twenty-mech performance stress test (04)
 
 The isolated **Voxel Mech Lab** includes two new touch-sized buttons:
