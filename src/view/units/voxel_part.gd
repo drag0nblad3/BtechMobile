@@ -164,7 +164,7 @@ func erase_local_ball(center: Vector3, radius: float) -> int:
 		if midpoint.distance_squared_to(center) <= radius_sq:
 			cells.erase(cell)
 			removed += 1
-	if removed > 0:
+	if removed > 0 and generate_mesh:
 		rebuild()
 	return removed
 
@@ -200,7 +200,7 @@ func erase_local_crater(center: Vector3, radius: float, seed: int) -> int:
 				cells.erase(cell)
 				removed += 1
 				break
-	if removed > 0:
+	if removed > 0 and generate_mesh:
 		rebuild()
 	return removed
 
