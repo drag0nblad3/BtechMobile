@@ -1,0 +1,15 @@
+{
+  "id": "stinger_stg3r", "name": "Stinger", "model": "STG-3R", "tonnage": 20,
+  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 10, "sprite": "stinger",
+  "role": "Light scout. Jumps 6 hexes to reach the rear arc; one laser, two machine guns, little armor.",
+  "armor": {"HD": 6, "CT": 6, "LT": 5, "RT": 5, "LA": 4, "RA": 4, "LL": 6, "RL": 6},
+  "rear_armor": {"CT": 2, "LT": 2, "RT": 2},
+  "equipment": {
+    "RA": ["medium_laser", "machine_gun"],
+    "LA": ["machine_gun"],
+    "LT": ["ammo:machine_gun", "jump_jet"],
+    "RT": ["jump_jet"],
+    "LL": ["jump_jet", "jump_jet"],
+    "RL": ["jump_jet", "jump_jet"]
+  }
+}
