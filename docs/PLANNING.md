@@ -109,6 +109,8 @@ against the book first:
 6. Unequal unit counts in alternating movement.
 7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE or
    pilot-skill multiplier). Our numbers land within about 10% of published values.
+8. Buildings: collapse when a heavier 'Mech enters, wall absorption (CF/10), entry PSR
+   modifiers, collapse damage as a fall.
 
 ## 5. Open questions
 

@@ -4,6 +4,7 @@ extends RefCounted
 ## A 'Mech is two levels tall: its height is its floor level + 1 (prone: + 0).
 ## TODO(rules): simplified classic rules. A hill blocks if it is higher than
 ## both units; woods count if their top is at least as high as both units.
+## A building blocks like a hill as tall as its roof.
 ## Divided LOS (line along hexsides) uses one side only (see Hex.line).
 
 const WOODS_BLOCK := 3  ## Intervening woods points that block line of sight.
@@ -28,6 +29,10 @@ static func check(map: BattleMap, from: Unit, to: Unit) -> Dictionary:
 		if tile.level > top:
 			out["blocked"] = true
 			out["reason"] = "hill at %s" % Hex.label(tile.coord)
+			return out
+		if tile.building != null and tile.level + tile.building.height > top:
+			out["blocked"] = true
+			out["reason"] = "building at %s" % Hex.label(tile.coord)
 			return out
 		var w := woods_value(tile)
 		if w > 0 and tile.level + tile.terrain.los_height >= top:

@@ -84,3 +84,8 @@ static func from_offset(o: Vector2i) -> Vector2i:
 static func label(c: Vector2i) -> String:
 	var o := to_offset(c)
 	return "%02d%02d" % [o.x + 1, o.y + 1]
+
+
+## Inverse of label(): "0805" -> axial coordinate.
+static func from_label(s: String) -> Vector2i:
+	return from_offset(Vector2i(int(s.substr(0, 2)) - 1, int(s.substr(2, 2)) - 1))

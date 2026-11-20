@@ -8,6 +8,7 @@ var coord: Vector2i
 var terrain: TerrainType
 var level: int = 0
 var depth: int = 0
+var building: Building = null  ## Standing building, if any.
 
 
 func _init(c: Vector2i, t: TerrainType, lvl: int, dep: int = 0) -> void:

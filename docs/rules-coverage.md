@@ -105,6 +105,16 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   charge/DFA to-hit modifiers and where a missed attacker ends up.
 - ⬜ Clubs, physical weapons.
 
+## Buildings
+- ✅ Classes light/medium/heavy/hardened (CF 15/40/90/120), +1/+2/+3/+4 MP to enter, height in levels.
+- 🟡 Entering: a 'Mech heavier than the remaining CF collapses it and stops there; otherwise a
+  piloting roll (+0/+1/+2/+5), failure = CF/10 damage — `TODO(rules)`: verify both.
+- 🟡 Hits on a 'Mech inside: walls soak CF/10, building takes the whole hit — `TODO(rules)`.
+- 🟡 Collapse: hex becomes rubble, the 'Mech inside falls from the roof height — `TODO(rules)`.
+- ✅ Buildings block line of sight like a hill as tall as the roof.
+- ⬜ Attacking buildings directly, standing on roofs, jumping onto buildings, charges and
+  displacement into buildings, basements.
+
 ## Pilots
 - ✅ 6 hits kill; consciousness roll after each hit (3, 5, 7, 10, 11); wake-up roll in End Phase.
 

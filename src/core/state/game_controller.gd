@@ -40,7 +40,11 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 	var opts := MovePlanner.plan(state, unit, mode)
 	if not opts.can_reach(target):
 		return false
-	var path := opts.path_to(target)
+	var entry := BuildingRules.plan_entry(state.map, unit, opts.path_to(target), mode == MoveMode.Kind.JUMP)
+	var path: Array[Vector3i] = entry["path"]
+	if entry["collapse"]:
+		target = path[path.size() - 1]
+		charge_target_id = -1
 	var from := opts.start_key()
 	var mp: int = opts.cost[target]
 	if unit.prone and mp > 0 and not Psr.try_stand(state, dice, _emit_cb, unit):
@@ -59,6 +63,8 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved) if mp > 0 else 0
 	_emit(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
+	for c: Vector2i in entry["entered"]:
+		BuildingRules.enter(state, dice, _emit_cb, unit, c)
 	if charge_target_id >= 0:
 		Charge.declare(state, _emit_cb, unit, state.unit_by_id(charge_target_id))
 	_unit_done()
