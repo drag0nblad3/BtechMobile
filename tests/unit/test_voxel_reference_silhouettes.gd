@@ -46,7 +46,7 @@ func test_wolverine_has_upright_glazed_cockpit_and_six_pack_launcher() -> void:
 	var body: VoxelPart = m.parts["torso"]
 	check(body.has_sculpt_cell(Vector3i(2, 12, -3)),
 			"upright sensor tower should project above the cockpit")
-	check_eq(body.sculpt_material(Vector3i(0, 7, -8)), 1,
+	check_eq(body.sculpt_material(Vector3i(0, 7, -9)), 1,
 			"two windscreen halves should be separated by a dark mullion")
 	for x in [-13, -11, -9]:
 		for y in [2, 5]:
