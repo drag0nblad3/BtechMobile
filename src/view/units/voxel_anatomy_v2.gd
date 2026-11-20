@@ -239,6 +239,27 @@ static func _catapult(p: VoxelPart) -> void:
 	p.fill_box(Vector3i(-3, -9, 0), Vector3i(2, -7, 4), 1)
 
 
+static func _jenner(p: VoxelPart) -> void:
+	# Retain its unusually long nose, wraparound glass and four SRM ports.
+	# Break up the large squared rear engine deck with curved housings and
+	# recessed radiator sides; the silhouette remains a light bird-like mech.
+	for side in [-1, 1]:
+		var x := -7 if side < 0 else 6
+		ellipsoid(p, Vector3(float(x), 0.3, 5.2),
+				Vector3(4.0, 2.6, 4.5), 4)
+		for z in [3, 5, 7]:
+			p.carve_box(Vector3i(-11 if side < 0 else 9, 1, z),
+					Vector3i(-10 if side < 0 else 10, 1, z))
+	# Reinforce the canopy's tapered cheek plates without squaring its nose.
+	for side in [-1, 1]:
+		var x := -4 if side < 0 else 3
+		for z in range(-15, -9):
+			var y := 0 if z < -12 else 1
+			p.fill_box(Vector3i(x, y, z), Vector3i(x, y + 1, z), 8)
+	# Pinned hip bearing and exposed rear heat exchange outlet.
+	ellipsoid(p, Vector3(0, -5.0, 3.0), Vector3(4.0, 2.2, 4.5), 8)
+
+
 static func arm(p: VoxelPart, shape: String, side: int) -> void:
 	if shape == "jenner" or shape == "catapult":
 		# Keep the Jenner's two separate laser bores and Catapult's 15
