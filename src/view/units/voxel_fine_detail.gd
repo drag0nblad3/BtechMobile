@@ -23,23 +23,23 @@ static func decorate(part: VoxelPart) -> void:
 
 static func _torso(part: VoxelPart) -> void:
 	# One fine-voxel canopy separator on an otherwise continuous glass panel.
-	part.paint_box(Vector3i(0, 4, -30), Vector3i(0, 5, -25), 1)
-	part.paint_box(Vector3i(-2, 2, -39), Vector3i(-2, 2, -36), 1)
-	part.paint_box(Vector3i(1, 2, -39), Vector3i(1, 2, -36), 1)
+	_paint(part, Vector3i(0, 4, -30), Vector3i(0, 5, -25), 1)
+	_paint(part, Vector3i(-2, 2, -39), Vector3i(-2, 2, -36), 1)
+	_paint(part, Vector3i(1, 2, -39), Vector3i(1, 2, -36), 1)
 	# Remove only the extreme upper corner of the forward beak.
-	part.carve_box(Vector3i(-2, 1, -42), Vector3i(-2, 1, -42))
-	part.carve_box(Vector3i(1, 1, -42), Vector3i(1, 1, -42))
+	_carve(part, Vector3i(-2, 1, -42), Vector3i(-2, 1, -42))
+	_carve(part, Vector3i(1, 1, -42), Vector3i(1, 1, -42))
 	# Thin, separately colored engine grilles and narrow hull panel seams.
 	for z in [11, 14, 17, 20]:
-		part.paint_box(Vector3i(-11, 3, z), Vector3i(-7, 3, z), 1)
-		part.paint_box(Vector3i(6, 3, z), Vector3i(10, 3, z), 1)
+		_paint(part, Vector3i(-11, 3, z), Vector3i(-7, 3, z), 1)
+		_paint(part, Vector3i(6, 3, z), Vector3i(10, 3, z), 1)
 	for z in [1, 5, 9]:
-		part.paint_box(Vector3i(-18, 0, z), Vector3i(-18, 2, z), 1)
-		part.paint_box(Vector3i(17, 0, z), Vector3i(17, 2, z), 1)
+		_paint(part, Vector3i(-18, 0, z), Vector3i(-18, 2, z), 1)
+		_paint(part, Vector3i(17, 0, z), Vector3i(17, 2, z), 1)
 	# The rack's four missiles now have a narrow one-cell rim.
 	for x in [-4, 2]:
 		for y in [6, 10]:
-			part.paint_box(Vector3i(x, y, -14), Vector3i(x + 1, y, -14), 3)
+			_paint(part, Vector3i(x, y, -14), Vector3i(x + 1, y, -14), 3)
 
 
 static func _laser_pod(part: VoxelPart) -> void:
@@ -80,3 +80,29 @@ static func _toes(part: VoxelPart) -> void:
 	for x in [-6, 0, 6]:
 		part.paint_box(Vector3i(x, -4, -17), Vector3i(x, -4, -17), 1)
 		part.carve_box(Vector3i(x, -2, -22), Vector3i(x, -2, -22))
+
+
+## The original micro-sculpt was authored for a 2x grid. Rescale only the
+## Jenner torso accents when its cockpit uses 3x (25 mm) voxels, preserving
+## their world positions and true negative spaces instead of shifting them.
+static func _grid_lower(point: Vector3i, factor: int) -> Vector3i:
+	return Vector3i(floori(float(point.x * factor) / 2.0),
+			floori(float(point.y * factor) / 2.0),
+			floori(float(point.z * factor) / 2.0))
+
+
+static func _grid_upper(point: Vector3i, factor: int) -> Vector3i:
+	return Vector3i(ceili(float((point.x + 1) * factor) / 2.0) - 1,
+			ceili(float((point.y + 1) * factor) / 2.0) - 1,
+			ceili(float((point.z + 1) * factor) / 2.0) - 1)
+
+
+static func _paint(part: VoxelPart, low: Vector3i, high: Vector3i,
+		material_id: int) -> void:
+	part.paint_box(_grid_lower(low, part.detail_scale),
+			_grid_upper(high, part.detail_scale), material_id)
+
+
+static func _carve(part: VoxelPart, low: Vector3i, high: Vector3i) -> void:
+	part.carve_box(_grid_lower(low, part.detail_scale),
+			_grid_upper(high, part.detail_scale))
