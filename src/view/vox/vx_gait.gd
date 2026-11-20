@@ -16,14 +16,23 @@ static func foot(phase: float, stride: float, lift: float) -> Vector2:
 	return Vector2(lerpf(-stride * 0.5, stride * 0.5, s), sin(u * PI) * lift)
 
 
-## Hip, knee and ankle angles that put the ankle `forward` ahead and `down`
-## below the hip, keeping the foot level. Knees bend backward.
-static func solve(forward: float, down: float, thigh: float, shin: float) -> Vector3:
+## 0 while planted, rising to 1 mid-swing and back (for toe flex).
+static func swing(phase: float) -> float:
+	var p := fposmod(phase, 1.0)
+	return 0.0 if p < STANCE else sin((p - STANCE) / (1.0 - STANCE) * PI)
+
+
+## Hip, knee and ankle angles that put the leg end `forward` ahead and `down`
+## below the hip, keeping the last segment upright. Human knees point
+## forward; `reverse` (digitigrade) knees point backward.
+static func solve(forward: float, down: float, thigh: float, shin: float, reverse: bool = false) -> Vector3:
 	var dist := clampf(sqrt(forward * forward + down * down), 0.01, thigh + shin - 0.001)
 	var cos_k := clampf((dist * dist - thigh * thigh - shin * shin) / (2.0 * thigh * shin), -1.0, 1.0)
 	var bend := acos(cos_k)
-	var hip := atan2(forward, down) + atan2(shin * sin(bend), thigh + shin * cos(bend))
-	return Vector3(hip, -bend, bend - hip)
+	var lean := atan2(shin * sin(bend), thigh + shin * cos(bend))
+	var hip := atan2(forward, down) + (-lean if reverse else lean)
+	var knee := bend if reverse else -bend
+	return Vector3(hip, knee, -hip - knee)
 
 
 ## Where the ankle ends up for given hip and knee angles (for tests).

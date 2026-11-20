@@ -1,0 +1,129 @@
+{
+  "id": "catapult",
+  "name": "Catapult CPLT-C1",
+  "unit": "catapult_cplt_c1",
+  "voxel_size": 0.048,
+  "legs": "digitigrade",
+  "punch": false,
+  "notes": "Reverse-jointed legs are drawn straight; the leg solver bends them. Grid: x right, y up, -z front.",
+  "materials": [
+    {"name": "armor", "color": "8a7d5c", "role": "armor"},
+    {"name": "plate", "color": "a8996f", "role": "armor"},
+    {"name": "stripe", "color": "9c3b2e", "role": "armor"},
+    {"name": "trim", "color": "d6c08a", "role": "armor"},
+    {"name": "gun", "color": "3b3e44", "role": "armor"},
+    {"name": "glow", "color": "86e0ff", "role": "armor"},
+    {"name": "frame", "color": "7a7f86", "role": "structure"},
+    {"name": "joint", "color": "5d636c", "role": "structure"}
+  ],
+  "parts": [
+    {"name": "ct", "loc": "CT", "pivot": [0, 24, 1], "shapes": [
+      {"shell": [[-5, 24, -8], [4, 35, 7]], "mat": "armor", "core": "frame"},
+      {"erase": [[-5, 34, -8], [4, 35, -7]]},
+      {"erase": [[-5, 24, -8], [4, 25, -7]]},
+      {"erase": [[-5, 35, 6], [4, 35, 7]]},
+      {"erase": [[-5, 24, 6], [4, 24, 7]]},
+      {"erase": [[-5, 24, -8], [-5, 35, -7]]},
+      {"erase": [[4, 24, -8], [4, 35, -7]]},
+      {"erase": [[-5, 24, 7], [-5, 35, 7]]},
+      {"erase": [[4, 24, 7], [4, 35, 7]]},
+      {"box": [[-4, 36, -6], [3, 36, 5]], "mat": "plate"},
+      {"box": [[-1, 36, -6], [0, 36, 5]], "mat": "stripe"},
+      {"box": [[-4, 25, 8], [3, 33, 8]], "mat": "plate"},
+      {"box": [[-3, 26, 9], [2, 31, 9]], "mat": "gun"},
+      {"box": [[-4, 22, -12], [-3, 23, -9]], "mat": "gun"},
+      {"box": [[2, 22, -12], [3, 23, -9]], "mat": "gun"},
+      {"box": [[-4, 22, -13], [-3, 23, -13]], "mat": "glow"},
+      {"box": [[2, 22, -13], [3, 23, -13]], "mat": "glow"},
+      {"box": [[-3, 22, -4], [2, 23, 4]], "mat": "joint"}
+    ]},
+    {"name": "hd", "loc": "HD", "parent": "ct", "pivot": [0, 27, -8], "shapes": [
+      {"shell": [[-3, 24, -13], [2, 31, -8]], "mat": "armor", "core": "frame"},
+      {"erase": [[-3, 31, -13], [2, 31, -12]]},
+      {"erase": [[-3, 24, -13], [2, 24, -13]]},
+      {"box": [[-2, 29, -14], [1, 30, -14]], "mat": "glow"},
+      {"box": [[-3, 29, -13], [-3, 30, -10]], "mat": "glow"},
+      {"box": [[2, 29, -13], [2, 30, -10]], "mat": "glow"},
+      {"box": [[-2, 31, -11], [1, 31, -9]], "mat": "glow"},
+      {"box": [[-2, 25, -14], [1, 26, -14]], "mat": "plate"},
+      {"box": [[-3, 27, -14], [2, 28, -14]], "mat": "stripe"},
+      {"box": [[2, 32, -9], [2, 34, -9]], "mat": "trim"}
+    ]},
+    {"name": "lt", "loc": "LT", "parent": "ct", "pivot": [0, 24, 1], "shapes": [
+      {"shell": [[-9, 24, -6], [-6, 34, 6]], "mat": "armor", "core": "frame"},
+      {"erase": [[-9, 34, -6], [-9, 34, 6]]},
+      {"erase": [[-9, 24, -6], [-9, 24, 6]]},
+      {"erase": [[-9, 24, -6], [-9, 34, -6]]},
+      {"erase": [[-9, 24, 6], [-9, 34, 6]]},
+      {"box": [[-10, 26, -4], [-10, 32, 4]], "mat": "plate"},
+      {"box": [[-10, 28, -2], [-10, 30, 2]], "mat": "stripe"},
+      {"box": [[-9, 26, -9], [-8, 27, -7]], "mat": "gun"},
+      {"box": [[-9, 26, -10], [-8, 27, -10]], "mat": "glow"},
+      {"box": [[-9, 25, 7], [-6, 28, 8]], "mat": "gun"},
+      {"erase": [[-8, 26, 8], [-7, 27, 8]]}
+    ]},
+    {"name": "rt", "mirror": "lt", "parent": "ct"},
+    {"name": "la", "loc": "LA", "parent": "lt", "pivot": [-14, 37, 0], "joint": "shoulder", "shapes": [
+      {"box": [[-10, 33, -2], [-10, 35, 2]], "mat": "joint"},
+      {"shell": [[-17, 33, -8], [-11, 41, 5]], "mat": "armor", "core": "frame"},
+      {"box": [[-17, 34, -9], [-11, 40, -9]], "mat": "plate"},
+      {"erase": [[-16, 35, -9], [-16, 35, -8]]},
+      {"erase": [[-14, 35, -9], [-14, 35, -8]]},
+      {"erase": [[-12, 35, -9], [-12, 35, -8]]},
+      {"erase": [[-16, 37, -9], [-16, 37, -8]]},
+      {"erase": [[-14, 37, -9], [-14, 37, -8]]},
+      {"erase": [[-12, 37, -9], [-12, 37, -8]]},
+      {"erase": [[-16, 39, -9], [-16, 39, -8]]},
+      {"erase": [[-14, 39, -9], [-14, 39, -8]]},
+      {"erase": [[-12, 39, -9], [-12, 39, -8]]},
+      {"box": [[-17, 42, -7], [-11, 42, 4]], "mat": "plate"},
+      {"box": [[-17, 42, -7], [-11, 42, -6]], "mat": "stripe"},
+      {"box": [[-18, 35, -6], [-18, 39, 3]], "mat": "trim"}
+    ]},
+    {"name": "ra", "mirror": "la", "parent": "rt"},
+    {"name": "ll", "loc": "LL", "pivot": [-6, 24, 1], "joint": "hip", "shapes": [
+      {"shell": [[-9, 16, -2], [-4, 23, 3]], "mat": "armor", "core": "frame"},
+      {"box": [[-10, 21, -1], [-10, 23, 2]], "mat": "joint"},
+      {"box": [[-10, 17, -1], [-10, 22, 2]], "mat": "plate"},
+      {"box": [[-8, 17, 4], [-5, 21, 4]], "mat": "gun"}
+    ]},
+    {"name": "ll_shin", "loc": "LL", "parent": "ll", "pivot": [-6, 15, 1], "joint": "knee", "shapes": [
+      {"box": [[-9, 13, -1], [-4, 15, 3]], "mat": "joint"},
+      {"shell": [[-8, 7, -1], [-5, 14, 2]], "mat": "armor", "core": "frame"},
+      {"box": [[-8, 8, 3], [-5, 13, 3]], "mat": "plate"},
+      {"box": [[-7, 9, -2], [-6, 12, -2]], "mat": "gun"}
+    ]},
+    {"name": "ll_tarsus", "loc": "LL", "parent": "ll_shin", "pivot": [-6, 6, 1], "joint": "hock", "shapes": [
+      {"box": [[-8, 5, 0], [-5, 6, 2]], "mat": "joint"},
+      {"box": [[-8, 3, 0], [-5, 4, 2]], "mat": "armor"},
+      {"box": [[-7, 3, -1], [-6, 4, -1]], "mat": "plate"}
+    ]},
+    {"name": "ll_foot", "loc": "LL", "parent": "ll_tarsus", "pivot": [-6, 2, 1], "joint": "ankle", "shapes": [
+      {"box": [[-8, 1, -1], [-5, 2, 2]], "mat": "joint"},
+      {"box": [[-7, 0, -6], [-6, 1, 0]], "mat": "armor"},
+      {"box": [[-7, 0, -7], [-6, 0, -7]], "mat": "trim"},
+      {"box": [[-10, 0, -4], [-9, 1, -2]], "mat": "armor"},
+      {"box": [[-9, 0, -2], [-8, 1, 0]], "mat": "plate"},
+      {"box": [[-10, 0, -5], [-10, 0, -5]], "mat": "trim"},
+      {"box": [[-4, 0, -4], [-3, 1, -2]], "mat": "armor"},
+      {"box": [[-5, 0, -2], [-4, 1, 0]], "mat": "plate"},
+      {"box": [[-3, 0, -5], [-3, 0, -5]], "mat": "trim"},
+      {"box": [[-7, 0, 1], [-6, 1, 4]], "mat": "plate"}
+    ]},
+    {"name": "rl", "mirror": "ll"},
+    {"name": "rl_shin", "mirror": "ll_shin", "parent": "rl"},
+    {"name": "rl_tarsus", "mirror": "ll_tarsus", "parent": "rl_shin"},
+    {"name": "rl_foot", "mirror": "ll_foot", "parent": "rl_tarsus"}
+  ],
+  "muzzles": {
+    "CT": [[-3, 23, -14], [3, 23, -14]],
+    "LT": [-8, 27, -11], "RT": [8, 27, -11],
+    "LA": [[-15.5, 35.5, -9.5], [-13.5, 35.5, -9.5], [-11.5, 35.5, -9.5], [-15.5, 37.5, -9.5], [-13.5, 37.5, -9.5], [-11.5, 37.5, -9.5], [-15.5, 39.5, -9.5], [-13.5, 39.5, -9.5], [-11.5, 39.5, -9.5]],
+    "RA": [[15.5, 35.5, -9.5], [13.5, 35.5, -9.5], [11.5, 35.5, -9.5], [15.5, 37.5, -9.5], [13.5, 37.5, -9.5], [11.5, 37.5, -9.5], [15.5, 39.5, -9.5], [13.5, 39.5, -9.5], [11.5, 39.5, -9.5]]
+  },
+  "jets": {"LT": [[-7, 26, 9]], "RT": [[7, 26, 9]]},
+  "weapons": [
+    {"label": "LRM 15s", "locs": ["LA", "RA"], "kind": "missile"},
+    {"label": "LASERS", "locs": ["CT", "LT", "RT"], "kind": "laser"}
+  ]
+}

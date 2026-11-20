@@ -63,3 +63,23 @@ func test_leg_solve_reaches_foot() -> void:
 		var got := VxGait.ankle_of(a.x, a.y, 0.35, 0.4)
 		check(got.distance_to(Vector2(f.x, 0.7 - f.y)) < 0.01, "ankle off at phase %d" % i)
 		check(is_zero_approx(a.x + a.y + a.z), "foot not level")
+
+
+func test_catapult_is_digitigrade_and_complete() -> void:
+	var m := VxModel.load_file("res://data/voxels/catapult.json")
+	check(m.errors.is_empty(), "errors: %s" % ", ".join(m.errors))
+	check_eq(m.legs, "digitigrade")
+	check_eq(m.muzzles[Location.LA].size(), 9, "LRM tubes")
+	check(UnitDb.load_dir().get_def(m.unit_id) != null, "unit id must exist")
+	var mech := VxMech.from_file("res://data/voxels/catapult.json")
+	check(mech.hocks[0] != null and mech.hocks[1] != null, "hocks found")
+	check(mech.tarsus > 0.0, "tarsus length")
+	mech.free()
+
+
+func test_reverse_knee_bends_backward() -> void:
+	var a := VxGait.solve(0.0, 0.6, 0.45, 0.45, true)
+	check(a.x < 0.0, "digitigrade thigh leans back")
+	check(a.y > 0.0, "digitigrade knee bends the other way")
+	var got := VxGait.ankle_of(a.x, a.y, 0.45, 0.45)
+	check(got.distance_to(Vector2(0.0, 0.6)) < 0.01, "reaches target")

@@ -199,11 +199,13 @@ Phases 1, 2 and most of 4 and 5 exist as a stand-alone test scene, not yet in th
 | File | What |
 |---|---|
 | `data/voxels/hunchback.json` | Hunchback HBK-4G, all 8 locations, ~6,200 voxels, ~10,600 triangles |
+| `data/voxels/catapult.json` | Catapult CPLT-C1: reverse-jointed legs, LRM racks with tube grids, jump jets |
 | `src/view/vox/vx_model.gd` | Reads and checks the text format (mirror, add, errors) |
 | `src/view/vox/vx_part.gd` | Culled-face mesher, one shared material, scorched edges, no floating voxels |
 | `src/view/vox/vx_damage.gd` | Record sheet → voxels (seeded crater order per location) |
 | `src/view/vox/vx_mech.gd` | Builds the rig, shows a `Unit`, drops destroyed limbs, muzzles |
-| `src/view/vox/vx_anim.gd`, `vx_gait.gd` | Walk/run gait, jump, fall, stand (and failed stand), punch, kick, torso twist + recoil |
+| `src/view/vox/vx_anim.gd`, `vx_legs.gd`, `vx_gait.gd` | Walk/run gait (normal or reverse-jointed), jump with jet flames, fall, stand (and failed stand), punch, kick, torso twist + recoil, damage smoke |
+| `src/view/vox/vx_volley.gd`, `vx_trails.gd` | Weapon groups (lasers from every muzzle, cannon recoil, rippling missile salvos with smoke trails), armor chips |
 | `src/view/vox/vx_fx.gd` | Muzzle flash, laser beam, cannon shell, impact smoke |
 | `src/view/vox/vx_showcase.gd`, `vx_stage.gd` | Test scene: hits go through the real `HitTable` and `Damage` on a live `Unit` |
 | `tests/unit/test_vx_model.gd` | Format, mirror, record-sheet mapping, limb loss, leg solve |

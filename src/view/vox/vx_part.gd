@@ -12,7 +12,7 @@ const QUADS := [
 	[Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(1, 0, 1), Vector3(0, 0, 1)],
 	[Vector3(1, 1, 1), Vector3(0, 1, 1), Vector3(0, 0, 1), Vector3(1, 0, 1)],
 	[Vector3(0, 1, 0), Vector3(1, 1, 0), Vector3(1, 0, 0), Vector3(0, 0, 0)]]
-const SHADE := [0.92, 0.92, 1.08, 0.72, 0.86, 1.0]
+const SHADE := [0.9, 0.9, 1.0, 0.7, 0.84, 0.97]
 const SCORCH := Color(0.16, 0.12, 0.1)
 
 static var _material: StandardMaterial3D
