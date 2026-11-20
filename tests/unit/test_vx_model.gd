@@ -69,7 +69,8 @@ func test_catapult_is_digitigrade_and_complete() -> void:
 	var m := VxModel.load_file("res://data/voxels/catapult.json")
 	check(m.errors.is_empty(), "errors: %s" % ", ".join(m.errors))
 	check_eq(m.legs, "digitigrade")
-	check_eq(m.muzzles[Location.LA].size(), 9, "LRM tubes")
+	check_eq(m.muzzles[Location.LA].size(), 15, "every LRM-15 has its own muzzle")
+	check_eq(m.muzzles[Location.RA].size(), 15, "mirrored LRM-15 needs fifteen muzzles")
 	check(UnitDb.load_dir().get_def(m.unit_id) != null, "unit id must exist")
 	var mech := VxMech.from_file("res://data/voxels/catapult.json")
 	check(mech.hocks[0] != null and mech.hocks[1] != null, "hocks found")
@@ -83,3 +84,32 @@ func test_reverse_knee_bends_backward() -> void:
 	check(a.y > 0.0, "digitigrade knee bends the other way")
 	var got := VxGait.ankle_of(a.x, a.y, 0.45, 0.45)
 	check(got.distance_to(Vector2(0.0, 0.6)) < 0.01, "reaches target")
+
+
+func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
+	var m := VxModel.load_file("res://data/voxels/catapult.json")
+	check(m.errors.is_empty(), "Catapult JSON should load without errors")
+	for loc in [Location.LA, Location.RA]:
+		var name := "la" if loc == Location.LA else "ra"
+		var p: Dictionary = m.part(name)
+		var cells: Dictionary = p["cells"]
+		var points: Array = m.muzzles[loc]
+		check_eq(points.size(), VxVolley.MISSILES,
+				"visual port count and missile salvo should match")
+		var unique: Dictionary = {}
+		for point: Vector3 in points:
+			var x := floori(point.x)
+			var y := floori(point.y)
+			var opening := Vector3i(x, y, -9)
+			unique[opening] = true
+			check(not cells.has(opening) and not cells.has(opening + Vector3i(0, 0, 1)),
+					"missile must emerge through a real two-cell-deep opening: " + str(opening))
+			check(cells.has(opening + Vector3i(0, 1, 0)),
+					"each port should have armor separating it from the next row")
+		check_eq(unique.size(), 15, "all fifteen launch tubes must be distinct")
+	var left: Dictionary = m.part("la")["cells"]
+	var right: Dictionary = m.part("ra")["cells"]
+	check_eq(left.size(), right.size(), "both racks should share the same shell")
+	for c: Vector3i in left:
+		check(right.has(Vector3i(-c.x - 1, c.y, c.z)),
+				"right launcher geometry must mirror the left")
