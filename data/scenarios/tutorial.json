@@ -1,0 +1,33 @@
+{
+  "name": "Training: First Battle",
+  "map": "test_valley",
+  "bot_sides": [1],
+  "units": [
+    {"def": "wolverine_wvr6r", "side": 0, "hex": "0716", "facing": 0},
+    {"def": "commando_com2d", "side": 1, "hex": "0802", "facing": 3}
+  ],
+  "lessons": [
+    {"event": "initiative", "turn": 1, "title": "Your first battle",
+     "text": "You command the red Wolverine at the bottom of the map. The computer flies the blue Commando at the top. Destroy it to win.\n\nDrag to pan the camera, pinch to zoom and twist with two fingers to orbit. Every turn begins with an initiative roll: the side that loses it must move first, so the winner gets to react."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Moving",
+     "text": "Tap your Wolverine. Highlighted hexes show where it can reach. The Walk button cycles through Walk, Run and Jump: running reaches farther but makes your own shots harder; jumping clears terrain and makes you hardest to hit.\n\nTap a hex to preview the path, use the Turn buttons to choose a facing, then Confirm. Your armor is thickest in front, so face the enemy."},
+    {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Shooting",
+     "text": "Tap your Wolverine, then the enemy. Each weapon shows the number you need on two dice. It starts at your gunnery skill (4) and goes up with range, your movement, the target's movement and woods in the way.\n\nToggle weapons on or off and watch the heat total before you press Fire. If the enemy is out of range or out of sight, Hold Fire."},
+    {"event": "fire_declared", "unit_side": 0, "title": "Simultaneous fire",
+     "text": "Attacks are declared one 'Mech at a time but resolve together at the end of the phase. A 'Mech destroyed this phase still gets its shots off, so there is no advantage in shooting first."},
+    {"event": "damage", "unit_side": 1, "title": "A hit!",
+     "text": "Each hit rolls two dice for location. Damage strips armor first, then internal structure. Once structure is exposed, every new hit can also land a critical hit on equipment inside. Open the Sheet to watch the enemy's damage add up."},
+    {"event": "damage", "unit_side": 0, "title": "Taking damage",
+     "text": "Your Wolverine was hit. Open the Sheet to see which location lost armor. Turning a damaged side away from the enemy spreads the punishment across fresh armor."},
+    {"event": "phase_changed", "phase": "Physical Attack", "turn": 1, "title": "Punches and kicks",
+     "text": "'Mechs standing next to each other can punch, kick or push. Nobody is close enough yet, so this phase will pass on its own. Kicks hit hard but a miss makes you roll to stay standing."},
+    {"event": "heat", "unit_side": 0, "title": "Heat",
+     "text": "Moving and firing build heat; heat sinks remove some every turn. Leftover heat slows you down and spoils your aim, and very high heat can shut the 'Mech down or cook off its ammo. Watch the heat line on the Sheet."},
+    {"event": "turn_started", "turn": 2, "title": "Turn two",
+     "text": "Try to end your moves where the enemy's shots are hardest: farther away, behind woods or after a long move. Getting behind the enemy is worth a lot, because rear armor is thin."},
+    {"event": "psr", "title": "Piloting roll",
+     "text": "Big damage, a kick, a damaged gyro or leg can force a piloting roll. Fail it and the 'Mech falls: it takes damage, may hurt its pilot, and must spend movement to stand up."},
+    {"event": "game_over", "title": "Training complete",
+     "text": "Well fought. From the start screen you can build your own lances by Battle Value, pick a map, and choose which sides the computer plays. Set explanations to Light once these lessons feel familiar."}
+  ]
+}

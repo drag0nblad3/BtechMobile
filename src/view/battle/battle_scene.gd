@@ -16,6 +16,8 @@ var attacks: AttackInput
 var explainer: Explainer
 var sheet_unit: Unit
 var bots: BotDriver
+var tutorial: Tutorial
+var lessons: LessonCard
 
 
 func _ready() -> void:
@@ -28,6 +30,12 @@ func _ready() -> void:
 	bots.controller = controller
 	bots.bot_sides = BattleLaunch.take_bots()
 	explainer = Explainer.new(GameSettings.explain_level)
+	if BattleLaunch.tutorial_path != "":
+		tutorial = Tutorial.from_scenario(BattleLaunch.tutorial_path)
+		BattleLaunch.tutorial_path = ""
+		lessons = LessonCard.new()
+		add_child(lessons)
+		bots.lessons = lessons
 	add_child(BattleEnvironment.build())
 	_build_views(state)
 	_wire()
@@ -156,6 +164,8 @@ func _on_event(e: GameEvent) -> void:
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
 	hud.log_view.add_line(explainer.describe(e, s), bold)
+	if tutorial:
+		lessons.add(tutorial.on_event(e, s))
 	match e.type:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]

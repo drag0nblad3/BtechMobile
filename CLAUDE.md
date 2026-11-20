@@ -33,7 +33,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push), `Charge` (charge, DFA), `Displacement`, `PhysicalPhase` |
 | `src/core/rules/buildings/` | `BuildingRules` (entering, wall absorption, collapse) |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
-| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
+| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire` |
 | `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
@@ -43,12 +43,12 @@ Battle mode first; campaign layer later.
 | `src/view/units/` | `UnitView` (animation, prone/wreck pose), `UnitsLayer`, `SpriteMech` (sprite sets from `assets/mechs/`, see `docs/graphics/sprite-integration.md`), `PlaceholderMech` (fallback) |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
-| `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea` |
+| `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards) |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `BotDriver` (runs computer sides), `BattleLaunch` |
 | `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
-| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu) |
+| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, map=<id>, tutorial) |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI) |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |

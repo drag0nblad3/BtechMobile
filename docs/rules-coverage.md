@@ -124,6 +124,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Advice: move preview (defense gained vs own penalty and heat, walk-vs-run, rear arcs),
   volley (expected damage, heat after the turn, which weapon to hold), best target,
   punch vs kick (including the chance of falling after a missed kick).
+- ✅ Training battle (`Tutorial`, `LessonCard`): Wolverine vs a computer Commando with
+  lesson cards on first movement, fire, hits, heat, piloting rolls and the end.
 
 ## Force building and play
 - ✅ Two sides, up to 4 'Mechs each, Battle Value budget (2000-8000); deploy on opposite edges.

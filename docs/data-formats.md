@@ -51,3 +51,7 @@ classes light, medium, heavy and hardened.
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}
 ```
 `hex` is a mapsheet label; `facing` 0 = north, clockwise.
+Optional: `"name"`, `"bot_sides"` (sides the computer plays) and `"lessons"` for a
+guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` (a
+`GameEvent` type), optional filters `"turn"`, `"phase"` (e.g. "Movement"),
+`"unit_side"`, `"min_heat"`, and the `"title"` and `"text"` shown once.

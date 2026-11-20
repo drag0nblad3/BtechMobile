@@ -104,6 +104,7 @@ func _build_options(parent: Control) -> void:
 			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh(), Vector2(0, 60))
 	_status = UiKit.label(box, "", UiKit.SMALL)
 	UiKit.button(box, "Start battle", _start, Vector2(0, 80))
+	UiKit.button(box, "Training: first battle", _start_training, Vector2(0, 64))
 
 
 func _next_budget() -> void:
@@ -143,6 +144,15 @@ func _refresh() -> void:
 	if balance != "" and GameSettings.explain_level != ExplainLevel.OFF:
 		_info.text += "\n" + balance
 	_status.text = "" if builder.ready_to_fight() else "Add at least one 'Mech to each side."
+
+
+## Guided one-on-one against the computer, with lessons (see Tutorial).
+func _start_training() -> void:
+	var path := "res://data/scenarios/tutorial.json"
+	BattleLaunch.pending = ScenarioLoader.load_file(path, TerrainDb.load_file(), db)
+	BattleLaunch.bot_sides = JsonFile.read(path).get("bot_sides", [1])
+	BattleLaunch.tutorial_path = path
+	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
 
 
 func _start() -> void:
