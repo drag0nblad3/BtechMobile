@@ -22,6 +22,14 @@ var _profile: Dictionary = {}
 var debris: Array[RigidBody3D] = []
 
 
+func is_jenner() -> bool:
+	return profile_id == "jenner_jr7d"
+
+
+func upper_height() -> float:
+	return 2.10 if is_jenner() else 1.87
+
+
 func _ready() -> void:
 	build()
 	stand()
@@ -34,7 +42,7 @@ func build() -> void:
 	add_child(_chassis)
 	_upper = Node3D.new()
 	_upper.name = "UpperBody"
-	_upper.position.y = 1.87
+	_upper.position.y = upper_height()
 	_chassis.add_child(_upper)
 	var rig := VoxelMechRig.build(_chassis, _upper, _profile)
 	parts = rig["parts"]
@@ -51,6 +59,8 @@ func is_digitigrade() -> bool:
 
 
 func gait_foot(phase: float) -> Vector2:
+	if is_jenner():
+		return VoxelJennerGait.foot_target(phase)
 	return VoxelDigitigradeGait.foot_target(phase) if is_digitigrade() \
 			else VoxelGait.foot_target(phase)
 
@@ -58,12 +68,12 @@ func gait_foot(phase: float) -> Vector2:
 func advance_gait(delta: float) -> void:
 	if not walking:
 		return
-	var cycle := VoxelDigitigradeGait.CYCLE_SECONDS if is_digitigrade() else VoxelGait.CYCLE_SECONDS
+	var cycle := VoxelJennerGait.CYCLE_SECONDS if is_jenner() else (VoxelDigitigradeGait.CYCLE_SECONDS if is_digitigrade() else VoxelGait.CYCLE_SECONDS)
 	gait_phase = fposmod(gait_phase + delta / cycle, 1.0)
 	_pose(gait_phase)
 	if travel_remaining > 0.0:
-		var speed := VoxelDigitigradeGait.horizontal_speed() if is_digitigrade() \
-				else VoxelGait.STRIDE / (VoxelGait.STANCE_FRACTION * VoxelGait.CYCLE_SECONDS)
+		var speed := VoxelJennerGait.horizontal_speed() if is_jenner() else (VoxelDigitigradeGait.horizontal_speed() if is_digitigrade() \
+				else VoxelGait.STRIDE / (VoxelGait.STANCE_FRACTION * VoxelGait.CYCLE_SECONDS))
 		var distance := minf(travel_remaining, speed * delta)
 		position.z -= distance
 		travel_remaining -= distance
@@ -85,7 +95,8 @@ func _pose(phase: float) -> void:
 		var knee: Node3D = knees[side]
 		var ankle: Node3D = ankles[side]
 		if is_digitigrade():
-			var angles := VoxelDigitigradeGait.sample(p, hip.position.y)
+			var angles := VoxelJennerGait.sample(p, hip.position.y) if is_jenner() \
+					else VoxelDigitigradeGait.sample(p, hip.position.y)
 			hip.rotation.x = angles.x
 			if knee.get_parent() == hip:
 				knee.rotation.x = angles.y
@@ -110,7 +121,7 @@ func _stabilize_upper(phase: float) -> void:
 	var motion := 1.0 - clampf(upper_stability, 0.0, 1.0)
 	_upper.rotation.x = sin(phase * TAU) * 0.060 * motion
 	_upper.rotation.z = sin(phase * TAU) * 0.045 * motion
-	_upper.position.y = 1.87 + (1.0 - cos(phase * TAU * 2.0)) * 0.025 * motion
+	_upper.position.y = upper_height() + (1.0 - cos(phase * TAU * 2.0)) * 0.025 * motion
 
 
 func start_walk(distance: float = 3.0) -> void:
@@ -126,7 +137,8 @@ func stand() -> void:
 		if hip.get_parent() != _chassis:
 			continue
 		if is_digitigrade():
-			var angles := VoxelDigitigradeGait.sample(0.29, hip.position.y)
+			var angles := VoxelJennerGait.sample(0.29, hip.position.y) if is_jenner() \
+					else VoxelDigitigradeGait.sample(0.29, hip.position.y)
 			hip.rotation.x = angles.x
 			var knee: Node3D = knees[side]
 			if knee.get_parent() == hip:
@@ -145,7 +157,7 @@ func stand() -> void:
 		if shoulder.get_parent() == _upper:
 			shoulder.rotation.x = 0.0
 	_upper.rotation = Vector3.ZERO
-	_upper.position.y = 1.87
+	_upper.position.y = upper_height()
 
 
 func shoot(origin: Vector3, direction: Vector3, radius: float = 0.23) -> Dictionary:
