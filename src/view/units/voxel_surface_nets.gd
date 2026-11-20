@@ -61,7 +61,7 @@ static func append_surface(vertices: PackedVector3Array,
 		var values: Dictionary = {}
 		var inside := 0
 		for offset in CORNERS:
-			var sample := origin + offset
+			var sample: Vector3i = origin + offset
 			var occupied := cells.has(sample)
 			signs.append(1 if occupied else 0)
 			if occupied:
