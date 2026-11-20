@@ -58,7 +58,7 @@ static func _rear_shots(state: GameState, u: Unit, c: Vector2i, facing: int) -> 
 		var arc_id := FiringArc.arc(e.coord, e.facing, c)
 		if arc_id == FiringArc.REAR and Hex.distance(c, e.coord) <= 9:
 			return "You'd be behind %s: shots there hit its thin rear armor." % Names.unit(e)
-		if FiringArc.arc(c, facing, e.coord) == FiringArc.REAR:
+		if FiringArc.fire_arc(c, facing, e.coord) == FiringArc.REAR:
 			return "%s would be behind you, where only rear-mounted weapons can fire." % Names.unit(e)
 	return ""
 
@@ -72,7 +72,7 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 	var idx := []
 	var worst := -1
 	var worst_ratio := INF
-	var primary := -1
+	var primary := FireOptions.primary_target(state, u, shots)
 	for sh: Dictionary in shots:
 		var w := u.weapons[int(sh["weapon"])]
 		var th: ToHit
@@ -80,8 +80,6 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 			th = BuildingFire.to_hit(state, u, w, sh["hex"])
 		else:
 			var t := state.unit_by_id(int(sh["target_id"]))
-			if primary < 0:
-				primary = t.id
 			th = ToHitCalc.weapon(state, u, w, t, t.id != primary)
 		if not th.possible():
 			continue
@@ -169,15 +167,14 @@ static func physical(state: GameState, u: Unit, t: Unit, level: int) -> String:
 static func charge(u: Unit, t: Unit, mode: int, hexes: int, level: int) -> String:
 	if level == ExplainLevel.OFF:
 		return ""
-	var tens := ceili(u.def.tonnage / 10.0)
 	if mode == MoveMode.Kind.JUMP:
-		var dmg := tens * 3
+		var dmg := Charge.dfa_damage(u)
 		var self_dmg := ceili(u.def.tonnage / 5.0)
 		if level == ExplainLevel.LIGHT:
 			return "Death from above: %d to %s, %d to your legs" % [dmg, Names.unit(t), self_dmg]
-		return "Death from above: %d damage to %s and %d to your own legs; you roll at +4 to stay up, and a miss means you fall. No weapon fire this turn." % [dmg, Names.unit(t), self_dmg]
-	var dmg := tens * maxi(1, hexes)
+		return "Death from above: %d damage to %s and %d to your own legs, then both roll at +2 to stay up. A miss drops you on your back from 2 levels up. No weapon fire this turn." % [dmg, Names.unit(t), self_dmg]
+	var dmg := Charge.charge_damage(u, hexes + 1)
 	var back := ceili(t.def.tonnage / 10.0)
 	if level == ExplainLevel.LIGHT:
 		return "Charge: %d to %s, %d back to you" % [dmg, Names.unit(t), back]
-	return "Charge: %d damage to %s (more for every hex you ran first), %d back to you; both roll to stay up. You give up weapon fire this turn." % [dmg, Names.unit(t), back]
+	return "Charge: %d damage to %s (it grows with how far you came), %d back to you; both roll at +2 to stay up. You give up weapon fire this turn." % [dmg, Names.unit(t), back]

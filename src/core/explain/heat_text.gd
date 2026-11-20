@@ -12,7 +12,9 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 				return ""
 			var t := "%s heat %d -> %d" % [who, d["before"], d["heat"]]
 			if level != ExplainLevel.OFF:
-				t += " (+%d built, -%d sinks)" % [d["gained"], d["sinks"]]
+				var outside: int = d.get("outside", 0)
+				var from_out := (", %d of it from enemy flamers" % outside) if outside > 0 else ""
+				t += " (+%d built%s, -%d sinks)" % [d["gained"], from_out, d["sinks"]]
 			if d["heat"] > 0:
 				t += ": " + d["effects"]
 			if level == ExplainLevel.FULL and d["gained"] > d["sinks"] and d["heat"] >= 5:
@@ -27,9 +29,9 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 					"made it" if d["ok"] else "failed"]
 		GameEvent.SHUTDOWN:
 			if d["shutdown"]:
-				var t := "%s SHUTS DOWN and falls." % who
+				var t := "%s SHUTS DOWN." % who
 				if level == ExplainLevel.FULL:
-					t += " A shut-down 'Mech can't move or fire and is easy to hit (-4)."
+					t += " A shut-down 'Mech can't move or fire, fails any piloting roll and is easy to hit (-4). It restarts by itself below 14 heat."
 				return t
 			return "%s restarts." % who
 	return ""

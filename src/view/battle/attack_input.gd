@@ -3,7 +3,8 @@ extends Node
 ## Weapon and physical attack phases: pick your 'Mech (the first one waiting
 ## is picked for you), tap an enemy, toggle weapons or punches/kicks in the
 ## side panel, then Fire / Attack or Hold Fire / Skip.
-## The first enemy you assign weapons to is the primary target. In the weapon
+## The primary target is the first enemy in your forward arc you assign
+## weapons to (else the first enemy). In the weapon
 ## phase you may also tap a building to shoot it.
 
 signal attacker_selected(u: Unit)
@@ -142,8 +143,11 @@ func _options() -> Array:
 	return FireOptions.for_target(controller.state, attacker, target, _secondary(target))
 
 
+## Secondary if the rules would pick another primary once t is added.
 func _secondary(t: Unit) -> bool:
-	return primary_id >= 0 and t.id != primary_id
+	var list := _shot_list()
+	list.append({"weapon": -1, "target_id": t.id})
+	return FireOptions.primary_target(controller.state, attacker, list) != t.id
 
 
 func _toggle(key: Variant, on: bool) -> void:

@@ -54,7 +54,7 @@ func test_heavy_mech_collapses_light_building() -> void:
 	check(entry["collapse"], "100 t > 15 CF")
 	check_eq((entry["path"] as Array).size(), 2, "move stops in the building")
 	u.coord = hex_at(2, 2)
-	var dice := LoadedDice.new([1])  # fall direction, then 6s
+	var dice := LoadedDice.new([2])  # falls on its front, then 6s
 	for i in 6:
 		dice.queue_2d6(7)  # 30 fall damage to the center torso
 	BuildingRules.enter(s, dice, _emit, u, hex_at(2, 2))
@@ -103,7 +103,7 @@ func test_city_battle_runs() -> void:
 	for id in ["warhammer_whm6r", "commando_com2d", "hunchback_hbk4g"]:
 		fb.add(1, id)
 	var building_events := 0
-	for seed_value in [3, 4]:
+	for seed_value in range(3, 13):  # games are short and chaotic; look across several
 		var map := MapLoader.load_file("res://data/maps/city_outskirts.json", terrain())
 		var gc := GameController.new(fb.build(map), seed_value)
 		SimBot.play(gc, 20)

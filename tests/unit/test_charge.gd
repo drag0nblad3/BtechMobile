@@ -20,13 +20,15 @@ func test_charge_declared_and_resolved() -> void:
 	gc.start_turn()
 	if s.active_side() == 1:
 		gc.submit_move(t, MoveOptions.key(t.coord, t.facing), 0)
-	# Walk 3 hexes north to stand next to the Hunchback, facing it.
+	# Walking 3 hexes uses all 3 MP: nothing left to enter the target's hex.
 	var dest := MoveOptions.key(hex_at(2, 3), 0)
-	check(gc.submit_move(a, dest, MoveMode.Kind.WALK, t.id), "move + charge")
+	check(Charge.has_mp(s, hex_at(2, 3), t.coord, MoveMode.Kind.WALK, 0) == false, "no MP left")
+	# Running (5 MP) leaves 2.
+	check(gc.submit_move(a, dest, MoveMode.Kind.RUN, t.id), "move + charge")
 	check_eq(s.declared_physical.size(), 1, "charge stored")
 	check(a.has_fired and a.has_physical, "charger skips other attacks")
 	var opt: Dictionary = s.declared_physical[0]
-	check_eq(opt["damage"], 30, "10 x 3 hexes")
+	check_eq(opt["damage"], 40, "100 t / 5 x (TMM 1 for 4 hexes + 1)")
 	check_eq(opt["self_damage"], 5, "Hunchback's 50 t / 10")
 
 
@@ -53,14 +55,16 @@ func test_dfa_hit_displaces_target() -> void:
 	a.hexes_moved = 3
 	var opt := Charge.option(s, a, t, "dfa")
 	check(opt["to_hit"].possible(), opt["to_hit"].summary())
-	check_eq(opt["damage"], 12, "4 x 3")
+	check_eq(opt["damage"], 11, "35 t / 10 x 3, rounded up")
 	opt["attacker_id"] = a.id
 	opt["target_id"] = t.id
 	var dice := LoadedDice.new()
 	dice.queue_2d6(12)
 	dice.d6_queue.append_array([3, 3, 3])  # punch table: center torso
 	var old := t.coord
-	Charge.resolve(s, dice, func(_ty, _d): pass, opt)
+	var step := ChargeResolve.resolve(s, dice, func(_ty, _d): pass, opt)
+	check(t.coord == old, "nobody moves until every attack is rolled")
+	ChargeResolve.displace(s, dice, func(_ty, _d): pass, step)
 	check_eq(t.coord, Hex.neighbor(old, 0), "target shoved away")
 	check_eq(a.coord, old, "attacker takes its hex")
 	check_eq(a.psr_pending.size(), 1)

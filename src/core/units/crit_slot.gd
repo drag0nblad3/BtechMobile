@@ -10,6 +10,7 @@ var kind: int
 var name: String
 var ref: int = -1
 var hit: bool = false
+var hit_when: int = -1  ## turn * 10 + phase when it was hit (see CriticalHits).
 
 
 func _init(k: int, n: String, r: int = -1) -> void:

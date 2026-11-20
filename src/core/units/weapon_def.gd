@@ -21,6 +21,7 @@ var tons: float          ## Weight in tons (book weapon tables).
 var ammo_per_ton: int  ## 0 = no ammo needed.
 var bv: int           ## Battle Value of the weapon.
 var ammo_bv: int       ## Battle Value of one ton of its ammo.
+var heat_damage: bool  ## A hit also adds its damage as heat to the target (flamers).
 var indirect: bool     ## May fire without line of sight via a spotter (LRMs).
 
 
@@ -43,6 +44,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.bv = int(d.get("bv", 0))
 	w.ammo_bv = int(d.get("ammo_bv", 0))
 	w.indirect = bool(d.get("indirect", false))
+	w.heat_damage = bool(d.get("heat_damage", false))
 	return w
 
 

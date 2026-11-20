@@ -20,7 +20,7 @@ func test_jump_range_and_landing() -> void:
 	var opts := MovePlanner.plan(s, u, MoveMode.Kind.JUMP)
 	check_eq(opts.budget, 5)
 	check(opts.can_reach(MoveOptions.key(hex_at(3, 1), 4)), "any facing after a jump, over woods")
-	check(not opts.can_reach(MoveOptions.key(hex_at(2, 1), 0)), "not into deep water")
+	check(opts.can_reach(MoveOptions.key(hex_at(2, 1), 0)), "into deep water, with a roll")
 	check(not opts.cost.has(MoveOptions.key(hex_at(5, 1) + Vector2i(1, 0), 0)), "beyond range")
 	var gc := GameController.new(s, 3)
 	s.add_unit(mech("hunchback_hbk4g", 1, hex_at(5, 0), 3, 2))

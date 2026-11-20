@@ -27,7 +27,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	attacker.heat_generated += w.def.heat
 	var roll := dice.roll_2d6()
 	var need := th.target()
-	var hit := roll >= need and roll > 2
+	var hit := roll >= need
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0}
@@ -42,13 +42,17 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["missiles"] = n
 		data["cluster_roll"] = cr
 		packets = Damage.clusters(n * w.def.damage, w.def.group * w.def.damage)
+	if w.def.heat_damage:  # flamers: the same amount as heat too (book p. 183)
+		data["heat_added"] = w.def.damage
+		target.outside_heat += w.def.damage
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name)
 
 
 ## Rolls a hit location and applies one packet of damage. Building walls
-## around the target soak part of it first.
+## around the target soak part of it first. `hl.no_cover` skips partial cover
+## (kicks on the Kick table, charges).
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
 		hl: Dictionary = {}, through_walls: bool = true) -> void:
@@ -60,7 +64,7 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
 	var loc: int = hl["loc"]
-	if Location.is_leg(loc) and ToHitCalc.in_partial_cover(state.map, target):
+	if Location.is_leg(loc) and not hl.get("no_cover", false) and ToHitCalc.in_partial_cover(state.map, target):
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return
@@ -69,4 +73,5 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 			"source": source, "amount": amount, "loc": loc, "rear": hl["rear"],
 			"steps": steps, "covered": false, "tac": hl["tac"]})
 	Damage.announce(emit, target)
+	HeadHit.check(dice, emit, target, steps)
 	CriticalHits.after_damage(state, dice, emit, target, steps, hl["tac"])

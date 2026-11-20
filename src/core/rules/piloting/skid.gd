@@ -2,6 +2,8 @@ class_name Skid
 extends RefCounted
 ## Skidding: a running 'Mech that turns on pavement must make a piloting roll.
 ## On a failure it slides on in its old direction, then falls.
+## Not used: skidding is a Total Warfare rule that the Core Rulebook doesn't
+## have. Kept for a future optional-rules switch.
 ## TODO(rules): only the first such turn is rolled; slide = half the hexes
 ## moved so far (rounded up), stopping at anything solid; verify modifiers.
 
@@ -50,7 +52,7 @@ static func slide(state: GameState, dice: Dice, emit: Callable, u: Unit, dir: in
 		var next := state.map.get_tile(Hex.neighbor(u.coord, dir))
 		if next != null and next.building != null:
 			break
-		if not Displacement.push(state, emit, u, dir):
+		if not Displacement.push(state, dice, emit, u, dir):
 			break
 		moved += 1
 	u.facing = facing

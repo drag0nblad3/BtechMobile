@@ -14,7 +14,11 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = "%s can't fire (%s)" % [w.def.name,
 				"no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed"]
 		return th
-	var arc_id := FiringArc.arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
+	var prone_why := ProneFire.blocked(attacker, w)
+	if prone_why != "":
+		th.impossible = prone_why
+		return th
+	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
 	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
@@ -37,6 +41,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	add_movement(th, attacker, target)
 	if spotter:
 		IndirectFire.add_mods(th, state, spotter)
+		th.spotter_id = spotter.id
+	IndirectFire.add_spotting_mod(th, state, attacker)
 	match br:
 		WeaponDef.Bracket.MEDIUM:
 			th.add("medium range", 2, "%d hexes is medium range for %s (%s)." % [dist, w.def.name, w.def.range_text()])
@@ -49,9 +55,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if Location.is_arm(w.loc):
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
-		var fwd := arc_id == FiringArc.FRONT
-		th.add("secondary target", 1 if fwd else 2,
-				"Shooting at a second target costs +1 in front of you, +2 to the side or rear.")
+		th.add("secondary target", 1, "Every target after your primary one costs +1.")
 	return th
 
 
@@ -88,8 +92,8 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 		var adjacent := Hex.distance(attacker.coord, target.coord) <= 1
 		th.add("target prone", -2 if adjacent else 1,
 				"A 'Mech on the ground is easier to hit from next to it (-2), harder from afar (+1).")
-	if target.shutdown or not target.pilot.conscious:
-		th.add("target immobile", -4, "A shut-down or unconscious 'Mech can't dodge: -4.")
+	if is_immobile(target):
+		th.add("target immobile", -4, "A shut-down, unconscious or legless 'Mech can't dodge: -4.")
 
 
 ## Heat, sensors, lying down and woods in the way: true for any target.
@@ -100,7 +104,7 @@ static func add_attacker_conditions(th: ToHit, attacker: Unit, los: Dictionary) 
 	if attacker.sensor_hits > 0:
 		th.add("sensor damage", 2 * attacker.sensor_hits, "Damaged sensors make every shot harder.")
 	if attacker.prone:
-		th.add("you are prone", 2, "Firing from the ground is +2.")
+		th.add("you are prone", 2, "Firing from the ground is +2, propped up on one arm.")
 	if los["woods"] > 0:
 		th.add("woods in the way", los["woods"],
 				"Light woods between you add +1 each, heavy woods +2. Three points block the shot.")
@@ -132,6 +136,12 @@ static func target_movement_mod(hexes: int, jumped: bool = false) -> int:
 	if hexes >= 3:
 		return 1
 	return 0
+
+
+## Shut down, MechWarrior unconscious, or no MP left from damage (both legs
+## gone), book p. 49. Heat alone taking MP to 0 doesn't count.
+static func is_immobile(u: Unit) -> bool:
+	return u.shutdown or not u.pilot.conscious or u.legs_destroyed() >= 2
 
 
 ## Standing in depth 1 water.

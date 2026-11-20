@@ -7,7 +7,9 @@ var map: BattleMap
 var units: Array[Unit] = []
 var turn: int = 0
 var phase: int = Phase.Kind.INITIATIVE
-## Sides in the order they act this phase (initiative loser first).
+## Sides by initiative, loser first.
+var initiative_order: Array[int] = []
+## One side id per unit activation this phase (see UnequalNumbers).
 var side_order: Array[int] = []
 ## Index into side_order of the side that acts next.
 var order_index: int = 0
@@ -17,6 +19,8 @@ var initiative_rolls: Dictionary = {}  # side -> 2d6 total
 var declared_fire: Array[Dictionary] = []
 ## Physical attacks declared this phase: [{attacker_id, kind, target_id, to_hit, limb}].
 var declared_physical: Array[Dictionary] = []
+## Spotters for indirect fire: unit id -> {target, turn}.
+var spotting: Dictionary = {}
 var game_over: bool = false
 var winner: int = -1
 
