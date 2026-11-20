@@ -21,10 +21,10 @@ static func hits(rack: int, roll: int) -> int:
 	return row[clampi(roll, 2, 12) - 2]
 
 
-## Average missiles hitting, for advice.
-static func expected(rack: int) -> float:
+## Average missiles hitting, for advice; `bonus` is added to the roll (Artemis).
+static func expected(rack: int, bonus: int = 0) -> float:
 	var total := 0.0
 	for a in range(1, 7):
 		for b in range(1, 7):
-			total += hits(rack, a + b)
+			total += hits(rack, a + b + bonus)
 	return total / 36.0

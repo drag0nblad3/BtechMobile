@@ -61,3 +61,52 @@ func test_bot_holds_fire_to_stay_cool() -> void:
 	check(heat < 28, "doesn't fire all 28 heat with 10 sinks")
 	check(Advisor.projected_heat(r, heat) <= BotFire.HEAT_STRETCH, "heat in check")
 	check(plan["reason"].contains("holds"), plan["reason"])
+
+
+func test_bot_double_fires_ultras_when_cool() -> void:
+	var s := GameState.new(open_map(10, 4))
+	var j := mech("jagermech_jm6dd", 0, hex_at(1, 2), 2, 1)
+	var t := mech("atlas_as7d", 1, hex_at(5, 2), 5, 2)
+	s.add_unit(j)
+	s.add_unit(t)
+	var plan := BotFire.plan(s, j)
+	var ultras := 0
+	for i: int in plan["modes"]:
+		if plan["modes"][i] == WeaponModes.ULTRA:
+			ultras += 1
+	check(ultras >= 1, "double-fires: " + plan["reason"])
+	check(plan["reason"].contains("double-fires"), plan["reason"])
+	for w in j.weapons:
+		check_eq(w.mode, "", "planning leaves the modes as they were")
+	check_eq(FireOptions.volley_heat(j, [0]), 1, "one Ultra AC/5 shot: 1 heat")
+
+
+func test_bot_lbx_mode() -> void:
+	var s := GameState.new(open_map(10, 4))
+	var c := mech("centurion_cn9d", 0, hex_at(1, 2), 2, 1)
+	var t := mech("atlas_as7d", 1, hex_at(4, 2), 5, 2)
+	s.add_unit(c)
+	s.add_unit(t)
+	var lbx := c.weapons[0]
+	check(lbx.def.lbx)
+	BotModes.apply(s, c, t, false)
+	check_eq(lbx.mode, "", "slugs: 10 damage beats about 6 pellets for one point of to-hit")
+	for a in c.ammo:
+		if a.kind == "":
+			a.shots = 0
+	BotModes.apply(s, c, t, false)
+	check_eq(lbx.mode, WeaponModes.CLUSTER, "out of slugs: cluster")
+
+
+func test_bot_swings_hatchet() -> void:
+	var s := GameState.new(open_map(6, 4))
+	var h := mech("hatchetman_hct3f", 0, hex_at(1, 2), 2, 1)
+	var t := mech("atlas_as7d", 1, hex_at(2, 2), 5, 2)
+	s.add_unit(h)
+	s.add_unit(t)
+	s.phase = Phase.Kind.PHYSICAL_ATTACK
+	Damage.destroy_location(h, Location.LA)  # one punch (5) against a hatchet (9)
+	var p := BotPhysical.plan(s, h)
+	check_eq(p["attacks"].size(), 1, p["reason"])
+	if p["attacks"].size() == 1:
+		check_eq(p["attacks"][0]["kind"], "hatchet", p["reason"])

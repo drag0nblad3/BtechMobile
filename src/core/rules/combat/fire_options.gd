@@ -80,5 +80,6 @@ static func summary(unit: Unit, decl: Array[Dictionary]) -> Array:
 static func volley_heat(attacker: Unit, weapon_indexes: Array) -> int:
 	var h := 0
 	for i: int in weapon_indexes:
-		h += attacker.weapons[i].def.heat
+		var w := attacker.weapons[i]
+		h += w.def.heat * WeaponModes.shots(w)
 	return h
