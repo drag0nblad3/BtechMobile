@@ -29,15 +29,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	frame.add_child(hip)
 	rig["hips"].append(hip)
 	var thigh := _new_part(hip, key, profile, detail, meshes)
-	if jenner:
-		VoxelJennerArt.thigh(thigh)
-	else:
-		thigh.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
-		thigh.fill_box(Vector3i(-4, -3, -4), Vector3i(4, -1, 4), 4)
-	if not jenner:
-		VoxelRosterSculpt.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
-	VoxelAnatomyV2.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
-	VoxelSilhouetteV3.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
+	VoxelReferenceV4.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
 	thigh.seal(-3)
 	rig["parts"][key] = thigh
 	rig["sockets"][key] = hip
@@ -47,15 +39,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	hip.add_child(knee)
 	rig["knees"].append(knee)
 	var shin := _new_part(knee, key + "_shin", profile, detail, meshes)
-	if jenner:
-		VoxelJennerArt.shin(shin)
-	else:
-		shin.armor_box(Vector3i(-3, -9, -3), Vector3i(3, -1, 3), 0, 1)
-		shin.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 0, 4), 4)
-	if not jenner:
-		VoxelRosterSculpt.leg(shin, str(profile.get("shape", "prototype")), "shin")
-	VoxelAnatomyV2.leg(shin, str(profile.get("shape", "prototype")), "shin")
-	VoxelSilhouetteV3.leg(shin, str(profile.get("shape", "prototype")), "shin")
+	VoxelReferenceV4.leg(shin, str(profile.get("shape", "prototype")), "shin")
 	shin.seal()
 	rig["parts"][key + "_shin"] = shin
 	rig["sockets"][key + "_shin"] = knee
@@ -68,11 +52,9 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 		rig["hocks"].append(hock)
 		var meta := _new_part(hock, key + "_metatarsal", profile,
 				detail, meshes)
-		if jenner:
-			VoxelJennerArt.metatarsal(meta)
-			meta.seal()
-		else:
-			VoxelMechArt.metatarsal(meta)
+		VoxelReferenceV4.leg(meta, str(profile.get("shape", "catapult")),
+				"metatarsal")
+		meta.seal()
 		rig["parts"][key + "_metatarsal"] = meta
 		rig["sockets"][key + "_metatarsal"] = hock
 		end_pivot = hock
@@ -85,15 +67,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	end_pivot.add_child(ankle)
 	rig["ankles"].append(ankle)
 	var foot := _new_part(ankle, key + "_foot", profile, detail, meshes)
-	if jenner:
-		VoxelJennerArt.foot(foot)
-	else:
-		foot.armor_box(Vector3i(-4, -2, -10 if digi else -9),
-				Vector3i(4, 1, 4), 4, 1)
-	if not jenner:
-		VoxelRosterSculpt.leg(foot, str(profile.get("shape", "prototype")), "foot")
-	VoxelAnatomyV2.leg(foot, str(profile.get("shape", "prototype")), "foot")
-	VoxelSilhouetteV3.leg(foot, str(profile.get("shape", "prototype")), "foot")
+	VoxelReferenceV4.leg(foot, str(profile.get("shape", "prototype")), "foot")
 	foot.seal()
 	rig["parts"][key + "_foot"] = foot
 
@@ -125,7 +99,7 @@ static func _new_part(parent: Node3D, part_name: String, profile: Dictionary,
 	# distinctive high-detail regions (Atlas hull, Catapult missile pods).
 	var part_detail: Dictionary = profile.get("voxel_part_detail", {})
 	part.detail_scale = clampi(int(part_detail.get(part_name, detail)), 1, 3)
-	part.detail_style = str(profile.get("shape", ""))
+	part.detail_style = "v4_" + str(profile.get("shape", "prototype"))
 	part.mesh_enabled = meshes
 	part.surface_mode = "nets" if meshes else "cube"
 	part.visual_palette = VoxelSilhouetteV3.palette(str(profile.get("shape", "prototype")))
