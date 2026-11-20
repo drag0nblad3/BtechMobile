@@ -39,6 +39,7 @@ var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
+var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
 var damage_this_phase: int = 0
 ## Piloting rolls owed at the end of this phase: [{reason, mod, auto_fall?}].
 var psr_pending: Array[Dictionary] = []
@@ -71,6 +72,7 @@ func reset_for_turn() -> void:
 	hexes_moved = 0
 	torso_twist = 0
 	heat_generated = 0
+	outside_heat = 0
 	for w in weapons:
 		w.fired = false
 

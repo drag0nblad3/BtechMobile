@@ -4,7 +4,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 
 ## Turn sequence
 - 🟡 Initiative: 2d6 per side, ties reroll, loser moves first — no initiative modifiers.
-- 🟡 Unit alternation — `TODO(rules)`: unequal-numbers batching.
+- ✅ Unit alternation with unequal numbers (`UnequalNumbers`, p. 41): the bigger side spreads its 'Mechs over the smaller side's turns, extra ones first; recounted each phase.
 - ✅ Phases: Initiative → Movement → Weapon Attack → Physical Attack → Heat → End.
 - ✅ Attacks declared unit by unit in initiative order, resolved together at phase end
   (a 'Mech destroyed this phase still fires).
@@ -49,16 +49,16 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   (3-4 +1, 5-6 +2, 7-9 +3, 10-17 +4, 18-24 +5, 25+ +6) + range (+0/+2/+4) + minimum range.
 - ✅ Woods: intervening +1 light / +2 heavy, target hex the same.
 - ✅ Heat to-hit (+1 at 8, +2 at 13, +3 at 17, +4 at 24); sensor hits +2 each; prone attacker +2.
-- ✅ Prone target (-2 adjacent, +1 otherwise); immobile target -4; secondary target +1 front / +2 other.
+- ✅ Firing while prone (`ProneFire`, p. 67): needs an arm; the propping arm (picked automatically: the one with less firepower) and leg weapons can't fire.
+- ✅ Prone target (-2 adjacent, +1 otherwise); immobile target -4 (shut down, unconscious or 0 walking MP); secondary target +1 in any arc, and the primary must be in the forward arc if any target is (p. 64).
 - ✅ Partial cover from depth 1 water: +1, leg hits absorbed.
-- 🟡 Firing arcs: front = 3 forward hexsides; arms add their side; rear mounts fire rear
-  — `TODO(rules)`: verify arc boundaries.
+- ✅ Firing arcs (p. 60): forward 120°, sides 60°, rear 120°; arms add their side; rear mounts fire rear. Hit zones (p. 73) keep the hexside shape: front is 3 hexsides.
 - ✅ Torso twist one hexside in the weapon phase; leg weapons keep the legs' facing; punches use the torso.
-- ✅ Natural 2 always misses; target > 12 can't be attempted.
+- ✅ Target number 2 or less always hits (p. 72); target > 12 can't be attempted.
 - ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
-- 🟡 Flamers deal normal damage — `TODO(rules)`: heat-instead-of-damage option.
-- 🟡 Indirect LRM fire (`IndirectFire`): a friendly 'Mech with line of sight spots; +1 indirect, + spotter's movement, +1 if the spotter also fires; woods counted from the spotter — `TODO(rules)`: verify.
+- ✅ Flamers (p. 183): a hit deals damage and the same amount of heat to the target; outside heat is capped at 15 per turn.
+- 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter — `TODO(rules)`: a spotter may still charge or DFA.
 - ⬜ Called shots, aimed shots.
 
 ## Damage

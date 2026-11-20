@@ -66,7 +66,7 @@ static func _punch(state: GameState, a: Unit, t: Unit, arm: int) -> Dictionary:
 	var opt := {"kind": "punch", "limb": arm, "to_hit": th, "damage": dmg}
 	if not _common(state, a, t, th):
 		return opt
-	var arc_id := FiringArc.arc(a.coord, a.torso_facing(), t.coord)
+	var arc_id := FiringArc.fire_arc(a.coord, a.torso_facing(), t.coord)
 	var side := FiringArc.LEFT if arm == Location.LA else FiringArc.RIGHT
 	if a.is_location_destroyed(arm) or not a.has_working_actuator(arm, "shoulder"):
 		th.impossible = "%s can't punch" % Location.name_of(arm)
@@ -96,7 +96,7 @@ static func _kick(state: GameState, a: Unit, t: Unit, leg: int) -> Dictionary:
 		return opt
 	if a.legs_destroyed() > 0 or not a.has_working_actuator(leg, "hip"):
 		th.impossible = "Can't kick with a damaged hip or a missing leg"
-	elif FiringArc.arc(a.coord, a.facing, t.coord) != FiringArc.FRONT:
+	elif FiringArc.fire_arc(a.coord, a.facing, t.coord) != FiringArc.FRONT:
 		th.impossible = "Kicks only hit targets in front of you"
 	if th.impossible != "":
 		return opt

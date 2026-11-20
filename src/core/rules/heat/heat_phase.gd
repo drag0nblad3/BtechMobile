@@ -5,6 +5,8 @@ extends RefCounted
 
 const ENGINE_HIT_HEAT := 5
 const LIFE_SUPPORT_HEAT := 15
+## Most heat outside sources (flamers, fire) can add in one turn (book p. 102).
+const OUTSIDE_HEAT_CAP := 15
 
 
 static func run(state: GameState, dice: Dice, emit: Callable) -> void:
@@ -12,11 +14,12 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		if u.destroyed:
 			continue
 		var before := u.heat
-		var gained := u.heat_generated + ENGINE_HIT_HEAT * u.engine_hits
+		var outside := mini(u.outside_heat, OUTSIDE_HEAT_CAP)
+		var gained := u.heat_generated + ENGINE_HIT_HEAT * u.engine_hits + outside
 		var sinks := u.working_heat_sinks() + water_cooling(state.map.get_tile(u.coord), u)
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
-				"sinks": sinks, "heat": u.heat, "effects": HeatScale.effects_text(u.heat)})
+				"sinks": sinks, "outside": outside, "heat": u.heat, "effects": HeatScale.effects_text(u.heat)})
 		if u.heat >= LIFE_SUPPORT_HEAT and u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT):
 			PilotDamage.wound(dice, emit, u, 1, "heat with life support damaged")
 		_ammo_check(state, dice, emit, u)

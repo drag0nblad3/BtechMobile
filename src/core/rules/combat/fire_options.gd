@@ -1,8 +1,9 @@
 class_name FireOptions
 extends RefCounted
 ## What one 'Mech could shoot this phase: a ToHit for each weapon against a
-## target. The first target a 'Mech shoots at is its primary target; any
-## other target is secondary and costs extra to hit.
+## target. A 'Mech has one primary target per turn; any other target is
+## secondary and costs +1 to hit (book p. 64). If any target is in the
+## forward arc, the primary must be one of those.
 
 
 ## [{index, weapon: MountedWeapon, to_hit: ToHit}] for every weapon.
@@ -17,11 +18,10 @@ static func for_target(state: GameState, attacker: Unit, target: Unit,
 
 
 ## Validates shots [{weapon, target_id}] (or [{weapon, hex}] for a building)
-## into stored declarations, dropping impossible ones. The first listed
-## 'Mech target is the primary.
+## into stored declarations, dropping impossible ones.
 static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
-	var primary := -1
+	var primary := primary_target(state, attacker, shots)
 	var used := {}
 	for s: Dictionary in shots:
 		var wi: int = s["weapon"]
@@ -37,8 +37,6 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		var target := state.unit_by_id(int(s["target_id"]))
 		if target == null or target.side == attacker.side:
 			continue
-		if primary < 0:
-			primary = target.id
 		var th := ToHitCalc.weapon(state, attacker, attacker.weapons[wi], target,
 				target.id != primary)
 		if not th.possible():
@@ -46,6 +44,35 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		used[wi] = true
 		out.append({"attacker_id": attacker.id, "weapon_index": wi,
 				"target_id": target.id, "to_hit": th})
+	return out
+
+
+## Id of the primary 'Mech target among shots: the first one in the forward
+## arc, else the first listed. -1 if no 'Mech is targeted.
+static func primary_target(state: GameState, attacker: Unit, shots: Array) -> int:
+	var first := -1
+	for s: Dictionary in shots:
+		if s.has("hex"):
+			continue
+		var t := state.unit_by_id(int(s["target_id"]))
+		if t == null or t.side == attacker.side:
+			continue
+		if FiringArc.fire_arc(attacker.coord, attacker.torso_facing(), t.coord) == FiringArc.FRONT:
+			return t.id
+		if first < 0:
+			first = t.id
+	return first
+
+
+## Shot list for the FIRE_DECLARED event: [{weapon, target_id, need, target_hex?}].
+static func summary(unit: Unit, decl: Array[Dictionary]) -> Array:
+	var out := []
+	for d in decl:
+		var sh := {"weapon": unit.weapons[d["weapon_index"]].def.name,
+				"target_id": d["target_id"], "need": d["to_hit"].target()}
+		if d.has("target_hex"):
+			sh["target_hex"] = d["target_hex"]
+		out.append(sh)
 	return out
 
 

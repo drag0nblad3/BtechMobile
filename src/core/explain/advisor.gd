@@ -58,7 +58,7 @@ static func _rear_shots(state: GameState, u: Unit, c: Vector2i, facing: int) -> 
 		var arc_id := FiringArc.arc(e.coord, e.facing, c)
 		if arc_id == FiringArc.REAR and Hex.distance(c, e.coord) <= 9:
 			return "You'd be behind %s: shots there hit its thin rear armor." % Names.unit(e)
-		if FiringArc.arc(c, facing, e.coord) == FiringArc.REAR:
+		if FiringArc.fire_arc(c, facing, e.coord) == FiringArc.REAR:
 			return "%s would be behind you, where only rear-mounted weapons can fire." % Names.unit(e)
 	return ""
 
@@ -72,7 +72,7 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 	var idx := []
 	var worst := -1
 	var worst_ratio := INF
-	var primary := -1
+	var primary := FireOptions.primary_target(state, u, shots)
 	for sh: Dictionary in shots:
 		var w := u.weapons[int(sh["weapon"])]
 		var th: ToHit
@@ -80,8 +80,6 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 			th = BuildingFire.to_hit(state, u, w, sh["hex"])
 		else:
 			var t := state.unit_by_id(int(sh["target_id"]))
-			if primary < 0:
-				primary = t.id
 			th = ToHitCalc.weapon(state, u, w, t, t.id != primary)
 		if not th.possible():
 			continue

@@ -1,9 +1,11 @@
 class_name FiringArc
 extends RefCounted
-## Arcs around a 'Mech, measured from its facing. The six hexside wedges
-## (0 = straight ahead, clockwise) group into front, sides and rear.
-## TODO(rules): front = forward hexside plus both forward-diagonal hexsides;
-## a line exactly along a hex corner counts as the more forward wedge.
+## Arcs around a 'Mech, measured from its facing. Two different shapes:
+## - firing arcs (book p. 60), which weapons can shoot into: forward 120°,
+##   each side 60°, rear 120°; a line through a neighbor's center counts
+##   as the more forward arc. See `fire_arc`.
+## - attack direction (p. 73), which hit table a hit uses: the six hexside
+##   wedges (0 = straight ahead, clockwise); front is three of them. See `arc`.
 
 enum { FRONT, RIGHT, REAR, LEFT }
 
@@ -34,8 +36,27 @@ static func arc_of_wedge(w: int) -> int:
 	return REAR
 
 
+## Attack direction: the side of a 'Mech at `from` that a shot from `to` hits.
 static func arc(from: Vector2i, facing: int, to: Vector2i) -> int:
 	return arc_of_wedge(wedge(from, facing, to))
+
+
+## Firing arc of `to` seen from a 'Mech at `from` facing `facing`.
+static func fire_arc(from: Vector2i, facing: int, to: Vector2i) -> int:
+	var rel := relative_angle(from, facing, to)
+	var mag := absf(rel)
+	if mag <= 60.01:
+		return FRONT
+	if mag <= 120.01:
+		return RIGHT if rel > 0.0 else LEFT
+	return REAR
+
+
+## Angle of `to` from the facing direction, -180..180, positive clockwise.
+static func relative_angle(from: Vector2i, facing: int, to: Vector2i) -> float:
+	var d := _world(to) - _world(from)
+	var ang := rad_to_deg(atan2(d.x, -d.y))
+	return wrapf(ang - facing * 60.0, -180.0, 180.0)
 
 
 ## Can a weapon in `loc` fire into `arc_id`? Torso, head and leg weapons fire

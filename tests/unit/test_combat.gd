@@ -11,6 +11,14 @@ func test_arcs() -> void:
 	check_eq(FiringArc.arc(c, 0, Hex.neighbor(c, 4)), FiringArc.LEFT, "left")
 	check_eq(FiringArc.arc(c, 2, Hex.neighbor(c, 5)), FiringArc.REAR, "turned")
 	check(FiringArc.weapon_covers(Location.RA, false, FiringArc.RIGHT), "arm covers side")
+	# Firing arcs (book p. 60): front 120°, sides 60°, rear 120°.
+	check_eq(FiringArc.fire_arc(c, 0, Hex.neighbor(c, 1)), FiringArc.FRONT, "front-right neighbor")
+	check_eq(FiringArc.fire_arc(c, 0, Hex.neighbor(c, 2)), FiringArc.RIGHT, "rear-right neighbor is side")
+	var far_right := Hex.neighbor(Hex.neighbor(c, 1), 2)  # 90° to the right
+	check_eq(FiringArc.arc(c, 0, far_right), FiringArc.FRONT, "hit zone: still front")
+	check_eq(FiringArc.fire_arc(c, 0, far_right), FiringArc.RIGHT, "firing arc: side")
+	var back_right := Hex.neighbor(Hex.neighbor(c, 2), 3)  # 150°
+	check_eq(FiringArc.fire_arc(c, 0, back_right), FiringArc.REAR, "rear arc 120°")
 	check(not FiringArc.weapon_covers(Location.RT, false, FiringArc.RIGHT), "torso doesn't")
 	check(FiringArc.weapon_covers(Location.CT, true, FiringArc.REAR), "rear mount")
 
@@ -156,3 +164,55 @@ func test_water_cools() -> void:
 	HeatPhase.run(s, Dice.new(1), func(_t, _d): pass)
 	check_eq(u.heat, 2, "depth 1 adds 2 cooling")
 	check(TerrainText.describe(s.map.get_tile(hex_at(1, 0)), ExplainLevel.FULL).contains("cools 2"), "terrain text")
+
+
+func test_secondary_target_and_auto_hit() -> void:
+	var s := GameState.new(open_map(10, 10))
+	var a := mech("hunchback_hbk4g", 0, hex_at(4, 5), 0, 1)
+	var side_t := mech("locust_lct1v", 1, hex_at(6, 5), 0, 2)  # right side arc
+	var front_t := mech("locust_lct1v", 1, hex_at(4, 2), 0, 3)
+	for u in [a, side_t, front_t]:
+		s.add_unit(u)
+	var shots := [{"weapon": 0, "target_id": 2}, {"weapon": 1, "target_id": 3}]
+	check_eq(FireOptions.primary_target(s, a, shots), 3, "forward-arc target must be primary")
+	var th := ToHitCalc.weapon(s, a, a.weapons[3], side_t, true)
+	check_eq(th.mods[-1]["value"], 1, "secondary is +1 in any arc")
+	# Target number 2 or less always hits.
+	var easy := ToHit.new()
+	easy.add("Gunnery", 1)
+	check(easy.chance() == 1.0, "TN 1 always hits")
+
+
+func test_prone_fire_props_an_arm() -> void:
+	var s := GameState.new(open_map(10, 10))
+	var a := mech("griffin_grf1n", 0, hex_at(4, 6), 0, 1)
+	var t := mech("locust_lct1v", 1, hex_at(4, 2), 0, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	a.prone = true
+	check_eq(ProneFire.prop_arm(a), Location.LA, "empty left arm props")
+	for w in a.weapons:
+		var th := ToHitCalc.weapon(s, a, w, t)
+		if w.loc == Location.RA:
+			check(th.possible(), "PPC still fires: " + th.impossible)
+	a.structure[Location.LA] = 0
+	check_eq(ProneFire.prop_arm(a), Location.RA, "only the right arm left")
+	check(not ToHitCalc.weapon(s, a, a.weapons[0], t).possible(), "PPC arm is propping")
+
+
+func test_flamer_adds_heat() -> void:
+	var s := GameState.new(open_map(6, 6))
+	var a := mech("firestarter_fs9h", 0, hex_at(2, 3), 0, 1)
+	var t := mech("locust_lct1v", 1, hex_at(2, 2), 3, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	var fl: MountedWeapon = null
+	for w in a.weapons:
+		if w.def.id == "flamer":
+			fl = w
+	var th := ToHitCalc.weapon(s, a, fl, t)
+	WeaponFire.resolve(s, LoadedDice.new(), func(_t, _d): pass, a, fl, t, th)
+	check_eq(t.outside_heat, 2, "flamer hit adds 2 heat")
+	t.outside_heat = 40
+	HeatPhase.run(s, LoadedDice.new(), func(_t, _d): pass)
+	check(t.heat <= 15, "outside heat capped at 15")

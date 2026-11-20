@@ -72,7 +72,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 	var kind: String = d["kind"]
 	var th: ToHit = d["to_hit"]
 	var roll := dice.roll_2d6()
-	var hit := roll >= th.target() and roll > 2
+	var hit := roll >= th.target()
 	emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id, "kind": kind,
 			"limb": -1, "roll": roll, "need": th.target(), "hit": hit,
 			"damage": d["damage"] if hit else 0, "mods": th.mods})

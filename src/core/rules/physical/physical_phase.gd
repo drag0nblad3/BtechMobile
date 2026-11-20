@@ -15,7 +15,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 		var t := state.unit_by_id(d["target_id"])
 		var th: ToHit = d["to_hit"]
 		var roll := dice.roll_2d6()
-		var hit := roll >= th.target() and roll > 2
+		var hit := roll >= th.target()
 		emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id,
 				"kind": d["kind"], "limb": d["limb"], "roll": roll, "need": th.target(),
 				"hit": hit, "damage": d["damage"] if hit else 0, "mods": th.mods})
@@ -37,7 +37,7 @@ static func _push(state: GameState, dice: Dice, emit: Callable, d: Dictionary) -
 	var t := state.unit_by_id(d["target_id"])
 	var th: ToHit = d["to_hit"]
 	var roll := dice.roll_2d6()
-	var hit := roll >= th.target() and roll > 2
+	var hit := roll >= th.target()
 	emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id, "kind": "push",
 			"limb": -1, "roll": roll, "need": th.target(), "hit": hit, "damage": 0, "mods": th.mods})
 	if hit:

@@ -27,7 +27,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	attacker.heat_generated += w.def.heat
 	var roll := dice.roll_2d6()
 	var need := th.target()
-	var hit := roll >= need and roll > 2
+	var hit := roll >= need
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0}
@@ -42,6 +42,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["missiles"] = n
 		data["cluster_roll"] = cr
 		packets = Damage.clusters(n * w.def.damage, w.def.group * w.def.damage)
+	if w.def.heat_damage:  # flamers: the same amount as heat too (book p. 183)
+		data["heat_added"] = w.def.damage
+		target.outside_heat += w.def.damage
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name)
