@@ -124,7 +124,7 @@ static func append_face(vertices: PackedVector3Array, normals: PackedVector3Arra
 	var quad: Array = QUADS[face]
 	var normal := Vector3(DIRECTIONS[face])
 	var shade := 1.08 if face == 2 else (0.80 if face == 3 else 0.94)
-	var color := PALETTE[material_id] * shade
+	var color: Color = PALETTE[material_id] * shade
 	for corner in [0, 1, 2, 0, 2, 3]:
 		vertices.append((Vector3(cell) + quad[corner]) * VOXEL_SIZE)
 		normals.append(normal)
