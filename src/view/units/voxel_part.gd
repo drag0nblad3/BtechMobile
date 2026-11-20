@@ -13,8 +13,8 @@ const QUADS := [
 	[Vector3(1, 0, 1), Vector3(0, 0, 1), Vector3(0, 1, 1), Vector3(1, 1, 1)],
 	[Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(1, 1, 0), Vector3(0, 1, 0)]
 ]
-const PALETTE := [Color("afbdcb"), Color("333e4e"), Color("29c5e6"),
-	Color("e8a33d"), Color("60738a"), Color("e35f3d")]
+const PALETTE := [Color("4b6a83"), Color("293242"), Color("40ccfa"),
+	Color("d99c42"), Color("718596"), Color("d85f41")]
 
 var cells: Dictionary = {}  # Vector3i -> palette index
 var joint_cells: Array[Vector3i] = []
