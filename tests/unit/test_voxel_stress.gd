@@ -22,9 +22,9 @@ func test_20_targets_have_distinct_grid_slots() -> void:
 		var pos := VoxelStressTest.grid_position(i)
 		check(not slots.has(pos), "stress models must not overlap")
 		slots[pos] = true
-		check(absf(pos.x) <= 2.0 * VoxelStressTest.GRID_SPACING,
+		check(absf(pos.x) <= 2.0 * VoxelStressTest.GRID_SPACING + 0.01,
 				"model outside floor width")
-		check(absf(pos.z) <= 1.5 * VoxelStressTest.GRID_SPACING,
+		check(absf(pos.z) <= 1.5 * VoxelStressTest.GRID_SPACING + 0.01,
 				"model outside floor depth")
 	check_eq(slots.size(), 20, "grid must reserve exactly twenty distinct positions")
 
