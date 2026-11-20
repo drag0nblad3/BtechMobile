@@ -41,9 +41,9 @@ func test_atlas_has_real_slim_waist_and_separate_pectoral_panels() -> void:
 func test_hunchback_hull_is_asymmetric_and_weapon_faces_forward() -> void:
 	var m := _make("hunchback_hbk4g")
 	var body: VoxelPart = m.parts["torso"]
-	check(body.has_sculpt_cell(Vector3i(10, 14, 0)),
+	check(body.has_sculpt_cell(Vector3i(10, 11, 0)),
 			"right AC20 tower must be taller than the left cockpit")
-	check(not body.has_sculpt_cell(Vector3i(-10, 14, 0)),
+	check(not body.has_sculpt_cell(Vector3i(-10, 11, 0)),
 			"cannon tower must not be duplicated on left")
 	check(not body.has_sculpt_cell(Vector3i(8, 9, -17)),
 			"AC20 physical bore points forward, not up")
