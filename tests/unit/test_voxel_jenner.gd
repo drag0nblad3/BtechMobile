@@ -134,3 +134,71 @@ func test_jenner_neutral_stance_uses_two_planted_staggered_feet() -> void:
 	check(is_equal_approx(model.hips[0].position.x, -0.40),
 			"Jenner should use widened hip sockets")
 	model.free()
+
+
+func test_jenner_cockpit_roof_is_chamfered() -> void:
+	var mech := VoxelMech.new()
+	mech.profile_id = "jenner_jr7d"
+	mech.build()
+	var hull: VoxelPart = mech.parts["torso"]
+	check(hull.cells.has(Vector3i(0, 2, -16)), "canopy center roof must be solid")
+	check(not hull.cells.has(Vector3i(-3, 2, -16)),
+			"left canopy corner needs a chamfer")
+	check(not hull.cells.has(Vector3i(2, 2, -16)),
+			"right canopy corner needs a chamfer")
+	check(hull.cells.has(Vector3i(0, 3, 0)),
+			"engine deck must have an intact center roof")
+	check(not hull.cells.has(Vector3i(-5, 3, 0)),
+			"engine corner should slope away from center roof")
+	check_eq(hull.cells.get(Vector3i(-5, 1, 6)), 1,
+			"recessed roof cooling well should expose the dark underlying core")
+	mech.free()
+
+
+func test_jenner_exposes_actual_hock_linkage_with_open_channels() -> void:
+	var mech := VoxelMech.new()
+	mech.profile_id = "jenner_jr7d"
+	mech.build()
+	var shin: VoxelPart = mech.parts["left_leg_shin"]
+	var hock: VoxelPart = mech.parts["left_leg_metatarsal"]
+	check(not shin.cells.has(Vector3i(-2, -7, 0)),
+			"shin outer channel must remain empty")
+	check(not shin.cells.has(Vector3i(2, -7, 0)),
+			"opposite shin outer channel must remain empty")
+	check(shin.cells.has(Vector3i(0, -7, 0)),
+			"core strut must bridge both joints")
+	check_eq(shin.cells.get(Vector3i(0, -7, 3)), 1,
+			"rear-facing piston should stay exposed")
+	check(not hock.cells.has(Vector3i(-2, -3, 0)),
+			"hock fork needs real negative space")
+	check(hock.cells.has(Vector3i(0, -3, 0)),
+			"hock center linkage must stay connected")
+	mech.free()
+
+
+func test_jenner_tapered_toes_have_separate_endpoints() -> void:
+	var mech := VoxelMech.new()
+	mech.profile_id = "jenner_jr7d"
+	mech.build()
+	for key in ["left_leg_foot", "right_leg_foot"]:
+		var foot: VoxelPart = mech.parts[key]
+		for x in [-3, 0, 3]:
+			check(foot.cells.has(Vector3i(x, -2, -11)),
+					"toe is missing its narrowed end: " + key)
+		for x in [-2, -1, 1, 2, 4]:
+			check(not foot.cells.has(Vector3i(x, -2, -11)),
+					"toe tips must not fuse to adjacent prongs")
+	mech.free()
+
+
+func test_voxel_authoring_carve_preserves_final_armor_count() -> void:
+	var part := VoxelPart.new()
+	part.fill_box(Vector3i.ZERO, Vector3i(3, 3, 3), 0)
+	var cut := part.carve_box(Vector3i(1, 1, 1), Vector3i(2, 2, 2))
+	check_eq(cut, 8, "interior cut should remove eight voxels")
+	check_eq(part.cells.size(), 56, "carve must preserve surrounding shell")
+	part.seal()
+	check_eq(part._original_count, 56, "seal must use sculpted volume as damage baseline")
+	check_eq(part.carve_box(Vector3i(1, 1, 1), Vector3i(2, 2, 2)), 0,
+			"repeating a carve should not remove more cells")
+	part.free()

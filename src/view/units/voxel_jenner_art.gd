@@ -17,6 +17,15 @@ static func torso(part: VoxelPart) -> void:
 		var roof := 3 if z < 6 else 2
 		part.fill_box(Vector3i(-half_width, bottom, z),
 				Vector3i(half_width - 1, roof, z), 4)
+	# Cut stepped roof chamfers and ventilator wells instead of leaving a
+	# single box-shaped roof. The darker wells remain open from above.
+	for z in range(0, 6):
+		var edge := 5 if z < 2 else 7
+		part.carve_box(Vector3i(-edge, 3, z), Vector3i(-edge + 1, 3, z))
+		part.carve_box(Vector3i(edge - 2, 3, z), Vector3i(edge - 1, 3, z))
+	for x in [-5, 3]:
+		part.carve_box(Vector3i(x, 2, 6), Vector3i(x + 1, 3, 7))
+		part.fill_box(Vector3i(x, 1, 6), Vector3i(x + 1, 1, 7), 1)
 	# Side engine/shoulder housings are separated by recessed inner seams.
 	for side in [-1, 1]:
 		var x0 := -11 if side < 0 else 7
@@ -45,6 +54,15 @@ static func torso(part: VoxelPart) -> void:
 		if z <= -11:
 			part.fill_box(Vector3i(-width + 1, floor_y, z),
 					Vector3i(width - 2, floor_y, z), 1)
+	# Cut the upper outside corners along the canopy's longitudinal taper.
+	# The dark frame and glazing are layered on top after these cuts.
+	for z in range(-17, -8):
+		var width := 3 if z < -15 else (4 if z < -12 else (5 if z < -9 else 6))
+		var roof_y := 2 if z < -11 else 3
+		part.carve_box(Vector3i(-width, roof_y, z),
+				Vector3i(-width + 1, roof_y, z))
+		part.carve_box(Vector3i(width - 2, roof_y, z),
+				Vector3i(width - 1, roof_y, z))
 	# Small wedge tip rather than a squared-off aquarium canopy.
 	part.fill_box(Vector3i(-1, -1, -21), Vector3i(0, 0, -21), 0)
 	part.fill_box(Vector3i(-1, 0, -21), Vector3i(0, 0, -21), 2)
@@ -117,6 +135,10 @@ static func thigh(part: VoxelPart) -> void:
 	part.fill_box(Vector3i(-5, -2, -1), Vector3i(5, -1, 1), 1)
 	part.fill_box(Vector3i(-4, -6, -3), Vector3i(4, -4, -2), 4)
 	part.fill_box(Vector3i(-3, -8, -3), Vector3i(3, -6, -2), 0)
+	# Distinct exposed hip hubs, surrounded by armor but not fused into a
+	# solid waist block. Side-facing rotor accents are purely voxel material.
+	for x in [-5, 5]:
+		part.fill_box(Vector3i(x, -2, 0), Vector3i(x, -1, 0), 3)
 	# Knee rotor remains visible underneath the leg plate.
 	part.fill_box(Vector3i(-4, -11, -2), Vector3i(4, -10, 2), 1)
 	part.fill_box(Vector3i(-5, -11, -1), Vector3i(-5, -10, 1), 4)
@@ -139,6 +161,15 @@ static func shin(part: VoxelPart) -> void:
 	part.fill_box(Vector3i(-3, -11, -2), Vector3i(3, -10, 2), 4)
 	part.fill_box(Vector3i(-4, -11, -1), Vector3i(4, -10, 1), 1)
 	part.fill_box(Vector3i(-2, -12, -1), Vector3i(2, -11, 1), 4)
+	# Open narrow side channels between the forward armor and rear piston.
+	# Leave the central strut and both end joints connected.
+	for x in [-2, 2]:
+		part.carve_box(Vector3i(x, -8, -1), Vector3i(x, -4, 1))
+	part.carve_box(Vector3i(-1, -8, 2), Vector3i(1, -4, 2))
+	# A separate external piston on the rear face, linked at both ends.
+	part.fill_box(Vector3i(-1, -9, 3), Vector3i(1, -3, 3), 1)
+	for y in [-9, -3]:
+		part.fill_box(Vector3i(-2, y, 2), Vector3i(2, y, 3), 4)
 
 
 static func metatarsal(part: VoxelPart) -> void:
@@ -148,6 +179,12 @@ static func metatarsal(part: VoxelPart) -> void:
 	part.fill_box(Vector3i(-3, -1, -2), Vector3i(3, -1, 2), 4)
 	part.fill_box(Vector3i(-1, -5, -1), Vector3i(1, -4, 1), 1)
 	part.fill_box(Vector3i(-3, -4, -1), Vector3i(3, -4, 1), 4)
+	# Hock rocker fork: a visible gap either side of the central linkage.
+	for x in [-2, 2]:
+		part.carve_box(Vector3i(x, -3, -1), Vector3i(x, -2, 1))
+	part.fill_box(Vector3i(-1, -3, -1), Vector3i(1, -2, 1), 1)
+	for x in [-3, 3]:
+		part.fill_box(Vector3i(x, -1, 0), Vector3i(x, 0, 0), 3)
 
 
 static func foot(part: VoxelPart) -> void:
@@ -158,4 +195,7 @@ static func foot(part: VoxelPart) -> void:
 		part.fill_box(Vector3i(x, -2, -7), Vector3i(x + 1, 0, -3), 4)
 		part.fill_box(Vector3i(x, -2, -9), Vector3i(x + 1, -1, -8), 0)
 		part.fill_box(Vector3i(x, 0, -6), Vector3i(x, 0, -4), 1)
+		# Taper each toe independently to a single-voxel front tip.
+		part.fill_box(Vector3i(x, -2, -10), Vector3i(x + 1, -2, -10), 4)
+		part.fill_box(Vector3i(x, -2, -11), Vector3i(x, -2, -11), 0)
 	part.fill_box(Vector3i(-2, -1, 3), Vector3i(2, 1, 5), 1)
