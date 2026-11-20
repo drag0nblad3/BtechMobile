@@ -1,0 +1,35 @@
+name: Reference-guided voxel silhouette preview
+on:
+  push:
+    branches: [feature/reference-guided-silhouette-v3]
+    paths:
+      - tools/capture_silhouette_v3.gd
+      - .github/workflows/preview-silhouette-v3.yml
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import model scripts
+        run: godot --headless --import
+      - name: Render actual voxel anatomy from branch
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/silhouette-v3
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x800 \
+            -s tools/capture_silhouette_v3.gd -- /tmp/silhouette-v3 2>&1 | tee anatomy-render.log
+          [ "$(grep -c '^SILHOUETTE_RENDER|' anatomy-render.log)" -eq 7 ]
+          for f in atlas atlas-front hunchback wolverine jenner catapult prototype; do
+            test -s "/tmp/silhouette-v3/$f.png"
+          done
+          ! grep -E 'SCRIPT ERROR|Parse Error|RENDER_FAILED' anatomy-render.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: silhouette-v3-final-review
+          path: /tmp/silhouette-v3/*.png
