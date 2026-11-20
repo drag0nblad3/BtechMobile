@@ -8,7 +8,8 @@ signal all_spawned
 
 const TARGET_COUNT := 20
 const COLUMNS := 5
-const GRID_SPACING := 2.45
+## Room for broad Atlas shoulders and Catapult missile pods without overlap.
+const GRID_SPACING := 5.2
 const SHOT_INTERVAL := 0.30
 const SAMPLE_INTERVAL := 1.0
 
