@@ -19,7 +19,7 @@ static func palette(shape: String) -> Array[Color]:
 			base[0] = Color("556c80")
 			base[1] = Color("26313c")
 			base[4] = Color("8ba0ae")
-			base[6] = Color("cec9ba")
+			base[6] = Color("99a9ae")
 			base[7] = Color("f1544c")
 			base[8] = Color("617481")
 		"hunchback":
@@ -124,6 +124,18 @@ static func _atlas_torso(p: VoxelPart) -> void:
 	for y in [-6, -2, 2]:
 		p.carve_box(Vector3i(-7, y, -9), Vector3i(7, y, -9))
 	p.fill_box(Vector3i(-1, -6, -10), Vector3i(0, 2, -9), 8)
+	# Non-rectangular central flak plates close the gaping dark hole below
+	# the death's-head. They project forward with tapering outer corners.
+	for y in range(-5, 3):
+		var width := 4 if y < -3 else (5 if y < 0 else 6)
+		for x in range(-width, width):
+			if abs(x) < 1:
+				continue  # exposed central mechanical fastener line
+			var front := -11 if abs(x) < 4 else -10
+			p.cells[Vector3i(x, y, front)] = 0
+	for y in [-4, 0]:
+		for x in [-4, 3]:
+			p.fill_box(Vector3i(x, y, -11), Vector3i(x + 1, y, -11), 4)
 	# Chest should read as one deep armored breastplate, NOT two footballs.
 	# Several extra projecting plates define a narrow centerline.
 	for side in [-1, 1]:
