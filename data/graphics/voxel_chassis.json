@@ -11,7 +11,8 @@
       "voxel_detail": 2,
       "voxel_part_detail": {
         "Torso": 3
-      }
+      },
+      "height_stretch": 1.36
     },
     {
       "id": "atlas_as7d",
@@ -26,7 +27,8 @@
         "Torso": 2,
         "left_arm": 3,
         "right_arm": 3
-      }
+      },
+      "height_stretch": 1.28
     },
     {
       "id": "hunchback_hbk4g",
@@ -35,11 +37,12 @@
       "shape": "hunchback",
       "arm": "cannon",
       "hip_width": 0.55,
-      "arm_width": 0.98,
+      "arm_width": 0.85,
       "voxel_detail": 2,
       "voxel_part_detail": {
         "Torso": 3
-      }
+      },
+      "height_stretch": 1.3
     },
     {
       "id": "wolverine_wvr6r",
@@ -47,12 +50,13 @@
       "gait": "humanoid",
       "shape": "wolverine",
       "arm": "standard",
-      "hip_width": 0.53,
-      "arm_width": 0.94,
+      "hip_width": 0.5,
+      "arm_width": 0.86,
       "voxel_detail": 2,
       "voxel_part_detail": {
         "Torso": 3
-      }
+      },
+      "height_stretch": 1.38
     },
     {
       "id": "jenner_jr7d",
@@ -67,7 +71,8 @@
         "Torso": 3,
         "left_arm": 3,
         "right_arm": 3
-      }
+      },
+      "height_stretch": 1.3
     },
     {
       "id": "catapult_cplt_c1",
@@ -76,12 +81,13 @@
       "shape": "catapult",
       "arm": "missile_pods",
       "hip_width": 0.58,
-      "arm_width": 1.04,
+      "arm_width": 1.14,
       "voxel_detail": 2,
       "voxel_part_detail": {
         "left_arm": 3,
         "right_arm": 3
-      }
+      },
+      "height_stretch": 1.34
     }
   ]
 }
