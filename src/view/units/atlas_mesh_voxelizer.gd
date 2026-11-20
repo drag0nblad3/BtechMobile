@@ -15,6 +15,7 @@ extends RefCounted
 const COARSE_CELL := VoxelPart.VOXEL_SIZE
 const EPS := 0.00001
 static var _cache: Dictionary = {}
+static var _source_mesh_cache: Dictionary = {}
 static var bake_count := 0
 
 
@@ -32,6 +33,10 @@ static func put(part: VoxelPart, key: String) -> void:
 	# deliberately bypasses the legacy cube-splitting operation in seal().
 	part.voxel_size = COARSE_CELL / float(factor)
 	part.detail_style = "mesh_atlas"
+	if part.mesh_enabled:
+		if not _source_mesh_cache.has(key):
+			_source_mesh_cache[key] = AtlasSourceMesh.source_mesh(key)
+		part.intact_source_mesh = _source_mesh_cache[key]
 
 
 static func voxelize_components(components: Array[Dictionary],
