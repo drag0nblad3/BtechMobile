@@ -1,11 +1,12 @@
 extends SceneTree
-## Capture the actual Jenner Godot model without the lab HUD.
-## godot --rendering-method gl_compatibility --resolution 1280x720 \
+## Screenshot the actual Jenner model without the lab HUD.
+## Godot render usage:
+## xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
 ##   -s tools/capture_jenner.gd -- /tmp/jenner-frames
 
 var output_dir := "/tmp/jenner-frames"
 var scene: VoxelMechLab
-var stage := 0
+var stage := -1
 
 
 func _initialize() -> void:
@@ -15,24 +16,28 @@ func _initialize() -> void:
 	DirAccess.make_dir_recursive_absolute(output_dir)
 	scene = load("res://scenes/voxel_mech_lab.tscn").instantiate()
 	root.add_child(scene)
-	for i in scene.profiles.size():
-		if scene.profiles[i]["id"] == "jenner_jr7d":
-			scene._select_chassis(i)
-			break
-	# Keep UI in the live lab, remove only for clean model inspection screenshots.
-	for node in scene.get_children():
-		if node is CanvasLayer:
-			node.visible = false
-	scene.mech.walking = false
-	scene.mech.position = Vector3.ZERO
-	scene.mech.stand()
-	scene._distance = 4.7
-	scene._elevation = 0.16
-	scene._orbit = PI
-	scene.update_camera()
 
 
 func _process(_delta: float) -> bool:
+	if stage == -1:
+		if scene == null or scene.mech == null:
+			return false
+		for i in scene.profiles.size():
+			if scene.profiles[i]["id"] == "jenner_jr7d":
+				scene._select_chassis(i)
+				break
+		for node in scene.get_children():
+			if node is CanvasLayer:
+				node.visible = false
+		scene.mech.walking = false
+		scene.mech.position = Vector3.ZERO
+		scene.mech.stand()
+		scene._distance = 4.7
+		scene._elevation = 0.16
+		scene._orbit = PI
+		scene.update_camera()
+		stage = 0
+		return false
 	match stage:
 		0:
 			capture("jenner_front.png")
@@ -59,8 +64,7 @@ func _process(_delta: float) -> bool:
 			scene.mech.stand()
 			var torso: VoxelPart = scene.mech.parts["torso"]
 			var impact := torso.to_global(Vector3(0.0, 0.04, -1.08))
-			var removed := scene.mech.hit_part("torso", impact, 0.25)
-			if removed <= 0:
+			if scene.mech.hit_part("torso", impact, 0.25) <= 0:
 				printerr("Jenner impact failed to remove voxels")
 				quit(1)
 				return true
