@@ -120,8 +120,14 @@ current model contains the **most occupied voxels** (currently the upgraded
 Atlas AS7-D, 138,072 voxels per intact mech).
 
 The test creates **20 full-resolution, fully damageable** voxel mechs in a
-5×4 grid, one mech per frame to spread out the loading cost. Mechs stand
-stationary so the test isolates simultaneous high-density geometry and
+5×4 grid with **5.2 m center-to-center spacing** (was 2.45 m). During the
+stress test, the hangar floor expands from 14 × 14 m to **34 × 28 m**,
+including a larger floor grid; it returns to solo size on STOP / CLEAR.
+The camera backs out to 38 m to frame the larger formation. The dedicated
+**ZOOM IN +** and **ZOOM OUT −** buttons work with touch and mouse, as do
+two-finger pinch and mouse-wheel zoom, with an expanded stress-test range
+of 12–80 m. Mechs are spawned one per frame to spread out the loading cost.
+Mechs stand stationary so the test isolates simultaneous high-density geometry and
 repeated mesh rebuilds from impacts. Once all 20 have spawned, a random
 target and random exterior voxel are selected approximately every 0.3 seconds;
 the existing irregular damage algorithm applies each hit. This uses real
