@@ -34,10 +34,12 @@ func start_turn() -> void:
 ## Moves a unit to a planned (hex, facing) key. Returns false if illegal.
 ## With `charge_target_id`, the move ends in a charge (walk/run) or death from
 ## above (jump) against the enemy straight ahead; it must be legal.
-func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1) -> bool:
+## `then_prone` drops it to the ground at the end of the move (1 MP).
+func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1,
+		then_prone := false) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT):
 		return false
-	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id):
+	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone):
 		return false
 	_unit_done()
 	return true
@@ -45,7 +47,7 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 
 ## Drops a standing 'Mech to the ground instead of moving: harder to hit
 ## from range, easier from next door. Standing up later costs 2 MP and a roll.
-## TODO(rules): TW lets a 'Mech move and then drop prone for 1 MP.
+## To move first and then drop, use submit_move(..., then_prone = true).
 func go_prone(unit: Unit) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone:
 		return false

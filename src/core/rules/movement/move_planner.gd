@@ -9,6 +9,8 @@ extends RefCounted
 static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
 	if mode == MoveMode.Kind.JUMP:
 		return JumpPlanner.plan(state, unit)
+	if unit.prone and not Psr.can_stand(unit):
+		return ProneMoves.turn_options(unit, mode)
 	var opts := MoveOptions.new()
 	opts.unit = unit
 	opts.mode = mode

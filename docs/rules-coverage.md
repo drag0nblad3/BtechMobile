@@ -22,7 +22,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit — `TODO(rules)`: landing on building roofs.
 - ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again; standing frees the facing. Impossible with a
   destroyed gyro or both legs gone.
-- 🟡 Going prone instead of moving (heat as walking) — `TODO(rules)`: TW allows moving first, then dropping for 1 MP.
+- ✅ Dropping prone (`ProneMoves`, p. 51): in place, or at the end of a walk/run with 1 MP to spare (the Prone button uses the previewed move); not after jumping.
+- 🟡 Prone 'Mech that can't stand (destroyed gyro, both legs gone) only turns in its hex, 1 MP a hexside; a destroyed gyro allows one hexside a turn (p. 46) — `TODO(rules)`: a prone 'Mech that could stand can't choose to turn without standing.
 - ✅ Minimum movement (p. 49): running, one hex straight ahead for all MP, even if it costs more.
 - ✅ Movement piloting rolls (`MovePsr`): rolled the moment the hex is entered for running into water, rubble, backward level changes and landing in water (a failure ends the move with a fall); rolled after the move for running 1+ hex with a gyro/hip hit or leg gone, and jumping with gyro, leg or leg actuator damage.
 - ⬜ Skidding: not in the Core Rulebook; `Skid` is kept for an optional rule but never used.
@@ -57,7 +58,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
 - ✅ Flamers (p. 183): a hit deals damage and the same amount of heat to the target; outside heat is capped at 15 per turn.
-- 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter — `TODO(rules)`: a spotter may still charge or DFA.
+- 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter; a 'Mech that declared a charge or DFA can't spot.
 - ⬜ Called shots, aimed shots.
 
 ## Damage
@@ -95,7 +96,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Lasting modifiers: gyro +2, destroyed leg +4 (replaces that leg's actuators), hip/upper/lower leg actuators +1 each; positive mods of other rolls owed in the same phase add on; one roll per leg for actuator hits; an immobile 'Mech falls automatically.
 - ✅ Falls (p. 115): facing unchanged; 1D6 = 1 hits the rear, else the front; ceil(tons/10) × (levels + 1) in 5s, halved in depth 1+ water.
 - ✅ Seatbelt check (p. 117): piloting + 1 per level fallen, nothing else; immobile or over 12 is an automatic hit.
-- 🟡 Consciousness (p. 117): one roll after the phase's damage, PSRs and falls, against the current hit total; wake-up rolls in later End Phases only — `TODO(rules)`: Movement Phase rolls should be immediate.
+- ✅ Consciousness (p. 117): one roll against the current hit total, as soon as a 'Mech's move is over in the Movement Phase, otherwise after the phase's damage, PSRs and falls; wake-up rolls in later End Phases only.
 
 ## Physical attacks
 - ✅ Modifiers (pp. 76-77, `PhysicalMods`): piloting base plus every ranged modifier except heat and sensors (movement, woods, partial cover, prone -2, immobile -4); piloting roll modifiers don't apply.

@@ -3,9 +3,8 @@ extends RefCounted
 ## MechWarrior wounds and consciousness (book p. 117). Six hits kill.
 ## A hit owes a consciousness roll, made once after the phase's damage,
 ## PSRs and falls are resolved, against the warrior's current hit total.
+## In the Movement Phase the roll comes as soon as the 'Mech's move is over.
 ## An unconscious warrior tries to wake in each later End Phase.
-## TODO(rules): in the Movement Phase the roll should come at once, not at
-## the end of the phase.
 
 
 static func wound(_dice: Dice, emit: Callable, u: Unit, hits: int, why: String) -> void:

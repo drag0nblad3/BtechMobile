@@ -67,11 +67,19 @@ func on_confirm() -> void:
 		controller.submit_move(u, k, mode)
 
 
-## Drop the selected 'Mech prone instead of moving it.
+## Drop the selected 'Mech prone: at the end of the previewed move when it
+## has 1 MP to spare, otherwise where it stands.
 func on_prone() -> void:
-	if selected and not selected.prone:
-		var u := selected
-		clear_selection()
+	if selected == null or selected.prone:
+		return
+	var u := selected
+	var k := preview
+	var m := mode
+	var after := has_preview and k != options.start_key() and ProneMoves.can_drop_after(options, k)
+	clear_selection()
+	if after:
+		controller.submit_move(u, k, m, -1, true)
+	else:
 		controller.go_prone(u)
 
 
