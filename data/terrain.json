@@ -5,6 +5,7 @@
     {"id": "light_woods", "token": "L", "name": "Light Woods", "move_cost": 1, "los_height": 2, "color": "#4a7330", "detail_color": "#35561f"},
     {"id": "heavy_woods", "token": "H", "name": "Heavy Woods", "move_cost": 2, "los_height": 2, "color": "#335a22", "detail_color": "#244217"},
     {"id": "pavement", "token": "p", "name": "Pavement", "move_cost": 0, "color": "#6e6e6a", "detail_color": "#5a5a56"},
+    {"id": "rubble", "token": "u", "name": "Rubble", "move_cost": 1, "color": "#7a7266", "detail_color": "#5e574c"},
     {"id": "water", "token": "w", "name": "Water", "move_cost": 0, "water": true, "color": "#4a5a50", "detail_color": "#36443c"}
   ]
 }

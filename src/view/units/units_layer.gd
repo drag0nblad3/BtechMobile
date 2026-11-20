@@ -33,6 +33,13 @@ func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int
 	v.play_path(path, from_coord, from_facing)
 
 
+## Re-reads a unit's condition (prone, destroyed, facing after a fall).
+func refresh_unit(unit_id: int) -> void:
+	var v: UnitView = views.get(unit_id)
+	if v and not is_busy():
+		v.snap_to_state()
+
+
 func _on_done() -> void:
 	_playing -= 1
 	if _playing == 0:

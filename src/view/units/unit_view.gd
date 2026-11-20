@@ -33,6 +33,35 @@ func snap_to_state() -> void:
 	position = _hex_pos(unit.coord)
 	_yaw = HexLayout.facing_yaw(unit.facing)
 	rotation.y = _yaw
+	show_condition()
+
+
+## Prone 'Mechs lie on their side; wrecks also darken.
+func show_condition() -> void:
+	if _model == null:
+		return
+	_model.rotation.z = PI / 2.4 if unit.prone or unit.destroyed else 0.0
+	_model.position.y = 0.25 if unit.prone or unit.destroyed else 0.0
+	var tint := Color(0.3, 0.3, 0.3) if unit.destroyed else Color.WHITE
+	_tint(_model, tint)
+
+
+func _tint(n: Node, c: Color) -> void:
+	if n is MeshInstance3D:
+		var mi := n as MeshInstance3D
+		var m := mi.mesh.surface_get_material(0) if mi.mesh else null
+		mi.material_override = _dark(m) if c != Color.WHITE and m is StandardMaterial3D else null
+	elif n is Sprite3D:
+		(n as Sprite3D).modulate = c
+	for ch in n.get_children():
+		_tint(ch, c)
+
+
+func _dark(m: StandardMaterial3D) -> StandardMaterial3D:
+	var d := m.duplicate() as StandardMaterial3D
+	d.albedo_color = m.albedo_color.darkened(0.7)
+	d.emission_enabled = false
+	return d
 
 
 ## Each step is a Vector3i(q, r, facing) from MoveOptions.path_to().
@@ -53,7 +82,9 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 			tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
 					.set_trans(Tween.TRANS_SINE)
 			last_c = c
-	tw.finished.connect(func(): animation_finished.emit())
+	tw.finished.connect(func():
+			show_condition()
+			animation_finished.emit())
 
 
 func _turn_delta(from_f: int, to_f: int) -> float:

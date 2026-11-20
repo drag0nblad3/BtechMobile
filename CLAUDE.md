@@ -33,6 +33,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick to-hit, damage), `PhysicalPhase` |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `DamageText`/`HeatText`/`PilotText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
+| `src/core/forces/` | `ForceBuilder` (tonnage budget, lances, deployment) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
@@ -40,11 +41,14 @@ Battle mode first; campaign layer later.
 | `src/view/units/` | `UnitView` (animation), `UnitsLayer`, `PlaceholderMech` |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
-| `src/view/hud/battle_hud.gd` | On-screen buttons/labels; emits intent signals only |
-| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput` |
+| `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea` |
+| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `BattleLaunch` |
+| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
-| `tools/capture.gd` | Render the battle to PNG for visual checks |
+| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu) |
+| `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI) |
+| `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |
 | `export_presets.cfg` | Android export preset; `.github/workflows/android.yml` builds an APK on manual run only |
 
@@ -53,8 +57,9 @@ Battle mode first; campaign layer later.
 godot --headless --import                      # once per fresh clone (class cache)
 godot --headless -s tests/run_tests.gd         # all tests; append `-- movement` to filter
 godot --headless --quit-after 30               # smoke-run main scene, catches script errors
+godot --headless -s tools/ui_smoke.gd          # play 4 turns through the battle UI
 xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
-  -s tools/capture.gd -- /tmp/shot.png select  # screenshot (select = show move highlights)
+  -s tools/capture.gd -- /tmp/shot.png attack  # screenshot (select|attack|sheet|menu)
 ```
 Run tests + smoke run before every commit. CI runs both (`.github/workflows/ci.yml`).
 

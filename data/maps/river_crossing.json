@@ -1,0 +1,22 @@
+{
+ "name": "River Crossing",
+ "rows": [
+  "c0 c0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 c0",
+  "c0 c0 c0 c0 c0 c0 c0 c0 p0 c0 L0 H0 c0 c0 c0 c0",
+  "c1 c1 c1 c1 c1 c1 c0 c0 p0 c0 c0 L0 L0 c0 c0 c0",
+  "c1 c1 c2 r3 c2 c1 c0 c0 p0 c0 c0 c0 H0 c0 r0 c0",
+  "c1 c1 H2 c3 c2 c1 c0 c0 p0 c0 c0 c0 c0 c0 r0 c0",
+  "c1 c1 c2 c2 c2 c1 c0 r0 p0 L0 c0 c0 c0 c0 c0 c0",
+  "c1 c1 c1 c1 c1 c1 c0 c0 p0 c0 L0 L0 c0 c0 c0 c0",
+  "c0 c0 c0 c0 c0 c0 c0 u0 p0 u0 c0 c0 c0 c0 c0 c0",
+  "w0d2 w0d1 w0d1 w0d1 w0d1 w0d2 w0d1 w0d1 p0 w0d1 w0d2 w0d1 w0d1 w0d1 w0d1 w0d2",
+  "w0d1 w0d1 w0d1 w0d1 w0d2 w0d2 w0d2 w0d1 p0 w0d1 w0d1 w0d2 w0d1 w0d1 w0d1 w0d1",
+  "c0 c0 H0 c0 c0 c0 c0 u0 p0 u0 c0 c0 c0 L0 H0 c0",
+  "c0 c0 L0 L0 c0 c0 c0 c0 p0 c0 c1 c1 c1 c1 c1 c1",
+  "c0 c0 c0 H0 c0 c0 c0 c0 p0 c0 c1 c1 L2 c2 c1 c1",
+  "c0 r0 c0 c0 c0 c0 c0 c0 p0 c0 c1 c1 c2 H2 c1 c1",
+  "c0 r0 c0 c0 c0 L0 c0 c0 p0 c0 c1 c1 c1 c1 c1 c1",
+  "c0 c0 c0 c0 c0 L0 H0 c0 p0 c0 c0 c0 c0 c0 c0 c0",
+  "c0 c0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 c0"
+ ]
+}
