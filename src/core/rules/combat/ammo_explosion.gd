@@ -4,9 +4,12 @@ extends RefCounted
 ## at 20, goes straight into internal structure and transfers inward
 ## structure-to-structure. If the uncapped damage was over 20 and the last
 ## location hit survives, it loses its armor (rear armor for a torso).
+## CASE in a location (p. 96) caps it at 10 structure there plus up to 10 to
+## armor (rear for a torso), and nothing transfers out of it.
 ## The MechWarrior takes 1 hit from the feedback.
 
 const CAP := 20
+const CASE_CAP := 10
 
 
 static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, bin: AmmoBin) -> void:
@@ -15,8 +18,34 @@ static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, bin: 
 	bin.destroyed = true
 	if base <= 0:
 		return
-	var dmg := mini(base, CAP)
-	var steps := Damage.apply_internal(u, bin.loc, dmg)
+	var steps := internal(u, bin.loc, base)
+	var dmg := 0
+	for s in steps:
+		dmg += int(s["structure"]) + int(s["armor"])
+	emit.call(GameEvent.AMMO_EXPLOSION, {"unit_id": u.id, "loc": bin.loc,
+			"ammo": bin.weapon.name, "damage": dmg, "base": base, "steps": steps,
+			"case": steps.any(func(s: Dictionary) -> bool: return s.get("case", false))})
+	PilotDamage.wound(dice, emit, u, 1, "ammo explosion")
+	Damage.announce(emit, u)
+	CriticalHits.after_damage(state, dice, emit, u, steps, false)
+
+
+## Internal explosion damage from `loc` with the caps above. Also used for
+## exploding components.
+static func internal(u: Unit, loc: int, base: int) -> Array[Dictionary]:
+	var steps: Array[Dictionary] = []
+	if u.def.has_case(loc):
+		steps.append(_case(u, loc, base))
+		return steps
+	var left := mini(base, CAP)
+	while left > 0 and loc >= 0 and not u.destroyed:
+		if u.def.has_case(loc) and not u.is_location_destroyed(loc):
+			steps.append(_case(u, loc, left))  # transferred in: handled like its own
+			return steps
+		var part := Damage.apply_internal_one(u, loc, left)
+		left -= int(part["structure"])
+		steps.append(part)
+		loc = Location.transfer(loc)
 	if base > CAP and not steps.is_empty() and not u.destroyed:
 		var last: int = steps[-1]["loc"]
 		if not u.is_location_destroyed(last):
@@ -24,8 +53,18 @@ static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, bin: 
 				u.rear_armor[last] = 0
 			else:
 				u.armor[last] = 0
-	emit.call(GameEvent.AMMO_EXPLOSION, {"unit_id": u.id, "loc": bin.loc,
-			"ammo": bin.weapon.name, "damage": dmg, "base": base, "steps": steps})
-	PilotDamage.wound(dice, emit, u, 1, "ammo explosion")
-	Damage.announce(emit, u)
-	CriticalHits.after_damage(state, dice, emit, u, steps, false)
+	return steps
+
+
+static func _case(u: Unit, loc: int, amount: int) -> Dictionary:
+	var step := Damage.apply_internal_one(u, loc, mini(amount, CASE_CAP))
+	step["case"] = true
+	if amount > CASE_CAP and not u.is_location_destroyed(loc) and not u.destroyed:
+		var rear := Location.HAS_REAR.has(loc)
+		var arm := u.rear_armor if rear else u.armor
+		var a := mini(arm[loc], mini(amount - CASE_CAP, CASE_CAP))
+		arm[loc] -= a
+		u.damage_this_phase += a
+		step["armor"] = a
+		step["rear"] = rear
+	return step

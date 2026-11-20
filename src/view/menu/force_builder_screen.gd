@@ -72,7 +72,7 @@ func _weapons_line(def: UnitDef) -> String:
 	var parts: Array[String] = []
 	for n: String in counts:
 		parts.append(("%d× %s" % [counts[n], n]) if counts[n] > 1 else n)
-	return ", ".join(parts) + "  ·  %d heat sinks" % def.heat_sinks
+	return ", ".join(parts) + "  ·  %d %sheat sinks" % [def.heat_sinks, "double " if def.double_heat_sinks else ""]
 
 
 func _build_roster(parent: Control, side: int) -> void:

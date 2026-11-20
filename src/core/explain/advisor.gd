@@ -107,7 +107,7 @@ static func volley(state: GameState, u: Unit, shots: Array, level: int) -> Strin
 ## Heat at the end of this turn if the given weapon heat is added.
 static func projected_heat(u: Unit, weapon_heat: int) -> int:
 	var gained := u.heat_generated + weapon_heat + HeatPhase.ENGINE_HIT_HEAT * u.engine_hits
-	return maxi(0, u.heat + gained - u.working_heat_sinks())
+	return maxi(0, u.heat + gained - u.dissipation())
 
 
 ## Which enemy is the best target, by expected damage of everything that can fire.

@@ -20,7 +20,8 @@ static func text(u: Unit) -> String:
 	var t := "[b]%s[/b]  %s · %d t %s\n" % [Names.unit(u), d.model, d.tonnage, d.weight_class()]
 	t += "MP %d walk / %d run (base %d/%d)\n" % [u.walk_mp(), u.run_mp(), d.walk_mp, d.run_mp()]
 	t += "Heat [color=%s]%d[/color] / 30: %s\n" % [_heat_color(u.heat), u.heat, HeatScale.effects_text(u.heat)]
-	t += "Heat sinks %d of %d\n" % [u.working_heat_sinks(), d.heat_sinks]
+	t += "Heat sinks %d of %d%s\n" % [u.working_heat_sinks(), d.heat_sinks,
+			" double (%d heat)" % u.dissipation() if d.double_heat_sinks else ""]
 	t += "MechWarrior: gunnery %d, piloting %d, hits %d/6%s\n" % [u.pilot.gunnery,
 			u.pilot.piloting, u.pilot.hits, "" if u.pilot.conscious else " (unconscious)"]
 	var cond: Array[String] = []

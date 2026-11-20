@@ -62,6 +62,8 @@ static func breach(s: GameState, d: Dictionary, level: int) -> String:
 static func ammo(s: GameState, d: Dictionary, level: int) -> String:
 	var t := "  %s's %s ammo explodes in the %s for %d damage!" % [
 			Names.unit(s.unit_by_id(d["unit_id"])), d["ammo"], Location.name_of(d["loc"]), d["damage"]]
+	if d.get("case", false) and level != ExplainLevel.OFF:
+		t += " CASE vents the blast out the back: the damage stays in that location."
 	if level == ExplainLevel.FULL:
 		t += " Ammo explosions skip armor and hurt the pilot. Energy weapons can't explode."
 	return t

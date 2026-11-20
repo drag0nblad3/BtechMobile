@@ -18,7 +18,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		var outside := mini(u.outside_heat + Fire.stand_heat(state.map, u), OUTSIDE_HEAT_CAP)
 		var engine := 0 if u.shutdown else ENGINE_HIT_HEAT * u.engine_hits
 		var gained := u.heat_generated + engine + outside
-		var sinks := u.working_heat_sinks() + water_cooling(state.map.get_tile(u.coord), u)
+		var sinks := u.dissipation() + water_cooling(state.map.get_tile(u.coord), u)
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
 				"sinks": sinks, "outside": outside, "heat": u.heat,
@@ -32,7 +32,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 
 
 ## Extra heat removed by water (p. 103): each submerged heat sink removes
-## double, at most 6 extra. Standing in depth 1 only the leg sinks are under;
+## its rating again (1 single, 2 double), at most 6 extra. Standing in depth 1 only the leg sinks are under;
 ## in depth 2+, or prone in depth 1+, all of them are.
 static func water_cooling(tile: MapTile, u: Unit = null) -> int:
 	if tile == null or not tile.is_water() or tile.depth < 1:
@@ -41,19 +41,22 @@ static func water_cooling(tile: MapTile, u: Unit = null) -> int:
 		return 2 if tile.depth == 1 else 6
 	var all := tile.depth >= 2 or u.prone
 	var under := u.working_heat_sinks() if all else leg_heat_sinks(u)
-	return mini(under, 6)
+	return mini(under * u.def.heat_per_sink(), 6)
 
 
-## Working heat sinks mounted in the legs.
+## Working heat sinks mounted in the legs (a double counts once).
 static func leg_heat_sinks(u: Unit) -> int:
-	var n := 0
+	var refs := {}
+	var dead := {}
 	for loc in [Location.LL, Location.RL]:
 		if u.is_location_out(loc):
 			continue
 		for s: CritSlot in u.slots[loc]:
-			if s.kind == CritSlot.Kind.HEAT_SINK and not s.hit:
-				n += 1
-	return n
+			if s.kind == CritSlot.Kind.HEAT_SINK:
+				refs[s.ref] = true
+				if s.hit:
+					dead[s.ref] = true
+	return refs.size() - dead.size()
 
 
 static func _ammo_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
