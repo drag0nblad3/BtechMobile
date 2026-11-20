@@ -95,27 +95,35 @@ geometry measurements after the material, bevel and cavity sculpting passes:
 
 | Visual chassis | Occupied voxels | Recognizable 3D features |
 | --- | ---: | --- |
-| Original test mech | 132,577 | Split sensor canopy, twin raised engine banks, hollow test cannon, dorsal antenna, piston joints |
-| Atlas AS7-D | 119,114 | 25 mm skull-like cockpit, layered cheek plates, inset eye glazing, shoulders, heat-exchanger recesses |
-| Hunchback HBK-4G | 147,655 | Off-center canopy, massive **hollow** right-shoulder AC/20, recoil rails, separate manipulator, rear vents |
-| Wolverine WVR-6R | 149,578 | Swept cockpit and shoulder cowlings, six genuinely recessed SRM tubes, **bored** right-arm autocannon, left hand |
-| Jenner JR7-D | 122,212 | Fine wraparound windshield, four-port SRM, two independent laser muzzles per side, digitigrade piston channels |
-| Catapult CPLT-C1 | 108,080 | Distinct cockpit and jet housings, two detailed 15-tube LRM racks with physical cavities, exposed hock linkages |
+| Original test mech | 122,909 | Swept paired sensor canopy, tapered instrumented chest, separate cooling nacelles, a bored test cannon and articulated gauntlets |
+| Atlas AS7-D | 139,111 | *Rounded skull head with recessed glowing red eyes and jaw*, tapered pectoral plates, curved pauldrons, torso AC/20 and missile tubes; 25 mm gauntlets |
+| Hunchback HBK-4G | 149,808 | Seriously asymmetric shoulder hump, recessed left cockpit, circular bored AC/20, offset arms, rounded armor and vented rear equipment |
+| Wolverine WVR-6R | 140,707 | Wedge nose, distinct shoulder armor, six genuine SRM holes, a right-arm open cannon, left manipulator and tapering breastplates |
+| Jenner JR7-D | 124,561 | Long wedge cockpit, large contoured rear engine fairings, four SRM ports, paired laser emitters and exposed three-link digitigrade mechanics |
+| Catapult CPLT-C1 | 113,387 | Sloped bird-like beak and reactor, vented rear jets, twin 15-cell recessed LRM pods and rounded reverse-jointed leg armor |
 
-The counts are not display multipliers or more precise destruction pixels.
-`VoxelRosterSculpt` authors distinct 3D hull/limb/weapon structures *before*
-sealing each part, then adds 25/37.5 mm grooves, frames and exposed mechanisms
-after voxel subdivision. Real gaps stay empty and are ray-pickable; hidden
-interior voxels are still culled from the surface mesh. Existing armor versus
-structure material roles agree with Claude's JSON modeling conventions.
-Gait IK and all official game combat rules remain unchanged.
+These counts are not display multipliers or extra damage pixels.
+`VoxelAnatomyV2` now **replaces the old rectilinear skeleton** with
+superelliptic tapered torso lofts, curved volumetric shoulders and forearms,
+physically sculpted skull/visor shapes, three-dimensional weapon bores,
+separate armor plates and piston/knuckle joints. `VoxelRosterSculpt` and
+`VoxelFineDetail` still provide surface recesses and detail. The new
+smoothing removes only nonessential outer corners; it does **not** eat thin
+missile rims or isolated test voxels. All voxels remain destructible and
+carry the same `armor`/`structure` visual roles as Claude's JSON models.
 
-The 25 mm voxels are concentrated in high-value regions: most cockpit
-hulls, the Jenner's laser muzzles and the Catapult's missile racks. Outer legs
-and less detailed weapon surfaces usually retain 37.5 mm cells. This preserves
-the recognizable silhouette and helps contain CPU/GPU rebuild cost. **The
-geometry is still experimental**: no render previews were requested, and
-mobile FPS, memory footprint and heat remain unmeasured.
+Each chassis has its own anatomical blockout, instead of sharing one silhouette
+and merely varying voxel pitch. High-value subassemblies get 25 mm cells
+(especially the Atlas's weapon arms, Jenner's laser nacelles, Catapult
+launchers, and smaller cockpits). The Atlas's larger sculpted torso uses
+37.5 mm cells to stay within a **150k real-voxel** budget without sacrificing
+its heavy proportions. Humanoid neutral poses are straighter, exposing more
+leg armor; walking gait IK and combat rules are unchanged.
+
+Actual Godot mesh renders (not concept art) have been used for QA on all
+six models. These are **still prototype art**, not final shipping assets:
+mobile performance, target-device memory/heat and close-up visual acceptance
+must still be checked. **No APK export was run.**
 
 For actual geometry rather than estimated budgets, run
 `godot --headless -s tools/voxel_count_report.gd`. This reports each model
@@ -131,14 +139,14 @@ The count selector locks during the run; **STOP / CLEAR** cancels even while the
 models are still spawning, releases the loaded models, and unlocks selection.
 
 The test computes real voxel counts and always selects the highest-detail
-available chassis (currently **Wolverine WVR-6R, 149,578 occupied voxels**).
+available chassis (currently **Hunchback HBK-4G, 149,808 occupied voxels**).
 It creates actual destructible meshes **one per frame** to spread loading cost:
 
 - **20:** centered 5×4 formation, 3.65 m spacing, 31.5 m camera fit and
-  **2,991,560 initial occupied voxels** with the current Wolverine.
+  **2,996,160 initial occupied voxels** with the current Hunchback.
 - **60:** centered 8-column formation spanning eight rows (four mechs centered
   in the final row), same 3.65 m spacing, 52 m camera fit and
-  **8,974,680 initial occupied voxels** with the current Wolverine.
+  **8,988,480 initial occupied voxels** with the current Hunchback.
 
 The arena has a **36×36 m** ground plane and grid, with room for either
 formation and its outermost mech armor. All models stand still to isolate
@@ -156,7 +164,7 @@ remaining voxels. Average/minimum sampling begins only after loading finishes.
 with mouse wheel and touch pinch. Stress camera zoom ranges from 7–58 m for
 20 models and 7–90 m for 60. Single-finger orbit still works.
 
-**60 full-detail Wolverines may overwhelm mobile RAM, GPU resources, or CPU**,
+**60 full-detail Hunchbacks may overwhelm mobile RAM, GPU resources, or CPU**,
 particularly on older phones. This is deliberate device stress testing—not
 a performance promise. You can stop partway through loading. The CI smoke
 checks a **partial 60-mech load and cancellation**, then a **full 20-mech
