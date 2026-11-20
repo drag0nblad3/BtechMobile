@@ -98,6 +98,10 @@ jobs:
             echo "::error::The repository secret contains a DIFFERENT signing certificate. Restore the original BtechMobile keystore."
             exit 1
           fi
+          # Certificate hashes are public identifiers; report them for diagnostics.
+          echo "Expected signing certificate SHA-256: $expected"
+          echo "APK signing certificate SHA-256: ${actual:-not-detected}"
+          "$signer_tool" verify --verbose --print-certs build/android/BtechMobile-debug.apk
           if [ -z "$actual" ] || [ "$expected" != "$actual" ]; then
             echo "::error::APK signing certificate does not match stored signing key"
             exit 1
