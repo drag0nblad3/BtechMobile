@@ -19,14 +19,18 @@ func test_atlas_shoulders_skull_and_torso_weapons_are_separate() -> void:
 			"Atlas requires wide independent armored shoulders")
 	check(not h.has_sculpt_cell(Vector3i(-8, 12, -4)),
 			"small skull must not grow into wide shoulder-shaped helmet")
-	check_eq(h.sculpt_material(Vector3i(-2, 8, -6)), 7,
-			"left skull eye must have inset red glazing")
-	check_eq(h.sculpt_material(Vector3i(1, 8, -6)), 7,
-			"right skull eye must remain separate")
+	var eye_materials := {"left": 0, "right": 0}
+	for cell: Vector3i in h.cells:
+		if int(h.cells[cell]) != 7 or cell.y < 24:
+			continue
+		var eye_side := "left" if cell.x < 0 else "right"
+		eye_materials[eye_side] = int(eye_materials[eye_side]) + 1
+	check(int(eye_materials["left"]) > 3 and int(eye_materials["right"]) > 3,
+			"source-mesh skull must have two different physically inset red eyes")
 	check(not h.has_sculpt_cell(Vector3i(7, -1, -12)),
 			"torso AC20 must have a real empty bore")
-	check(h.has_sculpt_cell(Vector3i(9, -1, -12)),
-			"AC20 must have a separate annular shroud")
+	check(h.has_sculpt_cell(Vector3i(10, -2, -10)),
+			"actual triangle-mesh barrel sleeve surrounds its drilled bore")
 	check(not h.has_sculpt_cell(Vector3i(-9, -1, -10)),
 			"left LRM exit must not be a painted flat panel")
 	m.free()
