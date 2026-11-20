@@ -112,7 +112,7 @@ against the book first:
    pilot skill multiplier applied). Our numbers land within about 10% of published values.
 8. Buildings follow the Core Rulebook's Threshold / Destroy Check system; careful
    entry, roofs and building fires are not modeled yet.
-9. 'Mech designs (38 in `data/units/`) are written from general knowledge: check armor
+9. 'Mech designs (44 in `data/units/`) are written from general knowledge: check armor
    split, slot placement and ammo locations against the technical readouts. The Core
    Rulebook has no designs or construction rules. Weapon tons, slots and ranges match its
    weapon tables; every design must add up to its tonnage (`DesignWeight`, engine weights

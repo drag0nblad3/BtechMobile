@@ -1,0 +1,16 @@
+{
+  "id": "quickdraw_qkd4g", "name": "Quickdraw", "model": "QKD-4G", "tonnage": 60,
+  "walk_mp": 5, "jump_mp": 5, "heat_sinks": 13, "sprite": "quickdraw",
+  "role": "Fast heavy all-rounder. Missiles and four lasers, two of them facing backward to punish anyone who gets behind it.",
+  "armor": {"HD": 9, "CT": 19, "LT": 14, "RT": 14, "LA": 12, "RA": 12, "LL": 17, "RL": 17},
+  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
+  "equipment": {
+    "LT": ["lrm10", "ammo:lrm10", "medium_laser@rear", "heat_sink", "jump_jet"],
+    "RT": ["srm4", "ammo:srm4", "medium_laser@rear", "heat_sink", "jump_jet"],
+    "LA": ["medium_laser"],
+    "RA": ["medium_laser"],
+    "CT": ["jump_jet"],
+    "LL": ["jump_jet", "heat_sink"],
+    "RL": ["jump_jet"]
+  }
+}

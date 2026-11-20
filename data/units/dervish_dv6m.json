@@ -1,0 +1,16 @@
+{
+  "id": "dervish_dv6m", "name": "Dervish", "model": "DV-6M", "tonnage": 55,
+  "walk_mp": 5, "jump_mp": 5, "heat_sinks": 10, "sprite": "dervish",
+  "role": "Medium fire-support 'Mech. Two LRM racks for range, with SRMs and lasers in the arms when the enemy closes. Jumps to find a firing spot.",
+  "armor": {"HD": 9, "CT": 20, "LT": 14, "RT": 14, "LA": 13, "RA": 12, "LL": 19, "RL": 19},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "equipment": {
+    "LT": ["lrm10", "ammo:lrm10", "jump_jet"],
+    "RT": ["lrm10", "ammo:lrm10", "jump_jet"],
+    "LA": ["srm2", "medium_laser"],
+    "RA": ["srm2", "medium_laser"],
+    "CT": ["ammo:srm2", "jump_jet"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

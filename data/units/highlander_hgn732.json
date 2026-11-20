@@ -1,0 +1,15 @@
+{
+  "id": "highlander_hgn732", "name": "Highlander", "model": "HGN-732", "tonnage": 90,
+  "walk_mp": 3, "jump_mp": 3, "heat_sinks": 13, "sprite": "highlander",
+  "role": "Jumping assault 'Mech. A Gauss rifle hits hard at long range for almost no heat, and it can drop on a foe from above.",
+  "armor": {"HD": 9, "CT": 42, "LT": 27, "RT": 27, "LA": 28, "RA": 28, "LL": 36, "RL": 36},
+  "rear_armor": {"CT": 13, "LT": 9, "RT": 9},
+  "missing_actuators": {"RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "RA": ["gauss_rifle"],
+    "RT": ["ammo:gauss_rifle", "ammo:gauss_rifle", "case", "heat_sink", "heat_sink", "jump_jet"],
+    "LT": ["lrm20", "ammo:lrm20", "ammo:lrm20", "srm6", "ammo:srm6", "case", "jump_jet"],
+    "LA": ["medium_laser", "heat_sink"],
+    "CT": ["jump_jet"]
+  }
+}
