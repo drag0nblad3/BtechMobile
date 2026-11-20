@@ -25,30 +25,35 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 
 static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit,
 		w: MountedWeapon, target: Unit, th: ToHit) -> void:
-	if w.def.uses_ammo() and not attacker.use_ammo(w.def):
+	var kind := WeaponModes.ammo_kind(w)
+	var shots := take_shots(attacker, w)
+	if shots == 0:
 		emit.call(GameEvent.WEAPON_FIRED, {"attacker_id": attacker.id, "target_id": target.id,
 				"weapon": w.def.name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
 				"hit": false, "no_ammo": true, "mods": th.mods, "missiles": 0})
 		return
 	w.fired = true
-	attacker.heat_generated += w.def.heat
+	attacker.heat_generated += w.def.heat * shots
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
-			"mods": th.mods, "missiles": 0}
+			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
 	if not hit:
+		if w.def.streak:  # no lock: it doesn't launch (p. 187)
+			attacker.heat_generated -= w.def.heat
+			attacker.refund_ammo(w.def, kind)
+			data["streak_held"] = true
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		return
 	var arc_id := FiringArc.arc(target.coord, target.facing, attacker.coord)
-	var packets: Array[int] = [w.def.damage]
-	if w.def.is_cluster():
-		var cr := dice.roll_2d6()
-		var n := ClusterTable.hits(w.def.missiles, cr)
-		data["missiles"] = n
-		data["cluster_roll"] = cr
-		packets = Damage.clusters(n * w.def.damage, w.def.group * w.def.damage)
+	var c := WeaponModes.cluster(w, shots, dice)
+	var packets: Array[int] = c["packets"]
+	if c["n"] > 0:
+		data["missiles"] = c["n"]
+		data["cluster_roll"] = c["roll"]
+		data["cluster_bonus"] = c.get("bonus", 0)
 	if w.def.heat_damage:  # flamers: the same amount as heat too (book p. 183)
 		data["heat_added"] = w.def.damage
 		target.outside_heat += w.def.damage
@@ -59,6 +64,18 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 			hl = HitTable.roll_kick(dice, arc_id)
 			hl["no_cover"] = true
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex)
+
+
+## Spends ammo for the shots this weapon fires; returns how many (0 = none).
+static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
+	var want := WeaponModes.shots(w)
+	if not w.def.uses_ammo():
+		return want
+	var kind := WeaponModes.ammo_kind(w)
+	var got := 0
+	while got < want and attacker.use_ammo(w.def, kind):
+		got += 1
+	return got
 
 
 ## Rolls a hit location and applies one packet of damage. `cover` is a hill

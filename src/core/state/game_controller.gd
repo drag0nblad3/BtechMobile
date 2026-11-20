@@ -85,6 +85,17 @@ func declare_physical(unit: Unit, attacks: Array) -> bool:
 
 ## Twists the torso one hexside left (-1), right (+1) or back (0) before
 ## declaring fire. Arms and torso weapons follow; leg weapons don't.
+## Ultra AC double fire or LB-X cluster ammo (WeaponModes), before declaring.
+func set_weapon_mode(unit: Unit, index: int, mode: String) -> bool:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or index < 0 or index >= unit.weapons.size():
+		return false
+	var w := unit.weapons[index]
+	if not WeaponModes.modes(w).has(mode):
+		return false
+	w.mode = mode
+	return true
+
+
 func set_torso_twist(unit: Unit, dir: int) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone:
 		return false

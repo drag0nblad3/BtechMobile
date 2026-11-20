@@ -60,9 +60,11 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
 		structure.append(StructureTable.points(def.tonnage, loc))
 	for m in def.weapon_mounts:
-		weapons.append(MountedWeapon.new(m["weapon"], m["loc"], m["rear"]))
+		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
+		mw.artemis = m.get("artemis", false)
+		weapons.append(mw)
 	for a in def.ammo_mounts:
-		ammo.append(AmmoBin.new(a["weapon"], a["loc"]))
+		ammo.append(AmmoBin.new(a["weapon"], a["loc"], a.get("kind", "")))
 	slots = CritLayout.build(def)
 
 
@@ -194,27 +196,35 @@ func torso_facing() -> int:
 	return Hex.rotate(facing, torso_twist)
 
 
-func ammo_for(w: WeaponDef) -> int:
+func ammo_for(w: WeaponDef, kind: String = "") -> int:
 	var n := 0
 	for a in ammo:
-		if a.weapon == w and not a.destroyed:
+		if a.weapon == w and a.kind == kind and not a.destroyed:
 			n += a.shots
 	return n
 
 
 ## Uses one shot, from the first bin that still has some. False if empty.
-func use_ammo(w: WeaponDef) -> bool:
+func use_ammo(w: WeaponDef, kind: String = "") -> bool:
 	for a in ammo:
-		if a.weapon == w and not a.destroyed and a.shots > 0:
+		if a.weapon == w and a.kind == kind and not a.destroyed and a.shots > 0:
 			a.shots -= 1
 			return true
 	return false
 
 
+## Puts back a shot that wasn't fired after all (a Streak that didn't lock).
+func refund_ammo(w: WeaponDef, kind: String = "") -> void:
+	for a in ammo:
+		if a.weapon == w and a.kind == kind and not a.destroyed:
+			a.shots += 1
+			return
+
+
 func can_fire(w: MountedWeapon) -> bool:
 	if sensor_hits >= 2 or w.destroyed or is_location_out(w.loc):
 		return false
-	return not w.def.uses_ammo() or ammo_for(w.def) > 0
+	return not w.def.uses_ammo() or ammo_for(w.def, WeaponModes.ammo_kind(w)) > 0
 
 
 func label() -> String:

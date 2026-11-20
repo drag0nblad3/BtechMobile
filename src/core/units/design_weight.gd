@@ -18,7 +18,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	var armor_pts := def.total_armor()
 	var weapons := 0.0
 	for m in def.weapon_mounts:
-		weapons += (m["weapon"] as WeaponDef).tons
+		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0)
 	return {
 		"structure": def.tonnage / 10.0,
 		"engine": engine_tons(rating),

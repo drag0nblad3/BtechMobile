@@ -58,7 +58,8 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	return u
 
 
-## Items: "<weapon id>", "<weapon id>@rear", "ammo:<weapon id>", "heat_sink", "jump_jet", "case".
+## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
+## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case".
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
 	if item == "case":
 		case_locs.append(loc)
@@ -70,14 +71,16 @@ func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
 		return
 	assert(weapons != null, "%s: equipment needs a WeaponDb" % id)
 	if item.begins_with("ammo:"):
-		var aw := weapons.get_def(item.substr(5))
+		var ap := item.substr(5).split(":")
+		var aw := weapons.get_def(ap[0])
 		assert(aw != null, "%s: unknown ammo %s" % [id, item])
-		ammo_mounts.append({"weapon": aw, "loc": loc})
+		ammo_mounts.append({"weapon": aw, "loc": loc, "kind": ap[1] if ap.size() > 1 else ""})
 		return
-	var parts := item.split("@")
+	var artemis := item.ends_with("+artemis")
+	var parts := item.trim_suffix("+artemis").split("@")
 	var w := weapons.get_def(parts[0])
 	assert(w != null, "%s: unknown weapon %s" % [id, item])
-	weapon_mounts.append({"weapon": w, "loc": loc, "rear": parts.size() > 1})
+	weapon_mounts.append({"weapon": w, "loc": loc, "rear": parts.size() > 1, "artemis": artemis})
 
 
 ## Running MP = walking MP x 1.5, rounded up.

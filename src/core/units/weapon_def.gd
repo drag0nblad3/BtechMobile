@@ -26,6 +26,9 @@ var indirect: bool     ## May fire without line of sight via a spotter (LRMs).
 var to_hit_mod: int    ## The weapon's own to-hit modifier (pulse lasers -2).
 var explodes: bool     ## Blows up on its first critical hit (Gauss rifles, p. 184).
 var ammo_explodes: bool = true  ## False for Gauss slugs.
+var rapid: int         ## Most shots in one attack (Ultra ACs 2), 0 = normal.
+var lbx: bool          ## LB-X: can fire cluster ammo.
+var streak: bool       ## Streak: all missiles hit, or it doesn't fire.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -51,6 +54,9 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.to_hit_mod = int(d.get("to_hit", 0))
 	w.explodes = bool(d.get("explodes", false))
 	w.ammo_explodes = bool(d.get("ammo_explodes", true))
+	w.rapid = int(d.get("rapid", 0))
+	w.lbx = bool(d.get("lbx", false))
+	w.streak = bool(d.get("streak", false))
 	return w
 
 

@@ -68,6 +68,8 @@ static func _weapon_line(u: Unit, w: MountedWeapon) -> String:
 			w.def.range_text()]
 	if w.def.uses_ammo():
 		line += " · ammo %d" % u.ammo_for(w.def)
+		if w.def.lbx:
+			line += " + %d cluster" % u.ammo_for(w.def, WeaponModes.CLUSTER)
 	if not u.can_fire(w):
 		return "[color=#888888][s]%s[/s][/color]\n" % line
 	return line + "\n"

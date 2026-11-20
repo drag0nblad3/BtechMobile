@@ -49,7 +49,8 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
  "equipment": {"RT": ["ac20", "ammo:ac20"], "CT": ["medium_laser@rear"], "LL": ["heat_sink"]}}
 ```
 - Location codes: `HD CT LT RT LA RA LL RL`. Internal structure comes from tonnage.
-- Equipment items: a weapon id (`@rear` for rear-firing), `ammo:<weapon id>` (one ton),
+- Equipment items: a weapon id (`@rear` for rear-firing, `+artemis` for a launcher with
+  Artemis IV), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
   `heat_sink`, `jump_jet`. They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine; list the rest as

@@ -1,0 +1,71 @@
+class_name WeaponModes
+extends RefCounted
+## Firing modes and cluster results for advanced weapons (pp. 182-192):
+## Ultra ACs may fire two shots as one attack (cluster column 2, a location
+## each); LB-X ACs may fire cluster ammo (-1 to hit, a 1-point pellet per
+## column hit, column = AC size); Streaks hit with every missile; Artemis IV
+## adds +2 to the cluster roll.
+## TODO(rules): the Core Rulebook has no Ultra AC jam; no ECM yet.
+
+const ULTRA := "ultra"
+const CLUSTER := "cluster"
+const ARTEMIS_BONUS := 2
+
+
+## Modes a player can pick for this weapon ("" is normal fire).
+static func modes(w: MountedWeapon) -> Array[String]:
+	if w.def.rapid > 1:
+		return ["", ULTRA]
+	if w.def.lbx:
+		return ["", CLUSTER]
+	return [""]
+
+
+static func next_mode(w: MountedWeapon) -> String:
+	var m := modes(w)
+	return m[(m.find(w.mode) + 1) % m.size()]
+
+
+static func shots(w: MountedWeapon) -> int:
+	return w.def.rapid if w.mode == ULTRA and w.def.rapid > 1 else 1
+
+
+static func ammo_kind(w: MountedWeapon) -> String:
+	return CLUSTER if w.mode == CLUSTER and w.def.lbx else ""
+
+
+static func to_hit_mod(w: MountedWeapon) -> int:
+	return -1 if ammo_kind(w) == CLUSTER else 0
+
+
+static func has_artemis(w: MountedWeapon) -> bool:
+	return w.artemis and not w.artemis_lost
+
+
+## Rolls (if needed) how much of a hit lands: {n, roll, packets}.
+## n is 0 for a plain single-packet weapon.
+static func cluster(w: MountedWeapon, fired: int, dice: Dice) -> Dictionary:
+	var d := w.def
+	if d.streak:
+		return {"n": d.missiles, "roll": 12, "packets": _packets(d.missiles * d.damage, d.group * d.damage)}
+	if fired > 1:
+		var r := dice.roll_2d6()
+		var n := ClusterTable.hits(fired, r)
+		var p: Array[int] = []
+		for i in n:
+			p.append(d.damage)
+		return {"n": n, "roll": r, "packets": p}
+	if ammo_kind(w) == CLUSTER:
+		var r2 := dice.roll_2d6()
+		var pellets := ClusterTable.hits(d.damage, r2)
+		return {"n": pellets, "roll": r2, "packets": _packets(pellets, 1)}
+	if d.is_cluster():
+		var r3 := dice.roll_2d6()
+		var bonus := ARTEMIS_BONUS if has_artemis(w) else 0
+		var m := ClusterTable.hits(d.missiles, r3 + bonus)
+		return {"n": m, "roll": r3, "bonus": bonus, "packets": _packets(m * d.damage, d.group * d.damage)}
+	return {"n": 0, "roll": 0, "packets": [d.damage] as Array[int]}
+
+
+static func _packets(total: int, size: int) -> Array[int]:
+	return Damage.clusters(total, size)
