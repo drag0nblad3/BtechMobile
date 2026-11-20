@@ -4,6 +4,7 @@ on:
     branches: [feature/atlas-mesh-first-v5]
     paths:
       - tools/capture_reference_v4.gd
+      - tools/export_atlas_source_obj.gd
       - src/view/units/voxel_surface_nets.gd
       - src/view/units/atlas_source_mesh.gd
       - src/view/units/atlas_mesh_voxelizer.gd
@@ -27,6 +28,17 @@ jobs:
           mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
       - name: Import model scripts
         run: godot --headless --import
+      - name: Export editable mesh source (no voxels)
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/atlas-source
+          godot --headless -s tools/export_atlas_source_obj.gd -- /tmp/atlas-source 2>&1 | tee atlas-mesh-export.log
+          [ "$(grep -c '^ATLAS_OBJ|' atlas-mesh-export.log)" -eq 9 ]
+          ! grep -E 'SCRIPT ERROR|Parse Error|ATLAS_OBJ_FAILED' atlas-mesh-export.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: atlas-original-editable-obj-meshes
+          path: /tmp/atlas-source/*.obj
       - name: Render actual voxel anatomy from branch
         run: |
           set -o pipefail
