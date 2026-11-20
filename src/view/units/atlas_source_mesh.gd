@@ -186,7 +186,7 @@ static func _torso(out: Array[Dictionary]) -> void:
 	# Angular, high-backed upper arm pauldrons: 3/4 view shows very
 	# different cross-section from the round V4 towers.
 	for side in [-1.0, 1.0]:
-		var x := side * 11.3
+		var x: float = float(side) * 11.3
 		_loft(out, "left-pauldron" if side < 0 else "right-pauldron", [
 			_ring(-0.8, 3.3, -4.5, 3.2, x),
 			_ring(2.3, 4.0, -5.1, 4.7, x + side * 0.6),
@@ -196,7 +196,7 @@ static func _torso(out: Array[Dictionary]) -> void:
 		_round_tube(out, "shoulder-pivot", side * 13.3, 0.0,
 				-0.9, 2.9, 1.6, 8)
 		# No horizontal T-bar: rear shoulders taper into shoulder sockets.
-		var bx := side * 9.0
+		var bx: float = float(side) * 9.0
 		_plate(out, "scapula-armor", [
 			Vector3(bx - 2.0, 0.5, 5.1), Vector3(bx - 2.2, 5.8, 4.5),
 			Vector3(bx + 1.2, 7.0, 4.2), Vector3(bx + 2.7, 2.0, 4.6)
