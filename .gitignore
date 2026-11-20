@@ -1,6 +1,8 @@
 .godot/
 /android/
+/build/
 *.apk
 *.aab
-export_presets.cfg
+*.keystore
+*.jks
 *.tmp

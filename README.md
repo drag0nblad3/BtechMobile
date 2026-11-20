@@ -14,7 +14,11 @@ paths with facing, and move. Sides alternate by initiative. Combat is next.
    - Mouse: left-drag pan, right-drag orbit/tilt, wheel zoom, click to select/move.
    - Touch: drag pan, pinch zoom, two-finger twist to orbit, two-finger drag to tilt,
      tap to select/move, double-tap to center the camera.
-3. Android: *Project → Install Android Build Template*, add an Android export preset, export.
+3. Android: the repo includes an **Android** export preset (`export_presets.cfg`). Set up the
+   Android SDK, JDK 17 and a debug keystore in *Editor Settings → Export → Android*, then
+   use *Project → Export* or the one-click deploy button with a phone plugged in. To get an
+   APK without a local setup, run the **Android APK** workflow by hand from the Actions tab.
+   See `docs/PLANNING.md` for details.
 
 ## Tests
 ```sh

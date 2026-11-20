@@ -38,7 +38,8 @@ Battle mode first; campaign layer later.
 | `data/` | `terrain.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `unit/test_*.gd` |
 | `tools/capture.gd` | Render the battle to PNG for visual checks |
-| `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md` |
+| `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |
+| `export_presets.cfg` | Android export preset; `.github/workflows/android.yml` builds an APK on manual run only |
 
 ## Commands
 ```sh
