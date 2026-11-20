@@ -102,7 +102,8 @@ BattleTech (Total Warfare, Standard level). Every uncertain point is marked
 against the book first:
 
 1. Firing-arc and attack-direction boundaries (front = three forward hexsides).
-2. Line of sight with hills and woods (simplified "higher than both" rule).
+2. Line of sight follows the book's LOS-level rules; divided LOS always picks the side
+   worse for the attacker (the defender's choice).
 3. Hit location, cluster, critical-hit and punch/kick tables.
 4. Heat scale thresholds, shutdown restart timing, which ammo bin explodes.
 5. Fall direction, fall pilot-damage roll, leg-loss movement.

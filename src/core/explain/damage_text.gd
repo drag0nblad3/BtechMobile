@@ -7,7 +7,8 @@ static func damage(s: GameState, d: Dictionary, level: int) -> String:
 	var who := Names.unit(s.unit_by_id(d["unit_id"]))
 	var loc := Location.name_of(d["loc"]) + (" (rear)" if d.get("rear", false) else "")
 	if d["covered"]:
-		return "  %d damage at %s's %s is absorbed by the water." % [d["amount"], who, loc]
+		return "  %d damage at %s's %s strikes the %s instead." % [d["amount"], who, loc,
+				"hill in front of it" if d.get("hill", false) else "water"]
 	var t := "  %s takes %d in the %s" % [who, d["amount"], loc]
 	if level != ExplainLevel.OFF:
 		var parts: Array[String] = []

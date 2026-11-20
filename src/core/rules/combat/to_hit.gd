@@ -7,6 +7,7 @@ extends RefCounted
 var mods: Array[Dictionary] = []
 var impossible: String = ""
 var spotter_id: int = -1  ## Indirect fire: the friendly 'Mech spotting.
+var cover_hex: Vector2i = Hex.INVALID  ## Hill or building giving partial cover: leg hits strike it.
 var auto_hit: String = ""  ## Why the shot can't miss (e.g. a building next door); target() is then 2.
 
 

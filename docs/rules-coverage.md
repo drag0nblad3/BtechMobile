@@ -38,9 +38,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Heat scale effects (MP, to-hit, shutdown, ammo explosion) — `TODO(rules)`: verify thresholds.
 
 ## Line of sight
-- 🟡 Hills block if higher than both units; woods count if at least as high as both;
-  3+ intervening woods points block — `TODO(rules)`: simplified, verify.
-- 🟡 Divided LOS (exactly along hexsides) picks one side — `TODO(rules)`.
+- ✅ LOS levels (p. 57): ground (water bottom) + 2 standing / 1 prone. A hex intervenes if its top (hill; woods +2; building roof) is at least both LOS levels, or at least the attacker's and next to it, or at least the target's and next to it. Intervening hills and buildings block; woods add 1/2 points, 3 block.
+- ✅ Divided LOS (along a hexside): the target's side chooses; the game takes the side worse for the attacker.
+- ✅ Partial cover from terrain (p. 66): a standing target next to a hex one level above its ground, on the line, gets +1 and leg hits strike the cover (a building takes the damage), unless the attacker's LOS level is higher; indirect fire ignores it; civilian buildings and woods give none.
 - 🟡 Units in depth 2+ water (or prone in depth 1) can't be seen — `TODO(rules)`: underwater combat.
 
 ## Weapon attacks
@@ -121,7 +121,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Collapse (pp. 136-137): rubble; a 'Mech inside takes half the Threshold per building level above it, 5-point groups from the front. No fall.
 - ✅ Shooting buildings (p. 135): -4, from the next hex always hits, cluster weapons hit with every missile.
 - ✅ Buildings block line of sight like a hill as tall as the roof.
-- 🟡 `TODO(rules)`: careful entry, roofs (landing, support limits), involuntary entry by displacement (Destroy Check), DFA into a level 1 building, partial cover from adjacent building hexes (with the LOS work), fire, Castles Brian.
+- 🟡 `TODO(rules)`: careful entry, roofs (landing, support limits), involuntary entry by displacement (Destroy Check), DFA into a level 1 building, fire, Castles Brian.
 - ⬜ Physical attacks on buildings, bridges as structures, basements.
 
 ## Pilots

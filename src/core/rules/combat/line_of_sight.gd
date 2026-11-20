@@ -1,68 +1,50 @@
 class_name LineOfSight
 extends RefCounted
-## Line of sight between two units, with the woods it passes through.
-## A 'Mech is two levels tall: its height is its floor level + 1 (prone: + 0).
-## TODO(rules): simplified classic rules. A hill blocks if it is higher than
-## both units; woods count if their top is at least as high as both units.
-## A building blocks like a hill as tall as its roof.
-## Divided LOS (line along hexsides) uses one side only (see Hex.line).
+## Line of sight between two units (book pp. 56-58, 66).
+## LOS level = the ground under a 'Mech (water: the bottom) + its height
+## (2 standing, 1 prone). A hex between them intervenes if its top (hill
+## level; woods +2; a building's roof) is at least both LOS levels, or at
+## least the attacker's and next to it, or at least the target's and next
+## to it. An intervening hill or building blocks; woods add 1 (light) or 2
+## (heavy) and 3 points block. Adjacent 'Mechs always see each other.
+## On a line along a hexside the target's side picks the hexes: we take the
+## side worse for the attacker.
+## Partial cover: a standing target next to a hex one level above its own
+## ground, on the line, unless the attacker's LOS level is higher.
 
 const WOODS_BLOCK := 3  ## Intervening woods points that block line of sight.
 
 
-## {blocked: bool, reason: String, woods: int (intervening points),
-##  light: int, heavy: int (counts of intervening woods hexes)}
+## {blocked, reason, woods (points), light, heavy (hex counts),
+##  cover: Vector2i (hex giving partial cover, or Hex.INVALID)}
 static func check(map: BattleMap, from: Unit, to: Unit) -> Dictionary:
-	var a := height_of(map, from)
-	var t := height_of(map, to)
-	var top := maxi(a, t)
-	var out := {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0}
 	if _submerged(map, from) or _submerged(map, to):
+		var out := _blank()
 		out["blocked"] = true
 		out["reason"] = "underwater"
 		return out
-	return _trace(map, from.coord, to.coord, top, out)
+	var t_floor := _floor(map, to.coord)
+	return _best(map, from.coord, to.coord, los_level(map, from), los_level(map, to),
+			t_floor if not to.prone else 999)
 
 
-## Line of sight from a unit to a hex whose top is at level `height` (e.g. a
-## building's roof). The target hex itself never blocks.
+## Line of sight from a unit to a building hex whose roof is at `height`.
 static func check_hex(map: BattleMap, from: Unit, c: Vector2i, height: int) -> Dictionary:
-	var out := {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0}
 	if _submerged(map, from):
+		var out := _blank()
 		out["blocked"] = true
 		out["reason"] = "underwater"
 		return out
-	return _trace(map, from.coord, c, maxi(height_of(map, from), height), out)
+	return _best(map, from.coord, c, los_level(map, from), height, 999)
 
 
-static func _trace(map: BattleMap, a: Vector2i, b: Vector2i, top: int, out: Dictionary) -> Dictionary:
-	var line := Hex.line(a, b)
-	for i in range(1, line.size() - 1):
-		var tile := map.get_tile(line[i])
-		if tile == null:
-			continue
-		if tile.level > top:
-			out["blocked"] = true
-			out["reason"] = "hill at %s" % Hex.label(tile.coord)
-			return out
-		if tile.building != null and tile.level + tile.building.height > top:
-			out["blocked"] = true
-			out["reason"] = "building at %s" % Hex.label(tile.coord)
-			return out
-		var w := woods_value(tile)
-		if w > 0 and tile.level + tile.terrain.los_height >= top:
-			out["woods"] += w
-			out["light" if w == 1 else "heavy"] += 1
-	if out["woods"] >= WOODS_BLOCK:
-		out["blocked"] = true
-		out["reason"] = "%d points of woods in the way" % out["woods"]
-	return out
+static func los_level(map: BattleMap, u: Unit) -> int:
+	return _floor(map, u.coord) + (1 if u.prone else 2)
 
 
+## Kept for callers that want the top level a 'Mech occupies.
 static func height_of(map: BattleMap, u: Unit) -> int:
-	var tile := map.get_tile(u.coord)
-	var floor_lvl := tile.floor_level() if tile else 0
-	return floor_lvl + (0 if u.prone else 1)
+	return los_level(map, u) - 1
 
 
 ## Woods to-hit value of a hex: light 1, heavy 2.
@@ -73,6 +55,60 @@ static func woods_value(tile: MapTile) -> int:
 		"heavy_woods":
 			return 2
 	return 0
+
+
+## Traces both sides of a divided line and keeps the one worse for the attacker.
+static func _best(map: BattleMap, a: Vector2i, b: Vector2i, a_lvl: int, b_lvl: int, cover_floor: int) -> Dictionary:
+	var r1 := _trace(map, Hex.line(a, b), a_lvl, b_lvl, cover_floor)
+	var alt := Hex.line(a, b, -1.0)
+	if alt == Hex.line(a, b):
+		return r1
+	var r2 := _trace(map, alt, a_lvl, b_lvl, cover_floor)
+	if r1["blocked"] != r2["blocked"]:
+		return r1 if r1["blocked"] else r2
+	if int(r1["woods"]) != int(r2["woods"]):
+		return r1 if int(r1["woods"]) > int(r2["woods"]) else r2
+	return r2 if r1["cover"] == Hex.INVALID else r1
+
+
+static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int, cover_floor: int) -> Dictionary:
+	var out := _blank()
+	var n := line.size()
+	for i in range(1, n - 1):
+		var tile := map.get_tile(line[i])
+		if tile == null:
+			continue
+		var next_a := i == 1
+		var next_b := i == n - 2
+		var ground := tile.level + (tile.building.height if tile.building != null else 0)
+		if _intervenes(ground, a_lvl, b_lvl, next_a, next_b):
+			out["blocked"] = true
+			out["reason"] = "%s at %s" % ["building" if tile.building != null else "hill", Hex.label(tile.coord)]
+			return out
+		var w := woods_value(tile)
+		if w > 0 and _intervenes(tile.level + tile.terrain.los_height, a_lvl, b_lvl, next_a, next_b):
+			out["woods"] += w
+			out["light" if w == 1 else "heavy"] += 1
+		if next_b and ground == cover_floor + 1 and a_lvl <= b_lvl \
+				and (tile.building == null or not tile.building.type.civilian):
+			out["cover"] = tile.coord
+	if out["woods"] >= WOODS_BLOCK:
+		out["blocked"] = true
+		out["reason"] = "%d points of woods in the way" % out["woods"]
+	return out
+
+
+static func _intervenes(top: int, a_lvl: int, b_lvl: int, next_a: bool, next_b: bool) -> bool:
+	return (top >= a_lvl and top >= b_lvl) or (next_a and top >= a_lvl) or (next_b and top >= b_lvl)
+
+
+static func _blank() -> Dictionary:
+	return {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0, "cover": Hex.INVALID}
+
+
+static func _floor(map: BattleMap, c: Vector2i) -> int:
+	var tile := map.get_tile(c)
+	return tile.floor_level() if tile else 0
 
 
 ## Fully under water (depth 2+, or depth 1 while prone).
