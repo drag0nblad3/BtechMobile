@@ -57,7 +57,8 @@ static func _loc_line(u: Unit, loc: int) -> String:
 	var full := StructureTable.points(d.tonnage, loc)
 	var s := "%d/%d" % [u.structure[loc], full]
 	var col := "#ffffff" if u.structure[loc] == full else "#ffb040"
-	return "%s  armor %s  ·  [color=%s]structure %s[/color]\n" % [Location.code(loc), a, col, s]
+	var wet := "  [color=#60b0ff]flooded[/color]" if u.flooded.get(loc, false) else ""
+	return "%s  armor %s  ·  [color=%s]structure %s[/color]%s\n" % [Location.code(loc), a, col, s, wet]
 
 
 static func _weapon_line(u: Unit, w: MountedWeapon) -> String:

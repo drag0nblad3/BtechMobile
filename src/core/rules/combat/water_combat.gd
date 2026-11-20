@@ -10,7 +10,8 @@ extends RefCounted
 ## underwater count one range bracket longer, and long range is out.
 ## Physical attacks can only reach an underwater 'Mech from underwater (or a
 ## kick from depth 1), and deal half damage to a submerged location.
-## TODO(rules): hull breaches; torpedoes.
+## Hull breaches: see HullBreach.
+## TODO(rules): torpedoes.
 
 enum Zone { DRY, WADING, UNDER }
 

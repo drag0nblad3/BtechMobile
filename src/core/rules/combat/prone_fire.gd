@@ -8,8 +8,8 @@ extends RefCounted
 
 ## Location of the propping arm, or -1 when no arm is left.
 static func prop_arm(u: Unit) -> int:
-	var la := not u.is_location_destroyed(Location.LA)
-	var ra := not u.is_location_destroyed(Location.RA)
+	var la := not u.is_location_out(Location.LA)
+	var ra := not u.is_location_out(Location.RA)
 	if la and ra:
 		return Location.LA if _arm_damage(u, Location.LA) <= _arm_damage(u, Location.RA) else Location.RA
 	if la:

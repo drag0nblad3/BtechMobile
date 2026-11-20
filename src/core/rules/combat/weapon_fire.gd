@@ -97,4 +97,5 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 			"steps": steps, "covered": false, "tac": hl["tac"]})
 	Damage.announce(emit, target)
 	HeadHit.check(dice, emit, target, steps)
+	HullBreach.after_damage(state, dice, emit, target, steps)
 	CriticalHits.after_damage(state, dice, emit, target, steps, hl["tac"])

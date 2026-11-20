@@ -36,6 +36,8 @@ static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: 
 		Damage.announce(emit, u)
 		HeadHit.check(dice, emit, u, steps)
 		CriticalHits.after_damage(state, dice, emit, u, steps, hl["tac"])
+		HullBreach.after_damage(state, dice, emit, u, steps)
+	HullBreach.check_exposed(state, emit, u)
 	if not u.destroyed:
 		seatbelt(dice, emit, u, levels)
 

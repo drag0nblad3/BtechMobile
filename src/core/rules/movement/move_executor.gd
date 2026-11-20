@@ -62,6 +62,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved)
+	HullBreach.check_exposed(state, emit, unit)
 	Psr.resolve_pending(state, dice, emit, unit)
 	unit.psr_pending.clear()
 	PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once

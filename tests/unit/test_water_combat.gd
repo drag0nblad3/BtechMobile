@@ -84,3 +84,38 @@ func test_physical_attacks_in_water() -> void:
 	t.prone = false
 	check_eq(WaterCombat.physical_damage(s.map, t, Location.CT, 9), 9, "wading: torso above water")
 	check_eq(WaterCombat.physical_damage(s.map, t, Location.LL, 9), 4, "legs under")
+
+
+func test_hull_breach_floods_a_leg() -> void:
+	var s := _state(["w0d1", "c0"])
+	var u := mech("hunchback_hbk4g", 0, hex_at(1, 0), 0, 1)
+	s.add_unit(u)
+	var events: Array = []
+	var emit := func(t: StringName, d: Dictionary) -> void: events.append(GameEvent.new(t, d))
+	var dice := LoadedDice.new()
+	dice.queue_2d6(9)  # holds
+	WeaponFire.hit_with(s, dice, emit, u, FiringArc.FRONT, 5, 2, "x", {"loc": Location.LL, "rear": false, "tac": false, "no_cover": true})
+	check(not u.flooded.get(Location.LL, false), "9 holds")
+	dice.queue_2d6(3)  # floods
+	WeaponFire.hit_with(s, dice, emit, u, FiringArc.FRONT, 5, 2, "x", {"loc": Location.LL, "rear": false, "tac": false, "no_cover": true})
+	check(u.flooded.get(Location.LL, false), "2-4 floods")
+	check_eq(u.legs_destroyed(), 1, "a flooded leg counts as destroyed")
+	check_eq(u.walk_mp(), 1)
+	dice.queue_2d6(9)
+	WeaponFire.hit_with(s, dice, emit, u, FiringArc.FRONT, 5, 2, "x", {"loc": Location.CT, "rear": false, "tac": false})
+	check(not events.any(func(e: GameEvent) -> bool: return e.type == GameEvent.HULL_BREACH and e.data["loc"] == Location.CT), "torso is above the water")
+	var txt := Explainer.text(events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.HULL_BREACH and e.data["flooded"])[0], s, ExplainLevel.FULL)
+	check(txt.contains("floods"), txt)
+
+
+func test_bare_torso_floods_with_its_arm() -> void:
+	var s := _state(["w0d2", "c0"])
+	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1), 0, 1)
+	s.add_unit(u)
+	u.armor[Location.LT] = 0
+	u.coord = hex_at(1, 0)
+	HullBreach.check_exposed(s, func(_t, _d): pass, u)
+	check(u.flooded.get(Location.LT, false) and u.flooded.get(Location.LA, false), "torso and its arm flood")
+	check(u.weapons.filter(func(w: MountedWeapon) -> bool: return w.loc == Location.LA and not u.can_fire(w)).size() == 1, "left arm laser is dead")
+	var hs: CritSlot = u.slots[Location.LT].filter(func(c: CritSlot) -> bool: return c.kind == CritSlot.Kind.HEAT_SINK)[0]
+	check_eq(CritEffects.apply(s, LoadedDice.new(), func(_t, _d): pass, u, Location.LT, hs), "already flooded: no further effect")

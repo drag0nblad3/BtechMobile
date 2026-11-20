@@ -20,7 +20,7 @@ static func standing_mods(u: Unit) -> ToHit:
 		th.add("leg destroyed", 4 * u.legs_destroyed(), "Balancing on one leg: +4.")
 	var act := 0
 	for loc in [Location.LL, Location.RL]:
-		if not u.is_location_destroyed(loc):
+		if not u.is_location_out(loc):
 			act += leg_actuator_mod(u, loc)
 	if act > 0:
 		th.add("leg actuators", act, "Each damaged hip, upper or lower leg actuator: +1.")

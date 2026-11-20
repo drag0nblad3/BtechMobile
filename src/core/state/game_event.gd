@@ -19,6 +19,7 @@ const AMMO_EXPLOSION := &"ammo_explosion" # {unit_id, loc, ammo, damage, steps}
 const PILOT_HIT := &"pilot_hit"           # {unit_id, hits, why}
 const CONSCIOUSNESS := &"consciousness"   # {unit_id, roll, need, conscious, was_conscious}
 const CRITICAL := &"critical"             # {unit_id, loc, slot, effect}
+const HULL_BREACH := &"hull_breach"     # {unit_id, loc, roll (0 bare, -1 spread), flooded, effects: [String]}
 const CRIT_CHECK := &"crit_check"         # {unit_id, loc, roll, crits}
 const PSR := &"psr"                       # {unit_id, roll, need, ok, reasons: [String], mods}
 const FALL := &"fall"                     # {unit_id, damage, levels}

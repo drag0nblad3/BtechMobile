@@ -68,6 +68,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return DamageText.damage(s, d, level)
 		GameEvent.BUILDING:
 			return TerrainText.building_event(s, d, level)
+		GameEvent.HULL_BREACH:
+			return DamageText.breach(s, d, level)
 		GameEvent.CRIT_CHECK:
 			return DamageText.crit_check(s, d, level)
 		GameEvent.CRITICAL:

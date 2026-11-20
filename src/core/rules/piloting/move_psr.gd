@@ -56,7 +56,7 @@ static func after_move(u: Unit, mode: int, hexes: int) -> void:
 		if u.gyro_hits > 0:
 			u.psr_pending.append({"reason": "landing a jump with a damaged gyro", "mod": 0})
 		for loc in [Location.LL, Location.RL]:
-			if u.is_location_destroyed(loc):
+			if u.is_location_out(loc):
 				u.psr_pending.append({"reason": "landing a jump on one leg", "mod": 0})
 			elif _leg_hits(u, loc) > 0:
 				u.psr_pending.append({"reason": "landing a jump on a damaged leg", "mod": 0})

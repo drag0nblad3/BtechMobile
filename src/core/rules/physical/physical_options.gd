@@ -35,7 +35,7 @@ static func _push(state: GameState, a: Unit, t: Unit) -> Dictionary:
 		th.impossible = "Can't push a 'Mech that is already down"
 	elif PhysicalMods.level_diff(state, a, t) != 0:
 		th.impossible = "Pushes need both 'Mechs on the same level"
-	elif a.is_location_destroyed(Location.LA) or a.is_location_destroyed(Location.RA):
+	elif a.is_location_out(Location.LA) or a.is_location_out(Location.RA):
 		th.impossible = "Pushing needs both arms"
 	elif PhysicalMods.limb_fired(a, Location.LA) or PhysicalMods.limb_fired(a, Location.RA):
 		th.impossible = "Both arms are needed; one fired a weapon"
@@ -62,7 +62,7 @@ static func _punch(state: GameState, a: Unit, t: Unit, arm: int) -> Dictionary:
 	var dl := PhysicalMods.level_diff(state, a, t)
 	var arc_id := FiringArc.fire_arc(a.coord, a.torso_facing(), t.coord)
 	var side := FiringArc.LEFT if arm == Location.LA else FiringArc.RIGHT
-	if a.is_location_destroyed(arm) or not a.has_working_actuator(arm, "shoulder"):
+	if a.is_location_out(arm) or not a.has_working_actuator(arm, "shoulder"):
 		th.impossible = "%s can't punch" % Location.name_of(arm)
 	elif arc_id != FiringArc.FRONT and arc_id != side:
 		th.impossible = "Target isn't in front of that arm"
