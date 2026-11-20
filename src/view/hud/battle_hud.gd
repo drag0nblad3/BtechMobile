@@ -11,6 +11,7 @@ signal top_down_toggled
 
 const FONT_SIZE := 26
 const BUTTON_SIZE := Vector2(150, 72)
+const MARGIN := 18
 
 var status: Label
 var info: Label
@@ -22,8 +23,9 @@ func _ready() -> void:
 	var root := MarginContainer.new()
 	root.set_anchors_preset(Control.PRESET_FULL_RECT)
 	root.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var safe := _safe_area_insets()
 	for side in ["left", "right", "top", "bottom"]:
-		root.add_theme_constant_override("margin_" + side, 18)
+		root.add_theme_constant_override("margin_" + side, MARGIN + safe[side])
 	add_child(root)
 	var col := VBoxContainer.new()
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -85,3 +87,21 @@ func _button(parent: Control, text: String, sig: Signal) -> Button:
 	b.pressed.connect(func(): sig.emit())
 	parent.add_child(b)
 	return b
+
+
+## Insets (in HUD pixels) that keep controls clear of notches, camera cutouts and
+## gesture bars on phones. All zero on desktop.
+func _safe_area_insets() -> Dictionary:
+	var out := {"left": 0, "right": 0, "top": 0, "bottom": 0}
+	if not OS.has_feature("mobile"):
+		return out
+	var screen := Vector2(DisplayServer.screen_get_size())
+	var safe := Rect2(DisplayServer.get_display_safe_area())
+	if screen.x <= 0.0 or screen.y <= 0.0 or safe.size.x <= 0.0:
+		return out
+	var to_hud := get_viewport().get_visible_rect().size / screen
+	out["left"] = ceili(safe.position.x * to_hud.x)
+	out["top"] = ceili(safe.position.y * to_hud.y)
+	out["right"] = ceili((screen.x - safe.end.x) * to_hud.x)
+	out["bottom"] = ceili((screen.y - safe.end.y) * to_hud.y)
+	return out
