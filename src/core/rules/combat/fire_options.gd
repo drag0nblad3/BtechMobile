@@ -39,6 +39,9 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 			continue
 		var th := ToHitCalc.weapon(state, attacker, attacker.weapons[wi], target,
 				target.id != primary)
+		var aim := int(s.get("aim", -1))
+		if aim >= 0 and th.possible() and AimedShot.problem(state, attacker.weapons[wi], target, aim, th) == "":
+			AimedShot.adjust(th, aim)
 		if not th.possible():
 			continue
 		used[wi] = true
@@ -72,6 +75,8 @@ static func summary(unit: Unit, decl: Array[Dictionary]) -> Array:
 				"target_id": d["target_id"], "need": d["to_hit"].target()}
 		if d.has("target_hex"):
 			sh["target_hex"] = d["target_hex"]
+		if d["to_hit"].aim_loc >= 0:
+			sh["aim"] = d["to_hit"].aim_loc
 		out.append(sh)
 	return out
 

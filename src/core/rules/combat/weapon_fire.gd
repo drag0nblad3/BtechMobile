@@ -54,12 +54,18 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]
 		data["cluster_bonus"] = c.get("bonus", 0)
+	var aimed := {}
+	if th.aim_loc >= 0:
+		aimed = AimedShot.location(dice, th, arc_id)
+		data["aim"] = th.aim_loc
+		data["aim_roll"] = aimed["aim_roll"]
+		data["aim_hit"] = aimed["aimed"]
 	if w.def.heat_damage:  # flamers: the same amount as heat too (book p. 183)
 		data["heat_added"] = w.def.damage
 		target.outside_heat += w.def.damage
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
-		var hl := {}
+		var hl := aimed.duplicate()
 		if th.legs_only:
 			hl = HitTable.roll_kick(dice, arc_id)
 			hl["no_cover"] = true

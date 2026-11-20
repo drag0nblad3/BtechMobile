@@ -57,7 +57,7 @@ Battle mode first; campaign layer later.
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check) |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `ProneMoves` (dropping prone, prone turning), `MoveExecutor` (carries out a move for the controller) |
-| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `WaterCombat` (water line, underwater ranges), `HullBreach`, `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion` (caps, CASE), `ComponentExplosion` (Gauss), `XlEngine` (side-torso engine slots), `WeaponModes` (Ultra/LB-X/Streak/Artemis), `CriticalHits`, `CritEffects`, `HeadHit` |
+| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `WaterCombat` (water line, underwater ranges), `HullBreach`, `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion` (caps, CASE), `ComponentExplosion` (Gauss), `XlEngine` (side-torso engine slots), `AimedShot` (immobile targets), `WeaponModes` (Ultra/LB-X/Streak/Artemis), `CriticalHits`, `CritEffects`, `HeadHit` |
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase`, `HeatShutdown` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs: on entering a hex or after the move), `Skid` (unused optional rule), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push, levels table), `PhysicalMods` (shared checks + modifiers), `Charge` (charge, DFA options), `ChargeResolve` (rolls, damage, displacement), `Displacement` (domino effect, ledges, off-map), `MeleeWeapons` (hatchet, sword, clubs), `PhysicalPhase` |
@@ -76,7 +76,7 @@ Battle mode first; campaign layer later.
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards) |
-| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackRows` (side-panel rows), `BotDriver` (runs computer sides), `BattleLaunch` |
+| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `BotDriver` (runs computer sides), `BattleLaunch` |
 | `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
