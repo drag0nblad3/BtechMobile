@@ -193,7 +193,13 @@ func hit_part(key: String, point: Vector3, radius: float = 0.23) -> int:
 		_damage_rng.randomize()
 		_damage_seeded = true
 	var seed := _damage_rng.randi()
-	var radius_jitter := radius * _damage_rng.randf_range(0.85, 1.15)
+	# Size impacts relative to the struck part so heavily armored torsos and
+	# missile housings develop broad visible patches of damage, not pinholes.
+	# Still clips strictly to this part's occupied cells.
+	var span: Vector3 = part._local_bounds.size
+	var largest := maxf(span.x, maxf(span.y, span.z))
+	var footprint := maxf(radius, clampf(largest * 0.27, 0.30, 0.49))
+	var radius_jitter := footprint * _damage_rng.randf_range(0.91, 1.13)
 	var removed := part.erase_irregular_ball(point, radius_jitter, seed)
 	var snapped := false
 	if removed > 0 and sockets.has(key):
