@@ -20,5 +20,13 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ⬜ Standing up, going prone, minimum movement, lateral shift (optional rule).
 - ⬜ Piloting skill rolls from movement (running in rough, skidding on pavement, etc.).
 
+## Record sheets
+- ✅ Internal structure by tonnage (standard structure).
+- ✅ Armor per location, rear armor on torsos, maximum armor check.
+- ✅ Critical slot layout: engine, gyro, cockpit, sensors, life support, actuators, equipment.
+- 🟡 Heat sinks: single only; `TODO(rules)`: 10 engine-integral for every design.
+- ⬜ Tonnage / construction validation (engine, armor and equipment weights).
+- 🟡 Heat scale effects (MP, to-hit, shutdown, ammo explosion) — `TODO(rules)`: verify thresholds.
+
 ## Combat
 - ⬜ Line of sight, to-hit modifiers, weapon attacks, damage, criticals, heat, physicals.

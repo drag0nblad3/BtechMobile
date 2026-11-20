@@ -1,8 +1,11 @@
 class_name UnitDef
 extends RefCounted
 ## Static unit design (one variant), loaded from data/units/<id>.json.
-## Armor, internals, weapons and heat sinks get added here as the
-## combat modules land; keep this class data-only.
+## Data only: runtime damage lives in Unit. See docs/data-formats.md.
+
+## Engine-integral heat sinks that take no critical slots.
+## TODO(rules): really engine rating / 25; 10 for every 'Mech here.
+const ENGINE_HEAT_SINKS := 10
 
 var id: String
 var name: String      ## e.g. "Atlas"
@@ -10,9 +13,22 @@ var model: String     ## e.g. "AS7-D"
 var tonnage: int
 var walk_mp: int
 var jump_mp: int
+var heat_sinks: int = 10
+var role: String = ""    ## One-line tactical summary for the force builder.
+var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
+var armor: Array[int] = []       ## Per Location, front.
+var rear_armor: Array[int] = []  ## Per Location (torsos only).
+## [{weapon: WeaponDef, loc: int, rear: bool}] in record-sheet order.
+var weapon_mounts: Array[Dictionary] = []
+## [{weapon: WeaponDef, loc: int}], one entry per ton of ammo.
+var ammo_mounts: Array[Dictionary] = []
+## Location -> Array[String] of other slot items ("heat_sink", "jump_jet").
+var other_items: Dictionary = {}
+## Location -> Array[String] of actuators the design lacks ("hand", ...).
+var missing_actuators: Dictionary = {}
 
 
-static func from_dict(d: Dictionary) -> UnitDef:
+static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	var u := UnitDef.new()
 	u.id = d["id"]
 	u.name = d["name"]
@@ -20,7 +36,40 @@ static func from_dict(d: Dictionary) -> UnitDef:
 	u.tonnage = int(d["tonnage"])
 	u.walk_mp = int(d["walk_mp"])
 	u.jump_mp = int(d.get("jump_mp", 0))
+	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
+	u.role = d.get("role", "")
+	u.sprite = d.get("sprite", "")
+	var arm: Dictionary = d.get("armor", {})
+	var rear: Dictionary = d.get("rear_armor", {})
+	for loc in Location.COUNT:
+		u.armor.append(int(arm.get(Location.code(loc), 0)))
+		u.rear_armor.append(int(rear.get(Location.code(loc), 0)))
+	for code: String in d.get("missing_actuators", {}):
+		u.missing_actuators[Location.from_code(code)] = d["missing_actuators"][code]
+	var eq: Dictionary = d.get("equipment", {})
+	for code: String in eq:
+		for item: String in eq[code]:
+			u._add_item(Location.from_code(code), item, weapons)
 	return u
+
+
+## Items: "<weapon id>", "<weapon id>@rear", "ammo:<weapon id>", "heat_sink", "jump_jet".
+func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
+	if item == "heat_sink" or item == "jump_jet":
+		if not other_items.has(loc):
+			other_items[loc] = []
+		other_items[loc].append(item)
+		return
+	assert(weapons != null, "%s: equipment needs a WeaponDb" % id)
+	if item.begins_with("ammo:"):
+		var aw := weapons.get_def(item.substr(5))
+		assert(aw != null, "%s: unknown ammo %s" % [id, item])
+		ammo_mounts.append({"weapon": aw, "loc": loc})
+		return
+	var parts := item.split("@")
+	var w := weapons.get_def(parts[0])
+	assert(w != null, "%s: unknown weapon %s" % [id, item])
+	weapon_mounts.append({"weapon": w, "loc": loc, "rear": parts.size() > 1})
 
 
 ## Running MP = walking MP x 1.5, rounded up.
@@ -30,3 +79,24 @@ func run_mp() -> int:
 
 func display_name() -> String:
 	return ("%s %s" % [name, model]).strip_edges()
+
+
+func weight_class() -> String:
+	if tonnage < 40:
+		return "Light"
+	if tonnage < 60:
+		return "Medium"
+	if tonnage < 80:
+		return "Heavy"
+	return "Assault"
+
+
+func total_armor() -> int:
+	var n := 0
+	for loc in Location.COUNT:
+		n += armor[loc] + rear_armor[loc]
+	return n
+
+
+func has_actuator(loc: int, actuator: String) -> bool:
+	return not missing_actuators.get(loc, []).has(actuator)

@@ -1,0 +1,17 @@
+{
+  "id": "catapult_cplt_c1", "name": "Catapult", "model": "CPLT-C1", "tonnage": 65,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 15, "sprite": "catapult",
+  "role": "Heavy fire support. Two long-range missile racks; weak inside 7 hexes (minimum range).",
+  "armor": {"HD": 9, "CT": 30, "LT": 22, "RT": 22, "LA": 20, "RA": 20, "LL": 26, "RL": 26},
+  "rear_armor": {"CT": 10, "LT": 8, "RT": 8},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "CT": ["medium_laser", "medium_laser"],
+    "LT": ["medium_laser", "ammo:lrm15", "heat_sink", "heat_sink", "jump_jet", "jump_jet"],
+    "RT": ["medium_laser", "ammo:lrm15", "heat_sink", "jump_jet", "jump_jet"],
+    "LA": ["lrm15"],
+    "RA": ["lrm15"],
+    "LL": ["heat_sink"],
+    "RL": ["heat_sink"]
+  }
+}
