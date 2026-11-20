@@ -24,6 +24,11 @@ jobs:
           godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
+      - name: Voxel mech lab smoke
+        run: |
+          set -o pipefail
+          godot --headless --quit-after 45 --scene res://scenes/voxel_mech_lab.tscn 2>&1 | tee voxel.log
+          ! grep -E "SCRIPT ERROR|Parse Error" voxel.log
       - name: Smoke run main scene
         run: |
           godot --headless --quit-after 30 2>&1 | tee run.log
