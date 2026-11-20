@@ -51,17 +51,15 @@ geometry profiles without changing the core rules. CI also captures
 
 ## High-fidelity voxel pass (03)
 
-- **Jenner JR7-D:** selectable chassis profile now uses a genuine **37.5 mm**
-  voxel lattice, compared with the standard 75 mm cells. Resolution is 2× per
-  dimension (up to roughly 8× the original occupied cell count), plus fine
-  one-voxel canopy seams, micro-bevels, engine vents and piston color accents.
-  Shape is unchanged at mech scale; tiny details are genuinely detachable
-  cells, not texture-only decorations.
-- **Atlas AS7-D** now has **119,132 real voxels**, including a 25 mm hull and
-  37.5 mm arms and legs, with recessed armor and cockpit details.
-  **Catapult CPLT-C1** has **107,264 real voxels**, including 25 mm LRM pod
-  surfaces and a 37.5 mm hull, with fifteen recessed launch tubes per pod.
-  The test mech, Hunchback and Wolverine remain at 75 mm until refined.
+- **Jenner JR7-D:** now mixes genuine **25 mm** cockpit and laser-pod cells
+  with 37.5 mm digitigrade leg geometry. Its forward canopy, four SRM ports,
+  separate twin laser emitters per side, engine grilles and piston channels
+  all have true microgeometry and damageable cells, not texture-only accents.
+- **Atlas AS7-D** now has **119,114 real voxels**, including a 25 mm torso
+  with dark inset visor, layered cheek armor and rear cooling recesses.
+  **Catapult CPLT-C1** has **108,080 real voxels**, including 25 mm LRM pods
+  with fifteen truly recessed missile tubes per side, and a 37.5 mm hull.
+  The other chassis are also individually sculpted at 25/37.5 mm; see below.
   The `voxel_part_detail` setting can override the chassis's `voxel_detail`
   for especially detailed parts; the rest of the chassis keeps its planned
   physical proportions. The above counts are from a headless Godot run.
@@ -87,6 +85,44 @@ To avoid generating unsolicited previews, GitHub CI renders screenshots only
 when started explicitly with **Actions → CI → Run workflow**. Normal push and
 pull-request checks still run unit tests and headless scene smokes.
 
+## Sculpted six-chassis roster (05)
+
+The reference for this pass is Claude's Catapult: real, separately modeled
+weapons, layered armor, actual negative-space ports and structural machinery.
+All six procedural **Voxel Mech Lab** models now contain over 100,000 **actual
+occupied voxel cells** and remain below 150,000. These are mesh-free Godot
+geometry measurements after the material, bevel and cavity sculpting passes:
+
+| Visual chassis | Occupied voxels | Recognizable 3D features |
+| --- | ---: | --- |
+| Original test mech | 132,577 | Split sensor canopy, twin raised engine banks, hollow test cannon, dorsal antenna, piston joints |
+| Atlas AS7-D | 119,114 | 25 mm skull-like cockpit, layered cheek plates, inset eye glazing, shoulders, heat-exchanger recesses |
+| Hunchback HBK-4G | 147,655 | Off-center canopy, massive **hollow** right-shoulder AC/20, recoil rails, separate manipulator, rear vents |
+| Wolverine WVR-6R | 149,578 | Swept cockpit and shoulder cowlings, six genuinely recessed SRM tubes, **bored** right-arm autocannon, left hand |
+| Jenner JR7-D | 122,212 | Fine wraparound windshield, four-port SRM, two independent laser muzzles per side, digitigrade piston channels |
+| Catapult CPLT-C1 | 108,080 | Distinct cockpit and jet housings, two detailed 15-tube LRM racks with physical cavities, exposed hock linkages |
+
+The counts are not display multipliers or more precise destruction pixels.
+`VoxelRosterSculpt` authors distinct 3D hull/limb/weapon structures *before*
+sealing each part, then adds 25/37.5 mm grooves, frames and exposed mechanisms
+after voxel subdivision. Real gaps stay empty and are ray-pickable; hidden
+interior voxels are still culled from the surface mesh. Existing armor versus
+structure material roles agree with Claude's JSON modeling conventions.
+Gait IK and all official game combat rules remain unchanged.
+
+The 25 mm voxels are concentrated in high-value regions: most cockpit
+hulls, the Jenner's laser muzzles and the Catapult's missile racks. Outer legs
+and less detailed weapon surfaces usually retain 37.5 mm cells. This preserves
+the recognizable silhouette and helps contain CPU/GPU rebuild cost. **The
+geometry is still experimental**: no render previews were requested, and
+mobile FPS, memory footprint and heat remain unmeasured.
+
+For actual geometry rather than estimated budgets, run
+`godot --headless -s tools/voxel_count_report.gd`. This reports each model
+and all individual part totals, with no rendering or APK export. The roster
+regression tests require **100,001–150,000 real occupied cells per model** and
+check visible features such as carved weapon bores, SRM ports and vents.
+
 ## Selectable 20/60-mech performance stress test (04)
 
 The **Voxel Mech Lab** has a touch-sized **COUNT: 20** button. Tap it to toggle
@@ -95,14 +131,14 @@ The count selector locks during the run; **STOP / CLEAR** cancels even while the
 models are still spawning, releases the loaded models, and unlocks selection.
 
 The test computes real voxel counts and always selects the highest-detail
-available chassis (currently **Atlas AS7-D, 119,132 occupied voxels**).
+available chassis (currently **Wolverine WVR-6R, 149,578 occupied voxels**).
 It creates actual destructible meshes **one per frame** to spread loading cost:
 
 - **20:** centered 5×4 formation, 3.65 m spacing, 31.5 m camera fit and
-  **2,382,640 initial occupied voxels** with the current Atlas.
+  **2,991,560 initial occupied voxels** with the current Wolverine.
 - **60:** centered 8-column formation spanning eight rows (four mechs centered
   in the final row), same 3.65 m spacing, 52 m camera fit and
-  **7,147,920 initial occupied voxels** with the current Atlas.
+  **8,974,680 initial occupied voxels** with the current Wolverine.
 
 The arena has a **36×36 m** ground plane and grid, with room for either
 formation and its outermost mech armor. All models stand still to isolate
@@ -120,7 +156,7 @@ remaining voxels. Average/minimum sampling begins only after loading finishes.
 with mouse wheel and touch pinch. Stress camera zoom ranges from 7–58 m for
 20 models and 7–90 m for 60. Single-finger orbit still works.
 
-**60 full-detail Atlases may overwhelm mobile RAM, GPU resources, or CPU**,
+**60 full-detail Wolverines may overwhelm mobile RAM, GPU resources, or CPU**,
 particularly on older phones. This is deliberate device stress testing—not
 a performance promise. You can stop partway through loading. The CI smoke
 checks a **partial 60-mech load and cancellation**, then a **full 20-mech
