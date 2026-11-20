@@ -27,12 +27,7 @@ static func torso(part: VoxelPart, shape: String) -> void:
 			part.fill_box(Vector3i(-2, 5, -4), Vector3i(1, 6, -4), 2)
 			part.fill_box(Vector3i(-8, -4, 3), Vector3i(-6, 1, 5), 5)
 		"jenner":
-			part.armor_box(Vector3i(-6, -4, -4), Vector3i(5, 3, 3), 0, 1)
-			part.fill_box(Vector3i(-4, 2, -7), Vector3i(3, 5, -3), 4)
-			part.fill_box(Vector3i(-3, 3, -8), Vector3i(2, 4, -8), 2)
-			part.fill_box(Vector3i(-5, -3, -6), Vector3i(4, -2, -5), 0)
-			part.fill_box(Vector3i(-7, 1, 0), Vector3i(-6, 3, 3), 5)
-			part.fill_box(Vector3i(5, 1, 0), Vector3i(6, 3, 3), 5)
+			VoxelJennerArt.torso(part)
 		"catapult":
 			part.armor_box(Vector3i(-6, -5, -4), Vector3i(5, 4, 5), 0, 1)
 			part.fill_box(Vector3i(-4, -1, -9), Vector3i(3, 2, -5), 4)
@@ -63,10 +58,7 @@ static func arm(part: VoxelPart, style: String, side: int) -> void:
 			part.armor_box(Vector3i(-3, -7, -3), Vector3i(3, 1, 3), 0, 1)
 			part.fill_box(Vector3i(-2, -7, -7), Vector3i(2, -5, -4), 1)
 		"lasers":
-			part.armor_box(Vector3i(-3, -4, -3), Vector3i(3, 1, 3), 4, 1)
-			for x in [-2, 1]:
-				part.fill_box(Vector3i(x, -4, -9), Vector3i(x + 1, -3, -4), 1)
-				part.fill_box(Vector3i(x, -4, -10), Vector3i(x + 1, -3, -10), 2)
+			VoxelJennerArt.arm(part, side)
 		"missile_pods":
 			part.armor_box(Vector3i(-5, -3, -5), Vector3i(5, 5, 4), 4, 1)
 			part.fill_box(Vector3i(-4, -2, -7), Vector3i(4, 4, -6), 1)
