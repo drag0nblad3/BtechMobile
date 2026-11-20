@@ -100,6 +100,11 @@ static func _atlas(p: VoxelPart) -> void:
 		for yy in [-1, 1, 3]:
 			p.carve_box(Vector3i(-12 if side < 0 else 7, yy, 10),
 					Vector3i(-7 if side < 0 else 12, yy, 11))
+	# Curved breastplate halves project forward of the hull and meet at a
+	# true recessed sternum. The old model was a featureless vertical slab.
+	for side in [-1, 1]:
+		ellipsoid(p, Vector3(float(side) * 4.3, -1.1, -6.6),
+				Vector3(4.0, 4.2, 2.4), 4, 0)
 	# Dark recessed spinal split, neck hinge and layered pectorals.
 	p.fill_box(Vector3i(-1, -6, -8), Vector3i(0, 2, -7), 1)
 	for y in [-5, -1]:
@@ -148,7 +153,7 @@ static func _hunchback(p: VoxelPart) -> void:
 	hull(p, -8, 3, Vector2(5.4, 5.0), Vector2(8.6, 6.1), 0)
 	# Hunchback's silhouette is deliberately *uneven*: great right-shoulder
 	# autocannon box vs tiny cockpit tucked into the left side.
-	ellipsoid(p, Vector3(7.3, 5.7, 0), Vector3(6.0, 5.8, 5.6), 4)
+	ellipsoid(p, Vector3(7.3, 5.7, 0), Vector3(5.6, 5.5, 5.4), 4)
 	ellipsoid(p, Vector3(-7.8, 0.6, 1), Vector3(4.5, 4.8, 5.1), 0)
 	ellipsoid(p, Vector3(-3.0, 5.7, -4.0), Vector3(3.8, 3.6, 3.9), 4)
 	p.fill_box(Vector3i(-5, 5, -8), Vector3i(-2, 6, -7), 2)
@@ -278,6 +283,9 @@ static func arm(p: VoxelPart, shape: String, side: int) -> void:
 	for x in [-3, 0, 3]:
 		ellipsoid(p, Vector3(float(x), -11.1, -3.6),
 				Vector3(1.35, 2.0, 2.0), 4, 8)
+	# Real gaps between separately armored knuckles.
+	for x in [-1, 2]:
+		p.carve_box(Vector3i(x, -13, -6), Vector3i(x, -11, -4))
 	for x in [-5, 4]:
 		p.fill_box(Vector3i(x, -8, 2), Vector3i(x, -3, 3), 1)
 	if shape == "atlas":
