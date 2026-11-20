@@ -37,6 +37,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	if not jenner:
 		VoxelRosterSculpt.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
 	VoxelAnatomyV2.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
+	VoxelSilhouetteV3.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
 	thigh.seal(-3)
 	rig["parts"][key] = thigh
 	rig["sockets"][key] = hip
@@ -54,6 +55,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	if not jenner:
 		VoxelRosterSculpt.leg(shin, str(profile.get("shape", "prototype")), "shin")
 	VoxelAnatomyV2.leg(shin, str(profile.get("shape", "prototype")), "shin")
+	VoxelSilhouetteV3.leg(shin, str(profile.get("shape", "prototype")), "shin")
 	shin.seal()
 	rig["parts"][key + "_shin"] = shin
 	rig["sockets"][key + "_shin"] = knee
@@ -91,6 +93,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	if not jenner:
 		VoxelRosterSculpt.leg(foot, str(profile.get("shape", "prototype")), "foot")
 	VoxelAnatomyV2.leg(foot, str(profile.get("shape", "prototype")), "foot")
+	VoxelSilhouetteV3.leg(foot, str(profile.get("shape", "prototype")), "foot")
 	foot.seal()
 	rig["parts"][key + "_foot"] = foot
 
