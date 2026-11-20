@@ -24,6 +24,8 @@ var has_preview := false
 func on_hex_tapped(c: Vector2i) -> void:
 	if units_layer.is_busy() or controller.state.phase != Phase.Kind.MOVEMENT:
 		return
+	if controller.state.game_over:
+		return
 	var u := controller.state.unit_at(c)
 	if u and u != selected and controller.pending_units().has(u):
 		_select(u)
@@ -121,5 +123,11 @@ func _refresh() -> void:
 	hud.set_mode_label(MoveMode.name_of(mode))
 	var spent: int = options.cost[preview] if has_preview else 0
 	var where := Hex.label(MoveOptions.coord_of(preview)) if has_preview else "-"
-	hud.set_info("%s  |  %s %d/%d MP  |  to %s" % [selected.def.display_name(),
-			MoveMode.name_of(mode), spent, options.budget, where])
+	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s" % [selected.def.display_name(),
+			MoveMode.name_of(mode), spent, options.budget, where,
+			"  |  prone: standing costs 2 MP and a roll" if selected.prone else ""])
+	if has_preview:
+		hud.set_tip(Advisor.move(controller.state, selected, mode, preview, options,
+				GameSettings.explain_level))
+	else:
+		hud.set_tip("Tap a highlighted hex to preview the move." if GameSettings.explain_level != ExplainLevel.OFF else "")

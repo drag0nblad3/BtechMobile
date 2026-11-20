@@ -3,6 +3,9 @@
 ## `data/terrain.json`
 `{"terrain": [{"id", "token" (1 char), "name", "move_cost", "los_height"?, "water"?, "color", "detail_color"}]}`
 
+Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
+`p` pavement, `w` water.
+
 ## `data/maps/<id>.json`
 ```json
 {"name": "Test Valley", "rows": ["c0 L1 H2 r0 p0 w0d1 ..."]}

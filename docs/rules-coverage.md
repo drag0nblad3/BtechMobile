@@ -101,3 +101,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Advice: move preview (defense gained vs own penalty and heat, walk-vs-run, rear arcs),
   volley (expected damage, heat after the turn, which weapon to hold), best target,
   punch vs kick (including the chance of falling after a missed kick).
+
+## Force building and play
+- ✅ Two sides, up to 4 'Mechs each, tonnage budget (100-400 t); deploy on opposite edges.
+- 🟡 Balance by tonnage only — `TODO(rules)`: Battle Value.
+- ✅ Hot-seat play (both sides on one device). ⬜ Bot opponent.
+- ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
