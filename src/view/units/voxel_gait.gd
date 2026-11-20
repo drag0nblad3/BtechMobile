@@ -4,7 +4,7 @@ extends RefCounted
 
 const CYCLE_SECONDS := 1.30
 const STANCE_FRACTION := 0.60
-const STRIDE := 0.80
+const STRIDE := 1.10
 const THIGH := 0.70
 const SHIN := 0.70
 const ANKLE_HEIGHT := 0.12
