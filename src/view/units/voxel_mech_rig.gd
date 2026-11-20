@@ -102,7 +102,8 @@ static func add_arm(upper: Node3D, rig: Dictionary, side: int,
 	upper.add_child(shoulder)
 	rig["arms"].append(shoulder)
 	var arm := _new_part(shoulder, key, profile, detail, meshes)
-	VoxelMechArt.arm(arm, str(profile.get("arm", "standard")), side)
+	VoxelMechArt.arm(arm, str(profile.get("arm", "standard")), side,
+			str(profile.get("shape", "prototype")))
 	rig["parts"][key] = arm
 	rig["sockets"][key] = shoulder
 
