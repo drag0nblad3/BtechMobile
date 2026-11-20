@@ -27,6 +27,12 @@ func test_20_targets_have_distinct_grid_slots() -> void:
 		check(absf(pos.z) <= 1.5 * VoxelStressTest.GRID_SPACING + 0.01,
 				"model outside floor depth")
 	check_eq(slots.size(), 20, "grid must reserve exactly twenty distinct positions")
+	check(VoxelStressTest.GRID_SPACING >= 5.0,
+			"high-detail Atlas shoulders should not overlap neighboring mechs")
+	check(absf(VoxelStressTest.grid_position(0).x) <= 11.0,
+			"leftmost Atlas should remain inside expanded hangar")
+	check(absf(VoxelStressTest.grid_position(19).z) <= 8.0,
+			"rearmost Atlas should remain inside expanded hangar")
 
 
 func test_surface_sampler_returns_an_actual_exposed_voxel() -> void:
