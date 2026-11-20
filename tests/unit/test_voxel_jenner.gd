@@ -7,15 +7,15 @@ func test_jenner_forward_cockpit_and_center_srm() -> void:
 	mech.profile_id = "jenner_jr7d"
 	mech.build()
 	var torso: VoxelPart = mech.parts["torso"]
-	check_eq(torso.cells.get(Vector3i(0, 2, -15)), 2,
+	check_eq(torso.sculpt_material(Vector3i(0, 2, -15)), 2,
 			"forward canopy should have cyan glazing")
-	check(torso.cells.has(Vector3i(0, -1, -17)),
+	check(torso.has_sculpt_cell(Vector3i(0, -1, -17)),
 			"forward nose should extend beyond body")
 	for x in [-2, 1]:
 		for y in [3, 5]:
-			check_eq(torso.cells.get(Vector3i(x, y, -7)), 3,
+			check_eq(torso.sculpt_material(Vector3i(x, y, -7)), 3,
 					"SRM4 must have four distinct launch openings")
-	check(torso.cells.has(Vector3i(-5, 0, 8)),
+	check(torso.has_sculpt_cell(Vector3i(-5, 0, 8)),
 			"rear deck should have external exhaust housings")
 	mech.free()
 
@@ -26,9 +26,9 @@ func test_jenner_has_four_distinct_laser_apertures() -> void:
 	mech.build()
 	for key in ["left_arm", "right_arm"]:
 		var pod: VoxelPart = mech.parts[key]
-		check_eq(pod.cells.get(Vector3i(0, -2, -11)), 2,
+		check_eq(pod.sculpt_material(Vector3i(0, -2, -11)), 2,
 				key + " should have lower laser aperture")
-		check_eq(pod.cells.get(Vector3i(0, 1, -11)), 2,
+		check_eq(pod.sculpt_material(Vector3i(0, 1, -11)), 2,
 				key + " should have upper laser aperture")
 	mech.free()
 
@@ -40,10 +40,10 @@ func test_jenner_has_three_independent_toe_tips() -> void:
 	for key in ["left_leg_foot", "right_leg_foot"]:
 		var foot: VoxelPart = mech.parts[key]
 		for x in [-3, 0, 3]:
-			check(foot.cells.has(Vector3i(x, -2, -9)), "missing " + key + " toe")
-		check(not foot.cells.has(Vector3i(-1, -2, -9)),
+			check(foot.has_sculpt_cell(Vector3i(x, -2, -9)), "missing " + key + " toe")
+		check(not foot.has_sculpt_cell(Vector3i(-1, -2, -9)),
 				"first toe gap must remain open")
-		check(not foot.cells.has(Vector3i(2, -2, -9)),
+		check(not foot.has_sculpt_cell(Vector3i(2, -2, -9)),
 				"second toe gap must remain open")
 	mech.free()
 
@@ -67,14 +67,14 @@ func test_jenner_has_protruding_beveled_canopy_and_open_joint_details() -> void:
 	mech.profile_id = "jenner_jr7d"
 	mech.build()
 	var torso: VoxelPart = mech.parts["torso"]
-	check(torso.cells.has(Vector3i(0, 0, -21)), "nose must project ahead")
-	check(not torso.cells.has(Vector3i(-3, 0, -21)), "nose tip must taper")
-	check_eq(torso.cells.get(Vector3i(0, 0, -21)), 2, "front glass must wrap around")
+	check(torso.has_sculpt_cell(Vector3i(0, 0, -21)), "nose must project ahead")
+	check(not torso.has_sculpt_cell(Vector3i(-3, 0, -21)), "nose tip must taper")
+	check_eq(torso.sculpt_material(Vector3i(0, 0, -21)), 2, "front glass must wrap around")
 	var thigh: VoxelPart = mech.parts["left_leg"]
 	var shin: VoxelPart = mech.parts["left_leg_shin"]
-	check(thigh.cells.has(Vector3i(0, -11, 0)), "Jenner femur must reach knee")
-	check(shin.cells.has(Vector3i(0, -11, 0)), "Jenner shin must reach hock")
-	check(not shin.cells.has(Vector3i(5, -6, 0)), "open side channel needed")
+	check(thigh.has_sculpt_cell(Vector3i(0, -11, 0)), "Jenner femur must reach knee")
+	check(shin.has_sculpt_cell(Vector3i(0, -11, 0)), "Jenner shin must reach hock")
+	check(not shin.has_sculpt_cell(Vector3i(5, -6, 0)), "open side channel needed")
 	mech.free()
 
 
@@ -141,16 +141,16 @@ func test_jenner_cockpit_roof_is_chamfered() -> void:
 	mech.profile_id = "jenner_jr7d"
 	mech.build()
 	var hull: VoxelPart = mech.parts["torso"]
-	check(hull.cells.has(Vector3i(0, 2, -16)), "canopy center roof must be solid")
-	check(not hull.cells.has(Vector3i(-3, 2, -16)),
+	check(hull.has_sculpt_cell(Vector3i(0, 2, -16)), "canopy center roof must be solid")
+	check(not hull.has_sculpt_cell(Vector3i(-3, 2, -16)),
 			"left canopy corner needs a chamfer")
-	check(not hull.cells.has(Vector3i(2, 2, -16)),
+	check(not hull.has_sculpt_cell(Vector3i(2, 2, -16)),
 			"right canopy corner needs a chamfer")
-	check(hull.cells.has(Vector3i(0, 3, 0)),
+	check(hull.has_sculpt_cell(Vector3i(0, 3, 0)),
 			"engine deck must have an intact center roof")
-	check(not hull.cells.has(Vector3i(-5, 3, 0)),
+	check(not hull.has_sculpt_cell(Vector3i(-5, 3, 0)),
 			"engine corner should slope away from center roof")
-	check_eq(hull.cells.get(Vector3i(-5, 1, 6)), 1,
+	check_eq(hull.sculpt_material(Vector3i(-5, 1, 6)), 1,
 			"recessed roof cooling well should expose the dark underlying core")
 	mech.free()
 
@@ -161,17 +161,17 @@ func test_jenner_exposes_actual_hock_linkage_with_open_channels() -> void:
 	mech.build()
 	var shin: VoxelPart = mech.parts["left_leg_shin"]
 	var hock: VoxelPart = mech.parts["left_leg_metatarsal"]
-	check(not shin.cells.has(Vector3i(-2, -7, 0)),
+	check(not shin.has_sculpt_cell(Vector3i(-2, -7, 0)),
 			"shin outer channel must remain empty")
-	check(not shin.cells.has(Vector3i(2, -7, 0)),
+	check(not shin.has_sculpt_cell(Vector3i(2, -7, 0)),
 			"opposite shin outer channel must remain empty")
-	check(shin.cells.has(Vector3i(0, -7, 0)),
+	check(shin.has_sculpt_cell(Vector3i(0, -7, 0)),
 			"core strut must bridge both joints")
-	check_eq(shin.cells.get(Vector3i(0, -7, 3)), 1,
+	check_eq(shin.sculpt_material(Vector3i(0, -7, 3)), 1,
 			"rear-facing piston should stay exposed")
-	check(not hock.cells.has(Vector3i(-2, -3, 0)),
+	check(not hock.has_sculpt_cell(Vector3i(-2, -3, 0)),
 			"hock fork needs real negative space")
-	check(hock.cells.has(Vector3i(0, -3, 0)),
+	check(hock.has_sculpt_cell(Vector3i(0, -3, 0)),
 			"hock center linkage must stay connected")
 	mech.free()
 
@@ -183,10 +183,10 @@ func test_jenner_tapered_toes_have_separate_endpoints() -> void:
 	for key in ["left_leg_foot", "right_leg_foot"]:
 		var foot: VoxelPart = mech.parts[key]
 		for x in [-3, 0, 3]:
-			check(foot.cells.has(Vector3i(x, -2, -11)),
+			check(foot.has_sculpt_cell(Vector3i(x, -2, -11)),
 					"toe is missing its narrowed end: " + key)
 		for x in [-2, -1, 1, 2, 4]:
-			check(not foot.cells.has(Vector3i(x, -2, -11)),
+			check(not foot.has_sculpt_cell(Vector3i(x, -2, -11)),
 					"toe tips must not fuse to adjacent prongs")
 	mech.free()
 
