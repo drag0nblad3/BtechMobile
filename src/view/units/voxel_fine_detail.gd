@@ -45,11 +45,11 @@ static func _torso(part: VoxelPart) -> void:
 static func _laser_pod(part: VoxelPart) -> void:
 	# A finer two-tone muzzle shroud and vents between the two barrels.
 	for y in [-4, 2]:
-		part.paint_box(Vector3i(-3, y, -22), Vector3i(2, y, -22), 2)
-		part.paint_box(Vector3i(-5, y + 1, -19),
+		_paint(part, Vector3i(-3, y, -22), Vector3i(2, y, -22), 2)
+		_paint(part, Vector3i(-5, y + 1, -19),
 				Vector3i(3, y + 1, -19), 1)
 	for z in [1, 5, 9]:
-		part.paint_box(Vector3i(-5, 6, z), Vector3i(3, 6, z), 1)
+		_paint(part, Vector3i(-5, 6, z), Vector3i(3, 6, z), 1)
 
 
 static func _thigh(part: VoxelPart) -> void:
