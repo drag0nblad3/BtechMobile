@@ -2,52 +2,43 @@ extends TestCase
 ## Geometry-level tests for non-Jenner fine detail and full-part impact spread.
 
 
-func test_atlas_skull_eyes_and_torso_autocannon_are_real_geometry() -> void:
+func test_atlas_v4_small_death_head_and_torso_ac20() -> void:
 	var m := VoxelMech.new()
 	m.profile_id = "atlas_as7d"
 	m.render_surfaces = false
 	m.build()
 	var torso: VoxelPart = m.parts["torso"]
-	check_eq(torso.detail_scale, 2, "sculpted Atlas torso uses 37.5 mm cells")
-	for x in [-3, 2]:
-		check_eq(torso.sculpt_material(Vector3i(x, 9, -8)), 7,
-				"skull face needs inset red eye lights")
-	check(not torso.has_sculpt_cell(Vector3i(0, 6, -10)),
-			"Atlas skull should have a real recessed nose cavity")
-	check(torso.has_sculpt_cell(Vector3i(-5, 6, -7)),
-			"skull cheekbone needs volume, not a painted visor")
-	check(not torso.has_sculpt_cell(Vector3i(9, -1, -12)),
-			"torso AC/20 barrel should have an actual hollow bore")
-	check(torso.has_sculpt_cell(Vector3i(12, -1, -12)),
-			"armored AC/20 ring should surround the muzzle")
-	check(not torso.has_sculpt_cell(Vector3i(-13, 1, -9)),
-			"Atlas LRM launcher must have real openings")
+	check_eq(torso.detail_scale, 3,
+			"V4 skull and pectoral panel outlines are actual 25mm geometry")
+	check_eq(torso.sculpt_material(Vector3i(-2, 10, -6)), 7,
+			"left Atlas eye must be recessed and not a flat face stripe")
+	check_eq(torso.sculpt_material(Vector3i(1, 10, -6)), 7,
+			"right Atlas eye should be separately visible")
+	check(not torso.has_sculpt_cell(Vector3i(7, -1, -12)),
+			"torso AC20 needs a physical empty bore")
+	check(torso.has_sculpt_cell(Vector3i(9, -1, -12)),
+			"AC20 shroud must have thickness around the empty barrel")
 	m.free()
 
 
-func test_catapult_15_separate_recessed_missile_ports_on_each_pod() -> void:
-	for side in 2:
-		var pod := VoxelPart.new()
-		pod.name = "left_arm" if side == 0 else "right_arm"
-		pod.detail_scale = 3
-		pod.detail_style = "catapult"
-		pod.mesh_enabled = false
-		VoxelMechArt.arm(pod, "missile_pods", side)
-		check(is_equal_approx(pod.voxel_size, 0.025), "LRM pod must use 25 mm cells")
-		var ports := 0
-		for col in 5:
-			for row in 3:
-				var x := -10 + col * 5
-				var y := -5 + row * 7
-				check(not pod.cells.has(Vector3i(x, y, -29)),
-						"launcher opening must be physically recessed")
-				check_eq(pod.cells.get(Vector3i(x, y, -26)), 3,
-						"missile tube must have a deeper contrasting interior")
-				check(pod.cells.has(Vector3i(x - 1, y - 1, -29)),
-						"every missile tube must have a raised rim")
-				ports += 1
-		check_eq(ports, 15, "CPLT-C1 needs fifteen apertures per pod")
-		pod.free()
+func test_catapult_v4_fifteen_muzzle_racks_per_side() -> void:
+	var m := VoxelMech.new()
+	m.profile_id = "catapult_cplt_c1"
+	m.render_surfaces = false
+	m.build()
+	for key in ["left_arm", "right_arm"]:
+		var pod: VoxelPart = m.parts[key]
+		check_eq(pod.detail_scale, 3, "LRM boxes are truly 25mm detailed")
+		var openings := 0
+		for x in [-4, -2, 0, 2, 4]:
+			for y in [0, 3, 6]:
+				check(not pod.has_sculpt_cell(Vector3i(x, y, -7)),
+						"fifteen physically open missile bores per side")
+				check_eq(pod.sculpt_material(Vector3i(x, y, -4)), 3,
+						"deep setback missile well must survive as visual chamber")
+				openings += 1
+		check_eq(openings, 15, "two racks are 15 each, not 6 flat squares")
+	m.free()
 
 
 func test_random_damage_targets_full_part_surface() -> void:
@@ -117,8 +108,8 @@ func test_atlas_catapult_voxel_budget_and_damageable_real_geometry() -> void:
 		check_eq(total, model.remaining_voxels(),
 				id + " should count real intact geometry")
 		check_eq((model.parts["torso"] as VoxelPart).detail_scale,
-				2,
-				id + " torso must use its planned microvoxel resolution")
+				3,
+				id + " torso must use its planned 25mm cockpit detail")
 		if id == "catapult_cplt_c1":
 			check_eq((model.parts["left_arm"] as VoxelPart).detail_scale, 3,
 					"missile pods should keep 25mm apertures")
