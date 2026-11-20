@@ -63,7 +63,7 @@ func _populate_model_counts() -> void:
 func _refresh_model_counts() -> void:
 	if chassis_selector == null or catalog_label == null:
 		return
-	var names: Array[String] = []
+	var names := PackedStringArray()
 	for i in profiles.size():
 		var profile: Dictionary = profiles[i]
 		var id := str(profile["id"])
