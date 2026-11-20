@@ -6,6 +6,7 @@ var mech: VoxelMech
 var profiles: Array[Dictionary] = []
 var profile_index := 0
 var stability_slider: HSlider
+var chassis_selector: OptionButton
 var stability_label: Label
 var camera: Camera3D
 var info: Label
@@ -106,7 +107,10 @@ func make_hud() -> void:
 	var layer := CanvasLayer.new()
 	add_child(layer)
 	var panel := PanelContainer.new()
-	panel.position = Vector2(16, 16)
+	panel.set_anchors_preset(Control.PRESET_TOP_RIGHT)
+	panel.offset_left = -620.0
+	panel.offset_right = -16.0
+	panel.offset_top = 16.0
 	layer.add_child(panel)
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.06, 0.09, 0.14, 0.88)
@@ -134,6 +138,7 @@ func make_hud() -> void:
 	for profile in profiles:
 		selector.add_item(str(profile["name"]))
 	selector.selected = profile_index
+	chassis_selector = selector
 	selector.item_selected.connect(_select_chassis)
 	tuning.add_child(selector)
 	stability_label = Label.new()
@@ -182,6 +187,8 @@ func _open_launcher() -> void:
 
 func _select_chassis(index: int) -> void:
 	profile_index = index
+	if chassis_selector:
+		chassis_selector.select(index)
 	reset_lab()
 
 
