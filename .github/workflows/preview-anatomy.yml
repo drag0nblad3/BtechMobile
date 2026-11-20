@@ -1,0 +1,35 @@
+name: Actual voxel anatomy preview (no APK)
+on:
+  push:
+    branches: [preview/anatomy-v2-final-qa]
+    paths:
+      - tools/capture_anatomy_v2.gd
+      - .github/workflows/preview-anatomy.yml
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import model scripts
+        run: godot --headless --import
+      - name: Render actual voxel anatomy from branch
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/anatomy-v2
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x800 \
+            -s tools/capture_anatomy_v2.gd -- /tmp/anatomy-v2 2>&1 | tee anatomy-render.log
+          [ "$(grep -c '^ANATOMY_RENDER|' anatomy-render.log)" -eq 7 ]
+          for f in atlas atlas-front hunchback wolverine jenner catapult prototype; do
+            test -s "/tmp/anatomy-v2/$f.png"
+          done
+          ! grep -E 'SCRIPT ERROR|Parse Error|RENDER_FAILED' anatomy-render.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: anatomy-v2-final-review
+          path: /tmp/anatomy-v2/*.png
