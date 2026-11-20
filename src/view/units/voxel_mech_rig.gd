@@ -3,22 +3,21 @@ extends RefCounted
 ## Constructs damageable geometry and per-chassis leg pivot hierarchy.
 
 
-static func build(frame: Node3D, upper: Node3D, profile: Dictionary) -> Dictionary:
+static func build(frame: Node3D, upper: Node3D, profile: Dictionary,
+		detail: int = 1, meshes: bool = true) -> Dictionary:
 	var rig := {"parts": {}, "sockets": {}, "hips": [], "knees": [],
 			"hocks": [], "ankles": [], "arms": []}
-	var torso := VoxelPart.new()
-	torso.name = "Torso"
-	upper.add_child(torso)
+	var torso := _new_part(upper, "Torso", profile, detail, meshes)
 	VoxelMechArt.torso(torso, str(profile.get("shape", "prototype")))
 	rig["parts"]["torso"] = torso
 	for side in 2:
-		add_leg(frame, rig, side, profile)
-		add_arm(upper, rig, side, profile)
+		add_leg(frame, rig, side, profile, detail, meshes)
+		add_arm(upper, rig, side, profile, detail, meshes)
 	return rig
 
 
 static func add_leg(frame: Node3D, rig: Dictionary, side: int,
-		profile: Dictionary) -> void:
+		profile: Dictionary, detail: int = 1, meshes: bool = true) -> void:
 	var digi := VoxelChassis.is_digitigrade(profile)
 	var jenner := str(profile.get("shape", "")) == "jenner"
 	var key := "left_leg" if side == 0 else "right_leg"
@@ -29,9 +28,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 			VoxelJennerGait.HIP_HEIGHT if jenner else (VoxelDigitigradeGait.HIP_HEIGHT if digi else 1.36), 0)
 	frame.add_child(hip)
 	rig["hips"].append(hip)
-	var thigh := VoxelPart.new()
-	thigh.name = key
-	hip.add_child(thigh)
+	var thigh := _new_part(hip, key, profile, detail, meshes)
 	if jenner:
 		VoxelJennerArt.thigh(thigh)
 	else:
@@ -45,9 +42,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	knee.position.y = -(VoxelJennerGait.THIGH if jenner else VoxelGait.THIGH)
 	hip.add_child(knee)
 	rig["knees"].append(knee)
-	var shin := VoxelPart.new()
-	shin.name = key + "_shin"
-	knee.add_child(shin)
+	var shin := _new_part(knee, key + "_shin", profile, detail, meshes)
 	if jenner:
 		VoxelJennerArt.shin(shin)
 	else:
@@ -63,9 +58,8 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 		hock.position.y = -(VoxelJennerGait.SHIN if jenner else VoxelDigitigradeGait.SHIN)
 		knee.add_child(hock)
 		rig["hocks"].append(hock)
-		var meta := VoxelPart.new()
-		meta.name = key + "_metatarsal"
-		hock.add_child(meta)
+		var meta := _new_part(hock, key + "_metatarsal", profile,
+				detail, meshes)
 		if jenner:
 			VoxelJennerArt.metatarsal(meta)
 			meta.seal()
@@ -82,9 +76,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 			(VoxelDigitigradeGait.METATARSAL if digi else VoxelGait.SHIN))
 	end_pivot.add_child(ankle)
 	rig["ankles"].append(ankle)
-	var foot := VoxelPart.new()
-	foot.name = key + "_foot"
-	ankle.add_child(foot)
+	var foot := _new_part(ankle, key + "_foot", profile, detail, meshes)
 	if jenner:
 		VoxelJennerArt.foot(foot)
 	else:
@@ -95,7 +87,7 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 
 
 static func add_arm(upper: Node3D, rig: Dictionary, side: int,
-		profile: Dictionary) -> void:
+		profile: Dictionary, detail: int = 1, meshes: bool = true) -> void:
 	var key := "left_arm" if side == 0 else "right_arm"
 	var width := float(profile.get("arm_width", 1.03))
 	var shoulder := Node3D.new()
@@ -103,9 +95,21 @@ static func add_arm(upper: Node3D, rig: Dictionary, side: int,
 	shoulder.position = Vector3((-1.0 if side == 0 else 1.0) * width, 0.17, 0)
 	upper.add_child(shoulder)
 	rig["arms"].append(shoulder)
-	var arm := VoxelPart.new()
-	arm.name = key
-	shoulder.add_child(arm)
+	var arm := _new_part(shoulder, key, profile, detail, meshes)
 	VoxelMechArt.arm(arm, str(profile.get("arm", "standard")), side)
 	rig["parts"][key] = arm
 	rig["sockets"][key] = shoulder
+
+
+## Every part is configured BEFORE its first seal() to avoid building a coarse
+## mesh only to rebuild an 8x denser one. Meshes can be suppressed for catalog
+## voxel-count sampling, which only needs the exact occupied cell dictionaries.
+static func _new_part(parent: Node3D, part_name: String, profile: Dictionary,
+		detail: int, meshes: bool) -> VoxelPart:
+	var part := VoxelPart.new()
+	part.name = part_name
+	part.detail_scale = clampi(detail, 1, 2)
+	part.detail_style = str(profile.get("shape", ""))
+	part.mesh_enabled = meshes
+	parent.add_child(part)
+	return part
