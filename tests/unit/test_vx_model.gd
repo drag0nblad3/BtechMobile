@@ -71,7 +71,8 @@ func test_catapult_is_digitigrade_and_complete() -> void:
 	var m := VxModel.load_file("res://data/voxels/catapult.json")
 	check(m.errors.is_empty(), "errors: %s" % ", ".join(m.errors))
 	check_eq(m.legs, "digitigrade")
-	check_eq(m.muzzles[Location.LA].size(), 9, "LRM tubes")
+	check_eq(m.muzzles[Location.LA].size(), 15, "every LRM-15 has its own muzzle")
+	check_eq(m.muzzles[Location.RA].size(), 15, "mirrored LRM-15 needs fifteen muzzles")
 	check(UnitDb.load_dir().get_def(m.unit_id) != null, "unit id must exist")
 	var mech := VxMech.from_file("res://data/voxels/catapult.json")
 	check(mech.hocks[0] != null and mech.hocks[1] != null, "hocks found")
@@ -105,3 +106,41 @@ func test_greedy_mesh_merges_faces() -> void:
 		faces += p.faces_before_merge
 	check(mech.triangle_count() < faces, "merged %d tris vs %d faces" % [mech.triangle_count(), faces])
 	mech.free()
+
+
+func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
+	# Check the authored (coarse) grid; subdivide would scale every coordinate.
+	var d: Dictionary = JsonFile.read("res://data/voxels/catapult.json")
+	d["subdivide"] = 1
+	var m := VxModel.from_dict(d)
+	check(m.errors.is_empty(), "Catapult JSON should load without errors")
+	for loc in [Location.LA, Location.RA]:
+		var name := "la" if loc == Location.LA else "ra"
+		var p: Dictionary = m.part(name)
+		var cells: Dictionary = p["cells"]
+		var points: Array = m.muzzles[loc]
+		check_eq(points.size(), VxVolley.MISSILES,
+				"visual port count and missile salvo should match")
+		var unique: Dictionary = {}
+		for point: Vector3 in points:
+			var x := floori(point.x)
+			var y := floori(point.y)
+			var opening := Vector3i(x, y, -9)
+			unique[opening] = true
+			check(not cells.has(opening) and not cells.has(opening + Vector3i(0, 0, 1)),
+					"missile must emerge through a real two-cell-deep opening: " + str(opening))
+			check(cells.has(opening + Vector3i(0, 1, 0)),
+					"each port should have armor separating it from the next row")
+		check_eq(unique.size(), 15, "all fifteen launch tubes must be distinct")
+	var left: Dictionary = m.part("la")["cells"]
+	var right: Dictionary = m.part("ra")["cells"]
+	var left_torso: Dictionary = m.part("lt")["cells"]
+	var right_torso: Dictionary = m.part("rt")["cells"]
+	for c: Vector3i in left:
+		check(not left_torso.has(c), "left pod should clear its parent torso")
+	for c: Vector3i in right:
+		check(not right_torso.has(c), "mirrored right pod should clear its parent")
+	check_eq(left.size(), right.size(), "both racks should share the same shell")
+	for c: Vector3i in left:
+		check(right.has(Vector3i(-c.x - 1, c.y, c.z)),
+				"right launcher geometry must mirror the left")
