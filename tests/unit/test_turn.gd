@@ -44,3 +44,29 @@ func test_controller_uses_it() -> void:
 	check_eq(gc.state.side_order.size(), 6, "one activation per 'Mech")
 	var zeros := gc.state.side_order.count(0)
 	check_eq(zeros, 4)
+
+
+func test_initiative_die() -> void:
+	var s := GameState.new(open_map(3, 3))
+	s.initiative_die_rule = true
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)  # side 0
+	dice.queue_2d6(9)  # side 1
+	var sides: Array[int] = [0, 1]
+	var r := Initiative.roll(dice, sides, InitiativeDie.bonuses(s))
+	InitiativeDie.update(s, r["order"])
+	check_eq(s.initiative_die, {0: 1}, "the loser takes the die at +1")
+	dice.queue_2d6(7)
+	dice.queue_2d6(9)
+	r = Initiative.roll(dice, sides, InitiativeDie.bonuses(s))
+	check_eq(r["rolls"][0], 8, "7 + 1")
+	InitiativeDie.update(s, r["order"])
+	check_eq(s.initiative_die, {0: 2}, "lost again: +2 next turn")
+	dice.queue_2d6(10)
+	dice.queue_2d6(6)
+	r = Initiative.roll(dice, sides, InitiativeDie.bonuses(s))
+	check_eq(r["order"][1], 0, "12 beats 6")
+	InitiativeDie.update(s, r["order"])
+	check_eq(s.initiative_die, {1: 1}, "winner drops its die; the other side takes one")
+	s.initiative_die_rule = false
+	check(InitiativeDie.bonuses(s).is_empty(), "off by default")
