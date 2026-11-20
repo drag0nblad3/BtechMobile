@@ -49,7 +49,7 @@ func _eye_red_count(part: VoxelPart, center_x: float) -> int:
 	var scale: int = part.detail_scale
 	for ix in range(floori((center_x - 0.8) * scale),
 			ceili((center_x + 0.8) * scale) + 1):
-		for iy in range(floori(8.3 * scale), ceili(10.1 * scale) + 1):
+		for iy in range(floori(7.5 * scale), ceili(8.7 * scale) + 1):
 			for iz in range(floori(-8.2 * scale), ceili(-6.0 * scale) + 1):
 				if int(part.cells.get(Vector3i(ix, iy, iz), -1)) == 7:
 					count += 1
@@ -127,4 +127,27 @@ func test_leg_geometry_is_longer_than_thick_and_jointed() -> void:
 				"%s must be long articulated leg, not a trunk" % key)
 		check(p.cells.size() > 900,
 				"actual humanlike armor and hinge volume must exist")
+	m.free()
+
+
+func test_renderer_displays_original_triangles_until_damage_then_voxels() -> void:
+	var m := VoxelMech.new()
+	m.profile_id = "atlas_as7d"
+	m.detail_level = 2
+	m.render_surfaces = true
+	m.build()
+	var torso: VoxelPart = m.parts["torso"]
+	var visual := torso.get_node("Surface") as MeshInstance3D
+	check(torso.intact_source_mesh != null,
+			"an intact Atlas must own genuine authored mesh surfaces")
+	check(visual.mesh == torso.intact_source_mesh,
+			"intact visible model must render source triangles, NOT voxel cubes")
+	var initial := torso.cells.size()
+	var removed := torso.erase_irregular_local_ball(
+			Vector3(0.0, 0.0, -0.22), 0.24, 90814)
+	check(removed > 0, "damage must remove actual independently sampled voxels")
+	check(visual.mesh != torso.intact_source_mesh,
+			"damaged part should show the dynamically rebuilt voxel surface")
+	check_eq(torso.cells.size(), initial - removed,
+			"meshes may not change damage accounting")
 	m.free()
