@@ -15,10 +15,12 @@ func test_v4_really_excludes_old_v2_v3_geometry_pipeline() -> void:
 			"wolverine_wvr6r", "jenner_jr7d", "catapult_cplt_c1"]:
 		var m := _make(id)
 		var body: VoxelPart = m.parts["torso"]
-		check(body.detail_style.begins_with("v4_"),
-				"%s must use solely new source geometry" % id)
-		check_eq(body.detail_style, "v4_" + str(VoxelChassis.find(id)["shape"]),
-				"old procedural material decorators must not run")
+		if id == "atlas_as7d":
+			check_eq(body.detail_style, "mesh_atlas",
+					"Atlas must use authored triangles, not former V4 primitives")
+		else:
+			check_eq(body.detail_style, "v4_" + str(VoxelChassis.find(id)["shape"]),
+					"other chassis remain on their unchanged V4 source")
 		m.free()
 
 
@@ -33,7 +35,7 @@ func test_atlas_has_real_slim_waist_and_separate_pectoral_panels() -> void:
 			"waist may not fill an entire chest-width rectangular column")
 	check(body.has_sculpt_cell(Vector3i(-5, -3, -7)),
 			"left breastplate has its own front armor face")
-	check(body.has_sculpt_cell(Vector3i(4, -3, -7)),
+	check(body.has_sculpt_cell(Vector3i(4, -3, -6)),
 			"right breastplate has an independently shaped counterpart")
 	m.free()
 
