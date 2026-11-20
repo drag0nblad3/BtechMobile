@@ -218,7 +218,12 @@ func detach(key: String) -> void:
 	root.get_parent().remove_child(root)
 	var body := RigidBody3D.new()
 	body.name = key + "_wreck"
-	get_tree().current_scene.add_child(body)
+	# CLI smoke scenes may be attached directly to SceneTree.root without a
+	# current_scene. Detached debris still needs a valid lifetime owner.
+	var debris_owner: Node = get_tree().current_scene
+	if debris_owner == null:
+		debris_owner = get_tree().root
+	debris_owner.add_child(body)
 	body.global_transform = old_transform
 	body.add_child(root)
 	root.transform = Transform3D.IDENTITY
