@@ -289,7 +289,7 @@ func blast(key: String) -> void:
 	var offset := Vector3(randf_range(-0.13, 0.13),
 			randf_range(-0.11, 0.11), randf_range(-0.10, 0.10))
 	var world_hit := part.to_global(Vector3(0, -0.15, -0.22) + offset)
-	mech.hit_part(key, world_hit, 0.30)
+	mech.hit_part(key, world_hit, 0.40)
 	flash(world_hit)
 
 
