@@ -19,13 +19,13 @@ func test_enter_costs() -> void:
 			MoveCost.PROHIBITED, "3 levels is too steep")
 
 
-func test_water_costs_and_no_running() -> void:
+func test_water_costs_and_running_in() -> void:
 	var m := make_map(["c0 w0d1 w0d2"])
 	var a := _hex(0, 0)
 	var d1 := _hex(1, 0)
-	check_eq(MoveCost.enter_cost(m, a, d1, MoveMode.Kind.WALK), 2, "depth 1")
+	check_eq(MoveCost.enter_cost(m, a, d1, MoveMode.Kind.WALK), 3, "depth 1: 1 + 1 water + 1 level down")
 	check_eq(MoveCost.enter_cost(m, d1, _hex(2, 0), MoveMode.Kind.WALK), 4, "depth 2")
-	check_eq(MoveCost.enter_cost(m, a, d1, MoveMode.Kind.RUN), MoveCost.PROHIBITED)
+	check_eq(MoveCost.enter_cost(m, a, d1, MoveMode.Kind.RUN), 3, "running in is allowed (costs a roll)")
 
 
 func test_run_mp_rounds_up() -> void:

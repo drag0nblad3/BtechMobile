@@ -87,8 +87,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 	for p in Damage.clusters(d["self_damage"], 5):
 		var hl := HitTable.roll_kick(dice, FiringArc.FRONT) if kind == "dfa" else HitTable.roll(dice, FiringArc.FRONT)
 		WeaponFire.hit_with(state, dice, emit, a, FiringArc.FRONT, p, a.id, kind + " (self)", hl)
-	a.psr_pending.append({"reason": "made a " + ("charge" if kind == "charge" else "death from above"), "mod": 2 if kind == "charge" else 4})
+	a.psr_pending.append({"reason": "made a " + ("charge" if kind == "charge" else "death from above"), "mod": 2})
 	t.psr_pending.append({"reason": "was hit by a " + ("charge" if kind == "charge" else "death from above"), "mod": 2})
 	var from := t.coord
-	if Displacement.push(state, emit, t, Hex.direction_to(a.coord, t.coord)):
+	if Displacement.push(state, dice, emit, t, Hex.direction_to(a.coord, t.coord)):
 		Displacement.move_to(state, emit, a, from)

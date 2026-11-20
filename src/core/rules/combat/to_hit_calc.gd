@@ -138,9 +138,10 @@ static func target_movement_mod(hexes: int, jumped: bool = false) -> int:
 	return 0
 
 
-## Shut down, MechWarrior unconscious, or no walking MP left (book p. 49).
+## Shut down, MechWarrior unconscious, or no MP left from damage (both legs
+## gone), book p. 49. Heat alone taking MP to 0 doesn't count.
 static func is_immobile(u: Unit) -> bool:
-	return u.shutdown or not u.pilot.conscious or u.walk_mp() <= 0
+	return u.shutdown or not u.pilot.conscious or u.legs_destroyed() >= 2
 
 
 ## Standing in depth 1 water.

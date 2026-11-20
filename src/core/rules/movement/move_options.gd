@@ -9,6 +9,8 @@ var budget: int
 var cost: Dictionary = {}    # Vector3i -> MP spent to get there
 var prev: Dictionary = {}    # Vector3i -> Vector3i (previous step)
 var can_end: Dictionary = {} # Vector3i -> bool (legal place to stop)
+## Key reached only by minimum movement (can't be used to charge), if any.
+var minimum_move := Vector3i(-9999, -9999, 0)
 
 
 static func key(c: Vector2i, facing: int) -> Vector3i:

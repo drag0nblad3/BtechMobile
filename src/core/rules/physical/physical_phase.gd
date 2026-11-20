@@ -43,5 +43,5 @@ static func _push(state: GameState, dice: Dice, emit: Callable, d: Dictionary) -
 	if hit:
 		var from := t.coord
 		t.psr_pending.append({"reason": "was pushed", "mod": 0})
-		if Displacement.push(state, emit, t, Hex.direction_to(a.coord, t.coord)):
+		if Displacement.push(state, dice, emit, t, Hex.direction_to(a.coord, t.coord)):
 			Displacement.move_to(state, emit, a, from)

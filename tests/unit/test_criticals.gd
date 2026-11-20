@@ -48,7 +48,7 @@ func test_engine_and_gyro() -> void:
 	CriticalHits.roll_location(s, dice, _emit, g, Location.CT)
 	check_eq(g.gyro_hits, 1)
 	check_eq(g.psr_pending.size(), 1, "gyro hit owes a piloting roll")
-	check_eq(Psr.standing_mods(g).target(), 8, "5 piloting + 3 gyro")
+	check_eq(Psr.standing_mods(g).target(), 7, "5 piloting + 2 gyro")
 
 
 func test_limb_blown_off() -> void:

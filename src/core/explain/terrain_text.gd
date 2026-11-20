@@ -12,14 +12,17 @@ static func describe(tile: MapTile, level: int) -> String:
 	if tile.building != null:
 		return t + ": " + _building(tile.building, level)
 	var parts: Array[String] = []
-	var mp := tile.terrain.move_cost + (0 if not tile.is_water() else (1 if tile.depth == 1 else 3))
+	var mp := tile.terrain.move_cost + (0 if not tile.is_water() else (1 if tile.depth == 1 else 2))
 	if mp > 0:
 		parts.append("+%d MP to enter" % mp)
 	var cover := LineOfSight.woods_value(tile)
 	if cover > 0:
 		parts.append("+%d to hit a 'Mech here" % cover)
 	if tile.is_water():
-		parts.append("no running in" if tile.depth == 1 else "can't be targeted fully under water")
+		parts.append("plus %d level%s down to the bottom" % [tile.depth, "" if tile.depth == 1 else "s"])
+		parts.append("running in needs a piloting roll")
+		if tile.depth >= 2:
+			parts.append("can't be targeted fully under water")
 		parts.append("heat sinks under water cool double (%s, up to +6)" % (
 				"only leg sinks while standing" if tile.depth == 1 else "all of them"))
 		if tile.depth == 1:
