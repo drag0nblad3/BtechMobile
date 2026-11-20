@@ -53,6 +53,9 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			if not u.lose_heat_sink(slot):
 				return "part of a heat sink already destroyed"
 			return "heat sink destroyed: -%d heat dissipation" % u.def.heat_per_sink()
+		CritSlot.Kind.MELEE:
+			u.melee_lost[slot.ref] = true
+			return "%s destroyed" % slot.name.to_lower()
 		CritSlot.Kind.ARTEMIS:
 			u.weapons[slot.ref].artemis_lost = true
 			return "Artemis IV fire control destroyed: no cluster bonus"

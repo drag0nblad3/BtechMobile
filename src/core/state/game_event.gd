@@ -15,6 +15,7 @@ const UNIT_DESTROYED := &"unit_destroyed" # {unit_id, reason}
 const HEAT := &"heat"                     # {unit_id, before, gained, sinks, heat, effects}
 const HEAT_ROLL := &"heat_roll"           # {unit_id, kind: ammo|shutdown|restart, roll, need, ok}
 const SHUTDOWN := &"shutdown"             # {unit_id, shutdown: bool}
+const CLUB := &"club"                     # {unit_id, club: "tree"|"girder"}
 const AMMO_EXPLOSION := &"ammo_explosion" # {unit_id, loc, ammo, damage, steps}
 const PILOT_HIT := &"pilot_hit"           # {unit_id, hits, why}
 const CONSCIOUSNESS := &"consciousness"   # {unit_id, roll, need, conscious, was_conscious}

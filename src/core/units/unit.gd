@@ -23,6 +23,10 @@ var engine_hits: int = 0
 var gyro_hits: int = 0
 var sensor_hits: int = 0
 var heat_sinks_lost: int = 0
+## Physical weapons destroyed by critical hits: index into def.melee -> true.
+var melee_lost: Dictionary = {}
+## Club carried: "" none, "tree" or "girder" (MeleeWeapons).
+var club: String = ""
 
 # Condition ---------------------------------------------------------------
 var destroyed: bool = false

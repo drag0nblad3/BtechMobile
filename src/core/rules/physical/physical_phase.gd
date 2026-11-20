@@ -36,6 +36,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 		_strike(state, dice, emit, a, t, d)
 		if is_kick:
 			t.psr_pending.append({"reason": "was kicked", "mod": 0})
+		elif d["kind"] == "club":
+			t.psr_pending.append({"reason": "was clubbed", "mod": 0})
+			if a.club == "tree":
+				a.club = ""  # trees only last one hit
 	state.declared_physical.clear()
 	BuildingDamage.end_phase(state, dice, emit)
 	for step in steps:

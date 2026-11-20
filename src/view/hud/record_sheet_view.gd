@@ -31,6 +31,10 @@ static func text(u: Unit) -> String:
 		cond.append("prone")
 	if u.shutdown:
 		cond.append("shut down")
+	for i in d.melee.size():
+		cond.append("%s (%s)%s" % [d.melee[i]["kind"], Location.code(d.melee[i]["loc"]), " destroyed" if u.melee_lost.has(i) else ""])
+	if u.club != "":
+		cond.append("holding a %s club" % u.club)
 	for pair in [[u.engine_hits, "engine hits"], [u.gyro_hits, "gyro hits"], [u.sensor_hits, "sensor hits"]]:
 		if pair[0] > 0:
 			cond.append("%d %s" % pair)

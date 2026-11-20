@@ -1,6 +1,6 @@
 class_name PhysicalOptions
 extends RefCounted
-## Punches, kicks and pushes one 'Mech could make against an adjacent enemy
+## Punches, kicks, pushes (and MeleeWeapons swings) one 'Mech could make against an adjacent enemy
 ## (book pp. 76-83). One kind per turn: one or two punches, one kick, or a push.
 ## Punch: piloting -1, ceil(tons / 10), Punch table; arm in front or that side.
 ## Kick: piloting -1, ceil(tons / 5), Kick table (full table on a prone
@@ -21,6 +21,7 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 	for leg in [Location.RL, Location.LL]:
 		out.append(_kick(state, a, t, leg))
 	out.append(_push(state, a, t))
+	out.append_array(MeleeWeapons.options(state, a, t))
 	return out
 
 
@@ -139,9 +140,9 @@ static func declare(state: GameState, a: Unit, attacks: Array) -> Array[Dictiona
 				continue
 			if not opt["to_hit"].possible() or used.has(opt["limb"]) or kicked:
 				continue
-			if (opt["kind"] == "kick" or opt["kind"] == "push") and not out.is_empty():
-				continue
-			kicked = opt["kind"] == "kick" or opt["kind"] == "push"
+			if opt["kind"] != "punch" and not out.is_empty():
+				continue  # kicks, pushes and weapon swings are the only attack that turn
+			kicked = opt["kind"] != "punch"
 			used[opt["limb"]] = true
 			opt["attacker_id"] = a.id
 			opt["target_id"] = t.id

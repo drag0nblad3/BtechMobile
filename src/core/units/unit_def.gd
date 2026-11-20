@@ -17,6 +17,8 @@ var heat_sinks: int = 10
 ## Double heat sinks (p. 89): each removes 2 heat and fills 3 slots.
 var double_heat_sinks := false
 ## Locations protected by CASE (p. 96).
+## Physical weapons: [{kind: "hatchet"|"sword", loc}] (MeleeWeapons).
+var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
 var role: String = ""    ## One-line tactical summary for the force builder.
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
@@ -59,10 +61,13 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 
 
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
-## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case".
+## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword".
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
 	if item == "case":
 		case_locs.append(loc)
+		return
+	if item == "hatchet" or item == "sword":
+		melee.append({"kind": item, "loc": loc})
 		return
 	if item == "heat_sink" or item == "jump_jet":
 		if not other_items.has(loc):
@@ -123,6 +128,18 @@ func total_armor() -> int:
 ## Heat one working heat sink removes.
 func heat_per_sink() -> int:
 	return 2 if double_heat_sinks else 1
+
+
+## Slots (and tons) of a hatchet or sword. TODO(rules): construction data,
+## not in the Core Rulebook: hatchet tons/15, sword tons/20 (half tons).
+func melee_slots(kind: String) -> int:
+	return ceili(tonnage / 15.0)
+
+
+func melee_tons(kind: String) -> float:
+	if kind == "sword":
+		return ceilf(tonnage / 20.0 * 2.0) / 2.0
+	return ceilf(tonnage / 15.0)
 
 
 func has_case(loc: int) -> bool:

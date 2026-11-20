@@ -85,6 +85,20 @@ func declare_physical(unit: Unit, attacks: Array) -> bool:
 
 ## Twists the torso one hexside left (-1), right (+1) or back (0) before
 ## declaring fire. Arms and torso weapons follow; leg weapons don't.
+## Picks up a tree or girder as a club instead of firing this turn.
+func pick_up_club(unit: Unit) -> bool:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK):
+		return false
+	var club := MeleeWeapons.club_here(state, unit)
+	if club == "":
+		return false
+	unit.club = club
+	unit.has_fired = true
+	_emit(GameEvent.CLUB, {"unit_id": unit.id, "club": club})
+	_unit_done()
+	return true
+
+
 ## Ultra AC double fire or LB-X cluster ammo (WeaponModes), before declaring.
 func set_weapon_mode(unit: Unit, index: int, mode: String) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or index < 0 or index >= unit.weapons.size():
