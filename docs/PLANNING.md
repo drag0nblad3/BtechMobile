@@ -13,9 +13,17 @@ with facing, and move; sides alternate by initiative. Rules live in `src/core`
 (pure `RefCounted`, unit-tested headless), presentation in `src/view`, content as JSON
 in `data/`. CI (`ci.yml`) runs the unit tests and a headless smoke run on every push.
 
-Combat, heat, physicals, jumping and backward movement are not started. Units are
-placeholder box 'Mechs; the 2D sprite direction in `graphics/mech-sprite-standard.md`
-is approved as a visual target but not yet wired in.
+First playable milestone (stacked PRs after #3): a force builder (two lances under a
+tonnage budget, two maps), the full turn (initiative, movement, weapon and physical
+attacks, heat, end), line of sight, to-hit with named modifiers, cluster missiles,
+damage transfer, critical hits, ammo explosions, piloting rolls and falls, punches and
+kicks, live record sheets, a combat log, and explanations at Full / Light / Off with
+advice on moves, volleys, targets and punch-vs-kick. Five 'Mechs: Jenner, Hunchback,
+Wolverine, Catapult, Atlas. Play is hot-seat (both sides on one device).
+
+Jumping, backward movement, torso twist, charges and death-from-above are not started.
+'Mechs are placeholder boxes until sprite sets land; `SpriteMech` already loads them
+(`graphics/sprite-integration.md`).
 
 ## 2. Android readiness
 
@@ -73,24 +81,34 @@ session on a real phone are the next checks.
 Follows the module order in `architecture.md`, with Android milestones slotted in.
 
 1. **Android baseline (now).** Export preset, safe areas, first APK on a real phone.
-2. **Movement complete.** Backward walking, jumping, prone/standing, minimum movement,
-   movement piloting rolls.
-3. **Line of sight and to-hit.** `Hex.line` with woods and levels; to-hit modifiers,
-   with an on-screen LOS/to-hit preview sized for touch.
-4. **Unit data.** Armor, internal structure, weapons, heat sinks; import from MegaMek
-   MTF/BLK.
-5. **Weapon attacks and damage.** Hit locations, damage transfer, criticals, ammo
-   explosions; an attack-declaration UI that works one-handed on a phone.
-6. **Physicals, heat, piloting rolls, falls.**
-7. **Mech graphics.** Replace `PlaceholderMech` through `UnitView.set_model()` with the
-   sprite system from `graphics/mech-sprite-standard.md` (Mad Dog first); validate
-   camera elevation on a phone.
-8. **Bot opponent, save/load, app lifecycle.** Autosave on pause depends on save/load.
-9. **Release prep.** Licensing decision, release signing, AAB, icon, store listing,
+2. **First playable milestone (done, in review).** Record sheets, weapons, to-hit, damage,
+   criticals, heat, piloting rolls, punches and kicks, force builder, explanations.
+3. **Movement complete.** Backward walking, jumping, torso twist, minimum movement,
+   movement piloting rolls (running in rough, etc.).
+4. **More rules.** Charge, death from above, push, clubs; Battle Value balancing;
+   more 'Mechs and maps.
+5. **Mech graphics.** Drop sprite sets into `assets/mechs/` (`SpriteMech` loads them);
+   validate camera elevation on a phone; faction recolor and damage states.
+6. **Bot opponent, save/load, app lifecycle.** Autosave on pause depends on save/load.
+7. **Release prep.** Licensing decision, release signing, AAB, icon, store listing,
    closed testing track.
-10. **Campaign layer** (`src/campaign/`).
+8. **Campaign layer** (`src/campaign/`).
 
-## 4. Open questions
+## 4. Rules assumptions to verify
+
+No rulebook is in the repo, so the rules come from general knowledge of classic
+BattleTech (Total Warfare, Standard level). Every uncertain point is marked
+`TODO(rules)` in code and listed in `rules-coverage.md`. The ones most worth checking
+against the book first:
+
+1. Firing-arc and attack-direction boundaries (front = three forward hexsides).
+2. Line of sight with hills and woods (simplified "higher than both" rule).
+3. Hit location, cluster, critical-hit and punch/kick tables.
+4. Heat scale thresholds, shutdown restart timing, which ammo bin explodes.
+5. Fall direction, fall pilot-damage roll, leg-loss movement.
+6. Unequal unit counts in alternating movement.
+
+## 5. Open questions
 
 1. Phones only, or tablets too? This affects HUD scale and the minimum device spec.
 2. Minimum Android version? Godot 4.5's export default is the floor unless set lower.
