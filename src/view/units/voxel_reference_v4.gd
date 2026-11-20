@@ -335,6 +335,25 @@ static func _prototype(p: VoxelPart) -> void:
 	for yy in [2, 4, 6, 8]:
 		p.carve_box(Vector3i(-7, yy, 8),
 				Vector3i(-4, yy, 8))
+	# Tall open-frame instrument/heat-transfer equipment. These are
+	# independently shaped cooling fins, struts and replaceable modules,
+	# not bulk filled merely to hit a voxel-count threshold.
+	for x in [-8, -6, -4, 4, 6, 8]:
+		for y in range(-1, 12):
+			var rear := 5 if x < 0 else 4
+			for z in range(rear, rear + 4):
+				var top_slope := (y > 8 and z > rear + 1)
+				if not top_slope:
+					p.cells[Vector3i(x, y, z)] = 8 if y % 3 == 0 else 4
+		for vy in [0, 3, 6, 9]:
+			p.carve_box(Vector3i(x, vy, 7),
+					Vector3i(x, vy, 8))
+	for x in [-7, 5]:
+		rod(p, Vector3i(x, -6, 5),
+				Vector3i(x, 10, 8), 1.0, 8)
+	# Independent left sensor barrel and right open cooling reel.
+	barrel(p, -6, 7, -10, -4, 1.8, 0.7, 8)
+	hub(p, 5, 7, 6, 10, 2.5, 1.2)
 
 
 ## Limb constructors are also independent: no shared "round upper arm /
