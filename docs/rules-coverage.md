@@ -129,7 +129,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Careful entry (p. 133): running straight into the building hex ahead as the whole move needs no entry roll and works for any building class.
 - ✅ Shoved into a building (p. 132): the 'Mech gets in whatever its weight, and the hex takes an immediate Destroy Check.
 - 🟡 Roofs (`Roofs`, pp. 132-137): jump on; walk/run roof to roof at 1 MP (same level, or one down going forward), never off to the ground; heavier than the support limit: Destroy Check at +2 per class over; a collapsing roof drops the 'Mech the building's height; roof height counts for line of sight and physical attacks — `TODO(rules)`: a 'Mech inside and one on the roof of the same hex, shoved onto a roof, sight between roofs and insides.
-- 🟡 `TODO(rules)`: deliberately failing the entry roll, DFA into a level 1 building, Castles Brian.
+- ✅ Smashing in (p. 133): a player may choose to fail the entry roll on purpose; no roll is made and the building takes the usual destroy check ("Smash in" button).
+- 🟡 `TODO(rules)`: DFA into a level 1 building, Castles Brian.
 - 🟡 Fire (`Fire`, pp. 123-124, 136): burning hexes from the map; flamer hits on a 'Mech-scale building light it once a phase's heat reaches its class's fire heat x height (end of phase); it burns until the building collapses. Moving through a burning hex +2 heat (not jumping), in one at the Heat Phase +5. Fire makes light smoke two levels above the ground or roof: +1 to hit a 'Mech in it and 1 line-of-sight point, never past 2 per hex with woods; none for a 'Mech inside the burning building — `TODO(rules)`: lighting woods, other smoke.
 - ⬜ Physical attacks on buildings, bridges as structures, basements.
 

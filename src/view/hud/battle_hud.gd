@@ -12,6 +12,7 @@ signal confirm
 signal cancel
 signal charge
 signal prone
+signal smash
 signal top_down_toggled
 signal sheet_toggled
 signal log_toggled
@@ -33,6 +34,7 @@ var move_bar: HBoxContainer
 var attack_bar: HBoxContainer
 var mode_button: Button
 var charge_button: Button
+var smash_button: Button
 var explain_button: Button
 var attack_button: Button
 var skip_button: Button
@@ -87,6 +89,8 @@ func _ready() -> void:
 	_button(move_bar, "Turn ▶", turn_right)
 	charge_button = _button(move_bar, "Charge", charge)
 	charge_button.visible = false
+	smash_button = _button(move_bar, "Smash in", smash)
+	smash_button.visible = false
 	_button(move_bar, "Prone", prone)
 	_button(move_bar, "Cancel", cancel)
 	_button(move_bar, "Confirm", confirm)

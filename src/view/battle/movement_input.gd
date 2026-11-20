@@ -21,6 +21,7 @@ var mode := MoveMode.Kind.WALK
 var options: MoveOptions
 var preview: Vector3i
 var has_preview := false
+var smash := false  ## Fail building entry rolls on purpose (Destroy Checks).
 
 
 func on_hex_tapped(c: Vector2i) -> void:
@@ -63,8 +64,9 @@ func on_confirm() -> void:
 	if selected and has_preview:
 		var u := selected
 		var k := preview
+		var sm := smash and _forces_entry()
 		clear_selection()
-		controller.submit_move(u, k, mode)
+		controller.submit_move(u, k, mode, -1, false, sm)
 
 
 ## Drop the selected 'Mech prone: at the end of the previewed move when it
@@ -81,6 +83,21 @@ func on_prone() -> void:
 		controller.submit_move(u, k, m, -1, true)
 	else:
 		controller.go_prone(u)
+
+
+func on_smash() -> void:
+	smash = not smash
+	_refresh()
+
+
+## Does the previewed move force its way into a 'Mech-scale building?
+func _forces_entry() -> bool:
+	if not has_preview or mode == MoveMode.Kind.JUMP or preview == options.careful_entry or selected.on_roof:
+		return false
+	for c in BuildingRules.entered(controller.state.map, selected.coord, options.path_to(preview), false):
+		if not controller.state.map.get_tile(c).building.type.civilian:
+			return true
+	return false
 
 
 ## Enemy straight ahead of the previewed end position, if a charge (or a
@@ -120,6 +137,7 @@ func clear_selection() -> void:
 func _select(u: Unit) -> void:
 	selected = u
 	mode = MoveMode.Kind.WALK
+	smash = false
 	hud.show_move_controls(true)
 	unit_selected.emit(u)
 	_replan()
@@ -173,6 +191,8 @@ func _refresh() -> void:
 	var ct := charge_target()
 	hud.charge_button.visible = ct != null
 	hud.charge_button.text = "Death from Above" if mode == MoveMode.Kind.JUMP else "Charge"
+	hud.smash_button.visible = _forces_entry()
+	hud.smash_button.text = "Smash in: on" if smash else "Smash in"
 	if has_preview:
 		var tip := Advisor.move(controller.state, selected, mode, preview, options,
 				GameSettings.explain_level)

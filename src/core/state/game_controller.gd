@@ -34,12 +34,13 @@ func start_turn() -> void:
 ## Moves a unit to a planned (hex, facing) key. Returns false if illegal.
 ## With `charge_target_id`, the move ends in a charge (walk/run) or death from
 ## above (jump) against the enemy straight ahead; it must be legal.
-## `then_prone` drops it to the ground at the end of the move (1 MP).
+## `then_prone` drops it to the ground at the end of the move (1 MP);
+## `smash` fails building entry rolls on purpose to force Destroy Checks.
 func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1,
-		then_prone := false) -> bool:
+		then_prone := false, smash := false) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT):
 		return false
-	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone):
+	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone, smash):
 		return false
 	_unit_done()
 	return true

@@ -16,7 +16,8 @@ extends RefCounted
 ## - Displaced into a building: it gets in regardless of class, but the hex
 ##   takes a Destroy Check at once.
 ## - Roofs: see Roofs.
-## TODO(rules): deliberately failing the entry roll.
+## - A 'Mech may smash in on purpose: the entry roll fails and the hex takes a
+##   Destroy Check (not with careful entry).
 
 
 ## Building hexes a move enters, in order: ground moves enter each one on
@@ -36,8 +37,9 @@ static func entered(map: BattleMap, from: Vector2i, path: Array[Vector3i], jumpe
 
 
 ## Resolves entering one building hex (call after the move is announced).
+## `smash`: deliberately fail the entry roll to force a Destroy Check.
 static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vector2i,
-		careful := false) -> void:
+		careful := false, smash := false) -> void:
 	var tile := state.map.get_tile(c)
 	if tile == null or tile.building == null or u.destroyed:
 		return
@@ -49,9 +51,10 @@ static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vect
 	if careful:
 		emit.call(GameEvent.BUILDING, {"kind": "careful", "coord": c, "unit_id": u.id, "name": b.type.name})
 		return
-	if Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1):
+	if not smash and Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1):
 		return
-	emit.call(GameEvent.BUILDING, {"kind": "entry_failed", "coord": c, "unit_id": u.id, "name": b.type.name})
+	emit.call(GameEvent.BUILDING, {"kind": "smash" if smash else "entry_failed", "coord": c,
+			"unit_id": u.id, "name": b.type.name})
 	if destroy_check(state, dice, emit, c, 0, u.id):
 		collapse(state, dice, emit, tile, u)
 

@@ -17,7 +17,7 @@ static func go_prone(emit: Callable, unit: Unit) -> void:
 ## Returns false if the target can't be reached in this mode. `then_prone`
 ## drops the 'Mech to the ground at the end (1 MP, no charge).
 static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target: Vector3i,
-		mode: int, charge_target_id: int, then_prone := false) -> bool:
+		mode: int, charge_target_id: int, then_prone := false, smash := false) -> bool:
 	var opts := MovePlanner.plan(state, unit, mode)
 	if not opts.can_reach(target):
 		return false
@@ -60,7 +60,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		Roofs.landed(state, dice, emit, unit)
 	elif not unit.on_roof:
 		for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
-			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry)
+			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry, smash)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved)
 	HullBreach.check_exposed(state, emit, unit)
