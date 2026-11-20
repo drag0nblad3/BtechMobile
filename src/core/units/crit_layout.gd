@@ -43,6 +43,9 @@ static func build(def: UnitDef) -> Array:
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.MELEE, String(m["kind"]).capitalize(), i), def)
 	for loc in def.case_locs:
 		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE"), def)
+	for loc: int in def.bulk_slots:
+		for item: String in def.bulk_slots[loc]:
+			_place(out[loc], CritSlot.new(CritSlot.Kind.BULK, "Ferro-Fibrous" if item == "ferro_fibrous" else "Endo Steel"), def)
 	return out
 
 
@@ -54,6 +57,8 @@ static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
 	elif loc == Location.CT:
 		names = ["Engine", "Engine", "Engine", "Gyro", "Gyro", "Gyro", "Gyro",
 				"Engine", "Engine", "Engine"]
+	elif def.is_xl() and (loc == Location.LT or loc == Location.RT):
+		names = ["Engine", "Engine", "Engine"]
 	elif Location.is_arm(loc):
 		for a in ARM_ACTUATORS:
 			names.append(a if def.has_actuator(loc, a) else "")

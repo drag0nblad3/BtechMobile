@@ -55,11 +55,14 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine; list the rest as
   `heat_sink` items. `"heat_sink_type": "double"` makes them all doubles (2 heat,
-  3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon. A test checks heat sinks, jump jets and armor maximums.
+  3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon.
+  `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
+  and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
+  `ferro_fibrous` items (14 each for Inner Sphere; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
 - The design must weigh its tonnage (test): structure 10%, engine by rating
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
-  cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
-  points per ton (rounded up to the half ton), weapon tons, 1 t per ammo item.
+  XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
+  points per ton (17.92 ferro-fibrous, rounded up to the half ton), weapon tons, 1 t per ammo item.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
 
 ## `data/scenarios/<id>.json`

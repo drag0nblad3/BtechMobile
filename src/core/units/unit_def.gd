@@ -20,6 +20,12 @@ var double_heat_sinks := false
 ## Physical weapons: [{kind: "hatchet"|"sword", loc}] (MeleeWeapons).
 var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
+## "standard" or "xl" (XlEngine: 3 engine slots in each side torso).
+var engine_type := "standard"
+## "standard" or "endo_steel"; armor "standard" or "ferro_fibrous". Their
+## bulky slots are listed as equipment ("endo_steel", "ferro_fibrous").
+var structure_type := "standard"
+var armor_type := "standard"
 var role: String = ""    ## One-line tactical summary for the force builder.
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 var armor: Array[int] = []       ## Per Location, front.
@@ -30,6 +36,8 @@ var weapon_mounts: Array[Dictionary] = []
 var ammo_mounts: Array[Dictionary] = []
 ## Location -> Array[String] of other slot items ("heat_sink", "jump_jet").
 var other_items: Dictionary = {}
+## Location -> Array[String] of endo steel / ferro-fibrous slots.
+var bulk_slots: Dictionary = {}
 ## Location -> Array[String] of actuators the design lacks ("hand", ...).
 var missing_actuators: Dictionary = {}
 
@@ -44,6 +52,9 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.jump_mp = int(d.get("jump_mp", 0))
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
+	u.engine_type = d.get("engine_type", "standard")
+	u.structure_type = d.get("structure_type", "standard")
+	u.armor_type = d.get("armor_type", "standard")
 	u.role = d.get("role", "")
 	u.sprite = d.get("sprite", "")
 	var arm: Dictionary = d.get("armor", {})
@@ -56,13 +67,21 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	var eq: Dictionary = d.get("equipment", {})
 	for code: String in eq:
 		for item: String in eq[code]:
-			u._add_item(Location.from_code(code), item, weapons)
+			var rep := item.split("*")  # "endo_steel*3" = three slots
+			for i in (int(rep[1]) if rep.size() > 1 else 1):
+				u._add_item(Location.from_code(code), rep[0], weapons)
 	return u
 
 
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
-## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword".
+## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword",
+## "endo_steel", "ferro_fibrous"; "<item>*N" repeats an item N times.
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
+	if item == "endo_steel" or item == "ferro_fibrous":
+		if not bulk_slots.has(loc):
+			bulk_slots[loc] = []
+		bulk_slots[loc].append(item)
+		return
 	if item == "case":
 		case_locs.append(loc)
 		return
@@ -140,6 +159,10 @@ func melee_tons(kind: String) -> float:
 	if kind == "sword":
 		return ceilf(tonnage / 20.0 * 2.0) / 2.0
 	return ceilf(tonnage / 15.0)
+
+
+func is_xl() -> bool:
+	return engine_type == "xl"
 
 
 func has_case(loc: int) -> bool:

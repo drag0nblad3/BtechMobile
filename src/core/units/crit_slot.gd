@@ -4,7 +4,7 @@ extends RefCounted
 ## fills it: an index into Unit.weapons or Unit.ammo, or -1.
 
 enum Kind { EMPTY, ENGINE, GYRO, COCKPIT, SENSORS, LIFE_SUPPORT, ACTUATOR,
-		WEAPON, AMMO, HEAT_SINK, JUMP_JET, CASE, ARTEMIS, MELEE }
+		WEAPON, AMMO, HEAT_SINK, JUMP_JET, CASE, ARTEMIS, MELEE, BULK }
 
 var kind: int
 var name: String
@@ -19,6 +19,7 @@ func _init(k: int, n: String, r: int = -1) -> void:
 	ref = r
 
 
-## Empty slots and slots already hit can't take a critical hit.
+## Inapplicable slots (p. 94, errata): empty, already destroyed at any point,
+## or slots that can't take critical damage (CASE, endo steel, ferro-fibrous).
 func can_be_hit() -> bool:
-	return kind != Kind.EMPTY and not hit
+	return kind != Kind.EMPTY and kind != Kind.CASE and kind != Kind.BULK and not hit
