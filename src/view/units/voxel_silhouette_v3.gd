@@ -67,6 +67,18 @@ static func _atlas_torso(p: VoxelPart) -> void:
 		p.carve_box(Vector3i(eye - 1, 8, -11),
 				Vector3i(eye + 1, 10, -8))
 		p.fill_box(Vector3i(eye, 9, -8), Vector3i(eye, 9, -8), 7)
+	# Fill the old dark vertical void between the neck and waist with
+	# sculpted armor. A large black rectangle made the Atlas look unfinished.
+	# The center narrows toward its belt, with a real armored sternum.
+	for y in range(-7, 4):
+		var half := 6 if y < -4 else (8 if y < 1 else 9)
+		for x in range(-half, half):
+			var front := -9 if abs(x) < 5 else -8
+			for z in range(front, -6):
+				p.cells[Vector3i(x, y, z)] = 0 if abs(x) < 5 else 4
+	for y in [-6, -2, 2]:
+		p.carve_box(Vector3i(-7, y, -9), Vector3i(7, y, -9))
+	p.fill_box(Vector3i(-1, -6, -10), Vector3i(0, 2, -9), 8)
 	# Chest should read as one deep armored breastplate, NOT two footballs.
 	# Several extra projecting plates define a narrow centerline.
 	for side in [-1, 1]:
@@ -96,6 +108,11 @@ static func _hunchback_torso(p: VoxelPart) -> void:
 					p.cells.erase(Vector3i(x, y, z))
 	loft(p, 3, 12, Vector2(5.7, 5.5), Vector2(5.0, 5.0),
 			0, 4, 1, 7.0, 0.15)
+	# A true FLAT cannon face and thick side armor emphasize the
+	# characteristic one-sided box tower rather than a rounded shoulder blob.
+	p.fill_box(Vector3i(2, 5, -7), Vector3i(13, 11, -5), 4)
+	p.fill_box(Vector3i(3, 12, -4), Vector3i(11, 12, 3), 8)
+	p.fill_box(Vector3i(13, 6, -5), Vector3i(14, 10, 3), 4)
 	# A cuboid housing with cut corners, side radiator and thick cannon
 	# protrusion -- preserve a real hole through the forward barrel.
 	p.fill_box(Vector3i(4, 7, -8), Vector3i(10, 10, -6), 8)
