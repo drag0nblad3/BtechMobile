@@ -8,6 +8,7 @@ extends RefCounted
 ##   steps one hex straight forward or back if it can; otherwise it is pushed
 ##   on in the same direction (and falls if it failed). With nowhere to go,
 ##   the last 'Mech in the chain is destroyed.
+## - Into a building hex: it gets in, and the hex takes a Destroy Check.
 ## TODO(rules): accidental falls from above (2+ levels down onto a 'Mech) are
 ## treated as a domino effect.
 
@@ -35,6 +36,7 @@ static func push(state: GameState, dice: Dice, emit: Callable, u: Unit, dir: int
 	var drop := _level(src) - _level(dst)
 	if drop >= 2:
 		Fall.fall(state, dice, emit, u, drop, "pushed off a ledge")
+	BuildingRules.displaced_into(state, dice, emit, u)
 	return true
 
 

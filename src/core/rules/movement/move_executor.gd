@@ -53,7 +53,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	if not fall.is_empty():
 		Fall.fall(state, dice, emit, unit, int(fall["levels"]), fall["reason"])
 	for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
-		BuildingRules.enter(state, dice, emit, unit, c)
+		BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved)
 	Psr.resolve_pending(state, dice, emit, unit)

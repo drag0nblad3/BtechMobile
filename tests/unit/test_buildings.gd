@@ -121,3 +121,35 @@ func test_city_battle_runs() -> void:
 				or (e.type == GameEvent.PSR and String(e.data["reason"]).begins_with("forcing")))
 		building_events += b.size()
 	check(building_events > 0, "'Mechs fought around the buildings")
+
+
+func test_careful_entry_by_running_straight_in() -> void:
+	var s := _state("heavy")
+	var light := mech("jenner_jr7d", 0, hex_at(2, 3), 0, 1)
+	s.add_unit(light)
+	var into := MoveOptions.key(hex_at(2, 2), 0)
+	var opts := MovePlanner.plan(s, light, MoveMode.Kind.RUN)
+	check(opts.can_reach(into), "running straight in: careful entry, any class")
+	check_eq(opts.careful_entry, into)
+	check(not MovePlanner.plan(s, light, MoveMode.Kind.WALK).can_reach(into), "walking: still too light")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(2)  # would fail an entry roll
+	check(MoveExecutor.run(s, dice, _emit, light, into, MoveMode.Kind.RUN, -1))
+	check_eq(light.coord, hex_at(2, 2))
+	check(not events.any(func(e: GameEvent) -> bool: return e.type == GameEvent.PSR), "no roll")
+	check(s.map.get_tile(hex_at(2, 2)).building != null, "no damage to the building")
+	light.coord = hex_at(2, 4)
+	check(not MovePlanner.plan(s, light, MoveMode.Kind.RUN).can_reach(into), "not from two hexes away")
+
+
+func test_shoved_into_building_gets_destroy_check() -> void:
+	var s := _state("medium", 3)
+	var u := mech("jenner_jr7d", 1, hex_at(2, 3), 0, 1)
+	s.add_unit(u)
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)  # destroy check fails (needs 9)
+	check(Displacement.push(s, dice, _emit, u, 0), "a light 'Mech can be shoved in")
+	check_eq(u.coord, hex_at(2, 2))
+	var checks := events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.BUILDING and e.data["kind"] == "destroy_check")
+	check_eq(checks.size(), 1, "an immediate destroy check")
+	check(s.map.get_tile(hex_at(2, 2)).building != null, "it holds")

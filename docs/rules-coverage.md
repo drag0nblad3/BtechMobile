@@ -123,7 +123,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Collapse (pp. 136-137): rubble; a 'Mech inside takes half the Threshold per building level above it, 5-point groups from the front. No fall.
 - ✅ Shooting buildings (p. 135): -4, from the next hex always hits, cluster weapons hit with every missile.
 - ✅ Buildings block line of sight like a hill as tall as the roof.
-- 🟡 `TODO(rules)`: careful entry, roofs (landing, support limits), involuntary entry by displacement (Destroy Check), DFA into a level 1 building, fire, Castles Brian.
+- ✅ Careful entry (p. 133): running straight into the building hex ahead as the whole move needs no entry roll and works for any building class.
+- ✅ Shoved into a building (p. 132): the 'Mech gets in whatever its weight, and the hex takes an immediate Destroy Check.
+- 🟡 `TODO(rules)`: roofs (landing, support limits), deliberately failing the entry roll, DFA into a level 1 building, fire, Castles Brian.
 - ⬜ Physical attacks on buildings, bridges as structures, basements.
 
 ## Pilots

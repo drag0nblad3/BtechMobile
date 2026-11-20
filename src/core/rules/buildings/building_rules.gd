@@ -11,7 +11,11 @@ extends RefCounted
 ##   table) strike the building instead.
 ## - Collapse: rubble; a 'Mech inside takes half the threshold per building
 ##   level above it, in 5-point groups from the front. No fall.
-## TODO(rules): careful entry, roofs, involuntary entry by displacement.
+## - Careful entry: running straight into the building hex ahead as the whole
+##   move needs no roll and works for any class (MovePlanner).
+## - Displaced into a building: it gets in regardless of class, but the hex
+##   takes a Destroy Check at once.
+## TODO(rules): roofs; deliberately failing the entry roll.
 
 
 ## Building hexes a move enters, in order: ground moves enter each one on
@@ -31,7 +35,8 @@ static func entered(map: BattleMap, from: Vector2i, path: Array[Vector3i], jumpe
 
 
 ## Resolves entering one building hex (call after the move is announced).
-static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vector2i) -> void:
+static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vector2i,
+		careful := false) -> void:
 	var tile := state.map.get_tile(c)
 	if tile == null or tile.building == null or u.destroyed:
 		return
@@ -40,10 +45,27 @@ static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vect
 		emit.call(GameEvent.BUILDING, {"kind": "flattened", "coord": c, "unit_id": u.id, "name": b.type.name})
 		collapse(state, dice, emit, tile, null)
 		return
+	if careful:
+		emit.call(GameEvent.BUILDING, {"kind": "careful", "coord": c, "unit_id": u.id, "name": b.type.name})
+		return
 	if Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1):
 		return
 	emit.call(GameEvent.BUILDING, {"kind": "entry_failed", "coord": c, "unit_id": u.id, "name": b.type.name})
 	if destroy_check(state, dice, emit, c, 0, u.id):
+		collapse(state, dice, emit, tile, u)
+
+
+## A 'Mech shoved into a building hex (p. 132): it gets in, and the hex takes
+## a Destroy Check straight away.
+static func displaced_into(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
+	var tile := state.map.get_tile(u.coord)
+	if tile == null or tile.building == null or u.destroyed:
+		return
+	if tile.building.type.civilian:
+		enter(state, dice, emit, u, u.coord)
+		return
+	emit.call(GameEvent.BUILDING, {"kind": "shoved_in", "coord": u.coord, "unit_id": u.id, "name": tile.building.type.name})
+	if destroy_check(state, dice, emit, u.coord, 0, u.id):
 		collapse(state, dice, emit, tile, u)
 
 

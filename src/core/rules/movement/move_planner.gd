@@ -46,6 +46,8 @@ static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
 			opts.prev[nk] = k
 			opts.can_end[nk] = _can_end_in(state, unit, MoveOptions.coord_of(nk))
 			heap.push(ng, nk)
+	if mode == MoveMode.Kind.RUN and not unit.prone:
+		_careful_entry(state, unit, opts, start)
 	if mode == MoveMode.Kind.RUN and opts.budget >= 1 and not unit.prone:
 		_minimum_move(state, unit, opts, start)
 	return opts
@@ -65,6 +67,27 @@ static func _minimum_move(state: GameState, unit: Unit, opts: MoveOptions, start
 	opts.prev[nk] = start
 	opts.can_end[nk] = _can_end_in(state, unit, to)
 	opts.minimum_move = nk
+
+
+## Careful entry (book p. 133): running, a 'Mech may spend its whole move
+## entering the building hex straight ahead, even one of a class too heavy
+## for it to force its way into, if it has the MP to pay for the hex.
+static func _careful_entry(state: GameState, unit: Unit, opts: MoveOptions, start: Vector3i) -> void:
+	var to := Hex.neighbor(unit.coord, start.z)
+	var tile := state.map.get_tile(to)
+	if tile == null or tile.building == null or tile.building.type.civilian:
+		return
+	var nk := MoveOptions.key(to, start.z)
+	if not opts.cost.has(nk):
+		var mp := MoveCost.enter_cost(state.map, unit.coord, to, MoveMode.Kind.RUN, max_level_change(unit))
+		var other := state.unit_at(to)
+		if mp == MoveCost.PROHIBITED or mp > opts.budget or (other != null and other != unit):
+			return
+		opts.cost[nk] = mp
+		opts.prev[nk] = start
+		opts.can_end[nk] = true
+	if opts.prev.get(nk) == start:
+		opts.careful_entry = nk
 
 
 ## Levels a 'Mech may change per hex moving forward: 2, or 1 with a hip hit or
