@@ -9,6 +9,8 @@ const BATTLE_SCENE := "res://scenes/main.tscn"
 static var pending: GameState = null
 ## Sides the computer plays in the next battle.
 static var bot_sides: Array = []
+## Scenario file whose lessons to show in the next battle, "" for none.
+static var tutorial_path := ""
 
 
 static func take() -> GameState:

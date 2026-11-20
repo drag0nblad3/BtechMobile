@@ -85,3 +85,25 @@ func test_reasons_not_repeated() -> void:
 	var th2 := ToHit.new()
 	th2.add("target moved 7 hexes", 3, "fast")
 	check(not ModsText.lines(th2.mods, ExplainLevel.FULL, seen).contains("fast"), "second time")
+
+
+func test_tutorial_lessons_fire_once_in_order() -> void:
+	var path := "res://data/scenarios/tutorial.json"
+	var s := ScenarioLoader.load_file(path, terrain(), UnitDb.load_dir())
+	var tut := Tutorial.from_scenario(path)
+	check(tut.lessons.size() >= 8, "has lessons")
+	var gc := GameController.new(s, 9)
+	var titles: Array[String] = []
+	gc.event.connect(func(e: GameEvent) -> void:
+		for l in tut.on_event(e, gc.state):
+			titles.append(l["title"]))
+	SimBot.play(gc, 30)
+	check(titles.size() >= 6, "most lessons shown: %s" % [titles])
+	check_eq(titles[0], "Your first battle")
+	check_eq(titles[1], "Moving")
+	var unique := {}
+	for t in titles:
+		unique[t] = true
+	check_eq(unique.size(), titles.size(), "each lesson once")
+	if gc.state.game_over:
+		check_eq(titles[titles.size() - 1], "Training complete")
