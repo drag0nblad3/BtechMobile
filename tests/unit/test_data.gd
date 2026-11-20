@@ -70,15 +70,20 @@ func test_equipment_fits_slots() -> void:
 		var want := 0
 		for m in def.weapon_mounts:
 			want += (m["weapon"] as WeaponDef).slots
-		want += def.ammo_mounts.size()
+			if m.get("artemis", false):
+				want += 1
+		want += def.ammo_mounts.size() + def.case_locs.size()
+		for m in def.melee:
+			want += def.melee_slots(m["kind"])
 		for loc: int in def.other_items:
-			want += def.other_items[loc].size()
+			for item: String in def.other_items[loc]:
+				want += 3 if item == "heat_sink" and def.double_heat_sinks else 1
 		var got := 0
 		var u := Unit.new(1, def, 0, Vector2i.ZERO, 0)
 		for loc in Location.COUNT:
 			for s: CritSlot in u.slots[loc]:
 				if s.kind in [CritSlot.Kind.WEAPON, CritSlot.Kind.AMMO, CritSlot.Kind.HEAT_SINK,
-						CritSlot.Kind.JUMP_JET]:
+						CritSlot.Kind.JUMP_JET, CritSlot.Kind.CASE, CritSlot.Kind.ARTEMIS, CritSlot.Kind.MELEE]:
 					got += 1
 		check_eq(got, want, def.id + " every item has a critical slot")
 

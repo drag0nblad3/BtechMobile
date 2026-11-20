@@ -1,0 +1,16 @@
+{
+  "id": "victor_vtr9k", "name": "Victor", "model": "VTR-9K", "tonnage": 80,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 10, "heat_sink_type": "double", "sprite": "victor",
+  "role": "Jumping assault brawler. Trades the old AC/20 for a long-reaching Gauss rifle and accurate pulse lasers; double heat sinks keep it cool.",
+  "armor": {"HD": 9, "CT": 33, "LT": 23, "RT": 23, "LA": 22, "RA": 22, "LL": 30, "RL": 29},
+  "rear_armor": {"CT": 11, "LT": 7, "RT": 7},
+  "missing_actuators": {"RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "RA": ["gauss_rifle"],
+    "RT": ["ammo:gauss_rifle", "ammo:gauss_rifle", "case", "jump_jet"],
+    "LA": ["medium_pulse_laser", "medium_pulse_laser"],
+    "LT": ["srm4", "ammo:srm4", "case", "jump_jet"],
+    "CT": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

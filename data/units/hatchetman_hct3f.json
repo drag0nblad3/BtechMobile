@@ -1,0 +1,14 @@
+{
+  "id": "hatchetman_hct3f", "name": "Hatchetman", "model": "HCT-3F", "tonnage": 45,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 10, "sprite": "hatchetman",
+  "role": "Medium city fighter. Jumps over buildings to land next to you, then swings a huge hatchet; the AC/10 softens targets on the way in.",
+  "armor": {"HD": 9, "CT": 19, "LT": 15, "RT": 15, "LA": 12, "RA": 12, "LL": 19, "RL": 19},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "equipment": {
+    "HD": ["medium_laser"],
+    "CT": ["medium_laser", "jump_jet"],
+    "RT": ["ac10", "ammo:ac10", "jump_jet"],
+    "LT": ["jump_jet", "jump_jet"],
+    "RA": ["hatchet"]
+  }
+}
