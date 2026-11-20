@@ -33,6 +33,9 @@ var mesh_enabled := true
 ## Surface nets draw rounded/faceted actual voxel boundaries; the original
 ## cubical mesher remains available for compatibility and simple test parts.
 var surface_mode := "cube"
+## Source-mesh / voxel-damage hybrid: the authored triangular armor stays
+## visible until this part is struck, then its true damaged cells render.
+var intact_source_mesh: Mesh = null
 ## Optional profile display colors; voxel material IDs and armor roles never
 ## change, so hit results are independent of the chosen visual finish.
 var visual_palette: Array[Color] = []
@@ -324,6 +327,9 @@ func rebuild() -> void:
 		material.metallic = 0.26
 		material.cull_mode = BaseMaterial3D.CULL_DISABLED
 		_mesh_instance.material_override = material
+	if intact_source_mesh != null and cells.size() == _original_count:
+		_mesh_instance.mesh = intact_source_mesh
+		return
 	var vertices := PackedVector3Array()
 	var normals := PackedVector3Array()
 	var colors := PackedColorArray()
