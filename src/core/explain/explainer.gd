@@ -75,7 +75,10 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.CRITICAL:
 			return "  Critical hit on %s %s: %s" % [_u(s, d), Location.name_of(d["loc"]), d["effect"]]
 		GameEvent.UNIT_DESTROYED:
-			return "%s is destroyed (%s)!" % [_u(s, d), d["reason"]]
+			var t := "%s is destroyed (%s)!" % [_u(s, d), d["reason"]]
+			if level == ExplainLevel.FULL and String(d["reason"]).begins_with("XL engine"):
+				t += " An XL engine saves weight but reaches into both side torsos, so losing either one is fatal."
+			return t
 		GameEvent.AMMO_EXPLOSION:
 			return DamageText.ammo(s, d, level)
 		GameEvent.CLUB:

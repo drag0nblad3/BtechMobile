@@ -28,7 +28,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	var structure := 0
 	for loc in Location.COUNT:
 		structure += StructureTable.points(def.tonnage, loc)
-	b["structure"] = structure * STRUCTURE_MULT
+	b["structure"] = structure * STRUCTURE_MULT * (XlEngine.BV_STRUCTURE_MULT if def.is_xl() else 1.0)
 	b["gyro"] = def.tonnage * GYRO_MULT
 	b["ammo_penalty"] = def.ammo_mounts.size() * AMMO_PENALTY
 	var tmm := maxi(ToHitCalc.target_movement_mod(def.run_mp()),

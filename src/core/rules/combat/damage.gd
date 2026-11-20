@@ -81,6 +81,8 @@ static func destroy_location(u: Unit, loc: int) -> void:
 		var arm := Location.arm_of_torso(loc)
 		if arm >= 0 and not u.is_location_destroyed(arm):
 			destroy_location(u, arm)
+		if arm >= 0:
+			XlEngine.on_torso_lost(u, loc)
 
 
 static func destroy_unit(u: Unit, reason: String) -> void:

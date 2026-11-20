@@ -7,6 +7,8 @@ extends RefCounted
 
 const COCKPIT_TONS := 3.0
 const ARMOR_PER_TON := 16.0
+## Ferro-fibrous gives 12% more points per ton; endo steel halves structure.
+const FERRO_MULT := 1.12
 
 static var _engine: Dictionary = {}
 
@@ -20,13 +22,13 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	for m in def.weapon_mounts:
 		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0)
 	return {
-		"structure": def.tonnage / 10.0,
-		"engine": engine_tons(rating),
+		"structure": _half_up(def.tonnage / 10.0 * (0.5 if def.structure_type == "endo_steel" else 1.0)),
+		"engine": XlEngine.tons(engine_tons(rating), def.is_xl()),
 		"gyro": float(ceili(rating / 100.0)),
 		"cockpit": COCKPIT_TONS,
 		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
 		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
-		"armor": ceilf(armor_pts / ARMOR_PER_TON * 2.0) / 2.0,
+		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (FERRO_MULT if def.armor_type == "ferro_fibrous" else 1.0))),
 		"weapons": weapons,
 		"ammo": float(def.ammo_mounts.size()),
 		"case": def.case_locs.size() * 0.5,
@@ -39,6 +41,10 @@ static func total(def: UnitDef) -> float:
 	for v: float in breakdown(def).values():
 		t += v
 	return t
+
+
+static func _half_up(t: float) -> float:
+	return ceilf(snappedf(t * 2.0, 0.0001)) / 2.0
 
 
 static func jump_jet_tons(tonnage: int) -> float:

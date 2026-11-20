@@ -22,6 +22,15 @@ static func text(u: Unit) -> String:
 	t += "Heat [color=%s]%d[/color] / 30: %s\n" % [_heat_color(u.heat), u.heat, HeatScale.effects_text(u.heat)]
 	t += "Heat sinks %d of %d%s\n" % [u.working_heat_sinks(), d.heat_sinks,
 			" double (%d heat)" % u.dissipation() if d.double_heat_sinks else ""]
+	var tech: Array[String] = []
+	if d.is_xl():
+		tech.append("XL engine (dies if a side torso is lost)")
+	if d.structure_type == "endo_steel":
+		tech.append("endo steel structure")
+	if d.armor_type == "ferro_fibrous":
+		tech.append("ferro-fibrous armor")
+	if not tech.is_empty():
+		t += ", ".join(tech) + "\n"
 	t += "MechWarrior: gunnery %d, piloting %d, hits %d/6%s\n" % [u.pilot.gunnery,
 			u.pilot.piloting, u.pilot.hits, "" if u.pilot.conscious else " (unconscious)"]
 	var cond: Array[String] = []
