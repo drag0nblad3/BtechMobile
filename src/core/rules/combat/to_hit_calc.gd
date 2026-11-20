@@ -65,6 +65,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if w.def.min_range > 0 and dist <= w.def.min_range:
 		th.add("minimum range", w.def.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [w.def.name, w.def.min_range])
+	if w.def.to_hit_mod != 0:
+		th.add(w.def.name, w.def.to_hit_mod, "%s is %s accurate than a standard weapon: %+d to hit." % [
+				w.def.name, "more" if w.def.to_hit_mod < 0 else "less", w.def.to_hit_mod])
 	add_conditions(th, state, attacker, target, los)
 	if Location.is_arm(w.loc):
 		add_arm_actuators(th, attacker, w.loc)

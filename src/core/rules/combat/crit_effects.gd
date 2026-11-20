@@ -36,7 +36,11 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 		CritSlot.Kind.ACTUATOR:
 			return _actuator(u, loc, slot)
 		CritSlot.Kind.WEAPON:
-			u.weapons[slot.ref].destroyed = true
+			var w := u.weapons[slot.ref]
+			w.destroyed = true
+			if w.def.explodes and not w.exploded:
+				ComponentExplosion.explode(state, dice, emit, u, w, loc)
+				return "%s explodes" % slot.name
 			return "%s destroyed" % slot.name
 		CritSlot.Kind.AMMO:
 			var bin := u.ammo[slot.ref]
@@ -44,7 +48,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 				AmmoExplosion.explode(state, dice, emit, u, bin)
 				return "ammo explodes"
 			bin.destroyed = true
-			return "empty ammo bin destroyed"
+			return "ammo bin destroyed (%s)" % ("empty" if bin.weapon.ammo_explodes else "doesn't explode")
 		CritSlot.Kind.HEAT_SINK:
 			if not u.lose_heat_sink(slot):
 				return "part of a heat sink already destroyed"

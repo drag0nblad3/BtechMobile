@@ -16,4 +16,4 @@ func _init(w: WeaponDef, location: int) -> void:
 
 ## Damage if the bin explodes: every remaining shot at full damage.
 func explosion_damage() -> int:
-	return 0 if destroyed else shots * weapon.max_damage()
+	return 0 if destroyed or not weapon.ammo_explodes else shots * weapon.max_damage()

@@ -23,6 +23,9 @@ var bv: int           ## Battle Value of the weapon.
 var ammo_bv: int       ## Battle Value of one ton of its ammo.
 var heat_damage: bool  ## A hit also adds its damage as heat to the target (flamers).
 var indirect: bool     ## May fire without line of sight via a spotter (LRMs).
+var to_hit_mod: int    ## The weapon's own to-hit modifier (pulse lasers -2).
+var explodes: bool     ## Blows up on its first critical hit (Gauss rifles, p. 184).
+var ammo_explodes: bool = true  ## False for Gauss slugs.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -45,6 +48,9 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.ammo_bv = int(d.get("ammo_bv", 0))
 	w.indirect = bool(d.get("indirect", false))
 	w.heat_damage = bool(d.get("heat_damage", false))
+	w.to_hit_mod = int(d.get("to_hit", 0))
+	w.explodes = bool(d.get("explodes", false))
+	w.ammo_explodes = bool(d.get("ammo_explodes", true))
 	return w
 
 
