@@ -63,15 +63,22 @@ func make_arena() -> void:
 	env.background_color = Color("152333")
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color("b5cee8")
-	env.ambient_light_energy = 0.92
+	env.ambient_light_energy = 0.55
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	env_node.environment = env
 	add_child(env_node)
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-56, -32, 0)
-	sun.light_energy = 1.40
+	sun.light_energy = 1.45
 	sun.shadow_enabled = true
 	add_child(sun)
+	# Modest cold side light reveals shape differences without washing out
+	# all the panel seams with the previous nearly full ambient fill.
+	var fill := DirectionalLight3D.new()
+	fill.rotation_degrees = Vector3(-25, 125, 0)
+	fill.light_color = Color("a7c6de")
+	fill.light_energy = 0.45
+	add_child(fill)
 	var ground := StaticBody3D.new()
 	ground.name = "HangarFloor"
 	ground.position.y = -0.15
