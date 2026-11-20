@@ -68,6 +68,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Armor → structure → transfer inward; rear armor on torsos.
 - ✅ Side torso destroyed takes its arm; head or CT destroyed destroys the 'Mech.
 - ✅ Ammo explosion (pp. 95-96): remaining shots × damage, capped at 20, into structure, transferring structure-to-structure; over the cap the surviving last location loses its armor (rear for a torso); MechWarrior takes 1 hit.
+- ✅ Explosive components (`ComponentExplosion`, pp. 96, 184): a Gauss rifle explodes on its first critical hit for 2 damage per slot (14), handled like an ammo explosion (20 cap, CASE, pilot hit); later hits don't explode it again; Gauss slugs never explode — `TODO(rules)`: always treated as activated (p. 180).
+- ✅ Advanced energy weapons (pp. 184-188): ER small/medium/large lasers, small/medium/large pulse lasers (-2 to hit), ER PPC (no minimum range), and the Gauss rifle, with table stats.
 - ✅ CASE (`"case"` item, p. 96): an explosion in, or transferred into, a CASE location deals at most 10 to its structure and, if it survives, up to 10 more to its armor (rear for a torso); nothing transfers onward. CASE itself takes a slot and 0.5 t. CASE II is not modelled.
 - ✅ Head hits (p. 117): every hit that damages the head is 1 MechWarrior hit, even if the armor holds.
 - ✅ 20-damage piloting roll counts the armor and structure pips actually marked off, including falls and explosions.

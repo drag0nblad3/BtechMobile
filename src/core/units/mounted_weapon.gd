@@ -6,6 +6,7 @@ var def: WeaponDef
 var loc: int
 var rear: bool
 var destroyed: bool = false
+var exploded: bool = false  ## An explosive weapon only blows up once.
 var fired: bool = false  ## Fired this turn (blocks punching with that arm).
 
 

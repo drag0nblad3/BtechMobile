@@ -16,6 +16,14 @@
     {"id": "lrm5", "name": "LRM 5", "type": "missile", "heat": 2, "damage": 1, "missiles": 5, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 45, "ammo_bv": 6, "slots": 1, "tons": 2, "ammo_per_ton": 24},
     {"id": "lrm10", "name": "LRM 10", "type": "missile", "heat": 4, "damage": 1, "missiles": 10, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 90, "ammo_bv": 11, "slots": 2, "tons": 5, "ammo_per_ton": 12},
     {"id": "lrm15", "name": "LRM 15", "type": "missile", "heat": 5, "damage": 1, "missiles": 15, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 136, "ammo_bv": 17, "slots": 3, "tons": 7, "ammo_per_ton": 8},
-    {"id": "lrm20", "name": "LRM 20", "type": "missile", "heat": 6, "damage": 1, "missiles": 20, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 181, "ammo_bv": 23, "slots": 5, "tons": 10, "ammo_per_ton": 6}
+    {"id": "lrm20", "name": "LRM 20", "type": "missile", "heat": 6, "damage": 1, "missiles": 20, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 181, "ammo_bv": 23, "slots": 5, "tons": 10, "ammo_per_ton": 6},
+    {"id": "er_small_laser", "name": "ER Small Laser", "type": "energy", "heat": 2, "damage": 3, "min": 0, "short": 2, "medium": 4, "long": 5, "bv": 17, "slots": 1, "tons": 0.5},
+    {"id": "er_medium_laser", "name": "ER Medium Laser", "type": "energy", "heat": 5, "damage": 5, "min": 0, "short": 4, "medium": 8, "long": 12, "bv": 62, "slots": 1, "tons": 1},
+    {"id": "er_large_laser", "name": "ER Large Laser", "type": "energy", "heat": 12, "damage": 8, "min": 0, "short": 7, "medium": 14, "long": 19, "bv": 163, "slots": 2, "tons": 5},
+    {"id": "small_pulse_laser", "name": "Small Pulse Laser", "type": "energy", "heat": 2, "damage": 3, "min": 0, "short": 1, "medium": 2, "long": 3, "to_hit": -2, "bv": 12, "slots": 1, "tons": 1},
+    {"id": "medium_pulse_laser", "name": "Medium Pulse Laser", "type": "energy", "heat": 4, "damage": 6, "min": 0, "short": 2, "medium": 4, "long": 6, "to_hit": -2, "bv": 48, "slots": 1, "tons": 2},
+    {"id": "large_pulse_laser", "name": "Large Pulse Laser", "type": "energy", "heat": 10, "damage": 9, "min": 0, "short": 3, "medium": 7, "long": 10, "to_hit": -2, "bv": 119, "slots": 2, "tons": 7},
+    {"id": "er_ppc", "name": "ER PPC", "type": "energy", "heat": 15, "damage": 10, "min": 0, "short": 7, "medium": 14, "long": 23, "bv": 229, "slots": 3, "tons": 7},
+    {"id": "gauss_rifle", "name": "Gauss Rifle", "type": "ballistic", "heat": 1, "damage": 15, "min": 2, "short": 7, "medium": 15, "long": 22, "explodes": true, "ammo_explodes": false, "bv": 320, "ammo_bv": 40, "slots": 7, "tons": 15, "ammo_per_ton": 8}
   ]
 }

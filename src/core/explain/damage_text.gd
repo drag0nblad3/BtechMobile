@@ -60,10 +60,13 @@ static func breach(s: GameState, d: Dictionary, level: int) -> String:
 
 
 static func ammo(s: GameState, d: Dictionary, level: int) -> String:
-	var t := "  %s's %s ammo explodes in the %s for %d damage!" % [
-			Names.unit(s.unit_by_id(d["unit_id"])), d["ammo"], Location.name_of(d["loc"]), d["damage"]]
+	var what: String = d["ammo"] if d.get("component", false) else d["ammo"] + " ammo"
+	var t := "  %s's %s explodes in the %s for %d damage!" % [
+			Names.unit(s.unit_by_id(d["unit_id"])), what, Location.name_of(d["loc"]), d["damage"]]
 	if d.get("case", false) and level != ExplainLevel.OFF:
 		t += " CASE vents the blast out the back: the damage stays in that location."
 	if level == ExplainLevel.FULL:
-		t += " Ammo explosions skip armor and hurt the pilot. Energy weapons can't explode."
+		t += " Internal explosions skip armor and hurt the pilot." + (
+				" A Gauss rifle's capacitors blow when it's hit; its slugs never explode." if d.get("component", false)
+				else " Energy weapons and Gauss slugs can't explode.")
 	return t
