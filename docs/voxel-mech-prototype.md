@@ -6,6 +6,12 @@ It lives under `src/view/units/` and `scenes/` and does not modify the
 
 ## Launch in the full BtechMobile project
 
+Open `project.godot` and press Play; choose **Voxel Mech Lab** instead of
+**Play Battle Game** on the launch screen. Use **Main Menu** in the lab to
+return to the mode selector. The battle game remains available.
+
+Direct scene launch is also available:
+
 ```bash
 godot --path . --editor # open scenes/voxel_mech_lab.tscn, F6
 # or directly run the scene:
