@@ -14,11 +14,13 @@ const QUADS := [
 	[Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(1, 1, 0), Vector3(0, 1, 0)]
 ]
 const PALETTE := [Color("4b6a83"), Color("293242"), Color("40ccfa"),
-	Color("d99c42"), Color("718596"), Color("d85f41")]
+	Color("d99c42"), Color("718596"), Color("d85f41"),
+	Color("c6c1ad"), Color("e53d46"), Color("616f7b"), Color("3c4859")]
 ## Same material-role convention as Claude's data/voxels/*.json:
 ## armor is cosmetic exterior plating; structure exposes the underlying frame.
 ## This mapping is view-only and NEVER changes combat hit calculations.
-const MATERIAL_ROLES := ["armor", "structure", "armor", "armor", "armor", "armor"]
+const MATERIAL_ROLES := ["armor", "structure", "armor", "armor", "armor", "armor",
+		"armor", "armor", "structure", "armor"]
 
 var cells: Dictionary = {}  # Vector3i -> palette index
 var joint_cells: Array[Vector3i] = []
@@ -70,6 +72,7 @@ func seal(joint_min_y: int = 1000) -> void:
 		elif detail_style == "atlas" or detail_style == "catapult":
 			VoxelChassisDetail.decorate(self)
 		VoxelRosterSculpt.fine(self)
+		VoxelAnatomyV2.micro_bevel(self)
 	_original_count = cells.size()
 	joint_cells.clear()
 	for cell: Vector3i in cells:
