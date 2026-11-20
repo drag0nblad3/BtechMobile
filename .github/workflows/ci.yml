@@ -44,6 +44,9 @@ jobs:
           test -s /tmp/voxel-frames/gait_b.png
           test -s /tmp/voxel-frames/armor_before.png
           test -s /tmp/voxel-frames/armor_after.png
+          test -s /tmp/voxel-frames/digitigrade_a.png
+          test -s /tmp/voxel-frames/digitigrade_b.png
+          ! cmp -s /tmp/voxel-frames/digitigrade_a.png /tmp/voxel-frames/digitigrade_b.png
           ! cmp -s /tmp/voxel-frames/gait_a.png /tmp/voxel-frames/gait_b.png
           ! cmp -s /tmp/voxel-frames/armor_before.png /tmp/voxel-frames/armor_after.png
       - uses: actions/upload-artifact@v4
