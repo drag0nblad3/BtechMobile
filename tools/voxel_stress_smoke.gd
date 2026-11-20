@@ -22,16 +22,18 @@ func _run() -> void:
 		_fail("Start button did not create stress controller")
 		return
 	var stress: VoxelStressTest = lab._stress
-	if stress.profile.get("id") != "jenner_jr7d":
-		_fail("Did not choose highest-voxel model (Jenner)")
+	var highest := VoxelStressTest.highest_voxel_profile(lab.profiles, lab._catalog_counts)
+	if stress.profile.get("id") != highest.get("id"):
+		_fail("Did not choose highest-voxel model (%s)" % highest.get("id"))
 		return
 	for i in 25:
 		await process_frame
 	if stress.models.size() != VoxelStressTest.TARGET_COUNT:
 		_fail("Only %d stress models spawned" % stress.models.size())
 		return
-	if stress.original_voxels < 20 * 50000:
-		_fail("Stress objects are missing genuine high-detail voxel meshes")
+	var selected_count := int(lab._catalog_counts.get(str(highest.get("id")), 0))
+	if stress.original_voxels != 20 * selected_count:
+		_fail("Stress objects do not match full high-detail model voxel counts")
 		return
 	var unique: Dictionary = {}
 	for model in stress.models:
