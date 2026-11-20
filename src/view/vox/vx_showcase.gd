@@ -62,6 +62,7 @@ func hit(amount: int, rear: bool = false) -> void:
 	VxFx.shot(self, from, at, amount < 10)
 	VxTrails.chips(self, at, mech.model.colors[0])
 	mech.show_unit(unit)
+	mech.anim.hit_reaction(roll["loc"], rear, amount)
 	var legs := int(unit.is_location_destroyed(Location.LL)) + int(unit.is_location_destroyed(Location.RL))
 	if (unit.destroyed or legs > 0) and not mech.anim.fallen:
 		mech.anim.fall()

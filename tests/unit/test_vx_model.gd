@@ -9,11 +9,13 @@ func test_hunchback_loads_with_every_location() -> void:
 	check(m.errors.is_empty(), "errors: %s" % ", ".join(m.errors))
 	for loc in Location.COUNT:
 		check(not m.parts_at(loc).is_empty(), "no part for " + Location.code(loc))
-	check(m.cell_count() > 3000 and m.cell_count() < 9000, "voxel budget: %d" % m.cell_count())
+	check(m.cell_count() > 20000 and m.cell_count() < 70000, "voxel budget: %d" % m.cell_count())
 
 
 func test_mirror_flips_cells_and_location() -> void:
-	var m := VxModel.load_file(PATH)
+	var d: Dictionary = JsonFile.read(PATH)
+	d["subdivide"] = 1  # compare authored cells, before bevels
+	var m := VxModel.from_dict(d)
 	var la := m.part("la")
 	var ra := m.part("ra")
 	check_eq(ra["loc"], Location.RA)
@@ -83,3 +85,23 @@ func test_reverse_knee_bends_backward() -> void:
 	check(a.y > 0.0, "digitigrade knee bends the other way")
 	var got := VxGait.ankle_of(a.x, a.y, 0.45, 0.45)
 	check(got.distance_to(Vector2(0.0, 0.6)) < 0.01, "reaches target")
+
+
+func test_subdivide_scales_grid() -> void:
+	var d: Dictionary = JsonFile.read(PATH)
+	d["subdivide"] = 1
+	var coarse := VxModel.from_dict(d)
+	var fine := VxModel.load_file(PATH)
+	check_eq(fine.detail, 2)
+	check(is_equal_approx(fine.voxel_size * 2.0, coarse.voxel_size), "voxel size halves")
+	check_eq(fine.part("la")["pivot"], coarse.part("la")["pivot"] * 2.0)
+	check(fine.cell_count() > coarse.cell_count() * 6, "about 8x cells after bevels")
+
+
+func test_greedy_mesh_merges_faces() -> void:
+	var mech := VxMech.from_file(PATH)
+	var faces := 0
+	for p: VxPart in mech.parts.values():
+		faces += p.faces_before_merge
+	check(mech.triangle_count() < faces, "merged %d tris vs %d faces" % [mech.triangle_count(), faces])
+	mech.free()

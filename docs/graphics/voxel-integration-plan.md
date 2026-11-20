@@ -213,3 +213,17 @@ Phases 1, 2 and most of 4 and 5 exist as a stand-alone test scene, not yet in th
 
 Still to do: hook `VxMech` into `UnitView` (phase 3), the `EffectQueue` (phase 4), voxel
 buildings (phase 6) and the phone profiling pass (phase 7).
+
+## 11. Fidelity and phone cost (measured on desktop, 2026-11-20)
+
+With `subdivide: 2` and the greedy mesher (`VxMesher` merges same-colored faces on a plane):
+
+| Model | Voxels | Triangles | Build | Rebuild after a hit |
+|---|---|---|---|---|
+| Hunchback | ~46,000 | ~5,300 | ~0.6 s | ~65 ms |
+| Catapult | ~53,000 | ~8,000 | ~0.5 s | ~75 ms |
+
+Triangles went *down* compared with the old 6,000-voxel models (10,600 and up), so drawing is
+fine. The cost moved to the CPU, in building and rebuilding meshes in GDScript. Before
+these go into the battle: cache built meshes per design (all units of one design share them
+until damaged), rebuild damaged parts over several frames, and measure on Tyler's phone.

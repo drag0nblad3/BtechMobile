@@ -10,11 +10,13 @@ const STRUCTURE_SHOWN := 0.7  ## Share of structure voxels gone just before the 
 var _orders: Dictionary = {}  ## "loc:kind" -> Array of [part name, cell]
 var _parts: Dictionary        ## part name -> VxPart
 var _model_id := ""
+var _detail := 1
 
 
 func _init(model: VxModel, parts: Dictionary) -> void:
 	_parts = parts
 	_model_id = model.id
+	_detail = model.detail
 	for loc in Location.COUNT:
 		var front: Array = []
 		var rear: Array = []
@@ -82,7 +84,7 @@ func _craters(cells: Array, key: String) -> Array:
 	var out: Array = []
 	while not left.is_empty():
 		var center := Vector3(left[rng.randi_range(0, left.size() - 1)][1])
-		var radius := 2.2 + rng.randf() * 1.8
+		var radius := (2.2 + rng.randf() * 1.8) * _detail
 		var hit: Array = []
 		var keep: Array = []
 		for e: Array in left:

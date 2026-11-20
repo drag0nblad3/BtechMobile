@@ -3,6 +3,7 @@
   "name": "Hunchback HBK-4G",
   "unit": "hunchback_hbk4g",
   "voxel_size": 0.05,
+  "subdivide": 2,
   "legs": "plantigrade",
   "notes": "All coordinates are voxel cells in one shared model grid: x right, y up, -z front. Pivots are joint points in the same grid.",
   "materials": [

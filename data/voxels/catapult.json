@@ -3,6 +3,7 @@
   "name": "Catapult CPLT-C1",
   "unit": "catapult_cplt_c1",
   "voxel_size": 0.048,
+  "subdivide": 2,
   "legs": "digitigrade",
   "punch": false,
   "notes": "Reverse-jointed legs are drawn straight; the leg solver bends them. Grid: x right, y up, -z front.",

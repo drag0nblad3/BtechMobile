@@ -5,13 +5,6 @@ extends MeshInstance3D
 
 const DIRS: Array[Vector3i] = [Vector3i.RIGHT, Vector3i.LEFT, Vector3i.UP,
 	Vector3i.DOWN, Vector3i.BACK, Vector3i.FORWARD]
-const QUADS := [
-	[Vector3(1, 0, 0), Vector3(1, 1, 0), Vector3(1, 1, 1), Vector3(1, 0, 1)],
-	[Vector3(0, 0, 1), Vector3(0, 1, 1), Vector3(0, 1, 0), Vector3(0, 0, 0)],
-	[Vector3(0, 1, 1), Vector3(1, 1, 1), Vector3(1, 1, 0), Vector3(0, 1, 0)],
-	[Vector3(0, 0, 0), Vector3(1, 0, 0), Vector3(1, 0, 1), Vector3(0, 0, 1)],
-	[Vector3(1, 1, 1), Vector3(0, 1, 1), Vector3(0, 0, 1), Vector3(1, 0, 1)],
-	[Vector3(0, 1, 0), Vector3(1, 1, 0), Vector3(1, 0, 0), Vector3(0, 0, 0)]]
 const SHADE := [0.9, 0.9, 1.0, 0.7, 0.84, 0.97]
 const SCORCH := Color(0.16, 0.12, 0.1)
 
@@ -24,6 +17,7 @@ var original: Dictionary = {}  ## Vector3i -> material index, as built
 var cells: Dictionary = {}     ## What is still there
 var touching: Dictionary = {}  ## Cells of other parts; shared faces are inset so they don't flicker
 var triangles := 0
+var faces_before_merge := 0  ## Visible voxel faces (2 triangles each without merging)
 var _pivot := Vector3.ZERO
 var _size := 0.05
 var _colors := PackedColorArray()
@@ -69,36 +63,27 @@ func local_of(grid: Vector3) -> Vector3:
 
 
 func rebuild() -> void:
-	var verts := PackedVector3Array()
-	var normals := PackedVector3Array()
-	var cols := PackedColorArray()
+	var faces: Array = [{}, {}, {}, {}, {}, {}]  ## per direction: slice -> {Vector2i: Color}
+	var count := 0
 	for c: Vector3i in cells:
 		var color: Color = _colors[cells[c]]
 		if _near_hole(c):
 			color = color.lerp(SCORCH, 0.3)
 		for f in 6:
-			if cells.has(c + DIRS[f]):
+			var d: Vector3i = DIRS[f]
+			if cells.has(c + d):
 				continue
-			var quad: Array = QUADS[f]
-			var shaded := Color(color * SHADE[f], 1.0)
-			var inset := Vector3(DIRS[f]) * -0.04 if touching.has(c + DIRS[f]) else Vector3.ZERO
-			for k in [0, 2, 1, 0, 3, 2]:
-				verts.append((Vector3(c) + quad[k] + inset - _pivot) * _size)
-				normals.append(Vector3(DIRS[f]))
-				cols.append(shaded)
+			var axis := 0 if d.x != 0 else (1 if d.y != 0 else 2)
+			var shaded := Color(color * SHADE[f], 0.5 if touching.has(c + d) else 1.0)
+			var slices: Dictionary = faces[f]
+			if not slices.has(c[axis]):
+				slices[c[axis]] = {}
+			slices[c[axis]][Vector2i(c[(axis + 1) % 3], c[(axis + 2) % 3])] = shaded
+			count += 1
+	mesh = VxMesher.build(faces, _pivot, _size)
 	@warning_ignore("integer_division")
-	triangles = verts.size() / 3
-	if verts.is_empty():
-		mesh = null
-		return
-	var arrays: Array = []
-	arrays.resize(Mesh.ARRAY_MAX)
-	arrays[Mesh.ARRAY_VERTEX] = verts
-	arrays[Mesh.ARRAY_NORMAL] = normals
-	arrays[Mesh.ARRAY_COLOR] = cols
-	var m := ArrayMesh.new()
-	m.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-	mesh = m
+	triangles = mesh.get_faces().size() / 3 if mesh else 0
+	faces_before_merge = count
 
 
 func _near_hole(c: Vector3i) -> bool:

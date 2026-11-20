@@ -23,6 +23,11 @@ Examples: `data/voxels/hunchback.json` (normal legs) and `data/voxels/catapult.j
   "muzzles": {"RT": [7, 33, -14], "LA": [-13, 18, -9]}
 }
 ```
+- **subdivide**: fidelity multiplier (default 1). At 2, every authored cell becomes 2×2×2
+  finer cells and `voxel_size` halves, so you keep writing at the coarse scale. The loader then
+  rounds the outer edges of thick blocks (3+ authored cells) and draws faint panel seams on
+  armor. A part's optional `detail` list holds shapes in the **fine** grid (rivets, vents,
+  slits) painted after that.
 - **unit**: the `data/units` id the test scene uses for its record sheet.
 - **legs**: `plantigrade` (Hunchback) or `digitigrade` (reverse-jointed, Catapult). Draw
   digitigrade legs as straight vertical segments (thigh, shin, tarsus, foot) with `hip`,
