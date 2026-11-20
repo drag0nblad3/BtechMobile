@@ -13,9 +13,9 @@
     {"id": "srm2", "name": "SRM 2", "type": "missile", "heat": 2, "damage": 2, "missiles": 2, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 21, "ammo_bv": 3, "slots": 1, "ammo_per_ton": 50},
     {"id": "srm4", "name": "SRM 4", "type": "missile", "heat": 3, "damage": 2, "missiles": 4, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 39, "ammo_bv": 5, "slots": 1, "ammo_per_ton": 25},
     {"id": "srm6", "name": "SRM 6", "type": "missile", "heat": 4, "damage": 2, "missiles": 6, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 59, "ammo_bv": 7, "slots": 2, "ammo_per_ton": 15},
-    {"id": "lrm5", "name": "LRM 5", "type": "missile", "heat": 2, "damage": 1, "missiles": 5, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 45, "ammo_bv": 6, "slots": 1, "ammo_per_ton": 24},
-    {"id": "lrm10", "name": "LRM 10", "type": "missile", "heat": 4, "damage": 1, "missiles": 10, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 90, "ammo_bv": 11, "slots": 2, "ammo_per_ton": 12},
-    {"id": "lrm15", "name": "LRM 15", "type": "missile", "heat": 5, "damage": 1, "missiles": 15, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 136, "ammo_bv": 17, "slots": 3, "ammo_per_ton": 8},
-    {"id": "lrm20", "name": "LRM 20", "type": "missile", "heat": 6, "damage": 1, "missiles": 20, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 181, "ammo_bv": 23, "slots": 5, "ammo_per_ton": 6}
+    {"id": "lrm5", "name": "LRM 5", "type": "missile", "heat": 2, "damage": 1, "missiles": 5, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 45, "ammo_bv": 6, "slots": 1, "ammo_per_ton": 24},
+    {"id": "lrm10", "name": "LRM 10", "type": "missile", "heat": 4, "damage": 1, "missiles": 10, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 90, "ammo_bv": 11, "slots": 2, "ammo_per_ton": 12},
+    {"id": "lrm15", "name": "LRM 15", "type": "missile", "heat": 5, "damage": 1, "missiles": 15, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 136, "ammo_bv": 17, "slots": 3, "ammo_per_ton": 8},
+    {"id": "lrm20", "name": "LRM 20", "type": "missile", "heat": 6, "damage": 1, "missiles": 20, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "indirect": true, "bv": 181, "ammo_bv": 23, "slots": 5, "ammo_per_ton": 6}
   ]
 }

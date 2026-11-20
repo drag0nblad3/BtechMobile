@@ -20,9 +20,14 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
 	var los := LineOfSight.check(state.map, attacker, target)
+	var spotter: Unit = null
 	if los["blocked"]:
-		th.impossible = "No line of sight (%s)" % los["reason"]
-		return th
+		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect else null
+		if spotter == null:
+			th.impossible = "No line of sight (%s)%s" % [los["reason"],
+					"; no friendly 'Mech can spot for indirect fire" if w.def.indirect else ""]
+			return th
+		los = LineOfSight.check(state.map, spotter, target)
 	var dist := Hex.distance(attacker.coord, target.coord)
 	var br := w.def.bracket(dist)
 	if br == WeaponDef.Bracket.OUT:
@@ -30,6 +35,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		return th
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	add_movement(th, attacker, target)
+	if spotter:
+		IndirectFire.add_mods(th, state, spotter)
 	match br:
 		WeaponDef.Bracket.MEDIUM:
 			th.add("medium range", 2, "%d hexes is medium range for %s (%s)." % [dist, w.def.name, w.def.range_text()])

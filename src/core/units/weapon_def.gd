@@ -20,6 +20,7 @@ var slots: int
 var ammo_per_ton: int  ## 0 = no ammo needed.
 var bv: int           ## Battle Value of the weapon.
 var ammo_bv: int       ## Battle Value of one ton of its ammo.
+var indirect: bool     ## May fire without line of sight via a spotter (LRMs).
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -39,6 +40,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.ammo_per_ton = int(d.get("ammo_per_ton", 0))
 	w.bv = int(d.get("bv", 0))
 	w.ammo_bv = int(d.get("ammo_bv", 0))
+	w.indirect = bool(d.get("indirect", false))
 	return w
 
 
