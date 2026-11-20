@@ -8,7 +8,12 @@
       "arm": "standard",
       "hip_width": 0.38,
       "arm_width": 1.03,
-      "voxel_detail": 1
+      "voxel_detail": 2,
+      "voxel_part_detail": {
+        "Torso": 3,
+        "left_arm": 3,
+        "right_arm": 3
+      }
     },
     {
       "id": "atlas_as7d",
@@ -31,7 +36,12 @@
       "arm": "cannon",
       "hip_width": 0.35,
       "arm_width": 1.02,
-      "voxel_detail": 1
+      "voxel_detail": 2,
+      "voxel_part_detail": {
+        "Torso": 3,
+        "left_arm": 3,
+        "right_arm": 3
+      }
     },
     {
       "id": "wolverine_wvr6r",
@@ -41,7 +51,12 @@
       "arm": "standard",
       "hip_width": 0.36,
       "arm_width": 0.98,
-      "voxel_detail": 1
+      "voxel_detail": 2,
+      "voxel_part_detail": {
+        "Torso": 3,
+        "left_arm": 3,
+        "right_arm": 3
+      }
     },
     {
       "id": "jenner_jr7d",
@@ -51,7 +66,10 @@
       "arm": "lasers",
       "hip_width": 0.4,
       "arm_width": 0.82,
-      "voxel_detail": 2
+      "voxel_detail": 2,
+      "voxel_part_detail": {
+        "Torso": 3
+      }
     },
     {
       "id": "catapult_cplt_c1",
