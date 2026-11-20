@@ -128,5 +128,6 @@ static func _new_part(parent: Node3D, part_name: String, profile: Dictionary,
 	part.detail_style = str(profile.get("shape", ""))
 	part.mesh_enabled = meshes
 	part.surface_mode = "nets" if meshes else "cube"
+	part.visual_palette = VoxelSilhouetteV3.palette(str(profile.get("shape", "prototype")))
 	parent.add_child(part)
 	return part
