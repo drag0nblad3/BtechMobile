@@ -3,8 +3,10 @@
 **Status:** proposal, 2026-11-20. Nothing here is implemented yet.
 **Starting point:** the Voxel Mech Lab (`docs/voxel-mech-prototype.md`,
 `src/view/units/voxel_*.gd`, `scenes/voxel_mech_lab.tscn`), reachable from the launcher.
-**Art:** Tyler authors the voxel models. Code ships only the loader, the damage mapping
-and the animation hooks, plus the one lab test mech as a fallback.
+**Art:** Tyler is building one version of the voxel models with another AI. Claude built a
+second version in `src/view/vox/` that uses a plain-text model format (no outside editor) and
+a Hunchback model, so the two can be compared. **Update, same day:** §3 now describes that
+format. The other build (Voxel Mech Lab files) is untouched.
 
 ## 1. Ground rules
 
@@ -25,7 +27,7 @@ and the animation hooks, plus the one lab test mech as a fallback.
 | Lab today | Needed in the battle |
 |---|---|
 | One `Torso` part, no head | Separate **HD, CT, LT, RT** parts so all 8 locations can show damage |
-| Model built in code (`fill_box` calls) | Models loaded from Tyler's files under `assets/voxels/<sprite>/` |
+| Model built in code (`fill_box` calls) | Models loaded from text files in `data/voxels/` (§3) |
 | ~2.6 units tall, 0.075 voxels | Fit the hex: about 1.8 units tall (a hex is 2 corner to corner, a level 0.45) |
 | Damage = tap ray erases a ball | Damage = `DAMAGE` event erases toward a target fraction for that location |
 | Limb snaps when its joint is shot away | Limb drops when the rules say the location is **destroyed** |
@@ -36,38 +38,24 @@ and the animation hooks, plus the one lab test mech as a fallback.
 The lab's mesher (hidden-face culling, per-part rebuild), its two-link IK gait and its
 "armor shell over darker core" idea carry over as they are.
 
-## 3. Model files (Tyler's side)
+## 3. Model files: plain text, no editor
 
-Proposed layout, mirroring the sprite sets so `UnitDef.sprite` picks both:
+Tyler would rather not use outside tools such as MagicaVoxel, so models are JSON
+**box recipes** in `data/voxels/<sprite>.json`, fully described in
+[`voxel-model-format.md`](voxel-model-format.md). In short:
 
-```
-assets/voxels/<sprite>/manifest.json
-assets/voxels/<sprite>/<part>.vox      (one MagicaVoxel model per part)
-```
+- One shared grid (x right, y up, -z front). Each part is a list of `box`, `shell` (armor
+  layer over a frame core) and `erase` steps, tagged with its hit location, parent and joint.
+- Left/right parts are written once and `mirror`ed. The Hunchback's hunch is a mirrored
+  left torso plus `add` shapes.
+- Material roles (`armor` / `structure`) tell the damage code what to chip away first.
+- `muzzles` give fire origins per location.
+- Any AI (or person) can write or edit these as text, and git diffs stay readable. The file
+  `data/voxels/hunchback.json` is about 50 lines for about 6,200 voxels.
 
-```json
-{
-  "chassis": "hunchback",
-  "voxel_size": 0.05,
-  "parts": {
-    "ct":   {"file": "ct.vox",   "loc": "CT", "parent": null,   "pivot": [0, 1.20, 0]},
-    "lt":   {"file": "lt.vox",   "loc": "LT", "parent": "ct",   "pivot": [-0.30, 0.10, 0]},
-    "la":   {"file": "la.vox",   "loc": "LA", "parent": "lt",   "pivot": [-0.25, 0.15, 0], "joint": "shoulder"},
-    "ll_thigh": {"file": "ll_thigh.vox", "loc": "LL", "parent": "ct", "pivot": [-0.2, -0.3, 0], "joint": "hip"},
-    "ll_shin":  {"file": "ll_shin.vox",  "loc": "LL", "parent": "ll_thigh", "joint": "knee"},
-    "ll_foot":  {"file": "ll_foot.vox",  "loc": "LL", "parent": "ll_shin",  "joint": "ankle"}
-  },
-  "palette_roles": {"armor": [1, 2], "structure": [3], "glow": [4], "faction": [5, 6]},
-  "muzzles": {"RA": [0.0, -0.4, -0.5], "RT": [0.2, 0.3, -0.3]}
-}
-```
-
-- **Parts** map many-to-one onto the 8 locations (a leg is thigh + shin + foot).
-- **Palette roles** tell the damage code which voxels are armor plating, which are
-  internal structure (exposed once armor is gone) and which take the faction color.
-- **Muzzles** give a fire origin per location; weapons fire from `MountedWeapon.loc`.
-- Reading `.vox` is a small, well-documented chunk format; a ~100-line `VoxFile`
-  loader covers it. If Tyler uses another editor, we read that instead (question below).
+Defaults chosen instead of asking: one JSON file per design, named after the unit's `sprite`
+field; voxel size 0.05 (a 'Mech about 1.85 units tall, just under a hex); the sprite loader
+stays as the fallback for designs with no voxel model and for slow phones.
 
 ## 4. Damage: rules → voxels
 
@@ -144,7 +132,7 @@ earn a Destroy Check, and a destroyed hex becomes rubble. The visuals follow the
 | `smash`, `entry_failed`, `shoved_in` | Hole punched in the wall on the side the 'Mech came from |
 | `fire` / `MapTile.on_fire` | Existing `FireProps` flames plus scorched voxel tint |
 
-- **Models:** `assets/voxels/buildings/<type>/manifest.json` with one `.vox` per
+- **Models:** `data/voxels/buildings/<type>.json` in the same text format, one part per
   level slice (ground, middle, roof), stacked to `Building.height`. Building type colors
   stay as a tint on the faction/role palette.
 - **'Mechs inside:** today's see-through blocks keep a 'Mech visible. Voxel buildings
@@ -176,51 +164,50 @@ precomputed-chunk approach (still no C#).
 
 ## 8. Code shape
 
-New files (view layer only, one class each, all under 150 lines):
+Claude's version already follows this layout (see §10): everything lives in `src/view/vox/`,
+in one class per file, and nothing in `src/core` changes. Still to add:
 
 | File | What |
 |---|---|
-| `src/view/voxels/vox_file.gd` | Reads a `.vox` model into cells + palette |
-| `src/view/voxels/voxel_set.gd` | Loads a manifest, caches parsed parts per chassis |
-| `src/view/voxels/voxel_part.gd` | Moved from `units/`; palette roles, shared material, surface lists |
-| `src/view/voxels/voxel_rig.gd` | Builds the joint hierarchy from the manifest (from `VoxelMech.build_*`) |
-| `src/view/voxels/voxel_damage.gd` | Location budgets, crater placement, `apply_state` |
-| `src/view/voxels/voxel_debris.gd` | Detach, capped debris pool |
-| `src/view/units/voxel_mech.gd` | Slimmed: the model `UnitView` holds, with the animation hooks |
-| `src/view/units/voxel_anim.gd` | Walk/jump/fall/strike tweens over the rig |
+| `src/view/units/unit_view.gd` (edit) | Picks `VxMech` when `data/voxels/<sprite>.json` exists, else sprite, else placeholder |
 | `src/view/battle/effect_queue.gd` | Plays fire/damage/crit/destroy events in order |
-| `src/view/map/voxel_buildings.gd` | Replaces `BuildingProps` when building sets exist |
-
-Unchanged: everything in `src/core`. The lab scene keeps working on the same classes.
+| `src/view/map/vx_buildings.gd` | Replaces `BuildingProps` when building models exist |
 
 ## 9. Phases
 
 Each phase is one PR with tests and a capture; none builds the APK.
 
-1. **Refactor the lab into reusable pieces.** Split `VoxelMech`, move parts to
-   `src/view/voxels/`, add HD/CT/LT/RT parts to the test mech, shared material. Lab
-   looks the same. Tests: rig has a part for every location; erase is deterministic.
-2. **Loader + manifest.** `VoxFile`, `VoxelSet`, manifest validation; the test mech
-   rebuilt from files so Tyler has a working example to copy. Doc: "Dropping in voxel
-   'Mechs" next to `sprite-integration.md`.
+1. ~~Reusable pieces with all 8 locations~~ (done in Claude's version).
+2. ~~Loader + text format + example model~~ (done: `VxModel`, `hunchback.json`).
 3. **Voxel model in the battle.** `UnitView` picks voxel → sprite → placeholder;
-   `VoxelDamage.apply_state` on snap; walk gait during moves; prone/wreck poses.
+   `VxMech.show_unit` on snap; walk gait during moves; prone/wreck poses.
    Capture mode `voxel` in `tools/capture.gd`; `ui_smoke` runs with voxels on.
-4. **Animated combat.** `EffectQueue`; fire, craters per `DAMAGE` step, limb loss,
-   ammo explosion, destroyed. Tests: state → same voxel counts with or without events.
-5. **More motion.** Jump, fall, stand/fail, punch/kick/charge/DFA, shutdown, limping.
-6. **Voxel buildings.** Stacked level models, scars, holes, collapse to rubble, cutaway.
+4. **Animated combat.** `EffectQueue`; fire from the weapon's location, craters per
+   `DAMAGE` step, limb loss, ammo explosion, destroyed. (Hooks and effects exist.)
+5. **More motion.** Charge/DFA, shutdown, limping on a damaged leg. (Walk, run, jump,
+   fall, stand, punch and kick exist.)
+6. **Voxel buildings.** Stacked level models in the same text format, scars, holes,
+   collapse to rubble, cutaway.
 7. **Phone pass.** Profile on device, greedy meshing if needed, debris and shadow
    tuning, the sprite fallback setting.
+8. **More 'Mechs.** One JSON per design, starting with the most-used ones.
 
-Phases 1-3 give a playable game with voxel 'Mechs that already show the right damage
-when they appear; 4-6 add the show. 3 and 6 are independent once 2 is in.
+## 10. What is already built (Claude's version)
 
-## 10. Questions for Tyler
+Phases 1, 2 and most of 4 and 5 exist as a stand-alone test scene, not yet in the battle:
 
-1. Which editor are the models made in (MagicaVoxel `.vox`, Qubicle, Goxel, something
-   else)? That decides the loader.
-2. One file per part (as above), or one file with named layers/groups per part?
-3. Voxel size and target height you're working to, so the scale matches the hex.
-4. Do the voxel models replace sprites outright, or should sprites stay as the
-   low-end-phone option?
+| File | What |
+|---|---|
+| `data/voxels/hunchback.json` | Hunchback HBK-4G, all 8 locations, ~6,200 voxels, ~10,600 triangles |
+| `src/view/vox/vx_model.gd` | Reads and checks the text format (mirror, add, errors) |
+| `src/view/vox/vx_part.gd` | Culled-face mesher, one shared material, scorched edges, no floating voxels |
+| `src/view/vox/vx_damage.gd` | Record sheet → voxels (seeded crater order per location) |
+| `src/view/vox/vx_mech.gd` | Builds the rig, shows a `Unit`, drops destroyed limbs, muzzles |
+| `src/view/vox/vx_anim.gd`, `vx_gait.gd` | Walk/run gait, jump, fall, stand (and failed stand), punch, kick, torso twist + recoil |
+| `src/view/vox/vx_fx.gd` | Muzzle flash, laser beam, cannon shell, impact smoke |
+| `src/view/vox/vx_showcase.gd`, `vx_stage.gd` | Test scene: hits go through the real `HitTable` and `Damage` on a live `Unit` |
+| `tests/unit/test_vx_model.gd` | Format, mirror, record-sheet mapping, limb loss, leg solve |
+| `tools/capture_vx.gd` | Screenshots for review |
+
+Still to do: hook `VxMech` into `UnitView` (phase 3), the `EffectQueue` (phase 4), voxel
+buildings (phase 6) and the phone profiling pass (phase 7).
