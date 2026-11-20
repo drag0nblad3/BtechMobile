@@ -29,7 +29,10 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	frame.add_child(hip)
 	rig["hips"].append(hip)
 	var thigh := _new_part(hip, key, profile, detail, meshes)
-	VoxelReferenceV4.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
+	if str(profile.get("shape", "")) == "atlas":
+		AtlasMeshVoxelizer.put(thigh, key)
+	else:
+		VoxelReferenceV4.leg(thigh, str(profile.get("shape", "prototype")), "thigh")
 	thigh.seal(-3)
 	rig["parts"][key] = thigh
 	rig["sockets"][key] = hip
@@ -39,7 +42,10 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	hip.add_child(knee)
 	rig["knees"].append(knee)
 	var shin := _new_part(knee, key + "_shin", profile, detail, meshes)
-	VoxelReferenceV4.leg(shin, str(profile.get("shape", "prototype")), "shin")
+	if str(profile.get("shape", "")) == "atlas":
+		AtlasMeshVoxelizer.put(shin, key + "_shin")
+	else:
+		VoxelReferenceV4.leg(shin, str(profile.get("shape", "prototype")), "shin")
 	shin.seal()
 	rig["parts"][key + "_shin"] = shin
 	rig["sockets"][key + "_shin"] = knee
@@ -67,7 +73,10 @@ static func add_leg(frame: Node3D, rig: Dictionary, side: int,
 	end_pivot.add_child(ankle)
 	rig["ankles"].append(ankle)
 	var foot := _new_part(ankle, key + "_foot", profile, detail, meshes)
-	VoxelReferenceV4.leg(foot, str(profile.get("shape", "prototype")), "foot")
+	if str(profile.get("shape", "")) == "atlas":
+		AtlasMeshVoxelizer.put(foot, key + "_foot")
+	else:
+		VoxelReferenceV4.leg(foot, str(profile.get("shape", "prototype")), "foot")
 	foot.seal()
 	rig["parts"][key + "_foot"] = foot
 
