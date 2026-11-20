@@ -1,0 +1,42 @@
+class_name ToHit
+extends RefCounted
+## A to-hit number built from named modifiers, so the UI can explain it.
+## Each modifier: {label, value, why}. `impossible` explains a shot that
+## can't be taken at all (out of range, no line of sight, ...).
+
+var mods: Array[Dictionary] = []
+var impossible: String = ""
+
+
+func add(label: String, value: int, why: String = "") -> void:
+	mods.append({"label": label, "value": value, "why": why})
+
+
+func target() -> int:
+	var n := 0
+	for m in mods:
+		n += int(m["value"])
+	return n
+
+
+func possible() -> bool:
+	return impossible == "" and target() <= 12
+
+
+## Chance (0..1) to roll the target number or more on 2d6.
+func chance() -> float:
+	return Dice.chance_2d6(target()) if impossible == "" else 0.0
+
+
+## "4 Gunnery +2 medium range +1 you walked = 7".
+func summary() -> String:
+	if impossible != "":
+		return impossible
+	var parts: Array[String] = []
+	for m in mods:
+		var v := int(m["value"])
+		if parts.is_empty():
+			parts.append("%d %s" % [v, m["label"]])
+		elif v != 0:
+			parts.append("%s%d %s" % ["+" if v > 0 else "", v, m["label"]])
+	return "%s = %d" % [" ".join(parts), target()]

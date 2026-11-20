@@ -91,6 +91,9 @@ func _on_event(e: GameEvent) -> void:
 					Vector2i(from.x, from.y), from.z)
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			_update_status()
+			# Until the attack UI lands, every 'Mech holds fire.
+			if e.type == GameEvent.ACTIVE_SIDE and controller.state.phase != Phase.Kind.MOVEMENT:
+				_hold_fire.call_deferred()
 
 
 func _update_status() -> void:
@@ -98,3 +101,9 @@ func _update_status() -> void:
 	var side := s.active_side()
 	var who: String = SIDE_NAMES[side] if side >= 0 and side < SIDE_NAMES.size() else "?"
 	hud.set_status("Turn %d  ·  %s  ·  %s to move" % [s.turn, Phase.name_of(s.phase), who])
+
+
+func _hold_fire() -> void:
+	var p := controller.pending_units()
+	if not p.is_empty() and controller.state.phase == Phase.Kind.WEAPON_ATTACK:
+		controller.declare_fire(p[0], [])
