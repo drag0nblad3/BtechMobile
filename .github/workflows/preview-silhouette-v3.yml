@@ -30,8 +30,10 @@ jobs:
           mkdir -p /tmp/silhouette-v3
           xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x800 \
             -s tools/capture_silhouette_v3.gd -- /tmp/silhouette-v3 2>&1 | tee anatomy-render.log
-          [ "$(grep -c '^SILHOUETTE_RENDER|' anatomy-render.log)" -eq 7 ]
-          for f in atlas atlas-front hunchback wolverine jenner catapult prototype; do
+          [ "$(grep -c '^SILHOUETTE_RENDER|' anatomy-render.log)" -eq 13 ]
+          for f in atlas atlas-front atlas-side hunchback hunchback-side \
+            wolverine wolverine-side jenner jenner-side catapult catapult-side \
+            prototype prototype-side; do
             test -s "/tmp/silhouette-v3/$f.png"
           done
           ! grep -E 'SCRIPT ERROR|Parse Error|RENDER_FAILED' anatomy-render.log
