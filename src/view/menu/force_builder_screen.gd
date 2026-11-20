@@ -11,6 +11,7 @@ var _rosters: Array[VBoxContainer] = []
 var _totals: Array[Label] = []
 var _status: Label
 var _info: Label
+var bot_sides := [1]
 
 
 func _ready() -> void:
@@ -85,10 +86,19 @@ func _build_options(parent: Control) -> void:
 	var box := UiKit.panel(parent)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_info = UiKit.label(box, "", UiKit.SMALL)
-	UiKit.button(box, "Change map", func(): map_index = (map_index + 1) % maps.size(); _refresh())
-	UiKit.button(box, "Change budget", _next_budget)
+	var row1 := HBoxContainer.new()
+	box.add_child(row1)
+	UiKit.button(row1, "Map", func(): map_index = (map_index + 1) % maps.size(); _refresh(), Vector2(100, 60))
+	UiKit.button(row1, "Budget", _next_budget, Vector2(100, 60))
+	var row2 := HBoxContainer.new()
+	box.add_child(row2)
+	for side in 2:
+		UiKit.button(row2, Names.side(side) + " player", func():
+				if bot_sides.has(side): bot_sides.erase(side)
+				else: bot_sides.append(side)
+				_refresh(), Vector2(100, 60))
 	UiKit.button(box, "Explanations", func():
-			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh())
+			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh(), Vector2(0, 60))
 	_status = UiKit.label(box, "", UiKit.SMALL)
 	UiKit.button(box, "Start battle", _start, Vector2(0, 80))
 
@@ -117,8 +127,9 @@ func _refresh() -> void:
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
 					func(): builder.remove(side, i); _refresh())
 	var map_name: String = JsonFile.read(maps[map_index]).get("name", "?")
-	_info.text = "Map: %s\nBudget: %d tons per side\nExplanations: %s" % [map_name,
-			builder.budget, ExplainLevel.name_of(GameSettings.explain_level)]
+	_info.text = "Map: %s\nBudget: %d tons per side\nExplanations: %s\nRed: %s · Blue: %s" % [map_name,
+			builder.budget, ExplainLevel.name_of(GameSettings.explain_level),
+			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
 	if GameSettings.explain_level == ExplainLevel.FULL:
 		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."
 	_status.text = "" if builder.ready_to_fight() else "Add at least one 'Mech to each side."
@@ -129,4 +140,5 @@ func _start() -> void:
 		return
 	var map := MapLoader.load_file(maps[map_index], TerrainDb.load_file())
 	BattleLaunch.pending = builder.build(map)
+	BattleLaunch.bot_sides = bot_sides.duplicate()
 	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)

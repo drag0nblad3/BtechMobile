@@ -49,6 +49,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return _fired(s, d, level, seen)
 		GameEvent.PHYSICAL:
 			return _physical(s, d, level, seen)
+		GameEvent.INTENT:
+			return "" if level == ExplainLevel.OFF else "%s (computer) %s." % [_u(s, d), d["text"]]
 		GameEvent.CHARGE_DECLARED:
 			var t := "%s will %s %s (%d+)." % [_u(s, d), "charge" if d["kind"] == "charge" else "jump onto",
 					_u(s, d, "target_id"), d["need"]]

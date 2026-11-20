@@ -10,6 +10,7 @@ signal attacker_selected(u: Unit)
 var controller: GameController
 var hud: BattleHud
 var highlighter: HexHighlighter
+var bots: BotDriver
 
 var attacker: Unit
 var target: Unit
@@ -20,6 +21,8 @@ var physical := {}  ## Physical phase: "kind:limb" -> true (current target only)
 
 func active() -> bool:
 	var p := controller.state.phase
+	if bots and bots.is_bot_turn():
+		return false
 	return not controller.state.game_over and (p == Phase.Kind.WEAPON_ATTACK or p == Phase.Kind.PHYSICAL_ATTACK)
 
 

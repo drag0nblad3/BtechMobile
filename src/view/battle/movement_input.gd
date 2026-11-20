@@ -14,6 +14,7 @@ var highlighter: HexHighlighter
 var marker: FacingMarker
 var hud: BattleHud
 var units_layer: UnitsLayer
+var bots: BotDriver
 
 var selected: Unit
 var mode := MoveMode.Kind.WALK
@@ -25,7 +26,7 @@ var has_preview := false
 func on_hex_tapped(c: Vector2i) -> void:
 	if units_layer.is_busy() or controller.state.phase != Phase.Kind.MOVEMENT:
 		return
-	if controller.state.game_over:
+	if controller.state.game_over or (bots and bots.is_bot_turn()):
 		return
 	var u := controller.state.unit_at(c)
 	if u and u != selected and controller.pending_units().has(u):

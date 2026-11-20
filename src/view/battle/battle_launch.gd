@@ -7,9 +7,17 @@ const MENU_SCENE := "res://scenes/menu.tscn"
 const BATTLE_SCENE := "res://scenes/main.tscn"
 
 static var pending: GameState = null
+## Sides the computer plays in the next battle.
+static var bot_sides: Array = []
 
 
 static func take() -> GameState:
 	var s := pending
 	pending = null
 	return s
+
+
+static func take_bots() -> Array:
+	var b := bot_sides.duplicate()
+	bot_sides = []
+	return b

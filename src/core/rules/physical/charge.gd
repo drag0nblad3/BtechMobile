@@ -51,6 +51,21 @@ static func option(state: GameState, a: Unit, t: Unit, kind: String) -> Dictiona
 	return out
 
 
+## Records a charge/DFA if legal; the unit then skips weapon and physical attacks.
+static func declare(state: GameState, emit: Callable, unit: Unit, t: Unit) -> void:
+	var kind := "dfa" if unit.move_mode == MoveMode.Kind.JUMP else "charge"
+	var opt := option(state, unit, t, kind)
+	if not opt["to_hit"].possible():
+		return
+	opt["attacker_id"] = unit.id
+	opt["target_id"] = t.id
+	state.declared_physical.append(opt)
+	unit.has_fired = true
+	unit.has_physical = true
+	emit.call(GameEvent.CHARGE_DECLARED, {"unit_id": unit.id, "target_id": t.id, "kind": kind,
+			"need": opt["to_hit"].target()})
+
+
 static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary) -> void:
 	var a := state.unit_by_id(d["attacker_id"])
 	var t := state.unit_by_id(d["target_id"])
