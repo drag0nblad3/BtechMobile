@@ -115,10 +115,23 @@ func has_sculpt_cell(coarse: Vector3i) -> bool:
 
 
 func sculpt_material(coarse: Vector3i) -> Variant:
-	# Inspect the middle, not the edge, so small surface engraving cannot
-	# accidentally mask the material of the actual armored core.
-	var center := coarse * detail_scale + Vector3i.ONE * (detail_scale / 2)
-	return cells.get(center)
+	# Return the dominant original panel material. A sub-voxel visor seam,
+	# opening, or beveled corner must not hide the coarse sculpt's identity.
+	var counts: Dictionary = {}
+	for x in detail_scale:
+		for y in detail_scale:
+			for z in detail_scale:
+				var cell := coarse * detail_scale + Vector3i(x, y, z)
+				if cells.has(cell):
+					var material_id: int = cells[cell]
+					counts[material_id] = int(counts.get(material_id, 0)) + 1
+	var result: Variant = null
+	var most := 0
+	for material_id in counts:
+		if int(counts[material_id]) > most:
+			result = material_id
+			most = int(counts[material_id])
+	return result
 
 
 func _update_bounds() -> void:
