@@ -56,7 +56,7 @@ func test_jenner_components_still_take_local_damage() -> void:
 	var arm: VoxelPart = mech.parts["left_arm"]
 	var before := visor.cells.size()
 	var other := arm.cells.size()
-	visor.erase_ball(visor.to_global(Vector3(0, 0, -1.12)), 0.20)
+	visor.erase_local_ball(Vector3(0, 0, -1.12), 0.20)
 	check(visor.cells.size() < before, "canopy must be erodible")
 	check_eq(arm.cells.size(), other, "torso hit must not damage adjacent laser pod")
 	mech.free()
