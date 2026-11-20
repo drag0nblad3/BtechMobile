@@ -20,6 +20,7 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 				state.unit_by_id(d["target_id"]), d["to_hit"])
 	state.declared_fire.clear()
 	BuildingDamage.end_phase(state, dice, emit)
+	Fire.end_phase(state, emit)
 
 
 static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit,

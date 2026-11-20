@@ -6,10 +6,11 @@
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
 
-Also `"buildings": [{"id", "name", "civilian"?, "threshold", "destroy_tn", "entry_class", "roof_support"?, "color"}]`:
+Also `"buildings": [{"id", "name", "civilian"?, "threshold", "destroy_tn", "entry_class", "roof_support"?, "fire_heat"?, "color"}]`:
 building classes civilian, light, medium, heavy and hardened. `entry_class` is the lightest
 weight class (0 light .. 3 assault) that may force its way in; `roof_support` is the
-heaviest class its roof holds without a Destroy Check (none if missing).
+heaviest class its roof holds without a Destroy Check (none if missing); `fire_heat` is the
+heat per building level that sets it alight.
 
 ## `data/maps/<id>.json`
 ```json
@@ -19,6 +20,7 @@ heaviest class its roof holds without a Destroy Check (none if missing).
 - Token = terrain token + level, optional `d` + water depth: `c2` clear level 2,
   `w0d2` water surface level 0, depth 2.
 - Columns use "odd-q" offset: even-numbered mapsheet columns (02, 04…) sit half a hex lower.
+- Optional `"fires": ["1005"]` sets hexes burning from the start.
 - Optional `"buildings": [{"hex": "0703", "type": "medium", "height": 2}]` puts a building
   of that class, `height` levels tall, on a hex. A collapsed building leaves rubble.
 

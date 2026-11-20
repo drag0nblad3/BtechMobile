@@ -117,6 +117,7 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 	if b == null:
 		return
 	tile.building = null
+	tile.on_fire = false  # the fire dies with the building
 	if state.map.rubble != null and (not b.type.civilian or b.height >= 4):
 		tile.terrain = state.map.rubble
 	if inside == null:

@@ -7,7 +7,7 @@ extends RefCounted
 ## level; woods +2; a building's roof) is at least both LOS levels, or at
 ## least the attacker's and next to it, or at least the target's and next
 ## to it. An intervening hill or building blocks; woods add 1 (light) or 2
-## (heavy) and 3 points block. Adjacent 'Mechs always see each other.
+## (heavy) and 3 points block; smoke from a fire adds 1 (Fire). Adjacent 'Mechs always see each other.
 ## On a line along a hexside the target's side picks the hexes: we take the
 ## side worse for the attacker.
 ## Partial cover: a standing target next to a hex one level above its own
@@ -82,15 +82,20 @@ static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int
 			out["reason"] = "%s at %s" % ["building" if tile.building != null else "hill", Hex.label(tile.coord)]
 			return out
 		var w := woods_value(tile)
+		var pts := 0
 		if w > 0 and _intervenes(tile.level + tile.terrain.los_height, a_lvl, b_lvl, next_a, next_b):
-			out["woods"] += w
+			pts = w
 			out["light" if w == 1 else "heavy"] += 1
+		if tile.on_fire and _intervenes(Fire.smoke_top(tile), a_lvl, b_lvl, next_a, next_b):
+			pts = mini(Fire.SMOKE_CAP, pts + 1)  # smoke counts as light woods, 2 per hex at most
+			out["smoke"] += 1
+		out["woods"] += pts
 		if next_b and ground == cover_floor + 1 and a_lvl <= b_lvl \
 				and (tile.building == null or not tile.building.type.civilian):
 			out["cover"] = tile.coord
 	if out["woods"] >= WOODS_BLOCK:
 		out["blocked"] = true
-		out["reason"] = "%d points of woods in the way" % out["woods"]
+		out["reason"] = "%d points of woods%s in the way" % [out["woods"], " and smoke" if out["smoke"] > 0 else ""]
 	return out
 
 
@@ -99,7 +104,7 @@ static func _intervenes(top: int, a_lvl: int, b_lvl: int, next_a: bool, next_b: 
 
 
 static func _blank() -> Dictionary:
-	return {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0, "cover": Hex.INVALID}
+	return {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0, "smoke": 0, "cover": Hex.INVALID}
 
 
 ## Fully under water: it can't shoot a building across the water line.

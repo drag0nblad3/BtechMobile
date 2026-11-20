@@ -10,6 +10,7 @@ var units: UnitDb
 var budget: int = 3000  ## Battle Value per side.
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
+var initiative_die := false  ## Use the optional Initiative Die rule.
 
 
 func _init(unit_db: UnitDb, bv_budget: int = 3000) -> void:
@@ -97,6 +98,7 @@ func ready_to_fight() -> bool:
 
 func build(map: BattleMap) -> GameState:
 	var state := GameState.new(map)
+	state.initiative_die_rule = initiative_die
 	var next_id := 1
 	for side in 2:
 		var row := map.height - 2 if side == 0 else 1

@@ -34,15 +34,23 @@ jobs:
           mkdir -p "$dest"
           mv "$RUNNER_TEMP"/tpl/templates/* "$dest/"
 
-      - name: Configure Android SDK and debug keystore
+      - name: Restore persistent Android debug signing key
+        env:
+          KEYSTORE_BASE64: ${{ secrets.BTECH_DEBUG_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.BTECH_DEBUG_KEYSTORE_PASSWORD }}
         run: |
-          keystore="$RUNNER_TEMP/debug.keystore"
-          keytool -genkeypair -v -keystore "$keystore" -storepass android -keypass android \
-            -alias androiddebugkey -dname "CN=Android Debug,O=Android,C=US" \
-            -keyalg RSA -keysize 2048 -validity 10000
+          # Never generate a fresh key: it would break Android app updates.
+          if [ -z "$KEYSTORE_BASE64" ] || [ -z "$KEYSTORE_PASSWORD" ]; then
+            echo "::error::Missing BTECH_DEBUG_KEYSTORE_BASE64 or BTECH_DEBUG_KEYSTORE_PASSWORD. See docs/android-signing.md."
+            exit 1
+          fi
+          umask 077
+          keystore="$RUNNER_TEMP/BtechMobile-debug.keystore"
+          printf "%s" "$KEYSTORE_BASE64" | base64 --decode > "$keystore"
+          keytool -list -keystore "$keystore" -storepass "$KEYSTORE_PASSWORD" -alias btechmobile-debug > /dev/null
           echo "GODOT_ANDROID_KEYSTORE_DEBUG_PATH=$keystore" >> "$GITHUB_ENV"
-          echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=androiddebugkey" >> "$GITHUB_ENV"
-          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=android" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_USER=btechmobile-debug" >> "$GITHUB_ENV"
+          echo "GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD=$KEYSTORE_PASSWORD" >> "$GITHUB_ENV"
 
           mkdir -p "$HOME/.config/godot"
           for name in editor_settings-4.tres "editor_settings-${GODOT_VERSION%.*}.tres"; do
@@ -53,11 +61,10 @@ jobs:
           export/android/android_sdk_path = "$ANDROID_SDK_ROOT"
           export/android/java_sdk_path = "$JAVA_HOME"
           export/android/debug_keystore = "$keystore"
-          export/android/debug_keystore_user = "androiddebugkey"
-          export/android/debug_keystore_pass = "android"
+          export/android/debug_keystore_user = "btechmobile-debug"
+          export/android/debug_keystore_pass = "$KEYSTORE_PASSWORD"
           SETTINGS
           done
-
       - name: Import project
         run: '"$GODOT" --headless --import'
 
@@ -68,6 +75,29 @@ jobs:
           test -s build/android/BtechMobile-debug.apk
           ls -la build/android
 
+      - name: Verify exported APK uses the persistent certificate
+        run: |
+          signer_tool="$(find "$ANDROID_SDK_ROOT/build-tools" -maxdepth 2 -type f -name apksigner | sort -V | tail -n 1)"
+          if [ -z "$signer_tool" ]; then
+            echo "::error::Android apksigner was not found in Android SDK"
+            exit 1
+          fi
+          expected="$(keytool -exportcert -rfc -keystore "$GODOT_ANDROID_KEYSTORE_DEBUG_PATH" \
+            -storepass "$GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD" -alias btechmobile-debug 2>/dev/null \
+            | openssl x509 -noout -fingerprint -sha256 | cut -d= -f2 | tr -d ':' | tr '[:upper:]' '[:lower:]')"
+          actual="$("$signer_tool" verify --print-certs build/android/BtechMobile-debug.apk \
+            | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')"
+          # Pin the chosen debug certificate: secret replacement must not rotate the signing identity.
+          pinned="5884801948849f075bdd017e3bdfbc23c894842f47e3fb4c302bc8d06210835f"
+          if [ "$expected" != "$pinned" ]; then
+            echo "::error::The repository secret contains a DIFFERENT signing certificate. Restore the original BtechMobile keystore."
+            exit 1
+          fi
+          if [ -z "$actual" ] || [ "$expected" != "$actual" ]; then
+            echo "::error::APK signing certificate does not match stored signing key"
+            exit 1
+          fi
+          echo "Verified persistent debug signing certificate: $actual"
       - uses: actions/upload-artifact@v4
         with:
           name: BtechMobile-debug-apk
