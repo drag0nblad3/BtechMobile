@@ -3,7 +3,7 @@
   "walk_mp": 5, "jump_mp": 3, "heat_sinks": 12, "sprite": "shadow_hawk",
   "role": "Medium generalist. A weapon for every range bracket, so it always has something useful to fire.",
   "armor": {"HD": 9, "CT": 23, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 18, "RL": 18},
-  "rear_armor": {"CT": 7, "LT": 6, "RT": 6},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
   "equipment": {
     "HD": ["srm2"],
     "RA": ["medium_laser"],

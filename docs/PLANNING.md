@@ -111,8 +111,11 @@ against the book first:
    pilot-skill multiplier). Our numbers land within about 10% of published values.
 8. Buildings: collapse when a heavier 'Mech enters, wall absorption (CF/10), entry PSR
    modifiers, collapse damage as a fall.
-9. 'Mech designs (21 in `data/units/`) are written from general knowledge: check armor
-   split, slot placement and ammo locations against the technical readouts.
+9. 'Mech designs (31 in `data/units/`) are written from general knowledge: check armor
+   split, slot placement and ammo locations against the technical readouts. The Core
+   Rulebook has no designs or construction rules. Weapon tons, slots and ranges match its
+   weapon tables; every design must add up to its tonnage (`DesignWeight`, engine weights
+   in `data/construction.json`), so 12 older designs had armor trimmed to fit.
 
 ## 5. Open questions
 
