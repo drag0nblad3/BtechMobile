@@ -108,7 +108,10 @@ static func _new_part(parent: Node3D, part_name: String, profile: Dictionary,
 		detail: int, meshes: bool) -> VoxelPart:
 	var part := VoxelPart.new()
 	part.name = part_name
-	part.detail_scale = clampi(detail, 1, 2)
+	# Preserve a 37.5 mm baseline and allow 25 mm voxel density on
+	# distinctive high-detail regions (Atlas hull, Catapult missile pods).
+	var part_detail: Dictionary = profile.get("voxel_part_detail", {})
+	part.detail_scale = clampi(int(part_detail.get(part_name, detail)), 1, 3)
 	part.detail_style = str(profile.get("shape", ""))
 	part.mesh_enabled = meshes
 	parent.add_child(part)
