@@ -5,6 +5,7 @@ extends Node3D
 signal struck(part_name: String, removed: int, detached: bool)
 
 var profile_id := "prototype"
+var generate_mesh := true
 var upper_stability := 0.90  ## 1.0 = locked gun platform, 0.0 = full sway.
 var parts: Dictionary = {}
 var sockets: Dictionary = {}
@@ -38,7 +39,8 @@ func _ready() -> void:
 
 
 func build() -> void:
-	_profile = VoxelChassis.find(profile_id)
+	_profile = VoxelChassis.find(profile_id).duplicate()
+	_profile["count_only"] = not generate_mesh
 	_chassis = Node3D.new()
 	_chassis.name = "Frame"
 	add_child(_chassis)
