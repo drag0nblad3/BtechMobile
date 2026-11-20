@@ -33,6 +33,9 @@ var mesh_enabled := true
 ## Surface nets draw rounded/faceted actual voxel boundaries; the original
 ## cubical mesher remains available for compatibility and simple test parts.
 var surface_mode := "cube"
+## Optional profile display colors; voxel material IDs and armor roles never
+## change, so hit results are independent of the chosen visual finish.
+var visual_palette: Array[Color] = []
 var _local_bounds := AABB()
 
 
@@ -322,7 +325,8 @@ func rebuild() -> void:
 	var colors := PackedColorArray()
 	if surface_mode == "nets":
 		VoxelSurfaceNets.append_surface(vertices, normals, colors,
-				cells, voxel_size, PALETTE)
+				cells, voxel_size,
+				visual_palette if not visual_palette.is_empty() else PALETTE)
 	else:
 		for cell: Vector3i in cells:
 			for face in 6:
