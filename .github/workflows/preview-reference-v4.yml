@@ -1,0 +1,44 @@
+name: Clean-slate reference-v4 actual Godot views
+on:
+  push:
+    branches: [feature/reference-v4-clean-rebuild]
+    paths:
+      - tools/capture_reference_v4.gd
+      - src/view/units/voxel_surface_nets.gd
+      - src/view/units/voxel_reference_v4.gd
+      - src/view/units/voxel_mech_art.gd
+      - src/view/units/voxel_part.gd
+      - src/view/units/voxel_mech_rig.gd
+      - src/view/units/voxel_mech_lab.gd
+      - data/graphics/voxel_chassis.json
+      - .github/workflows/preview-reference-v4.yml
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import model scripts
+        run: godot --headless --import
+      - name: Render actual voxel anatomy from branch
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/reference-v4
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x800 \
+            -s tools/capture_reference_v4.gd -- /tmp/reference-v4 2>&1 | tee anatomy-render.log
+          [ "$(grep -c '^REFERENCE_V4_RENDER|' anatomy-render.log)" -eq 13 ]
+          for f in atlas atlas-front atlas-side hunchback hunchback-side \
+            wolverine wolverine-side jenner jenner-side catapult catapult-side \
+            prototype prototype-side; do
+            test -s "/tmp/reference-v4/$f.png"
+          done
+          ! grep -E 'SCRIPT ERROR|Parse Error|RENDER_FAILED' anatomy-render.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reference-v4-final-review
+          path: /tmp/reference-v4/*.png
