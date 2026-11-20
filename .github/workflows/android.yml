@@ -87,6 +87,12 @@ jobs:
             | openssl x509 -noout -fingerprint -sha256 | cut -d= -f2 | tr -d ':' | tr '[:upper:]' '[:lower:]')"
           actual="$("$signer_tool" verify --print-certs build/android/BtechMobile-debug.apk \
             | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')"
+          # Pin the chosen debug certificate: secret replacement must not rotate the signing identity.
+          pinned="5884801948849f075bdd017e3bdfbc23c894842f47e3fb4c302bc8d06210835f"
+          if [ "$expected" != "$pinned" ]; then
+            echo "::error::The repository secret contains a DIFFERENT signing certificate. Restore the original BtechMobile keystore."
+            exit 1
+          fi
           if [ -z "$actual" ] || [ "$expected" != "$actual" ]; then
             echo "::error::APK signing certificate does not match stored signing key"
             exit 1
