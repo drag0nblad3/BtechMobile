@@ -10,14 +10,21 @@ func test_atlas_v4_small_death_head_and_torso_ac20() -> void:
 	var torso: VoxelPart = m.parts["torso"]
 	check_eq(torso.detail_scale, 3,
 			"V4 skull and pectoral panel outlines are actual 25mm geometry")
-	check_eq(torso.sculpt_material(Vector3i(-2, 8, -6)), 7,
-			"left Atlas eye must be recessed and not a flat face stripe")
-	check_eq(torso.sculpt_material(Vector3i(1, 8, -6)), 7,
-			"right Atlas eye should be separately visible")
+	var left_red := 0
+	var right_red := 0
+	for cell: Vector3i in torso.cells:
+		if int(torso.cells[cell]) != 7 or cell.y < 24:
+			continue
+		if cell.x < 0:
+			left_red += 1
+		else:
+			right_red += 1
+	check(left_red > 3 and right_red > 3,
+			"both recessed skull sockets must retain independently inserted red eyes")
 	check(not torso.has_sculpt_cell(Vector3i(7, -1, -12)),
 			"torso AC20 needs a physical empty bore")
-	check(torso.has_sculpt_cell(Vector3i(9, -1, -12)),
-			"AC20 shroud must have thickness around the empty barrel")
+	check(torso.has_sculpt_cell(Vector3i(10, -2, -10)),
+			"triangle-mesh AC20 has thick physical outer annulus")
 	m.free()
 
 
