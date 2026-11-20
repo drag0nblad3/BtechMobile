@@ -93,6 +93,8 @@ jobs:
             echo "::error::The repository secret contains a DIFFERENT signing certificate. Restore the original BtechMobile keystore."
             exit 1
           fi
+          # apksigner prints "Signer #1 ..." or, with only a v3 signature, "Signer: ...".
+          echo "APK signing certificate SHA-256: ${actual:-not detected}"
           if [ -z "$actual" ] || [ "$expected" != "$actual" ]; then
             echo "::error::APK signing certificate does not match stored signing key"
             exit 1
