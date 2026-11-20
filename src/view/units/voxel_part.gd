@@ -63,6 +63,8 @@ func seal(joint_min_y: int = 1000) -> void:
 		_refine_grid(detail_scale)
 		if detail_style == "jenner":
 			VoxelFineDetail.decorate(self)
+		elif detail_style == "atlas" or detail_style == "catapult":
+			VoxelHighFidelityArt.fine_detail(self)
 	_original_count = cells.size()
 	joint_cells.clear()
 	for cell: Vector3i in cells:
