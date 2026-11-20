@@ -22,8 +22,10 @@ func _run() -> void:
 		_fail("Start button did not create stress controller")
 		return
 	var stress: VoxelStressTest = lab._stress
-	if stress.profile.get("id") != "jenner_jr7d":
-		_fail("Did not choose highest-voxel model (Jenner)")
+	var expected := VoxelStressTest.highest_voxel_profile(lab.profiles,
+			lab._catalog_counts)
+	if stress.profile.get("id") != expected.get("id"):
+		_fail("Did not choose highest-voxel model (" + str(expected.get("name")) + ")")
 		return
 	for i in 25:
 		await process_frame
