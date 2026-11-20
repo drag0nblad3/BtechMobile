@@ -5,6 +5,10 @@ extends Node3D
 signal struck(part_name: String, removed: int, detached: bool)
 
 var profile_id := "prototype"
+var detail_level := 1  ## 2 = 37.5 mm voxels; 1 = original 75 mm grid.
+var render_surfaces := true  ## False: compute exact model counts without meshes.
+var _damage_rng := RandomNumberGenerator.new()
+var _damage_seeded := false
 var upper_stability := 0.90  ## 1.0 = locked gun platform, 0.0 = full sway.
 var parts: Dictionary = {}
 var sockets: Dictionary = {}
@@ -44,7 +48,8 @@ func build() -> void:
 	_upper.name = "UpperBody"
 	_upper.position.y = upper_height()
 	_chassis.add_child(_upper)
-	var rig := VoxelMechRig.build(_chassis, _upper, _profile)
+	var rig := VoxelMechRig.build(_chassis, _upper, _profile,
+			detail_level, render_surfaces)
 	parts = rig["parts"]
 	sockets = rig["sockets"]
 	hips = rig["hips"]
@@ -184,7 +189,12 @@ func hit_part(key: String, point: Vector3, radius: float = 0.23) -> int:
 	if not parts.has(key):
 		return 0
 	var part: VoxelPart = parts[key]
-	var removed := part.erase_ball(point, radius)
+	if not _damage_seeded:
+		_damage_rng.randomize()
+		_damage_seeded = true
+	var seed := _damage_rng.randi()
+	var radius_jitter := radius * _damage_rng.randf_range(0.85, 1.15)
+	var removed := part.erase_irregular_ball(point, radius_jitter, seed)
 	var snapped := false
 	if removed > 0 and sockets.has(key):
 		if part.joint_fraction() < 0.40 or part.cells.size() < 0.30 * part._original_count:
@@ -231,3 +241,16 @@ func remaining_voxels() -> int:
 	for part: VoxelPart in parts.values():
 		count += part.cells.size()
 	return count
+
+
+func initial_voxels() -> int:
+	var count := 0
+	for part: VoxelPart in parts.values():
+		count += part._original_count
+	return count
+
+
+## Repeatable random damage for tests; normal lab impacts are independently seeded.
+func set_damage_seed(seed: int) -> void:
+	_damage_rng.seed = seed
+	_damage_seeded = true

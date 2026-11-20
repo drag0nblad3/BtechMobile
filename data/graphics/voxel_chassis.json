@@ -7,7 +7,8 @@
       "shape": "prototype",
       "arm": "standard",
       "hip_width": 0.38,
-      "arm_width": 1.03
+      "arm_width": 1.03,
+      "voxel_detail": 1
     },
     {
       "id": "atlas_as7d",
@@ -16,7 +17,8 @@
       "shape": "atlas",
       "arm": "heavy",
       "hip_width": 0.44,
-      "arm_width": 1.18
+      "arm_width": 1.18,
+      "voxel_detail": 1
     },
     {
       "id": "hunchback_hbk4g",
@@ -25,7 +27,8 @@
       "shape": "hunchback",
       "arm": "cannon",
       "hip_width": 0.35,
-      "arm_width": 1.02
+      "arm_width": 1.02,
+      "voxel_detail": 1
     },
     {
       "id": "wolverine_wvr6r",
@@ -34,7 +37,8 @@
       "shape": "wolverine",
       "arm": "standard",
       "hip_width": 0.36,
-      "arm_width": 0.98
+      "arm_width": 0.98,
+      "voxel_detail": 1
     },
     {
       "id": "jenner_jr7d",
@@ -43,7 +47,8 @@
       "shape": "jenner",
       "arm": "lasers",
       "hip_width": 0.4,
-      "arm_width": 0.82
+      "arm_width": 0.82,
+      "voxel_detail": 2
     },
     {
       "id": "catapult_cplt_c1",
@@ -52,7 +57,8 @@
       "shape": "catapult",
       "arm": "missile_pods",
       "hip_width": 0.42,
-      "arm_width": 0.92
+      "arm_width": 0.92,
+      "voxel_detail": 1
     }
   ]
 }

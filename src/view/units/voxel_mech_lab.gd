@@ -10,6 +10,9 @@ var chassis_selector: OptionButton
 var stability_label: Label
 var camera: Camera3D
 var info: Label
+var catalog_label: Label
+var _catalog_counts: Dictionary = {}
+var _catalog_cursor := 0
 var _orbit := 2.58
 var _elevation := 0.33
 var _distance := 5.8
@@ -31,9 +34,12 @@ func _spawn_mech() -> void:
 	mech = VoxelMech.new()
 	mech.name = "VoxelMech"
 	mech.profile_id = str(profiles[profile_index]["id"])
+	mech.detail_level = int(profiles[profile_index].get("voxel_detail", 1))
 	mech.upper_stability = stability_slider.value if stability_slider else 0.90
 	add_child(mech)
 	mech.struck.connect(_on_struck)
+	_catalog_counts[mech.profile_id] = mech.initial_voxels()
+	_refresh_catalog()
 
 
 func make_arena() -> void:
@@ -130,6 +136,11 @@ func make_hud() -> void:
 	info = Label.new()
 	info.add_theme_font_size_override("font_size", 14)
 	column.add_child(info)
+	catalog_label = Label.new()
+	catalog_label.name = "VoxelCatalog"
+	catalog_label.add_theme_font_size_override("font_size", 13)
+	column.add_child(catalog_label)
+	_refresh_catalog()
 	var tuning := HBoxContainer.new()
 	column.add_child(tuning)
 	var selector := OptionButton.new()
@@ -167,7 +178,7 @@ func make_hud() -> void:
 	var back := add_button(second, "MAIN MENU", _open_launcher)
 	back.name = "BackToLauncher"
 	var help := Label.new()
-	help.text = "Tap mech to shoot · right-drag / swipe to orbit · scroll to zoom"
+	help.text = "Shots now carve variable jagged craters · swipe to orbit · scroll to zoom"
 	help.add_theme_font_size_override("font_size", 12)
 	column.add_child(help)
 
@@ -199,7 +210,11 @@ func _set_stability(value: float) -> void:
 
 func blast(key: String) -> void:
 	var part: VoxelPart = mech.parts[key]
-	var world_hit := part.to_global(Vector3(0, -0.15, -0.22))
+	# Each scripted shot picks a slightly different impact position, in addition
+	# to the per-voxel irregularity applied by VoxelMech.hit_part.
+	var offset := Vector3(randf_range(-0.13, 0.13),
+			randf_range(-0.11, 0.11), randf_range(-0.10, 0.10))
+	var world_hit := part.to_global(Vector3(0, -0.15, -0.22) + offset)
 	mech.hit_part(key, world_hit, 0.30)
 	flash(world_hit)
 
@@ -239,10 +254,46 @@ func _on_struck(part_name: String, removed: int, detached: bool) -> void:
 
 
 func _process(_delta: float) -> void:
+	# Count one mesh-free chassis per frame. This avoids a large up-front stall
+	# and reports exact generated geometry, not estimated authoring volumes.
+	if _catalog_cursor < profiles.size():
+		_count_next_profile()
 	var l := mech.gait_foot(mech.gait_phase).x
 	var r := mech.gait_foot(mech.gait_phase + 0.5).x
-	info.text = "FPS %d  |  Voxels %d  |  Left %.2f  Right %.2f\n%s" % [
-		Engine.get_frames_per_second(), mech.remaining_voxels(), l, r, _last_hit]
+	var initial := mech.initial_voxels()
+	var remaining := mech.remaining_voxels()
+	info.text = "FPS %d | %d / %d voxels (%d lost) | %.1f mm\nLeft %.2f Right %.2f | %s" % [
+		Engine.get_frames_per_second(), remaining, initial, initial - remaining,
+		mech.parts["torso"].voxel_size * 1000.0, l, r, _last_hit]
+
+
+func _count_next_profile() -> void:
+	var profile: Dictionary = profiles[_catalog_cursor]
+	_catalog_cursor += 1
+	var id := str(profile["id"])
+	if not _catalog_counts.has(id):
+		var sample := VoxelMech.new()
+		sample.profile_id = id
+		sample.detail_level = int(profile.get("voxel_detail", 1))
+		sample.render_surfaces = false
+		sample.build()
+		_catalog_counts[id] = sample.initial_voxels()
+		sample.free()
+	_refresh_catalog()
+
+
+func _refresh_catalog() -> void:
+	if catalog_label == null:
+		return
+	var lines := PackedStringArray()
+	lines.append("INITIAL VOXELS PER MODEL")
+	for profile in profiles:
+		var id := str(profile["id"])
+		var count := str(_catalog_counts[id]) if _catalog_counts.has(id) else "calculating..."
+		var detail := int(profile.get("voxel_detail", 1))
+		lines.append("%s: %s  (%s)" % [str(profile["name"]), count,
+				"high" if detail == 2 else "standard"])
+	catalog_label.text = "\n".join(lines)
 
 
 func _unhandled_input(event: InputEvent) -> void:
