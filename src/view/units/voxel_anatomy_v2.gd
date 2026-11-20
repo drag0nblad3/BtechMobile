@@ -148,7 +148,7 @@ static func _hunchback(p: VoxelPart) -> void:
 	hull(p, -8, 3, Vector2(5.4, 5.0), Vector2(8.6, 6.1), 0)
 	# Hunchback's silhouette is deliberately *uneven*: great right-shoulder
 	# autocannon box vs tiny cockpit tucked into the left side.
-	ellipsoid(p, Vector3(7.3, 5.7, 0), Vector3(7.0, 7.0, 6.2), 4)
+	ellipsoid(p, Vector3(7.3, 5.7, 0), Vector3(6.2, 6.2, 5.8), 4)
 	ellipsoid(p, Vector3(-7.8, 0.6, 1), Vector3(4.5, 4.8, 5.1), 0)
 	ellipsoid(p, Vector3(-3.0, 5.7, -4.0), Vector3(3.8, 3.6, 3.9), 4)
 	p.fill_box(Vector3i(-5, 5, -8), Vector3i(-2, 6, -7), 2)
@@ -164,6 +164,7 @@ static func _hunchback(p: VoxelPart) -> void:
 		ellipsoid(p, Vector3(float(x), 0, 7.4), Vector3(2.0, 4.0, 2.4), 8)
 		for y in [-2, 0, 2]:
 			p.carve_box(Vector3i(x - 1, y, 9), Vector3i(x + 1, y, 9))
+	p.fill_box(Vector3i(10, 8, 2), Vector3i(13, 11, 4), 4)
 	p.fill_box(Vector3i(-5, -10, -3), Vector3i(5, -9, 4), 1)
 
 
@@ -208,7 +209,9 @@ static func _prototype(p: VoxelPart) -> void:
 	# The distinctive sloped dual sensor windscreen.
 	ellipsoid(p, Vector3(0, 5.0, -5.7), Vector3(5.1, 3.5, 4.8), 4)
 	p.fill_box(Vector3i(-4, 5, -10), Vector3i(3, 6, -9), 2)
+	p.fill_box(Vector3i(-3, 1, -10), Vector3i(2, 3, -9), 2)
 	p.fill_box(Vector3i(-1, 4, -11), Vector3i(0, 7, -9), 1)
+	p.carve_box(Vector3i(-5, 3, 2), Vector3i(-5, 4, 3))
 	for x in [-6, 5]:
 		p.carve_box(Vector3i(x, 3, 3), Vector3i(x + 1, 5, 6))
 		p.fill_box(Vector3i(x, 2, 3), Vector3i(x + 1, 2, 6), 1)
@@ -281,12 +284,16 @@ static func arm(p: VoxelPart, shape: String, side: int) -> void:
 		# Symmetric armored fists, but not large yellow pistol boxes.
 		tube(p, 0, -5, -13, -6, 2.7, 1.1, 8)
 	elif shape == "wolverine" and side == 1:
-		tube(p, 0, -6, -17, -7, 2.5, 1.1, 8)
+		tube(p, 0, -6, -17, -7, 4.4, 1.1, 8)
 	elif shape == "hunchback":
-		# Separate forearm coaxial laser beside the shoulder AC/20.
-		tube(p, 0, -6, -11, -6, 2.0, 0.8, 8)
+		if side == 1:
+			# Weapon-side coaxial laser; the opposite arm is a plain fist.
+			tube(p, 0, -6, -11, -6, 2.3, 0.8, 8)
+		else:
+			for x in [-3, 0, 3]:
+				p.fill_box(Vector3i(x, -12, -5), Vector3i(x + 1, -11, -3), 4)
 	elif shape == "prototype" and side == 0:
-		tube(p, 0, -6, -12, -6, 2.0, 0.8, 8)
+		tube(p, 0, -6, -12, -6, 4.5, 1.5, 8)
 
 
 static func leg(p: VoxelPart, shape: String, segment: String) -> void:
