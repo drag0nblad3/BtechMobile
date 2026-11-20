@@ -110,7 +110,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ A 'Mech can be the target of only one charge, DFA or push per turn; a charging 'Mech can't be charged or pushed.
 - ✅ Displacement waits until every physical attack of the phase is rolled (p. 76).
 - ✅ Displacement (pp. 113-114): domino effect (roll to step forward/back, else pushed on and falls; crushed with nowhere to go), off the map destroys, 2+ levels down is a fall, 3+ up can't happen.
-- 🟡 `TODO(rules)`: a DFA attacker that fell in the Weapon Attack Phase is simply cancelled (book: resolve as a miss); physical attacks underwater (half damage, submerged targets) aren't modeled.
+- ✅ A declared DFA can't be called off (p. 80): a failed piloting roll in the Weapon Attack Phase doesn't drop the attacker, the DFA misses instead; it also misses if the attacker is prone or unconscious, or needs 13+.
+- 🟡 `TODO(rules)`: physical attacks underwater (half damage, submerged targets) aren't modeled; an attacker felled by an automatic fall is treated like a failed roll.
 - ⬜ Clubs, physical weapons.
 
 ## Buildings

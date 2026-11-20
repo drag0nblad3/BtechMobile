@@ -161,6 +161,11 @@ static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary)
 	if d["limb"] >= 0:
 		who += " (%s)" % Location.name_of(d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
+	if d.get("why", "") != "":
+		var t := "%s: automatic miss, %s" % [who, d["why"]]
+		if level == ExplainLevel.FULL:
+			t += ". Once declared, a death from above can't be called off, so it lands as a miss."
+		return t
 	if level == ExplainLevel.OFF:
 		return "%s: %s" % [who, res]
 	return "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res] + ModsText.lines(d["mods"], level, seen)

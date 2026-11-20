@@ -146,3 +146,31 @@ func test_missed_dfa_lands_and_falls_on_its_back() -> void:
 	check(a.prone, "attacker fell")
 	var falls := events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.FALL)
 	check(falls.size() == 1 and falls[0].data["rear"] and falls[0].data["levels"] == 2, "2 levels, onto its back")
+
+
+func test_dfa_after_failed_roll_misses_instead_of_falling() -> void:
+	var r := _pair(["c0 c0 c0", "c0 c0 c0", "c0 c0 c0", "c0 c0 c0"], "jenner_jr7d")
+	var s: GameState = r[0]
+	var a: Unit = r[1]
+	var t: Unit = r[2]
+	a.move_mode = MoveMode.Kind.JUMP
+	a.hexes_moved = 3
+	var opt := Charge.option(s, a, t, "dfa")
+	opt["attacker_id"] = a.id
+	opt["target_id"] = t.id
+	s.declared_physical.append(opt)
+	s.phase = Phase.Kind.WEAPON_ATTACK
+	a.psr_pending.append({"reason": "took 20 damage this phase", "mod": 1})
+	var dice := LoadedDice.new()
+	dice.queue_2d6(2)  # fails the roll
+	Psr.resolve_pending(s, dice, _emit, a)
+	check(not a.prone, "no fall in the Weapon Attack Phase")
+	check(opt.get("failed_psr", false))
+	events.clear()
+	var step := ChargeResolve.resolve(s, dice, _emit, opt)
+	check(not step.is_empty() and not step["hit"], "resolved as a miss")
+	var ph := events.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.PHYSICAL)
+	check(ph.size() == 1 and ph[0].data["why"] != "", "says why")
+	check(Explainer.text(ph[0], s, ExplainLevel.FULL).contains("automatic miss"))
+	ChargeResolve.displace(s, dice, _emit, step)
+	check(a.prone and a.coord == hex_at(1, 1), "lands in the target's hex and falls")

@@ -9,6 +9,11 @@ extends RefCounted
 ##   none). Prone target: damage on the Rear column of the full table.
 ## - DFA miss: target steps to an open adjacent hex, the attacker lands in
 ##   its hex and falls 2 levels onto its back (destroyed if nowhere to go).
+##   A DFA can't be called off (p. 80): it misses without a roll if the
+##   attacker failed a piloting roll in the Weapon Attack Phase (it doesn't
+##   fall then), is prone, or its MechWarrior is unconscious.
+## TODO(rules): a DFA attacker knocked prone by an automatic fall (no roll)
+## is treated like one that failed its roll.
 
 
 ## Returns {kind, attacker, target, dir, hit} for the displacement step, or {}.
@@ -16,15 +21,17 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 	var a := state.unit_by_id(d["attacker_id"])
 	var t := state.unit_by_id(d["target_id"])
 	var kind: String = d["kind"]
-	if a.destroyed or a.prone or t.destroyed or not a.pilot.conscious \
-			or (kind == "charge" and t.prone):
-		return {}  # cancelled (the book has a DFA attacker that fell land as a miss; simplified)
+	if a.destroyed or t.destroyed:
+		return {}
+	var why := forced_miss(a, d)
+	if kind == "charge" and (why != "" or t.prone):
+		return {}  # a charge simply doesn't happen
 	var th: ToHit = d["to_hit"]
-	var roll := dice.roll_2d6()
+	var roll := dice.roll_2d6() if why == "" else 0
 	var need := th.target()
-	var hit := roll >= need and need <= 12
+	var hit := why == "" and roll >= need and need <= 12
 	emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id, "kind": kind,
-			"limb": -1, "roll": roll, "need": need, "hit": hit,
+			"limb": -1, "roll": roll, "need": need, "hit": hit, "why": why,
 			"damage": d["damage"] if hit else 0, "mods": th.mods})
 	var dir := Hex.direction_to(a.coord, t.coord)
 	var step := {"kind": kind, "attacker": a, "target": t, "dir": dir, "hit": hit}
@@ -48,6 +55,17 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 		hl["no_cover"] = true
 		WeaponFire.hit_with(state, dice, emit, a, FiringArc.FRONT, p, a.id, kind + " (self)", hl)
 	return step
+
+
+## Why a declared DFA (or charge) can't be rolled, or "".
+static func forced_miss(a: Unit, d: Dictionary) -> String:
+	if d.get("failed_psr", false):
+		return "it lost its footing before the jump"
+	if a.prone:
+		return "it is on the ground"
+	if not a.pilot.conscious:
+		return "its MechWarrior is unconscious"
+	return ""
 
 
 ## Moves the 'Mechs after the phase's attacks. `step` comes from resolve().
