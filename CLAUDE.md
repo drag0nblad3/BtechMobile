@@ -26,7 +26,7 @@ Battle mode first; campaign layer later.
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (CF, height) |
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
-| `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions` |
+| `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `MoveExecutor` (carries out a move for the controller) |
 | `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits`, `CritEffects` |
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `Fall`, `PilotDamage` |
