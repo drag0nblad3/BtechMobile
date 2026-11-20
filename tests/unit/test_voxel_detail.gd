@@ -120,3 +120,21 @@ func test_profile_catalog_reports_each_model_original_cells() -> void:
 		model.free()
 	check(seen["jenner_jr7d"] > seen["prototype"],
 			"fine Jenner should have more voxels than the starter model")
+
+
+func test_lab_armor_and_structure_roles_match_claude_model_contract() -> void:
+	var part := VoxelPart.new()
+	part.mesh_enabled = false
+	part.armor_box(Vector3i.ZERO, Vector3i(2, 2, 2), 0, 1)
+	part.seal()
+	var counts := part.role_counts()
+	check_eq(counts["armor"], 26, "shell must be visual armor")
+	check_eq(counts["structure"], 1, "dark core must be visual structure")
+	check_eq(counts["armor"] + counts["structure"], part.cells.size(),
+			"all lab voxels need one declared visual damage role")
+	var claude := VxModel.load_file("res://data/voxels/catapult.json")
+	check(claude.roles.has("armor") and claude.roles.has("structure"),
+			"both pipelines must preserve the same cosmetic role vocabulary")
+	check_eq(VoxelPart.MATERIAL_ROLES.size(), VoxelPart.PALETTE.size(),
+			"every procedural material needs a defined armor/structure role")
+	part.free()
