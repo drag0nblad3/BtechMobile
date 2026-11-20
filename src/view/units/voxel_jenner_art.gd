@@ -94,7 +94,7 @@ static func foot(part: VoxelPart) -> void:
 	part.armor_box(Vector3i(-3, -1, -5), Vector3i(3, 1, 5), 4, 1)
 	part.fill_box(Vector3i(-4, -2, 0), Vector3i(4, -1, 4), 0)
 	for x in [-3, 0, 3]:
-		part.fill_box(Vector3i(x - 1, -2, -11), Vector3i(x + 1, 0, -5), 4)
-		part.fill_box(Vector3i(x - 1, -2, -12), Vector3i(x + 1, -1, -11), 0)
+		part.fill_box(Vector3i(x, -2, -11), Vector3i(x + 1, 0, -5), 4)
+		part.fill_box(Vector3i(x, -2, -13), Vector3i(x + 1, -1, -12), 0)
 		part.fill_box(Vector3i(x, 0, -9), Vector3i(x, 0, -7), 1)
 	part.fill_box(Vector3i(-2, -1, 5), Vector3i(2, 1, 7), 1)
