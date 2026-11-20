@@ -235,6 +235,13 @@ static func _wolverine(p: VoxelPart) -> void:
 		p.fill_box(Vector3i(-w, y, -5),
 				Vector3i(w, y, -5), 4)
 	p.fill_box(Vector3i(-3, -11, -3), Vector3i(3, -9, 2), 8)
+	# Slim right-hand rear jump-jet backpack. Separate vanes are tangible
+	# armor behind the cockpit rather than a larger bland torso shell.
+	faceted_box(p, Vector3i(4, 3, 4), Vector3i(9, 10, 9), 8, 1)
+	for y in [5, 7, 9]:
+		p.carve_box(Vector3i(4, y, 9), Vector3i(9, y, 9))
+	for x in [5, 7]:
+		rod(p, Vector3i(x, 1, 4), Vector3i(x, 10, 7), 0.8, 4)
 
 
 static func _jenner(p: VoxelPart) -> void:
