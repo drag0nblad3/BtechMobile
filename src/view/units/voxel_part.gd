@@ -38,6 +38,19 @@ func armor_box(low: Vector3i, high: Vector3i, armor: int, core: int) -> void:
 				cells[Vector3i(x, y, z)] = armor if shell else core
 
 
+## Remove cells while authoring geometry. Call before seal() so the mesh and
+## original armor count are computed from the final sculpted shape.
+func carve_box(low: Vector3i, high: Vector3i) -> int:
+	var removed := 0
+	for x in range(low.x, high.x + 1):
+		for y in range(low.y, high.y + 1):
+			for z in range(low.z, high.z + 1):
+				var cell := Vector3i(x, y, z)
+				if cells.erase(cell):
+					removed += 1
+	return removed
+
+
 func seal(joint_min_y: int = 1000) -> void:
 	_original_count = cells.size()
 	joint_cells.clear()
