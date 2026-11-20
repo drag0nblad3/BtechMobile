@@ -103,6 +103,24 @@ func paint_box(low: Vector3i, high: Vector3i, material_id: int) -> void:
 					cells[c] = material_id
 
 
+## Test and authoring helpers expressed in the 75 mm sculpture grid, even
+## when a region is subsequently refined into smaller physical voxels.
+func has_sculpt_cell(coarse: Vector3i) -> bool:
+	for x in detail_scale:
+		for y in detail_scale:
+			for z in detail_scale:
+				if cells.has(coarse * detail_scale + Vector3i(x, y, z)):
+					return true
+	return false
+
+
+func sculpt_material(coarse: Vector3i) -> Variant:
+	# Inspect the middle, not the edge, so small surface engraving cannot
+	# accidentally mask the material of the actual armored core.
+	var center := coarse * detail_scale + Vector3i.ONE * (detail_scale / 2)
+	return cells.get(center)
+
+
 func _update_bounds() -> void:
 	if cells.is_empty():
 		_local_bounds = AABB()
