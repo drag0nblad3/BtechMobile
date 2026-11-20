@@ -9,6 +9,7 @@ const SWAP := {"LT": "RT", "RT": "LT", "LA": "RA", "RA": "LA", "LL": "RL", "RL":
 var id := ""
 var name := ""
 var voxel_size := 0.05
+var detail := 1  ## Fine cells per authored cell edge ("subdivide")
 var colors := PackedColorArray()
 var roles: Array[String] = []  ## Per material: "armor" or "structure".
 var parts: Array[Dictionary] = []  ## {name, loc, parent, pivot, joint, cells}
@@ -38,11 +39,14 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m.roles.append(mat.get("role", "armor"))
 	for p: Dictionary in d.get("parts", []):
 		m._add_part(p)
+	m.muzzles = _points(d.get("muzzles", {}))
+	m.jets = _points(d.get("jets", {}))
+	VxRefine.apply(m, int(d.get("subdivide", 1)))
+	for p: Dictionary in d.get("parts", []):
+		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
 	m.unit_id = d.get("unit", "")
 	m.legs = d.get("legs", "plantigrade")
 	m.can_punch = d.get("punch", true)
-	m.muzzles = _points(d.get("muzzles", {}))
-	m.jets = _points(d.get("jets", {}))
 	for w: Dictionary in d.get("weapons", []):
 		var locs: Array[int] = []
 		for code: String in w.get("locs", []):

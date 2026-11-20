@@ -36,5 +36,5 @@ static func _later(anim: Node, delay: float, call: Callable) -> void:
 static func _recoil(anim: Node, joint: Node3D) -> void:
 	var rest := joint.position
 	var tw := anim.create_tween()
-	tw.tween_property(joint, "position", rest + Vector3(0, 0, 0.08), 0.05)
-	tw.tween_property(joint, "position", rest, 0.3).set_trans(Tween.TRANS_ELASTIC)
+	tw.tween_property(joint, "position", rest + Vector3(0, 0, 0.2), 0.04)
+	tw.tween_property(joint, "position", rest, 0.35).set_trans(Tween.TRANS_ELASTIC)
