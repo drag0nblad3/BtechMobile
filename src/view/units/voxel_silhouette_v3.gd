@@ -11,7 +11,9 @@ extends RefCounted
 ## grayscale silhouette doesn't become six identical steel-blue machines.
 ## These colors are visualization only, not faction or unit ownership.
 static func palette(shape: String) -> Array[Color]:
-	var base := VoxelPart.PALETTE.duplicate()
+	var base: Array[Color] = []
+	for color: Color in VoxelPart.PALETTE:
+		base.append(color)
 	match shape:
 		"atlas":
 			base[0] = Color("556c80")
