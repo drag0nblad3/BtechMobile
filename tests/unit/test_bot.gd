@@ -110,3 +110,23 @@ func test_bot_swings_hatchet() -> void:
 	check_eq(p["attacks"].size(), 1, p["reason"])
 	if p["attacks"].size() == 1:
 		check_eq(p["attacks"][0]["kind"], "hatchet", p["reason"])
+
+
+func test_bot_charges_when_it_cant_shoot() -> void:
+	var s := GameState.new(open_map(6, 8))
+	var a := mech("atlas_as7d", 0, hex_at(2, 6), 0, 1)
+	var t := mech("hunchback_hbk4g", 1, hex_at(2, 2), 3, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	for w in a.weapons:
+		w.destroyed = true
+	var m := BotMove.plan(s, a)
+	check_eq(m["charge"], t.id, m["reason"])
+	check(m["reason"].contains("charges"), m["reason"])
+	check_eq(a.coord, hex_at(2, 6), "planning leaves the unit where it was")
+	var gc := GameController.new(s, 5)
+	gc.start_turn()
+	if s.active_side() == 1:
+		gc.submit_move(t, MoveOptions.key(t.coord, t.facing), 0)
+	check(Bot.act(gc, 0), "bot moves")
+	check_eq(s.declared_physical.size(), 1, "and declares the charge")
