@@ -18,7 +18,8 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	unit = u
 	map = battle_map
 	name = "Unit_%d" % u.id
-	set_model(PlaceholderMech.build(u.def, u.side))
+	var sprite := SpriteMech.try_build(u.def)
+	set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
 	snap_to_state()
 
 

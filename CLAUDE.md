@@ -38,7 +38,7 @@ Battle mode first; campaign layer later.
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
 | `src/view/shaders/terrain.gdshader` | Triplanar noise terrain |
-| `src/view/units/` | `UnitView` (animation), `UnitsLayer`, `PlaceholderMech` |
+| `src/view/units/` | `UnitView` (animation, prone/wreck pose), `UnitsLayer`, `SpriteMech` (sprite sets from `assets/mechs/`, see `docs/graphics/sprite-integration.md`), `PlaceholderMech` (fallback) |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea` |
