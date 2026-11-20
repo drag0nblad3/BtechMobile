@@ -116,8 +116,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   punch vs kick (including the chance of falling after a missed kick).
 
 ## Force building and play
-- ✅ Two sides, up to 4 'Mechs each, tonnage budget (100-400 t); deploy on opposite edges.
-- 🟡 Balance by tonnage only — `TODO(rules)`: Battle Value.
+- ✅ Two sides, up to 4 'Mechs each, Battle Value budget (2000-8000); deploy on opposite edges.
+- 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE, no pilot-skill multiplier).
 - ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
   end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
   to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).

@@ -17,7 +17,7 @@ func _initialize() -> void:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
 	if _mode.begins_with("map="):  # e.g. map=rolling_hills: two lances on that map
-		var fb := ForceBuilder.new(UnitDb.load_dir(), 200)
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
 			fb.add(0, id)
 		for id in ["marauder_mad3r", "wasp_wsp1a"]:

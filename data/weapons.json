@@ -1,21 +1,21 @@
 {
   "weapons": [
-    {"id": "small_laser", "name": "Small Laser", "type": "energy", "heat": 1, "damage": 3, "min": 0, "short": 1, "medium": 2, "long": 3, "slots": 1},
-    {"id": "medium_laser", "name": "Medium Laser", "type": "energy", "heat": 3, "damage": 5, "min": 0, "short": 3, "medium": 6, "long": 9, "slots": 1},
-    {"id": "large_laser", "name": "Large Laser", "type": "energy", "heat": 8, "damage": 8, "min": 0, "short": 5, "medium": 10, "long": 15, "slots": 2},
-    {"id": "ppc", "name": "PPC", "type": "energy", "heat": 10, "damage": 10, "min": 3, "short": 6, "medium": 12, "long": 18, "slots": 3},
-    {"id": "flamer", "name": "Flamer", "type": "energy", "heat": 3, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "slots": 1},
-    {"id": "machine_gun", "name": "Machine Gun", "type": "ballistic", "heat": 0, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "slots": 1, "ammo_per_ton": 200},
-    {"id": "ac2", "name": "AC/2", "type": "ballistic", "heat": 1, "damage": 2, "min": 4, "short": 8, "medium": 16, "long": 24, "slots": 1, "ammo_per_ton": 45},
-    {"id": "ac5", "name": "AC/5", "type": "ballistic", "heat": 1, "damage": 5, "min": 3, "short": 6, "medium": 12, "long": 18, "slots": 4, "ammo_per_ton": 20},
-    {"id": "ac10", "name": "AC/10", "type": "ballistic", "heat": 3, "damage": 10, "min": 0, "short": 5, "medium": 10, "long": 15, "slots": 7, "ammo_per_ton": 10},
-    {"id": "ac20", "name": "AC/20", "type": "ballistic", "heat": 7, "damage": 20, "min": 0, "short": 3, "medium": 6, "long": 9, "slots": 10, "ammo_per_ton": 5},
-    {"id": "srm2", "name": "SRM 2", "type": "missile", "heat": 2, "damage": 2, "missiles": 2, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "slots": 1, "ammo_per_ton": 50},
-    {"id": "srm4", "name": "SRM 4", "type": "missile", "heat": 3, "damage": 2, "missiles": 4, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "slots": 1, "ammo_per_ton": 25},
-    {"id": "srm6", "name": "SRM 6", "type": "missile", "heat": 4, "damage": 2, "missiles": 6, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "slots": 2, "ammo_per_ton": 15},
-    {"id": "lrm5", "name": "LRM 5", "type": "missile", "heat": 2, "damage": 1, "missiles": 5, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "slots": 1, "ammo_per_ton": 24},
-    {"id": "lrm10", "name": "LRM 10", "type": "missile", "heat": 4, "damage": 1, "missiles": 10, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "slots": 2, "ammo_per_ton": 12},
-    {"id": "lrm15", "name": "LRM 15", "type": "missile", "heat": 5, "damage": 1, "missiles": 15, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "slots": 3, "ammo_per_ton": 8},
-    {"id": "lrm20", "name": "LRM 20", "type": "missile", "heat": 6, "damage": 1, "missiles": 20, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "slots": 5, "ammo_per_ton": 6}
+    {"id": "small_laser", "name": "Small Laser", "type": "energy", "heat": 1, "damage": 3, "min": 0, "short": 1, "medium": 2, "long": 3, "bv": 9, "slots": 1},
+    {"id": "medium_laser", "name": "Medium Laser", "type": "energy", "heat": 3, "damage": 5, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 46, "slots": 1},
+    {"id": "large_laser", "name": "Large Laser", "type": "energy", "heat": 8, "damage": 8, "min": 0, "short": 5, "medium": 10, "long": 15, "bv": 123, "slots": 2},
+    {"id": "ppc", "name": "PPC", "type": "energy", "heat": 10, "damage": 10, "min": 3, "short": 6, "medium": 12, "long": 18, "bv": 176, "slots": 3},
+    {"id": "flamer", "name": "Flamer", "type": "energy", "heat": 3, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "bv": 6, "slots": 1},
+    {"id": "machine_gun", "name": "Machine Gun", "type": "ballistic", "heat": 0, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "bv": 5, "ammo_bv": 1, "slots": 1, "ammo_per_ton": 200},
+    {"id": "ac2", "name": "AC/2", "type": "ballistic", "heat": 1, "damage": 2, "min": 4, "short": 8, "medium": 16, "long": 24, "bv": 37, "ammo_bv": 5, "slots": 1, "ammo_per_ton": 45},
+    {"id": "ac5", "name": "AC/5", "type": "ballistic", "heat": 1, "damage": 5, "min": 3, "short": 6, "medium": 12, "long": 18, "bv": 70, "ammo_bv": 9, "slots": 4, "ammo_per_ton": 20},
+    {"id": "ac10", "name": "AC/10", "type": "ballistic", "heat": 3, "damage": 10, "min": 0, "short": 5, "medium": 10, "long": 15, "bv": 123, "ammo_bv": 15, "slots": 7, "ammo_per_ton": 10},
+    {"id": "ac20", "name": "AC/20", "type": "ballistic", "heat": 7, "damage": 20, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 178, "ammo_bv": 22, "slots": 10, "ammo_per_ton": 5},
+    {"id": "srm2", "name": "SRM 2", "type": "missile", "heat": 2, "damage": 2, "missiles": 2, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 21, "ammo_bv": 3, "slots": 1, "ammo_per_ton": 50},
+    {"id": "srm4", "name": "SRM 4", "type": "missile", "heat": 3, "damage": 2, "missiles": 4, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 39, "ammo_bv": 5, "slots": 1, "ammo_per_ton": 25},
+    {"id": "srm6", "name": "SRM 6", "type": "missile", "heat": 4, "damage": 2, "missiles": 6, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "bv": 59, "ammo_bv": 7, "slots": 2, "ammo_per_ton": 15},
+    {"id": "lrm5", "name": "LRM 5", "type": "missile", "heat": 2, "damage": 1, "missiles": 5, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 45, "ammo_bv": 6, "slots": 1, "ammo_per_ton": 24},
+    {"id": "lrm10", "name": "LRM 10", "type": "missile", "heat": 4, "damage": 1, "missiles": 10, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 90, "ammo_bv": 11, "slots": 2, "ammo_per_ton": 12},
+    {"id": "lrm15", "name": "LRM 15", "type": "missile", "heat": 5, "damage": 1, "missiles": 15, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 136, "ammo_bv": 17, "slots": 3, "ammo_per_ton": 8},
+    {"id": "lrm20", "name": "LRM 20", "type": "missile", "heat": 6, "damage": 1, "missiles": 20, "group": 5, "min": 6, "short": 7, "medium": 14, "long": 21, "bv": 181, "ammo_bv": 23, "slots": 5, "ammo_per_ton": 6}
   ]
 }

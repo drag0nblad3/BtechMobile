@@ -1,6 +1,6 @@
 class_name ForceBuilderScreen
 extends Control
-## Pick a map, a tonnage budget and up to four 'Mechs per side, then start.
+## Pick a map, a Battle Value budget and up to four 'Mechs per side, then start.
 ## Both sides are played on this device (hot seat) for now.
 
 var db: UnitDb
@@ -11,6 +11,7 @@ var _rosters: Array[VBoxContainer] = []
 var _totals: Array[Label] = []
 var _status: Label
 var _info: Label
+var _bv_labels: Array = []  ## [Label, UnitDef] per catalog entry.
 var bot_sides := [1]
 
 
@@ -50,9 +51,11 @@ func _build_catalog(parent: Control) -> void:
 	UiKit.label(list, "'Mechs")
 	for def in db.sorted_defs():
 		var box := UiKit.panel(list)
-		UiKit.label(box, "%s  ·  %d t %s  ·  %d/%d MP  ·  %d armor" % [def.display_name(),
-				def.tonnage, def.weight_class(), def.walk_mp, def.run_mp(), def.total_armor()])
+		UiKit.label(box, "%s  ·  BV %d  ·  %d t %s  ·  %d/%d MP  ·  %d armor" % [def.display_name(),
+				BattleValue.of(def), def.tonnage, def.weight_class(), def.walk_mp, def.run_mp(), def.total_armor()])
 		UiKit.label(box, _weapons_line(def), UiKit.SMALL)
+		var bv_line := BvText.line(def, GameSettings.explain_level)
+		_bv_labels.append([UiKit.label(box, bv_line, UiKit.SMALL), def])
 		if def.role != "":
 			UiKit.label(box, def.role, UiKit.SMALL).modulate = Color(0.8, 0.85, 0.75)
 		var row := HBoxContainer.new()
@@ -121,17 +124,24 @@ func _on_add(side: int, def_id: String) -> void:
 func _refresh() -> void:
 	for side in 2:
 		UiKit.clear(_rosters[side])
-		_totals[side].text = "%d / %d tons" % [builder.tons(side), builder.budget]
+		_totals[side].text = "%d / %d BV  ·  %d tons" % [builder.bv(side), builder.budget, builder.tons(side)]
 		var ids: Array = builder.rosters[side]
 		for i in ids.size():
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
 					func(): builder.remove(side, i); _refresh())
 	var map_name: String = JsonFile.read(maps[map_index]).get("name", "?")
-	_info.text = "Map: %s\nBudget: %d tons per side\nExplanations: %s\nRed: %s · Blue: %s" % [map_name,
+	for pair: Array in _bv_labels:
+		pair[0].text = BvText.line(pair[1], GameSettings.explain_level)
+		pair[0].visible = pair[0].text != ""
+	_info.text = "Map: %s\nBudget: %d BV per side\nExplanations: %s\nRed: %s · Blue: %s" % [map_name,
 			builder.budget, ExplainLevel.name_of(GameSettings.explain_level),
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
 	if GameSettings.explain_level == ExplainLevel.FULL:
+		_info.text += "\n" + BvText.WHAT_IS_BV
 		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."
+	var balance := builder.balance_text()
+	if balance != "" and GameSettings.explain_level != ExplainLevel.OFF:
+		_info.text += "\n" + balance
 	_status.text = "" if builder.ready_to_fight() else "Add at least one 'Mech to each side."
 
 

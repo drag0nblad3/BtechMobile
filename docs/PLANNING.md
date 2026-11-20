@@ -107,6 +107,8 @@ against the book first:
 4. Heat scale thresholds, shutdown restart timing, which ammo bin explodes.
 5. Fall direction, fall pilot-damage roll, leg-loss movement.
 6. Unequal unit counts in alternating movement.
+7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE or
+   pilot-skill multiplier). Our numbers land within about 10% of published values.
 
 ## 5. Open questions
 
