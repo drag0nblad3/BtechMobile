@@ -46,6 +46,11 @@ jobs:
           test -s /tmp/voxel-frames/armor_after.png
           test -s /tmp/voxel-frames/digitigrade_a.png
           test -s /tmp/voxel-frames/digitigrade_b.png
+          test -s /tmp/voxel-frames/catapult.png
+          test -s /tmp/voxel-frames/atlas.png
+          test -s /tmp/voxel-frames/hunchback.png
+          test -s /tmp/voxel-frames/wolverine.png
+          test -s /tmp/voxel-frames/jenner_stand.png
           ! cmp -s /tmp/voxel-frames/digitigrade_a.png /tmp/voxel-frames/digitigrade_b.png
           ! cmp -s /tmp/voxel-frames/gait_a.png /tmp/voxel-frames/gait_b.png
           ! cmp -s /tmp/voxel-frames/armor_before.png /tmp/voxel-frames/armor_after.png
