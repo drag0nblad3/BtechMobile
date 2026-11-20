@@ -1,0 +1,9 @@
+{
+  "map": "test_valley",
+  "units": [
+    {"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0},
+    {"def": "jenner_jr7d", "side": 0, "hex": "1016", "facing": 0},
+    {"def": "hunchback_hbk4g", "side": 1, "hex": "0602", "facing": 3},
+    {"def": "wolverine_wvr6r", "side": 1, "hex": "1002", "facing": 3}
+  ]
+}

@@ -1,0 +1,20 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import
+        run: godot --headless --import
+      - name: Unit tests
+        run: godot --headless -s tests/run_tests.gd
+      - name: Smoke run main scene
+        run: |
+          godot --headless --quit-after 30 2>&1 | tee run.log
+          ! grep -E "SCRIPT ERROR|Parse Error" run.log
