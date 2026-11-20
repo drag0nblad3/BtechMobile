@@ -17,11 +17,61 @@ func _run() -> void:
 	if lab.stress_start_button.name != "StressTestButton":
 		_fail("Stress button needs a stable UI identifier")
 		return
+	if lab.zoom_in_button == null or lab.zoom_out_button == null or lab.zoom_reset_button == null:
+		_fail("Missing touch-sized zoom and fit controls")
+		return
+	var initial_distance := lab._distance
+	lab.zoom_in_button.pressed.emit()
+	if lab._distance >= initial_distance:
+		_fail("Zoom + should move the camera toward the mechs")
+		return
+	lab.zoom_out_button.pressed.emit()
+	lab.zoom_reset_button.pressed.emit()
+	if not is_equal_approx(lab._distance, initial_distance):
+		_fail("Fit view must return to the solo camera distance")
+		return
+	# Simulate a real two-touch pinch spread without tapping a mech.
+	var finger0 := InputEventScreenTouch.new()
+	finger0.index = 0
+	finger0.pressed = true
+	finger0.position = Vector2(200, 300)
+	lab._unhandled_input(finger0)
+	var finger1 := InputEventScreenTouch.new()
+	finger1.index = 1
+	finger1.pressed = true
+	finger1.position = Vector2(350, 300)
+	lab._unhandled_input(finger1)
+	var pinch := InputEventScreenDrag.new()
+	pinch.index = 1
+	pinch.position = Vector2(450, 300)
+	pinch.relative = Vector2(100, 0)
+	lab._unhandled_input(pinch)
+	if lab._distance >= initial_distance or not lab._touch_cancel_tap:
+		_fail("Spreading two fingers must zoom in without firing")
+		return
+	for index in [0, 1]:
+		var release := InputEventScreenTouch.new()
+		release.index = index
+		release.pressed = false
+		release.position = Vector2(200, 300) if index == 0 else Vector2(450, 300)
+		lab._unhandled_input(release)
+	if not lab._touches.is_empty():
+		_fail("Pinch touch state must clear after both fingers release")
+		return
+	lab.zoom_reset_button.pressed.emit()
 	lab.stress_start_button.pressed.emit()
 	if lab._stress == null:
 		_fail("Start button did not create stress controller")
 		return
 	var stress: VoxelStressTest = lab._stress
+	if not is_equal_approx(lab._distance, 31.5):
+		_fail("Stress test must initially fit the bigger hangar in frame")
+		return
+	lab.zoom_out_button.pressed.emit()
+	if lab._distance <= 31.5:
+		_fail("Zoom - must work in stress mode")
+		return
+	lab.zoom_reset_button.pressed.emit()
 	var expected := VoxelStressTest.highest_voxel_profile(lab.profiles,
 			lab._catalog_counts)
 	if stress.profile.get("id") != expected.get("id"):
