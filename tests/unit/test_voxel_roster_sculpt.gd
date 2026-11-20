@@ -100,3 +100,15 @@ func test_five_actual_game_chassis_have_separate_visual_signatures() -> void:
 		totals[id] = m.initial_voxels()
 		m.free()
 	check_eq(totals.size(), 5, "all five production chassis need distinct sculpts")
+
+
+func test_all_six_roster_chassis_have_100k_to_150k_real_voxels() -> void:
+	for profile in VoxelChassis.all():
+		var m := _model(str(profile["id"]))
+		var n := m.initial_voxels()
+		check(n > 100000 and n <= 150000,
+				"%s: %d voxels, outside 100k–150k budget" % [profile["id"], n])
+		check_eq(n, m.remaining_voxels(), "only actual occupied cells are counted")
+		check(not (m.parts["torso"] as VoxelPart).mesh_enabled,
+				"headless count must not allocate render meshes")
+		m.free()
