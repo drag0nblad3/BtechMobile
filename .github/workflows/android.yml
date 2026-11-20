@@ -88,7 +88,7 @@ jobs:
           actual="$("$signer_tool" verify --print-certs build/android/BtechMobile-debug.apk \
             | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')"
           # Pin the chosen debug certificate: secret replacement must not rotate the signing identity.
-          pinned="5884801948849f075bdd017e3bdfbc23c894842f47e3fb4c302bc8d06210835f"
+          pinned="02681a14bbdeeab1a09b2db5f68367e40a08628957fbec556d9b380749934237"
           if [ "$expected" != "$pinned" ]; then
             echo "::error::The repository secret contains a DIFFERENT signing certificate. Restore the original BtechMobile keystore."
             exit 1

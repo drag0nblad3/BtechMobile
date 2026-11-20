@@ -14,7 +14,7 @@ secret** and create both:
 | `BTECH_DEBUG_KEYSTORE_BASE64` | Single-line Base64 encoding of the PKCS12 `BtechMobile-debug.keystore` |
 | `BTECH_DEBUG_KEYSTORE_PASSWORD` | Password used to protect that keystore |
 
-Use the **private debug signing kit** delivered separately to the maintainer.
+Use the **private debug signing kit** delivered separately to the maintainer (generated 2026-11-20; it replaced an earlier kit before any APK was built with it).
 It includes `BTECH_DEBUG_KEYSTORE_BASE64.txt`, `BTECH_DEBUG_KEYSTORE_PASSWORD.txt`,
 and a backup of the keystore. Paste the corresponding file contents into GitHub
 Secrets. Keep the signing kit privately backed up in a secure location; **never
@@ -26,7 +26,7 @@ are identical for this PKCS12 key.
 Pinned certificate SHA-256 (public fingerprint):
 
 ```
-58:84:80:19:48:84:9F:07:5B:DD:01:7E:3B:DF:BC:23:C8:94:84:2F:47:E3:FB:4C:30:2B:C8:D0:62:10:83:5F
+02:68:1A:14:BB:DE:EA:B1:A0:9B:2D:B5:F6:83:67:E4:0A:08:62:89:57:FB:EC:55:6D:9B:38:07:49:93:42:37
 ```
 
 The workflow checks the stored key's alias and verifies that the **exported
