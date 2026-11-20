@@ -26,6 +26,10 @@ static func torso(part: VoxelPart) -> void:
 	part.fill_box(Vector3i(4, 0, -12), Vector3i(4, 1, -9), 1)
 	# Forward nose and broad brow frame the panoramic glass.
 	part.fill_box(Vector3i(-3, -2, -17), Vector3i(2, -1, -15), 0)
+	part.fill_box(Vector3i(-2, -1, -18), Vector3i(1, 0, -17), 4)
+	part.fill_box(Vector3i(-2, 1, -17), Vector3i(1, 1, -17), 2)
+	part.fill_box(Vector3i(-3, 0, -16), Vector3i(-3, 1, -15), 1)
+	part.fill_box(Vector3i(2, 0, -16), Vector3i(2, 1, -15), 1)
 	part.fill_box(Vector3i(-4, 3, -12), Vector3i(3, 3, -9), 0)
 	part.fill_box(Vector3i(-3, 3, -13), Vector3i(2, 3, -13), 4)
 	# Center torso four-tube SRM4 launcher: actual individually exposed cells.
@@ -91,10 +95,10 @@ static func metatarsal(part: VoxelPart) -> void:
 
 static func foot(part: VoxelPart) -> void:
 	# Distinct central heel with three projecting toes instead of a flat slab.
-	part.armor_box(Vector3i(-3, -1, -5), Vector3i(3, 1, 5), 4, 1)
-	part.fill_box(Vector3i(-4, -2, 0), Vector3i(4, -1, 4), 0)
+	part.armor_box(Vector3i(-3, -1, -4), Vector3i(3, 1, 4), 4, 1)
+	part.fill_box(Vector3i(-4, -2, 0), Vector3i(4, -1, 3), 0)
 	for x in [-3, 0, 3]:
-		part.fill_box(Vector3i(x, -2, -11), Vector3i(x + 1, 0, -5), 4)
-		part.fill_box(Vector3i(x, -2, -13), Vector3i(x + 1, -1, -12), 0)
-		part.fill_box(Vector3i(x, 0, -9), Vector3i(x, 0, -7), 1)
-	part.fill_box(Vector3i(-2, -1, 5), Vector3i(2, 1, 7), 1)
+		part.fill_box(Vector3i(x, -2, -9), Vector3i(x + 1, 0, -4), 4)
+		part.fill_box(Vector3i(x, -2, -11), Vector3i(x + 1, -1, -10), 0)
+		part.fill_box(Vector3i(x, 0, -8), Vector3i(x, 0, -6), 1)
+	part.fill_box(Vector3i(-2, -1, 4), Vector3i(2, 1, 6), 1)
