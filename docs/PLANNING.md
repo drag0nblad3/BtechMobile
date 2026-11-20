@@ -108,8 +108,8 @@ against the book first:
 4. Heat scale thresholds, shutdown restart timing, which ammo bin explodes.
 5. Fall direction, fall pilot-damage roll, leg-loss movement.
 6. Unequal unit counts in alternating movement.
-7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE or
-   pilot-skill multiplier). Our numbers land within about 10% of published values.
+7. Battle Value: simplified BV 2 (rear weapons half, flat ammo penalty, no CASE;
+   pilot skill multiplier applied). Our numbers land within about 10% of published values.
 8. Buildings follow the Core Rulebook's Threshold / Destroy Check system; careful
    entry, roofs and building fires are not modeled yet.
 9. 'Mech designs (31 in `data/units/`) are written from general knowledge: check armor

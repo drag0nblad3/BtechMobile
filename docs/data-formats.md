@@ -32,6 +32,10 @@ weight class (0 light .. 3 assault) that may force its way in.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
 
+## `data/bv_skill.json`
+`{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;
+the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
+
 ## `data/units/<id>.json`
 ```json
 {"id": "atlas_as7d", "name": "Atlas", "model": "AS7-D", "tonnage": 100,

@@ -9,6 +9,7 @@ const BUDGETS := [2000, 3000, 4500, 6000, 8000]
 var units: UnitDb
 var budget: int = 3000  ## Battle Value per side.
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
+var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 
 
 func _init(unit_db: UnitDb, bv_budget: int = 3000) -> void:
@@ -26,8 +27,29 @@ func tons(side: int) -> int:
 func bv(side: int) -> int:
 	var n := 0
 	for id: String in rosters[side]:
-		n += BattleValue.of(units.get_def(id))
+		n += unit_bv(side, units.get_def(id))
 	return n
+
+
+## A design's BV with this side's MechWarrior skill (book p. 222).
+func unit_bv(side: int, def: UnitDef) -> int:
+	return BvSkill.adjusted(BattleValue.of(def), skills[side].x, skills[side].y)
+
+
+## Switches a side to the next skill preset. Returns false (and keeps the
+## old skill) if the roster would go over budget.
+func next_skill(side: int) -> bool:
+	var i := 0
+	for j in BvSkill.PRESETS.size():
+		if BvSkill.PRESETS[j][1] == skills[side].x and BvSkill.PRESETS[j][2] == skills[side].y:
+			i = j
+	var p: Array = BvSkill.PRESETS[(i + 1) % BvSkill.PRESETS.size()]
+	var old := skills[side]
+	skills[side] = Vector2i(p[1], p[2])
+	if bv(side) > budget:
+		skills[side] = old
+		return false
+	return true
 
 
 ## Why a design can't be added, or "" if it can.
@@ -37,7 +59,7 @@ func cant_add(side: int, def_id: String) -> String:
 		return "Unknown design"
 	if rosters[side].size() >= MAX_UNITS:
 		return "A lance is at most %d 'Mechs" % MAX_UNITS
-	if bv(side) + BattleValue.of(def) > budget:
+	if bv(side) + unit_bv(side, def) > budget:
 		return "Over budget: %d of %d BV left" % [budget - bv(side), budget]
 	return ""
 
@@ -82,7 +104,9 @@ func build(map: BattleMap) -> GameState:
 		for i in ids.size():
 			var col := int(round((i + 1) * map.width / float(ids.size() + 1))) - 1
 			var c := _free_hex(state, Hex.from_offset(Vector2i(col, row)))
-			state.add_unit(Unit.new(next_id, units.get_def(ids[i]), side, c, 0 if side == 0 else 3))
+			var u := Unit.new(next_id, units.get_def(ids[i]), side, c, 0 if side == 0 else 3)
+			u.pilot = Pilot.new(skills[side].x, skills[side].y)
+			state.add_unit(u)
 			next_id += 1
 	return state
 

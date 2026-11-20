@@ -60,3 +60,22 @@ func test_every_map_loads() -> void:
 	for path in JsonFile.list_dir("res://data/maps"):
 		var m := MapLoader.load_file(path, terrain())
 		check(m.width >= 10 and m.height >= 10, path)
+
+
+func test_skill_changes_bv_and_pilots() -> void:
+	check_eq(BvSkill.multiplier(4, 5), 1.0, "regular 4/5 is the base")
+	check_eq(BvSkill.multiplier(5, 3), 1.08, "the book's example")
+	check_eq(BvSkill.adjusted(1000, 3, 4), 1320)
+	var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+	fb.add(0, "hunchback_hbk4g")
+	var base := fb.bv(0)
+	check(fb.next_skill(0), "veteran fits the budget")
+	check_eq(fb.skills[0], Vector2i(3, 4))
+	check_eq(fb.bv(0), roundi(base * 1.32))
+	fb.add(1, "locust_lct1v")
+	var s := fb.build(open_map(8, 8))
+	check_eq(s.units_of_side(0)[0].pilot.gunnery, 3, "deployed with the chosen skill")
+	check_eq(s.units_of_side(1)[0].pilot.piloting, 5)
+	fb.budget = base
+	check(not fb.next_skill(0), "elite would go over a tight budget")
+	check_eq(fb.skills[0], Vector2i(3, 4), "skill unchanged")

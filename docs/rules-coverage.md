@@ -138,7 +138,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 
 ## Force building and play
 - ✅ Two sides, up to 4 'Mechs each, Battle Value budget (2000-8000); deploy on opposite edges.
-- 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE, no pilot-skill multiplier).
+- 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE).
+- ✅ Pilot skill adjusts Battle Value (`BvSkill`, multipliers in `data/bv_skill.json`); the force builder cycles Green / Regular / Veteran / Elite per side.
 - ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
   end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
   to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).
