@@ -3,7 +3,8 @@
 Claude's voxel 'Mechs are plain JSON in `data/voxels/<id>.json`. They're written by
 hand (by Claude, another AI, or a person) and built into meshes when the game loads. There
 are no binary files and no outside editor: every change shows up as a readable diff.
-Example: `data/voxels/hunchback.json`. Code: `src/view/vox/`. Test scene: launcher →
+Examples: `data/voxels/hunchback.json` (normal legs) and `data/voxels/catapult.json`
+(reverse-jointed legs, missile racks, jump jets). Code: `src/view/vox/`. Test scene: launcher →
 **Claude Voxel Test** (`scenes/vx_showcase.tscn`).
 
 ## The grid
@@ -22,9 +23,20 @@ Example: `data/voxels/hunchback.json`. Code: `src/view/vox/`. Test scene: launch
   "muzzles": {"RT": [7, 33, -14], "LA": [-13, 18, -9]}
 }
 ```
+- **unit**: the `data/units` id the test scene uses for its record sheet.
+- **legs**: `plantigrade` (Hunchback) or `digitigrade` (reverse-jointed, Catapult). Draw
+  digitigrade legs as straight vertical segments (thigh, shin, tarsus, foot) with `hip`,
+  `knee`, `hock` and `ankle` joints; the leg solver bends the knee backward and keeps the
+  tarsus upright, and the toes curl down mid-step.
+- **punch**: `false` for designs without fists (the Catapult's arms are missile racks).
+- **weapons**: buttons in the test scene, each `{"label", "locs", "kind"}`, where kind is
+  `laser`, `cannon` or `missile`.
+- **jets**: jump-jet nozzles by location; they flame during a jump.
 - **materials**: name, hex color and role. `armor` voxels are the plating that hits
   chip away first. `structure` voxels are the frame you see once the armor is gone.
-- **muzzles**: where shots leave from, by hit location (grid coordinates).
+- **muzzles**: where shots leave from, by hit location (grid coordinates). Use one point
+  or a list: a list fires from every point (two chin lasers), and missiles ripple out of the
+  launch tubes in turn.
 
 ## Parts
 ```json
@@ -36,7 +48,7 @@ Example: `data/voxels/hunchback.json`. Code: `src/view/vox/`. Test scene: launch
 | `loc` | Hit location it belongs to: `HD CT LT RT LA RA LL RL`. Several parts may share one (thigh, shin and foot are all `LL`) |
 | `parent` | Part it hangs from (it moves with it). Omit for parts on the body root, such as the hips |
 | `pivot` | Joint point in grid coordinates; the part rotates around it |
-| `joint` | `hip`, `knee`, `ankle` or `shoulder`, so the walk cycle and punches can find the limbs |
+| `joint` | `hip`, `knee`, `hock` (digitigrade only), `ankle` or `shoulder`, so the walk cycle and punches can find the limbs |
 | `shapes` | Drawing steps, applied in order (later steps paint over earlier ones) |
 | `mirror` | Copy another part flipped left↔right (`"mirror": "la"` makes the right arm); `loc` swaps automatically |
 | `add` | Extra shapes painted after a mirror (the Hunchback's right torso is the left torso mirrored, plus the hunch) |
@@ -59,3 +71,10 @@ in which its voxels go, as a series of craters: front armor, rear armor (torsos,
 z > 0) and then structure. The share of armor and structure the record sheet has lost
 decides how far along that order the location is. The same record sheet always gives the
 same picture. Destroyed arms and legs drop off and stay on the ground, and a wreck turns dark.
+Hits knock armor chips loose, and locations with damaged structure leak smoke; heavier
+damage makes thicker smoke.
+
+## Tips for drawing joints
+Leave the cell row at each pivot empty in the parent, and fill it with a small `joint`
+block in the child, centered on the pivot. That block stays covered when the joint bends,
+so no gap opens up. Never let two parts fill the same cell: overlapping faces flicker.

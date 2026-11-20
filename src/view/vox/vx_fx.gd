@@ -14,7 +14,7 @@ static func shot(holder: Node, from: Vector3, to: Vector3, laser: bool) -> void:
 		_beam(holder, from, to)
 		impact(holder, to, false)
 		return
-	var shell := _ball(holder, from, 0.05, FLASH)
+	var shell := ball(holder, from, 0.05, FLASH)
 	var tw := shell.create_tween()
 	tw.tween_property(shell, "global_position", to, maxf(0.08, from.distance_to(to) / 40.0))
 	tw.tween_callback(func(): impact(holder, to, true))
@@ -23,7 +23,7 @@ static func shot(holder: Node, from: Vector3, to: Vector3, laser: bool) -> void:
 
 static func impact(holder: Node, at: Vector3, big: bool) -> void:
 	flash(holder, at, 0.2 if big else 0.1)
-	var puff := _ball(holder, at, 0.1, SMOKE)
+	var puff := ball(holder, at, 0.1, SMOKE)
 	var tw := puff.create_tween().set_parallel()
 	tw.tween_property(puff, "scale", Vector3.ONE * (4.0 if big else 2.5), 1.2)
 	tw.tween_property(puff, "position:y", at.y + 0.4, 1.2)
@@ -32,7 +32,7 @@ static func impact(holder: Node, at: Vector3, big: bool) -> void:
 
 
 static func flash(holder: Node, at: Vector3, radius: float) -> void:
-	var f := _ball(holder, at, radius, FLASH)
+	var f := ball(holder, at, radius, FLASH)
 	var tw := f.create_tween()
 	tw.tween_property(f, "scale", Vector3.ONE * 0.1, 0.18)
 	tw.tween_callback(f.queue_free)
@@ -46,7 +46,7 @@ static func _beam(holder: Node, from: Vector3, to: Vector3) -> void:
 	c.height = from.distance_to(to)
 	c.radial_segments = 6
 	m.mesh = c
-	m.material_override = _glow(LASER)
+	m.material_override = glow(LASER)
 	holder.add_child(m)
 	m.global_position = (from + to) * 0.5
 	var dir := (to - from).normalized()
@@ -57,7 +57,7 @@ static func _beam(holder: Node, from: Vector3, to: Vector3) -> void:
 	tw.tween_callback(m.queue_free)
 
 
-static func _ball(holder: Node, at: Vector3, radius: float, color: Color) -> MeshInstance3D:
+static func ball(holder: Node, at: Vector3, radius: float, color: Color) -> MeshInstance3D:
 	var m := MeshInstance3D.new()
 	var s := SphereMesh.new()
 	s.radius = radius
@@ -65,13 +65,13 @@ static func _ball(holder: Node, at: Vector3, radius: float, color: Color) -> Mes
 	s.radial_segments = 8
 	s.rings = 4
 	m.mesh = s
-	m.material_override = _glow(color)
+	m.material_override = glow(color)
 	holder.add_child(m)
 	m.global_position = at
 	return m
 
 
-static func _glow(color: Color) -> StandardMaterial3D:
+static func glow(color: Color) -> StandardMaterial3D:
 	var mat := StandardMaterial3D.new()
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA

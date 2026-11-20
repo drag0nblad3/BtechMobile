@@ -12,7 +12,12 @@ var voxel_size := 0.05
 var colors := PackedColorArray()
 var roles: Array[String] = []  ## Per material: "armor" or "structure".
 var parts: Array[Dictionary] = []  ## {name, loc, parent, pivot, joint, cells}
-var muzzles: Dictionary = {}  ## Location -> Vector3 (grid coords)
+var unit_id := ""   ## data/units id this model shows in the test scene
+var legs := "plantigrade"  ## or "digitigrade" (reverse-jointed)
+var can_punch := true
+var muzzles: Dictionary = {}  ## Location -> Array[Vector3] (grid coords)
+var jets: Dictionary = {}     ## Location -> Array[Vector3], jump jet nozzles
+var weapons: Array[Dictionary] = []  ## {label, locs: Array[int], kind: laser|cannon|missile}
 var errors: PackedStringArray = []
 var _mat: Dictionary = {}  ## material name -> index
 
@@ -33,8 +38,16 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m.roles.append(mat.get("role", "armor"))
 	for p: Dictionary in d.get("parts", []):
 		m._add_part(p)
-	for code: String in d.get("muzzles", {}):
-		m.muzzles[Location.from_code(code)] = _vec(d["muzzles"][code])
+	m.unit_id = d.get("unit", "")
+	m.legs = d.get("legs", "plantigrade")
+	m.can_punch = d.get("punch", true)
+	m.muzzles = _points(d.get("muzzles", {}))
+	m.jets = _points(d.get("jets", {}))
+	for w: Dictionary in d.get("weapons", []):
+		var locs: Array[int] = []
+		for code: String in w.get("locs", []):
+			locs.append(Location.from_code(code))
+		m.weapons.append({"label": w.get("label", "FIRE"), "locs": locs, "kind": w.get("kind", "laser")})
 	m._validate()
 	return m
 
@@ -134,6 +147,18 @@ func _validate() -> void:
 			errors.append("no part for %s" % Location.code(loc))
 	for e in errors:
 		push_warning("VxModel %s: %s" % [id, e])
+
+
+## {"LA": [x, y, z]} or {"LA": [[x, y, z], ...]} -> {Location: [Vector3, ...]}
+static func _points(d: Dictionary) -> Dictionary:
+	var out := {}
+	for code: String in d:
+		var v: Array = d[code]
+		var list: Array[Vector3] = []
+		for p: Variant in (v if not v.is_empty() and v[0] is Array else [v]):
+			list.append(_vec(p))
+		out[Location.from_code(code)] = list
+	return out
 
 
 static func _vec(a: Variant) -> Vector3:

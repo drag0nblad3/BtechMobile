@@ -1,11 +1,10 @@
 class_name VxShowcase
 extends Node3D
-## Claude's voxel test: a Hunchback built from data/voxels/hunchback.json,
-## damaged by the real rules (HitTable + Damage on a live Unit) and shown
-## with VxDamage, plus every animation hook. Separate from the Voxel Mech Lab.
+## Claude's voxel test: 'Mechs built from data/voxels/*.json, damaged by the
+## real rules (HitTable + Damage on a live Unit) and shown with VxDamage,
+## plus every animation hook. Separate from the Voxel Mech Lab.
 
-const MODEL := "res://data/voxels/hunchback.json"
-const UNIT_ID := "hunchback_hbk4g"
+const MODELS := ["res://data/voxels/catapult.json", "res://data/voxels/hunchback.json"]
 
 var mech: VxMech
 var unit: Unit
@@ -17,6 +16,8 @@ var _orbit := 2.55
 var _pitch := 0.32
 var _dist := 3.6
 var _last := "Tap a button. Hits use the real hit table and damage rules."
+var _model_index := 0
+var _hud: CanvasLayer
 
 
 func _ready() -> void:
@@ -26,16 +27,22 @@ func _ready() -> void:
 	add_child(camera)
 	_aim_camera()
 	reset()
-	_make_hud()
 
 
 func reset() -> void:
 	if mech:
 		mech.queue_free()
-	mech = VxMech.from_file(MODEL)
+	mech = VxMech.from_file(MODELS[_model_index])
 	add_child(mech)
-	unit = Unit.new(1, UnitDb.load_dir().get_def(UNIT_ID), 0, Vector2i.ZERO, 0)
+	unit = Unit.new(1, UnitDb.load_dir().get_def(mech.model.unit_id), 0, Vector2i.ZERO, 0)
 	mech.show_unit(unit)
+	_make_hud()
+
+
+func next_mech() -> void:
+	_model_index = (_model_index + 1) % MODELS.size()
+	_last = "Tap a button. Hits use the real hit table and damage rules."
+	reset()
 
 
 ## Rolls a hit location and applies `amount` through the rules engine.
@@ -51,7 +58,9 @@ func hit(amount: int, rear: bool = false) -> void:
 				s["structure"], " DESTROYED" if s["destroyed"] else ""])
 	_last = "2d6 = %d → %s\n%s" % [roll["roll"], Location.name_of(roll["loc"]), ", ".join(parts)]
 	var from := mech.global_position + (Vector3(0, 1.2, 4) if rear else Vector3(1.5, 1.2, -4))
-	VxFx.shot(self, from, mech.location_point(roll["loc"]), amount < 10)
+	var at := mech.location_point(roll["loc"])
+	VxFx.shot(self, from, at, amount < 10)
+	VxTrails.chips(self, at, mech.model.colors[0])
 	mech.show_unit(unit)
 	var legs := int(unit.is_location_destroyed(Location.LL)) + int(unit.is_location_destroyed(Location.RL))
 	if (unit.destroyed or legs > 0) and not mech.anim.fallen:
@@ -71,17 +80,23 @@ func jump() -> void:
 		mech.anim.jump(Vector3(0, 0, -2.0))
 
 
-func fire(loc: int) -> void:
-	if not unit.is_location_destroyed(loc) and not mech.anim.fallen:
-		mech.anim.fire(loc, target, loc != Location.RT)
+func fire(weapon: Dictionary) -> void:
+	var locs: Array[int] = []
+	for loc: int in weapon["locs"]:
+		if not unit.is_location_destroyed(loc):
+			locs.append(loc)
+	if not locs.is_empty() and not mech.anim.fallen and not unit.destroyed:
+		mech.anim.fire(locs, target, weapon["kind"])
 
 
 func _make_hud() -> void:
-	var layer := CanvasLayer.new()
-	add_child(layer)
+	if _hud:
+		_hud.queue_free()
+	_hud = CanvasLayer.new()
+	add_child(_hud)
 	var top := VBoxContainer.new()
 	top.position = Vector2(16, 12)
-	layer.add_child(top)
+	_hud.add_child(top)
 	UiKit.label(top, "CLAUDE VOXEL TEST · %s" % mech.model.name, UiKit.SMALL)
 	info = UiKit.label(top, "", 16)
 	info.custom_minimum_size.x = 760
@@ -90,24 +105,27 @@ func _make_hud() -> void:
 	rows.offset_top = -150
 	rows.offset_left = 12
 	rows.offset_right = -12
-	layer.add_child(rows)
+	_hud.add_child(rows)
 	var a := HBoxContainer.new()
 	var b := HBoxContainer.new()
 	rows.add_child(a)
 	rows.add_child(b)
-	for e in [["WALK", walk.bind(false)], ["RUN", walk.bind(true)], ["JUMP", jump],
-			["FALL", func(): mech.anim.fall()], ["STAND", func(): mech.anim.stand_up(not unit.destroyed)],
-			["PUNCH", func(): mech.anim.punch(1)], ["KICK", func(): mech.anim.kick(0)]]:
-		_button(a, e[0], e[1])
-	for e in [["AC/20", fire.bind(Location.RT)], ["LASERS", _lasers], ["HIT 5", hit.bind(5)],
-			["HIT 20", hit.bind(20)], ["REAR 10", hit.bind(10, true)], ["RESET", reset],
-			["MENU", func(): get_tree().change_scene_to_file("res://scenes/launcher.tscn")]]:
-		_button(b, e[0], e[1]).name = "Vx" + String(e[0]).replace("/", "").replace(" ", "")
-
-
-func _lasers() -> void:
-	fire(Location.LA)
-	get_tree().create_timer(0.15).timeout.connect(fire.bind(Location.RA))
+	_button(a, "WALK", walk.bind(false))
+	_button(a, "RUN", walk.bind(true))
+	_button(a, "JUMP", jump)
+	_button(a, "FALL", func(): mech.anim.fall())
+	_button(a, "STAND", func(): mech.anim.stand_up(not unit.destroyed))
+	if mech.model.can_punch:
+		_button(a, "PUNCH", func(): mech.anim.punch(1))
+	_button(a, "KICK", func(): mech.anim.kick(0))
+	_button(a, "NEXT MECH", next_mech).name = "VxNext"
+	for w in mech.model.weapons:
+		_button(b, w["label"], fire.bind(w))
+	_button(b, "HIT 5", hit.bind(5)).name = "VxHit5"
+	_button(b, "HIT 20", hit.bind(20)).name = "VxHit20"
+	_button(b, "REAR 10", hit.bind(10, true))
+	_button(b, "RESET", reset)
+	_button(b, "MENU", func(): get_tree().change_scene_to_file("res://scenes/launcher.tscn"))
 
 
 func _button(row: HBoxContainer, text: String, action: Callable) -> Button:

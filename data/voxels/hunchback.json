@@ -1,7 +1,9 @@
 {
   "id": "hunchback",
   "name": "Hunchback HBK-4G",
+  "unit": "hunchback_hbk4g",
   "voxel_size": 0.05,
+  "legs": "plantigrade",
   "notes": "All coordinates are voxel cells in one shared model grid: x right, y up, -z front. Pivots are joint points in the same grid.",
   "materials": [
     {"name": "armor", "color": "6b7a55", "role": "armor"},
@@ -65,5 +67,9 @@
     {"name": "rl_shin", "mirror": "ll_shin", "parent": "rl"},
     {"name": "rl_foot", "mirror": "ll_foot", "parent": "rl_shin"}
   ],
-  "muzzles": {"RT": [7, 33, -14], "LA": [-13, 18, -9], "RA": [13, 18, -9], "HD": [0, 30.5, -8]}
+  "muzzles": {"RT": [7, 33, -14], "LA": [-13, 18, -9], "RA": [13, 18, -9], "HD": [0, 30.5, -8]},
+  "weapons": [
+    {"label": "AC/20", "locs": ["RT"], "kind": "cannon"},
+    {"label": "LASERS", "locs": ["LA", "RA", "HD"], "kind": "laser"}
+  ]
 }

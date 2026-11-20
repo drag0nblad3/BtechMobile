@@ -13,14 +13,18 @@ var parts: Dictionary = {}     ## part name -> VxPart
 var hips: Array[Node3D] = [null, null]      ## [left, right]
 var knees: Array[Node3D] = [null, null]
 var ankles: Array[Node3D] = [null, null]
+var hocks: Array[Node3D] = [null, null]     ## Reverse-jointed legs only
 var shoulders: Array[Node3D] = [null, null]
 var thigh := 0.0
 var shin := 0.0
+var tarsus := 0.0   ## Hock to ankle (digitigrade), 0 for plantigrade
 var hip_height := 0.0
 var damage: VxDamage
 var anim: VxAnim
 var lost: Dictionary = {}      ## Location -> true once its limb has dropped
+var wounded: Dictionary = {}   ## Location -> share of structure gone (smoke)
 var debris: Array[Node3D] = []
+var _centers: Dictionary = {}  ## Location -> grid center of its first part
 
 
 static func from_file(path: String) -> VxMech:
@@ -52,11 +56,14 @@ func build() -> void:
 			"hip": hips[side] = joint
 			"knee": knees[side] = joint
 			"ankle": ankles[side] = joint
+			"hock": hocks[side] = joint
 			"shoulder": shoulders[side] = joint
 	_mark_touching()
 	if hips[0] and knees[0] and ankles[0]:
 		thigh = absf(knees[0].position.y)
-		shin = absf(ankles[0].position.y)
+		var lower: Node3D = hocks[0] if hocks[0] else ankles[0]
+		shin = absf(lower.position.y)
+		tarsus = absf(ankles[0].position.y) if hocks[0] else 0.0
 		hip_height = hips[0].position.y
 	damage = VxDamage.new(model, parts)
 	anim = VxAnim.new()
@@ -83,6 +90,11 @@ func _mark_touching() -> void:
 ## Matches the voxels to the unit's record sheet; drops destroyed limbs.
 func show_unit(u: Unit) -> void:
 	damage.show_unit(u)
+	wounded.clear()
+	for loc in Location.COUNT:
+		var full := StructureTable.points(u.def.tonnage, loc)
+		if u.structure[loc] < full and not u.is_location_destroyed(loc):
+			wounded[loc] = 1.0 - float(u.structure[loc]) / full
 	for loc in [Location.LA, Location.RA, Location.LL, Location.RL]:
 		if u.is_location_destroyed(loc) and not lost.has(loc):
 			drop_limb(loc)
@@ -94,21 +106,37 @@ func set_wrecked(on: bool) -> void:
 		p.set_wrecked(on)
 
 
-## World position of a weapon muzzle in a location (moves with the limb).
-func muzzle(loc: int) -> Vector3:
-	var spec: Dictionary = model.parts_at(loc)[0]
-	var part: VxPart = parts[spec["name"]]
-	return part.to_global(part.local_of(model.muzzles.get(loc, spec["pivot"])))
+## World positions of a location's weapon muzzles (they move with the limb).
+func muzzles(loc: int) -> Array[Vector3]:
+	return _world_points(loc, model.muzzles.get(loc, [model.parts_at(loc)[0]["pivot"]]))
+
+
+func jets(loc: int) -> Array[Vector3]:
+	return _world_points(loc, model.jets.get(loc, []))
+
+
+func part_at(loc: int) -> VxPart:
+	return parts[model.parts_at(loc)[0]["name"]]
+
+
+func _world_points(loc: int, grid: Array) -> Array[Vector3]:
+	var part := part_at(loc)
+	var out: Array[Vector3] = []
+	for g: Vector3 in grid:
+		out.append(part.to_global(part.local_of(g)))
+	return out
 
 
 ## Center of a location's voxels in world space, for impact effects.
 func location_point(loc: int) -> Vector3:
 	var spec: Dictionary = model.parts_at(loc)[0]
+	if not _centers.has(loc):
+		var sum := Vector3.ZERO
+		for c: Vector3i in spec["cells"]:
+			sum += Vector3(c) + Vector3.ONE * 0.5
+		_centers[loc] = sum / maxf(1.0, spec["cells"].size())
 	var part: VxPart = parts[spec["name"]]
-	var sum := Vector3.ZERO
-	for c: Vector3i in spec["cells"]:
-		sum += Vector3(c) + Vector3.ONE * 0.5
-	return part.to_global(part.local_of(sum / maxf(1.0, spec["cells"].size())))
+	return part.to_global(part.local_of(_centers[loc]))
 
 
 func is_attached(n: Node) -> bool:

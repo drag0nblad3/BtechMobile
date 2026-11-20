@@ -31,7 +31,7 @@ func _process(_delta: float) -> bool:
 			Damage.apply(scene.unit, Location.LA, 40)
 			scene.mech.show_unit(scene.unit)
 		120: _shot("vx_damaged.png")
-		121: scene.fire(Location.RT)
+		121: scene.fire(scene.mech.model.weapons[0])
 		140: _shot("vx_fire.png")
 		200:
 			scene._orbit = 1.75
