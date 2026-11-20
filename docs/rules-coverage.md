@@ -118,7 +118,10 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 ## Force building and play
 - ✅ Two sides, up to 4 'Mechs each, tonnage budget (100-400 t); deploy on opposite edges.
 - 🟡 Balance by tonnage only — `TODO(rules)`: Battle Value.
-- ✅ Hot-seat play (both sides on one device). ⬜ Bot opponent.
+- ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
+  end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
+  to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).
+- ⬜ Bot charges, DFAs and pushes; smarter focus fire and retreat.
 - ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
 - ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.

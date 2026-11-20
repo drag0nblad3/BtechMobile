@@ -26,6 +26,7 @@ const STAND := &"stand"                   # {unit_id, ok}
 const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb, roll, need, hit, damage, mods}
 const CHARGE_DECLARED := &"charge_declared" # {unit_id, target_id, kind: charge|dfa, need}
 const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vector3i]}
+const INTENT := &"intent"                 # {unit_id, text} why a player chose its action
 const GAME_OVER := &"game_over"           # {winner: side or -1}
 
 var type: StringName

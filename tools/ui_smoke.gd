@@ -8,6 +8,7 @@ var _frames := 0
 
 
 func _initialize() -> void:
+	BattleLaunch.bot_sides = [1]  # Blue is the computer; Red is driven below.
 	_scene = load("res://scenes/main.tscn").instantiate()
 	root.add_child(_scene)
 
@@ -18,10 +19,11 @@ func _process(_delta: float) -> bool:
 		return false
 	var gc: GameController = _scene.controller
 	if gc.state.game_over or gc.state.turn > 4:
-		print("ui smoke ok: turn %d, game over %s" % [gc.state.turn, gc.state.game_over])
+		var intents := gc.history.filter(func(e): return e.type == GameEvent.INTENT).size()
+		print("ui smoke ok: turn %d, game over %s, computer explained %d actions" % [gc.state.turn, gc.state.game_over, intents])
 		return true
 	var p := gc.pending_units()
-	if p.is_empty():
+	if p.is_empty() or _scene.bots.is_bot_turn():
 		return false
 	var u: Unit = p[0]
 	match gc.state.phase:

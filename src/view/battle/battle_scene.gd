@@ -15,6 +15,7 @@ var movement: MovementInput
 var attacks: AttackInput
 var explainer: Explainer
 var sheet_unit: Unit
+var bots: BotDriver
 
 
 func _ready() -> void:
@@ -23,6 +24,9 @@ func _ready() -> void:
 	if state == null:
 		state = ScenarioLoader.load_file(SCENARIO, TerrainDb.load_file(), UnitDb.load_dir())
 	controller = GameController.new(state)
+	bots = BotDriver.new()
+	bots.controller = controller
+	bots.bot_sides = BattleLaunch.take_bots()
 	explainer = Explainer.new(GameSettings.explain_level)
 	add_child(BattleEnvironment.build())
 	_build_views(state)
@@ -63,7 +67,11 @@ func _build_views(state: GameState) -> void:
 	attacks.controller = controller
 	attacks.hud = hud
 	attacks.highlighter = highlighter
+	attacks.bots = bots
+	movement.bots = bots
 	add_child(attacks)
+	bots.units_layer = units_layer
+	add_child(bots)
 
 
 func _wire() -> void:
@@ -168,5 +176,7 @@ func _on_event(e: GameEvent) -> void:
 func _update_status() -> void:
 	var s := controller.state
 	hud.set_status("Turn %d  ·  %s  ·  %s to act" % [s.turn, Phase.name_of(s.phase), Names.side(s.active_side())])
-	if s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:
+	if bots.is_bot_turn():
+		hud.set_tip("The computer is thinking. Its reasons appear in the log." if GameSettings.explain_level != ExplainLevel.OFF else "")
+	elif s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:
 		hud.set_tip("Tap one of your 'Mechs to plan its move.")

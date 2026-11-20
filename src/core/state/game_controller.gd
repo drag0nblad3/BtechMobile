@@ -60,24 +60,9 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 	_emit(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
 	if charge_target_id >= 0:
-		_declare_charge(unit, state.unit_by_id(charge_target_id))
+		Charge.declare(state, _emit_cb, unit, state.unit_by_id(charge_target_id))
 	_unit_done()
 	return true
-
-
-## Records a charge/DFA if legal; the unit then skips weapon and physical attacks.
-func _declare_charge(unit: Unit, t: Unit) -> void:
-	var kind := "dfa" if unit.move_mode == MoveMode.Kind.JUMP else "charge"
-	var opt := Charge.option(state, unit, t, kind)
-	if not opt["to_hit"].possible():
-		return
-	opt["attacker_id"] = unit.id
-	opt["target_id"] = t.id
-	state.declared_physical.append(opt)
-	unit.has_fired = true
-	unit.has_physical = true
-	_emit(GameEvent.CHARGE_DECLARED, {"unit_id": unit.id, "target_id": t.id, "kind": kind,
-			"need": opt["to_hit"].target()})
 
 
 ## Declares weapon fire: shots = [{weapon: index, target_id}]. An empty list
@@ -116,6 +101,12 @@ func set_torso_twist(unit: Unit, dir: int) -> bool:
 		return false
 	unit.torso_twist = clampi(dir, -1, 1)
 	return true
+
+
+## A player's (usually the bot's) stated reason for its next action. Changes
+## nothing; the log shows it when explanations are on.
+func announce(unit: Unit, text: String) -> void:
+	_emit(GameEvent.INTENT, {"unit_id": unit.id, "text": text})
 
 
 ## Units of the active side that may still act this phase.
