@@ -1,9 +1,14 @@
 name: Android APK
 
-# Builds a debug APK only when started by hand:
-# Actions tab > Android APK > Run workflow. Pushes and pull requests don't run it.
+# Manual on main. This temporary branch triggers an APK build from the
+# latest main content; it does not alter the default branch's build policy.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - build/voxel-lab-apk-20261120
+    paths:
+      - .github/workflows/android.yml
 
 env:
   GODOT_VERSION: 4.5.1
