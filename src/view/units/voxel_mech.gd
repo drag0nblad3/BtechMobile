@@ -137,8 +137,11 @@ func stand() -> void:
 		if hip.get_parent() != _chassis:
 			continue
 		if is_digitigrade():
-			var angles := VoxelJennerGait.sample(0.29, hip.position.y) if is_jenner() \
-					else VoxelDigitigradeGait.sample(0.29, hip.position.y)
+			# Both Jenner feet remain planted, but their neutral toe positions
+			# are staggered so the hock silhouette stays visible in profile.
+			var neutral_phase := (0.20 if side == 0 else 0.41) if is_jenner() else 0.29
+			var angles := VoxelJennerGait.sample(neutral_phase, hip.position.y) if is_jenner() \
+					else VoxelDigitigradeGait.sample(neutral_phase, hip.position.y)
 			hip.rotation.x = angles.x
 			var knee: Node3D = knees[side]
 			if knee.get_parent() == hip:
