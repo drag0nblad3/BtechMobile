@@ -46,6 +46,16 @@ func _process(_delta: float) -> bool:
 		stage = 4
 	elif stage == 4:
 		capture("armor_after.png")
+		scene._select_chassis(4)  # Jenner, using the digitigrade chassis profile.
+		scene._orbit = 1.85
+		scene.update_camera()
+		scene.mech.start_walk(100.0)
+		stage = 5
+	elif stage == 5 and scene.mech.gait_phase >= 0.08:
+		capture("digitigrade_a.png")
+		stage = 6
+	elif stage == 6 and scene.mech.gait_phase >= 0.58:
+		capture("digitigrade_b.png")
 		return true
 	return false
 
