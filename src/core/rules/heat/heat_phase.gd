@@ -4,6 +4,7 @@ extends RefCounted
 ## and shutdown. TODO(rules): restart and water cooling are simplified.
 
 const ENGINE_HIT_HEAT := 5
+const LIFE_SUPPORT_HEAT := 15
 
 
 static func run(state: GameState, dice: Dice, emit: Callable) -> void:
@@ -16,9 +17,11 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
 				"sinks": sinks, "heat": u.heat, "effects": HeatScale.effects_text(u.heat)})
+		if u.heat >= LIFE_SUPPORT_HEAT and u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT):
+			PilotDamage.wound(dice, emit, u, 1, "heat with life support damaged")
 		_ammo_check(state, dice, emit, u)
 		if not u.destroyed:
-			_shutdown_check(dice, emit, u)
+			_shutdown_check(state, dice, emit, u)
 
 
 static func _ammo_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
@@ -44,7 +47,7 @@ static func _worst_bin(u: Unit) -> AmmoBin:
 	return best
 
 
-static func _shutdown_check(dice: Dice, emit: Callable, u: Unit) -> void:
+static func _shutdown_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
 	var need := HeatScale.shutdown_avoid(u.heat)
 	if u.shutdown:
 		# Restart: automatic once heat is below 14, otherwise roll as for shutdown.
@@ -69,4 +72,4 @@ static func _shutdown_check(dice: Dice, emit: Callable, u: Unit) -> void:
 	if down:
 		u.shutdown = true
 		emit.call(GameEvent.SHUTDOWN, {"unit_id": u.id, "shutdown": true})
-		Psr.fall_from_shutdown(dice, emit, u)
+		Psr.fall_from_shutdown(state, dice, emit, u)

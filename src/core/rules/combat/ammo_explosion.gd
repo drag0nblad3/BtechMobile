@@ -10,7 +10,6 @@ static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, bin: 
 	bin.destroyed = true
 	if dmg <= 0:
 		return
-	var was_destroyed := u.destroyed
 	var saved := u.armor[bin.loc]
 	var saved_rear := u.rear_armor[bin.loc]
 	u.armor[bin.loc] = 0
@@ -23,6 +22,5 @@ static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, bin: 
 	emit.call(GameEvent.AMMO_EXPLOSION, {"unit_id": u.id, "loc": bin.loc,
 			"ammo": bin.weapon.name, "damage": dmg, "steps": steps})
 	PilotDamage.wound(dice, emit, u, 2, "ammo explosion")
-	if u.destroyed and not was_destroyed:
-		emit.call(GameEvent.UNIT_DESTROYED, {"unit_id": u.id, "reason": u.destroyed_reason})
+	Damage.announce(emit, u)
 	CriticalHits.after_damage(state, dice, emit, u, steps, false)

@@ -105,5 +105,9 @@ func _update_status() -> void:
 
 func _hold_fire() -> void:
 	var p := controller.pending_units()
-	if not p.is_empty() and controller.state.phase == Phase.Kind.WEAPON_ATTACK:
+	if p.is_empty():
+		return
+	if controller.state.phase == Phase.Kind.WEAPON_ATTACK:
 		controller.declare_fire(p[0], [])
+	elif controller.state.phase == Phase.Kind.PHYSICAL_ATTACK:
+		controller.declare_physical(p[0], [])

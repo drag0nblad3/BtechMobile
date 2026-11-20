@@ -27,6 +27,7 @@ var heat_sinks_lost: int = 0
 # Condition ---------------------------------------------------------------
 var destroyed: bool = false
 var destroyed_reason: String = ""
+var destroyed_announced: bool = false
 var prone: bool = false
 var shutdown: bool = false
 
@@ -38,6 +39,8 @@ var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var damage_this_phase: int = 0
+## Piloting rolls owed at the end of this phase: [{reason, mod, auto_fall?}].
+var psr_pending: Array[Dictionary] = []
 
 
 func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: int,
@@ -110,6 +113,14 @@ func hip_hits() -> int:
 	return n
 
 
+func has_hit_slot(kind: int) -> bool:
+	for loc in Location.COUNT:
+		for s: CritSlot in slots[loc]:
+			if s.kind == kind and s.hit:
+				return true
+	return false
+
+
 func working_heat_sinks() -> int:
 	return maxi(0, def.heat_sinks - heat_sinks_lost)
 
@@ -150,7 +161,7 @@ func use_ammo(w: WeaponDef) -> bool:
 
 
 func can_fire(w: MountedWeapon) -> bool:
-	if w.destroyed or is_location_destroyed(w.loc):
+	if sensor_hits >= 2 or w.destroyed or is_location_destroyed(w.loc):
 		return false
 	return not w.def.uses_ammo() or ammo_for(w.def) > 0
 
