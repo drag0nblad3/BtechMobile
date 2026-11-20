@@ -23,7 +23,8 @@ classes light, medium, heavy and hardened.
 ## `data/weapons.json`
 `{"weapons": [{"id", "name", "type" (energy|ballistic|missile), "heat", "damage", "missiles"?,
 "group"?, "min"?, "short", "medium", "long", "slots", "ammo_per_ton"?,
-"bv", "ammo_bv"?}]}`
+"tons", "bv", "ammo_bv"?}]}`
+- `tons` and `slots` follow the Core Rulebook weapon tables.
 - `indirect: true` (LRMs) lets the weapon fire without line of sight through a spotter.
 - `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
@@ -45,6 +46,10 @@ classes light, medium, heavy and hardened.
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine; list the rest as
   `heat_sink` items. A test checks heat sinks, jump jets and armor maximums.
+- The design must weigh its tonnage (test): structure 10%, engine by rating
+  (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
+  cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
+  points per ton (rounded up to the half ton), weapon tons, 1 t per ammo item.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
 
 ## `data/scenarios/<id>.json`

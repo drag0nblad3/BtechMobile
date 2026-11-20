@@ -1,0 +1,14 @@
+{
+  "id": "dragon_drg1n", "name": "Dragon", "model": "DRG-1N", "tonnage": 60,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 10, "sprite": "dragon",
+  "role": "Fast heavy 'Mech. An autocannon and LRMs at range, then it closes in to ram or punch with its speed.",
+  "armor": {"HD": 9, "CT": 25, "LT": 19, "RT": 19, "LA": 16, "RA": 16, "LL": 18, "RL": 18},
+  "rear_armor": {"CT": 8, "LT": 6, "RT": 6},
+  "equipment": {
+    "RT": ["ac5", "ammo:ac5", "ammo:ac5"],
+    "LA": ["lrm10"],
+    "RA": ["medium_laser"],
+    "CT": ["medium_laser"],
+    "LT": ["ammo:lrm10", "ammo:lrm10"]
+  }
+}

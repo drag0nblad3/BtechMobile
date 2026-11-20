@@ -63,13 +63,13 @@ func test_minimum_range_and_out_of_range() -> void:
 
 func test_damage_transfers_inward() -> void:
 	var u := mech("jenner_jr7d", 0, Vector2i.ZERO)
-	# LA: 6 armor + 6 structure; 20 damage leaves 8 for LT.
-	var steps := Damage.apply(u, Location.LA, 20)
+	# LA: 4 armor + 6 structure; 16 damage leaves 6 for LT.
+	var steps := Damage.apply(u, Location.LA, 16)
 	check(u.is_location_destroyed(Location.LA), "arm gone")
 	check_eq(steps.size(), 2)
-	check_eq(u.armor[Location.LT], 4, "LT armor 12 - 8")
+	check_eq(u.armor[Location.LT], 2, "LT armor 8 - 6")
 	check(u.weapons[2].destroyed, "arm lasers destroyed")
-	Damage.apply(u, Location.CT, 15 + 11)
+	Damage.apply(u, Location.CT, 11 + 11)
 	check(u.destroyed, "center torso destroyed")
 
 

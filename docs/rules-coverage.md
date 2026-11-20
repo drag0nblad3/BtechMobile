@@ -34,6 +34,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Internal structure by tonnage (standard structure).
 - ✅ Armor per location, rear armor on torsos, maximum armor check.
 - ✅ Critical slot layout: engine, gyro, cockpit, sensors, life support, actuators, equipment.
+- 🟡 Design weight check (`DesignWeight`): structure, engine, gyro, cockpit, heat sinks, jump jets, armor, weapons and ammo add up to the tonnage — `TODO(rules)`: engine weight table is general knowledge, not in the Core Rulebook.
 - 🟡 Heat sinks: single only; `TODO(rules)`: 10 engine-integral for every design.
 - ⬜ Tonnage / construction validation (engine, armor and equipment weights).
 - 🟡 Heat scale effects (MP, to-hit, shutdown, ammo explosion) — `TODO(rules)`: verify thresholds.

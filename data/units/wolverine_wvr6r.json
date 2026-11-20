@@ -2,8 +2,8 @@
   "id": "wolverine_wvr6r", "name": "Wolverine", "model": "WVR-6R", "tonnage": 55,
   "walk_mp": 5, "jump_mp": 5, "heat_sinks": 12, "sprite": "wolverine",
   "role": "Medium all-rounder. Autocannon for range, SRMs and a laser for close work; runs cool.",
-  "armor": {"HD": 9, "CT": 26, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 18, "RL": 18},
-  "rear_armor": {"CT": 8, "LT": 6, "RT": 6},
+  "armor": {"HD": 9, "CT": 26, "LT": 18, "RT": 18, "LA": 15, "RA": 15, "LL": 17, "RL": 17},
+  "rear_armor": {"CT": 7, "LT": 5, "RT": 5},
   "missing_actuators": {"RA": ["hand"]},
   "equipment": {
     "HD": ["medium_laser"],

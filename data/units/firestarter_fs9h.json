@@ -2,8 +2,8 @@
   "id": "firestarter_fs9h", "name": "Firestarter", "model": "FS9-H", "tonnage": 35,
   "walk_mp": 6, "jump_mp": 6, "heat_sinks": 10, "sprite": "firestarter",
   "role": "Light close-in hunter. Four flamers and machine guns at point-blank range; it overheats if it fires everything.",
-  "armor": {"HD": 9, "CT": 16, "LT": 12, "RT": 12, "LA": 10, "RA": 10, "LL": 12, "RL": 12},
-  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
+  "armor": {"HD": 9, "CT": 13, "LT": 10, "RT": 10, "LA": 8, "RA": 8, "LL": 10, "RL": 10},
+  "rear_armor": {"CT": 4, "LT": 3, "RT": 3},
   "equipment": {
     "LA": ["medium_laser", "flamer"],
     "RA": ["medium_laser", "flamer"],

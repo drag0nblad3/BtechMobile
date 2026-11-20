@@ -1,0 +1,16 @@
+{
+  "id": "vindicator_vnd1r", "name": "Vindicator", "model": "VND-1R", "tonnage": 45,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 16, "sprite": "vindicator",
+  "role": "Sturdy medium brawler-sniper. PPC plus backup lasers and LRMs, with enough heat sinks to keep the PPC firing.",
+  "armor": {"HD": 9, "CT": 23, "LT": 16, "RT": 16, "LA": 13, "RA": 13, "LL": 19, "RL": 19},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "equipment": {
+    "HD": ["small_laser"],
+    "LA": ["ppc"],
+    "CT": ["medium_laser", "jump_jet"],
+    "LT": ["lrm5", "ammo:lrm5", "heat_sink", "heat_sink"],
+    "RT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink", "jump_jet"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

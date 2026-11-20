@@ -19,7 +19,8 @@ static func line(def: UnitDef, level: int) -> String:
 	parts.append("Defense %d from %d armor and its structure%s." % [roundi(b["defensive"]),
 			def.total_armor(), (", +%d to hit it when it runs" % b["tmm"]) if b["tmm"] > 0 else ""])
 	if b["ammo_penalty"] > 0:
-		parts.append("Its %d tons of ammo can explode, which lowers defense." % def.ammo_mounts.size())
+		var n := def.ammo_mounts.size()
+		parts.append("Its %d ton%s of ammo can explode, which lowers defense." % [n, "" if n == 1 else "s"])
 	parts.append("Offense %d from its weapons%s." % [roundi(b["offensive"]),
 			", boosted by speed" if b["speed_factor"] > 1.0 else (", reduced by low speed" if b["speed_factor"] < 1.0 else "")])
 	var halved: Array = b["halved"]

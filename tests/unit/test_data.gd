@@ -52,6 +52,37 @@ func test_every_design_is_legal() -> void:
 				check(u.ammo_for(w.def) > 0, "%s ammo for %s" % [def.id, w.def.name])
 
 
+func test_designs_weigh_their_tonnage() -> void:
+	var db := UnitDb.load_dir()
+	check(db.by_id.size() >= 30, "30+ designs")
+	for def: UnitDef in db.by_id.values():
+		var parts := DesignWeight.breakdown(def)
+		check(parts["engine"] > 0.0, "%s engine rating %d in table" % [def.id, def.tonnage * def.walk_mp])
+		var t := DesignWeight.total(def)
+		check(t <= def.tonnage and t >= def.tonnage - 1.0,
+				"%s weighs %.1f t, built as %d t" % [def.id, t, def.tonnage])
+	check_eq(DesignWeight.total(db.get_def("atlas_as7d")), 100.0)
+
+
+func test_equipment_fits_slots() -> void:
+	var db := UnitDb.load_dir()
+	for def: UnitDef in db.by_id.values():
+		var want := 0
+		for m in def.weapon_mounts:
+			want += (m["weapon"] as WeaponDef).slots
+		want += def.ammo_mounts.size()
+		for loc: int in def.other_items:
+			want += def.other_items[loc].size()
+		var got := 0
+		var u := Unit.new(1, def, 0, Vector2i.ZERO, 0)
+		for loc in Location.COUNT:
+			for s: CritSlot in u.slots[loc]:
+				if s.kind in [CritSlot.Kind.WEAPON, CritSlot.Kind.AMMO, CritSlot.Kind.HEAT_SINK,
+						CritSlot.Kind.JUMP_JET]:
+					got += 1
+		check_eq(got, want, def.id + " every item has a critical slot")
+
+
 func test_crit_layout() -> void:
 	var u := Unit.new(1, UnitDb.load_dir().get_def("atlas_as7d"), 0, Vector2i.ZERO, 0)
 	var rt: Array = u.slots[Location.RT]

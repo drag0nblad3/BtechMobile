@@ -1,0 +1,52 @@
+class_name DesignWeight
+extends RefCounted
+## Adds up what a design weighs (structure, engine, gyro, cockpit, heat sinks,
+## jump jets, armor, weapons, ammo) so a bad data file shows up in tests.
+## TODO(rules): construction rules are not in the Core Rulebook; engine
+## weights (data/construction.json) and the rest are general knowledge.
+
+const COCKPIT_TONS := 3.0
+const ARMOR_PER_TON := 16.0
+
+static var _engine: Dictionary = {}
+
+
+## Tons per part: {structure, engine, gyro, cockpit, heat_sinks, jump_jets,
+## armor, weapons, ammo}. engine is -1 when the rating isn't in the table.
+static func breakdown(def: UnitDef) -> Dictionary:
+	var rating := def.tonnage * def.walk_mp
+	var armor_pts := def.total_armor()
+	var weapons := 0.0
+	for m in def.weapon_mounts:
+		weapons += (m["weapon"] as WeaponDef).tons
+	return {
+		"structure": def.tonnage / 10.0,
+		"engine": engine_tons(rating),
+		"gyro": float(ceili(rating / 100.0)),
+		"cockpit": COCKPIT_TONS,
+		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
+		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
+		"armor": ceilf(armor_pts / ARMOR_PER_TON * 2.0) / 2.0,
+		"weapons": weapons,
+		"ammo": float(def.ammo_mounts.size()),
+	}
+
+
+static func total(def: UnitDef) -> float:
+	var t := 0.0
+	for v: float in breakdown(def).values():
+		t += v
+	return t
+
+
+static func jump_jet_tons(tonnage: int) -> float:
+	if tonnage <= 55:
+		return 0.5
+	return 1.0 if tonnage <= 85 else 2.0
+
+
+static func engine_tons(rating: int) -> float:
+	if _engine.is_empty():
+		var d: Dictionary = JsonFile.read("res://data/construction.json")
+		_engine = d["engine_tons"]
+	return float(_engine.get(str(rating), -1.0))
