@@ -24,6 +24,12 @@ jobs:
           godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
+      - name: Launcher navigation smoke
+        run: |
+          set -o pipefail
+          godot --headless -s tools/launcher_smoke.gd 2>&1 | tee launcher.log
+          grep -q "launcher navigation ok" launcher.log
+          ! grep -E "SCRIPT ERROR|Parse Error" launcher.log
       - name: Voxel mech lab smoke
         run: |
           set -o pipefail
