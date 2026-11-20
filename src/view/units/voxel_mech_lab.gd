@@ -284,12 +284,15 @@ func _set_stability(value: float) -> void:
 
 func blast(key: String) -> void:
 	var part: VoxelPart = mech.parts[key]
-	# Each scripted shot picks a slightly different impact position, in addition
-	# to the per-voxel irregularity applied by VoxelMech.hit_part.
-	var offset := Vector3(randf_range(-0.13, 0.13),
-			randf_range(-0.11, 0.11), randf_range(-0.10, 0.10))
-	var world_hit := part.to_global(Vector3(0, -0.15, -0.22) + offset)
-	mech.hit_part(key, world_hit, 0.30)
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	# Sample every exposed face of the whole limb/torso, not a tiny fixed
+	# region around (0, -0.15, -0.22).
+	var hit := VoxelStressTest.random_surface_hit(part, rng)
+	if hit.is_empty():
+		return
+	var world_hit: Vector3 = hit["point"]
+	mech.hit_part(key, world_hit, VoxelStressTest.impact_radius(part, rng))
 	flash(world_hit)
 
 
@@ -418,6 +421,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func fire_at_screen(point: Vector2) -> void:
 	var origin := camera.project_ray_origin(point)
 	var direction := camera.project_ray_normal(point)
-	var hit := mech.shoot(origin, direction)
+	# A screen tap still hits the selected surface, but removes a broader
+	# patch of armor instead of only a few high-density microvoxels.
+	var hit := mech.shoot(origin, direction, 0.35)
 	if not hit.is_empty():
 		flash(hit["point"])
