@@ -38,6 +38,23 @@ static func push(state: GameState, dice: Dice, emit: Callable, u: Unit, dir: int
 	return true
 
 
+## Death from above (p. 80): pushed the way of the attack, or else the
+## nearest hexside to it that it may enter: both sides one off, then two off,
+## then straight back. False if every hex is closed.
+static func push_nearest(state: GameState, dice: Dice, emit: Callable, u: Unit, dir: int) -> bool:
+	for off in [0, 1, -1, 2, -2, 3]:
+		var d := Hex.rotate(dir, off)
+		if may_enter(state, u, d) and push(state, dice, emit, u, d):
+			return true
+	return false
+
+
+## Off the map counts as open; 3+ levels up does not.
+static func may_enter(state: GameState, u: Unit, dir: int) -> bool:
+	var dst := state.map.get_tile(Hex.neighbor(u.coord, dir))
+	return dst == null or _level(dst) - _level(state.map.get_tile(u.coord)) <= MAX_UP
+
+
 ## Domino effect: `t` gets out of the way, or is pushed on. False if the
 ## chain can't move at all (then nobody moves).
 static func _make_room(state: GameState, dice: Dice, emit: Callable, t: Unit, dir: int) -> bool:

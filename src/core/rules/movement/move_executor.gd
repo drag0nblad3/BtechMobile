@@ -61,7 +61,9 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	Psr.resolve_pending(state, dice, emit, unit)
 	unit.psr_pending.clear()
 	if charge_target_id >= 0 and not unit.prone:
-		Charge.declare(state, emit, unit, state.unit_by_id(charge_target_id))
+		if not moved:  # charging from the hex next door still spends MP
+			unit.move_mode = mode
+		Charge.declare(state, emit, unit, state.unit_by_id(charge_target_id), opts.budget - mp)
 	return true
 
 

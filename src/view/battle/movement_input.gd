@@ -84,7 +84,7 @@ func charge_target() -> Unit:
 	var e := controller.state.unit_at(Hex.neighbor(c, preview.z))
 	if e == null or e.side == selected.side:
 		return null
-	if mode != MoveMode.Kind.JUMP and options.path_to(preview).is_empty():
+	if not Charge.has_mp(controller.state, c, e.coord, mode, options.budget - int(options.cost.get(preview, 0))):
 		return null
 	return e
 

@@ -12,9 +12,11 @@ static func damage_for(u: Unit, levels: int) -> int:
 	return ceili(u.def.tonnage / 10.0) * (levels + 1)
 
 
+## `side` forces the side hit (FiringArc.REAR for a missed death from above).
 static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: int,
-		reason: String) -> void:
-	var side := FiringArc.REAR if dice.d6() == 1 else FiringArc.FRONT
+		reason: String, side: int = -1) -> void:
+	if side < 0:
+		side = FiringArc.REAR if dice.d6() == 1 else FiringArc.FRONT
 	u.prone = true
 	var total := damage_for(u, levels)
 	var tile := state.map.get_tile(u.coord)

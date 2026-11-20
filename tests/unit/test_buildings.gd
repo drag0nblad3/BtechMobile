@@ -103,7 +103,7 @@ func test_city_battle_runs() -> void:
 	for id in ["warhammer_whm6r", "commando_com2d", "hunchback_hbk4g"]:
 		fb.add(1, id)
 	var building_events := 0
-	for seed_value in [3, 4]:
+	for seed_value in range(3, 13):  # games are short and chaotic; look across several
 		var map := MapLoader.load_file("res://data/maps/city_outskirts.json", terrain())
 		var gc := GameController.new(fb.build(map), seed_value)
 		SimBot.play(gc, 20)

@@ -97,20 +97,18 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Consciousness (p. 117): one roll after the phase's damage, PSRs and falls, against the current hit total; wake-up rolls in later End Phases only — `TODO(rules)`: Movement Phase rolls should be immediate.
 
 ## Physical attacks
-- ✅ Punch: piloting + movement mods, ceil(tons/10) damage, punch table; not with an arm that
-  fired; no hand +1, missing/broken upper or lower arm +2 and half damage.
-- ✅ Kick: piloting − 2, ceil(tons/5) damage, kick table, target rolls to stay up; a miss
-  makes the kicker roll.
-- ✅ Two punches or one kick per turn; adjacent target, front arc (punch: or that arm's side).
-- 🟡 Level differences: only within 1 level — `TODO(rules)`: which table per level difference.
-- 🟡 Charge: declared with a walk/run move ending next to an enemy straight ahead; piloting +
-  piloting difference + target movement/terrain; ceil(tons/10) × hexes to the target,
-  ceil(target tons/10) back; both roll at +2; target shoved, attacker follows. No weapon fire.
-- 🟡 Death from above: same with a jump; ceil(tons/10) × 3 (punch table), ceil(tons/5) to own
-  legs, attacker rolls at +4, a miss is an automatic fall.
-- ✅ Push: piloting − 1, target straight ahead, no damage, shoved one hex and must roll.
+- ✅ Modifiers (pp. 76-77, `PhysicalMods`): piloting base plus every ranged modifier except heat and sensors (movement, woods, partial cover, prone -2, immobile -4); piloting roll modifiers don't apply.
+- ✅ Punch: piloting − 1, ceil(tons/10), Punch table; arm in front or on its side, arm didn't fire, shoulder working; no hand +1, broken/missing upper or lower arm +2 and half damage (round down) each.
+- ✅ Kick: piloting − 1, ceil(tons/5), Kick table (full Hit table vs prone); both hips working, no leg gone, front of the feet, that leg didn't fire; leg actuators in either leg count (foot +1, upper/lower +2 and half damage). Target rolls; a miss makes the kicker roll.
+- ✅ One kind per turn: one or two punches, one kick, or a push.
+- ✅ Different Levels table (p. 77): standing target 1 up: punch on the Kick table, no kick; 1 down: kick on the Punch table, no punch; prone target: kick at the same level, punch from 1 below, nothing from above (DFA only).
+- ✅ Push: piloting − 1, both arms, no arm fired, same level, straight ahead of the feet, +2 per broken shoulder; target not charging. Mutual successful pushes: nobody moves, both roll.
+- ✅ Charge (p. 78): walk/run (not jump) ending next to and facing a standing enemy within 1 level, with MP left to enter its hex (may start adjacent; not by minimum movement); piloting + comparative piloting (immobile = 4) + both movement mods + woods, no partial cover; target takes ceil(tons/5 × (attacker TMM + 1)) counting the target hex, attacker ceil(target tons/10), in 5s; both roll at +2; target shoved, attacker follows. A miss moves nobody.
+- ✅ Death from above (pp. 79-81): jump; comparative piloting + 3 for the jump, no terrain mods; ceil(tons/10 × 3) on the Punch table (prone target: Rear column of the full table), ceil(tons/5) to own legs; target pushed to the nearest open hexside, both roll at +2. Miss: target steps aside, attacker lands in its hex and falls 2 levels onto its back. No room: target (hit) or attacker (miss) destroyed.
+- ✅ A 'Mech can be the target of only one charge, DFA or push per turn; a charging 'Mech can't be charged or pushed.
+- ✅ Displacement waits until every physical attack of the phase is rolled (p. 76).
 - ✅ Displacement (pp. 113-114): domino effect (roll to step forward/back, else pushed on and falls; crushed with nowhere to go), off the map destroys, 2+ levels down is a fall, 3+ up can't happen.
-- 🟡 `TODO(rules)`: charge/DFA to-hit modifiers and where a missed attacker ends up (physical attacks PR).
+- 🟡 `TODO(rules)`: a DFA attacker that fell in the Weapon Attack Phase is simply cancelled (book: resolve as a miss); physical attacks underwater (half damage, submerged targets) aren't modeled.
 - ⬜ Clubs, physical weapons.
 
 ## Buildings

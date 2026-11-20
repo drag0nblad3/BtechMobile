@@ -17,10 +17,10 @@ func test_punch_and_kick_numbers() -> void:
 	check_eq(opts.size(), 5, "2 punches, 2 kicks, push")
 	var punch: Dictionary = opts[0]
 	check(punch["to_hit"].possible(), punch["to_hit"].summary())
-	check_eq(punch["to_hit"].target(), 5, "piloting 5")
+	check_eq(punch["to_hit"].target(), 4, "piloting 5 - 1")
 	check_eq(punch["damage"], 10)
 	var kick: Dictionary = opts[2]
-	check_eq(kick["to_hit"].target(), 3, "piloting 5 - 2")
+	check_eq(kick["to_hit"].target(), 4, "piloting 5 - 1")
 	check_eq(kick["damage"], 20)
 
 
@@ -31,8 +31,8 @@ func test_no_hand_and_fired_arm() -> void:
 	s.add_unit(j)
 	s.add_unit(t)
 	var punch: Dictionary = PhysicalOptions.for_target(s, j, t)[0]
-	# no hand +1, no lower arm +2
-	check_eq(punch["to_hit"].target(), 8)
+	# 5 - 1 punch, no hand +1, no lower arm +2
+	check_eq(punch["to_hit"].target(), 7)
 	check_eq(punch["damage"], 2, "4 halved")
 	for w in j.weapons:
 		if w.loc == Location.LA:
@@ -66,7 +66,7 @@ func test_kick_resolution_forces_roll() -> void:
 	s.declared_physical = PhysicalOptions.declare(s, r[1], [
 			{"kind": "kick", "limb": Location.RL, "target_id": 2}])
 	var dice := LoadedDice.new()
-	dice.queue_2d6(9)   # hit (needs 3)
+	dice.queue_2d6(9)   # hit (needs 4)
 	dice.d6_queue.append(1)  # kick table: right leg
 	PhysicalPhase.resolve(s, dice, func(_t, _d): pass)
 	check_eq(t.armor[Location.RL], 0, "20 damage strips 20 armor")

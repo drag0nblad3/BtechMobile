@@ -51,7 +51,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 
 
 ## Rolls a hit location and applies one packet of damage. Building walls
-## around the target soak part of it first.
+## around the target soak part of it first. `hl.no_cover` skips partial cover
+## (kicks on the Kick table, charges).
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
 		hl: Dictionary = {}, through_walls: bool = true) -> void:
@@ -63,7 +64,7 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
 	var loc: int = hl["loc"]
-	if Location.is_leg(loc) and ToHitCalc.in_partial_cover(state.map, target):
+	if Location.is_leg(loc) and not hl.get("no_cover", false) and ToHitCalc.in_partial_cover(state.map, target):
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return
