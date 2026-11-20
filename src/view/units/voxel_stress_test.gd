@@ -20,7 +20,7 @@ var successful_hits := 0
 var removed_voxels := 0
 var original_voxels := 0
 var elapsed_seconds := 0.0
-var min_fps := 0
+var min_fps := 0.0
 var _hit_clock := 0.0
 var _fps_warmup := 0.0
 var _random := RandomNumberGenerator.new()
@@ -37,7 +37,7 @@ func begin(chassis_profile: Dictionary, seed: int = 0) -> void:
 	removed_voxels = 0
 	original_voxels = 0
 	elapsed_seconds = 0.0
-	min_fps = 0
+	min_fps = 0.0
 	_hit_clock = 0.0
 	_fps_warmup = 0.0
 
@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	# stays live and includes the impact-induced frame drops.
 	var fps := Engine.get_frames_per_second()
 	if _fps_warmup >= 1.0 and fps > 0:
-		min_fps = fps if min_fps == 0 else mini(min_fps, fps)
+		min_fps = fps if min_fps == 0.0 else minf(min_fps, fps)
 	_hit_clock += delta
 	var interval := 1.0 / HITS_PER_SECOND
 	var hits_this_frame := 0
@@ -159,7 +159,7 @@ func progress_text() -> String:
 				models.size(), MECH_COUNT, model_name, Engine.get_frames_per_second()]
 	return "STRESS: %d x %s | FPS %d (low %s) | %.1fs\nHits %d (%d damaging) | %d / %d voxels | %d removed" % [
 			models.size(), model_name, Engine.get_frames_per_second(),
-			str(min_fps) if min_fps > 0 else "measuring", elapsed_seconds,
+			str(roundi(min_fps)) if min_fps > 0.0 else "measuring", elapsed_seconds,
 			shot_attempts, successful_hits,
 			maxi(0, original_voxels - removed_voxels), original_voxels,
 			removed_voxels]
