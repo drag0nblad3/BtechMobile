@@ -49,6 +49,43 @@ Profile IDs match `data/units/*.json`; as new chassis art is refined, add
 geometry profiles without changing the core rules. CI also captures
 `digitigrade_a.png` and `digitigrade_b.png` at opposite walk phases.
 
+## High-density voxels, live counts and randomized impact damage (03)
+
+The voxel lab reports **intact voxel counts for all six chassis** in its
+model catalog and shows the selected mech's **remaining / original** voxels,
+percentage intact, and physical voxel width. The counts are computed from
+actual generated geometry (not tonnage estimates); background catalog counts
+use mesh-free probes to avoid generating six extra GPU meshes on a phone.
+Reset restores the original total.
+
+`data/graphics/voxel_chassis.json` controls `voxel_detail` by model.
+The refined **Jenner JR7-D** uses `voxel_detail: 2` (37.5 mm voxels, up from
+75 mm); the five other profiles remain at `1` until their meshes are refined
+and Android frame times are measured. Each coarse voxel is subdivided into
+eight microvoxels, and exposed armor corners are carved at the smaller scale,
+creating finer silhouette bevels while keeping the same real-world bone
+lengths and unit dimensions. Core and weapon-highlight voxels stay intact.
+This does **not** add 8× polygon count to hidden surfaces: the mesher still
+emits only exposed faces, although CPU memory and rebuild cost do increase.
+
+Interactive hits now remove **irregular, overlapping crater lobes** with a
+fresh random seed per impact. No two repeated shots need cut identical
+spheres. `VoxelMech.hit_part(..., seed)` accepts an explicit seed for
+reproducible bug reports, and the lab displays the last impact seed. The
+same occupied-voxel grid supplies damage and exact ray picking, now using a
+grid traversal instead of scanning every occupied cube.
+
+For a machine-readable count and a headless timing sample:
+
+```bash
+godot --headless -s tools/voxel_count_benchmark.gd
+```
+
+This is a prototype-level detail setting, **not a claim of Android
+performance readiness**. Damage rebuilds still run on the main thread;
+profile FPS, frame spikes, memory, and temperature on real devices before
+enabling 2× detail on every battlefield mech.
+
 ## Mechanics demonstrated
 
 - Two 0.70m bone segments per leg, knee/ankle pivots and analytic IK.
