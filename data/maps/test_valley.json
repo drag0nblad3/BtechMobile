@@ -1,0 +1,22 @@
+{
+ "name": "Test Valley",
+ "rows": [
+  "c0 L0 c0 H0 c0 c0 H0 c1 H1 c1 H0 H0 c0 c0 L0",
+  "L0 c0 c0 c0 c0 c0 H0 c1 r1 L1 L0 r0 c0 L0 c0",
+  "c0 c0 c0 H1 H0 L0 c1 c1 c1 c1 c0 r0 c0 c0 L0",
+  "c0 c1 c1 c1 r1 c1 L1 c1 c1 L1 c0 H0 c0 c0 c0",
+  "c1 c1 c2 c2 c2 c1 c1 c1 c1 c1 H0 c0 c0 c0 c0",
+  "r1 c2 c2 H2 c2 L2 L1 H1 c1 L1 L0 c0 c0 H0 c0",
+  "c1 c2 c2 c3 r2 c2 c1 c1 c1 L1 w0d1 w0d1 w0d1 L0 L0",
+  "L1 c2 c2 r2 H2 c2 c1 c1 c1 c1 w0d1 w0d1 w0d1 w0d1 c0",
+  "c1 c1 H2 c2 c2 c1 c1 c1 c1 L1 c1 H1 H1 L1 w0d1",
+  "L0 c1 H1 H1 L1 L1 w0d2 c0 H0 c1 c1 L1 r1 c1 c1",
+  "L0 c0 w0d1 c1 w0d1 w0d2 c0 p0 H0 L1 c1 r2 c2 L2 H1",
+  "c0 c0 L0 c0 H0 c0 c0 p0 c0 r1 c1 L2 c2 c2 c1",
+  "c0 L0 c0 c0 c0 c0 c0 p0 L0 c1 c1 H2 H2 r2 r1",
+  "c0 c0 c0 c0 c0 c0 c0 p0 L0 L0 L1 c1 c1 c1 c1",
+  "c0 c0 H0 c0 c0 c0 c0 p0 L0 c0 c0 c1 c1 c1 c0",
+  "c0 c0 L0 L0 L0 c0 c0 p0 c0 c0 c0 c0 c0 L0 H0",
+  "c0 c0 c0 c0 c0 c0 c0 p0 r0 r0 L0 c0 r0 c0 L0"
+ ]
+}
