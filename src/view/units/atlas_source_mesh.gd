@@ -166,10 +166,10 @@ static func _torso(out: Array[Dictionary]) -> void:
 	_loft(out, "waisted-torso", [
 		_ring(-11.0, 4.1, -3.1, 3.4),
 		_ring(-8.8, 5.1, -4.2, 4.4),
-		_ring(-5.0, 6.5, -5.1, 4.6),
-		_ring(-1.0, 8.2, -5.7, 5.0),
-		_ring(3.5, 10.0, -5.8, 4.9),
-		_ring(5.7, 8.5, -5.1, 4.1)
+		_ring(-5.0, 6.5, -5.1, 4.0),
+		_ring(-1.0, 8.2, -5.7, 4.4),
+		_ring(3.5, 10.0, -5.8, 4.3),
+		_ring(5.7, 8.5, -5.1, 3.7)
 	], 0)
 	# Exposed annular waist, intentionally smaller than breastplate.
 	_round_tube(out, "torso-swivel", 0, -9.4, -2.8, 2.4, 3.5, 8)
@@ -221,7 +221,7 @@ static func _torso(out: Array[Dictionary]) -> void:
 		_round_tube(out, "recessed-eye-socket", x, 9.2,
 				-8.6, -6.0, 0.95, 1, 1)
 		_round_tube(out, "inset-red-eye", x, 9.25,
-				-6.5, -6.1, 0.45, 7, 2)
+				-7.6, -6.5, 0.55, 7, 2)
 	for x in [-2.8, 2.4]:
 		_plate(out, "skull-cheek", [
 			Vector3(x - 0.7, 7.6, -7.5), Vector3(x - 0.3, 8.8, -8.0),
