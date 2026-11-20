@@ -10,7 +10,9 @@ paths with facing, and move. Sides alternate by initiative. Combat is next.
 
 ## Run it
 1. Install [Godot 4.5+](https://godotengine.org/download) (standard build, not .NET).
-2. Open `project.godot`, press Play.
+2. Open `project.godot`, press Play. The launcher lets you choose **Play Battle Game**
+   or **Voxel Mech Lab** (3D walking and destructible voxel prototype).
+   - The lab has a **Main Menu** button to return to the mode launcher.
    - Mouse: left-drag pan, right-drag orbit/tilt, wheel zoom, click to select/move.
    - Touch: drag pan, pinch zoom, two-finger twist to orbit, two-finger drag to tilt,
      tap to select/move, double-tap to center the camera.
