@@ -22,6 +22,7 @@ const CRITICAL := &"critical"             # {unit_id, loc, slot, effect}
 const CRIT_CHECK := &"crit_check"         # {unit_id, loc, roll, crits}
 const PSR := &"psr"                       # {unit_id, roll, need, ok, reasons: [String], mods}
 const FALL := &"fall"                     # {unit_id, damage, levels}
+const WENT_PRONE := &"went_prone"         # {unit_id} dropped prone on purpose
 const STAND := &"stand"                   # {unit_id, ok}
 const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb, roll, need, hit, damage, mods}
 const CHARGE_DECLARED := &"charge_declared" # {unit_id, target_id, kind: charge|dfa, need}

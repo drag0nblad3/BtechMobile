@@ -35,7 +35,22 @@ static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
 			opts.prev[nk] = k
 			opts.can_end[nk] = _can_end_in(state, unit, MoveOptions.coord_of(nk))
 			heap.push(ng, nk)
+	if mode == MoveMode.Kind.WALK and opts.budget >= 1 and not unit.prone:
+		_minimum_move(state, unit, opts, start)
 	return opts
+
+
+## A 'Mech with any walking MP may always step one hex straight ahead or back,
+## even if the hex costs more; that uses all its MP.
+## TODO(rules): verify minimum movement (TW allows any one hex for all MP).
+static func _minimum_move(state: GameState, unit: Unit, opts: MoveOptions, start: Vector3i) -> void:
+	for step in _successors(state, unit, start, MoveMode.Kind.WALK):
+		var nk: Vector3i = step[0]
+		if step[1] <= opts.budget or opts.cost.has(nk) or MoveOptions.coord_of(nk) == unit.coord:
+			continue
+		opts.cost[nk] = opts.budget
+		opts.prev[nk] = start
+		opts.can_end[nk] = _can_end_in(state, unit, MoveOptions.coord_of(nk))
 
 
 ## Returns [[next_key, mp_cost], ...].

@@ -24,8 +24,10 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   jump jet crits reduce jump MP — `TODO(rules)`: verify elevation limits.
 - ✅ Standing up: 2 MP plus a piloting roll; failing means falling again. Impossible with a
   destroyed gyro or both legs gone.
-- ⬜ Going prone voluntarily, minimum movement, lateral shift (optional rule).
-- ⬜ Piloting skill rolls from movement (running in rough, skidding on pavement, etc.).
+- 🟡 Going prone instead of moving (heat as walking) — `TODO(rules)`: TW allows moving first, then dropping for 1 MP.
+- 🟡 Minimum movement: with 1+ walking MP, one hex straight ahead or back for all MP — `TODO(rules)`: verify (any one hex?).
+- 🟡 Movement piloting rolls, rolled at end of phase: entering water (depth 1 -1, 2 +0, 3+ +1), running on a damaged gyro or hip, landing a jump on a damaged gyro or legs — `TODO(rules)`: verify triggers and timing.
+- ⬜ Skidding on pavement, lateral shift (optional rule).
 
 ## Record sheets
 - ✅ Internal structure by tonnage (standard structure).

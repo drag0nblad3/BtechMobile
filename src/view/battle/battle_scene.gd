@@ -96,6 +96,7 @@ func _wire() -> void:
 	hud.confirm.connect(movement.on_confirm)
 	hud.cancel.connect(movement.clear_selection)
 	hud.charge.connect(movement.on_charge)
+	hud.prone.connect(movement.on_prone)
 	hud.attack_confirm.connect(attacks.on_confirm)
 	hud.attack_skip.connect(attacks.on_skip)
 	hud.twist_left.connect(attacks.on_twist.bind(-1))
@@ -170,7 +171,7 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
-		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
+		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
