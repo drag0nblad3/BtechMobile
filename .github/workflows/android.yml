@@ -4,6 +4,11 @@ name: Android APK
 # Actions tab > Android APK > Run workflow. Pushes and pull requests don't run it.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - build/20-mech-stress-apk-20261120
+    paths:
+      - .github/workflows/android.yml
 
 env:
   GODOT_VERSION: 4.5.1
