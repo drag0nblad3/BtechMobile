@@ -58,7 +58,11 @@ func joint_fraction() -> float:
 
 
 func erase_ball(world_center: Vector3, radius: float) -> int:
-	var center := to_local(world_center)
+	return erase_local_ball(to_local(world_center), radius)
+
+
+## Local-space entry point for deterministic sculpting and unit tests.
+func erase_local_ball(center: Vector3, radius: float) -> int:
 	var removed := 0
 	for cell: Vector3i in cells.keys():
 		var midpoint := (Vector3(cell) + Vector3.ONE * 0.5) * VOXEL_SIZE
