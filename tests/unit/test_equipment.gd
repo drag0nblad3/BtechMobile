@@ -121,3 +121,85 @@ func test_gauss_rifle_explodes_once() -> void:
 	check_eq(u.ammo[0].explosion_damage(), 0, "slugs don't explode")
 	var bin: Array = u.slots[Location.RT].filter(func(c: CritSlot) -> bool: return c.kind == CritSlot.Kind.AMMO)
 	check_eq(CritEffects.apply(s, dice, emit, u, Location.RT, bin[0]), "ammo bin destroyed (doesn't explode)")
+
+
+func _duel(eq: Dictionary) -> Array:
+	var s := GameState.new(open_map(12, 3))
+	var a := _gun_unit(eq, 1, 0, hex_at(0, 1), 2)
+	var b := _gun_unit({}, 2, 1, hex_at(3, 1), 5)
+	s.add_unit(a)
+	s.add_unit(b)
+	return [s, a, b]
+
+
+func _fire(s: GameState, a: Unit, b: Unit, dice: Dice) -> Array:
+	var events := []
+	var th := ToHitCalc.weapon(s, a, a.weapons[0], b)
+	WeaponFire.resolve(s, dice, func(t: StringName, d: Dictionary) -> void: events.append([t, d]), a, a.weapons[0], b, th)
+	return events.filter(func(e: Array) -> bool: return e[0] == GameEvent.WEAPON_FIRED)
+
+
+func test_ultra_double_fire() -> void:
+	var g := _duel({"RA": ["ultra_ac5"], "RT": ["ammo:ultra_ac5"]})
+	var a: Unit = g[1]
+	a.weapons[0].mode = WeaponModes.ULTRA
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)  # hit
+	dice.queue_2d6(12)  # cluster column 2: both
+	for i in 4:
+		dice.queue_2d6(7)
+	var fired := _fire(g[0], a, g[2], dice)
+	check_eq(fired[0][1]["shots"], 2)
+	check_eq(fired[0][1]["missiles"], 2, "both shots hit")
+	check_eq(a.heat_generated, 2, "heat per shot")
+	check_eq(a.ammo_for(a.weapons[0].def), 18, "two rounds used")
+
+
+func test_lbx_cluster_ammo() -> void:
+	var g := _duel({"RA": ["lb10x_ac"], "RT": ["ammo:lb10x_ac", "ammo:lb10x_ac:cluster"]})
+	var s: GameState = g[0]
+	var a: Unit = g[1]
+	var w := a.weapons[0]
+	var slug := ToHitCalc.weapon(s, a, w, g[2]).target()
+	w.mode = WeaponModes.CLUSTER
+	check_eq(ToHitCalc.weapon(s, a, w, g[2]).target(), slug - 1, "cluster ammo -1")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)
+	dice.queue_2d6(7)  # column 10, roll 7: 6 pellets
+	for i in 8:
+		dice.queue_2d6(7)
+	var fired := _fire(s, a, g[2], dice)
+	check_eq(fired[0][1]["missiles"], 6)
+	check_eq(a.ammo_for(w.def, WeaponModes.CLUSTER), 9, "cluster bin used")
+	check_eq(a.ammo_for(w.def), 10, "slug bin untouched")
+
+
+func test_streak_all_or_nothing() -> void:
+	var g := _duel({"RA": ["streak_srm4"], "RT": ["ammo:streak_srm4"]})
+	var a: Unit = g[1]
+	var dice := LoadedDice.new()
+	dice.queue_2d6(2)  # miss
+	var fired := _fire(g[0], a, g[2], dice)
+	check(fired[0][1]["streak_held"])
+	check_eq(a.heat_generated, 0, "no heat")
+	check_eq(a.ammo_for(a.weapons[0].def), 25, "no ammo")
+	dice.queue_2d6(12)
+	for i in 4:
+		dice.queue_2d6(7)
+	fired = _fire(g[0], a, g[2], dice)
+	check_eq(fired[0][1]["missiles"], 4, "every missile")
+
+
+func test_artemis_bonus() -> void:
+	var g := _duel({"RA": ["srm6+artemis"], "RT": ["ammo:srm6"]})
+	var a: Unit = g[1]
+	check(a.weapons[0].artemis)
+	check_eq(DesignWeight.breakdown(a.def)["weapons"], 4.0, "SRM 6 3 t + FCS 1 t")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)
+	dice.queue_2d6(5)  # 5 + 2 = 7 on the 6 column: 4
+	for i in 6:
+		dice.queue_2d6(7)
+	var fired := _fire(g[0], a, g[2], dice)
+	check_eq(fired[0][1]["missiles"], 4)
+	check_eq(fired[0][1]["cluster_bonus"], 2)

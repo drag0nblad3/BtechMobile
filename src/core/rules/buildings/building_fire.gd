@@ -64,15 +64,16 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var tile := state.map.get_tile(c)
 	var data := {"attacker_id": attacker.id, "target_id": -1, "target_hex": c, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": 0, "need": th.target(), "hit": false, "mods": th.mods, "missiles": 0}
-	if w.def.uses_ammo() and not attacker.use_ammo(w.def):
+	var shots := WeaponFire.take_shots(attacker, w)
+	if shots == 0:
 		data["no_ammo"] = true
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		return
 	w.fired = true
-	attacker.heat_generated += w.def.heat
+	attacker.heat_generated += w.def.heat * shots
 	data["roll"] = dice.roll_2d6()
 	data["hit"] = data["roll"] >= th.target() and tile != null and tile.building != null
-	var dmg := w.def.damage
+	var dmg := w.def.damage * shots  # every shot or pellet finds a building
 	if data["hit"] and w.def.is_cluster():
 		data["missiles"] = w.def.missiles  # every missile finds a building
 		dmg = data["missiles"] * w.def.damage

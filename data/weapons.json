@@ -24,6 +24,14 @@
     {"id": "medium_pulse_laser", "name": "Medium Pulse Laser", "type": "energy", "heat": 4, "damage": 6, "min": 0, "short": 2, "medium": 4, "long": 6, "to_hit": -2, "bv": 48, "slots": 1, "tons": 2},
     {"id": "large_pulse_laser", "name": "Large Pulse Laser", "type": "energy", "heat": 10, "damage": 9, "min": 0, "short": 3, "medium": 7, "long": 10, "to_hit": -2, "bv": 119, "slots": 2, "tons": 7},
     {"id": "er_ppc", "name": "ER PPC", "type": "energy", "heat": 15, "damage": 10, "min": 0, "short": 7, "medium": 14, "long": 23, "bv": 229, "slots": 3, "tons": 7},
-    {"id": "gauss_rifle", "name": "Gauss Rifle", "type": "ballistic", "heat": 1, "damage": 15, "min": 2, "short": 7, "medium": 15, "long": 22, "explodes": true, "ammo_explodes": false, "bv": 320, "ammo_bv": 40, "slots": 7, "tons": 15, "ammo_per_ton": 8}
+    {"id": "gauss_rifle", "name": "Gauss Rifle", "type": "ballistic", "heat": 1, "damage": 15, "min": 2, "short": 7, "medium": 15, "long": 22, "explodes": true, "ammo_explodes": false, "bv": 320, "ammo_bv": 40, "slots": 7, "tons": 15, "ammo_per_ton": 8},
+    {"id": "ultra_ac2", "name": "Ultra AC/2", "type": "ballistic", "heat": 1, "damage": 2, "min": 3, "short": 8, "medium": 17, "long": 25, "rapid": 2, "bv": 56, "ammo_bv": 7, "slots": 3, "tons": 7, "ammo_per_ton": 45},
+    {"id": "ultra_ac5", "name": "Ultra AC/5", "type": "ballistic", "heat": 1, "damage": 5, "min": 2, "short": 6, "medium": 13, "long": 20, "rapid": 2, "bv": 112, "ammo_bv": 14, "slots": 5, "tons": 9, "ammo_per_ton": 20},
+    {"id": "ultra_ac10", "name": "Ultra AC/10", "type": "ballistic", "heat": 4, "damage": 10, "min": 0, "short": 6, "medium": 12, "long": 18, "rapid": 2, "bv": 210, "ammo_bv": 26, "slots": 7, "tons": 13, "ammo_per_ton": 10},
+    {"id": "ultra_ac20", "name": "Ultra AC/20", "type": "ballistic", "heat": 8, "damage": 20, "min": 0, "short": 3, "medium": 7, "long": 10, "rapid": 2, "bv": 281, "ammo_bv": 35, "slots": 10, "tons": 15, "ammo_per_ton": 5},
+    {"id": "lb10x_ac", "name": "LB 10-X AC", "type": "ballistic", "heat": 2, "damage": 10, "min": 0, "short": 6, "medium": 12, "long": 18, "lbx": true, "bv": 148, "ammo_bv": 19, "slots": 6, "tons": 11, "ammo_per_ton": 10},
+    {"id": "streak_srm2", "name": "Streak SRM 2", "type": "missile", "heat": 2, "damage": 2, "missiles": 2, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "streak": true, "bv": 30, "ammo_bv": 4, "slots": 1, "tons": 1.5, "ammo_per_ton": 50},
+    {"id": "streak_srm4", "name": "Streak SRM 4", "type": "missile", "heat": 3, "damage": 2, "missiles": 4, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "streak": true, "bv": 59, "ammo_bv": 7, "slots": 1, "tons": 3, "ammo_per_ton": 25},
+    {"id": "streak_srm6", "name": "Streak SRM 6", "type": "missile", "heat": 4, "damage": 2, "missiles": 6, "group": 1, "min": 0, "short": 3, "medium": 6, "long": 9, "streak": true, "bv": 89, "ammo_bv": 11, "slots": 2, "tons": 4.5, "ammo_per_ton": 15}
   ]
 }

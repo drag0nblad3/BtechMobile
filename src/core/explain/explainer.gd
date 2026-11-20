@@ -143,8 +143,16 @@ static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) ->
 	if d.get("no_ammo", false):
 		return "%s: out of ammo." % who
 	var res := "HIT" if d["hit"] else "miss"
+	if d.get("shots", 1) > 1:
+		res += " (%d shots)" % d["shots"]
 	if d["missiles"] > 0:
-		res += ", %d missiles" % d["missiles"]
+		var unit := "shots" if d.get("mode", "") == WeaponModes.ULTRA else (
+				"pellets" if d.get("mode", "") == WeaponModes.CLUSTER else "missiles")
+		res += ", %d %s" % [d["missiles"], unit]
+		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
+			res += " (Artemis +%d)" % d["cluster_bonus"]
+	if d.get("streak_held", false) and level != ExplainLevel.OFF:
+		res += "; the Streak never locked on, so it held its missiles (no heat, no ammo used)"
 	if d.get("heat_added", 0) > 0:
 		res += ", +%d heat to the target" % d["heat_added"]
 	if level == ExplainLevel.OFF:

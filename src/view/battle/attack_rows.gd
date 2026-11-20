@@ -15,8 +15,20 @@ static func weapons(state: GameState, attacker: Unit, options: Array, shots: Dic
 			extra = "  (aimed at %s)" % target_name(state, aim)
 		elif o["to_hit"].possible():
 			extra = "  avg %.1f, %d heat" % [Advisor.expected_damage(w.def, o["to_hit"]), w.def.heat]
-		rows.append({"key": o["index"], "label": w.label(), "to_hit": o["to_hit"], "extra": extra})
+		var row := {"key": o["index"], "label": w.label(), "to_hit": o["to_hit"], "extra": extra}
+		if WeaponModes.modes(w).size() > 1:
+			row["mode"] = mode_text(w)
+		rows.append(row)
 	return rows
+
+
+static func mode_text(w: MountedWeapon) -> String:
+	match w.mode:
+		WeaponModes.ULTRA:
+			return "Double shot (2x heat and ammo)"
+		WeaponModes.CLUSTER:
+			return "Cluster ammo (-1 to hit, 1-point pellets)"
+	return "Single shot" if w.def.rapid > 1 else "Standard ammo"
 
 
 static func physical(state: GameState, attacker: Unit, target: Unit) -> Array:

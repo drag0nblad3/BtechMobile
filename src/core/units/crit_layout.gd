@@ -19,10 +19,13 @@ static func build(def: UnitDef) -> Array:
 		var w: WeaponDef = m["weapon"]
 		for s in w.slots:
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.WEAPON, w.name, i), def)
+		if m.get("artemis", false):
+			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.ARTEMIS, "Artemis IV FCS", i), def)
 	for i in def.ammo_mounts.size():
 		var a: Dictionary = def.ammo_mounts[i]
 		var aw: WeaponDef = a["weapon"]
-		_place(out[a["loc"]], CritSlot.new(CritSlot.Kind.AMMO, aw.name + " Ammo", i), def)
+		var kind: String = a.get("kind", "")
+		_place(out[a["loc"]], CritSlot.new(CritSlot.Kind.AMMO, aw.name + (" Cluster" if kind == "cluster" else "") + " Ammo", i), def)
 	var sink := 0
 	for loc: int in def.other_items:
 		for item: String in def.other_items[loc]:

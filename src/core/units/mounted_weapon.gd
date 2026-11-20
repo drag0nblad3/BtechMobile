@@ -7,6 +7,10 @@ var loc: int
 var rear: bool
 var destroyed: bool = false
 var exploded: bool = false  ## An explosive weapon only blows up once.
+## Firing mode (WeaponModes): "" normal, "ultra" two shots, "cluster" LB-X.
+var mode: String = ""
+var artemis: bool = false       ## Linked Artemis IV fire control.
+var artemis_lost: bool = false  ## Its fire control took a critical hit.
 var fired: bool = false  ## Fired this turn (blocks punching with that arm).
 
 

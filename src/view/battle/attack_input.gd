@@ -175,6 +175,12 @@ func _toggle(key: Variant, on: bool) -> void:
 	_refresh()
 
 
+func _mode(key: Variant) -> void:
+	var w := attacker.weapons[int(key)]
+	controller.set_weapon_mode(attacker, int(key), WeaponModes.next_mode(w))
+	_refresh()
+
+
 func _refresh() -> void:
 	if attacker == null:
 		return
@@ -194,7 +200,7 @@ func _refresh() -> void:
 		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
 		if not hud.sheet_open:
 			hud.show_side(AttackPanel.build("Weapons at building " + Hex.label(target_hex),
-				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle))
+				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode))
 		return
 	if target == null:
 		hud.set_info("%s: tap an enemy (or a building) to aim%s" % [Names.unit(attacker), twist])
@@ -208,7 +214,7 @@ func _refresh() -> void:
 		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
 		if not hud.sheet_open:
 			hud.show_side(AttackPanel.build("Weapons at " + Names.unit(target),
-				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle))
+				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode))
 	else:
 		hud.set_tip(Advisor.physical(controller.state, attacker, target, level))
 		if not hud.sheet_open:
