@@ -55,7 +55,7 @@ func test_wolverine_has_six_open_srm_ports_and_armed_right_forearm() -> void:
 	var hull: VoxelPart = m.parts["torso"]
 	var barrel: VoxelPart = m.parts["right_arm"]
 	var hand: VoxelPart = m.parts["left_arm"]
-	for x in [-11, -9, -7]:
+	for x in [-13, -11, -9]:
 		for y in [2, 5]:
 			check(not hull.has_sculpt_cell(Vector3i(x, y, -8)),
 					"all six SRM ports must be carved, not painted")
