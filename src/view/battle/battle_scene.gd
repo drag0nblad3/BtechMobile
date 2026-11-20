@@ -179,7 +179,7 @@ func _on_event(e: GameEvent) -> void:
 			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
 		GameEvent.BUILDING:
-			if e.data["kind"] == "collapsed":
+			if e.data["kind"] in ["collapsed", "fire"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF))

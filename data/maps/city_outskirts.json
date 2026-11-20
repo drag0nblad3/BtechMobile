@@ -32,5 +32,6 @@
   {"hex": "0712", "type": "light", "height": 1},
   {"hex": "1015", "type": "medium", "height": 2},
   {"hex": "0516", "type": "civilian", "height": 1}
- ]
+ ],
+  "fires": ["1005"]
 }

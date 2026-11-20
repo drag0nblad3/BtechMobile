@@ -15,7 +15,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		if u.destroyed:
 			continue
 		var before := u.heat
-		var outside := mini(u.outside_heat, OUTSIDE_HEAT_CAP)
+		var outside := mini(u.outside_heat + Fire.stand_heat(state.map, u), OUTSIDE_HEAT_CAP)
 		var engine := 0 if u.shutdown else ENGINE_HIT_HEAT * u.engine_hits
 		var gained := u.heat_generated + engine + outside
 		var sinks := u.working_heat_sinks() + water_cooling(state.map.get_tile(u.coord), u)
