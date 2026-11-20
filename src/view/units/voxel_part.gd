@@ -30,6 +30,9 @@ var voxel_size := VOXEL_SIZE
 var detail_scale := 1
 var detail_style := ""
 var mesh_enabled := true
+## Surface nets draw rounded/faceted actual voxel boundaries; the original
+## cubical mesher remains available for compatibility and simple test parts.
+var surface_mode := "cube"
 var _local_bounds := AABB()
 
 
@@ -317,10 +320,14 @@ func rebuild() -> void:
 	var vertices := PackedVector3Array()
 	var normals := PackedVector3Array()
 	var colors := PackedColorArray()
-	for cell: Vector3i in cells:
-		for face in 6:
-			if not cells.has(cell + DIRECTIONS[face]):
-				append_face(vertices, normals, colors, cell, face, int(cells[cell]), voxel_size)
+	if surface_mode == "nets":
+		VoxelSurfaceNets.append_surface(vertices, normals, colors,
+				cells, voxel_size, PALETTE)
+	else:
+		for cell: Vector3i in cells:
+			for face in 6:
+				if not cells.has(cell + DIRECTIONS[face]):
+					append_face(vertices, normals, colors, cell, face, int(cells[cell]), voxel_size)
 	var mesh := ArrayMesh.new()
 	if not vertices.is_empty():
 		var arrays: Array = []
