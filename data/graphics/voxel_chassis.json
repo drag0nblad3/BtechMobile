@@ -63,7 +63,6 @@
       "arm_width": 0.92,
       "voxel_detail": 2,
       "voxel_part_detail": {
-        "Torso": 3,
         "left_arm": 3,
         "right_arm": 3
       }
