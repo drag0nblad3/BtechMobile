@@ -94,3 +94,28 @@ func test_wide_impact_removes_larger_patch() -> void:
 	check(broad > tiny * 4, "new broader impact must affect much more armor")
 	small.free()
 	large.free()
+
+
+func test_atlas_catapult_voxel_budget_and_damageable_real_geometry() -> void:
+	for id in ["atlas_as7d", "catapult_cplt_c1"]:
+		var profile := VoxelChassis.find(id)
+		var model := VoxelMech.new()
+		model.profile_id = id
+		model.detail_level = int(profile["voxel_detail"])
+		model.render_surfaces = false
+		model.build()
+		var total := model.initial_voxels()
+		# Approximate art budget, not a magic exact cell target.
+		check(total >= 90000 and total <= 130000,
+				id + " should be near the requested 100–120k range")
+		check_eq(total, model.remaining_voxels(),
+				id + " should count real intact geometry")
+		check_eq((model.parts["torso"] as VoxelPart).detail_scale,
+				3 if id == "atlas_as7d" else 2,
+				id + " torso must use its planned microvoxel resolution")
+		if id == "catapult_cplt_c1":
+			check_eq((model.parts["left_arm"] as VoxelPart).detail_scale, 3,
+					"missile pods should keep 25mm apertures")
+		check((model.parts["torso"] as VoxelPart).mesh_enabled == false,
+				"count probe should never build surfaces")
+		model.free()
