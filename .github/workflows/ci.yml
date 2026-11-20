@@ -63,6 +63,20 @@ jobs:
         with:
           name: voxel-mech-gait-frames
           path: /tmp/voxel-frames/*.png
+      - name: Render refined Jenner chassis
+        run: |
+          mkdir -p /tmp/jenner-frames
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture_jenner.gd -- /tmp/jenner-frames
+          for frame in jenner_front jenner_three_quarter jenner_side jenner_rear \
+            jenner_stride_a jenner_stride_b jenner_damage; do
+            test -s "/tmp/jenner-frames/$frame.png"
+          done
+          ! cmp -s /tmp/jenner-frames/jenner_stride_a.png /tmp/jenner-frames/jenner_stride_b.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: refined-jenner-model-renders
+          path: /tmp/jenner-frames/*.png
       - name: Smoke run main scene
         run: |
           godot --headless --quit-after 30 2>&1 | tee run.log
