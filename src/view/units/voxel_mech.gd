@@ -33,6 +33,11 @@ func build() -> void:
 	torso.armor_box(Vector3i(-8, -5, -4), Vector3i(7, 3, 4), 0, 1)
 	torso.fill_box(Vector3i(-4, 0, -6), Vector3i(3, 3, -5), 2) # visor
 	torso.fill_box(Vector3i(-2, -4, -6), Vector3i(1, -3, -5), 4)
+	torso.fill_box(Vector3i(-4, 4, -2), Vector3i(3, 7, 2), 4) # raised cockpit
+	torso.fill_box(Vector3i(-4, 5, -4), Vector3i(3, 6, -3), 2)
+	torso.fill_box(Vector3i(-5, -4, -6), Vector3i(4, -2, -5), 0) # chest plate
+	torso.fill_box(Vector3i(-10, 0, -4), Vector3i(-7, 3, 4), 4)
+	torso.fill_box(Vector3i(6, 0, -4), Vector3i(9, 3, 4), 4)
 	torso.fill_box(Vector3i(-8, 2, -3), Vector3i(-5, 4, 3), 5)
 	torso.fill_box(Vector3i(4, 2, -3), Vector3i(7, 4, 3), 5)
 	torso.seal()
@@ -86,7 +91,7 @@ func build_leg(side: int) -> void:
 
 func build_arm(side: int) -> void:
 	var key := "left_arm" if side == 0 else "right_arm"
-	var x := -0.87 if side == 0 else 0.87
+	var x := -1.03 if side == 0 else 1.03
 	var shoulder := Node3D.new()
 	shoulder.name = key + "_shoulder"
 	shoulder.position = Vector3(x, 2.04, 0)
@@ -96,6 +101,7 @@ func build_arm(side: int) -> void:
 	arm.name = key
 	shoulder.add_child(arm)
 	arm.armor_box(Vector3i(-3, -8, -3), Vector3i(3, 1, 3), 0, 1)
+	arm.fill_box(Vector3i(-4, -2, -4), Vector3i(4, 1, 4), 4)
 	arm.fill_box(Vector3i(-2, -7, -11), Vector3i(2, -4, -4), 1)
 	arm.fill_box(Vector3i(-3, -7, -11), Vector3i(3, -5, -10), 3)
 	arm.seal(-2)
