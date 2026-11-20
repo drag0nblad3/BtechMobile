@@ -43,6 +43,17 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 	return true
 
 
+## Drops a standing 'Mech to the ground instead of moving: harder to hit
+## from range, easier from next door. Standing up later costs 2 MP and a roll.
+## TODO(rules): TW lets a 'Mech move and then drop prone for 1 MP.
+func go_prone(unit: Unit) -> bool:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone:
+		return false
+	MoveExecutor.go_prone(_emit_cb, unit)
+	_unit_done()
+	return true
+
+
 ## Declares weapon fire: shots = [{weapon: index, target_id}]. An empty list
 ## holds fire. Impossible shots are dropped. Returns false if out of turn.
 func declare_fire(unit: Unit, shots: Array) -> bool:

@@ -5,6 +5,15 @@ extends RefCounted
 ## controller. `emit` is GameController._emit (type, data).
 
 
+## Drops a standing 'Mech prone where it is (costs its movement for the turn).
+static func go_prone(emit: Callable, unit: Unit) -> void:
+	unit.prone = true
+	unit.has_moved = true
+	unit.move_mode = MoveMode.Kind.WALK
+	unit.heat_generated += MoveMode.heat(MoveMode.Kind.WALK, 0)
+	emit.call(GameEvent.WENT_PRONE, {"unit_id": unit.id})
+
+
 ## Returns false if the target can't be reached in this mode.
 static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target: Vector3i,
 		mode: int, charge_target_id: int) -> bool:
@@ -33,6 +42,8 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved) if mp > 0 else 0
 	emit.call(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
+	if mp > 0:
+		MovePsr.after_move(state, unit, path, mode)
 	for c: Vector2i in entry["entered"]:
 		BuildingRules.enter(state, dice, emit, unit, c)
 	if charge_target_id >= 0:

@@ -73,7 +73,7 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return DamageText.ammo(s, d, level)
 		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN:
 			return HeatText.describe(e, s, level)
-		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
+		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
 			return PilotText.describe(e, s, level, seen)
 		GameEvent.GAME_OVER:
 			return "Battle over: %s wins." % Names.side(d["winner"]) if d["winner"] >= 0 else "Battle over: no survivors."

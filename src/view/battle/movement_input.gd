@@ -67,6 +67,14 @@ func on_confirm() -> void:
 		controller.submit_move(u, k, mode)
 
 
+## Drop the selected 'Mech prone instead of moving it.
+func on_prone() -> void:
+	if selected and not selected.prone:
+		var u := selected
+		clear_selection()
+		controller.go_prone(u)
+
+
 ## Enemy straight ahead of the previewed end position, if a charge (or a
 ## death from above, when jumping) could be declared there.
 func charge_target() -> Unit:

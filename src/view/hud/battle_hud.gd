@@ -11,6 +11,7 @@ signal turn_right
 signal confirm
 signal cancel
 signal charge
+signal prone
 signal top_down_toggled
 signal sheet_toggled
 signal log_toggled
@@ -86,6 +87,7 @@ func _ready() -> void:
 	_button(move_bar, "Turn ▶", turn_right)
 	charge_button = _button(move_bar, "Charge", charge)
 	charge_button.visible = false
+	_button(move_bar, "Prone", prone)
 	_button(move_bar, "Cancel", cancel)
 	_button(move_bar, "Confirm", confirm)
 	attack_bar = _bar(col)
