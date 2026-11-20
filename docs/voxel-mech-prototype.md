@@ -91,9 +91,11 @@ jump-jet housings, articulated leg armor, and **two recessed 15-tube LRM
 launchers** with individually cut mouth openings. Each chassis also has
 microvoxel paint and groove detailing that remains destructible.
 
-This pass targets **100,000–120,000 occupied cells per chassis**, with exact
-counts enforced by unit tests and reported by the existing mesh-free Godot
-voxel-count CI step. These are authentic occupied geometry counts, not a
+This pass aims for **roughly 100,000–120,000 occupied cells per chassis**,
+with actual measured totals of **138,072 Atlas** and **134,656 Catapult**.
+The added silhouette and weapon geometry is intentionally preserved rather than
+trimmed to meet an exact number. Unit tests check approximate density, while
+the existing mesh-free Godot voxel-count CI step reports exact totals. These are authentic occupied geometry counts, not a
 render-only scaling trick. The highest-count stress-test chassis is
 selected dynamically; updating Atlas and Catapult may change which model
 it chooses.
@@ -114,8 +116,8 @@ No Android APK build is part of this source-only change.
 The isolated **Voxel Mech Lab** includes two new touch-sized buttons:
 **STRESS TEST ×20** and **STOP / CLEAR**. Pressing the first one completes
 the real per-chassis voxel-count catalog and automatically chooses whichever
-current model contains the **most occupied voxels** (presently the high-detail
-Jenner JR7-D, 52,830 voxels per intact mech).
+current model contains the **most occupied voxels** (currently the upgraded
+Atlas AS7-D, 138,072 voxels per intact mech).
 
 The test creates **20 full-resolution, fully damageable** voxel mechs in a
 5×4 grid, one mech per frame to spread out the loading cost. Mechs stand
@@ -137,8 +139,9 @@ returns to the original single model and restores the previous camera.
 The normal lab controls are disabled while the twenty-mech test runs.
 Reset and the main-menu navigation also allow recovery.
 
-This test intentionally pushes Android hardware hard: twenty Jenners have
-**1,056,600 intact occupied microvoxels** before damage. Expect memory and
+This test intentionally pushes Android hardware hard: twenty Atlas mechs now
+have **2,761,440 intact occupied microvoxels** before damage. The selected
+chassis changes automatically when new, denser models are added. Expect memory and
 frame-time spikes; the FPS results must be observed on the actual phone.
 The GitHub headless CI smoke validates real twenty-mech construction, damage
 and UI behavior but cannot establish mobile GPU frame rate.
