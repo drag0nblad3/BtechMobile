@@ -18,7 +18,7 @@
       "arm": "heavy",
       "hip_width": 0.44,
       "arm_width": 1.18,
-      "voxel_detail": 1
+      "voxel_detail": 2
     },
     {
       "id": "hunchback_hbk4g",
@@ -58,7 +58,7 @@
       "arm": "missile_pods",
       "hip_width": 0.42,
       "arm_width": 0.92,
-      "voxel_detail": 1
+      "voxel_detail": 2
     }
   ]
 }
