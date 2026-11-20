@@ -42,7 +42,7 @@ Battle mode first; campaign layer later.
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `BuildingProps`, `FireProps`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
 | `src/view/shaders/terrain.gdshader` | Triplanar noise terrain |
 | `src/view/units/` | `UnitView` (animation, prone/wreck pose), `UnitsLayer`, `SpriteMech` (sprite sets from `assets/mechs/`, see `docs/graphics/sprite-integration.md`), `PlaceholderMech` (fallback) |
-| `src/view/vox/` | Claude's voxel 'Mechs (separate from the Voxel Mech Lab): `VxModel` (text format, `docs/graphics/voxel-model-format.md`), `VxPart` (mesher), `VxDamage` (record sheet → voxels), `VxMech`, `VxAnim`, `VxLegs`/`VxGait` (normal + reverse-jointed legs), `VxVolley`, `VxFx`/`VxTrails`, `VxShowcase` test scene |
+| `src/view/vox/` | Claude's voxel 'Mechs (separate from the Voxel Mech Lab): `VxModel` (text format, `docs/graphics/voxel-model-format.md`), `VxRefine` (2× subdivide, bevels, seams), `VxPart` + `VxMesher` (greedy mesher), `VxDamage` (record sheet → voxels), `VxMech`, `VxAnim` + `VxStrike` (attacks, flinch), `VxLegs`/`VxGait` (normal + reverse-jointed legs), `VxVolley`, `VxFx`/`VxTrails`, `VxShowcase` test scene |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards) |
