@@ -46,6 +46,7 @@ static func torso(part: VoxelPart, shape: String) -> void:
 			part.fill_box(Vector3i(4, 2, -3), Vector3i(7, 4, 3), 5)
 	VoxelRosterSculpt.torso(part, shape)
 	VoxelAnatomyV2.torso(part, shape)
+	VoxelSilhouetteV3.torso(part, shape)
 	part.seal()
 
 
@@ -76,6 +77,7 @@ static func arm(part: VoxelPart, style: String, side: int,
 	if not shape.is_empty():
 		VoxelRosterSculpt.arm(part, shape, side)
 	VoxelAnatomyV2.arm(part, shape, side)
+	VoxelSilhouetteV3.arm(part, shape, side)
 	part.seal(-2 if style != "missile_pods" else 1)
 
 
