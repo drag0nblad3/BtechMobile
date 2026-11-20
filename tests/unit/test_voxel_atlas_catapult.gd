@@ -81,7 +81,7 @@ func test_broader_crater_covers_real_spatial_area_and_stays_local() -> void:
 			continue
 		lo = Vector3i(mini(lo.x, cell.x), mini(lo.y, cell.y), mini(lo.z, cell.z))
 		hi = Vector3i(maxi(hi.x, cell.x), maxi(hi.y, cell.y), maxi(hi.z, cell.z))
-	var width := (hi - lo + Vector3i.ONE) * a.voxel_size
+	var width := Vector3(hi - lo + Vector3i.ONE) * a.voxel_size
 	check(width.x >= 0.45 and width.y >= 0.45,
 			"impact must spread beyond a tiny single-voxel puncture: " + str(width))
 	a.free()
