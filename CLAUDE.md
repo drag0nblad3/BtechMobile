@@ -27,11 +27,11 @@ Battle mode first; campaign layer later.
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode`, `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing), `MoveOptions` |
-| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits` |
+| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits`, `CritEffects` |
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
-| `src/core/rules/piloting/` | `Psr` (piloting rolls, falls), `PilotDamage` |
-| `src/core/rules/physical/` | `PhysicalPhase` |
-| `src/core/rules/turn/` | `EndPhase` |
+| `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `Fall`, `PilotDamage` |
+| `src/core/rules/physical/` | `PhysicalOptions` (punch/kick to-hit, damage), `PhysicalPhase` |
+| `src/core/rules/turn/` | `Initiative`, `EndPhase` |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
@@ -41,7 +41,7 @@ Battle mode first; campaign layer later.
 | `src/view/hud/battle_hud.gd` | On-screen buttons/labels; emits intent signals only |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput` |
 | `data/` | `terrain.json`, `weapons.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json` — see `docs/data-formats.md` |
-| `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `unit/test_*.gd` |
+| `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
 | `tools/capture.gd` | Render the battle to PNG for visual checks |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap) |
 | `export_presets.cfg` | Android export preset; `.github/workflows/android.yml` builds an APK on manual run only |

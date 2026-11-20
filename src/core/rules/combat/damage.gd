@@ -61,6 +61,13 @@ static func destroy_unit(u: Unit, reason: String) -> void:
 	u.destroyed_reason = reason
 
 
+## Emits UNIT_DESTROYED once, the first time a destroyed unit is reported.
+static func announce(emit: Callable, u: Unit) -> void:
+	if u.destroyed and not u.destroyed_announced:
+		u.destroyed_announced = true
+		emit.call(GameEvent.UNIT_DESTROYED, {"unit_id": u.id, "reason": u.destroyed_reason})
+
+
 ## Splits damage into clusters (e.g. LRMs in groups of 5).
 static func clusters(total: int, size: int) -> Array[int]:
 	var out: Array[int] = []

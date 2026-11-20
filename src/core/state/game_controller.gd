@@ -41,6 +41,13 @@ func submit_move(unit: Unit, target: Vector3i, mode: int) -> bool:
 	var path := opts.path_to(target)
 	var from := opts.start_key()
 	var mp: int = opts.cost[target]
+	if unit.prone and mp > 0 and not Psr.try_stand(state, dice, _emit_cb, unit):
+		unit.has_moved = true
+		unit.move_mode = MoveMode.Kind.WALK
+		unit.heat_generated += HeatScale.MOVE_HEAT[1]
+		Damage.announce(_emit_cb, unit)
+		_unit_done()
+		return true
 	unit.hexes_moved = MoveOptions.hexes_entered(path, unit.coord)
 	unit.coord = MoveOptions.coord_of(target)
 	unit.facing = target.z
@@ -70,6 +77,18 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 	return true
 
 
+## Declares physical attacks: [{kind: "punch"|"kick", limb, target_id}].
+## An empty list makes none. Returns false if out of turn.
+func declare_physical(unit: Unit, attacks: Array) -> bool:
+	if not _may_act(unit, Phase.Kind.PHYSICAL_ATTACK):
+		return false
+	var decl := PhysicalOptions.declare(state, unit, attacks)
+	state.declared_physical.append_array(decl)
+	unit.has_physical = true
+	_unit_done()
+	return true
+
+
 ## Units of the active side that may still act this phase.
 func pending_units() -> Array[Unit]:
 	var out: Array[Unit] = []
@@ -91,44 +110,22 @@ func _done_in_phase(u: Unit) -> bool:
 		Phase.Kind.WEAPON_ATTACK:
 			return u.has_fired
 		Phase.Kind.PHYSICAL_ATTACK:
-			return true  # Physical attacks arrive with the physical module.
+			return u.has_physical or not PhysicalOptions.any_possible(state, u)
 	return true
 
 
 func _unit_done() -> void:
+	if _check_game_over():
+		return
 	state.order_index += 1
 	_advance_to_side_with_work()
 
 
-## Initiative: each side rolls 2d6, rerolling ties. Loser moves first.
 func _roll_initiative() -> void:
-	var sides := state.sides_alive()
-	var rolls := {}
-	var unique := false
-	while not unique:
-		var seen := {}
-		unique = true
-		for s in sides:
-			rolls[s] = dice.roll_2d6()
-			if seen.has(rolls[s]):
-				unique = false
-			seen[rolls[s]] = true
-	sides.sort_custom(func(a, b): return rolls[a] < rolls[b])
-	state.initiative_rolls = rolls
-	state.side_order = _alternating_order(sides)
-	_emit(GameEvent.INITIATIVE, {"rolls": rolls, "order": sides})
-
-
-## Unit-by-unit alternation, loser first; sides with nothing left are skipped.
-## TODO(rules): proper unequal-numbers batching.
-func _alternating_order(sides: Array[int]) -> Array[int]:
-	var out: Array[int] = []
-	var most := 0
-	for s in sides:
-		most = maxi(most, state.units_of_side(s).size())
-	for i in most:
-		out.append_array(sides)
-	return out
+	var r := Initiative.roll(dice, state.sides_alive())
+	state.initiative_rolls = r["rolls"]
+	state.side_order = Initiative.alternating_order(state, r["order"])
+	_emit(GameEvent.INITIATIVE, r)
 
 
 func _begin_phase(p: int) -> void:

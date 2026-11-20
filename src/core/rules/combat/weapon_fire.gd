@@ -46,11 +46,9 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return
-	var was_destroyed := target.destroyed
 	var steps := Damage.apply(target, loc, amount, hl["rear"])
 	emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 			"source": source, "amount": amount, "loc": loc, "rear": hl["rear"],
 			"steps": steps, "covered": false, "tac": hl["tac"]})
-	if target.destroyed and not was_destroyed:
-		emit.call(GameEvent.UNIT_DESTROYED, {"unit_id": target.id, "reason": target.destroyed_reason})
+	Damage.announce(emit, target)
 	CriticalHits.after_damage(state, dice, emit, target, steps, hl["tac"])

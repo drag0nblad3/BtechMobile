@@ -20,7 +20,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Stacking: pass through friends, not enemies; one 'Mech per hex at end of movement.
 - ⬜ Backward movement.
 - ⬜ Jumping.
-- ⬜ Standing up, going prone, minimum movement, lateral shift (optional rule).
+- ✅ Standing up: 2 MP plus a piloting roll; failing means falling again. Impossible with a
+  destroyed gyro or both legs gone.
+- ⬜ Going prone voluntarily, minimum movement, lateral shift (optional rule).
 - ⬜ Piloting skill rolls from movement (running in rough, skidding on pavement, etc.).
 
 ## Record sheets
@@ -64,6 +66,31 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Restart: automatic below 14, else same roll — `TODO(rules)`: verify timing.
 - 🟡 Ammo explosion roll at 19+ (4+, 6+, 8+) — `TODO(rules)`: which bin explodes.
 - ⬜ Water cooling, jumping heat.
+
+## Critical hits
+- ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,
+  12 three (head/limb blown off) — `TODO(rules)`: verify.
+- ✅ Random hittable slot; empty slots don't count — `TODO(rules)`: no transfer when full.
+- ✅ Engine (+5 heat/turn, 3 destroys), gyro (+3 PSR, 2 = fall, can't stand), cockpit (pilot
+  killed), sensors (+2, 2 = can't fire), life support (pilot hit at 15+ heat), actuators,
+  weapons, ammo (explodes), heat sinks.
+
+## Piloting skill rolls and falls
+- ✅ Owed rolls collected per phase and rolled at its end.
+- ✅ Triggers: 20+ damage in a phase (+1), gyro hit, leg actuator hit, being kicked, missing
+  a kick; automatic falls for destroyed gyro, leg blown off, shutdown.
+- ✅ Lasting modifiers: gyro +3 each, destroyed leg +5, hip +2, other leg actuators +1.
+- 🟡 Falls: ceil(tons/10) × (levels + 1) damage in 5s, random new facing, pilot roll to avoid
+  a hit — `TODO(rules)`: fall direction table, falling from heights, leg destroyed by damage.
+
+## Physical attacks
+- ✅ Punch: piloting + movement mods, ceil(tons/10) damage, punch table; not with an arm that
+  fired; no hand +1, missing/broken upper or lower arm +2 and half damage.
+- ✅ Kick: piloting − 2, ceil(tons/5) damage, kick table, target rolls to stay up; a miss
+  makes the kicker roll.
+- ✅ Two punches or one kick per turn; adjacent target, front arc (punch: or that arm's side).
+- 🟡 Level differences: only within 1 level — `TODO(rules)`: which table per level difference.
+- ⬜ Charge, death from above, push, club, physical weapons.
 
 ## Pilots
 - ✅ 6 hits kill; consciousness roll after each hit (3, 5, 7, 10, 11); wake-up roll in End Phase.

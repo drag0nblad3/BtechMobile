@@ -33,3 +33,8 @@ static func chance_2d6(target: int) -> float:
 			if a + b >= target:
 				ways += 1
 	return ways / 36.0
+
+
+## Random index in 0..n-1.
+func pick(n: int) -> int:
+	return _rng.randi_range(0, n - 1)
