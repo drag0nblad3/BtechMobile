@@ -1,5 +1,8 @@
 name: Android build
 
+# Script checks run on every push to main and every pull request.
+# The APK is only built when someone starts this workflow by hand
+# (Actions tab > Android build > Run workflow).
 on:
   push:
     branches: [main]
@@ -10,8 +13,34 @@ env:
   GODOT_VERSION: 4.5.1
 
 jobs:
+  check:
+    name: Script check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Godot
+        run: |
+          base="https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable"
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          echo "GODOT=$RUNNER_TEMP/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64" >> "$GITHUB_ENV"
+
+      - name: Import project
+        run: |
+          "$GODOT" --headless --path game --import 2>&1 | tee import.log
+          if grep -E "SCRIPT ERROR|Parse Error" import.log; then exit 1; fi
+
+      - name: Smoke test (run the main scene headless)
+        run: |
+          timeout 120 "$GODOT" --headless --path game --quit-after 300 2>&1 | tee run.log
+          if grep -E "SCRIPT ERROR|Parse Error" run.log; then exit 1; fi
+
   debug-apk:
     name: Debug APK
+    if: github.event_name == 'workflow_dispatch'
+    needs: check
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -64,11 +93,6 @@ jobs:
         run: |
           "$GODOT" --headless --path game --import 2>&1 | tee import.log
           if grep -E "SCRIPT ERROR|Parse Error" import.log; then exit 1; fi
-
-      - name: Smoke test (run the main scene headless)
-        run: |
-          timeout 120 "$GODOT" --headless --path game --quit-after 300 2>&1 | tee run.log
-          if grep -E "SCRIPT ERROR|Parse Error" run.log; then exit 1; fi
 
       - name: Export debug APK
         run: |

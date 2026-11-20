@@ -10,9 +10,9 @@ hex-facing views and a top-down view as the camera moves.
 
 ## Get an Android build
 
-Every push and pull request runs the **Android build** GitHub Actions workflow, which
-exports a debug APK. Download it from the workflow run's **Artifacts** section and
-install it on a phone with USB debugging or by sideloading (allow installs from unknown
-sources).
+Pushes and pull requests only check the game scripts; they don't build an APK. To build
+one, open the repository's **Actions** tab, pick **Android build** and click
+**Run workflow**. Download the APK from that run's **Artifacts** section and install it
+on a phone with USB debugging or by sideloading (allow installs from unknown sources).
 
 To build locally, see "Building for Android" in [docs/PLANNING.md](docs/PLANNING.md).

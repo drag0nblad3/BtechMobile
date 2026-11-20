@@ -22,7 +22,7 @@ The repository now contains a Godot 4.5 project in `game/` that runs on Android:
 | Mech sprites | `game/scripts/directional_sprite.gd` | Picks one of six directional views from the camera bearing, or the top-down view above 65° camera elevation |
 | Sprite loading | `game/scripts/mech_sprite_library.gd` | Loads `art/mechs/<chassis>/core/facing_NNN.png` and `top/top_000.png`, with generated placeholders when art is missing |
 | Touch camera | `game/scripts/camera_rig.gd` | One-finger orbit, two-finger pinch zoom, mouse fallback on desktop |
-| CI | `.github/workflows/android.yml` | Imports the project, runs the scene headless to catch script errors, exports a debug APK as a build artifact |
+| CI | `.github/workflows/android.yml` | On every push and pull request: imports the project and runs the scene headless to catch script errors. Builds a debug APK only when run by hand |
 
 ## 2. Android adaptation decisions
 
@@ -69,8 +69,9 @@ copied into it once confirmed):
 
 ### From CI (no local setup)
 
-Push a branch or open a pull request. The **Android build** workflow produces a
-`BtechMobile-debug-apk` artifact on the run page. Install it with
+APKs are only built on request. In the repository's **Actions** tab, pick
+**Android build**, click **Run workflow** and choose the branch. The run produces a
+`BtechMobile-debug-apk` artifact on its page. Install it with
 `adb install BtechMobile-debug.apk`, or copy it to the phone and open it.
 
 ### Locally
