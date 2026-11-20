@@ -51,7 +51,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Natural 2 always misses; target > 12 can't be attempted.
 - ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
-- ⬜ Flamers, indirect LRM fire, called shots, aimed shots.
+- 🟡 Flamers deal normal damage — `TODO(rules)`: heat-instead-of-damage option.
+- ⬜ Indirect LRM fire, called shots, aimed shots.
 
 ## Damage
 - ✅ Hit location tables (front/rear, left, right) — `TODO(rules)`: verify.

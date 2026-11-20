@@ -1,0 +1,16 @@
+{
+  "id": "shadow_hawk_shd2h", "name": "Shadow Hawk", "model": "SHD-2H", "tonnage": 55,
+  "walk_mp": 5, "jump_mp": 3, "heat_sinks": 12, "sprite": "shadow_hawk",
+  "role": "Medium generalist. A weapon for every range bracket, so it always has something useful to fire.",
+  "armor": {"HD": 9, "CT": 23, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 18, "RL": 18},
+  "rear_armor": {"CT": 7, "LT": 6, "RT": 6},
+  "equipment": {
+    "HD": ["srm2"],
+    "RA": ["medium_laser"],
+    "RT": ["ac5"],
+    "LT": ["lrm5", "ammo:lrm5", "ammo:ac5", "ammo:srm2", "heat_sink", "heat_sink"],
+    "CT": ["jump_jet"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

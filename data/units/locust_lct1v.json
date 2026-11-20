@@ -1,0 +1,13 @@
+{
+  "id": "locust_lct1v", "name": "Locust", "model": "LCT-1V", "tonnage": 20,
+  "walk_mp": 8, "jump_mp": 0, "heat_sinks": 10, "sprite": "locust",
+  "role": "Light raider. The fastest 'Mech here; machine guns shred exposed structure but barely scratch armor.",
+  "armor": {"HD": 8, "CT": 10, "LT": 8, "RT": 8, "LA": 4, "RA": 4, "LL": 8, "RL": 8},
+  "rear_armor": {"CT": 2, "LT": 2, "RT": 2},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "CT": ["medium_laser", "ammo:machine_gun"],
+    "LA": ["machine_gun"],
+    "RA": ["machine_gun"]
+  }
+}

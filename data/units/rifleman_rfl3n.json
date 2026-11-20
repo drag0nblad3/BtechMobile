@@ -1,0 +1,14 @@
+{
+  "id": "rifleman_rfl3n", "name": "Rifleman", "model": "RFL-3N", "tonnage": 60,
+  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 10, "sprite": "rifleman",
+  "role": "Heavy gun platform. Big long-range firepower, thin armor and only 10 heat sinks: firing everything overheats it fast.",
+  "armor": {"HD": 9, "CT": 20, "LT": 16, "RT": 16, "LA": 18, "RA": 18, "LL": 16, "RL": 16},
+  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "LA": ["large_laser", "ac5"],
+    "RA": ["large_laser", "ac5"],
+    "LT": ["medium_laser", "ammo:ac5"],
+    "RT": ["medium_laser", "ammo:ac5"]
+  }
+}
