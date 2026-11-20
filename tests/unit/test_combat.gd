@@ -143,3 +143,16 @@ func test_ammo_explosion() -> void:
 	AmmoExplosion.explode(s, gc.dice, gc._emit_cb, u, u.ammo[0])
 	check(u.is_location_destroyed(Location.LT), "LT gone")
 	check_eq(u.pilot.hits, 2, "pilot hurt")
+
+
+func test_water_cools() -> void:
+	var s := GameState.new(make_map(["c0 w0d1 w0d2"]))
+	var u := mech("jenner_jr7d", 0, hex_at(1, 0), 0, 1)
+	s.add_unit(u)
+	u.heat = 10
+	HeatPhase.run(s, Dice.new(1), func(_t, _d): pass)
+	check_eq(u.heat, 0, "10 heat - 10 sinks")
+	u.heat = 14
+	HeatPhase.run(s, Dice.new(1), func(_t, _d): pass)
+	check_eq(u.heat, 2, "depth 1 adds 2 cooling")
+	check(TerrainText.describe(s.map.get_tile(hex_at(1, 0)), ExplainLevel.FULL).contains("cools 2"), "terrain text")

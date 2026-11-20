@@ -32,7 +32,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push), `Charge` (charge, DFA), `Displacement`, `PhysicalPhase` |
 | `src/core/rules/turn/` | `Initiative`, `EndPhase` |
-| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `DamageText`/`HeatText`/`PilotText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
+| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names` |
 | `src/core/forces/` | `ForceBuilder` (tonnage budget, lances, deployment) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |

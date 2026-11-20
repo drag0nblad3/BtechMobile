@@ -69,7 +69,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Shutdown roll at 14+ (4+, 6+, 8+, 10+, auto at 30); shut-down 'Mechs fall and can't act.
 - 🟡 Restart: automatic below 14, else same roll — `TODO(rules)`: verify timing.
 - 🟡 Ammo explosion roll at 19+ (4+, 6+, 8+) — `TODO(rules)`: which bin explodes.
-- ⬜ Water cooling, jumping heat.
+- 🟡 Water cooling: depth 1 +2, depth 2+ (or prone in water) +4, max 6 — `TODO(rules)`: really per submerged heat sink.
+- ✅ Jumping heat (1 per hex, min 3).
 
 ## Critical hits
 - ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,
@@ -119,3 +120,6 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Balance by tonnage only — `TODO(rules)`: Battle Value.
 - ✅ Hot-seat play (both sides on one device). ⬜ Bot opponent.
 - ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
+- ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
+- ✅ Tapping an empty hex explains its movement cost, cover and cooling.
+- ⬜ Buildings, bridges as structures, skidding on pavement, fire and smoke.

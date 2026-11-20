@@ -1,0 +1,22 @@
+{
+ "name": "City Outskirts",
+ "rows": [
+  "L0 L0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+  "L0 c0 c0 c0 c0 p0 c0 r0 c0 c0 c0 p0 c0 u0 c0 c0",
+  "c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 u0 u0 c0",
+  "p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 c0 c0 c0 c0",
+  "c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 c0 L0",
+  "c0 u0 u0 c0 c0 p0 c0 c0 r0 r0 c0 p0 c0 c0 c0 c0",
+  "c0 c0 u0 c0 c0 p0 c1 c2 r0 c0 c0 p0 c0 u0 u0 c0",
+  "c0 c0 c0 c0 c0 p0 c1 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+  "p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0",
+  "c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+  "c0 c0 u0 c0 c0 p0 c0 c0 u0 u0 c0 p0 c0 c0 c0 c0",
+  "c0 c0 c0 u0 c0 p0 c0 c0 c0 u0 c0 p0 c0 w0d1 w0d1 c0",
+  "L0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 w0d1 c0",
+  "c0 c0 c0 c0 c0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0",
+  "c0 r0 r0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+  "c0 c0 c0 c0 c0 p0 c0 u0 u0 c0 c0 p0 c0 c0 c0 L0",
+  "c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 p0 c0 c0 L0 L0"
+ ]
+}

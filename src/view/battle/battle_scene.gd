@@ -109,6 +109,8 @@ func _on_tap(pos: Vector2) -> void:
 		_show_sheet_if_open()
 	if not attacks.on_hex_tapped(c):
 		movement.on_hex_tapped(c)
+	if u == null and movement.selected == null and attacks.attacker == null:
+		hud.set_info(TerrainText.describe(controller.state.map.get_tile(c), GameSettings.explain_level))
 
 
 func _on_double_tap(pos: Vector2) -> void:

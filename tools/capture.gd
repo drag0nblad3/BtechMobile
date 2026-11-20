@@ -2,7 +2,8 @@ extends SceneTree
 ## Renders the game to a PNG (for visual checks without a device):
 ##   xvfb-run godot --rendering-method gl_compatibility -s tools/capture.gd -- out.png [mode]
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
-## first enemy targeted) · sheet (record sheet open) · menu (force builder).
+## first enemy targeted) · sheet (record sheet open) · menu (force builder) ·
+## map=<id> (battle start on that map).
 
 var _frames := 0
 var _scene: Node
@@ -15,6 +16,14 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
+	if _mode.begins_with("map="):  # e.g. map=rolling_hills: two lances on that map
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 200)
+		for id in ["griffin_grf1n", "warhammer_whm6r"]:
+			fb.add(0, id)
+		for id in ["marauder_mad3r", "wasp_wsp1a"]:
+			fb.add(1, id)
+		BattleLaunch.pending = fb.build(MapLoader.load_file(
+				"res://data/maps/%s.json" % _mode.substr(4), TerrainDb.load_file()))
 	var path := "res://scenes/menu.tscn" if _mode == "menu" else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
