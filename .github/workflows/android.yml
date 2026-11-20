@@ -86,7 +86,7 @@ jobs:
             -storepass "$GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD" -alias btechmobile-debug 2>/dev/null \
             | openssl x509 -noout -fingerprint -sha256 | cut -d= -f2 | tr -d ':' | tr '[:upper:]' '[:lower:]')"
           actual="$("$signer_tool" verify --print-certs build/android/BtechMobile-debug.apk \
-            | sed -n 's/^Signer #1 certificate SHA-256 digest: //p')"
+            | sed -n 's/^.*Signer: certificate SHA-256 digest: //p; s/^Signer #1 certificate SHA-256 digest: //p' | head -n 1)"
           # Pin the chosen debug certificate: secret replacement must not rotate the signing identity.
           pinned="02681a14bbdeeab1a09b2db5f68367e40a08628957fbec556d9b380749934237"
           if [ "$expected" != "$pinned" ]; then
