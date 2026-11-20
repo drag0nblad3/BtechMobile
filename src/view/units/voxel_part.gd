@@ -20,6 +20,7 @@ const PALETTE := [Color("4b6a83"), Color("293242"), Color("40ccfa"),
 ## detail_scale=2 turns a 75 mm voxel into eight 37.5 mm microvoxels.
 ## Exposed three-face corners are trimmed to produce actual finer bevels.
 var detail_scale := 1
+var generate_mesh := true
 var voxel_size := VOXEL_SIZE
 var cells: Dictionary = {}  # Vector3i -> palette index
 var joint_cells: Array[Vector3i] = []
@@ -68,8 +69,9 @@ func seal(joint_min_y: int = 1000) -> void:
 	for cell: Vector3i in cells:
 		if cell.y >= joint_min_y * detail_scale:
 			joint_cells.append(cell)
-	_update_bounds()
-	rebuild()
+	if generate_mesh:
+		_update_bounds()
+		rebuild()
 
 
 func _subdivide() -> void:
