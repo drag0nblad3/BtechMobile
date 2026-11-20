@@ -53,7 +53,11 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		target.outside_heat += w.def.damage
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
-		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, {}, th.cover_hex)
+		var hl := {}
+		if th.legs_only:
+			hl = HitTable.roll_kick(dice, arc_id)
+			hl["no_cover"] = true
+		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex)
 
 
 ## Rolls a hit location and applies one packet of damage. `cover` is a hill
@@ -93,4 +97,5 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 			"steps": steps, "covered": false, "tac": hl["tac"]})
 	Damage.announce(emit, target)
 	HeadHit.check(dice, emit, target, steps)
+	HullBreach.after_damage(state, dice, emit, target, steps)
 	CriticalHits.after_damage(state, dice, emit, target, steps, hl["tac"])

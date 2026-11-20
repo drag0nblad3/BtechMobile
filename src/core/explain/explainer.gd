@@ -68,6 +68,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return DamageText.damage(s, d, level)
 		GameEvent.BUILDING:
 			return TerrainText.building_event(s, d, level)
+		GameEvent.HULL_BREACH:
+			return DamageText.breach(s, d, level)
 		GameEvent.CRIT_CHECK:
 			return DamageText.crit_check(s, d, level)
 		GameEvent.CRITICAL:
@@ -161,6 +163,11 @@ static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary)
 	if d["limb"] >= 0:
 		who += " (%s)" % Location.name_of(d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
+	if d.get("why", "") != "":
+		var t := "%s: automatic miss, %s" % [who, d["why"]]
+		if level == ExplainLevel.FULL:
+			t += ". Once declared, a death from above can't be called off, so it lands as a miss."
+		return t
 	if level == ExplainLevel.OFF:
 		return "%s: %s" % [who, res]
 	return "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res] + ModsText.lines(d["mods"], level, seen)

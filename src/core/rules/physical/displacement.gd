@@ -8,6 +8,7 @@ extends RefCounted
 ##   steps one hex straight forward or back if it can; otherwise it is pushed
 ##   on in the same direction (and falls if it failed). With nowhere to go,
 ##   the last 'Mech in the chain is destroyed.
+## - Into a building hex: it gets in, and the hex takes a Destroy Check.
 ## TODO(rules): accidental falls from above (2+ levels down onto a 'Mech) are
 ## treated as a domino effect.
 
@@ -26,15 +27,17 @@ static func push(state: GameState, dice: Dice, emit: Callable, u: Unit, dir: int
 		Damage.destroy_unit(u, "pushed off the battlefield")
 		Damage.announce(emit, u)
 		return true
-	if _level(dst) - _level(src) > MAX_UP:
+	var src_lvl := Roofs.floor_of(state.map, u) if src != null else 0
+	if _level(dst) - src_lvl > MAX_UP:
 		return false
 	var other := state.unit_at(to)
 	if other != null and other != u and not _make_room(state, dice, emit, other, dir):
 		return false
 	move_to(state, emit, u, to)
-	var drop := _level(src) - _level(dst)
+	var drop := src_lvl - _level(dst)
 	if drop >= 2:
 		Fall.fall(state, dice, emit, u, drop, "pushed off a ledge")
+	BuildingRules.displaced_into(state, dice, emit, u)
 	return true
 
 
@@ -52,7 +55,7 @@ static func push_nearest(state: GameState, dice: Dice, emit: Callable, u: Unit, 
 ## Off the map counts as open; 3+ levels up does not.
 static func may_enter(state: GameState, u: Unit, dir: int) -> bool:
 	var dst := state.map.get_tile(Hex.neighbor(u.coord, dir))
-	return dst == null or _level(dst) - _level(state.map.get_tile(u.coord)) <= MAX_UP
+	return dst == null or _level(dst) - Roofs.floor_of(state.map, u) <= MAX_UP
 
 
 ## Domino effect: `t` gets out of the way, or is pushed on. False if the
@@ -99,5 +102,6 @@ static func _level(tile: MapTile) -> int:
 static func move_to(_state: GameState, emit: Callable, u: Unit, to: Vector2i) -> void:
 	var from := MoveOptions.key(u.coord, u.facing)
 	u.coord = to
+	u.on_roof = false  # TODO(rules): shoved onto a roof at the same level
 	emit.call(GameEvent.DISPLACED, {"unit_id": u.id, "from": from,
 			"path": [MoveOptions.key(to, u.facing)]})

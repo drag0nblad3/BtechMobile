@@ -29,6 +29,8 @@ var destroyed: bool = false
 var destroyed_reason: String = ""
 var destroyed_announced: bool = false
 var prone: bool = false
+var flooded: Dictionary = {}  ## Location -> true once a hull breach floods it (HullBreach).
+var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
 var shutdown: bool = false
 
 # This turn ---------------------------------------------------------------
@@ -86,9 +88,14 @@ func is_location_destroyed(loc: int) -> bool:
 	return structure[loc] <= 0
 
 
+## Destroyed or flooded: nothing in it works.
+func is_location_out(loc: int) -> bool:
+	return structure[loc] <= 0 or flooded.get(loc, false)
+
+
 ## Undamaged actuator of that name in a location (e.g. "hand" in LA).
 func has_working_actuator(loc: int, actuator: String) -> bool:
-	if is_location_destroyed(loc):
+	if is_location_out(loc):
 		return false
 	for s: CritSlot in slots[loc]:
 		if s.kind == CritSlot.Kind.ACTUATOR and s.name == actuator:
@@ -106,13 +113,13 @@ func leg_actuator_hits() -> int:
 
 
 func legs_destroyed() -> int:
-	return int(is_location_destroyed(Location.LL)) + int(is_location_destroyed(Location.RL))
+	return int(is_location_out(Location.LL)) + int(is_location_out(Location.RL))
 
 
 func hip_hits() -> int:
 	var n := 0
 	for loc in [Location.LL, Location.RL]:
-		if not has_working_actuator(loc, "hip") and not is_location_destroyed(loc):
+		if not has_working_actuator(loc, "hip") and not is_location_out(loc):
 			n += 1
 	return n
 
@@ -149,7 +156,7 @@ func jump_mp() -> int:
 	var lost := 0
 	for loc in Location.COUNT:
 		for s: CritSlot in slots[loc]:
-			if s.kind == CritSlot.Kind.JUMP_JET and (s.hit or is_location_destroyed(loc)):
+			if s.kind == CritSlot.Kind.JUMP_JET and (s.hit or is_location_out(loc)):
 				lost += 1
 	return maxi(0, def.jump_mp - lost)
 
@@ -189,7 +196,7 @@ func use_ammo(w: WeaponDef) -> bool:
 
 
 func can_fire(w: MountedWeapon) -> bool:
-	if sensor_hits >= 2 or w.destroyed or is_location_destroyed(w.loc):
+	if sensor_hits >= 2 or w.destroyed or is_location_out(w.loc):
 		return false
 	return not w.def.uses_ammo() or ammo_for(w.def) > 0
 

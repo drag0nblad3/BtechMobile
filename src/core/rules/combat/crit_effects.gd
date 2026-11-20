@@ -8,6 +8,8 @@ const GYRO_KILL := 2
 
 static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int,
 		slot: CritSlot) -> String:
+	if u.flooded.get(loc, false) and slot.kind != CritSlot.Kind.AMMO:
+		return "already flooded: no further effect"
 	match slot.kind:
 		CritSlot.Kind.ENGINE:
 			u.engine_hits += 1

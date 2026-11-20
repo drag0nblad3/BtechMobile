@@ -6,8 +6,8 @@ extends RefCounted
 ## In water the start level is the bottom; a 'Mech in depth 2+ can't jump and
 ## leg jump jets don't work in depth 1. It can't land on another 'Mech.
 ## Landing in depth 1+ water costs a piloting roll (MovePsr).
-## TODO(rules): landing on building roofs isn't modeled, so 'Mech-scale
-## building hexes can't be landed in. Civilian ones can (and are flattened).
+## A 'Mech-scale building hex can only be landed on, on its roof (Roofs);
+## a civilian one is landed in and flattened.
 
 
 static func plan(state: GameState, unit: Unit) -> MoveOptions:
@@ -20,8 +20,7 @@ static func plan(state: GameState, unit: Unit) -> MoveOptions:
 	opts.can_end[start] = true
 	if opts.budget <= 0:
 		return opts
-	var from_tile := state.map.get_tile(unit.coord)
-	var ceiling := (from_tile.floor_level() if from_tile else 0) + opts.budget
+	var ceiling := Roofs.floor_of(state.map, unit) + opts.budget
 	var layer: Array[Vector2i] = [unit.coord]
 	var seen := {unit.coord: true}
 	for d in range(1, opts.budget + 1):
@@ -36,7 +35,7 @@ static func plan(state: GameState, unit: Unit) -> MoveOptions:
 					continue
 				seen[n] = true
 				next.append(n)
-				var ok := state.unit_at(n) == null and (tile.building == null or tile.building.type.civilian)
+				var ok := state.unit_at(n) == null
 				for f in 6:
 					var k := MoveOptions.key(n, f)
 					opts.cost[k] = d

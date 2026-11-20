@@ -20,7 +20,7 @@ static func standing_mods(u: Unit) -> ToHit:
 		th.add("leg destroyed", 4 * u.legs_destroyed(), "Balancing on one leg: +4.")
 	var act := 0
 	for loc in [Location.LL, Location.RL]:
-		if not u.is_location_destroyed(loc):
+		if not u.is_location_out(loc):
 			act += leg_actuator_mod(u, loc)
 	if act > 0:
 		th.add("leg actuators", act, "Each damaged hip, upper or lower leg actuator: +1.")
@@ -61,8 +61,21 @@ static func resolve_pending(state: GameState, dice: Dice, emit: Callable, u: Uni
 		var others := extra - maxi(0, int(p["mod"]))
 		var mod := int(p["mod"]) + others
 		if not roll(dice, emit, u, p["reason"], mod):
-			Fall.fall(state, dice, emit, u, 0, p["reason"])
+			if not _dfa_takes_fall(state, u):
+				Fall.fall(state, dice, emit, u, 0, p["reason"])
 			return
+
+
+## A 'Mech that declared a DFA and fails a roll in the Weapon Attack Phase
+## doesn't fall; its DFA misses instead (p. 80).
+static func _dfa_takes_fall(state: GameState, u: Unit) -> bool:
+	if state.phase != Phase.Kind.WEAPON_ATTACK:
+		return false
+	for d: Dictionary in state.declared_physical:
+		if int(d["attacker_id"]) == u.id and d["kind"] == "dfa":
+			d["failed_psr"] = true
+			return true
+	return false
 
 
 ## One roll per leg for actuator hits.

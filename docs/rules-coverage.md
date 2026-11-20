@@ -19,7 +19,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Hip hit or destroyed leg: 1 level per hex forward, none backward.
 - ✅ Stacking: pass through friends, not enemies; one 'Mech per hex at end of movement.
 - ✅ Backward walking (not running), same costs, at most 1 level change; any backward level change costs a piloting roll, and a failure falls (in the lower hex).
-- 🟡 Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit — `TODO(rules)`: landing on building roofs.
+- ✅ Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit; 'Mech-scale buildings are landed on, on the roof.
 - ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again; standing frees the facing. Impossible with a
   destroyed gyro or both legs gone.
 - ✅ Dropping prone (`ProneMoves`, p. 51): in place, or at the end of a walk/run with 1 MP to spare (the Prone button uses the previewed move); not after jumping.
@@ -42,7 +42,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ LOS levels (p. 57): ground (water bottom) + 2 standing / 1 prone. A hex intervenes if its top (hill; woods +2; building roof) is at least both LOS levels, or at least the attacker's and next to it, or at least the target's and next to it. Intervening hills and buildings block; woods add 1/2 points, 3 block.
 - ✅ Divided LOS (along a hexside): the target's side chooses; the game takes the side worse for the attacker.
 - ✅ Partial cover from terrain (p. 66): a standing target next to a hex one level above its ground, on the line, gets +1 and leg hits strike the cover (a building takes the damage), unless the attacker's LOS level is higher; indirect fire ignores it; civilian buildings and woods give none.
-- 🟡 Units in depth 2+ water (or prone in depth 1) can't be seen — `TODO(rules)`: underwater combat.
+- 🟡 Water combat (`WaterCombat`, pp. 62, 66-67, 127): underwater = depth 2+ or prone in depth 1, wading = standing in depth 1. No shots across the water line; only energy weapons fire from a submerged location (a wading 'Mech's leg weapons only at targets in water, its other weapons not at underwater targets); shots from underwater, or from leg weapons at a wading target, hit legs on the Kick table with no partial cover; underwater shots need a line of water hexes; energy weapons fire one range bracket longer, long range out. Water never blocks line of sight — `TODO(rules)`: torpedoes.
+- ✅ Hull breaches (`HullBreach`, p. 127): damage to a location under water rolls 2D6, 2-4 floods it; a bare location (no armor, front or rear for a torso) under water floods at once, now or after moving or falling. A flooded location stops working as if destroyed, without explosions or crits (later crits there do nothing except ammo); a flooded leg counts as destroyed, a flooded side torso floods its arm; it stays flooded out of the water. The record sheet marks it.
 
 ## Weapon attacks
 - ✅ To-hit: gunnery + attacker movement (walk +1, run +2) + target movement
@@ -110,7 +111,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ A 'Mech can be the target of only one charge, DFA or push per turn; a charging 'Mech can't be charged or pushed.
 - ✅ Displacement waits until every physical attack of the phase is rolled (p. 76).
 - ✅ Displacement (pp. 113-114): domino effect (roll to step forward/back, else pushed on and falls; crushed with nowhere to go), off the map destroys, 2+ levels down is a fall, 3+ up can't happen.
-- 🟡 `TODO(rules)`: a DFA attacker that fell in the Weapon Attack Phase is simply cancelled (book: resolve as a miss); physical attacks underwater (half damage, submerged targets) aren't modeled.
+- ✅ A declared DFA can't be called off (p. 80): a failed piloting roll in the Weapon Attack Phase doesn't drop the attacker, the DFA misses instead; it also misses if the attacker is prone or unconscious, or needs 13+.
+- ✅ Physical attacks and water (p. 77): an underwater target can only be reached from underwater, or kicked from depth 1; damage to a submerged location is halved (rounded down); no DFA from depth 2+.
+- 🟡 `TODO(rules)`: an attacker felled by an automatic fall is treated like a failed roll.
 - ⬜ Clubs, physical weapons.
 
 ## Buildings
@@ -122,7 +125,10 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Collapse (pp. 136-137): rubble; a 'Mech inside takes half the Threshold per building level above it, 5-point groups from the front. No fall.
 - ✅ Shooting buildings (p. 135): -4, from the next hex always hits, cluster weapons hit with every missile.
 - ✅ Buildings block line of sight like a hill as tall as the roof.
-- 🟡 `TODO(rules)`: careful entry, roofs (landing, support limits), involuntary entry by displacement (Destroy Check), DFA into a level 1 building, fire, Castles Brian.
+- ✅ Careful entry (p. 133): running straight into the building hex ahead as the whole move needs no entry roll and works for any building class.
+- ✅ Shoved into a building (p. 132): the 'Mech gets in whatever its weight, and the hex takes an immediate Destroy Check.
+- 🟡 Roofs (`Roofs`, pp. 132-137): jump on; walk/run roof to roof at 1 MP (same level, or one down going forward), never off to the ground; heavier than the support limit: Destroy Check at +2 per class over; a collapsing roof drops the 'Mech the building's height; roof height counts for line of sight and physical attacks — `TODO(rules)`: a 'Mech inside and one on the roof of the same hex, shoved onto a roof, sight between roofs and insides.
+- 🟡 `TODO(rules)`: deliberately failing the entry roll, DFA into a level 1 building, fire, Castles Brian.
 - ⬜ Physical attacks on buildings, bridges as structures, basements.
 
 ## Pilots

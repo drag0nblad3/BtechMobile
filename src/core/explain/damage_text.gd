@@ -44,6 +44,21 @@ static func crit_check(s: GameState, d: Dictionary, level: int) -> String:
 	return t + "."
 
 
+static func breach(s: GameState, d: Dictionary, level: int) -> String:
+	var who := Names.unit(s.unit_by_id(d["unit_id"]))
+	var where := Location.name_of(d["loc"]).to_lower()
+	var roll: int = d["roll"]
+	if not d["flooded"]:
+		return "" if level != ExplainLevel.FULL else "  Hull breach check (%s): rolled %d, the seals hold." % [where, roll]
+	var why := "rolled %d" % roll if roll > 0 else ("no armor left under water" if roll == 0 else "the torso beside it flooded")
+	var t := "  %s's %s floods (%s)" % [who, where, why]
+	if not d["effects"].is_empty():
+		t += ": %s stop working" % ", ".join(d["effects"])
+	if level == ExplainLevel.FULL:
+		t += ". Damage under water risks a breach on 2-4; a flooded location is dead weight for the rest of the battle"
+	return t + "."
+
+
 static func ammo(s: GameState, d: Dictionary, level: int) -> String:
 	var t := "  %s's %s ammo explodes in the %s for %d damage!" % [
 			Names.unit(s.unit_by_id(d["unit_id"])), d["ammo"], Location.name_of(d["loc"]), d["damage"]]

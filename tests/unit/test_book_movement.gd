@@ -81,7 +81,7 @@ func test_jump_from_water_and_onto_buildings() -> void:
 	s.add_unit(u)
 	check_eq(JumpPlanner.jump_mp(s, u), u.jump_mp() - u.leg_jump_jets(), "leg jets don't fire in depth 1")
 	var opts := JumpPlanner.plan(s, u)
-	check(not opts.can_reach(MoveOptions.key(hex_at(2, 1), 0)), "no landing in a building")
+	check(opts.can_reach(MoveOptions.key(hex_at(2, 1), 0)), "lands on the building's roof")
 	u.coord = hex_at(0, 2)
 	check_eq(JumpPlanner.jump_mp(s, u), 0, "can't jump out of depth 2")
 

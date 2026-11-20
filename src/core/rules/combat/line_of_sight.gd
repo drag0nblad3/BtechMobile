@@ -2,7 +2,8 @@ class_name LineOfSight
 extends RefCounted
 ## Line of sight between two units (book pp. 56-58, 66).
 ## LOS level = the ground under a 'Mech (water: the bottom) + its height
-## (2 standing, 1 prone). A hex between them intervenes if its top (hill
+## (2 standing, 1 prone); water never blocks, an intervening water hex counts
+## from its bottom. A hex between them intervenes if its top (hill
 ## level; woods +2; a building's roof) is at least both LOS levels, or at
 ## least the attacker's and next to it, or at least the target's and next
 ## to it. An intervening hill or building blocks; woods add 1 (light) or 2
@@ -18,12 +19,7 @@ const WOODS_BLOCK := 3  ## Intervening woods points that block line of sight.
 ## {blocked, reason, woods (points), light, heavy (hex counts),
 ##  cover: Vector2i (hex giving partial cover, or Hex.INVALID)}
 static func check(map: BattleMap, from: Unit, to: Unit) -> Dictionary:
-	if _submerged(map, from) or _submerged(map, to):
-		var out := _blank()
-		out["blocked"] = true
-		out["reason"] = "underwater"
-		return out
-	var t_floor := _floor(map, to.coord)
+	var t_floor := Roofs.floor_of(map, to)
 	return _best(map, from.coord, to.coord, los_level(map, from), los_level(map, to),
 			t_floor if not to.prone else 999)
 
@@ -39,7 +35,7 @@ static func check_hex(map: BattleMap, from: Unit, c: Vector2i, height: int) -> D
 
 
 static func los_level(map: BattleMap, u: Unit) -> int:
-	return _floor(map, u.coord) + (1 if u.prone else 2)
+	return Roofs.floor_of(map, u) + (1 if u.prone else 2)
 
 
 ## Kept for callers that want the top level a 'Mech occupies.
@@ -80,7 +76,7 @@ static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int
 			continue
 		var next_a := i == 1
 		var next_b := i == n - 2
-		var ground := tile.level + (tile.building.height if tile.building != null else 0)
+		var ground := tile.floor_level() + (tile.building.height if tile.building != null else 0)
 		if _intervenes(ground, a_lvl, b_lvl, next_a, next_b):
 			out["blocked"] = true
 			out["reason"] = "%s at %s" % ["building" if tile.building != null else "hill", Hex.label(tile.coord)]
@@ -106,13 +102,7 @@ static func _blank() -> Dictionary:
 	return {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0, "cover": Hex.INVALID}
 
 
-static func _floor(map: BattleMap, c: Vector2i) -> int:
-	var tile := map.get_tile(c)
-	return tile.floor_level() if tile else 0
-
-
-## Fully under water (depth 2+, or depth 1 while prone).
-## TODO(rules): underwater combat is not modeled; such units can't be targeted.
+## Fully under water: it can't shoot a building across the water line.
 static func _submerged(map: BattleMap, u: Unit) -> bool:
 	var tile := map.get_tile(u.coord)
 	if tile == null or not tile.is_water():

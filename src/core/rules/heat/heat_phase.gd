@@ -48,7 +48,7 @@ static func water_cooling(tile: MapTile, u: Unit = null) -> int:
 static func leg_heat_sinks(u: Unit) -> int:
 	var n := 0
 	for loc in [Location.LL, Location.RL]:
-		if u.is_location_destroyed(loc):
+		if u.is_location_out(loc):
 			continue
 		for s: CritSlot in u.slots[loc]:
 			if s.kind == CritSlot.Kind.HEAT_SINK and not s.hit:
