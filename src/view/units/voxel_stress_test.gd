@@ -123,30 +123,75 @@ static func random_surface_cell(part: VoxelPart,
 	return chosen
 
 
+## Hit points are drawn from the WHOLE exposed surface of a part, not a
+## small hand-picked patch near its center. Bounded ray traversal avoids
+## allocating/copying every voxel in a 100k+ cell chassis on each shot.
+static func random_surface_hit(part: VoxelPart,
+		rng: RandomNumberGenerator) -> Dictionary:
+	if part.cells.is_empty():
+		return {}
+	var bounds: AABB = part._local_bounds
+	if bounds.size.length_squared() <= 0.0:
+		return {}
+	for attempt in 48:
+		var origin := bounds.position + Vector3(rng.randf(), rng.randf(),
+				rng.randf()) * bounds.size
+		var direction := Vector3.ZERO
+		var side := rng.randi_range(0, 1)
+		var axis := rng.randi_range(0, 2)
+		var margin := part.voxel_size * 3.0
+		match axis:
+			0:
+				origin.x = bounds.position.x - margin if side == 0 else bounds.end.x + margin
+				direction.x = 1.0 if side == 0 else -1.0
+			1:
+				origin.y = bounds.position.y - margin if side == 0 else bounds.end.y + margin
+				direction.y = 1.0 if side == 0 else -1.0
+			2:
+				origin.z = bounds.position.z - margin if side == 0 else bounds.end.z + margin
+				direction.z = 1.0 if side == 0 else -1.0
+		var hit := part.pick_ray(part.to_global(origin),
+				(part.global_transform.basis * direction).normalized())
+		if not hit.is_empty():
+			return hit
+	return {}
+
+
+## Larger armor areas take correspondingly wider damage without erasing the
+## entire limb at once. A shoulder can suffer a broad crater; a hock stays
+## smaller but still receives a meaningful hit.
+static func impact_radius(part: VoxelPart, rng: RandomNumberGenerator) -> float:
+	var size: Vector3 = part._local_bounds.size
+	var span := maxf(size.x, maxf(size.y, size.z))
+	return clampf(span * rng.randf_range(0.23, 0.31), 0.25, 0.49)
+
+
 func ping_random_model() -> int:
 	if models.size() != TARGET_COUNT:
 		return 0
 	shots_attempted += 1
-	var index := _rng.randi_range(0, models.size() - 1)
-	var target := models[index]
-	var names := target.parts.keys()
-	if names.is_empty():
-		return 0
-	# Select from all parts, including individual shins, feet and weapon pods.
-	var key: String = names[_rng.randi_range(0, names.size() - 1)]
-	var part: VoxelPart = target.parts[key]
-	if part.cells.is_empty() or not part.is_inside_tree():
-		return 0
-	var cell := random_surface_cell(part, _rng)
-	var local_point := (Vector3(cell) + Vector3.ONE * 0.5) * part.voxel_size
-	var impact_world := part.to_global(local_point)
-	var radius := _rng.randf_range(0.10, 0.19)
-	var removed := target.hit_part(key, impact_world, radius)
-	if removed > 0:
-		shots_hit += 1
-		voxels_removed += removed
-	return removed
-
+	# Continue after a detached or completely shredded part. Every successful
+	# ping must hit an exposed face, with the origin changing across the part.
+	for attempt in 12:
+		var index := _rng.randi_range(0, models.size() - 1)
+		var target: VoxelMech = models[index]
+		var names := target.parts.keys()
+		if names.is_empty():
+			continue
+		var key: String = names[_rng.randi_range(0, names.size() - 1)]
+		var part: VoxelPart = target.parts[key]
+		if not is_instance_valid(part) or not part.is_inside_tree() \
+				or part.cells.is_empty():
+			continue
+		var hit := random_surface_hit(part, _rng)
+		if hit.is_empty():
+			continue
+		var removed := target.hit_part(key, hit["point"], impact_radius(part, _rng))
+		if removed > 0:
+			shots_hit += 1
+			voxels_removed += removed
+		return removed
+	return 0
 
 func remaining_voxels() -> int:
 	return original_voxels - voxels_removed
