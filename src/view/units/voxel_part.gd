@@ -72,7 +72,10 @@ func seal(joint_min_y: int = 1000) -> void:
 		elif detail_style == "atlas" or detail_style == "catapult":
 			VoxelChassisDetail.decorate(self)
 		VoxelRosterSculpt.fine(self)
-		VoxelAnatomyV2.micro_bevel(self)
+		# Fine corner dressing only on major hull armor; preserve slender
+		# weapon rims, articulated pins and the exact Jenner toe geometry.
+		if name == "Torso" and detail_style != "jenner":
+			VoxelAnatomyV2.micro_bevel(self)
 	_original_count = cells.size()
 	joint_cells.clear()
 	for cell: Vector3i in cells:
