@@ -15,19 +15,23 @@ func _initialize() -> void:
 	DirAccess.make_dir_recursive_absolute(output_dir)
 	scene = load("res://scenes/voxel_mech_lab.tscn").instantiate()
 	root.add_child(scene)
+	scene._orbit = 1.85
+	scene.update_camera()
 	scene.mech.start_walk(100.0)  # do not stop due to low offscreen FPS
 
 
 func _process(_delta: float) -> bool:
 	var mech: VoxelMech = scene.mech
-	if stage == 0 and mech.gait_phase >= 0.18:
+	if stage == 0 and mech.gait_phase >= 0.08:
 		capture("gait_a.png")
 		stage = 1
-	elif stage == 1 and mech.gait_phase >= 0.68:
+	elif stage == 1 and mech.gait_phase >= 0.58:
 		capture("gait_b.png")
 		mech.walking = false
 		mech.position.z = 0.0
 		mech.stand()
+		scene._orbit = 2.58
+		scene.update_camera()
 		stage = 2
 	elif stage == 2:
 		capture("armor_before.png")
