@@ -1,26 +1,32 @@
 class_name ForceBuilder
 extends RefCounted
-## Builds two forces under a tonnage budget, then deploys them on a map:
+## Builds two forces under a Battle Value budget, then deploys them on a map:
 ## side 0 along the south edge facing north, side 1 along the north edge.
-## TODO(rules): Battle Value balancing instead of plain tonnage.
 
 const MAX_UNITS := 4
-const BUDGETS := [100, 150, 200, 300, 400]
+const BUDGETS := [2000, 3000, 4500, 6000, 8000]
 
 var units: UnitDb
-var budget: int = 150
+var budget: int = 3000  ## Battle Value per side.
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 
 
-func _init(unit_db: UnitDb, tons: int = 150) -> void:
+func _init(unit_db: UnitDb, bv_budget: int = 3000) -> void:
 	units = unit_db
-	budget = tons
+	budget = bv_budget
 
 
 func tons(side: int) -> int:
 	var n := 0
 	for id: String in rosters[side]:
 		n += units.get_def(id).tonnage
+	return n
+
+
+func bv(side: int) -> int:
+	var n := 0
+	for id: String in rosters[side]:
+		n += BattleValue.of(units.get_def(id))
 	return n
 
 
@@ -31,8 +37,8 @@ func cant_add(side: int, def_id: String) -> String:
 		return "Unknown design"
 	if rosters[side].size() >= MAX_UNITS:
 		return "A lance is at most %d 'Mechs" % MAX_UNITS
-	if tons(side) + def.tonnage > budget:
-		return "Over budget: %d of %d tons left" % [budget - tons(side), budget]
+	if bv(side) + BattleValue.of(def) > budget:
+		return "Over budget: %d of %d BV left" % [budget - bv(side), budget]
 	return ""
 
 
@@ -46,6 +52,21 @@ func add(side: int, def_id: String) -> bool:
 func remove(side: int, index: int) -> void:
 	if index >= 0 and index < rosters[side].size():
 		rosters[side].remove_at(index)
+
+
+## How even the two forces are, in plain words ("" until both have units).
+func balance_text() -> String:
+	var a := bv(0)
+	var b := bv(1)
+	if a == 0 or b == 0:
+		return ""
+	var diff := absf(a - b) / float(maxi(a, b))
+	var stronger := Names.side(0 if a > b else 1)
+	if diff < 0.05:
+		return "Even fight (%d vs %d BV)." % [a, b]
+	if diff < 0.15:
+		return "%s is a little stronger (%d vs %d BV)." % [stronger, a, b]
+	return "%s is much stronger (%d vs %d BV): expect a lopsided fight." % [stronger, a, b]
 
 
 func ready_to_fight() -> bool:

@@ -17,7 +17,9 @@ Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woo
 
 ## `data/weapons.json`
 `{"weapons": [{"id", "name", "type" (energy|ballistic|missile), "heat", "damage", "missiles"?,
-"group"?, "min"?, "short", "medium", "long", "slots", "ammo_per_ton"?}]}`
+"group"?, "min"?, "short", "medium", "long", "slots", "ammo_per_ton"?,
+"bv", "ammo_bv"?}]}`
+- `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).

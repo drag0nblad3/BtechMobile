@@ -18,6 +18,8 @@ var medium_range: int
 var long_range: int
 var slots: int
 var ammo_per_ton: int  ## 0 = no ammo needed.
+var bv: int           ## Battle Value of the weapon.
+var ammo_bv: int       ## Battle Value of one ton of its ammo.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -35,6 +37,8 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.long_range = int(d["long"])
 	w.slots = int(d.get("slots", 1))
 	w.ammo_per_ton = int(d.get("ammo_per_ton", 0))
+	w.bv = int(d.get("bv", 0))
+	w.ammo_bv = int(d.get("ammo_bv", 0))
 	return w
 
 

@@ -25,7 +25,7 @@ func test_every_design_fights() -> void:
 	ids.sort()
 	var map := MapLoader.load_file("res://data/maps/river_crossing.json", terrain())
 	for i in range(0, ids.size(), 4):
-		var fb := ForceBuilder.new(db, 400)
+		var fb := ForceBuilder.new(db, 8000)
 		for k in range(i, mini(i + 4, ids.size())):
 			fb.add(k % 2, ids[k])
 		if not fb.ready_to_fight():
