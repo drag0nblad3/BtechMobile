@@ -4,6 +4,7 @@
     {"id": "medium_laser", "name": "Medium Laser", "type": "energy", "heat": 3, "damage": 5, "min": 0, "short": 3, "medium": 6, "long": 9, "slots": 1},
     {"id": "large_laser", "name": "Large Laser", "type": "energy", "heat": 8, "damage": 8, "min": 0, "short": 5, "medium": 10, "long": 15, "slots": 2},
     {"id": "ppc", "name": "PPC", "type": "energy", "heat": 10, "damage": 10, "min": 3, "short": 6, "medium": 12, "long": 18, "slots": 3},
+    {"id": "flamer", "name": "Flamer", "type": "energy", "heat": 3, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "slots": 1},
     {"id": "machine_gun", "name": "Machine Gun", "type": "ballistic", "heat": 0, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "slots": 1, "ammo_per_ton": 200},
     {"id": "ac2", "name": "AC/2", "type": "ballistic", "heat": 1, "damage": 2, "min": 4, "short": 8, "medium": 16, "long": 24, "slots": 1, "ammo_per_ton": 45},
     {"id": "ac5", "name": "AC/5", "type": "ballistic", "heat": 1, "damage": 5, "min": 3, "short": 6, "medium": 12, "long": 18, "slots": 4, "ammo_per_ton": 20},

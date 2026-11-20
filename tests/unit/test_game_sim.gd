@@ -17,3 +17,19 @@ func test_skirmish_games_finish() -> void:
 			for loc in Location.COUNT:
 				check(u.structure[loc] >= 0 and u.armor[loc] >= 0, "no negative damage")
 	check(finished >= 3, "most games end within 40 turns (%d/5)" % finished)
+
+
+func test_every_design_fights() -> void:
+	var db := UnitDb.load_dir()
+	var ids: Array = db.by_id.keys()
+	ids.sort()
+	var map := MapLoader.load_file("res://data/maps/river_crossing.json", terrain())
+	for i in range(0, ids.size(), 4):
+		var fb := ForceBuilder.new(db, 400)
+		for k in range(i, mini(i + 4, ids.size())):
+			fb.add(k % 2, ids[k])
+		if not fb.ready_to_fight():
+			fb.add(1, "atlas_as7d")
+		var gc := GameController.new(fb.build(map), 100 + i)
+		SimBot.play(gc, 25)
+		check(gc.state.turn >= 1, "played")

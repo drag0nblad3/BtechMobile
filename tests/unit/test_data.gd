@@ -70,3 +70,12 @@ func test_structure_table() -> void:
 	check_eq(StructureTable.points(35, Location.LA), 6)
 	check_eq(StructureTable.points(65, Location.LL), 15)
 	check_eq(StructureTable.max_armor(50, Location.HEAD), 9)
+
+
+func test_roster_spans_weight_classes() -> void:
+	var classes := {}
+	for def: UnitDef in UnitDb.load_dir().by_id.values():
+		classes[def.weight_class()] = true
+		check(def.role != "", def.id + " has a role line")
+		check(def.sprite != "", def.id + " names a sprite folder")
+	check_eq(classes.size(), 4, "light, medium, heavy and assault")

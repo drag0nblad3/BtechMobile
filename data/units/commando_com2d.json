@@ -1,0 +1,13 @@
+{
+  "id": "commando_com2d", "name": "Commando", "model": "COM-2D", "tonnage": 25,
+  "walk_mp": 6, "jump_mp": 0, "heat_sinks": 10, "sprite": "commando",
+  "role": "Light ambusher. Two missile racks hit hard for its size, but it has little armor and only one ton of ammo per rack.",
+  "armor": {"HD": 8, "CT": 11, "LT": 8, "RT": 8, "LA": 6, "RA": 6, "LL": 8, "RL": 8},
+  "rear_armor": {"CT": 4, "LT": 3, "RT": 3},
+  "equipment": {
+    "LA": ["srm6"],
+    "RA": ["medium_laser"],
+    "RT": ["srm4"],
+    "LT": ["ammo:srm6", "ammo:srm4"]
+  }
+}
