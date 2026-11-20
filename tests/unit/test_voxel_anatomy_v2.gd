@@ -1,6 +1,5 @@
 extends TestCase
-## Regression tests for ACTUAL resculpted geometry (shape, openings, materials).
-## These run on real Godot voxel cells, with GPU mesh generation disabled.
+## Former V2 anatomy tests: now guard the V4 clean-rebuild contracts.
 
 
 func _make(id: String) -> VoxelMech:
@@ -11,90 +10,67 @@ func _make(id: String) -> VoxelMech:
 	return m
 
 
-func _width_at_y(p: VoxelPart, coarse_y: int) -> int:
-	var min_x := 999999
-	var max_x := -999999
-	for cell: Vector3i in p.cells:
-		if floori(float(cell.y) / float(p.detail_scale)) != coarse_y:
-			continue
-		min_x = mini(min_x, cell.x)
-		max_x = maxi(max_x, cell.x)
-	return max_x - min_x if max_x >= min_x else 0
+func test_v4_really_excludes_old_v2_v3_geometry_pipeline() -> void:
+	for id in ["atlas_as7d", "hunchback_hbk4g",
+			"wolverine_wvr6r", "jenner_jr7d", "catapult_cplt_c1"]:
+		var m := _make(id)
+		var body: VoxelPart = m.parts["torso"]
+		check(body.detail_style.begins_with("v4_"),
+				"%s must use solely new source geometry" % id)
+		check_eq(body.detail_style, "v4_" + str(VoxelChassis.find(id)["shape"]),
+				"old procedural material decorators must not run")
+		m.free()
 
 
-func test_atlas_is_broad_shouldered_not_a_rectangular_torso() -> void:
+func test_atlas_has_real_slim_waist_and_separate_pectoral_panels() -> void:
 	var m := _make("atlas_as7d")
 	var body: VoxelPart = m.parts["torso"]
-	check(_width_at_y(body, 2) > _width_at_y(body, -8) * 1.35,
-			"Atlas shoulders need a genuine outward taper above its waist")
-	check_eq(body.sculpt_material(Vector3i(-3, 9, -8)), 7,
-			"Atlas's left red skull eye must be physically inset")
-	check_eq(body.sculpt_material(Vector3i(2, 9, -8)), 7,
-			"Atlas's right red skull eye must remain separate")
-	check(body.has_sculpt_cell(Vector3i(-5, 6, -7)),
-			"Atlas skull needs protruding cheekbone armor")
-	check(not body.has_sculpt_cell(Vector3i(9, -1, -12)),
-			"torso AC/20 should remain bored front to back")
+	check(body.has_sculpt_cell(Vector3i(-4, -10, 0)),
+			"lower torso must keep structural waist assembly")
+	check(body.has_sculpt_cell(Vector3i(-10, 3, 0)),
+			"shoulder should be wider than waist")
+	check(not body.has_sculpt_cell(Vector3i(-10, -10, 0)),
+			"waist may not fill an entire chest-width rectangular column")
+	check(body.has_sculpt_cell(Vector3i(-5, -3, -7)),
+			"left breastplate has its own front armor face")
+	check(body.has_sculpt_cell(Vector3i(4, -3, -7)),
+			"right breastplate has an independently shaped counterpart")
 	m.free()
 
 
-func test_hunchback_hump_is_asymmetric_and_its_barrel_is_hollow() -> void:
+func test_hunchback_hull_is_asymmetric_and_weapon_faces_forward() -> void:
 	var m := _make("hunchback_hbk4g")
 	var body: VoxelPart = m.parts["torso"]
-	check(body.has_sculpt_cell(Vector3i(12, 10, 4)),
-			"Hunchback should have a proud right-shoulder housing")
-	check(not body.has_sculpt_cell(Vector3i(-12, 10, 4)),
-			"left side must not have a mirror-image cannon hump")
-	check(not body.has_sculpt_cell(Vector3i(7, 6, -17)),
-			"AC/20 must have a true open bore at its muzzle")
-	check(body.has_sculpt_cell(Vector3i(10, 6, -17)),
-			"cannon shroud must be physically modeled around the bore")
-	var left: VoxelPart = m.parts["left_arm"]
-	var right: VoxelPart = m.parts["right_arm"]
-	check(left.cells.size() != right.cells.size(),
-			"asymmetric manipulator and coaxial weapon must differ")
+	check(body.has_sculpt_cell(Vector3i(10, 14, 0)),
+			"right AC20 tower must be taller than the left cockpit")
+	check(not body.has_sculpt_cell(Vector3i(-10, 14, 0)),
+			"cannon tower must not be duplicated on left")
+	check(not body.has_sculpt_cell(Vector3i(8, 9, -17)),
+			"AC20 physical bore points forward, not up")
+	check(body.has_sculpt_cell(Vector3i(10, 9, -17)),
+			"cannon muzzle should retain its structural outer wall")
 	m.free()
 
 
-func test_wolverine_has_separate_recessed_srm_and_autocannon() -> void:
+func test_wolverine_right_arm_is_armed_not_mirrored() -> void:
 	var m := _make("wolverine_wvr6r")
-	var body: VoxelPart = m.parts["torso"]
-	for x in [-13, -11, -9]:
-		for y in [2, 5]:
-			check(not body.has_sculpt_cell(Vector3i(x, y, -8)),
-					"SRM-6 launcher opening must be empty at the outer rim")
-			check_eq(body.sculpt_material(Vector3i(x, y, -5)), 3,
-					"SRM-6 must show a recessed inner chamber")
-	var gun: VoxelPart = m.parts["right_arm"]
-	check(not gun.has_sculpt_cell(Vector3i(0, -6, -17)),
-			"right-arm autocannon bore must be hollow")
-	check(gun.has_sculpt_cell(Vector3i(-4, -8, -17)),
-			"right-arm barrel needs thick armored wall")
+	var right: VoxelPart = m.parts["right_arm"]
+	var left: VoxelPart = m.parts["left_arm"]
+	check(right.cells.size() > left.cells.size(),
+			"large arm-mounted cannon must differ from small left manipulator")
+	check(not right.has_sculpt_cell(Vector3i(0, -8, -17)),
+			"arm weapon must have clear actual hollow bore")
+	check(left.has_sculpt_cell(Vector3i(0, -14, -1)),
+			"opposite hand must contain separately sculpted fingers")
 	m.free()
 
 
-func test_new_leg_anatomy_has_joint_rings_and_separated_toes() -> void:
-	var m := _make("atlas_as7d")
-	var thigh: VoxelPart = m.parts["left_leg"]
-	var shin: VoxelPart = m.parts["left_leg_shin"]
-	var foot: VoxelPart = m.parts["left_leg_foot"]
-	check(thigh.has_sculpt_cell(Vector3i(0, -4, -5)),
-			"thigh should carry a protruding front armor plate")
-	check(shin.has_sculpt_cell(Vector3i(0, -6, -5)),
-			"tapered shin must have raised front armor")
-	check(not foot.has_sculpt_cell(Vector3i(-2, -2, -14)),
-			"toe gap should be truly open")
-	check(foot.has_sculpt_cell(Vector3i(-4, -2, -12)),
-			"the lateral toe should have its own solid cap")
-	m.free()
-
-
-func test_palette_covers_all_resculpted_armor_and_structure_roles() -> void:
+func test_palette_and_damage_roles_are_invariant_under_resculpt() -> void:
 	check_eq(VoxelPart.PALETTE.size(), VoxelPart.MATERIAL_ROLES.size(),
-			"every new microvoxel material requires a visual damage role")
+			"new reference armor materials must retain cosmetic armor roles")
 	check_eq(VoxelPart.MATERIAL_ROLES[6], "armor",
-			"skull plating is cosmetic armor")
+			"Atlas bone-colored helmet is decorative armor")
 	check_eq(VoxelPart.MATERIAL_ROLES[8], "structure",
-			"gunmetal frames expose cosmetic structure when damaged")
+			"gunmetal actuators expose internal structure")
 	check_eq(VoxelPart.MATERIAL_ROLES[7], "armor",
-			"red eye emissive elements do not replace hit locations")
+			"red eyes are just visual armor, never a gameplay hit location")
