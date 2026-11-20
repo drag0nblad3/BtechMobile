@@ -320,8 +320,8 @@ func rebuild() -> void:
 		add_child(_mesh_instance)
 		var material := StandardMaterial3D.new()
 		material.vertex_color_use_as_albedo = true
-		material.roughness = 0.68
-		material.metallic = 0.20
+		material.roughness = 0.82
+		material.metallic = 0.26
 		material.cull_mode = BaseMaterial3D.CULL_DISABLED
 		_mesh_instance.material_override = material
 	var vertices := PackedVector3Array()
