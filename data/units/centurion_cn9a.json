@@ -1,0 +1,14 @@
+{
+  "id": "centurion_cn9a", "name": "Centurion", "model": "CN9-A", "tonnage": 50,
+  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 10, "sprite": "centurion",
+  "role": "Medium brawler. AC/10 and LRMs at range, with a rear laser against flankers.",
+  "armor": {"HD": 9, "CT": 21, "LT": 16, "RT": 16, "LA": 14, "RA": 14, "LL": 16, "RL": 16},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "missing_actuators": {"RA": ["lower_arm", "hand"]},
+  "equipment": {
+    "RA": ["ac10"],
+    "RT": ["ammo:ac10", "ammo:ac10"],
+    "LT": ["lrm10", "ammo:lrm10"],
+    "CT": ["medium_laser", "medium_laser@rear"]
+  }
+}

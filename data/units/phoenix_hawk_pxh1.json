@@ -1,0 +1,16 @@
+{
+  "id": "phoenix_hawk_pxh1", "name": "Phoenix Hawk", "model": "PXH-1", "tonnage": 45,
+  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 12, "sprite": "phoenix_hawk",
+  "role": "Light-medium hunter. Fast jumper with a large laser; can hit the rear of slow 'Mechs.",
+  "armor": {"HD": 9, "CT": 20, "LT": 16, "RT": 16, "LA": 12, "RA": 12, "LL": 18, "RL": 18},
+  "rear_armor": {"CT": 7, "LT": 4, "RT": 4},
+  "equipment": {
+    "RA": ["large_laser", "medium_laser", "machine_gun"],
+    "LA": ["medium_laser", "machine_gun"],
+    "CT": ["ammo:machine_gun"],
+    "LT": ["heat_sink", "jump_jet"],
+    "RT": ["heat_sink", "jump_jet"],
+    "LL": ["jump_jet", "jump_jet"],
+    "RL": ["jump_jet", "jump_jet"]
+  }
+}

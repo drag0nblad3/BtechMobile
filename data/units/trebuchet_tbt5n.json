@@ -1,0 +1,13 @@
+{
+  "id": "trebuchet_tbt5n", "name": "Trebuchet", "model": "TBT-5N", "tonnage": 50,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 10, "sprite": "trebuchet",
+  "role": "Fire support. Two LRM 15s rain damage from 7+ hexes; lasers only for close defense.",
+  "armor": {"HD": 9, "CT": 21, "LT": 16, "RT": 16, "LA": 15, "RA": 15, "LL": 15, "RL": 15},
+  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
+  "equipment": {
+    "LT": ["lrm15", "ammo:lrm15"],
+    "RT": ["lrm15", "ammo:lrm15"],
+    "LA": ["medium_laser", "medium_laser"],
+    "RA": ["medium_laser"]
+  }
+}

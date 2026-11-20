@@ -111,6 +111,8 @@ against the book first:
    pilot-skill multiplier). Our numbers land within about 10% of published values.
 8. Buildings: collapse when a heavier 'Mech enters, wall absorption (CF/10), entry PSR
    modifiers, collapse damage as a fall.
+9. 'Mech designs (21 in `data/units/`) are written from general knowledge: check armor
+   split, slot placement and ammo locations against the technical readouts.
 
 ## 5. Open questions
 
