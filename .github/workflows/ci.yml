@@ -24,6 +24,32 @@ jobs:
           godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
+      - name: Launcher navigation smoke
+        run: |
+          set -o pipefail
+          godot --headless -s tools/launcher_smoke.gd 2>&1 | tee launcher.log
+          grep -q "launcher navigation ok" launcher.log
+          ! grep -E "SCRIPT ERROR|Parse Error" launcher.log
+      - name: Voxel mech lab smoke
+        run: |
+          set -o pipefail
+          godot --headless --quit-after 45 --scene res://scenes/voxel_mech_lab.tscn 2>&1 | tee voxel.log
+          ! grep -E "SCRIPT ERROR|Parse Error" voxel.log
+      - name: Render voxel gait comparison
+        run: |
+          mkdir -p /tmp/voxel-frames
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture_voxel_lab.gd -- /tmp/voxel-frames
+          test -s /tmp/voxel-frames/gait_a.png
+          test -s /tmp/voxel-frames/gait_b.png
+          test -s /tmp/voxel-frames/armor_before.png
+          test -s /tmp/voxel-frames/armor_after.png
+          ! cmp -s /tmp/voxel-frames/gait_a.png /tmp/voxel-frames/gait_b.png
+          ! cmp -s /tmp/voxel-frames/armor_before.png /tmp/voxel-frames/armor_after.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: voxel-mech-gait-frames
+          path: /tmp/voxel-frames/*.png
       - name: Smoke run main scene
         run: |
           godot --headless --quit-after 30 2>&1 | tee run.log
