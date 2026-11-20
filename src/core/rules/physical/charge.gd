@@ -40,6 +40,8 @@ static func option(state: GameState, a: Unit, t: Unit, kind: String) -> Dictiona
 		th.impossible = "Death from above needs a jump"
 	elif kind == "dfa" and tile != null and tile.is_water() and tile.depth >= 2:
 		th.impossible = "Can't jump on anyone from deep water"
+	elif WaterCombat.physical_blocked(state.map, a, t, kind) != "":
+		th.impossible = WaterCombat.physical_blocked(state.map, a, t, kind)
 	elif PhysicalMods.charging(state, t):
 		th.impossible = "It is still moving: it is charging someone itself"
 	elif PhysicalMods.shoved_already(state, t):

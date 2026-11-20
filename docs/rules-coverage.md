@@ -42,7 +42,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ LOS levels (p. 57): ground (water bottom) + 2 standing / 1 prone. A hex intervenes if its top (hill; woods +2; building roof) is at least both LOS levels, or at least the attacker's and next to it, or at least the target's and next to it. Intervening hills and buildings block; woods add 1/2 points, 3 block.
 - ✅ Divided LOS (along a hexside): the target's side chooses; the game takes the side worse for the attacker.
 - ✅ Partial cover from terrain (p. 66): a standing target next to a hex one level above its ground, on the line, gets +1 and leg hits strike the cover (a building takes the damage), unless the attacker's LOS level is higher; indirect fire ignores it; civilian buildings and woods give none.
-- 🟡 Units in depth 2+ water (or prone in depth 1) can't be seen — `TODO(rules)`: underwater combat.
+- 🟡 Water combat (`WaterCombat`, pp. 62, 66-67, 127): underwater = depth 2+ or prone in depth 1, wading = standing in depth 1. No shots across the water line; only energy weapons fire from a submerged location (a wading 'Mech's leg weapons only at targets in water, its other weapons not at underwater targets); shots from underwater, or from leg weapons at a wading target, hit legs on the Kick table with no partial cover; underwater shots need a line of water hexes; energy weapons fire one range bracket longer, long range out. Water never blocks line of sight — `TODO(rules)`: hull breaches, torpedoes.
 
 ## Weapon attacks
 - ✅ To-hit: gunnery + attacker movement (walk +1, run +2) + target movement
@@ -111,7 +111,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Displacement waits until every physical attack of the phase is rolled (p. 76).
 - ✅ Displacement (pp. 113-114): domino effect (roll to step forward/back, else pushed on and falls; crushed with nowhere to go), off the map destroys, 2+ levels down is a fall, 3+ up can't happen.
 - ✅ A declared DFA can't be called off (p. 80): a failed piloting roll in the Weapon Attack Phase doesn't drop the attacker, the DFA misses instead; it also misses if the attacker is prone or unconscious, or needs 13+.
-- 🟡 `TODO(rules)`: physical attacks underwater (half damage, submerged targets) aren't modeled; an attacker felled by an automatic fall is treated like a failed roll.
+- ✅ Physical attacks and water (p. 77): an underwater target can only be reached from underwater, or kicked from depth 1; damage to a submerged location is halved (rounded down); no DFA from depth 2+.
+- 🟡 `TODO(rules)`: an attacker felled by an automatic fall is treated like a failed roll.
 - ⬜ Clubs, physical weapons.
 
 ## Buildings

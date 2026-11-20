@@ -9,7 +9,7 @@ extends RefCounted
 
 ## Adjacent enemy, attacker standing, ground within one level. Sets
 ## th.impossible and returns false otherwise.
-static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit) -> bool:
+static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit, kind := "") -> bool:
 	if t == null or t.destroyed or t.side == a.side:
 		th.impossible = "No enemy target"
 	elif Hex.distance(a.coord, t.coord) != 1:
@@ -18,6 +18,8 @@ static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit) -> bool:
 		th.impossible = "Can't make physical attacks while prone"
 	elif absi(level_diff(state, a, t)) > 1:
 		th.impossible = "Target is too far above or below you"
+	else:
+		th.impossible = WaterCombat.physical_blocked(state.map, a, t, kind)
 	return th.impossible == ""
 
 

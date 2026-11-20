@@ -27,7 +27,7 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 static func _push(state: GameState, a: Unit, t: Unit) -> Dictionary:
 	var th := ToHit.new()
 	var opt := {"kind": "push", "limb": -1, "to_hit": th, "damage": 0, "table": ""}
-	if not PhysicalMods.can_reach(state, a, t, th):
+	if not PhysicalMods.can_reach(state, a, t, th, "push"):
 		return opt
 	if FiringArc.wedge(a.coord, a.facing, t.coord) != 0:
 		th.impossible = "Pushes need the target straight ahead of your feet"
@@ -57,7 +57,7 @@ static func _punch(state: GameState, a: Unit, t: Unit, arm: int) -> Dictionary:
 	var th := ToHit.new()
 	var dmg := ceili(a.def.tonnage / 10.0)
 	var opt := {"kind": "punch", "limb": arm, "to_hit": th, "damage": dmg, "table": "punch"}
-	if not PhysicalMods.can_reach(state, a, t, th):
+	if not PhysicalMods.can_reach(state, a, t, th, "punch"):
 		return opt
 	var dl := PhysicalMods.level_diff(state, a, t)
 	var arc_id := FiringArc.fire_arc(a.coord, a.torso_facing(), t.coord)
@@ -93,7 +93,7 @@ static func _kick(state: GameState, a: Unit, t: Unit, leg: int) -> Dictionary:
 	var th := ToHit.new()
 	var dmg := ceili(a.def.tonnage / 5.0)
 	var opt := {"kind": "kick", "limb": leg, "to_hit": th, "damage": dmg, "table": "kick"}
-	if not PhysicalMods.can_reach(state, a, t, th):
+	if not PhysicalMods.can_reach(state, a, t, th, "kick"):
 		return opt
 	var dl := PhysicalMods.level_diff(state, a, t)
 	if a.legs_destroyed() > 0 or a.hip_hits() > 0:

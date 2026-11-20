@@ -23,6 +23,11 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
+	var wc := WaterCombat.shot(state.map, attacker, w, target)
+	if wc["impossible"] != "":
+		th.impossible = wc["impossible"]
+		return th
+	th.legs_only = wc["legs_only"]
 	var los := LineOfSight.check(state.map, attacker, target)
 	var spotter: Unit = null
 	if los["blocked"]:
@@ -38,6 +43,12 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if br == WeaponDef.Bracket.OUT:
 		th.impossible = "Out of range (%d hexes, max %d)" % [dist, w.def.long_range]
 		return th
+	var wet := " under water" if wc["under_range"] else ""
+	if wc["under_range"]:
+		if br == WeaponDef.Bracket.LONG:
+			th.impossible = "Out of range under water (%d hexes; long range can't be used)" % dist
+			return th
+		br += 1
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	add_movement(th, attacker, target)
 	if spotter:
@@ -46,9 +57,11 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	IndirectFire.add_spotting_mod(th, state, attacker)
 	match br:
 		WeaponDef.Bracket.MEDIUM:
-			th.add("medium range", 2, "%d hexes is medium range for %s (%s)." % [dist, w.def.name, w.def.range_text()])
+			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [dist, w.def.name, w.def.range_text(),
+					"; water slows the beam by one range bracket" if wet != "" else ""])
 		WeaponDef.Bracket.LONG:
-			th.add("long range", 4, "%d hexes is long range for %s (%s). Closing in would remove this." % [dist, w.def.name, w.def.range_text()])
+			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [dist, w.def.name, w.def.range_text(),
+					"; water slows the beam by one range bracket" if wet != "" else ""])
 	if w.def.min_range > 0 and dist <= w.def.min_range:
 		th.add("minimum range", w.def.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [w.def.name, w.def.min_range])
@@ -87,7 +100,9 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 	var tw := LineOfSight.woods_value(tile) if tile else 0
 	if tw > 0:
 		th.add("target in woods", tw, "The target is hiding in %s." % tile.terrain.name.to_lower())
-	if in_partial_cover(state.map, target):
+	if th.legs_only:
+		th.add("legs only", 0, "Under water only the target's legs can be hit; roll on the Kick table, no partial cover.")
+	elif in_partial_cover(state.map, target):
 		th.add("partial cover", 1, "The target's legs are under water; leg hits are absorbed.")
 	elif BuildingRules.half_inside(state.map, target):
 		th.add("partial cover", 1, "The target stands half inside a one-level building; leg hits strike the walls.")
