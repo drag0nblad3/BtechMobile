@@ -70,3 +70,7 @@ Support intact, damaged and destroyed presentations of gameplay-relevant compone
 ### Acceptance state
 
 **Visual style: selected provisionally.** **Final camera elevation, production transparency, pixel alignment, color masks, modular components, damage and in-engine performance: still to be validated.**
+
+## Implementation specifications
+
+- [Mad Dog / Vulture — modular sprite and six-frame walk animation specification](mad-dog-modular-sprite-spec.md) — proposed layers, seven-view folders, weighted leg cycle, runtime torso/arm offsets, palette masks, component anchors, damage/variants and validation plan.
