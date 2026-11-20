@@ -80,6 +80,40 @@ To avoid generating unsolicited previews, GitHub CI renders screenshots only
 when started explicitly with **Actions → CI → Run workflow**. Normal push and
 pull-request checks still run unit tests and headless scene smokes.
 
+## Twenty-mech performance stress test (04)
+
+The isolated **Voxel Mech Lab** includes two new touch-sized buttons:
+**STRESS TEST ×20** and **STOP / CLEAR**. Pressing the first one completes
+the real per-chassis voxel-count catalog and automatically chooses whichever
+current model contains the **most occupied voxels** (presently the high-detail
+Jenner JR7-D, 52,830 voxels per intact mech).
+
+The test creates **20 full-resolution, fully damageable** voxel mechs in a
+5×4 grid, one mech per frame to spread out the loading cost. Mechs stand
+stationary so the test isolates simultaneous high-density geometry and
+repeated mesh rebuilds from impacts. Once all 20 have spawned, a random
+target and random exterior voxel are selected approximately every 0.3 seconds;
+the existing irregular damage algorithm applies each hit. This uses real
+high-resolution meshes, **not** simplified proxies.
+
+The on-screen performance readout includes current FPS, rolling-run average
+FPS, minimum sampled FPS, approximate milliseconds per frame, loaded model
+count, total occupied voxels, attempted shots, successful hits, destroyed
+voxels, and total remaining voxels. Average/minimum samples start **after**
+all 20 have loaded so model-creation stalls do not pollute steady-state
+damage statistics; watch current FPS during loading to see those stalls.
+
+**STOP / CLEAR** immediately deletes the entire stress-test collection,
+returns to the original single model and restores the previous camera.
+The normal lab controls are disabled while the twenty-mech test runs.
+Reset and the main-menu navigation also allow recovery.
+
+This test intentionally pushes Android hardware hard: twenty Jenners have
+**1,056,600 intact occupied microvoxels** before damage. Expect memory and
+frame-time spikes; the FPS results must be observed on the actual phone.
+The GitHub headless CI smoke validates real twenty-mech construction, damage
+and UI behavior but cannot establish mobile GPU frame rate.
+
 ## Mechanics demonstrated
 
 - Two 0.70m bone segments per leg, knee/ankle pivots and analytic IK.
