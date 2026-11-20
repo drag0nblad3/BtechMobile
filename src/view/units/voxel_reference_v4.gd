@@ -335,3 +335,334 @@ static func _prototype(p: VoxelPart) -> void:
 	for yy in [2, 4, 6, 8]:
 		p.carve_box(Vector3i(-7, yy, 8),
 				Vector3i(-4, yy, 8))
+
+
+## Limb constructors are also independent: no shared "round upper arm /
+## tree-trunk shin" generator. Each design gives individual segments their
+## own taper, armor break points, visible axles and front/rear silhouette.
+static func arm(p: VoxelPart, shape: String, side: int) -> void:
+	p.cells.clear()
+	match shape:
+		"atlas":
+			_atlas_arm(p, side)
+		"hunchback":
+			_hunchback_arm(p, side)
+		"wolverine":
+			_wolverine_arm(p, side)
+		"jenner":
+			_jenner_lasers(p, side)
+		"catapult":
+			_catapult_pod(p, side)
+		_:
+			_prototype_arm(p, side)
+
+
+static func _atlas_arm(p: VoxelPart, side: int) -> void:
+	# A long armored bicep, visibly slimmer exposed elbow, and large
+	# segmented hands. In reference art the weapon is TORSO mounted.
+	for y in range(-12, 3):
+		var rx := 4.1 if y > -2 else (
+				2.8 if y > -8 else 3.2)
+		var rz := 3.3 if y > -2 else (2.0 if y > -8 else 2.5)
+		section(p, y, 0, 0.0, rx, rz, 4 if y > -3 else 0)
+	hub(p, -6, 0, -4, 4, 2.1, 0.8)
+	# Separate forearm shields wrap the exposed elbow, not solid columns.
+	for side_x in [-1, 1]:
+		var xx := -4 if side_x < 0 else 3
+		rod(p, Vector3i(xx, -8, 2), Vector3i(xx, -3, 2), 0.9, 8)
+	# Five individually articulated finger blocks; no square hammerheads.
+	for x in [-3, -1, 1, 3]:
+		p.fill_box(Vector3i(x, -14, -2), Vector3i(x, -12, 0), 4)
+		p.fill_box(Vector3i(x, -15, -1), Vector3i(x, -15, -1), 8)
+	# One torso-matching armor plate over the knuckles.
+	p.fill_box(Vector3i(-3, -11, -4), Vector3i(3, -9, -3), 4)
+	if side == 1:
+		# Small hand-mounted laser, not a second AC20 cannon.
+		barrel(p, 1, -9, -8, -3, 1.5, 0.6, 8)
+	else:
+		rod(p, Vector3i(-3, -12, 1),
+				Vector3i(-5, -11, -2), 1.0, 8)
+
+
+static func _hunchback_arm(p: VoxelPart, side: int) -> void:
+	# Compact brawler manipulator, intentionally dwarfed by AC20 tower.
+	for y in range(-10, 3):
+		var rx := 2.8 if y > -2 else (1.9 if y > -6 else 2.7)
+		var z := 0.7 if y < -6 else 0.0
+		section(p, y, 0, z, rx, 2.5, 0, 1, 0.35)
+	hub(p, -5, 1, -3, 3, 1.8, 0.6)
+	if side == 1:
+		# Coaxial medium laser is small compared to shoulder autocannon.
+		barrel(p, 0, -7, -9, -4, 1.4, 0.5, 8)
+	else:
+		for x in [-2, 0, 2]:
+			p.fill_box(Vector3i(x, -12, -2),
+					Vector3i(x, -10, 0), 8)
+		rod(p, Vector3i(3, -9, 1), Vector3i(4, -11, -2), 0.8, 8)
+
+
+static func _wolverine_arm(p: VoxelPart, side: int) -> void:
+	# Slimmer humanoid upper arm and pronounced separate elbow hinge.
+	for y in range(-13, 3):
+		var rx := 3.0 if y > -2 else (2.0 if y > -7 else 2.5)
+		var rz := 2.6 if y > -2 else 2.0
+		section(p, y, 0, 0, rx, rz, 0 if y < -7 else 4)
+	hub(p, -7, 0, -3, 3, 1.9, 0.7)
+	rod(p, Vector3i(-3, -9, 2), Vector3i(-3, -3, 2), 0.8, 8)
+	if side == 1:
+		# One projecting right-arm AC/5 bore. Slim barrel, long sleeve.
+		barrel(p, 0, -8, -17, -5, 2.1, 0.9, 8)
+		barrel(p, 0, -8, -11, -7, 2.7, 1.0, 4)
+	else:
+		for x in [-2, 0, 2]:
+			p.fill_box(Vector3i(x, -15, -2),
+					Vector3i(x, -13, -1), 4)
+		rod(p, Vector3i(3, -11, -1), Vector3i(4, -14, -3), 0.8)
+
+
+static func _jenner_lasers(p: VoxelPart, side: int) -> void:
+	# Two laser pods mounted directly on opposite sides of the fuselage,
+	# NOT humanoid arms. Each forward tube is a separate bored housing.
+	for y in range(-4, 5):
+		var width := 3.4 if y in [-3, -2, 1, 2] else 2.5
+		section(p, y, 0, 0, width, 4.4, 0, 1, 0.40)
+	for y in [-2, 2]:
+		# Each is forward pointing and physically hollow; do NOT place a
+		# cyan painted cap over an empty barrel.
+		barrel(p, 0, y, -12, -3, 2.0, 0.7, 8)
+		p.fill_box(Vector3i(-1, y, -2),
+				Vector3i(0, y, -2), 2)
+	# Open interbarrel air gap, distinct upper and lower laser assemblies.
+	p.carve_box(Vector3i(-2, 0, -12),
+			Vector3i(2, 0, -6))
+	# Swept heat shields behind each laser tube.
+	for z in range(1, 8):
+		var w := 3 if z < 4 else 2
+		p.fill_box(Vector3i(-w, 3, z),
+				Vector3i(w, 3, z), 4)
+	for x in [-4, 4]:
+		rod(p, Vector3i(x, -2, 2), Vector3i(x, 2, 6), 0.8, 8)
+
+
+static func _catapult_pod(p: VoxelPart, side: int) -> void:
+	# Distinct TALL LRM-15 housings at either side of a much smaller beak.
+	# Rather than a fat cuboid hanging like an arm, the weapon rises above
+	# the fuselage and is narrow in depth. Its X-braced hatch is outlined.
+	for y in range(-5, 15):
+		var half_x := 4.6 if y < 10 else (4.2 if y < 13 else 3.6)
+		var half_z := 5.0 if y < 9 else 4.5
+		section(p, y, 0.0, -1.0, half_x, half_z, 4, 1, 0.42)
+	# Collar to mechanical shoulder axis.
+	hub(p, -3, 0, -5, 5, 2.9, 0.9)
+	p.fill_box(Vector3i(-4, 11, -6),
+			Vector3i(4, 12, -5), 8)
+	# Fifteen actual launcher openings, five columns and three rows, on
+	# the front face, with rear recesses.
+	for col in 5:
+		var xx := -4 + col * 2
+		for row in 3:
+			var yy := 0 + row * 3
+			p.fill_box(Vector3i(xx, yy, -7),
+					Vector3i(xx, yy, -6), 8)
+			p.carve_box(Vector3i(xx, yy, -9),
+					Vector3i(xx, yy, -5))
+			p.fill_box(Vector3i(xx, yy, -4),
+					Vector3i(xx, yy, -4), 3)
+	# Top access door with raised diagonal hinge; open right and left
+	# flank heat sinks. Each pod has an independent side radiator.
+	for x in [-3, 3]:
+		rod(p, Vector3i(x, 13, -3),
+				Vector3i(-x, 13, 2), 0.7, 8)
+	var outside := -5 if side == 0 else 5
+	for y in [-1, 2, 5]:
+		p.carve_box(Vector3i(outside, y, 1),
+				Vector3i(outside, y, 4))
+
+
+static func _prototype_arm(p: VoxelPart, side: int) -> void:
+	# Engineering test rig: left is a sampling cannon, right a claw.
+	for y in range(-11, 3):
+		var w := 2.6 if y > -3 else 1.8
+		section(p, y, 0, 0, w, 2.4, 4, 1, 0.45)
+	hub(p, -6, 0, -3, 3, 2.0, 0.7)
+	if side == 0:
+		barrel(p, 0, -8, -15, -6, 2.5, 1.0, 8)
+	else:
+		rod(p, Vector3i(-2, -10, -2),
+				Vector3i(-4, -15, -6), 1.0, 8)
+		rod(p, Vector3i(2, -10, -2),
+				Vector3i(4, -15, -6), 1.0, 8)
+		rod(p, Vector3i(0, -10, -3),
+				Vector3i(0, -15, -7), 0.8, 8)
+
+
+## Limb segment names and sockets are unchanged to preserve damage regions,
+## stress test hit selection, and the tested two/three-link gait hierarchy.
+static func leg(p: VoxelPart, shape: String, segment: String) -> void:
+	p.cells.clear()
+	if shape == "jenner":
+		_jenner_leg(p, segment)
+	elif shape == "catapult":
+		_catapult_leg(p, segment)
+	else:
+		_humanoid_leg(p, shape, segment)
+
+
+static func _humanoid_leg(p: VoxelPart, shape: String, segment: String) -> void:
+	# TRIM AND LONG. Each actual calf is 4–6 coarse cells wide and
+	# approximately 10 cells long, NOT the previous 12-cell round column.
+	var w := 3.8 if shape == "atlas" else (
+			3.3 if shape == "hunchback" else (
+			2.6 if shape == "wolverine" else 2.3))
+	match segment:
+		"thigh":
+			for y in range(-10, 2):
+				var t := float(-y) / 10.0
+				var r := lerpf(w + 0.25, w * 0.70, t)
+				var zc := -0.45 * t
+				section(p, y, 0, zc, r, 2.7, 0, 1, 0.36)
+			# Knee shield is distinctly independent and separated from
+			# the hip cap by a narrow narrowing mid-thigh.
+			hub(p, -9, 0, -ceili(w), ceili(w), 2.0, 0.7)
+			for y in [-9, -8]:
+				p.fill_box(Vector3i(-2, y, -4),
+						Vector3i(2, y, -3), 4)
+			# Hollow side slots reveal load-bearing piston linkages.
+			for x in [-ceili(w), ceili(w)]:
+				p.carve_box(Vector3i(x, -7, 0),
+						Vector3i(x, -4, 1))
+			rod(p, Vector3i(0, 0, 3), Vector3i(0, -9, 3), 0.9)
+		"shin":
+			for y in range(-10, 2):
+				var t := float(-y) / 10.0
+				var r := lerpf(w * 0.66, w * 0.74, t)
+				section(p, y, 0, 0.4, r, 2.2, 0, 1, 0.39)
+			hub(p, 0, 0, -3, 3, 2.1, 0.7)
+			# Raised tibia blade and *two* externally exposed pistons.
+			for y in range(-8, -1):
+				var r := 1 if y < -6 else 2
+				p.fill_box(Vector3i(-r, y, -3),
+						Vector3i(r, y, -3), 4)
+			for x in [-3, 3]:
+				rod(p, Vector3i(x, -2, 2),
+						Vector3i(x, -9, 2), 0.6, 8)
+			# True lateral cutout, not painted black patches.
+			p.carve_box(Vector3i(-3, -6, 0), Vector3i(-3, -4, 0))
+			p.carve_box(Vector3i(3, -6, 0), Vector3i(3, -4, 0))
+			p.fill_box(Vector3i(-1, -10, -1), Vector3i(1, -9, 1), 8)
+		"foot":
+			# Slim long armored boots, with individual toe fingers and a
+			# clearly distinct ankle/heel; not huge toboggan snowshoes.
+			for y in range(-2, 2):
+				section(p, y, 0, -2, w + 0.6, 4.8, 4, 1, 0.40)
+			for x in [-3, 0, 3]:
+				p.fill_box(Vector3i(x, -2, -10),
+						Vector3i(x + 1, -1, -5), 4)
+				p.fill_box(Vector3i(x, -2, -11),
+						Vector3i(x, -2, -11), 8)
+			for x in [-2, 2]:
+				p.carve_box(Vector3i(x, -2, -11),
+						Vector3i(x, -1, -7))
+			rod(p, Vector3i(0, 1, 2), Vector3i(0, 0, 5), 1.2)
+
+
+static func _jenner_leg(p: VoxelPart, segment: String) -> void:
+	# Chicken walker anatomy: visible THIN actuator link between massive
+	# hip rotor and backward hock, not continuous plated tree-trunk.
+	match segment:
+		"thigh":
+			hub(p, -1, 0, -5, 5, 3.0, 1.2)
+			rod(p, Vector3i(0, 0, 0),
+					Vector3i(0, -11, -1), 1.8, 8)
+			for y in range(-10, -2):
+				var r := 2.8 if y > -6 else 2.3
+				section(p, y, 0, -2.2, r, 1.6, 4, 1, 0.45)
+			hub(p, -10, 0, -4, 4, 2.4, 1.0)
+			rod(p, Vector3i(3, -3, 2),
+					Vector3i(3, -9, 2), 0.7)
+		"shin":
+			hub(p, 0, 0, -4, 4, 2.5, 1.0)
+			rod(p, Vector3i(0, 0, 0),
+					Vector3i(0, -11, 1), 1.6, 8)
+			for y in range(-10, -2):
+				section(p, y, 0, -1.2, 2.1, 1.9, 0, 1, 0.45)
+			rod(p, Vector3i(-3, -2, 2),
+					Vector3i(-3, -10, 2), 0.65)
+		"metatarsal":
+			hub(p, 0, 0, -4, 4, 2.3, 0.9)
+			rod(p, Vector3i(0, 0, 0),
+					Vector3i(0, -5, 0), 1.4, 8)
+			for x in [-2, 2]:
+				rod(p, Vector3i(x, -1, 1),
+						Vector3i(x, -5, -1), 0.7, 4)
+		"foot":
+			p.fill_box(Vector3i(-3, -1, -4),
+					Vector3i(3, 0, 3), 4)
+			for x in [-3, 0, 3]:
+				rod(p, Vector3i(x, -1, -4),
+						Vector3i(x, -2, -13), 1.0, 4)
+				p.fill_box(Vector3i(x, -2, -14),
+						Vector3i(x, -2, -14), 8)
+			for x in [-2, 2]:
+				p.carve_box(Vector3i(x, -2, -13),
+						Vector3i(x, -1, -6))
+			rod(p, Vector3i(0, 0, 3), Vector3i(0, -1, 6), 1.0, 8)
+
+
+static func _catapult_leg(p: VoxelPart, segment: String) -> void:
+	# Angular avian legs with exposed connectors; almost no enclosing
+	# rectangular casing. Catapult is 65 tons but has strikingly light
+	# below-knee silhouette in both classic and current references.
+	match segment:
+		"thigh":
+			hub(p, -1, 0, -5, 5, 3.0, 1.0)
+			rod(p, Vector3i(0, 0, 0),
+					Vector3i(0, -10, -2), 1.7, 8)
+			for y in range(-8, -2):
+				section(p, y, 0, -2, 2.8, 1.8, 4, 1, 0.48)
+			hub(p, -10, -1, -4, 4, 2.1, 0.9)
+		"shin":
+			hub(p, 0, 0, -4, 4, 2.1, 0.8)
+			rod(p, Vector3i(0, 0, 0),
+					Vector3i(0, -10, 1), 1.5, 8)
+			for y in range(-8, -2):
+				section(p, y, 0, 0, 2.0, 1.6, 4, 1, 0.48)
+			rod(p, Vector3i(3, -1, 1),
+					Vector3i(3, -9, 3), 0.7)
+		"metatarsal":
+			hub(p, 0, 0, -3, 3, 2.1, 0.7)
+			for x in [-2, 2]:
+				rod(p, Vector3i(x, 0, 0),
+						Vector3i(x, -5, -2), 0.75, 8)
+			rod(p, Vector3i(0, 0, -1),
+					Vector3i(0, -5, -3), 0.9, 4)
+		"foot":
+			# Three narrow, articulated talons: distinct real open gaps.
+			faceted_box(p, Vector3i(-4, -1, -4),
+					Vector3i(4, 0, 2), 4, 2)
+			for x in [-4, 0, 4]:
+				rod(p, Vector3i(x, -1, -3),
+						Vector3i(x, -2, -14), 0.9, 4)
+				p.fill_box(Vector3i(x, -2, -15),
+						Vector3i(x, -2, -15), 8)
+			for x in [-2, 2]:
+				p.carve_box(Vector3i(x, -2, -14),
+						Vector3i(x, -1, -7))
+			rod(p, Vector3i(0, 0, 2),
+					Vector3i(0, -1, 6), 0.8, 8)
+
+
+## A one-microcell panel seam on the visible knee guards and armor cutlines,
+## applied after actual cell refinement. This must NOT plug any open weapon.
+static func fine(p: VoxelPart) -> void:
+	var scale := p.detail_scale
+	if scale < 2:
+		return
+	if p.name.ends_with("_shin"):
+		for y in [-5, -8]:
+			p.paint_box(Vector3i(-2 * scale, y * scale, -3 * scale),
+					Vector3i(2 * scale, y * scale, -3 * scale), 8)
+	if p.name == "Torso":
+		for y in [-7, -3]:
+			p.paint_box(Vector3i(-3 * scale, y * scale, -4 * scale),
+					Vector3i(3 * scale, y * scale, -4 * scale), 8)
