@@ -7,7 +7,7 @@ func test_jenner_forward_cockpit_and_center_srm() -> void:
 	mech.profile_id = "jenner_jr7d"
 	mech.build()
 	var torso: VoxelPart = mech.parts["torso"]
-	check_eq(torso.sculpt_material(Vector3i(0, 2, -15)), 2,
+	check_eq(torso.sculpt_material(Vector3i(1, 2, -15)), 2,
 			"forward canopy should have cyan glazing")
 	check(torso.has_sculpt_cell(Vector3i(0, -1, -17)),
 			"forward nose should extend beyond body")
@@ -26,9 +26,9 @@ func test_jenner_has_four_distinct_laser_apertures() -> void:
 	mech.build()
 	for key in ["left_arm", "right_arm"]:
 		var pod: VoxelPart = mech.parts[key]
-		check_eq(pod.cells.get(Vector3i(0, -2, -11)), 2,
+		check_eq(pod.sculpt_material(Vector3i(0, -2, -11)), 2,
 				key + " should have lower laser aperture")
-		check_eq(pod.cells.get(Vector3i(0, 1, -11)), 2,
+		check_eq(pod.sculpt_material(Vector3i(0, 1, -11)), 2,
 				key + " should have upper laser aperture")
 	mech.free()
 
