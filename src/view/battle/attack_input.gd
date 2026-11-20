@@ -96,6 +96,12 @@ func on_confirm() -> void:
 		controller.declare_physical(u, list)
 
 
+func _pick_up_club() -> void:
+	var u := attacker
+	clear()
+	controller.pick_up_club(u)
+
+
 func on_twist(dir: int) -> void:
 	if attacker and is_weapon_phase():
 		controller.set_torso_twist(attacker, clampi(attacker.torso_twist + dir, -1, 1))
@@ -204,6 +210,14 @@ func _refresh() -> void:
 		return
 	if target == null:
 		hud.set_info("%s: tap an enemy (or a building) to aim%s" % [Names.unit(attacker), twist])
+		var club := MeleeWeapons.club_here(controller.state, attacker)
+		if weapon and club != "" and not hud.sheet_open:
+			var b := Button.new()
+			b.text = "Pick up a %s as a club (instead of firing)" % club
+			b.custom_minimum_size = Vector2(0, 58)
+			b.add_theme_font_size_override("font_size", 20)
+			b.pressed.connect(_pick_up_club)
+			hud.show_side(b)
 		hud.set_tip(Advisor.targets(controller.state, attacker, level) if weapon else "Tap an adjacent enemy to punch or kick it.")
 		if not hud.sheet_open:
 			hud.show_side(null)

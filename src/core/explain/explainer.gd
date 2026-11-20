@@ -78,6 +78,12 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return "%s is destroyed (%s)!" % [_u(s, d), d["reason"]]
 		GameEvent.AMMO_EXPLOSION:
 			return DamageText.ammo(s, d, level)
+		GameEvent.CLUB:
+			var t := "%s %s and holds it as a club." % [_u(s, d), "uproots a tree" if d["club"] == "tree" else "pulls a girder from the rubble"]
+			if level == ExplainLevel.FULL:
+				t += " Next physical phase it can swing it for 1 damage per 5 tons, and the target must make a piloting roll." + (
+						" A tree breaks after one hit." if d["club"] == "tree" else "")
+			return t
 		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN:
 			return HeatText.describe(e, s, level)
 		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
@@ -164,7 +170,8 @@ static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) ->
 
 
 const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
-		"charge": "charges", "dfa": "jumps on"}
+		"charge": "charges", "dfa": "jumps on", "hatchet": "hacks at",
+		"sword": "slashes", "club": "clubs"}
 
 
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:

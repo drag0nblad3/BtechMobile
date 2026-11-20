@@ -37,6 +37,10 @@ static func build(def: UnitDef) -> Array:
 			for s in (3 if def.double_heat_sinks else 1):
 				_place(out[loc], CritSlot.new(CritSlot.Kind.HEAT_SINK, n, sink), def)
 			sink += 1
+	for i in def.melee.size():
+		var m: Dictionary = def.melee[i]
+		for s in def.melee_slots(m["kind"]):
+			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.MELEE, String(m["kind"]).capitalize(), i), def)
 	for loc in def.case_locs:
 		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE"), def)
 	return out

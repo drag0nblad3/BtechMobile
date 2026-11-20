@@ -119,7 +119,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ A declared DFA can't be called off (p. 80): a failed piloting roll in the Weapon Attack Phase doesn't drop the attacker, the DFA misses instead; it also misses if the attacker is prone or unconscious, or needs 13+.
 - ✅ Physical attacks and water (p. 77): an underwater target can only be reached from underwater, or kicked from depth 1; damage to a submerged location is halved (rounded down); no DFA from depth 2+.
 - 🟡 `TODO(rules)`: an attacker felled by an automatic fall is treated like a failed roll.
-- ⬜ Clubs, physical weapons.
+- ✅ Hatchets and swords (`MeleeWeapons`, pp. 81-82, 194-196): hatchet piloting -1 for ceil(tons/5), sword piloting -2 for ceil(tons/10)+1, full Hit Location Table; arm not fired, target in front or on that arm's side; destroyed hand or shoulder blocks it, missing/broken lower arm or broken upper arm +2 each; a crit on its slots destroys it; one swing replaces all other physical attacks — `TODO(rules)`: the optional Punch/Kick table at +4, swings at other levels or prone targets; slots/weight (tons/15, sword tons/20) are construction knowledge.
+- ✅ Clubs (p. 79): pick up a tree in woods or a girder in rubble instead of firing; piloting -1, ceil(tons/5), full table, target in front, no arm weapon fired, both hands and shoulders working, +2 per broken arm actuator; the target makes a piloting roll; a tree breaks after one hit — `TODO(rules)`: limb clubs, dropping a club when an actuator breaks.
 
 ## Buildings
 - ✅ Classes (p. 131): civilian, light, medium, heavy, hardened with Threshold 8/10/14/16 and Destroy Check 7+/9+/10+/11+; height in levels; every building hex +1 MP (errata).
