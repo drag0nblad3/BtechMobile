@@ -77,6 +77,10 @@ func _subdivide() -> void:
 	var refined: Dictionary = {}
 	for cell: Vector3i in coarse:
 		var material_id: int = coarse[cell]
+		var neighbors := 0
+		for direction: Vector3i in DIRECTIONS:
+			if coarse.has(cell + direction):
+				neighbors += 1
 		var xp := not coarse.has(cell + Vector3i.RIGHT)
 		var xm := not coarse.has(cell + Vector3i.LEFT)
 		var yp := not coarse.has(cell + Vector3i.UP)
@@ -91,7 +95,8 @@ func _subdivide() -> void:
 							+ int(zp if z == 1 else zm)
 					# Remove only exterior armor corners, never internal frame
 					# voxels or glowing windows. This produces finer edges.
-					if material_id != 1 and material_id != 2 and exposed == 3:
+					if (material_id == 0 or material_id == 4) and exposed == 3 \
+							and neighbors >= 2:
 						continue
 					refined[cell * 2 + Vector3i(x, y, z)] = material_id
 	cells = refined
@@ -111,6 +116,27 @@ func _update_bounds() -> void:
 				maxi(_max_cell.y, cell.y), maxi(_max_cell.z, cell.z))
 	_bounds = AABB(Vector3(_min_cell) * voxel_size,
 			Vector3(_max_cell - _min_cell + Vector3i.ONE) * voxel_size)
+
+
+## Inspect artist-authored coarse coordinates even when high-detail cells are
+## subdivided. Used by chassis tests and editor tooling.
+func has_sculpt_cell(coarse: Vector3i) -> bool:
+	for x in detail_scale:
+		for y in detail_scale:
+			for z in detail_scale:
+				if cells.has(coarse * detail_scale + Vector3i(x, y, z)):
+					return true
+	return false
+
+
+func sculpt_material(coarse: Vector3i) -> int:
+	for x in detail_scale:
+		for y in detail_scale:
+			for z in detail_scale:
+				var cell := coarse * detail_scale + Vector3i(x, y, z)
+				if cells.has(cell):
+					return int(cells[cell])
+	return -1
 
 
 func joint_fraction() -> float:
