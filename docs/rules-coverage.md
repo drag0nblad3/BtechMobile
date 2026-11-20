@@ -3,7 +3,8 @@
 Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per rule.
 
 ## Turn sequence
-- 🟡 Initiative: 2d6 per side, ties reroll, loser moves first — no initiative modifiers.
+- ✅ Initiative (p. 39): 2d6 per side, ties reroll with the same modifiers, loser moves first; totals may pass 2 or 12.
+- ✅ Initiative Die (optional, `InitiativeDie`, toggled on the start screen): the loser gets +1 per loss in a row (max +6) until it wins.
 - ✅ Unit alternation with unequal numbers (`UnequalNumbers`, p. 41): the bigger side spreads its 'Mechs over the smaller side's turns, extra ones first; recounted each phase.
 - ✅ Phases: Initiative → Movement → Weapon Attack → Physical Attack → Heat → End.
 - ✅ Attacks declared unit by unit in initiative order, resolved together at phase end

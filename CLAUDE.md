@@ -32,7 +32,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs: on entering a hex or after the move), `Skid` (unused optional rule), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push, levels table), `PhysicalMods` (shared checks + modifiers), `Charge` (charge, DFA options), `ChargeResolve` (rolls, damage, displacement), `Displacement` (domino effect, ledges, off-map), `PhysicalPhase` |
 | `src/core/rules/buildings/` | `BuildingRules` (entering, inside modifiers, destroy checks, collapse), `BuildingDamage` (per-attacker damage, end-of-phase collapse), `BuildingFire` (shooting buildings), `Roofs` (roof landing/moves, support limit) |
-| `src/core/rules/turn/` | `Initiative`, `UnequalNumbers` (who acts when), `EndPhase` |
+| `src/core/rules/turn/` | `Initiative`, `InitiativeDie` (optional rule), `UnequalNumbers` (who acts when), `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire` |
 | `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2), `BvSkill` (pilot skill multiplier) |

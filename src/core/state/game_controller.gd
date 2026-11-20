@@ -130,9 +130,10 @@ func _unit_done() -> void:
 
 
 func _roll_initiative() -> void:
-	var r := Initiative.roll(dice, state.sides_alive())
+	var r := Initiative.roll(dice, state.sides_alive(), InitiativeDie.bonuses(state))
 	state.initiative_rolls = r["rolls"]
 	state.initiative_order.assign(r["order"])
+	InitiativeDie.update(state, r["order"])
 	_emit(GameEvent.INITIATIVE, r)
 
 
