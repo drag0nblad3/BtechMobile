@@ -1,114 +1,91 @@
 extends TestCase
-## Physical geometry, not just denser voxel tessellation. Measured in meshless
-## model data so these checks are cheap and do not generate screenshot renders.
+## Physical model metrics after deleting all legacy shared-silhouette builders.
 
 
-func _model(id: String) -> VoxelMech:
-	var profile := VoxelChassis.find(id)
-	var mech := VoxelMech.new()
-	mech.profile_id = id
-	mech.detail_level = int(profile.get("voxel_detail", 1))
-	mech.render_surfaces = false
-	mech.build()
-	return mech
+func _make(id: String) -> VoxelMech:
+	var m := VoxelMech.new()
+	m.profile_id = id
+	m.detail_level = int(VoxelChassis.find(id).get("voxel_detail", 2))
+	m.render_surfaces = false
+	m.build()
+	return m
 
 
-func test_training_prototype_has_real_visor_vents_and_bored_cannon() -> void:
-	var m := _model("prototype")
-	var hull: VoxelPart = m.parts["torso"]
-	var cannon: VoxelPart = m.parts["left_arm"]
-	check(hull.detail_scale >= 2, "prototype needs micro-sculpted cockpit armor")
-	check_eq(hull.sculpt_material(Vector3i(1, 2, -9)), 2,
-			"the test chassis must have a visible split sensor canopy")
-	check(not hull.has_sculpt_cell(Vector3i(-5, 3, 2)),
-			"cooling deck must have a truly recessed ventilation well")
-	check(hull.has_sculpt_cell(Vector3i(0, 8, 2)),
-			"dorsal sensor antenna must project above the chassis")
-	check(not cannon.has_sculpt_cell(Vector3i(-1, -7, -12)),
-			"left test cannon must have a hollow muzzle, not a painted dot")
-	check(cannon.has_sculpt_cell(Vector3i(-4, -8, -12)),
-			"cannon muzzle needs a separate armor shroud")
-	m.free()
-
-
-func test_hunchback_has_offset_cockpit_and_hollow_autocannon() -> void:
-	var m := _model("hunchback_hbk4g")
-	var hull: VoxelPart = m.parts["torso"]
-	check(hull.detail_scale == 3, "heavy offset cannon should keep 25 mm detail")
-	check_eq(hull.sculpt_material(Vector3i(-2, 5, -7)), 2,
-			"cockpit glazing must sit beside the gun, not inside it")
-	check(not hull.has_sculpt_cell(Vector3i(7, 6, -14)),
-			"AC/20 bore must be physically hollow")
-	check(hull.has_sculpt_cell(Vector3i(4, 9, -12)),
-			"armored barrel jacket must surround the muzzle")
-	check(hull.has_sculpt_cell(Vector3i(12, 10, 4)),
-			"distinct asymmetric shoulder housing must be present")
-	var left: VoxelPart = m.parts["left_arm"]
-	var right: VoxelPart = m.parts["right_arm"]
-	check(left.cells.size() != right.cells.size(),
-			"weapon-side arm should not simply copy the left manipulator")
-	m.free()
-
-
-func test_wolverine_has_six_open_srm_ports_and_armed_right_forearm() -> void:
-	var m := _model("wolverine_wvr6r")
-	var hull: VoxelPart = m.parts["torso"]
-	var barrel: VoxelPart = m.parts["right_arm"]
-	var hand: VoxelPart = m.parts["left_arm"]
-	for x in [-13, -11, -9]:
-		for y in [2, 5]:
-			check(not hull.has_sculpt_cell(Vector3i(x, y, -8)),
-					"all six SRM ports must be carved, not painted")
-			check_eq(hull.sculpt_material(Vector3i(x, y, -5)), 3,
-					"each SRM chamber needs a visibly recessed interior")
-	check(not barrel.has_sculpt_cell(Vector3i(0, -6, -16)),
-			"right arm autocannon must have an empty bore")
-	check(barrel.has_sculpt_cell(Vector3i(-4, -8, -16)),
-			"right autocannon must have an armored muzzle")
-	check(hand.has_sculpt_cell(Vector3i(4, -11, -3)),
-			"left hand must have distinct manipulators")
-	m.free()
-
-
-func test_jenner_cockpit_has_25mm_detail_without_replacing_four_srm_ports() -> void:
-	var m := _model("jenner_jr7d")
-	var hull: VoxelPart = m.parts["torso"]
-	check_eq(hull.detail_scale, 3,
-			"Jenner nose, windshield, SRM rack and engine need 25 mm detail")
-	check_eq(hull.sculpt_material(Vector3i(0, 0, -21)), 2,
-			"forward windshield must stay visibly glazed")
-	for x in [-2, 1]:
-		for y in [3, 5]:
-			check_eq(hull.sculpt_material(Vector3i(x, y, -7)), 3,
-					"all four original SRM outlets must survive refinement")
-	check(hull.cells.size() > 0, "cockpit must remain genuine damageable cells")
-	m.free()
-
-
-func test_five_actual_game_chassis_have_separate_visual_signatures() -> void:
-	var ids := ["atlas_as7d", "hunchback_hbk4g", "wolverine_wvr6r",
-			"jenner_jr7d", "catapult_cplt_c1"]
-	var totals: Dictionary = {}
-	for id in ids:
-		var m := _model(id)
-		var p: VoxelPart = m.parts["torso"]
-		var roles := p.role_counts()
-		check_eq(roles["armor"] + roles["structure"], p.cells.size(),
-				"fine details still must carry armor/structure visual roles")
-		check(p.cells.size() > 0 and m.initial_voxels() > 0,
-				"chassis must contain destructible 3D geometry")
-		totals[id] = m.initial_voxels()
-		m.free()
-	check_eq(totals.size(), 5, "all five production chassis need distinct sculpts")
-
-
-func test_all_six_roster_chassis_have_100k_to_150k_real_voxels() -> void:
+func test_all_six_models_use_real_100k_150k_cells_not_fat_limb_fillers() -> void:
+	var count := 0
 	for profile in VoxelChassis.all():
-		var m := _model(str(profile["id"]))
+		var m := _make(str(profile["id"]))
 		var n := m.initial_voxels()
 		check(n > 100000 and n <= 150000,
-				"%s: %d voxels, outside 100k–150k budget" % [profile["id"], n])
-		check_eq(n, m.remaining_voxels(), "only actual occupied cells are counted")
+				"%s: %d cells must fit 100k–150k actual physical budget" % [profile["id"], n])
+		check_eq(n, m.remaining_voxels(),
+				"voxel counts must equal real surviving damageable geometry")
 		check(not (m.parts["torso"] as VoxelPart).mesh_enabled,
-				"headless count must not allocate render meshes")
+				"meshless budget check should never allocate GPU surfaces")
+		for part: VoxelPart in m.parts.values():
+			var roles := part.role_counts()
+			check_eq(roles["armor"] + roles["structure"], part.cells.size(),
+					"no reference-v4 cell may lack a visual armor/structure role")
+		count += 1
 		m.free()
+	check_eq(count, 6, "must cover the complete lab roster")
+
+
+func test_profiles_are_tall_enough_to_avoid_original_squat_proportions() -> void:
+	for profile in VoxelChassis.all():
+		var m := _make(str(profile["id"]))
+		var frame: Node3D = m.get_node("Frame")
+		check(frame.scale.y >= 1.25,
+				"%s needs visibly taller proportions than original shared biped" % profile["id"])
+		var torso: VoxelPart = m.parts["torso"]
+		var bounds := torso._local_bounds
+		check(bounds.size.y > 0.5,
+				"torso must have multiple individually shaped vertical sections")
+		check(m.hips[0].position.x < 0.0 and m.hips[1].position.x > 0.0,
+				"left/right hip sockets must remain physically separated")
+		m.free()
+
+
+func test_conventional_calves_are_long_slender_parts_not_tree_trunks() -> void:
+	for id in ["atlas_as7d", "hunchback_hbk4g",
+			"wolverine_wvr6r", "prototype"]:
+		var m := _make(id)
+		var shin: VoxelPart = m.parts["left_leg_shin"]
+		var b := shin._local_bounds
+		check(b.size.y > b.size.x * 1.18,
+				"%s lower leg should be substantially longer than thick" % id)
+		check(not shin.has_sculpt_cell(Vector3i(8, -5, 0)),
+				"thin calf cannot extend to enormous solid tree-trunk radius")
+		check(shin.has_sculpt_cell(Vector3i(0, -9, 0)),
+				"calf actuator should genuinely reach its ankle")
+		m.free()
+
+
+func test_bird_legs_expose_three_distinct_load_bearing_links() -> void:
+	for id in ["jenner_jr7d", "catapult_cplt_c1"]:
+		var m := _make(id)
+		for part_key in ["left_leg", "left_leg_shin", "left_leg_metatarsal"]:
+			var part: VoxelPart = m.parts[part_key]
+			check(part.cells.size() > 0,
+					"%s should have a true independently damageable hock link" % id)
+			check(part._local_bounds.size.x < 0.90,
+					"avian joint must be narrow, not a solid humanoid boot shaft")
+		check_eq(m.hocks.size(), 2,
+				"both legs require actual visible reverse-jointed pivots")
+		m.free()
+
+
+func test_new_reference_parts_still_take_local_damage_and_survive_report() -> void:
+	var m := _make("atlas_as7d")
+	var h: VoxelPart = m.parts["torso"]
+	var shin: VoxelPart = m.parts["right_leg_shin"]
+	var a := h.cells.size()
+	var b := shin.cells.size()
+	var n := h.erase_irregular_local_ball(Vector3(0.0, 0.0, -0.18),
+			0.24, 241)
+	check(n > 0, "new physical chest must be destructible")
+	check_eq(h.cells.size(), a - n,
+			"deleted voxel count must agree with actual geometry")
+	check_eq(shin.cells.size(), b,
+			"torso crater must not damage another physical part")
+	m.free()
