@@ -54,7 +54,7 @@ func test_heavy_mech_collapses_light_building() -> void:
 	check(entry["collapse"], "100 t > 15 CF")
 	check_eq((entry["path"] as Array).size(), 2, "move stops in the building")
 	u.coord = hex_at(2, 2)
-	var dice := LoadedDice.new([1])  # fall direction, then 6s
+	var dice := LoadedDice.new([2])  # falls on its front, then 6s
 	for i in 6:
 		dice.queue_2d6(7)  # 30 fall damage to the center torso
 	BuildingRules.enter(s, dice, _emit, u, hex_at(2, 2))

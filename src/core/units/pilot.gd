@@ -11,6 +11,8 @@ var gunnery: int = 4
 var piloting: int = 5
 var hits: int = 0
 var conscious: bool = true
+var roll_owed: bool = false   ## Took a hit this phase; consciousness roll pending.
+var out_since_turn: int = -1  ## Turn the warrior was knocked out.
 
 
 func _init(gun: int = 4, pilot: int = 5) -> void:

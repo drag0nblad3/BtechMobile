@@ -65,32 +65,38 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Hit location tables (front/rear, left, right) — `TODO(rules)`: verify.
 - ✅ Armor → structure → transfer inward; rear armor on torsos.
 - ✅ Side torso destroyed takes its arm; head or CT destroyed destroys the 'Mech.
-- ✅ Ammo explosion: remaining shots × damage into structure, pilot takes 2 hits.
+- ✅ Ammo explosion (pp. 95-96): remaining shots × damage, capped at 20, into structure, transferring structure-to-structure; over the cap the surviving last location loses its armor (rear for a torso); MechWarrior takes 1 hit.
+- ✅ Head hits (p. 117): every hit that damages the head is 1 MechWarrior hit, even if the armor holds.
+- ✅ 20-damage piloting roll counts the armor and structure pips actually marked off, including falls and explosions.
 
 ## Heat
 - ✅ Heat from walking (1), running (2), weapons fired, engine hits (5 each).
 - ✅ Dissipation 1 per working heat sink.
-- ✅ Shutdown roll at 14+ (4+, 6+, 8+, 10+, auto at 30); shut-down 'Mechs fall and can't act.
-- 🟡 Restart: automatic below 14, else same roll — `TODO(rules)`: verify timing.
-- 🟡 Ammo explosion roll at 19+ (4+, 6+, 8+) — `TODO(rules)`: which bin explodes.
-- 🟡 Water cooling: depth 1 +2, depth 2+ (or prone in water) +4, max 6 — `TODO(rules)`: really per submerged heat sink.
+- ✅ Shutdown (`HeatShutdown`, pp. 104-105): roll at 14+ (4+, 6+, 8+, 10+, auto at 30 or with an unconscious warrior), resolved before ammo; a shut-down 'Mech doesn't fall but can't act, fails piloting rolls and gets no engine-hit heat.
+- ✅ Restart: automatic below 14 (even unconscious); otherwise a conscious warrior rolls the same number; never at 30+.
+- ✅ Ammo explosion roll at 19+ (4+, 6+, 8+); the bin with the most damage per shot cooks off, ties to the most shots left.
+- ✅ Water cooling (p. 103): submerged heat sinks cool double, max +6; standing in depth 1 only leg sinks are under.
+- ✅ Outside heat (flamers) capped at 15 per turn.
+- ✅ Life support hit: 1 MechWarrior hit per Heat Phase at heat 10-19, 2 at 20+; 1 in the End Phase when fully under water.
 - ✅ Jumping heat (1 per hex, min 3).
 
 ## Critical hits
 - ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,
   12 three (head/limb blown off) — `TODO(rules)`: verify.
-- ✅ Random hittable slot; empty slots don't count — `TODO(rules)`: no transfer when full.
+- ✅ Random hittable slot; empty slots don't count. A location that started the phase with nothing left to hit passes criticals inward; otherwise extras are lost (p. 95).
+- ✅ A location destroyed by damage still rolls; only hits on ammo count (p. 87).
 - ✅ Engine (+5 heat/turn, 3 destroys), gyro (+3 PSR, 2 = fall, can't stand), cockpit (pilot
-  killed), sensors (+2, 2 = can't fire), life support (pilot hit at 15+ heat), actuators,
+  killed), sensors (+2, 2 = can't fire), life support (see Heat), actuators,
   weapons, ammo (explodes), heat sinks.
 
 ## Piloting skill rolls and falls
 - ✅ Owed rolls collected per phase and rolled at its end.
 - ✅ Triggers: 20+ damage in a phase (+1), gyro hit, leg actuator hit, being kicked, missing
-  a kick; automatic falls for destroyed gyro, leg blown off, shutdown.
+  a kick; automatic falls for destroyed gyro and leg blown off; a shut-down 'Mech fails any roll.
 - ✅ Lasting modifiers: gyro +3 each, destroyed leg +5, hip +2, other leg actuators +1.
-- 🟡 Falls: ceil(tons/10) × (levels + 1) damage in 5s, random new facing, pilot roll to avoid
-  a hit — `TODO(rules)`: fall direction table, falling from heights, leg destroyed by damage.
+- ✅ Falls (p. 115): facing unchanged; 1D6 = 1 hits the rear, else the front; ceil(tons/10) × (levels + 1) in 5s, halved in depth 1+ water.
+- ✅ Seatbelt check (p. 117): piloting + 1 per level fallen, nothing else; immobile or over 12 is an automatic hit.
+- 🟡 Consciousness (p. 117): one roll after the phase's damage, PSRs and falls, against the current hit total; wake-up rolls in later End Phases only — `TODO(rules)`: Movement Phase rolls should be immediate.
 
 ## Physical attacks
 - ✅ Punch: piloting + movement mods, ceil(tons/10) damage, punch table; not with an arm that
@@ -121,7 +127,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   displacement into buildings, basements.
 
 ## Pilots
-- ✅ 6 hits kill; consciousness roll after each hit (3, 5, 7, 10, 11); wake-up roll in End Phase.
+- ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
 
 ## Explanations (learning layer, not a rule)
 - ✅ Every event has log text at three levels: Full (reasons for each number, each reason

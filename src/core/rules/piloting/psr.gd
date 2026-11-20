@@ -31,6 +31,7 @@ static func end_of_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 		if not u.destroyed:
 			resolve_pending(state, dice, emit, u)
 		u.psr_pending.clear()
+	PilotDamage.resolve_owed(state, dice, emit)
 
 
 static func resolve_pending(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
@@ -54,12 +55,6 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int) 
 	emit.call(GameEvent.PSR, {"unit_id": u.id, "roll": r, "need": th.target(), "ok": ok,
 			"reason": reason, "mods": th.mods})
 	return ok
-
-
-## A shut-down 'Mech collapses where it stands.
-static func fall_from_shutdown(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
-	if not u.prone:
-		Fall.fall(state, dice, emit, u, 0, "shut down")
 
 
 ## Standing up costs 2 MP (already in the move budget) and a piloting roll.

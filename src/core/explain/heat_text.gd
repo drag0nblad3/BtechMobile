@@ -29,9 +29,9 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 					"made it" if d["ok"] else "failed"]
 		GameEvent.SHUTDOWN:
 			if d["shutdown"]:
-				var t := "%s SHUTS DOWN and falls." % who
+				var t := "%s SHUTS DOWN." % who
 				if level == ExplainLevel.FULL:
-					t += " A shut-down 'Mech can't move or fire and is easy to hit (-4)."
+					t += " A shut-down 'Mech can't move or fire, fails any piloting roll and is easy to hit (-4). It restarts by itself below 14 heat."
 				return t
 			return "%s restarts." % who
 	return ""

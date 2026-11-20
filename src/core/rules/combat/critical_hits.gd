@@ -3,7 +3,10 @@ extends RefCounted
 ## Critical hits. Whenever damage reaches internal structure (or a hit
 ## location roll of 2), roll 2d6: 8-9 one critical, 10-11 two, 12 three
 ## (a head or limb is blown off instead). Each critical hits a random slot.
-## TODO(rules): verify the determining-criticals table and edge cases.
+## Transfer (book p. 95): a location that started the phase with nothing
+## left to hit passes its criticals inward; otherwise extra criticals are
+## lost. A location destroyed by the damage still rolls, but only hits on
+## explosive slots (ammo) count (p. 87).
 
 
 static func crits_for_roll(roll: int) -> int:
@@ -23,18 +26,28 @@ static func after_damage(state: GameState, dice: Dice, emit: Callable, u: Unit,
 		var st: Dictionary = steps[i]
 		var loc: int = st["loc"]
 		var first_tac := tac and i == 0
-		if checked.has(loc) or (not st["breached"] and not first_tac):
-			continue
-		if u.is_location_destroyed(loc) or u.destroyed:
+		if checked.has(loc) or (not st["breached"] and not first_tac) or u.destroyed:
 			continue
 		checked[loc] = true
+		if st["destroyed"]:
+			if _has_explosive(u, loc):
+				roll_location(state, dice, emit, u, loc, true)
+			continue
+		if u.is_location_destroyed(loc):
+			continue
 		roll_location(state, dice, emit, u, loc)
 
 
-static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int) -> void:
+## explosive_only: the location was just destroyed; only ammo hits count.
+static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int,
+		explosive_only: bool = false) -> void:
 	var roll := dice.roll_2d6()
 	var n := crits_for_roll(roll)
 	emit.call(GameEvent.CRIT_CHECK, {"unit_id": u.id, "loc": loc, "roll": roll, "crits": n})
+	if explosive_only:
+		for i in n:
+			_explosive_hit(state, dice, emit, u, loc)
+		return
 	if roll >= 12 and (loc == Location.HEAD or Location.is_arm(loc) or Location.is_leg(loc)):
 		Damage.destroy_location(u, loc)
 		emit.call(GameEvent.CRITICAL, {"unit_id": u.id, "loc": loc, "slot": "",
@@ -48,20 +61,65 @@ static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit,
 		apply_one(state, dice, emit, u, loc)
 
 
-## One critical hit in `loc`: a random slot that can still be hit.
-## TODO(rules): with no hittable slot the crit is lost (no transfer).
+## One critical hit in `loc`: a random slot that can still be hit. If the
+## location started the phase with nothing to hit, it moves inward.
 static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int) -> void:
-	var options: Array[CritSlot] = []
-	for s: CritSlot in u.slots[loc]:
-		if s.can_be_hit():
-			options.append(s)
-	if options.is_empty():
-		return
+	var options := _hittable(u, loc)
+	while options.is_empty():
+		if _hit_this_phase(state, u, loc):
+			return
+		loc = Location.transfer(loc)
+		if loc < 0 or u.is_location_destroyed(loc):
+			return
+		options = _hittable(u, loc)
 	var slot := options[dice.pick(options.size())]
 	slot.hit = true
+	slot.hit_when = _now(state)
 	var effect := CritEffects.apply(state, dice, emit, u, loc, slot)
 	emit.call(GameEvent.CRITICAL, {"unit_id": u.id, "loc": loc, "slot": slot.name, "effect": effect})
 	_check_destroyed(emit, u)
+
+
+## A just-destroyed location: pick a slot as usual; only ammo explodes.
+static func _explosive_hit(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int) -> void:
+	var options := _hittable(u, loc)
+	if options.is_empty() or u.destroyed:
+		return
+	var slot := options[dice.pick(options.size())]
+	if slot.kind != CritSlot.Kind.AMMO:
+		return
+	slot.hit = true
+	slot.hit_when = _now(state)
+	u.ammo[slot.ref].destroyed = false  # the location's loss doesn't empty the bin
+	var effect := CritEffects.apply(state, dice, emit, u, loc, slot)
+	emit.call(GameEvent.CRITICAL, {"unit_id": u.id, "loc": loc, "slot": slot.name, "effect": effect})
+	_check_destroyed(emit, u)
+
+
+static func _hittable(u: Unit, loc: int) -> Array[CritSlot]:
+	var out: Array[CritSlot] = []
+	for s: CritSlot in u.slots[loc]:
+		if s.can_be_hit():
+			out.append(s)
+	return out
+
+
+static func _has_explosive(u: Unit, loc: int) -> bool:
+	for a in u.ammo:
+		if a.loc == loc and a.shots > 0:
+			return true
+	return false
+
+
+static func _hit_this_phase(state: GameState, u: Unit, loc: int) -> bool:
+	for s: CritSlot in u.slots[loc]:
+		if s.hit and s.hit_when == _now(state):
+			return true
+	return false
+
+
+static func _now(state: GameState) -> int:
+	return state.turn * 10 + state.phase
 
 
 static func _after_loss(_dice: Dice, u: Unit, loc: int) -> void:

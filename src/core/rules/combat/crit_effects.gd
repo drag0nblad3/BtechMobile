@@ -30,7 +30,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			u.sensor_hits += 1
 			return "sensors hit: +2 to hit" if u.sensor_hits < 2 else "sensors destroyed: can't fire"
 		CritSlot.Kind.LIFE_SUPPORT:
-			return "life support hit: pilot hurt by heat 15+"
+			return "life support hit: pilot hurt at heat 10+ or under water"
 		CritSlot.Kind.ACTUATOR:
 			return _actuator(u, loc, slot)
 		CritSlot.Kind.WEAPON:

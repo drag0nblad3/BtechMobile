@@ -14,9 +14,11 @@ static func describe(e: GameEvent, s: GameState, level: int, seen: Dictionary = 
 					d["roll"], d["need"], "OK" if d["ok"] else "FAILED"]
 			return t + ModsText.lines(d["mods"], level, seen)
 		GameEvent.FALL:
-			var t := "%s falls (%s) and takes %d damage." % [who, d["reason"], d["damage"]]
+			var t := "%s falls (%s) onto its %s and takes %d damage." % [who, d["reason"],
+					"back" if d.get("rear", false) else "front", d["damage"]]
 			if level == ExplainLevel.FULL:
-				t += " Heavier 'Mechs fall harder: 1 point per 10 tons. Standing up next turn costs 2 MP and a roll."
+				t += " Heavier 'Mechs fall harder: 1 point per 10 tons%s. Standing up next turn costs 2 MP and a roll." % (
+						", halved by the water" if d.get("water", false) else "")
 			return t
 		GameEvent.WENT_PRONE:
 			var t := "%s drops prone." % who

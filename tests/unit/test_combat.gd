@@ -147,10 +147,21 @@ func test_ammo_explosion() -> void:
 	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1), 0, 1)
 	s.add_unit(u)
 	var gc := GameController.new(s, 7)
-	# 5 AC/20 shots x 20 = 100 damage into LT structure: destroys LT and more.
-	AmmoExplosion.explode(s, gc.dice, gc._emit_cb, u, u.ammo[0])
-	check(u.is_location_destroyed(Location.LT), "LT gone")
-	check_eq(u.pilot.hits, 2, "pilot hurt")
+	# 5 AC/20 shots x 20 = 100 damage, capped at 20, into structure.
+	var ct_armor := u.armor[Location.CT]
+	var bin := u.ammo[0]
+	var loc := bin.loc
+	var before := u.structure[loc]
+	AmmoExplosion.explode(s, gc.dice, gc._emit_cb, u, bin)
+	check_eq(u.pilot.hits, 1, "pilot takes 1 hit")
+	if before >= 20:
+		check_eq(u.structure[loc], before - 20, "capped at 20")
+		check_eq(u.rear_armor[loc], 0, "over the cap: surviving torso loses rear armor")
+	else:
+		check(u.is_location_destroyed(loc), "location gone")
+		check_eq(u.armor[Location.CT], ct_armor, "transfer skips armor")
+		check_eq(u.structure[Location.CT], StructureTable.points(50, Location.CT) - (20 - before),
+				"rest goes to CT structure")
 
 
 func test_water_cools() -> void:
@@ -162,8 +173,13 @@ func test_water_cools() -> void:
 	check_eq(u.heat, 0, "10 heat - 10 sinks")
 	u.heat = 14
 	HeatPhase.run(s, Dice.new(1), func(_t, _d): pass)
-	check_eq(u.heat, 2, "depth 1 adds 2 cooling")
-	check(TerrainText.describe(s.map.get_tile(hex_at(1, 0)), ExplainLevel.FULL).contains("cools 2"), "terrain text")
+	check_eq(u.heat, 4, "depth 1: the Jenner has no leg heat sinks to submerge")
+	var a := mech("awesome_aws8q", 0, hex_at(1, 0), 0, 2)  # one heat sink in each leg
+	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(1, 0)), a), 2, "two leg sinks cool double")
+	a.prone = true
+	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(1, 0)), a), 6, "prone: all under, max 6")
+	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(2, 0)), u), 6, "depth 2: all under, max 6")
+	check(TerrainText.describe(s.map.get_tile(hex_at(1, 0)), ExplainLevel.FULL).contains("leg sinks"), "terrain text")
 
 
 func test_secondary_target_and_auto_hit() -> void:

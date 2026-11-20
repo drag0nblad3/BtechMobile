@@ -20,7 +20,8 @@ static func describe(tile: MapTile, level: int) -> String:
 		parts.append("+%d to hit a 'Mech here" % cover)
 	if tile.is_water():
 		parts.append("no running in" if tile.depth == 1 else "can't be targeted fully under water")
-		parts.append("cools %d heat a turn" % HeatPhase.water_cooling(tile))
+		parts.append("heat sinks under water cool double (%s, up to +6)" % (
+				"only leg sinks while standing" if tile.depth == 1 else "all of them"))
 		if tile.depth == 1:
 			parts.append("partial cover: +1, leg hits absorbed")
 	if parts.is_empty():

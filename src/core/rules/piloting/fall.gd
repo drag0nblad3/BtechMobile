@@ -1,15 +1,11 @@
 class_name Fall
 extends RefCounted
-## A 'Mech falls: it ends up prone facing a random way and takes
-## ceil(tons / 10) x (levels fallen + 1) damage in 5-point groups.
-## The MechWarrior takes a hit unless a piloting roll succeeds.
-## TODO(rules): fall direction table and pilot-damage roll are simplified.
-
-## d6 -> facing change and which side hits the ground.
-const DIRECTION := [
-	[0, FiringArc.FRONT], [1, FiringArc.RIGHT], [2, FiringArc.RIGHT],
-	[3, FiringArc.REAR], [4, FiringArc.LEFT], [5, FiringArc.LEFT],
-]
+## A 'Mech falls (book p. 115): it ends up prone with the same facing. Roll
+## 1D6: on a 1 the damage hits the rear, otherwise the front. Damage is
+## ceil(tons / 10) x (levels fallen + 1) in 5-point groups, halved (round
+## down) in depth 1+ water. Then the seatbelt check (p. 117): piloting + 1
+## per level fallen, no other modifiers; failure, an immobile 'Mech or a
+## target over 12 means 1 MechWarrior hit.
 
 
 static func damage_for(u: Unit, levels: int) -> int:
@@ -18,21 +14,41 @@ static func damage_for(u: Unit, levels: int) -> int:
 
 static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: int,
 		reason: String) -> void:
-	var dir: Array = DIRECTION[dice.d6() - 1]
-	u.facing = Hex.rotate(u.facing, dir[0])
+	var side := FiringArc.REAR if dice.d6() == 1 else FiringArc.FRONT
 	u.prone = true
 	var total := damage_for(u, levels)
+	var tile := state.map.get_tile(u.coord)
+	var in_water := tile != null and tile.is_water() and tile.depth >= 1
+	if in_water:
+		@warning_ignore("integer_division")
+		total = total / 2
 	emit.call(GameEvent.FALL, {"unit_id": u.id, "damage": total, "levels": levels,
-			"reason": reason, "facing": u.facing})
+			"reason": reason, "facing": u.facing, "rear": side == FiringArc.REAR,
+			"water": in_water})
 	for p in Damage.clusters(total, 5):
-		var hl := HitTable.roll(dice, dir[1])
+		var hl := HitTable.roll(dice, side)
 		var steps := Damage.apply(u, hl["loc"], p, hl["rear"])
 		emit.call(GameEvent.DAMAGE, {"unit_id": u.id, "source_id": u.id, "source": "fall",
 				"amount": p, "loc": hl["loc"], "rear": hl["rear"], "steps": steps,
 				"covered": false, "tac": hl["tac"]})
 		Damage.announce(emit, u)
+		HeadHit.check(dice, emit, u, steps)
 		CriticalHits.after_damage(state, dice, emit, u, steps, hl["tac"])
-	# Fall damage itself doesn't count toward the 20-point piloting roll.
-	u.damage_this_phase -= total
-	if not u.destroyed and u.pilot.conscious and not Psr.roll(dice, emit, u, "avoid pilot injury", levels):
+	if not u.destroyed:
+		seatbelt(dice, emit, u, levels)
+
+
+static func seatbelt(dice: Dice, emit: Callable, u: Unit, levels: int) -> void:
+	var th := ToHit.new()
+	th.add("Piloting", u.pilot.piloting, "Your MechWarrior's piloting skill is the base number.")
+	if levels > 0:
+		th.add("fell %d level%s" % [levels, "" if levels == 1 else "s"], levels, "")
+	if ToHitCalc.is_immobile(u) or th.target() > 12:
+		PilotDamage.wound(dice, emit, u, 1, "fall")
+		return
+	var r := dice.roll_2d6()
+	var ok := r >= th.target()
+	emit.call(GameEvent.PSR, {"unit_id": u.id, "roll": r, "need": th.target(), "ok": ok,
+			"reason": "seatbelt check", "mods": th.mods})
+	if not ok:
 		PilotDamage.wound(dice, emit, u, 1, "fall")

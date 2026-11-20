@@ -27,8 +27,8 @@ Battle mode first; campaign layer later.
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot` |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `MoveExecutor` (carries out a move for the controller) |
-| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits`, `CritEffects` |
-| `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase` |
+| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion`, `CriticalHits`, `CritEffects`, `HeadHit` |
+| `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase`, `HeatShutdown` |
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs), `Skid`, `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push), `Charge` (charge, DFA), `Displacement`, `PhysicalPhase` |
 | `src/core/rules/buildings/` | `BuildingRules` (entering, wall absorption, collapse), `BuildingFire` (shooting buildings) |
