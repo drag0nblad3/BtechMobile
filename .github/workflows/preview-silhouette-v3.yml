@@ -4,6 +4,10 @@ on:
     branches: [feature/reference-guided-silhouette-v3]
     paths:
       - tools/capture_silhouette_v3.gd
+      - src/view/units/voxel_surface_nets.gd
+      - src/view/units/voxel_silhouette_v3.gd
+      - src/view/units/voxel_part.gd
+      - src/view/units/voxel_mech_rig.gd
       - .github/workflows/preview-silhouette-v3.yml
 jobs:
   render:
