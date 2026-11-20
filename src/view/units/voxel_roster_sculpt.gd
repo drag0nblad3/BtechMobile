@@ -333,10 +333,24 @@ static func _wolverine_fine(part: VoxelPart) -> void:
 
 
 static func _jenner_fine(part: VoxelPart) -> void:
-	if part.name != "Torso":
-		return
 	var s := part.detail_scale
 	if s < 3:
+		return
+	if part.name.ends_with("_arm"):
+		# Claude-like layered housings around two *separate* laser emitters.
+		# Thin 25 mm muzzle reinforcement and true open cooling channels.
+		for y in [-2, 1]:
+			part.fill_box(Vector3i(-3 * s, (y - 1) * s, -11 * s - 1),
+					Vector3i(2 * s, (y + 1) * s - 1, -11 * s - 1), 4)
+			part.carve_box(Vector3i(-2 * s, y * s, -11 * s - 1),
+					Vector3i(s - 1, y * s + s - 1, -11 * s - 1))
+			part.paint_box(Vector3i(-2 * s, y * s, -11 * s),
+					Vector3i(s - 1, y * s + s - 1, -11 * s), 2)
+		for z in [0, 2, 4]:
+			part.carve_box(Vector3i(-2 * s, 3 * s - 1, z * s),
+					Vector3i(s - 1, 3 * s - 1, z * s))
+		return
+	if part.name != "Torso":
 		return
 	# In addition to the existing 2x Jenner sculpt, 25 mm hull plating
 	# permits visible canopy seam, thin frame lip, and vent-wall bevels.
