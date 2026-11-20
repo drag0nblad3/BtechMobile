@@ -8,6 +8,7 @@ on:
       - src/view/units/voxel_silhouette_v3.gd
       - src/view/units/voxel_part.gd
       - src/view/units/voxel_mech_rig.gd
+      - data/graphics/voxel_chassis.json
       - .github/workflows/preview-silhouette-v3.yml
 jobs:
   render:
