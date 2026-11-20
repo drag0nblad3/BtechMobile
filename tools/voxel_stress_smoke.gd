@@ -11,8 +11,9 @@ func _run() -> void:
 	var lab: VoxelMechLab = load("res://scenes/voxel_mech_lab.tscn").instantiate()
 	root.add_child(lab)
 	await process_frame
-	if lab.stress_start_button == null or lab.stress_stop_button == null:
-		_fail("Missing start/stop stress test buttons")
+	if lab.stress_start_button == null or lab.stress_stop_button == null \
+			or lab.stress_count_button == null:
+		_fail("Missing start/stop stress buttons or 20/60 selector")
 		return
 	if lab.stress_start_button.name != "StressTestButton":
 		_fail("Stress button needs a stable UI identifier")
@@ -59,6 +60,34 @@ func _run() -> void:
 		_fail("Pinch touch state must clear after both fingers release")
 		return
 	lab.zoom_reset_button.pressed.emit()
+	# Exercise 60-model UI configuration without allocating 60 high-res meshes
+	# in CI; load only three, then verify STOP cancels even during spawning.
+	lab.stress_count_button.pressed.emit()
+	if lab.stress_count != VoxelStressTest.LARGE_TARGET_COUNT \
+			or lab.stress_count_button.text != "COUNT: 60":
+		_fail("Stress count toggle did not select 60 mechs")
+		return
+	lab.stress_start_button.pressed.emit()
+	if lab._stress == null or lab._stress.target_count != 60 \
+			or not lab.stress_count_button.disabled:
+		_fail("60-mode did not start or count selection changed during loading")
+		return
+	if not is_equal_approx(lab._distance, 52.0):
+		_fail("60-mode needs wider camera fit")
+		return
+	for i in 3:
+		await process_frame
+	if lab._stress.models.size() <= 0 or lab._stress.models.size() >= 60:
+		_fail("60-mode should spawn progressively, not all at once")
+		return
+	lab.stress_stop_button.pressed.emit()
+	if lab._stress != null or lab.stress_count_button.disabled:
+		_fail("STOP should cancel large-model loading and restore selector")
+		return
+	lab.stress_count_button.pressed.emit()
+	if lab.stress_count != VoxelStressTest.TARGET_COUNT:
+		_fail("Stress count toggle did not return to 20")
+		return
 	lab.stress_start_button.pressed.emit()
 	if lab._stress == null:
 		_fail("Start button did not create stress controller")
@@ -112,8 +141,8 @@ func _run() -> void:
 	if lab._stress != null or not lab.mech.visible:
 		_fail("Stop did not clear the stress targets and restore lab")
 		return
-	if lab.stress_start_button.disabled:
-		_fail("Stress test cannot be restarted")
+	if lab.stress_start_button.disabled or lab.stress_count_button.disabled:
+		_fail("Stress test and count selector must be available after stop")
 		return
 	print("voxel stress smoke ok: 20 high-detail models, random hits and FPS HUD")
 	lab.queue_free()
