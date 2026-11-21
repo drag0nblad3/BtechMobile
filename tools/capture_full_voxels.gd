@@ -70,13 +70,13 @@ func _set_view() -> void:
 	var center := Vector3(0, 1.2, 0)
 	match view:
 		"three_quarter":
-			camera.look_at_from_position(center + Vector3(5.9, 1.2, -8.8), center)
+			camera.look_at_from_position(center + Vector3(3.8, 1.0, -6.6), center)
 		"front":
-			camera.look_at_from_position(center + Vector3(0, 0.55, -10.7), center)
+			camera.look_at_from_position(center + Vector3(0, 0.38, -6.7), center)
 		"side":
-			camera.look_at_from_position(center + Vector3(0, 0.50, -10.7), center)
+			camera.look_at_from_position(center + Vector3(0, 0.38, -6.7), center)
 		"top":
-			camera.look_at_from_position(center + Vector3(0, 10.7, -0.01),
+			camera.look_at_from_position(center + Vector3(0, 7.6, -0.01),
 					center, Vector3(0, 0, 1))
 
 

@@ -40,16 +40,16 @@ func test_interpolated_loft_has_new_silhouette_cells_between_original_slices() -
 		"materials": [{"name":"armor", "color":"778899", "role":"armor"}],
 		"parts": [{"name":"ct", "loc":"CT", "shapes":[
 			{"loft":{"axis":"y","sections":[
-				{"at":0,"polygon":[[-1,-1],[1,-1],[1,1],[-1,1]]},
-				{"at":4,"polygon":[[-5,-1],[5,-1],[5,1],[-5,1]]}
+				{"at":0,"polygon":[[-1.3,-1],[1.3,-1],[1.3,1],[-1.3,1]]},
+				{"at":4,"polygon":[[-5.3,-1],[5.3,-1],[5.3,1],[-5.3,1]]}
 			]},"mat":"armor"}]}]
 	}
 	var fine := VxModel.from_dict(d)
 	var cells: Dictionary = fine.part("ct")["cells"]
 	# At fine y=3 the width is larger than at fine y=2. Splitting old
 	# coarse cells into eight identical cubes would fail this assertion.
-	check(cells.has(Vector3i(4, 3, 0)), "Missing interpolated half-slice contour")
-	check(not cells.has(Vector3i(4, 2, 0)), "High-res taper collapsed to duplicated cells")
+	check(cells.has(Vector3i(5, 3, 0)), "Missing interpolated half-slice contour")
+	check(not cells.has(Vector3i(5, 2, 0)), "High-res taper collapsed to duplicated cells")
 
 
 func test_mirrors_keep_cell_parity_and_are_symmetric() -> void:
