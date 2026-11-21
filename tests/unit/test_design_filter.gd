@@ -8,7 +8,7 @@ func test_filter_and_groups() -> void:
 	var clan := DesignFilter.groups(db, DesignFilter.Mode.CLAN)
 	var inner := DesignFilter.groups(db, DesignFilter.Mode.INNER_SPHERE)
 	check_eq(all.size(), clan.size() + inner.size())
-	check_eq(clan.size(), 26, "one entry per Clan chassis")
+	check_eq(clan.size(), 28, "one entry per Clan chassis")
 	for g: Array in clan:
 		check(g.all(func(d: UnitDef) -> bool: return d.is_clan()))
 		if g[0].omni:

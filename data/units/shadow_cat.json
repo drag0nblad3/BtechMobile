@@ -1,0 +1,25 @@
+{
+  "id": "shadow_cat", "name": "Shadow Cat", "tonnage": 45, "walk_mp": 6, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "shadow_cat", "engine_type": "xl", "structure_type": "endo_steel",
+  "armor": {"HD": 9, "CT": 21, "LT": 17, "RT": 17, "LA": 13, "RA": 13, "LL": 22, "RL": 21},
+  "rear_armor": {"CT": 7, "LT": 5, "RT": 5},
+  "missing_actuators": {"RA": ["lower_arm", "hand"]},
+  "equipment": {"LA": ["endo_steel*5"], "RA": ["endo_steel*2"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 10, "jump_mp": 5, "role": "Clan sniper scout. A Gauss rifle and two ER medium lasers; MASC can push it to 12 MP for a burst, at a risk to its legs.", "equipment": {
+      "RA": ["c_gauss_rifle"],
+      "LT": ["ammo:c_gauss_rifle", "jump_jet"],
+      "LA": ["c_er_medium_laser*2"],
+      "RT": ["masc"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"]
+    }},
+    {"model": "A", "heat_sinks": 16, "jump_mp": 5, "role": "Laser Shadow Cat: an ER large laser and three ER medium lasers with no ammo, and MASC to sprint into position.", "equipment": {
+      "RT": ["masc", "heat_sink", "heat_sink", "heat_sink"],
+      "RA": ["c_er_large_laser", "c_er_small_laser"],
+      "LA": ["c_er_medium_laser*2", "c_er_small_laser"],
+      "LT": ["c_er_medium_laser", "c_er_small_laser*2", "jump_jet", "heat_sink", "heat_sink", "heat_sink"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"]
+    }}
+  ]
+}
