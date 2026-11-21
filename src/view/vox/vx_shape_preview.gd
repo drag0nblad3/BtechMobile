@@ -57,15 +57,16 @@ func _build(d: Dictionary) -> void:
 		for s: Dictionary in p.get("add", []):
 			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
 
-	# Neutral animation axes mask the reverse-jointed Jenner's profile.
-	# Only the review rig is posed; source voxels and animation remain untouched.
+	# The Jenner's bent leg shapes are authored in its sections already.
+	# Apply only a small asymmetric stance, not a second exaggerated knee bend.
+	# These review angles do not alter the animation rig or voxel geometry.
 	if d.get("legs", "") == "digitigrade":
 		for side in ["ll", "rl"]:
 			if _joints.has(side + "_tarsus"):
 				var left: bool = side == "ll"
-				_joints[side].rotation.x = deg_to_rad(-24.0 if left else 9.0)
-				_joints[side + "_shin"].rotation.x = deg_to_rad(48.0 if left else 16.0)
-				_joints[side + "_tarsus"].rotation.x = deg_to_rad(-24.0 if left else -25.0)
+				_joints[side].rotation.x = deg_to_rad(-10.0 if left else 5.0)
+				_joints[side + "_shin"].rotation.x = deg_to_rad(15.0 if left else 12.0)
+				_joints[side + "_tarsus"].rotation.x = deg_to_rad(-6.0 if left else -8.0)
 
 
 
