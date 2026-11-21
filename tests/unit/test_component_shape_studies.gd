@@ -41,3 +41,38 @@ func test_loft_rasterization_changes_cross_section() -> void:
 	check(model.part("ct")["cells"].has(Vector3i(3,4,0)), "loft upper expansion missing")
 	check(not model.part("ct")["cells"].has(Vector3i(3,0,0)),
 			"loft should be tapered, not a box")
+
+
+func test_chassis_defining_housings_are_independently_sculpted() -> void:
+	var a := VxModel.load_file(MODELS[0])
+	check(not a.part("pelvis").is_empty(), "Atlas armored pelvis should be separate")
+	check(not a.part("rt_ac20_shroud").is_empty(), "Atlas AC20 needs an open shroud")
+	check_eq(a.muzzles[Location.RT].size(), 1, "Atlas main bore")
+	var w := VxModel.load_file(MODELS[1])
+	check(not w.part("pelvis").is_empty(), "Wolverine needs a hip assembly")
+	check(not w.part("lt_srm6").is_empty(), "Wolverine launcher must be its own shape")
+	check_eq(w.muzzles[Location.LT].size(), 6, "Wolverine SRM-6 must have six ports")
+	var j := VxModel.load_file(MODELS[2])
+	check(not j.part("belly").is_empty(), "Jenner fuselage needs an undercarriage")
+	for name in ["la_laser_lower", "la_laser_upper", "ra_laser_lower", "ra_laser_upper"]:
+		check(not j.part(name).is_empty(), "Jenners paired lasers must be distinct: " + name)
+	check_eq(j.muzzles[Location.CT].size(), 4, "Jenner SRM-4")
+	check_eq(j.muzzles[Location.LA].size(), 2, "Jenner left double laser")
+	check_eq(j.muzzles[Location.RA].size(), 2, "Jenner right double laser")
+
+
+func test_authored_weapon_mouths_are_physically_empty() -> void:
+	for path: String in MODELS:
+		var model := VxModel.load_file(path)
+		var location_to_part := {
+			"atlas_shape": ["rt_ac20_shroud", "RT"],
+			"wolverine_shape": ["lt_srm6", "LT"],
+			"jenner_shape": ["la_laser_lower", "LA"],
+		}
+		var pair: Array = location_to_part[model.id]
+		var section: Dictionary = model.part(pair[0])
+		check(not section.is_empty(), "no weapon housing for " + model.id)
+		var location: int = Location.from_code(pair[1])
+		var muzzle: Vector3 = model.muzzles[location][0]
+		var mouth := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
+		check(not section["cells"].has(mouth), "weapon bore obstructed %s at %s" % [model.id, mouth])
