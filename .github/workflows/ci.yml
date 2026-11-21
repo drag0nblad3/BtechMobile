@@ -53,6 +53,12 @@ jobs:
           set -o pipefail
           godot --headless -s tests/run_tests.gd -- battle_save 2>&1 | tee battle-save-test.log
           ! grep -E "SCRIPT ERROR|Parse Error" battle-save-test.log
+      - name: Battle save + replay scene smoke
+        run: |
+          set -o pipefail
+          godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
+          grep -q "battle save replay smoke ok" battle-save-smoke.log
+          ! grep -E "SCRIPT ERROR|Parse Error" battle-save-smoke.log
       - name: Unit tests
         run: |
           set -o pipefail
