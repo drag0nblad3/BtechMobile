@@ -112,6 +112,14 @@ func set_weapon_mode(unit: Unit, index: int, mode: String) -> bool:
 	return true
 
 
+## Asks to shut a 'Mech down ("off") or restart it ("on") at the next Heat Phase; "" cancels.
+func request_power(unit: Unit, want: String) -> bool:
+	if unit == null or VoluntaryShutdown.problem(unit, want) != "":
+		return false
+	unit.power_request = want
+	return true
+
+
 func set_torso_twist(unit: Unit, dir: int) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone:
 		return false

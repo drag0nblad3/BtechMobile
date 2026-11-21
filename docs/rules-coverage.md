@@ -87,6 +87,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Heat from walking (1), running (2), weapons fired, engine hits (5 each).
 - ✅ Dissipation 1 per working heat sink.
 - ✅ Shutdown (`HeatShutdown`, pp. 104-105): roll at 14+ (4+, 6+, 8+, 10+, auto at 30 or with an unconscious warrior), resolved before ammo; a shut-down 'Mech doesn't fall but can't act, fails piloting rolls and gets no engine-hit heat.
+- ✅ Voluntary shutdown (`VoluntaryShutdown`, p. 105, errata p. 104): the record sheet's button asks to shut down at the next Heat Phase, or to restart a 'Mech shut down by choice in a later one (automatic below 14 heat, else a conscious MechWarrior rolls the avoid number, never at 30+); it stays down until restarted — `TODO(rules)`: the request can be made any time before the Heat Phase; the computer never shuts down on purpose.
 - ✅ Restart: automatic below 14 (even unconscious); otherwise a conscious warrior rolls the same number; never at 30+.
 - ✅ Ammo explosion roll at 19+ (4+, 6+, 8+); the bin with the most damage per shot cooks off, ties to the most shots left.
 - ✅ Water cooling (p. 103): submerged heat sinks cool double, max +6; standing in depth 1 only leg sinks are under.

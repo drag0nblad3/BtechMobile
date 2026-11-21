@@ -28,6 +28,13 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 			return "%s rolls to %s: %d vs %d+: %s." % [who, what, d["roll"], d["need"],
 					"made it" if d["ok"] else "failed"]
 		GameEvent.SHUTDOWN:
+			if d.get("voluntary", false):
+				if not d["shutdown"]:
+					return "%s powers back up." % who
+				var v := "%s shuts down on purpose." % who
+				if level == ExplainLevel.FULL:
+					v += " It sheds heat but can't move or fire, is easy to hit (-4) and open to aimed shots, and stays down until you restart it in a later Heat Phase."
+				return v
 			if d["shutdown"]:
 				var t := "%s SHUTS DOWN." % who
 				if level == ExplainLevel.FULL:

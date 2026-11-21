@@ -4,7 +4,8 @@ extends RefCounted
 ## armor and structure per location, weapons, and critical damage.
 
 
-static func build(u: Unit) -> Control:
+## `on_power(want)`: if given, a button to shut down or restart by choice.
+static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	var l := RichTextLabel.new()
 	l.bbcode_enabled = true
 	l.fit_content = true
@@ -12,7 +13,29 @@ static func build(u: Unit) -> Control:
 	l.add_theme_font_size_override("normal_font_size", 19)
 	l.add_theme_font_size_override("bold_font_size", 21)
 	l.text = text(u)
-	return l
+	var want := power_choice(u)
+	if not on_power.is_valid() or want[0] == null:
+		return l
+	var box := VBoxContainer.new()
+	box.add_child(l)
+	var b := Button.new()
+	b.text = want[1]
+	b.custom_minimum_size = Vector2(0, 58)
+	b.add_theme_font_size_override("font_size", 20)
+	b.pressed.connect(func() -> void: on_power.call(want[0]))
+	box.add_child(b)
+	return box
+
+
+## [request to send, button text], or [null, ""] when there's nothing to offer.
+static func power_choice(u: Unit) -> Array:
+	if u.destroyed or (u.shutdown and not u.voluntary_shutdown):
+		return [null, ""]
+	if u.power_request != "":
+		return ["", "Cancel: stay %s" % ("shut down" if u.shutdown else "powered up")]
+	if u.shutdown:
+		return [VoluntaryShutdown.ON, "Restart at the Heat Phase"]
+	return [VoluntaryShutdown.OFF, "Shut down at the Heat Phase (sheds heat, can't act)"]
 
 
 static func text(u: Unit) -> String:
