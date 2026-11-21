@@ -68,3 +68,12 @@ func test_indirect_fire_gets_no_artemis() -> void:
 	var fired := _fire(v)
 	check(not fired.has("artemis_blocked"))
 	check(WeaponText.fired(v[0], fired, ExplainLevel.FULL, {}).contains("Artemis +2"))
+
+
+func test_new_designs_carry_the_gear() -> void:
+	var db := UnitDb.load_dir()
+	check(db.get_def("raven_rvn3l").ecm_loc >= 0, "Raven ECM")
+	check(db.get_def("marauder_mad3r_tc").tc_loc >= 0, "Marauder TC")
+	var atlas := db.get_def("atlas_as7k")
+	check(atlas.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].ams), "Atlas AMS")
+	check_eq(BattleValue.breakdown(db.get_def("raven_rvn3l"))["ecm"], BattleValue.ECM_BV)

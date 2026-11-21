@@ -12,6 +12,7 @@ const GYRO_MULT := 0.5
 const AMMO_PENALTY := 15
 const RUN_HEAT := 2
 const JUMP_HEAT_MIN := 3
+const ECM_BV := 61.0  ## Guardian ECM counts as defensive equipment.
 
 
 ## Total BV, rounded.
@@ -20,7 +21,7 @@ static func of(def: UnitDef) -> int:
 
 
 ## All the parts, for explanations. Keys: total, defensive, offensive,
-## armor, structure, gyro, ammo_penalty, tmm, def_factor, weapons, ammo,
+## armor, structure, gyro, ams, ecm, ammo_penalty, tmm, def_factor, weapons, ammo,
 ## tonnage, heat_capacity, speed_mp, speed_factor, halved (weapon names).
 static func breakdown(def: UnitDef) -> Dictionary:
 	var b := {}
@@ -37,7 +38,8 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	b["def_factor"] = 1.0 + tmm / 10.0
 	b["ams"] = def.weapon_mounts.reduce(func(t: float, m: Dictionary) -> float:
 		return t + (float(m["weapon"].bv) if m["weapon"].ams else 0.0), 0.0)
-	var base: float = b["armor"] + b["structure"] + b["gyro"] + b["ams"] - b["ammo_penalty"]
+	b["ecm"] = ECM_BV if def.ecm_loc >= 0 else 0.0
+	var base: float = b["armor"] + b["structure"] + b["gyro"] + b["ams"] + b["ecm"] - b["ammo_penalty"]
 	b["defensive"] = maxf(1.0, base) * b["def_factor"]
 	_weapons(def, b)
 	b["ammo"] = _ammo(def)

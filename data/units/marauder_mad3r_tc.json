@@ -1,0 +1,14 @@
+{
+  "id": "marauder_mad3r_tc", "name": "Marauder", "model": "MAD-3R (TC refit)", "tonnage": 75,
+  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 16, "engine_type": "xl", "sprite": "marauder",
+  "role": "A Marauder refitted for this game with an XL engine and a targeting computer: -1 to hit with its PPCs, AC/5 and lasers, and it can aim at a moving 'Mech's location. The XL engine dies if either side torso goes.",
+  "armor": {"HD": 9, "CT": 34, "LT": 24, "RT": 24, "LA": 23, "RA": 23, "LL": 31, "RL": 31},
+  "rear_armor": {"CT": 11, "LT": 7, "RT": 7},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {
+    "RA": ["ppc", "medium_laser"],
+    "LA": ["ppc", "medium_laser"],
+    "RT": ["ac5", "ammo:ac5*2", "heat_sink*3"],
+    "LT": ["targeting_computer", "heat_sink*3"]
+  }
+}
