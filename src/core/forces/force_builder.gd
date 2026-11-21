@@ -40,11 +40,15 @@ func tons(side: int) -> int:
 	return n
 
 
-func bv(side: int) -> int:
+func bv(side: int, extra: String = "") -> int:
+	var ids: Array = rosters[side] + ([extra] if extra != "" else [])
+	var defs: Array = ids.map(func(id: String) -> UnitDef: return units.get_def(id))
+	var net := C3.form(defs)
 	var n := 0
-	for id: String in rosters[side]:
-		n += unit_bv(side, units.get_def(id))
-	return n
+	for i in defs.size():
+		var b := unit_bv(side, defs[i])
+		n += b + (roundi(b * C3.bv_percent(net.size()) / 100.0) if net.has(i) else 0)
+	return n  # C3 networks raise each member's BV (p. 222)
 
 
 ## A design's BV with this side's MechWarrior skill (book p. 222).
@@ -77,7 +81,7 @@ func cant_add(side: int, def_id: String) -> String:
 		if rosters[side].size() >= MAX_UNITS and not def.is_clan():
 			return "A Clan Star can hold %d, but an Inner Sphere 'Mech makes it a lance of %d" % [STAR, MAX_UNITS]
 		return "A %s is at most %d 'Mechs" % [formation(side).to_lower(), max_units(side, def_id)]
-	if bv(side) + unit_bv(side, def) > budget:
+	if bv(side, def_id) > budget:
 		return "Over budget: %d of %d BV left" % [budget - bv(side), budget]
 	return ""
 

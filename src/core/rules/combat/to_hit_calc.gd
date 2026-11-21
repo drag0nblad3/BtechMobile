@@ -47,6 +47,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if br == WeaponDef.Bracket.OUT:
 		th.impossible = "Out of range (%d hexes, max %d)" % [dist, p.long_range]
 		return th
+	var c3 := C3.improve(state, attacker, target, p, br) if spotter == null and not wc["under_range"] else {}
+	if not c3.is_empty():
+		br = c3["br"]
 	var wet := " under water" if wc["under_range"] else ""
 	if wc["under_range"]:
 		if br == WeaponDef.Bracket.LONG:
@@ -59,12 +62,15 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		IndirectFire.add_mods(th, state, spotter)
 		th.spotter_id = spotter.id
 	IndirectFire.add_spotting_mod(th, state, attacker)
+	var rdist: int = c3.get("dist", dist)
+	if not c3.is_empty():
+		C3.add_mods(th, c3)
 	match br:
 		WeaponDef.Bracket.MEDIUM:
-			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [dist, p.name, p.range_text(),
+			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
 		WeaponDef.Bracket.LONG:
-			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [dist, p.name, p.range_text(),
+			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
 	if p.min_range > 0 and dist <= p.min_range:
 		th.add("minimum range", p.min_range - dist + 1,
