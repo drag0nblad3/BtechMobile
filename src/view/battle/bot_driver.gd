@@ -8,6 +8,7 @@ const PAUSE := 0.5
 var controller: GameController
 var units_layer: UnitsLayer
 var bot_sides: Array = []
+var skill: int = BotSkill.Level.VETERAN  ## BotSkill.Level the computer plays at.
 var lessons: LessonCard = null  ## Waits while a tutorial lesson is open.
 var _wait := 0.0
 
@@ -23,4 +24,4 @@ func _process(delta: float) -> void:
 	_wait += delta
 	if _wait >= PAUSE:
 		_wait = 0.0
-		Bot.act(controller, controller.state.active_side())
+		Bot.act(controller, controller.state.active_side(), skill)

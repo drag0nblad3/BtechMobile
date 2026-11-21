@@ -1,13 +1,15 @@
 class_name GameSettings
 extends RefCounted
 ## Player preferences saved in user://settings.cfg (survives app restarts).
-## The explanation level (ExplainLevel: full / light / off) and training
-## campaign progress ({mission id: {won, kills}}, see TrainingCampaign).
+## The explanation level (ExplainLevel: full / light / off), how well the
+## computer plays (BotSkill.Level) and training campaign progress
+## ({mission id: {won, kills}}, see TrainingCampaign).
 
 const PATH := "user://settings.cfg"
 
 static var explain_level: int = ExplainLevel.FULL
 static var training: Dictionary = {}
+static var ai_level: int = BotSkill.Level.REGULAR
 static var _loaded := false
 
 
@@ -19,6 +21,7 @@ static func load_settings() -> void:
 	if cfg.load(PATH) == OK:
 		explain_level = clampi(int(cfg.get_value("explain", "level", ExplainLevel.FULL)), 0, 2)
 		training = cfg.get_value("training", "progress", {})
+		ai_level = clampi(int(cfg.get_value("ai", "level", BotSkill.Level.REGULAR)), 0, BotSkill.NAMES.size() - 1)
 
 
 static func set_explain_level(level: int) -> void:
@@ -38,4 +41,12 @@ static func record_training(id: String, result: Dictionary) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("training", "progress", training)
+	cfg.save(PATH)
+
+
+static func set_ai_level(level: int) -> void:
+	ai_level = clampi(level, 0, BotSkill.NAMES.size() - 1)
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("ai", "level", ai_level)
 	cfg.save(PATH)

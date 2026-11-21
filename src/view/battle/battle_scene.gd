@@ -30,6 +30,8 @@ func _ready() -> void:
 	bots = BotDriver.new()
 	bots.controller = controller
 	bots.bot_sides = BattleLaunch.take_bots()
+	bots.skill = BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level
+	BattleLaunch.bot_level = -1
 	explainer = Explainer.new(GameSettings.explain_level)
 	if BattleLaunch.tutorial_path != "":
 		tutorial = Tutorial.from_scenario(BattleLaunch.tutorial_path)
