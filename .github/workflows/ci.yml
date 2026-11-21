@@ -19,7 +19,7 @@ jobs:
           mkdir -p /tmp/component-shape-renders
           xvfb-run -a godot --rendering-method gl_compatibility --resolution 1500x900 \
             -s tools/capture_component_shapes.gd -- /tmp/component-shape-renders 2>&1 | tee shape-render.log
-          [ "$(grep -c '^SHAPE_RENDER|' shape-render.log)" -eq 14 ]
+          [ "$(grep -c '^SHAPE_RENDER|' shape-render.log)" -eq 26 ]
           ! grep -E "SCRIPT ERROR|Parse Error|SHAPE_ERROR" shape-render.log
       - uses: actions/upload-artifact@v4
         if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
