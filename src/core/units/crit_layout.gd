@@ -54,8 +54,11 @@ static func build(def: UnitDef) -> Array:
 		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE"), def)
 	for loc: int in def.bulk_slots:
 		for item: String in def.bulk_slots[loc]:
-			_place(out[loc], CritSlot.new(CritSlot.Kind.BULK, "Ferro-Fibrous" if item == "ferro_fibrous" else "Endo Steel"), def)
+			_place(out[loc], CritSlot.new(CritSlot.Kind.BULK, BULK_NAMES[item]), def)
 	return out
+
+
+const BULK_NAMES := {"endo_steel": "Endo Steel", "ferro_fibrous": "Ferro-Fibrous", "tsm": "Triple-Strength Myomer"}
 
 
 static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:

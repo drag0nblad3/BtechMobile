@@ -94,9 +94,9 @@ const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "
 
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
 ## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword",
-## "endo_steel", "ferro_fibrous", "targeting_computer", "guardian_ecm", "masc"; "<item>*N" repeats an item N times.
+## "endo_steel", "ferro_fibrous", "tsm", "targeting_computer", "guardian_ecm", "masc"; "<item>*N" repeats an item N times.
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
-	if item == "endo_steel" or item == "ferro_fibrous":
+	if item == "endo_steel" or item == "ferro_fibrous" or item == "tsm":
 		if not bulk_slots.has(loc):
 			bulk_slots[loc] = []
 		bulk_slots[loc].append(item)

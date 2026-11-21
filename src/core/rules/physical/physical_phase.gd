@@ -25,7 +25,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 		var hit := roll >= need and need <= 12
 		emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id,
 				"kind": d["kind"], "limb": d["limb"], "roll": roll, "need": need,
-				"hit": hit, "damage": d["damage"] if hit else 0, "mods": th.mods})
+				"hit": hit, "damage": d["damage"] if hit else 0, "mods": th.mods,
+				"tsm": d.get("tsm", false)})
 		if d["kind"] == "push":
 			if hit:
 				steps.append({"kind": "push", "attacker": a, "target": t,

@@ -20,6 +20,7 @@ static func options(state: GameState, a: Unit, c: Vector2i) -> Array[Dictionary]
 		out.append(_swing(state, a, c, a.def.melee[i]["kind"], a.def.melee[i]["loc"], why, a.melee_lost.has(i)))
 	if a.club != "":
 		out.append(_swing(state, a, c, "club", -1, why, false))
+	Tsm.boost(a, out)
 	return out
 
 

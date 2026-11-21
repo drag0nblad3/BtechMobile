@@ -170,6 +170,8 @@ static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary)
 	if d["limb"] >= 0:
 		who += " (%s)" % Location.name_for(s.unit_by_id(d["attacker_id"]).def, d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
+	if d["hit"] and d.get("tsm", false) and level != ExplainLevel.OFF:
+		res += " (doubled: its triple-strength myomer is hot)" if level == ExplainLevel.FULL else " (TSM)"
 	if d.get("why", "") != "":
 		var t := "%s: automatic miss, %s" % [who, d["why"]]
 		if level == ExplainLevel.FULL:

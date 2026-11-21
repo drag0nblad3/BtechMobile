@@ -179,11 +179,14 @@ func lose_heat_sink(slot: CritSlot) -> bool:
 ## destroyed leg sets the base to 1; both legs gone is 0.
 func walk_mp() -> int:
 	if def.quad:
-		return maxi(0, Quad.walk_base(self) - HeatScale.mp_penalty(heat))
+		var qb := Quad.walk_base(self)
+		return maxi(0, qb + (Tsm.mp_bonus(self) if qb > 0 else 0) - HeatScale.mp_penalty(heat))
 	if legs_destroyed() >= 2:
 		return 0
 	var base := mini(def.walk_mp, 1) if legs_destroyed() == 1 \
 			else maxi(mini(def.walk_mp, 1), def.walk_mp - leg_actuator_hits())
+	if base > 0:
+		base += Tsm.mp_bonus(self)
 	return maxi(0, base - HeatScale.mp_penalty(heat))
 
 
