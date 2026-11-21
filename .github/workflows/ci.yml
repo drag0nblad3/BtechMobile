@@ -48,6 +48,11 @@ jobs:
           name: component-shape-render-log
           path: shape-render.log
           if-no-files-found: ignore
+      - name: Battle persistence tests (fast feedback)
+        run: |
+          set -o pipefail
+          godot --headless -s tests/run_tests.gd -- battle_save 2>&1 | tee battle-save-test.log
+          ! grep -E "SCRIPT ERROR|Parse Error" battle-save-test.log
       - name: Unit tests
         run: |
           set -o pipefail
