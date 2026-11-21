@@ -30,6 +30,13 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 				return "%s can't %s at this heat in these temperatures." % [who, what]
 			return "%s rolls to %s: %d vs %d+: %s." % [who, what, d["roll"], d["need"],
 					"made it" if d["ok"] else "failed"]
+		GameEvent.HEAT_SINKS_SWITCHED:
+			var u := s.unit_by_id(d["unit_id"])
+			var h := "%s now has %d heat sink%s switched off." % [who, d["off"], "" if d["off"] == 1 else "s"] if d["off"] > 0 \
+					else "%s switches all its heat sinks back on." % who
+			if level == ExplainLevel.FULL and d["off"] > 0:
+				h += " They shed no heat from next turn" + (", so it can run hot enough (heat %d+) to wake its triple-strength myomer." % Tsm.HEAT if Tsm.has(u.def) else ".")
+			return h
 		GameEvent.SHUTDOWN:
 			if d.get("voluntary", false):
 				if not d["shutdown"]:

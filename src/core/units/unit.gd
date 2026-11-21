@@ -23,6 +23,8 @@ var engine_hits: int = 0
 var gyro_hits: int = 0
 var sensor_hits: int = 0
 var heat_sinks_lost: int = 0
+var sinks_off: int = 0  ## Heat sinks switched off by choice (HeatSinkSwitch).
+var sinks_off_request: int = -1  ## Sinks to have off after the End Phase, -1 none.
 ## Physical weapons destroyed by critical hits: index into def.melee -> true.
 var melee_lost: Dictionary = {}
 ## Club carried: "" none, "tree" or "girder" (MeleeWeapons).
@@ -161,7 +163,7 @@ func has_hit_slot(kind: int) -> bool:
 
 
 func working_heat_sinks() -> int:
-	return maxi(0, def.heat_sinks - heat_sinks_lost)
+	return maxi(0, def.heat_sinks - heat_sinks_lost - sinks_off)
 
 
 ## Heat removed each Heat Phase by the working heat sinks.

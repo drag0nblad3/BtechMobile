@@ -143,6 +143,14 @@ func request_power(unit: Unit, want: String) -> bool:
 	return true
 
 
+## Asks to have `n` heat sinks switched off from the next End Phase (p. 103).
+func request_sinks_off(unit: Unit, n: int) -> bool:
+	if unit == null or HeatSinkSwitch.problem(unit, n) != "":
+		return false
+	unit.sinks_off_request = n
+	return true
+
+
 func set_torso_twist(unit: Unit, dir: int) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad:
 		return false

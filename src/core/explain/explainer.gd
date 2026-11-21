@@ -96,7 +96,7 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 				t += " Next physical phase it can swing it for 1 damage per 5 tons, and the target must make a piloting roll." + (
 						" A tree breaks after one hit." if d["club"] == "tree" else "")
 			return t
-		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN:
+		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN, GameEvent.HEAT_SINKS_SWITCHED:
 			return HeatText.describe(e, s, level)
 		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.MASC, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
 			return PilotText.describe(e, s, level, seen)

@@ -4,7 +4,8 @@ extends RefCounted
 ## armor and structure per location, weapons, and critical damage.
 
 
-## `on_power(want)`: if given, a button to shut down or restart by choice.
+## `on_power(want)`: if given, a button to shut down or restart by choice,
+## and heat sink switches (want "sinks:<n>").
 static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	var l := RichTextLabel.new()
 	l.bbcode_enabled = true
@@ -14,16 +15,18 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	l.add_theme_font_size_override("bold_font_size", 21)
 	l.text = text(u)
 	var want := power_choice(u)
-	if not on_power.is_valid() or want[0] == null:
+	if not on_power.is_valid() or u.destroyed:
 		return l
 	var box := VBoxContainer.new()
 	box.add_child(l)
-	var b := Button.new()
-	b.text = want[1]
-	b.custom_minimum_size = Vector2(0, 58)
-	b.add_theme_font_size_override("font_size", 20)
-	b.pressed.connect(func() -> void: on_power.call(want[0]))
-	box.add_child(b)
+	if want[0] != null:
+		var b := Button.new()
+		b.text = want[1]
+		b.custom_minimum_size = Vector2(0, 58)
+		b.add_theme_font_size_override("font_size", 20)
+		b.pressed.connect(func() -> void: on_power.call(want[0]))
+		box.add_child(b)
+	box.add_child(SinkButtons.row(u, on_power))
 	return box
 
 
@@ -43,8 +46,9 @@ static func text(u: Unit) -> String:
 	var t := "[b]%s[/b]  %s · %d t %s\n" % [Names.unit(u), d.model, d.tonnage, d.weight_class()]
 	t += "MP %d walk / %d run (base %d/%d)\n" % [u.walk_mp(), u.run_mp(), d.walk_mp, d.run_mp()]
 	t += "Heat [color=%s]%d[/color] / 30: %s\n" % [_heat_color(u.heat), u.heat, HeatScale.effects_text(u.heat)]
-	t += "Heat sinks %d of %d%s\n" % [u.working_heat_sinks(), d.heat_sinks,
-			" double (%d heat)" % u.dissipation() if d.double_heat_sinks else ""]
+	t += "Heat sinks %d of %d%s%s\n" % [u.working_heat_sinks(), d.heat_sinks,
+			" double (%d heat)" % u.dissipation() if d.double_heat_sinks else "",
+			" (%d switched off)" % u.sinks_off if u.sinks_off > 0 else ""]
 	var tech: Array[String] = []
 	if d.is_clan():
 		tech.append("Clan technology")
