@@ -56,6 +56,8 @@ static func text(u: Unit) -> String:
 		tech.append("endo steel structure")
 	if d.ecm_loc >= 0:
 		tech.append("Guardian ECM%s" % (" (destroyed)" if u.ecm_lost else ""))
+	if d.masc_loc >= 0:
+		tech.append("MASC%s" % (" (destroyed)" if Masc.broken(u) else " (next use %d+)" % Masc.need(u)))
 	if d.tc_loc >= 0:
 		tech.append("targeting computer%s" % (" (destroyed)" if u.tc_lost else ""))
 	if d.armor_type == "ferro_fibrous":

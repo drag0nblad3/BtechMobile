@@ -44,6 +44,9 @@ static func build(def: UnitDef) -> Array:
 	if def.ecm_loc >= 0:
 		for s in 2:
 			_place(out[def.ecm_loc], CritSlot.new(CritSlot.Kind.ECM, "Guardian ECM"), def)
+	if def.masc_loc >= 0:
+		for s in Masc.size(def):
+			_place(out[def.masc_loc], CritSlot.new(CritSlot.Kind.MASC, "MASC"), def)
 	if def.tc_loc >= 0:
 		for s in TargetingComputer.size(def):
 			_place(out[def.tc_loc], CritSlot.new(CritSlot.Kind.TARGETING, "Targeting Computer"), def)

@@ -13,6 +13,7 @@ signal cancel
 signal charge
 signal prone
 signal smash
+signal masc
 signal leave  ## Move off the battlefield where the mission allows.
 signal top_down_toggled
 signal sheet_toggled
@@ -36,6 +37,7 @@ var attack_bar: HBoxContainer
 var mode_button: Button
 var charge_button: Button
 var smash_button: Button
+var masc_button: Button
 var explain_button: Button
 var attack_button: Button
 var skip_button: Button
@@ -93,6 +95,8 @@ func _ready() -> void:
 	charge_button.visible = false
 	smash_button = _button(move_bar, "Smash in", smash)
 	smash_button.visible = false
+	masc_button = _button(move_bar, "MASC", masc)
+	masc_button.visible = false
 	leave_button = _button(move_bar, "Leave map", leave)
 	leave_button.visible = false
 	_button(move_bar, "Prone", prone)

@@ -41,9 +41,11 @@ static func damage(s: GameState, d: Dictionary, level: int) -> String:
 static func crit_check(s: GameState, d: Dictionary, level: int) -> String:
 	if d["crits"] == 0 and level != ExplainLevel.FULL:
 		return ""
-	var t := "  Critical check (%s): rolled %d, %d critical hit%s" % [
-			Location.code(d["loc"]), d["roll"], d["crits"], "" if d["crits"] == 1 else "s"]
-	if level == ExplainLevel.FULL:
+	var t := "  Critical check (%s%s): rolled %d, %d critical hit%s" % [
+			"MASC failure, " if d.get("why", "") == "MASC" else "", Location.code(d["loc"]), d["roll"], d["crits"], "" if d["crits"] == 1 else "s"]
+	if level == ExplainLevel.FULL and d.get("why", "") == "MASC":
+		t += ". All of them land in this leg; a 12 counts as three"
+	elif level == ExplainLevel.FULL:
 		t += ". 8-9 means one, 10-11 two, 12 three or a lost limb"
 	return t + "."
 

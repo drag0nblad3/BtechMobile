@@ -17,7 +17,7 @@ static func act(gc: GameController, side: int) -> bool:
 	var u := pending[0]
 	match s.phase:
 		Phase.Kind.MOVEMENT:
-			var m := BotMove.plan(s, u)
+			var m := BotMasc.plan(gc, u, BotMove.plan(s, u))
 			gc.announce(u, m["reason"])
 			return gc.submit_move(u, m["key"], m["mode"], m.get("charge", -1), false, false, m.get("leave", false))
 		Phase.Kind.WEAPON_ATTACK:
