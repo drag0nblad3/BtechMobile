@@ -61,7 +61,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Ammo used per shot; no ammo, no shot.
 - ✅ Flamers (p. 183): a hit deals damage and the same amount of heat to the target; outside heat is capped at 15 per turn.
 - 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter; a 'Mech that declared a charge or DFA can't spot.
-- ✅ Aimed shots (`AimedShot`, p. 70): against an immobile target, a non-cluster, non-indirect shot (no Ultra double fire, no LB-X cluster rounds) may aim at a location; -4 kept, but a head shot drops it and takes +3; on a hit 1D6 4+ lands there, else the location is rolled; with partial cover legs can't be chosen, the cover modifier is dropped and leg rolls are rerolled. The weapon panel shows an "Aim at" button for immobile targets (`AimPicker`) — `TODO(rules)`: the computer never aims.
+- ✅ Aimed shots (`AimedShot`, p. 70): against an immobile target, a non-cluster, non-indirect shot (no Ultra double fire, no LB-X cluster rounds) may aim at a location; -4 kept, but a head shot drops it and takes +3; on a hit 1D6 4+ lands there, else the location is rolled; with partial cover legs can't be chosen, the cover modifier is dropped and leg rolls are rerolled. The weapon panel shows an "Aim at" button for immobile targets (`AimPicker`); the computer aims too (`BotAim`).
 
 ## Damage
 - ✅ Hit location tables (front/rear, left, right) — `TODO(rules)`: verify.
@@ -165,7 +165,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
   end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
   to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).
-- 🟡 Bot charges and death from above (`BotCharge`): tried at each end position with an enemy straight ahead, valued as expected damage + a bonus for the target's piloting roll − part of its own damage − the fall from a missed DFA, used only when it beats shooting. Pushes (`BotPhysical`) are valued by the chance to knock the target down, a ledge fall, or shoving it off the map; it picks up a club when its guns would do little and an enemy is within 3 hexes. ⬜ Aimed shots, attacking buildings; smarter focus fire and retreat.
+- 🟡 Bot charges and death from above (`BotCharge`): tried at each end position with an enemy straight ahead, valued as expected damage + a bonus for the target's piloting roll − part of its own damage − the fall from a missed DFA, used only when it beats shooting. Pushes (`BotPhysical`) are valued by the chance to knock the target down, a ledge fall, or shoving it off the map; it picks up a club when its guns would do little and an enemy is within 3 hexes. Aimed shots (`BotAim`): at a sitting target, or with a targeting computer, it aims a shot when the chance of hitting times the value of that location (half the hits land there; finishing the head, CT or an XL side torso is worth most) beats an ordinary shot. ⬜ Attacking buildings; smarter focus fire and retreat.
 - ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
 - ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.
