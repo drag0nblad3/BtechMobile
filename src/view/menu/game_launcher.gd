@@ -30,7 +30,7 @@ func _ready() -> void:
 	lab.name = "VoxelLabButton"
 	var caption := UiKit.label(column, "Test walking, targeted armor damage and limb destruction.", UiKit.SMALL)
 	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	var vx := UiKit.button(column, "CLAUDE VOXEL TEST", _open_vx, Vector2(0, 72))
+	var vx := UiKit.button(column, "HAND-SCULPTED VOXEL MECHS", _open_vx, Vector2(0, 72))
 	vx.name = "VxShowcaseButton"
 
 
