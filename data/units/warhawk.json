@@ -1,0 +1,15 @@
+{
+  "id": "warhawk", "name": "Warhawk", "tonnage": 85, "walk_mp": 4, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "warhawk", "engine_type": "xl",
+  "armor": {"HD": 9, "CT": 41, "LT": 27, "RT": 27, "LA": 28, "RA": 28, "LL": 36, "RL": 36},
+  "rear_armor": {"CT": 13, "LT": 9, "RT": 9},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 25, "role": "Clan sniper assault. Four ER PPCs hit for 60 at 23 hexes, but firing all four overheats it fast.", "equipment": {
+      "LA": ["c_er_ppc", "c_er_ppc", "heat_sink", "heat_sink"],
+      "RA": ["c_er_ppc", "c_er_ppc"],
+      "LT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink", "heat_sink"]
+    }}
+  ]
+}

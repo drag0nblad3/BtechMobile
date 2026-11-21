@@ -1,0 +1,19 @@
+{
+  "id": "fire_moth", "name": "Fire Moth", "tonnage": 20, "walk_mp": 10, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "fire_moth", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 8, "LT": 7, "RT": 7, "LA": 4, "RA": 4, "LL": 6, "RL": 6},
+  "rear_armor": {"CT": 2, "LT": 2, "RT": 2},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*6"], "RA": ["ferro_fibrous*1"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 10, "role": "Clan scout. The fastest 'Mech on the field at 10 walking MP; Streaks and lasers to harass, paper-thin armor.", "equipment": {
+      "LA": ["c_er_medium_laser"],
+      "RA": ["c_er_medium_laser"],
+      "LT": ["c_streak_srm4", "ammo:c_streak_srm4"],
+      "CT": ["c_er_small_laser", "c_er_small_laser"]
+    }},
+    {"model": "A", "heat_sinks": 10, "role": "ATM Fire Moth: an ATM 6 with long-range ER and close-range HE missiles.", "equipment": {
+      "RT": ["c_atm6", "ammo:c_atm6:er", "ammo:c_atm6:he"],
+      "CT": ["c_er_small_laser"]
+    }}
+  ]
+}
