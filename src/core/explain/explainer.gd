@@ -136,6 +136,8 @@ static func _initiative(d: Dictionary, level: int) -> String:
 static func _moved(s: GameState, d: Dictionary, level: int) -> String:
 	var mode: int = d["mode"]
 	var hexes: int = d["hexes"]
+	if d.get("asset", false):
+		return AssetText.moved(s, d, level)
 	if mode < 0:
 		return "%s stands still." % _u(s, d) + (" Its shots get no movement penalty." if level == ExplainLevel.FULL else "")
 	var t := "%s %s %d hex%s (%d MP)." % [_u(s, d), MoveMode.verb(mode),

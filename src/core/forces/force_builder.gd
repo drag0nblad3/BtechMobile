@@ -7,6 +7,9 @@ const MAX_UNITS := 4
 ## An all-Clan side may field a Star of five (book p. 219 suggests lances
 ## of 4 and Stars of 5 but doesn't require either).
 const STAR := 5
+## Battlefield Support Assets (vehicles, infantry) per side, on top of the
+## lance, bought with BV at 20 per BSP (Battle Value Integration, p. 157).
+const MAX_ASSETS := 4
 const FORMATION_TIP := "Inner Sphere 'Mechs fight in lances of four; the Clans fight in Stars of five, so an all-Clan side may take a fifth 'Mech."
 const BUDGETS := [2000, 3000, 4500, 6000, 8000]
 ## Battlefield condition choices on the start screen (Conditions.from_dict).
@@ -53,6 +56,8 @@ func bv(side: int, extra: String = "") -> int:
 
 ## A design's BV with this side's MechWarrior skill (book p. 222).
 func unit_bv(side: int, def: UnitDef) -> int:
+	if def.asset != null:
+		return def.bv  # an Asset's Skill is on its card, not the side's pilots
 	return BvSkill.adjusted(BattleValue.of(def), skills[side].x, skills[side].y)
 
 
@@ -77,8 +82,14 @@ func cant_add(side: int, def_id: String) -> String:
 	var def := units.get_def(def_id)
 	if def == null:
 		return "Unknown design"
-	if rosters[side].size() >= max_units(side, def_id):
-		if rosters[side].size() >= MAX_UNITS and not def.is_clan():
+	if def.asset != null:
+		if asset_ids(side).size() >= MAX_ASSETS:
+			return "At most %d vehicles or infantry per side" % MAX_ASSETS
+		if bv(side, def_id) > budget:
+			return "Over budget: %d of %d BV left" % [budget - bv(side), budget]
+		return ""
+	if mech_ids(side).size() >= max_units(side, def_id):
+		if mech_ids(side).size() >= MAX_UNITS and not def.is_clan():
 			return "A Clan Star can hold %d, but an Inner Sphere 'Mech makes it a lance of %d" % [STAR, MAX_UNITS]
 		return "A %s is at most %d 'Mechs" % [formation(side).to_lower(), max_units(side, def_id)]
 	if bv(side, def_id) > budget:
@@ -88,8 +99,8 @@ func cant_add(side: int, def_id: String) -> String:
 
 ## 5 if every 'Mech on the side (and `adding`, if given) is Clan, else 4.
 func max_units(side: int, adding: String = "") -> int:
-	var ids: Array = rosters[side].duplicate()
-	if adding != "":
+	var ids: Array = mech_ids(side)
+	if adding != "" and units.get_def(adding).asset == null:
 		ids.append(adding)
 	if ids.is_empty():
 		return MAX_UNITS
@@ -98,7 +109,17 @@ func max_units(side: int, adding: String = "") -> int:
 
 ## "Star" for an all-Clan side, else "Lance".
 func formation(side: int) -> String:
-	return "Star" if not rosters[side].is_empty() and max_units(side) == STAR else "Lance"
+	return "Star" if not mech_ids(side).is_empty() and max_units(side) == STAR else "Lance"
+
+
+## The side's 'Mech design ids (no Assets).
+func mech_ids(side: int) -> Array:
+	return rosters[side].filter(func(id: String) -> bool: return units.get_def(id).asset == null)
+
+
+## The side's Asset design ids.
+func asset_ids(side: int) -> Array:
+	return rosters[side].filter(func(id: String) -> bool: return units.get_def(id).asset != null)
 
 
 func add(side: int, def_id: String) -> bool:
@@ -159,17 +180,20 @@ func build(map: BattleMap, dice: Dice = null) -> GameState:
 				"summary": "Last side with a 'Mech still fighting wins."})
 	var next_id := 1
 	for side in 2:
-		var row := map.height - 2 if side == 0 else 1
-		var ids: Array = rosters[side]
 		var placed: Array[Unit] = []
-		for i in ids.size():
-			var col := int(round((i + 1) * map.width / float(ids.size() + 1))) - 1
-			var c := Hex.INVALID if not setup.is_empty() else _free_hex(state, Hex.from_offset(Vector2i(col, row)))
-			var u := Unit.new(next_id, units.get_def(ids[i]), side, c, 0 if side == 0 else 3)
-			u.pilot = Pilot.new(skills[side].x, skills[side].y)
-			state.add_unit(u)
-			placed.append(u)
-			next_id += 1
+		for line in 2:  # 'Mechs in front, Assets one row behind
+			var row := (map.height - 2 + line if side == 0 else 1 - line)
+			row = clampi(row, 0, map.height - 1)
+			var ids: Array = mech_ids(side) if line == 0 else asset_ids(side)
+			for i in ids.size():
+				var col := int(round((i + 1) * map.width / float(ids.size() + 1))) - 1
+				var c := Hex.INVALID if not setup.is_empty() else _free_hex(state, Hex.from_offset(Vector2i(col, row)), units.get_def(ids[i]))
+				var u := Unit.new(next_id, units.get_def(ids[i]), side, c, 0 if side == 0 else 3)
+				if u.asset == null:
+					u.pilot = Pilot.new(skills[side].x, skills[side].y)
+				state.add_unit(u)
+				placed.append(u)
+				next_id += 1
 		if not setup.is_empty():
 			Deployment.place(state, placed, setup["zones"][side])
 	return state
@@ -190,13 +214,15 @@ func mission_name() -> String:
 	return StandardMissions.info(mission_id).get("name", mission_id)
 
 
-## Nearest hex to `c` that is dry-ish (depth < 2) and empty.
-func _free_hex(state: GameState, c: Vector2i) -> Vector2i:
+## Nearest hex to `c` that is dry-ish (depth < 2) and empty; an Asset
+## also needs a hex its movement type may be in.
+func _free_hex(state: GameState, c: Vector2i, def: UnitDef = null) -> Vector2i:
 	for radius in 6:
 		for t: Vector2i in state.map.coords():
 			if Hex.distance(t, c) != radius:
 				continue
 			var tile := state.map.get_tile(t)
-			if tile.depth < 2 and state.unit_at(t) == null:
+			if tile.depth < 2 and state.unit_at(t) == null and (def == null or def.asset == null \
+					or AssetMoveCost.may_enter(def.asset, tile)):
 				return t
 	return c
