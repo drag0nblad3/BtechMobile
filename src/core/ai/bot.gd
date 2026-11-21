@@ -34,6 +34,9 @@ static func act(gc: GameController, side: int) -> bool:
 			var unjam := BotModes.unjam_all(gc, u)
 			if unjam != "":
 				f["reason"] += "; " + unjam
+			var tag := BotNarc.add_beacons(s, u, f["shots"])
+			if tag != "":
+				f["reason"] += "; " + tag
 			var aim := BotAim.choose(s, u, f["shots"])
 			gc.announce(u, f["reason"] + (" (twists its torso)" if f["twist"] != 0 else "") + ("; " + aim if aim != "" else ""))
 			return gc.declare_fire(u, f["shots"])

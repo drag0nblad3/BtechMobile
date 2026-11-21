@@ -1,0 +1,14 @@
+{
+  "id": "hunchback_hbk4g_rac", "name": "Hunchback", "model": "HBK-4G (RAC refit)", "tonnage": 50,
+  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 13, "sprite": "hunchback",
+  "role": "A Hunchback refitted for this game with a Rotary AC/5 instead of the AC/20: up to six shots a turn at longer range, but every burst risks a jam.",
+  "armor": {"HD": 9, "CT": 24, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 24, "RL": 24},
+  "rear_armor": {"CT": 8, "LT": 6, "RT": 6},
+  "equipment": {
+    "HD": ["small_laser"],
+    "LT": ["ammo:rotary_ac5*3", "heat_sink*2"],
+    "RT": ["rotary_ac5", "ammo:rotary_ac5*2", "heat_sink"],
+    "LA": ["medium_laser"],
+    "RA": ["medium_laser"]
+  }
+}

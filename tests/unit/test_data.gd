@@ -49,7 +49,7 @@ func test_every_design_is_legal() -> void:
 		check_eq(u.structure[Location.HEAD], 3)
 		for w in u.weapons:
 			if w.def.uses_ammo():
-				check(u.ammo_for(w.def) > 0, "%s ammo for %s" % [def.id, w.def.name])
+				check(u.ammo_for(w.def) + u.ammo_for(w.def, Narc.KIND) > 0, "%s ammo for %s" % [def.id, w.def.name])
 
 
 func test_designs_weigh_their_tonnage() -> void:
