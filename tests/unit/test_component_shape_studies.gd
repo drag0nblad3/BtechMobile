@@ -364,7 +364,7 @@ func test_passes_128_to_132_resculpted_silhouette_landmarks() -> void:
 	for part: Dictionary in a["parts"]:
 		if part["name"] == "lt":
 			shoulder = part["shapes"][0]["loft"]["sections"]
-	check_eq(shoulder.size(), 4, "Atlas cowl requires four drawn cross sections")
+	check(shoulder.size() >= 6, "Atlas rounded shoulder cowl needs six sculpted sections")
 	check(shoulder[0]["polygon"][0][0] != shoulder[1]["polygon"][0][0],
 			"Atlas must not have a rectangular continuous shoulder wall")
 	var mount: Array = []
@@ -451,7 +451,37 @@ func test_bold_reference_passes_138_to_142_fix_fundamental_silhouette() -> void:
 					var x: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
 					diameter = x.max() - x.min()
 	check(diameter >= 24, "Jenner disc is not wide enough")
-	check(j.part("hd")["cells"].has(Vector3i(0, 29, -42)),
+	check(j.part("hd")["cells"].has(Vector3i(0, 28, -42)),
 			"Jenner disc must protrude forward of its twin laser mounts")
 	check(not j.part("hd_disc_rim").is_empty(), "Jenner disc edge absent")
 	check(not j.part("hd_disc_crown").is_empty(), "Jenner disc dome absent")
+
+
+func test_passes_143_to_147_reference_structure_and_usable_muzzles() -> void:
+	var a := VxModel.load_file(MODELS[0])
+	var w := VxModel.load_file(MODELS[1])
+	var j := VxModel.load_file(MODELS[2])
+	for m in [a, w, j]:
+		check(m.errors.is_empty(), "invalid final staged sculpt " + m.id)
+	for name in ["la_finger_knuckles", "ra_finger_knuckles",
+			"la_outer_thumb_pad", "ra_outer_thumb_pad",
+			"lt_round_shoulder_band", "rt_round_shoulder_band",
+			"hd_skull_recess", "hd_lower_mandible"]:
+		check(not a.part(name).is_empty(), "Atlas silhouette part lost " + name)
+	for name in ["ct_wide_abdomen", "ct_lower_breastplate", "ra_integrated_hand",
+			"ra_grip_knuckles", "la_finger_knuckles",
+			"hd_angular_cheek_left", "hd_angular_cheek_right"]:
+		check(not w.part(name).is_empty(), "Wolverine part lost " + name)
+	for name in ["hd_disc_rim", "hd_disc_crown", "hd_front_windscreen",
+			"hd_disc_lower_fairing", "hd_disc_neck_brace",
+			"hd_left_disc_crescent", "hd_right_disc_crescent",
+			"hd_top_glass_left", "hd_top_glass_right"]:
+		check(not j.part(name).is_empty(), "Jenner disc subpart lost " + name)
+	check_eq(w.muzzles[Location.LT].size(), 6, "Compact 2x3 Wolverine SRM6")
+	var rack: Dictionary = w.part("lt_srm6")["cells"]
+	for barrel: Vector3 in w.muzzles[Location.LT]:
+		var aperture := Vector3i(floori(barrel.x), floori(barrel.y), ceili(barrel.z))
+		check(not rack.has(aperture), "Wolverine compact launcher closed port %s" % aperture)
+	check(j.part("hd")["cells"].has(Vector3i(0, 28, -42)),
+			"Jenner forward saucer must remain z=-42")
+	check_eq(a.muzzles[Location.RT].size(), 1, "Atlas AC20")

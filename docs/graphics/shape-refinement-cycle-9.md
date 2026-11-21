@@ -502,3 +502,43 @@ geometry replacements**, not voxel-density or surface-detail passes.
 Structural source checks: identical vertex counts per loft, ordered
 sections, integer voxel coordinates, unaltered weapon metadata, aligned
 mirrored parts. Five-view preview and real voxel/CI checks are pending.
+
+
+## Passes 143–147 — second half: fix actual five-view findings
+
+The first half's Godot render confirmed a recessed Atlas skull and a major
+Jenner disc, but it also showed that the disc's glazing was buried, the
+Wolverine was still wearing an enormous launcher plinth, and the Atlas
+face lacked readable skull features. The remaining five passes rebuild
+all three models EACH time, including new parts, as the user requested.
+
+| Pass | Atlas | Wolverine | Jenner |
+| --- | --- | --- | --- |
+| 143 | Rebuild actual skull eye sockets, dark optics and tooth/jaw openings on the recessed Atlas head, with features projected beyond the face plate. | Add a broad lower-CT abdominal cuirass bridging Wolverine pelvis to chest (not an hourglass white neck). | Add exposed dark Jenner windshield over the front and TOP of the disc, visibly raised above the flat saucer armor. |
+| 144 | Overlay matched curved shoulder-bell joint plates with recessed inside seams, retaining level rounded caps around Atlas skull. | Replace the huge Wolverine SRM6 brick with a compact true 2×3 port launcher immediately beside the narrow head; update six LT muzzle positions accordingly. | Add separately formed side crescent/rim plates to the Jenner disc to flatten its saucer edge and clarify its circular plan view. |
+| 145 | Give both Atlas hands massive separated armored fingers plus thumb pads, integrating into existing compact gauntlets. | Build the Wolverine right grip into a visibly articulated under-cannon fist (knuckle flats and thumb), not a second arm; reinforce its left fist. | Rebuild the disc-to-torso Jenner neck with structural twin-neck struts beneath the saucer to prevent the floating pink rock look. |
+| 146 | Rebuild Atlas lower shoulder roots as two armored spheres at matched height, blending broad rounded cap into narrower articulated arms. | Cut back the oversized Wolverine shoulder tower and replace its slabbed right cap with angled symmetric plating beside the small launcher. | Move Jenner lateral laser-pod armor aft and back away from the much wider forward disc, exposing the unmistakable saucer nose. |
+| 147 | Resculpt the Atlas head under the collar into an explicitly three-dimensional skull (forward mandible plus nested upper brow) and retain round shoulders just above crown. | Lengthen angular Wolverine cheek plates and widen its breastplate into the newly broad abdomen; keep compact 6-tube launcher next to narrow helmet. | Define Jenner canopy’s forward side windows and top curvature with colored exposed glass while rounding the leading disc rim further. |
+
+**Important, intentional weapon metadata change:** Wolverine SRM6 muzzle
+grid was compacted from the older large face into a smaller physical
+2x3 cluster (still six open real voxel mouths) beside its narrow angular
+head. This is the one explicit change to weapon coordinates needed for the
+user's reference geometry goal. Atlas AC20/LRM and Jenner lasers/SRM retain
+their previous weapon data; Wolverine AC5 unchanged.
+
+**Real visual geometry targets**
+- Atlas skull crown y53 vs round shoulders y56, exposed black eye sockets
+  and jaw between level rounded cap shells; hands have fingers/thumbs
+- Wolverine torso and waist broad, narrow angular head, reduced left rack,
+  separate LEFT and RIGHT hands; right fist physically on the SAME
+  gun-bearing arm, not another hanging arm
+- Jenner disc z−42, width 24 voxels, slim flattened profile, glazing
+  exposed above rim and connected by deep underbody neck
+- Head-on, top, side, rear and front-3/4 renders should now test
+  distinct identity, not small edge polish; visual approval remains open
+- Keep subdivision=1; no APK or merge
+
+The first-half unit run caught two outdated test expectations (Atlas
+old section count and Jenner incorrect disc-tip y sample). Both were
+corrected without deleting their physical geometry checks.
