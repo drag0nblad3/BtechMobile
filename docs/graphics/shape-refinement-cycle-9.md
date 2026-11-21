@@ -55,3 +55,11 @@ These are additional views for **shape matching**, not material/texture guides. 
 - The preview uses subtle **component identity colors only in the diagnostic renderer**. Source materials and gameplay colors are unchanged. Do not confuse these colors with model-detail work.
 - Re-evaluate the latest one-image Godot screenshot; silhouettes are still **not approved** for 100–150k voxel refinement.
 
+
+### Shape-only passes 16 and 17
+
+- **16** — Atlas stock torso AC/20 shroud projected farther forward; Wolverine's forearm autocannon cradle lengthened, and its chest breastplates flattened; Jenner's four SRM-4 tubes reorganized as a horizontal, raised dorsal row per newer technical art.
+- **17** — Wolverine lower limbs no longer share the Atlas's rounded armored-tube silhouette: hand-drawn six-faced taper on both thighs and calves, preserving knee/ankle joint gaps.
+- All work remains at `subdivide:1`; no procedural detail pass, damage work, texture work, APK build, or merge.
+- The latest single-gallery capture is *shape evidence*, not automatic approval. Atlas/Wolverine still require further front/side reference matching if the component silhouettes fail.
+
