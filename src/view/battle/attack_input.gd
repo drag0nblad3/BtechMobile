@@ -139,26 +139,11 @@ func _select(u: Unit) -> void:
 
 ## Selects every possible weapon not already aimed elsewhere.
 func _default_shots() -> void:
-	for o in _options():
+	for o in AttackView.options(self):
 		if o["to_hit"].possible() and not shots.has(o["index"]):
 			shots[o["index"]] = _here()
 	if target and primary_id < 0 and _selected_here().size() > 0:
 		primary_id = target.id
-
-
-func _options() -> Array:
-	if target_hex != Hex.INVALID:
-		return BuildingFire.options(controller.state, attacker, target_hex)
-	var opts := FireOptions.for_target(controller.state, attacker, target, _secondary(target))
-	AimPicker.apply(controller.state, target, opts, aims.get(target.id, -1))
-	return opts
-
-
-## Secondary if the rules would pick another primary once t is added.
-func _secondary(t: Unit) -> bool:
-	var list := _shot_list()
-	list.append({"weapon": -1, "target_id": t.id})
-	return FireOptions.primary_target(controller.state, attacker, list) != t.id
 
 
 func _toggle(key: Variant, on: bool) -> void:
@@ -193,61 +178,7 @@ func _mode(key: Variant) -> void:
 
 
 func _refresh() -> void:
-	if attacker == null:
-		return
-	var level := GameSettings.explain_level
-	var weapon := is_weapon_phase()
-	hud.show_attack_controls(true, "Fire" if weapon else "Attack", "Hold Fire" if weapon else "Skip")
-	var hexes := {attacker.coord: HexHighlighter.SELECTED}
-	if target:
-		hexes[target.coord] = Color(1, 0.2, 0.2, 0.55)
-	if target_hex != Hex.INVALID:
-		hexes[target_hex] = Color(1, 0.6, 0.2, 0.55)
-	highlighter.show_hexes(hexes)
-	var twist: String = ["  (torso twisted left)", "", "  (torso twisted right)"][attacker.torso_twist + 1]
-	if target_hex != Hex.INVALID and not weapon:
-		hud.set_info("%s -> building %s" % [Names.unit(attacker), Hex.label(target_hex)])
-		hud.set_tip("Buildings can't dodge: punches, kicks and swings always hit them.")
-		if not hud.sheet_open:
-			hud.show_side(AttackPanel.build("Physical attack on building " + Hex.label(target_hex),
-				AttackRows.physical(controller.state, attacker, null, target_hex), physical, level, _toggle))
-		return
-	if target_hex != Hex.INVALID:
-		hud.set_info("%s -> %s %s (%d hexes)%s" % [Names.unit(attacker), _noun(), Hex.label(target_hex),
-				Hex.distance(attacker.coord, target_hex), twist])
-		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
-		if not hud.sheet_open:
-			hud.show_side(AttackPanel.build("Weapons at %s %s" % [_noun(), Hex.label(target_hex)],
-				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode))
-		return
-	if target == null:
-		hud.set_info("%s: tap an enemy (or a building) to aim%s" % [Names.unit(attacker), twist])
-		var club := MeleeWeapons.club_here(controller.state, attacker)
-		if weapon and club != "" and not hud.sheet_open:
-			var b := Button.new()
-			b.text = "Pick up a %s as a club (instead of firing)" % club
-			b.custom_minimum_size = Vector2(0, 58)
-			b.add_theme_font_size_override("font_size", 20)
-			b.pressed.connect(_pick_up_club)
-			hud.show_side(b)
-		hud.set_tip(Advisor.targets(controller.state, attacker, level) if weapon else "Tap an adjacent enemy to punch or kick it.")
-		if not hud.sheet_open:
-			hud.show_side(null)
-		return
-	hud.set_info("%s -> %s (%d hexes)%s" % [Names.unit(attacker), Names.unit(target),
-			Hex.distance(attacker.coord, target.coord), twist])
-	if weapon:
-		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
-		if not hud.sheet_open:
-			var panel := AttackPanel.build("Weapons at " + Names.unit(target),
-				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode)
-			hud.show_side(AimPicker.wrap(panel, target, aims.get(target.id, -1), _next_aim)
-					if AimPicker.available(attacker, target) else panel)
-	else:
-		hud.set_tip(Advisor.physical(controller.state, attacker, target, level))
-		if not hud.sheet_open:
-			hud.show_side(AttackPanel.build("Physical attack on " + Names.unit(target),
-				AttackRows.physical(controller.state, attacker, target), physical, level, _toggle))
+	AttackView.refresh(self)
 
 
 func _shot_list() -> Array:
@@ -267,7 +198,3 @@ func _selected_here() -> Dictionary:
 func _here() -> Variant:
 	return target_hex if target_hex != Hex.INVALID else (target.id if target else -1)
 
-
-## What the tapped hex target is: "building" or the woods' name.
-func _noun() -> String:
-	return WoodsFire.noun(controller.state.map.get_tile(target_hex))
