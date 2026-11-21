@@ -276,3 +276,36 @@ Primary plastic sources: [Hansen's Roughriders Atlas official grey photo](https:
 **Regression controls:** source geometry guard in `tests/unit/test_component_shape_studies.gd` asserts exactly one forward right-forearm profile on the Wolverine, no independent fist boxes, one AC/5 muzzle, physically connected breech and shoulder, independent Jenner bores and Atlas missile openings. Never approve by preview image alone: `VxShapePreview` does not display all erase cuts and true voxel occupancy still matters.
 
 **Open:** despite meaningful improvement, all three remain shape-stage simplifications, not approved sculpt matches. Atlas skull and giant shoulder proportions, Wolverine's torso/weapon interface, and Jenner's cockpit/foot mechanics should be compared quantitatively against the plastic from full front/top/side/rear before 100–150k voxel detail work. Preserve `subdivide:1`, do not merge or build an APK without request.
+
+## CGL plastic geometry cycles 78–97: five-view construction audit
+
+The review now includes five orientations of all three chassis **in one PNG**, in this order: 3/4 front, **straight front**, side, rear 3/4, and **straight top-down**. The top-down camera uses a custom +Z up vector so it does not collapse when pointing straight down. The models rotate in place for each angle; they never stack over one another. These are true Godot voxel-model component renders, not generated artwork.
+
+**Primary sculpt sources and angle priorities:** [CGL reposed Hansen's Roughriders Atlas](https://store.catalystgamelabs.com/products/battletech-hansens-rough-riders-battle-lance) for front and overhead shoulder/skull shapes; [CGL 2019 Wolverine WVR-6R plastic (AGOAC / original Beginner Box)](https://www.sarna.net/wiki/Miniatures_-_Catalyst_Game_Labs) and [painted actual CGL Wolverine](https://mechpainters.org/miniature/wolverine-clan-wolverine/) for separate right-arm AC5 and left fist; [CGL Inner Sphere Striker Lance Jenner](https://www.sarna.net/wiki/BattleTech_Inner_Sphere_Striker_Lance) and [painted actual CGL plastic Jenner](https://mechpainters.org/miniature/jenner-tandrek-stables/) for blunt cockpit, separate side laser nacelles, compact hip pads, and birdlike tarsus. Treat fan STL alternate sculpts as secondary, and prioritize the released plastic when they contradict each other.
+
+| Pass | Chassis | Shape correction / construction finding |
+| --- | --- | --- |
+| 78 | Wolverine | **Physically remove the extra dangling RA fist**. One right forearm now terminates in the AC5; retain the connecting armature. |
+| 79 | Wolverine | Integrate cannon collar, elbow and housing into one visual mechanical arm with a recessed single muzzle. |
+| 80 | Atlas | Flatten upper skull dome and narrow its upper brow/cranial contour. |
+| 81 | Jenner | Compress lateral laser-mount armor while retaining physical four laser bores. |
+| 82 | Atlas | Reduce inflated X/Z footprint of shoulder tops, visible from overhead. |
+| 83 | Jenner | Shorten the armored nose, glazing and chin as a coordinated assembly; adjust nose landmark test. |
+| 84 | Wolverine / Atlas | Narrow shoulder/pauldron forms and strengthen distinct angular assault chest contours. |
+| 85 | Atlas / Wolverine | Pull projecting Atlas jaw/nasal elements back, and slim Wolverine front shoulder armor without losing arm joints. |
+| 86 | Jenner | Narrow thigh/calf hock transitions, maintain contact through both tarsi. |
+| 87 | Atlas | Taper waist/upper-thigh assemblies without damaging pelvis-to-leg joints. |
+| 88 | Atlas | Chamfer both forward and aft shoulder-cowl lips instead of flat boxes. |
+| 89 | Jenner | Replace broad side-wing roots with chamfered short nacelle bases, maintaining barrel positions. |
+| 90 | Wolverine | Thin right torso shoulder shell beside single AC5 arm. |
+| 91 | Atlas | Recess the lower jaw under the skull's raised cheek and orbital plate. |
+| 92 | Jenner | Reduce rear tarsus and center toe bulk, preserve birdlike leg articulation. |
+| 93 | Wolverine | Reduce overhead single AC5 breech footprint without adding another parallel arm. |
+| 94 | Atlas | Rebuild bulky forearm gauntlet into a chamfered mechanical form, less cylindrical. |
+| 95 | Jenner | Physically bridge bilateral laser pods to central hull with small yokes. |
+| 96 | Wolverine | Sharper knee-to-shin discontinuity rather than generic Atlas-thickness legs. |
+| 97 | Atlas | Taper skull cheek / upper cranium under raised orbital brow. |
+
+**New regression gate:** `test_wolverine_single_right_arm_geometry_not_two_right_fists` verifies there is only one forward right forearm in the authored geometry, no lower right fist boxes, and exactly one AC5 muzzle. Older weapon-opening and true occupied-cell overlap checks remain mandatory. Do not use the *visual* coincidence of angled meshes as proof of physical attachment.
+
+**Approval remains withheld.** The five-angle geometry review reduces blind spots but does not establish perfect CGL plastic matching. Keep subdivision at 1, no high-density 100–150k voxel build, no APK build and no branch merge.
