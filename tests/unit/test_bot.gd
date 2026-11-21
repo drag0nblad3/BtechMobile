@@ -130,3 +130,27 @@ func test_bot_charges_when_it_cant_shoot() -> void:
 		gc.submit_move(t, MoveOptions.key(t.coord, t.facing), 0)
 	check(Bot.act(gc, 0), "bot moves")
 	check_eq(s.declared_physical.size(), 1, "and declares the charge")
+
+
+func test_bot_pushes_off_the_map() -> void:
+	var s := GameState.new(open_map(6, 4))
+	var a := mech("atlas_as7d", 0, hex_at(2, 1), 0, 1)
+	var t := mech("hunchback_hbk4g", 1, hex_at(2, 0), 3, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	s.phase = Phase.Kind.PHYSICAL_ATTACK
+	var p := BotPhysical.plan(s, a)
+	check_eq(p["attacks"].size(), 1, p["reason"])
+	if p["attacks"].size() == 1:
+		check_eq(p["attacks"][0]["kind"], "push", p["reason"])
+	check(p["reason"].contains("off the battlefield"), p["reason"])
+
+
+func test_bot_picks_up_club_when_unarmed() -> void:
+	var s := GameState.new(make_map(["L0 L0 L0", "L0 L0 L0"]))
+	var a := mech("atlas_as7d", 0, Vector2i(0, 0), 2, 1)
+	var t := mech("hunchback_hbk4g", 1, Vector2i(2, 0), 5, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	check(BotPhysical.club_instead(s, a, 10.0) == "", "good guns: keep shooting")
+	check(BotPhysical.club_instead(s, a, 0.5).contains("tree"), "weak guns: grab a tree")

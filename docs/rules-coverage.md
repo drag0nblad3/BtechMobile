@@ -162,7 +162,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
   end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
   to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).
-- 🟡 Bot charges and death from above (`BotCharge`): tried at each end position with an enemy straight ahead, valued as expected damage + a bonus for the target's piloting roll − part of its own damage − the fall from a missed DFA, used only when it beats shooting. ⬜ Pushes, picking up clubs, aimed shots; smarter focus fire and retreat.
+- 🟡 Bot charges and death from above (`BotCharge`): tried at each end position with an enemy straight ahead, valued as expected damage + a bonus for the target's piloting roll − part of its own damage − the fall from a missed DFA, used only when it beats shooting. Pushes (`BotPhysical`) are valued by the chance to knock the target down, a ledge fall, or shoving it off the map; it picks up a club when its guns would do little and an enemy is within 3 hexes. ⬜ Aimed shots, attacking buildings; smarter focus fire and retreat.
 - ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
 - ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.

@@ -22,6 +22,10 @@ static func act(gc: GameController, side: int) -> bool:
 			return gc.submit_move(u, m["key"], m["mode"], m.get("charge", -1))
 		Phase.Kind.WEAPON_ATTACK:
 			var f := BotFire.plan(s, u)
+			var club := BotPhysical.club_instead(s, u, f["value"])
+			if club != "":
+				gc.announce(u, club)
+				return gc.pick_up_club(u)
 			if f["twist"] != 0:
 				gc.set_torso_twist(u, f["twist"])
 			var modes: Dictionary = f.get("modes", {})
