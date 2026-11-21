@@ -1,0 +1,29 @@
+{
+  "name": "Training: Knife Fight",
+  "map": "city_outskirts",
+  "bot_sides": [1],
+  "units": [
+    {"def": "hatchetman_hct3f", "side": 0, "hex": "0811", "facing": 0},
+    {"def": "wolverine_wvr6r", "side": 0, "hex": "1112", "facing": 0},
+    {"def": "hunchback_hbk4g", "side": 1, "hex": "0808", "facing": 3},
+    {"def": "commando_com2d", "side": 1, "hex": "1008", "facing": 3}
+  ],
+  "lessons": [
+    {"event": "initiative", "turn": 1, "title": "Close quarters",
+     "text": "The enemy starts only a few hexes away. After the weapon phase comes the Physical Attack phase: 'Mechs next to each other can punch, kick, push or swing a melee weapon. Your Hatchetman carries a hatchet."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Charges",
+     "text": "If you end a move next to an enemy straight ahead with movement to spare, you can charge it: ram it with the Charge button. Damage grows with your weight and how far you moved; you also take some. A 'Mech that charges skips its weapon attacks this turn. A death from above (DFA) is the jumping version: you land on it."},
+    {"event": "phase_changed", "phase": "Physical Attack", "turn": 1, "title": "Punch, kick or hatchet",
+     "text": "Physical attacks roll against your piloting skill instead of gunnery. A punch does a tenth of your tonnage, a kick a fifth, and a hatchet swing also a fifth. Punches hit the upper body, kicks hit the legs. A missed kick makes you roll to stay standing. An arm that fired a weapon this turn can't punch."},
+    {"event": "physical", "unit_side": 0, "title": "Physical attacks",
+     "text": "Each 'Mech makes one kind of physical attack per turn: one or two punches, one kick, one swing, or a push. Damage goes in after the weapon fire, and a kick or a big hit can knock the target over."},
+    {"event": "psr", "title": "Piloting roll",
+     "text": "A 'Mech had to roll piloting to stay on its feet. Taking 20 or more damage in one phase, being kicked, or missing a kick all force a roll. Fail it and the 'Mech falls."},
+    {"event": "fall", "title": "Down!",
+     "text": "A fallen 'Mech takes damage, its pilot may be hurt, and it lies prone. Prone 'Mechs are easier to hit from next to them and harder from afar, and getting up costs movement and another piloting roll."},
+    {"event": "building", "kind": "shot", "title": "Buildings",
+     "text": "Buildings can be shot and kicked like any target. Each has a damage threshold; enough damage brings it down. 'Mechs inside a building are harder to hit and part of each hit lands on the walls."},
+    {"event": "game_over", "title": "Lesson five complete",
+     "text": "You can brawl. One exam left: a full lance against a full lance."}
+  ]
+}

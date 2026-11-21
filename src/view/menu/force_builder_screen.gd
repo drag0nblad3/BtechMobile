@@ -39,6 +39,9 @@ func _ready() -> void:
 		_build_roster(cols, side)
 	_build_options(cols)
 	_refresh()
+	if BattleLaunch.open_training:
+		BattleLaunch.open_training = false
+		open_training.call_deferred()
 
 
 func _build_roster(parent: Control, side: int) -> void:
@@ -85,7 +88,7 @@ func _build_options(parent: Control) -> void:
 			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh(), Vector2(0, 60))
 	_status = UiKit.label(box, "", UiKit.SMALL)
 	UiKit.button(box, "Start battle", _start, Vector2(0, 80))
-	UiKit.button(box, "Training: first battle", _start_training, Vector2(0, 64))
+	UiKit.button(box, "Training campaign", open_training, Vector2(0, 64))
 
 
 func _next_budget() -> void:
@@ -146,13 +149,11 @@ func _refresh() -> void:
 	_status.text = "" if builder.ready_to_fight() else "Add at least one 'Mech to each side."
 
 
-## Guided one-on-one against the computer, with lessons (see Tutorial).
-func _start_training() -> void:
-	var path := "res://data/scenarios/tutorial.json"
-	BattleLaunch.pending = ScenarioLoader.load_file(path, TerrainDb.load_file(), db)
-	BattleLaunch.bot_sides = JsonFile.read(path).get("bot_sides", [1])
-	BattleLaunch.tutorial_path = path
-	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
+## The connected training games with lessons (see TrainingCampaign).
+func open_training() -> void:
+	var t := TrainingScreen.new()
+	t.db = db
+	add_child(t)
 
 
 func _start() -> void:

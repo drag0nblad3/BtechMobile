@@ -1,0 +1,25 @@
+{
+  "name": "Training: Shadows in the Trees",
+  "map": "dense_forest",
+  "bot_sides": [1],
+  "units": [
+    {"def": "wolverine_wvr6r", "side": 0, "hex": "0816", "facing": 0},
+    {"def": "jenner_jr7d", "side": 1, "hex": "0801", "facing": 3}
+  ],
+  "lessons": [
+    {"event": "initiative", "turn": 1, "title": "The to-hit number",
+     "text": "Every shot needs a number on two dice. It starts at your gunnery skill and modifiers pile on top. This lesson is about those modifiers: once you can read them, you can make the enemy's shots hard and yours easy."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Your movement counts",
+     "text": "How you move changes your own aim: standing still +0, walking +1, running +2, jumping +3. The enemy's movement also matters: a target that moved 3-4 hexes is +1 to hit, 5-6 +2, 7-9 +3, 10 or more +4, and +1 more if it jumped.\n\nThe Jenner is fast, so it will often be hard to hit. Walking keeps your own aim steadier than running."},
+    {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Range brackets",
+     "text": "Each weapon has short, medium and long range: +0, +2 and +4. Beyond long range it can't fire at all. Pick the Jenner as target and look at the breakdown under each weapon: range, movement and woods each add their part."},
+    {"event": "phase_changed", "phase": "Weapon Attack", "turn": 2, "title": "Woods",
+     "text": "A target standing in light woods is +1 to hit, heavy woods +2. Woods between you and the target add the same again, hex by hex, and three points of woods block the line entirely. Hills and buildings between you block it too.\n\nIf the Jenner is out of sight, use this turn to find a better angle."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 3, "title": "Use the trees yourself",
+     "text": "Woods protect you the same way. Ending your move in heavy woods makes you +2 harder to hit, but it costs more movement to enter. Ending next to a low hill hides your legs: partial cover, +1 to hit you, and leg hits strike the hill."},
+    {"event": "damage", "unit_side": 1, "title": "Reading the dice",
+     "text": "Your to-hit was the sum of the modifiers. Over a game, choosing shots at 7 or less instead of 9 or more doubles the damage you land. That is why position matters more than firepower."},
+    {"event": "game_over", "title": "Lesson two complete",
+     "text": "You know how to read a to-hit number. Next: heat, the price of firing everything at once."}
+  ]
+}
