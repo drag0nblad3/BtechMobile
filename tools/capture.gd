@@ -3,7 +3,8 @@ extends SceneTree
 ##   xvfb-run godot --rendering-method gl_compatibility -s tools/capture.gd -- out.png [mode]
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · clanmenu (its Clan list) ·
-## map=<id> (battle start on that map) · tutorial (training battle, first lesson).
+## map=<id> (battle start on that map) · tutorial (training battle, first lesson) ·
+## training (the training campaign screen).
 
 var _frames := 0
 var _scene: Node
@@ -29,7 +30,8 @@ func _initialize() -> void:
 		BattleLaunch.pending = ScenarioLoader.load_file(tut, TerrainDb.load_file(), UnitDb.load_dir())
 		BattleLaunch.bot_sides = [1]
 		BattleLaunch.tutorial_path = tut
-	var path := "res://scenes/menu.tscn" if _mode.ends_with("menu") else "res://scenes/main.tscn"
+	BattleLaunch.open_training = _mode == "training"
+	var path := "res://scenes/menu.tscn" if _mode.ends_with("menu") or _mode == "training" else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
 

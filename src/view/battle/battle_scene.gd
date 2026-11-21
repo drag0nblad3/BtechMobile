@@ -18,6 +18,7 @@ var sheet_unit: Unit
 var bots: BotDriver
 var tutorial: Tutorial
 var lessons: LessonCard
+var training := -1  ## Training campaign mission index, -1 outside training.
 
 
 func _ready() -> void:
@@ -36,6 +37,8 @@ func _ready() -> void:
 		lessons = LessonCard.new()
 		add_child(lessons)
 		bots.lessons = lessons
+	training = BattleLaunch.training_mission
+	BattleLaunch.training_mission = -1
 	add_child(BattleEnvironment.build())
 	_build_views(state)
 	_wire()
@@ -109,7 +112,9 @@ func _wire() -> void:
 	hud.log_toggled.connect(hud.log_view.cycle_size)
 	hud.sheet_toggled.connect(_toggle_sheet)
 	hud.explain_cycled.connect(_cycle_explain)
-	hud.new_battle.connect(func(): get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
+	hud.new_battle.connect(func():
+			BattleLaunch.open_training = training >= 0
+			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
 	controller.event.connect(_on_event)
@@ -196,7 +201,7 @@ func _on_event(e: GameEvent) -> void:
 			if e.data["kind"] in ["collapsed", "fire"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
-			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF))
+			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
 			attacks.clear()
 			movement.clear_selection()
 
@@ -209,3 +214,4 @@ func _update_status() -> void:
 		hud.set_tip("The computer is thinking. Its reasons appear in the log." if GameSettings.explain_level != ExplainLevel.OFF else "")
 	elif s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:
 		hud.set_tip("Tap one of your 'Mechs to plan its move.")
+
