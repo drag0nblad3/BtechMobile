@@ -253,9 +253,9 @@ static func _torso(out: Array[Dictionary]) -> void:
 		_round_tube(out, "recessed-eye-socket", x, 8.15,
 				-8.6, -6.0, 0.65, 1, 1)
 		_hollow_tube(out, "slender-socket-bezel", x, 8.15,
-				-8.45, -7.6, 0.70, 0.36, 8, 2)
+				-8.45, -7.6, 0.78, 0.48, 8, 2)
 		_round_tube(out, "recessed-red-eye", x, 8.15,
-				-7.9, -7.6, 0.27, 7, 2)
+				-8.15, -7.4, 0.40, 7, 2)
 	for x in [-2.8, 2.4]:
 		_plate(out, "skull-cheek", [
 			Vector3(x - 0.7, 6.4, -7.5), Vector3(x - 0.3, 8.0, -8.0),
