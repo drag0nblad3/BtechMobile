@@ -25,7 +25,7 @@ func _ambush() -> Array:
 	s.add_unit(mover)
 	s.add_unit(h)
 	HiddenUnits.hide(s, h)
-	var gc := GameController.new(s, 3)
+	var gc := GameController.new(s, 4)
 	gc.start_turn()
 	return [s, gc, mover, h]
 
@@ -124,7 +124,7 @@ func test_owner_reveals_only_at_the_start_of_a_phase() -> void:
 	for u in [a, b, h, e]:
 		s.add_unit(u)
 	HiddenUnits.hide(s, h)
-	var gc := GameController.new(s, 5)
+	var gc := GameController.new(s, 4)
 	gc.start_turn()
 	check(gc.reveal(h), "before anyone moves")
 	check(s.units.has(h) and not h.has_moved, "and it may move")
@@ -145,7 +145,7 @@ func test_jumping_over_hides_nothing_landing_on_it_does() -> void:
 	HiddenUnits.hide(s, h)
 	var path: Array[Vector3i] = [MoveOptions.key(hex_at(1, 4), 0)]
 	check(HiddenUnits.blocked_path(s, j, path, MoveMode.Kind.JUMP).is_empty(), "jumps aren't stopped")
-	var gc := GameController.new(s, 9)
+	var gc := GameController.new(s, 4)
 	gc.start_turn()
 	check(gc.submit_move(j, MoveOptions.key(hex_at(1, 4), 0), MoveMode.Kind.JUMP), "jump accepted")
 	check(s.units.has(h), "landing on it reveals it")
@@ -166,7 +166,7 @@ func test_burning_hex_drives_it_out() -> void:
 func test_bots_play_with_a_hidden_side() -> void:
 	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), UnitDb.load_dir())
 	HiddenUnits.place_side(s, 1)
-	var gc := GameController.new(s, 11)
+	var gc := GameController.new(s, 4)
 	gc.start_turn()
 	var guard := 0
 	while not s.game_over and guard < 4000 and s.turn <= 20:
