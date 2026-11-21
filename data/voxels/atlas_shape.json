@@ -4089,24 +4089,99 @@
       ]
     },
     {
-      "name": "lt_lrm5_cluster",
+      "name": "lt_lrm20_rack",
       "loc": "LT",
       "parent": "lt",
       "pivot": [
-        -12,
-        47,
-        -14
+        -13,
+        46,
+        -13
       ],
       "shapes": [
         {
           "box": [
             [
-              -15,
-              43,
-              -16
+              -16,
+              39,
+              -17
             ],
             [
+              -16,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -13,
+              39,
+              -17
+            ],
+            [
+              -13,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
               -15,
+              39,
+              -17
+            ],
+            [
+              -14,
+              39,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              42,
+              -17
+            ],
+            [
+              -14,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              40,
+              -11
+            ],
+            [
+              -14,
+              41,
+              -11
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -16,
+              42,
+              -17
+            ],
+            [
+              -16,
               45,
               -11
             ]
@@ -4117,8 +4192,8 @@
           "box": [
             [
               -13,
-              43,
-              -16
+              42,
+              -17
             ],
             [
               -13,
@@ -4131,13 +4206,13 @@
         {
           "box": [
             [
-              -14,
-              43,
-              -16
+              -15,
+              42,
+              -17
             ],
             [
               -14,
-              43,
+              42,
               -11
             ]
           ],
@@ -4146,9 +4221,9 @@
         {
           "box": [
             [
-              -14,
+              -15,
               45,
-              -16
+              -17
             ],
             [
               -14,
@@ -4160,15 +4235,390 @@
         },
         {
           "box": [
+            [
+              -15,
+              43,
+              -11
+            ],
             [
               -14,
               44,
-              -13
+              -11
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -16,
+              45,
+              -17
+            ],
+            [
+              -16,
+              48,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -13,
+              45,
+              -17
+            ],
+            [
+              -13,
+              48,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              45,
+              -17
             ],
             [
               -14,
+              45,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              48,
+              -17
+            ],
+            [
+              -14,
+              48,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              46,
+              -11
+            ],
+            [
+              -14,
+              47,
+              -11
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -16,
+              48,
+              -17
+            ],
+            [
+              -16,
+              51,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -13,
+              48,
+              -17
+            ],
+            [
+              -13,
+              51,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              48,
+              -17
+            ],
+            [
+              -14,
+              48,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              51,
+              -17
+            ],
+            [
+              -14,
+              51,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              49,
+              -11
+            ],
+            [
+              -14,
+              50,
+              -11
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -16,
+              51,
+              -17
+            ],
+            [
+              -16,
+              54,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -13,
+              51,
+              -17
+            ],
+            [
+              -13,
+              54,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              51,
+              -17
+            ],
+            [
+              -14,
+              51,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              54,
+              -17
+            ],
+            [
+              -14,
+              54,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -15,
+              52,
+              -11
+            ],
+            [
+              -14,
+              53,
+              -11
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -13,
+              39,
+              -17
+            ],
+            [
+              -13,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -10,
+              39,
+              -17
+            ],
+            [
+              -10,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              39,
+              -17
+            ],
+            [
+              -11,
+              39,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              42,
+              -17
+            ],
+            [
+              -11,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              40,
+              -11
+            ],
+            [
+              -11,
+              41,
+              -11
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -13,
+              42,
+              -17
+            ],
+            [
+              -13,
+              45,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -10,
+              42,
+              -17
+            ],
+            [
+              -10,
+              45,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              42,
+              -17
+            ],
+            [
+              -11,
+              42,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              45,
+              -17
+            ],
+            [
+              -11,
+              45,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              43,
+              -11
+            ],
+            [
+              -11,
               44,
-              -13
+              -11
             ]
           ],
           "mat": "inside"
@@ -4176,24 +4626,9 @@
         {
           "box": [
             [
-              -15,
-              46,
-              -16
-            ],
-            [
-              -15,
-              48,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
               -13,
-              46,
-              -16
+              45,
+              -17
             ],
             [
               -13,
@@ -4206,27 +4641,12 @@
         {
           "box": [
             [
-              -14,
-              46,
-              -16
+              -10,
+              45,
+              -17
             ],
             [
-              -14,
-              46,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -14,
-              48,
-              -16
-            ],
-            [
-              -14,
+              -10,
               48,
               -11
             ]
@@ -4236,39 +4656,54 @@
         {
           "box": [
             [
-              -14,
-              47,
-              -13
+              -12,
+              45,
+              -17
             ],
             [
-              -14,
+              -11,
+              45,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              48,
+              -17
+            ],
+            [
+              -11,
+              48,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              46,
+              -11
+            ],
+            [
+              -11,
               47,
-              -13
+              -11
             ]
           ],
           "mat": "inside"
-        },
-        {
-          "box": [
-            [
-              -15,
-              49,
-              -16
-            ],
-            [
-              -15,
-              51,
-              -11
-            ]
-          ],
-          "mat": "edge"
         },
         {
           "box": [
             [
               -13,
-              49,
-              -16
+              48,
+              -17
             ],
             [
               -13,
@@ -4281,27 +4716,12 @@
         {
           "box": [
             [
-              -14,
-              49,
-              -16
+              -10,
+              48,
+              -17
             ],
             [
-              -14,
-              49,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -14,
-              51,
-              -16
-            ],
-            [
-              -14,
+              -10,
               51,
               -11
             ]
@@ -4311,14 +4731,44 @@
         {
           "box": [
             [
-              -14,
-              50,
-              -13
+              -12,
+              48,
+              -17
             ],
             [
-              -14,
+              -11,
+              48,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              51,
+              -17
+            ],
+            [
+              -11,
+              51,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              49,
+              -11
+            ],
+            [
+              -11,
               50,
-              -13
+              -11
             ]
           ],
           "mat": "inside"
@@ -4326,163 +4776,13 @@
         {
           "box": [
             [
-              -12,
-              43,
-              -16
-            ],
-            [
-              -12,
-              45,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -10,
-              43,
-              -16
-            ],
-            [
-              -10,
-              45,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              43,
-              -16
-            ],
-            [
-              -11,
-              43,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              45,
-              -16
-            ],
-            [
-              -11,
-              45,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              44,
-              -13
-            ],
-            [
-              -11,
-              44,
-              -13
-            ]
-          ],
-          "mat": "inside"
-        },
-        {
-          "box": [
-            [
-              -12,
-              46,
-              -16
-            ],
-            [
-              -12,
-              48,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -10,
-              46,
-              -16
-            ],
-            [
-              -10,
-              48,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              46,
-              -16
-            ],
-            [
-              -11,
-              46,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              48,
-              -16
-            ],
-            [
-              -11,
-              48,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              47,
-              -13
-            ],
-            [
-              -11,
-              47,
-              -13
-            ]
-          ],
-          "mat": "inside"
-        },
-        {
-          "box": [
-            [
-              -12,
-              49,
-              -16
-            ],
-            [
-              -12,
+              -13,
               51,
+              -17
+            ],
+            [
+              -13,
+              54,
               -11
             ]
           ],
@@ -4490,29 +4790,14 @@
         },
         {
           "box": [
-            [
-              -10,
-              49,
-              -16
-            ],
             [
               -10,
               51,
-              -11
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              49,
-              -16
+              -17
             ],
             [
-              -11,
-              49,
+              -10,
+              54,
               -11
             ]
           ],
@@ -4521,9 +4806,9 @@
         {
           "box": [
             [
-              -11,
+              -12,
               51,
-              -16
+              -17
             ],
             [
               -11,
@@ -4536,14 +4821,29 @@
         {
           "box": [
             [
-              -11,
-              50,
-              -13
+              -12,
+              54,
+              -17
             ],
             [
               -11,
-              50,
-              -13
+              54,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -12,
+              52,
+              -11
+            ],
+            [
+              -11,
+              53,
+              -11
             ]
           ],
           "mat": "inside"
@@ -5585,38 +5885,58 @@
       ]
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals.",
   "muzzles": {
     "LT": [
       [
-        -13.5,
-        44.5,
-        -16.5
+        -14,
+        41,
+        -17.5
       ],
       [
-        -13.5,
-        47.5,
-        -16.5
+        -14,
+        44,
+        -17.5
       ],
       [
-        -13.5,
-        50.5,
-        -16.5
+        -14,
+        47,
+        -17.5
       ],
       [
-        -10.5,
-        44.5,
-        -16.5
+        -14,
+        50,
+        -17.5
       ],
       [
-        -10.5,
-        47.5,
-        -16.5
+        -14,
+        53,
+        -17.5
       ],
       [
-        -10.5,
-        50.5,
-        -16.5
+        -11,
+        41,
+        -17.5
+      ],
+      [
+        -11,
+        44,
+        -17.5
+      ],
+      [
+        -11,
+        47,
+        -17.5
+      ],
+      [
+        -11,
+        50,
+        -17.5
+      ],
+      [
+        -11,
+        53,
+        -17.5
       ]
     ],
     "RT": [
