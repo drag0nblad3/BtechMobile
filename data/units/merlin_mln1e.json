@@ -1,0 +1,71 @@
+{
+ "id": "merlin_mln1e",
+ "name": "Merlin",
+ "model": "MLN-1E",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 26,
+  "HD": 9,
+  "LL": 19,
+  "RL": 19
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "light_ppc"
+  ],
+  "RA": [
+   "light_ppc"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "flamer"
+  ],
+  "RT": [
+   "heat_sink",
+   "ppc",
+   "mml5",
+   "ammo:mml5:srm",
+   "ammo:mml5",
+   "case2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9317,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 26/Merlin MLN-1E.mtf",
+  "published": "RG26,RGv1,RSFP:MERCS",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Merlin MLN-1E (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 1369
+ },
+ "bv": 1369,
+ "sprite": "merlin",
+ "role": "Sniper: hangs back and hits from long range. 2 Light PPCs, Flamer, PPC, MML 5; walks 4, runs 6, jumps 4."
+}

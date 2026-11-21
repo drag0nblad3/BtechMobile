@@ -43,6 +43,9 @@ var artemis_builtin: bool  ## Artemis IV built in (ATMs, p. 186): no FCS item ne
 ## Ammo kind -> WeaponDef with that munition's damage, ranges and cluster
 ## grouping (ATM "er"/"he"); its ammo still belongs to this launcher (Atm).
 var munitions: Dictionary = {}
+var label := ""       ## Munition name for the firing mode (MML "LRM"/"SRM").
+var cluster_mod: int   ## Added to Cluster Hits rolls (MRM -1, p. 186).
+var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 182).
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -81,6 +84,9 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.pulse = bool(d.get("pulse", false))
 	w.tech = d.get("tech", "inner_sphere")
 	w.artemis_builtin = bool(d.get("artemis_builtin", false))
+	w.label = d.get("label", "")
+	w.cluster_mod = int(d.get("cluster_mod", 0))
+	w.one_shot = bool(d.get("one_shot", false))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()

@@ -1,0 +1,82 @@
+{
+ "id": "battleaxe_bkx8d",
+ "name": "BattleAxe",
+ "model": "BKX-8D",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 15,
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 22,
+  "RT": 22,
+  "CT": 33,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "er_medium_laser*2",
+   "light_ferro"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "er_medium_laser*2",
+   "light_ferro"
+  ],
+  "LT": [
+   "mml7",
+   "ammo:mml7*2",
+   "ammo:mml7:srm*2",
+   "case",
+   "light_ferro"
+  ],
+  "RT": [
+   "mml7*2",
+   "light_ferro*2"
+  ],
+  "CT": [
+   "light_ferro*2"
+  ],
+  "HD": [
+   "c3_slave"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 279,
+  "megamek": "data/mekfiles/meks/3075/BattleAxe BKX-8D.mtf",
+  "published": "RS:3075u-AW,RSFP:Proliferation",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "BattleAxe BKX-8D (ForcePack-Record-Sheets-Proliferation-Cycle)",
+  "megamek_bv": 1592
+ },
+ "bv": 1592,
+ "sprite": "battleaxe",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 ER Medium Lasers, 3 MML 7s; walks 4, runs 6, jumps 4."
+}

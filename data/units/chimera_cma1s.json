@@ -1,0 +1,78 @@
+{
+ "id": "chimera_cma1s",
+ "name": "Chimera",
+ "model": "CMA-1S",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 12,
+  "RT": 12,
+  "CT": 14,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_large_laser",
+   "er_medium_laser",
+   "endo_steel"
+  ],
+  "RA": [
+   "heat_sink",
+   "machine_gun",
+   "endo_steel"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "endo_steel*6"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "mrm20",
+   "ammo:mrm20*2",
+   "ammo:machine_gun:half"
+  ],
+  "CT": [
+   "endo_steel*2"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3950,
+  "megamek": "data/mekfiles/meks/3067/Chimera CMA-1S.mtf",
+  "published": "RS:J",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Chimera CMA-1S (ForcePack-Record-Sheets-House-Kurita)",
+  "megamek_bv": 1173
+ },
+ "bv": 1173,
+ "sprite": "chimera",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. ER Large Laser, ER Medium Laser, Machine Gun, MRM 20; walks 6, runs 9, jumps 6."
+}

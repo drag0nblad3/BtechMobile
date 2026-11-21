@@ -92,7 +92,7 @@ static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false, no_a
 	if d.is_cluster():
 		var r3 := dice.roll_2d6()
 		var bonus := (ARTEMIS_BONUS if has_artemis(w) and not no_artemis else 0) + (AntiMissile.CLUSTER_MOD if ams else 0) \
-				+ (Narc.CLUSTER_BONUS if narc else 0)
+				+ (Narc.CLUSTER_BONUS if narc else 0) + d.cluster_mod
 		var m := 0 if r3 + bonus < 2 else ClusterTable.hits(d.missiles, r3 + bonus)
 		return {"n": m, "roll": r3, "bonus": bonus, "packets": _packets(m * d.damage, d.group * d.damage)}
 	return {"n": 0, "roll": 0, "packets": [d.damage] as Array[int]}

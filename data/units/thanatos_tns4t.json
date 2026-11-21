@@ -1,0 +1,81 @@
+{
+ "id": "thanatos_tns4t",
+ "name": "Thanatos",
+ "model": "TNS-4T",
+ "tonnage": 75,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 25,
+  "RT": 25,
+  "CT": 28,
+  "HD": 9,
+  "LL": 27,
+  "RL": 27
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "lb20x_ac~1"
+  ],
+  "RA": [
+   "mrm20",
+   "ammo:mrm20*2",
+   "endo_steel*4"
+  ],
+  "LT": [
+   "medium_pulse_laser*2",
+   "ammo:lb20x_ac*2",
+   "ammo:lb20x_ac:cluster",
+   "guardian_ecm",
+   "endo_steel"
+  ],
+  "RT": [
+   "medium_pulse_laser*2",
+   "endo_steel*7"
+  ],
+  "CT": [
+   "c3_slave",
+   "endo_steel"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5700,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Thanatos THS-4T.mtf",
+  "published": "RS:3067u",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1760
+ },
+ "bv": 1760,
+ "sprite": "thanatos",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Medium Pulse Lasers, LB 20-X AC, MRM 20; walks 4, runs 6, jumps 4."
+}

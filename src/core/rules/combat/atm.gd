@@ -1,6 +1,7 @@
 class_name Atm
 extends RefCounted
-## Advanced Tactical Missiles (book p. 186, Clan): Artemis IV built in (+2
+## Launchers with munitions in their own bins: the MML's SRMs/LRMs (p. 186)
+## and Advanced Tactical Missiles (book p. 186, Clan): Artemis IV built in (+2
 ## on the cluster roll unless hostile ECM jams it), no indirect fire, and
 ## three munitions, each in its own ammo bins: standard (2 a missile, 4-hex
 ## minimum range, 5/10/15), extended range (1 a missile, 4-hex minimum,
@@ -32,9 +33,5 @@ static func profile(w: MountedWeapon) -> WeaponDef:
 
 static func mode_text(w: MountedWeapon) -> String:
 	var p := profile(w)
-	match w.mode:
-		ER:
-			return "ER missiles (%d each, %s)" % [p.damage, p.range_text()]
-		HE:
-			return "HE missiles (%d each, %s)" % [p.damage, p.range_text()]
-	return "Standard missiles (%d each, %s)" % [p.damage, p.range_text()]
+	var label := p.label if p.label != "" else ("Standard" if w.mode == "" else w.mode.to_upper())
+	return "%s missiles (%d each, %s)" % [label, p.damage, p.range_text()]

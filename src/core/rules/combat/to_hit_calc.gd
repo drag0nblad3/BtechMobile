@@ -36,12 +36,12 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	var pod := false
 	if los["blocked"]:
 		pod = Narc.indirect(state, attacker, w, target)
-		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect and not pod else null
+		spotter = IndirectFire.spotter(state, attacker, target) if Atm.profile(w).indirect and not pod else null
 		if pod:
 			los = LineOfSight.none()  # no spotter: only the target's own hex counts (p. 188)
 		elif spotter == null:
 			th.impossible = "No line of sight (%s)%s" % [los["reason"],
-					"; no friendly 'Mech can spot for indirect fire" if w.def.indirect else ""]
+					"; no friendly 'Mech can spot for indirect fire" if Atm.profile(w).indirect else ""]
 			return th
 		else:
 			los = LineOfSight.check(state.map, spotter, target)

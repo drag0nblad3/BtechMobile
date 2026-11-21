@@ -50,7 +50,7 @@ static func attach(state: GameState, attacker: Unit, target: Unit, loc: int) -> 
 
 ## Can `w` fire indirectly at `target` homing on a pod, with no spotter?
 static func indirect(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit) -> bool:
-	return w.def.indirect and WeaponModes.ammo_kind(w) == KIND and homing(state, attacker, target)
+	return Atm.profile(w).indirect and WeaponModes.ammo_kind(w) == KIND and homing(state, attacker, target)
 
 
 static func add_indirect(th: ToHit) -> void:
