@@ -21,14 +21,53 @@ func test_crit_table() -> void:
 	check_eq(CriticalHits.crits_for_roll(12), 3)
 
 
-func test_weapon_crit_destroys_weapon() -> void:
+func test_autocannon_survives_first_crit() -> void:
 	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1))
 	var s := _state_with(u)
 	var dice := LoadedDice.new()
 	dice.queue_2d6(8)       # one critical
 	dice.pick_queue = [0]   # first hittable RT slot: AC/20
 	CriticalHits.roll_location(s, dice, _emit, u, Location.RT)
-	check(u.weapons[1].destroyed, "AC/20 destroyed")
+	check(not u.weapons[1].destroyed, "AC/20 still fires after its first critical (p. 183)")
+	check(u.slots[Location.RT][0].hit, "the slot is marked")
+	dice.queue_2d6(8)
+	dice.pick_queue = [0]   # the next AC/20 slot
+	CriticalHits.roll_location(s, dice, _emit, u, Location.RT)
+	check(u.weapons[1].destroyed, "second critical disables it")
+
+
+func test_one_slot_autocannon_needs_two_hits() -> void:
+	var d := UnitDef.from_dict({"id": "a", "name": "a", "tonnage": 50, "walk_mp": 4,
+			"armor": {"CT": 20}, "equipment": {"LA": ["ac2"]}}, weapons())
+	var u := Unit.new(1, d, 0, hex_at(1, 1), 0)
+	var s := _state_with(u)
+	var slot: CritSlot = u.slots[Location.LA].filter(func(c: CritSlot) -> bool: return c.kind == CritSlot.Kind.WEAPON)[0]
+	CriticalHits.hit_slot(s, LoadedDice.new(), _emit, u, Location.LA, slot)
+	check(not u.weapons[0].destroyed, "first hit: AC/2 works")
+	check(AutocannonCrit.rehittable(u, slot), "its one slot can be hit again")
+	CriticalHits.hit_slot(s, LoadedDice.new(), _emit, u, Location.LA, slot)
+	check(u.weapons[0].destroyed, "second hit on the same slot disables it")
+	check(not AutocannonCrit.rehittable(u, slot), "then the slot is done")
+
+
+func test_other_weapons_die_on_first_crit() -> void:
+	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1))
+	var s := _state_with(u)
+	for i in u.weapons.size():
+		if not AutocannonCrit.is_autocannon(u.weapons[i].def):
+			var w: MountedWeapon = u.weapons[i]
+			var slot: CritSlot = u.slots[w.loc].filter(func(c: CritSlot) -> bool:
+					return c.kind == CritSlot.Kind.WEAPON and c.ref == i)[0]
+			CriticalHits.hit_slot(s, LoadedDice.new(), _emit, u, w.loc, slot)
+			check(w.destroyed, w.def.name)
+			return
+
+
+func test_autocannon_ids() -> void:
+	for id in ["ac2", "ac20", "ultra_ac5", "rotary_ac2", "lb10x_ac", "c_lb2x_ac", "c_ultra_ac20"]:
+		check(AutocannonCrit.is_autocannon(weapons().get_def(id)), id)
+	for id in ["gauss_rifle", "machine_gun", "c_atm3", "large_laser"]:
+		check(not AutocannonCrit.is_autocannon(weapons().get_def(id)), id)
 
 
 func test_engine_and_gyro() -> void:
@@ -82,3 +121,19 @@ func test_breach_triggers_check() -> void:
 	CriticalHits.after_damage(s, dice, _emit, u, steps, false)
 	check_eq(events.size(), 1, "one crit check")
 	check_eq(events[0][0], GameEvent.CRIT_CHECK)
+
+
+func test_disarmed_and_immobile_is_destroyed() -> void:
+	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1))
+	var s := _state_with(u)
+	for w in u.weapons:
+		w.destroyed = true
+	EndPhase.run(s, LoadedDice.new(), _emit)
+	check(not u.destroyed, "no weapons but still mobile: fights on (p. 99)")
+	u.shutdown = true
+	EndPhase.run(s, LoadedDice.new(), _emit)
+	check(u.destroyed, "no weapons and immobile: destroyed")
+	check(events.any(func(e: Array) -> bool: return e[0] == GameEvent.UNIT_DESTROYED), "announced")
+	var v := mech("hunchback_hbk4g", 0, hex_at(1, 1))
+	v.shutdown = true
+	check(not Disarmed.check(v), "shut down with guns: not destroyed")

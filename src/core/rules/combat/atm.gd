@@ -3,7 +3,7 @@ extends RefCounted
 ## Advanced Tactical Missiles (book p. 186, Clan): Artemis IV built in (+2
 ## on the cluster roll unless hostile ECM jams it), no indirect fire, and
 ## three munitions, each in its own ammo bins: standard (2 a missile, 4-hex
-## minimum range, 5/10/15), extended range (1 a missile, no minimum,
+## minimum range, 5/10/15), extended range (1 a missile, 4-hex minimum,
 ## 9/18/27) and high explosive (3 a missile, 3/6/9). Hits land in 6-point
 ## groups (errata v0.2). The firing mode picks the munition.
 ## TODO(rules): an ammo explosion uses the standard munition's damage.

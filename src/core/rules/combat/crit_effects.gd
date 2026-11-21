@@ -37,6 +37,8 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			return _actuator(u, loc, slot)
 		CritSlot.Kind.WEAPON:
 			var w := u.weapons[slot.ref]
+			if AutocannonCrit.absorb(w):
+				return "%s hit: autocannons survive the first critical hit" % slot.name
 			w.destroyed = true
 			if w.def.explodes and not w.exploded:
 				ComponentExplosion.explode(state, dice, emit, u, w, loc)
