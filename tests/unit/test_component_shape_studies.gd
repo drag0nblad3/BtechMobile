@@ -324,3 +324,32 @@ func test_pass_98_to_117_cgl_shape_stage_does_not_add_subdivision() -> void:
 	for name in ["hd_chin_fairing", "la_pod_yoke", "ra_pod_yoke",
 			"ll_rear_hock_brace", "rl_front_ankle_link"]:
 		check(not jenner.part(name).is_empty(), "Jenner component lost: " + name)
+
+
+func test_coordinated_passes_118_127_keep_asymmetric_components() -> void:
+	# Ten review cycles touch all three geometry sources. Protect the
+	# physical chassis-defining parts rather than merely their preview tint.
+	var atlas := VxModel.load_file(MODELS[0])
+	var wolverine := VxModel.load_file(MODELS[1])
+	var jenner := VxModel.load_file(MODELS[2])
+	for model in [atlas, wolverine, jenner]:
+		check(model.errors.is_empty(), "invalid model: " + model.id)
+	for name in ["hd_jaw", "hd_cheek_left", "hd_cheek_right",
+			"lt_shoulder_ridge", "rt_shoulder_ridge",
+			"ct_left_breast_plate", "ct_right_breast_plate",
+			"rt_ac20_shroud", "ll_knee_guard"]:
+		check(not atlas.part(name).is_empty(), "Atlas missing part: " + name)
+	for name in ["la", "ra", "ra_cannon_mount", "ra_elbow_link",
+			"ra_ac5_shroud", "lt_srm6", "ct_rear_jump_pack"]:
+		check(not wolverine.part(name).is_empty(), "Wolverine missing part: " + name)
+	for name in ["hd", "la_laser_lower", "la_laser_upper", "ra_laser_lower",
+			"ra_laser_upper", "ll_hock_joint", "rl_hock_joint",
+			"ll_tarsus", "rl_tarsus", "ct_rear_reactor_spine"]:
+		check(not jenner.part(name).is_empty(), "Jenner missing part: " + name)
+	check_eq(wolverine.muzzles[Location.RA].size(), 1, "Wolverine AC5")
+	check_eq(wolverine.muzzles[Location.LT].size(), 6, "Wolverine SRM6")
+	check_eq(jenner.muzzles[Location.LA].size(), 2, "Jenner left lasers")
+	check_eq(jenner.muzzles[Location.RA].size(), 2, "Jenner right lasers")
+	check_eq(jenner.muzzles[Location.CT].size(), 4, "Jenner SRM4")
+	check_eq(atlas.muzzles[Location.RT].size(), 1, "Atlas AC20")
+	check_eq(atlas.muzzles[Location.LT].size(), 10, "Atlas rocket ports")

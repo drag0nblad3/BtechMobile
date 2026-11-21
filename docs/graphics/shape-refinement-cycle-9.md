@@ -373,3 +373,47 @@ That gate remains OPEN.
 
 Keep `subdivide: 1`. Do not build an APK, merge, or begin 100–150k voxel
 detail refinement until the corrected multi-view silhouettes have been reviewed.
+
+
+## Passes 118–127: synchronized three-model silhouette refinement
+
+Every numbered pass edits **all three** independently sculpted model profiles,
+for **30 audited chassis-level changes**. The source is the five-view
+Godot gallery from pass 117, compared primarily with the contemporary
+CGL Hansen's Roughriders Atlas, AGOAC WVR-6R Wolverine, and Striker
+Lance JR7-D Jenner. All five diagnostic angles, including true head-on and
+top-down, remain in one combined render.
+
+| Pass | Atlas AS7-D | Wolverine WVR-6R | Jenner JR7-D |
+| --- | --- | --- | --- |
+| 118 | Chamfer both front shoulder-bell corners to reduce rectangular planform | Widen the diagonal AC5 support at elbow into a solid structural web | Chamfer the forward left engine fairing and mirrored side, reduce squared wing shape |
+| 119 | Sharpen cheek panels beneath the main skull brow | Lower broad outer top of right upper-arm pauldron | Reduce the cockpit roof bulge immediately behind nose glazing |
+| 120 | Reduce large outer arm-guard overhang above elbow | Retract short left-fist knuckles relative to right forearm AC5 | Tuck the laser-support nacelle base closer to central body while leaving bores |
+| 121 | Taper upper thigh flank to open stance negative space | Slim broad front knee yoke without hiding joint linkage | Recess apron under cockpit away from oversized front shell |
+| 122 | Slim calf outer rear margin while retaining separate shin plates | Angle chest top downward to form medium-weight V armor instead of flat box | Reduce aft-hock joint bulge while retaining digitigrade shape |
+| 123 | Shorten boot center nose profile but preserve twin toe tips | Shorten forward boot prow for WVR medium-class foot | Shorten oversized center windscreen dividing bar to expose side windows |
+| 124 | Give split chest breastplate outer edges tighter profile | Chamfer right rear shoulder cover and prevent doubled slab silhouette | Lower rear ends of mirrored laser pod outer shells, preserve muzzles |
+| 125 | Relieve upper gauntlet outside edge and distinguish elbow from forearm | Pull upper right shoulder cap inward so cannon arm has one root | Reduce raised dorsal SRM pack roof profile, keep four tubes |
+| 126 | Reduce broad forward knee guard lateral corner to reveal shin break | Trim outer upper thigh so calf does not look Atlas-thick | Taper the front of knee armor, leaving rear hocks distinct |
+| 127 | Narrow top-down Atlas shoulder ridge crest, framing skull more closely | Taper top of rear jump pack, reducing its box silhouette | Chamfer rear reactor spine end, breaking blank rear square |
+
+### Reference-first approval checklist
+
+- **Front:** Atlas skull recessed between shoulder bells, separate chest armor,
+  no generic balloon forearms; Wolverine one AC5 right arm, distinct left fist,
+  shoulder missile rack; Jenner compact cockpit with inset glass and small
+  separate laser pod shapes
+- **Top-down:** distinct Atlas shoulder roof vs skull, Wolverine single
+  forward-projected autocannon and back-mounted equipment, Jenner saucer
+  front and tight laser-to-engine joins
+- **Side / rear:** exposed Wolverine weapon-arm link, Atlas articulated
+  knee and wrist, distinct Jenner knee, rear hock and forward ankle; small
+  chamfered aft packs instead of block-shaped back armor
+- **True occupied cells:** all open weapon mouths remain physically clear;
+  model preview contours must never substitute for rasterized erase tests
+
+Source geometry validation: ten ordered passes each made nonempty changes to
+all three chassis; loft sections remain ordered, vertex counts consistent,
+mirrors and muzzle metadata unchanged. `subdivide:1` remains the hard
+shape-only gate. Genuine Godot-render inspection and complete CI still needed.
+No APK, merge or detail-density step is authorized.
