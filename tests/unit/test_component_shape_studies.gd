@@ -92,8 +92,8 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -28)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
-	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -27)),
-			"Jenner resculpted CGL saucer nose must project forward of both laser mouths")
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -42)),
+			"Jenner CGL disc nose must reach z=-42, well ahead of side lasers")
 	check(not jenner.part("ll_hock_joint").is_empty(),
 			"Jenner knee and rear hock must be independent geometry")
 
@@ -376,7 +376,7 @@ func test_passes_128_to_132_resculpted_silhouette_landmarks() -> void:
 	for part: Dictionary in j["parts"]:
 		if part["name"] == "hd":
 			nose = part["shapes"][0]["loft"]["sections"]
-	check_eq(nose[0]["at"], -27, "Jenner needs short CGL rounded cockpit")
+	check_eq(nose[0]["at"], -42, "Jenner CGL disc must project far forward")
 	check(nose[1]["polygon"][0][0] < nose[0]["polygon"][0][0],
 			"Jenner saucer must flare behind its blunt nose")
 
@@ -407,3 +407,51 @@ func test_passes_128_to_137_weapon_arm_and_limb_structure_remain_sound() -> void
 			"la_laser_lower", "ra_laser_lower", "la_laser_upper",
 			"ra_laser_upper"]:
 		check(not jenner.part(name).is_empty(), "Jenner missing " + name)
+
+
+func test_bold_reference_passes_138_to_142_fix_fundamental_silhouette() -> void:
+	var a := VxModel.load_file(MODELS[0])
+	var w := VxModel.load_file(MODELS[1])
+	var j := VxModel.load_file(MODELS[2])
+	for model in [a, w, j]:
+		check(model.errors.is_empty(), "Invalid major rebuild " + model.id)
+	# The Atlas skull crown must now be BELOW the rounded shoulder crests.
+	var atlas_source: Dictionary = JsonFile.read(MODELS[0])
+	var crown := -1
+	var left_shoulder := -1
+	for p: Dictionary in atlas_source["parts"]:
+		if p["name"] == "hd":
+			crown = p["shapes"][0]["loft"]["sections"].back()["at"]
+		if p["name"] == "lt":
+			for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+				for pt: Array in s["polygon"]:
+					left_shoulder = maxi(left_shoulder, pt[1])
+	check(crown < left_shoulder, "Atlas skull still floats above the shoulder bells")
+	check(not a.part("la_finger_knuckles").is_empty(), "Atlas left fingers absent")
+	check(not a.part("ra_finger_knuckles").is_empty(), "Atlas right fingers absent")
+	# Broader Wolverine waist at y=36 with a single right hand behind AC5.
+	var ct_source: Dictionary = JsonFile.read(MODELS[1])
+	var waist_width := -1
+	for p: Dictionary in ct_source["parts"]:
+		if p["name"] == "ct":
+			for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+				if s["at"] == 36:
+					var xs: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
+					waist_width = xs.max() - xs.min()
+	check(waist_width >= 12, "Wolverine still has a pinched hourglass abdomen")
+	check(not w.part("ra_integrated_hand").is_empty(), "Wolverine missing right hand")
+	check(not w.part("la_finger_knuckles").is_empty(), "Wolverine missing left hand")
+	# True disc is not a short orange beak: compare its diameter to torso width.
+	var disc_source: Dictionary = JsonFile.read(MODELS[2])
+	var diameter := 0
+	for p: Dictionary in disc_source["parts"]:
+		if p["name"] == "hd":
+			for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+				if s["at"] == -35:
+					var x: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
+					diameter = x.max() - x.min()
+	check(diameter >= 24, "Jenner disc is not wide enough")
+	check(j.part("hd")["cells"].has(Vector3i(0, 29, -42)),
+			"Jenner disc must protrude forward of its twin laser mounts")
+	check(not j.part("hd_disc_rim").is_empty(), "Jenner disc edge absent")
+	check(not j.part("hd_disc_crown").is_empty(), "Jenner disc dome absent")

@@ -466,3 +466,39 @@ unaltered weapon muzzle metadata, mirrored components, and separate
 arm/leg rig parts. Five-angle capture and voxel-occupancy unit
 tests are technical gates only. CGL likeness remains subject to
 human visual approval. No merge and no APK.
+
+
+## Passes 138–142 — first five decisive silhouette rebuilds
+
+The user identified persistent silhouette failures that previous micro passes
+could not fix. The high-priority reference is Catalyst's *Hansen's Roughriders*
+plastic Atlas, the AGOAC plastic Wolverine and Striker Lance plastic Jenner,
+including front, oblique, side and dorsal views. **These are categorical
+geometry replacements**, not voxel-density or surface-detail passes.
+
+| Pass | Atlas | Wolverine | Jenner |
+| --- | --- | --- | --- |
+| 138 | Sink the entire skull, cheeks, brows, mouth, nasal bridge and neck six voxels into the Atlas chest (the head no longer floats above its shoulders). | Broaden Wolverine's lower torso and waist cross sections by 40–80%, destroying the hourglass abdomen shape. | Replace Jenner's tiny beak with a 25-voxel-wide, 23-voxel-long, low-profile forward saucer disc. |
+| 139 | Rebuild BOTH Atlas outer shoulders into rounded matching-height bells with peaked side contours, preserving rack and AC/20 at the front. | Rebuild Wolverine helmet into a narrow five-level angular wedge, not the broad rounded dome; sharpen the front visor. | Add a separate twelve-sided perimeter disc rim to Jenner, with a very wide span and distinct flattened lower surface. |
+| 140 | Rebuild the Atlas upper breastplate into two deep angular chest panels beneath the sunk skull rather than an empty upper torso slab. | Remove Wolverine's tall left missile-launcher plinth: make the left shoulder cap only 55 voxels high, exposing a small separate SRM6 beside the angular head. | Rebuild Jenner's broad forward windscreen at z = −41..−35, wrapping across the disc rim instead of appearing on the rear beak. |
+| 141 | Add separately modeled segmented fingers and thumb guards to BOTH Atlas fists, not featureless rectangular stumps. | Rebuild Wolverine's left fist with a broad cuff and modeled finger ridges (right weapon hand is a separate next-pass sculpt). | Build Jenner's upper saucer dome/canopy as a raised oval cap over the disc with structural frames, not a blocky nose. |
+| 142 | Resculpt Atlas orbital brows at the new recessed skull height and join the jaw into a low neck well between shoulders. | Give Wolverine its missing RIGHT hand as a compact palm and fingers attached behind and below the AC5 on the same single right arm—no duplicate arm. | Add the Jenner disc's forward underside lip and sloped connector to the narrow body for a genuine unsupported forward-disc silhouette. |
+
+### Explicit changes in silhouette math
+
+- Atlas skull crown originally y=59, now y=53; rounded torso shoulders
+  peak y=56. The entire HD subtree was moved, including cheeks, optics,
+  mouth, collar and nose, not just the outer helmet's mesh.
+- Wolverine lower torso at y=36 is expanded x from ±4 to ±6. New right
+  hand is bolted to the same right arm's gun support behind the AC5;
+  the left hand gains independent knuckles. Left launcher still physically
+  contains the original six muzzles and is not repurposed as a massive
+  upper shoulder block.
+- Jenner cockpit starts at z=-42 instead of z=-27: 15 units farther
+  forward. At z=-35 it is **24 units across**, flattened vertically
+  to be a forward disc instead of a beak. Added disc ring, dome, lower
+  fairing, and relocated glazing. Keep dual laser mounts separate.
+
+Structural source checks: identical vertex counts per loft, ordered
+sections, integer voxel coordinates, unaltered weapon metadata, aligned
+mirrored parts. Five-view preview and real voxel/CI checks are pending.
