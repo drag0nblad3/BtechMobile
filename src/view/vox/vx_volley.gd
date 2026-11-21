@@ -3,11 +3,11 @@ extends RefCounted
 ## Fires a weapon group from a VxMech: lasers from every muzzle, a cannon
 ## shell with recoil, or a missile salvo rippling out of the launch tubes.
 
-const MISSILES := 15  ## Legacy Catapult rack size; larger racks use their own tube count.
+const MISSILES := 15  ## Legacy Catapult rack size; salvo_count uses real visual launcher ports.
 
 
 static func salvo_count(port_count: int) -> int:
-	return maxi(MISSILES, port_count)
+	return maxi(1, port_count)
 
 
 static func fire(anim: Node, m: VxMech, locs: Array[int], target: Vector3, kind: String) -> void:
