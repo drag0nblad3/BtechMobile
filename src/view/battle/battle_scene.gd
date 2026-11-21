@@ -47,8 +47,7 @@ func _ready() -> void:
 		recorder.frames = saved["frames"]
 	bots = BotDriver.new()
 	bots.controller = controller
-	bots.bot_sides = saved.get("bots", BattleLaunch.take_bots()) if not saved.is_empty() \
-			else BattleLaunch.take_bots()
+	bots.bot_sides = saved["bots"] if not saved.is_empty() else BattleLaunch.take_bots()
 	bots.skill = int(saved["skill"]) if not saved.is_empty() \
 			else (BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level)
 	BattleLaunch.bot_level = -1
@@ -79,22 +78,22 @@ func _resume_ui() -> void:
 	_update_status()
 	if controller.state.game_over:
 		hud.show_game_over("Battle finished")
-	elif controller.state.phase in [Phase.Kind.WEAPON_ATTACK, Phase.Kind.PHYSICAL_ATTACK]:
+	elif controller.state.point_blank.is_empty() and controller.state.phase in [Phase.Kind.WEAPON_ATTACK, Phase.Kind.PHYSICAL_ATTACK]:
 		attacks.begin.call_deferred()
 
 
-func _autosave() -> void:
+func _autosave() -> bool:
 	if controller == null:
-		return
+		return false
 	var ok := BattleSave.save_game(controller, bots.bot_sides, bots.skill,
 			training, recorder.frames, _tutorial_path)
 	if not ok:
 		push_warning("Battle autosave could not be written.")
+	return ok
 
 
 func _save_battle() -> void:
-	_autosave()
-	hud.set_tip("Battle saved." if FileAccess.file_exists(BattleSave.SAVE_PATH) else "Save failed.")
+	hud.set_tip("Battle saved." if _autosave() else "Save failed.")
 
 
 func _watch_replay() -> void:
