@@ -238,6 +238,10 @@ func test_flamer_adds_heat() -> void:
 	var th := ToHitCalc.weapon(s, a, fl, t)
 	WeaponFire.resolve(s, LoadedDice.new(), func(_t, _d): pass, a, fl, t, th)
 	check_eq(t.outside_heat, 2, "flamer hit adds 2 heat")
+	t.outside_heat = 0
+	fl.def = weapons().get_def("c_er_flamer")
+	WeaponFire.resolve(s, LoadedDice.new(), func(_t, _d): pass, a, fl, t, ToHitCalc.weapon(s, a, fl, t))
+	check_eq(t.outside_heat, 1, "an ER flamer adds only 1 heat (p. 184)")
 	t.outside_heat = 40
 	HeatPhase.run(s, LoadedDice.new(), func(_t, _d): pass)
 	check(t.heat <= 15, "outside heat capped at 15")
