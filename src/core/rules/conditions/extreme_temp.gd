@@ -10,7 +10,7 @@ extends RefCounted
 ## Phase, minus one hit at 5-10 heat, two at 11-20, three at 21+ (the
 ## cockpit's own heat keeps the warrior warm). In extreme heat, each level
 ## adds one hit whenever heat already deals life support hits.
-## TODO(rules): water becoming ice (cold) or dry sinkholes (heat).
+## Water freezing (cold) or drying into sinkholes (heat): Surfaces.
 
 const HEAT_PER_LEVEL := 2
 

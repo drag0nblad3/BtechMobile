@@ -20,7 +20,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		var c := state.conditions
 		var gained := u.heat_generated + engine + outside + ExtremeTemp.heat_added(c)
 		var sinks := u.dissipation() + water_cooling(state.map.get_tile(u.coord), u) \
-				+ ExtremeTemp.extra_sinks(c)
+				+ ExtremeTemp.extra_sinks(c) + Surfaces.snow_cooling(state, u)
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
 				"sinks": sinks, "outside": outside, "heat": u.heat,

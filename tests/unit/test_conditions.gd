@@ -191,3 +191,4 @@ func test_fog_hides_like_woods_and_wind_clears_it() -> void:
 	s.conditions = Conditions.from_dict({"wind": true})
 	t.coord = Hex.from_label("0201")
 	check(not LineOfSight.check(s.map, a, t)["blocked"], "the wind blows the fog away")
+

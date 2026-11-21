@@ -18,6 +18,13 @@ static func describe(tile: MapTile, level: int) -> String:
 	var cover := LineOfSight.woods_value(tile)
 	if cover > 0:
 		parts.append("+%d to hit a 'Mech here" % cover)
+	match tile.surface:
+		"ice":
+			parts.append("ice: walk on it like ground, +1 to piloting rolls here")
+		"mud":
+			parts.append("mud: turning here while running needs a roll (-1)")
+		"snow":
+			parts.append("snow: ending a move here sheds 1 heat per leg (4 prone); falls may slide downhill")
 	if tile.fog > 0:
 		parts.append("%s fog: like %s woods for line of sight and to-hit (at most +2 with woods)" % [
 				"heavy" if tile.fog == 2 else "light", "heavy" if tile.fog == 2 else "light"])

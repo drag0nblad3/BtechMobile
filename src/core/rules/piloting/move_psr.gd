@@ -41,6 +41,9 @@ static func action_rolls(state: GameState, u: Unit, path: Array[Vector3i], from:
 			if dst.terrain.id == "rubble":
 				out.append({"index": i, "reason": "entering rubble", "mod": 0, "levels": 0, "back": false})
 		prev = k
+	if mode == MoveMode.Kind.RUN:
+		out.append_array(Surfaces.mud_rolls(state, u, path, from))
+		out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a["index"]) < int(b["index"]))
 	return out
 
 

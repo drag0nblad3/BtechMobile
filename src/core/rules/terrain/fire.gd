@@ -28,7 +28,7 @@ static func heat_to_light(tile: MapTile) -> int:
 
 ## Heat dealt to a hex this phase (flamer hits on a building or woods).
 static func add_heat(state: GameState, c: Vector2i, heat: int) -> void:
-	if heat > 0 and heat_to_light(state.map.get_tile(c)) > 0:
+	if heat > 0 and not state.map.no_fire and heat_to_light(state.map.get_tile(c)) > 0:
 		state.fire_heat[c] = int(state.fire_heat.get(c, 0)) + heat
 
 

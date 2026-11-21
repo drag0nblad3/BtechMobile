@@ -6,6 +6,7 @@ extends RefCounted
 ## Token = terrain char + level, optionally "d" + water depth.
 ## Optional "buildings": [{"hex": "XXYY", "type": "medium", "height": 2}].
 ## Optional "fires": ["XXYY", ...]: hexes burning from the start.
+## Optional "surface": {"ice": [...], "mud": [...], "snow": [...]} (Surfaces).
 ## Optional "fog": {"light": ["XXYY", ...], "heavy": [...]}: fog banks.
 
 
@@ -26,6 +27,7 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 			var c := Hex.from_offset(Vector2i(col, row))
 			m.tiles[c] = parse_token(tokens[col], c, terrain)
 	m.rubble = terrain.get_type("rubble")
+	m.ground = terrain.get_type("clear")
 	for b: Dictionary in data.get("buildings", []):
 		var tile := m.get_tile(Hex.from_label(b["hex"]))
 		var bt: BuildingType = terrain.buildings.get(b.get("type", "medium"))
@@ -35,6 +37,12 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 		var ft := m.get_tile(Hex.from_label(f))
 		assert(ft != null, "Bad fire hex %s" % f)
 		ft.on_fire = true
+	var surf: Dictionary = data.get("surface", {})
+	for kind: String in surf:
+		for f: String in surf[kind]:
+			var st := m.get_tile(Hex.from_label(f))
+			assert(st != null and kind in ["ice", "mud", "snow"], "Bad surface %s %s" % [kind, f])
+			st.surface = kind
 	var fog: Dictionary = data.get("fog", {})
 	for kind: String in fog:
 		for f: String in fog[kind]:
