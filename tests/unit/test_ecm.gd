@@ -64,6 +64,7 @@ func test_indirect_fire_gets_no_artemis() -> void:
 	var v := _setup(false)
 	var th := ToHit.new()
 	th.spotter_id = 3
+	th.indirect = true
 	check_eq(Ecm.artemis_blocked(v[0], v[1], v[2], th), "indirect fire gets no Artemis bonus")
 	var fired := _fire(v)
 	check(not fired.has("artemis_blocked"))

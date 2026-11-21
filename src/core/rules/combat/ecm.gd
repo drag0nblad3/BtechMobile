@@ -26,7 +26,7 @@ static func hostile_at(state: GameState, side: int, c: Vector2i) -> bool:
 
 ## Why this shot gets no Artemis bonus ("" if it does).
 static func artemis_blocked(state: GameState, attacker: Unit, target: Unit, th: ToHit) -> String:
-	if th.spotter_id >= 0:
+	if th.indirect:
 		return "indirect fire gets no Artemis bonus"
 	if hostile_at(state, attacker.side, attacker.coord) or hostile_at(state, attacker.side, target.coord):
 		return "enemy ECM jams the Artemis guidance"
