@@ -75,6 +75,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for a in def.ammo_mounts:
 		ammo.append(AmmoBin.new(a["weapon"], a["loc"], a.get("kind", "")))
 	Narc.setup_ammo(self)
+	Atm.setup_ammo(self)
 	slots = CritLayout.build(def)
 
 

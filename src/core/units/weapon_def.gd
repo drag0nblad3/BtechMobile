@@ -37,6 +37,10 @@ var ams: bool          ## Anti-missile system: never fires at targets (AntiMissi
 ## "inner_sphere" or "clan" (ids start "c_"): Clan versions are lighter,
 ## smaller and longer-ranged (book p. 251 tables).
 var tech := "inner_sphere"
+var artemis_builtin: bool  ## Artemis IV built in (ATMs, p. 186): no FCS item needed.
+## Ammo kind -> WeaponDef with that munition's damage, ranges and cluster
+## grouping (ATM "er"/"he"); its ammo still belongs to this launcher (Atm).
+var munitions: Dictionary = {}
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -71,6 +75,14 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.ams = bool(d.get("ams", false))
 	w.pulse = bool(d.get("pulse", false))
 	w.tech = d.get("tech", "inner_sphere")
+	w.artemis_builtin = bool(d.get("artemis_builtin", false))
+	var mun: Dictionary = d.get("munitions", {})
+	for kind: String in mun:
+		var v := d.duplicate()
+		v.erase("munitions")
+		v.merge(mun[kind], true)
+		v["name"] = "%s (%s)" % [d["name"], mun[kind].get("label", kind)]
+		w.munitions[kind] = WeaponDef.from_dict(v)
 	return w
 
 

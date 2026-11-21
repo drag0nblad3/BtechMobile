@@ -42,9 +42,9 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 		th.impossible = "No line of sight (%s)" % los["reason"]
 		return th
 	var dist := Hex.distance(attacker.coord, c)
-	var br := w.def.bracket(dist)
+	var br := Atm.profile(w).bracket(dist)
 	if br == WeaponDef.Bracket.OUT:
-		th.impossible = "Out of range (%d hexes, max %d)" % [dist, w.def.long_range]
+		th.impossible = "Out of range (%d hexes, max %d)" % [dist, Atm.profile(w).long_range]
 		return th
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	ToHitCalc.add_attacker_movement(th, attacker)

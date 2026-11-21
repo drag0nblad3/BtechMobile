@@ -4,7 +4,8 @@ extends RefCounted
 ## expected damage at this to-hit number (cluster is 1 easier, but pellets
 ## add up to less), falling back to whichever ammo is left. Ultra ACs: BotFire
 ## plans the volley twice (double fire on and off) and keeps the better one;
-## rotary ACs fire four shots in the "on" plan.
+## rotary ACs fire four shots in the "on" plan. ATMs load the munition with
+## the best expected damage at this range.
 
 const ROTARY_SHOTS := 4
 
@@ -23,6 +24,8 @@ static func apply(state: GameState, u: Unit, e: Unit, ultra: bool) -> Array[Stri
 			w.mode = _lbx(state, u, w, e)
 		elif w.narc_ammo:
 			w.mode = _narc(state, u, w, e)
+		elif w.ammo_kinds.size() > 1:
+			w.mode = _best(state, u, w, e, w.ammo_kinds)
 	return before
 
 
@@ -70,9 +73,14 @@ static func _lbx(state: GameState, u: Unit, w: MountedWeapon, e: Unit) -> String
 	var pellets := u.ammo_for(w.def, WeaponModes.CLUSTER)
 	if slugs <= 0 or pellets <= 0:
 		return WeaponModes.CLUSTER if pellets > 0 else ""
-	var best := ""
+	return _best(state, u, w, e, ["", WeaponModes.CLUSTER])
+
+
+## The mode (ammo) with the highest expected damage against `e` (ATM munitions too).
+static func _best(state: GameState, u: Unit, w: MountedWeapon, e: Unit, modes: Array) -> String:
+	var best: String = modes[0]
 	var best_ed := -1.0
-	for m: String in ["", WeaponModes.CLUSTER]:
+	for m: String in modes:
 		w.mode = m
 		var ed := Advisor.expected_damage(w, ToHitCalc.weapon(state, u, w, e, false))
 		if ed > best_ed:

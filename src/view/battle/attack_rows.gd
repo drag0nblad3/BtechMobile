@@ -32,6 +32,8 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Narc-equipped missiles (home on Narc pods)"
 		RotaryAc.UNJAM:
 			return "Clear the jam (Gunnery +3, stand or walk)"
+	if not w.def.munitions.is_empty():
+		return Atm.mode_text(w)
 	if w.def.rotary:
 		if w.jammed:
 			return "Jammed: tap to try clearing it"
