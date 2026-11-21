@@ -104,3 +104,25 @@ func test_bot_tags_target_for_homing_missiles() -> void:
 	Narc.attach(v[0], n, t, Location.CT)
 	var again := [{"weapon": 1, "target_id": t.id}]
 	check_eq(BotNarc.add_beacons(v[0], n, again), "", "already tagged")
+
+
+func test_indirect_fire_at_a_pod_needs_no_spotter() -> void:
+	var v := _setup()
+	var s: GameState = v[0]
+	var l: Unit = v[2]
+	var t: Unit = v[3]
+	for r in 4:
+		s.map.get_tile(hex_at(2, r)).level = 4  # a ridge hides the target from both friends
+	l.weapons[0].mode = Narc.KIND
+	var th := ToHitCalc.weapon(s, l, l.weapons[0], t)
+	check(not th.possible(), "no pod, no spotter: can't fire")
+	Narc.attach(s, v[1], t, Location.CT)
+	s.turn = 2
+	th = ToHitCalc.weapon(s, l, l.weapons[0], t)
+	check(th.possible(), th.impossible)
+	check(th.indirect and th.spotter_id == -1, "indirect, with no spotter (p. 188)")
+	check(not th.narc_homing, "no -1 and no +2 cluster bonus when indirect")
+	check(th.mods.any(func(m: Dictionary) -> bool: return m["value"] == 1 and m["label"].begins_with("indirect")), th.summary())
+	check(not th.mods.any(func(m: Dictionary) -> bool: return m["label"].begins_with("spotter")), "no spotter modifiers")
+	l.weapons[0].mode = ""
+	check(not ToHitCalc.weapon(s, l, l.weapons[0], t).possible(), "standard missiles can't home on the pod")

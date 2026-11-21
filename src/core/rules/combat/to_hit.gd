@@ -7,6 +7,7 @@ extends RefCounted
 var mods: Array[Dictionary] = []
 var impossible: String = ""
 var spotter_id: int = -1  ## Indirect fire: the friendly 'Mech spotting.
+var indirect := false  ## Indirect fire (spotted, or homing on a Narc pod without a spotter).
 var cover_hex: Vector2i = Hex.INVALID  ## Hill or building giving partial cover: leg hits strike it.
 var legs_only := false  ## Water: the shot can only hit legs (Kick table, no partial cover).
 var aim_loc := -1  ## Aimed shot (AimedShot): the location aimed at.

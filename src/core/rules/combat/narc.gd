@@ -5,9 +5,13 @@ extends RefCounted
 ## destroyed. From the next turn, the pod's side firing Narc-equipped
 ## missiles (`ammo:<launcher>:narc`) at that 'Mech gets -1 to hit and +2 on
 ## the cluster roll, unless the 'Mech stands in ECM hostile to that side.
-## Narc ammo explodes for 2 a pod.
-## TODO(rules): indirect fire at a pod without a spotter; iNarc and special
-## pods; AMS against pods; the computer doesn't fire beacons.
+## Narc ammo explodes for 2 a pod. Narc-equipped missiles that can fire
+## indirectly may arc over terrain at a podded 'Mech without a spotter:
+## +1 for indirect fire, no spotter modifiers and nothing in between counts,
+## but no -1 or cluster bonus either; the target's own hex still counts
+## (pp. 70, 188, 193).
+## TODO(rules): iNarc and special pods; AMS against pods; the computer
+## doesn't fire beacons.
 
 const KIND := "narc"
 const TO_HIT_MOD := -1
@@ -34,7 +38,7 @@ static func homing(state: GameState, attacker: Unit, target: Unit) -> bool:
 
 ## Narc-equipped missiles homing on a pod: the -1 to hit.
 static func add(th: ToHit, state: GameState, attacker: Unit, w: MountedWeapon, target: Unit) -> void:
-	if WeaponModes.ammo_kind(w) != KIND or not homing(state, attacker, target):
+	if th.indirect or WeaponModes.ammo_kind(w) != KIND or not homing(state, attacker, target):
 		return
 	th.narc_homing = true
 	th.add("Narc homing pod", TO_HIT_MOD, "A Narc pod on the target guides these missiles in: -1 to hit and +2 on the cluster roll.")
@@ -42,3 +46,12 @@ static func add(th: ToHit, state: GameState, attacker: Unit, w: MountedWeapon, t
 
 static func attach(state: GameState, attacker: Unit, target: Unit, loc: int) -> void:
 	target.narc_pods.append({"side": attacker.side, "loc": loc, "turn": state.turn})
+
+
+## Can `w` fire indirectly at `target` homing on a pod, with no spotter?
+static func indirect(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit) -> bool:
+	return w.def.indirect and WeaponModes.ammo_kind(w) == KIND and homing(state, attacker, target)
+
+
+static func add_indirect(th: ToHit) -> void:
+	th.add("indirect fire (Narc pod)", 1, "The missiles arc over the terrain and home on the Narc pod: no spotter needed, but no homing bonus either.")
