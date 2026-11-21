@@ -1,6 +1,6 @@
 class_name MoveCost
 extends RefCounted
-## MP cost for a 'Mech to enter one hex (book pp. 46-48, 51).
+## MP cost for a 'Mech to enter one hex (book pp. 46-48, 51, 53; roads: Roads).
 ## Returns PROHIBITED when the move is illegal.
 ## Water depth works as a level change (a water hex's level is its bottom),
 ## plus +1 MP for depth 1 and +2 for depth 2+. Running in is allowed but
@@ -21,6 +21,8 @@ static func enter_cost(map: BattleMap, from: Vector2i, to: Vector2i, _mode: int,
 	var change := level_change(src, dst)
 	if change > max_change:
 		return PROHIBITED
+	if Roads.road_step(src, dst):
+		return 1 + Roads.climb_cost(src, dst, change)  # road: base MP only (p. 53)
 	var cost := 1 + dst.terrain.move_cost + change
 	if dst.building != null:
 		cost += 1  # every building hex (errata)

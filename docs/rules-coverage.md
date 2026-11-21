@@ -15,6 +15,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Walking / running MP (run = walk × 1.5 rounded up); -1 walk MP per leg actuator hit (hip, upper, lower, foot), 1 with a leg gone, 0 with both.
 - ✅ Facing changes: 1 MP per hexside.
 - ✅ Terrain costs: clear/pavement +0, rough +1, light woods +1, heavy woods +2.
+- ✅ Roads (`Roads`, p. 53): paved hex to paved hex costs the base 1 MP and a level change between them 1 MP less (minimum 0) — `TODO(rules)`: roads through prohibited terrain (our maps pave whole hexes); bridge decks count once bridges land.
 - ✅ Level change: 1 MP per level, max 2 levels per hex.
 - ✅ Water (p. 47): depth 1 +1, depth 2+ +2, plus the level change to the bottom; running in is allowed but costs a piloting roll.
 - ✅ Hip hit or destroyed leg: 1 level per hex forward, none backward.
