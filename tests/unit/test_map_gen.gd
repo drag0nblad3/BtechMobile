@@ -85,7 +85,7 @@ func test_roads_cross_rivers_on_bridges() -> void:
 			for f in 6:
 				var n := m.get_tile(Hex.neighbor(t.coord, f))
 				if n != null and n.terrain.id == "pavement":
-					check(MoveCost.enter_cost(m, n.coord, t.coord, MoveMode.Kind.WALK) == 1 + absi(t.bridge.level - n.level),
+					check(MoveCost.enter_cost(m, n.coord, t.coord, MoveMode.Kind.WALK) == 1 + maxi(0, absi(t.bridge.level - n.level) - 1),
 							"road onto the deck at %s" % Hex.label(t.coord))
 		var paved_water := m.tiles.values().filter(func(t: MapTile) -> bool:
 			return t.terrain.id == "pavement" and t.depth > 0)
