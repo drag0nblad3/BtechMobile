@@ -64,7 +64,7 @@ static func text(u: Unit) -> String:
 		tech.append("ferro-fibrous armor")
 	for p: Dictionary in u.narc_pods:
 		if not u.is_location_destroyed(p["loc"]):
-			tech.append("Narc pod on its %s (%s)" % [Location.code(p["loc"]), Names.side(p["side"])])
+			tech.append("Narc pod on its %s (%s)" % [Location.code_for(d, p["loc"]), Names.side(p["side"])])
 	if not tech.is_empty():
 		t += ", ".join(tech) + "\n"
 	t += "MechWarrior: gunnery %d, piloting %d, hits %d/6%s\n" % [u.pilot.gunnery,
@@ -100,15 +100,15 @@ static func text(u: Unit) -> String:
 static func _loc_line(u: Unit, loc: int) -> String:
 	var d := u.def
 	if u.is_location_destroyed(loc):
-		return "%s  [color=#ff6060]destroyed[/color]\n" % Location.code(loc)
+		return "%s  [color=#ff6060]destroyed[/color]\n" % Location.code_for(u.def, loc)
 	var a := "%d/%d" % [u.armor[loc], d.armor[loc]]
 	if Location.HAS_REAR.has(loc):
 		a += "  rear %d/%d" % [u.rear_armor[loc], d.rear_armor[loc]]
-	var full := StructureTable.points(d.tonnage, loc)
+	var full := StructureTable.points(d.tonnage, loc, d.quad)
 	var s := "%d/%d" % [u.structure[loc], full]
 	var col := "#ffffff" if u.structure[loc] == full else "#ffb040"
 	var wet := "  [color=#60b0ff]flooded[/color]" if u.flooded.get(loc, false) else ""
-	return "%s  armor %s  ·  [color=%s]structure %s[/color]%s\n" % [Location.code(loc), a, col, s, wet]
+	return "%s  armor %s  ·  [color=%s]structure %s[/color]%s\n" % [Location.code_for(u.def, loc), a, col, s, wet]
 
 
 static func _weapon_line(u: Unit, w: MountedWeapon) -> String:
@@ -129,7 +129,7 @@ static func _crits(u: Unit) -> String:
 	for loc in Location.COUNT:
 		for s: CritSlot in u.slots[loc]:
 			if s.hit:
-				t += "%s: %s\n" % [Location.code(loc), s.name.replace("_", " ")]
+				t += "%s: %s\n" % [Location.code_for(u.def, loc), s.name.replace("_", " ")]
 	return t
 
 

@@ -60,12 +60,15 @@ static func relative_angle(from: Vector2i, facing: int, to: Vector2i) -> float:
 
 
 ## Can a weapon in `loc` fire into `arc_id`? Torso, head and leg weapons fire
-## forward (or backward if rear-mounted); arms also cover their own side.
-static func weapon_covers(loc: int, rear: bool, arc_id: int) -> bool:
+## forward (or backward if rear-mounted); arms also cover their own side
+## (a quad's front legs don't: `quad`).
+static func weapon_covers(loc: int, rear: bool, arc_id: int, quad := false) -> bool:
 	if rear:
 		return arc_id == REAR
 	if arc_id == FRONT:
 		return true
+	if quad:
+		return false
 	if loc == Location.LA:
 		return arc_id == LEFT
 	if loc == Location.RA:
@@ -76,7 +79,7 @@ static func weapon_covers(loc: int, rear: bool, arc_id: int) -> bool:
 ## Facing a weapon's arcs are measured from: legs use the legs' facing,
 ## everything else turns with the torso.
 static func weapon_facing(u: Unit, loc: int) -> int:
-	return u.facing if Location.is_leg(loc) else u.torso_facing()
+	return u.facing if Location.is_leg_of(u.def, loc) else u.torso_facing()
 
 
 static func _world(c: Vector2i) -> Vector2:

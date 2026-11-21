@@ -64,6 +64,8 @@ static func apply_internal_one(u: Unit, loc: int, amount: int) -> Dictionary:
 
 ## Marks a location (and anything that goes with it) destroyed.
 static func destroy_location(u: Unit, loc: int) -> void:
+	if Location.is_leg_of(u.def, loc) and not u.prone:
+		u.psr_pending.append({"reason": "leg destroyed", "auto_fall": true, "mod": 0})  # p. 90, p. 238
 	u.structure[loc] = 0
 	u.armor[loc] = 0
 	u.rear_armor[loc] = 0

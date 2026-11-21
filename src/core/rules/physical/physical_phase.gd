@@ -58,13 +58,13 @@ static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Un
 	var hl: Dictionary
 	match String(d.get("table", "punch")):
 		"kick":
-			hl = HitTable.roll_kick(dice, arc_id)
+			hl = HitTable.roll_kick(dice, arc_id, t.def.quad)
 			hl["no_cover"] = true
 			hl["kick_table"] = true
 		"full":
 			hl = HitTable.roll(dice, arc_id)
 		_:
-			hl = HitTable.roll_punch(dice, arc_id)
+			hl = HitTable.roll_punch(dice, arc_id, t.def.quad)
 	var dmg := WaterCombat.physical_damage(state.map, t, hl["loc"], d["damage"])
 	WeaponFire.hit_with(state, dice, emit, t, arc_id, dmg, a.id, d["kind"], hl)
 

@@ -69,6 +69,9 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
   `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+- `"quad": true`: a four-legged 'Mech. Its armor and equipment use `FLL`, `FRL`, `RLL`, `RRL`
+  for the legs (the front legs live in the arm slots; `LA`/`RA` also work). Every leg has 6 slots
+  and leg actuators; structure for the front legs comes from the leg column.
 - `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
   CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
   targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`).

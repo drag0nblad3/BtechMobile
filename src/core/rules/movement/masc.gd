@@ -67,7 +67,7 @@ static func apply_failure(state: GameState, dice: Dice, emit: Callable, u: Unit)
 	if not u.masc_failed or u.destroyed:
 		return
 	u.masc_failed = false
-	var loc: int = HitTable.roll_kick(dice, FiringArc.FRONT)["loc"]
+	var loc: int = HitTable.roll_kick(dice, FiringArc.FRONT, u.def.quad)["loc"]
 	var roll := dice.roll_2d6()
 	var n := LEG_BLOWN_OFF_CRITS if roll >= 12 else CriticalHits.crits_for_roll(roll)
 	emit.call(GameEvent.CRIT_CHECK, {"unit_id": u.id, "loc": loc, "roll": roll, "crits": n, "why": "MASC"})

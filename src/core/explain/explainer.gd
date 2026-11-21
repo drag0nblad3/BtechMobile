@@ -80,7 +80,7 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.CRIT_CHECK:
 			return DamageText.crit_check(s, d, level)
 		GameEvent.CRITICAL:
-			return "  Critical hit on %s %s: %s" % [_u(s, d), Location.name_of(d["loc"]), d["effect"]]
+			return "  Critical hit on %s %s: %s" % [_u(s, d), Location.name_for(s.unit_by_id(d["unit_id"]).def, d["loc"]), d["effect"]]
 		GameEvent.UNIT_DESTROYED:
 			var t := "%s is destroyed (%s)!" % [_u(s, d), d["reason"]]
 			if level == ExplainLevel.FULL and String(d["reason"]).begins_with("XL engine"):
@@ -168,7 +168,7 @@ const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
 	var who := "%s %s %s" % [_u(s, d, "attacker_id"), PHYS_VERBS.get(d["kind"], d["kind"]), _target(s, d)]
 	if d["limb"] >= 0:
-		who += " (%s)" % Location.name_of(d["limb"]).to_lower()
+		who += " (%s)" % Location.name_for(s.unit_by_id(d["attacker_id"]).def, d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
 	if d.get("why", "") != "":
 		var t := "%s: automatic miss, %s" % [who, d["why"]]

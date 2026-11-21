@@ -30,8 +30,10 @@ static func has_roof(tile: MapTile) -> bool:
 
 ## Destroy Check modifier for a 'Mech of `tons` on this roof, or -1 if the
 ## roof holds it without one.
-static func support_mod(b: Building, tons: int) -> int:
-	var over := UnitDef.class_index(tons) - b.type.roof_support
+## A quad counts one class lighter (Quad.support_class).
+static func support_mod(b: Building, tons: int, quad := false) -> int:
+	var cls := UnitDef.class_index(tons)
+	var over := (maxi(0, cls - 1) if quad else cls) - b.type.roof_support
 	return over * 2 if over > 0 else -1
 
 
@@ -41,7 +43,7 @@ static func landed(state: GameState, dice: Dice, emit: Callable, u: Unit) -> voi
 	if not has_roof(tile) or u.destroyed:
 		return
 	u.on_roof = true
-	var mod := support_mod(tile.building, u.def.tonnage)
+	var mod := support_mod(tile.building, u.def.tonnage, u.def.quad)
 	emit.call(GameEvent.BUILDING, {"kind": "roof", "coord": u.coord, "unit_id": u.id,
 			"name": tile.building.type.name, "over": mod >= 0})
 	if mod >= 0 and BuildingRules.destroy_check(state, dice, emit, u.coord, 0, u.id, mod):

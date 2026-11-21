@@ -54,7 +54,7 @@ static func water_cooling(tile: MapTile, u: Unit = null) -> int:
 static func leg_heat_sinks(u: Unit) -> int:
 	var refs := {}
 	var dead := {}
-	for loc in [Location.LL, Location.RL]:
+	for loc in Location.legs(u.def):
 		if u.is_location_out(loc):
 			continue
 		for s: CritSlot in u.slots[loc]:

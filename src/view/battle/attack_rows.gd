@@ -51,7 +51,7 @@ static func physical(state: GameState, attacker: Unit, target: Unit, hex := Hex.
 		var key := "%s:%d" % [o["kind"], o["limb"]]
 		var lbl: String = o["kind"].capitalize()
 		if o["limb"] >= 0:
-			lbl += " (%s)" % Location.code(o["limb"])
+			lbl += " (%s)" % Location.code_for(attacker.def, o["limb"])
 		rows.append({"key": key, "label": lbl, "to_hit": o["to_hit"],
 				"extra": "  %d dmg" % o["damage"] if o["damage"] > 0 else "  shove 1 hex"})
 	return rows

@@ -51,8 +51,7 @@ static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit,
 	if roll >= 12 and (loc == Location.HEAD or Location.is_arm(loc) or Location.is_leg(loc)):
 		Damage.destroy_location(u, loc)
 		emit.call(GameEvent.CRITICAL, {"unit_id": u.id, "loc": loc, "slot": "",
-				"effect": "%s blown off" % Location.name_of(loc)})
-		_after_loss(dice, u, loc)
+				"effect": "%s blown off" % Location.name_for(u.def, loc)})
 		_check_destroyed(emit, u)
 		return
 	for i in n:
@@ -121,11 +120,6 @@ static func _hit_this_phase(state: GameState, u: Unit, loc: int) -> bool:
 
 static func _now(state: GameState) -> int:
 	return state.turn * 10 + state.phase
-
-
-static func _after_loss(_dice: Dice, u: Unit, loc: int) -> void:
-	if Location.is_leg(loc):
-		u.psr_pending.append({"reason": "leg blown off", "auto_fall": true, "mod": 0})
 
 
 static func _check_destroyed(emit: Callable, u: Unit) -> void:

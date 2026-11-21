@@ -28,7 +28,7 @@ static func zone(map: BattleMap, u: Unit) -> int:
 ## Is this location of the 'Mech under water?
 static func submerged(map: BattleMap, u: Unit, loc: int) -> bool:
 	var z := zone(map, u)
-	return z == Zone.UNDER or (z == Zone.WADING and Location.is_leg(loc))
+	return z == Zone.UNDER or (z == Zone.WADING and Location.is_leg_of(u.def, loc))
 
 
 ## {impossible: String, legs_only: bool, under_range: bool} for a shot.

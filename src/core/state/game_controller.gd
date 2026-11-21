@@ -137,7 +137,7 @@ func request_power(unit: Unit, want: String) -> bool:
 
 
 func set_torso_twist(unit: Unit, dir: int) -> bool:
-	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad:
 		return false
 	unit.torso_twist = clampi(dir, -1, 1)
 	return true
