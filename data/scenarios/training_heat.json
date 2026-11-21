@@ -1,0 +1,27 @@
+{
+  "name": "Training: Running Hot",
+  "map": "rolling_hills",
+  "bot_sides": [1],
+  "bot_level": 1,
+  "units": [
+    {"def": "warhammer_whm6r", "side": 0, "hex": "0916", "facing": 0},
+    {"def": "griffin_grf1n", "side": 1, "hex": "0902", "facing": 3},
+    {"def": "wasp_wsp1a", "side": 1, "hex": "1101", "facing": 3}
+  ],
+  "lessons": [
+    {"event": "initiative", "turn": 1, "title": "A hot 'Mech",
+     "text": "The Warhammer carries two PPCs: 10 damage each and 10 heat each. Its heat sinks remove only part of that every turn. Firing everything every turn will cook you, so this lesson is about choosing when to fire."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Heat from moving",
+     "text": "Moving makes heat too: walking +1, running +2, jumping 1 per hex (at least 3). Standing still makes none. The heat line on the Sheet shows where you are now."},
+    {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Count before you fire",
+     "text": "When you pick weapons, the panel shows the heat you will end the turn with. Heat left after your sinks carries into the next turn: 5 or more costs walking MP, 8 or more adds +1 to hit, and it gets worse from there. Try firing one PPC, or both PPCs and nothing else, and watch the total."},
+    {"event": "heat", "unit_side": 0, "min_heat": 5, "title": "The heat scale",
+     "text": "You are carrying heat into the next turn. From 14 the 'Mech must roll to avoid shutting down; from 19 an ammunition explosion becomes possible; at 30 it shuts down automatically. A shut-down 'Mech can't move or shoot and is easy to hit. Skip a weapon or stand still to cool off."},
+    {"event": "shutdown", "title": "Shutdown",
+     "text": "A 'Mech just shut down from heat. While it is down it can't act and every shot at it is much easier. It tries to restart as it cools. This is the price of overheating."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 2, "title": "High ground",
+     "text": "Hills are numbered by level. Climbing costs extra movement per level. From high ground you see over low hills and woods, and an enemy behind a ridge just below you can't hide its legs from you."},
+    {"event": "game_over", "title": "Lesson three complete",
+     "text": "You managed your heat. Next: fighting as a pair, and why the direction of a hit matters."}
+  ]
+}

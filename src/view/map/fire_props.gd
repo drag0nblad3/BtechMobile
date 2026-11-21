@@ -1,20 +1,26 @@
 class_name FireProps
 extends RefCounted
-## Burning hexes: a glowing flame block on the ground (or roof) and a pale
-## smoke column above it, two levels tall; fog banks as pale columns.
+## Burning hexes as voxel fire: glowing cubes that rise and shrink over
+## the hex (or its roof) under a column of soot cubes two levels tall,
+## all animated in vx_flame.gdshader. Fog banks stay pale columns.
 
-const FLAME_INSET := 0.6
+const FLAME_SHADER := preload("res://src/view/shaders/vx_flame.gdshader")
+const FLAMES := 34     ## Cubes per burning hex.
+const SOOT := 14
+const FLAME_SIZE := 0.12
+const SOOT_SIZE := 0.13
 const SMOKE_INSET := 0.85
+
+static var _flame_mat: ShaderMaterial
+static var _soot_mat: ShaderMaterial
 
 
 static func build(map: BattleMap) -> Node3D:
 	var root := Node3D.new()
 	root.name = "Fires"
-	var flame_mesh := HexMesh.prism(HexLayout.HEX_SIZE * FLAME_INSET)
 	var smoke_mesh := HexMesh.prism(HexLayout.HEX_SIZE * SMOKE_INSET)
-	var flame := _material(Color(1.0, 0.45, 0.1, 0.85), true)
-	var smoke := _material(Color(0.55, 0.55, 0.55, 0.35), false)
-	var fog := _material(Color(0.85, 0.88, 0.9, 0.3), false)
+	var fog := _fog_material()
+	var bases: Array[Vector3] = []
 	for t: MapTile in map.tiles.values():
 		if t.fog > 0 and not map.windy:  # fog banks (Obscurant), two levels tall
 			root.add_child(_block(smoke_mesh, fog, HexLayout.tile_top(t), Obscurant.HEIGHT * HexLayout.LEVEL_HEIGHT * (0.6 + 0.4 * t.fog)))
@@ -23,11 +29,52 @@ static func build(map: BattleMap) -> Node3D:
 		var base := HexLayout.tile_top(t)
 		if t.building != null:
 			base.y += t.building.height * HexLayout.LEVEL_HEIGHT
-		var fh := 0.25 * HexLayout.LEVEL_HEIGHT
-		root.add_child(_block(flame_mesh, flame, base, fh))
-		var sh := Fire.SMOKE_HEIGHT * HexLayout.LEVEL_HEIGHT
-		root.add_child(_block(smoke_mesh, smoke, base + Vector3(0, fh, 0), sh))
+		bases.append(base)
+	if not bases.is_empty():
+		root.add_child(_cubes(bases, FLAMES, FLAME_SIZE, 0.42, 0.1, flame_material()))
+		root.add_child(_cubes(bases, SOOT, SOOT_SIZE, 0.3, 0.25, soot_material()))
 	return root
+
+
+## One MultiMesh of cubes over every burning hex; custom data drives the shader.
+static func _cubes(bases: Array[Vector3], per_hex: int, size: float, spread: float,
+		lift: float, mat: Material) -> MultiMeshInstance3D:
+	var box := BoxMesh.new()
+	box.size = Vector3.ONE * size
+	var mm := MultiMesh.new()
+	mm.transform_format = MultiMesh.TRANSFORM_3D
+	mm.use_custom_data = true
+	mm.mesh = box
+	mm.instance_count = bases.size() * per_hex
+	var rng := RandomNumberGenerator.new()
+	rng.seed = bases.size()
+	for i in mm.instance_count:
+		var a := rng.randf() * TAU
+		var r := sqrt(rng.randf()) * spread
+		var p := bases[i / per_hex] + Vector3(cos(a) * r, lift + rng.randf() * 0.05, sin(a) * r)
+		mm.set_instance_transform(i, Transform3D(Basis(Vector3.UP, rng.randf() * TAU), p))
+		mm.set_instance_custom_data(i, Color(rng.randf(), rng.randf_range(0.7, 1.3), rng.randf_range(0.01, 0.04), 0))
+	var inst := MultiMeshInstance3D.new()
+	inst.multimesh = mm
+	inst.material_override = mat
+	inst.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	return inst
+
+
+static func flame_material() -> ShaderMaterial:
+	if _flame_mat == null:
+		_flame_mat = ShaderMaterial.new()
+		_flame_mat.shader = FLAME_SHADER
+	return _flame_mat
+
+
+static func soot_material() -> ShaderMaterial:
+	if _soot_mat == null:
+		_soot_mat = ShaderMaterial.new()
+		_soot_mat.shader = FLAME_SHADER
+		_soot_mat.set_shader_parameter("smoke", true)
+		_soot_mat.set_shader_parameter("rise", Fire.SMOKE_HEIGHT * HexLayout.LEVEL_HEIGHT)
+	return _soot_mat
 
 
 static func _block(mesh: Mesh, mat: Material, at: Vector3, h: float) -> MeshInstance3D:
@@ -38,12 +85,8 @@ static func _block(mesh: Mesh, mat: Material, at: Vector3, h: float) -> MeshInst
 	return inst
 
 
-static func _material(c: Color, glow: bool) -> StandardMaterial3D:
+static func _fog_material() -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
-	m.albedo_color = c
+	m.albedo_color = Color(0.85, 0.88, 0.9, 0.3)
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED if glow else BaseMaterial3D.SHADING_MODE_PER_PIXEL
-	if glow:
-		m.emission_enabled = true
-		m.emission = Color(1.0, 0.5, 0.1)
 	return m
