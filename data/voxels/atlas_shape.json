@@ -7086,9 +7086,146 @@
       "loc": "CT",
       "parent": "ct",
       "mirror": "ct_rear_left_radiator"
+    },
+    {
+      "name": "ll_rear_hip_shield",
+      "loc": "LL",
+      "parent": "ll",
+      "pivot": [
+        -7,
+        29,
+        6
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": 4,
+                "polygon": [
+                  [
+                    -10,
+                    26
+                  ],
+                  [
+                    -9,
+                    24
+                  ],
+                  [
+                    -6,
+                    24
+                  ],
+                  [
+                    -5,
+                    26
+                  ],
+                  [
+                    -5,
+                    31
+                  ],
+                  [
+                    -6,
+                    33
+                  ],
+                  [
+                    -9,
+                    33
+                  ],
+                  [
+                    -10,
+                    31
+                  ]
+                ]
+              },
+              {
+                "at": 6,
+                "polygon": [
+                  [
+                    -11,
+                    26
+                  ],
+                  [
+                    -9,
+                    24
+                  ],
+                  [
+                    -6,
+                    24
+                  ],
+                  [
+                    -4,
+                    26
+                  ],
+                  [
+                    -4,
+                    31
+                  ],
+                  [
+                    -6,
+                    33
+                  ],
+                  [
+                    -9,
+                    33
+                  ],
+                  [
+                    -11,
+                    31
+                  ]
+                ]
+              },
+              {
+                "at": 8,
+                "polygon": [
+                  [
+                    -10,
+                    26
+                  ],
+                  [
+                    -9,
+                    25
+                  ],
+                  [
+                    -6,
+                    25
+                  ],
+                  [
+                    -5,
+                    26
+                  ],
+                  [
+                    -5,
+                    31
+                  ],
+                  [
+                    -6,
+                    32
+                  ],
+                  [
+                    -9,
+                    32
+                  ],
+                  [
+                    -10,
+                    31
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "edge"
+        }
+      ]
+    },
+    {
+      "name": "rl_rear_hip_shield",
+      "loc": "RL",
+      "parent": "rl",
+      "mirror": "ll_rear_hip_shield"
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals. CGL plastic pass 36: de-bloat Atlas gauntlets into distinctly narrower wrist/elbow shapes and separate squared knuckle armor, retaining bulky upper shoulder and heavy block-fist silhouette of Hansen's sculpt. Pass 38 (CGL Hanson 2023 plastic front + 3/4, weight 70%): reduce tall skull crown, recess chin beneath shoulder roof, keep two separate cheek plates and eye sockets; avoid inflated humanoid head. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass38, front/side Atlas Roughriders: skull front pulled back to reduce cartoon mask, jaw reduced to compact mandible, collar solidly connects head to upper chest so no hovering face. Preserve cheek shapes and optic placement. CGL pass41: front/three-quarter Atlas Roughriders photo: replace round balloon upper arms with bevelled 8-sided shield around compact elbow connection, preserving oversized rounded shoulder cowl above as separate assembly. CGL pass44: Atlas Hansen front view boots are chunky square toe split rather than elongated ski shoes. Shortened front sole and physical split toe blocks and added visible narrow ankle collar from shin to foot, reducing artificial assembly gap. CGL shape pass47, joint audit: added actual left/right inner hip yokes under pelvis that penetrate the thigh root and chest understructure, preventing dark detached thighs without bulking up the outer armor. CGL bloat check after pass 47: narrowed overlapping Atlas interior hip socket and older hip joint to tightly nested 8-corner mechanical bearings. They still bridge pelvis/thigh, preserve (-6,30,0) landmark, and remove excess coarse cells without hiding the joint. Plastic-weighted pass48: Hansen's Roughriders unpainted front and oblique Atlas: shorter lower jaw, compact dome, cheek/eye frame. No bulbous projecting duck-mask or enlarged nose. Plastic-weighted pass51: Atlas CGL frontal figure's huge ribbed central chest is a broad V under the round cowls, not a pipe between two shoulder spheres. Widen center torso at mid-height one cell each side and add shallow tapered abdominal armor between breastplates and waist; no new forearm bulk. CGL plastic pass51: give torso-to-hips a separate short central groin guard while preserving the split left/right hip caps. Plastic-weighted pass54: Hansen Atlas frontal and shin side photographs: smaller squared knee cover over long flat vertical calf guard, not a giant balloon knee. Retain massive boot/ankle silhouette and real joint separation. CGL shape pass 58: Skull silhouette: cheek-jaw taper beneath recessed ocular brow; primary references are current plastic from multiple angles. CGL shape pass 61: Square compact knee armor and longer planar shin instead of cylindrical column; primary references are current plastic from multiple angles. CGL sculpt pass 63: Segmented rounded shoulder cowls instead of unbroken swollen bells; plastic photos front/side/rear weighted primary. CGL sculpt pass 66: Lower skull crown and pull top forehead inward between shoulder cowls; plastic photos front/side/rear weighted primary. CGL plastic pass 69: Add compact paired rear reactor/radiator cowls absent from Atlas back; multi-angle side/rear audit. CGL plastic pass 71: Break assault boot from shortened sole into separate projected square toe blocks; multi-angle side/rear audit.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals. CGL plastic pass 36: de-bloat Atlas gauntlets into distinctly narrower wrist/elbow shapes and separate squared knuckle armor, retaining bulky upper shoulder and heavy block-fist silhouette of Hansen's sculpt. Pass 38 (CGL Hanson 2023 plastic front + 3/4, weight 70%): reduce tall skull crown, recess chin beneath shoulder roof, keep two separate cheek plates and eye sockets; avoid inflated humanoid head. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass38, front/side Atlas Roughriders: skull front pulled back to reduce cartoon mask, jaw reduced to compact mandible, collar solidly connects head to upper chest so no hovering face. Preserve cheek shapes and optic placement. CGL pass41: front/three-quarter Atlas Roughriders photo: replace round balloon upper arms with bevelled 8-sided shield around compact elbow connection, preserving oversized rounded shoulder cowl above as separate assembly. CGL pass44: Atlas Hansen front view boots are chunky square toe split rather than elongated ski shoes. Shortened front sole and physical split toe blocks and added visible narrow ankle collar from shin to foot, reducing artificial assembly gap. CGL shape pass47, joint audit: added actual left/right inner hip yokes under pelvis that penetrate the thigh root and chest understructure, preventing dark detached thighs without bulking up the outer armor. CGL bloat check after pass 47: narrowed overlapping Atlas interior hip socket and older hip joint to tightly nested 8-corner mechanical bearings. They still bridge pelvis/thigh, preserve (-6,30,0) landmark, and remove excess coarse cells without hiding the joint. Plastic-weighted pass48: Hansen's Roughriders unpainted front and oblique Atlas: shorter lower jaw, compact dome, cheek/eye frame. No bulbous projecting duck-mask or enlarged nose. Plastic-weighted pass51: Atlas CGL frontal figure's huge ribbed central chest is a broad V under the round cowls, not a pipe between two shoulder spheres. Widen center torso at mid-height one cell each side and add shallow tapered abdominal armor between breastplates and waist; no new forearm bulk. CGL plastic pass51: give torso-to-hips a separate short central groin guard while preserving the split left/right hip caps. Plastic-weighted pass54: Hansen Atlas frontal and shin side photographs: smaller squared knee cover over long flat vertical calf guard, not a giant balloon knee. Retain massive boot/ankle silhouette and real joint separation. CGL shape pass 58: Skull silhouette: cheek-jaw taper beneath recessed ocular brow; primary references are current plastic from multiple angles. CGL shape pass 61: Square compact knee armor and longer planar shin instead of cylindrical column; primary references are current plastic from multiple angles. CGL sculpt pass 63: Segmented rounded shoulder cowls instead of unbroken swollen bells; plastic photos front/side/rear weighted primary. CGL sculpt pass 66: Lower skull crown and pull top forehead inward between shoulder cowls; plastic photos front/side/rear weighted primary. CGL plastic pass 69: Add compact paired rear reactor/radiator cowls absent from Atlas back; multi-angle side/rear audit. CGL plastic pass 71: Break assault boot from shortened sole into separate projected square toe blocks; multi-angle side/rear audit. CGL shape pass 74: Add independent rear hip actuator shields on giant Atlas upper leg yokes; verify from plastic front, side, rear.",
   "muzzles": {
     "LT": [
       [
