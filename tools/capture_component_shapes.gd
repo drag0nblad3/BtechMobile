@@ -10,7 +10,7 @@ const VIEWS := ["front", "three_quarter", "side", "rear"]
 var output_dir := "/tmp/component-shape-renders"
 var scene: Node3D
 var camera: Camera3D
-var models: Array[VxMech] = []
+var models: Array[Node3D] = []
 var labels: Array[Label3D] = []
 var views: Array[Dictionary] = []
 var step := 0
@@ -27,15 +27,16 @@ func _initialize() -> void:
 	root.add_child(scene)
 	_lighting()
 	for i in IDS.size():
-		var mech := VxMech.from_file("res://data/voxels/%s.json" % IDS[i])
-		if not mech.model.errors.is_empty() or mech.model.detail != 1:
-			printerr("SHAPE_ERROR|invalid model %s errors %s" % [IDS[i], mech.model.errors])
+		var model := VxModel.load_file("res://data/voxels/%s.json" % IDS[i])
+		if not model.errors.is_empty() or model.detail != 1:
+			printerr("SHAPE_ERROR|invalid model %s errors %s" % [IDS[i], model.errors])
 			quit(1)
 			return
+		var mech := VxShapePreview.from_file("res://data/voxels/%s.json" % IDS[i])
 		mech.position = Vector3((i - 1) * SPACING, 0, 0)
 		scene.add_child(mech)
 		models.append(mech)
-		print("SHAPE_COUNT|%s|%d|%d" % [IDS[i], mech.voxel_count(), mech.model.parts.size()])
+		print("SHAPE_COUNT|%s|%d|%d" % [IDS[i], model.cell_count(), model.parts.size()])
 		var label := Label3D.new()
 		label.text = LABELS[i]
 		label.font_size = 40
