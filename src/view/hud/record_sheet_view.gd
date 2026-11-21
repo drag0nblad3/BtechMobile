@@ -52,10 +52,12 @@ static func text(u: Unit) -> String:
 	var tech: Array[String] = []
 	if d.is_clan():
 		tech.append("Clan technology")
+	if not d.clan_parts.is_empty() or d.weapon_mounts.any(func(m: Dictionary) -> bool: return (m["weapon"] as WeaponDef).is_clan() != d.is_clan()):
+		tech.append("mixed Clan and Inner Sphere technology")
 	if d.omni:
 		tech.append("OmniMech, %s configuration" % d.config)
 	if d.is_xl():
-		tech.append("Clan XL engine (survives losing one side torso)" if d.is_clan() else "XL engine (dies if a side torso is lost)")
+		tech.append("Clan XL engine (survives losing one side torso)" if d.clan_part("engine") else "XL engine (dies if a side torso is lost)")
 	if d.structure_type == "endo_steel":
 		tech.append("endo steel structure")
 	if d.ecm_loc >= 0:

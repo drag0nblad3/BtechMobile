@@ -284,6 +284,34 @@
     "megamek_bv": 1029
    },
    "role": "Striker: quick and hard-hitting, best when it closes in fast. 5 ER Medium Lasers; walks 7, runs 11, jumps 7."
+  },
+  {
+   "model": "RTX1-OR",
+   "bv": 1393,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_er_large_laser",
+     "c_er_medium_laser"
+    ],
+    "RA": [
+     "c_er_large_laser",
+     "c_er_medium_laser"
+    ],
+    "CT": [
+     "c_er_small_laser",
+     "c3_slave"
+    ]
+   },
+   "source": {
+    "mul_id": 2655,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OR.mtf",
+    "published": "RS:3058Uu-I",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1393
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Large Lasers, 2 ER Medium Lasers, ER Small Laser; walks 7, runs 11."
   }
  ]
 }

@@ -323,6 +323,48 @@
     "megamek_bv": 1604
    },
    "role": "Sniper: hangs back and hits from long range. 2 Medium Lasers, 2 Heavy PPCs, 2 MML 3s; walks 4, runs 6."
+  },
+  {
+   "model": "AV1-OR",
+   "bv": 1833,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_gauss_rifle"
+    ],
+    "RA": [
+     "mrm40"
+    ],
+    "LT": [
+     "ammo:c_gauss_rifle"
+    ],
+    "RT": [
+     "c_streak_srm4",
+     "ammo:c_streak_srm4",
+     "ammo:mrm40*2"
+    ],
+    "HD": [
+     "c_er_large_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 170,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OR.mtf",
+    "published": "RS:3058Uu-I",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1833
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, Gauss Rifle, MRM 40, Streak SRM 4, ER Large Laser; walks 4, runs 6."
   }
  ]
 }

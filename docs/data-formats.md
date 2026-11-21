@@ -77,6 +77,9 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
   CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
   targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`).
+- Mixed tech: `"clan_parts": {"engine": true, "heat_sinks": true, "armor": true, "tc": true, "ecm": true,
+  "masc": true, "case": true}` lists parts whose tech differs from `tech_base` (`false` on a Clan
+  chassis means Inner Sphere-made). Weapons carry their own tech via `c_*` ids.
 - OmniMechs (`OmniConfig`): one file per chassis with `"configs": [{"model": "Prime", "equipment": {...}, ...}]`.
   The top level holds the fixed parts (engine, armor, structure, fixed `equipment` such as
   endo/ferro slots); each config adds its pod `equipment` per location and may override any
