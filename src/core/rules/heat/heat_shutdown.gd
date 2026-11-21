@@ -5,11 +5,14 @@ extends RefCounted
 ## 30+ (or unconscious) it can't be avoided. Shutting down doesn't make the
 ## 'Mech fall, but it is immobile and fails any piloting roll. A shut-down
 ## 'Mech restarts by itself below 14 heat; otherwise a conscious warrior
-## rolls the same number, and never at 30+.
+## rolls the same number, and never at 30+. Extreme temperatures shift the
+## number (ExtremeTemp).
 
 
-static func check(dice: Dice, emit: Callable, u: Unit) -> void:
+static func check(dice: Dice, emit: Callable, u: Unit, c: Conditions = null) -> void:
 	var need := HeatScale.shutdown_avoid(u.heat)
+	if c != null:
+		need = ExtremeTemp.avoid(need, c)
 	if u.shutdown:
 		_restart(dice, emit, u, need)
 		return

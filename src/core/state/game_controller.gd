@@ -26,6 +26,8 @@ func start_turn() -> void:
 	for u in state.units:
 		u.reset_for_turn()
 	_emit(GameEvent.TURN_STARTED, {"turn": state.turn})
+	if state.turn == 1 and not state.conditions.is_clear():
+		_emit(GameEvent.CONDITIONS, {"names": state.conditions.names()})
 	_set_phase(Phase.Kind.INITIATIVE)
 	_roll_initiative()
 	_begin_phase(Phase.Kind.MOVEMENT)

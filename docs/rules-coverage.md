@@ -95,6 +95,12 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Life support hit: 1 MechWarrior hit per Heat Phase at heat 10-19, 2 at 20+; 1 in the End Phase when fully under water.
 - ✅ Jumping heat (1 per hex, min 3).
 
+## Battlefield conditions
+- ✅ Conditions for the whole map (`Conditions`, pp. 120-121) from a scenario's `"conditions"` block or the start screen's Conditions button; the log names them on turn 1 and explains each at Full.
+- ✅ Extreme cold / heat 1-3 (`ExtremeTemp`, p. 120): +2 heat shed (cold) or gained (heat) per level each Heat Phase; shutdown, restart and ammo avoid numbers -1/+1 per level (2 or less passes, past 12 fails); life support: in the cold, one MechWarrior hit per level instead of heat hits, minus 1/2/3 at 5-10/11-20/21+ heat; in the heat, +1 hit per level whenever heat deals life support hits — `TODO(rules)`: water freezing to ice / drying to sinkholes; torso-mounted cockpits (not in the game).
+- ✅ Gravity (`Gravity`, p. 121): rounded to 0.1 G; fall and building collapse damage times G, rounded up; every jump owes a piloting roll at -1 away from 1 G.
+- ✅ Night (p. 121): no effect on 'Mechs (explained in the log).
+
 ## Critical hits
 - ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,
   12 three (head/limb blown off), checked against the book (p. 91).

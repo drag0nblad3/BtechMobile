@@ -50,17 +50,20 @@ static func ammo_explosion_avoid(heat: int) -> int:
 
 
 ## Short description of what this heat level does (record sheet / tips).
-static func effects_text(heat: int) -> String:
+static func effects_text(heat: int, c: Conditions = null) -> String:
 	var parts: Array[String] = []
 	if mp_penalty(heat) > 0:
 		parts.append("-%d MP" % mp_penalty(heat))
 	if to_hit_penalty(heat) > 0:
 		parts.append("+%d to hit" % to_hit_penalty(heat))
-	var sd := shutdown_avoid(heat)
+	var sd := shutdown_avoid(heat) if c == null else ExtremeTemp.avoid(shutdown_avoid(heat), c)
 	if sd == 99:
 		parts.append("shuts down")
 	elif sd > 0:
 		parts.append("shutdown unless %d+" % sd)
-	if ammo_explosion_avoid(heat) > 0:
-		parts.append("ammo explodes unless %d+" % ammo_explosion_avoid(heat))
+	var ae := ammo_explosion_avoid(heat) if c == null else ExtremeTemp.avoid(ammo_explosion_avoid(heat), c)
+	if ae == 99:
+		parts.append("ammo explodes")
+	elif ae > 0:
+		parts.append("ammo explodes unless %d+" % ae)
 	return ", ".join(parts) if not parts.is_empty() else "no effect"

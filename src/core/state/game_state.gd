@@ -30,6 +30,8 @@ var initiative_die: Dictionary = {}
 var fire_heat: Dictionary = {}
 ## Spotters for indirect fire: unit id -> {target, turn}.
 var spotting: Dictionary = {}
+## Weather, temperature and gravity for the whole map.
+var conditions := Conditions.new()
 var game_over: bool = false
 var winner: int = -1
 

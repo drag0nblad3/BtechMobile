@@ -32,6 +32,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 	match e.type:
 		GameEvent.TURN_STARTED:
 			return "Turn %d" % d["turn"]
+		GameEvent.CONDITIONS:
+			return ConditionsText.describe(s.conditions, level)
 		GameEvent.INITIATIVE:
 			return _initiative(d, level)
 		GameEvent.PHASE_CHANGED:

@@ -5,12 +5,16 @@ extends RefCounted
 
 const MAX_UNITS := 4
 const BUDGETS := [2000, 3000, 4500, 6000, 8000]
+## Battlefield condition choices on the start screen (Conditions.from_dict).
+const CONDITION_PRESETS := [{}, {"night": true}, {"cold": 1}, {"cold": 3}, {"heat": 1},
+		{"heat": 3}, {"gravity": 0.5}, {"gravity": 1.5}]
 
 var units: UnitDb
 var budget: int = 3000  ## Battle Value per side.
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 var initiative_die := false  ## Use the optional Initiative Die rule.
+var conditions := Conditions.new()  ## Battlefield conditions.
 
 
 func _init(unit_db: UnitDb, bv_budget: int = 3000) -> void:
@@ -92,6 +96,13 @@ func balance_text() -> String:
 	return "%s is much stronger (%d vs %d BV): expect a lopsided fight." % [stronger, a, b]
 
 
+## Switches to the next battlefield condition preset.
+func next_conditions() -> void:
+	var cur := conditions.to_dict()
+	var i := CONDITION_PRESETS.find(cur)
+	conditions = Conditions.from_dict(CONDITION_PRESETS[(i + 1) % CONDITION_PRESETS.size()])
+
+
 func ready_to_fight() -> bool:
 	return not rosters[0].is_empty() and not rosters[1].is_empty()
 
@@ -99,6 +110,7 @@ func ready_to_fight() -> bool:
 func build(map: BattleMap) -> GameState:
 	var state := GameState.new(map)
 	state.initiative_die_rule = initiative_die
+	state.conditions = conditions
 	var next_id := 1
 	for side in 2:
 		var row := map.height - 2 if side == 0 else 1
