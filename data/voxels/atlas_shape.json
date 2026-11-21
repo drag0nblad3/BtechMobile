@@ -3784,68 +3784,83 @@
       "pivot": [
         11,
         41,
-        -10
+        -13
       ],
       "shapes": [
         {
           "box": [
             [
+              8,
+              38,
+              -24
+            ],
+            [
+              8,
+              44,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              14,
+              38,
+              -24
+            ],
+            [
+              14,
+              44,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              9,
+              38,
+              -24
+            ],
+            [
+              13,
+              38,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              9,
+              44,
+              -24
+            ],
+            [
+              13,
+              44,
+              -11
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
               9,
               39,
-              -17
+              -20
             ],
             [
-              9,
-              42,
-              -10
+              13,
+              43,
+              -19
             ]
           ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              12,
-              39,
-              -17
-            ],
-            [
-              12,
-              42,
-              -10
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              10,
-              39,
-              -17
-            ],
-            [
-              11,
-              39,
-              -10
-            ]
-          ],
-          "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              10,
-              42,
-              -17
-            ],
-            [
-              11,
-              42,
-              -10
-            ]
-          ],
-          "mat": "edge"
+          "mat": "inside"
         }
       ]
     },
@@ -4730,7 +4745,7 @@
       "mirror": "hd_cheek_left"
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision.",
   "muzzles": {
     "LT": [
       [
@@ -4760,9 +4775,11 @@
       ]
     ],
     "RT": [
-      10.5,
-      40.5,
-      -17.5
+      [
+        11.5,
+        41.5,
+        -24.5
+      ]
     ]
   },
   "weapons": []
