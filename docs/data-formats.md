@@ -38,6 +38,8 @@ heat per building level that sets it alight.
   the explosion damage per shot. Narc-equipped missiles are `ammo:<launcher>:narc`.
 - `rapid`: most shots in one attack (Ultra ACs 2, rotary ACs 6); `rotary: true` lets it pick
   1-6 shots and jam (`RotaryAc`).
+- `tech: "clan"` marks Clan versions; their ids start `c_` (`c_er_medium_laser`) and keep the
+  book's names. `to_hit` is the weapon's own modifier (pulse -2, ER pulse -1, heavy lasers +1).
 
 ## `data/bv_skill.json`
 `{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;
