@@ -9,6 +9,8 @@ const COCKPIT_TONS := 3.0
 const ARMOR_PER_TON := 16.0
 ## Ferro-fibrous gives 12% more points per ton; endo steel halves structure.
 const FERRO_MULT := 1.12
+const LIGHT_FERRO_MULT := 1.06
+const HEAVY_FERRO_MULT := 1.24
 
 static var _engine: Dictionary = {}
 
@@ -23,12 +25,12 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0)
 	return {
 		"structure": _half_up(def.tonnage / 10.0 * (0.5 if def.structure_type == "endo_steel" else 1.0)),
-		"engine": XlEngine.tons(engine_tons(rating), def.is_xl()),
-		"gyro": float(ceili(rating / 100.0)),
+		"engine": XlEngine.tons(engine_tons(rating), def.engine_type),
+		"gyro": Gyro.tons(def),
 		"cockpit": COCKPIT_TONS,
 		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
 		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
-		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (ferro_mult(def) if def.armor_type == "ferro_fibrous" else 1.0))),
+		"armor": _half_up(armor_pts / (ARMOR_PER_TON * armor_mult(def))),
 		"weapons": weapons,
 		"ammo": def.ammo_mounts.reduce(func(t: float, a: Dictionary) -> float: return t + (0.5 if a.get("half", false) else 1.0), 0.0),
 		"case": def.case_locs.size() * 0.5,
@@ -41,6 +43,18 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,
 		"melee": def.melee.reduce(func(t: float, m: Dictionary) -> float: return t + def.melee_tons(m["kind"]), 0.0),
 	}
+
+
+## Armor points per ton relative to standard. TODO(rules): construction data.
+static func armor_mult(def: UnitDef) -> float:
+	match def.armor_type:
+		"ferro_fibrous":
+			return ferro_mult(def)
+		"light_ferro":
+			return LIGHT_FERRO_MULT
+		"heavy_ferro":
+			return HEAVY_FERRO_MULT
+	return 1.0
 
 
 static func ferro_mult(def: UnitDef) -> float:

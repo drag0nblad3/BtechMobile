@@ -75,7 +75,7 @@ static func build(def: UnitDef) -> Array:
 	return out
 
 
-const BULK_NAMES := {"endo_steel": "Endo Steel", "ferro_fibrous": "Ferro-Fibrous", "tsm": "Triple-Strength Myomer"}
+const BULK_NAMES := {"endo_steel": "Endo Steel", "ferro_fibrous": "Ferro-Fibrous", "light_ferro": "Light Ferro-Fibrous", "heavy_ferro": "Heavy Ferro-Fibrous", "tsm": "Triple-Strength Myomer"}
 
 
 static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
@@ -84,10 +84,13 @@ static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
 	if loc == Location.HEAD:
 		names = HEAD
 	elif loc == Location.CT:
-		names = ["Engine", "Engine", "Engine", "Gyro", "Gyro", "Gyro", "Gyro",
-				"Engine", "Engine", "Engine"]
-	elif def.is_xl() and (loc == Location.LT or loc == Location.RT):
-		for s in ClanTech.xl_side_slots(def):
+		names = ["Engine", "Engine", "Engine"]
+		for s in Gyro.slots(def):
+			names.append("Gyro")
+		if def.engine_type != "compact":
+			names.append_array(["Engine", "Engine", "Engine"])
+	elif XlEngine.side_slots(def) > 0 and (loc == Location.LT or loc == Location.RT):
+		for s in XlEngine.side_slots(def):
 			names.append("Engine")
 	elif Location.is_arm_of(def, loc):
 		for a in ARM_ACTUATORS:

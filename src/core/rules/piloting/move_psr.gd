@@ -50,7 +50,7 @@ static func action_rolls(state: GameState, u: Unit, path: Array[Vector3i], from:
 ## Rolls owed at the end of the move; added to Unit.psr_pending.
 static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null, dfa := false) -> void:
 	if mode == MoveMode.Kind.RUN and hexes > 0:
-		if u.gyro_hits > 0:
+		if Gyro.run_forces_roll(u):
 			u.psr_pending.append({"reason": "running with a damaged gyro", "mod": 0})
 		for i in u.hip_hits():
 			u.psr_pending.append({"reason": "running with a broken hip", "mod": 0})
@@ -62,7 +62,7 @@ static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null, dfa
 				extra["jump"] = true
 				u.psr_pending.append(extra)
 		if u.gyro_hits > 0:
-			u.psr_pending.append({"reason": "landing a jump with a damaged gyro", "mod": 0, "jump": true})
+			u.psr_pending.append({"reason": "landing a jump with a damaged gyro", "mod": Gyro.jump_roll_mod(u), "jump": true})
 		if u.def.quad and Quad.running_leg_rolls(u) > 0:
 			u.psr_pending.append({"reason": "landing a jump on lost legs", "mod": 0, "jump": true})
 		for loc in Location.legs(u.def):

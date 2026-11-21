@@ -19,7 +19,7 @@ static func turn_options(unit: Unit, mode: int) -> MoveOptions:
 	var start := opts.start_key()
 	opts.cost[start] = 0
 	opts.can_end[start] = true
-	var most := 1 if unit.gyro_hits >= CritEffects.GYRO_KILL else 3
+	var most := 1 if Gyro.destroyed(unit) else 3
 	for f in 6:
 		var t := Hex.turn_cost(unit.facing, f)
 		if t == 0 or t > most or t > opts.budget:

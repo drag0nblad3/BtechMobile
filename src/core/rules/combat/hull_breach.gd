@@ -71,7 +71,7 @@ static func _disable(u: Unit, s: CritSlot) -> String:
 			return "engine"
 		CritSlot.Kind.GYRO:
 			u.gyro_hits += 1
-			if u.gyro_hits == CritEffects.GYRO_KILL:
+			if u.gyro_hits == Gyro.kill_hits(u.def):
 				u.psr_pending.append({"reason": "gyro flooded", "auto_fall": true, "mod": 0})
 			return "gyro"
 		CritSlot.Kind.COCKPIT:

@@ -18,7 +18,7 @@ const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "
 
 
 static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void:
-	if item == "endo_steel" or item == "ferro_fibrous" or item == "tsm":
+	if item in ["endo_steel", "ferro_fibrous", "light_ferro", "heavy_ferro", "tsm"]:
 		_append(def.bulk_slots, loc, item)
 	elif InertGear.KINDS.has(item):
 		def.inert.append({"kind": item, "loc": loc})
