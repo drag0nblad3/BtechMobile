@@ -1,0 +1,16 @@
+{
+  "id": "hellbringer", "name": "Hellbringer", "tonnage": 65, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "hellbringer", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 32, "LT": 23, "RT": 23, "LA": 20, "RA": 20, "LL": 30, "RL": 30},
+  "rear_armor": {"CT": 10, "LT": 7, "RT": 7},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*1"], "RA": ["ferro_fibrous*6"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 18, "role": "Clan heavy with gadgets: an ER PPC, lasers, ECM to jam Artemis and an AMS, but thin armor for its size.", "equipment": {
+      "RA": ["c_er_ppc", "c_er_small_laser"],
+      "LA": ["c_er_large_laser", "c_er_medium_laser", "c_er_medium_laser", "heat_sink"],
+      "LT": ["c_srm6", "ammo:c_srm6", "guardian_ecm", "ammo:c_srm6", "heat_sink", "heat_sink"],
+      "RT": ["c_ams", "ammo:c_ams", "c_machine_gun", "c_machine_gun", "ammo:c_machine_gun", "heat_sink", "heat_sink"],
+      "CT": ["c_er_medium_laser", "c_er_medium_laser"]
+    }}
+  ]
+}

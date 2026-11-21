@@ -1,0 +1,22 @@
+{
+  "id": "dire_wolf", "name": "Dire Wolf", "tonnage": 100, "walk_mp": 3, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "dire_wolf", "engine_type": "xl",
+  "armor": {"HD": 9, "CT": 47, "LT": 32, "RT": 32, "LA": 33, "RA": 33, "LL": 42, "RL": 41},
+  "rear_armor": {"CT": 15, "LT": 10, "RT": 10},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 19, "role": "Clan assault. Four ER large lasers, two Ultra AC/5s and an LRM 10 behind the thickest armor on the field; slow, and hot if it fires everything.", "equipment": {
+      "LA": ["c_er_large_laser", "c_er_large_laser", "c_er_medium_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"],
+      "RA": ["c_er_large_laser", "c_er_large_laser", "c_er_medium_laser", "c_er_medium_laser", "ammo:c_lrm15", "ammo:c_lrm15"],
+      "LT": ["c_ultra_ac5", "ammo:c_ultra_ac5", "ammo:c_ultra_ac5", "heat_sink", "heat_sink"],
+      "RT": ["c_ultra_ac5", "ammo:c_ultra_ac5", "c_medium_pulse_laser", "ammo:c_ultra_ac5", "heat_sink", "heat_sink"],
+      "CT": ["c_lrm15"]
+    }},
+    {"model": "A", "heat_sinks": 18, "role": "Gauss Dire Wolf: two Gauss rifles and pulse lasers, cooler and longer-ranged than the Prime.", "equipment": {
+      "LA": ["c_gauss_rifle", "c_er_medium_laser", "ammo:c_lrm20", "ammo:c_lrm20", "c_er_small_laser"],
+      "RA": ["c_gauss_rifle", "c_lrm20"],
+      "LT": ["ammo:c_gauss_rifle", "ammo:c_gauss_rifle", "c_medium_pulse_laser", "ammo:c_gauss_rifle", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["c_large_pulse_laser", "c_medium_pulse_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"]
+    }}
+  ]
+}

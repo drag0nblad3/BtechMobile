@@ -81,6 +81,7 @@ Battle mode first; campaign layer later.
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
 | `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, map=<id>, tutorial) |
+| `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap), `voxel-mech-prototype.md` (lab), `graphics/voxel-integration-plan.md` (voxel art into the battle) |

@@ -59,7 +59,8 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   Artemis IV), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
   `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
-- `heat_sinks` is the total. The first 10 are inside the engine; list the rest as
+- `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
+  rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
   `heat_sink` items. `"heat_sink_type": "double"` makes them all doubles (2 heat,
   3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`

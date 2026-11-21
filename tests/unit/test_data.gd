@@ -39,7 +39,9 @@ func test_every_design_is_legal() -> void:
 		for loc: int in def.other_items:
 			hs += def.other_items[loc].count("heat_sink")
 			jj += def.other_items[loc].count("jump_jet")
-		check_eq(hs, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS, def.id + " heat sinks")
+		var cap := DesignWeight.engine_sink_capacity(def)
+		check(hs >= def.heat_sinks - cap and hs <= def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS,
+				"%s lists %d heat sinks; %d total, engine holds up to %d" % [def.id, hs, def.heat_sinks, cap])
 		check_eq(jj, def.jump_mp, def.id + " jump jets")
 		check(not def.weapon_mounts.is_empty(), def.id + " has weapons")
 		for loc in Location.COUNT:
