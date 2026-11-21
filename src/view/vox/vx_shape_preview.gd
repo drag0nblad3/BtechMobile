@@ -107,6 +107,9 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 			return
 		var st := SurfaceTool.new()
 		st.begin(Mesh.PRIMITIVE_TRIANGLES)
+		# Default smooth group 0 averages normals across the custom loft.
+		# These are hand-authored armor planes: retain one normal per face.
+		st.set_smooth_group(-1)
 		for j in range(sections.size() - 1):
 			var one: Dictionary = sections[j]
 			var two: Dictionary = sections[j + 1]
