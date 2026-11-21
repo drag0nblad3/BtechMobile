@@ -107,6 +107,15 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Avalanches (`Avalanche`, p. 125, errata p. 125): a fall in snow next to a lower hex slides down (snow first, else random), rolling on while the slide continues in snow; one fall at the end for the starting levels + height dropped + 1 per heavy woods — `TODO(rules)`: sliding into another 'Mech (stops short instead of a domino effect); slide rolls use only the 'Mech's damage modifiers.
 - ✅ Smoke and fog hexes (`Obscurant`, p. 124): map `"fog"` hexes, light or heavy, act as light/heavy woods two levels high for line of sight and to-hit; burning hexes are light smoke; with woods and each other a hex never passes +2 or 2 line-of-sight points.
 
+## Missions
+- ✅ Missions (`Mission`, `MissionFlow`, pp. 225-233) from a scenario's `"mission"` block; without one the last side standing wins. The log gives the briefing on turn 1 and the HUD shows the Victory Point score.
+- ✅ Objectives and control (`Objective`, `ObjectiveControl`, p. 232): control radius; the side with more non-crippled, standing, mobile 'Mechs inside it holds it; ties hold nothing. End Phase scoring per mission: each objective's VP, pairs of friendly + enemy objectives, or 2-of-3 / all-3 thresholds.
+- ✅ Victory Points (`VictoryPoints`, p. 227): Unit VP = BV / 100 rounded up (min 1, skill-adjusted BV) for destroyed (or crippled) enemies; most VP wins; ties go to Unit VP when objectives scored, then to the side that spent less BV. VP missions end after their last turn, or early once one side has nothing left and the other already leads.
+- ✅ Random Duration (`RandomDuration`, p. 233): from turn 7, 1 / 1-2 (turns 8-9) / 1-4 (turn 10+) on a d6 ends the mission after that turn.
+- ✅ Crippled (`Crippled`, p. 228; only with Forced Withdrawal): two engine hits, two destroyed limbs including a leg, or a destroyed side torso (standard engine: a piloting roll ignores the first torso, which still counts as a limb).
+- 🟡 Forced Withdrawal (`ForcedWithdrawal`, p. 230): a crippled 'Mech must end each move closer to its home edge when it can, may leave by it (its side earns half its Unit VP), can't hold objectives, and surrenders after two turns in a row without getting closer; the computer retreats with `BotWithdraw` — `TODO(rules)`: "spend at least half its MP getting closer" is only enforced through the end hex.
+- ✅ Leaving the battlefield (p. 225): where the mission or withdrawal allows, a move ending on that edge with 1 MP to spare can go off the map (the Leave map button).
+
 ## Critical hits
 - ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,
   12 three (head/limb blown off), checked against the book (p. 91).

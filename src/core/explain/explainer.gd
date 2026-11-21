@@ -31,7 +31,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 	var d := e.data
 	match e.type:
 		GameEvent.TURN_STARTED:
-			return "Turn %d" % d["turn"]
+			var brief := MissionText.briefing(s.mission.def, level) if d["turn"] == 1 else ""
+			return "Turn %d" % d["turn"] + ("\n" + brief if brief != "" else "")
 		GameEvent.SENSOR_CHECK:
 			return ConditionsText.sensor_check(s, d, level)
 		GameEvent.CONDITIONS:
@@ -97,8 +98,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return HeatText.describe(e, s, level)
 		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
 			return PilotText.describe(e, s, level, seen)
-		GameEvent.GAME_OVER:
-			return "Battle over: %s wins." % Names.side(d["winner"]) if d["winner"] >= 0 else "Battle over: no survivors."
+		GameEvent.GAME_OVER, GameEvent.CRIPPLED, GameEvent.UNIT_EXITED, GameEvent.MISSION:
+			return MissionText.describe(e, s, level)
 	return ""
 
 
