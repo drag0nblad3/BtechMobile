@@ -1120,6 +1120,118 @@
               -10
             ]
           ]
+        },
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -14,
+                "polygon": [
+                  [
+                    -5,
+                    54
+                  ],
+                  [
+                    -4,
+                    53
+                  ],
+                  [
+                    4,
+                    53
+                  ],
+                  [
+                    5,
+                    54
+                  ],
+                  [
+                    5,
+                    56
+                  ],
+                  [
+                    3,
+                    58
+                  ],
+                  [
+                    -3,
+                    58
+                  ],
+                  [
+                    -5,
+                    56
+                  ]
+                ]
+              },
+              {
+                "at": -12,
+                "polygon": [
+                  [
+                    -5,
+                    54
+                  ],
+                  [
+                    -4,
+                    53
+                  ],
+                  [
+                    4,
+                    53
+                  ],
+                  [
+                    5,
+                    54
+                  ],
+                  [
+                    5,
+                    56
+                  ],
+                  [
+                    3,
+                    58
+                  ],
+                  [
+                    -3,
+                    58
+                  ],
+                  [
+                    -5,
+                    56
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -4,
+              54,
+              -15
+            ],
+            [
+              -2,
+              55,
+              -14
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              1,
+              54,
+              -15
+            ],
+            [
+              3,
+              55,
+              -14
+            ]
+          ],
+          "mat": "inside"
         }
       ]
     },
@@ -1882,23 +1994,23 @@
                 "at": -7,
                 "polygon": [
                   [
-                    -24,
-                    38
+                    -23,
+                    39
                   ],
                   [
                     -22,
-                    34
-                  ],
-                  [
-                    -19,
-                    33
-                  ],
-                  [
-                    -17,
                     35
                   ],
                   [
-                    -17,
+                    -19,
+                    34
+                  ],
+                  [
+                    -18,
+                    36
+                  ],
+                  [
+                    -18,
                     43
                   ],
                   [
@@ -1910,7 +2022,7 @@
                     46
                   ],
                   [
-                    -24,
+                    -23,
                     43
                   ]
                 ]
@@ -1919,48 +2031,11 @@
                 "at": -4,
                 "polygon": [
                   [
-                    -25,
-                    38
-                  ],
-                  [
-                    -23,
-                    33
-                  ],
-                  [
-                    -19,
-                    32
-                  ],
-                  [
-                    -17,
-                    35
-                  ],
-                  [
-                    -17,
-                    43
-                  ],
-                  [
-                    -19,
-                    47
-                  ],
-                  [
-                    -23,
-                    47
-                  ],
-                  [
-                    -25,
-                    44
-                  ]
-                ]
-              },
-              {
-                "at": 4,
-                "polygon": [
-                  [
                     -24,
                     38
                   ],
                   [
-                    -22,
+                    -23,
                     34
                   ],
                   [
@@ -1969,10 +2044,47 @@
                   ],
                   [
                     -17,
-                    35
+                    36
                   ],
                   [
                     -17,
+                    43
+                  ],
+                  [
+                    -19,
+                    47
+                  ],
+                  [
+                    -23,
+                    47
+                  ],
+                  [
+                    -24,
+                    43
+                  ]
+                ]
+              },
+              {
+                "at": 3,
+                "polygon": [
+                  [
+                    -23,
+                    39
+                  ],
+                  [
+                    -22,
+                    35
+                  ],
+                  [
+                    -19,
+                    34
+                  ],
+                  [
+                    -18,
+                    36
+                  ],
+                  [
+                    -18,
                     43
                   ],
                   [
@@ -1984,7 +2096,7 @@
                     46
                   ],
                   [
-                    -24,
+                    -23,
                     43
                   ]
                 ]
@@ -4506,7 +4618,7 @@
       "mirror": "ll_hip_guard"
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures.",
   "muzzles": {
     "LT": [
       [
