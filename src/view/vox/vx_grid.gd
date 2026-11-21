@@ -8,14 +8,15 @@ static var _material: StandardMaterial3D
 
 
 ## cells: Vector3i -> Color. The mesh is centered on `pivot` (grid units)
-## and scaled by `size` world units per voxel. Returns null when empty.
+## and scaled by `size` world units per voxel. Bottom faces of the y = 0
+## layer rest on the ground and are skipped. Returns null when empty.
 static func mesh(cells: Dictionary, size: float, pivot: Vector3) -> ArrayMesh:
 	var faces: Array = [{}, {}, {}, {}, {}, {}]
 	for c: Vector3i in cells:
 		var color: Color = cells[c]
 		for f in 6:
 			var d: Vector3i = VxPart.DIRS[f]
-			if cells.has(c + d):
+			if cells.has(c + d) or (f == 3 and c.y <= 0):
 				continue
 			var axis := 0 if d.x != 0 else (1 if d.y != 0 else 2)
 			var slices: Dictionary = faces[f]

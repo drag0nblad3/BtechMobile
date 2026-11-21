@@ -7,6 +7,8 @@ const SHADER := preload("res://src/view/shaders/terrain.gdshader")
 const INSET := 0.97  ## Slight gap between hexes shows the grid.
 ## Hex top colors for ice, mud and snow (Surfaces), replacing the terrain's.
 const SURFACE_TOPS := {"ice": Color("#b8d4e3"), "mud": Color("#5a4632"), "snow": Color("#e8ecef")}
+## Shader pattern index per TerrainType.pattern (see terrain.gdshader).
+const PATTERNS := {"grass": 0, "rocks": 1, "paving": 2, "rubble": 3, "riverbed": 4, "forest": 5}
 
 var map: BattleMap
 
@@ -21,6 +23,7 @@ func build(battle_map: BattleMap) -> void:
 	for key: Array in by_type:
 		add_child(_prism_layer(mesh, by_type[key], key[0], noise, key[1]))
 	add_child(WoodsProps.build(map))
+	add_child(GroundScatter.build(map))
 	add_child(WaterSurfaces.build(map))
 	add_child(BuildingProps.build(map))
 	add_child(FireProps.build(map))
@@ -53,6 +56,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	mat.set_shader_parameter("top_color", SURFACE_TOPS.get(surface, terrain.top_color))
 	mat.set_shader_parameter("detail_color", terrain.detail_color)
 	mat.set_shader_parameter("noise_tex", noise)
+	mat.set_shader_parameter("pattern", 0 if surface != "" else PATTERNS.get(terrain.pattern, 0))
 	var inst := MultiMeshInstance3D.new()
 	inst.name = "Terrain_%s%s" % [terrain.id, "_" + surface if surface != "" else ""]
 	inst.multimesh = mm

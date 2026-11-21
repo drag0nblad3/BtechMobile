@@ -86,3 +86,24 @@ func test_fire_and_blasts_build_cube_multimeshes() -> void:
 		var b := VxBlast.spawn(holder, Vector3.ZERO, kind, 7)
 		check_eq(b.multimesh.instance_count, int(p["fire"]) + int(p["smoke"]) + int(p["debris"]), kind)
 	holder.free()
+
+
+func test_ground_scatter_stays_within_a_phone_budget() -> void:
+	for kind: String in ["tuft", "flower", "bush", "rock", "chunk"]:
+		for v in VxPlants.VARIANTS:
+			check(VxGrid.triangles(VxPlants.mesh(kind, v)) < 260, "%s %d" % [kind, v])
+	var map := MapLoader.load_file("res://data/maps/city_outskirts.json", terrain())
+	var scatter := GroundScatter.build(map)
+	var tris := 0
+	for c in scatter.get_children():
+		var mm := (c as MultiMeshInstance3D).multimesh
+		tris += mm.instance_count * VxGrid.triangles(mm.mesh)
+	var per_hex := float(tris) / map.tiles.size()
+	check(per_hex < 250.0, "scatter triangles per hex: %.0f" % per_hex)
+	check(tris > 0, "city has clutter")
+	scatter.free()
+
+
+func test_every_terrain_names_a_ground_pattern() -> void:
+	for t: TerrainType in terrain().by_id.values():
+		check(MapView.PATTERNS.has(t.pattern), t.id + " pattern " + t.pattern)
