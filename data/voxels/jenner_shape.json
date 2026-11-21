@@ -593,85 +593,178 @@
         },
         {
           "loft": {
-            "axis": "y",
+            "axis": "z",
             "sections": [
               {
-                "at": 36,
+                "at": -7,
                 "polygon": [
                   [
-                    -1,
-                    -1
+                    -4,
+                    33
                   ],
                   [
-                    1,
-                    -1
+                    -3,
+                    32
                   ],
                   [
-                    2,
-                    0
+                    3,
+                    32
                   ],
                   [
-                    2,
-                    4
+                    4,
+                    33
                   ],
                   [
-                    1,
-                    5
+                    4,
+                    37
                   ],
                   [
-                    -1,
-                    5
+                    3,
+                    39
                   ],
                   [
-                    -2,
-                    4
+                    -3,
+                    39
                   ],
                   [
-                    -2,
-                    0
+                    -4,
+                    37
                   ]
                 ]
               },
               {
-                "at": 40,
+                "at": -5,
                 "polygon": [
                   [
-                    -1,
-                    -1
+                    -4,
+                    33
                   ],
                   [
-                    1,
-                    -1
+                    -3,
+                    32
                   ],
                   [
-                    2,
-                    0
+                    3,
+                    32
                   ],
                   [
-                    2,
-                    4
+                    4,
+                    33
                   ],
                   [
-                    1,
-                    5
+                    4,
+                    37
                   ],
                   [
-                    -1,
-                    5
+                    3,
+                    39
+                  ],
+                  [
+                    -3,
+                    39
+                  ],
+                  [
+                    -4,
+                    37
+                  ]
+                ]
+              },
+              {
+                "at": -1,
+                "polygon": [
+                  [
+                    -3,
+                    32
                   ],
                   [
                     -2,
-                    4
+                    32
+                  ],
+                  [
+                    2,
+                    32
+                  ],
+                  [
+                    3,
+                    32
+                  ],
+                  [
+                    3,
+                    36
+                  ],
+                  [
+                    2,
+                    38
                   ],
                   [
                     -2,
-                    0
+                    38
+                  ],
+                  [
+                    -3,
+                    36
                   ]
                 ]
               }
             ]
           },
           "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -2,
+              34,
+              -7
+            ],
+            [
+              -2,
+              34,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -2,
+              37,
+              -7
+            ],
+            [
+              -2,
+              37,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              1,
+              34,
+              -7
+            ],
+            [
+              1,
+              34,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              1,
+              37,
+              -7
+            ],
+            [
+              1,
+              37,
+              -5
+            ]
+          ]
         }
       ]
     },
@@ -2792,31 +2885,210 @@
       "name": "rl_foot",
       "mirror": "ll_foot",
       "parent": "rl_tarsus"
+    },
+    {
+      "name": "belly",
+      "loc": "CT",
+      "parent": "ct",
+      "pivot": [
+        0,
+        24,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 20,
+                "polygon": [
+                  [
+                    -4,
+                    -4
+                  ],
+                  [
+                    -3,
+                    -6
+                  ],
+                  [
+                    3,
+                    -6
+                  ],
+                  [
+                    4,
+                    -4
+                  ],
+                  [
+                    5,
+                    0
+                  ],
+                  [
+                    5,
+                    7
+                  ],
+                  [
+                    3,
+                    9
+                  ],
+                  [
+                    -3,
+                    9
+                  ],
+                  [
+                    -5,
+                    7
+                  ],
+                  [
+                    -5,
+                    0
+                  ]
+                ]
+              },
+              {
+                "at": 23,
+                "polygon": [
+                  [
+                    -5,
+                    -5
+                  ],
+                  [
+                    -4,
+                    -7
+                  ],
+                  [
+                    4,
+                    -7
+                  ],
+                  [
+                    5,
+                    -5
+                  ],
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    6,
+                    8
+                  ],
+                  [
+                    4,
+                    10
+                  ],
+                  [
+                    -4,
+                    10
+                  ],
+                  [
+                    -6,
+                    8
+                  ],
+                  [
+                    -6,
+                    0
+                  ]
+                ]
+              },
+              {
+                "at": 25,
+                "polygon": [
+                  [
+                    -5,
+                    -5
+                  ],
+                  [
+                    -4,
+                    -7
+                  ],
+                  [
+                    4,
+                    -7
+                  ],
+                  [
+                    5,
+                    -5
+                  ],
+                  [
+                    6,
+                    0
+                  ],
+                  [
+                    6,
+                    8
+                  ],
+                  [
+                    4,
+                    10
+                  ],
+                  [
+                    -4,
+                    10
+                  ],
+                  [
+                    -6,
+                    8
+                  ],
+                  [
+                    -6,
+                    0
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "inside"
+        }
+      ]
     }
   ],
-  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders.",
+  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots.",
   "muzzles": {
     "CT": [
       [
-        -2,
-        37,
-        -2
+        -1.5,
+        34.5,
+        -7.5
       ],
       [
-        2,
-        37,
-        -2
+        -1.5,
+        37.5,
+        -7.5
+      ],
+      [
+        1.5,
+        34.5,
+        -7.5
+      ],
+      [
+        1.5,
+        37.5,
+        -7.5
       ]
     ],
     "LA": [
-      -18,
-      29,
-      -17
+      [
+        -18.5,
+        28.5,
+        -17.5
+      ],
+      [
+        -18.5,
+        30.5,
+        -17.5
+      ]
     ],
     "RA": [
-      18,
-      29,
-      -17
+      [
+        18.5,
+        28.5,
+        -17.5
+      ],
+      [
+        18.5,
+        30.5,
+        -17.5
+      ]
     ]
   },
   "weapons": []
