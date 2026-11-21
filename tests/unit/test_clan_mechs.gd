@@ -2,7 +2,8 @@ extends TestCase
 ## The Clan roster: OmniMech configurations built from Clan parts only.
 
 const CHASSIS := ["fire_moth", "kit_fox", "adder", "viper", "ice_ferret", "nova", "stormcrow",
-		"mad_dog", "hellbringer", "summoner", "timber_wolf", "gargoyle", "warhawk", "turkina", "dire_wolf"]
+		"mad_dog", "hellbringer", "summoner", "timber_wolf", "gargoyle", "warhawk", "turkina", "dire_wolf",
+		"mist_lynx", "crossbow", "grendel", "linebacker", "night_gyr"]
 
 
 func test_roster() -> void:

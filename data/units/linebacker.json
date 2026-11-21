@@ -1,0 +1,21 @@
+{
+  "id": "linebacker", "name": "Linebacker", "tonnage": 65, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "linebacker", "engine_type": "xl", "structure_type": "endo_steel",
+  "armor": {"HD": 9, "CT": 32, "LT": 23, "RT": 23, "LA": 20, "RA": 20, "LL": 30, "RL": 30},
+  "rear_armor": {"CT": 10, "LT": 7, "RT": 7},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*2"], "RA": ["endo_steel*1"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 21, "role": "Clan heavy laser 'Mech. Two ER large and six ER medium lasers with no ammo to explode; fire everything and it overheats.", "equipment": {
+      "LA": ["c_er_large_laser", "c_er_medium_laser", "heat_sink", "heat_sink"],
+      "RA": ["c_er_large_laser", "c_er_medium_laser"],
+      "LT": ["c_machine_gun", "c_er_medium_laser*2", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["c_machine_gun", "ammo:c_machine_gun", "c_er_medium_laser*2", "heat_sink", "heat_sink", "heat_sink"],
+      "CT": ["c_medium_pulse_laser", "c_er_small_laser"]
+    }},
+    {"model": "A", "heat_sinks": 13, "role": "Gauss Linebacker: a Gauss rifle and an LRM 15 for steady long-range damage, a Streak SRM 6 and lasers up close.", "equipment": {
+      "RA": ["c_gauss_rifle"],
+      "LA": ["c_lrm15", "c_er_small_laser"],
+      "RT": ["ammo:c_gauss_rifle*2", "c_streak_srm6", "ammo:c_streak_srm6"],
+      "LT": ["ammo:c_lrm15", "c_er_medium_laser*3"]
+    }}
+  ]
+}
