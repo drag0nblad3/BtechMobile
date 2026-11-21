@@ -1,5 +1,5 @@
 {
-  "name": "Training: First Battle",
+  "name": "Training: First Steps",
   "map": "test_valley",
   "bot_sides": [1],
   "units": [
@@ -27,7 +27,7 @@
      "text": "Try to end your moves where the enemy's shots are hardest: farther away, behind woods or after a long move. Getting behind the enemy is worth a lot, because rear armor is thin."},
     {"event": "psr", "title": "Piloting roll",
      "text": "Big damage, a kick, a damaged gyro or leg can force a piloting roll. Fail it and the 'Mech falls: it takes damage, may hurt its pilot, and must spend movement to stand up."},
-    {"event": "game_over", "title": "Training complete",
-     "text": "Well fought. From the start screen you can build your own lances by Battle Value, pick a map, and choose which sides the computer plays. Set explanations to Light once these lessons feel familiar."}
+    {"event": "game_over", "title": "Lesson one complete",
+     "text": "Well fought. The next training game looks closer at to-hit numbers: range, movement and woods. Return to the Training screen to continue the campaign."}
   ]
 }

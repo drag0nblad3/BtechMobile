@@ -106,4 +106,4 @@ func test_tutorial_lessons_fire_once_in_order() -> void:
 		unique[t] = true
 	check_eq(unique.size(), titles.size(), "each lesson once")
 	if gc.state.game_over:
-		check_eq(titles[titles.size() - 1], "Training complete")
+		check_eq(titles[titles.size() - 1], "Lesson one complete")
