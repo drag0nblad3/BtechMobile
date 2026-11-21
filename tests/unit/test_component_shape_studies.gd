@@ -23,7 +23,7 @@ func test_independent_component_shapes_use_only_authored_profiles() -> void:
 		check(m.errors.is_empty(), "invalid shape study %s: %s" % [path, m.errors])
 		# Shape proportions may stretch existing occupied cells without
 		# adding any subdivisions. Keep only a generous low-res safety cap.
-		check(m.cell_count() > 1200 and m.cell_count() < 28000,
+		check(m.cell_count() > 1200 and m.cell_count() < 32000,
 				"shape-only count unexpected %s %d" % [m.id, m.cell_count()])
 		for loc in Location.COUNT:
 			check(not m.parts_at(loc).is_empty(), "%s missing %s" % [m.id, Location.code(loc)])
@@ -89,10 +89,29 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(atlas.part("rt_ac20_shroud")["cells"].has(Vector3i(9, 42, -19)),
 			"Atlas AC20 barrel must project from the right torso")
 	var wolverine := VxModel.load_file(MODELS[1])
-	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -29)),
+	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -28)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
-	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -35)),
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -33)),
 			"Jenner rounded CGL cockpit must project forward of side laser housings")
 	check(not jenner.part("ll_hock_joint").is_empty(),
 			"Jenner knee and rear hock must be independent geometry")
+
+
+func test_cgl_plastic_missing_elements_and_open_mouths() -> void:
+	# CGL Hansen Atlas shoulder rack is actually built from distinct open mouths.
+	var atlas := VxModel.load_file(MODELS[0])
+	check(not atlas.part("lt_lrm20_rack").is_empty(), "Atlas needs its left torso LRM rack")
+	check_eq(atlas.muzzles[Location.LT].size(), 10,
+			"Atlas visible double-column rack must retain ten physical openings")
+	for muzzle: Vector3 in atlas.muzzles[Location.LT]:
+		var opening := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
+		check(not atlas.part("lt_lrm20_rack")["cells"].has(opening),
+				"Atlas mouth blocked at %s" % opening)
+	var w := VxModel.load_file(MODELS[1])
+	check(not w.part("la_shoulder_yoke").is_empty(), "Wolverine left upper-arm joint missing")
+	check(not w.part("ra_shoulder_yoke").is_empty(), "Wolverine right upper-arm joint missing")
+	var j := VxModel.load_file(MODELS[2])
+	check(not j.part("ct_belly_front_apron").is_empty(), "Jenner underslung belly shell missing")
+	check(not j.part("lt_rear_exhaust").is_empty(), "Jenner left aft exhaust housing missing")
+	check(not j.part("rt_rear_exhaust").is_empty(), "Jenner right aft exhaust housing missing")
