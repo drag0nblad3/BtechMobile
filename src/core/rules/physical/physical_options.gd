@@ -150,8 +150,15 @@ static func declare(state: GameState, a: Unit, attacks: Array) -> Array[Dictiona
 	return out
 
 
-## Any punch or kick possible against any enemy?
+## Any punch, kick or swing possible against any enemy or adjacent building?
 static func any_possible(state: GameState, a: Unit) -> bool:
+	for dir in 6:
+		var c := Hex.neighbor(a.coord, dir)
+		var tile := state.map.get_tile(c)
+		if tile != null and tile.building != null and state.unit_at(c) == null:
+			for opt in BuildingMelee.options(state, a, c):
+				if opt["to_hit"].possible():
+					return true
 	for t in state.units:
 		if t.side == a.side or t.destroyed or Hex.distance(a.coord, t.coord) != 1:
 			continue

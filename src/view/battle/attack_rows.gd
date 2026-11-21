@@ -31,9 +31,12 @@ static func mode_text(w: MountedWeapon) -> String:
 	return "Single shot" if w.def.rapid > 1 else "Standard ammo"
 
 
-static func physical(state: GameState, attacker: Unit, target: Unit) -> Array:
+## Rows for physical attacks on a 'Mech, or (hex given) on a building.
+static func physical(state: GameState, attacker: Unit, target: Unit, hex := Hex.INVALID) -> Array:
 	var rows := []
-	for o in PhysicalOptions.for_target(state, attacker, target):
+	var opts := BuildingMelee.options(state, attacker, hex) if hex != Hex.INVALID \
+			else PhysicalOptions.for_target(state, attacker, target)
+	for o in opts:
 		var key := "%s:%d" % [o["kind"], o["limb"]]
 		var lbl: String = o["kind"].capitalize()
 		if o["limb"] >= 0:
@@ -41,6 +44,20 @@ static func physical(state: GameState, attacker: Unit, target: Unit) -> Array:
 		rows.append({"key": key, "label": lbl, "to_hit": o["to_hit"],
 				"extra": "  %d dmg" % o["damage"] if o["damage"] > 0 else "  shove 1 hex"})
 	return rows
+
+
+## Declaration list from the selected "kind:limb" keys.
+static func physical_list(keys: Dictionary, target: Unit, hex: Vector2i) -> Array:
+	var list := []
+	for k: String in keys:
+		var parts := k.split(":")
+		var req := {"kind": parts[0], "limb": int(parts[1])}
+		if hex != Hex.INVALID:
+			req["hex"] = hex
+		else:
+			req["target_id"] = target.id
+		list.append(req)
+	return list
 
 
 static func target_name(state: GameState, t: Variant) -> String:

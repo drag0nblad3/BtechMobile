@@ -140,7 +140,8 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Smashing in (p. 133): a player may choose to fail the entry roll on purpose; no roll is made and the building takes the usual destroy check ("Smash in" button).
 - 🟡 `TODO(rules)`: DFA into a level 1 building, Castles Brian.
 - 🟡 Fire (`Fire`, pp. 123-124, 136): burning hexes from the map; flamer hits on a 'Mech-scale building light it once a phase's heat reaches its class's fire heat x height (end of phase); it burns until the building collapses. Moving through a burning hex +2 heat (not jumping), in one at the Heat Phase +5. Fire makes light smoke two levels above the ground or roof: +1 to hit a 'Mech in it and 1 line-of-sight point, never past 2 per hex with woods; none for a 'Mech inside the burning building — `TODO(rules)`: lighting woods, other smoke.
-- ⬜ Physical attacks on buildings, bridges as structures, basements.
+- ✅ Physical attacks on buildings (`BuildingMelee`, p. 135): tap an adjacent building in the Physical Attack Phase to punch (two arms), kick or swing a hatchet, sword or club at it; they always hit, no piloting roll for a kick, and the damage counts toward the attacker's Destroy Check — `TODO(rules)`: kicks need the building to fill the attacker's leg level, punches and swings the level above (our reading).
+- ⬜ Bridges as structures, basements.
 
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
