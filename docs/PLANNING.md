@@ -1,6 +1,6 @@
 # BtechMobile planning
 
-**Last updated:** 2026-11-20
+**Last updated:** 2026-11-21
 **Target:** Android phones, landscape. Godot 4.5, typed GDScript.
 
 See `architecture.md` for how the code is layered and `rules-coverage.md` for
@@ -54,6 +54,13 @@ None of the Android pieces have been run yet: the export has not been tried, and
 the game hasn't been played on a device. The first manual run of the APK workflow and a
 session on a real phone are the next checks.
 
+### Battle persistence (2026-11-21 feature branch)
+
+- Versioned, compressed complete `GameState` save, including declared attacks, map state, objectives, pilot/critical details, and exact PRNG continuation.
+- Save button, one autosave at the first active side of each turn, and pause autosave. Continue button in the force builder.
+- Independent last-battle replay archive and read-only frame-by-frame viewer; recordings cover significant game events, not animation frames.
+- Round-trip and RNG tests added; **CI and device verification remain pending**. A save slot and replay archive may grow on long battles; next optimize snapshot deltas and storage quotas. See `docs/battle-save-replay.md`.
+
 ### Remaining Android work
 - **Device testing.** One recent phone, one low-end phone, one tablet. Watch frame rate
   with a whole map on screen, touch feel, and text size.
@@ -62,8 +69,7 @@ session on a real phone are the next checks.
   default), but `terrain.gdshader` should be checked under that fallback, or the
   project switched to the Compatibility renderer if low-end support matters more
   than visuals.
-- **App lifecycle.** Pause and autosave on `NOTIFICATION_APPLICATION_PAUSED`; decide what
-  the back button does (today it quits immediately). Save/load is a prerequisite.
+- **App lifecycle.** Pause autosave is implemented on this branch; verify on Android and decide what Back does (currently quits). Restore UI selections and tutorial-card progress if needed.
 - **Release signing.** Create a release keystore kept out of git; store it as GitHub
   secrets (`GODOT_ANDROID_KEYSTORE_RELEASE_PATH`, `_USER`, `_PASSWORD`).
 - **Play Store build.** The store needs an Android App Bundle (AAB), which requires
@@ -89,7 +95,7 @@ Follows the module order in `architecture.md`, with Android milestones slotted i
    more 'Mechs and maps.
 5. **Mech graphics.** Drop sprite sets into `assets/mechs/` (`SpriteMech` loads them);
    validate camera elevation on a phone; faction recolor and damage states.
-6. **Bot opponent, save/load, app lifecycle.** Autosave on pause depends on save/load.
+6. **Bot opponent, save/load, replay, app lifecycle.** AI and snapshot saves/replays implemented; verify on phones, optimize snapshot storage and finish Back-button behavior.
 7. **Release prep.** Licensing decision, release signing, AAB, icon, store listing,
    closed testing track.
 8. **Campaign layer** (`src/campaign/`).
