@@ -11,7 +11,7 @@ func _run() -> void:
 	change_scene_to_file("res://scenes/main.tscn")
 	await process_frame
 	await process_frame
-	var battle := current_scene
+	var battle: Variant = current_scene
 	if not _check(battle != null and battle.controller.state.turn == 1,
 			"battle scene did not start"):
 		return
@@ -40,7 +40,7 @@ func _run() -> void:
 	change_scene_to_file("res://scenes/battle_replay.tscn")
 	await process_frame
 	await process_frame
-	var player := current_scene
+	var player: Variant = current_scene
 	if not _check(player != null and player._frames.size() == frames.size(),
 			"replay scene failed to load"):
 		return
