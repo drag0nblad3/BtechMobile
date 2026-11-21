@@ -1,0 +1,17 @@
+{
+  "id": "nova", "name": "Nova", "tonnage": 50, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "nova", "engine_type": "xl",
+  "armor": {"HD": 9, "CT": 21, "LT": 15, "RT": 15, "LA": 13, "RA": 13, "LL": 19, "RL": 19},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 18, "jump_mp": 5, "role": "Clan jumping laser boat. Twelve ER medium lasers: devastating up close, but firing them all overheats it badly.", "equipment": {
+      "LA": ["c_er_medium_laser*6"],
+      "RA": ["c_er_medium_laser*6"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"],
+      "LT": ["jump_jet", "heat_sink", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink"]
+    }}
+  ]
+}

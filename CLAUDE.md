@@ -54,7 +54,7 @@ Battle mode first; campaign layer later.
 |---|---|
 | `src/core/hex/hex.gd` | Axial hex math, facings (0=N clockwise), mapsheet labels (XXYY, odd-q) |
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (threshold, destroy check, height) |
-| `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check) |
+| `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check), `ClanTech` (Clan construction sizes), `OmniConfig` (OmniMech configurations) |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `ProneMoves` (dropping prone, prone turning), `MoveExecutor` (carries out a move for the controller) |
 | `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `WaterCombat` (water line, underwater ranges), `HullBreach`, `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion` (caps, CASE), `ComponentExplosion` (Gauss), `XlEngine` (side-torso engine slots), `AimedShot` (immobile targets), `AntiMissile` (AMS), `TargetingComputer`, `Ecm` (Guardian ECM vs Artemis), `WeaponModes` (Ultra/LB-X/Streak/Artemis), `RotaryAc` (rapid fire, jams), `Narc` (homing pods), `CriticalHits`, `CritEffects`, `HeadHit` |
@@ -67,7 +67,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/turn/` | `Initiative`, `InitiativeDie` (optional rule), `UnequalNumbers` (who acts when), `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `WeaponText` (shot results), `ModsText`, `BvText`, `DamageText`/`HeatText`/`ConditionsText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire`, `BotModes` (Ultra/LB-X), `BotPhysical` (punch/kick/melee weapons), `BotCharge` (charge/DFA value), `BotAim` (aimed shots), `BotNarc` (beacon tagging) |
-| `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2), `BvSkill` (pilot skill multiplier) |
+| `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2), `BvSkill` (pilot skill multiplier), `DesignFilter` (catalog: tech filter, OmniMech groups) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
 | `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `BuildingProps`, `FireProps`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
@@ -78,10 +78,11 @@ Battle mode first; campaign layer later.
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards) |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `BotDriver` (runs computer sides), `BattleLaunch` |
-| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `UiKit` |
+| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
-| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, map=<id>, tutorial) |
+| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial) |
+| `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap), `voxel-mech-prototype.md` (lab), `graphics/voxel-integration-plan.md` (voxel art into the battle) |

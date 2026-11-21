@@ -38,6 +38,8 @@ heat per building level that sets it alight.
   the explosion damage per shot. Narc-equipped missiles are `ammo:<launcher>:narc`.
 - `rapid`: most shots in one attack (Ultra ACs 2, rotary ACs 6); `rotary: true` lets it pick
   1-6 shots and jam (`RotaryAc`).
+- `tech: "clan"` marks Clan versions; their ids start `c_` (`c_er_medium_laser`) and keep the
+  book's names. `to_hit` is the weapon's own modifier (pulse -2, ER pulse -1, heavy lasers +1).
 
 ## `data/bv_skill.json`
 `{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;
@@ -57,12 +59,21 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   Artemis IV), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
   `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
-- `heat_sinks` is the total. The first 10 are inside the engine; list the rest as
+- `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
+  rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
   `heat_sink` items. `"heat_sink_type": "double"` makes them all doubles (2 heat,
   3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
-  `ferro_fibrous` items (14 each for Inner Sphere; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+  `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+- `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
+  CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
+  targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`).
+- OmniMechs (`OmniConfig`): one file per chassis with `"configs": [{"model": "Prime", "equipment": {...}, ...}]`.
+  The top level holds the fixed parts (engine, armor, structure, fixed `equipment` such as
+  endo/ferro slots); each config adds its pod `equipment` per location and may override any
+  other key (`heat_sinks`, `jump_mp`, `role`, `heat_sink_type`). Each config becomes design
+  `<id>_<model>` (`timber_wolf_prime`) with `omni`, `chassis` and `config` set.
 - The design must weigh its tonnage (test): structure 10%, engine by rating
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
   XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor

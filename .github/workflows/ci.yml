@@ -26,19 +26,28 @@ jobs:
       - name: Import
         run: godot --headless --import
       - name: Render independent shape studies (no detail or APK)
-        if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'shape-')
         run: |
           set -o pipefail
           mkdir -p /tmp/component-shape-renders
-          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1500x900 \
+          # Bound the Godot process even if a future rendering regression occurs.
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1500x900 \
             -s tools/capture_component_shapes.gd -- /tmp/component-shape-renders 2>&1 | tee shape-render.log
+          test -s /tmp/component-shape-renders/gallery_three_quarter.png
           [ "$(grep -c '^SHAPE_RENDER|' shape-render.log)" -eq 1 ]
           ! grep -E "SCRIPT ERROR|Parse Error|SHAPE_ERROR" shape-render.log
       - uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'shape-')
         with:
           name: hand-authored-component-shape-renders
-          path: /tmp/component-shape-renders/*.png
+          path: /tmp/component-shape-renders/gallery_three_quarter.png
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event_name == 'pull_request' && contains(github.head_ref, 'shape-')
+        with:
+          name: component-shape-render-log
+          path: shape-render.log
+          if-no-files-found: ignore
       - name: Unit tests
         run: |
           set -o pipefail

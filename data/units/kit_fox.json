@@ -1,0 +1,22 @@
+{
+  "id": "kit_fox", "name": "Kit Fox", "tonnage": 30, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "kit_fox", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 15, "LT": 11, "RT": 11, "LA": 10, "RA": 10, "LL": 14, "RL": 14},
+  "rear_armor": {"CT": 5, "LT": 3, "RT": 3},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*3"], "RA": ["ferro_fibrous*4"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 12, "role": "Clan light skirmisher. A long ER large laser, Streaks and AMS on a fast frame that outguns most Inner Sphere lights.", "equipment": {
+      "RA": ["c_er_large_laser"],
+      "LA": ["c_er_medium_laser", "c_er_medium_laser", "c_er_medium_laser"],
+      "LT": ["c_streak_srm4", "ammo:c_streak_srm4", "heat_sink", "heat_sink"],
+      "RT": ["c_ams", "ammo:c_ams"],
+      "CT": ["c_er_small_laser", "c_er_small_laser"]
+    }},
+    {"model": "A", "heat_sinks": 12, "role": "Close-range Kit Fox: an LB 5-X and pulse lasers that chew up fast, light targets.", "equipment": {
+      "RA": ["c_lb5x_ac"],
+      "RT": ["ammo:c_lb5x_ac:cluster", "ammo:c_lb5x_ac"],
+      "LA": ["c_medium_pulse_laser", "c_small_pulse_laser"],
+      "LT": ["c_er_small_laser", "heat_sink", "heat_sink"]
+    }}
+  ]
+}

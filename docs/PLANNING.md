@@ -112,7 +112,9 @@ against the book first:
    pilot skill multiplier applied). Our numbers land within about 10% of published values.
 8. Buildings follow the Core Rulebook's Threshold / Destroy Check system; careful
    entry, roofs and building fires are not modeled yet.
-9. 'Mech designs (60 in `data/units/`) are written from general knowledge: check armor
+9. 'Mech designs (60 Inner Sphere designs plus 16 Clan OmniMech configurations of 9 chassis
+   in `data/units/`) are written from general knowledge; the Clan loadouts are adapted to our
+   whole-ton ammo and slot rules, so some differ from the readouts: check armor
    split, slot placement and ammo locations against the technical readouts. The Core
    Rulebook has no designs or construction rules. Weapon tons, slots and ranges match its
    weapon tables; every design must add up to its tonnage (`DesignWeight`, engine weights

@@ -1,0 +1,21 @@
+{
+  "id": "stormcrow", "name": "Stormcrow", "tonnage": 55, "walk_mp": 6, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "stormcrow", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 27, "LT": 20, "RT": 20, "LA": 17, "RA": 17, "LL": 26, "RL": 25},
+  "rear_armor": {"CT": 9, "LT": 6, "RT": 6},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*4"], "RA": ["ferro_fibrous*3"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 19, "role": "Clan medium all-rounder. Fast, well armored, with long ER lasers and two Streak SRM 6 racks that never waste a missile.", "equipment": {
+      "LA": ["c_er_medium_laser", "c_er_medium_laser"],
+      "RA": ["c_er_medium_laser", "c_er_medium_laser", "c_er_medium_laser"],
+      "LT": ["c_streak_srm6", "ammo:c_streak_srm6", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["c_streak_srm6", "ammo:c_streak_srm6", "c_er_small_laser", "heat_sink", "heat_sink", "heat_sink"]
+    }},
+    {"model": "A", "heat_sinks": 17, "role": "Long-reach Stormcrow: an ER PPC and an LRM 15 for picking fights from range.", "equipment": {
+      "RA": ["c_er_ppc"],
+      "LA": ["c_er_medium_laser", "c_er_medium_laser"],
+      "LT": ["c_lrm15", "ammo:c_lrm15", "ammo:c_lrm15", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["c_medium_pulse_laser", "heat_sink"]
+    }}
+  ]
+}

@@ -113,6 +113,7 @@ func _setup_view(index: int) -> void:
 
 
 func _process(_delta: float) -> bool:
+	# SceneTree._process has a bool return signature (unlike Node._process).
 	if camera == null:
 		return false
 	frame += 1
@@ -135,6 +136,9 @@ func _process(_delta: float) -> bool:
 	print("SHAPE_RENDER|%s.png" % views[step]["name"])
 	step += 1
 	if step >= views.size():
+		# Returning true alone does not shut down SceneTree.
+		# This explicit quit ends xvfb-run / GitHub Actions after saving.
+		quit(0)
 		return true
 	frame = 0
 	_setup_view(step)
