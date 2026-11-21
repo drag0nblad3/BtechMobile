@@ -1,0 +1,13 @@
+{
+  "id": "mauler_mal1r", "name": "Mauler", "model": "MAL-1R", "tonnage": 90,
+  "walk_mp": 3, "jump_mp": 0, "heat_sinks": 10, "engine_type": "xl", "sprite": "mauler",
+  "role": "Long-range assault. Two ER large lasers, two LRM 15s and four AC/2s hit from far away; its XL engine dies if it loses a side torso.",
+  "armor": {"HD": 9, "CT": 40, "LT": 26, "RT": 26, "LA": 26, "RA": 26, "LL": 34, "RL": 33},
+  "rear_armor": {"CT": 12, "LT": 8, "RT": 8},
+  "equipment": {
+    "RA": ["er_large_laser"],
+    "LA": ["er_large_laser"],
+    "LT": ["lrm15", "ac2*2", "ammo:lrm15", "ammo:ac2"],
+    "RT": ["lrm15", "ac2*2", "ammo:lrm15", "ammo:ac2"]
+  }
+}

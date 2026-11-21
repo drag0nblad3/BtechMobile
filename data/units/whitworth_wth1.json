@@ -1,0 +1,16 @@
+{
+  "id": "whitworth_wth1", "name": "Whitworth", "model": "WTH-1", "tonnage": 40,
+  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 10, "sprite": "whitworth",
+  "role": "Light fire support. Two LRM 10s for indirect fire and three medium lasers for anything that gets close.",
+  "armor": {"HD": 9, "CT": 17, "LT": 14, "RT": 14, "LA": 11, "RA": 11, "LL": 18, "RL": 18},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "equipment": {
+    "LT": ["lrm10", "ammo:lrm10", "jump_jet"],
+    "RT": ["lrm10", "ammo:lrm10", "jump_jet"],
+    "RA": ["medium_laser"],
+    "LA": ["medium_laser"],
+    "CT": ["medium_laser"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}
