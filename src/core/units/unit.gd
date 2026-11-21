@@ -210,24 +210,27 @@ func run_mp() -> int:
 
 ## Jump MP after jump jet damage.
 func jump_mp() -> int:
-	var lost := 0
+	var lost := {}  # jets by ref: an improved jet's two slots are one jet
 	for loc in Location.COUNT:
 		for s: CritSlot in slots[loc]:
 			if s.kind == CritSlot.Kind.JUMP_JET and (s.hit or is_location_out(loc)):
-				lost += 1
-	return maxi(0, def.jump_mp - lost)
+				lost[s.ref] = true
+	return maxi(0, def.jump_mp - lost.size())
 
 
 ## Working jump jets in the legs (they don't fire under water).
 func leg_jump_jets() -> int:
-	var n := 0
+	var jets := {}
+	var dead := {}
 	for loc in Location.legs(def):
 		if is_location_destroyed(loc):
 			continue
 		for s: CritSlot in slots[loc]:
-			if s.kind == CritSlot.Kind.JUMP_JET and not s.hit:
-				n += 1
-	return n
+			if s.kind == CritSlot.Kind.JUMP_JET:
+				jets[s.ref] = true
+				if s.hit:
+					dead[s.ref] = true
+	return jets.size() - dead.size()
 
 
 ## Direction the torso (and arms) face: legs' facing plus any torso twist.

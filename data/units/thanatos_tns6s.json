@@ -1,0 +1,82 @@
+{
+ "id": "thanatos_tns6s",
+ "name": "Thanatos",
+ "model": "TNS-6S",
+ "tonnage": 75,
+ "walk_mp": 4,
+ "jump_mp": 6,
+ "heat_sinks": 13,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "gyro_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 24,
+  "RA": 24,
+  "LT": 25,
+  "RT": 25,
+  "CT": 32,
+  "HD": 9,
+  "LL": 29,
+  "RL": 29
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heavy_ppc",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "lrm5*3",
+   "ammo:lrm5*2",
+   "endo_steel*4"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "er_medium_laser",
+   "medium_laser",
+   "endo_steel"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "er_medium_laser",
+   "medium_laser",
+   "endo_steel*4"
+  ],
+  "HD": [
+   "c3_slave"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 5701,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Thanatos THS-6S.mtf",
+  "published": "RS:3067u,RSFP:Davion",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Thanatos TNS-6S (ForcePack-Record-Sheets-House-Davion)",
+  "megamek_bv": 1936
+ },
+ "bv": 1936,
+ "sprite": "thanatos",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 LRM 5s, 2 ER Medium Lasers, 2 Medium Lasers, Heavy PPC; walks 4, runs 6, jumps 6."
+}

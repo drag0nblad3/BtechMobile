@@ -10,7 +10,7 @@ extends RefCounted
 ## the network gained (never stacking). C3 adds to Battle Value (p. 222).
 ## TODO(rules): networks are formed for you (first Master, then up to three
 ## Slaves, or Masters if no Slaves); company networks, submerged computers,
-## stealth, Boosted C3/C3i and the Master's TAG function are not modelled.
+## stealth, C3i and the Master's TAG function are not modelled.
 ## Construction (Master 5 t / 5 slots, Slave 1 t / 1 slot) is general knowledge.
 
 const MASTER_TONS := 5.0
@@ -88,8 +88,8 @@ static func improve(state: GameState, attacker: Unit, target: Unit, p: WeaponDef
 	var net := network(state, attacker)
 	if net.is_empty() or not working(attacker):
 		return {}
-	var master_jammed := Ecm.hostile_at(state, attacker.side, net[0].coord)
-	var self_jammed := Ecm.hostile_at(state, attacker.side, attacker.coord)
+	var master_jammed := C3Boosted.jammed(state, attacker.side, net[0])
+	var self_jammed := C3Boosted.jammed(state, attacker.side, attacker)
 	var best := {}
 	var best_cost := _cost(br, 0)
 	for m in net:
@@ -99,7 +99,7 @@ static func improve(state: GameState, attacker: Unit, target: Unit, p: WeaponDef
 		var mb := p.bracket(d)
 		if mb == WeaponDef.Bracket.OUT or mb >= br:
 			continue
-		var jammed := self_jammed or master_jammed or Ecm.hostile_at(state, attacker.side, m.coord)
+		var jammed := self_jammed or master_jammed or C3Boosted.jammed(state, attacker.side, m)
 		var ecm := br - mb if jammed else 0
 		if _cost(mb, ecm) < best_cost:
 			best_cost = _cost(mb, ecm)

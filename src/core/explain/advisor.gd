@@ -24,7 +24,7 @@ static func move(state: GameState, u: Unit, mode: int, key: Vector3i, opts: Move
 	var moved: bool = opts.cost.get(key, 0) > 0
 	var own := MoveMode.attacker_mod(mode) if moved else 0
 	var tm := ToHitCalc.target_movement_mod(hexes, jump and moved)
-	var heat := MoveMode.heat(mode, hexes) if moved else 0
+	var heat := MoveMode.heat(mode, hexes, JumpJets.improved(u.def)) if moved else 0
 	var tile := state.map.get_tile(MoveOptions.coord_of(key))
 	var cover := LineOfSight.woods_value(tile) if tile else 0
 	if tile and tile.is_water() and tile.depth == 1:

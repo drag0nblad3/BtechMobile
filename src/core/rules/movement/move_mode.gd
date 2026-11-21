@@ -37,13 +37,14 @@ static func attacker_mod(k: int) -> int:
 	return 0
 
 
-## Heat built by moving: walk 1, run 2, jump 1 per hex (minimum 3).
-static func heat(k: int, hexes: int) -> int:
+## Heat built by moving: walk 1, run 2, jump 1 per hex (minimum 3;
+## improved jump jets halve it, JumpJets).
+static func heat(k: int, hexes: int, improved_jets := false) -> int:
 	match k:
 		Kind.WALK:
 			return 1
 		Kind.RUN:
 			return 2
 		Kind.JUMP:
-			return maxi(3, hexes)
+			return JumpJets.heat(hexes, improved_jets)
 	return 0

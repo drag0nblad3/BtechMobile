@@ -1,0 +1,79 @@
+{
+ "id": "urbanmech_umr80",
+ "name": "UrbanMech",
+ "model": "UM-R80",
+ "tonnage": 30,
+ "walk_mp": 2,
+ "jump_mp": 3,
+ "heat_sinks": 11,
+ "jump_jet_type": "improved",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 8,
+  "RT": 8,
+  "CT": 11,
+  "HD": 9,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "small_laser"
+  ],
+  "RA": [
+   "snub_nose_ppc",
+   "tag"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "jump_jet",
+   "small_pulse_laser",
+   "guardian_ecm"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "jump_jet",
+   "beagle_probe"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3360,
+  "megamek": "data/mekfiles/meks/3085u/ONN/UrbanMech UM-R80.mtf",
+  "published": "RSFP:Urbies",
+  "role": "Ambusher",
+  "bv": "sheet",
+  "sheet": "UrbanMech UM-R80 (ForcePack-Record-Sheets-UrbanMechs)",
+  "megamek_bv": 699
+ },
+ "bv": 699,
+ "sprite": "urbanmech",
+ "role": "Ambusher: waits in cover and strikes hard when foes come close. Small Laser, Snub-Nose PPC, Small Pulse Laser; walks 2, runs 3, jumps 3."
+}

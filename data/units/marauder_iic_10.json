@@ -1,0 +1,88 @@
+{
+ "id": "marauder_iic_10",
+ "name": "Marauder IIC",
+ "model": "10",
+ "tonnage": 85,
+ "walk_mp": 4,
+ "jump_mp": 6,
+ "heat_sinks": 20,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 23,
+  "RT": 23,
+  "CT": 33,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "c_large_pulse_laser",
+   "c_medium_pulse_laser",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "c_large_pulse_laser",
+   "c_medium_pulse_laser",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "c_er_ppc",
+   "c_small_pulse_laser",
+   "endo_steel"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "jump_jet*2",
+   "c_small_pulse_laser",
+   "endo_steel"
+  ],
+  "CT": [
+   "c_er_small_laser*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 7538,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 6/Marauder IIC 10.mtf",
+  "published": "RG06,RGv1",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Marauder IIC 10 (BattleTech-Record-Sheets-Aces-Scouring-Sands-2)",
+  "megamek_bv": 2877
+ },
+ "bv": 2877,
+ "sprite": "marauder_iic",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Large Pulse Lasers, 2 Medium Pulse Lasers, 2 Small Pulse Lasers, 2 ER Small Lasers, ER PPC; walks 4, runs 6, jumps 6."
+}

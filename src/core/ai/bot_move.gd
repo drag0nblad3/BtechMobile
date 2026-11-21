@@ -61,7 +61,7 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	u.facing = k.z
 	u.move_mode = mode if moved else -1
 	u.hexes_moved = hexes
-	u.heat_generated += MoveMode.heat(mode, u.hexes_moved) if moved else 0
+	u.heat_generated += MoveMode.heat(mode, u.hexes_moved, JumpJets.improved(u.def)) if moved else 0
 	var dealt: float = BotFire.plan(state, u)["value"]
 	var charge := BotCharge.evaluate(state, u, opts.budget - int(opts.cost.get(k, 0))) if moved and BotSkill.basic_tricks() else {}
 	if not charge.is_empty() and charge["value"] <= dealt:

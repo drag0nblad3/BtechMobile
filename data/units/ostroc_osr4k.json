@@ -1,0 +1,71 @@
+{
+ "id": "ostroc_osr4k",
+ "name": "Ostroc",
+ "model": "OSR-4K",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 6,
+ "heat_sinks": 11,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "gyro_type": "heavy_duty",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 18,
+  "RT": 18,
+  "CT": 24,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "snub_nose_ppc",
+   "er_medium_laser",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "snub_nose_ppc",
+   "er_medium_laser",
+   "endo_steel*4"
+  ],
+  "CT": [
+   "endo_steel*2"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 2356,
+  "megamek": "data/mekfiles/meks/3085u/Phoenix/Ostroc OSR-4K.mtf",
+  "published": "RS:3085u-PP",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Ostroc OSR-4K (ForcePack-Record-Sheets-Illician-Lancers-Command-Lance)",
+  "megamek_bv": 1490
+ },
+ "bv": 1490,
+ "sprite": "ostroc",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Snub-Nose PPCs, 2 ER Medium Lasers; walks 4, runs 6, jumps 6."
+}
