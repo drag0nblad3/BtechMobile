@@ -1,13 +1,55 @@
 {
-  "id": "commando_com2d", "name": "Commando", "model": "COM-2D", "tonnage": 25,
-  "walk_mp": 6, "jump_mp": 0, "heat_sinks": 10, "sprite": "commando",
-  "role": "Light ambusher. Two missile racks hit hard for its size, but it has little armor and only one ton of ammo per rack.",
-  "armor": {"HD": 8, "CT": 11, "LT": 7, "RT": 7, "LA": 5, "RA": 5, "LL": 7, "RL": 7},
-  "rear_armor": {"CT": 3, "LT": 2, "RT": 2},
-  "equipment": {
-    "LA": ["srm6"],
-    "RA": ["medium_laser"],
-    "RT": ["srm4"],
-    "LT": ["ammo:srm6", "ammo:srm4"]
-  }
+ "id": "commando_com2d",
+ "name": "Commando",
+ "model": "COM-2D",
+ "tonnage": 25,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 6,
+  "RT": 6,
+  "CT": 8,
+  "HD": 6,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "srm4"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "ammo:srm4"
+  ],
+  "CT": [
+   "srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 670,
+  "megamek": "data/mekfiles/meks/3039u/Commando COM-2D.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Commando COM-2D (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 541
+ },
+ "bv": 541,
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. Medium Laser, SRM 4, SRM 6; walks 6, runs 9.",
+ "sprite": "commando"
 }

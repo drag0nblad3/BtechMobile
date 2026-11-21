@@ -1,26 +1,177 @@
 {
-  "id": "executioner", "name": "Executioner", "tonnage": 95, "walk_mp": 4, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "executioner", "engine_type": "xl", "structure_type": "endo_steel",
-  "armor": {"HD": 9, "CT": 45, "LT": 30, "RT": 30, "LA": 31, "RA": 31, "LL": 39, "RL": 39},
-  "rear_armor": {"CT": 14, "LT": 10, "RT": 10},
-  "equipment": {"LA": ["endo_steel*4"], "RA": ["endo_steel*2"], "RT": ["endo_steel*1"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 15, "jump_mp": 4, "role": "Clan assault that sprints: MASC takes it to 8 MP, and a Gauss rifle and two large pulse lasers make it count.", "equipment": {
-      "RA": ["c_gauss_rifle"],
-      "RT": ["ammo:c_gauss_rifle*2"],
-      "LA": ["c_large_pulse_laser*2"],
-      "CT": ["c_er_medium_laser", "c_er_small_laser"],
-      "LT": ["masc"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"]
-    }},
-    {"model": "A", "heat_sinks": 20, "jump_mp": 4, "role": "Laser Executioner: ER PPCs and pulse lasers with heavy heat sinking and no ammo to explode.", "equipment": {
-      "RA": ["c_er_ppc", "c_er_small_laser"],
-      "LA": ["c_er_ppc", "c_er_medium_laser*2"],
-      "RT": ["c_medium_pulse_laser*2", "c_er_medium_laser*2", "heat_sink", "heat_sink"],
-      "CT": ["c_er_medium_laser*2"],
-      "LT": ["masc", "heat_sink", "heat_sink", "heat_sink"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"]
-    }}
+ "id": "executioner",
+ "name": "Executioner",
+ "tonnage": 95,
+ "walk_mp": 4,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 32,
+  "RA": 32,
+  "LT": 20,
+  "RT": 20,
+  "CT": 37,
+  "HD": 9,
+  "LL": 40,
+  "RL": 40
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "executioner",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "masc"
+  ],
+  "RT": [
+   "heat_sink",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "ferro_fibrous*2"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2749,
+   "heat_sinks": 19,
+   "jump_mp": 4,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_gauss_rifle"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "c_er_large_laser*2"
+    ],
+    "LT": [
+     "ammo:c_gauss_rifle*2"
+    ],
+    "RT": [
+     "c_machine_gun*2",
+     "ammo:c_machine_gun"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER Large Lasers, 2 Machine Guns, Gauss Rifle; walks 4, runs 6, jumps 4.",
+   "source": {
+    "mul_id": 1211,
+    "megamek": "data/mekfiles/meks/3050U/Gladiator (Executioner) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Gladiator (Executioner) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2749
+   }
+  },
+  {
+   "model": "A",
+   "bv": 3112,
+   "heat_sinks": 19,
+   "jump_mp": 4,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_large_pulse_laser*3"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "c_er_medium_laser*4"
+    ],
+    "RT": [
+     "c_machine_gun*2",
+     "ammo:c_machine_gun"
+    ]
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 ER Medium Lasers, 3 Large Pulse Lasers, 2 Machine Guns; walks 4, runs 6, jumps 4.",
+   "source": {
+    "mul_id": 1203,
+    "megamek": "data/mekfiles/meks/3050U/Gladiator (Executioner) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Gladiator (Executioner) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 3112
+   }
+  },
+  {
+   "model": "B",
+   "bv": 2940,
+   "heat_sinks": 19,
+   "jump_mp": 4,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_ultra_ac20"
+    ],
+    "RA": [
+     "heat_sink*3",
+     "c_er_ppc"
+    ],
+    "LT": [
+     "ammo:c_ultra_ac20*3"
+    ],
+    "RT": [
+     "c_ams",
+     "c_er_medium_laser",
+     "ammo:c_ams"
+    ]
+   },
+   "source": {
+    "mul_id": 1204,
+    "megamek": "data/mekfiles/meks/3050U/Gladiator (Executioner) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Gladiator (Executioner) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2940
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. Ultra AC/20, ER PPC, Anti-Missile System, ER Medium Laser; walks 4, runs 6, jumps 4."
+  }
+ ]
 }

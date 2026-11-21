@@ -1,0 +1,79 @@
+{
+ "id": "urbanmech_umr70",
+ "name": "UrbanMech",
+ "model": "UM-R70",
+ "tonnage": 30,
+ "walk_mp": 2,
+ "jump_mp": 2,
+ "heat_sinks": 11,
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 10,
+  "RT": 10,
+  "CT": 15,
+  "HD": 9,
+  "LL": 14,
+  "RL": 14
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_small_laser",
+   "ferro_fibrous*4"
+  ],
+  "RA": [
+   "rotary_ac5",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "er_medium_laser",
+   "ferro_fibrous*4"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "ammo:rotary_ac5*2",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3359,
+  "megamek": "data/mekfiles/meks/3050U/UrbanMech UM-R70.mtf",
+  "published": "RSFP:Urbies",
+  "role": "Ambusher",
+  "bv": "sheet",
+  "sheet": "UrbanMech UM-R70 (ForcePack-Record-Sheets-UrbanMechs)",
+  "megamek_bv": 724
+ },
+ "bv": 724,
+ "sprite": "urbanmech",
+ "role": "Ambusher: waits in cover and strikes hard when foes come close. ER Small Laser, Rotary AC/5, ER Medium Laser; walks 2, runs 3, jumps 2."
+}

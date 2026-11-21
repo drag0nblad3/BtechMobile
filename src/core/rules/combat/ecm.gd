@@ -11,6 +11,15 @@ extends RefCounted
 const RADIUS := 6
 
 
+## Weight and slots: a Clan suite is lighter. TODO(rules): construction data.
+static func tons(def: UnitDef) -> float:
+	return 1.0 if def.is_clan() else 1.5
+
+
+static func slots(def: UnitDef) -> int:
+	return 1 if def.is_clan() else 2
+
+
 static func working(u: Unit) -> bool:
 	return u.def.ecm_loc >= 0 and not u.ecm_lost and not u.destroyed and not u.shutdown \
 			and not u.is_location_destroyed(u.def.ecm_loc)

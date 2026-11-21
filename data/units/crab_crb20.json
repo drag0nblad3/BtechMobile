@@ -1,0 +1,62 @@
+{
+ "id": "crab_crb20",
+ "name": "Crab",
+ "model": "CRB-20",
+ "tonnage": 50,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 16,
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 14,
+  "RT": 14,
+  "CT": 18,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "large_laser"
+  ],
+  "RA": [
+   "large_laser"
+  ],
+  "LT": [
+   "heat_sink"
+  ],
+  "RT": [
+   "heat_sink"
+  ],
+  "CT": [
+   "medium_laser"
+  ],
+  "HD": [
+   "small_laser"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 715,
+  "megamek": "data/mekfiles/meks/3039u/Crab CRB-20.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Crab CRB-20 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1143
+ },
+ "bv": 1143,
+ "sprite": "crab",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Large Lasers, Medium Laser, Small Laser; walks 5, runs 8."
+}

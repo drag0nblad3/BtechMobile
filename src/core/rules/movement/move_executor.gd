@@ -28,7 +28,8 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	var path: Array[Vector3i] = opts.path_to(target)
 	var from := opts.start_key()
 	var moved: bool = int(opts.cost[target]) > 0 or target != from
-	if unit.prone and moved and not opts.turn_only and not Psr.try_stand(state, dice, emit, unit):
+	if unit.prone and moved and not opts.turn_only \
+			and not _stand(state, dice, emit, unit, opts.budget - int(opts.cost[target])):
 		unit.has_moved = true
 		unit.move_mode = MoveMode.Kind.WALK
 		unit.heat_generated += MoveMode.heat(MoveMode.Kind.WALK, 0)
@@ -97,3 +98,13 @@ static func _action_rolls(state: GameState, dice: Dice, emit: Callable, unit: Un
 		var keep: int = r["index"] + (0 if r["back"] else 1)
 		return {"end": keep, "levels": r["levels"], "reason": r["reason"]}
 	return {}
+
+
+## Tries to stand, again after each failure while the move leaves 2 spare MP
+## for another try (p. 51). Each failure is a fall in place.
+static func _stand(state: GameState, dice: Dice, emit: Callable, unit: Unit, spare: int) -> bool:
+	while not Psr.try_stand(state, dice, emit, unit):
+		spare -= 2
+		if spare < 0 or unit.destroyed or not unit.pilot.conscious or not Psr.can_stand(unit):
+			return false
+	return true

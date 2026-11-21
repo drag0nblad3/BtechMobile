@@ -1,0 +1,56 @@
+{
+ "id": "test_griffin_grf1n_sc",
+ "name": "Griffin",
+ "model": "GRF-1N (supercharger refit)",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 11,
+ "role": "Test fixture, not an official design.",
+ "armor": {
+  "HD": 9,
+  "CT": 21,
+  "LT": 18,
+  "RT": 18,
+  "LA": 15,
+  "RA": 16,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "CT": 7,
+  "LT": 6,
+  "RT": 6
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "RA": [
+   "ppc"
+  ],
+  "RT": [
+   "lrm10",
+   "ammo:lrm10",
+   "jump_jet"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "CT": [
+   "jump_jet",
+   "supercharger"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "sprite": "test"
+}

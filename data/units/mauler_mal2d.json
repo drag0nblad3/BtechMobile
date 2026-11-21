@@ -1,0 +1,83 @@
+{
+ "id": "mauler_mal2d",
+ "name": "Mauler",
+ "model": "MAL-2D",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 26,
+  "RT": 26,
+  "CT": 27,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "er_medium_laser*2",
+   "ferro_fibrous*4"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_medium_laser*2",
+   "ferro_fibrous*4"
+  ],
+  "LT": [
+   "rotary_ac2*2",
+   "mrm10",
+   "ammo:mrm10",
+   "ammo:rotary_ac2",
+   "case",
+   "ferro_fibrous"
+  ],
+  "RT": [
+   "rotary_ac2*2",
+   "mrm10",
+   "ammo:mrm10",
+   "ammo:rotary_ac2",
+   "case",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "ferro_fibrous*2"
+  ],
+  "LL": [
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 9547,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 15/Mauler MAL-2D.mtf",
+  "published": "ShrapRS",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Mauler MAL-2D (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1737
+ },
+ "bv": 1737,
+ "sprite": "mauler",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 ER Medium Lasers, 4 Rotary AC/2s, 2 MRM 10s; walks 3, runs 5."
+}

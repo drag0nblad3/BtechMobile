@@ -1,15 +1,56 @@
 {
-  "id": "stinger_stg3r", "name": "Stinger", "model": "STG-3R", "tonnage": 20,
-  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 10, "sprite": "stinger",
-  "role": "Light scout. Jumps 6 hexes to reach the rear arc; one laser, two machine guns, little armor.",
-  "armor": {"HD": 6, "CT": 6, "LT": 5, "RT": 5, "LA": 4, "RA": 4, "LL": 6, "RL": 6},
-  "rear_armor": {"CT": 2, "LT": 2, "RT": 2},
-  "equipment": {
-    "RA": ["medium_laser", "machine_gun"],
-    "LA": ["machine_gun"],
-    "LT": ["ammo:machine_gun", "jump_jet"],
-    "RT": ["jump_jet"],
-    "LL": ["jump_jet", "jump_jet"],
-    "RL": ["jump_jet", "jump_jet"]
-  }
+ "id": "stinger_stg3r",
+ "name": "Stinger",
+ "model": "STG-3R",
+ "tonnage": 20,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 4,
+  "RA": 4,
+  "LT": 6,
+  "RT": 6,
+  "CT": 6,
+  "HD": 4,
+  "LL": 5,
+  "RL": 5
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "machine_gun"
+  ],
+  "RA": [
+   "medium_laser",
+   "machine_gun"
+  ],
+  "LT": [
+   "heat_sink*3",
+   "jump_jet*3"
+  ],
+  "RT": [
+   "heat_sink*3",
+   "jump_jet*3"
+  ],
+  "CT": [
+   "ammo:machine_gun"
+  ]
+ },
+ "source": {
+  "mul_id": 3061,
+  "megamek": "data/mekfiles/meks/3039u/Stinger STG-3R.mtf",
+  "published": "RSFP:Wave 1",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Stinger STG-3R (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 359
+ },
+ "bv": 359,
+ "role": "Scout: fast and light, finds the enemy and stays alive. 2 Machine Guns, Medium Laser; walks 6, runs 9, jumps 6.",
+ "sprite": "stinger"
 }

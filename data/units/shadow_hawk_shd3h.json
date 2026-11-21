@@ -1,0 +1,60 @@
+{
+ "id": "shadow_hawk_shd3h",
+ "name": "Shadow Hawk",
+ "model": "SHD-3H",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 3,
+ "heat_sinks": 12,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "equipment": {
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "jump_jet",
+   "ac5",
+   "ammo:ac5",
+   "ammo:machine_gun"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet",
+   "lrm5",
+   "ammo:lrm5"
+  ],
+  "CT": [
+   "jump_jet",
+   "machine_gun"
+  ],
+  "HD": [
+   "machine_gun"
+  ]
+ },
+ "source": {
+  "mul_id": 5037,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 14/Shadow Hawk SHD-3H.mtf",
+  "published": "ShrapRS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Shadow Hawk SHD-3H (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1043
+ },
+ "bv": 1043,
+ "sprite": "shadow_hawk",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Machine Guns, Medium Laser, AC/5, LRM 5; walks 5, runs 8, jumps 3."
+}

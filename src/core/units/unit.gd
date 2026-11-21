@@ -37,6 +37,7 @@ var destroyed_announced: bool = false
 var prone: bool = false
 var flooded: Dictionary = {}  ## Location -> true once a hull breach floods it (HullBreach).
 var ecm_lost: bool = false  ## ECM suite destroyed by a critical hit.
+var probe_lost := false  ## Active probe destroyed by a critical hit.
 var tc_lost: bool = false  ## Targeting computer destroyed by a critical hit.
 var narc_pods: Array[Dictionary] = []  ## Narc homing pods on it: [{side, loc, turn}] (Narc).
 var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
@@ -61,6 +62,7 @@ var sc_used: bool = false  ## Supercharger engaged this turn; sc_active it worke
 var sc_active: bool = false  ## sc_failed engine criticals are owed after the move.
 var sc_failed: bool = false
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
+var arms_flipped := false  ## Arms reversed this turn (ArmFlip).
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
 var damage_this_phase: int = 0
@@ -85,7 +87,10 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 		mw.artemis = m.get("artemis", false)
 		weapons.append(mw)
 	for a in def.ammo_mounts:
-		ammo.append(AmmoBin.new(a["weapon"], a["loc"], a.get("kind", "")))
+		var bin := AmmoBin.new(a["weapon"], a["loc"], a.get("kind", ""))
+		if a.get("half", false):
+			bin.shots = maxi(1, bin.shots / 2)
+		ammo.append(bin)
 	Narc.setup_ammo(self)
 	Atm.setup_ammo(self)
 	slots = CritLayout.build(def)
@@ -98,6 +103,7 @@ func reset_for_turn() -> void:
 	move_mode = -1
 	hexes_moved = 0
 	torso_twist = 0
+	arms_flipped = false
 	heat_generated = 0
 	outside_heat = 0
 	Masc.new_turn(self)
@@ -258,7 +264,7 @@ func refund_ammo(w: WeaponDef, kind: String = "") -> void:
 
 
 func can_fire(w: MountedWeapon) -> bool:
-	if sensor_hits >= 2 or w.destroyed or w.jammed or is_location_out(w.loc):
+	if sensor_hits >= 2 or w.destroyed or w.jammed or w.spent or is_location_out(w.loc):
 		return false
 	return not w.def.uses_ammo() or ammo_for(w.def, WeaponModes.ammo_kind(w)) > 0
 

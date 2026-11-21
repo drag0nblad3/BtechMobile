@@ -10,6 +10,10 @@ Battle mode first; campaign layer later.
 - New rule = new file under `src/core/rules/<area>/` + a test in `tests/unit/test_<area>.gd`
   + a line in `docs/rules-coverage.md`. Don't grow existing rule files sideways.
 - Content (units, terrain, maps, scenarios) is JSON in `data/`, never hard-coded.
+- **'Mech designs are official only** (Tyler's rule): loadouts come from MegaMek's unit files
+  (`source.megamek`), BV from the free official record sheets (`source.bv: "sheet"`) or, when a
+  design has no free sheet, MegaMek's BV calculator (`"megamek"`). No made-up refits or BV
+  formulas; a loadout that exercises one rule goes in `tests/fixtures/units/`. See `docs/data-sources.md`.
 - Prefer `Edit` over rewriting files. Keep comments short; `##` doc comment on each class.
 
 ## Layers (strict)
@@ -54,12 +58,12 @@ Battle mode first; campaign layer later.
 |---|---|
 | `src/core/hex/hex.gd` | Axial hex math, facings (0=N clockwise), mapsheet labels (XXYY, odd-q) |
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (threshold, destroy check, height), `Bridge` (deck level, span) |
-| `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check), `ClanTech` (Clan construction sizes), `OmniConfig` (OmniMech configurations) |
+| `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check), `ClanTech` (Clan construction sizes), `OmniConfig` (OmniMech configurations), `DesignItems` (equipment strings), `InertGear` (A-pods, TAG: carried, no effect yet) |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `ProneMoves` (dropping prone, prone turning), `Masc` (MASC bursts, escalating failure), `Quad` (four-legged 'Mechs: MP, piloting, prone fire), `LateralShift` (quad sideways steps), `Tsm` (triple-strength myomer), `Supercharger` (running bursts, engine damage), `MoveExecutor` (carries out a move for the controller) |
-| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `WaterCombat` (water line, underwater ranges), `HullBreach`, `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion` (caps, CASE), `ComponentExplosion` (Gauss), `XlEngine` (side-torso engine slots), `AimedShot` (immobile targets), `AntiMissile` (AMS), `TargetingComputer`, `Ecm` (Guardian ECM vs Artemis), `C3` (Master/Slave networks, range sharing), `WeaponModes` (Ultra/LB-X/Streak/Artemis), `RotaryAc` (rapid fire, jams), `Narc` (homing pods), `Atm` (ATM munitions), `CriticalHits`, `CritEffects`, `HeadHit` |
+| `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `WaterCombat` (water line, underwater ranges), `HullBreach`, `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion` (caps, CASE), `ComponentExplosion` (Gauss), `XlEngine` (side-torso engine slots), `AimedShot` (immobile targets), `AntiMissile` (AMS), `TargetingComputer`, `Ecm` (Guardian ECM vs Artemis), `C3` (Master/Slave networks, range sharing), `ActiveProbe` (sees through smoke, fog, murk), `WeaponModes` (Ultra/LB-X/Streak/Artemis), `RotaryAc` (rapid fire, jams), `Narc` (homing pods), `Atm` (ATM and MML munitions), `CriticalHits`, `CritEffects`, `HeadHit` |
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase`, `HeatShutdown`, `VoluntaryShutdown` (shut down/restart by choice), `HeatSinkSwitch` (heat sinks off/on) |
-| `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs: on entering a hex or after the move), `Skid` (unused optional rule), `Fall`, `PilotDamage` |
+| `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs: on entering a hex or after the move), `Skid` (unused optional rule), `Fall`, `PilotDamage`, `Gyro` (gyro types, heavy-duty) |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push, levels table), `PhysicalMods` (shared checks + modifiers), `Charge` (charge, DFA options), `ChargeResolve` (rolls, damage, displacement), `Displacement` (domino effect, ledges, off-map), `MeleeWeapons` (hatchet, sword, clubs), `QuadKick` (front and mule kicks), `PhysicalPhase` |
 | `src/core/rules/buildings/` | `BuildingRules` (entering, inside modifiers, destroy checks, collapse), `BuildingDamage` (per-attacker damage, end-of-phase collapse), `BuildingFire` (shooting buildings), `BuildingMelee` (punching/kicking buildings), `Roofs` (roof landing/moves, support limit), `Bridges` (deck or underneath, road cost, support, collapse) |
 | `src/core/rules/conditions/` | `Conditions` (weather, temperature, gravity for the whole map), `ExtremeTemp`, `Gravity`, `ConditionsTable`, `Wind`, `LowVisibility` (sensor checks) |
@@ -81,7 +85,7 @@ Battle mode first; campaign layer later.
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `MascInput` (MASC button), `BotDriver` (runs computer sides), `BattleFx` (voxel blasts for hits, ammo explosions, kills, collapses; building wall scars), `BattleLaunch` |
 | `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, rules notebook, saves results), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `missions/standard.json`, `voxels/*.json` — see `docs/data-formats.md` |
-| `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
+| `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `fixtures/units/` (made-up loadouts for rule tests, ids `test_*`), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
 | `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial, training, notebook) |
 | `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/props_capture.gd` | Close-up PNG of map props (`-- out.png [map.json] [yaw] [dist] [hex]`) |

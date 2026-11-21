@@ -23,7 +23,7 @@ func test_weight_and_slot() -> void:
 	var u := _mech()
 	check_eq(DesignWeight.breakdown(u.def)["supercharger"], 1.5, "250 engine 12.5 t / 10, up to the half ton")
 	check_eq(u.slots[Location.CT].filter(func(sl: CritSlot) -> bool: return sl.kind == CritSlot.Kind.SUPERCHARGER).size(), 1)
-	check_eq(DesignWeight.breakdown(mech("griffin_grf1n_sc", 0, hex_at(1, 1)).def)["supercharger"], 2.0)
+	check_eq(DesignWeight.breakdown(mech("test_griffin_grf1n_sc", 0, hex_at(1, 1)).def)["supercharger"], 2.0)
 
 
 func test_success_and_with_masc() -> void:

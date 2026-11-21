@@ -109,3 +109,11 @@ func test_shoot_a_bridge_down() -> void:
 func test_explained_on_the_hex_line() -> void:
 	var t := TerrainText.describe(_state().map.get_tile(hex_at(1, 2)), ExplainLevel.FULL)
 	check(t.contains("Medium bridge") and t.contains("deck at level 0"), t)
+
+
+func test_deck_counts_as_road() -> void:
+	var m := MapLoader.from_dict({"rows": ["p1 p1 p1", "w0d1 w0d1 w0d1", "p0 p0 p0"],
+			"bridges": [{"hexes": ["0202"], "level": 0}]}, terrain())
+	check_eq(MoveCost.enter_cost(m, hex_at(1, 2), hex_at(1, 1), MoveMode.Kind.WALK), 1, "road onto the deck")
+	check_eq(MoveCost.enter_cost(m, hex_at(1, 1), hex_at(1, 0), MoveMode.Kind.WALK), 1,
+			"deck to road one level up: the climb is 1 MP cheaper on a road")

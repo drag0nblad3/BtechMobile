@@ -1,0 +1,72 @@
+{
+ "id": "wolverine_wvr7d",
+ "name": "Wolverine",
+ "model": "WVR-7D",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 13,
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 20,
+  "RT": 20,
+  "CT": 24,
+  "HD": 9,
+  "LL": 25,
+  "RL": 25
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "equipment": {
+  "LA": [
+   "ferro_fibrous*8"
+  ],
+  "RA": [
+   "ultra_ac5",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "srm6",
+   "ammo:srm6",
+   "case"
+  ],
+  "RT": [
+   "heat_sink",
+   "ammo:ultra_ac5",
+   "masc",
+   "case",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "medium_pulse_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3574,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Wolverine WVR-7D.mtf",
+  "published": "RSFP:Wave 1,RG18,RGv1",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Wolverine WVR-7D (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1314
+ },
+ "bv": 1314,
+ "sprite": "wolverine",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. Ultra AC/5, SRM 6, Medium Pulse Laser; walks 5, runs 8, jumps 5."
+}

@@ -1,0 +1,78 @@
+{
+ "id": "crockett_crk50031",
+ "name": "Crockett",
+ "model": "CRK-5003-1",
+ "tonnage": 85,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 15,
+ "heat_sink_type": "double",
+ "armor": {
+  "LA": 28,
+  "RA": 28,
+  "LT": 25,
+  "RT": 25,
+  "CT": 35,
+  "HD": 9,
+  "LL": 36,
+  "RL": 36
+ },
+ "rear_armor": {
+  "LT": 11,
+  "RT": 11,
+  "CT": 19
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "er_large_laser",
+   "small_laser"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_large_laser",
+   "small_laser"
+  ],
+  "LT": [
+   "heat_sink",
+   "srm6",
+   "lb10x_ac",
+   "ammo:lb10x_ac:cluster"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "srm6",
+   "ammo:srm6*2",
+   "ammo:lb10x_ac*2"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 725,
+  "megamek": "data/mekfiles/meks/3050U/Crockett CRK-5003-1.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Crockett CRK-5003-1 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1923
+ },
+ "bv": 1923,
+ "sprite": "crockett",
+ "role": "Sniper: hangs back and hits from long range. 2 ER Large Lasers, 2 Small Lasers, 2 SRM 6s, LB 10-X AC; walks 3, runs 5, jumps 3."
+}

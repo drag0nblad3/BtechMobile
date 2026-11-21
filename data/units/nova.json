@@ -1,17 +1,157 @@
 {
-  "id": "nova", "name": "Nova", "tonnage": 50, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "nova", "engine_type": "xl",
-  "armor": {"HD": 9, "CT": 21, "LT": 15, "RT": 15, "LA": 13, "RA": 13, "LL": 19, "RL": 19},
-  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
-  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
-  "equipment": {},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 18, "jump_mp": 5, "role": "Clan jumping laser boat. Twelve ER medium lasers: devastating up close, but firing them all overheats it badly.", "equipment": {
-      "LA": ["c_er_medium_laser*6"],
-      "RA": ["c_er_medium_laser*6"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"],
-      "LT": ["jump_jet", "heat_sink", "heat_sink", "heat_sink", "heat_sink"],
-      "RT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink"]
-    }}
+ "id": "nova",
+ "name": "Nova",
+ "tonnage": 50,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 16,
+  "RT": 16,
+  "CT": 23,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 8
+ },
+ "omni": true,
+ "sprite": "nova",
+ "equipment": {
+  "LT": [
+   "heat_sink*2"
+  ],
+  "RT": [
+   "heat_sink*2"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
   ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2663,
+   "heat_sinks": 18,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_er_medium_laser*6"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_medium_laser*6"
+    ],
+    "LT": [
+     "heat_sink"
+    ],
+    "RT": [
+     "heat_sink"
+    ]
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 12 ER Medium Lasers; walks 5, runs 8, jumps 5.",
+   "source": {
+    "mul_id": 342,
+    "megamek": "data/mekfiles/meks/3050U/Black Hawk (Nova) Prime.mtf",
+    "published": "RSFP:Wave 1,RS:AS",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Black Hawk (Nova) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2663
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2422,
+   "heat_sinks": 14,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_ppc"
+    ],
+    "RA": [
+     "c_er_ppc"
+    ],
+    "LT": [
+     "c_medium_pulse_laser",
+     "c_ams"
+    ],
+    "RT": [
+     "c_ams",
+     "ammo:c_ams"
+    ]
+   },
+   "source": {
+    "mul_id": 335,
+    "megamek": "data/mekfiles/meks/3050U/Black Hawk (Nova) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Black Hawk (Nova) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2422
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER PPCs, 2 Anti-Missile Systems, Medium Pulse Laser; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "B",
+   "bv": 1543,
+   "heat_sinks": 14,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_large_pulse_laser"
+    ],
+    "RA": [
+     "c_ultra_ac5",
+     "ammo:c_ultra_ac5"
+    ],
+    "LT": [
+     "c_machine_gun*2",
+     "ammo:c_machine_gun"
+    ],
+    "RT": [
+     "c_er_small_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 336,
+    "megamek": "data/mekfiles/meks/3050U/Black Hawk (Nova) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Black Hawk (Nova) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1543
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 Machine Guns, Large Pulse Laser, Ultra AC/5, ER Small Laser; walks 5, runs 8, jumps 5."
+  }
+ ]
 }

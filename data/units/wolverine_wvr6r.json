@@ -1,17 +1,61 @@
 {
-  "id": "wolverine_wvr6r", "name": "Wolverine", "model": "WVR-6R", "tonnage": 55,
-  "walk_mp": 5, "jump_mp": 5, "heat_sinks": 12, "sprite": "wolverine",
-  "role": "Medium all-rounder. Autocannon for range, SRMs and a laser for close work; runs cool.",
-  "armor": {"HD": 9, "CT": 26, "LT": 18, "RT": 18, "LA": 15, "RA": 15, "LL": 17, "RL": 17},
-  "rear_armor": {"CT": 7, "LT": 5, "RT": 5},
-  "missing_actuators": {"RA": ["hand"]},
-  "equipment": {
-    "HD": ["medium_laser"],
-    "CT": ["jump_jet"],
-    "LT": ["srm6", "ammo:srm6", "heat_sink", "jump_jet"],
-    "RT": ["ammo:ac5", "heat_sink", "jump_jet"],
-    "RA": ["ac5"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "wolverine_wvr6r",
+ "name": "Wolverine",
+ "model": "WVR-6R",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 12,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 20,
+  "RT": 20,
+  "CT": 20,
+  "HD": 8,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "equipment": {
+  "RA": [
+   "ac5",
+   "ammo:ac5"
+  ],
+  "LT": [
+   "srm6",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "heat_sink"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3573,
+  "megamek": "data/mekfiles/meks/3039u/Wolverine WVR-6R.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Wolverine WVR-6R (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1101
+ },
+ "bv": 1101,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. AC/5, SRM 6, Medium Laser; walks 5, runs 8, jumps 5.",
+ "sprite": "wolverine"
 }

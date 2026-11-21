@@ -1,0 +1,70 @@
+{
+ "id": "black_knight_bl12knt",
+ "name": "Black Knight",
+ "model": "BL-12-KNT",
+ "tonnage": 75,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 16,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 24,
+  "RA": 24,
+  "LT": 24,
+  "RT": 24,
+  "CT": 29,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "endo_steel*6"
+  ],
+  "RA": [
+   "er_ppc",
+   "er_medium_laser",
+   "heat_sink"
+  ],
+  "LT": [
+   "large_laser",
+   "er_medium_laser",
+   "heat_sink",
+   "targeting_computer"
+  ],
+  "RT": [
+   "large_laser",
+   "er_medium_laser",
+   "heat_sink*2",
+   "endo_steel*2"
+  ],
+  "CT": [
+   "endo_steel*2"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 356,
+  "megamek": "data/mekfiles/meks/3050U/Black Knight BL-12-KNT.mtf",
+  "published": "RS:3050Uu-C,RSFP:McCarron",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Black Knight BL-12-KNT (ForcePack-Record-Sheets-McCarrons-Armored-Cavalry)",
+  "megamek_bv": 1840
+ },
+ "bv": 1840,
+ "sprite": "black_knight",
+ "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, 2 Large Lasers, ER PPC; walks 4, runs 6."
+}

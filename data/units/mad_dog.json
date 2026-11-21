@@ -1,22 +1,162 @@
 {
-  "id": "mad_dog", "name": "Mad Dog", "tonnage": 60, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "mad_dog", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 30, "LT": 21, "RT": 21, "LA": 19, "RA": 19, "LL": 26, "RL": 26},
-  "rear_armor": {"CT": 9, "LT": 6, "RT": 6},
-  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*3"], "RA": ["ferro_fibrous*4"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 13, "role": "Clan fire-support medium. Two LRM 20s on the shoulders and accurate pulse lasers in the arms for anything that closes in.", "equipment": {
-      "LA": ["c_large_pulse_laser", "c_medium_pulse_laser"],
-      "RA": ["c_large_pulse_laser", "c_medium_pulse_laser"],
-      "LT": ["c_lrm20", "ammo:c_lrm20", "heat_sink"],
-      "RT": ["c_lrm20", "ammo:c_lrm20"]
-    }},
-    {"model": "A", "heat_sinks": 18, "role": "Brawler Mad Dog: an LB 5-X, ER PPC and twin SRM 6s for close fights.", "equipment": {
-      "LA": ["c_lb5x_ac"],
-      "RA": ["c_er_ppc", "c_er_medium_laser"],
-      "LT": ["c_srm6", "ammo:c_srm6", "ammo:c_lb5x_ac:cluster", "heat_sink", "heat_sink", "heat_sink"],
-      "RT": ["c_srm6", "ammo:c_lb5x_ac", "ammo:c_srm6", "heat_sink", "heat_sink", "heat_sink"],
-      "CT": ["c_er_small_laser", "c_er_medium_laser"]
-    }}
+ "id": "mad_dog",
+ "name": "Mad Dog",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 16,
+  "RT": 16,
+  "CT": 23,
+  "HD": 9,
+  "LL": 23,
+  "RL": 23
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "mad_dog",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "ferro_fibrous*2"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2351,
+   "heat_sinks": 12,
+   "equipment": {
+    "LA": [
+     "c_large_pulse_laser",
+     "c_medium_pulse_laser"
+    ],
+    "RA": [
+     "c_large_pulse_laser",
+     "c_medium_pulse_laser"
+    ],
+    "LT": [
+     "c_lrm20",
+     "ammo:c_lrm20"
+    ],
+    "RT": [
+     "c_lrm20",
+     "ammo:c_lrm20"
+    ]
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 Large Pulse Lasers, 2 Medium Pulse Lasers, 2 LRM 20s; walks 5, runs 8.",
+   "source": {
+    "mul_id": 3473,
+    "megamek": "data/mekfiles/meks/3050U/Vulture (Mad Dog) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Missile Boat",
+    "bv": "sheet",
+    "sheet": "Vulture (Mad Dog) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2351
+   }
+  },
+  {
+   "model": "A",
+   "bv": 1923,
+   "heat_sinks": 12,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lb5x_ac",
+     "ammo:c_lb5x_ac",
+     "ammo:c_lb5x_ac:cluster"
+    ],
+    "RA": [
+     "c_er_ppc"
+    ],
+    "LT": [
+     "c_srm6*3",
+     "ammo:c_srm6*2"
+    ],
+    "RT": [
+     "c_srm6*3",
+     "ammo:c_srm6*2"
+    ]
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 6 SRM 6s, LB 5-X AC, ER PPC; walks 5, runs 8.",
+   "source": {
+    "mul_id": 3466,
+    "megamek": "data/mekfiles/meks/3050U/Vulture (Mad Dog) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Vulture (Mad Dog) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1923
+   }
+  },
+  {
+   "model": "B",
+   "bv": 2284,
+   "heat_sinks": 12,
+   "missing_actuators": {},
+   "equipment": {
+    "LA": [
+     "c_er_large_laser*2"
+    ],
+    "RA": [
+     "c_medium_pulse_laser*3"
+    ],
+    "LT": [
+     "c_lrm20+artemis",
+     "ammo:c_lrm20"
+    ],
+    "RT": [
+     "c_streak_srm6*2",
+     "ammo:c_streak_srm6"
+    ]
+   },
+   "source": {
+    "mul_id": 3467,
+    "megamek": "data/mekfiles/meks/3050U/Vulture (Mad Dog) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Vulture (Mad Dog) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2284
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Medium Pulse Lasers, 2 ER Large Lasers, 2 Streak SRM 6s, LRM 20; walks 5, runs 8."
+  }
+ ]
 }

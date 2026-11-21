@@ -1,0 +1,70 @@
+{
+ "id": "blackjack_bj2",
+ "name": "Blackjack",
+ "model": "BJ-2",
+ "tonnage": 45,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 15,
+  "RT": 15,
+  "CT": 18,
+  "HD": 9,
+  "LL": 17,
+  "RL": 17
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_large_laser"
+  ],
+  "RA": [
+   "er_large_laser"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "streak_srm2*2",
+   "ammo:streak_srm2"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "streak_srm2*2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 377,
+  "megamek": "data/mekfiles/meks/3050U/Blackjack BJ-2.mtf",
+  "published": "RSFP:Wave 2,RSFP:WD",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Blackjack BJ-2 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1148
+ },
+ "bv": 1148,
+ "sprite": "blackjack",
+ "role": "Sniper: hangs back and hits from long range. 4 Streak SRM 2s, 2 ER Large Lasers; walks 4, runs 6, jumps 4."
+}

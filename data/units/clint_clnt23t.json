@@ -1,16 +1,64 @@
 {
-  "id": "clint_clnt23t", "name": "Clint", "model": "CLNT-2-3T", "tonnage": 40,
-  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 10, "sprite": "clint",
-  "role": "Fast jumping medium with an AC/5 and two medium lasers. Good at hopping into a flank and peppering from medium range; thin armor punishes standing still.",
-  "armor": {"HD": 9, "CT": 9, "LT": 8, "RT": 8, "LA": 6, "RA": 5, "LL": 10, "RL": 10},
-  "rear_armor": {"CT": 3, "LT": 2, "RT": 2},
-  "equipment": {
-    "RA": ["ac5"],
-    "RT": ["ammo:ac5", "jump_jet*2"],
-    "LT": ["jump_jet*2"],
-    "LA": ["medium_laser"],
-    "CT": ["medium_laser"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "clint_clnt23t",
+ "name": "Clint",
+ "model": "CLNT-2-3T",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 6,
+  "RT": 6,
+  "CT": 11,
+  "HD": 9,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "RA": [
+   "ac5"
+  ],
+  "LT": [
+   "jump_jet",
+   "medium_laser"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet",
+   "ammo:ac5"
+  ],
+  "CT": [
+   "medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 644,
+  "megamek": "data/mekfiles/meks/3039u/Clint CLNT-2-3T.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Clint CLNT-2-3T (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 770
+ },
+ "bv": 770,
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Medium Lasers, AC/5; walks 6, runs 9, jumps 6.",
+ "sprite": "clint"
 }

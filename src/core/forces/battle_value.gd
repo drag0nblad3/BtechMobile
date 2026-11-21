@@ -3,6 +3,8 @@ extends RefCounted
 ## Battle Value: one number for how much a design is worth in a fight, used
 ## to balance forces. Defensive part (armor, structure, how hard it is to hit)
 ## plus offensive part (weapons it can fire without overheating, ammo, speed).
+## Official designs carry their printed or MegaMek BV (UnitDef.bv); this
+## formula is only a fallback for test fixtures and the explanation text.
 ## TODO(rules): simplified BV 2 for standard-tech 'Mechs. Rear weapons count
 ## half, every ton of ammo costs 15, no CASE, no pilot skill adjustment.
 
@@ -15,9 +17,14 @@ const JUMP_HEAT_MIN := 3
 const ECM_BV := 61.0  ## Guardian ECM counts as defensive equipment.
 
 
-## Total BV, rounded.
+## Total BV: the official record sheet's value when the design has one,
+## else our simplified estimate.
 static func of(def: UnitDef) -> int:
-	return int(breakdown(def)["total"])
+	return def.bv if def.bv > 0 else int(breakdown(def)["total"])
+
+
+static func is_official(def: UnitDef) -> bool:
+	return def.bv > 0
 
 
 ## All the parts, for explanations. Keys: total, defensive, offensive,

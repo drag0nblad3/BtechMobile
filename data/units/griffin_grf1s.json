@@ -1,0 +1,62 @@
+{
+ "id": "griffin_grf1s",
+ "name": "Griffin",
+ "model": "GRF-1S",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 16,
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 20,
+  "RT": 20,
+  "CT": 20,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "equipment": {
+  "RA": [
+   "large_laser",
+   "medium_laser*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "lrm5"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "ammo:lrm5"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1298,
+  "megamek": "data/mekfiles/meks/3039u/Griffin GRF-1S.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Griffin GRF-1S (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1253
+ },
+ "bv": 1253,
+ "sprite": "griffin",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Lasers, Large Laser, LRM 5; walks 5, runs 8, jumps 5."
+}

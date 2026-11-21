@@ -1,0 +1,77 @@
+{
+ "id": "hellspawn_hsn7d",
+ "name": "Hellspawn",
+ "model": "HSN-7D",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 9,
+  "RA": 9,
+  "LT": 11,
+  "RT": 11,
+  "CT": 14,
+  "HD": 8,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_pulse_laser",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "lrm10",
+   "medium_pulse_laser"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "lrm10",
+   "ammo:lrm10*2",
+   "endo_steel*2"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "medium_pulse_laser",
+   "endo_steel*5"
+  ],
+  "CT": [
+   "guardian_ecm"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 4307,
+  "megamek": "data/mekfiles/meks/3067/Hellspawn HSN-7D.mtf",
+  "published": "RS:J,RSFP:Davion",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Hellspawn HSN-7D (ForcePack-Record-Sheets-House-Davion)",
+  "megamek_bv": 1220
+ },
+ "bv": 1220,
+ "sprite": "hellspawn",
+ "role": "Missile boat: rains missiles from a distance. 3 Medium Pulse Lasers, 2 LRM 10s; walks 6, runs 9, jumps 6."
+}

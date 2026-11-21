@@ -1,0 +1,72 @@
+{
+ "id": "rifleman_iic_2",
+ "name": "Rifleman IIC",
+ "model": "2",
+ "tonnage": 65,
+ "walk_mp": 4,
+ "jump_mp": 3,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 22,
+  "RT": 22,
+  "CT": 29,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_ultra_ac2*2",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "c_ultra_ac2*2",
+   "endo_steel"
+  ],
+  "LT": [
+   "jump_jet",
+   "ammo:c_ultra_ac2*3",
+   "endo_steel*2"
+  ],
+  "RT": [
+   "jump_jet",
+   "ammo:c_ultra_ac2*3",
+   "endo_steel*2"
+  ],
+  "CT": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 2711,
+  "megamek": "data/mekfiles/meks/3085u/Phoenix/Rifleman IIC 2.mtf",
+  "published": "RGv1,RG23,RSFP:MERCS-CLAN",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Rifleman IIC 2 (ForcePack-Record-Sheets-Mercenaries-Clan)",
+  "megamek_bv": 1345
+ },
+ "bv": 1345,
+ "sprite": "rifleman_iic",
+ "role": "Sniper: hangs back and hits from long range. 4 Ultra AC/2s; walks 4, runs 6, jumps 3."
+}

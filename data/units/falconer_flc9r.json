@@ -1,0 +1,80 @@
+{
+ "id": "falconer_flc9r",
+ "name": "Falconer",
+ "model": "FLC-9R",
+ "tonnage": 75,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 19,
+  "RA": 19,
+  "LT": 21,
+  "RT": 21,
+  "CT": 31,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heavy_ppc",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "lb10x_ac",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "medium_laser*2",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "medium_laser*2",
+   "ammo:lb10x_ac",
+   "ammo:lb10x_ac:cluster",
+   "endo_steel*4"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1034,
+  "megamek": "data/mekfiles/meks/3085u/ONN/Falconer FLC-9R.mtf",
+  "published": "RS:3085u-ONN,RSFP:Davion",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Falconer FLC-9R (ForcePack-Record-Sheets-House-Davion)",
+  "megamek_bv": 1979
+ },
+ "bv": 1979,
+ "sprite": "falconer",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Medium Lasers, Heavy PPC, LB 10-X AC; walks 5, runs 8, jumps 5."
+}

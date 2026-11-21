@@ -47,7 +47,7 @@ func test_torso_twist_brings_target_into_arc() -> void:
 	var t := mech("jenner_jr7d", 1, hex_at(3, 4) + Vector2i(3, 0), 0, 2)  # off to the right side
 	s.add_unit(a)
 	s.add_unit(t)
-	var ac := a.weapons[1]
+	var ac := gun(a, "ac20")
 	check(not ToHitCalc.weapon(s, a, ac, t).possible(), "RT AC/20 can't fire to the side")
 	a.torso_twist = 1
 	check(ToHitCalc.weapon(s, a, ac, t).possible(), "after twisting right it can")

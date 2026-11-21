@@ -1,15 +1,157 @@
 {
-  "id": "gargoyle", "name": "Gargoyle", "tonnage": 80, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "gargoyle", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 36, "LT": 24, "RT": 24, "LA": 24, "RA": 24, "LL": 31, "RL": 31},
-  "rear_armor": {"CT": 11, "LT": 8, "RT": 8},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*4"], "RA": ["ferro_fibrous*1"], "LT": ["ferro_fibrous*2"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 16, "role": "Clan heavy brawler. An Ultra AC/20 and lasers on a fast 80-ton frame.", "equipment": {
-      "RA": ["c_ultra_ac20"],
-      "RT": ["ammo:c_ultra_ac20", "ammo:c_ultra_ac20"],
-      "LA": ["c_er_large_laser", "c_er_medium_laser"],
-      "LT": ["c_lrm10", "ammo:c_lrm10", "c_er_medium_laser"]
-    }}
+ "id": "gargoyle",
+ "name": "Gargoyle",
+ "tonnage": 80,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 23,
+  "RA": 23,
+  "LT": 24,
+  "RT": 24,
+  "CT": 30,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "gargoyle",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "ferro_fibrous*2"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 1537,
+   "heat_sinks": 16,
+   "equipment": {
+    "LA": [
+     "c_srm6",
+     "c_lb5x_ac"
+    ],
+    "RA": [
+     "c_srm6",
+     "c_lb5x_ac"
+    ],
+    "LT": [
+     "ammo:c_srm6",
+     "ammo:c_lb5x_ac"
+    ],
+    "RT": [
+     "ammo:c_srm6",
+     "ammo:c_lb5x_ac:cluster"
+    ],
+    "CT": [
+     "c_er_small_laser"
+    ]
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 SRM 6s, 2 LB 5-X ACs, ER Small Laser; walks 5, runs 8.",
+   "source": {
+    "mul_id": 2010,
+    "megamek": "data/mekfiles/meks/3050U/Man O' War (Gargoyle) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Man O War (Gargoyle) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1537
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2689,
+   "heat_sinks": 16,
+   "missing_actuators": {
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_large_pulse_laser",
+     "c_medium_pulse_laser",
+     "c_er_medium_laser",
+     "c_er_small_laser"
+    ],
+    "RA": [
+     "c_er_ppc*2"
+    ]
+   },
+   "source": {
+    "mul_id": 2002,
+    "megamek": "data/mekfiles/meks/3050U/Man O' War (Gargoyle) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Man O War (Gargoyle) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2689
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER PPCs, Large Pulse Laser, Medium Pulse Laser, ER Medium Laser, ER Small Laser; walks 5, runs 8."
+  },
+  {
+   "model": "B",
+   "bv": 1843,
+   "heat_sinks": 16,
+   "missing_actuators": {
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lrm10+artemis",
+     "c_srm4+artemis",
+     "ammo:c_lrm10",
+     "ammo:c_srm4"
+    ],
+    "RA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle*2"
+    ]
+   },
+   "source": {
+    "mul_id": 2003,
+    "megamek": "data/mekfiles/meks/3050U/Man O' War (Gargoyle) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Man O War (Gargoyle) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1843
+   },
+   "role": "Sniper: hangs back and hits from long range. LRM 10, SRM 4, Gauss Rifle; walks 5, runs 8."
+  }
+ ]
 }

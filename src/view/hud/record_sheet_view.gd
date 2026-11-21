@@ -68,10 +68,18 @@ static func text(u: Unit) -> String:
 		tech.append("supercharger%s" % (" (wrecked)" if Supercharger.broken(u) else " (next use %d+)" % Supercharger.need(u)))
 	if Tsm.has(d):
 		tech.append("TSM (active: +2 walking MP, double melee damage)" if Tsm.active(u) else "TSM (wakes up at heat %d+)" % Tsm.HEAT)
+	if d.probe != "":
+		tech.append("%s, %d hexes%s" % [ActiveProbe.KINDS[d.probe]["name"], ActiveProbe.range_of(d), " (destroyed)" if u.probe_lost else ""])
+	for g: Dictionary in d.inert:
+		tech.append("%s (%s)" % [InertGear.KINDS[g["kind"]]["name"], InertGear.KINDS[g["kind"]]["why"]])
 	if d.tc_loc >= 0:
 		tech.append("targeting computer%s" % (" (destroyed)" if u.tc_lost else ""))
-	if d.armor_type == "ferro_fibrous":
-		tech.append("ferro-fibrous armor")
+	if d.armor_type != "standard":
+		tech.append({"ferro_fibrous": "ferro-fibrous", "light_ferro": "light ferro-fibrous", "heavy_ferro": "heavy ferro-fibrous"}.get(d.armor_type, d.armor_type) + " armor")
+	if d.engine_type in ["light", "compact"]:
+		tech.append("light engine (survives losing one side torso)" if d.engine_type == "light" else "compact engine")
+	if d.gyro_type != "standard":
+		tech.append({"xl": "XL gyro", "compact": "compact gyro", "heavy_duty": "heavy-duty gyro (destroyed by its 4th hit)"}[d.gyro_type])
 	for p: Dictionary in u.narc_pods:
 		if not u.is_location_destroyed(p["loc"]):
 			tech.append("Narc pod on its %s (%s)" % [Location.code_for(d, p["loc"]), Names.side(p["side"])])
@@ -121,10 +129,17 @@ static func _loc_line(u: Unit, loc: int) -> String:
 	return "%s  armor %s  ·  [color=%s]structure %s[/color]%s\n" % [Location.code_for(u.def, loc), a, col, s, wet]
 
 
+static func _dmg(d: WeaponDef) -> String:
+	return "/".join(d.damage_by_range.map(func(v: int) -> String: return str(v))) if not d.damage_by_range.is_empty() \
+			else str(d.damage)
+
+
 static func _weapon_line(u: Unit, w: MountedWeapon) -> String:
 	var line := "%s  %d · %s · %s" % [w.label(), w.def.heat,
-			("%d×%d" % [w.def.missiles, w.def.damage]) if w.def.is_cluster() else str(w.def.damage),
+			("%d×%d" % [w.def.missiles, w.def.damage]) if w.def.is_cluster() else _dmg(w.def),
 			w.def.range_text()]
+	if w.def.one_shot:
+		line += " · fired" if w.spent else " · one shot"
 	if w.def.uses_ammo():
 		line += " · ammo %d" % u.ammo_for(w.def)
 		if w.def.lbx:

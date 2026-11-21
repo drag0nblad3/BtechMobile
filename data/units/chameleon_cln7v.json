@@ -1,0 +1,63 @@
+{
+ "id": "chameleon_cln7v",
+ "name": "Chameleon",
+ "model": "CLN-7V",
+ "tonnage": 50,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 12,
+  "RT": 12,
+  "CT": 18,
+  "HD": 9,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "large_laser",
+   "medium_laser"
+  ],
+  "LT": [
+   "jump_jet",
+   "small_laser",
+   "ammo:machine_gun:half"
+  ],
+  "RT": [
+   "jump_jet",
+   "small_laser*2"
+  ],
+  "CT": [
+   "machine_gun*2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 543,
+  "megamek": "data/mekfiles/meks/3058Uu/Chameleon CLN-7V.mtf",
+  "published": "RS:SW,RS:MERCS",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Chameleon CLN-7V (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 1042
+ },
+ "bv": 1042,
+ "sprite": "chameleon",
+ "role": "Scout: fast and light, finds the enemy and stays alive. 3 Small Lasers, 2 Medium Lasers, 2 Machine Guns, Large Laser; walks 6, runs 9, jumps 6."
+}

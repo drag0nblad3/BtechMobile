@@ -1,16 +1,59 @@
 {
-  "id": "shadow_hawk_shd2h", "name": "Shadow Hawk", "model": "SHD-2H", "tonnage": 55,
-  "walk_mp": 5, "jump_mp": 3, "heat_sinks": 12, "sprite": "shadow_hawk",
-  "role": "Medium generalist. A weapon for every range bracket, so it always has something useful to fire.",
-  "armor": {"HD": 9, "CT": 23, "LT": 18, "RT": 18, "LA": 16, "RA": 16, "LL": 18, "RL": 18},
-  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
-  "equipment": {
-    "HD": ["srm2"],
-    "RA": ["medium_laser"],
-    "RT": ["ac5"],
-    "LT": ["lrm5", "ammo:lrm5", "ammo:ac5", "ammo:srm2", "heat_sink", "heat_sink"],
-    "CT": ["jump_jet"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "shadow_hawk_shd2h",
+ "name": "Shadow Hawk",
+ "model": "SHD-2H",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 3,
+ "heat_sinks": 12,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "equipment": {
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "jump_jet",
+   "ac5",
+   "ammo:ac5"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet",
+   "lrm5",
+   "ammo:lrm5"
+  ],
+  "CT": [
+   "jump_jet",
+   "ammo:srm2"
+  ],
+  "HD": [
+   "srm2"
+  ]
+ },
+ "source": {
+  "mul_id": 2901,
+  "megamek": "data/mekfiles/meks/3039u/Shadow Hawk SHD-2H.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Shadow Hawk SHD-2H (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1064
+ },
+ "bv": 1064,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. Medium Laser, AC/5, LRM 5, SRM 2; walks 5, runs 8, jumps 3.",
+ "sprite": "shadow_hawk"
 }

@@ -1,0 +1,84 @@
+{
+ "id": "starslayer_sty3dr",
+ "name": "Starslayer",
+ "model": "STY-3Dr",
+ "tonnage": 50,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 19,
+  "RT": 19,
+  "CT": 26,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*4",
+   "tsm*3"
+  ],
+  "RA": [
+   "guardian_ecm",
+   "endo_steel*4",
+   "tsm*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "medium_laser*2",
+   "endo_steel*2",
+   "light_ferro*3"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet*2",
+   "heavy_ppc",
+   "endo_steel*2",
+   "light_ferro"
+  ],
+  "CT": [
+   "jump_jet",
+   "light_ferro"
+  ],
+  "HD": [
+   "medium_laser@rear"
+  ],
+  "LL": [
+   "endo_steel",
+   "light_ferro"
+  ],
+  "RL": [
+   "endo_steel",
+   "light_ferro"
+  ]
+ },
+ "source": {
+  "mul_id": 3051,
+  "megamek": "data/mekfiles/meks/3085u/ONN/Starslayer STY-3Dr.mtf",
+  "published": "RS:3085u-ONN,RSFP:McCarron",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Starslayer STY-3Dr (ForcePack-Record-Sheets-McCarrons-Armored-Cavalry)",
+  "megamek_bv": 1781
+ },
+ "bv": 1781,
+ "sprite": "starslayer",
+ "role": "Sniper: hangs back and hits from long range. 3 Medium Lasers, Heavy PPC; walks 5, runs 8, jumps 5."
+}

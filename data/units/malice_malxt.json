@@ -1,0 +1,84 @@
+{
+ "id": "malice_malxt",
+ "name": "Malice",
+ "model": "MAL-XT",
+ "tonnage": 100,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 30,
+  "RT": 30,
+  "CT": 42,
+  "HD": 9,
+  "LL": 42,
+  "RL": 42
+ },
+ "rear_armor": {
+  "LT": 12,
+  "RT": 12,
+  "CT": 20
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "lb5x_ac",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "er_medium_laser",
+   "lb5x_ac",
+   "endo_steel*3"
+  ],
+  "LT": [
+   "er_medium_laser",
+   "lb5x_ac",
+   "ammo:lb5x_ac",
+   "ammo:lb5x_ac:cluster",
+   "endo_steel"
+  ],
+  "RT": [
+   "er_medium_laser",
+   "lb5x_ac",
+   "ammo:lb5x_ac",
+   "ammo:lb5x_ac:cluster",
+   "endo_steel"
+  ],
+  "CT": [
+   "endo_steel*2"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6683,
+  "megamek": "data/mekfiles/meks/3145/Republic/Malice MAL-XT.mtf",
+  "published": "RS:DA,RSFP:SLDF3",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Malice MAL-XT (ForcePack-Record-Sheets-Third-Star-League)",
+  "megamek_bv": 1852
+ },
+ "bv": 1852,
+ "sprite": "malice",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 ER Medium Lasers, 4 LB 5-X ACs; walks 4, runs 6."
+}

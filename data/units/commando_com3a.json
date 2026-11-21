@@ -1,0 +1,57 @@
+{
+ "id": "commando_com3a",
+ "name": "Commando",
+ "model": "COM-3A",
+ "tonnage": 25,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 4,
+  "RA": 4,
+  "LT": 4,
+  "RT": 4,
+  "CT": 6,
+  "HD": 4,
+  "LL": 6,
+  "RL": 6
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "srm6",
+   "flamer"
+  ],
+  "RT": [
+   "ammo:srm6"
+  ],
+  "CT": [
+   "srm6"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 672,
+  "megamek": "data/mekfiles/meks/3039u/Commando COM-3A.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Commando COM-3A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 540
+ },
+ "bv": 540,
+ "sprite": "commando",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 SRM 6s, Medium Laser, Flamer; walks 6, runs 9."
+}

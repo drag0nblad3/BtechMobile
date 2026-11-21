@@ -1,0 +1,79 @@
+{
+ "id": "shogun_shg2f",
+ "name": "Shogun",
+ "model": "SHG-2F",
+ "tonnage": 85,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 17,
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 28,
+  "RT": 28,
+  "CT": 40,
+  "HD": 9,
+  "LL": 36,
+  "RL": 36
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "lrm15"
+  ],
+  "RA": [
+   "lrm15"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "srm6",
+   "ammo:srm6",
+   "ammo:lrm15",
+   "case"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "er_ppc",
+   "srm6",
+   "ammo:srm6",
+   "ammo:lrm15",
+   "case"
+  ],
+  "CT": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "LL": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "RL": [
+   "heat_sink",
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 2933,
+  "megamek": "data/mekfiles/meks/3050U/Shogun SHG-2F.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Shogun SHG-2F (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 1804
+ },
+ "bv": 1804,
+ "sprite": "shogun",
+ "role": "Missile boat: rains missiles from a distance. 2 LRM 15s, 2 SRM 6s, ER PPC; walks 3, runs 5, jumps 3."
+}

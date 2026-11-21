@@ -1,0 +1,58 @@
+{
+ "id": "chameleon_cln7z",
+ "name": "Chameleon",
+ "model": "CLN-7Z",
+ "tonnage": 50,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 16,
+  "RT": 16,
+  "CT": 22,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 9
+ },
+ "equipment": {
+  "LA": [
+   "er_large_laser"
+  ],
+  "RA": [
+   "large_laser*2"
+  ],
+  "LT": [
+   "jump_jet"
+  ],
+  "RT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 545,
+  "megamek": "data/mekfiles/meks/3058Uu/Chameleon CLN-7Z.mtf",
+  "published": "RS:3058Uu-I,RS:MERCS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Chameleon CLN-7Z (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 1527
+ },
+ "bv": 1527,
+ "sprite": "chameleon",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Large Lasers, ER Large Laser; walks 6, runs 9, jumps 6."
+}

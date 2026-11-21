@@ -1,14 +1,72 @@
 {
-  "id": "hunchback_iic", "name": "Hunchback IIC", "tonnage": 50, "walk_mp": 4, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "hunchback_iic", "structure_type": "endo_steel", "armor_type": "ferro_fibrous", "model": "", "heat_sinks": 10, "jump_mp": 4, "role": "Clan brawler. Two Ultra AC/20s and jump jets: if it reaches you, it can take off a limb in one volley.",
-  "armor": {"HD": 9, "CT": 15, "LT": 11, "RT": 11, "LA": 9, "RA": 9, "LL": 14, "RL": 14},
-  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
-  "equipment": {
-    "LA": ["endo_steel*7", "ferro_fibrous*1"],
-    "RA": ["ferro_fibrous*6"],
-    "LT": ["c_ultra_ac20", "ammo:c_ultra_ac20"],
-    "RT": ["c_ultra_ac20", "ammo:c_ultra_ac20"],
-    "HD": ["c_er_small_laser"],
-    "LL": ["jump_jet", "jump_jet"],
-    "RL": ["jump_jet", "jump_jet"]
-  }
+ "id": "hunchback_iic",
+ "name": "Hunchback IIC",
+ "model": "",
+ "tonnage": 50,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 12,
+  "RT": 12,
+  "CT": 18,
+  "HD": 8,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "c_ultra_ac20",
+   "ammo:c_ultra_ac20",
+   "endo_steel"
+  ],
+  "RT": [
+   "c_ultra_ac20",
+   "ammo:c_ultra_ac20",
+   "endo_steel"
+  ],
+  "CT": [
+   "c_er_medium_laser*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1568,
+  "megamek": "data/mekfiles/meks/3058Uu/Hunchback IIC.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Ambusher",
+  "bv": "sheet",
+  "sheet": "Hunchback IIC (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1679
+ },
+ "bv": 1679,
+ "role": "Ambusher: waits in cover and strikes hard when foes come close. 2 Ultra AC/20s, 2 ER Medium Lasers; walks 4, runs 6, jumps 4.",
+ "sprite": "hunchback_iic"
 }

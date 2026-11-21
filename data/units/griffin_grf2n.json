@@ -1,0 +1,74 @@
+{
+ "id": "griffin_grf2n",
+ "name": "Griffin",
+ "model": "GRF-2N",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 20,
+  "RT": 20,
+  "CT": 27,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "ferro_fibrous*6"
+  ],
+  "RA": [
+   "er_ppc",
+   "endo_steel*5"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "srm6",
+   "guardian_ecm",
+   "ferro_fibrous*6"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "srm6",
+   "ammo:srm6*2",
+   "case",
+   "endo_steel*5"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1299,
+  "megamek": "data/mekfiles/meks/Operation Klondike/Griffin GRF-2N.mtf",
+  "published": "RGv1,RG01",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Griffin GRF-2N (BattleTech-Record-Sheets-Legendary-MechWarriors)",
+  "megamek_bv": 1606
+ },
+ "bv": 1606,
+ "sprite": "griffin",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 SRM 6s, ER PPC; walks 5, runs 8, jumps 5."
+}

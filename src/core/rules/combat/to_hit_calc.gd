@@ -22,7 +22,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = prone_why
 		return th
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
+	if not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -36,12 +36,12 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	var pod := false
 	if los["blocked"]:
 		pod = Narc.indirect(state, attacker, w, target)
-		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect and not pod else null
+		spotter = IndirectFire.spotter(state, attacker, target) if Atm.profile(w).indirect and not pod else null
 		if pod:
 			los = LineOfSight.none()  # no spotter: only the target's own hex counts (p. 188)
 		elif spotter == null:
 			th.impossible = "No line of sight (%s)%s" % [los["reason"],
-					"; no friendly 'Mech can spot for indirect fire" if w.def.indirect else ""]
+					"; no friendly 'Mech can spot for indirect fire" if Atm.profile(w).indirect else ""]
 			return th
 		else:
 			los = LineOfSight.check(state.map, spotter, target)
@@ -94,8 +94,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	Narc.add(th, state, attacker, w, target)
 	if WeaponModes.to_hit_mod(w) != 0:
 		th.add("cluster ammo", WeaponModes.to_hit_mod(w), "LB-X cluster rounds spread like a shotgun: -1 to hit, but each pellet only does 1 damage.")
-	LowVisibility.add(th, state, attacker)
-	add_conditions(th, state, attacker, target, los)
+	LowVisibility.add(th, state, attacker, target)
+	add_conditions(th, state, attacker, target, ActiveProbe.strip_smoke(los, state, attacker, target))
 	if Location.is_arm_of(attacker.def, w.loc):
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
@@ -131,7 +131,7 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 	if tw > 0:
 		th.add("target in woods", tw, "The target is hiding in %s." % tile.terrain.name.to_lower())
 	var obs := Obscurant.to_hit_mod(state.map, target, tw)
-	if obs > 0:
+	if obs > 0 and not ActiveProbe.clears(state, attacker, target):
 		var what := Obscurant.name_of(tile)
 		th.add("target in " + what, obs, "The %s in its hex hides the target like woods (never more than +2 with woods)." % what)
 	if th.legs_only:

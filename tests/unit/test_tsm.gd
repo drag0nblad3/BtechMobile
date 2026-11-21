@@ -4,7 +4,7 @@ extends TestCase
 
 func _setup() -> Array:
 	var s := GameState.new(open_map(5, 5))
-	var a := mech("hatchetman_hct3f_tsm", 0, hex_at(2, 3), 0, 1)
+	var a := mech("test_hatchetman_hct3f_tsm", 0, hex_at(2, 3), 0, 1)
 	var t := mech("hunchback_hbk4g", 1, Hex.neighbor(hex_at(2, 3), 0), 3, 2)
 	s.add_unit(a)
 	s.add_unit(t)
@@ -28,7 +28,7 @@ func test_slots_and_weight() -> void:
 				n += 1
 				check(not sl.can_be_hit(), "TSM slots can't take critical hits")
 	check_eq(n, Tsm.SLOTS)
-	check(not Tsm.has(mech("hatchetman_hct3f", 0, hex_at(1, 1)).def))
+	check(not Tsm.has(mech("test_hatchetman_hct3f", 0, hex_at(1, 1)).def))
 
 
 func test_wakes_up_at_heat_9() -> void:

@@ -10,7 +10,7 @@ extends RefCounted
 ## +1 for indirect fire, no spotter modifiers and nothing in between counts,
 ## but no -1 or cluster bonus either; the target's own hex still counts
 ## (pp. 70, 188, 193).
-## TODO(rules): iNarc and special pods; AMS against pods; the computer
+## TODO(rules): iNarc and special pods; the computer
 ## doesn't fire beacons.
 
 const KIND := "narc"
@@ -50,7 +50,7 @@ static func attach(state: GameState, attacker: Unit, target: Unit, loc: int) -> 
 
 ## Can `w` fire indirectly at `target` homing on a pod, with no spotter?
 static func indirect(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit) -> bool:
-	return w.def.indirect and WeaponModes.ammo_kind(w) == KIND and homing(state, attacker, target)
+	return Atm.profile(w).indirect and WeaponModes.ammo_kind(w) == KIND and homing(state, attacker, target)
 
 
 static func add_indirect(th: ToHit) -> void:

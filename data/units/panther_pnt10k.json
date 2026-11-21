@@ -1,0 +1,64 @@
+{
+ "id": "panther_pnt10k",
+ "name": "Panther",
+ "model": "PNT-10K",
+ "tonnage": 35,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 13,
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 10,
+  "RT": 10,
+  "CT": 14,
+  "HD": 9,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel"
+  ],
+  "RA": [
+   "er_ppc"
+  ],
+  "LT": [
+   "heat_sink*4",
+   "ammo:srm4",
+   "case",
+   "endo_steel*6"
+  ],
+  "RT": [
+   "heat_sink*4",
+   "endo_steel*7"
+  ],
+  "CT": [
+   "srm4+artemis"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2416,
+  "megamek": "data/mekfiles/meks/3050U/Panther PNT-10K.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Panther PNT-10K (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 838
+ },
+ "bv": 838,
+ "sprite": "panther",
+ "role": "Brawler: built to slug it out at medium range. ER PPC, SRM 4; walks 4, runs 6, jumps 4."
+}

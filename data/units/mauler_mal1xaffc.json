@@ -1,0 +1,68 @@
+{
+ "id": "mauler_mal1xaffc",
+ "name": "Mauler",
+ "model": "MAL-1X-AFFC",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 14,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 15,
+  "RT": 15,
+  "CT": 23,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "large_laser"
+  ],
+  "RA": [
+   "heat_sink",
+   "large_laser"
+  ],
+  "LT": [
+   "heat_sink",
+   "srm4*2",
+   "ac2*2",
+   "ammo:srm4",
+   "ammo:ac2"
+  ],
+  "RT": [
+   "heat_sink",
+   "srm4*2",
+   "ac2*2",
+   "ammo:srm4",
+   "ammo:ac2"
+  ]
+ },
+ "source": {
+  "mul_id": 9545,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 15/Mauler MAL-1X-AFFC.mtf",
+  "published": "ShrapRS",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Mauler MAL-1X-AFFC (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1214
+ },
+ "bv": 1214,
+ "sprite": "mauler",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 SRM 4s, 4 AC/2s, 2 Large Lasers; walks 3, runs 5."
+}

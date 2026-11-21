@@ -1,0 +1,69 @@
+{
+ "id": "firebee_frb2e",
+ "name": "Firebee",
+ "model": "FRB-2E",
+ "tonnage": 35,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 10,
+  "RT": 10,
+  "CT": 11,
+  "HD": 8,
+  "LL": 13,
+  "RL": 13
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "srm2"
+  ],
+  "RA": [
+   "large_laser"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "srm2",
+   "ammo:srm2*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "srm2"
+  ],
+  "CT": [
+   "jump_jet",
+   "srm2"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 1079,
+  "megamek": "data/mekfiles/meks/3075/Firebee FRB-2E.mtf",
+  "published": "RS:SW,RSFP:Proliferation",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Firebee FRB-2E (ForcePack-Record-Sheets-Proliferation-Cycle)",
+  "megamek_bv": 808
+ },
+ "bv": 808,
+ "sprite": "firebee",
+ "role": "Brawler: built to slug it out at medium range. 4 SRM 2s, Large Laser; walks 5, runs 8, jumps 5."
+}

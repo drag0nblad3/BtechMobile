@@ -14,8 +14,8 @@ const BIG_DAMAGE := 20
 static func standing_mods(u: Unit) -> ToHit:
 	var th := ToHit.new()
 	th.add("Piloting", u.pilot.piloting, "Your MechWarrior's piloting skill is the base number.")
-	if u.gyro_hits > 0:
-		th.add("gyro hit", 2, "A damaged gyro makes balance hard: +2.")
+	if Gyro.psr_mod(u) > 0:
+		th.add("gyro hit", Gyro.psr_mod(u), "A damaged gyro makes balance hard: +%d." % Gyro.psr_mod(u))
 	if u.def.quad:
 		Quad.psr_mods(u, th)
 		return th
@@ -116,7 +116,7 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 ## A destroyed gyro, two missing legs, or one missing leg and both arms
 ## gone make it impossible (p. 51); other arm damage doesn't matter.
 static func can_stand(u: Unit) -> bool:
-	if u.gyro_hits >= CritEffects.GYRO_KILL or u.legs_destroyed() >= Location.legs(u.def).size():
+	if Gyro.destroyed(u) or u.legs_destroyed() >= Location.legs(u.def).size():
 		return false
 	if u.def.quad:
 		return true

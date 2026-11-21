@@ -1,14 +1,47 @@
 {
-  "id": "ostscout_ott7j", "name": "Ostscout", "model": "OTT-7J", "tonnage": 35,
-  "walk_mp": 8, "jump_mp": 8, "heat_sinks": 10, "sprite": "ostscout",
-  "role": "Pure scout. Eight walking and jumping MP and a single medium laser: spot for your LRMs and stay out of the fight.",
-  "armor": {"HD": 9, "CT": 10, "LT": 8, "RT": 8, "LA": 6, "RA": 6, "LL": 9, "RL": 9},
-  "rear_armor": {"CT": 3, "LT": 2, "RT": 2},
-  "equipment": {
-    "CT": ["medium_laser"],
-    "LT": ["jump_jet*2"],
-    "RT": ["jump_jet*2"],
-    "LL": ["jump_jet*2"],
-    "RL": ["jump_jet*2"]
-  }
+ "id": "ostscout_ott7j",
+ "name": "Ostscout",
+ "model": "OTT-7J",
+ "tonnage": 35,
+ "walk_mp": 8,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 9,
+  "RT": 9,
+  "CT": 12,
+  "HD": 6,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "equipment": {
+  "LT": [
+   "jump_jet*4"
+  ],
+  "RT": [
+   "jump_jet*4"
+  ],
+  "CT": [
+   "medium_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 2366,
+  "megamek": "data/mekfiles/meks/3039u/Ostscout OTT-7J.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Ostscout OTT-7J (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 596
+ },
+ "bv": 596,
+ "role": "Scout: fast and light, finds the enemy and stays alive. Medium Laser; walks 8, runs 12, jumps 8.",
+ "sprite": "ostscout"
 }

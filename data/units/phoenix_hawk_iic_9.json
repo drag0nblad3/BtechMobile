@@ -1,0 +1,78 @@
+{
+ "id": "phoenix_hawk_iic_9",
+ "name": "Phoenix Hawk IIC",
+ "model": "9",
+ "tonnage": 80,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 20,
+  "RT": 20,
+  "CT": 26,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 14
+ },
+ "equipment": {
+  "LA": [
+   "ammo:c_lrm20*4",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "endo_steel*3",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "c_lrm20*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "c_ultra_ac10",
+   "ammo:c_ultra_ac10*2",
+   "ammo:c_machine_gun:half",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "jump_jet",
+   "c_machine_gun"
+  ],
+  "HD": [
+   "c_machine_gun"
+  ],
+  "LL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 8196,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 15/Phoenix Hawk IIC 9.mtf",
+  "published": "RG15,RGv1,RSFP:MERCS-CLAN",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Phoenix Hawk IIC 9 (ForcePack-Record-Sheets-Mercenaries-Clan)",
+  "megamek_bv": 2469
+ },
+ "bv": 2469,
+ "sprite": "phoenix_hawk_iic",
+ "role": "Sniper: hangs back and hits from long range. 2 LRM 20s, 2 Machine Guns, Ultra AC/10; walks 5, runs 8, jumps 5."
+}

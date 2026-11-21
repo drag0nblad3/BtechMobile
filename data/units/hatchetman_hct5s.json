@@ -1,0 +1,72 @@
+{
+ "id": "hatchetman_hct5s",
+ "name": "Hatchetman",
+ "model": "HCT-5S",
+ "tonnage": 45,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 16,
+  "RT": 16,
+  "CT": 21,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 6
+ },
+ "equipment": {
+  "LA": [
+   "medium_pulse_laser",
+   "ferro_fibrous*3"
+  ],
+  "RA": [
+   "hatchet",
+   "medium_pulse_laser",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "medium_pulse_laser",
+   "ferro_fibrous*7"
+  ],
+  "RT": [
+   "heat_sink",
+   "lb10x_ac",
+   "ammo:lb10x_ac:cluster",
+   "case"
+  ],
+  "CT": [
+   "ferro_fibrous"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1413,
+  "megamek": "data/mekfiles/meks/3050U/Hatchetman HCT-5S.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Hatchetman HCT-5S (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1039
+ },
+ "bv": 1039,
+ "sprite": "hatchetman",
+ "role": "Brawler: built to slug it out at medium range. 3 Medium Pulse Lasers, LB 10-X AC; walks 4, runs 6, jumps 4."
+}
