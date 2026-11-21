@@ -174,8 +174,10 @@ static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary)
 		res += " (doubled: its triple-strength myomer is hot)" if level == ExplainLevel.FULL else " (TSM)"
 	if d.get("why", "") != "":
 		var t := "%s: automatic miss, %s" % [who, d["why"]]
-		if level == ExplainLevel.FULL:
+		if level == ExplainLevel.FULL and d["kind"] == "dfa":
 			t += ". Once declared, a death from above can't be called off, so it lands as a miss."
+		elif level == ExplainLevel.FULL and d["kind"] == "push":
+			t += ". A 'Mech busy pushing someone else can't be pushed itself."
 		return t
 	if level == ExplainLevel.OFF or d.has("target_hex"):
 		return "%s: %s" % [who, res] + (" (buildings can't dodge)" if level == ExplainLevel.FULL and d.has("target_hex") else "")

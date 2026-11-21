@@ -80,9 +80,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
-	if w.def.heat_damage:  # flamers: the same amount as heat too (book p. 183)
-		data["heat_added"] = w.def.damage
-		target.outside_heat += w.def.damage
+	if w.def.heat_damage:  # flamers: heat as well as damage (book pp. 183-184)
+		data["heat_added"] = w.def.heat_points
+		target.outside_heat += w.def.heat_points
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
 		var hl := aimed.duplicate()

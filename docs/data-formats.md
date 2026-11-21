@@ -1,7 +1,7 @@
 # Data formats
 
 ## `data/terrain.json`
-`{"terrain": [{"id", "token" (1 char), "name", "move_cost", "los_height"?, "water"?, "flammable"? (flamers can set it alight), "color", "detail_color"}]}`
+`{"terrain": [{"id", "token" (1 char), "name", "move_cost", "los_height"?, "water"?, "flammable"? (flamers can set it alight), "color", "detail_color", "pattern"? (ground look: grass, rocks, paving, rubble, riverbed, forest; default grass)}]}`
 
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
