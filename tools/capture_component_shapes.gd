@@ -112,32 +112,34 @@ func _setup_view(index: int) -> void:
 			camera.look_at_from_position(center + Vector3(0, 0.30, distance), center)
 
 
-func _process(_delta: float) -> void:
+func _process(_delta: float) -> bool:
+	# SceneTree._process has a bool return signature (unlike Node._process).
 	if camera == null:
-		return
+		return false
 	frame += 1
 	if frame < 8:
-		return
+		return false
 	if root.get_camera_3d() != camera:
 		printerr("SHAPE_ERROR|camera not current")
 		quit(1)
-		return
+		return true
 	var path := output_dir.path_join("%s.png" % views[step]["name"])
 	var image := root.get_texture().get_image()
 	if image == null or image.get_width() < 500:
 		printerr("SHAPE_ERROR|viewport empty: %s" % path)
 		quit(1)
-		return
+		return true
 	if image.save_png(path) != OK:
 		printerr("SHAPE_ERROR|png write failed: %s" % path)
 		quit(1)
-		return
+		return true
 	print("SHAPE_RENDER|%s.png" % views[step]["name"])
 	step += 1
 	if step >= views.size():
-		# A SceneTree._process return value does not exit the Godot process.
-		# The missing quit() here was leaving the CI renderer running forever.
+		# Returning true alone does not shut down SceneTree.
+		# This explicit quit ends xvfb-run / GitHub Actions after saving.
 		quit(0)
-		return
+		return true
 	frame = 0
 	_setup_view(step)
+	return false
