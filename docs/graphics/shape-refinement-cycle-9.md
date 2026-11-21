@@ -81,3 +81,24 @@ Review these **primary and secondary visual references** together, not just a si
 **Open visual issues / next review**: the torso and legs must read as unique chassis from all angles and still need approval before 100–150k voxel detailing. Do not use the preview's component-identification color overlays as game materials. Keep one combined image per iteration, `subdivide:1`, no build or merge.
 
 - **21** — The pass-20 Godot close-up showed an oversized Atlas AC/20 shroud crossing the chest. Corrected its silhouette into a short recessed 5×6 RT muzzle and updated the regression landmark. This is a shape correction made from the real render, not additional detailing.
+
+## Passes 25–29 — CGL plastic first, reference hierarchy corrected
+
+**Reference weighting:** use the current 1:265 Catalyst plastic miniature's sculpt as the primary target, even when it contradicts old TRO art, fan STL variants or a single screenshot. The older line art is secondary for weapon identity and hard-to-see joints. Do not derive the same common capsule-body profile for all three.
+
+| Rank | Chassis | CGL plastic source / image | Mandatory silhouette evidence |
+|---|---|---|---|
+| 1 | AS7-D Atlas | [Catalyst Hansen's Roughriders official photo, reposed Atlas](https://store.catalystgamelabs.com/products/battletech-hansens-rough-riders-battle-lance) (see HR-Atlas-NewPose.jpg) | Rounded segmented shoulder bells; domed distinct *skull* with brow/cheek/jaw; compact two-column launcher cluster at left inner shoulder; short torso AC20; split blunt feet |
+| 1 | WVR-6R Wolverine | [CGL Premium Wolverine assembled photo](https://store.catalystgamelabs.com/products/battletech-premium-miniature-wolverine) and CGL 2019 A Game of Armored Combat plastic | Armored mid-weight torso with short asymmetric shoulder caps, compact cockpit visor, independent right-arm cannon, six-port left shoulder launcher, narrow knee-to-ankle legs |
+| 1 | JR7-D Jenner | [CGL Inner Sphere Striker Lance product](https://store.catalystgamelabs.com/products/battletech-forcepack-inner-sphere) and [actual plastic front/side photos](https://www.rpgminihunter.com.au/products/jenner-battletech-inner-sphere-striker-lance-set-catalyst-game-lab) | Compact **rounded** cockpit saucer and three window bands, central underbody, dorsal SRM pack, paired laser bores in each compact flank nacelle, long digitigrade knees and rear hock joints |
+| 2 | Atlas / Wolverine / Jenner | Earlier TRO/artist drawings already in this document | Only for hidden surfaces / lineage, never to overrule a clear CGL plastic sculpt |
+| 3 | Third-party resin and alternate sculpts | SYZGames, Defiance, other print shops | Supplemental pose and construction views only; cannot determine the canonical proportions |
+
+### Recorded Godot review checkpoints
+- **25:** rounded Atlas shoulder/upper cranium, smaller WVR shoulder roots, **replaced Jenner's overlong arrow nose** with the CGL broad saucer; genuine Godot one-gallery render. The Jenner glass was still too dominant.
+- **26:** physical Atlas skull nasal ridge/jaw recess and WVR compact visor/rear pack; Jenner short bottom fairing and three-piece windshield; genuine Godot render showed the Atlas still had a protruding face and Jenner a too-dark cockpit.
+- **27:** six visible double-column Atlas launcher apertures, slimmer WVR arm AC5, framed paired Jenner laser sockets; CI caught that the Jenner bores were accidentally **filled**, so an actual erase was added to all four muzzle pieces, not just dark geometry.
+- **28:** Atlas split toe boot blocks and Wolverine wedge feet/knee plates vs Jenner extended digitigrade knee and hock shells; Godot render checked leg silhouette separation.
+- **29:** refined Atlas mandible to recede flush below skull, narrowed WVR upper-arm plates so they do not resemble assault-mech shoulders, restricted Jenner glazing to a slim windscreen strip and roof pane after Godot 28 comparison.
+
+The existing `subdivide:1` requirement and 100–150k voxel **deferral** remain intact. No APK built, no merge. One Godot render per checkpoint. Shapes are **not automatically approved** by the completion of these five passes.
