@@ -82,3 +82,19 @@ func test_breach_triggers_check() -> void:
 	CriticalHits.after_damage(s, dice, _emit, u, steps, false)
 	check_eq(events.size(), 1, "one crit check")
 	check_eq(events[0][0], GameEvent.CRIT_CHECK)
+
+
+func test_disarmed_and_immobile_is_destroyed() -> void:
+	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1))
+	var s := _state_with(u)
+	for w in u.weapons:
+		w.destroyed = true
+	EndPhase.run(s, LoadedDice.new(), _emit)
+	check(not u.destroyed, "no weapons but still mobile: fights on (p. 99)")
+	u.shutdown = true
+	EndPhase.run(s, LoadedDice.new(), _emit)
+	check(u.destroyed, "no weapons and immobile: destroyed")
+	check(events.any(func(e: Array) -> bool: return e[0] == GameEvent.UNIT_DESTROYED), "announced")
+	var v := mech("hunchback_hbk4g", 0, hex_at(1, 1))
+	v.shutdown = true
+	check(not Disarmed.check(v), "shut down with guns: not destroyed")

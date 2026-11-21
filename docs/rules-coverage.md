@@ -22,7 +22,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Backward walking (not running), same costs, at most 1 level change; any backward level change costs a piloting roll, and a failure falls (in the lower hex).
 - ✅ Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit; 'Mech-scale buildings are landed on, on the roof.
 - ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again; standing frees the facing. Impossible with a
-  destroyed gyro or both legs gone.
+  destroyed gyro, both legs gone, or one leg and both arms gone (p. 51).
 - ✅ Dropping prone (`ProneMoves`, p. 51): in place, or at the end of a walk/run with 1 MP to spare (the Prone button uses the previewed move); not after jumping.
 - 🟡 Prone 'Mech that can't stand (destroyed gyro, both legs gone) only turns in its hex, 1 MP a hexside; a destroyed gyro allows one hexside a turn (p. 46) — `TODO(rules)`: a prone 'Mech that could stand can't choose to turn without standing.
 - ✅ Minimum movement (p. 49): running, one hex straight ahead for all MP, even if it costs more.
@@ -136,6 +136,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Engine (+5 heat/turn, 3 destroys), gyro (+2 PSR, 2 = fall, can't stand), cockpit (pilot
   killed), sensors (+2, 2 = can't fire), life support (see Heat), actuators,
   weapons, ammo (explodes), heat sinks.
+- ✅ Destroyed with no working ranged weapons (AMS doesn't count) while immobile (`Disarmed`, p. 99), checked in the End Phase.
 
 ## Piloting skill rolls and falls
 - ✅ Owed rolls collected per phase and rolled at its end.

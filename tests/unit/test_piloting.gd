@@ -63,3 +63,16 @@ func test_shutdown_doesnt_fall() -> void:
 	check(u.shutdown, "shut down")
 	check(not u.prone, "shutting down doesn't knock it over")
 	check(not u.can_act(), "can't act")
+
+
+func test_cant_stand_on_one_leg_without_arms() -> void:
+	var u := mech("hunchback_hbk4g", 0, hex_at(1, 1))
+	u.prone = true
+	u.structure[Location.LL] = 0
+	check(Psr.can_stand(u), "one leg, arms intact: may try (p. 51)")
+	u.structure[Location.LA] = 0
+	check(Psr.can_stand(u), "one leg, one arm: may try")
+	u.structure[Location.RA] = 0
+	check(not Psr.can_stand(u), "one leg and no arms: can't")
+	u.structure[Location.LL] = 5
+	check(Psr.can_stand(u), "two legs, no arms: may try")
