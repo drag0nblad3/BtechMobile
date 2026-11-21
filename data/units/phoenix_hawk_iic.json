@@ -1,0 +1,15 @@
+{
+  "id": "phoenix_hawk_iic", "name": "Phoenix Hawk IIC", "tonnage": 45, "walk_mp": 6, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "phoenix_hawk", "engine_type": "xl", "structure_type": "endo_steel", "model": "", "heat_sinks": 16, "jump_mp": 6, "role": "Clan rebuild of the jumping Phoenix Hawk. An ER large laser, four ER medium lasers and two machine guns on a frame that jumps 6.",
+  "armor": {"HD": 9, "CT": 21, "LT": 16, "RT": 16, "LA": 13, "RA": 13, "LL": 21, "RL": 20},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "equipment": {
+    "LA": ["endo_steel*6", "c_er_medium_laser*2"],
+    "RA": ["endo_steel*1", "c_er_large_laser"],
+    "LT": ["c_er_medium_laser", "c_er_small_laser", "jump_jet", "jump_jet", "heat_sink", "heat_sink", "heat_sink"],
+    "RT": ["c_er_medium_laser", "c_er_small_laser", "heat_sink", "heat_sink", "heat_sink"],
+    "CT": ["c_machine_gun", "ammo:c_machine_gun"],
+    "HD": ["c_machine_gun"],
+    "LL": ["jump_jet", "jump_jet"],
+    "RL": ["jump_jet", "jump_jet"]
+  }
+}

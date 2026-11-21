@@ -1,0 +1,14 @@
+{
+  "id": "rifleman_iic", "name": "Rifleman IIC", "tonnage": 65, "walk_mp": 4, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "rifleman", "engine_type": "xl", "structure_type": "endo_steel", "model": "", "heat_sinks": 12, "jump_mp": 4, "role": "Clan rebuild of the anti-air Rifleman. Large pulse lasers and Ultra AC/5s for accurate long-range fire, now with jump jets.",
+  "armor": {"HD": 9, "CT": 29, "LT": 21, "RT": 21, "LA": 18, "RA": 17, "LL": 27, "RL": 27},
+  "rear_armor": {"CT": 9, "LT": 6, "RT": 6},
+  "equipment": {
+    "LA": ["endo_steel*3", "c_large_pulse_laser", "c_ultra_ac5"],
+    "RA": ["endo_steel*3", "c_large_pulse_laser", "c_ultra_ac5"],
+    "LT": ["endo_steel*1", "ammo:c_ultra_ac5", "c_er_medium_laser", "heat_sink", "heat_sink"],
+    "RT": ["ammo:c_ultra_ac5", "c_er_medium_laser"],
+    "CT": ["c_er_small_laser"],
+    "LL": ["jump_jet", "jump_jet"],
+    "RL": ["jump_jet", "jump_jet"]
+  }
+}
