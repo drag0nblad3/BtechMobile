@@ -41,6 +41,7 @@ var probe_lost := false  ## Active probe destroyed by a critical hit.
 var tc_lost: bool = false  ## Targeting computer destroyed by a critical hit.
 var narc_pods: Array[Dictionary] = []  ## Narc homing pods on it: [{side, loc, turn}] (Narc).
 var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
+var on_bridge: bool = false  ## On the deck of its hex's bridge, not underneath (Bridges).
 var shutdown: bool = false
 var voluntary_shutdown: bool = false  ## Shut down by choice: stays down until restarted (VoluntaryShutdown).
 var power_request: String = ""  ## "off" / "on" at the next Heat Phase (VoluntaryShutdown).

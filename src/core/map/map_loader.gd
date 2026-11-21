@@ -6,6 +6,7 @@ extends RefCounted
 ## Token = terrain char + level, optionally "d" + water depth.
 ## Optional "buildings": [{"hex": "XXYY", "type": "medium", "height": 2}].
 ## Optional "fires": ["XXYY", ...]: hexes burning from the start.
+## Optional "bridges": [{"hexes": ["XXYY", ...], "type": "medium", "level": 1}] (Bridges).
 ## Optional "surface": {"ice": [...], "mud": [...], "snow": [...]} (Surfaces).
 ## Optional "fog": {"light": ["XXYY", ...], "heavy": [...]}: fog banks.
 
@@ -33,6 +34,8 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 		var bt: BuildingType = terrain.buildings.get(b.get("type", "medium"))
 		assert(tile != null and bt != null, "Bad building %s" % b)
 		tile.building = Building.new(bt, int(b.get("height", 1)))
+	for b: Dictionary in data.get("bridges", []):
+		_add_bridge(m, b, terrain)
 	for f: String in data.get("fires", []):
 		var ft := m.get_tile(Hex.from_label(f))
 		assert(ft != null, "Bad fire hex %s" % f)
@@ -50,6 +53,22 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 			assert(tile != null, "Bad fog hex %s" % f)
 			tile.fog = 2 if kind == "heavy" else 1
 	return m
+
+
+## {"hexes": ["XXYY", ...], "type": "medium", "level": n}; the deck level
+## defaults to the highest ground (or water surface) under it.
+static func _add_bridge(m: BattleMap, d: Dictionary, terrain: TerrainDb) -> void:
+	var bt: BuildingType = terrain.buildings.get(d.get("type", "medium"))
+	var hexes: Array = []
+	var top := -99
+	for label: String in d["hexes"]:
+		var t := m.get_tile(Hex.from_label(label))
+		assert(t != null and t.building == null and bt != null, "Bad bridge %s" % d)
+		hexes.append(t.coord)
+		top = maxi(top, t.level)
+	var lvl := int(d.get("level", top))
+	for c: Vector2i in hexes:
+		m.get_tile(c).bridge = Bridge.new(bt, lvl, hexes)
 
 
 static func parse_token(tok: String, c: Vector2i, terrain: TerrainDb) -> MapTile:

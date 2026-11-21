@@ -13,6 +13,8 @@ const PATTERNS := {"grass": 0, "rocks": 1, "paving": 2, "rubble": 3, "riverbed":
 var map: BattleMap
 var buildings: BuildingProps
 var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
+var bridges: BridgeProps
+var bridge_scars := {}  ## The same for bridge stonework.
 
 
 func build(battle_map: BattleMap) -> void:
@@ -27,6 +29,8 @@ func build(battle_map: BattleMap) -> void:
 	add_child(WoodsProps.build(map))
 	add_child(GroundScatter.build(map))
 	add_child(WaterSurfaces.build(map))
+	bridges = BridgeProps.build(map, bridge_scars)
+	add_child(bridges)
 	buildings = BuildingProps.build(map, building_scars)
 	add_child(buildings)
 	add_child(FireProps.build(map))

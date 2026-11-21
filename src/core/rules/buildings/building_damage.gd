@@ -9,9 +9,10 @@ extends RefCounted
 
 static func add(state: GameState, attacker_id: int, c: Vector2i, amount: int) -> void:
 	var tile := state.map.get_tile(c)
-	if tile == null or tile.building == null or amount <= 0:
+	var b := Bridges.structure(tile)
+	if b == null or amount <= 0:
 		return
-	if tile.building.type.civilian:
+	if b.type.civilian:
 		_doom(state, c)
 		return
 	var per: Dictionary = state.building_hits.get(attacker_id, {})
@@ -25,9 +26,10 @@ static func check_attacker(state: GameState, dice: Dice, emit: Callable, attacke
 	state.building_hits.erase(attacker_id)
 	for c: Vector2i in per:
 		var tile := state.map.get_tile(c)
-		if tile == null or tile.building == null or state.doomed_buildings.has(c):
+		var b := Bridges.structure(tile)
+		if b == null or state.doomed_buildings.has(c):
 			continue
-		if int(per[c]) >= tile.building.type.threshold \
+		if int(per[c]) >= b.type.threshold \
 				and BuildingRules.destroy_check(state, dice, emit, c, int(per[c]), attacker_id):
 			_doom(state, c)
 
@@ -40,6 +42,8 @@ static func end_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 		var tile := state.map.get_tile(c)
 		if tile != null and tile.building != null:
 			BuildingRules.collapse(state, dice, emit, tile)
+		elif tile != null and tile.bridge != null:
+			Bridges.collapse(state, dice, emit, tile)
 	state.doomed_buildings.clear()
 
 
