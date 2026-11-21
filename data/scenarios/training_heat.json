@@ -2,6 +2,7 @@
   "name": "Training: Running Hot",
   "map": "rolling_hills",
   "bot_sides": [1],
+  "bot_level": 1,
   "units": [
     {"def": "warhammer_whm6r", "side": 0, "hex": "0916", "facing": 0},
     {"def": "griffin_grf1n", "side": 1, "hex": "0902", "facing": 3},

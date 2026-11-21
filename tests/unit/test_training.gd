@@ -6,6 +6,7 @@ func test_campaign_missions_load_and_teach() -> void:
 	var c := TrainingCampaign.load_file()
 	check(c.missions.size() >= 5, "several training games")
 	var db := UnitDb.load_dir()
+	var last_level := BotSkill.Level.NOVICE
 	for i in c.missions.size():
 		var path := c.scenario_path(i)
 		var s := ScenarioLoader.load_file(path, terrain(), db)
@@ -17,6 +18,9 @@ func test_campaign_missions_load_and_teach() -> void:
 		check(tut.lessons.size() >= 5, "%s has lessons" % path)
 		check_eq(tut.lessons[0]["event"], "initiative", "%s opens with a scripted lesson" % path)
 		check(String(c.missions[i].get("briefing", "")) != "", "briefing")
+		var lvl := int(JsonFile.read(path).get("bot_level", -1))
+		check(lvl >= last_level, "%s: the computer never gets easier" % path)
+		last_level = lvl
 
 
 func test_missions_unlock_in_order() -> void:

@@ -2,6 +2,7 @@
   "name": "Training: First Steps",
   "map": "test_valley",
   "bot_sides": [1],
+  "bot_level": 0,
   "units": [
     {"def": "wolverine_wvr6r", "side": 0, "hex": "0716", "facing": 0},
     {"def": "commando_com2d", "side": 1, "hex": "0802", "facing": 3}
@@ -12,7 +13,7 @@
     {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Moving",
      "text": "Tap your Wolverine. Highlighted hexes show where it can reach. The Walk button cycles through Walk, Run and Jump: running reaches farther but makes your own shots harder; jumping clears terrain and makes you hardest to hit.\n\nTap a hex to preview the path, use the Turn buttons to choose a facing, then Confirm. Your armor is thickest in front, so face the enemy."},
     {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Shooting",
-     "text": "Tap your Wolverine, then the enemy. Each weapon shows the number you need on two dice. It starts at your gunnery skill (4) and goes up with range, your movement, the target's movement and woods in the way.\n\nToggle weapons on or off and watch the heat total before you press Fire. If the enemy is out of range or out of sight, Hold Fire."},
+     "text": "Tap your Wolverine, then the enemy. Each weapon shows the number you need on two dice. It starts at your gunnery skill (4) and goes up with range, your movement, the target's movement and woods in the way.\n\nToggle weapons on or off and watch the heat total before you press Fire. If the enemy is out of range or out of sight, Hold Fire.\n\nWhenever one of your 'Mechs is selected, plates float over every 'Mech it can see: name, a health bar and, for enemies, the best number you need to hit them."},
     {"event": "fire_declared", "unit_side": 0, "title": "Simultaneous fire",
      "text": "Attacks are declared one 'Mech at a time but resolve together at the end of the phase. A 'Mech destroyed this phase still gets its shots off, so there is no advantage in shooting first."},
     {"event": "damage", "unit_side": 1, "title": "A hit!",

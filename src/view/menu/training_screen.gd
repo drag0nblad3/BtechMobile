@@ -53,7 +53,9 @@ func _build() -> void:
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.disabled = not open
 		if i == next and open:
-			UiKit.label(_list, m.get("briefing", ""), UiKit.SMALL).modulate = Color(0.8, 0.85, 0.9)
+			var lvl := int(JsonFile.read(campaign.scenario_path(i)).get("bot_level", -1))
+			var vs := "  (computer: %s)" % BotSkill.name_of(lvl) if lvl >= 0 else ""
+			UiKit.label(_list, m.get("briefing", "") + vs, UiKit.SMALL).modulate = Color(0.8, 0.85, 0.9)
 	if campaign.finished(p):
 		UiKit.label(_list, "Campaign complete. Replay any lesson whenever you like.", UiKit.SMALL)
 
@@ -64,6 +66,7 @@ func start(i: int) -> void:
 	BattleLaunch.bot_sides = JsonFile.read(path).get("bot_sides", [1])
 	BattleLaunch.tutorial_path = path
 	BattleLaunch.training_mission = i
+	BattleLaunch.bot_level = int(JsonFile.read(path).get("bot_level", -1))
 	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
 
 
