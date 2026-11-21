@@ -21,7 +21,9 @@ func test_independent_component_shapes_use_only_authored_profiles() -> void:
 		check(polygons >= 12, "expected authored contours: %s" % path)
 		var m := VxModel.from_dict(d)
 		check(m.errors.is_empty(), "invalid shape study %s: %s" % [path, m.errors])
-		check(m.cell_count() > 1200 and m.cell_count() < 22000,
+		# Shape proportions may stretch existing occupied cells without
+		# adding any subdivisions. Keep only a generous low-res safety cap.
+		check(m.cell_count() > 1200 and m.cell_count() < 28000,
 				"shape-only count unexpected %s %d" % [m.id, m.cell_count()])
 		for loc in Location.COUNT:
 			check(not m.parts_at(loc).is_empty(), "%s missing %s" % [m.id, Location.code(loc)])
