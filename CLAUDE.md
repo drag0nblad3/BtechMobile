@@ -71,10 +71,10 @@ Battle mode first; campaign layer later.
 | `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2), `BvSkill` (pilot skill multiplier), `DesignFilter` (catalog: tech filter, OmniMech groups), `Deployment` (zones before turn 1) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |
-| `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `BuildingProps`, `FireProps` (fire, fog), `ObjectiveMarkers`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
+| `src/view/map/` | `MapView` (MultiMesh prisms per terrain), `HexMesh`, `WoodsProps`, `WaterSurfaces`, `BuildingProps` (voxel buildings, see-through with a 'Mech inside) + `VxBuildingGen`/`VxBuildingStyles` (procedural voxel building per class), `FireProps` (fire, fog), `ObjectiveMarkers`, `HexHighlighter`, `HexPicker` (tap → hex), `FacingMarker` |
 | `src/view/shaders/terrain.gdshader` | Triplanar noise terrain |
 | `src/view/units/` | `UnitView` (animation, prone/wreck pose), `UnitsLayer`, `SpriteMech` (sprite sets from `assets/mechs/`, see `docs/graphics/sprite-integration.md`), `PlaceholderMech` (fallback) |
-| `src/view/vox/` | Claude's voxel 'Mechs (separate from the Voxel Mech Lab): `VxModel` (text format, `docs/graphics/voxel-model-format.md`), `VxRefine` (2× subdivide, bevels, seams), `VxPart` + `VxMesher` (greedy mesher), `VxDamage` (record sheet → voxels), `VxMech`, `VxAnim` + `VxStrike` (attacks, flinch), `VxLegs`/`VxGait` (normal + reverse-jointed legs), `VxVolley`, `VxFx`/`VxTrails`, `VxShowcase` test scene |
+| `src/view/vox/` | Claude's voxel 'Mechs (separate from the Voxel Mech Lab): `VxModel` (text format, `docs/graphics/voxel-model-format.md`), `VxRefine` (2× subdivide, bevels, seams), `VxPart` + `VxMesher` (greedy mesher), `VxDamage` (record sheet → voxels), `VxMech`, `VxGrid` (static voxel props → one mesh), `VxAnim` + `VxStrike` (attacks, flinch), `VxLegs`/`VxGait` (normal + reverse-jointed legs), `VxVolley`, `VxFx`/`VxTrails`, `VxShowcase` test scene |
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards), `SinkButtons` (heat sink switches) |
@@ -84,6 +84,7 @@ Battle mode first; campaign layer later.
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
 | `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial) |
 | `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
+| `tools/props_capture.gd` | Close-up PNG of map props (`-- out.png [map.json] [yaw] [dist] [hex]`) |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
 | `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap), `voxel-mech-prototype.md` (lab), `graphics/voxel-integration-plan.md` (voxel art into the battle) |

@@ -132,12 +132,14 @@ earn a Destroy Check, and a destroyed hex becomes rubble. The visuals follow the
 | `smash`, `entry_failed`, `shoved_in` | Hole punched in the wall on the side the 'Mech came from |
 | `fire` / `MapTile.on_fire` | Existing `FireProps` flames plus scorched voxel tint |
 
-- **Models:** `data/voxels/buildings/<type>.json` in the same text format, one part per
-  level slice (ground, middle, roof), stacked to `Building.height`. Building type colors
-  stay as a tint on the faction/role palette.
-- **'Mechs inside:** today's see-through blocks keep a 'Mech visible. Voxel buildings
-  need a cutaway: when a unit stands in the hex (or the camera is low), hide levels
-  above the unit's and fade the near walls.
+- **Models (built 2026-11-21):** generated, not authored. `VxBuildingGen` builds one
+  style per class (`VxBuildingStyles`: civilian house, light warehouse, medium offices,
+  heavy tower with setbacks, hardened stepped bunker) at 0.075 m voxels (6 per level),
+  3 seeded variants per class and height, turned in 60-degree steps per hex. Meshes are
+  cached, so a city costs a few builds.
+- **'Mechs inside:** `BuildingProps` polls the unit views' positions and turns a
+  building see-through while a 'Mech model is in its hex. A cutaway (hide levels above
+  the unit) is still a possible upgrade.
 - **Scars aren't saved:** cosmetic building damage lives only in the view. That's fine
   until there are save games; then store a small per-hex scar seed next to the save.
 
@@ -171,7 +173,7 @@ in one class per file, and nothing in `src/core` changes. Still to add:
 |---|---|
 | `src/view/units/unit_view.gd` (edit) | Picks `VxMech` when `data/voxels/<sprite>.json` exists, else sprite, else placeholder |
 | `src/view/battle/effect_queue.gd` | Plays fire/damage/crit/destroy events in order |
-| `src/view/map/vx_buildings.gd` | Replaces `BuildingProps` when building models exist |
+| `src/view/map/building_props.gd` | **Built:** voxel buildings generated per class by `VxBuildingGen` (no JSON models needed) |
 
 ## 9. Phases
 
