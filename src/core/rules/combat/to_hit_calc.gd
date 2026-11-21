@@ -10,6 +10,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if target == null or target.destroyed:
 		th.impossible = "No target"
 		return th
+	if w.def.ams:
+		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
+		return th
 	if not attacker.can_fire(w):
 		th.impossible = "%s can't fire (%s)" % [w.def.name,
 				"no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed"]

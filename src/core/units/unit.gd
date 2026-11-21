@@ -83,6 +83,7 @@ func reset_for_turn() -> void:
 	outside_heat = 0
 	for w in weapons:
 		w.fired = false
+		w.engaged = 0
 
 
 ## Still on the field and able to take its turn in a phase.
