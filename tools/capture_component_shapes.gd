@@ -106,6 +106,9 @@ func _setup_view(index: int) -> void:
 	var look_x := 0.0 if who == -1 else (float(who) - 1.0) * SPACING
 
 	for i in models.size():
+		# Turn each model about its own origin instead of orbiting the camera
+		# down the gallery's X-spacing axis (which stacks all three mechs).
+		models[i].rotation.y = PI / 2.0 if view == "side" else (PI if view == "rear" else 0.0)
 		models[i].visible = who == -1 or i == who
 		labels[i].visible = who == -1
 		var selected: Array[String] = []
@@ -121,9 +124,9 @@ func _setup_view(index: int) -> void:
 		"three_quarter":
 			camera.look_at_from_position(center + Vector3(distance * 0.63, 1.1, -distance * 0.79), center)
 		"side":
-			camera.look_at_from_position(center + Vector3(distance, 0.37, 0), center)
+			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"rear":
-			camera.look_at_from_position(center + Vector3(0, 0.30, distance), center)
+			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"rear_three_quarter":
 			camera.look_at_from_position(center + Vector3(-distance * 0.60, 1.1, distance * 0.80), center)
 
