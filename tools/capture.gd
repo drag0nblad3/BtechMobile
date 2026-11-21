@@ -3,7 +3,8 @@ extends SceneTree
 ##   xvfb-run godot --rendering-method gl_compatibility -s tools/capture.gd -- out.png [mode]
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · clanmenu (its Clan list) ·
-## map=<id> (battle start on that map) · tutorial (training battle, first lesson).
+## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
+## tutorial (training battle, first lesson).
 
 var _frames := 0
 var _scene: Node
@@ -16,14 +17,13 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
-	if _mode.begins_with("map="):  # e.g. map=rolling_hills: two lances on that map
+	if _mode.begins_with("map=") or _mode.begins_with("gen="):  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
 			fb.add(0, id)
 		for id in ["marauder_mad3r", "wasp_wsp1a"]:
 			fb.add(1, id)
-		BattleLaunch.pending = fb.build(MapLoader.load_file(
-				"res://data/maps/%s.json" % _mode.substr(4), TerrainDb.load_file()))
+		BattleLaunch.pending = fb.build(_capture_map())
 	if _mode == "tutorial":
 		var tut := "res://data/scenarios/tutorial.json"
 		BattleLaunch.pending = ScenarioLoader.load_file(tut, TerrainDb.load_file(), UnitDb.load_dir())
@@ -94,3 +94,12 @@ func _target_nearest() -> void:
 		best_e.coord = spot
 		_scene.units_layer.refresh_unit(best_e.id)
 	_scene.attacks.on_hex_tapped(best_e.coord)
+
+
+func _capture_map() -> BattleMap:
+	var arg := _mode.substr(4)
+	if _mode.begins_with("map="):
+		return MapLoader.load_file("res://data/maps/%s.json" % arg, TerrainDb.load_file())
+	var parts := arg.split(":")
+	var seed_value := int(parts[1]) if parts.size() > 1 else 1
+	return MapGenerator.build(MapTheme.find(parts[0]), Vector2i(2, 1), seed_value, TerrainDb.load_file())

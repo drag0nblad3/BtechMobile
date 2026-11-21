@@ -24,6 +24,20 @@ heat per building level that sets it alight.
 - Optional `"buildings": [{"hex": "0703", "type": "medium", "height": 2}]` puts a building
   of that class, `height` levels tall, on a hex. A collapsed building leaves rubble.
 
+## `data/map_themes.json`
+Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each entry:
+`{"id", "name", "blurb", "levels": [share at level 0, 1, 2...], "hill_scale", "water", "deep",
+"river_chance", "river_width", "roads", "woods", "heavy", "woods_scale", "rough", "rubble",
+"street_every", "buildings", "building_mix": {class: weight}, "max_height"}`.
+- Shares are fractions of the whole map (`levels` and `heavy` are shares of dry land / woods).
+  Terrain is laid by rank in noise fields, so the shares hold for every seed.
+- `street_every` > 0 lays a city street grid and `buildings` is then the chance per block hex;
+  otherwise `buildings` is the share of the map with (farm) buildings, mostly beside roads.
+- Generated maps are whole mapsheets (15 x 17 hexes, book p. 223): 1, 2 side by side
+  (the standard battlefield) or 2 x 2. The generator writes the `data/maps` format above,
+  plus `theme`, `seed` and `sheets`. Same theme + size + seed = same map.
+  `godot --headless -s tools/map_report.gd -- <theme|all> <seed> [wide] [high]` prints them.
+
 ## `data/weapons.json`
 `{"weapons": [{"id", "name", "type" (energy|ballistic|missile), "heat", "damage", "missiles"?,
 "group"?, "min"?, "short", "medium", "long", "slots", "ammo_per_ton"?,
