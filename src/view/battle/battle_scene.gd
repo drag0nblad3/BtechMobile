@@ -19,6 +19,7 @@ var bots: BotDriver
 var tutorial: Tutorial
 var lessons: LessonCard
 var objectives: Node3D
+var off_field: HiddenInput
 
 
 func _ready() -> void:
@@ -83,11 +84,11 @@ func _build_views(state: GameState) -> void:
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
-	var hidden := HiddenInput.new()
-	hidden.controller = controller
-	hidden.hud = hud
-	hidden.bots = bots
-	add_child(hidden)
+	off_field = HiddenInput.new()
+	off_field.controller = controller
+	off_field.hud = hud
+	off_field.bots = bots
+	add_child(off_field)
 
 
 func _wire() -> void:
@@ -129,6 +130,8 @@ func _focus_unit(u: Unit) -> void:
 func _on_tap(pos: Vector2) -> void:
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c == Hex.INVALID:
+		return
+	if off_field.on_hex_tapped(c):
 		return
 	var u := controller.state.unit_at(c)
 	if u:
@@ -189,7 +192,7 @@ func _on_event(e: GameEvent) -> void:
 			_show_sheet_if_open()
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:
 			_rebuild_objectives()
-		GameEvent.UNIT_REVEALED:
+		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
 			units_layer.refresh_unit(e.data["unit_id"])
 		GameEvent.UNIT_EXITED:

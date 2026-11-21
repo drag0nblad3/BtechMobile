@@ -37,6 +37,7 @@ var flooded: Dictionary = {}  ## Location -> true once a hull breach floods it (
 var ecm_lost: bool = false  ## ECM suite destroyed by a critical hit.
 var tc_lost: bool = false  ## Targeting computer destroyed by a critical hit.
 var narc_pods: Array[Dictionary] = []  ## Narc homing pods on it: [{side, loc, turn}] (Narc).
+var drop_turn: int = 0  ## Turn a reserve may combat drop (CombatDrop).
 var carry_arm: int = -1  ## Arm holding a mobile objective (MobileObjectives), or -1.
 var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
 var shutdown: bool = false
@@ -50,6 +51,7 @@ var has_physical: bool = false
 var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
+var landed: bool = false  ## Combat dropped this turn: +3 to hit it, can't act (CombatDrop).
 var tmm_zero: bool = false  ## Revealed by an enemy this turn: no target movement modifier (HiddenUnits).
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
@@ -89,6 +91,7 @@ func reset_for_turn() -> void:
 	hexes_moved = 0
 	torso_twist = 0
 	tmm_zero = false
+	landed = false
 	heat_generated = 0
 	outside_heat = 0
 	for w in weapons:

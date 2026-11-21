@@ -1,13 +1,15 @@
 class_name HiddenInput
 extends Node
-## Buttons for a human side's hidden units: reveal one at the start of a
-## Movement or Weapon Attack Phase, and answer a point-blank chance when an
-## enemy stumbles onto one. Calls the controller only.
+## Buttons for a human side's units that start off the field: reveal a
+## hidden one at the start of a Movement or Weapon Attack Phase, answer a
+## point-blank chance when an enemy stumbles onto one, and aim a combat drop
+## (pick the 'Mech, then tap a hex). Calls the controller only.
 
 var controller: GameController
 var hud: BattleHud
 var bots: BotDriver
 var _box: VBoxContainer
+var _dropping: Unit = null  ## Reserve 'Mech waiting for a hex to aim at.
 
 
 func _ready() -> void:
@@ -35,6 +37,28 @@ func refresh() -> void:
 	for h in s.hidden:
 		if not bots.bot_sides.has(h.side) and HiddenUnits.may_reveal(s, h):
 			_add("Reveal %s" % h.def.display_name(), func(): controller.reveal(h))
+	if bots.is_bot_turn():
+		return
+	for r in controller.pending_units():
+		if s.reserves.has(r):
+			_add(("Aiming: %s" if r == _dropping else "Drop %s") % r.def.display_name(), func(): _arm(r))
+
+
+func _arm(r: Unit) -> void:
+	_dropping = r
+	hud.set_tip("Tap the hex %s should aim for. Landing takes a piloting roll; a miss scatters it and it falls." % r.def.display_name())
+	refresh()
+
+
+## Aims an armed combat drop at hex `c`. Returns true if it used the tap.
+func on_hex_tapped(c: Vector2i) -> bool:
+	if _dropping == null:
+		return false
+	var u := _dropping
+	_dropping = null
+	var e := BotMove.nearest_enemy(controller.state, u, c)
+	controller.combat_drop(u, c, Hex.direction_to(c, e.coord) if e else 0)
+	return true
 
 
 func _point_blank(h: Unit, t: Unit) -> void:

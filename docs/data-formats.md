@@ -103,4 +103,4 @@ Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turn
 `forced_withdrawal`, `scoring` (`"each"`, `"pairs"`, `"threshold"`), `objectives`
 (`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
 `exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.
-`scan` (`"units"`: enemy 'Mechs, 1 VP per scan for a 'Mech that leaves; `"intel"`: objectives with `"kind": "intel"`; `"potential"`: objectives with `"potential": true`) turns on End Phase scanning. Objectives may also set `"fragile"` and `"mobile"`.
+`scan` (`"units"`: enemy 'Mechs, 1 VP per scan for a 'Mech that leaves; `"intel"`: objectives with `"kind": "intel"`; `"potential"`: objectives with `"potential": true`) turns on End Phase scanning. Objectives may also set `"fragile"` and `"mobile"`. `exit_side` limits leaving to one side; `attacker` names the attacking side (Steel Rain scoring, `"scoring": "steel_rain"`).

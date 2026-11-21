@@ -19,13 +19,17 @@ var forced_withdrawal := false
 ## How controlled objectives score in each End Phase:
 ## "each": every controlled objective gives its VP; "pairs": 1 VP per pair of
 ## one friendly and one enemy objective held; "threshold": 1 VP for holding
-## two, 2 VP for holding three or more; "": none.
+## two, 2 VP for holding three or more; "steel_rain": from turn 3 the attacker
+## scores 1 VP per objective held (2 from turn 8), the defender 1 VP per
+## objective held or held by nobody; "": none.
 var scoring := ""
 var objectives: Array[Objective] = []
 var home_edges: Array[String] = ["south", "north"]
 ## Edge a unit may deliberately leave by to score ("home", "enemy_home"), or "".
 var exit := ""
 var exit_from_turn: int = 1
+var exit_side: int = -1  ## Only this side may leave by the exit (-1 = both).
+var attacker: int = -1  ## Attacking side where the mission has one (Steel Rain scoring).
 ## What units scan in the End Phase (Scanning): "", "units" or "intel".
 var scan := ""
 var summary := ""  ## Plain-words goal for the player.
@@ -52,6 +56,8 @@ static func from_dict(d: Dictionary) -> Mission:
 	m.exit = d.get("exit", "")
 	m.exit_from_turn = int(d.get("exit_from_turn", 1))
 	m.scan = d.get("scan", "")
+	m.exit_side = int(d.get("exit_side", -1))
+	m.attacker = int(d.get("attacker", -1))
 	m.summary = d.get("summary", "")
 	m.initiative_side = int(d.get("initiative_side", -1))
 	m.initiative_turns = int(d.get("initiative_turns", 0))

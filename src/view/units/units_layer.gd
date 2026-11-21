@@ -14,7 +14,7 @@ func build(state: GameState, see_hidden: Array = [0, 1]) -> void:
 		var v := UnitView.new()
 		add_child(v)
 		v.setup(u, state.map)
-		v.visible = not state.hidden.has(u) or see_hidden.has(u.side)
+		v.visible = (not state.hidden.has(u) or see_hidden.has(u.side)) and not state.reserves.has(u)
 		views[u.id] = v
 
 

@@ -65,7 +65,7 @@ static func exit_kind(state: GameState, u: Unit, c: Vector2i) -> String:
 		return "withdraw"
 	if m.scan == "units" and int(state.mission.scans.get(u.id, 0)) == 0:
 		return ""  # Sensor Check: only 'Mechs with readings may leave to score
-	if m.exit != "" and state.turn >= m.exit_from_turn:
+	if m.exit != "" and state.turn >= m.exit_from_turn and (m.exit_side < 0 or m.exit_side == u.side):
 		var edge := m.home_edge(u.side) if m.exit == "home" else m.home_edge(1 - u.side)
 		if MapEdges.on_edge(state.map, c, edge):
 			return "mission"
@@ -83,6 +83,8 @@ static func leave(state: GameState, emit: Callable, u: Unit) -> void:
 	if kind == "mission" and state.mission.def.scan == "units":  # Sensor Check: 1 VP per scan
 		vp = int(state.mission.scans.get(u.id, 0))
 		state.mission.add_vp(u.side, vp)
+	elif kind == "mission" and not state.mission.def.unit_vp:
+		vp = 0  # e.g. Steel Rain: what it carries off scores, not the 'Mech
 	emit.call(GameEvent.UNIT_EXITED, {"unit_id": u.id, "kind": kind, "vp": vp})
 
 

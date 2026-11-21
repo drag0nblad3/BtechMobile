@@ -94,6 +94,9 @@ static func add_movement(th: ToHit, attacker: Unit, target: Unit, ignore_target 
 	add_attacker_movement(th, attacker)
 	var jumped := target.move_mode == MoveMode.Kind.JUMP
 	var tm := target_movement_mod(target.hexes_moved, jumped)
+	if target.landed and not ignore_target:
+		th.add("just dropped", CombatDrop.LANDED_MOD, "It fell from the sky this turn: +3, as if it moved very fast.")
+		return
 	if tm > 0 and (ignore_target or target.tmm_zero):
 		th.add("target caught off guard", 0, "A point-blank ambush shot ignores how far the target moved." if ignore_target
 				else "It was just found hiding, so its movement doesn't count this turn.")

@@ -36,8 +36,9 @@
     {"id": "sensor_check", "name": "Sensor Check", "table": [1, 4], "available": true,
      "summary": "Scan enemy 'Mechs from within 2 hexes in the End Phase. From turn 5 a 'Mech with readings can leave by its home edge: 1 VP for every scan it made.",
      "turns": 8, "victory": "vp", "complications": "master", "scan": "units", "exit": "home", "exit_from_turn": 5},
-    {"id": "steel_rain", "name": "Steel Rain", "table": [1, 5], "available": false,
-     "summary": "Raiders loot the field while defenders drop from orbit.", "turns": 8, "victory": "vp"},
+    {"id": "steel_rain", "name": "Steel Rain", "table": [1, 5], "available": true,
+     "summary": "The attacker loots five supply caches and may carry them off by its home edge; the defender's 'Mechs combat drop onto the field on turns 1 and 2. From turn 3 the attacker scores 1 VP per cache it holds (2 on turn 8), the defender 1 VP per cache it holds or nobody does.",
+     "turns": 8, "victory": "vp", "complications": "restricted", "setup": "steel_rain"},
     {"id": "urban_sweep", "name": "Urban Sweep", "table": [1, 6], "available": true,
      "summary": "Six buildings may hold intel. In the End Phase a 'Mech within 2 hexes can scan one; a good scan finds intel on 4+ for 2 VP (once per side per building).",
      "turns": 8, "victory": "vp", "complications": "master", "scan": "intel", "setup": "urban_sweep"}

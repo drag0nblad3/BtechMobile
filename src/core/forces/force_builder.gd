@@ -169,6 +169,8 @@ func build(map: BattleMap, dice: Dice = null) -> GameState:
 			next_id += 1
 		if not setup.is_empty():
 			Deployment.place(state, placed, setup["zones"][side])
+	if int(setup.get("drop", -1)) >= 0:
+		SteelRain.reserve_side(state, setup["drop"])
 	if hidden_side >= 0:
 		HiddenUnits.place_side(state, hidden_side)
 	return state

@@ -15,6 +15,8 @@ static func bonus(state: GameState, u: Unit, c: Vector2i) -> Array:
 	if m == null or state.mission.crippled.has(u.id):
 		return [0.0, ""]
 	var held := MobileObjectives.carried_by(state, u)
+	if held != null and m.exit_side == u.side:  # Steel Rain: take it home
+		return [HOLD_WEIGHT - PULL * MapEdges.distance(state.map, c, m.home_edge(u.side)), "carrying the cache toward its home edge"]
 	if held != null:
 		return [HOLD_WEIGHT, "carrying the objective (it holds it wherever it goes)"]
 	if m.scan in ["units", "intel"]:
@@ -61,6 +63,8 @@ static func exit_plan(state: GameState, u: Unit) -> Dictionary:
 	var m := state.mission.def
 	if m == null or m.exit == "" or state.turn < m.exit_from_turn:
 		return {}
+	if m.scoring == "steel_rain" and MobileObjectives.carried_by(state, u) == null:
+		return {}  # only worth leaving with a cache
 	for mode in [MoveMode.Kind.RUN, MoveMode.Kind.WALK, MoveMode.Kind.JUMP]:
 		var opts := MovePlanner.plan(state, u, mode)
 		for c: Vector2i in opts.reachable_hexes():
@@ -69,7 +73,9 @@ static func exit_plan(state: GameState, u: Unit) -> Dictionary:
 			for k in opts.end_keys_in(c):
 				if opts.budget - int(opts.cost.get(k, 0)) >= 1:
 					var why := "leaves by the enemy's edge to score %d VP" % VictoryPoints.unit_value(u)
-					if m.scan == "units":
+					if m.scoring == "steel_rain":
+						why = "carries the cache off the map by its home edge: it stays theirs and keeps scoring"
+					elif m.scan == "units":
 						why = "leaves by its home edge with its sensor readings: %d VP" % int(state.mission.scans.get(u.id, 0))
 					return {"key": k, "mode": mode, "charge": -1, "leave": true, "reason": why}
 	return {}

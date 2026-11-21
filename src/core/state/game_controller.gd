@@ -42,7 +42,7 @@ func start_turn() -> void:
 ## `leave` then moves off the battlefield where the mission allows (MissionFlow).
 func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1,
 		then_prone := false, smash := false, leave := false) -> bool:
-	if not _may_act(unit, Phase.Kind.MOVEMENT):
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or state.reserves.has(unit):
 		return false
 	if MissionFlow.move_problem(state, unit, target, mode, leave) != "":
 		return false
@@ -55,6 +55,15 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 		MissionFlow.leave(state, _emit_cb, unit)
 	if state.point_blank.is_empty():
 		_unit_done()
+	return true
+
+
+## Combat drops a reserve 'Mech aiming at hex `c` (CombatDrop); it takes
+## its movement turn. Returns false if it isn't its turn or not ready.
+func combat_drop(unit: Unit, c: Vector2i, facing: int) -> bool:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or not CombatDrop.drop(state, dice, _emit_cb, unit, c, facing):
+		return false
+	_unit_done()
 	return true
 
 
@@ -97,7 +106,7 @@ func deciding_side() -> int:
 ## from range, easier from next door. Standing up later costs 2 MP and a roll.
 ## To move first and then drop, use submit_move(..., then_prone = true).
 func go_prone(unit: Unit) -> bool:
-	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone or state.reserves.has(unit):
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
 	MobileObjectives.drop_prone(state, dice, _emit_cb, unit)
@@ -187,6 +196,7 @@ func pending_units() -> Array[Unit]:
 	for u in state.units_of_side(state.active_side()):
 		if u.can_act() and not _done_in_phase(u):
 			out.append(u)
+	out.append_array(CombatDrop.ready_units(state, state.active_side()))
 	return out
 
 

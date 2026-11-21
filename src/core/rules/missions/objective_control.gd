@@ -42,6 +42,8 @@ static func score(state: GameState, side: int) -> int:
 	var held_own := 0
 	var held_enemy := 0
 	var vp := 0
+	if m.scoring == "steel_rain":
+		return _steel_rain(state, side)
 	for o in m.objectives:
 		if o.potential or controller(state, o) != side:  # only confirmed objectives score
 			continue
@@ -59,3 +61,18 @@ static func score(state: GameState, side: int) -> int:
 		"threshold":
 			return 2 if held >= 3 else (1 if held == 2 else 0)
 	return 0
+
+
+## Steel Rain (book p. 218), from turn 3.
+static func _steel_rain(state: GameState, side: int) -> int:
+	var m := state.mission.def
+	if state.turn < 3:
+		return 0
+	var n := 0
+	for o in m.objectives:
+		var held := controller(state, o)
+		if side == m.attacker and held == side:
+			n += 2 if state.turn >= 8 else 1
+		elif side != m.attacker and (held == side or held == -1 and not o.destroyed):
+			n += 1
+	return n

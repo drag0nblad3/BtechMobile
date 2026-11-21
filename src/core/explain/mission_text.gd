@@ -22,6 +22,8 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 				if level != ExplainLevel.OFF:
 					t += " Saving it earns its side %d VP (half its value)." % d["vp"]
 				return t
+			if d["vp"] == 0:
+				return "%s leaves the battlefield%s." % [who, " with the objective it carries, which stays its side's" if MobileObjectives.carried_by(s, s.unit_by_id(d["unit_id"])) else ""]
 			return "%s leaves the battlefield and scores %d VP." % [who, d["vp"]]
 		GameEvent.MISSION:
 			if d["kind"] == "vp":

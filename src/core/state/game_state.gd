@@ -45,6 +45,8 @@ var mission := MissionState.new()
 var hidden: Array[Unit] = []
 ## Point-blank shots waiting for their owners' answers: [{unit_id, target_id}].
 var point_blank: Array[Dictionary] = []
+## 'Mechs waiting to combat drop (CombatDrop): off the field until they land.
+var reserves: Array[Unit] = []
 var game_over: bool = false
 var winner: int = -1
 
@@ -84,6 +86,7 @@ func units_of_side(side: int) -> Array[Unit]:
 func all_units() -> Array[Unit]:
 	var out: Array[Unit] = units.duplicate()
 	out.append_array(hidden)
+	out.append_array(reserves)
 	return out
 
 

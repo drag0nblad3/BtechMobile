@@ -23,6 +23,10 @@ static func act(gc: GameController, side: int) -> bool:
 	var u := pending[0]
 	match s.phase:
 		Phase.Kind.MOVEMENT:
+			if s.reserves.has(u):
+				var d := BotDrop.plan(s, u)
+				gc.announce(u, d["reason"])
+				return gc.combat_drop(u, d["hex"], d["facing"])
 			var m := BotMove.plan(s, u)
 			gc.announce(u, m["reason"])
 			return gc.submit_move(u, m["key"], m["mode"], m.get("charge", -1), false, false, m.get("leave", false))
