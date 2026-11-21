@@ -5,6 +5,18 @@ extends Node3D
 ## The contours are EXACTLY those in data/voxels/*_shape.json.
 ## Erases are intentionally not shown: compare voxel renders for cutouts.
 
+var _mesh_by_part: Dictionary = {}
+var _joints: Dictionary = {}
+
+
+## Show isolated independently authored components without destroying rig parenting.
+## Empty selection restores the whole low-poly sculpture.
+func isolate_parts(names: Array[String]) -> void:
+	for component: String in _mesh_by_part:
+		for inst: MeshInstance3D in _mesh_by_part[component]:
+			inst.visible = names.is_empty() or names.has(component)
+
+
 static func from_file(path: String) -> VxShapePreview:
 	var d: Variant = JsonFile.read(path)
 	var preview := VxShapePreview.new()
@@ -15,6 +27,7 @@ static func from_file(path: String) -> VxShapePreview:
 func _build(d: Dictionary) -> void:
 	var unit_scale: float = float(d.get("voxel_size", 0.05))
 	var shapes_by_name := {}
+	var rig := VxModel.from_dict(d)
 	var materials := {}
 	for item: Dictionary in d.get("materials", []):
 		var material := StandardMaterial3D.new()
@@ -23,19 +36,42 @@ func _build(d: Dictionary) -> void:
 		material.cull_mode = BaseMaterial3D.CULL_DISABLED
 		materials[item["name"]] = material
 	for p: Dictionary in d.get("parts", []):
+		var name: String = p["name"]
+		var spec: Dictionary = rig.part(name)
+		var ancestor_name: String = p.get("parent", "")
+		var ancestor: Node3D = _joints.get(ancestor_name, self)
+		var origin: Vector3 = rig.part(ancestor_name).get("pivot", Vector3.ZERO)
+		var joint := Node3D.new()
+		joint.name = name + "_review_joint"
+		joint.position = (spec["pivot"] - origin) * unit_scale
+		ancestor.add_child(joint)
+		_joints[name] = joint
+		_mesh_by_part[name] = []
 		var shapes: Array = p.get("shapes", [])
 		var mirror_part: bool = p.has("mirror")
 		if mirror_part:
 			shapes = shapes_by_name.get(p["mirror"], [])
 		shapes_by_name[p["name"]] = shapes
 		for s: Dictionary in shapes:
-			_draw_shape(s, mirror_part, unit_scale, materials, p["name"])
+			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
 		for s: Dictionary in p.get("add", []):
 			_draw_shape(s, mirror_part, unit_scale, materials, p["name"])
 
+	# Neutral animation axes mask the reverse-jointed Jenner's profile.
+	# Only the review rig is posed; source voxels and animation remain untouched.
+	if d.get("legs", "") == "digitigrade":
+		for side in ["ll", "rl"]:
+			if _joints.has(side + "_tarsus"):
+				var left: bool = side == "ll"
+				_joints[side].rotation.x = deg_to_rad(-24.0 if left else 9.0)
+				_joints[side + "_shin"].rotation.x = deg_to_rad(48.0 if left else 16.0)
+				_joints[side + "_tarsus"].rotation.x = deg_to_rad(-24.0 if left else -25.0)
+
+
+
 
 func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
-		materials: Dictionary, part_name: String) -> void:
+		materials: Dictionary, part_name: String, joint: Node3D, pivot: Vector3) -> void:
 	if s.has("loft"):
 		var spec: Dictionary = s["loft"]
 		var sections: Array = spec.get("sections", [])
@@ -77,7 +113,9 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 			inst.name = part_name + "_outline"
 			inst.mesh = mesh
 			inst.material_override = materials.get(s.get("mat", ""), materials.values()[0])
-			add_child(inst)
+			inst.position = -pivot * unit_scale
+			joint.add_child(inst)
+			_mesh_by_part[part_name].append(inst)
 	elif s.has("box"):
 		var lo: Array = s["box"][0]
 		var hi: Array = s["box"][1]
@@ -91,10 +129,11 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 		mesh.size = bounds * unit_scale
 		var inst := MeshInstance3D.new()
 		inst.mesh = mesh
-		inst.position = Vector3(cx, cy, cz) * unit_scale
+		inst.position = (Vector3(cx, cy, cz) - pivot) * unit_scale
 		inst.material_override = materials.get(s.get("mat", ""), materials.values()[0])
 		inst.name = part_name + "_box"
-		add_child(inst)
+		joint.add_child(inst)
+		_mesh_by_part[part_name].append(inst)
 
 
 static func _point(axis: String, layer: int, uv: Array, mirrored: bool) -> Vector3:
