@@ -42,7 +42,14 @@ func _initialize() -> void:
 		label.pixel_size = 0.0015
 		label.outline_size = 6
 		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		label.position = Vector3((i - 1) * SPACING, 2.55, 0)
+		# Head and launcher heights differ between 35t, 55t and 100t chassis.
+		# Label each actual bounding volume instead of pinning to 2.55 meters.
+		var highest_cell := 0
+		for component: Dictionary in model.parts:
+			for voxel: Vector3i in component["cells"]:
+				highest_cell = maxi(highest_cell, voxel.y)
+		label.position = Vector3((i - 1) * SPACING,
+				(float(highest_cell) + 5.0) * model.voxel_size, 0)
 		scene.add_child(label)
 		labels.append(label)
 	camera = Camera3D.new()
