@@ -112,30 +112,32 @@ func _setup_view(index: int) -> void:
 			camera.look_at_from_position(center + Vector3(0, 0.30, distance), center)
 
 
-func _process(_delta: float) -> bool:
+func _process(_delta: float) -> void:
 	if camera == null:
-		return false
+		return
 	frame += 1
 	if frame < 8:
-		return false
+		return
 	if root.get_camera_3d() != camera:
 		printerr("SHAPE_ERROR|camera not current")
 		quit(1)
-		return true
+		return
 	var path := output_dir.path_join("%s.png" % views[step]["name"])
 	var image := root.get_texture().get_image()
 	if image == null or image.get_width() < 500:
 		printerr("SHAPE_ERROR|viewport empty: %s" % path)
 		quit(1)
-		return true
+		return
 	if image.save_png(path) != OK:
 		printerr("SHAPE_ERROR|png write failed: %s" % path)
 		quit(1)
-		return true
+		return
 	print("SHAPE_RENDER|%s.png" % views[step]["name"])
 	step += 1
 	if step >= views.size():
-		return true
+		# A SceneTree._process return value does not exit the Godot process.
+		# The missing quit() here was leaving the CI renderer running forever.
+		quit(0)
+		return
 	frame = 0
 	_setup_view(step)
-	return false
