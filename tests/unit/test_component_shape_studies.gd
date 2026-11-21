@@ -115,3 +115,28 @@ func test_cgl_plastic_missing_elements_and_open_mouths() -> void:
 	check(not j.part("ct_belly_front_apron").is_empty(), "Jenner underslung belly shell missing")
 	check(not j.part("lt_rear_exhaust").is_empty(), "Jenner left aft exhaust housing missing")
 	check(not j.part("rt_rear_exhaust").is_empty(), "Jenner right aft exhaust housing missing")
+
+
+func test_plastic_shape_pass47_joint_links_are_real_geometry() -> void:
+	# Three material bridges prevent floating limb assemblies and guard the
+	# missing mechanical components at our low-resolution approval gate.
+	var atlas := VxModel.load_file(MODELS[0])
+	for name in ["hd_neck_collar", "ll_hip_socket", "rl_hip_socket",
+			"ll_ankle_collar", "rl_ankle_collar"]:
+		check(not atlas.part(name).is_empty(), "Atlas component missing: " + name)
+	check(atlas.part("ll_hip_socket")["cells"].has(Vector3i(-6, 30, 0)),
+			"Atlas left hip bridge is not in the pelvis/upper-leg junction")
+	var w := VxModel.load_file(MODELS[1])
+	check(not w.part("ra_elbow_link").is_empty(), "Wolverine cannon-side elbow link missing")
+	check(w.part("ra_elbow_link")["cells"].has(Vector3i(18, 30, 0)),
+			"Wolverine elbow link cannot bridge the upper and lower arm")
+	check_eq(w.muzzles[Location.LT].size(), 6, "Wolverine shoulder SRM6 rack")
+	for muzzle: Vector3 in w.muzzles[Location.LT]:
+		var opening := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
+		check(not w.part("lt_srm6")["cells"].has(opening),
+				"Wolverine SRM port obstructed at %s" % opening)
+	var j := VxModel.load_file(MODELS[2])
+	for name in ["ll_hip_link", "rl_hip_link", "ll_hock_joint", "rl_hock_joint"]:
+		check(not j.part(name).is_empty(), "Jenner digitigrade joint missing: " + name)
+	check(j.part("ll_hip_link")["cells"].has(Vector3i(-6, 24, 0)),
+			"Jenner hip link is absent from the lower fuselage")
