@@ -47,6 +47,10 @@ var hidden: Array[Unit] = []
 var point_blank: Array[Dictionary] = []
 ## 'Mechs waiting to combat drop (CombatDrop): off the field until they land.
 var reserves: Array[Unit] = []
+## 'Mechs held back for a later wave (Waves).
+var waiting: Array[Unit] = []
+## Units that beat ECM Interference this turn: id -> true (EcmInterference).
+var ecm_clear: Dictionary = {}
 var game_over: bool = false
 var winner: int = -1
 
@@ -87,6 +91,7 @@ func all_units() -> Array[Unit]:
 	var out: Array[Unit] = units.duplicate()
 	out.append_array(hidden)
 	out.append_array(reserves)
+	out.append_array(waiting)
 	return out
 
 

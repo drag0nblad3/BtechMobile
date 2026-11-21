@@ -274,6 +274,7 @@ func _begin_phase(p: int) -> void:
 	_set_phase(p)
 	if p == Phase.Kind.WEAPON_ATTACK:
 		LowVisibility.sensor_checks(state, dice, _emit_cb)
+		EcmInterference.sensor_checks(state, dice, _emit_cb)
 	_order_sides()
 	if state.side_order.is_empty() and p == Phase.Kind.MOVEMENT:
 		for h in state.hidden.duplicate():  # everyone is hiding: nobody would ever act

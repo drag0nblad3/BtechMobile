@@ -36,6 +36,13 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 				return t if level != ExplainLevel.OFF or d["last"] else ""
 		GameEvent.SCAN:
 			return scan(d, s, level)
+		GameEvent.WAVE:
+			var t := "%s's second wave %s" % [Names.side(d["side"]), "arrives along its home edge!" if d["arrived"] else "is delayed"]
+			if d["need"] > 0:
+				t += " (rolled %d, needed %d+)" % [d["roll"], d["need"]]
+			if level == ExplainLevel.FULL and not d["arrived"]:
+				t += ". It arrives on 2+ next turn, and surely the turn after."
+			return t + ("." if not t.ends_with("!") and not t.ends_with(".") else "")
 		GameEvent.OBJECTIVE:
 			return objective(d, s, level)
 		GameEvent.GAME_OVER:
