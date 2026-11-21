@@ -81,6 +81,9 @@ func _build_views(state: GameState) -> void:
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
+	var plates := Nameplates.new()
+	add_child(plates)
+	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
 
 
 func _wire() -> void:
