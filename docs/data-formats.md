@@ -115,7 +115,7 @@ Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (
 ```json
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}
 ```
-`hex` is a mapsheet label; `facing` 0 = north, clockwise.
+`hex` is a mapsheet label; `facing` 0 = north, clockwise. A unit with `"hidden": true` starts hidden there (Hidden Units).
 Optional: `"name"`, `"bot_sides"` (sides the computer plays), `"bot_level"` (its
 `BotSkill.Level`, 0 Novice to 3 Elite; default the player's setting) and `"lessons"` for a
 guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` (a
@@ -137,3 +137,4 @@ Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turn
 `forced_withdrawal`, `scoring` (`"each"`, `"pairs"`, `"threshold"`), `objectives`
 (`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
 `exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.
+`scan` (`"units"`: enemy 'Mechs, 1 VP per scan for a 'Mech that leaves; `"intel"`: objectives with `"kind": "intel"`; `"potential"`: objectives with `"potential": true`) turns on End Phase scanning. Objectives may also set `"fragile"` and `"mobile"`. `exit_side` limits leaving to one side; `attacker` names the attacking side (Steel Rain scoring, `"scoring": "steel_rain"`).

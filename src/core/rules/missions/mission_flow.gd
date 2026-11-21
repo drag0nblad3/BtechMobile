@@ -11,16 +11,19 @@ static func start_turn(state: GameState, dice: Dice, emit: Callable) -> void:
 		return
 	Crippled.update(state, dice, emit)
 	ForcedWithdrawal.start_turn(state)
+	Scanning.start_turn(state)
 	if ms.def.random_duration and ms.last_turn == 0 and RandomDuration.roll(state, dice, emit):
 		ms.last_turn = state.turn
 
 
-## After the End Phase: surrenders, then objective Victory Points.
-static func end_phase(state: GameState, emit: Callable) -> void:
+## After the End Phase: surrenders, scans, then objective Victory Points.
+static func end_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 	var ms := state.mission
 	if ms.def == null:
 		return
 	ForcedWithdrawal.end_phase(state, emit)
+	Scanning.end_phase(state, dice, emit)
+	FragileObjectives.end_phase(state, dice, emit)  # broken counters score nothing
 	if ms.def.scoring == "":
 		return
 	for side in state.sides():
@@ -60,7 +63,9 @@ static func exit_kind(state: GameState, u: Unit, c: Vector2i) -> String:
 		return ""
 	if ForcedWithdrawal.withdrawing(state, u) and MapEdges.on_edge(state.map, c, m.home_edge(u.side)):
 		return "withdraw"
-	if m.exit != "" and state.turn >= m.exit_from_turn:
+	if m.scan == "units" and int(state.mission.scans.get(u.id, 0)) == 0:
+		return ""  # Sensor Check: only 'Mechs with readings may leave to score
+	if m.exit != "" and state.turn >= m.exit_from_turn and (m.exit_side < 0 or m.exit_side == u.side):
 		var edge := m.home_edge(u.side) if m.exit == "home" else m.home_edge(1 - u.side)
 		if MapEdges.on_edge(state.map, c, edge):
 			return "mission"
@@ -74,15 +79,20 @@ static func leave(state: GameState, emit: Callable, u: Unit) -> void:
 	u.destroyed = true
 	u.destroyed_reason = "left the battlefield"
 	u.destroyed_announced = true
-	emit.call(GameEvent.UNIT_EXITED, {"unit_id": u.id, "kind": kind,
-			"vp": VictoryPoints.unit_value(u) if kind == "mission" else ceili(VictoryPoints.unit_value(u) / 2.0)})
+	var vp := VictoryPoints.unit_value(u) if kind == "mission" else ceili(VictoryPoints.unit_value(u) / 2.0)
+	if kind == "mission" and state.mission.def.scan == "units":  # Sensor Check: 1 VP per scan
+		vp = int(state.mission.scans.get(u.id, 0))
+		state.mission.add_vp(u.side, vp)
+	elif kind == "mission" and not state.mission.def.unit_vp:
+		vp = 0  # e.g. Steel Rain: what it carries off scores, not the 'Mech
+	emit.call(GameEvent.UNIT_EXITED, {"unit_id": u.id, "kind": kind, "vp": vp})
 
 
 ## {} while the battle goes on, else {winner, why, scores?}.
 static func outcome(state: GameState, end_of_turn: bool) -> Dictionary:
 	var ms := state.mission
 	var alive: Array[int] = []
-	for u in state.units:
+	for u in state.all_units():
 		if ms.remains(u) and not alive.has(u.side):
 			alive.append(u.side)
 	if ms.def == null or not ms.def.uses_vp():

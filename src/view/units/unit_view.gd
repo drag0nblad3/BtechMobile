@@ -99,6 +99,8 @@ func _turn_delta(from_f: int, to_f: int) -> float:
 
 func _hex_pos(c: Vector2i) -> Vector3:
 	var t := map.get_tile(c)
+	if t == null:  # off the field (waiting to combat drop)
+		return Vector3(0, -100, 0)
 	var p := HexLayout.tile_top(t)
 	if unit.on_bridge and t.bridge != null:
 		p.y = HexLayout.level_y(t.bridge.level) + VxBuildingGen.PITCH  # on the deck slab
