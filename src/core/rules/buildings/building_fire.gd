@@ -34,7 +34,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 		th.impossible = ProneFire.blocked(attacker, w)
 		return th
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), c)
-	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
+	if not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
 		th.impossible = "The building is in your %s arc; %s can't point there" % [FiringArc.NAMES[arc_id], w.label()]
 		return th
 	var los := LineOfSight.check_hex(state.map, attacker, c, tile.level + (1 if woods else tile.building.height))

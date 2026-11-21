@@ -152,9 +152,17 @@ func request_sinks_off(unit: Unit, n: int) -> bool:
 
 
 func set_torso_twist(unit: Unit, dir: int) -> bool:
-	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad or unit.arms_flipped:
 		return false
 	unit.torso_twist = clampi(dir, -1, 1)
+	return true
+
+
+## Flips the arms backwards (or back again) before declaring fire (ArmFlip).
+func set_arms_flipped(unit: Unit, on: bool) -> bool:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or (on and ArmFlip.problem(unit) != ""):
+		return false
+	unit.arms_flipped = on
 	return true
 
 

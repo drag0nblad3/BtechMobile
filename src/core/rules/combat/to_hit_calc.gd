@@ -22,7 +22,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = prone_why
 		return th
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
+	if not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th

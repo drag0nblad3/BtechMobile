@@ -117,6 +117,7 @@ func _wire() -> void:
 	hud.attack_skip.connect(attacks.on_skip)
 	hud.twist_left.connect(attacks.on_twist.bind(-1))
 	hud.twist_right.connect(attacks.on_twist.bind(1))
+	hud.flip_arms.connect(attacks.on_flip)
 	hud.log_toggled.connect(hud.log_view.cycle_size)
 	hud.sheet_toggled.connect(_toggle_sheet)
 	hud.explain_cycled.connect(_cycle_explain)

@@ -61,6 +61,7 @@ var sc_used: bool = false  ## Supercharger engaged this turn; sc_active it worke
 var sc_active: bool = false  ## sc_failed engine criticals are owed after the move.
 var sc_failed: bool = false
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
+var arms_flipped := false  ## Arms reversed this turn (ArmFlip).
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
 var damage_this_phase: int = 0
@@ -101,6 +102,7 @@ func reset_for_turn() -> void:
 	move_mode = -1
 	hexes_moved = 0
 	torso_twist = 0
+	arms_flipped = false
 	heat_generated = 0
 	outside_heat = 0
 	Masc.new_turn(self)
