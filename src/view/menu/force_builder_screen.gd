@@ -104,8 +104,8 @@ func _on_add(side: int, def_id: String) -> void:
 func _refresh() -> void:
 	for side in 2:
 		UiKit.clear(_rosters[side])
-		_totals[side].text = "%d / %d BV  ·  %d tons  ·  %s" % [builder.bv(side), builder.budget,
-				builder.tons(side), BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
+		_totals[side].text = "%s of %d/%d  ·  %d / %d BV  ·  %d tons  ·  %s" % [builder.formation(side),
+				builder.rosters[side].size(), builder.max_units(side), builder.bv(side), builder.budget, builder.tons(side), BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
 		var ids: Array = builder.rosters[side]
 		for i in ids.size():
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
@@ -119,6 +119,7 @@ func _refresh() -> void:
 		_info.text += "\n" + BvText.WHAT_IS_BV
 		_info.text += "\nSkill: better MechWarriors hit and keep their footing more often, and cost more BV (Veteran 3/4 is x%.2f, Elite 2/3 x%.2f, Green 5/6 x%.2f)." % [
 				BvSkill.multiplier(3, 4), BvSkill.multiplier(2, 3), BvSkill.multiplier(5, 6)]
+		_info.text += "\n" + ForceBuilder.FORMATION_TIP
 		_info.text += "\nInitiative Die (optional): a side that keeps losing initiative gets +1 more on each roll until it wins."
 		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."
 	var balance := builder.balance_text()

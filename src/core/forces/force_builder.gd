@@ -4,6 +4,10 @@ extends RefCounted
 ## side 0 along the south edge facing north, side 1 along the north edge.
 
 const MAX_UNITS := 4
+## An all-Clan side may field a Star of five (book p. 219 suggests lances
+## of 4 and Stars of 5 but doesn't require either).
+const STAR := 5
+const FORMATION_TIP := "Inner Sphere 'Mechs fight in lances of four; the Clans fight in Stars of five, so an all-Clan side may take a fifth 'Mech."
 const BUDGETS := [2000, 3000, 4500, 6000, 8000]
 
 var units: UnitDb
@@ -58,11 +62,28 @@ func cant_add(side: int, def_id: String) -> String:
 	var def := units.get_def(def_id)
 	if def == null:
 		return "Unknown design"
-	if rosters[side].size() >= MAX_UNITS:
-		return "A lance is at most %d 'Mechs" % MAX_UNITS
+	if rosters[side].size() >= max_units(side, def_id):
+		if rosters[side].size() >= MAX_UNITS and not def.is_clan():
+			return "A Clan Star can hold %d, but an Inner Sphere 'Mech makes it a lance of %d" % [STAR, MAX_UNITS]
+		return "A %s is at most %d 'Mechs" % [formation(side).to_lower(), max_units(side, def_id)]
 	if bv(side) + unit_bv(side, def) > budget:
 		return "Over budget: %d of %d BV left" % [budget - bv(side), budget]
 	return ""
+
+
+## 5 if every 'Mech on the side (and `adding`, if given) is Clan, else 4.
+func max_units(side: int, adding: String = "") -> int:
+	var ids: Array = rosters[side].duplicate()
+	if adding != "":
+		ids.append(adding)
+	if ids.is_empty():
+		return MAX_UNITS
+	return STAR if ids.all(func(id: String) -> bool: return units.get_def(id).is_clan()) else MAX_UNITS
+
+
+## "Star" for an all-Clan side, else "Lance".
+func formation(side: int) -> String:
+	return "Star" if not rosters[side].is_empty() and max_units(side) == STAR else "Lance"
 
 
 func add(side: int, def_id: String) -> bool:

@@ -168,8 +168,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   lesson cards on first movement, fire, hits, heat, piloting rolls and the end.
 
 ## Force building and play
-- ✅ Two sides, up to 4 'Mechs each, Battle Value budget (2000-8000); deploy on opposite edges.
-- ✅ The catalog filters All / Inner Sphere / Clan and shows each OmniMech chassis once with a button cycling its configurations (`DesignFilter`, `ForceCatalog`); with full explanations it says what Clan tech and OmniMechs mean. Mixed Clan and Inner Sphere forces are allowed — ⬜ Clan Stars of 5, Clan honor rules (zellbrigen).
+- ✅ Two sides, up to 4 'Mechs each (5 for an all-Clan Star), Battle Value budget (2000-8000); deploy on opposite edges.
+- ✅ The catalog filters All / Inner Sphere / Clan and shows each OmniMech chassis once with a button cycling its configurations (`DesignFilter`, `ForceCatalog`); with full explanations it says what Clan tech and OmniMechs mean. Mixed Clan and Inner Sphere forces are allowed.
+- ✅ Formations (p. 219, a suggestion, not a rule): a side is a lance of up to 4; an all-Clan side may field a Star of 5 (`ForceBuilder.max_units`), shown on the roster — ⬜ Clan honor rules (zellbrigen).
 - 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE).
 - ✅ Pilot skill adjusts Battle Value (`BvSkill`, multipliers in `data/bv_skill.json`); the force builder cycles Green / Regular / Veteran / Elite per side.
 - ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
