@@ -249,13 +249,33 @@ static func _torso(out: Array[Dictionary]) -> void:
 		Vector3(-3.0, 9.1, -7.8), Vector3(-2.6, 9.8, -7.6),
 		Vector3(2.6, 9.8, -7.6), Vector3(3.0, 9.1, -7.8)
 	], 0.9, 6)
+	# Narrow slanted eye SLITS, not circular googly-eye bezels. They
+	# are independently authored 3D concavities with low inset red glass.
 	for x in [-1.65, 1.55]:
-		_round_tube(out, "recessed-eye-socket", x, 8.15,
-				-8.6, -6.0, 0.65, 1, 1)
-		_hollow_tube(out, "slender-socket-bezel", x, 8.15,
-				-8.45, -7.6, 0.78, 0.48, 8, 2)
-		_round_tube(out, "recessed-red-eye", x, 8.15,
-				-8.15, -7.4, 0.40, 7, 2)
+		_plate(out, "eye-socket-cut", [
+			Vector3(x - 0.75, 8.04, -8.70),
+			Vector3(x - 0.64, 8.59, -8.70),
+			Vector3(x + 0.62, 8.47, -8.70),
+			Vector3(x + 0.75, 8.10, -8.70)
+		], 2.55, 1, 1)
+		_plate(out, "inset-red-eye-slit", [
+			Vector3(x - 0.58, 8.15, -8.06),
+			Vector3(x - 0.47, 8.44, -8.06),
+			Vector3(x + 0.45, 8.36, -8.06),
+			Vector3(x + 0.57, 8.17, -8.06)
+		], 0.68, 7, 2)
+		_plate(out, "brow-above-socket", [
+			Vector3(x - 0.91, 8.46, -8.47),
+			Vector3(x - 0.78, 8.82, -8.47),
+			Vector3(x + 0.72, 8.68, -8.47),
+			Vector3(x + 0.89, 8.36, -8.47)
+		], 0.31, 8, 2)
+		_plate(out, "lower-socket-rim", [
+			Vector3(x - 0.81, 7.88, -8.43),
+			Vector3(x + 0.78, 7.94, -8.43),
+			Vector3(x + 0.72, 8.10, -8.43),
+			Vector3(x - 0.77, 8.04, -8.43)
+		], 0.30, 8, 2)
 	for x in [-2.8, 2.4]:
 		_plate(out, "skull-cheek", [
 			Vector3(x - 0.7, 6.4, -7.5), Vector3(x - 0.3, 8.0, -8.0),
