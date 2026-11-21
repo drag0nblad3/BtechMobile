@@ -1,0 +1,386 @@
+{
+  "baseline": "feature/shape-three-mech-p256-275",
+  "goal": "front-view silhouette compared with modern Catalyst plastic sculpts; preserve full 3D geometry",
+  "cycles": [
+    {
+      "cycle": 276,
+      "intent": "Round Atlas shoulder peaks; strengthen Wolverine shoulder slope; round Jenner protruding disc",
+      "atlas": [
+        "lt:0:mid:dome",
+        "rt:0:mid:dome",
+        "hd:0:mid:widen"
+      ],
+      "wolverine": [
+        "lt:0:mid:dome",
+        "rt:0:mid:dome",
+        "hd:0:top:lowerTop"
+      ],
+      "jenner": [
+        "hd:0:mid:oval",
+        "hd_disc_crown:0:mid:dome",
+        "ct:0:mid:dome"
+      ]
+    },
+    {
+      "cycle": 277,
+      "intent": "Connect Atlas round caps to chest; widen Wolverine ribs; smooth Jenner flanking housings",
+      "atlas": [
+        "lt_round_shoulder_band:0:mid:dome",
+        "rt_round_shoulder_band:0:mid:dome",
+        "ct:0:mid:widen"
+      ],
+      "wolverine": [
+        "ct:0:mid:widen",
+        "lt:0:back:dome",
+        "rt:0:back:dome"
+      ],
+      "jenner": [
+        "lt:0:mid:dome",
+        "la:0:mid:dome",
+        "hd_disc_rim:0:mid:oval"
+      ]
+    },
+    {
+      "cycle": 278,
+      "intent": "Shape Atlas chest V and jaw, Wolverine under-shoulder contour, Jenner flattened prow",
+      "atlas": [
+        "ct_left_breast_plate:0:front:lowerTop",
+        "ct_right_breast_plate:0:front:lowerTop",
+        "hd_lower_mandible:0:mid:narrow"
+      ],
+      "wolverine": [
+        "ct_lower_breastplate:0:front:lowerTop",
+        "ct_lower_breastplate:1:front:lowerTop",
+        "ct_wide_abdomen:0:mid:widen"
+      ],
+      "jenner": [
+        "hd:0:front:oval",
+        "hd_front_windscreen:0:mid:oval",
+        "hd_disc_lower_fairing:0:mid:raiseBottom"
+      ]
+    },
+    {
+      "cycle": 279,
+      "intent": "Separate Atlas upper arm silhouette; reduce Wolverine giant elbow; Jenner side pod profiles",
+      "atlas": [
+        "la:0:mid:outerIn",
+        "la_rotator_socket:0:mid:outerIn",
+        "lt_round_shoulder_underplate:0:mid:lowerTop"
+      ],
+      "wolverine": [
+        "ra:0:mid:outerIn",
+        "ra_compact_elbow_armor:0:mid:outerIn",
+        "la:0:mid:outerIn"
+      ],
+      "jenner": [
+        "la:0:mid:outerIn",
+        "lt:0:mid:outerIn",
+        "la_pod_yoke:0:mid:outerIn"
+      ]
+    },
+    {
+      "cycle": 280,
+      "intent": "Atlas skull brow and collar, Wolverine head silhouette, Jenner saucer underlip",
+      "atlas": [
+        "hd_left_orbit_brow:0:mid:outerOut",
+        "hd_recessed_brow_bridge:0:mid:lowerTop",
+        "hd_neck_collar:0:mid:widen"
+      ],
+      "wolverine": [
+        "hd:0:mid:narrow",
+        "hd_angular_cheek_left:0:mid:outerIn",
+        "hd_neck_yoke:0:mid:narrow"
+      ],
+      "jenner": [
+        "hd_round_underlip:0:mid:raiseBottom",
+        "hd_disc_lower_fairing:0:back:raiseBottom",
+        "hd_chin_fairing:0:mid:raiseBottom"
+      ]
+    },
+    {
+      "cycle": 281,
+      "intent": "Atlas broad shoulder outer slope, Wolverine launcher-side top outline, Jenner torso shoulder width",
+      "atlas": [
+        "lt:0:front:dome",
+        "rt:0:front:dome",
+        "lt_shoulder_ridge:0:mid:lowerTop"
+      ],
+      "wolverine": [
+        "lt:0:front:dome",
+        "lt_srm6_inner_mount:0:mid:lowerTop",
+        "rt:0:front:dome"
+      ],
+      "jenner": [
+        "ct:0:mid:widen",
+        "lt:0:front:dome",
+        "hd_disc_rim:1:mid:oval"
+      ]
+    },
+    {
+      "cycle": 282,
+      "intent": "Atlas breastplate and waist shaping, Wolverine breastplate faceting, Jenner underbody",
+      "atlas": [
+        "ct_left_breast_plate:0:mid:outerOut",
+        "ct_right_breast_plate:0:mid:outerOut",
+        "ct_lower_abdominal_armor:0:mid:narrow"
+      ],
+      "wolverine": [
+        "ct_lower_breastplate:0:mid:outerOut",
+        "ct_lower_breastplate:1:mid:outerOut",
+        "ct_faceted_waist_spine:0:mid:narrow"
+      ],
+      "jenner": [
+        "belly:0:mid:narrow",
+        "ct_belly_front_apron:0:mid:narrow",
+        "hd_rear_disc_saddle:0:mid:narrow"
+      ]
+    },
+    {
+      "cycle": 283,
+      "intent": "Atlas fist and cuff distinct, Wolverine gun arm single silhouette, Jenner paired laser pods",
+      "atlas": [
+        "la:2:mid:narrow",
+        "la_knuckle_cuff:0:mid:outerOut",
+        "la_outer_thumb_pad:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "ra:1:mid:narrow",
+        "ra_cannon_mount:0:mid:outerOut",
+        "ra_grip_wrist_collar:0:mid:narrow"
+      ],
+      "jenner": [
+        "la:0:back:outerIn",
+        "la_pod_yoke:0:mid:narrow",
+        "lt:0:back:dome"
+      ]
+    },
+    {
+      "cycle": 284,
+      "intent": "Atlas hip width against chest, Wolverine pelvis support, Jenner leg-root spacing",
+      "atlas": [
+        "pelvis:0:mid:widen",
+        "ll:0:top:outerOut",
+        "ll_hip_guard:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "pelvis:0:mid:widen",
+        "ll:0:top:outerOut",
+        "ll_tapered_thigh_cuff:0:mid:outerOut"
+      ],
+      "jenner": [
+        "ll:0:top:outerOut",
+        "ll_leg_root:0:mid:outerOut",
+        "ll_hip_link:0:mid:outerOut"
+      ]
+    },
+    {
+      "cycle": 285,
+      "intent": "Atlas thigh knee break, Wolverine shin and knee scale, Jenner knee reverse-leg break",
+      "atlas": [
+        "ll:0:mid:outerOut",
+        "ll_knee_guard:0:mid:narrow",
+        "ll_shin:0:top:narrow"
+      ],
+      "wolverine": [
+        "ll:0:mid:outerOut",
+        "ll_knee_yoke:0:mid:narrow",
+        "ll_shin:0:top:narrow"
+      ],
+      "jenner": [
+        "ll:0:mid:outerOut",
+        "ll_knee_cowl:0:mid:narrow",
+        "ll_shin:0:top:narrow"
+      ]
+    },
+    {
+      "cycle": 286,
+      "intent": "Atlas leg gap and greaves, Wolverine lower leg taper, Jenner hocks off centerline",
+      "atlas": [
+        "ll_shin:0:mid:outerOut",
+        "ll_shin_plate:0:mid:narrow",
+        "ll_ankle_collar:0:mid:narrow"
+      ],
+      "wolverine": [
+        "ll_shin:0:mid:outerOut",
+        "ll_shin_fairing:0:mid:narrow",
+        "ll_foot:0:top:narrow"
+      ],
+      "jenner": [
+        "ll_shin:0:mid:outerOut",
+        "ll_hock_joint:0:mid:outerOut",
+        "ll_rear_hock_brace:0:mid:outerOut"
+      ]
+    },
+    {
+      "cycle": 287,
+      "intent": "Atlas foot width and toe shapes, Wolverine toe stance, Jenner claw-foot silhouette",
+      "atlas": [
+        "ll_foot:0:bottom:widen",
+        "ll_toe_outer:0:mid:outerOut",
+        "ll_toe_inner:0:mid:narrow"
+      ],
+      "wolverine": [
+        "ll_foot:0:bottom:widen",
+        "ll:1:mid:narrow",
+        "ll_hip_bearing:0:mid:outerOut"
+      ],
+      "jenner": [
+        "ll_foot:0:bottom:narrow",
+        "ll_tarsus:0:mid:narrow",
+        "ll_front_ankle_link:0:mid:narrow"
+      ]
+    },
+    {
+      "cycle": 288,
+      "intent": "Atlas shoulder cap second-round silhouette, Wolverine right pauldron slope, Jenner upper engine breadth",
+      "atlas": [
+        "lt:0:back:dome",
+        "rt:0:back:dome",
+        "rt_shoulder_ridge:0:mid:lowerTop"
+      ],
+      "wolverine": [
+        "rt:0:mid:dome",
+        "ra_shoulder_yoke:0:mid:narrow",
+        "ct:0:top:widen"
+      ],
+      "jenner": [
+        "ct:0:back:widen",
+        "lt:0:back:dome",
+        "ct_rear_reactor_spine:0:mid:lowerTop"
+      ]
+    },
+    {
+      "cycle": 289,
+      "intent": "Atlas skull jaw placement and shoulder lip, Wolverine narrow head and wide abdomen, Jenner disc central brow",
+      "atlas": [
+        "hd:0:lower:widen",
+        "hd_lower_mandible:0:mid:raiseBottom",
+        "lt_round_shoulder_underplate:0:mid:raiseBottom"
+      ],
+      "wolverine": [
+        "hd:1:mid:narrow",
+        "ct_wide_abdomen:0:mid:widen",
+        "ct_center_keel:0:mid:narrow"
+      ],
+      "jenner": [
+        "hd_disc_crown:0:back:lowerTop",
+        "hd_top_glass_left:0:mid:lowerTop",
+        "hd_low_glazing_brow:0:mid:lowerTop"
+      ]
+    },
+    {
+      "cycle": 290,
+      "intent": "Atlas forearm taper and fist at hip, Wolverine left fist/arm mass, Jenner laser nacelle lower silhouette",
+      "atlas": [
+        "la:1:mid:narrow",
+        "la:3:mid:narrow",
+        "la_finger_knuckles:0:all:outerOut"
+      ],
+      "wolverine": [
+        "la:2:mid:narrow",
+        "la:3:mid:outerIn",
+        "la_shoulder_yoke:0:mid:narrow"
+      ],
+      "jenner": [
+        "la:0:front:raiseBottom",
+        "la_laser_lower:0:mid:narrow",
+        "la_laser_upper:0:mid:narrow"
+      ]
+    },
+    {
+      "cycle": 291,
+      "intent": "Atlas shorten visual shoulder walls, Wolverine align shoulder tops, Jenner cockpit body gap",
+      "atlas": [
+        "lt_round_shoulder_band:0:front:dome",
+        "rt_round_shoulder_band:0:front:dome",
+        "ct:0:top:widen"
+      ],
+      "wolverine": [
+        "lt:0:mid:lowerTop",
+        "rt:0:mid:lowerTop",
+        "ct:0:top:widen"
+      ],
+      "jenner": [
+        "hd_disc_neck_brace:0:mid:narrow",
+        "hd_rear_disc_saddle:0:mid:narrow",
+        "hd:0:back:oval"
+      ]
+    },
+    {
+      "cycle": 292,
+      "intent": "Atlas lower torso width and thigh armor, Wolverine abdomen thigh balance, Jenner thigh/hock distance",
+      "atlas": [
+        "ct:0:lower:widen",
+        "pelvis_front_codpiece:0:mid:narrow",
+        "ll_hip_joint:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "ct:0:lower:widen",
+        "pelvis:0:mid:widen",
+        "ll:0:mid:narrow"
+      ],
+      "jenner": [
+        "ct:0:front:narrow",
+        "ll:0:mid:narrow",
+        "ll_hock_joint:0:bottom:outerOut"
+      ]
+    },
+    {
+      "cycle": 293,
+      "intent": "Atlas shoulder-to-arm gap check, Wolverine pistol/grip outline, Jenner disc rounded flank",
+      "atlas": [
+        "la_rotator_socket:0:back:outerIn",
+        "la:0:back:outerIn",
+        "lt_round_shoulder_underplate:0:front:raiseBottom"
+      ],
+      "wolverine": [
+        "ra_cannon_mount:0:front:narrow",
+        "ra_integrated_hand:0:mid:narrow",
+        "ra_compact_elbow_armor:0:front:narrow"
+      ],
+      "jenner": [
+        "hd_left_disc_crescent:0:mid:oval",
+        "hd_disc_rim:0:front:oval",
+        "hd_disc_rim:1:front:oval"
+      ]
+    },
+    {
+      "cycle": 294,
+      "intent": "Atlas face and leg silhouette final balance, Wolverine head-shoulder V, Jenner feet and ankle separation",
+      "atlas": [
+        "hd:0:mid:widen",
+        "ll_shin:0:bottom:narrow",
+        "ll_foot:0:top:narrow"
+      ],
+      "wolverine": [
+        "hd:0:mid:narrow",
+        "lt:0:back:dome",
+        "ll_shin:0:bottom:narrow"
+      ],
+      "jenner": [
+        "ll_tarsus:0:bottom:narrow",
+        "ll_foot:0:top:narrow",
+        "hd_front_windscreen:0:front:oval"
+      ]
+    },
+    {
+      "cycle": 295,
+      "intent": "Final full-height front silhouette connection and cleanup",
+      "atlas": [
+        "ct_left_breast_plate:0:back:raiseBottom",
+        "ct_right_breast_plate:0:back:raiseBottom",
+        "la_knuckle_cuff:0:back:outerOut"
+      ],
+      "wolverine": [
+        "ct_lower_breastplate:0:back:raiseBottom",
+        "ct_lower_breastplate:1:back:raiseBottom",
+        "ra:1:back:narrow"
+      ],
+      "jenner": [
+        "hd_disc_lower_fairing:0:mid:raiseBottom",
+        "lt:0:mid:dome",
+        "ll_shin:0:mid:outerOut"
+      ]
+    }
+  ]
+}
