@@ -37,7 +37,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - 🟡 Design weight check (`DesignWeight`): structure, engine, gyro, cockpit, heat sinks, jump jets, armor, weapons and ammo add up to the tonnage — `TODO(rules)`: engine weight table is general knowledge, not in the Core Rulebook.
 - 🟡 Heat sinks: single (1 heat) or double (`"heat_sink_type": "double"`, pp. 89, 103: 2 heat each, 3 slots each, a hit on any slot destroys that sink, 2 extra each under water up to 6); `TODO(rules)`: 10 engine-integral for every design.
 - ⬜ Tonnage / construction validation (engine, armor and equipment weights).
-- 🟡 Heat scale effects (MP, to-hit, shutdown, ammo explosion) — `TODO(rules)`: verify thresholds.
+- ✅ Heat scale effects (MP, to-hit, shutdown, ammo explosion): thresholds checked against the book's heat data table.
 
 ## Line of sight
 - ✅ LOS levels (p. 57): ground (water bottom) + 2 standing / 1 prone. A hex intervenes if its top (hill; woods +2; building roof) is at least both LOS levels, or at least the attacker's and next to it, or at least the target's and next to it. Intervening hills and buildings block; woods add 1/2 points, 3 block.
@@ -57,20 +57,20 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Firing arcs (p. 60): forward 120°, sides 60°, rear 120°; arms add their side; rear mounts fire rear. Hit zones (p. 73) keep the hexside shape: front is 3 hexsides.
 - ✅ Torso twist one hexside in the weapon phase; leg weapons keep the legs' facing; punches use the torso.
 - ✅ Target number 2 or less always hits (p. 72); target > 12 can't be attempted.
-- ✅ Cluster hits table; LRMs in 5-point groups, SRMs per missile.
+- ✅ Cluster hits table, all 13 columns (p. 74), checked against the book; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
 - ✅ Flamers (p. 183): a hit deals damage and the same amount of heat to the target; outside heat is capped at 15 per turn.
 - 🟡 Indirect LRM fire (`IndirectFire`, pp. 62, 70): a friendly 'Mech with line of sight spots one target per turn; +1 indirect, + spotter's movement, +1 if the spotter also attacks (and +1 to the spotter's own attacks); terrain counted from the spotter; a 'Mech that declared a charge or DFA can't spot.
 - ✅ Aimed shots (`AimedShot`, p. 70): against an immobile target, a non-cluster, non-indirect shot (no Ultra double fire, no LB-X cluster rounds) may aim at a location; -4 kept, but a head shot drops it and takes +3; on a hit 1D6 4+ lands there, else the location is rolled; with partial cover legs can't be chosen, the cover modifier is dropped and leg rolls are rerolled. The weapon panel shows an "Aim at" button for immobile targets (`AimPicker`); the computer aims too (`BotAim`).
 
 ## Damage
-- ✅ Hit location tables (front/rear, left, right) — `TODO(rules)`: verify.
+- ✅ Hit location tables (front/rear, left, right), punch and kick tables (pp. 74, 81): checked against the book; the front punch table had arms and side torsos swapped, now fixed.
 - ✅ Armor → structure → transfer inward; rear armor on torsos.
 - ✅ Side torso destroyed takes its arm; head or CT destroyed destroys the 'Mech.
 - ✅ Ammo explosion (pp. 95-96): remaining shots × damage, capped at 20, into structure, transferring structure-to-structure; over the cap the surviving last location loses its armor (rear for a torso); MechWarrior takes 1 hit.
 - ✅ Explosive components (`ComponentExplosion`, pp. 96, 184): a Gauss rifle explodes on its first critical hit for 2 damage per slot (14), handled like an ammo explosion (20 cap, CASE, pilot hit); later hits don't explode it again; Gauss slugs never explode — `TODO(rules)`: always treated as activated (p. 180).
 - ✅ Advanced energy weapons (pp. 184-188): ER small/medium/large lasers, small/medium/large pulse lasers (-2 to hit), ER PPC (no minimum range), and the Gauss rifle, with table stats.
-- ✅ Advanced ballistic and missile weapons (`WeaponModes`, pp. 182-192): Ultra ACs fire one or two shots as one attack (2x heat and ammo, cluster column 2, a location per shot); LB 10-X fires slugs or cluster ammo (`ammo:<id>:cluster`, -1 to hit, column 10, 1-point pellets); Streak SRMs hit with every missile, and on a miss don't launch (no heat or ammo); Artemis IV (`<launcher>+artemis`, 1 t, 1 slot) adds +2 to the cluster roll until its slot is hit. Modes are picked in the attack panel — `TODO(rules)`: no Ultra jam in this book (only rotary ACs jam); no ECM; Artemis BV bonus. The computer (`BotModes`) double-fires Ultras when the heat allows and picks LB-X ammo by expected damage.
+- ✅ Advanced ballistic and missile weapons (`WeaponModes`, pp. 182-192): Ultra ACs fire one or two shots as one attack (2x heat and ammo, cluster column 2, a location per shot); LB 10-X fires slugs or cluster ammo (`ammo:<id>:cluster`, -1 to hit, column 10, 1-point pellets); Streak SRMs hit with every missile, and on a miss don't launch (no heat or ammo); Artemis IV (`<launcher>+artemis`, 1 t, 1 slot) adds +2 to the cluster roll until its slot is hit. Modes are picked in the attack panel — `TODO(rules)`: no Ultra jam in this book (only rotary ACs jam); Artemis BV bonus. Enemy ECM cancels Artemis (`Ecm`). The computer (`BotModes`) double-fires Ultras when the heat allows and picks LB-X ammo by expected damage.
 - ✅ Targeting computers (`TargetingComputer`, `targeting_computer` item, p. 200): -1 to hit for direct-fire energy and ballistic weapons (not flamers, machine guns, missiles, LB-X cluster rounds or Ultra double fire); allows aimed shots at moving 'Mechs (+3 instead of the -1, no head, no pulse lasers); aimed pulse shots never get the -1; a critical hit destroys it — `TODO(rules)`: size (1 slot and 1 t per 4 t of linked weapons) is construction data; no BV bonus.
 - ✅ Anti-missile systems (`AntiMissile`, `ams` + `ammo:ams`, p. 206): when a missile weapon hits from a direction the AMS's location covers, it engages: -4 to the cluster roll (below 2 shoots down every missile), a Streak counts as a 7; 1 ammo and 1 heat each, two attacks a turn per AMS, one AMS per attack, not while the MechWarrior is out; AMS ammo explodes for 2 per shot; AMS BV counts as defensive — `TODO(rules)`: the defender always engages; laser AMS and single-missile weapons not modelled.
 - ✅ Guardian ECM suites (`Ecm`, `guardian_ecm` item, 1.5 t, 2 slots, p. 200): an enemy's working suite jams 6 hexes around it; an Artemis IV launcher whose attacker or target is inside it loses the +2 cluster bonus; Artemis never helps indirect fire (p. 188); a critical hit or shutdown stops the suite; it adds 61 to defensive BV — `TODO(rules)`: always on; water-line blocking, Angel ECM, Narc, C3 and probes not modelled.
@@ -94,7 +94,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 
 ## Critical hits
 - ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,
-  12 three (head/limb blown off) — `TODO(rules)`: verify.
+  12 three (head/limb blown off), checked against the book (p. 91).
 - ✅ Random hittable slot; empty slots don't count. A location that started the phase with nothing left to hit passes criticals inward; otherwise extras are lost (p. 95).
 - ✅ A location destroyed by damage still rolls; only hits on ammo count (p. 87).
 - ✅ Engine (+5 heat/turn, 3 destroys), gyro (+2 PSR, 2 = fall, can't stand), cockpit (pilot

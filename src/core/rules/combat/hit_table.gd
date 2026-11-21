@@ -1,12 +1,12 @@
 class_name HitTable
 extends RefCounted
 ## Hit location tables (2d6 for weapons, 1d6 for punches and kicks).
-## Index 0 of the 2d6 tables is a roll of 2. TODO(rules): verify tables.
+## Index 0 of the 2d6 tables is a roll of 2. Checked against the book (p. 74, p. 81).
 
 const FRONT := [Location.CT, Location.RA, Location.RA, Location.RL, Location.RT, Location.CT, Location.LT, Location.LL, Location.LA, Location.LA, Location.HEAD]
 const LEFT := [Location.LT, Location.LL, Location.LA, Location.LA, Location.LL, Location.LT, Location.CT, Location.RT, Location.RA, Location.RL, Location.HEAD]
 const RIGHT := [Location.RT, Location.RL, Location.RA, Location.RA, Location.RL, Location.RT, Location.CT, Location.LT, Location.LA, Location.LL, Location.HEAD]
-const PUNCH_FRONT := [Location.LA, Location.LT, Location.CT, Location.RT, Location.RA, Location.HEAD]
+const PUNCH_FRONT := [Location.RA, Location.RT, Location.CT, Location.LT, Location.LA, Location.HEAD]
 const PUNCH_LEFT := [Location.LT, Location.LT, Location.CT, Location.LA, Location.LA, Location.HEAD]
 const PUNCH_RIGHT := [Location.RT, Location.RT, Location.CT, Location.RA, Location.RA, Location.HEAD]
 
