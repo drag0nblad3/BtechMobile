@@ -28,6 +28,7 @@ var explodes: bool     ## Blows up on its first critical hit (Gauss rifles, p. 1
 var ammo_explodes: bool = true  ## False for Gauss slugs.
 var rapid: int         ## Most shots in one attack (Ultra ACs 2), 0 = normal.
 var lbx: bool          ## LB-X: can fire cluster ammo.
+var rotary: bool       ## Rotary AC: 1-6 shots, may jam (RotaryAc).
 var streak: bool       ## Streak: all missiles hit, or it doesn't fire.
 var pulse: bool        ## Pulse laser (no targeting computer bonus on aimed shots).
 var ams: bool          ## Anti-missile system: never fires at targets (AntiMissile).
@@ -58,6 +59,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.ammo_explodes = bool(d.get("ammo_explodes", true))
 	w.rapid = int(d.get("rapid", 0))
 	w.lbx = bool(d.get("lbx", false))
+	w.rotary = bool(d.get("rotary", false))
 	w.streak = bool(d.get("streak", false))
 	w.ams = bool(d.get("ams", false))
 	w.pulse = bool(d.get("pulse", false))

@@ -31,6 +31,9 @@ static func act(gc: GameController, side: int) -> bool:
 			var modes: Dictionary = f.get("modes", {})
 			for i: int in modes:
 				gc.set_weapon_mode(u, i, modes[i])
+			var unjam := BotModes.unjam_all(gc, u)
+			if unjam != "":
+				f["reason"] += "; " + unjam
 			var aim := BotAim.choose(s, u, f["shots"])
 			gc.announce(u, f["reason"] + (" (twists its torso)" if f["twist"] != 0 else "") + ("; " + aim if aim != "" else ""))
 			return gc.declare_fire(u, f["shots"])

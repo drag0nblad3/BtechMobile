@@ -28,6 +28,13 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Double shot (2x heat and ammo)"
 		WeaponModes.CLUSTER:
 			return "Cluster ammo (-1 to hit, 1-point pellets)"
+		RotaryAc.UNJAM:
+			return "Clear the jam (Gunnery +3, stand or walk)"
+	if w.def.rotary:
+		if w.jammed:
+			return "Jammed: tap to try clearing it"
+		var n := WeaponModes.shots(w)
+		return "1 shot" if n == 1 else "%d shots (jams on %d or less)" % [n, RotaryAc.jams_on(n)]
 	return "Single shot" if w.def.rapid > 1 else "Standard ammo"
 
 

@@ -47,6 +47,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return _declared(s, d, level)
 		GameEvent.WEAPON_FIRED:
 			return WeaponText.fired(s, d, level, seen)
+		GameEvent.UNJAM:
+			return WeaponText.unjam(s, d, level)
 		GameEvent.PHYSICAL:
 			return _physical(s, d, level, seen)
 		GameEvent.INTENT:

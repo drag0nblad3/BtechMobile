@@ -34,6 +34,8 @@ heat per building level that sets it alight.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
+- `rapid`: most shots in one attack (Ultra ACs 2, rotary ACs 6); `rotary: true` lets it pick
+  1-6 shots and jam (`RotaryAc`).
 
 ## `data/bv_skill.json`
 `{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;
