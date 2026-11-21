@@ -210,3 +210,36 @@ Each inspection covers front three-quarter, individual profile and rear three-qu
 **Remaining issues at this stage**: compare final multi-angle screenshot before declaring any model approved. The Atlas still needs accurate head-to-cowl negative space and lower-leg articulation; Wolverine's torso/pauldrons need precise plastic-sculpt silhouette; Jenner's feet and hock are simplified relative to the sculpt. Do not confuse automated Godot pass/fail with visual approval.
 
 **Regression checks** after pass 57: physical atlas codpiece cells, the Wolverine AC/5 mount reaching both arm and barrel, independent rear jump-exhaust parts, and Jenner rear-hock braces, in addition to existing missing-part and empty weapon-port tests. No merge, no APK, no density/detail increase.
+
+## Plastic-weighted reconstruction passes 58–77
+
+**Primary reference weighting:** approximately 70% to Catalyst's exact current released plastic for the selected variant, particularly [Hansen's Roughriders 2023 reposed Atlas](https://store.catalystgamelabs.com/products/battletech-hansens-rough-riders-battle-lance), [A Game of Armored Combat Wolverine WVR-6R grey plastic](https://highlanderhobbies.com/products/wolverine-miniature-a-game-of-armored-combat-box-battletech), and [Inner Sphere Striker Lance Jenner JR7-D plastic](https://www.sarna.net/wiki/File%3AInner_Sphere_Striker_Lance_-_Jenner.jpg). Another ~20% goes to alternate-angle photos of *the same* CGL sculpts ([Wolverine painted sculpt](https://mechpainters.org/miniature/wolverine-clan-wolverine/), [Jenner painted plastic](https://mechpainters.org/miniature/jenner-tandrek-stables/), and [Atlas frontal stock grey photo](https://store.catalystgamelabs.com/cdn/shop/files/HR-Atlas-NewPose.jpg)). Prior TRO drawings and other sculpt interpretations serve as 10% secondary evidence of weapon identity and hidden surfaces only. **Never confuse aftermarket resin or the 2019/2023 poses.**
+
+**Review method:** one actual Godot contact-sheet image combining front three-quarter, left side, and rear three-quarter views of all three models at each grouped checkpoint. Repeat the process after a group of real geometry edits rather than requesting a separate image per pass. Shape-preview materials separate armor components diagnostically; they are not final colors. Voxel-cell tests are the authority on physically open weapon mouths and touching structural bridges, since the preview's visual proxy ignores some erase operations.
+
+| Pass | Chassis | Actual geometry change | Rejected failure mode |
+| --- | --- | --- | --- |
+| 58 | Atlas | Skull cheekbones and lower mandible converge beneath eyes | Inflated humanoid mask |
+| 59 | Wolverine | Sloped, shorter pauldron shells reveal inner shoulder roots | Rounded Atlas-scale shoulders |
+| 60 | Jenner | Lower compact cockpit saucer with narrower three-panel window | Bulbous nose and oversized visor |
+| 61 | Atlas | Separate low square knee cover and vertical shin plate | Tree-trunk calf, balloon knee |
+| 62 | Wolverine | Narrow wedge boots and shin fairing | Same assault-sized legs as Atlas |
+| 63 | Atlas | Tighter main shoulder-cowl margins plus physically separate crest ridges | Single undifferentiated giant shoulder dome |
+| 64 | Wolverine | Shorter rear backpack and narrow lower reactor attachment spine | Tall blank rear torso, disconnected backpack |
+| 65 | Jenner | Physically shift both laser housings, all four muzzles and bores inward | Winglike inflated twin side pods and orphaned bores |
+| 66 | Atlas | Lower skull crown and narrow upper cranial bevel | Dome too high, cartoon forehead |
+| 67 | Wolverine | Taper upper leg and narrower knee/shin sections | Uniform heavy-robot thigh/calf |
+| 68 | Jenner | Shorten three separate toes, reduce sole front | Overlong ski/ostrich feet |
+| 69 | Atlas | Left/right paired rear reactor shields joined to central torso | Featureless back |
+| 70 | Wolverine | Physically hollow paired aft jump exhausts and inset backs | Rear jets depicted as flat sealed caps |
+| 71 | Atlas | Shorten boot core under projected split toe blocks | Single long assault ski foot |
+| 72 | Jenner | Central tapered rear reactor spine linking engine deck | Blank central rear / detached engine housings |
+| 73 | Wolverine | Cut forearm AC5 armor into a narrower taper while keeping physical breech overlap | Solid rectangular toy bazooka and floating gun |
+| 74 | Atlas | Separate mirrored rear hip actuator shields with pelvic contact | Missing rear hips / blank rear thighs |
+| 75 | Jenner | Mirrored slender front ankle links bridging lower calf and toes | Missing actuator in digitigrade leg |
+| 76 | Atlas | Raised separate left/right skull-brow cowls over inset eye geometry | Unrecognizable blank pink face |
+| 77 | Jenner | Lower top of four-port dorsal SRM cassette without filling its bores | Tall square roof launcher |
+
+**Structural and visual audits:** use all three views for bulky armor, disconnected thighs/arms/hocks and absent equipment, but require rasterized occupied-cell checks for bores. Preserve separately authored head, hips, forward/rear leg mechanics, split toes and weapon housings, along with 1 subdivision. The rear Atlas radiator and Wolverine jump nozzles must remain modest so they do not create new rear armor bloat. No merge, APK, or 100–150k high-density step until silhouette approval.
+
+**Known visual shortcomings despite these passes:** Atlas still needs its plastic skull/shoulder/torso proportions matched more precisely; Wolverine's arm and shoulder proportions remain simplified relative to CGL; Jenner's foot, nose and hock mechanics still need further study. A successful Godot import, contact-sheet generation and tests are necessary technical checks, not the definition of faithful visual likeness.
