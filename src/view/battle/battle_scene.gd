@@ -31,6 +31,8 @@ func _ready() -> void:
 	bots = BotDriver.new()
 	bots.controller = controller
 	bots.bot_sides = BattleLaunch.take_bots()
+	bots.skill = BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level
+	BattleLaunch.bot_level = -1
 	explainer = Explainer.new(GameSettings.explain_level)
 	if BattleLaunch.tutorial_path != "":
 		tutorial = Tutorial.from_scenario(BattleLaunch.tutorial_path)
@@ -87,6 +89,9 @@ func _build_views(state: GameState) -> void:
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
+	var plates := Nameplates.new()
+	add_child(plates)
+	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
 
 
 func _wire() -> void:

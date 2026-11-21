@@ -77,3 +77,16 @@ func debrief(i: int, won: bool, progress: Dictionary) -> String:
 	if i + 1 < missions.size():
 		text += "\nNext: %s." % missions[i + 1]["title"]
 	return text
+
+
+## The rules notebook: every lesson of the missions played so far, grouped
+## by mission, so a learner can reread them. [{mission, title, text}]
+func notebook(progress: Dictionary) -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for i in missions.size():
+		if not progress.has(missions[i]["id"]):
+			continue
+		for l: Dictionary in Tutorial.from_scenario(scenario_path(i)).lessons:
+			if l.get("event", "") != "game_over":
+				out.append({"mission": missions[i]["title"], "title": l.get("title", ""), "text": l.get("text", "")})
+	return out

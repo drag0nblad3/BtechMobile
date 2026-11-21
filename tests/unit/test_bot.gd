@@ -59,7 +59,7 @@ func test_bot_holds_fire_to_stay_cool() -> void:
 	for sh in plan["shots"]:
 		heat += r.weapons[sh["weapon"]].def.heat
 	check(heat < 28, "doesn't fire all 28 heat with 10 sinks")
-	check(Advisor.projected_heat(r, heat) <= BotFire.HEAT_STRETCH, "heat in check")
+	check(Advisor.projected_heat(r, heat) <= BotSkill.heat_stretch(), "heat in check")
 	check(plan["reason"].contains("holds"), plan["reason"])
 
 

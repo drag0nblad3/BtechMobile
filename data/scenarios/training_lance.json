@@ -2,6 +2,7 @@
   "name": "Training: Final Exam",
   "map": "river_crossing",
   "bot_sides": [1],
+  "bot_level": 2,
   "units": [
     {"def": "wolverine_wvr6r", "side": 0, "hex": "0316", "facing": 0},
     {"def": "hunchback_hbk4g", "side": 0, "hex": "0516", "facing": 0},

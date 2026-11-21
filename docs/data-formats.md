@@ -93,7 +93,8 @@ Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}
 ```
 `hex` is a mapsheet label; `facing` 0 = north, clockwise.
-Optional: `"name"`, `"bot_sides"` (sides the computer plays) and `"lessons"` for a
+Optional: `"name"`, `"bot_sides"` (sides the computer plays), `"bot_level"` (its
+`BotSkill.Level`, 0 Novice to 3 Elite; default the player's setting) and `"lessons"` for a
 guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` (a
 `GameEvent` type), optional filters `"turn"`, `"min_turn"`, `"phase"` (e.g. "Movement"),
 `"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
