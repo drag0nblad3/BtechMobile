@@ -63,3 +63,19 @@ These are additional views for **shape matching**, not material/texture guides. 
 - All work remains at `subdivide:1`; no procedural detail pass, damage work, texture work, APK build, or merge.
 - The latest single-gallery capture is *shape evidence*, not automatic approval. Atlas/Wolverine still require further front/side reference matching if the component silhouettes fail.
 
+
+## Passes 18–20: multi-view component corrections
+
+Review these **primary and secondary visual references** together, not just a single orthographic silhouette:
+
+| Chassis | Front / facial / arm visual | Three-quarter / leg silhouette visual | Remaining approval criterion |
+| --- | --- | --- | --- |
+| Atlas AS7-D | [Syllogy Atlas miniature, frontal skull and torso](https://www.laserforgeminiatures.com/products/atlas-as7-d-mech) | [LizzyGibbs3D AS7-D CAD, alternate angle](https://www.deviantart.com/lizzygibbs3d/art/FAN-ART-BattleTech-MechWarrior-AS-7-D-Atlas-551614099) | Broad cowls frame the skull, cheek/jaw reads skull-like, projected RT AC/20 + LT rack, non-tubular arms |
+| Wolverine WVR-6R | [SYZGames two-pose miniature](https://syzgames.com/products/wolverine-wvr-6r) | [AfterDark alternate WVR-6R view](https://afterdarkprints.net/products/wolverine-6r-alternate-battletech-model) | Sloping *narrower* pauldrons rather than Atlas bulk, six-port SRM at shoulder, long independent RA cannon, angular legs |
+| Jenner JR7-D | [Mordel TRO illustrated JR7-D](https://mordel.net/tro.php?a=vtbm&id=188) | [CGL JR7-D miniature oblique view](https://www.ebay.com/itm/205033594352) | A long armored prow with inset glazing, compact paired side lasers, rear dorsal four-port rack, reverse-knee + aft hock legs |
+
+- **18** — Atlas cheekbones/mandible sculpted independently and 100t scale separated from 55t Wolverine; Wolverine swept upper-arm pauldron roots; Jenner windshield reduced and physical hock offset increased. Compared with the single true Godot render: the overall scale improved, but barrel/arm shapes still differed.
+- **19** — Eight-corner planar Atlas upper arms, roofed Wolverine shoulder plates and angled shin guards; Jenner's cockpit rebuilt as an aircraft wedge and the visor confined to the upper prow. One render, angled slightly more sideways to expose side-depth and leg hock.
+- **20** — Atlas RT AC/20 is now an open 7×7 grid-mouth housing protruding from the torso; Wolverine RA AC/5 now extends as a separate forearm cannon. Both are real individually defined cells, not painted outlines; their front faces and positions are covered by low-resolution shape-regression tests.
+
+**Open visual issues / next review**: the torso and legs must read as unique chassis from all angles and still need approval before 100–150k voxel detailing. Do not use the preview's component-identification color overlays as game materials. Keep one combined image per iteration, `subdivide:1`, no build or merge.
