@@ -179,3 +179,34 @@ The reference hierarchy remains CGL **released plastic sculpts first**, front an
 **Important diagnostic discovery:** The existing front-only gallery concealed a striking gap between Wolverine's right-arm cannon and upper forearm. Added front, side and rear three-quarter Godot review passes; compose these into **one user-facing multi-angle image**, not dozens of images. Cell-contact tests now require the diagonal bridge to intersect both the arm and shroud, rather than merely appearing nearby.
 
 This project remains at the shape gate, with `subdivide=1` and no 100–150k voxel detailing. Passing Godot import and unit tests is only a technical gate; CGL sculpt resemblance must still be approved. Do not merge PR #102 or build an APK without instruction.
+
+## Catalyst plastic reference refinement — cycles 48–57
+
+The three sculpts here are still **low-resolution component-shape studies** with subdivision 1. The requested 100–150k visual detail work is *not* authorized until they pass the silhouette review.
+
+### Reference hierarchy and views
+
+1. **Primary: currently released CGL plastic**, especially the [2023 Hansen's Roughriders Atlas grey miniature front](https://store.catalystgamelabs.com/products/battletech-hansens-rough-riders-battle-lance), [2019 CGL Wolverine WVR-6R Beginner/AGOAC plastic](https://www.sarna.net/wiki/Miniatures_-_Catalyst_Game_Labs), and [Striker Lance Jenner JR7-D grey sculpt](https://www.sarna.net/wiki/BattleTech_Inner_Sphere_Striker_Lance). Prioritize actual arm/head/calf arrangement over old TRO outlines.
+2. **Secondary CGL alternate views:** [official Wolverine Premium, assembled and unassembled views](https://store.catalystgamelabs.com/products/battletech-premium-miniature-wolverine), [2023 Atlas grey minis front photo](https://kryptonitekollectibles.com/products/battletech-hansens-roughriders-battle-lance), [2021 Jenner product photograph](https://www.ebay.com/itm/403292195264), plus [Jenner painted CGL miniature multiple views](https://jadedfalconer.com/Pages/1Light/jenner).
+3. Older TRO images, player 3-D printed third-party reinterpretations: supplemental only; reject variants or redesigns inconsistent with the above plastic forms.
+
+Each inspection covers front three-quarter, individual profile and rear three-quarter **inside one combined Godot review image**. The renderer rotates each mech in place for side/rear to avoid accidental overlap of the three mechs along the gallery X-axis. Images show low-saturation part-category colors; these are *not* game materials. GDScript renderer may show covered-over erase voids poorly, so rasterized cell tests still check the launcher mouths.
+
+### Ten reference-driven geometry passes
+
+| Pass | Chassis | Core form fix | Defect targeted |
+| --- | --- | --- | --- |
+| 48 | Atlas | Smaller skull brow/jaw/cheek outline | Giant projecting head, bulging Death's Head |
+| 49 | Wolverine | Narrower CGL-style pauldrons, less bloated twin breastplates | Oversized generic shoulders |
+| 50 | Jenner | More physical rearward hock and pitched lower leg section | Straight-leg silhouette / obscured digitigrade |
+| 51 | Atlas | Lower central abdomen, narrower hip silhouette with central cod guard | Empty waist and detached hips |
+| 52 | Wolverine | Shallow paired angled armor and a central recessed chest keel; independently narrow arm roots | Inflated chest and shoulder-to-torso gap |
+| 53 | Jenner | Compact lateral twin-laser wing roots, shorter stepped cockpit/chin | Duck-like face and oversized fighter nose |
+| 54 | Atlas | Smaller angular knee cover, squarer narrow shins | Balloon knees and generic leg pillars |
+| 55 | Wolverine | Two structural rear jet/exhaust modules paired with backpack | Missing aft machinery seen from rear |
+| 56 | Jenner | Narrow knee cowl with rear hock piston/brace | Bloated knee covering true reverse joint |
+| 57 | Wolverine | Tapered diagonal **physical** AC/5 breech-to-upper-arm assembly | Cannon housing floating separately in side view |
+
+**Remaining issues at this stage**: compare final multi-angle screenshot before declaring any model approved. The Atlas still needs accurate head-to-cowl negative space and lower-leg articulation; Wolverine's torso/pauldrons need precise plastic-sculpt silhouette; Jenner's feet and hock are simplified relative to the sculpt. Do not confuse automated Godot pass/fail with visual approval.
+
+**Regression checks** after pass 57: physical atlas codpiece cells, the Wolverine AC/5 mount reaching both arm and barrel, independent rear jump-exhaust parts, and Jenner rear-hock braces, in addition to existing missing-part and empty weapon-port tests. No merge, no APK, no density/detail increase.
