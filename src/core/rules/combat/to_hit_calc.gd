@@ -12,6 +12,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		return th
 	if attacker.asset != null:
 		return AssetFire.to_hit(state, attacker, w, target)
+	if target.asset != null and target.asset.carried_by >= 0:
+		th.impossible = "It is riding inside a transport"
+		return th
 	if target.coord == attacker.coord:
 		th.impossible = "A 'Mech can't shoot at a unit in its own hex"
 		return th
