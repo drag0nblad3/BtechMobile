@@ -70,6 +70,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if ams != null:
 		data["ams"] = true
 	var packets: Array[int] = c["packets"]
+	if not w.def.damage_by_range.is_empty():  # variable damage (p. 182)
+		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
+		packets = [w.def.damage_at(Hex.distance(attacker.coord, target.coord), shift)] as Array[int]
+		data["damage_at_range"] = packets[0]
 	if c["n"] > 0 or ams != null:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]

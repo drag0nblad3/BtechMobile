@@ -129,9 +129,14 @@ static func _loc_line(u: Unit, loc: int) -> String:
 	return "%s  armor %s  ·  [color=%s]structure %s[/color]%s\n" % [Location.code_for(u.def, loc), a, col, s, wet]
 
 
+static func _dmg(d: WeaponDef) -> String:
+	return "/".join(d.damage_by_range.map(func(v: int) -> String: return str(v))) if not d.damage_by_range.is_empty() \
+			else str(d.damage)
+
+
 static func _weapon_line(u: Unit, w: MountedWeapon) -> String:
 	var line := "%s  %d · %s · %s" % [w.label(), w.def.heat,
-			("%d×%d" % [w.def.missiles, w.def.damage]) if w.def.is_cluster() else str(w.def.damage),
+			("%d×%d" % [w.def.missiles, w.def.damage]) if w.def.is_cluster() else _dmg(w.def),
 			w.def.range_text()]
 	if w.def.uses_ammo():
 		line += " · ammo %d" % u.ammo_for(w.def)

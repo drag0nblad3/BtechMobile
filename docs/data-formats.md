@@ -32,6 +32,7 @@ heat per building level that sets it alight.
 - `indirect: true` (LRMs) lets the weapon fire without line of sight through a spotter.
 - `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
+- `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
 - `beacon: true` (Narc): a hit attaches a homing pod instead of damage; `ammo_damage` overrides
@@ -65,7 +66,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
   rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
   `heat_sink` items. `"heat_sink_type": "double"` makes them all doubles (2 heat,
-  3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon.
+  3 slots each). A `case` item puts CASE in that location, `case2` CASE II. `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
   `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.

@@ -9,7 +9,7 @@ extends RefCounted
 ## "case", "hatchet", "sword", "endo_steel", "ferro_fibrous", "tsm",
 ## "targeting_computer", "guardian_ecm", "masc", "supercharger", "c3_master",
 ## "c3_slave", "beagle_probe", "c_active_probe", "c_light_active_probe",
-## "a_pod", "tag", "c_tag" (InertGear).
+## "a_pod", "tag", "c_tag" (InertGear), "case2" (CASE II).
 ## In the file, "<item>*N" repeats an item N times.
 
 ## One-per-'Mech items stored as a location: item -> UnitDef property.
@@ -29,6 +29,8 @@ static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void
 		def.set(LOC_ITEMS[item], loc)
 	elif item == "case":
 		def.case_locs.append(loc)
+	elif item == "case2":
+		def.case2_locs.append(loc)
 	elif item == "hatchet" or item == "sword":
 		def.melee.append({"kind": item, "loc": loc})
 	elif item == "heat_sink" or item == "jump_jet":

@@ -6,6 +6,7 @@
     {"id": "ppc", "name": "PPC", "type": "energy", "heat": 10, "damage": 10, "min": 3, "short": 6, "medium": 12, "long": 18, "bv": 176, "slots": 3, "tons": 7},
     {"id": "light_ppc", "name": "Light PPC", "type": "energy", "heat": 5, "damage": 5, "min": 3, "short": 6, "medium": 12, "long": 18, "bv": 88, "slots": 2, "tons": 3},
     {"id": "heavy_ppc", "name": "Heavy PPC", "type": "energy", "heat": 15, "damage": 15, "min": 3, "short": 6, "medium": 12, "long": 18, "bv": 317, "slots": 4, "tons": 10},
+    {"id": "snub_nose_ppc", "name": "Snub-Nose PPC", "type": "energy", "heat": 10, "damage": 10, "damage_by_range": [10, 8, 5], "min": 0, "short": 9, "medium": 13, "long": 15, "bv": 165, "slots": 2, "tons": 6},
     {"id": "flamer", "name": "Flamer", "type": "energy", "heat_damage": true, "heat": 3, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "bv": 6, "slots": 1, "tons": 1},
     {"id": "machine_gun", "name": "Machine Gun", "type": "ballistic", "heat": 0, "damage": 2, "min": 0, "short": 1, "medium": 2, "long": 3, "bv": 5, "ammo_bv": 1, "slots": 1, "tons": 0.5, "ammo_per_ton": 200},
     {"id": "ac2", "name": "AC/2", "type": "ballistic", "heat": 1, "damage": 2, "min": 4, "short": 8, "medium": 16, "long": 24, "bv": 37, "ammo_bv": 5, "slots": 1, "tons": 6, "ammo_per_ton": 45},
