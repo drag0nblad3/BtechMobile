@@ -112,7 +112,7 @@ func _setup_view(index: int) -> void:
 		"front":
 			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"three_quarter":
-			camera.look_at_from_position(center + Vector3(distance * 0.53, 1.1, -distance * 0.85), center)
+			camera.look_at_from_position(center + Vector3(distance * 0.63, 1.1, -distance * 0.79), center)
 		"side":
 			camera.look_at_from_position(center + Vector3(distance, 0.37, 0), center)
 		"rear":
