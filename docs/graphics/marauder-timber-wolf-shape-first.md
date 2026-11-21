@@ -9,7 +9,7 @@ other procedural lab's models.
 | Design | Shape study | Detailed model | Official record |
 | --- | --- | --- | --- |
 | Marauder MAD-3R | `data/voxels/marauder_shape.json` | `data/voxels/marauder.json` | `marauder_mad3r` |
-| Timber Wolf Prime | `data/voxels/timber_wolf_shape.json` | `data/voxels/timber_wolf.json` | `timber_wolf` |
+| Timber Wolf Prime | `data/voxels/timber_wolf_shape.json` | `data/voxels/timber_wolf.json` | `timber_wolf_prime` |
 
 ## Method
 
@@ -116,3 +116,42 @@ The Claude Voxel Test showcases both LODs of all three; the new test file
 `tests/unit/test_vx_three_chassis.gd` checks authoring-layer cell overlap,
 record-sheet IDs, LRM tube openings, preserved hull contours and 3× voxel
 budgets. No APK was produced and game-rule state remains independent.
+
+## Five-pass proportionality and connectivity sweep (2026-11-21)
+
+All five new 'Mechs received **five coordinated shape-first passes** on both the
+`_shape.json` silhouettes and the high-detail JSON: proportion study, major
+silhouette changes, joint and contact geometry, unique armaments, and structural
+validation. References weighted the current Catalyst miniatures alongside other
+angles, not generic humanoid templates.
+
+| Design | New emphasis | Mechanical and signature features |
+| --- | --- | --- |
+| Marauder MAD-3R | Longer beaked cockpit, broad flat wing-like shoulders | Dorsal AC/5 cradle separated from the CT; PPC cheek/arm mounts; digitigrade knees and tarsi |
+| Timber Wolf Prime | More forward oval nose; visually separate elevated twin missile towers | Shoulder-rack supports and twin arm laser housings; 20 physical ports per rack retained; digitigrade ankles |
+| Warhammer WHM-6R | Lower cockpit between distinctive shoulder modules; shorter paired arm PPC housings | PPC barrels attached to forearms; SRM-6 pod, ankle plates and contact joints |
+| Archer ARC-2R | Lower cockpit and shallower, narrower, paired vertical missile banks | Both LRM-20 banks retain their own 4×5 bore pattern; arm fists and rack/body contact |
+| Shadow Hawk SHD-2H | Lower head and strong shoulder asymmetry | Slender left AC/5 mount, **five** right LRM-5 apertures (not six), visible fist housings and bridge mounts |
+
+**Verification:** A separate offline authoring-grid raster confirmed **zero
+overlaps between different articulated parts** in the edited models. Additional
+connectors were inserted where contact was missing, and a fine-grid connected
+component scan of the locally refined Warhammer, Archer and Shadow Hawk shows
+no detached voxel islands. Offline high-detail geometry previews of the latter
+three were generated; these are **not Godot screenshots** and their
+finishing/edge treatment is not the engine's final output. The draft PR should
+still be visually reviewed in Godot using front, side, rear and overhead views.
+
+Approximate low-to-fine counts for the offline iteration (before Godot bevels):
+
+| Design | Coarse silhouette | Fine geometry |
+| --- | ---: | ---: |
+| Marauder | ~7,865 | ~147,500 projected |
+| Timber Wolf | ~9,045 | ~148,500 projected |
+| Warhammer | ~9,100 | ~139,200 |
+| Archer | ~10,500 | ~146,800 |
+| Shadow Hawk | ~6,430 | ~112,500 |
+
+Counts from the local raster and mathematical subdivision are useful budget
+estimates but not official Godot runtime readings. Combat unit rules and stats
+were not changed, no Android build was made, and the PR remains unmerged.
