@@ -10,6 +10,7 @@ var name: String
 var type: String       ## "energy", "ballistic" or "missile".
 var heat: int
 var damage: int        ## Per shot, or per missile for missile weapons.
+var damage_by_range: Array[int] = []  ## Variable damage (p. 182): short, medium, long.
 var missiles: int      ## 0 for non-missile weapons.
 var group: int         ## Missile damage cluster size (LRM 5, SRM 1).
 var min_range: int
@@ -51,6 +52,8 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.type = d.get("type", "energy")
 	w.heat = int(d.get("heat", 0))
 	w.damage = int(d["damage"])
+	for v in d.get("damage_by_range", []):
+		w.damage_by_range.append(int(v))
 	w.missiles = int(d.get("missiles", 0))
 	w.group = int(d.get("group", 1))
 	w.min_range = int(d.get("min", 0))
@@ -101,6 +104,15 @@ func is_cluster() -> bool:
 
 
 ## Damage if every shot/missile hits (for advice and record sheets).
+## Variable damage (p. 182): the value for the bracket `dist` falls in,
+## `shift` brackets longer (under water a beam counts one bracket longer).
+func damage_at(dist: int, shift := 0) -> int:
+	var br := bracket(dist)
+	if damage_by_range.is_empty() or br == Bracket.OUT:
+		return damage
+	return damage_by_range[clampi(br + shift - Bracket.SHORT, 0, 2)]
+
+
 func max_damage() -> int:
 	return damage * missiles if is_cluster() else damage
 

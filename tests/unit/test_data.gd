@@ -74,7 +74,7 @@ func test_equipment_fits_slots() -> void:
 			want += (m["weapon"] as WeaponDef).slots
 			if m.get("artemis", false):
 				want += 1
-		want += def.ammo_mounts.size() + def.case_locs.size()
+		want += def.ammo_mounts.size() + def.case_locs.size() + def.case2_locs.size()
 		if def.ecm_loc >= 0:
 			want += Ecm.slots(def)
 		want += InertGear.slots(def)

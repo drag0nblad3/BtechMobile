@@ -1,0 +1,75 @@
+{
+ "id": "phoenix_hawk_pxh1c_special",
+ "name": "Phoenix Hawk",
+ "model": "PXH-1c 'Special'",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 8,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser",
+   "machine_gun",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "snub_nose_ppc",
+   "medium_laser",
+   "machine_gun",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "ammo:machine_gun",
+   "case",
+   "endo_steel*2"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "er_large_laser",
+   "endo_steel*2"
+  ],
+  "CT": [
+   "guardian_ecm"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2493,
+  "megamek": "data/mekfiles/meks/3075/Phoenix Hawk PXH-1c.mtf",
+  "published": "RS:3075u-AW,RSFP:SLDF",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Phoenix Hawk PXH-1c 'Special' (ForcePack-Record-Sheets-Star-League-Command-Lance)",
+  "megamek_bv": 1443
+ },
+ "bv": 1443,
+ "sprite": "phoenix_hawk",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Medium Lasers, 2 Machine Guns, Snub-Nose PPC, ER Large Laser; walks 6, runs 9, jumps 6."
+}

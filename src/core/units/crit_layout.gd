@@ -69,6 +69,8 @@ static func build(def: UnitDef) -> Array:
 			_place(out[def.tc_loc], CritSlot.new(CritSlot.Kind.TARGETING, "Targeting Computer"), def)
 	for loc in def.case_locs:
 		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE"), def)
+	for loc in def.case2_locs:
+		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE II"), def)
 	for loc: int in def.bulk_slots:
 		for item: String in def.bulk_slots[loc]:
 			_place(out[loc], CritSlot.new(CritSlot.Kind.BULK, BULK_NAMES[item]), def)

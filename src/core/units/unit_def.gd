@@ -20,6 +20,7 @@ var double_heat_sinks := false
 ## Physical weapons: [{kind: "hatchet"|"sword", loc}] (MeleeWeapons).
 var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
+var case2_locs: Array[int] = []  ## CASE II (AmmoExplosion).
 var ecm_loc := -1  ## Location of a Guardian ECM suite (Ecm), -1 none.
 var masc_loc := -1  ## Location of MASC (Masc), -1 none.
 var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 none.

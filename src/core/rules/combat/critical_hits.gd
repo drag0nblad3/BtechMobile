@@ -29,19 +29,20 @@ static func after_damage(state: GameState, dice: Dice, emit: Callable, u: Unit,
 		if checked.has(loc) or (not st["breached"] and not first_tac) or u.destroyed:
 			continue
 		checked[loc] = true
+		var mod := -1 if st.get("case2", false) else 0  # CASE II (p. 91)
 		if st["destroyed"]:
 			if _has_explosive(u, loc):
-				roll_location(state, dice, emit, u, loc, true)
+				roll_location(state, dice, emit, u, loc, true, mod)
 			continue
 		if u.is_location_destroyed(loc):
 			continue
-		roll_location(state, dice, emit, u, loc)
+		roll_location(state, dice, emit, u, loc, false, mod)
 
 
 ## explosive_only: the location was just destroyed; only ammo hits count.
 static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int,
-		explosive_only: bool = false) -> void:
-	var roll := dice.roll_2d6()
+		explosive_only: bool = false, mod := 0) -> void:
+	var roll := dice.roll_2d6() + mod
 	var n := crits_for_roll(roll)
 	emit.call(GameEvent.CRIT_CHECK, {"unit_id": u.id, "loc": loc, "roll": roll, "crits": n})
 	if explosive_only:

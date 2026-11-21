@@ -1,0 +1,75 @@
+{
+ "id": "chimera_cma2k",
+ "name": "Chimera",
+ "model": "CMA-2K",
+ "tonnage": 40,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 13,
+  "RT": 13,
+  "CT": 18,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*4",
+   "endo_steel*2",
+   "tsm*3"
+  ],
+  "RA": [
+   "sword",
+   "endo_steel*2",
+   "tsm*3"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "small_pulse_laser",
+   "small_laser",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "jump_jet*4",
+   "snub_nose_ppc",
+   "c3_slave",
+   "endo_steel*2"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5667,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Chimera CMA-2k.mtf",
+  "published": "RS:3067u",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Chimera CMA-2K (ForcePack-Record-Sheets-House-Kurita)",
+  "megamek_bv": 1528
+ },
+ "bv": 1528,
+ "sprite": "chimera",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 Medium Lasers, Small Pulse Laser, Small Laser, Snub-Nose PPC; walks 7, runs 11, jumps 7."
+}
