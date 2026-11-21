@@ -1,0 +1,17 @@
+{
+  "id": "tarantula_zph1a", "name": "Tarantula", "model": "ZPH-1A", "tonnage": 25,
+  "walk_mp": 8, "jump_mp": 8, "heat_sinks": 10, "engine_type": "xl", "structure_type": "endo_steel", "quad": true, "sprite": "tarantula",
+  "role": "Four-legged scout. Eight walking and jumping MP, sideways steps to dodge, and lasers to finish off damaged 'Mechs; it can't take many hits.",
+  "armor": {"HD": 9, "CT": 12, "LT": 9, "RT": 9, "FLL": 12, "FRL": 11, "RLL": 12, "RRL": 12},
+  "rear_armor": {"CT": 4, "LT": 3, "RT": 3},
+  "equipment": {
+    "LT": ["medium_laser", "machine_gun", "endo_steel*6"],
+    "RT": ["medium_laser", "machine_gun", "endo_steel*6"],
+    "CT": ["ammo:machine_gun", "endo_steel"],
+    "HD": ["endo_steel"],
+    "FLL": ["jump_jet*2"],
+    "FRL": ["jump_jet*2"],
+    "RLL": ["jump_jet*2"],
+    "RRL": ["jump_jet*2"]
+  }
+}

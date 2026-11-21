@@ -51,3 +51,35 @@ func test_ranges() -> void:
 	check(not _shot("c_heavy_machine_gun", 3).possible(), "HMG has no long range")
 	check_eq(_mod(_shot("c_lrm10", 2), "minimum range"), 0, "no minimum range penalty")
 	check_eq(_mod(_shot("c_lb2x_ac", 2), "minimum range"), 3, "LB 2-X keeps one")
+
+
+func test_streak_lrm_hits_with_everything_in_fives() -> void:
+	var s := GameState.new(open_map(30, 4))
+	var d := UnitDef.from_dict({"id": "a", "name": "a", "tonnage": 50, "walk_mp": 4,
+			"armor": {"CT": 20}, "equipment": {"RT": ["c_streak_lrm20", "ammo:c_streak_lrm20"]}}, weapons())
+	var a := Unit.new(1, d, 0, hex_at(1, 2), 2)
+	var t := Unit.new(2, make_def(4), 1, hex_at(4, 2), 5)
+	s.add_unit(a)
+	s.add_unit(t)
+	check(not a.weapons[0].def.indirect, "no indirect fire")
+	check_eq(_mod(ToHitCalc.weapon(s, a, a.weapons[0], t), "minimum range"), 0)
+	var dice := LoadedDice.new()
+	dice.queue_2d6(2)  # miss: holds fire
+	var ev := []
+	var log := func(ty: StringName, e: Dictionary) -> void: ev.append([ty, e])
+	WeaponFire.resolve(s, dice, log, a, a.weapons[0], t, ToHitCalc.weapon(s, a, a.weapons[0], t))
+	check_eq(a.ammo_for(a.weapons[0].def), 6, "no ammo used")
+	check_eq(a.heat_generated, 0)
+	ev.clear()
+	dice.queue_2d6(12)
+	for i in 4:
+		dice.queue_2d6(7)
+	WeaponFire.resolve(s, dice, log, a, a.weapons[0], t, ToHitCalc.weapon(s, a, a.weapons[0], t))
+	var dmg := ev.filter(func(e: Array) -> bool: return e[0] == GameEvent.DAMAGE).map(func(e: Array) -> int: return e[1]["amount"])
+	check_eq(dmg, [5, 5, 5, 5], "all 20 missiles in groups of 5")
+
+
+func test_streak_log_explains_the_lock() -> void:
+	var t := WeaponText.fired(GameState.new(open_map(4, 4)), {"attacker_id": 1, "target_id": 2, "weapon": "Streak SRM 6",
+			"roll": 9, "need": 7, "hit": true, "mods": [], "missiles": 6, "streak_lock": true}, ExplainLevel.FULL, {})
+	check(t.contains("every missile hits"), t)

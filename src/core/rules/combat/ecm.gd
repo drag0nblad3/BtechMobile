@@ -6,7 +6,7 @@ extends RefCounted
 ## normally but lose their +2 cluster bonus. Streaks, targeting computers
 ## and AMS are unaffected. Artemis also never helps indirect fire (p. 188).
 ## TODO(rules): ECM is always on (it is an activated item); water-line
-## blocking, Angel ECM, Narc, C3 and probes aren't modelled.
+## blocking, Angel ECM and probes aren't modelled. C3 checks ECM itself (C3).
 
 const RADIUS := 6
 
@@ -26,7 +26,7 @@ static func hostile_at(state: GameState, side: int, c: Vector2i) -> bool:
 
 ## Why this shot gets no Artemis bonus ("" if it does).
 static func artemis_blocked(state: GameState, attacker: Unit, target: Unit, th: ToHit) -> String:
-	if th.spotter_id >= 0:
+	if th.indirect:
 		return "indirect fire gets no Artemis bonus"
 	if hostile_at(state, attacker.side, attacker.coord) or hostile_at(state, attacker.side, target.coord):
 		return "enemy ECM jams the Artemis guidance"

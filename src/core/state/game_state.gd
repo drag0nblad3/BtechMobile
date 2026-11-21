@@ -30,6 +30,17 @@ var initiative_die: Dictionary = {}
 var fire_heat: Dictionary = {}
 ## Spotters for indirect fire: unit id -> {target, turn}.
 var spotting: Dictionary = {}
+## Weather, temperature and gravity for the whole map.
+var conditions := Conditions.new():
+	set(v):
+		conditions = v
+		if map != null:
+			map.windy = v.wind
+			Surfaces.apply_conditions(map, v)
+## Units that passed this turn's low-visibility sensor check: id -> true.
+var sees_through: Dictionary = {}
+## Mission and its running score (Mission, MissionState).
+var mission := MissionState.new()
 var game_over: bool = false
 var winner: int = -1
 

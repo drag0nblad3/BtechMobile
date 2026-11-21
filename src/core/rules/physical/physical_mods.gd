@@ -67,6 +67,17 @@ static func shoved_already(state: GameState, t: Unit) -> bool:
 	return false
 
 
+## Pushing a 'Mech other than `a` this turn? It can't be pushed (errata p. 83).
+## TODO(rules): the errata bars pushing a 'Mech that is pushing; the book's
+## "two 'Mechs push each other" case is kept, so only a push at a third
+## 'Mech counts.
+static func pushing_other(state: GameState, t: Unit, a: Unit) -> bool:
+	for d: Dictionary in state.declared_physical:
+		if int(d["attacker_id"]) == t.id and d["kind"] == "push" and int(d.get("target_id", -1)) != a.id:
+			return true
+	return false
+
+
 ## Busy charging or jumping onto someone this turn?
 static func charging(state: GameState, u: Unit) -> bool:
 	for d: Dictionary in state.declared_physical:

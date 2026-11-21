@@ -23,6 +23,8 @@ var engine_hits: int = 0
 var gyro_hits: int = 0
 var sensor_hits: int = 0
 var heat_sinks_lost: int = 0
+var sinks_off: int = 0  ## Heat sinks switched off by choice (HeatSinkSwitch).
+var sinks_off_request: int = -1  ## Sinks to have off after the End Phase, -1 none.
 ## Physical weapons destroyed by critical hits: index into def.melee -> true.
 var melee_lost: Dictionary = {}
 ## Club carried: "" none, "tree" or "girder" (MeleeWeapons).
@@ -41,6 +43,9 @@ var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs)
 var shutdown: bool = false
 var voluntary_shutdown: bool = false  ## Shut down by choice: stays down until restarted (VoluntaryShutdown).
 var power_request: String = ""  ## "off" / "on" at the next Heat Phase (VoluntaryShutdown).
+var masc_level: int = 0  ## Turns of MASC use in a row, less one per rest turn (Masc).
+var sc_level: int = 0  ## The same for the supercharger (Supercharger).
+var sc_lost: bool = false  ## Supercharger wrecked by a failed roll.
 
 # This turn ---------------------------------------------------------------
 var has_moved: bool = false
@@ -48,6 +53,12 @@ var has_fired: bool = false
 var has_physical: bool = false
 var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
+var masc_used: bool = false    ## MASC engaged this turn (worked or not).
+var masc_active: bool = false  ## MASC worked: running MP is twice walking MP.
+var masc_failed: bool = false  ## MASC failed: leg criticals owed after the move.
+var sc_used: bool = false  ## Supercharger engaged this turn; sc_active it worked,
+var sc_active: bool = false  ## sc_failed engine criticals are owed after the move.
+var sc_failed: bool = false
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
@@ -67,7 +78,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for loc in Location.COUNT:
 		armor.append(def.armor[loc] if def.armor.size() > loc else 0)
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
-		structure.append(StructureTable.points(def.tonnage, loc))
+		structure.append(StructureTable.points(def.tonnage, loc, def.quad))
 	for m in def.weapon_mounts:
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
@@ -75,6 +86,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for a in def.ammo_mounts:
 		ammo.append(AmmoBin.new(a["weapon"], a["loc"], a.get("kind", "")))
 	Narc.setup_ammo(self)
+	Atm.setup_ammo(self)
 	slots = CritLayout.build(def)
 
 
@@ -87,6 +99,8 @@ func reset_for_turn() -> void:
 	torso_twist = 0
 	heat_generated = 0
 	outside_heat = 0
+	Masc.new_turn(self)
+	Supercharger.new_turn(self)
 	for w in weapons:
 		w.fired = false
 		w.engaged = 0
@@ -118,7 +132,7 @@ func has_working_actuator(loc: int, actuator: String) -> bool:
 
 func leg_actuator_hits() -> int:
 	var n := 0
-	for loc in [Location.LL, Location.RL]:
+	for loc in Location.legs(def):
 		for s: CritSlot in slots[loc]:
 			if s.kind == CritSlot.Kind.ACTUATOR and s.hit:
 				n += 1
@@ -126,10 +140,13 @@ func leg_actuator_hits() -> int:
 
 
 func legs_destroyed() -> int:
-	return int(is_location_out(Location.LL)) + int(is_location_out(Location.RL))
+	return Location.legs(def).filter(func(l: int) -> bool: return is_location_out(l)).size()
 
 
+## Hip hits with a biped's effects (a quad's first one doesn't count, Quad).
 func hip_hits() -> int:
+	if def.quad:
+		return Quad.counted_hips(self)
 	var n := 0
 	for loc in [Location.LL, Location.RL]:
 		if not has_working_actuator(loc, "hip") and not is_location_out(loc):
@@ -146,7 +163,7 @@ func has_hit_slot(kind: int) -> bool:
 
 
 func working_heat_sinks() -> int:
-	return maxi(0, def.heat_sinks - heat_sinks_lost)
+	return maxi(0, def.heat_sinks - heat_sinks_lost - sinks_off)
 
 
 ## Heat removed each Heat Phase by the working heat sinks.
@@ -169,15 +186,22 @@ func lose_heat_sink(slot: CritSlot) -> bool:
 ## leg, lower leg or foot hit is -1, but leg damage can't go below 1; a
 ## destroyed leg sets the base to 1; both legs gone is 0.
 func walk_mp() -> int:
+	if def.quad:
+		var qb := Quad.walk_base(self)
+		return maxi(0, qb + (Tsm.mp_bonus(self) if qb > 0 else 0) - HeatScale.mp_penalty(heat))
 	if legs_destroyed() >= 2:
 		return 0
 	var base := mini(def.walk_mp, 1) if legs_destroyed() == 1 \
 			else maxi(mini(def.walk_mp, 1), def.walk_mp - leg_actuator_hits())
+	if base > 0:
+		base += Tsm.mp_bonus(self)
 	return maxi(0, base - HeatScale.mp_penalty(heat))
 
 
 func run_mp() -> int:
-	return ceili(walk_mp() * 1.5)
+	if masc_active and sc_active:
+		return ceili(walk_mp() * 2.5)
+	return walk_mp() * 2 if masc_active or sc_active else ceili(walk_mp() * 1.5)
 
 
 ## Jump MP after jump jet damage.
@@ -193,7 +217,7 @@ func jump_mp() -> int:
 ## Working jump jets in the legs (they don't fire under water).
 func leg_jump_jets() -> int:
 	var n := 0
-	for loc in [Location.LL, Location.RL]:
+	for loc in Location.legs(def):
 		if is_location_destroyed(loc):
 			continue
 		for s: CritSlot in slots[loc]:

@@ -4,12 +4,17 @@ extends RefCounted
 ## the nearest enemy, and score it: expected damage it can deal next phase,
 ## minus expected damage enemies can deal to it, minus heat.
 
-const DAMAGE_TAKEN_WEIGHT := 0.8
+## The weight on damage taken, move jitter and rear-arc bonus come from BotSkill.
 const MAX_CANDIDATES := 60
 
 
 ## Returns {key: Vector3i, mode, reason, charge: target id or -1}.
 static func plan(state: GameState, u: Unit) -> Dictionary:
+	if ForcedWithdrawal.withdrawing(state, u):
+		return BotWithdraw.plan(state, u)
+	var leave := BotObjectives.exit_plan(state, u)
+	if not leave.is_empty():
+		return leave
 	var best := {"key": MoveOptions.key(u.coord, u.facing), "mode": MoveMode.Kind.WALK,
 			"score": -INF, "reason": "stays put", "charge": -1}
 	for mode in [MoveMode.Kind.WALK, MoveMode.Kind.RUN, MoveMode.Kind.JUMP]:
@@ -29,6 +34,8 @@ static func _candidates(state: GameState, u: Unit, opts: MoveOptions) -> Array[V
 	var out: Array[Vector3i] = []
 	for c: Vector2i in opts.reachable_hexes():
 		var keys := opts.end_keys_in(c)
+		if keys.is_empty():
+			continue
 		var pick := keys[0]
 		if enemy:
 			for k in keys:
@@ -56,7 +63,7 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	u.hexes_moved = hexes
 	u.heat_generated += MoveMode.heat(mode, u.hexes_moved) if moved else 0
 	var dealt: float = BotFire.plan(state, u)["value"]
-	var charge := BotCharge.evaluate(state, u, opts.budget - int(opts.cost.get(k, 0))) if moved else {}
+	var charge := BotCharge.evaluate(state, u, opts.budget - int(opts.cost.get(k, 0))) if moved and BotSkill.basic_tricks() else {}
 	if not charge.is_empty() and charge["value"] <= dealt:
 		charge = {}
 	if not charge.is_empty():
@@ -68,13 +75,17 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 				if o["to_hit"].possible():
 					taken += Advisor.expected_damage(o["weapon"], o["to_hit"])
 	var heat_cost := maxf(0.0, Advisor.projected_heat(u, 0) - 2) * 0.5
-	var score := dealt - DAMAGE_TAKEN_WEIGHT * taken - heat_cost
+	var score := dealt - BotSkill.taken_weight() * taken - heat_cost + BotSkill.jitter(u, state.turn, k)
+	var behind := _rear_of(state, u)
+	score += BotSkill.rear_bonus() * behind
 	# Close toward the range its weapons like best.
 	var enemy := nearest_enemy(state, u, u.coord)
 	var gap := 0
 	if enemy:
 		gap = maxi(0, Hex.distance(u.coord, enemy.coord) - preferred_range(u))
 		score -= 0.3 * gap
+	var obj := BotObjectives.bonus(state, u, u.coord)
+	score += obj[0]
 	var tile := state.map.get_tile(u.coord)
 	var where := "stays at %s" % Hex.label(u.coord) if not moved else "%s to %s" % [
 			MoveMode.name_of(mode).to_lower() + "s", Hex.label(u.coord)]
@@ -83,6 +94,10 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 		reason = "%s and %s" % [where, charge["reason"]]
 	elif dealt == 0.0 and gap > 0:
 		reason = "%s to close in (its weapons work best within %d hexes)" % [where, preferred_range(u)]
+	if obj[1] != "":
+		reason += ", " + obj[1]
+	if behind > 0 and BotSkill.rear_bonus() > 0.0:
+		reason += ", behind an enemy for rear shots"
 	if tile and LineOfSight.woods_value(tile) > 0:
 		reason += ", ends in %s for cover" % tile.terrain.name.to_lower()
 	elif tile and tile.building:
@@ -93,6 +108,16 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	u.hexes_moved = save[3]
 	u.heat_generated = save[4]
 	return {"score": score, "reason": reason, "charge": charge.get("target_id", -1)}
+
+
+## Enemies whose rear arc `u` stands in (within 6 hexes).
+static func _rear_of(state: GameState, u: Unit) -> int:
+	var n := 0
+	for e in state.units:
+		if e.side != u.side and not e.destroyed and Hex.distance(e.coord, u.coord) <= 6 \
+				and FiringArc.arc(e.coord, e.facing, u.coord) == FiringArc.REAR:
+			n += 1
+	return n
 
 
 ## Medium range of its hardest-hitting weapon: where it wants to fight.

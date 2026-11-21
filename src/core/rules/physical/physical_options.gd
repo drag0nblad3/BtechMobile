@@ -16,12 +16,15 @@ extends RefCounted
 ## [{kind: "punch"|"kick"|"push", limb, to_hit, damage, table: "punch"|"kick"|"full"}]
 static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
-	for arm in [Location.LA, Location.RA]:
-		out.append(_punch(state, a, t, arm))
-	for leg in [Location.RL, Location.LL]:
+	if not a.def.quad:  # no arms: no punches, pushes or swings (p. 238)
+		for arm in [Location.LA, Location.RA]:
+			out.append(_punch(state, a, t, arm))
+	for leg in QuadKick.limbs(a):
 		out.append(_kick(state, a, t, leg))
-	out.append(_push(state, a, t))
-	out.append_array(MeleeWeapons.options(state, a, t))
+	if not a.def.quad:
+		out.append(_push(state, a, t))
+		out.append_array(MeleeWeapons.options(state, a, t))
+	Tsm.boost(a, out)
 	return out
 
 
@@ -42,6 +45,8 @@ static func _push(state: GameState, a: Unit, t: Unit) -> Dictionary:
 		th.impossible = "Both arms are needed; one fired a weapon"
 	elif PhysicalMods.charging(state, t):
 		th.impossible = "It is charging this turn and can't be pushed"
+	elif PhysicalMods.pushing_other(state, t, a):
+		th.impossible = "It is pushing another 'Mech this turn and can't be pushed"
 	elif PhysicalMods.shoved_already(state, t):
 		th.impossible = "Someone is already charging or pushing it this turn"
 	if th.impossible != "":
@@ -97,10 +102,11 @@ static func _kick(state: GameState, a: Unit, t: Unit, leg: int) -> Dictionary:
 	if not PhysicalMods.can_reach(state, a, t, th, "kick"):
 		return opt
 	var dl := PhysicalMods.level_diff(state, a, t)
-	if a.legs_destroyed() > 0 or a.hip_hits() > 0:
-		th.impossible = "Can't kick with a damaged hip or a missing leg"
-	elif FiringArc.fire_arc(a.coord, a.facing, t.coord) != FiringArc.FRONT:
-		th.impossible = "Kicks only hit targets in front of your feet"
+	if QuadKick.problem(a, leg) != "":
+		th.impossible = QuadKick.problem(a, leg)
+	elif FiringArc.fire_arc(a.coord, a.facing, t.coord) != QuadKick.arc_needed(a, leg):
+		th.impossible = "Mule kicks only hit targets behind you" if QuadKick.is_mule(a, leg) \
+				else "Kicks only hit targets in front of your feet"
 	elif dl == 1:
 		th.impossible = "The target is above you; punch it instead"
 	elif dl == -1 and t.prone:
@@ -111,15 +117,15 @@ static func _kick(state: GameState, a: Unit, t: Unit, leg: int) -> Dictionary:
 		return opt
 	PhysicalMods.add(th, state, a, t)
 	th.add("kick", -1, "Kicks are a little easier than a gun shot: -1.")
-	for l in [Location.LL, Location.RL]:
+	for l in QuadKick.pair(a, leg):
 		for act in ["upper_leg", "lower_leg"]:
 			if not a.has_working_actuator(l, act):
-				th.add("%s %s hit" % [Location.name_of(l), act.replace("_", " ")], 2,
+				th.add("%s %s hit" % [Location.name_for(a.def, l), act.replace("_", " ")], 2,
 						"A broken leg actuator in either leg: +2, half damage.")
 				@warning_ignore("integer_division")
 				dmg = dmg / 2
 		if not a.has_working_actuator(l, "foot"):
-			th.add("%s foot hit" % Location.name_of(l), 1, "A broken foot in either leg: +1.")
+			th.add("%s foot hit" % Location.name_for(a.def, l), 1, "A broken foot in either leg: +1.")
 	opt["damage"] = dmg
 	if t.prone:
 		opt["table"] = "full"

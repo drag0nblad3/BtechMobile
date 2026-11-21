@@ -1,0 +1,13 @@
+{
+  "id": "hermes_ii_her2s", "name": "Hermes II", "model": "HER-2S", "tonnage": 40,
+  "walk_mp": 6, "jump_mp": 0, "heat_sinks": 10, "sprite": "hermes_ii",
+  "role": "Medium scout. An AC/5 for long shots, plus a medium laser and a flamer for close work.",
+  "armor": {"HD": 9, "CT": 16, "LT": 14, "RT": 14, "LA": 10, "RA": 10, "LL": 17, "RL": 17},
+  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
+  "equipment": {
+    "RA": ["ac5"],
+    "RT": ["ammo:ac5"],
+    "LA": ["medium_laser"],
+    "CT": ["flamer"]
+  }
+}

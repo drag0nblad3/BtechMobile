@@ -1,0 +1,16 @@
+{
+  "id": "viper", "name": "Viper", "tonnage": 40, "walk_mp": 8, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "viper", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 14, "LT": 11, "RT": 11, "LA": 9, "RA": 9, "LL": 15, "RL": 15},
+  "rear_armor": {"CT": 4, "LT": 4, "RT": 4},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LA": ["endo_steel*7"], "RA": ["ferro_fibrous*7"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 14, "jump_mp": 8, "role": "Clan jumping striker. Fast on the ground and in the air, with ER and pulse lasers to strike from behind.", "equipment": {
+      "LA": ["c_er_medium_laser", "c_medium_pulse_laser"],
+      "RA": ["c_er_medium_laser", "c_medium_pulse_laser"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"],
+      "LT": ["jump_jet", "jump_jet", "jump_jet", "jump_jet", "heat_sink", "heat_sink"]
+    }}
+  ]
+}

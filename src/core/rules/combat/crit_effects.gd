@@ -37,6 +37,8 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			return _actuator(u, loc, slot)
 		CritSlot.Kind.WEAPON:
 			var w := u.weapons[slot.ref]
+			if AutocannonCrit.absorb(w):
+				return "%s hit: autocannons survive the first critical hit" % slot.name
 			w.destroyed = true
 			if w.def.explodes and not w.exploded:
 				ComponentExplosion.explode(state, dice, emit, u, w, loc)
@@ -62,6 +64,12 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 		CritSlot.Kind.ECM:
 			u.ecm_lost = true
 			return "ECM suite destroyed"
+		CritSlot.Kind.MASC:
+			return "MASC destroyed: no more bursts of speed"
+		CritSlot.Kind.SUPERCHARGER:
+			return "supercharger destroyed"
+		CritSlot.Kind.C3:
+			return "C3 computer destroyed: it drops out of its network" + (", and the network goes down with its Master" if slot.name == "C3 Master" else "")
 		CritSlot.Kind.TARGETING:
 			u.tc_lost = true
 			return "targeting computer destroyed: no more -1 to hit"
@@ -72,7 +80,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 
 static func _actuator(u: Unit, loc: int, slot: CritSlot) -> String:
 	var nice := slot.name.replace("_", " ")
-	if Location.is_leg(loc):
+	if Location.is_leg_of(u.def, loc):
 		u.psr_pending.append({"reason": "%s hit" % nice, "mod": 0, "leg": loc})
 		return "%s hit: slower, piloting roll" % nice
 	return "%s hit: arm weapons and punches less accurate" % nice

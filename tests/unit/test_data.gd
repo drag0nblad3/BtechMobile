@@ -45,13 +45,13 @@ func test_every_design_is_legal() -> void:
 		check_eq(jj, def.jump_mp, def.id + " jump jets")
 		check(not def.weapon_mounts.is_empty(), def.id + " has weapons")
 		for loc in Location.COUNT:
-			check(def.armor[loc] <= StructureTable.max_armor(def.tonnage, loc),
+			check(def.armor[loc] <= StructureTable.max_armor(def.tonnage, loc, def.quad),
 					"%s %s armor over max" % [def.id, Location.code(loc)])
 		var u := Unit.new(1, def, 0, Vector2i.ZERO, 0)
 		check_eq(u.structure[Location.HEAD], 3)
 		for w in u.weapons:
 			if w.def.uses_ammo():
-				check(u.ammo_for(w.def) + u.ammo_for(w.def, Narc.KIND) > 0, "%s ammo for %s" % [def.id, w.def.name])
+				check(u.ammo.any(func(a: AmmoBin) -> bool: return a.weapon == w.def), "%s ammo for %s" % [def.id, w.def.name])
 
 
 func test_designs_weigh_their_tonnage() -> void:

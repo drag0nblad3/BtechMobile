@@ -21,7 +21,11 @@ var double_heat_sinks := false
 var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
 var ecm_loc := -1  ## Location of a Guardian ECM suite (Ecm), -1 none.
+var masc_loc := -1  ## Location of MASC (Masc), -1 none.
+var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 none.
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
+var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
+var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
 ## "standard" or "xl" (XlEngine: 3 engine slots in each side torso, 2 if Clan).
 var engine_type := "standard"
 ## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
@@ -29,6 +33,7 @@ var engine_type := "standard"
 var tech_base := "inner_sphere"
 ## OmniMech (book p. 20, OmniConfig): a construction feature; same rules in play.
 var omni := false
+var quad := false  ## Four legs (book p. 238): LA/RA are the front legs (Location).
 var chassis := ""  ## OmniMech chassis id ("timber_wolf"), "" for others.
 var config := ""  ## OmniMech configuration ("Prime", "A"), "" for others.
 ## "standard" or "endo_steel"; armor "standard" or "ferro_fibrous". Their
@@ -64,6 +69,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.engine_type = d.get("engine_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
 	u.omni = bool(d.get("omni", false))
+	u.quad = bool(d.get("quad", false))
 	u.chassis = d.get("chassis", "")
 	u.config = d.get("config", "")
 	u.structure_type = d.get("structure_type", "standard")
@@ -73,7 +79,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	var arm: Dictionary = d.get("armor", {})
 	var rear: Dictionary = d.get("rear_armor", {})
 	for loc in Location.COUNT:
-		u.armor.append(int(arm.get(Location.code(loc), 0)))
+		u.armor.append(int(arm.get(Location.code(loc), arm.get(Location.QUAD_CODES[loc], 0))))
 		u.rear_armor.append(int(rear.get(Location.code(loc), 0)))
 	for code: String in d.get("missing_actuators", {}):
 		u.missing_actuators[Location.from_code(code)] = d["missing_actuators"][code]
@@ -86,20 +92,22 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	return u
 
 
+## One-per-'Mech items stored as a location: item -> property.
+const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
+		"supercharger": "supercharger_loc", "c3_master": "c3_master_loc", "c3_slave": "c3_slave_loc"}
+
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
 ## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword",
-## "endo_steel", "ferro_fibrous", "targeting_computer", "guardian_ecm"; "<item>*N" repeats an item N times.
+## "endo_steel", "ferro_fibrous", "tsm", "targeting_computer", "guardian_ecm", "masc", "supercharger",
+## "c3_master", "c3_slave"; "<item>*N" repeats an item N times.
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
-	if item == "endo_steel" or item == "ferro_fibrous":
+	if item == "endo_steel" or item == "ferro_fibrous" or item == "tsm":
 		if not bulk_slots.has(loc):
 			bulk_slots[loc] = []
 		bulk_slots[loc].append(item)
 		return
-	if item == "guardian_ecm":
-		ecm_loc = loc
-		return
-	if item == "targeting_computer":
-		tc_loc = loc
+	if LOC_ITEMS.has(item):
+		set(LOC_ITEMS[item], loc)
 		return
 	if item == "case":
 		case_locs.append(loc)

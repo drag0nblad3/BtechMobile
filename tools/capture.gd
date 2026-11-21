@@ -4,7 +4,8 @@ extends SceneTree
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
-## tutorial (training battle, first lesson).
+## tutorial (training battle, first lesson) ·
+## training (the training campaign screen) · notebook (its notebook, two missions played).
 
 var _frames := 0
 var _scene: Node
@@ -29,7 +30,11 @@ func _initialize() -> void:
 		BattleLaunch.pending = ScenarioLoader.load_file(tut, TerrainDb.load_file(), UnitDb.load_dir())
 		BattleLaunch.bot_sides = [1]
 		BattleLaunch.tutorial_path = tut
-	var path := "res://scenes/menu.tscn" if _mode.ends_with("menu") else "res://scenes/main.tscn"
+	BattleLaunch.open_training = _mode in ["training", "notebook"]
+	if _mode == "notebook":
+		GameSettings.load_settings()
+		GameSettings.training = {"first_steps": {"won": true, "kills": 1}, "woods": {"won": false, "kills": 0}}
+	var path := "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
 
@@ -42,6 +47,8 @@ func _process(_delta: float) -> bool:
 				_select_far_move()
 			"attack", "sheet":
 				_to_weapon_phase()
+			"notebook":
+				_scene.get_child(_scene.get_child_count() - 1)._show_notebook()
 			"clanmenu":
 				_scene.catalog.mode = DesignFilter.Mode.CLAN
 				_scene.catalog.rebuild()

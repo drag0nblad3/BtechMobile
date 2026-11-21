@@ -28,11 +28,11 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	b["armor"] = def.total_armor() * ARMOR_MULT
 	var structure := 0
 	for loc in Location.COUNT:
-		structure += StructureTable.points(def.tonnage, loc)
+		structure += StructureTable.points(def.tonnage, loc, def.quad)
 	b["structure"] = structure * STRUCTURE_MULT * XlEngine.bv_structure_mult(def)
 	b["gyro"] = def.tonnage * GYRO_MULT
 	b["ammo_penalty"] = def.ammo_mounts.size() * AMMO_PENALTY
-	var tmm := maxi(ToHitCalc.target_movement_mod(def.run_mp()),
+	var tmm := maxi(ToHitCalc.target_movement_mod(Masc.bv_run_mp(def)),
 			ToHitCalc.target_movement_mod(def.jump_mp, true) if def.jump_mp > 0 else 0)
 	b["tmm"] = tmm
 	b["def_factor"] = 1.0 + tmm / 10.0
@@ -44,7 +44,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	_weapons(def, b)
 	b["ammo"] = _ammo(def)
 	b["tonnage"] = float(def.tonnage)
-	b["speed_mp"] = def.run_mp() + roundi(def.jump_mp / 2.0)
+	b["speed_mp"] = Masc.bv_run_mp(def) + roundi(def.jump_mp / 2.0)
 	b["speed_factor"] = snappedf(pow(1.0 + (b["speed_mp"] - 5) / 10.0, 1.2), 0.01)
 	b["offensive"] = (b["weapons"] + b["ammo"] + b["tonnage"]) * b["speed_factor"]
 	b["total"] = roundi(b["defensive"] + b["offensive"])

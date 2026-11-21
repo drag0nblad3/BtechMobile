@@ -3,7 +3,7 @@ extends RefCounted
 ## A 'Mech falls (book p. 115): it ends up prone with the same facing. Roll
 ## 1D6: on a 1 the damage hits the rear, otherwise the front. Damage is
 ## ceil(tons / 10) x (levels fallen + 1) in 5-point groups, halved (round
-## down) in depth 1+ water. Then the seatbelt check (p. 117): piloting + 1
+## down) in depth 1+ water, then times the gravity (Gravity). Then the seatbelt check (p. 117): piloting + 1
 ## per level fallen, no other modifiers; failure, an immobile 'Mech or a
 ## target over 12 means 1 MechWarrior hit.
 
@@ -15,6 +15,7 @@ static func damage_for(u: Unit, levels: int) -> int:
 ## `side` forces the side hit (FiringArc.REAR for a missed death from above).
 static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: int,
 		reason: String, side: int = -1) -> void:
+	levels = Avalanche.slide(state, dice, emit, u, levels)
 	if side < 0:
 		side = FiringArc.REAR if dice.d6() == 1 else FiringArc.FRONT
 	u.prone = true
@@ -24,6 +25,7 @@ static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: 
 	if in_water:
 		@warning_ignore("integer_division")
 		total = total / 2
+	total = Gravity.scale(total, state.conditions)
 	emit.call(GameEvent.FALL, {"unit_id": u.id, "damage": total, "levels": levels,
 			"reason": reason, "facing": u.facing, "rear": side == FiringArc.REAR,
 			"water": in_water})

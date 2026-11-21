@@ -7,6 +7,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 
 var controller: GameController
 var map_view: MapView
+var fx := BattleFx.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
 var gestures: TouchGestures
@@ -18,6 +19,7 @@ var sheet_unit: Unit
 var bots: BotDriver
 var tutorial: Tutorial
 var lessons: LessonCard
+var training := -1  ## Training campaign mission index, -1 outside training.
 
 
 func _ready() -> void:
@@ -29,6 +31,8 @@ func _ready() -> void:
 	bots = BotDriver.new()
 	bots.controller = controller
 	bots.bot_sides = BattleLaunch.take_bots()
+	bots.skill = BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level
+	BattleLaunch.bot_level = -1
 	explainer = Explainer.new(GameSettings.explain_level)
 	if BattleLaunch.tutorial_path != "":
 		tutorial = Tutorial.from_scenario(BattleLaunch.tutorial_path)
@@ -36,6 +40,8 @@ func _ready() -> void:
 		lessons = LessonCard.new()
 		add_child(lessons)
 		bots.lessons = lessons
+	training = BattleLaunch.training_mission
+	BattleLaunch.training_mission = -1
 	add_child(BattleEnvironment.build())
 	_build_views(state)
 	_wire()
@@ -47,9 +53,12 @@ func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
 	map_view.build(state.map)
+	add_child(ObjectiveMarkers.build(state))
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
 	units_layer.build(state)
+	fx.setup(state, units_layer, map_view)
+	add_child(fx)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -80,6 +89,9 @@ func _build_views(state: GameState) -> void:
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
+	var plates := Nameplates.new()
+	add_child(plates)
+	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
 
 
 func _wire() -> void:
@@ -98,6 +110,9 @@ func _wire() -> void:
 	hud.charge.connect(movement.on_charge)
 	hud.prone.connect(movement.on_prone)
 	hud.smash.connect(movement.on_smash)
+	hud.masc.connect(movement.on_masc)
+	hud.supercharger.connect(movement.on_masc.bind(true))
+	hud.leave.connect(movement.on_leave)
 	hud.attack_confirm.connect(attacks.on_confirm)
 	hud.attack_skip.connect(attacks.on_skip)
 	hud.twist_left.connect(attacks.on_twist.bind(-1))
@@ -105,7 +120,9 @@ func _wire() -> void:
 	hud.log_toggled.connect(hud.log_view.cycle_size)
 	hud.sheet_toggled.connect(_toggle_sheet)
 	hud.explain_cycled.connect(_cycle_explain)
-	hud.new_battle.connect(func(): get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
+	hud.new_battle.connect(func():
+			BattleLaunch.open_training = training >= 0
+			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
 	controller.event.connect(_on_event)
@@ -151,7 +168,10 @@ func _toggle_sheet() -> void:
 func _show_sheet_if_open() -> void:
 	if hud.sheet_open and sheet_unit:
 		var power := func(want: String) -> void:
-			controller.request_power(sheet_unit, want)
+			if want.begins_with("sinks:"):
+				controller.request_sinks_off(sheet_unit, int(want.substr(6)))
+			else:
+				controller.request_power(sheet_unit, want)
 			_show_sheet_if_open()
 		hud.show_side(RecordSheetView.build(sheet_unit, Callable() if bots.bot_sides.has(sheet_unit.side) else power))
 
@@ -169,6 +189,7 @@ func _on_event(e: GameEvent) -> void:
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
 	hud.log_view.add_line(explainer.describe(e, s), bold)
+	fx.play(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:
@@ -178,6 +199,9 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
+		GameEvent.UNIT_EXITED:
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
+			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			_update_status()
 			if e.type == GameEvent.ACTIVE_SIDE:
@@ -186,15 +210,17 @@ func _on_event(e: GameEvent) -> void:
 			if e.data["kind"] in ["collapsed", "fire"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
-			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF))
+			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
 			attacks.clear()
 			movement.clear_selection()
 
 
 func _update_status() -> void:
 	var s := controller.state
-	hud.set_status("Turn %d  ·  %s  ·  %s to act" % [s.turn, Phase.name_of(s.phase), Names.side(s.active_side())])
+	hud.set_status("Turn %d  ·  %s  ·  %s to act%s" % [s.turn, Phase.name_of(s.phase), Names.side(s.active_side()),
+			MissionText.status(s)])
 	if bots.is_bot_turn():
 		hud.set_tip("The computer is thinking. Its reasons appear in the log." if GameSettings.explain_level != ExplainLevel.OFF else "")
 	elif s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:
 		hud.set_tip("Tap one of your 'Mechs to plan its move.")
+

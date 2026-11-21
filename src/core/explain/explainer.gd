@@ -31,7 +31,12 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 	var d := e.data
 	match e.type:
 		GameEvent.TURN_STARTED:
-			return "Turn %d" % d["turn"]
+			var brief := MissionText.briefing(s.mission.def, level) if d["turn"] == 1 else ""
+			return "Turn %d" % d["turn"] + ("\n" + brief if brief != "" else "")
+		GameEvent.SENSOR_CHECK:
+			return ConditionsText.sensor_check(s, d, level)
+		GameEvent.CONDITIONS:
+			return ConditionsText.describe(s.conditions, level)
 		GameEvent.INITIATIVE:
 			return _initiative(d, level)
 		GameEvent.PHASE_CHANGED:
@@ -75,7 +80,7 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.CRIT_CHECK:
 			return DamageText.crit_check(s, d, level)
 		GameEvent.CRITICAL:
-			return "  Critical hit on %s %s: %s" % [_u(s, d), Location.name_of(d["loc"]), d["effect"]]
+			return "  Critical hit on %s %s: %s" % [_u(s, d), Location.name_for(s.unit_by_id(d["unit_id"]).def, d["loc"]), d["effect"]]
 		GameEvent.UNIT_DESTROYED:
 			var t := "%s is destroyed (%s)!" % [_u(s, d), d["reason"]]
 			if level == ExplainLevel.FULL and String(d["reason"]).begins_with("XL engine"):
@@ -91,12 +96,12 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 				t += " Next physical phase it can swing it for 1 damage per 5 tons, and the target must make a piloting roll." + (
 						" A tree breaks after one hit." if d["club"] == "tree" else "")
 			return t
-		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN:
+		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN, GameEvent.HEAT_SINKS_SWITCHED:
 			return HeatText.describe(e, s, level)
-		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
+		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.MASC, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
 			return PilotText.describe(e, s, level, seen)
-		GameEvent.GAME_OVER:
-			return "Battle over: %s wins." % Names.side(d["winner"]) if d["winner"] >= 0 else "Battle over: no survivors."
+		GameEvent.GAME_OVER, GameEvent.CRIPPLED, GameEvent.UNIT_EXITED, GameEvent.MISSION:
+			return MissionText.describe(e, s, level)
 	return ""
 
 
@@ -112,6 +117,9 @@ static func _target(s: GameState, d: Dictionary) -> String:
 
 
 static func _initiative(d: Dictionary, level: int) -> String:
+	if d.has("forced"):
+		return "Initiative: %s wins it automatically this turn (the mission's surprise attack). %s acts first." % [
+				Names.side(d["forced"]), Names.side(d["order"][0])]
 	var parts: Array[String] = []
 	for side: int in d["rolls"]:
 		var b := int(d.get("bonus", {}).get(side, 0))
@@ -160,12 +168,16 @@ const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
 	var who := "%s %s %s" % [_u(s, d, "attacker_id"), PHYS_VERBS.get(d["kind"], d["kind"]), _target(s, d)]
 	if d["limb"] >= 0:
-		who += " (%s)" % Location.name_of(d["limb"]).to_lower()
+		who += " (%s)" % Location.name_for(s.unit_by_id(d["attacker_id"]).def, d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
+	if d["hit"] and d.get("tsm", false) and level != ExplainLevel.OFF:
+		res += " (doubled: its triple-strength myomer is hot)" if level == ExplainLevel.FULL else " (TSM)"
 	if d.get("why", "") != "":
 		var t := "%s: automatic miss, %s" % [who, d["why"]]
-		if level == ExplainLevel.FULL:
+		if level == ExplainLevel.FULL and d["kind"] == "dfa":
 			t += ". Once declared, a death from above can't be called off, so it lands as a miss."
+		elif level == ExplainLevel.FULL and d["kind"] == "push":
+			t += ". A 'Mech busy pushing someone else can't be pushed itself."
 		return t
 	if level == ExplainLevel.OFF or d.has("target_hex"):
 		return "%s: %s" % [who, res] + (" (buildings can't dodge)" if level == ExplainLevel.FULL and d.has("target_hex") else "")

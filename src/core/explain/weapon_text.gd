@@ -15,7 +15,10 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 				"pellets" if d.get("mode", "") == WeaponModes.CLUSTER else "missiles")
 		res += ", %d %s" % [d["missiles"], unit]
 		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
-			res += " (%s +%d)" % ["Narc" if d.get("narc_homing", false) else "Artemis", d["cluster_bonus"]]
+			res += " (%s +%d)" % ["Narc" if d.get("narc_homing", false) else
+					("built-in Artemis" if d.get("builtin_artemis", false) else "Artemis"), d["cluster_bonus"]]
+		if d.get("streak_lock", false) and level == ExplainLevel.FULL:
+			res += " (a Streak only fires once it locks on, so every missile hits: no cluster roll)"
 		if d.has("artemis_blocked") and level != ExplainLevel.OFF:
 			res += " (no Artemis bonus: %s)" % d["artemis_blocked"]
 	if d.get("ams", false):

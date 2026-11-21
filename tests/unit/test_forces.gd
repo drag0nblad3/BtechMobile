@@ -79,3 +79,23 @@ func test_skill_changes_bv_and_pilots() -> void:
 	fb.budget = base
 	check(not fb.next_skill(0), "elite would go over a tight budget")
 	check_eq(fb.skills[0], Vector2i(3, 4), "skill unchanged")
+
+
+func test_clan_star_of_five() -> void:
+	var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+	check_eq(fb.formation(0), "Lance")
+	for i in 4:
+		check(fb.add(0, "kit_fox_prime"), "Clan 'Mech %d" % (i + 1))
+	check_eq(fb.formation(0), "Star")
+	check_eq(fb.max_units(0), ForceBuilder.STAR)
+	check(fb.cant_add(0, "locust_lct1v").contains("lance of 4"), "an Inner Sphere 'Mech can't be the fifth")
+	check(fb.add(0, "adder_prime"), "a fifth Clan 'Mech")
+	check_eq(fb.cant_add(0, "adder_prime"), "A star is at most 5 'Mechs")
+	fb.add(1, "locust_lct1v")
+	check_eq(fb.max_units(1, "kit_fox_prime"), ForceBuilder.MAX_UNITS, "mixed side: lance")
+	var s := fb.build(MapLoader.load_file("res://data/maps/river_crossing.json", terrain()))
+	check_eq(s.units.filter(func(u: Unit) -> bool: return u.side == 0).size(), 5, "all five deploy")
+	var coords := {}
+	for u in s.units:
+		check(not coords.has(u.coord), "one 'Mech per hex")
+		coords[u.coord] = true

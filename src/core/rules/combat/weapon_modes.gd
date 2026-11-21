@@ -22,6 +22,8 @@ static func modes(w: MountedWeapon) -> Array[String]:
 		return ["", CLUSTER]
 	if w.narc_ammo:
 		return ["", Narc.KIND]
+	if w.ammo_kinds.size() > 1:
+		return w.ammo_kinds
 	return [""]
 
 
@@ -39,6 +41,8 @@ static func shots(w: MountedWeapon) -> int:
 static func ammo_kind(w: MountedWeapon) -> String:
 	if w.mode == Narc.KIND and w.narc_ammo:
 		return Narc.KIND
+	if w.def.munitions.has(w.mode):
+		return w.mode
 	return CLUSTER if w.mode == CLUSTER and w.def.lbx else ""
 
 
@@ -48,12 +52,12 @@ static func to_hit_mod(w: MountedWeapon) -> int:
 
 ## Artemis needs standard missiles: Narc-equipped ones don't use it.
 static func has_artemis(w: MountedWeapon) -> bool:
-	return w.artemis and not w.artemis_lost and ammo_kind(w) != Narc.KIND
+	return (w.artemis or w.def.artemis_builtin) and not w.artemis_lost and ammo_kind(w) != Narc.KIND
 
 
 ## Average damage when the attack hits, in the weapon's current mode.
 static func expected_per_hit(w: MountedWeapon) -> float:
-	var d := w.def
+	var d := Atm.profile(w)
 	if d.streak:
 		return float(d.missiles * d.damage)
 	if shots(w) > 1:
@@ -70,7 +74,7 @@ static func expected_per_hit(w: MountedWeapon) -> float:
 ## engaged (AntiMissile): -4 to the roll, a Streak counts as a 7.
 static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false, no_artemis := false,
 		narc := false) -> Dictionary:
-	var d := w.def
+	var d := Atm.profile(w)
 	if d.streak:
 		var sn := ClusterTable.hits(d.missiles, AntiMissile.STREAK_ROLL) if ams else d.missiles
 		return {"n": sn, "roll": AntiMissile.STREAK_ROLL if ams else 12, "packets": _packets(sn * d.damage, d.group * d.damage)}

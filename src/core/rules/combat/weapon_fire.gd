@@ -30,7 +30,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var shots := take_shots(attacker, w)
 	if shots == 0:
 		emit.call(GameEvent.WEAPON_FIRED, {"attacker_id": attacker.id, "target_id": target.id,
-				"weapon": w.def.name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
+				"weapon": Atm.profile(w).name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
 				"hit": false, "no_ammo": true, "mods": th.mods, "missiles": 0})
 		return
 	w.fired = true
@@ -38,7 +38,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
-	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": w.def.name,
+	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": Atm.profile(w).name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
 	if RotaryAc.check_jam(w, shots, roll):
@@ -57,6 +57,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var jam := Ecm.artemis_blocked(state, attacker, target, th) if WeaponModes.has_artemis(w) else ""
 	if jam != "":
 		data["artemis_blocked"] = jam
+	if w.def.artemis_builtin:
+		data["builtin_artemis"] = true
+	if w.def.streak and ams == null:
+		data["streak_lock"] = true
 	if w.def.beacon:
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
@@ -72,18 +76,18 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["cluster_bonus"] = c.get("bonus", 0)
 	var aimed := {}
 	if th.aim_loc >= 0:
-		aimed = AimedShot.location(dice, th, arc_id)
+		aimed = AimedShot.location(dice, th, arc_id, target.def.quad)
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
-	if w.def.heat_damage:  # flamers: the same amount as heat too (book p. 183)
-		data["heat_added"] = w.def.damage
-		target.outside_heat += w.def.damage
+	if w.def.heat_damage:  # flamers: heat as well as damage (book pp. 183-184)
+		data["heat_added"] = w.def.heat_points
+		target.outside_heat += w.def.heat_points
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
 		var hl := aimed.duplicate()
 		if th.legs_only:
-			hl = HitTable.roll_kick(dice, arc_id)
+			hl = HitTable.roll_kick(dice, arc_id, target.def.quad)
 			hl["no_cover"] = true
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex)
 
@@ -92,7 +96,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 ## A Narc beacon hit: the pod sticks where it lands (aimed or rolled), no damage.
 static func _attach_pod(state: GameState, dice: Dice, emit: Callable, attacker: Unit, target: Unit,
 		th: ToHit, arc_id: int, data: Dictionary) -> void:
-	var hl := AimedShot.location(dice, th, arc_id) if th.aim_loc >= 0 else HitTable.roll(dice, arc_id)
+	var hl := AimedShot.location(dice, th, arc_id, target.def.quad) if th.aim_loc >= 0 else HitTable.roll(dice, arc_id)
 	Narc.attach(state, attacker, target, hl["loc"])
 	data["narc_loc"] = hl["loc"]
 	emit.call(GameEvent.WEAPON_FIRED, data)
@@ -119,7 +123,7 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
-	if cover != Hex.INVALID and Location.is_leg(hl["loc"]):
+	if cover != Hex.INVALID and Location.is_leg_of(target.def, hl["loc"]):
 		var ct := state.map.get_tile(cover)
 		if ct != null and ct.building != null:
 			emit.call(GameEvent.BUILDING, {"kind": "cover_hit", "coord": cover, "unit_id": target.id,
@@ -130,13 +134,13 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 					"source": source, "amount": amount, "loc": hl["loc"], "steps": [], "covered": true, "hill": true})
 		return
 	if BuildingRules.half_inside(state.map, target) and not hl.get("charge", false) \
-			and (Location.is_leg(hl["loc"]) or hl.get("kick_table", false)):
+			and (Location.is_leg_of(target.def, hl["loc"]) or hl.get("kick_table", false)):
 		emit.call(GameEvent.BUILDING, {"kind": "cover_hit", "coord": target.coord, "unit_id": target.id,
 				"name": state.map.get_tile(target.coord).building.type.name, "damage": amount})
 		BuildingDamage.add(state, source_id, target.coord, amount)
 		return
 	var loc: int = hl["loc"]
-	if Location.is_leg(loc) and not hl.get("no_cover", false) and ToHitCalc.in_partial_cover(state.map, target):
+	if Location.is_leg_of(target.def, loc) and not hl.get("no_cover", false) and ToHitCalc.in_partial_cover(state.map, target):
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return

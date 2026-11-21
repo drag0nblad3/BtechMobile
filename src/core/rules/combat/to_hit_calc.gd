@@ -22,7 +22,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = prone_why
 		return th
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
+	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -33,19 +33,32 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	th.legs_only = wc["legs_only"]
 	var los := LineOfSight.check(state.map, attacker, target)
 	var spotter: Unit = null
+	var pod := false
 	if los["blocked"]:
-		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect else null
-		if spotter == null:
+		pod = Narc.indirect(state, attacker, w, target)
+		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect and not pod else null
+		if pod:
+			los = LineOfSight.none()  # no spotter: only the target's own hex counts (p. 188)
+		elif spotter == null:
 			th.impossible = "No line of sight (%s)%s" % [los["reason"],
 					"; no friendly 'Mech can spot for indirect fire" if w.def.indirect else ""]
 			return th
-		los = LineOfSight.check(state.map, spotter, target)
+		else:
+			los = LineOfSight.check(state.map, spotter, target)
 		los["cover"] = Hex.INVALID  # indirect fire ignores cover from hills (p. 66)
+	else:
+		th.impossible = LegFire.blocked(state, attacker, w, target)
+		if th.impossible != "":
+			return th
 	var dist := Hex.distance(attacker.coord, target.coord)
-	var br := w.def.bracket(dist)
+	var p := Atm.profile(w)  # ATM munitions change the ranges
+	var br := p.bracket(dist)
 	if br == WeaponDef.Bracket.OUT:
-		th.impossible = "Out of range (%d hexes, max %d)" % [dist, w.def.long_range]
+		th.impossible = "Out of range (%d hexes, max %d)" % [dist, p.long_range]
 		return th
+	var c3 := C3.improve(state, attacker, target, p, br) if spotter == null and not wc["under_range"] else {}
+	if not c3.is_empty():
+		br = c3["br"]
 	var wet := " under water" if wc["under_range"] else ""
 	if wc["under_range"]:
 		if br == WeaponDef.Bracket.LONG:
@@ -54,20 +67,26 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		br += 1
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	add_movement(th, attacker, target)
-	if spotter:
+	th.indirect = spotter != null or pod
+	if pod:
+		Narc.add_indirect(th)
+	elif spotter:
 		IndirectFire.add_mods(th, state, spotter)
 		th.spotter_id = spotter.id
 	IndirectFire.add_spotting_mod(th, state, attacker)
+	var rdist: int = c3.get("dist", dist)
+	if not c3.is_empty():
+		C3.add_mods(th, c3)
 	match br:
 		WeaponDef.Bracket.MEDIUM:
-			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [dist, w.def.name, w.def.range_text(),
+			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
 		WeaponDef.Bracket.LONG:
-			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [dist, w.def.name, w.def.range_text(),
+			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
-	if w.def.min_range > 0 and dist <= w.def.min_range:
-		th.add("minimum range", w.def.min_range - dist + 1,
-				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [w.def.name, w.def.min_range])
+	if p.min_range > 0 and dist <= p.min_range:
+		th.add("minimum range", p.min_range - dist + 1,
+				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])
 	if w.def.to_hit_mod != 0:
 		th.add(w.def.name, w.def.to_hit_mod, "%s is %s accurate than a standard weapon: %+d to hit." % [
 				w.def.name, "more" if w.def.to_hit_mod < 0 else "less", w.def.to_hit_mod])
@@ -75,8 +94,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	Narc.add(th, state, attacker, w, target)
 	if WeaponModes.to_hit_mod(w) != 0:
 		th.add("cluster ammo", WeaponModes.to_hit_mod(w), "LB-X cluster rounds spread like a shotgun: -1 to hit, but each pellet only does 1 damage.")
+	LowVisibility.add(th, state, attacker)
 	add_conditions(th, state, attacker, target, los)
-	if Location.is_arm(w.loc):
+	if Location.is_arm_of(attacker.def, w.loc):
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
 		th.add("secondary target", 1, "Every target after your primary one costs +1.")
@@ -110,8 +130,10 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 	var tw := LineOfSight.woods_value(tile) if tile else 0
 	if tw > 0:
 		th.add("target in woods", tw, "The target is hiding in %s." % tile.terrain.name.to_lower())
-	if Fire.smoke_mod(state.map, target, tw) > 0:
-		th.add("target in smoke", 1, "Smoke from the fire in its hex hides the target: +1, like light woods.")
+	var obs := Obscurant.to_hit_mod(state.map, target, tw)
+	if obs > 0:
+		var what := Obscurant.name_of(tile)
+		th.add("target in " + what, obs, "The %s in its hex hides the target like woods (never more than +2 with woods)." % what)
 	if th.legs_only:
 		th.add("legs only", 0, "Under water only the target's legs can be hit; roll on the Kick table, no partial cover.")
 	elif in_partial_cover(state.map, target):
@@ -139,7 +161,7 @@ static func add_attacker_conditions(th: ToHit, attacker: Unit, los: Dictionary) 
 		th.add("heat %d" % attacker.heat, hp, "Running hot shakes your targeting: +1 at 8 heat, rising.")
 	if attacker.sensor_hits > 0:
 		th.add("sensor damage", 2 * attacker.sensor_hits, "Damaged sensors make every shot harder.")
-	if attacker.prone:
+	if attacker.prone and not Quad.fires_standing(attacker):
 		th.add("you are prone", 2, "Firing from the ground is +2, propped up on one arm.")
 	if los["woods"] > 0:
 		th.add("woods in the way", los["woods"],

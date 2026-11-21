@@ -51,7 +51,7 @@ static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vect
 	if careful:
 		emit.call(GameEvent.BUILDING, {"kind": "careful", "coord": c, "unit_id": u.id, "name": b.type.name})
 		return
-	if not smash and Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1):
+	if not smash and Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1, state):
 		return
 	emit.call(GameEvent.BUILDING, {"kind": "smash" if smash else "entry_failed", "coord": c,
 			"unit_id": u.id, "name": b.type.name})
@@ -130,6 +130,7 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 			Fall.fall(state, dice, emit, inside, b.height, "the roof gave way")
 		return
 	var dmg := b.collapse_damage(1 if inside != null and inside.prone else 2) if inside != null else 0
+	dmg = Gravity.scale(dmg, state.conditions)
 	emit.call(GameEvent.BUILDING, {"kind": "collapsed", "coord": tile.coord, "name": b.type.name,
 			"height": b.height, "damage": dmg, "unit_id": inside.id if inside != null else -1})
 	if inside == null or inside.destroyed:

@@ -92,7 +92,7 @@ func show_unit(u: Unit) -> void:
 	damage.show_unit(u)
 	wounded.clear()
 	for loc in Location.COUNT:
-		var full := StructureTable.points(u.def.tonnage, loc)
+		var full := StructureTable.points(u.def.tonnage, loc, u.def.quad)
 		if u.structure[loc] < full and not u.is_location_destroyed(loc):
 			wounded[loc] = 1.0 - float(u.structure[loc]) / full
 	for loc in [Location.LA, Location.RA, Location.LL, Location.RL]:

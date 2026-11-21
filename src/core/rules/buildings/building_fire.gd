@@ -34,7 +34,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 		th.impossible = ProneFire.blocked(attacker, w)
 		return th
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), c)
-	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
+	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
 		th.impossible = "The building is in your %s arc; %s can't point there" % [FiringArc.NAMES[arc_id], w.label()]
 		return th
 	var los := LineOfSight.check_hex(state.map, attacker, c, tile.level + (1 if woods else tile.building.height))
@@ -42,12 +42,13 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 		th.impossible = "No line of sight (%s)" % los["reason"]
 		return th
 	var dist := Hex.distance(attacker.coord, c)
-	var br := w.def.bracket(dist)
+	var br := Atm.profile(w).bracket(dist)
 	if br == WeaponDef.Bracket.OUT:
-		th.impossible = "Out of range (%d hexes, max %d)" % [dist, w.def.long_range]
+		th.impossible = "Out of range (%d hexes, max %d)" % [dist, Atm.profile(w).long_range]
 		return th
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	ToHitCalc.add_attacker_movement(th, attacker)
+	LowVisibility.add(th, state, attacker)
 	if br == WeaponDef.Bracket.MEDIUM:
 		th.add("medium range", 2, "%d hexes is medium range for %s." % [dist, w.def.name])
 	elif br == WeaponDef.Bracket.LONG:
@@ -55,7 +56,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if w.def.min_range > 0 and dist <= w.def.min_range:
 		th.add("minimum range", w.def.min_range - dist + 1, "Inside %s's minimum range." % w.def.name)
 	ToHitCalc.add_attacker_conditions(th, attacker, los)
-	if Location.is_arm(w.loc):
+	if Location.is_arm_of(attacker.def, w.loc):
 		ToHitCalc.add_arm_actuators(th, attacker, w.loc)
 	TargetingComputer.add(th, attacker, w)
 	if woods:

@@ -1,7 +1,7 @@
 # Data formats
 
 ## `data/terrain.json`
-`{"terrain": [{"id", "token" (1 char), "name", "move_cost", "los_height"?, "water"?, "flammable"? (flamers can set it alight), "color", "detail_color"}]}`
+`{"terrain": [{"id", "token" (1 char), "name", "move_cost", "los_height"?, "water"?, "flammable"? (flamers can set it alight), "color", "detail_color", "pattern"? (ground look: grass, rocks, paving, rubble, riverbed, forest; default grass)}]}`
 
 Terrain tokens: `c` clear, `r` rough, `u` rubble, `L` light woods, `H` heavy woods,
 `p` pavement, `w` water.
@@ -52,6 +52,9 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
   the explosion damage per shot. Narc-equipped missiles are `ammo:<launcher>:narc`.
 - `rapid`: most shots in one attack (Ultra ACs 2, rotary ACs 6); `rotary: true` lets it pick
   1-6 shots and jam (`RotaryAc`).
+- `artemis_builtin: true` (ATMs) gives Artemis IV without an FCS item. `munitions: {"er": {"label", ...}}`
+  lists alternative ammo that overrides any stats (damage, group, ranges); each loads from its own
+  `ammo:<launcher>:<kind>` bins and is picked as the firing mode (`Atm`).
 - `tech: "clan"` marks Clan versions; their ids start `c_` (`c_er_medium_laser`) and keep the
   book's names. `to_hit` is the weapon's own modifier (pulse -2, ER pulse -1, heavy lasers +1).
 
@@ -71,7 +74,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - Location codes: `HD CT LT RT LA RA LL RL`. Internal structure comes from tonnage.
 - Equipment items: a weapon id (`@rear` for rear-firing, `+artemis` for a launcher with
   Artemis IV), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
-  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots). They fill free critical slots in the order listed, after the
+  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
   rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
@@ -80,6 +83,9 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
   `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+- `"quad": true`: a four-legged 'Mech. Its armor and equipment use `FLL`, `FRL`, `RLL`, `RRL`
+  for the legs (the front legs live in the arm slots; `LA`/`RA` also work). Every leg has 6 slots
+  and leg actuators; structure for the front legs comes from the leg column.
 - `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
   CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
   targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`).
@@ -94,12 +100,31 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   points per ton (17.92 ferro-fibrous, rounded up to the half ton), weapon tons, 1 t per ammo item.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
 
+Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
+
 ## `data/scenarios/<id>.json`
 ```json
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}
 ```
 `hex` is a mapsheet label; `facing` 0 = north, clockwise.
-Optional: `"name"`, `"bot_sides"` (sides the computer plays) and `"lessons"` for a
+Optional: `"name"`, `"bot_sides"` (sides the computer plays), `"bot_level"` (its
+`BotSkill.Level`, 0 Novice to 3 Elite; default the player's setting) and `"lessons"` for a
 guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` (a
-`GameEvent` type), optional filters `"turn"`, `"phase"` (e.g. "Movement"),
-`"unit_side"`, `"min_heat"`, and the `"title"` and `"text"` shown once.
+`GameEvent` type), optional filters `"turn"`, `"min_turn"`, `"phase"` (e.g. "Movement"),
+`"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
+e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
+
+## `data/training/campaign.json`
+The training campaign (`TrainingCampaign`): `name`, `intro`, and `missions` in
+order, each `{"id", "title", "scenario"` (a file in `data/scenarios/` with lessons),
+`"teaches", "briefing", "debrief_win", "debrief_loss"}`. A mission opens once the one
+before it has been played; results are saved per id in user://settings.cfg.
+Optional `"conditions"` (battlefield conditions, book pp. 120-121), e.g.
+`{"cold": 2, "gravity": 0.8, "night": true}`: `cold` / `heat` are Extreme Cold / Heat
+levels 0-3, `gravity` is in G (rounded to 0.1), and the flags `low_visibility`, `wind`,
+`rain`, `snowfall`, `night` switch those conditions on.
+Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turns`
+(0 = no limit), `random_duration`, `victory` (`"last_standing"` or `"vp"`), `unit_vp`,
+`forced_withdrawal`, `scoring` (`"each"`, `"pairs"`, `"threshold"`), `objectives`
+(`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
+`exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.

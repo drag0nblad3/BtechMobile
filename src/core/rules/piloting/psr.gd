@@ -16,6 +16,9 @@ static func standing_mods(u: Unit) -> ToHit:
 	th.add("Piloting", u.pilot.piloting, "Your MechWarrior's piloting skill is the base number.")
 	if u.gyro_hits > 0:
 		th.add("gyro hit", 2, "A damaged gyro makes balance hard: +2.")
+	if u.def.quad:
+		Quad.psr_mods(u, th)
+		return th
 	if u.legs_destroyed() > 0:
 		th.add("leg destroyed", 4 * u.legs_destroyed(), "Balancing on one leg: +4.")
 	var act := 0
@@ -55,14 +58,15 @@ static func resolve_pending(state: GameState, dice: Dice, emit: Callable, u: Uni
 	for p: Dictionary in batch:
 		if u.prone or u.destroyed:
 			return
+		var levels := int(p.get("fall_levels", 0))
 		if p.get("auto_fall", false) or ToHitCalc.is_immobile(u):
-			Fall.fall(state, dice, emit, u, 0, p["reason"])
+			Fall.fall(state, dice, emit, u, levels, p["reason"])
 			return
 		var others := extra - maxi(0, int(p["mod"]))
 		var mod := int(p["mod"]) + others
-		if not roll(dice, emit, u, p["reason"], mod):
+		if not roll(dice, emit, u, p["reason"], mod, state, p.get("jump", false)):
 			if not _dfa_takes_fall(state, u):
-				Fall.fall(state, dice, emit, u, 0, p["reason"])
+				Fall.fall(state, dice, emit, u, levels, p["reason"])
 			return
 
 
@@ -91,11 +95,16 @@ static func _dedupe_legs(pending: Array) -> Array:
 	return out
 
 
-## One piloting roll. Returns true on success.
-static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int) -> bool:
+## One piloting roll. Returns true on success. With `state`, the wind adds
+## its +1 unless the roll is part of a jump (`jumping`; see Wind).
+static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
+		state: GameState = null, jumping := false) -> bool:
 	var th := standing_mods(u)
 	if mod != 0:
 		th.add(reason, mod, "")
+	if not jumping:
+		Wind.add(th, state, u)
+	Surfaces.add_psr(th, state, u)
 	var r := dice.roll_2d6()
 	var ok := r >= th.target()
 	emit.call(GameEvent.PSR, {"unit_id": u.id, "roll": r, "need": th.target(), "ok": ok,
@@ -104,13 +113,18 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int) 
 
 
 ## Standing up costs 2 MP (already in the move budget) and a piloting roll.
-## A destroyed gyro or two missing legs make it impossible.
+## A destroyed gyro, two missing legs, or one missing leg and both arms
+## gone make it impossible (p. 51); other arm damage doesn't matter.
 static func can_stand(u: Unit) -> bool:
-	return u.gyro_hits < CritEffects.GYRO_KILL and u.legs_destroyed() < 2
+	if u.gyro_hits >= CritEffects.GYRO_KILL or u.legs_destroyed() >= Location.legs(u.def).size():
+		return false
+	if u.def.quad:
+		return true
+	return not (u.legs_destroyed() == 1 and u.is_location_out(Location.LA) and u.is_location_out(Location.RA))
 
 
 static func try_stand(state: GameState, dice: Dice, emit: Callable, u: Unit) -> bool:
-	var ok := can_stand(u) and roll(dice, emit, u, "standing up", -1)
+	var ok := can_stand(u) and (Quad.intact(u) or roll(dice, emit, u, "standing up", -1, state))
 	emit.call(GameEvent.STAND, {"unit_id": u.id, "ok": ok})
 	if ok:
 		u.prone = false

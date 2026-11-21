@@ -1,0 +1,19 @@
+{
+  "id": "ice_ferret", "name": "Ice Ferret", "tonnage": 45, "walk_mp": 8, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "ice_ferret", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 16, "LT": 13, "RT": 12, "LA": 10, "RA": 10, "LL": 16, "RL": 16},
+  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*3"], "RA": ["ferro_fibrous*4"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 13, "role": "Clan fast medium. Eight walking MP with an ER large laser for long shots and Streaks up close.", "equipment": {
+      "RA": ["c_er_large_laser", "c_er_small_laser"],
+      "LA": ["c_er_medium_laser", "c_er_medium_laser", "c_er_small_laser"],
+      "LT": ["c_streak_srm4", "ammo:c_streak_srm4"]
+    }},
+    {"model": "A", "heat_sinks": 13, "role": "Missile Ice Ferret: an ATM 9 with all three munitions.", "equipment": {
+      "LT": ["c_atm9", "ammo:c_atm9", "ammo:c_atm9:er", "ammo:c_atm9:he"],
+      "RA": ["c_er_medium_laser"],
+      "LA": ["c_er_medium_laser"]
+    }}
+  ]
+}

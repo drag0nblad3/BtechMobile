@@ -26,6 +26,8 @@ const CRIT_CHECK := &"crit_check"         # {unit_id, loc, roll, crits}
 const PSR := &"psr"                       # {unit_id, roll, need, ok, reasons: [String], mods}
 const FALL := &"fall"                     # {unit_id, damage, levels}
 const WENT_PRONE := &"went_prone"         # {unit_id} dropped prone on purpose
+const HEAT_SINKS_SWITCHED := &"heat_sinks_switched"  # {unit_id, off}
+const MASC := &"masc"                     # {unit_id, roll, need, ok, next}
 const STAND := &"stand"                   # {unit_id, ok}
 const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb, roll, need, hit, damage, mods}
 const CHARGE_DECLARED := &"charge_declared" # {unit_id, target_id, kind: charge|dfa, need}
@@ -33,7 +35,12 @@ const SKID := &"skid"                     # {unit_id, hexes, wanted} slid after 
 const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vector3i]}
 const BUILDING := &"building"             # {kind: flattened|entry_failed|destroy_check|shot|cover_hit|collapsed, coord, name, unit_id?, damage?, roll?, need?}
 const INTENT := &"intent"                 # {unit_id, text} why a player chose its action
-const GAME_OVER := &"game_over"           # {winner: side or -1}
+const SENSOR_CHECK := &"sensor_check"     # {unit_id, roll, need, ok, why, mods}
+const CRIPPLED := &"crippled"             # {unit_id, why, withdraw: bool}
+const UNIT_EXITED := &"unit_exited"       # {unit_id, kind: withdraw|mission, vp}
+const MISSION := &"mission"               # {kind: vp, side, vp, total} | {kind: duration, roll, ends_on, last}
+const CONDITIONS := &"conditions"         # {names: [String]} battlefield conditions, at the start
+const GAME_OVER := &"game_over"           # {winner: side or -1, why, scores?: {side: vp}}
 
 var type: StringName
 var data: Dictionary

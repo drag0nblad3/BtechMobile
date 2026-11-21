@@ -10,6 +10,8 @@ var level: int = 0
 var depth: int = 0
 var building: Building = null  ## Standing building, if any.
 var on_fire := false  ## Burning (Fire).
+var surface := ""  ## Terrain modification: "", "ice", "mud" or "snow" (Surfaces).
+var fog := 0  ## Fog in the hex: 0 none, 1 light, 2 heavy (Obscurant).
 
 
 func _init(c: Vector2i, t: TerrainType, lvl: int, dep: int = 0) -> void:
@@ -19,9 +21,10 @@ func _init(c: Vector2i, t: TerrainType, lvl: int, dep: int = 0) -> void:
 	depth = dep
 
 
+## Ice covers water: 'Mechs walk on the surface.
 func floor_level() -> int:
-	return level - depth
+	return level if surface == "ice" else level - depth
 
 
 func is_water() -> bool:
-	return terrain.is_water and depth > 0
+	return terrain.is_water and depth > 0 and surface != "ice"

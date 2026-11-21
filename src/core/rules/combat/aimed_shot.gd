@@ -25,7 +25,7 @@ static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int,
 			return "a targeting computer can't aim at the head of a moving 'Mech"
 	if loc < 0 or loc >= Location.COUNT or target.is_location_destroyed(loc):
 		return "that location is gone"
-	if th.spotter_id >= 0:
+	if th.indirect:
 		return "indirect fire can't aim"
 	if w.def.is_cluster() or WeaponModes.ammo_kind(w) == WeaponModes.CLUSTER:
 		return "cluster weapons can't aim"
@@ -33,7 +33,7 @@ static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int,
 		return "an Ultra firing twice can't aim"
 	if th.legs_only:
 		return "under water only the legs can be hit"
-	if Location.is_leg(loc) and _covered(th):
+	if Location.is_leg_of(target.def, loc) and _covered(th):
 		return "the legs are behind cover"
 	return ""
 
@@ -61,14 +61,14 @@ static func adjust(th: ToHit, loc: int, w: MountedWeapon) -> void:
 
 
 ## Hit location for an aimed hit: {loc, rear, tac, roll, aim_roll, aimed}.
-static func location(dice: Dice, th: ToHit, arc_id: int) -> Dictionary:
+static func location(dice: Dice, th: ToHit, arc_id: int, quad := false) -> Dictionary:
 	var covered := th.aim_covered
 	var r := dice.d6()
 	if r >= NEEDS:
 		return {"loc": th.aim_loc, "rear": arc_id == FiringArc.REAR, "tac": false, "roll": 0,
 				"aim_roll": r, "aimed": true, "no_cover": true}
 	var hl := HitTable.roll(dice, arc_id)
-	while covered and Location.is_leg(hl["loc"]):
+	while covered and (Location.is_leg(hl["loc"]) or (quad and Location.is_arm(hl["loc"]))):
 		hl = HitTable.roll(dice, arc_id)
 	hl["aim_roll"] = r
 	hl["aimed"] = false

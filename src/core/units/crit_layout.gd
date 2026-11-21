@@ -44,6 +44,16 @@ static func build(def: UnitDef) -> Array:
 	if def.ecm_loc >= 0:
 		for s in 2:
 			_place(out[def.ecm_loc], CritSlot.new(CritSlot.Kind.ECM, "Guardian ECM"), def)
+	if def.masc_loc >= 0:
+		for s in Masc.size(def):
+			_place(out[def.masc_loc], CritSlot.new(CritSlot.Kind.MASC, "MASC"), def)
+	if def.supercharger_loc >= 0:
+		_place(out[def.supercharger_loc], CritSlot.new(CritSlot.Kind.SUPERCHARGER, "Supercharger"), def)
+	if def.c3_master_loc >= 0:
+		for s in C3.MASTER_SLOTS:
+			_place(out[def.c3_master_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Master"), def)
+	if def.c3_slave_loc >= 0:
+		_place(out[def.c3_slave_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Slave"), def)
 	if def.tc_loc >= 0:
 		for s in TargetingComputer.size(def):
 			_place(out[def.tc_loc], CritSlot.new(CritSlot.Kind.TARGETING, "Targeting Computer"), def)
@@ -51,8 +61,11 @@ static func build(def: UnitDef) -> Array:
 		_place(out[loc], CritSlot.new(CritSlot.Kind.CASE, "CASE"), def)
 	for loc: int in def.bulk_slots:
 		for item: String in def.bulk_slots[loc]:
-			_place(out[loc], CritSlot.new(CritSlot.Kind.BULK, "Ferro-Fibrous" if item == "ferro_fibrous" else "Endo Steel"), def)
+			_place(out[loc], CritSlot.new(CritSlot.Kind.BULK, BULK_NAMES[item]), def)
 	return out
+
+
+const BULK_NAMES := {"endo_steel": "Endo Steel", "ferro_fibrous": "Ferro-Fibrous", "tsm": "Triple-Strength Myomer"}
 
 
 static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
@@ -66,14 +79,14 @@ static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
 	elif def.is_xl() and (loc == Location.LT or loc == Location.RT):
 		for s in ClanTech.xl_side_slots(def):
 			names.append("Engine")
-	elif Location.is_arm(loc):
+	elif Location.is_arm_of(def, loc):
 		for a in ARM_ACTUATORS:
 			names.append(a if def.has_actuator(loc, a) else "")
-	elif Location.is_leg(loc):
+	elif Location.is_leg_of(def, loc):
 		names = LEG_ACTUATORS
 	for n: String in names:
 		slots.append(_fixed_slot(n))
-	while slots.size() < SLOTS[loc]:
+	while slots.size() < slot_count(def, loc):
 		slots.append(CritSlot.new(CritSlot.Kind.EMPTY, ""))
 	return slots
 
@@ -101,3 +114,8 @@ static func _place(slots: Array, s: CritSlot, def: UnitDef) -> void:
 			slots[i] = s
 			return
 	push_error("%s: no free critical slot for %s" % [def.id, s.name])
+
+
+## Critical slots in a location: a quad's front legs have 6, like any leg.
+static func slot_count(def: UnitDef, loc: int) -> int:
+	return 6 if Location.is_leg_of(def, loc) else SLOTS[loc]

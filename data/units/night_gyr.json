@@ -1,0 +1,22 @@
+{
+  "id": "night_gyr", "name": "Night Gyr", "tonnage": 75, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "night_gyr", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 35, "LT": 24, "RT": 24, "LA": 24, "RA": 23, "LL": 32, "RL": 32},
+  "rear_armor": {"CT": 11, "LT": 8, "RT": 8},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*1"], "RA": ["ferro_fibrous*4"], "RT": ["ferro_fibrous*2"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 12, "role": "Clan heavy gunner. Two Ultra AC/10s and two ER large lasers: lots of damage at long range, but the Ultras can jam.", "equipment": {
+      "RA": ["c_ultra_ac10"],
+      "LA": ["c_ultra_ac10"],
+      "RT": ["ammo:c_ultra_ac10", "c_er_large_laser"],
+      "LT": ["ammo:c_ultra_ac10", "c_er_large_laser"],
+      "CT": ["c_er_small_laser"]
+    }},
+    {"model": "A", "heat_sinks": 22, "role": "Laser Night Gyr: ER PPCs and pulse lasers, no ammo at all, and enough heat sinks to fire most of them.", "equipment": {
+      "RA": ["c_er_ppc"],
+      "LA": ["c_er_ppc"],
+      "RT": ["c_medium_pulse_laser", "c_medium_pulse_laser", "heat_sink", "heat_sink", "heat_sink"],
+      "LT": ["c_medium_pulse_laser", "c_medium_pulse_laser", "heat_sink", "heat_sink", "heat_sink", "heat_sink"],
+      "CT": ["c_er_small_laser"]
+    }}
+  ]
+}

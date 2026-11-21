@@ -32,6 +32,8 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Narc-equipped missiles (home on Narc pods)"
 		RotaryAc.UNJAM:
 			return "Clear the jam (Gunnery +3, stand or walk)"
+	if not w.def.munitions.is_empty():
+		return Atm.mode_text(w)
 	if w.def.rotary:
 		if w.jammed:
 			return "Jammed: tap to try clearing it"
@@ -49,7 +51,7 @@ static func physical(state: GameState, attacker: Unit, target: Unit, hex := Hex.
 		var key := "%s:%d" % [o["kind"], o["limb"]]
 		var lbl: String = o["kind"].capitalize()
 		if o["limb"] >= 0:
-			lbl += " (%s)" % Location.code(o["limb"])
+			lbl += " (%s)" % Location.code_for(attacker.def, o["limb"])
 		rows.append({"key": key, "label": lbl, "to_hit": o["to_hit"],
 				"extra": "  %d dmg" % o["damage"] if o["damage"] > 0 else "  shove 1 hex"})
 	return rows

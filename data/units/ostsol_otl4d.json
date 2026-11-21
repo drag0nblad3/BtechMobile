@@ -1,0 +1,13 @@
+{
+  "id": "ostsol_otl4d", "name": "Ostsol", "model": "OTL-4D", "tonnage": 60,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 16, "sprite": "ostsol",
+  "role": "Laser heavy. Two large lasers and six medium lasers (two face backward) with no ammo to explode, but watch your heat.",
+  "armor": {"HD": 9, "CT": 17, "LT": 12, "RT": 11, "LA": 10, "RA": 10, "LL": 15, "RL": 15},
+  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
+  "equipment": {
+    "RA": ["large_laser", "medium_laser"],
+    "LA": ["large_laser", "medium_laser"],
+    "LT": ["medium_laser", "medium_laser@rear", "heat_sink*2"],
+    "RT": ["medium_laser", "medium_laser@rear", "heat_sink*2"]
+  }
+}

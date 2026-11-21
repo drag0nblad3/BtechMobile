@@ -15,7 +15,7 @@ const HEX_MOD := -4
 ## Woods that aren't burning yet.
 static func can_light(tile: MapTile) -> bool:
 	return tile != null and tile.building == null and tile.terrain.flammable \
-			and not tile.is_water() and not tile.on_fire
+			and not tile.is_water() and not tile.on_fire and tile.surface == ""
 
 
 ## Why `w` can't shoot this hex to light it ("" = it can).

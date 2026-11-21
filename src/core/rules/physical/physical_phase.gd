@@ -3,7 +3,8 @@ extends RefCounted
 ## Resolves declared physical attacks at the end of the Physical Attack Phase.
 ## Every attack is rolled (and its damage dealt) first; only then are 'Mechs
 ## moved by charges, death from above and pushes (book p. 76). Two 'Mechs
-## that push each other successfully both stay put and both roll.
+## that push each other successfully both stay put and both roll; a push at
+## a 'Mech that pushed a third one fails (errata p. 83).
 
 
 static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
@@ -20,12 +21,18 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 		var a := state.unit_by_id(d["attacker_id"])
 		var t := state.unit_by_id(d["target_id"])
 		var th: ToHit = d["to_hit"]
+		if d["kind"] == "push" and PhysicalMods.pushing_other(state, t, a):
+			emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id, "kind": "push",
+					"limb": -1, "roll": 0, "need": th.target(), "hit": false, "damage": 0,
+					"mods": th.mods, "why": "its target was pushing another 'Mech"})
+			continue
 		var roll := dice.roll_2d6()
 		var need := th.target()
 		var hit := roll >= need and need <= 12
 		emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id,
 				"kind": d["kind"], "limb": d["limb"], "roll": roll, "need": need,
-				"hit": hit, "damage": d["damage"] if hit else 0, "mods": th.mods})
+				"hit": hit, "damage": d["damage"] if hit else 0, "mods": th.mods,
+				"tsm": d.get("tsm", false)})
 		if d["kind"] == "push":
 			if hit:
 				steps.append({"kind": "push", "attacker": a, "target": t,
@@ -58,13 +65,13 @@ static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Un
 	var hl: Dictionary
 	match String(d.get("table", "punch")):
 		"kick":
-			hl = HitTable.roll_kick(dice, arc_id)
+			hl = HitTable.roll_kick(dice, arc_id, t.def.quad)
 			hl["no_cover"] = true
 			hl["kick_table"] = true
 		"full":
 			hl = HitTable.roll(dice, arc_id)
 		_:
-			hl = HitTable.roll_punch(dice, arc_id)
+			hl = HitTable.roll_punch(dice, arc_id, t.def.quad)
 	var dmg := WaterCombat.physical_damage(state.map, t, hl["loc"], d["damage"])
 	WeaponFire.hit_with(state, dice, emit, t, arc_id, dmg, a.id, d["kind"], hl)
 

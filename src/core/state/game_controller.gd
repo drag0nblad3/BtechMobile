@@ -26,6 +26,9 @@ func start_turn() -> void:
 	for u in state.units:
 		u.reset_for_turn()
 	_emit(GameEvent.TURN_STARTED, {"turn": state.turn})
+	if state.turn == 1 and not state.conditions.is_clear():
+		_emit(GameEvent.CONDITIONS, {"names": state.conditions.names()})
+	MissionFlow.start_turn(state, dice, _emit_cb)
 	_set_phase(Phase.Kind.INITIATIVE)
 	_roll_initiative()
 	_begin_phase(Phase.Kind.MOVEMENT)
@@ -35,22 +38,42 @@ func start_turn() -> void:
 ## With `charge_target_id`, the move ends in a charge (walk/run) or death from
 ## above (jump) against the enemy straight ahead; it must be legal.
 ## `then_prone` drops it to the ground at the end of the move (1 MP);
-## `smash` fails building entry rolls on purpose to force Destroy Checks.
+## `smash` fails building entry rolls on purpose to force Destroy Checks;
+## `leave` then moves off the battlefield where the mission allows (MissionFlow).
 func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1,
-		then_prone := false, smash := false) -> bool:
+		then_prone := false, smash := false, leave := false) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT):
+		return false
+	if MissionFlow.move_problem(state, unit, target, mode, leave) != "":
 		return false
 	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone, smash):
 		return false
+	if leave and not unit.destroyed and not unit.prone and unit.coord == MoveOptions.coord_of(target):
+		MissionFlow.leave(state, _emit_cb, unit)
 	_unit_done()
 	return true
+
+
+## Engages MASC before moving (book p. 204). Returns whether it worked;
+## false also when it can't be engaged (Masc.problem).
+func engage_masc(unit: Unit) -> bool:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or Masc.problem(unit) != "":
+		return false
+	return Masc.engage(dice, _emit_cb, unit)
+
+
+## Engages the supercharger before moving (book p. 204), like engage_masc.
+func engage_supercharger(unit: Unit) -> bool:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or Supercharger.problem(unit) != "":
+		return false
+	return Supercharger.engage(dice, _emit_cb, unit)
 
 
 ## Drops a standing 'Mech to the ground instead of moving: harder to hit
 ## from range, easier from next door. Standing up later costs 2 MP and a roll.
 ## To move first and then drop, use submit_move(..., then_prone = true).
 func go_prone(unit: Unit) -> bool:
-	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone or unit.masc_used or unit.sc_used:
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
 	_unit_done()
@@ -120,8 +143,16 @@ func request_power(unit: Unit, want: String) -> bool:
 	return true
 
 
+## Asks to have `n` heat sinks switched off from the next End Phase (p. 103).
+func request_sinks_off(unit: Unit, n: int) -> bool:
+	if unit == null or HeatSinkSwitch.problem(unit, n) != "":
+		return false
+	unit.sinks_off_request = n
+	return true
+
+
 func set_torso_twist(unit: Unit, dir: int) -> bool:
-	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone:
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad:
 		return false
 	unit.torso_twist = clampi(dir, -1, 1)
 	return true
@@ -167,14 +198,22 @@ func _unit_done() -> void:
 
 func _roll_initiative() -> void:
 	var r := Initiative.roll(dice, state.sides_alive(), InitiativeDie.bonuses(state))
+	var forced := MissionFlow.forced_initiative(state)
+	if forced >= 0 and r["order"].has(forced):  # the mission hands this side the win
+		r["order"].erase(forced)
+		r["order"].append(forced)
+		r["forced"] = forced
 	state.initiative_rolls = r["rolls"]
 	state.initiative_order.assign(r["order"])
-	InitiativeDie.update(state, r["order"])
+	if forced < 0:  # a forced win doesn't move the Initiative Die
+		InitiativeDie.update(state, r["order"])
 	_emit(GameEvent.INITIATIVE, r)
 
 
 func _begin_phase(p: int) -> void:
 	_set_phase(p)
+	if p == Phase.Kind.WEAPON_ATTACK:
+		LowVisibility.sensor_checks(state, dice, _emit_cb)
 	state.order_index = 0
 	state.side_order = UnequalNumbers.order(UnequalNumbers.eligible(state, _done_in_phase),
 			state.initiative_order)
@@ -213,18 +252,20 @@ func _heat_and_end() -> void:
 	HeatPhase.run(state, dice, _emit_cb)
 	_set_phase(Phase.Kind.END)
 	EndPhase.run(state, dice, _emit_cb)
-	if not _check_game_over():
+	MissionFlow.end_phase(state, _emit_cb)
+	if not _check_game_over(true):
 		start_turn()
 
 
-## Game ends when at most one side has a 'Mech left.
-func _check_game_over() -> bool:
-	var alive := state.sides_alive()
-	if alive.size() > 1:
+## Game ends when at most one side has a 'Mech left, or as the mission says.
+func _check_game_over(end_of_turn := false) -> bool:
+	Crippled.update(state, dice, _emit_cb)
+	var r := MissionFlow.outcome(state, end_of_turn)
+	if r.is_empty():
 		return false
 	state.game_over = true
-	state.winner = alive[0] if alive.size() == 1 else -1
-	_emit(GameEvent.GAME_OVER, {"winner": state.winner})
+	state.winner = r["winner"]
+	_emit(GameEvent.GAME_OVER, r)
 	return true
 
 

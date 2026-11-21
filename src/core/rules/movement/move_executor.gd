@@ -32,6 +32,10 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		unit.has_moved = true
 		unit.move_mode = MoveMode.Kind.WALK
 		unit.heat_generated += MoveMode.heat(MoveMode.Kind.WALK, 0)
+		Masc.apply_failure(state, dice, emit, unit)
+		Supercharger.apply_failure(state, dice, emit, unit)
+		Psr.resolve_pending(state, dice, emit, unit)
+		unit.psr_pending.clear()
 		Damage.announce(emit, unit)
 		PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once
 		return true
@@ -61,8 +65,10 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	elif not unit.on_roof:
 		for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
 			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry, smash)
+	Masc.apply_failure(state, dice, emit, unit)
+	Supercharger.apply_failure(state, dice, emit, unit)
 	if moved:
-		MovePsr.after_move(unit, mode, unit.hexes_moved)
+		MovePsr.after_move(unit, mode, unit.hexes_moved, state.conditions, charge_target_id >= 0)
 	HullBreach.check_exposed(state, emit, unit)
 	Psr.resolve_pending(state, dice, emit, unit)
 	unit.psr_pending.clear()
@@ -81,7 +87,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 static func _action_rolls(state: GameState, dice: Dice, emit: Callable, unit: Unit,
 		path: Array[Vector3i], from: Vector3i, mode: int) -> Dictionary:
 	for r in MovePsr.action_rolls(state, unit, path, from, mode):
-		if Psr.roll(dice, emit, unit, r["reason"], int(r["mod"])):
+		if Psr.roll(dice, emit, unit, r["reason"], int(r["mod"]), state):
 			continue
 		var keep: int = r["index"] + (0 if r["back"] else 1)
 		return {"end": keep, "levels": r["levels"], "reason": r["reason"]}

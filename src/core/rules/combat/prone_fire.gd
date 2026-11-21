@@ -8,6 +8,8 @@ extends RefCounted
 
 ## Location of the propping arm, or -1 when no arm is left.
 static func prop_arm(u: Unit) -> int:
+	if u.def.quad:
+		return _prop_leg(u)
 	var la := not u.is_location_out(Location.LA)
 	var ra := not u.is_location_out(Location.RA)
 	if la and ra:
@@ -19,15 +21,16 @@ static func prop_arm(u: Unit) -> int:
 
 ## Why a prone 'Mech can't fire w, or "" if it can.
 static func blocked(u: Unit, w: MountedWeapon) -> String:
-	if not u.prone:
+	if not u.prone or Quad.fires_standing(u):
 		return ""
 	var arm := prop_arm(u)
 	if arm < 0:
-		return "A prone 'Mech needs an arm to prop itself up before it can fire"
-	if Location.is_leg(w.loc):
+		return "A prone 'Mech needs an arm to prop itself up before it can fire" if not u.def.quad \
+				else "A prone four-legged 'Mech with more than two legs gone can't prop itself up"
+	if Location.is_leg(w.loc) and not u.def.quad:
 		return "Leg weapons can't fire while prone"
 	if w.loc == arm:
-		return "The %s is propping the 'Mech up" % Location.name_of(arm).to_lower()
+		return "The %s is propping the 'Mech up" % Location.name_for(u.def, arm).to_lower()
 	return ""
 
 
@@ -37,3 +40,15 @@ static func _arm_damage(u: Unit, loc: int) -> int:
 		if w.loc == loc and not w.destroyed:
 			n += w.def.damage * maxi(1, w.def.missiles)
 	return n
+
+
+## A prone quad with at most two legs gone props itself on one of them
+## (the least useful); its other legs can still fire.
+static func _prop_leg(u: Unit) -> int:
+	if u.legs_destroyed() > 2:
+		return -1
+	var best := -1
+	for loc in Location.legs(u.def):
+		if not u.is_location_out(loc) and (best < 0 or _arm_damage(u, loc) < _arm_damage(u, best)):
+			best = loc
+	return best

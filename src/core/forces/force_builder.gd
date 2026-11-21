@@ -4,13 +4,28 @@ extends RefCounted
 ## side 0 along the south edge facing north, side 1 along the north edge.
 
 const MAX_UNITS := 4
+## An all-Clan side may field a Star of five (book p. 219 suggests lances
+## of 4 and Stars of 5 but doesn't require either).
+const STAR := 5
+const FORMATION_TIP := "Inner Sphere 'Mechs fight in lances of four; the Clans fight in Stars of five, so an all-Clan side may take a fifth 'Mech."
 const BUDGETS := [2000, 3000, 4500, 6000, 8000]
+## Battlefield condition choices on the start screen (Conditions.from_dict).
+const CONDITION_PRESETS := [{}, {"night": true}, {"cold": 1}, {"cold": 3}, {"heat": 1},
+		{"heat": 3}, {"gravity": 0.5}, {"gravity": 1.5}, {"wind": true}, {"low_visibility": true},
+		{"rain": true}, {"snowfall": true}, {"cold": 2, "snowfall": true, "wind": true, "low_visibility": true}]
 
 var units: UnitDb
 var budget: int = 3000  ## Battle Value per side.
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 var initiative_die := false  ## Use the optional Initiative Die rule.
+var conditions := Conditions.new()  ## Battlefield conditions.
+## "" = free battle (last side standing), "random" = roll on the Standard
+## Mission Table, else a StandardMissions id.
+var mission_id := ""
+var forced_withdrawal := false
+## Briefing lines from the last build (mission setup, complications).
+var notes: Array = []
 
 
 func _init(unit_db: UnitDb, bv_budget: int = 3000) -> void:
@@ -25,11 +40,15 @@ func tons(side: int) -> int:
 	return n
 
 
-func bv(side: int) -> int:
+func bv(side: int, extra: String = "") -> int:
+	var ids: Array = rosters[side] + ([extra] if extra != "" else [])
+	var defs: Array = ids.map(func(id: String) -> UnitDef: return units.get_def(id))
+	var net := C3.form(defs)
 	var n := 0
-	for id: String in rosters[side]:
-		n += unit_bv(side, units.get_def(id))
-	return n
+	for i in defs.size():
+		var b := unit_bv(side, defs[i])
+		n += b + (roundi(b * C3.bv_percent(net.size()) / 100.0) if net.has(i) else 0)
+	return n  # C3 networks raise each member's BV (p. 222)
 
 
 ## A design's BV with this side's MechWarrior skill (book p. 222).
@@ -58,11 +77,28 @@ func cant_add(side: int, def_id: String) -> String:
 	var def := units.get_def(def_id)
 	if def == null:
 		return "Unknown design"
-	if rosters[side].size() >= MAX_UNITS:
-		return "A lance is at most %d 'Mechs" % MAX_UNITS
-	if bv(side) + unit_bv(side, def) > budget:
+	if rosters[side].size() >= max_units(side, def_id):
+		if rosters[side].size() >= MAX_UNITS and not def.is_clan():
+			return "A Clan Star can hold %d, but an Inner Sphere 'Mech makes it a lance of %d" % [STAR, MAX_UNITS]
+		return "A %s is at most %d 'Mechs" % [formation(side).to_lower(), max_units(side, def_id)]
+	if bv(side, def_id) > budget:
 		return "Over budget: %d of %d BV left" % [budget - bv(side), budget]
 	return ""
+
+
+## 5 if every 'Mech on the side (and `adding`, if given) is Clan, else 4.
+func max_units(side: int, adding: String = "") -> int:
+	var ids: Array = rosters[side].duplicate()
+	if adding != "":
+		ids.append(adding)
+	if ids.is_empty():
+		return MAX_UNITS
+	return STAR if ids.all(func(id: String) -> bool: return units.get_def(id).is_clan()) else MAX_UNITS
+
+
+## "Star" for an all-Clan side, else "Lance".
+func formation(side: int) -> String:
+	return "Star" if not rosters[side].is_empty() and max_units(side) == STAR else "Lance"
 
 
 func add(side: int, def_id: String) -> bool:
@@ -92,25 +128,66 @@ func balance_text() -> String:
 	return "%s is much stronger (%d vs %d BV): expect a lopsided fight." % [stronger, a, b]
 
 
+## Switches to the next battlefield condition preset.
+func next_conditions() -> void:
+	var cur := conditions.to_dict()
+	var i := CONDITION_PRESETS.find(cur)
+	conditions = Conditions.from_dict(CONDITION_PRESETS[(i + 1) % CONDITION_PRESETS.size()])
+
+
 func ready_to_fight() -> bool:
 	return not rosters[0].is_empty() and not rosters[1].is_empty()
 
 
-func build(map: BattleMap) -> GameState:
+func build(map: BattleMap, dice: Dice = null) -> GameState:
 	var state := GameState.new(map)
 	state.initiative_die_rule = initiative_die
+	state.conditions = conditions
+	notes = []
+	var setup := {}
+	if mission_id != "":
+		if dice == null:
+			dice = Dice.new(randi())
+		var id := StandardMissions.roll(dice) if mission_id == "random" else mission_id
+		setup = StandardMissions.setup(id, map, dice, forced_withdrawal)
+		state.mission.def = setup["mission"]
+		notes = setup["notes"]
+		if setup["conditions"] != null and conditions.is_clear():
+			state.conditions = setup["conditions"]
+	elif forced_withdrawal:
+		state.mission.def = Mission.from_dict({"name": "Battle", "forced_withdrawal": true,
+				"summary": "Last side with a 'Mech still fighting wins."})
 	var next_id := 1
 	for side in 2:
 		var row := map.height - 2 if side == 0 else 1
 		var ids: Array = rosters[side]
+		var placed: Array[Unit] = []
 		for i in ids.size():
 			var col := int(round((i + 1) * map.width / float(ids.size() + 1))) - 1
-			var c := _free_hex(state, Hex.from_offset(Vector2i(col, row)))
+			var c := Hex.INVALID if not setup.is_empty() else _free_hex(state, Hex.from_offset(Vector2i(col, row)))
 			var u := Unit.new(next_id, units.get_def(ids[i]), side, c, 0 if side == 0 else 3)
 			u.pilot = Pilot.new(skills[side].x, skills[side].y)
 			state.add_unit(u)
+			placed.append(u)
 			next_id += 1
+		if not setup.is_empty():
+			Deployment.place(state, placed, setup["zones"][side])
 	return state
+
+
+## Cycles: free battle, random standard mission, then each standard mission.
+func next_mission() -> void:
+	var order: Array[String] = ["", "random"]
+	order.append_array(StandardMissions.available_ids())
+	mission_id = order[(order.find(mission_id) + 1) % order.size()]
+
+
+func mission_name() -> String:
+	if mission_id == "":
+		return "Free battle (last side standing)"
+	if mission_id == "random":
+		return "Random standard mission"
+	return StandardMissions.info(mission_id).get("name", mission_id)
 
 
 ## Nearest hex to `c` that is dry-ish (depth < 2) and empty.

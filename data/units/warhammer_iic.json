@@ -1,0 +1,15 @@
+{
+  "id": "warhammer_iic", "name": "Warhammer IIC", "tonnage": 70, "walk_mp": 4, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "warhammer", "structure_type": "endo_steel", "model": "", "heat_sinks": 20, "role": "Clan rebuild of the Warhammer. Two ER PPCs with double heat sinks, plus an SRM 6 and lasers for close range.",
+  "armor": {"HD": 9, "CT": 33, "LT": 23, "RT": 23, "LA": 22, "RA": 22, "LL": 30, "RL": 30},
+  "rear_armor": {"CT": 11, "LT": 7, "RT": 7},
+  "equipment": {
+    "LL": ["endo_steel*2"],
+    "RL": ["endo_steel*2"],
+    "LA": ["endo_steel*2", "c_er_ppc", "heat_sink", "heat_sink"],
+    "RA": ["endo_steel*1", "c_er_ppc"],
+    "RT": ["c_srm6", "ammo:c_srm6*2", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink", "heat_sink"],
+    "LT": ["c_er_medium_laser", "c_machine_gun*2", "ammo:c_machine_gun", "c_er_small_laser", "heat_sink", "heat_sink", "heat_sink"],
+    "CT": ["c_er_small_laser"],
+    "HD": ["c_er_small_laser"]
+  }
+}

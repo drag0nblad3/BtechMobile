@@ -44,14 +44,14 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 		if dfa_prone:
 			hl = HitTable.roll(dice, FiringArc.REAR)
 		elif kind == "dfa":
-			hl = HitTable.roll_punch(dice, t_arc)
+			hl = HitTable.roll_punch(dice, t_arc, t.def.quad)
 		else:
 			hl = HitTable.roll(dice, t_arc)
 			hl["no_cover"] = true
 			hl["charge"] = true
 		WeaponFire.hit_with(state, dice, emit, t, FiringArc.REAR if dfa_prone else t_arc, p, a.id, kind, hl)
 	for p in Damage.clusters(d["self_damage"], 5):
-		var hl := HitTable.roll_kick(dice, FiringArc.FRONT) if kind == "dfa" else HitTable.roll(dice, FiringArc.FRONT)
+		var hl := HitTable.roll_kick(dice, FiringArc.FRONT, a.def.quad) if kind == "dfa" else HitTable.roll(dice, FiringArc.FRONT)
 		hl["no_cover"] = true
 		WeaponFire.hit_with(state, dice, emit, a, FiringArc.FRONT, p, a.id, kind + " (self)", hl)
 	return step
@@ -91,13 +91,14 @@ static func displace(state: GameState, dice: Dice, emit: Callable, step: Diction
 	if not a.destroyed:
 		Displacement.move_to(state, emit, a, from)
 	if step["hit"]:
-		_rolls(a, t, name)
+		_rolls(a, t, name, Wind.dfa_fall_levels(state))
 	elif not a.destroyed:
-		Fall.fall(state, dice, emit, a, 2, "missed a death from above", FiringArc.REAR)
+		Fall.fall(state, dice, emit, a, 2 + Wind.dfa_fall_levels(state), "missed a death from above", FiringArc.REAR)
 
 
-static func _rolls(a: Unit, t: Unit, name: String) -> void:
+## `fall_levels`: extra levels if the attacker falls (a death from above in the wind).
+static func _rolls(a: Unit, t: Unit, name: String, fall_levels := 0) -> void:
 	if not a.prone:
-		a.psr_pending.append({"reason": "made a " + name, "mod": 2})
+		a.psr_pending.append({"reason": "made a " + name, "mod": 2, "fall_levels": fall_levels})
 	if not t.prone and not t.destroyed:
 		t.psr_pending.append({"reason": "was hit by a " + name, "mod": 2})

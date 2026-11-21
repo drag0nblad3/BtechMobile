@@ -8,10 +8,11 @@ func test_filter_and_groups() -> void:
 	var clan := DesignFilter.groups(db, DesignFilter.Mode.CLAN)
 	var inner := DesignFilter.groups(db, DesignFilter.Mode.INNER_SPHERE)
 	check_eq(all.size(), clan.size() + inner.size())
-	check_eq(clan.size(), 9, "one entry per Clan chassis")
+	check_eq(clan.size(), 28, "one entry per Clan chassis")
 	for g: Array in clan:
 		check(g.all(func(d: UnitDef) -> bool: return d.is_clan()))
-		check_eq(g[0].config, "Prime", "%s lists the Prime first" % g[0].chassis)
+		if g[0].omni:
+			check_eq(g[0].config, "Prime", "%s lists the Prime first" % g[0].chassis)
 	for g: Array in inner:
 		check_eq(g.size(), 1)
 		check(not g[0].is_clan())

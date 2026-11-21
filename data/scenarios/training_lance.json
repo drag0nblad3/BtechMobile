@@ -1,0 +1,28 @@
+{
+  "name": "Training: Final Exam",
+  "map": "river_crossing",
+  "bot_sides": [1],
+  "bot_level": 2,
+  "units": [
+    {"def": "wolverine_wvr6r", "side": 0, "hex": "0316", "facing": 0},
+    {"def": "hunchback_hbk4g", "side": 0, "hex": "0516", "facing": 0},
+    {"def": "hatchetman_hct3f", "side": 0, "hex": "1116", "facing": 0},
+    {"def": "warhammer_whm6r", "side": 0, "hex": "1316", "facing": 0},
+    {"def": "griffin_grf1n", "side": 1, "hex": "0302", "facing": 3},
+    {"def": "shadow_hawk_shd2h", "side": 1, "hex": "0502", "facing": 3},
+    {"def": "centurion_cn9a", "side": 1, "hex": "1002", "facing": 3},
+    {"def": "jenner_jr7d", "side": 1, "hex": "1402", "facing": 3}
+  ],
+  "lessons": [
+    {"event": "initiative", "turn": 1, "title": "The final exam",
+     "text": "Four 'Mechs each. Everything you learned applies: read the to-hit numbers, count the heat, protect your rear and pick your melee fights. If the lessons feel familiar, set Explanations to Light from the button on the screen."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "The river",
+     "text": "Water slows a 'Mech down and hides the part of it that is under the surface: legs in depth 1 water get partial cover, and a 'Mech fully under water can only use some weapons. Water also cools: standing in it helps your heat sinks. The bridge crosses dry."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 2, "title": "Jumping",
+     "text": "Jump jets carry a 'Mech over water, woods and hills in a straight hop, one MP per hex. It's the hardest movement to hit (+1 on top of the hexes moved), but your own shots are +3 that turn and jumping makes heat."},
+    {"event": "unit_destroyed", "unit_side": 1, "title": "One down",
+     "text": "An enemy 'Mech is out of the fight. Each one you remove means fewer shots at your lance next turn. Pick the next target: the closest, the most dangerous, or the one already damaged."},
+    {"event": "game_over", "title": "Training complete",
+     "text": "That's the whole training campaign. Replay any lesson from the Training screen, or build your own lances by Battle Value from the start screen."}
+  ]
+}

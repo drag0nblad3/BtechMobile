@@ -51,8 +51,7 @@ static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit,
 	if roll >= 12 and (loc == Location.HEAD or Location.is_arm(loc) or Location.is_leg(loc)):
 		Damage.destroy_location(u, loc)
 		emit.call(GameEvent.CRITICAL, {"unit_id": u.id, "loc": loc, "slot": "",
-				"effect": "%s blown off" % Location.name_of(loc)})
-		_after_loss(dice, u, loc)
+				"effect": "%s blown off" % Location.name_for(u.def, loc)})
 		_check_destroyed(emit, u)
 		return
 	for i in n:
@@ -62,17 +61,22 @@ static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit,
 
 
 ## One critical hit in `loc`: a random slot that can still be hit. If the
-## location started the phase with nothing to hit, it moves inward.
-static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int) -> void:
+## location started the phase with nothing to hit, it moves inward
+## (unless `transfer` is false: MASC's own criticals never move).
+static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int, transfer := true) -> void:
 	var options := _hittable(u, loc)
 	while options.is_empty():
-		if _hit_this_phase(state, u, loc):
+		if not transfer or _hit_this_phase(state, u, loc):
 			return
 		loc = Location.transfer(loc)
 		if loc < 0 or u.is_location_destroyed(loc):
 			return
 		options = _hittable(u, loc)
-	var slot := options[dice.pick(options.size())]
+	hit_slot(state, dice, emit, u, loc, options[dice.pick(options.size())])
+
+
+## A critical hit on one chosen slot (the supercharger picks engine slots).
+static func hit_slot(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int, slot: CritSlot) -> void:
 	slot.hit = true
 	slot.hit_when = _now(state)
 	var effect := CritEffects.apply(state, dice, emit, u, loc, slot)
@@ -99,7 +103,7 @@ static func _explosive_hit(state: GameState, dice: Dice, emit: Callable, u: Unit
 static func _hittable(u: Unit, loc: int) -> Array[CritSlot]:
 	var out: Array[CritSlot] = []
 	for s: CritSlot in u.slots[loc]:
-		if s.can_be_hit():
+		if s.can_be_hit() or AutocannonCrit.rehittable(u, s):
 			out.append(s)
 	return out
 
@@ -120,11 +124,6 @@ static func _hit_this_phase(state: GameState, u: Unit, loc: int) -> bool:
 
 static func _now(state: GameState) -> int:
 	return state.turn * 10 + state.phase
-
-
-static func _after_loss(_dice: Dice, u: Unit, loc: int) -> void:
-	if Location.is_leg(loc):
-		u.psr_pending.append({"reason": "leg blown off", "auto_fall": true, "mod": 0})
 
 
 static func _check_destroyed(emit: Callable, u: Unit) -> void:

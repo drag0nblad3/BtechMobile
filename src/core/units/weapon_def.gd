@@ -21,7 +21,8 @@ var tons: float          ## Weight in tons (book weapon tables).
 var ammo_per_ton: int  ## 0 = no ammo needed.
 var bv: int           ## Battle Value of the weapon.
 var ammo_bv: int       ## Battle Value of one ton of its ammo.
-var heat_damage: bool  ## A hit also adds its damage as heat to the target (flamers).
+var heat_damage: bool  ## A hit also adds heat to the target (flamers).
+var heat_points: int   ## Heat a flamer hit adds: its damage unless noted (ER flamer 1, p. 184).
 var indirect: bool     ## May fire without line of sight via a spotter (LRMs).
 var to_hit_mod: int    ## The weapon's own to-hit modifier (pulse lasers -2).
 var explodes: bool     ## Blows up on its first critical hit (Gauss rifles, p. 184).
@@ -37,6 +38,10 @@ var ams: bool          ## Anti-missile system: never fires at targets (AntiMissi
 ## "inner_sphere" or "clan" (ids start "c_"): Clan versions are lighter,
 ## smaller and longer-ranged (book p. 251 tables).
 var tech := "inner_sphere"
+var artemis_builtin: bool  ## Artemis IV built in (ATMs, p. 186): no FCS item needed.
+## Ammo kind -> WeaponDef with that munition's damage, ranges and cluster
+## grouping (ATM "er"/"he"); its ammo still belongs to this launcher (Atm).
+var munitions: Dictionary = {}
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -59,6 +64,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.ammo_bv = int(d.get("ammo_bv", 0))
 	w.indirect = bool(d.get("indirect", false))
 	w.heat_damage = bool(d.get("heat_damage", false))
+	w.heat_points = int(d.get("heat_points", d.get("damage", 0)))
 	w.to_hit_mod = int(d.get("to_hit", 0))
 	w.explodes = bool(d.get("explodes", false))
 	w.ammo_explodes = bool(d.get("ammo_explodes", true))
@@ -71,6 +77,14 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.ams = bool(d.get("ams", false))
 	w.pulse = bool(d.get("pulse", false))
 	w.tech = d.get("tech", "inner_sphere")
+	w.artemis_builtin = bool(d.get("artemis_builtin", false))
+	var mun: Dictionary = d.get("munitions", {})
+	for kind: String in mun:
+		var v := d.duplicate()
+		v.erase("munitions")
+		v.merge(mun[kind], true)
+		v["name"] = "%s (%s)" % [d["name"], mun[kind].get("label", kind)]
+		w.munitions[kind] = WeaponDef.from_dict(v)
 	return w
 
 
