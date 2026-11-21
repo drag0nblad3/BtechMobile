@@ -20,6 +20,8 @@ var bots: BotDriver
 var tutorial: Tutorial
 var lessons: LessonCard
 var training := -1  ## Training campaign mission index, -1 outside training.
+var objectives: Node3D
+var off_field: HiddenInput
 
 
 func _ready() -> void:
@@ -53,10 +55,11 @@ func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
 	map_view.build(state.map)
-	add_child(ObjectiveMarkers.build(state))
+	objectives = ObjectiveMarkers.build(state)
+	add_child(objectives)
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
-	units_layer.build(state)
+	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
 	fx.setup(state, units_layer, map_view)
 	add_child(fx)
 	var highlighter := HexHighlighter.new()
@@ -92,6 +95,11 @@ func _build_views(state: GameState) -> void:
 	var plates := Nameplates.new()
 	add_child(plates)
 	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
+	off_field = HiddenInput.new()
+	off_field.controller = controller
+	off_field.hud = hud
+	off_field.bots = bots
+	add_child(off_field)
 
 
 func _wire() -> void:
@@ -138,6 +146,8 @@ func _focus_unit(u: Unit) -> void:
 func _on_tap(pos: Vector2) -> void:
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c == Hex.INVALID:
+		return
+	if off_field.on_hex_tapped(c):
 		return
 	var u := controller.state.unit_at(c)
 	if u:
@@ -200,20 +210,35 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
+		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:
+			_rebuild_objectives()
+		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
+			units_layer.refresh_unit(e.data["unit_id"])
 		GameEvent.UNIT_EXITED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
 			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			_update_status()
 			if e.type == GameEvent.ACTIVE_SIDE:
+				_rebuild_objectives()  # carried counters move with their 'Mechs
+			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
 		GameEvent.BUILDING:
-			if e.data["kind"] in ["collapsed", "fire"]:
+			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
 			attacks.clear()
 			movement.clear_selection()
+
+
+func _rebuild_objectives() -> void:
+	if controller.state.mission.def == null or controller.state.mission.def.objectives.is_empty() and objectives.get_child_count() == 0:
+		return
+	objectives.queue_free()
+	objectives = ObjectiveMarkers.build(controller.state)
+	add_child(objectives)
 
 
 func _update_status() -> void:

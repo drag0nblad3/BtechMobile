@@ -13,9 +13,10 @@ static func is_road(tile: MapTile) -> bool:
 	return tile != null and tile.terrain.id == TERRAIN and tile.building == null and not tile.is_water()
 
 
-## Travelling on the road: both hexes paved.
+## Travelling on the road: both hexes paved, a bridge deck counting as
+## paved for a 'Mech on it (Bridges).
 static func road_step(src: MapTile, dst: MapTile) -> bool:
-	return is_road(src) and is_road(dst)
+	return (is_road(src) or src.bridge != null) and (is_road(dst) or Bridges.onto_deck(src, dst))
 
 
 ## MP for the level change when stepping between two hexes.

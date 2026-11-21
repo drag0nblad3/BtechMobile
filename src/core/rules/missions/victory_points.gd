@@ -40,8 +40,9 @@ static func total(state: GameState, side: int) -> int:
 
 static func force_bv(state: GameState, side: int) -> int:
 	var n := 0
-	for u in state.units_of_side(side):
-		n += BvSkill.adjusted(BattleValue.of(u.def), u.pilot.gunnery, u.pilot.piloting)
+	for u in state.all_units():
+		if u.side == side:
+			n += BvSkill.adjusted(BattleValue.of(u.def), u.pilot.gunnery, u.pilot.piloting)
 	return n
 
 
