@@ -29,7 +29,9 @@ var home_edges: Array[String] = ["south", "north"]
 var exit := ""
 var exit_from_turn: int = 1
 var exit_side: int = -1  ## Only this side may leave by the exit (-1 = both).
-var attacker: int = -1  ## Attacking side where the mission has one (Steel Rain scoring).
+var attacker: int = -1
+var ecm_interference := false  ## ECM Interference complication (EcmInterference).
+var waves := false  ## Waves complication: half of each force arrives later (Waves).  ## Attacking side where the mission has one (Steel Rain scoring).
 ## What units scan in the End Phase (Scanning): "", "units" or "intel".
 var scan := ""
 var summary := ""  ## Plain-words goal for the player.

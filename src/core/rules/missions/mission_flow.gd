@@ -12,6 +12,7 @@ static func start_turn(state: GameState, dice: Dice, emit: Callable) -> void:
 	Crippled.update(state, dice, emit)
 	ForcedWithdrawal.start_turn(state)
 	Scanning.start_turn(state)
+	Waves.start_turn(state, dice, emit)
 	if ms.def.random_duration and ms.last_turn == 0 and RandomDuration.roll(state, dice, emit):
 		ms.last_turn = state.turn
 

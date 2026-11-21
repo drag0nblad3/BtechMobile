@@ -195,6 +195,10 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
 			units_layer.refresh_unit(e.data["unit_id"])
+		GameEvent.WAVE:
+			for u in s.units:
+				units_layer.view_of(u).visible = not s.hidden.has(u)
+				units_layer.refresh_unit(u.id)
 		GameEvent.UNIT_EXITED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
 			_show_sheet_if_open()
