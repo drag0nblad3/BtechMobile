@@ -161,3 +161,27 @@ func test_plastic_pass57_cannon_mount_is_physically_connected() -> void:
 	var atlas := VxModel.load_file(MODELS[0])
 	check(not atlas.part("ct_lower_abdominal_armor").is_empty(),
 			"Atlas ribcage/waist armor gap returned")
+
+
+func test_cgl_plastic_pass57_structural_and_rear_landmarks() -> void:
+	# Low-res shape gates from front, side and rear photos of CGL sculpts.
+	# These are actual voxel positions, not render-only colored decorations.
+	var atlas := VxModel.load_file(MODELS[0])
+	var codpiece: Dictionary = atlas.part("pelvis_front_codpiece")
+	check(not codpiece.is_empty(), "Atlas lower torso / pelvis missing")
+	check(codpiece["cells"].has(Vector3i(0, 26, -8)),
+			"Atlas center hip plate not connected beneath the chest")
+	var w := VxModel.load_file(MODELS[1])
+	var cannon_bridge: Dictionary = w.part("ra_cannon_mount")
+	check(not cannon_bridge.is_empty(), "Wolverine forearm gun breech still disconnected")
+	check(cannon_bridge["cells"].has(Vector3i(18, 29, -19)),
+			"Wolverine cannon bridge does not meet forward housing")
+	check(cannon_bridge["cells"].has(Vector3i(18, 38, -5)),
+			"Wolverine cannon bridge does not reach upper arm")
+	for name in ["ct_left_jump_exhaust", "ct_right_jump_exhaust"]:
+		check(not w.part(name).is_empty(), "Wolverine missing rear jump exhaust: " + name)
+	var j := VxModel.load_file(MODELS[2])
+	for name in ["ll_rear_hock_brace", "rl_rear_hock_brace"]:
+		check(not j.part(name).is_empty(), "Jenner hock assembly missing: " + name)
+	check(j.part("ll_rear_hock_brace")["cells"].has(Vector3i(-7, 8, 10)),
+			"Jenner hock brace not located behind the lower shin")
