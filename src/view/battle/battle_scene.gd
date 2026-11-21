@@ -150,7 +150,10 @@ func _toggle_sheet() -> void:
 
 func _show_sheet_if_open() -> void:
 	if hud.sheet_open and sheet_unit:
-		hud.show_side(RecordSheetView.build(sheet_unit))
+		var power := func(want: String) -> void:
+			controller.request_power(sheet_unit, want)
+			_show_sheet_if_open()
+		hud.show_side(RecordSheetView.build(sheet_unit, Callable() if bots.bot_sides.has(sheet_unit.side) else power))
 
 
 func _cycle_explain() -> void:

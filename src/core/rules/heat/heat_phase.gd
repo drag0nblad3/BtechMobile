@@ -23,7 +23,9 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
 				"sinks": sinks, "outside": outside, "heat": u.heat,
 				"effects": HeatScale.effects_text(u.heat)})
-		HeatShutdown.check(dice, emit, u)
+		VoluntaryShutdown.apply(dice, emit, u)
+		if not u.voluntary_shutdown:
+			HeatShutdown.check(dice, emit, u)
 		_ammo_check(state, dice, emit, u)
 		if not u.destroyed and u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT) and u.heat >= 10:
 			PilotDamage.wound(dice, emit, u, 2 if u.heat >= 20 else 1,
