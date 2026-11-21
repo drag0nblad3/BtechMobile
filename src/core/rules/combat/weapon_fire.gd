@@ -51,7 +51,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var ams := AntiMissile.engaging(target, attacker, w)
 	if ams != null and not AntiMissile.engage(target, ams):
 		ams = null
-	var c := WeaponModes.cluster(w, shots, dice, ams != null)
+	var jam := Ecm.artemis_blocked(state, attacker, target, th) if WeaponModes.has_artemis(w) else ""
+	if jam != "":
+		data["artemis_blocked"] = jam
+	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "")
 	if ams != null:
 		data["ams"] = true
 	var packets: Array[int] = c["packets"]

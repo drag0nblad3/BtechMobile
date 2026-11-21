@@ -59,7 +59,7 @@ static func expected_per_hit(w: MountedWeapon) -> float:
 ## Rolls (if needed) how much of a hit lands: {n, roll, packets}.
 ## n is 0 for a plain single-packet weapon. `ams`: an anti-missile system
 ## engaged (AntiMissile): -4 to the roll, a Streak counts as a 7.
-static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false) -> Dictionary:
+static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false, no_artemis := false) -> Dictionary:
 	var d := w.def
 	if d.streak:
 		var sn := ClusterTable.hits(d.missiles, AntiMissile.STREAK_ROLL) if ams else d.missiles
@@ -77,7 +77,7 @@ static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false) -> D
 		return {"n": pellets, "roll": r2, "packets": _packets(pellets, 1)}
 	if d.is_cluster():
 		var r3 := dice.roll_2d6()
-		var bonus := (ARTEMIS_BONUS if has_artemis(w) else 0) + (AntiMissile.CLUSTER_MOD if ams else 0)
+		var bonus := (ARTEMIS_BONUS if has_artemis(w) and not no_artemis else 0) + (AntiMissile.CLUSTER_MOD if ams else 0)
 		var m := 0 if r3 + bonus < 2 else ClusterTable.hits(d.missiles, r3 + bonus)
 		return {"n": m, "roll": r3, "bonus": bonus, "packets": _packets(m * d.damage, d.group * d.damage)}
 	return {"n": 0, "roll": 0, "packets": [d.damage] as Array[int]}
