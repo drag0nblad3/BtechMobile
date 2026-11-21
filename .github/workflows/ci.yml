@@ -66,6 +66,26 @@ jobs:
           set -o pipefail
           godot --headless --quit-after 90 --scene res://scenes/vx_showcase.tscn 2>&1 | tee vx.log
           ! grep -E "SCRIPT ERROR|Parse Error" vx.log
+      - name: Render Atlas, Wolverine and Jenner from hand-authored VxModel
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/reference-sculpted-voxel-mechs-20261120'
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/vx-reference-renders
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1440x900 \
+            -s tools/capture_vx_reference.gd -- /tmp/vx-reference-renders 2>&1 | tee vx-render.log
+          [ "$(grep -c '^VX_RENDER_OK|' vx-render.log)" -eq 8 ]
+          test -s /tmp/vx-reference-renders/gallery_front.png
+          test -s /tmp/vx-reference-renders/gallery_three_quarter.png
+          ! grep -E "SCRIPT ERROR|Parse Error|VX_RENDER_ERROR" vx-render.log
+          echo "VX_GALLERY_FRONT_BASE64_START"
+          base64 -w0 /tmp/vx-reference-renders/gallery_front.png
+          echo ""
+          echo "VX_GALLERY_FRONT_BASE64_END"
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/reference-sculpted-voxel-mechs-20261120'
+        with:
+          name: reference-voxel-mech-renders
+          path: /tmp/vx-reference-renders/*.png
       - name: Render voxel gait comparison
         if: github.event_name == 'workflow_dispatch'
         run: |
