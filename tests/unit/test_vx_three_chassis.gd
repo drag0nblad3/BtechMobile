@@ -83,6 +83,13 @@ func test_archer_lrm20_launchers_have_real_mirrored_tubes() -> void:
 		check_eq(seen.size(), 20, "tubes must have unique positions")
 
 
+func test_small_salvos_use_model_port_counts() -> void:
+	check_eq(VxVolley.salvo_count(5), 5, "LRM-5 launches five visual missiles")
+	check_eq(VxVolley.salvo_count(6), 6, "SRM-6 launches six visual missiles")
+	check_eq(VxVolley.salvo_count(15), 15, "Catapult fires fifteen visual missiles")
+	check_eq(VxVolley.salvo_count(20), 20, "Archer fires twenty visual missiles")
+
+
 func test_hollow_lofts_preserve_exterior_without_solid_center() -> void:
 	var d: Dictionary = JsonFile.read("res://data/voxels/warhammer.json")
 	d["subdivide"] = 1
