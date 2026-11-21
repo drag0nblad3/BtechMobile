@@ -24,6 +24,8 @@ var ecm_loc := -1  ## Location of a Guardian ECM suite (Ecm), -1 none.
 var masc_loc := -1  ## Location of MASC (Masc), -1 none.
 var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 none.
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
+var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
+var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
 ## "standard" or "xl" (XlEngine: 3 engine slots in each side torso, 2 if Clan).
 var engine_type := "standard"
 ## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
@@ -92,11 +94,12 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 
 ## One-per-'Mech items stored as a location: item -> property.
 const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
-		"supercharger": "supercharger_loc"}
+		"supercharger": "supercharger_loc", "c3_master": "c3_master_loc", "c3_slave": "c3_slave_loc"}
 
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
 ## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword",
-## "endo_steel", "ferro_fibrous", "tsm", "targeting_computer", "guardian_ecm", "masc", "supercharger"; "<item>*N" repeats an item N times.
+## "endo_steel", "ferro_fibrous", "tsm", "targeting_computer", "guardian_ecm", "masc", "supercharger",
+## "c3_master", "c3_slave"; "<item>*N" repeats an item N times.
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
 	if item == "endo_steel" or item == "ferro_fibrous" or item == "tsm":
 		if not bulk_slots.has(loc):

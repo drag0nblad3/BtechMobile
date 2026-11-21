@@ -33,6 +33,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"ammo": float(def.ammo_mounts.size()),
 		"case": def.case_locs.size() * 0.5,
 		"ecm": 1.5 if def.ecm_loc >= 0 else 0.0,
+		"c3": (C3.MASTER_TONS if def.c3_master_loc >= 0 else 0.0) + (C3.SLAVE_TONS if def.c3_slave_loc >= 0 else 0.0),
 		"masc": float(Masc.size(def)) if def.masc_loc >= 0 else 0.0,
 		"supercharger": Supercharger.size_tons(def) if def.supercharger_loc >= 0 else 0.0,
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,

@@ -6,7 +6,7 @@ extends RefCounted
 ## normally but lose their +2 cluster bonus. Streaks, targeting computers
 ## and AMS are unaffected. Artemis also never helps indirect fire (p. 188).
 ## TODO(rules): ECM is always on (it is an activated item); water-line
-## blocking, Angel ECM, Narc, C3 and probes aren't modelled.
+## blocking, Angel ECM and probes aren't modelled. C3 checks ECM itself (C3).
 
 const RADIUS := 6
 
