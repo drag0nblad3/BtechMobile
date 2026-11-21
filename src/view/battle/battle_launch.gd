@@ -7,6 +7,8 @@ const MENU_SCENE := "res://scenes/menu.tscn"
 const BATTLE_SCENE := "res://scenes/main.tscn"
 
 static var pending: GameState = null
+## Continue the last saved live battle instead of creating a new one.
+static var load_autosave := false
 ## Sides the computer plays in the next battle.
 static var bot_sides: Array = []
 ## Scenario file whose lessons to show in the next battle, "" for none.
