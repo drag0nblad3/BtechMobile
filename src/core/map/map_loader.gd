@@ -6,6 +6,7 @@ extends RefCounted
 ## Token = terrain char + level, optionally "d" + water depth.
 ## Optional "buildings": [{"hex": "XXYY", "type": "medium", "height": 2}].
 ## Optional "fires": ["XXYY", ...]: hexes burning from the start.
+## Optional "fog": {"light": ["XXYY", ...], "heavy": [...]}: fog banks.
 
 
 static func load_file(path: String, terrain: TerrainDb) -> BattleMap:
@@ -34,6 +35,12 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 		var ft := m.get_tile(Hex.from_label(f))
 		assert(ft != null, "Bad fire hex %s" % f)
 		ft.on_fire = true
+	var fog: Dictionary = data.get("fog", {})
+	for kind: String in fog:
+		for f: String in fog[kind]:
+			var tile := m.get_tile(Hex.from_label(f))
+			assert(tile != null, "Bad fog hex %s" % f)
+			tile.fog = 2 if kind == "heavy" else 1
 	return m
 
 

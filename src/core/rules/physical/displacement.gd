@@ -63,7 +63,7 @@ static func may_enter(state: GameState, u: Unit, dir: int) -> bool:
 static func _make_room(state: GameState, dice: Dice, emit: Callable, t: Unit, dir: int) -> bool:
 	if t.destroyed:
 		return true
-	var ok := not t.prone and Psr.roll(dice, emit, t, "a 'Mech was shoved into its hex", 0)
+	var ok := not t.prone and Psr.roll(dice, emit, t, "a 'Mech was shoved into its hex", 0, state)
 	if ok:
 		for step in _dodges(t):
 			var c := Hex.neighbor(t.coord, step)

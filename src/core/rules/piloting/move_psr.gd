@@ -6,7 +6,8 @@ extends RefCounted
 ## backward level change, landing a jump in water. Mode rolls come at the end
 ## of the 'Mech's move: running at least one hex with a gyro hit, a hip hit or
 ## a destroyed leg (one each); jumping with a gyro hit, a destroyed leg, or
-## actuator damage in a leg (one per leg); any jump in odd gravity (Gravity).
+## actuator damage in a leg (one per leg); any jump in odd gravity (Gravity); landing a jump in the wind (Wind).
+## Jump rolls are marked "jump" so the wind's general +1 skips them.
 
 
 ## [{index, reason, mod, levels, back}] in path order. `index` is the path
@@ -44,7 +45,7 @@ static func action_rolls(state: GameState, u: Unit, path: Array[Vector3i], from:
 
 
 ## Rolls owed at the end of the move; added to Unit.psr_pending.
-static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null) -> void:
+static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null, dfa := false) -> void:
 	if mode == MoveMode.Kind.RUN and hexes > 0:
 		if u.gyro_hits > 0:
 			u.psr_pending.append({"reason": "running with a damaged gyro", "mod": 0})
@@ -53,16 +54,17 @@ static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null) -> 
 		for i in u.legs_destroyed():
 			u.psr_pending.append({"reason": "running on one leg", "mod": 0})
 	if mode == MoveMode.Kind.JUMP:
-		var g := Gravity.jump_roll(c)
-		if not g.is_empty():
-			u.psr_pending.append(g)
+		for extra in [Gravity.jump_roll(c), Wind.landing_roll(c, dfa)]:
+			if not extra.is_empty():
+				extra["jump"] = true
+				u.psr_pending.append(extra)
 		if u.gyro_hits > 0:
-			u.psr_pending.append({"reason": "landing a jump with a damaged gyro", "mod": 0})
+			u.psr_pending.append({"reason": "landing a jump with a damaged gyro", "mod": 0, "jump": true})
 		for loc in [Location.LL, Location.RL]:
 			if u.is_location_out(loc):
-				u.psr_pending.append({"reason": "landing a jump on one leg", "mod": 0})
+				u.psr_pending.append({"reason": "landing a jump on one leg", "mod": 0, "jump": true})
 			elif _leg_hits(u, loc) > 0:
-				u.psr_pending.append({"reason": "landing a jump on a damaged leg", "mod": 0})
+				u.psr_pending.append({"reason": "landing a jump on a damaged leg", "mod": 0, "jump": true})
 
 
 static func _leg_hits(u: Unit, loc: int) -> int:

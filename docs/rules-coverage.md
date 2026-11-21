@@ -104,6 +104,9 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Extreme cold / heat 1-3 (`ExtremeTemp`, p. 120): +2 heat shed (cold) or gained (heat) per level each Heat Phase; shutdown, restart and ammo avoid numbers -1/+1 per level (2 or less passes, past 12 fails); life support: in the cold, one MechWarrior hit per level instead of heat hits, minus 1/2/3 at 5-10/11-20/21+ heat; in the heat, +1 hit per level whenever heat deals life support hits — `TODO(rules)`: water freezing to ice / drying to sinkholes; torso-mounted cockpits (not in the game).
 - ✅ Gravity (`Gravity`, p. 121): rounded to 0.1 G; fall and building collapse damage times G, rounded up; every jump owes a piloting roll at -1 away from 1 G.
 - ✅ Night (p. 121): no effect on 'Mechs (explained in the log).
+- ✅ Wind (`Wind`, p. 121): +1 to every piloting roll outside buildings (a roof is outside); a jump (not a DFA) owes a +1 landing roll whose failure is a 1-level fall, and the other jump rolls skip the general +1; a successful DFA's attacker roll gets +1 and an attacker falling from a DFA falls 1 level more; smoke and fog are blown away.
+- ✅ Low visibility (`LowVisibility`, p. 121): +1 to every ranged attack (including shots at buildings and woods); at the start of the Weapon Attack Phase each active 'Mech makes a sensor check (p. 113: piloting, +2 for one sensor hit, impossible with two, never a fall) and passing removes the +1 for that turn — `TODO(rules)`: active probes (none in the game yet).
+- ✅ Smoke and fog hexes (`Obscurant`, p. 124): map `"fog"` hexes, light or heavy, act as light/heavy woods two levels high for line of sight and to-hit; burning hexes are light smoke; with woods and each other a hex never passes +2 or 2 line-of-sight points.
 
 ## Critical hits
 - ✅ Crit check when structure is damaged or on a hit-location roll of 2: 8-9 one, 10-11 two,

@@ -177,6 +177,8 @@ func _roll_initiative() -> void:
 
 func _begin_phase(p: int) -> void:
 	_set_phase(p)
+	if p == Phase.Kind.WEAPON_ATTACK:
+		LowVisibility.sensor_checks(state, dice, _emit_cb)
 	state.order_index = 0
 	state.side_order = UnequalNumbers.order(UnequalNumbers.eligible(state, _done_in_phase),
 			state.initiative_order)

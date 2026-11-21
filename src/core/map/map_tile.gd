@@ -10,6 +10,7 @@ var level: int = 0
 var depth: int = 0
 var building: Building = null  ## Standing building, if any.
 var on_fire := false  ## Burning (Fire).
+var fog := 0  ## Fog in the hex: 0 none, 1 light, 2 heavy (Obscurant).
 
 
 func _init(c: Vector2i, t: TerrainType, lvl: int, dep: int = 0) -> void:

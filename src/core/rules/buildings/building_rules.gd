@@ -51,7 +51,7 @@ static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vect
 	if careful:
 		emit.call(GameEvent.BUILDING, {"kind": "careful", "coord": c, "unit_id": u.id, "name": b.type.name})
 		return
-	if not smash and Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1):
+	if not smash and Psr.roll(dice, emit, u, "forcing its way into a %s" % b.type.name.to_lower(), 1, state):
 		return
 	emit.call(GameEvent.BUILDING, {"kind": "smash" if smash else "entry_failed", "coord": c,
 			"unit_id": u.id, "name": b.type.name})
