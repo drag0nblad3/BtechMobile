@@ -42,9 +42,10 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		los = LineOfSight.check(state.map, spotter, target)
 		los["cover"] = Hex.INVALID  # indirect fire ignores cover from hills (p. 66)
 	var dist := Hex.distance(attacker.coord, target.coord)
-	var br := w.def.bracket(dist)
+	var p := Atm.profile(w)  # ATM munitions change the ranges
+	var br := p.bracket(dist)
 	if br == WeaponDef.Bracket.OUT:
-		th.impossible = "Out of range (%d hexes, max %d)" % [dist, w.def.long_range]
+		th.impossible = "Out of range (%d hexes, max %d)" % [dist, p.long_range]
 		return th
 	var wet := " under water" if wc["under_range"] else ""
 	if wc["under_range"]:
@@ -60,14 +61,14 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	IndirectFire.add_spotting_mod(th, state, attacker)
 	match br:
 		WeaponDef.Bracket.MEDIUM:
-			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [dist, w.def.name, w.def.range_text(),
+			th.add("medium range" + wet, 2, "%d hexes is medium range for %s (%s)%s." % [dist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
 		WeaponDef.Bracket.LONG:
-			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [dist, w.def.name, w.def.range_text(),
+			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [dist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
-	if w.def.min_range > 0 and dist <= w.def.min_range:
-		th.add("minimum range", w.def.min_range - dist + 1,
-				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [w.def.name, w.def.min_range])
+	if p.min_range > 0 and dist <= p.min_range:
+		th.add("minimum range", p.min_range - dist + 1,
+				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])
 	if w.def.to_hit_mod != 0:
 		th.add(w.def.name, w.def.to_hit_mod, "%s is %s accurate than a standard weapon: %+d to hit." % [
 				w.def.name, "more" if w.def.to_hit_mod < 0 else "less", w.def.to_hit_mod])

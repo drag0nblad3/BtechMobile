@@ -38,6 +38,9 @@ heat per building level that sets it alight.
   the explosion damage per shot. Narc-equipped missiles are `ammo:<launcher>:narc`.
 - `rapid`: most shots in one attack (Ultra ACs 2, rotary ACs 6); `rotary: true` lets it pick
   1-6 shots and jam (`RotaryAc`).
+- `artemis_builtin: true` (ATMs) gives Artemis IV without an FCS item. `munitions: {"er": {"label", ...}}`
+  lists alternative ammo that overrides any stats (damage, group, ranges); each loads from its own
+  `ammo:<launcher>:<kind>` bins and is picked as the firing mode (`Atm`).
 - `tech: "clan"` marks Clan versions; their ids start `c_` (`c_er_medium_laser`) and keep the
   book's names. `to_hit` is the weapon's own modifier (pulse -2, ER pulse -1, heavy lasers +1).
 
