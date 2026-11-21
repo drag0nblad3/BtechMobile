@@ -241,3 +241,21 @@ func test_flamer_adds_heat() -> void:
 	t.outside_heat = 40
 	HeatPhase.run(s, LoadedDice.new(), func(_t, _d): pass)
 	check(t.heat <= 15, "outside heat capped at 15")
+
+
+func test_leg_weapons_cant_fire_through_own_cover() -> void:
+	var s := GameState.new(open_map(8, 3))
+	var d := UnitDef.from_dict({"id": "lg", "name": "Leggy", "tonnage": 50, "walk_mp": 4,
+			"armor": {"CT": 20}, "equipment": {"LL": ["medium_laser"], "RA": ["medium_laser"]}}, weapons())
+	var a := Unit.new(1, d, 0, hex_at(1, 1), 2)
+	var t := mech("locust_lct1v", 1, hex_at(4, 1), 5, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	var leg: MountedWeapon = a.weapons.filter(func(w: MountedWeapon) -> bool: return w.loc == Location.LL)[0]
+	var arm: MountedWeapon = a.weapons.filter(func(w: MountedWeapon) -> bool: return w.loc == Location.RA)[0]
+	check(ToHitCalc.weapon(s, a, leg, t).possible(), "open ground: leg laser fires")
+	s.map.get_tile(Hex.line(a.coord, t.coord)[1]).level = 1
+	check(LineOfSight.check(s.map, t, a)["cover"] != Hex.INVALID, "the hill covers the shooter's legs")
+	var th := ToHitCalc.weapon(s, a, leg, t)
+	check(not th.possible(), "leg laser can't fire through its own cover (p. 61)")
+	check(ToHitCalc.weapon(s, a, arm, t).possible(), "arm laser still fires")
