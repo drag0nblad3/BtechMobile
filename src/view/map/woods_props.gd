@@ -5,7 +5,7 @@ extends RefCounted
 ## placement is seeded by hex coordinate so it never shuffles.
 
 const SHADER := preload("res://src/view/shaders/vx_foliage.gdshader")
-const TREES := {"light_woods": 3, "heavy_woods": 6}
+const TREES := {"light_woods": 3, "heavy_woods": 5}
 const CONIFER_SHARE := {"light_woods": 0.3, "heavy_woods": 0.65}
 
 static var _material: ShaderMaterial

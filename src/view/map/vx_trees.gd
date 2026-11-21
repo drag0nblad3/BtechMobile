@@ -4,7 +4,7 @@ extends RefCounted
 ## seeded variants each. Every tier or canopy shell is one colour so the
 ## greedy mesher keeps them at a few hundred triangles.
 
-const PITCH := 0.06
+const PITCH := 0.075  ## Coarse enough that a dense forest stays cheap on phones.
 const CONIFERS := 3
 const BROADLEAF := 3
 const TRUNK := Color("#4e3826")
@@ -27,29 +27,29 @@ static func mesh(kind: String, variant: int) -> ArrayMesh:
 
 static func conifer(rng: RandomNumberGenerator) -> Dictionary:
 	var cells := {}
-	var trunk_h := rng.randi_range(2, 3)
+	var trunk_h := rng.randi_range(1, 2)
 	VxGrid.box(cells, Vector3i(0, 0, 0), Vector3i(0, trunk_h + 2, 0), TRUNK)
 	var tiers := rng.randi_range(3, 4)
-	var r := rng.randf_range(3.6, 4.4)
+	var r := rng.randf_range(2.9, 3.5)
 	var y := trunk_h
 	for i in tiers:
-		var h := 3 if i < tiers - 1 else 4
+		var h := 3
 		var tint: Color = NEEDLES[mini(i, NEEDLES.size() - 1)]
 		for dy in h:  # each tier narrows toward its top
-			_disk(cells, y + dy, r - dy * 0.9, tint)
+			_disk(cells, y + dy, r - dy * 0.8, tint)
 		y += h - 1
-		r -= rng.randf_range(0.8, 1.1)
+		r -= rng.randf_range(0.6, 0.8)
 	cells[Vector3i(0, y + 1, 0)] = NEEDLES[NEEDLES.size() - 1]
 	return cells
 
 
 static func broadleaf(rng: RandomNumberGenerator) -> Dictionary:
 	var cells := {}
-	var trunk_h := rng.randi_range(4, 6)
+	var trunk_h := rng.randi_range(3, 5)
 	VxGrid.box(cells, Vector3i(0, 0, 0), Vector3i(0, trunk_h + 1, 0), TRUNK)
 	var leaf: Color = LEAVES[rng.randi() % LEAVES.size()]
-	var rx := rng.randf_range(3.6, 4.6)
-	var ry := rng.randf_range(3.0, 3.8)
+	var rx := rng.randf_range(2.9, 3.6)
+	var ry := rng.randf_range(2.4, 3.0)
 	var cy := trunk_h + ry - 0.5
 	_blob(cells, Vector3(0, cy, 0), Vector3(rx, ry, rx), leaf, leaf.darkened(0.18))
 	if rng.randf() < 0.7:  # a second lump makes the crown uneven
