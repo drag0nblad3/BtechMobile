@@ -2103,23 +2103,23 @@
                 "polygon": [
                   [
                     -8,
-                    7
+                    8
                   ],
                   [
                     -7,
-                    5
+                    6
                   ],
                   [
                     -6,
-                    5
+                    6
                   ],
                   [
                     -5,
-                    7
+                    8
                   ],
                   [
                     -5,
-                    9
+                    10
                   ],
                   [
                     -6,
@@ -2131,7 +2131,7 @@
                   ],
                   [
                     -9,
-                    9
+                    10
                   ]
                 ]
               },
@@ -2156,7 +2156,7 @@
                   ],
                   [
                     -5,
-                    9
+                    10
                   ],
                   [
                     -6,
@@ -2168,7 +2168,7 @@
                   ],
                   [
                     -10,
-                    9
+                    10
                   ]
                 ]
               },
@@ -2177,35 +2177,35 @@
                 "polygon": [
                   [
                     -9,
-                    2
-                  ],
-                  [
-                    -8,
                     0
                   ],
                   [
+                    -8,
+                    -2
+                  ],
+                  [
                     -6,
+                    -2
+                  ],
+                  [
+                    -5,
                     0
                   ],
                   [
                     -5,
-                    2
-                  ],
-                  [
-                    -5,
-                    5
+                    4
                   ],
                   [
                     -6,
-                    8
+                    7
                   ],
                   [
                     -8,
-                    8
+                    7
                   ],
                   [
                     -10,
-                    5
+                    4
                   ]
                 ]
               },
@@ -2214,23 +2214,23 @@
                 "polygon": [
                   [
                     -8,
-                    -3
+                    -4
                   ],
                   [
                     -7,
-                    -5
+                    -6
                   ],
                   [
                     -6,
-                    -5
+                    -6
                   ],
                   [
                     -5,
-                    -3
+                    -4
                   ],
                   [
                     -5,
-                    0
+                    -1
                   ],
                   [
                     -6,
@@ -2242,7 +2242,7 @@
                   ],
                   [
                     -9,
-                    0
+                    -1
                   ]
                 ]
               }
@@ -2370,19 +2370,19 @@
                   ],
                   [
                     -5,
-                    0
+                    1
                   ],
                   [
                     -6,
-                    2
+                    3
                   ],
                   [
                     -8,
-                    2
+                    3
                   ],
                   [
                     -9,
-                    0
+                    1
                   ]
                 ]
               },
@@ -2407,19 +2407,19 @@
                   ],
                   [
                     -5,
-                    5
+                    6
                   ],
                   [
                     -6,
-                    7
+                    8
                   ],
                   [
                     -8,
-                    7
+                    8
                   ],
                   [
                     -9,
-                    5
+                    6
                   ]
                 ]
               },
@@ -2444,19 +2444,19 @@
                   ],
                   [
                     -5,
-                    11
+                    12
                   ],
                   [
                     -6,
-                    13
+                    14
                   ],
                   [
                     -8,
-                    13
+                    14
                   ],
                   [
                     -9,
-                    11
+                    12
                   ]
                 ]
               }
@@ -4208,7 +4208,7 @@
       "mirror": "ll_leg_root"
     }
   ],
-  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing. Pass 7: independent three-toed digitigrade feet with shortened center instep, instead of a single wedge shoe. Shape pass 9: long aircraft-prow cockpit with pitched dark windscreen and angular nose chin, horizontal vented drive deck and smaller 35-ton chassis proportion. References TRO Jenner and contemporary tabletop sculpt. Pass 10: sculpt reverse knee-forward, rear-hock, forward-toe offset directly into digitigrade sections; remove fake muzzle-like rim from cockpit front. Pass 11: actual side-glass pane geometry on the aircraft cockpit and separate projecting reverse-knee and back-hock joint housings, in lieu of cosmetic paneling. Pass 12: transform cylindrical-looking paired-laser mounts into tapered rectangular nacelles with hard chamfered flats and a short rear integration to the drive deck. Pass 14: TRO JR7-D and three-quarter CGL model both depict a long blunt piloting prow and compact rectangular side laser housings, not two huge cylindrical ears. Reduced nacelle cross-section and extended the cockpit several cells, including front sloped glazing. Pass 15: JR7-D official 3/4 image has narrow separate cockpit windshield, visible armor chin and compact double laser ports. Reduced opaque front glass area and tapered port housings. Pass 16: modern Jenner technical drawing shows distinctive four-tube rack above the fuselage immediately behind cockpit. Rebuilt the SRM4 tower as a raised sloped rectangular unit with four horizontal visible forward ports, not a vague rear bulge. Pass 18: compared JR7-D TRO and CGL front 3/4: narrower canopy glazing above pronounced armor chin; pulled hock mechanics farther aft in the actual knee-to-ankle profile, rather than relying on animation pose. Pass 19: JR7-D technical linework supports a longer wedge-shaped armored cockpit snout with narrow dark top glazing; separated laser nacelles remain short relative to the long nose. Pass 22: compare Jenner JR7-D CGL and TRO: shorten and square paired laser housings; shrink frontal nacelle silhouette; make rear hock-to-ankle segment form a clearer reverse-knee angle. Pass 23: rebuild Jenner paired laser mounts as short six-faced rectangular nacelles with narrow chamfered sides, preserving distinct upper/lower barrels rather than projecting egg-like pods. Pass 24: Jenner gets continuous narrow pilot canopy atop elongated aircraft prow instead of two oversized eye-like windshield patches; side laser nacelles remain boxy and hock angle visible from three-quarter. Pass 25 CGL first: Striker Lance plastic has squat circular broad cockpit nose and wraparound band glass, not long pointy aircraft wedge. Shortened -39 prow to -35, widened faceted circular disk and removed oversized side eye panes. CGL pass 26: 3-panel wraparound cab windshield separated by a physical middle mullion; low armored chin shelf, subtler diagnostic glazing color. Official Striker Lance plastic, not alternate aircraft fan art. CGL pass27: circular paired laser front sockets on both pods use separate physical octagonal bores instead of painted flat fronts, preserving four laser muzzles across left and right. CGL pass28: enlarge separate Jenner forward knee cowl and rear ankle hock hinge to match actual plastic legs' birdlike joints; do not alter rig/animation pose. Corrected pass27 lower/upper forward laser sockets: physical bore is erased through front cap rather than filled by a dark solid, preserving mechanical muzzle emptiness invariant. CGL pass29: based on official Striker Lance Jenner's 3-panel molded front glazing, narrow dark windshield to a small horizontal ribbon and thin roof hatch strip. No huge fighter visor dominating the cab. CGL plastic pass 31: Inner Sphere Striker Lance original gray miniature head-on and side photos weighted primary. Reduced box flank bloat, pulled nose-connected paired laser nacelles toward the engine shell, and built the underslung rounded apron characteristic of the plastic torso. CGL plastic pass 35: prioritize official Inner Sphere Striker Lance multi-angle miniature; remove 3+ cells of oversized duck-like rounded prow, redraw as blunt eight-corner cockpit block with three-pane narrow glazed visor and independent chin fairing. Preserve dorsal launcher and side laser geometry. CGL plastic pass 37: study Jenner Striker Lance rear/side angle. Add distinct paired aft-engine exhaust block frames, split into two visible cooling channels, physically joined at the rear of the existing engine shoulders. Previously absent mechanical silhouette: not a surface texture, not increased subdivision. Complete eight new plastic-weighted passes 30–37. Pass 40 (CGL Striker Lance Jenner plastic, frontal and side photographs): short oval stepped canopy, broader armor chin and compact rectangular twin-laser nacelles; reject obsolete needle-shaped Jenner concept. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry.",
+  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing. Pass 7: independent three-toed digitigrade feet with shortened center instep, instead of a single wedge shoe. Shape pass 9: long aircraft-prow cockpit with pitched dark windscreen and angular nose chin, horizontal vented drive deck and smaller 35-ton chassis proportion. References TRO Jenner and contemporary tabletop sculpt. Pass 10: sculpt reverse knee-forward, rear-hock, forward-toe offset directly into digitigrade sections; remove fake muzzle-like rim from cockpit front. Pass 11: actual side-glass pane geometry on the aircraft cockpit and separate projecting reverse-knee and back-hock joint housings, in lieu of cosmetic paneling. Pass 12: transform cylindrical-looking paired-laser mounts into tapered rectangular nacelles with hard chamfered flats and a short rear integration to the drive deck. Pass 14: TRO JR7-D and three-quarter CGL model both depict a long blunt piloting prow and compact rectangular side laser housings, not two huge cylindrical ears. Reduced nacelle cross-section and extended the cockpit several cells, including front sloped glazing. Pass 15: JR7-D official 3/4 image has narrow separate cockpit windshield, visible armor chin and compact double laser ports. Reduced opaque front glass area and tapered port housings. Pass 16: modern Jenner technical drawing shows distinctive four-tube rack above the fuselage immediately behind cockpit. Rebuilt the SRM4 tower as a raised sloped rectangular unit with four horizontal visible forward ports, not a vague rear bulge. Pass 18: compared JR7-D TRO and CGL front 3/4: narrower canopy glazing above pronounced armor chin; pulled hock mechanics farther aft in the actual knee-to-ankle profile, rather than relying on animation pose. Pass 19: JR7-D technical linework supports a longer wedge-shaped armored cockpit snout with narrow dark top glazing; separated laser nacelles remain short relative to the long nose. Pass 22: compare Jenner JR7-D CGL and TRO: shorten and square paired laser housings; shrink frontal nacelle silhouette; make rear hock-to-ankle segment form a clearer reverse-knee angle. Pass 23: rebuild Jenner paired laser mounts as short six-faced rectangular nacelles with narrow chamfered sides, preserving distinct upper/lower barrels rather than projecting egg-like pods. Pass 24: Jenner gets continuous narrow pilot canopy atop elongated aircraft prow instead of two oversized eye-like windshield patches; side laser nacelles remain boxy and hock angle visible from three-quarter. Pass 25 CGL first: Striker Lance plastic has squat circular broad cockpit nose and wraparound band glass, not long pointy aircraft wedge. Shortened -39 prow to -35, widened faceted circular disk and removed oversized side eye panes. CGL pass 26: 3-panel wraparound cab windshield separated by a physical middle mullion; low armored chin shelf, subtler diagnostic glazing color. Official Striker Lance plastic, not alternate aircraft fan art. CGL pass27: circular paired laser front sockets on both pods use separate physical octagonal bores instead of painted flat fronts, preserving four laser muzzles across left and right. CGL pass28: enlarge separate Jenner forward knee cowl and rear ankle hock hinge to match actual plastic legs' birdlike joints; do not alter rig/animation pose. Corrected pass27 lower/upper forward laser sockets: physical bore is erased through front cap rather than filled by a dark solid, preserving mechanical muzzle emptiness invariant. CGL pass29: based on official Striker Lance Jenner's 3-panel molded front glazing, narrow dark windshield to a small horizontal ribbon and thin roof hatch strip. No huge fighter visor dominating the cab. CGL plastic pass 31: Inner Sphere Striker Lance original gray miniature head-on and side photos weighted primary. Reduced box flank bloat, pulled nose-connected paired laser nacelles toward the engine shell, and built the underslung rounded apron characteristic of the plastic torso. CGL plastic pass 35: prioritize official Inner Sphere Striker Lance multi-angle miniature; remove 3+ cells of oversized duck-like rounded prow, redraw as blunt eight-corner cockpit block with three-pane narrow glazed visor and independent chin fairing. Preserve dorsal launcher and side laser geometry. CGL plastic pass 37: study Jenner Striker Lance rear/side angle. Add distinct paired aft-engine exhaust block frames, split into two visible cooling channels, physically joined at the rear of the existing engine shoulders. Previously absent mechanical silhouette: not a surface texture, not increased subdivision. Complete eight new plastic-weighted passes 30–37. Pass 40 (CGL Striker Lance Jenner plastic, frontal and side photographs): short oval stepped canopy, broader armor chin and compact rectangular twin-laser nacelles; reject obsolete needle-shaped Jenner concept. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass40: side and rear Striker Lance Jenner knee geometry: thigh ends forward under prow, shin arcs rearward then narrow hock turns toward foot; stronger physical depth offset with continuous overlaps, no faux animation trick.",
   "muzzles": {
     "CT": [
       [
