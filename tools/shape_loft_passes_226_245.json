@@ -293,7 +293,7 @@
       "objective": "Tie Atlas clavicle around skull; lower Wolverine launcher caps; remove Jenner tall glass",
       "atlas": [
         "ct_left_clavicle:0:middle:widthIn:1",
-        "ct_right_clavicle:0:middle:widthIn:1",
+        "hd_recessed_brow_bridge:0:middle:widthIn:1",
         "hd:0:upper:frontIn:1"
       ],
       "wolverine": [
