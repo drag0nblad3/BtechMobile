@@ -62,6 +62,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if w.def.streak and ams == null:
 		data["streak_lock"] = true
 	if w.def.beacon:
+		if ams != null:
+			data["ams_roll"] = AntiMissile.single_missile_roll(dice)
+			if AntiMissile.single_missile_down(data["ams_roll"]):
+				data["pod_shot_down"] = true
+				emit.call(GameEvent.WEAPON_FIRED, data)
+				return
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
 	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing)
