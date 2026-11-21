@@ -10,7 +10,7 @@ const VIEWS := ["front", "three_quarter", "side", "rear"]
 var output_dir := "/tmp/component-shape-renders"
 var scene: Node3D
 var camera: Camera3D
-var models: Array[Node3D] = []
+var models: Array[VxShapePreview] = []
 var labels: Array[Label3D] = []
 var views: Array[Dictionary] = []
 var step := 0
@@ -52,9 +52,34 @@ func _initialize() -> void:
 	scene.add_child(camera)
 	views.append({"name": "gallery_front", "who": -1, "view": "front"})
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
+
 	for i in IDS.size():
 		for view in VIEWS:
 			views.append({"name": "%s_%s" % [IDS[i], view], "who": i, "view": view})
+	var isolation := [
+		[
+			{"name": "atlas_head_isolated", "parts": ["hd"], "height": 1.78, "distance": 1.6},
+			{"name": "atlas_torso_isolated", "parts": ["ct", "lt", "rt"], "height": 1.37, "distance": 2.8},
+			{"name": "atlas_arms_isolated", "parts": ["la", "ra"], "height": 1.07, "distance": 3.0},
+			{"name": "atlas_legs_isolated", "parts": ["ll", "ll_shin", "ll_foot", "rl", "rl_shin", "rl_foot"], "height": 0.48, "distance": 2.8}
+		],
+		[
+			{"name": "wolverine_helmet_isolated", "parts": ["hd"], "height": 1.77, "distance": 1.6},
+			{"name": "wolverine_torso_isolated", "parts": ["ct", "lt", "rt"], "height": 1.37, "distance": 2.8},
+			{"name": "wolverine_arms_isolated", "parts": ["la", "ra"], "height": 1.04, "distance": 3.0},
+			{"name": "wolverine_legs_isolated", "parts": ["ll", "ll_shin", "ll_foot", "rl", "rl_shin", "rl_foot"], "height": 0.48, "distance": 2.8}
+		],
+		[
+			{"name": "jenner_prow_isolated", "parts": ["hd"], "height": 1.40, "distance": 2.2},
+			{"name": "jenner_engine_isolated", "parts": ["ct", "lt", "rt"], "height": 1.46, "distance": 3.4},
+			{"name": "jenner_laser_pods_isolated", "parts": ["la", "ra"], "height": 1.45, "distance": 3.1},
+			{"name": "jenner_legs_isolated", "parts": ["ll", "ll_shin", "ll_tarsus", "ll_foot", "rl", "rl_shin", "rl_tarsus", "rl_foot"], "height": 0.59, "distance": 3.0}
+		]
+	]
+	for i in IDS.size():
+		for item: Dictionary in isolation[i]:
+			views.append({"name": item["name"], "who": i, "view": "three_quarter",
+					"parts": item["parts"], "height": item["height"], "distance": item["distance"]})
 	_setup_view(step)
 
 
@@ -64,18 +89,18 @@ func _lighting() -> void:
 	env.background_color = Color("232a32")
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	env.ambient_light_color = Color("e8ebf1")
-	env.ambient_light_energy = 1.05
+	env.ambient_light_energy = 0.48
 	var world := WorldEnvironment.new()
 	world.environment = env
 	scene.add_child(world)
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-48, -35, 0)
-	sun.light_energy = 1.3
+	sun.light_energy = 1.10
 	sun.shadow_enabled = false
 	scene.add_child(sun)
 	var rim := DirectionalLight3D.new()
 	rim.rotation_degrees = Vector3(-28, 145, 0)
-	rim.light_energy = 0.55
+	rim.light_energy = 0.38
 	scene.add_child(rim)
 	var floor_mesh := BoxMesh.new()
 	floor_mesh.size = Vector3(13, 0.1, 9)
@@ -93,11 +118,17 @@ func _setup_view(index: int) -> void:
 	var who: int = target["who"]
 	var view: String = target["view"]
 	var look_x := 0.0 if who == -1 else (float(who) - 1.0) * SPACING
+
 	for i in models.size():
 		models[i].visible = who == -1 or i == who
 		labels[i].visible = who == -1
-	var distance := 9.5 if who == -1 else 4.7
-	var center := Vector3(look_x, 1.08, 0)
+		var selected: Array[String] = []
+		if i == who and target.has("parts"):
+			for name: String in target["parts"]:
+				selected.append(name)
+		models[i].isolate_parts(selected)
+	var distance: float = float(target.get("distance", 9.5 if who == -1 else 4.7))
+	var center := Vector3(look_x, float(target.get("height", 1.08)), 0)
 	match view:
 		"front":
 			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
