@@ -1,7 +1,7 @@
 class_name HeatScale
 extends RefCounted
 ## Effects of a 'Mech's current heat level (the heat scale on a record sheet).
-## TODO(rules): thresholds are from memory of the classic scale; verify.
+## Thresholds checked against the book's heat data table.
 
 const MAX_HEAT := 30
 

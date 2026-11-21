@@ -101,6 +101,15 @@ func test_cluster_table() -> void:
 	check_eq(ClusterTable.hits(6, 2), 2)
 	check_eq(ClusterTable.hits(20, 12), 20)
 	check_eq(Damage.clusters(13, 5), [5, 5, 3] as Array[int])
+	check_eq(ClusterTable.hits(3, 5), 2, "3 column")
+	check_eq(ClusterTable.hits(12, 9), 10, "12 column")
+	check_eq(ClusterTable.hits(40, 4), 18, "40 column")
+
+
+func test_punch_table_front() -> void:
+	var want := [Location.RA, Location.RT, Location.CT, Location.LT, Location.LA, Location.HEAD]
+	for r in 6:
+		check_eq(HitTable.roll_punch(LoadedDice.new([r + 1]), FiringArc.FRONT)["loc"], want[r], "punch roll %d" % (r + 1))
 
 
 func test_weapon_phase_and_heat() -> void:
