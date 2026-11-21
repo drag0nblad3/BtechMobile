@@ -222,3 +222,32 @@ func test_cgl_twenty_pass_component_shapes_and_clear_bores() -> void:
 					ceili(muzzle.z))
 			check(not jenner.part(part_name)["cells"].has(opening),
 					"Jenner laser opening obstructed: %s %s" % [part_name, opening])
+
+
+func test_wolverine_single_right_arm_geometry_not_two_right_fists() -> void:
+	# The WVR-6R plastic has one AC/5 right arm, not a second
+	# free-hanging right fist/forearm parallel to the cannon.
+	var d: Dictionary = JsonFile.read(MODELS[1])
+	var right_arm_shapes: Array = []
+	for part: Dictionary in d["parts"]:
+		if part.get("name", "") == "ra":
+			right_arm_shapes = part.get("shapes", [])
+			break
+	check(not right_arm_shapes.is_empty(), "Wolverine RA geometry missing")
+	var forearm_profiles := 0
+	for shape: Dictionary in right_arm_shapes:
+		check(not shape.has("box"),
+				"Wolverine RA has another free fist box beside the AC/5")
+		if shape.has("loft"):
+			var spec: Dictionary = shape["loft"]
+			if spec.get("axis", "") == "z":
+				var sections: Array = spec.get("sections", [])
+				if not sections.is_empty() and int(sections[0]["at"]) < -12:
+					forearm_profiles += 1
+			if spec.get("axis", "") == "y":
+				for section: Dictionary in spec["sections"]:
+					check(int(section["at"]) >= 30,
+							"Wolverine extra downward gauntlet duplicates the gun arm")
+	check_eq(forearm_profiles, 1, "Wolverine should have exactly one AC/5 forearm")
+	var m := VxModel.load_file(MODELS[1])
+	check_eq(m.muzzles[Location.RA].size(), 1, "Wolverine AC/5 needs one muzzle")
