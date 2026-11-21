@@ -34,8 +34,11 @@ const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vec
 const BUILDING := &"building"             # {kind: flattened|entry_failed|destroy_check|shot|cover_hit|collapsed, coord, name, unit_id?, damage?, roll?, need?}
 const INTENT := &"intent"                 # {unit_id, text} why a player chose its action
 const SENSOR_CHECK := &"sensor_check"     # {unit_id, roll, need, ok, why, mods}
+const CRIPPLED := &"crippled"             # {unit_id, why, withdraw: bool}
+const UNIT_EXITED := &"unit_exited"       # {unit_id, kind: withdraw|mission, vp}
+const MISSION := &"mission"               # {kind: vp, side, vp, total} | {kind: duration, roll, ends_on, last}
 const CONDITIONS := &"conditions"         # {names: [String]} battlefield conditions, at the start
-const GAME_OVER := &"game_over"           # {winner: side or -1}
+const GAME_OVER := &"game_over"           # {winner: side or -1, why, scores?: {side: vp}}
 
 var type: StringName
 var data: Dictionary

@@ -39,6 +39,8 @@ var conditions := Conditions.new():
 			Surfaces.apply_conditions(map, v)
 ## Units that passed this turn's low-visibility sensor check: id -> true.
 var sees_through: Dictionary = {}
+## Mission and its running score (Mission, MissionState).
+var mission := MissionState.new()
 var game_over: bool = false
 var winner: int = -1
 

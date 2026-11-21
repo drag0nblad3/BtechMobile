@@ -10,6 +10,8 @@ const MAX_CANDIDATES := 60
 
 ## Returns {key: Vector3i, mode, reason, charge: target id or -1}.
 static func plan(state: GameState, u: Unit) -> Dictionary:
+	if ForcedWithdrawal.withdrawing(state, u):
+		return BotWithdraw.plan(state, u)
 	var best := {"key": MoveOptions.key(u.coord, u.facing), "mode": MoveMode.Kind.WALK,
 			"score": -INF, "reason": "stays put", "charge": -1}
 	for mode in [MoveMode.Kind.WALK, MoveMode.Kind.RUN, MoveMode.Kind.JUMP]:

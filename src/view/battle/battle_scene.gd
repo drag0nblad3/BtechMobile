@@ -98,6 +98,7 @@ func _wire() -> void:
 	hud.charge.connect(movement.on_charge)
 	hud.prone.connect(movement.on_prone)
 	hud.smash.connect(movement.on_smash)
+	hud.leave.connect(movement.on_leave)
 	hud.attack_confirm.connect(attacks.on_confirm)
 	hud.attack_skip.connect(attacks.on_skip)
 	hud.twist_left.connect(attacks.on_twist.bind(-1))
@@ -178,6 +179,9 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
+		GameEvent.UNIT_EXITED:
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
+			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			_update_status()
 			if e.type == GameEvent.ACTIVE_SIDE:
@@ -193,7 +197,8 @@ func _on_event(e: GameEvent) -> void:
 
 func _update_status() -> void:
 	var s := controller.state
-	hud.set_status("Turn %d  ·  %s  ·  %s to act" % [s.turn, Phase.name_of(s.phase), Names.side(s.active_side())])
+	hud.set_status("Turn %d  ·  %s  ·  %s to act%s" % [s.turn, Phase.name_of(s.phase), Names.side(s.active_side()),
+			MissionText.status(s)])
 	if bots.is_bot_turn():
 		hud.set_tip("The computer is thinking. Its reasons appear in the log." if GameSettings.explain_level != ExplainLevel.OFF else "")
 	elif s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:

@@ -11,6 +11,8 @@ static func load_file(path: String, terrain: TerrainDb, units: UnitDb) -> GameSt
 	var map_path := "res://data/maps/%s.json" % data["map"]
 	var state := GameState.new(MapLoader.load_file(map_path, terrain))
 	state.conditions = Conditions.from_dict(data.get("conditions", {}))
+	if data.has("mission"):
+		state.mission.def = Mission.from_dict(data["mission"])
 	var next_id := 1
 	for u in data["units"]:
 		var def := units.get_def(u["def"])

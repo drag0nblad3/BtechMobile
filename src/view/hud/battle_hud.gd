@@ -13,6 +13,7 @@ signal cancel
 signal charge
 signal prone
 signal smash
+signal leave  ## Move off the battlefield where the mission allows.
 signal top_down_toggled
 signal sheet_toggled
 signal log_toggled
@@ -43,6 +44,7 @@ var side_panel: PanelContainer
 var side_box: VBoxContainer
 var log_view: CombatLogView
 var game_over_box: VBoxContainer
+var leave_button: Button
 var game_over_label: Label
 var sheet_open := false  ## Side panel shows the record sheet, not attack choices.
 
@@ -91,6 +93,8 @@ func _ready() -> void:
 	charge_button.visible = false
 	smash_button = _button(move_bar, "Smash in", smash)
 	smash_button.visible = false
+	leave_button = _button(move_bar, "Leave map", leave)
+	leave_button.visible = false
 	_button(move_bar, "Prone", prone)
 	_button(move_bar, "Cancel", cancel)
 	_button(move_bar, "Confirm", confirm)

@@ -28,6 +28,7 @@ func start_turn() -> void:
 	_emit(GameEvent.TURN_STARTED, {"turn": state.turn})
 	if state.turn == 1 and not state.conditions.is_clear():
 		_emit(GameEvent.CONDITIONS, {"names": state.conditions.names()})
+	MissionFlow.start_turn(state, dice, _emit_cb)
 	_set_phase(Phase.Kind.INITIATIVE)
 	_roll_initiative()
 	_begin_phase(Phase.Kind.MOVEMENT)
@@ -37,13 +38,18 @@ func start_turn() -> void:
 ## With `charge_target_id`, the move ends in a charge (walk/run) or death from
 ## above (jump) against the enemy straight ahead; it must be legal.
 ## `then_prone` drops it to the ground at the end of the move (1 MP);
-## `smash` fails building entry rolls on purpose to force Destroy Checks.
+## `smash` fails building entry rolls on purpose to force Destroy Checks;
+## `leave` then moves off the battlefield where the mission allows (MissionFlow).
 func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int = -1,
-		then_prone := false, smash := false) -> bool:
+		then_prone := false, smash := false, leave := false) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT):
+		return false
+	if MissionFlow.move_problem(state, unit, target, mode, leave) != "":
 		return false
 	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone, smash):
 		return false
+	if leave and not unit.destroyed and not unit.prone and unit.coord == MoveOptions.coord_of(target):
+		MissionFlow.leave(state, _emit_cb, unit)
 	_unit_done()
 	return true
 
@@ -217,18 +223,20 @@ func _heat_and_end() -> void:
 	HeatPhase.run(state, dice, _emit_cb)
 	_set_phase(Phase.Kind.END)
 	EndPhase.run(state, dice, _emit_cb)
-	if not _check_game_over():
+	MissionFlow.end_phase(state, _emit_cb)
+	if not _check_game_over(true):
 		start_turn()
 
 
-## Game ends when at most one side has a 'Mech left.
-func _check_game_over() -> bool:
-	var alive := state.sides_alive()
-	if alive.size() > 1:
+## Game ends when at most one side has a 'Mech left, or as the mission says.
+func _check_game_over(end_of_turn := false) -> bool:
+	Crippled.update(state, dice, _emit_cb)
+	var r := MissionFlow.outcome(state, end_of_turn)
+	if r.is_empty():
 		return false
 	state.game_over = true
-	state.winner = alive[0] if alive.size() == 1 else -1
-	_emit(GameEvent.GAME_OVER, {"winner": state.winner})
+	state.winner = r["winner"]
+	_emit(GameEvent.GAME_OVER, r)
 	return true
 
 

@@ -98,3 +98,8 @@ Optional `"conditions"` (battlefield conditions, book pp. 120-121), e.g.
 `{"cold": 2, "gravity": 0.8, "night": true}`: `cold` / `heat` are Extreme Cold / Heat
 levels 0-3, `gravity` is in G (rounded to 0.1), and the flags `low_visibility`, `wind`,
 `rain`, `snowfall`, `night` switch those conditions on.
+Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turns`
+(0 = no limit), `random_duration`, `victory` (`"last_standing"` or `"vp"`), `unit_vp`,
+`forced_withdrawal`, `scoring` (`"each"`, `"pairs"`, `"threshold"`), `objectives`
+(`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
+`exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.

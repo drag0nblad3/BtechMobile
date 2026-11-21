@@ -65,8 +65,25 @@ func on_confirm() -> void:
 		var u := selected
 		var k := preview
 		var sm := smash and _forces_entry()
+		var why := MissionFlow.move_problem(controller.state, u, k, mode, false)
+		if why != "":
+			hud.set_tip(why)
+			return
 		clear_selection()
 		controller.submit_move(u, k, mode, -1, false, sm)
+
+
+## Move to the previewed hex and off the battlefield (mission exits, withdrawal).
+func on_leave() -> void:
+	if selected and has_preview and _can_leave():
+		var u := selected
+		var k := preview
+		clear_selection()
+		controller.submit_move(u, k, mode, -1, false, false, true)
+
+
+func _can_leave() -> bool:
+	return MissionFlow.move_problem(controller.state, selected, preview, mode, true) == ""
 
 
 ## Drop the selected 'Mech prone: at the end of the previewed move when it
@@ -131,6 +148,7 @@ func clear_selection() -> void:
 	highlighter.clear()
 	marker.visible = false
 	hud.show_move_controls(false)
+	hud.leave_button.visible = false
 	hud.set_info("")
 
 
@@ -193,12 +211,14 @@ func _refresh() -> void:
 	hud.charge_button.text = "Death from Above" if mode == MoveMode.Kind.JUMP else "Charge"
 	hud.smash_button.visible = _forces_entry()
 	hud.smash_button.text = "Smash in: on" if smash else "Smash in"
+	hud.leave_button.visible = has_preview and controller.state.mission.def != null and _can_leave()
 	if has_preview:
 		var tip := Advisor.move(controller.state, selected, mode, preview, options,
 				GameSettings.explain_level)
 		if ct:
 			tip += "\n" + Advisor.charge(selected, ct, mode, MoveOptions.hexes_entered(
 					options.path_to(preview), selected.coord), GameSettings.explain_level)
-		hud.set_tip(tip)
+		var why := MissionFlow.move_problem(controller.state, selected, preview, mode, false)
+		hud.set_tip(tip + ("\n" + why if why != "" else ""))
 	else:
 		hud.set_tip("Tap a highlighted hex to preview the move." if GameSettings.explain_level != ExplainLevel.OFF else "")
