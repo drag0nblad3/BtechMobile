@@ -127,3 +127,30 @@ Reference priority: current Catalyst plastic miniature photos, including front a
 Audit focus: bloating (pauldrons, gauntlets, nacelles), gaps (Wolverine exposed shoulder yokes; Jenner belly/hocks), missing sculpt features (Atlas rack mouths, Jenner rear exhaust, Atlas split chest), and weapon opening occupancy. Godot surface preview does not show erase cuts; validate actual generated voxel cells at the muzzle coordinates.
 
 CGL photos have priority over old TRO art and fan resin. Keep only a few combined in-engine renders for review, no automated multi-angle image batches. Retain subdivide = 1 and keep all three models unapproved for high-density detailing, unmerged, no APK.
+
+## Plastic-first refinement 38–47 — ten committed geometry passes
+
+Each pass above is a separate committed adjustment to the actual authored section geometry, not a generated concept illustration. Keep Catalyst Game Labs' *released plastic* miniature as the primary silhouette source, weighted above earlier TRO drawings or non-CGL fan/resin sculpts; reference photographs are examined from front and from three-quarter/side/rear. These are shape-only studies, not detailed voxel builds.
+
+| Miniature | Front / three-quarter primary | Side / back secondary | Proportions checked |
+| --- | --- | --- | --- |
+| Atlas AS7-D | [Hansen's Roughriders actual CGL grey plastic](https://meeplescorner.co.uk/uk/products/battletech-hansens-roughriders-battle-lance) | [CGL Battle Lance multi-miniature product photo](https://kryptonitekollectibles.com/products/battletech-hansens-roughriders-battle-lance) | Skull recessed between shoulder bell armor, low jaw and eyes, split torso/hips, distinct elbow/hand gauntlets, squared boots |
+| Wolverine WVR-6R | [2019 CGL Beginner/AGOAC sculpt verified in CGL miniatures catalog](https://www.sarna.net/wiki/Miniatures_-_Catalyst_Game_Labs) | [Painted plastic WVR-6R views](https://mechpainters.org/miniature/wolverine-clan-wolverine/), [Camo Specs multiple views](https://camospecs.com/listing/wolverine-wvr-6r/) | Compact cockpit, narrow upper shoulders, left SRM rack, right forearm AC5, functional elbow, leaner limbs than Atlas |
+| Jenner JR7-D | [CGL Striker Lance grey plastic front and angled shots](https://www.rpgminihunter.com.au/products/jenner-battletech-inner-sphere-striker-lance-set-catalyst-game-lab) | [Additional CGL three-quarter/side angle](https://www.atomicempire.com/Item/303370), [photographs of CGL plastic miniature](https://jadedfalconer.com/Pages/1Light/jenner) | Cockpit prow, square short twin laser pods, elevated SRM rack, stepped reverse knee and rear hock, connected waist/leg mechanics |
+
+| Pass | Shape modifications | Reject / audit criterion |
+| --- | --- | --- |
+| 38 | Atlas skull front planes and jaw shortened; independent neck collar | Oversized cartoon-face mask, floating neck |
+| 39 | Wolverine pauldrons narrowed and shoulder yokes overlapped | Swollen shoulders and exposed detached joints |
+| 40 | Jenner rearward shin bend and tapered tarsus | Human straight-leg silhouette |
+| 41 | Atlas squared bevelled upper arm shield, tighter elbow linkage | Round inflated upper-arm bulbs |
+| 42 | Wolverine side torso root carved narrower beneath arms | Torso wide as Atlas, excessive armor overlap |
+| 43 | Jenner paired laser housings and wing shoulder shell compacted | Huge square side cannons or disconnected wing |
+| 44 | Atlas boot soles shortened; left/right ankle collars added | Long ski-shaped feet, ankle gaps |
+| 45 | Wolverine SRM-6 rebuilt as compact 2×3 hollow launcher | Missile block larger than helmet or obstructed holes |
+| 46 | Jenner knee cowl and aft hock made as separate slim pieces | Bulging joint covers masking digitigrade silhouette |
+| 47 | Atlas hip-to-pelvis sockets; Wolverine AC5 elbow link; Jenner both hip attachments | Missing connection between torso/limbs, floating arms and legs |
+
+Checkpoints: a single true in-engine combined gallery at pass 40 and another at pass 46; final pass 47 also produces one combined review artifact. No image-generation reconstructions. Geometry changes remain at subdivide=1, with no high-density 100–150k refinement before approval. Tests check open physical missile mouths, cockpit/weapon landmarks, independent low-resolution hip, shoulder and elbow parts. These photos show mostly forward/oblique faces; the final render is not sufficient evidence to approve all rear mechanical details.
+
+**Known residual mismatch:** this shape renderer still has stylized component simplification; upper torso and legs need closer fit to the current plastic silhouettes, especially Atlas's skull face and Wolverine's shoulder profile, before detail work. Passing Godot CI is a technical gate, not a visual match assessment.
