@@ -1,10 +1,23 @@
 name: CI
 on: [push, pull_request, workflow_dispatch]
+# Older shape-review pushes must not saturate the shared software renderer.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Preserve editable shape-source snapshot for external visual review
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-shape-json-source
+          path: |
+            data/voxels/atlas_shape.json
+            data/voxels/wolverine_shape.json
+            data/voxels/jenner_shape.json
       - name: Install Godot
         run: |
           wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
@@ -12,6 +25,20 @@ jobs:
           mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
       - name: Import
         run: godot --headless --import
+      - name: Render independent shape studies (no detail or APK)
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/component-shape-renders
+          xvfb-run -a godot --rendering-method gl_compatibility --resolution 1500x900 \
+            -s tools/capture_component_shapes.gd -- /tmp/component-shape-renders 2>&1 | tee shape-render.log
+          [ "$(grep -c '^SHAPE_RENDER|' shape-render.log)" -eq 1 ]
+          ! grep -E "SCRIPT ERROR|Parse Error|SHAPE_ERROR" shape-render.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
+        with:
+          name: hand-authored-component-shape-renders
+          path: /tmp/component-shape-renders/*.png
       - name: Unit tests
         run: |
           set -o pipefail

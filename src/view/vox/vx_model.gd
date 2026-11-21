@@ -110,6 +110,9 @@ func _mirrored(src: Dictionary) -> Dictionary:
 ## (outer layer in mat, inside in core), {"erase": [lo, hi]}. Inclusive.
 func _paint(cells: Dictionary, shapes: Array) -> void:
 	for s: Dictionary in shapes:
+		if s.has("loft"):
+			_paint_loft(cells, s)
+			continue
 		var kind: String = "box" if s.has("box") else ("shell" if s.has("shell") else "erase")
 		if not s.has(kind):
 			errors.append("shape without box/shell/erase: %s" % s)
@@ -127,6 +130,60 @@ func _paint(cells: Dictionary, shapes: Array) -> void:
 						continue
 					var edge := x == lo.x or x == hi.x or y == lo.y or y == hi.y or z == lo.z or z == hi.z
 					cells[c] = outer if kind == "box" or edge else core
+
+
+## Editable, manually drawn polygonal cross-sections. This is a drawing
+## primitive, not a shared chassis template. Each model defines every contour.
+## {"loft":{"axis":"y"|"z","sections":[{"at":0,
+##      "polygon":[[u,v], ...]}, ...]},"mat":"..."}
+## "y" spans height with (x,z) outlines; "z" spans depth with (x,y).
+## Adjacent outlines must have the same vertex count and correspondence.
+func _paint_loft(cells: Dictionary, shape: Dictionary) -> void:
+	var spec: Dictionary = shape["loft"]
+	var axis: String = spec.get("axis", "y")
+	if not axis in ["y", "z"]:
+		errors.append("loft axis must be y or z")
+		return
+	var sections: Array = spec.get("sections", [])
+	if sections.size() < 2:
+		errors.append("loft requires at least two profile sections")
+		return
+	var mat := _material(shape.get("mat", ""), "box")
+	for i in range(sections.size() - 1):
+		var lower: Dictionary = sections[i]
+		var upper: Dictionary = sections[i + 1]
+		var a: Array = lower.get("polygon", [])
+		var b: Array = upper.get("polygon", [])
+		if a.size() < 3 or a.size() != b.size():
+			errors.append("loft vertex counts mismatch at segment %d" % i)
+			continue
+		var start: int = int(lower.get("at", 0))
+		var finish: int = int(upper.get("at", 0))
+		if finish < start:
+			errors.append("loft sections must be ascending")
+			continue
+		for layer in range(start, finish + 1):
+			var t := 0.0 if finish == start else float(layer - start) / float(finish - start)
+			var polygon := PackedVector2Array()
+			var min_u := INF
+			var max_u := -INF
+			var min_v := INF
+			var max_v := -INF
+			for k in a.size():
+				var p := Vector2(float(a[k][0]), float(a[k][1])).lerp(
+						Vector2(float(b[k][0]), float(b[k][1])), t)
+				polygon.append(p)
+				min_u = minf(min_u, p.x)
+				max_u = maxf(max_u, p.x)
+				min_v = minf(min_v, p.y)
+				max_v = maxf(max_v, p.y)
+			for u in range(floori(min_u), ceili(max_u)):
+				for v in range(floori(min_v), ceili(max_v)):
+					if not Geometry2D.is_point_in_polygon(
+							Vector2(float(u) + 0.5, float(v) + 0.5), polygon):
+						continue
+					var c := Vector3i(u, layer, v) if axis == "y" else Vector3i(u, v, layer)
+					cells[c] = mat
 
 
 func _material(mat_name: String, kind: String) -> int:
