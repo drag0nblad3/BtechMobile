@@ -9,10 +9,26 @@ extends RefCounted
 ## phase instead of firing): piloting -1, ceil(tons / 5), target in front,
 ## no arm weapons fired, both hands and shoulders working, +2 per broken
 ## upper/lower arm actuator; the target makes a piloting roll. A tree breaks
-## after one hit. All use the full Hit Location Table.
+## after one hit. They use the full Hit Location Table, also against a prone
+## target on the same level (-2) or one level up; a standing target one level
+## up takes the swing on the Kick table, one level down on the Punch table
+## (no +4 when the level forces it). A prone target one level down can't be
+## reached (p. 77).
 ## TODO(rules): the optional Punch/Kick table at +4 isn't offered.
 
 const KINDS := ["hatchet", "sword"]
+const LOW_PRONE := "Only death from above reaches a prone 'Mech a level below"
+
+
+## Hit table for a swing at a target `dl` levels up (p. 77): "full", "kick"
+## (up at a standing 'Mech's legs), "punch" (down at its upper body), or ""
+## when it can't be reached (prone, one level down).
+static func swing_table(dl: int, prone: bool) -> String:
+	if dl == 0 or (dl == 1 and prone):
+		return "full"
+	if prone:
+		return ""
+	return "kick" if dl == 1 else "punch"
 
 
 static func damage(kind: String, tons: int) -> int:
@@ -51,10 +67,11 @@ static func _weapon(state: GameState, a: Unit, t: Unit, i: int) -> Dictionary:
 		th.impossible = "Target isn't in front of that arm"
 	elif PhysicalMods.limb_fired(a, arm):
 		th.impossible = "That arm fired a weapon this turn"
-	elif PhysicalMods.level_diff(state, a, t) != 0 or t.prone:
-		th.impossible = "Swings need a standing target on your level"  # TODO(rules): other levels
+	elif swing_table(PhysicalMods.level_diff(state, a, t), t.prone) == "":
+		th.impossible = LOW_PRONE
 	if th.impossible != "":
 		return opt
+	opt["table"] = swing_table(PhysicalMods.level_diff(state, a, t), t.prone)
 	PhysicalMods.add(th, state, a, t)
 	if kind == "sword":
 		th.add("sword", -2, "A sword is a precise weapon: -2.")
@@ -78,10 +95,11 @@ static func _club(state: GameState, a: Unit, t: Unit) -> Dictionary:
 		th.impossible = "Clubs only hit targets in front of you"
 	elif PhysicalMods.limb_fired(a, Location.LA) or PhysicalMods.limb_fired(a, Location.RA):
 		th.impossible = "An arm fired a weapon this turn"
-	elif PhysicalMods.level_diff(state, a, t) != 0 or t.prone:
-		th.impossible = "Swings need a standing target on your level"
+	elif swing_table(PhysicalMods.level_diff(state, a, t), t.prone) == "":
+		th.impossible = LOW_PRONE
 	if th.impossible != "":
 		return opt
+	opt["table"] = swing_table(PhysicalMods.level_diff(state, a, t), t.prone)
 	PhysicalMods.add(th, state, a, t)
 	th.add("club", -1, "A club swing: -1.")
 	for arm in [Location.LA, Location.RA]:

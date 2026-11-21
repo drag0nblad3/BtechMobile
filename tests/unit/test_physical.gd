@@ -126,3 +126,54 @@ func test_club_from_woods() -> void:
 	PhysicalPhase.resolve(s, dice, func(_t, _d): pass)
 	check(t.psr_pending.any(func(p: Dictionary) -> bool: return p["reason"] == "was clubbed"), "target rolls")
 	check_eq(a.club, "", "the tree broke")
+
+
+func test_swings_across_levels() -> void:
+	check_eq(MeleeWeapons.swing_table(0, true), "full", "prone, same level")
+	check_eq(MeleeWeapons.swing_table(1, true), "full", "prone, one up")
+	check_eq(MeleeWeapons.swing_table(-1, true), "", "prone, one down: DFA only")
+	check_eq(MeleeWeapons.swing_table(1, false), "kick", "standing one up: at its legs")
+	check_eq(MeleeWeapons.swing_table(-1, false), "punch", "standing one down: at its upper body")
+	var g := _melee_pair({"RA": ["hatchet"]})
+	var s: GameState = g[0]
+	var a: Unit = g[1]
+	var t: Unit = g[2]
+	t.prone = true
+	var h := _opt(s, a, t, "hatchet")
+	check(h["to_hit"].possible(), h["to_hit"].impossible)
+	check_eq(h["to_hit"].target(), 2, "piloting 5 - 1 - 2 for a prone target " + h["to_hit"].summary())
+	check_eq(h["table"], "full")
+	t.prone = false
+	s.map.get_tile(t.coord).level = 1
+	h = _opt(s, a, t, "hatchet")
+	check(h["to_hit"].possible(), h["to_hit"].impossible)
+	check_eq(h["table"], "kick", "no +4 when the level forces the table")
+	check_eq(h["to_hit"].target(), 4)
+	s.map.get_tile(t.coord).level = 0
+	s.map.get_tile(a.coord).level = 1
+	t.prone = true
+	check(not _opt(s, a, t, "hatchet")["to_hit"].possible(), "prone a level down")
+
+
+func test_cant_push_a_pushing_mech() -> void:
+	var s := GameState.new(open_map(5, 5))
+	var a := mech("atlas_as7d", 0, hex_at(2, 3), 0, 1)
+	var t := mech("hunchback_hbk4g", 1, hex_at(2, 2), 0, 2)
+	var c := mech("atlas_as7d", 0, hex_at(2, 1), 3, 3)
+	for u in [a, t, c]:
+		s.add_unit(u)
+	s.declared_physical.append_array(PhysicalOptions.declare(s, t, [{"kind": "push", "limb": -1, "target_id": c.id}]))
+	check_eq(s.declared_physical.size(), 1, "t pushes c")
+	check(not _opt(s, a, t, "push")["to_hit"].possible(), "errata p. 83: t is pushing")
+	s.declared_physical.clear()
+	var ok := _opt(s, a, t, "push")
+	check(ok["to_hit"].possible(), ok["to_hit"].impossible)
+	s.declared_physical.append_array(PhysicalOptions.declare(s, a, [{"kind": "push", "limb": -1, "target_id": t.id}]))
+	s.declared_physical.append_array(PhysicalOptions.declare(s, t, [{"kind": "push", "limb": -1, "target_id": c.id}]))
+	var ev := []
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)
+	dice.queue_2d6(12)
+	PhysicalPhase.resolve(s, dice, func(ty: StringName, d: Dictionary) -> void: ev.append([ty, d]))
+	var mine: Array = ev.filter(func(e: Array) -> bool: return e[0] == GameEvent.PHYSICAL and e[1]["attacker_id"] == a.id)
+	check(not mine[0][1]["hit"] and mine[0][1].get("why", "") != "", "declared first, then cancelled at resolution")

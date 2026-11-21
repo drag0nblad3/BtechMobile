@@ -2,7 +2,8 @@ class_name EndPhase
 extends RefCounted
 ## End Phase (book p. 117): a MechWarrior knocked out in an earlier turn
 ## tries to wake up; a warrior with damaged life support drowns a little
-## when the 'Mech is fully under water.
+## when the 'Mech is fully under water. Last, an immobile 'Mech with no
+## working ranged weapons is destroyed (Disarmed).
 
 
 static func run(state: GameState, dice: Dice, emit: Callable) -> void:
@@ -16,6 +17,9 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 				and u.pilot.out_since_turn >= 0:
 			PilotDamage.consciousness_roll(dice, emit, u)
 	PilotDamage.resolve_owed(state, dice, emit)
+	for u in state.units:
+		if Disarmed.check(u):
+			Damage.announce(emit, u)
 
 
 ## Fully under water: standing in depth 2+, or prone in depth 1+.
