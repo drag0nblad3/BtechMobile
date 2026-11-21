@@ -95,8 +95,15 @@ Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (
 `hex` is a mapsheet label; `facing` 0 = north, clockwise.
 Optional: `"name"`, `"bot_sides"` (sides the computer plays) and `"lessons"` for a
 guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` (a
-`GameEvent` type), optional filters `"turn"`, `"phase"` (e.g. "Movement"),
-`"unit_side"`, `"min_heat"`, and the `"title"` and `"text"` shown once.
+`GameEvent` type), optional filters `"turn"`, `"min_turn"`, `"phase"` (e.g. "Movement"),
+`"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
+e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
+
+## `data/training/campaign.json`
+The training campaign (`TrainingCampaign`): `name`, `intro`, and `missions` in
+order, each `{"id", "title", "scenario"` (a file in `data/scenarios/` with lessons),
+`"teaches", "briefing", "debrief_win", "debrief_loss"}`. A mission opens once the one
+before it has been played; results are saved per id in user://settings.cfg.
 Optional `"conditions"` (battlefield conditions, book pp. 120-121), e.g.
 `{"cold": 2, "gravity": 0.8, "night": true}`: `cold` / `heat` are Extreme Cold / Heat
 levels 0-3, `gravity` is in G (rounded to 0.1), and the flags `low_visibility`, `wind`,

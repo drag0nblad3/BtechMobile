@@ -11,6 +11,10 @@ static var pending: GameState = null
 static var bot_sides: Array = []
 ## Scenario file whose lessons to show in the next battle, "" for none.
 static var tutorial_path := ""
+## Training campaign mission index of the next battle, -1 for none.
+static var training_mission := -1
+## Open the training campaign screen when the menu loads (after a lesson).
+static var open_training := false
 
 
 static func take() -> GameState:
