@@ -132,3 +132,27 @@ func test_no_torso_twist() -> void:
 	s.add_unit(u)
 	s.phase = Phase.Kind.WEAPON_ATTACK
 	check(not gc.set_torso_twist(u, 1))
+
+
+func test_lateral_shift() -> void:
+	var s := GameState.new(open_map(6, 6))
+	var u := _quad(hex_at(2, 3), 0)
+	s.add_unit(u)
+	var opts := MovePlanner.plan(s, u, MoveMode.Kind.WALK)
+	var side := MoveOptions.key(Hex.neighbor(u.coord, 1), 0)
+	check_eq(opts.cost.get(side, -1), 2, "ahead-right, still facing north: 1 MP + 1")
+	var back := MoveOptions.key(Hex.neighbor(u.coord, 4), 0)
+	check_eq(opts.cost.get(back, -1), 2, "behind-left while walking")
+	check(LateralShift.is_backward(u.coord, Hex.neighbor(u.coord, 4), 0))
+	var run := MovePlanner.plan(s, u, MoveMode.Kind.RUN)
+	check(run.prev.get(back) != MoveOptions.key(u.coord, 0), "no backward shifts when running")
+	check_eq(run.cost.get(side, -1), 2)
+	u.structure[Location.RL] = 0
+	check(MovePlanner.plan(s, u, MoveMode.Kind.WALK).cost.get(side, -1) > 2, "a lost leg ends sideways steps")
+
+
+func test_quad_designs_load() -> void:
+	for id in ["goliath_gol1h", "scorpion_scp1n", "tarantula_zph1a"]:
+		var u := mech(id, 0, hex_at(1, 1))
+		check(u.def.quad, id)
+		check_eq(Location.legs(u.def).size(), 4)

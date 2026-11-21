@@ -31,7 +31,7 @@ static func action_rolls(state: GameState, u: Unit, path: Array[Vector3i], from:
 		if c != pc:
 			var src := state.map.get_tile(pc)
 			var dst := state.map.get_tile(c)
-			var backward := c == Hex.neighbor(pc, Hex.rotate(k.z, 3))
+			var backward := LateralShift.is_backward(pc, c, k.z)
 			if backward and MoveCost.level_change(src, dst) > 0:
 				out.append({"index": i, "reason": "backward level change", "mod": 0, "levels": 0,
 						"back": dst.floor_level() > src.floor_level()})
