@@ -65,7 +65,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/terrain/` | `Fire` (burning hexes, smoke, lighting buildings) |
 | `src/core/rules/turn/` | `Initiative`, `InitiativeDie` (optional rule), `UnequalNumbers` (who acts when), `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `WeaponText` (shot results), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
-| `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire`, `BotModes` (Ultra/LB-X), `BotPhysical` (punch/kick/melee weapons), `BotCharge` (charge/DFA value) |
+| `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire`, `BotModes` (Ultra/LB-X), `BotPhysical` (punch/kick/melee weapons), `BotCharge` (charge/DFA value), `BotAim` (aimed shots) |
 | `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2), `BvSkill` (pilot skill multiplier) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
 | `src/view/hex_layout.gd` | Hex ↔ world space, level height, facing → yaw |

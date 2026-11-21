@@ -31,7 +31,8 @@ static func act(gc: GameController, side: int) -> bool:
 			var modes: Dictionary = f.get("modes", {})
 			for i: int in modes:
 				gc.set_weapon_mode(u, i, modes[i])
-			gc.announce(u, f["reason"] + (" (twists its torso)" if f["twist"] != 0 else ""))
+			var aim := BotAim.choose(s, u, f["shots"])
+			gc.announce(u, f["reason"] + (" (twists its torso)" if f["twist"] != 0 else "") + ("; " + aim if aim != "" else ""))
 			return gc.declare_fire(u, f["shots"])
 		Phase.Kind.PHYSICAL_ATTACK:
 			var p := BotPhysical.plan(s, u)
