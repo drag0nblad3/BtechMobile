@@ -103,7 +103,7 @@ static func _u(s: GameState, d: Dictionary, key: String = "unit_id") -> String:
 ## A shot's target: a 'Mech, or a building hex.
 static func _target(s: GameState, d: Dictionary) -> String:
 	if d.has("target_hex"):
-		return "the building at %s" % Hex.label(d["target_hex"])
+		return "the %s at %s" % [d.get("target_noun", "building"), Hex.label(d["target_hex"])]
 	return Names.unit(s.unit_by_id(d["target_id"]))
 
 

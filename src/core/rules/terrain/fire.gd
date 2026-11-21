@@ -9,7 +9,7 @@ extends RefCounted
 ## no smoke modifier for a 'Mech inside the burning building. Heat-causing
 ## hits (flamers) on a 'Mech-scale building start a fire once a phase's total
 ## reaches its class's fire heat per level x its height.
-## TODO(rules): lighting woods (needs shooting at a hex); smoke from other sources.
+## Woods are lit the same way (WoodsFire). TODO(rules): smoke from other sources.
 
 const MOVE_HEAT := 2
 const STAND_HEAT := 5
@@ -19,12 +19,14 @@ const SMOKE_CAP := 2
 
 ## Heat needed in one phase to light a building hex, or -1 if it can't burn.
 static func heat_to_light(tile: MapTile) -> int:
+	if WoodsFire.can_light(tile):
+		return WoodsFire.HEAT_TO_LIGHT
 	if tile == null or tile.building == null or tile.building.type.civilian:
 		return -1
 	return tile.building.type.fire_heat * tile.building.height
 
 
-## Heat dealt to a hex this phase (flamer hits on a building).
+## Heat dealt to a hex this phase (flamer hits on a building or woods).
 static func add_heat(state: GameState, c: Vector2i, heat: int) -> void:
 	if heat > 0 and heat_to_light(state.map.get_tile(c)) > 0:
 		state.fire_heat[c] = int(state.fire_heat.get(c, 0)) + heat
@@ -37,7 +39,8 @@ static func end_phase(state: GameState, emit: Callable) -> void:
 		var need := heat_to_light(tile)
 		if need > 0 and not tile.on_fire and int(state.fire_heat[c]) >= need:
 			tile.on_fire = true
-			emit.call(GameEvent.BUILDING, {"kind": "fire", "coord": c, "name": tile.building.type.name,
+			var what := tile.building.type.name if tile.building != null else tile.terrain.name
+			emit.call(GameEvent.BUILDING, {"kind": "fire", "coord": c, "name": what,
 					"heat": state.fire_heat[c], "need": need})
 	state.fire_heat.clear()
 
