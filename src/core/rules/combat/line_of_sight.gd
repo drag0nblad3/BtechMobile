@@ -111,6 +111,11 @@ static func _intervenes(top: int, a_lvl: int, b_lvl: int, next_a: bool, next_b: 
 	return (top >= a_lvl and top >= b_lvl) or (next_a and top >= a_lvl) or (next_b and top >= b_lvl)
 
 
+## A clear line with nothing in between (indirect fire without a spotter).
+static func none() -> Dictionary:
+	return _blank()
+
+
 static func _blank() -> Dictionary:
 	return {"blocked": false, "reason": "", "woods": 0, "light": 0, "heavy": 0, "smoke": 0, "cover": Hex.INVALID}
 
