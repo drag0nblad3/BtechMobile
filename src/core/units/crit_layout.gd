@@ -32,9 +32,9 @@ static func build(def: UnitDef) -> Array:
 			if item == "jump_jet":
 				_place(out[loc], CritSlot.new(CritSlot.Kind.JUMP_JET, "Jump Jet"), def)
 				continue
-			# Each heat sink gets its own ref so the 3 slots of a double share it.
+			# Each heat sink gets its own ref so the slots of a double share it.
 			var n := "Double Heat Sink" if def.double_heat_sinks else "Heat Sink"
-			for s in (3 if def.double_heat_sinks else 1):
+			for s in (ClanTech.dhs_slots(def) if def.double_heat_sinks else 1):
 				_place(out[loc], CritSlot.new(CritSlot.Kind.HEAT_SINK, n, sink), def)
 			sink += 1
 	for i in def.melee.size():
@@ -64,7 +64,8 @@ static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
 		names = ["Engine", "Engine", "Engine", "Gyro", "Gyro", "Gyro", "Gyro",
 				"Engine", "Engine", "Engine"]
 	elif def.is_xl() and (loc == Location.LT or loc == Location.RT):
-		names = ["Engine", "Engine", "Engine"]
+		for s in ClanTech.xl_side_slots(def):
+			names.append("Engine")
 	elif Location.is_arm(loc):
 		for a in ARM_ACTUATORS:
 			names.append(a if def.has_actuator(loc, a) else "")

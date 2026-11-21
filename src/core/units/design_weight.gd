@@ -28,7 +28,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"cockpit": COCKPIT_TONS,
 		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
 		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
-		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (FERRO_MULT if def.armor_type == "ferro_fibrous" else 1.0))),
+		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (ferro_mult(def) if def.armor_type == "ferro_fibrous" else 1.0))),
 		"weapons": weapons,
 		"ammo": float(def.ammo_mounts.size()),
 		"case": def.case_locs.size() * 0.5,
@@ -36,6 +36,10 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,
 		"melee": def.melee.reduce(func(t: float, m: Dictionary) -> float: return t + def.melee_tons(m["kind"]), 0.0),
 	}
+
+
+static func ferro_mult(def: UnitDef) -> float:
+	return ClanTech.FERRO_MULT if def.is_clan() else FERRO_MULT
 
 
 static func total(def: UnitDef) -> float:

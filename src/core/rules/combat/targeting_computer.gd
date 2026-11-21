@@ -6,7 +6,7 @@ extends RefCounted
 ## cluster rounds, Ultra double fire). It also allows aimed shots at moving
 ## 'Mechs (AimedShot): +3 instead of the -1, never at the head, not with
 ## pulse weapons. A critical hit destroys it.
-## TODO(rules): size (1 slot and 1 t per 4 t of linked weapons, rounded up)
+## TODO(rules): size (1 slot and 1 t per 4 t of linked weapons, 5 t if Clan, rounded up)
 ## is construction data, not in the Core Rulebook; no BV bonus yet.
 
 const MOD := -1
@@ -41,7 +41,7 @@ static func size(def: UnitDef) -> int:
 	var tons := 0.0
 	for m in def.weapon_mounts:
 		var d: WeaponDef = m["weapon"]
-		if not d.ams and not d.heat_damage and d.id != "machine_gun" and not d.is_cluster() \
+		if not d.ams and not d.heat_damage and not d.name.ends_with("Machine Gun") and not d.is_cluster() \
 				and (d.type == "energy" or d.type == "ballistic"):
 			tons += d.tons
-	return maxi(1, ceili(tons / 4.0))
+	return maxi(1, ceili(tons / ClanTech.tc_tons_per_slot(def)))

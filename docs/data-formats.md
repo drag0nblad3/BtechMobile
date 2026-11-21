@@ -64,7 +64,10 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
-  `ferro_fibrous` items (14 each for Inner Sphere; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+  `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+- `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
+  CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
+  targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`). `"omni": true` marks an OmniMech.
 - The design must weigh its tonnage (test): structure 10%, engine by rating
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
   XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor

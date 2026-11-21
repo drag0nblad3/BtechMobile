@@ -83,7 +83,7 @@ func test_equipment_fits_slots() -> void:
 			want += def.melee_slots(m["kind"])
 		for loc: int in def.other_items:
 			for item: String in def.other_items[loc]:
-				want += 3 if item == "heat_sink" and def.double_heat_sinks else 1
+				want += ClanTech.dhs_slots(def) if item == "heat_sink" and def.double_heat_sinks else 1
 		var got := 0
 		var u := Unit.new(1, def, 0, Vector2i.ZERO, 0)
 		for loc in Location.COUNT:
