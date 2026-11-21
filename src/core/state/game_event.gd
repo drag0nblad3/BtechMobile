@@ -33,6 +33,7 @@ const SKID := &"skid"                     # {unit_id, hexes, wanted} slid after 
 const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vector3i]}
 const BUILDING := &"building"             # {kind: flattened|entry_failed|destroy_check|shot|cover_hit|collapsed, coord, name, unit_id?, damage?, roll?, need?}
 const INTENT := &"intent"                 # {unit_id, text} why a player chose its action
+const SENSOR_CHECK := &"sensor_check"     # {unit_id, roll, need, ok, why, mods}
 const CONDITIONS := &"conditions"         # {names: [String]} battlefield conditions, at the start
 const GAME_OVER := &"game_over"           # {winner: side or -1}
 

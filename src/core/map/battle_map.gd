@@ -7,6 +7,7 @@ var width: int = 0   ## Columns (mapsheet XX).
 var height: int = 0  ## Rows (mapsheet YY).
 var tiles: Dictionary = {}  # Vector2i -> MapTile
 var rubble: TerrainType = null  ## What a collapsed building leaves behind.
+var windy := false  ## Wind clears smoke and fog (set from Conditions).
 
 
 func get_tile(c: Vector2i) -> MapTile:

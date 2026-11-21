@@ -86,8 +86,14 @@ static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int
 		if w > 0 and _intervenes(tile.level + tile.terrain.los_height, a_lvl, b_lvl, next_a, next_b):
 			pts = w
 			out["light" if w == 1 else "heavy"] += 1
-		if tile.on_fire and _intervenes(Fire.smoke_top(tile), a_lvl, b_lvl, next_a, next_b):
-			pts = mini(Fire.SMOKE_CAP, pts + 1)  # smoke counts as light woods, 2 per hex at most
+		var obs := 0  # smoke and fog count like woods, 2 per hex at most (Obscurant)
+		if not map.windy:
+			if tile.fog > 0 and _intervenes(tile.level + Obscurant.HEIGHT, a_lvl, b_lvl, next_a, next_b):
+				obs += tile.fog
+			if tile.on_fire and _intervenes(Fire.smoke_top(tile), a_lvl, b_lvl, next_a, next_b):
+				obs += 1
+		if obs > 0:
+			pts = mini(Obscurant.CAP, pts + obs)
 			out["smoke"] += 1
 		out["woods"] += pts
 		if next_b and ground == cover_floor + 1 and a_lvl <= b_lvl \
@@ -95,7 +101,7 @@ static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int
 			out["cover"] = tile.coord
 	if out["woods"] >= WOODS_BLOCK:
 		out["blocked"] = true
-		out["reason"] = "%d points of woods%s in the way" % [out["woods"], " and smoke" if out["smoke"] > 0 else ""]
+		out["reason"] = "%d points of woods%s in the way" % [out["woods"], " and smoke or fog" if out["smoke"] > 0 else ""]
 	return out
 
 

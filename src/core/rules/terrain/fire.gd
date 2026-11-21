@@ -9,7 +9,7 @@ extends RefCounted
 ## no smoke modifier for a 'Mech inside the burning building. Heat-causing
 ## hits (flamers) on a 'Mech-scale building start a fire once a phase's total
 ## reaches its class's fire heat per level x its height.
-## Woods are lit the same way (WoodsFire). TODO(rules): smoke from other sources.
+## Woods are lit the same way (WoodsFire). Smoke math with fog: Obscurant.
 
 const MOVE_HEAT := 2
 const STAND_HEAT := 5
@@ -64,16 +64,6 @@ static func move_heat(map: BattleMap, path: Array[Vector3i], from: Vector2i, jum
 static func stand_heat(map: BattleMap, u: Unit) -> int:
 	var tile := map.get_tile(u.coord)
 	return STAND_HEAT if tile != null and tile.on_fire else 0
-
-
-## Smoke to-hit modifier on a 'Mech in this hex, given its woods value.
-static func smoke_mod(map: BattleMap, u: Unit, woods: int) -> int:
-	var tile := map.get_tile(u.coord)
-	if tile == null or not tile.on_fire or woods >= SMOKE_CAP:
-		return 0
-	if tile.building != null and not u.on_roof:
-		return 0  # inside the burning building
-	return 1
 
 
 ## Top of a burning hex's smoke column.

@@ -108,3 +108,86 @@ func test_force_builder_cycles_presets() -> void:
 	check(fb.conditions.is_clear())
 	fb.next_conditions()
 	check(fb.conditions.night, "second preset is night")
+
+
+func _mods(th: ToHit) -> Array:
+	return th.mods.map(func(m: Dictionary) -> String: return m["label"])
+
+
+func test_wind_adds_to_piloting_rolls_outside_buildings() -> void:
+	var s := GameState.new(MapLoader.from_dict({"rows": ["c0 c0 c0", "c0 c0 c0"],
+			"buildings": [{"hex": "0101", "type": "medium", "height": 1}]}, terrain()))
+	s.conditions = Conditions.from_dict({"wind": true})
+	check(s.map.windy, "map knows about the wind")
+	var u := mech("hunchback_hbk4g", 0, Hex.from_label("0202"), 0, 1)
+	s.add_unit(u)
+	events.clear()
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)
+	check(not Psr.roll(dice, _emit, u, "test", 0, s), "5 + 1 wind needs 6")
+	check_eq(events[-1][1]["need"], 6, "piloting 5 + wind")
+	u.coord = Hex.from_label("0101")
+	dice.queue_2d6(5)
+	check(Psr.roll(dice, _emit, u, "test", 0, s), "inside a building: no wind")
+	u.on_roof = true
+	dice.queue_2d6(5)
+	check(not Psr.roll(dice, _emit, u, "test", 0, s), "a roof is outside")
+
+
+func test_wind_jump_landing_falls_a_level() -> void:
+	var u := mech("griffin_grf1n", 0, hex_at(1, 1), 0, 1)
+	var s := _state(u, {"wind": true})
+	MovePsr.after_move(u, MoveMode.Kind.JUMP, 3, s.conditions)
+	check_eq(u.psr_pending.size(), 1, "landing roll")
+	check_eq(int(u.psr_pending[0]["fall_levels"]), 1)
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)  # needs 6 (5 + 1), no extra wind
+	dice.d6_queue.append(6)  # fall: front
+	Psr.resolve_pending(s, dice, _emit, u)
+	var falls := events.filter(func(e): return e[0] == GameEvent.FALL)
+	check_eq(falls.size(), 1)
+	check_eq(falls[0][1]["levels"], 1, "a 1-level fall")
+	var psrs := events.filter(func(e): return e[0] == GameEvent.PSR)
+	check_eq(psrs[0][1]["need"], 6, "jump rolls skip the general wind +1")
+	u.psr_pending.clear()
+	MovePsr.after_move(u, MoveMode.Kind.JUMP, 3, s.conditions, true)
+	check(u.psr_pending.is_empty(), "a death from above doesn't roll for the wind on landing")
+
+
+func test_low_visibility_and_sensor_checks() -> void:
+	var a := mech("hunchback_hbk4g", 0, hex_at(1, 4), 0, 1)
+	var s := _state(a, {"low_visibility": true})
+	var t := mech("hunchback_hbk4g", 1, hex_at(1, 1), 3, 2)
+	s.map = open_map(3, 6)
+	s.add_unit(t)
+	check(_mods(ToHitCalc.weapon(s, a, a.weapons[0], t)).has("low visibility"), "+1 for murk")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)  # attacker passes (piloting 5)
+	dice.queue_2d6(4)  # target fails
+	LowVisibility.sensor_checks(s, dice, _emit)
+	check(not _mods(ToHitCalc.weapon(s, a, a.weapons[0], t)).has("low visibility"), "passed the check")
+	check(s.sees_through.size() == 1)
+	a.sensor_hits = 1
+	check_eq(LowVisibility.sensor_check_target(a).target(), 7, "sensor hit +2")
+	a.sensor_hits = 2
+	check(LowVisibility.sensor_check_target(a).impossible != "", "two sensor hits: no check")
+
+
+func test_fog_hides_like_woods_and_wind_clears_it() -> void:
+	var s := GameState.new(MapLoader.from_dict({"rows": ["c0 c0 c0", "c0 c0 c0", "H0 c0 c0", "c0 c0 c0", "c0 c0 c0"],
+			"fog": {"heavy": ["0202", "0103"], "light": ["0203"]}}, terrain()))
+	var a := mech("hunchback_hbk4g", 0, Hex.from_label("0205"), 0, 1)
+	var t := mech("hunchback_hbk4g", 1, Hex.from_label("0201"), 3, 2)
+	s.add_unit(a)
+	s.add_unit(t)
+	check_eq(s.map.get_tile(Hex.from_label("0203")).fog, 1, "loaded")
+	var los := LineOfSight.check(s.map, a, t)
+	check(los["blocked"], "heavy + light fog between: 3 points block")
+	t.coord = Hex.from_label("0202")
+	var th := ToHitCalc.weapon(s, a, a.weapons[0], t)
+	check(_mods(th).has("target in fog"), th.summary())
+	t.coord = Hex.from_label("0103")
+	check_eq(Obscurant.to_hit_mod(s.map, t, 2), 0, "heavy woods already at the +2 cap")
+	s.conditions = Conditions.from_dict({"wind": true})
+	t.coord = Hex.from_label("0201")
+	check(not LineOfSight.check(s.map, a, t)["blocked"], "the wind blows the fog away")

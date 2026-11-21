@@ -48,6 +48,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 		return th
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	ToHitCalc.add_attacker_movement(th, attacker)
+	LowVisibility.add(th, state, attacker)
 	if br == WeaponDef.Bracket.MEDIUM:
 		th.add("medium range", 2, "%d hexes is medium range for %s." % [dist, w.def.name])
 	elif br == WeaponDef.Bracket.LONG:

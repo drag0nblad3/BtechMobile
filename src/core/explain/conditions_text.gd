@@ -26,9 +26,26 @@ static func effects(c: Conditions) -> Array[String]:
 	if c.odd_gravity():
 		out.append("Gravity %.1f G: damage from falls and collapsing buildings is multiplied by %.1f, and every jump needs a piloting roll (at -1) in the strange gravity." % [
 				c.gravity, c.gravity])
+	if c.wind:
+		out.append("Wind: +1 to every piloting roll outside buildings. A 'Mech that jumps rolls at +1 on landing and falls a level if it fails. Smoke and fog are blown away.")
+	if c.low_visibility:
+		out.append("Low visibility: +1 to every ranged attack. At the start of each Weapon Attack Phase every 'Mech makes a sensor check (its piloting skill); passing it removes the +1 for that turn.")
 	if c.night:
 		out.append("Night: 'Mech sensors see heat and low light, so darkness doesn't change how 'Mechs fight.")
 	return out
+
+
+## Log line for a sensor check.
+static func sensor_check(s: GameState, d: Dictionary, level: int) -> String:
+	if level == ExplainLevel.OFF:
+		return ""
+	var who := Names.unit(s.unit_by_id(d["unit_id"]))
+	var t := "%s sensor check (%s): %d vs %d+: %s" % [who, d["why"], d["roll"], d["need"],
+			"sees through it" if d["ok"] else "still blind"]
+	if level == ExplainLevel.FULL:
+		t += ". Passing ignores the +1 for low visibility on this turn's shots; failing never makes a 'Mech fall" \
+				if d["why"] == "low visibility" else ""
+	return t + "."
 
 
 ## Extra words for a Heat Phase line when the temperature moved the heat.
