@@ -2,7 +2,7 @@ class_name HeatPhase
 extends RefCounted
 ## Heat Phase (book pp. 102-107): add this turn's heat, dissipate, then
 ## resolve shutdown (or restart), ammo cook-off, and last the MechWarrior
-## hits from damaged life support.
+## hits from damaged life support. Extreme temperatures shift all of it (ExtremeTemp).
 
 const ENGINE_HIT_HEAT := 5
 ## Most heat outside sources (flamers, fire) can add in one turn (book p. 102).
@@ -17,19 +17,23 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		var before := u.heat
 		var outside := mini(u.outside_heat + Fire.stand_heat(state.map, u), OUTSIDE_HEAT_CAP)
 		var engine := 0 if u.shutdown else ENGINE_HIT_HEAT * u.engine_hits
-		var gained := u.heat_generated + engine + outside
-		var sinks := u.dissipation() + water_cooling(state.map.get_tile(u.coord), u)
+		var c := state.conditions
+		var gained := u.heat_generated + engine + outside + ExtremeTemp.heat_added(c)
+		var sinks := u.dissipation() + water_cooling(state.map.get_tile(u.coord), u) \
+				+ ExtremeTemp.extra_sinks(c)
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
 				"sinks": sinks, "outside": outside, "heat": u.heat,
-				"effects": HeatScale.effects_text(u.heat)})
+				"weather": ExtremeTemp.heat_added(c) - ExtremeTemp.extra_sinks(c),
+				"effects": HeatScale.effects_text(u.heat, c)})
 		VoluntaryShutdown.apply(dice, emit, u)
 		if not u.voluntary_shutdown:
-			HeatShutdown.check(dice, emit, u)
+			HeatShutdown.check(dice, emit, u, c)
 		_ammo_check(state, dice, emit, u)
-		if not u.destroyed and u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT) and u.heat >= 10:
-			PilotDamage.wound(dice, emit, u, 2 if u.heat >= 20 else 1,
-					"heat with life support damaged")
+		var ls := ExtremeTemp.life_support_hits(c, u.heat)
+		if not u.destroyed and u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT) and ls > 0:
+			PilotDamage.wound(dice, emit, u, ls, "cold with life support damaged" if c.cold > 0
+					else "heat with life support damaged")
 	PilotDamage.resolve_owed(state, dice, emit)
 
 
@@ -62,13 +66,13 @@ static func leg_heat_sinks(u: Unit) -> int:
 
 
 static func _ammo_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
-	var need := HeatScale.ammo_explosion_avoid(u.heat)
+	var need := ExtremeTemp.avoid(HeatScale.ammo_explosion_avoid(u.heat), state.conditions)
 	if need == 0 or u.destroyed:
 		return
 	var bin := worst_bin(u)
 	if bin == null:
 		return
-	var roll := dice.roll_2d6()
+	var roll := dice.roll_2d6() if need < 99 else 0
 	emit.call(GameEvent.HEAT_ROLL, {"unit_id": u.id, "kind": "ammo", "roll": roll,
 			"need": need, "ok": roll >= need})
 	if roll < need:

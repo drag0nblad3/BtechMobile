@@ -2,7 +2,7 @@ class_name ScenarioLoader
 extends RefCounted
 ## Builds a GameState from data/scenarios/<id>.json:
 ##   {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0,
-##    "hex": "0816", "facing": 0}, ...]}
+##    "hex": "0816", "facing": 0}, ...], "conditions": {"cold": 1}}
 ## "hex" is a mapsheet label (XXYY, 1-based).
 
 
@@ -10,6 +10,7 @@ static func load_file(path: String, terrain: TerrainDb, units: UnitDb) -> GameSt
 	var data: Dictionary = JsonFile.read(path)
 	var map_path := "res://data/maps/%s.json" % data["map"]
 	var state := GameState.new(MapLoader.load_file(map_path, terrain))
+	state.conditions = Conditions.from_dict(data.get("conditions", {}))
 	var next_id := 1
 	for u in data["units"]:
 		var def := units.get_def(u["def"])

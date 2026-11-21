@@ -70,6 +70,7 @@ func _build_options(parent: Control) -> void:
 	box.add_child(row3)
 	for side in 2:
 		UiKit.button(row3, Names.side(side) + " skill", _on_skill.bind(side), Vector2(100, 60))
+	UiKit.button(box, "Conditions", func(): builder.next_conditions(); _refresh(), Vector2(0, 60))
 	UiKit.button(box, "Initiative Die", func():
 			builder.initiative_die = not builder.initiative_die; _refresh(), Vector2(0, 60))
 	UiKit.button(box, "Explanations", func():
@@ -112,14 +113,17 @@ func _refresh() -> void:
 					func(): builder.remove(side, i); _refresh())
 	var map_name: String = JsonFile.read(maps[map_index]).get("name", "?")
 	catalog.refresh()
-	_info.text = "Map: %s\nBudget: %d BV per side\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
-			builder.budget, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
+	var weather := ", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "clear"
+	_info.text = "Map: %s\nBudget: %d BV per side\nConditions: %s\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
+			builder.budget, weather, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
 	if GameSettings.explain_level == ExplainLevel.FULL:
 		_info.text += "\n" + BvText.WHAT_IS_BV
 		_info.text += "\nSkill: better MechWarriors hit and keep their footing more often, and cost more BV (Veteran 3/4 is x%.2f, Elite 2/3 x%.2f, Green 5/6 x%.2f)." % [
 				BvSkill.multiplier(3, 4), BvSkill.multiplier(2, 3), BvSkill.multiplier(5, 6)]
 		_info.text += "\nInitiative Die (optional): a side that keeps losing initiative gets +1 more on each roll until it wins."
+		for line in ConditionsText.effects(builder.conditions):
+			_info.text += "\n" + line
 		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."
 	var balance := builder.balance_text()
 	if balance != "" and GameSettings.explain_level != ExplainLevel.OFF:

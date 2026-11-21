@@ -14,7 +14,8 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 			if level != ExplainLevel.OFF:
 				var outside: int = d.get("outside", 0)
 				var from_out := (", %d of it from enemy flamers" % outside) if outside > 0 else ""
-				t += " (+%d built%s, -%d sinks)" % [d["gained"], from_out, d["sinks"]]
+				t += " (+%d built%s, -%d sinks%s)" % [d["gained"], from_out, d["sinks"],
+						ConditionsText.heat_note(d.get("weather", 0))]
 			if d["heat"] > 0:
 				t += ": " + d["effects"]
 			if level == ExplainLevel.FULL and d["gained"] > d["sinks"] and d["heat"] >= 5:
@@ -25,6 +26,8 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 					"restart": "restart"}[d["kind"]]
 			if level == ExplainLevel.OFF:
 				return "" if d["ok"] or d["kind"] == "restart" else "%s fails to %s." % [who, what]
+			if d["need"] >= 99:
+				return "%s can't %s at this heat in these temperatures." % [who, what]
 			return "%s rolls to %s: %d vs %d+: %s." % [who, what, d["roll"], d["need"],
 					"made it" if d["ok"] else "failed"]
 		GameEvent.SHUTDOWN:

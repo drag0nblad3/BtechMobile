@@ -130,6 +130,7 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 			Fall.fall(state, dice, emit, inside, b.height, "the roof gave way")
 		return
 	var dmg := b.collapse_damage(1 if inside != null and inside.prone else 2) if inside != null else 0
+	dmg = Gravity.scale(dmg, state.conditions)
 	emit.call(GameEvent.BUILDING, {"kind": "collapsed", "coord": tile.coord, "name": b.type.name,
 			"height": b.height, "damage": dmg, "unit_id": inside.id if inside != null else -1})
 	if inside == null or inside.destroyed:
