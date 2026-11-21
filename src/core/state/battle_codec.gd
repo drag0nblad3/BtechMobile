@@ -50,7 +50,7 @@ static func pack(v: Variant) -> Variant:
 
 
 static func unpack(v: Variant, units: UnitDb, terrain: TerrainDb) -> Variant:
-	if not v is Dictionary or not v.has("$"):
+	if not (v is Dictionary) or not v.has("$"):
 		return v
 	match String(v["$"]):
 		"v2i": return Vector2i(int(v["x"]), int(v["y"]))
