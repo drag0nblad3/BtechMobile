@@ -14,7 +14,7 @@ static func capture(c: GameController, bots: Array, skill: int,
 			"seed": str(c.dice._rng.seed), "rng": str(c.dice._rng.state),
 			"history": BattleCodec.pack(c.history), "bots": bots.duplicate(),
 			"skill": skill, "training": training, "tutorial": tutorial_path,
-			"frames": frames.duplicate()}
+			"frames": frames.duplicate(), "finished": c.state.game_over}
 
 
 static func restore(d: Dictionary, db: UnitDb, terrain: TerrainDb) -> Dictionary:
@@ -89,7 +89,7 @@ static func _write(path: String, data: Dictionary) -> bool:
 static func _read(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
 		return {}
-	var file := FileAccess.open_compressed(path, FileAccess.READ)
+	var file := FileAccess.open_compressed(path, FileAccess.READ, FileAccess.COMPRESSION_ZSTD)
 	if file == null:
 		return {}
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
