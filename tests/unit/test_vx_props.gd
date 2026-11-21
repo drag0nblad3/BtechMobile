@@ -126,3 +126,23 @@ func test_scars_carve_the_wall_facing_the_shooter_and_survive_rebuild() -> void:
 	check(again._by_coord[t.coord].mesh != BuildingProps.mesh_for("medium", 2, absi(hash(t.coord)) % BuildingProps.VARIANTS), "scarred mesh kept")
 	props.free()
 	again.free()
+
+
+func test_voxel_bridges_fit_the_hex_and_take_scars() -> void:
+	var open := [false, true, true, false, true, true]
+	var g := VxBridgeGen.make(7, open, 0)
+	var m := g.mesh()
+	check(m != null and VxGrid.triangles(m) < 3000, "bridge triangles: %d" % VxGrid.triangles(m))
+	var box := m.get_aabb()
+	check(box.position.x >= -0.87 and box.end.x <= 0.87, "bridge fits its hex: %s" % box)
+	check(absf(g.deck_top * VxBuildingGen.PITCH - (7 * VxBuildingGen.PITCH)) < 0.01, "deck top where asked")
+	var before := g.cells.size()
+	var hit := g.hit_cell(Vector2(1, 0), g.deck_top - 1)
+	g.carve(hit, 2.5)
+	check(g.cells.size() < before, "a shot knocks stones out")
+	var m2 := MapLoader.load_file("res://data/maps/river_crossing.json", terrain())
+	var props := BridgeProps.build(m2)
+	check_eq(props.get_child_count(), 2, "one voxel model per bridge hex")
+	var p := props.scar(Hex.from_label("0909"), Vector3(-5, 0, 0), 10)
+	check(p != Vector3.ZERO and props.scars.has(Hex.from_label("0909")), "scar recorded")
+	props.free()

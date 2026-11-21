@@ -1,64 +1,72 @@
 class_name BridgeProps
-extends RefCounted
-## Bridge decks: a stone slab at each bridge hex's deck level, a low parapet
-## along every edge that faces water or open air (not the road or the next
-## deck), and a pier down to the ground or river bed beneath.
+extends Node3D
+## Voxel bridges from VxBridgeGen, one per bridge hex, standing on the
+## ground or river bed. Hits knock cosmetic holes out of the stonework
+## (scars, kept by MapView so they survive a redraw); only the rules decide
+## when a bridge comes down.
 
-const DECK := 0.16    ## Slab thickness, world units.
-const LIFT := 0.06    ## Deck top sits just above its level, clear of the water cap.
-const WALL := 0.16    ## Parapet height.
-const STONE := Color("6b6862")
+const VARIANTS := 3
+const MAX_SCARS := 10
+const STONE := VxBridgeGen.STONE
+
+var scars := {}  # Vector2i -> Array of [Vector3 voxel centre, float radius]
+var _by_coord := {}  # Vector2i -> MeshInstance3D
+var _map: BattleMap
 
 
-static func build(map: BattleMap) -> Node3D:
-	var root := Node3D.new()
+static func build(map: BattleMap, scar_list := {}) -> BridgeProps:
+	var root := BridgeProps.new()
 	root.name = "Bridges"
-	var slab := HexMesh.prism(HexLayout.HEX_SIZE * 0.99)
-	var pier := CylinderMesh.new()
-	pier.top_radius = 0.2
-	pier.bottom_radius = 0.26
-	pier.height = 1.0
-	var wall := BoxMesh.new()
-	wall.size = Vector3(HexLayout.HEX_SIZE, WALL, 0.1)
+	root.scars = scar_list
+	root._map = map
 	for t: MapTile in map.tiles.values():
 		if t.bridge == null:
 			continue
-		var tint := STONE.lerp(t.bridge.type.color, 0.25)
-		var top := HexLayout.to_world(t.coord, t.bridge.level) + Vector3(0, LIFT, 0)
-		root.add_child(_part(slab, Transform3D(Basis.from_scale(Vector3(1, DECK, 1)), top), tint))
-		for f in 6:
-			if _open_edge(map, t, Hex.neighbor(t.coord, f)):
-				root.add_child(_part(wall, _edge_xf(top, f), tint.darkened(0.2)))
-		var bed := HexLayout.level_y(t.floor_level())
-		var drop := top.y - DECK - bed
-		if drop > 0.05:
-			var mid := Vector3(top.x, bed + drop * 0.5, top.z)
-			root.add_child(_part(pier, Transform3D(Basis.from_scale(Vector3(1, drop, 1)), mid), tint.darkened(0.35)))
+		var inst := MeshInstance3D.new()
+		inst.material_override = VxGrid.material()
+		inst.position = HexLayout.to_world(t.coord, t.floor_level())
+		root.add_child(inst)
+		root._by_coord[t.coord] = inst
+		inst.mesh = root._scarred(t).mesh()
 	return root
 
 
+## The bridge hex's generator, with every scar so far carved out.
+func _scarred(t: MapTile) -> VxBridgeGen:
+	var open: Array = []
+	for f in 6:
+		open.append(_open_edge(t, Hex.neighbor(t.coord, f)))
+	var rise := (t.bridge.level - t.floor_level()) * VxBuildingGen.PER_LEVEL + 1
+	var g := VxBridgeGen.make(rise, open, absi(hash(t.coord)) % VARIANTS)
+	for s: Array in scars.get(t.coord, []):
+		g.carve(s[0], s[1])
+	return g
+
+
+## Knocks a hole in the bridge at `coord` on the side facing the world point
+## `from`; bigger for more damage. Returns the hole's world position.
+func scar(coord: Vector2i, from: Vector3, damage: int) -> Vector3:
+	var inst: MeshInstance3D = _by_coord.get(coord)
+	var t := _map.get_tile(coord)
+	if inst == null or t == null or t.bridge == null:
+		return Vector3.ZERO
+	var list: Array = scars.get_or_add(coord, [])
+	var g := _scarred(t)
+	if list.size() >= MAX_SCARS:
+		return inst.position + Vector3(0, g.deck_top * VxBuildingGen.PITCH, 0)
+	var local := (from - inst.position) / VxBuildingGen.PITCH
+	var y := maxi(1, g.deck_top - 1 - absi(hash([coord, list.size()])) % 3)
+	var hit := g.hit_cell(Vector2(local.x, local.z), y)
+	var r := clampf(1.2 + damage * 0.12, 1.5, 3.5)
+	list.append([hit, r])
+	g.carve(hit, r)
+	inst.mesh = g.mesh()
+	return inst.position + hit * VxBuildingGen.PITCH
+
+
 ## A parapet goes on edges facing water or a drop, not onto land at deck level.
-static func _open_edge(map: BattleMap, t: MapTile, c: Vector2i) -> bool:
-	var n := map.get_tile(c)
+func _open_edge(t: MapTile, c: Vector2i) -> bool:
+	var n := _map.get_tile(c)
 	if n == null or n.bridge != null:
 		return false
 	return n.is_water() or n.floor_level() < t.bridge.level - 1
-
-
-## The parapet along the hexside towards facing `f` (0 = north, clockwise).
-static func _edge_xf(top: Vector3, f: int) -> Transform3D:
-	var dir := HexLayout.to_world(Hex.neighbor(Vector2i.ZERO, f)).normalized()
-	var at := top + dir * HexLayout.HEX_SIZE * HexLayout.SQRT3 * 0.5 * 0.92 + Vector3(0, WALL * 0.5, 0)
-	var basis := Basis(Vector3.UP, atan2(-dir.z, dir.x) + PI / 2.0)
-	return Transform3D(basis, at)
-
-
-static func _part(mesh: Mesh, xf: Transform3D, colour: Color) -> MeshInstance3D:
-	var inst := MeshInstance3D.new()
-	inst.mesh = mesh
-	inst.transform = xf
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = colour
-	mat.roughness = 0.95
-	inst.material_override = mat
-	return inst
