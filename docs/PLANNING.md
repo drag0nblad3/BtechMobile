@@ -112,7 +112,7 @@ against the book first:
    pilot skill multiplier applied). Our numbers land within about 10% of published values.
 8. Buildings follow the Core Rulebook's Threshold / Destroy Check system; careful
    entry, roofs and building fires are not modeled yet.
-9. 'Mech designs (70 Inner Sphere designs plus 26 Clan designs (25 OmniMech configurations of 15 chassis, and the Hunchback IIC)
+9. 'Mech designs (70 Inner Sphere designs plus 37 Clan designs (36 OmniMech configurations of 20 chassis, and the Hunchback IIC)
    in `data/units/`) are written from general knowledge; the Clan loadouts are adapted to our
    whole-ton ammo and slot rules, so some differ from the readouts: check armor
    split, slot placement and ammo locations against the technical readouts. The Core

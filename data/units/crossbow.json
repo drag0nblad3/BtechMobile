@@ -1,0 +1,21 @@
+{
+  "id": "crossbow", "name": "Crossbow", "tonnage": 40, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "crossbow", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 18, "LT": 15, "RT": 15, "LA": 12, "RA": 12, "LL": 20, "RL": 20},
+  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*2"], "RA": ["ferro_fibrous*5"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 15, "role": "Clan light fire support. Two LRM 15s for indirect fire and four ER medium lasers in case anything closes in.", "equipment": {
+      "LT": ["c_lrm15", "ammo:c_lrm15*2", "heat_sink", "heat_sink", "heat_sink"],
+      "RT": ["c_lrm15", "ammo:c_lrm15*2", "heat_sink", "heat_sink"],
+      "LA": ["c_er_medium_laser*2", "c_er_small_laser"],
+      "RA": ["c_er_medium_laser*2", "c_er_small_laser"]
+    }},
+    {"model": "A", "heat_sinks": 14, "role": "ATM Crossbow: two ATM 6s that switch between long-range ER and close-range HE missiles.", "equipment": {
+      "LT": ["c_atm6", "ammo:c_atm6:er", "ammo:c_atm6:he", "heat_sink", "heat_sink"],
+      "RT": ["c_atm6", "ammo:c_atm6:er", "ammo:c_atm6:he", "heat_sink", "heat_sink"],
+      "CT": ["ammo:c_atm6"],
+      "LA": ["c_er_medium_laser*2", "c_er_small_laser"],
+      "RA": ["c_er_medium_laser*2", "c_er_small_laser"]
+    }}
+  ]
+}

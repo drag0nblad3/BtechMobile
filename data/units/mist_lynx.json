@@ -1,0 +1,31 @@
+{
+  "id": "mist_lynx", "name": "Mist Lynx", "tonnage": 25, "walk_mp": 6, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "mist_lynx", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 11, "LT": 8, "RT": 8, "LA": 6, "RA": 6, "LL": 10, "RL": 10},
+  "rear_armor": {"CT": 3, "LT": 3, "RT": 2},
+  "equipment": {"LA": ["endo_steel*6"], "RA": ["endo_steel*1", "ferro_fibrous*5"], "LT": ["ferro_fibrous*2"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 12, "jump_mp": 6, "role": "Clan jumping scout. Two ER medium lasers and a Streak SRM 4: light, quick and hard to pin down.", "equipment": {
+      "LA": ["c_er_medium_laser"],
+      "RA": ["c_er_medium_laser"],
+      "LT": ["c_streak_srm4", "ammo:c_streak_srm4", "jump_jet", "jump_jet", "heat_sink", "heat_sink"],
+      "RT": ["c_machine_gun*2", "ammo:c_machine_gun"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"]
+    }},
+    {"model": "A", "heat_sinks": 10, "jump_mp": 6, "role": "LRM Mist Lynx: an LRM 10 to fire indirectly at what it spots, plus a Streak SRM 2 and lasers for close work.", "equipment": {
+      "RT": ["c_lrm10", "ammo:c_lrm10"],
+      "LA": ["c_er_small_laser", "c_er_medium_laser"],
+      "RA": ["c_er_small_laser", "c_er_medium_laser"],
+      "LT": ["c_streak_srm2", "ammo:c_streak_srm2", "jump_jet", "jump_jet"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"]
+    }},
+    {"model": "B", "heat_sinks": 13, "jump_mp": 6, "role": "Sniper Mist Lynx: an ER large laser that reaches 25 hexes and enough heat sinks to keep firing it.", "equipment": {
+      "RA": ["c_er_large_laser"],
+      "LA": ["c_er_medium_laser", "c_er_small_laser"],
+      "LL": ["jump_jet", "jump_jet"],
+      "RL": ["jump_jet", "jump_jet"],
+      "LT": ["jump_jet", "jump_jet", "heat_sink", "heat_sink", "heat_sink"]
+    }}
+  ]
+}
