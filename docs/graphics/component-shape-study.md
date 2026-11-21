@@ -25,3 +25,13 @@ Shapes to approve independently: forward prow and sloped canopy, wide level engi
 
 ## Required visual gate
 Render front, left/right profile, rear, and three-quarter views. Confirm the outline of **each disconnected component** and all negative spaces against source images. If any component silhouette is wrong, resculpt that component *before* adding any voxels for bevels/details. Whole-chassis voxel count at this point is intentionally small.
+
+## First visual evaluation (Godot front/three-quarter/side/rear)
+
+**Gate result: NOT APPROVED.** The test architecture and capture pipeline work, but correct body-part silhouettes are not established. Do not subdivide, add surface detailing or integrate into the main game.
+
+- **Atlas:** Skull face is more identifiable after the second shape pass, but shoulder hoods, arm gauntlets and thigh armor still read as generalized bulbous forms rather than the stock AS7-D's independently shaped components. Chest weapon housings need tighter reference placement and scale.
+- **Wolverine:** Offset shoulder missile tower and forearm gun are located, but torso, upper-arm guards, chest depth and limb armor are still insufficiently reference-specific.
+- **Jenner:** Broad horizontal body and projecting prow are present, but nose glazing, flank nacelle integration, hock linkage and toe shapes still differ from the technical readout and miniature.
+
+**Next required work:** For each part, replace coarse symmetric cross-sections with explicit reference-traced front/side/plan polygons; verify those polygons isolated and assembled; repeat the four orthographic-perspective capture angles. The shared octagonal profile helper is a drafting shortcut, not acceptable as a final component shape. Keep this draft PR unmerged.
