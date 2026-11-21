@@ -1139,230 +1139,153 @@
       "shapes": [
         {
           "loft": {
-            "axis": "y",
+            "axis": "z",
             "sections": [
               {
-                "at": 39,
+                "at": -8,
                 "polygon": [
                   [
-                    -13,
-                    -4
-                  ],
-                  [
-                    -12,
-                    -5
-                  ],
-                  [
-                    -9,
-                    -5
-                  ],
-                  [
-                    -8,
-                    -4
-                  ],
-                  [
-                    -8,
-                    1
-                  ],
-                  [
-                    -9,
-                    5
-                  ],
-                  [
-                    -12,
-                    6
-                  ],
-                  [
-                    -15,
-                    4
-                  ],
-                  [
-                    -15,
-                    0
+                    -16,
+                    41
                   ],
                   [
                     -14,
-                    -3
+                    39
+                  ],
+                  [
+                    -9,
+                    39
+                  ],
+                  [
+                    -7,
+                    42
+                  ],
+                  [
+                    -7,
+                    51
+                  ],
+                  [
+                    -10,
+                    54
+                  ],
+                  [
+                    -14,
+                    53
+                  ],
+                  [
+                    -16,
+                    49
                   ]
                 ]
               },
               {
-                "at": 43,
+                "at": -4,
                 "polygon": [
                   [
-                    -16,
-                    -5
+                    -17,
+                    40
                   ],
                   [
                     -15,
-                    -7
+                    38
                   ],
                   [
                     -9,
-                    -7
+                    38
                   ],
                   [
-                    -8,
-                    -5
+                    -7,
+                    41
                   ],
                   [
-                    -8,
-                    2
+                    -7,
+                    52
                   ],
                   [
                     -10,
-                    7
+                    55
                   ],
                   [
                     -15,
-                    7
-                  ],
-                  [
-                    -18,
-                    5
-                  ],
-                  [
-                    -18,
-                    -1
+                    54
                   ],
                   [
                     -17,
-                    -4
+                    49
                   ]
                 ]
               },
               {
-                "at": 47,
+                "at": 5,
                 "polygon": [
                   [
-                    -16,
-                    -5
+                    -17,
+                    40
                   ],
                   [
                     -15,
-                    -7
+                    38
                   ],
                   [
                     -9,
-                    -7
+                    38
                   ],
                   [
-                    -8,
-                    -5
+                    -7,
+                    41
                   ],
                   [
-                    -8,
-                    2
+                    -7,
+                    52
                   ],
                   [
                     -10,
-                    7
+                    55
                   ],
                   [
                     -15,
-                    7
-                  ],
-                  [
-                    -18,
-                    5
-                  ],
-                  [
-                    -18,
-                    -1
+                    54
                   ],
                   [
                     -17,
-                    -4
+                    49
                   ]
                 ]
               },
               {
-                "at": 51,
+                "at": 8,
                 "polygon": [
                   [
-                    -16,
-                    -5
+                    -15,
+                    41
                   ],
                   [
-                    -15,
-                    -7
+                    -14,
+                    39
                   ],
                   [
                     -9,
-                    -7
+                    39
                   ],
                   [
                     -8,
-                    -5
+                    42
                   ],
                   [
                     -8,
-                    2
+                    51
                   ],
                   [
-                    -10,
-                    7
+                    -11,
+                    53
+                  ],
+                  [
+                    -14,
+                    52
                   ],
                   [
                     -15,
-                    7
-                  ],
-                  [
-                    -18,
-                    5
-                  ],
-                  [
-                    -18,
-                    -1
-                  ],
-                  [
-                    -17,
-                    -4
-                  ]
-                ]
-              },
-              {
-                "at": 54,
-                "polygon": [
-                  [
-                    -13,
-                    -3
-                  ],
-                  [
-                    -12,
-                    -5
-                  ],
-                  [
-                    -9,
-                    -5
-                  ],
-                  [
-                    -8,
-                    -3
-                  ],
-                  [
-                    -8,
-                    2
-                  ],
-                  [
-                    -10,
-                    5
-                  ],
-                  [
-                    -13,
-                    5
-                  ],
-                  [
-                    -16,
-                    3
-                  ],
-                  [
-                    -16,
-                    -1
-                  ],
-                  [
-                    -15,
-                    -2
+                    48
                   ]
                 ]
               }
@@ -1695,230 +1618,153 @@
       "shapes": [
         {
           "loft": {
-            "axis": "y",
+            "axis": "z",
             "sections": [
               {
-                "at": 39,
+                "at": -8,
                 "polygon": [
                   [
-                    8,
-                    -4
+                    7,
+                    42
                   ],
                   [
                     9,
-                    -5
-                  ],
-                  [
-                    12,
-                    -5
+                    39
                   ],
                   [
                     14,
-                    -4
-                  ],
-                  [
-                    15,
-                    -1
-                  ],
-                  [
-                    15,
-                    4
-                  ],
-                  [
-                    12,
-                    6
-                  ],
-                  [
-                    9,
-                    5
-                  ],
-                  [
-                    8,
-                    1
-                  ],
-                  [
-                    7,
-                    -3
-                  ]
-                ]
-              },
-              {
-                "at": 43,
-                "polygon": [
-                  [
-                    7,
-                    -5
-                  ],
-                  [
-                    9,
-                    -7
-                  ],
-                  [
-                    15,
-                    -7
-                  ],
-                  [
-                    17,
-                    -5
-                  ],
-                  [
-                    18,
-                    -1
-                  ],
-                  [
-                    18,
-                    5
-                  ],
-                  [
-                    15,
-                    7
-                  ],
-                  [
-                    10,
-                    7
-                  ],
-                  [
-                    8,
-                    2
-                  ],
-                  [
-                    7,
-                    -4
-                  ]
-                ]
-              },
-              {
-                "at": 47,
-                "polygon": [
-                  [
-                    7,
-                    -5
-                  ],
-                  [
-                    9,
-                    -7
-                  ],
-                  [
-                    15,
-                    -7
-                  ],
-                  [
-                    17,
-                    -5
-                  ],
-                  [
-                    18,
-                    -1
-                  ],
-                  [
-                    18,
-                    5
-                  ],
-                  [
-                    15,
-                    7
-                  ],
-                  [
-                    10,
-                    7
-                  ],
-                  [
-                    8,
-                    2
-                  ],
-                  [
-                    7,
-                    -4
-                  ]
-                ]
-              },
-              {
-                "at": 51,
-                "polygon": [
-                  [
-                    7,
-                    -5
-                  ],
-                  [
-                    9,
-                    -7
-                  ],
-                  [
-                    15,
-                    -7
-                  ],
-                  [
-                    17,
-                    -5
-                  ],
-                  [
-                    18,
-                    -1
-                  ],
-                  [
-                    18,
-                    5
-                  ],
-                  [
-                    15,
-                    7
-                  ],
-                  [
-                    10,
-                    7
-                  ],
-                  [
-                    8,
-                    2
-                  ],
-                  [
-                    7,
-                    -4
-                  ]
-                ]
-              },
-              {
-                "at": 54,
-                "polygon": [
-                  [
-                    8,
-                    -3
-                  ],
-                  [
-                    9,
-                    -5
-                  ],
-                  [
-                    12,
-                    -5
-                  ],
-                  [
-                    15,
-                    -3
+                    39
                   ],
                   [
                     16,
-                    -1
+                    41
                   ],
                   [
                     16,
-                    3
+                    49
                   ],
                   [
-                    13,
-                    5
+                    14,
+                    53
                   ],
                   [
                     10,
-                    5
+                    54
+                  ],
+                  [
+                    7,
+                    51
+                  ]
+                ]
+              },
+              {
+                "at": -4,
+                "polygon": [
+                  [
+                    7,
+                    41
+                  ],
+                  [
+                    9,
+                    38
+                  ],
+                  [
+                    15,
+                    38
+                  ],
+                  [
+                    17,
+                    40
+                  ],
+                  [
+                    17,
+                    49
+                  ],
+                  [
+                    15,
+                    54
+                  ],
+                  [
+                    10,
+                    55
+                  ],
+                  [
+                    7,
+                    52
+                  ]
+                ]
+              },
+              {
+                "at": 5,
+                "polygon": [
+                  [
+                    7,
+                    41
+                  ],
+                  [
+                    9,
+                    38
+                  ],
+                  [
+                    15,
+                    38
+                  ],
+                  [
+                    17,
+                    40
+                  ],
+                  [
+                    17,
+                    49
+                  ],
+                  [
+                    15,
+                    54
+                  ],
+                  [
+                    10,
+                    55
+                  ],
+                  [
+                    7,
+                    52
+                  ]
+                ]
+              },
+              {
+                "at": 8,
+                "polygon": [
+                  [
+                    8,
+                    42
+                  ],
+                  [
+                    9,
+                    39
+                  ],
+                  [
+                    14,
+                    39
+                  ],
+                  [
+                    15,
+                    41
+                  ],
+                  [
+                    15,
+                    48
+                  ],
+                  [
+                    14,
+                    52
+                  ],
+                  [
+                    11,
+                    53
                   ],
                   [
                     8,
-                    2
-                  ],
-                  [
-                    8,
-                    -2
+                    51
                   ]
                 ]
               }
@@ -2063,113 +1909,113 @@
             "axis": "z",
             "sections": [
               {
-                "at": -10,
+                "at": -8,
                 "polygon": [
                   [
-                    -25,
-                    43
+                    -24,
+                    40
                   ],
                   [
                     -22,
-                    39
+                    37
                   ],
                   [
-                    -17,
-                    39
+                    -18,
+                    37
                   ],
                   [
-                    -15,
-                    42
+                    -16,
+                    40
                   ],
                   [
-                    -17,
-                    50
+                    -16,
+                    49
                   ],
                   [
-                    -19,
+                    -18,
                     53
                   ],
                   [
-                    -23,
-                    52
+                    -22,
+                    53
                   ],
                   [
-                    -26,
-                    47
+                    -24,
+                    49
                   ]
                 ]
               },
               {
-                "at": -7,
+                "at": -5,
                 "polygon": [
                   [
-                    -26,
-                    43
+                    -25,
+                    40
                   ],
                   [
                     -23,
-                    38
+                    36
+                  ],
+                  [
+                    -18,
+                    36
                   ],
                   [
                     -16,
-                    38
-                  ],
-                  [
-                    -14,
-                    42
+                    40
                   ],
                   [
                     -16,
-                    51
+                    50
                   ],
                   [
                     -18,
                     54
                   ],
                   [
-                    -24,
-                    53
+                    -23,
+                    54
                   ],
                   [
-                    -27,
-                    47
+                    -25,
+                    50
                   ]
                 ]
               },
               {
-                "at": 1,
+                "at": 3,
                 "polygon": [
                   [
                     -24,
-                    43
+                    40
                   ],
                   [
-                    -21,
-                    39
+                    -22,
+                    37
                   ],
                   [
-                    -17,
-                    39
-                  ],
-                  [
-                    -15,
-                    42
+                    -18,
+                    37
                   ],
                   [
                     -17,
-                    50
+                    40
+                  ],
+                  [
+                    -17,
+                    49
                   ],
                   [
                     -19,
                     53
                   ],
                   [
-                    -23,
-                    52
+                    -22,
+                    53
                   ],
                   [
-                    -25,
-                    47
+                    -24,
+                    49
                   ]
                 ]
               }
@@ -2575,68 +2421,68 @@
             "axis": "z",
             "sections": [
               {
-                "at": -10,
+                "at": -8,
                 "polygon": [
                   [
-                    15,
-                    42
+                    16,
+                    40
                   ],
                   [
                     18,
-                    39
+                    37
                   ],
                   [
                     22,
-                    39
+                    37
                   ],
                   [
-                    25,
-                    43
+                    24,
+                    40
                   ],
                   [
-                    26,
-                    47
+                    24,
+                    49
                   ],
                   [
-                    23,
-                    52
-                  ],
-                  [
-                    19,
+                    22,
                     53
                   ],
                   [
-                    17,
-                    50
+                    18,
+                    53
+                  ],
+                  [
+                    16,
+                    49
                   ]
                 ]
               },
               {
-                "at": -7,
+                "at": -5,
                 "polygon": [
                   [
-                    14,
-                    42
+                    16,
+                    40
                   ],
                   [
-                    17,
-                    38
+                    18,
+                    36
                   ],
                   [
                     23,
-                    38
+                    36
                   ],
                   [
-                    26,
-                    43
+                    25,
+                    40
                   ],
                   [
-                    27,
-                    47
+                    25,
+                    50
                   ],
                   [
-                    24,
-                    53
+                    23,
+                    54
                   ],
                   [
                     18,
@@ -2644,36 +2490,36 @@
                   ],
                   [
                     16,
-                    51
+                    50
                   ]
                 ]
               },
               {
-                "at": 1,
+                "at": 3,
                 "polygon": [
                   [
-                    15,
-                    42
+                    17,
+                    40
                   ],
                   [
                     18,
-                    39
+                    37
                   ],
                   [
                     22,
-                    39
+                    37
                   ],
                   [
                     24,
-                    43
+                    40
                   ],
                   [
-                    25,
-                    47
+                    24,
+                    49
                   ],
                   [
-                    23,
-                    52
+                    22,
+                    53
                   ],
                   [
                     19,
@@ -2681,7 +2527,7 @@
                   ],
                   [
                     17,
-                    50
+                    49
                   ]
                 ]
               }
@@ -4617,7 +4463,7 @@
       "mirror": "ll_shin_fairing"
     }
   ],
-  "notes": "New independent WVR-6R silhouettes with left dorsal six-port rack and right forearm cannon. No inherited humanoid component generator. Shape review 2: remove inaccurate chest port mass, simplify shoulder launcher, keep forearm cannon smaller than whole chest. Reference iteration 3: independently traced ten-sided angular chest and forebody, sloped shoulder cowlings, tall rectangular six-port rack beside helmet, and narrow angular pilot helmet rather than bulbous cylinders. Reference iteration 4: broken-up wide shoulder shields, one clenched fist, distinctly separate cannon shroud in right arm, angular knee/thigh guards and narrower reverse-taper greaves. Fifth pass: separate armored hip section bridges chest and leg roots; individual six SRM bores remain on high asymmetric left launcher. Pass 6: individually framed six-port missile rack with physically carved 2x3 launch openings. Pass 7: hollow right-arm AC5 muzzle frame and hand with individually shaped knuckles and thumb, with no dangling fingers. Pass 8: replace rounded Wolverine torso masses with planar swept armor cowlings, bring shoulder pads closer to reference and reduce shared overlap along the shoulder seams. Shape pass 9: leaned chamfered pauldron armor, forward rectangular visor helmet and thin radio antennas, broad shouldered segmented chest. References WVR-6R FSW ink and multiple miniature viewpoints. Pass 10: replaced hollow-appearing pauldron caps with solid tapered shoulder-shell contours; split the single hexagonal chest into two swept structural breastplates. Pass 11: chamfered plate-sided WVR pauldrons with hard flat faces (not ovals) and defined projecting shin fairings at knee-to-ankle; checked against WVR-6R FSW drawing. Pass 12: replace egg-like shoulder cylinders with canted eight-sided armor shields of intentionally drawn front-facing x/y profiles, per WVR-6R FSW line art. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 34 grid units while translating the unmodified upper components 7 units, preventing stubby limb-to-torso appearance.",
+  "notes": "New independent WVR-6R silhouettes with left dorsal six-port rack and right forearm cannon. No inherited humanoid component generator. Shape review 2: remove inaccurate chest port mass, simplify shoulder launcher, keep forearm cannon smaller than whole chest. Reference iteration 3: independently traced ten-sided angular chest and forebody, sloped shoulder cowlings, tall rectangular six-port rack beside helmet, and narrow angular pilot helmet rather than bulbous cylinders. Reference iteration 4: broken-up wide shoulder shields, one clenched fist, distinctly separate cannon shroud in right arm, angular knee/thigh guards and narrower reverse-taper greaves. Fifth pass: separate armored hip section bridges chest and leg roots; individual six SRM bores remain on high asymmetric left launcher. Pass 6: individually framed six-port missile rack with physically carved 2x3 launch openings. Pass 7: hollow right-arm AC5 muzzle frame and hand with individually shaped knuckles and thumb, with no dangling fingers. Pass 8: replace rounded Wolverine torso masses with planar swept armor cowlings, bring shoulder pads closer to reference and reduce shared overlap along the shoulder seams. Shape pass 9: leaned chamfered pauldron armor, forward rectangular visor helmet and thin radio antennas, broad shouldered segmented chest. References WVR-6R FSW ink and multiple miniature viewpoints. Pass 10: replaced hollow-appearing pauldron caps with solid tapered shoulder-shell contours; split the single hexagonal chest into two swept structural breastplates. Pass 11: chamfered plate-sided WVR pauldrons with hard flat faces (not ovals) and defined projecting shin fairings at knee-to-ankle; checked against WVR-6R FSW drawing. Pass 12: replace egg-like shoulder cylinders with canted eight-sided armor shields of intentionally drawn front-facing x/y profiles, per WVR-6R FSW line art. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 34 grid units while translating the unmodified upper components 7 units, preventing stubby limb-to-torso appearance. Pass 14: compared WVR-6R FSW front illustration, SYZ dual pose, alternate CAD two perspectives. Shrink outer side torso blocks and cant the upper-arm plates so the torso is separated from shoulders by real geometry rather than enormous oval shoulder balls.",
   "muzzles": {
     "LT": [
       [
