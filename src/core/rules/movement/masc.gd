@@ -16,7 +16,7 @@ const LEG_BLOWN_OFF_CRITS := 3
 ## Clan: tonnage / 25, rounded to the nearest whole number.
 ## TODO(rules): construction data, not in the Core Rulebook (it lists "*").
 static func size(def: UnitDef) -> int:
-	return roundi(def.tonnage / (25.0 if def.is_clan() else 20.0))
+	return roundi(def.tonnage / (25.0 if def.clan_part("masc") else 20.0))
 
 
 ## The number the roll must reach if engaged now.

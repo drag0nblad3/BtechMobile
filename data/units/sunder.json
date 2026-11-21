@@ -301,6 +301,45 @@
     "megamek_bv": 1876
    },
    "role": "Brawler: built to slug it out at medium range. 2 Snub-Nose PPCs, 2 Streak SRM 6s, LB 10-X AC, ER Medium Laser; walks 4, runs 6."
+  },
+  {
+   "model": "SD1-OR",
+   "bv": 2462,
+   "heat_sinks": 15,
+   "equipment": {
+    "LA": [
+     "c_lb10x_ac",
+     "c_er_medium_laser*2"
+    ],
+    "RA": [
+     "c_large_pulse_laser*2"
+    ],
+    "LT": [
+     "c_streak_srm6",
+     "ammo:c_streak_srm6",
+     "ammo:c_lb10x_ac",
+     "ammo:c_lb10x_ac:cluster"
+    ],
+    "RT": [
+     "c_streak_srm6",
+     "ammo:c_streak_srm6"
+    ],
+    "CT": [
+     "c_er_medium_laser"
+    ],
+    "HD": [
+     "c_er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 3130,
+    "megamek": "data/mekfiles/meks/3058Uu/Sunder SD1-OR.mtf",
+    "published": "RS:3058Uu-I",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2462
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, 2 Large Pulse Lasers, 2 Streak SRM 6s, LB 10-X AC; walks 4, runs 6."
   }
  ]
 }

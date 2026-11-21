@@ -28,6 +28,9 @@ var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 no
 var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
 var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
 var c3_boosted := false  ## Its C3 computer is boosted (C3Boosted).
+## Mixed tech: parts whose tech differs from the chassis ("engine",
+## "heat_sinks", "armor", "tc", "ecm", "masc", "case" -> true for Clan-made).
+var clan_parts: Dictionary = {}
 var jump_jet_type := ""  ## "" standard or "improved" (JumpJets).
 var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
 var probe_loc := -1
@@ -75,6 +78,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.walk_mp = int(d["walk_mp"])
 	u.jump_mp = int(d.get("jump_mp", 0))
 	u.jump_jet_type = d.get("jump_jet_type", "")
+	u.clan_parts = d.get("clan_parts", {})
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.engine_type = d.get("engine_type", "standard")
@@ -166,6 +170,11 @@ func is_xl() -> bool:
 
 func is_clan() -> bool:
 	return tech_base == "clan"
+
+
+## A part is Clan-made: the chassis tech unless mixed tech says otherwise.
+func clan_part(part: String) -> bool:
+	return bool(clan_parts.get(part, is_clan()))
 
 
 ## Clan 'Mechs have CASE built into every location (ClanTech).

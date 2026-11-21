@@ -1,0 +1,90 @@
+{
+ "id": "annihilator_anh5w",
+ "name": "Annihilator",
+ "model": "ANH-5W",
+ "tonnage": 100,
+ "walk_mp": 2,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "gyro_type": "compact",
+ "structure_type": "endo_steel",
+ "clan_parts": {
+  "heat_sinks": true,
+  "case": true
+ },
+ "armor": {
+  "LA": 26,
+  "RA": 26,
+  "LT": 24,
+  "RT": 24,
+  "CT": 32,
+  "HD": 9,
+  "LL": 32,
+  "RL": 32
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_gauss_rifle",
+   "c_medium_pulse_laser",
+   "case2",
+   "endo_steel"
+  ],
+  "RA": [
+   "c_gauss_rifle",
+   "c_medium_pulse_laser",
+   "case2",
+   "endo_steel"
+  ],
+  "LT": [
+   "heat_sink",
+   "c_gauss_rifle",
+   "ammo:c_gauss_rifle*3",
+   "case2"
+  ],
+  "RT": [
+   "heat_sink",
+   "c_gauss_rifle",
+   "ammo:c_gauss_rifle*3",
+   "case2"
+  ],
+  "CT": [
+   "c_medium_pulse_laser*2",
+   "ammo:c_gauss_rifle*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 8386,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 24/Annihilator ANH-5W.mtf",
+  "published": "RSFP:WD,RG24",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Annihilator ANH-5W (BATTLETECH_ForcePacks_Record_Sheets_-_Wolfs_Dragoons)",
+  "megamek_bv": 2595
+ },
+ "bv": 2595,
+ "sprite": "annihilator",
+ "role": "Sniper: hangs back and hits from long range. 4 Gauss Rifles, 4 Medium Pulse Lasers; walks 2, runs 3."
+}

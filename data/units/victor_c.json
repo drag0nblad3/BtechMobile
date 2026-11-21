@@ -1,0 +1,70 @@
+{
+ "id": "victor_c",
+ "name": "Victor",
+ "model": "C",
+ "tonnage": 80,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 17,
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_er_medium_laser*2"
+  ],
+  "RA": [
+   "c_gauss_rifle"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "c_streak_srm4",
+   "ammo:c_streak_srm4"
+  ],
+  "RT": [
+   "heat_sink",
+   "ammo:c_gauss_rifle*3"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ],
+  "LL": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "RL": [
+   "heat_sink",
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 3403,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 6/Victor C.mtf",
+  "published": "ShrapRS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Victor C (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 1925
+ },
+ "bv": 1925,
+ "sprite": "victor",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, Gauss Rifle, Streak SRM 4; walks 4, runs 6, jumps 4."
+}
