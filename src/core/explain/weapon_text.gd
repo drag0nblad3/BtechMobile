@@ -15,7 +15,7 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 				"pellets" if d.get("mode", "") == WeaponModes.CLUSTER else "missiles")
 		res += ", %d %s" % [d["missiles"], unit]
 		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
-			res += " (Artemis +%d)" % d["cluster_bonus"]
+			res += " (%s +%d)" % ["Narc" if d.get("narc_homing", false) else "Artemis", d["cluster_bonus"]]
 		if d.has("artemis_blocked") and level != ExplainLevel.OFF:
 			res += " (no Artemis bonus: %s)" % d["artemis_blocked"]
 	if d.get("ams", false):
@@ -25,6 +25,10 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 	if d.get("jammed", false):
 		res += "; the rotary AC JAMS" + (" (a roll of %d or less jams it at %d shots; clearing it takes a Gunnery roll +3 while standing or walking)"
 				% [RotaryAc.jams_on(d["shots"]), d["shots"]] if level == ExplainLevel.FULL else "")
+	if d.has("narc_loc"):
+		res += "; a Narc pod sticks to the %s" % Location.name_of(d["narc_loc"]).to_lower()
+		if level == ExplainLevel.FULL:
+			res += " (from next turn, your side's Narc-equipped missiles get -1 to hit and +2 on the cluster roll against it)"
 	if d.get("heat_added", 0) > 0:
 		res += ", +%d heat to the target" % d["heat_added"]
 	if d.has("aim_roll"):

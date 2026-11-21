@@ -33,6 +33,9 @@ static func text(u: Unit) -> String:
 		tech.append("targeting computer%s" % (" (destroyed)" if u.tc_lost else ""))
 	if d.armor_type == "ferro_fibrous":
 		tech.append("ferro-fibrous armor")
+	for p: Dictionary in u.narc_pods:
+		if not u.is_location_destroyed(p["loc"]):
+			tech.append("Narc pod on its %s (%s)" % [Location.code(p["loc"]), Names.side(p["side"])])
 	if not tech.is_empty():
 		t += ", ".join(tech) + "\n"
 	t += "MechWarrior: gunnery %d, piloting %d, hits %d/6%s\n" % [u.pilot.gunnery,

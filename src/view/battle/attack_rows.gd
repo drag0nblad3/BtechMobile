@@ -28,6 +28,8 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Double shot (2x heat and ammo)"
 		WeaponModes.CLUSTER:
 			return "Cluster ammo (-1 to hit, 1-point pellets)"
+		Narc.KIND:
+			return "Narc-equipped missiles (home on Narc pods)"
 		RotaryAc.UNJAM:
 			return "Clear the jam (Gunnery +3, stand or walk)"
 	if w.def.rotary:

@@ -11,6 +11,7 @@ var cover_hex: Vector2i = Hex.INVALID  ## Hill or building giving partial cover:
 var legs_only := false  ## Water: the shot can only hit legs (Kick table, no partial cover).
 var aim_loc := -1  ## Aimed shot (AimedShot): the location aimed at.
 var aim_covered := false  ## The aimed target had partial cover: reroll leg hits.
+var narc_homing := false  ## Narc-equipped missiles homing on a pod (Narc): +2 cluster roll.
 var auto_hit: String = ""  ## Why the shot can't miss (e.g. a building next door); target() is then 2.
 
 

@@ -57,7 +57,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var jam := Ecm.artemis_blocked(state, attacker, target, th) if WeaponModes.has_artemis(w) else ""
 	if jam != "":
 		data["artemis_blocked"] = jam
-	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "")
+	if w.def.beacon:
+		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
+		return
+	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing)
+	if th.narc_homing:
+		data["narc_homing"] = true
 	if ams != null:
 		data["ams"] = true
 	var packets: Array[int] = c["packets"]
@@ -84,6 +89,15 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 
 
 ## Spends ammo for the shots this weapon fires; returns how many (0 = none).
+## A Narc beacon hit: the pod sticks where it lands (aimed or rolled), no damage.
+static func _attach_pod(state: GameState, dice: Dice, emit: Callable, attacker: Unit, target: Unit,
+		th: ToHit, arc_id: int, data: Dictionary) -> void:
+	var hl := AimedShot.location(dice, th, arc_id) if th.aim_loc >= 0 else HitTable.roll(dice, arc_id)
+	Narc.attach(state, attacker, target, hl["loc"])
+	data["narc_loc"] = hl["loc"]
+	emit.call(GameEvent.WEAPON_FIRED, data)
+
+
 static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 	var want := WeaponModes.shots(w)
 	if not w.def.uses_ammo():
