@@ -7,6 +7,7 @@ extends RefCounted
 ## Optional "buildings": [{"hex": "XXYY", "type": "medium", "height": 2}].
 ## Optional "fires": ["XXYY", ...]: hexes burning from the start.
 ## Optional "bridges": [{"hexes": ["XXYY", ...], "type": "medium", "level": 1}] (Bridges).
+## Optional "colors": {"clear": "#a88a5c", ...}: ground colours per terrain id (looks only).
 ## Optional "surface": {"ice": [...], "mud": [...], "snow": [...]} (Surfaces).
 ## Optional "fog": {"light": ["XXYY", ...], "heavy": [...]}: fog banks.
 
@@ -34,6 +35,8 @@ static func from_dict(data: Dictionary, terrain: TerrainDb) -> BattleMap:
 		var bt: BuildingType = terrain.buildings.get(b.get("type", "medium"))
 		assert(tile != null and bt != null, "Bad building %s" % b)
 		tile.building = Building.new(bt, int(b.get("height", 1)))
+	for id: String in data.get("colors", {}):
+		m.colors[id] = Color(data["colors"][id])
 	for b: Dictionary in data.get("bridges", []):
 		_add_bridge(m, b, terrain)
 	for f: String in data.get("fires", []):

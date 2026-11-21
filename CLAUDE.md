@@ -58,6 +58,7 @@ Battle mode first; campaign layer later.
 |---|---|
 | `src/core/hex/hex.gd` | Axial hex math, facings (0=N clockwise), mapsheet labels (XXYY, odd-q) |
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (threshold, destroy check, height), `Bridge` (deck level, span) |
+| `src/core/map/gen/` | `MapGenerator` (theme + mapsheets + seed → map JSON), `MapTheme` (`data/map_themes.json`), `GenGrid`, `GenNoise`, `GenElevation` (levels, lakes), `GenRiver`, `GenRoads`, `GenPath`, `GenTown` (streets, buildings), `GenCover` (woods, rough), `MapStats` (terrain mix) |
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check), `ClanTech` (Clan construction sizes), `OmniConfig` (OmniMech configurations), `DesignItems` (equipment strings), `InertGear` (A-pods, TAG: carried, no effect yet) |
 | `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `ProneMoves` (dropping prone, prone turning), `Masc` (MASC bursts, escalating failure), `JumpJets` (improved jump jets), `Quad` (four-legged 'Mechs: MP, piloting, prone fire), `LateralShift` (quad sideways steps), `Tsm` (triple-strength myomer), `Supercharger` (running bursts, engine damage), `MoveExecutor` (carries out a move for the controller) |
@@ -83,10 +84,11 @@ Battle mode first; campaign layer later.
 | `src/view/settings/` | `GameSettings` (explanation level, computer level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards), `SinkButtons` (heat sink switches) |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `MascInput` (MASC button), `BotDriver` (runs computer sides), `BattleFx` (voxel blasts for hits, ammo explosions, kills, collapses; building wall scars), `BattleLaunch` |
-| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, rules notebook, saves results), `UiKit` |
-| `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `missions/standard.json`, `voxels/*.json` — see `docs/data-formats.md` |
+| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, rules notebook, saves results), `MapPicker`/`MapChoice`/`MapPreview` (map, size, seed, preview), `UiKit` |
+| `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `missions/standard.json`, `map_themes.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `fixtures/units/` (made-up loadouts for rule tests, ids `test_*`), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
-| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial, training, notebook) |
+| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, gen=<theme>:<seed>, tutorial, training, notebook) |
+| `tools/map_report.gd` | Generated maps as text + terrain mix (`-- <theme|all> <seed> [wide] [high]`), for tuning themes |
 | `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/props_capture.gd` | Close-up PNG of map props (`-- out.png [map.json] [yaw] [dist] [hex]`) |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
