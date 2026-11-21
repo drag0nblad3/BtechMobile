@@ -154,3 +154,28 @@ Each pass above is a separate committed adjustment to the actual authored sectio
 Checkpoints: a single true in-engine combined gallery at pass 40 and another at pass 46; final pass 47 also produces one combined review artifact. No image-generation reconstructions. Geometry changes remain at subdivide=1, with no high-density 100–150k refinement before approval. Tests check open physical missile mouths, cockpit/weapon landmarks, independent low-resolution hip, shoulder and elbow parts. These photos show mostly forward/oblique faces; the final render is not sufficient evidence to approve all rear mechanical details.
 
 **Known residual mismatch:** this shape renderer still has stylized component simplification; upper torso and legs need closer fit to the current plastic silhouettes, especially Atlas's skull face and Wolverine's shoulder profile, before detail work. Passing Godot CI is a technical gate, not a visual match assessment.
+
+## Actual shape refinements 48–57 — Catalyst plastic, three-angle audit
+
+The reference hierarchy remains CGL **released plastic sculpts first**, front and side/rear where photographed; current premium CGL images inform Wolverine joint construction, older TRO art only the secondary weapon identity. These are **ten committed changes to geometry**, not procedural voxel upscaling.
+
+- Atlas 2023 reposed AS7-D: [CGL official frontal plastic photo](https://store.catalystgamelabs.com/products/battletech-hansens-rough-riders-battle-lance), [Camo Specs Hansen plastic](https://camospecs.com/listing/atlas-as7-d-53/).
+- Wolverine WVR-6R: [CGL premium assembled front and oblique photo](https://store.catalystgamelabs.com/products/battletech-premium-miniature-wolverine), [MPU A Game of Armored Combat CGL painted miniature](https://mechpainters.org/miniature/wolverine-lyran-royal-guards/), [Camo Specs plastic](https://camospecs.com/listing/wolverine-wvr-6r-10/).
+- Jenner JR7-D: [CGL Inner Sphere Striker Lance grey plastic](https://www.rpgminihunter.com.au/products/jenner-battletech-inner-sphere-striker-lance-set-catalyst-game-lab), [MPU JR7-D plastic](https://mechpainters.org/miniature/jenner-draconis-combine-3rd-sword-of-light/).
+
+| Pass | Physical silhouette change | Reason for correction |
+| --- | --- | --- |
+| 48 | Atlas skull crown, shortened jaw, compact cheek/eye contours | Cartoon head and protruding mask |
+| 49 | Wolverine outer side-torso and both shoulder armor cross sections narrowed, chest plates flattened | Shoulder/torso bulk approaching Atlas |
+| 50 | Jenner calf sections sweep more rearward to a joined, extended tarsus | Reverse-knee angle hidden in three-quarter |
+| 51 | Atlas central chest ribs widened under cowls and shallow tapered waist plate added | Floating shoulder/breastplate visual gap |
+| 52 | Wolverine upper-arm volume narrowed, elbows and thigh armor tapered | Large rectangular arms and Atlas-like legs |
+| 53 | Jenner twin laser nacelle shells compacted and separate chin slimmed | Pod and prow bloating |
+| 54 | Atlas knee armor squared and lower shin facing elongated | Bulbous kneecaps that hide straight assault-mech lower legs |
+| 55 | Wolverine rear jump-jet housings individually built and mounted to rear torso | Single featureless central backpack on back view |
+| 56 | Jenner knee cowl slimmed and physical aft hock braces added to both legs | Gaps in back-facing hock linkage |
+| 57 | Wolverine cannon arm bridged diagonally to its separate AC/5 housing | Real side-view inspection exposed a floating right-arm gun |
+
+**Important diagnostic discovery:** The existing front-only gallery concealed a striking gap between Wolverine's right-arm cannon and upper forearm. Added front, side and rear three-quarter Godot review passes; compose these into **one user-facing multi-angle image**, not dozens of images. Cell-contact tests now require the diagonal bridge to intersect both the arm and shroud, rather than merely appearing nearby.
+
+This project remains at the shape gate, with `subdivide=1` and no 100–150k voxel detailing. Passing Godot import and unit tests is only a technical gate; CGL sculpt resemblance must still be approved. Do not merge PR #102 or build an APK without instruction.
