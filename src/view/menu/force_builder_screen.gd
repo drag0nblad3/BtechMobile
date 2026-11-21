@@ -5,8 +5,7 @@ extends Control
 
 var db: UnitDb
 var builder: ForceBuilder
-var maps: PackedStringArray
-var map_index := 0
+var map_picker := MapPicker.new()
 var _rosters: Array[VBoxContainer] = []
 var _totals: Array[Label] = []
 var _status: Label
@@ -19,7 +18,6 @@ func _ready() -> void:
 	GameSettings.load_settings()
 	db = UnitDb.load_dir()
 	builder = ForceBuilder.new(db)
-	maps = JsonFile.list_dir("res://data/maps")
 	set_anchors_preset(PRESET_FULL_RECT)
 	var bg := ColorRect.new()
 	bg.color = Color(0.11, 0.12, 0.13)
@@ -62,9 +60,9 @@ func _build_options(parent: Control) -> void:
 	var box := UiKit.panel(scroll)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_info = UiKit.label(box, "", UiKit.SMALL)
+	map_picker.build(box, _refresh)
 	var row1 := HBoxContainer.new()
 	box.add_child(row1)
-	UiKit.button(row1, "Map", func(): map_index = (map_index + 1) % maps.size(); _refresh(), Vector2(100, 60))
 	UiKit.button(row1, "Budget", _next_budget, Vector2(100, 60))
 	var row2 := HBoxContainer.new()
 	box.add_child(row2)
@@ -83,6 +81,7 @@ func _build_options(parent: Control) -> void:
 	box.add_child(row4)
 	UiKit.button(row4, "Mission", func(): builder.next_mission(); _refresh(), Vector2(100, 60))
 	UiKit.button(row4, "Withdrawal", func(): builder.forced_withdrawal = not builder.forced_withdrawal; _refresh(), Vector2(100, 60))
+	UiKit.button(row4, "Hidden", func(): builder.hidden_side = (builder.hidden_side + 2) % 3 - 1; _refresh(), Vector2(100, 60))
 	UiKit.button(box, "Conditions", func(): builder.next_conditions(); _refresh(), Vector2(0, 60))
 	UiKit.button(box, "Initiative Die", func():
 			builder.initiative_die = not builder.initiative_die; _refresh(), Vector2(0, 60))
@@ -124,10 +123,11 @@ func _refresh() -> void:
 		for i in ids.size():
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
 					func(): builder.remove(side, i); _refresh())
-	var map_name: String = JsonFile.read(maps[map_index]).get("name", "?")
+	var map_name := map_picker.choice.describe(GameSettings.explain_level)
 	catalog.refresh()
 	var weather := ", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "clear"
-	_info.text = "Mission: %s\nForced Withdrawal: %s\n" % [builder.mission_name(), "on" if builder.forced_withdrawal else "off"]
+	_info.text = "Mission: %s\nForced Withdrawal: %s · Hidden units: %s\n" % [builder.mission_name(),
+			"on" if builder.forced_withdrawal else "off", "off" if builder.hidden_side < 0 else Names.side(builder.hidden_side)]
 	_info.text += "Map: %s\nBudget: %d BV per side\nConditions: %s\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
 			builder.budget, weather, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
@@ -143,6 +143,7 @@ func _refresh() -> void:
 			_info.text += "\n" + String(StandardMissions.info(builder.mission_id).get("summary", ""))
 		elif builder.mission_id == "random":
 			_info.text += "\nA standard mission is rolled when the battle starts, with its complications (one may add random weather)."
+		_info.text += "\nHidden units (optional): one side starts hidden in woods, rough, buildings or deep water, waiting in ambush. Walking into or next to one reveals it, and it may fire point-blank."
 		_info.text += "\nForced Withdrawal (optional): badly damaged 'Mechs must retreat to their home edge instead of fighting to the end."
 		for line in ConditionsText.effects(builder.conditions):
 			_info.text += "\n" + line
@@ -163,7 +164,7 @@ func open_training() -> void:
 func _start() -> void:
 	if not builder.ready_to_fight():
 		return
-	var map := MapLoader.load_file(maps[map_index], TerrainDb.load_file())
+	var map := map_picker.choice.build()
 	BattleLaunch.pending = builder.build(map)
 	BattleLaunch.bot_sides = bot_sides.duplicate()
 	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)

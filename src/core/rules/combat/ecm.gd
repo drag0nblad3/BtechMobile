@@ -39,4 +39,6 @@ static func artemis_blocked(state: GameState, attacker: Unit, target: Unit, th: 
 		return "indirect fire gets no Artemis bonus"
 	if hostile_at(state, attacker.side, attacker.coord) or hostile_at(state, attacker.side, target.coord):
 		return "enemy ECM jams the Artemis guidance"
+	if EcmInterference.jams(state, attacker):
+		return "battlefield ECM interference jams the Artemis guidance"
 	return ""

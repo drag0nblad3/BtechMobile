@@ -18,6 +18,8 @@ static func floor_of(map: BattleMap, u: Unit) -> int:
 	var tile := map.get_tile(u.coord)
 	if tile == null:
 		return 0
+	if u.on_bridge and tile.bridge != null:
+		return tile.bridge.level
 	if u.on_roof and has_roof(tile):
 		return tile.level + tile.building.height
 	return tile.floor_level()
