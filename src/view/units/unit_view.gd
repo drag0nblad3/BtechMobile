@@ -101,7 +101,7 @@ func _hex_pos(c: Vector2i) -> Vector3:
 	var t := map.get_tile(c)
 	var p := HexLayout.tile_top(t)
 	if unit.on_bridge and t.bridge != null:
-		p.y = HexLayout.level_y(t.bridge.level)
+		p.y = HexLayout.level_y(t.bridge.level) + VxBuildingGen.PITCH  # on the deck slab
 	elif unit.on_roof and Roofs.has_roof(t):
 		p.y += t.building.height * HexLayout.LEVEL_HEIGHT
 	return p
