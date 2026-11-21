@@ -11,9 +11,11 @@ const RADIUS := 10.5     ## Usable hex corner radius in voxels.
 const GLASS := Color("#26313c")
 const LIT := Color("#e9c873")
 const SLAB := Color("#7b7a74")
+const SCORCH := Color("#1c1916")
 
 var cells := {}          ## Vector3i -> Color
 var hidden: Array = []   ## [Vector3i, Vector3i] solid boxes that aren't drawn
+var carved := {}         ## Cells shot away (cosmetic scars), never refilled
 var rng := RandomNumberGenerator.new()
 
 
@@ -32,6 +34,35 @@ static func generate(type_id: String, levels: int, variant: int) -> VxBuildingGe
 
 func mesh() -> ArrayMesh:
 	return VxGrid.mesh(_with_hidden(), PITCH, Vector3.ZERO)
+
+
+## Knocks a round hole of radius r (voxels) out of the walls and scorches
+## its rim. Cosmetic only: building damage comes from the rules.
+func carve(center: Vector3, r: float) -> void:
+	var n := ceili(r + 1.5)
+	var base := Vector3i(center.floor())
+	for x in range(-n, n + 1):
+		for y in range(-n, n + 1):
+			for z in range(-n, n + 1):
+				var c := base + Vector3i(x, y, z)
+				if c.y <= 0:
+					continue  # keep the footing
+				var d := (Vector3(c) + Vector3(0.5, 0.5, 0.5)).distance_to(center)
+				if d <= r:
+					cells.erase(c)
+					carved[c] = true
+				elif d <= r + 1.5 and cells.has(c):
+					cells[c] = (cells[c] as Color).lerp(SCORCH, 0.6)
+
+
+## First wall cell met walking in from outside along `dir` at height y.
+func hit_cell(dir: Vector2, y: int) -> Vector3:
+	var d := dir.normalized()
+	for i in range(int(RADIUS * 2.0) + 4, -1, -1):
+		var p := Vector3(d.x * i * 0.5, y, d.y * i * 0.5)
+		if cells.has(Vector3i(p.floor())):
+			return p
+	return Vector3(0, y, 0)
 
 
 ## Is the cell's center inside a flat-topped hex of radius r (voxels)?
@@ -83,10 +114,12 @@ func _wall(c: Vector3i, u: int, wall: Color, window: Callable, lit: float) -> vo
 
 
 func _with_hidden() -> Dictionary:
-	if hidden.is_empty():
+	if hidden.is_empty() and carved.is_empty():
 		return cells
 	var solid := cells.duplicate()
 	for b: Array in hidden:
-		VxGrid.box(solid, b[0], b[1], Color.BLACK)
+		VxGrid.box(solid, b[0], b[1], SCORCH)  # shows as a dark inside through holes
+	for c: Vector3i in carved:
+		solid.erase(c)
 	return solid
 

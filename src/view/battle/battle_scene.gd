@@ -52,7 +52,7 @@ func _build_views(state: GameState) -> void:
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
 	units_layer.build(state)
-	fx.setup(state, units_layer)
+	fx.setup(state, units_layer, map_view)
 	add_child(fx)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)

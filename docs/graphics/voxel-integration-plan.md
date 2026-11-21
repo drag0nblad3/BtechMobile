@@ -140,6 +140,9 @@ earn a Destroy Check, and a destroyed hex becomes rubble. The visuals follow the
 - **'Mechs inside:** `BuildingProps` polls the unit views' positions and turns a
   building see-through while a 'Mech model is in its hex. A cutaway (hide levels above
   the unit) is still a possible upgrade.
+- **Scars (built 2026-11-21):** `shot`, `smash` and `entry_failed` events carve a scorched
+  hole in the wall facing the 'Mech (`BuildingProps.scar`, up to 12 per building); `MapView`
+  keeps the list so holes survive redraws after fires or collapses.
 - **Scars aren't saved:** cosmetic building damage lives only in the view. That's fine
   until there are save games; then store a small per-hex scar seed next to the save.
 

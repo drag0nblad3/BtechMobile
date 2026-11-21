@@ -107,3 +107,22 @@ func test_ground_scatter_stays_within_a_phone_budget() -> void:
 func test_every_terrain_names_a_ground_pattern() -> void:
 	for t: TerrainType in terrain().by_id.values():
 		check(MapView.PATTERNS.has(t.pattern), t.id + " pattern " + t.pattern)
+
+
+func test_scars_carve_the_wall_facing_the_shooter_and_survive_rebuild() -> void:
+	var map := make_map(["c0 c0 c0", "c0 c0 c0"])
+	var t := map.get_tile(Vector2i(1, 0))
+	t.building = Building.new(terrain().buildings["medium"], 2)
+	var scars := {}
+	var props := BuildingProps.build(map, scars)
+	var whole := VxBuildingGen.generate("medium", 2, absi(hash(t.coord)) % BuildingProps.VARIANTS).cells.size()
+	var shooter := HexLayout.tile_top(map.get_tile(Vector2i(0, 0))) + Vector3(0, 0.5, 0)
+	var hit := props.scar(t.coord, shooter, 20)
+	var centre := HexLayout.tile_top(t)
+	check(hit.distance_to(shooter) < centre.distance_to(shooter), "hole on the near wall: %s" % hit)
+	check(props._scarred(t).cells.size() < whole, "voxels removed")
+	check_eq(scars[t.coord].size(), 1)
+	var again := BuildingProps.build(map, scars)
+	check(again._by_coord[t.coord].mesh != BuildingProps.mesh_for("medium", 2, absi(hash(t.coord)) % BuildingProps.VARIANTS), "scarred mesh kept")
+	props.free()
+	again.free()

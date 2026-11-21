@@ -11,6 +11,8 @@ const SURFACE_TOPS := {"ice": Color("#b8d4e3"), "mud": Color("#5a4632"), "snow":
 const PATTERNS := {"grass": 0, "rocks": 1, "paving": 2, "rubble": 3, "riverbed": 4, "forest": 5}
 
 var map: BattleMap
+var buildings: BuildingProps
+var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
 
 
 func build(battle_map: BattleMap) -> void:
@@ -25,7 +27,8 @@ func build(battle_map: BattleMap) -> void:
 	add_child(WoodsProps.build(map))
 	add_child(GroundScatter.build(map))
 	add_child(WaterSurfaces.build(map))
-	add_child(BuildingProps.build(map))
+	buildings = BuildingProps.build(map, building_scars)
+	add_child(buildings)
 	add_child(FireProps.build(map))
 	add_child(_ground_plane())
 
