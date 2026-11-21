@@ -1,7 +1,9 @@
 class_name CritLayout
 extends RefCounted
 ## Builds the critical-slot table of a design: fixed components first
-## (engine, gyro, cockpit, actuators), then equipment in listed order.
+## (engine, gyro, cockpit, actuators), then equipment in listed order. A
+## weapon with "spill" puts its last slots in the next location in.
+## TODO(rules): split slots are construction rules, not in the Core Rulebook.
 
 const SLOTS := [6, 12, 12, 12, 12, 12, 6, 6]
 const HEAD := ["Life Support", "Sensors", "Cockpit", "", "Sensors", "Life Support"]
@@ -17,15 +19,17 @@ static func build(def: UnitDef) -> Array:
 	for i in def.weapon_mounts.size():
 		var m: Dictionary = def.weapon_mounts[i]
 		var w: WeaponDef = m["weapon"]
+		var spill: int = m.get("spill", 0)
 		for s in w.slots:
-			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.WEAPON, w.name, i), def)
+			var loc: int = Location.transfer(m["loc"]) if s >= w.slots - spill else m["loc"]
+			_place(out[loc], CritSlot.new(CritSlot.Kind.WEAPON, w.name, i), def)
 		if m.get("artemis", false):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.ARTEMIS, "Artemis IV FCS", i), def)
 	for i in def.ammo_mounts.size():
 		var a: Dictionary = def.ammo_mounts[i]
 		var aw: WeaponDef = a["weapon"]
 		var kind: String = a.get("kind", "")
-		_place(out[a["loc"]], CritSlot.new(CritSlot.Kind.AMMO, aw.name + (" Cluster" if kind == "cluster" else "") + " Ammo", i), def)
+		_place(out[a["loc"]], CritSlot.new(CritSlot.Kind.AMMO, aw.name + (" Cluster" if kind == "cluster" else "") + " Ammo" + (" (Half)" if a.get("half", false) else ""), i), def)
 	var sink := 0
 	for loc: int in def.other_items:
 		for item: String in def.other_items[loc]:
@@ -42,7 +46,7 @@ static func build(def: UnitDef) -> Array:
 		for s in def.melee_slots(m["kind"]):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.MELEE, String(m["kind"]).capitalize(), i), def)
 	if def.ecm_loc >= 0:
-		for s in 2:
+		for s in Ecm.slots(def):
 			_place(out[def.ecm_loc], CritSlot.new(CritSlot.Kind.ECM, "Guardian ECM"), def)
 	if def.masc_loc >= 0:
 		for s in Masc.size(def):
@@ -54,6 +58,12 @@ static func build(def: UnitDef) -> Array:
 			_place(out[def.c3_master_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Master"), def)
 	if def.c3_slave_loc >= 0:
 		_place(out[def.c3_slave_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Slave"), def)
+	for g: Dictionary in def.inert:
+		for s in InertGear.KINDS[g["kind"]]["slots"]:
+			_place(out[g["loc"]], CritSlot.new(CritSlot.Kind.GEAR, InertGear.KINDS[g["kind"]]["name"]), def)
+	if def.probe != "":
+		for s in ActiveProbe.KINDS[def.probe]["slots"]:
+			_place(out[def.probe_loc], CritSlot.new(CritSlot.Kind.PROBE, ActiveProbe.KINDS[def.probe]["name"]), def)
 	if def.tc_loc >= 0:
 		for s in TargetingComputer.size(def):
 			_place(out[def.tc_loc], CritSlot.new(CritSlot.Kind.TARGETING, "Targeting Computer"), def)

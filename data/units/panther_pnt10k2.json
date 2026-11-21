@@ -1,0 +1,68 @@
+{
+ "id": "panther_pnt10k2",
+ "name": "Panther",
+ "model": "PNT-10K2",
+ "tonnage": 35,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 10,
+  "RT": 10,
+  "CT": 14,
+  "HD": 9,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_ppc",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "ammo:srm4",
+   "case",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "endo_steel*6"
+  ],
+  "CT": [
+   "srm4*2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2417,
+  "megamek": "data/mekfiles/meks/3085u/Cutting Edge/Panther PNT-10K2.mtf",
+  "published": "RS:3085u-CE",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Panther PNT-10K2 (ForcePack-Record-Sheets-House-Kurita)",
+  "megamek_bv": 913
+ },
+ "bv": 913,
+ "sprite": "panther",
+ "role": "Brawler: built to slug it out at medium range. 2 SRM 4s, ER PPC; walks 4, runs 6, jumps 4."
+}

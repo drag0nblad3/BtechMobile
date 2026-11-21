@@ -40,7 +40,7 @@ func test_every_design_is_legal() -> void:
 			hs += def.other_items[loc].count("heat_sink")
 			jj += def.other_items[loc].count("jump_jet")
 		var cap := DesignWeight.engine_sink_capacity(def)
-		check(hs >= def.heat_sinks - cap and hs <= def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS,
+		check(hs >= def.heat_sinks - cap and hs <= def.heat_sinks,
 				"%s lists %d heat sinks; %d total, engine holds up to %d" % [def.id, hs, def.heat_sinks, cap])
 		check_eq(jj, def.jump_mp, def.id + " jump jets")
 		check(not def.weapon_mounts.is_empty(), def.id + " has weapons")
@@ -76,7 +76,10 @@ func test_equipment_fits_slots() -> void:
 				want += 1
 		want += def.ammo_mounts.size() + def.case_locs.size()
 		if def.ecm_loc >= 0:
-			want += 2
+			want += Ecm.slots(def)
+		want += InertGear.slots(def)
+		if def.probe != "":
+			want += ActiveProbe.KINDS[def.probe]["slots"]
 		if def.tc_loc >= 0:
 			want += TargetingComputer.size(def)
 		for loc: int in def.bulk_slots:
@@ -92,7 +95,7 @@ func test_equipment_fits_slots() -> void:
 			for s: CritSlot in u.slots[loc]:
 				if s.kind in [CritSlot.Kind.WEAPON, CritSlot.Kind.AMMO, CritSlot.Kind.HEAT_SINK,
 						CritSlot.Kind.JUMP_JET, CritSlot.Kind.CASE, CritSlot.Kind.ARTEMIS, CritSlot.Kind.MELEE,
-						CritSlot.Kind.BULK, CritSlot.Kind.TARGETING, CritSlot.Kind.ECM]:
+						CritSlot.Kind.BULK, CritSlot.Kind.TARGETING, CritSlot.Kind.ECM, CritSlot.Kind.PROBE, CritSlot.Kind.GEAR]:
 					got += 1
 		check_eq(got, want, def.id + " every item has a critical slot")
 

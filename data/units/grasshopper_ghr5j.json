@@ -1,0 +1,65 @@
+{
+ "id": "grasshopper_ghr5j",
+ "name": "Grasshopper",
+ "model": "GHR-5J",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 22,
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 13
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*7",
+   "ammo:ams"
+  ],
+  "RT": [
+   "heat_sink*4",
+   "ams",
+   "ammo:streak_srm2*2"
+  ],
+  "CT": [
+   "er_large_laser"
+  ],
+  "HD": [
+   "streak_srm2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1268,
+  "megamek": "data/mekfiles/meks/3050U/Grasshopper GHR-5J.mtf",
+  "published": "RSFP:Wave 2,RSFP:NWH",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Grasshopper GHR-5J (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1354
+ },
+ "bv": 1354,
+ "sprite": "grasshopper",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Lasers, Anti-Missile System, ER Large Laser, Streak SRM 2; walks 4, runs 6, jumps 4."
+}

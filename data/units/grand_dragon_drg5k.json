@@ -1,0 +1,62 @@
+{
+ "id": "grand_dragon_drg5k",
+ "name": "Grand Dragon",
+ "model": "DRG-5K",
+ "tonnage": 60,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 13,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 16,
+  "RT": 16,
+  "CT": 27,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "er_ppc"
+  ],
+  "LT": [
+   "medium_laser@rear",
+   "ammo:lrm10*2",
+   "case"
+  ],
+  "RT": [
+   "medium_laser@rear"
+  ],
+  "CT": [
+   "lrm10"
+  ]
+ },
+ "source": {
+  "mul_id": 1258,
+  "megamek": "data/mekfiles/meks/3050U/Grand Dragon DRG-5K.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Grand Dragon DRG-5K (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1358
+ },
+ "bv": 1358,
+ "sprite": "grand_dragon",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Medium Lasers, ER PPC, LRM 10; walks 6, runs 9."
+}

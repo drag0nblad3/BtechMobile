@@ -1,30 +1,234 @@
 {
-  "id": "timber_wolf", "name": "Timber Wolf", "tonnage": 75, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "timber_wolf", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 35, "LT": 24, "RT": 24, "LA": 24, "RA": 23, "LL": 32, "RL": 32},
-  "rear_armor": {"CT": 11, "LT": 8, "RT": 8},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*1"], "RA": ["ferro_fibrous*3"], "RT": ["ferro_fibrous*3"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 17, "role": "The iconic Clan heavy. Two ER large lasers, two LRM 20s and a swarm of smaller guns: deadly at every range, but it runs hot.", "equipment": {
-      "LA": ["c_er_large_laser", "c_er_medium_laser"],
-      "RA": ["c_er_large_laser", "c_er_medium_laser"],
-      "LT": ["c_lrm20", "ammo:c_lrm20", "c_machine_gun", "heat_sink", "heat_sink"],
-      "RT": ["c_lrm20", "ammo:c_lrm20", "c_machine_gun"],
-      "CT": ["c_medium_pulse_laser"],
-      "HD": ["ammo:c_machine_gun"]
-    }},
-    {"model": "A", "heat_sinks": 18, "role": "Laser Timber Wolf: heavy and pulse lasers with no ammo to explode, at the cost of heat.", "equipment": {
-      "LA": ["c_er_large_laser", "c_er_medium_laser"],
-      "RA": ["c_er_large_laser", "c_er_medium_laser"],
-      "LT": ["c_heavy_large_laser", "c_er_medium_pulse_laser", "heat_sink", "heat_sink"],
-      "RT": ["c_heavy_large_laser", "c_er_medium_pulse_laser", "heat_sink"],
-      "CT": ["c_medium_pulse_laser", "c_er_small_laser"]
-    }},
-    {"model": "B", "heat_sinks": 15, "role": "Gauss Timber Wolf: a Gauss rifle and an LB 10-X for heavy, cool long-range hits.", "equipment": {
-      "RA": ["c_gauss_rifle"],
-      "LA": ["c_lb10x_ac"],
-      "LT": ["ammo:c_gauss_rifle", "ammo:c_lb10x_ac", "ammo:c_lb10x_ac:cluster"],
-      "RT": ["c_er_medium_laser", "c_er_medium_laser"]
-    }}
+ "id": "timber_wolf",
+ "name": "Timber Wolf",
+ "tonnage": 75,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 24,
+  "RA": 24,
+  "LT": 25,
+  "RT": 25,
+  "CT": 36,
+  "HD": 9,
+  "LL": 32,
+  "RL": 32
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "timber_wolf",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "endo_steel"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2737,
+   "heat_sinks": 17,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_er_medium_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_er_medium_laser"
+    ],
+    "LT": [
+     "c_lrm20",
+     "c_medium_pulse_laser",
+     "ammo:c_lrm20"
+    ],
+    "RT": [
+     "c_lrm20",
+     "c_machine_gun",
+     "ammo:c_lrm20",
+     "ammo:c_machine_gun"
+    ],
+    "CT": [
+     "c_machine_gun"
+    ]
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 ER Large Lasers, 2 ER Medium Lasers, 2 LRM 20s, 2 Machine Guns, Medium Pulse Laser; walks 5, runs 8.",
+   "source": {
+    "mul_id": 1985,
+    "megamek": "data/mekfiles/meks/3050U/Mad Cat (Timber Wolf) Prime.mtf",
+    "published": "RSFP:Wave 1,RSFP:WD,RS:AS",
+    "role": "Brawler",
+    "bv": "sheet",
+    "sheet": "Mad Cat (Timber Wolf) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2737
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2854,
+   "heat_sinks": 20,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "c_er_ppc"
+    ],
+    "RA": [
+     "heat_sink*3",
+     "c_er_ppc"
+    ],
+    "LT": [
+     "c_medium_pulse_laser*3"
+    ],
+    "RT": [
+     "c_streak_srm6",
+     "ammo:c_streak_srm6"
+    ],
+    "CT": [
+     "c_er_small_laser"
+    ]
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Medium Pulse Lasers, 2 ER PPCs, Streak SRM 6, ER Small Laser; walks 5, runs 8.",
+   "source": {
+    "mul_id": 1978,
+    "megamek": "data/mekfiles/meks/3050U/Mad Cat (Timber Wolf) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Skirmisher",
+    "bv": "sheet",
+    "sheet": "Mad Cat (Timber Wolf) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2854
+   }
+  },
+  {
+   "model": "B",
+   "bv": 2224,
+   "heat_sinks": 15,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_large_pulse_laser",
+     "c_small_pulse_laser"
+    ],
+    "RA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle"
+    ],
+    "LT": [
+     "c_lrm10+artemis",
+     "ammo:c_lrm10"
+    ],
+    "RT": [
+     "c_srm4+artemis",
+     "ammo:c_srm4"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. Large Pulse Laser, Small Pulse Laser, Gauss Rifle, LRM 10, SRM 4; walks 5, runs 8.",
+   "source": {
+    "mul_id": 1979,
+    "megamek": "data/mekfiles/meks/3050U/Mad Cat (Timber Wolf) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Mad Cat (Timber Wolf) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2224
+   }
+  },
+  {
+   "model": "Pryde",
+   "bv": 2900,
+   "heat_sinks": 16,
+   "jump_mp": 4,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_er_medium_laser"
+    ],
+    "RA": [
+     "c_er_large_laser",
+     "c_er_medium_laser"
+    ],
+    "LT": [
+     "jump_jet*2",
+     "c_lrm20",
+     "ammo:c_lrm20"
+    ],
+    "RT": [
+     "jump_jet*2",
+     "c_lrm20",
+     "ammo:c_lrm20"
+    ],
+    "CT": [
+     "c_er_small_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 1977,
+    "megamek": "data/mekfiles/meks/3050U/Mad Cat (Timber Wolf) Pryde.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Missile Boat",
+    "bv": "sheet",
+    "sheet": "Mad Cat (Timber Wolf) (Pryde) (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2900
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 ER Large Lasers, 2 ER Medium Lasers, 2 LRM 20s, ER Small Laser; walks 5, runs 8, jumps 4."
+  }
+ ]
 }

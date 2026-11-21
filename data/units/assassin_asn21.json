@@ -1,15 +1,58 @@
 {
-  "id": "assassin_asn21", "name": "Assassin", "model": "ASN-21", "tonnage": 40,
-  "walk_mp": 7, "jump_mp": 7, "heat_sinks": 10, "sprite": "assassin",
-  "role": "Very fast scout-hunter with LRMs, SRMs and a laser. Too lightly armored to brawl; use its speed for hard-to-hit shots from the side.",
-  "armor": {"HD": 9, "CT": 9, "LT": 8, "RT": 8, "LA": 6, "RA": 5, "LL": 10, "RL": 10},
-  "rear_armor": {"CT": 3, "LT": 2, "RT": 2},
-  "equipment": {
-    "LT": ["lrm5", "ammo:lrm5", "jump_jet*2"],
-    "RT": ["srm2", "ammo:srm2", "jump_jet*2"],
-    "RA": ["medium_laser"],
-    "CT": ["jump_jet"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "assassin_asn21",
+ "name": "Assassin",
+ "model": "ASN-21",
+ "tonnage": 40,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 10,
+  "RT": 10,
+  "CT": 12,
+  "HD": 8,
+  "LL": 6,
+  "RL": 6
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "srm2",
+   "ammo:srm2"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "lrm5",
+   "ammo:lrm5"
+  ],
+  "CT": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 127,
+  "megamek": "data/mekfiles/meks/3039u/Assassin ASN-21.mtf",
+  "published": "RS:SW",
+  "role": "Scout",
+  "bv": "megamek",
+  "megamek_bv": 749
+ },
+ "bv": 749,
+ "role": "Scout: fast and light, finds the enemy and stays alive. Medium Laser, SRM 2, LRM 5; walks 7, runs 11, jumps 7.",
+ "sprite": "assassin"
 }

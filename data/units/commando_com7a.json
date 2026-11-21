@@ -1,0 +1,65 @@
+{
+ "id": "commando_com7a",
+ "name": "Commando",
+ "model": "COM-7A",
+ "tonnage": 25,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 8,
+  "RA": 8,
+  "LT": 8,
+  "RT": 8,
+  "CT": 11,
+  "HD": 8,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "srm4"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "endo_steel*6"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "ammo:srm4*2",
+   "case",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "srm4",
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9630,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 16/Commando COM-7A.mtf",
+  "published": "ShrapRS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Commando COM-7A (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 625
+ },
+ "bv": 625,
+ "sprite": "commando",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 SRM 4s, Medium Laser; walks 6, runs 9."
+}

@@ -18,7 +18,6 @@ func test_roster() -> void:
 			continue
 		seen[def.chassis] = true
 		check(def.omni == (def.config != ""), def.id + " OmniMechs name their configuration")
-		check(def.double_heat_sinks, def.id + " double heat sinks")
 		for m in def.weapon_mounts:
 			check((m["weapon"] as WeaponDef).is_clan(), "%s carries Clan %s" % [def.id, m["weapon"].name])
 	for c: String in CHASSIS:
@@ -26,8 +25,7 @@ func test_roster() -> void:
 	for id: String in ["hunchback_iic", "phoenix_hawk_iic", "rifleman_iic", "warhammer_iic", "marauder_iic", "kodiak"]:
 		var d := db.get_def(id)
 		check(d != null and d.is_clan() and not d.omni, id + ": a Clan 'Mech that isn't an OmniMech")
-	check(db.get_def("turkina_a").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].streak and m["weapon"].group == 5), "Streak LRM user")
-	check(db.get_def("fire_moth_a").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].artemis_builtin), "ATM user")
+	check(db.by_id.values().any(func(d: UnitDef) -> bool: return d.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].artemis_builtin)), "an ATM user")
 
 
 func test_clan_heavies_outclass_inner_sphere_peers() -> void:

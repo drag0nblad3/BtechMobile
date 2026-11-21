@@ -1,15 +1,65 @@
 {
-  "id": "thunderbolt_tdr5s", "name": "Thunderbolt", "model": "TDR-5S", "tonnage": 65,
-  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 15, "sprite": "thunderbolt",
-  "role": "Heavy all-rounder. Large laser and LRM 15 at range, lasers and SRMs up close; well cooled.",
-  "armor": {"HD": 9, "CT": 30, "LT": 22, "RT": 22, "LA": 20, "RA": 20, "LL": 26, "RL": 25},
-  "rear_armor": {"CT": 10, "LT": 8, "RT": 8},
-  "equipment": {
-    "RA": ["large_laser"],
-    "LA": ["srm2", "medium_laser"],
-    "LT": ["lrm15", "ammo:lrm15", "ammo:lrm15", "machine_gun", "machine_gun", "ammo:machine_gun"],
-    "RT": ["medium_laser", "medium_laser", "ammo:srm2", "heat_sink"],
-    "LL": ["heat_sink", "heat_sink"],
-    "RL": ["heat_sink", "heat_sink"]
-  }
+ "id": "thunderbolt_tdr5s",
+ "name": "Thunderbolt",
+ "model": "TDR-5S",
+ "tonnage": 65,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 15,
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 24,
+  "RT": 24,
+  "CT": 30,
+  "HD": 9,
+  "LL": 29,
+  "RL": 29
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 11
+ },
+ "equipment": {
+  "LA": [
+   "machine_gun*2",
+   "ammo:machine_gun"
+  ],
+  "RA": [
+   "large_laser"
+  ],
+  "LT": [
+   "medium_laser*3"
+  ],
+  "RT": [
+   "lrm15",
+   "srm2",
+   "ammo:srm2"
+  ],
+  "CT": [
+   "ammo:lrm15*2"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3238,
+  "megamek": "data/mekfiles/meks/3039u/Thunderbolt TDR-5S.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Thunderbolt TDR-5S (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1335
+ },
+ "bv": 1335,
+ "role": "Brawler: built to slug it out at medium range. 3 Medium Lasers, 2 Machine Guns, Large Laser, LRM 15, SRM 2; walks 4, runs 6.",
+ "sprite": "thunderbolt"
 }

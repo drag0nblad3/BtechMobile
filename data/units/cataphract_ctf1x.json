@@ -1,0 +1,67 @@
+{
+ "id": "cataphract_ctf1x",
+ "name": "Cataphract",
+ "model": "CTF-1X",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 16,
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 16,
+  "RT": 16,
+  "CT": 26,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "ppc",
+   "medium_laser"
+  ],
+  "LT": [
+   "medium_laser@rear"
+  ],
+  "RT": [
+   "ac10",
+   "medium_laser@rear",
+   "ammo:ac10"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 466,
+  "megamek": "data/mekfiles/meks/3039u/Cataphract CTF-1X.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Cataphract CTF-1X (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1316
+ },
+ "bv": 1316,
+ "sprite": "cataphract",
+ "role": "Brawler: built to slug it out at medium range. 4 Medium Lasers, PPC, AC/10; walks 4, runs 6."
+}

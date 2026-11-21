@@ -1,0 +1,56 @@
+{
+ "id": "sentinel_stn3k",
+ "name": "Sentinel",
+ "model": "STN-3K",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 8,
+  "RA": 8,
+  "LT": 10,
+  "RT": 10,
+  "CT": 12,
+  "HD": 9,
+  "LL": 11,
+  "RL": 11
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "ac5"
+  ],
+  "LT": [
+   "heat_sink",
+   "ammo:ac5*2"
+  ],
+  "RT": [
+   "srm2",
+   "small_laser",
+   "ammo:srm2"
+  ]
+ },
+ "source": {
+  "mul_id": 2857,
+  "megamek": "data/mekfiles/meks/3039u/Sentinel STN-3K.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Sentinel STN-3K (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 652
+ },
+ "bv": 652,
+ "sprite": "sentinel",
+ "role": "Scout: fast and light, finds the enemy and stays alive. AC/5, SRM 2, Small Laser; walks 6, runs 9."
+}

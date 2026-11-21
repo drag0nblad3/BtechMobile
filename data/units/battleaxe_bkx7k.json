@@ -1,0 +1,69 @@
+{
+ "id": "battleaxe_bkx7k",
+ "name": "BattleAxe",
+ "model": "BKX-7K",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 15,
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 18,
+  "RT": 18,
+  "CT": 20,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "ppc"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "ppc"
+  ],
+  "LT": [
+   "lrm5",
+   "ammo:lrm5"
+  ],
+  "RT": [
+   "srm6",
+   "lrm5",
+   "ammo:srm6"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 277,
+  "megamek": "data/mekfiles/meks/3075/BattleAxe BKX-7K.mtf",
+  "published": "RS:SW,RSFP:Proliferation",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "BattleAxe BKX-7K (ForcePack-Record-Sheets-Proliferation-Cycle)",
+  "megamek_bv": 1329
+ },
+ "bv": 1329,
+ "sprite": "battleaxe",
+ "role": "Sniper: hangs back and hits from long range. 2 PPCs, 2 LRM 5s, SRM 6; walks 4, runs 6, jumps 4."
+}

@@ -1,0 +1,72 @@
+{
+ "id": "mauler_mal1pt6",
+ "name": "Mauler",
+ "model": "MAL-1PT6",
+ "tonnage": 90,
+ "walk_mp": 2,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 28,
+  "RT": 28,
+  "CT": 30,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "large_laser"
+  ],
+  "RA": [
+   "large_laser"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "lrm15",
+   "ac2*2",
+   "ammo:lrm15*2",
+   "ammo:ac2"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "lrm15",
+   "ac2*2",
+   "ammo:lrm15*2",
+   "ammo:ac2"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "HD": [
+   "small_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 9543,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 15/Mauler MAL-1PT6.mtf",
+  "published": "ShrapRS",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Mauler MAL-1PT6 (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1270
+ },
+ "bv": 1270,
+ "sprite": "mauler",
+ "role": "Sniper: hangs back and hits from long range. 4 AC/2s, 2 Large Lasers, 2 LRM 15s, Small Laser; walks 2, runs 3."
+}

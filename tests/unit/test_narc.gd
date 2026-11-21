@@ -87,11 +87,10 @@ func test_ecm_and_standard_ammo_get_no_help() -> void:
 
 func test_designs_carry_narc() -> void:
 	var db := UnitDb.load_dir()
-	var raven := Unit.new(9, db.get_def("raven_rvn3l"), 0, Vector2i.ZERO, 0)
-	check(raven.weapons.any(func(w: MountedWeapon) -> bool: return w.def.beacon), "Raven has a beacon")
 	var kto := Unit.new(9, db.get_def("kintaro_kto19"), 0, Vector2i.ZERO, 0)
-	check(kto.weapons.filter(func(w: MountedWeapon) -> bool: return w.narc_ammo).size() == 2, "both SRM racks can load Narc missiles")
-	check(db.get_def("hunchback_hbk4g_rac").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].rotary))
+	check(kto.weapons.any(func(w: MountedWeapon) -> bool: return w.def.beacon), "Kintaro has a beacon")
+	check(kto.weapons.filter(func(w: MountedWeapon) -> bool: return w.narc_ammo).size() == 3, "every launcher can load Narc missiles")
+	check(mech("test_hunchback_hbk4g_rac", 0, Vector2i.ZERO).weapons.any(func(w: MountedWeapon) -> bool: return w.def.rotary))
 
 
 func test_bot_tags_target_for_homing_missiles() -> void:

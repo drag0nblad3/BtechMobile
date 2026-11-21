@@ -1,16 +1,61 @@
 {
-  "id": "quickdraw_qkd4g", "name": "Quickdraw", "model": "QKD-4G", "tonnage": 60,
-  "walk_mp": 5, "jump_mp": 5, "heat_sinks": 13, "sprite": "quickdraw",
-  "role": "Fast heavy all-rounder. Missiles and four lasers, two of them facing backward to punish anyone who gets behind it.",
-  "armor": {"HD": 9, "CT": 19, "LT": 14, "RT": 14, "LA": 12, "RA": 12, "LL": 17, "RL": 17},
-  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
-  "equipment": {
-    "LT": ["lrm10", "ammo:lrm10", "medium_laser@rear", "heat_sink", "jump_jet"],
-    "RT": ["srm4", "ammo:srm4", "medium_laser@rear", "heat_sink", "jump_jet"],
-    "LA": ["medium_laser"],
-    "RA": ["medium_laser"],
-    "CT": ["jump_jet"],
-    "LL": ["jump_jet", "heat_sink"],
-    "RL": ["jump_jet"]
-  }
+ "id": "quickdraw_qkd4g",
+ "name": "Quickdraw",
+ "model": "QKD-4G",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 13,
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 14,
+  "RT": 14,
+  "CT": 17,
+  "HD": 9,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 8
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "lrm10",
+   "ammo:lrm10"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "medium_laser@rear*2",
+   "ammo:srm4"
+  ],
+  "CT": [
+   "jump_jet",
+   "srm4"
+  ],
+  "HD": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 2610,
+  "megamek": "data/mekfiles/meks/3039u/Quickdraw QKD-4G.mtf",
+  "published": "RS:SW,RS:MERCS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Quickdraw QKD-4G (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 1192
+ },
+ "bv": 1192,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Medium Lasers, LRM 10, SRM 4; walks 5, runs 8, jumps 5.",
+ "sprite": "quickdraw"
 }

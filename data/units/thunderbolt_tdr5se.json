@@ -1,0 +1,59 @@
+{
+ "id": "thunderbolt_tdr5se",
+ "name": "Thunderbolt",
+ "model": "TDR-5SE",
+ "tonnage": 65,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 17,
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 24,
+  "RT": 24,
+  "CT": 30,
+  "HD": 9,
+  "LL": 29,
+  "RL": 29
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 11
+ },
+ "equipment": {
+  "RA": [
+   "large_laser"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "lrm10",
+   "medium_laser*3"
+  ],
+  "RT": [
+   "heat_sink*3",
+   "jump_jet*2"
+  ],
+  "CT": [
+   "ammo:lrm10*2"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3240,
+  "megamek": "data/mekfiles/meks/3039u/Thunderbolt TDR-5SE.mtf",
+  "published": "RSFP:Wave 1,RSFP:ELH,RS:GoAC",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Thunderbolt TDR-5SE (ForcePack-Record-Sheets-Eridani-Light-Horse)",
+  "megamek_bv": 1414
+ },
+ "bv": 1414,
+ "sprite": "thunderbolt",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Medium Lasers, Large Laser, LRM 10; walks 4, runs 6, jumps 4."
+}

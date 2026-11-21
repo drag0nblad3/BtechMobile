@@ -1,0 +1,75 @@
+{
+ "id": "highlander_iic",
+ "name": "Highlander IIC",
+ "model": "",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 28,
+  "RT": 28,
+  "CT": 40,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 17
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_streak_srm6*2",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "c_gauss_rifle",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "jump_jet",
+   "c_medium_pulse_laser*3",
+   "ammo:c_lrm20*4",
+   "ammo:c_streak_srm6"
+  ],
+  "RT": [
+   "jump_jet",
+   "c_lrm20+artemis",
+   "ammo:c_gauss_rifle*3",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 1524,
+  "megamek": "data/mekfiles/meks/3060u/Highlander IIC.mtf",
+  "published": "RS:CI,RSFP:MERCS-CLAN",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Highlander IIC (ForcePack-Record-Sheets-Mercenaries-Clan)",
+  "megamek_bv": 2979
+ },
+ "bv": 2979,
+ "sprite": "highlander_iic",
+ "role": "Missile boat: rains missiles from a distance. 3 Medium Pulse Lasers, 2 Streak SRM 6s, Gauss Rifle, LRM 20; walks 3, runs 5, jumps 3."
+}

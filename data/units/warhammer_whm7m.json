@@ -1,0 +1,71 @@
+{
+ "id": "warhammer_whm7m",
+ "name": "Warhammer",
+ "model": "WHM-7M",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 18,
+ "heat_sink_type": "double",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 17,
+  "RT": 17,
+  "CT": 22,
+  "HD": 9,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "er_ppc"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_ppc"
+  ],
+  "LT": [
+   "heat_sink*3",
+   "medium_laser",
+   "ams"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "srm6",
+   "medium_laser",
+   "machine_gun",
+   "ammo:srm6",
+   "ammo:ams"
+  ],
+  "CT": [
+   "ammo:machine_gun"
+  ]
+ },
+ "source": {
+  "mul_id": 3492,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 7/Warhammer WHM-7M.mtf",
+  "published": "RSFP:Wave 1,RG07,RGv1",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Warhammer WHM-7M (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1487
+ },
+ "bv": 1487,
+ "sprite": "warhammer",
+ "role": "Brawler: built to slug it out at medium range. 2 ER PPCs, 2 Medium Lasers, Anti-Missile System, SRM 6, Machine Gun; walks 4, runs 6."
+}

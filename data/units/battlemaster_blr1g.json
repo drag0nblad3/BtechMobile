@@ -1,16 +1,62 @@
 {
-  "id": "battlemaster_blr1g", "name": "BattleMaster", "model": "BLR-1G", "tonnage": 85,
-  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 18, "sprite": "battlemaster",
-  "role": "Assault command 'Mech. PPC plus a wall of medium lasers, including two facing rear.",
-  "armor": {"HD": 9, "CT": 40, "LT": 25, "RT": 25, "LA": 26, "RA": 26, "LL": 34, "RL": 34},
-  "rear_armor": {"CT": 12, "LT": 8, "RT": 8},
-  "equipment": {
-    "RA": ["ppc"],
-    "LA": ["machine_gun", "machine_gun", "ammo:machine_gun"],
-    "LT": ["srm6", "medium_laser", "medium_laser", "ammo:srm6", "heat_sink", "heat_sink"],
-    "RT": ["medium_laser", "medium_laser", "heat_sink", "heat_sink"],
-    "CT": ["medium_laser@rear", "medium_laser@rear"],
-    "LL": ["heat_sink", "heat_sink"],
-    "RL": ["heat_sink", "heat_sink"]
-  }
+ "id": "battlemaster_blr1g",
+ "name": "BattleMaster",
+ "model": "BLR-1G",
+ "tonnage": 85,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 18,
+ "armor": {
+  "LA": 24,
+  "RA": 24,
+  "LT": 28,
+  "RT": 28,
+  "CT": 40,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "equipment": {
+  "LA": [
+   "machine_gun*2"
+  ],
+  "RA": [
+   "ppc"
+  ],
+  "LT": [
+   "srm6",
+   "medium_laser*2",
+   "medium_laser@rear",
+   "ammo:srm6*2",
+   "ammo:machine_gun"
+  ],
+  "RT": [
+   "heat_sink",
+   "medium_laser*2",
+   "medium_laser@rear"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 283,
+  "megamek": "data/mekfiles/meks/3039u/BattleMaster BLR-1G.mtf",
+  "published": "RSFP:Wave 1,RS:GoAC",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "BattleMaster BLR-1G (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1519
+ },
+ "bv": 1519,
+ "role": "Brawler: built to slug it out at medium range. 6 Medium Lasers, 2 Machine Guns, PPC, SRM 6; walks 4, runs 6.",
+ "sprite": "battlemaster"
 }

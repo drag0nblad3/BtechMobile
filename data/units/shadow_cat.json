@@ -1,25 +1,185 @@
 {
-  "id": "shadow_cat", "name": "Shadow Cat", "tonnage": 45, "walk_mp": 6, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "shadow_cat", "engine_type": "xl", "structure_type": "endo_steel",
-  "armor": {"HD": 9, "CT": 21, "LT": 17, "RT": 17, "LA": 13, "RA": 13, "LL": 22, "RL": 21},
-  "rear_armor": {"CT": 7, "LT": 5, "RT": 5},
-  "missing_actuators": {"RA": ["lower_arm", "hand"]},
-  "equipment": {"LA": ["endo_steel*5"], "RA": ["endo_steel*2"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 10, "jump_mp": 5, "role": "Clan sniper scout. A Gauss rifle and two ER medium lasers; MASC can push it to 12 MP for a burst, at a risk to its legs.", "equipment": {
-      "RA": ["c_gauss_rifle"],
-      "LT": ["ammo:c_gauss_rifle", "jump_jet"],
-      "LA": ["c_er_medium_laser*2"],
-      "RT": ["masc"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"]
-    }},
-    {"model": "A", "heat_sinks": 16, "jump_mp": 5, "role": "Laser Shadow Cat: an ER large laser and three ER medium lasers with no ammo, and MASC to sprint into position.", "equipment": {
-      "RT": ["masc", "heat_sink", "heat_sink", "heat_sink"],
-      "RA": ["c_er_large_laser", "c_er_small_laser"],
-      "LA": ["c_er_medium_laser*2", "c_er_small_laser"],
-      "LT": ["c_er_medium_laser", "c_er_small_laser*2", "jump_jet", "heat_sink", "heat_sink", "heat_sink"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"]
-    }}
+ "id": "shadow_cat",
+ "name": "Shadow Cat",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 18,
+  "RT": 18,
+  "CT": 20,
+  "HD": 8,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "shadow_cat",
+ "equipment": {
+  "LA": [
+   "endo_steel*2"
+  ],
+  "RA": [
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet",
+   "endo_steel",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "jump_jet",
+   "endo_steel",
+   "ferro_fibrous*4"
+  ],
+  "CT": [
+   "masc"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2156,
+   "heat_sinks": 10,
+   "jump_mp": 6,
+   "equipment": {
+    "LA": [
+     "c_er_medium_laser"
+    ],
+    "RA": [
+     "c_gauss_rifle"
+    ],
+    "LT": [
+     "c_active_probe"
+    ],
+    "RT": [
+     "c_er_medium_laser",
+     "ammo:c_gauss_rifle*2"
+    ]
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Medium Lasers, Gauss Rifle; walks 6, runs 9, jumps 6.",
+   "source": {
+    "mul_id": 2892,
+    "megamek": "data/mekfiles/meks/3058Uu/Shadow Cat Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Striker",
+    "bv": "sheet",
+    "sheet": "Shadow Cat Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2156
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2220,
+   "heat_sinks": 13,
+   "jump_mp": 6,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_er_large_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_large_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "c_active_probe"
+    ],
+    "RT": [
+     "c_streak_srm6",
+     "ammo:c_streak_srm6*2"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER Large Lasers, Streak SRM 6; walks 6, runs 9, jumps 6.",
+   "source": {
+    "mul_id": 2887,
+    "megamek": "data/mekfiles/meks/3058Uu/Shadow Cat A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Shadow Cat A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2220
+   }
+  },
+  {
+   "model": "B",
+   "bv": 2420,
+   "heat_sinks": 10,
+   "jump_mp": 6,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lrm15+artemis",
+     "c_er_medium_laser"
+    ],
+    "RA": [
+     "c_lrm15+artemis",
+     "c_er_medium_laser"
+    ],
+    "LT": [
+     "ammo:c_lrm15*2",
+     "guardian_ecm"
+    ],
+    "RT": [
+     "ammo:c_lrm15*2",
+     "c_active_probe"
+    ]
+   },
+   "source": {
+    "mul_id": 2888,
+    "megamek": "data/mekfiles/meks/3058Uu/Shadow Cat B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Missile Boat",
+    "bv": "sheet",
+    "sheet": "Shadow Cat B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2420
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 LRM 15s, 2 ER Medium Lasers; walks 6, runs 9, jumps 6."
+  }
+ ]
 }

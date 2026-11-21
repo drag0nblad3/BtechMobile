@@ -30,11 +30,13 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
 		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (ferro_mult(def) if def.armor_type == "ferro_fibrous" else 1.0))),
 		"weapons": weapons,
-		"ammo": float(def.ammo_mounts.size()),
+		"ammo": def.ammo_mounts.reduce(func(t: float, a: Dictionary) -> float: return t + (0.5 if a.get("half", false) else 1.0), 0.0),
 		"case": def.case_locs.size() * 0.5,
-		"ecm": 1.5 if def.ecm_loc >= 0 else 0.0,
+		"ecm": Ecm.tons(def) if def.ecm_loc >= 0 else 0.0,
 		"c3": (C3.MASTER_TONS if def.c3_master_loc >= 0 else 0.0) + (C3.SLAVE_TONS if def.c3_slave_loc >= 0 else 0.0),
 		"masc": float(Masc.size(def)) if def.masc_loc >= 0 else 0.0,
+		"inert": InertGear.tons(def),
+		"probe": float(ActiveProbe.KINDS[def.probe]["tons"]) if def.probe != "" else 0.0,
 		"supercharger": Supercharger.size_tons(def) if def.supercharger_loc >= 0 else 0.0,
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,
 		"melee": def.melee.reduce(func(t: float, m: Dictionary) -> float: return t + def.melee_tons(m["kind"]), 0.0),
@@ -45,11 +47,11 @@ static func ferro_mult(def: UnitDef) -> float:
 	return ClanTech.FERRO_MULT if def.is_clan() else FERRO_MULT
 
 
-## Heat sinks the engine can hold without using critical slots: rating / 25
-## (the first 10 also weigh nothing). Designs list the rest as items.
+## Heat sinks the engine can hold without using critical slots: rating / 25.
+## The first 10 weigh nothing; a small engine lists some of those 10 as items.
 ## TODO(rules): construction data, not in the Core Rulebook.
 static func engine_sink_capacity(def: UnitDef) -> int:
-	return maxi(UnitDef.ENGINE_HEAT_SINKS, def.tonnage * def.walk_mp / 25)
+	return def.tonnage * def.walk_mp / 25
 
 
 static func total(def: UnitDef) -> float:

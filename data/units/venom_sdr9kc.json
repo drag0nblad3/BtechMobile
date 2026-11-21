@@ -1,0 +1,72 @@
+{
+ "id": "venom_sdr9kc",
+ "name": "Venom",
+ "model": "SDR-9KC",
+ "tonnage": 35,
+ "walk_mp": 8,
+ "jump_mp": 8,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 11,
+  "RT": 11,
+  "CT": 16,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*6",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "endo_steel*6",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "jump_jet*4",
+   "medium_pulse_laser",
+   "c3_slave",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "jump_jet*4",
+   "medium_pulse_laser*2",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "ferro_fibrous*2"
+  ],
+  "LL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 3401,
+  "megamek": "data/mekfiles/meks/3055U/Venom SDR-9KC.mtf",
+  "published": "RS:CI",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Venom SDR-9KC (ForcePack-Record-Sheets-House-Kurita)",
+  "megamek_bv": 939
+ },
+ "bv": 939,
+ "sprite": "venom",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 Medium Pulse Lasers; walks 8, runs 12, jumps 8."
+}

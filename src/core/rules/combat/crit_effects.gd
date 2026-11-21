@@ -70,6 +70,11 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			return "supercharger destroyed"
 		CritSlot.Kind.C3:
 			return "C3 computer destroyed: it drops out of its network" + (", and the network goes down with its Master" if slot.name == "C3 Master" else "")
+		CritSlot.Kind.GEAR:
+			return "%s destroyed" % slot.name
+		CritSlot.Kind.PROBE:
+			u.probe_lost = true
+			return "active probe destroyed"
 		CritSlot.Kind.TARGETING:
 			u.tc_lost = true
 			return "targeting computer destroyed: no more -1 to hit"

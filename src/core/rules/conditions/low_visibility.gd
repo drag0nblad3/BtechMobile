@@ -43,7 +43,10 @@ static func sensor_check_target(u: Unit) -> ToHit:
 
 
 ## +1 on a ranged attack unless the attacker passed its sensor check this turn.
-static func add(th: ToHit, state: GameState, attacker: Unit) -> void:
+static func add(th: ToHit, state: GameState, attacker: Unit, target: Unit = null) -> void:
 	if not state.conditions.low_visibility or state.sees_through.has(attacker.id):
+		return
+	if ActiveProbe.clears(state, attacker, target):
+		th.add("active probe", 0, "Its active probe sees through the murk at this range: no low visibility penalty.")
 		return
 	th.add("low visibility", MOD, "Murk covers the battlefield: +1 to every ranged attack. Passing the sensor check at the start of the phase would remove it.")

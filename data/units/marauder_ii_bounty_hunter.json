@@ -1,0 +1,86 @@
+{
+ "id": "marauder_ii_bounty_hunter",
+ "name": "Marauder II",
+ "model": "(Bounty Hunter)",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 17,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 31,
+  "RT": 31,
+  "CT": 46,
+  "HD": 9,
+  "LL": 42,
+  "RL": 42
+ },
+ "rear_armor": {
+  "LT": 11,
+  "RT": 11,
+  "CT": 16
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "c_er_ppc",
+   "c_medium_pulse_laser*2",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "c_er_ppc",
+   "c_medium_pulse_laser*2",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "jump_jet",
+   "targeting_computer",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet",
+   "c_gauss_rifle",
+   "ammo:c_gauss_rifle*2",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2053,
+  "megamek": "data/mekfiles/meks/3085u/Phoenix/Marauder II Bounty Hunter.mtf",
+  "published": "RS:CI",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Marauder II (Bounty Hunter) (BattleTech-Record-Sheets-Legendary-MechWarriors)",
+  "megamek_bv": 3767
+ },
+ "bv": 3767,
+ "sprite": "marauder_ii",
+ "role": "Sniper: hangs back and hits from long range. 4 Medium Pulse Lasers, 2 ER PPCs, Gauss Rifle; walks 3, runs 5, jumps 3."
+}

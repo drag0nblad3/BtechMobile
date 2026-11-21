@@ -1,0 +1,60 @@
+{
+ "id": "exterminator_ext4a",
+ "name": "Exterminator",
+ "model": "EXT-4A",
+ "tonnage": 65,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 19,
+  "RA": 19,
+  "LT": 22,
+  "RT": 22,
+  "CT": 23,
+  "HD": 9,
+  "LL": 19,
+  "RL": 19
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 8
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*2"
+  ],
+  "RA": [
+   "medium_laser*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "lrm10"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "machine_gun",
+   "ammo:machine_gun"
+  ],
+  "CT": [
+   "jump_jet",
+   "ammo:lrm10"
+  ],
+  "HD": [
+   "small_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 4147,
+  "megamek": "data/mekfiles/meks/3050U/Exterminator EXT-4A.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Exterminator EXT-4A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1372
+ },
+ "bv": 1372,
+ "sprite": "exterminator",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Medium Lasers, LRM 10, Machine Gun, Small Laser; walks 5, runs 8, jumps 5."
+}

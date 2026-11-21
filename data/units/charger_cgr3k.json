@@ -1,0 +1,72 @@
+{
+ "id": "charger_cgr3k",
+ "name": "Charger",
+ "model": "CGR-3K",
+ "tonnage": 80,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 24,
+  "RT": 24,
+  "CT": 27,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_pulse_laser",
+   "ferro_fibrous*7"
+  ],
+  "RA": [
+   "medium_pulse_laser",
+   "ferro_fibrous*7"
+  ],
+  "LT": [
+   "medium_pulse_laser",
+   "ammo:lrm20*2",
+   "case"
+  ],
+  "RT": [
+   "lrm20+artemis",
+   "medium_pulse_laser"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 565,
+  "megamek": "data/mekfiles/meks/3050U/Charger CGR-3K.mtf",
+  "published": "RS:3050Uu-I",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Charger CGR-3K (BattleTech-Record-Sheets-Legendary-MechWarriors)",
+  "megamek_bv": 1656
+ },
+ "bv": 1656,
+ "sprite": "charger",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Medium Pulse Lasers, LRM 20; walks 5, runs 8, jumps 5."
+}

@@ -1,15 +1,168 @@
 {
-  "id": "adder", "name": "Adder", "tonnage": 35, "walk_mp": 6, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "adder", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 16, "LT": 11, "RT": 11, "LA": 11, "RA": 11, "LL": 15, "RL": 15},
-  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
-  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*5"], "RA": ["ferro_fibrous*2"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 14, "role": "Clan light sniper. Two ER PPCs hit like a heavy 'Mech from 23 hexes, but firing both runs it hot.", "equipment": {
-      "LA": ["c_er_ppc"],
-      "RA": ["c_er_ppc"],
-      "CT": ["c_flamer"],
-      "LT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink"]
-    }}
+ "id": "adder",
+ "name": "Adder",
+ "tonnage": 35,
+ "walk_mp": 6,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 12,
+  "RT": 12,
+  "CT": 16,
+  "HD": 9,
+  "LL": 14,
+  "RL": 14
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "adder",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "heat_sink",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "heat_sink",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "c_flamer",
+   "endo_steel"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2083,
+   "heat_sinks": 11,
+   "equipment": {
+    "LA": [
+     "c_er_ppc"
+    ],
+    "RA": [
+     "c_er_ppc"
+    ],
+    "LT": [
+     "heat_sink"
+    ],
+    "RT": [
+     "targeting_computer"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER PPCs, Flamer; walks 6, runs 9.",
+   "source": {
+    "mul_id": 2598,
+    "megamek": "data/mekfiles/meks/3050U/Puma (Adder) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Puma (Adder) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2083
+   }
+  },
+  {
+   "model": "A",
+   "bv": 1437,
+   "heat_sinks": 10,
+   "missing_actuators": {},
+   "equipment": {
+    "LA": [
+     "c_lrm20",
+     "ammo:c_lrm20*2"
+    ],
+    "RA": [
+     "c_lrm20",
+     "ammo:c_lrm20*2"
+    ],
+    "LT": [
+     "c_small_pulse_laser"
+    ],
+    "RT": [
+     "c_small_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 2591,
+    "megamek": "data/mekfiles/meks/3050U/Puma (Adder) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Missile Boat",
+    "bv": "sheet",
+    "sheet": "Puma (Adder) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1437
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 LRM 20s, 2 Small Pulse Lasers, Flamer; walks 6, runs 9."
+  },
+  {
+   "model": "B",
+   "bv": 1422,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lb5x_ac",
+     "ammo:c_lb5x_ac"
+    ],
+    "RA": [
+     "c_large_pulse_laser"
+    ],
+    "LT": [
+     "c_er_medium_laser"
+    ],
+    "RT": [
+     "c_er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 2592,
+    "megamek": "data/mekfiles/meks/3050U/Puma (Adder) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Puma (Adder) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1422
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER Medium Lasers, Flamer, LB 5-X AC, Large Pulse Laser; walks 6, runs 9."
+  }
+ ]
 }

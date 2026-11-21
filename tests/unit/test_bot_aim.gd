@@ -44,7 +44,7 @@ func test_sitting_target_aims_only_when_it_pays() -> void:
 
 
 func test_targeting_computer_aims_at_moving_target() -> void:
-	var v := _setup("marauder_mad3r_tc", 5)
+	var v := _setup("test_marauder_mad3r_tc", 5)
 	var t: Unit = v[2]
 	t.armor[Location.CT] = 0
 	t.structure[Location.CT] = 6

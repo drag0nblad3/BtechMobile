@@ -1,13 +1,73 @@
 {
-  "id": "blackjack_bj1", "name": "Blackjack", "model": "BJ-1", "tonnage": 45,
-  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 11, "sprite": "blackjack",
-  "role": "Medium line holder. Four medium lasers up close, two AC/2s to plink from far away; runs hot if it fires everything.",
-  "armor": {"HD": 8, "CT": 18, "LT": 14, "RT": 14, "LA": 12, "RA": 12, "LL": 18, "RL": 18},
-  "rear_armor": {"CT": 6, "LT": 4, "RT": 4},
-  "equipment": {
-    "LA": ["ac2", "medium_laser", "medium_laser"],
-    "RA": ["ac2", "medium_laser", "medium_laser"],
-    "LT": ["ammo:ac2", "jump_jet", "jump_jet"],
-    "RT": ["heat_sink", "jump_jet", "jump_jet"]
-  }
+ "id": "blackjack_bj1",
+ "name": "Blackjack",
+ "model": "BJ-1",
+ "tonnage": 45,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 11,
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 15,
+  "RT": 15,
+  "CT": 18,
+  "HD": 9,
+  "LL": 17,
+  "RL": 17
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser",
+   "ac2"
+  ],
+  "RA": [
+   "medium_laser",
+   "ac2"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "medium_laser"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "medium_laser"
+  ],
+  "CT": [
+   "ammo:ac2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 373,
+  "megamek": "data/mekfiles/meks/3039u/Blackjack BJ-1.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Blackjack BJ-1 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 949
+ },
+ "bv": 949,
+ "role": "Sniper: hangs back and hits from long range. 4 Medium Lasers, 2 AC/2s; walks 4, runs 6, jumps 4.",
+ "sprite": "blackjack"
 }

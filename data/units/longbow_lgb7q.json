@@ -1,0 +1,75 @@
+{
+ "id": "longbow_lgb7q",
+ "name": "Longbow",
+ "model": "LGB-7Q",
+ "tonnage": 85,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 22,
+ "armor": {
+  "LA": 23,
+  "RA": 23,
+  "LT": 26,
+  "RT": 26,
+  "CT": 37,
+  "HD": 9,
+  "LL": 28,
+  "RL": 28
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "lrm20"
+  ],
+  "RA": [
+   "lrm20"
+  ],
+  "LT": [
+   "heat_sink*4",
+   "lrm5",
+   "medium_laser",
+   "ammo:lrm20*2"
+  ],
+  "RT": [
+   "heat_sink*4",
+   "lrm5",
+   "medium_laser",
+   "ammo:lrm20*2"
+  ],
+  "CT": [
+   "ammo:lrm5"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1936,
+  "megamek": "data/mekfiles/meks/3058Uu/Longbow LGB-7Q.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Longbow LGB-7Q (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1618
+ },
+ "bv": 1618,
+ "sprite": "longbow",
+ "role": "Missile boat: rains missiles from a distance. 2 LRM 20s, 2 LRM 5s, 2 Medium Lasers; walks 3, runs 5."
+}

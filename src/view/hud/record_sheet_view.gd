@@ -68,6 +68,10 @@ static func text(u: Unit) -> String:
 		tech.append("supercharger%s" % (" (wrecked)" if Supercharger.broken(u) else " (next use %d+)" % Supercharger.need(u)))
 	if Tsm.has(d):
 		tech.append("TSM (active: +2 walking MP, double melee damage)" if Tsm.active(u) else "TSM (wakes up at heat %d+)" % Tsm.HEAT)
+	if d.probe != "":
+		tech.append("%s, %d hexes%s" % [ActiveProbe.KINDS[d.probe]["name"], ActiveProbe.range_of(d), " (destroyed)" if u.probe_lost else ""])
+	for g: Dictionary in d.inert:
+		tech.append("%s (%s)" % [InertGear.KINDS[g["kind"]]["name"], InertGear.KINDS[g["kind"]]["why"]])
 	if d.tc_loc >= 0:
 		tech.append("targeting computer%s" % (" (destroyed)" if u.tc_lost else ""))
 	if d.armor_type == "ferro_fibrous":

@@ -1,0 +1,63 @@
+{
+ "id": "commando_com7y2_blazing_inferno",
+ "name": "Commando",
+ "model": "COM-7Y2 'Blazing Inferno'",
+ "tonnage": 25,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 7,
+  "RA": 7,
+  "LT": 8,
+  "RT": 8,
+  "CT": 10,
+  "HD": 8,
+  "LL": 11,
+  "RL": 11
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*2"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "medium_laser"
+  ],
+  "CT": [
+   "small_laser*2"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "small_laser*2"
+  ],
+  "RL": [
+   "small_laser*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9627,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 16/Commando COM-7Y2 'Blazing Inferno'.mtf",
+  "published": "ShrapRS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Commando COM-7Y2 'Blazing Inferno' (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 728
+ },
+ "bv": 728,
+ "sprite": "commando",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 6 Small Lasers, 4 Medium Lasers; walks 6, runs 9."
+}

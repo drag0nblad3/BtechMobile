@@ -28,12 +28,12 @@ func test_autocannon_survives_first_crit() -> void:
 	dice.queue_2d6(8)       # one critical
 	dice.pick_queue = [0]   # first hittable RT slot: AC/20
 	CriticalHits.roll_location(s, dice, _emit, u, Location.RT)
-	check(not u.weapons[1].destroyed, "AC/20 still fires after its first critical (p. 183)")
+	check(not gun(u, "ac20").destroyed, "AC/20 still fires after its first critical (p. 183)")
 	check(u.slots[Location.RT][0].hit, "the slot is marked")
 	dice.queue_2d6(8)
 	dice.pick_queue = [0]   # the next AC/20 slot
 	CriticalHits.roll_location(s, dice, _emit, u, Location.RT)
-	check(u.weapons[1].destroyed, "second critical disables it")
+	check(gun(u, "ac20").destroyed, "second critical disables it")
 
 
 func test_one_slot_autocannon_needs_two_hits() -> void:

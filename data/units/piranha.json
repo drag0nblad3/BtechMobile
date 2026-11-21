@@ -1,0 +1,70 @@
+{
+ "id": "piranha",
+ "name": "Piranha",
+ "model": "",
+ "tonnage": 20,
+ "walk_mp": 9,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 8,
+  "RT": 8,
+  "CT": 9,
+  "HD": 8,
+  "LL": 6,
+  "RL": 6
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 3
+ },
+ "equipment": {
+  "LA": [
+   "c_er_medium_laser"
+  ],
+  "RA": [
+   "c_er_medium_laser"
+  ],
+  "LT": [
+   "c_machine_gun*6",
+   "ammo:c_machine_gun:half",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "c_machine_gun*6",
+   "ammo:c_machine_gun:half",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "heat_sink",
+   "c_er_small_laser"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 2535,
+  "megamek": "data/mekfiles/meks/3058Uu/Piranha.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Piranha (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 998
+ },
+ "bv": 998,
+ "sprite": "piranha",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 12 Machine Guns, 2 ER Medium Lasers, ER Small Laser; walks 9, runs 14."
+}

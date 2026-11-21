@@ -1,0 +1,83 @@
+{
+ "id": "argus_ags4d",
+ "name": "Argus",
+ "model": "AGS-4D",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 19,
+  "RA": 19,
+  "LT": 20,
+  "RT": 20,
+  "CT": 28,
+  "HD": 9,
+  "LL": 27,
+  "RL": 27
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "lrm10",
+   "endo_steel*4"
+  ],
+  "RA": [
+   "rotary_ac5",
+   "machine_gun"
+  ],
+  "LT": [
+   "er_medium_laser",
+   "ammo:lrm10*2",
+   "case",
+   "beagle_probe",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "er_medium_laser",
+   "ammo:rotary_ac5*2",
+   "ammo:machine_gun:half",
+   "case",
+   "targeting_computer",
+   "endo_steel"
+  ],
+  "CT": [
+   "endo_steel*2"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3730,
+  "megamek": "data/mekfiles/meks/3067/Argus AGS-4D.mtf",
+  "published": "RS:CI,RSFP:SLDF2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Argus AGS-4D (ForcePack-Record-Sheets-Second-Star-League-Assault-Lance)",
+  "megamek_bv": 1638
+ },
+ "bv": 1638,
+ "sprite": "argus",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, LRM 10, Rotary AC/5, Machine Gun; walks 5, runs 8."
+}

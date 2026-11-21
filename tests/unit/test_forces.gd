@@ -18,15 +18,17 @@ func test_budget_and_lance_size() -> void:
 
 func test_battle_value_ordering() -> void:
 	var db := UnitDb.load_dir()
+	check_eq(BattleValue.of(db.get_def("atlas_as7d")), 1897, "the official sheet's BV")
 	var atlas := BattleValue.breakdown(db.get_def("atlas_as7d"))
-	# Published BV 2 values are about 1897 (Atlas) and 432 (Locust); ours is simplified.
-	check(absi(int(atlas["total"]) - 1897) < 60, "Atlas near its published BV: %d" % atlas["total"])
+	# Our simplified estimate, for designs without a sheet, lands near it.
+	check(absi(int(atlas["total"]) - 1897) < 60, "Atlas estimate near its official BV: %d" % atlas["total"])
 	check(absi(BattleValue.of(db.get_def("locust_lct1v")) - 432) < 30, "Locust near its published BV")
 	check(BattleValue.of(db.get_def("jenner_jr7d")) > BattleValue.of(db.get_def("commando_com2d")),
 			"fast hard-hitting Jenner beats the Commando")
 	var whm := BattleValue.breakdown(db.get_def("warhammer_whm6r"))
 	check(not (whm["halved"] as Array).is_empty(), "Warhammer can't fire everything cool")
-	check(BvText.line(db.get_def("warhammer_whm6r"), ExplainLevel.FULL).contains("half"), "explained")
+	check(BvText.line(db.get_def("warhammer_whm6r"), ExplainLevel.FULL).contains("overheating"), "explained")
+	check(BvText.line(db.get_def("warhammer_whm6r"), ExplainLevel.FULL).contains("official record sheet"), "names the source")
 	check_eq(BvText.line(db.get_def("warhammer_whm6r"), ExplainLevel.OFF), "")
 
 
