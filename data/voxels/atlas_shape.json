@@ -3792,7 +3792,7 @@
             [
               9,
               39,
-              -14
+              -17
             ],
             [
               9,
@@ -3807,7 +3807,7 @@
             [
               12,
               39,
-              -14
+              -17
             ],
             [
               12,
@@ -3822,7 +3822,7 @@
             [
               10,
               39,
-              -14
+              -17
             ],
             [
               11,
@@ -3837,7 +3837,7 @@
             [
               10,
               42,
-              -14
+              -17
             ],
             [
               11,
@@ -4618,7 +4618,7 @@
       "mirror": "ll_hip_guard"
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail.",
   "muzzles": {
     "LT": [
       [
@@ -4650,7 +4650,7 @@
     "RT": [
       10.5,
       40.5,
-      -14.5
+      -17.5
     ]
   },
   "weapons": []
