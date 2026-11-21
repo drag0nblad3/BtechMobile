@@ -37,6 +37,8 @@ const SENSOR_CHECK := &"sensor_check"     # {unit_id, roll, need, ok, why, mods}
 const CRIPPLED := &"crippled"             # {unit_id, why, withdraw: bool}
 const UNIT_EXITED := &"unit_exited"       # {unit_id, kind: withdraw|mission, vp}
 const MISSION := &"mission"               # {kind: vp, side, vp, total} | {kind: duration, roll, ends_on, last}
+const UNIT_REVEALED := &"unit_revealed"   # {unit_id, why, by_enemy} a hidden unit comes out
+const POINT_BLANK := &"point_blank"       # {unit_id, target_id, fired: bool} a found unit's ambush shot
 const CONDITIONS := &"conditions"         # {names: [String]} battlefield conditions, at the start
 const GAME_OVER := &"game_over"           # {winner: side or -1, why, scores?: {side: vp}}
 

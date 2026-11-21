@@ -4,8 +4,9 @@ extends RefCounted
 ## Every modifier carries a short reason, which the explanation layer shows.
 
 
+## `point_blank`: a hidden unit's ambush shot (PointBlank), no target movement modifier.
 static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit,
-		secondary: bool = false) -> ToHit:
+		secondary: bool = false, point_blank := false) -> ToHit:
 	var th := ToHit.new()
 	if target == null or target.destroyed:
 		th.impossible = "No target"
@@ -54,7 +55,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			return th
 		br += 1
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
-	add_movement(th, attacker, target)
+	add_movement(th, attacker, target, point_blank)
 	if spotter:
 		IndirectFire.add_mods(th, state, spotter)
 		th.spotter_id = spotter.id
@@ -86,11 +87,14 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 
 
 ## Attacker and target movement.
-static func add_movement(th: ToHit, attacker: Unit, target: Unit) -> void:
+static func add_movement(th: ToHit, attacker: Unit, target: Unit, ignore_target := false) -> void:
 	add_attacker_movement(th, attacker)
 	var jumped := target.move_mode == MoveMode.Kind.JUMP
 	var tm := target_movement_mod(target.hexes_moved, jumped)
-	if tm > 0:
+	if tm > 0 and (ignore_target or target.tmm_zero):
+		th.add("target caught off guard", 0, "A point-blank ambush shot ignores how far the target moved." if ignore_target
+				else "It was just found hiding, so its movement doesn't count this turn.")
+	elif tm > 0:
 		th.add("target %s %d hexes" % [MoveMode.verb(target.move_mode), target.hexes_moved], tm,
 				"Fast targets are harder to hit: 3-4 hexes +1, 5-6 +2, 7-9 +3, 10+ +4; +1 more if it jumped.")
 

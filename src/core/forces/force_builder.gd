@@ -24,6 +24,7 @@ var conditions := Conditions.new()  ## Battlefield conditions.
 ## Mission Table, else a StandardMissions id.
 var mission_id := ""
 var forced_withdrawal := false
+var hidden_side := -1  ## Side that starts hidden (HiddenUnits), -1 for none.
 ## Briefing lines from the last build (mission setup, complications).
 var notes: Array = []
 
@@ -168,6 +169,8 @@ func build(map: BattleMap, dice: Dice = null) -> GameState:
 			next_id += 1
 		if not setup.is_empty():
 			Deployment.place(state, placed, setup["zones"][side])
+	if hidden_side >= 0:
+		HiddenUnits.place_side(state, hidden_side)
 	return state
 
 

@@ -102,6 +102,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return PilotText.describe(e, s, level, seen)
 		GameEvent.GAME_OVER, GameEvent.CRIPPLED, GameEvent.UNIT_EXITED, GameEvent.MISSION:
 			return MissionText.describe(e, s, level)
+		GameEvent.UNIT_REVEALED, GameEvent.POINT_BLANK:
+			return HiddenText.describe(e, s, level)
 	return ""
 
 

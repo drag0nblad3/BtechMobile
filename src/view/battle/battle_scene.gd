@@ -50,7 +50,7 @@ func _build_views(state: GameState) -> void:
 	add_child(ObjectiveMarkers.build(state))
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
-	units_layer.build(state)
+	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -81,6 +81,11 @@ func _build_views(state: GameState) -> void:
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
+	var hidden := HiddenInput.new()
+	hidden.controller = controller
+	hidden.hud = hud
+	hidden.bots = bots
+	add_child(hidden)
 
 
 func _wire() -> void:
@@ -180,6 +185,9 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
+		GameEvent.UNIT_REVEALED:
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
+			units_layer.refresh_unit(e.data["unit_id"])
 		GameEvent.UNIT_EXITED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
 			_show_sheet_if_open()

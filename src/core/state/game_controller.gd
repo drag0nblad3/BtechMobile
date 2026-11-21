@@ -23,7 +23,7 @@ func start_turn() -> void:
 	if state.game_over:
 		return
 	state.turn += 1
-	for u in state.units:
+	for u in state.all_units():
 		u.reset_for_turn()
 	_emit(GameEvent.TURN_STARTED, {"turn": state.turn})
 	if state.turn == 1 and not state.conditions.is_clear():
@@ -50,8 +50,44 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 		return false
 	if leave and not unit.destroyed and not unit.prone and unit.coord == MoveOptions.coord_of(target):
 		MissionFlow.leave(state, _emit_cb, unit)
-	_unit_done()
+	if state.point_blank.is_empty():
+		_unit_done()
 	return true
+
+
+## Brings a hidden unit out at the start of a Movement or Weapon Attack Phase
+## so it can act (HiddenUnits). Returns false outside that window.
+func reveal(unit: Unit) -> bool:
+	if not HiddenUnits.may_reveal(state, unit):
+		return false
+	HiddenUnits.reveal(state, _emit_cb, unit, "brought out to %s" % (
+			"move" if state.phase == Phase.Kind.MOVEMENT else "shoot"))
+	_order_sides()
+	_advance_to_side_with_work()
+	return true
+
+
+## A unit found by an enemy's move answers its point-blank chance: fire
+## `shots` (weapon indexes) after `twist`, or decline with []. The move that
+## found it finishes once every such answer is in.
+func point_blank(unit: Unit, shots: Array, twist := 0) -> bool:
+	if state.point_blank.is_empty() or int(state.point_blank[0]["unit_id"]) != unit.id:
+		return false
+	var pb: Dictionary = state.point_blank.pop_front()
+	var t := state.unit_by_id(int(pb["target_id"]))
+	if t and not t.destroyed:
+		PointBlank.resolve(state, dice, _emit_cb, unit, t, shots, twist)
+	if state.point_blank.is_empty():
+		_unit_done()
+	return true
+
+
+## The side the game is waiting on: an owed point-blank answer, else the active side.
+func deciding_side() -> int:
+	if not state.point_blank.is_empty():
+		var u := state.unit_by_id(int(state.point_blank[0]["unit_id"]))
+		return u.side if u else -1
+	return state.active_side()
 
 
 ## Drops a standing 'Mech to the ground instead of moving: harder to hit
@@ -151,7 +187,7 @@ func pending_units() -> Array[Unit]:
 
 
 func _may_act(unit: Unit, phase: int) -> bool:
-	return not state.game_over and state.phase == phase \
+	return not state.game_over and state.phase == phase and state.point_blank.is_empty() \
 			and unit.side == state.active_side() and pending_units().has(unit)
 
 
@@ -191,10 +227,18 @@ func _begin_phase(p: int) -> void:
 	_set_phase(p)
 	if p == Phase.Kind.WEAPON_ATTACK:
 		LowVisibility.sensor_checks(state, dice, _emit_cb)
+	_order_sides()
+	if state.side_order.is_empty() and p == Phase.Kind.MOVEMENT:
+		for h in state.hidden.duplicate():  # everyone is hiding: nobody would ever act
+			HiddenUnits.reveal(state, _emit_cb, h, "no one was left on the field to act")
+		_order_sides()
+	_advance_to_side_with_work()
+
+
+func _order_sides() -> void:
 	state.order_index = 0
 	state.side_order = UnequalNumbers.order(UnequalNumbers.eligible(state, _done_in_phase),
 			state.initiative_order)
-	_advance_to_side_with_work()
 
 
 func _advance_to_side_with_work() -> void:
@@ -214,6 +258,7 @@ func _end_phase() -> void:
 				_begin_phase(Phase.Kind.WEAPON_ATTACK)
 		Phase.Kind.WEAPON_ATTACK:
 			WeaponFire.resolve_declared(state, dice, _emit_cb)
+			HiddenUnits.reveal_burning(state, _emit_cb)
 			Psr.end_of_phase(state, dice, _emit_cb)
 			if not _check_game_over():
 				_begin_phase(Phase.Kind.PHYSICAL_ATTACK)
@@ -229,6 +274,7 @@ func _heat_and_end() -> void:
 	HeatPhase.run(state, dice, _emit_cb)
 	_set_phase(Phase.Kind.END)
 	EndPhase.run(state, dice, _emit_cb)
+	HiddenUnits.reveal_burning(state, _emit_cb)
 	MissionFlow.end_phase(state, _emit_cb)
 	if not _check_game_over(true):
 		start_turn()

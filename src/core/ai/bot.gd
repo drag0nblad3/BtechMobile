@@ -9,7 +9,13 @@ extends RefCounted
 ## if it acted.
 static func act(gc: GameController, side: int) -> bool:
 	var s := gc.state
-	if s.game_over or s.active_side() != side:
+	if s.game_over:
+		return false
+	if not s.point_blank.is_empty():
+		return BotHidden.answer(gc, side)
+	if BotHidden.reveal(gc, side):
+		return true
+	if s.active_side() != side:
 		return false
 	var pending := gc.pending_units()
 	if pending.is_empty():

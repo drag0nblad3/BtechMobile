@@ -82,7 +82,7 @@ static func leave(state: GameState, emit: Callable, u: Unit) -> void:
 static func outcome(state: GameState, end_of_turn: bool) -> Dictionary:
 	var ms := state.mission
 	var alive: Array[int] = []
-	for u in state.units:
+	for u in state.all_units():
 		if ms.remains(u) and not alive.has(u.side):
 			alive.append(u.side)
 	if ms.def == null or not ms.def.uses_vp():
