@@ -92,7 +92,7 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -28)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
-	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -42)),
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -36)),
 			"Jenner CGL disc nose must reach z=-42, well ahead of side lasers")
 	check(not jenner.part("ll_hock_joint").is_empty(),
 			"Jenner knee and rear hock must be independent geometry")
@@ -376,7 +376,7 @@ func test_passes_128_to_132_resculpted_silhouette_landmarks() -> void:
 	for part: Dictionary in j["parts"]:
 		if part["name"] == "hd":
 			nose = part["shapes"][0]["loft"]["sections"]
-	check_eq(nose[0]["at"], -42, "Jenner CGL disc must project far forward")
+	check_eq(nose[0]["at"], -36, "Jenner disc must project ahead of laser nacelles")
 	check(nose[1]["polygon"][0][0] < nose[0]["polygon"][0][0],
 			"Jenner saucer must flare behind its blunt nose")
 
@@ -447,11 +447,11 @@ func test_bold_reference_passes_138_to_142_fix_fundamental_silhouette() -> void:
 	for p: Dictionary in disc_source["parts"]:
 		if p["name"] == "hd":
 			for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
-				if s["at"] == -35:
+				if s["at"] == -31:
 					var x: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
 					diameter = x.max() - x.min()
-	check(diameter >= 24, "Jenner disc is not wide enough")
-	check(j.part("hd")["cells"].has(Vector3i(0, 28, -42)),
+	check(diameter >= 16 and diameter <= 20, "Jenner disc should be ~half the overall nacelle span")
+	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
 			"Jenner disc must protrude forward of its twin laser mounts")
 	check(not j.part("hd_disc_rim").is_empty(), "Jenner disc edge absent")
 	check(not j.part("hd_disc_crown").is_empty(), "Jenner disc dome absent")
@@ -484,6 +484,49 @@ func test_passes_143_to_147_reference_structure_and_usable_muzzles() -> void:
 	for barrel: Vector3 in w.muzzles[Location.LT]:
 		var aperture := Vector3i(floori(barrel.x), floori(barrel.y), ceili(barrel.z))
 		check(not rack.has(aperture), "Wolverine compact launcher closed port %s" % aperture)
-	check(j.part("hd")["cells"].has(Vector3i(0, 28, -42)),
-			"Jenner forward saucer must remain z=-42")
+	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
+			"Jenner forward saucer must remain z=-36")
 	check_eq(a.muzzles[Location.RT].size(), 1, "Atlas AC20")
+
+
+func test_proportion_passes_148_152_are_balanced_and_connected() -> void:
+	var atlas_source: Dictionary = JsonFile.read(MODELS[0])
+	var w_source: Dictionary = JsonFile.read(MODELS[1])
+	var j_source: Dictionary = JsonFile.read(MODELS[2])
+	var atlas_head_y := 0
+	var shoulder_y := 0
+	for p: Dictionary in atlas_source["parts"]:
+		if p["name"] == "hd":
+			atlas_head_y = p["shapes"][0]["loft"]["sections"].back()["at"]
+		if p["name"] == "lt":
+			for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+				for q: Array in s["polygon"]:
+					shoulder_y = maxi(shoulder_y, q[1])
+	check(shoulder_y >= atlas_head_y and shoulder_y <= atlas_head_y + 4,
+			"Atlas shoulders must be level with, but slightly higher than, sunk head")
+	var torso_width := 0
+	for p: Dictionary in w_source["parts"]:
+		if p["name"] != "ct":
+			continue
+		for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+			if s["at"] == 36:
+				var xs: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
+				torso_width = xs.max() - xs.min()
+	check(torso_width >= 12 and torso_width <= 16,
+			"Wolverine waist must be broad, not an egg-shaped or pinched plate")
+	var disc_width := 0
+	for p: Dictionary in j_source["parts"]:
+		if p["name"] != "hd":
+			continue
+		for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+			if s["at"] == -31:
+				var xs: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
+				disc_width = xs.max() - xs.min()
+	check(disc_width >= 16 and disc_width <= 20,
+			"Jenner canopy must be a modest disc compared to side-pod span")
+	var w := VxModel.load_file(MODELS[1])
+	check(not w.part("ra_compact_elbow_armor").is_empty(),
+			"AC5 forearm must be visibly attached to the shoulder by a compact elbow")
+	var j := VxModel.load_file(MODELS[2])
+	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
+			"Jenner disc must still protrude ahead of the twin laser muzzles")

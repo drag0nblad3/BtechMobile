@@ -544,3 +544,42 @@ old section count and Jenner incorrect disc-tip y sample). Both were
 corrected without deleting their physical geometry checks.
 
 **Launcher alignment correction (post-pass test hardening):** six compact Wolverine launcher muzzle tips aligned to the actual physical rack face at z=-15.5, with physical port openings verified by the voxel test. This metadata correction is not counted as another refinement pass.
+
+
+## Passes 148–152 — proportional and attachment-angle reconstruction
+
+A new **relative scale audit** based on front, side, top and rear views
+of the recent plastic sculpts, compared to the actual pass-147 Godot
+render (not merely reviewing the JSON part in isolation). Reference
+priority: Hansen's Roughriders CGL Atlas, AGoAC CGL Wolverine, Striker
+Lance CGL Jenner. This set deliberately rejects the huge Atlas cap,
+Wolverine oval abdomen and overgrown Jenner disc seen in the gallery.
+
+| Pass | Atlas (whole-assembly) | Wolverine (whole-assembly) | Jenner (whole-assembly) |
+| --- | --- | --- | --- |
+| 148 | Reduce Atlas shoulder-bell span and depth by ~12–15%, keep both crowns level with recessed skull, and reduce huge auxiliary cap bands. | Remove egg-like Wolverine abdominal overplate and reconnect chest to pelvis with a consistent, broad waist-to-ribcage taper. | Downscale Jenner cockpit disc from 24 to ~18 units across and shorten its forward projection from -42 to -36; rescale ALL dependent rim, canopy, frames and underside pieces, not just the nose. |
+| 149 | Resculpt Atlas face depth and neck well: move jaw and optics ahead of the breastplate while retaining a recessed crown between shoulder tops. | Replace Wolverine right-arm diagonal plank with mostly horizontal cannon-carrying forearm and compact canted elbow, preserving the single physical arm and both hands. | Re-angle Jenner under-disc collar as a short downward-forward sloping connection to the cockpit and main hull; avoid a floating plate. |
+| 150 | Re-angle BOTH Atlas arms: upper arms move in toward shoulder sockets, elbows and forearms project forward instead of vertical tree trunks; hands remain connected. | Lower Wolverine head antennae and cap the narrow angular helmet at y58 rather than an oversized spike y63; maintain head beside the compact launcher. | Sweep Jenner side nacelle root angles downward toward their front laser barrels and outward toward rear engines, maintaining hard weapon muzzle points. |
+| 151 | Rebuild tall Atlas shoulder LRM rack as lower narrower 2×5 hardware organically flanking the skull, not a giant extruded tower; retain ten true holes. | Set Wolverine breastplate/abdomen slope and broad hip plate to the same centerline, removing a pinched joint gap beneath the head. | Reduce Jenner digitigrade hock overreach and correct upper-leg-to-tarsus attachment pitch, balancing the head-heavy stance. |
+| 152 | Resculpt Atlas central clavicle collar and chest gap so head, curved shoulders and breastplates form one coherent assembly without the skull floating forward. | Build a real segmented Wolverine elbow joint between upper arm and horizontal AC5 forearm, eliminate an unsupported diagonal bar. | Replace Jenner's tinted forward canopy with properly aligned raised cockpit glass/rim divisions scaled to the new smaller disc and attach them to the crown. |
+
+### Measured silhouette targets
+
+- Atlas shoulder outer extent narrowed 12–15% while keeping crown
+  y54–55 versus skull y53. Keep fists and shoulders physically attached
+  through the articulated arm and elbows. Shorter rack 2×5 cluster,
+  ten re-authored physical open apertures, low beside the skull.
+- Wolverine main abdomen x width roughly 12–14 rather than the prior
+  bloated overplate x16 and narrower original x8. Head antennas
+  shortened to top y59, launcher remains small near crown. AC5 arm
+  has a compact elbow segment then a mostly level forearm instead of
+  a continuous long diagonal shaft.
+- Jenner disc x diameter 18 versus ~38 total pod span (about 47%),
+  not 24/38 (63%). Nose z−36 versus laser mouths z−21.5:
+  still projecting 14.5 units, but no longer a huge beak.
+  Legs / hocks pivot through a less exaggerated bend, and pod roots
+  are angled where they join the main body.
+
+First five passes performed on all three chassis and tested structurally.
+A fresh true five-angle Godot render is necessary before the next five
+passes, as is real voxel occupancy validation. Do not densify or merge.
