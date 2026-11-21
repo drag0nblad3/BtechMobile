@@ -6,7 +6,9 @@ extends RefCounted
 ## hit location is rolled as usual. Not for indirect fire, double-firing
 ## Ultras, or cluster weapons (missiles, LB-X cluster rounds). Partial
 ## cover: legs can't be chosen, the cover modifier is dropped, and rolled
-## leg hits are rerolled.
+## leg hits are rerolled. A targeting computer (TargetingComputer) also
+## allows aiming at a moving 'Mech: +3 instead of its -1, never the head,
+## not with pulse lasers; aimed pulse shots never get its -1.
 
 const HEAD_MOD := 3
 const NEEDS := 4
@@ -15,7 +17,12 @@ const NEEDS := 4
 ## Why `w` can't aim at `loc` on `target` ("" = it can).
 static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int, th: ToHit) -> String:
 	if not ToHitCalc.is_immobile(target):
-		return "only an immobile target (shut down, pilot out, or legless) can be aimed at"
+		if not _has(th, "targeting computer"):
+			return "only an immobile target (shut down, pilot out, or legless) can be aimed at"
+		if w.def.pulse:
+			return "pulse lasers can't aim at a moving target"
+		if loc == Location.HEAD:
+			return "a targeting computer can't aim at the head of a moving 'Mech"
 	if loc < 0 or loc >= Location.COUNT or target.is_location_destroyed(loc):
 		return "that location is gone"
 	if th.spotter_id >= 0:
@@ -32,12 +39,20 @@ static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int,
 
 
 ## Turns a normal to-hit number into the aimed one.
-static func adjust(th: ToHit, loc: int) -> void:
+static func adjust(th: ToHit, loc: int, w: MountedWeapon) -> void:
 	th.aim_loc = loc
 	th.aim_covered = _covered(th)
 	_drop(th, "partial cover")
 	th.cover_hex = Hex.INVALID
+	if not _has(th, "target immobile"):
+		_drop(th, "targeting computer")
+		th.add("aimed with targeting computer", TargetingComputer.MOBILE_AIM_MOD,
+				"The targeting computer can pick a location on a moving 'Mech: +3 instead of its usual -1.")
+		return
+	if w.def.pulse:
+		_drop(th, "targeting computer")
 	if loc == Location.HEAD:
+		_drop(th, "targeting computer")
 		_drop(th, "target immobile")
 		th.add("aimed at the head", HEAD_MOD, "Picking out the cockpit is hard: no -4 for an immobile target, +3 instead.")
 	else:
@@ -62,8 +77,12 @@ static func location(dice: Dice, th: ToHit, arc_id: int) -> Dictionary:
 
 
 static func _covered(th: ToHit) -> bool:
+	return _has(th, "partial cover")
+
+
+static func _has(th: ToHit, label: String) -> bool:
 	for m in th.mods:
-		if m["label"] == "partial cover":
+		if m["label"] == label:
 			return true
 	return false
 

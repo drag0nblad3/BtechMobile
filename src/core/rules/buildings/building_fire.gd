@@ -52,6 +52,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	ToHitCalc.add_attacker_conditions(th, attacker, los)
 	if Location.is_arm(w.loc):
 		ToHitCalc.add_arm_actuators(th, attacker, w.loc)
+	TargetingComputer.add(th, attacker, w)
 	th.add("building", -4, "A building can't move or dodge: -4.")
 	if dist <= 1:
 		th.auto_hit = "Building next to you"

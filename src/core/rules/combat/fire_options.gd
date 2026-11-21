@@ -41,7 +41,7 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 				target.id != primary)
 		var aim := int(s.get("aim", -1))
 		if aim >= 0 and th.possible() and AimedShot.problem(state, attacker.weapons[wi], target, aim, th) == "":
-			AimedShot.adjust(th, aim)
+			AimedShot.adjust(th, aim, attacker.weapons[wi])
 		if not th.possible():
 			continue
 		used[wi] = true

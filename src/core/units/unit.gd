@@ -34,6 +34,7 @@ var destroyed_reason: String = ""
 var destroyed_announced: bool = false
 var prone: bool = false
 var flooded: Dictionary = {}  ## Location -> true once a hull breach floods it (HullBreach).
+var tc_lost: bool = false  ## Targeting computer destroyed by a critical hit.
 var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
 var shutdown: bool = false
 
