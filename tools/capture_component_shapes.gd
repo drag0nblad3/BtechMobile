@@ -57,11 +57,14 @@ func _initialize() -> void:
 	camera.fov = 40
 	camera.current = true
 	scene.add_child(camera)
-	# Three diagnostic angles for the final ten-pass geometry audit.
-	# They are collaged into one user-facing image, not ten separate renders.
+	# Five geometry-audit viewpoints in ONE combined image: no per-view
+	# render spam. Top down and head-on are vital for detecting duplicated
+	# limbs, over-wide shoulders and missing equipment.
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
+	views.append({"name": "gallery_front", "who": -1, "view": "front"})
 	views.append({"name": "gallery_side", "who": -1, "view": "side"})
 	views.append({"name": "gallery_rear_three_quarter", "who": -1, "view": "rear_three_quarter"})
+	views.append({"name": "gallery_top_down", "who": -1, "view": "top"})
 	_setup_view(step)
 
 
@@ -106,7 +109,7 @@ func _setup_view(index: int) -> void:
 		# down the gallery's X-spacing axis (which stacks all three mechs).
 		models[i].rotation.y = PI / 2.0 if view == "side" else (PI if view.begins_with("rear") else 0.0)
 		models[i].visible = who == -1 or i == who
-		labels[i].visible = who == -1
+		labels[i].visible = (who == -1 and view != "top")
 		var selected: Array[String] = []
 		if i == who and target.has("parts"):
 			for name: String in target["parts"]:
@@ -125,6 +128,12 @@ func _setup_view(index: int) -> void:
 			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"rear_three_quarter":
 			camera.look_at_from_position(center + Vector3(distance * 0.63, 1.1, -distance * 0.79), center)
+		"top":
+			# Explicit +Z up avoids degenerate look_at() with straight-down
+			# camera; all three chassis stay spaced along world X.
+			camera.look_at_from_position(
+					center + Vector3(0, distance, 0),
+					center, Vector3(0, 0, 1))
 
 
 func _process(_delta: float) -> bool:
@@ -146,10 +155,10 @@ func _process(_delta: float) -> bool:
 	capture_images.append(image)
 	step += 1
 	if step >= views.size():
-		# Three views, one combined PNG. Downscale only in this diagnostic,
+		# Five views, one combined PNG. Downscale only in this diagnostic,
 		# never the sculpt or mesh, to keep uploads small.
 		var tile_w := 1200
-		var tile_h := 720
+		var tile_h := 600
 		var contact := Image.create(tile_w, tile_h * capture_images.size(),
 				false, Image.FORMAT_RGBA8)
 		for i in capture_images.size():
