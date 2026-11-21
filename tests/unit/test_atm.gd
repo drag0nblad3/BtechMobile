@@ -42,6 +42,10 @@ func test_munitions_and_modes() -> void:
 	th = ToHitCalc.weapon(v[0], v[1], w, v[2])
 	check(not th.mods.any(func(m: Dictionary) -> bool: return m["label"] == "minimum range"), "HE: none")
 	check_eq(WeaponModes.ammo_kind(w), Atm.HE)
+	w.mode = Atm.ER
+	th = ToHitCalc.weapon(v[0], v[1], w, v[2])
+	check(th.mods.any(func(m: Dictionary) -> bool: return m["label"] == "minimum range"), "ER: 4-hex minimum too")
+	w.mode = Atm.HE
 	var far := _setup(20)
 	check(not ToHitCalc.weapon(far[0], far[1], far[1].weapons[0], far[2]).possible(), "standard reaches 15")
 	far[1].weapons[0].mode = Atm.ER

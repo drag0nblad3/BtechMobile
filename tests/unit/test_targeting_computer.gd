@@ -58,3 +58,21 @@ func test_aimed_shot_at_moving_target() -> void:
 	check_eq(pulse.aim_loc, -1, "pulse can't aim at a moving target")
 	check(not AimPicker.available(_setup(false)[1], t), "no computer, moving target: no aim button")
 	check(AimPicker.available(a, t))
+
+
+func _mounted(id: String) -> MountedWeapon:
+	return MountedWeapon.new(weapons().get_def(id), Location.RA, false)
+
+
+func test_links_rapid_fire_but_no_machine_guns() -> void:
+	for id in ["machine_gun", "c_light_machine_gun", "c_machine_gun", "c_heavy_machine_gun", "c_er_flamer"]:
+		check(not TargetingComputer.linked(_mounted(id)), "%s isn't linked" % id)
+	var uac := _mounted("ultra_ac5")
+	uac.mode = WeaponModes.ULTRA
+	check(TargetingComputer.linked(uac), "rapid-firing Ultra keeps the -1")
+	var rac := _mounted("rotary_ac5")
+	rac.mode = "x6"
+	check(TargetingComputer.linked(rac), "rapid-firing rotary keeps the -1")
+	var lbx := _mounted("lb10x_ac")
+	lbx.mode = WeaponModes.CLUSTER
+	check(not TargetingComputer.linked(lbx), "LB-X cluster rounds aren't linked")
