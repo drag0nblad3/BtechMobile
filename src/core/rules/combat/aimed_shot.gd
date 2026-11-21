@@ -25,7 +25,7 @@ static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int,
 			return "a targeting computer can't aim at the head of a moving 'Mech"
 	if loc < 0 or loc >= Location.COUNT or target.is_location_destroyed(loc):
 		return "that location is gone"
-	if th.spotter_id >= 0:
+	if th.indirect:
 		return "indirect fire can't aim"
 	if w.def.is_cluster() or WeaponModes.ammo_kind(w) == WeaponModes.CLUSTER:
 		return "cluster weapons can't aim"

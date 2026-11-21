@@ -33,14 +33,23 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	th.legs_only = wc["legs_only"]
 	var los := LineOfSight.check(state.map, attacker, target)
 	var spotter: Unit = null
+	var pod := false
 	if los["blocked"]:
-		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect else null
-		if spotter == null:
+		pod = Narc.indirect(state, attacker, w, target)
+		spotter = IndirectFire.spotter(state, attacker, target) if w.def.indirect and not pod else null
+		if pod:
+			los = LineOfSight.none()  # no spotter: only the target's own hex counts (p. 188)
+		elif spotter == null:
 			th.impossible = "No line of sight (%s)%s" % [los["reason"],
 					"; no friendly 'Mech can spot for indirect fire" if w.def.indirect else ""]
 			return th
-		los = LineOfSight.check(state.map, spotter, target)
+		else:
+			los = LineOfSight.check(state.map, spotter, target)
 		los["cover"] = Hex.INVALID  # indirect fire ignores cover from hills (p. 66)
+	else:
+		th.impossible = LegFire.blocked(state, attacker, w, target)
+		if th.impossible != "":
+			return th
 	var dist := Hex.distance(attacker.coord, target.coord)
 	var p := Atm.profile(w)  # ATM munitions change the ranges
 	var br := p.bracket(dist)
@@ -58,7 +67,10 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		br += 1
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	add_movement(th, attacker, target)
-	if spotter:
+	th.indirect = spotter != null or pod
+	if pod:
+		Narc.add_indirect(th)
+	elif spotter:
 		IndirectFire.add_mods(th, state, spotter)
 		th.spotter_id = spotter.id
 	IndirectFire.add_spotting_mod(th, state, attacker)
