@@ -15,6 +15,7 @@ static func damage_for(u: Unit, levels: int) -> int:
 ## `side` forces the side hit (FiringArc.REAR for a missed death from above).
 static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: int,
 		reason: String, side: int = -1) -> void:
+	levels = Avalanche.slide(state, dice, emit, u, levels)
 	if side < 0:
 		side = FiringArc.REAR if dice.d6() == 1 else FiringArc.FRONT
 	u.prone = true

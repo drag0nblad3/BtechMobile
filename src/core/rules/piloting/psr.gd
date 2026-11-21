@@ -101,6 +101,7 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 		th.add(reason, mod, "")
 	if not jumping:
 		Wind.add(th, state, u)
+	Surfaces.add_psr(th, state, u)
 	var r := dice.roll_2d6()
 	var ok := r >= th.target()
 	emit.call(GameEvent.PSR, {"unit_id": u.id, "roll": r, "need": th.target(), "ok": ok,

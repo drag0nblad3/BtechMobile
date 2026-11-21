@@ -36,6 +36,7 @@ var conditions := Conditions.new():
 		conditions = v
 		if map != null:
 			map.windy = v.wind
+			Surfaces.apply_conditions(map, v)
 ## Units that passed this turn's low-visibility sensor check: id -> true.
 var sees_through: Dictionary = {}
 var game_over: bool = false

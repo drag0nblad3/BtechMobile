@@ -5,6 +5,8 @@ extends Node3D
 
 const SHADER := preload("res://src/view/shaders/terrain.gdshader")
 const INSET := 0.97  ## Slight gap between hexes shows the grid.
+## Hex top colors for ice, mud and snow (Surfaces), replacing the terrain's.
+const SURFACE_TOPS := {"ice": Color("#b8d4e3"), "mud": Color("#5a4632"), "snow": Color("#e8ecef")}
 
 var map: BattleMap
 
@@ -13,11 +15,11 @@ func build(battle_map: BattleMap) -> void:
 	map = battle_map
 	var noise := _noise_texture()
 	var mesh := HexMesh.prism(HexLayout.HEX_SIZE * INSET)
-	var by_type := {}  # TerrainType -> Array[MapTile]
+	var by_type := {}  # [TerrainType, surface] -> Array[MapTile]
 	for t: MapTile in map.tiles.values():
-		by_type.get_or_add(t.terrain, []).append(t)
-	for terrain: TerrainType in by_type:
-		add_child(_prism_layer(mesh, by_type[terrain], terrain, noise))
+		by_type.get_or_add([t.terrain, t.surface], []).append(t)
+	for key: Array in by_type:
+		add_child(_prism_layer(mesh, by_type[key], key[0], noise, key[1]))
 	add_child(WoodsProps.build(map))
 	add_child(WaterSurfaces.build(map))
 	add_child(BuildingProps.build(map))
@@ -32,7 +34,8 @@ func rebuild() -> void:
 	build(map)
 
 
-func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture2D) -> MultiMeshInstance3D:
+func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture2D,
+		surface := "") -> MultiMeshInstance3D:
 	var mm := MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.use_colors = true
@@ -47,11 +50,11 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 		mm.set_instance_color(i, _level_tint(t.floor_level(), range_))
 	var mat := ShaderMaterial.new()
 	mat.shader = SHADER
-	mat.set_shader_parameter("top_color", terrain.top_color)
+	mat.set_shader_parameter("top_color", SURFACE_TOPS.get(surface, terrain.top_color))
 	mat.set_shader_parameter("detail_color", terrain.detail_color)
 	mat.set_shader_parameter("noise_tex", noise)
 	var inst := MultiMeshInstance3D.new()
-	inst.name = "Terrain_%s" % terrain.id
+	inst.name = "Terrain_%s%s" % [terrain.id, "_" + surface if surface != "" else ""]
 	inst.multimesh = mm
 	inst.material_override = mat
 	return inst

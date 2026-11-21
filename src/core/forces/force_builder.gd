@@ -7,7 +7,8 @@ const MAX_UNITS := 4
 const BUDGETS := [2000, 3000, 4500, 6000, 8000]
 ## Battlefield condition choices on the start screen (Conditions.from_dict).
 const CONDITION_PRESETS := [{}, {"night": true}, {"cold": 1}, {"cold": 3}, {"heat": 1},
-		{"heat": 3}, {"gravity": 0.5}, {"gravity": 1.5}, {"wind": true}, {"low_visibility": true}]
+		{"heat": 3}, {"gravity": 0.5}, {"gravity": 1.5}, {"wind": true}, {"low_visibility": true},
+		{"rain": true}, {"snowfall": true}, {"cold": 2, "snowfall": true, "wind": true, "low_visibility": true}]
 
 var units: UnitDb
 var budget: int = 3000  ## Battle Value per side.

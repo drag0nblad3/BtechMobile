@@ -30,6 +30,14 @@ static func effects(c: Conditions) -> Array[String]:
 		out.append("Wind: +1 to every piloting roll outside buildings. A 'Mech that jumps rolls at +1 on landing and falls a level if it fails. Smoke and fog are blown away.")
 	if c.low_visibility:
 		out.append("Low visibility: +1 to every ranged attack. At the start of each Weapon Attack Phase every 'Mech makes a sensor check (its piloting skill); passing it removes the +1 for that turn.")
+	if c.rain:
+		out.append("Rain: every hex but water, pavement and buildings is mud; a running 'Mech that turns in mud must roll (at -1) or fall. Nothing can be set on fire.")
+	if c.snowfall:
+		out.append("Snowfall: deep snow everywhere but water. Ending a move in snow sheds 1 extra heat per leg (4 lying down), but a 'Mech that falls next to a slope may start an avalanche.")
+	if c.cold > 0:
+		out.append("The cold freezes every water hex: 'Mechs walk on the ice, and any piloting roll made on ice is +1.")
+	if c.heat > 0:
+		out.append("The heat dries up all water: lakes become dry sinkholes.")
 	if c.night:
 		out.append("Night: 'Mech sensors see heat and low light, so darkness doesn't change how 'Mechs fight.")
 	return out

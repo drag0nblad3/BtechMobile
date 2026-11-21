@@ -83,7 +83,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   points per ton (17.92 ferro-fibrous, rounded up to the half ton), weapon tons, 1 t per ammo item.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
 
-Maps may also list `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
+Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
 
 ## `data/scenarios/<id>.json`
 ```json
