@@ -78,3 +78,21 @@ func test_authored_weapon_mouths_are_physically_empty() -> void:
 		var muzzle: Vector3 = model.muzzles[location][0]
 		var mouth := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
 		check(not section["cells"].has(mouth), "weapon bore obstructed %s at %s" % [model.id, mouth])
+
+
+func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
+	# Shape-stage regressions: these silhouette-defining landmarks must be
+	# physical authored parts, not a texture, procedural detail or faux paint.
+	var atlas := VxModel.load_file(MODELS[0])
+	check(not atlas.part("hd_cheek_left").is_empty(), "Atlas needs separate cheek silhouette")
+	check(not atlas.part("hd_cheek_right").is_empty(), "Atlas needs matching cheek silhouette")
+	check(atlas.part("rt_ac20_shroud")["cells"].has(Vector3i(8, 44, -24)),
+			"Atlas AC20 barrel must project from the right torso")
+	var wolverine := VxModel.load_file(MODELS[1])
+	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(15, 26, -31)),
+			"Wolverine forearm cannon must project independently of shoulder")
+	var jenner := VxModel.load_file(MODELS[2])
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -39)),
+			"Jenner aircraft nose must extend forward of laser housings")
+	check(not jenner.part("ll_hock_joint").is_empty(),
+			"Jenner knee and rear hock must be independent geometry")
