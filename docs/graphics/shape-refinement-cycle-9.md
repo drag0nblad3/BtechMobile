@@ -440,3 +440,29 @@ Jenner short blunt cockpit saucer plus independently mounted twin laser pods.
 Godot's single five-view contact sheet should be reviewed before the next
 five passes. Muzzles remain at their authored locations, subdivision remains
 one, all valid source contours retain section ordering.
+
+
+## Passes 133–137: second half of the coordinated large resculpt
+
+The five-view real Godot render at pass 132 guided the remaining passes.
+In particular, the Wolverine cannon's former long diagonal plank was rebuilt
+into a bent elbow that descends into a more horizontal forearm. Atlas
+lower-body armor, Jenner pod/leg articulation, and the distinct feet of
+each chassis were likewise reworked as **actual section geometry**, not
+a high-resolution decoration pass.
+
+| Pass | Atlas | Wolverine | Jenner |
+| --- | --- | --- | --- |
+| 133 | Redraw upper arm and shoulder-to-elbow Atlas armor planes, reducing bulky flat guards. | Re-curve the right gun arm into a lower horizontal forearm joined to a raised elbow, correcting the plank-like side view. | Replace the main Jenner lateral engine housings with arched tapered root shells, mirrored to the opposite side. |
+| 134 | Recast the Atlas lower-arm gauntlet as a smaller armored shell with a distinct wrist break, mirrored to both fists. | Shorten and chamfer the single Wolverine left fist and wrist cuff, keeping the independent right autocannon. | Taper all four Jenner laser-housing rear shells into compact nacelle roots while preserving their actual forward bores. |
+| 135 | Taper Atlas hip-to-knee main thighs and their separately authored paired hip fairings, exposing the inner-leg gap. | Replace squared Wolverine upper thigh outlines with slimmer athletic medium-weight limb cross-sections. | Sharpen Jenner hip and forward upper-leg sections into independent reverse-joint thigh shapes. |
+| 136 | Reduce Atlas calf and shin-plate volume below the knee while retaining the ankle bearings and knee shields. | Physically narrow the Wolverine calf sections and front greave; the profile is no longer Atlas-thick. | Thin the Jenner rearward-leaning calf and tarsus shaft, keeping separate rear hock contacts. |
+| 137 | Resculpt the Atlas waist bridge and broad split-toe boots into shorter stable shapes, separating heavy feet from inflated calves. | Reform Wolverine wedge boots and the tapered rear jump-pack roof, retaining the single AC5 and SRM6 weapons. | Shorten Jenner's independent toes and tapered rear reactor spine; preserve digitigrade knee and aft hock. |
+
+**Entire batch 128–137:** exactly 10 coordinated passes,
+30 per-chassis interventions; 3 models changed in every pass.
+Catalyst plastic model reference priority; retain `subdivide: 1`,
+unaltered weapon muzzle metadata, mirrored components, and separate
+arm/leg rig parts. Five-angle capture and voxel-occupancy unit
+tests are technical gates only. CGL likeness remains subject to
+human visual approval. No merge and no APK.

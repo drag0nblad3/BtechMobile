@@ -379,3 +379,31 @@ func test_passes_128_to_132_resculpted_silhouette_landmarks() -> void:
 	check_eq(nose[0]["at"], -27, "Jenner needs short CGL rounded cockpit")
 	check(nose[1]["polygon"][0][0] < nose[0]["polygon"][0][0],
 			"Jenner saucer must flare behind its blunt nose")
+
+
+func test_passes_128_to_137_weapon_arm_and_limb_structure_remain_sound() -> void:
+	# The new component forms must still be physical occupied cells.
+	var atlas := VxModel.load_file(MODELS[0])
+	var w := VxModel.load_file(MODELS[1])
+	var jenner := VxModel.load_file(MODELS[2])
+	for model in [atlas, w, jenner]:
+		check(model.errors.is_empty(), "invalid resculpt model " + model.id)
+	var mount: Dictionary = w.part("ra_cannon_mount")["cells"]
+	var arm: Dictionary = w.part("ra")["cells"]
+	var housing: Dictionary = w.part("ra_ac5_shroud")["cells"]
+	var touch_arm := false
+	var touch_gun := false
+	for v: Vector3i in mount:
+		touch_arm = touch_arm or arm.has(v)
+		touch_gun = touch_gun or housing.has(v)
+	check(touch_arm, "Wolverine right upper arm no longer meets cannon elbow")
+	check(touch_gun, "Wolverine AC5 bore housing detached")
+	check_eq(w.muzzles[Location.RA].size(), 1, "Wolverine right arm has one cannon")
+	check_eq(w.muzzles[Location.LT].size(), 6, "Wolverine left SRM6 must remain")
+	for name in ["ll_shin", "rl_shin", "ll_toe_outer", "rl_toe_outer",
+			"ct_left_breast_plate", "ct_right_breast_plate"]:
+		check(not atlas.part(name).is_empty(), "Atlas missing " + name)
+	for name in ["ll_tarsus", "rl_tarsus", "ll_hock_joint", "rl_hock_joint",
+			"la_laser_lower", "ra_laser_lower", "la_laser_upper",
+			"ra_laser_upper"]:
+		check(not jenner.part(name).is_empty(), "Jenner missing " + name)
