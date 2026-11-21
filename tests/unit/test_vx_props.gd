@@ -68,3 +68,21 @@ func test_woods_use_one_multimesh_per_tree_variant() -> void:
 	check(woods.get_child_count() <= VxTrees.CONIFERS + VxTrees.BROADLEAF, "layers: %d" % woods.get_child_count())
 	check(trees > 50, "trees: %d" % trees)
 	woods.free()
+
+
+func test_fire_and_blasts_build_cube_multimeshes() -> void:
+	var map := make_map(["c0 c0", "c0 c0"])
+	map.get_tile(Vector2i(0, 0)).on_fire = true
+	var fires := FireProps.build(map)
+	var cubes := 0
+	for c in fires.get_children():
+		if c is MultiMeshInstance3D:
+			cubes += (c as MultiMeshInstance3D).multimesh.instance_count
+	check_eq(cubes, FireProps.FLAMES + FireProps.SOOT)
+	fires.free()
+	var holder := Node3D.new()
+	for kind: String in VxBlast.KINDS:
+		var p: Dictionary = VxBlast.KINDS[kind]
+		var b := VxBlast.spawn(holder, Vector3.ZERO, kind, 7)
+		check_eq(b.multimesh.instance_count, int(p["fire"]) + int(p["smoke"]) + int(p["debris"]), kind)
+	holder.free()

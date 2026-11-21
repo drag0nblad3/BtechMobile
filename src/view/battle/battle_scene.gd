@@ -7,6 +7,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 
 var controller: GameController
 var map_view: MapView
+var fx := BattleFx.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
 var gestures: TouchGestures
@@ -51,6 +52,8 @@ func _build_views(state: GameState) -> void:
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
 	units_layer.build(state)
+	fx.setup(state, units_layer)
+	add_child(fx)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -176,6 +179,7 @@ func _on_event(e: GameEvent) -> void:
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
 	hud.log_view.add_line(explainer.describe(e, s), bold)
+	fx.play(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:
