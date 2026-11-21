@@ -62,10 +62,6 @@ func _initialize() -> void:
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
 	views.append({"name": "gallery_side", "who": -1, "view": "side"})
 	views.append({"name": "gallery_rear_three_quarter", "who": -1, "view": "rear_three_quarter"})
-	# One user-facing image, now a three-angle contact sheet so bloat,
-	# missing rear equipment, and leg/arm gaps are auditable.
-	views.append({"name": "side_diagnostic", "who": -1, "view": "side"})
-	views.append({"name": "rear_diagnostic", "who": -1, "view": "rear"})
 	_setup_view(step)
 
 
@@ -108,7 +104,7 @@ func _setup_view(index: int) -> void:
 	for i in models.size():
 		# Turn each model about its own origin instead of orbiting the camera
 		# down the gallery's X-spacing axis (which stacks all three mechs).
-		models[i].rotation.y = PI / 2.0 if view == "side" else (PI if view == "rear" else 0.0)
+		models[i].rotation.y = PI / 2.0 if view == "side" else (PI if view.begins_with("rear") else 0.0)
 		models[i].visible = who == -1 or i == who
 		labels[i].visible = who == -1
 		var selected: Array[String] = []
@@ -128,7 +124,7 @@ func _setup_view(index: int) -> void:
 		"rear":
 			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"rear_three_quarter":
-			camera.look_at_from_position(center + Vector3(-distance * 0.60, 1.1, distance * 0.80), center)
+			camera.look_at_from_position(center + Vector3(distance * 0.63, 1.1, -distance * 0.79), center)
 
 
 func _process(_delta: float) -> bool:
