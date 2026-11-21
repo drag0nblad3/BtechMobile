@@ -88,3 +88,17 @@ func test_weapons_have_chassis_specific_openings() -> void:
 	check_eq(jenner.muzzles[Location.CT].size(), 4, "Jenner SRM4")
 	check_eq(jenner.muzzles[Location.LA].size(), 2, "left laser pair")
 	check_eq(jenner.muzzles[Location.RA].size(), 2, "right laser pair")
+
+
+func test_reference_mechs_can_build_damageable_animated_rigs() -> void:
+	for path: String in FILES:
+		var mech := VxMech.from_file(path)
+		check(mech.model.errors.is_empty(), "build errors for %s" % path)
+		check(mech.voxel_count() >= 100000, "mesh lost authored cells: %s" % path)
+		check(mech.triangle_count() > 0, "no rendered triangles: %s" % path)
+		check(mech.hips[0] != null and mech.hips[1] != null, "no hips: %s" % path)
+		check(mech.knees[0] != null and mech.knees[1] != null, "no knees: %s" % path)
+		check(mech.ankles[0] != null and mech.ankles[1] != null, "no ankles: %s" % path)
+		if mech.model.legs == "digitigrade":
+			check(mech.hocks[0] != null and mech.hocks[1] != null, "digitigrade hocks: %s" % path)
+		mech.free()
