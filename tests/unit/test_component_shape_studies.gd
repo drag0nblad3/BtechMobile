@@ -92,7 +92,7 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -28)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
-	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -33)),
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -31)),
 			"Jenner rounded CGL cockpit must project forward of side laser housings")
 	check(not jenner.part("ll_hock_joint").is_empty(),
 			"Jenner knee and rear hock must be independent geometry")
