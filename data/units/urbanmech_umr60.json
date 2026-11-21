@@ -1,0 +1,14 @@
+{
+  "id": "urbanmech_umr60", "name": "UrbanMech", "model": "UM-R60", "tonnage": 30,
+  "walk_mp": 2, "jump_mp": 2, "heat_sinks": 10, "sprite": "urbanmech",
+  "role": "City brawler. Slow but tough for its size: an AC/10 to ambush from behind buildings, and jump jets to hop onto rooftops.",
+  "armor": {"HD": 9, "CT": 15, "LT": 11, "RT": 11, "LA": 10, "RA": 9, "LL": 14, "RL": 14},
+  "rear_armor": {"CT": 5, "LT": 3, "RT": 3},
+  "equipment": {
+    "RA": ["ac10"],
+    "LA": ["small_laser"],
+    "RT": ["ammo:ac10"],
+    "LL": ["jump_jet"],
+    "RL": ["jump_jet"]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "annihilator_anh1a", "name": "Annihilator", "model": "ANH-1A", "tonnage": 100,
+  "walk_mp": 2, "jump_mp": 0, "heat_sinks": 13, "sprite": "annihilator",
+  "role": "Slow city fighter. Four AC/10s hit anything that comes close, but at two walking MP the enemy picks the fight.",
+  "armor": {"HD": 9, "CT": 43, "LT": 30, "RT": 30, "LA": 30, "RA": 30, "LL": 38, "RL": 38},
+  "rear_armor": {"CT": 14, "LT": 9, "RT": 9},
+  "equipment": {
+    "RA": ["ac10", "medium_laser"],
+    "LA": ["ac10", "medium_laser"],
+    "RT": ["ac10", "ammo:ac10*2", "medium_laser"],
+    "LT": ["ac10", "ammo:ac10*2", "medium_laser"],
+    "CT": ["heat_sink*2"],
+    "RL": ["heat_sink"]
+  }
+}

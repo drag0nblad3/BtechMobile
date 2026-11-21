@@ -1,0 +1,14 @@
+{
+  "id": "ostscout_ott7j", "name": "Ostscout", "model": "OTT-7J", "tonnage": 35,
+  "walk_mp": 8, "jump_mp": 8, "heat_sinks": 10, "sprite": "ostscout",
+  "role": "Pure scout. Eight walking and jumping MP and a single medium laser: spot for your LRMs and stay out of the fight.",
+  "armor": {"HD": 9, "CT": 10, "LT": 8, "RT": 8, "LA": 6, "RA": 6, "LL": 9, "RL": 9},
+  "rear_armor": {"CT": 3, "LT": 2, "RT": 2},
+  "equipment": {
+    "CT": ["medium_laser"],
+    "LT": ["jump_jet*2"],
+    "RT": ["jump_jet*2"],
+    "LL": ["jump_jet*2"],
+    "RL": ["jump_jet*2"]
+  }
+}
