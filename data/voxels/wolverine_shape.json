@@ -2,7 +2,7 @@
   "id": "wolverine_shape",
   "name": "Wolverine WVR-6R — silhouette study",
   "unit": "wolverine_wvr6r",
-  "voxel_size": 0.037,
+  "voxel_size": 0.041,
   "subdivide": 1,
   "legs": "plantigrade",
   "materials": [
@@ -481,140 +481,116 @@
         },
         {
           "loft": {
-            "axis": "y",
+            "axis": "z",
             "sections": [
               {
-                "at": 31,
+                "at": -11,
                 "polygon": [
                   [
-                    -3,
-                    -6
-                  ],
-                  [
-                    -2,
-                    -8
-                  ],
-                  [
-                    2,
-                    -8
-                  ],
-                  [
-                    3,
-                    -6
+                    -4,
+                    31
                   ],
                   [
                     4,
-                    -5
+                    31
+                  ],
+                  [
+                    7,
+                    35
+                  ],
+                  [
+                    7,
+                    39
                   ],
                   [
                     4,
-                    -4
-                  ],
-                  [
-                    2,
-                    -3
-                  ],
-                  [
-                    -2,
-                    -3
+                    43
                   ],
                   [
                     -4,
-                    -4
+                    43
                   ],
                   [
-                    -4,
-                    -5
+                    -7,
+                    39
+                  ],
+                  [
+                    -7,
+                    35
                   ]
                 ]
               },
               {
-                "at": 37,
+                "at": -9,
                 "polygon": [
                   [
-                    -5,
-                    -7
-                  ],
-                  [
                     -4,
-                    -9
+                    31
                   ],
                   [
                     4,
-                    -9
+                    31
                   ],
                   [
-                    5,
-                    -7
+                    7,
+                    35
                   ],
                   [
-                    6,
-                    -5
+                    7,
+                    40
                   ],
                   [
-                    5,
-                    -4
+                    4,
+                    43
                   ],
                   [
-                    3,
-                    -4
+                    -4,
+                    43
                   ],
                   [
-                    -3,
-                    -4
+                    -7,
+                    40
                   ],
                   [
-                    -5,
-                    -4
-                  ],
-                  [
-                    -6,
-                    -5
+                    -7,
+                    35
                   ]
                 ]
               },
               {
-                "at": 41,
+                "at": -6,
                 "polygon": [
                   [
-                    -5,
-                    -7
-                  ],
-                  [
                     -3,
-                    -8
+                    29
                   ],
                   [
                     3,
-                    -8
-                  ],
-                  [
-                    5,
-                    -7
+                    29
                   ],
                   [
                     6,
-                    -5
+                    34
                   ],
                   [
-                    5,
-                    -4
+                    7,
+                    40
                   ],
                   [
-                    3,
-                    -4
+                    4,
+                    44
                   ],
                   [
-                    -3,
-                    -4
+                    -4,
+                    44
                   ],
                   [
-                    -5,
-                    -4
+                    -7,
+                    40
                   ],
                   [
                     -6,
-                    -5
+                    34
                   ]
                 ]
               }
@@ -647,11 +623,11 @@
                   ],
                   [
                     -1,
-                    -8
+                    -10
                   ],
                   [
                     1,
-                    -8
+                    -10
                   ],
                   [
                     2,
@@ -659,27 +635,27 @@
                   ],
                   [
                     3,
-                    -3
+                    -4
                   ],
                   [
                     3,
-                    0
+                    1
                   ],
                   [
                     2,
-                    1
+                    2
                   ],
                   [
                     -2,
+                    2
+                  ],
+                  [
+                    -3,
                     1
                   ],
                   [
                     -3,
-                    0
-                  ],
-                  [
-                    -3,
-                    -3
+                    -4
                   ]
                 ]
               },
@@ -692,11 +668,11 @@
                   ],
                   [
                     -2,
-                    -10
+                    -12
                   ],
                   [
                     2,
-                    -10
+                    -12
                   ],
                   [
                     3,
@@ -708,7 +684,7 @@
                   ],
                   [
                     4,
-                    0
+                    1
                   ],
                   [
                     2,
@@ -720,7 +696,7 @@
                   ],
                   [
                     -4,
-                    0
+                    1
                   ],
                   [
                     -4,
@@ -737,11 +713,11 @@
                   ],
                   [
                     -2,
-                    -10
+                    -12
                   ],
                   [
                     2,
-                    -10
+                    -12
                   ],
                   [
                     3,
@@ -753,7 +729,7 @@
                   ],
                   [
                     4,
-                    0
+                    1
                   ],
                   [
                     2,
@@ -765,7 +741,7 @@
                   ],
                   [
                     -4,
-                    0
+                    1
                   ],
                   [
                     -4,
@@ -777,64 +753,64 @@
                 "at": 49,
                 "polygon": [
                   [
-                    -2,
+                    -3,
                     -5
                   ],
                   [
                     -2,
-                    -8
+                    -10
                   ],
                   [
                     2,
-                    -8
-                  ],
-                  [
-                    2,
-                    -5
+                    -10
                   ],
                   [
                     3,
+                    -5
+                  ],
+                  [
+                    4,
                     -3
                   ],
                   [
-                    3,
+                    4,
                     1
                   ],
                   [
                     2,
-                    1
+                    2
                   ],
                   [
                     -2,
+                    2
+                  ],
+                  [
+                    -4,
                     1
                   ],
                   [
-                    -3,
-                    1
-                  ],
-                  [
-                    -3,
+                    -4,
                     -3
                   ]
                 ]
               },
               {
-                "at": 50,
+                "at": 51,
                 "polygon": [
                   [
-                    -1,
+                    -2,
                     -4
                   ],
                   [
                     -1,
-                    -6
+                    -7
                   ],
                   [
                     1,
-                    -6
+                    -7
                   ],
                   [
-                    1,
+                    2,
                     -4
                   ],
                   [
@@ -843,19 +819,19 @@
                   ],
                   [
                     2,
-                    0
+                    1
                   ],
                   [
                     1,
-                    1
+                    2
                   ],
                   [
                     -1,
-                    1
+                    2
                   ],
                   [
                     -2,
-                    0
+                    1
                   ],
                   [
                     -2,
@@ -872,81 +848,81 @@
             "axis": "z",
             "sections": [
               {
-                "at": -9,
+                "at": -13,
                 "polygon": [
                   [
-                    -1,
+                    -3,
                     44
-                  ],
-                  [
-                    1,
-                    44
-                  ],
-                  [
-                    2,
-                    45
-                  ],
-                  [
-                    2,
-                    46
-                  ],
-                  [
-                    1,
-                    47
-                  ],
-                  [
-                    -1,
-                    47
-                  ],
-                  [
-                    -2,
-                    46
-                  ],
-                  [
-                    -2,
-                    45
-                  ]
-                ]
-              },
-              {
-                "at": -8,
-                "polygon": [
-                  [
-                    -2,
-                    43
-                  ],
-                  [
-                    2,
-                    43
                   ],
                   [
                     3,
                     44
                   ],
                   [
+                    4,
+                    45
+                  ],
+                  [
+                    4,
+                    47
+                  ],
+                  [
                     3,
-                    47
-                  ],
-                  [
-                    2,
-                    48
-                  ],
-                  [
-                    -2,
-                    48
+                    49
                   ],
                   [
                     -3,
+                    49
+                  ],
+                  [
+                    -4,
                     47
                   ],
                   [
-                    -3,
-                    44
+                    -4,
+                    45
                   ]
                 ]
               },
               {
-                "at": -7,
+                "at": -12,
+                "polygon": [
+                  [
+                    -3,
+                    44
+                  ],
+                  [
+                    3,
+                    44
+                  ],
+                  [
+                    4,
+                    45
+                  ],
+                  [
+                    4,
+                    48
+                  ],
+                  [
+                    3,
+                    49
+                  ],
+                  [
+                    -3,
+                    49
+                  ],
+                  [
+                    -4,
+                    48
+                  ],
+                  [
+                    -4,
+                    45
+                  ]
+                ]
+              },
+              {
+                "at": -10,
                 "polygon": [
                   [
                     -2,
@@ -984,200 +960,51 @@
               }
             ]
           },
-          "mat": "edge"
+          "mat": "window"
+        },
+        {
+          "box": [
+            [
+              -3,
+              50,
+              0
+            ],
+            [
+              -3,
+              56,
+              0
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              3,
+              50,
+              0
+            ],
+            [
+              3,
+              53,
+              0
+            ]
+          ],
+          "mat": "inside"
         },
         {
           "erase": [
             [
               -2,
               44,
-              -10
+              -12
             ],
             [
               1,
               46,
-              -8
+              -10
             ]
           ]
-        },
-        {
-          "loft": {
-            "axis": "y",
-            "sections": [
-              {
-                "at": 49,
-                "polygon": [
-                  [
-                    -3,
-                    -1
-                  ],
-                  [
-                    -1,
-                    -1
-                  ],
-                  [
-                    -1,
-                    -1
-                  ],
-                  [
-                    -1,
-                    1
-                  ],
-                  [
-                    -1,
-                    1
-                  ],
-                  [
-                    -3,
-                    1
-                  ],
-                  [
-                    -3,
-                    1
-                  ],
-                  [
-                    -3,
-                    -1
-                  ]
-                ]
-              },
-              {
-                "at": 54,
-                "polygon": [
-                  [
-                    -3,
-                    -1
-                  ],
-                  [
-                    -1,
-                    -1
-                  ],
-                  [
-                    -1,
-                    -1
-                  ],
-                  [
-                    -1,
-                    1
-                  ],
-                  [
-                    -1,
-                    1
-                  ],
-                  [
-                    -3,
-                    1
-                  ],
-                  [
-                    -3,
-                    1
-                  ],
-                  [
-                    -3,
-                    -1
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "inside"
-        },
-        {
-          "loft": {
-            "axis": "y",
-            "sections": [
-              {
-                "at": 49,
-                "polygon": [
-                  [
-                    1,
-                    -1
-                  ],
-                  [
-                    3,
-                    -1
-                  ],
-                  [
-                    3,
-                    -1
-                  ],
-                  [
-                    3,
-                    1
-                  ],
-                  [
-                    3,
-                    1
-                  ],
-                  [
-                    1,
-                    1
-                  ],
-                  [
-                    1,
-                    1
-                  ],
-                  [
-                    1,
-                    -1
-                  ]
-                ]
-              },
-              {
-                "at": 54,
-                "polygon": [
-                  [
-                    1,
-                    -1
-                  ],
-                  [
-                    3,
-                    -1
-                  ],
-                  [
-                    3,
-                    -1
-                  ],
-                  [
-                    3,
-                    1
-                  ],
-                  [
-                    3,
-                    1
-                  ],
-                  [
-                    1,
-                    1
-                  ],
-                  [
-                    1,
-                    1
-                  ],
-                  [
-                    1,
-                    -1
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "inside"
-        },
-        {
-          "box": [
-            [
-              -2,
-              44,
-              -10
-            ],
-            [
-              1,
-              46,
-              -9
-            ]
-          ],
-          "mat": "window"
         }
       ]
     },
@@ -2114,153 +1941,116 @@
       "shapes": [
         {
           "loft": {
-            "axis": "y",
+            "axis": "z",
             "sections": [
               {
-                "at": 30,
+                "at": -8,
                 "polygon": [
                   [
+                    -22,
+                    34
+                  ],
+                  [
                     -20,
-                    -4
-                  ],
-                  [
-                    -19,
-                    -6
+                    30
                   ],
                   [
                     -17,
-                    -6
+                    30
                   ],
                   [
-                    -17,
-                    -4
+                    -15,
+                    34
                   ],
                   [
-                    -17,
-                    1
-                  ],
-                  [
-                    -17,
-                    4
+                    -16,
+                    40
                   ],
                   [
                     -18,
-                    5
+                    43
+                  ],
+                  [
+                    -22,
+                    43
+                  ],
+                  [
+                    -24,
+                    39
+                  ]
+                ]
+              },
+              {
+                "at": -5,
+                "polygon": [
+                  [
+                    -23,
+                    34
                   ],
                   [
                     -21,
-                    3
+                    30
+                  ],
+                  [
+                    -17,
+                    30
+                  ],
+                  [
+                    -15,
+                    34
+                  ],
+                  [
+                    -16,
+                    41
+                  ],
+                  [
+                    -18,
+                    44
+                  ],
+                  [
+                    -22,
+                    44
+                  ],
+                  [
+                    -25,
+                    39
                   ]
                 ]
               },
               {
-                "at": 35,
+                "at": 3,
                 "polygon": [
                   [
                     -22,
-                    -5
+                    35
                   ],
                   [
                     -20,
-                    -7
+                    31
                   ],
                   [
                     -17,
-                    -7
+                    31
+                  ],
+                  [
+                    -16,
+                    35
                   ],
                   [
                     -17,
-                    -5
+                    41
                   ],
                   [
-                    -17,
-                    2
+                    -19,
+                    43
                   ],
-                  [
-                    -17,
-                    6
-                  ],
-                  [
-                    -20,
-                    6
-                  ],
-                  [
-                    -23,
-                    3
-                  ]
-                ]
-              },
-              {
-                "at": 39,
-                "polygon": [
                   [
                     -22,
-                    -5
+                    43
                   ],
                   [
-                    -20,
-                    -7
-                  ],
-                  [
-                    -17,
-                    -7
-                  ],
-                  [
-                    -17,
-                    -5
-                  ],
-                  [
-                    -17,
-                    2
-                  ],
-                  [
-                    -17,
-                    6
-                  ],
-                  [
-                    -20,
-                    6
-                  ],
-                  [
-                    -23,
-                    3
-                  ]
-                ]
-              },
-              {
-                "at": 42,
-                "polygon": [
-                  [
-                    -22,
-                    -5
-                  ],
-                  [
-                    -20,
-                    -7
-                  ],
-                  [
-                    -17,
-                    -7
-                  ],
-                  [
-                    -17,
-                    -5
-                  ],
-                  [
-                    -17,
-                    2
-                  ],
-                  [
-                    -17,
-                    6
-                  ],
-                  [
-                    -20,
-                    6
-                  ],
-                  [
-                    -23,
-                    3
+                    -24,
+                    40
                   ]
                 ]
               }
@@ -2663,153 +2453,116 @@
       "shapes": [
         {
           "loft": {
-            "axis": "y",
+            "axis": "z",
             "sections": [
               {
-                "at": 30,
+                "at": -8,
                 "polygon": [
                   [
-                    17,
-                    -4
+                    15,
+                    34
                   ],
                   [
                     17,
-                    -6
+                    30
+                  ],
+                  [
+                    20,
+                    30
+                  ],
+                  [
+                    22,
+                    34
+                  ],
+                  [
+                    24,
+                    39
+                  ],
+                  [
+                    22,
+                    43
+                  ],
+                  [
+                    18,
+                    43
+                  ],
+                  [
+                    16,
+                    40
+                  ]
+                ]
+              },
+              {
+                "at": -5,
+                "polygon": [
+                  [
+                    15,
+                    34
+                  ],
+                  [
+                    17,
+                    30
+                  ],
+                  [
+                    21,
+                    30
+                  ],
+                  [
+                    23,
+                    34
+                  ],
+                  [
+                    25,
+                    39
+                  ],
+                  [
+                    22,
+                    44
+                  ],
+                  [
+                    18,
+                    44
+                  ],
+                  [
+                    16,
+                    41
+                  ]
+                ]
+              },
+              {
+                "at": 3,
+                "polygon": [
+                  [
+                    16,
+                    35
+                  ],
+                  [
+                    17,
+                    31
+                  ],
+                  [
+                    20,
+                    31
+                  ],
+                  [
+                    22,
+                    35
+                  ],
+                  [
+                    24,
+                    40
+                  ],
+                  [
+                    22,
+                    43
                   ],
                   [
                     19,
-                    -6
-                  ],
-                  [
-                    20,
-                    -4
-                  ],
-                  [
-                    21,
-                    1
-                  ],
-                  [
-                    20,
-                    4
-                  ],
-                  [
-                    18,
-                    5
+                    43
                   ],
                   [
                     17,
-                    3
-                  ]
-                ]
-              },
-              {
-                "at": 35,
-                "polygon": [
-                  [
-                    17,
-                    -5
-                  ],
-                  [
-                    17,
-                    -7
-                  ],
-                  [
-                    20,
-                    -7
-                  ],
-                  [
-                    22,
-                    -5
-                  ],
-                  [
-                    23,
-                    2
-                  ],
-                  [
-                    21,
-                    6
-                  ],
-                  [
-                    18,
-                    6
-                  ],
-                  [
-                    17,
-                    3
-                  ]
-                ]
-              },
-              {
-                "at": 39,
-                "polygon": [
-                  [
-                    17,
-                    -5
-                  ],
-                  [
-                    17,
-                    -7
-                  ],
-                  [
-                    20,
-                    -7
-                  ],
-                  [
-                    22,
-                    -5
-                  ],
-                  [
-                    23,
-                    2
-                  ],
-                  [
-                    21,
-                    6
-                  ],
-                  [
-                    18,
-                    6
-                  ],
-                  [
-                    17,
-                    3
-                  ]
-                ]
-              },
-              {
-                "at": 42,
-                "polygon": [
-                  [
-                    17,
-                    -5
-                  ],
-                  [
-                    17,
-                    -7
-                  ],
-                  [
-                    20,
-                    -7
-                  ],
-                  [
-                    22,
-                    -5
-                  ],
-                  [
-                    23,
-                    2
-                  ],
-                  [
-                    21,
-                    6
-                  ],
-                  [
-                    18,
-                    6
-                  ],
-                  [
-                    17,
-                    3
+                    41
                   ]
                 ]
               }
@@ -4609,7 +4362,7 @@
       ]
     }
   ],
-  "notes": "New independent WVR-6R silhouettes with left dorsal six-port rack and right forearm cannon. No inherited humanoid component generator. Shape review 2: remove inaccurate chest port mass, simplify shoulder launcher, keep forearm cannon smaller than whole chest. Reference iteration 3: independently traced ten-sided angular chest and forebody, sloped shoulder cowlings, tall rectangular six-port rack beside helmet, and narrow angular pilot helmet rather than bulbous cylinders. Reference iteration 4: broken-up wide shoulder shields, one clenched fist, distinctly separate cannon shroud in right arm, angular knee/thigh guards and narrower reverse-taper greaves. Fifth pass: separate armored hip section bridges chest and leg roots; individual six SRM bores remain on high asymmetric left launcher. Pass 6: individually framed six-port missile rack with physically carved 2x3 launch openings. Pass 7: hollow right-arm AC5 muzzle frame and hand with individually shaped knuckles and thumb, with no dangling fingers. Pass 8: replace rounded Wolverine torso masses with planar swept armor cowlings, bring shoulder pads closer to reference and reduce shared overlap along the shoulder seams.",
+  "notes": "New independent WVR-6R silhouettes with left dorsal six-port rack and right forearm cannon. No inherited humanoid component generator. Shape review 2: remove inaccurate chest port mass, simplify shoulder launcher, keep forearm cannon smaller than whole chest. Reference iteration 3: independently traced ten-sided angular chest and forebody, sloped shoulder cowlings, tall rectangular six-port rack beside helmet, and narrow angular pilot helmet rather than bulbous cylinders. Reference iteration 4: broken-up wide shoulder shields, one clenched fist, distinctly separate cannon shroud in right arm, angular knee/thigh guards and narrower reverse-taper greaves. Fifth pass: separate armored hip section bridges chest and leg roots; individual six SRM bores remain on high asymmetric left launcher. Pass 6: individually framed six-port missile rack with physically carved 2x3 launch openings. Pass 7: hollow right-arm AC5 muzzle frame and hand with individually shaped knuckles and thumb, with no dangling fingers. Pass 8: replace rounded Wolverine torso masses with planar swept armor cowlings, bring shoulder pads closer to reference and reduce shared overlap along the shoulder seams. Shape pass 9: leaned chamfered pauldron armor, forward rectangular visor helmet and thin radio antennas, broad shouldered segmented chest. References WVR-6R FSW ink and multiple miniature viewpoints.",
   "muzzles": {
     "LT": [
       [
