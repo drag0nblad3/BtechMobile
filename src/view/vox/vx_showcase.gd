@@ -4,7 +4,14 @@ extends Node3D
 ## real rules (HitTable + Damage on a live Unit) and shown with VxDamage,
 ## plus every animation hook. Separate from the Voxel Mech Lab.
 
-const MODELS := ["res://data/voxels/catapult.json", "res://data/voxels/hunchback.json"]
+const MODELS := [
+	"res://data/voxels/catapult.json",
+	"res://data/voxels/hunchback.json",
+	"res://data/voxels/marauder_shape.json",
+	"res://data/voxels/marauder.json",
+	"res://data/voxels/timber_wolf_shape.json",
+	"res://data/voxels/timber_wolf.json",
+]
 
 var mech: VxMech
 var unit: Unit
