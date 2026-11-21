@@ -583,3 +583,36 @@ Wolverine oval abdomen and overgrown Jenner disc seen in the gallery.
 First five passes performed on all three chassis and tested structurally.
 A fresh true five-angle Godot render is necessary before the next five
 passes, as is real voxel occupancy validation. Do not densify or merge.
+
+
+## Passes 153–157 — five-view review to part interface rework
+
+The actual pass-152 Godot sheet showed all three mechs still had
+disproportionate connections: Atlas shoulders like huge full-depth
+globes; Wolverine chest like an oval armor bib; Jenner canopy like a
+long horizontal beak. These are major component replacements and new
+physical joint surfaces (not smoothing).
+
+| Pass | Atlas | Wolverine | Jenner |
+| --- | --- | --- | --- |
+| 153 | Raise the lower edges of both Atlas shoulder bells, separating round shoulder caps from smaller articulated arm-root housings. | Replace Wolverine's broad flat torso breastplate with two angular faceted plates and a compact connecting abdomen. | Compress Jenner cockpit from elongated beak to approximately round 18-by-17 saucer, moving all related edge/glass sections and retaining its angled rear neck. |
+| 154 | Slim and angle Atlas upper arms into dedicated rotator sockets below the shoulder bell, avoiding disconnected hanging cylinders. | Reshape Wolverine rear cannon armature and elbow shield into a short low-angle join to the horizontal forearm. | Introduce symmetrical Jenner disc-to-laser-pod bridge yokes, showing how the saucer attaches at an angle to the engine housings. |
+| 155 | Add a slim rear-to-front Atlas LRM10-face cradle that fits its downsized 2×5 rack, rather than leaving a disconnected rectangular tower. | Completely replace Wolverine's overlarge launcher front with a thin 5×7 six-port frame right beside the narrow helmet. | Compress the Jenner disc vertical thickness independently of canopy glazing and trim its underside into a thin circular rim. |
+| 156 | Raise both Atlas gauntlets, clenched hands and thumb housings to pelvis height and keep their forearm ends joined at the elbows. | Raise Wolverine's left hand and right AC5 grip to match forearm pivots rather than oversized fists dangling near the knees. | Rake Jenner hip and knee armor forward to center its feet beneath the narrower disc and engine-pod span. |
+| 157 | Recess and shape Atlas skull mandibular interface against the chest well, keeping a distinct skull and matched round shoulders. | Add a physical Wolverine neck/shoulder yoke and retain two angled chest plates over a wider but continuous waist. | Re-seat the Jenner canopy crown against a shorter, canted disc-neck brace so glazing, saucer and body join cleanly. |
+
+**Mechanical proportion gates:** Atlas matched shoulder crowns at
+y55, upper cap base ≈43 and distinct y37–45 rotator/arm sockets.
+Both fists raised by 4 from below-hip to at-hip level. Wolverine
+abdomen remains 12–14 voxels wide, but chest armor is now paired
+angled V plates, not an oval plaque; launcher is a genuine thin
+5×7 face with six real open ports and a short AC5 elbow with hands.
+Jenner 18 wide ×17 long disc at z−36..−19 is approximately circular
+in plan (not elongated like a beak), with an angled structural
+disc-to-laser yoke, shallow underside and physically rooted rear neck.
+Its digitigrade knees and hips are angled toward centered feet.
+
+**10 coordinated passes total (148–157)**; each of three chassis
+has new source geometry in every pass. Match the latest CGL plastics
+across all angles; shape approval is not implied by unit/CI passes.
+Retain shape-stage subdivision=1, no APK and no merge.

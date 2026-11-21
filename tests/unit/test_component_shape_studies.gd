@@ -530,3 +530,46 @@ func test_proportion_passes_148_152_are_balanced_and_connected() -> void:
 	var j := VxModel.load_file(MODELS[2])
 	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
 			"Jenner disc must still protrude ahead of the twin laser muzzles")
+
+
+func test_passes_153_to_157_assembly_proportions_and_open_ports() -> void:
+	var atlas := VxModel.load_file(MODELS[0])
+	var w := VxModel.load_file(MODELS[1])
+	var j := VxModel.load_file(MODELS[2])
+	for m in [atlas, w, j]:
+		check(m.errors.is_empty(), "Invalid final proportional sculpt: " + m.id)
+	for name in ["la_rotator_socket", "ra_rotator_socket", "lt_lrm_cradle",
+			"la_finger_knuckles", "ra_finger_knuckles"]:
+		check(not atlas.part(name).is_empty(), "Atlas missing interface " + name)
+	for name in ["ra_compact_elbow_armor", "hd_neck_yoke",
+			"ra_integrated_hand", "la_finger_knuckles"]:
+		check(not w.part(name).is_empty(), "Wolverine missing interface " + name)
+	for name in ["lt_disc_bridge", "rt_disc_bridge", "hd_disc_neck_brace",
+			"hd_front_windscreen", "hd_disc_crown"]:
+		check(not j.part(name).is_empty(), "Jenner missing interface " + name)
+	var src: Dictionary = JsonFile.read(MODELS[2])
+	var nose := -99
+	var back := -99
+	var diameter := 0
+	for item: Dictionary in src["parts"]:
+		if item["name"] == "hd":
+			var ss: Array = item["shapes"][0]["loft"]["sections"]
+			nose = ss[0]["at"]
+			back = ss.back()["at"]
+			for sec: Dictionary in ss:
+				for pt: Array in sec["polygon"]:
+					diameter = maxi(diameter, absi(pt[0]) * 2)
+	check_eq(nose, -36, "Jenner saucer must project in front of the laser pods")
+	check_eq(back, -19, "Jenner disc must not extend to the middle of its body")
+	check(diameter >= 16 and diameter <= 20 and back - nose <= 20,
+			"Jenner cockpit must be disc-like in top view, not a long loaf")
+	check_eq(w.muzzles[Location.LT].size(), 6, "Wolverine SRM6")
+	for muzzle: Vector3 in w.muzzles[Location.LT]:
+		var mouth := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
+		check(not w.part("lt_srm6")["cells"].has(mouth),
+				"Wolverine smaller SRM6 must have open mouths %s" % mouth)
+	check_eq(atlas.muzzles[Location.LT].size(), 10, "Atlas LRM rack")
+	for muzzle: Vector3 in atlas.muzzles[Location.LT]:
+		var mouth := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
+		check(not atlas.part("lt_lrm20_rack")["cells"].has(mouth),
+				"Atlas shoulder rack opening blocked %s" % mouth)
