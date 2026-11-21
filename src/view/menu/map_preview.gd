@@ -28,13 +28,16 @@ func _draw() -> void:
 		var pts := PackedVector2Array()
 		for p in corners:
 			pts.append(centre + p)
-		draw_colored_polygon(pts, _colour(t))
+		draw_colored_polygon(pts, _colour(map, t))
+		if t.bridge != null:
+			draw_circle(centre, r * 0.6, BridgeProps.STONE.lightened(0.15))
 		if t.building != null:
 			draw_rect(Rect2(centre - Vector2(r, r) * 0.55, Vector2(r, r) * 1.1),
 					t.building.type.color.lightened(0.08 * t.building.height))
 
 
-static func _colour(t: MapTile) -> Color:
+static func _colour(map: BattleMap, t: MapTile) -> Color:
 	if t.is_water():
 		return Color("3d6a8a").darkened(0.18 * (t.depth - 1))
-	return t.terrain.top_color.lightened(0.09 * t.level)
+	var own: Color = map.colors.get(t.terrain.id, t.terrain.top_color)
+	return own.lightened(0.09 * t.level)

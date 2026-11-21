@@ -20,6 +20,7 @@ static func generate(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictiona
 	GenElevation.relax(g)
 	GenTown.streets(g, t, rng)
 	GenRoads.apply(g, t, rng)
+	GenBridges.apply(g, t)
 	GenTown.buildings(g, t, rng)
 	GenTown.rubble(g, t, rng)
 	GenCover.apply(g, t, seed_value)
@@ -27,6 +28,8 @@ static func generate(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictiona
 	d["theme"] = t.id
 	d["seed"] = seed_value
 	d["sheets"] = [sheets.x, sheets.y]
+	if not t.colors.is_empty():
+		d["colors"] = t.colors
 	return d
 
 

@@ -73,6 +73,26 @@ func test_generated_map_round_trips_as_json() -> void:
 	check_eq(MapStats.new(m).buildings, d["buildings"].size())
 
 
+func test_roads_cross_rivers_on_bridges() -> void:
+	var found := 0
+	for s in [1, 2, 3, 4, 5]:
+		var m := MapGenerator.build(_theme("river_valley"), Vector2i(2, 1), s, terrain())
+		for t: MapTile in m.tiles.values():
+			if t.bridge == null:
+				continue
+			found += 1
+			check(t.terrain.is_water and t.bridge.level >= t.level, "bridge over water at %s" % Hex.label(t.coord))
+			for f in 6:
+				var n := m.get_tile(Hex.neighbor(t.coord, f))
+				if n != null and n.terrain.id == "pavement":
+					check(MoveCost.enter_cost(m, n.coord, t.coord, MoveMode.Kind.WALK) == 1 + absi(t.bridge.level - n.level),
+							"road onto the deck at %s" % Hex.label(t.coord))
+		var paved_water := m.tiles.values().filter(func(t: MapTile) -> bool:
+			return t.terrain.id == "pavement" and t.depth > 0)
+		check(paved_water.is_empty(), "no more paved fords")
+	check(found >= 5, "river valleys get bridges (%d)" % found)
+
+
 ## "" if the map is fine, else what is wrong with it.
 func _problem(m: BattleMap) -> String:
 	for c: Vector2i in m.coords():

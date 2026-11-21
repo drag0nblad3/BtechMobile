@@ -25,6 +25,8 @@ var street_every := 0          ## Urban grid: a street every N hexes (0 = none).
 var buildings := 0.0           ## Urban: chance per block hex; else share of the map.
 var building_mix := {"light": 1.0}  ## Building class -> weight.
 var max_height := 2            ## Tallest building, in levels.
+var bridge_type := "medium"    ## Building class of road bridges.
+var colors := {}               ## Terrain id -> ground colour ("#rrggbb"), looks only.
 
 
 static func from_dict(d: Dictionary) -> MapTheme:
@@ -49,6 +51,8 @@ static func from_dict(d: Dictionary) -> MapTheme:
 	t.buildings = float(d.get("buildings", 0.0))
 	t.building_mix = d.get("building_mix", t.building_mix)
 	t.max_height = int(d.get("max_height", t.max_height))
+	t.bridge_type = d.get("bridge_type", t.bridge_type)
+	t.colors = d.get("colors", {})
 	return t
 
 

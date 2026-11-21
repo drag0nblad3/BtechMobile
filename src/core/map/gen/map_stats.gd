@@ -6,6 +6,7 @@ extends RefCounted
 var hexes := 0
 var counts := {}  ## Terrain id -> hexes ("water" counts only real water).
 var buildings := 0
+var bridges := 0  ## Bridge hexes.
 var deep_water := 0  ## Depth 2 or more.
 var raised := 0      ## Dry hexes at level 1 or higher.
 var top_level := 0
@@ -18,6 +19,8 @@ func _init(m: BattleMap) -> void:
 		counts[id] = int(counts.get(id, 0)) + 1
 		if t.building != null:
 			buildings += 1
+		if t.bridge != null:
+			bridges += 1
 		if t.is_water():
 			deep_water += 1 if t.depth >= 2 else 0
 		elif t.level > 0:
@@ -47,6 +50,8 @@ func summary() -> String:
 		parts.append("rough %d%%" % _pct(share("rough")))
 	if share("pavement") > 0.0:
 		parts.append("roads %d%%" % _pct(share("pavement")))
+	if bridges > 0:
+		parts.append("%d bridge hex%s" % [bridges, "" if bridges == 1 else "es"])
 	if buildings > 0:
 		parts.append("%d building%s" % [buildings, "" if buildings == 1 else "s"])
 	return ", ".join(parts)

@@ -10,6 +10,8 @@ var level := PackedInt32Array()
 var depth := PackedInt32Array()
 var token := PackedStringArray()  ## Terrain token per hex ("c", "L", "w", ...).
 var buildings := {}  ## index -> {"type": String, "height": int}
+var bridged := {}  ## Water hexes a road crosses: index -> true (GenBridges).
+var bridges: Array = []  ## [{"hexes": [index, ...], "type": String, "level": int}]
 var _nbrs: Array[PackedInt32Array] = []
 
 
@@ -96,4 +98,10 @@ func to_dict(map_name: String) -> Dictionary:
 		var b: Dictionary = buildings[i]
 		blds.append({"hex": Hex.label(Hex.from_offset(Vector2i(col_of(i), row_of(i)))),
 				"type": b["type"], "height": b["height"]})
-	return {"name": map_name, "rows": rows, "buildings": blds}
+	var spans: Array = []
+	for b: Dictionary in bridges:
+		var labels: Array = []
+		for i: int in b["hexes"]:
+			labels.append(Hex.label(Hex.from_offset(Vector2i(col_of(i), row_of(i)))))
+		spans.append({"hexes": labels, "type": b["type"], "level": b["level"]})
+	return {"name": map_name, "rows": rows, "buildings": blds, "bridges": spans}

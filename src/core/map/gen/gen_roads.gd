@@ -1,11 +1,11 @@
 class_name GenRoads
 extends RefCounted
 ## Paved roads from edge to edge. A road avoids climbing and water; where
-## it must cross a river it fords it as a paved causeway at the water's
-## surface, since the game has no bridges yet. Roads join where they meet.
+## it must cross water it marks the hexes for a bridge (GenBridges). Roads
+## join where they meet.
 
 const CLIMB := 5     ## Cost per level of climb or descent.
-const WET := 14      ## Extra cost to pave a water hex, plus 6 per depth.
+const WET := 14      ## Extra cost to bridge a water hex, plus 6 per depth.
 
 
 static func apply(g: GenGrid, t: MapTheme, rng: RandomNumberGenerator) -> void:
@@ -25,7 +25,7 @@ static func apply(g: GenGrid, t: MapTheme, rng: RandomNumberGenerator) -> void:
 
 
 static func step_cost(g: GenGrid, a: int, b: int) -> int:
-	if g.token[b] == "p":
+	if g.token[b] == "p" or g.bridged.has(b):
 		return 1
 	var climb := absi(g.level[b] - g.level[a])
 	if climb > GenElevation.MAX_STEP:
@@ -38,7 +38,9 @@ static func step_cost(g: GenGrid, a: int, b: int) -> int:
 
 static func pave(g: GenGrid, path: Array) -> void:
 	for i: int in path:
-		g.token[i] = "p"
-		g.depth[i] = 0
 		g.buildings.erase(i)
+		if g.is_water(i):
+			g.bridged[i] = true
+		else:
+			g.token[i] = "p"
 
