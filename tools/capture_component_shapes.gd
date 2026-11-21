@@ -57,9 +57,11 @@ func _initialize() -> void:
 	camera.fov = 40
 	camera.current = true
 	scene.add_child(camera)
-	# One combined picture per iteration. Extra angles or isolated components
-	# are captured only during a deliberate targeted diagnostic run.
+	# Three diagnostic angles for the final ten-pass geometry audit.
+	# They are collaged into one user-facing image, not ten separate renders.
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
+	views.append({"name": "gallery_side", "who": -1, "view": "side"})
+	views.append({"name": "gallery_rear_three_quarter", "who": -1, "view": "rear_three_quarter"})
 	# One user-facing image, now a three-angle contact sheet so bloat,
 	# missing rear equipment, and leg/arm gaps are auditable.
 	views.append({"name": "side_diagnostic", "who": -1, "view": "side"})
@@ -122,6 +124,8 @@ func _setup_view(index: int) -> void:
 			camera.look_at_from_position(center + Vector3(distance, 0.37, 0), center)
 		"rear":
 			camera.look_at_from_position(center + Vector3(0, 0.30, distance), center)
+		"rear_three_quarter":
+			camera.look_at_from_position(center + Vector3(-distance * 0.60, 1.1, distance * 0.80), center)
 
 
 func _process(_delta: float) -> bool:
