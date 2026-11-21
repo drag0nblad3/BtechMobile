@@ -9,6 +9,9 @@ extends RefCounted
 static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 	var steps: Array[Dictionary] = []
 	for d in state.declared_physical:
+		if d.has("target_hex"):
+			BuildingMelee.resolve(state, emit, state.unit_by_id(d["attacker_id"]), d)
+			continue
 		if d["kind"] == "charge" or d["kind"] == "dfa":
 			var step := ChargeResolve.resolve(state, dice, emit, d)
 			if not step.is_empty():

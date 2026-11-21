@@ -76,7 +76,9 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 func declare_physical(unit: Unit, attacks: Array) -> bool:
 	if not _may_act(unit, Phase.Kind.PHYSICAL_ATTACK):
 		return false
-	var decl := PhysicalOptions.declare(state, unit, attacks)
+	var hexes := attacks.filter(func(r: Dictionary) -> bool: return r.has("hex"))
+	var decl := BuildingMelee.declare(state, unit, hexes[0]["hex"], hexes) if not hexes.is_empty() \
+			else PhysicalOptions.declare(state, unit, attacks)
 	state.declared_physical.append_array(decl)
 	unit.has_physical = true
 	_unit_done()

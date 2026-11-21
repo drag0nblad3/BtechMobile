@@ -62,11 +62,13 @@ func on_hex_tapped(c: Vector2i) -> bool:
 	var u := controller.state.unit_at(c)
 	if u == null:
 		var tile := controller.state.map.get_tile(c)
-		if attacker == null or not is_weapon_phase() or tile == null or tile.building == null:
+		if attacker == null or tile == null or tile.building == null:
 			return false
 		target = null
 		target_hex = c
-		_default_shots()
+		physical.clear()
+		if is_weapon_phase():
+			_default_shots()
 		_refresh()
 		return true
 	if controller.pending_units().has(u):
@@ -90,10 +92,7 @@ func on_confirm() -> void:
 		clear()
 		controller.declare_fire(u, list)
 	else:
-		var list := []
-		for k: String in physical:
-			var parts := k.split(":")
-			list.append({"kind": parts[0], "limb": int(parts[1]), "target_id": target.id})
+		var list := AttackRows.physical_list(physical, target, target_hex)
 		clear()
 		controller.declare_physical(u, list)
 
@@ -205,6 +204,13 @@ func _refresh() -> void:
 		hexes[target_hex] = Color(1, 0.6, 0.2, 0.55)
 	highlighter.show_hexes(hexes)
 	var twist: String = ["  (torso twisted left)", "", "  (torso twisted right)"][attacker.torso_twist + 1]
+	if target_hex != Hex.INVALID and not weapon:
+		hud.set_info("%s -> building %s" % [Names.unit(attacker), Hex.label(target_hex)])
+		hud.set_tip("Buildings can't dodge: punches, kicks and swings always hit them.")
+		if not hud.sheet_open:
+			hud.show_side(AttackPanel.build("Physical attack on building " + Hex.label(target_hex),
+				AttackRows.physical(controller.state, attacker, null, target_hex), physical, level, _toggle))
+		return
 	if target_hex != Hex.INVALID:
 		hud.set_info("%s -> building %s (%d hexes)%s" % [Names.unit(attacker), Hex.label(target_hex),
 				Hex.distance(attacker.coord, target_hex), twist])

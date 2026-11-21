@@ -184,7 +184,7 @@ const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
 
 
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
-	var who := "%s %s %s" % [_u(s, d, "attacker_id"), PHYS_VERBS.get(d["kind"], d["kind"]), _u(s, d, "target_id")]
+	var who := "%s %s %s" % [_u(s, d, "attacker_id"), PHYS_VERBS.get(d["kind"], d["kind"]), _target(s, d)]
 	if d["limb"] >= 0:
 		who += " (%s)" % Location.name_of(d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
@@ -193,6 +193,6 @@ static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary)
 		if level == ExplainLevel.FULL:
 			t += ". Once declared, a death from above can't be called off, so it lands as a miss."
 		return t
-	if level == ExplainLevel.OFF:
-		return "%s: %s" % [who, res]
+	if level == ExplainLevel.OFF or d.has("target_hex"):
+		return "%s: %s" % [who, res] + (" (buildings can't dodge)" if level == ExplainLevel.FULL and d.has("target_hex") else "")
 	return "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res] + ModsText.lines(d["mods"], level, seen)
