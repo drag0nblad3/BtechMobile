@@ -173,6 +173,8 @@ func build(map: BattleMap, dice: Dice = null) -> GameState:
 			next_id += 1
 		if not setup.is_empty():
 			Deployment.place(state, placed, setup["zones"][side])
+	if state.mission.def != null and state.mission.def.waves:
+		Waves.hold_back(state)
 	if int(setup.get("drop", -1)) >= 0:
 		SteelRain.reserve_side(state, setup["drop"])
 	if hidden_side >= 0:
