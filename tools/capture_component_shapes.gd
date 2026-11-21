@@ -53,7 +53,7 @@ func _initialize() -> void:
 		scene.add_child(label)
 		labels.append(label)
 	camera = Camera3D.new()
-	camera.fov = 44
+	camera.fov = 40
 	camera.current = true
 	scene.add_child(camera)
 	# One combined picture per iteration. Extra angles or isolated components
@@ -106,7 +106,7 @@ func _setup_view(index: int) -> void:
 			for name: String in target["parts"]:
 				selected.append(name)
 		models[i].isolate_parts(selected)
-	var distance: float = float(target.get("distance", 9.5 if who == -1 else 4.7))
+	var distance: float = float(target.get("distance", 8.6 if who == -1 else 4.7))
 	var center := Vector3(look_x, float(target.get("height", 1.08)), 0)
 	match view:
 		"front":
