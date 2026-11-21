@@ -2,7 +2,8 @@ class_name MovePlanner
 extends RefCounted
 ## Finds every reachable (hex, facing) for a unit with Dijkstra search.
 ## Steps: turn one hexside left/right (1 MP), move forward into the faced
-## hex, or (walking only) back into the hex behind (MoveCost).
+## hex, or (walking only) back into the hex behind (MoveCost). Quads can
+## also shift sideways (LateralShift).
 ## Jumping is a separate search (JumpPlanner).
 
 
@@ -61,7 +62,7 @@ static func _minimum_move(state: GameState, unit: Unit, opts: MoveOptions, start
 	if opts.cost.has(nk):
 		return
 	var mp := MoveCost.enter_cost(state.map, unit.coord, to, MoveMode.Kind.RUN, max_level_change(unit))
-	if mp == MoveCost.PROHIBITED or not _can_pass(state, unit, to):
+	if mp == MoveCost.PROHIBITED or not can_pass(state, unit, to):
 		return
 	opts.cost[nk] = opts.budget
 	opts.prev[nk] = start
@@ -111,19 +112,20 @@ static func _successors(state: GameState, unit: Unit, k: Vector3i, mode: int) ->
 	]
 	var to := Hex.neighbor(c, f)
 	var mp := MoveCost.enter_cost(state.map, c, to, mode, max_level_change(unit))
-	if mp != MoveCost.PROHIBITED and _can_pass(state, unit, to):
+	if mp != MoveCost.PROHIBITED and can_pass(state, unit, to):
 		out.append([MoveOptions.key(to, f), mp])
 	# Backward: walking only, at most one level up or down (book p. 46).
 	if mode == MoveMode.Kind.WALK:
 		var back := Hex.neighbor(c, f + 3)
 		var bmp := MoveCost.enter_cost(state.map, c, back, mode, max_level_change(unit, true))
-		if bmp != MoveCost.PROHIBITED and _can_pass(state, unit, back):
+		if bmp != MoveCost.PROHIBITED and can_pass(state, unit, back):
 			out.append([MoveOptions.key(back, f), bmp])
+	out.append_array(LateralShift.steps(state, unit, c, f, mode))
 	return out
 
 
 ## Units may move through friendly units but not enemy units.
-static func _can_pass(state: GameState, unit: Unit, c: Vector2i) -> bool:
+static func can_pass(state: GameState, unit: Unit, c: Vector2i) -> bool:
 	var tile := state.map.get_tile(c)
 	if tile != null and tile.building != null and not tile.building.admits(unit.def.tonnage):
 		return false  # too light to force its way into this class (p. 132)
