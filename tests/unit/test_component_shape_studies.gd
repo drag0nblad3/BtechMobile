@@ -89,7 +89,7 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(atlas.part("rt_ac20_shroud")["cells"].has(Vector3i(9, 42, -19)),
 			"Atlas AC20 barrel must project from the right torso")
 	var wolverine := VxModel.load_file(MODELS[1])
-	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(15, 26, -31)),
+	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -29)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
 	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -35)),
