@@ -1,0 +1,77 @@
+{
+ "id": "enforcer_enf5d",
+ "name": "Enforcer",
+ "model": "ENF-5D",
+ "tonnage": 50,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 12,
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 19,
+  "RT": 19,
+  "CT": 23,
+  "HD": 9,
+  "LL": 21,
+  "RL": 21
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_large_laser",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "lb10x_ac",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "small_laser",
+   "ferro_fibrous*6"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "ammo:lb10x_ac:cluster",
+   "ammo:lb10x_ac",
+   "case",
+   "ferro_fibrous*4"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 978,
+  "megamek": "data/mekfiles/meks/3050U/Enforcer ENF-5D.mtf",
+  "published": "RSFP:Wave 2,RSFP:HRR,RSFP:Davion",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Enforcer ENF-5D (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1308
+ },
+ "bv": 1308,
+ "sprite": "enforcer",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. ER Large Laser, LB 10-X AC, Small Laser; walks 5, runs 8, jumps 5."
+}

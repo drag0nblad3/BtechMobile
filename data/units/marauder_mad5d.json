@@ -1,0 +1,72 @@
+{
+ "id": "marauder_mad5d",
+ "name": "Marauder",
+ "model": "MAD-5D",
+ "tonnage": 75,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 16,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 23,
+  "RA": 23,
+  "LT": 24,
+  "RT": 24,
+  "CT": 35,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_ppc",
+   "medium_pulse_laser"
+  ],
+  "RA": [
+   "er_ppc",
+   "medium_pulse_laser"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "streak_srm2",
+   "ammo:streak_srm2",
+   "case"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "large_pulse_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2039,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 6/Marauder MAD-5D.mtf",
+  "published": "RSFP:Wave 1,RG06,RGv1",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Marauder MAD-5D (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1787
+ },
+ "bv": 1787,
+ "sprite": "marauder",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER PPCs, 2 Medium Pulse Lasers, Streak SRM 2, Large Pulse Laser; walks 4, runs 6, jumps 4."
+}

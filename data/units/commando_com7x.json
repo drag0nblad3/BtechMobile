@@ -1,0 +1,55 @@
+{
+ "id": "commando_com7x",
+ "name": "Commando",
+ "model": "COM-7X",
+ "tonnage": 25,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 6,
+  "RT": 6,
+  "CT": 8,
+  "HD": 6,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "medium_laser*2"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "ammo:srm6"
+  ],
+  "CT": [
+   "srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 3979,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 16/Commando COM-7X.mtf",
+  "published": "ShrapRS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Commando COM-7X (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 623
+ },
+ "bv": 623,
+ "sprite": "commando",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 Medium Lasers, SRM 6; walks 6, runs 9."
+}

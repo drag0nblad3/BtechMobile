@@ -93,7 +93,9 @@ static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int
 			if tile.on_fire and _intervenes(Fire.smoke_top(tile), a_lvl, b_lvl, next_a, next_b):
 				obs += 1
 		if obs > 0:
-			pts = mini(Obscurant.CAP, pts + obs)
+			var with_obs := mini(Obscurant.CAP, pts + obs)
+			out["obs_pts"] = int(out.get("obs_pts", 0)) + with_obs - pts
+			pts = with_obs
 			out["smoke"] += 1
 		out["woods"] += pts
 		if next_b and ground == cover_floor + 1 and a_lvl <= b_lvl \

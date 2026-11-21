@@ -1,15 +1,64 @@
 {
-  "id": "valkyrie_vlkqa", "name": "Valkyrie", "model": "VLK-QA", "tonnage": 30,
-  "walk_mp": 5, "jump_mp": 5, "heat_sinks": 11, "sprite": "valkyrie",
-  "role": "Light fire support. Unusually well armored for its size; lobs LRMs from cover and jumps away.",
-  "armor": {"HD": 9, "CT": 15, "LT": 10, "RT": 10, "LA": 8, "RA": 8, "LL": 13, "RL": 13},
-  "rear_armor": {"CT": 4, "LT": 3, "RT": 3},
-  "equipment": {
-    "RA": ["medium_laser"],
-    "LT": ["lrm10", "ammo:lrm10", "jump_jet"],
-    "RT": ["heat_sink", "jump_jet"],
-    "CT": ["jump_jet"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "valkyrie_vlkqa",
+ "name": "Valkyrie",
+ "model": "VLK-QA",
+ "tonnage": 30,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 11,
+ "armor": {
+  "LA": 9,
+  "RA": 9,
+  "LT": 12,
+  "RT": 12,
+  "CT": 14,
+  "HD": 8,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "lrm10"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "ammo:lrm10"
+  ],
+  "CT": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3372,
+  "megamek": "data/mekfiles/meks/3039u/Valkyrie VLK-QA.mtf",
+  "published": "RSFP:Wave 1",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Valkyrie VLK-QA (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 723
+ },
+ "bv": 723,
+ "role": "Missile boat: rains missiles from a distance. Medium Laser, LRM 10; walks 5, runs 8, jumps 5.",
+ "sprite": "valkyrie"
 }

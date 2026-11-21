@@ -1,22 +1,110 @@
 {
-  "id": "kit_fox", "name": "Kit Fox", "tonnage": 30, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "kit_fox", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 15, "LT": 11, "RT": 11, "LA": 10, "RA": 10, "LL": 14, "RL": 14},
-  "rear_armor": {"CT": 5, "LT": 3, "RT": 3},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*3"], "RA": ["ferro_fibrous*4"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 12, "role": "Clan light skirmisher. A long ER large laser, Streaks and AMS on a fast frame that outguns most Inner Sphere lights.", "equipment": {
-      "RA": ["c_er_large_laser"],
-      "LA": ["c_er_medium_laser", "c_er_medium_laser", "c_er_medium_laser"],
-      "LT": ["c_streak_srm4", "ammo:c_streak_srm4", "heat_sink", "heat_sink"],
-      "RT": ["c_ams", "ammo:c_ams"],
-      "CT": ["c_er_small_laser", "c_er_small_laser"]
-    }},
-    {"model": "A", "heat_sinks": 12, "role": "Close-range Kit Fox: an LB 5-X and pulse lasers that chew up fast, light targets.", "equipment": {
-      "RA": ["c_lb5x_ac"],
-      "RT": ["ammo:c_lb5x_ac:cluster", "ammo:c_lb5x_ac"],
-      "LA": ["c_medium_pulse_laser", "c_small_pulse_laser"],
-      "LT": ["c_er_small_laser", "heat_sink", "heat_sink"]
-    }}
+ "id": "kit_fox",
+ "name": "Kit Fox",
+ "tonnage": 30,
+ "walk_mp": 6,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 7,
+  "RA": 7,
+  "LT": 8,
+  "RT": 8,
+  "CT": 9,
+  "HD": 9,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "kit_fox",
+ "equipment": {
+  "LA": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "endo_steel*3",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 1085,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_er_large_laser",
+     "c_small_pulse_laser"
+    ],
+    "RA": [
+     "c_streak_srm4",
+     "c_lb5x_ac",
+     "ammo:c_streak_srm4",
+     "ammo:c_lb5x_ac"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. ER Large Laser, Small Pulse Laser, Streak SRM 4, LB 5-X AC; walks 6, runs 9.",
+   "source": {
+    "mul_id": 3347,
+    "megamek": "data/mekfiles/meks/3050U/Uller (Kit Fox) Prime.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1085
+   }
+  },
+  {
+   "model": "A",
+   "bv": 1310,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_er_medium_laser*2"
+    ],
+    "RA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle*2"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER Medium Lasers, Gauss Rifle; walks 6, runs 9.",
+   "source": {
+    "mul_id": 3340,
+    "megamek": "data/mekfiles/meks/3050U/Uller (Kit Fox) A.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1310
+   }
+  }
+ ]
 }

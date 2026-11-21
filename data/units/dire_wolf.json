@@ -1,22 +1,219 @@
 {
-  "id": "dire_wolf", "name": "Dire Wolf", "tonnage": 100, "walk_mp": 3, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "dire_wolf", "engine_type": "xl",
-  "armor": {"HD": 9, "CT": 47, "LT": 32, "RT": 32, "LA": 33, "RA": 33, "LL": 42, "RL": 41},
-  "rear_armor": {"CT": 15, "LT": 10, "RT": 10},
-  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
-  "equipment": {},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 19, "role": "Clan assault. Four ER large lasers, two Ultra AC/5s and an LRM 10 behind the thickest armor on the field; slow, and hot if it fires everything.", "equipment": {
-      "LA": ["c_er_large_laser", "c_er_large_laser", "c_er_medium_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"],
-      "RA": ["c_er_large_laser", "c_er_large_laser", "c_er_medium_laser", "c_er_medium_laser", "ammo:c_lrm15", "ammo:c_lrm15"],
-      "LT": ["c_ultra_ac5", "ammo:c_ultra_ac5", "ammo:c_ultra_ac5", "heat_sink", "heat_sink"],
-      "RT": ["c_ultra_ac5", "ammo:c_ultra_ac5", "c_medium_pulse_laser", "ammo:c_ultra_ac5", "heat_sink", "heat_sink"],
-      "CT": ["c_lrm15"]
-    }},
-    {"model": "A", "heat_sinks": 18, "role": "Gauss Dire Wolf: two Gauss rifles and pulse lasers, cooler and longer-ranged than the Prime.", "equipment": {
-      "LA": ["c_gauss_rifle", "c_er_medium_laser", "ammo:c_lrm20", "ammo:c_lrm20", "c_er_small_laser"],
-      "RA": ["c_gauss_rifle", "c_lrm20"],
-      "LT": ["ammo:c_gauss_rifle", "ammo:c_gauss_rifle", "c_medium_pulse_laser", "ammo:c_gauss_rifle", "heat_sink", "heat_sink", "heat_sink"],
-      "RT": ["c_large_pulse_laser", "c_medium_pulse_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"]
-    }}
+ "id": "dire_wolf",
+ "name": "Dire Wolf",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 32,
+  "RT": 32,
+  "CT": 47,
+  "HD": 9,
+  "LL": 41,
+  "RL": 41
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 14
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "dire_wolf",
+ "equipment": {
+  "LT": [
+   "heat_sink"
+  ],
+  "RT": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2712,
+   "heat_sinks": 22,
+   "equipment": {
+    "LA": [
+     "c_er_large_laser*2",
+     "c_ultra_ac5",
+     "c_medium_pulse_laser*2",
+     "ammo:c_ultra_ac5"
+    ],
+    "RA": [
+     "c_er_large_laser*2",
+     "c_ultra_ac5",
+     "c_medium_pulse_laser*2",
+     "ammo:c_ultra_ac5"
+    ],
+    "LT": [
+     "heat_sink*3",
+     "c_lrm10",
+     "ammo:c_lrm10"
+    ],
+    "RT": [
+     "heat_sink*3"
+    ],
+    "CT": [
+     "heat_sink"
+    ]
+   },
+   "role": "Juggernaut: slow and heavily armed, wins up close. 4 ER Large Lasers, 4 Medium Pulse Lasers, 2 Ultra AC/5s, LRM 10; walks 3, runs 5.",
+   "source": {
+    "mul_id": 818,
+    "megamek": "data/mekfiles/meks/3050U/Daishi (Dire Wolf) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Juggernaut",
+    "bv": "sheet",
+    "sheet": "Daishi (Dire Wolf) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2712
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2855,
+   "heat_sinks": 21,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle*3"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_large_pulse_laser*3"
+    ],
+    "LT": [
+     "heat_sink",
+     "c_streak_srm6*2",
+     "ammo:c_streak_srm6*2"
+    ],
+    "RT": [
+     "heat_sink*2",
+     "c_ams",
+     "ammo:c_ams*3"
+    ],
+    "CT": [
+     "heat_sink"
+    ],
+    "RL": [
+     "heat_sink"
+    ]
+   },
+   "role": "Juggernaut: slow and heavily armed, wins up close. 3 Large Pulse Lasers, 2 Streak SRM 6s, Gauss Rifle, Anti-Missile System; walks 3, runs 5.",
+   "source": {
+    "mul_id": 813,
+    "megamek": "data/mekfiles/meks/3050U/Daishi (Dire Wolf) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Juggernaut",
+    "bv": "sheet",
+    "sheet": "Daishi (Dire Wolf) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2855
+   }
+  },
+  {
+   "model": "B",
+   "bv": 2609,
+   "heat_sinks": 15,
+   "equipment": {
+    "LA": [
+     "c_er_ppc*2",
+     "c_medium_pulse_laser*2"
+    ],
+    "RA": [
+     "c_lb10x_ac",
+     "ammo:c_lb10x_ac",
+     "ammo:c_lb10x_ac:cluster"
+    ],
+    "LT": [
+     "c_ultra_ac2*2",
+     "ammo:c_ultra_ac2"
+    ],
+    "RT": [
+     "c_ultra_ac2*2",
+     "ammo:c_ultra_ac2"
+    ],
+    "CT": [
+     "c_er_small_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 814,
+    "megamek": "data/mekfiles/meks/3050U/Daishi (Dire Wolf) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Daishi (Dire Wolf) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2609
+   },
+   "role": "Sniper: hangs back and hits from long range. 4 Ultra AC/2s, 2 ER PPCs, 2 Medium Pulse Lasers, LB 10-X AC, ER Small Laser; walks 3, runs 5."
+  },
+  {
+   "model": "'Widowmaker'",
+   "bv": 3041,
+   "heat_sinks": 25,
+   "equipment": {
+    "LA": [
+     "heat_sink*3",
+     "c_large_pulse_laser",
+     "c_er_ppc"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "c_large_pulse_laser",
+     "c_er_ppc",
+     "ammo:c_ultra_ac20*2"
+    ],
+    "LT": [
+     "heat_sink*4"
+    ],
+    "RT": [
+     "c_ultra_ac20"
+    ],
+    "CT": [
+     "c_er_medium_laser*2"
+    ],
+    "HD": [
+     "c_er_small_laser"
+    ],
+    "RL": [
+     "heat_sink"
+    ]
+   },
+   "source": {
+    "mul_id": 811,
+    "megamek": "data/mekfiles/meks/3050U/Daishi (Dire Wolf) Widowmaker.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Juggernaut",
+    "bv": "sheet",
+    "sheet": "Daishi (Dire Wolf) 'Widowmaker' (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 3041
+   },
+   "role": "Juggernaut: slow and heavily armed, wins up close. 2 Large Pulse Lasers, 2 ER PPCs, 2 ER Medium Lasers, Ultra AC/20, ER Small Laser; walks 3, runs 5."
+  }
+ ]
 }

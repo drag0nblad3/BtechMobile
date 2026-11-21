@@ -1,16 +1,78 @@
 {
-  "id": "warhammer_whm6r", "name": "Warhammer", "model": "WHM-6R", "tonnage": 70,
-  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 18, "sprite": "warhammer",
-  "role": "Heavy brawler. Two PPCs at range, a cluster of short-range guns up close; watch the heat.",
-  "armor": {"HD": 9, "CT": 22, "LT": 16, "RT": 16, "LA": 18, "RA": 18, "LL": 19, "RL": 19},
-  "rear_armor": {"CT": 9, "LT": 7, "RT": 7},
-  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
-  "equipment": {
-    "LA": ["ppc"],
-    "RA": ["ppc"],
-    "LT": ["medium_laser", "small_laser", "machine_gun", "ammo:machine_gun", "heat_sink", "heat_sink"],
-    "RT": ["medium_laser", "small_laser", "machine_gun", "srm6", "ammo:srm6", "heat_sink", "heat_sink"],
-    "LL": ["heat_sink", "heat_sink"],
-    "RL": ["heat_sink", "heat_sink"]
-  }
+ "id": "warhammer_whm6r",
+ "name": "Warhammer",
+ "model": "WHM-6R",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 18,
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 17,
+  "RT": 17,
+  "CT": 22,
+  "HD": 9,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "ppc"
+  ],
+  "RA": [
+   "heat_sink",
+   "ppc"
+  ],
+  "LT": [
+   "medium_laser",
+   "small_laser",
+   "machine_gun"
+  ],
+  "RT": [
+   "srm6",
+   "medium_laser",
+   "small_laser",
+   "machine_gun",
+   "ammo:srm6"
+  ],
+  "CT": [
+   "ammo:machine_gun"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3488,
+  "megamek": "data/mekfiles/meks/3039u/Warhammer WHM-6R.mtf",
+  "published": "RSFP:Wave 1,RS:AS",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Warhammer WHM-6R (BattleTech-Record-Sheets-Legendary-MechWarriors)",
+  "megamek_bv": 1299
+ },
+ "bv": 1299,
+ "role": "Brawler: built to slug it out at medium range. 2 PPCs, 2 Medium Lasers, 2 Small Lasers, 2 Machine Guns, SRM 6; walks 4, runs 6.",
+ "sprite": "warhammer"
 }

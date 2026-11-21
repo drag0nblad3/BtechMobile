@@ -1,0 +1,85 @@
+{
+ "id": "sagittaire_sgt9d",
+ "name": "Sagittaire",
+ "model": "SGT-9D",
+ "tonnage": 95,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 13,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 31,
+  "RA": 31,
+  "LT": 30,
+  "RT": 30,
+  "CT": 44,
+  "HD": 9,
+  "LL": 39,
+  "RL": 39
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "lb10x_ac",
+   "medium_laser"
+  ],
+  "RA": [
+   "lb10x_ac",
+   "medium_laser",
+   "small_pulse_laser"
+  ],
+  "LT": [
+   "heat_sink",
+   "er_ppc",
+   "ammo:lb10x_ac",
+   "ammo:lb10x_ac:cluster"
+  ],
+  "RT": [
+   "medium_laser",
+   "ammo:lb10x_ac",
+   "ammo:lb10x_ac:cluster",
+   "c3_master"
+  ],
+  "CT": [
+   "jump_jet",
+   "medium_laser@rear"
+  ],
+  "HD": [
+   "medium_laser@rear"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 5717,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Sagittaire SGT-9D.mtf",
+  "published": "RS:3067u,RSFP:ELH",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Sagittaire SGT-9D (ForcePack-Record-Sheets-Eridani-Light-Horse)",
+  "megamek_bv": 2064
+ },
+ "bv": 2064,
+ "sprite": "sagittaire",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 5 Medium Lasers, 2 LB 10-X ACs, Small Pulse Laser, ER PPC; walks 3, runs 5, jumps 3."
+}

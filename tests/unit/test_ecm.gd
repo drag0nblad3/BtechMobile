@@ -72,8 +72,8 @@ func test_indirect_fire_gets_no_artemis() -> void:
 
 func test_new_designs_carry_the_gear() -> void:
 	var db := UnitDb.load_dir()
-	check(db.get_def("raven_rvn3l").ecm_loc >= 0, "Raven ECM")
-	check(db.get_def("marauder_mad3r_tc").tc_loc >= 0, "Marauder TC")
+	check(db.get_def("firestarter_fs9s1").ecm_loc >= 0, "Firestarter ECM")
+	check(db.get_def("black_knight_bl12knt").tc_loc >= 0, "Black Knight TC")
 	var atlas := db.get_def("atlas_as7k")
 	check(atlas.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].ams), "Atlas AMS")
-	check_eq(BattleValue.breakdown(db.get_def("raven_rvn3l"))["ecm"], BattleValue.ECM_BV)
+	check_eq(BattleValue.breakdown(db.get_def("firestarter_fs9s1"))["ecm"], BattleValue.ECM_BV)

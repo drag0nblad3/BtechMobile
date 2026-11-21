@@ -1,0 +1,72 @@
+{
+ "id": "kodiak_2",
+ "name": "Kodiak",
+ "model": "2",
+ "tonnage": 100,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 20,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 32,
+  "RA": 32,
+  "LT": 32,
+  "RT": 32,
+  "CT": 40,
+  "HD": 9,
+  "LL": 34,
+  "RL": 34
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "c_er_medium_laser*2",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "c_er_medium_laser*2",
+   "endo_steel*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "c_streak_srm6",
+   "ammo:c_streak_srm6",
+   "ammo:c_ultra_ac20*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "c_ultra_ac20"
+  ],
+  "CT": [
+   "c_er_large_laser",
+   "endo_steel"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 1806,
+  "megamek": "data/mekfiles/meks/3058Uu/Kodiak 2.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Kodiak 2 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 2856
+ },
+ "bv": 2856,
+ "sprite": "kodiak",
+ "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, Streak SRM 6, Ultra AC/20, ER Large Laser; walks 4, runs 6, jumps 4."
+}

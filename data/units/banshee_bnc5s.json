@@ -1,0 +1,67 @@
+{
+ "id": "banshee_bnc5s",
+ "name": "Banshee",
+ "model": "BNC-5S",
+ "tonnage": 95,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 14,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 21,
+  "RA": 21,
+  "LT": 30,
+  "RT": 30,
+  "CT": 40,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 17
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*2"
+  ],
+  "RA": [
+   "srm6",
+   "ammo:srm6"
+  ],
+  "LT": [
+   "gauss_rifle",
+   "medium_laser@rear",
+   "ammo:gauss_rifle"
+  ],
+  "RT": [
+   "er_ppc*2",
+   "medium_laser@rear"
+  ],
+  "CT": [
+   "small_laser"
+  ],
+  "HD": [
+   "small_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 247,
+  "megamek": "data/mekfiles/meks/3050U/Banshee BNC-5S.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Banshee BNC-5S (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 2065
+ },
+ "bv": 2065,
+ "sprite": "banshee",
+ "role": "Sniper: hangs back and hits from long range. 4 Medium Lasers, 2 ER PPCs, 2 Small Lasers, SRM 6, Gauss Rifle; walks 4, runs 6."
+}

@@ -35,10 +35,28 @@ func weapons() -> WeaponDb:
 	return WeaponDb.load_file()
 
 
-## A 'Mech from data/units/ by id.
+## Made-up loadouts that exercise one rule (tests/fixtures/units, ids "test_*").
+const FIXTURES := "res://tests/fixtures/units"
+
+
+## A 'Mech from data/units/ by id, or a test fixture ("test_...").
 func mech(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int = 0) -> Unit:
-	var def := UnitDb.load_dir().get_def(def_id)
+	var def := (UnitDb.load_dir(FIXTURES) if def_id.begins_with("test_") else UnitDb.load_dir()).get_def(def_id)
 	return Unit.new(uid if uid > 0 else side * 10 + at.x + 1, def, side, at, facing)
+
+
+## Index in u.weapons of the `nth` weapon with this id (-1 if none).
+func gun_index(u: Unit, weapon_id: String, nth: int = 0) -> int:
+	for i in u.weapons.size():
+		if u.weapons[i].def.id == weapon_id:
+			if nth == 0:
+				return i
+			nth -= 1
+	return -1
+
+
+func gun(u: Unit, weapon_id: String, nth: int = 0) -> MountedWeapon:
+	return u.weapons[gun_index(u, weapon_id, nth)]
 
 
 func hex_at(col: int, row: int) -> Vector2i:

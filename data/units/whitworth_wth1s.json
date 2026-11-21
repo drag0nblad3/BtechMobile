@@ -1,0 +1,74 @@
+{
+ "id": "whitworth_wth1s",
+ "name": "Whitworth",
+ "model": "WTH-1S",
+ "tonnage": 40,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 14,
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 12,
+  "RT": 12,
+  "CT": 16,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*3",
+   "srm6",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "heat_sink*3",
+   "srm6",
+   "ammo:srm6"
+  ],
+  "CT": [
+   "heat_sink*2"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3540,
+  "megamek": "data/mekfiles/meks/3039u/Whitworth WTH-1S.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Whitworth WTH-1S (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 917
+ },
+ "bv": 917,
+ "sprite": "whitworth",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Medium Lasers, 2 SRM 6s; walks 4, runs 6, jumps 4."
+}

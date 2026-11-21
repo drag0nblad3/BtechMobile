@@ -1,0 +1,56 @@
+{
+ "id": "sentinel_stn3l",
+ "name": "Sentinel",
+ "model": "STN-3L",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 8,
+  "RA": 8,
+  "LT": 8,
+  "RT": 8,
+  "CT": 10,
+  "HD": 9,
+  "LL": 10,
+  "RL": 10
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "ultra_ac5"
+  ],
+  "LT": [
+   "heat_sink",
+   "ammo:ultra_ac5"
+  ],
+  "RT": [
+   "streak_srm2",
+   "small_laser",
+   "ammo:streak_srm2"
+  ]
+ },
+ "source": {
+  "mul_id": 2860,
+  "megamek": "data/mekfiles/meks/3050U/Sentinel STN-3L.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Sentinel STN-3L (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 717
+ },
+ "bv": 717,
+ "sprite": "sentinel",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. Ultra AC/5, Streak SRM 2, Small Laser; walks 6, runs 9."
+}

@@ -1,0 +1,74 @@
+{
+ "id": "centurion_cn10j",
+ "name": "Centurion",
+ "model": "CN10-J",
+ "tonnage": 55,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 17,
+  "RT": 17,
+  "CT": 22,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*3"
+  ],
+  "RA": [
+   "lb10x_ac",
+   "endo_steel*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "lrm10+artemis",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "heat_sink",
+   "ammo:lb10x_ac",
+   "ammo:lb10x_ac:cluster",
+   "ammo:lrm10*2",
+   "case",
+   "endo_steel*4"
+  ],
+  "CT": [
+   "medium_laser",
+   "medium_pulse_laser@rear"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 7696,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 2/Centurion CN10-J.mtf",
+  "published": "ShrapRS",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Centurion CN10-J (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 1257
+ },
+ "bv": 1257,
+ "sprite": "centurion",
+ "role": "Brawler: built to slug it out at medium range. LB 10-X AC, LRM 10, Medium Laser, Medium Pulse Laser; walks 4, runs 6, jumps 4."
+}

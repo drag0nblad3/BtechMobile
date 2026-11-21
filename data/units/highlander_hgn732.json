@@ -1,15 +1,82 @@
 {
-  "id": "highlander_hgn732", "name": "Highlander", "model": "HGN-732", "tonnage": 90,
-  "walk_mp": 3, "jump_mp": 3, "heat_sinks": 13, "sprite": "highlander",
-  "role": "Jumping assault 'Mech. A Gauss rifle hits hard at long range for almost no heat, and it can drop on a foe from above.",
-  "armor": {"HD": 9, "CT": 42, "LT": 27, "RT": 27, "LA": 28, "RA": 28, "LL": 36, "RL": 36},
-  "rear_armor": {"CT": 13, "LT": 9, "RT": 9},
-  "missing_actuators": {"RA": ["lower_arm", "hand"]},
-  "equipment": {
-    "RA": ["gauss_rifle"],
-    "RT": ["ammo:gauss_rifle", "ammo:gauss_rifle", "case", "heat_sink", "heat_sink", "jump_jet"],
-    "LT": ["lrm20", "ammo:lrm20", "ammo:lrm20", "srm6", "ammo:srm6", "case", "jump_jet"],
-    "LA": ["medium_laser", "heat_sink"],
-    "CT": ["jump_jet"]
-  }
+ "id": "highlander_hgn732",
+ "name": "Highlander",
+ "model": "HGN-732",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 12,
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 28,
+  "RT": 28,
+  "CT": 40,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 16
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "srm6",
+   "ferro_fibrous*4"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "jump_jet",
+   "lrm20",
+   "ammo:srm6*2",
+   "ammo:lrm20*2",
+   "case",
+   "ferro_fibrous"
+  ],
+  "RT": [
+   "jump_jet",
+   "medium_laser*2",
+   "ammo:gauss_rifle*2",
+   "case",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "jump_jet",
+   "ferro_fibrous"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "heat_sink",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "heat_sink",
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 1514,
+  "megamek": "data/mekfiles/meks/3050U/Highlander HGN-732.mtf",
+  "published": "RSFP:Wave 2,RSFP:NWH,RSFP:SI",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Highlander HGN-732 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 2227
+ },
+ "bv": 2227,
+ "role": "Sniper: hangs back and hits from long range. 2 Medium Lasers, SRM 6, Gauss Rifle, LRM 20; walks 3, runs 5, jumps 3.",
+ "sprite": "highlander"
 }

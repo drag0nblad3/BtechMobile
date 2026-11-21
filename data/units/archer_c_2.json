@@ -1,0 +1,69 @@
+{
+ "id": "archer_c_2",
+ "name": "Archer",
+ "model": "C 2",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 24,
+  "RT": 24,
+  "CT": 32,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 10
+ },
+ "equipment": {
+  "LA": [
+   "c_medium_pulse_laser",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "c_medium_pulse_laser",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "c_lrm20+artemis",
+   "c_streak_srm4",
+   "ammo:c_streak_srm4",
+   "ammo:c_lrm20*3",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "c_lrm20+artemis",
+   "c_streak_srm4",
+   "ammo:c_streak_srm4",
+   "ammo:c_lrm20*3",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 8387,
+  "megamek": "data/mekfiles/meks/Force Packs/Wolfs Dragoons/Archer C 2.mtf",
+  "published": "RSFP:WD,RGv1",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Archer C 2 (BATTLETECH_ForcePacks_Record_Sheets_-_Wolfs_Dragoons)",
+  "megamek_bv": 2167
+ },
+ "bv": 2167,
+ "sprite": "archer",
+ "role": "Brawler: built to slug it out at medium range. 2 Medium Pulse Lasers, 2 LRM 20s, 2 Streak SRM 4s; walks 4, runs 6."
+}

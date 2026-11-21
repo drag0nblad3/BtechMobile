@@ -1,17 +1,67 @@
 {
-  "id": "goliath_gol1h", "name": "Goliath", "model": "GOL-1H", "tonnage": 80,
-  "walk_mp": 3, "jump_mp": 0, "heat_sinks": 23, "quad": true, "sprite": "goliath",
-  "role": "Four-legged fire base. Slow but sure-footed: two LRM-10s and a PPC to hold a ridge, lasers and machine guns for anything that closes in, and it can step sideways to keep its guns on target.",
-  "armor": {"HD": 9, "CT": 38, "LT": 26, "RT": 26, "FLL": 34, "FRL": 34, "RLL": 34, "RRL": 34},
-  "rear_armor": {"CT": 12, "LT": 8, "RT": 8},
-  "equipment": {
-    "RT": ["ppc", "lrm10", "medium_laser", "heat_sink*6"],
-    "LT": ["lrm10", "machine_gun", "machine_gun", "medium_laser", "heat_sink*5"],
-    "CT": ["heat_sink*2"],
-    "HD": ["ammo:machine_gun"],
-    "FLL": ["ammo:lrm10"],
-    "FRL": ["ammo:lrm10"],
-    "RLL": ["ammo:lrm10"],
-    "RRL": ["ammo:lrm10"]
-  }
+ "id": "goliath_gol1h",
+ "name": "Goliath",
+ "model": "GOL-1H",
+ "tonnage": 80,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 17,
+ "quad": true,
+ "armor": {
+  "FLL": 24,
+  "FRL": 24,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "RLL": 30,
+  "RRL": 30
+ },
+ "rear_armor": {
+  "LT": 13,
+  "RT": 13,
+  "CT": 19
+ },
+ "equipment": {
+  "FLL": [
+   "heat_sink"
+  ],
+  "FRL": [
+   "heat_sink"
+  ],
+  "LT": [
+   "lrm10",
+   "machine_gun",
+   "ammo:machine_gun"
+  ],
+  "RT": [
+   "ppc",
+   "lrm10",
+   "machine_gun"
+  ],
+  "CT": [
+   "ammo:lrm10*2"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "RLL": [
+   "heat_sink"
+  ],
+  "RRL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 1229,
+  "megamek": "data/mekfiles/meks/3039u/Goliath GOL-1H.mtf",
+  "published": "RS:3039u,RSFP:MERCS",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Goliath GOL-1H (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 1449
+ },
+ "bv": 1449,
+ "role": "Sniper: hangs back and hits from long range. 2 LRM 10s, 2 Machine Guns, PPC; walks 4, runs 6.",
+ "sprite": "goliath"
 }

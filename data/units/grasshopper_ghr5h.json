@@ -1,17 +1,67 @@
 {
-  "id": "grasshopper_ghr5h", "name": "Grasshopper", "model": "GHR-5H", "tonnage": 70,
-  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 22, "sprite": "grasshopper",
-  "role": "Heavy jumper. Thick armor, lots of heat sinks and mostly energy weapons, so it can fight all day without ammo.",
-  "armor": {"HD": 9, "CT": 33, "LT": 22, "RT": 22, "LA": 22, "RA": 22, "LL": 26, "RL": 26},
-  "rear_armor": {"CT": 10, "LT": 8, "RT": 8},
-  "equipment": {
-    "HD": ["lrm5"],
-    "CT": ["large_laser"],
-    "LA": ["medium_laser", "heat_sink", "heat_sink"],
-    "RA": ["medium_laser", "heat_sink", "heat_sink"],
-    "LT": ["medium_laser", "ammo:lrm5", "heat_sink", "heat_sink", "heat_sink", "jump_jet"],
-    "RT": ["medium_laser", "heat_sink", "heat_sink", "heat_sink", "jump_jet"],
-    "LL": ["heat_sink", "jump_jet"],
-    "RL": ["heat_sink", "jump_jet"]
-  }
+ "id": "grasshopper_ghr5h",
+ "name": "Grasshopper",
+ "model": "GHR-5H",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 22,
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 13
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "medium_laser"
+  ],
+  "RA": [
+   "heat_sink",
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*5",
+   "medium_laser"
+  ],
+  "RT": [
+   "heat_sink*4",
+   "medium_laser",
+   "ammo:lrm5"
+  ],
+  "CT": [
+   "large_laser"
+  ],
+  "HD": [
+   "lrm5"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1267,
+  "megamek": "data/mekfiles/meks/3039u/Grasshopper GHR-5H.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Grasshopper GHR-5H (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1427
+ },
+ "bv": 1427,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Medium Lasers, Large Laser, LRM 5; walks 4, runs 6, jumps 4.",
+ "sprite": "grasshopper"
 }

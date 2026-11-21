@@ -1,16 +1,70 @@
 {
-  "id": "kintaro_kto19", "name": "Kintaro", "model": "KTO-19", "tonnage": 55,
-  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 12, "sprite": "kintaro",
-  "role": "Kintaro that swaps the LRM-5 for a Narc beacon: tag a target first, then its two SRM-6 racks switch to Narc-equipped missiles for -1 to hit and more missiles landing.",
-  "armor": {"HD": 9, "CT": 27, "LT": 19, "RT": 19, "LA": 17, "RA": 17, "LL": 24, "RL": 24},
-  "rear_armor": {"CT": 8, "LT": 6, "RT": 6},
-  "equipment": {
-    "RT": ["srm6", "ammo:srm6:narc", "ammo:narc_beacon"],
-    "LT": ["srm6", "ammo:srm6"],
-    "RA": ["medium_laser"],
-    "LA": ["medium_laser", "medium_laser"],
-    "CT": ["narc_beacon"],
-    "LL": ["heat_sink"],
-    "RL": ["heat_sink"]
-  }
+ "id": "kintaro_kto19",
+ "name": "Kintaro",
+ "model": "KTO-19",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 18,
+  "RT": 18,
+  "CT": 26,
+  "HD": 9,
+  "LL": 23,
+  "RL": 23
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "equipment": {
+  "LA": [
+   "lrm5",
+   "srm6",
+   "ferro_fibrous*3"
+  ],
+  "RA": [
+   "medium_laser*2",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "ammo:lrm5:narc",
+   "ammo:srm6:narc",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "srm6",
+   "ammo:srm6:narc",
+   "ammo:narc_beacon*2",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "narc_beacon"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1791,
+  "megamek": "data/mekfiles/meks/3050U/Kintaro KTO-19.mtf",
+  "published": "RS:SW",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1160
+ },
+ "bv": 1160,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 SRM 6s, 2 Medium Lasers, LRM 5, Narc Missile Beacon; walks 5, runs 8.",
+ "sprite": "kintaro"
 }

@@ -1,0 +1,70 @@
+{
+ "id": "vulcan_vt5m",
+ "name": "Vulcan",
+ "model": "VT-5M",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 8,
+  "RT": 8,
+  "CT": 10,
+  "HD": 8,
+  "LL": 10,
+  "RL": 10
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "machine_gun"
+  ],
+  "RA": [
+   "heat_sink",
+   "flamer"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "medium_pulse_laser",
+   "ammo:machine_gun",
+   "endo_steel*7"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "large_pulse_laser",
+   "endo_steel*7"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3461,
+  "megamek": "data/mekfiles/meks/3050U/Vulcan VT-5M.mtf",
+  "published": "RS:3050Uu-I,RSFP:MERCS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Vulcan VT-5M (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 811
+ },
+ "bv": 811,
+ "sprite": "vulcan",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. Machine Gun, Flamer, Medium Pulse Laser, Large Pulse Laser; walks 6, runs 9, jumps 6."
+}

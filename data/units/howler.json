@@ -1,0 +1,65 @@
+{
+ "id": "howler",
+ "name": "Howler",
+ "model": "",
+ "tonnage": 20,
+ "walk_mp": 7,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 5,
+  "RA": 5,
+  "LT": 7,
+  "RT": 7,
+  "CT": 8,
+  "HD": 7,
+  "LL": 6,
+  "RL": 6
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 2
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*3"
+  ],
+  "LT": [
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "c_lrm5*3",
+   "ammo:c_lrm5*3",
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 189,
+  "megamek": "data/mekfiles/meks/3055U/Baboon (Howler).mtf",
+  "published": "RSFP:Wave 2,RGv1",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Baboon (Howler) (BattleTech-Record-Sheets-Aces-Scouring-Sands-2)",
+  "megamek_bv": 645
+ },
+ "bv": 645,
+ "sprite": "howler",
+ "role": "Missile boat: rains missiles from a distance. 3 LRM 5s; walks 7, runs 11."
+}

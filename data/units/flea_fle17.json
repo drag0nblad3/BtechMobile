@@ -1,0 +1,75 @@
+{
+ "id": "flea_fle17",
+ "name": "Flea",
+ "model": "FLE-17",
+ "tonnage": 20,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 4,
+  "RA": 4,
+  "LT": 5,
+  "RT": 5,
+  "CT": 8,
+  "HD": 5,
+  "LL": 4,
+  "RL": 4
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 3
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_pulse_laser"
+  ],
+  "RA": [
+   "medium_pulse_laser"
+  ],
+  "LT": [
+   "heat_sink",
+   "small_laser@rear",
+   "endo_steel*7"
+  ],
+  "RT": [
+   "heat_sink",
+   "small_laser@rear",
+   "endo_steel*7"
+  ],
+  "CT": [
+   "masc",
+   "flamer"
+  ],
+  "LL": [
+   "heat_sink*2"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1137,
+  "megamek": "data/mekfiles/meks/3050U/Flea FLE-17.mtf",
+  "published": "RS:SW,RS:MERCS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Flea FLE-17 (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 510
+ },
+ "bv": 510,
+ "sprite": "flea",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Medium Pulse Lasers, 2 Small Lasers, Flamer; walks 6, runs 9."
+}

@@ -1,0 +1,78 @@
+{
+ "id": "shadow_hawk_iic",
+ "name": "Shadow Hawk IIC",
+ "model": "",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 17,
+  "RT": 17,
+  "CT": 20,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "c_medium_pulse_laser"
+  ],
+  "RA": [
+   "c_medium_pulse_laser",
+   "endo_steel"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "c_streak_srm2*2",
+   "ammo:c_streak_srm2",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "c_streak_srm2*2",
+   "ammo:c_streak_srm2",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "c_er_small_laser",
+   "ferro_fibrous"
+  ],
+  "HD": [
+   "c_er_medium_laser"
+  ],
+  "LL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 2911,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 20/Shadow Hawk IIC.mtf",
+  "published": "RG20,RGv1,RSFP:MERCS-CLAN",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Shadow Hawk IIC (ForcePack-Record-Sheets-Mercenaries-Clan)",
+  "megamek_bv": 1732
+ },
+ "bv": 1732,
+ "sprite": "shadow_hawk_iic",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 Streak SRM 2s, 2 Medium Pulse Lasers, ER Small Laser, ER Medium Laser; walks 6, runs 9, jumps 6."
+}

@@ -1,0 +1,85 @@
+{
+ "id": "supernova_2",
+ "name": "Supernova",
+ "model": "2",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 16,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 30,
+  "RT": 30,
+  "CT": 45,
+  "HD": 9,
+  "LL": 36,
+  "RL": 36
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "c_er_large_laser",
+   "ammo:c_atm9",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "heat_sink*3",
+   "c_er_large_laser",
+   "ammo:c_atm9",
+   "endo_steel"
+  ],
+  "LT": [
+   "jump_jet",
+   "c_atm9*2",
+   "targeting_computer",
+   "endo_steel"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet",
+   "c_atm9*2",
+   "endo_steel"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "LL": [
+   "ammo:c_atm9:er",
+   "ammo:c_atm9:he"
+  ],
+  "RL": [
+   "ammo:c_atm9:er",
+   "ammo:c_atm9:he"
+  ]
+ },
+ "source": {
+  "mul_id": 3133,
+  "megamek": "data/mekfiles/meks/3058Uu/Supernova 2.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Supernova 2 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 2741
+ },
+ "bv": 2741,
+ "sprite": "supernova",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 ATM 9s, 2 ER Large Lasers; walks 3, runs 5, jumps 3."
+}

@@ -1,17 +1,66 @@
 {
-  "id": "vulcan_vl2t", "name": "Vulcan", "model": "VL-2T", "tonnage": 40,
-  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 10, "sprite": "vulcan",
-  "role": "Jumping city fighter with a flamer, machine gun and AC/2. Little damage, but the flamer heats targets up and sets buildings and woods alight.",
-  "armor": {"HD": 9, "CT": 11, "LT": 9, "RT": 8, "LA": 6, "RA": 6, "LL": 11, "RL": 11},
-  "rear_armor": {"CT": 3, "LT": 3, "RT": 3},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {
-    "RT": ["ac2", "ammo:ac2", "jump_jet*2"],
-    "LA": ["flamer"],
-    "RA": ["medium_laser"],
-    "CT": ["machine_gun"],
-    "LT": ["ammo:machine_gun", "jump_jet*2"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "vulcan_vl2t",
+ "name": "Vulcan",
+ "model": "VL-2T",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 8,
+  "RT": 8,
+  "CT": 10,
+  "HD": 8,
+  "LL": 10,
+  "RL": 10
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "machine_gun"
+  ],
+  "RA": [
+   "flamer"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "medium_laser",
+   "ammo:machine_gun"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet*2",
+   "ac2",
+   "ammo:ac2"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3458,
+  "megamek": "data/mekfiles/meks/3039u/Vulcan VL-2T.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Vulcan VL-2T (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 642
+ },
+ "bv": 642,
+ "role": "Scout: fast and light, finds the enemy and stays alive. Machine Gun, Flamer, Medium Laser, AC/2; walks 6, runs 9, jumps 6.",
+ "sprite": "vulcan"
 }

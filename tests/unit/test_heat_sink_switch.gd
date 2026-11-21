@@ -10,7 +10,7 @@ func _emit(t: StringName, d: Dictionary) -> void:
 
 func test_switch_off_at_end_phase() -> void:
 	var s := GameState.new(open_map(4, 4))
-	var u := mech("hatchetman_hct3f_tsm", 0, hex_at(1, 1), 0, 1)
+	var u := mech("test_hatchetman_hct3f_tsm", 0, hex_at(1, 1), 0, 1)
 	s.add_unit(u)
 	var gc := GameController.new(s)
 	check(gc.request_sinks_off(u, 6))

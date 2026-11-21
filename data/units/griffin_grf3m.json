@@ -1,0 +1,58 @@
+{
+ "id": "griffin_grf3m",
+ "name": "Griffin",
+ "model": "GRF-3M",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 13,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 20,
+  "RT": 20,
+  "CT": 24,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "equipment": {
+  "RA": [
+   "heat_sink",
+   "er_ppc"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "small_laser",
+   "ammo:lrm20*2",
+   "case"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "lrm20"
+  ],
+  "CT": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 1300,
+  "megamek": "data/mekfiles/meks/3085u/Phoenix/Griffin GRF-3M.mtf",
+  "published": "RSFP:Wave 1,RGv1,RSFP:KH",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Griffin GRF-3M (ForcePack-Record-Sheets-Kell-Hounds)",
+  "megamek_bv": 1521
+ },
+ "bv": 1521,
+ "sprite": "griffin",
+ "role": "Sniper: hangs back and hits from long range. ER PPC, Small Laser, LRM 20; walks 5, runs 8, jumps 5."
+}

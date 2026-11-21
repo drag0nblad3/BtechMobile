@@ -26,6 +26,9 @@ var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 n
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
 var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
 var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
+var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
+var probe_loc := -1
+var inert: Array[Dictionary] = []  ## [{kind, loc}] of InertGear.
 ## "standard" or "xl" (XlEngine: 3 engine slots in each side torso, 2 if Clan).
 var engine_type := "standard"
 ## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
@@ -41,6 +44,8 @@ var config := ""  ## OmniMech configuration ("Prime", "A"), "" for others.
 var structure_type := "standard"
 var armor_type := "standard"
 var role: String = ""    ## One-line tactical summary for the force builder.
+var bv := 0  ## Battle Value printed on the official record sheet, 0 if none.
+var source: Dictionary = {}  ## Where the data came from (sheet, MegaMek file).
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 var armor: Array[int] = []       ## Per Location, front.
 var rear_armor: Array[int] = []  ## Per Location (torsos only).
@@ -75,6 +80,8 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.structure_type = d.get("structure_type", "standard")
 	u.armor_type = d.get("armor_type", "standard")
 	u.role = d.get("role", "")
+	u.bv = int(d.get("bv", 0))
+	u.source = d.get("source", {})
 	u.sprite = d.get("sprite", "")
 	var arm: Dictionary = d.get("armor", {})
 	var rear: Dictionary = d.get("rear_armor", {})
@@ -88,50 +95,8 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 		for item: String in eq[code]:
 			var rep := item.split("*")  # "endo_steel*3" = three slots
 			for i in (int(rep[1]) if rep.size() > 1 else 1):
-				u._add_item(Location.from_code(code), rep[0], weapons)
+				DesignItems.add(u, Location.from_code(code), rep[0], weapons)
 	return u
-
-
-## One-per-'Mech items stored as a location: item -> property.
-const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
-		"supercharger": "supercharger_loc", "c3_master": "c3_master_loc", "c3_slave": "c3_slave_loc"}
-
-## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
-## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword",
-## "endo_steel", "ferro_fibrous", "tsm", "targeting_computer", "guardian_ecm", "masc", "supercharger",
-## "c3_master", "c3_slave"; "<item>*N" repeats an item N times.
-func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
-	if item == "endo_steel" or item == "ferro_fibrous" or item == "tsm":
-		if not bulk_slots.has(loc):
-			bulk_slots[loc] = []
-		bulk_slots[loc].append(item)
-		return
-	if LOC_ITEMS.has(item):
-		set(LOC_ITEMS[item], loc)
-		return
-	if item == "case":
-		case_locs.append(loc)
-		return
-	if item == "hatchet" or item == "sword":
-		melee.append({"kind": item, "loc": loc})
-		return
-	if item == "heat_sink" or item == "jump_jet":
-		if not other_items.has(loc):
-			other_items[loc] = []
-		other_items[loc].append(item)
-		return
-	assert(weapons != null, "%s: equipment needs a WeaponDb" % id)
-	if item.begins_with("ammo:"):
-		var ap := item.substr(5).split(":")
-		var aw := weapons.get_def(ap[0])
-		assert(aw != null, "%s: unknown ammo %s" % [id, item])
-		ammo_mounts.append({"weapon": aw, "loc": loc, "kind": ap[1] if ap.size() > 1 else ""})
-		return
-	var artemis := item.ends_with("+artemis")
-	var parts := item.trim_suffix("+artemis").split("@")
-	var w := weapons.get_def(parts[0])
-	assert(w != null, "%s: unknown weapon %s" % [id, item])
-	weapon_mounts.append({"weapon": w, "loc": loc, "rear": parts.size() > 1, "artemis": artemis})
 
 
 ## Running MP = walking MP x 1.5, rounded up.

@@ -8,7 +8,11 @@ func test_filter_and_groups() -> void:
 	var clan := DesignFilter.groups(db, DesignFilter.Mode.CLAN)
 	var inner := DesignFilter.groups(db, DesignFilter.Mode.INNER_SPHERE)
 	check_eq(all.size(), clan.size() + inner.size())
-	check_eq(clan.size(), 28, "one entry per Clan chassis")
+	var chassis := {}
+	for d: UnitDef in db.by_id.values():
+		if d.is_clan():
+			chassis[d.chassis if d.omni else d.id] = true
+	check_eq(clan.size(), chassis.size(), "one entry per Clan chassis")
 	for g: Array in clan:
 		check(g.all(func(d: UnitDef) -> bool: return d.is_clan()))
 		if g[0].omni:
@@ -17,7 +21,7 @@ func test_filter_and_groups() -> void:
 		check_eq(g.size(), 1)
 		check(not g[0].is_clan())
 	var tw: Array = clan.filter(func(g: Array) -> bool: return g[0].chassis == "timber_wolf")[0]
-	check_eq(tw.map(func(d: UnitDef) -> String: return d.config), ["Prime", "A", "B"])
+	check_eq(tw.map(func(d: UnitDef) -> String: return d.config), ["Prime", "A", "B", "Pryde"])
 	check(clan[0][0].tonnage <= clan[-1][0].tonnage, "light to heavy")
 	check_eq(DesignFilter.next(DesignFilter.Mode.CLAN), DesignFilter.Mode.ALL)
 

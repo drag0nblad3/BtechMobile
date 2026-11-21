@@ -1,21 +1,90 @@
 {
-  "id": "crossbow", "name": "Crossbow", "tonnage": 40, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "crossbow", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 18, "LT": 15, "RT": 15, "LA": 12, "RA": 12, "LL": 20, "RL": 20},
-  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*2"], "RA": ["ferro_fibrous*5"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 15, "role": "Clan light fire support. Two LRM 15s for indirect fire and four ER medium lasers in case anything closes in.", "equipment": {
-      "LT": ["c_lrm15", "ammo:c_lrm15*2", "heat_sink", "heat_sink", "heat_sink"],
-      "RT": ["c_lrm15", "ammo:c_lrm15*2", "heat_sink", "heat_sink"],
-      "LA": ["c_er_medium_laser*2", "c_er_small_laser"],
-      "RA": ["c_er_medium_laser*2", "c_er_small_laser"]
-    }},
-    {"model": "A", "heat_sinks": 14, "role": "ATM Crossbow: two ATM 6s that switch between long-range ER and close-range HE missiles.", "equipment": {
-      "LT": ["c_atm6", "ammo:c_atm6:er", "ammo:c_atm6:he", "heat_sink", "heat_sink"],
-      "RT": ["c_atm6", "ammo:c_atm6:er", "ammo:c_atm6:he", "heat_sink", "heat_sink"],
-      "CT": ["ammo:c_atm6"],
-      "LA": ["c_er_medium_laser*2", "c_er_small_laser"],
-      "RA": ["c_er_medium_laser*2", "c_er_small_laser"]
-    }}
+ "id": "crossbow",
+ "name": "Crossbow",
+ "tonnage": 65,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 19,
+  "RT": 19,
+  "CT": 26,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 9,
+  "RT": 9,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "crossbow",
+ "equipment": {},
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 1829,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_lrm20+artemis",
+     "ammo:c_lrm20*2"
+    ],
+    "RA": [
+     "c_lrm20+artemis",
+     "ammo:c_lrm20*2"
+    ]
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 LRM 20s; walks 5, runs 8.",
+   "source": {
+    "mul_id": 739,
+    "megamek": "data/mekfiles/meks/3058Uu/Crossbow Prime.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 1829
+   }
+  },
+  {
+   "model": "A",
+   "bv": 1797,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_streak_srm6",
+     "c_medium_pulse_laser",
+     "c_lrm5",
+     "ammo:c_lrm5",
+     "ammo:c_streak_srm6"
+    ],
+    "RA": [
+     "c_streak_srm6",
+     "c_medium_pulse_laser",
+     "c_lrm5",
+     "ammo:c_lrm5",
+     "ammo:c_streak_srm6"
+    ]
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Streak SRM 6s, 2 Medium Pulse Lasers, 2 LRM 5s; walks 5, runs 8.",
+   "source": {
+    "mul_id": 730,
+    "megamek": "data/mekfiles/meks/3058Uu/Crossbow A.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1797
+   }
+  }
+ ]
 }

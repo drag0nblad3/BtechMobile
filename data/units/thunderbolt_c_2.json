@@ -1,0 +1,63 @@
+{
+ "id": "thunderbolt_c_2",
+ "name": "Thunderbolt",
+ "model": "C 2",
+ "tonnage": 65,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 17,
+ "heat_sink_type": "double",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 24,
+  "RT": 24,
+  "CT": 30,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 12
+ },
+ "equipment": {
+  "LA": [
+   "c_er_medium_laser",
+   "c_er_small_laser*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "c_er_ppc"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "c_streak_srm6",
+   "c_er_medium_laser*3",
+   "ammo:c_streak_srm6"
+  ],
+  "RT": [
+   "heat_sink*3",
+   "c_small_pulse_laser*2",
+   "ammo:c_ams",
+   "c_ams"
+  ],
+  "CT": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 8195,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 15/Thunderbolt C 2.mtf",
+  "published": "RSFP:ELH,RG15,RGv1",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Thunderbolt C 2 (ForcePack-Record-Sheets-Eridani-Light-Horse)",
+  "megamek_bv": 2170
+ },
+ "bv": 2170,
+ "sprite": "thunderbolt",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 ER Medium Lasers, 2 ER Small Lasers, 2 Small Pulse Lasers, ER PPC, Streak SRM 6, Anti-Missile System; walks 4, runs 6."
+}

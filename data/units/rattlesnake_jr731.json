@@ -1,0 +1,82 @@
+{
+ "id": "rattlesnake_jr731",
+ "name": "Rattlesnake",
+ "model": "JR7-31",
+ "tonnage": 35,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 11,
+  "RT": 11,
+  "CT": 15,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "medium_laser",
+   "ferro_fibrous*3"
+  ],
+  "RA": [
+   "heat_sink",
+   "medium_laser",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "medium_laser*2",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "medium_laser*2",
+   "guardian_ecm",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "jump_jet",
+   "medium_laser"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9238,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 9/Rattlesnake JR7-31.mtf",
+  "published": "ShrapRS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Rattlesnake JR7-31 (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 1398
+ },
+ "bv": 1398,
+ "sprite": "rattlesnake",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 7 Medium Lasers; walks 7, runs 11, jumps 7."
+}

@@ -1,16 +1,56 @@
 {
-  "id": "kintaro_kto18", "name": "Kintaro", "model": "KTO-18", "tonnage": 55,
-  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 12, "sprite": "kintaro",
-  "role": "Medium brawler built around two SRM-6 racks: devastating up close, with an LRM-5 and lasers to reach out a little.",
-  "armor": {"HD": 9, "CT": 27, "LT": 20, "RT": 20, "LA": 18, "RA": 18, "LL": 26, "RL": 26},
-  "rear_armor": {"CT": 9, "LT": 6, "RT": 6},
-  "equipment": {
-    "RT": ["srm6", "ammo:srm6", "ammo:lrm5"],
-    "LT": ["srm6", "ammo:srm6"],
-    "RA": ["medium_laser"],
-    "LA": ["medium_laser"],
-    "CT": ["lrm5", "medium_laser"],
-    "LL": ["heat_sink"],
-    "RL": ["heat_sink"]
-  }
+ "id": "kintaro_kto18",
+ "name": "Kintaro",
+ "model": "KTO-18",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 18,
+  "RT": 18,
+  "CT": 26,
+  "HD": 9,
+  "LL": 23,
+  "RL": 23
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 9
+ },
+ "equipment": {
+  "LA": [
+   "srm6",
+   "medium_laser",
+   "lrm5"
+  ],
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "ammo:lrm5",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "srm6",
+   "ammo:srm6*2"
+  ],
+  "CT": [
+   "srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 1790,
+  "megamek": "data/mekfiles/meks/3039u/Kintaro KTO-18.mtf",
+  "published": "RS:SW",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1187
+ },
+ "bv": 1187,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 SRM 6s, 2 Medium Lasers, LRM 5; walks 5, runs 8.",
+ "sprite": "kintaro"
 }

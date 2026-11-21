@@ -28,7 +28,7 @@ func test_weapon_crit_destroys_weapon() -> void:
 	dice.queue_2d6(8)       # one critical
 	dice.pick_queue = [0]   # first hittable RT slot: AC/20
 	CriticalHits.roll_location(s, dice, _emit, u, Location.RT)
-	check(u.weapons[1].destroyed, "AC/20 destroyed")
+	check(gun(u, "ac20").destroyed, "AC/20 destroyed")
 
 
 func test_engine_and_gyro() -> void:

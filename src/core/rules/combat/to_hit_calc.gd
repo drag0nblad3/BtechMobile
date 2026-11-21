@@ -82,8 +82,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	Narc.add(th, state, attacker, w, target)
 	if WeaponModes.to_hit_mod(w) != 0:
 		th.add("cluster ammo", WeaponModes.to_hit_mod(w), "LB-X cluster rounds spread like a shotgun: -1 to hit, but each pellet only does 1 damage.")
-	LowVisibility.add(th, state, attacker)
-	add_conditions(th, state, attacker, target, los)
+	LowVisibility.add(th, state, attacker, target)
+	add_conditions(th, state, attacker, target, ActiveProbe.strip_smoke(los, state, attacker, target))
 	if Location.is_arm_of(attacker.def, w.loc):
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
@@ -119,7 +119,7 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 	if tw > 0:
 		th.add("target in woods", tw, "The target is hiding in %s." % tile.terrain.name.to_lower())
 	var obs := Obscurant.to_hit_mod(state.map, target, tw)
-	if obs > 0:
+	if obs > 0 and not ActiveProbe.clears(state, attacker, target):
 		var what := Obscurant.name_of(tile)
 		th.add("target in " + what, obs, "The %s in its hex hides the target like woods (never more than +2 with woods)." % what)
 	if th.legs_only:

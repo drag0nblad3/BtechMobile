@@ -37,6 +37,7 @@ var destroyed_announced: bool = false
 var prone: bool = false
 var flooded: Dictionary = {}  ## Location -> true once a hull breach floods it (HullBreach).
 var ecm_lost: bool = false  ## ECM suite destroyed by a critical hit.
+var probe_lost := false  ## Active probe destroyed by a critical hit.
 var tc_lost: bool = false  ## Targeting computer destroyed by a critical hit.
 var narc_pods: Array[Dictionary] = []  ## Narc homing pods on it: [{side, loc, turn}] (Narc).
 var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
@@ -84,7 +85,10 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 		mw.artemis = m.get("artemis", false)
 		weapons.append(mw)
 	for a in def.ammo_mounts:
-		ammo.append(AmmoBin.new(a["weapon"], a["loc"], a.get("kind", "")))
+		var bin := AmmoBin.new(a["weapon"], a["loc"], a.get("kind", ""))
+		if a.get("half", false):
+			bin.shots = maxi(1, bin.shots / 2)
+		ammo.append(bin)
 	Narc.setup_ammo(self)
 	Atm.setup_ammo(self)
 	slots = CritLayout.build(def)

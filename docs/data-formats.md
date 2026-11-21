@@ -51,7 +51,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 ## `data/units/<id>.json`
 ```json
 {"id": "atlas_as7d", "name": "Atlas", "model": "AS7-D", "tonnage": 100,
- "walk_mp": 3, "jump_mp": 0, "heat_sinks": 20, "sprite": "atlas", "role": "one line",
+ "walk_mp": 3, "jump_mp": 0, "heat_sinks": 20, "sprite": "atlas", "role": "one line", "bv": 1897, "source": {"bv": "sheet", "sheet": "...", "megamek": "data/mekfiles/...", "mul_id": 140},
  "armor": {"HD": 9, "CT": 47, "LT": 32, "RT": 32, "LA": 34, "RA": 34, "LL": 41, "RL": 41},
  "rear_armor": {"CT": 14, "LT": 10, "RT": 10},
  "missing_actuators": {"LA": ["lower_arm", "hand"]},
@@ -60,7 +60,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - Location codes: `HD CT LT RT LA RA LL RL`. Internal structure comes from tonnage.
 - Equipment items: a weapon id (`@rear` for rear-firing, `+artemis` for a launcher with
   Artemis IV), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
-  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
+  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `beagle_probe` / `c_active_probe` / `c_light_active_probe` (`ActiveProbe`), `a_pod` / `tag` / `c_tag` (`InertGear`, no effect yet), `<weapon>~N` (its last N slots spill into the next location in), `ammo:<id>:half` (half-ton bin), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
   rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as

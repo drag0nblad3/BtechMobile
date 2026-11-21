@@ -1,0 +1,67 @@
+{
+ "id": "legionnaire_lgn2k",
+ "name": "Legionnaire",
+ "model": "LGN-2K",
+ "tonnage": 50,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 17,
+  "RT": 17,
+  "CT": 22,
+  "HD": 9,
+  "LL": 23,
+  "RL": 23
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*3"
+  ],
+  "RA": [
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "targeting_computer",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "er_ppc",
+   "masc"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6905,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/Legionnaire LGN-2K.mtf",
+  "published": "RS:3145-NTNU,RS:3145,RSFP:Davion",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Legionnaire LGN-2K (ForcePack-Record-Sheets-House-Davion)",
+  "megamek_bv": 1597
+ },
+ "bv": 1597,
+ "sprite": "legionnaire",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. ER PPC; walks 7, runs 11, jumps 7."
+}

@@ -1,16 +1,68 @@
 {
-  "id": "vindicator_vnd1r", "name": "Vindicator", "model": "VND-1R", "tonnage": 45,
-  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 16, "sprite": "vindicator",
-  "role": "Sturdy medium brawler-sniper. PPC plus backup lasers and LRMs, with enough heat sinks to keep the PPC firing.",
-  "armor": {"HD": 9, "CT": 23, "LT": 16, "RT": 16, "LA": 13, "RA": 13, "LL": 19, "RL": 19},
-  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
-  "equipment": {
-    "HD": ["small_laser"],
-    "LA": ["ppc"],
-    "CT": ["medium_laser", "jump_jet"],
-    "LT": ["lrm5", "ammo:lrm5", "heat_sink", "heat_sink"],
-    "RT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink", "jump_jet"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "vindicator_vnd1r",
+ "name": "Vindicator",
+ "model": "VND-1R",
+ "tonnage": 45,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 16,
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 16,
+  "RT": 16,
+  "CT": 18,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "small_laser"
+  ],
+  "RA": [
+   "ppc"
+  ],
+  "LT": [
+   "heat_sink*4",
+   "lrm5",
+   "ammo:lrm5"
+  ],
+  "RT": [
+   "heat_sink*5"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 3422,
+  "megamek": "data/mekfiles/meks/3039u/Vindicator VND-1R.mtf",
+  "published": "RS:SW",
+  "role": "Brawler",
+  "bv": "megamek",
+  "megamek_bv": 1024
+ },
+ "bv": 1024,
+ "role": "Brawler: built to slug it out at medium range. Small Laser, PPC, LRM 5, Medium Laser; walks 4, runs 6, jumps 4.",
+ "sprite": "vindicator"
 }

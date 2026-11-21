@@ -1,0 +1,83 @@
+{
+ "id": "dervish_dv7d",
+ "name": "Dervish",
+ "model": "DV-7D",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 13,
+  "RA": 13,
+  "LT": 19,
+  "RT": 19,
+  "CT": 21,
+  "HD": 9,
+  "LL": 17,
+  "RL": 17
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser",
+   "streak_srm2",
+   "ferro_fibrous*7"
+  ],
+  "RA": [
+   "medium_laser",
+   "streak_srm2",
+   "ferro_fibrous*7"
+  ],
+  "LT": [
+   "lrm10",
+   "ammo:lrm10",
+   "ammo:streak_srm2",
+   "case",
+   "endo_steel*6"
+  ],
+  "RT": [
+   "lrm10",
+   "ammo:lrm10",
+   "ammo:streak_srm2",
+   "case",
+   "endo_steel*7"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 880,
+  "megamek": "data/mekfiles/meks/3050U/Dervish DV-7D.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Dervish DV-7D (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 1412
+ },
+ "bv": 1412,
+ "sprite": "dervish",
+ "role": "Missile boat: rains missiles from a distance. 2 Medium Lasers, 2 Streak SRM 2s, 2 LRM 10s; walks 5, runs 8, jumps 5."
+}

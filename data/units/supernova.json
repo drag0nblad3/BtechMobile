@@ -1,0 +1,73 @@
+{
+ "id": "supernova",
+ "name": "Supernova",
+ "model": "",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 26,
+ "heat_sink_type": "double",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 26,
+  "RA": 26,
+  "LT": 26,
+  "RT": 26,
+  "CT": 33,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "c_er_large_laser*3"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "c_er_large_laser*3"
+  ],
+  "LT": [
+   "heat_sink*5",
+   "jump_jet"
+  ],
+  "RT": [
+   "heat_sink*5",
+   "jump_jet"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 3132,
+  "megamek": "data/mekfiles/meks/3058Uu/Supernova.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Supernova (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 2801
+ },
+ "bv": 2801,
+ "sprite": "supernova",
+ "role": "Sniper: hangs back and hits from long range. 6 ER Large Lasers; walks 3, runs 5, jumps 3."
+}
