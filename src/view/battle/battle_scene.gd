@@ -47,6 +47,7 @@ func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
 	map_view.build(state.map)
+	add_child(ObjectiveMarkers.build(state))
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
 	units_layer.build(state)

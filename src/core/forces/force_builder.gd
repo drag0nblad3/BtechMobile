@@ -20,6 +20,12 @@ var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 var initiative_die := false  ## Use the optional Initiative Die rule.
 var conditions := Conditions.new()  ## Battlefield conditions.
+## "" = free battle (last side standing), "random" = roll on the Standard
+## Mission Table, else a StandardMissions id.
+var mission_id := ""
+var forced_withdrawal := false
+## Briefing lines from the last build (mission setup, complications).
+var notes: Array = []
 
 
 func _init(unit_db: UnitDb, bv_budget: int = 3000) -> void:
@@ -129,22 +135,55 @@ func ready_to_fight() -> bool:
 	return not rosters[0].is_empty() and not rosters[1].is_empty()
 
 
-func build(map: BattleMap) -> GameState:
+func build(map: BattleMap, dice: Dice = null) -> GameState:
 	var state := GameState.new(map)
 	state.initiative_die_rule = initiative_die
 	state.conditions = conditions
+	notes = []
+	var setup := {}
+	if mission_id != "":
+		if dice == null:
+			dice = Dice.new(randi())
+		var id := StandardMissions.roll(dice) if mission_id == "random" else mission_id
+		setup = StandardMissions.setup(id, map, dice, forced_withdrawal)
+		state.mission.def = setup["mission"]
+		notes = setup["notes"]
+		if setup["conditions"] != null and conditions.is_clear():
+			state.conditions = setup["conditions"]
+	elif forced_withdrawal:
+		state.mission.def = Mission.from_dict({"name": "Battle", "forced_withdrawal": true,
+				"summary": "Last side with a 'Mech still fighting wins."})
 	var next_id := 1
 	for side in 2:
 		var row := map.height - 2 if side == 0 else 1
 		var ids: Array = rosters[side]
+		var placed: Array[Unit] = []
 		for i in ids.size():
 			var col := int(round((i + 1) * map.width / float(ids.size() + 1))) - 1
-			var c := _free_hex(state, Hex.from_offset(Vector2i(col, row)))
+			var c := Hex.INVALID if not setup.is_empty() else _free_hex(state, Hex.from_offset(Vector2i(col, row)))
 			var u := Unit.new(next_id, units.get_def(ids[i]), side, c, 0 if side == 0 else 3)
 			u.pilot = Pilot.new(skills[side].x, skills[side].y)
 			state.add_unit(u)
+			placed.append(u)
 			next_id += 1
+		if not setup.is_empty():
+			Deployment.place(state, placed, setup["zones"][side])
 	return state
+
+
+## Cycles: free battle, random standard mission, then each standard mission.
+func next_mission() -> void:
+	var order: Array[String] = ["", "random"]
+	order.append_array(StandardMissions.available_ids())
+	mission_id = order[(order.find(mission_id) + 1) % order.size()]
+
+
+func mission_name() -> String:
+	if mission_id == "":
+		return "Free battle (last side standing)"
+	if mission_id == "random":
+		return "Random standard mission"
+	return StandardMissions.info(mission_id).get("name", mission_id)
 
 
 ## Nearest hex to `c` that is dry-ish (depth < 2) and empty.

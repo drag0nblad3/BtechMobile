@@ -183,9 +183,15 @@ func _unit_done() -> void:
 
 func _roll_initiative() -> void:
 	var r := Initiative.roll(dice, state.sides_alive(), InitiativeDie.bonuses(state))
+	var forced := MissionFlow.forced_initiative(state)
+	if forced >= 0 and r["order"].has(forced):  # the mission hands this side the win
+		r["order"].erase(forced)
+		r["order"].append(forced)
+		r["forced"] = forced
 	state.initiative_rolls = r["rolls"]
 	state.initiative_order.assign(r["order"])
-	InitiativeDie.update(state, r["order"])
+	if forced < 0:  # a forced win doesn't move the Initiative Die
+		InitiativeDie.update(state, r["order"])
 	_emit(GameEvent.INITIATIVE, r)
 
 

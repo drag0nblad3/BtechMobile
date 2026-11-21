@@ -27,6 +27,10 @@ var home_edges: Array[String] = ["south", "north"]
 var exit := ""
 var exit_from_turn: int = 1
 var summary := ""  ## Plain-words goal for the player.
+var notes: Array = []  ## Setup notes for the briefing (sides, complications).
+## This side wins initiative automatically for the first `initiative_turns` turns (Ambush).
+var initiative_side: int = -1
+var initiative_turns: int = 0
 
 
 static func from_dict(d: Dictionary) -> Mission:
@@ -46,6 +50,8 @@ static func from_dict(d: Dictionary) -> Mission:
 	m.exit = d.get("exit", "")
 	m.exit_from_turn = int(d.get("exit_from_turn", 1))
 	m.summary = d.get("summary", "")
+	m.initiative_side = int(d.get("initiative_side", -1))
+	m.initiative_turns = int(d.get("initiative_turns", 0))
 	return m
 
 
