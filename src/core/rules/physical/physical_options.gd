@@ -24,6 +24,7 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 	if not a.def.quad:
 		out.append(_push(state, a, t))
 		out.append_array(MeleeWeapons.options(state, a, t))
+	Tsm.boost(a, out)
 	return out
 
 
