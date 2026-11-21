@@ -26,6 +26,8 @@ signal twist_left
 signal twist_right
 signal flip_arms
 signal new_battle
+signal save_battle
+signal watch_replay
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 68)
@@ -70,6 +72,8 @@ func _ready() -> void:
 	var top := _row(col)
 	status = _label(top)
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_button(top, "Save", save_battle)
+	_button(top, "Replay", watch_replay)
 	_button(top, "Log", log_toggled)
 	_button(top, "Sheet", sheet_toggled)
 	explain_button = _button(top, "Explain", explain_cycled)
