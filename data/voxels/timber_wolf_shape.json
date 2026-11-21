@@ -1,7 +1,7 @@
 {
   "id": "timber_wolf_shape",
   "name": "Timber Wolf Prime — low-resolution silhouette",
-  "unit": "timber_wolf",
+  "unit": "timber_wolf_prime",
   "voxel_size": 0.043,
   "subdivide": 1,
   "legs": "digitigrade",
