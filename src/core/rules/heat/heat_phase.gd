@@ -46,7 +46,7 @@ static func water_cooling(tile: MapTile, u: Unit = null) -> int:
 	if u == null:
 		return 2 if tile.depth == 1 else 6
 	var all := tile.depth >= 2 or u.prone
-	var under := u.working_heat_sinks() if all else leg_heat_sinks(u)
+	var under := u.working_heat_sinks() if all else mini(leg_heat_sinks(u), u.working_heat_sinks())
 	return mini(under * u.def.heat_per_sink(), 6)
 
 
