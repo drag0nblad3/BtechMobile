@@ -66,7 +66,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/missions/` | `Mission` (data), `MissionState` (score, crippled, exited), `MissionFlow` (controller hooks), `Objective`/`ObjectiveControl`, `VictoryPoints`, `Crippled`, `ForcedWithdrawal`, `RandomDuration`, `MapEdges`, `StandardMissions` + `MissionLayouts` (the book's missions, `data/missions/standard.json`), `Complications` |
 | `src/core/rules/terrain/` | `Fire` (burning hexes, smoke, lighting buildings), `WoodsFire` (flamers lighting woods), `Obscurant` (smoke/fog math), `Surfaces` (ice/mud/snow, conditions → map), `Avalanche` |
 | `src/core/rules/turn/` | `Initiative`, `InitiativeDie` (optional rule), `UnequalNumbers` (who acts when), `EndPhase` |
-| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `WeaponText` (shot results), `ModsText`, `BvText`, `DamageText`/`HeatText`/`ConditionsText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `MissionText`, `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
+| `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `WeaponText` (shot results), `ModsText`, `BvText`, `DamageText`/`HeatText`/`ConditionsText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `MissionText`, `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons), `TrainingCampaign` (connected training games, `data/training/campaign.json`) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire`, `BotModes` (Ultra/LB-X), `BotPhysical` (punch/kick/melee weapons), `BotCharge` (charge/DFA value), `BotAim` (aimed shots), `BotNarc` (beacon tagging), `BotMasc` (when to engage MASC or a supercharger), `BotWithdraw` (Forced Withdrawal), `BotObjectives` (objectives, mission exits) |
 | `src/core/forces/` | `ForceBuilder` (Battle Value budget, lances, deployment, balance text), `BattleValue` (simplified BV 2), `BvSkill` (pilot skill multiplier), `DesignFilter` (catalog: tech filter, OmniMech groups), `Deployment` (zones before turn 1) |
 | `src/core/util/` | `Dice` (seedable), `MinHeap`, `JsonFile` |
@@ -79,10 +79,10 @@ Battle mode first; campaign layer later.
 | `src/view/settings/` | `GameSettings` (explanation level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards), `SinkButtons` (heat sink switches) |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `MascInput` (MASC button), `BotDriver` (runs computer sides), `BattleLaunch` |
-| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `UiKit` |
+| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, saves results), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `missions/standard.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
-| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial) |
+| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial, training) |
 | `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |

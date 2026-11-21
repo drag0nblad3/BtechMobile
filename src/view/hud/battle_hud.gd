@@ -48,6 +48,7 @@ var side_panel: PanelContainer
 var side_box: VBoxContainer
 var log_view: CombatLogView
 var game_over_box: VBoxContainer
+var game_over_detail: Label  ## Training debrief under the result.
 var leave_button: Button
 var game_over_label: Label
 var sheet_open := false  ## Side panel shows the record sheet, not attack choices.
@@ -137,6 +138,9 @@ func _build_game_over(parent: Control) -> void:
 	game_over_box.visible = false
 	parent.add_child(game_over_box)
 	game_over_label = _label(game_over_box, 34)
+	game_over_detail = _label(game_over_box, FONT_SIZE)
+	game_over_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	game_over_detail.custom_minimum_size.x = 760  # training debriefs run long
 	_button(game_over_box, "New Battle", new_battle)
 
 
@@ -181,8 +185,10 @@ func show_attack_controls(visible_: bool, fire_text: String = "Fire", skip_text:
 	skip_button.text = skip_text
 
 
-func show_game_over(text: String) -> void:
+func show_game_over(text: String, detail: String = "") -> void:
 	game_over_label.text = text
+	game_over_detail.text = detail
+	game_over_detail.visible = detail != ""
 	game_over_box.visible = true
 	show_move_controls(false)
 	show_attack_controls(false)
