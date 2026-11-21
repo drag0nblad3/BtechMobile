@@ -22,33 +22,95 @@ var lessons: LessonCard
 var training := -1  ## Training campaign mission index, -1 outside training.
 var objectives: Node3D
 var off_field: HiddenInput
+var recorder := BattleRecorder.new()
+var _last_autosave_turn := -1
+var _tutorial_path := ""
 
 
 func _ready() -> void:
 	GameSettings.load_settings()
-	var state := BattleLaunch.take()
-	if state == null:
-		state = ScenarioLoader.load_file(SCENARIO, TerrainDb.load_file(), UnitDb.load_dir())
-	controller = GameController.new(state)
+	var saved := {}
+	if BattleLaunch.load_autosave:
+		BattleLaunch.load_autosave = false
+		saved = BattleSave.load_game()
+	var state: GameState
+	if saved.is_empty():
+		state = BattleLaunch.take()
+		if state == null:
+			state = ScenarioLoader.load_file(SCENARIO, TerrainDb.load_file(), UnitDb.load_dir())
+		controller = GameController.new(state)
+		recorder.begin(state)
+	else:
+		BattleLaunch.pending = null
+		controller = saved["controller"]
+		state = controller.state
+		recorder.frames = saved["frames"]
 	bots = BotDriver.new()
 	bots.controller = controller
-	bots.bot_sides = BattleLaunch.take_bots()
-	bots.skill = BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level
+	bots.bot_sides = saved.get("bots", BattleLaunch.take_bots()) if not saved.is_empty() \
+			else BattleLaunch.take_bots()
+	bots.skill = int(saved["skill"]) if not saved.is_empty() \
+			else (BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level)
 	BattleLaunch.bot_level = -1
 	explainer = Explainer.new(GameSettings.explain_level)
-	if BattleLaunch.tutorial_path != "":
-		tutorial = Tutorial.from_scenario(BattleLaunch.tutorial_path)
-		BattleLaunch.tutorial_path = ""
+	_tutorial_path = String(saved.get("tutorial", BattleLaunch.tutorial_path))
+	BattleLaunch.tutorial_path = ""
+	if _tutorial_path != "":
+		tutorial = Tutorial.from_scenario(_tutorial_path)
 		lessons = LessonCard.new()
 		add_child(lessons)
 		bots.lessons = lessons
-	training = BattleLaunch.training_mission
+	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
 	add_child(BattleEnvironment.build())
 	_build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
-	controller.start_turn()
+	if saved.is_empty():
+		controller.start_turn()
+	else:
+		_resume_ui()
+
+
+func _resume_ui() -> void:
+	for f: Dictionary in recorder.frames.slice(maxi(0, recorder.frames.size() - 70)):
+		if String(f.get("text", "")) != "":
+			hud.log_view.add_line(String(f["text"]))
+	_update_status()
+	if controller.state.game_over:
+		hud.show_game_over("Battle finished")
+	elif controller.state.phase in [Phase.Kind.WEAPON_ATTACK, Phase.Kind.PHYSICAL_ATTACK]:
+		attacks.begin.call_deferred()
+
+
+func _autosave() -> void:
+	if controller == null:
+		return
+	var ok := BattleSave.save_game(controller, bots.bot_sides, bots.skill,
+			training, recorder.frames, _tutorial_path)
+	if not ok:
+		push_warning("Battle autosave could not be written.")
+
+
+func _save_battle() -> void:
+	_autosave()
+	hud.set_tip("Battle saved." if FileAccess.file_exists(BattleSave.SAVE_PATH) else "Save failed.")
+
+
+func _watch_replay() -> void:
+	if recorder.frames.is_empty():
+		return
+	if not controller.state.game_over:
+		_autosave()
+	if BattleSave.save_replay(recorder.frames):
+		get_tree().change_scene_to_file("res://scenes/battle_replay.tscn")
+	else:
+		hud.set_tip("Could not save the replay.")
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
+		_autosave()
 
 
 func _build_views(state: GameState) -> void:
@@ -129,6 +191,8 @@ func _wire() -> void:
 	hud.log_toggled.connect(hud.log_view.cycle_size)
 	hud.sheet_toggled.connect(_toggle_sheet)
 	hud.explain_cycled.connect(_cycle_explain)
+	hud.save_battle.connect(_save_battle)
+	hud.watch_replay.connect(_watch_replay)
 	hud.new_battle.connect(func():
 			BattleLaunch.open_training = training >= 0
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
@@ -199,7 +263,15 @@ func _cycle_explain() -> void:
 func _on_event(e: GameEvent) -> void:
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
-	hud.log_view.add_line(explainer.describe(e, s), bold)
+	var explanation := explainer.describe(e, s)
+	hud.log_view.add_line(explanation, bold)
+	recorder.record(e, s, explanation)
+	if e.type == GameEvent.ACTIVE_SIDE and s.turn > _last_autosave_turn:
+		_last_autosave_turn = s.turn
+		_autosave.call_deferred()
+	if e.type == GameEvent.GAME_OVER:
+		_autosave.call_deferred()
+		BattleSave.save_replay.call_deferred(recorder.frames)
 	fx.play(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
