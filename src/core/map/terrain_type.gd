@@ -11,6 +11,7 @@ var is_water: bool
 var flammable: bool          ## Can be set on fire (woods; WoodsFire).
 var top_color: Color
 var detail_color: Color
+var pattern: String        ## Ground look for the view: grass, rocks, paving, rubble, riverbed, forest.
 
 
 static func from_dict(d: Dictionary) -> TerrainType:
@@ -24,4 +25,5 @@ static func from_dict(d: Dictionary) -> TerrainType:
 	t.flammable = bool(d.get("flammable", false))
 	t.top_color = Color(d.get("color", "#808080"))
 	t.detail_color = Color(d.get("detail_color", "#606060"))
+	t.pattern = d.get("pattern", "grass")
 	return t

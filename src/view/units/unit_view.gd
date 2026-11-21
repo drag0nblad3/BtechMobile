@@ -7,6 +7,7 @@ signal animation_finished
 
 const STEP_TIME := 0.32
 const TURN_TIME := 0.18
+const GROUP := &"unit_views"  ## BuildingProps finds 'Mechs standing inside buildings.
 
 var unit: Unit
 var map: BattleMap
@@ -18,6 +19,7 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	unit = u
 	map = battle_map
 	name = "Unit_%d" % u.id
+	add_to_group(GROUP)
 	var sprite := SpriteMech.try_build(u.def)
 	set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
 	snap_to_state()
