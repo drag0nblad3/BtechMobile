@@ -92,8 +92,8 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -28)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
-	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -31)),
-			"Jenner rounded CGL cockpit must project forward of side laser housings")
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -27)),
+			"Jenner resculpted CGL saucer nose must project forward of both laser mouths")
 	check(not jenner.part("ll_hock_joint").is_empty(),
 			"Jenner knee and rear hock must be independent geometry")
 
@@ -353,3 +353,29 @@ func test_coordinated_passes_118_127_keep_asymmetric_components() -> void:
 	check_eq(jenner.muzzles[Location.CT].size(), 4, "Jenner SRM4")
 	check_eq(atlas.muzzles[Location.RT].size(), 1, "Atlas AC20")
 	check_eq(atlas.muzzles[Location.LT].size(), 10, "Atlas rocket ports")
+
+
+func test_passes_128_to_132_resculpted_silhouette_landmarks() -> void:
+	# Large hand-defined section replacements, not cosmetic mesh bevels.
+	var a: Dictionary = JsonFile.read(MODELS[0])
+	var w: Dictionary = JsonFile.read(MODELS[1])
+	var j: Dictionary = JsonFile.read(MODELS[2])
+	var shoulder: Array = []
+	for part: Dictionary in a["parts"]:
+		if part["name"] == "lt":
+			shoulder = part["shapes"][0]["loft"]["sections"]
+	check_eq(shoulder.size(), 4, "Atlas cowl requires four drawn cross sections")
+	check(shoulder[0]["polygon"][0][0] != shoulder[1]["polygon"][0][0],
+			"Atlas must not have a rectangular continuous shoulder wall")
+	var mount: Array = []
+	for part: Dictionary in w["parts"]:
+		if part["name"] == "ra_cannon_mount":
+			mount = part["shapes"][0]["loft"]["sections"]
+	check(mount.size() >= 6, "Wolverine cannon mount needs a stepped armor profile")
+	var nose: Array = []
+	for part: Dictionary in j["parts"]:
+		if part["name"] == "hd":
+			nose = part["shapes"][0]["loft"]["sections"]
+	check_eq(nose[0]["at"], -27, "Jenner needs short CGL rounded cockpit")
+	check(nose[1]["polygon"][0][0] < nose[0]["polygon"][0][0],
+			"Jenner saucer must flare behind its blunt nose")

@@ -417,3 +417,26 @@ all three chassis; loft sections remain ordered, vertex counts consistent,
 mirrors and muzzle metadata unchanged. `subdivide:1` remains the hard
 shape-only gate. Genuine Godot-render inspection and complete CI still needed.
 No APK, merge or detail-density step is authorized.
+
+
+## Five coordinated major resculpts: passes 128–132 (first half of ten)
+
+CGL plastic references take priority over resin variants. The *actual contours*
+of shoulder shells, cannon linkage, cockpit, fuselage and head have been
+replaced with hand-authored multi-section geometry rather than shifting a
+few existing vertices.
+
+| Pass | Atlas | Wolverine | Jenner |
+| --- | --- | --- | --- |
+| 128 | Replace both Atlas rectangular shoulder cuboids with tapered multi-section armor bells, narrower front/back and rounded roofs. | Replace Wolverine's thin diagonal AC5 support with a wide, continuously joined, bent eight-sided armature. | Rebuild the Jenner's forward cockpit as a short broad rounded saucer in five cross-sections rather than a pointed aircraft beak. |
+| 129 | Rebuild both shoulder crest ridges as inset curved lips, no giant flat roof slabs. | Replace the lower right arm armor sheath with a single matching tapered AC5 forearm enveloping the armature. | Shorten both mirrored Jenner side-pod arm shells into tapered roots while maintaining muzzle and structural overlap. |
+| 130 | Reprofile Atlas death's-head cranium from high bullet dome to broad brow, flattened temple and tapered crown. | Rebuild the Wolverine right torso's large rectangular shoulder cowl into compact swept armor that stops at the arm root. | Refit Jenner windscreen and chin to the new shorter nose while maintaining separate glazing panels. |
+| 131 | Replace sharp protruding Atlas jaw / cheeks with a recessed mandible and separate high orbit cowls. | Rebuild Wolverine visor helmet as narrow layered three-quarter sculpt instead of a cylindrical bucket. | Reprofile Jenner's dorsal SRM-4 roof into a lower cassette stepped behind the pilot's saucer, retaining rack bores. |
+| 132 | Replace flat Atlas chest plate panels with broad downward V tapered armor facets, preserving short cannon and left missile cluster. | Reform the Wolverine center torso into a tighter waist under a wide upper V chest, not Atlas-like straight box. | Resculpt Jenner fuselage waist and deck from a huge horizontal slab to a narrow tapered center with compact attachment points. |
+
+**Visual gates:** Atlas front/head-on shoulder bell and skull proportions;
+Wolverine one contiguous right gun arm, separate left fist and left SRM6;
+Jenner short blunt cockpit saucer plus independently mounted twin laser pods.
+Godot's single five-view contact sheet should be reviewed before the next
+five passes. Muzzles remain at their authored locations, subdivision remains
+one, all valid source contours retain section ordering.
