@@ -9,6 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Preserve editable shape-source snapshot for external visual review
+        if: github.event_name == 'pull_request' && github.head_ref == 'feature/component-shape-studies-20261120'
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-shape-json-source
+          path: |
+            data/voxels/atlas_shape.json
+            data/voxels/wolverine_shape.json
+            data/voxels/jenner_shape.json
       - name: Install Godot
         run: |
           wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
