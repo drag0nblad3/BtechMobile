@@ -128,8 +128,8 @@ func test_plastic_shape_pass47_joint_links_are_real_geometry() -> void:
 			"Atlas left hip bridge is not in the pelvis/upper-leg junction")
 	var w := VxModel.load_file(MODELS[1])
 	check(not w.part("ra_elbow_link").is_empty(), "Wolverine cannon-side elbow link missing")
-	check(w.part("ra_elbow_link")["cells"].has(Vector3i(18, 30, 0)),
-			"Wolverine elbow link cannot bridge the upper and lower arm")
+	check(w.part("ra_elbow_link")["cells"].has(Vector3i(18, 38, -7)),
+			"Wolverine raised elbow must bend from shoulder into the forward AC5 arm")
 	check_eq(w.muzzles[Location.LT].size(), 6, "Wolverine shoulder SRM6 rack")
 	for muzzle: Vector3 in w.muzzles[Location.LT]:
 		var opening := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
@@ -573,3 +573,37 @@ func test_passes_153_to_157_assembly_proportions_and_open_ports() -> void:
 		var mouth := Vector3i(floori(muzzle.x), floori(muzzle.y), ceili(muzzle.z))
 		check(not atlas.part("lt_lrm20_rack")["cells"].has(mouth),
 				"Atlas shoulder rack opening blocked %s" % mouth)
+
+
+func test_passes_158_162_no_second_right_arm_and_hand_grips_one_gun() -> void:
+	var source: Dictionary = JsonFile.read(MODELS[1])
+	var right: Array = []
+	var hand: Array = []
+	for p: Dictionary in source["parts"]:
+		if p["name"] == "ra":
+			right = p["shapes"]
+		if p["name"] == "ra_integrated_hand":
+			hand = p["shapes"]
+	check_eq(right.size(), 2, "Exactly one Wolverine upper arm and one gun forearm")
+	for op: Dictionary in right:
+		check(op.has("loft") and op["loft"]["axis"] == "z",
+				"No hanging vertical arm profile beneath AC5")
+	check(hand[0]["loft"]["sections"][0]["at"] <= -20,
+			"Wolverine hand must grip behind the gun shroud, not hang near torso")
+	var model := VxModel.load_file(MODELS[1])
+	check(model.errors.is_empty(), "Wolverine gun-arm rebuild invalid")
+	var palm: Dictionary = model.part("ra_integrated_hand")["cells"]
+	var mount: Dictionary = model.part("ra_cannon_mount")["cells"]
+	var barrel: Dictionary = model.part("ra_ac5_shroud")["cells"]
+	var upper: Dictionary = model.part("ra")["cells"]
+	var palm_gun := false
+	var palm_mount := false
+	var elbow_upper := false
+	for pos: Vector3i in palm:
+		palm_gun = palm_gun or barrel.has(pos)
+		palm_mount = palm_mount or mount.has(pos)
+	for pos: Vector3i in model.part("ra_elbow_link")["cells"]:
+		elbow_upper = elbow_upper or upper.has(pos)
+	check(palm_gun and palm_mount, "Wolverine right hand must grip the same autocannon")
+	check(elbow_upper, "Wolverine bent elbow must join the upper arm")
+	check_eq(model.muzzles[Location.RA].size(), 1, "Wolverine exactly one AC5")
