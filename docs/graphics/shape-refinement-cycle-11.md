@@ -28,3 +28,18 @@ The intermediate pass-182 five-angle review still showed Atlas's broad orange fa
 |187|Connect narrowed Atlas skull to chest with separate lowered angular brow bridge rather than protruding orange mask.|Add compact Wolverine missile rack inner mounting brace beside angular helmet, retain open 2×3 ports.|Build Jenner lower circular disc rim so lowered saucer is visibly separate from upper reactor and pods.|
 
 Atlas head assembly narrowed as a group; new knee yokes. Wolverine triangular breast armor and paired tapered thigh cuffs; hand still grips ONE right cannon arm. Jenner head lowered two whole voxels including glass/struts, side pods rebuilt with tapered octagonal sections and low saucer underlip. Original weapon ports retained. No high density, APK or merge.
+
+
+## Passes 188–192: user's Atlas depth critique
+
+Pass-187 Godot side/top views show Atlas too thick and volumetric in z (front/back), despite reasonable head and shoulder width. We reduced **whole connected Atlas systems** without changing x/y: CT/pelvis/pectoral housing z scale ~70%; LT/RT shoulder shells/bands/rotator/cradle ~65–77%; HD entire skull/eyes/neck compressed around z−10 ~75%; rear radiator z scale ~64%; arms, gauntlets and hands ~78%. Keep weapon muzzles in place; never add density. The old Jenner y28 forward nose assertions were stale after pass-183 lowering; changed to y26 at same z=-36 nose projection. Relational Godot render/CI checks next.
+
+| Pass | Atlas | Wolverine | Jenner |
+|---|---|---|---|
+|188|Cut Atlas main CT/abdomen/hip/breastplate depth by ~30%, leaving shoulders width/height untouched.|Add slanted structural Wolverine keel-to-pelvis V brace instead of disconnected oval bib.|Add low Jenner windshield brow on lower forward saucer.|
+|189|Shallow Atlas both shoulder bells, caps, underplates, ridges and cradle while preserving LRM/AC20 mouths.|Trim Wolverine right wing shoulder cap to expose bent gun/hand elbow connection.|Taper Jenner disc back saddle to shorter neck under lowered canopy.|
+|190|Compress whole Atlas skull, cheeks, nose, jaw and eye sockets front-to-back about 25%, keeping face beneath shoulder crowns.|Raise Wolverine bent elbow pivot at back of single cannon-bearing forearm, leaving hand on AC5.|Further round Jenner middle disc plan to broad flattened saucer ahead of two laser pods.|
+|191|Shorten Atlas rear radiator housings about one third; remove huge top/rear overhang.|Taper Wolverine back jump pack armor to a smaller rear silhouette.|Re-angle Jenner left laser-pod side truss toward mid-fuselage.|
+|192|Compress Atlas forearm/gauntlet and hands in depth to match shallower shoulder and chest mass; never reduce width of fists.|Resculpt Wolverine right elbow shield around single arm/hand/gun silhouette.|Advance Jenner hock shin pivot to stand under lower forward disc.|
+
+Atlas measured z bounds after these passes: CT -5..6, LT shoulder -8..6, skull -16..2, rear radiator 4..7. All three models changed on each of five passes. No APK or merge.

@@ -92,8 +92,8 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(16, 27, -28)),
 			"Wolverine forearm cannon must project independently of shoulder")
 	var jenner := VxModel.load_file(MODELS[2])
-	check(jenner.part("hd")["cells"].has(Vector3i(0, 28, -36)),
-			"Jenner CGL disc nose must reach z=-42, well ahead of side lasers")
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 26, -36)),
+			"Jenner lowered disc nose at z=-36 and y=26 still projects ahead of lasers")
 	check(not jenner.part("ll_hock_joint").is_empty(),
 			"Jenner knee and rear hock must be independent geometry")
 
@@ -451,7 +451,7 @@ func test_bold_reference_passes_138_to_142_fix_fundamental_silhouette() -> void:
 					var x: Array = s["polygon"].map(func(v: Array) -> int: return v[0])
 					diameter = x.max() - x.min()
 	check(diameter >= 16 and diameter <= 20, "Jenner disc should be ~half the overall nacelle span")
-	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
+	check(j.part("hd")["cells"].has(Vector3i(0, 26, -36)),
 			"Jenner disc must protrude forward of its twin laser mounts")
 	check(not j.part("hd_disc_rim").is_empty(), "Jenner disc edge absent")
 	check(not j.part("hd_disc_crown").is_empty(), "Jenner disc dome absent")
@@ -484,7 +484,7 @@ func test_passes_143_to_147_reference_structure_and_usable_muzzles() -> void:
 	for barrel: Vector3 in w.muzzles[Location.LT]:
 		var aperture := Vector3i(floori(barrel.x), floori(barrel.y), ceili(barrel.z))
 		check(not rack.has(aperture), "Wolverine compact launcher closed port %s" % aperture)
-	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
+	check(j.part("hd")["cells"].has(Vector3i(0, 26, -36)),
 			"Jenner forward saucer must remain z=-36")
 	check_eq(a.muzzles[Location.RT].size(), 1, "Atlas AC20")
 
@@ -528,7 +528,7 @@ func test_proportion_passes_148_152_are_balanced_and_connected() -> void:
 	check(not w.part("ra_compact_elbow_armor").is_empty(),
 			"AC5 forearm must be visibly attached to the shoulder by a compact elbow")
 	var j := VxModel.load_file(MODELS[2])
-	check(j.part("hd")["cells"].has(Vector3i(0, 28, -36)),
+	check(j.part("hd")["cells"].has(Vector3i(0, 26, -36)),
 			"Jenner disc must still protrude ahead of the twin laser muzzles")
 
 
@@ -658,3 +658,30 @@ func test_pass_177_wolverine_right_arm_is_one_bent_gun_grip_chain() -> void:
 	check(not atlas.part("ct_left_clavicle").is_empty()
 			and not atlas.part("ct_right_clavicle").is_empty(),
 			"Atlas recessed skull must sit between connected shoulder clavicles")
+
+
+func test_passes_188_to_192_atlas_depth_compaction() -> void:
+	var source: Dictionary = JsonFile.read(MODELS[0])
+	var depth := {}
+	for part_source: Dictionary in source["parts"]:
+		if part_source["name"] in ["ct", "lt", "hd"]:
+			var low := 999
+			var high := -999
+			for source_shape: Dictionary in part_source["shapes"]:
+				if source_shape.has("loft"):
+					var l: Dictionary = source_shape["loft"]
+					for section: Dictionary in l["sections"]:
+						if l["axis"] == "z":
+							low = mini(low, section["at"])
+							high = maxi(high, section["at"])
+						elif l["axis"] == "y":
+							for xy: Array in section["polygon"]:
+								low = mini(low, xy[1])
+								high = maxi(high, xy[1])
+			depth[part_source["name"]] = high - low
+	check(depth["ct"] <= 12, "Atlas torso still too deep")
+	check(depth["lt"] <= 16, "Atlas round shoulders still too deep")
+	check(depth["hd"] <= 23, "Atlas face/skull still too deep")
+	var jenner := VxModel.load_file(MODELS[2])
+	check(jenner.part("hd")["cells"].has(Vector3i(0, 26, -36)),
+			"Jenner nose remains forward of laser pods at corrected y")
