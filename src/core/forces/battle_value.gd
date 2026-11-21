@@ -35,7 +35,9 @@ static func breakdown(def: UnitDef) -> Dictionary:
 			ToHitCalc.target_movement_mod(def.jump_mp, true) if def.jump_mp > 0 else 0)
 	b["tmm"] = tmm
 	b["def_factor"] = 1.0 + tmm / 10.0
-	var base: float = b["armor"] + b["structure"] + b["gyro"] - b["ammo_penalty"]
+	b["ams"] = def.weapon_mounts.reduce(func(t: float, m: Dictionary) -> float:
+		return t + (float(m["weapon"].bv) if m["weapon"].ams else 0.0), 0.0)
+	var base: float = b["armor"] + b["structure"] + b["gyro"] + b["ams"] - b["ammo_penalty"]
 	b["defensive"] = maxf(1.0, base) * b["def_factor"]
 	_weapons(def, b)
 	b["ammo"] = _ammo(def)
@@ -65,6 +67,8 @@ static func _weapons(def: UnitDef, b: Dictionary) -> void:
 	var halved: Array[String] = []
 	for m: Dictionary in mounts:
 		var w: WeaponDef = m["weapon"]
+		if w.ams:
+			continue  # defensive (added to the defensive part)
 		var value := float(w.bv)
 		if m["rear"]:
 			value *= 0.5

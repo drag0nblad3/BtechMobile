@@ -22,8 +22,8 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if tile == null or tile.building == null:
 		th.impossible = "No building there"
 		return th
-	if not attacker.can_fire(w):
-		th.impossible = "%s can't fire" % w.def.name
+	if w.def.ams or not attacker.can_fire(w):
+		th.impossible = "%s can't fire at a building" % w.def.name
 		return th
 	if ProneFire.blocked(attacker, w) != "":
 		th.impossible = ProneFire.blocked(attacker, w)

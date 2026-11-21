@@ -161,6 +161,8 @@ static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) ->
 		res += ", %d %s" % [d["missiles"], unit]
 		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
 			res += " (Artemis +%d)" % d["cluster_bonus"]
+	if d.get("ams", false):
+		res += "; anti-missile fire shot some down (-4 to the cluster roll)" if level != ExplainLevel.OFF else ", AMS"
 	if d.get("streak_held", false) and level != ExplainLevel.OFF:
 		res += "; the Streak never locked on, so it held its missiles (no heat, no ammo used)"
 	if d.get("heat_added", 0) > 0:

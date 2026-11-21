@@ -48,9 +48,14 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		return
 	var arc_id := FiringArc.arc(target.coord, target.facing, attacker.coord)
-	var c := WeaponModes.cluster(w, shots, dice)
+	var ams := AntiMissile.engaging(target, attacker, w)
+	if ams != null and not AntiMissile.engage(target, ams):
+		ams = null
+	var c := WeaponModes.cluster(w, shots, dice, ams != null)
+	if ams != null:
+		data["ams"] = true
 	var packets: Array[int] = c["packets"]
-	if c["n"] > 0:
+	if c["n"] > 0 or ams != null:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]
 		data["cluster_bonus"] = c.get("bonus", 0)
