@@ -11,7 +11,7 @@ var _rosters: Array[VBoxContainer] = []
 var _totals: Array[Label] = []
 var _status: Label
 var _info: Label
-var _bv_labels: Array = []  ## [Label, UnitDef] per catalog entry.
+var catalog: ForceCatalog
 var bot_sides := [1]
 
 
@@ -33,46 +33,12 @@ func _ready() -> void:
 	var cols := HBoxContainer.new()
 	cols.add_theme_constant_override("separation", 16)
 	margin.add_child(cols)
-	_build_catalog(cols)
+	catalog = ForceCatalog.new(db, _on_add)
+	catalog.build(cols)
 	for side in 2:
 		_build_roster(cols, side)
 	_build_options(cols)
 	_refresh()
-
-
-func _build_catalog(parent: Control) -> void:
-	var scroll := ScrollContainer.new()
-	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.size_flags_stretch_ratio = 2.0
-	parent.add_child(scroll)
-	var list := VBoxContainer.new()
-	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.add_child(list)
-	UiKit.label(list, "'Mechs")
-	for def in db.sorted_defs():
-		var box := UiKit.panel(list)
-		UiKit.label(box, "%s  ·  BV %d  ·  %d t %s  ·  %d/%d MP  ·  %d armor" % [def.display_name(),
-				BattleValue.of(def), def.tonnage, def.weight_class(), def.walk_mp, def.run_mp(), def.total_armor()])
-		UiKit.label(box, _weapons_line(def), UiKit.SMALL)
-		var bv_line := BvText.line(def, GameSettings.explain_level)
-		_bv_labels.append([UiKit.label(box, bv_line, UiKit.SMALL), def])
-		if def.role != "":
-			UiKit.label(box, def.role, UiKit.SMALL).modulate = Color(0.8, 0.85, 0.75)
-		var row := HBoxContainer.new()
-		box.add_child(row)
-		for side in 2:
-			UiKit.button(row, "+ " + Names.side(side), _on_add.bind(side, def.id), Vector2(140, 56))
-
-
-func _weapons_line(def: UnitDef) -> String:
-	var counts := {}
-	for m in def.weapon_mounts:
-		var n: String = m["weapon"].name
-		counts[n] = counts.get(n, 0) + 1
-	var parts: Array[String] = []
-	for n: String in counts:
-		parts.append(("%d× %s" % [counts[n], n]) if counts[n] > 1 else n)
-	return ", ".join(parts) + "  ·  %d %sheat sinks" % [def.heat_sinks, "double " if def.double_heat_sinks else ""]
 
 
 func _build_roster(parent: Control, side: int) -> void:
@@ -145,9 +111,7 @@ func _refresh() -> void:
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
 					func(): builder.remove(side, i); _refresh())
 	var map_name: String = JsonFile.read(maps[map_index]).get("name", "?")
-	for pair: Array in _bv_labels:
-		pair[0].text = BvText.line(pair[1], GameSettings.explain_level)
-		pair[0].visible = pair[0].text != ""
+	catalog.refresh()
 	_info.text = "Map: %s\nBudget: %d BV per side\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
 			builder.budget, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
