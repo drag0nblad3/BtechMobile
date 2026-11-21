@@ -27,6 +27,16 @@ jobs:
         with:
           name: voxel-counts
           path: voxel-counts.log
+      - name: Validate reference-sculpted voxel counts (no rendering, no APK)
+        run: |
+          set -o pipefail
+          godot --headless -s tools/vx_count_report.gd 2>&1 | tee vx-counts.log
+          [ "$(grep -c '^VX_COUNT|' vx-counts.log)" -eq 3 ]
+          ! grep -E "SCRIPT ERROR|Parse Error" vx-counts.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reference-vx-counts
+          path: vx-counts.log
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail
