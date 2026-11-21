@@ -12,8 +12,9 @@ extends RefCounted
 static func options(state: GameState, a: Unit, c: Vector2i) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
 	var why := _problem(state, a, c)
-	for arm in [Location.LA, Location.RA]:
-		out.append(_punch(state, a, c, arm, why))
+	if not a.def.quad:
+		for arm in [Location.LA, Location.RA]:
+			out.append(_punch(state, a, c, arm, why))
 	out.append(_kick(state, a, c, why))
 	for i in a.def.melee.size():
 		out.append(_swing(state, a, c, a.def.melee[i]["kind"], a.def.melee[i]["loc"], why, a.melee_lost.has(i)))
@@ -99,20 +100,22 @@ static func _punch(state: GameState, a: Unit, c: Vector2i, arm: int, why: String
 static func _kick(state: GameState, a: Unit, c: Vector2i, why: String) -> Dictionary:
 	var dmg := ceili(a.def.tonnage / 5.0)
 	if why == "":
-		if a.legs_destroyed() > 0 or a.hip_hits() > 0:
-			why = "Can't kick with a damaged hip or a missing leg"
+		var legs := QuadKick.pair(a, Location.RA if a.def.quad else Location.RL)
+		if QuadKick.problem(a, legs[1]) != "":
+			why = QuadKick.problem(a, legs[1])
 		elif FiringArc.fire_arc(a.coord, a.facing, c) != FiringArc.FRONT:
 			why = "Kicks only hit buildings in front of your feet"
-		elif PhysicalMods.limb_fired(a, Location.RL) or PhysicalMods.limb_fired(a, Location.LL):
+		elif PhysicalMods.limb_fired(a, legs[0]) or PhysicalMods.limb_fired(a, legs[1]):
 			why = "A leg fired a weapon this turn"
 		elif not _reaches(state, a, c, 1):
 			why = "The building is below your feet"
-	for l in [Location.LL, Location.RL]:
+	var kick_legs := QuadKick.pair(a, Location.RA if a.def.quad else Location.RL)
+	for l in kick_legs:
 		for act in ["upper_leg", "lower_leg"]:
 			if not a.has_working_actuator(l, act):
 				@warning_ignore("integer_division")
 				dmg = dmg / 2
-	return _opt("kick", Location.RL, dmg, why)
+	return _opt("kick", kick_legs[1], dmg, why)
 
 
 static func _swing(state: GameState, a: Unit, c: Vector2i, kind: String, arm: int, why: String, lost: bool) -> Dictionary:

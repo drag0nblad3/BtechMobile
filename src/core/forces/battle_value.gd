@@ -28,7 +28,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	b["armor"] = def.total_armor() * ARMOR_MULT
 	var structure := 0
 	for loc in Location.COUNT:
-		structure += StructureTable.points(def.tonnage, loc)
+		structure += StructureTable.points(def.tonnage, loc, def.quad)
 	b["structure"] = structure * STRUCTURE_MULT * XlEngine.bv_structure_mult(def)
 	b["gyro"] = def.tonnage * GYRO_MULT
 	b["ammo_penalty"] = def.ammo_mounts.size() * AMMO_PENALTY

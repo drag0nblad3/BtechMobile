@@ -74,7 +74,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 
 static func _actuator(u: Unit, loc: int, slot: CritSlot) -> String:
 	var nice := slot.name.replace("_", " ")
-	if Location.is_leg(loc):
+	if Location.is_leg_of(u.def, loc):
 		u.psr_pending.append({"reason": "%s hit" % nice, "mod": 0, "leg": loc})
 		return "%s hit: slower, piloting roll" % nice
 	return "%s hit: arm weapons and punches less accurate" % nice

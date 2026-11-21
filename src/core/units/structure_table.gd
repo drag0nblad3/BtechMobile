@@ -14,7 +14,8 @@ const TABLE := {
 }
 
 
-static func points(tonnage: int, loc: int) -> int:
+## `quad`: the front legs (LA/RA) use the leg column.
+static func points(tonnage: int, loc: int, quad := false) -> int:
 	if loc == Location.HEAD:
 		return HEAD
 	var row: Array = TABLE.get(tonnage, TABLE[50])
@@ -24,10 +25,10 @@ static func points(tonnage: int, loc: int) -> int:
 		Location.LT, Location.RT:
 			return row[1]
 		Location.LA, Location.RA:
-			return row[2]
+			return row[3] if quad else row[2]
 	return row[3]
 
 
 ## Most armor a location may carry: twice its structure (head: 9).
-static func max_armor(tonnage: int, loc: int) -> int:
-	return 9 if loc == Location.HEAD else 2 * points(tonnage, loc)
+static func max_armor(tonnage: int, loc: int, quad := false) -> int:
+	return 9 if loc == Location.HEAD else 2 * points(tonnage, loc, quad)

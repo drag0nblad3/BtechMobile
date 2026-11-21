@@ -61,13 +61,15 @@ static func snow_cooling(state: GameState, u: Unit) -> int:
 		return 0
 	if u.prone:
 		return SNOW_PRONE
-	return SNOW_PER_LEG * (2 - u.legs_destroyed())
+	return SNOW_PER_LEG * maxi(0, 2 - u.legs_destroyed())
 
 
 ## Mud rolls for a running move: one per mud hex the 'Mech turns in.
 ## [{index, reason, mod, levels, back}] like MovePsr.action_rolls.
 static func mud_rolls(state: GameState, u: Unit, path: Array[Vector3i], from: Vector3i) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
+	if u.def.quad:
+		return out  # four legs keep their footing in mud (p. 238)
 	var prev := from
 	var rolled := {}
 	for i in path.size():

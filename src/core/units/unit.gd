@@ -71,7 +71,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for loc in Location.COUNT:
 		armor.append(def.armor[loc] if def.armor.size() > loc else 0)
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
-		structure.append(StructureTable.points(def.tonnage, loc))
+		structure.append(StructureTable.points(def.tonnage, loc, def.quad))
 	for m in def.weapon_mounts:
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
@@ -124,7 +124,7 @@ func has_working_actuator(loc: int, actuator: String) -> bool:
 
 func leg_actuator_hits() -> int:
 	var n := 0
-	for loc in [Location.LL, Location.RL]:
+	for loc in Location.legs(def):
 		for s: CritSlot in slots[loc]:
 			if s.kind == CritSlot.Kind.ACTUATOR and s.hit:
 				n += 1
@@ -132,10 +132,13 @@ func leg_actuator_hits() -> int:
 
 
 func legs_destroyed() -> int:
-	return int(is_location_out(Location.LL)) + int(is_location_out(Location.RL))
+	return Location.legs(def).filter(func(l: int) -> bool: return is_location_out(l)).size()
 
 
+## Hip hits with a biped's effects (a quad's first one doesn't count, Quad).
 func hip_hits() -> int:
+	if def.quad:
+		return Quad.counted_hips(self)
 	var n := 0
 	for loc in [Location.LL, Location.RL]:
 		if not has_working_actuator(loc, "hip") and not is_location_out(loc):
@@ -175,6 +178,8 @@ func lose_heat_sink(slot: CritSlot) -> bool:
 ## leg, lower leg or foot hit is -1, but leg damage can't go below 1; a
 ## destroyed leg sets the base to 1; both legs gone is 0.
 func walk_mp() -> int:
+	if def.quad:
+		return maxi(0, Quad.walk_base(self) - HeatScale.mp_penalty(heat))
 	if legs_destroyed() >= 2:
 		return 0
 	var base := mini(def.walk_mp, 1) if legs_destroyed() == 1 \
@@ -199,7 +204,7 @@ func jump_mp() -> int:
 ## Working jump jets in the legs (they don't fire under water).
 func leg_jump_jets() -> int:
 	var n := 0
-	for loc in [Location.LL, Location.RL]:
+	for loc in Location.legs(def):
 		if is_location_destroyed(loc):
 			continue
 		for s: CritSlot in slots[loc]:

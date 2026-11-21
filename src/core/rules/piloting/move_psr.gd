@@ -54,8 +54,8 @@ static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null, dfa
 			u.psr_pending.append({"reason": "running with a damaged gyro", "mod": 0})
 		for i in u.hip_hits():
 			u.psr_pending.append({"reason": "running with a broken hip", "mod": 0})
-		for i in u.legs_destroyed():
-			u.psr_pending.append({"reason": "running on one leg", "mod": 0})
+		for i in (Quad.running_leg_rolls(u) if u.def.quad else u.legs_destroyed()):
+			u.psr_pending.append({"reason": "running on one leg" if not u.def.quad else "running on lost legs", "mod": 0})
 	if mode == MoveMode.Kind.JUMP:
 		for extra in [Gravity.jump_roll(c), Wind.landing_roll(c, dfa)]:
 			if not extra.is_empty():
@@ -63,9 +63,12 @@ static func after_move(u: Unit, mode: int, hexes: int, c: Conditions = null, dfa
 				u.psr_pending.append(extra)
 		if u.gyro_hits > 0:
 			u.psr_pending.append({"reason": "landing a jump with a damaged gyro", "mod": 0, "jump": true})
-		for loc in [Location.LL, Location.RL]:
+		if u.def.quad and Quad.running_leg_rolls(u) > 0:
+			u.psr_pending.append({"reason": "landing a jump on lost legs", "mod": 0, "jump": true})
+		for loc in Location.legs(u.def):
 			if u.is_location_out(loc):
-				u.psr_pending.append({"reason": "landing a jump on one leg", "mod": 0, "jump": true})
+				if not u.def.quad:
+					u.psr_pending.append({"reason": "landing a jump on one leg", "mod": 0, "jump": true})
 			elif _leg_hits(u, loc) > 0:
 				u.psr_pending.append({"reason": "landing a jump on a damaged leg", "mod": 0, "jump": true})
 

@@ -10,6 +10,9 @@ static func refresh(ai: AttackInput) -> void:
 	var level := GameSettings.explain_level
 	var weapon := ai.is_weapon_phase()
 	ai.hud.show_attack_controls(true, "Fire" if weapon else "Attack", "Hold Fire" if weapon else "Skip")
+	if ai.attacker.def.quad:
+		for b in ai.hud.twist_buttons:
+			b.visible = false  # quads can't twist (p. 238)
 	var hexes := {ai.attacker.coord: HexHighlighter.SELECTED}
 	if ai.target:
 		hexes[ai.target.coord] = Color(1, 0.2, 0.2, 0.55)

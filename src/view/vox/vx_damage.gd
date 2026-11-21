@@ -55,7 +55,7 @@ func show_location(loc: int, armor_lost: float, rear_lost: float, structure_lost
 ## Rules state -> picture for every location of `u`.
 func show_unit(u: Unit) -> void:
 	for loc in Location.COUNT:
-		var full_s := StructureTable.points(u.def.tonnage, loc)
+		var full_s := StructureTable.points(u.def.tonnage, loc, u.def.quad)
 		show_location(loc, _lost(u.armor[loc], u.def.armor[loc]),
 				_lost(u.rear_armor[loc], u.def.rear_armor[loc]),
 				_lost(u.structure[loc], full_s), u.is_location_destroyed(loc))

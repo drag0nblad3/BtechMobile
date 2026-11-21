@@ -69,14 +69,14 @@ static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
 	elif def.is_xl() and (loc == Location.LT or loc == Location.RT):
 		for s in ClanTech.xl_side_slots(def):
 			names.append("Engine")
-	elif Location.is_arm(loc):
+	elif Location.is_arm_of(def, loc):
 		for a in ARM_ACTUATORS:
 			names.append(a if def.has_actuator(loc, a) else "")
-	elif Location.is_leg(loc):
+	elif Location.is_leg_of(def, loc):
 		names = LEG_ACTUATORS
 	for n: String in names:
 		slots.append(_fixed_slot(n))
-	while slots.size() < SLOTS[loc]:
+	while slots.size() < slot_count(def, loc):
 		slots.append(CritSlot.new(CritSlot.Kind.EMPTY, ""))
 	return slots
 
@@ -104,3 +104,8 @@ static func _place(slots: Array, s: CritSlot, def: UnitDef) -> void:
 			slots[i] = s
 			return
 	push_error("%s: no free critical slot for %s" % [def.id, s.name])
+
+
+## Critical slots in a location: a quad's front legs have 6, like any leg.
+static func slot_count(def: UnitDef, loc: int) -> int:
+	return 6 if Location.is_leg_of(def, loc) else SLOTS[loc]

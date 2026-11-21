@@ -22,7 +22,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = prone_why
 		return th
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
+	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -78,7 +78,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.add("cluster ammo", WeaponModes.to_hit_mod(w), "LB-X cluster rounds spread like a shotgun: -1 to hit, but each pellet only does 1 damage.")
 	LowVisibility.add(th, state, attacker)
 	add_conditions(th, state, attacker, target, los)
-	if Location.is_arm(w.loc):
+	if Location.is_arm_of(attacker.def, w.loc):
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
 		th.add("secondary target", 1, "Every target after your primary one costs +1.")
@@ -143,7 +143,7 @@ static func add_attacker_conditions(th: ToHit, attacker: Unit, los: Dictionary) 
 		th.add("heat %d" % attacker.heat, hp, "Running hot shakes your targeting: +1 at 8 heat, rising.")
 	if attacker.sensor_hits > 0:
 		th.add("sensor damage", 2 * attacker.sensor_hits, "Damaged sensors make every shot harder.")
-	if attacker.prone:
+	if attacker.prone and not Quad.fires_standing(attacker):
 		th.add("you are prone", 2, "Firing from the ground is +2, propped up on one arm.")
 	if los["woods"] > 0:
 		th.add("woods in the way", los["woods"],

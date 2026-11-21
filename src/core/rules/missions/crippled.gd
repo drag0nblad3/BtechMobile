@@ -29,17 +29,22 @@ static func reason(state: GameState, dice: Dice, emit: Callable, u: Unit) -> Str
 		return "two engine hits"
 	var torsos := int(u.is_location_destroyed(Location.LT)) + int(u.is_location_destroyed(Location.RT))
 	var limbs := 0
+	var lost_with_torso := 0
 	for loc in [Location.LA, Location.RA]:
 		var torso := Location.LT if loc == Location.LA else Location.RT
 		if u.is_location_destroyed(loc) and not u.is_location_destroyed(torso):
 			limbs += 1
+		elif u.is_location_destroyed(loc) and u.def.quad:
+			lost_with_torso += 1  # TODO(rules): a quad's front leg lost with its torso isn't counted twice
+	if u.def.quad:
+		limbs = 0  # its front legs count as legs below
 	if torsos >= 2:
 		return "both side torsos destroyed"
 	if torsos == 1:
 		if not _saves_torso(state, dice, emit, u):
 			return "a side torso destroyed"
 		limbs += 1
-	var legs := u.legs_destroyed()
+	var legs := u.legs_destroyed() - lost_with_torso
 	if legs >= 1 and limbs + legs >= 2:
 		return "two limbs lost, one of them a leg"
 	return ""

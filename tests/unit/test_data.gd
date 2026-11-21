@@ -45,7 +45,7 @@ func test_every_design_is_legal() -> void:
 		check_eq(jj, def.jump_mp, def.id + " jump jets")
 		check(not def.weapon_mounts.is_empty(), def.id + " has weapons")
 		for loc in Location.COUNT:
-			check(def.armor[loc] <= StructureTable.max_armor(def.tonnage, loc),
+			check(def.armor[loc] <= StructureTable.max_armor(def.tonnage, loc, def.quad),
 					"%s %s armor over max" % [def.id, Location.code(loc)])
 		var u := Unit.new(1, def, 0, Vector2i.ZERO, 0)
 		check_eq(u.structure[Location.HEAD], 3)

@@ -30,6 +30,7 @@ var engine_type := "standard"
 var tech_base := "inner_sphere"
 ## OmniMech (book p. 20, OmniConfig): a construction feature; same rules in play.
 var omni := false
+var quad := false  ## Four legs (book p. 238): LA/RA are the front legs (Location).
 var chassis := ""  ## OmniMech chassis id ("timber_wolf"), "" for others.
 var config := ""  ## OmniMech configuration ("Prime", "A"), "" for others.
 ## "standard" or "endo_steel"; armor "standard" or "ferro_fibrous". Their
@@ -65,6 +66,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.engine_type = d.get("engine_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
 	u.omni = bool(d.get("omni", false))
+	u.quad = bool(d.get("quad", false))
 	u.chassis = d.get("chassis", "")
 	u.config = d.get("config", "")
 	u.structure_type = d.get("structure_type", "standard")
@@ -74,7 +76,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	var arm: Dictionary = d.get("armor", {})
 	var rear: Dictionary = d.get("rear_armor", {})
 	for loc in Location.COUNT:
-		u.armor.append(int(arm.get(Location.code(loc), 0)))
+		u.armor.append(int(arm.get(Location.code(loc), arm.get(Location.QUAD_CODES[loc], 0))))
 		u.rear_armor.append(int(rear.get(Location.code(loc), 0)))
 	for code: String in d.get("missing_actuators", {}):
 		u.missing_actuators[Location.from_code(code)] = d["missing_actuators"][code]

@@ -44,14 +44,14 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 		if dfa_prone:
 			hl = HitTable.roll(dice, FiringArc.REAR)
 		elif kind == "dfa":
-			hl = HitTable.roll_punch(dice, t_arc)
+			hl = HitTable.roll_punch(dice, t_arc, t.def.quad)
 		else:
 			hl = HitTable.roll(dice, t_arc)
 			hl["no_cover"] = true
 			hl["charge"] = true
 		WeaponFire.hit_with(state, dice, emit, t, FiringArc.REAR if dfa_prone else t_arc, p, a.id, kind, hl)
 	for p in Damage.clusters(d["self_damage"], 5):
-		var hl := HitTable.roll_kick(dice, FiringArc.FRONT) if kind == "dfa" else HitTable.roll(dice, FiringArc.FRONT)
+		var hl := HitTable.roll_kick(dice, FiringArc.FRONT, a.def.quad) if kind == "dfa" else HitTable.roll(dice, FiringArc.FRONT)
 		hl["no_cover"] = true
 		WeaponFire.hit_with(state, dice, emit, a, FiringArc.FRONT, p, a.id, kind + " (self)", hl)
 	return step

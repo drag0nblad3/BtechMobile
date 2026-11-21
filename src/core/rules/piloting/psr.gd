@@ -16,6 +16,9 @@ static func standing_mods(u: Unit) -> ToHit:
 	th.add("Piloting", u.pilot.piloting, "Your MechWarrior's piloting skill is the base number.")
 	if u.gyro_hits > 0:
 		th.add("gyro hit", 2, "A damaged gyro makes balance hard: +2.")
+	if u.def.quad:
+		Quad.psr_mods(u, th)
+		return th
 	if u.legs_destroyed() > 0:
 		th.add("leg destroyed", 4 * u.legs_destroyed(), "Balancing on one leg: +4.")
 	var act := 0
@@ -112,11 +115,11 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 ## Standing up costs 2 MP (already in the move budget) and a piloting roll.
 ## A destroyed gyro or two missing legs make it impossible.
 static func can_stand(u: Unit) -> bool:
-	return u.gyro_hits < CritEffects.GYRO_KILL and u.legs_destroyed() < 2
+	return u.gyro_hits < CritEffects.GYRO_KILL and u.legs_destroyed() < Location.legs(u.def).size()
 
 
 static func try_stand(state: GameState, dice: Dice, emit: Callable, u: Unit) -> bool:
-	var ok := can_stand(u) and roll(dice, emit, u, "standing up", -1, state)
+	var ok := can_stand(u) and (Quad.intact(u) or roll(dice, emit, u, "standing up", -1, state))
 	emit.call(GameEvent.STAND, {"unit_id": u.id, "ok": ok})
 	if ok:
 		u.prone = false

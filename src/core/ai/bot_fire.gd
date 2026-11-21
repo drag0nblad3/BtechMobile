@@ -11,7 +11,7 @@ const HEAT_STRETCH := 8  ## Accept up to this if the target is nearly dead.
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	var best := {"shots": [], "twist": 0, "reason": "holds fire: no enemy in range and sight", "value": 0.0}
 	var original := u.torso_twist
-	for twist in ([0, -1, 1] if not u.prone else [0]):
+	for twist in ([0, -1, 1] if not u.prone and not u.def.quad else [0]):
 		u.torso_twist = twist
 		for e in state.units:
 			if e.side == u.side or e.destroyed:
@@ -78,7 +78,7 @@ static func _damage_fraction(e: Unit) -> float:
 	var full := 0.0
 	var now := 0.0
 	for loc in Location.COUNT:
-		full += e.def.armor[loc] + e.def.rear_armor[loc] + StructureTable.points(e.def.tonnage, loc)
+		full += e.def.armor[loc] + e.def.rear_armor[loc] + StructureTable.points(e.def.tonnage, loc, e.def.quad)
 		now += e.armor[loc] + e.rear_armor[loc] + e.structure[loc]
 	return 1.0 - now / maxf(1.0, full)
 

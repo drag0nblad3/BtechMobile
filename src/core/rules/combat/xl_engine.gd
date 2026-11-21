@@ -34,7 +34,7 @@ static func on_torso_lost(u: Unit, loc: int) -> int:
 			n += 1
 	u.engine_hits += n
 	if u.engine_hits >= CritEffects.ENGINE_KILL:
-		Damage.destroy_unit(u, "%sXL engine lost with the %s" % ["Clan " if u.def.is_clan() else "", Location.name_of(loc).to_lower()])
+		Damage.destroy_unit(u, "%sXL engine lost with the %s" % ["Clan " if u.def.is_clan() else "", Location.name_for(u.def, loc).to_lower()])
 	return n
 
 
