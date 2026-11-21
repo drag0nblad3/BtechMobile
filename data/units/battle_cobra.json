@@ -1,0 +1,307 @@
+{
+ "id": "battle_cobra",
+ "name": "Battle Cobra",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 14,
+  "RT": 14,
+  "CT": 16,
+  "HD": 9,
+  "LL": 17,
+  "RL": 17
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "omni": true,
+ "sprite": "battle_cobra",
+ "equipment": {
+  "LT": [
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 1487,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_large_pulse_laser",
+     "c_small_pulse_laser"
+    ],
+    "RA": [
+     "c_large_pulse_laser",
+     "c_small_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 273,
+    "megamek": "data/mekfiles/meks/3058Uu/Battle Cobra Prime.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1487
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 Large Pulse Lasers, 2 Small Pulse Lasers; walks 6, runs 9."
+  },
+  {
+   "model": "A",
+   "bv": 1466,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_medium_pulse_laser*2",
+     "c_small_pulse_laser*3"
+    ],
+    "RA": [
+     "c_medium_pulse_laser*2",
+     "c_small_pulse_laser*3"
+    ]
+   },
+   "source": {
+    "mul_id": 261,
+    "megamek": "data/mekfiles/meks/3058Uu/Battle Cobra A.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1466
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 6 Small Pulse Lasers, 4 Medium Pulse Lasers; walks 6, runs 9."
+  },
+  {
+   "model": "B",
+   "bv": 1892,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_ppc",
+     "c_small_pulse_laser"
+    ],
+    "RA": [
+     "c_er_ppc",
+     "c_small_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 262,
+    "megamek": "data/mekfiles/meks/3058Uu/Battle Cobra B.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1892
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER PPCs, 2 Small Pulse Lasers; walks 6, runs 9."
+  },
+  {
+   "model": "C",
+   "bv": 1484,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_atm9",
+     "ammo:c_atm9*2"
+    ],
+    "RA": [
+     "c_medium_pulse_laser*3",
+     "c_small_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 270,
+    "megamek": "data/mekfiles/meks/3058Uu/Battle Cobra C.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1484
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 Medium Pulse Lasers, ATM 9, Small Pulse Laser; walks 6, runs 9."
+  },
+  {
+   "model": "F",
+   "bv": 1507,
+   "heat_sinks": 10,
+   "jump_mp": 6,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_medium_laser*3"
+    ],
+    "RA": [
+     "c_ultra_ac5",
+     "ammo:c_ultra_ac5"
+    ],
+    "LT": [
+     "jump_jet*3"
+    ],
+    "RT": [
+     "jump_jet*3"
+    ]
+   },
+   "source": {
+    "mul_id": 271,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 22/Battle Cobra F.mtf",
+    "published": "RG22",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1507
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 ER Medium Lasers, Ultra AC/5; walks 6, runs 9, jumps 6."
+  },
+  {
+   "model": "H",
+   "bv": 1592,
+   "heat_sinks": 14,
+   "equipment": {
+    "LA": [
+     "c_er_large_laser",
+     "c_heavy_medium_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_heavy_medium_laser"
+    ],
+    "LT": [
+     "heat_sink"
+    ],
+    "RT": [
+     "heat_sink"
+    ],
+    "LL": [
+     "heat_sink"
+    ]
+   },
+   "source": {
+    "mul_id": 272,
+    "megamek": "data/mekfiles/meks/3058Uu/Battle Cobra H.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1592
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Large Lasers, 2 Heavy Medium Lasers; walks 6, runs 9."
+  },
+  {
+   "model": "J",
+   "bv": 1272,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_medium_pulse_laser*2"
+    ],
+    "RA": [
+     "c_rotary_ac2",
+     "ammo:c_rotary_ac2*2"
+    ]
+   },
+   "source": {
+    "mul_id": 8392,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 22/Battle Cobra J.mtf",
+    "published": "RG22",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1272
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Medium Pulse Lasers, Rotary AC/2; walks 6, runs 9."
+  },
+  {
+   "model": "T",
+   "bv": 1666,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_er_small_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_er_small_laser"
+    ],
+    "RT": [
+     "targeting_computer"
+    ],
+    "LL": [
+     "heat_sink"
+    ]
+   },
+   "source": {
+    "mul_id": 8389,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 22/Battle Cobra T.mtf",
+    "published": "RG22",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1666
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER Large Lasers, 2 ER Small Lasers; walks 6, runs 9."
+  }
+ ]
+}
