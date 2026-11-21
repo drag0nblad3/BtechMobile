@@ -46,6 +46,10 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		else:
 			los = LineOfSight.check(state.map, spotter, target)
 		los["cover"] = Hex.INVALID  # indirect fire ignores cover from hills (p. 66)
+	else:
+		th.impossible = LegFire.blocked(state, attacker, w, target)
+		if th.impossible != "":
+			return th
 	var dist := Hex.distance(attacker.coord, target.coord)
 	var p := Atm.profile(w)  # ATM munitions change the ranges
 	var br := p.bracket(dist)
