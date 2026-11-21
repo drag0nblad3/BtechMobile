@@ -236,7 +236,7 @@
       ],
       "wolverine": [
         "la:2:mid:widthIn",
-        "la_finger_knuckles:0:mid:widthIn"
+        "la:3:mid:widthIn"
       ],
       "jenner": [
         "ll_foot:0:lower:widthOut",
@@ -268,7 +268,7 @@
       ],
       "wolverine": [
         "hd:1:mid:widthIn",
-        "hd_angular_cheek_right:0:mid:outerIn"
+        "hd_angular_cheek_left:0:mid:outerIn"
       ],
       "jenner": [
         "hd_front_windscreen:0:front:topDown",
