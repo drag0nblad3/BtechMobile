@@ -21,3 +21,15 @@ These are **distinct hand-authored chassis**, not variations on the procedural v
 - Profile: elongated projecting cockpit, wide horizontal engine deck; front: four paired laser bores and tall leg links with distinct knee/hock/ankle pivots
 
 **Fidelity gate:** target 100k–150k occupied cells **after** subdivision, beveling and overlap trim; keep physics-independent damage and weapon muzzle coordinates anchored to openings. Do not build an APK as part of this modeling work. The procedural lab remains a legacy comparison until its renderer is explicitly retired.
+
+## Geometry budget verification
+
+The authoring-time independent occupancy simulator mirrors `VxModel._trim_overlaps` and `VxRefine._bevel` on the fine grid. It predicts:
+
+| Chassis | Fine occupied voxels | Separate articulated parts | Silhouette (width:height) |
+|---|---:|---:|---:|
+| Atlas AS7-D | ~121,146 | 12 | 0.71 |
+| Wolverine WVR-6R | ~123,223 | 12 | 0.73 |
+| Jenner JR7-D | ~144,932 | 14 | 1.06 (wide scout hull) |
+
+Godot CI independently checks those targets with `tests/unit/test_vx_reference_sculpt.gd` and `tools/vx_count_report.gd`. The fine-resolution values should be treated as estimates until the Godot job runs. Neither the separate procedural Mech Lab nor Claude's original Catapult/Hunchback JSON files are overwritten by this PR.
