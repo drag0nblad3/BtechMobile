@@ -1,0 +1,30 @@
+{
+  "name": "Training: Watch Your Back",
+  "map": "test_valley",
+  "bot_sides": [1],
+  "bot_level": 1,
+  "units": [
+    {"def": "wolverine_wvr6r", "side": 0, "hex": "0616", "facing": 0},
+    {"def": "hunchback_hbk4g", "side": 0, "hex": "1016", "facing": 0},
+    {"def": "jenner_jr7d", "side": 1, "hex": "0602", "facing": 3},
+    {"def": "commando_com2d", "side": 1, "hex": "1002", "facing": 3}
+  ],
+  "lessons": [
+    {"event": "initiative", "turn": 1, "title": "Two 'Mechs",
+     "text": "With several 'Mechs per side, the sides take turns moving one 'Mech at a time, starting with the initiative loser. Move your slower 'Mech while the enemy still has 'Mechs to move, and keep your fastest for last so it can react."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Arcs",
+     "text": "A 'Mech's weapons fire into its front arc; arm weapons can also reach the side next to them, and rear-mounted weapons fire behind. Where a shot comes from also decides which armor it hits: front, side or rear. Rear armor is the thinnest on the 'Mech."},
+    {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Torso twist",
+     "text": "Before you shoot you can twist your torso one hexside left or right. Your front arc turns with it, so you can shoot an enemy beside you without having turned your legs. Try the twist buttons and watch which weapons can fire."},
+    {"event": "damage", "unit_side": 1, "title": "Spread or focus",
+     "text": "Two damaged 'Mechs still shoot back; one wrecked 'Mech doesn't. Focus both of your 'Mechs on the same target when you can, especially one that is already hurt."},
+    {"event": "critical", "title": "Critical hits",
+     "text": "Damage reached the internal structure, so a critical hit was rolled. It strikes something inside: a weapon, a heat sink, an actuator, the engine or the gyro. Ammunition is the worst: a hit on an ammo bin explodes. Check the Sheet to see what broke."},
+    {"event": "ammo_explosion", "title": "Ammo explosion",
+     "text": "An ammo bin blew up inside a 'Mech. The damage hits its own location from within, armor doesn't help. CASE, a type of ammunition protection, vents the blast outward and saves the rest of the 'Mech."},
+    {"event": "phase_changed", "phase": "Movement", "turn": 3, "title": "Backstabbers",
+     "text": "Light 'Mechs try to end their move behind you. Leave your slower 'Mech facing them, and use your faster one to cut off the angle. A 'Mech that ends its move behind an enemy will shoot into rear armor."},
+    {"event": "game_over", "title": "Lesson four complete",
+     "text": "You fought as a lance. Next: what happens when 'Mechs are close enough to touch."}
+  ]
+}

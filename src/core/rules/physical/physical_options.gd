@@ -45,6 +45,8 @@ static func _push(state: GameState, a: Unit, t: Unit) -> Dictionary:
 		th.impossible = "Both arms are needed; one fired a weapon"
 	elif PhysicalMods.charging(state, t):
 		th.impossible = "It is charging this turn and can't be pushed"
+	elif PhysicalMods.pushing_other(state, t, a):
+		th.impossible = "It is pushing another 'Mech this turn and can't be pushed"
 	elif PhysicalMods.shoved_already(state, t):
 		th.impossible = "Someone is already charging or pushing it this turn"
 	if th.impossible != "":

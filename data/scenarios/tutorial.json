@@ -1,7 +1,8 @@
 {
-  "name": "Training: First Battle",
+  "name": "Training: First Steps",
   "map": "test_valley",
   "bot_sides": [1],
+  "bot_level": 0,
   "units": [
     {"def": "wolverine_wvr6r", "side": 0, "hex": "0716", "facing": 0},
     {"def": "commando_com2d", "side": 1, "hex": "0802", "facing": 3}
@@ -12,7 +13,7 @@
     {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Moving",
      "text": "Tap your Wolverine. Highlighted hexes show where it can reach. The Walk button cycles through Walk, Run and Jump: running reaches farther but makes your own shots harder; jumping clears terrain and makes you hardest to hit.\n\nTap a hex to preview the path, use the Turn buttons to choose a facing, then Confirm. Your armor is thickest in front, so face the enemy."},
     {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Shooting",
-     "text": "Tap your Wolverine, then the enemy. Each weapon shows the number you need on two dice. It starts at your gunnery skill (4) and goes up with range, your movement, the target's movement and woods in the way.\n\nToggle weapons on or off and watch the heat total before you press Fire. If the enemy is out of range or out of sight, Hold Fire."},
+     "text": "Tap your Wolverine, then the enemy. Each weapon shows the number you need on two dice. It starts at your gunnery skill (4) and goes up with range, your movement, the target's movement and woods in the way.\n\nToggle weapons on or off and watch the heat total before you press Fire. If the enemy is out of range or out of sight, Hold Fire.\n\nWhenever one of your 'Mechs is selected, plates float over every 'Mech it can see: name, a health bar and, for enemies, the best number you need to hit them."},
     {"event": "fire_declared", "unit_side": 0, "title": "Simultaneous fire",
      "text": "Attacks are declared one 'Mech at a time but resolve together at the end of the phase. A 'Mech destroyed this phase still gets its shots off, so there is no advantage in shooting first."},
     {"event": "damage", "unit_side": 1, "title": "A hit!",
@@ -27,7 +28,7 @@
      "text": "Try to end your moves where the enemy's shots are hardest: farther away, behind woods or after a long move. Getting behind the enemy is worth a lot, because rear armor is thin."},
     {"event": "psr", "title": "Piloting roll",
      "text": "Big damage, a kick, a damaged gyro or leg can force a piloting roll. Fail it and the 'Mech falls: it takes damage, may hurt its pilot, and must spend movement to stand up."},
-    {"event": "game_over", "title": "Training complete",
-     "text": "Well fought. From the start screen you can build your own lances by Battle Value, pick a map, and choose which sides the computer plays. Set explanations to Light once these lessons feel familiar."}
+    {"event": "game_over", "title": "Lesson one complete",
+     "text": "Well fought. The next training game looks closer at to-hit numbers: range, movement and woods. Return to the Training screen to continue the campaign."}
   ]
 }

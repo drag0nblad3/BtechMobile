@@ -104,7 +104,7 @@ static func _explosive_hit(state: GameState, dice: Dice, emit: Callable, u: Unit
 static func _hittable(u: Unit, loc: int) -> Array[CritSlot]:
 	var out: Array[CritSlot] = []
 	for s: CritSlot in u.slots[loc]:
-		if s.can_be_hit():
+		if s.can_be_hit() or AutocannonCrit.rehittable(u, s):
 			out.append(s)
 	return out
 

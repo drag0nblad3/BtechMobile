@@ -113,9 +113,14 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 
 
 ## Standing up costs 2 MP (already in the move budget) and a piloting roll.
-## A destroyed gyro or two missing legs make it impossible.
+## A destroyed gyro, two missing legs, or one missing leg and both arms
+## gone make it impossible (p. 51); other arm damage doesn't matter.
 static func can_stand(u: Unit) -> bool:
-	return not Gyro.destroyed(u) and u.legs_destroyed() < Location.legs(u.def).size()
+	if Gyro.destroyed(u) or u.legs_destroyed() >= Location.legs(u.def).size():
+		return false
+	if u.def.quad:
+		return true
+	return not (u.legs_destroyed() == 1 and u.is_location_out(Location.LA) and u.is_location_out(Location.RA))
 
 
 static func try_stand(state: GameState, dice: Dice, emit: Callable, u: Unit) -> bool:
