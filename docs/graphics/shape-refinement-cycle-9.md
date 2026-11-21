@@ -76,6 +76,8 @@ Review these **primary and secondary visual references** together, not just a si
 
 - **18** — Atlas cheekbones/mandible sculpted independently and 100t scale separated from 55t Wolverine; Wolverine swept upper-arm pauldron roots; Jenner windshield reduced and physical hock offset increased. Compared with the single true Godot render: the overall scale improved, but barrel/arm shapes still differed.
 - **19** — Eight-corner planar Atlas upper arms, roofed Wolverine shoulder plates and angled shin guards; Jenner's cockpit rebuilt as an aircraft wedge and the visor confined to the upper prow. One render, angled slightly more sideways to expose side-depth and leg hock.
-- **20** — Atlas RT AC/20 is now an open 7×7 grid-mouth housing protruding from the torso; Wolverine RA AC/5 now extends as a separate forearm cannon. Both are real individually defined cells, not painted outlines; their front faces and positions are covered by low-resolution shape-regression tests.
+- **20** — Atlas RT AC/20 has a compact 5×6 recessed opening mounted below the right shoulder; Wolverine RA AC/5 now extends as a separate forearm cannon. Both are real individually defined cells, not painted outlines; their front faces and positions are covered by low-resolution shape-regression tests.
 
 **Open visual issues / next review**: the torso and legs must read as unique chassis from all angles and still need approval before 100–150k voxel detailing. Do not use the preview's component-identification color overlays as game materials. Keep one combined image per iteration, `subdivide:1`, no build or merge.
+
+- **21** — The pass-20 Godot close-up showed an oversized Atlas AC/20 shroud crossing the chest. Corrected its silhouette into a short recessed 5×6 RT muzzle and updated the regression landmark. This is a shape correction made from the real render, not additional detailing.
