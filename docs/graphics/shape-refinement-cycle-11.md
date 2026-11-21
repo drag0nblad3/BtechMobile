@@ -43,3 +43,18 @@ Pass-187 Godot side/top views show Atlas too thick and volumetric in z (front/ba
 |192|Compress Atlas forearm/gauntlet and hands in depth to match shallower shoulder and chest mass; never reduce width of fists.|Resculpt Wolverine right elbow shield around single arm/hand/gun silhouette.|Advance Jenner hock shin pivot to stand under lower forward disc.|
 
 Atlas measured z bounds after these passes: CT -5..6, LT shoulder -8..6, skull -16..2, rear radiator 4..7. All three models changed on each of five passes. No APK or merge.
+
+
+## Passes 193–197: follow-up to major Atlas depth reduction
+
+The actual pass-192 Godot side and top-down render shows a clearly shallower Atlas (right direction). Remaining geometry refinements soften giant domes and upper back, preserve properly seated head, shape gauntlets to match shallow chest and improve knee/leg ratios. CI after pass 192 surfaced a *stale* Atlas codpiece voxel test (moved from z−8 to z−6 by torso compression) and an actual disc width overshoot in Jenner (radius 11). We retained codpiece source geometry and updated its expected location, and **reduced Jenner disc source radius to 10** rather than weakening width tests. Wolverine hand remains on ONE bent right AC5-carrying arm.
+
+| Pass | Atlas | Wolverine | Jenner |
+|---|---|---|---|
+|193|Reduce the Atlas upper back/CT shoulder-overlap depth another voxel while keeping skull centered and breastplates angled.|Strengthen the bend of Wolverine's single right gun arm immediately behind its gripping hand.|Correct Jenner disc diameter from too-wide 22 units to 20 units, preserving its forward projection and separate pods.|
+|194|Thin and round the front/back ends of both Atlas shoulder bells, further reducing bulky dome appearance.|Reprofile Wolverine's paired chest plates toward a narrow angular helmet and broader mid torso.|Flatten Jenner main disc middle layer by about two voxels while keeping glazed cockpit above it.|
+|195|Move Atlas fist knuckles slightly aft in z to fit slimmer wrist cuff rather than bulky protruding hand slabs.|Build Wolverine compact wrist-to-gun collar linking the ONE right palm to its forward AC5 forearm.|Raise Jenner under-saucer rim lower surface so disc reads thin in side view, not thick beak.|
+|196|Shorten Atlas compact rear radiator housing another unit, aligning it with the now shallower round shoulders.|Resculpt Wolverine dorsal jump pack's side bevel, matching torso depth and hand/gun pose.|Increase Jenner forward hock bend beneath lowered round cockpit to restore digitigrade posture.|
+|197|Fit Atlas knees and shins to smaller torso mass with narrower greaves, preserving tall load-bearing stance.|Finish Wolverine one bent right arm with visible elbow pin, hand wrapped around same AC5, not another lower forearm.|Finish Jenner angled rear disc saddle and toe proportions beneath centered side-pod hull.|
+
+20 passes complete (178–197), 60 model-level changes across three chassis. Shape stage remains subdivide=1; no APK, no merge. Final five-angle Godot render and technical tests required; artistic likeness remains under review.

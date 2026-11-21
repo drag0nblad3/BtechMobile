@@ -169,8 +169,8 @@ func test_cgl_plastic_pass57_structural_and_rear_landmarks() -> void:
 	var atlas := VxModel.load_file(MODELS[0])
 	var codpiece: Dictionary = atlas.part("pelvis_front_codpiece")
 	check(not codpiece.is_empty(), "Atlas lower torso / pelvis missing")
-	check(codpiece["cells"].has(Vector3i(0, 26, -8)),
-			"Atlas center hip plate not connected beneath the chest")
+	check(codpiece["cells"].has(Vector3i(0, 26, -6)),
+			"Atlas codpiece at compressed depth z=-6 must meet slimmer chest")
 	var w := VxModel.load_file(MODELS[1])
 	var cannon_bridge: Dictionary = w.part("ra_cannon_mount")
 	check(not cannon_bridge.is_empty(), "Wolverine forearm gun breech still disconnected")
@@ -685,3 +685,39 @@ func test_passes_188_to_192_atlas_depth_compaction() -> void:
 	var jenner := VxModel.load_file(MODELS[2])
 	check(jenner.part("hd")["cells"].has(Vector3i(0, 26, -36)),
 			"Jenner nose remains forward of laser pods at corrected y")
+
+
+func test_passes_193_to_197_slim_atlas_and_single_bent_gun_arm() -> void:
+	var atlas := VxModel.load_file(MODELS[0])
+	var w := VxModel.load_file(MODELS[1])
+	var jenner := VxModel.load_file(MODELS[2])
+	for m in [atlas, w, jenner]:
+		check(m.errors.is_empty(), "Final pass-197 invalid model: " + m.id)
+	check(atlas.part("pelvis_front_codpiece")["cells"].has(Vector3i(0, 26, -6)),
+			"Atlas slimmer pelvis still physically connects to central chest")
+	var source: Dictionary = JsonFile.read(MODELS[2])
+	var diameter := 0
+	for p: Dictionary in source["parts"]:
+		if p["name"] == "hd":
+			for s: Dictionary in p["shapes"][0]["loft"]["sections"]:
+				for xy: Array in s["polygon"]:
+					diameter = maxi(diameter, absi(xy[0]) * 2)
+	check(diameter >= 16 and diameter <= 20,
+			"Jenner cockpit disc must fit approximately half the laser pod span")
+	var wsource: Dictionary = JsonFile.read(MODELS[1])
+	for p: Dictionary in wsource["parts"]:
+		if p["name"] == "ra":
+			check_eq(p["shapes"].size(), 2, "One upper arm and one cannon-bearing forearm")
+			for shape_source: Dictionary in p["shapes"]:
+				check(shape_source.has("loft") and shape_source["loft"]["axis"] == "z",
+						"No second hanging Wolverine right forearm")
+	var palm: Dictionary = w.part("ra_integrated_hand")["cells"]
+	var gun: Dictionary = w.part("ra_ac5_shroud")["cells"]
+	var mount: Dictionary = w.part("ra_cannon_mount")["cells"]
+	var hand_on_gun := false
+	var hand_on_mount := false
+	for pos: Vector3i in palm:
+		hand_on_gun = hand_on_gun or gun.has(pos)
+		hand_on_mount = hand_on_mount or mount.has(pos)
+	check(hand_on_gun and hand_on_mount,
+			"Wolverine right hand grips the same AC5 attached to its bent arm")
