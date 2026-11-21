@@ -79,10 +79,10 @@ Battle mode first; campaign layer later.
 | `src/view/settings/` | `GameSettings` (explanation level, computer level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards), `SinkButtons` (heat sink switches) |
 | `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `MascInput` (MASC button), `BotDriver` (runs computer sides), `BattleLaunch` |
-| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, saves results), `UiKit` |
+| `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, rules notebook, saves results), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `missions/standard.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
-| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial, training) |
+| `tools/capture.gd` | Render to PNG for visual checks (modes: select, attack, sheet, menu, clanmenu, map=<id>, tutorial, training, notebook) |
 | `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
 | `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |

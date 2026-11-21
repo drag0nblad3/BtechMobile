@@ -40,6 +40,8 @@ func _build() -> void:
 	var title := UiKit.label(head, campaign.name, 32)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	title.modulate = Color(1.0, 0.85, 0.45)
+	if not campaign.notebook(p).is_empty():
+		UiKit.button(head, "Notebook", _show_notebook, Vector2(180, 60))
 	UiKit.button(head, "Back", queue_free, Vector2(140, 60))
 	UiKit.label(_list, campaign.intro, UiKit.SMALL)
 	var next := campaign.next_index(p)
@@ -58,6 +60,24 @@ func _build() -> void:
 			UiKit.label(_list, m.get("briefing", "") + vs, UiKit.SMALL).modulate = Color(0.8, 0.85, 0.9)
 	if campaign.finished(p):
 		UiKit.label(_list, "Campaign complete. Replay any lesson whenever you like.", UiKit.SMALL)
+
+
+## Every lesson seen so far, to reread between games.
+func _show_notebook() -> void:
+	UiKit.clear(_list)
+	var head := HBoxContainer.new()
+	_list.add_child(head)
+	var title := UiKit.label(head, "Rules notebook", 32)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.modulate = Color(1.0, 0.85, 0.45)
+	UiKit.button(head, "Missions", _build, Vector2(180, 60))
+	var last := ""
+	for n in campaign.notebook(GameSettings.training):
+		if n["mission"] != last:
+			last = n["mission"]
+			UiKit.label(_list, last, 26).modulate = Color(0.75, 0.85, 1.0)
+		UiKit.label(_list, n["title"], UiKit.FONT).modulate = Color(1.0, 0.9, 0.6)
+		UiKit.label(_list, n["text"], UiKit.SMALL)
 
 
 func start(i: int) -> void:

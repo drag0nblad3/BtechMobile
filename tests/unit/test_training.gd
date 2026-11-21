@@ -78,3 +78,13 @@ func test_lesson_kind_and_min_turn_filters() -> void:
 	check(t.on_event(GameEvent.new(GameEvent.TURN_STARTED, {"turn": 2}), s).is_empty(), "too early")
 	s.turn = 3
 	check_eq(t.on_event(GameEvent.new(GameEvent.TURN_STARTED, {"turn": 3}), s).size(), 1)
+
+
+func test_notebook_collects_played_lessons() -> void:
+	var c := TrainingCampaign.load_file()
+	check(c.notebook({}).is_empty(), "nothing played yet")
+	var notes := c.notebook({c.missions[0]["id"]: {"won": true, "kills": 1}})
+	check(notes.size() >= 5, "first mission's lessons")
+	for n in notes:
+		check_eq(n["mission"], c.missions[0]["title"])
+		check(n["title"] != "Lesson one complete", "no end-of-game card")
