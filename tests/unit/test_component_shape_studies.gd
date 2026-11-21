@@ -140,3 +140,24 @@ func test_plastic_shape_pass47_joint_links_are_real_geometry() -> void:
 		check(not j.part(name).is_empty(), "Jenner digitigrade joint missing: " + name)
 	check(j.part("ll_hip_link")["cells"].has(Vector3i(-6, 24, 0)),
 			"Jenner hip link is absent from the lower fuselage")
+
+
+func test_plastic_pass57_cannon_mount_is_physically_connected() -> void:
+	var w := VxModel.load_file(MODELS[1])
+	var mount: Dictionary = w.part("ra_cannon_mount").get("cells", {})
+	var upper: Dictionary = w.part("ra").get("cells", {})
+	var shroud: Dictionary = w.part("ra_ac5_shroud").get("cells", {})
+	check(not mount.is_empty(), "Wolverine AC5 diagonal arm mount missing")
+	var touches_arm := false
+	var touches_shroud := false
+	for voxel: Vector3i in mount:
+		touches_arm = touches_arm or upper.has(voxel)
+		touches_shroud = touches_shroud or shroud.has(voxel)
+	check(touches_arm, "Wolverine cannon mount does not actually contact the upper arm")
+	check(touches_shroud, "Wolverine cannon mount does not contact the AC5 housing")
+	var jenner := VxModel.load_file(MODELS[2])
+	for part_name in ["ll_rear_hock_brace", "rl_rear_hock_brace"]:
+		check(not jenner.part(part_name).is_empty(), "Jenner side-view hock brace missing")
+	var atlas := VxModel.load_file(MODELS[0])
+	check(not atlas.part("ct_lower_abdominal_armor").is_empty(),
+			"Atlas ribcage/waist armor gap returned")
