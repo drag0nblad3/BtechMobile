@@ -1317,6 +1317,102 @@
             ]
           },
           "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -2,
+              27,
+              -29
+            ],
+            [
+              1,
+              29,
+              -28
+            ]
+          ]
+        },
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -30,
+                "polygon": [
+                  [
+                    -1,
+                    27
+                  ],
+                  [
+                    1,
+                    27
+                  ],
+                  [
+                    2,
+                    28
+                  ],
+                  [
+                    2,
+                    29
+                  ],
+                  [
+                    1,
+                    30
+                  ],
+                  [
+                    -1,
+                    30
+                  ],
+                  [
+                    -2,
+                    29
+                  ],
+                  [
+                    -2,
+                    28
+                  ]
+                ]
+              },
+              {
+                "at": -28,
+                "polygon": [
+                  [
+                    -2,
+                    27
+                  ],
+                  [
+                    2,
+                    27
+                  ],
+                  [
+                    3,
+                    28
+                  ],
+                  [
+                    3,
+                    30
+                  ],
+                  [
+                    2,
+                    31
+                  ],
+                  [
+                    -2,
+                    31
+                  ],
+                  [
+                    -3,
+                    30
+                  ],
+                  [
+                    -3,
+                    28
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "window"
         }
       ]
     },
@@ -1842,139 +1938,6 @@
             ]
           },
           "mat": "form"
-        },
-        {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -16,
-                "polygon": [
-                  [
-                    -19,
-                    27
-                  ],
-                  [
-                    -17,
-                    27
-                  ],
-                  [
-                    -16,
-                    28
-                  ],
-                  [
-                    -16,
-                    31
-                  ],
-                  [
-                    -17,
-                    32
-                  ],
-                  [
-                    -19,
-                    32
-                  ],
-                  [
-                    -20,
-                    31
-                  ],
-                  [
-                    -20,
-                    28
-                  ]
-                ]
-              },
-              {
-                "at": -13,
-                "polygon": [
-                  [
-                    -19,
-                    27
-                  ],
-                  [
-                    -17,
-                    27
-                  ],
-                  [
-                    -16,
-                    28
-                  ],
-                  [
-                    -16,
-                    31
-                  ],
-                  [
-                    -17,
-                    32
-                  ],
-                  [
-                    -19,
-                    32
-                  ],
-                  [
-                    -20,
-                    31
-                  ],
-                  [
-                    -20,
-                    28
-                  ]
-                ]
-              },
-              {
-                "at": -10,
-                "polygon": [
-                  [
-                    -19,
-                    27
-                  ],
-                  [
-                    -17,
-                    27
-                  ],
-                  [
-                    -16,
-                    28
-                  ],
-                  [
-                    -16,
-                    31
-                  ],
-                  [
-                    -17,
-                    32
-                  ],
-                  [
-                    -19,
-                    32
-                  ],
-                  [
-                    -20,
-                    31
-                  ],
-                  [
-                    -20,
-                    28
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "edge"
-        },
-        {
-          "erase": [
-            [
-              -19,
-              28,
-              -17
-            ],
-            [
-              -18,
-              29,
-              -14
-            ]
-          ]
         },
         {
           "loft": {
@@ -3040,9 +3003,311 @@
           "mat": "inside"
         }
       ]
+    },
+    {
+      "name": "la_laser_lower",
+      "loc": "LA",
+      "parent": "la",
+      "pivot": [
+        -18,
+        28,
+        -12
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -18,
+                "polygon": [
+                  [
+                    -19,
+                    27
+                  ],
+                  [
+                    -17,
+                    27
+                  ],
+                  [
+                    -16,
+                    28
+                  ],
+                  [
+                    -16,
+                    28
+                  ],
+                  [
+                    -17,
+                    29
+                  ],
+                  [
+                    -19,
+                    29
+                  ],
+                  [
+                    -20,
+                    28
+                  ],
+                  [
+                    -20,
+                    28
+                  ]
+                ]
+              },
+              {
+                "at": -15,
+                "polygon": [
+                  [
+                    -20,
+                    26
+                  ],
+                  [
+                    -16,
+                    26
+                  ],
+                  [
+                    -15,
+                    27
+                  ],
+                  [
+                    -15,
+                    29
+                  ],
+                  [
+                    -16,
+                    30
+                  ],
+                  [
+                    -20,
+                    30
+                  ],
+                  [
+                    -21,
+                    29
+                  ],
+                  [
+                    -21,
+                    27
+                  ]
+                ]
+              },
+              {
+                "at": -9,
+                "polygon": [
+                  [
+                    -20,
+                    26
+                  ],
+                  [
+                    -16,
+                    26
+                  ],
+                  [
+                    -15,
+                    27
+                  ],
+                  [
+                    -15,
+                    29
+                  ],
+                  [
+                    -16,
+                    30
+                  ],
+                  [
+                    -20,
+                    30
+                  ],
+                  [
+                    -21,
+                    29
+                  ],
+                  [
+                    -21,
+                    27
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -19,
+              27,
+              -18
+            ],
+            [
+              -18,
+              28,
+              -15
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ra_laser_lower",
+      "loc": "RA",
+      "parent": "ra",
+      "mirror": "la_laser_lower"
+    },
+    {
+      "name": "la_laser_upper",
+      "loc": "LA",
+      "parent": "la",
+      "pivot": [
+        -18,
+        31,
+        -12
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -18,
+                "polygon": [
+                  [
+                    -19,
+                    30
+                  ],
+                  [
+                    -17,
+                    30
+                  ],
+                  [
+                    -16,
+                    31
+                  ],
+                  [
+                    -16,
+                    31
+                  ],
+                  [
+                    -17,
+                    32
+                  ],
+                  [
+                    -19,
+                    32
+                  ],
+                  [
+                    -20,
+                    31
+                  ],
+                  [
+                    -20,
+                    31
+                  ]
+                ]
+              },
+              {
+                "at": -15,
+                "polygon": [
+                  [
+                    -20,
+                    29
+                  ],
+                  [
+                    -16,
+                    29
+                  ],
+                  [
+                    -15,
+                    30
+                  ],
+                  [
+                    -15,
+                    32
+                  ],
+                  [
+                    -16,
+                    33
+                  ],
+                  [
+                    -20,
+                    33
+                  ],
+                  [
+                    -21,
+                    32
+                  ],
+                  [
+                    -21,
+                    30
+                  ]
+                ]
+              },
+              {
+                "at": -9,
+                "polygon": [
+                  [
+                    -20,
+                    29
+                  ],
+                  [
+                    -16,
+                    29
+                  ],
+                  [
+                    -15,
+                    30
+                  ],
+                  [
+                    -15,
+                    32
+                  ],
+                  [
+                    -16,
+                    33
+                  ],
+                  [
+                    -20,
+                    33
+                  ],
+                  [
+                    -21,
+                    32
+                  ],
+                  [
+                    -21,
+                    30
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -19,
+              30,
+              -18
+            ],
+            [
+              -18,
+              31,
+              -15
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ra_laser_upper",
+      "loc": "RA",
+      "parent": "ra",
+      "mirror": "la_laser_upper"
     }
   ],
-  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots.",
+  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing.",
   "muzzles": {
     "CT": [
       [
@@ -3069,25 +3334,25 @@
     "LA": [
       [
         -18.5,
-        28.5,
-        -17.5
+        28,
+        -18.5
       ],
       [
         -18.5,
-        30.5,
-        -17.5
+        31,
+        -18.5
       ]
     ],
     "RA": [
       [
         18.5,
-        28.5,
-        -17.5
+        28,
+        -18.5
       ],
       [
         18.5,
-        30.5,
-        -17.5
+        31,
+        -18.5
       ]
     ]
   },
