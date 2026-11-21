@@ -1245,104 +1245,6 @@
           "mat": "window"
         },
         {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -35,
-                "polygon": [
-                  [
-                    -3,
-                    26
-                  ],
-                  [
-                    3,
-                    26
-                  ],
-                  [
-                    4,
-                    27
-                  ],
-                  [
-                    4,
-                    28
-                  ],
-                  [
-                    3,
-                    30
-                  ],
-                  [
-                    2,
-                    31
-                  ],
-                  [
-                    -2,
-                    31
-                  ],
-                  [
-                    -3,
-                    30
-                  ],
-                  [
-                    -4,
-                    28
-                  ],
-                  [
-                    -4,
-                    27
-                  ]
-                ]
-              },
-              {
-                "at": -33,
-                "polygon": [
-                  [
-                    -3,
-                    25
-                  ],
-                  [
-                    3,
-                    25
-                  ],
-                  [
-                    4,
-                    26
-                  ],
-                  [
-                    4,
-                    28
-                  ],
-                  [
-                    3,
-                    29
-                  ],
-                  [
-                    2,
-                    30
-                  ],
-                  [
-                    -2,
-                    30
-                  ],
-                  [
-                    -3,
-                    29
-                  ],
-                  [
-                    -4,
-                    28
-                  ],
-                  [
-                    -4,
-                    26
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "edge"
-        },
-        {
           "erase": [
             [
               -2,
@@ -1989,35 +1891,35 @@
                 "polygon": [
                   [
                     -9,
-                    0
+                    -4
                   ],
                   [
                     -8,
-                    -2
+                    -6
                   ],
                   [
                     -6,
-                    -2
+                    -6
                   ],
                   [
                     -5,
-                    0
+                    -4
                   ],
                   [
                     -5,
-                    3
+                    -1
                   ],
                   [
                     -6,
-                    6
+                    2
                   ],
                   [
                     -8,
-                    6
+                    2
                   ],
                   [
                     -10,
-                    3
+                    -1
                   ]
                 ]
               },
@@ -2026,35 +1928,35 @@
                 "polygon": [
                   [
                     -11,
-                    -1
+                    -4
                   ],
                   [
                     -9,
-                    -3
+                    -6
                   ],
                   [
                     -6,
-                    -3
+                    -6
                   ],
                   [
                     -4,
-                    -1
+                    -4
                   ],
                   [
                     -4,
-                    3
+                    0
                   ],
                   [
                     -5,
-                    6
+                    3
                   ],
                   [
                     -9,
-                    7
+                    4
                   ],
                   [
                     -11,
-                    4
+                    1
                   ]
                 ]
               },
@@ -2063,35 +1965,35 @@
                 "polygon": [
                   [
                     -11,
-                    -2
+                    -3
                   ],
                   [
                     -9,
-                    -4
+                    -5
                   ],
                   [
                     -6,
-                    -4
+                    -5
                   ],
                   [
                     -4,
-                    -2
+                    -3
                   ],
                   [
                     -4,
-                    3
+                    2
                   ],
                   [
                     -5,
-                    6
+                    5
                   ],
                   [
                     -9,
-                    7
+                    6
                   ],
                   [
                     -11,
-                    4
+                    3
                   ]
                 ]
               },
@@ -2145,35 +2047,35 @@
                 "polygon": [
                   [
                     -11,
-                    -4
+                    -7
                   ],
                   [
                     -9,
+                    -8
+                  ],
+                  [
+                    -6,
+                    -8
+                  ],
+                  [
+                    -5,
+                    -7
+                  ],
+                  [
+                    -5,
                     -5
                   ],
                   [
                     -6,
-                    -5
-                  ],
-                  [
-                    -5,
-                    -4
-                  ],
-                  [
-                    -5,
-                    -2
-                  ],
-                  [
-                    -6,
-                    0
+                    -3
                   ],
                   [
                     -9,
-                    0
+                    -3
                   ],
                   [
                     -11,
-                    -1
+                    -4
                   ]
                 ]
               },
@@ -2182,35 +2084,35 @@
                 "polygon": [
                   [
                     -11,
-                    -4
-                  ],
-                  [
-                    -9,
                     -5
                   ],
                   [
+                    -9,
+                    -6
+                  ],
+                  [
                     -6,
+                    -6
+                  ],
+                  [
+                    -5,
                     -5
                   ],
                   [
                     -5,
-                    -4
-                  ],
-                  [
-                    -5,
-                    -2
+                    -3
                   ],
                   [
                     -6,
-                    0
+                    -1
                   ],
                   [
                     -9,
-                    0
+                    -1
                   ],
                   [
                     -11,
-                    -1
+                    -2
                   ]
                 ]
               }
@@ -2226,7 +2128,7 @@
       "pivot": [
         -7,
         15,
-        1
+        -2
       ],
       "parent": "ll",
       "joint": "knee",
@@ -2240,35 +2142,35 @@
                 "polygon": [
                   [
                     -8,
-                    1
+                    5
                   ],
                   [
                     -7,
-                    -1
-                  ],
-                  [
-                    -6,
-                    -1
-                  ],
-                  [
-                    -5,
-                    1
-                  ],
-                  [
-                    -5,
                     3
                   ],
                   [
                     -6,
-                    6
+                    3
+                  ],
+                  [
+                    -5,
+                    5
+                  ],
+                  [
+                    -5,
+                    7
+                  ],
+                  [
+                    -6,
+                    10
                   ],
                   [
                     -8,
-                    6
+                    10
                   ],
                   [
                     -9,
-                    3
+                    7
                   ]
                 ]
               },
@@ -2277,35 +2179,35 @@
                 "polygon": [
                   [
                     -9,
-                    1
+                    4
                   ],
                   [
                     -8,
-                    -1
+                    2
                   ],
                   [
                     -6,
-                    -1
-                  ],
-                  [
-                    -5,
-                    1
+                    2
                   ],
                   [
                     -5,
                     4
                   ],
                   [
-                    -6,
+                    -5,
                     7
                   ],
                   [
+                    -6,
+                    10
+                  ],
+                  [
                     -8,
-                    7
+                    10
                   ],
                   [
                     -10,
-                    4
+                    7
                   ]
                 ]
               },
@@ -2351,35 +2253,35 @@
                 "polygon": [
                   [
                     -8,
-                    0
+                    -3
                   ],
                   [
                     -7,
-                    -2
+                    -5
                   ],
                   [
                     -6,
-                    -2
+                    -5
+                  ],
+                  [
+                    -5,
+                    -3
                   ],
                   [
                     -5,
                     0
                   ],
                   [
-                    -5,
-                    3
-                  ],
-                  [
                     -6,
-                    5
+                    2
                   ],
                   [
                     -8,
-                    5
+                    2
                   ],
                   [
                     -9,
-                    3
+                    0
                   ]
                 ]
               }
@@ -2396,35 +2298,35 @@
                 "polygon": [
                   [
                     -9,
-                    -3
+                    0
                   ],
                   [
                     -8,
-                    -4
+                    -1
                   ],
                   [
                     -6,
-                    -4
-                  ],
-                  [
-                    -5,
-                    -3
+                    -1
                   ],
                   [
                     -5,
                     0
                   ],
                   [
+                    -5,
+                    3
+                  ],
+                  [
                     -6,
-                    2
+                    5
                   ],
                   [
                     -8,
-                    2
+                    5
                   ],
                   [
                     -10,
-                    0
+                    3
                   ]
                 ]
               },
@@ -2477,7 +2379,7 @@
       "pivot": [
         -7,
         7,
-        1
+        7
       ],
       "parent": "ll_shin",
       "joint": "hock",
@@ -2491,35 +2393,35 @@
                 "polygon": [
                   [
                     -8,
-                    0
+                    -2
                   ],
                   [
                     -7,
-                    -2
+                    -4
                   ],
                   [
                     -6,
+                    -4
+                  ],
+                  [
+                    -5,
                     -2
                   ],
                   [
                     -5,
-                    0
+                    1
                   ],
                   [
-                    -5,
+                    -6,
                     3
-                  ],
-                  [
-                    -6,
-                    5
                   ],
                   [
                     -8,
-                    5
+                    3
                   ],
                   [
                     -9,
-                    3
+                    1
                   ]
                 ]
               },
@@ -2528,35 +2430,35 @@
                 "polygon": [
                   [
                     -8,
-                    1
+                    2
                   ],
                   [
                     -7,
-                    -1
+                    0
                   ],
                   [
                     -6,
-                    -1
+                    0
                   ],
                   [
                     -5,
-                    1
+                    2
                   ],
                   [
                     -5,
-                    4
+                    5
                   ],
                   [
                     -6,
-                    6
+                    7
                   ],
                   [
                     -8,
-                    6
+                    7
                   ],
                   [
                     -9,
-                    4
+                    5
                   ]
                 ]
               },
@@ -2565,35 +2467,35 @@
                 "polygon": [
                   [
                     -8,
-                    1
+                    5
                   ],
                   [
                     -7,
-                    -1
+                    3
                   ],
                   [
                     -6,
-                    -1
+                    3
                   ],
                   [
                     -5,
-                    1
+                    5
                   ],
                   [
                     -5,
-                    4
+                    8
                   ],
                   [
                     -6,
-                    6
+                    10
                   ],
                   [
                     -8,
-                    6
+                    10
                   ],
                   [
                     -9,
-                    4
+                    8
                   ]
                 ]
               }
@@ -3516,7 +3418,7 @@
       "mirror": "ll_inner_toe"
     }
   ],
-  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing. Pass 7: independent three-toed digitigrade feet with shortened center instep, instead of a single wedge shoe. Shape pass 9: long aircraft-prow cockpit with pitched dark windscreen and angular nose chin, horizontal vented drive deck and smaller 35-ton chassis proportion. References TRO Jenner and contemporary tabletop sculpt.",
+  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing. Pass 7: independent three-toed digitigrade feet with shortened center instep, instead of a single wedge shoe. Shape pass 9: long aircraft-prow cockpit with pitched dark windscreen and angular nose chin, horizontal vented drive deck and smaller 35-ton chassis proportion. References TRO Jenner and contemporary tabletop sculpt. Pass 10: sculpt reverse knee-forward, rear-hock, forward-toe offset directly into digitigrade sections; remove fake muzzle-like rim from cockpit front.",
   "muzzles": {
     "CT": [
       [
