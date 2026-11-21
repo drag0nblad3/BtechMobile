@@ -98,7 +98,7 @@ func _setup_view(index: int) -> void:
 			camera.position = Vector3(0, 2.30, -8.1)
 		else:
 			camera.position = Vector3(4.1, 2.65, -8.9)
-		camera.look_at(Vector3(0, 1.35, 0))
+		camera.look_at_from_position(camera.position, Vector3(0, 1.35, 0))
 	else:
 		var which := int((index - 2) / 2)
 		var x := (float(which) - 1.0) * SPACING
@@ -106,7 +106,7 @@ func _setup_view(index: int) -> void:
 			camera.position = Vector3(x, 1.55, -4.8)
 		else:
 			camera.position = Vector3(x + 3.1, 2.10, -4.45)
-		camera.look_at(Vector3(x, 1.20, 0))
+		camera.look_at_from_position(camera.position, Vector3(x, 1.20, 0))
 
 
 func _process(_delta: float) -> bool:
