@@ -39,6 +39,8 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m.roles.append(mat.get("role", "armor"))
 	for p: Dictionary in d.get("parts", []):
 		m._add_part(p)
+	if d.get("trim_overlaps", false):
+		m._trim_overlaps()
 	m.muzzles = _points(d.get("muzzles", {}))
 	m.jets = _points(d.get("jets", {}))
 	VxRefine.apply(m, int(d.get("subdivide", 1)))
@@ -76,6 +78,20 @@ func cell_count() -> int:
 	for p in parts:
 		n += p["cells"].size()
 	return n
+
+
+## Only for newly hand-authored chassis: keep each grid cell in exactly one
+## moving component. Later articulated parts own shared boundary cells.
+## Claude's existing Catapult/Hunchback data is not altered by this opt-in.
+func _trim_overlaps() -> void:
+	var occupied := {}
+	for i in range(parts.size() - 1, -1, -1):
+		var cells: Dictionary = parts[i]["cells"]
+		for c: Vector3i in cells.keys():
+			if occupied.has(c):
+				cells.erase(c)
+			else:
+				occupied[c] = true
 
 
 func _add_part(p: Dictionary) -> void:
