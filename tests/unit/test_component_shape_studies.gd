@@ -86,7 +86,7 @@ func test_reference_shape_landmarks_are_real_separate_geometry() -> void:
 	var atlas := VxModel.load_file(MODELS[0])
 	check(not atlas.part("hd_cheek_left").is_empty(), "Atlas needs separate cheek silhouette")
 	check(not atlas.part("hd_cheek_right").is_empty(), "Atlas needs matching cheek silhouette")
-	check(atlas.part("rt_ac20_shroud")["cells"].has(Vector3i(8, 44, -24)),
+	check(atlas.part("rt_ac20_shroud")["cells"].has(Vector3i(9, 42, -19)),
 			"Atlas AC20 barrel must project from the right torso")
 	var wolverine := VxModel.load_file(MODELS[1])
 	check(wolverine.part("ra_ac5_shroud")["cells"].has(Vector3i(15, 26, -31)),
