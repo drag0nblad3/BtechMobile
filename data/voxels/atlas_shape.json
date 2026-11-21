@@ -627,7 +627,7 @@
                 "at": 45,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     -5
                   ],
                   [
@@ -637,17 +637,17 @@
                   [
                     3,
                     -8
+                  ],
+                  [
+                    3,
+                    -5
                   ],
                   [
                     4,
-                    -5
-                  ],
-                  [
-                    5,
                     -1
                   ],
                   [
-                    5,
+                    4,
                     3
                   ],
                   [
@@ -659,11 +659,11 @@
                     6
                   ],
                   [
-                    -5,
+                    -4,
                     3
                   ],
                   [
-                    -5,
+                    -4,
                     -1
                   ]
                 ]
@@ -672,7 +672,7 @@
                 "at": 48,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     -6
                   ],
                   [
@@ -684,31 +684,31 @@
                     -9
                   ],
                   [
-                    4,
+                    3,
                     -6
                   ],
                   [
-                    5,
+                    4,
                     -2
                   ],
                   [
-                    5,
+                    4,
                     4
                   ],
                   [
-                    4,
+                    3,
+                    6
+                  ],
+                  [
+                    -3,
                     6
                   ],
                   [
                     -4,
-                    6
-                  ],
-                  [
-                    -5,
                     4
                   ],
                   [
-                    -5,
+                    -4,
                     -2
                   ]
                 ]
@@ -733,11 +733,11 @@
                     -5
                   ],
                   [
-                    4,
+                    3,
                     -1
                   ],
                   [
-                    4,
+                    3,
                     4
                   ],
                   [
@@ -749,11 +749,11 @@
                     6
                   ],
                   [
-                    -4,
+                    -3,
                     4
                   ],
                   [
-                    -4,
+                    -3,
                     -1
                   ]
                 ]
@@ -860,7 +860,7 @@
                 "at": 48,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     -8
                   ],
                   [
@@ -870,17 +870,17 @@
                   [
                     3,
                     -11
+                  ],
+                  [
+                    3,
+                    -8
                   ],
                   [
                     4,
-                    -8
-                  ],
-                  [
-                    5,
                     -5
                   ],
                   [
-                    5,
+                    4,
                     -3
                   ],
                   [
@@ -892,11 +892,11 @@
                     -2
                   ],
                   [
-                    -5,
+                    -4,
                     -3
                   ],
                   [
-                    -5,
+                    -4,
                     -5
                   ]
                 ]
@@ -905,7 +905,7 @@
                 "at": 50,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     -8
                   ],
                   [
@@ -915,17 +915,17 @@
                   [
                     3,
                     -10
+                  ],
+                  [
+                    3,
+                    -8
                   ],
                   [
                     4,
-                    -8
-                  ],
-                  [
-                    5,
                     -5
                   ],
                   [
-                    5,
+                    4,
                     -3
                   ],
                   [
@@ -937,11 +937,11 @@
                     -2
                   ],
                   [
-                    -5,
+                    -4,
                     -3
                   ],
                   [
-                    -5,
+                    -4,
                     -5
                   ]
                 ]
@@ -1019,11 +1019,11 @@
                     -7
                   ],
                   [
-                    4,
+                    3,
                     -4
                   ],
                   [
-                    4,
+                    3,
                     -3
                   ],
                   [
@@ -1035,11 +1035,11 @@
                     -2
                   ],
                   [
-                    -4,
+                    -3,
                     -3
                   ],
                   [
-                    -4,
+                    -3,
                     -4
                   ]
                 ]
@@ -1051,7 +1051,7 @@
         {
           "box": [
             [
-              -4,
+              -3,
               47,
               -17
             ],
@@ -1071,7 +1071,7 @@
               -17
             ],
             [
-              4,
+              3,
               49,
               -16
             ]
@@ -1129,23 +1129,23 @@
                 "at": -12,
                 "polygon": [
                   [
-                    -5,
+                    -4,
                     47
                   ],
                   [
-                    -4,
+                    -3,
+                    46
+                  ],
+                  [
+                    3,
                     46
                   ],
                   [
                     4,
-                    46
-                  ],
-                  [
-                    5,
                     47
                   ],
                   [
-                    5,
+                    4,
                     49
                   ],
                   [
@@ -1157,7 +1157,7 @@
                     51
                   ],
                   [
-                    -5,
+                    -4,
                     49
                   ]
                 ]
@@ -1166,23 +1166,23 @@
                 "at": -10,
                 "polygon": [
                   [
-                    -5,
+                    -4,
                     47
                   ],
                   [
-                    -4,
+                    -3,
+                    46
+                  ],
+                  [
+                    3,
                     46
                   ],
                   [
                     4,
-                    46
-                  ],
-                  [
-                    5,
                     47
                   ],
                   [
-                    5,
+                    4,
                     49
                   ],
                   [
@@ -1194,7 +1194,7 @@
                     51
                   ],
                   [
-                    -5,
+                    -4,
                     49
                   ]
                 ]
@@ -1206,7 +1206,7 @@
         {
           "box": [
             [
-              -4,
+              -3,
               48,
               -18
             ],
@@ -1226,7 +1226,7 @@
               -18
             ],
             [
-              4,
+              3,
               49,
               -17
             ]
@@ -1289,15 +1289,15 @@
                     52
                   ],
                   [
-                    -17,
+                    -16,
                     50
                   ],
                   [
-                    -17,
+                    -16,
                     47
                   ],
                   [
-                    -16,
+                    -15,
                     44
                   ]
                 ]
@@ -1306,11 +1306,11 @@
                 "at": -7,
                 "polygon": [
                   [
-                    -17,
+                    -16,
                     43
                   ],
                   [
-                    -16,
+                    -15,
                     42
                   ],
                   [
@@ -1338,19 +1338,19 @@
                     55
                   ],
                   [
-                    -16,
+                    -15,
                     54
                   ],
                   [
-                    -18,
+                    -17,
                     51
                   ],
                   [
-                    -19,
+                    -18,
                     47
                   ],
                   [
-                    -18,
+                    -17,
                     44
                   ]
                 ]
@@ -1359,11 +1359,11 @@
                 "at": -3,
                 "polygon": [
                   [
-                    -18,
+                    -17,
                     43
                   ],
                   [
-                    -17,
+                    -16,
                     42
                   ],
                   [
@@ -1391,19 +1391,19 @@
                     56
                   ],
                   [
-                    -17,
+                    -16,
                     55
                   ],
                   [
-                    -19,
+                    -18,
                     51
                   ],
                   [
-                    -20,
+                    -19,
                     47
                   ],
                   [
-                    -19,
+                    -18,
                     44
                   ]
                 ]
@@ -1412,11 +1412,11 @@
                 "at": 2,
                 "polygon": [
                   [
-                    -18,
+                    -17,
                     43
                   ],
                   [
-                    -17,
+                    -16,
                     42
                   ],
                   [
@@ -1444,19 +1444,19 @@
                     56
                   ],
                   [
-                    -17,
+                    -16,
                     55
                   ],
                   [
-                    -19,
+                    -18,
                     51
                   ],
                   [
-                    -20,
+                    -19,
                     47
                   ],
                   [
-                    -19,
+                    -18,
                     44
                   ]
                 ]
@@ -1465,11 +1465,11 @@
                 "at": 6,
                 "polygon": [
                   [
-                    -17,
+                    -16,
                     43
                   ],
                   [
-                    -16,
+                    -15,
                     42
                   ],
                   [
@@ -1497,19 +1497,19 @@
                     55
                   ],
                   [
-                    -16,
+                    -15,
                     54
                   ],
                   [
-                    -18,
+                    -17,
                     51
                   ],
                   [
-                    -19,
+                    -18,
                     47
                   ],
                   [
-                    -18,
+                    -17,
                     44
                   ]
                 ]
@@ -1554,15 +1554,15 @@
                     52
                   ],
                   [
-                    -17,
+                    -16,
                     50
                   ],
                   [
-                    -17,
+                    -16,
                     47
                   ],
                   [
-                    -16,
+                    -15,
                     44
                   ]
                 ]
@@ -1899,15 +1899,15 @@
                 "at": -9,
                 "polygon": [
                   [
-                    16,
+                    15,
                     44
                   ],
                   [
-                    17,
+                    16,
                     47
                   ],
                   [
-                    17,
+                    16,
                     50
                   ],
                   [
@@ -1952,19 +1952,19 @@
                 "at": -7,
                 "polygon": [
                   [
-                    18,
+                    17,
                     44
                   ],
                   [
-                    19,
+                    18,
                     47
                   ],
                   [
-                    18,
+                    17,
                     51
                   ],
                   [
-                    16,
+                    15,
                     54
                   ],
                   [
@@ -1992,11 +1992,11 @@
                     42
                   ],
                   [
-                    16,
+                    15,
                     42
                   ],
                   [
-                    17,
+                    16,
                     43
                   ]
                 ]
@@ -2005,19 +2005,19 @@
                 "at": -3,
                 "polygon": [
                   [
-                    19,
+                    18,
                     44
                   ],
                   [
-                    20,
+                    19,
                     47
                   ],
                   [
-                    19,
+                    18,
                     51
                   ],
                   [
-                    17,
+                    16,
                     55
                   ],
                   [
@@ -2045,70 +2045,17 @@
                     42
                   ],
                   [
-                    17,
+                    16,
                     42
                   ],
                   [
-                    18,
+                    17,
                     43
                   ]
                 ]
               },
               {
                 "at": 2,
-                "polygon": [
-                  [
-                    19,
-                    44
-                  ],
-                  [
-                    20,
-                    47
-                  ],
-                  [
-                    19,
-                    51
-                  ],
-                  [
-                    17,
-                    55
-                  ],
-                  [
-                    13,
-                    56
-                  ],
-                  [
-                    10,
-                    54
-                  ],
-                  [
-                    8,
-                    50
-                  ],
-                  [
-                    8,
-                    46
-                  ],
-                  [
-                    10,
-                    43
-                  ],
-                  [
-                    13,
-                    42
-                  ],
-                  [
-                    17,
-                    42
-                  ],
-                  [
-                    18,
-                    43
-                  ]
-                ]
-              },
-              {
-                "at": 6,
                 "polygon": [
                   [
                     18,
@@ -2124,6 +2071,59 @@
                   ],
                   [
                     16,
+                    55
+                  ],
+                  [
+                    13,
+                    56
+                  ],
+                  [
+                    10,
+                    54
+                  ],
+                  [
+                    8,
+                    50
+                  ],
+                  [
+                    8,
+                    46
+                  ],
+                  [
+                    10,
+                    43
+                  ],
+                  [
+                    13,
+                    42
+                  ],
+                  [
+                    16,
+                    42
+                  ],
+                  [
+                    17,
+                    43
+                  ]
+                ]
+              },
+              {
+                "at": 6,
+                "polygon": [
+                  [
+                    17,
+                    44
+                  ],
+                  [
+                    18,
+                    47
+                  ],
+                  [
+                    17,
+                    51
+                  ],
+                  [
+                    15,
                     54
                   ],
                   [
@@ -2151,11 +2151,11 @@
                     42
                   ],
                   [
-                    16,
+                    15,
                     42
                   ],
                   [
-                    17,
+                    16,
                     43
                   ]
                 ]
@@ -2164,15 +2164,15 @@
                 "at": 9,
                 "polygon": [
                   [
-                    16,
+                    15,
                     44
                   ],
                   [
-                    17,
+                    16,
                     47
                   ],
                   [
-                    17,
+                    16,
                     50
                   ],
                   [
@@ -5437,11 +5437,11 @@
                 "at": -13,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     48
                   ],
                   [
-                    -4,
+                    -3,
                     45
                   ],
                   [
@@ -5457,7 +5457,7 @@
                     49
                   ],
                   [
-                    -4,
+                    -3,
                     50
                   ]
                 ]
@@ -5466,11 +5466,11 @@
                 "at": -10,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     48
                   ],
                   [
-                    -4,
+                    -3,
                     44
                   ],
                   [
@@ -5486,7 +5486,7 @@
                     50
                   ],
                   [
-                    -4,
+                    -3,
                     50
                   ]
                 ]
@@ -6200,23 +6200,23 @@
                 "polygon": [
                   [
                     -20,
-                    23
+                    24
                   ],
                   [
                     -19,
-                    22
+                    23
                   ],
                   [
                     -16,
-                    22
-                  ],
-                  [
-                    -15,
                     23
                   ],
                   [
                     -15,
                     24
+                  ],
+                  [
+                    -15,
+                    25
                   ],
                   [
                     -16,
@@ -6228,7 +6228,7 @@
                   ],
                   [
                     -20,
-                    24
+                    25
                   ]
                 ]
               },
@@ -6237,23 +6237,23 @@
                 "polygon": [
                   [
                     -20,
-                    23
+                    24
                   ],
                   [
                     -19,
-                    22
+                    23
                   ],
                   [
                     -16,
-                    22
-                  ],
-                  [
-                    -15,
                     23
                   ],
                   [
                     -15,
                     24
+                  ],
+                  [
+                    -15,
+                    25
                   ],
                   [
                     -16,
@@ -6265,7 +6265,7 @@
                   ],
                   [
                     -20,
-                    24
+                    25
                   ]
                 ]
               },
@@ -6274,18 +6274,14 @@
                 "polygon": [
                   [
                     -19,
-                    23
+                    24
                   ],
                   [
                     -18,
-                    22
+                    23
                   ],
                   [
                     -16,
-                    22
-                  ],
-                  [
-                    -15,
                     23
                   ],
                   [
@@ -6293,16 +6289,20 @@
                     24
                   ],
                   [
-                    -16,
+                    -15,
                     25
                   ],
                   [
+                    -16,
+                    26
+                  ],
+                  [
                     -18,
-                    25
+                    26
                   ],
                   [
                     -19,
-                    24
+                    25
                   ]
                 ]
               }
@@ -7550,11 +7550,11 @@
                 "at": -14,
                 "polygon": [
                   [
-                    -7,
+                    -6,
                     48
                   ],
                   [
-                    -5,
+                    -4,
                     47
                   ],
                   [
@@ -7574,11 +7574,11 @@
                     50
                   ],
                   [
-                    -5,
+                    -4,
                     50
                   ],
                   [
-                    -7,
+                    -6,
                     49
                   ]
                 ]
@@ -7587,11 +7587,11 @@
                 "at": -12,
                 "polygon": [
                   [
-                    -7,
+                    -6,
                     48
                   ],
                   [
-                    -5,
+                    -4,
                     47
                   ],
                   [
@@ -7611,11 +7611,11 @@
                     51
                   ],
                   [
-                    -5,
+                    -4,
                     51
                   ],
                   [
-                    -7,
+                    -6,
                     50
                   ]
                 ]
@@ -7624,11 +7624,11 @@
                 "at": -10,
                 "polygon": [
                   [
-                    -5,
+                    -4,
                     48
                   ],
                   [
-                    -5,
+                    -4,
                     47
                   ],
                   [
@@ -7648,11 +7648,11 @@
                     50
                   ],
                   [
-                    -5,
+                    -4,
                     50
                   ],
                   [
-                    -5,
+                    -4,
                     49
                   ]
                 ]
@@ -8355,7 +8355,7 @@
                 "at": -16,
                 "polygon": [
                   [
-                    -4,
+                    -3,
                     44
                   ],
                   [
@@ -8367,11 +8367,11 @@
                     43
                   ],
                   [
-                    4,
+                    3,
                     44
                   ],
                   [
-                    4,
+                    3,
                     47
                   ],
                   [
@@ -8383,7 +8383,7 @@
                     48
                   ],
                   [
-                    -4,
+                    -3,
                     47
                   ]
                 ]
@@ -8857,7 +8857,7 @@
         {
           "box": [
             [
-              -4,
+              -3,
               47,
               -19
             ],
@@ -8877,7 +8877,7 @@
               -19
             ],
             [
-              4,
+              3,
               49,
               -17
             ]
@@ -9224,9 +9224,276 @@
           "mat": "inside"
         }
       ]
+    },
+    {
+      "name": "ll_knee_inner_yoke",
+      "loc": "LL",
+      "parent": "ll",
+      "pivot": [
+        -9,
+        17,
+        -2
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 15,
+                "polygon": [
+                  [
+                    -10,
+                    -6
+                  ],
+                  [
+                    -9,
+                    -7
+                  ],
+                  [
+                    -6,
+                    -7
+                  ],
+                  [
+                    -5,
+                    -6
+                  ],
+                  [
+                    -5,
+                    2
+                  ],
+                  [
+                    -6,
+                    4
+                  ],
+                  [
+                    -9,
+                    4
+                  ],
+                  [
+                    -10,
+                    2
+                  ]
+                ]
+              },
+              {
+                "at": 18,
+                "polygon": [
+                  [
+                    -11,
+                    -5
+                  ],
+                  [
+                    -9,
+                    -7
+                  ],
+                  [
+                    -6,
+                    -7
+                  ],
+                  [
+                    -5,
+                    -5
+                  ],
+                  [
+                    -5,
+                    2
+                  ],
+                  [
+                    -6,
+                    5
+                  ],
+                  [
+                    -9,
+                    5
+                  ],
+                  [
+                    -11,
+                    2
+                  ]
+                ]
+              },
+              {
+                "at": 21,
+                "polygon": [
+                  [
+                    -10,
+                    -4
+                  ],
+                  [
+                    -9,
+                    -6
+                  ],
+                  [
+                    -6,
+                    -6
+                  ],
+                  [
+                    -5,
+                    -4
+                  ],
+                  [
+                    -5,
+                    2
+                  ],
+                  [
+                    -6,
+                    4
+                  ],
+                  [
+                    -9,
+                    4
+                  ],
+                  [
+                    -10,
+                    2
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "inside"
+        }
+      ]
+    },
+    {
+      "name": "rl_knee_inner_yoke",
+      "mirror": "ll_knee_inner_yoke",
+      "loc": "RL"
+    },
+    {
+      "name": "hd_recessed_brow_bridge",
+      "loc": "HD",
+      "parent": "hd",
+      "pivot": [
+        0,
+        49,
+        -10
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -15,
+                "polygon": [
+                  [
+                    -3,
+                    47
+                  ],
+                  [
+                    -2,
+                    46
+                  ],
+                  [
+                    2,
+                    46
+                  ],
+                  [
+                    3,
+                    47
+                  ],
+                  [
+                    3,
+                    49
+                  ],
+                  [
+                    2,
+                    51
+                  ],
+                  [
+                    -2,
+                    51
+                  ],
+                  [
+                    -3,
+                    49
+                  ]
+                ]
+              },
+              {
+                "at": -12,
+                "polygon": [
+                  [
+                    -4,
+                    47
+                  ],
+                  [
+                    -3,
+                    46
+                  ],
+                  [
+                    3,
+                    46
+                  ],
+                  [
+                    4,
+                    47
+                  ],
+                  [
+                    4,
+                    50
+                  ],
+                  [
+                    3,
+                    52
+                  ],
+                  [
+                    -3,
+                    52
+                  ],
+                  [
+                    -4,
+                    50
+                  ]
+                ]
+              },
+              {
+                "at": -9,
+                "polygon": [
+                  [
+                    -3,
+                    47
+                  ],
+                  [
+                    -2,
+                    46
+                  ],
+                  [
+                    2,
+                    46
+                  ],
+                  [
+                    3,
+                    47
+                  ],
+                  [
+                    3,
+                    50
+                  ],
+                  [
+                    2,
+                    51
+                  ],
+                  [
+                    -2,
+                    51
+                  ],
+                  [
+                    -3,
+                    50
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "edge"
+        }
+      ]
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals. CGL plastic pass 36: de-bloat Atlas gauntlets into distinctly narrower wrist/elbow shapes and separate squared knuckle armor, retaining bulky upper shoulder and heavy block-fist silhouette of Hansen's sculpt. Pass 38 (CGL Hanson 2023 plastic front + 3/4, weight 70%): reduce tall skull crown, recess chin beneath shoulder roof, keep two separate cheek plates and eye sockets; avoid inflated humanoid head. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass38, front/side Atlas Roughriders: skull front pulled back to reduce cartoon mask, jaw reduced to compact mandible, collar solidly connects head to upper chest so no hovering face. Preserve cheek shapes and optic placement. CGL pass41: front/three-quarter Atlas Roughriders photo: replace round balloon upper arms with bevelled 8-sided shield around compact elbow connection, preserving oversized rounded shoulder cowl above as separate assembly. CGL pass44: Atlas Hansen front view boots are chunky square toe split rather than elongated ski shoes. Shortened front sole and physical split toe blocks and added visible narrow ankle collar from shin to foot, reducing artificial assembly gap. CGL shape pass47, joint audit: added actual left/right inner hip yokes under pelvis that penetrate the thigh root and chest understructure, preventing dark detached thighs without bulking up the outer armor. CGL bloat check after pass 47: narrowed overlapping Atlas interior hip socket and older hip joint to tightly nested 8-corner mechanical bearings. They still bridge pelvis/thigh, preserve (-6,30,0) landmark, and remove excess coarse cells without hiding the joint. Plastic-weighted pass48: Hansen's Roughriders unpainted front and oblique Atlas: shorter lower jaw, compact dome, cheek/eye frame. No bulbous projecting duck-mask or enlarged nose. Plastic-weighted pass51: Atlas CGL frontal figure's huge ribbed central chest is a broad V under the round cowls, not a pipe between two shoulder spheres. Widen center torso at mid-height one cell each side and add shallow tapered abdominal armor between breastplates and waist; no new forearm bulk. CGL plastic pass51: give torso-to-hips a separate short central groin guard while preserving the split left/right hip caps. Plastic-weighted pass54: Hansen Atlas frontal and shin side photographs: smaller squared knee cover over long flat vertical calf guard, not a giant balloon knee. Retain massive boot/ankle silhouette and real joint separation. CGL shape pass 58: Skull silhouette: cheek-jaw taper beneath recessed ocular brow; primary references are current plastic from multiple angles. CGL shape pass 61: Square compact knee armor and longer planar shin instead of cylindrical column; primary references are current plastic from multiple angles. CGL sculpt pass 63: Segmented rounded shoulder cowls instead of unbroken swollen bells; plastic photos front/side/rear weighted primary. CGL sculpt pass 66: Lower skull crown and pull top forehead inward between shoulder cowls; plastic photos front/side/rear weighted primary. CGL plastic pass 69: Add compact paired rear reactor/radiator cowls absent from Atlas back; multi-angle side/rear audit. CGL plastic pass 71: Break assault boot from shortened sole into separate projected square toe blocks; multi-angle side/rear audit. CGL shape pass 74: Add independent rear hip actuator shields on giant Atlas upper leg yokes; verify from plastic front, side, rear. CGL shape pass 76: Build physically raised left/right skull brow cowls around inset eye sockets; verify from plastic front, side, rear. Pass80: shorter skull dome with tightened upper rear and cheek transition; eye-brow geometry retained as distinctly raised facial silhouette. Pass82: top-down silhouette trimmed at outer shoulder roof/rear projection; keeps original CGL rounded cowl but reduces bloated X/Z footprint. Pass 84: center V and separate armor faces on CGL Atlas chest, preserving shallow center valley; larger correctly oriented front breastplates replacing generic flat slab. Pass 87: CGL Atlas hip armored bearing remains broad but its thigh root loses a column of duplicated swollen side armor. Physical inner sockets remain unchanged. Pass85: trim CGL AS7-D skull's projecting nasal/chin mask one cell while keeping eye, brow, cheek and recessed jaw as distinct geometry. Pass87: measured front and top silhouettes of plastic reposed AS7-D; sharpen waist taper beneath heavy broad chest, retaining separate codpiece, bearing and pelvic shells without floating components. Pass 88: CGL Hansen's Atlas front/side/top shoulder cowls chamfered on outer lip, particularly the bulging rear underside; skull remains separated and cheek/launcher intact. Pass 91: actual CGL Atlas skull mouth receded under raised brows; lower mandible no longer projects as broad cartoon-mask wedge. Eye brow and cheek subparts retained. Pass 94: Atlas fist-facing armor has planed facets and tighter wrist transition, retaining heavy shoulder bells/knuckle cuffs of the CGL grey plastic. Pass 97: Catalyst 2023 Hansen's Atlas miniature skull cheek armor now narrows toward a genuinely inset jaw; distinct raised cheekbone under orbital brow, not an oversized mask or generic human helmet. Existing eyes and mandible remain separately formed. Pass97: Catalyst Hansen Atlas frontal and overhead death-head silhouette. Narrow cranium above oversized separate orbit brow, preserving cheekbones and jaw, without adding forehead bloat. Passes 98–117: CGL-plastic-led front/overhead silhouette and joint corrections; shape-only. Full audit in docs/graphics/shape-refinement-cycle-9.md. In-engine verification pending. Passes 118–127: 10 synchronized silhouette refinement cycles, shape-only and CGL plastic prioritization; see review document. Passes 128–132 large component resculpting all three each pass; review source gate before high-density detail. Passes 133–137 major plastic-led hand-shaped thigh, cannon arm and digitigrade anatomy revisions; all three edited in every pass. Passes 138–142: bold silhouette/assembly rebuild with Catalyst miniature references; group-wide coordinated edits and new distinct component parts. Passes 143–147 major plastic-led component proportions: visible skull face, compact Wolverine launcher/dual hands, Jenner disc glazing/neck, all models per pass. Passes 148–152 rebuilt proportions, connection angles and adjoining silhouettes; full five-view checks are separate. Passes 153–157 fit each part to adjacent components and attachment angle, true plastic shape source, no subdivision. Passes 158–162 coordinated whole-shape intervention, Wolverine one bent right arm with hand gripping AC5 behind barrel (no vertical second forearm). Passes 163–167 reprofile Atlas shoulders, Wolverine single right hand/AC5 and Jenner disc and joints in every pass. Passes 168–172 all-model relationship and component negative space sculpt; single right gun arm invariant. Pass 173: larger whole-assembly connection and angle resculpt, Wolverine sharply bent single gun/hand arm. Pass 174: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 175: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 176: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 177: Atlas hip/thigh ratio, Wolverine single bent elbow profile, Jenner angled cockpit saddle and feet. Passes 178–182: hard component/attachment proportion redesign vs CGL plastic refs; Wolverine stays exactly one right bent cannon arm with hand.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals. CGL plastic pass 36: de-bloat Atlas gauntlets into distinctly narrower wrist/elbow shapes and separate squared knuckle armor, retaining bulky upper shoulder and heavy block-fist silhouette of Hansen's sculpt. Pass 38 (CGL Hanson 2023 plastic front + 3/4, weight 70%): reduce tall skull crown, recess chin beneath shoulder roof, keep two separate cheek plates and eye sockets; avoid inflated humanoid head. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass38, front/side Atlas Roughriders: skull front pulled back to reduce cartoon mask, jaw reduced to compact mandible, collar solidly connects head to upper chest so no hovering face. Preserve cheek shapes and optic placement. CGL pass41: front/three-quarter Atlas Roughriders photo: replace round balloon upper arms with bevelled 8-sided shield around compact elbow connection, preserving oversized rounded shoulder cowl above as separate assembly. CGL pass44: Atlas Hansen front view boots are chunky square toe split rather than elongated ski shoes. Shortened front sole and physical split toe blocks and added visible narrow ankle collar from shin to foot, reducing artificial assembly gap. CGL shape pass47, joint audit: added actual left/right inner hip yokes under pelvis that penetrate the thigh root and chest understructure, preventing dark detached thighs without bulking up the outer armor. CGL bloat check after pass 47: narrowed overlapping Atlas interior hip socket and older hip joint to tightly nested 8-corner mechanical bearings. They still bridge pelvis/thigh, preserve (-6,30,0) landmark, and remove excess coarse cells without hiding the joint. Plastic-weighted pass48: Hansen's Roughriders unpainted front and oblique Atlas: shorter lower jaw, compact dome, cheek/eye frame. No bulbous projecting duck-mask or enlarged nose. Plastic-weighted pass51: Atlas CGL frontal figure's huge ribbed central chest is a broad V under the round cowls, not a pipe between two shoulder spheres. Widen center torso at mid-height one cell each side and add shallow tapered abdominal armor between breastplates and waist; no new forearm bulk. CGL plastic pass51: give torso-to-hips a separate short central groin guard while preserving the split left/right hip caps. Plastic-weighted pass54: Hansen Atlas frontal and shin side photographs: smaller squared knee cover over long flat vertical calf guard, not a giant balloon knee. Retain massive boot/ankle silhouette and real joint separation. CGL shape pass 58: Skull silhouette: cheek-jaw taper beneath recessed ocular brow; primary references are current plastic from multiple angles. CGL shape pass 61: Square compact knee armor and longer planar shin instead of cylindrical column; primary references are current plastic from multiple angles. CGL sculpt pass 63: Segmented rounded shoulder cowls instead of unbroken swollen bells; plastic photos front/side/rear weighted primary. CGL sculpt pass 66: Lower skull crown and pull top forehead inward between shoulder cowls; plastic photos front/side/rear weighted primary. CGL plastic pass 69: Add compact paired rear reactor/radiator cowls absent from Atlas back; multi-angle side/rear audit. CGL plastic pass 71: Break assault boot from shortened sole into separate projected square toe blocks; multi-angle side/rear audit. CGL shape pass 74: Add independent rear hip actuator shields on giant Atlas upper leg yokes; verify from plastic front, side, rear. CGL shape pass 76: Build physically raised left/right skull brow cowls around inset eye sockets; verify from plastic front, side, rear. Pass80: shorter skull dome with tightened upper rear and cheek transition; eye-brow geometry retained as distinctly raised facial silhouette. Pass82: top-down silhouette trimmed at outer shoulder roof/rear projection; keeps original CGL rounded cowl but reduces bloated X/Z footprint. Pass 84: center V and separate armor faces on CGL Atlas chest, preserving shallow center valley; larger correctly oriented front breastplates replacing generic flat slab. Pass 87: CGL Atlas hip armored bearing remains broad but its thigh root loses a column of duplicated swollen side armor. Physical inner sockets remain unchanged. Pass85: trim CGL AS7-D skull's projecting nasal/chin mask one cell while keeping eye, brow, cheek and recessed jaw as distinct geometry. Pass87: measured front and top silhouettes of plastic reposed AS7-D; sharpen waist taper beneath heavy broad chest, retaining separate codpiece, bearing and pelvic shells without floating components. Pass 88: CGL Hansen's Atlas front/side/top shoulder cowls chamfered on outer lip, particularly the bulging rear underside; skull remains separated and cheek/launcher intact. Pass 91: actual CGL Atlas skull mouth receded under raised brows; lower mandible no longer projects as broad cartoon-mask wedge. Eye brow and cheek subparts retained. Pass 94: Atlas fist-facing armor has planed facets and tighter wrist transition, retaining heavy shoulder bells/knuckle cuffs of the CGL grey plastic. Pass 97: Catalyst 2023 Hansen's Atlas miniature skull cheek armor now narrows toward a genuinely inset jaw; distinct raised cheekbone under orbital brow, not an oversized mask or generic human helmet. Existing eyes and mandible remain separately formed. Pass97: Catalyst Hansen Atlas frontal and overhead death-head silhouette. Narrow cranium above oversized separate orbit brow, preserving cheekbones and jaw, without adding forehead bloat. Passes 98–117: CGL-plastic-led front/overhead silhouette and joint corrections; shape-only. Full audit in docs/graphics/shape-refinement-cycle-9.md. In-engine verification pending. Passes 118–127: 10 synchronized silhouette refinement cycles, shape-only and CGL plastic prioritization; see review document. Passes 128–132 large component resculpting all three each pass; review source gate before high-density detail. Passes 133–137 major plastic-led hand-shaped thigh, cannon arm and digitigrade anatomy revisions; all three edited in every pass. Passes 138–142: bold silhouette/assembly rebuild with Catalyst miniature references; group-wide coordinated edits and new distinct component parts. Passes 143–147 major plastic-led component proportions: visible skull face, compact Wolverine launcher/dual hands, Jenner disc glazing/neck, all models per pass. Passes 148–152 rebuilt proportions, connection angles and adjoining silhouettes; full five-view checks are separate. Passes 153–157 fit each part to adjacent components and attachment angle, true plastic shape source, no subdivision. Passes 158–162 coordinated whole-shape intervention, Wolverine one bent right arm with hand gripping AC5 behind barrel (no vertical second forearm). Passes 163–167 reprofile Atlas shoulders, Wolverine single right hand/AC5 and Jenner disc and joints in every pass. Passes 168–172 all-model relationship and component negative space sculpt; single right gun arm invariant. Pass 173: larger whole-assembly connection and angle resculpt, Wolverine sharply bent single gun/hand arm. Pass 174: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 175: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 176: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 177: Atlas hip/thigh ratio, Wolverine single bent elbow profile, Jenner angled cockpit saddle and feet. Passes 178–182: hard component/attachment proportion redesign vs CGL plastic refs; Wolverine stays exactly one right bent cannon arm with hand. Passes 183–187 bold reference-based scale and attachment corrections: narrowed Atlas head, Wolverine armored ribcage, lowered Jenner saucer and knee pivots.",
   "muzzles": {
     "LT": [
       [
