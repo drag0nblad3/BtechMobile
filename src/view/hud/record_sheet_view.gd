@@ -58,6 +58,8 @@ static func text(u: Unit) -> String:
 		tech.append("Guardian ECM%s" % (" (destroyed)" if u.ecm_lost else ""))
 	if d.masc_loc >= 0:
 		tech.append("MASC%s" % (" (destroyed)" if Masc.broken(u) else " (next use %d+)" % Masc.need(u)))
+	if d.supercharger_loc >= 0:
+		tech.append("supercharger%s" % (" (wrecked)" if Supercharger.broken(u) else " (next use %d+)" % Supercharger.need(u)))
 	if Tsm.has(d):
 		tech.append("TSM (active: +2 walking MP, double melee damage)" if Tsm.active(u) else "TSM (wakes up at heat %d+)" % Tsm.HEAT)
 	if d.tc_loc >= 0:

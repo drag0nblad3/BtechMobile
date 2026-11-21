@@ -62,11 +62,18 @@ func engage_masc(unit: Unit) -> bool:
 	return Masc.engage(dice, _emit_cb, unit)
 
 
+## Engages the supercharger before moving (book p. 204), like engage_masc.
+func engage_supercharger(unit: Unit) -> bool:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or Supercharger.problem(unit) != "":
+		return false
+	return Supercharger.engage(dice, _emit_cb, unit)
+
+
 ## Drops a standing 'Mech to the ground instead of moving: harder to hit
 ## from range, easier from next door. Standing up later costs 2 MP and a roll.
 ## To move first and then drop, use submit_move(..., then_prone = true).
 func go_prone(unit: Unit) -> bool:
-	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone or unit.masc_used:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone or unit.masc_used or unit.sc_used:
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
 	_unit_done()

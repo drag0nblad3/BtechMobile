@@ -42,6 +42,8 @@ var shutdown: bool = false
 var voluntary_shutdown: bool = false  ## Shut down by choice: stays down until restarted (VoluntaryShutdown).
 var power_request: String = ""  ## "off" / "on" at the next Heat Phase (VoluntaryShutdown).
 var masc_level: int = 0  ## Turns of MASC use in a row, less one per rest turn (Masc).
+var sc_level: int = 0  ## The same for the supercharger (Supercharger).
+var sc_lost: bool = false  ## Supercharger wrecked by a failed roll.
 
 # This turn ---------------------------------------------------------------
 var has_moved: bool = false
@@ -52,6 +54,9 @@ var hexes_moved: int = 0
 var masc_used: bool = false    ## MASC engaged this turn (worked or not).
 var masc_active: bool = false  ## MASC worked: running MP is twice walking MP.
 var masc_failed: bool = false  ## MASC failed: leg criticals owed after the move.
+var sc_used: bool = false  ## Supercharger engaged this turn; sc_active it worked,
+var sc_active: bool = false  ## sc_failed engine criticals are owed after the move.
+var sc_failed: bool = false
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
@@ -93,6 +98,7 @@ func reset_for_turn() -> void:
 	heat_generated = 0
 	outside_heat = 0
 	Masc.new_turn(self)
+	Supercharger.new_turn(self)
 	for w in weapons:
 		w.fired = false
 		w.engaged = 0
@@ -191,7 +197,9 @@ func walk_mp() -> int:
 
 
 func run_mp() -> int:
-	return walk_mp() * 2 if masc_active else ceili(walk_mp() * 1.5)
+	if masc_active and sc_active:
+		return ceili(walk_mp() * 2.5)
+	return walk_mp() * 2 if masc_active or sc_active else ceili(walk_mp() * 1.5)
 
 
 ## Jump MP after jump jet damage.

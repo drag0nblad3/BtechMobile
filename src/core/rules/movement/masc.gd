@@ -89,4 +89,5 @@ static func new_turn(u: Unit) -> void:
 ## Running MP for Battle Value: MASC's top speed.
 ## TODO(rules): BV 2 detail; the Core Rulebook's BV section doesn't cover MASC.
 static func bv_run_mp(def: UnitDef) -> int:
-	return def.walk_mp * 2 if def.masc_loc >= 0 else def.run_mp()
+	var boosts := int(def.masc_loc >= 0) + int(def.supercharger_loc >= 0)
+	return [def.run_mp(), def.walk_mp * 2, ceili(def.walk_mp * 2.5)][boosts]

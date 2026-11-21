@@ -33,6 +33,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		unit.move_mode = MoveMode.Kind.WALK
 		unit.heat_generated += MoveMode.heat(MoveMode.Kind.WALK, 0)
 		Masc.apply_failure(state, dice, emit, unit)
+		Supercharger.apply_failure(state, dice, emit, unit)
 		Psr.resolve_pending(state, dice, emit, unit)
 		unit.psr_pending.clear()
 		Damage.announce(emit, unit)
@@ -65,6 +66,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
 			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry, smash)
 	Masc.apply_failure(state, dice, emit, unit)
+	Supercharger.apply_failure(state, dice, emit, unit)
 	if moved:
 		MovePsr.after_move(unit, mode, unit.hexes_moved, state.conditions, charge_target_id >= 0)
 	HullBreach.check_exposed(state, emit, unit)
