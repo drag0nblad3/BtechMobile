@@ -86,7 +86,11 @@ func _build_roster(parent: Control, side: int) -> void:
 
 
 func _build_options(parent: Control) -> void:
-	var box := UiKit.panel(parent)
+	var scroll := ScrollContainer.new()  # the options outgrow a landscape phone screen
+	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	parent.add_child(scroll)
+	var box := UiKit.panel(scroll)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_info = UiKit.label(box, "", UiKit.SMALL)
 	var row1 := HBoxContainer.new()
@@ -104,6 +108,10 @@ func _build_options(parent: Control) -> void:
 	box.add_child(row3)
 	for side in 2:
 		UiKit.button(row3, Names.side(side) + " skill", _on_skill.bind(side), Vector2(100, 60))
+	var row4 := HBoxContainer.new()
+	box.add_child(row4)
+	UiKit.button(row4, "Mission", func(): builder.next_mission(); _refresh(), Vector2(100, 60))
+	UiKit.button(row4, "Withdrawal", func(): builder.forced_withdrawal = not builder.forced_withdrawal; _refresh(), Vector2(100, 60))
 	UiKit.button(box, "Conditions", func(): builder.next_conditions(); _refresh(), Vector2(0, 60))
 	UiKit.button(box, "Initiative Die", func():
 			builder.initiative_die = not builder.initiative_die; _refresh(), Vector2(0, 60))
@@ -150,7 +158,8 @@ func _refresh() -> void:
 		pair[0].text = BvText.line(pair[1], GameSettings.explain_level)
 		pair[0].visible = pair[0].text != ""
 	var weather := ", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "clear"
-	_info.text = "Map: %s\nBudget: %d BV per side\nConditions: %s\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
+	_info.text = "Mission: %s\nForced Withdrawal: %s\n" % [builder.mission_name(), "on" if builder.forced_withdrawal else "off"]
+	_info.text += "Map: %s\nBudget: %d BV per side\nConditions: %s\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
 			builder.budget, weather, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
 	if GameSettings.explain_level == ExplainLevel.FULL:
@@ -158,6 +167,11 @@ func _refresh() -> void:
 		_info.text += "\nSkill: better MechWarriors hit and keep their footing more often, and cost more BV (Veteran 3/4 is x%.2f, Elite 2/3 x%.2f, Green 5/6 x%.2f)." % [
 				BvSkill.multiplier(3, 4), BvSkill.multiplier(2, 3), BvSkill.multiplier(5, 6)]
 		_info.text += "\nInitiative Die (optional): a side that keeps losing initiative gets +1 more on each roll until it wins."
+		if builder.mission_id not in ["", "random"]:
+			_info.text += "\n" + String(StandardMissions.info(builder.mission_id).get("summary", ""))
+		elif builder.mission_id == "random":
+			_info.text += "\nA standard mission is rolled when the battle starts, with its complications (one may add random weather)."
+		_info.text += "\nForced Withdrawal (optional): badly damaged 'Mechs must retreat to their home edge instead of fighting to the end."
 		for line in ConditionsText.effects(builder.conditions):
 			_info.text += "\n" + line
 		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."

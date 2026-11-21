@@ -1,7 +1,7 @@
 class_name FireProps
 extends RefCounted
 ## Burning hexes: a glowing flame block on the ground (or roof) and a pale
-## smoke column above it, two levels tall.
+## smoke column above it, two levels tall; fog banks as pale columns.
 
 const FLAME_INSET := 0.6
 const SMOKE_INSET := 0.85
@@ -14,7 +14,10 @@ static func build(map: BattleMap) -> Node3D:
 	var smoke_mesh := HexMesh.prism(HexLayout.HEX_SIZE * SMOKE_INSET)
 	var flame := _material(Color(1.0, 0.45, 0.1, 0.85), true)
 	var smoke := _material(Color(0.55, 0.55, 0.55, 0.35), false)
+	var fog := _material(Color(0.85, 0.88, 0.9, 0.3), false)
 	for t: MapTile in map.tiles.values():
+		if t.fog > 0 and not map.windy:  # fog banks (Obscurant), two levels tall
+			root.add_child(_block(smoke_mesh, fog, HexLayout.tile_top(t), Obscurant.HEIGHT * HexLayout.LEVEL_HEIGHT * (0.6 + 0.4 * t.fog)))
 		if not t.on_fire:
 			continue
 		var base := HexLayout.tile_top(t)

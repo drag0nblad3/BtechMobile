@@ -30,6 +30,14 @@ static func end_phase(state: GameState, emit: Callable) -> void:
 			emit.call(GameEvent.MISSION, {"kind": "vp", "side": side, "vp": n, "total": ms.vp[side]})
 
 
+## The side that wins initiative this turn by mission rule, or -1.
+static func forced_initiative(state: GameState) -> int:
+	var m := state.mission.def
+	if m == null or m.initiative_side < 0 or state.turn > m.initiative_turns:
+		return -1
+	return m.initiative_side
+
+
 ## Why this move isn't allowed by the mission, or "".
 static func move_problem(state: GameState, u: Unit, target: Vector3i, mode: int, leaving: bool) -> String:
 	if state.mission.def == null:
