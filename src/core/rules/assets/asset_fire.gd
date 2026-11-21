@@ -16,6 +16,9 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if target == null or target.destroyed:
 		th.impossible = "No target"
 		return th
+	if target.asset != null and target.asset.carried_by >= 0:
+		th.impossible = "It is riding inside a transport"
+		return th
 	if attacker.asset.deployed_turn == state.turn:
 		th.impossible = "Infantry can't shoot on the turn it leaves its transport"
 		return th

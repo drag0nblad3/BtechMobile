@@ -54,12 +54,13 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var ams := AntiMissile.engaging(target, attacker, w)
 	if ams != null and not AntiMissile.engage(target, ams):
 		ams = null
+	var ams_on := ams != null or AssetSpecials.ams(target, w.def)  # an Asset's AMS Special (p. 148)
 	var jam := Ecm.artemis_blocked(state, attacker, target, th) if WeaponModes.has_artemis(w) else ""
 	if jam != "":
 		data["artemis_blocked"] = jam
 	if w.def.artemis_builtin:
 		data["builtin_artemis"] = true
-	if w.def.streak and ams == null:
+	if w.def.streak and not ams_on:
 		data["streak_lock"] = true
 	if w.def.beacon:
 		if ams != null:
@@ -70,17 +71,17 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 				return
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
-	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing)
+	var c := WeaponModes.cluster(w, shots, dice, ams_on, jam != "", th.narc_homing)
 	if th.narc_homing:
 		data["narc_homing"] = true
-	if ams != null:
+	if ams_on:
 		data["ams"] = true
 	var packets: Array[int] = c["packets"]
 	if not w.def.damage_by_range.is_empty():  # variable damage (p. 182)
 		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
 		packets = [w.def.damage_at(Hex.distance(attacker.coord, target.coord), shift)] as Array[int]
 		data["damage_at_range"] = packets[0]
-	if c["n"] > 0 or ams != null:
+	if c["n"] > 0 or ams_on:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]
 		data["cluster_bonus"] = c.get("bonus", 0)

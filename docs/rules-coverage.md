@@ -209,7 +209,9 @@ The Core Rulebook has only these simplified rules for vehicles and infantry; cla
 - ✅ Stacking (`AssetStacking`, p. 143): vehicles count as 'Mechs; a 'Mech/vehicle hex holds one friendly and one enemy infantry, an infantry-only hex two each; 'Mechs move through Assets; VTOLs through anything (errata).
 - ✅ Asset attacks (`AssetFire`): Skill base, no attacker movement modifier, no minimum range, 360-degree arc (No Turret: front only), one target a turn, infantry fire into their own hex; Assets one level high for LOS, never partial cover.
 - ✅ Attacking Assets: fixed TMM or the hex's terrain modifier, whichever is higher (VTOLs no terrain); emplacements -4; 'Mechs can't fire into their own hex; physical attacks only punch, kick, club or physical weapon (no push/charge/DFA, none vs VTOLs); Assets make none.
-- ⬜ Specials: APC/Mechanized transport, Swarm, AMS, Indirect Fire, Artillery, Arrow IV, Narc, TAG, ECM, Probe, Popup, Zipline.
+- ✅ APC X / Mechanized (`AssetTransport`): infantry boards or gets out in the transport's hex (Board/Unload button), battle armor takes 2 points, Mechanized battle armor rides OmniMechs as APC2; riders can't be targeted, die with their transport (mechanized battle armor on an OmniMech jumps clear); no fire and TMM 0 the turn they get out — `TODO(rules)`: starting aboard, boarding timed when the infantry acts rather than at the end of the phase, the computer doesn't use transports.
+- ✅ Specials wired into existing systems (`AssetSpecials`): AMS (-4 Cluster Hits), ECM (Guardian bubble), PRB (probe range 4), Swarm (+1 grouping, battle armor +2 and may swarm conventional infantry).
+- ⬜ Specials still to do: Indirect Fire, Artillery, Arrow IV, Narc, TAG, Popup, Zipline, Commander, Crit-Seeker.
 - ⬜ Infantry vs buildings (no damage) — `TODO(rules)`: vehicle Asset attacks on buildings are blocked for now.
 
 ## Pilots

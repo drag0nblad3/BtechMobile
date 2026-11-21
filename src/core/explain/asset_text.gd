@@ -15,6 +15,17 @@ static func moved(s: GameState, d: Dictionary, level: int) -> String:
 	return t
 
 
+static func transport(s: GameState, d: Dictionary, level: int) -> String:
+	var who := Names.unit(s.unit_by_id(d["unit_id"]))
+	var ride := Names.unit(s.unit_by_id(d["carrier_id"]))
+	match String(d["kind"]):
+		"board":
+			return "%s climbs aboard %s." % [who, ride] + (" Riders can't be shot, but die if their transport is destroyed." if level == ExplainLevel.FULL else "")
+		"deploy":
+			return "%s gets out of %s." % [who, ride] + (" Troops can't fire the turn they get out, and are easy to hit (TMM 0) until next turn." if level == ExplainLevel.FULL else "")
+	return "%s jumps clear as %s goes down." % [who, ride]
+
+
 static func damage(s: GameState, d: Dictionary, level: int) -> String:
 	var u := s.unit_by_id(d["unit_id"])
 	var t := "  %s takes %d (%d this turn)" % [Names.unit(u), d["amount"], d["turn_total"]]

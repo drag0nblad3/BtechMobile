@@ -75,6 +75,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.model = d.get("model", "")
 	if d.has("asset"):
 		u.asset = AssetCard.from_dict(d["asset"])
+		AssetSpecials.setup_def(u)
 	u.tonnage = int(d.get("tonnage", 0)) if u.asset else int(d["tonnage"])
 	u.walk_mp = u.asset.mp if u.asset else int(d["walk_mp"])
 	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else int(d.get("jump_mp", 0))

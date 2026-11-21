@@ -145,7 +145,7 @@ func reset_for_turn() -> void:
 
 ## Still on the field and able to take its turn in a phase.
 func can_act() -> bool:
-	return not destroyed and not shutdown and pilot.conscious
+	return not destroyed and not shutdown and pilot.conscious and (asset == null or asset.carried_by < 0)
 
 
 func is_location_destroyed(loc: int) -> bool:
