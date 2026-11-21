@@ -624,3 +624,37 @@ func test_passes_168_to_172_keep_single_wolverine_right_arm_and_disc() -> void:
 						"Right arm remains bent toward the forward AC5")
 	check(not j.part("hd_rear_disc_saddle").is_empty(),
 			"Jenner disc-to-hull rear attachment absent")
+
+
+func test_pass_177_wolverine_right_arm_is_one_bent_gun_grip_chain() -> void:
+	var atlas := VxModel.load_file(MODELS[0])
+	var w := VxModel.load_file(MODELS[1])
+	var jenner := VxModel.load_file(MODELS[2])
+	for m in [atlas, w, jenner]:
+		check(m.errors.is_empty(), "Final shape model invalid: " + m.id)
+	var source: Dictionary = JsonFile.read(MODELS[1])
+	for item: Dictionary in source["parts"]:
+		if item["name"] == "ra":
+			check_eq(item["shapes"].size(), 2,
+					"Only one Wolverine upper arm and one gun-bearing forearm")
+			for form: Dictionary in item["shapes"]:
+				check(form.has("loft") and form["loft"]["axis"] == "z",
+						"Never reintroduce a dangling second vertical right arm")
+	var palm: Dictionary = w.part("ra_integrated_hand")["cells"]
+	var barrel: Dictionary = w.part("ra_ac5_shroud")["cells"]
+	var bridge: Dictionary = w.part("ra_cannon_mount")["cells"]
+	var hand_on_barrel := false
+	var hand_on_bridge := false
+	for v: Vector3i in palm:
+		hand_on_barrel = hand_on_barrel or barrel.has(v)
+		hand_on_bridge = hand_on_bridge or bridge.has(v)
+	check(hand_on_barrel and hand_on_bridge,
+			"One bent Wolverine right arm must hold the AC5 in its single hand")
+	check(not w.part("ra_gun_grip_thumb").is_empty(),
+			"Gun grip thumb cannot disappear")
+	check(not jenner.part("hd_left_disc_strut").is_empty()
+			and not jenner.part("hd_right_disc_strut").is_empty(),
+			"Jenner saucer must join body with mirrored angled struts")
+	check(not atlas.part("ct_left_clavicle").is_empty()
+			and not atlas.part("ct_right_clavicle").is_empty(),
+			"Atlas recessed skull must sit between connected shoulder clavicles")

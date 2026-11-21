@@ -39,3 +39,32 @@ The pass-162 Godot render confirms deletion of the duplicate hanging Wolverine f
 |172|Taper Atlas front shin and advance foot noses to make assault silhouette less squat.|Reshape Wolverine lower pelvis and greaves so single bent gun arm sits over stable leg centers.|Taper Jenner reactor roof and hock greaves to balance the round disc/head.|
 
 Three models modified in each of five passes. New Atlas lower jaw elements, Wolverine gun-gripping thumb on same right arm and Jenner pitched disc rear brace. Wolverine source preserves precisely two z-axis arm lofts; no vertical right lower arm is reintroduced. Technical tests and final Godot review pending; no APK, merge or subdivision.
+
+
+## Passes 173–177 — large-scale final five-pass anatomy checks
+
+| Pass | Atlas | Wolverine | Jenner |
+| --- | --- | --- | --- |
+| 173 | New matched clavicles below skull, joined to rounded shoulders | Replaced entire right gun-arm/AC5 forearm profiles with a deliberately level wrist segment and sharp elbow bend | Added two angled underside disc-to-body support struts |
+| 174 | Reoriented arm cuff / fists to proper wrists | Angular helmet, still compact launcher and one gripping right arm | Swept laser pod roots away from disc |
+| 175 | Reduced shoulder front-to-back thickness | Rebuilt torso/abdomen under narrow head into distinct contiguous facets | Reduced digitigrade thigh bulk relative to disc |
+| 176 | Skull orbit brow sharpened and tucked between shoulder bells | Thumb/palm visibly above and around rear autocannon housing | Raised curved front canopy framed into rounded disc |
+| 177 | Hip guard/thigh/stance reshaped under assault upper body | Tightened joint elbow angle; hand and gun still one chain | Trimmed disc rear support and toe splay for balanced pose |
+
+**Completed exactly 20 actual modeling passes (158–177), three model edits
+per pass = 60 chassis-level interventions.** Major Wolverine architecture
+was changed from a physically separate vertical forearm and forward cannon
+to one bent upper-arm–elbow–gun-forearm with a single grip around the AC5.
+Right upper arm source has exactly two z-axis lofts; no spare right fist
+or independent y-axis forearm. The physical palm overlaps the cannon mount
+and shroud, and explicit Godot tests guard this as an invariant.
+
+Atlas has a genuine recessed skull between curved matched shoulder bell
+shells and new clavicle supports, with fists attached to gauntlets.
+Jenner now has a 12-section polygonal disc planform, angled pod/neck
+connections and adjusted two-bend leg geometry.
+
+**Technical gate:** Godot five-view front / side / rear / top and push
+CI smoke/unit tests. These checks confirm code/build integrity, not
+artist-approved match to Catalyst plastics. Do not densify, merge or build
+the APK until instructed.
