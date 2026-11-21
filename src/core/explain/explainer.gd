@@ -117,6 +117,9 @@ static func _target(s: GameState, d: Dictionary) -> String:
 
 
 static func _initiative(d: Dictionary, level: int) -> String:
+	if d.has("forced"):
+		return "Initiative: %s wins it automatically this turn (the mission's surprise attack). %s acts first." % [
+				Names.side(d["forced"]), Names.side(d["order"][0])]
 	var parts: Array[String] = []
 	for side: int in d["rolls"]:
 		var b := int(d.get("bonus", {}).get(side, 0))

@@ -12,6 +12,9 @@ const MAX_CANDIDATES := 60
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	if ForcedWithdrawal.withdrawing(state, u):
 		return BotWithdraw.plan(state, u)
+	var leave := BotObjectives.exit_plan(state, u)
+	if not leave.is_empty():
+		return leave
 	var best := {"key": MoveOptions.key(u.coord, u.facing), "mode": MoveMode.Kind.WALK,
 			"score": -INF, "reason": "stays put", "charge": -1}
 	for mode in [MoveMode.Kind.WALK, MoveMode.Kind.RUN, MoveMode.Kind.JUMP]:
@@ -31,6 +34,8 @@ static func _candidates(state: GameState, u: Unit, opts: MoveOptions) -> Array[V
 	var out: Array[Vector3i] = []
 	for c: Vector2i in opts.reachable_hexes():
 		var keys := opts.end_keys_in(c)
+		if keys.is_empty():
+			continue
 		var pick := keys[0]
 		if enemy:
 			for k in keys:
@@ -77,6 +82,8 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	if enemy:
 		gap = maxi(0, Hex.distance(u.coord, enemy.coord) - preferred_range(u))
 		score -= 0.3 * gap
+	var obj := BotObjectives.bonus(state, u, u.coord)
+	score += obj[0]
 	var tile := state.map.get_tile(u.coord)
 	var where := "stays at %s" % Hex.label(u.coord) if not moved else "%s to %s" % [
 			MoveMode.name_of(mode).to_lower() + "s", Hex.label(u.coord)]
@@ -85,6 +92,8 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 		reason = "%s and %s" % [where, charge["reason"]]
 	elif dealt == 0.0 and gap > 0:
 		reason = "%s to close in (its weapons work best within %d hexes)" % [where, preferred_range(u)]
+	if obj[1] != "":
+		reason += ", " + obj[1]
 	if tile and LineOfSight.woods_value(tile) > 0:
 		reason += ", ends in %s for cover" % tile.terrain.name.to_lower()
 	elif tile and tile.building:

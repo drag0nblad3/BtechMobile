@@ -70,6 +70,8 @@ static func briefing(m: Mission, level: int) -> String:
 		t += " " + m.summary
 	if m.turns > 0:
 		t += " %s turns%s." % [m.turns, " (or fewer: Random Duration)" if m.random_duration else ""]
+	for n: String in m.notes:
+		t += " " + n + ("" if n.ends_with(".") else ".")
 	if m.forced_withdrawal and level == ExplainLevel.FULL:
 		t += " Forced Withdrawal: a badly damaged 'Mech (two engine hits, a side torso, or two limbs including a leg) must retreat to its home edge."
 	return t
