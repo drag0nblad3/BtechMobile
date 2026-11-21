@@ -309,3 +309,67 @@ The review now includes five orientations of all three chassis **in one PNG**, i
 **New regression gate:** `test_wolverine_single_right_arm_geometry_not_two_right_fists` verifies there is only one forward right forearm in the authored geometry, no lower right fist boxes, and exactly one AC5 muzzle. Older weapon-opening and true occupied-cell overlap checks remain mandatory. Do not use the *visual* coincidence of angled meshes as proof of physical attachment.
 
 **Approval remains withheld.** The five-angle geometry review reduces blind spots but does not establish perfect CGL plastic matching. Keep subdivision at 1, no high-density 100–150k voxel build, no APK build and no branch merge.
+
+
+## Passes 98–117 — head-on/top-down construction check (geometry committed, visual approval pending)
+
+The five camera directions are now clearly captioned within the **single** combined image:
+three-quarter, true head-on, side, rear three-quarter and overhead. The overhead
+view indicates the forward (-Z) direction. The labels make comparison with the
+assembled Catalyst plastic less ambiguous, particularly for asymmetric weapons.
+
+**Primary comparison standard:** CGL A Game of Armored Combat WVR-6R plastic
+and assembled premium Wolverine (arm variants must not be confused);
+CGL Hansen's Roughriders Atlas plastic; CGL Inner Sphere Striker Lance
+Jenner plastic. Alternate resin and TRO line art remain secondary.
+
+| Pass | Model | Change to actual component geometry |
+| --- | --- | --- |
+| 98 | Wolverine | Retreat duplicate-looking RA lower armor back toward cannon breech; leave the single forward cannon and its mount intact. |
+| 99 | Wolverine | Reduce the cannon-mount spine's exposed edge while retaining contact with upper arm and hollow muzzle sleeve. |
+| 100 | Wolverine | Give the weapon-bearing right upper arm a shorter, less fist-like shoulder shell. |
+| 101 | Wolverine | Tuck the right torso pauldron inward to expose its actual shoulder joint rather than a second parallel arm. |
+| 102 | Wolverine | Chamfer the opposing launcher-side pauldron without moving or filling the six SRM openings. |
+| 103 | Wolverine | Taper the left lower-arm cuff into one deliberate fist rather than a second gun silhouette. |
+| 104 | Wolverine | Narrow the pilot's forward visor and trim upper helmet overhang for a clearer face-on read. |
+| 105 | Wolverine | Taper the calf toward the boot and shorten the heavy forward sole; mirrored legs remain matched. |
+| 106 | Atlas | Cut oversized lateral shoulder-bell plan silhouettes on both sides. |
+| 107 | Atlas | Bevel the upper Death's Head dome so the brow remains stronger than its crown. |
+| 108 | Atlas | Recess the mandible behind the cheeks to avoid a projecting human-mask jaw. |
+| 109 | Atlas | Sharpen the separate left/right chest plates into a shallow central V. |
+| 110 | Atlas | Narrow the substantial lower-arm gauntlets without erasing the paired fists. |
+| 111 | Atlas | Reduce shin-plate overhang and keep the knee and ankle joints visually distinct. |
+| 112 | Atlas | Shorten the separate inner and outer toe tips while preserving the gap between them. |
+| 113 | Jenner | Blunt the very front of the cockpit saucer without shortening its required central nose cell. |
+| 114 | Jenner | Reduce the oversized forward glass footprint to a slim framed strip. |
+| 115 | Jenner | Trim the left and mirrored right laser-pod overhangs while retaining their physical root yokes and four bores. |
+| 116 | Jenner | Slim the lower rear-facing calf while leaving both rear hock braces and ankle links connected. |
+| 117 | Jenner | Shorten all six mirrored toe tips; keep the individual forefoot pieces and hock pivots. |
+
+### Targeted geometry gates
+
+- **Wolverine arm anatomy:** left lower arm ends in a hand; right arm forms the
+  *single* AC/5-bearing structure. The main right forearm armor now begins at
+  Z=-15 instead of Z=-21, yielding the forward barrel position to the narrower
+  structural mount. No second right fist was added. Check head-on and overhead
+  for duplicate-looking bands; test both true voxel occupancy and preview
+  component contours. Retain the single RA muzzle and six physically empty LT
+  SRM ports.
+- **Atlas mass and joints:** compare shoulder-bell footprint from overhead,
+  skull and recessed jaw from front, separate breastplates from front, plus
+  slimmed forearms and toes from side. No additional rounded body generators.
+- **Jenner proportions:** blunt saucer prow, reduced window area, laser
+  nacelles rooted under the fuselage, narrow rear-hock calves, and compact
+  independent toes. Preserve the four existing laser bores and SRM4 ports.
+
+**Verification recorded for this commit:** structural checks on the edited
+JSON (strictly increasing section depths, matched polygon vertex counts,
+mirrors with defined source parts, single lower RA contour and unchanged
+muzzle metadata). The source-level regression tests also gain a new right-arm
+identity check and all-five-views capture check. **An in-engine Godot render
+and test run have not been performed in this connector session**, so none of
+these twenty edits is represented as a visually approved plastic-sculpt match.
+That gate remains OPEN.
+
+Keep `subdivide: 1`. Do not build an APK, merge, or begin 100–150k voxel
+detail refinement until the corrected multi-view silhouettes have been reviewed.

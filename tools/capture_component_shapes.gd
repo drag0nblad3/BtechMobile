@@ -14,6 +14,7 @@ var labels: Array[Label3D] = []
 var views: Array[Dictionary] = []
 var capture_images: Array[Image] = []
 var step := 0
+var review_view_label: Label
 var frame := 0
 
 
@@ -26,6 +27,14 @@ func _initialize() -> void:
 	scene.name = "UnrefinedComponentShapeStudies"
 	root.add_child(scene)
 	_lighting()
+	# One tiny caption per row; camera geometry remains unchanged.
+	var overlay := CanvasLayer.new()
+	scene.add_child(overlay)
+	review_view_label = Label.new()
+	review_view_label.position = Vector2(24, 18)
+	review_view_label.add_theme_font_size_override("font_size", 28)
+	review_view_label.add_theme_color_override("font_color", Color("eaf3ff"))
+	overlay.add_child(review_view_label)
 	for i in IDS.size():
 		var model := VxModel.load_file("res://data/voxels/%s.json" % IDS[i])
 		if not model.errors.is_empty() or model.detail != 1:
@@ -102,6 +111,10 @@ func _setup_view(index: int) -> void:
 	var target: Dictionary = views[index]
 	var who: int = target["who"]
 	var view: String = target["view"]
+	var review_names := [
+		"FRONT THREE-QUARTER", "HEAD-ON FRONT", "LEFT/RIGHT SIDE",
+		"REAR THREE-QUARTER", "TOP-DOWN · FORWARD = -Z"]
+	review_view_label.text = "COMPONENT SHAPE REVIEW · " + review_names[index]
 	var look_x := 0.0 if who == -1 else (float(who) - 1.0) * SPACING
 
 	for i in models.size():

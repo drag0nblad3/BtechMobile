@@ -251,3 +251,76 @@ func test_wolverine_single_right_arm_geometry_not_two_right_fists() -> void:
 	check_eq(forearm_profiles, 1, "Wolverine should have exactly one AC/5 forearm")
 	var m := VxModel.load_file(MODELS[1])
 	check_eq(m.muzzles[Location.RA].size(), 1, "Wolverine AC/5 needs one muzzle")
+
+
+func test_pass_98_to_117_front_and_top_right_arm_identity() -> void:
+	# A forward gun barrel is not another lower right fist. Review both
+	# true head-on and top-down views; verify source and occupied cells.
+	var preview_source := FileAccess.get_file_as_string(
+			"res://tools/capture_component_shapes.gd")
+	for view_name in ["gallery_three_quarter", "gallery_front",
+			"gallery_side", "gallery_rear_three_quarter", "gallery_top_down"]:
+		check(preview_source.contains(view_name),
+				"Missing required shape-review angle: " + view_name)
+	var data: Dictionary = JsonFile.read(MODELS[1])
+	var authored_forearms := 0
+	for p: Dictionary in data["parts"]:
+		if p["name"] != "ra":
+			continue
+		for s: Dictionary in p.get("shapes", []):
+			check(not s.has("box"), "RA must not grow a second fist")
+			if not s.has("loft"):
+				continue
+			var loft: Dictionary = s["loft"]
+			if loft["axis"] != "z":
+				continue
+			var front: int = int(loft["sections"][0]["at"])
+			if front < -12:
+				authored_forearms += 1
+				check(front >= -15,
+						"RA armor should stop behind AC5 rather than double its barrel")
+	check_eq(authored_forearms, 1, "One RA armor forearm, not two")
+
+	var m := VxModel.load_file(MODELS[1])
+	var cannon: Dictionary = m.part("ra_ac5_shroud")["cells"]
+	var fist: Dictionary = m.part("la")["cells"]
+	var right_arm: Dictionary = m.part("ra")["cells"]
+	check(not cannon.is_empty() and not fist.is_empty() and not right_arm.is_empty(),
+			"Asymmetric gun arm and fist must all exist")
+	var gun_front := 1000
+	var fist_front := 1000
+	var left_has_fist := false
+	var right_has_extra_fist := false
+	for cell: Vector3i in cannon:
+		gun_front = mini(gun_front, cell.z)
+		check(cell.x > 0, "AC5 housing crossed to left side")
+	for cell: Vector3i in fist:
+		fist_front = mini(fist_front, cell.z)
+		left_has_fist = left_has_fist or (cell.x < 0 and cell.y <= 23)
+	for cell: Vector3i in right_arm:
+		right_has_extra_fist = right_has_extra_fist or (cell.y < 25)
+	check(left_has_fist, "Wolverine left fist absent in head-on review")
+	check(not right_has_extra_fist, "Wolverine has a second right dangling fist")
+	check(gun_front <= fist_front - 9,
+			"Top-down silhouette must show a forward AC5, not two fists")
+	check_eq(m.muzzles[Location.RA].size(), 1, "one right arm autocannon")
+	check_eq(m.muzzles[Location.LT].size(), 6, "six left torso missile openings")
+
+
+func test_pass_98_to_117_cgl_shape_stage_does_not_add_subdivision() -> void:
+	# Geometry remains real component volumes; no fake detail-density step.
+	for path: String in MODELS:
+		var d: Dictionary = JsonFile.read(path)
+		check_eq(d.get("subdivide", -1), 1,
+				"Only component forms are under review: " + path)
+	var atlas := VxModel.load_file(MODELS[0])
+	var wolverine := VxModel.load_file(MODELS[1])
+	var jenner := VxModel.load_file(MODELS[2])
+	for name in ["hd_jaw", "ct_left_breast_plate", "ct_right_breast_plate",
+			"ll_toe_inner", "rl_toe_outer"]:
+		check(not atlas.part(name).is_empty(), "Atlas component was lost: " + name)
+	for name in ["ra_cannon_mount", "ra_elbow_link", "lt_srm6", "la_shoulder_yoke"]:
+		check(not wolverine.part(name).is_empty(), "Wolverine component lost: " + name)
+	for name in ["hd_chin_fairing", "la_pod_yoke", "ra_pod_yoke",
+			"ll_rear_hock_brace", "rl_front_ankle_link"]:
+		check(not jenner.part(name).is_empty(), "Jenner component lost: " + name)
