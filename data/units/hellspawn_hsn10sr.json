@@ -1,0 +1,82 @@
+{
+ "id": "hellspawn_hsn10sr",
+ "name": "Hellspawn",
+ "model": "HSN-10SR",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 17,
+  "RT": 17,
+  "CT": 21,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "light_ppc",
+   "er_medium_laser",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "light_ppc",
+   "er_medium_laser",
+   "endo_steel*5"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "beagle_probe",
+   "endo_steel"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "tag",
+   "endo_steel*2"
+  ],
+  "CT": [
+   "guardian_ecm"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 5674,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Hellspawn HSN-10SR.mtf",
+  "published": "RS:3067u,RSFP:Davion",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Hellspawn HSN-10SR (ForcePack-Record-Sheets-House-Davion)",
+  "megamek_bv": 1411
+ },
+ "bv": 1411,
+ "sprite": "hellspawn",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Light PPCs, 2 ER Medium Lasers; walks 6, runs 9, jumps 8."
+}

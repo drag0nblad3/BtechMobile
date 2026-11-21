@@ -67,7 +67,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
   rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
   `heat_sink` items. `"heat_sink_type": "double"` makes them all doubles (2 heat,
-  3 slots each). A `case` item puts CASE in that location, `case2` CASE II. `hatchet` or `sword` in an arm mounts that physical weapon.
+  3 slots each). A `case` item puts CASE in that location, `case2` CASE II. `c3bs_master` / `c3bs_slave` are boosted C3; `"jump_jet_type": "improved"` makes every `jump_jet` an improved jet (2 slots). `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
   `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.

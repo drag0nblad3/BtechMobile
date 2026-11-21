@@ -27,6 +27,8 @@ var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 n
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
 var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
 var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
+var c3_boosted := false  ## Its C3 computer is boosted (C3Boosted).
+var jump_jet_type := ""  ## "" standard or "improved" (JumpJets).
 var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
 var probe_loc := -1
 var inert: Array[Dictionary] = []  ## [{kind, loc}] of InertGear.
@@ -72,6 +74,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.tonnage = int(d["tonnage"])
 	u.walk_mp = int(d["walk_mp"])
 	u.jump_mp = int(d.get("jump_mp", 0))
+	u.jump_jet_type = d.get("jump_jet_type", "")
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.engine_type = d.get("engine_type", "standard")

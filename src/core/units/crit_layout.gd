@@ -31,10 +31,13 @@ static func build(def: UnitDef) -> Array:
 		var kind: String = a.get("kind", "")
 		_place(out[a["loc"]], CritSlot.new(CritSlot.Kind.AMMO, aw.name + (" Cluster" if kind == "cluster" else "") + " Ammo" + (" (Half)" if a.get("half", false) else ""), i), def)
 	var sink := 0
+	var jet := 0
 	for loc: int in def.other_items:
 		for item: String in def.other_items[loc]:
-			if item == "jump_jet":
-				_place(out[loc], CritSlot.new(CritSlot.Kind.JUMP_JET, "Jump Jet"), def)
+			if item == "jump_jet":  # each jet's slots share a ref (JumpJets)
+				for s in JumpJets.slots(def):
+					_place(out[loc], CritSlot.new(CritSlot.Kind.JUMP_JET, "Improved Jump Jet" if JumpJets.improved(def) else "Jump Jet", jet), def)
+				jet += 1
 				continue
 			# Each heat sink gets its own ref so the slots of a double share it.
 			var n := "Double Heat Sink" if def.double_heat_sinks else "Heat Sink"
@@ -54,10 +57,11 @@ static func build(def: UnitDef) -> Array:
 	if def.supercharger_loc >= 0:
 		_place(out[def.supercharger_loc], CritSlot.new(CritSlot.Kind.SUPERCHARGER, "Supercharger"), def)
 	if def.c3_master_loc >= 0:
-		for s in C3.MASTER_SLOTS:
-			_place(out[def.c3_master_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Master"), def)
+		for s in C3Boosted.master_slots(def):
+			_place(out[def.c3_master_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Boosted Master" if def.c3_boosted else "C3 Master"), def)
 	if def.c3_slave_loc >= 0:
-		_place(out[def.c3_slave_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Slave"), def)
+		for s in C3Boosted.slave_slots(def):
+			_place(out[def.c3_slave_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Boosted Slave" if def.c3_boosted else "C3 Slave"), def)
 	for g: Dictionary in def.inert:
 		for s in InertGear.KINDS[g["kind"]]["slots"]:
 			_place(out[g["loc"]], CritSlot.new(CritSlot.Kind.GEAR, InertGear.KINDS[g["kind"]]["name"]), def)

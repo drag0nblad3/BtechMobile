@@ -55,7 +55,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		unit.on_roof = false
 	unit.has_moved = true
 	unit.move_mode = mode if moved else -1
-	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved) if moved else 0
+	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved, JumpJets.improved(unit.def)) if moved else 0
 	unit.outside_heat += Fire.move_heat(state.map, path, MoveOptions.coord_of(from), mode == MoveMode.Kind.JUMP)
 	emit.call(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
