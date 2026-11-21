@@ -13,3 +13,16 @@ Catalyst plastic sculpts are the target. Use the actual Godot five-angle contact
 |162|Make Atlas knee/thigh armor comparatively leaner than chest, restoring assault-mech longer-legged stance despite massive shoulders.|Remove any independent vertical right forearm profile and center integrated Wolverine gun-grip fingers directly behind AC5 shroud; add hard no-duplicate geometry invariant.|Thicken Jenner digitigrade hip mounting wedges while thinning calf and rounding toe spacing beneath body balance line.|
 
 The Wolverine old `ra` second shape was a vertical y-axis forearm tube at z=0, y32–37 while the AC5 continued ahead on a separate diagonal mount. **That source volume was removed**, replaced with exactly two z-axis profiles (upper arm and forward gun-support forearm). The elbow link was moved to z−7/y38 instead of z0/y30. The right-hand knuckles and palm were moved alongside the AC5 shroud at z−22..−14, y27..36, so the hand **grips the gun attached to that same right arm**. Added regression checks on palm↔gun↔mount voxel contacts, elbow↔upper-arm contact and exactly one right-forearm contour. Atlas shoulders and Jenner saucer were also edited in all five passes; no voxel subdivision, no APK, no merge.
+
+
+## Passes 163–167: contour and articulation refinement
+
+|Pass|Atlas|Wolverine|Jenner|
+|---|---|---|---|
+|163|Replace Atlas shoulder bells with 12-corner round shells, matched across both shoulder crowns.|Deepen Wolverine narrow angular visor and cheek edge beside small launcher.|Rebuild Jenner cockpit surface as 12-point round disc, not a blunt wing.|
+|164|Pull Atlas jaw, nasal ridge and toothline forward from recessed skull.|Remodel Wolverine elbow armor as rotated octagonal shield around the bend.|Bend Jenner portside cockpit-to-pod truss downward into hull.|
+|165|Replace squared Atlas hip collar with narrow faceted sloping waist.|Bring Wolverine right gun mount closer to elbow and grip, shortening bulky rear spine.|Cut Jenner canopy roof bulk and add actual separate raised forward glass glazing.|
+|166|Angle Atlas upper arm out of rounded shoulder undercut.|Replace Wolverine oval center armor with angular faceted abdominal panel.|Rake Jenner side laser yokes rearward, opening space behind disc.|
+|167|Sculpt Atlas distinct pair of deep eye sockets and nose ridge below level shoulder caps.|Add Wolverine actual finger wrap on rear of SAME AC5 rather than changing a second forearm.|Angle Jenner digitigrade thigh roots inward and center ankles under side pods.|
+
+The pass-162 Godot render confirms deletion of the duplicate hanging Wolverine forearm. The remaining gun is held in one bent arm; its hand, trigger fingers, shroud and elbow are integrated into the same chain. Atlas shoulder shells now have 12-point rounded contours, and the Jenner disc top plan has 12-point faceted circular cross-sections. All three models changed in all five passes. No subdivision, APK or merge.
