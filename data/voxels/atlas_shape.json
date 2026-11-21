@@ -669,7 +669,7 @@
                 ]
               },
               {
-                "at": 55,
+                "at": 54,
                 "polygon": [
                   [
                     -5,
@@ -677,11 +677,11 @@
                   ],
                   [
                     -5,
-                    -11
+                    -12
                   ],
                   [
                     5,
-                    -11
+                    -12
                   ],
                   [
                     5,
@@ -714,7 +714,7 @@
                 ]
               },
               {
-                "at": 57,
+                "at": 56,
                 "polygon": [
                   [
                     -4,
@@ -722,11 +722,11 @@
                   ],
                   [
                     -4,
-                    -11
+                    -12
                   ],
                   [
                     4,
-                    -11
+                    -12
                   ],
                   [
                     4,
@@ -754,6 +754,51 @@
                   ],
                   [
                     -5,
+                    -3
+                  ]
+                ]
+              },
+              {
+                "at": 58,
+                "polygon": [
+                  [
+                    -3,
+                    -6
+                  ],
+                  [
+                    -3,
+                    -10
+                  ],
+                  [
+                    3,
+                    -10
+                  ],
+                  [
+                    3,
+                    -6
+                  ],
+                  [
+                    4,
+                    -3
+                  ],
+                  [
+                    4,
+                    1
+                  ],
+                  [
+                    2,
+                    3
+                  ],
+                  [
+                    -2,
+                    3
+                  ],
+                  [
+                    -4,
+                    1
+                  ],
+                  [
+                    -4,
                     -3
                   ]
                 ]
@@ -762,72 +807,27 @@
                 "at": 59,
                 "polygon": [
                   [
-                    -3,
+                    -2,
                     -5
-                  ],
-                  [
-                    -3,
-                    -9
-                  ],
-                  [
-                    3,
-                    -9
-                  ],
-                  [
-                    3,
-                    -5
-                  ],
-                  [
-                    4,
-                    -3
-                  ],
-                  [
-                    4,
-                    1
-                  ],
-                  [
-                    2,
-                    3
                   ],
                   [
                     -2,
-                    3
-                  ],
-                  [
-                    -4,
-                    1
-                  ],
-                  [
-                    -4,
-                    -3
-                  ]
-                ]
-              },
-              {
-                "at": 60,
-                "polygon": [
-                  [
-                    -1,
-                    -4
-                  ],
-                  [
-                    -1,
-                    -7
-                  ],
-                  [
-                    1,
-                    -7
-                  ],
-                  [
-                    1,
-                    -4
+                    -8
                   ],
                   [
                     2,
+                    -8
+                  ],
+                  [
+                    2,
+                    -5
+                  ],
+                  [
+                    3,
                     -2
                   ],
                   [
-                    2,
+                    3,
                     1
                   ],
                   [
@@ -839,11 +839,11 @@
                     2
                   ],
                   [
-                    -2,
+                    -3,
                     1
                   ],
                   [
-                    -2,
+                    -3,
                     -2
                   ]
                 ]
@@ -1130,35 +1130,35 @@
                 "polygon": [
                   [
                     -5,
-                    54
+                    53
                   ],
                   [
                     -4,
-                    53
+                    52
                   ],
                   [
                     4,
+                    52
+                  ],
+                  [
+                    5,
                     53
                   ],
                   [
                     5,
-                    54
-                  ],
-                  [
-                    5,
-                    56
+                    55
                   ],
                   [
                     3,
-                    58
+                    57
                   ],
                   [
                     -3,
-                    58
+                    57
                   ],
                   [
                     -5,
-                    56
+                    55
                   ]
                 ]
               },
@@ -1167,35 +1167,35 @@
                 "polygon": [
                   [
                     -5,
-                    54
+                    53
                   ],
                   [
                     -4,
-                    53
+                    52
                   ],
                   [
                     4,
+                    52
+                  ],
+                  [
+                    5,
                     53
                   ],
                   [
                     5,
-                    54
-                  ],
-                  [
-                    5,
-                    56
+                    55
                   ],
                   [
                     3,
-                    58
+                    57
                   ],
                   [
                     -3,
-                    58
+                    57
                   ],
                   [
                     -5,
-                    56
+                    55
                   ]
                 ]
               }
@@ -5966,7 +5966,7 @@
       "mirror": "la_knuckle_cuff"
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals. CGL plastic pass 36: de-bloat Atlas gauntlets into distinctly narrower wrist/elbow shapes and separate squared knuckle armor, retaining bulky upper shoulder and heavy block-fist silhouette of Hansen's sculpt.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk. Pass 12: physically narrow Atlas thigh shield plates to stop them swallowing the pelvis; restore a visible upper-arm-to-gauntlet neck. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 32 grid units while translating the unmodified upper components 5 units, preventing stubby limb-to-torso appearance. Pass 14: front/back photographs of stock AS7-D and three-quarter CAD confirm flat upper shoulder cowls, integrated skull channel and distinct short shoulder guards. Replaced oversized rounded major armor blocks with straight-edged hand-drawn x/y profiles. Pass 15: corrected oversized pill-like upper arms using reference full-torso/side Atlas photos, and rebuilt the stock Death's Head's brow and eye sockets as separate structures. Pass 16: stock AS7-D torso-mounted AC20 was too flush with chest. Extended its rectangular open shroud forward as an independent assembly, without adding panel detail. Pass 18: match AS7-D skull reference's flaring cheekbone/chin contour with independent left/right cheek structures. Scale Atlas up 11% to make 100t heavy silhouette visibly taller than Wolverine while retaining the authored shapes. Pass 19: compare Syllogy Atlas left/right from straight-on resin view: planar eight-corner upper arm guards, broader separated shoulder roofs, visible narrow elbow frames. Preserve a distinguishable sculpted jaw and left rack. Pass 20: reference Atlas right-torso AC20 as a genuinely projecting large rectangular hollow shroud, distinguished from Wolverine's arm cannon. Dark bore backing recessed behind a 7x7 muzzle aperture; still hand-sculpted without subdivision. Pass 21: after inspecting the actual Godot render, reduced the over-projecting AC20 to a compact 5x6 torso-mounted hollow housing, lowered below the skull/shoulders, retaining a visible recess rather than a chest-crossing bar. Pass 22: compare frontal Atlas AS7-D sculpt: shoulder roofs stay broad while upper arms are shorter chamfered blocks, lower gauntlets taper around narrow elbow webs instead of reading as identical swollen cylinders. Pass 23: replace Atlas arm capsule with planar six-corner upper armor shield beneath existing broad shoulder roof; preserve skull, torso and AC20 geometry unchanged. Pass 24: Atlas's straight plated lower legs are now built as independent raised wide shin armor faces, with heavy knee yokes and block boots; differentiates 100-ton assault legs from Wolverine's narrower wedge shins. Reference: CGL AS7-D miniature frontal pose. Pass 25 CGL first: Hansen's Roughriders 2023 plastic official photo — round/segmented shoulder bells frame a domed Death's Head cranium, not flat giant angular blades. Only root cowl/skull structure, no detail. CGL pass 26: physically separate nasal ridge and shallow mandible mouth recess added to broader Atlas skull, not just painted generic human visor. CGL pass27: six visible 2-column×3-row framed left shoulder launcher holes as in Hansen plastic; reduce muzzle-like nasal protrusion and skull-mouth oval. Game weapons unchanged. CGL pass28: blocky squared split toe boots on 100t Atlas and tall heavy shin guards matched to front-facing Hansen's Roughriders plastic, rather than human narrow ski shoes. CGL pass29: after actual pass28 render, shortened Atlas jaw protrusion and reduced skull-mouth recess, favoring broad skull-and-teeth silhouette on Hansen plastic rather than a projecting duck bill. CGL plastic pass 30: Hansen's Roughriders Atlas frontal and oblique photos weighted primary. Shaved side bloat from shoulder cowls and sculpted two major separately pitched chest plates with an actual center break; this is armor mass, not a decorative seam. CGL plastic pass 33: replace underspecified six-muzzle shoulder detail with a compact 2x5 visible open-aperture LRM rack matching the frontal Hansen's Roughriders plastic read; missile loadout remains the Atlas AS7-D LRM-20. Ten physical mouths, not panel decals. CGL plastic pass 36: de-bloat Atlas gauntlets into distinctly narrower wrist/elbow shapes and separate squared knuckle armor, retaining bulky upper shoulder and heavy block-fist silhouette of Hansen's sculpt. Pass 38 (CGL Hanson 2023 plastic front + 3/4, weight 70%): reduce tall skull crown, recess chin beneath shoulder roof, keep two separate cheek plates and eye sockets; avoid inflated humanoid head.",
   "muzzles": {
     "LT": [
       [
