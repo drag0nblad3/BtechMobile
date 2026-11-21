@@ -3,7 +3,7 @@ extends TestCase
 
 const CHASSIS := ["fire_moth", "kit_fox", "adder", "viper", "ice_ferret", "nova", "stormcrow",
 		"mad_dog", "hellbringer", "summoner", "timber_wolf", "gargoyle", "warhawk", "turkina", "dire_wolf",
-		"mist_lynx", "crossbow", "grendel", "linebacker", "night_gyr"]
+		"mist_lynx", "crossbow", "grendel", "linebacker", "night_gyr", "shadow_cat", "executioner"]
 
 
 func test_roster() -> void:
@@ -53,3 +53,11 @@ func test_bots_fight_a_clan_battle() -> void:
 	check(gc.state.turn > 2, "played several turns")
 	var fired := gc.history.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.WEAPON_FIRED)
 	check(not fired.is_empty(), "shots were fired")
+
+
+func test_masc_mechs() -> void:
+	var db := UnitDb.load_dir()
+	for id: String in ["shadow_cat_prime", "shadow_cat_a", "executioner_prime", "executioner_a"]:
+		var d := db.get_def(id)
+		check(d != null and d.masc_loc >= 0, id + " has MASC")
+	check_eq(Masc.size(db.get_def("executioner_prime")), 4, "95 t Clan: 95 / 25 rounds to 4")
