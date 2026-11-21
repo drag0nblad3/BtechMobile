@@ -542,3 +542,5 @@ their previous weapon data; Wolverine AC5 unchanged.
 The first-half unit run caught two outdated test expectations (Atlas
 old section count and Jenner incorrect disc-tip y sample). Both were
 corrected without deleting their physical geometry checks.
+
+**Launcher alignment correction (post-pass test hardening):** six compact Wolverine launcher muzzle tips aligned to the actual physical rack face at z=-15.5, with physical port openings verified by the voxel test. This metadata correction is not counted as another refinement pass.

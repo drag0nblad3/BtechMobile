@@ -478,6 +478,8 @@ func test_passes_143_to_147_reference_structure_and_usable_muzzles() -> void:
 			"hd_top_glass_left", "hd_top_glass_right"]:
 		check(not j.part(name).is_empty(), "Jenner disc subpart lost " + name)
 	check_eq(w.muzzles[Location.LT].size(), 6, "Compact 2x3 Wolverine SRM6")
+	for muzzle: Vector3 in w.muzzles[Location.LT]:
+		check(is_equal_approx(muzzle.z, -15.5), "Compact Wolverine launcher muzzle must lie at the open face, not float forward")
 	var rack: Dictionary = w.part("lt_srm6")["cells"]
 	for barrel: Vector3 in w.muzzles[Location.LT]:
 		var aperture := Vector3i(floori(barrel.x), floori(barrel.y), ceili(barrel.z))
