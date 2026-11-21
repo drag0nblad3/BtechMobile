@@ -46,8 +46,12 @@ static func text(u: Unit) -> String:
 	t += "Heat sinks %d of %d%s\n" % [u.working_heat_sinks(), d.heat_sinks,
 			" double (%d heat)" % u.dissipation() if d.double_heat_sinks else ""]
 	var tech: Array[String] = []
+	if d.is_clan():
+		tech.append("Clan technology")
+	if d.omni:
+		tech.append("OmniMech, %s configuration" % d.config)
 	if d.is_xl():
-		tech.append("XL engine (dies if a side torso is lost)")
+		tech.append("Clan XL engine (survives losing one side torso)" if d.is_clan() else "XL engine (dies if a side torso is lost)")
 	if d.structure_type == "endo_steel":
 		tech.append("endo steel structure")
 	if d.ecm_loc >= 0:

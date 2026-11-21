@@ -34,6 +34,9 @@ var ammo_damage: int   ## Explosion damage per shot, if not its damage (Narc pod
 var streak: bool       ## Streak: all missiles hit, or it doesn't fire.
 var pulse: bool        ## Pulse laser (no targeting computer bonus on aimed shots).
 var ams: bool          ## Anti-missile system: never fires at targets (AntiMissile).
+## "inner_sphere" or "clan" (ids start "c_"): Clan versions are lighter,
+## smaller and longer-ranged (book p. 251 tables).
+var tech := "inner_sphere"
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -67,7 +70,12 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.streak = bool(d.get("streak", false))
 	w.ams = bool(d.get("ams", false))
 	w.pulse = bool(d.get("pulse", false))
+	w.tech = d.get("tech", "inner_sphere")
 	return w
+
+
+func is_clan() -> bool:
+	return tech == "clan"
 
 
 func uses_ammo() -> bool:
