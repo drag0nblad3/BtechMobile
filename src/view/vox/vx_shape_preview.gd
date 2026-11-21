@@ -6,6 +6,7 @@ extends Node3D
 ## Erases are intentionally not shown: compare voxel renders for cutouts.
 
 var _mesh_by_part: Dictionary = {}
+var _review_material_cache: Dictionary = {}
 var _joints: Dictionary = {}
 
 
@@ -69,6 +70,31 @@ func _build(d: Dictionary) -> void:
 				_joints[side + "_tarsus"].rotation.x = deg_to_rad(-6.0 if left else -8.0)
 
 
+
+
+## Preview-only low-saturation component tones to expose intersections and
+## misplaced proportions. Source voxel colors and game materials are unchanged.
+func _preview_material(name: String, part_name: String, materials: Dictionary) -> StandardMaterial3D:
+	var key := part_name + ":" + name
+	if _review_material_cache.has(key):
+		return _review_material_cache[key]
+	var base: StandardMaterial3D = materials.get(name, materials.values()[0])
+	var result: StandardMaterial3D = base.duplicate() as StandardMaterial3D
+	if name in ["form", "edge"]:
+		if part_name in ["lt", "rt"]:
+			result.albedo_color = Color("#909fb0")
+		elif part_name in ["la", "ra"]:
+			result.albedo_color = Color("#b2b2b1")
+		elif part_name.begins_with("hd"):
+			result.albedo_color = Color("#c3aaa0")
+		elif part_name.begins_with("ll") or part_name.begins_with("rl"):
+			result.albedo_color = Color("#a9b0a9")
+		elif part_name.contains("laser") or part_name.contains("srm"):
+			result.albedo_color = Color("#959ba7")
+		else:
+			result.albedo_color = Color("#bec4ca")
+	_review_material_cache[key] = result
+	return result
 
 
 func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
@@ -137,7 +163,7 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 			var inst := MeshInstance3D.new()
 			inst.name = part_name + "_outline"
 			inst.mesh = mesh
-			inst.material_override = materials.get(s.get("mat", ""), materials.values()[0])
+			inst.material_override = _preview_material(s.get("mat", ""), part_name, materials)
 			inst.position = -pivot * unit_scale
 			joint.add_child(inst)
 			_mesh_by_part[part_name].append(inst)
@@ -155,7 +181,7 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 		var inst := MeshInstance3D.new()
 		inst.mesh = mesh
 		inst.position = (Vector3(cx, cy, cz) - pivot) * unit_scale
-		inst.material_override = materials.get(s.get("mat", ""), materials.values()[0])
+		inst.material_override = _preview_material(s.get("mat", ""), part_name, materials)
 		inst.name = part_name + "_box"
 		joint.add_child(inst)
 		_mesh_by_part[part_name].append(inst)
