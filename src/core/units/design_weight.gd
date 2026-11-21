@@ -33,6 +33,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"ammo": float(def.ammo_mounts.size()),
 		"case": def.case_locs.size() * 0.5,
 		"ecm": 1.5 if def.ecm_loc >= 0 else 0.0,
+		"masc": float(Masc.size(def)) if def.masc_loc >= 0 else 0.0,
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,
 		"melee": def.melee.reduce(func(t: float, m: Dictionary) -> float: return t + def.melee_tons(m["kind"]), 0.0),
 	}

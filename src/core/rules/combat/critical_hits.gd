@@ -62,11 +62,12 @@ static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit,
 
 
 ## One critical hit in `loc`: a random slot that can still be hit. If the
-## location started the phase with nothing to hit, it moves inward.
-static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int) -> void:
+## location started the phase with nothing to hit, it moves inward
+## (unless `transfer` is false: MASC's own criticals never move).
+static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int, transfer := true) -> void:
 	var options := _hittable(u, loc)
 	while options.is_empty():
-		if _hit_this_phase(state, u, loc):
+		if not transfer or _hit_this_phase(state, u, loc):
 			return
 		loc = Location.transfer(loc)
 		if loc < 0 or u.is_location_destroyed(loc):

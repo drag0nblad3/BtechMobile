@@ -25,6 +25,16 @@ static func describe(e: GameEvent, s: GameState, level: int, seen: Dictionary = 
 			if level == ExplainLevel.FULL:
 				t += " Lying down is +1 to hit from range but -2 from an adjacent 'Mech, and it fires at +2 itself. Standing up costs 2 MP and a piloting roll."
 			return t
+		GameEvent.MASC:
+			var t := "%s engages MASC: rolled %d, needed %d: %s" % [who, d["roll"], d["need"],
+					"it can run at twice its walking speed" if d["ok"] else "it FAILS and strains its legs"]
+			if level == ExplainLevel.OFF:
+				return "%s's MASC %s." % [who, "kicks in" if d["ok"] else "fails"]
+			if level == ExplainLevel.FULL:
+				t += ". Using it again next turn needs %d+; each turn of rest lowers that by a step" % d["next"]
+				if not d["ok"]:
+					t += ". A failure means a critical check on one leg at the end of the move"
+			return t + "."
 		GameEvent.STAND:
 			return "%s %s." % [who, "stands up" if d["ok"] else "fails to stand"]
 		GameEvent.PILOT_HIT:

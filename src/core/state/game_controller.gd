@@ -54,11 +54,19 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 	return true
 
 
+## Engages MASC before moving (book p. 204). Returns whether it worked;
+## false also when it can't be engaged (Masc.problem).
+func engage_masc(unit: Unit) -> bool:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or Masc.problem(unit) != "":
+		return false
+	return Masc.engage(dice, _emit_cb, unit)
+
+
 ## Drops a standing 'Mech to the ground instead of moving: harder to hit
 ## from range, easier from next door. Standing up later costs 2 MP and a roll.
 ## To move first and then drop, use submit_move(..., then_prone = true).
 func go_prone(unit: Unit) -> bool:
-	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone:
+	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone or unit.masc_used:
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
 	_unit_done()

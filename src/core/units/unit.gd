@@ -41,6 +41,7 @@ var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs)
 var shutdown: bool = false
 var voluntary_shutdown: bool = false  ## Shut down by choice: stays down until restarted (VoluntaryShutdown).
 var power_request: String = ""  ## "off" / "on" at the next Heat Phase (VoluntaryShutdown).
+var masc_level: int = 0  ## Turns of MASC use in a row, less one per rest turn (Masc).
 
 # This turn ---------------------------------------------------------------
 var has_moved: bool = false
@@ -48,6 +49,9 @@ var has_fired: bool = false
 var has_physical: bool = false
 var move_mode: int = -1  ## MoveMode.Kind used this turn, -1 if not moved.
 var hexes_moved: int = 0
+var masc_used: bool = false    ## MASC engaged this turn (worked or not).
+var masc_active: bool = false  ## MASC worked: running MP is twice walking MP.
+var masc_failed: bool = false  ## MASC failed: leg criticals owed after the move.
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var heat_generated: int = 0   ## Heat built up this turn, applied in the Heat Phase.
 var outside_heat: int = 0     ## Heat from flamers etc. this turn (capped in the Heat Phase).
@@ -88,6 +92,7 @@ func reset_for_turn() -> void:
 	torso_twist = 0
 	heat_generated = 0
 	outside_heat = 0
+	Masc.new_turn(self)
 	for w in weapons:
 		w.fired = false
 		w.engaged = 0
@@ -178,7 +183,7 @@ func walk_mp() -> int:
 
 
 func run_mp() -> int:
-	return ceili(walk_mp() * 1.5)
+	return walk_mp() * 2 if masc_active else ceili(walk_mp() * 1.5)
 
 
 ## Jump MP after jump jet damage.

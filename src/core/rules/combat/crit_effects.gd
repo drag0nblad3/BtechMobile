@@ -62,6 +62,8 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 		CritSlot.Kind.ECM:
 			u.ecm_lost = true
 			return "ECM suite destroyed"
+		CritSlot.Kind.MASC:
+			return "MASC destroyed: no more bursts of speed"
 		CritSlot.Kind.TARGETING:
 			u.tc_lost = true
 			return "targeting computer destroyed: no more -1 to hit"
