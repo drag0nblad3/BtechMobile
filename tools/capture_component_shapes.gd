@@ -6,7 +6,6 @@ extends SceneTree
 const IDS := ["atlas_shape", "wolverine_shape", "jenner_shape"]
 const LABELS := ["ATLAS", "WOLVERINE", "JENNER"]
 const SPACING := 2.8
-const VIEWS := ["front", "three_quarter", "side", "rear"]
 var output_dir := "/tmp/component-shape-renders"
 var scene: Node3D
 var camera: Camera3D
@@ -50,36 +49,9 @@ func _initialize() -> void:
 	camera.fov = 44
 	camera.current = true
 	scene.add_child(camera)
-	views.append({"name": "gallery_front", "who": -1, "view": "front"})
+	# One combined picture per iteration. Extra angles or isolated components
+	# are captured only during a deliberate targeted diagnostic run.
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
-
-	for i in IDS.size():
-		for view in VIEWS:
-			views.append({"name": "%s_%s" % [IDS[i], view], "who": i, "view": view})
-	var isolation := [
-		[
-			{"name": "atlas_head_isolated", "parts": ["hd"], "height": 1.78, "distance": 1.6},
-			{"name": "atlas_torso_isolated", "parts": ["ct", "lt", "rt"], "height": 1.37, "distance": 2.8},
-			{"name": "atlas_arms_isolated", "parts": ["la", "ra"], "height": 1.07, "distance": 3.0},
-			{"name": "atlas_legs_isolated", "parts": ["ll", "ll_shin", "ll_foot", "rl", "rl_shin", "rl_foot"], "height": 0.48, "distance": 2.8}
-		],
-		[
-			{"name": "wolverine_helmet_isolated", "parts": ["hd"], "height": 1.77, "distance": 1.6},
-			{"name": "wolverine_torso_isolated", "parts": ["ct", "lt", "rt"], "height": 1.37, "distance": 2.8},
-			{"name": "wolverine_arms_isolated", "parts": ["la", "ra"], "height": 1.04, "distance": 3.0},
-			{"name": "wolverine_legs_isolated", "parts": ["ll", "ll_shin", "ll_foot", "rl", "rl_shin", "rl_foot"], "height": 0.48, "distance": 2.8}
-		],
-		[
-			{"name": "jenner_prow_isolated", "parts": ["hd"], "height": 1.40, "distance": 2.2},
-			{"name": "jenner_engine_isolated", "parts": ["ct", "lt", "rt"], "height": 1.46, "distance": 3.4},
-			{"name": "jenner_laser_pods_isolated", "parts": ["la", "ra"], "height": 1.45, "distance": 3.1},
-			{"name": "jenner_legs_isolated", "parts": ["ll", "ll_shin", "ll_tarsus", "ll_foot", "rl", "rl_shin", "rl_tarsus", "rl_foot"], "height": 0.59, "distance": 3.0}
-		]
-	]
-	for i in IDS.size():
-		for item: Dictionary in isolation[i]:
-			views.append({"name": item["name"], "who": i, "view": "three_quarter",
-					"parts": item["parts"], "height": item["height"], "distance": item["distance"]})
 	_setup_view(step)
 
 
