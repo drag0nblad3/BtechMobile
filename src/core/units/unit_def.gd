@@ -20,6 +20,7 @@ var double_heat_sinks := false
 ## Physical weapons: [{kind: "hatchet"|"sword", loc}] (MeleeWeapons).
 var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
+var ecm_loc := -1  ## Location of a Guardian ECM suite (Ecm), -1 none.
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
 ## "standard" or "xl" (XlEngine: 3 engine slots in each side torso).
 var engine_type := "standard"
@@ -76,12 +77,15 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis", "ammo:<weapon id>",
 ## "ammo:<weapon id>:cluster", "heat_sink", "jump_jet", "case", "hatchet", "sword",
-## "endo_steel", "ferro_fibrous", "targeting_computer"; "<item>*N" repeats an item N times.
+## "endo_steel", "ferro_fibrous", "targeting_computer", "guardian_ecm"; "<item>*N" repeats an item N times.
 func _add_item(loc: int, item: String, weapons: WeaponDb) -> void:
 	if item == "endo_steel" or item == "ferro_fibrous":
 		if not bulk_slots.has(loc):
 			bulk_slots[loc] = []
 		bulk_slots[loc].append(item)
+		return
+	if item == "guardian_ecm":
+		ecm_loc = loc
 		return
 	if item == "targeting_computer":
 		tc_loc = loc

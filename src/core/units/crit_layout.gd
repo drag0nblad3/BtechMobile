@@ -41,6 +41,9 @@ static func build(def: UnitDef) -> Array:
 		var m: Dictionary = def.melee[i]
 		for s in def.melee_slots(m["kind"]):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.MELEE, String(m["kind"]).capitalize(), i), def)
+	if def.ecm_loc >= 0:
+		for s in 2:
+			_place(out[def.ecm_loc], CritSlot.new(CritSlot.Kind.ECM, "Guardian ECM"), def)
 	if def.tc_loc >= 0:
 		for s in TargetingComputer.size(def):
 			_place(out[def.tc_loc], CritSlot.new(CritSlot.Kind.TARGETING, "Targeting Computer"), def)

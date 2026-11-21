@@ -46,7 +46,7 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.FIRE_DECLARED:
 			return _declared(s, d, level)
 		GameEvent.WEAPON_FIRED:
-			return _fired(s, d, level, seen)
+			return WeaponText.fired(s, d, level, seen)
 		GameEvent.PHYSICAL:
 			return _physical(s, d, level, seen)
 		GameEvent.INTENT:
@@ -146,38 +146,6 @@ static func _declared(s: GameState, d: Dictionary, level: int) -> String:
 		var aim := " aimed at the %s" % Location.name_of(sh["aim"]).to_lower() if sh.has("aim") else ""
 		parts.append("%s at %s%s (%d+)" % [sh["weapon"], _target(s, sh), aim, sh["need"]])
 	return "%s fires: %s." % [_u(s, d), ", ".join(parts)]
-
-
-static func _fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
-	var who := "%s %s -> %s" % [_u(s, d, "attacker_id"), d["weapon"], _target(s, d)]
-	if d.get("no_ammo", false):
-		return "%s: out of ammo." % who
-	var res := "HIT" if d["hit"] else "miss"
-	if d.get("shots", 1) > 1:
-		res += " (%d shots)" % d["shots"]
-	if d["missiles"] > 0:
-		var unit := "shots" if d.get("mode", "") == WeaponModes.ULTRA else (
-				"pellets" if d.get("mode", "") == WeaponModes.CLUSTER else "missiles")
-		res += ", %d %s" % [d["missiles"], unit]
-		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
-			res += " (Artemis +%d)" % d["cluster_bonus"]
-	if d.get("ams", false):
-		res += "; anti-missile fire shot some down (-4 to the cluster roll)" if level != ExplainLevel.OFF else ", AMS"
-	if d.get("streak_held", false) and level != ExplainLevel.OFF:
-		res += "; the Streak never locked on, so it held its missiles (no heat, no ammo used)"
-	if d.get("heat_added", 0) > 0:
-		res += ", +%d heat to the target" % d["heat_added"]
-	if d.has("aim_roll"):
-		res += "; aim roll %d: %s" % [d["aim_roll"], ("lands on the " + Location.name_of(d["aim"]).to_lower())
-				if d["aim_hit"] else "missed the aim, hit location rolled"]
-		if level == ExplainLevel.FULL:
-			res += " (aimed shots need 4+ on 1D6)"
-	if level == ExplainLevel.OFF:
-		return "%s: %s" % [who, res]
-	var t := "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res]
-	if d["need"] <= 2:
-		t += " (2 or less always hits)"
-	return t + ModsText.lines(d["mods"], level, seen)
 
 
 const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
