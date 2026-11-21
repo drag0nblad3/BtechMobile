@@ -4,9 +4,9 @@ extends Node3D
 ## real rules (HitTable + Damage on a live Unit) and shown with VxDamage,
 ## plus every animation hook. Separate from the Voxel Mech Lab.
 
-const MODELS := ["res://data/voxels/catapult.json", "res://data/voxels/hunchback.json",
-	"res://data/voxels/atlas.json", "res://data/voxels/wolverine.json",
-	"res://data/voxels/jenner.json"]
+const MODELS := ["res://data/voxels/atlas.json", "res://data/voxels/wolverine.json",
+	"res://data/voxels/jenner.json", "res://data/voxels/catapult.json",
+	"res://data/voxels/hunchback.json"]
 
 var mech: VxMech
 var unit: Unit
@@ -100,7 +100,7 @@ func _make_hud() -> void:
 	var top := VBoxContainer.new()
 	top.position = Vector2(16, 12)
 	_hud.add_child(top)
-	UiKit.label(top, "CLAUDE VOXEL TEST · %s" % mech.model.name, UiKit.SMALL)
+	UiKit.label(top, "HAND-SCULPTED VOXEL MECHS · %s" % mech.model.name, UiKit.SMALL)
 	info = UiKit.label(top, "", 16)
 	info.custom_minimum_size.x = 760
 	var rows := VBoxContainer.new()
