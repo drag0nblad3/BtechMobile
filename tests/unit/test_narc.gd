@@ -83,3 +83,25 @@ func test_ecm_and_standard_ammo_get_no_help() -> void:
 	l.weapons[0].mode = ""
 	check(not ToHitCalc.weapon(ws, l, l.weapons[0], w[3]).narc_homing, "standard missiles don't home")
 	check_eq(AmmoBin.new(WeaponDb.load_file().get_def("narc_beacon"), 0).explosion_damage(), 12, "6 pods x 2")
+
+
+func test_designs_carry_narc() -> void:
+	var db := UnitDb.load_dir()
+	var raven := Unit.new(9, db.get_def("raven_rvn3l"), 0, Vector2i.ZERO, 0)
+	check(raven.weapons.any(func(w: MountedWeapon) -> bool: return w.def.beacon), "Raven has a beacon")
+	var kto := Unit.new(9, db.get_def("kintaro_kto19"), 0, Vector2i.ZERO, 0)
+	check(kto.weapons.filter(func(w: MountedWeapon) -> bool: return w.narc_ammo).size() == 2, "both SRM racks can load Narc missiles")
+	check(db.get_def("hunchback_hbk4g_rac").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].rotary))
+
+
+func test_bot_tags_target_for_homing_missiles() -> void:
+	var v := _setup()
+	var n: Unit = v[1]
+	var t: Unit = v[3]
+	n.weapons.append(MountedWeapon.new(WeaponDb.load_file().get_def("medium_laser"), Location.LA, false))
+	var shots := [{"weapon": 1, "target_id": t.id}]
+	check(BotNarc.add_beacons(v[0], n, shots).contains("Narc pod"))
+	check_eq(shots.size(), 2)
+	Narc.attach(v[0], n, t, Location.CT)
+	var again := [{"weapon": 1, "target_id": t.id}]
+	check_eq(BotNarc.add_beacons(v[0], n, again), "", "already tagged")
