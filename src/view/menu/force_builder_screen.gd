@@ -70,6 +70,8 @@ func _build_options(parent: Control) -> void:
 				if bot_sides.has(side): bot_sides.erase(side)
 				else: bot_sides.append(side)
 				_refresh(), Vector2(100, 60))
+	UiKit.button(box, "Computer level", func():
+			GameSettings.set_ai_level(BotSkill.next(GameSettings.ai_level)); _refresh(), Vector2(0, 60))
 	var row3 := HBoxContainer.new()
 	box.add_child(row3)
 	for side in 2:
@@ -126,11 +128,13 @@ func _refresh() -> void:
 	_info.text += "Map: %s\nBudget: %d BV per side\nConditions: %s\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
 			builder.budget, weather, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
 			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
+	_info.text += "\nComputer level: %s" % BotSkill.name_of(GameSettings.ai_level)
 	if GameSettings.explain_level == ExplainLevel.FULL:
 		_info.text += "\n" + BvText.WHAT_IS_BV
 		_info.text += "\nSkill: better MechWarriors hit and keep their footing more often, and cost more BV (Veteran 3/4 is x%.2f, Elite 2/3 x%.2f, Green 5/6 x%.2f)." % [
 				BvSkill.multiplier(3, 4), BvSkill.multiplier(2, 3), BvSkill.multiplier(5, 6)]
 		_info.text += "\n" + ForceBuilder.FORMATION_TIP
+		_info.text += "\nComputer level: " + BotSkill.BLURBS[GameSettings.ai_level]
 		_info.text += "\nInitiative Die (optional): a side that keeps losing initiative gets +1 more on each roll until it wins."
 		if builder.mission_id not in ["", "random"]:
 			_info.text += "\n" + String(StandardMissions.info(builder.mission_id).get("summary", ""))

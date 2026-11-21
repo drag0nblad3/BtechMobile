@@ -3,20 +3,21 @@ extends RefCounted
 ## Bot weapon choice: best target by expected damage, then weapons in order
 ## of damage per heat while heat after the turn stays manageable.
 
-const HEAT_LIMIT := 4    ## Aim to end the turn at or below this (no MP loss).
-const HEAT_STRETCH := 8  ## Accept up to this if the target is nearly dead.
+## Heat limits come from BotSkill: a Veteran aims to end at 4 or less (no MP
+## loss) and accepts 8 when the target is nearly dead.
 
 
 ## Returns {shots: [{weapon, target_id}], twist, modes: {weapon index: mode}, reason}.
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	var best := {"shots": [], "twist": 0, "reason": "holds fire: no enemy in range and sight", "value": 0.0}
 	var original := u.torso_twist
-	for twist in ([0, -1, 1] if not u.prone and not u.def.quad else [0]):
+	var nearest := BotMove.nearest_enemy(state, u, u.coord)
+	for twist in ([0, -1, 1] if not u.prone and not u.def.quad and BotSkill.basic_tricks() else [0]):
 		u.torso_twist = twist
 		for e in state.units:
-			if e.side == u.side or e.destroyed:
+			if e.side == u.side or e.destroyed or (BotSkill.nearest_only() and e != nearest):
 				continue
-			for ultra in ([true, false] if BotModes.has_ultra(u) else [false]):
+			for ultra in ([true, false] if BotModes.has_ultra(u) and BotSkill.advanced_tricks() else [false]):
 				var before := BotModes.apply(state, u, e, ultra)
 				var p := _volley(state, u, e)
 				if p["value"] > best["value"]:
@@ -46,7 +47,7 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 			if ed > 0.0:
 				opts.append([ed, o])
 	opts.sort_custom(func(a, b): return a[0] / maxf(1.0, _heat(a[1]["weapon"])) > b[0] / maxf(1.0, _heat(b[1]["weapon"])))
-	var limit := HEAT_STRETCH if _fragile(e) else HEAT_LIMIT
+	var limit := BotSkill.heat_stretch() if _fragile(e) else BotSkill.heat_limit()
 	var shots := []
 	var idx := []
 	var total := 0.0

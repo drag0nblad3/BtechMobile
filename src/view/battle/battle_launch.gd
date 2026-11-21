@@ -11,6 +11,8 @@ static var pending: GameState = null
 static var bot_sides: Array = []
 ## Scenario file whose lessons to show in the next battle, "" for none.
 static var tutorial_path := ""
+## Computer skill (BotSkill.Level) for the next battle; -1 uses GameSettings.
+static var bot_level := -1
 
 
 static func take() -> GameState:
