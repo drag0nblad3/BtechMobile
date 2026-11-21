@@ -52,3 +52,9 @@ Coarse cell unions before the late Atlas shoulder correction: Atlas 14,541 → 1
 `previews/front_silhouette_geometry_276_295.png` is a direct **source-loft polygon-triangle** contact sheet with matched **front BEFORE and front AFTER** views emphasized, plus three-quarter, right-side and top-down AFTER views. There is no intermediate voxel-grid rasterization, no AI-generated approximate illustration, and no substitution with a stock/reference photograph. The polygon-only viewer does not Boolean-subtract `erase` operators; muzzle cavities are validated separately in coarse occupancy checks.
 
 No APK built, no merge. In-engine Godot CI required before approval.
+
+## Final visual-correction pass and delivered preview
+
+The initial matched frontal render revealed that the Wolverine feet became too triangular despite valid topology. Both mirrored WVR-6R feet were broadened at sole-transition y=4 (source span 7) and ankle-transition y=6 (source span 4), with explicit regression guards in `tests/unit/test_front_silhouette_p276_295.gd`. The final PNG was **re-rendered after this correction**, not reused from the earlier preview.
+
+The preview is five rows × three mech columns: identical-camera FRONT BEFORE, matched-camera FRONT AFTER (with bright contour outline), then THREE-QUARTER, RIGHT SIDE and TOP-DOWN from the final edited source. It is genuinely polygon-surface-based, with no voxel conversion. The PNG file is stored and verified at `previews/front_silhouette_geometry_276_295.png`. All three models' `subdivide` values remain 1. No APK was built and nothing was merged.
