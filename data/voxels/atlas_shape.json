@@ -4726,9 +4726,145 @@
       "name": "rl_knee_guard",
       "parent": "rl_shin",
       "mirror": "ll_knee_guard"
+    },
+    {
+      "name": "ll_hip_guard",
+      "loc": "LL",
+      "parent": "ll",
+      "pivot": [
+        -7,
+        24,
+        -6
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -10,
+                "polygon": [
+                  [
+                    -13,
+                    22
+                  ],
+                  [
+                    -11,
+                    19
+                  ],
+                  [
+                    -5,
+                    19
+                  ],
+                  [
+                    -3,
+                    22
+                  ],
+                  [
+                    -4,
+                    27
+                  ],
+                  [
+                    -6,
+                    29
+                  ],
+                  [
+                    -10,
+                    29
+                  ],
+                  [
+                    -13,
+                    26
+                  ]
+                ]
+              },
+              {
+                "at": -8,
+                "polygon": [
+                  [
+                    -13,
+                    22
+                  ],
+                  [
+                    -11,
+                    18
+                  ],
+                  [
+                    -5,
+                    18
+                  ],
+                  [
+                    -3,
+                    22
+                  ],
+                  [
+                    -4,
+                    27
+                  ],
+                  [
+                    -6,
+                    29
+                  ],
+                  [
+                    -10,
+                    29
+                  ],
+                  [
+                    -13,
+                    26
+                  ]
+                ]
+              },
+              {
+                "at": -5,
+                "polygon": [
+                  [
+                    -12,
+                    21
+                  ],
+                  [
+                    -10,
+                    18
+                  ],
+                  [
+                    -5,
+                    18
+                  ],
+                  [
+                    -4,
+                    22
+                  ],
+                  [
+                    -4,
+                    27
+                  ],
+                  [
+                    -6,
+                    28
+                  ],
+                  [
+                    -10,
+                    28
+                  ],
+                  [
+                    -12,
+                    26
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "form"
+        }
+      ]
+    },
+    {
+      "name": "rl_hip_guard",
+      "parent": "rl",
+      "mirror": "ll_hip_guard"
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod. Pass 7: a separate skull jaw and palms with close-in knuckles replace unarticulated mitten-shaped fists. Shape pass 9: larger flat-topped skull with pronounced brow, cheeks and angular jaw; rising tapered shoulder shells; athletic scale relative to Jenner and Wolverine. References AS7-D tabletop render and AS7-D fan CAD sculpture. Pass 10: visibly framed five-tube torso launcher; long beveled front kneecaps with a separate structural silhouette rather than amorphous circles. Pass 11: separate trapezoidal hip-and-upper-thigh shields with flat frontal slabs and a raised angular crest, matched to unpainted Atlas mini rather than adding generic leg bulk.",
   "muzzles": {
     "LT": [
       [
