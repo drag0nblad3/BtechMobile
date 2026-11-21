@@ -73,6 +73,8 @@ func test_equipment_fits_slots() -> void:
 			if m.get("artemis", false):
 				want += 1
 		want += def.ammo_mounts.size() + def.case_locs.size()
+		if def.tc_loc >= 0:
+			want += TargetingComputer.size(def)
 		for loc: int in def.bulk_slots:
 			want += def.bulk_slots[loc].size()
 		for m in def.melee:
@@ -86,7 +88,7 @@ func test_equipment_fits_slots() -> void:
 			for s: CritSlot in u.slots[loc]:
 				if s.kind in [CritSlot.Kind.WEAPON, CritSlot.Kind.AMMO, CritSlot.Kind.HEAT_SINK,
 						CritSlot.Kind.JUMP_JET, CritSlot.Kind.CASE, CritSlot.Kind.ARTEMIS, CritSlot.Kind.MELEE,
-						CritSlot.Kind.BULK]:
+						CritSlot.Kind.BULK, CritSlot.Kind.TARGETING]:
 					got += 1
 		check_eq(got, want, def.id + " every item has a critical slot")
 

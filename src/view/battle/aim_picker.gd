@@ -8,8 +8,8 @@ const ORDER := [-1, Location.HEAD, Location.CT, Location.LT, Location.RT,
 		Location.LA, Location.RA, Location.LL, Location.RL]
 
 
-static func available(target: Unit) -> bool:
-	return target != null and ToHitCalc.is_immobile(target)
+static func available(attacker: Unit, target: Unit) -> bool:
+	return target != null and (ToHitCalc.is_immobile(target) or TargetingComputer.working(attacker))
 
 
 ## The next location in ORDER that's still there.
@@ -29,7 +29,7 @@ static func apply(state: GameState, target: Unit, options: Array, aim: int) -> v
 	for o: Dictionary in options:
 		var th: ToHit = o["to_hit"]
 		if th.possible() and AimedShot.problem(state, o["weapon"], target, aim, th) == "":
-			AimedShot.adjust(th, aim)
+			AimedShot.adjust(th, aim, o["weapon"])
 
 
 ## Adds "aim" to shots at an aimed target.
@@ -46,7 +46,7 @@ static func wrap(panel: Control, target: Unit, aim: int, on_press: Callable) -> 
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var b := Button.new()
 	b.text = "Aim at: %s (tap to change)" % ("no location" if aim < 0 else Location.name_of(aim).to_lower())
-	b.tooltip_text = "%s can't dodge. Aim at one location: 4+ on 1D6 after a hit puts it there. Head shots lose the -4 and get +3." % Names.unit(target)
+	b.tooltip_text = "%s: aim at one location: 4+ on 1D6 after a hit puts it there. Head shots lose the -4 and get +3." % Names.unit(target)
 	b.custom_minimum_size = Vector2(0, 54)
 	b.add_theme_font_size_override("font_size", 19)
 	b.pressed.connect(on_press)

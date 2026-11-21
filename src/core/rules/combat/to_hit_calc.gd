@@ -71,6 +71,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if w.def.to_hit_mod != 0:
 		th.add(w.def.name, w.def.to_hit_mod, "%s is %s accurate than a standard weapon: %+d to hit." % [
 				w.def.name, "more" if w.def.to_hit_mod < 0 else "less", w.def.to_hit_mod])
+	TargetingComputer.add(th, attacker, w)
 	if WeaponModes.to_hit_mod(w) != 0:
 		th.add("cluster ammo", WeaponModes.to_hit_mod(w), "LB-X cluster rounds spread like a shotgun: -1 to hit, but each pellet only does 1 damage.")
 	add_conditions(th, state, attacker, target, los)

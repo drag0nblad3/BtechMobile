@@ -241,7 +241,7 @@ func _refresh() -> void:
 			var panel := AttackPanel.build("Weapons at " + Names.unit(target),
 				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode)
 			hud.show_side(AimPicker.wrap(panel, target, aims.get(target.id, -1), _next_aim)
-					if AimPicker.available(target) else panel)
+					if AimPicker.available(attacker, target) else panel)
 	else:
 		hud.set_tip(Advisor.physical(controller.state, attacker, target, level))
 		if not hud.sheet_open:
