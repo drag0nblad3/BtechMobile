@@ -7,6 +7,8 @@ extends RefCounted
 
 ## Average damage a weapon deals per shot taken (hit chance x damage).
 static func expected_damage(w: MountedWeapon, th: ToHit) -> float:
+	if th.narc_homing and w.def.is_cluster():
+		return th.chance() * ClusterTable.expected(w.def.missiles, Narc.CLUSTER_BONUS) * w.def.damage
 	return th.chance() * WeaponModes.expected_per_hit(w)
 
 

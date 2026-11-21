@@ -34,6 +34,8 @@ heat per building level that sets it alight.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
+- `beacon: true` (Narc): a hit attaches a homing pod instead of damage; `ammo_damage` overrides
+  the explosion damage per shot. Narc-equipped missiles are `ammo:<launcher>:narc`.
 - `rapid`: most shots in one attack (Ultra ACs 2, rotary ACs 6); `rotary: true` lets it pick
   1-6 shots and jam (`RotaryAc`).
 

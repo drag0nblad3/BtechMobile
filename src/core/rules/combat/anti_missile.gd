@@ -16,7 +16,7 @@ const PER_TURN := 2
 
 ## The AMS that would engage a missile hit from `attacker`, or null.
 static func engaging(target: Unit, attacker: Unit, w: MountedWeapon) -> MountedWeapon:
-	if w.def.type != "missile" or not target.pilot.conscious or target.shutdown:
+	if w.def.type != "missile" or w.def.beacon or not target.pilot.conscious or target.shutdown:
 		return null
 	for a in target.weapons:
 		if not a.def.ams or a.engaged >= PER_TURN or not target.can_fire(a):

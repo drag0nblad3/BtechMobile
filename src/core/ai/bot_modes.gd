@@ -21,6 +21,8 @@ static func apply(state: GameState, u: Unit, e: Unit, ultra: bool) -> Array[Stri
 			w.mode = WeaponModes.ULTRA if ultra and u.ammo_for(w.def) >= w.def.rapid else ""
 		elif w.def.lbx:
 			w.mode = _lbx(state, u, w, e)
+		elif w.narc_ammo:
+			w.mode = _narc(state, u, w, e)
 	return before
 
 
@@ -53,6 +55,14 @@ static func unjam_all(gc: GameController, u: Unit) -> String:
 		if w.jammed and not w.destroyed and RotaryAc.unjam_problem(u) == "" and gc.set_weapon_mode(u, i, RotaryAc.UNJAM):
 			names.append(w.def.name)
 	return "works to clear its jammed %s" % ", ".join(names) if not names.is_empty() else ""
+
+
+## Narc-equipped missiles when they home on a pod (or are all that's left).
+static func _narc(state: GameState, u: Unit, w: MountedWeapon, e: Unit) -> String:
+	var narc := u.ammo_for(w.def, Narc.KIND)
+	if narc > 0 and (u.ammo_for(w.def) == 0 or Narc.homing(state, u, e)):
+		return Narc.KIND
+	return ""
 
 
 static func _lbx(state: GameState, u: Unit, w: MountedWeapon, e: Unit) -> String:
