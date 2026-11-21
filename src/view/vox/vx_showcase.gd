@@ -11,6 +11,12 @@ const MODELS := [
 	"res://data/voxels/marauder.json",
 	"res://data/voxels/timber_wolf_shape.json",
 	"res://data/voxels/timber_wolf.json",
+	"res://data/voxels/warhammer_shape.json",
+	"res://data/voxels/warhammer.json",
+	"res://data/voxels/archer_shape.json",
+	"res://data/voxels/archer.json",
+	"res://data/voxels/shadow_hawk_shape.json",
+	"res://data/voxels/shadow_hawk.json",
 ]
 
 var mech: VxMech
