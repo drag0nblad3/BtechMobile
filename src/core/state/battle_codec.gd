@@ -9,6 +9,10 @@ static func pack(v: Variant) -> Variant:
 			return v
 		TYPE_STRING_NAME:
 			return String(v)
+		TYPE_VECTOR2:
+			return {"$": "v2", "x": v.x, "y": v.y}
+		TYPE_VECTOR3:
+			return {"$": "v3", "x": v.x, "y": v.y, "z": v.z}
 		TYPE_VECTOR2I:
 			return {"$": "v2i", "x": v.x, "y": v.y}
 		TYPE_VECTOR3I:
@@ -53,6 +57,8 @@ static func unpack(v: Variant, units: UnitDb, terrain: TerrainDb) -> Variant:
 	if not (v is Dictionary) or not v.has("$"):
 		return v
 	match String(v["$"]):
+		"v2": return Vector2(float(v["x"]), float(v["y"]))
+		"v3": return Vector3(float(v["x"]), float(v["y"]), float(v["z"]))
 		"v2i": return Vector2i(int(v["x"]), int(v["y"]))
 		"v3i": return Vector3i(int(v["x"]), int(v["y"]), int(v["z"]))
 		"color": return Color(String(v["hex"]))
