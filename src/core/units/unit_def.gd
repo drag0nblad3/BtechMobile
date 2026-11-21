@@ -27,8 +27,10 @@ var engine_type := "standard"
 ## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
 ## sinks, free CASE everywhere, lighter armor and targeting computers).
 var tech_base := "inner_sphere"
-## OmniMech (book p. 20): a construction feature; same rules in play.
+## OmniMech (book p. 20, OmniConfig): a construction feature; same rules in play.
 var omni := false
+var chassis := ""  ## OmniMech chassis id ("timber_wolf"), "" for others.
+var config := ""  ## OmniMech configuration ("Prime", "A"), "" for others.
 ## "standard" or "endo_steel"; armor "standard" or "ferro_fibrous". Their
 ## bulky slots are listed as equipment ("endo_steel", "ferro_fibrous").
 var structure_type := "standard"
@@ -62,6 +64,8 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.engine_type = d.get("engine_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
 	u.omni = bool(d.get("omni", false))
+	u.chassis = d.get("chassis", "")
+	u.config = d.get("config", "")
 	u.structure_type = d.get("structure_type", "standard")
 	u.armor_type = d.get("armor_type", "standard")
 	u.role = d.get("role", "")

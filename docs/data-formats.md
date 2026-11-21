@@ -67,7 +67,12 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
 - `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
   CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
-  targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`). `"omni": true` marks an OmniMech.
+  targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`).
+- OmniMechs (`OmniConfig`): one file per chassis with `"configs": [{"model": "Prime", "equipment": {...}, ...}]`.
+  The top level holds the fixed parts (engine, armor, structure, fixed `equipment` such as
+  endo/ferro slots); each config adds its pod `equipment` per location and may override any
+  other key (`heat_sinks`, `jump_mp`, `role`, `heat_sink_type`). Each config becomes design
+  `<id>_<model>` (`timber_wolf_prime`) with `omni`, `chassis` and `config` set.
 - The design must weigh its tonnage (test): structure 10%, engine by rating
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
   XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
