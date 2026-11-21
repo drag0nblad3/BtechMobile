@@ -11,7 +11,7 @@ extends RefCounted
 
 
 static func size_tons(def: UnitDef) -> float:
-	var eng := XlEngine.tons(DesignWeight.engine_tons(def.tonnage * def.walk_mp), def.is_xl())
+	var eng := XlEngine.tons(DesignWeight.engine_tons(def.tonnage * def.walk_mp), def.engine_type)
 	return ceilf(eng / 10.0 * 2.0) / 2.0
 
 

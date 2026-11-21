@@ -1,0 +1,81 @@
+{
+ "id": "ostwar_owr3m",
+ "name": "Ostwar",
+ "model": "OWR-3M",
+ "tonnage": 65,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 22,
+  "RT": 22,
+  "CT": 30,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "streak_srm4",
+   "light_ferro"
+  ],
+  "RA": [
+   "streak_srm4",
+   "light_ferro"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "er_medium_laser*2",
+   "ammo:streak_srm4",
+   "case",
+   "light_ferro"
+  ],
+  "RT": [
+   "lrm20+artemis",
+   "ammo:lrm20*3",
+   "case",
+   "light_ferro"
+  ],
+  "CT": [
+   "guardian_ecm"
+  ],
+  "HD": [
+   "light_ferro"
+  ],
+  "LL": [
+   "light_ferro"
+  ],
+  "RL": [
+   "light_ferro"
+  ]
+ },
+ "source": {
+  "mul_id": 2383,
+  "megamek": "data/mekfiles/meks/3085u/Cutting Edge/Ostwar OWR-3M.mtf",
+  "published": "RS:J",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Ostwar OWR-3M (ForcePack-Record-Sheets-Illician-Lancers-Command-Lance)",
+  "megamek_bv": 1557
+ },
+ "bv": 1557,
+ "sprite": "ostwar",
+ "role": "Brawler: built to slug it out at medium range. 2 Streak SRM 4s, 2 ER Medium Lasers, LRM 20; walks 4, runs 6."
+}

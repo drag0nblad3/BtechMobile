@@ -29,8 +29,10 @@ var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
 var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
 var probe_loc := -1
 var inert: Array[Dictionary] = []  ## [{kind, loc}] of InertGear.
-## "standard" or "xl" (XlEngine: 3 engine slots in each side torso, 2 if Clan).
+## "standard", "xl", "light" or "compact" (XlEngine); gyro "standard", "xl",
+## "compact" or "heavy_duty" (Gyro).
 var engine_type := "standard"
+var gyro_type := "standard"
 ## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
 ## sinks, free CASE everywhere, lighter armor and targeting computers).
 var tech_base := "inner_sphere"
@@ -39,8 +41,8 @@ var omni := false
 var quad := false  ## Four legs (book p. 238): LA/RA are the front legs (Location).
 var chassis := ""  ## OmniMech chassis id ("timber_wolf"), "" for others.
 var config := ""  ## OmniMech configuration ("Prime", "A"), "" for others.
-## "standard" or "endo_steel"; armor "standard" or "ferro_fibrous". Their
-## bulky slots are listed as equipment ("endo_steel", "ferro_fibrous").
+## "standard" or "endo_steel"; armor "standard", "ferro_fibrous",
+## "light_ferro" or "heavy_ferro". Their bulky slots are listed as equipment.
 var structure_type := "standard"
 var armor_type := "standard"
 var role: String = ""    ## One-line tactical summary for the force builder.
@@ -72,6 +74,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.engine_type = d.get("engine_type", "standard")
+	u.gyro_type = d.get("gyro_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
 	u.omni = bool(d.get("omni", false))
 	u.quad = bool(d.get("quad", false))

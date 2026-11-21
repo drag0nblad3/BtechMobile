@@ -1,0 +1,82 @@
+{
+ "id": "argus_ags5d",
+ "name": "Argus",
+ "model": "AGS-5D",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 21,
+  "RT": 21,
+  "CT": 30,
+  "HD": 9,
+  "LL": 28,
+  "RL": 28
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "streak_srm6*2",
+   "endo_steel*6"
+  ],
+  "RA": [
+   "heavy_ppc",
+   "light_ferro*6"
+  ],
+  "LT": [
+   "medium_laser",
+   "ammo:streak_srm6*2",
+   "masc",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "medium_laser",
+   "targeting_computer",
+   "endo_steel",
+   "light_ferro"
+  ],
+  "HD": [
+   "c3_slave"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5683,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Argus AGS-5D.mtf",
+  "published": "RS:3067u,RSFP:SLDF2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Argus AGS-5D (ForcePack-Record-Sheets-Second-Star-League-Assault-Lance)",
+  "megamek_bv": 2065
+ },
+ "bv": 2065,
+ "sprite": "argus",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Streak SRM 6s, 2 Medium Lasers, Heavy PPC; walks 5, runs 8."
+}

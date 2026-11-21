@@ -74,8 +74,12 @@ static func text(u: Unit) -> String:
 		tech.append("%s (%s)" % [InertGear.KINDS[g["kind"]]["name"], InertGear.KINDS[g["kind"]]["why"]])
 	if d.tc_loc >= 0:
 		tech.append("targeting computer%s" % (" (destroyed)" if u.tc_lost else ""))
-	if d.armor_type == "ferro_fibrous":
-		tech.append("ferro-fibrous armor")
+	if d.armor_type != "standard":
+		tech.append({"ferro_fibrous": "ferro-fibrous", "light_ferro": "light ferro-fibrous", "heavy_ferro": "heavy ferro-fibrous"}.get(d.armor_type, d.armor_type) + " armor")
+	if d.engine_type in ["light", "compact"]:
+		tech.append("light engine (survives losing one side torso)" if d.engine_type == "light" else "compact engine")
+	if d.gyro_type != "standard":
+		tech.append({"xl": "XL gyro", "compact": "compact gyro", "heavy_duty": "heavy-duty gyro (destroyed by its 4th hit)"}[d.gyro_type])
 	for p: Dictionary in u.narc_pods:
 		if not u.is_location_destroyed(p["loc"]):
 			tech.append("Narc pod on its %s (%s)" % [Location.code_for(d, p["loc"]), Names.side(p["side"])])
