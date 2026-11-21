@@ -275,7 +275,7 @@ func _heat_and_end() -> void:
 	_set_phase(Phase.Kind.END)
 	EndPhase.run(state, dice, _emit_cb)
 	HiddenUnits.reveal_burning(state, _emit_cb)
-	MissionFlow.end_phase(state, _emit_cb)
+	MissionFlow.end_phase(state, dice, _emit_cb)
 	if not _check_game_over(true):
 		start_turn()
 

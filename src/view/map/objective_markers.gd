@@ -5,6 +5,7 @@ extends RefCounted
 
 const POST := Color(1.0, 0.8, 0.2, 0.95)
 const AREA := Color(1.0, 0.8, 0.2, 0.18)
+const INTEL := Color(0.3, 0.9, 1.0, 0.95)  ## Intel counters to scan (Urban Sweep).
 
 
 static func build(state: GameState) -> Node3D:
@@ -17,6 +18,7 @@ static func build(state: GameState) -> Node3D:
 	var plate_mesh := HexMesh.prism(HexLayout.HEX_SIZE * 0.9)
 	var post := _material(POST)
 	var plate := _material(AREA)
+	var intel := _material(INTEL)
 	for o in m.objectives:
 		for c: Vector2i in state.map.coords():
 			if not o.in_radius(c):
@@ -25,7 +27,10 @@ static func build(state: GameState) -> Node3D:
 			root.add_child(_block(plate_mesh, plate, top + Vector3(0, 0.01, 0), 0.02))
 		var t := state.map.get_tile(o.coord)
 		if t != null:
-			root.add_child(_block(post_mesh, post, HexLayout.tile_top(t), HexLayout.LEVEL_HEIGHT * 1.5))
+			var top := HexLayout.tile_top(t)
+			if t.building != null:  # above the roof so it stays visible
+				top.y += HexLayout.LEVEL_HEIGHT * t.building.height
+			root.add_child(_block(post_mesh, intel if o.kind == "intel" else post, top, HexLayout.LEVEL_HEIGHT * 1.5))
 	return root
 
 

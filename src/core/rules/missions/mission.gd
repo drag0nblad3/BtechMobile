@@ -7,7 +7,7 @@ extends RefCounted
 ##    "forced_withdrawal": true, "scoring": "each" | "pairs" | "threshold",
 ##    "objectives": [{"hex": "0809", "radius": 2, "vp": 3}],
 ##    "home_edges": ["south", "north"], "exit": "home" | "enemy_home",
-##    "exit_from_turn": 6}
+##    "exit_from_turn": 6, "scan": "" | "units" | "intel"}
 
 var id := ""
 var name := ""
@@ -26,6 +26,8 @@ var home_edges: Array[String] = ["south", "north"]
 ## Edge a unit may deliberately leave by to score ("home", "enemy_home"), or "".
 var exit := ""
 var exit_from_turn: int = 1
+## What units scan in the End Phase (Scanning): "", "units" or "intel".
+var scan := ""
 var summary := ""  ## Plain-words goal for the player.
 var notes: Array = []  ## Setup notes for the briefing (sides, complications).
 ## This side wins initiative automatically for the first `initiative_turns` turns (Ambush).
@@ -49,6 +51,7 @@ static func from_dict(d: Dictionary) -> Mission:
 		m.home_edges.assign(d["home_edges"])
 	m.exit = d.get("exit", "")
 	m.exit_from_turn = int(d.get("exit_from_turn", 1))
+	m.scan = d.get("scan", "")
 	m.summary = d.get("summary", "")
 	m.initiative_side = int(d.get("initiative_side", -1))
 	m.initiative_turns = int(d.get("initiative_turns", 0))

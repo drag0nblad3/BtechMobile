@@ -11,16 +11,18 @@ static func start_turn(state: GameState, dice: Dice, emit: Callable) -> void:
 		return
 	Crippled.update(state, dice, emit)
 	ForcedWithdrawal.start_turn(state)
+	Scanning.start_turn(state)
 	if ms.def.random_duration and ms.last_turn == 0 and RandomDuration.roll(state, dice, emit):
 		ms.last_turn = state.turn
 
 
-## After the End Phase: surrenders, then objective Victory Points.
-static func end_phase(state: GameState, emit: Callable) -> void:
+## After the End Phase: surrenders, scans, then objective Victory Points.
+static func end_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 	var ms := state.mission
 	if ms.def == null:
 		return
 	ForcedWithdrawal.end_phase(state, emit)
+	Scanning.end_phase(state, dice, emit)
 	if ms.def.scoring == "":
 		return
 	for side in state.sides():
@@ -60,6 +62,8 @@ static func exit_kind(state: GameState, u: Unit, c: Vector2i) -> String:
 		return ""
 	if ForcedWithdrawal.withdrawing(state, u) and MapEdges.on_edge(state.map, c, m.home_edge(u.side)):
 		return "withdraw"
+	if m.scan == "units" and int(state.mission.scans.get(u.id, 0)) == 0:
+		return ""  # Sensor Check: only 'Mechs with readings may leave to score
 	if m.exit != "" and state.turn >= m.exit_from_turn:
 		var edge := m.home_edge(u.side) if m.exit == "home" else m.home_edge(1 - u.side)
 		if MapEdges.on_edge(state.map, c, edge):
@@ -74,8 +78,11 @@ static func leave(state: GameState, emit: Callable, u: Unit) -> void:
 	u.destroyed = true
 	u.destroyed_reason = "left the battlefield"
 	u.destroyed_announced = true
-	emit.call(GameEvent.UNIT_EXITED, {"unit_id": u.id, "kind": kind,
-			"vp": VictoryPoints.unit_value(u) if kind == "mission" else ceili(VictoryPoints.unit_value(u) / 2.0)})
+	var vp := VictoryPoints.unit_value(u) if kind == "mission" else ceili(VictoryPoints.unit_value(u) / 2.0)
+	if kind == "mission" and state.mission.def.scan == "units":  # Sensor Check: 1 VP per scan
+		vp = int(state.mission.scans.get(u.id, 0))
+		state.mission.add_vp(u.side, vp)
+	emit.call(GameEvent.UNIT_EXITED, {"unit_id": u.id, "kind": kind, "vp": vp})
 
 
 ## {} while the battle goes on, else {winner, why, scores?}.

@@ -32,9 +32,25 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 				var t := "Random duration: rolled %d (ends on %d or less): %s." % [d["roll"], d["ends_on"],
 						"this is the last turn" if d["last"] else "the battle goes on"]
 				return t if level != ExplainLevel.OFF or d["last"] else ""
+		GameEvent.SCAN:
+			return scan(d, s, level)
 		GameEvent.GAME_OVER:
 			return game_over(d)
 	return ""
+
+
+static func scan(d: Dictionary, s: GameState, level: int) -> String:
+	var who := Names.unit(s.unit_by_id(d["unit_id"]))
+	var what := Names.unit(s.unit_by_id(d["target_id"])) if d.has("target_id") else "the building at %s" % Hex.label(d["hex"])
+	var t := "%s scans %s: rolled %d, needed %d, %s." % [who, what, d["roll"], d["need"], "got a reading" if d["ok"] else "nothing useful"]
+	if d.has("count"):
+		t += " (%d scan%s so far)" % [d["count"], "" if d["count"] == 1 else "s"]
+	if d.has("intel_roll"):
+		t += " Intel roll %d: %s" % [d["intel_roll"], "mission-critical intel, +%d VP (total %d)." % [d["vp"], d["total"]]
+				if d.has("vp") else "nothing there."]
+	if level == ExplainLevel.FULL and not d["ok"]:
+		t += " A scan is a sensor check at +3: the pilot's piloting skill, worse with damaged sensors."
+	return t if level != ExplainLevel.OFF or d.has("vp") else ""
 
 
 static func game_over(d: Dictionary) -> String:

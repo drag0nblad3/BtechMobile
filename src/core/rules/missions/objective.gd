@@ -8,6 +8,9 @@ var coord: Vector2i
 var radius: int = 0
 var owner: int = -1
 var vp: int = 1
+var kind := ""  ## "" = held for VP; "intel" = scanned for intel (Urban Sweep).
+var found := false  ## Intel found: the counter leaves play next turn (Scanning).
+var claimed := {}  ## side -> true once that side scored its intel.
 
 
 static func make(c: Vector2i, control_radius: int = 0, owner_side: int = -1, value: int = 1) -> Objective:
@@ -21,7 +24,9 @@ static func make(c: Vector2i, control_radius: int = 0, owner_side: int = -1, val
 
 ## {"hex": "XXYY", "radius": 1, "owner": 0, "vp": 1}
 static func from_dict(d: Dictionary) -> Objective:
-	return make(Hex.from_label(d["hex"]), int(d.get("radius", 0)), int(d.get("owner", -1)), int(d.get("vp", 1)))
+	var o := make(Hex.from_label(d["hex"]), int(d.get("radius", 0)), int(d.get("owner", -1)), int(d.get("vp", 1)))
+	o.kind = d.get("kind", "")
+	return o
 
 
 func in_radius(c: Vector2i) -> bool:

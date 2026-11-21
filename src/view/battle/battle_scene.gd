@@ -18,6 +18,7 @@ var sheet_unit: Unit
 var bots: BotDriver
 var tutorial: Tutorial
 var lessons: LessonCard
+var objectives: Node3D
 
 
 func _ready() -> void:
@@ -47,7 +48,8 @@ func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
 	map_view.build(state.map)
-	add_child(ObjectiveMarkers.build(state))
+	objectives = ObjectiveMarkers.build(state)
+	add_child(objectives)
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
 	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
@@ -185,6 +187,11 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
+		GameEvent.INITIATIVE:
+			if s.mission.def != null and s.mission.def.scan == "intel":  # found intel leaves play
+				objectives.queue_free()
+				objectives = ObjectiveMarkers.build(s)
+				add_child(objectives)
 		GameEvent.UNIT_REVEALED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
 			units_layer.refresh_unit(e.data["unit_id"])
