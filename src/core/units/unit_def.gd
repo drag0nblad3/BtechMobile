@@ -3,8 +3,8 @@ extends RefCounted
 ## Static unit design (one variant), loaded from data/units/<id>.json.
 ## Data only: runtime damage lives in Unit. See docs/data-formats.md.
 
-## Engine-integral heat sinks that take no critical slots.
-## TODO(rules): really engine rating / 25; 10 for every 'Mech here.
+## Heat sinks that come free with every engine (no weight, no slots). A big
+## engine holds more without slots (DesignWeight.engine_sink_capacity).
 const ENGINE_HEAT_SINKS := 10
 
 var id: String

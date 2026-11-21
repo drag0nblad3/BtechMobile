@@ -42,6 +42,13 @@ static func ferro_mult(def: UnitDef) -> float:
 	return ClanTech.FERRO_MULT if def.is_clan() else FERRO_MULT
 
 
+## Heat sinks the engine can hold without using critical slots: rating / 25
+## (the first 10 also weigh nothing). Designs list the rest as items.
+## TODO(rules): construction data, not in the Core Rulebook.
+static func engine_sink_capacity(def: UnitDef) -> int:
+	return maxi(UnitDef.ENGINE_HEAT_SINKS, def.tonnage * def.walk_mp / 25)
+
+
 static func total(def: UnitDef) -> float:
 	var t := 0.0
 	for v: float in breakdown(def).values():
