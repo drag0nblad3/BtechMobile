@@ -48,6 +48,9 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 		return false
 	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone, smash):
 		return false
+	if then_prone and unit.prone:
+		MobileObjectives.drop_prone(state, dice, _emit_cb, unit)
+	MobileObjectives.after_move(state, _emit_cb, unit)
 	if leave and not unit.destroyed and not unit.prone and unit.coord == MoveOptions.coord_of(target):
 		MissionFlow.leave(state, _emit_cb, unit)
 	if state.point_blank.is_empty():
@@ -97,6 +100,7 @@ func go_prone(unit: Unit) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone:
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
+	MobileObjectives.drop_prone(state, dice, _emit_cb, unit)
 	_unit_done()
 	return true
 
@@ -203,6 +207,7 @@ func _done_in_phase(u: Unit) -> bool:
 
 
 func _unit_done() -> void:
+	MobileObjectives.check(state, dice, _emit_cb)
 	if _check_game_over():
 		return
 	state.order_index += 1
@@ -253,20 +258,27 @@ func _advance_to_side_with_work() -> void:
 func _end_phase() -> void:
 	match state.phase:
 		Phase.Kind.MOVEMENT:
-			Psr.end_of_phase(state, dice, _emit_cb)
+			_phase_rolls()
 			if not _check_game_over():
 				_begin_phase(Phase.Kind.WEAPON_ATTACK)
 		Phase.Kind.WEAPON_ATTACK:
 			WeaponFire.resolve_declared(state, dice, _emit_cb)
 			HiddenUnits.reveal_burning(state, _emit_cb)
-			Psr.end_of_phase(state, dice, _emit_cb)
+			_phase_rolls()
 			if not _check_game_over():
 				_begin_phase(Phase.Kind.PHYSICAL_ATTACK)
 		Phase.Kind.PHYSICAL_ATTACK:
 			PhysicalPhase.resolve(state, dice, _emit_cb)
-			Psr.end_of_phase(state, dice, _emit_cb)
+			_phase_rolls()
 			if not _check_game_over():
 				_heat_and_end()
+
+
+## End-of-phase piloting rolls, and carriers hanging on to objectives.
+func _phase_rolls() -> void:
+	MobileObjectives.end_of_phase(state, dice, _emit_cb)
+	Psr.end_of_phase(state, dice, _emit_cb)
+	MobileObjectives.check(state, dice, _emit_cb)
 
 
 func _heat_and_end() -> void:

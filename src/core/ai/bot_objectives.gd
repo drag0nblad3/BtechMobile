@@ -12,16 +12,30 @@ const SCAN_WEIGHT := 2.0  ## Ending within scanning range of something worth sca
 ## Extra score for ending at `c`, and a phrase for the reason ("" if none).
 static func bonus(state: GameState, u: Unit, c: Vector2i) -> Array:
 	var m := state.mission.def
-	if m != null and m.scan != "" and not state.mission.crippled.has(u.id):
+	if m == null or state.mission.crippled.has(u.id):
+		return [0.0, ""]
+	var held := MobileObjectives.carried_by(state, u)
+	if held != null:
+		return [HOLD_WEIGHT, "carrying the objective (it holds it wherever it goes)"]
+	if m.scan in ["units", "intel"]:
 		return _scan_bonus(state, u, c)
-	if m == null or m.objectives.is_empty() or m.scoring == "" or state.mission.crippled.has(u.id):
+	if m.objectives.is_empty() or m.scoring == "":
 		return [0.0, ""]
 	var best := 1 << 20
 	for o in m.objectives:
+		if o.destroyed or o.carrier_id >= 0:
+			continue
+		if o.potential:  # Objective Raid: scan it first
+			if Hex.distance(c, o.coord) <= Scanning.RANGE:
+				return [SCAN_WEIGHT, "to scan the possible objective at %s" % Hex.label(o.coord)]
+			best = mini(best, Hex.distance(c, o.coord) - Scanning.RANGE)
+			continue
 		if o.in_radius(c):
-			return [HOLD_WEIGHT * maxi(1, o.vp), "to hold the objective at %s" % Hex.label(o.coord)]
+			var grab := o.mobile and c == o.coord and MobileObjectives.free_hand(u) >= 0
+			return [HOLD_WEIGHT * maxi(1, o.vp) + (2.0 if grab else 0.0),
+					("to pick up the objective at %s" if grab else "to hold the objective at %s") % Hex.label(o.coord)]
 		best = mini(best, Hex.distance(c, o.coord) - o.radius)
-	return [-PULL * best, ""]
+	return [0.0 if best == 1 << 20 else -PULL * best, ""]
 
 
 ## Being in scanning range at the End Phase (Scanning).

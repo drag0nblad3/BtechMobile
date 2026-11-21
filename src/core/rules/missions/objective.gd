@@ -11,6 +11,11 @@ var vp: int = 1
 var kind := ""  ## "" = held for VP; "intel" = scanned for intel (Urban Sweep).
 var found := false  ## Intel found: the counter leaves play next turn (Scanning).
 var claimed := {}  ## side -> true once that side scored its intel.
+var potential := false  ## Not yet known to be real: scan it to find out (Objective Raid).
+var fragile := false  ## Breaks on 1-4 when knocked about (FragileObjectives).
+var mobile := false  ## Can be picked up and carried (MobileObjectives).
+var carrier_id := -1  ## Unit carrying it, or -1.
+var destroyed := false
 
 
 static func make(c: Vector2i, control_radius: int = 0, owner_side: int = -1, value: int = 1) -> Objective:
@@ -26,6 +31,9 @@ static func make(c: Vector2i, control_radius: int = 0, owner_side: int = -1, val
 static func from_dict(d: Dictionary) -> Objective:
 	var o := make(Hex.from_label(d["hex"]), int(d.get("radius", 0)), int(d.get("owner", -1)), int(d.get("vp", 1)))
 	o.kind = d.get("kind", "")
+	o.potential = bool(d.get("potential", false))
+	o.fragile = bool(d.get("fragile", false))
+	o.mobile = bool(d.get("mobile", false))
 	return o
 
 

@@ -34,6 +34,8 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 				return t if level != ExplainLevel.OFF or d["last"] else ""
 		GameEvent.SCAN:
 			return scan(d, s, level)
+		GameEvent.OBJECTIVE:
+			return objective(d, s, level)
 		GameEvent.GAME_OVER:
 			return game_over(d)
 	return ""
@@ -45,12 +47,34 @@ static func scan(d: Dictionary, s: GameState, level: int) -> String:
 	var t := "%s scans %s: rolled %d, needed %d, %s." % [who, what, d["roll"], d["need"], "got a reading" if d["ok"] else "nothing useful"]
 	if d.has("count"):
 		t += " (%d scan%s so far)" % [d["count"], "" if d["count"] == 1 else "s"]
+	if d.has("confirm_roll"):
+		t += " Confirmation roll %d: %s" % [d["confirm_roll"], "it's a real objective!" if d["confirmed"] else "a decoy, removed from the map."]
 	if d.has("intel_roll"):
 		t += " Intel roll %d: %s" % [d["intel_roll"], "mission-critical intel, +%d VP (total %d)." % [d["vp"], d["total"]]
 				if d.has("vp") else "nothing there."]
 	if level == ExplainLevel.FULL and not d["ok"]:
 		t += " A scan is a sensor check at +3: the pilot's piloting skill, worse with damaged sensors."
-	return t if level != ExplainLevel.OFF or d.has("vp") else ""
+	return t if level != ExplainLevel.OFF or d.has("vp") or d.has("confirm_roll") else ""
+
+
+static func objective(d: Dictionary, s: GameState, level: int) -> String:
+	var where := Hex.label(d["hex"])
+	match d["kind"]:
+		"picked_up":
+			var t := "%s picks up the objective at %s." % [Names.unit(s.unit_by_id(d["unit_id"])), where]
+			if level == ExplainLevel.FULL:
+				t += " It holds it wherever it goes, but that arm can't shoot or punch, and taking damage may shake it loose."
+			return t
+		"dropped":
+			return "The objective at %s is dropped: %s." % [where, d["why"]]
+		"pushed":
+			return "Another counter landed on it: the objective is pushed to %s." % where if level != ExplainLevel.OFF else ""
+		"fragile":
+			var t := "Fragile objective at %s (%s): rolled %d, %s." % [where, d["why"], d["roll"], "destroyed!" if d["broke"] else "it survives"]
+			if level == ExplainLevel.FULL:
+				t += " Fragile objectives break on 1-4."
+			return t
+	return ""
 
 
 static func game_over(d: Dictionary) -> String:

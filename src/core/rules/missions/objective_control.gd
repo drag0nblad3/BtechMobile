@@ -6,6 +6,11 @@ extends RefCounted
 
 
 static func controller(state: GameState, o: Objective) -> int:
+	if o.destroyed:
+		return -1
+	var c := MobileObjectives.carrier(state, o)
+	if c != null:  # a carrier holds what it carries, even off the map
+		return c.side if not c.destroyed or state.mission.exited.has(c.id) else -1
 	var counts := {}
 	for u in state.units:
 		if counts_for_control(state, u) and o.in_radius(u.coord):
@@ -38,7 +43,7 @@ static func score(state: GameState, side: int) -> int:
 	var held_enemy := 0
 	var vp := 0
 	for o in m.objectives:
-		if controller(state, o) != side:
+		if o.potential or controller(state, o) != side:  # only confirmed objectives score
 			continue
 		held += 1
 		vp += o.vp

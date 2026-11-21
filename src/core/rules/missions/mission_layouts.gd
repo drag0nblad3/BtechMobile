@@ -27,6 +27,8 @@ static func apply(kind: String, out: Dictionary, map: BattleMap, dice: Dice) -> 
 			out["zones"][dfd] = [{"near": Hex.label(mid), "radius": 2}, out["zones"][dfd][0]]
 			out["notes"].append("%s attacks; half of %s starts cut off around %s." % [
 					Names.side(att), Names.side(dfd), Hex.label(mid)])
+		"objective_raid":
+			ObjectiveRaid.place(m, map, dice, out["notes"])
 		"urban_sweep":
 			UrbanSweep.place(m, map)
 			out["notes"].append("Six buildings may hold intel: scan them from within 2 hexes.")

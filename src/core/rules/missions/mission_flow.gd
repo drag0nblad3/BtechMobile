@@ -23,6 +23,7 @@ static func end_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 		return
 	ForcedWithdrawal.end_phase(state, emit)
 	Scanning.end_phase(state, dice, emit)
+	FragileObjectives.end_phase(state, dice, emit)  # broken counters score nothing
 	if ms.def.scoring == "":
 		return
 	for side in state.sides():

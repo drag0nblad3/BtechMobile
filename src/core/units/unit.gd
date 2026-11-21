@@ -37,6 +37,7 @@ var flooded: Dictionary = {}  ## Location -> true once a hull breach floods it (
 var ecm_lost: bool = false  ## ECM suite destroyed by a critical hit.
 var tc_lost: bool = false  ## Targeting computer destroyed by a critical hit.
 var narc_pods: Array[Dictionary] = []  ## Narc homing pods on it: [{side, loc, turn}] (Narc).
+var carry_arm: int = -1  ## Arm holding a mobile objective (MobileObjectives), or -1.
 var on_roof: bool = false  ## Standing on the roof of its hex's building (Roofs).
 var shutdown: bool = false
 var voluntary_shutdown: bool = false  ## Shut down by choice: stays down until restarted (VoluntaryShutdown).

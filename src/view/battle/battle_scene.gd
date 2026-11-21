@@ -187,11 +187,8 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
-		GameEvent.INITIATIVE:
-			if s.mission.def != null and s.mission.def.scan == "intel":  # found intel leaves play
-				objectives.queue_free()
-				objectives = ObjectiveMarkers.build(s)
-				add_child(objectives)
+		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:
+			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
 			units_layer.refresh_unit(e.data["unit_id"])
@@ -201,6 +198,8 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			_update_status()
 			if e.type == GameEvent.ACTIVE_SIDE:
+				_rebuild_objectives()  # carried counters move with their 'Mechs
+			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
 		GameEvent.BUILDING:
 			if e.data["kind"] in ["collapsed", "fire"]:
@@ -209,6 +208,14 @@ func _on_event(e: GameEvent) -> void:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF))
 			attacks.clear()
 			movement.clear_selection()
+
+
+func _rebuild_objectives() -> void:
+	if controller.state.mission.def == null or controller.state.mission.def.objectives.is_empty() and objectives.get_child_count() == 0:
+		return
+	objectives.queue_free()
+	objectives = ObjectiveMarkers.build(controller.state)
+	add_child(objectives)
 
 
 func _update_status() -> void:

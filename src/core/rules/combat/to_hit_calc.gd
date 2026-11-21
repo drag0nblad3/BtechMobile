@@ -18,6 +18,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = "%s can't fire (%s)" % [w.def.name, "jammed" if w.jammed else
 				("no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed")]
 		return th
+	if attacker.carry_arm >= 0 and w.loc == attacker.carry_arm:
+		th.impossible = "%s is in the arm carrying the objective" % w.def.name
+		return th
 	var prone_why := ProneFire.blocked(attacker, w)
 	if prone_why != "":
 		th.impossible = prone_why

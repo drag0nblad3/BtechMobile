@@ -5,7 +5,8 @@ extends RefCounted
 ## hit) at +3. What a scan is worth depends on the mission (`Mission.scan`):
 ## "units" (Sensor Check: enemy 'Mechs, counted per scanning 'Mech) or
 ## "intel" (Urban Sweep: objective counters in buildings; a scan that finds
-## intel on 4+ scores 2 VP, once per side and counter).
+## intel on 4+ scores 2 VP, once per side and counter) or "potential"
+## (Objective Raid: a good scan confirms a counter on 4+, else it's removed).
 ## TODO(rules): the scan target is picked automatically (the most useful
 ## one in range); active probes and stealth armor aren't in the game.
 
@@ -13,6 +14,7 @@ const RANGE := 2
 const MOD := 3
 const INTEL_ROLL := 4
 const INTEL_VP := 2
+const CONFIRM_ROLL := 4  ## Potential objectives: 4+ on 1D6 after a good scan makes it real.
 
 
 ## Scan target number for `u`.
@@ -37,7 +39,11 @@ static func pick(state: GameState, u: Unit) -> Dictionary:
 					best = e
 		return {"unit": best} if best else {}
 	for o in m.objectives:
-		if o.kind == "intel" and not o.claimed.has(u.side) and sees(state, u, o.coord):
+		if o.destroyed or not sees(state, u, o.coord):
+			continue
+		if m.scan == "intel" and o.kind == "intel" and not o.claimed.has(u.side):
+			return {"objective": o}
+		if m.scan == "potential" and o.potential:
 			return {"objective": o}
 	return {}
 
@@ -58,6 +64,8 @@ static func end_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 	if m == null or m.scan == "":
 		return
 	for u in state.units:
+		if u.destroyed:
+			continue
 		var t := pick(state, u)
 		if t.is_empty():
 			continue
@@ -73,7 +81,12 @@ static func end_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 		else:
 			var o: Objective = t["objective"]
 			data["hex"] = o.coord
-			if ok:
+			if ok and m.scan == "potential":
+				data["confirm_roll"] = dice.d6()
+				o.potential = data["confirm_roll"] < CONFIRM_ROLL
+				o.destroyed = o.potential  # a dud is taken off the map
+				data["confirmed"] = not o.destroyed
+			elif ok:
 				data["intel_roll"] = dice.d6()
 				if data["intel_roll"] >= INTEL_ROLL:
 					o.claimed[u.side] = true
