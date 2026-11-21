@@ -23,6 +23,9 @@ heat per building level that sets it alight.
 - Optional `"fires": ["1005"]` sets hexes burning from the start.
 - Optional `"buildings": [{"hex": "0703", "type": "medium", "height": 2}]` puts a building
   of that class, `height` levels tall, on a hex. A collapsed building leaves rubble.
+- Optional `"bridges": [{"hexes": ["0909", "0910"], "type": "medium", "level": 0}]`: one entry
+  per bridge, its deck at `level` over those hexes (default: the highest level or water surface
+  under it; class default medium, as the book says). Hexes keep their own terrain underneath.
 
 ## `data/map_themes.json`
 Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each entry:

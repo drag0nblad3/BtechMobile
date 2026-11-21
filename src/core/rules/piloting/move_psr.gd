@@ -35,7 +35,7 @@ static func action_rolls(state: GameState, u: Unit, path: Array[Vector3i], from:
 			if backward and MoveCost.level_change(src, dst) > 0:
 				out.append({"index": i, "reason": "backward level change", "mod": 0, "levels": 0,
 						"back": dst.floor_level() > src.floor_level()})
-			if mode == MoveMode.Kind.RUN and dst.is_water():
+			if mode == MoveMode.Kind.RUN and Bridges.wet(src, dst):
 				out.append({"index": i, "reason": "running into depth %d water" % dst.depth,
 						"mod": 0, "levels": 0, "back": false})
 			if dst.terrain.id == "rubble":

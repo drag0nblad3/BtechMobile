@@ -27,6 +27,7 @@ func build(battle_map: BattleMap) -> void:
 	add_child(WoodsProps.build(map))
 	add_child(GroundScatter.build(map))
 	add_child(WaterSurfaces.build(map))
+	add_child(BridgeProps.build(map))
 	buildings = BuildingProps.build(map, building_scars)
 	add_child(buildings)
 	add_child(FireProps.build(map))

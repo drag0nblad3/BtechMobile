@@ -21,6 +21,10 @@ static func enter_cost(map: BattleMap, from: Vector2i, to: Vector2i, _mode: int,
 	var change := level_change(src, dst)
 	if change > max_change:
 		return PROHIBITED
+	if Bridges.onto_deck(src, dst):
+		return 1 + change  # a paved deck counts as road (Bridges)
+	if not Bridges.fits_under(dst):
+		return PROHIBITED
 	var cost := 1 + dst.terrain.move_cost + change
 	if dst.building != null:
 		cost += 1  # every building hex (errata)
@@ -30,6 +34,7 @@ static func enter_cost(map: BattleMap, from: Vector2i, to: Vector2i, _mode: int,
 
 
 ## Levels climbed or dropped between two hexes, measured at the ground
-## (the bottom of water).
+## (the bottom of water), or at a bridge deck the 'Mech is on (Bridges).
 static func level_change(src: MapTile, dst: MapTile) -> int:
-	return absi(dst.floor_level() - src.floor_level())
+	var to := dst.bridge.level if Bridges.onto_deck(src, dst) else dst.floor_level()
+	return absi(to - Bridges.stand_level(src))

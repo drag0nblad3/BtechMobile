@@ -36,4 +36,6 @@ static func add_mods(th: ToHit) -> void:
 static func noun(tile: MapTile) -> String:
 	if tile == null:
 		return "hex"
-	return "building" if tile.building != null else tile.terrain.name.to_lower()
+	if tile.building != null:
+		return "building"
+	return "bridge" if tile.bridge != null else tile.terrain.name.to_lower()
