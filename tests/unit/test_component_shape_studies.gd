@@ -607,3 +607,20 @@ func test_passes_158_162_no_second_right_arm_and_hand_grips_one_gun() -> void:
 	check(palm_gun and palm_mount, "Wolverine right hand must grip the same autocannon")
 	check(elbow_upper, "Wolverine bent elbow must join the upper arm")
 	check_eq(model.muzzles[Location.RA].size(), 1, "Wolverine exactly one AC5")
+
+
+func test_passes_168_to_172_keep_single_wolverine_right_arm_and_disc() -> void:
+	var w := VxModel.load_file(MODELS[1])
+	var j := VxModel.load_file(MODELS[2])
+	check(not w.part("ra_gun_grip_thumb").is_empty(),
+			"Wolverine same-arm AC5 gripping thumb must be present")
+	var d: Dictionary = JsonFile.read(MODELS[1])
+	for part_source: Dictionary in d["parts"]:
+		if part_source["name"] == "ra":
+			check_eq(part_source["shapes"].size(), 2,
+					"No additional hanging Wolverine right arm/forearm")
+			for geometry: Dictionary in part_source["shapes"]:
+				check(geometry.has("loft") and geometry["loft"]["axis"] == "z",
+						"Right arm remains bent toward the forward AC5")
+	check(not j.part("hd_rear_disc_saddle").is_empty(),
+			"Jenner disc-to-hull rear attachment absent")

@@ -26,3 +26,16 @@ The Wolverine old `ra` second shape was a vertical y-axis forearm tube at z=0, y
 |167|Sculpt Atlas distinct pair of deep eye sockets and nose ridge below level shoulder caps.|Add Wolverine actual finger wrap on rear of SAME AC5 rather than changing a second forearm.|Angle Jenner digitigrade thigh roots inward and center ankles under side pods.|
 
 The pass-162 Godot render confirms deletion of the duplicate hanging Wolverine forearm. The remaining gun is held in one bent arm; its hand, trigger fingers, shroud and elbow are integrated into the same chain. Atlas shoulder shells now have 12-point rounded contours, and the Jenner disc top plan has 12-point faceted circular cross-sections. All three models changed in all five passes. No subdivision, APK or merge.
+
+
+## Passes 168–172: correct negative space and joint angles
+
+|Pass|Atlas|Wolverine|Jenner|
+|---|---|---|---|
+|168|Deepen negative space under Atlas skull and between shoulder bells.|Inset Wolverine inner elbow shield and open notch without separating gun, hand or forearm.|Narrow Jenner side-pod bridge where it meets front cockpit disc.|
+|169|Shorten Atlas finger blocks and make both hands angle forward at elbow.|Sweep Wolverine left forearm and fist forward to balance bent right gun-bearing arm.|Bring Jenner rear hocks inward and ankle hinges forward under nacelle center.|
+|170|Conform Atlas LRM rack supporting cradle to shoulder cap arc, no giant upright plate.|Re-angle Wolverine AC5 armor at the breech and hand grip; preserve open muzzle.|Add Jenner thin exposed glass windshield lip on front cockpit top and reduce upper saucer cap mass.|
+|171|Rebuild Atlas skull chin teeth geometry and sharpen mandible lower edge.|Add Wolverine thumb wrap on SAME right AC5 hand just behind cannon shroud.|Anchor Jenner rear edge of disc to reactor chassis with pitched structural saddle.|
+|172|Taper Atlas front shin and advance foot noses to make assault silhouette less squat.|Reshape Wolverine lower pelvis and greaves so single bent gun arm sits over stable leg centers.|Taper Jenner reactor roof and hock greaves to balance the round disc/head.|
+
+Three models modified in each of five passes. New Atlas lower jaw elements, Wolverine gun-gripping thumb on same right arm and Jenner pitched disc rear brace. Wolverine source preserves precisely two z-axis arm lofts; no vertical right lower arm is reintroduced. Technical tests and final Godot review pending; no APK, merge or subdivision.
