@@ -2,7 +2,7 @@ extends SceneTree
 ## Renders the game to a PNG (for visual checks without a device):
 ##   xvfb-run godot --rendering-method gl_compatibility -s tools/capture.gd -- out.png [mode]
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
-## first enemy targeted) · sheet (record sheet open) · menu (force builder) ·
+## first enemy targeted) · sheet (record sheet open) · menu (force builder) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · tutorial (training battle, first lesson).
 
 var _frames := 0
@@ -29,7 +29,7 @@ func _initialize() -> void:
 		BattleLaunch.pending = ScenarioLoader.load_file(tut, TerrainDb.load_file(), UnitDb.load_dir())
 		BattleLaunch.bot_sides = [1]
 		BattleLaunch.tutorial_path = tut
-	var path := "res://scenes/menu.tscn" if _mode == "menu" else "res://scenes/main.tscn"
+	var path := "res://scenes/menu.tscn" if _mode.ends_with("menu") else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
 
@@ -42,6 +42,9 @@ func _process(_delta: float) -> bool:
 				_select_far_move()
 			"attack", "sheet":
 				_to_weapon_phase()
+			"clanmenu":
+				_scene.catalog.mode = DesignFilter.Mode.CLAN
+				_scene.catalog.rebuild()
 	if _frames == 7 and (_mode == "attack" or _mode == "sheet"):
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
