@@ -82,6 +82,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
 	data["roll"] = dice.roll_2d6()
+	if RotaryAc.check_jam(w, shots, data["roll"]):
+		data["jammed"] = true
 	data["hit"] = data["roll"] >= th.target() and tile != null
 	if data["hit"] and tile.building == null:  # woods: only the heat counts
 		emit.call(GameEvent.WEAPON_FIRED, data)

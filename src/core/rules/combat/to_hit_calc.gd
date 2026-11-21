@@ -14,8 +14,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
 		return th
 	if not attacker.can_fire(w):
-		th.impossible = "%s can't fire (%s)" % [w.def.name,
-				"no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed"]
+		th.impossible = "%s can't fire (%s)" % [w.def.name, "jammed" if w.jammed else
+				("no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed")]
 		return th
 	var prone_why := ProneFire.blocked(attacker, w)
 	if prone_why != "":

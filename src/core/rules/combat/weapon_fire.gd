@@ -21,6 +21,7 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 	state.declared_fire.clear()
 	BuildingDamage.end_phase(state, dice, emit)
 	Fire.end_phase(state, emit)
+	RotaryAc.resolve_unjams(state, dice, emit)
 
 
 static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit,
@@ -40,6 +41,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
+	if RotaryAc.check_jam(w, shots, roll):
+		data["jammed"] = true
 	if not hit:
 		if w.def.streak:  # no lock: it doesn't launch (p. 187)
 			attacker.heat_generated -= w.def.heat

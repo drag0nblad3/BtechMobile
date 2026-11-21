@@ -3,7 +3,10 @@ extends RefCounted
 ## Bot firing modes. LB-X: slugs or cluster ammo, whichever has the higher
 ## expected damage at this to-hit number (cluster is 1 easier, but pellets
 ## add up to less), falling back to whichever ammo is left. Ultra ACs: BotFire
-## plans the volley twice (double fire on and off) and keeps the better one.
+## plans the volley twice (double fire on and off) and keeps the better one;
+## rotary ACs fire four shots in the "on" plan.
+
+const ROTARY_SHOTS := 4
 
 
 ## Sets each weapon's mode for shooting at `e`. ultra: allow double fire.
@@ -12,7 +15,9 @@ static func apply(state: GameState, u: Unit, e: Unit, ultra: bool) -> Array[Stri
 	var before: Array[String] = []
 	for w in u.weapons:
 		before.append(w.mode)
-		if w.def.rapid > 1:
+		if w.def.rotary:
+			w.mode = _rotary(u, w, ultra)
+		elif w.def.rapid > 1:
 			w.mode = WeaponModes.ULTRA if ultra and u.ammo_for(w.def) >= w.def.rapid else ""
 		elif w.def.lbx:
 			w.mode = _lbx(state, u, w, e)
@@ -29,6 +34,25 @@ static func has_ultra(u: Unit) -> bool:
 		if w.def.rapid > 1 and not w.destroyed:
 			return true
 	return false
+
+
+## Rotary AC: four shots when rapid fire is on (jams on 3 or less, 1 in 12),
+## fewer if ammo is short; a jammed one is set to clearing.
+static func _rotary(u: Unit, w: MountedWeapon, ultra: bool) -> String:
+	if w.jammed:
+		return RotaryAc.UNJAM if RotaryAc.unjam_problem(u) == "" else ""
+	var n := mini(ROTARY_SHOTS, u.ammo_for(w.def)) if ultra else 1
+	return "x%d" % n if n > 1 else ""
+
+
+## Sets every jammed rotary AC to try clearing; returns a note ("" if none).
+static func unjam_all(gc: GameController, u: Unit) -> String:
+	var names: Array[String] = []
+	for i in u.weapons.size():
+		var w := u.weapons[i]
+		if w.jammed and not w.destroyed and RotaryAc.unjam_problem(u) == "" and gc.set_weapon_mode(u, i, RotaryAc.UNJAM):
+			names.append(w.def.name)
+	return "works to clear its jammed %s" % ", ".join(names) if not names.is_empty() else ""
 
 
 static func _lbx(state: GameState, u: Unit, w: MountedWeapon, e: Unit) -> String:
@@ -54,6 +78,8 @@ static func describe(u: Unit, shots: Array) -> String:
 		var w := u.weapons[int(sh["weapon"])]
 		if w.mode == WeaponModes.ULTRA:
 			parts.append("double-fires its %s" % w.def.name)
+		elif w.def.rotary and WeaponModes.shots(w) > 1:
+			parts.append("fires %d shots from its %s" % [WeaponModes.shots(w), w.def.name])
 		elif w.mode == WeaponModes.CLUSTER:
 			parts.append("loads cluster rounds in its %s for the easier hit" % w.def.name)
 	return "; ".join(parts)

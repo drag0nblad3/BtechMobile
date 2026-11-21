@@ -4,8 +4,8 @@ extends RefCounted
 ## Ultra ACs may fire two shots as one attack (cluster column 2, a location
 ## each); LB-X ACs may fire cluster ammo (-1 to hit, a 1-point pellet per
 ## column hit, column = AC size); Streaks hit with every missile; Artemis IV
-## adds +2 to the cluster roll.
-## TODO(rules): the Core Rulebook has no Ultra AC jam; no ECM yet.
+## adds +2 to the cluster roll; rotary ACs fire 1-6 shots (RotaryAc).
+## TODO(rules): the Core Rulebook has no Ultra AC jam.
 
 const ULTRA := "ultra"
 const CLUSTER := "cluster"
@@ -14,6 +14,8 @@ const ARTEMIS_BONUS := 2
 
 ## Modes a player can pick for this weapon ("" is normal fire).
 static func modes(w: MountedWeapon) -> Array[String]:
+	if w.def.rotary:
+		return RotaryAc.modes(w)
 	if w.def.rapid > 1:
 		return ["", ULTRA]
 	if w.def.lbx:
@@ -27,6 +29,8 @@ static func next_mode(w: MountedWeapon) -> String:
 
 
 static func shots(w: MountedWeapon) -> int:
+	if w.def.rotary:
+		return mini(RotaryAc.shots(w.mode), w.def.rapid)
 	return w.def.rapid if w.mode == ULTRA and w.def.rapid > 1 else 1
 
 
