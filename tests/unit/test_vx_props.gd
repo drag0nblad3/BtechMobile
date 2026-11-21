@@ -43,3 +43,28 @@ func test_city_map_reuses_cached_meshes() -> void:
 	props.set_occupied({})
 	check_eq(props._ghosted.size(), 0)
 	props.free()
+
+
+func test_trees_stay_small_and_inside_their_hex() -> void:
+	for kind: String in ["conifer", "broadleaf"]:
+		for v in 3:
+			var m := VxTrees.mesh(kind, v)
+			var tag := "%s %d" % [kind, v]
+			check(m != null, tag + ": no mesh")
+			if m == null:
+				continue
+			var box := m.get_aabb()
+			check(VxGrid.triangles(m) < 700, tag + " triangles: %d" % VxGrid.triangles(m))
+			check(box.end.y > 0.55 and box.end.y < 1.1, tag + " height %.2f" % box.end.y)
+			check(box.size.x < 0.65, tag + " width %.2f" % box.size.x)
+
+
+func test_woods_use_one_multimesh_per_tree_variant() -> void:
+	var map := MapLoader.load_file("res://data/maps/dense_forest.json", terrain())
+	var woods := WoodsProps.build(map)
+	var trees := 0
+	for c in woods.get_children():
+		trees += (c as MultiMeshInstance3D).multimesh.instance_count
+	check(woods.get_child_count() <= VxTrees.CONIFERS + VxTrees.BROADLEAF, "layers: %d" % woods.get_child_count())
+	check(trees > 50, "trees: %d" % trees)
+	woods.free()
