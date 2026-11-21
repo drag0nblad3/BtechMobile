@@ -12,6 +12,7 @@ var camera: Camera3D
 var models: Array[VxShapePreview] = []
 var labels: Array[Label3D] = []
 var views: Array[Dictionary] = []
+var capture_images: Array[Image] = []
 var step := 0
 var frame := 0
 
@@ -59,6 +60,10 @@ func _initialize() -> void:
 	# One combined picture per iteration. Extra angles or isolated components
 	# are captured only during a deliberate targeted diagnostic run.
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
+	# One user-facing image, now a three-angle contact sheet so bloat,
+	# missing rear equipment, and leg/arm gaps are auditable.
+	views.append({"name": "side_diagnostic", "who": -1, "view": "side"})
+	views.append({"name": "rear_diagnostic", "who": -1, "view": "rear"})
 	_setup_view(step)
 
 
@@ -130,21 +135,32 @@ func _process(_delta: float) -> bool:
 		printerr("SHAPE_ERROR|camera not current")
 		quit(1)
 		return true
-	var path := output_dir.path_join("%s.png" % views[step]["name"])
 	var image := root.get_texture().get_image()
 	if image == null or image.get_width() < 500:
-		printerr("SHAPE_ERROR|viewport empty: %s" % path)
+		printerr("SHAPE_ERROR|viewport empty: %s" % views[step]["name"])
 		quit(1)
 		return true
-	if image.save_png(path) != OK:
-		printerr("SHAPE_ERROR|png write failed: %s" % path)
-		quit(1)
-		return true
-	print("SHAPE_RENDER|%s.png" % views[step]["name"])
+	capture_images.append(image)
 	step += 1
 	if step >= views.size():
-		# Returning true alone does not shut down SceneTree.
-		# This explicit quit ends xvfb-run / GitHub Actions after saving.
+		# Three views, one combined PNG. Downscale only in this diagnostic,
+		# never the sculpt or mesh, to keep uploads small.
+		var tile_w := 1200
+		var tile_h := 720
+		var contact := Image.create(tile_w, tile_h * capture_images.size(),
+				false, Image.FORMAT_RGBA8)
+		for i in capture_images.size():
+			var tile: Image = capture_images[i]
+			tile.convert(Image.FORMAT_RGBA8)
+			tile.resize(tile_w, tile_h, Image.INTERPOLATE_LANCZOS)
+			contact.blit_rect(tile, Rect2i(0, 0, tile_w, tile_h),
+					Vector2i(0, i * tile_h))
+		var path := output_dir.path_join("gallery_three_quarter.png")
+		if contact.save_png(path) != OK:
+			printerr("SHAPE_ERROR|png write failed: %s" % path)
+			quit(1)
+			return true
+		print("SHAPE_RENDER|gallery_three_quarter.png")
 		quit(0)
 		return true
 	frame = 0
