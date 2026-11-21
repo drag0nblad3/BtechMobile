@@ -149,6 +149,7 @@ func _paint_loft(cells: Dictionary, shape: Dictionary) -> void:
 		errors.append("loft requires at least two profile sections")
 		return
 	var mat := _material(shape.get("mat", ""), "box")
+	var painted: Dictionary = {}
 	for i in range(sections.size() - 1):
 		var lower: Dictionary = sections[i]
 		var upper: Dictionary = sections[i + 1]
@@ -183,7 +184,18 @@ func _paint_loft(cells: Dictionary, shape: Dictionary) -> void:
 							Vector2(float(u) + 0.5, float(v) + 0.5), polygon):
 						continue
 					var c := Vector3i(u, layer, v) if axis == "y" else Vector3i(u, v, layer)
+					painted[c] = mat
+
+	# Optional high-detail hollow skin: preserve exact silhouette without
+	# multiplying unseen solid hull interiors by the subdivision factor.
+	if int(shape.get("hollow", 0)) > 0:
+		for c: Vector3i in painted:
+			for direction: Vector3i in VxPart.DIRS:
+				if not painted.has(c + direction):
 					cells[c] = mat
+					break
+	else:
+		cells.merge(painted, true)
 
 
 func _material(mat_name: String, kind: String) -> int:
