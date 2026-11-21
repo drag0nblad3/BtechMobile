@@ -25,6 +25,19 @@ static func plan(state: GameState, u: Unit, mode: int) -> MoveOptions:
 	return opts
 
 
+## Button and log name for a movement mode: 'Mechs walk/run/jump; Assets
+## "Move", "Reverse" (declared backward movement) or "Jump".
+static func mode_name(u: Unit, mode: int) -> String:
+	if u.asset == null:
+		return MoveMode.name_of(mode)
+	match mode:
+		MoveMode.Kind.WALK:
+			return "Reverse"
+		MoveMode.Kind.JUMP:
+			return "Jump"
+	return "Move"
+
+
 ## +1 MP for staying on pavement all move (p. 142): not VTOLs or foot troops.
 static func paved_bonus(state: GameState, u: Unit) -> bool:
 	var card := u.asset.card

@@ -4,6 +4,17 @@ extends RefCounted
 ## the card and End Phase Destroy Checks. Our own wording.
 
 
+static func moved(s: GameState, d: Dictionary, level: int) -> String:
+	var u := s.unit_by_id(d["unit_id"])
+	var hexes: int = d["hexes"]
+	var t := "%s %s." % [Names.unit(u), "stays put" if d["mode"] < 0 else "%s %d hex%s (%d MP)" % [
+			"backs up" if d["mode"] == MoveMode.Kind.WALK else ("jumps" if d["mode"] == MoveMode.Kind.JUMP else "moves"),
+			hexes, "" if hexes == 1 else "es", d["mp"]]]
+	if level == ExplainLevel.FULL and u.asset != null:
+		t += " Assets keep the same defence (TMM %+d) moving or not, and their aim never suffers from moving." % u.asset.card.tmm
+	return t
+
+
 static func damage(s: GameState, d: Dictionary, level: int) -> String:
 	var u := s.unit_by_id(d["unit_id"])
 	var t := "  %s takes %d (%d this turn)" % [Names.unit(u), d["amount"], d["turn_total"]]

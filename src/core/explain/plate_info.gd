@@ -21,6 +21,8 @@ static func visible_from(state: GameState, viewer: Unit) -> Array[Unit]:
 
 ## Armor + internal structure left, 0..1.
 static func health(u: Unit) -> float:
+	if u.asset != null:  # an Asset wears down through Degradation; 2 or less is the last check
+		return clampf((u.asset.check - 2) / maxf(1.0, u.asset.card.check - 2.0), 0.0, 1.0)
 	var full := 0.0
 	var now := 0.0
 	for loc in Location.COUNT:
