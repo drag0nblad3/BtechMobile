@@ -1,0 +1,22 @@
+{
+  "id": "turkina", "name": "Turkina", "tonnage": 95, "walk_mp": 4, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "turkina", "engine_type": "xl", "structure_type": "endo_steel",
+  "armor": {"HD": 9, "CT": 45, "LT": 30, "RT": 30, "LA": 31, "RA": 31, "LL": 39, "RL": 39},
+  "rear_armor": {"CT": 14, "LT": 10, "RT": 10},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "RA": ["endo_steel*3"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 20, "role": "Clan assault missile boat. Two LRM 20s, Streak SRM 6s and pulse lasers: dangerous at every range.", "equipment": {
+      "LT": ["c_lrm20", "ammo:c_lrm20", "c_streak_srm6", "heat_sink"],
+      "RT": ["c_lrm20", "ammo:c_lrm20", "c_streak_srm6", "ammo:c_streak_srm6", "heat_sink"],
+      "LA": ["c_large_pulse_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"],
+      "RA": ["c_large_pulse_laser", "c_er_medium_laser"],
+      "CT": ["c_ams", "ammo:c_ams"]
+    }},
+    {"model": "A", "heat_sinks": 22, "role": "Streak Turkina: Streak LRM 20s that never miss with a missile, plus an ATM 12.", "equipment": {
+      "LT": ["c_streak_lrm20", "ammo:c_streak_lrm20", "ammo:c_streak_lrm20", "heat_sink"],
+      "RT": ["c_atm12", "ammo:c_atm12", "ammo:c_atm12:er", "ammo:c_atm12:he", "heat_sink"],
+      "LA": ["c_er_large_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"],
+      "RA": ["c_er_large_laser", "c_er_medium_laser", "heat_sink", "heat_sink"]
+    }}
+  ]
+}

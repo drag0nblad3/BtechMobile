@@ -1,0 +1,15 @@
+{
+  "id": "gargoyle", "name": "Gargoyle", "tonnage": 80, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "gargoyle", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 36, "LT": 24, "RT": 24, "LA": 24, "RA": 24, "LL": 31, "RL": 31},
+  "rear_armor": {"CT": 11, "LT": 8, "RT": 8},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*4"], "RA": ["ferro_fibrous*1"], "LT": ["ferro_fibrous*2"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 16, "role": "Clan heavy brawler. An Ultra AC/20 and lasers on a fast 80-ton frame.", "equipment": {
+      "RA": ["c_ultra_ac20"],
+      "RT": ["ammo:c_ultra_ac20", "ammo:c_ultra_ac20"],
+      "LA": ["c_er_large_laser", "c_er_medium_laser"],
+      "LT": ["c_lrm10", "ammo:c_lrm10", "c_er_medium_laser"]
+    }}
+  ]
+}

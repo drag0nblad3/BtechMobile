@@ -1,8 +1,8 @@
 extends TestCase
 ## The Clan roster: OmniMech configurations built from Clan parts only.
 
-const CHASSIS := ["kit_fox", "adder", "nova", "stormcrow", "mad_dog", "hellbringer",
-		"summoner", "timber_wolf", "dire_wolf"]
+const CHASSIS := ["fire_moth", "kit_fox", "adder", "viper", "ice_ferret", "nova", "stormcrow",
+		"mad_dog", "hellbringer", "summoner", "timber_wolf", "gargoyle", "warhawk", "turkina", "dire_wolf"]
 
 
 func test_roster() -> void:
@@ -16,12 +16,16 @@ func test_roster() -> void:
 		if not def.is_clan():
 			continue
 		seen[def.chassis] = true
-		check(def.omni and def.config != "", def.id + " is an OmniMech configuration")
+		check(def.omni == (def.config != ""), def.id + " OmniMechs name their configuration")
 		check(def.double_heat_sinks, def.id + " double heat sinks")
 		for m in def.weapon_mounts:
 			check((m["weapon"] as WeaponDef).is_clan(), "%s carries Clan %s" % [def.id, m["weapon"].name])
 	for c: String in CHASSIS:
 		check(seen.has(c), c)
+	var hb := db.get_def("hunchback_iic")
+	check(hb.is_clan() and not hb.omni, "Hunchback IIC: a Clan 'Mech that isn't an OmniMech")
+	check(db.get_def("turkina_a").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].streak and m["weapon"].group == 5), "Streak LRM user")
+	check(db.get_def("fire_moth_a").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].artemis_builtin), "ATM user")
 
 
 func test_clan_heavies_outclass_inner_sphere_peers() -> void:
