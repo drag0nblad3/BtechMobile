@@ -2156,135 +2156,16 @@
           "mat": "inside"
         },
         {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -14,
-                "polygon": [
-                  [
-                    9,
-                    34
-                  ],
-                  [
-                    11,
-                    34
-                  ],
-                  [
-                    12,
-                    35
-                  ],
-                  [
-                    12,
-                    36
-                  ],
-                  [
-                    11,
-                    37
-                  ],
-                  [
-                    9,
-                    37
-                  ],
-                  [
-                    8,
-                    36
-                  ],
-                  [
-                    8,
-                    35
-                  ]
-                ]
-              },
-              {
-                "at": -12,
-                "polygon": [
-                  [
-                    9,
-                    34
-                  ],
-                  [
-                    11,
-                    34
-                  ],
-                  [
-                    12,
-                    35
-                  ],
-                  [
-                    12,
-                    37
-                  ],
-                  [
-                    11,
-                    38
-                  ],
-                  [
-                    9,
-                    38
-                  ],
-                  [
-                    8,
-                    37
-                  ],
-                  [
-                    8,
-                    35
-                  ]
-                ]
-              },
-              {
-                "at": -8,
-                "polygon": [
-                  [
-                    9,
-                    34
-                  ],
-                  [
-                    11,
-                    34
-                  ],
-                  [
-                    12,
-                    35
-                  ],
-                  [
-                    12,
-                    37
-                  ],
-                  [
-                    11,
-                    38
-                  ],
-                  [
-                    9,
-                    38
-                  ],
-                  [
-                    8,
-                    37
-                  ],
-                  [
-                    8,
-                    35
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "edge"
-        },
-        {
           "erase": [
             [
               10,
               35,
-              -15
+              -14
             ],
             [
-              10,
+              11,
               36,
-              -13
+              -8
             ]
           ]
         }
@@ -4100,9 +3981,81 @@
           "mat": "edge"
         }
       ]
+    },
+    {
+      "name": "rt_ac20_shroud",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        11,
+        36,
+        -10
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              9,
+              34,
+              -14
+            ],
+            [
+              9,
+              37,
+              -10
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              12,
+              34,
+              -14
+            ],
+            [
+              12,
+              37,
+              -10
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              10,
+              34,
+              -14
+            ],
+            [
+              11,
+              34,
+              -10
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              10,
+              37,
+              -14
+            ],
+            [
+              11,
+              37,
+              -10
+            ]
+          ],
+          "mat": "edge"
+        }
+      ]
     }
   ],
-  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots.",
+  "notes": "NEW silhouette-only manual cross-section sculpture. No inherited coarse geometry, no detail pass, no 100k voxel budget. References listed in docs/graphics/component-shape-study.md Shape review 2: shortened and seated skull, removed fake giant chest ports, reduced missile/gun projections; thinner frontal thigh. Reference iteration 3: original stock AS7-D broad faceted torso hoods, recessed skull between shoulders, angular shoulder taper; 10-vertex individually drawn hull sections instead of rounded octagonal templates. Reference iteration 4: explicitly planar shoulder caps, elliptical-but-angular combat gauntlets, knee shields, tapered greaves and wide toed armored boots; right arm mirrors left. Fifth pass: broad chest avoids sharp waist taper; new separate pelvic cuirass and center codpiece connect torso and thigh roots. Pass 6: separate hollow right torso autocannon muzzle shroud rather than tiny projecting rod.",
   "muzzles": {
     "LT": [
       [
@@ -4132,9 +4085,9 @@
       ]
     ],
     "RT": [
-      10,
-      36,
-      -17.5
+      10.5,
+      35.5,
+      -14.5
     ]
   },
   "weapons": []
