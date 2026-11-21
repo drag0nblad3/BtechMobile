@@ -1,0 +1,289 @@
+{
+ "id": "raptor",
+ "name": "Raptor",
+ "tonnage": 25,
+ "walk_mp": 7,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 5,
+  "RA": 5,
+  "LT": 7,
+  "RT": 7,
+  "CT": 8,
+  "HD": 6,
+  "LL": 6,
+  "RL": 6
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 2
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "omni": true,
+ "sprite": "raptor",
+ "equipment": {
+  "LA": [
+   "heat_sink*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "endo_steel*3"
+  ],
+  "LT": [
+   "endo_steel*3"
+  ],
+  "RT": [
+   "endo_steel*3"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "configs": [
+  {
+   "model": "RTX1-O",
+   "bv": 721,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "medium_laser",
+     "small_laser"
+    ],
+    "RA": [
+     "medium_laser",
+     "small_laser"
+    ],
+    "LT": [
+     "lrm5"
+    ],
+    "RT": [
+     "lrm5",
+     "machine_gun*2",
+     "ammo:machine_gun:half"
+    ],
+    "CT": [
+     "lrm5",
+     "ammo:lrm5"
+    ]
+   },
+   "source": {
+    "mul_id": 2647,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-O.mtf",
+    "published": "RS:CI",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 721
+   },
+   "role": "Missile boat: rains missiles from a distance. 3 LRM 5s, 2 Medium Lasers, 2 Small Lasers, 2 Machine Guns; walks 7, runs 11."
+  },
+  {
+   "model": "RTX1-OA",
+   "bv": 783,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "small_laser"
+    ],
+    "RA": [
+     "small_laser"
+    ],
+    "LT": [
+     "large_laser"
+    ],
+    "RT": [
+     "large_laser",
+     "small_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 2648,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OA.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 783
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 Small Lasers, 2 Large Lasers; walks 7, runs 11."
+  },
+  {
+   "model": "RTX1-OB",
+   "bv": 613,
+   "heat_sinks": 10,
+   "equipment": {
+    "LT": [
+     "srm6",
+     "ammo:srm6*2"
+    ],
+    "RT": [
+     "srm6",
+     "small_laser"
+    ],
+    "CT": [
+     "srm6"
+    ]
+   },
+   "source": {
+    "mul_id": 2649,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OB.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 613
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 SRM 6s, Small Laser; walks 7, runs 11."
+  },
+  {
+   "model": "RTX1-OC",
+   "bv": 870,
+   "heat_sinks": 12,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "small_pulse_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "small_pulse_laser"
+    ],
+    "LT": [
+     "medium_laser*2"
+    ],
+    "RT": [
+     "medium_laser*2",
+     "ams",
+     "ammo:ams"
+    ],
+    "CT": [
+     "medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 2650,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OC.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 870
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 6 Medium Lasers, 2 Small Pulse Lasers, Anti-Missile System; walks 7, runs 11."
+  },
+  {
+   "model": "RTX1-OD",
+   "bv": 490,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "small_laser"
+    ],
+    "RA": [
+     "small_laser"
+    ],
+    "LT": [
+     "streak_srm2",
+     "ammo:streak_srm2",
+     "beagle_probe"
+    ],
+    "RT": [
+     "streak_srm2",
+     "machine_gun*2",
+     "ammo:machine_gun:half",
+     "tag"
+    ],
+    "CT": [
+     "c3_slave",
+     "streak_srm2"
+    ]
+   },
+   "source": {
+    "mul_id": 2651,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OD.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 490
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 Streak SRM 2s, 2 Small Lasers, 2 Machine Guns; walks 7, runs 11."
+  },
+  {
+   "model": "RTX1-OE",
+   "bv": 597,
+   "heat_sinks": 10,
+   "equipment": {
+    "LT": [
+     "mrm10",
+     "ammo:mrm10*2"
+    ],
+    "RT": [
+     "mrm10",
+     "small_laser"
+    ],
+    "CT": [
+     "mrm10"
+    ]
+   },
+   "source": {
+    "mul_id": 2652,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OE.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 597
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 MRM 10s, Small Laser; walks 7, runs 11."
+  },
+  {
+   "model": "RTX1-OF",
+   "bv": 1029,
+   "heat_sinks": 13,
+   "jump_mp": 7,
+   "equipment": {
+    "LA": [
+     "er_medium_laser*3"
+    ],
+    "RA": [
+     "heat_sink",
+     "er_medium_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "jump_jet*3"
+    ],
+    "RT": [
+     "heat_sink",
+     "jump_jet*3"
+    ],
+    "CT": [
+     "jump_jet",
+     "er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 2653,
+    "megamek": "data/mekfiles/meks/3058Uu/Raptor RTX1-OF.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1029
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 5 ER Medium Lasers; walks 7, runs 11, jumps 7."
+  }
+ ]
+}

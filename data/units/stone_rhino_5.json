@@ -1,0 +1,64 @@
+{
+ "id": "stone_rhino_5",
+ "name": "Stone Rhino",
+ "model": "5",
+ "tonnage": 100,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 29,
+  "RA": 29,
+  "LT": 28,
+  "RT": 28,
+  "CT": 40,
+  "HD": 9,
+  "LL": 35,
+  "RL": 35
+ },
+ "rear_armor": {
+  "LT": 9,
+  "RT": 9,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_er_medium_laser*3"
+  ],
+  "RA": [
+   "c_er_medium_laser*3"
+  ],
+  "LT": [
+   "c_lb5x_ac*2",
+   "ammo:c_lb5x_ac",
+   "ammo:c_lb5x_ac:cluster"
+  ],
+  "RT": [
+   "c_lb5x_ac*2",
+   "ammo:c_lb5x_ac",
+   "ammo:c_lb5x_ac:cluster"
+  ]
+ },
+ "source": {
+  "mul_id": 3815,
+  "megamek": "data/mekfiles/meks/3055U/Behemoth (Stone Rhino) 5.mtf",
+  "published": "RGv1,RG02",
+  "role": "Juggernaut",
+  "bv": "megamek",
+  "megamek_bv": 2157
+ },
+ "bv": 2157,
+ "sprite": "stone_rhino",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 6 ER Medium Lasers, 4 LB 5-X ACs; walks 4, runs 6."
+}

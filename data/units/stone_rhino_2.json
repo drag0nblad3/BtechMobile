@@ -1,0 +1,87 @@
+{
+ "id": "stone_rhino_2",
+ "name": "Stone Rhino",
+ "model": "2",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 16,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 32,
+  "RT": 32,
+  "CT": 44,
+  "HD": 9,
+  "LL": 42,
+  "RL": 42
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "c_heavy_large_laser",
+   "c_heavy_medium_laser",
+   "c_heavy_small_laser"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "c_heavy_large_laser",
+   "c_heavy_medium_laser",
+   "c_heavy_small_laser"
+  ],
+  "LT": [
+   "c_gauss_rifle",
+   "c_heavy_medium_laser@rear",
+   "ammo:c_gauss_rifle*2"
+  ],
+  "RT": [
+   "c_gauss_rifle",
+   "c_heavy_medium_laser@rear",
+   "ammo:c_gauss_rifle*2"
+  ],
+  "CT": [
+   "jump_jet",
+   "ammo:c_ams"
+  ],
+  "HD": [
+   "c_ams"
+  ],
+  "LL": [
+   "jump_jet",
+   "a_pod"
+  ],
+  "RL": [
+   "jump_jet",
+   "a_pod"
+  ]
+ },
+ "source": {
+  "mul_id": 319,
+  "megamek": "data/mekfiles/meks/3055U/Behemoth (Stone Rhino) 2.mtf",
+  "published": "RS:3055Uu",
+  "role": "Juggernaut",
+  "bv": "megamek",
+  "megamek_bv": 3107
+ },
+ "bv": 3107,
+ "sprite": "stone_rhino",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 Heavy Medium Lasers, 2 Heavy Large Lasers, 2 Heavy Small Lasers, 2 Gauss Rifles, Anti-Missile System; walks 3, runs 5, jumps 3."
+}

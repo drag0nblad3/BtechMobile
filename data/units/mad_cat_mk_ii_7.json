@@ -1,0 +1,89 @@
+{
+ "id": "mad_cat_mk_ii_7",
+ "name": "Mad Cat Mk II",
+ "model": "7",
+ "tonnage": 90,
+ "walk_mp": 4,
+ "jump_mp": 3,
+ "heat_sinks": 14,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 27,
+  "RA": 27,
+  "LT": 26,
+  "RT": 26,
+  "CT": 38,
+  "HD": 9,
+  "LL": 34,
+  "RL": 34
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_rotary_ac5",
+   "ammo:c_rotary_ac5*2"
+  ],
+  "RA": [
+   "c_rotary_ac5",
+   "ammo:c_rotary_ac5*2"
+  ],
+  "LT": [
+   "jump_jet",
+   "c_streak_lrm10",
+   "c_er_medium_laser",
+   "c_er_small_laser",
+   "ammo:c_streak_lrm10",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "jump_jet",
+   "c_streak_lrm10",
+   "c_er_medium_laser",
+   "c_er_small_laser",
+   "ammo:c_streak_lrm10",
+   "ferro_fibrous*4"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": null,
+  "megamek": "data/mekfiles/meks/Core Rules/Mad Cat Mk II 7.mtf",
+  "published": "BT:CB",
+  "role": "Brawler",
+  "bv": "megamek",
+  "megamek_bv": 3207
+ },
+ "bv": 3207,
+ "sprite": "mad_cat_mk_ii",
+ "role": "Brawler: built to slug it out at medium range. 2 Rotary AC/5s, 2 Streak LRM 10s, 2 ER Medium Lasers, 2 ER Small Lasers; walks 4, runs 6, jumps 3."
+}

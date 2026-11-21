@@ -1,0 +1,138 @@
+{
+ "id": "arctic_wolf",
+ "name": "Arctic Wolf",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 15,
+  "RT": 15,
+  "CT": 16,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "omni": true,
+ "sprite": "arctic_wolf",
+ "equipment": {
+  "LA": [
+   "endo_steel*2",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RT": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 1641,
+   "heat_sinks": 10,
+   "jump_mp": 6,
+   "equipment": {
+    "LA": [
+     "c_streak_srm6"
+    ],
+    "RA": [
+     "c_streak_srm6"
+    ],
+    "LT": [
+     "jump_jet*3",
+     "c_streak_srm6",
+     "ammo:c_streak_srm6*2"
+    ],
+    "RT": [
+     "jump_jet*3",
+     "c_streak_srm6",
+     "ammo:c_streak_srm6*2"
+    ]
+   },
+   "source": {
+    "mul_id": 103,
+    "megamek": "data/mekfiles/meks/3060u/Arctic Wolf Prime.mtf",
+    "published": "RS:3060u",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1641
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 Streak SRM 6s; walks 6, runs 9, jumps 6."
+  },
+  {
+   "model": "A",
+   "bv": 1587,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_srm6",
+     "c_small_pulse_laser",
+     "ammo:c_srm6"
+    ],
+    "RA": [
+     "c_srm6",
+     "c_small_pulse_laser",
+     "ammo:c_srm6"
+    ],
+    "LT": [
+     "c_lrm15",
+     "ammo:c_lrm15*2"
+    ],
+    "RT": [
+     "c_lrm15",
+     "ammo:c_lrm15*2",
+     "guardian_ecm"
+    ]
+   },
+   "source": {
+    "mul_id": 101,
+    "megamek": "data/mekfiles/meks/3060u/Arctic Wolf A.mtf",
+    "published": "RS:3060u",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 1587
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 SRM 6s, 2 Small Pulse Lasers, 2 LRM 15s; walks 6, runs 9."
+  }
+ ]
+}
