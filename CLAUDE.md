@@ -60,7 +60,7 @@ Battle mode first; campaign layer later.
 | `src/core/map/` | `TerrainType`/`TerrainDb`, `MapTile` (level, depth, building), `BattleMap`, `MapLoader`, `BuildingType`/`Building` (threshold, destroy check, height), `Bridge` (deck level, span) |
 | `src/core/map/gen/` | `MapGenerator` (theme + mapsheets + seed → map JSON), `MapTheme` (`data/map_themes.json`), `GenGrid`, `GenNoise`, `GenElevation` (levels, lakes), `GenRiver`, `GenRoads`, `GenPath`, `GenTown` (streets, buildings), `GenCover` (woods, rough), `MapStats` (terrain mix) |
 | `src/core/units/` | `UnitDef`/`UnitDb` (designs), `WeaponDef`/`WeaponDb`, `Unit` (live record sheet), `Location`, `StructureTable`, `CritLayout`/`CritSlot`, `MountedWeapon`, `AmmoBin`, `Pilot`, `DesignWeight` (tonnage check), `ClanTech` (Clan construction sizes), `OmniConfig` (OmniMech configurations), `DesignItems` (equipment strings), `InertGear` (A-pods, TAG: carried, no effect yet) |
-| `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader` |
+| `src/core/state/` | `GameState`, `GameController` (turn flow, initiative, actions), `GameEvent`, `Phase`, `ScenarioLoader`, `BattleFields`/`BattleCodec` (save allowlist and typed snapshots), `BattleSave` (versioned compressed save/RNG restoration), `BattleRecorder` (state-based replay timeline) |
 | `src/core/rules/movement/` | `MoveMode` (walk/run/jump costs), `MoveCost` (per-hex MP), `MovePlanner` (Dijkstra over hex+facing, backward steps), `JumpPlanner`, `MoveOptions`, `ProneMoves` (dropping prone, prone turning), `Masc` (MASC bursts, escalating failure), `JumpJets` (improved jump jets), `Quad` (four-legged 'Mechs: MP, piloting, prone fire), `LateralShift` (quad sideways steps), `Tsm` (triple-strength myomer), `Supercharger` (running bursts, engine damage), `MoveExecutor` (carries out a move for the controller) |
 | `src/core/rules/combat/` | `LineOfSight`, `FiringArc`, `ToHit`/`ToHitCalc`, `IndirectFire` (spotters), `WaterCombat` (water line, underwater ranges), `HullBreach`, `ProneFire`, `FireOptions`, `WeaponFire`, `HitTable`, `ClusterTable`, `Damage`, `AmmoExplosion` (caps, CASE), `ComponentExplosion` (Gauss), `XlEngine` (side-torso engine slots), `AimedShot` (immobile targets), `AntiMissile` (AMS), `TargetingComputer`, `Ecm` (Guardian ECM vs Artemis), `C3` (Master/Slave networks, range sharing), `C3Boosted` (ECM-proof C3), `ActiveProbe` (sees through smoke, fog, murk), `WeaponModes` (Ultra/LB-X/Streak/Artemis), `RotaryAc` (rapid fire, jams), `Narc` (homing pods), `Atm` (ATM and MML munitions), `CriticalHits`, `CritEffects`, `HeadHit` |
 | `src/core/rules/heat/` | `HeatScale` (effects by heat level), `HeatPhase`, `HeatShutdown`, `VoluntaryShutdown` (shut down/restart by choice), `HeatSinkSwitch` (heat sinks off/on) |
@@ -83,7 +83,7 @@ Battle mode first; campaign layer later.
 | `src/view/camera/` | `CameraRig` (orbit/pan/zoom/tilt), `TouchGestures` (touch + mouse) |
 | `src/view/settings/` | `GameSettings` (explanation level, computer level, saved to user://) |
 | `src/view/hud/` | `BattleHud` (buttons/labels, emits intents only), `CombatLogView`, `RecordSheetView`, `AttackPanel`, `SafeArea`, `LessonCard` (tutorial cards), `SinkButtons` (heat sink switches) |
-| `src/view/battle/` | `battle_scene.gd` (composition root, wiring only), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `MascInput` (MASC button), `BotDriver` (runs computer sides), `HiddenInput` (reveal / point-blank / combat drop buttons), `BattleFx` (voxel blasts for hits, ammo explosions, kills, collapses; building wall scars), `BattleLaunch` |
+| `src/view/battle/` | `battle_scene.gd` (composition root, wiring, autosave and recorder), `replay_scene.gd` (read-only playback), `MovementInput`, `AttackInput` (weapon + physical phases), `AttackView` (its panel, tip and options), `AttackRows` (side-panel rows), `AimPicker` (aimed-shot button), `MascInput` (MASC button), `BotDriver` (runs computer sides), `HiddenInput` (reveal / point-blank / combat drop buttons), `BattleFx` (voxel blasts for hits, ammo explosions, kills, collapses; building wall scars), `BattleLaunch` |
 | `src/view/menu/` | `ForceBuilderScreen` (start screen: map, budget, lances), `ForceCatalog` (its 'Mech list), `TrainingScreen` (training campaign list, rules notebook, saves results), `MapPicker`/`MapChoice`/`MapPreview` (map, size, seed, preview), `UiKit` |
 | `data/` | `terrain.json`, `weapons.json`, `construction.json`, `bv_skill.json`, `units/*.json`, `maps/*.json`, `scenarios/*.json`, `missions/standard.json`, `map_themes.json`, `voxels/*.json` — see `docs/data-formats.md` |
 | `tests/` | `run_tests.gd` runner, `test_case.gd` base + fixtures, `LoadedDice` (scripted rolls), `fixtures/units/` (made-up loadouts for rule tests, ids `test_*`), `SimBot` (whole-game smoke test), `unit/test_*.gd` |
@@ -92,9 +92,15 @@ Battle mode first; campaign layer later.
 | `tools/design_report.gd` | Weight, armor, BV and free slots per design (`-- <id filter>`), for writing new designs |
 | `tools/props_capture.gd` | Close-up PNG of map props (`-- out.png [map.json] [yaw] [dist] [hex]`) |
 | `tools/ui_smoke.gd` | Plays turns through the battle scene's input handlers headless (CI); `-- city` also shoots buildings |
-| `scenes/` | `menu.tscn` (main scene, force builder) → `main.tscn` (battle) |
-| `docs/` | `architecture.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap), `voxel-mech-prototype.md` (lab), `graphics/voxel-integration-plan.md` (voxel art into the battle) |
+| `scenes/` | `menu.tscn` (force builder) → `main.tscn` (battle); `battle_replay.tscn` (read-only timeline) |
+| `docs/` | `architecture.md`, `battle-save-replay.md`, `rules-coverage.md`, `data-formats.md`, `PLANNING.md` (Android status, roadmap), `voxel-mech-prototype.md` (lab), `graphics/voxel-integration-plan.md` (voxel art into the battle) |
 | `export_presets.cfg` | Android export preset; `.github/workflows/android.yml` builds an APK on manual run only |
+
+## Battle save/replay discipline
+- Rules code remains authoritative. Save snapshots include every record-sheet and turn field and **both** RNG seed and live state. Replay decodes snapshots and never runs actions or dice.
+- Changes to runtime `Unit`, `GameState`, `MissionState`, `MapTile`, or related objects must update the explicit `BattleFields.names()` allowlist and save round-trip tests; bump `BattleSave.VERSION` for incompatible files.
+- Save files are compressed data in `user://`, not scripts, and the replay archive is separate from the quick-save. See `docs/battle-save-replay.md`.
+- Always exercise `tests/unit/test_battle_save.gd` and CI after changes to combat serialization or replay. Do not build an APK unless asked.
 
 ## Commands
 ```sh
