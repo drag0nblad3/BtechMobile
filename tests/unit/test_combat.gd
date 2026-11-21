@@ -44,14 +44,12 @@ func test_to_hit_modifiers() -> void:
 	s.add_unit(b)
 	a.move_mode = MoveMode.Kind.WALK
 	b.hexes_moved = 5
-	var ml := a.weapons[2]  # LA medium laser
-	check_eq(ml.def.id, "medium_laser")
+	var ml := gun(a, "medium_laser")
 	var th := ToHitCalc.weapon(s, a, ml, b)
 	# 4 gunnery + 1 walked + 2 target moved 5 + 2 medium range (5 hexes)
 	check_eq(th.target(), 9, th.summary())
 	check(absf(th.chance() - 10.0 / 36.0) < 0.001, "9+ is 10/36")
-	var ac := a.weapons[1]
-	check_eq(ac.def.id, "ac20")
+	var ac := gun(a, "ac20")
 	check_eq(ToHitCalc.weapon(s, a, ac, b).target(), 9, "AC/20 at 5 is medium")
 
 
@@ -61,7 +59,7 @@ func test_minimum_range_and_out_of_range() -> void:
 	var b := mech("hunchback_hbk4g", 1, hex_at(2, 1), 5, 2)
 	s.add_unit(a)
 	s.add_unit(b)
-	var lrm := a.weapons[4]
+	var lrm := gun(a, "lrm15")
 	check_eq(lrm.def.id, "lrm15")
 	# 2 hexes, min 6: +5
 	check_eq(ToHitCalc.weapon(s, a, lrm, b).target(), 9)
@@ -76,7 +74,7 @@ func test_damage_transfers_inward() -> void:
 	check(u.is_location_destroyed(Location.LA), "arm gone")
 	check_eq(steps.size(), 2)
 	check_eq(u.armor[Location.LT], 2, "LT armor 8 - 6")
-	check(u.weapons[2].destroyed, "arm lasers destroyed")
+	check(gun(u, "medium_laser").destroyed, "arm lasers destroyed")
 	Damage.apply(u, Location.CT, 11 + 11)
 	check(u.destroyed, "center torso destroyed")
 
@@ -134,7 +132,7 @@ func test_weapon_phase_and_heat() -> void:
 	check_eq(s.turn, 2, "turn advanced after heat and end")
 	# Jenner fired 4 ML (12) + SRM 4 (3) = 15 heat with 10 sinks.
 	check_eq(a.heat, 5, "jenner heat after dissipation")
-	check_eq(a.ammo_for(a.weapons[0].def), 24, "one SRM shot used")
+	check_eq(a.ammo_for(gun(a, "srm4").def), 24, "one SRM shot used")
 	var fired := 0
 	for e in gc.history:
 		if e.type == GameEvent.WEAPON_FIRED:
@@ -183,8 +181,8 @@ func test_water_cools() -> void:
 	u.heat = 14
 	HeatPhase.run(s, Dice.new(1), func(_t, _d): pass)
 	check_eq(u.heat, 4, "depth 1: the Jenner has no leg heat sinks to submerge")
-	var a := mech("awesome_aws8q", 0, hex_at(1, 0), 0, 2)  # one heat sink in each leg
-	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(1, 0)), a), 2, "two leg sinks cool double")
+	var a := mech("awesome_aws8q", 0, hex_at(1, 0), 0, 2)  # two heat sinks in each leg
+	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(1, 0)), a), 4, "four leg sinks cool double")
 	a.prone = true
 	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(1, 0)), a), 6, "prone: all under, max 6")
 	check_eq(HeatPhase.water_cooling(s.map.get_tile(hex_at(2, 0)), u), 6, "depth 2: all under, max 6")
@@ -200,7 +198,7 @@ func test_secondary_target_and_auto_hit() -> void:
 		s.add_unit(u)
 	var shots := [{"weapon": 0, "target_id": 2}, {"weapon": 1, "target_id": 3}]
 	check_eq(FireOptions.primary_target(s, a, shots), 3, "forward-arc target must be primary")
-	var th := ToHitCalc.weapon(s, a, a.weapons[3], side_t, true)
+	var th := ToHitCalc.weapon(s, a, gun(a, "medium_laser", 1), side_t, true)  # right arm
 	check_eq(th.mods[-1]["value"], 1, "secondary is +1 in any arc")
 	# Target number 2 or less always hits.
 	var easy := ToHit.new()
@@ -263,3 +261,36 @@ func test_leg_weapons_cant_fire_through_own_cover() -> void:
 	var th := ToHitCalc.weapon(s, a, leg, t)
 	check(not th.possible(), "leg laser can't fire through its own cover (p. 61)")
 	check(ToHitCalc.weapon(s, a, arm, t).possible(), "arm laser still fires")
+
+
+func _flipper(missing: Dictionary) -> UnitDef:
+	return UnitDef.from_dict({"id": "fl", "name": "Flipper", "tonnage": 50, "walk_mp": 4,
+			"armor": {"CT": 20}, "missing_actuators": missing,
+			"equipment": {"LA": ["medium_laser"], "CT": ["medium_laser"]}}, weapons())
+
+
+func test_flipped_arms_fire_backwards() -> void:
+	var s := GameState.new(open_map(6, 8))
+	var a := Unit.new(1, _flipper({"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]}), 0, hex_at(2, 2), 3)
+	var t := mech("locust_lct1v", 1, hex_at(2, 1), 3, 2)  # behind a 'Mech facing south
+	s.add_unit(a)
+	s.add_unit(t)
+	var arm: MountedWeapon = a.weapons[0]
+	check(not ToHitCalc.weapon(s, a, arm, t).possible(), "rear target: arms can't point there")
+	check_eq(ArmFlip.problem(a), "")
+	a.arms_flipped = true
+	check(ToHitCalc.weapon(s, a, arm, t).possible(), "flipped: the arm laser fires into the rear arc (p. 62)")
+	check(not ToHitCalc.weapon(s, a, a.weapons[1], t).possible(), "torso laser still faces forward")
+	t.coord = hex_at(2, 3)
+	check(not ToHitCalc.weapon(s, a, arm, t).possible(), "flipped arms lose the front arc")
+	check(PhysicalOptions.for_target(s, a, t).filter(func(o: Dictionary) -> bool:
+			return o["kind"] == "punch" and o["to_hit"].possible()).is_empty(), "no punches with flipped arms")
+	a.reset_for_turn()
+	check(not a.arms_flipped, "back to front at the end of the turn")
+	a.torso_twist = 1
+	check(ArmFlip.problem(a) != "", "twist or flip, not both")
+	a.torso_twist = 0
+	a.prone = true
+	check(ArmFlip.problem(a) != "", "not while prone")
+	var hands := Unit.new(3, _flipper({"LA": ["lower_arm", "hand"]}), 0, hex_at(0, 0), 0)
+	check(not ArmFlip.design_can(hands.def), "both arms must lack the actuators")

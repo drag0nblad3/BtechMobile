@@ -1,14 +1,57 @@
 {
-  "id": "javelin_jvn10n", "name": "Javelin", "model": "JVN-10N", "tonnage": 30,
-  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 10, "sprite": "javelin",
-  "role": "Light ambusher. Two SRM-6 racks hit hard up close, but the armor is thin and the ammo runs out fast.",
-  "armor": {"HD": 7, "CT": 11, "LT": 8, "RT": 8, "LA": 7, "RA": 7, "LL": 12, "RL": 12},
-  "rear_armor": {"CT": 4, "LT": 2, "RT": 2},
-  "equipment": {
-    "LT": ["srm6", "jump_jet"],
-    "RT": ["srm6", "jump_jet"],
-    "CT": ["ammo:srm6"],
-    "LL": ["jump_jet", "jump_jet"],
-    "RL": ["jump_jet", "jump_jet"]
-  }
+ "id": "javelin_jvn10n",
+ "name": "Javelin",
+ "model": "JVN-10N",
+ "tonnage": 30,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 8,
+  "RT": 8,
+  "CT": 8,
+  "HD": 6,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 2
+ },
+ "equipment": {
+  "LT": [
+   "heat_sink",
+   "srm6",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "srm6",
+   "ammo:srm6"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1675,
+  "megamek": "data/mekfiles/meks/3039u/Javelin JVN-10N.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Javelin JVN-10N (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 594
+ },
+ "bv": 594,
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 SRM 6s; walks 6, runs 9, jumps 6.",
+ "sprite": "javelin"
 }

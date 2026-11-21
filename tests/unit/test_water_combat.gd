@@ -117,5 +117,5 @@ func test_bare_torso_floods_with_its_arm() -> void:
 	HullBreach.check_exposed(s, func(_t, _d): pass, u)
 	check(u.flooded.get(Location.LT, false) and u.flooded.get(Location.LA, false), "torso and its arm flood")
 	check(u.weapons.filter(func(w: MountedWeapon) -> bool: return w.loc == Location.LA and not u.can_fire(w)).size() == 1, "left arm laser is dead")
-	var hs: CritSlot = u.slots[Location.LT].filter(func(c: CritSlot) -> bool: return c.kind == CritSlot.Kind.HEAT_SINK)[0]
-	check_eq(CritEffects.apply(s, LoadedDice.new(), func(_t, _d): pass, u, Location.LT, hs), "already flooded: no further effect")
+	var gun_slot: CritSlot = u.slots[Location.LA].filter(func(c: CritSlot) -> bool: return c.kind == CritSlot.Kind.WEAPON)[0]
+	check_eq(CritEffects.apply(s, LoadedDice.new(), func(_t, _d): pass, u, Location.LA, gun_slot), "already flooded: no further effect")

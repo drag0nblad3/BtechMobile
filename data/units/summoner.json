@@ -1,25 +1,176 @@
 {
-  "id": "summoner", "name": "Summoner", "tonnage": 70, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "summoner", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 33, "LT": 23, "RT": 23, "LA": 21, "RA": 21, "LL": 30, "RL": 29},
-  "rear_armor": {"CT": 11, "LT": 7, "RT": 7},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {"LA": ["endo_steel*4"], "RA": ["endo_steel*3", "ferro_fibrous*4"], "RT": ["ferro_fibrous*3"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 14, "jump_mp": 5, "role": "Clan jumping heavy. An ER PPC, an LB 10-X and an LRM 15 give it a punch at every range.", "equipment": {
-      "RA": ["c_er_ppc"],
-      "LA": ["c_lb10x_ac"],
-      "LT": ["ammo:c_lb10x_ac", "ammo:c_lb10x_ac:cluster", "c_er_medium_laser", "jump_jet"],
-      "RT": ["c_lrm15", "ammo:c_lrm15"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"]
-    }},
-    {"model": "A", "heat_sinks": 17, "jump_mp": 5, "role": "Laser Summoner: an ER large laser, pulse lasers and Streaks, so it never runs out of ammo.", "equipment": {
-      "RA": ["c_er_large_laser", "c_er_medium_laser"],
-      "LA": ["c_large_pulse_laser", "c_medium_pulse_laser"],
-      "LT": ["c_streak_srm6", "ammo:c_streak_srm6", "jump_jet", "heat_sink", "heat_sink", "heat_sink"],
-      "RT": ["c_er_medium_laser", "c_er_medium_laser", "c_er_medium_laser", "c_er_small_laser"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"]
-    }}
+ "id": "summoner",
+ "name": "Summoner",
+ "tonnage": 70,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 17,
+  "RA": 17,
+  "LT": 22,
+  "RT": 22,
+  "CT": 27,
+  "HD": 9,
+  "LL": 23,
+  "RL": 23
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "summoner",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2298,
+   "heat_sinks": 14,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "c_lb10x_ac",
+     "ammo:c_lb10x_ac"
+    ],
+    "RA": [
+     "c_er_ppc"
+    ],
+    "LT": [
+     "c_lrm15",
+     "ammo:c_lrm15*2"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. LB 10-X AC, ER PPC, LRM 15; walks 5, runs 8, jumps 5.",
+   "source": {
+    "mul_id": 3183,
+    "megamek": "data/mekfiles/meks/3050U/Thor (Summoner) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Thor (Summoner) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2298
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2145,
+   "heat_sinks": 14,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle"
+    ],
+    "RA": [
+     "c_large_pulse_laser"
+    ],
+    "LT": [
+     "c_srm6",
+     "ammo:c_srm6*2"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. Gauss Rifle, Large Pulse Laser, SRM 6; walks 5, runs 8, jumps 5.",
+   "source": {
+    "mul_id": 3174,
+    "megamek": "data/mekfiles/meks/3050U/Thor (Summoner) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Sniper",
+    "bv": "sheet",
+    "sheet": "Thor (Summoner) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2145
+   }
+  },
+  {
+   "model": "B",
+   "bv": 2159,
+   "heat_sinks": 14,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lrm20",
+     "c_srm4",
+     "ammo:c_lrm20:narc*2",
+     "ammo:c_srm4:narc"
+    ],
+    "RA": [
+     "c_lrm20",
+     "c_srm4",
+     "ammo:c_lrm20:narc*2",
+     "ammo:c_srm4:narc"
+    ],
+    "LT": [
+     "c_ams",
+     "c_narc_beacon",
+     "ammo:c_ams",
+     "ammo:c_narc_beacon"
+    ]
+   },
+   "source": {
+    "mul_id": 3175,
+    "megamek": "data/mekfiles/meks/3050U/Thor (Summoner) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Missile Boat",
+    "bv": "sheet",
+    "sheet": "Thor (Summoner) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 2159
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 LRM 20s, 2 SRM 4s, Anti-Missile System, Narc Missile Beacon; walks 5, runs 8, jumps 5."
+  }
+ ]
 }

@@ -29,7 +29,9 @@ static func act(gc: GameController, side: int, skill: int = BotSkill.Level.VETER
 			if club != "":
 				gc.announce(u, club)
 				return gc.pick_up_club(u)
-			if f["twist"] != 0:
+			if f["twist"] == BotFire.FLIP:
+				gc.set_arms_flipped(u, true)
+			elif f["twist"] != 0:
 				gc.set_torso_twist(u, f["twist"])
 			var modes: Dictionary = f.get("modes", {})
 			for i: int in modes:
@@ -41,7 +43,8 @@ static func act(gc: GameController, side: int, skill: int = BotSkill.Level.VETER
 			if tag != "":
 				f["reason"] += "; " + tag
 			var aim := BotAim.choose(s, u, f["shots"]) if BotSkill.advanced_tricks() else ""
-			gc.announce(u, f["reason"] + (" (twists its torso)" if f["twist"] != 0 else "") + ("; " + aim if aim != "" else ""))
+			gc.announce(u, f["reason"] + (" (flips its arms to fire backwards)" if f["twist"] == BotFire.FLIP
+					else " (twists its torso)" if f["twist"] != 0 else "") + ("; " + aim if aim != "" else ""))
 			return gc.declare_fire(u, f["shots"])
 		Phase.Kind.PHYSICAL_ATTACK:
 			var p := BotPhysical.plan(s, u)

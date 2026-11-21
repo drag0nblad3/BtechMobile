@@ -76,3 +76,26 @@ func test_cant_stand_on_one_leg_without_arms() -> void:
 	check(not Psr.can_stand(u), "one leg and no arms: can't")
 	u.structure[Location.LL] = 5
 	check(Psr.can_stand(u), "two legs, no arms: may try")
+
+
+func test_tries_to_stand_again_with_spare_mp() -> void:
+	var s := GameState.new(open_map(5, 5))
+	var u := mech("hunchback_hbk4g", 0, hex_at(2, 2), 0, 1)
+	s.add_unit(u)
+	u.prone = true
+	events.clear()
+	var dice := LoadedDice.new()
+	dice.queue_2d6(2)  # first try fails; then 6s: the fall, a second try that works
+	check(MoveExecutor.run(s, dice, _emit, u, MoveOptions.key(u.coord, 3), MoveMode.Kind.WALK, -1))
+	var stands := events.filter(func(e: Array) -> bool: return e[0] == GameEvent.STAND)
+	check_eq(stands.size(), 2, "4 walking MP: 2 for the first try, 2 spare for another (p. 51)")
+	check(not u.prone and u.facing == 3, "up on the second try")
+	var v := mech("hunchback_hbk4g", 0, hex_at(0, 0), 0, 2)
+	s.add_unit(v)
+	v.prone = true
+	events.clear()
+	dice = LoadedDice.new()
+	dice.queue_2d6(2)
+	var far := MoveOptions.key(Hex.neighbor(v.coord, 2), 2)
+	MoveExecutor.run(s, dice, _emit, v, far, MoveMode.Kind.WALK, -1)
+	check_eq(events.filter(func(e: Array) -> bool: return e[0] == GameEvent.STAND).size(), 1, "no spare MP left after the planned move: one try")

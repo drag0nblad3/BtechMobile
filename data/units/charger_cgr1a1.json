@@ -1,12 +1,58 @@
 {
-  "id": "charger_cgr1a1", "name": "Charger", "model": "CGR-1A1", "tonnage": 80,
-  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 10, "sprite": "charger",
-  "role": "Assault rammer. A huge engine makes it fast for its size, but five small lasers barely scratch; it wins by charging.",
-  "armor": {"HD": 9, "CT": 26, "LT": 18, "RT": 18, "LA": 13, "RA": 13, "LL": 22, "RL": 22},
-  "rear_armor": {"CT": 7, "LT": 6, "RT": 6},
-  "equipment": {
-    "HD": ["small_laser"],
-    "LT": ["small_laser", "small_laser"],
-    "RT": ["small_laser", "small_laser"]
-  }
+ "id": "charger_cgr1a1",
+ "name": "Charger",
+ "model": "CGR-1A1",
+ "tonnage": 80,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 20,
+  "RT": 20,
+  "CT": 25,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "small_laser"
+  ],
+  "RA": [
+   "small_laser"
+  ],
+  "LT": [
+   "small_laser"
+  ],
+  "RT": [
+   "small_laser"
+  ],
+  "HD": [
+   "small_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 559,
+  "megamek": "data/mekfiles/meks/3039u/Charger CGR-1A1.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Charger CGR-1A1 (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 981
+ },
+ "bv": 981,
+ "role": "Scout: fast and light, finds the enemy and stays alive. 5 Small Lasers; walks 5, runs 8.",
+ "sprite": "charger"
 }

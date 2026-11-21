@@ -1,0 +1,72 @@
+{
+ "id": "merlin_mln1a",
+ "name": "Merlin",
+ "model": "MLN-1A",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 18,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 26,
+  "HD": 9,
+  "LL": 19,
+  "RL": 19
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*5",
+   "flamer",
+   "machine_gun"
+  ],
+  "RT": [
+   "heat_sink*4",
+   "ppc",
+   "lrm5"
+  ],
+  "CT": [
+   "ammo:lrm5",
+   "ammo:machine_gun:half"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2177,
+  "megamek": "data/mekfiles/meks/3058Uu/Merlin MLN-1A.mtf",
+  "published": "RS:SW,RSFP:MERCS",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Merlin MLN-1A (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 1217
+ },
+ "bv": 1217,
+ "sprite": "merlin",
+ "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, Flamer, Machine Gun, PPC, LRM 5; walks 4, runs 6, jumps 4."
+}

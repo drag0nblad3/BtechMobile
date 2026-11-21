@@ -1,14 +1,59 @@
 {
-  "id": "centurion_cn9a", "name": "Centurion", "model": "CN9-A", "tonnage": 50,
-  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 10, "sprite": "centurion",
-  "role": "Medium brawler. AC/10 and LRMs at range, with a rear laser against flankers.",
-  "armor": {"HD": 9, "CT": 21, "LT": 16, "RT": 16, "LA": 14, "RA": 14, "LL": 16, "RL": 16},
-  "rear_armor": {"CT": 6, "LT": 5, "RT": 5},
-  "missing_actuators": {"RA": ["lower_arm", "hand"]},
-  "equipment": {
-    "RA": ["ac10"],
-    "RT": ["ammo:ac10", "ammo:ac10"],
-    "LT": ["lrm10", "ammo:lrm10"],
-    "CT": ["medium_laser", "medium_laser@rear"]
-  }
+ "id": "centurion_cn9a",
+ "name": "Centurion",
+ "model": "CN9-A",
+ "tonnage": 50,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 13,
+  "RT": 13,
+  "CT": 18,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "RA": [
+   "ac10"
+  ],
+  "LT": [
+   "heat_sink",
+   "lrm10",
+   "ammo:lrm10*2"
+  ],
+  "RT": [
+   "heat_sink",
+   "ammo:ac10*2"
+  ],
+  "CT": [
+   "medium_laser",
+   "medium_laser@rear"
+  ]
+ },
+ "source": {
+  "mul_id": 516,
+  "megamek": "data/mekfiles/meks/3039u/Centurion CN9-A.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Centurion CN9-A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 945
+ },
+ "bv": 945,
+ "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, AC/10, LRM 10; walks 4, runs 6.",
+ "sprite": "centurion"
 }

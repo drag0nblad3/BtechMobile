@@ -1,0 +1,64 @@
+{
+ "id": "pack_hunter",
+ "name": "Pack Hunter",
+ "model": "",
+ "tonnage": 30,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 6,
+  "RT": 6,
+  "CT": 10,
+  "HD": 7,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 3
+ },
+ "equipment": {
+  "LT": [
+   "heat_sink",
+   "jump_jet*3",
+   "endo_steel"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet*3",
+   "c_er_ppc",
+   "endo_steel"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2392,
+  "megamek": "data/mekfiles/meks/3060u/Pack Hunter.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Pack Hunter (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1369
+ },
+ "bv": 1369,
+ "sprite": "pack_hunter",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. ER PPC; walks 7, runs 11, jumps 7."
+}

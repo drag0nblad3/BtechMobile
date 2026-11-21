@@ -1,0 +1,77 @@
+{
+ "id": "icarus_ii_icr2s",
+ "name": "Icarus II",
+ "model": "ICR-2S",
+ "tonnage": 40,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 11,
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 15,
+  "RT": 15,
+  "CT": 16,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "lb10x_ac",
+   "small_laser",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "ferro_fibrous*4"
+  ],
+  "LT": [
+   "heat_sink",
+   "ammo:lb10x_ac",
+   "ammo:lb10x_ac:cluster",
+   "ferro_fibrous*4"
+  ],
+  "RT": [
+   "heat_sink",
+   "medium_pulse_laser",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1601,
+  "megamek": "data/mekfiles/meks/3075/Icarus II ICR-2S.mtf",
+  "published": "RS:3075u-AW,RSFP:Proliferation",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Icarus II ICR-2S (ForcePack-Record-Sheets-Proliferation-Cycle)",
+  "megamek_bv": 986
+ },
+ "bv": 986,
+ "sprite": "icarus_ii",
+ "role": "Brawler: built to slug it out at medium range. LB 10-X AC, Small Laser, Medium Pulse Laser; walks 5, runs 8, jumps 5."
+}

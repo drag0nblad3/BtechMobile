@@ -114,6 +114,16 @@ func on_twist(dir: int) -> void:
 		_refresh()
 
 
+func on_flip() -> void:
+	if attacker and is_weapon_phase():
+		controller.set_arms_flipped(attacker, not attacker.arms_flipped)
+		shots.clear()
+		primary_id = -1
+		if target or target_hex != Hex.INVALID:
+			_default_shots()
+		_refresh()
+
+
 func on_skip() -> void:
 	if attacker == null:
 		return

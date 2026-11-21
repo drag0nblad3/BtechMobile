@@ -1,0 +1,76 @@
+{
+ "id": "cataphract_ctf3d",
+ "name": "Cataphract",
+ "model": "CTF-3D",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 16,
+ "engine_type": "xl",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 16,
+  "RT": 16,
+  "CT": 26,
+  "HD": 9,
+  "LL": 19,
+  "RL": 19
+ },
+ "rear_armor": {
+  "LT": 9,
+  "RT": 9,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser"
+  ],
+  "RA": [
+   "ultra_ac5",
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "medium_laser@rear",
+   "ammo:lb10x_ac:cluster",
+   "ammo:lb10x_ac",
+   "case"
+  ],
+  "RT": [
+   "lb10x_ac",
+   "medium_laser@rear",
+   "ammo:ultra_ac5",
+   "case"
+  ],
+  "CT": [
+   "heat_sink*2"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 469,
+  "megamek": "data/mekfiles/meks/3050U/Cataphract CTF-3D.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Cataphract CTF-3D (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1325
+ },
+ "bv": 1325,
+ "sprite": "cataphract",
+ "role": "Sniper: hangs back and hits from long range. 4 Medium Lasers, Ultra AC/5, LB 10-X AC; walks 4, runs 6, jumps 4."
+}

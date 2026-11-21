@@ -87,11 +87,10 @@ func test_ecm_and_standard_ammo_get_no_help() -> void:
 
 func test_designs_carry_narc() -> void:
 	var db := UnitDb.load_dir()
-	var raven := Unit.new(9, db.get_def("raven_rvn3l"), 0, Vector2i.ZERO, 0)
-	check(raven.weapons.any(func(w: MountedWeapon) -> bool: return w.def.beacon), "Raven has a beacon")
 	var kto := Unit.new(9, db.get_def("kintaro_kto19"), 0, Vector2i.ZERO, 0)
-	check(kto.weapons.filter(func(w: MountedWeapon) -> bool: return w.narc_ammo).size() == 2, "both SRM racks can load Narc missiles")
-	check(db.get_def("hunchback_hbk4g_rac").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].rotary))
+	check(kto.weapons.any(func(w: MountedWeapon) -> bool: return w.def.beacon), "Kintaro has a beacon")
+	check(kto.weapons.filter(func(w: MountedWeapon) -> bool: return w.narc_ammo).size() == 3, "every launcher can load Narc missiles")
+	check(mech("test_hunchback_hbk4g_rac", 0, Vector2i.ZERO).weapons.any(func(w: MountedWeapon) -> bool: return w.def.rotary))
 
 
 func test_bot_tags_target_for_homing_missiles() -> void:
@@ -127,3 +126,27 @@ func test_indirect_fire_at_a_pod_needs_no_spotter() -> void:
 	check(not th.mods.any(func(m: Dictionary) -> bool: return m["label"].begins_with("spotter")), "no spotter modifiers")
 	l.weapons[0].mode = ""
 	check(not ToHitCalc.weapon(s, l, l.weapons[0], t).possible(), "standard missiles can't home on the pod")
+
+
+func test_ams_can_shoot_down_a_pod() -> void:
+	events.clear()
+	var s := GameState.new(open_map(16, 4))
+	s.turn = 1
+	var n := Unit.new(1, _def("n", {"RA": ["narc_beacon"], "RT": ["ammo:narc_beacon"]}), 0, hex_at(1, 2), 2)
+	var t := Unit.new(3, _def("t", {"CT": ["ams"], "LT": ["ammo:ams"]}), 1, hex_at(4, 2), 5)
+	s.add_unit(n)
+	s.add_unit(t)
+	check(AntiMissile.engaging(t, n, n.weapons[0]) != null, "a Narc pod is a missile the AMS can engage")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(10)
+	dice.d6_queue.append(4)  # 4-6: shot down (p. 206)
+	var d := _shoot(s, n, t, dice)
+	check(d.get("pod_shot_down", false), "4 destroys the pod")
+	check(t.narc_pods.is_empty())
+	check(Explainer.text(events[-1], s, ExplainLevel.FULL).contains("shoots down"))
+	dice = LoadedDice.new()
+	dice.queue_2d6(10)
+	dice.d6_queue.append(3)  # 1-3: the pod gets through
+	d = _shoot(s, n, t, dice)
+	check(not d.get("pod_shot_down", false) and d.has("narc_loc"), "3: it sticks")
+	check_eq(t.narc_pods.size(), 1)

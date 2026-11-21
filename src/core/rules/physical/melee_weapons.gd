@@ -59,6 +59,8 @@ static func _weapon(state: GameState, a: Unit, t: Unit, i: int) -> Dictionary:
 	var side := FiringArc.LEFT if arm == Location.LA else FiringArc.RIGHT
 	if a.melee_lost.has(i) or a.is_location_out(arm):
 		th.impossible = "The %s is destroyed" % kind
+	elif a.arms_flipped:
+		th.impossible = "Its arms are flipped backwards this turn"
 	elif not a.has_working_actuator(arm, "shoulder"):
 		th.impossible = "A broken shoulder can't swing a %s" % kind
 	elif a.def.has_actuator(arm, "hand") and not a.has_working_actuator(arm, "hand"):

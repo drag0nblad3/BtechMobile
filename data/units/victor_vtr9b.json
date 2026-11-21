@@ -1,17 +1,69 @@
 {
-  "id": "victor_vtr9b", "name": "Victor", "model": "VTR-9B", "tonnage": 80,
-  "walk_mp": 4, "jump_mp": 4, "heat_sinks": 15, "sprite": "victor",
-  "role": "Jumping assault brawler. Leaps in close and fires an AC/20; light armor for its size.",
-  "armor": {"HD": 9, "CT": 30, "LT": 22, "RT": 22, "LA": 20, "RA": 20, "LL": 27, "RL": 27},
-  "rear_armor": {"CT": 9, "LT": 7, "RT": 7},
-  "missing_actuators": {"RA": ["lower_arm", "hand"]},
-  "equipment": {
-    "RA": ["ac20"],
-    "LA": ["medium_laser", "medium_laser"],
-    "LT": ["srm4", "ammo:srm4", "heat_sink", "heat_sink", "heat_sink"],
-    "RT": ["ammo:ac20", "ammo:ac20", "heat_sink", "heat_sink"],
-    "CT": ["jump_jet", "jump_jet"],
-    "LL": ["jump_jet"],
-    "RL": ["jump_jet"]
-  }
+ "id": "victor_vtr9b",
+ "name": "Victor",
+ "model": "VTR-9B",
+ "tonnage": 80,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 15,
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*2"
+  ],
+  "RA": [
+   "ac20"
+  ],
+  "LT": [
+   "srm4",
+   "ammo:srm4"
+  ],
+  "RT": [
+   "heat_sink",
+   "ammo:ac20*3"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ],
+  "LL": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "RL": [
+   "heat_sink",
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 3409,
+  "megamek": "data/mekfiles/meks/3039u/Victor VTR-9B.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Victor VTR-9B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 1378
+ },
+ "bv": 1378,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Lasers, AC/20, SRM 4; walks 4, runs 6, jumps 4.",
+ "sprite": "victor"
 }

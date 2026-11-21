@@ -61,13 +61,14 @@ func test_dfa_hit_displaces_target() -> void:
 	var dice := LoadedDice.new()
 	dice.queue_2d6(12)
 	dice.d6_queue.append_array([3, 3, 3])  # punch table: center torso
+	dice.d6_queue.append_array([1, 1, 1, 1])  # its own legs: one leg, then no critical
 	var old := t.coord
 	var step := ChargeResolve.resolve(s, dice, func(_ty, _d): pass, opt)
 	check(t.coord == old, "nobody moves until every attack is rolled")
 	ChargeResolve.displace(s, dice, func(_ty, _d): pass, step)
 	check_eq(t.coord, Hex.neighbor(old, 0), "target shoved away")
 	check_eq(a.coord, old, "attacker takes its hex")
-	check_eq(a.psr_pending.size(), 1)
+	check_eq(a.psr_pending.size(), 1, str(a.psr_pending))
 
 
 func test_push_option() -> void:

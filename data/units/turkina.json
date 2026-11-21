@@ -1,22 +1,126 @@
 {
-  "id": "turkina", "name": "Turkina", "tonnage": 95, "walk_mp": 4, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "turkina", "engine_type": "xl", "structure_type": "endo_steel",
-  "armor": {"HD": 9, "CT": 45, "LT": 30, "RT": 30, "LA": 31, "RA": 31, "LL": 39, "RL": 39},
-  "rear_armor": {"CT": 14, "LT": 10, "RT": 10},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "RA": ["endo_steel*3"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 20, "role": "Clan assault missile boat. Two LRM 20s, Streak SRM 6s and pulse lasers: dangerous at every range.", "equipment": {
-      "LT": ["c_lrm20", "ammo:c_lrm20", "c_streak_srm6", "heat_sink"],
-      "RT": ["c_lrm20", "ammo:c_lrm20", "c_streak_srm6", "ammo:c_streak_srm6", "heat_sink"],
-      "LA": ["c_large_pulse_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"],
-      "RA": ["c_large_pulse_laser", "c_er_medium_laser"],
-      "CT": ["c_ams", "ammo:c_ams"]
-    }},
-    {"model": "A", "heat_sinks": 22, "role": "Streak Turkina: Streak LRM 20s that never miss with a missile, plus an ATM 12.", "equipment": {
-      "LT": ["c_streak_lrm20", "ammo:c_streak_lrm20", "ammo:c_streak_lrm20", "heat_sink"],
-      "RT": ["c_atm12", "ammo:c_atm12", "ammo:c_atm12:er", "ammo:c_atm12:he", "heat_sink"],
-      "LA": ["c_er_large_laser", "c_er_medium_laser", "heat_sink", "heat_sink", "heat_sink"],
-      "RA": ["c_er_large_laser", "c_er_medium_laser", "heat_sink", "heat_sink"]
-    }}
+ "id": "turkina",
+ "name": "Turkina",
+ "tonnage": 95,
+ "walk_mp": 3,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 32,
+  "RA": 32,
+  "LT": 30,
+  "RT": 30,
+  "CT": 45,
+  "HD": 9,
+  "LL": 40,
+  "RL": 40
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
   ]
+ },
+ "omni": true,
+ "sprite": "turkina",
+ "equipment": {
+  "LT": [
+   "heat_sink*2",
+   "jump_jet"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "jump_jet"
+  ],
+  "CT": [
+   "jump_jet"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2944,
+   "heat_sinks": 19,
+   "jump_mp": 3,
+   "equipment": {
+    "LA": [
+     "c_lb5x_ac*2",
+     "ammo:c_lb5x_ac",
+     "ammo:c_lb5x_ac:cluster"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "c_er_ppc*2"
+    ],
+    "LT": [
+     "c_lrm15",
+     "ammo:c_lrm15*2"
+    ],
+    "RT": [
+     "c_lrm15",
+     "ammo:c_lrm15"
+    ],
+    "LL": [
+     "heat_sink"
+    ],
+    "RL": [
+     "heat_sink"
+    ]
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 LB 5-X ACs, 2 ER PPCs, 2 LRM 15s; walks 3, runs 5, jumps 3.",
+   "source": {
+    "mul_id": 3332,
+    "megamek": "data/mekfiles/meks/3058Uu/Turkina Prime.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2944
+   }
+  },
+  {
+   "model": "A",
+   "bv": 2906,
+   "heat_sinks": 15,
+   "jump_mp": 3,
+   "equipment": {
+    "LA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle*2",
+     "ammo:c_lrm20"
+    ],
+    "RA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle*2",
+     "ammo:c_lrm20"
+    ],
+    "LT": [
+     "c_lrm20",
+     "ammo:c_lrm20"
+    ],
+    "RT": [
+     "c_lrm20",
+     "ammo:c_lrm20"
+    ]
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 Gauss Rifles, 2 LRM 20s; walks 3, runs 5, jumps 3.",
+   "source": {
+    "mul_id": 3326,
+    "megamek": "data/mekfiles/meks/3058Uu/Turkina A.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 2906
+   }
+  }
+ ]
 }

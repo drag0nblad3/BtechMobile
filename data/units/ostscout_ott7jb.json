@@ -1,0 +1,63 @@
+{
+ "id": "ostscout_ott7jb",
+ "name": "Ostscout",
+ "model": "OTT-7Jb",
+ "tonnage": 35,
+ "walk_mp": 8,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 6,
+  "RA": 6,
+  "LT": 9,
+  "RT": 9,
+  "CT": 12,
+  "HD": 6,
+  "LL": 8,
+  "RL": 8
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*2"
+  ],
+  "RA": [
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet*4",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "jump_jet*4",
+   "beagle_probe",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "medium_laser"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2367,
+  "megamek": "data/mekfiles/meks/3075/Ostscout OTT-7Jb.mtf",
+  "published": "RS:3075u-AW,RSFP:MERCS",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Ostscout OTT-7Jb (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 610
+ },
+ "bv": 610,
+ "sprite": "ostscout",
+ "role": "Scout: fast and light, finds the enemy and stays alive. Medium Laser; walks 8, runs 12, jumps 8."
+}

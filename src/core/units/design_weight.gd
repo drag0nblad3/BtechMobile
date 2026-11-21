@@ -9,6 +9,8 @@ const COCKPIT_TONS := 3.0
 const ARMOR_PER_TON := 16.0
 ## Ferro-fibrous gives 12% more points per ton; endo steel halves structure.
 const FERRO_MULT := 1.12
+const LIGHT_FERRO_MULT := 1.06
+const HEAVY_FERRO_MULT := 1.24
 
 static var _engine: Dictionary = {}
 
@@ -23,33 +25,47 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0)
 	return {
 		"structure": _half_up(def.tonnage / 10.0 * (0.5 if def.structure_type == "endo_steel" else 1.0)),
-		"engine": XlEngine.tons(engine_tons(rating), def.is_xl()),
-		"gyro": float(ceili(rating / 100.0)),
+		"engine": XlEngine.tons(engine_tons(rating), def.engine_type),
+		"gyro": Gyro.tons(def),
 		"cockpit": COCKPIT_TONS,
 		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
 		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
-		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (ferro_mult(def) if def.armor_type == "ferro_fibrous" else 1.0))),
+		"armor": _half_up(armor_pts / (ARMOR_PER_TON * armor_mult(def))),
 		"weapons": weapons,
-		"ammo": float(def.ammo_mounts.size()),
-		"case": def.case_locs.size() * 0.5,
-		"ecm": 1.5 if def.ecm_loc >= 0 else 0.0,
+		"ammo": def.ammo_mounts.reduce(func(t: float, a: Dictionary) -> float: return t + (0.5 if a.get("half", false) else 1.0), 0.0),
+		"case": def.case_locs.size() * 0.5 + def.case2_locs.size() * (0.5 if def.is_clan() else 1.0),
+		"ecm": Ecm.tons(def) if def.ecm_loc >= 0 else 0.0,
 		"c3": (C3.MASTER_TONS if def.c3_master_loc >= 0 else 0.0) + (C3.SLAVE_TONS if def.c3_slave_loc >= 0 else 0.0),
 		"masc": float(Masc.size(def)) if def.masc_loc >= 0 else 0.0,
+		"inert": InertGear.tons(def),
+		"probe": float(ActiveProbe.KINDS[def.probe]["tons"]) if def.probe != "" else 0.0,
 		"supercharger": Supercharger.size_tons(def) if def.supercharger_loc >= 0 else 0.0,
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,
 		"melee": def.melee.reduce(func(t: float, m: Dictionary) -> float: return t + def.melee_tons(m["kind"]), 0.0),
 	}
 
 
+## Armor points per ton relative to standard. TODO(rules): construction data.
+static func armor_mult(def: UnitDef) -> float:
+	match def.armor_type:
+		"ferro_fibrous":
+			return ferro_mult(def)
+		"light_ferro":
+			return LIGHT_FERRO_MULT
+		"heavy_ferro":
+			return HEAVY_FERRO_MULT
+	return 1.0
+
+
 static func ferro_mult(def: UnitDef) -> float:
 	return ClanTech.FERRO_MULT if def.is_clan() else FERRO_MULT
 
 
-## Heat sinks the engine can hold without using critical slots: rating / 25
-## (the first 10 also weigh nothing). Designs list the rest as items.
+## Heat sinks the engine can hold without using critical slots: rating / 25.
+## The first 10 weigh nothing; a small engine lists some of those 10 as items.
 ## TODO(rules): construction data, not in the Core Rulebook.
 static func engine_sink_capacity(def: UnitDef) -> int:
-	return maxi(UnitDef.ENGINE_HEAT_SINKS, def.tonnage * def.walk_mp / 25)
+	return def.tonnage * def.walk_mp / 25
 
 
 static func total(def: UnitDef) -> float:

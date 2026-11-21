@@ -1,0 +1,72 @@
+{
+ "id": "crusader_crd10s",
+ "name": "Crusader",
+ "model": "CRD-10S",
+ "tonnage": 65,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 14,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 21,
+  "RT": 21,
+  "CT": 30,
+  "HD": 9,
+  "LL": 27,
+  "RL": 27
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "equipment": {
+  "LA": [
+   "c_lrm15+artemis",
+   "c_er_medium_pulse_laser",
+   "c_heavy_machine_gun"
+  ],
+  "RA": [
+   "c_lrm15+artemis",
+   "c_er_medium_pulse_laser",
+   "c_heavy_machine_gun"
+  ],
+  "LT": [
+   "ammo:c_lrm15*2",
+   "ammo:c_streak_srm6",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "ammo:c_lrm15*2",
+   "ammo:c_streak_srm6",
+   "ammo:c_heavy_machine_gun:half",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "LL": [
+   "c_streak_srm6"
+  ],
+  "RL": [
+   "c_streak_srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 8234,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 5/Crusader CRD-10S.mtf",
+  "published": "ShrapRS",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Crusader CRD-10S (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 2264
+ },
+ "bv": 2264,
+ "sprite": "crusader",
+ "role": "Missile boat: rains missiles from a distance. 2 LRM 15s, 2 ER Medium Pulse Lasers, 2 Heavy Machine Guns, 2 Streak SRM 6s; walks 5, runs 8."
+}

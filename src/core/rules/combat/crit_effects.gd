@@ -19,9 +19,11 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			return "engine hit: +5 heat every turn"
 		CritSlot.Kind.GYRO:
 			u.gyro_hits += 1
-			if u.gyro_hits >= GYRO_KILL:
+			if Gyro.destroyed(u):
 				u.psr_pending.append({"reason": "gyro destroyed", "auto_fall": true, "mod": 0})
 				return "gyro destroyed: falls and can't stand"
+			if not Gyro.hit_forces_roll(u.def):
+				return "heavy-duty gyro hit: +%d to piloting rolls, no roll now" % Gyro.psr_mod(u)
 			u.psr_pending.append({"reason": "gyro hit", "mod": 0})
 			return "gyro hit: +2 to piloting rolls"
 		CritSlot.Kind.COCKPIT:
@@ -70,6 +72,11 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			return "supercharger destroyed"
 		CritSlot.Kind.C3:
 			return "C3 computer destroyed: it drops out of its network" + (", and the network goes down with its Master" if slot.name == "C3 Master" else "")
+		CritSlot.Kind.GEAR:
+			return "%s destroyed" % slot.name
+		CritSlot.Kind.PROBE:
+			u.probe_lost = true
+			return "active probe destroyed"
 		CritSlot.Kind.TARGETING:
 			u.tc_lost = true
 			return "targeting computer destroyed: no more -1 to hit"

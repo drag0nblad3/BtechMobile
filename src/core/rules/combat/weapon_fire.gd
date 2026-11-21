@@ -62,6 +62,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if w.def.streak and ams == null:
 		data["streak_lock"] = true
 	if w.def.beacon:
+		if ams != null:
+			data["ams_roll"] = AntiMissile.single_missile_roll(dice)
+			if AntiMissile.single_missile_down(data["ams_roll"]):
+				data["pod_shot_down"] = true
+				emit.call(GameEvent.WEAPON_FIRED, data)
+				return
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
 	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing)
@@ -70,6 +76,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if ams != null:
 		data["ams"] = true
 	var packets: Array[int] = c["packets"]
+	if not w.def.damage_by_range.is_empty():  # variable damage (p. 182)
+		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
+		packets = [w.def.damage_at(Hex.distance(attacker.coord, target.coord), shift)] as Array[int]
+		data["damage_at_range"] = packets[0]
 	if c["n"] > 0 or ams != null:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]
@@ -104,6 +114,11 @@ static func _attach_pod(state: GameState, dice: Dice, emit: Callable, attacker: 
 
 static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 	var want := WeaponModes.shots(w)
+	if w.def.one_shot:  # p. 182: once a game
+		if w.spent:
+			return 0
+		w.spent = true
+		return 1
 	if not w.def.uses_ammo():
 		return want
 	var kind := WeaponModes.ammo_kind(w)

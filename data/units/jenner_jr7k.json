@@ -1,0 +1,72 @@
+{
+ "id": "jenner_jr7k",
+ "name": "Jenner",
+ "model": "JR7-K",
+ "tonnage": 35,
+ "walk_mp": 7,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 4,
+  "RA": 4,
+  "LT": 8,
+  "RT": 8,
+  "CT": 8,
+  "HD": 7,
+  "LL": 6,
+  "RL": 6
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 3
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*2"
+  ],
+  "RA": [
+   "medium_laser*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "ferro_fibrous*7"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "ammo:srm4",
+   "case",
+   "ferro_fibrous*7"
+  ],
+  "CT": [
+   "jump_jet",
+   "srm4"
+  ],
+  "HD": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 1694,
+  "megamek": "data/mekfiles/meks/3050U/Jenner JR7-K.mtf",
+  "published": "RSFP:Wave 2",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Jenner JR7-K (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 889
+ },
+ "bv": 889,
+ "sprite": "jenner",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 Medium Lasers, SRM 4; walks 7, runs 11, jumps 5."
+}

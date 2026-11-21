@@ -110,14 +110,14 @@ func test_hatchet_and_sword() -> void:
 
 func test_club_from_woods() -> void:
 	var s := GameState.new(make_map(["c0 c0 c0", "c0 H0 c0", "c0 c0 c0"]))
-	var a := mech("blackjack_bj1", 0, hex_at(1, 1), 0, 1)
-	var t := mech("hunchback_hbk4g", 1, hex_at(1, 0), 3, 2)
+	var a := mech("hunchback_hbk4g", 0, hex_at(1, 1), 0, 1)
+	var t := mech("blackjack_bj1", 1, hex_at(1, 0), 3, 2)
 	s.add_unit(a)
 	s.add_unit(t)
 	check_eq(MeleeWeapons.club_here(s, a), "tree")
 	a.club = "tree"
 	var c := _opt(s, a, t, "club")
-	check_eq(c["damage"], 9, "45 t / 5")
+	check_eq(c["damage"], 10, "50 t / 5")
 	check(c["to_hit"].possible(), c["to_hit"].impossible)
 	s.declared_physical.append_array(PhysicalOptions.declare(s, a, [{"kind": "club", "limb": -1, "target_id": t.id}]))
 	var dice := LoadedDice.new()

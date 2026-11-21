@@ -86,3 +86,12 @@ func test_controller_turn_flow() -> void:
 	check(gc.declare_fire(shooter, []), "hold fire")
 	check(gc.declare_fire(a if shooter == b else b, []), "hold fire")
 	check_eq(s.turn, 2, "everyone done -> next turn")
+
+
+func test_road_level_change_is_one_cheaper() -> void:
+	var m := make_map(["p0 p1 p3", "c0 c1 p2"])
+	check_eq(MoveCost.enter_cost(m, _hex(0, 0), _hex(1, 0), MoveMode.Kind.WALK), 1, "road to road, up 1: 1 + 0 (p. 53)")
+	check_eq(MoveCost.enter_cost(m, _hex(2, 1), _hex(2, 0), MoveMode.Kind.WALK), 1, "road to road, level 2 to 3")
+	check_eq(MoveCost.enter_cost(m, _hex(0, 1), _hex(1, 1), MoveMode.Kind.WALK), 2, "off the road: full level cost")
+	check_eq(MoveCost.enter_cost(m, _hex(0, 1), _hex(0, 0), MoveMode.Kind.WALK), 1, "onto the road from clear at the same level")
+	check_eq(MoveCost.enter_cost(m, _hex(1, 0), _hex(2, 0), MoveMode.Kind.WALK), 2, "road, up 2: 1 + 1")

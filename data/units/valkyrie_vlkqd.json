@@ -1,0 +1,72 @@
+{
+ "id": "valkyrie_vlkqd",
+ "name": "Valkyrie",
+ "model": "VLK-QD",
+ "tonnage": 30,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 12,
+  "RT": 12,
+  "CT": 16,
+  "HD": 9,
+  "LL": 14,
+  "RL": 14
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "ferro_fibrous*7"
+  ],
+  "RA": [
+   "medium_pulse_laser",
+   "ferro_fibrous*7"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "lrm10+artemis",
+   "endo_steel*7"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "ammo:lrm10",
+   "case",
+   "endo_steel*7"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3373,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 9/Valkyrie VLK-QD.mtf",
+  "published": "RSFP:Wave 1,RG09,RGv1",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Valkyrie VLK-QD (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 807
+ },
+ "bv": 807,
+ "sprite": "valkyrie",
+ "role": "Missile boat: rains missiles from a distance. Medium Pulse Laser, LRM 10; walks 5, runs 8, jumps 5."
+}

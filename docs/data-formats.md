@@ -53,6 +53,8 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
 - `indirect: true` (LRMs) lets the weapon fire without line of sight through a spotter.
 - `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
+- `cluster_mod` adds to Cluster Hits rolls (MRM -1); `one_shot: true` fires once a game with no ammo bins (rocket launchers); `munitions` (ATM, MML) give a kind's own stats, `label` and `ammo_per_ton` for `ammo:<id>:<kind>` bins.
+- `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
 - `beacon: true` (Narc): a hit attaches a homing pod instead of damage; `ammo_damage` overrides
@@ -72,7 +74,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 ## `data/units/<id>.json`
 ```json
 {"id": "atlas_as7d", "name": "Atlas", "model": "AS7-D", "tonnage": 100,
- "walk_mp": 3, "jump_mp": 0, "heat_sinks": 20, "sprite": "atlas", "role": "one line",
+ "walk_mp": 3, "jump_mp": 0, "heat_sinks": 20, "sprite": "atlas", "role": "one line", "bv": 1897, "source": {"bv": "sheet", "sheet": "...", "megamek": "data/mekfiles/...", "mul_id": 140},
  "armor": {"HD": 9, "CT": 47, "LT": 32, "RT": 32, "LA": 34, "RA": 34, "LL": 41, "RL": 41},
  "rear_armor": {"CT": 14, "LT": 10, "RT": 10},
  "missing_actuators": {"LA": ["lower_arm", "hand"]},
@@ -81,12 +83,12 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - Location codes: `HD CT LT RT LA RA LL RL`. Internal structure comes from tonnage.
 - Equipment items: a weapon id (`@rear` for rear-firing, `+artemis` for a launcher with
   Artemis IV), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
-  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
+  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `beagle_probe` / `c_active_probe` / `c_light_active_probe` (`ActiveProbe`), `a_pod` / `tag` / `c_tag` (`InertGear`, no effect yet), `light_ferro` / `heavy_ferro` (bulky armor slots; set `"armor_type"` too; also `"engine_type": "light"|"compact"` and `"gyro_type": "xl"|"compact"|"heavy_duty"` on the design), `<weapon>~N` (its last N slots spill into the next location in), `ammo:<id>:half` (half-ton bin), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
   rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
   `heat_sink` items. `"heat_sink_type": "double"` makes them all doubles (2 heat,
-  3 slots each). A `case` item puts CASE in that location. `hatchet` or `sword` in an arm mounts that physical weapon.
+  3 slots each). A `case` item puts CASE in that location, `case2` CASE II. `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
   `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.

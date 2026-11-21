@@ -1,0 +1,73 @@
+{
+ "id": "blackjack_bj2t",
+ "name": "Blackjack",
+ "model": "BJ-2t",
+ "tonnage": 45,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 15,
+  "RT": 15,
+  "CT": 18,
+  "HD": 9,
+  "LL": 17,
+  "RL": 17
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_large_laser"
+  ],
+  "RA": [
+   "er_large_laser"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "srm4",
+   "ammo:srm4",
+   "case"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "srm4",
+   "ammo:srm4",
+   "case"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": null,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 21/Blackjack BJ-2t.mtf",
+  "published": "ShrapRS",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Blackjack BJ-2t (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1145
+ },
+ "bv": 1145,
+ "sprite": "blackjack",
+ "role": "Sniper: hangs back and hits from long range. 2 ER Large Lasers, 2 SRM 4s; walks 4, runs 6, jumps 4."
+}

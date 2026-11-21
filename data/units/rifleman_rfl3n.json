@@ -1,14 +1,68 @@
 {
-  "id": "rifleman_rfl3n", "name": "Rifleman", "model": "RFL-3N", "tonnage": 60,
-  "walk_mp": 4, "jump_mp": 0, "heat_sinks": 10, "sprite": "rifleman",
-  "role": "Heavy gun platform. Big long-range firepower, thin armor and only 10 heat sinks: firing everything overheats it fast.",
-  "armor": {"HD": 9, "CT": 15, "LT": 12, "RT": 12, "LA": 12, "RA": 12, "LL": 12, "RL": 12},
-  "rear_armor": {"CT": 4, "LT": 2, "RT": 2},
-  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
-  "equipment": {
-    "LA": ["large_laser", "ac5"],
-    "RA": ["large_laser", "ac5"],
-    "LT": ["medium_laser", "ammo:ac5"],
-    "RT": ["medium_laser", "ammo:ac5"]
-  }
+ "id": "rifleman_rfl3n",
+ "name": "Rifleman",
+ "model": "RFL-3N",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 15,
+  "RT": 15,
+  "CT": 22,
+  "HD": 6,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 2,
+  "RT": 2,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "large_laser",
+   "ac5"
+  ],
+  "RA": [
+   "large_laser",
+   "ac5"
+  ],
+  "LT": [
+   "medium_laser"
+  ],
+  "RT": [
+   "medium_laser"
+  ],
+  "CT": [
+   "ammo:ac5"
+  ],
+  "LL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 2697,
+  "megamek": "data/mekfiles/meks/3039u/Rifleman RFL-3N.mtf",
+  "published": "RSFP:Wave 1,RSFP:WD,RS:Gothic",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Rifleman RFL-3N (BATTLETECH_ForcePacks_Record_Sheets_-_Wolfs_Dragoons)",
+  "megamek_bv": 1039
+ },
+ "bv": 1039,
+ "role": "Sniper: hangs back and hits from long range. 2 Large Lasers, 2 AC/5s, 2 Medium Lasers; walks 4, runs 6.",
+ "sprite": "rifleman"
 }

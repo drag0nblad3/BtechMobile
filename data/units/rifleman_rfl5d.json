@@ -1,0 +1,69 @@
+{
+ "id": "rifleman_rfl5d",
+ "name": "Rifleman",
+ "model": "RFL-5D",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 17,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 15,
+  "RT": 15,
+  "CT": 22,
+  "HD": 8,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "er_ppc",
+   "large_laser"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_ppc",
+   "large_laser"
+  ],
+  "LT": [
+   "heat_sink*3"
+  ],
+  "RT": [
+   "heat_sink*3"
+  ],
+  "CT": [
+   "medium_laser*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2699,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 8/Rifleman RFL-5D.mtf",
+  "published": "RSFP:Wave 1,RG08,RGv1",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Rifleman RFL-5D (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1395
+ },
+ "bv": 1395,
+ "sprite": "rifleman",
+ "role": "Brawler: built to slug it out at medium range. 2 ER PPCs, 2 Large Lasers, 2 Medium Lasers; walks 4, runs 6."
+}

@@ -1,14 +1,89 @@
 {
-  "id": "rifleman_iic", "name": "Rifleman IIC", "tonnage": 65, "walk_mp": 4, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "rifleman", "engine_type": "xl", "structure_type": "endo_steel", "model": "", "heat_sinks": 12, "jump_mp": 4, "role": "Clan rebuild of the anti-air Rifleman. Large pulse lasers and Ultra AC/5s for accurate long-range fire, now with jump jets.",
-  "armor": {"HD": 9, "CT": 29, "LT": 21, "RT": 21, "LA": 18, "RA": 17, "LL": 27, "RL": 27},
-  "rear_armor": {"CT": 9, "LT": 6, "RT": 6},
-  "equipment": {
-    "LA": ["endo_steel*3", "c_large_pulse_laser", "c_ultra_ac5"],
-    "RA": ["endo_steel*3", "c_large_pulse_laser", "c_ultra_ac5"],
-    "LT": ["endo_steel*1", "ammo:c_ultra_ac5", "c_er_medium_laser", "heat_sink", "heat_sink"],
-    "RT": ["ammo:c_ultra_ac5", "c_er_medium_laser"],
-    "CT": ["c_er_small_laser"],
-    "LL": ["jump_jet", "jump_jet"],
-    "RL": ["jump_jet", "jump_jet"]
-  }
+ "id": "rifleman_iic",
+ "name": "Rifleman IIC",
+ "model": "",
+ "tonnage": 65,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 19,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "c_large_pulse_laser*2",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "c_large_pulse_laser*2",
+   "endo_steel",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "heat_sink*4",
+   "jump_jet",
+   "endo_steel*2",
+   "ferro_fibrous"
+  ],
+  "RT": [
+   "heat_sink*4",
+   "jump_jet",
+   "endo_steel*2",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "jump_jet",
+   "c_active_probe"
+  ],
+  "HD": [
+   "c_er_small_laser"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 2710,
+  "megamek": "data/mekfiles/meks/3085u/Phoenix/Rifleman IIC.mtf",
+  "published": "RGv1,RG23,RSFP:MERCS-CLAN",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Rifleman IIC (ForcePack-Record-Sheets-Mercenaries-Clan)",
+  "megamek_bv": 2307
+ },
+ "bv": 2307,
+ "role": "Sniper: hangs back and hits from long range. 4 Large Pulse Lasers, ER Small Laser; walks 3, runs 5, jumps 3.",
+ "sprite": "rifleman"
 }

@@ -1,0 +1,72 @@
+{
+ "id": "hatchetman_hct6d",
+ "name": "Hatchetman",
+ "model": "HCT-6D",
+ "tonnage": 45,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 16,
+  "RT": 16,
+  "CT": 21,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 6
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "endo_steel*6"
+  ],
+  "RA": [
+   "hatchet",
+   "endo_steel*4"
+  ],
+  "LT": [
+   "heat_sink",
+   "er_medium_laser",
+   "guardian_ecm",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "rotary_ac5",
+   "ammo:rotary_ac5*2"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "er_medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1415,
+  "megamek": "data/mekfiles/meks/3050U/Hatchetman HCT-6D.mtf",
+  "published": "RSFP:HRR",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Hatchetman HCT-6D (ForcePack-Record-Sheets-Hansens-Roughriders)",
+  "megamek_bv": 1611
+ },
+ "bv": 1611,
+ "sprite": "hatchetman",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 ER Medium Lasers, Rotary AC/5; walks 5, runs 8, jumps 5."
+}

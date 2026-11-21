@@ -1,0 +1,81 @@
+{
+ "id": "marauder_ii_mad5a",
+ "name": "Marauder II",
+ "model": "MAD-5A",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "jump_mp": 3,
+ "heat_sinks": 29,
+ "engine_type": "xl",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 31,
+  "RT": 31,
+  "CT": 45,
+  "HD": 9,
+  "LL": 41,
+  "RL": 41
+ },
+ "rear_armor": {
+  "LT": 11,
+  "RT": 11,
+  "CT": 16
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*3",
+   "er_ppc",
+   "medium_laser"
+  ],
+  "RA": [
+   "heat_sink*3",
+   "er_ppc",
+   "medium_laser"
+  ],
+  "LT": [
+   "heat_sink*6",
+   "ammo:lb10x_ac*2",
+   "ammo:lb10x_ac:cluster"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "lb10x_ac",
+   "case"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink",
+   "jump_jet"
+  ],
+  "RL": [
+   "heat_sink",
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 2059,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 5/Marauder II MAD-5A.mtf",
+  "published": "RSFP:Wave 2,RG05,RGv1",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Marauder II MAD-5A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_Two)",
+  "megamek_bv": 2058
+ },
+ "bv": 2058,
+ "sprite": "marauder_ii",
+ "role": "Sniper: hangs back and hits from long range. 2 ER PPCs, 2 Medium Lasers, LB 10-X AC; walks 3, runs 5, jumps 3."
+}

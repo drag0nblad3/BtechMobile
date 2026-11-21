@@ -1,16 +1,56 @@
 {
-  "id": "phoenix_hawk_pxh1", "name": "Phoenix Hawk", "model": "PXH-1", "tonnage": 45,
-  "walk_mp": 6, "jump_mp": 6, "heat_sinks": 12, "sprite": "phoenix_hawk",
-  "role": "Light-medium hunter. Fast jumper with a large laser; can hit the rear of slow 'Mechs.",
-  "armor": {"HD": 9, "CT": 15, "LT": 11, "RT": 11, "LA": 8, "RA": 8, "LL": 13, "RL": 13},
-  "rear_armor": {"CT": 4, "LT": 2, "RT": 2},
-  "equipment": {
-    "RA": ["large_laser", "medium_laser", "machine_gun"],
-    "LA": ["medium_laser", "machine_gun"],
-    "CT": ["ammo:machine_gun"],
-    "LT": ["heat_sink", "jump_jet"],
-    "RT": ["heat_sink", "jump_jet"],
-    "LL": ["jump_jet", "jump_jet"],
-    "RL": ["jump_jet", "jump_jet"]
-  }
+ "id": "phoenix_hawk_pxh1",
+ "name": "Phoenix Hawk",
+ "model": "PXH-1",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 6,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser",
+   "machine_gun"
+  ],
+  "RA": [
+   "large_laser",
+   "medium_laser",
+   "machine_gun"
+  ],
+  "LT": [
+   "jump_jet*3"
+  ],
+  "RT": [
+   "jump_jet*3"
+  ],
+  "CT": [
+   "ammo:machine_gun"
+  ]
+ },
+ "source": {
+  "mul_id": 2491,
+  "megamek": "data/mekfiles/meks/3039u/Phoenix Hawk PXH-1.mtf",
+  "published": "RSFP:Wave 1,RS:Gothic",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Phoenix Hawk PXH-1 (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+  "megamek_bv": 1041
+ },
+ "bv": 1041,
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Lasers, 2 Machine Guns, Large Laser; walks 6, runs 9, jumps 6.",
+ "sprite": "phoenix_hawk"
 }

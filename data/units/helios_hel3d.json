@@ -1,0 +1,75 @@
+{
+ "id": "helios_hel3d",
+ "name": "Helios",
+ "model": "HEL-3D",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 15,
+  "RA": 15,
+  "LT": 18,
+  "RT": 18,
+  "CT": 22,
+  "HD": 9,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser*2"
+  ],
+  "RA": [
+   "gauss_rifle"
+  ],
+  "LT": [
+   "heat_sink",
+   "srm6",
+   "endo_steel*6"
+  ],
+  "RT": [
+   "srm6",
+   "ammo:srm6",
+   "ammo:gauss_rifle*2",
+   "case",
+   "endo_steel*6"
+  ],
+  "CT": [
+   "endo_steel*2"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1464,
+  "megamek": "data/mekfiles/meks/3060u/Helios HEL-3D.mtf",
+  "published": "RS:J,RSFP:SLDF2",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Helios HEL-3D (ForcePack-Record-Sheets-Second-Star-League-Assault-Lance)",
+  "megamek_bv": 1618
+ },
+ "bv": 1618,
+ "sprite": "helios",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, 2 SRM 6s, Gauss Rifle; walks 4, runs 6, jumps 4."
+}

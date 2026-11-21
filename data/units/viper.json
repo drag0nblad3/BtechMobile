@@ -1,16 +1,160 @@
 {
-  "id": "viper", "name": "Viper", "tonnage": 40, "walk_mp": 8, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "viper", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
-  "armor": {"HD": 9, "CT": 14, "LT": 11, "RT": 11, "LA": 9, "RA": 9, "LL": 15, "RL": 15},
-  "rear_armor": {"CT": 4, "LT": 4, "RT": 4},
-  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
-  "equipment": {"LA": ["endo_steel*7"], "RA": ["ferro_fibrous*7"]},
-  "configs": [
-    {"model": "Prime", "heat_sinks": 14, "jump_mp": 8, "role": "Clan jumping striker. Fast on the ground and in the air, with ER and pulse lasers to strike from behind.", "equipment": {
-      "LA": ["c_er_medium_laser", "c_medium_pulse_laser"],
-      "RA": ["c_er_medium_laser", "c_medium_pulse_laser"],
-      "LL": ["jump_jet", "jump_jet"],
-      "RL": ["jump_jet", "jump_jet"],
-      "LT": ["jump_jet", "jump_jet", "jump_jet", "jump_jet", "heat_sink", "heat_sink"]
-    }}
+ "id": "viper",
+ "name": "Viper",
+ "tonnage": 40,
+ "walk_mp": 8,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 13,
+  "RT": 13,
+  "CT": 16,
+  "HD": 9,
+  "LL": 19,
+  "RL": 19
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 7
+ },
+ "omni": true,
+ "sprite": "viper",
+ "equipment": {
+  "LA": [
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "endo_steel*3",
+   "ferro_fibrous"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "endo_steel*3",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "endo_steel"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
   ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 1450,
+   "heat_sinks": 10,
+   "jump_mp": 8,
+   "equipment": {
+    "LA": [
+     "c_srm4",
+     "ammo:c_srm4"
+    ],
+    "RA": [
+     "c_medium_pulse_laser*2"
+    ],
+    "LT": [
+     "c_ams",
+     "ammo:c_ams"
+    ],
+    "RT": [
+     "c_machine_gun*2",
+     "ammo:c_machine_gun:half"
+    ]
+   },
+   "role": "Scout: fast and light, finds the enemy and stays alive. 2 Medium Pulse Lasers, 2 Machine Guns, SRM 4, Anti-Missile System; walks 8, runs 12, jumps 8.",
+   "source": {
+    "mul_id": 926,
+    "megamek": "data/mekfiles/meks/3050U/Dragonfly (Viper) Prime.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Scout",
+    "bv": "sheet",
+    "sheet": "Dragonfly (Viper) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1450
+   }
+  },
+  {
+   "model": "A",
+   "bv": 1989,
+   "heat_sinks": 10,
+   "jump_mp": 8,
+   "equipment": {
+    "LA": [
+     "c_srm6+artemis",
+     "ammo:c_srm6"
+    ],
+    "RA": [
+     "c_er_medium_laser"
+    ],
+    "LT": [
+     "c_er_medium_laser*2"
+    ],
+    "RT": [
+     "c_er_medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 917,
+    "megamek": "data/mekfiles/meks/3050U/Dragonfly (Viper) A.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Striker",
+    "bv": "sheet",
+    "sheet": "Dragonfly (Viper) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1989
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 5 ER Medium Lasers, SRM 6; walks 8, runs 12, jumps 8."
+  },
+  {
+   "model": "B",
+   "bv": 1830,
+   "heat_sinks": 10,
+   "jump_mp": 8,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_ppc"
+    ],
+    "RA": [
+     "c_small_pulse_laser"
+    ],
+    "LT": [
+     "c_small_pulse_laser"
+    ],
+    "RT": [
+     "c_flamer"
+    ]
+   },
+   "source": {
+    "mul_id": 918,
+    "megamek": "data/mekfiles/meks/3050U/Dragonfly (Viper) B.mtf",
+    "published": "RSFP:Wave 1",
+    "role": "Striker",
+    "bv": "sheet",
+    "sheet": "Dragonfly (Viper) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
+    "megamek_bv": 1830
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Small Pulse Lasers, ER PPC, Flamer; walks 8, runs 12, jumps 8."
+  }
+ ]
 }
