@@ -28,7 +28,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"cockpit": COCKPIT_TONS,
 		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
 		"jump_jets": def.jump_mp * jump_jet_tons(def.tonnage),
-		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (FERRO_MULT if def.armor_type == "ferro_fibrous" else 1.0))),
+		"armor": _half_up(armor_pts / (ARMOR_PER_TON * (ferro_mult(def) if def.armor_type == "ferro_fibrous" else 1.0))),
 		"weapons": weapons,
 		"ammo": float(def.ammo_mounts.size()),
 		"case": def.case_locs.size() * 0.5,
@@ -36,6 +36,17 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"targeting_computer": float(TargetingComputer.size(def)) if def.tc_loc >= 0 else 0.0,
 		"melee": def.melee.reduce(func(t: float, m: Dictionary) -> float: return t + def.melee_tons(m["kind"]), 0.0),
 	}
+
+
+static func ferro_mult(def: UnitDef) -> float:
+	return ClanTech.FERRO_MULT if def.is_clan() else FERRO_MULT
+
+
+## Heat sinks the engine can hold without using critical slots: rating / 25
+## (the first 10 also weigh nothing). Designs list the rest as items.
+## TODO(rules): construction data, not in the Core Rulebook.
+static func engine_sink_capacity(def: UnitDef) -> int:
+	return maxi(UnitDef.ENGINE_HEAT_SINKS, def.tonnage * def.walk_mp / 25)
 
 
 static func total(def: UnitDef) -> float:

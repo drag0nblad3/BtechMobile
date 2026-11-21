@@ -1,0 +1,30 @@
+{
+  "id": "timber_wolf", "name": "Timber Wolf", "tonnage": 75, "walk_mp": 5, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "timber_wolf", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 35, "LT": 24, "RT": 24, "LA": 24, "RA": 23, "LL": 32, "RL": 32},
+  "rear_armor": {"CT": 11, "LT": 8, "RT": 8},
+  "missing_actuators": {"LA": ["hand"], "RA": ["hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*1"], "RA": ["ferro_fibrous*3"], "RT": ["ferro_fibrous*3"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 17, "role": "The iconic Clan heavy. Two ER large lasers, two LRM 20s and a swarm of smaller guns: deadly at every range, but it runs hot.", "equipment": {
+      "LA": ["c_er_large_laser", "c_er_medium_laser"],
+      "RA": ["c_er_large_laser", "c_er_medium_laser"],
+      "LT": ["c_lrm20", "ammo:c_lrm20", "c_machine_gun", "heat_sink", "heat_sink"],
+      "RT": ["c_lrm20", "ammo:c_lrm20", "c_machine_gun"],
+      "CT": ["c_medium_pulse_laser"],
+      "HD": ["ammo:c_machine_gun"]
+    }},
+    {"model": "A", "heat_sinks": 18, "role": "Laser Timber Wolf: heavy and pulse lasers with no ammo to explode, at the cost of heat.", "equipment": {
+      "LA": ["c_er_large_laser", "c_er_medium_laser"],
+      "RA": ["c_er_large_laser", "c_er_medium_laser"],
+      "LT": ["c_heavy_large_laser", "c_er_medium_pulse_laser", "heat_sink", "heat_sink"],
+      "RT": ["c_heavy_large_laser", "c_er_medium_pulse_laser", "heat_sink"],
+      "CT": ["c_medium_pulse_laser", "c_er_small_laser"]
+    }},
+    {"model": "B", "heat_sinks": 15, "role": "Gauss Timber Wolf: a Gauss rifle and an LB 10-X for heavy, cool long-range hits.", "equipment": {
+      "RA": ["c_gauss_rifle"],
+      "LA": ["c_lb10x_ac"],
+      "LT": ["ammo:c_gauss_rifle", "ammo:c_lb10x_ac", "ammo:c_lb10x_ac:cluster"],
+      "RT": ["c_er_medium_laser", "c_er_medium_laser"]
+    }}
+  ]
+}

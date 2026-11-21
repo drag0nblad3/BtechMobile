@@ -3,10 +3,24 @@ extends RefCounted
 ## Extra-light engines (p. 87, p. 99): the engine reaches into both side
 ## torsos. Engine slots in a destroyed side torso count as destroyed and add
 ## engine hits, so losing either side torso of an Inner Sphere XL 'Mech
-## (3 slots there) is the third engine hit and kills it. Half the weight of
-## a standard engine; BV structure counts less (easier to kill).
+## (3 slots there) is the third engine hit and kills it. A Clan XL has 2
+## slots there (ClanTech), so it survives one side torso unless the engine
+## was already hit. Half the weight of a standard engine; BV structure
+## counts less (easier to kill). TODO(rules): BV multipliers simplified.
 
 const BV_STRUCTURE_MULT := 0.75
+const CLAN_BV_STRUCTURE_MULT := 0.875
+
+
+## True if losing a side torso now would destroy the engine.
+static func torso_loss_kills(u: Unit) -> bool:
+	return u.def.is_xl() and u.engine_hits + ClanTech.xl_side_slots(u.def) >= CritEffects.ENGINE_KILL
+
+
+static func bv_structure_mult(def: UnitDef) -> float:
+	if not def.is_xl():
+		return 1.0
+	return CLAN_BV_STRUCTURE_MULT if def.is_clan() else BV_STRUCTURE_MULT
 
 
 ## Called when a side torso is destroyed; returns the engine hits it added.
@@ -20,7 +34,7 @@ static func on_torso_lost(u: Unit, loc: int) -> int:
 			n += 1
 	u.engine_hits += n
 	if u.engine_hits >= CritEffects.ENGINE_KILL:
-		Damage.destroy_unit(u, "XL engine lost with the %s" % Location.name_of(loc).to_lower())
+		Damage.destroy_unit(u, "%sXL engine lost with the %s" % ["Clan " if u.def.is_clan() else "", Location.name_of(loc).to_lower()])
 	return n
 
 

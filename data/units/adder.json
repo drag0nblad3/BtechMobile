@@ -1,0 +1,15 @@
+{
+  "id": "adder", "name": "Adder", "tonnage": 35, "walk_mp": 6, "tech_base": "clan", "omni": true, "heat_sink_type": "double", "sprite": "adder", "engine_type": "xl", "structure_type": "endo_steel", "armor_type": "ferro_fibrous",
+  "armor": {"HD": 9, "CT": 16, "LT": 11, "RT": 11, "LA": 11, "RA": 11, "LL": 15, "RL": 15},
+  "rear_armor": {"CT": 5, "LT": 4, "RT": 4},
+  "missing_actuators": {"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]},
+  "equipment": {"LL": ["endo_steel*2"], "RL": ["endo_steel*2"], "LA": ["endo_steel*3", "ferro_fibrous*5"], "RA": ["ferro_fibrous*2"]},
+  "configs": [
+    {"model": "Prime", "heat_sinks": 14, "role": "Clan light sniper. Two ER PPCs hit like a heavy 'Mech from 23 hexes, but firing both runs it hot.", "equipment": {
+      "LA": ["c_er_ppc"],
+      "RA": ["c_er_ppc"],
+      "CT": ["c_flamer"],
+      "LT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink"]
+    }}
+  ]
+}
