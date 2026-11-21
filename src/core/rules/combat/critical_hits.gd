@@ -72,7 +72,11 @@ static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc
 		if loc < 0 or u.is_location_destroyed(loc):
 			return
 		options = _hittable(u, loc)
-	var slot := options[dice.pick(options.size())]
+	hit_slot(state, dice, emit, u, loc, options[dice.pick(options.size())])
+
+
+## A critical hit on one chosen slot (the supercharger picks engine slots).
+static func hit_slot(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int, slot: CritSlot) -> void:
 	slot.hit = true
 	slot.hit_when = _now(state)
 	var effect := CritEffects.apply(state, dice, emit, u, loc, slot)

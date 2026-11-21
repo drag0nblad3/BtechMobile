@@ -47,6 +47,8 @@ static func build(def: UnitDef) -> Array:
 	if def.masc_loc >= 0:
 		for s in Masc.size(def):
 			_place(out[def.masc_loc], CritSlot.new(CritSlot.Kind.MASC, "MASC"), def)
+	if def.supercharger_loc >= 0:
+		_place(out[def.supercharger_loc], CritSlot.new(CritSlot.Kind.SUPERCHARGER, "Supercharger"), def)
 	if def.tc_loc >= 0:
 		for s in TargetingComputer.size(def):
 			_place(out[def.tc_loc], CritSlot.new(CritSlot.Kind.TARGETING, "Targeting Computer"), def)

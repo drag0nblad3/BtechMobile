@@ -4,7 +4,7 @@ extends RefCounted
 ## fills it: an index into Unit.weapons or Unit.ammo, or -1.
 
 enum Kind { EMPTY, ENGINE, GYRO, COCKPIT, SENSORS, LIFE_SUPPORT, ACTUATOR,
-		WEAPON, AMMO, HEAT_SINK, JUMP_JET, CASE, ARTEMIS, MELEE, BULK, TARGETING, ECM, MASC }
+		WEAPON, AMMO, HEAT_SINK, JUMP_JET, CASE, ARTEMIS, MELEE, BULK, TARGETING, ECM, MASC, SUPERCHARGER }
 
 var kind: int
 var name: String

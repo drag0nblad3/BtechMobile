@@ -49,10 +49,10 @@ func on_mode_toggled() -> void:
 	_replan()
 
 
-func on_masc() -> void:
+func on_masc(sc := false) -> void:
 	if selected == null or units_layer.is_busy():
 		return
-	var tip := MascInput.engage(controller, selected)
+	var tip := MascInput.engage_sc(controller, selected) if sc else MascInput.engage(controller, selected)
 	mode = MoveMode.Kind.RUN
 	_replan()
 	hud.set_tip(tip)
@@ -159,12 +159,13 @@ func clear_selection() -> void:
 	hud.show_move_controls(false)
 	hud.leave_button.visible = false
 	hud.masc_button.visible = false
+	hud.sc_button.visible = false
 	hud.set_info("")
 
 
 func _select(u: Unit) -> void:
 	selected = u
-	mode = MoveMode.Kind.RUN if u.masc_used else MoveMode.Kind.WALK
+	mode = MoveMode.Kind.RUN if u.masc_used or u.sc_used else MoveMode.Kind.WALK
 	smash = false
 	hud.show_move_controls(true)
 	unit_selected.emit(u)
@@ -221,6 +222,8 @@ func _refresh() -> void:
 	hud.charge_button.text = "Death from Above" if mode == MoveMode.Kind.JUMP else "Charge"
 	hud.masc_button.text = MascInput.label(selected)
 	hud.masc_button.visible = hud.masc_button.text != ""
+	hud.sc_button.text = MascInput.sc_label(selected)
+	hud.sc_button.visible = hud.sc_button.text != ""
 	hud.smash_button.visible = _forces_entry()
 	hud.smash_button.text = "Smash in: on" if smash else "Smash in"
 	hud.leave_button.visible = has_preview and controller.state.mission.def != null and _can_leave()

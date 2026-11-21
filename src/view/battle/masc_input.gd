@@ -1,6 +1,6 @@
 class_name MascInput
 extends RefCounted
-## The movement bar's MASC button: its label and what tapping it does.
+## The movement bar's MASC and supercharger buttons: labels and taps.
 
 
 ## Button text, or "" to hide it.
@@ -21,3 +21,21 @@ static func engage(controller: GameController, u: Unit) -> String:
 	if controller.engage_masc(u):
 		return "MASC works: run at up to %d MP this turn." % u.run_mp()
 	return "MASC failed: normal speed, and one leg takes a critical check after the move."
+
+
+static func sc_label(u: Unit) -> String:
+	if u == null or u.def.supercharger_loc < 0 or u.has_moved:
+		return ""
+	if u.sc_active:
+		return "Supercharger on"
+	if u.sc_used:
+		return "Supercharger failed"
+	return "Supercharger (%d+)" % Supercharger.need(u) if Supercharger.problem(u) == "" else ""
+
+
+static func engage_sc(controller: GameController, u: Unit) -> String:
+	if Supercharger.problem(u) != "":
+		return "Can't engage the supercharger: %s." % Supercharger.problem(u)
+	if controller.engage_supercharger(u):
+		return "Supercharger works: run at up to %d MP this turn." % u.run_mp()
+	return "Supercharger failed and burns out: normal speed, and the engine takes a critical check after the move."

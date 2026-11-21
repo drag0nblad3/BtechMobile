@@ -100,6 +100,7 @@ func _wire() -> void:
 	hud.prone.connect(movement.on_prone)
 	hud.smash.connect(movement.on_smash)
 	hud.masc.connect(movement.on_masc)
+	hud.supercharger.connect(movement.on_masc.bind(true))
 	hud.leave.connect(movement.on_leave)
 	hud.attack_confirm.connect(attacks.on_confirm)
 	hud.attack_skip.connect(attacks.on_skip)
