@@ -30,7 +30,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var shots := take_shots(attacker, w)
 	if shots == 0:
 		emit.call(GameEvent.WEAPON_FIRED, {"attacker_id": attacker.id, "target_id": target.id,
-				"weapon": w.def.name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
+				"weapon": Atm.profile(w).name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
 				"hit": false, "no_ammo": true, "mods": th.mods, "missiles": 0})
 		return
 	w.fired = true
@@ -38,7 +38,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
-	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": w.def.name,
+	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": Atm.profile(w).name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
 	if RotaryAc.check_jam(w, shots, roll):
@@ -57,6 +57,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var jam := Ecm.artemis_blocked(state, attacker, target, th) if WeaponModes.has_artemis(w) else ""
 	if jam != "":
 		data["artemis_blocked"] = jam
+	if w.def.artemis_builtin:
+		data["builtin_artemis"] = true
+	if w.def.streak and ams == null:
+		data["streak_lock"] = true
 	if w.def.beacon:
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return

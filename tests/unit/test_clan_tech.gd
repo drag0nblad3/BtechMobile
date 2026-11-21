@@ -54,3 +54,13 @@ func test_case_armor_and_targeting_computer() -> void:
 	check_eq(TargetingComputer.size(c), 1, "4 t of lasers / 5")
 	check_eq(TargetingComputer.size(i), 2, "5 t / 4")
 	check(BattleValue.breakdown(c)["structure"] > BattleValue.breakdown(i)["structure"], "harder to kill")
+
+
+func test_log_explains_surviving_side_torso_loss() -> void:
+	var s := GameState.new(open_map(8, 4))
+	var u := Unit.new(1, _def("clan"), 0, hex_at(1, 1), 0)
+	s.add_unit(u)
+	var steps := Damage.apply(u, Location.LT, 40)
+	var t := DamageText.damage(s, {"unit_id": 1, "amount": 40, "loc": Location.LT, "steps": steps,
+			"covered": false}, ExplainLevel.FULL)
+	check(t.contains("keeps running"), t)

@@ -100,4 +100,8 @@ static func describe(u: Unit, shots: Array) -> String:
 			parts.append("fires %d shots from its %s" % [WeaponModes.shots(w), w.def.name])
 		elif w.mode == WeaponModes.CLUSTER:
 			parts.append("loads cluster rounds in its %s for the easier hit" % w.def.name)
+		elif w.mode == Atm.ER:
+			parts.append("loads extended-range missiles in its %s to reach that far" % w.def.name)
+		elif w.mode == Atm.HE:
+			parts.append("loads high-explosive missiles in its %s for the hardest hits up close" % w.def.name)
 	return "; ".join(parts)
