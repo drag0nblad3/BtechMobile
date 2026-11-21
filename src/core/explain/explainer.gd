@@ -72,7 +72,9 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.DISPLACED:
 			return "  %s is shoved into %s." % [_u(s, d), Hex.label(MoveOptions.coord_of(d["path"][0]))]
 		GameEvent.DAMAGE:
-			return DamageText.damage(s, d, level)
+			return AssetText.damage(s, d, level) if d.get("asset", false) else DamageText.damage(s, d, level)
+		GameEvent.DESTROY_CHECK:
+			return AssetText.destroy_check(s, d, level)
 		GameEvent.BUILDING:
 			return TerrainText.building_event(s, d, level)
 		GameEvent.HULL_BREACH:

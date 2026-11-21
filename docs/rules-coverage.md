@@ -199,6 +199,19 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Physical attacks on buildings (`BuildingMelee`, p. 135): tap an adjacent building in the Physical Attack Phase to punch (two arms), kick or swing a hatchet, sword or club at it; they always hit, no piloting roll for a kick, and the damage counts toward the attacker's Destroy Check — `TODO(rules)`: kicks need the building to fill the attacker's leg level, punches and swings the level above (our reading).
 - ⬜ Bridges as structures, basements.
 
+## Battlefield Support Assets (vehicles, infantry; book pp. 140-151)
+The Core Rulebook has only these simplified rules for vehicles and infantry; classic record-sheet vehicles are planned as a separate optional mode.
+- ✅ Asset cards (`AssetCard`, `data/assets/`): MP and movement type, fixed TMM, range, Skill (improved Skill), damage x groupings, Destroy Check, Threshold, BSP cost; BV = 20 x BSP (p. 157).
+- ✅ Damage without hit locations (`AssetDamage`): rear hits double (not infantry), AE doubled vs infantry, BRA/RCA/RFA halve their Weapon Types, Fire Resistant halves heat weapons; heat from any source is 2 damage per point.
+- ✅ Destroy Checks (`DestroyCheck`, End Phase): Threshold reached → 2D6 + 1 at 11+ damage and +1 per further 10; survive → Degradation 1 (2 for conventional infantry hit by AI weapons or fire); at 2 or less the next check fails.
+- ✅ Infantry inside a building: +1 Check per building class, max 11 (`InfantryCover`) — `TODO(rules)`: enemy infantry in the same building doesn't cancel it yet.
+- ✅ Movement (`AssetMove`, `AssetMoveCost`): fixed MP, declared backward movement halves MP and forbids level changes, 2 MP per level (one per hex, two between road hexes), terrain restrictions by movement type, +1 MP staying on pavement, ice/mud/snow/wind costs, no piloting rolls, infantry turn free, jump infantry jump; fire: 4 damage when starting in it, can't stop in it, foot troops can't cross it — `TODO(rules)`: garages, sand, roofs, VTOL flight levels, multi-hex Assets.
+- ✅ Stacking (`AssetStacking`, p. 143): vehicles count as 'Mechs; a 'Mech/vehicle hex holds one friendly and one enemy infantry, an infantry-only hex two each; 'Mechs move through Assets; VTOLs through anything (errata).
+- ✅ Asset attacks (`AssetFire`): Skill base, no attacker movement modifier, no minimum range, 360-degree arc (No Turret: front only), one target a turn, infantry fire into their own hex; Assets one level high for LOS, never partial cover.
+- ✅ Attacking Assets: fixed TMM or the hex's terrain modifier, whichever is higher (VTOLs no terrain); emplacements -4; 'Mechs can't fire into their own hex; physical attacks only punch, kick, club or physical weapon (no push/charge/DFA, none vs VTOLs); Assets make none.
+- ⬜ Specials: APC/Mechanized transport, Swarm, AMS, Indirect Fire, Artillery, Arrow IV, Narc, TAG, ECM, Probe, Popup, Zipline.
+- ⬜ Infantry vs buildings (no damage) — `TODO(rules)`: vehicle Asset attacks on buildings are blocked for now.
+
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
 
