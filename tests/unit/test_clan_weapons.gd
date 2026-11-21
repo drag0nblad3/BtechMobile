@@ -77,3 +77,9 @@ func test_streak_lrm_hits_with_everything_in_fives() -> void:
 	WeaponFire.resolve(s, dice, log, a, a.weapons[0], t, ToHitCalc.weapon(s, a, a.weapons[0], t))
 	var dmg := ev.filter(func(e: Array) -> bool: return e[0] == GameEvent.DAMAGE).map(func(e: Array) -> int: return e[1]["amount"])
 	check_eq(dmg, [5, 5, 5, 5], "all 20 missiles in groups of 5")
+
+
+func test_streak_log_explains_the_lock() -> void:
+	var t := WeaponText.fired(GameState.new(open_map(4, 4)), {"attacker_id": 1, "target_id": 2, "weapon": "Streak SRM 6",
+			"roll": 9, "need": 7, "hit": true, "mods": [], "missiles": 6, "streak_lock": true}, ExplainLevel.FULL, {})
+	check(t.contains("every missile hits"), t)
