@@ -23,8 +23,9 @@ func test_roster() -> void:
 			check((m["weapon"] as WeaponDef).is_clan(), "%s carries Clan %s" % [def.id, m["weapon"].name])
 	for c: String in CHASSIS:
 		check(seen.has(c), c)
-	var hb := db.get_def("hunchback_iic")
-	check(hb.is_clan() and not hb.omni, "Hunchback IIC: a Clan 'Mech that isn't an OmniMech")
+	for id: String in ["hunchback_iic", "phoenix_hawk_iic", "rifleman_iic", "warhammer_iic", "marauder_iic", "kodiak"]:
+		var d := db.get_def(id)
+		check(d != null and d.is_clan() and not d.omni, id + ": a Clan 'Mech that isn't an OmniMech")
 	check(db.get_def("turkina_a").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].streak and m["weapon"].group == 5), "Streak LRM user")
 	check(db.get_def("fire_moth_a").weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].artemis_builtin), "ATM user")
 

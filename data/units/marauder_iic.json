@@ -1,0 +1,15 @@
+{
+  "id": "marauder_iic", "name": "Marauder IIC", "tonnage": 85, "walk_mp": 4, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "marauder", "engine_type": "xl", "structure_type": "endo_steel", "model": "", "heat_sinks": 22, "jump_mp": 4, "role": "Clan rebuild of the Marauder: two ER PPCs and an Ultra AC/10, with jump jets the original never had.",
+  "armor": {"HD": 9, "CT": 41, "LT": 27, "RT": 27, "LA": 28, "RA": 28, "LL": 36, "RL": 36},
+  "rear_armor": {"CT": 13, "LT": 9, "RT": 9},
+  "equipment": {
+    "LA": ["endo_steel*1", "c_er_ppc", "c_er_medium_laser", "heat_sink", "heat_sink"],
+    "RA": ["endo_steel*3", "c_er_ppc", "c_er_medium_laser", "heat_sink"],
+    "RT": ["endo_steel*1", "c_ultra_ac10", "ammo:c_ultra_ac10*3", "heat_sink"],
+    "HD": ["endo_steel*1"],
+    "CT": ["endo_steel*1", "c_er_small_laser"],
+    "LL": ["jump_jet", "jump_jet"],
+    "RL": ["jump_jet", "jump_jet"],
+    "LT": ["heat_sink", "heat_sink", "heat_sink", "heat_sink", "heat_sink"]
+  }
+}

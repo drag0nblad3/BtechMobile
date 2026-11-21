@@ -1,0 +1,15 @@
+{
+  "id": "kodiak", "name": "Kodiak", "tonnage": 100, "walk_mp": 4, "tech_base": "clan", "omni": false, "heat_sink_type": "double", "sprite": "kodiak", "engine_type": "xl", "structure_type": "endo_steel", "model": "", "heat_sinks": 19, "role": "Clan assault brawler. An Ultra AC/20, an ER large laser, seven ER medium lasers and a Streak SRM 6: walk in close and tear things apart.",
+  "armor": {"HD": 9, "CT": 47, "LT": 32, "RT": 32, "LA": 34, "RA": 34, "LL": 42, "RL": 42},
+  "rear_armor": {"CT": 15, "LT": 10, "RT": 10},
+  "equipment": {
+    "LL": ["endo_steel*2"],
+    "RL": ["endo_steel*2"],
+    "LA": ["endo_steel*3", "c_er_large_laser", "c_er_medium_laser*3"],
+    "RA": ["c_ultra_ac20"],
+    "RT": ["ammo:c_ultra_ac20*3", "c_er_medium_laser", "c_er_small_laser", "heat_sink"],
+    "LT": ["c_er_medium_laser*2", "c_streak_srm6", "ammo:c_streak_srm6*2", "heat_sink", "heat_sink"],
+    "CT": ["c_er_medium_laser", "c_er_small_laser"],
+    "HD": ["c_er_small_laser"]
+  }
+}
