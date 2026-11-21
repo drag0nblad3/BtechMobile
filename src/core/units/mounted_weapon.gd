@@ -17,6 +17,7 @@ var engaged: int = 0     ## AMS: missile attacks engaged this turn (AntiMissile)
 var narc_ammo: bool = false ## The unit carries Narc-equipped missiles for it (mode "narc").
 var ammo_kinds: Array[String] = []  ## ATM munitions it has ammo for (Atm).
 var jammed: bool = false ## Rotary AC jammed: can't fire until cleared (RotaryAc).
+var spent: bool = false  ## A one-shot weapon has fired its shot.
 var crit_hits: int = 0   ## Critical hits taken (an autocannon survives one, AutocannonCrit).
 
 

@@ -32,6 +32,7 @@ heat per building level that sets it alight.
 - `indirect: true` (LRMs) lets the weapon fire without line of sight through a spotter.
 - `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
+- `cluster_mod` adds to Cluster Hits rolls (MRM -1); `one_shot: true` fires once a game with no ammo bins (rocket launchers); `munitions` (ATM, MML) give a kind's own stats, `label` and `ammo_per_ton` for `ammo:<id>:<kind>` bins.
 - `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).

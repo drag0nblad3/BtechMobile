@@ -108,6 +108,11 @@ static func _attach_pod(state: GameState, dice: Dice, emit: Callable, attacker: 
 
 static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 	var want := WeaponModes.shots(w)
+	if w.def.one_shot:  # p. 182: once a game
+		if w.spent:
+			return 0
+		w.spent = true
+		return 1
 	if not w.def.uses_ammo():
 		return want
 	var kind := WeaponModes.ammo_kind(w)

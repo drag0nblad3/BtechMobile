@@ -261,7 +261,7 @@ func refund_ammo(w: WeaponDef, kind: String = "") -> void:
 
 
 func can_fire(w: MountedWeapon) -> bool:
-	if sensor_hits >= 2 or w.destroyed or w.jammed or is_location_out(w.loc):
+	if sensor_hits >= 2 or w.destroyed or w.jammed or w.spent or is_location_out(w.loc):
 		return false
 	return not w.def.uses_ammo() or ammo_for(w.def, WeaponModes.ammo_kind(w)) > 0
 

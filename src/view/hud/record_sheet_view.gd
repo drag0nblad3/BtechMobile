@@ -138,6 +138,8 @@ static func _weapon_line(u: Unit, w: MountedWeapon) -> String:
 	var line := "%s  %d · %s · %s" % [w.label(), w.def.heat,
 			("%d×%d" % [w.def.missiles, w.def.damage]) if w.def.is_cluster() else _dmg(w.def),
 			w.def.range_text()]
+	if w.def.one_shot:
+		line += " · fired" if w.spent else " · one shot"
 	if w.def.uses_ammo():
 		line += " · ammo %d" % u.ammo_for(w.def)
 		if w.def.lbx:
