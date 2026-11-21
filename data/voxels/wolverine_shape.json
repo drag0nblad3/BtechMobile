@@ -828,7 +828,7 @@
                 "polygon": [
                   [
                     -3,
-                    -7
+                    -6
                   ],
                   [
                     -2,
@@ -840,7 +840,7 @@
                   ],
                   [
                     3,
-                    -7
+                    -6
                   ],
                   [
                     4,
@@ -888,11 +888,11 @@
                     -5
                   ],
                   [
-                    4,
+                    3,
                     -3
                   ],
                   [
-                    4,
+                    3,
                     1
                   ],
                   [
@@ -904,11 +904,11 @@
                     2
                   ],
                   [
-                    -4,
+                    -3,
                     1
                   ],
                   [
-                    -4,
+                    -3,
                     -3
                   ]
                 ]
@@ -967,56 +967,56 @@
             "axis": "z",
             "sections": [
               {
+                "at": -15,
+                "polygon": [
+                  [
+                    -3,
+                    52
+                  ],
+                  [
+                    3,
+                    52
+                  ],
+                  [
+                    4,
+                    53
+                  ],
+                  [
+                    4,
+                    54
+                  ],
+                  [
+                    3,
+                    55
+                  ],
+                  [
+                    -3,
+                    55
+                  ],
+                  [
+                    -4,
+                    54
+                  ],
+                  [
+                    -4,
+                    53
+                  ]
+                ]
+              },
+              {
                 "at": -14,
                 "polygon": [
                   [
                     -3,
-                    51
+                    52
                   ],
                   [
                     3,
-                    51
-                  ],
-                  [
-                    4,
                     52
                   ],
                   [
                     4,
-                    54
-                  ],
-                  [
-                    3,
-                    56
-                  ],
-                  [
-                    -3,
-                    56
-                  ],
-                  [
-                    -4,
-                    54
-                  ],
-                  [
-                    -4,
-                    52
-                  ]
-                ]
-              },
-              {
-                "at": -13,
-                "polygon": [
-                  [
-                    -3,
-                    51
-                  ],
-                  [
-                    3,
-                    51
-                  ],
-                  [
-                    4,
-                    52
+                    53
                   ],
                   [
                     4,
@@ -1024,11 +1024,11 @@
                   ],
                   [
                     3,
-                    56
+                    55
                   ],
                   [
                     -3,
-                    56
+                    55
                   ],
                   [
                     -4,
@@ -1036,24 +1036,24 @@
                   ],
                   [
                     -4,
-                    52
+                    53
                   ]
                 ]
               },
               {
-                "at": -11,
+                "at": -12,
                 "polygon": [
                   [
                     -2,
-                    51
+                    52
                   ],
                   [
                     2,
-                    51
+                    52
                   ],
                   [
                     3,
-                    52
+                    53
                   ],
                   [
                     3,
@@ -1061,11 +1061,11 @@
                   ],
                   [
                     2,
-                    56
+                    55
                   ],
                   [
                     -2,
-                    56
+                    55
                   ],
                   [
                     -3,
@@ -1073,7 +1073,7 @@
                   ],
                   [
                     -3,
-                    52
+                    53
                   ]
                 ]
               }
@@ -4476,9 +4476,140 @@
       "name": "rl_knee_yoke",
       "parent": "rl_shin",
       "mirror": "ll_knee_yoke"
+    },
+    {
+      "name": "ct_rear_jump_pack",
+      "loc": "CT",
+      "parent": "ct",
+      "pivot": [
+        0,
+        51,
+        8
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 48,
+                "polygon": [
+                  [
+                    -5,
+                    6
+                  ],
+                  [
+                    -3,
+                    5
+                  ],
+                  [
+                    3,
+                    5
+                  ],
+                  [
+                    5,
+                    6
+                  ],
+                  [
+                    5,
+                    11
+                  ],
+                  [
+                    3,
+                    13
+                  ],
+                  [
+                    -3,
+                    13
+                  ],
+                  [
+                    -5,
+                    11
+                  ]
+                ]
+              },
+              {
+                "at": 53,
+                "polygon": [
+                  [
+                    -5,
+                    7
+                  ],
+                  [
+                    -3,
+                    6
+                  ],
+                  [
+                    3,
+                    6
+                  ],
+                  [
+                    5,
+                    7
+                  ],
+                  [
+                    5,
+                    12
+                  ],
+                  [
+                    3,
+                    14
+                  ],
+                  [
+                    -3,
+                    14
+                  ],
+                  [
+                    -5,
+                    12
+                  ]
+                ]
+              },
+              {
+                "at": 57,
+                "polygon": [
+                  [
+                    -4,
+                    8
+                  ],
+                  [
+                    -2,
+                    7
+                  ],
+                  [
+                    2,
+                    7
+                  ],
+                  [
+                    4,
+                    8
+                  ],
+                  [
+                    4,
+                    11
+                  ],
+                  [
+                    2,
+                    12
+                  ],
+                  [
+                    -2,
+                    12
+                  ],
+                  [
+                    -4,
+                    11
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "inside"
+        }
+      ]
     }
   ],
-  "notes": "New independent WVR-6R silhouettes with left dorsal six-port rack and right forearm cannon. No inherited humanoid component generator. Shape review 2: remove inaccurate chest port mass, simplify shoulder launcher, keep forearm cannon smaller than whole chest. Reference iteration 3: independently traced ten-sided angular chest and forebody, sloped shoulder cowlings, tall rectangular six-port rack beside helmet, and narrow angular pilot helmet rather than bulbous cylinders. Reference iteration 4: broken-up wide shoulder shields, one clenched fist, distinctly separate cannon shroud in right arm, angular knee/thigh guards and narrower reverse-taper greaves. Fifth pass: separate armored hip section bridges chest and leg roots; individual six SRM bores remain on high asymmetric left launcher. Pass 6: individually framed six-port missile rack with physically carved 2x3 launch openings. Pass 7: hollow right-arm AC5 muzzle frame and hand with individually shaped knuckles and thumb, with no dangling fingers. Pass 8: replace rounded Wolverine torso masses with planar swept armor cowlings, bring shoulder pads closer to reference and reduce shared overlap along the shoulder seams. Shape pass 9: leaned chamfered pauldron armor, forward rectangular visor helmet and thin radio antennas, broad shouldered segmented chest. References WVR-6R FSW ink and multiple miniature viewpoints. Pass 10: replaced hollow-appearing pauldron caps with solid tapered shoulder-shell contours; split the single hexagonal chest into two swept structural breastplates. Pass 11: chamfered plate-sided WVR pauldrons with hard flat faces (not ovals) and defined projecting shin fairings at knee-to-ankle; checked against WVR-6R FSW drawing. Pass 12: replace egg-like shoulder cylinders with canted eight-sided armor shields of intentionally drawn front-facing x/y profiles, per WVR-6R FSW line art. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 34 grid units while translating the unmodified upper components 7 units, preventing stubby limb-to-torso appearance. Pass 14: compared WVR-6R FSW front illustration, SYZ dual pose, alternate CAD two perspectives. Shrink outer side torso blocks and cant the upper-arm plates so the torso is separated from shoulders by real geometry rather than enormous oval shoulder balls. Pass 15: WVR miniature comparison drove narrower hard-shoulder guards and shallow upper chest shields, replacing the large drooping pointed breastplates in Godot render. Pass 16: WVR-6R FSW front and posed resin show a flatter V-shaped breastplate and unmistakably long forearm cannon. Shallow angular torso plates plus forward-projecting AC5 cradle. Pass 17: WVR-6R leg plates redrawn as six-faced angular tapered thigh/shin solids matching the FSW front and dual-posed miniatures. Target is visibly different from Atlas rounded heavy leg armor, not more polygons or damage detail. Pass 18: WVR6R upright faceted pauldron shields now have rising pitched roofs and narrow lower anchors. AC/5 forearm shroud is angled forward rather than a drooping generic arm block. Pass 19: alternate WVR-6R pose motivated a sharply roofed swept plate rather than a pill. Angular shin fronts are now explicit separate armor geometry, not detail overlay. Pass 20: WVR-6R cannon stays on the forearm, with a long narrow box muzzle distinctly separated from its missile shoulder and chest armor; correct model-specific silhouette. Pass 22: matched WVR-6R three-quarter CGL/SYZ and AfterDark: shrink central shoulder root, lengthen flat canted upper-arm shield with 8-corner bevel, maintain real gap to ribcage, push separate rectangular pilot visor forward. Pass 23: six-vertex angular front shoulder shields replace ellipse-like WVR pauldrons; expose independent left/right mechanical knee joint under shortened upper-thigh armor, following the WVR-6R CGL plate/leg reference. Pass 24: rebuild WVR knee/shin as a canted forward knee wedge over a slimmer planar shin, in contrast to Atlas's straight armor slab. Source silhouettes based on AfterDark and SYZ two-view photos. Pass 25 CGL first: use actual plastic beginner box Wolverine and 2024 premium assembled three-quarter pose to bound shoulder breadth and preserve slim cannon-arm gap; not resin proxy exaggerated pauldrons.",
+  "notes": "New independent WVR-6R silhouettes with left dorsal six-port rack and right forearm cannon. No inherited humanoid component generator. Shape review 2: remove inaccurate chest port mass, simplify shoulder launcher, keep forearm cannon smaller than whole chest. Reference iteration 3: independently traced ten-sided angular chest and forebody, sloped shoulder cowlings, tall rectangular six-port rack beside helmet, and narrow angular pilot helmet rather than bulbous cylinders. Reference iteration 4: broken-up wide shoulder shields, one clenched fist, distinctly separate cannon shroud in right arm, angular knee/thigh guards and narrower reverse-taper greaves. Fifth pass: separate armored hip section bridges chest and leg roots; individual six SRM bores remain on high asymmetric left launcher. Pass 6: individually framed six-port missile rack with physically carved 2x3 launch openings. Pass 7: hollow right-arm AC5 muzzle frame and hand with individually shaped knuckles and thumb, with no dangling fingers. Pass 8: replace rounded Wolverine torso masses with planar swept armor cowlings, bring shoulder pads closer to reference and reduce shared overlap along the shoulder seams. Shape pass 9: leaned chamfered pauldron armor, forward rectangular visor helmet and thin radio antennas, broad shouldered segmented chest. References WVR-6R FSW ink and multiple miniature viewpoints. Pass 10: replaced hollow-appearing pauldron caps with solid tapered shoulder-shell contours; split the single hexagonal chest into two swept structural breastplates. Pass 11: chamfered plate-sided WVR pauldrons with hard flat faces (not ovals) and defined projecting shin fairings at knee-to-ankle; checked against WVR-6R FSW drawing. Pass 12: replace egg-like shoulder cylinders with canted eight-sided armor shields of intentionally drawn front-facing x/y profiles, per WVR-6R FSW line art. Pass 13: vertically separate reference-accurate hip and upper torso: stretch the individually authored leg shapes to 34 grid units while translating the unmodified upper components 7 units, preventing stubby limb-to-torso appearance. Pass 14: compared WVR-6R FSW front illustration, SYZ dual pose, alternate CAD two perspectives. Shrink outer side torso blocks and cant the upper-arm plates so the torso is separated from shoulders by real geometry rather than enormous oval shoulder balls. Pass 15: WVR miniature comparison drove narrower hard-shoulder guards and shallow upper chest shields, replacing the large drooping pointed breastplates in Godot render. Pass 16: WVR-6R FSW front and posed resin show a flatter V-shaped breastplate and unmistakably long forearm cannon. Shallow angular torso plates plus forward-projecting AC5 cradle. Pass 17: WVR-6R leg plates redrawn as six-faced angular tapered thigh/shin solids matching the FSW front and dual-posed miniatures. Target is visibly different from Atlas rounded heavy leg armor, not more polygons or damage detail. Pass 18: WVR6R upright faceted pauldron shields now have rising pitched roofs and narrow lower anchors. AC/5 forearm shroud is angled forward rather than a drooping generic arm block. Pass 19: alternate WVR-6R pose motivated a sharply roofed swept plate rather than a pill. Angular shin fronts are now explicit separate armor geometry, not detail overlay. Pass 20: WVR-6R cannon stays on the forearm, with a long narrow box muzzle distinctly separated from its missile shoulder and chest armor; correct model-specific silhouette. Pass 22: matched WVR-6R three-quarter CGL/SYZ and AfterDark: shrink central shoulder root, lengthen flat canted upper-arm shield with 8-corner bevel, maintain real gap to ribcage, push separate rectangular pilot visor forward. Pass 23: six-vertex angular front shoulder shields replace ellipse-like WVR pauldrons; expose independent left/right mechanical knee joint under shortened upper-thigh armor, following the WVR-6R CGL plate/leg reference. Pass 24: rebuild WVR knee/shin as a canted forward knee wedge over a slimmer planar shin, in contrast to Atlas's straight armor slab. Source silhouettes based on AfterDark and SYZ two-view photos. Pass 25 CGL first: use actual plastic beginner box Wolverine and 2024 premium assembled three-quarter pose to bound shoulder breadth and preserve slim cannon-arm gap; not resin proxy exaggerated pauldrons. CGL pass 26: distinct compact Wolverine helmet with horizontal recessed visor and raised aft thruster hump. Avoid Atlas-style skull face; source is assembled CGL premium miniature.",
   "muzzles": {
     "LT": [
       [
