@@ -62,7 +62,7 @@ func on_hex_tapped(c: Vector2i) -> bool:
 	var u := controller.state.unit_at(c)
 	if u == null:
 		var tile := controller.state.map.get_tile(c)
-		if attacker == null or tile == null or not (tile.building != null
+		if attacker == null or tile == null or not (Bridges.structure(tile) != null
 				or (is_weapon_phase() and WoodsFire.can_light(tile))):
 			return false
 		target = null

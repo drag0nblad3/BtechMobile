@@ -47,6 +47,9 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	var mp: int = opts.cost.get(target, 0)
 	unit.hexes_moved = Hex.distance(unit.coord, MoveOptions.coord_of(target)) \
 			if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(path, unit.coord)
+	var decks := Bridges.decks_entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP)
+	if MoveOptions.coord_of(target) != unit.coord:
+		unit.on_bridge = Bridges.ends_on_deck(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP)
 	unit.coord = MoveOptions.coord_of(target)
 	unit.facing = target.z
 	var on_new_roof := mode == MoveMode.Kind.JUMP and moved and Roofs.has_roof(state.map.get_tile(unit.coord))
@@ -65,6 +68,8 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	elif not unit.on_roof:
 		for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
 			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry, smash)
+	for c in decks:
+		Bridges.check_support(state, dice, emit, unit, c)
 	Masc.apply_failure(state, dice, emit, unit)
 	Supercharger.apply_failure(state, dice, emit, unit)
 	if moved:

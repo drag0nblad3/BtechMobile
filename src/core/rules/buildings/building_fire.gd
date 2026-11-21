@@ -20,7 +20,7 @@ static func options(state: GameState, attacker: Unit, c: Vector2i) -> Array[Dict
 static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector2i) -> ToHit:
 	var th := ToHit.new()
 	var tile := state.map.get_tile(c)
-	var woods := tile != null and tile.building == null
+	var woods := tile != null and Bridges.structure(tile) == null
 	if woods and WoodsFire.problem(tile, w) != "":
 		th.impossible = WoodsFire.problem(tile, w)
 		return th
@@ -37,7 +37,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id, attacker.def.quad):
 		th.impossible = "The building is in your %s arc; %s can't point there" % [FiringArc.NAMES[arc_id], w.label()]
 		return th
-	var los := LineOfSight.check_hex(state.map, attacker, c, tile.level + (1 if woods else tile.building.height))
+	var los := LineOfSight.check_hex(state.map, attacker, c, _top(tile, woods))
 	if los["blocked"]:
 		th.impossible = "No line of sight (%s)" % los["reason"]
 		return th
@@ -86,7 +86,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if RotaryAc.check_jam(w, shots, data["roll"]):
 		data["jammed"] = true
 	data["hit"] = data["roll"] >= th.target() and tile != null
-	if data["hit"] and tile.building == null:  # woods: only the heat counts
+	if data["hit"] and Bridges.structure(tile) == null:  # woods: only the heat counts
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		Fire.add_heat(state, c, w.def.damage)
 		return
@@ -97,8 +97,15 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	if not data["hit"]:
 		return
-	emit.call(GameEvent.BUILDING, {"kind": "shot", "coord": c, "name": tile.building.type.name,
+	emit.call(GameEvent.BUILDING, {"kind": "shot", "coord": c, "name": Bridges.label(Bridges.structure(tile)),
 			"damage": dmg, "unit_id": attacker.id})
 	BuildingDamage.add(state, attacker.id, c, dmg)
 	if w.def.heat_damage:
 		Fire.add_heat(state, c, w.def.damage)
+
+
+## Level of the top of what is being shot: woods, a building or a bridge deck.
+static func _top(tile: MapTile, woods: bool) -> int:
+	if woods:
+		return tile.level + 1
+	return tile.level + tile.building.height if tile.building != null else tile.bridge.level + 1

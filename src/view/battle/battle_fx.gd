@@ -41,7 +41,7 @@ func _building(d: Dictionary) -> void:
 		return
 	var at := HexLayout.tile_top(t)
 	match d["kind"]:
-		"collapsed", "flattened":
+		"collapsed", "bridge_collapsed", "flattened":
 			VxBlast.spawn(self, at + Vector3(0, 0.25, 0), "dust")
 		"shot", "smash", "entry_failed":
 			var from := _unit_pos(d.get("unit_id", -1))

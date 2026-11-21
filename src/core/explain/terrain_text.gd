@@ -11,6 +11,8 @@ static func describe(tile: MapTile, level: int) -> String:
 		t += ", depth %d" % tile.depth
 	if tile.building != null:
 		return t + ": " + _building(tile.building, level)
+	if tile.bridge != null:
+		t += ". " + _bridge(tile, level)
 	var parts: Array[String] = []
 	var mp := tile.terrain.move_cost + (0 if not tile.is_water() else (1 if tile.depth == 1 else 2))
 	if mp > 0:
@@ -43,6 +45,16 @@ static func describe(tile: MapTile, level: int) -> String:
 	if level == ExplainLevel.FULL and cover > 0:
 		t += ". Woods also block line of sight once 3 points lie between two 'Mechs."
 	return t
+
+
+static func _bridge(tile: MapTile, level: int) -> String:
+	var b := tile.bridge
+	var holds := "no 'Mechs safely" if b.type.roof_support < 0 else "up to %s 'Mechs" % [
+			["light", "medium", "heavy", "assault"][mini(b.type.roof_support, 3)]]
+	var t := "%s, deck at level %d: 1 MP a hex on the deck, holds %s" % [Bridges.label(b), b.level, holds]
+	if level == ExplainLevel.FULL:
+		t += ". It doesn't block line of sight. You pass underneath only if your 'Mech's top is no higher than the deck; it can be shot down like a building"
+	return t + ". Below it"
 
 
 static func _building(b: Building, level: int) -> String:
@@ -121,6 +133,18 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 			if level == ExplainLevel.OFF:
 				return ""
 			return "  The walls around %s take %d damage instead of its legs." % [who, d["damage"]]
+		"bridge_heavy":
+			var t := "  The %s at %s groans under %s." % [bname, where, who]
+			if level == ExplainLevel.FULL:
+				t += " A bridge deck holds 'Mechs like a roof: too heavy a 'Mech forces a roll to see if it gives way."
+			return t
+		"bridge_collapsed":
+			var t := "The %s at %s collapses!" % [bname, where]
+			if int(d.get("damage", 0)) > 0 and u != null:
+				t += " %s is hit by the falling deck for %d damage." % [who, d["damage"]]
+			if level == ExplainLevel.FULL:
+				t += " A bridge that loses more than half its hexes falls down entirely."
+			return t
 		"collapsed":
 			var t := "The %s at %s collapses!" % [bname, where]
 			if int(d.get("damage", 0)) > 0 and u != null:
