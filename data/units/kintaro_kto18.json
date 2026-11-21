@@ -1,0 +1,16 @@
+{
+  "id": "kintaro_kto18", "name": "Kintaro", "model": "KTO-18", "tonnage": 55,
+  "walk_mp": 5, "jump_mp": 0, "heat_sinks": 12, "sprite": "kintaro",
+  "role": "Medium brawler built around two SRM-6 racks: devastating up close, with an LRM-5 and lasers to reach out a little.",
+  "armor": {"HD": 9, "CT": 27, "LT": 20, "RT": 20, "LA": 18, "RA": 18, "LL": 26, "RL": 26},
+  "rear_armor": {"CT": 9, "LT": 6, "RT": 6},
+  "equipment": {
+    "RT": ["srm6", "ammo:srm6", "ammo:lrm5"],
+    "LT": ["srm6", "ammo:srm6"],
+    "RA": ["medium_laser"],
+    "LA": ["medium_laser"],
+    "CT": ["lrm5", "medium_laser"],
+    "LL": ["heat_sink"],
+    "RL": ["heat_sink"]
+  }
+}
