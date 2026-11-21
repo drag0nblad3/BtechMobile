@@ -185,3 +185,40 @@ func test_cgl_plastic_pass57_structural_and_rear_landmarks() -> void:
 		check(not j.part(name).is_empty(), "Jenner hock assembly missing: " + name)
 	check(j.part("ll_rear_hock_brace")["cells"].has(Vector3i(-7, 8, 10)),
 			"Jenner hock brace not located behind the lower shin")
+
+
+func test_cgl_twenty_pass_component_shapes_and_clear_bores() -> void:
+	# Passes 58-77: compare actual shape cells, not preview mesh colors.
+	# These parts are silhouette-defining structures visible from the
+	# front, side or rear on CGL plastic, not decorative high-density detail.
+	var atlas := VxModel.load_file(MODELS[0])
+	for name in ["lt_shoulder_ridge", "rt_shoulder_ridge",
+			"ct_rear_left_radiator", "ct_rear_right_radiator",
+			"ll_rear_hip_shield", "rl_rear_hip_shield",
+			"hd_left_orbit_brow", "hd_right_orbit_brow"]:
+		check(not atlas.part(name).is_empty(), "Atlas shape lost: " + name)
+
+	var w := VxModel.load_file(MODELS[1])
+	check(not w.part("ct_lower_reactor_spine").is_empty(),
+			"Wolverine rear spine no longer physically joins the backpack")
+	var left_jet: Dictionary = w.part("ct_left_jump_exhaust")["cells"]
+	check(left_jet.has(Vector3i(-5, 45, 11)),
+			"Wolverine exhaust missing its inset backing")
+	check(not left_jet.has(Vector3i(-5, 45, 14)),
+			"Wolverine rear jet aperture accidentally filled")
+	check(not w.part("ct_right_jump_exhaust").is_empty(),
+			"Wolverine mirrored exhaust missing")
+
+	var jenner := VxModel.load_file(MODELS[2])
+	for name in ["ct_rear_reactor_spine", "ll_front_ankle_link",
+			"rl_front_ankle_link"]:
+		check(not jenner.part(name).is_empty(), "Jenner shape lost: " + name)
+	for location in [Location.LA, Location.RA]:
+		for i in range(2):
+			var muzzle: Vector3 = jenner.muzzles[location][i]
+			var part_name := ("la_" if location == Location.LA else "ra_")
+			part_name += "laser_lower" if i == 0 else "laser_upper"
+			var opening := Vector3i(floori(muzzle.x), floori(muzzle.y),
+					ceili(muzzle.z))
+			check(not jenner.part(part_name)["cells"].has(opening),
+					"Jenner laser opening obstructed: %s %s" % [part_name, opening])
