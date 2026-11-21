@@ -22,7 +22,7 @@ static func engaging(target: Unit, attacker: Unit, w: MountedWeapon) -> MountedW
 		if not a.def.ams or a.engaged >= PER_TURN or not target.can_fire(a):
 			continue
 		var arc_id := FiringArc.fire_arc(target.coord, FiringArc.weapon_facing(target, a.loc), attacker.coord)
-		if FiringArc.weapon_covers(a.loc, a.rear, arc_id, target.def.quad):
+		if FiringArc.weapon_covers(a.loc, ArmFlip.rear(target, a), arc_id, target.def.quad):
 			return a
 	return null
 

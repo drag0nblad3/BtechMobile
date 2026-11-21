@@ -7,13 +7,20 @@ extends RefCounted
 ## loss) and accepts 8 when the target is nearly dead.
 
 
-## Returns {shots: [{weapon, target_id}], twist, modes: {weapon index: mode}, reason}.
+## Returns {shots: [{weapon, target_id}], twist (FLIP = flip the arms), modes: {weapon index: mode}, reason}.
+const FLIP := 2
+
+
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	var best := {"shots": [], "twist": 0, "reason": "holds fire: no enemy in range and sight", "value": 0.0}
 	var original := u.torso_twist
 	var nearest := BotMove.nearest_enemy(state, u, u.coord)
-	for twist in ([0, -1, 1] if not u.prone and not u.def.quad and BotSkill.basic_tricks() else [0]):
-		u.torso_twist = twist
+	var turns := [0, -1, 1] if not u.prone and not u.def.quad and BotSkill.basic_tricks() else [0]
+	if turns.size() > 1 and ArmFlip.design_can(u.def):
+		turns.append(FLIP)
+	for twist in turns:
+		u.torso_twist = twist if twist != FLIP else 0
+		u.arms_flipped = twist == FLIP
 		for e in state.units:
 			if e.side == u.side or e.destroyed or (BotSkill.nearest_only() and e != nearest):
 				continue
@@ -29,6 +36,7 @@ static func plan(state: GameState, u: Unit) -> Dictionary:
 					best = p
 				BotModes.restore(u, before)
 	u.torso_twist = original
+	u.arms_flipped = false
 	return best
 
 

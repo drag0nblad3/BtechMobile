@@ -263,3 +263,36 @@ func test_leg_weapons_cant_fire_through_own_cover() -> void:
 	var th := ToHitCalc.weapon(s, a, leg, t)
 	check(not th.possible(), "leg laser can't fire through its own cover (p. 61)")
 	check(ToHitCalc.weapon(s, a, arm, t).possible(), "arm laser still fires")
+
+
+func _flipper(missing: Dictionary) -> UnitDef:
+	return UnitDef.from_dict({"id": "fl", "name": "Flipper", "tonnage": 50, "walk_mp": 4,
+			"armor": {"CT": 20}, "missing_actuators": missing,
+			"equipment": {"LA": ["medium_laser"], "CT": ["medium_laser"]}}, weapons())
+
+
+func test_flipped_arms_fire_backwards() -> void:
+	var s := GameState.new(open_map(6, 8))
+	var a := Unit.new(1, _flipper({"LA": ["lower_arm", "hand"], "RA": ["lower_arm", "hand"]}), 0, hex_at(2, 2), 3)
+	var t := mech("locust_lct1v", 1, hex_at(2, 1), 3, 2)  # behind a 'Mech facing south
+	s.add_unit(a)
+	s.add_unit(t)
+	var arm: MountedWeapon = a.weapons[0]
+	check(not ToHitCalc.weapon(s, a, arm, t).possible(), "rear target: arms can't point there")
+	check_eq(ArmFlip.problem(a), "")
+	a.arms_flipped = true
+	check(ToHitCalc.weapon(s, a, arm, t).possible(), "flipped: the arm laser fires into the rear arc (p. 62)")
+	check(not ToHitCalc.weapon(s, a, a.weapons[1], t).possible(), "torso laser still faces forward")
+	t.coord = hex_at(2, 3)
+	check(not ToHitCalc.weapon(s, a, arm, t).possible(), "flipped arms lose the front arc")
+	check(PhysicalOptions.for_target(s, a, t).filter(func(o: Dictionary) -> bool:
+			return o["kind"] == "punch" and o["to_hit"].possible()).is_empty(), "no punches with flipped arms")
+	a.reset_for_turn()
+	check(not a.arms_flipped, "back to front at the end of the turn")
+	a.torso_twist = 1
+	check(ArmFlip.problem(a) != "", "twist or flip, not both")
+	a.torso_twist = 0
+	a.prone = true
+	check(ArmFlip.problem(a) != "", "not while prone")
+	var hands := Unit.new(3, _flipper({"LA": ["lower_arm", "hand"]}), 0, hex_at(0, 0), 0)
+	check(not ArmFlip.design_can(hands.def), "both arms must lack the actuators")

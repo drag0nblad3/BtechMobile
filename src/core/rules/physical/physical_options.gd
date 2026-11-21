@@ -70,6 +70,8 @@ static func _punch(state: GameState, a: Unit, t: Unit, arm: int) -> Dictionary:
 	var side := FiringArc.LEFT if arm == Location.LA else FiringArc.RIGHT
 	if a.is_location_out(arm) or not a.has_working_actuator(arm, "shoulder"):
 		th.impossible = "%s can't punch" % Location.name_of(arm)
+	elif a.arms_flipped:
+		th.impossible = "Its arms are flipped backwards this turn"
 	elif arc_id != FiringArc.FRONT and arc_id != side:
 		th.impossible = "Target isn't in front of that arm"
 	elif t.prone and dl != 1:

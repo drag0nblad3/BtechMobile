@@ -10,9 +10,12 @@ static func refresh(ai: AttackInput) -> void:
 	var level := GameSettings.explain_level
 	var weapon := ai.is_weapon_phase()
 	ai.hud.show_attack_controls(true, "Fire" if weapon else "Attack", "Hold Fire" if weapon else "Skip")
-	if ai.attacker.def.quad:
+	if ai.attacker.def.quad or ai.attacker.arms_flipped:
 		for b in ai.hud.twist_buttons:
-			b.visible = false  # quads can't twist (p. 238)
+			b.visible = false  # quads can't twist (p. 238); flipped arms rule it out
+	ai.hud.flip_button.visible = weapon and ArmFlip.design_can(ai.attacker.def) and not ai.attacker.prone
+	ai.hud.flip_button.text = "Arms forward" if ai.attacker.arms_flipped else "Flip arms"
+	ai.hud.flip_button.disabled = not ai.attacker.arms_flipped and ArmFlip.problem(ai.attacker) != ""
 	var hexes := {ai.attacker.coord: HexHighlighter.SELECTED}
 	if ai.target:
 		hexes[ai.target.coord] = Color(1, 0.2, 0.2, 0.55)
@@ -20,6 +23,8 @@ static func refresh(ai: AttackInput) -> void:
 		hexes[ai.target_hex] = Color(1, 0.6, 0.2, 0.55)
 	ai.highlighter.show_hexes(hexes)
 	var twist: String = ["  (torso twisted left)", "", "  (torso twisted right)"][ai.attacker.torso_twist + 1]
+	if ai.attacker.arms_flipped:
+		twist = "  (arms flipped: arm weapons fire backwards)"
 	if ai.target_hex != Hex.INVALID and not weapon:
 		ai.hud.set_info("%s -> building %s" % [Names.unit(ai.attacker), Hex.label(ai.target_hex)])
 		ai.hud.set_tip("Buildings can't dodge: punches, kicks and swings always hit them.")

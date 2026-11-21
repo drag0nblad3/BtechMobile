@@ -21,7 +21,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Stacking: pass through friends, not enemies; one 'Mech per hex at end of movement.
 - ✅ Backward walking (not running), same costs, at most 1 level change; any backward level change costs a piloting roll, and a failure falls (in the lower hex).
 - ✅ Jumping (p. 50): 1 MP per hex, any landing facing, ignores terrain costs; no hex higher than start level + jump MP (woods don't count, buildings do); from water the start is the bottom, depth 2+ can't jump, leg jets don't fire in depth 1; landing in water costs a roll; heat 1/hex (min 3); +3 own, +1 extra to be hit; 'Mech-scale buildings are landed on, on the roof.
-- ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again; standing frees the facing. Impossible with a
+- ✅ Standing up: 2 MP plus a piloting roll (-1 helps it); failing means falling again, then it tries again while the planned move leaves 2 spare MP (p. 51); standing frees the facing. Impossible with a
   destroyed gyro, both legs gone, or one leg and both arms gone (p. 51).
 - ✅ Dropping prone (`ProneMoves`, p. 51): in place, or at the end of a walk/run with 1 MP to spare (the Prone button uses the previewed move); not after jumping.
 - 🟡 Prone 'Mech that can't stand (destroyed gyro, both legs gone) only turns in its hex, 1 MP a hexside; a destroyed gyro allows one hexside a turn (p. 46) — `TODO(rules)`: a prone 'Mech that could stand can't choose to turn without standing.
@@ -57,6 +57,7 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Partial cover from depth 1 water: +1, leg hits absorbed.
 - ✅ Firing arcs (p. 60): forward 120°, sides 60°, rear 120°; arms add their side; rear mounts fire rear. Hit zones (p. 73) keep the hexside shape: front is 3 hexsides.
 - ✅ Torso twist one hexside in the weapon phase; leg weapons keep the legs' facing; punches use the torso.
+- ✅ Flipping arms (`ArmFlip`, p. 62): a design with neither lower arm nor hand actuators in both arms may flip them in the weapon phase instead of twisting ("Flip arms" button); its arm weapons (and an arm AMS) then cover only the rear arc, it can't punch or swing an arm weapon, not while prone, and the arms swing back at the end of the turn. The computer flips when that gives the best volley.
 - ✅ Target number 2 or less always hits (p. 72); target > 12 can't be attempted.
 - ✅ Cluster hits table, all 13 columns (p. 74), checked against the book; LRMs in 5-point groups, SRMs per missile.
 - ✅ Ammo used per shot; no ammo, no shot.
