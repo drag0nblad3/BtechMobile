@@ -85,6 +85,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			var t := "%s is destroyed (%s)!" % [_u(s, d), d["reason"]]
 			if level == ExplainLevel.FULL and String(d["reason"]).begins_with("XL engine"):
 				t += " An XL engine saves weight but reaches into both side torsos, so losing either one is fatal."
+			elif level == ExplainLevel.FULL and String(d["reason"]).begins_with("Clan XL"):
+				t += " A Clan XL engine is smaller and survives losing one side torso, but this one had already taken an engine hit."
 			return t
 		GameEvent.AMMO_EXPLOSION:
 			return DamageText.ammo(s, d, level)

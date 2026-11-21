@@ -4,7 +4,8 @@ extends RefCounted
 ## the location whose expected value beats an ordinary shot. A hit lands
 ## where aimed half the time (4+ on 1D6); a location the damage would
 ## destroy is worth much more, most of all the head, center torso or an XL
-## side torso, which kill the 'Mech. Head hits also hurt the pilot.
+## side torso that would take the engine with it, which kill the 'Mech.
+## Head hits also hurt the pilot.
 
 const KILL_VALUE := 40.0  ## Destroying the head, CT or an XL side torso.
 const LIMB_VALUE := 12.0  ## Destroying any other location, on top of the damage.
@@ -59,7 +60,7 @@ static func best_location(state: GameState, u: Unit, w: MountedWeapon, e: Unit) 
 ## What `dmg` landing on `loc` is worth.
 static func location_value(e: Unit, loc: int, dmg: float) -> float:
 	if dmg >= e.armor[loc] + e.structure[loc]:
-		var xl_side := e.def.is_xl() and (loc == Location.LT or loc == Location.RT)
+		var xl_side := XlEngine.torso_loss_kills(e) and (loc == Location.LT or loc == Location.RT)
 		if loc == Location.HEAD or loc == Location.CT or xl_side:
 			return KILL_VALUE
 		return LIMB_VALUE + dmg

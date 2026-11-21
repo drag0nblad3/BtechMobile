@@ -3,8 +3,8 @@ extends RefCounted
 ## Static unit design (one variant), loaded from data/units/<id>.json.
 ## Data only: runtime damage lives in Unit. See docs/data-formats.md.
 
-## Engine-integral heat sinks that take no critical slots.
-## TODO(rules): really engine rating / 25; 10 for every 'Mech here.
+## Heat sinks that come free with every engine (no weight, no slots). A big
+## engine holds more without slots (DesignWeight.engine_sink_capacity).
 const ENGINE_HEAT_SINKS := 10
 
 var id: String
@@ -14,7 +14,7 @@ var tonnage: int
 var walk_mp: int
 var jump_mp: int
 var heat_sinks: int = 10
-## Double heat sinks (p. 89): each removes 2 heat and fills 3 slots.
+## Double heat sinks (p. 89): each removes 2 heat and fills 3 slots (2 if Clan).
 var double_heat_sinks := false
 ## Locations protected by CASE (p. 96).
 ## Physical weapons: [{kind: "hatchet"|"sword", loc}] (MeleeWeapons).
@@ -22,8 +22,15 @@ var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
 var ecm_loc := -1  ## Location of a Guardian ECM suite (Ecm), -1 none.
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
-## "standard" or "xl" (XlEngine: 3 engine slots in each side torso).
+## "standard" or "xl" (XlEngine: 3 engine slots in each side torso, 2 if Clan).
 var engine_type := "standard"
+## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
+## sinks, free CASE everywhere, lighter armor and targeting computers).
+var tech_base := "inner_sphere"
+## OmniMech (book p. 20, OmniConfig): a construction feature; same rules in play.
+var omni := false
+var chassis := ""  ## OmniMech chassis id ("timber_wolf"), "" for others.
+var config := ""  ## OmniMech configuration ("Prime", "A"), "" for others.
 ## "standard" or "endo_steel"; armor "standard" or "ferro_fibrous". Their
 ## bulky slots are listed as equipment ("endo_steel", "ferro_fibrous").
 var structure_type := "standard"
@@ -55,6 +62,10 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.engine_type = d.get("engine_type", "standard")
+	u.tech_base = d.get("tech_base", "inner_sphere")
+	u.omni = bool(d.get("omni", false))
+	u.chassis = d.get("chassis", "")
+	u.config = d.get("config", "")
 	u.structure_type = d.get("structure_type", "standard")
 	u.armor_type = d.get("armor_type", "standard")
 	u.role = d.get("role", "")
@@ -173,8 +184,13 @@ func is_xl() -> bool:
 	return engine_type == "xl"
 
 
+func is_clan() -> bool:
+	return tech_base == "clan"
+
+
+## Clan 'Mechs have CASE built into every location (ClanTech).
 func has_case(loc: int) -> bool:
-	return case_locs.has(loc)
+	return is_clan() or case_locs.has(loc)
 
 
 func has_actuator(loc: int, actuator: String) -> bool:

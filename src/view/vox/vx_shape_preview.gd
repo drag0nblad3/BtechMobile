@@ -55,7 +55,7 @@ func _build(d: Dictionary) -> void:
 		for s: Dictionary in shapes:
 			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
 		for s: Dictionary in p.get("add", []):
-			_draw_shape(s, mirror_part, unit_scale, materials, p["name"])
+			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
 
 	# Neutral animation axes mask the reverse-jointed Jenner's profile.
 	# Only the review rig is posed; source voxels and animation remain untouched.
