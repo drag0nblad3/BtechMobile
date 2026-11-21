@@ -102,3 +102,28 @@ Review these **primary and secondary visual references** together, not just a si
 - **29:** refined Atlas mandible to recede flush below skull, narrowed WVR upper-arm plates so they do not resemble assault-mech shoulders, restricted Jenner glazing to a slim windscreen strip and roof pane after Godot 28 comparison.
 
 The existing `subdivide:1` requirement and 100–150k voxel **deferral** remain intact. No APK built, no merge. One Godot render per checkpoint. Shapes are **not automatically approved** by the completion of these five passes.
+
+## CGL plastic-led cycles 30–37 (eight new shape passes)
+
+Reference priority: current Catalyst plastic miniature photos, including front and side/rear, outweigh earlier technical art, third-party resin or fan interpretations. Multiple angles are mandatory for each silhouette. No Gothic Atlas variant substitutions.
+
+| Chassis | Primary reference | Second angle / alternate current plastic |
+| --- | --- | --- |
+| Atlas AS7-D | [CGL Hansen's Roughriders official plastic photo](https://store.catalystgamelabs.com/products/battletech-hansens-rough-riders-battle-lance) | [Independent frontal unpainted Atlas photo](https://www.ebay.com/itm/404166265786), [Sarna verified photo](https://www.sarna.net/wiki/File:Hansen%27s_Roughriders_Battle_Lance_Atlas.jpg) |
+| Wolverine WVR-6R | [CGL 2019 AGOAC/Beginner plastic](https://www.sarna.net/wiki/Miniatures_-_Catalyst_Game_Labs) | [Official CGL premium Wolverine alternate view and parts](https://store.catalystgamelabs.com/products/battletech-premium-miniature-wolverine), [CGL plastic miniature paint photo](https://mechpainters.org/miniature/wolverine-clan-wolverine/) |
+| Jenner JR7-D | [CGL Striker Lance bare plastic, FRONT and SIDE](https://www.rpgminihunter.com.au/products/jenner-battletech-inner-sphere-striker-lance-set-catalyst-game-lab) | [Multiple other angles of the same CGL Striker Lance plastic](https://jadedfalconer.com/Pages/1Light/jenner) |
+
+### Eight completed geometry passes
+
+30. Atlas: independently shaped left/right split chest plates; reduce inflated shoulder-cowl edge.
+31. Jenner: reduce oversized flank laser nacelles, rebuild physically underslung belly apron absent from prior model.
+32. Wolverine: shorten/drop inflated pauldron contours and add separate shoulder yoke joints beneath shield.
+33. Atlas: physically construct a double-column five-row missile rack with ten open apertures and aligned launch positions, not just dark mouth decals.
+34. Wolverine: reshape forearm and thighs into narrower tapering geometry distinct from Atlas.
+35. Jenner: replace swollen duck-like cockpit with shorter stepped eight-sided nose, actual narrow windscreen, revised chin.
+36. Atlas and Wolverine: slim Atlas gauntlet/knuckle shapes, and correct oversized Wolverine right forearm AC5 shroud.
+37. Jenner: add real bilateral aft engine exhaust frames with twin air channels, connected to existing rear drive modules.
+
+Audit focus: bloating (pauldrons, gauntlets, nacelles), gaps (Wolverine exposed shoulder yokes; Jenner belly/hocks), missing sculpt features (Atlas rack mouths, Jenner rear exhaust, Atlas split chest), and weapon opening occupancy. Godot surface preview does not show erase cuts; validate actual generated voxel cells at the muzzle coordinates.
+
+CGL photos have priority over old TRO art and fan resin. Keep only a few combined in-engine renders for review, no automated multi-angle image batches. Retain subdivide = 1 and keep all three models unapproved for high-density detailing, unmerged, no APK.
