@@ -5,7 +5,7 @@ extends Node
 ## side panel, then Fire / Attack or Hold Fire / Skip.
 ## The primary target is the first enemy in your forward arc you assign
 ## weapons to (else the first enemy). In the weapon
-## phase you may also tap a building to shoot it.
+## phase you may also tap a building to shoot it, or woods to set them alight.
 
 signal attacker_selected(u: Unit)
 
@@ -62,7 +62,8 @@ func on_hex_tapped(c: Vector2i) -> bool:
 	var u := controller.state.unit_at(c)
 	if u == null:
 		var tile := controller.state.map.get_tile(c)
-		if attacker == null or tile == null or tile.building == null:
+		if attacker == null or tile == null or not (tile.building != null
+				or (is_weapon_phase() and WoodsFire.can_light(tile))):
 			return false
 		target = null
 		target_hex = c
@@ -212,11 +213,11 @@ func _refresh() -> void:
 				AttackRows.physical(controller.state, attacker, null, target_hex), physical, level, _toggle))
 		return
 	if target_hex != Hex.INVALID:
-		hud.set_info("%s -> building %s (%d hexes)%s" % [Names.unit(attacker), Hex.label(target_hex),
+		hud.set_info("%s -> %s %s (%d hexes)%s" % [Names.unit(attacker), _noun(), Hex.label(target_hex),
 				Hex.distance(attacker.coord, target_hex), twist])
 		hud.set_tip(Advisor.volley(controller.state, attacker, _shot_list(), level))
 		if not hud.sheet_open:
-			hud.show_side(AttackPanel.build("Weapons at building " + Hex.label(target_hex),
+			hud.show_side(AttackPanel.build("Weapons at %s %s" % [_noun(), Hex.label(target_hex)],
 				AttackRows.weapons(controller.state, attacker, _options(), shots, _here()), _selected_here(), level, _toggle, _mode))
 		return
 	if target == null:
@@ -265,3 +266,8 @@ func _selected_here() -> Dictionary:
 ## Current aim: the target 'Mech's id, or the building hex.
 func _here() -> Variant:
 	return target_hex if target_hex != Hex.INVALID else (target.id if target else -1)
+
+
+## What the tapped hex target is: "building" or the woods' name.
+func _noun() -> String:
+	return WoodsFire.noun(controller.state.map.get_tile(target_hex))

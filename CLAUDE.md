@@ -62,7 +62,7 @@ Battle mode first; campaign layer later.
 | `src/core/rules/piloting/` | `Psr` (piloting rolls, standing up), `MovePsr` (rolls a move costs: on entering a hex or after the move), `Skid` (unused optional rule), `Fall`, `PilotDamage` |
 | `src/core/rules/physical/` | `PhysicalOptions` (punch/kick/push, levels table), `PhysicalMods` (shared checks + modifiers), `Charge` (charge, DFA options), `ChargeResolve` (rolls, damage, displacement), `Displacement` (domino effect, ledges, off-map), `MeleeWeapons` (hatchet, sword, clubs), `PhysicalPhase` |
 | `src/core/rules/buildings/` | `BuildingRules` (entering, inside modifiers, destroy checks, collapse), `BuildingDamage` (per-attacker damage, end-of-phase collapse), `BuildingFire` (shooting buildings), `BuildingMelee` (punching/kicking buildings), `Roofs` (roof landing/moves, support limit) |
-| `src/core/rules/terrain/` | `Fire` (burning hexes, smoke, lighting buildings) |
+| `src/core/rules/terrain/` | `Fire` (burning hexes, smoke, lighting buildings), `WoodsFire` (flamers lighting woods) |
 | `src/core/rules/turn/` | `Initiative`, `InitiativeDie` (optional rule), `UnequalNumbers` (who acts when), `EndPhase` |
 | `src/core/explain/` | `ExplainLevel`, `Explainer` (event → log text per level), `WeaponText` (shot results), `ModsText`, `BvText`, `DamageText`/`HeatText`/`PilotText`/`TerrainText`, `Advisor` (choice advice), `RulesText` (original phase blurbs), `Names`, `Tutorial` (scenario lessons) |
 | `src/core/ai/` | `Bot` (plays a side via controller calls, announces reasons), `BotMove`, `BotFire`, `BotModes` (Ultra/LB-X), `BotPhysical` (punch/kick/melee weapons), `BotCharge` (charge/DFA value), `BotAim` (aimed shots) |

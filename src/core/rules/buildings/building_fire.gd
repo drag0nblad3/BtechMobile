@@ -1,6 +1,7 @@
 class_name BuildingFire
 extends RefCounted
-## Shooting a building hex instead of a 'Mech (book p. 135). Buildings
+## Shooting a building hex instead of a 'Mech (book p. 135), or woods with
+## a flamer to set them alight (WoodsFire). Buildings
 ## can't dodge (-4), shots from the next hex always hit, and cluster
 ## weapons hit with every missile. Damage goes to `BuildingDamage`.
 ## TODO(rules): no secondary-target cost; a 'Mech inside is not hurt by
@@ -19,7 +20,11 @@ static func options(state: GameState, attacker: Unit, c: Vector2i) -> Array[Dict
 static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector2i) -> ToHit:
 	var th := ToHit.new()
 	var tile := state.map.get_tile(c)
-	if tile == null or tile.building == null:
+	var woods := tile != null and tile.building == null
+	if woods and WoodsFire.problem(tile, w) != "":
+		th.impossible = WoodsFire.problem(tile, w)
+		return th
+	if tile == null:
 		th.impossible = "No building there"
 		return th
 	if w.def.ams or not attacker.can_fire(w):
@@ -32,7 +37,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if not FiringArc.weapon_covers(w.loc, w.rear, arc_id):
 		th.impossible = "The building is in your %s arc; %s can't point there" % [FiringArc.NAMES[arc_id], w.label()]
 		return th
-	var los := LineOfSight.check_hex(state.map, attacker, c, tile.level + tile.building.height)
+	var los := LineOfSight.check_hex(state.map, attacker, c, tile.level + (1 if woods else tile.building.height))
 	if los["blocked"]:
 		th.impossible = "No line of sight (%s)" % los["reason"]
 		return th
@@ -53,6 +58,9 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if Location.is_arm(w.loc):
 		ToHitCalc.add_arm_actuators(th, attacker, w.loc)
 	TargetingComputer.add(th, attacker, w)
+	if woods:
+		WoodsFire.add_mods(th)
+		return th
 	th.add("building", -4, "A building can't move or dodge: -4.")
 	if dist <= 1:
 		th.auto_hit = "Building next to you"
@@ -64,7 +72,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		w: MountedWeapon, c: Vector2i, th: ToHit) -> void:
 	var tile := state.map.get_tile(c)
 	var data := {"attacker_id": attacker.id, "target_id": -1, "target_hex": c, "weapon": w.def.name,
-			"weapon_id": w.def.id, "roll": 0, "need": th.target(), "hit": false, "mods": th.mods, "missiles": 0}
+			"weapon_id": w.def.id, "roll": 0, "need": th.target(), "hit": false, "mods": th.mods, "missiles": 0,
+			"target_noun": WoodsFire.noun(tile)}
 	var shots := WeaponFire.take_shots(attacker, w)
 	if shots == 0:
 		data["no_ammo"] = true
@@ -73,7 +82,11 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
 	data["roll"] = dice.roll_2d6()
-	data["hit"] = data["roll"] >= th.target() and tile != null and tile.building != null
+	data["hit"] = data["roll"] >= th.target() and tile != null
+	if data["hit"] and tile.building == null:  # woods: only the heat counts
+		emit.call(GameEvent.WEAPON_FIRED, data)
+		Fire.add_heat(state, c, w.def.damage)
+		return
 	var dmg := w.def.damage * shots  # every shot or pellet finds a building
 	if data["hit"] and w.def.is_cluster():
 		data["missiles"] = w.def.missiles  # every missile finds a building
