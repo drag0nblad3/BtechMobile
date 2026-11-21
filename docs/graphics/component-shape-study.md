@@ -35,3 +35,24 @@ Render front, left/right profile, rear, and three-quarter views. Confirm the out
 - **Jenner:** Broad horizontal body and projecting prow are present, but nose glazing, flank nacelle integration, hock linkage and toe shapes still differ from the technical readout and miniature.
 
 **Next required work:** For each part, replace coarse symmetric cross-sections with explicit reference-traced front/side/plan polygons; verify those polygons isolated and assembled; repeat the four orthographic-perspective capture angles. The shared octagonal profile helper is a drafting shortcut, not acceptable as a final component shape. Keep this draft PR unmerged.
+
+## Reference-driven iteration log (current branch)
+
+**Fixed primary image per chassis (secondary images check volume, not a change of design language):**
+- **Atlas AS7-D:** [Untextured three-quarter AS7-D sculpture](https://www.deviantart.com/lizzygibbs3d/art/FAN-ART-BattleTech-MechWarrior-AS-7-D-Atlas-551614099), plus [front, side and rear concept projections](https://ca.pinterest.com/pin/19844054593742889/).
+- **Wolverine WVR-6R:** [WVR-6R FSW ink illustration](https://www.sarna.net/wiki/File:Wolverine_WVR-6R_FSW.jpg), plus [WVR-6R miniature front/side angles](https://syzgames.com/products/wolverine-wvr-6r).
+- **Jenner JR7-D:** [JR7-D technical-readout illustration](https://mordel.net/tro.php?a=vtbm&id=188), plus [JR7-D multi-angle miniature](https://syzgames.com/products/copy-of-kintaro-kto-19).
+
+The four-axis front/three-quarter/side/rear test remains compulsory for *each* change to a silhouette.
+
+| Round | Changed geometry | Review finding |
+| --- | --- | --- |
+| Original | Shared octagonal body/limb sections | Rejected: too smooth/generic |
+| 3 | Distinct hand-traced ten-point head, chest, and shoulder sections | Better articulation of frontal planes; silhouettes still insufficiently distinct |
+| 4 | Separately profiled pauldrons, forearms, knuckles, thighs, knees, greaves and feet | Visible improvement to long-leg proportions; still some rounded armor masses |
+| 5 | Distinct Atlas/Wolverine pelvis/codpiece, Jenner undercarriage and lower SRM housing | Removed pointed chest-to-thigh gap; reduced misleading vertical launcher |
+| 6 | Hollow Atlas right-torso AC/20 frame, 2×3 open Wolverine missile rack, four separate Jenner laser barrels and projecting windshield | New weapon silhouettes are physically authored; inspect isolated parts and refine anything that remains off reference |
+
+**Acceptance status remains FAILED/PENDING**, not "done": the skull face, upper-leg armor, shoulder blocks, torso side profiles, and Jenner hull-to-hip connections still need further reference comparison. Source files continue to use `subdivide: 1`. No high-resolution/detail pass is permitted.
+
+**Important renderer distinction:** `VxShapePreview` is a faceted surface proxy for shape approval. It does not perform Boolean cuts for `erase` operations, although the updated weapon apertures are built as open bar assemblies where possible. Actual cutouts must also be verified by the coarse `VxModel` loader and its tests. Its digitigrade review pose uses real authored pivots and does **not** change the game's gait solver.
