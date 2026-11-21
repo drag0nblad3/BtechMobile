@@ -33,7 +33,7 @@ func test_atlas_has_real_slim_waist_and_separate_pectoral_panels() -> void:
 			"shoulder should be wider than waist")
 	check(not body.has_sculpt_cell(Vector3i(-10, -10, 0)),
 			"waist may not fill an entire chest-width rectangular column")
-	check(body.has_sculpt_cell(Vector3i(-5, -3, -7)),
+	check(body.has_sculpt_cell(Vector3i(-5, -3, -6)),
 			"left breastplate has its own front armor face")
 	check(body.has_sculpt_cell(Vector3i(4, -3, -6)),
 			"right breastplate has an independently shaped counterpart")
