@@ -13,7 +13,7 @@
       "wolverine": [
         "lt:0:mid:dome",
         "rt:0:mid:dome",
-        "hd:0:top:lowerTop"
+        "hd:0:top:narrow"
       ],
       "jenner": [
         "hd:0:mid:oval",
@@ -26,7 +26,7 @@
       "intent": "Connect Atlas round caps to chest; widen Wolverine ribs; smooth Jenner flanking housings",
       "atlas": [
         "lt_round_shoulder_band:0:mid:dome",
-        "rt_round_shoulder_band:0:mid:dome",
+        "rt:0:mid:dome",
         "ct:0:mid:widen"
       ],
       "wolverine": [
@@ -216,8 +216,8 @@
       "intent": "Atlas foot width and toe shapes, Wolverine toe stance, Jenner claw-foot silhouette",
       "atlas": [
         "ll_foot:0:bottom:widen",
-        "ll_toe_outer:0:mid:outerOut",
-        "ll_toe_inner:0:mid:narrow"
+        "ll_foot:0:mid:outerOut",
+        "ll_shin:1:mid:narrow"
       ],
       "wolverine": [
         "ll_foot:0:bottom:widen",
@@ -236,11 +236,11 @@
       "atlas": [
         "lt:0:back:dome",
         "rt:0:back:dome",
-        "rt_shoulder_ridge:0:mid:lowerTop"
+        "lt_shoulder_ridge:0:mid:lowerTop"
       ],
       "wolverine": [
         "rt:0:mid:dome",
-        "ra_shoulder_yoke:0:mid:narrow",
+        "ra:0:mid:narrow",
         "ct:0:top:widen"
       ],
       "jenner": [
@@ -253,7 +253,7 @@
       "cycle": 289,
       "intent": "Atlas skull jaw placement and shoulder lip, Wolverine narrow head and wide abdomen, Jenner disc central brow",
       "atlas": [
-        "hd:0:lower:widen",
+        "hd:0:bottom:widen",
         "hd_lower_mandible:0:mid:raiseBottom",
         "lt_round_shoulder_underplate:0:mid:raiseBottom"
       ],
@@ -274,7 +274,7 @@
       "atlas": [
         "la:1:mid:narrow",
         "la:3:mid:narrow",
-        "la_finger_knuckles:0:all:outerOut"
+        "la:3:mid:outerOut"
       ],
       "wolverine": [
         "la:2:mid:narrow",
@@ -292,7 +292,7 @@
       "intent": "Atlas shorten visual shoulder walls, Wolverine align shoulder tops, Jenner cockpit body gap",
       "atlas": [
         "lt_round_shoulder_band:0:front:dome",
-        "rt_round_shoulder_band:0:front:dome",
+        "rt:0:front:dome",
         "ct:0:top:widen"
       ],
       "wolverine": [
@@ -310,12 +310,12 @@
       "cycle": 292,
       "intent": "Atlas lower torso width and thigh armor, Wolverine abdomen thigh balance, Jenner thigh/hock distance",
       "atlas": [
-        "ct:0:lower:widen",
+        "ct:0:bottom:widen",
         "pelvis_front_codpiece:0:mid:narrow",
         "ll_hip_joint:0:mid:outerOut"
       ],
       "wolverine": [
-        "ct:0:lower:widen",
+        "ct:0:bottom:widen",
         "pelvis:0:mid:widen",
         "ll:0:mid:narrow"
       ],
