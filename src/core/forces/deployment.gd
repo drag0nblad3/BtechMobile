@@ -20,6 +20,8 @@ static func place(state: GameState, units: Array[Unit], zones: Array) -> void:
 		for i in groups[z].size():
 			var u: Unit = groups[z][i]
 			u.coord = spots[i] if i < spots.size() else u.coord
+			if u.asset != null:
+				u.coord = _asset_spot(state, u)
 			if u.coord != centre:
 				u.facing = Hex.direction_to(u.coord, centre)
 
@@ -53,6 +55,19 @@ static func _spots(state: GameState, zone: Dictionary, n: int) -> Array[Vector2i
 			c = cands[idx]
 		out.append(c)
 	return out
+
+
+## An Asset needs a hex its movement type may be in: the nearest such free hex.
+static func _asset_spot(state: GameState, u: Unit) -> Vector2i:
+	var best := u.coord
+	var best_d := 999
+	for c: Vector2i in state.map.coords():
+		var d := Hex.distance(c, u.coord)
+		if d < best_d and AssetMoveCost.may_enter(u.asset.card, state.map.get_tile(c)) \
+				and state.units.all(func(o: Unit) -> bool: return o == u or o.coord != c):
+			best = c
+			best_d = d
+	return best
 
 
 static func _usable(state: GameState, c: Vector2i) -> bool:

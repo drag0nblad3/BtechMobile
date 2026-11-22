@@ -1,0 +1,1 @@
+{"id": "test_hover", "name": "Test Hover", "asset": {"type": "vehicle", "motive": "h", "mp": 8, "tmm": 3, "range": [3, 6, 9], "skill": 6, "damage": 3, "groupings": 1, "check": 7, "threshold": 5, "bsp": 12, "specials": {"NOTUR": 1}}}

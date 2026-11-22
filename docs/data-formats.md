@@ -144,3 +144,17 @@ Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turn
 (`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
 `exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.
 `scan` (`"units"`: enemy 'Mechs, 1 VP per scan for a 'Mech that leaves; `"intel"`: objectives with `"kind": "intel"`; `"potential"`: objectives with `"potential": true`) turns on End Phase scanning. Objectives may also set `"fragile"` and `"mobile"`. `exit_side` limits leaving to one side; `attacker` names the attacking side (Steel Rain scoring, `"scoring": "steel_rain"`).
+
+
+## `data/assets/<id>.json`
+A Battlefield Support Asset card (book pp. 140-141). Values come only from official cards.
+```json
+{"id": "savior_repair_vehicle", "name": "Savior Repair Vehicle", "tech_base": "inner_sphere",
+ "asset": {"type": "vehicle", "motive": "t", "mp": 4, "tmm": 1, "range": [1, 2, 3],
+   "skill": 6, "skill_improved": 5, "damage": 3, "groupings": 1, "check": 7, "threshold": 5,
+   "bsp": 13, "bsp_improved": 15, "specials": {"APC": 2, "MFB": 1}},
+ "source": {"card": "Core Rulebook p. 141"}}
+```
+`type`: vehicle, infantry, battle_armor, vtol, emplacement. `motive`: f h j t v w ("" immobile).
+`specials`: card codes (APC, AI, NOTUR, BRA, RCA, RFA, FR, SWARM, ...) with their number (1 if none).
+BV is 20 x `bsp`. Rule-test cards live in `tests/fixtures/assets/` (ids `test_*`).

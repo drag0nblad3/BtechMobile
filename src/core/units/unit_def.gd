@@ -28,9 +28,6 @@ var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 no
 var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
 var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
 var c3_boosted := false  ## Its C3 computer is boosted (C3Boosted).
-## Mixed tech: parts whose tech differs from the chassis ("engine",
-## "heat_sinks", "armor", "tc", "ecm", "masc", "case" -> true for Clan-made).
-var clan_parts: Dictionary = {}
 var jump_jet_type := ""  ## "" standard or "improved" (JumpJets).
 var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
 var probe_loc := -1
@@ -55,6 +52,10 @@ var role: String = ""    ## One-line tactical summary for the force builder.
 var bv := 0  ## Battle Value printed on the official record sheet, 0 if none.
 var source: Dictionary = {}  ## Where the data came from (sheet, MegaMek file).
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
+## Battlefield Support Asset card (vehicles, infantry), null for 'Mechs.
+var asset: AssetCard = null
+## Mixed technology allows equipment subsystems from the other tech base.
+var clan_parts: Dictionary = {}
 var armor: Array[int] = []       ## Per Location, front.
 var rear_armor: Array[int] = []  ## Per Location (torsos only).
 ## [{weapon: WeaponDef, loc: int, rear: bool}] in record-sheet order.
@@ -74,16 +75,19 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.id = d["id"]
 	u.name = d["name"]
 	u.model = d.get("model", "")
-	u.tonnage = int(d["tonnage"])
-	u.walk_mp = int(d["walk_mp"])
-	u.jump_mp = int(d.get("jump_mp", 0))
+	if d.has("asset"):
+		u.asset = AssetCard.from_dict(d["asset"])
+		AssetSpecials.setup_def(u)
+	u.tonnage = int(d.get("tonnage", 0)) if u.asset else int(d["tonnage"])
+	u.walk_mp = u.asset.mp if u.asset else int(d["walk_mp"])
+	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else int(d.get("jump_mp", 0))
 	u.jump_jet_type = d.get("jump_jet_type", "")
-	u.clan_parts = d.get("clan_parts", {})
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.engine_type = d.get("engine_type", "standard")
 	u.gyro_type = d.get("gyro_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
+	u.clan_parts = d.get("clan_parts", {})
 	u.omni = bool(d.get("omni", false))
 	u.quad = bool(d.get("quad", false))
 	u.chassis = d.get("chassis", "")
@@ -91,7 +95,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.structure_type = d.get("structure_type", "standard")
 	u.armor_type = d.get("armor_type", "standard")
 	u.role = d.get("role", "")
-	u.bv = int(d.get("bv", 0))
+	u.bv = u.asset.bv() if u.asset else int(d.get("bv", 0))
 	u.source = d.get("source", {})
 	u.sprite = d.get("sprite", "")
 	var arm: Dictionary = d.get("armor", {})
@@ -172,7 +176,7 @@ func is_clan() -> bool:
 	return tech_base == "clan"
 
 
-## A part is Clan-made: the chassis tech unless mixed tech says otherwise.
+## Individual equipment subsystems may differ from chassis technology.
 func clan_part(part: String) -> bool:
 	return bool(clan_parts.get(part, is_clan()))
 

@@ -51,6 +51,9 @@ static func end_of_phase(state: GameState, dice: Dice, emit: Callable) -> void:
 
 
 static func resolve_pending(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
+	if u.asset != null:  # Assets never make piloting rolls (p. 141)
+		u.psr_pending.clear()
+		return
 	var batch := _dedupe_legs(u.psr_pending)
 	var extra := 0
 	for p: Dictionary in batch:
@@ -99,6 +102,8 @@ static func _dedupe_legs(pending: Array) -> Array:
 ## its +1 unless the roll is part of a jump (`jumping`; see Wind).
 static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 		state: GameState = null, jumping := false) -> bool:
+	if u.asset != null:
+		return true  # Assets never make piloting rolls (p. 141)
 	var th := standing_mods(u)
 	if mod != 0:
 		th.add(reason, mod, "")

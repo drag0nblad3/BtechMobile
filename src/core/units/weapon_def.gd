@@ -46,12 +46,13 @@ var munitions: Dictionary = {}
 var label := ""       ## Munition name for the firing mode (MML "LRM"/"SRM").
 var cluster_mod: int   ## Added to Cluster Hits rolls (MRM -1, p. 186).
 var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 182).
-var fire_psr: bool     ## Heavy Gauss: firing after moving costs a piloting roll (GaussWeapons).
-var range_cluster: bool  ## HAG: cluster roll +2 at short range, -2 at long (GaussWeapons).
-var heat_dice: int     ## Plasma: a hit adds this many d6 of heat to the target (Plasma).
-var to_hit_by_range: Array[int] = []  ## VSP lasers: own to-hit modifier at short, medium, long.
-var large_missile: bool  ## Thunderbolt: one big missile; AMS may shoot it down (Thunderbolt).
-var explosion_damage: int  ## Component explosion damage, if not 2 a slot (improved heavy lasers).
+var ai: bool           ## Anti-Infantry type (AI, book weapon tables): more harm to infantry Assets.
+var fire_psr: bool     ## Heavy Gauss recoil forces a piloting roll.
+var range_cluster: bool ## HAG cluster modifiers depend on range.
+var heat_dice: int     ## Plasma heat dice on impact.
+var to_hit_by_range: Array[int] = [] ## VSP accuracy per range.
+var large_missile: bool ## Thunderbolt: AMS intercepts one missile.
+var explosion_damage: int ## Improved heavy laser component explosions.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -93,6 +94,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.label = d.get("label", "")
 	w.cluster_mod = int(d.get("cluster_mod", 0))
 	w.one_shot = bool(d.get("one_shot", false))
+	w.ai = bool(d.get("ai", false))
 	w.fire_psr = bool(d.get("fire_psr", false))
 	w.range_cluster = bool(d.get("range_cluster", false))
 	w.heat_dice = int(d.get("heat_dice", 0))
@@ -114,6 +116,31 @@ func is_clan() -> bool:
 	return tech == "clan"
 
 
+## Weapon Type codes from the book's tables (p. 182) that Assets care about:
+## DE direct energy, P pulse, DB direct ballistic, M missile, AI, H heat.
+## Weapon accuracy may vary by distance, e.g. VSP lasers.
+func to_hit_at(br: int) -> int:
+	if to_hit_by_range.is_empty() or br < Bracket.SHORT:
+		return to_hit_mod
+	return to_hit_by_range[br - Bracket.SHORT]
+
+
+func attack_types() -> Array[String]:
+	var out: Array[String] = []
+	match type:
+		"energy":
+			out.append("P" if pulse else "DE")
+		"ballistic":
+			out.append("DB")
+		"missile":
+			out.append("M")
+	if ai:
+		out.append("AI")
+	if heat_damage:
+		out.append("H")
+	return out
+
+
 func uses_ammo() -> bool:
 	return ammo_per_ton > 0
 
@@ -130,13 +157,6 @@ func damage_at(dist: int, shift := 0) -> int:
 	if damage_by_range.is_empty() or br == Bracket.OUT:
 		return damage
 	return damage_by_range[clampi(br + shift - Bracket.SHORT, 0, 2)]
-
-
-## The weapon's own to-hit modifier in range bracket `br`.
-func to_hit_at(br: int) -> int:
-	if to_hit_by_range.is_empty() or br < Bracket.SHORT:
-		return to_hit_mod
-	return to_hit_by_range[br - Bracket.SHORT]
 
 
 func max_damage() -> int:

@@ -10,6 +10,7 @@ var map_view: MapView
 var fx := BattleFx.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
+var cinematic: CinematicDirector
 var gestures: TouchGestures
 var hud: BattleHud
 var movement: MovementInput
@@ -22,33 +23,102 @@ var lessons: LessonCard
 var training := -1  ## Training campaign mission index, -1 outside training.
 var objectives: Node3D
 var off_field: HiddenInput
+var recorder := BattleRecorder.new()
+var _last_autosave_turn := -1
+var _tutorial_path := ""
 
 
 func _ready() -> void:
 	GameSettings.load_settings()
-	var state := BattleLaunch.take()
-	if state == null:
-		state = ScenarioLoader.load_file(SCENARIO, TerrainDb.load_file(), UnitDb.load_dir())
-	controller = GameController.new(state)
+	var saved := {}
+	if BattleLaunch.load_autosave:
+		BattleLaunch.load_autosave = false
+		saved = BattleSave.load_game()
+	var state: GameState
+	if saved.is_empty():
+		state = BattleLaunch.take()
+		if state == null:
+			state = ScenarioLoader.load_file(SCENARIO, TerrainDb.load_file(), UnitDb.load_dir())
+		controller = GameController.new(state)
+		recorder.begin(state)
+	else:
+		BattleLaunch.pending = null
+		controller = saved["controller"]
+		state = controller.state
+		recorder.frames = saved["frames"]
 	bots = BotDriver.new()
 	bots.controller = controller
-	bots.bot_sides = BattleLaunch.take_bots()
-	bots.skill = BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level
+	bots.bot_sides = saved["bots"] if not saved.is_empty() else BattleLaunch.take_bots()
+	bots.skill = int(saved["skill"]) if not saved.is_empty() \
+			else (BattleLaunch.bot_level if BattleLaunch.bot_level >= 0 else GameSettings.ai_level)
 	BattleLaunch.bot_level = -1
 	explainer = Explainer.new(GameSettings.explain_level)
-	if BattleLaunch.tutorial_path != "":
-		tutorial = Tutorial.from_scenario(BattleLaunch.tutorial_path)
-		BattleLaunch.tutorial_path = ""
+	_tutorial_path = String(saved.get("tutorial", BattleLaunch.tutorial_path))
+	BattleLaunch.tutorial_path = ""
+	if _tutorial_path != "":
+		tutorial = Tutorial.from_scenario(_tutorial_path)
 		lessons = LessonCard.new()
 		add_child(lessons)
 		bots.lessons = lessons
-	training = BattleLaunch.training_mission
+	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
 	add_child(BattleEnvironment.build())
 	_build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
-	controller.start_turn()
+	hud.set_cinematic_label(GameSettings.cinematic_camera)
+	if saved.is_empty():
+		controller.start_turn()
+	else:
+		_resume_ui()
+
+
+func _resume_ui() -> void:
+	for f: Dictionary in recorder.frames.slice(maxi(0, recorder.frames.size() - 70)):
+		if String(f.get("text", "")) != "":
+			hud.log_view.add_line(String(f["text"]))
+	_update_status()
+	if controller.state.game_over:
+		hud.show_game_over("Battle finished")
+	elif controller.state.point_blank.is_empty() and controller.state.phase in [Phase.Kind.WEAPON_ATTACK, Phase.Kind.PHYSICAL_ATTACK]:
+		attacks.begin.call_deferred()
+
+
+func _autosave() -> bool:
+	if controller == null:
+		return false
+	var ok := BattleSave.save_game(controller, bots.bot_sides, bots.skill,
+			training, recorder.frames, _tutorial_path)
+	if not ok:
+		push_warning("Battle autosave could not be written.")
+	return ok
+
+
+func _save_battle() -> void:
+	hud.set_tip("Battle saved." if _autosave() else "Save failed.")
+
+
+func _watch_replay() -> void:
+	if recorder.frames.is_empty():
+		return
+	if not controller.state.game_over:
+		_autosave()
+	if BattleSave.save_replay(recorder.frames):
+		get_tree().change_scene_to_file("res://scenes/battle_replay.tscn")
+	else:
+		hud.set_tip("Could not save the replay.")
+
+
+func _open_forensics() -> void:
+	if BattleSave.save_replay(recorder.frames):
+		get_tree().change_scene_to_file("res://scenes/battle_forensics.tscn")
+	else:
+		hud.set_tip("Could not archive battle for analysis.")
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
+		_autosave()
 
 
 func _build_views(state: GameState) -> void:
@@ -72,6 +142,10 @@ func _build_views(state: GameState) -> void:
 	var bounds := HexLayout.map_bounds(state.map)
 	rig.bounds = bounds
 	rig.snap(bounds.get_center(), 22.0)
+	cinematic = CinematicDirector.new()
+	add_child(cinematic)
+	cinematic.setup(rig, units_layer)
+	cinematic.set_enabled(GameSettings.cinematic_camera)
 	gestures = TouchGestures.new()
 	add_child(gestures)
 	hud = BattleHud.new()
@@ -100,16 +174,20 @@ func _build_views(state: GameState) -> void:
 	off_field.hud = hud
 	off_field.bots = bots
 	add_child(off_field)
+	var transport := TransportInput.new()
+	add_child(transport)
+	transport.setup(controller, movement, hud)
 
 
 func _wire() -> void:
-	gestures.panned.connect(rig.pan)
-	gestures.pinched.connect(rig.zoom)
-	gestures.twisted.connect(rig.orbit)
-	gestures.tilted.connect(func(px: float): rig.tilt(px * 0.006))
+	gestures.panned.connect(func(d: Vector2): cinematic.manual_input(); rig.pan(d))
+	gestures.pinched.connect(func(f: float): cinematic.manual_input(); rig.zoom(f))
+	gestures.twisted.connect(func(a: float): cinematic.manual_input(); rig.orbit(a))
+	gestures.tilted.connect(func(px: float): cinematic.manual_input(); rig.tilt(px * 0.006))
 	gestures.tapped.connect(_on_tap)
 	gestures.double_tapped.connect(_on_double_tap)
-	hud.top_down_toggled.connect(rig.toggle_top_down)
+	hud.top_down_toggled.connect(func(): cinematic.manual_input(); rig.toggle_top_down())
+	hud.cinematic_toggled.connect(_toggle_cinematic)
 	hud.mode_toggled.connect(movement.on_mode_toggled)
 	hud.turn_left.connect(movement.on_turn.bind(-1))
 	hud.turn_right.connect(movement.on_turn.bind(1))
@@ -129,6 +207,9 @@ func _wire() -> void:
 	hud.log_toggled.connect(hud.log_view.cycle_size)
 	hud.sheet_toggled.connect(_toggle_sheet)
 	hud.explain_cycled.connect(_cycle_explain)
+	hud.save_battle.connect(_save_battle)
+	hud.watch_replay.connect(_watch_replay)
+	hud.battle_forensics.connect(_open_forensics)
 	hud.new_battle.connect(func():
 			BattleLaunch.open_training = training >= 0
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
@@ -138,12 +219,14 @@ func _wire() -> void:
 
 
 func _focus_unit(u: Unit) -> void:
+	cinematic.manual_input()
 	rig.focus(units_layer.view_of(u).position)
 	sheet_unit = u
 	_show_sheet_if_open()
 
 
 func _on_tap(pos: Vector2) -> void:
+	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c == Hex.INVALID:
 		return
@@ -160,6 +243,7 @@ func _on_tap(pos: Vector2) -> void:
 
 
 func _on_double_tap(pos: Vector2) -> void:
+	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c != Hex.INVALID:
 		rig.focus(HexLayout.tile_top(controller.state.map.get_tile(c)))
@@ -187,6 +271,13 @@ func _show_sheet_if_open() -> void:
 		hud.show_side(RecordSheetView.build(sheet_unit, Callable() if bots.bot_sides.has(sheet_unit.side) else power))
 
 
+func _toggle_cinematic() -> void:
+	GameSettings.set_cinematic_camera(not GameSettings.cinematic_camera)
+	cinematic.set_enabled(GameSettings.cinematic_camera)
+	hud.set_cinematic_label(GameSettings.cinematic_camera)
+	hud.set_tip("Cinematic camera follows major actions; drag to take control." if GameSettings.cinematic_camera else "Tactical camera restored.")
+
+
 func _cycle_explain() -> void:
 	GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level))
 	explainer.level = GameSettings.explain_level
@@ -199,7 +290,15 @@ func _cycle_explain() -> void:
 func _on_event(e: GameEvent) -> void:
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
-	hud.log_view.add_line(explainer.describe(e, s), bold)
+	var explanation := explainer.describe(e, s)
+	hud.log_view.add_line(explanation, bold)
+	recorder.record(e, s, explanation)
+	if e.type == GameEvent.ACTIVE_SIDE and s.turn > _last_autosave_turn:
+		_last_autosave_turn = s.turn
+		_autosave.call_deferred()
+	if e.type == GameEvent.GAME_OVER:
+		_autosave.call_deferred()
+		BattleSave.save_replay.call_deferred(recorder.frames)
 	fx.play(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
@@ -207,7 +306,7 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
-		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
+		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:
@@ -235,6 +334,7 @@ func _on_event(e: GameEvent) -> void:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
 			attacks.clear()
 			movement.clear_selection()
+	cinematic.on_event(e)
 
 
 func _rebuild_objectives() -> void:

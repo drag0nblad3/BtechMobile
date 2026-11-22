@@ -16,6 +16,7 @@ signal smash
 signal masc
 signal supercharger
 signal leave  ## Move off the battlefield where the mission allows.
+signal cinematic_toggled
 signal top_down_toggled
 signal sheet_toggled
 signal log_toggled
@@ -26,6 +27,9 @@ signal twist_left
 signal twist_right
 signal flip_arms
 signal new_battle
+signal save_battle
+signal watch_replay
+signal battle_forensics
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 68)
@@ -42,6 +46,7 @@ var smash_button: Button
 var masc_button: Button
 var sc_button: Button
 var explain_button: Button
+var cinematic_button: Button
 var attack_button: Button
 var skip_button: Button
 var twist_buttons: Array[Button] = []
@@ -67,13 +72,23 @@ func _ready() -> void:
 	var col := VBoxContainer.new()
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(col)
-	var top := _row(col)
-	status = _label(top)
+	var heading := _row(col)
+	status = _label(heading)
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_button(top, "Log", log_toggled)
-	_button(top, "Sheet", sheet_toggled)
-	explain_button = _button(top, "Explain", explain_cycled)
-	_button(top, "Map View", top_down_toggled)
+	# Give the full battle status its own line: seven 140px buttons and a
+	# turn/mission label cannot fit side by side at 1280x720 on a phone.
+	var shortcuts := _row(col)
+	shortcuts.add_theme_constant_override("separation", 6)
+	_button(shortcuts, "Save", save_battle)
+	_button(shortcuts, "Replay", watch_replay)
+	_button(shortcuts, "Log", log_toggled)
+	_button(shortcuts, "Sheet", sheet_toggled)
+	explain_button = _button(shortcuts, "Explain", explain_cycled)
+	_button(shortcuts, "Map View", top_down_toggled)
+	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
+	for b: Button in shortcuts.get_children():
+		b.custom_minimum_size = Vector2(120, 54)
+		b.add_theme_font_size_override("font_size", 20)
 	info = _label(col)
 	var middle := _row(col)
 	middle.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -145,6 +160,7 @@ func _build_game_over(parent: Control) -> void:
 	game_over_detail = _label(game_over_box, FONT_SIZE)
 	game_over_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	game_over_detail.custom_minimum_size.x = 760  # training debriefs run long
+	_button(game_over_box, "Analyze Battle", battle_forensics)
 	_button(game_over_box, "New Battle", new_battle)
 
 
@@ -171,6 +187,10 @@ func set_tip(text: String) -> void:
 
 func set_mode_label(text: String) -> void:
 	mode_button.text = text
+
+
+func set_cinematic_label(enabled: bool) -> void:
+	cinematic_button.text = "Cine: On" if enabled else "Cine: Off"
 
 
 func set_explain_label(level: int) -> void:
