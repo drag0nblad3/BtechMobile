@@ -4,7 +4,9 @@ extends MultiMeshInstance3D
 ## leave hex terrain, elevation and voxel models legible when planning moves.
 
 const REACH_WALK := Color(0.25, 0.75, 1.0, 0.25)
-const PATH := Color(0.92, 0.98, 1.0, 0.42)
+const PATH := Color(0.65, 0.88, 1.0, 0.36)
+const DESTINATION := Color(0.99, 0.92, 0.36, 0.60)
+const THREAT := Color(0.96, 0.30, 0.28, 0.48)
 const SELECTED := Color(1.0, 0.85, 0.2, 0.5)
 
 var map: BattleMap
