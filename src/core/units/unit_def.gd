@@ -55,6 +55,8 @@ var role: String = ""    ## One-line tactical summary for the force builder.
 var bv := 0  ## Battle Value printed on the official record sheet, 0 if none.
 var source: Dictionary = {}  ## Where the data came from (sheet, MegaMek file).
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
+## Battlefield Support Asset card (vehicles, infantry), null for 'Mechs.
+var asset: AssetCard = null
 var armor: Array[int] = []       ## Per Location, front.
 var rear_armor: Array[int] = []  ## Per Location (torsos only).
 ## [{weapon: WeaponDef, loc: int, rear: bool}] in record-sheet order.
@@ -74,9 +76,12 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.id = d["id"]
 	u.name = d["name"]
 	u.model = d.get("model", "")
-	u.tonnage = int(d["tonnage"])
-	u.walk_mp = int(d["walk_mp"])
-	u.jump_mp = int(d.get("jump_mp", 0))
+	if d.has("asset"):
+		u.asset = AssetCard.from_dict(d["asset"])
+		AssetSpecials.setup_def(u)
+	u.tonnage = int(d.get("tonnage", 0)) if u.asset else int(d["tonnage"])
+	u.walk_mp = u.asset.mp if u.asset else int(d["walk_mp"])
+	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else int(d.get("jump_mp", 0))
 	u.jump_jet_type = d.get("jump_jet_type", "")
 	u.clan_parts = d.get("clan_parts", {})
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
@@ -91,7 +96,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.structure_type = d.get("structure_type", "standard")
 	u.armor_type = d.get("armor_type", "standard")
 	u.role = d.get("role", "")
-	u.bv = int(d.get("bv", 0))
+	u.bv = u.asset.bv() if u.asset else int(d.get("bv", 0))
 	u.source = d.get("source", {})
 	u.sprite = d.get("sprite", "")
 	var arm: Dictionary = d.get("armor", {})

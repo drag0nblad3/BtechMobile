@@ -55,12 +55,13 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var ams := AntiMissile.engaging(target, attacker, w)
 	if ams != null and not AntiMissile.engage(target, ams):
 		ams = null
+	var ams_on := ams != null or AssetSpecials.ams(target, w.def)  # an Asset's AMS Special (p. 148)
 	var jam := Ecm.artemis_blocked(state, attacker, target, th) if WeaponModes.has_artemis(w) else ""
 	if jam != "":
 		data["artemis_blocked"] = jam
 	if w.def.artemis_builtin:
 		data["builtin_artemis"] = true
-	if w.def.streak and ams == null:
+	if w.def.streak and not ams_on:
 		data["streak_lock"] = true
 	if w.def.beacon:
 		if ams != null:
@@ -72,18 +73,18 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
 	var dist := Hex.distance(attacker.coord, target.coord)
-	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing,
+	var c := WeaponModes.cluster(w, shots, dice, ams_on, jam != "", th.narc_homing,
 			GaussWeapons.cluster_mod(w.def, dist))
 	if th.narc_homing:
 		data["narc_homing"] = true
-	if ams != null:
+	if ams_on:
 		data["ams"] = true
 	var packets: Array[int] = c["packets"]
 	if not w.def.damage_by_range.is_empty():  # variable damage (p. 182)
 		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
 		packets = [w.def.damage_at(dist, shift)] as Array[int]
 		data["damage_at_range"] = packets[0]
-	if c["n"] > 0 or ams != null:
+	if c["n"] > 0 or ams_on:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]
 		data["cluster_bonus"] = c.get("bonus", 0)
@@ -93,12 +94,18 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
-	if w.def.heat_damage:  # flamers: heat as well as damage (book pp. 183-184)
+	if w.def.heat_damage and target.asset == null:  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points
 	if w.def.heat_dice > 0:
 		Plasma.add_heat(dice, w.def, target, data)
 	emit.call(GameEvent.WEAPON_FIRED, data)
+	if target.asset != null:  # no hit locations: the total goes on the card (p. 146)
+		var total := 0
+		for p in packets:
+			total += p
+		AssetDamage.weapon_hit(emit, attacker, w.def, target, total, arc_id)
+		return
 	for p in packets:
 		if p <= 0:
 			continue
@@ -143,6 +150,9 @@ static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
 		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
+	if target.asset != null:
+		AssetDamage.take(emit, target, amount, source_id, source, [], arc_id)
+		return
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
 	if cover != Hex.INVALID and Location.is_leg_of(target.def, hl["loc"]):
