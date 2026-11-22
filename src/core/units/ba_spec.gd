@@ -9,7 +9,7 @@ var troopers := 4
 var armor := 0         ## Armor points per trooper (each also has 1 for the trooper).
 var ground_mp := 1
 var jump_mp := 0
-var claw := false      ## Battle claws (anti-'Mech attacks: TODO(rules)).
+var claw := false      ## Battle claws: leg and swarm attacks, rides OmniMechs (TODO(rules)).
 var weapons: Array[Dictionary] = []
 
 
@@ -23,6 +23,12 @@ static func from_dict(d: Dictionary) -> BaSpec:
 	for w: Dictionary in d.get("weapons", []):
 		b.weapons.append(w)
 	return b
+
+
+## Mechanized: it can ride an OmniMech (AssetTransport). TODO(rules): every
+## squad we have is humanoid medium-or-lighter armor with claws; gated on claws.
+func mechanized() -> bool:
+	return claw
 
 
 ## The squad's attack with weapon `i` while `alive` troopers can fire it:

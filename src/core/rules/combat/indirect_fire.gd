@@ -18,7 +18,7 @@ static func spotter(state: GameState, attacker: Unit, target: Unit) -> Unit:
 	for u in state.units_of_side(attacker.side):
 		if u == attacker or u.destroyed or u.shutdown or not u.pilot.conscious:
 			continue
-		if PhysicalMods.charging(state, u) or (u.asset != null and u.asset.carried_by >= 0):
+		if PhysicalMods.charging(state, u) or u.carrier_id() >= 0:
 			continue
 		var spots := spotting_target(state, u)
 		if spots >= 0 and spots != target.id:

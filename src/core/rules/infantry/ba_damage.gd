@@ -14,6 +14,11 @@ static func take(dice: Dice, emit: Callable, u: Unit, amount: int, source_id: in
 	var i := dice.d6() - 1
 	while not u.ba.is_alive(i):
 		i = dice.d6() - 1
+	hit_trooper(emit, u, i, amount, source_id, source)
+
+
+## `amount` damage to trooper `i` (0-based).
+static func hit_trooper(emit: Callable, u: Unit, i: int, amount: int, source_id: int, source: String) -> void:
 	var left: int = u.ba.troopers[i]
 	var killed := amount > left
 	u.ba.troopers[i] = BaState.DEAD if killed else left - amount

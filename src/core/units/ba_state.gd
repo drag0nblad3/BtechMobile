@@ -6,6 +6,8 @@ extends RefCounted
 const DEAD := -1
 
 var troopers: Array[int] = []
+var carried_by := -1     ## Unit id of the OmniMech it rides (AssetTransport), -1 if on foot.
+var deployed_turn := -1  ## Turn it climbed down: it can't fire that turn.
 
 
 func _init(spec: BaSpec = null) -> void:

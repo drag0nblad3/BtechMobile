@@ -105,3 +105,26 @@ func test_leg_attack() -> void:
 	var before := m.armor[Location.RL]
 	BaLegAttack.resolve(s, dice, func(_t: StringName, _d: Dictionary) -> void: pass, sq, leg, m, ToHitCalc.weapon(s, sq, leg, m))
 	check_eq(before - m.armor[Location.RL], 4, "4 damage to the right leg")
+
+
+func test_rides_omnimech() -> void:
+	var s := GameState.new(open_map(4, 4))
+	var omni := mech("timber_wolf_prime", 0, hex_at(1, 1), 0, 1)
+	var sq := _squad("elemental_ba_laser", 0, hex_at(1, 1), 0, 2)
+	s.add_unit(omni)
+	s.add_unit(sq)
+	check_eq(AssetTransport.capacity(mech("griffin_grf1n", 0, hex_at(0, 0)), sq), 0, "only OmniMechs")
+	var emit := func(_t: StringName, _d: Dictionary) -> void: pass
+	check_eq(AssetTransport.board_problem(s, sq, omni), "")
+	AssetTransport.board(s, emit, sq, omni)
+	check(not sq.can_act() and s.unit_at(omni.coord) == omni, "rides, not a unit while aboard")
+	var before := omni.armor[Location.RT]
+	WeaponFire.hit_with(s, LoadedDice.new(), emit, omni, FiringArc.FRONT, 5, 9, "test",
+			{"loc": Location.RT, "rear": false, "tac": false})
+	check_eq(sq.ba.troopers[0], 5, "trooper 1 on the right torso takes it")
+	check_eq(omni.armor[Location.RT], before, "the 'Mech is shielded")
+	WeaponFire.hit_with(s, LoadedDice.new(), emit, omni, FiringArc.FRONT, 10, 9, "test",
+			{"loc": Location.RT, "rear": false, "tac": false})
+	check_eq(omni.armor[Location.RT], before - 4, "damage past the trooper goes on")
+	AssetTransport.deploy(s, emit, sq)
+	check(ToHitCalc.weapon(s, sq, sq.weapons[0], omni).impossible != "", "no attacks the turn it climbs down")

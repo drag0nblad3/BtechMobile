@@ -198,6 +198,9 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return
+	amount = BaRiders.shield(state, emit, target, loc, hl["rear"], amount, source_id, source)
+	if amount <= 0:
+		return
 	var steps := Damage.apply(target, loc, amount, hl["rear"], attack)
 	emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 			"source": source, "amount": amount, "loc": loc, "rear": hl["rear"],

@@ -13,9 +13,12 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		return th
 	if attacker.asset != null:
 		return AssetFire.to_hit(state, attacker, w, target)
+	th.impossible = BaFire.problem(state, attacker)
+	if th.impossible != "":
+		return th
 	if BaLegAttack.is_leg_attack(w):
 		return BaLegAttack.to_hit(state, attacker, target)
-	if target.asset != null and target.asset.carried_by >= 0:
+	if target.carrier_id() >= 0:
 		th.impossible = "It is riding inside a transport"
 		return th
 	if target.coord == attacker.coord:

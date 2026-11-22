@@ -23,5 +23,7 @@ static func text(u: Unit) -> String:
 			line += " · %d volley%s left" % [u.ammo_for(w.def), "" if u.ammo_for(w.def) == 1 else "s"]
 		t += ("[color=#888888][s]%s[/s][/color]\n" % line) if not u.can_fire(w) else line + "\n"
 	if b.claw:
-		t += "Battle claws: leg attacks on an enemy 'Mech in its hex (4 damage to a leg); swarm attacks not in the game yet\n"
+		t += "Battle claws: leg attacks on an enemy 'Mech in its hex (4 damage to a leg)\n"
+	if b.mechanized():
+		t += "Mechanized: can ride a friendly OmniMech\n"
 	return t

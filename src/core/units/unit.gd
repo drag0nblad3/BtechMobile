@@ -222,8 +222,22 @@ func reset_for_turn() -> void:
 
 ## Still on the field and able to take its turn in a phase.
 func can_act() -> bool:
-	return not destroyed and not shutdown and pilot.conscious and (asset == null or asset.carried_by < 0) \
+	return not destroyed and not shutdown and pilot.conscious and carrier_id() < 0 \
 			and (vehicle == null or vehicle.crew_stunned == 0)
+
+
+## Unit id of the transport or OmniMech it rides, -1 if on its own feet.
+func carrier_id() -> int:
+	if asset != null:
+		return asset.carried_by
+	return ba.carried_by if ba != null else -1
+
+
+func set_carrier(id: int) -> void:
+	if asset != null:
+		asset.carried_by = id
+	elif ba != null:
+		ba.carried_by = id
 
 
 func is_location_destroyed(loc: int) -> bool:
