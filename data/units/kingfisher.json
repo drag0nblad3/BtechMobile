@@ -293,6 +293,44 @@
    "role": "Brawler: built to slug it out at medium range. 4 Medium Pulse Lasers, ATM 12, Large Pulse Laser; walks 4, runs 6."
   },
   {
+   "model": "F",
+   "bv": 2568,
+   "heat_sinks": 17,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_hag30"
+    ],
+    "RA": [
+     "c_er_medium_laser*3"
+    ],
+    "LT": [
+     "ammo:c_hag30*3"
+    ],
+    "CT": [
+     "c_er_large_laser",
+     "guardian_ecm"
+    ]
+   },
+   "source": {
+    "mul_id": 1784,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Kingfisher F.mtf",
+    "published": "RG18",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2568
+   },
+   "role": "Brawler: built to slug it out at medium range. 3 ER Medium Lasers, HAG 30, ER Large Laser; walks 4, runs 6."
+  },
+  {
    "model": "H",
    "bv": 2525,
    "heat_sinks": 26,

@@ -46,6 +46,9 @@ var munitions: Dictionary = {}
 var label := ""       ## Munition name for the firing mode (MML "LRM"/"SRM").
 var cluster_mod: int   ## Added to Cluster Hits rolls (MRM -1, p. 186).
 var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 182).
+var fire_psr: bool     ## Heavy Gauss: firing after moving costs a piloting roll (GaussWeapons).
+var range_cluster: bool  ## HAG: cluster roll +2 at short range, -2 at long (GaussWeapons).
+var heat_dice: int     ## Plasma: a hit adds this many d6 of heat to the target (Plasma).
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -87,6 +90,9 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.label = d.get("label", "")
 	w.cluster_mod = int(d.get("cluster_mod", 0))
 	w.one_shot = bool(d.get("one_shot", false))
+	w.fire_psr = bool(d.get("fire_psr", false))
+	w.range_cluster = bool(d.get("range_cluster", false))
+	w.heat_dice = int(d.get("heat_dice", 0))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()

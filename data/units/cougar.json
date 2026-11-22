@@ -281,6 +281,43 @@
    "role": "Brawler: built to slug it out at medium range. 3 ER Medium Lasers, 2 ATM 6s; walks 5, runs 8."
   },
   {
+   "model": "G",
+   "bv": 1453,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lrm5*2",
+     "ammo:c_lrm5"
+    ],
+    "RA": [
+     "c_hag20",
+     "ammo:c_hag20*2"
+    ],
+    "HD": [
+     "c_er_large_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 710,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 19/Cougar G.mtf",
+    "published": "RG19",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1453
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 LRM 5s, HAG 20, ER Large Laser; walks 5, runs 8."
+  },
+  {
    "model": "H",
    "bv": 1323,
    "heat_sinks": 13,

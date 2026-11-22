@@ -206,6 +206,37 @@
    "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 ER Medium Lasers, Ultra AC/5; walks 6, runs 9, jumps 6."
   },
   {
+   "model": "G",
+   "bv": 1593,
+   "heat_sinks": 11,
+   "equipment": {
+    "LA": [
+     "c_er_medium_laser",
+     "c_flamer",
+     "c_plasma_cannon",
+     "ammo:c_plasma_cannon*2"
+    ],
+    "RA": [
+     "c_er_medium_laser",
+     "c_flamer",
+     "c_plasma_cannon",
+     "ammo:c_plasma_cannon*2"
+    ],
+    "LL": [
+     "heat_sink"
+    ]
+   },
+   "source": {
+    "mul_id": 8390,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 22/Battle Cobra G.mtf",
+    "published": "RG22",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1593
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Medium Lasers, 2 Flamers, 2 Plasma Cannons; walks 6, runs 9."
+  },
+  {
    "model": "H",
    "bv": 1592,
    "heat_sinks": 14,

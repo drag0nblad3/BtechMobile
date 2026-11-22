@@ -196,6 +196,42 @@
    "role": "Sniper: hangs back and hits from long range. 2 Medium Lasers, 2 LRM 10s, PPC, Ultra AC/5; walks 4, runs 6."
   },
   {
+   "model": "AV1-OD",
+   "bv": 1475,
+   "heat_sinks": 12,
+   "equipment": {
+    "LA": [
+     "er_medium_laser*2"
+    ],
+    "RA": [
+     "light_gauss_rifle"
+    ],
+    "LT": [
+     "heat_sink",
+     "mrm20",
+     "ammo:mrm20"
+    ],
+    "RT": [
+     "heat_sink",
+     "mrm20",
+     "ammo:mrm20",
+     "ammo:light_gauss_rifle"
+    ],
+    "HD": [
+     "c3_slave"
+    ]
+   },
+   "source": {
+    "mul_id": 164,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OD.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1475
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, 2 ER Medium Lasers, 2 MRM 20s, Light Gauss Rifle; walks 4, runs 6."
+  },
+  {
    "model": "AV1-OF",
    "bv": 1667,
    "heat_sinks": 15,

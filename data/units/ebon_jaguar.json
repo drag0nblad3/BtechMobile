@@ -232,6 +232,38 @@
    "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Ultra AC/10s, 2 ER Medium Lasers, ER Large Laser; walks 5, runs 8."
   },
   {
+   "model": "E",
+   "bv": 2391,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "c_hag20"
+    ],
+    "RA": [
+     "c_large_pulse_laser"
+    ],
+    "LT": [
+     "c_er_medium_laser",
+     "ammo:c_hag20*3"
+    ],
+    "RT": [
+     "c_atm12",
+     "ammo:c_atm12",
+     "ammo:c_atm12:er",
+     "ammo:c_atm12:he"
+    ]
+   },
+   "source": {
+    "mul_id": 494,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 16/Cauldron-Born (Ebon Jaguar) E.mtf",
+    "published": "RG16",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2391
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. HAG 20, Large Pulse Laser, ER Medium Laser, ATM 12; walks 5, runs 8."
+  },
+  {
    "model": "F",
    "bv": 2681,
    "heat_sinks": 18,
