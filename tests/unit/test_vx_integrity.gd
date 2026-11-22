@@ -228,8 +228,14 @@ func test_load_bearing_joint_requires_a_contiguous_patch_not_a_touch() -> void:
 				for z in range(3 * n):
 					child[Vector3i(3 * n,y,z) + offset] = 0
 			info = VxIntegrity._solid_contact(child, parent, n)
-			check(info["strong"], "broad continuous 3x3 socket survives resolution shifts")
-			check(info["patch"] >= info["needed"], "mass interface exceeds load-bearing threshold")
+			check(not info["strong"], "a broad one-layer veneer still lacks load-bearing depth")
+			for x in range(3 * n + 1, 4 * n + 1):
+				for y in range(3 * n):
+					for z in range(3 * n):
+						child[Vector3i(x,y,z) + offset] = 0
+			info = VxIntegrity._solid_contact(child, parent, n)
+			check(info["strong"], "broad multi-layer socket survives resolution shifts")
+			check(info["patch"] >= info["needed"] and info["backed_patch"] >= info["depth_needed"], "mass interface has area and actual depth")
 
 
 func test_scattered_contacts_are_not_equivalent_to_one_connected_mass() -> void:
