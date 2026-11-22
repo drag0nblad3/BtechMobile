@@ -75,7 +75,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 ## Higher ground is slightly brighter so levels read at a glance.
 func _level_tint(level: int, range_: Vector2i) -> Color:
 	var span := maxf(1.0, range_.y - range_.x)
-	var v := 0.7 + 0.3 * (level - range_.x) / span
+	var v := 0.81 + 0.19 * (level - range_.x) / span
 	return Color(v, v, v)
 
 
@@ -85,7 +85,7 @@ func _ground_plane() -> MeshInstance3D:
 	var plane := PlaneMesh.new()
 	plane.size = Vector2(box.size.x, box.size.z)
 	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.08, 0.08, 0.07)
+	mat.albedo_color = Color("#101b22")
 	plane.material = mat
 	var inst := MeshInstance3D.new()
 	inst.mesh = plane

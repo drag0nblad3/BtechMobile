@@ -40,6 +40,8 @@ const MARGIN := 18
 var status: Label
 var info: Label
 var tip: Label
+var info_panel: PanelContainer
+var tip_panel: PanelContainer
 var move_bar: HBoxContainer
 var attack_bar: HBoxContainer
 var mode_button: Button
@@ -82,7 +84,10 @@ func _ready() -> void:
 	var status_panel := PanelContainer.new()
 	status_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#112b39"), UiSkin.CYAN, 7, 7))
 	col.add_child(status_panel)
-	var heading := _row(status_panel)
+	var header_box := VBoxContainer.new()
+	header_box.add_theme_constant_override("separation", 4)
+	status_panel.add_child(header_box)
+	var heading := _row(header_box)
 	var prefix := _label(heading, 17)
 	prefix.text = "COMMAND  /"
 	UiSkin.label(prefix, "section")
@@ -90,6 +95,11 @@ func _ready() -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(status, "heading")
+	var status_rule := ColorRect.new()
+	status_rule.color = UiSkin.AMBER.darkened(0.18)
+	status_rule.custom_minimum_size.y = 2
+	status_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	header_box.add_child(status_rule)
 	# Give the full battle status its own line: seven 140px buttons and a
 	# turn/mission label cannot fit side by side at 1280x720 on a phone.
 	var shortcuts := _row(col)
@@ -103,18 +113,30 @@ func _ready() -> void:
 	_button(shortcuts, "Map View", top_down_toggled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
 	for b: Button in shortcuts.get_children():
-		b.custom_minimum_size = Vector2(112, 52)
-		b.add_theme_font_size_override("font_size", 19)
+		b.custom_minimum_size = Vector2(104, 44)
+		b.add_theme_font_size_override("font_size", 18)
 	UiSkin.button(shortcuts.get_child(0) as Button, "primary")
-	info = _label(col, 22)
+	info_panel = PanelContainer.new()
+	info_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	info_panel.add_theme_stylebox_override("panel",
+		UiSkin.panel_style(Color("#0b2637d9"), UiSkin.CYAN, 5, 5))
+	col.add_child(info_panel)
+	var info_row := _row(info_panel)
+	info_row.add_theme_constant_override("separation", 14)
+	var info_tag := _label(info_row, 15)
+	info_tag.text = "TACTICAL LINK"
+	UiSkin.label(info_tag, "muted")
+	info = _label(info_row, 20)
+	info.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(info, "section")
+	info_panel.visible = false
 	var middle := _row(col)
 	middle.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	var left := VBoxContainer.new()
 	left.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	middle.add_child(left)
-	var tip_panel := PanelContainer.new()
+	tip_panel = PanelContainer.new()
 	tip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	tip_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	tip_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#0a1824cc"), UiSkin.BORDER, 8, 7))
@@ -122,7 +144,8 @@ func _ready() -> void:
 	tip = _label(tip_panel, 20)
 	UiSkin.label(tip, "muted")
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	tip.custom_minimum_size.x = 420
+	tip.custom_minimum_size.x = 360
+	tip_panel.visible = false
 	var spacer := Control.new()
 	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -256,10 +279,12 @@ func set_status(text: String) -> void:
 
 func set_info(text: String) -> void:
 	info.text = text
+	info_panel.visible = not text.is_empty()
 
 
 func set_tip(text: String) -> void:
 	tip.text = text
+	tip_panel.visible = not text.is_empty()
 
 
 func set_mode_label(text: String) -> void:

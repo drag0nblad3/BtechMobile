@@ -62,7 +62,7 @@ func _ready() -> void:
 		bots.lessons = lessons
 	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
-	add_child(BattleEnvironment.build())
+	add_child(BattleEnvironment.build(state.conditions))
 	_build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)

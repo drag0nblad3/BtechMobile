@@ -15,11 +15,14 @@ uniform float pixel = 0.07;  // ground "voxel" size in world units
 varying vec3 world_pos;
 varying vec3 world_normal;
 varying vec3 tint;
+varying vec2 tile_local;
+uniform float hex_radius = 0.97;
 
 void vertex() {
 	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	tint = COLOR.rgb;
+	tile_local = VERTEX.xz;
 }
 
 float tri_noise(vec3 p, vec3 n, float s) {
@@ -82,6 +85,16 @@ void fragment() {
 	side *= 0.85 + 0.15 * step(0.5, fract(world_pos.y / 0.45));
 	float is_top = smoothstep(0.6, 0.9, world_normal.y);
 	vec3 top = is_top > 0.0 ? top_pattern(world_pos.xz) : vec3(0.0);
+	// Shade just the inside of each hex rim. This creates a precise
+	// readable grid without a second mesh or screen-space outlines.
+	vec2 a = abs(tile_local);
+	float edge = max(a.y / (0.8660254 * hex_radius),
+			max(abs(tile_local.x + tile_local.y / 1.7320508),
+				abs(tile_local.x - tile_local.y / 1.7320508)) / hex_radius);
+	float rim = smoothstep(0.88, 0.99, edge);
+	top *= 1.0 - 0.17 * rim;
 	ALBEDO = mix(side, top, is_top) * tint;
-	ROUGHNESS = 0.95;
+	// Distant cliffs retain a subtle geological band instead of becoming
+	// a monochrome vertical wall.
+	ROUGHNESS = mix(1.0, 0.91, is_top);
 }
