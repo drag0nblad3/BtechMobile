@@ -60,3 +60,7 @@ when explanation level was Off. Empty tip and information panels now collapse,
 and the shore palette is toned down for less neon-like water. The temporary
 PPC tracer in the review screenshot is placed in the visible area of the map;
 it remains screenshot-only and never changes combat logic.
+
+- The capture script stages two existing unit views nearer the camera center,
+  then displays an intentionally synthetic PPC visual on the last frame.
+  It is a rendering example, not a recorded battle turn.
