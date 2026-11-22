@@ -157,3 +157,31 @@ func test_swarm_attack() -> void:
 			"to_hit": brush[0]["to_hit"], "damage": brush[0]["damage"]})
 	check_eq(BaSwarm.on(sq), -1, "knocked off")
 	check_eq(sq.ba.troopers[2], 5, "a 50-ton punch: 5 damage to one trooper")
+
+
+func test_shaking_off_swarmers() -> void:
+	var s := GameState.new(open_map(4, 4))
+	var sq := _squad("elemental_ba_laser", 0, hex_at(1, 2), 0, 1)
+	var m := mech("hunchback_hbk4g", 1, hex_at(1, 2), 0, 2)
+	s.add_unit(sq)
+	s.add_unit(m)
+	var emit := func(_t: StringName, _d: Dictionary) -> void: pass
+	var let_go := gun(sq, BaSwarm.LET_GO)
+	check(not ToHitCalc.weapon(s, sq, let_go, m).possible(), "nothing to let go of")
+	sq.ba.swarming = m.id
+	check(ToHitCalc.weapon(s, sq, let_go, m).possible(), "it can let go")
+	BaSwarm.let_go(emit, sq, let_go, m)
+	check_eq(BaSwarm.on(sq), -1)
+	sq.ba.swarming = m.id
+	var dice := LoadedDice.new()
+	dice.queue_2d6(5)  # 2D6 damage to the squad
+	dice.d6_queue.append(2)  # trooper 2
+	BaShakeOff.on_fall(s, dice, emit, m)
+	check_eq(BaSwarm.on(sq), -1, "a fall throws them off")
+	check(sq.ba.alive() == 5 and sq.ba.troopers[1] == 5, "2D6 (5) to one trooper")
+	sq.ba.swarming = m.id
+	dice = LoadedDice.new()
+	dice.queue_2d6(9)  # piloting 5 +4: made
+	BaShakeOff.after_jump(s, dice, emit, m, 3)
+	check_eq(BaSwarm.on(sq), -1, "a jump shakes them off")
+	check_eq(sq.ba.troopers[0], 7, "3 jump MP: 3 to each trooper")

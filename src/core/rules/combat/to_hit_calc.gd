@@ -16,7 +16,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	th.impossible = BaFire.problem(state, attacker)
 	if th.impossible != "":
 		return th
-	var swarm := BaSwarm.fire_check(attacker, w, target)
+	var swarm := BaSwarm.fire_check(state, attacker, w, target)
 	if swarm != null:
 		return swarm
 	if BaSwarm.is_swarm(w):

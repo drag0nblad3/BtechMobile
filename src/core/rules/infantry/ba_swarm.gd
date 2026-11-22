@@ -8,10 +8,11 @@ extends RefCounted
 ## moves with it and can't walk; every later Weapon Attack Phase its weapons
 ## hit that 'Mech automatically, each hit on the Swarm Attacks Hit Location
 ## table. It comes off when the 'Mech is destroyed or brushes it off
-## (BaBrushOff). TODO(rules): Total Warfare from general knowledge; no
-## letting go, dropping prone or water to shake it off yet.
+## (BaBrushOff), throws it off (BaShakeOff), or the squad lets go as its
+## attack. TODO(rules): Total Warfare from general knowledge.
 
 const ID := "ba_swarm"
+const LET_GO := "ba_let_go"
 ## 2D6 2-12 → [location, rear], from the sheets' Swarm Attacks Hit Location table.
 const BIPED := [[Location.HEAD, false], [Location.CT, true], [Location.RT, true], [Location.RT, false],
 		[Location.RA, false], [Location.CT, false], [Location.LA, false], [Location.LT, false],
@@ -28,6 +29,16 @@ static func weapon() -> WeaponDef:
 
 static func is_swarm(w: MountedWeapon) -> bool:
 	return w.def.id == ID
+
+
+## Letting go of the 'Mech it swarms: its only attack that turn.
+static func let_go_weapon() -> WeaponDef:
+	return WeaponDef.from_dict({"id": LET_GO, "name": "Let go", "type": "physical", "damage": 0,
+			"short": 0, "medium": 0, "long": 0})
+
+
+static func is_let_go(w: MountedWeapon) -> bool:
+	return w.def.id == LET_GO
 
 
 ## Id of the 'Mech squad `u` is swarming, -1 if none.
@@ -74,14 +85,22 @@ static func to_hit(state: GameState, a: Unit, t: Unit) -> ToHit:
 
 ## While swarming, the squad's weapons can only hit its 'Mech, and always
 ## do. Null when `a` isn't swarming.
-static func fire_check(a: Unit, w: MountedWeapon, t: Unit) -> ToHit:
-	if on(a) < 0:
-		return null
+static func fire_check(state: GameState, a: Unit, w: MountedWeapon, t: Unit) -> ToHit:
 	var th := ToHit.new()
-	if is_swarm(w) or BaLegAttack.is_leg_attack(w):
-		th.impossible = "It is already swarming a 'Mech"
+	if on(a) < 0:
+		if not is_let_go(w):
+			return null
+		th.impossible = "It isn't swarming anything"
 	elif t.id != on(a):
 		th.impossible = "Swarming troopers can only attack the 'Mech they are on"
+	elif is_let_go(w):
+		var tile := state.map.get_tile(a.coord)
+		if tile != null and not BaMoveCost.may_enter(tile):
+			th.impossible = "Letting go here would drop them into the water"  # TODO(rules)
+		else:
+			th.auto_hit = "they let go and drop off"
+	elif is_swarm(w) or BaLegAttack.is_leg_attack(w):
+		th.impossible = "It is already swarming a 'Mech"
 	elif not a.can_fire(w):
 		th.impossible = "%s can't fire (no ammo)" % w.def.name
 	else:
@@ -98,7 +117,8 @@ static func location(dice: Dice, t: Unit) -> Dictionary:
 ## A swarm attempt is the squad's whole attack, like a leg attack.
 static func filter(decl: Array[Dictionary], attacker: Unit) -> Array[Dictionary]:
 	for d in decl:
-		if is_swarm(attacker.weapons[d["weapon_index"]]):
+		var w := attacker.weapons[d["weapon_index"]]
+		if is_swarm(w) or is_let_go(w):
 			return [d] as Array[Dictionary]
 	return decl
 
@@ -113,6 +133,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, a: Unit, w: Mo
 	if roll >= need and swarmers(state, t).is_empty():
 		a.ba.swarming = t.id
 		emit.call(GameEvent.TRANSPORT, {"unit_id": a.id, "carrier_id": t.id, "kind": "swarm"})
+
+
+static func let_go(emit: Callable, a: Unit, w: MountedWeapon, t: Unit) -> void:
+	w.fired = true
+	a.ba.swarming = -1
+	emit.call(GameEvent.TRANSPORT, {"unit_id": a.id, "carrier_id": t.id, "kind": "let_go"})
 
 
 ## Swarmers go where their 'Mech goes; they drop off when it is destroyed.
