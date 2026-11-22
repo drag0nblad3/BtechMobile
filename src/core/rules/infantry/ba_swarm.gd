@@ -56,8 +56,8 @@ static func swarmers(state: GameState, t: Unit) -> Array[Unit]:
 
 static func to_hit(state: GameState, a: Unit, t: Unit) -> ToHit:
 	var th := ToHit.new()
-	if a.ba == null or not a.def.battle_armor.claw:
-		th.impossible = "Only battle armor with claws swarms 'Mechs"
+	if a.ba == null or not a.def.battle_armor.anti_mech:
+		th.impossible = "Only light and medium battle armor swarms 'Mechs"
 	elif on(a) >= 0:
 		th.impossible = "It is already swarming a 'Mech"
 	elif t.def.is_support():
@@ -75,6 +75,7 @@ static func to_hit(state: GameState, a: Unit, t: Unit) -> ToHit:
 		guards += r.ba.alive() if r.ba != null else 0
 	if guards > 0:
 		th.add("%d riders" % guards, maxi(0, guards - a.ba.alive() + 2), "Friendly battle armor riding the 'Mech fights them off.")
+	add_magnets(th, a)
 	ToHitCalc.add_movement(th, a, t)
 	if t.prone:
 		th.add("target prone", -2, "A 'Mech on the ground is easier to climb: -2.")
@@ -106,6 +107,19 @@ static func fire_check(state: GameState, a: Unit, w: MountedWeapon, t: Unit) -> 
 	else:
 		th.auto_hit = "swarming troopers fire point-blank"
 	return th
+
+
+static func add_magnets(th: ToHit, a: Unit) -> void:
+	if a.def.battle_armor.magnets:
+		th.add("magnetic claws", -1, "Magnets in the claws help them hold on: -1.")
+
+
+## +1 for a 'Mech trying to get magnet-clawed troopers off.
+static func grip_mod(state: GameState, t: Unit) -> int:
+	for sq in swarmers(state, t):
+		if sq.def.battle_armor.magnets:
+			return 1
+	return 0
 
 
 static func location(dice: Dice, t: Unit) -> Dictionary:

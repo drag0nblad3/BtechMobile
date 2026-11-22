@@ -1,0 +1,43 @@
+{
+ "id": "callisto_battle_armor_b_mrr_sqd5",
+ "name": "Callisto Battle Armor",
+ "model": "B [MRR](Sqd5)",
+ "tonnage": 1,
+ "tech_base": "clan",
+ "battle_armor": {
+  "troopers": 5,
+  "armor": 7,
+  "ground_mp": 3,
+  "jump_mp": 0,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "er_small_laser",
+    "name": "ER Small Laser",
+    "type": "energy",
+    "damage": 5,
+    "short": 2,
+    "medium": 4,
+    "long": 6
+   },
+   {
+    "id": "medium_recoilless_rifle",
+    "name": "Medium Recoilless Rifle",
+    "type": "ballistic",
+    "damage": 3,
+    "short": 2,
+    "medium": 4,
+    "long": 6
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 9447,
+  "megamek": "data/mekfiles/battlearmor/Rec Guides ilClan/Vol 31/Callisto B BA [MRR](Sqd5).blk",
+  "bv": "megamek"
+ },
+ "bv": 510
+}

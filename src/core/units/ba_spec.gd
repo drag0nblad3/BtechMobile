@@ -9,7 +9,10 @@ var troopers := 4
 var armor := 0         ## Armor points per trooper (each also has 1 for the trooper).
 var ground_mp := 1
 var jump_mp := 0
-var claw := false      ## Battle claws: leg and swarm attacks, rides OmniMechs (TODO(rules)).
+var claw := false      ## Battle claws (shown on the sheet).
+var mechanized_ok := false  ## Can ride OmniMechs (MegaMek's canDoMechanizedBA).
+var anti_mech := false  ## Can make leg and swarm attacks (light or medium, humanoid, unburdened).
+var magnets := false    ## Claws with magnets: -1 to leg and swarm attacks, +1 to shake off.
 var weapons: Array[Dictionary] = []
 
 
@@ -20,15 +23,19 @@ static func from_dict(d: Dictionary) -> BaSpec:
 	b.ground_mp = int(d.get("ground_mp", 1))
 	b.jump_mp = int(d.get("jump_mp", 0))
 	b.claw = bool(d.get("claw", false))
+	b.mechanized_ok = bool(d.get("mechanized", b.claw))
+	b.anti_mech = bool(d.get("anti_mech", b.claw))
+	b.magnets = bool(d.get("magnets", false))
 	for w: Dictionary in d.get("weapons", []):
 		b.weapons.append(w)
 	return b
 
 
-## Mechanized: it can ride an OmniMech (AssetTransport). TODO(rules): every
-## squad we have is humanoid medium-or-lighter armor with claws; gated on claws.
+## Mechanized: it can ride an OmniMech (AssetTransport). TODO(rules): taken from
+## MegaMek per design; squads burdened by body-mounted missiles stay unable to
+## make anti-'Mech attacks after their ammo is gone.
 func mechanized() -> bool:
-	return claw
+	return mechanized_ok
 
 
 ## The squad's attack with weapon `i` while `alive` troopers can fire it:

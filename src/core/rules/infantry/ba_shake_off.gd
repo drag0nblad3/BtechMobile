@@ -8,7 +8,7 @@ extends RefCounted
 ##   lies down and they hang on.
 ## - Landing a jump takes a piloting roll at +4; made, the swarmers come off
 ##   and every trooper takes 1 damage per jump MP spent (water: they drown).
-## TODO(rules): Total Warfare p. 222 via MegaMek; magnetic clamps (+1) aren't in the game.
+## Magnetic claws make the jump roll +1. TODO(rules): Total Warfare p. 222 via MegaMek.
 
 const JUMP_MOD := 4
 
@@ -37,7 +37,7 @@ static func drop_prone(state: GameState, dice: Dice, emit: Callable, u: Unit) ->
 static func after_jump(state: GameState, dice: Dice, emit: Callable, u: Unit, mp: int) -> void:
 	if BaSwarm.swarmers(state, u).is_empty() or u.destroyed or u.prone:
 		return
-	if not Psr.roll(dice, emit, u, "shaking off swarming troopers with a jump", JUMP_MOD, state, true):
+	if not Psr.roll(dice, emit, u, "shaking off swarming troopers with a jump", JUMP_MOD + BaSwarm.grip_mod(state, u), state, true):
 		return
 	for sq in BaSwarm.swarmers(state, u):
 		sq.ba.swarming = -1

@@ -12,7 +12,7 @@ func _squad(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int =
 
 func test_sheets_load_as_squads() -> void:
 	var db := UnitDb.load_dir()
-	check_eq(db.sorted_battle_armor().size(), 7)
+	check_eq(db.sorted_battle_armor().size(), 42)
 	check(not db.by_id.has("elemental_ba_laser"), "not in the 'Mech list")
 	var e := _squad("elemental_ba_laser", 0, hex_at(0, 0))
 	check_eq(e.def.bv, 447, "sheet BV")
