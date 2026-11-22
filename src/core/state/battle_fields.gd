@@ -12,7 +12,7 @@ static func names(o: Object) -> Array:
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
-		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "armor",
+		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "vehicle", "armor",
 				"rear_armor", "structure", "weapons", "ammo", "slots", "heat",
 				"engine_hits", "gyro_hits", "sensor_hits", "heat_sinks_lost",
 				"sinks_off", "sinks_off_request", "melee_lost", "club",
@@ -29,6 +29,12 @@ static func names(o: Object) -> Array:
 		return ["card", "improved", "check", "damage", "ai_hit", "flushed",
 				"last_attacker", "auto_fail", "deployed_turn", "indirect_turn",
 				"carried_by", "altitude"]
+	if o is VehicleState:
+		return ["spec", "cruise_lost", "half_cruise", "immobile", "driving_mod",
+				"sensor_hits", "stabilizers", "turret_locked", "turret_lost",
+				"crew_stunned", "commander_hit", "driver_hit", "engine_hit"]
+	if o is VehicleSpec:
+		return ["motive", "cruise_mp", "engine", "turret"]
 	if o is AssetCard:
 		return ["kind", "motive", "mp", "tmm", "short_range", "medium_range",
 				"long_range", "skill", "skill_improved", "damage", "groupings",
@@ -40,9 +46,8 @@ static func names(o: Object) -> Array:
 				"heat_damage", "heat_points", "indirect", "to_hit_mod", "explodes",
 				"ammo_explodes", "rapid", "lbx", "rotary", "beacon", "ammo_damage",
 				"streak", "pulse", "ams", "tech", "artemis_builtin", "munitions",
-				"label", "cluster_mod", "one_shot", "ai", "fire_psr",
-				"range_cluster", "heat_dice", "to_hit_by_range", "large_missile",
-				"explosion_damage"]
+				"label", "cluster_mod", "one_shot", "ai",
+				"range_cluster", "heat_dice", "to_hit_by_range", "large_missile"]
 	if o is BattleMap:
 		return ["name", "width", "height", "tiles", "colors", "rubble", "ground",
 				"no_fire", "windy"]
@@ -59,7 +64,7 @@ static func names(o: Object) -> Array:
 	if o is MountedWeapon:
 		return ["def", "loc", "rear", "destroyed", "exploded", "mode", "artemis",
 				"artemis_lost", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
-				"jammed", "spent", "crit_hits"]
+				"jammed", "spent", "crit_hits", "on_vehicle"]
 	if o is AmmoBin:
 		return ["weapon", "loc", "shots", "destroyed", "kind"]
 	if o is CritSlot:
@@ -105,6 +110,8 @@ static func create(tag: String, p: Dictionary, units: UnitDb, terrain: TerrainDb
 		"Pilot": return Pilot.new()
 		"AssetCard": return AssetCard.new()
 		"AssetState": return AssetState.new(AssetCard.new())
+		"VehicleSpec": return VehicleSpec.new()
+		"VehicleState": return VehicleState.new(VehicleSpec.new())
 		"WeaponDef": return WeaponDef.new()
 		"MountedWeapon":
 			var saved_def: Dictionary = p["def"]

@@ -3,7 +3,7 @@ extends RefCounted
 ## Cockpit types. A small cockpit weighs 2 t instead of 3, frees two head
 ## slots (life support, sensors, cockpit, sensors, then two free) and its
 ## cramped MechWarrior takes +1 on every piloting roll.
-## TODO(rules): from MegaMek, not in the Core Rulebook.
+## Book p. 203. TODO(rules): the weight and head slots are MegaMek construction data.
 
 const SMALL_HEAD := ["Life Support", "Sensors", "Cockpit", "Sensors", "", ""]
 const STANDARD_TONS := 3.0

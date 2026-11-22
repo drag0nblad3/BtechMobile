@@ -41,6 +41,12 @@ static func hostile_angel_at(state: GameState, side: int, c: Vector2i) -> bool:
 	return false
 
 
+## Angel ECM around the attacker or target stops a Streak locking on: a
+## hit rolls on the Cluster Hits Table like a standard launcher (p. 200).
+static func angel_blocks_streak(state: GameState, attacker: Unit, target: Unit) -> bool:
+	return hostile_angel_at(state, attacker.side, attacker.coord) or hostile_angel_at(state, attacker.side, target.coord)
+
+
 ## Why this shot gets no Artemis bonus ("" if it does).
 static func artemis_blocked(state: GameState, attacker: Unit, target: Unit, th: ToHit) -> String:
 	if th.indirect:

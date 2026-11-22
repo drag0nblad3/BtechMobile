@@ -21,6 +21,7 @@ var ammo_kinds: Array[String] = []  ## ATM munitions it has ammo for (Atm).
 var jammed: bool = false ## Rotary AC jammed: can't fire until cleared (RotaryAc).
 var spent: bool = false  ## A one-shot weapon has fired its shot.
 var crit_hits: int = 0   ## Critical hits taken (an autocannon survives one, AutocannonCrit).
+var on_vehicle: bool = false  ## Mounted on a combat vehicle: `loc` is a VehicleLoc.
 
 
 func _init(w: WeaponDef, location: int, rear_mounted: bool) -> void:
@@ -30,4 +31,4 @@ func _init(w: WeaponDef, location: int, rear_mounted: bool) -> void:
 
 
 func label() -> String:
-	return "%s (%s%s)" % [def.name, Location.code(loc), "R" if rear else ""]
+	return "%s (%s%s)" % [def.name, VehicleLoc.CODES[loc] if on_vehicle else Location.code(loc), "R" if rear else ""]

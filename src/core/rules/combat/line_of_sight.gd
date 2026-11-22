@@ -21,7 +21,7 @@ const WOODS_BLOCK := 3  ## Intervening woods points that block line of sight.
 static func check(map: BattleMap, from: Unit, to: Unit) -> Dictionary:
 	var t_floor := Roofs.floor_of(map, to)
 	return _best(map, from.coord, to.coord, los_level(map, from), los_level(map, to),
-			t_floor if not to.prone and to.asset == null else 999)  # Assets: no partial cover (p. 144)
+			t_floor if not to.prone and to.asset == null and to.vehicle == null else 999)  # Assets: no partial cover (p. 144)
 
 
 ## Line of sight from a unit to a building hex whose roof is at `height`.
@@ -37,8 +37,10 @@ static func check_hex(map: BattleMap, from: Unit, c: Vector2i, height: int) -> D
 static func los_level(map: BattleMap, u: Unit) -> int:
 	if VtolFlight.is_vtol(u):  # its flight level + 1 (p. 142)
 		return VtolFlight.level(map, u) + 1
-	if u.asset != null:  # one level high (p. 144)
-		return Roofs.floor_of(map, u) + 1
+	if u.asset != null or u.vehicle != null:  # one level high (p. 144); hovercraft ride the surface
+		var tile := map.get_tile(u.coord)
+		var hover := tile != null and tile.is_water() and (u.def.vehicle.motive if u.vehicle else u.asset.card.motive) == "h"
+		return (tile.level if hover else Roofs.floor_of(map, u)) + 1
 	return Roofs.floor_of(map, u) + (1 if u.prone else 2)
 
 

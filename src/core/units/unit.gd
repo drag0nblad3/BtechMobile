@@ -12,6 +12,7 @@ var facing: int
 var pilot: Pilot
 ## Battlefield Support Asset (vehicle, infantry): its card state; null for 'Mechs.
 var asset: AssetState = null
+var vehicle: VehicleState = null  ## A combat vehicle (VehicleLoc locations).
 
 # Record sheet ------------------------------------------------------------
 var armor: Array[int] = []
@@ -87,6 +88,9 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	if def.asset != null:
 		_init_asset()
 		return
+	if def.vehicle != null:
+		_init_vehicle()
+		return
 	for loc in Location.COUNT:
 		armor.append(def.armor[loc] if def.armor.size() > loc else 0)
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
@@ -127,6 +131,28 @@ func _init_asset() -> void:
 	pilot.gunnery = asset.skill()
 
 
+## A combat vehicle: armor and structure per VehicleLoc, no critical slots;
+## damage goes to VehicleDamage. Crews start at Gunnery 4, Driving 5.
+func _init_vehicle() -> void:
+	vehicle = VehicleState.new(def.vehicle)
+	for loc in Location.COUNT:
+		var armored := loc in VehicleLoc.ARMORED and (loc != VehicleLoc.TURRET or def.vehicle.turret)
+		armor.append(def.armor[loc] if armored else 0)
+		rear_armor.append(0)
+		# Body and the unused 'Mech leg slots: 1, never hit, so leg and ammo checks stay quiet.
+		structure.append(VehicleLoc.structure(def.tonnage) if armored else 0 if loc == VehicleLoc.TURRET else 1)
+		slots.append([])
+	for m in def.weapon_mounts:
+		var mw := MountedWeapon.new(m["weapon"], m["loc"], false)
+		mw.on_vehicle = true
+		weapons.append(mw)
+	for a in def.ammo_mounts:
+		var bin := AmmoBin.new(a["weapon"], a["loc"], a.get("kind", ""))
+		if a.get("half", false):
+			bin.shots = maxi(1, bin.shots / 2)
+		ammo.append(bin)
+
+
 func is_asset() -> bool:
 	return asset != null
 
@@ -151,6 +177,8 @@ func reset_for_turn() -> void:
 	outside_heat = 0
 	Masc.new_turn(self)
 	Supercharger.new_turn(self)
+	if vehicle != null and vehicle.crew_stunned > 0:
+		vehicle.crew_stunned -= 1
 	for w in weapons:
 		w.fired = false
 		w.engaged = 0
@@ -158,7 +186,8 @@ func reset_for_turn() -> void:
 
 ## Still on the field and able to take its turn in a phase.
 func can_act() -> bool:
-	return not destroyed and not shutdown and pilot.conscious and (asset == null or asset.carried_by < 0)
+	return not destroyed and not shutdown and pilot.conscious and (asset == null or asset.carried_by < 0) \
+			and (vehicle == null or vehicle.crew_stunned == 0)
 
 
 func is_location_destroyed(loc: int) -> bool:
@@ -238,6 +267,8 @@ func lose_heat_sink(slot: CritSlot) -> bool:
 func walk_mp() -> int:
 	if asset != null:
 		return 0 if asset.card.immobile() else def.walk_mp
+	if vehicle != null:
+		return vehicle.cruise_mp()
 	if def.quad:
 		var qb := Quad.walk_base(self)
 		return maxi(0, qb + (Tsm.mp_bonus(self) if qb > 0 else 0) - HeatScale.mp_penalty(heat))
@@ -253,6 +284,8 @@ func walk_mp() -> int:
 func run_mp() -> int:
 	if asset != null:
 		return walk_mp()  # one fixed allowance every turn (p. 141)
+	if vehicle != null:
+		return vehicle.flank_mp()
 	if masc_active and sc_active:
 		return ceili(walk_mp() * 2.5)
 	return walk_mp() * 2 if masc_active or sc_active else ceili(walk_mp() * 1.5)
@@ -260,7 +293,7 @@ func run_mp() -> int:
 
 ## Jump MP after jump jet damage.
 func jump_mp() -> int:
-	if asset != null:
+	if asset != null or vehicle != null:
 		return def.jump_mp
 	var lost := {}  # jets by ref: an improved jet's two slots are one jet
 	for loc in Location.COUNT:

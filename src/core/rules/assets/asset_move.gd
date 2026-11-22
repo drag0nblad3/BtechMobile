@@ -25,9 +25,12 @@ static func plan(state: GameState, u: Unit, mode: int) -> MoveOptions:
 	return opts
 
 
-## Button and log name for a movement mode: 'Mechs walk/run/jump; Assets
+## Button and log name for a movement mode: 'Mechs walk/run/jump, combat
+## vehicles cruise/flank; Assets
 ## "Move", "Reverse" (declared backward movement) or "Jump".
 static func mode_name(u: Unit, mode: int) -> String:
+	if u.vehicle != null and mode >= 0 and mode < MoveMode.VEHICLE_NAMES.size():
+		return MoveMode.VEHICLE_NAMES[mode]
 	if u.asset == null:
 		return MoveMode.name_of(mode)
 	match mode:

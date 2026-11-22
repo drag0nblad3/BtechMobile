@@ -49,7 +49,7 @@ static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
 			opts.prev[nk] = k
 			opts.can_end[nk] = _can_end_in(state, unit, MoveOptions.coord_of(nk))
 			heap.push(ng, nk)
-	if mode == MoveMode.Kind.RUN and not unit.prone and not unit.on_roof:
+	if mode == MoveMode.Kind.RUN and not unit.prone and not unit.on_roof and unit.vehicle == null:
 		_careful_entry(state, unit, opts, start)
 	if mode == MoveMode.Kind.RUN and opts.budget >= 1 and not unit.prone and not unit.on_roof:
 		_minimum_move(state, unit, opts, start)
@@ -63,7 +63,7 @@ static func _minimum_move(state: GameState, unit: Unit, opts: MoveOptions, start
 	var nk := MoveOptions.key(to, start.z)
 	if opts.cost.has(nk):
 		return
-	var mp := MoveCost.enter_cost(state.map, unit.coord, to, MoveMode.Kind.RUN, max_level_change(unit))
+	var mp := enter_cost(state, unit, unit.coord, to, MoveMode.Kind.RUN, max_level_change(unit))
 	if mp == MoveCost.PROHIBITED or not can_pass(state, unit, to):
 		return
 	opts.cost[nk] = opts.budget
@@ -93,6 +93,13 @@ static func _careful_entry(state: GameState, unit: Unit, opts: MoveOptions, star
 		opts.careful_entry = nk
 
 
+## MP to enter a hex: combat vehicles use their own costs (VehicleMoveCost).
+static func enter_cost(state: GameState, unit: Unit, from: Vector2i, to: Vector2i, mode: int, max_change: int) -> int:
+	if unit.vehicle != null:
+		return VehicleMoveCost.enter_cost(state.map, unit, from, to)
+	return MoveCost.enter_cost(state.map, from, to, mode, max_change)
+
+
 ## Levels a 'Mech may change per hex moving forward: 2, or 1 with a hip hit or
 ## a destroyed leg (book pp. 90, 99). Backward: 1, or none with that damage.
 static func max_level_change(unit: Unit, backward: bool = false) -> int:
@@ -113,13 +120,13 @@ static func _successors(state: GameState, unit: Unit, k: Vector3i, mode: int) ->
 		[MoveOptions.key(c, Hex.rotate(f, 1)), 1],
 	]
 	var to := Hex.neighbor(c, f)
-	var mp := MoveCost.enter_cost(state.map, c, to, mode, max_level_change(unit))
+	var mp := enter_cost(state, unit, c, to, mode, max_level_change(unit))
 	if mp != MoveCost.PROHIBITED and can_pass(state, unit, to):
 		out.append([MoveOptions.key(to, f), mp])
 	# Backward: walking only, at most one level up or down (book p. 46).
 	if mode == MoveMode.Kind.WALK:
 		var back := Hex.neighbor(c, f + 3)
-		var bmp := MoveCost.enter_cost(state.map, c, back, mode, max_level_change(unit, true))
+		var bmp := enter_cost(state, unit, c, back, mode, max_level_change(unit, true))
 		if bmp != MoveCost.PROHIBITED and can_pass(state, unit, back):
 			out.append([MoveOptions.key(back, f), bmp])
 	out.append_array(LateralShift.steps(state, unit, c, f, mode))

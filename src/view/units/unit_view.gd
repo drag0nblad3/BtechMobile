@@ -22,6 +22,8 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	add_to_group(GROUP)
 	if u.def.asset != null:
 		set_model(PlaceholderAsset.build(u.def, u.side))
+	elif u.def.vehicle != null:
+		set_model(PlaceholderAsset.build_vehicle(u.def, u.side))
 	else:
 		var sprite := SpriteMech.try_build(u.def)
 		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
@@ -47,7 +49,7 @@ func show_condition() -> void:
 	if _model == null:
 		return
 	visible = unit.asset == null or unit.asset.carried_by < 0  # riders ride inside
-	var down := unit.prone or (unit.destroyed and unit.asset == null)
+	var down := unit.prone or (unit.destroyed and not unit.def.is_support())
 	_model.rotation.z = PI / 2.4 if down else 0.0
 	_model.position.y = 0.25 if down else 0.0
 	var tint := Color(0.3, 0.3, 0.3) if unit.destroyed else Color.WHITE

@@ -153,7 +153,7 @@ func deciding_side() -> int:
 ## To move first and then drop, use submit_move(..., then_prone = true).
 func go_prone(unit: Unit) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT) or unit.prone or unit.masc_used or unit.sc_used \
-			or unit.asset != null or state.reserves.has(unit):
+			or unit.asset != null or unit.vehicle != null or state.reserves.has(unit):
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
 	MobileObjectives.drop_prone(state, dice, _emit_cb, unit)

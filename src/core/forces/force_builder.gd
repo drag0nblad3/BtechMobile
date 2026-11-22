@@ -59,6 +59,8 @@ func bv(side: int, extra: String = "") -> int:
 func unit_bv(side: int, def: UnitDef) -> int:
 	if def.asset != null:
 		return def.bv  # an Asset's Skill is on its card, not the side's pilots
+	if def.vehicle != null:
+		return BvSkill.adjusted(def.bv, skills[side].x, skills[side].y)  # the sheet BV, crew skill
 	return BvSkill.adjusted(BattleValue.of(def), skills[side].x, skills[side].y)
 
 
@@ -83,7 +85,7 @@ func cant_add(side: int, def_id: String) -> String:
 	var def := units.get_def(def_id)
 	if def == null:
 		return "Unknown design"
-	if def.asset != null:
+	if def.is_support():
 		if asset_ids(side).size() >= MAX_ASSETS:
 			return "At most %d vehicles or infantry per side" % MAX_ASSETS
 		if bv(side, def_id) > budget:
@@ -101,7 +103,7 @@ func cant_add(side: int, def_id: String) -> String:
 ## 5 if every 'Mech on the side (and `adding`, if given) is Clan, else 4.
 func max_units(side: int, adding: String = "") -> int:
 	var ids: Array = mech_ids(side)
-	if adding != "" and units.get_def(adding).asset == null:
+	if adding != "" and not units.get_def(adding).is_support():
 		ids.append(adding)
 	if ids.is_empty():
 		return MAX_UNITS
@@ -115,12 +117,12 @@ func formation(side: int) -> String:
 
 ## The side's 'Mech design ids (no Assets).
 func mech_ids(side: int) -> Array:
-	return rosters[side].filter(func(id: String) -> bool: return units.get_def(id).asset == null)
+	return rosters[side].filter(func(id: String) -> bool: return not units.get_def(id).is_support())
 
 
-## The side's Asset design ids.
+## The side's support design ids: Assets and combat vehicles.
 func asset_ids(side: int) -> Array:
-	return rosters[side].filter(func(id: String) -> bool: return units.get_def(id).asset != null)
+	return rosters[side].filter(func(id: String) -> bool: return units.get_def(id).is_support())
 
 
 func add(side: int, def_id: String) -> bool:
@@ -229,7 +231,8 @@ func _free_hex(state: GameState, c: Vector2i, def: UnitDef = null) -> Vector2i:
 			if Hex.distance(t, c) != radius:
 				continue
 			var tile := state.map.get_tile(t)
-			if tile.depth < 2 and state.unit_at(t) == null and (def == null or def.asset == null \
-					or AssetMoveCost.may_enter(def.asset, tile)):
+			if tile.depth < 2 and state.unit_at(t) == null and (def == null or not def.is_support() \
+					or (def.asset != null and AssetMoveCost.may_enter(def.asset, tile))
+					or (def.vehicle != null and VehicleMoveCost.may_enter(def.vehicle.motive, tile))):
 				return t
 	return c

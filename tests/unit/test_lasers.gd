@@ -37,5 +37,5 @@ func test_improved_heavy_laser_no_penalty_but_explodes() -> void:
 	check_eq(_own_mod({"RA": ["c_heavy_medium_laser"]}, 2), 1)
 	var u := _unit({"RA": ["c_improved_heavy_large_laser"]}, 1, 0, Vector2i.ZERO, 2, "clan")
 	check(u.weapons[0].def.explodes)
-	check_eq(ComponentExplosion.damage(u.weapons[0]), 8)
+	check_eq(ComponentExplosion.damage(u.weapons[0]), 6, "2 a slot (p. 96)")
 	check_eq(ComponentExplosion.damage(_unit({"RA": ["gauss_rifle"]}).weapons[0]), 14, "Gauss: 2 a slot")
