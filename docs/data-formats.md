@@ -124,7 +124,7 @@ A battle armor squad's record sheet (`BaSpec`). Each weapon is a `WeaponDef` dic
 trooper's weapon; the squad fires it as one attack with a shot (or `missiles`) per living trooper.
 ```json
 {"id": "elemental_ba_laser", "name": "Elemental Battle Armor", "model": "[Laser](Sqd5)", "tonnage": 1,
- "tech_base": "clan", "battle_armor": {"troopers": 5, "armor": 10, "ground_mp": 1, "jump_mp": 3, "claw": true,
+ "tech_base": "clan", "battle_armor": {"troopers": 5, "armor": 10, "ground_mp": 1, "jump_mp": 3, "claw": true, "mechanized": true, "anti_mech": true, "magnets": false,
  "weapons": [{"id": "small_laser", "name": "Small Laser", "type": "energy", "damage": 3, "short": 1, "medium": 2, "long": 3},
   {"id": "srm2", "name": "SRM 2", "type": "missile", "damage": 2, "missiles": 2, "short": 3, "medium": 6, "long": 9,
    "ammo_per_ton": 2, "ammo_explodes": false}]},

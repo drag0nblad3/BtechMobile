@@ -27,6 +27,8 @@ static func options(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 		else:
 			th.add("piloting", a.pilot.piloting, "Swatting troopers off your own hull uses Piloting.")
 			th.add("brush off", MOD, "Small targets clinging to you are hard to hit: +4.")
+			if t.def.battle_armor.magnets:
+				th.add("magnetic claws", 1, "Magnets hold them on: +1.")
 			if not a.has_working_actuator(arm, "hand"):
 				th.add("no hand", 1, "No working hand: +1.")
 			for act in ["upper_arm", "lower_arm"]:

@@ -1,0 +1,45 @@
+{
+ "id": "ironhold_assault_battle_armor_sqd5",
+ "name": "Ironhold Assault Battle Armor",
+ "model": "(Sqd5)",
+ "tonnage": 1,
+ "tech_base": "clan",
+ "battle_armor": {
+  "troopers": 5,
+  "armor": 16,
+  "ground_mp": 1,
+  "jump_mp": 2,
+  "claw": false,
+  "mechanized": false,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "ap_gauss",
+    "name": "AP Gauss Rifle",
+    "type": "ballistic",
+    "damage": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ai": true
+   },
+   {
+    "id": "ap_gauss",
+    "name": "AP Gauss Rifle",
+    "type": "ballistic",
+    "damage": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ai": true
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 8539,
+  "megamek": "data/mekfiles/battlearmor/3085u/Cutting Edge/Ironhold Assault BA (Sqd5).blk",
+  "bv": "megamek"
+ },
+ "bv": 536
+}

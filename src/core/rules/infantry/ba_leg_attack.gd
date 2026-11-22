@@ -24,8 +24,8 @@ static func is_leg_attack(w: MountedWeapon) -> bool:
 
 static func to_hit(state: GameState, a: Unit, t: Unit) -> ToHit:
 	var th := ToHit.new()
-	if a.ba == null or not a.def.battle_armor.claw:
-		th.impossible = "Only battle armor with claws makes leg attacks"
+	if a.ba == null or not a.def.battle_armor.anti_mech:
+		th.impossible = "Only light and medium battle armor makes leg attacks"
 	elif t.def.is_support():
 		th.impossible = "Leg attacks only work against 'Mechs"
 	elif t.coord != a.coord:
@@ -38,6 +38,7 @@ static func to_hit(state: GameState, a: Unit, t: Unit) -> ToHit:
 	var mod: int = TROOPER_MOD.get(a.ba.alive(), 0)
 	if mod > 0:
 		th.add("%d troopers left" % a.ba.alive(), mod, "Fewer troopers can't swarm the legs as well (4-6 +0, 3 +2, 2 +5, 1 +7).")
+	BaSwarm.add_magnets(th, a)
 	ToHitCalc.add_movement(th, a, t)
 	if ToHitCalc.is_immobile(t):
 		th.add("target immobile", -4, "A 'Mech that can't move can't shake them off: -4.")
