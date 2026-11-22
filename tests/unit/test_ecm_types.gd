@@ -49,3 +49,21 @@ func test_c3i_network_shares_range() -> void:
 	var th := ToHitCalc.weapon(s, a, a.weapons[0], t)
 	check(th.mods.any(func(m: Dictionary) -> bool: return m["label"] == "C3 network"), th.summary())
 	check_eq(C3.form([a.def, b.def, t.def]), [0, 1] as Array[int])
+
+
+func test_angel_ecm_breaks_streak_lock() -> void:
+	var s := GameState.new(open_map(10, 3))
+	var a := _unit({"RA": ["streak_srm6"], "RT": ["ammo:streak_srm6"]}, 1, 0, hex_at(0, 1))
+	var t := _unit({}, 2, 1, hex_at(4, 1))
+	var angel := _unit({"LT": ["angel_ecm"]}, 3, 1, hex_at(6, 1))
+	for u in [a, t, angel]:
+		s.add_unit(u)
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)  # hit
+	dice.queue_2d6(2)  # cluster roll: a standard SRM 6 column
+	var ev := []
+	WeaponFire.resolve(s, dice, func(ty: StringName, e: Dictionary) -> void: ev.append([ty, e]), a, a.weapons[0], t,
+			ToHitCalc.weapon(s, a, a.weapons[0], t))
+	var shot: Dictionary = ev.filter(func(e: Array) -> bool: return e[0] == GameEvent.WEAPON_FIRED)[0][1]
+	check(shot.get("angel_streak", false))
+	check_eq(shot["missiles"], ClusterTable.hits(6, 2))

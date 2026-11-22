@@ -35,7 +35,6 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		return
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
-	GaussWeapons.after_firing(attacker, w.def)
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
@@ -61,7 +60,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["artemis_blocked"] = jam
 	if w.def.artemis_builtin:
 		data["builtin_artemis"] = true
-	if w.def.streak and not ams_on:
+	var angel := w.def.streak and Ecm.angel_blocks_streak(state, attacker, target)
+	if angel:
+		data["angel_streak"] = true
+	elif w.def.streak and not ams_on:
 		data["streak_lock"] = true
 	if w.def.beacon:
 		if ams != null:
@@ -79,7 +81,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var dist := Hex.distance(attacker.coord, target.coord)
 	if w.def.large_missile:
 		ams_on = false  # already rolled against for this large missile
-	var c := WeaponModes.cluster(w, shots, dice, ams_on, jam != "", th.narc_homing,
+	var c := WeaponModes.cluster(w, shots, dice, ams_on, jam != "", th.narc_homing, angel,
 			GaussWeapons.cluster_mod(w.def, dist))
 	if th.narc_homing:
 		data["narc_homing"] = true

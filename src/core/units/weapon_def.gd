@@ -47,12 +47,10 @@ var label := ""       ## Munition name for the firing mode (MML "LRM"/"SRM").
 var cluster_mod: int   ## Added to Cluster Hits rolls (MRM -1, p. 186).
 var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 182).
 var ai: bool           ## Anti-Infantry type (AI, book weapon tables): more harm to infantry Assets.
-var fire_psr: bool     ## Heavy Gauss recoil forces a piloting roll.
 var range_cluster: bool ## HAG cluster modifiers depend on range.
 var heat_dice: int     ## Plasma heat dice on impact.
 var to_hit_by_range: Array[int] = [] ## VSP accuracy per range.
 var large_missile: bool ## Thunderbolt: AMS intercepts one missile.
-var explosion_damage: int ## Improved heavy laser component explosions.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -95,12 +93,10 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.cluster_mod = int(d.get("cluster_mod", 0))
 	w.one_shot = bool(d.get("one_shot", false))
 	w.ai = bool(d.get("ai", false))
-	w.fire_psr = bool(d.get("fire_psr", false))
 	w.range_cluster = bool(d.get("range_cluster", false))
 	w.heat_dice = int(d.get("heat_dice", 0))
 	for v in d.get("to_hit_by_range", []):
 		w.to_hit_by_range.append(int(v))
-	w.explosion_damage = int(d.get("explosion_damage", 0))
 	w.large_missile = bool(d.get("large_missile", false))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:

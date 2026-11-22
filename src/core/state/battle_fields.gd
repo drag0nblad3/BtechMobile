@@ -46,9 +46,8 @@ static func names(o: Object) -> Array:
 				"heat_damage", "heat_points", "indirect", "to_hit_mod", "explodes",
 				"ammo_explodes", "rapid", "lbx", "rotary", "beacon", "ammo_damage",
 				"streak", "pulse", "ams", "tech", "artemis_builtin", "munitions",
-				"label", "cluster_mod", "one_shot", "ai", "fire_psr",
-				"range_cluster", "heat_dice", "to_hit_by_range", "large_missile",
-				"explosion_damage"]
+				"label", "cluster_mod", "one_shot", "ai",
+				"range_cluster", "heat_dice", "to_hit_by_range", "large_missile"]
 	if o is BattleMap:
 		return ["name", "width", "height", "tiles", "colors", "rubble", "ground",
 				"no_fire", "windy"]

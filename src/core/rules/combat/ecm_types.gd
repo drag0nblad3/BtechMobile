@@ -1,10 +1,10 @@
 class_name EcmTypes
 extends RefCounted
-## ECM suite types. Guardian (p. 200) jams 6 hexes. Angel ECM works the same
-## and also degrades boosted C3 (C3Boosted). The Clan Watchdog CEWS is a
-## Guardian-style suite with a built-in 5-hex active probe (ActiveProbe).
-## TODO(rules): Angel and Watchdog come from MegaMek (weights, slots, BV),
-## not the Core Rulebook; ECCM and Angel counting as two suites aren't modelled.
+## ECM suite types (pp. 200-201). Guardian (Clan: "ECM suite") jams 6
+## hexes. Angel ECM also degrades boosted C3 and stops Streak locks
+## (Ecm.angel_blocks_streak). The Clan Watchdog CEWS is a Clan ECM suite and
+## active probe in one (5 hexes). TODO(rules): weights, slots and BV are
+## construction data from MegaMek; ECCM and Bloodhound probes aren't modelled.
 
 const KINDS := {
 	"guardian_ecm": {"name": "Guardian ECM", "tons": 1.5, "slots": 2, "clan_tons": 1.0, "clan_slots": 1, "bv": 61},
