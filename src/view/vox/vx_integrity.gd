@@ -138,6 +138,10 @@ static func _repair_rigid_assemblies(m: VxModel, owned: Dictionary,
 		for c: Vector3i in p["cells"]:
 			rigs[root][c] = true
 	var report := {"rejoined": 0, "added": 0}
+	var optical_names: Dictionary = {}
+	for p: Dictionary in m.parts:
+		if _optical_detail(p["cells"], m):
+			optical_names[p["name"]] = true
 	for root: String in rigs:
 		var groups := components(rigs[root])
 		if groups.size() < 2:
@@ -145,7 +149,7 @@ static func _repair_rigid_assemblies(m: VxModel, owned: Dictionary,
 		var solid: Dictionary = groups[0]
 		for i in range(1, groups.size()):
 			var island: Dictionary = groups[i]
-			if _all_optical(island, m, owned):
+			if _all_optical(island, optical_names, owned):
 				continue
 			var route := _path(island.keys(), solid, owned, voids, guard, RIG_GAP * n)
 			if route.is_empty():
@@ -171,10 +175,10 @@ static func _repair_rigid_assemblies(m: VxModel, owned: Dictionary,
 	return report
 
 
-static func _all_optical(group: Dictionary, m: VxModel, owned: Dictionary) -> bool:
+static func _all_optical(group: Dictionary, optical_names: Dictionary,
+		owned: Dictionary) -> bool:
 	for c: Vector3i in group:
-		var owner: Dictionary = m.part(String(owned[c]))
-		if not _optical_detail(owner["cells"], m):
+		if not optical_names.has(owned[c]):
 			return false
 	return true
 
