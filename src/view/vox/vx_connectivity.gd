@@ -103,13 +103,11 @@ static func repair(model: VxModel) -> Dictionary:
 			if path.size() >= 2 and _weld(path, cells, cells, occupied,
 					p["name"], p["name"], mat):
 				islands_fixed += 1
-			for c: Vector3i in island:
-				body[c] = true
-			# Only include a repaired island in the anchor mass.
-			if path.size() >= 2:
+				# An unresolved island is not allowed to anchor other bridges.
+				for c: Vector3i in island:
+					body[c] = true
 				for c: Vector3i in path:
-					if cells.has(c):
-						body[c] = true
+					body[c] = true
 
 	for p: Dictionary in model.parts:
 		var parent_name: String = p.get("parent", "")
@@ -132,8 +130,7 @@ static func repair(model: VxModel) -> Dictionary:
 				occupied, p["name"], parent_name, mat) \
 				and solid_contact(child_cells, parent_cells):
 			joints_fixed += 1
-	return {"islands_fixed": islands_fixed, "joints_fixed": joints_fixed,
-		"remaining": audit(model)["faults"]}
+	return {"islands_fixed": islands_fixed, "joints_fixed": joints_fixed}
 
 
 static func _near_pivot(cells: Dictionary, pivot: Vector3i, reach: int) -> Dictionary:
