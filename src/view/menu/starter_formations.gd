@@ -36,6 +36,10 @@ static func plan(builder: ForceBuilder, side: int, form: Dictionary) -> Dictiona
 	var ceiling: int = ForceBuilder.BUDGETS.back()
 	var test := ForceBuilder.new(builder.units, ceiling)
 	test.skills[side] = builder.skills[side]
+	test.availability = builder.availability
+	test.availability_mode = builder.availability_mode
+	test.era_year = builder.era_year
+	test.factions = builder.factions.duplicate()
 	for id in ids:
 		var def: UnitDef = builder.units.get_def(String(id))
 		if def == null or def.is_support() or def.is_clan() != (kind == "star"):

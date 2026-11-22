@@ -9,6 +9,10 @@ var _changed: Callable
 var _message: Callable
 var _options: Dictionary
 var _budget_button: Button
+var _era: OptionButton
+var _year: SpinBox
+var _policy: OptionButton
+var _factions: Array[OptionButton] = []
 var _mission_button: Button
 var _players: Array[Button] = []
 var _advanced: VBoxContainer
@@ -39,6 +43,54 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	var box := UiKit.panel(scroll)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(UiKit.label(box, "BATTLE SETUP", 21), "section")
+	UiSkin.label(UiKit.label(box, "HISTORICAL AVAILABILITY", 18), "section")
+	var era_row := HBoxContainer.new()
+	box.add_child(era_row)
+	_era = OptionButton.new()
+	_era.custom_minimum_size.y = 50
+	_era.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_era.add_theme_font_size_override("font_size", 17)
+	for era: Dictionary in EraAvailability.ERAS:
+		_era.add_item("%s (%d-%d)" % [era["name"], era["start"], era["end"]])
+	era_row.add_child(_era)
+	_era.item_selected.connect(func(index: int):
+		builder.era_year = int(EraAvailability.ERAS[index]["start"])
+		_changed.call())
+	_year = SpinBox.new()
+	_year.min_value = 2398
+	_year.max_value = 3153
+	_year.step = 1
+	_year.custom_minimum_size = Vector2(115, 50)
+	_year.tooltip_text = "Exact historical year, including the middle of an era."
+	era_row.add_child(_year)
+	_year.value_changed.connect(func(value: float):
+		builder.era_year = int(value)
+		_changed.call())
+	_policy = OptionButton.new()
+	_policy.custom_minimum_size.y = 50
+	_policy.add_theme_font_size_override("font_size", 18)
+	for mode_name: String in EraAvailability.MODE_NAMES:
+		_policy.add_item("RESTRICTIONS: " + mode_name)
+	box.add_child(_policy)
+	_policy.item_selected.connect(func(index: int):
+		builder.availability_mode = index
+		_changed.call())
+	for side in 2:
+		var idx := side
+		var faction_row := HBoxContainer.new()
+		box.add_child(faction_row)
+		UiSkin.label(UiKit.label(faction_row, Names.side(side).to_upper() + " FACTION", 16), "section")
+		var picker_for_faction := OptionButton.new()
+		picker_for_faction.custom_minimum_size.y = 50
+		picker_for_faction.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		picker_for_faction.add_theme_font_size_override("font_size", 17)
+		for faction: Dictionary in EraAvailability.FACTIONS:
+			picker_for_faction.add_item(String(faction["name"]))
+		faction_row.add_child(picker_for_faction)
+		_factions.append(picker_for_faction)
+		picker_for_faction.item_selected.connect(func(index: int):
+			builder.factions[idx] = String(EraAvailability.FACTIONS[index]["id"])
+			_changed.call())
 	map_picker.build(box, changed)
 	_budget_button = UiKit.button(box, "", _next_budget, Vector2(0, 52))
 	_mission_button = UiKit.button(box, "", func():
@@ -119,6 +171,14 @@ func _toggle_advanced() -> void:
 
 
 func refresh() -> void:
+	_era.select(EraAvailability.era_index(builder.era_year))
+	_year.set_value_no_signal(builder.era_year)
+	_policy.select(builder.availability_mode)
+	for side in 2:
+		for i in EraAvailability.FACTIONS.size():
+			if EraAvailability.FACTIONS[i]["id"] == builder.factions[side]:
+				_factions[side].select(i)
+				break
 	_budget_button.text = "BV LIMIT  •  %d per side  ▸" % builder.budget
 	_mission_button.text = "MISSION  •  %s  ▸" % builder.mission_name()
 	_mission_button.clip_text = true

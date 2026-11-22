@@ -11,6 +11,7 @@ var mode := DesignFilter.Mode.ALL
 var category := 0
 var active_side := 0
 var query := ""
+var verified_only := false
 var _on_add: Callable
 var _config := {}
 var _shown := PAGE_SIZE
@@ -19,6 +20,7 @@ var _list: VBoxContainer
 var _counter: Label
 var _more: Button
 var _tech: Button
+var _historical: Button
 var _tab_buttons: Array[Button] = []
 
 
@@ -63,6 +65,10 @@ func build(parent: Control) -> void:
 		mode = DesignFilter.next(mode)
 		rebuild(), Vector2(0, 50), "subtle")
 	_tech.add_theme_font_size_override("font_size", 18)
+	_historical = UiKit.button(outer, "", func():
+		verified_only = not verified_only
+		rebuild(), Vector2(0, 50), "subtle")
+	_historical.add_theme_font_size_override("font_size", 18)
 	_counter = UiKit.label(outer, "", 17)
 	_list = VBoxContainer.new()
 	_list.add_theme_constant_override("separation", 8)
@@ -75,7 +81,7 @@ func build(parent: Control) -> void:
 
 func set_active_side(side: int) -> void:
 	active_side = side
-	refresh()
+	rebuild()
 
 
 func _change_type(next_type: int) -> void:
@@ -93,7 +99,8 @@ func _matches() -> Array[Dictionary]:
 	if category == 0:
 		for g: Array in DesignFilter.groups(db, mode):
 			var variants: Array = g.filter(func(d: UnitDef) -> bool:
-				return ForceCatalogQuery.matches(d, query))
+				return ForceCatalogQuery.matches(d, query) and (
+					not verified_only or builder.availability_for(active_side, d.id)["status"] == "available"))
 			if variants.is_empty():
 				continue
 			var index := int(_config.get(g[0].chassis, 0)) % variants.size()
@@ -102,7 +109,8 @@ func _matches() -> Array[Dictionary]:
 		var source: Array = db.sorted_vehicles() if category == 1 else (
 			db.sorted_battle_armor() if category == 2 else db.sorted_assets())
 		for def: UnitDef in source:
-			if DesignFilter.keeps(def, mode) and ForceCatalogQuery.matches(def, query):
+			if DesignFilter.keeps(def, mode) and ForceCatalogQuery.matches(def, query) and (
+					not verified_only or builder.availability_for(active_side, def.id)["status"] == "available"):
 				matches.append({"def": def, "group": [def]})
 	return matches
 
@@ -115,12 +123,13 @@ func _draw() -> void:
 	for i in _tab_buttons.size():
 		UiSkin.button(_tab_buttons[i], "selected" if i == category else "subtle")
 	_tech.text = "TECH: " + ["All technology", "Inner Sphere", "Clan"][mode] + "  ▸"
+	_historical.text = "HISTORY: " + ("VERIFIED ONLY" if verified_only else "SHOW ALL") + "  ▸"
 	var matches := _matches()
 	var count := mini(_shown, matches.size())
 	_counter.text = "%d of %d matches  •  Add to %s" % [
 		count, matches.size(), Names.side(active_side)]
 	if matches.is_empty():
-		UiSkin.label(UiKit.label(_list, "No matching units. Try a different name or filter.", 19), "muted")
+		UiSkin.label(UiKit.label(_list, "No verified units here. Broaden your search or turn off the history filter." if verified_only else "No matching units. Try a different name or filter.", 19), "muted")
 	for i in count:
 		var entry: Dictionary = matches[i]
 		var def: UnitDef = entry["def"]
@@ -147,7 +156,13 @@ func refresh() -> void:
 		var proposed := builder.bv(active_side, def.id)
 		(card["cost"] as Label).text = "+%d BV  •  %d left after" % [
 			proposed - current, builder.budget - proposed]
-		(card["info"] as Label).text = why if why != "" else "Ready to deploy"
+		var warning := ""
+		if builder.availability_mode != EraAvailability.Mode.OFF:
+			var report := builder.availability_for(active_side, def.id)
+			if report["status"] != "available":
+				warning = "HISTORY: " + String(report["reason"])
+		(card["info"] as Label).text = why if why != "" else (
+			warning if warning != "" else "Ready to deploy")
 		button.disabled = why != ""
 		button.text = "ADD TO " + Names.side(active_side).to_upper()
 		UiSkin.button(button, "primary" if why == "" else "subtle")
