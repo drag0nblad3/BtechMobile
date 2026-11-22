@@ -49,6 +49,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	var mm := MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.use_colors = true
+	mm.use_custom_data = true
 	mm.mesh = mesh
 	mm.instance_count = tiles.size()
 	var range_ := map.level_range()
@@ -58,6 +59,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 		var height := top.y - HexLayout.BASE_Y
 		mm.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3(1, height, 1)), top))
 		mm.set_instance_color(i, _level_tint(t.floor_level(), range_, t.coord))
+		mm.set_instance_custom_data(i, TerrainEdges.land_mix(map, t))
 	var mat := ShaderMaterial.new()
 	mat.shader = SHADER
 	var own: Variant = map.colors.get(terrain.id)

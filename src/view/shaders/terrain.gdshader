@@ -16,12 +16,22 @@ varying vec3 world_pos;
 varying vec3 world_normal;
 varying vec3 tint;
 varying float cliff_height;
+varying vec4 edge_data;
+varying vec2 local_hex;
+
+const vec2 EDGE_NORMALS[6] = vec2[6](
+	vec2(0.8660254, 0.5), vec2(0.0, 1.0),
+	vec2(-0.8660254, 0.5), vec2(-0.8660254, -0.5),
+	vec2(0.0, -1.0), vec2(0.8660254, -0.5)
+);
 
 void vertex() {
 	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	tint = COLOR.rgb;
 	cliff_height = VERTEX.y;
+	edge_data = INSTANCE_CUSTOM;
+	local_hex = VERTEX.xz;
 }
 
 float tri_noise(vec3 p, vec3 n, float s) {
@@ -91,6 +101,18 @@ void fragment() {
 	// Subtle broad soil patches break up featureless flat terrain.
 	float soil_patch = smoothstep(0.45, 0.8, n2(world_pos.xz + 31.0, 0.11));
 	top *= mix(0.91, 1.055, soil_patch);
+	// Shared-edge blending is masked to actual differing neighbor tiles;
+	// interiors retain their own terrain patterns and grid remains legible.
+	int mask = int(round(edge_data.a * 63.0));
+	float transition = 0.0;
+	for (int edge = 0; edge < 6; edge++) {
+		if ((mask & (1 << edge)) != 0) {
+			float distance_to_edge = dot(local_hex, EDGE_NORMALS[edge]);
+			transition = max(transition,
+				smoothstep(0.52, 0.85, distance_to_edge));
+		}
+	}
+	top = mix(top, edge_data.rgb, transition * 0.34 * is_top);
 	ALBEDO = mix(side, top, is_top) * tint;
 	ROUGHNESS = mix(0.99, 0.91, is_top);
 }
