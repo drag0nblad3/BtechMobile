@@ -53,11 +53,15 @@ static func from_dict(d: Dictionary) -> VxModel:
 	m.jets = _points(recipe.get("jets", {}))
 	if bool(recipe.get("exclusive_parts", false)):
 		m._claim_exclusive_cells() # settle coarse moving-part ownership before connecting joints
+		if not bool(recipe.get("voxelize_lofts", false)):
+			VxConnectivity.repair(m) # coarse load-bearing joints before subdivision
 	VxRefine.apply(m, int(recipe.get("subdivide", 1)), recipe)
 	for p: Dictionary in recipe.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
 	if bool(recipe.get("exclusive_parts", false)):
 		m._claim_exclusive_cells()
+		if bool(recipe.get("voxelize_lofts", false)):
+			VxConnectivity.repair(m) # rebuild lofts first, then close their joints
 		m.quality_report = VxIntegrity.repair(m, recipe)
 	m.unit_id = recipe.get("unit", "")
 	m.legs = recipe.get("legs", "plantigrade")
