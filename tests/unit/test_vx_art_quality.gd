@@ -12,14 +12,14 @@ func test_every_shape_study_has_matching_detailed_contours_after_art_pass() -> v
 			continue
 		var id: String = filename.trim_suffix("_shape.json")
 		var low: Dictionary = JsonFile.read("res://data/voxels/" + filename)
+		if low.has("source") or not low.has("parts"):
+			# Procedural source manifests have _voxel.json instead of paired JSON.
+			continue
 		var high_path := "res://data/voxels/" + id + ".json"
 		check(FileAccess.file_exists(high_path), id + " must have detailed counterpart")
 		if not FileAccess.file_exists(high_path):
 			continue
 		var high: Dictionary = JsonFile.read(high_path)
-		if low.has("source") or not low.has("parts"):
-			# Atlas/Jenner/Wolverine source manifests use the procedural pipeline.
-			continue
 		var lo: Dictionary = VxArtQuality.apply(low)
 		var hi: Dictionary = VxArtQuality.apply(high)
 		check_eq(String(lo.get("art_quality_revision", "")), REVISION, id + " art pass present")
