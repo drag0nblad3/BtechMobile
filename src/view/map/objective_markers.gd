@@ -1,7 +1,7 @@
 class_name ObjectiveMarkers
 extends RefCounted
 ## Mission objectives on the map: a gold post on each objective hex and a
-## faint gold plate on every hex inside its control radius.
+## faint gold plate on every hex inside its control radius; minefields too (MineMarkers).
 
 const POST := Color(1.0, 0.8, 0.2, 0.95)
 const AREA := Color(1.0, 0.8, 0.2, 0.18)
@@ -12,6 +12,7 @@ const POTENTIAL := Color(0.85, 0.85, 0.85, 0.9)  ## Not yet known to be real (Ob
 static func build(state: GameState) -> Node3D:
 	var root := Node3D.new()
 	root.name = "Objectives"
+	MineMarkers.add(root, state)
 	var m := state.mission.def
 	if m == null:
 		return root

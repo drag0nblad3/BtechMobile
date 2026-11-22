@@ -90,6 +90,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry, smash)
 	for c in decks:
 		Bridges.check_support(state, dice, emit, unit, c)
+	Minefields.after_move(state, dice, emit, unit, path, MoveOptions.coord_of(from), mode == MoveMode.Kind.JUMP)
 	Masc.apply_failure(state, dice, emit, unit)
 	Supercharger.apply_failure(state, dice, emit, unit)
 	if moved:

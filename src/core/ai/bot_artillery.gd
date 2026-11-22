@@ -4,7 +4,7 @@ extends RefCounted
 ## A blast is worth its expected damage to enemies caught, minus 1.5 times
 ## its expected damage to friends; a distant Arrow IV counts half (the target
 ## has a turn to move). Homing is only worth it with a TAG designation near
-## the hex. The bot never fires smoke.
+## the hex. The bot never fires smoke, inferno or thunder missiles.
 
 const FRIEND_WEIGHT := 1.5
 const DISTANT_WEIGHT := 0.5
@@ -22,7 +22,7 @@ static func value(state: GameState, u: Unit, w: MountedWeapon, e: Unit, th: ToHi
 		var per := ClusterTable.expected(w.def.missiles) / 3.0
 		return th.chance() * per * _net(state, u, ApolloSaturation.caught(state, e.coord))
 	var kind := WeaponModes.ammo_kind(w)
-	if kind == ArrowSmoke.KIND:
+	if kind in [ArrowSmoke.KIND, ArrowInferno.KIND, ArrowIv.THUNDER]:
 		return 0.0
 	var far := DISTANT_WEIGHT if Hex.distance(u.coord, e.coord) >= ArrowIv.DISTANT else 1.0
 	if kind == ArrowHoming.KIND:
@@ -68,7 +68,7 @@ static func best_mode(state: GameState, u: Unit, w: MountedWeapon, e: Unit, mode
 	var best: String = modes[0]
 	var best_v := -INF
 	for m: String in modes:
-		if m == ArrowSmoke.KIND:
+		if m in [ArrowSmoke.KIND, ArrowInferno.KIND, ArrowIv.THUNDER]:
 			continue
 		w.mode = m
 		var th := ToHitCalc.weapon(state, u, w, e, false)

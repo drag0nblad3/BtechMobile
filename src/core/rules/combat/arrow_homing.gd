@@ -8,7 +8,8 @@ extends RefCounted
 ## is lost, no scatter. Then 2D6 with no modifiers: 4+ deals 20 damage to that
 ## unit (hit from the launcher's direction) and 5 AE to everything else in
 ## its hex; 3 or less deals 5 AE to everything in its hex. AMS can't stop it.
-## TODO(rules): Nemesis pods can't pull homing missiles yet.
+## A friend of the attacker next to that unit with an enemy Nemesis pod on it
+## (p. 194) draws the missile on 1-3 on 1D6 (picked at random among several).
 
 const KIND := "homing"
 const NEED := 4
@@ -49,6 +50,15 @@ static func target(state: GameState, attacker: Unit, c: Vector2i) -> Unit:
 	return best
 
 
+## The attacker's friends next to `t` carrying an enemy Nemesis pod.
+static func nemesis(state: GameState, attacker: Unit, t: Unit) -> Array[Unit]:
+	var out: Array[Unit] = []
+	for u in state.units_of_side(attacker.side):
+		if u != t and not u.destroyed and Hex.distance(u.coord, t.coord) == 1 and NarcPods.has(state, u, NarcPods.NEMESIS):
+			out.append(u)
+	return out
+
+
 ## Did a TAG on `side` designate `u` this turn?
 static func designated(state: GameState, side: int, u: Unit) -> bool:
 	var t: Dictionary = state.tagged.get(u.id, {})
@@ -68,6 +78,12 @@ static func land(state: GameState, dice: Dice, emit: Callable, attacker: Unit, w
 		data["homing_lost"] = true
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		return
+	var decoys := nemesis(state, attacker, t)
+	if not decoys.is_empty():
+		data["nemesis_roll"] = dice.d6()
+		if int(data["nemesis_roll"]) <= 3:
+			t = decoys[0] if decoys.size() == 1 else decoys[dice.pick(decoys.size())]
+			data["nemesis"] = true
 	data["roll"] = dice.roll_2d6()
 	data["hit"] = data["roll"] >= NEED
 	data["target_id"] = t.id
