@@ -1,5 +1,6 @@
 extends SceneTree
-## Headless navigation test: launcher -> voxel lab -> launcher -> battle menu.
+## Headless navigation test: launcher -> voxel lab -> launcher -> battle menu
+## -> launcher -> quick battle.
 
 
 func _initialize() -> void:
@@ -39,6 +40,22 @@ func _test_navigation() -> void:
 	await process_frame
 	await process_frame
 	if not _check(current_scene is ForceBuilderScreen, "battle menu route failed"):
+		return
+	change_scene_to_file("res://scenes/launcher.tscn")
+	await process_frame
+	await process_frame
+	var quick := current_scene.find_child("QuickBattleButton", true, false) as Button
+	if not _check(quick != null and current_scene.find_child("TrainingButton", true, false) != null,
+			"training or quick battle button missing"):
+		return
+	quick.pressed.emit()
+	await process_frame
+	await process_frame
+	var path := String(current_scene.get_script().resource_path) if current_scene else ""
+	if not _check(path.ends_with("battle_scene.gd"), "quick battle route failed"):
+		return
+	var sides: Array = current_scene.controller.state.units.map(func(u: Unit) -> int: return u.side)
+	if not _check(sides.count(0) == 4 and sides.count(1) == 4, "quick battle forces wrong"):
 		return
 	print("launcher navigation ok")
 	quit(0)
