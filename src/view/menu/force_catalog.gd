@@ -3,7 +3,7 @@ extends RefCounted
 ## Searchable, paginated unit catalog. Only one unit category is built at once.
 
 const TYPES := ["'Mechs", "Vehicles", "Battle Armor", "Support"]
-const PAGE_SIZE := 12
+const PAGE_SIZE := 20
 
 var db: UnitDb
 var builder: ForceBuilder
@@ -12,6 +12,8 @@ var category := 0
 var active_side := 0
 var query := ""
 var verified_only := false
+var weight := 0  ## ForceCatalogQuery.CLASSES index, 0 = all.
+var sort_by := 0  ## ForceCatalogQuery.SORTS index.
 var _context_key := ""
 var _on_add: Callable
 var _config := {}
@@ -23,6 +25,9 @@ var _more: Button
 var _tech: Button
 var _historical: Button
 var _tab_buttons: Array[Button] = []
+var _class_buttons: Array[Button] = []
+var _class_row: HBoxContainer
+var _sort: Button
 
 
 func _init(unit_db: UnitDb, on_add: Callable, force_builder: ForceBuilder) -> void:
@@ -62,14 +67,35 @@ func build(parent: Control) -> void:
 		tab.add_theme_font_size_override("font_size", 16)
 		tab.clip_text = true
 		_tab_buttons.append(tab)
-	_tech = UiKit.button(outer, "", func():
+	var filters := HBoxContainer.new()
+	filters.add_theme_constant_override("separation", 4)
+	outer.add_child(filters)
+	_tech = UiKit.button(filters, "", func():
 		mode = DesignFilter.next(mode)
-		rebuild(), Vector2(0, 50), "subtle")
-	_tech.add_theme_font_size_override("font_size", 18)
-	_historical = UiKit.button(outer, "", func():
+		rebuild(), Vector2(0, 48), "subtle")
+	_historical = UiKit.button(filters, "", func():
 		verified_only = not verified_only
-		rebuild(), Vector2(0, 50), "subtle")
-	_historical.add_theme_font_size_override("font_size", 18)
+		rebuild(), Vector2(0, 48), "subtle")
+	for b in [_tech, _historical]:
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.add_theme_font_size_override("font_size", 15)
+		b.clip_text = true
+	_class_row = HBoxContainer.new()
+	_class_row.add_theme_constant_override("separation", 4)
+	outer.add_child(_class_row)
+	for i in ForceCatalogQuery.CLASSES.size():
+		var index := i
+		var chip := UiKit.button(_class_row, ForceCatalogQuery.CLASSES[i], func():
+			weight = index
+			rebuild(), Vector2(0, 46), "subtle")
+		chip.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		chip.add_theme_font_size_override("font_size", 15)
+		chip.clip_text = true
+		_class_buttons.append(chip)
+	_sort = UiKit.button(_class_row, "", func():
+		sort_by = (sort_by + 1) % ForceCatalogQuery.SORTS.size()
+		rebuild(), Vector2(118, 46), "subtle")
+	_sort.add_theme_font_size_override("font_size", 15)
 	_counter = UiKit.label(outer, "", 17)
 	_list = VBoxContainer.new()
 	_list.add_theme_constant_override("separation", 8)
@@ -100,7 +126,7 @@ func _matches() -> Array[Dictionary]:
 	if category == 0:
 		for g: Array in DesignFilter.groups(db, mode):
 			var variants: Array = g.filter(func(d: UnitDef) -> bool:
-				return ForceCatalogQuery.matches(d, query) and (
+				return ForceCatalogQuery.matches(d, query) and ForceCatalogQuery.in_class(d, weight) and (
 					not verified_only or builder.availability_for(active_side, d.id)["status"] == "available"))
 			if variants.is_empty():
 				continue
@@ -110,9 +136,11 @@ func _matches() -> Array[Dictionary]:
 		var source: Array = db.sorted_vehicles() if category == 1 else (
 			db.sorted_battle_armor() if category == 2 else db.sorted_assets())
 		for def: UnitDef in source:
-			if DesignFilter.keeps(def, mode) and ForceCatalogQuery.matches(def, query) and (
+			if DesignFilter.keeps(def, mode) and ForceCatalogQuery.matches(def, query) \
+					and ForceCatalogQuery.in_class(def, weight if category < 2 else 0) and (
 					not verified_only or builder.availability_for(active_side, def.id)["status"] == "available"):
 				matches.append({"def": def, "group": [def]})
+	ForceCatalogQuery.sort(matches, sort_by, builder, active_side)
 	return matches
 
 
@@ -123,8 +151,12 @@ func _draw() -> void:
 	_cards.clear()
 	for i in _tab_buttons.size():
 		UiSkin.button(_tab_buttons[i], "selected" if i == category else "subtle")
-	_tech.text = "TECH: " + ["All technology", "Inner Sphere", "Clan"][mode] + "  ▸"
-	_historical.text = "HISTORY: " + ("VERIFIED ONLY" if verified_only else "SHOW ALL") + "  ▸"
+	_tech.text = "TECH: " + ["ALL", "INNER SPHERE", "CLAN"][mode] + " ▸"
+	_historical.text = "HISTORY: " + ("VERIFIED" if verified_only else "ALL") + " ▸"
+	_class_row.visible = category < 2
+	for i in _class_buttons.size():
+		UiSkin.button(_class_buttons[i], "selected" if i == weight else "subtle")
+	_sort.text = "SORT: " + ForceCatalogQuery.SORTS[sort_by].to_upper()
 	var matches := _matches()
 	var count := mini(_shown, matches.size())
 	_counter.text = "%d of %d matches  •  Add to %s" % [
@@ -166,8 +198,9 @@ func refresh() -> void:
 			var report := builder.availability_for(active_side, def.id)
 			if report["status"] != "available":
 				warning = "HISTORY: " + String(report["reason"])
-		(card["info"] as Label).text = why if why != "" else (
-			warning if warning != "" else "Ready to deploy")
+		var info := card["info"] as Label
+		info.text = why if why != "" else warning
+		info.visible = info.text != ""
 		button.disabled = why != ""
 		button.text = "ADD TO " + Names.side(active_side).to_upper()
 		UiSkin.button(button, "primary" if why == "" else "subtle")
