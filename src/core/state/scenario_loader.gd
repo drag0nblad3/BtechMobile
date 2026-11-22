@@ -2,7 +2,7 @@ class_name ScenarioLoader
 extends RefCounted
 ## Builds a GameState from data/scenarios/<id>.json:
 ##   {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0,
-##    "hex": "0816", "facing": 0}, ...], "conditions": {"cold": 1}}
+##    "hex": "0816", "facing": 0, "hidden": false}, ...], "conditions": {"cold": 1}}
 ## "hex" is a mapsheet label (XXYY, 1-based).
 
 
@@ -17,8 +17,10 @@ static func load_file(path: String, terrain: TerrainDb, units: UnitDb) -> GameSt
 	for u in data["units"]:
 		var def := units.get_def(u["def"])
 		assert(def != null, "Unknown unit def %s" % u["def"])
-		state.add_unit(Unit.new(next_id, def, int(u["side"]),
-				parse_label(u["hex"]), int(u.get("facing", 0))))
+		var unit := Unit.new(next_id, def, int(u["side"]), parse_label(u["hex"]), int(u.get("facing", 0)))
+		state.add_unit(unit)
+		if u.get("hidden", false):
+			HiddenUnits.hide(state, unit)
 		next_id += 1
 	return state
 

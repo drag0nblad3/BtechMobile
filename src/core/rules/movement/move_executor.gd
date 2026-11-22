@@ -42,6 +42,16 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		Damage.announce(emit, unit)
 		PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once
 		return true
+	var found: Array[Unit] = []
+	var bump := HiddenUnits.blocked_path(state, unit, path, mode)
+	if not bump.is_empty():  # stops next to a hidden enemy (p. 230)
+		path = path.slice(0, int(bump["keep"]))
+		target = path[-1] if not path.is_empty() else from
+		charge_target_id = -1
+		then_prone = false
+		moved = int(opts.cost.get(target, 0)) > 0 or target != from
+		HiddenUnits.reveal(state, emit, bump["hidden"], "an enemy tried to walk into its hex", true)
+		found.append(bump["hidden"])
 	var fall := _action_rolls(state, dice, emit, unit, path, from, mode)
 	if not fall.is_empty():
 		path = path.slice(0, int(fall["end"]))
@@ -50,6 +60,9 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	var mp: int = opts.cost.get(target, 0)
 	unit.hexes_moved = Hex.distance(unit.coord, MoveOptions.coord_of(target)) \
 			if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(path, unit.coord)
+	var decks := Bridges.decks_entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP)
+	if MoveOptions.coord_of(target) != unit.coord:
+		unit.on_bridge = Bridges.ends_on_deck(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP)
 	unit.coord = MoveOptions.coord_of(target)
 	unit.facing = target.z
 	var on_new_roof := mode == MoveMode.Kind.JUMP and moved and Roofs.has_roof(state.map.get_tile(unit.coord))
@@ -61,6 +74,13 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	unit.outside_heat += Fire.move_heat(state.map, path, MoveOptions.coord_of(from), mode == MoveMode.Kind.JUMP)
 	emit.call(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
 			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
+	var under := HiddenUnits.enemy_at(state, unit.side, unit.coord) if mode == MoveMode.Kind.JUMP else null
+	if under:  # landed on a hidden enemy: it's found and the jumper is shoved aside
+		HiddenUnits.reveal(state, emit, under, "an enemy jumped onto its hex", true)
+		found.append(under)
+		on_new_roof = false
+		# TODO(rules): the book resolves point-blank shots before this domino effect.
+		Displacement.push_nearest(state, dice, emit, unit, Hex.rotate(unit.facing, 3))
 	if not fall.is_empty():
 		Fall.fall(state, dice, emit, unit, int(fall["levels"]), fall["reason"])
 	if on_new_roof:
@@ -68,6 +88,8 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	elif not unit.on_roof:
 		for c: Vector2i in BuildingRules.entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP):
 			BuildingRules.enter(state, dice, emit, unit, c, target == opts.careful_entry, smash)
+	for c in decks:
+		Bridges.check_support(state, dice, emit, unit, c)
 	Masc.apply_failure(state, dice, emit, unit)
 	Supercharger.apply_failure(state, dice, emit, unit)
 	if moved:
@@ -78,6 +100,10 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once
 	if then_prone and not unit.prone and not unit.destroyed:
 		ProneMoves.drop(emit, unit)
+	found.append_array(HiddenUnits.reveal_around(state, emit, unit))
+	for h in found:  # each may answer with a point-blank attack (PointBlank)
+		if h.can_act() and not unit.destroyed:
+			state.point_blank.append({"unit_id": h.id, "target_id": unit.id})
 	if charge_target_id >= 0 and not unit.prone:
 		if not moved:  # charging from the hex next door still spends MP
 			unit.move_mode = mode

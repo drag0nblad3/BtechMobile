@@ -13,6 +13,8 @@ const PATTERNS := {"grass": 0, "rocks": 1, "paving": 2, "rubble": 3, "riverbed":
 var map: BattleMap
 var buildings: BuildingProps
 var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
+var bridges: BridgeProps
+var bridge_scars := {}  ## The same for bridge stonework.
 
 
 func build(battle_map: BattleMap) -> void:
@@ -27,6 +29,8 @@ func build(battle_map: BattleMap) -> void:
 	add_child(WoodsProps.build(map))
 	add_child(GroundScatter.build(map))
 	add_child(WaterSurfaces.build(map))
+	bridges = BridgeProps.build(map, bridge_scars)
+	add_child(bridges)
 	buildings = BuildingProps.build(map, building_scars)
 	add_child(buildings)
 	add_child(FireProps.build(map))
@@ -56,8 +60,9 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 		mm.set_instance_color(i, _level_tint(t.floor_level(), range_))
 	var mat := ShaderMaterial.new()
 	mat.shader = SHADER
-	mat.set_shader_parameter("top_color", SURFACE_TOPS.get(surface, terrain.top_color))
-	mat.set_shader_parameter("detail_color", terrain.detail_color)
+	var own: Variant = map.colors.get(terrain.id)
+	mat.set_shader_parameter("top_color", SURFACE_TOPS.get(surface, own if own != null else terrain.top_color))
+	mat.set_shader_parameter("detail_color", own.darkened(0.25) if own != null else terrain.detail_color)
 	mat.set_shader_parameter("noise_tex", noise)
 	mat.set_shader_parameter("pattern", 0 if surface != "" else PATTERNS.get(terrain.pattern, 0))
 	var inst := MultiMeshInstance3D.new()

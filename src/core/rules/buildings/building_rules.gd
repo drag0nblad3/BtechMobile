@@ -77,12 +77,12 @@ static func displaced_into(state: GameState, dice: Dice, emit: Callable, u: Unit
 ## the class's number. Returns true if the hex is destroyed.
 static func destroy_check(state: GameState, dice: Dice, emit: Callable, c: Vector2i,
 		damage: int, attacker_id: int, extra := 0) -> bool:
-	var b := state.map.get_tile(c).building
+	var b := Bridges.structure(state.map.get_tile(c))
 	var roll := dice.roll_2d6()
 	var mod := destroy_mod(damage) + extra
 	var ok := roll + mod >= b.type.destroy_tn
 	emit.call(GameEvent.BUILDING, {"kind": "destroy_check", "coord": c, "unit_id": attacker_id,
-			"name": b.type.name, "roll": roll, "mod": mod, "need": b.type.destroy_tn,
+			"name": Bridges.label(b), "roll": roll, "mod": mod, "need": b.type.destroy_tn,
 			"damage": damage, "destroyed": ok})
 	return ok
 

@@ -4,8 +4,9 @@ extends RefCounted
 ## Every modifier carries a short reason, which the explanation layer shows.
 
 
+## `point_blank`: a hidden unit's ambush shot (PointBlank), no target movement modifier.
 static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit,
-		secondary: bool = false) -> ToHit:
+		secondary: bool = false, point_blank := false) -> ToHit:
 	var th := ToHit.new()
 	if target == null or target.destroyed:
 		th.impossible = "No target"
@@ -24,6 +25,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if not attacker.can_fire(w):
 		th.impossible = "%s can't fire (%s)" % [w.def.name, "jammed" if w.jammed else
 				("no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed")]
+		return th
+	if attacker.carry_arm >= 0 and w.loc == attacker.carry_arm:
+		th.impossible = "%s is in the arm carrying the objective" % w.def.name
 		return th
 	var prone_why := ProneFire.blocked(attacker, w)
 	if prone_why != "":
@@ -74,7 +78,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			return th
 		br += 1
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
-	add_movement(th, attacker, target)
+	add_movement(th, attacker, target, point_blank)
 	th.indirect = spotter != null or pod
 	if pod:
 		Narc.add_indirect(th)
@@ -112,13 +116,19 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 
 
 ## Attacker and target movement.
-static func add_movement(th: ToHit, attacker: Unit, target: Unit) -> void:
+static func add_movement(th: ToHit, attacker: Unit, target: Unit, ignore_target := false) -> void:
 	add_attacker_movement(th, attacker)
 	if target.asset != null:
 		return  # fixed TMM, weighed against terrain in add_conditions (AssetFire)
 	var jumped := target.move_mode == MoveMode.Kind.JUMP
 	var tm := target_movement_mod(target.hexes_moved, jumped)
-	if tm > 0:
+	if target.landed and not ignore_target:
+		th.add("just dropped", CombatDrop.LANDED_MOD, "It fell from the sky this turn: +3, as if it moved very fast.")
+		return
+	if tm > 0 and (ignore_target or target.tmm_zero):
+		th.add("target caught off guard", 0, "A point-blank ambush shot ignores how far the target moved." if ignore_target
+				else "It was just found hiding, so its movement doesn't count this turn.")
+	elif tm > 0:
 		th.add("target %s %d hexes" % [MoveMode.verb(target.move_mode), target.hexes_moved], tm,
 				"Fast targets are harder to hit: 3-4 hexes +1, 5-6 +2, 7-9 +3, 10+ +4; +1 more if it jumped.")
 
