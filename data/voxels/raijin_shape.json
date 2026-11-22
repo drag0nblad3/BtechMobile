@@ -515,6 +515,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -2,
+              32,
+              -7
+            ],
+            [
+              1,
+              37,
+              -1
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1761,5 +1776,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 50-ton aerial_jump silhouette, unique cockpit beak, shield and weapon masses from official raijin_rjn101a. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 50-ton aerial_jump silhouette, unique cockpit beak, shield and weapon masses from official raijin_rjn101a. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores."
 }

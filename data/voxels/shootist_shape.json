@@ -548,7 +548,23 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "erase": [
+            [
+              14,
+              31,
+              -5
+            ],
+            [
+              14,
+              31,
+              -4
+            ]
+          ]
+        }
+      ]
     },
     {
       "name": "la",
@@ -1567,5 +1583,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 70-ton one_arm_cannon silhouette, unique cockpit armored_helmet, shield and weapon masses from official shootist_st8a. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 70-ton one_arm_cannon silhouette, unique cockpit armored_helmet, shield and weapon masses from official shootist_st8a. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nFiner-grain sculpt QA: eliminated only measured 1-3 voxel protrusions disconnected after proper material ownership from neighboring moving parts, never accepted a floating segment."
 }

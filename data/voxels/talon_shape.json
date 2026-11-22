@@ -235,6 +235,34 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -3,
+              34,
+              -2
+            ],
+            [
+              -3,
+              34,
+              0
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              2,
+              34,
+              -2
+            ],
+            [
+              2,
+              34,
+              0
+            ]
+          ]
         }
       ]
     },
@@ -515,6 +543,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -2,
+              31,
+              -7
+            ],
+            [
+              1,
+              36,
+              -1
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1561,5 +1604,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 35-ton thin_sword_bird silhouette, unique cockpit beak, shield and weapon masses from official talon_tln5v. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 35-ton thin_sword_bird silhouette, unique cockpit beak, shield and weapon masses from official talon_tln5v. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores."
 }

@@ -1012,6 +1012,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -8,
+              12,
+              -2
+            ],
+            [
+              -8,
+              12,
+              1
+            ]
+          ]
         }
       ]
     },
@@ -1601,5 +1615,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 55-ton jumping_swept_wings silhouette, unique cockpit angular, shield and weapon masses from official lynx_lnx9q. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 55-ton jumping_swept_wings silhouette, unique cockpit angular, shield and weapon masses from official lynx_lnx9q. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores."
 }

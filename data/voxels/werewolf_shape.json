@@ -545,6 +545,36 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -2,
+              27,
+              -7
+            ],
+            [
+              1,
+              35,
+              -1
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -2,
+              31,
+              -10
+            ],
+            [
+              1,
+              33,
+              -7
+            ]
+          ],
+          "mat": "armor"
         }
       ]
     },
@@ -1748,7 +1778,7 @@
             [
               -2,
               31,
-              -10
+              -14
             ],
             [
               2,
@@ -1763,12 +1793,12 @@
             [
               0,
               33,
-              -10
+              -14
             ],
             [
               0,
               33,
-              -7
+              -11
             ]
           ]
         }
@@ -1840,9 +1870,9 @@
       [
         0.5,
         33.5,
-        -9.5
+        -13.5
       ]
     ]
   },
-  "notes": "Individually profiled 40-ton wolf_crouch silhouette, unique cockpit wolf, shield and weapon masses from official werewolf_werlf004. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 40-ton wolf_crouch silhouette, unique cockpit wolf, shield and weapon masses from official werewolf_werlf004. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores."
 }

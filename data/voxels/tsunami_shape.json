@@ -235,6 +235,20 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              4,
+              26,
+              -4
+            ],
+            [
+              4,
+              26,
+              -4
+            ]
+          ]
         }
       ]
     },
@@ -997,6 +1011,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -10,
+              12,
+              5
+            ],
+            [
+              0,
+              12,
+              5
+            ]
+          ]
         }
       ]
     },
@@ -1513,5 +1541,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 40-ton forward_runner silhouette, unique cockpit angular, shield and weapon masses from official tsunami_tsp1. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 40-ton forward_runner silhouette, unique cockpit angular, shield and weapon masses from official tsunami_tsp1. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores."
 }

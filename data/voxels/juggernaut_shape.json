@@ -250,6 +250,34 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -3,
+              38,
+              -5
+            ],
+            [
+              -3,
+              38,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              2,
+              38,
+              -5
+            ],
+            [
+              2,
+              38,
+              -5
+            ]
+          ]
         }
       ]
     },
@@ -587,13 +615,43 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              -15,
+              35,
+              -7
+            ],
+            [
+              -11,
+              35,
+              -7
+            ]
+          ]
         }
       ]
     },
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "erase": [
+            [
+              11,
+              35,
+              -7
+            ],
+            [
+              13,
+              35,
+              -7
+            ]
+          ]
+        }
+      ]
     },
     {
       "name": "la",
@@ -1996,5 +2054,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 90-ton giant_round_shoulders silhouette, unique cockpit sunken_head, shield and weapon masses from official juggernaut_jgr9t1. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required."
+  "notes": "Individually profiled 90-ton giant_round_shoulders silhouette, unique cockpit sunken_head, shield and weapon masses from official juggernaut_jgr9t1. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nFiner-grain sculpt QA: eliminated only measured 1-3 voxel protrusions disconnected after proper material ownership from neighboring moving parts, never accepted a floating segment."
 }
