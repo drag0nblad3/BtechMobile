@@ -1,6 +1,6 @@
 {
   "id": "shadow_cat_shape",
-  "name": "Shadow Cat Prime — shape study",
+  "name": "Shadow Cat Prime \u2014 shape study",
   "unit": "shadow_cat_prime",
   "subdivide": 1,
   "voxel_size": 0.059769,
@@ -120,19 +120,19 @@
                   ],
                   [
                     4.69038,
-                    3.9422
+                    3.409
                   ],
                   [
                     2.68431,
-                    6.6198
+                    5.90435
                   ],
                   [
                     -2.68431,
-                    6.6198
+                    5.90435
                   ],
                   [
                     -4.69038,
-                    3.9422
+                    3.409
                   ]
                 ]
               },
@@ -157,19 +157,19 @@
                   ],
                   [
                     5.51787,
-                    3.26008
+                    2.74512
                   ],
                   [
                     2.75894,
-                    7.95321
+                    7.1188
                   ],
                   [
                     -2.75894,
-                    7.95321
+                    7.1188
                   ],
                   [
                     -5.51787,
-                    3.26008
+                    2.74512
                   ]
                 ]
               },
@@ -3165,27 +3165,27 @@
                 "at": 21,
                 "polygon": [
                   [
-                    -12.50098,
+                    -12.39842,
                     -9.35
                   ],
                   [
-                    -9.3292,
+                    -9.3973,
                     -9.35
                   ],
                   [
-                    -8.04885,
+                    -8.18584,
                     -7.19
                   ],
                   [
-                    -8.04885,
+                    -8.18584,
                     1.44
                   ],
                   [
-                    -11.23034,
+                    -11.19615,
                     2.88
                   ],
                   [
-                    -13.14115,
+                    -13.00416,
                     0.72
                   ]
                 ]
@@ -3355,27 +3355,27 @@
                 "at": 13,
                 "polygon": [
                   [
-                    -7.87744,
+                    -7.73298,
                     -2.88
                   ],
                   [
-                    -4.34168,
+                    -4.43789,
                     -3.6
                   ],
                   [
-                    -2.92343,
+                    -3.11617,
                     -2.16
                   ],
                   [
-                    -3.63256,
+                    -3.77702,
                     2.16
                   ],
                   [
-                    -7.87744,
+                    -7.73298,
                     3.6
                   ],
                   [
-                    -8.58657,
+                    -8.39383,
                     2.16
                   ]
                 ]
@@ -4475,7 +4475,19 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_signature_revision": "forward-projecting-head-and-canopy"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_signature_revision": "forward-projecting-head-and-canopy",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 100,
+    "stages_with_changes": 15
+  }
 }

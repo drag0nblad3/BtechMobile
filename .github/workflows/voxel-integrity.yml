@@ -1,0 +1,61 @@
+name: Voxel catalog connectivity audit
+on:
+  pull_request:
+    paths:
+      - 'src/view/vox/**'
+      - 'src/view/units/voxel_asset.gd'
+      - 'data/voxels/**'
+      - 'tests/unit/test_vx_integrity.gd'
+      - 'tools/vx_catalog_integrity_audit.gd'
+      - '.github/workflows/voxel-integrity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vx-integrity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [shape, fine]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import scripts and resources
+        run: godot --headless --import
+      - name: Audit every ${{ matrix.mode }} model
+        run: |
+          set -o pipefail
+          if [ "${{ matrix.mode }}" = fine ]; then
+            timeout --signal=TERM --kill-after=10s 1800s godot --headless -s tools/vx_catalog_integrity_audit.gd -- /tmp/voxel-integrity-fine.json --high 2>&1 | tee /tmp/voxel-integrity.log
+            cp /tmp/voxel-integrity-fine.json voxel-integrity.json
+          else
+            timeout --signal=TERM --kill-after=10s 1800s godot --headless -s tools/vx_catalog_integrity_audit.gd -- /tmp/voxel-integrity-shape.json 2>&1 | tee /tmp/voxel-integrity.log
+            cp /tmp/voxel-integrity-shape.json voxel-integrity.json
+          fi
+          grep -q '^VOXEL_INTEGRITY|' /tmp/voxel-integrity.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|VOXEL_AUDIT_ERROR' /tmp/voxel-integrity.log
+      - uses: actions/upload-artifact@v4
+        if: matrix.mode == 'shape'
+        with:
+          name: voxel-sculpt-source-snapshot
+          path: |
+            data/voxels/*.json
+            data/voxels/assets/*.json
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: voxel-integrity-${{ matrix.mode }}
+          path: |
+            voxel-integrity.json
+            /tmp/voxel-integrity.log
+          if-no-files-found: warn

@@ -127,7 +127,11 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
   XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
   points per ton (17.92 ferro-fibrous, rounded up to the half ton), weapon tons, 1 t per ammo item.
+- `source.bv: "mul"` identifies the official Master Unit List's published BV,
+  and `source.mul_url` links its listing (used when a matching free sheet is
+  not independently verified). Never invent BV values.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
+  Voxel showcase art is separate, under `data/voxels/`.
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
 

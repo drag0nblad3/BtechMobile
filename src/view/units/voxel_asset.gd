@@ -53,6 +53,7 @@ static func model_from_dict(data: Dictionary) -> VxModel:
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))
 	if bool(recipe.get("exclusive_parts", false)):
 		m._claim_exclusive_cells()
+		m.quality_report = VxIntegrity.repair(m, recipe)
 	if m.cell_count() > MAX_VOXELS:
 		m.errors.append("asset exceeds 50000 voxels (%d)" % m.cell_count())
 	return m
