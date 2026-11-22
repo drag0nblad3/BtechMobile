@@ -17,6 +17,10 @@ func test_reference_resculpts_all_part_islands_and_parent_contacts() -> void:
 			check(model.errors.is_empty(), "%s%s invalid recipe: %s" % [id, suffix, model.errors])
 			var occupied := {}
 			var lookup := {}
+			var diagnostic := VxPartConnectivity.audit(model)
+			var audit_rows := {}
+			for entry: Dictionary in diagnostic["parts"]:
+				audit_rows[entry["name"]] = entry
 			for part: Dictionary in model.parts:
 				lookup[part["name"]] = part
 				var cells: Dictionary = part["cells"]
@@ -24,7 +28,7 @@ func test_reference_resculpts_all_part_islands_and_parent_contacts() -> void:
 				for cell: Vector3i in cells:
 					check(not occupied.has(cell), "%s%s overlap: %s with %s" % [id, suffix, part["name"], occupied.get(cell, "")])
 					occupied[cell] = part["name"]
-				check_eq(_count_connected(cells), cells.size(), "%s%s %s contains disconnected islands" % [id, suffix, part["name"]])
+				check_eq(_count_connected(cells), cells.size(), "%s%s %s contains disconnected islands; samples=%s" % [id, suffix, part["name"], str(audit_rows[part["name"]]["island_samples"])])
 			for part: Dictionary in model.parts:
 				var parent: String = part["parent"]
 				if parent == "":
