@@ -130,13 +130,17 @@ func _dark(m: StandardMaterial3D) -> StandardMaterial3D:
 
 
 ## Each step is a Vector3i(q, r, facing) from MoveOptions.path_to().
-func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
+func play_path(path: Array, start_coord: Vector2i, start_facing: int,
+		mode: int = MoveMode.Kind.WALK) -> void:
 	if path.is_empty():
 		animation_finished.emit.call_deferred()
 		return
 	var tw := create_tween()
 	var last_c := start_coord
 	var last_f := start_facing
+	var jumped := mode == MoveMode.Kind.JUMP
+	if jumped:
+		_surface_effect(start_coord, "jet")
 	for k: Vector3i in path:
 		var c := Vector2i(k.x, k.y)
 		if k.z != last_f:
@@ -144,12 +148,57 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 			tw.tween_property(self, "rotation:y", _yaw, TURN_TIME)
 			last_f = k.z
 		if c != last_c:
-			tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
-					.set_trans(Tween.TRANS_SINE)
+			if jumped:
+				var from_pos := _hex_pos(last_c)
+				var to_pos := _hex_pos(c)
+				tw.tween_method(func(v: float) -> void:
+						position = from_pos.lerp(to_pos, v) +
+								Vector3.UP * sin(v * PI) * 0.85, 0.0, 1.0, STEP_TIME).set_trans(Tween.TRANS_SINE)
+			else:
+				tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
+						.set_trans(Tween.TRANS_SINE)
+			var contact := c
+			tw.tween_callback(func() -> void: _surface_effect(contact,
+					"landing" if jumped else "step"))
 			last_c = c
 	tw.finished.connect(func():
 			show_condition()
 			animation_finished.emit())
+
+
+## Footstep cues occur at actual movement tween contacts, not on a timer.
+static func surface_kind(tile: MapTile, action: String) -> String:
+	if tile == null:
+		return ""
+	if action == "jet":
+		return "jumpjet"
+	if tile.is_water():
+		return "splash"
+	if tile.surface == "snow":
+		return "snow_dust"
+	if action == "landing":
+		return "landing"
+	if tile.terrain.id in ["pavement", "rough", "rubble"]:
+		return "hard_step"
+	return "soft_step"
+
+
+func _surface_effect(coord: Vector2i, action: String) -> void:
+	if unit.def.is_support():
+		return
+	var tile := map.get_tile(coord)
+	if tile == null or not is_inside_tree():
+		return
+	var kind := surface_kind(tile, action)
+	if kind == "" or get_tree().get_nodes_in_group("surface_fx").size() >= 32:
+		return
+	var at := _hex_pos(coord)
+	if tile.is_water():
+		at.y = HexLayout.level_y(tile.level)
+	var fx := VxBlast.spawn(get_parent(), at + Vector3.UP * 0.08, kind,
+		unit.id * 193 + coord.x * 37 + coord.y * 71 + action.length())
+	fx.add_to_group("surface_fx")
+	fx.scale = Vector3.ONE * clampf(0.7 + float(unit.def.tonnage) / 190.0, 0.78, 1.28)
 
 
 func _turn_delta(from_f: int, to_f: int) -> float:

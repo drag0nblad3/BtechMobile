@@ -332,7 +332,8 @@ func _on_event(e: GameEvent) -> void:
 	match e.type:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
-			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
+			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y),
+				from.z, int(e.data.get("mode", MoveMode.Kind.WALK)))
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
