@@ -73,7 +73,6 @@
      "ammo:c_lb5x_ac"
     ]
    },
-   "role": "Sniper: hangs back and hits from long range. ER Large Laser, Small Pulse Laser, Streak SRM 4, LB 5-X AC; walks 6, runs 9.",
    "source": {
     "mul_id": 3347,
     "megamek": "data/mekfiles/meks/3050U/Uller (Kit Fox) Prime.mtf",
@@ -81,7 +80,8 @@
     "role": "Sniper",
     "bv": "megamek",
     "megamek_bv": 1085
-   }
+   },
+   "role": "Sniper: hangs back and hits from long range. ER Large Laser, Small Pulse Laser, Streak SRM 4, LB 5-X AC; walks 6, runs 9."
   },
   {
    "model": "A",
@@ -96,7 +96,6 @@
      "ammo:c_gauss_rifle*2"
     ]
    },
-   "role": "Sniper: hangs back and hits from long range. 2 ER Medium Lasers, Gauss Rifle; walks 6, runs 9.",
    "source": {
     "mul_id": 3340,
     "megamek": "data/mekfiles/meks/3050U/Uller (Kit Fox) A.mtf",
@@ -104,7 +103,37 @@
     "role": "Sniper",
     "bv": "megamek",
     "megamek_bv": 1310
-   }
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 ER Medium Lasers, Gauss Rifle; walks 6, runs 9."
+  },
+  {
+   "model": "V",
+   "bv": 974,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_er_small_laser*2"
+    ],
+    "RA": [
+     "c_arrow_iv~4"
+    ],
+    "LT": [
+     "ammo:c_arrow_iv",
+     "ammo:c_arrow_iv:homing"
+    ],
+    "RT": [
+     "ammo:c_arrow_iv"
+    ]
+   },
+   "source": {
+    "mul_id": 7746,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 11/Uller (Kit Fox) V.mtf",
+    "published": "RG11",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 974
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 ER Small Lasers, Arrow IV; walks 6, runs 9."
   }
  ]
 }

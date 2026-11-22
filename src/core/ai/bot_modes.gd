@@ -5,7 +5,8 @@ extends RefCounted
 ## add up to less), falling back to whichever ammo is left. Ultra ACs: BotFire
 ## plans the volley twice (double fire on and off) and keeps the better one;
 ## rotary ACs fire four shots in the "on" plan. ATMs load the munition with
-## the best expected damage at this range.
+## the best expected damage at this range. Arrow IV munitions and Apollo
+## saturation: BotArtillery.
 
 const ROTARY_SHOTS := 4
 
@@ -24,6 +25,10 @@ static func apply(state: GameState, u: Unit, e: Unit, ultra: bool) -> Array[Stri
 			w.mode = _lbx(state, u, w, e)
 		elif w.narc_ammo:
 			w.mode = _narc(state, u, w, e)
+		elif ArrowIv.is_arrow(w) and w.ammo_kinds.size() > 1:
+			w.mode = BotArtillery.best_mode(state, u, w, e, w.ammo_kinds)
+		elif Apollo.working(w) and BotSkill.advanced_tricks():
+			w.mode = BotArtillery.best_mode(state, u, w, e, ApolloSaturation.modes(w))
 		elif w.ammo_kinds.size() > 1:
 			w.mode = _best(state, u, w, e, w.ammo_kinds)
 	return before
@@ -102,6 +107,10 @@ static func describe(u: Unit, shots: Array) -> String:
 			parts.append("loads cluster rounds in its %s for the easier hit" % w.def.name)
 		elif w.mode == Atm.ER:
 			parts.append("loads extended-range missiles in its %s to reach that far" % w.def.name)
+		elif w.mode == ApolloSaturation.MODE:
+			parts.append("fires its %s in saturation mode to blast the whole hex" % w.def.name)
+		elif w.mode == ArrowHoming.KIND:
+			parts.append("fires homing missiles from its %s down the TAG beam" % w.def.name)
 		elif w.mode == Atm.HE:
 			parts.append("loads high-explosive missiles in its %s for the hardest hits up close" % w.def.name)
 	return "; ".join(parts)

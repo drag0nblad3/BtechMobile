@@ -15,11 +15,13 @@ uniform float pixel = 0.07;  // ground "voxel" size in world units
 varying vec3 world_pos;
 varying vec3 world_normal;
 varying vec3 tint;
+varying float cliff_height;
 
 void vertex() {
 	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	tint = COLOR.rgb;
+	cliff_height = VERTEX.y;
 }
 
 float tri_noise(vec3 p, vec3 n, float s) {
@@ -77,11 +79,18 @@ vec3 top_pattern(vec2 p) {
 
 void fragment() {
 	float fine = tri_noise(world_pos, world_normal, tex_scale * 4.0);
-	vec3 side = side_color.rgb * (0.75 + 0.5 * fine);
-	// Horizontal strata on cliff sides make levels readable.
-	side *= 0.85 + 0.15 * step(0.5, fract(world_pos.y / 0.45));
 	float is_top = smoothstep(0.6, 0.9, world_normal.y);
+	// Rock strata catch the sunlight. The thin lighter shelf at the lip
+	// separates hill levels at an oblique camera angle without geometry.
+	float strata = fract(world_pos.y * 3.6 + fine * 0.16);
+	float bedrock = smoothstep(0.15, 0.24, strata) * (1.0 - smoothstep(0.75, 0.85, strata));
+	vec3 side = side_color.rgb * mix(0.63, 1.02, bedrock) * (0.86 + 0.26 * fine);
+	float rim = smoothstep(-0.24, -0.035, cliff_height);
+	side = mix(side, top_color.rgb * 0.78, rim * 0.55);
 	vec3 top = is_top > 0.0 ? top_pattern(world_pos.xz) : vec3(0.0);
+	// Subtle broad soil patches break up featureless flat terrain.
+	float soil_patch = smoothstep(0.45, 0.8, n2(world_pos.xz + 31.0, 0.11));
+	top *= mix(0.91, 1.055, soil_patch);
 	ALBEDO = mix(side, top, is_top) * tint;
-	ROUGHNESS = 0.95;
+	ROUGHNESS = mix(0.99, 0.91, is_top);
 }

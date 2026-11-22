@@ -30,3 +30,24 @@ Tyler's rule: designs and Battle Values are official, never guessed.
 - Loadouts that only exist to test one rule (a TSM or supercharger refit)
   are test fixtures in `tests/fixtures/units/`, ids `test_*`, never in the
   game.
+
+## Faction and era availability (official MUL)
+
+The offline historical-selection snapshot is generated from the official
+[Master Unit List](https://masterunitlist.battletech.com/) public static search
+index and its complete faction/era availability matrix, **not** from MegaMek
+file names or inferred technology periods.
+
+Run `python3 tools/import_mul_availability.py` or the repository's
+**Import canonical MUL availability** GitHub workflow to refresh
+`data/forces/availability.json`. The importer checks exact name/model,
+published BV, tonnage and official unit URL, respects the site's crawl delay,
+and records public MUL IDs, first introduction year, faction-era cells and
+snapshot date. `docs/mul-import-coverage.json` lists every unit variant still
+unmatched so these cannot accidentally be treated as canon.
+
+The November 22, 2026 snapshot verifies **674 of 697** game variants and
+**41,311** positive faction-era cells for **71** factions and **12** eras.
+An absent faction-era cell in a *published* matrix means unavailable;
+an unmatched variant means unverified and is blocked only in Strict mode.
+See `docs/era-faction-availability.md` for implementation and play rules.

@@ -37,9 +37,16 @@ const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 68)
 const MARGIN := 18
 
+const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
+
+var _phase_cells: Array[PanelContainer] = []
+var _event_panel: PanelContainer
+var _event_label: Label
+var _event_tween: Tween
 var status: Label
 var info: Label
 var tip: Label
+var _tip_panel: PanelContainer
 var move_bar: HBoxContainer
 var attack_bar: HBoxContainer
 var mode_button: Button
@@ -90,6 +97,27 @@ func _ready() -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(status, "heading")
+	_event_panel = PanelContainer.new()
+	_event_panel.visible = false
+	_event_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	heading.add_child(_event_panel)
+	_event_label = _label(_event_panel, 19)
+	_event_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_event_panel.custom_minimum_size.x = 170
+	var phase_strip := _row(col)
+	phase_strip.add_theme_constant_override("separation", 5)
+	phase_strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	for tag in PHASE_TAGS:
+		var cell := PanelContainer.new()
+		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		phase_strip.add_child(cell)
+		_phase_cells.append(cell)
+		var stage := _label(cell, 15)
+		stage.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		stage.text = tag
+		stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	set_phase(Phase.Kind.INITIATIVE)
 	# Give the full battle status its own line: seven 140px buttons and a
 	# turn/mission label cannot fit side by side at 1280x720 on a phone.
 	var shortcuts := _row(col)
@@ -108,18 +136,20 @@ func _ready() -> void:
 	UiSkin.button(shortcuts.get_child(0) as Button, "primary")
 	info = _label(col, 22)
 	UiSkin.label(info, "section")
+	info.visible = false  # No empty advice row over the battlefield.
 	var middle := _row(col)
 	middle.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	var left := VBoxContainer.new()
 	left.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	middle.add_child(left)
-	var tip_panel := PanelContainer.new()
-	tip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	tip_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	tip_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#0a1824cc"), UiSkin.BORDER, 8, 7))
-	left.add_child(tip_panel)
-	tip = _label(tip_panel, 20)
+	_tip_panel = PanelContainer.new()
+	_tip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_tip_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	_tip_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#0a1824cc"), UiSkin.BORDER, 8, 7))
+	left.add_child(_tip_panel)
+	_tip_panel.visible = false
+	tip = _label(_tip_panel, 20)
 	UiSkin.label(tip, "muted")
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tip.custom_minimum_size.x = 420
@@ -250,16 +280,76 @@ func show_side(content: Control) -> void:
 	side_panel.visible = content != null
 
 
+## A narrow tactical timeline, independent of gameplay state.
+func set_phase(phase: int) -> void:
+	for i in _phase_cells.size():
+		var active := i == phase
+		var previous := i < phase
+		var fill := Color("#244e56") if active else Color("#1a323b") if previous else UiSkin.SURFACE
+		var border := UiSkin.AMBER if active else UiSkin.BORDER
+		_phase_cells[i].add_theme_stylebox_override("panel", UiSkin.panel_style(fill, border, 3, 4))
+		var label := _phase_cells[i].get_child(0) as Label
+		UiSkin.label(label, "heading" if active else "muted")
+
+
+## Short, non-blocking combat confirmation; subsequent shots replace it.
+func show_combat_event(e: GameEvent) -> void:
+	if _event_panel == null:
+		return
+	var message := ""
+	var hue := UiSkin.CYAN
+	match e.type:
+		GameEvent.WEAPON_FIRED:
+			if e.data.get("no_ammo", false):
+				message = "NO AMMO"
+				hue = UiSkin.AMBER
+			elif e.data.get("streak_held", false):
+				message = "NO LOCK"
+				hue = UiSkin.AMBER
+			elif bool(e.data.get("hit", false)):
+				message = "TARGET HIT"
+				hue = UiSkin.GREEN
+			else:
+				message = "SHOT MISSED"
+				hue = UiSkin.MUTED
+		GameEvent.UNIT_DESTROYED:
+			message = "UNIT DESTROYED"
+			hue = UiSkin.RED
+		GameEvent.AMMO_EXPLOSION:
+			message = "AMMO DETONATION"
+			hue = UiSkin.RED
+		GameEvent.BUILDING:
+			if e.data.get("kind") in ["collapsed", "flattened", "bridge_collapsed"]:
+				message = "STRUCTURE DOWN"
+				hue = UiSkin.AMBER
+	if message == "":
+		return
+	if _event_tween != null and _event_tween.is_running():
+		_event_tween.kill()
+	_event_panel.visible = true
+	_event_panel.modulate.a = 1.0
+	_event_panel.add_theme_stylebox_override("panel",
+		UiSkin.panel_style(UiSkin.SURFACE_HIGH, hue, 5, 4))
+	_event_label.text = message
+	_event_label.add_theme_color_override("font_color", hue)
+	_event_tween = create_tween()
+	_event_tween.tween_interval(0.5)
+	_event_tween.tween_property(_event_panel, "modulate:a", 0.0, 0.75)
+	_event_tween.tween_callback(func(): _event_panel.visible = false)
+
+
 func set_status(text: String) -> void:
 	status.text = text
 
 
 func set_info(text: String) -> void:
 	info.text = text
+	info.visible = not text.strip_edges().is_empty()
 
 
 func set_tip(text: String) -> void:
 	tip.text = text
+	_tip_panel.visible = not text.strip_edges().is_empty()
 
 
 func set_mode_label(text: String) -> void:

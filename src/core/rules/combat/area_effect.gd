@@ -24,13 +24,13 @@ static func reaches(state: GameState, u: Unit, base: int) -> bool:
 	return top >= base and top <= base + 1
 
 
-## `damage` to everything in `c`, hit from `from` (a hex).
+## `damage` to everything in `c` (but unit `skip_id`), hit from `from` (a hex).
 static func blast(state: GameState, dice: Dice, emit: Callable, c: Vector2i, from: Vector2i, damage: int,
-		base: int, source_id: int, source: String) -> void:
+		base: int, source_id: int, source: String, skip_id := -1) -> void:
 	if damage <= 0 or state.map.get_tile(c) == null:
 		return
 	for u in state.units.duplicate():
-		if u.coord != c or not reaches(state, u, base):
+		if u.coord != c or u.id == skip_id or not reaches(state, u, base):
 			continue
 		var arc_id := FiringArc.arc(u.coord, u.facing, from) if from != c else FiringArc.FRONT
 		var left := damage

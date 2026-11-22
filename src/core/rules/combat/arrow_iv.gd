@@ -10,8 +10,9 @@ extends RefCounted
 ## it, in 5-point groups (AreaEffect). A miss scatters half the margin of
 ## failure (rounded up; the full margin when distant) in a 1D6 direction,
 ## never out of the launcher's arc. AMS can't stop it; no aimed shots.
-## TODO(rules): homing, smoke, inferno and other munitions; the bot only
-## fires it at units; scatter is checked against the arc the launcher faces
+## Munitions: homing (ArrowHoming) and smoke (ArrowSmoke).
+## TODO(rules): inferno IV (needs inferno ammo explosions), thunder IV (needs
+## minefields); the bot only fires it at units; scatter is checked against the arc the launcher faces
 ## when the missile lands.
 
 const MIN_HEXES := 7
@@ -26,6 +27,8 @@ static func is_arrow(w: MountedWeapon) -> bool:
 
 
 static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit) -> ToHit:
+	if WeaponModes.ammo_kind(w) == ArrowHoming.KIND:
+		return ArrowHoming.to_hit(attacker, w, target.coord)
 	var th := ToHit.new()
 	var c := target.coord
 	var dist := Hex.distance(attacker.coord, c)
@@ -61,6 +64,7 @@ static func fire(state: GameState, dice: Dice, emit: Callable, attacker: Unit, w
 	var data := {"attacker_id": attacker.id, "target_id": -1, "target_hex": target.coord, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": 0, "need": th.target(), "hit": false, "mods": th.mods,
 			"missiles": 0, "target_noun": "hex"}
+	var kind := WeaponModes.ammo_kind(w)
 	if WeaponFire.take_shots(attacker, w) == 0:
 		data["no_ammo"] = true
 		emit.call(GameEvent.WEAPON_FIRED, data)
@@ -70,20 +74,23 @@ static func fire(state: GameState, dice: Dice, emit: Callable, attacker: Unit, w
 	var distant := Hex.distance(attacker.coord, target.coord) >= DISTANT
 	if distant:
 		state.artillery.append({"attacker_id": attacker.id, "weapon_index": attacker.weapons.find(w),
-				"hex": target.coord, "turn": state.turn + 1, "need": th.target(), "mods": th.mods})
+				"hex": target.coord, "turn": state.turn + 1, "need": th.target(), "mods": th.mods, "kind": kind})
 		data["arrives_next_turn"] = true
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		return
-	land(state, dice, emit, attacker, w, target.coord, th.target(), th.mods, false)
+	land(state, dice, emit, attacker, w, target.coord, th.target(), th.mods, false, kind)
 
 
 ## Rolls and lands a missile aimed at `c`.
 static func land(state: GameState, dice: Dice, emit: Callable, attacker: Unit, w: MountedWeapon, c: Vector2i,
-		need: int, mods: Array, distant: bool) -> void:
+		need: int, mods: Array, distant: bool, kind := "") -> void:
+	if kind == ArrowHoming.KIND:
+		ArrowHoming.land(state, dice, emit, attacker, w, c, distant)
+		return
 	var roll := dice.roll_2d6()
 	var data := {"attacker_id": attacker.id, "target_id": -1, "target_hex": c, "weapon": w.def.name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": roll >= need, "mods": mods,
-			"missiles": 0, "target_noun": "hex", "artillery": true, "distant": distant}
+			"missiles": 0, "target_noun": "hex", "artillery": true, "distant": distant, "kind": kind}
 	var at := c
 	if not data["hit"]:
 		var mof := need - roll
@@ -93,6 +100,9 @@ static func land(state: GameState, dice: Dice, emit: Callable, attacker: Unit, w
 		data["scatter"] = {"dir": dir, "hexes": dist, "to": at}
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	if at == Hex.INVALID:
+		return
+	if kind == ArrowSmoke.KIND:
+		ArrowSmoke.drop(state, at)
 		return
 	AreaEffect.strike(state, dice, emit, at, attacker.coord, CENTER, RING, attacker.id, w.def.name)
 
@@ -107,7 +117,8 @@ static func resolve_due(state: GameState, dice: Dice, emit: Callable) -> void:
 		var u := state.unit_by_id(int(a["attacker_id"]))
 		if u == null:
 			continue
-		land(state, dice, emit, u, u.weapons[int(a["weapon_index"])], a["hex"], int(a["need"]), a["mods"], true)
+		land(state, dice, emit, u, u.weapons[int(a["weapon_index"])], a["hex"], int(a["need"]), a["mods"], true,
+				String(a.get("kind", "")))
 	state.artillery = keep
 
 

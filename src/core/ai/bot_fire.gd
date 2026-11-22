@@ -57,7 +57,8 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 	var leg := []  # a leg attack replaces every other attack (BaLegAttack)
 	for o in FireOptions.for_target(state, u, e):
 		if o["to_hit"].possible():
-			var ed := Advisor.expected_damage(o["weapon"], o["to_hit"])
+			var ed := BotArtillery.value(state, u, o["weapon"], e, o["to_hit"]) if BotArtillery.applies(o["weapon"]) \
+					else Advisor.expected_damage(o["weapon"], o["to_hit"])
 			if BaLegAttack.is_leg_attack(o["weapon"]):
 				leg = [ed * LEG_CRIT_WEIGHT, o] if leg.is_empty() or ed * LEG_CRIT_WEIGHT > leg[0] else leg
 			elif BaSwarm.is_swarm(o["weapon"]):

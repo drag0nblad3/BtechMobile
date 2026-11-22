@@ -33,10 +33,31 @@ func _ready() -> void:
 	contents.add_child(text)
 
 
-func add_line(t: String, bold: bool = false) -> void:
+## Severity accents make the most important combat events scannable.
+static func tone_for(e: GameEvent) -> String:
+	match e.type:
+		GameEvent.UNIT_DESTROYED, GameEvent.AMMO_EXPLOSION, GameEvent.CRITICAL:
+			return "danger"
+		GameEvent.WEAPON_FIRED:
+			return "hit" if e.data.get("hit", false) else "miss"
+		GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED:
+			return "phase"
+	return ""
+
+
+func add_line(t: String, bold: bool = false, tone: String = "") -> void:
 	if t == "":
 		return
 	var line := t.replace("[", "[lb]")
+	match tone:
+		"danger":
+			line = "[color=#f28a7b]" + line + "[/color]"
+		"hit":
+			line = "[color=#9cddba]" + line + "[/color]"
+		"miss":
+			line = "[color=#a9bfcb]" + line + "[/color]"
+		"phase":
+			line = "[color=#72d2d6]" + line + "[/color]"
 	_lines.append("[b]%s[/b]" % line if bold else line)
 	if _lines.size() > MAX_LINES:
 		_lines = _lines.slice(-MAX_LINES)
