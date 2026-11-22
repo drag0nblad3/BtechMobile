@@ -77,6 +77,15 @@ session on a real phone are the next checks.
 - Headless CI and on-device validation remain to be done. See
   `docs/experience-polish.md`.
 
+### Tactical UI art direction (2026-11-22 stacked feature branch)
+
+- A shared `UiSkin` palette and button/panel styles introduce a restrained
+  field-command aesthetic with dark slate, cyan information and amber
+  primary actions across launcher, force builder, battle, and analysis.
+- No new heavy assets or external fonts; all interface visuals remain native
+  Godot controls suitable for Android.
+- Visual and touchscreen verification required (see `docs/ui-visual-polish.md`).
+
 ### Remaining Android work
 - **Device testing.** One recent phone, one low-end phone, one tablet. Watch frame rate
   with a whole map on screen, touch feel, and text size.
