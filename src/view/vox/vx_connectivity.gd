@@ -36,6 +36,17 @@ static func components(cells: Dictionary) -> Array[Dictionary]:
 	return groups
 
 
+static func _bounds(cells: Dictionary) -> Dictionary:
+	var lowest := Vector3i(999999, 999999, 999999)
+	var highest := Vector3i(-999999, -999999, -999999)
+	for c: Vector3i in cells:
+		for axis in 3:
+			lowest[axis] = mini(lowest[axis], c[axis])
+			highest[axis] = maxi(highest[axis], c[axis])
+	return {"size": cells.size(), "min": [lowest.x, lowest.y, lowest.z],
+		"max": [highest.x, highest.y, highest.z]}
+
+
 ## A solid attachment has a 2x2 face patch, backed by occupied voxels
 ## on BOTH sides. Four scattered face touches or diagonal intersections fail.
 static func solid_contact(child: Dictionary, parent: Dictionary) -> bool:
@@ -69,8 +80,12 @@ static func audit(model: VxModel) -> Dictionary:
 		var cells: Dictionary = p["cells"]
 		var groups := components(cells)
 		if groups.size() > 1:
+			var clusters: Array[Dictionary] = []
+			for group: Dictionary in groups:
+				clusters.append(_bounds(group))
 			faults.append({"part": p["name"], "type": "island",
-				"count": groups.size(), "largest": groups[0].size()})
+				"count": groups.size(), "largest": groups[0].size(),
+				"clusters": clusters})
 		var parent_name: String = p.get("parent", "")
 		if parent_name.is_empty():
 			continue
