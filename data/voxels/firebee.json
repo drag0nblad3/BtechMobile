@@ -2747,11 +2747,11 @@
                 "polygon": [
                   [
                     -8.8954,
-                    -13.0
+                    -13
                   ],
                   [
                     -6.58689,
-                    -13.0
+                    -13
                   ],
                   [
                     -5.43263,
@@ -3579,6 +3579,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -7,
+              23,
+              -1
+            ],
+            [
+              -6,
+              25,
+              1
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "lt",
@@ -4322,5 +4337,6 @@
     }
   ],
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_fix_round": "connected-assembly-20261122"
 }

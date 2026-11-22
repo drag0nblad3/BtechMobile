@@ -6226,6 +6226,21 @@
             ]
           },
           "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -2,
+              24,
+              -14
+            ],
+            [
+              1,
+              26,
+              -12
+            ]
+          ],
+          "mat": "inside"
         }
       ]
     },
@@ -7235,5 +7250,6 @@
   "art_revision": "sculpt-specific-slab-relief-v2-20261121",
   "art_quality_revision": "2026-11-21-50-passes-reference-specific",
   "art_quality_passes": 50,
-  "art_quality_signature": "Preserve projecting disc canopy and small twin laser pods"
+  "art_quality_signature": "Preserve projecting disc canopy and small twin laser pods",
+  "art_fix_round": "connected-assembly-20261122"
 }

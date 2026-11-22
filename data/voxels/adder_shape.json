@@ -1,6 +1,6 @@
 {
   "id": "adder_shape",
-  "name": "Adder Prime \u2014 low-poly shape",
+  "name": "Adder Prime — low-poly shape",
   "unit": "adder_prime",
   "voxel_size": 0.052117,
   "subdivide": 1,
@@ -1755,11 +1755,11 @@
                   ],
                   [
                     1.35916,
-                    0.0
+                    0
                   ],
                   [
                     -1.16189,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -3638,6 +3638,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -7,
+              25,
+              0
+            ],
+            [
+              -7,
+              25,
+              0
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",
@@ -4623,5 +4638,6 @@
   ],
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50
+  "art_quality_passes": 50,
+  "art_fix_round": "connected-assembly-20261122"
 }

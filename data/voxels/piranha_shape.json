@@ -1,6 +1,6 @@
 {
   "id": "piranha_shape",
-  "name": "Piranha \u2014 low-poly shape",
+  "name": "Piranha — low-poly shape",
   "unit": "piranha",
   "voxel_size": 0.052074,
   "subdivide": 1,
@@ -1333,11 +1333,11 @@
                   ],
                   [
                     1.35916,
-                    0.0
+                    0
                   ],
                   [
                     -1.16189,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -1346,7 +1346,7 @@
                 "polygon": [
                   [
                     -1.88832,
-                    -9.0
+                    -9
                   ],
                   [
                     -1.25559,
@@ -1358,7 +1358,7 @@
                   ],
                   [
                     1.88832,
-                    -9.0
+                    -9
                   ],
                   [
                     1.88832,
@@ -3755,6 +3755,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -7,
+              23,
+              -1
+            ],
+            [
+              -6,
+              24,
+              1
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "lt",
@@ -4739,5 +4754,6 @@
     }
   ],
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_fix_round": "connected-assembly-20261122"
 }

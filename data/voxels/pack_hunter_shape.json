@@ -1,6 +1,6 @@
 {
   "id": "pack_hunter_shape",
-  "name": "Pack Hunter \u2014 low-poly shape",
+  "name": "Pack Hunter — low-poly shape",
   "unit": "pack_hunter",
   "voxel_size": 0.055214,
   "subdivide": 1,
@@ -1910,11 +1910,11 @@
                   ],
                   [
                     1.27979,
-                    0.0
+                    0
                   ],
                   [
                     -1.09297,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -3107,7 +3107,7 @@
                   ],
                   [
                     -5.85575,
-                    -7.0
+                    -7
                   ],
                   [
                     -5.85575,
@@ -3644,6 +3644,21 @@
               -7,
               24,
               0
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -7,
+              24,
+              -1
+            ],
+            [
+              -6,
+              25,
+              1
             ]
           ],
           "mat": "frame"
@@ -4571,5 +4586,6 @@
     }
   ],
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_fix_round": "connected-assembly-20261122"
 }

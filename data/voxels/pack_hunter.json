@@ -1927,11 +1927,11 @@
                   ],
                   [
                     1.27979,
-                    0.0
+                    0
                   ],
                   [
                     -1.09297,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -3157,7 +3157,7 @@
                   ],
                   [
                     -5.85575,
-                    -7.0
+                    -7
                   ],
                   [
                     -5.85575,
@@ -3694,6 +3694,21 @@
               -7,
               24,
               0
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -7,
+              24,
+              -1
+            ],
+            [
+              -6,
+              25,
+              1
             ]
           ],
           "mat": "frame"
@@ -4644,5 +4659,6 @@
     }
   ],
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_fix_round": "connected-assembly-20261122"
 }
