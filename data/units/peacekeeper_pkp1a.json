@@ -1,0 +1,87 @@
+{
+ "id": "peacekeeper_pkp1a",
+ "name": "Peacekeeper",
+ "model": "PKP-1A",
+ "tonnage": 95,
+ "walk_mp": 4,
+ "jump_mp": 3,
+ "heat_sinks": 15,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 30,
+  "RT": 30,
+  "CT": 45,
+  "HD": 9,
+  "LL": 40,
+  "RL": 40
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 14
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_ppc",
+   "endo_steel*4",
+   "tsm*2"
+  ],
+  "RA": [
+   "heavy_ppc",
+   "endo_steel*3",
+   "tsm*2"
+  ],
+  "LT": [
+   "er_large_laser",
+   "endo_steel*6"
+  ],
+  "RT": [
+   "plasma_rifle",
+   "srm2",
+   "ammo:srm2",
+   "ammo:plasma_rifle*2",
+   "case",
+   "endo_steel"
+  ],
+  "CT": [
+   "jump_jet"
+  ],
+  "HD": [
+   "c3_slave"
+  ],
+  "LL": [
+   "jump_jet",
+   "tsm"
+  ],
+  "RL": [
+   "jump_jet",
+   "tsm"
+  ]
+ },
+ "source": {
+  "mul_id": 2452,
+  "megamek": "data/mekfiles/meks/3085u/Cutting Edge/Peacekeeper PKP-1A.mtf",
+  "published": "RS:DA,RSFP:SLDF3",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Peacekeeper PKP-1A (ForcePack-Record-Sheets-Third-Star-League)",
+  "megamek_bv": 2824
+ },
+ "bv": 2824,
+ "sprite": "peacekeeper",
+ "role": "Sniper: hangs back and hits from long range. ER PPC, Heavy PPC, ER Large Laser, Plasma Rifle, SRM 2; walks 4, runs 6, jumps 3."
+}

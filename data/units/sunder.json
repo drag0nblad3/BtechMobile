@@ -303,6 +303,54 @@
    "role": "Brawler: built to slug it out at medium range. 2 Snub-Nose PPCs, 2 Streak SRM 6s, LB 10-X AC, ER Medium Laser; walks 4, runs 6."
   },
   {
+   "model": "SD1-OF",
+   "bv": 1854,
+   "heat_sinks": 15,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lrm5*2"
+    ],
+    "RA": [
+     "thunderbolt5*3"
+    ],
+    "LT": [
+     "c_lrm5*3",
+     "ammo:c_lrm5*3",
+     "case"
+    ],
+    "RT": [
+     "thunderbolt5*3",
+     "ammo:thunderbolt5*5",
+     "case"
+    ],
+    "CT": [
+     "c3bs_slave"
+    ],
+    "HD": [
+     "c_er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 6846,
+    "megamek": "data/mekfiles/meks/3145/NTNU RS/Sunder SD1-OF.mtf",
+    "published": "RS:3145-NTNU,RS:3145",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 1854
+   },
+   "role": "Missile boat: rains missiles from a distance. 6 Thunderbolt 5s, 5 LRM 5s, ER Medium Laser; walks 4, runs 6."
+  },
+  {
    "model": "SD1-OR",
    "bv": 2462,
    "heat_sinks": 15,
