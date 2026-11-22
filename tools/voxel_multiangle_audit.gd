@@ -30,7 +30,8 @@ func _init() -> void:
 				weak_joints += 1
 		diagnostics[id] = {
 			"cells": m.cell_count(), "island_parts": islands,
-			"weak_joints": weak_joints, "faults": inspection["faults"]}
+			"weak_joints": weak_joints, "faults": inspection["faults"],
+			"proportions": _proportions(m)}
 
 	var result := {"version": 1,
 		"weights": VxSilhouette.WEIGHTS.duplicate(true),
@@ -68,3 +69,62 @@ func _init() -> void:
 		output, fingerprints.size(), result["total_island_parts"],
 		result["total_weak_joints"]])
 	quit(0)
+
+## Diagnostic only, not a universal geometry correction.
+## Measure actual occupied parts, not author-specific sample positions.
+static func _proportions(m: VxModel) -> Dictionary:
+	var low := Vector3i(100000, 100000, 100000)
+	var high := Vector3i(-100000, -100000, -100000)
+	var body_lo := Vector3i(100000, 100000, 100000)
+	var body_hi := Vector3i(-100000, -100000, -100000)
+	var torso_z: Array[int] = []
+	var side_pixels := {}
+	var torso_cells := 0
+	var leg_pivot := 0.0
+	for part: Dictionary in m.parts:
+		var part_name: String = part["name"]
+		if part_name == "ll":
+			leg_pivot = part["pivot"].y
+		var is_torso: bool = part_name in ["ct", "lt", "rt"]
+		for c: Vector3i in part["cells"]:
+			for axis in 3:
+				low[axis] = mini(low[axis], c[axis])
+				high[axis] = maxi(high[axis], c[axis])
+			if is_torso:
+				torso_cells += 1
+				torso_z.append(c.z)
+				side_pixels[Vector2i(c.z, c.y)] = true
+				for axis in 3:
+					body_lo[axis] = mini(body_lo[axis], c[axis])
+					body_hi[axis] = maxi(body_hi[axis], c[axis])
+	if torso_z.is_empty() or high.y <= low.y:
+		return {}
+	torso_z.sort()
+	var q05: int = torso_z[floori(float(torso_z.size() - 1) * 0.05)]
+	var q95: int = torso_z[ceili(float(torso_z.size() - 1) * 0.95)]
+	var h: float = float(high.y - low.y + 1)
+	var body_h: float = float(body_hi.y - body_lo.y + 1)
+	var body_d: float = float(body_hi.z - body_lo.z + 1)
+	var body_w: float = float(body_hi.x - body_lo.x + 1)
+	var robust_depth: float = float(q95 - q05 + 1)
+	var side_area: float = float(side_pixels.size())
+	var side_envelope: float = body_d * body_h
+	var leg_fraction: float = (leg_pivot - float(low.y)) / h
+	var depth_fraction: float = robust_depth / h
+	var side_fill: float = side_area / maxf(1.0, side_envelope)
+	var squat_risk: float = maxf(0.0, depth_fraction - 0.30) * 2.5 \
+			+ maxf(0.0, 0.52 - leg_fraction) * 2.0 \
+			+ maxf(0.0, side_fill - 0.60) * 0.8
+	return {
+		"bounds": {"min": [low.x, low.y, low.z],
+			"max": [high.x, high.y, high.z]},
+		"torso_bounds": {"min": [body_lo.x, body_lo.y, body_lo.z],
+			"max": [body_hi.x, body_hi.y, body_hi.z]},
+		"height": h, "torso_depth": body_d, "torso_width": body_w,
+		"torso_height": body_h, "torso_robust_depth": robust_depth,
+		"torso_depth_height": snappedf(depth_fraction, 0.001),
+		"hip_height_fraction": snappedf(leg_fraction, 0.001),
+		"torso_side_fill": snappedf(side_fill, 0.001),
+		"torso_cells": torso_cells,
+		"proportion_priority_score": snappedf(squat_risk, 0.001)
+	}
