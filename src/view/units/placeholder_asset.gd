@@ -6,6 +6,9 @@ extends RefCounted
 
 
 static func build(def: UnitDef, side: int) -> Node3D:
+	var voxel := VoxelAsset.build(def, side)
+	if voxel != null:
+		return voxel
 	var root := Node3D.new()
 	root.name = "PlaceholderAsset"
 	var c := def.asset
