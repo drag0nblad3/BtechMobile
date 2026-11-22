@@ -5237,6 +5237,20 @@
               -2
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              9,
+              21,
+              7
+            ],
+            [
+              9,
+              21,
+              7
+            ]
+          ]
         }
       ]
     },
@@ -6865,5 +6879,6 @@
   "art_view_passes": 50,
   "reference_resculpt_revision": "catalyst-geometry-3-macro-cycles-20261122",
   "reference_resculpt_passes": 2,
-  "reference_resculpt_cycles": 3
+  "reference_resculpt_cycles": 3,
+  "reference_resculpt_engine_repair": "godot-island-bridge-and-stray-prune-20261122"
 }

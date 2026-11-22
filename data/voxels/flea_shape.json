@@ -2804,6 +2804,21 @@
             ]
           ],
           "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -12,
+              25,
+              -5
+            ],
+            [
+              -11,
+              26,
+              -2
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -4009,5 +4024,6 @@
   "art_view_revision": "50-side-rear-top-passes-20261122",
   "art_view_passes": 50,
   "reference_resculpt_revision": "catalyst-geometry-3-macro-cycles-20261122",
-  "reference_resculpt_cycles": 3
+  "reference_resculpt_cycles": 3,
+  "reference_resculpt_engine_repair": "godot-island-bridge-and-stray-prune-20261122"
 }
