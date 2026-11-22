@@ -1,0 +1,66 @@
+{
+  "id": "orion_on1va",
+  "name": "Orion",
+  "model": "ON1-VA",
+  "tonnage": 75,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 16,
+  "armor": {
+    "LA": 24,
+    "RA": 24,
+    "LT": 22,
+    "RT": 22,
+    "CT": 36,
+    "HD": 9,
+    "LL": 32,
+    "RL": 32
+  },
+  "rear_armor": {
+    "LT": 10,
+    "RT": 10,
+    "CT": 10
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "srm4",
+      "medium_laser"
+    ],
+    "RA": [
+      "srm4",
+      "medium_laser"
+    ],
+    "LT": [
+      "ammo:srm4*2"
+    ],
+    "RT": [
+      "ac10",
+      "ammo:ac10*2"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Juggernaut: heavy assault. 2x SRM 4, 2x Medium Laser, AC/10; walks 4, runs 6.",
+  "sprite": "orion",
+  "source": {
+    "mul_id": 2336,
+    "megamek": "data/mekfiles/meks/3039u/Orion ON1-VA.mtf",
+    "published": "RS:SW",
+    "role": "Juggernaut",
+    "bv": "megamek",
+    "megamek_bv": 1328
+  },
+  "bv": 1328
+}

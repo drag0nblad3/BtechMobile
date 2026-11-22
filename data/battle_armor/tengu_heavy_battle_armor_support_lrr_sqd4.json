@@ -1,0 +1,46 @@
+{
+ "id": "tengu_heavy_battle_armor_support_lrr_sqd4",
+ "name": "Tengu Heavy Battle Armor",
+ "model": "(Support)[LRR](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 13,
+  "ground_mp": 2,
+  "jump_mp": 2,
+  "claw": false,
+  "mechanized": true,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "light_recoilless_rifle",
+    "name": "Light Recoilless Rifle",
+    "type": "ballistic",
+    "damage": 2,
+    "short": 2,
+    "medium": 4,
+    "long": 6
+   },
+   {
+    "id": "srm3",
+    "name": "SRM 3 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 5201,
+  "megamek": "data/mekfiles/battlearmor/3075/Tengu Heavy BA (Sup) (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 270
+}

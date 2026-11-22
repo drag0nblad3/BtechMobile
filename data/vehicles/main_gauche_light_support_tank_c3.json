@@ -1,0 +1,36 @@
+{
+ "id": "main_gauche_light_support_tank_c3",
+ "name": "Main Gauche Light Support Tank (C3)",
+ "tonnage": 30,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 29,
+  "RS": 19,
+  "LS": 19,
+  "RR": 13
+ },
+ "equipment": {
+  "FR": [
+   "light_gauss_rifle",
+   "er_small_laser"
+  ],
+  "BD": [
+   "ammo:light_gauss_rifle",
+   "c3_slave"
+  ]
+ },
+ "source": {
+  "mul_id": 4568,
+  "megamek": "data/mekfiles/vehicles/3067/3067 IS Land/Main Gauche Light Support Tank (C3).blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 472
+}

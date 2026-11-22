@@ -1,0 +1,41 @@
+{
+ "id": "musketeer_hover_tank",
+ "name": "Musketeer Hover Tank",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 7,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 36,
+  "RS": 27,
+  "LS": 27,
+  "RR": 18,
+  "TU": 26
+ },
+ "equipment": {
+  "FR": [
+   "tag"
+  ],
+  "TU": [
+   "rotary_ac5",
+   "streak_srm2*2"
+  ],
+  "BD": [
+   "ammo:rotary_ac5*3",
+   "ammo:streak_srm2",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 4688,
+  "megamek": "data/mekfiles/vehicles/3067/3067 IS Land/Musketeer Hover Tank.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 1120
+}

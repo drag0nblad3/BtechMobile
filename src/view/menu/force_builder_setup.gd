@@ -43,9 +43,13 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	var box := UiKit.panel(scroll)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(UiKit.label(box, "BATTLE SETUP", 21), "section")
-	UiSkin.label(UiKit.label(box, "HISTORICAL AVAILABILITY", 18), "section")
+	# Map, budget, mission and players come first; history after them.
+	var history := VBoxContainer.new()
+	history.add_theme_constant_override("separation", 8)
+	box.add_child(history)
+	UiSkin.label(UiKit.label(history, "HISTORICAL AVAILABILITY", 18), "section")
 	var era_row := HBoxContainer.new()
-	box.add_child(era_row)
+	history.add_child(era_row)
 	_era = OptionButton.new()
 	_era.custom_minimum_size.y = 50
 	_era.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -71,15 +75,17 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	_policy.add_theme_font_size_override("font_size", 18)
 	for mode_name: String in EraAvailability.MODE_NAMES:
 		_policy.add_item("RESTRICTIONS: " + mode_name)
-	box.add_child(_policy)
+	history.add_child(_policy)
 	_policy.item_selected.connect(func(index: int):
 		builder.availability_mode = index
 		_changed.call())
 	for side in 2:
 		var idx := side
 		var faction_row := HBoxContainer.new()
-		box.add_child(faction_row)
-		UiSkin.label(UiKit.label(faction_row, Names.side(side).to_upper() + " FACTION", 16), "section")
+		history.add_child(faction_row)
+		var faction_label := UiKit.label(faction_row, Names.side(side).to_upper() + " FACTION", 16)
+		faction_label.autowrap_mode = TextServer.AUTOWRAP_OFF
+		UiSkin.label(faction_label, "section")
 		var picker_for_faction := OptionButton.new()
 		picker_for_faction.custom_minimum_size.y = 50
 		picker_for_faction.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -105,6 +111,7 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		toggle.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		toggle.add_theme_font_size_override("font_size", 18)
 		_players.append(toggle)
+	box.move_child(history, player_row.get_index())
 	_advanced_button = UiKit.button(box, "ADVANCED OPTIONS  ▸", _toggle_advanced,
 		Vector2(0, 52), "subtle")
 	_advanced = VBoxContainer.new()

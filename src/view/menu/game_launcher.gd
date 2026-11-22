@@ -1,6 +1,7 @@
 class_name GameLauncher
 extends Control
-## Start screen: choose the rules-driven battle game or the voxel graphics lab.
+## Start screen: training (first for new players), a quick battle, the force
+## builder, and the voxel graphics labs.
 
 const BATTLE_MENU := "res://scenes/menu.tscn"
 const VOXEL_LAB := "res://scenes/voxel_mech_lab.tscn"
@@ -41,15 +42,44 @@ func _ready() -> void:
 	var subtitle := UiKit.label(box, "TACTICAL COMBAT SIMULATOR", UiKit.SMALL)
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	UiSkin.rule(box)
-	var battle := UiKit.button(box, "ENTER BATTLE", _open_battle, Vector2(0, 88), "primary")
+	GameSettings.load_settings()
+	var new_player := GameSettings.training.is_empty()
+	var train := UiKit.button(box, "TRAINING  ·  START HERE" if new_player else "TRAINING",
+		_open_training, Vector2(0, 76), "primary" if new_player else "secondary")
+	train.name = "TrainingButton"
+	var quick := UiKit.button(box, "QUICK BATTLE", _quick_battle, Vector2(0, 70))
+	quick.name = "QuickBattleButton"
+	quick.tooltip_text = "Two matched lances on a random map, you against the computer"
+	var battle := UiKit.button(box, "BUILD A BATTLE", _open_battle, Vector2(0, 70),
+		"secondary" if new_player else "primary")
 	battle.name = "BattleButton"
-	var lab := UiKit.button(box, "VOXEL MECH LAB", _open_lab, Vector2(0, 76))
+	var labs := HBoxContainer.new()
+	labs.add_theme_constant_override("separation", 10)
+	box.add_child(labs)
+	var lab := UiKit.button(labs, "VOXEL LAB", _open_lab, Vector2(0, 52), "subtle")
 	lab.name = "VoxelLabButton"
-	var vx := UiKit.button(box, "VOXEL SHOWCASE", _open_vx, Vector2(0, 70), "subtle")
+	var vx := UiKit.button(labs, "VOXEL SHOWCASE", _open_vx, Vector2(0, 52), "subtle")
 	vx.name = "VxShowcaseButton"
-	var footer := UiKit.label(box, "SKIRMISH   •   TACTICAL ACADEMY   •   REPLAYS", 17)
-	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	UiSkin.label(footer, "muted")
+	for b in [lab, vx]:
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		b.add_theme_font_size_override("font_size", UiKit.SMALL)
+
+
+func _open_training() -> void:
+	BattleLaunch.open_training = true
+	get_tree().change_scene_to_file(BATTLE_MENU)
+
+
+func _quick_battle() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var state := QuickBattle.build(UnitDb.load_dir(), rng)
+	if state == null:
+		_open_battle()
+		return
+	BattleLaunch.pending = state
+	BattleLaunch.bot_sides = [1]
+	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
 
 
 func _open_battle() -> void:

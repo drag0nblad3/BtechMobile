@@ -1,0 +1,64 @@
+{
+  "id": "wolverine_wvr9m",
+  "name": "Wolverine",
+  "model": "WVR-9M",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 15,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 20,
+    "RT": 20,
+    "CT": 27,
+    "HD": 9,
+    "LL": 24,
+    "RL": 24
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "RA": [
+      "heat_sink",
+      "heavy_ppc"
+    ],
+    "LT": [
+      "heat_sink",
+      "streak_srm6",
+      "ammo:streak_srm6",
+      "case"
+    ],
+    "RT": [
+      "heat_sink*2"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "HD": [
+      "er_medium_laser"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Heavy PPC, Streak SRM 6, ER Medium Laser; walks 5, runs 8, jumps 5.",
+  "sprite": "wolverine",
+  "source": {
+    "mul_id": 3582,
+    "megamek": "data/mekfiles/meks/3085u/Phoenix/Wolverine WVR-9M.mtf",
+    "published": "RS:3085u-PP",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1617
+  },
+  "bv": 1617
+}

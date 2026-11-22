@@ -2,7 +2,7 @@ class_name CombatLogView
 extends PanelContainer
 ## Scrolling battle log. Tap "Log" to cycle small -> large -> hidden.
 
-const HEIGHTS := [150, 400, 0]
+const HEIGHTS := [112, 400, 0]  ## Small keeps ~3 lines over the map.
 const MAX_LINES := 300
 
 var text: RichTextLabel
@@ -13,7 +13,7 @@ var _lines: Array[String] = []
 func _ready() -> void:
 	add_theme_stylebox_override("panel",
 		UiSkin.panel_style(Color("#0a1723e8"), UiSkin.BORDER, 8))
-	custom_minimum_size = Vector2(540, HEIGHTS[0])
+	custom_minimum_size = Vector2(500, HEIGHTS[0])
 	size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	var contents := VBoxContainer.new()
 	contents.add_theme_constant_override("separation", 4)

@@ -14,12 +14,21 @@ Tyler's rule: designs and Battle Values are official, never guessed.
   with no free sheet, the value comes from MegaMek's own BV calculator
   (`source.bv: "megamek"`); it matched 486 of the 491 printed values we
   checked. `source.megamek_bv` keeps MegaMek's number for every design.
+- **Advanced-equipment variants** may use the official Master Unit List's published
+  BV when a free sheet is unavailable or cannot be verified. These carry
+  `source.bv: "mul"`, the MUL unit ID and its official URL; do not label such
+  values as independently verified free sheets or MegaMek calculations.
+  Initial additions: Spider SDR-10K, Victor VTR-Cr, Rook NH-3X,
+  Black Hawk (Nova) T and Nova Cat G. Their placements, cooling and armor
+  come from the individually named `.mtf` source files. These values are
+  strictly record-sheet data, not homebrew refits.
 - **Role lines** use the Master Unit List role (in MegaMek's files) with our
   own wording, the weapons and the speed.
 - **Combat vehicles** (`data/vehicles/`) come from MegaMek's `.blk` files
   (`data/mekfiles/vehicles/**`, same CC BY-NC-SA terms) with the BV printed
-  on the official Battlefield Support / Mercenaries record sheets. Clan
-  vehicles have no free sheet, so their BV comes from MegaMek's calculator
+  on the official Battlefield Support / Mercenaries record sheets. Vehicles
+  with no free sheet (all Clan ones, most newer IS ones) take their BV from
+  MegaMek's calculator
   (`source.bv: "megamek"`), which matches every sheet BV above.
 - **Battle armor** (`data/battle_armor/`) comes from MegaMek's `.blk` files
   (`data/mekfiles/battlearmor/**`) checked against the weapons on the free

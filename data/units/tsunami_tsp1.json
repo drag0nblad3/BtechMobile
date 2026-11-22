@@ -1,0 +1,61 @@
+{
+  "id": "tsunami_tsp1",
+  "name": "Tsunami",
+  "model": "TS-P1",
+  "tonnage": 40,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "armor": {
+    "LA": 12,
+    "RA": 12,
+    "LT": 15,
+    "RT": 15,
+    "CT": 17,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 6
+  },
+  "equipment": {
+    "LT": [
+      "jump_jet",
+      "medium_laser",
+      "machine_gun"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet",
+      "medium_laser",
+      "machine_gun",
+      "ammo:machine_gun",
+      "ammo:streak_srm2",
+      "case"
+    ],
+    "CT": [
+      "streak_srm2"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. 2x Medium Laser, 2x Machine Gun, Streak SRM 2; walks 6, runs 9, jumps 6.",
+  "sprite": "tsunami",
+  "source": {
+    "mul_id": 3311,
+    "megamek": "data/mekfiles/meks/3055U/Tsunami TS-P1.mtf",
+    "published": "RS:3055Uu",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 933
+  },
+  "bv": 933
+}

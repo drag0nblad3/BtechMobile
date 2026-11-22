@@ -1,0 +1,55 @@
+{
+  "id": "hermit_crab_hmc13",
+  "name": "Hermit Crab",
+  "model": "HMC-13",
+  "tonnage": 25,
+  "walk_mp": 7,
+  "jump_mp": 7,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "armor": {
+    "LA": 5,
+    "RA": 5,
+    "LT": 10,
+    "RT": 10,
+    "CT": 13,
+    "HD": 9,
+    "LL": 11,
+    "RL": 11
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 2
+  },
+  "equipment": {
+    "LA": [
+      "er_medium_laser"
+    ],
+    "RA": [
+      "er_medium_laser"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet*3"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*3"
+    ],
+    "CT": [
+      "jump_jet"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. 2x ER Medium Laser; walks 7, runs 11, jumps 7.",
+  "sprite": "hermit_crab",
+  "source": {
+    "mul_id": 7721,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 10/Hermit Crab HMC-13.mtf",
+    "published": "RG10",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 731
+  },
+  "bv": 731
+}

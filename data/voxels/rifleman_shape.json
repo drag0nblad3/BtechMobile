@@ -1,7 +1,7 @@
 {
   "exclusive_parts": true,
   "id": "rifleman_shape",
-  "name": "Rifleman RFL-3N — shape study",
+  "name": "Rifleman RFL-3N \u2014 shape study",
   "unit": "rifleman_rfl3n",
   "voxel_size": 0.061429,
   "subdivide": 1,
@@ -2266,36 +2266,36 @@
                 "at": 15,
                 "polygon": [
                   [
-                    -8.36298,
+                    -8.19874,
                     -2.8
                   ],
                   [
-                    -6.98413,
+                    -6.91373,
                     -4.9
                   ],
                   [
-                    -3.53702,
+                    -3.70126,
                     -4.9
                   ],
                   [
-                    -2.84759,
+                    -3.05876,
                     -2.1
                   ],
                   [
-                    -3.53702,
-                    3.5
+                    -3.70126,
+                    3.36067
                   ],
                   [
-                    -4.91587,
-                    4.9
+                    -4.98627,
+                    4.70556
                   ],
                   [
-                    -6.98413,
-                    4.2
+                    -6.91373,
+                    4.03312
                   ],
                   [
-                    -9.05241,
-                    1.4
+                    -8.84124,
+                    1.34334
                   ]
                 ]
               },
@@ -2571,19 +2571,19 @@
                   ],
                   [
                     -3.04792,
-                    4.2
+                    4.04679
                   ],
                   [
                     -4.96606,
-                    5.6
+                    5.39168
                   ],
                   [
                     -6.89394,
-                    4.9
+                    4.71923
                   ],
                   [
                     -8.81208,
-                    1.4
+                    1.35701
                   ]
                 ]
               },
@@ -2946,7 +2946,19 @@
   ],
   "jets": {},
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_signature_revision": "recognizable-claw-and-separated-gun-mouths"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_signature_revision": "recognizable-claw-and-separated-gun-mouths",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 80,
+    "stages_with_changes": 10
+  }
 }

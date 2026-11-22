@@ -1,0 +1,60 @@
+{
+ "id": "kanazuchi_assault_battle_armor_support_sqd4",
+ "name": "Kanazuchi Assault Battle Armor",
+ "model": "(Support)(Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 15,
+  "ground_mp": 1,
+  "jump_mp": 0,
+  "claw": false,
+  "mechanized": false,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "srm3",
+    "name": "SRM 3 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   },
+   {
+    "id": "srm3",
+    "name": "SRM 3 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   },
+   {
+    "id": "srm4",
+    "name": "SRM 4",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 4,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ammo_per_ton": 4,
+    "ammo_explodes": false
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 8027,
+  "megamek": "data/mekfiles/battlearmor/3150/Kanazuchi Assault BA (Support)(Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 368
+}

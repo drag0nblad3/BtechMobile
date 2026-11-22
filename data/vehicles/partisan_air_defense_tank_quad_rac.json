@@ -1,0 +1,37 @@
+{
+ "id": "partisan_air_defense_tank_quad_rac",
+ "name": "Partisan Air Defense Tank (Quad RAC)",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 48,
+  "RS": 38,
+  "LS": 38,
+  "RR": 34,
+  "TU": 48
+ },
+ "equipment": {
+  "TU": [
+   "rotary_ac2*4"
+  ],
+  "BD": [
+   "ammo:rotary_ac2*3",
+   "targeting_computer",
+   "c3_slave"
+  ]
+ },
+ "source": {
+  "mul_id": 2438,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Partisan Air Defense Tank (Quad RAC).blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 1296
+}

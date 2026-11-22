@@ -1,0 +1,35 @@
+{
+ "id": "achileus_light_battle_armor_david_sqd4",
+ "name": "Achileus Light Battle Armor",
+ "model": "[David](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 6,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": false,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "david_light_gauss",
+    "name": "David Light Gauss Rifle",
+    "type": "ballistic",
+    "damage": 1,
+    "short": 3,
+    "medium": 5,
+    "long": 8
+   }
+  ],
+  "armor_type": "stealth_improved"
+ },
+ "source": {
+  "mul_id": 7,
+  "megamek": "data/mekfiles/battlearmor/3058Uu/Achileus BA (Sqd 4) [David].blk",
+  "bv": "megamek"
+ },
+ "bv": 189
+}

@@ -1,0 +1,53 @@
+name: Second 50-cycle voxel source refinement
+on:
+  push:
+    branches: [fix/model-rig-and-silhouettes-20261122]
+    paths:
+      - tools/voxel_quality_50.py
+      - .github/workflows/voxel-second-fifty.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: voxel-fifty-second-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  refine-sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run 50 more geometry-specific review stages
+        run: python tools/voxel_quality_50.py
+      - name: Ensure all 151 shape sources and 16 support archetypes reviewed
+        run: |
+          python - <<'PY'
+          import json,glob
+          r=json.load(open('docs/graphics/second_fifty_source_quality_report.json'))
+          assert len(r['mechs'])==len(glob.glob('data/voxels/*_shape.json'))>=151
+          assert len(r['assets'])==len(glob.glob('data/voxels/assets/*.json'))>=16
+          assert all(v['passes']>=100 for v in r['mechs'].values())
+          assert all(v['passes']>=100 for v in r['assets'].values())
+          changed=sum(v.get('edited_vertices',0) > 0 for v in r['mechs'].values())
+          assert changed>50, ('Expected substantive selective resculpts',changed)
+          print('SECOND_FIFTY|mechs=%d|assets=%d|changed=%d|source_files=%d' %
+                (len(r['mechs']),len(r['assets']),changed,r['source_changed']))
+          PY
+      - name: Commit source geometry and audit report
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/voxels docs/graphics/second_fifty_source_quality_report.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Art: execute 50 additional shape-specific multi-view refinement cycles'
+            git push origin HEAD:fix/model-rig-and-silhouettes-20261122
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: second-fifty-model-review
+          path: docs/graphics/second_fifty_source_quality_report.json

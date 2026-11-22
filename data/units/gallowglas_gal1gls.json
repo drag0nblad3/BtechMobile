@@ -1,0 +1,77 @@
+{
+  "id": "gallowglas_gal1gls",
+  "name": "Gallowglas",
+  "model": "GAL-1GLS",
+  "tonnage": 70,
+  "walk_mp": 4,
+  "jump_mp": 3,
+  "heat_sinks": 18,
+  "heat_sink_type": "double",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 20,
+    "RA": 20,
+    "LT": 23,
+    "RT": 23,
+    "CT": 30,
+    "HD": 9,
+    "LL": 22,
+    "RL": 22
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 9
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink",
+      "medium_pulse_laser*2",
+      "endo_steel*3"
+    ],
+    "RA": [
+      "heat_sink*2",
+      "er_ppc"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "endo_steel*6"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "large_laser*2",
+      "endo_steel*2"
+    ],
+    "CT": [
+      "jump_jet",
+      "endo_steel"
+    ],
+    "HD": [
+      "small_laser"
+    ],
+    "LL": [
+      "jump_jet",
+      "endo_steel"
+    ],
+    "RL": [
+      "jump_jet",
+      "endo_steel"
+    ]
+  },
+  "role": "Brawler: close-range firepower. 2x Medium Pulse Laser, ER PPC, 2x Large Laser, Small Laser; walks 4, runs 6, jumps 3.",
+  "sprite": "gallowglas",
+  "source": {
+    "mul_id": 1182,
+    "megamek": "data/mekfiles/meks/3055U/Gallowglas GAL-1GLS.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1695
+  },
+  "bv": 1695
+}

@@ -1,0 +1,36 @@
+{
+ "id": "giggins_apc",
+ "name": "Giggins APC",
+ "tonnage": 40,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 6,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "heavy_ferro",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 28,
+  "RS": 25,
+  "LS": 25,
+  "RR": 25,
+  "TU": 25
+ },
+ "equipment": {
+  "TU": [
+   "heavy_machine_gun*2"
+  ],
+  "BD": [
+   "ammo:heavy_machine_gun:half",
+   "guardian_ecm"
+  ]
+ },
+ "source": {
+  "mul_id": 1196,
+  "megamek": "data/mekfiles/vehicles/3085u/Cutting Edge/Giggins APC.blk",
+  "role": "Skirmisher",
+  "bv": "megamek"
+ },
+ "bv": 476
+}

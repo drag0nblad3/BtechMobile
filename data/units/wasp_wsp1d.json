@@ -1,0 +1,59 @@
+{
+  "id": "wasp_wsp1d",
+  "name": "Wasp",
+  "model": "WSP-1D",
+  "tonnage": 20,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 4,
+    "RA": 4,
+    "LT": 6,
+    "RT": 6,
+    "CT": 6,
+    "HD": 4,
+    "LL": 5,
+    "RL": 5
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 4
+  },
+  "equipment": {
+    "RA": [
+      "medium_laser"
+    ],
+    "LT": [
+      "heat_sink",
+      "jump_jet",
+      "small_laser*2"
+    ],
+    "RT": [
+      "heat_sink*5",
+      "jump_jet"
+    ],
+    "CT": [
+      "jump_jet*2"
+    ],
+    "LL": [
+      "jump_jet",
+      "flamer"
+    ],
+    "RL": [
+      "jump_jet"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. Medium Laser, 2x Small Laser, Flamer; walks 6, runs 9, jumps 6.",
+  "sprite": "wasp",
+  "source": {
+    "mul_id": 3521,
+    "megamek": "data/mekfiles/meks/3039u/Wasp WSP-1D.mtf",
+    "published": "RS:3039u",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 403
+  },
+  "bv": 403
+}

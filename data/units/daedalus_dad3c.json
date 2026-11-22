@@ -1,0 +1,76 @@
+{
+  "id": "daedalus_dad3c",
+  "name": "Daedalus",
+  "model": "DAD-3C",
+  "tonnage": 45,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 11,
+    "RA": 11,
+    "LT": 16,
+    "RT": 16,
+    "CT": 20,
+    "HD": 8,
+    "LL": 13,
+    "RL": 13
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "machine_gun",
+      "endo_steel*5"
+    ],
+    "RA": [
+      "large_pulse_laser",
+      "endo_steel*5"
+    ],
+    "LT": [
+      "jump_jet*2",
+      "srm6",
+      "srm4",
+      "ammo:srm6",
+      "ammo:srm4",
+      "ammo:machine_gun:half",
+      "case"
+    ],
+    "RT": [
+      "jump_jet*2",
+      "srm4",
+      "small_laser"
+    ],
+    "CT": [
+      "jump_jet*2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. Machine Gun, Large Pulse Laser, SRM 6, 2x SRM 4, Small Laser; walks 6, runs 9, jumps 6.",
+  "sprite": "daedalus",
+  "source": {
+    "mul_id": 789,
+    "megamek": "data/mekfiles/meks/3055U/Daedalus DAD-3C.mtf",
+    "published": "RS:3055Uu",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1070
+  },
+  "bv": 1070
+}

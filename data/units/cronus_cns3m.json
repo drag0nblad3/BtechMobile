@@ -1,0 +1,58 @@
+{
+  "id": "cronus_cns3m",
+  "name": "Cronus",
+  "model": "CNS-3M",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 14,
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 21,
+    "RT": 21,
+    "CT": 28,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 7
+  },
+  "equipment": {
+    "RA": [
+      "large_laser"
+    ],
+    "LT": [
+      "heat_sink",
+      "jump_jet*2",
+      "medium_laser",
+      "ammo:srm4"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*2",
+      "medium_laser*2"
+    ],
+    "CT": [
+      "jump_jet",
+      "srm4"
+    ],
+    "HD": [
+      "heat_sink"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Large Laser, 3x Medium Laser, SRM 4; walks 5, runs 8, jumps 5.",
+  "sprite": "cronus",
+  "source": {
+    "mul_id": 4020,
+    "megamek": "data/mekfiles/meks/3067/Cronus CNS-3M.mtf",
+    "published": "RS:3067u",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1339
+  },
+  "bv": 1339
+}

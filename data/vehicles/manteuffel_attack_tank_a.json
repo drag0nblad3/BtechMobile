@@ -1,0 +1,41 @@
+{
+ "id": "manteuffel_attack_tank_a",
+ "name": "Manteuffel Attack Tank A",
+ "tonnage": 70,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 5,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 56,
+  "RS": 40,
+  "LS": 40,
+  "RR": 25,
+  "TU": 45
+ },
+ "equipment": {
+  "FR": [
+   "medium_laser*2",
+   "er_small_laser"
+  ],
+  "TU": [
+   "ultra_ac20"
+  ],
+  "BD": [
+   "ammo:ultra_ac20*5",
+   "c3_slave",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 4584,
+  "megamek": "data/mekfiles/vehicles/3067/3067 IS Land/Manteuffel Attack Tank A.blk",
+  "role": "Skirmisher",
+  "bv": "megamek"
+ },
+ "bv": 1486
+}

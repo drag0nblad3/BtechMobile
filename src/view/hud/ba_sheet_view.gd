@@ -26,4 +26,6 @@ static func text(u: Unit) -> String:
 		t += "Anti-'Mech: leg attacks (4 damage to a leg) or swarm attacks on an enemy 'Mech in its hex; a swarming squad's weapons hit that 'Mech automatically%s\n" % (" (magnetic claws: -1)" if b.magnets else "")
 	if b.mechanized():
 		t += "Mechanized: can ride a friendly OmniMech\n"
+	if BaStealth.NAMES.has(b.armor_type):
+		t += "Armor: %s (harder to hit)\n" % BaStealth.NAMES[b.armor_type]
 	return t

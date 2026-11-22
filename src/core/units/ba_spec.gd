@@ -13,6 +13,7 @@ var claw := false      ## Battle claws (shown on the sheet).
 var mechanized_ok := false  ## Can ride OmniMechs (MegaMek's canDoMechanizedBA).
 var anti_mech := false  ## Can make leg and swarm attacks (light or medium, humanoid, unburdened).
 var magnets := false    ## Claws with magnets: -1 to leg and swarm attacks, +1 to shake off.
+var armor_type := "standard"  ## "advanced" (no effect in play), stealth kinds or "mimetic" (BaStealth).
 var weapons: Array[Dictionary] = []
 
 
@@ -26,6 +27,7 @@ static func from_dict(d: Dictionary) -> BaSpec:
 	b.mechanized_ok = bool(d.get("mechanized", b.claw))
 	b.anti_mech = bool(d.get("anti_mech", b.claw))
 	b.magnets = bool(d.get("magnets", false))
+	b.armor_type = String(d.get("armor_type", "standard"))
 	for w: Dictionary in d.get("weapons", []):
 		b.weapons.append(w)
 	return b

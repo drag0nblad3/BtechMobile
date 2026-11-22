@@ -1,0 +1,66 @@
+{
+  "id": "warlord_blr2d",
+  "name": "Warlord",
+  "model": "BLR-2D",
+  "tonnage": 80,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 16,
+  "heat_sink_type": "double",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 26,
+    "RA": 26,
+    "LT": 26,
+    "RT": 26,
+    "CT": 38,
+    "HD": 9,
+    "LL": 30,
+    "RL": 30
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 7
+  },
+  "equipment": {
+    "LA": [
+      "heavy_ppc",
+      "endo_steel"
+    ],
+    "RA": [
+      "heavy_ppc",
+      "endo_steel"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "er_medium_laser*2",
+      "endo_steel*4"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "er_medium_laser*2",
+      "endo_steel*4"
+    ],
+    "CT": [
+      "er_medium_laser*2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Brawler: close-range firepower. 2x Heavy PPC, 6x ER Medium Laser; walks 4, runs 6.",
+  "sprite": "warlord",
+  "source": {
+    "mul_id": 3509,
+    "megamek": "data/mekfiles/meks/3075/Warlord BLR-2D.mtf",
+    "published": "RS:J",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2041
+  },
+  "bv": 2041
+}

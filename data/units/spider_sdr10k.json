@@ -1,0 +1,67 @@
+{
+  "id": "spider_sdr10k",
+  "name": "Spider",
+  "model": "SDR-10K",
+  "tonnage": 30,
+  "walk_mp": 8,
+  "jump_mp": 8,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ballistic_reinforced",
+  "armor": {
+    "LA": 3,
+    "RA": 3,
+    "LT": 6,
+    "RT": 6,
+    "CT": 9,
+    "HD": 6,
+    "LL": 6,
+    "RL": 6
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 3
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*4",
+      "ballistic_reinforced*4"
+    ],
+    "RA": [
+      "endo_steel*4",
+      "ballistic_reinforced*4"
+    ],
+    "LT": [
+      "heat_sink",
+      "jump_jet*4",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "jump_jet*4",
+      "re_large_laser"
+    ],
+    "CT": [
+      "ballistic_reinforced*2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "source": {
+    "mul_id": 6934,
+    "megamek": "data/mekfiles/meks/3145/NTNU RS/Spider SDR-10K.mtf",
+    "published": "RS:3145-NTNU,RS:3145",
+    "role": "Scout",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/spider-sdr-10k"
+  },
+  "bv": 824,
+  "role": "Scout: a swift jumper carrying a right-torso re-engineered large laser; walks 8, runs 12, jumps 8.",
+  "sprite": "spider"
+}

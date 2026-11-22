@@ -1,0 +1,74 @@
+{
+  "id": "alfar_ala1",
+  "name": "Alfar",
+  "model": "AL-A1",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 3,
+  "heat_sinks": 15,
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 17,
+    "RA": 17,
+    "LT": 19,
+    "RT": 19,
+    "CT": 27,
+    "HD": 9,
+    "LL": 25,
+    "RL": 25
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 9
+  },
+  "equipment": {
+    "LA": [
+      "medium_laser*2",
+      "heat_sink",
+      "endo_steel*5"
+    ],
+    "RA": [
+      "ppc",
+      "heat_sink",
+      "endo_steel*3"
+    ],
+    "LT": [
+      "srm6",
+      "ammo:srm6",
+      "ferro_fibrous*5",
+      "endo_steel*3"
+    ],
+    "RT": [
+      "ferro_fibrous*8",
+      "endo_steel*3"
+    ],
+    "CT": [
+      "jump_jet",
+      "ferro_fibrous"
+    ],
+    "HD": [
+      "medium_laser"
+    ],
+    "LL": [
+      "jump_jet",
+      "heat_sink"
+    ],
+    "RL": [
+      "jump_jet",
+      "heat_sink"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. 3x Medium Laser, PPC, SRM 6; walks 5, runs 8, jumps 3.",
+  "sprite": "alfar",
+  "source": {
+    "mul_id": 3694,
+    "megamek": "data/mekfiles/meks/Historicals/Hist Reunification War/Alfar AL-A1.mtf",
+    "published": "",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1447
+  },
+  "bv": 1447
+}
