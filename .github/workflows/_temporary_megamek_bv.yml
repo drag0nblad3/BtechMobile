@@ -54,9 +54,7 @@ jobs:
           JAVA
           CP=$(find /tmp/mm -type f -name '*.jar' -print | paste -sd ':' -)
           javac -cp "$CP" /tmp/BVScan.java
-          for dir in '3039u' '3050U' '3055U' '3058Uu' '3060u' '3067' '3075'; do
-            find "mm-data/data/mekfiles/meks/$dir" -type f -name '*.mtf'
-          done | sort > /tmp/bv-paths.txt
+          find mm-data/data/mekfiles/meks -type f -name '*.mtf' | sort > /tmp/bv-paths.txt
           echo "Processing $(wc -l < /tmp/bv-paths.txt) source designs"
           sed -i "s|^mm-data/|$GITHUB_WORKSPACE/mm-data/|" /tmp/bv-paths.txt
           cd "$ROOT"
@@ -82,7 +80,8 @@ jobs:
           OUTPUT=ROOT/'data/units'
           W=json.loads((ROOT/'data/weapons.json').read_text())['weapons']
           ENGINE=json.loads((ROOT/'data/construction.json').read_text())['engine_tons']
-          DIRS=['3039u','3050U','3055U','3058Uu','3060u','3067','3075']
+          PRIORITY=['3039u','3050U','3055U','3058Uu','3060u','3067','3075']
+          DIRS=PRIORITY+[p.name for p in sorted(DATA.iterdir()) if p.is_dir() and p.name not in PRIORITY]
           ROLE_DESC={'Scout':'quick reconnaissance','Striker':'mobile direct fire','Missile Boat':'long-range missiles','Brawler':'close-range firepower','Skirmisher':'mobile combined arms','Juggernaut':'heavy assault','Sniper':'long-range fire','Ambusher':'close-range surprise attacks'}
           LOCS={'Left Arm':'LA','Right Arm':'RA','Left Torso':'LT','Right Torso':'RT','Center Torso':'CT','Head':'HD','Left Leg':'LL','Right Leg':'RL'}
           SIMPLE_SKIP={'shoulder','upperarmactuator','lowerarmactuator','handactuator','hip','upperlegactuator','lowerlegactuator','footactuator','lifesupport','sensors','cockpit','gyro','fusionengine','xlengine'}
@@ -279,18 +278,22 @@ jobs:
                   if m: bvs['data/mekfiles/meks/'+m.group(1)]=int(m.group(2))
               assert len(bvs)>500,len(bvs)
               known_names=set();known_ids=set()
+              omni_names=set()
               for path in OUTPUT.glob('*.json'):
                   d=json.loads(path.read_text());known_names.add(key(d['name']));known_ids.add(d['id'])
+                  if d.get('omni'): omni_names.add(key(d['name']))
               allc=collections.defaultdict(list)
+              variants=collections.defaultdict(list)
               for p in (p for di in DIRS for p in (DATA/di).rglob('*.mtf')):
                   try:
                       raw=p.read_text(errors='replace')
                       chassis=field(raw,'chassis')
-                      if not chassis or key(chassis) in known_names: continue
+                      if not chassis or key(chassis) in omni_names: continue
                       model=field(raw,'model')
                       year=int(field(raw,'era') or '9999')
                       prefer=0 if re.match(r'^(?:[A-Z]{1,6}[- ]?\d|Prime$)',model) else 1
-                      allc[key(chassis)].append((DIRS.index(p.relative_to(DATA).parts[0]),year,prefer,str(p),p))
+                      target=variants if key(chassis) in known_names else allc
+                  target[key(chassis)].append((DIRS.index(p.relative_to(DATA).parts[0]),year,prefer,str(p),p))
                   except (ValueError,OSError): pass
               accepted=[];failed=collections.Counter();seen=set()
               for ch,options in sorted(allc.items(),key=lambda kv:(min(x[0] for x in kv[1]),min(x[1] for x in kv[1]),kv[0])):
@@ -305,7 +308,21 @@ jobs:
                       seen.add(unit['id']);accepted.append(unit)
                       print('IMPORTED|%s|%s %s|BV %d|%s'%(unit['id'],unit['name'],unit['model'],unit['bv'],unit['source']['megamek']),flush=True)
                       break
-              print('IMPORTED_TOTAL|%d|candidates=%d|verified_bvs=%d'%(len(accepted),len(allc),len(bvs)),flush=True)
+              # One legal variant per missing chassis first, then legal variants of non-Omni chassis.
+              if len(accepted)<50:
+                  for ch,options in sorted(variants.items(),key=lambda kv:(min(x[0] for x in kv[1]),min(x[1] for x in kv[1]),kv[0])):
+                      if len(accepted)>=50: break
+                      for _dir,_year,_prefer,_path,path in sorted(options):
+                          try: unit=load_mtf(path,bvs)
+                          except Exception as e:failed[str(e)]+=1;continue
+                          if unit['id'] in known_ids or unit['id'] in seen: continue
+                          out=OUTPUT/(unit['id']+'.json')
+                          if out.exists():continue
+                          out.write_text(json.dumps(unit,indent=2,ensure_ascii=False)+'\n')
+                          seen.add(unit['id']);accepted.append(unit)
+                          print('IMPORTED_VARIANT|%s|%s %s|BV %d|%s'%(unit['id'],unit['name'],unit['model'],unit['bv'],unit['source']['megamek']),flush=True)
+                          if len(accepted)>=50:break
+              print('IMPORTED_TOTAL|%d|new_chassis_candidates=%d|variant_candidates=%d|verified_bvs=%d'%(len(accepted),len(allc),len(variants),len(bvs)),flush=True)
               print('SKIPPED_TOP|%s'%failed.most_common(25),flush=True)
               if len(accepted)<40: raise SystemExit('Not enough strict-valid designs to make a batch')
           if __name__=='__main__':main()
