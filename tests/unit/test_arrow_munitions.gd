@@ -104,3 +104,41 @@ func test_smoke_survives_a_save() -> void:
 	check_eq(rs.map.get_tile(hex_at(5, 2)).smoke, 2)
 	check_eq(rs.map.get_tile(hex_at(5, 2)).smoke_turn, 3)
 	check_eq(rs.smoke_pending.size(), 1)
+
+
+func test_inferno_and_thunder() -> void:
+	var v := _setup("ammo:arrow_iv:inferno")
+	var s: GameState = v[0]
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)
+	var t0 := _armor(v[2])
+	_fire(v, dice)
+	var c: Vector2i = v[2].coord
+	check_eq(t0 - _armor(v[2]), 0, "inferno does no damage")
+	check(s.map.get_tile(Hex.neighbor(c, 2)).on_fire, "the ring burns")
+	check_eq(v[2].outside_heat, ArrowInferno.HEAT, "10 heat for units in the fire")
+	s.turn += 2
+	ArrowInferno.end_phase(s, func(_t: Variant, _d: Dictionary) -> void: pass)
+	check(not s.map.get_tile(c).on_fire, "out two turns later on bare ground")
+	var v2 := _setup("ammo:arrow_iv:thunder")
+	var dice2 := LoadedDice.new()
+	dice2.queue_2d6(12)
+	_fire(v2, dice2)
+	var f: Array[Dictionary] = Minefields.at(v2[0], v2[2].coord)
+	check_eq(f.size(), 1, "thunder lays a field")
+	check_eq(int(f[0]["density"]), 3, "Heavy")
+
+
+func test_nemesis_pulls_homing() -> void:
+	var v := _setup("ammo:arrow_iv:homing")
+	var s: GameState = v[0]
+	var friend := Unit.new(4, _def("f", {}), 0, Hex.neighbor(v[2].coord, 1), 5)
+	s.add_unit(friend)
+	friend.narc_pods.append({"side": 1, "loc": Location.CT, "turn": s.turn - 1, "kind": NarcPods.NEMESIS})
+	s.tagged[v[2].id] = {"by": v[1].id, "turn": s.turn}
+	var f0 := _armor(friend)
+	var dice := LoadedDice.new()
+	dice.d6_queue.append(2)  # 1-3: the decoy
+	dice.queue_2d6(8)
+	_fire(v, dice)
+	check_eq(f0 - _armor(friend), 20, "the Nemesis-podded friend takes the missile")

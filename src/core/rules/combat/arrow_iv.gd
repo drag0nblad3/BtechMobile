@@ -10,9 +10,9 @@ extends RefCounted
 ## it, in 5-point groups (AreaEffect). A miss scatters half the margin of
 ## failure (rounded up; the full margin when distant) in a 1D6 direction,
 ## never out of the launcher's arc. AMS can't stop it; no aimed shots.
-## Munitions: homing (ArrowHoming) and smoke (ArrowSmoke).
-## TODO(rules): inferno IV (needs inferno ammo explosions), thunder IV (needs
-## minefields); the bot only fires it at units; scatter is checked against the arc the launcher faces
+## Munitions: homing (ArrowHoming), smoke (ArrowSmoke), inferno
+## (ArrowInferno) and thunder (a Heavy minefield, Minefields).
+## TODO(rules): the bot only fires it at units; scatter is checked against the arc the launcher faces
 ## when the missile lands.
 
 const MIN_HEXES := 7
@@ -20,6 +20,7 @@ const DISTANT := 18
 const MOD := 4
 const CENTER := 20
 const RING := 10
+const THUNDER := "thunder"  ## Thunder IV: a Heavy minefield where it lands (Minefields).
 
 
 static func is_arrow(w: MountedWeapon) -> bool:
@@ -101,10 +102,16 @@ static func land(state: GameState, dice: Dice, emit: Callable, attacker: Unit, w
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	if at == Hex.INVALID:
 		return
-	if kind == ArrowSmoke.KIND:
-		ArrowSmoke.drop(state, at)
-		return
-	AreaEffect.strike(state, dice, emit, at, attacker.coord, CENTER, RING, attacker.id, w.def.name)
+	match kind:
+		ArrowSmoke.KIND:
+			ArrowSmoke.drop(state, at)
+		ArrowInferno.KIND:
+			ArrowInferno.strike(state, emit, at)
+		THUNDER:
+			Minefields.lay(state, emit, at, attacker.side, 3)
+		_:
+			AreaEffect.strike(state, dice, emit, at, attacker.coord, CENTER, RING, attacker.id, w.def.name)
+			Minefields.clear(state, dice, emit, at)
 
 
 ## Weapon phase: lands the distant missiles due this turn.

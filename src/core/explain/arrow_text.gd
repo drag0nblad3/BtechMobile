@@ -5,9 +5,15 @@ extends RefCounted
 
 ## What a standard or smoke missile does when it lands on target.
 static func hit_text(d: Dictionary, level: int) -> String:
-	if String(d.get("kind", "")) == ArrowSmoke.KIND:
-		return "; smoke missile: heavy smoke fills the hex and the hexes around it" + (
-				" once this phase's shots are done" if level == ExplainLevel.FULL else "")
+	match String(d.get("kind", "")):
+		ArrowSmoke.KIND:
+			return "; smoke missile: heavy smoke fills the hex and the hexes around it" + (
+					" once this phase's shots are done" if level == ExplainLevel.FULL else "")
+		ArrowInferno.KIND:
+			return "; inferno missile: the hex and the hexes around it burst into flame"
+		ArrowIv.THUNDER:
+			return "; thunder missile: it scatters a Heavy minefield over the hex" + (
+					" (anything walking in later risks 6 groups of 5 damage on the legs; 'Mechs already there are safe)" if level == ExplainLevel.FULL else "")
 	return "; %d to everything in the hex, %d to the hexes around it" % [ArrowIv.CENTER, ArrowIv.RING]
 
 
@@ -20,6 +26,8 @@ static func homing(who: String, d: Dictionary, level: int) -> String:
 	var t := "%s: homing missile, rolled %d (needs %d, no modifiers): %s" % [who, d["roll"], d["need"],
 			"HIT for %d, plus %d to everything else in the hex" % [ArrowHoming.DAMAGE, ArrowHoming.SPLASH] if d["hit"]
 			else "it misses the 'Mech but bursts in its hex for %d to everything there" % ArrowHoming.SPLASH]
+	if d.get("nemesis", false):
+		t += "; an enemy Nemesis pod pulled it onto your own 'Mech next to the target (1D6: %d)" % d["nemesis_roll"]
 	if level == ExplainLevel.FULL:
 		t += ". It locked onto the TAG designation, so range, movement and terrain don't matter"
 	return t + "."
@@ -34,3 +42,15 @@ static func smoke(d: Dictionary, level: int) -> String:
 			t += " It blocks sight like heavy woods (+2 to hit a 'Mech in it), turns light at the end of next turn and clears a turn later."
 		return t
 	return "  The Arrow IV smoke thins in %d hex%s." % [n, "" if n == 1 else "es"] if level != ExplainLevel.OFF else ""
+
+
+## Inferno IV fire starting or burning out (BUILDING "inferno" / "fire_out").
+static func inferno(d: Dictionary, level: int) -> String:
+	var n: int = (d.get("hexes", []) as Array).size()
+	if d["kind"] == "inferno":
+		var t := "  Inferno gel sets %d hex%s alight around %s; every unit there takes %d heat this turn." % [
+				n, "" if n == 1 else "es", Hex.label(d["coord"]), ArrowInferno.HEAT]
+		if level == ExplainLevel.FULL:
+			t += " Fire on bare ground burns out two turns later; woods and buildings keep burning."
+		return t
+	return "  The inferno fire burns out in %d hex%s." % [n, "" if n == 1 else "es"] if level != ExplainLevel.OFF else ""

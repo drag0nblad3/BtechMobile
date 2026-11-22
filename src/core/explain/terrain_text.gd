@@ -106,6 +106,8 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 			return t
 		"smoke", "smoke_thins":
 			return ArrowText.smoke(d, level)
+		"inferno", "fire_out":
+			return ArrowText.inferno(d, level)
 		"fire":
 			var t := "  The %s at %s catches fire!" % [bname, where]
 			if level == ExplainLevel.FULL:
