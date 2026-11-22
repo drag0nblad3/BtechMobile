@@ -1,0 +1,78 @@
+{
+  "id": "shadow_hawk_shd2hb",
+  "name": "Shadow Hawk",
+  "model": "SHD-2Hb",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 3,
+  "heat_sinks": 11,
+  "heat_sink_type": "double",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 18,
+    "RT": 18,
+    "CT": 23,
+    "HD": 9,
+    "LL": 16,
+    "RL": 16
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "LA": [
+      "medium_laser",
+      "endo_steel*3",
+      "ferro_fibrous*4"
+    ],
+    "RA": [
+      "medium_laser",
+      "endo_steel*3",
+      "ferro_fibrous*4"
+    ],
+    "LT": [
+      "jump_jet",
+      "lb10x_ac",
+      "endo_steel*2",
+      "ferro_fibrous*3"
+    ],
+    "RT": [
+      "jump_jet",
+      "streak_srm2",
+      "ammo:streak_srm2",
+      "ammo:lb10x_ac",
+      "ammo:lb10x_ac:cluster",
+      "case",
+      "endo_steel*2",
+      "ferro_fibrous*3"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "HD": [
+      "streak_srm2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. 2x Medium Laser, LB 10-X AC, 2x Streak SRM 2; walks 5, runs 8, jumps 3.",
+  "sprite": "shadow_hawk",
+  "source": {
+    "mul_id": 2902,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 12/Shadow Hawk SHD-2Hb.mtf",
+    "published": "RG12,RGv1",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1354
+  },
+  "bv": 1354
+}

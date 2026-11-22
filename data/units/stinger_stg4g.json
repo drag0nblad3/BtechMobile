@@ -1,0 +1,69 @@
+{
+  "id": "stinger_stg4g",
+  "name": "Stinger",
+  "model": "STG-4G",
+  "tonnage": 20,
+  "walk_mp": 7,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 7,
+    "RT": 7,
+    "CT": 8,
+    "HD": 9,
+    "LL": 8,
+    "RL": 8
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 4
+  },
+  "equipment": {
+    "LA": [
+      "medium_pulse_laser",
+      "endo_steel*5"
+    ],
+    "RA": [
+      "heat_sink",
+      "medium_pulse_laser",
+      "endo_steel*2"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet*3"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "jump_jet*3"
+    ],
+    "CT": [
+      "endo_steel*2"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. 2x Medium Pulse Laser; walks 7, runs 11, jumps 6.",
+  "sprite": "stinger",
+  "source": {
+    "mul_id": 8123,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 13/Stinger STG-4G.mtf",
+    "published": "RG13,RGv1",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 541
+  },
+  "bv": 541
+}
