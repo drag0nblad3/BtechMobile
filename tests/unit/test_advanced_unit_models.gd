@@ -142,4 +142,7 @@ func _one_solid(cells: Dictionary) -> bool:
 			if remaining.has(next):
 				remaining.erase(next)
 				queue.append(next)
+	if not remaining.is_empty():
+		printerr("Disconnected voxel island, first unvisited cell: ", remaining.keys()[0],
+				" (", remaining.size(), " unconnected cells)")
 	return remaining.is_empty()
