@@ -71,7 +71,7 @@ func refresh(builder: ForceBuilder, db: UnitDb, active: bool) -> void:
 		name.max_lines_visible = 2
 		UiSkin.label(name)
 		var remove := UiKit.button(row, "×", func(): _remove.call(_side, idx),
-			Vector2(44, 45), "subtle")
+			Vector2(52, 50), "subtle")
 		remove.name = "RemoveUnit"
 		remove.tooltip_text = "Remove %s from %s" % [d.display_name(), Names.side(_side)]
 		remove.add_theme_font_size_override("font_size", 24)

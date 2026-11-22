@@ -114,7 +114,7 @@ func _draw() -> void:
 	_cards.clear()
 	for i in _tab_buttons.size():
 		UiSkin.button(_tab_buttons[i], "selected" if i == category else "subtle")
-	_tech.text = "TECH: " + DesignFilter.NAMES[mode] + "  ▸"
+	_tech.text = "TECH: " + ["All technology", "Inner Sphere", "Clan"][mode] + "  ▸"
 	var matches := _matches()
 	var count := mini(_shown, matches.size())
 	_counter.text = "%d of %d matches  •  Add to %s" % [

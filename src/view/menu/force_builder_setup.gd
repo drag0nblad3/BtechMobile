@@ -14,6 +14,13 @@ var _players: Array[Button] = []
 var _advanced: VBoxContainer
 var _advanced_button: Button
 var _info: Label
+var _ai: Button
+var _pilots: Array[Button] = []
+var _conditions: Button
+var _withdrawal: Button
+var _hidden: Button
+var _initiative: Button
+var _explanations: Button
 
 
 func build(parent: Control, b: ForceBuilder, picker: MapPicker,
@@ -52,28 +59,28 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	_advanced.visible = false
 	_advanced.add_theme_constant_override("separation", 7)
 	box.add_child(_advanced)
-	UiKit.button(_advanced, "Computer skill", func():
+	_ai = UiKit.button(_advanced, "Computer skill", func():
 		GameSettings.set_ai_level(BotSkill.next(GameSettings.ai_level))
 		_changed.call(), Vector2(0, 52))
 	for side in 2:
 		var idx := side
-		UiKit.button(_advanced, Names.side(side) + " pilot skill", func():
+		_pilots.append(UiKit.button(_advanced, Names.side(side) + " pilot skill", func():
 			if not builder.next_skill(idx):
 				_message.call("That pilot upgrade would exceed the BV limit.")
-			_changed.call(), Vector2(0, 52))
-	UiKit.button(_advanced, "Battle conditions", func():
+			_changed.call(), Vector2(0, 52)))
+	_conditions = UiKit.button(_advanced, "Battle conditions", func():
 		builder.next_conditions()
 		_changed.call(), Vector2(0, 52))
-	UiKit.button(_advanced, "Forced withdrawal", func():
+	_withdrawal = UiKit.button(_advanced, "Forced withdrawal", func():
 		builder.forced_withdrawal = not builder.forced_withdrawal
 		_changed.call(), Vector2(0, 52))
-	UiKit.button(_advanced, "Hidden units", func():
+	_hidden = UiKit.button(_advanced, "Hidden units", func():
 		builder.hidden_side = (builder.hidden_side + 2) % 3 - 1
 		_changed.call(), Vector2(0, 52))
-	UiKit.button(_advanced, "Initiative die", func():
+	_initiative = UiKit.button(_advanced, "Initiative die", func():
 		builder.initiative_die = not builder.initiative_die
 		_changed.call(), Vector2(0, 52))
-	UiKit.button(_advanced, "Explanations", func():
+	_explanations = UiKit.button(_advanced, "Explanations", func():
 		GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level))
 		_changed.call(), Vector2(0, 52))
 	_info = UiKit.label(_advanced, "", 17)
@@ -114,6 +121,20 @@ func _toggle_advanced() -> void:
 func refresh() -> void:
 	_budget_button.text = "BV LIMIT  •  %d per side  ▸" % builder.budget
 	_mission_button.text = "MISSION  •  %s  ▸" % builder.mission_name()
+	_mission_button.clip_text = true
+	_mission_button.tooltip_text = builder.mission_name()
+	_ai.text = "COMPUTER SKILL  •  %s" % BotSkill.name_of(GameSettings.ai_level)
+	for side in 2:
+		_pilots[side].text = "%s PILOT SKILL  •  %s" % [
+			Names.side(side).to_upper(),
+			BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
+	_conditions.text = "CONDITIONS  •  %s" % (
+		", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "Clear")
+	_withdrawal.text = "FORCED WITHDRAWAL  •  %s" % ("On" if builder.forced_withdrawal else "Off")
+	_hidden.text = "HIDDEN UNITS  •  %s" % (
+		"Off" if builder.hidden_side < 0 else Names.side(builder.hidden_side))
+	_initiative.text = "INITIATIVE DIE  •  %s" % ("On" if builder.initiative_die else "Off")
+	_explanations.text = "EXPLANATIONS  •  %s" % ExplainLevel.name_of(GameSettings.explain_level)
 	for side in 2:
 		_players[side].text = "%s: %s" % [
 			Names.side(side), "Computer" if bot_sides.has(side) else "Human"]
