@@ -80,3 +80,46 @@ corner-only contact, nearby welds, unrepairable large gaps, origin-independent
 contact, front-vs-side weighting, lookalike detection and real model profiles.
 The repo's complete Godot CI remains the required integration check.
 No Android APK is produced by these tools.
+
+
+## Source geometry round: articulated-mass consolidation and lookalikes
+
+The follow-up sculpt pass explicitly changes the authored sources, not merely the
+testing criteria.
+
+- **Atlas:** the original 73 independent pieces become 12 actual articulated
+  masses. 47 non-articulating detail assemblies (including the LRM rack,
+  skull/jaw, shoulder bands, knee/ankle collars, hand details, and pelvis)
+  are integrated into the correct parent part. The 14 right-side mirrored
+  details are inherited from their left-side counterpart. The existing
+  skull recess, shoulder roof, and weapon reference silhouette are retained.
+- **Jenner:** 62 pieces become 14 actual articulated masses. The distinctive
+  forward disc-shaped cockpit, laser pods, feet, hock and tarsus ornaments
+  are united with their owner. Preserve the digitigrade hock, ankle, and
+  shoulder pivots.
+- **Wolverine:** 48 pieces become 12 actual articulated masses. Its SRM
+  shoulder, separate autocannon/hand assembly, angular head, jump pack,
+  and leg fairings are merged without losing their front-facing contours.
+- **Icarus II:** independent shoulder vent silhouettes, asymmetric right
+  fist vs left cannon, and a distinct head crown, based primarily on current
+  Catalyst plastic-sculpt references.
+- **Starslayer:** offset raised long-range shoulder cannon, opposing SRM
+  bank, and differentiated arms; primary silhouette no longer follows the
+  Icarus II layout.
+- **Katana / Crockett:** added their distinctive *paired elevated launcher
+  ears* and matched long arm guns. These are intentionally kept closely
+  related: in the fiction the Katana is an established Crockett-derived
+  redesignation, **not** an unrelated chassis to force apart.
+- **Spartan:** a wide rounded low-domed shoulder/roof structure and right
+  arm pulse gun profile instead of Katana-style paired missile towers.
+
+The high-detail and shape-first versions of the four revised silhouette
+families are edited in tandem. No changes to weapon tables, hit locations,
+movement pivots, or game rules. Characteristic features and missing mechanical
+mass are repaired with source solids; the runtime connector should only
+close remaining *small* breaks.
+
+All three heroes still require post-edit auditing. A topology report compares
+complete face-connected components and supported joints; its remaining
+fault count, rather than the fact that repair code ran, determines which
+source geometry needs another sculpt.
