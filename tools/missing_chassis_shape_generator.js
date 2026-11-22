@@ -121,6 +121,10 @@
   for(const loc of ["LA","RA","LT","RT","CT","HD"]){
    const eq=(gear[loc]||[]).filter(isWeapon);
    if(!eq.length)continue;
+   // Emphasize the largest silhouette-defining hardpoint, not the incidental first laser.
+   const rank=(s)=> /(?:lrm|srm|mml|atm|narc)/i.test(s) ? ((loc==="LT"||loc==="RT")?12:5)
+     : /gauss|(?:^|_)ac\d|rotary_ac|ppc|plasma|rifle/i.test(s) ? ((loc==="LA"||loc==="RA")?11:9):2;
+   eq.sort((a,b)=>rank(b)-rank(a));
    const kind=classify(eq[0]);
    const label=eq.map(e=>e.replace(/[\*\~+].*$/,"")).join(", ");
    const side=loc.endsWith("A")||loc.endsWith("T")?(loc[0]==="L"?-1:1):0;
@@ -130,7 +134,7 @@
    const parent=({LA:"la",RA:"ra",LT:"lt",RT:"rt",CT:"ct",HD:"hd"})[loc];
    const c=Math.round(x),v=Math.round(y);
    const tag=loc.toLowerCase()+"_weapon";
-   const gauge=/gauss|lb20|ultra_ac10/i.test(eq[0])?3:/ppc|ac|srm|lrm/i.test(eq[0])?2:1;
+   const gauge=/gauss|lb20|ultra_ac10|rotary_ac/i.test(eq[0])?3:/ppc|ac|srm|lrm/i.test(eq[0])?2:1;
    const multiplier=Number((eq[0].match(/\*(\d+)/)||[])[1]||1);
    const missiles=kind==="missile"? Math.max(3,Math.min(24,Number((eq[0].match(/(?:lrm|srm|mml|atm|streak_srm)(\d+)/i)||[])[1]||6)*multiplier)):0;
    const barrel=kind==="missile"?(missiles>12?10:5+((/\d\d/.test(eq[0]))?2:0)):Math.max(gauge+1,Math.min(6,multiplier)+1);
@@ -144,8 +148,8 @@
    ];
    const mouths=[];
    if(kind==="missile"){
-     let count=missiles;
-     const columns=count<=6?2:count<=12?3:4,rows=Math.ceil(count/columns);
+     let count=/narc|inarc/i.test(eq[0])?1:missiles;
+     const columns=count===1?1:count<=6?2:count<=12?3:4,rows=Math.ceil(count/columns);
      // Missile muzzle openings are actual negative volume, not painted circles.
      for(let i=0;i<count;i++){
        const mx=c+Math.round((i%columns-(columns-1)/2)*1.55);
