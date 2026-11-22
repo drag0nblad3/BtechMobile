@@ -1002,5 +1002,7 @@
   ],
   "count_verified_fine_voxels": 12520,
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "orthographic_revision": "orthographic-views-50-v1",
+  "orthographic_passes": 50
 }
