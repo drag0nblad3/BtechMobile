@@ -2,7 +2,7 @@ extends SceneTree
 ## Renders the game to a PNG (for visual checks without a device):
 ##   xvfb-run godot --rendering-method gl_compatibility -s tools/capture.gd -- out.png [mode]
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
-## first enemy targeted) · sheet (record sheet open) · menu (force builder) · clanmenu (its Clan list) ·
+## first enemy targeted) · sheet (record sheet open) · menu (force builder) · setupmenu (its Battlefield page) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
 ## tutorial (training battle, first lesson) ·
 ## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played).
@@ -51,6 +51,8 @@ func _process(_delta: float) -> bool:
 				_to_weapon_phase()
 			"notebook":
 				_scene.get_child(_scene.get_child_count() - 1)._show_notebook()
+			"setupmenu":
+				_scene._show_page(1)
 			"clanmenu":
 				_scene.catalog.mode = DesignFilter.Mode.CLAN
 				_scene.catalog.rebuild()
