@@ -12,7 +12,7 @@ const CLOSE := 6    ## Enemy this close after the move: time to get out.
 ## Infantry's own turn: a transport in its hex to board if the enemy is
 ## far, or null.
 static func ride(state: GameState, u: Unit) -> Unit:
-	if u.asset == null or not u.asset.card.is_infantry() or _enemy_dist(state, u, u.coord) <= FAR:
+	if not AssetStacking.is_infantry(u) or _enemy_dist(state, u, u.coord) <= FAR:
 		return null
 	for c in state.units_of_side(u.side):
 		if c != u and not c.destroyed and AssetTransport.board_problem(state, u, c) == "":
@@ -23,15 +23,15 @@ static func ride(state: GameState, u: Unit) -> Unit:
 ## A transport's move: pick up friendly infantry when the enemy is far.
 ## Returns a BotMove-style plan, or {} to move normally.
 static func pickup(state: GameState, u: Unit) -> Dictionary:
-	if u.asset == null or u.asset.card.special("APC") == 0:
+	if (u.asset == null and not u.def.omni) or (u.asset != null and u.asset.card.special("APC") == 0):
 		return {}
 	if not AssetTransport.riders(state, u).is_empty() or _enemy_dist(state, u, u.coord) <= FAR:
 		return {}
 	var opts := MovePlanner.plan(state, u, MoveMode.Kind.RUN)
 	var best: Dictionary = {}
 	for r in state.units_of_side(u.side):
-		if r.destroyed or r.asset == null or AssetTransport.capacity(u, r) < AssetTransport.cost(r) \
-				or r.asset.carried_by >= 0 or r.coord == u.coord:
+		if r.destroyed or AssetTransport.capacity(u, r) < AssetTransport.cost(r) \
+				or r.carrier_id() >= 0 or r.coord == u.coord:
 			continue
 		var keys := opts.end_keys_in(r.coord)
 		if keys.is_empty():

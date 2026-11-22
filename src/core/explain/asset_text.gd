@@ -18,7 +18,12 @@ static func moved(s: GameState, d: Dictionary, level: int) -> String:
 static func transport(s: GameState, d: Dictionary, level: int) -> String:
 	var who := Names.unit(s.unit_by_id(d["unit_id"]))
 	var ride := Names.unit(s.unit_by_id(d["carrier_id"]))
+	var squad := s.unit_by_id(d["unit_id"]).ba != null
 	match String(d["kind"]):
+		"board" when squad:
+			return "%s climbs onto %s." % [who, ride] + (" Troopers riding a 'Mech's torso take hits aimed at their spots, and are set down if it is destroyed." if level == ExplainLevel.FULL else "")
+		"deploy" when squad:
+			return "%s climbs down from %s." % [who, ride] + (" It can't attack the turn it gets off." if level == ExplainLevel.FULL else "")
 		"board":
 			return "%s climbs aboard %s." % [who, ride] + (" Riders can't be shot, but die if their transport is destroyed." if level == ExplainLevel.FULL else "")
 		"deploy":
