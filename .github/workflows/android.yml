@@ -1,9 +1,12 @@
 name: Android APK
 
-# Builds a debug APK only when started by hand:
-# Actions tab > Android APK > Run workflow. Pushes and pull requests don't run it.
+# Explicit one-off build request for merged battlefield polish.
+# This push trigger exists only on the temporary build branch, not main.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - "build/battle-polish-apk-20261122"
 
 env:
   GODOT_VERSION: 4.5.1
