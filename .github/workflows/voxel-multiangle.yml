@@ -18,6 +18,10 @@ on:
       - '.github/workflows/voxel-multiangle.yml'
   workflow_dispatch:
 
+concurrency:
+  group: voxel-multiangle-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   geometry:
     name: Connectivity, blind profiles, and 4-angle visual QA
