@@ -55,6 +55,8 @@ func clear() -> void:
 	aims.clear()
 	physical.clear()
 	hud.show_attack_controls(false)
+	if not hud.sheet_open:
+		hud.show_side(null)  # A submitted/abandoned attack no longer owns the panel.
 	highlighter.clear()
 	if aim_guide != null:
 		aim_guide.clear()
