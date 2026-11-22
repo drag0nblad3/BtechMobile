@@ -100,3 +100,46 @@ func test_nova_cat_has_separate_physical_missile_ports() -> void:
 			check(cells.has(coord + Vector3i(1, 0, 0)) or
 					cells.has(coord + Vector3i(-1, 0, 0)), "port needs a physical rim")
 		check_eq(seen.size(), m.muzzles[loc].size(), "each missile has a distinct port")
+
+
+func test_new_chassis_use_connected_masses_and_solid_joints() -> void:
+	# Inspect coarse authored volumes before subdivision; a single face-touching
+	# component or a hidden floating island is not an acceptable model.
+	for chassis in ["rook", "nova_cat"]:
+		var raw: Dictionary = JsonFile.read("res://data/voxels/" + chassis + ".json")
+		raw["subdivide"] = 1
+		var m := VxModel.from_dict(raw)
+		for part: Dictionary in m.parts:
+			var cells: Dictionary = part["cells"]
+			check(_one_solid(cells), chassis + ": disconnected mass inside " + part["name"])
+			var parent_name: String = part["parent"]
+			if parent_name.is_empty():
+				continue
+			var parent_cells: Dictionary = m.part(parent_name)["cells"]
+			var contacts := 0
+			for c: Vector3i in cells:
+				for direction: Vector3i in VxPart.DIRS:
+					if parent_cells.has(c + direction):
+						contacts += 1
+			check(contacts >= 4, chassis + ": insufficient physical mating surfaces at " + part["name"])
+
+
+func _one_solid(cells: Dictionary) -> bool:
+	if cells.is_empty():
+		return false
+	var remaining: Dictionary = {}
+	for c: Vector3i in cells:
+		remaining[c] = true
+	var first: Vector3i = remaining.keys()[0]
+	remaining.erase(first)
+	var queue: Array[Vector3i] = [first]
+	var cursor := 0
+	while cursor < queue.size():
+		var current: Vector3i = queue[cursor]
+		cursor += 1
+		for delta: Vector3i in VxPart.DIRS:
+			var next: Vector3i = current + delta
+			if remaining.has(next):
+				remaining.erase(next)
+				queue.append(next)
+	return remaining.is_empty()
