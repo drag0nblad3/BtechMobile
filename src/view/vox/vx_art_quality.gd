@@ -120,3 +120,79 @@ static func apply(raw: Dictionary) -> Dictionary:
 	d["exclusive_parts"] = true
 	d["art_quality_revision"] = REVISION
 	return d
+
+
+## Assets are not smaller BattleMechs. Preserve long hulls, exposed tracks,
+## wheel spacing, flight rotors and separate infantry weapon silhouettes.
+## All asset edits remove mass; the 50,000 occupied-voxel cap is unchanged.
+static func apply_asset(raw: Dictionary) -> Dictionary:
+	if raw.get("art_quality_revision", "") == REVISION:
+		return raw
+	if not raw.has("parts"):
+		return raw
+	var d := raw.duplicate(true)
+	var typ: String = d.get("asset_kind", "")
+	var move: String = d.get("motive", "")
+	for part: Dictionary in d["parts"]:
+		var part_name: String = part.get("name", "")
+		for shape: Dictionary in part.get("shapes", []):
+			if shape.has("loft") and part_name in ["hull", "fuselage", "turret", "roof"]:
+				var loft: Dictionary = shape["loft"]
+				if loft.get("axis", "y") != "y":
+					continue
+				var sections: Array = loft.get("sections", [])
+				for idx in sections.size():
+					# Maintain full lower hull contact with tracks or hover skirt.
+					var phase: float = float(idx) / float(maxi(sections.size()-1, 1))
+					if phase < 0.28:
+						continue
+					var sec: Dictionary = sections[idx]
+					var poly: Array = sec.get("polygon", [])
+					if poly.is_empty():
+						continue
+					var min_x := INF
+					var max_x := -INF
+					var min_z := INF
+					var max_z := -INF
+					for point: Array in poly:
+						min_x = minf(min_x, float(point[0]))
+						max_x = maxf(max_x, float(point[0]))
+						min_z = minf(min_z, float(point[1]))
+						max_z = maxf(max_z, float(point[1]))
+					var cx: float = (min_x + max_x) * 0.5
+					var cz: float = (min_z + max_z) * 0.5
+					var fac := 0.94 if move == "h" else (0.96 if typ == "vtol" else 0.95)
+					if part_name == "turret":
+						fac = 0.91
+					for point: Array in poly:
+						point[0] = snappedf(cx + (float(point[0])-cx)*fac, 0.01)
+						# Reduce high rear decking rather than shortening the
+						# vehicle nose, weapon firing line or aviation tail.
+						if move in ["t","w"] and float(point[1]) > cz:
+							point[1] = snappedf(cz + (float(point[1])-cz)*0.96, 0.01)
+			elif typ in ["infantry", "battle_armor"] and (
+					part_name.begins_with("soldier") or part_name.begins_with("elemental")):
+				if not shape.has("box") or shape.get("mat", "") != "armor":
+					continue
+				var a: Array = shape["box"][0]
+				var z: Array = shape["box"][1]
+				if int(z[0]) - int(a[0]) < 4 or int(z[1]) - int(a[1]) < 4:
+					continue
+				# A real polygonal waist/chest, not one rectangular body slab.
+				var middle_y: int = (int(a[1]) + int(z[1])) / 2
+				var x0: int = int(a[0])
+				var x1: int = int(z[0])
+				var z0: int = int(a[2])
+				var z1: int = int(z[2])
+				var waist: Array = [[x0+1,z0],[x1-1,z0],
+					[x1-1,z1],[x0+1,z1]]
+				var chest: Array = [[x0,z0],[x1,z0],
+					[x1,z1],[x0,z1]]
+				shape.erase("box")
+				shape["loft"] = {"axis":"y","sections":[
+					{"at":int(a[1]),"polygon":waist},
+					{"at":middle_y,"polygon":chest},
+					{"at":int(z[1]),"polygon":chest}]}
+	d["exclusive_parts"] = true
+	d["art_quality_revision"] = REVISION
+	return d
