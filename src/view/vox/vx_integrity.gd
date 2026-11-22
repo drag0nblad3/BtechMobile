@@ -39,7 +39,8 @@ static func components(cells: Dictionary) -> Array[Dictionary]:
 
 static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 	var report := {"before": 0, "after": 0, "rejoined": 0,
-			"joint_contacts": 0, "added": 0, "empty_parts": 0}
+			"joint_contacts": 0, "added": 0, "empty_parts": 0,
+			"weak_joint_contacts": 0, "mass_reinforced": 0}
 	var owned := {}
 	for p: Dictionary in m.parts:
 		for c: Vector3i in p["cells"]:
@@ -83,18 +84,27 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 		var parent: Dictionary = m.part(String(p["parent"]))
 		if parent.is_empty() or p["cells"].is_empty() or parent["cells"].is_empty():
 			continue
-		if _touch(p["cells"], parent["cells"]):
+		var initial_patch := _solid_contact(p["cells"], parent["cells"], n)
+		if initial_patch["strong"]:
 			continue
-		var parent_cell := _nearest(parent["cells"], Vector3i(p["pivot"]))
-		var child_cell := _nearest(p["cells"], parent_cell)
-		var route := _path([child_cell], parent["cells"], owned, voids, muzzle_guard, 2 * n)
-		if route.is_empty():
-			continue
-		for c: Vector3i in route:
-			p["cells"][c] = _structure(m)
-			owned[c] = p["name"]
-		report["added"] += route.size()
-		report["joint_contacts"] += 1
+		if int(initial_patch["area"]) == 0:
+			var parent_cell := _nearest(parent["cells"], Vector3i(p["pivot"]))
+			var child_cell := _nearest(p["cells"], parent_cell)
+			var route := _path([child_cell], parent["cells"], owned, voids, muzzle_guard, 2 * n)
+			if not route.is_empty():
+				for c: Vector3i in route:
+					p["cells"][c] = _structure(m)
+					owned[c] = p["name"]
+				report["added"] += route.size()
+				report["joint_contacts"] += 1
+		# A one-cell touch is not load-bearing. Widen the existing seam on
+		# the moving child only; refuse voids, barrels and other owners.
+		var reinforced := _reinforce_joint_mass(p, parent, owned, voids,
+				muzzle_guard, n, _structure(m))
+		report["mass_reinforced"] += reinforced
+		report["added"] += reinforced
+		if not _solid_contact(p["cells"], parent["cells"], n)["strong"]:
+			report["weak_joint_contacts"] += 1
 
 	# The actual floating-island requirement is measured on rigid assemblies.
 	# Join only very close unsupported geometry, after articulation ownership
@@ -267,6 +277,70 @@ static func _structure(m: VxModel) -> int:
 		if m.roles[i] == "structure":
 			return i
 	return 0
+
+
+## A solid joint needs a contiguous contact face patch, not just one
+## coincident cube or a few isolated touching corners. Normalize the
+## required area by resolution and by the smaller component's size.
+static func _solid_contact(child: Dictionary, parent: Dictionary, n: int = 1) -> Dictionary:
+	var face: Dictionary = {}
+	for c: Vector3i in child:
+		for d: Vector3i in DIRS:
+			if parent.has(c + d):
+				face[c] = true
+				break
+	var patch := 0
+	if not face.is_empty():
+		patch = components(face)[0].size()
+	var scale := maxi(1, n)
+	var required := mini(12 * scale * scale,
+			maxi(4 * scale * scale, mini(child.size(), parent.size()) / 12))
+	return {"strong": patch >= required, "patch": patch,
+			"area": face.size(), "needed": required}
+
+
+## Extend the moving part's existing joint socket into a *broad* collar.
+## Never modify the stationary parent, authored subtractive geometry,
+## muzzle corridors, or another articulated part's ownership.
+static func _reinforce_joint_mass(child: Dictionary, parent: Dictionary,
+		owned: Dictionary, voids: Array[Dictionary], guard: Dictionary,
+		n: int, mat: int) -> int:
+	var cvox: Dictionary = child["cells"]
+	var pvox: Dictionary = parent["cells"]
+	if _solid_contact(cvox, pvox, n)["strong"]:
+		return 0
+	var socket := _nearest(cvox, Vector3i(child["pivot"]))
+	var limit := maxi(2, 2 * n)
+	var added := 0
+	for attempt in range(3):
+		var staged: Dictionary = {}
+		for c: Vector3i in cvox:
+			if absi(c.x-socket.x) + absi(c.y-socket.y) + absi(c.z-socket.z) > 4 * n + 3:
+				continue
+			for d: Vector3i in DIRS:
+				var v: Vector3i = c + d
+				if owned.has(v) or staged.has(v) or guard.has(v):
+					continue
+				if _in_void(v, voids):
+					continue
+				if absi(v.x-socket.x) + absi(v.y-socket.y) + absi(v.z-socket.z) > limit + n:
+					continue
+				var contact := false
+				for side: Vector3i in DIRS:
+					if pvox.has(v + side):
+						contact = true
+						break
+				if contact:
+					staged[v] = true
+		if staged.is_empty():
+			break
+		for v: Vector3i in staged:
+			cvox[v] = mat
+			owned[v] = child["name"]
+			added += 1
+		if _solid_contact(cvox, pvox, n)["strong"]:
+			break
+	return added
 
 
 static func _touch(a: Dictionary, b: Dictionary) -> bool:
