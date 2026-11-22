@@ -118,6 +118,9 @@ func _init_asset() -> void:
 	var w := def.asset.attack_weapon(def.name)
 	for i in def.asset.groupings:
 		weapons.append(MountedWeapon.new(w, Location.CT, false))
+	var iw := AssetIndirect.weapon()
+	for i in def.asset.special("IF"):
+		weapons.append(MountedWeapon.new(iw, Location.CT, false))
 	pilot.gunnery = asset.skill()
 
 

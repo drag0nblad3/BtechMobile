@@ -30,6 +30,8 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			and FiringArc.fire_arc(attacker.coord, attacker.facing, target.coord) != FiringArc.FRONT:
 		th.impossible = "No turret: it can only fire into its front arc"
 		return th
+	if AssetIndirect.is_indirect(w.def):
+		return AssetIndirect.to_hit(state, attacker, w, target, th)
 	var los := LineOfSight.check(state.map, attacker, target) if dist > 0 else LineOfSight.none()
 	if los["blocked"]:
 		th.impossible = "No line of sight (%s)" % los["reason"]
@@ -39,13 +41,17 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = "Out of range (%d hexes, max %d)" % [dist, w.def.long_range]
 		return th
 	th.add("Skill", attacker.asset.skill(), "The Asset card's Skill is the base number; Assets never pay for their own movement.")
-	match br:
+	add_range(th, w, dist)
+	ToHitCalc.add_conditions(th, state, attacker, target, los)
+	return th
+
+
+static func add_range(th: ToHit, w: MountedWeapon, dist: int) -> void:
+	match w.def.bracket(dist):
 		WeaponDef.Bracket.MEDIUM:
 			th.add("medium range", 2, "%d hexes is medium range for this Asset (%s)." % [dist, w.def.range_text()])
 		WeaponDef.Bracket.LONG:
 			th.add("long range", 4, "%d hexes is long range for this Asset (%s)." % [dist, w.def.range_text()])
-	ToHitCalc.add_conditions(th, state, attacker, target, los)
-	return th
 
 
 ## Target modifiers for an Asset target, in place of target movement and
@@ -55,7 +61,7 @@ static func add_target_mods(th: ToHit, state: GameState, target: Unit) -> void:
 	if card.kind == AssetCard.EMPLACEMENT or card.has("IMMOBILE"):
 		th.add("target immobile", -4, "Emplacements can't dodge: -4.")
 		return
-	var tmm := 0 if target.asset.deployed_turn == state.turn else card.tmm
+	var tmm := 0 if state.turn in [target.asset.deployed_turn, target.asset.indirect_turn] else card.tmm
 	var terrain := 0 if card.kind == AssetCard.VTOL else terrain_mod(state, target)
 	if terrain >= tmm and terrain > 0:
 		th.add("target in cover", terrain, "The terrain of its hex (%+d) beats its movement modifier (%+d); Assets use only the higher." % [terrain, tmm])
