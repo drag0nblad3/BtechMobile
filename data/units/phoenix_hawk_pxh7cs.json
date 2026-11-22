@@ -1,0 +1,72 @@
+{
+ "id": "phoenix_hawk_pxh7cs",
+ "name": "Phoenix Hawk",
+ "model": "PXH-7CS",
+ "tonnage": 45,
+ "walk_mp": 6,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 13,
+  "RA": 13,
+  "LT": 16,
+  "RT": 16,
+  "CT": 19,
+  "HD": 9,
+  "LL": 21,
+  "RL": 21
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser*2",
+   "endo_steel"
+  ],
+  "RA": [
+   "er_large_laser",
+   "endo_steel"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "inarc_beacon",
+   "ammo:inarc_beacon*3",
+   "endo_steel"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "c3i",
+   "endo_steel*5"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2507,
+  "megamek": "data/mekfiles/meks/3085u/Phoenix/Phoenix Hawk PXH-7CS.mtf",
+  "published": "RS:CI",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1281
+ },
+ "bv": 1281,
+ "sprite": "phoenix_hawk",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, ER Large Laser, iNarc Missile Beacon; walks 6, runs 9, jumps 5."
+}

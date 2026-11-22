@@ -1,0 +1,76 @@
+{
+ "id": "champion_chp3p",
+ "name": "Champion",
+ "model": "CHP-3P",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 22,
+  "RT": 22,
+  "CT": 27,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser*2",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "er_medium_laser*2",
+   "endo_steel*5"
+  ],
+  "LT": [
+   "inarc_beacon",
+   "ammo:inarc_beacon*2",
+   "ammo:ultra_ac10*3",
+   "case"
+  ],
+  "RT": [
+   "ultra_ac10"
+  ],
+  "CT": [
+   "c3i"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 553,
+  "megamek": "data/mekfiles/meks/3050U/Champion CHP-3P.mtf",
+  "published": "RS:3050Uu-C",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1503
+ },
+ "bv": 1503,
+ "sprite": "champion",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 ER Medium Lasers, iNarc Missile Beacon, Ultra AC/10; walks 5, runs 8."
+}
