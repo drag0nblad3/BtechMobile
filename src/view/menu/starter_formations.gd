@@ -15,9 +15,9 @@ static func all() -> Array[Dictionary]:
 
 static func description(form: Dictionary) -> String:
 	var units: Array = form.get("units", [])
-	return "%s  ·  %d 'Mechs" % [
+	return "%s  ·  %d 'Mechs  ·  %d BV" % [
 		"CLAN STAR" if String(form.get("kind", "")) == "star" else "IS LANCE",
-		units.size()]
+		units.size(), int(form.get("recommended_bv", 0))]
 
 
 ## Preflight the entire replacement under the selected side's actual skill.
@@ -30,6 +30,9 @@ static func plan(builder: ForceBuilder, side: int, form: Dictionary) -> Dictiona
 	var wanted := 5 if kind == "star" else 4
 	if kind not in ["lance", "star"] or ids.size() != wanted:
 		return {"ok": false, "reason": "Formation has the wrong number of 'Mechs."}
+	var advertised_tier := int(form.get("recommended_bv", 0))
+	if advertised_tier != 0 and advertised_tier not in ForceBuilder.BUDGETS:
+		return {"ok": false, "reason": "Unsupported preset BV tier."}
 	var ceiling: int = ForceBuilder.BUDGETS.back()
 	var test := ForceBuilder.new(builder.units, ceiling)
 	test.skills[side] = builder.skills[side]

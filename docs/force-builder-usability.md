@@ -52,3 +52,21 @@ skill, variant-specific BV and `ForceBuilder.cant_add`. Existing units
 are replaced *only on that side*. If the required tier is above the
 current global BV limit, the confirmation explicitly says both sides'
 limit will increase. A failed validation never alters either roster.
+
+## More formations at common game sizes (November 2026)
+
+The curated list now contains **32** formations, organized into the app's
+seven BV tiers: **2,000, 3,000, 4,500, 6,000, 8,000, 10,000, 12,000**.
+The existing six choices remain. The 26 additions cover reconnaissance,
+urban defense, raiding, maneuver, close combat, missile support, and heavy
+assault. Clan stars start at 4,500 BV and become the dominant formation type
+at 10,000–12,000 BV, where expensive OmniMechs can be fielded.
+
+The roster's **Load Formation** menu has a tier submenu, rather than a long
+flat list. Each entry shows its actual cost at the currently selected pilot
+skill; the advertised tier is a 4/5 regular-pilot recommendation, not a
+locked cost. Selecting a veteran pilot can require raising the BV tier or
+make the heaviest star unavailable under the 12,000 BV cap. All preflight
+checks preserve rosters on failure. No official unit specification, BV,
+model or battle rules were altered apart from expanding the optional
+per-side budget selector with 10k and 12k choices.

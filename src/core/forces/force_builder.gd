@@ -11,7 +11,7 @@ const STAR := 5
 ## lance, bought with BV at 20 per BSP (Battle Value Integration, p. 157).
 const MAX_ASSETS := 4
 const FORMATION_TIP := "Inner Sphere 'Mechs fight in lances of four; the Clans fight in Stars of five, so an all-Clan side may take a fifth 'Mech."
-const BUDGETS := [2000, 3000, 4500, 6000, 8000]
+const BUDGETS := [2000, 3000, 4500, 6000, 8000, 10000, 12000]
 ## Battlefield condition choices on the start screen (Conditions.from_dict).
 const CONDITION_PRESETS := [{}, {"night": true}, {"cold": 1}, {"cold": 3}, {"heat": 1},
 		{"heat": 3}, {"gravity": 0.5}, {"gravity": 1.5}, {"wind": true}, {"low_visibility": true},
