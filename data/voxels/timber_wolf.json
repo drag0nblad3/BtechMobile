@@ -442,38 +442,6 @@
           ],
           "mat": "recess"
         }
-      ],
-      "add": [
-        {
-          "box": [
-            [
-              -5,
-              28,
-              -1
-            ],
-            [
-              -1,
-              32,
-              2
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              0,
-              28,
-              -1
-            ],
-            [
-              4,
-              32,
-              2
-            ]
-          ],
-          "mat": "frame"
-        }
       ]
     },
     {
@@ -1176,23 +1144,6 @@
           ],
           "mat": "trim"
         }
-      ],
-      "add": [
-        {
-          "box": [
-            [
-              -8,
-              28,
-              -1
-            ],
-            [
-              -4,
-              32,
-              2
-            ]
-          ],
-          "mat": "frame"
-        }
       ]
     },
     {
@@ -1744,6 +1695,21 @@
             ]
           ],
           "mat": "trim"
+        },
+        {
+          "box": [
+            [
+              -14,
+              34,
+              -4
+            ],
+            [
+              -11,
+              36,
+              -2
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "detail": [
@@ -2280,36 +2246,36 @@
                 "at": 18,
                 "polygon": [
                   [
-                    -10.9513,
-                    -3
+                    -10.78188,
+                    -3.0
                   ],
                   [
-                    -5.9734,
-                    -3
+                    -6.14282,
+                    -3.0
                   ],
                   [
-                    -4.9779,
-                    -2
+                    -5.21508,
+                    -2.0
                   ],
                   [
-                    -4.9779,
-                    3
+                    -5.21508,
+                    3.0
                   ],
                   [
-                    -5.9734,
-                    4
+                    -6.14282,
+                    4.0
                   ],
                   [
-                    -10.9513,
-                    4
+                    -10.78188,
+                    4.0
                   ],
                   [
-                    -11.9468,
-                    3
+                    -11.70962,
+                    3.0
                   ],
                   [
-                    -11.9468,
-                    -2
+                    -11.70962,
+                    -2.0
                   ]
                 ]
               },
@@ -3405,7 +3371,19 @@
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
-  "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50,
-  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_passes": 100,
+  "art_fix_round": "connected-assembly-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 40,
+    "stages_with_changes": 5
+  }
 }
