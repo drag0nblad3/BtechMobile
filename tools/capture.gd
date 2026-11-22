@@ -18,13 +18,15 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
-	if _mode.begins_with("map=") or _mode.begins_with("gen="):  # two lances on that map
+	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode == "vfx":  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
 			fb.add(0, id)
 		for id in ["marauder_mad3r", "wasp_wsp1a"]:
 			fb.add(1, id)
 		BattleLaunch.pending = fb.build(_capture_map())
+	if _mode == "vfx":
+		BattleLaunch.bot_sides = []  # cinematic frame, no bot actions
 	if _mode == "tutorial":
 		var tut := "res://data/scenarios/tutorial.json"
 		BattleLaunch.pending = ScenarioLoader.load_file(tut, TerrainDb.load_file(), UnitDb.load_dir())
@@ -56,6 +58,16 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
+	if _frames == 37 and _mode == "vfx":
+		# Visual review only: preview a shot without changing the combat rules.
+		var units: Array = _scene.controller.state.units
+		if units.size() >= 2:
+			var attacker: Unit = units[0]
+			var target: Unit = units[units.size() - 1]
+			_scene.fx.play(GameEvent.new(GameEvent.WEAPON_FIRED, {
+				"attacker_id": attacker.id, "target_id": target.id,
+				"weapon_id": "er_ppc", "hit": true}))
+			_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
 	if _frames == 40:
 		root.get_viewport().get_texture().get_image().save_png(_out)
 		print("saved ", _out)
@@ -105,8 +117,9 @@ func _target_nearest() -> void:
 
 func _capture_map() -> BattleMap:
 	var arg := _mode.substr(4)
-	if _mode.begins_with("map="):
-		return MapLoader.load_file("res://data/maps/%s.json" % arg, TerrainDb.load_file())
+	if _mode.begins_with("map=") or _mode == "vfx":
+		var id := "city_outskirts" if _mode == "vfx" else arg
+		return MapLoader.load_file("res://data/maps/%s.json" % id, TerrainDb.load_file())
 	var parts := arg.split(":")
 	var seed_value := int(parts[1]) if parts.size() > 1 else 1
 	return MapGenerator.build(MapTheme.find(parts[0]), Vector2i(2, 1), seed_value, TerrainDb.load_file())

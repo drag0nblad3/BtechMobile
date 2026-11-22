@@ -98,6 +98,21 @@ jobs:
           godot --headless -s tools/battle_visual_smoke.gd 2>&1 | tee battle-visual.log
           grep -q "battle visuals smoke ok" battle-visual.log
           ! grep -E "SCRIPT ERROR|Parse Error|BATTLE_VISUAL_FAILED" battle-visual.log
+      - name: Capture battle visual review frames (Compatibility renderer)
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battlefield-vfx-hud-polish')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/battle-visuals
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/battle-visuals/city_vfx.png vfx 2>&1 | tee battle-capture.log
+          test -s /tmp/battle-visuals/city_vfx.png
+          ! grep -E "SCRIPT ERROR|Parse Error" battle-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battlefield-vfx-hud-polish')
+        with:
+          name: battlefield-polish-visual-review
+          path: /tmp/battle-visuals/city_vfx.png
+          if-no-files-found: error
       - name: Launcher navigation smoke
         run: |
           set -o pipefail

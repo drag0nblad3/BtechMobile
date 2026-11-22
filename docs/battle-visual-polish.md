@@ -48,3 +48,7 @@ scenario data, and unit geometry. It adds no gameplay effects or damage rules.
   landscape/notch, terrain edge clarity at steep angles, water appearance
   on Compatibility renderer, HUD tap safety, brightness and GPU cost with
   large 20/60-model battles. Do not build an APK unless requested.
+
+- PR CI also captures an actual 1280×720 Compatibility-renderer city scene
+  with a temporary PPC tracer and combat HUD callout. Review the screenshot
+  artifact **battlefield-polish-visual-review** for final composition QA.
