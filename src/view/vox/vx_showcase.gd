@@ -5,6 +5,18 @@ extends Node3D
 ## plus every animation hook. Separate from the Voxel Mech Lab.
 
 const MODELS := [
+	"res://data/voxels/yeoman_shape.json",
+	"res://data/voxels/yeoman.json",
+	"res://data/voxels/jackrabbit_shape.json",
+	"res://data/voxels/jackrabbit.json",
+	"res://data/voxels/hermit_crab_shape.json",
+	"res://data/voxels/hermit_crab.json",
+	"res://data/voxels/garm_shape.json",
+	"res://data/voxels/garm.json",
+	"res://data/voxels/hornet_shape.json",
+	"res://data/voxels/hornet.json",
+	"res://data/voxels/hussar_shape.json",
+	"res://data/voxels/hussar.json",
 	"res://data/voxels/catapult.json",
 	"res://data/voxels/hunchback.json",
 	"res://data/voxels/atlas_voxel.json",
