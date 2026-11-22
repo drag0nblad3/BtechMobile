@@ -161,7 +161,7 @@ func _init_ba() -> void:
 		if mw.def.uses_ammo():
 			ammo.append(AmmoBin.new(mw.def, Location.CT))
 	if def.battle_armor.claw:
-		for wd in [BaLegAttack.weapon(), BaSwarm.weapon()]:
+		for wd in [BaLegAttack.weapon(), BaSwarm.weapon(), BaSwarm.let_go_weapon()]:
 			var mw := MountedWeapon.new(wd, Location.CT, false)
 			mw.on_squad = true
 			weapons.append(mw)

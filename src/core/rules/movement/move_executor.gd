@@ -99,8 +99,11 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	Psr.resolve_pending(state, dice, emit, unit)
 	unit.psr_pending.clear()
 	PilotDamage.resolve_owed(state, dice, emit)  # Movement Phase: roll at once
+	if mode == MoveMode.Kind.JUMP and moved:
+		BaShakeOff.after_jump(state, dice, emit, unit, mp)
 	if then_prone and not unit.prone and not unit.destroyed:
 		ProneMoves.drop(emit, unit)
+		BaShakeOff.drop_prone(state, dice, emit, unit)
 	found.append_array(HiddenUnits.reveal_around(state, emit, unit))
 	for h in found:  # each may answer with a point-blank attack (PointBlank)
 		if h.can_act() and not unit.destroyed:

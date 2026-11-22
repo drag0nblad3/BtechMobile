@@ -41,6 +41,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaSwarm.is_swarm(w):
 		BaSwarm.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if BaSwarm.is_let_go(w):
+		BaSwarm.let_go(emit, attacker, w, target)
+		return
 	var decoy := NarcPods.decoy(state, dice, attacker, w, target)
 	if decoy != null:  # an enemy Nemesis pod pulls the missiles onto a friend
 		target = decoy

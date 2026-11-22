@@ -154,9 +154,10 @@ static func declare(state: GameState, a: Unit, attacks: Array) -> Array[Dictiona
 				continue
 			if not opt["to_hit"].possible() or used.has(opt["limb"]) or kicked:
 				continue
-			if opt["kind"] != "punch" and not out.is_empty():
+			var paired: bool = opt["kind"] == "punch" or opt["kind"] == "brush_off"  # one per arm
+			if not paired and not out.is_empty():
 				continue  # kicks, pushes and weapon swings are the only attack that turn
-			kicked = opt["kind"] != "punch"
+			kicked = not paired
 			used[opt["limb"]] = true
 			opt["attacker_id"] = a.id
 			opt["target_id"] = t.id

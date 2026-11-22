@@ -16,7 +16,7 @@ static func text(u: Unit) -> String:
 				else "%d  armor %d/%d\n" % [i + 1, a, b.armor]
 	t += "\n[b]Squad weapons[/b] (one cluster roll per weapon, a shot per trooper)\n"
 	for w in u.weapons:
-		if BaLegAttack.is_leg_attack(w) or BaSwarm.is_swarm(w):
+		if BaLegAttack.is_leg_attack(w) or BaSwarm.is_swarm(w) or BaSwarm.is_let_go(w):
 			continue
 		var line := "%s · %d×%d · %s" % [w.def.name, w.def.missiles, w.def.damage, w.def.range_text()]
 		if w.def.uses_ammo():

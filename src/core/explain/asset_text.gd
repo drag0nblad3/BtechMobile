@@ -24,6 +24,10 @@ static func transport(s: GameState, d: Dictionary, level: int) -> String:
 			return "%s swarms all over %s!" % [who, ride] + (" From now on its weapons hit that 'Mech automatically, all over its body, until it is brushed off or the 'Mech falls." if level == ExplainLevel.FULL else "")
 		"swarm_off":
 			return "%s drops off the wreck of %s." % [who, ride]
+		"let_go":
+			return "%s lets go of %s and drops to the ground." % [who, ride]
+		"thrown_off":
+			return "%s throws %s off!" % [ride, who]
 		"brushed":
 			return "%s swats %s off its hull." % [ride, who]
 		"board" when squad:
