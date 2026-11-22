@@ -123,3 +123,39 @@ All three heroes still require post-edit auditing. A topology report compares
 complete face-connected components and supported joints; its remaining
 fault count, rather than the fact that repair code ran, determines which
 source geometry needs another sculpt.
+
+
+## Final post-refinement verification
+
+Full Godot audit on commit `34e00d1`:
+
+| Geometry quality gate | Before round | After round |
+|---|---:|---:|
+| Chassis audited | 151 | 151 |
+| Parts containing disconnected voxel components | 46 | **0** |
+| Parent-child joints without a 2×2, two-layer-backed solid face | 88 | **0** |
+
+All three hero sculpts (Atlas, Jenner and Wolverine) are clean under the
+same gate as the full catalog. Jenner's formerly detached forward-disc shoulder
+braces were given a proper solid cross-section; a few disconnected 1–8 voxel
+leftovers were explicitly removed from their source manifests. The additional
+Havoc, Thunderbolt and Victor single-voxel scraps were likewise corrected
+at source, rather than hidden in the validator.
+
+The final 16 weak contacts were corrected with compact interior supports on
+Archer, Awesome, Griffin, Kit Fox, Marauder, Scorpion, Shadow Hawk, Summoner,
+Timber Wolf, and Warhammer. Edited shapes are copied to the matching high/low
+LOD manifests. None of the 16 repairs modifies the overall weapon loadout,
+combat stats, limb pivot positions, muzzle coordinates, or unit record sheet.
+
+The Icarus II vs Starslayer blind multi-angle similarity fell from
+**0.8811 to 0.7199**, while the intentionally related Katana and Crockett
+still resemble one another. Spartan's dome and Katana/Crockett's prominent
+missile ears now separate their visible shoulder silhouettes.
+
+Automated safeguards: the dedicated `voxel-multiangle.yml` workflow checks
+**every** edited model manifest, runs generalized topology and projection
+unit tests, exports a 151-chassis blind-guess report, and fails unless **both
+island-bearing part count and weak-joint count are exactly zero**. It also
+exports the approved 4-angle hero render sheet. The full CI suite separately
+catches game, persistence, animation and scene regressions. No APK is built.
