@@ -1763,7 +1763,7 @@
                 ]
               },
               {
-                "at": -7,
+                "at": -8,
                 "polygon": [
                   [
                     -1.92,
@@ -3534,13 +3534,47 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 2.4,
     "front": 0.89,
     "rear": 0.79,
     "torso_width": 0.97
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 130,
+    "stages_with_changes": 15
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "tall upright jumper; narrow lower legs",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
   }
 }

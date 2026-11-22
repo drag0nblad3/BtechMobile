@@ -7262,8 +7262,8 @@
   },
   "weapons": [],
   "art_revision": "sculpt-specific-slab-relief-v2-20261121",
-  "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_passes": 100,
   "art_quality_signature": "Preserve projecting disc canopy and small twin laser pods",
   "structural_consolidation": "2026-11-22-geometry-union",
   "visual_part_unification": {
@@ -7273,5 +7273,17 @@
   },
   "connectivity_source_patch": "2026-11-22-rig-mass-v2",
   "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2",
-  "micro_island_cleanup": "2026-11-22-single-chassis-source-artifact"
+  "micro_island_cleanup": "2026-11-22-single-chassis-source-artifact",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 82,
+    "stages_with_changes": 13
+  }
 }

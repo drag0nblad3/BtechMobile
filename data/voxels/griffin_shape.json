@@ -2368,8 +2368,8 @@
     ]
   },
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
   "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -2378,5 +2378,41 @@
     "rear": 0.71,
     "torso_width": 0.95
   },
-  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 250,
+    "stages_with_changes": 20
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "off-center shoulder LRM; heavy PPC",
+    "modified_polygon_vertices": 178,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "rt",
+      "la",
+      "ra",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  }
 }

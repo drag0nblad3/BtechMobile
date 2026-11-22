@@ -3477,7 +3477,19 @@
       "kind": "laser"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 110,
+    "stages_with_changes": 15
+  }
 }
