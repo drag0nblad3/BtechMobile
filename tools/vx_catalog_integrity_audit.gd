@@ -13,7 +13,8 @@ func _init() -> void:
 	var report := {"mode": mode, "mechs": {}, "assets": {}, "warnings": [],
 			"totals": {"mechs": 0, "assets": 0, "skipped": 0,
 				"before": 0, "after": 0, "rejoined": 0,
-				"joint_contacts": 0, "added": 0, "empty_parts": 0, "rig_islands": 0, "floating_islands": 0}}
+				"joint_contacts": 0, "added": 0, "empty_parts": 0, "rig_islands": 0, "floating_islands": 0,
+				"weak_joint_contacts": 0, "mass_reinforced": 0}}
 	for file: String in DirAccess.get_files_at("res://data/voxels"):
 		if not file.ends_with(".json"):
 			continue
@@ -67,15 +68,15 @@ func _init() -> void:
 		return
 	target.store_string(data + "\n")
 	target.close()
-	print("VOXEL_INTEGRITY|%s|mechs=%d|assets=%d|before=%d|after=%d|rejoined=%d|joint_contacts=%d|added=%d|rig_islands=%d|floating_islands=%d|skipped=%d|warnings=%d" % [
+	print("VOXEL_INTEGRITY|%s|mechs=%d|assets=%d|before=%d|after=%d|rejoined=%d|joint_contacts=%d|added=%d|rig_islands=%d|floating_islands=%d|weak_joint_contacts=%d|mass_reinforced=%d|skipped=%d|warnings=%d" % [
 			mode, report["totals"]["mechs"], report["totals"]["assets"],
 			report["totals"]["before"], report["totals"]["after"],
 			report["totals"]["rejoined"], report["totals"]["joint_contacts"],
-			report["totals"]["added"], report["totals"]["rig_islands"], report["totals"]["floating_islands"], report["totals"]["skipped"],
+			report["totals"]["added"], report["totals"]["rig_islands"], report["totals"]["floating_islands"], report["totals"]["weak_joint_contacts"], report["totals"]["mass_reinforced"], report["totals"]["skipped"],
 			report["warnings"].size()])
 	quit(1 if not report["warnings"].is_empty() else 0)
 
 
 func _sum(totals: Dictionary, info: Dictionary) -> void:
-	for key in ["before", "after", "rejoined", "joint_contacts", "added", "empty_parts", "rig_islands", "floating_islands"]:
+	for key in ["before", "after", "rejoined", "joint_contacts", "added", "empty_parts", "rig_islands", "floating_islands", "weak_joint_contacts", "mass_reinforced"]:
 		totals[key] = int(totals.get(key, 0)) + int(info.get(key, 0))
