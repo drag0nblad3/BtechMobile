@@ -10,6 +10,7 @@ on:
       - 'tests/unit/test_vx_connectivity.gd'
       - 'tests/unit/test_vx_silhouette.gd'
       - 'tools/voxel_multiangle_audit.gd'
+      - 'tools/capture_silhouette_review.gd'
       - '.github/workflows/voxel-multiangle.yml'
   workflow_dispatch:
 
@@ -71,6 +72,15 @@ jobs:
             2>&1 | tee voxel-render.log
           test -s /tmp/voxel-qa/atlas_wolverine_jenner_full_voxels.png
           ! grep -E 'SCRIPT ERROR|Parse Error|VOXELIZE_ERROR' voxel-render.log
+      - name: Render seven reference candidates from three views
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 480s xvfb-run -a godot \
+            --rendering-method gl_compatibility --resolution 1400x800 \
+            -s tools/capture_silhouette_review.gd -- /tmp/voxel-qa \
+            2>&1 | tee silhouette-review-render.log
+          test -s /tmp/voxel-qa/seven_chassis_multiangle.png
+          ! grep -E 'SCRIPT ERROR|Parse Error|SILHOUETTE_RENDER_ERROR' silhouette-review-render.log
       - name: Upload compact review evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -83,4 +93,5 @@ jobs:
             silhouette.log
             catalog-audit.log
             voxel-render.log
+            silhouette-review-render.log
           if-no-files-found: warn
