@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Original sculpt keyed to Jackrabbit TRO art: tall narrow angular head, left-arm two-port Streak rack, long right-arm autocannon, thin extended runner legs without hand manipulators.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
+  "notes": "Original sculpt keyed to Jackrabbit TRO art: tall narrow angular head, left-arm two-port Streak rack, long right-arm autocannon, thin extended runner legs without hand manipulators.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nLoad-bearing shoulder bosses: separately authored contiguous 3D frame collars, 5+ coarse-cell z-span, no isolated floating armor lips; broad arm bearings retained while surrounding profiles remain slim.",
   "parts": [
     {
       "name": "ct",
@@ -478,6 +478,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -10,
+              29,
+              -3
+            ],
+            [
+              -3,
+              34,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "ct"
@@ -673,6 +688,21 @@
               -7
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -12,
+              28,
+              -2
+            ],
+            [
+              -9,
+              32,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",
@@ -1018,6 +1048,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              9,
+              28,
+              -2
+            ],
+            [
+              12,
+              32,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "rt",

@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Reference-driven tall light scout with rounded visor, two distinct shoulder mounts: ten-tube LRM on left torso, forward-projecting LB 5-X on right torso; five jump jets in CT and legs.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
+  "notes": "Reference-driven tall light scout with rounded visor, two distinct shoulder mounts: ten-tube LRM on left torso, forward-projecting LB 5-X on right torso; five jump jets in CT and legs.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nLoad-bearing shoulder bosses: separately authored contiguous 3D frame collars, 5+ coarse-cell z-span, no isolated floating armor lips; broad arm bearings retained while surrounding profiles remain slim.",
   "parts": [
     {
       "name": "ct",
@@ -663,6 +663,21 @@
               -10
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -10,
+              29,
+              -3
+            ],
+            [
+              -3,
+              35,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "ct"
@@ -765,6 +780,21 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              3,
+              29,
+              -3
+            ],
+            [
+              10,
+              35,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "ct"
@@ -874,6 +904,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -12,
+              29,
+              -2
+            ],
+            [
+              -9,
+              33,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",
@@ -1145,6 +1190,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              9,
+              29,
+              -2
+            ],
+            [
+              12,
+              33,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "rt",

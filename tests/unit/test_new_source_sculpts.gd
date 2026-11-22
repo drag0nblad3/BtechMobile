@@ -117,6 +117,43 @@ func _whole_model(m: VxModel) -> Dictionary:
             combined[c] = true
     return combined
 
+func test_primary_shoulder_mounts_are_substantial_and_backed() -> void:
+    # A minimum 3x3 square with at least one full backing layer on BOTH
+    # sides: a single 2x2 seam is not enough for a heavy shoulder shield.
+    for name: String in MODELS:
+        var m := VxModel.load_file("res://data/voxels/%s_shape.json" % name)
+        for pname in ["lt", "rt", "la", "ra"]:
+            var child: Dictionary = m.part(pname)
+            var parent: Dictionary = m.part(child.get("parent", ""))
+            check(not child.is_empty(), name + "/" + pname + " missing shoulder")
+            if not child.is_empty() and not parent.is_empty():
+                check(_large_joint(child["cells"], parent["cells"]),
+                        name + "/" + pname + " lacks a 3x3 two-layer backed shoulder bearing")
+
+
+func _large_joint(child: Dictionary, parent: Dictionary) -> bool:
+    for cell: Vector3i in child:
+        for normal: Vector3i in AXES:
+            if not parent.has(cell + normal):
+                continue
+            var sides := _cross(normal)
+            for u in [-2, -1, 0]:
+                for v in [-2, -1, 0]:
+                    var strong := true
+                    for du in 3:
+                        for dv in 3:
+                            var c: Vector3i = cell + sides[0] * (u + du) + sides[1] * (v + dv)
+                            if not child.has(c) or not child.has(c - normal) \
+                                    or not parent.has(c + normal) or not parent.has(c + normal * 2):
+                                strong = false
+                                break
+                        if not strong:
+                            break
+                    if strong:
+                        return true
+    return false
+
+
 func _groups(cells: Dictionary) -> int:
     var pending := {}
     for c: Vector3i in cells:
