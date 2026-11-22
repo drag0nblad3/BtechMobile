@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/watchman_shape.json",
+  "id": "watchman",
+  "subdivide": 2
+}

@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/apollo_shape.json",
+  "id": "apollo",
+  "subdivide": 2
+}

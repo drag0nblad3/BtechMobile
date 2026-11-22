@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/eisenfaust_shape.json",
+  "id": "eisenfaust",
+  "subdivide": 2
+}

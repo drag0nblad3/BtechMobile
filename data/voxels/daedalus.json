@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/daedalus_shape.json",
+  "id": "daedalus",
+  "subdivide": 2
+}

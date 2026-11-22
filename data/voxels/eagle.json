@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/eagle_shape.json",
+  "id": "eagle",
+  "subdivide": 2
+}
