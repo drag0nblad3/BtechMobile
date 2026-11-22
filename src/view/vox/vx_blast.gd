@@ -8,7 +8,11 @@ const SHADER := preload("res://src/view/shaders/vx_blast.gdshader")
 
 ## Presets: cube counts, cube size, burst speed, seconds.
 const KINDS := {
-	"impact": {"fire": 6, "smoke": 4, "debris": 4, "cube": 0.06, "speed": 0.9, "time": 0.8},
+	"impact": {"fire": 8, "smoke": 5, "debris": 6, "cube": 0.065, "speed": 1.1, "time": 0.75},
+	"miss": {"fire": 0, "smoke": 5, "debris": 7, "cube": 0.055, "speed": 0.65, "time": 0.6,
+		"smoke_color": Color(0.40, 0.37, 0.31), "debris_color": Color(0.33, 0.29, 0.25)},
+	"fall": {"fire": 0, "smoke": 16, "debris": 12, "cube": 0.09, "speed": 1.0, "time": 1.0,
+		"smoke_color": Color(0.34, 0.33, 0.31), "debris_color": Color(0.35, 0.34, 0.32)},
 	"blast": {"fire": 26, "smoke": 14, "debris": 18, "cube": 0.11, "speed": 2.2, "time": 1.6},
 	"mech": {"fire": 56, "smoke": 22, "debris": 30, "cube": 0.13, "speed": 3.0, "time": 2.2},
 	"dust": {"fire": 0, "smoke": 30, "debris": 24, "cube": 0.14, "speed": 1.6, "time": 2.0,

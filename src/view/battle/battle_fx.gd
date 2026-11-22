@@ -22,17 +22,44 @@ func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
 func play(e: GameEvent) -> void:
 	match e.type:
 		GameEvent.WEAPON_FIRED:
-			if e.data.get("hit", false):
-				_at_unit(e.data.get("target_id", -1), "impact", Vector3(0, 0.1, 0))
+			_weapon_fire(e.data)
 		GameEvent.PHYSICAL:
 			if e.data.get("hit", false):
 				_at_unit(e.data.get("target_id", -1), "impact")
+		GameEvent.FALL:
+			var fallen := _unit_pos(int(e.data.get("unit_id", -1)))
+			if fallen != Vector3.INF:
+				VxBlast.spawn(self, fallen - Vector3(0, 0.35, 0), "fall", randi())
 		GameEvent.AMMO_EXPLOSION:
 			_at_unit(e.data["unit_id"], "blast")
 		GameEvent.UNIT_DESTROYED:
 			_at_unit(e.data["unit_id"], "mech")
 		GameEvent.BUILDING:
 			_building(e.data)
+
+
+## Brief readable beams/projectiles are purely visual; rules still resolve
+## immediately and no projectile affects targeting, damage or replay state.
+func _weapon_fire(d: Dictionary) -> void:
+	if d.get("no_ammo", false) or d.get("streak_held", false):
+		return
+	var a := _unit_pos(int(d.get("attacker_id", -1)))
+	var target := _unit_pos(int(d.get("target_id", -1)))
+	if a == Vector3.INF or target == Vector3.INF:
+		return
+	var hit := bool(d.get("hit", false))
+	var weapon := String(d.get("weapon_id", d.get("weapon", "")))
+	var destination := target
+	if not hit:
+		destination += ShotFx.miss_offset(int(d.get("attacker_id", 0)),
+			int(d.get("target_id", 0)), weapon)
+	if get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
+		ShotFx.spawn(self, a, destination, weapon, hit)
+	if hit:
+		_at_unit(int(d.get("target_id", -1)), "impact", Vector3(0, 0.1, 0))
+	else:
+		VxBlast.spawn(self, destination - Vector3(0, 0.3, 0), "miss",
+			int(d.get("attacker_id", 0)) * 131 + int(d.get("target_id", 0)))
 
 
 func _building(d: Dictionary) -> void:
