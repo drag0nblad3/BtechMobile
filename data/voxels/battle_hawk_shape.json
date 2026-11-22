@@ -427,134 +427,15 @@
             [
               -2,
               36,
-              -10
+              -8
             ],
             [
               1,
               37,
-              -8
+              -6
             ]
           ],
           "mat": "glow"
-        },
-        {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -12,
-                "polygon": [
-                  [
-                    -1,
-                    35
-                  ],
-                  [
-                    1,
-                    35
-                  ],
-                  [
-                    1.2,
-                    35.2
-                  ],
-                  [
-                    1.2,
-                    36.8
-                  ],
-                  [
-                    1,
-                    37
-                  ],
-                  [
-                    -1,
-                    37
-                  ],
-                  [
-                    -1.2,
-                    36.8
-                  ],
-                  [
-                    -1.2,
-                    35.2
-                  ]
-                ]
-              },
-              {
-                "at": -7,
-                "polygon": [
-                  [
-                    -1.3,
-                    33
-                  ],
-                  [
-                    1.3,
-                    33
-                  ],
-                  [
-                    2.1,
-                    33.8
-                  ],
-                  [
-                    2.1,
-                    36.2
-                  ],
-                  [
-                    1.3,
-                    37
-                  ],
-                  [
-                    -1.3,
-                    37
-                  ],
-                  [
-                    -2.1,
-                    36.2
-                  ],
-                  [
-                    -2.1,
-                    33.8
-                  ]
-                ]
-              },
-              {
-                "at": -4,
-                "polygon": [
-                  [
-                    -1.93,
-                    32.8
-                  ],
-                  [
-                    1.93,
-                    32.8
-                  ],
-                  [
-                    2.7,
-                    33.57
-                  ],
-                  [
-                    2.7,
-                    36.43
-                  ],
-                  [
-                    1.93,
-                    37.2
-                  ],
-                  [
-                    -1.93,
-                    37.2
-                  ],
-                  [
-                    -2.7,
-                    36.43
-                  ],
-                  [
-                    -2.7,
-                    33.57
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "armor"
         }
       ]
     },
@@ -883,6 +764,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -13,
+              26,
+              -3
+            ],
+            [
+              -9,
+              32,
+              3
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1033,17 +929,17 @@
         {
           "box": [
             [
-              -12,
-              19,
-              2
+              -13,
+              22,
+              -3
             ],
             [
-              -10,
-              21,
+              -9,
+              27,
               3
             ]
           ],
-          "mat": "plate"
+          "mat": "joint"
         }
       ]
     },
@@ -1777,5 +1673,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (bird_snout), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry."
+  "notes": "Individual reference-oriented shape study (bird_snout), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
 }

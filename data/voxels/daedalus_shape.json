@@ -230,36 +230,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -2,
-              24,
-              4
-            ],
-            [
-              1,
-              27,
-              6
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -3,
-              25,
-              5
-            ],
-            [
-              2,
-              31,
-              8
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -764,6 +734,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -13,
+              26,
+              -3
+            ],
+            [
+              -9,
+              32,
+              3
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -915,16 +900,16 @@
           "box": [
             [
               -13,
-              19,
-              2
+              22,
+              -3
             ],
             [
-              -11,
-              21,
+              -9,
+              27,
               3
             ]
           ],
-          "mat": "plate"
+          "mat": "joint"
         }
       ]
     },
@@ -1892,5 +1877,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (asymmetric_jump), 45 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry."
+  "notes": "Individual reference-oriented shape study (asymmetric_jump), 45 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
 }

@@ -749,6 +749,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -14,
+              26,
+              -3
+            ],
+            [
+              -10,
+              32,
+              3
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -900,16 +915,16 @@
           "box": [
             [
               -14,
-              19,
-              2
+              22,
+              -3
             ],
             [
-              -12,
-              21,
+              -10,
+              27,
               3
             ]
           ],
-          "mat": "plate"
+          "mat": "joint"
         }
       ]
     },
@@ -1523,5 +1538,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (double_cannon), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry."
+  "notes": "Individual reference-oriented shape study (double_cannon), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
 }
