@@ -57,6 +57,7 @@ def catalog():
 
 def factions_from_source():
     gd=(ROOT/"src/core/forces/era_availability.gd").read_text()
+    gd=gd.split("const FACTIONS := [",1)[1].split("\nvar records:",1)[0]
     rows=re.findall(r'\{"id": "([^"]+)", "name": "([^"]+)", "start": \d+, "end": \d+\}',gd)
     if len(rows)!=71:
         raise RuntimeError("Expected 71 registered factions, found %d"%len(rows))
