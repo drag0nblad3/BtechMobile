@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Hussar aircraft-like elongated ovoid fuselage, forward glass canopy under a long dorsal center-torso laser cannon, high rear fins, spindly landing-gear limbs. Reference: TRO 3039 Hussar original art. 2026 multi-view resculpt: widened forward fuselage reach and extended center dorsal laser, reduced dangling arm bulk and narrowed legs.\n2026-11-22 topology correction: one rooted rig, independently constructed upper/lower shin and arm masses; distinct source-level moving components. Not final silhouette sign-off.",
+  "notes": "Hussar aircraft-like elongated ovoid fuselage, forward glass canopy under a long dorsal center-torso laser cannon, high rear fins, spindly landing-gear limbs. Reference: TRO 3039 Hussar original art. 2026 multi-view resculpt: widened forward fuselage reach and extended center dorsal laser, reduced dangling arm bulk and narrowed legs.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
   "parts": [
     {
       "name": "ct",
@@ -1137,7 +1137,120 @@
         24,
         0
       ],
-      "shapes": []
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 20,
+                "polygon": [
+                  [
+                    -11.79,
+                    -1
+                  ],
+                  [
+                    -10.21,
+                    -1
+                  ],
+                  [
+                    -9.9,
+                    -0.52
+                  ],
+                  [
+                    -9.9,
+                    1.72
+                  ],
+                  [
+                    -10.21,
+                    2.2
+                  ],
+                  [
+                    -11.79,
+                    2.2
+                  ],
+                  [
+                    -12.1,
+                    1.72
+                  ],
+                  [
+                    -12.1,
+                    -0.52
+                  ]
+                ]
+              },
+              {
+                "at": 24,
+                "polygon": [
+                  [
+                    -11.806,
+                    -0.6
+                  ],
+                  [
+                    -9.874,
+                    -0.6
+                  ],
+                  [
+                    -9.5,
+                    -0.12
+                  ],
+                  [
+                    -9.5,
+                    2.12
+                  ],
+                  [
+                    -9.874,
+                    2.6
+                  ],
+                  [
+                    -11.806,
+                    2.6
+                  ],
+                  [
+                    -12.18,
+                    2.12
+                  ],
+                  [
+                    -12.18,
+                    -0.12
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -12,
+              19,
+              -3
+            ],
+            [
+              -10,
+              21,
+              3
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -12,
+              22,
+              3
+            ],
+            [
+              -11,
+              24,
+              4
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "ra",
@@ -1445,7 +1558,105 @@
         9,
         1
       ],
-      "shapes": []
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 6,
+                "polygon": [
+                  [
+                    -5.42,
+                    -0.5
+                  ],
+                  [
+                    -3.98,
+                    -0.5
+                  ],
+                  [
+                    -3.7,
+                    -0.05
+                  ],
+                  [
+                    -3.7,
+                    2.05
+                  ],
+                  [
+                    -3.98,
+                    2.5
+                  ],
+                  [
+                    -5.42,
+                    2.5
+                  ],
+                  [
+                    -5.7,
+                    2.05
+                  ],
+                  [
+                    -5.7,
+                    -0.05
+                  ]
+                ]
+              },
+              {
+                "at": 9,
+                "polygon": [
+                  [
+                    -5.585,
+                    -0.65
+                  ],
+                  [
+                    -3.815,
+                    -0.65
+                  ],
+                  [
+                    -3.475,
+                    -0.133
+                  ],
+                  [
+                    -3.475,
+                    2.282
+                  ],
+                  [
+                    -3.815,
+                    2.8
+                  ],
+                  [
+                    -5.585,
+                    2.8
+                  ],
+                  [
+                    -5.925,
+                    2.282
+                  ],
+                  [
+                    -5.925,
+                    -0.133
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -6,
+              7,
+              3
+            ],
+            [
+              -5,
+              9,
+              4
+            ]
+          ],
+          "mat": "plate"
+        }
+      ]
     },
     {
       "name": "ll_tarsus",
