@@ -68,6 +68,7 @@ var game_over_detail: Label  ## Training debrief under the result.
 var leave_button: Button
 var prone_button: Button
 var more_button: MenuButton
+var _tools_menu: MenuButton
 var pause_menu: BattlePauseMenu
 var _move_actions: Array[Button] = []
 var game_over_label: Label
@@ -123,16 +124,25 @@ func _ready() -> void:
 	var shortcuts := _row(col)
 	shortcuts.add_theme_constant_override("separation", 6)
 	_button(shortcuts, "Pause", pause_toggled)
-	_button(shortcuts, "Save", save_battle)
-	_button(shortcuts, "Replay", watch_replay)
 	_button(shortcuts, "Log", log_toggled)
 	_button(shortcuts, "Sheet", sheet_toggled)
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
-	_button(shortcuts, "Map View", top_down_toggled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
-	for b: Button in shortcuts.get_children():
-		b.custom_minimum_size = Vector2(112, 52)
-		b.add_theme_font_size_override("font_size", 19)
+	_tools_menu = MenuButton.new()
+	_tools_menu.text = "More ▾"
+	_tools_menu.tooltip_text = "Save, replay and camera options"
+	shortcuts.add_child(_tools_menu)
+	UiSkin.button(_tools_menu, "subtle")
+	var popup := _tools_menu.get_popup()
+	popup.add_item("Save battle", 0)
+	popup.add_item("Watch replay", 1)
+	popup.add_item("Top-down map", 2)
+	popup.add_item("Battle analysis", 3)
+	popup.id_pressed.connect(_on_tool_action)
+	for b in shortcuts.get_children():
+		if b is Button:
+			b.custom_minimum_size = Vector2(100, 46)
+			b.add_theme_font_size_override("font_size", 17)
 	UiSkin.button(shortcuts.get_child(0) as Button, "primary")
 	info = _label(col, 22)
 	UiSkin.label(info, "section")
@@ -207,6 +217,14 @@ func _ready() -> void:
 	pause_menu.resumed.connect(func(): pause_toggled.emit())
 	pause_menu.save_requested.connect(func(): save_battle.emit())
 	pause_menu.exit_requested.connect(func(): exit_battle.emit())
+
+
+func _on_tool_action(id: int) -> void:
+	match id:
+		0: save_battle.emit()
+		1: watch_replay.emit()
+		2: top_down_toggled.emit()
+		3: battle_forensics.emit()
 
 
 ## Refresh the Actions button from the same eligibility flags MovementInput sets.
