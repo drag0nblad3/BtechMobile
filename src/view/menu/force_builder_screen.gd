@@ -17,13 +17,16 @@ var bot_sides := [1]
 ## Deliberate Android Back navigation when automatic exit is disabled.
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+	if event is InputEventKey:
+		var key := event as InputEventKey
+		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
+			return
 		get_viewport().set_input_as_handled()
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _ready() -> void:

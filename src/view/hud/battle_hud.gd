@@ -185,7 +185,10 @@ func _on_move_action(id: int) -> void:
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+	if event is InputEventKey:
+		var key := event as InputEventKey
+		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
+			return
 		get_viewport().set_input_as_handled()
 		pause_toggled.emit()
 

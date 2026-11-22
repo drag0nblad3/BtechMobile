@@ -12,7 +12,8 @@
   Resume, Save, or Save & Exit are available. Save & Exit refuses to leave
   if saving fails. Android Back opens/closes the pause overlay.
 - Disable automatic Android Back exit in project settings, with deliberate
-  Back behavior in menu (quit), replay and forensics (return to menu).
+  Back behavior in the force builder (launcher), replay and forensics
+  (return to menu), and voxel test scenes (launcher). Launcher Back quits.
 - Ignore tilt during pinch and twist updates to avoid unwanted camera pitch,
   while preserving controlled two-finger vertical dragging.
 

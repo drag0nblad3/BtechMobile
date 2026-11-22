@@ -7,6 +7,21 @@ const VOXEL_LAB := "res://scenes/voxel_mech_lab.tscn"
 const VX_SHOWCASE := "res://scenes/vx_showcase.tscn"
 
 
+## Android Back remains available with automatic back-to-exit disabled.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().quit()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		var key := event as InputEventKey
+		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
+			return
+		get_viewport().set_input_as_handled()
+		get_tree().quit()
+
+
 func _ready() -> void:
 	set_anchors_preset(PRESET_FULL_RECT)
 	var bg := ColorRect.new()
