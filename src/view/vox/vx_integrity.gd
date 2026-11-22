@@ -4,6 +4,7 @@ extends RefCounted
 ## Never weld independent moving parts or seal authored ports and voids.
 
 const GAP := 3
+const RIG_GAP := 3
 const SEARCH_LIMIT := 4500
 const DIRS: Array[Vector3i] = [Vector3i.LEFT, Vector3i.RIGHT, Vector3i.UP,
 		Vector3i.DOWN, Vector3i.FORWARD, Vector3i.BACK]
@@ -95,6 +96,13 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 		report["added"] += route.size()
 		report["joint_contacts"] += 1
 
+	# The actual floating-island requirement is measured on rigid assemblies.
+	# Join only very close unsupported geometry, after articulation ownership
+	# and part-local repairs have settled.
+	var rigid_fix := _repair_rigid_assemblies(m, owned, voids, muzzle_guard, n)
+	report["rig_rejoined"] = rigid_fix["rejoined"]
+	report["rig_added"] = rigid_fix["added"]
+	report["added"] += rigid_fix["added"]
 	var residual := {}
 	for p: Dictionary in m.parts:
 		var groups := components(p["cells"])
@@ -115,6 +123,60 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 	report["rig_islands"] = rigid["unanchored"]
 	report["rig_groups"] = rigid["groups"]
 	return report
+
+
+## A rigid frame includes non-jointed children. A single cannon hand may
+## occupy several subparts, all sharing one IK pivot. Join small gaps inside
+## THAT frame; never make a bridge from one articulated limb to another.
+static func _repair_rigid_assemblies(m: VxModel, owned: Dictionary,
+		voids: Array[Dictionary], guard: Dictionary, n: int) -> Dictionary:
+	var rigs: Dictionary = {}
+	for p: Dictionary in m.parts:
+		var root := _rig_root(m, p)
+		if not rigs.has(root):
+			rigs[root] = {}
+		for c: Vector3i in p["cells"]:
+			rigs[root][c] = true
+	var report := {"rejoined": 0, "added": 0}
+	for root: String in rigs:
+		var groups := components(rigs[root])
+		if groups.size() < 2:
+			continue
+		var solid: Dictionary = groups[0]
+		for i in range(1, groups.size()):
+			var island: Dictionary = groups[i]
+			if _all_optical(island, m, owned):
+				continue
+			var route := _path(island.keys(), solid, owned, voids, guard, RIG_GAP * n)
+			if route.is_empty():
+				continue
+			# First step is face-adjacent to the orphan component; attaching
+			# it to that component's owning part preserves the rig transform.
+			var attaching_part: Dictionary = {}
+			for d: Vector3i in DIRS:
+				var near: Vector3i = route[0] + d
+				if island.has(near):
+					attaching_part = m.part(String(owned[near]))
+					break
+			if attaching_part.is_empty():
+				continue
+			for c: Vector3i in route:
+				attaching_part["cells"][c] = _structure(m)
+				owned[c] = attaching_part["name"]
+				solid[c] = true
+			for c: Vector3i in island:
+				solid[c] = true
+			report["added"] += route.size()
+			report["rejoined"] += 1
+	return report
+
+
+static func _all_optical(group: Dictionary, m: VxModel, owned: Dictionary) -> bool:
+	for c: Vector3i in group:
+		var owner: Dictionary = m.part(String(owned[c]))
+		if not _optical_detail(owner["cells"], m):
+			return false
+	return true
 
 
 ## A parent with no articulated joint inherits the ancestor's rigid frame.
