@@ -59,6 +59,8 @@ var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 var asset: AssetCard = null
 ## Combat vehicle record sheet; static specification, not an Asset card.
 var vehicle: VehicleSpec = null
+## Battle armor record sheet (troopers, weapons), null otherwise.
+var battle_armor: BaSpec = null
 ## Mixed technology allows equipment subsystems from the other tech base.
 var clan_parts: Dictionary = {}
 var armor: Array[int] = []       ## Per Location, front.
@@ -86,8 +88,11 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.tonnage = int(d.get("tonnage", 0)) if u.asset else int(d["tonnage"])
 	if d.has("vehicle"):
 		u.vehicle = VehicleSpec.from_dict(d["vehicle"])
-	u.walk_mp = u.asset.mp if u.asset else u.vehicle.cruise_mp if u.vehicle else int(d["walk_mp"])
-	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else int(d.get("jump_mp", 0))
+	if d.has("battle_armor"):
+		u.battle_armor = BaSpec.from_dict(d["battle_armor"])
+	var b := u.battle_armor
+	u.walk_mp = u.asset.mp if u.asset else u.vehicle.cruise_mp if u.vehicle else b.ground_mp if b else int(d["walk_mp"])
+	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else b.jump_mp if b else int(d.get("jump_mp", 0))
 	u.jump_jet_type = d.get("jump_jet_type", "")
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
@@ -184,9 +189,9 @@ func is_xl() -> bool:
 	return engine_type == "xl"
 
 
-## A Battlefield Support Asset or a combat vehicle (not a 'Mech).
+## A Battlefield Support Asset, combat vehicle or battle armor (not a 'Mech).
 func is_support() -> bool:
-	return asset != null or vehicle != null
+	return asset != null or vehicle != null or battle_armor != null
 
 
 func is_clan() -> bool:

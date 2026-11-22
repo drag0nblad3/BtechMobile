@@ -36,7 +36,7 @@ static func pack(v: Variant) -> Variant:
 				return {"$": "unit_def", "id": v.id}
 			if v is WeaponDef:
 				# Asset weapons are synthesized from a card, not in the weapon catalog.
-				if String(v.id).begins_with("asset_"):
+				if String(v.id).begins_with("asset_") or String(v.id).begins_with("ba_"):
 					var inline := {}
 					for n: String in BattleFields.names(v):
 						inline[n] = pack(v.get(n))

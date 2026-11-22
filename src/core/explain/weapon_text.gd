@@ -13,6 +13,9 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 	if d["missiles"] > 0:
 		var unit := "shots" if d.get("mode", "") == WeaponModes.ULTRA or d.get("shots", 1) > 1 else (
 				"pellets" if d.get("mode", "") == WeaponModes.CLUSTER else "missiles")
+		var wid := String(d.get("weapon_id", ""))
+		if wid.begins_with("ba_") and not wid.contains("srm"):
+			unit = "troopers' shots"  # a squad attack: one shot per trooper (BaFire)
 		res += ", %d %s" % [d["missiles"], unit]
 		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
 			res += " (%s +%d)" % ["Narc" if d.get("narc_homing", false) else

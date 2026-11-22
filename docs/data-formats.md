@@ -119,6 +119,19 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
 
+## `data/battle_armor/<id>.json`
+A battle armor squad's record sheet (`BaSpec`). Each weapon is a `WeaponDef` dictionary for one
+trooper's weapon; the squad fires it as one attack with a shot (or `missiles`) per living trooper.
+```json
+{"id": "elemental_ba_laser", "name": "Elemental Battle Armor", "model": "[Laser](Sqd5)", "tonnage": 1,
+ "tech_base": "clan", "battle_armor": {"troopers": 5, "armor": 10, "ground_mp": 1, "jump_mp": 3, "claw": true,
+ "weapons": [{"id": "small_laser", "name": "Small Laser", "type": "energy", "damage": 3, "short": 1, "medium": 2, "long": 3},
+  {"id": "srm2", "name": "SRM 2", "type": "missile", "damage": 2, "missiles": 2, "short": 3, "medium": 6, "long": 9,
+   "ammo_per_ton": 2, "ammo_explodes": false}]},
+ "source": {"mul_id": 8497, "megamek": "...", "bv": "sheet", "sheet": "..."}, "bv": 447}
+```
+`armor` is per trooper (each trooper also takes 1 more point to kill); `ammo_per_ton` is the squad's volleys.
+
 ## `data/scenarios/<id>.json`
 ```json
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}

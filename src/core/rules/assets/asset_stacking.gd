@@ -8,7 +8,7 @@ extends RefCounted
 
 
 static func is_infantry(u: Unit) -> bool:
-	return u.asset != null and u.asset.card.is_infantry()
+	return u.ba != null or (u.asset != null and u.asset.card.is_infantry())
 
 
 ## Living units in a hex other than `u` (riders inside an APC don't count).

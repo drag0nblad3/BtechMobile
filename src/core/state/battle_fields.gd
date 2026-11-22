@@ -12,7 +12,7 @@ static func names(o: Object) -> Array:
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
-		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "vehicle", "armor",
+		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "vehicle", "ba", "armor",
 				"rear_armor", "structure", "weapons", "ammo", "slots", "heat",
 				"engine_hits", "gyro_hits", "sensor_hits", "heat_sinks_lost",
 				"sinks_off", "sinks_off_request", "melee_lost", "club",
@@ -33,6 +33,8 @@ static func names(o: Object) -> Array:
 		return ["spec", "cruise_lost", "half_cruise", "immobile", "driving_mod",
 				"sensor_hits", "stabilizers", "turret_locked", "turret_lost",
 				"crew_stunned", "commander_hit", "driver_hit", "engine_hit"]
+	if o is BaState:
+		return ["troopers"]
 	if o is VehicleSpec:
 		return ["motive", "cruise_mp", "engine", "turret"]
 	if o is AssetCard:
@@ -64,7 +66,7 @@ static func names(o: Object) -> Array:
 	if o is MountedWeapon:
 		return ["def", "loc", "rear", "destroyed", "exploded", "mode", "artemis",
 				"artemis_lost", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
-				"jammed", "spent", "crit_hits", "on_vehicle"]
+				"jammed", "spent", "crit_hits", "on_vehicle", "on_squad"]
 	if o is AmmoBin:
 		return ["weapon", "loc", "shots", "destroyed", "kind"]
 	if o is CritSlot:
@@ -110,6 +112,7 @@ static func create(tag: String, p: Dictionary, units: UnitDb, terrain: TerrainDb
 		"Pilot": return Pilot.new()
 		"AssetCard": return AssetCard.new()
 		"AssetState": return AssetState.new(AssetCard.new())
+		"BaState": return BaState.new()
 		"VehicleSpec": return VehicleSpec.new()
 		"VehicleState": return VehicleState.new(VehicleSpec.new())
 		"WeaponDef": return WeaponDef.new()
@@ -118,7 +121,10 @@ static func create(tag: String, p: Dictionary, units: UnitDb, terrain: TerrainDb
 			var w: WeaponDef = units.weapons.get_def(String(saved_def["id"])) 					if String(saved_def.get("$", "")) == "weapon_def" else WeaponDef.new()
 			return MountedWeapon.new(w, 0, false)
 		"AmmoBin":
-			return AmmoBin.new(units.weapons.get_def(String(p["weapon"]["id"])), 0)
+			var saved: Dictionary = p["weapon"]
+			if String(saved.get("$", "")) != "weapon_def":  # a squad's generated weapon, saved inline
+				return AmmoBin.new(WeaponDef.new(), 0)
+			return AmmoBin.new(units.weapons.get_def(String(saved["id"])), 0)
 		"CritSlot": return CritSlot.new(0, "")
 		"ToHit": return ToHit.new()
 		"MissionState": return MissionState.new()
