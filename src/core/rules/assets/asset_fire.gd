@@ -16,7 +16,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if target == null or target.destroyed:
 		th.impossible = "No target"
 		return th
-	if target.asset != null and target.asset.carried_by >= 0:
+	if target.carrier_id() >= 0:
 		th.impossible = "It is riding inside a transport"
 		return th
 	if attacker.asset.deployed_turn == state.turn:

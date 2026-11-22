@@ -40,14 +40,14 @@ func _plan() -> Dictionary:
 	for o in s.units:
 		if o.side != u.side or o.destroyed or o == u:
 			continue
-		if o.coord == at and u.asset != null and u.asset.carried_by < 0:
+		if o.coord == at and AssetStacking.is_infantry(u) and u.carrier_id() < 0:
 			var save := u.coord
 			u.coord = at
 			var why := AssetTransport.board_problem(s, u, o)
 			u.coord = save
 			if why == "":
 				return {"text": "Board", "kind": "board", "other": o}
-		if o.asset != null and o.asset.carried_by == u.id:
+		if o.carrier_id() == u.id:
 			return {"text": "Unload", "kind": "unload", "other": o}
 	return {}
 

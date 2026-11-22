@@ -15,6 +15,8 @@ extends RefCounted
 
 ## [{kind: "punch"|"kick"|"push", limb, to_hit, damage, table: "punch"|"kick"|"full"}]
 static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
+	if BaSwarm.on(t) == a.id and not a.def.is_support():
+		return BaBrushOff.options(state, a, t)
 	var out: Array[Dictionary] = []
 	if a.def.is_support() or (t.asset != null and t.asset.card.kind == AssetCard.VTOL):
 		return out  # Assets make no physical attacks; VTOLs can't be hit by them (p. 145)
@@ -172,7 +174,7 @@ static func any_possible(state: GameState, a: Unit) -> bool:
 				if opt["to_hit"].possible():
 					return true
 	for t in state.units:
-		if t.side == a.side or t.destroyed or Hex.distance(a.coord, t.coord) != 1:
+		if t.side == a.side or t.destroyed or (Hex.distance(a.coord, t.coord) != 1 and BaSwarm.on(t) != a.id):
 			continue
 		for opt in for_target(state, a, t):
 			if opt["to_hit"].possible():

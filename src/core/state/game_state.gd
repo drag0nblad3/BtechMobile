@@ -80,7 +80,7 @@ func unit_by_id(unit_id: int) -> Unit:
 func unit_at(c: Vector2i) -> Unit:
 	var inf: Unit = null
 	for u in units:
-		if u.coord == c and not u.destroyed and (u.asset == null or u.asset.carried_by < 0):
+		if u.coord == c and not u.destroyed and u.carrier_id() < 0:
 			if not AssetStacking.is_infantry(u):
 				return u
 			if inf == null:
