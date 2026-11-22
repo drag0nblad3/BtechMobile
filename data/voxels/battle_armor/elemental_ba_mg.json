@@ -321,6 +321,21 @@
         {
           "box": [
             [
+              -12,
+              8,
+              -20
+            ],
+            [
+              -12,
+              8,
+              -13
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
               -18,
               12,
               -11
@@ -608,6 +623,21 @@
               0
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -5,
+              8,
+              -2
+            ],
+            [
+              -5,
+              8,
+              5
+            ]
+          ],
+          "mat": "frame"
         },
         {
           "box": [
@@ -903,6 +933,21 @@
         {
           "box": [
             [
+              3,
+              8,
+              -19
+            ],
+            [
+              3,
+              8,
+              -12
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
               -3,
               12,
               -10
@@ -1190,6 +1235,21 @@
               0
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              12,
+              8,
+              -2
+            ],
+            [
+              12,
+              8,
+              5
+            ]
+          ],
+          "mat": "frame"
         },
         {
           "box": [
@@ -1485,6 +1545,21 @@
         {
           "box": [
             [
+              19,
+              8,
+              -19
+            ],
+            [
+              19,
+              8,
+              -12
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
               13,
               12,
               -10
@@ -1506,8 +1581,8 @@
   "exclusive_parts": true,
   "armor_shape_revision": "unit-specific-50-cycle-20261122",
   "geometry_edits": 3000,
-  "weapon_kind": "laser",
-  "signature": "Clan laser 5 armored troopers",
+  "weapon_kind": "mg",
+  "signature": "Clan mg 5 armored troopers",
   "refinement_focus": [
     "helmet",
     "shoulder",
