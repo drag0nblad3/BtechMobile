@@ -186,7 +186,7 @@ func test_assembled_support_is_not_confused_with_per_rig_part_islands() -> void:
 	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
 	m.parts.append({"name": "arm", "loc": Location.LA, "parent": "ct",
 			"joint": "shoulder", "pivot": Vector3(4, 0, 0),
-			"cells": {Vector3i(4, 0, 0): 0}})
+			"cells": {Vector3i(3, 0, 0): 0, Vector3i(4, 0, 0): 0}})
 	check_eq(VxIntegrity.physical_components(m)["islands"], 0,
 			"an assembled articulated neighbor can physically support a panel")
 
