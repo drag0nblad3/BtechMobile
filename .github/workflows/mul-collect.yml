@@ -1,0 +1,41 @@
+name: Collect official MUL availability (paced)
+on:
+  workflow_dispatch:
+  push:
+    branches: [feature/era-faction-availability]
+    paths:
+      - tools/import_mul_availability.py
+      - .github/workflows/mul-collect.yml
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    concurrency:
+      group: mul-availability-import
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - run: python3 -m pip install --disable-pip-version-check beautifulsoup4
+      - name: Retrieve exact-variant MUL tables with official crawl delay
+        run: python3 tools/import_mul_availability.py --limit 24
+      - name: Commit verified snapshot back to feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/forces/availability.json docs/mul-import-coverage.json
+          if git diff --cached --quiet; then
+            echo "No imported records changed."
+          else
+            git commit -m "Import canonical MUL faction and era records for exact game variants"
+            git push origin HEAD:feature/era-faction-availability
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mul-import-coverage
+          path: docs/mul-import-coverage.json
+          if-no-files-found: ignore
