@@ -74,6 +74,17 @@ func _process(_delta: float) -> bool:
 			ShotFx.spawn(_scene.fx, muzzle, target, "er_ppc", true)
 			VxBlast.spawn(_scene.fx, target, "impact")
 		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
+	if _frames == 8 and _mode == "scars":
+		var wreck: Unit = _scene.controller.state.units[0]
+		wreck.destroyed = true  # capture only, no controller action
+		var view: UnitView = _scene.units_layer.view_of(wreck)
+		view.snap_to_state()
+		_scene.scars.on_event(GameEvent.new(GameEvent.BUILDING,
+				{"kind": "fire", "coord": wreck.coord}))
+		_scene.scars.on_event(GameEvent.new(GameEvent.DAMAGE,
+				{"unit_id": wreck.id, "amount": 24, "loc": Location.CT}))
+		_scene.scars.on_event(GameEvent.new(GameEvent.UNIT_DESTROYED, {"unit_id": wreck.id}))
+		_scene.rig.focus(view.position)
 	if _frames == 40:
 		root.get_viewport().get_texture().get_image().save_png(_out)
 		print("saved ", _out)
