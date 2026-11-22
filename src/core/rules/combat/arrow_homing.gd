@@ -8,8 +8,7 @@ extends RefCounted
 ## is lost, no scatter. Then 2D6 with no modifiers: 4+ deals 20 damage to that
 ## unit (hit from the launcher's direction) and 5 AE to everything else in
 ## its hex; 3 or less deals 5 AE to everything in its hex. AMS can't stop it.
-## TODO(rules): Nemesis pods can't pull homing missiles yet; the bot never
-## loads homing ammo on purpose.
+## TODO(rules): Nemesis pods can't pull homing missiles yet.
 
 const KIND := "homing"
 const NEED := 4
