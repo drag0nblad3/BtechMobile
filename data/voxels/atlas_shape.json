@@ -3679,6 +3679,21 @@
             ]
           ],
           "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -5,
+              6,
+              -6
+            ],
+            [
+              -5,
+              7,
+              -6
+            ]
+          ],
+          "mat": "inside"
         }
       ]
     },
@@ -5076,6 +5091,21 @@
               -12,
               46,
               -6
+            ]
+          ],
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -11,
+              46,
+              -10
+            ],
+            [
+              -11,
+              46,
+              -9
             ]
           ],
           "mat": "inside"
@@ -9483,5 +9513,6 @@
   "art_view_revision": "50-side-rear-top-passes-20261122",
   "art_view_passes": 50,
   "articulation_connection_revision": "part-island-godot-socket-20261122",
-  "articulation_socket_passes": 3
+  "articulation_socket_passes": 3,
+  "part_connectivity_revision": "godot-exact-face-bridge-20261122"
 }
