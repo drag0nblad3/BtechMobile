@@ -131,9 +131,9 @@ func _apply() -> void:
 	if _shake_left > 0.0 and GameSettings.camera_shake:
 		var envelope := _shake_left / 0.38
 		var n := float(posmod(_shake_seed, 83))
-		var offset := Vector3(sin(_shake_phase * 53.0 + n),
+		var kick_offset := Vector3(sin(_shake_phase * 53.0 + n),
 				cos(_shake_phase * 67.0 + n * 0.7), 0) * _shake_strength * envelope
-		camera.global_position += camera.global_basis * offset
+		camera.global_position += camera.global_basis * kick_offset
 
 
 func _clamp_to_bounds(p: Vector3) -> Vector3:
