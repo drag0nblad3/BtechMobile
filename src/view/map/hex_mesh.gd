@@ -37,6 +37,20 @@ static func cap(radius: float) -> ArrayMesh:
 	return st.commit()
 
 
+## A crisp hollow hex for friendly selection and hostile target markers.
+## One six-sided ribbon, not a fill: doesn't hide terrain or movement ranges.
+static func ring(radius: float, width: float) -> ArrayMesh:
+	var outer := corners(radius)
+	var inner := corners(maxf(0.01, radius - width))
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for i in 6:
+		var j := (i + 1) % 6
+		_tri(st, Vector3.UP, outer[i], outer[j], inner[j])
+		_tri(st, Vector3.UP, outer[i], inner[j], inner[i])
+	return st.commit()
+
+
 ## Vertices are emitted a, d, b so faces point along n (verified visually).
 static func _tri(st: SurfaceTool, n: Vector3, a: Vector3, b: Vector3, d: Vector3) -> void:
 	for v in [a, d, b]:

@@ -8,6 +8,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
+var focus_fx: BattleFocusFx
 var units_layer: UnitsLayer
 var rig: CameraRig
 var cinematic: CinematicDirector
@@ -154,6 +155,8 @@ func _build_views(state: GameState) -> void:
 	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
 	fx.setup(state, units_layer, map_view)
 	add_child(fx)
+	focus_fx = BattleFocusFx.new()
+	add_child(focus_fx)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -240,6 +243,15 @@ func _wire() -> void:
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
 	controller.event.connect(_on_event)
+
+
+## The selected / targeted hex stays legible as units animate. No gameplay polling.
+func _process(_delta: float) -> void:
+	if focus_fx == null or units_layer == null:
+		return
+	var chosen: Unit = attacks.attacker if attacks != null and attacks.attacker != null 			else (movement.selected if movement != null else null)
+	var enemy: Unit = attacks.target if attacks != null else null
+	focus_fx.follow(units_layer, chosen, enemy)
 
 
 func _focus_unit(u: Unit) -> void:

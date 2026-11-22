@@ -38,6 +38,7 @@ const BUTTON_SIZE := Vector2(140, 68)
 const MARGIN := 18
 
 var status: Label
+var _status_accent: ColorRect
 var info: Label
 var tip: Label
 var info_panel: PanelContainer
@@ -95,11 +96,11 @@ func _ready() -> void:
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(status, "heading")
-	var status_rule := ColorRect.new()
-	status_rule.color = UiSkin.AMBER.darkened(0.18)
-	status_rule.custom_minimum_size.y = 2
-	status_rule.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	header_box.add_child(status_rule)
+	_status_accent = ColorRect.new()
+	_status_accent.color = UiSkin.AMBER.darkened(0.18)
+	_status_accent.custom_minimum_size.y = 2
+	_status_accent.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	header_box.add_child(_status_accent)
 	# Give the full battle status its own line: seven 140px buttons and a
 	# turn/mission label cannot fit side by side at 1280x720 on a phone.
 	var shortcuts := _row(col)
@@ -275,6 +276,12 @@ func show_side(content: Control) -> void:
 
 func set_status(text: String) -> void:
 	status.text = text
+	if "Red to act" in text:
+		_status_accent.color = UiSkin.RED
+	elif "Blue to act" in text:
+		_status_accent.color = UiSkin.CYAN
+	else:
+		_status_accent.color = UiSkin.AMBER
 
 
 func set_info(text: String) -> void:
