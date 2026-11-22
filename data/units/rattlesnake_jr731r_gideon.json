@@ -1,0 +1,98 @@
+{
+ "id": "rattlesnake_jr731r_gideon",
+ "name": "Rattlesnake",
+ "model": "JR7-31R (Gideon)",
+ "tonnage": 35,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "cockpit_type": "small",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "clan_parts": {
+  "engine": true,
+  "heat_sinks": true,
+  "armor": true,
+  "tc": true,
+  "masc": true
+ },
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 11,
+  "RT": 11,
+  "CT": 15,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "medium_laser",
+   "endo_steel*4",
+   "ferro_fibrous*3"
+  ],
+  "RA": [
+   "heat_sink*2",
+   "medium_laser",
+   "endo_steel*2",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "c_er_medium_laser",
+   "targeting_computer",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "c_er_medium_laser",
+   "angel_ecm",
+   "masc",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "jump_jet",
+   "medium_laser"
+  ],
+  "HD": [
+   "c_er_small_laser"
+  ],
+  "LL": [
+   "endo_steel"
+  ],
+  "RL": [
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 9240,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 9/Rattlesnake JR7-31R Gideon.mtf",
+  "published": "ShrapRS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Rattlesnake JR7-31R (Gideon) (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 1959
+ },
+ "bv": 1959,
+ "sprite": "rattlesnake",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 3 Medium Lasers, 2 ER Medium Lasers, ER Small Laser; walks 7, runs 11, jumps 7."
+}

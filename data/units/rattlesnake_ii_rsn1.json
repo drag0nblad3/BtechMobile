@@ -1,0 +1,98 @@
+{
+ "id": "rattlesnake_ii_rsn1",
+ "name": "Rattlesnake II",
+ "model": "RSN-1",
+ "tonnage": 45,
+ "walk_mp": 7,
+ "jump_mp": 7,
+ "heat_sinks": 14,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "cockpit_type": "small",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "clan_parts": {
+  "engine": true,
+  "heat_sinks": true,
+  "armor": true
+ },
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 16,
+  "RT": 16,
+  "CT": 21,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*2",
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "RA": [
+   "medium_laser*2",
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet*2",
+   "c_er_medium_laser",
+   "masc",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet*2",
+   "c_er_medium_laser",
+   "guardian_ecm",
+   "endo_steel*2",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "c_er_small_laser"
+  ],
+  "LL": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "RL": [
+   "jump_jet",
+   "endo_steel"
+  ]
+ },
+ "source": {
+  "mul_id": 9241,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 9/Rattlesnake II RSN-1.mtf",
+  "published": "ShrapRS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Rattlesnake II RSN-1 (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 1962
+ },
+ "bv": 1962,
+ "sprite": "rattlesnake_ii",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 Medium Lasers, 2 ER Medium Lasers, ER Small Laser; walks 7, runs 11, jumps 7."
+}

@@ -1,0 +1,80 @@
+{
+ "id": "toro_trb12",
+ "name": "Toro",
+ "model": "TR-B-12",
+ "tonnage": 35,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "cockpit_type": "small",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 13,
+  "RT": 13,
+  "CT": 17,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "light_ppc",
+   "er_medium_laser",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "endo_steel*5"
+  ],
+  "LT": [
+   "heat_sink",
+   "mml5",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "heat_sink",
+   "mml5",
+   "ammo:mml5:srm",
+   "ammo:mml5",
+   "case2"
+  ],
+  "CT": [
+   "targeting_computer",
+   "endo_steel"
+  ],
+  "HD": [
+   "angel_ecm"
+  ],
+  "LL": [
+   "endo_steel"
+  ],
+  "RL": [
+   "endo_steel"
+  ]
+ },
+ "source": {
+  "mul_id": 9250,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 10/Toro TR-B-12.mtf",
+  "published": "ShrapRS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Toro TR-B-12 (Record-Sheets-Shrapnel-Year-01)",
+  "megamek_bv": 1029
+ },
+ "bv": 1029,
+ "sprite": "toro",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 MML 5s, Light PPC, ER Medium Laser; walks 6, runs 9."
+}

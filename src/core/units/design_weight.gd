@@ -5,7 +5,6 @@ extends RefCounted
 ## TODO(rules): construction rules are not in the Core Rulebook; engine
 ## weights (data/construction.json) and the rest are general knowledge.
 
-const COCKPIT_TONS := 3.0
 const ARMOR_PER_TON := 16.0
 ## Ferro-fibrous gives 12% more points per ton; endo steel halves structure.
 const FERRO_MULT := 1.12
@@ -27,7 +26,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"structure": _half_up(def.tonnage / 10.0 * (0.5 if def.structure_type == "endo_steel" else 1.0)),
 		"engine": XlEngine.tons(engine_tons(rating), def.engine_type),
 		"gyro": Gyro.tons(def),
-		"cockpit": COCKPIT_TONS,
+		"cockpit": Cockpit.tons(def),
 		"heat_sinks": float(maxi(0, def.heat_sinks - UnitDef.ENGINE_HEAT_SINKS)),
 		"jump_jets": JumpJets.tons(def, jump_jet_tons(def.tonnage)),
 		"armor": _half_up(armor_pts / (ARMOR_PER_TON * armor_mult(def))),
