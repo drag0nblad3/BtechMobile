@@ -1,0 +1,20 @@
+name: Temporary new sculpt topology check
+on:
+  push:
+    branches: ["art/new-source-mechs-shape-first-20261122"]
+jobs:
+  shapes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip -O /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.5.1-stable_linux.x86_64
+          sudo mv /tmp/Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Strict shape topology and muzzle checks
+        run: |
+          godot --headless --import
+          godot --headless -s tests/run_tests.gd -- new_source_sculpts
