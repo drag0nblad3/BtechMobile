@@ -107,6 +107,16 @@
    delete d.count_verified_fine_voxels;
    const troopers=Math.max(1,Math.min(6,unit.battle_armor?.troopers||5));
    d.parts=d.parts.slice(0,troopers);
+   // Keep four-trooper IS squads centered despite the five-trooper Clan source.
+   if(cfg.isStandard && troopers===4){
+     for(const p of d.parts)for(const sh of p.shapes){
+       for(const key of ["box","erase","shell"]){
+         if(sh[key])for(const xyz of sh[key])xyz[0]+=3;
+       }
+       if(sh.loft)for(const sec of sh.loft.sections)
+         for(const v of sec.polygon)v[0]+=3;
+     }
+   }
    const gear=JSON.stringify(unit.battle_armor?.weapons||unit.equipment||{}).toLowerCase(),typ=/flamer/.test(gear)?"flamer":/machine_gun|mg/.test(gear)?"mg":/gauss/.test(gear)?"gauss":"laser";
    for(const part of d.parts){
      const first=part.shapes[2]?.box?.[0]||[0,7,0],x=(first[0]+3),z=first[2]-3;
