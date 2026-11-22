@@ -1,0 +1,67 @@
+{
+  "id": "hatamoto_mizo_htm27y",
+  "name": "Hatamoto-Mizo",
+  "model": "HTM-27Y",
+  "tonnage": 80,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 22,
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 26,
+    "RA": 26,
+    "LT": 25,
+    "RT": 25,
+    "CT": 34,
+    "HD": 9,
+    "LL": 34,
+    "RL": 34
+  },
+  "rear_armor": {
+    "LT": 9,
+    "RT": 9,
+    "CT": 16
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "ppc"
+    ],
+    "RA": [
+      "ppc"
+    ],
+    "LT": [
+      "heat_sink*3",
+      "endo_steel*7"
+    ],
+    "RT": [
+      "heat_sink",
+      "er_large_laser",
+      "endo_steel*7"
+    ],
+    "CT": [
+      "heat_sink*2"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Sniper: long-range fire. 2x PPC, ER Large Laser; walks 4, runs 6.",
+  "sprite": "hatamoto_mizo",
+  "source": {
+    "mul_id": 1409,
+    "megamek": "data/mekfiles/meks/3050U/Hatamoto-Mizo HTM-27Y.mtf",
+    "published": "RS:SW",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1675
+  },
+  "bv": 1675
+}

@@ -1,0 +1,71 @@
+{
+  "id": "enforcer_iii_enf6h",
+  "name": "Enforcer III",
+  "model": "ENF-6H",
+  "tonnage": 50,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 19,
+    "RT": 19,
+    "CT": 24,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 7
+  },
+  "missing_actuators": {
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*6"
+    ],
+    "RA": [
+      "ultra_ac20"
+    ],
+    "LT": [
+      "er_medium_laser",
+      "endo_steel*8"
+    ],
+    "RT": [
+      "er_medium_laser",
+      "ammo:ultra_ac20*4",
+      "case"
+    ],
+    "CT": [
+      "jump_jet",
+      "er_medium_laser"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Ultra AC/20, 3x ER Medium Laser; walks 5, runs 8, jumps 5.",
+  "sprite": "enforcer_iii",
+  "source": {
+    "mul_id": 981,
+    "megamek": "data/mekfiles/meks/3050U/Enforcer III ENF-6H.mtf",
+    "published": "RS:CI",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1603
+  },
+  "bv": 1603
+}

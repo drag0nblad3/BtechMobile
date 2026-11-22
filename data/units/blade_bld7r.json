@@ -1,0 +1,74 @@
+{
+  "id": "blade_bld7r",
+  "name": "Blade",
+  "model": "BLD-7R",
+  "tonnage": 35,
+  "walk_mp": 7,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 12,
+    "RA": 12,
+    "LT": 12,
+    "RT": 12,
+    "CT": 14,
+    "HD": 9,
+    "LL": 16,
+    "RL": 16
+  },
+  "rear_armor": {
+    "LT": 4,
+    "RT": 4,
+    "CT": 5
+  },
+  "missing_actuators": {
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*8"
+    ],
+    "RA": [
+      "rotary_ac5",
+      "er_medium_laser",
+      "er_small_laser",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "endo_steel*6",
+      "ferro_fibrous*3"
+    ],
+    "RT": [
+      "heat_sink",
+      "ammo:rotary_ac5*3",
+      "ferro_fibrous*3"
+    ],
+    "CT": [
+      "ferro_fibrous*2"
+    ],
+    "LL": [
+      "ferro_fibrous*2"
+    ],
+    "RL": [
+      "ferro_fibrous*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. Rotary AC/5, ER Medium Laser, ER Small Laser; walks 7, runs 11.",
+  "sprite": "blade",
+  "source": {
+    "mul_id": 6929,
+    "megamek": "data/mekfiles/meks/3145/NTNU RS/Blade BLD-7R.mtf",
+    "published": "RS:3145-NTNU,RS:3145",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1227
+  },
+  "bv": 1227
+}

@@ -1,0 +1,83 @@
+{
+  "id": "jackrabbit_jkr8t",
+  "name": "Jackrabbit",
+  "model": "JKR-8T",
+  "tonnage": 25,
+  "walk_mp": 6,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 5,
+    "RA": 5,
+    "LT": 5,
+    "RT": 5,
+    "CT": 12,
+    "HD": 9,
+    "LL": 6,
+    "RL": 6
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 3
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "streak_srm2",
+      "endo_steel*3",
+      "ferro_fibrous*4"
+    ],
+    "RA": [
+      "ac2",
+      "endo_steel*2",
+      "ferro_fibrous*4"
+    ],
+    "LT": [
+      "heat_sink",
+      "ammo:streak_srm2",
+      "endo_steel*2",
+      "ferro_fibrous*3"
+    ],
+    "RT": [
+      "heat_sink",
+      "ammo:ac2",
+      "endo_steel*2",
+      "ferro_fibrous*3"
+    ],
+    "CT": [
+      "endo_steel*2"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "heat_sink",
+      "endo_steel"
+    ],
+    "RL": [
+      "heat_sink",
+      "endo_steel"
+    ]
+  },
+  "role": "Sniper: long-range fire. Streak SRM 2, AC/2; walks 6, runs 9.",
+  "sprite": "jackrabbit",
+  "source": {
+    "mul_id": 1656,
+    "megamek": "data/mekfiles/meks/3075/Jackrabbit JKR-8T.mtf",
+    "published": "RS:J",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 414
+  },
+  "bv": 414
+}

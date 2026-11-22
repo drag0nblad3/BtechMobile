@@ -1,0 +1,70 @@
+{
+  "id": "hornet_hnt151",
+  "name": "Hornet",
+  "model": "HNT-151",
+  "tonnage": 20,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 8,
+    "RT": 8,
+    "CT": 8,
+    "HD": 8,
+    "LL": 6,
+    "RL": 6
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 4
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "small_laser"
+    ],
+    "RA": [
+      "medium_laser"
+    ],
+    "LT": [
+      "heat_sink*3",
+      "ammo:lrm5"
+    ],
+    "RT": [
+      "heat_sink*3",
+      "lrm5"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. Small Laser, Medium Laser, LRM 5; walks 5, runs 8, jumps 5.",
+  "sprite": "hornet",
+  "source": {
+    "mul_id": 1545,
+    "megamek": "data/mekfiles/meks/3039u/Hornet HNT-151.mtf",
+    "published": "RS:3039u",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 488
+  },
+  "bv": 488
+}
