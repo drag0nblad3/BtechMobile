@@ -41,7 +41,7 @@
     ],
     "RT": [
       "jump_jet*4",
-      "reengineered_large_laser"
+      "re_large_laser"
     ],
     "CT": [
       "ballistic_reinforced*2"
