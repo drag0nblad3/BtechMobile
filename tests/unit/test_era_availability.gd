@@ -61,3 +61,24 @@ func test_verified_bundle_examples() -> void:
 	check_eq(a.check("timber_wolf_prime", 3050, "clan_wolf")["status"], "available")
 	check_eq(a.check("atlas_as7d", 3025, "clan_wolf")["status"], "unavailable")
 	check_eq(a.check("atlas_as7d", 3025, "clan_jade_falcon")["status"], "unverified")
+
+
+func test_starter_templates_follow_historical_policy_without_mutation() -> void:
+	var fb := ForceBuilder.new(designs(), 6000)
+	fb.availability = _sample()
+	fb.era_year = 3025
+	fb.factions[0] = "federated_suns"
+	fb.availability_mode = EraAvailability.Mode.STRICT
+	check(fb.add(0, "atlas_as7d"))
+	var old: Array = fb.rosters[0].duplicate()
+	var old_budget: int = fb.budget
+	var template: Dictionary = StarterFormations.all()[0]
+	var preview: Dictionary = StarterFormations.plan(fb, 0, template)
+	check(not preview["ok"], "unverified units block strict formation preflight")
+	check_eq(fb.rosters[0], old, "preview preserves roster")
+	check_eq(fb.budget, old_budget, "preview preserves budget")
+	var attempted: Dictionary = StarterFormations.apply(fb, 0, template)
+	check(not attempted["ok"], "strict template apply also fails")
+	check_eq(fb.rosters[0], old, "failure preserves roster")
+	fb.availability_mode = EraAvailability.Mode.OFF
+	check(StarterFormations.plan(fb, 0, template)["ok"], "off keeps existing starters")
