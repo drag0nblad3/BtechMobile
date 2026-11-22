@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Hornet insect-like suspended ovoid cockpit and very slender, inward-jointed stilt legs, distinct asymmetric right-torso LRM-5 wing pod; no arm manipulators. Source anchors: TRO 3039 and N-scale Hornet frontal resin photos. 2026 multi-view resculpt: replaced bulky forearms with small weapons suspended below a central spheroid; sunken cockpit and slender strut legs, retained physical sockets.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
+  "notes": "Hornet insect-like suspended ovoid cockpit and very slender, inward-jointed stilt legs, distinct asymmetric right-torso LRM-5 wing pod; no arm manipulators. Source anchors: TRO 3039 and N-scale Hornet frontal resin photos. 2026 multi-view resculpt: replaced bulky forearms with small weapons suspended below a central spheroid; sunken cockpit and slender strut legs, retained physical sockets.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nReference resculpt: independently shape tiny left and right laser stalks under a round canopy; do not copy the LRM pod as the opposite arm.",
   "parts": [
     {
       "name": "ct",
@@ -1007,98 +1007,31 @@
         {
           "box": [
             [
-              -12,
+              -11,
               26,
-              -1
+              -2
+            ],
+            [
+              -9,
+              30,
+              2
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -12,
+              27,
+              -3
             ],
             [
               -10,
               29,
-              1
+              2
             ]
           ],
-          "mat": "joint"
-        },
-        {
-          "loft": {
-            "axis": "y",
-            "sections": [
-              {
-                "at": 26,
-                "polygon": [
-                  [
-                    -12.55,
-                    -1.4
-                  ],
-                  [
-                    -10.25,
-                    -1.4
-                  ],
-                  [
-                    -9.8,
-                    -0.89
-                  ],
-                  [
-                    -9.8,
-                    1.49
-                  ],
-                  [
-                    -10.25,
-                    2
-                  ],
-                  [
-                    -12.55,
-                    2
-                  ],
-                  [
-                    -13,
-                    1.49
-                  ],
-                  [
-                    -13,
-                    -0.89
-                  ]
-                ]
-              },
-              {
-                "at": 29,
-                "polygon": [
-                  [
-                    -12.3,
-                    -2
-                  ],
-                  [
-                    -9.7,
-                    -2
-                  ],
-                  [
-                    -9.2,
-                    -1.4
-                  ],
-                  [
-                    -9.2,
-                    1.4
-                  ],
-                  [
-                    -9.7,
-                    2
-                  ],
-                  [
-                    -12.3,
-                    2
-                  ],
-                  [
-                    -12.8,
-                    1.4
-                  ],
-                  [
-                    -12.8,
-                    -1.4
-                  ]
-                ]
-              }
-            ]
-          },
           "mat": "armor"
         }
       ],
@@ -1110,92 +1043,25 @@
       "parent": "la",
       "loc": "LA",
       "pivot": [
-        -10,
+        -12,
         25,
-        0
+        -3
       ],
       "shapes": [
         {
-          "loft": {
-            "axis": "y",
-            "sections": [
-              {
-                "at": 23,
-                "polygon": [
-                  [
-                    -12.26,
-                    -1.1
-                  ],
-                  [
-                    -10.54,
-                    -1.1
-                  ],
-                  [
-                    -10.2,
-                    -0.68
-                  ],
-                  [
-                    -10.2,
-                    1.28
-                  ],
-                  [
-                    -10.54,
-                    1.7
-                  ],
-                  [
-                    -12.26,
-                    1.7
-                  ],
-                  [
-                    -12.6,
-                    1.28
-                  ],
-                  [
-                    -12.6,
-                    -0.68
-                  ]
-                ]
-              },
-              {
-                "at": 25,
-                "polygon": [
-                  [
-                    -12.453,
-                    -1.3
-                  ],
-                  [
-                    -10.347,
-                    -1.3
-                  ],
-                  [
-                    -9.933,
-                    -0.82
-                  ],
-                  [
-                    -9.933,
-                    1.42
-                  ],
-                  [
-                    -10.347,
-                    1.9
-                  ],
-                  [
-                    -12.453,
-                    1.9
-                  ],
-                  [
-                    -12.867,
-                    1.42
-                  ],
-                  [
-                    -12.867,
-                    -0.82
-                  ]
-                ]
-              }
+          "box": [
+            [
+              -12,
+              24,
+              -3
+            ],
+            [
+              -10,
+              27,
+              1
             ]
-          },
-          "mat": "armor"
+          ],
+          "mat": "joint"
         },
         {
           "box": [
@@ -1206,7 +1072,7 @@
             ],
             [
               -11,
-              25,
+              27,
               -3
             ]
           ],
@@ -1225,66 +1091,76 @@
               -5
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -12,
-              23,
-              -2
-            ],
-            [
-              -11,
-              24,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
     {
       "name": "ra",
-      "mirror": "la",
       "parent": "rt",
-      "add": [
+      "loc": "RA",
+      "pivot": [
+        10,
+        28,
+        0
+      ],
+      "shapes": [
         {
           "box": [
             [
-              11,
+              9,
               26,
-              -11
+              -2
             ],
             [
-              13,
-              27,
-              -3
+              11,
+              30,
+              2
             ]
           ],
-          "mat": "gun"
+          "mat": "frame"
         },
         {
           "box": [
             [
-              11,
+              10,
               27,
-              -7
+              -3
             ],
             [
-              13,
-              28,
-              -4
+              12,
+              29,
+              2
             ]
           ],
-          "mat": "plate"
+          "mat": "armor"
         }
       ]
     },
     {
       "name": "ra_forearm",
       "parent": "ra",
-      "mirror": "la_forearm",
-      "add": [
+      "loc": "RA",
+      "pivot": [
+        12,
+        25,
+        -4
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              10,
+              24,
+              -3
+            ],
+            [
+              12,
+              27,
+              1
+            ]
+          ],
+          "mat": "joint"
+        },
         {
           "box": [
             [
@@ -1294,7 +1170,7 @@
             ],
             [
               13,
-              25,
+              27,
               -3
             ]
           ],
@@ -1310,7 +1186,7 @@
             [
               12,
               25,
-              -8
+              -6
             ]
           ]
         }
