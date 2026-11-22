@@ -31,16 +31,16 @@ func test_second_pass_did_not_disrupt_mirrors_or_kinematic_hierarchy() -> void:
 			continue
 		var raw: Dictionary = JsonFile.read("res://data/voxels/" + path)
 		var known := {}
-		var all_names := {}
+		var all_names: Array[String] = []
 		for item: Dictionary in raw.get("parts", []):
-			all_names[item["name"]] = true
+			all_names.append(String(item.get("name", "")))
 		for part: Dictionary in raw.get("parts", []):
 			var name: String = part.get("name", "")
 			check(not known.has(name), "%s duplicate part %s" % [path,name])
 			if part.has("mirror"):
 				check(known.has(part["mirror"]), "%s unknown mirror %s" % [path,name])
 			if part.has("parent"):
-				check(all_names.has(part["parent"]), "%s unknown parent %s" % [path,name])
+				check(all_names.has(String(part["parent"])), "%s unknown parent %s" % [path,name])
 			for shape: Dictionary in part.get("shapes", []):
 				if not shape.has("loft"):
 					continue
