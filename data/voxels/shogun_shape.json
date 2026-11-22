@@ -1,6 +1,6 @@
 {
   "id": "shogun_shape",
-  "name": "Shogun SHG-2F \u2014 low-poly shape",
+  "name": "Shogun SHG-2F — low-poly shape",
   "unit": "shogun_shg2f",
   "voxel_size": 0.063215,
   "subdivide": 1,
@@ -3494,6 +3494,20 @@
             ]
           ],
           "mat": "recess"
+        },
+        {
+          "erase": [
+            [
+              -11,
+              26,
+              1
+            ],
+            [
+              -11,
+              26,
+              1
+            ]
+          ]
         }
       ],
       "parent": "ct"

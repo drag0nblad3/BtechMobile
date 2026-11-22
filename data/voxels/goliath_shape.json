@@ -1,6 +1,6 @@
 {
   "id": "goliath_shape",
-  "name": "Goliath GOL-1H \u2014 low-poly shape",
+  "name": "Goliath GOL-1H — low-poly shape",
   "unit": "goliath_gol1h",
   "voxel_size": 0.064269,
   "subdivide": 1,
@@ -2790,6 +2790,20 @@
               2,
               17,
               -14
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              9,
+              22,
+              -4
+            ],
+            [
+              9,
+              22,
+              -3
             ]
           ]
         }

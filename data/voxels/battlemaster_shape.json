@@ -1,7 +1,7 @@
 {
   "exclusive_parts": true,
   "id": "battlemaster_shape",
-  "name": "BattleMaster BLR-1G \u2014 shape-first low resolution",
+  "name": "BattleMaster BLR-1G — shape-first low resolution",
   "unit": "battlemaster_blr1g",
   "voxel_size": 0.043,
   "subdivide": 1,
@@ -239,6 +239,20 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              7,
+              40,
+              -7
+            ],
+            [
+              7,
+              40,
+              2
+            ]
+          ]
         }
       ],
       "pivot": [

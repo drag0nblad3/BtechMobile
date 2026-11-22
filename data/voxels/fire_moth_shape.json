@@ -1,6 +1,6 @@
 {
   "id": "fire_moth_shape",
-  "name": "Fire Moth Prime \u2014 low-poly shape",
+  "name": "Fire Moth Prime — low-poly shape",
   "unit": "fire_moth_prime",
   "voxel_size": 0.046088,
   "subdivide": 1,
@@ -958,6 +958,20 @@
               0,
               28,
               -14
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              0,
+              29,
+              -15
+            ],
+            [
+              0,
+              29,
+              -15
             ]
           ]
         }

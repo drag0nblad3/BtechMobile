@@ -1,6 +1,6 @@
 {
   "id": "gunslinger_shape",
-  "name": "Gunslinger GUN-1ERD \u2014 low-poly shape",
+  "name": "Gunslinger GUN-1ERD — low-poly shape",
   "unit": "gunslinger_gun1erd",
   "voxel_size": 0.062149,
   "subdivide": 1,
@@ -3243,6 +3243,20 @@
               -10,
               32,
               -6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -11,
+              26,
+              1
+            ],
+            [
+              -11,
+              26,
+              1
             ]
           ]
         }
