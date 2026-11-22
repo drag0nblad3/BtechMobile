@@ -13,11 +13,11 @@ const RADIUS := 6
 
 ## Weight and slots: a Clan suite is lighter. TODO(rules): construction data.
 static func tons(def: UnitDef) -> float:
-	return 1.0 if def.clan_part("ecm") else 1.5
+	return EcmTypes.tons(def)
 
 
 static func slots(def: UnitDef) -> int:
-	return 1 if def.clan_part("ecm") else 2
+	return EcmTypes.slots(def)
 
 
 static func working(u: Unit) -> bool:
@@ -29,6 +29,14 @@ static func working(u: Unit) -> bool:
 static func hostile_at(state: GameState, side: int, c: Vector2i) -> bool:
 	for u in state.units:
 		if u.side != side and working(u) and Hex.distance(u.coord, c) <= RADIUS:
+			return true
+	return false
+
+
+## Is `c` inside hostile Angel ECM (the only kind that degrades boosted C3)?
+static func hostile_angel_at(state: GameState, side: int, c: Vector2i) -> bool:
+	for u in state.units:
+		if u.side != side and u.def.ecm_type == "angel_ecm" and working(u) and Hex.distance(u.coord, c) <= RADIUS:
 			return true
 	return false
 

@@ -155,6 +155,57 @@
    "role": "Missile boat: rains missiles from a distance. 2 Medium Lasers, 2 LRM 15s, 2 LRM 10s; walks 4, runs 6."
   },
   {
+   "model": "AV1-OBLO",
+   "bv": 1550,
+   "heat_sinks": 15,
+   "jump_mp": 4,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "er_ppc"
+    ],
+    "RA": [
+     "heat_sink",
+     "lb10x_ac"
+    ],
+    "LT": [
+     "heat_sink",
+     "c3i",
+     "guardian_ecm"
+    ],
+    "RT": [
+     "heat_sink",
+     "ammo:lb10x_ac*2",
+     "ammo:lb10x_ac:cluster"
+    ],
+    "LL": [
+     "jump_jet*2"
+    ],
+    "RL": [
+     "jump_jet*2"
+    ]
+   },
+   "source": {
+    "mul_id": 7634,
+    "megamek": "data/mekfiles/meks/Spotlight On/Unending Faith/Avatar AV1-OBLO.mtf",
+    "published": "SO:UF",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1550
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Lasers, ER PPC, LB 10-X AC; walks 4, runs 6, jumps 4."
+  },
+  {
    "model": "AV1-OC",
    "bv": 1406,
    "heat_sinks": 10,
@@ -230,6 +281,50 @@
     "megamek_bv": 1475
    },
    "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, 2 ER Medium Lasers, 2 MRM 20s, Light Gauss Rifle; walks 4, runs 6."
+  },
+  {
+   "model": "AV1-OE",
+   "bv": 1563,
+   "heat_sinks": 16,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "er_ppc",
+     "er_medium_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "ultra_ac10"
+    ],
+    "LT": [
+     "heat_sink*2",
+     "guardian_ecm"
+    ],
+    "RT": [
+     "heat_sink",
+     "ammo:ultra_ac10*3",
+     "c3i"
+    ]
+   },
+   "source": {
+    "mul_id": 165,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OE.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1563
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, ER PPC, ER Medium Laser, Ultra AC/10; walks 4, runs 6."
   },
   {
    "model": "AV1-OF",

@@ -57,6 +57,7 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
 - `fire_psr: true` (heavy Gauss) costs a piloting roll when fired after moving; `range_cluster: true` (HAG) gives +2/-2 to its cluster roll at short/long range; `heat_dice: n` (plasma) adds n d6 of heat to a 'Mech it hits.
 - `to_hit_by_range: [s, m, l]` (VSP lasers) replaces `to_hit` by range bracket; `explosion_damage` overrides a component explosion's 2 damage a slot.
 - `large_missile: true` (Thunderbolt): one missile, no cluster roll; AMS rolls to destroy it.
+- Electronics items: `angel_ecm`, `watchdog_ecm` (ECM + 5-hex probe), `c3i` (improved C3, 2 slots).
 - `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).

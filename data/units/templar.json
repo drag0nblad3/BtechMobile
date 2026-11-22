@@ -285,6 +285,55 @@
    "role": "Sniper: hangs back and hits from long range. 3 Rotary AC/2s, 2 ER Medium Lasers, ER PPC; walks 4, runs 6."
   },
   {
+   "model": "TLR1-OBLO",
+   "bv": 2062,
+   "heat_sinks": 14,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heat_sink",
+     "large_pulse_laser",
+     "medium_pulse_laser"
+    ],
+    "RA": [
+     "endo_steel",
+     "gauss_rifle"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "targeting_computer"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "ammo:gauss_rifle*2",
+     "c3i",
+     "guardian_ecm"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "er_medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 7637,
+    "megamek": "data/mekfiles/meks/Spotlight On/Unending Faith/Templar TLR1-OBLO.mtf",
+    "published": "SO:UF",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2062
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 ER Medium Lasers, Large Pulse Laser, Medium Pulse Laser, Gauss Rifle; walks 4, runs 6."
+  },
+  {
    "model": "TLR1-OC",
    "bv": 2063,
    "heat_sinks": 14,

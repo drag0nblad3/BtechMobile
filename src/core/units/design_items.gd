@@ -8,14 +8,15 @@ extends RefCounted
 ## a half-ton bin), "heat_sink", "jump_jet",
 ## "case", "hatchet", "sword", "endo_steel", "ferro_fibrous", "tsm",
 ## "targeting_computer", "guardian_ecm", "masc", "supercharger", "c3_master",
-## "c3_slave", "c3bs_master", "c3bs_slave" (C3Boosted), "beagle_probe", "c_active_probe", "c_light_active_probe",
+## "c3_slave", "c3bs_master", "c3bs_slave" (C3Boosted), "c3i" (C3i), "angel_ecm", "watchdog_ecm" (EcmTypes), "beagle_probe", "c_active_probe", "c_light_active_probe",
 ## "a_pod", "tag", "c_tag" (InertGear), "case2" (CASE II).
 ## In the file, "<item>*N" repeats an item N times.
 
 ## One-per-'Mech items stored as a location: item -> UnitDef property.
 const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
 		"supercharger": "supercharger_loc", "c3_master": "c3_master_loc", "c3_slave": "c3_slave_loc",
-		"c3bs_master": "c3_master_loc", "c3bs_slave": "c3_slave_loc"}
+		"c3bs_master": "c3_master_loc", "c3bs_slave": "c3_slave_loc", "c3i": "c3i_loc",
+		"angel_ecm": "ecm_loc", "watchdog_ecm": "ecm_loc"}
 
 
 static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void:
@@ -30,6 +31,8 @@ static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void
 		def.set(LOC_ITEMS[item], loc)
 		if item.begins_with("c3bs_"):
 			def.c3_boosted = true
+		if item.ends_with("_ecm"):
+			def.ecm_type = item
 	elif item == "case":
 		def.case_locs.append(loc)
 	elif item == "case2":
