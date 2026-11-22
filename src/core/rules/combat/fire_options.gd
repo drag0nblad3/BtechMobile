@@ -52,6 +52,7 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		out.append({"attacker_id": attacker.id, "weapon_index": wi,
 				"target_id": target.id, "to_hit": th})
 	if attacker.asset != null:
+		out = AssetIndirect.filter(out, attacker)
 		AssetSpecials.add_swarm(state, attacker, out)
 	return out
 

@@ -5,7 +5,8 @@ extends RefCounted
 ## PRB (a probe with range 4), SWARM (extra damage groupings against a
 ## target in its own hex). Armor Specials live in AssetDamage, No Turret in
 ## AssetFire, APC/Mechanized in AssetTransport.
-## TODO(rules): Indirect Fire, Artillery, Arrow IV, Narc, TAG and Popup.
+## Indirect Fire lives in AssetIndirect.
+## TODO(rules): Artillery, Arrow IV, Narc, TAG and Popup.
 
 
 ## Card Specials that become equipment on the design.

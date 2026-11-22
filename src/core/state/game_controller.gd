@@ -120,6 +120,7 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 	var decl := FireOptions.declare(state, unit, shots)
 	state.declared_fire.append_array(decl)
 	IndirectFire.record(state, decl)
+	AssetIndirect.record(state, unit, decl)
 	unit.has_fired = true
 	_emit(GameEvent.FIRE_DECLARED, {"unit_id": unit.id, "shots": FireOptions.summary(unit, decl)})
 	_unit_done()
