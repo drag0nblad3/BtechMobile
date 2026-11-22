@@ -15,12 +15,15 @@ static func build(title: String, options: Array, selected: Dictionary, level: in
 	head.text = title
 	head.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	head.add_theme_font_size_override("font_size", 22)
+	UiSkin.label(head, "heading")
 	box.add_child(head)
+	UiSkin.rule(box, UiSkin.CYAN)
 	for o: Dictionary in options:
 		var th: ToHit = o["to_hit"]
 		var b := CheckButton.new()
 		b.custom_minimum_size = Vector2(0, 58)
 		b.add_theme_font_size_override("font_size", 20)
+		UiSkin.button(b, "selected" if selected.has(o["key"]) else "subtle")
 		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		if th.possible():
 			b.text = "%s  %d+ (%s)%s" % [o["label"], th.target(), Names.pct(th.chance()), o.get("extra", "")]
@@ -36,6 +39,7 @@ static func build(title: String, options: Array, selected: Dictionary, level: in
 			mb.custom_minimum_size = Vector2(0, 48)
 			mb.add_theme_font_size_override("font_size", 18)
 			mb.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			UiSkin.button(mb, "subtle")
 			mb.pressed.connect(func(): on_mode.call(o["key"]))
 			box.add_child(mb)
 		if th.possible() and level != ExplainLevel.OFF:
@@ -43,6 +47,6 @@ static func build(title: String, options: Array, selected: Dictionary, level: in
 			why.text = "   " + th.summary()
 			why.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 			why.add_theme_font_size_override("font_size", 16)
-			why.modulate = Color(0.75, 0.8, 0.85)
+			UiSkin.label(why, "muted")
 			box.add_child(why)
 	return box

@@ -13,6 +13,8 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	l.add_theme_font_size_override("normal_font_size", 19)
 	l.add_theme_font_size_override("bold_font_size", 21)
+	l.add_theme_color_override("default_color", UiSkin.TEXT)
+	l.add_theme_color_override("font_selected_color", UiSkin.AMBER)
 	l.text = AssetSheetView.text(u) if u.asset != null else VehicleSheetView.text(u) if u.vehicle != null else BaSheetView.text(u) if u.ba != null else text(u)
 	if u.def.is_support():
 		return l
@@ -26,6 +28,7 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 		b.text = want[1]
 		b.custom_minimum_size = Vector2(0, 58)
 		b.add_theme_font_size_override("font_size", 20)
+		UiSkin.button(b, "subtle")
 		b.pressed.connect(func() -> void: on_power.call(want[0]))
 		box.add_child(b)
 	box.add_child(SinkButtons.row(u, on_power))
