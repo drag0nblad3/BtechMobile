@@ -59,6 +59,17 @@ jobs:
           godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
           grep -q "battle save replay smoke ok" battle-save-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" battle-save-smoke.log
+      - name: Tactical Academy forensic unit tests
+        run: |
+          set -o pipefail
+          godot --headless -s tests/run_tests.gd -- battle_forensics 2>&1 | tee academy-tests.log
+          ! grep -E "SCRIPT ERROR|Parse Error" academy-tests.log
+      - name: Cinematic toggle and Academy scene smoke
+        run: |
+          set -o pipefail
+          godot --headless -s tools/academy_smoke.gd 2>&1 | tee academy-smoke.log
+          grep -q "academy cinematic forensic smoke ok" academy-smoke.log
+          ! grep -E "SCRIPT ERROR|Parse Error" academy-smoke.log
       - name: Unit tests
         run: |
           set -o pipefail

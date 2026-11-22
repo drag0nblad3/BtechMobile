@@ -28,7 +28,7 @@ static func analyze(frames: Array, labels: Dictionary = {}) -> Dictionary:
 		for j in entries.size():
 			var e: Dictionary = entries[j]
 			var kind := String(e.get("event", ""))
-			var d: Dictionary = e.get("data", {})
+			var d: Dictionary = _scalar_data(e.get("data", {}))
 			var id := int(d.get("unit_id", -1))
 			var label := String(e.get("text", kind))
 			if label == "":
@@ -73,7 +73,7 @@ static func analyze(frames: Array, labels: Dictionary = {}) -> Dictionary:
 							_unit(rows, source, labels)["damage_dealt"] += amount
 						summary["damage"] += amount
 						if amount >= 15:
-							_moment(moments, fact, "Heavy damage", label, 6 + mini(3, amount / 15))
+							_moment(moments, fact, "Heavy damage", label, 6 + mini(3, int(float(amount) / 15.0)))
 				GameEvent.UNIT_DESTROYED:
 					summary["kills"] += 1
 					_unit(rows, id, labels)["destroyed"] = true
@@ -122,3 +122,17 @@ static func _moment(moments: Array, fact: Dictionary, title: String,
 		detail: String, score: int) -> void:
 	moments.append({"title": title, "detail": detail, "frame": fact["frame"],
 			"turn": fact["turn"], "score": score})
+
+
+## The replay codec packs arbitrary event payload dictionaries as pairs.
+## For measurements we only need scalar facts, never rebuild rule objects.
+static func _scalar_data(raw: Variant) -> Dictionary:
+	if not raw is Dictionary:
+		return {}
+	if String(raw.get("$", "")) != "dictionary":
+		return raw
+	var result := {}
+	for pair: Array in raw.get("items", []):
+		if pair.size() == 2 and pair[0] is String and typeof(pair[1]) in [TYPE_INT, TYPE_FLOAT, TYPE_BOOL, TYPE_STRING]:
+			result[pair[0]] = pair[1]
+	return result

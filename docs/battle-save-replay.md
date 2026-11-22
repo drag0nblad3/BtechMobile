@@ -1,6 +1,6 @@
 # Battle saves and replays
 
-**Status:** implemented on the save/replay feature branch, pending Godot CI and Android device verification.
+**Status:** implemented on the save/replay feature branch and passing Godot CI; Android device verification is still required.
 
 ## User flow
 
@@ -41,7 +41,7 @@ catalog IDs. Loading requires compatible catalog data; the codec never
 instantiates an arbitrary class from the file. Unsupported schema versions
 are rejected. Files are written to a temporary path and then renamed.
 
-Replays contain snapshots rather than re-running controller commands, AI
+Replays now also attach a compact packed GameEvent ledger to checkpoints for Tactical Academy forensics, including individual shot rolls, damage, heat and piloting results. Replays contain snapshots rather than re-running controller commands, AI
 decisions or dice. The replay player never creates a GameController.
 Rewinding never changes the live battle and consumes no gameplay randomness.
 
@@ -60,8 +60,7 @@ Rewinding never changes the live battle and consumes no gameplay randomness.
 6. One save slot and one replay archive are supported. Snapshots are not
    size capped; long battles may consume significant storage. A future
    optimization is delta snapshots and a configurable storage budget.
-7. **Pending verification:** unit tests, headless UI smoke, Android
-   pause/resume, and performance on long high-unit-count battles.
+7. Godot CI checks battle save unit tests and scene smoke. **Pending verification:** Android pause/resume, landscape HUD fit, and performance on long high-unit-count battles.
 
 ## Testing
 
