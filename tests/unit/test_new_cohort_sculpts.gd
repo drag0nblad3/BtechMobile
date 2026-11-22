@@ -2,12 +2,12 @@ extends TestCase
 ## New original chassis must have roots, substantial actual mass, no floating
 ## pieces, and open gun ports. No silhouette tests are coordinate-pinned.
 
-const IDS := ["apollo","bandersnatch","battle_hawk","bombard","cestus","daedalus","daikyu","daimyo","dart","duan_gung","eagle","enfield","enforcer_iii","falcon","falcon_hawk","imp","rakshasa","thorn","wraith","ha_otoko","hammerhands","lightray","wolf_trap","watchman","fireball","gallowglas","night_hawk","kabuto","warlord","flashfire","grim_reaper","hatamoto_hi","hatamoto_kaze","hatamoto_ku","hatamoto_mizo","hercules","jackal","juggernaut","koto","lineholder","lynx","nexus","onslaught","raijin","salamander","sentry","shootist","snake","striker","talon","tsunami","werewolf","wyvern"]
+const IDS := ["apollo","bandersnatch","battle_hawk","bombard","cestus","daedalus","daikyu","daimyo","dart","duan_gung","eagle","enfield","enforcer_iii","falcon","falcon_hawk","imp","rakshasa","thorn","wraith","ha_otoko","hammerhands","lightray","wolf_trap","watchman","fireball","gallowglas","night_hawk","kabuto","warlord","flashfire","grim_reaper","hatamoto_hi","hatamoto_kaze","hatamoto_ku","hatamoto_mizo","hercules","jackal","juggernaut","koto","lineholder","lynx","nexus","onslaught","raijin","salamander","sentry","shootist","snake","striker","talon","tsunami","werewolf","wyvern","alfar","behemoth","blade","brigand","cobra","cossack","cronus","dragoon","eisenfaust","eris","exhumer","gravedigger","hermes_iii","hound","initiate","jagermech_iii","koschei","marshal","orochi","phoenix","rampage","razorback","rook","swordsman","talos","titan","verfolger","von_rohrs_hebi","yu_huang"]
 const DIRS := [Vector3i.RIGHT, Vector3i.LEFT, Vector3i.UP,
         Vector3i.DOWN, Vector3i.FORWARD, Vector3i.BACK]
 
 
-func test_cohort_53_are_real_rooted_location_complete_models() -> void:
+func test_cohort_82_are_real_rooted_location_complete_models() -> void:
     for name: String in IDS:
         var m := VxModel.load_file("res://data/voxels/%s_shape.json" % name)
         check(m.errors.is_empty(), name + " parser " + str(m.errors))
@@ -25,7 +25,7 @@ func test_cohort_53_are_real_rooted_location_complete_models() -> void:
         check_eq(roots, 1, name + " should have one connected rig")
 
 
-func test_cohort_53_all_parts_are_real_solid_connected_masses() -> void:
+func test_cohort_82_all_parts_are_real_solid_connected_masses() -> void:
     for name: String in IDS:
         var m := VxModel.load_file("res://data/voxels/%s_shape.json" % name)
         var all_cells := {}
@@ -47,7 +47,7 @@ func test_cohort_53_all_parts_are_real_solid_connected_masses() -> void:
         check_eq(_groups(all_cells), 1, name + " disjoint whole mech")
 
 
-func test_cohort_53_open_muzzles() -> void:
+func test_cohort_82_open_muzzles() -> void:
     for name: String in IDS:
         var m := VxModel.load_file("res://data/voxels/%s_shape.json" % name)
         check(not m.muzzles.is_empty(), name + " missing weapon ports")
