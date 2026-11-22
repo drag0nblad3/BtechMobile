@@ -1,0 +1,39 @@
+{
+ "id": "pegasus_scout_hover_tank",
+ "name": "Pegasus Scout Hover Tank",
+ "tonnage": 35,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 8,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 26,
+  "RS": 19,
+  "LS": 19,
+  "RR": 19,
+  "TU": 21
+ },
+ "equipment": {
+  "FR": [
+   "medium_laser"
+  ],
+  "TU": [
+   "srm6*2"
+  ],
+  "BD": [
+   "ammo:srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 2461,
+  "megamek": "data/mekfiles/vehicles/3039u/Pegasus Scout Hover Tank.blk",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Pegasus Scout Hover Tank (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 640
+}

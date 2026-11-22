@@ -251,3 +251,36 @@ The Core Rulebook has only these simplified rules for vehicles and infantry; cla
 - 🟡 VTOL flight levels (`VtolFlight`, pp. 142-144): always at least one level above the hex (woods, buildings, hills), 1 MP per level climbed or dropped, LOS from flight level + 1; range ignores level — `TODO(rules)`: VTOLs fly nap-of-the-earth (lowest legal level), no player-chosen altitude yet; bridges.
 - ⬜ Specials still to do: Indirect Fire, Artillery, Arrow IV, Narc, TAG, Popup, Zipline, Commander, Crit-Seeker.
 - ⬜ Infantry vs buildings (no damage) — `TODO(rules)`: vehicle Asset attacks on buildings are blocked for now.
+
+
+## Combat vehicles (classic record sheets)
+Not in the Core Rulebook: these follow general Total Warfare practice, all `TODO(rules)`.
+- 🟡 Record sheets (`VehicleSpec`, `VehicleLoc`, `data/vehicles/`): 22 official designs (18 Inner Sphere, 4 Clan), MegaMek loadouts, sheet BV; structure = tonnage / 10 rounded up. Not playable yet (hit locations, motive damage and critical hits next).
+
+## Pilots
+- ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
+
+## Explanations (learning layer, not a rule)
+- ✅ Every event has log text at three levels: Full (reasons for each number, each reason
+  once per phase; phase intros once per battle), Light (numbers on one line), Off (outcomes).
+- ✅ Advice: move preview (defense gained vs own penalty and heat, walk-vs-run, rear arcs),
+  volley (expected damage, heat after the turn, which weapon to hold), best target,
+  punch vs kick (including the chance of falling after a missed kick).
+- ✅ Training battle (`Tutorial`, `LessonCard`): Wolverine vs a computer Commando with
+  lesson cards on first movement, fire, hits, heat, piloting rolls and the end.
+
+## Force building and play
+- ✅ Two sides, up to 4 'Mechs each (5 for an all-Clan Star), Battle Value budget (2000-8000); deploy on opposite edges.
+- ✅ The catalog filters All / Inner Sphere / Clan and shows each OmniMech chassis once with a button cycling its configurations (`DesignFilter`, `ForceCatalog`); with full explanations it says what Clan tech and OmniMechs mean. Mixed Clan and Inner Sphere forces are allowed.
+- ✅ Formations (p. 219, a suggestion, not a rule): a side is a lance of up to 4; an all-Clan side may field a Star of 5 (`ForceBuilder.max_units`), shown on the roster — ⬜ Clan honor rules (zellbrigen).
+- 🟡 Battle Value (`BattleValue`, `BvText` explains it) — `TODO(rules)`: simplified BV 2 (rear weapons half, 15 per ton of ammo, no CASE).
+- ✅ Pilot skill adjusts Battle Value (`BvSkill`, multipliers in `data/bv_skill.json`); the force builder cycles Green / Regular / Veteran / Elite per side.
+- ✅ Hot-seat play, or either side played by the computer (`Bot`): it scores every reachable
+  end hex by expected damage dealt vs taken plus heat, picks the best target and holds weapons
+  to stay cool, punches/kicks when worth the fall risk, and logs why (when explanations are on).
+- 🟡 Bot charges and death from above (`BotCharge`): tried at each end position with an enemy straight ahead, valued as expected damage + a bonus for the target's piloting roll − part of its own damage − the fall from a missed DFA, used only when it beats shooting. Pushes (`BotPhysical`) are valued by the chance to knock the target down, a ledge fall, or shoving it off the map; it picks up a club when its guns would do little and an enemy is within 3 hexes. Aimed shots (`BotAim`): at a sitting target, or with a targeting computer, it aims a shot when the chance of hitting times the value of that location (half the hits land there; finishing the head, CT or an XL side torso is worth most) beats an ordinary shot. ⬜ Attacking buildings; smarter focus fire and retreat.
+- ✅ Terrain: clear, rough, rubble, light/heavy woods, pavement, water depth 1-2, hills.
+- ✅ Maps: Test Valley, River Crossing, Rolling Hills, Dense Forest, City Outskirts.
+- ✅ Generated maps (`MapGenerator`): whole 15 x 17 mapsheets (p. 223), 1, 2 (standard) or 4 sheets; themes Grassland, Woodland, Hills, River Valley, Lake Country, Badlands, City; repeatable seeds. No dry step over 2 levels, no buildings on the home-edge rows. Roads cross water on bridges (`GenBridges`); themes can recolour the ground.
+- ✅ Tapping an empty hex explains its movement cost, cover and cooling.
+- ⬜ Bridges as structures, fire and smoke.

@@ -1,0 +1,37 @@
+{
+ "id": "j_edgar_light_hover_tank",
+ "name": "J. Edgar Light Hover Tank",
+ "tonnage": 25,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 11,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 30,
+  "RS": 19,
+  "LS": 19,
+  "RR": 12,
+  "TU": 24
+ },
+ "equipment": {
+  "TU": [
+   "medium_laser",
+   "srm2*2"
+  ],
+  "BD": [
+   "ammo:srm2"
+  ]
+ },
+ "source": {
+  "mul_id": 1641,
+  "megamek": "data/mekfiles/vehicles/3039u/J. Edgar Light Hover Tank.blk",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "J. Edgar Light Hover Tank (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 544
+}

@@ -1,0 +1,44 @@
+{
+ "id": "patton_tank",
+ "name": "Patton Tank",
+ "tonnage": 65,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 51,
+  "RS": 46,
+  "LS": 46,
+  "RR": 38,
+  "TU": 51
+ },
+ "equipment": {
+  "FR": [
+   "small_laser"
+  ],
+  "RR": [
+   "flamer"
+  ],
+  "TU": [
+   "lrm5",
+   "ac10"
+  ],
+  "BD": [
+   "ammo:lrm5",
+   "ammo:ac10*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2450,
+  "megamek": "data/mekfiles/vehicles/3039u/Patton Tank.blk",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Patton Tank (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 961
+}

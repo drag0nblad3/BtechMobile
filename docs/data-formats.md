@@ -158,3 +158,46 @@ A Battlefield Support Asset card (book pp. 140-141). Values come only from offic
 `type`: vehicle, infantry, battle_armor, vtol, emplacement. `motive`: f h j t v w ("" immobile).
 `specials`: card codes (APC, AI, NOTUR, BRA, RCA, RFA, FR, SWARM, ...) with their number (1 if none).
 BV is 20 x `bsp`. Rule-test cards live in `tests/fixtures/assets/` (ids `test_*`).
+
+
+## `data/vehicles/<id>.json`
+A combat vehicle record sheet (classic vehicles, not Asset cards). Loadouts come from MegaMek's
+`.blk` files, BV from the official record sheet (see `docs/data-sources.md`).
+```json
+{"id": "manticore_heavy_tank", "name": "Manticore Heavy Tank", "tonnage": 60,
+ "vehicle": {"motive": "t", "cruise_mp": 4, "engine": "fusion", "turret": true},
+ "armor_type": "standard", "tech_base": "inner_sphere",
+ "armor": {"FR": 42, "RS": 33, "LS": 33, "RR": 26, "TU": 42},
+ "equipment": {"FR": ["medium_laser"], "TU": ["lrm10", "srm6", "ppc"], "BD": ["ammo:lrm10", "ammo:srm6"]},
+ "source": {"mul_id": 2021, "megamek": "...", "bv": "sheet", "sheet": "..."}, "bv": 993}
+```
+Locations (`VehicleLoc`): FR front, LS/RS sides, RR rear, TU turret, BD body (ammo and gear).
+`motive`: t tracked, w wheeled, h hover. Equipment strings are the 'Mech ones (`DesignItems`).
+
+## `data/scenarios/<id>.json`
+```json
+{"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}
+```
+`hex` is a mapsheet label; `facing` 0 = north, clockwise. A unit with `"hidden": true` starts hidden there (Hidden Units).
+Optional: `"name"`, `"bot_sides"` (sides the computer plays), `"bot_level"` (its
+`BotSkill.Level`, 0 Novice to 3 Elite; default the player's setting) and `"lessons"` for a
+guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` (a
+`GameEvent` type), optional filters `"turn"`, `"min_turn"`, `"phase"` (e.g. "Movement"),
+`"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
+e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
+
+## `data/training/campaign.json`
+The training campaign (`TrainingCampaign`): `name`, `intro`, and `missions` in
+order, each `{"id", "title", "scenario"` (a file in `data/scenarios/` with lessons),
+`"teaches", "briefing", "debrief_win", "debrief_loss"}`. A mission opens once the one
+before it has been played; results are saved per id in user://settings.cfg.
+Optional `"conditions"` (battlefield conditions, book pp. 120-121), e.g.
+`{"cold": 2, "gravity": 0.8, "night": true}`: `cold` / `heat` are Extreme Cold / Heat
+levels 0-3, `gravity` is in G (rounded to 0.1), and the flags `low_visibility`, `wind`,
+`rain`, `snowfall`, `night` switch those conditions on.
+Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turns`
+(0 = no limit), `random_duration`, `victory` (`"last_standing"` or `"vp"`), `unit_vp`,
+`forced_withdrawal`, `scoring` (`"each"`, `"pairs"`, `"threshold"`), `objectives`
+(`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
+`exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.
+`scan` (`"units"`: enemy 'Mechs, 1 VP per scan for a 'Mech that leaves; `"intel"`: objectives with `"kind": "intel"`; `"potential"`: objectives with `"potential": true`) turns on End Phase scanning. Objectives may also set `"fragile"` and `"mobile"`. `exit_side` limits leaving to one side; `attacker` names the attacking side (Steel Rain scoring, `"scoring": "steel_rain"`).
