@@ -57,6 +57,14 @@ func asset(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int = 
 	return Unit.new(uid if uid > 0 else side * 10 + at.x + 1, db.get_def(def_id), side, at, facing)
 
 
+## A combat vehicle from data/vehicles/.
+func vehicle(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int = 0) -> Unit:
+	var db := UnitDb.new()
+	db.weapons = WeaponDb.load_file()
+	db.add_vehicles(UnitDb.VEHICLE_DIR)
+	return Unit.new(uid if uid > 0 else side * 10 + at.x + 1, db.get_def(def_id), side, at, facing)
+
+
 ## Index in u.weapons of the `nth` weapon with this id (-1 if none).
 func gun_index(u: Unit, weapon_id: String, nth: int = 0) -> int:
 	for i in u.weapons.size():
