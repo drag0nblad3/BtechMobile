@@ -21,7 +21,7 @@ static func choose(def: UnitDef, side: int) -> VxMech:
 
 
 static func sync(model: Node3D, unit: Unit) -> bool:
-	if not model is VxMech:
+	if not (model is VxMech):
 		return false
 	var mech := model as VxMech
 	mech.show_unit(unit)
@@ -34,7 +34,7 @@ static func sync(model: Node3D, unit: Unit) -> bool:
 
 
 static func react(model: Node3D, event: GameEvent) -> void:
-	if not model is VxMech:
+	if not (model is VxMech):
 		return
 	var mech := model as VxMech
 	var d: Dictionary = event.data
@@ -58,7 +58,7 @@ static func react(model: Node3D, event: GameEvent) -> void:
 
 
 static func fire(view: UnitView, d: Dictionary, target: Vector3) -> bool:
-	if not view._model is VxMech:
+	if not (view._model is VxMech):
 		return false
 	if d.get("no_ammo", false) or d.get("streak_held", false):
 		return false
