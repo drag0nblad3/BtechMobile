@@ -25,6 +25,18 @@ var _mat: Dictionary = {}  ## material name -> index
 
 static func load_file(path: String) -> VxModel:
 	var d: Variant = JsonFile.read(path)
+	# Keep source-only geometry manifests from the silhouette refinement stack.
+	if d is Dictionary and d.has("source"):
+		var base: Variant = JsonFile.read(str(d["source"]))
+		if base is Dictionary:
+			var resolved: Dictionary = base.duplicate(true)
+			for key in d:
+				if key != "source":
+					resolved[key] = d[key]
+			d = resolved
+		else:
+			push_error("Voxel source not found: %s" % d["source"])
+			return from_dict({})
 	return from_dict(d if d is Dictionary else {})
 
 
@@ -41,9 +53,11 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m._add_part(p)
 	m.muzzles = _points(d.get("muzzles", {}))
 	m.jets = _points(d.get("jets", {}))
-	VxRefine.apply(m, int(d.get("subdivide", 1)))
+	VxRefine.apply(m, int(d.get("subdivide", 1)), d)
 	for p: Dictionary in d.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
+	if bool(d.get("exclusive_parts", false)):
+		m._claim_exclusive_cells()
 	m.unit_id = d.get("unit", "")
 	m.legs = d.get("legs", "plantigrade")
 	m.can_punch = d.get("punch", true)
@@ -94,6 +108,25 @@ func _add_part(p: Dictionary) -> void:
 	spec["parent"] = p.get("parent", "")
 	_paint(spec["cells"], p.get("add", []))
 	parts.append(spec)
+
+
+## The smallest independently articulated part owns a shared cell; larger
+## hulls lose duplicates to avoid interior coincident voxel faces. Explicitly
+## opt in per sculpt, leaving existing intentional overlap studies unchanged.
+func _claim_exclusive_cells() -> void:
+	var ordered := parts.duplicate()
+	ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		if a["cells"].size() == b["cells"].size():
+			return String(a["name"]) < String(b["name"])
+		return a["cells"].size() < b["cells"].size())
+	var occupied := {}
+	for p: Dictionary in ordered:
+		var cells: Dictionary = p["cells"]
+		for c: Vector3i in cells.keys():
+			if occupied.has(c):
+				cells.erase(c)
+			else:
+				occupied[c] = p["name"]
 
 
 func _mirrored(src: Dictionary) -> Dictionary:
@@ -149,6 +182,7 @@ func _paint_loft(cells: Dictionary, shape: Dictionary) -> void:
 		errors.append("loft requires at least two profile sections")
 		return
 	var mat := _material(shape.get("mat", ""), "box")
+	var painted: Dictionary = {}
 	for i in range(sections.size() - 1):
 		var lower: Dictionary = sections[i]
 		var upper: Dictionary = sections[i + 1]
@@ -183,7 +217,18 @@ func _paint_loft(cells: Dictionary, shape: Dictionary) -> void:
 							Vector2(float(u) + 0.5, float(v) + 0.5), polygon):
 						continue
 					var c := Vector3i(u, layer, v) if axis == "y" else Vector3i(u, v, layer)
+					painted[c] = mat
+
+	# Optional high-detail hollow skin: preserve exact silhouette without
+	# multiplying unseen solid hull interiors by the subdivision factor.
+	if int(shape.get("hollow", 0)) > 0:
+		for c: Vector3i in painted:
+			for direction: Vector3i in VxPart.DIRS:
+				if not painted.has(c + direction):
 					cells[c] = mat
+					break
+	else:
+		cells.merge(painted, true)
 
 
 func _material(mat_name: String, kind: String) -> int:

@@ -14,8 +14,7 @@
 ## Why this split
 - **Rules are testable without the engine running a scene.** Everything in `src/core` runs
   under `godot --headless -s tests/run_tests.gd` in under a second.
-- **AI and replays reuse the same path.** An AI player will call the same `GameController`
-  methods as the UI. A saved game is the scenario + dice seed + action list.
+- **AI uses the same controller actions as the UI.** The live save contains an allowlisted snapshot of all rules state and the exact RNG seed **and state**, not just the original scenario seed. Replays are read-only snapshots captured at significant `GameEvent`s; they do not re-run AI or rules. See `battle-save-replay.md`.
 - **Campaign layer stays separate.** A future `src/campaign/` will build `GameState` from
   campaign data and read results back from it; the battle code doesn't need to know.
 
@@ -39,10 +38,20 @@ its MP cost and the path, so the UI can preview any destination and facing insta
 - Picking intersects the camera ray with each level's plane, top down — no physics bodies.
 - Units are placeholder box 'Mechs; `UnitView.set_model()` is the hook for real glTF models.
 
-## Planned modules (in order)
+## Save and replay boundary
+
+`BattleCodec` encodes rule-object graphs (including typed integer hex keys) into JSON-compatible data, and `BattleSave` stores compressed files in `user://`. `BattleRecorder` listens to significant events and captures the authoritative `GameState`; `replay_scene.gd` reconstructs presentation scenes without any `GameController`. Save/load and replay never use voxel counts to determine game mechanics. See `battle-save-replay.md` for the schema, lifecycle and limitations.
+
+## Cinematic camera and Tactical Academy
+
+`CinematicDirector` (src/view/camera) is a presentation-only subscriber to resolved battle events. It changes `CameraRig` goals to follow movement and frame attacks, falls, and destruction. Manual camera gestures interrupt it. `GameSettings` persists the mode; camera poses are not part of any battle save. No camera action delays or changes the rules.
+
+`BattleRecorder` stores a compact event ledger in addition to major full-world replay checkpoints. `BattleForensics` (src/core/explain) analyzes that ledger without reconstructing dice or inferring hypothetical outcomes; `forensics_scene.gd` displays unit performance and decision points linked to nearby replay checkpoints. See `tactical-academy.md`.
+
+## Planned modules (historical order)
 1. Backward walking, jumping, prone/standing, minimum movement.
 2. Line of sight (`Hex.line` + woods/levels) and to-hit modifiers.
 3. Unit data: armor, internal structure, weapons, heat sinks (import from MegaMek MTF/BLK).
 4. Weapon attacks, hit locations, damage transfer, criticals, ammo explosions.
 5. Physical attacks, heat phase, piloting skill rolls, falls.
-6. Bot opponent; save/load; campaign layer.
+6. Bot opponent and battle save/replay (implemented, pending verification); campaign layer later.

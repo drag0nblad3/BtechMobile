@@ -5,8 +5,9 @@ extends RefCounted
 ## PRB (a probe with range 4), SWARM (extra damage groupings against a
 ## target in its own hex). Armor Specials live in AssetDamage, No Turret in
 ## AssetFire, APC/Mechanized in AssetTransport.
+## NARC: a separate Narc beacon shot (3/6/9, never at Assets).
 ## Indirect Fire lives in AssetIndirect.
-## TODO(rules): Artillery, Arrow IV, Narc, TAG and Popup.
+## TODO(rules): Artillery, Arrow IV, TAG and Popup.
 
 
 ## Card Specials that become equipment on the design.
@@ -16,6 +17,19 @@ static func setup_def(def: UnitDef) -> void:
 	if def.asset.has("PRB"):
 		def.probe = "beagle_probe"  # an Asset's probe reaches 4 hexes (p. 150)
 		def.probe_loc = Location.CT
+
+
+## The NARC Special's beacon shot (p. 150): no damage, a pod on a hit.
+static func narc_weapon() -> WeaponDef:
+	var w := WeaponDef.new()
+	w.id = "asset_narc"
+	w.name = "Narc beacon"
+	w.type = "missile"
+	w.beacon = true
+	w.short_range = 3
+	w.medium_range = 6
+	w.long_range = 9
+	return w
 
 
 ## Does the target's AMS Special cut this missile attack's Cluster Hits roll?

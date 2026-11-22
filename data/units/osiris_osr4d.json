@@ -1,0 +1,82 @@
+{
+ "id": "osiris_osr4d",
+ "name": "Osiris",
+ "model": "OSR-4D",
+ "tonnage": 30,
+ "walk_mp": 8,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 9,
+  "RA": 9,
+  "LT": 10,
+  "RT": 10,
+  "CT": 15,
+  "HD": 8,
+  "LL": 13,
+  "RL": 13
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*9",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_medium_laser*2",
+   "ferro_fibrous*5"
+  ],
+  "LT": [
+   "jump_jet*4",
+   "endo_steel*5"
+  ],
+  "RT": [
+   "jump_jet*4",
+   "medium_pulse_laser",
+   "er_medium_laser",
+   "ferro_fibrous*3"
+  ],
+  "CT": [
+   "er_medium_laser*2"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": 4764,
+  "megamek": "data/mekfiles/meks/3067/Osiris OSR-4D.mtf",
+  "published": "RS:J",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1230
+ },
+ "bv": 1230,
+ "sprite": "osiris",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 5 ER Medium Lasers, Medium Pulse Laser; walks 8, runs 12, jumps 8."
+}

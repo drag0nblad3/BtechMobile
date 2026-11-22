@@ -31,7 +31,7 @@ static func side_slots(def: UnitDef) -> int:
 static func bv_structure_mult(def: UnitDef) -> float:
 	if not def.is_xl():
 		return 1.0
-	return CLAN_BV_STRUCTURE_MULT if def.is_clan() else BV_STRUCTURE_MULT
+	return CLAN_BV_STRUCTURE_MULT if def.clan_part("engine") else BV_STRUCTURE_MULT
 
 
 ## Called when a side torso is destroyed; returns the engine hits it added.
@@ -45,7 +45,7 @@ static func on_torso_lost(u: Unit, loc: int) -> int:
 			n += 1
 	u.engine_hits += n
 	if u.engine_hits >= CritEffects.ENGINE_KILL:
-		var kind := "light" if u.def.engine_type == "light" else ("Clan XL" if u.def.is_clan() else "XL")
+		var kind := "light" if u.def.engine_type == "light" else ("Clan XL" if u.def.clan_part("engine") else "XL")
 		Damage.destroy_unit(u, "%s engine lost with the %s" % [kind, Location.name_for(u.def, loc).to_lower()])
 	return n
 

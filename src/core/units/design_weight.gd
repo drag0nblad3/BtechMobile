@@ -33,7 +33,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 		"armor": _half_up(armor_pts / (ARMOR_PER_TON * armor_mult(def))),
 		"weapons": weapons,
 		"ammo": def.ammo_mounts.reduce(func(t: float, a: Dictionary) -> float: return t + (0.5 if a.get("half", false) else 1.0), 0.0),
-		"case": def.case_locs.size() * 0.5 + def.case2_locs.size() * (0.5 if def.is_clan() else 1.0),
+		"case": def.case_locs.size() * 0.5 + def.case2_locs.size() * (0.5 if def.clan_part("case") else 1.0),
 		"ecm": Ecm.tons(def) if def.ecm_loc >= 0 else 0.0,
 		"c3": C3Boosted.tons(def),
 		"masc": float(Masc.size(def)) if def.masc_loc >= 0 else 0.0,
@@ -58,7 +58,7 @@ static func armor_mult(def: UnitDef) -> float:
 
 
 static func ferro_mult(def: UnitDef) -> float:
-	return ClanTech.FERRO_MULT if def.is_clan() else FERRO_MULT
+	return ClanTech.FERRO_MULT if def.clan_part("armor") else FERRO_MULT
 
 
 ## Heat sinks the engine can hold without using critical slots: rating / 25.

@@ -1,0 +1,310 @@
+[
+  {
+    "id": "flea",
+    "unit": "flea_fle17",
+    "low": {
+      "cells": 5222,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5222,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 140994,
+    "feature": "forward tapered cockpit, very long reverse-kneed insect legs, stubby twin pulse guns"
+  },
+  {
+    "id": "spider",
+    "unit": "spider_sdr5v",
+    "low": {
+      "cells": 5275,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5275,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 142425,
+    "feature": "deeply separated long limbs, twin upright backpack jump towers, small angular mask"
+  },
+  {
+    "id": "panther",
+    "unit": "panther_pnt9r",
+    "low": {
+      "cells": 5278,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5278,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 142506,
+    "feature": "right PPC forearm, left fist, narrow torso and legs, four center SRM ports"
+  },
+  {
+    "id": "raven",
+    "unit": "raven_rvn3l",
+    "low": {
+      "cells": 5226,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5226,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 141102,
+    "feature": "low rounded bird shell, long beak, two lateral EW sensor pods, skinny bent legs"
+  },
+  {
+    "id": "crab",
+    "unit": "crab_crb27",
+    "low": {
+      "cells": 5259,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5259,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 141993,
+    "feature": "circular broad chest with twin intake grilles, short crown, long crab-claw laser arms"
+  },
+  {
+    "id": "bushwacker",
+    "unit": "bushwacker_bswx1",
+    "low": {
+      "cells": 5425,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5425,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 146475,
+    "feature": "tapered low fighter cockpit with raised dorsal AC, drum joints, separate slim legs"
+  },
+  {
+    "id": "orion",
+    "unit": "orion_on1k",
+    "low": {
+      "cells": 5336,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5336,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 144072,
+    "feature": "asymmetric left shoulder rocket packs, tucked helmet, right AC/10 and small arm lasers"
+  },
+  {
+    "id": "longbow",
+    "unit": "longbow_lgb7q",
+    "low": {
+      "cells": 5368,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5368,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 144936,
+    "feature": "undersized center body dwarfed by horizontal paired circular LRM-20 arm launchers"
+  },
+  {
+    "id": "jagermech",
+    "unit": "jagermech_jm6s",
+    "low": {
+      "cells": 5618,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5618,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 151686,
+    "feature": "open skeletal chest, flat gun sled shoulders and two long barrels per arm"
+  },
+  {
+    "id": "highlander",
+    "unit": "highlander_hgn732",
+    "low": {
+      "cells": 5444,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5444,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 146988,
+    "feature": "tall leggy heavy, raised inset head, left LRM-20, right Gauss rifle and right cannon grip"
+  },
+  {
+    "id": "nova",
+    "unit": "nova_prime",
+    "low": {
+      "cells": 5242,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5242,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 141534,
+    "feature": "long central jet nose, ring-like shoulder couplings, two clusters of six laser barrels, no hands"
+  },
+  {
+    "id": "summoner",
+    "unit": "summoner_prime",
+    "low": {
+      "cells": 5214,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5214,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 140778,
+    "feature": "asymmetric top left LRM-15 disk, distinct left LBX and right PPC, long segmented legs"
+  },
+  {
+    "id": "mad_dog",
+    "unit": "mad_dog_prime",
+    "low": {
+      "cells": 5257,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5257,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 141939,
+    "feature": "stretched pointed cockpit, left and right raised 20-port launchers, thin gun arms"
+  },
+  {
+    "id": "shadow_cat",
+    "unit": "shadow_cat_prime",
+    "low": {
+      "cells": 5275,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 5275,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_prebevel": 142425,
+    "feature": "longest pointed nose, thin upper hull, separate right Gauss arm and narrow bird legs"
+  }
+]

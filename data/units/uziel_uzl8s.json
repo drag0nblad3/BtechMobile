@@ -1,0 +1,82 @@
+{
+ "id": "uziel_uzl8s",
+ "name": "Uziel",
+ "model": "UZL-8S",
+ "tonnage": 50,
+ "walk_mp": 5,
+ "jump_mp": 8,
+ "heat_sinks": 12,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 24,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "medium_pulse_laser*2",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "heat_sink",
+   "medium_pulse_laser*2",
+   "endo_steel*5"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "ammo:streak_srm6",
+   "guardian_ecm"
+  ],
+  "CT": [
+   "streak_srm6"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 5679,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Uziel UZL-8S.mtf",
+  "published": "RS:3067u",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1393
+ },
+ "bv": 1393,
+ "sprite": "uziel",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 Medium Pulse Lasers, Streak SRM 6; walks 5, runs 8, jumps 8."
+}

@@ -1,0 +1,85 @@
+{
+ "id": "osiris_osr3d",
+ "name": "Osiris",
+ "model": "OSR-3D",
+ "tonnage": 30,
+ "walk_mp": 8,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 8,
+  "RA": 8,
+  "LT": 8,
+  "RT": 8,
+  "CT": 10,
+  "HD": 7,
+  "LL": 11,
+  "RL": 11
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 3
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "srm6",
+   "endo_steel*8"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_medium_laser*2",
+   "ferro_fibrous*5"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "machine_gun",
+   "ammo:machine_gun:half",
+   "ammo:srm6",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "er_medium_laser",
+   "endo_steel",
+   "ferro_fibrous*5"
+  ],
+  "CT": [
+   "er_medium_laser*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": 4763,
+  "megamek": "data/mekfiles/meks/3067/Osiris OSR-3D.mtf",
+  "published": "RS:J",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1138
+ },
+ "bv": 1138,
+ "sprite": "osiris",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 5 ER Medium Lasers, SRM 6, Machine Gun; walks 8, runs 12, jumps 4."
+}

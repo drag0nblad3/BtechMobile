@@ -1,0 +1,89 @@
+{
+ "id": "dragon_fire_dgr5f",
+ "name": "Dragon Fire",
+ "model": "DGR-5F",
+ "tonnage": 75,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 24,
+  "RA": 24,
+  "LT": 26,
+  "RT": 26,
+  "CT": 38,
+  "HD": 9,
+  "LL": 32,
+  "RL": 32
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "gauss_rifle",
+   "endo_steel",
+   "light_ferro*2"
+  ],
+  "RA": [
+   "lb10x_ac",
+   "endo_steel*2",
+   "light_ferro*2"
+  ],
+  "LT": [
+   "x_pulse_medium_laser",
+   "ammo:gauss_rifle*2",
+   "guardian_ecm",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "ammo:lb10x_ac",
+   "ammo:lb10x_ac:cluster",
+   "case2",
+   "endo_steel*5",
+   "light_ferro"
+  ],
+  "CT": [
+   "er_large_laser"
+  ],
+  "HD": [
+   "x_pulse_medium_laser"
+  ],
+  "LL": [
+   "endo_steel",
+   "light_ferro"
+  ],
+  "RL": [
+   "endo_steel",
+   "light_ferro"
+  ]
+ },
+ "source": {
+  "mul_id": null,
+  "megamek": "data/mekfiles/meks/Shrapnel/vol 19/Dragon Fire DGR-5F.mtf",
+  "published": "ShrapRS",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Dragon Fire DGR-5F (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1987
+ },
+ "bv": 1987,
+ "sprite": "dragon_fire",
+ "role": "Brawler: built to slug it out at medium range. 2 Medium X-Pulse Lasers, Gauss Rifle, LB 10-X AC, ER Large Laser; walks 4, runs 6."
+}

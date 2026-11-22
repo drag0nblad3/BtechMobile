@@ -1,0 +1,66 @@
+{
+ "id": "arctic_wolf_2",
+ "name": "Arctic Wolf",
+ "model": "2",
+ "tonnage": 40,
+ "walk_mp": 7,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 8,
+  "RA": 8,
+  "LT": 14,
+  "RT": 14,
+  "CT": 13,
+  "HD": 9,
+  "LL": 10,
+  "RL": 10
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "c_srm6"
+  ],
+  "RA": [
+   "c_srm6"
+  ],
+  "LT": [
+   "c_large_pulse_laser",
+   "ammo:c_srm6:narc*3",
+   "endo_steel*2"
+  ],
+  "RT": [
+   "c_srm6*2",
+   "ammo:c_narc_beacon"
+  ],
+  "CT": [
+   "c_narc_beacon",
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 100,
+  "megamek": "data/mekfiles/meks/3060u/Arctic Wolf 2.mtf",
+  "published": "RS:3060u",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1511
+ },
+ "bv": 1511,
+ "sprite": "arctic_wolf",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 4 SRM 6s, Large Pulse Laser, Narc Missile Beacon; walks 7, runs 11."
+}
