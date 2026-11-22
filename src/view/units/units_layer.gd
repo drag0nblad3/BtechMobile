@@ -8,11 +8,13 @@ var views: Dictionary = {}  # unit id -> UnitView
 var _playing := 0
 
 
-func build(state: GameState) -> void:
-	for u in state.units:
+## Hidden units only show for sides in `see_hidden` (the human players).
+func build(state: GameState, see_hidden: Array = [0, 1]) -> void:
+	for u in state.all_units():
 		var v := UnitView.new()
 		add_child(v)
 		v.setup(u, state.map)
+		v.visible = (not state.hidden.has(u) or see_hidden.has(u.side)) and not state.reserves.has(u) and not state.waiting.has(u)
 		views[u.id] = v
 
 

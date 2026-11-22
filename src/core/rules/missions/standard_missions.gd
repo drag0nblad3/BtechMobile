@@ -67,6 +67,10 @@ static func _complicate(c: String, out: Dictionary, dice: Dice) -> void:
 			out["mission"].random_duration = true
 		"conditions":
 			out["conditions"] = ConditionsTable.roll(dice)
+		"ecm":
+			out["mission"].ecm_interference = true
+		"waves":
+			out["mission"].waves = true
 		"knife_fight":
 			for zones: Array in out["zones"]:
 				for z: Dictionary in zones:

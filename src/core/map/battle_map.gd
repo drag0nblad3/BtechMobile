@@ -6,6 +6,7 @@ var name: String = ""
 var width: int = 0   ## Columns (mapsheet XX).
 var height: int = 0  ## Rows (mapsheet YY).
 var tiles: Dictionary = {}  # Vector2i -> MapTile
+var colors: Dictionary = {}  ## Terrain id -> ground colour for this map (a theme's palette); view only.
 var rubble: TerrainType = null  ## What a collapsed building leaves behind.
 var ground: TerrainType = null  ## Clear terrain, for water dried out by extreme heat.
 var no_fire := false  ## Rain: nothing can be set alight.

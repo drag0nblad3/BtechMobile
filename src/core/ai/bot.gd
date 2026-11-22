@@ -10,7 +10,13 @@ extends RefCounted
 static func act(gc: GameController, side: int, skill: int = BotSkill.Level.VETERAN) -> bool:
 	BotSkill.use(skill)
 	var s := gc.state
-	if s.game_over or s.active_side() != side:
+	if s.game_over:
+		return false
+	if not s.point_blank.is_empty():
+		return BotHidden.answer(gc, side)
+	if BotHidden.reveal(gc, side):
+		return true
+	if s.active_side() != side:
 		return false
 	var pending := gc.pending_units()
 	if pending.is_empty():
@@ -18,6 +24,10 @@ static func act(gc: GameController, side: int, skill: int = BotSkill.Level.VETER
 	var u := pending[0]
 	match s.phase:
 		Phase.Kind.MOVEMENT:
+			if s.reserves.has(u):
+				var d := BotDrop.plan(s, u)
+				gc.announce(u, d["reason"])
+				return gc.combat_drop(u, d["hex"], d["facing"])
 			var m := BotMove.plan(s, u)
 			if BotSkill.advanced_tricks():
 				m = BotMasc.plan(gc, u, m)

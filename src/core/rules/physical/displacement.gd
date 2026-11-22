@@ -99,8 +99,11 @@ static func _level(tile: MapTile) -> int:
 	return tile.floor_level()
 
 
-static func move_to(_state: GameState, emit: Callable, u: Unit, to: Vector2i) -> void:
+static func move_to(state: GameState, emit: Callable, u: Unit, to: Vector2i) -> void:
 	var from := MoveOptions.key(u.coord, u.facing)
+	var src := state.map.get_tile(u.coord)
+	var dst := state.map.get_tile(to)
+	u.on_bridge = src != null and dst != null and Bridges.onto_deck(src, dst)
 	u.coord = to
 	u.on_roof = false  # TODO(rules): shoved onto a roof at the same level
 	emit.call(GameEvent.DISPLACED, {"unit_id": u.id, "from": from,
