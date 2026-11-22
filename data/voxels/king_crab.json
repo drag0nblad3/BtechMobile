@@ -4460,6 +4460,20 @@
               0
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              8,
+              21,
+              7
+            ],
+            [
+              8,
+              21,
+              7
+            ]
+          ]
         }
       ],
       "detail": [
@@ -5442,36 +5456,36 @@
                 "at": 18,
                 "polygon": [
                   [
-                    -18.78165,
-                    -8.84
+                    -19.0874,
+                    -10.506
                   ],
                   [
-                    -17.608,
-                    -13.6
+                    -17.8198,
+                    -15.3
                   ],
                   [
-                    -12.3217,
-                    -13.6
+                    -12.1106,
+                    -15.3
                   ],
                   [
-                    -10.55638,
-                    -8.84
+                    -10.2041,
+                    -10.506
                   ],
                   [
-                    -10.55638,
+                    -10.2041,
                     -0.13978
                   ],
                   [
-                    -13.49536,
+                    -13.3782,
                     1.8512
                   ],
                   [
-                    -17.608,
-                    1.18755
+                    -17.8198,
+                    1.1876
                   ],
                   [
-                    -19.36362,
-                    -3.45806
+                    -19.7159,
+                    -3.9804
                   ]
                 ]
               },
@@ -6602,5 +6616,7 @@
   "art_quality_revision": "50-stage-source-review-20261121",
   "art_signature_revision": "recognizable-claw-and-separated-gun-mouths",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "reference_resculpt_revision": "validated-reference-chassis-refit-20261122",
+  "reference_resculpt_passes": 2
 }
