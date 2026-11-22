@@ -77,19 +77,32 @@ geometry changes, not a claim of independently verified 3D reference fitting.
 ## Source lineage, loft stations and integrity
 
 The merge had replaced 100-pass shape files with earlier 50-pass versions on
-51 chassis. Fourteen non-proportion critical sculpts have been restored from
-the previously passing source snapshot at commit `2779714f`. Battleaxe and
-Sagittaire were reconstructed from that same prior source with new hull
-corrections, while the 35 other affected chassis retain their newer 41-model
-proportion edits and recover genuine historic review provenance. Repair notes
+51 chassis. Four compatible non-proportion signature sculpts (Havoc,
+Icarus II, Scorpion and Victor) retain the previously passing 100-pass source
+geometry from commit `2779714f`. Ten additional signature chassis, including
+Atlas, Jenner and Wolverine, use the later structurally consolidated models
+from PR #213: replacing them with their earlier disconnected detail assemblies
+had reintroduced dozens of floating islands and unsupported joints.
+Battleaxe and Sagittaire retain fresh source loft corrections, while the other
+35 affected chassis preserve their 41-model proportion work and recover
+genuine historic review provenance. Repair notes
 identify those records as lineage, not proof that a new 50-cycle review ran.
 Ten malformed authored loft-station sequences were corrected at their source,
 in paired high/low recipes, by ensuring distinct strictly ascending stations.
 
-The destructive tiny-orphan pruning branch is removed: an isolated source chip
-must be structurally joined when safe, or reported and explicitly sculpted
-later; visual audits cannot delete it silently. This may uncover remaining
-model issues and is preferable to a false zero-defect claim.
+The destructive tiny-orphan pruning branch is removed. Seven isolated parts
+on six models were identified in the strict 151-shape audit and source-cleaned:
+BattleMaster (10 cells), Fire Moth (1), Goliath (2), Gunslinger (two mirrored
+single-cell chips), Shogun (1), and Thunderbolt (1), amounting to seventeen
+actual authored-grid stray cells rather than any runtime masking. Larger
+unresolved material must be repaired with real supporting geometry and never
+hidden by silently altering the audit.
+
+The final 100-pass source review records for Battleaxe and Sagittaire are
+restored directly from the green pre-merge source, and Jenner's consolidated
+head nose receives an oval leading contour with a source-profile width ratio
+above the generalized front-disc test's minimum. These edits do not replace
+or relax any test constraint.
 
 **Remaining visual QA:** the earlier 41 proportions, the twelve new P2
 contour revisions, and the unaffected 98 catalog chassis still require
