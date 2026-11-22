@@ -13,8 +13,9 @@ extends RefCounted
 ## -1 per 3 (or part), at least 1. Heat-dissipating: flamer and plasma damage
 ## halved (round up), no outside heat. Anti-penetrative ablation: no TAC.
 ## Stealth armor stops damage like standard armor; its effects are in Stealth.
-## TODO(rules): weights and slots are MegaMek construction data; reactive
-## armor's critical reroll on its slots and AP ammo are not modelled.
+## Critical hits on reactive slots: ReactiveCrit.
+## TODO(rules): weights and slots are MegaMek construction data; AP ammo is
+## not modelled.
 
 ## Points per ton relative to standard armor (MegaMek), and bulky slots.
 const KINDS := {
