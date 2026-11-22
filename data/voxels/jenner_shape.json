@@ -1236,6 +1236,20 @@
               4
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              25,
+              4
+            ],
+            [
+              -9,
+              25,
+              4
+            ]
+          ]
         }
       ]
     },
@@ -7258,5 +7272,6 @@
     "source_shapes_preserved": 42
   },
   "connectivity_source_patch": "2026-11-22-rig-mass-v2",
-  "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2"
+  "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2",
+  "micro_island_cleanup": "2026-11-22-single-chassis-source-artifact"
 }
