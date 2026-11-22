@@ -11,6 +11,7 @@ const COLOR_JUMP := Color(0.7, 0.4, 1.0, 0.33)
 
 var controller: GameController
 var highlighter: HexHighlighter
+var aim_guide: BattleAimOverlay
 var marker: FacingMarker
 var hud: BattleHud
 var units_layer: UnitsLayer
@@ -169,6 +170,8 @@ func clear_selection() -> void:
 	has_preview = false
 	options = null
 	highlighter.clear()
+	if aim_guide != null:
+		aim_guide.clear()
 	marker.visible = false
 	hud.show_move_controls(false)
 	hud.leave_button.visible = false
@@ -239,6 +242,10 @@ func _refresh() -> void:
 		hexes[MoveOptions.coord_of(preview)] = HexHighlighter.DESTINATION
 	hexes[selected.coord] = HexHighlighter.SELECTED
 	highlighter.show_hexes(hexes)
+	if aim_guide != null:
+		var facing := preview.z if has_preview else selected.facing
+		var pos := MoveOptions.coord_of(preview) if has_preview else selected.coord
+		aim_guide.show_arcs(selected, pos, facing)
 	hud.set_mode_label(AssetMove.mode_name(selected, mode))
 	var spent: int = options.cost[preview] if has_preview else 0
 	var where := Hex.label(MoveOptions.coord_of(preview)) if has_preview else "-"

@@ -13,6 +13,7 @@ signal target_chosen(attacker: Unit, target: Unit)  ## The camera frames the pai
 var controller: GameController
 var hud: BattleHud
 var highlighter: HexHighlighter
+var aim_guide: BattleAimOverlay
 var bots: BotDriver
 
 var attacker: Unit
@@ -55,6 +56,8 @@ func clear() -> void:
 	physical.clear()
 	hud.show_attack_controls(false)
 	highlighter.clear()
+	if aim_guide != null:
+		aim_guide.clear()
 
 
 func on_hex_tapped(c: Vector2i) -> bool:
@@ -193,6 +196,8 @@ func _mode(key: Variant) -> void:
 
 func _refresh() -> void:
 	AttackView.refresh(self)
+	if aim_guide != null:
+		aim_guide.show_attack(self)
 
 
 func _shot_list() -> Array:

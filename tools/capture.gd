@@ -29,6 +29,12 @@ func _initialize() -> void:
 				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
 		BattleLaunch.bot_sides = []
 	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode in ["vfx", "jump"]:  # two lances on that map
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
+		for id in ["griffin_grf1n", "warhammer_whm6r"]:
+			fb.add(0, id)
+		for id in ["marauder_mad3r", "wasp_wsp1a"]:
+			fb.add(1, id)
+		BattleLaunch.pending = fb.build(_capture_map())
 	if _mode.begins_with("weather="):
 		var preset := _mode.substr(8)
 		var cfg := {}
@@ -48,12 +54,6 @@ func _initialize() -> void:
 		BattleLaunch.pending = fb.build(MapLoader.load_file(
 				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
 		BattleLaunch.bot_sides = []
-		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
-		for id in ["griffin_grf1n", "warhammer_whm6r"]:
-			fb.add(0, id)
-		for id in ["marauder_mad3r", "wasp_wsp1a"]:
-			fb.add(1, id)
-		BattleLaunch.pending = fb.build(_capture_map())
 	if _mode in ["vfx", "jump"]:
 		BattleLaunch.bot_sides = []  # cinematic frame, no bot actions
 	if _mode == "tutorial":
@@ -74,9 +74,9 @@ func _process(_delta: float) -> bool:
 	_frames += 1
 	if _frames == 5:
 		match _mode:
-			"select":
+			"select", "arcs":
 				_select_far_move()
-			"attack", "sheet", "rolls":
+			"attack", "sheet", "rolls", "aim":
 				_to_weapon_phase()
 			"notebook":
 				_scene.get_child(_scene.get_child_count() - 1)._show_notebook()
@@ -87,7 +87,7 @@ func _process(_delta: float) -> bool:
 				_scene.catalog.rebuild()
 	if _frames == 30 and _mode == "rolls":
 		_show_sample_rolls()
-	if _frames == 7 and (_mode == "attack" or _mode == "sheet"):
+	if _frames == 7 and _mode in ["attack", "sheet", "aim"]:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()

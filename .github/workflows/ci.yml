@@ -169,6 +169,23 @@ jobs:
           name: battle-scars-1280x720
           path: /tmp/battle-scars.png
           if-no-files-found: error
+      - name: Capture LOS line and turn arcs at 1280x720
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-aim-guides')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/aim-captures
+          for mode in aim arcs; do
+            timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+              -s tools/capture.gd -- "/tmp/aim-captures/$mode.png" "$mode" 2>&1 | tee -a aim-capture.log
+            test -s "/tmp/aim-captures/$mode.png"
+          done
+          ! grep -E "SCRIPT ERROR|Parse Error" aim-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-aim-guides')
+        with:
+          name: battle-aim-guides-1280x720
+          path: /tmp/aim-captures/*.png
+          if-no-files-found: error
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail
