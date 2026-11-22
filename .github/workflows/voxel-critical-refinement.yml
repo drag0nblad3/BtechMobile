@@ -1,0 +1,65 @@
+name: Critical chassis bespoke geometry refinement
+on:
+  push:
+    branches: [fix/model-rig-and-silhouettes-20261122]
+    paths:
+      - tools/voxel_critical_identity_pass.py
+      - .github/workflows/voxel-critical-refinement.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: voxel-critical-identity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  resculpt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install 'numpy>=1.26' 'pillow>=10'
+      - name: Apply 59 individually authored chassis resculpts
+        run: python tools/voxel_critical_identity_pass.py --root .
+      - name: Re-run blind identification at all angles
+        run: python tools/vx_blind_identity.py --root data/voxels --out /tmp/critical-after
+      - name: Check identity improvements and preserve all 151 models
+        run: |
+          python - <<'PY'
+          import json,glob,shutil
+          d=json.load(open('docs/graphics/critical-identity-resculpt.json'))
+          before=json.load(open('docs/graphics/blind-recognition-confusion.json'))
+          after=json.load(open('/tmp/critical-after/blind_confusion_report.json'))
+          assert len(d['models'])==59
+          assert all(m['coarse']['contour_vertices']>0 and m['detailed']['contour_vertices']>0 for m in d['models'].values())
+          assert len(glob.glob('data/voxels/*_shape.json'))==after['model_count']==151
+          names={m['model']:m for m in before['models']}
+          later={m['model']:m for m in after['models']}
+          improved=sum(later[n]['top_similarity']<names[n]['top_similarity'] for n in d['models'])
+          print('IDENTITY_CHANGE|original_critical=59|after_critical=%d|improved=%d|weapon_modules=%d'%
+                (after['critical_models'],improved,sum(m['coarse']['weapon_modules'] for m in d['models'].values())))
+          assert after['critical_models']<=45, 'Too many silhouette collisions remain'
+          assert improved>=40, 'Chassis features must improve actual blind similarity'
+          shutil.copyfile('/tmp/critical-after/blind_confusion_report.json',
+                          'docs/graphics/critical-identity-confusion-after.json')
+          PY
+      - name: Commit all edited source and detailed sculptures
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/voxels docs/graphics/critical-identity-resculpt.json docs/graphics/critical-identity-confusion-after.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Art: bespoke critical-identity resculpt on 59 chassis and weapon mounts'
+            git push origin HEAD:fix/model-rig-and-silhouettes-20261122
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: critical-chassis-sculpt-and-blind-audit
+          path: |
+            docs/graphics/critical-identity-resculpt.json
+            /tmp/critical-after/blind_confusion_report.json
+            /tmp/critical-after/blind_page_*.png
+          if-no-files-found: warn

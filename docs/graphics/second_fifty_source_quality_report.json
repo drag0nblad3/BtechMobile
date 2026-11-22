@@ -1,0 +1,1005 @@
+{
+  "mechs": {
+    "adder": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 35,
+      "stages_with_changes": 5
+    },
+    "akuma": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 6,
+      "stages_with_changes": 1
+    },
+    "albatross": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "annihilator": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 10
+    },
+    "archer": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 150,
+      "stages_with_changes": 15
+    },
+    "argus": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 12,
+      "stages_with_changes": 2
+    },
+    "assassin": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 150,
+      "stages_with_changes": 15
+    },
+    "atlas": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 80,
+      "stages_with_changes": 5
+    },
+    "awesome": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 200,
+      "stages_with_changes": 20
+    },
+    "axman": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "banshee": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 10
+    },
+    "battleaxe": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "battlemaster": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 230,
+      "stages_with_changes": 20
+    },
+    "black_knight": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 288,
+      "stages_with_changes": 17
+    },
+    "blackjack": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 190,
+      "stages_with_changes": 20
+    },
+    "bushwacker": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "caesar": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "cataphract": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 10
+    },
+    "centurion": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 260,
+      "stages_with_changes": 20
+    },
+    "chameleon": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "charger": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "chimera": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "cicada": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 90,
+      "stages_with_changes": 10
+    },
+    "clint": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 15,
+      "stages_with_changes": 5
+    },
+    "commando": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 175,
+      "stages_with_changes": 20
+    },
+    "crab": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 46,
+      "stages_with_changes": 9
+    },
+    "crockett": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "crossbow": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60,
+      "stages_with_changes": 7
+    },
+    "crusader": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 160,
+      "stages_with_changes": 20
+    },
+    "cyclops": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "dervish": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "devastator": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "dire_wolf": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 27,
+      "stages_with_changes": 5
+    },
+    "dragon": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "emperor": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 50,
+      "stages_with_changes": 10
+    },
+    "enforcer": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 148,
+      "stages_with_changes": 18
+    },
+    "excalibur": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 68,
+      "stages_with_changes": 13
+    },
+    "executioner": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 46,
+      "stages_with_changes": 8
+    },
+    "exterminator": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60,
+      "stages_with_changes": 11
+    },
+    "falconer": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 8,
+      "stages_with_changes": 2
+    },
+    "fire_moth": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 105,
+      "stages_with_changes": 15
+    },
+    "firebee": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 64,
+      "stages_with_changes": 12
+    },
+    "firefly": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "firestarter": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 224,
+      "stages_with_changes": 18
+    },
+    "flashman": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "flea": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "gargoyle": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "goliath": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "grasshopper": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "grendel": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 25,
+      "stages_with_changes": 5
+    },
+    "griffin": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 250,
+      "stages_with_changes": 20
+    },
+    "grizzly": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "guillotine": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 12,
+      "stages_with_changes": 2
+    },
+    "gunslinger": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 32,
+      "stages_with_changes": 7
+    },
+    "hatamoto_chi": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 12,
+      "stages_with_changes": 3
+    },
+    "hatchetman": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 50,
+      "stages_with_changes": 10
+    },
+    "havoc": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 88,
+      "stages_with_changes": 13
+    },
+    "hel": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "helios": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "hellbringer": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "hellspawn": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "hermes_ii": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 65,
+      "stages_with_changes": 15
+    },
+    "highlander": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "hollander": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 185,
+      "stages_with_changes": 20
+    },
+    "hoplite": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "howler": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 80,
+      "stages_with_changes": 10
+    },
+    "hunchback_iic": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "icarus_ii": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "ice_ferret": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 98,
+      "stages_with_changes": 13
+    },
+    "jagermech": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 144,
+      "stages_with_changes": 18
+    },
+    "javelin": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 192,
+      "stages_with_changes": 23
+    },
+    "jenner": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 82,
+      "stages_with_changes": 13
+    },
+    "katana": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "king_crab": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "kintaro": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "kit_fox": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 110,
+      "stages_with_changes": 15
+    },
+    "kodiak": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 25,
+      "stages_with_changes": 5
+    },
+    "lancelot": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "legionnaire": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 50,
+      "stages_with_changes": 5
+    },
+    "linebacker": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 30,
+      "stages_with_changes": 5
+    },
+    "locust": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "longbow": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "mackie": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "mad_dog": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "malice": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "marauder": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 110,
+      "stages_with_changes": 15
+    },
+    "mauler": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 32,
+      "stages_with_changes": 5
+    },
+    "mercury": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 162,
+      "stages_with_changes": 17
+    },
+    "merlin": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "mist_lynx": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 110,
+      "stages_with_changes": 15
+    },
+    "mongoose": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 133,
+      "stages_with_changes": 18
+    },
+    "night_gyr": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "nightsky": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "nightstar": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "nova": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "orion": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "ostroc": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "ostscout": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 88,
+      "stages_with_changes": 13
+    },
+    "ostsol": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "ostwar": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "pack_hunter": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 50,
+      "stages_with_changes": 5
+    },
+    "panther": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 160,
+      "stages_with_changes": 20
+    },
+    "penetrator": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "phoenix_hawk": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 320,
+      "stages_with_changes": 20
+    },
+    "pillager": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "piranha": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 50,
+      "stages_with_changes": 5
+    },
+    "quickdraw": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "raven": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "rifleman": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 80,
+      "stages_with_changes": 10
+    },
+    "sagittaire": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 32,
+      "stages_with_changes": 7
+    },
+    "scarabus": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "scorpion": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "sentinel": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "shadow_cat": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 15
+    },
+    "shadow_hawk": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 258,
+      "stages_with_changes": 24
+    },
+    "shockwave": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 92,
+      "stages_with_changes": 12
+    },
+    "shogun": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 32,
+      "stages_with_changes": 7
+    },
+    "spartan": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 20,
+      "stages_with_changes": 5
+    },
+    "spector": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "spider": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 155,
+      "stages_with_changes": 20
+    },
+    "stalker": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "starslayer": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "stinger": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 172,
+      "stages_with_changes": 20
+    },
+    "stormcrow": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 110,
+      "stages_with_changes": 10
+    },
+    "suburbanmech": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 20
+    },
+    "summoner": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "supernova": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 38,
+      "stages_with_changes": 8
+    },
+    "tarantula": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "thanatos": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "thug": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 10
+    },
+    "thunder_hawk": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 36,
+      "stages_with_changes": 5
+    },
+    "thunder_stallion": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "thunderbolt": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 209,
+      "stages_with_changes": 20
+    },
+    "timber_wolf": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 40,
+      "stages_with_changes": 5
+    },
+    "trebuchet": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 130,
+      "stages_with_changes": 15
+    },
+    "turkina": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "urbanmech": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "valkyrie": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 154,
+      "stages_with_changes": 19
+    },
+    "venom": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 70,
+      "stages_with_changes": 10
+    },
+    "victor": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 88,
+      "stages_with_changes": 13
+    },
+    "vindicator": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 320,
+      "stages_with_changes": 20
+    },
+    "viper": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 50,
+      "stages_with_changes": 5
+    },
+    "vulcan": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 160,
+      "stages_with_changes": 20
+    },
+    "warhammer": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 114,
+      "stages_with_changes": 10
+    },
+    "warhawk": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 100,
+      "stages_with_changes": 10
+    },
+    "wasp": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 118,
+      "stages_with_changes": 15
+    },
+    "whitworth": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 160,
+      "stages_with_changes": 20
+    },
+    "wolfhound": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 132,
+      "stages_with_changes": 15
+    },
+    "wolverine": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 110,
+      "stages_with_changes": 11
+    },
+    "ymir": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0,
+      "stages_with_changes": 0
+    },
+    "zeus": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 82,
+      "stages_with_changes": 10
+    }
+  },
+  "assets": {
+    "artillery_carrier": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "attack_vtol": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "battle_armor_elementals": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0
+    },
+    "field_emplacement": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0
+    },
+    "hover_scout": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "hover_tank": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "infantry_jump": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0
+    },
+    "infantry_motorized": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0
+    },
+    "infantry_rifles": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0
+    },
+    "lrm_carrier": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "missile_emplacement": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 0
+    },
+    "savior_repair_vehicle": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "tracked_tank": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "transport_vtol": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "wheeled_apc": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    },
+    "wheeled_supply_truck": {
+      "passes": 100,
+      "new_review_cycles": 50,
+      "edited_vertices": 60
+    }
+  },
+  "stages": [
+    "front_silhouette",
+    "side_profile",
+    "waist_depth",
+    "shoulder_roof",
+    "weapon_arm_clearance",
+    "cockpit_beak",
+    "thigh_anatomy",
+    "digitigrade_shin",
+    "ankle_and_foot",
+    "signature_weapon_mount"
+  ],
+  "source_changed": 315
+}
