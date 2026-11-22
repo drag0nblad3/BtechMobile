@@ -1,0 +1,69 @@
+{
+  "id": "wasp_wsp3k",
+  "name": "Wasp",
+  "model": "WSP-3K",
+  "tonnage": 20,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 7,
+    "RT": 7,
+    "CT": 9,
+    "HD": 9,
+    "LL": 7,
+    "RL": 7
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 2
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*5"
+    ],
+    "RA": [
+      "heat_sink*2",
+      "medium_laser",
+      "endo_steel*4"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet*3",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "jump_jet*3",
+      "mrm10",
+      "ammo:mrm10"
+    ],
+    "CT": [
+      "endo_steel*2"
+    ],
+    "HD": [
+      "endo_steel"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. Medium Laser, MRM 10; walks 6, runs 9, jumps 6.",
+  "sprite": "wasp",
+  "source": {
+    "mul_id": 6949,
+    "megamek": "data/mekfiles/meks/3145/NTNU RS/Wasp WSP-3K.mtf",
+    "published": "RS:3145-NTNU,RS:3145",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 477
+  },
+  "bv": 477
+}
