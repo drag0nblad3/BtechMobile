@@ -1,6 +1,6 @@
 {
   "id": "akuma_shape",
-  "name": "Akuma AKU-1X — low-poly shape",
+  "name": "Akuma AKU-1X \u2014 low-poly shape",
   "unit": "akuma_aku1x",
   "voxel_size": 0.069212,
   "subdivide": 1,
@@ -360,7 +360,7 @@
                 ]
               },
               {
-                "at": -5,
+                "at": -4.75,
                 "polygon": [
                   [
                     -1.47,
@@ -3339,7 +3339,7 @@
                 ]
               },
               {
-                "at": -5,
+                "at": -4.75,
                 "polygon": [
                   [
                     -10.33,
@@ -5372,12 +5372,50 @@
   ],
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 2.8,
     "front": 0.85,
     "rear": 0.7,
     "torso_width": 0.95
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 6,
+    "stages_with_changes": 1
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "samurai brow; massive torso; broad forward arms",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review metadata after later PR #213 contour resculpt; preserve current physical sculpt."
   }
 }
