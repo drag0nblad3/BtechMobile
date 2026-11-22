@@ -13,6 +13,7 @@ var pilot: Pilot
 ## Battlefield Support Asset (vehicle, infantry): its card state; null for 'Mechs.
 var asset: AssetState = null
 var vehicle: VehicleState = null  ## A combat vehicle (VehicleLoc locations).
+var ba: BaState = null  ## A battle armor squad's troopers.
 
 # Record sheet ------------------------------------------------------------
 var armor: Array[int] = []
@@ -95,6 +96,9 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	if def.vehicle != null:
 		_init_vehicle()
 		return
+	if def.battle_armor != null:
+		_init_ba()
+		return
 	for loc in Location.COUNT:
 		armor.append(def.armor[loc] if def.armor.size() > loc else 0)
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
@@ -137,6 +141,23 @@ func _init_asset() -> void:
 	for i in def.asset.special("IF"):
 		weapons.append(MountedWeapon.new(iw, Location.CT, false))
 	pilot.gunnery = asset.skill()
+
+
+## A battle armor squad: troopers live in `ba`; the 'Mech locations hold one
+## placeholder point each. Each weapon is one squad attack (BaSpec).
+func _init_ba() -> void:
+	ba = BaState.new(def.battle_armor)
+	for loc in Location.COUNT:
+		armor.append(0)
+		rear_armor.append(0)
+		structure.append(1)
+		slots.append([])
+	for i in def.battle_armor.weapons.size():
+		var mw := MountedWeapon.new(def.battle_armor.weapon_def(i, ba.alive()), Location.CT, false)
+		mw.on_squad = true
+		weapons.append(mw)
+		if mw.def.uses_ammo():
+			ammo.append(AmmoBin.new(mw.def, Location.CT))
 
 
 ## A combat vehicle: armor and structure per VehicleLoc, no critical slots;
@@ -278,6 +299,8 @@ func walk_mp() -> int:
 		return 0 if asset.card.immobile() else def.walk_mp
 	if vehicle != null:
 		return vehicle.cruise_mp()
+	if ba != null:
+		return def.walk_mp
 	if def.quad:
 		var qb := Quad.walk_base(self)
 		return maxi(0, qb + (Tsm.mp_bonus(self) if qb > 0 else 0) - HeatScale.mp_penalty(heat))
@@ -295,6 +318,8 @@ func run_mp() -> int:
 		return walk_mp()  # one fixed allowance every turn (p. 141)
 	if vehicle != null:
 		return vehicle.flank_mp()
+	if ba != null:
+		return walk_mp()  # battle armor doesn't run (TODO(rules))
 	var slow := 1 if def.armor_type == "hardened" else 0  # hardened armor: -1 running MP (p. 202)
 	if masc_active and sc_active:
 		return maxi(walk_mp(), ceili(walk_mp() * 2.5) - slow)
@@ -303,7 +328,7 @@ func run_mp() -> int:
 
 ## Jump MP after jump jet damage.
 func jump_mp() -> int:
-	if asset != null or vehicle != null:
+	if asset != null or vehicle != null or ba != null:
 		return def.jump_mp
 	var lost := {}  # jets by ref: an improved jet's two slots are one jet
 	for loc in Location.COUNT:
@@ -336,7 +361,7 @@ func torso_facing() -> int:
 func ammo_for(w: WeaponDef, kind: String = "") -> int:
 	var n := 0
 	for a in ammo:
-		if a.weapon == w and a.kind == kind and not a.destroyed:
+		if (a.weapon == w or a.weapon.id == w.id) and a.kind == kind and not a.destroyed:
 			n += a.shots
 	return n
 
@@ -344,7 +369,7 @@ func ammo_for(w: WeaponDef, kind: String = "") -> int:
 ## Uses one shot, from the first bin that still has some. False if empty.
 func use_ammo(w: WeaponDef, kind: String = "") -> bool:
 	for a in ammo:
-		if a.weapon == w and a.kind == kind and not a.destroyed and a.shots > 0:
+		if (a.weapon == w or a.weapon.id == w.id) and a.kind == kind and not a.destroyed and a.shots > 0:
 			a.shots -= 1
 			return true
 	return false
@@ -353,7 +378,7 @@ func use_ammo(w: WeaponDef, kind: String = "") -> bool:
 ## Puts back a shot that wasn't fired after all (a Streak that didn't lock).
 func refund_ammo(w: WeaponDef, kind: String = "") -> void:
 	for a in ammo:
-		if a.weapon == w and a.kind == kind and not a.destroyed:
+		if (a.weapon == w or a.weapon.id == w.id) and a.kind == kind and not a.destroyed:
 			a.shots += 1
 			return
 

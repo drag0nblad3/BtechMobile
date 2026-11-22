@@ -24,6 +24,8 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 		set_model(PlaceholderAsset.build(u.def, u.side))
 	elif u.def.vehicle != null:
 		set_model(PlaceholderAsset.build_vehicle(u.def, u.side))
+	elif u.def.battle_armor != null:
+		set_model(PlaceholderAsset.build_squad(u.def, u.side))
 	else:
 		var sprite := SpriteMech.try_build(u.def)
 		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))

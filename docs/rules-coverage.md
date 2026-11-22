@@ -211,6 +211,13 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Physical attacks on buildings (`BuildingMelee`, p. 135): tap an adjacent building in the Physical Attack Phase to punch (two arms), kick or swing a hatchet, sword or club at it; they always hit, no piloting roll for a kick, and the damage counts toward the attacker's Destroy Check — `TODO(rules)`: kicks need the building to fill the attacker's leg level, punches and swings the level above (our reading).
 - ⬜ Bridges as structures, basements.
 
+## Battle armor (classic record sheets)
+Not in the Core Rulebook: general Total Warfare practice, all `TODO(rules)`.
+- 🟡 Squads (`BaSpec`, `BaState`, `data/battle_armor/`): 7 official designs (3 IS Standard, 4 Elemental), MegaMek loadouts, sheet BV adjusted for skill; support units in the force builder (shared four-unit cap), saved with their troopers.
+- 🟡 Fire (`BaFire`): any direction; each weapon is one attack rolled on the Cluster Hits table with a shot (or its missiles) per living trooper; SRM packs have two volleys; +1 to hit battle armor. No heat.
+- 🟡 Damage (`BaDamage`): each packet hits one living trooper (1D6, rerolled); damage past its armor kills it and the rest is lost; the squad is destroyed with its last trooper.
+- 🟡 Movement (`BaMoveCost`): ground MP and jump MP with 'Mech terrain costs, no running; no water or buildings (nor landing there); stacks like infantry (`AssetStacking`). No physical attacks or charges by or against them. — `TODO(rules)`: swarm and leg attacks (battle claws), riding OmniMechs, anti-personnel weapons, buildings, conventional infantry.
+
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
 

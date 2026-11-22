@@ -25,6 +25,11 @@ static func health(u: Unit) -> float:
 		return clampf((u.asset.check - 2) / maxf(1.0, u.asset.card.check - 2.0), 0.0, 1.0)
 	var full := 0.0
 	var now := 0.0
+	if u.ba != null:  # each trooper: its armor plus one for the trooper
+		for a: int in u.ba.troopers:
+			full += u.def.battle_armor.armor + 1
+			now += 0 if a == BaState.DEAD else a + 1
+		return clampf(now / maxf(1.0, full), 0.0, 1.0)
 	if u.vehicle != null:  # armor and structure in the armored locations
 		for loc: int in VehicleLoc.ARMORED:
 			if loc != VehicleLoc.TURRET or u.def.vehicle.turret:

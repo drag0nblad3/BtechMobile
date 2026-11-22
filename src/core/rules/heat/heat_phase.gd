@@ -17,7 +17,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		if u.asset != null:  # no heat scale: outside heat is damage (p. 148)
 			AssetDamage.heat(emit, u, u.outside_heat, "fire")
 			continue
-		if u.vehicle != null:  # vehicles track no heat; TODO(rules) fire and flamer effects
+		if u.vehicle != null or u.ba != null:  # vehicles and battle armor track no heat; TODO(rules) fire and flamer effects
 			continue
 		var before := u.heat
 		var outside := 0 if ArmorTypes.no_outside_heat(u.def) \
