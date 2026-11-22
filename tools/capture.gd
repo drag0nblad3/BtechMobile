@@ -75,6 +75,8 @@ func _process(_delta: float) -> bool:
 			VxBlast.spawn(_scene.fx, target, "impact")
 		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
 	if _frames == 40:
+		if _mode == "jump" and get_nodes_in_group("jump_fx").is_empty():
+			printerr("CAPTURE_JUMP_FAILED: exhaust absent on review frame")
 		root.get_viewport().get_texture().get_image().save_png(_out)
 		print("saved ", _out)
 		return true
@@ -139,6 +141,12 @@ func _stage_battle_visuals() -> void:
 		return
 	var box := HexLayout.map_bounds(state.map)
 	var center := box.get_center()
+	# Review close-ups expose physical sockets and exhausts; gameplay uses
+	# the normal free tactical camera, never these screenshot-only changes.
+	_scene.rig.snap(center + Vector3(0, 0.35, 0), 12.5)
+	_scene.rig.cinematic_frame(center + Vector3(0, 0.35, 0),
+		12.5, deg_to_rad(24.0), deg_to_rad(38.0))
+	_scene.hud.set_tip("")
 	var targets := [center + Vector3(-3.5, 0, 0), center + Vector3(3.5, 0, 0)]
 	var staged := [state.units[0], state.units[state.units.size() - 1]]
 	for i in staged.size():
