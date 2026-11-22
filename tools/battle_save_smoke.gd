@@ -15,7 +15,7 @@ func _run() -> void:
 	await process_frame
 	print("battle save smoke trace: battle opened")
 	var battle: Variant = current_scene
-	if not _check(battle != null and battle.controller.state.turn == 1,
+	if not _check(battle != null and battle.get_script() != null and battle.controller.state.turn == 1,
 			"battle scene did not start"):
 		return
 	var before: GameController = battle.controller

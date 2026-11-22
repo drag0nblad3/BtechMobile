@@ -151,9 +151,8 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 			if jumped:
 				var from_pos := _hex_pos(last_c)
 				var to_pos := _hex_pos(c)
-				tw.tween_method(func(v: float) -> void:
-						position = from_pos.lerp(to_pos, v) +
-								Vector3.UP * sin(v * PI) * 0.85, 0.0, 1.0, STEP_TIME).set_trans(Tween.TRANS_SINE)
+				tw.tween_method(Callable(self, "_jump_fraction").bind(from_pos, to_pos),
+					0.0, 1.0, STEP_TIME).set_trans(Tween.TRANS_SINE)
 			else:
 				tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
 						.set_trans(Tween.TRANS_SINE)
@@ -164,6 +163,10 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 	tw.finished.connect(func():
 			show_condition()
 			animation_finished.emit())
+
+
+func _jump_fraction(progress: float, from_pos: Vector3, to_pos: Vector3) -> void:
+	position = from_pos.lerp(to_pos, progress) + Vector3.UP * sin(progress * PI) * 0.85
 
 
 ## Footstep cues occur at actual movement tween contacts, not on a timer.

@@ -48,6 +48,12 @@ jobs:
           name: component-shape-render-log
           path: shape-render.log
           if-no-files-found: ignore
+      - name: Visual script dependency parse
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 25s godot --headless -s tools/visual_parse_smoke.gd 2>&1 | tee visual-parse.log
+          grep -q "visual parse smoke ok" visual-parse.log
+          ! grep -E "SCRIPT ERROR|Parse Error|VISUAL_PARSE_FAILED" visual-parse.log
       - name: Battle persistence tests (fast feedback)
         run: |
           set -o pipefail
