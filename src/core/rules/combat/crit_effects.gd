@@ -63,6 +63,9 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 		CritSlot.Kind.ARTEMIS:
 			u.weapons[slot.ref].artemis_lost = true
 			return "Artemis IV fire control destroyed: no cluster bonus"
+		CritSlot.Kind.APOLLO:
+			u.weapons[slot.ref].apollo_lost = true
+			return "Apollo fire control destroyed: the MRM's -1 cluster penalty is back"
 		CritSlot.Kind.ECM:
 			u.ecm_lost = true
 			return "ECM suite destroyed"

@@ -61,8 +61,9 @@ static func refresh(ai: AttackInput) -> void:
 		if not ai.hud.sheet_open:
 			var panel := AttackPanel.build("Weapons at " + Names.unit(ai.target),
 				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode)
-			ai.hud.show_side(AimPicker.wrap(panel, ai.target, ai.aims.get(ai.target.id, -1), ai._next_aim)
-					if AimPicker.available(ai.attacker, ai.target) else panel)
+			var side: Control = AimPicker.wrap(panel, ai.target, ai.aims.get(ai.target.id, -1), ai._next_aim) \
+					if AimPicker.available(ai.attacker, ai.target) else panel
+			ai.hud.show_side(TagInput.wrap(side, ai) if TagInput.available(ai.controller.state, ai.attacker, ai.target) else side)
 	else:
 		ai.hud.set_tip(Advisor.physical(ai.controller.state, ai.attacker, ai.target, level))
 		if not ai.hud.sheet_open:

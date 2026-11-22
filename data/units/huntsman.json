@@ -270,6 +270,53 @@
    "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Pulse Lasers, Ultra AC/10, ATM 6, Small Pulse Laser; walks 5, runs 8, jumps 5."
   },
   {
+   "model": "E",
+   "bv": 2104,
+   "heat_sinks": 14,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "c_medium_pulse_laser*2"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_large_pulse_laser",
+     "c_light_active_probe",
+     "c_light_tag"
+    ],
+    "LT": [
+     "heat_sink",
+     "c_er_small_laser",
+     "c_ams",
+     "ammo:c_ams"
+    ],
+    "RT": [
+     "c_atm6",
+     "ammo:c_atm6",
+     "ammo:c_atm6:er",
+     "ammo:c_atm6:he"
+    ]
+   },
+   "source": {
+    "mul_id": 7782,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 12/Nobori-nin (Huntsman) E.mtf",
+    "published": "RG12",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2104
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Pulse Lasers, Large Pulse Laser, ER Small Laser, Anti-Missile System, ATM 6; walks 5, runs 8, jumps 5."
+  },
+  {
    "model": "H",
    "bv": 2495,
    "heat_sinks": 16,

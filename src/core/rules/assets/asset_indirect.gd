@@ -55,7 +55,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	AssetFire.add_range(th, w, dist)
 	th.add("indirect special", -2, "Its Indirect Fire Special: -2, but it gives up its own TMM this turn.")
 	if spotter != null:
-		IndirectFire.add_mods(th, state, spotter)
+		IndirectFire.add_mods(th, state, spotter, target)
 		th.spotter_id = spotter.id
 		th.indirect = true
 	ToHitCalc.add_conditions(th, state, attacker, target, los)

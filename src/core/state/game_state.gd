@@ -30,6 +30,9 @@ var initiative_die: Dictionary = {}
 var fire_heat: Dictionary = {}
 ## Spotters for indirect fire: unit id -> {target, turn}.
 var spotting: Dictionary = {}
+## TAG designations (Tag): target id -> {by, turn}; tag_used: unit id -> turn.
+var tagged: Dictionary = {}
+var tag_used: Dictionary = {}
 ## Weather, temperature and gravity for the whole map.
 var conditions := Conditions.new():
 	set(v):

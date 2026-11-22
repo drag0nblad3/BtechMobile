@@ -176,6 +176,17 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 	return true
 
 
+## Fires TAG at an enemy before declaring weapons (Tag). The unit keeps its
+## turn. Returns false if out of turn or it can't.
+func fire_tag(unit: Unit, target_id: int) -> bool:
+	var target := state.unit_by_id(target_id)
+	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or target == null or target.side == unit.side \
+			or Tag.problem(state, unit) != "":
+		return false
+	_emit(GameEvent.TAG, Tag.fire(state, dice, unit, target))
+	return true
+
+
 ## Declares physical attacks: [{kind: "punch"|"kick", limb, target_id}].
 ## An empty list makes none. Returns false if out of turn.
 func declare_physical(unit: Unit, attacks: Array) -> bool:
