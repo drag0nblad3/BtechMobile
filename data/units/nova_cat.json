@@ -1,0 +1,81 @@
+{
+  "id": "nova_cat",
+  "name": "Nova Cat",
+  "tonnage": 70,
+  "walk_mp": 4,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "tech_base": "clan",
+  "omni": true,
+  "sprite": "nova_cat",
+  "armor": {
+    "LA": 22,
+    "RA": 22,
+    "LT": 23,
+    "RT": 23,
+    "CT": 35,
+    "HD": 9,
+    "LL": 30,
+    "RL": 30
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 8
+  },
+  "equipment": {
+    "CT": [
+      "endo_steel*2"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "configs": [
+    {
+      "model": "G",
+      "heat_sinks": 14,
+      "jump_mp": 0,
+      "bv": 2522,
+      "equipment": {
+        "LA": [
+          "heat_sink",
+          "c_lrm20+artemis",
+          "ammo:c_lrm20*3"
+        ],
+        "RA": [
+          "c_lrm20+artemis",
+          "c_lrm20+artemis"
+        ],
+        "LT": [
+          "c_er_large_laser",
+          "c_ap_gauss_rifle*4",
+          "ammo:c_ap_gauss_rifle",
+          "targeting_computer",
+          "guardian_ecm"
+        ],
+        "RT": [
+          "heat_sink*2",
+          "c_ap_gauss_rifle*4",
+          "ammo:c_lrm20*2"
+        ]
+      },
+      "source": {
+        "mul_id": 2305,
+        "megamek": "data/mekfiles/meks/3060u/Nova Cat G.mtf",
+        "published": "RG23",
+        "role": "Missile Boat",
+        "bv": "mul",
+        "mul_url": "https://masterunitlist.battletech.com/units/nova-cat-g"
+      },
+      "role": "Missile Boat: three Artemis-guided LRM 20s, eight AP Gauss rifles and an ER large laser; walks 4, runs 6."
+    }
+  ]
+}
