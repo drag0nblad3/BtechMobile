@@ -174,18 +174,20 @@ func _repair_quality_contacts(chassis: String) -> void:
 		if distance > 12:
 			continue # suspicious rig: do not create a long artificial strut
 		var pos: Vector3i = start
+		var reached_parent := false
 		for axis in [1, 0, 2]:
 			while pos[axis] != goal[axis]:
 				var next := pos
 				next[axis] += 1 if goal[axis] > pos[axis] else -1
 				if parent_cells.has(next):
+					reached_parent = true
 					break
 				if occupied.has(next) and occupied[next] != child["name"]:
 					break
 				child_cells[next] = joint_mat
 				occupied[next] = child["name"]
 				pos = next
-			if parent_cells.has(pos):
+			if reached_parent:
 				break
 
 
