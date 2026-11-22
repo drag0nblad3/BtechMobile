@@ -164,6 +164,13 @@ def process(paths, model_name, asset=False):
 
 
 def main():
+    prior=ROOT/'docs'/'graphics'/'orthographic-50-pass-audit.json'
+    inputs=list(VOX.glob('*_shape.json'))+list(ASSETS.glob('*.json'))
+    if prior.exists() and inputs and all(json.loads(p.read_text()).get('orthographic_revision')==REVISION for p in inputs):
+        preserved=json.loads(prior.read_text()).get('summary',{})
+        if preserved.get('total_passes')==50*len(inputs):
+            print('Already applied; preserving original orthographic audit:',preserved)
+            return
     report={'revision':REVISION,'focus':list(STAGES),'mechs':[],'assets':[],'notes':
         ['50 sequential reviews per model; some passes intentionally do not change geometry',
          'only loft polygons edited; no changes to muzzle origins, hit locations, or pivots',

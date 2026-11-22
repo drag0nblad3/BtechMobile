@@ -17,7 +17,7 @@ jobs:
         with:
           ref: chatgpt/orthographic-50-20261122
           persist-credentials: true
-          fetch-depth: 3
+          fetch-depth: 5
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -42,7 +42,7 @@ jobs:
       - name: Rasterize true side, top and rear geometry from before/after sources
         run: |
           python -m pip install --quiet pillow
-          python tools/render_orthographic_gallery.py --before-ref HEAD~2
+          python tools/render_orthographic_gallery.py --before-ref 17a46dccadc3b320531be25105e5aa92512cc4c4
           test -s orthographic_before_after_50.png
       - uses: actions/upload-artifact@v4
         if: always()
