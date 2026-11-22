@@ -125,3 +125,25 @@ func _with_island(offset: Vector3i, n: int) -> VxModel:
 	m.parts.append({"name": "ct", "loc": Location.CT, "parent": "",
 			"joint": "", "pivot": Vector3(offset), "cells": cells})
 	return m
+
+func test_short_gap_between_major_sections_gets_one_minimal_stitch() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
+	# A broad neighboring component is not a tiny noise fragment.
+	for y in range(3):
+		for z in range(3):
+			m.part("ct")["cells"][Vector3i(4, y, z)] = 0
+	var report := VxIntegrity.repair(m)
+	check_eq(report["rejoined"], 1)
+	check_eq(report["added"], 1, "only the missing cell between plates is restored")
+	check_eq(report["after"], 0)
+
+
+func test_optical_details_are_not_welded_across_an_intentional_gap() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	m._mat["window"] = 1
+	for c: Vector3i in m.part("ct")["cells"]:
+		m.part("ct")["cells"][c] = 1
+	var report := VxIntegrity.repair(m)
+	check_eq(report["rejoined"], 0, "paired glass parts must remain separate")
+	check_eq(report["after"], 1)
