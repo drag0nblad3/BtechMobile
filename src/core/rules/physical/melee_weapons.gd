@@ -69,11 +69,11 @@ static func _weapon(state: GameState, a: Unit, t: Unit, i: int) -> Dictionary:
 		th.impossible = "Target isn't in front of that arm"
 	elif PhysicalMods.limb_fired(a, arm):
 		th.impossible = "That arm fired a weapon this turn"
-	elif swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null) == "":
+	elif swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null or t.vehicle != null) == "":
 		th.impossible = LOW_PRONE
 	if th.impossible != "":
 		return opt
-	opt["table"] = swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null)
+	opt["table"] = swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null or t.vehicle != null)
 	PhysicalMods.add(th, state, a, t)
 	if kind == "sword":
 		th.add("sword", -2, "A sword is a precise weapon: -2.")
@@ -97,11 +97,11 @@ static func _club(state: GameState, a: Unit, t: Unit) -> Dictionary:
 		th.impossible = "Clubs only hit targets in front of you"
 	elif PhysicalMods.limb_fired(a, Location.LA) or PhysicalMods.limb_fired(a, Location.RA):
 		th.impossible = "An arm fired a weapon this turn"
-	elif swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null) == "":
+	elif swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null or t.vehicle != null) == "":
 		th.impossible = LOW_PRONE
 	if th.impossible != "":
 		return opt
-	opt["table"] = swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null)
+	opt["table"] = swing_table(PhysicalMods.level_diff(state, a, t), t.prone or t.asset != null or t.vehicle != null)
 	PhysicalMods.add(th, state, a, t)
 	th.add("club", -1, "A club swing: -1.")
 	for arm in [Location.LA, Location.RA]:
