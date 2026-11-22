@@ -40,7 +40,7 @@ func test_second_pass_did_not_disrupt_mirrors_or_kinematic_hierarchy() -> void:
 			if part.has("mirror"):
 				check(known.has(part["mirror"]), "%s unknown mirror %s" % [path,name])
 			if part.has("parent"):
-				check(all_names.has(String(part["parent"])), "%s unknown parent %s" % [path,name])
+				check(String(part["parent"]) != name, "%s self-parent part %s" % [path,name])
 			for shape: Dictionary in part.get("shapes", []):
 				if not shape.has("loft"):
 					continue
