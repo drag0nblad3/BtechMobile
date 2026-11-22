@@ -7,25 +7,35 @@ static func build() -> Node3D:
 	var root := Node3D.new()
 	root.name = "Environment"
 	var sky_mat := ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color(0.32, 0.45, 0.62)
-	sky_mat.sky_horizon_color = Color(0.7, 0.72, 0.7)
-	sky_mat.ground_bottom_color = Color(0.12, 0.11, 0.1)
-	sky_mat.ground_horizon_color = Color(0.5, 0.5, 0.46)
+	sky_mat.sky_top_color = Color("#31465f")
+	sky_mat.sky_horizon_color = Color("#9da9a8")
+	sky_mat.ground_bottom_color = Color("#1b252b")
+	sky_mat.ground_horizon_color = Color("#696e66")
 	var sky := Sky.new()
 	sky.sky_material = sky_mat
 	var env := Environment.new()
 	env.background_mode = Environment.BG_SKY
 	env.sky = sky
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.ambient_light_energy = 0.45
+	env.ambient_light_energy = 0.52
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	var we := WorldEnvironment.new()
 	we.environment = env
 	root.add_child(we)
 	var sun := DirectionalLight3D.new()
 	sun.rotation_degrees = Vector3(-50, -35, 0)
-	sun.light_energy = 0.9
+	sun.light_energy = 1.0
+	sun.light_color = Color("#ffe6c3")
 	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 60.0
+	sun.directional_shadow_max_distance = 65.0
 	root.add_child(sun)
+	# A soft cool fill keeps shadow-side voxel silhouettes legible without
+	# expensive screen-space ambient occlusion or an additional shadow map.
+	var fill := DirectionalLight3D.new()
+	fill.name = "SkyFill"
+	fill.rotation_degrees = Vector3(-34, 143, 0)
+	fill.light_energy = 0.22
+	fill.light_color = Color("#a3c9e3")
+	fill.shadow_enabled = false
+	root.add_child(fill)
 	return root
