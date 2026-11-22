@@ -57,3 +57,41 @@ humanoid-proportion constraint.
 
 A passing geometry audit is necessary, **not proof of reference likeness**.
 Any incomplete visual or CI checks must remain explicit in the pull request.
+
+## Follow-up P2 specialized sculpts
+
+Twelve additional chassis received paired high/low source-geometry revisions,
+without editing record sheets or muzzle positions: **Axman, Kodiak, Turkina,
+Caesar, Legionnaire, Pillager, Thunder Hawk, Mauler, Stalker, Dire Wolf,
+Mad Dog, and Piranha**. The adjustments use per-chassis torso, shoulder and
+limb contours rather than a catalog-wide width cutoff. They retain axe blades,
+claws, saucer torsos, shoulder rockets, prominent Gauss barrels, digitigrade
+legs, and clustered micro-weapons as appropriate. Silhouette likeness remains
+subject to render inspection; raw loft ratios are not reference-matching scores.
+
+Reference checkpoints include Catalyst's Mad Dog Premium miniature, Clan
+Command Star Dire Wolf, Clan heavy/scout plastic variants, Turkina and Kodiak
+plastic poses, plus Inner Sphere Assault Lance Pillager. These are source
+geometry changes, not a claim of independently verified 3D reference fitting.
+
+## Source lineage, loft stations and integrity
+
+The merge had replaced 100-pass shape files with earlier 50-pass versions on
+51 chassis. Fourteen non-proportion critical sculpts have been restored from
+the previously passing source snapshot at commit `2779714f`. Battleaxe and
+Sagittaire were reconstructed from that same prior source with new hull
+corrections, while the 35 other affected chassis retain their newer 41-model
+proportion edits and recover genuine historic review provenance. Repair notes
+identify those records as lineage, not proof that a new 50-cycle review ran.
+Ten malformed authored loft-station sequences were corrected at their source,
+in paired high/low recipes, by ensuring distinct strictly ascending stations.
+
+The destructive tiny-orphan pruning branch is removed: an isolated source chip
+must be structurally joined when safe, or reported and explicitly sculpted
+later; visual audits cannot delete it silently. This may uncover remaining
+model issues and is preferable to a false zero-defect claim.
+
+**Remaining visual QA:** the earlier 41 proportions, the twelve new P2
+contour revisions, and the unaffected 98 catalog chassis still require
+full side/front reference comparison before the catalog can be declared
+complete. The 151-model structural workflow and CI decide technical acceptance.
