@@ -13,7 +13,7 @@ const GROUP := 5
 
 ## Is `u` caught by a blast whose struck hex is at `base` level?
 static func reaches(state: GameState, u: Unit, base: int) -> bool:
-	if u.destroyed or EndPhase.submerged(state, u) or (u.asset != null and u.asset.carried_by >= 0):
+	if u.destroyed or EndPhase.submerged(state, u) or u.carrier_id() >= 0:
 		return false
 	var t := state.map.get_tile(u.coord)
 	if t == null:
