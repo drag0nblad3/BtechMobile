@@ -4,7 +4,7 @@ Status: **source geometry changes staged for review; NOT an approved sculpt set*
 
 ## Scope
 
-Applied 50 ordered, deterministic review cycles to **151 BattleMech shape studies** and **16 vehicle/infantry/emplacement assets**. There are 146 low/detail mech pairs, and five legacy source-driven special mechs (Atlas, Jenner, Wolverine, Marauder, Timber Wolf) whose authored shape studies feed separate detail manifests. For paired models, the same contour-transform algorithm is applied to low and high recipes; legacy specialty sculpt features are protected.
+Applied 50 ordered, deterministic review cycles to **151 BattleMech shape studies** and **16 vehicle/infantry/emplacement assets**. There are 148 low/detail mech pairs and three source-driven specialty mechs (Atlas, Jenner, Wolverine) whose detail manifests refer to their shape studies. Marauder and Timber Wolf have normal low/detail pairs. For paired models, the same contour-transform algorithm is applied to low and high recipes; specialty features are protected.
 
 The pass focuses deliberately on **views other than head-on**:
 
@@ -31,7 +31,7 @@ The above ten factors repeat in five reducing-strength cycles, for 50 checks per
 
 ## Review/validation status
 
-The local source-side preview ran 50 passes on 146 paired models and 16 assets (8,100 review iterations, 4,556 with actual vertex edits, 22,816 vertex events). Repository-side changes are applied to the latest branch files rather than replacing them with an older offline backup. The five specialty sources are included in the repository-side review.
+The local source-side preview ran 50 passes on 146 paired models and 16 assets (8,100 review iterations, 4,556 with actual vertex edits, 22,816 vertex events). Repository-side changes are applied to the latest branch files rather than replacing them with an older offline backup. The three source-driven specialty sources are included in the repository-side review.
 
 Tests check the 50-pass annotations and asset cap declarations. Godot unit tests and final voxel-count measurements must still validate the branch. **The last merged main CI baseline was already failing**, including mirror parity, model joints, and weapon-port checks. These contour edits do not claim to repair those failures. Multi-angle Catalyst comparison and scene-render approval remain outstanding.
 
