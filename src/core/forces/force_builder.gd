@@ -19,6 +19,11 @@ const CONDITION_PRESETS := [{}, {"night": true}, {"cold": 1}, {"cold": 3}, {"hea
 
 var units: UnitDb
 var budget: int = 3000  ## Battle Value per side.
+## Historical availability does not affect combat stats or BV.
+var availability := EraAvailability.new()
+var era_year := 3050
+var factions: Array[String] = ["federated_suns", "clan_wolf"]
+var availability_mode := EraAvailability.Mode.OFF
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 var initiative_die := false  ## Use the optional Initiative Die rule.
@@ -86,6 +91,10 @@ func cant_add(side: int, def_id: String) -> String:
 	var def := units.get_def(def_id)
 	if def == null:
 		return "Unknown design"
+	if availability_mode == EraAvailability.Mode.STRICT:
+		var historical := availability_for(side, def_id)
+		if historical["status"] != "available":
+			return String(historical["reason"])
 	if def.is_support():
 		if asset_ids(side).size() >= MAX_ASSETS:
 			return "At most %d vehicles or infantry per side" % MAX_ASSETS
@@ -160,11 +169,33 @@ func next_conditions() -> void:
 	conditions = Conditions.from_dict(CONDITION_PRESETS[(i + 1) % CONDITION_PRESETS.size()])
 
 
+func availability_for(side: int, def_id: String) -> Dictionary:
+	return availability.check(def_id, era_year, factions[side])
+
+
+## Non-destructive validation: year/faction/policy changes never erase units.
+func first_restriction_issue() -> String:
+	if availability_mode == EraAvailability.Mode.OFF:
+		return ""
+	for side in 2:
+		for id: String in rosters[side]:
+			var report := availability_for(side, id)
+			if report["status"] != "available":
+				return "%s - %s: %s" % [Names.side(side),
+					units.get_def(id).display_name(), report["reason"]]
+	return ""
+
+
 func ready_to_fight() -> bool:
-	return not rosters[0].is_empty() and not rosters[1].is_empty()
+	if rosters[0].is_empty() or rosters[1].is_empty():
+		return false
+	return availability_mode != EraAvailability.Mode.STRICT or first_restriction_issue() == ""
 
 
 func build(map: BattleMap, dice: Dice = null) -> GameState:
+	if availability_mode == EraAvailability.Mode.STRICT and first_restriction_issue() != "":
+		push_error("Historical force restrictions failed: " + first_restriction_issue())
+		return null
 	var state := GameState.new(map)
 	state.initiative_die_rule = initiative_die
 	state.conditions = conditions

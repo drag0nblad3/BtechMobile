@@ -184,7 +184,12 @@ func _on_add(side: int, def_id: String) -> void:
 		_notify(reason)
 		return
 	builder.add(side, def_id)
-	_notify("%s added to %s." % [db.get_def(def_id).display_name(), Names.side(side)])
+	var message := "%s added to %s." % [db.get_def(def_id).display_name(), Names.side(side)]
+	if builder.availability_mode == EraAvailability.Mode.ADVISORY:
+		var report := builder.availability_for(side, def_id)
+		if report["status"] != "available":
+			message += " Historical note: " + String(report["reason"])
+	_notify(message)
 	_refresh()
 
 
@@ -200,7 +205,10 @@ func _refresh() -> void:
 	var within := red <= builder.budget and blue <= builder.budget
 	var ready := builder.ready_to_fight() and within
 	_start_button.disabled = not ready
-	if not builder.ready_to_fight():
+	var historical_issue := builder.first_restriction_issue()
+	if builder.availability_mode == EraAvailability.Mode.STRICT and historical_issue != "":
+		_status.text = "Historical restriction: " + historical_issue
+	elif not builder.ready_to_fight():
 		_status.text = "Add at least one unit to each force to begin."
 	elif not within:
 		_status.text = "A force is over budget. Increase the limit or remove a unit."
