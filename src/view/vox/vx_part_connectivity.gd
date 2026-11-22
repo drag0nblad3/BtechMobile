@@ -48,6 +48,8 @@ static func audit(model: VxModel) -> Dictionary:
 			"parent_contacts": parent_contacts,
 			"pivot": [pivot.x, pivot.y, pivot.z]
 		}
+		if parent_contacts == 0 and by_name.has(parent_name):
+			item["closest_gap"] = _nearest_gap(cells, by_name[parent_name]["cells"])
 		records.append(item)
 	return {
 		"model": model.id,
@@ -127,3 +129,28 @@ static func _island_samples(cells: Dictionary) -> Array[Dictionary]:
 	groups.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return int(a["size"]) > int(b["size"]))
 	return groups
+
+
+## Only executed when the model has a true disconnection. Exposes the
+## geometrically shortest pair of occupied voxels, so repair can place a small
+## real bearing/armature rather than widening entire bodies blindly.
+static func _nearest_gap(child: Dictionary, parent: Dictionary) -> Dictionary:
+	var best := 2147483647
+	var from_cell := Vector3i.ZERO
+	var to_cell := Vector3i.ZERO
+	for c: Vector3i in child:
+		for p: Vector3i in parent:
+			var distance: int = absi(c.x - p.x) + absi(c.y - p.y) + absi(c.z - p.z)
+			if distance < best:
+				best = distance
+				from_cell = c
+				to_cell = p
+				if best <= 1:
+					break
+		if best <= 1:
+			break
+	return {
+		"manhattan_distance": best,
+		"child_cell": [from_cell.x, from_cell.y, from_cell.z],
+		"parent_cell": [to_cell.x, to_cell.y, to_cell.z]
+	}
