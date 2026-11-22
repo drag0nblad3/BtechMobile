@@ -2,7 +2,7 @@ class_name DesignItems
 extends RefCounted
 ## Reads one equipment entry of a design file into a UnitDef.
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis",
-## "<MRM>+apollo" (Apollo),
+## "<MRM>+apollo" (Apollo), "<PPC>+capacitor" (PpcCapacitor),
 ## "<weapon id>~N" (its last N slots sit in the next location in, as on
 ## official sheets: an arm's AC/20 spilling into the side torso),
 ## "ammo:<weapon id>", "ammo:<weapon id>:cluster" (or ":narc"; ":half" for
@@ -52,9 +52,10 @@ static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void
 		var spill := item.split("~")
 		var artemis := spill[0].ends_with("+artemis")
 		var apollo := spill[0].ends_with("+apollo")
-		var parts := spill[0].trim_suffix("+artemis").trim_suffix("+apollo").split("@")
+		var cap := spill[0].ends_with("+capacitor")
+		var parts := spill[0].trim_suffix("+artemis").trim_suffix("+apollo").trim_suffix("+capacitor").split("@")
 		def.weapon_mounts.append({"weapon": _weapon(def, weapons, parts[0]), "loc": loc,
-				"rear": parts.size() > 1, "artemis": artemis, "apollo": apollo, "spill": int(spill[1]) if spill.size() > 1 else 0})
+				"rear": parts.size() > 1, "artemis": artemis, "apollo": apollo, "capacitor": cap, "spill": int(spill[1]) if spill.size() > 1 else 0})
 
 
 static func _weapon(def: UnitDef, weapons: WeaponDb, id: String) -> WeaponDef:

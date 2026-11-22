@@ -23,6 +23,8 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 			res += " (a Streak only fires once it locks on, so every missile hits: no cluster roll)"
 		if d.has("artemis_blocked") and level != ExplainLevel.OFF:
 			res += " (no Artemis bonus: %s)" % d["artemis_blocked"]
+	if d.get("capacitor", false) and level != ExplainLevel.OFF:
+		res += " (charged capacitor: +%d damage, +%d heat)" % [PpcCapacitor.DAMAGE, PpcCapacitor.HEAT]
 	if d.has("ams_roll"):
 		res += "; anti-missile fire %s the %s (1D6: %d, 4-6 destroys it)" % [
 				"shoots down" if d.get("pod_shot_down", false) else "misses", d.get("ams_target", "Narc pod"), d["ams_roll"]] \

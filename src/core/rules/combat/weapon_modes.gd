@@ -24,7 +24,7 @@ static func modes(w: MountedWeapon) -> Array[String]:
 		return ["", Narc.KIND]
 	if w.ammo_kinds.size() > 1:
 		return w.ammo_kinds
-	return [""]
+	return PpcCapacitor.modes(w)
 
 
 static func next_mode(w: MountedWeapon) -> String:

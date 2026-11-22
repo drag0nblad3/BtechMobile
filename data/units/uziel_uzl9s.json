@@ -1,0 +1,80 @@
+{
+ "id": "uziel_uzl9s",
+ "name": "Uziel",
+ "model": "UZL-9S",
+ "tonnage": 50,
+ "walk_mp": 6,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 14,
+  "RT": 14,
+  "CT": 17,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "light_ppc+capacitor",
+   "endo_steel*6"
+  ],
+  "RA": [
+   "light_ppc+capacitor",
+   "endo_steel*6"
+  ],
+  "LT": [
+   "jump_jet*4",
+   "medium_laser"
+  ],
+  "RT": [
+   "jump_jet*4",
+   "medium_laser"
+  ],
+  "CT": [
+   "srm6"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "ammo:srm6",
+   "endo_steel"
+  ],
+  "RL": [
+   "targeting_computer"
+  ]
+ },
+ "source": {
+  "mul_id": null,
+  "megamek": "data/mekfiles/meks/Core Rules/Uziel UZL-9S.mtf",
+  "published": "BT:CB",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1558
+ },
+ "bv": 1558,
+ "sprite": "uziel",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Light PPCs, 2 Medium Lasers, SRM 6; walks 6, runs 9, jumps 8."
+}
