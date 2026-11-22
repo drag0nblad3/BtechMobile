@@ -12,6 +12,7 @@ var rig: CameraRig
 var units: UnitsLayer
 var enabled := false
 var _return_pose: Dictionary = {}
+var _enabled_pose: Dictionary = {}
 var _queue: Array[Dictionary] = []
 var _hold := 0.0
 var _manual := 0.0
@@ -38,9 +39,12 @@ func set_enabled(on: bool) -> void:
 	_projectile_time = 0.0
 	_in_shot = false
 	if on:
-		_return_pose = rig.capture_pose()
+		_enabled_pose = rig.capture_pose()
+		_return_pose = _enabled_pose.duplicate()
 	else:
-		rig.restore_pose(_return_pose)
+		# Disable returns to the actual pre-cinematic view, even after manual
+		# input has updated the per-shot tactical return position.
+		rig.restore_pose(_enabled_pose)
 
 
 func manual_input() -> void:

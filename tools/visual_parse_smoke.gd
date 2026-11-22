@@ -4,7 +4,8 @@ extends SceneTree
 
 
 func _initialize() -> void:
-	for path in ["res://src/view/units/unit_view.gd",
+	for path in ["res://src/view/units/placeholder_mech.gd",
+			"res://src/view/units/unit_view.gd",
 			"res://src/view/units/units_layer.gd",
 			"res://src/view/battle/battle_scene.gd"]:
 		var source: Variant = load(path)
