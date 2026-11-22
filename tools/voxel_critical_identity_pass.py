@@ -280,6 +280,33 @@ def add_equipment(d,name):
     return count
 
 
+
+def remove_zero_length_loft_segments(d):
+    """Collapse accidental coincident loft stations in legacy shape/add arms."""
+    repaired = 0
+    for p in d["parts"]:
+        for sh in p.get("shapes", []) + p.get("add", []):
+            sections = sh.get("loft", {}).get("sections", [])
+            if len(sections) < 2:
+                continue
+            clean = []
+            for sec in sections:
+                if clean and sec["at"] == clean[-1]["at"]:
+                    left = clean[-1]["polygon"]
+                    right = sec["polygon"]
+                    if len(left) != len(right):
+                        raise ValueError("mismatched coincident contours on " + p["name"])
+                    clean[-1]["polygon"] = [
+                        [(float(a[0])+float(b[0]))/2,
+                         (float(a[1])+float(b[1]))/2]
+                        for a,b in zip(left,right)]
+                    repaired += 1
+                else:
+                    clean.append(sec)
+            sh["loft"]["sections"] = clean
+    return repaired
+
+
 def validate(d,name):
     names={p["name"] for p in d["parts"]}
     if len(names)!=len(d["parts"]):
@@ -313,6 +340,7 @@ def main(root):
             else:
                 changed=reshape(d,name)
             modules=add_equipment(d,name)
+            remove_zero_length_loft_segments(d)
             validate(d,name)
             for k,v in before.items():
                 if json.dumps(d.get(k),sort_keys=True)!=v:
