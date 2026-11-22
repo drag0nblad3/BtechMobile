@@ -1,6 +1,6 @@
 {
   "id": "jenner_shape",
-  "name": "Jenner JR7-D — silhouette study",
+  "name": "Jenner JR7-D \u2014 silhouette study",
   "unit": "jenner_jr7d",
   "voxel_size": 0.04,
   "subdivide": 1,
@@ -846,51 +846,51 @@
                 "at": -36,
                 "polygon": [
                   [
-                    -2,
+                    -3,
                     24
                   ],
                   [
                     -1,
-                    24
+                    23
                   ],
                   [
                     1,
+                    23
+                  ],
+                  [
+                    3,
                     24
                   ],
                   [
-                    2,
+                    5,
                     24
                   ],
                   [
-                    2,
-                    24
-                  ],
-                  [
-                    2,
-                    25
-                  ],
-                  [
-                    2,
-                    26
-                  ],
-                  [
-                    1,
+                    5,
                     27
                   ],
                   [
-                    -1,
+                    4,
+                    28
+                  ],
+                  [
+                    2,
+                    29
+                  ],
+                  [
+                    -2,
+                    29
+                  ],
+                  [
+                    -4,
+                    28
+                  ],
+                  [
+                    -5,
                     27
                   ],
                   [
-                    -2,
-                    26
-                  ],
-                  [
-                    -2,
-                    25
-                  ],
-                  [
-                    -2,
+                    -5,
                     24
                   ]
                 ]
@@ -899,51 +899,51 @@
                 "at": -34,
                 "polygon": [
                   [
-                    -4,
+                    -5,
                     23
-                  ],
-                  [
-                    -2,
-                    23
-                  ],
-                  [
-                    2,
-                    23
-                  ],
-                  [
-                    4,
-                    23
-                  ],
-                  [
-                    6,
-                    24
-                  ],
-                  [
-                    6,
-                    27
-                  ],
-                  [
-                    5,
-                    29
-                  ],
-                  [
-                    3,
-                    30
                   ],
                   [
                     -3,
+                    22
+                  ],
+                  [
+                    3,
+                    22
+                  ],
+                  [
+                    5,
+                    23
+                  ],
+                  [
+                    7,
+                    24
+                  ],
+                  [
+                    7,
+                    28
+                  ],
+                  [
+                    6,
                     30
                   ],
                   [
-                    -5,
-                    29
+                    3,
+                    31
+                  ],
+                  [
+                    -3,
+                    31
                   ],
                   [
                     -6,
-                    27
+                    30
                   ],
                   [
-                    -6,
+                    -7,
+                    28
+                  ],
+                  [
+                    -7,
                     24
                   ]
                 ]
@@ -1751,36 +1751,36 @@
                 "at": 34,
                 "polygon": [
                   [
-                    -12.4,
-                    -5
+                    -12.3222,
+                    -5.0
                   ],
                   [
-                    -8.88,
-                    -5
+                    -8.9578,
+                    -5.0
                   ],
                   [
-                    -8,
-                    -4
+                    -8.11668,
+                    -4.0
                   ],
                   [
-                    -8,
-                    6
+                    -8.11668,
+                    6.0
                   ],
                   [
-                    -8.88,
-                    7
+                    -8.9578,
+                    7.0
                   ],
                   [
-                    -12.4,
-                    7
+                    -12.3222,
+                    7.0
                   ],
                   [
-                    -13.28,
-                    6
+                    -13.16332,
+                    6.0
                   ],
                   [
-                    -13.28,
-                    -4
+                    -13.16332,
+                    -4.0
                   ]
                 ]
               }
@@ -2122,20 +2122,20 @@
                     -4
                   ],
                   [
-                    -4,
-                    0
+                    -4.0,
+                    -0.02429
                   ],
                   [
-                    -4,
-                    3
+                    -4.0,
+                    2.90429
                   ],
                   [
-                    -6,
-                    4
+                    -6.0,
+                    3.88048
                   ],
                   [
-                    -8,
-                    1
+                    -8.0,
+                    0.95191
                   ]
                 ]
               },
@@ -2549,6 +2549,20 @@
             ]
           },
           "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -9,
+              8,
+              6
+            ],
+            [
+              -8,
+              8,
+              6
+            ]
+          ]
         }
       ]
     },
@@ -2571,36 +2585,36 @@
                 "at": 3,
                 "polygon": [
                   [
-                    -6,
-                    -3
+                    -6.04064,
+                    -3.0
                   ],
                   [
-                    -6,
-                    -5
+                    -6.04064,
+                    -5.0
                   ],
                   [
                     -5,
                     -5
                   ],
                   [
-                    -4,
-                    -3
+                    -3.95936,
+                    -3.0
                   ],
                   [
-                    -4,
-                    2
+                    -3.95936,
+                    2.0
                   ],
                   [
                     -5,
                     4
                   ],
                   [
-                    -6,
-                    4
+                    -6.04064,
+                    4.0
                   ],
                   [
-                    -6,
-                    2
+                    -6.04064,
+                    2.0
                   ]
                 ]
               },
@@ -5122,20 +5136,20 @@
                 "at": -36,
                 "polygon": [
                   [
+                    -6,
+                    24
+                  ],
+                  [
                     -4,
                     24
                   ],
                   [
-                    -2,
-                    24
-                  ],
-                  [
-                    -2,
-                    27
-                  ],
-                  [
                     -4,
-                    27
+                    28
+                  ],
+                  [
+                    -6,
+                    28
                   ]
                 ]
               },
@@ -5143,20 +5157,20 @@
                 "at": -34,
                 "polygon": [
                   [
+                    -9,
+                    23
+                  ],
+                  [
                     -7,
                     23
                   ],
                   [
-                    -5,
-                    23
-                  ],
-                  [
-                    -5,
-                    28
-                  ],
-                  [
                     -7,
-                    28
+                    29
+                  ],
+                  [
+                    -9,
+                    29
                   ]
                 ]
               },
@@ -5235,20 +5249,20 @@
                 "at": -36,
                 "polygon": [
                   [
-                    1,
-                    23
+                    4,
+                    24
                   ],
                   [
-                    3,
-                    23
+                    6,
+                    24
                   ],
                   [
-                    3,
-                    27
+                    6,
+                    28
                   ],
                   [
-                    1,
-                    27
+                    4,
+                    28
                   ]
                 ]
               },
@@ -5256,20 +5270,20 @@
                 "at": -34,
                 "polygon": [
                   [
-                    5,
-                    23
-                  ],
-                  [
                     7,
                     23
                   ],
                   [
-                    7,
-                    28
+                    9,
+                    23
                   ],
                   [
-                    5,
-                    28
+                    9,
+                    29
+                  ],
+                  [
+                    7,
+                    29
                   ]
                 ]
               },
@@ -5770,35 +5784,35 @@
                 "at": -37,
                 "polygon": [
                   [
-                    -1,
+                    -3,
                     26
                   ],
                   [
-                    1,
+                    3,
                     26
                   ],
                   [
-                    1,
+                    4,
                     27
                   ],
                   [
-                    1,
+                    4,
                     28
                   ],
                   [
-                    1,
+                    3,
                     30
                   ],
                   [
-                    -1,
+                    -3,
                     30
                   ],
                   [
-                    -1,
+                    -4,
                     28
                   ],
                   [
-                    -1,
+                    -4,
                     27
                   ]
                 ]
@@ -5807,36 +5821,36 @@
                 "at": -35,
                 "polygon": [
                   [
-                    -2,
+                    -4,
+                    25
+                  ],
+                  [
+                    4,
+                    25
+                  ],
+                  [
+                    5,
                     26
                   ],
                   [
-                    3,
+                    5,
+                    29
+                  ],
+                  [
+                    4,
+                    30
+                  ],
+                  [
+                    -4,
+                    30
+                  ],
+                  [
+                    -5,
+                    29
+                  ],
+                  [
+                    -5,
                     26
-                  ],
-                  [
-                    3,
-                    27
-                  ],
-                  [
-                    3,
-                    30
-                  ],
-                  [
-                    3,
-                    30
-                  ],
-                  [
-                    -2,
-                    30
-                  ],
-                  [
-                    -2,
-                    30
-                  ],
-                  [
-                    -2,
-                    27
                   ]
                 ]
               },
@@ -6225,6 +6239,21 @@
               }
             ]
           },
+          "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -2,
+              24,
+              -14
+            ],
+            [
+              1,
+              26,
+              -12
+            ]
+          ],
           "mat": "inside"
         }
       ]
@@ -7182,7 +7211,7 @@
       ]
     }
   ],
-  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing. Pass 7: independent three-toed digitigrade feet with shortened center instep, instead of a single wedge shoe. Shape pass 9: long aircraft-prow cockpit with pitched dark windscreen and angular nose chin, horizontal vented drive deck and smaller 35-ton chassis proportion. References TRO Jenner and contemporary tabletop sculpt. Pass 10: sculpt reverse knee-forward, rear-hock, forward-toe offset directly into digitigrade sections; remove fake muzzle-like rim from cockpit front. Pass 11: actual side-glass pane geometry on the aircraft cockpit and separate projecting reverse-knee and back-hock joint housings, in lieu of cosmetic paneling. Pass 12: transform cylindrical-looking paired-laser mounts into tapered rectangular nacelles with hard chamfered flats and a short rear integration to the drive deck. Pass 14: TRO JR7-D and three-quarter CGL model both depict a long blunt piloting prow and compact rectangular side laser housings, not two huge cylindrical ears. Reduced nacelle cross-section and extended the cockpit several cells, including front sloped glazing. Pass 15: JR7-D official 3/4 image has narrow separate cockpit windshield, visible armor chin and compact double laser ports. Reduced opaque front glass area and tapered port housings. Pass 16: modern Jenner technical drawing shows distinctive four-tube rack above the fuselage immediately behind cockpit. Rebuilt the SRM4 tower as a raised sloped rectangular unit with four horizontal visible forward ports, not a vague rear bulge. Pass 18: compared JR7-D TRO and CGL front 3/4: narrower canopy glazing above pronounced armor chin; pulled hock mechanics farther aft in the actual knee-to-ankle profile, rather than relying on animation pose. Pass 19: JR7-D technical linework supports a longer wedge-shaped armored cockpit snout with narrow dark top glazing; separated laser nacelles remain short relative to the long nose. Pass 22: compare Jenner JR7-D CGL and TRO: shorten and square paired laser housings; shrink frontal nacelle silhouette; make rear hock-to-ankle segment form a clearer reverse-knee angle. Pass 23: rebuild Jenner paired laser mounts as short six-faced rectangular nacelles with narrow chamfered sides, preserving distinct upper/lower barrels rather than projecting egg-like pods. Pass 24: Jenner gets continuous narrow pilot canopy atop elongated aircraft prow instead of two oversized eye-like windshield patches; side laser nacelles remain boxy and hock angle visible from three-quarter. Pass 25 CGL first: Striker Lance plastic has squat circular broad cockpit nose and wraparound band glass, not long pointy aircraft wedge. Shortened -39 prow to -35, widened faceted circular disk and removed oversized side eye panes. CGL pass 26: 3-panel wraparound cab windshield separated by a physical middle mullion; low armored chin shelf, subtler diagnostic glazing color. Official Striker Lance plastic, not alternate aircraft fan art. CGL pass27: circular paired laser front sockets on both pods use separate physical octagonal bores instead of painted flat fronts, preserving four laser muzzles across left and right. CGL pass28: enlarge separate Jenner forward knee cowl and rear ankle hock hinge to match actual plastic legs' birdlike joints; do not alter rig/animation pose. Corrected pass27 lower/upper forward laser sockets: physical bore is erased through front cap rather than filled by a dark solid, preserving mechanical muzzle emptiness invariant. CGL pass29: based on official Striker Lance Jenner's 3-panel molded front glazing, narrow dark windshield to a small horizontal ribbon and thin roof hatch strip. No huge fighter visor dominating the cab. CGL plastic pass 31: Inner Sphere Striker Lance original gray miniature head-on and side photos weighted primary. Reduced box flank bloat, pulled nose-connected paired laser nacelles toward the engine shell, and built the underslung rounded apron characteristic of the plastic torso. CGL plastic pass 35: prioritize official Inner Sphere Striker Lance multi-angle miniature; remove 3+ cells of oversized duck-like rounded prow, redraw as blunt eight-corner cockpit block with three-pane narrow glazed visor and independent chin fairing. Preserve dorsal launcher and side laser geometry. CGL plastic pass 37: study Jenner Striker Lance rear/side angle. Add distinct paired aft-engine exhaust block frames, split into two visible cooling channels, physically joined at the rear of the existing engine shoulders. Previously absent mechanical silhouette: not a surface texture, not increased subdivision. Complete eight new plastic-weighted passes 30–37. Pass 40 (CGL Striker Lance Jenner plastic, frontal and side photographs): short oval stepped canopy, broader armor chin and compact rectangular twin-laser nacelles; reject obsolete needle-shaped Jenner concept. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass40: side and rear Striker Lance Jenner knee geometry: thigh ends forward under prow, shin arcs rearward then narrow hock turns toward foot; stronger physical depth offset with continuous overlaps, no faux animation trick. CGL pass43: Striker Lance front and right profile: trim large flat box sidepods around paired laser housings; compact triangular jet deck tapers into central fuselage rather than leaving a floating-wing gap. CGL plastic pass46: rear and side Striker Lance Jenner plastic has a broad forward knee cowl and a separate but thin aft hock hinge. Tighten rather than balloon both shapes, and retain the angled shin connecting them. CGL shape pass47 joint audit: separate narrow hidden leg-to-hull mounts physically bridge underside belly apron and digitigrade thigh tops, avoiding floating legs and adding no visible sidepod bulk. Plastic-weighted pass50: Striker Lance plastic side/profile: knee front of axle, tapered calf swept back toward distinct lower rear hock and forward-reaching three-toe feet; preserve overlapping occupied hinge sections, no animation trick. Plastic-weighted pass53: Striker Lance grey plastic shows shorter rectangular flank double laser bays and a bluff but shallow separate chin; pull outboard laser pods and nose underside closer to hull, not inflated fighter wings. CGL plastic pass53: reduce beak-like head and chin mass while preserving three-part windshield and underbody attachment. Plastic-weighted pass56: CGL Striker Lance side-view leg construction: slenderize knee armor without removing physical knee, and attach narrow internal rear-hock brace between the backward calf and lower forward tarsus. Test from side as well as three-quarter. CGL shape pass 60: Cockpit shallow saucer facets and narrower three-pane glazing; primary references are current plastic from multiple angles. CGL sculpt pass 65: Move bilateral twin-laser nacelles inward to correct excessive wingspan; plastic photos front/side/rear weighted primary. CGL plastic pass 68: Shorten oversized three-toe ski feet while preserving separated claws; multi-angle side/rear audit. CGL plastic pass 72: Restore low central rear reactor spine joining Jenner's two engine decks; multi-angle side/rear audit. CGL shape pass 75: Add forward ankle link without bloating exposed rear hock joint; verify from plastic front, side, rear. CGL shape pass 77: Lower tall dorsal SRM4 cassette roof while preserving four open physical ports; verify from plastic front, side, rear. Pass81: side-pod shoulder mass is flatter and less inflated; four real laser apertures unchanged. Pass 83: top-down Striker Lance CGL plastic body/wing transitions taper toward cannon rather than huge squared lateral engine blocks; laser muzzles and attachment roots preserved. Pass 86: knee-to-hock cross section tapered from CGL Jenner plastic side view, avoiding two swollen continuous tree-trunk legs and preserving true separate ankle brace. Pass83: from overhead CGL Striker Lance miniature, shorten overextended cockpit tip and three-pane forward glass by two authored cells, align real chin and canopy bar positions, preserve both side laser housings. Pass86: reduce Jenner thigh width by one cell at outer knee and hip roots while preserving overlap with knee/shin, as suggested by Striker Lance plastic side and frontal proportions. Pass 89: upper oblique CGL Jenner plastic wing roots are tapered into compact twin laser arms, rather than broad slab-wing boxes. All 4 bore origins unchanged. Pass 92: CGL Striker Lance Jenner rear hock is a narrow actuator behind birdlike ankle; reduced bulky rear lower leg projection without moving toe or knee attachments. Pass 95: small bilateral yokes physically connect CGL Jenner side laser arms into central engine flank, without increasing outward laser-pod spans. Passes 98–117: CGL-plastic-led front/overhead silhouette and joint corrections; shape-only. Full audit in docs/graphics/shape-refinement-cycle-9.md. In-engine verification pending. Passes 118–127: 10 synchronized silhouette refinement cycles, shape-only and CGL plastic prioritization; see review document. Passes 128–132 large component resculpting all three each pass; review source gate before high-density detail. Passes 133–137 major plastic-led hand-shaped thigh, cannon arm and digitigrade anatomy revisions; all three edited in every pass. Passes 138–142: bold silhouette/assembly rebuild with Catalyst miniature references; group-wide coordinated edits and new distinct component parts. Passes 143–147 major plastic-led component proportions: visible skull face, compact Wolverine launcher/dual hands, Jenner disc glazing/neck, all models per pass. Passes 148–152 rebuilt proportions, connection angles and adjoining silhouettes; full five-view checks are separate. Passes 153–157 fit each part to adjacent components and attachment angle, true plastic shape source, no subdivision. Passes 158–162 coordinated whole-shape intervention, Wolverine one bent right arm with hand gripping AC5 behind barrel (no vertical second forearm). Passes 163–167 reprofile Atlas shoulders, Wolverine single right hand/AC5 and Jenner disc and joints in every pass. Passes 168–172 all-model relationship and component negative space sculpt; single right gun arm invariant. Pass 173: larger whole-assembly connection and angle resculpt, Wolverine sharply bent single gun/hand arm. Pass 174: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 175: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 176: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 177: Atlas hip/thigh ratio, Wolverine single bent elbow profile, Jenner angled cockpit saddle and feet. Passes 178–182: hard component/attachment proportion redesign vs CGL plastic refs; Wolverine stays exactly one right bent cannon arm with hand. Passes 183–187 bold reference-based scale and attachment corrections: narrowed Atlas head, Wolverine armored ribcage, lowered Jenner saucer and knee pivots. Passes 188–192: major reduction of Atlas front-to-back torso/shoulder/skull/backpack/arm volumes (user feedback). Passes 193–197 final ratio and depth correction after slim Atlas torso: Jenner disc 20 across, Wolverine one bent gun/hand right arm. Cleanup passes 203-205: disc perimeter reduced to two thin side arcs rather than a second solid saucer, lower fairing/underlip reduced to shallow connected rim; removed wholly coincident extra canopy window; upper and lower canopy borders now narrow contrasting edge framing around one main windscreen. Keep intentional CT/belly structural interpenetration and digitigrade joints. Iterations 206–225: 20 new CGL-reference anatomy passes, two component-loft changes per chassis per cycle. No subdivision or detail. See docs/graphics/shape-refinement-cycle-13.md. Twenty reference-guided **polygon-only** passes 226-245; 3 sculpted loft contours per chassis per pass, source faces shown before voxel conversion. See docs/graphics/shape-refinement-cycle-14.md. Post-CI repair: Jenner rear hock brace center profile restores physical contact at (-7,8,10), preserving rearward-bending linkage. Polygon-sculpt cycles 256–275: twenty coordinated revisions across all three chassis, two connected-component profile edits per mech per cycle; subdivision stays one. See docs/graphics/shape-refinement-cycle-16.md. Front-silhouette-focused loft refinements 276–295; 20 complete cycles across Atlas, Wolverine, Jenner; highest priority frontal silhouette of shoulders, skull/cockpit, chest, arms, legs, feet. See docs/graphics/shape-refinement-cycle-17.md. High resolution subdivision deferred.",
+  "notes": "Independent flattened pod-and-prow silhouette with forward cabin, four-armed drive deck and separate digitigrade hock linkage. No surface refinement. Shape review 2: lengthened tapered nose, narrowed laser nacelle roots, distinct upper glazing. Reference iteration 3: wide flat horizontal engine fuselage with hard wing edges, tapered prow with pitched window/canopy, compact flattened four-laser outriggers. Independent 10-point hull sections replace symmetric octagons. Reference iteration 4: narrow shins with articulated three-link silhouette, forward-facing broad three-toed feet and tall tapered hip housings; no generic plantigrade cylinders. Fifth pass: replace erroneously tall chimney with low slanted four-port SRM4 housing; underbelly mechanically joins horizontal engine pod to hip roots. Pass 6: distinctive paired upper/lower laser housings with separate physical muzzles and prominent nose glazing. Pass 7: independent three-toed digitigrade feet with shortened center instep, instead of a single wedge shoe. Shape pass 9: long aircraft-prow cockpit with pitched dark windscreen and angular nose chin, horizontal vented drive deck and smaller 35-ton chassis proportion. References TRO Jenner and contemporary tabletop sculpt. Pass 10: sculpt reverse knee-forward, rear-hock, forward-toe offset directly into digitigrade sections; remove fake muzzle-like rim from cockpit front. Pass 11: actual side-glass pane geometry on the aircraft cockpit and separate projecting reverse-knee and back-hock joint housings, in lieu of cosmetic paneling. Pass 12: transform cylindrical-looking paired-laser mounts into tapered rectangular nacelles with hard chamfered flats and a short rear integration to the drive deck. Pass 14: TRO JR7-D and three-quarter CGL model both depict a long blunt piloting prow and compact rectangular side laser housings, not two huge cylindrical ears. Reduced nacelle cross-section and extended the cockpit several cells, including front sloped glazing. Pass 15: JR7-D official 3/4 image has narrow separate cockpit windshield, visible armor chin and compact double laser ports. Reduced opaque front glass area and tapered port housings. Pass 16: modern Jenner technical drawing shows distinctive four-tube rack above the fuselage immediately behind cockpit. Rebuilt the SRM4 tower as a raised sloped rectangular unit with four horizontal visible forward ports, not a vague rear bulge. Pass 18: compared JR7-D TRO and CGL front 3/4: narrower canopy glazing above pronounced armor chin; pulled hock mechanics farther aft in the actual knee-to-ankle profile, rather than relying on animation pose. Pass 19: JR7-D technical linework supports a longer wedge-shaped armored cockpit snout with narrow dark top glazing; separated laser nacelles remain short relative to the long nose. Pass 22: compare Jenner JR7-D CGL and TRO: shorten and square paired laser housings; shrink frontal nacelle silhouette; make rear hock-to-ankle segment form a clearer reverse-knee angle. Pass 23: rebuild Jenner paired laser mounts as short six-faced rectangular nacelles with narrow chamfered sides, preserving distinct upper/lower barrels rather than projecting egg-like pods. Pass 24: Jenner gets continuous narrow pilot canopy atop elongated aircraft prow instead of two oversized eye-like windshield patches; side laser nacelles remain boxy and hock angle visible from three-quarter. Pass 25 CGL first: Striker Lance plastic has squat circular broad cockpit nose and wraparound band glass, not long pointy aircraft wedge. Shortened -39 prow to -35, widened faceted circular disk and removed oversized side eye panes. CGL pass 26: 3-panel wraparound cab windshield separated by a physical middle mullion; low armored chin shelf, subtler diagnostic glazing color. Official Striker Lance plastic, not alternate aircraft fan art. CGL pass27: circular paired laser front sockets on both pods use separate physical octagonal bores instead of painted flat fronts, preserving four laser muzzles across left and right. CGL pass28: enlarge separate Jenner forward knee cowl and rear ankle hock hinge to match actual plastic legs' birdlike joints; do not alter rig/animation pose. Corrected pass27 lower/upper forward laser sockets: physical bore is erased through front cap rather than filled by a dark solid, preserving mechanical muzzle emptiness invariant. CGL pass29: based on official Striker Lance Jenner's 3-panel molded front glazing, narrow dark windshield to a small horizontal ribbon and thin roof hatch strip. No huge fighter visor dominating the cab. CGL plastic pass 31: Inner Sphere Striker Lance original gray miniature head-on and side photos weighted primary. Reduced box flank bloat, pulled nose-connected paired laser nacelles toward the engine shell, and built the underslung rounded apron characteristic of the plastic torso. CGL plastic pass 35: prioritize official Inner Sphere Striker Lance multi-angle miniature; remove 3+ cells of oversized duck-like rounded prow, redraw as blunt eight-corner cockpit block with three-pane narrow glazed visor and independent chin fairing. Preserve dorsal launcher and side laser geometry. CGL plastic pass 37: study Jenner Striker Lance rear/side angle. Add distinct paired aft-engine exhaust block frames, split into two visible cooling channels, physically joined at the rear of the existing engine shoulders. Previously absent mechanical silhouette: not a surface texture, not increased subdivision. Complete eight new plastic-weighted passes 30\u201337. Pass 40 (CGL Striker Lance Jenner plastic, frontal and side photographs): short oval stepped canopy, broader armor chin and compact rectangular twin-laser nacelles; reject obsolete needle-shaped Jenner concept. Pass 41 (front/side silhouette overlap audit): small interior hip bearing cores bridge pelvis-to-thigh missing contacts without bulking outer armor; paired mirrored parts maintain pivot symmetry. CGL plastic pass40: side and rear Striker Lance Jenner knee geometry: thigh ends forward under prow, shin arcs rearward then narrow hock turns toward foot; stronger physical depth offset with continuous overlaps, no faux animation trick. CGL pass43: Striker Lance front and right profile: trim large flat box sidepods around paired laser housings; compact triangular jet deck tapers into central fuselage rather than leaving a floating-wing gap. CGL plastic pass46: rear and side Striker Lance Jenner plastic has a broad forward knee cowl and a separate but thin aft hock hinge. Tighten rather than balloon both shapes, and retain the angled shin connecting them. CGL shape pass47 joint audit: separate narrow hidden leg-to-hull mounts physically bridge underside belly apron and digitigrade thigh tops, avoiding floating legs and adding no visible sidepod bulk. Plastic-weighted pass50: Striker Lance plastic side/profile: knee front of axle, tapered calf swept back toward distinct lower rear hock and forward-reaching three-toe feet; preserve overlapping occupied hinge sections, no animation trick. Plastic-weighted pass53: Striker Lance grey plastic shows shorter rectangular flank double laser bays and a bluff but shallow separate chin; pull outboard laser pods and nose underside closer to hull, not inflated fighter wings. CGL plastic pass53: reduce beak-like head and chin mass while preserving three-part windshield and underbody attachment. Plastic-weighted pass56: CGL Striker Lance side-view leg construction: slenderize knee armor without removing physical knee, and attach narrow internal rear-hock brace between the backward calf and lower forward tarsus. Test from side as well as three-quarter. CGL shape pass 60: Cockpit shallow saucer facets and narrower three-pane glazing; primary references are current plastic from multiple angles. CGL sculpt pass 65: Move bilateral twin-laser nacelles inward to correct excessive wingspan; plastic photos front/side/rear weighted primary. CGL plastic pass 68: Shorten oversized three-toe ski feet while preserving separated claws; multi-angle side/rear audit. CGL plastic pass 72: Restore low central rear reactor spine joining Jenner's two engine decks; multi-angle side/rear audit. CGL shape pass 75: Add forward ankle link without bloating exposed rear hock joint; verify from plastic front, side, rear. CGL shape pass 77: Lower tall dorsal SRM4 cassette roof while preserving four open physical ports; verify from plastic front, side, rear. Pass81: side-pod shoulder mass is flatter and less inflated; four real laser apertures unchanged. Pass 83: top-down Striker Lance CGL plastic body/wing transitions taper toward cannon rather than huge squared lateral engine blocks; laser muzzles and attachment roots preserved. Pass 86: knee-to-hock cross section tapered from CGL Jenner plastic side view, avoiding two swollen continuous tree-trunk legs and preserving true separate ankle brace. Pass83: from overhead CGL Striker Lance miniature, shorten overextended cockpit tip and three-pane forward glass by two authored cells, align real chin and canopy bar positions, preserve both side laser housings. Pass86: reduce Jenner thigh width by one cell at outer knee and hip roots while preserving overlap with knee/shin, as suggested by Striker Lance plastic side and frontal proportions. Pass 89: upper oblique CGL Jenner plastic wing roots are tapered into compact twin laser arms, rather than broad slab-wing boxes. All 4 bore origins unchanged. Pass 92: CGL Striker Lance Jenner rear hock is a narrow actuator behind birdlike ankle; reduced bulky rear lower leg projection without moving toe or knee attachments. Pass 95: small bilateral yokes physically connect CGL Jenner side laser arms into central engine flank, without increasing outward laser-pod spans. Passes 98\u2013117: CGL-plastic-led front/overhead silhouette and joint corrections; shape-only. Full audit in docs/graphics/shape-refinement-cycle-9.md. In-engine verification pending. Passes 118\u2013127: 10 synchronized silhouette refinement cycles, shape-only and CGL plastic prioritization; see review document. Passes 128\u2013132 large component resculpting all three each pass; review source gate before high-density detail. Passes 133\u2013137 major plastic-led hand-shaped thigh, cannon arm and digitigrade anatomy revisions; all three edited in every pass. Passes 138\u2013142: bold silhouette/assembly rebuild with Catalyst miniature references; group-wide coordinated edits and new distinct component parts. Passes 143\u2013147 major plastic-led component proportions: visible skull face, compact Wolverine launcher/dual hands, Jenner disc glazing/neck, all models per pass. Passes 148\u2013152 rebuilt proportions, connection angles and adjoining silhouettes; full five-view checks are separate. Passes 153\u2013157 fit each part to adjacent components and attachment angle, true plastic shape source, no subdivision. Passes 158\u2013162 coordinated whole-shape intervention, Wolverine one bent right arm with hand gripping AC5 behind barrel (no vertical second forearm). Passes 163\u2013167 reprofile Atlas shoulders, Wolverine single right hand/AC5 and Jenner disc and joints in every pass. Passes 168\u2013172 all-model relationship and component negative space sculpt; single right gun arm invariant. Pass 173: larger whole-assembly connection and angle resculpt, Wolverine sharply bent single gun/hand arm. Pass 174: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 175: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 176: whole-assembly scale/angle refinement with one Wolverine right arm. Pass 177: Atlas hip/thigh ratio, Wolverine single bent elbow profile, Jenner angled cockpit saddle and feet. Passes 178\u2013182: hard component/attachment proportion redesign vs CGL plastic refs; Wolverine stays exactly one right bent cannon arm with hand. Passes 183\u2013187 bold reference-based scale and attachment corrections: narrowed Atlas head, Wolverine armored ribcage, lowered Jenner saucer and knee pivots. Passes 188\u2013192: major reduction of Atlas front-to-back torso/shoulder/skull/backpack/arm volumes (user feedback). Passes 193\u2013197 final ratio and depth correction after slim Atlas torso: Jenner disc 20 across, Wolverine one bent gun/hand right arm. Cleanup passes 203-205: disc perimeter reduced to two thin side arcs rather than a second solid saucer, lower fairing/underlip reduced to shallow connected rim; removed wholly coincident extra canopy window; upper and lower canopy borders now narrow contrasting edge framing around one main windscreen. Keep intentional CT/belly structural interpenetration and digitigrade joints. Iterations 206\u2013225: 20 new CGL-reference anatomy passes, two component-loft changes per chassis per cycle. No subdivision or detail. See docs/graphics/shape-refinement-cycle-13.md. Twenty reference-guided **polygon-only** passes 226-245; 3 sculpted loft contours per chassis per pass, source faces shown before voxel conversion. See docs/graphics/shape-refinement-cycle-14.md. Post-CI repair: Jenner rear hock brace center profile restores physical contact at (-7,8,10), preserving rearward-bending linkage. Polygon-sculpt cycles 256\u2013275: twenty coordinated revisions across all three chassis, two connected-component profile edits per mech per cycle; subdivision stays one. See docs/graphics/shape-refinement-cycle-16.md. Front-silhouette-focused loft refinements 276\u2013295; 20 complete cycles across Atlas, Wolverine, Jenner; highest priority frontal silhouette of shoulders, skull/cockpit, chest, arms, legs, feet. See docs/graphics/shape-refinement-cycle-17.md. High resolution subdivision deferred. 2026-11-22: Broadened the forward Jenner cockpit disc and paired rim/windscreen instead of extending a narrow beak; side pods, leg joints, muzzle landmarks and the 20-wide main disc remain unchanged.",
   "muzzles": {
     "CT": [
       [
@@ -7233,7 +7262,20 @@
   },
   "weapons": [],
   "art_revision": "sculpt-specific-slab-relief-v2-20261121",
-  "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50,
-  "art_quality_signature": "Preserve projecting disc canopy and small twin laser pods"
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_passes": 100,
+  "art_quality_signature": "Preserve projecting disc canopy and small twin laser pods",
+  "art_fix_round": "connected-assembly-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 82,
+    "stages_with_changes": 13
+  }
 }

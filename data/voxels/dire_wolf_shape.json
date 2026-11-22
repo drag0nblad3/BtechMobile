@@ -173,27 +173,27 @@
                   ],
                   [
                     5.35537,
-                    0.59523
+                    0.55799
                   ],
                   [
                     7.50074,
-                    5.96361
+                    5.56097
                   ],
                   [
                     3.74386,
-                    9.53264
+                    8.88705
                   ],
                   [
                     -4.29386,
-                    9.53264
+                    8.88705
                   ],
                   [
                     -8.05075,
-                    4.77723
+                    4.45533
                   ],
                   [
                     -5.36161,
-                    0.00204
+                    0.00067
                   ]
                 ]
               },
@@ -5516,6 +5516,18 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 27,
+    "stages_with_changes": 5
+  }
 }

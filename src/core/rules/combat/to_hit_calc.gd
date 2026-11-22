@@ -130,6 +130,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if own != 0:
 		th.add(w.def.name, own, "%s is %s accurate than a standard weapon: %+d to hit%s." % [
 				w.def.name, "more" if own < 0 else "less", own, " at this range" if not w.def.to_hit_by_range.is_empty() else ""])
+	if w.artemis_v and WeaponModes.has_artemis(w) and Ecm.artemis_blocked(state, attacker, target, th) == "":
+		th.add("Artemis V", -1, "Clan Artemis V guidance improves this direct missile attack.")
 	TargetingComputer.add(th, attacker, w)
 	Narc.add(th, state, attacker, w, target)
 	NarcPods.add_haywire(th, state, attacker)

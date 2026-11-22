@@ -57,6 +57,7 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
 - `range_cluster: true` (HAG) gives +2/-2 to its cluster roll at short/long range; `heat_dice: n` (plasma) adds n d6 of heat to a 'Mech it hits.
 - `to_hit_by_range: [s, m, l]` (VSP lasers) replaces `to_hit` by range bracket.
 - `large_missile: true` (Thunderbolt): one missile, no cluster roll; AMS rolls to destroy it.
+- `laser_ams` / `c_laser_ams`: 7 / 5 heat per interception, respectively; no ammo bins are needed.
 - Electronics items: `angel_ecm`, `watchdog_ecm` (ECM + 5-hex probe), `c3i` (improved C3, 2 slots).
 - `"cockpit_type": "small"` (Cockpit): 2 t, two free head slots, +1 piloting.
 - `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
@@ -99,8 +100,8 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 ```
 - Location codes: `HD CT LT RT LA RA LL RL`. Internal structure comes from tonnage.
 - Equipment items: a weapon id (`@rear` for rear-firing, `+artemis` for a launcher with
-  Artemis IV, `+apollo` for an MRM with Apollo FCS, `+capacitor` for a PPC with a PPC capacitor, each 1 t, 1 slot), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
-  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `beagle_probe` / `c_active_probe` / `c_light_active_probe` (`ActiveProbe`), `a_pod` (`InertGear`, no effect yet), `tag` / `c_tag` (1 t) / `c_light_tag` (0.5 t) (`Tag`, 1 slot), `light_ferro` / `heavy_ferro` (bulky armor slots; set `"armor_type"` too; also `"engine_type": "light"|"compact"` and `"gyro_type": "xl"|"compact"|"heavy_duty"` on the design), `<weapon>~N` (its last N slots spill into the next location in), `ammo:<id>:half` (half-ton bin), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
+  Artemis IV, `+artemis_v` for Clan Artemis V (1.5 t, 2 slots, +3 cluster and -1 direct-fire to hit; requires `ammo:<launcher>:artemis_v`), `+apollo` for an MRM with Apollo FCS, `+capacitor` for a PPC with a PPC capacitor, each 1 t, 1 slot), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
+  `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `laser_ams` / `c_laser_ams` (ammo-free), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `beagle_probe` / `c_active_probe` / `c_light_active_probe` (`ActiveProbe`), `a_pod` (`InertGear`, no effect yet), `tag` / `c_tag` (1 t) / `c_light_tag` (0.5 t) (`Tag`, 1 slot), `light_ferro` / `heavy_ferro` (bulky armor slots; set `"armor_type"` too; also `"engine_type": "light"|"compact"` and `"gyro_type": "xl"|"compact"|"heavy_duty"` on the design), `<weapon>~N` (its last N slots spill into the next location in), `ammo:<id>:half` (half-ton bin), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
   rating 275+ holds rating/25 without slots (`DesignWeight.engine_sink_capacity`). List the rest as
@@ -127,7 +128,11 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
   XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
   points per ton (17.92 ferro-fibrous, rounded up to the half ton), weapon tons, 1 t per ammo item.
+- `source.bv: "mul"` identifies the official Master Unit List's published BV,
+  and `source.mul_url` links its listing (used when a matching free sheet is
+  not independently verified). Never invent BV values.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
+  Voxel showcase art is separate, under `data/voxels/`.
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
 

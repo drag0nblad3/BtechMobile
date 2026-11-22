@@ -70,6 +70,7 @@ var leave_button: Button
 var prone_button: Button
 var more_button: MenuButton
 var _tools_menu: MenuButton
+var perf_readout: BattlePerfReadout
 var pause_menu: BattlePauseMenu
 var roll_feed: RollFeed  ## Recent dice rolls, top right.
 var _move_actions: Array[Button] = []
@@ -144,6 +145,7 @@ func _ready() -> void:
 	popup.add_item("Watch replay", 1)
 	popup.add_item("Top-down map", 2)
 	popup.add_item("Battle analysis", 3)
+	popup.add_item("Performance overlay", 4)
 	popup.id_pressed.connect(_on_tool_action)
 	for b in shortcuts.get_children():
 		if b is Button:
@@ -227,6 +229,9 @@ func _ready() -> void:
 	pause_menu.resumed.connect(func(): pause_toggled.emit())
 	pause_menu.save_requested.connect(func(): save_battle.emit())
 	pause_menu.exit_requested.connect(func(): exit_battle.emit())
+	perf_readout = BattlePerfReadout.new()
+	add_child(perf_readout)
+	perf_readout.visible = false
 
 
 func _on_tool_action(id: int) -> void:
@@ -235,6 +240,7 @@ func _on_tool_action(id: int) -> void:
 		1: watch_replay.emit()
 		2: top_down_toggled.emit()
 		3: battle_forensics.emit()
+		4: perf_readout.visible = not perf_readout.visible
 
 
 ## Refresh the Actions button from the same eligibility flags MovementInput sets.

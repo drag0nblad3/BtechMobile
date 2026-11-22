@@ -111,6 +111,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for m in def.weapon_mounts:
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
+		mw.artemis_v = m.get("artemis_v", false)
 		mw.apollo = m.get("apollo", false)
 		mw.capacitor = m.get("capacitor", false)
 		weapons.append(mw)

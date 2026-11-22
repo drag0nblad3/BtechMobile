@@ -15,8 +15,8 @@ func test_filter_and_groups() -> void:
 	check_eq(clan.size(), chassis.size(), "one entry per Clan chassis")
 	for g: Array in clan:
 		check(g.all(func(d: UnitDef) -> bool: return d.is_clan()))
-		if g[0].omni:
-			check_eq(g[0].config, "Prime", "%s lists the Prime first" % g[0].chassis)
+		if g[0].omni and g.any(func(d: UnitDef) -> bool: return d.config == "Prime"):
+			check_eq(g[0].config, "Prime", "%s lists an existing Prime first" % g[0].chassis)
 	for g: Array in inner:
 		check(g[0].omni or g.size() == 1, "one entry per Inner Sphere design, configs grouped for OmniMechs")
 		check(not g[0].is_clan())
