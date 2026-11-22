@@ -293,21 +293,28 @@ static func _path(seeds: Array, target: Dictionary, owned: Dictionary,
 	var queue: Array[Vector3i] = []
 	var dist: Dictionary = {}
 	var prev: Dictionary = {}
-	# Flood-fill from exposed boundary cells, not the thousands of internal
-	# voxels of a barrel or torso. The previous visit cap could exhaust all
-	# its work before ever reaching a missing one-cell seam.
-	var source := {}
+	# Work only from the source boundary nearest the target's bounds.
+	# A big 100k-cell launcher may have >30k exposed cells; enqueuing all
+	# of them previously exhausted the visit budget before any routing.
+	var lo := Vector3i(2147483647, 2147483647, 2147483647)
+	var hi := Vector3i(-2147483647, -2147483647, -2147483647)
+	for c: Vector3i in target:
+		lo = Vector3i(mini(lo.x,c.x), mini(lo.y,c.y), mini(lo.z,c.z))
+		hi = Vector3i(maxi(hi.x,c.x), maxi(hi.y,c.y), maxi(hi.z,c.z))
+	var closest := 2147483647
 	for c: Vector3i in seeds:
-		source[c] = true
+		closest = mini(closest, _distance_to_bounds(c, lo, hi))
+	var candidates: Array[Vector3i] = []
 	for c: Vector3i in seeds:
-		var exposed := false
-		for d: Vector3i in DIRS:
-			if not source.has(c + d):
-				exposed = true
-				break
-		if exposed:
-			queue.append(c)
-			dist[c] = 0
+		if _distance_to_bounds(c, lo, hi) <= closest + 1:
+			candidates.append(c)
+	# Retain a distributed sample when the bounding boxes overlap and
+	# thousands of candidates tie. Never spend all visits on seed points.
+	var stride := maxi(1, ceili(float(candidates.size()) / 2048.0))
+	for i in range(0, candidates.size(), stride):
+		var c: Vector3i = candidates[i]
+		queue.append(c)
+		dist[c] = 0
 	var head := 0
 	while head < queue.size() and head < SEARCH_LIMIT:
 		var c: Vector3i = queue[head]
@@ -332,6 +339,13 @@ static func _path(seeds: Array, target: Dictionary, owned: Dictionary,
 			prev[step] = c
 			queue.append(step)
 	return []
+
+
+static func _distance_to_bounds(c: Vector3i, lo: Vector3i, hi: Vector3i) -> int:
+	var dx := maxi(0, maxi(lo.x-c.x, c.x-hi.x))
+	var dy := maxi(0, maxi(lo.y-c.y, c.y-hi.y))
+	var dz := maxi(0, maxi(lo.z-c.z, c.z-hi.z))
+	return dx + dy + dz
 
 
 static func _in_void(c: Vector3i, voids: Array[Dictionary]) -> bool:
