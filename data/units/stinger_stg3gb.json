@@ -1,0 +1,73 @@
+{
+  "id": "stinger_stg3gb",
+  "name": "Stinger",
+  "model": "STG-3Gb",
+  "tonnage": 20,
+  "walk_mp": 7,
+  "jump_mp": 7,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 8,
+    "RT": 8,
+    "CT": 9,
+    "HD": 9,
+    "LL": 8,
+    "RL": 8
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 3
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink",
+      "medium_laser",
+      "endo_steel*3"
+    ],
+    "RA": [
+      "heat_sink*2",
+      "medium_laser",
+      "endo_steel"
+    ],
+    "LT": [
+      "heat_sink",
+      "jump_jet*3",
+      "endo_steel*3"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*3",
+      "endo_steel*3"
+    ],
+    "CT": [
+      "jump_jet",
+      "medium_laser"
+    ],
+    "HD": [
+      "small_laser"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. 3x Medium Laser, Small Laser; walks 7, runs 11, jumps 7.",
+  "sprite": "stinger",
+  "source": {
+    "mul_id": 3059,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 13/Stinger STG-3Gb.mtf",
+    "published": "RG13,RGv1",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 674
+  },
+  "bv": 674
+}

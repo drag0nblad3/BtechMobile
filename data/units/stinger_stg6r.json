@@ -1,0 +1,74 @@
+{
+  "id": "stinger_stg6r",
+  "name": "Stinger",
+  "model": "STG-6R",
+  "tonnage": 20,
+  "walk_mp": 8,
+  "jump_mp": 8,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 4,
+    "RA": 4,
+    "LT": 8,
+    "RT": 8,
+    "CT": 8,
+    "HD": 6,
+    "LL": 5,
+    "RL": 5
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 4
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink",
+      "heavy_machine_gun",
+      "endo_steel*2"
+    ],
+    "RA": [
+      "heat_sink",
+      "er_medium_laser",
+      "heavy_machine_gun",
+      "endo_steel*2"
+    ],
+    "LT": [
+      "heat_sink",
+      "jump_jet*4",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*4",
+      "endo_steel*2"
+    ],
+    "CT": [
+      "ammo:heavy_machine_gun:half",
+      "endo_steel"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. 2x Heavy Machine Gun, ER Medium Laser; walks 8, runs 12, jumps 8.",
+  "sprite": "stinger",
+  "source": {
+    "mul_id": 8124,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 13/Stinger STG-6R.mtf",
+    "published": "RG13,RGv1",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 454
+  },
+  "bv": 454
+}

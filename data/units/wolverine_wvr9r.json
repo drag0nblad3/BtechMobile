@@ -1,0 +1,60 @@
+{
+  "id": "wolverine_wvr9r",
+  "name": "Wolverine",
+  "model": "WVR-9R",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 20,
+    "RT": 20,
+    "CT": 27,
+    "HD": 9,
+    "LL": 24,
+    "RL": 24
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "RA": [
+      "ultra_ac10"
+    ],
+    "LT": [
+      "streak_srm6",
+      "ammo:streak_srm6",
+      "ammo:ultra_ac10*2",
+      "case"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "HD": [
+      "er_medium_laser"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Ultra AC/10, Streak SRM 6, ER Medium Laser; walks 5, runs 8, jumps 5.",
+  "sprite": "wolverine",
+  "source": {
+    "mul_id": 8254,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Wolverine WVR-9R.mtf",
+    "published": "RG18,RGv1",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1481
+  },
+  "bv": 1481
+}
