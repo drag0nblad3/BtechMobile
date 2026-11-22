@@ -10,6 +10,7 @@ const MECH_HEIGHT := 0.55  ## Where on a 'Mech model blasts are centred.
 var _state: GameState
 var _units: UnitsLayer
 var _map: MapView
+var hits := BattleHitFx.new()
 
 
 func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
@@ -17,9 +18,16 @@ func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
 	_state = state
 	_units = units
 	_map = map_view
+	add_child(hits)
+	hits.setup(state, units)
+
+
+func attach_camera(camera: CameraRig) -> void:
+	hits.attach_camera(camera)
 
 
 func play(e: GameEvent) -> void:
+	hits.play(e)
 	match e.type:
 		GameEvent.WEAPON_FIRED:
 			_weapon_fire(e.data)
@@ -63,10 +71,7 @@ func _weapon_fire(d: Dictionary) -> void:
 			int(d.get("target_id", 0)), weapon)
 	if get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
 		ShotFx.spawn(self, a, destination, weapon, hit)
-	if hit:
-		VxBlast.spawn(self, destination, "impact", attacker_id * 131 + target_id)
-		if tv != null:
-			_flash_armor(tv, destination)
+	# The authoritative DAMAGE event (not this firing preview) chooses a hit location.
 	if av != null:
 		_recoil(av, weapon)
 	else:
