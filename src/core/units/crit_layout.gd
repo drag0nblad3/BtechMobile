@@ -91,7 +91,7 @@ static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:
 	var slots: Array[CritSlot] = []
 	var names := []
 	if loc == Location.HEAD:
-		names = HEAD
+		names = Cockpit.head(def)
 	elif loc == Location.CT:
 		names = ["Engine", "Engine", "Engine"]
 		for s in Gyro.slots(def):
