@@ -2,7 +2,7 @@
   "id": "bombard_shape",
   "name": "Bombard — unique coarse sculpt",
   "unit": "bombard_bmb010",
-  "voxel_size": 0.05,
+  "voxel_size": 0.051,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -1437,6 +1437,36 @@
         {
           "box": [
             [
+              -14,
+              21,
+              -16
+            ],
+            [
+              -13,
+              25,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -11,
+              21,
+              -16
+            ],
+            [
+              -10,
+              25,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
               -13,
               22,
               -5
@@ -1493,6 +1523,36 @@
         {
           "box": [
             [
+              10,
+              21,
+              -16
+            ],
+            [
+              11,
+              25,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              13,
+              21,
+              -16
+            ],
+            [
+              14,
+              25,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
               11,
               22,
               -5
@@ -1538,5 +1598,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (double_cannon), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
+  "notes": "Individual reference-oriented shape study (double_cannon), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame.\nPrimary-shape reference resculpt: chassis-specific larger shoulder/cockpit/cannon profiles and tonnage-dependent physical scale, pending five-view approval."
 }

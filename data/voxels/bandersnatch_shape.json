@@ -2,7 +2,7 @@
   "id": "bandersnatch_shape",
   "name": "Bandersnatch — unique coarse sculpt",
   "unit": "bandersnatch_bndr01a",
-  "voxel_size": 0.05,
+  "voxel_size": 0.062,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -364,6 +364,21 @@
             ]
           },
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -3,
+              30,
+              -6
+            ],
+            [
+              2,
+              32,
+              -4
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -561,36 +576,36 @@
                 "at": 27,
                 "polygon": [
                   [
-                    -11.43,
-                    -3.6
+                    -10.71,
+                    -3.2
                   ],
                   [
-                    -8.18,
-                    -3.6
+                    -7.49,
+                    -3.2
                   ],
                   [
-                    -7.3,
-                    -2.73
+                    -6.8,
+                    -2.51
                   ],
                   [
-                    -7.3,
-                    2.32
+                    -6.8,
+                    2.31
                   ],
                   [
-                    -8.18,
-                    3.2
+                    -7.49,
+                    3
                   ],
                   [
-                    -11.43,
-                    3.2
+                    -10.71,
+                    3
                   ],
                   [
-                    -12.3,
-                    2.32
+                    -11.4,
+                    2.31
                   ],
                   [
-                    -12.3,
-                    -2.73
+                    -11.4,
+                    -2.51
                   ]
                 ]
               },
@@ -598,36 +613,36 @@
                 "at": 31,
                 "polygon": [
                   [
-                    -12.14,
-                    -4.8
+                    -14.01,
+                    -5
                   ],
                   [
-                    -7.46,
-                    -4.8
+                    -7.39,
+                    -5
                   ],
                   [
-                    -6.6,
-                    -3.94
+                    -6.4,
+                    -4.01
                   ],
                   [
-                    -6.6,
-                    3.34
+                    -6.4,
+                    3.21
                   ],
                   [
-                    -7.46,
+                    -7.39,
                     4.2
                   ],
                   [
-                    -12.14,
+                    -14.01,
                     4.2
                   ],
                   [
-                    -13,
-                    3.34
+                    -15,
+                    3.21
                   ],
                   [
-                    -13,
-                    -3.94
+                    -15,
+                    -4.01
                   ]
                 ]
               },
@@ -635,36 +650,73 @@
                 "at": 35,
                 "polygon": [
                   [
-                    -10.57,
-                    -3.3
+                    -13.65,
+                    -5.2
                   ],
                   [
-                    -8.04,
-                    -3.3
+                    -7.75,
+                    -5.2
+                  ],
+                  [
+                    -6.6,
+                    -4.05
+                  ],
+                  [
+                    -6.6,
+                    3.25
+                  ],
+                  [
+                    -7.75,
+                    4.4
+                  ],
+                  [
+                    -13.65,
+                    4.4
+                  ],
+                  [
+                    -14.8,
+                    3.25
+                  ],
+                  [
+                    -14.8,
+                    -4.05
+                  ]
+                ]
+              },
+              {
+                "at": 38,
+                "polygon": [
+                  [
+                    -11.54,
+                    -2.8
+                  ],
+                  [
+                    -7.86,
+                    -2.8
                   ],
                   [
                     -7,
-                    -2.26
+                    -1.94
                   ],
                   [
                     -7,
-                    2.46
+                    2.54
                   ],
                   [
-                    -8.04,
-                    3.5
+                    -7.86,
+                    3.4
                   ],
                   [
-                    -10.57,
-                    3.5
+                    -11.54,
+                    3.4
                   ],
                   [
-                    -11.6,
-                    2.46
+                    -12.4,
+                    2.54
                   ],
                   [
-                    -11.6,
-                    -2.26
+                    -12.4,
+                    -1.94
                   ]
                 ]
               }
@@ -2135,5 +2187,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (tapered_chest), 75 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
+  "notes": "Individual reference-oriented shape study (tapered_chest), 75 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame.\nPrimary-shape reference resculpt: chassis-specific larger shoulder/cockpit/cannon profiles and tonnage-dependent physical scale, pending five-view approval."
 }
