@@ -45,9 +45,9 @@ func _process(_delta: float) -> bool:
 	_frames += 1
 	if _frames == 5:
 		match _mode:
-			"select":
+			"select", "arcs":
 				_select_far_move()
-			"attack", "sheet", "rolls":
+			"attack", "sheet", "rolls", "aim":
 				_to_weapon_phase()
 			"notebook":
 				_scene.get_child(_scene.get_child_count() - 1)._show_notebook()
@@ -58,7 +58,7 @@ func _process(_delta: float) -> bool:
 				_scene.catalog.rebuild()
 	if _frames == 30 and _mode == "rolls":
 		_show_sample_rolls()
-	if _frames == 7 and (_mode == "attack" or _mode == "sheet"):
+	if _frames == 7 and _mode in ["attack", "sheet", "aim"]:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
