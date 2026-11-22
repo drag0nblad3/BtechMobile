@@ -222,6 +222,10 @@ The Core Rulebook has only these simplified rules for vehicles and infantry; cla
 - ⬜ Specials still to do: Indirect Fire, Artillery, Arrow IV, Narc, TAG, Popup, Zipline, Commander, Crit-Seeker.
 - ⬜ Infantry vs buildings (no damage) — `TODO(rules)`: vehicle Asset attacks on buildings are blocked for now.
 
+## Combat vehicles (classic record sheets)
+Not in the Core Rulebook: these follow general Total Warfare practice, all `TODO(rules)`.
+- 🟡 Record sheets (`VehicleSpec`, `VehicleLoc`, `data/vehicles/`): 22 official designs (18 Inner Sphere, 4 Clan), MegaMek loadouts, sheet BV; structure = tonnage / 10 rounded up. Not playable yet (hit locations, motive damage and critical hits next).
+
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).
 

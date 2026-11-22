@@ -1,0 +1,35 @@
+{
+ "id": "lrm_carrier",
+ "name": "LRM Carrier",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "ice",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 12,
+  "RS": 12,
+  "LS": 12,
+  "RR": 12
+ },
+ "equipment": {
+  "FR": [
+   "lrm20*3"
+  ],
+  "BD": [
+   "ammo:lrm20*4"
+  ]
+ },
+ "source": {
+  "mul_id": 1952,
+  "megamek": "data/mekfiles/vehicles/3039u/LRM Carrier.blk",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "LRM Carrier (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 833
+}

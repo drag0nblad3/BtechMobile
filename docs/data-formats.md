@@ -124,6 +124,20 @@ A Battlefield Support Asset card (book pp. 140-141). Values come only from offic
 `specials`: card codes (APC, AI, NOTUR, BRA, RCA, RFA, FR, SWARM, ...) with their number (1 if none).
 BV is 20 x `bsp`. Rule-test cards live in `tests/fixtures/assets/` (ids `test_*`).
 
+## `data/vehicles/<id>.json`
+A combat vehicle record sheet (classic vehicles, not Asset cards). Loadouts come from MegaMek's
+`.blk` files, BV from the official record sheet (see `docs/data-sources.md`).
+```json
+{"id": "manticore_heavy_tank", "name": "Manticore Heavy Tank", "tonnage": 60,
+ "vehicle": {"motive": "t", "cruise_mp": 4, "engine": "fusion", "turret": true},
+ "armor_type": "standard", "tech_base": "inner_sphere",
+ "armor": {"FR": 42, "RS": 33, "LS": 33, "RR": 26, "TU": 42},
+ "equipment": {"FR": ["medium_laser"], "TU": ["lrm10", "srm6", "ppc"], "BD": ["ammo:lrm10", "ammo:srm6"]},
+ "source": {"mul_id": 2021, "megamek": "...", "bv": "sheet", "sheet": "..."}, "bv": 993}
+```
+Locations (`VehicleLoc`): FR front, LS/RS sides, RR rear, TU turret, BD body (ammo and gear).
+`motive`: t tracked, w wheeled, h hover. Equipment strings are the 'Mech ones (`DesignItems`).
+
 ## `data/scenarios/<id>.json`
 ```json
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}

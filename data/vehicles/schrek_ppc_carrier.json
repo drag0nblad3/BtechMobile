@@ -1,0 +1,33 @@
+{
+ "id": "schrek_ppc_carrier",
+ "name": "Schrek PPC Carrier",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 24,
+  "RS": 20,
+  "LS": 20,
+  "RR": 20,
+  "TU": 28
+ },
+ "equipment": {
+  "TU": [
+   "ppc*3"
+  ]
+ },
+ "source": {
+  "mul_id": 2827,
+  "megamek": "data/mekfiles/vehicles/3039u/Schrek PPC Carrier.blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Schrek PPC Carrier (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 935
+}

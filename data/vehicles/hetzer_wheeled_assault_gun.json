@@ -1,0 +1,35 @@
+{
+ "id": "hetzer_wheeled_assault_gun",
+ "name": "Hetzer Wheeled Assault Gun",
+ "tonnage": 40,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 4,
+  "engine": "ice",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 30,
+  "RS": 22,
+  "LS": 22,
+  "RR": 22
+ },
+ "equipment": {
+  "FR": [
+   "ac20"
+  ],
+  "BD": [
+   "ammo:ac20*4"
+  ]
+ },
+ "source": {
+  "mul_id": 1513,
+  "megamek": "data/mekfiles/vehicles/3039u/Hetzer Wheeled Assault Gun.blk",
+  "role": "Ambusher",
+  "bv": "sheet",
+  "sheet": "Hetzer Wheeled Assault Gun (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 574
+}

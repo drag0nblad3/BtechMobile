@@ -54,6 +54,7 @@ var source: Dictionary = {}  ## Where the data came from (sheet, MegaMek file).
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 ## Battlefield Support Asset card (vehicles, infantry), null for 'Mechs.
 var asset: AssetCard = null
+var vehicle: VehicleSpec = null  ## Combat vehicle record sheet (VehicleLoc locations).
 var armor: Array[int] = []       ## Per Location, front.
 var rear_armor: Array[int] = []  ## Per Location (torsos only).
 ## [{weapon: WeaponDef, loc: int, rear: bool}] in record-sheet order.
@@ -77,7 +78,9 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 		u.asset = AssetCard.from_dict(d["asset"])
 		AssetSpecials.setup_def(u)
 	u.tonnage = int(d.get("tonnage", 0)) if u.asset else int(d["tonnage"])
-	u.walk_mp = u.asset.mp if u.asset else int(d["walk_mp"])
+	if d.has("vehicle"):
+		u.vehicle = VehicleSpec.from_dict(d["vehicle"])
+	u.walk_mp = u.asset.mp if u.asset else u.vehicle.cruise_mp if u.vehicle else int(d["walk_mp"])
 	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else int(d.get("jump_mp", 0))
 	u.jump_jet_type = d.get("jump_jet_type", "")
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
@@ -98,6 +101,10 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	var arm: Dictionary = d.get("armor", {})
 	var rear: Dictionary = d.get("rear_armor", {})
 	for loc in Location.COUNT:
+		if u.vehicle:
+			u.armor.append(int(arm.get(VehicleLoc.CODES[loc], 0)) if loc < VehicleLoc.COUNT else 0)
+			u.rear_armor.append(0)
+			continue
 		u.armor.append(int(arm.get(Location.code(loc), arm.get(Location.QUAD_CODES[loc], 0))))
 		u.rear_armor.append(int(rear.get(Location.code(loc), 0)))
 	for code: String in d.get("missing_actuators", {}):
@@ -107,7 +114,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 		for item: String in eq[code]:
 			var rep := item.split("*")  # "endo_steel*3" = three slots
 			for i in (int(rep[1]) if rep.size() > 1 else 1):
-				DesignItems.add(u, Location.from_code(code), rep[0], weapons)
+				DesignItems.add(u, VehicleLoc.from_code(code) if u.vehicle else Location.from_code(code), rep[0], weapons)
 	return u
 
 

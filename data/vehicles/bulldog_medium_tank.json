@@ -1,0 +1,41 @@
+{
+ "id": "bulldog_medium_tank",
+ "name": "Bulldog Medium Tank",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 24,
+  "RS": 20,
+  "LS": 20,
+  "RR": 20,
+  "TU": 20
+ },
+ "equipment": {
+  "FR": [
+   "machine_gun"
+  ],
+  "TU": [
+   "srm4*2",
+   "large_laser"
+  ],
+  "BD": [
+   "ammo:srm4*2",
+   "ammo:machine_gun:half"
+  ]
+ },
+ "source": {
+  "mul_id": 441,
+  "megamek": "data/mekfiles/vehicles/3039u/Bulldog Medium Tank.blk",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Bulldog Medium Tank (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 605
+}

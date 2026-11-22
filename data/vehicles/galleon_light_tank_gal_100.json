@@ -1,0 +1,39 @@
+{
+ "id": "galleon_light_tank_gal_100",
+ "name": "Galleon Light Tank GAL-100",
+ "tonnage": 30,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 6,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 11,
+  "RS": 10,
+  "LS": 10,
+  "RR": 11,
+  "TU": 14
+ },
+ "equipment": {
+  "RS": [
+   "small_laser"
+  ],
+  "LS": [
+   "small_laser"
+  ],
+  "TU": [
+   "medium_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 1175,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Galleon Light Tank GAL-100.blk",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Galleon Light Tank GAL-100 (Record-Sheets-Mercenaries-Box-Set)"
+ },
+ "bv": 309
+}
