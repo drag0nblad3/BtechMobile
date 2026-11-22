@@ -5,7 +5,7 @@ extends SceneTree
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
 ## tutorial (training battle, first lesson) ·
-## training (the training campaign screen) · notebook (its notebook, two missions played).
+## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played).
 
 var _frames := 0
 var _scene: Node
@@ -36,7 +36,7 @@ func _initialize() -> void:
 	if _mode == "notebook":
 		GameSettings.load_settings()
 		GameSettings.training = {"first_steps": {"won": true, "kills": 1}, "woods": {"won": false, "kills": 0}}
-	var path := "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training else "res://scenes/main.tscn"
+	var path := "res://scenes/launcher.tscn" if _mode == "launcher" else "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
 
