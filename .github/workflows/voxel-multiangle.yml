@@ -3,6 +3,12 @@ name: Voxel connectivity and silhouette review
 on:
   pull_request:
     paths:
+      - 'data/voxels/**_shape.json'
+      - 'data/voxels/icarus_ii.json'
+      - 'data/voxels/starslayer.json'
+      - 'data/voxels/katana.json'
+      - 'data/voxels/spartan.json'
+      - 'data/voxels/crockett.json'
       - 'src/view/vox/vx_connectivity.gd'
       - 'src/view/vox/vx_model.gd'
       - 'src/view/vox/vx_silhouette.gd'
