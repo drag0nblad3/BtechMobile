@@ -235,6 +235,34 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -3,
+              34,
+              -3
+            ],
+            [
+              -3,
+              34,
+              1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              2,
+              34,
+              -3
+            ],
+            [
+              2,
+              34,
+              1
+            ]
+          ]
         }
       ]
     },
@@ -1846,5 +1874,5 @@
       ]
     ]
   },
-  "notes": "Individually profiled 30-ton fast_armed_scout silhouette, unique cockpit beak, shield and weapon masses from official flashfire_flsp2. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores."
+  "notes": "Individually profiled 30-ton fast_armed_scout silhouette, unique cockpit beak, shield and weapon masses from official flashfire_flsp2. Four Hatamoto variants intentionally share Samurai-family root armor, with different external secondary gun racks. Initial shape only; per-angle miniature review still required.\nPrecise unsupported face-component correction from 53-chassis forensic flood-fill: bear the cockpit spine into the torso, remove thin inactive knee/cap fringe, and expose head weapon bores.\nForensic sculpt pass: eliminate isolated voxel shards at identified measured 6-face components, and replace the Werewolf's oversized sensor with a narrow recessed front mount solidly integrated with its compact head."
 }

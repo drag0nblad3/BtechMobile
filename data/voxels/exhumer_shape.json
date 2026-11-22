@@ -235,6 +235,20 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -7,
+              28,
+              -5
+            ],
+            [
+              -7,
+              30,
+              -4
+            ]
+          ]
         }
       ]
     },
@@ -1890,5 +1904,5 @@
       ]
     ]
   },
-  "notes": "Official exhumer_exr2x, bespoke primary hull and weapon-bearing geometry (paired_long_lasers); unique head (visor), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official exhumer_exr2x, bespoke primary hull and weapon-bearing geometry (paired_long_lasers); unique head (visor), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nForensic sculpt pass: eliminate isolated voxel shards at identified measured 6-face components, and replace the Werewolf's oversized sensor with a narrow recessed front mount solidly integrated with its compact head."
 }

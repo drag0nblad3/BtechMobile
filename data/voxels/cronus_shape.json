@@ -354,6 +354,20 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              -1,
+              28,
+              -12
+            ],
+            [
+              1,
+              30,
+              -9
+            ]
+          ]
         }
       ]
     },
@@ -1833,5 +1847,5 @@
       ]
     ]
   },
-  "notes": "Official cronus_cns3m, bespoke primary hull and weapon-bearing geometry (forward_hull); unique head (beak), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official cronus_cns3m, bespoke primary hull and weapon-bearing geometry (forward_hull); unique head (beak), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nForensic sculpt pass: eliminate isolated voxel shards at identified measured 6-face components, and replace the Werewolf's oversized sensor with a narrow recessed front mount solidly integrated with its compact head."
 }
