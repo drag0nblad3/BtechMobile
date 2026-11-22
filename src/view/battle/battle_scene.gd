@@ -8,6 +8,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
+var scars := BattleScars.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
 var cinematic: CinematicDirector
@@ -153,6 +154,8 @@ func _build_views(state: GameState) -> void:
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
 	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
+	add_child(scars)
+	scars.setup(state, units_layer, recorder.frames)
 	fx.setup(state, units_layer, map_view)
 	add_child(fx)
 	var highlighter := HexHighlighter.new()
@@ -408,6 +411,7 @@ func _on_event(e: GameEvent) -> void:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
 			attacks.clear()
 			movement.clear_selection()
+	scars.on_event(e)
 	cinematic.on_event(e)
 
 
