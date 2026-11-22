@@ -5,7 +5,7 @@ extends RefCounted
 
 const GAP := 3
 const RIG_GAP := 3
-const SEARCH_LIMIT := 4500
+const SEARCH_LIMIT := 30000
 const DIRS: Array[Vector3i] = [Vector3i.LEFT, Vector3i.RIGHT, Vector3i.UP,
 		Vector3i.DOWN, Vector3i.FORWARD, Vector3i.BACK]
 
@@ -272,9 +272,21 @@ static func _path(seeds: Array, target: Dictionary, owned: Dictionary,
 	var queue: Array[Vector3i] = []
 	var dist: Dictionary = {}
 	var prev: Dictionary = {}
+	# Flood-fill from exposed boundary cells, not the thousands of internal
+	# voxels of a barrel or torso. The previous visit cap could exhaust all
+	# its work before ever reaching a missing one-cell seam.
+	var source := {}
 	for c: Vector3i in seeds:
-		queue.append(c)
-		dist[c] = 0
+		source[c] = true
+	for c: Vector3i in seeds:
+		var exposed := false
+		for d: Vector3i in DIRS:
+			if not source.has(c + d):
+				exposed = true
+				break
+		if exposed:
+			queue.append(c)
+			dist[c] = 0
 	var head := 0
 	while head < queue.size() and head < SEARCH_LIMIT:
 		var c: Vector3i = queue[head]
