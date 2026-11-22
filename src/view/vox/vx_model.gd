@@ -29,11 +29,7 @@ static func load_file(path: String) -> VxModel:
 	if d is Dictionary and d.has("source"):
 		var base: Variant = JsonFile.read(str(d["source"]))
 		if base is Dictionary:
-			var resolved: Dictionary = base.duplicate(true)
-			for key in d:
-				if key != "source":
-					resolved[key] = d[key]
-			d = resolved
+			d = VxVariant.resolve(base, d)
 		else:
 			push_error("Voxel source not found: %s" % d["source"])
 			return from_dict({})
