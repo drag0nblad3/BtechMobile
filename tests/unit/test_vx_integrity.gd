@@ -7,7 +7,7 @@ func test_islands_reconnect_at_multiple_resolutions_and_origins() -> void:
 	for scale in [1, 2, 3]:
 		for translation: Vector3i in [Vector3i.ZERO, Vector3i(41, -25, 53)]:
 			var m := _with_island(translation, scale)
-			var initial := m.part("ct")["cells"].size()
+			var initial: int = m.part("ct")["cells"].size()
 			var report := VxIntegrity.repair(m)
 			check_eq(int(report["before"]), 1, "synthetic model starts disconnected")
 			check_eq(int(report["after"]), 0, "islands merge at each origin and grid pitch")
@@ -21,7 +21,7 @@ func test_authored_void_cannot_be_filled_by_repair() -> void:
 	var m := _with_island(Vector3i.ZERO, 1)
 	var raw := {"parts": [{"name": "ct", "shapes": [
 			{"erase": [[3, 0, 0], [4, 0, 0]]}]}]}
-	var before := m.part("ct")["cells"].duplicate()
+	var before: Dictionary = m.part("ct")["cells"].duplicate()
 	var report := VxIntegrity.repair(m, raw)
 	check_eq(report["rejoined"], 0)
 	check_eq(report["after"], 1)
