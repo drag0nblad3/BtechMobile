@@ -20,8 +20,11 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	map = battle_map
 	name = "Unit_%d" % u.id
 	add_to_group(GROUP)
-	var sprite := SpriteMech.try_build(u.def)
-	set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
+	if u.def.asset != null:
+		set_model(PlaceholderAsset.build(u.def, u.side))
+	else:
+		var sprite := SpriteMech.try_build(u.def)
+		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
 	snap_to_state()
 
 
@@ -43,8 +46,9 @@ func snap_to_state() -> void:
 func show_condition() -> void:
 	if _model == null:
 		return
-	_model.rotation.z = PI / 2.4 if unit.prone or unit.destroyed else 0.0
-	_model.position.y = 0.25 if unit.prone or unit.destroyed else 0.0
+	var down := unit.prone or (unit.destroyed and unit.asset == null)
+	_model.rotation.z = PI / 2.4 if down else 0.0
+	_model.position.y = 0.25 if down else 0.0
 	var tint := Color(0.3, 0.3, 0.3) if unit.destroyed else Color.WHITE
 	_tint(_model, tint)
 

@@ -11,6 +11,9 @@ const BATTLE_ARMOR := "battle_armor"
 const VTOL := "vtol"
 const EMPLACEMENT := "emplacement"
 
+## Force builder tip (full explanations), our own wording.
+const TIP := "Assets fight by simpler rules: one attack a turn at the card's Skill, a fixed defence (TMM), and no armor diagram. Damage in a turn that reaches the Threshold forces a Destroy Check against the Check number."
+
 ## Movement types (p. 142): foot, hover, jump, tracked, VTOL, wheeled; "" immobile.
 const MOTIVES := ["f", "h", "j", "t", "v", "w"]
 const MOTIVE_NAMES := {"f": "foot", "h": "hover", "j": "jump", "t": "tracked",
