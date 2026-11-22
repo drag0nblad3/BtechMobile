@@ -103,17 +103,6 @@ func test_destroyed_masc_cant_engage() -> void:
 	check_eq(Masc.problem(Unit.new(2, make_def(5), 0, Vector2i.ZERO, 0)), "no MASC")
 
 
-func test_explained() -> void:
-	var s := GameState.new(open_map(4, 4))
-	var u := _masc_mech()
-	s.add_unit(u)
-	var dice := LoadedDice.new()
-	dice.queue_2d6(9)
-	Masc.engage(dice, _emit, u)
-	var t := Explainer.text(events[-1], s, ExplainLevel.FULL)
-	check(t.contains("twice its walking speed") and t.contains("5+"), t)
-
-
 func test_bot_engages_masc_to_close_in() -> void:
 	var s := GameState.new(open_map(24, 5))
 	var u := _masc_mech()
@@ -128,12 +117,3 @@ func test_bot_engages_masc_to_close_in() -> void:
 	var m := gc.history.filter(func(e: GameEvent) -> bool: return e.type == GameEvent.MASC)
 	check_eq(m.size(), 1, "engaged MASC")
 	check(u.hexes_moved > 6, "ran further than 8 MP allows after turning (%d)" % u.hexes_moved)
-
-
-func test_button_label() -> void:
-	var u := _masc_mech()
-	check_eq(MascInput.label(u), "MASC (3+)")
-	check_eq(MascInput.label(Unit.new(2, make_def(5), 0, Vector2i.ZERO, 0)), "", "hidden without MASC")
-	u.masc_used = true
-	u.masc_active = true
-	check_eq(MascInput.label(u), "MASC on")

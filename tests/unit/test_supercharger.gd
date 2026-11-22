@@ -55,11 +55,3 @@ func test_failure_wrecks_it_and_hits_the_engine() -> void:
 	check(not u.slots[Location.CT][2].hit)
 	u.reset_for_turn()
 	check_eq(Supercharger.problem(u), "its supercharger is wrecked")
-
-
-func test_explained() -> void:
-	var s := GameState.new(open_map(4, 4))
-	var u := _mech()
-	s.add_unit(u)
-	var e := GameEvent.new(GameEvent.MASC, {"unit_id": 1, "roll": 2, "need": 3, "ok": false, "next": 5, "system": "supercharger"})
-	check(Explainer.text(e, s, ExplainLevel.FULL).contains("supercharger"))

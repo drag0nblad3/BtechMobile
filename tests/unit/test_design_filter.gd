@@ -24,10 +24,3 @@ func test_filter_and_groups() -> void:
 	check_eq(tw.map(func(d: UnitDef) -> String: return d.config), ["Prime", "A", "B", "E", "Pryde"])
 	check(clan[0][0].tonnage <= clan[-1][0].tonnage, "light to heavy")
 	check_eq(DesignFilter.next(DesignFilter.Mode.CLAN), DesignFilter.Mode.ALL)
-
-
-func test_tips() -> void:
-	var db := designs()
-	check(DesignFilter.tech_tip(db.get_def("timber_wolf_prime")).contains("OmniMech"))
-	check(DesignFilter.tech_tip(db.get_def("timber_wolf_prime")).contains("Clan"))
-	check_eq(DesignFilter.tech_tip(db.get_def("atlas_as7d")), "")

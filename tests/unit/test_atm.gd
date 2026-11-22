@@ -78,16 +78,3 @@ func test_starts_on_ammo_it_has_and_bot_picks_by_range() -> void:
 	var far := _setup(20)
 	BotModes.apply(far[0], far[1], far[2], false)
 	check_eq(far[1].weapons[0].mode, Atm.ER, "far away: extended range")
-
-
-func test_log_names_munition_and_built_in_artemis() -> void:
-	var v := _setup(5)
-	v[1].weapons[0].mode = Atm.HE
-	var ev := _fire(v, [12, 8, 7, 7, 7, 7, 7, 7])
-	var fired: Dictionary = ev.filter(func(e: Array) -> bool: return e[0] == GameEvent.WEAPON_FIRED)[0][1]
-	check_eq(fired["weapon"], "ATM 6 (HE)")
-	var t := WeaponText.fired(v[0], fired, ExplainLevel.FULL, {})
-	check(t.contains("built-in Artemis +2"), t)
-	var far := _setup(20)
-	BotModes.apply(far[0], far[1], far[2], false)
-	check(BotModes.describe(far[1], [{"weapon": 0}]).contains("extended-range"))

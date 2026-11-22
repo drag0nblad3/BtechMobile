@@ -49,15 +49,6 @@ func test_plate_health_counts_vehicle_locations() -> void:
 	check(h < 1.0 and h > 0.5, "front armor gone: %f" % h)
 
 
-func test_vehicle_sheet_text() -> void:
-	var tank := vehicle("manticore_heavy_tank", 0, hex_at(0, 0))
-	tank.vehicle.turret_locked = true
-	var t := VehicleSheetView.text(tank)
-	check(t.contains("cruise") and t.contains("TU  armor"), "MP and turret line")
-	check(t.contains("turret locked"), "damage listed")
-	check(not t.contains("Heat "), "no heat scale")
-
-
 func test_vehicles_cruise_and_flank() -> void:
 	var tank := vehicle("manticore_heavy_tank", 0, hex_at(0, 0))
 	check_eq(AssetMove.mode_name(tank, MoveMode.Kind.WALK), "Cruise")

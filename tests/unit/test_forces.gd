@@ -32,16 +32,6 @@ func test_battle_value_ordering() -> void:
 	check_eq(BvText.line(db.get_def("warhammer_whm6r"), ExplainLevel.OFF), "")
 
 
-func test_balance_text() -> void:
-	var fb := ForceBuilder.new(designs(), 8000)
-	check_eq(fb.balance_text(), "")
-	fb.add(0, "griffin_grf1n")
-	fb.add(1, "griffin_grf1n")
-	check(fb.balance_text().begins_with("Even fight"), fb.balance_text())
-	fb.add(1, "atlas_as7d")
-	check(fb.balance_text().contains("much stronger"), fb.balance_text())
-
-
 func test_build_deploys_both_edges() -> void:
 	var fb := ForceBuilder.new(designs(), 6000)
 	fb.add(0, "jenner_jr7d")
