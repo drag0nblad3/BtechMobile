@@ -24,29 +24,32 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	set_anchors_preset(PRESET_FULL_RECT)
-	var bg := ColorRect.new()
-	bg.color = Color("0c1622")
-	bg.set_anchors_preset(PRESET_FULL_RECT)
-	add_child(bg)
+	UiSkin.backdrop(self)
 	var center := CenterContainer.new()
 	center.set_anchors_preset(PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(center)
-	var column := VBoxContainer.new()
-	column.custom_minimum_size.x = 440.0
-	column.add_theme_constant_override("separation", 18)
-	center.add_child(column)
-	var title := UiKit.label(column, "BTECH MOBILE", 40)
+	var box := UiKit.panel(center)
+	box.get_parent().custom_minimum_size.x = 550
+	box.add_theme_constant_override("separation", 18)
+	var eyebrow := UiKit.label(box, "FIELD OPERATIONS  /  COMMAND INTERFACE", 18)
+	UiSkin.label(eyebrow, "section")
+	eyebrow.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	var title := UiKit.label(box, "BTECH  MOBILE", 44)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	var subtitle := UiKit.label(column, "Choose a mode", UiKit.SMALL)
+	UiSkin.label(title, "heading")
+	var subtitle := UiKit.label(box, "TACTICAL COMBAT SIMULATOR", UiKit.SMALL)
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	var battle := UiKit.button(column, "PLAY BATTLE GAME", _open_battle, Vector2(0, 88))
+	UiSkin.rule(box)
+	var battle := UiKit.button(box, "ENTER BATTLE", _open_battle, Vector2(0, 88), "primary")
 	battle.name = "BattleButton"
-	var lab := UiKit.button(column, "VOXEL MECH LAB", _open_lab, Vector2(0, 88))
+	var lab := UiKit.button(box, "VOXEL MECH LAB", _open_lab, Vector2(0, 76))
 	lab.name = "VoxelLabButton"
-	var caption := UiKit.label(column, "Test walking, targeted armor damage and limb destruction.", UiKit.SMALL)
-	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	var vx := UiKit.button(column, "CLAUDE VOXEL TEST", _open_vx, Vector2(0, 72))
+	var vx := UiKit.button(box, "VOXEL SHOWCASE", _open_vx, Vector2(0, 70), "subtle")
 	vx.name = "VxShowcaseButton"
+	var footer := UiKit.label(box, "SKIRMISH   •   TACTICAL ACADEMY   •   REPLAYS", 17)
+	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	UiSkin.label(footer, "muted")
 
 
 func _open_battle() -> void:

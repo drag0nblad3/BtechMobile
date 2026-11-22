@@ -59,22 +59,26 @@ func _make_hud() -> void:
 	add_child(layer)
 	var panel := PanelContainer.new()
 	panel.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
-	panel.offset_top = -94
+	panel.offset_top = -100
+	panel.add_theme_stylebox_override("panel",
+		UiSkin.panel_style(Color("#0b1b29f0"), UiSkin.CYAN, 10, 8))
 	layer.add_child(panel)
 	var row := HBoxContainer.new()
 	panel.add_child(row)
 	_status = Label.new()
 	_status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_status.add_theme_font_size_override("font_size", 20)
+	UiSkin.label(_status, "body")
 	_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	row.add_child(_status)
 	_button(row, "|<", func(): _show_frame(0))
 	_prev = _button(row, "<", func(): _show_frame(_index - 1))
 	_play_button = _button(row, "Play", _toggle_play)
+	UiSkin.button(_play_button, "primary")
 	_next = _button(row, ">", func(): _show_frame(_index + 1))
 	_button(row, ">|", func(): _show_frame(_frames.size() - 1))
 	_button(row, "Forensics", _open_forensics)
-	_button(row, "Exit", func(): get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
+	UiSkin.button(_button(row, "Exit", func(): get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)), "subtle")
 
 
 func _open_forensics() -> void:
@@ -86,6 +90,8 @@ func _button(row: HBoxContainer, label: String, action: Callable) -> Button:
 	var button := Button.new()
 	button.text = label
 	button.custom_minimum_size = Vector2(86, 64)
+	button.add_theme_font_size_override("font_size", 20)
+	UiSkin.button(button)
 	button.pressed.connect(action)
 	row.add_child(button)
 	return button

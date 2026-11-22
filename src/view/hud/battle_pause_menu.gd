@@ -23,11 +23,7 @@ func _ready() -> void:
 	add_child(center)
 	var panel := PanelContainer.new()
 	panel.custom_minimum_size = Vector2(470, 0)
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.075, 0.095, 0.12)
-	style.set_corner_radius_all(14)
-	style.set_content_margin_all(24)
-	panel.add_theme_stylebox_override("panel", style)
+	panel.add_theme_stylebox_override("panel", UiSkin.panel_style(UiSkin.SURFACE, UiSkin.AMBER, 24, 14))
 	center.add_child(panel)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 16)
@@ -36,25 +32,29 @@ func _ready() -> void:
 	heading.text = "BATTLE PAUSED"
 	heading.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	heading.add_theme_font_size_override("font_size", 32)
+	UiSkin.label(heading, "heading")
 	box.add_child(heading)
+	UiSkin.rule(box)
 	_message = Label.new()
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_message.add_theme_font_size_override("font_size", 21)
+	UiSkin.label(_message, "muted")
 	box.add_child(_message)
-	_add_button(box, "Resume Battle", func(): resumed.emit())
+	_add_button(box, "Resume Battle", func(): resumed.emit(), "primary")
 	_add_button(box, "Save Battle", func(): save_requested.emit())
-	_add_button(box, "Save & Exit to Menu", func(): exit_requested.emit())
+	_add_button(box, "Save & Exit to Menu", func(): exit_requested.emit(), "subtle")
 
 
 func set_message(value: String) -> void:
 	_message.text = value
 
 
-func _add_button(parent: Control, caption: String, action: Callable) -> void:
+func _add_button(parent: Control, caption: String, action: Callable, tone: String = "secondary") -> void:
 	var button := Button.new()
 	button.text = caption
 	button.custom_minimum_size = Vector2(0, 68)
 	button.add_theme_font_size_override("font_size", 24)
+	UiSkin.button(button, tone)
 	button.pressed.connect(action)
 	parent.add_child(button)

@@ -1,20 +1,25 @@
 class_name ForceBuilderScreen
 extends Control
-## Pick a map, a Battle Value budget and up to four 'Mechs per side, then start.
-## Both sides are played on this device (hot seat) for now.
+## Search, fill two forces, check BV, then start. Core rules are unchanged.
 
 var db: UnitDb
 var builder: ForceBuilder
 var map_picker := MapPicker.new()
-var _rosters: Array[VBoxContainer] = []
-var _totals: Array[Label] = []
-var _status: Label
-var _info: Label
 var catalog: ForceCatalog
 var bot_sides := [1]
+var _rosters: Array[ForceRosterPanel] = []
+var _side_buttons: Array[Button] = []
+var _active_side := 0
+var _status: Label
+var _feedback: Label
+var _start_button: Button
+var _setup: ForceBuilderSetup
+var _starter_confirm: ConfirmationDialog
+var _pending_starter: Dictionary = {}
+var _pending_side := -1
 
 
-## Deliberate Android Back navigation when automatic exit is disabled.
+## Android Back returns to the launcher without exiting the app.
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
@@ -23,10 +28,9 @@ func _notification(what: int) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		var key := event as InputEventKey
-		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
-			return
-		get_viewport().set_input_as_handled()
-		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
+		if key.pressed and not key.echo and key.keycode == KEY_ESCAPE:
+			get_viewport().set_input_as_handled()
+			get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _ready() -> void:
@@ -34,82 +38,174 @@ func _ready() -> void:
 	db = UnitDb.load_dir()
 	builder = ForceBuilder.new(db)
 	set_anchors_preset(PRESET_FULL_RECT)
-	var bg := ColorRect.new()
-	bg.color = Color(0.11, 0.12, 0.13)
-	bg.set_anchors_preset(PRESET_FULL_RECT)
-	add_child(bg)
+	UiSkin.backdrop(self)
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(PRESET_FULL_RECT)
 	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 24)
+		margin.add_theme_constant_override("margin_" + side, 18)
 	add_child(margin)
-	var cols := HBoxContainer.new()
-	cols.add_theme_constant_override("separation", 16)
-	margin.add_child(cols)
-	catalog = ForceCatalog.new(db, _on_add)
-	catalog.build(cols)
+	var layout := VBoxContainer.new()
+	layout.add_theme_constant_override("separation", 8)
+	margin.add_child(layout)
+	var heading := HBoxContainer.new()
+	layout.add_child(heading)
+	var title := UiKit.label(heading, "FORCE BUILDER  /  SKIRMISH", 27)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiSkin.label(title, "heading")
+	UiSkin.label(UiKit.label(heading, "SEARCH → ADD → DEPLOY", 16), "section")
+	UiSkin.rule(layout)
+	var body := HBoxContainer.new()
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	body.add_theme_constant_override("separation", 12)
+	layout.add_child(body)
+	catalog = ForceCatalog.new(db, _on_add, builder)
+	catalog.build(body)
+	var right := VBoxContainer.new()
+	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	right.size_flags_stretch_ratio = 1.0
+	right.add_theme_constant_override("separation", 8)
+	body.add_child(right)
+	var side_row := HBoxContainer.new()
+	right.add_child(side_row)
+	UiSkin.label(UiKit.label(side_row, "ADD TO:", 18), "section")
 	for side in 2:
-		_build_roster(cols, side)
-	_build_options(cols)
+		var idx := side
+		var choose := UiKit.button(side_row, "", func(): _select_side(idx),
+			Vector2(150, 52))
+		choose.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		choose.add_theme_font_size_override("font_size", 19)
+		_side_buttons.append(choose)
+	var roster_row := HBoxContainer.new()
+	roster_row.custom_minimum_size.y = 180
+	roster_row.add_theme_constant_override("separation", 8)
+	right.add_child(roster_row)
+	for side in 2:
+		var idx := side
+		var roster := ForceRosterPanel.new()
+		roster.build(roster_row, idx, func(): _select_side(idx), _on_remove,
+			_choose_starter)
+		_rosters.append(roster)
+	_feedback = UiKit.label(right, "", 18)
+	UiSkin.label(_feedback, "section")
+	_setup = ForceBuilderSetup.new()
+	_setup.build(right, builder, map_picker, bot_sides, _refresh, _notify,
+		{"continue": _continue_saved, "replay": _watch_saved_replay,
+		"forensics": _open_forensics, "training": open_training})
+	var footer := HBoxContainer.new()
+	footer.add_theme_constant_override("separation", 14)
+	layout.add_child(footer)
+	_status = UiKit.label(footer, "", 21)
+	_status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiSkin.label(_status, "body")
+	_start_button = UiKit.button(footer, "START BATTLE", _start,
+		Vector2(275, 68), "primary")
+	_start_button.name = "StartBattle"
+	_starter_confirm = ConfirmationDialog.new()
+	_starter_confirm.title = "Replace selected force?"
+	_starter_confirm.ok_button_text = "LOAD FORMATION"
+	_starter_confirm.cancel_button_text = "KEEP FORCE"
+	add_child(_starter_confirm)
+	_starter_confirm.confirmed.connect(_apply_pending_starter)
+	UiSkin.button(_starter_confirm.get_ok_button(), "primary")
+	UiSkin.button(_starter_confirm.get_cancel_button(), "subtle")
 	_refresh()
 	if BattleLaunch.open_training:
 		BattleLaunch.open_training = false
 		open_training.call_deferred()
 
 
-func _build_roster(parent: Control, side: int) -> void:
-	var box := UiKit.panel(parent)
-	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiKit.label(box, "%s force" % Names.side(side)).modulate = PlaceholderMech.SIDE_COLORS[side].lightened(0.3)
-	_totals.append(UiKit.label(box, "", UiKit.SMALL))
-	var r := VBoxContainer.new()
-	box.add_child(r)
-	_rosters.append(r)
+func _select_side(side: int) -> void:
+	_active_side = side
+	_feedback.text = ""
+	catalog.set_active_side(side)
+	_refresh()
 
 
-func _build_options(parent: Control) -> void:
-	var scroll := ScrollContainer.new()  # the options outgrow a landscape phone screen
-	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	parent.add_child(scroll)
-	var box := UiKit.panel(scroll)
-	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_info = UiKit.label(box, "", UiKit.SMALL)
-	map_picker.build(box, _refresh)
-	var row1 := HBoxContainer.new()
-	box.add_child(row1)
-	UiKit.button(row1, "Budget", _next_budget, Vector2(100, 60))
-	var row2 := HBoxContainer.new()
-	box.add_child(row2)
+func _notify(message: String) -> void:
+	_feedback.text = message
+
+
+## A template changes only the selected roster. Confirm replacements and budget raises.
+func _choose_starter(side: int, index: int) -> void:
+	var forms := StarterFormations.all()
+	if index < 0 or index >= forms.size():
+		return
+	_select_side(side)
+	var form: Dictionary = forms[index]
+	var plan := StarterFormations.plan(builder, side, form)
+	if not plan.get("ok", false):
+		_notify(String(plan.get("reason", "Formation not available.")))
+		return
+	_pending_side = side
+	_pending_starter = form
+	if not builder.rosters[side].is_empty() or plan["raises_budget"]:
+		var msg := "%s: %s\n\nReplace %s's current roster with %d 'Mechs?" % [
+			form["name"], form["description"], Names.side(side),
+			(form["units"] as Array).size()]
+		msg += "\n\nTotal BV at this side's pilot skill: %d." % int(plan["cost"])
+		if plan["raises_budget"]:
+			msg += "\nThis will raise the BV limit for BOTH sides from %d to %d." % [
+				builder.budget, int(plan["budget"])]
+		_starter_confirm.dialog_text = msg
+		_starter_confirm.popup_centered(Vector2i(575, 0))
+	else:
+		_apply_pending_starter()
+
+
+func _apply_pending_starter() -> void:
+	if _pending_side < 0 or _pending_starter.is_empty():
+		return
+	var side := _pending_side
+	var name := String(_pending_starter["name"])
+	var before := builder.budget
+	var result := StarterFormations.apply(builder, side, _pending_starter)
+	_pending_side = -1
+	_pending_starter = {}
+	if not result.get("ok", false):
+		_notify(String(result.get("reason", "Unable to load formation.")))
+		return
+	var message := "%s loaded for %s (%d BV)." % [
+		name, Names.side(side), int(result["cost"])]
+	if builder.budget > before:
+		message += " BV limit raised to %d for both sides." % builder.budget
+	_notify(message)
+	_refresh()
+
+
+func _on_remove(side: int, index: int) -> void:
+	builder.remove(side, index)
+	_notify("Removed a unit from %s." % Names.side(side))
+	_refresh()
+
+
+func _on_add(side: int, def_id: String) -> void:
+	var reason := builder.cant_add(side, def_id)
+	if reason != "":
+		_notify(reason)
+		return
+	builder.add(side, def_id)
+	_notify("%s added to %s." % [db.get_def(def_id).display_name(), Names.side(side)])
+	_refresh()
+
+
+func _refresh() -> void:
 	for side in 2:
-		UiKit.button(row2, Names.side(side) + " player", func():
-				if bot_sides.has(side): bot_sides.erase(side)
-				else: bot_sides.append(side)
-				_refresh(), Vector2(100, 60))
-	UiKit.button(box, "Computer level", func():
-			GameSettings.set_ai_level(BotSkill.next(GameSettings.ai_level)); _refresh(), Vector2(0, 60))
-	var row3 := HBoxContainer.new()
-	box.add_child(row3)
-	for side in 2:
-		UiKit.button(row3, Names.side(side) + " skill", _on_skill.bind(side), Vector2(100, 60))
-	var row4 := HBoxContainer.new()
-	box.add_child(row4)
-	UiKit.button(row4, "Mission", func(): builder.next_mission(); _refresh(), Vector2(100, 60))
-	UiKit.button(row4, "Withdrawal", func(): builder.forced_withdrawal = not builder.forced_withdrawal; _refresh(), Vector2(100, 60))
-	UiKit.button(row4, "Hidden", func(): builder.hidden_side = (builder.hidden_side + 2) % 3 - 1; _refresh(), Vector2(100, 60))
-	UiKit.button(box, "Conditions", func(): builder.next_conditions(); _refresh(), Vector2(0, 60))
-	UiKit.button(box, "Initiative Die", func():
-			builder.initiative_die = not builder.initiative_die; _refresh(), Vector2(0, 60))
-	UiKit.button(box, "Explanations", func():
-			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh(), Vector2(0, 60))
-	_status = UiKit.label(box, "", UiKit.SMALL)
-	if BattleSave.has_game():
-		UiKit.button(box, "Continue saved battle", _continue_saved, Vector2(0, 64))
-	if BattleSave.has_replay():
-		UiKit.button(box, "Watch last replay", _watch_saved_replay, Vector2(0, 64))
-		UiKit.button(box, "Tactical Academy: Forensics", _open_forensics, Vector2(0, 64))
-	UiKit.button(box, "Start battle", _start, Vector2(0, 80))
-	UiKit.button(box, "Training campaign", open_training, Vector2(0, 64))
+		_rosters[side].refresh(builder, db, side == _active_side)
+		_side_buttons[side].text = Names.side(side).to_upper()
+		UiSkin.button(_side_buttons[side], "selected" if side == _active_side else "subtle")
+	catalog.refresh()
+	_setup.refresh()
+	var red := builder.bv(0)
+	var blue := builder.bv(1)
+	var within := red <= builder.budget and blue <= builder.budget
+	var ready := builder.ready_to_fight() and within
+	_start_button.disabled = not ready
+	if not builder.ready_to_fight():
+		_status.text = "Add at least one unit to each force to begin."
+	elif not within:
+		_status.text = "A force is over budget. Increase the limit or remove a unit."
+	else:
+		_status.text = builder.balance_text() + "  Ready to deploy."
 
 
 func _continue_saved() -> void:
@@ -125,68 +221,6 @@ func _open_forensics() -> void:
 	get_tree().change_scene_to_file("res://scenes/battle_forensics.tscn")
 
 
-func _next_budget() -> void:
-	var i := ForceBuilder.BUDGETS.find(builder.budget)
-	builder.budget = ForceBuilder.BUDGETS[(i + 1) % ForceBuilder.BUDGETS.size()]
-	_refresh()
-
-
-func _on_skill(side: int) -> void:
-	var ok := builder.next_skill(side)
-	_refresh()
-	if not ok:
-		_status.text = "That skill would put %s over budget" % Names.side(side)
-
-
-func _on_add(side: int, def_id: String) -> void:
-	var why := builder.cant_add(side, def_id)
-	if why != "":
-		_status.text = why
-		return
-	builder.add(side, def_id)
-	_refresh()
-
-
-func _refresh() -> void:
-	for side in 2:
-		UiKit.clear(_rosters[side])
-		var support := builder.asset_ids(side).size()
-		_totals[side].text = "%s of %d/%d%s  ·  %d / %d BV  ·  %d tons  ·  %s" % [builder.formation(side),
-				builder.mech_ids(side).size(), builder.max_units(side), (" + %d support" % support) if support > 0 else "",
-				builder.bv(side), builder.budget, builder.tons(side), BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
-		var ids: Array = builder.rosters[side]
-		for i in ids.size():
-			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),
-					func(): builder.remove(side, i); _refresh())
-	var map_name := map_picker.choice.describe(GameSettings.explain_level)
-	catalog.refresh()
-	var weather := ", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "clear"
-	_info.text = "Mission: %s\nForced Withdrawal: %s · Hidden units: %s\n" % [builder.mission_name(),
-			"on" if builder.forced_withdrawal else "off", "off" if builder.hidden_side < 0 else Names.side(builder.hidden_side)]
-	_info.text += "Map: %s\nBudget: %d BV per side\nConditions: %s\nExplanations: %s\nInitiative Die: %s\nRed: %s · Blue: %s" % [map_name,
-			builder.budget, weather, ExplainLevel.name_of(GameSettings.explain_level), "on" if builder.initiative_die else "off",
-			"Computer" if bot_sides.has(0) else "You", "Computer" if bot_sides.has(1) else "You"]
-	_info.text += "\nComputer level: %s" % BotSkill.name_of(GameSettings.ai_level)
-	if GameSettings.explain_level == ExplainLevel.FULL:
-		_info.text += "\n" + BvText.WHAT_IS_BV
-		_info.text += "\nSkill: better MechWarriors hit and keep their footing more often, and cost more BV (Veteran 3/4 is x%.2f, Elite 2/3 x%.2f, Green 5/6 x%.2f)." % [
-				BvSkill.multiplier(3, 4), BvSkill.multiplier(2, 3), BvSkill.multiplier(5, 6)]
-		_info.text += "\n" + ForceBuilder.FORMATION_TIP
-		_info.text += "\nComputer level: " + BotSkill.BLURBS[GameSettings.ai_level]
-		_info.text += "\nInitiative Die (optional): a side that keeps losing initiative gets +1 more on each roll until it wins."
-		if builder.mission_id not in ["", "random"]:
-			_info.text += "\n" + String(StandardMissions.info(builder.mission_id).get("summary", ""))
-		elif builder.mission_id == "random":
-			_info.text += "\nA standard mission is rolled when the battle starts, with its complications (one may add random weather)."
-		_info.text += "\nHidden units (optional): one side starts hidden in woods, rough, buildings or deep water, waiting in ambush. Walking into or next to one reveals it, and it may fire point-blank."
-		_info.text += "\nForced Withdrawal (optional): badly damaged 'Mechs must retreat to their home edge instead of fighting to the end."
-		for line in ConditionsText.effects(builder.conditions):
-			_info.text += "\n" + line
-		_info.text += "\nTip: mix ranges. Long-range missiles want distance; brawlers want to close in."
-	var balance := builder.balance_text()
-	if balance != "" and GameSettings.explain_level != ExplainLevel.OFF:
-		_info.text += "\n" + balance
-	_status.text = "" if builder.ready_to_fight() else "Add at least one 'Mech to each side."
 
 
 ## The connected training games with lessons (see TrainingCampaign).
@@ -197,7 +231,7 @@ func open_training() -> void:
 
 
 func _start() -> void:
-	if not builder.ready_to_fight():
+	if not builder.ready_to_fight() or builder.bv(0) > builder.budget or builder.bv(1) > builder.budget:
 		return
 	var map := map_picker.choice.build()
 	BattleLaunch.pending = builder.build(map)
