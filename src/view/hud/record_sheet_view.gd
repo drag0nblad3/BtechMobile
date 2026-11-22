@@ -13,7 +13,7 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	l.add_theme_font_size_override("normal_font_size", 19)
 	l.add_theme_font_size_override("bold_font_size", 21)
-	l.text = AssetSheetView.text(u) if u.asset != null else VehicleSheetView.text(u) if u.vehicle != null else text(u)
+	l.text = AssetSheetView.text(u) if u.asset != null else VehicleSheetView.text(u) if u.vehicle != null else BaSheetView.text(u) if u.ba != null else text(u)
 	if u.def.is_support():
 		return l
 	var want := power_choice(u)
@@ -29,6 +29,9 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 		b.pressed.connect(func() -> void: on_power.call(want[0]))
 		box.add_child(b)
 	box.add_child(SinkButtons.row(u, on_power))
+	var st := SinkButtons.stealth_row(u, on_power)
+	if st != null:
+		box.add_child(st)
 	return box
 
 
@@ -60,8 +63,9 @@ static func text(u: Unit) -> String:
 		tech.append("OmniMech, %s configuration" % d.config)
 	if d.is_xl():
 		tech.append("Clan XL engine (survives losing one side torso)" if d.clan_part("engine") else "XL engine (dies if a side torso is lost)")
-	if d.structure_type == "endo_steel":
-		tech.append("endo steel structure")
+	if StructureTypes.KINDS.has(d.structure_type):
+		tech.append(String(StructureTypes.KINDS[d.structure_type]["name"]).to_lower() + " structure" + {
+				"composite": " (each point of damage takes 2 pips)", "reinforced": " (each pip takes 2 points)"}.get(d.structure_type, ""))
 	if d.ecm_loc >= 0:
 		tech.append("%s%s" % [EcmTypes.name_of(d), " (destroyed)" if u.ecm_lost else ""])
 	if d.masc_loc >= 0:
@@ -78,7 +82,9 @@ static func text(u: Unit) -> String:
 		tech.append("%s (%s)" % [InertGear.KINDS[g["kind"]]["name"], InertGear.KINDS[g["kind"]]["why"]])
 	if d.tc_loc >= 0:
 		tech.append("targeting computer%s" % (" (destroyed)" if u.tc_lost else ""))
-	if d.armor_type != "standard":
+	if ArmorTypes.is_special(d):
+		tech.append(ArmorTypes.describe(d))
+	elif d.armor_type != "standard":
 		tech.append({"ferro_fibrous": "ferro-fibrous", "light_ferro": "light ferro-fibrous", "heavy_ferro": "heavy ferro-fibrous"}.get(d.armor_type, d.armor_type) + " armor")
 	if d.engine_type in ["light", "compact"]:
 		tech.append("light engine (survives losing one side torso)" if d.engine_type == "light" else "compact engine")

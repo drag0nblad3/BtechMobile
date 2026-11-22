@@ -19,8 +19,14 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if target.coord == attacker.coord:
 		th.impossible = "A 'Mech can't shoot at a unit in its own hex"
 		return th
+	if secondary and Stealth.active(target):
+		th.impossible = "Stealth armor: it can only be your primary target"
+		return th
 	if w.def.ams:
 		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
+		return th
+	if w.mode == PpcCapacitor.CHARGE:
+		th.impossible = "%s is charging its capacitor instead of firing" % w.def.name
 		return th
 	if not attacker.can_fire(w):
 		th.impossible = "%s can't fire (%s)" % [w.def.name, "jammed" if w.jammed else
@@ -39,7 +45,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			return th
 		VehicleFire.add_mods(th, attacker, w)
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if attacker.vehicle == null and not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
+	if attacker.vehicle == null and attacker.ba == null and not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -101,6 +107,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		WeaponDef.Bracket.LONG:
 			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
+	Stealth.add_mods(th, target, br)
 	if p.min_range > 0 and dist <= p.min_range:
 		th.add("minimum range", p.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])
@@ -179,6 +186,7 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 		var adjacent := Hex.distance(attacker.coord, target.coord) <= 1
 		th.add("target prone", -2 if adjacent else 1,
 				"A 'Mech on the ground is easier to hit from next to it (-2), harder from afar (+1).")
+	BaFire.add_target_mod(th, target)
 	if is_immobile(target):
 		th.add("target immobile", -4, "A shut-down, unconscious or legless 'Mech can't dodge: -4.")
 

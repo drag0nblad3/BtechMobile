@@ -1,0 +1,77 @@
+{
+ "id": "devastator_dvs11",
+ "name": "Devastator",
+ "model": "DVS-11",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "compact",
+ "structure_type": "endo_composite",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 30,
+  "RT": 30,
+  "CT": 47,
+  "HD": 9,
+  "LL": 40,
+  "RL": 40
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "gauss_rifle"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "endo_composite*2"
+  ],
+  "LT": [
+   "snub_nose_ppc",
+   "c_er_medium_laser",
+   "ammo:gauss_rifle",
+   "endo_composite*5"
+  ],
+  "RT": [
+   "snub_nose_ppc",
+   "c_er_medium_laser",
+   "ammo:gauss_rifle",
+   "masc"
+  ],
+  "CT": [
+   "c_er_small_laser@rear",
+   "ammo:gauss_rifle*2",
+   "supercharger"
+  ],
+  "HD": [
+   "c_er_small_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 9377,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 28/Devastator DVS-11.mtf",
+  "published": "RG28,RS:MERCS",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Devastator DVS-11 (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 3170
+ },
+ "bv": 3170,
+ "sprite": "devastator",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 2 Gauss Rifles, 2 Snub-Nose PPCs, 2 ER Medium Lasers, 2 ER Small Lasers; walks 3, runs 5."
+}

@@ -13,9 +13,11 @@ static func damage(w: MountedWeapon) -> int:
 	return PER_SLOT * w.def.slots
 
 
-static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, w: MountedWeapon, loc: int) -> void:
+static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, w: MountedWeapon, loc: int,
+		base := -1) -> void:
 	w.exploded = true
-	var base := damage(w)
+	if base < 0:
+		base = damage(w)
 	var steps := AmmoExplosion.internal(u, loc, base)
 	var dmg := 0
 	for s in steps:

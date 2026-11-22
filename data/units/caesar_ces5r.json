@@ -1,0 +1,62 @@
+{
+ "id": "caesar_ces5r",
+ "name": "Caesar",
+ "model": "CES-5R",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "hardened",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 22,
+  "RT": 22,
+  "CT": 30,
+  "HD": 9,
+  "LL": 27,
+  "RL": 27
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 11
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "snub_nose_ppc",
+   "er_medium_laser",
+   "endo_steel*4"
+  ],
+  "LT": [
+   "er_medium_laser@rear",
+   "ammo:gauss_rifle*2",
+   "endo_steel*5"
+  ],
+  "RT": [
+   "gauss_rifle",
+   "er_medium_laser@rear",
+   "case2"
+  ]
+ },
+ "source": {
+  "mul_id": 9321,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 26/Caesar CES-5R.mtf",
+  "published": "RG26,RS:MERCS",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Caesar CES-5R (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 2192
+ },
+ "bv": 2192,
+ "sprite": "caesar",
+ "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, Snub-Nose PPC, Gauss Rifle; walks 4, runs 6."
+}

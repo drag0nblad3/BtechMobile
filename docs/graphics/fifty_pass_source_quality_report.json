@@ -1,0 +1,687 @@
+{
+  "mechs": {
+    "adder": {
+      "passes": 50,
+      "edited_vertices": 1770
+    },
+    "akuma": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "albatross": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "annihilator": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "archer": {
+      "passes": 50,
+      "edited_vertices": 2480
+    },
+    "argus": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "assassin": {
+      "passes": 50,
+      "edited_vertices": 1810
+    },
+    "atlas": {
+      "passes": 50,
+      "already_reviewed": true
+    },
+    "awesome": {
+      "passes": 50,
+      "edited_vertices": 1900
+    },
+    "axman": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "banshee": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "battleaxe": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "battlemaster": {
+      "passes": 50,
+      "edited_vertices": 1880
+    },
+    "black_knight": {
+      "passes": 50,
+      "edited_vertices": 2160
+    },
+    "blackjack": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "bushwacker": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "caesar": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "cataphract": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "centurion": {
+      "passes": 50,
+      "edited_vertices": 2210
+    },
+    "chameleon": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "charger": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "chimera": {
+      "passes": 50,
+      "edited_vertices": 1670
+    },
+    "cicada": {
+      "passes": 50,
+      "edited_vertices": 1810
+    },
+    "clint": {
+      "passes": 50,
+      "edited_vertices": 1660
+    },
+    "commando": {
+      "passes": 50,
+      "edited_vertices": 1680
+    },
+    "crab": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "crockett": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "crossbow": {
+      "passes": 50,
+      "edited_vertices": 1780
+    },
+    "crusader": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "cyclops": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "dervish": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "devastator": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "dire_wolf": {
+      "passes": 50,
+      "edited_vertices": 1920
+    },
+    "dragon": {
+      "passes": 50,
+      "edited_vertices": 1810
+    },
+    "emperor": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "enforcer": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "excalibur": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "executioner": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "exterminator": {
+      "passes": 50,
+      "edited_vertices": 1660
+    },
+    "falconer": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "fire_moth": {
+      "passes": 50,
+      "edited_vertices": 1780
+    },
+    "firebee": {
+      "passes": 50,
+      "edited_vertices": 1660
+    },
+    "firefly": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "firestarter": {
+      "passes": 50,
+      "edited_vertices": 2000
+    },
+    "flashman": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "flea": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "gargoyle": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "goliath": {
+      "passes": 50,
+      "edited_vertices": 980
+    },
+    "grasshopper": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "grendel": {
+      "passes": 50,
+      "edited_vertices": 1780
+    },
+    "griffin": {
+      "passes": 50,
+      "edited_vertices": 2180
+    },
+    "grizzly": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "guillotine": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "gunslinger": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "hatamoto_chi": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "hatchetman": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "havoc": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "hel": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "helios": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "hellbringer": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "hellspawn": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "hermes_ii": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "highlander": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "hollander": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "hoplite": {
+      "passes": 50,
+      "edited_vertices": 1660
+    },
+    "howler": {
+      "passes": 50,
+      "edited_vertices": 1790
+    },
+    "hunchback_iic": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "icarus_ii": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "ice_ferret": {
+      "passes": 50,
+      "edited_vertices": 1810
+    },
+    "jagermech": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "javelin": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "jenner": {
+      "passes": 50,
+      "already_reviewed": true
+    },
+    "katana": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "king_crab": {
+      "passes": 50,
+      "edited_vertices": 1920
+    },
+    "kintaro": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "kit_fox": {
+      "passes": 50,
+      "edited_vertices": 1790
+    },
+    "kodiak": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "lancelot": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "legionnaire": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "linebacker": {
+      "passes": 50,
+      "edited_vertices": 1770
+    },
+    "locust": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "longbow": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "mackie": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "mad_dog": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "malice": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "marauder": {
+      "passes": 50,
+      "already_reviewed": true
+    },
+    "mauler": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "mercury": {
+      "passes": 50,
+      "edited_vertices": 1770
+    },
+    "merlin": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "mist_lynx": {
+      "passes": 50,
+      "edited_vertices": 1790
+    },
+    "mongoose": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "night_gyr": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "nightsky": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "nightstar": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "nova": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "orion": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "ostroc": {
+      "passes": 50,
+      "edited_vertices": 1810
+    },
+    "ostscout": {
+      "passes": 50,
+      "edited_vertices": 1670
+    },
+    "ostsol": {
+      "passes": 50,
+      "edited_vertices": 1800
+    },
+    "ostwar": {
+      "passes": 50,
+      "edited_vertices": 1790
+    },
+    "pack_hunter": {
+      "passes": 50,
+      "edited_vertices": 1780
+    },
+    "panther": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "penetrator": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "phoenix_hawk": {
+      "passes": 50,
+      "edited_vertices": 2150
+    },
+    "pillager": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "piranha": {
+      "passes": 50,
+      "edited_vertices": 1770
+    },
+    "quickdraw": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "raven": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "rifleman": {
+      "passes": 50,
+      "edited_vertices": 2000
+    },
+    "sagittaire": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "scarabus": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "scorpion": {
+      "passes": 50,
+      "edited_vertices": 980
+    },
+    "sentinel": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "shadow_cat": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "shadow_hawk": {
+      "passes": 50,
+      "edited_vertices": 2220
+    },
+    "shockwave": {
+      "passes": 50,
+      "edited_vertices": 1820
+    },
+    "shogun": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "spartan": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "spector": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "spider": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "stalker": {
+      "passes": 50,
+      "edited_vertices": 2160
+    },
+    "starslayer": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "stinger": {
+      "passes": 50,
+      "edited_vertices": 1670
+    },
+    "stormcrow": {
+      "passes": 50,
+      "edited_vertices": 1810
+    },
+    "suburbanmech": {
+      "passes": 50,
+      "edited_vertices": 1780
+    },
+    "summoner": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "supernova": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "tarantula": {
+      "passes": 50,
+      "edited_vertices": 980
+    },
+    "thanatos": {
+      "passes": 50,
+      "edited_vertices": 1700
+    },
+    "thug": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "thunder_hawk": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "thunder_stallion": {
+      "passes": 50,
+      "edited_vertices": 980
+    },
+    "thunderbolt": {
+      "passes": 50,
+      "edited_vertices": 2200
+    },
+    "timber_wolf": {
+      "passes": 50,
+      "already_reviewed": true
+    },
+    "trebuchet": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "turkina": {
+      "passes": 50,
+      "edited_vertices": 1920
+    },
+    "urbanmech": {
+      "passes": 50,
+      "edited_vertices": 2470
+    },
+    "valkyrie": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "venom": {
+      "passes": 50,
+      "edited_vertices": 1690
+    },
+    "victor": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "vindicator": {
+      "passes": 50,
+      "edited_vertices": 2320
+    },
+    "viper": {
+      "passes": 50,
+      "edited_vertices": 1800
+    },
+    "vulcan": {
+      "passes": 50,
+      "edited_vertices": 1680
+    },
+    "warhammer": {
+      "passes": 50,
+      "edited_vertices": 2230
+    },
+    "warhawk": {
+      "passes": 50,
+      "edited_vertices": 1920
+    },
+    "wasp": {
+      "passes": 50,
+      "edited_vertices": 1670
+    },
+    "whitworth": {
+      "passes": 50,
+      "edited_vertices": 1710
+    },
+    "wolfhound": {
+      "passes": 50,
+      "edited_vertices": 1790
+    },
+    "wolverine": {
+      "passes": 50,
+      "already_reviewed": true
+    },
+    "ymir": {
+      "passes": 50,
+      "edited_vertices": 1720
+    },
+    "zeus": {
+      "passes": 50,
+      "edited_vertices": 1720
+    }
+  },
+  "assets": {
+    "artillery_carrier": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "attack_vtol": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "battle_armor_elementals": {
+      "passes": 50,
+      "edited_vertices": 0
+    },
+    "field_emplacement": {
+      "passes": 50,
+      "edited_vertices": 480
+    },
+    "hover_scout": {
+      "passes": 50,
+      "edited_vertices": 440
+    },
+    "hover_tank": {
+      "passes": 50,
+      "edited_vertices": 560
+    },
+    "infantry_jump": {
+      "passes": 50,
+      "edited_vertices": 0
+    },
+    "infantry_motorized": {
+      "passes": 50,
+      "edited_vertices": 0
+    },
+    "infantry_rifles": {
+      "passes": 50,
+      "edited_vertices": 0
+    },
+    "lrm_carrier": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "missile_emplacement": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "savior_repair_vehicle": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "tracked_tank": {
+      "passes": 50,
+      "edited_vertices": 450
+    },
+    "transport_vtol": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "wheeled_apc": {
+      "passes": 50,
+      "edited_vertices": 360
+    },
+    "wheeled_supply_truck": {
+      "passes": 50,
+      "edited_vertices": 360
+    }
+  },
+  "stages": [
+    "front_silhouette",
+    "side_profile",
+    "waist_depth",
+    "shoulder_roof",
+    "weapon_arm_clearance",
+    "cockpit_beak",
+    "thigh_anatomy",
+    "digitigrade_shin",
+    "ankle_and_foot",
+    "signature_weapon_mount"
+  ],
+  "source_changed": 308
+}

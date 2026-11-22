@@ -49,7 +49,7 @@ static func internal(u: Unit, loc: int, base: int) -> Array[Dictionary]:
 			steps.append(_case(u, loc, left, CASE_II_CAP if u.def.case2_locs.has(loc) else CASE_CAP))  # transferred in
 			return steps
 		var part := Damage.apply_internal_one(u, loc, left)
-		left -= int(part["structure"])
+		left -= int(part.get("used", part["structure"]))
 		steps.append(part)
 		loc = Location.transfer(loc)
 	if base > CAP and not steps.is_empty() and not u.destroyed:

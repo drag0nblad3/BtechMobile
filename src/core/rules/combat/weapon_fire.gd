@@ -19,6 +19,7 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 		resolve(state, dice, emit, a, a.weapons[d["weapon_index"]],
 				state.unit_by_id(d["target_id"]), d["to_hit"])
 	state.declared_fire.clear()
+	PpcCapacitor.end_phase(state, emit)
 	BuildingDamage.end_phase(state, dice, emit)
 	Fire.end_phase(state, emit)
 	RotaryAc.resolve_unjams(state, dice, emit)
@@ -35,6 +36,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		return
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
+	PpcCapacitor.discharge(attacker, w)
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
@@ -92,6 +94,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
 		packets = [w.def.damage_at(dist, shift)] as Array[int]
 		data["damage_at_range"] = packets[0]
+	if w.cap_released:
+		packets[0] += PpcCapacitor.DAMAGE
+		data["capacitor"] = true
 	if c["n"] > 0 or ams_on:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]
@@ -102,7 +107,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
-	if w.def.heat_damage and target.asset == null and target.vehicle == null:  # flamers: heat as well as damage (book pp. 183-184)
+	if w.def.heat_damage and not target.def.is_support():  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points
 	if w.def.heat_dice > 0:
@@ -121,7 +126,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		if th.legs_only:
 			hl = HitTable.roll_kick(dice, arc_id, target.def.quad)
 			hl["no_cover"] = true
-		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex)
+		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex, ArmorTypes.weapon_attack(w.def))
 
 
 ## Spends ammo for the shots this weapon fires; returns how many (0 = none).
@@ -157,9 +162,12 @@ static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 ## hit, taken by the building (charges excepted).
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
-		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
+		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID, attack: Array = []) -> void:
 	if target.asset != null:
 		AssetDamage.take(emit, target, amount, source_id, source, [], arc_id)
+		return
+	if target.ba != null:  # one trooper per packet (BaDamage)
+		BaDamage.take(dice, emit, target, amount, source_id, source)
 		return
 	if target.vehicle != null:  # its own hit table and damage (VehicleDamage)
 		VehicleDamage.take(dice, emit, target, arc_id, amount, source_id, source)
@@ -187,7 +195,7 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return
-	var steps := Damage.apply(target, loc, amount, hl["rear"])
+	var steps := Damage.apply(target, loc, amount, hl["rear"], attack)
 	emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 			"source": source, "amount": amount, "loc": loc, "rear": hl["rear"],
 			"steps": steps, "covered": false, "tac": hl["tac"]})

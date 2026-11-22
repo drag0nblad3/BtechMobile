@@ -41,6 +41,9 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			var w := u.weapons[slot.ref]
 			if AutocannonCrit.absorb(w):
 				return "%s hit: autocannons survive the first critical hit" % slot.name
+			if PpcCapacitor.explodes(state, u, w):
+				PpcCapacitor.explode(state, dice, emit, u, w, loc)
+				return "%s and its charged capacitor explode" % slot.name
 			w.destroyed = true
 			if w.def.explodes and not w.exploded:
 				ComponentExplosion.explode(state, dice, emit, u, w, loc)
@@ -63,6 +66,14 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 		CritSlot.Kind.ARTEMIS:
 			u.weapons[slot.ref].artemis_lost = true
 			return "Artemis IV fire control destroyed: no cluster bonus"
+		CritSlot.Kind.CAPACITOR:
+			var cw := u.weapons[slot.ref]
+			if PpcCapacitor.explodes(state, u, cw):
+				PpcCapacitor.explode(state, dice, emit, u, cw, loc)
+				return "charged PPC capacitor explodes, wrecking its PPC"
+			cw.capacitor_lost = true
+			cw.cap_charged = false
+			return "PPC capacitor destroyed: the PPC fires normally"
 		CritSlot.Kind.APOLLO:
 			u.weapons[slot.ref].apollo_lost = true
 			return "Apollo fire control destroyed: the MRM's -1 cluster penalty is back"

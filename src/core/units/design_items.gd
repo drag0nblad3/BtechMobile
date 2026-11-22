@@ -2,7 +2,7 @@ class_name DesignItems
 extends RefCounted
 ## Reads one equipment entry of a design file into a UnitDef.
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis",
-## "<MRM>+apollo" (Apollo),
+## "<MRM>+apollo" (Apollo), "<PPC>+capacitor" (PpcCapacitor),
 ## "<weapon id>~N" (its last N slots sit in the next location in, as on
 ## official sheets: an arm's AC/20 spilling into the side torso),
 ## "ammo:<weapon id>", "ammo:<weapon id>:cluster" (or ":narc"; ":half" for
@@ -13,6 +13,11 @@ extends RefCounted
 ## "a_pod", "tag", "c_tag", "c_light_tag" (InertGear, Tag), "case2" (CASE II).
 ## In the file, "<item>*N" repeats an item N times.
 
+## Bulky slots: structure, armor and myomer that only take up space.
+const BULK := ["endo_steel", "ferro_fibrous", "light_ferro", "heavy_ferro", "tsm", "endo_composite",
+		"ferro_lamellor", "reflective", "reactive", "ballistic_reinforced", "anti_penetrative",
+		"impact_resistant", "heat_dissipating", "stealth"]
+
 ## One-per-'Mech items stored as a location: item -> UnitDef property.
 const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
 		"supercharger": "supercharger_loc", "c3_master": "c3_master_loc", "c3_slave": "c3_slave_loc",
@@ -21,7 +26,7 @@ const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "
 
 
 static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void:
-	if item in ["endo_steel", "ferro_fibrous", "light_ferro", "heavy_ferro", "tsm"]:
+	if item in BULK:
 		_append(def.bulk_slots, loc, item)
 	elif InertGear.KINDS.has(item):
 		def.inert.append({"kind": item, "loc": loc})
@@ -52,9 +57,10 @@ static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void
 		var spill := item.split("~")
 		var artemis := spill[0].ends_with("+artemis")
 		var apollo := spill[0].ends_with("+apollo")
-		var parts := spill[0].trim_suffix("+artemis").trim_suffix("+apollo").split("@")
+		var cap := spill[0].ends_with("+capacitor")
+		var parts := spill[0].trim_suffix("+artemis").trim_suffix("+apollo").trim_suffix("+capacitor").split("@")
 		def.weapon_mounts.append({"weapon": _weapon(def, weapons, parts[0]), "loc": loc,
-				"rear": parts.size() > 1, "artemis": artemis, "apollo": apollo, "spill": int(spill[1]) if spill.size() > 1 else 0})
+				"rear": parts.size() > 1, "artemis": artemis, "apollo": apollo, "capacitor": cap, "spill": int(spill[1]) if spill.size() > 1 else 0})
 
 
 static func _weapon(def: UnitDef, weapons: WeaponDb, id: String) -> WeaponDef:

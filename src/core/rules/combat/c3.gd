@@ -10,7 +10,7 @@ extends RefCounted
 ## the network gained (never stacking). C3 adds to Battle Value (p. 222).
 ## TODO(rules): networks are formed for you (first Master, then up to three
 ## Slaves, or Masters if no Slaves); company networks, submerged computers,
-## stealth and the Master's TAG function are not modelled.
+## and the Master's TAG function are not modelled; stealth armor turns C3 off (Stealth).
 ## Construction (Master 5 t / 5 slots, Slave 1 t / 1 slot) is general knowledge.
 
 const MASTER_TONS := 5.0
@@ -29,7 +29,7 @@ static func is_master(def: UnitDef) -> bool:
 
 ## Its C3 computer is working this turn.
 static func working(u: Unit) -> bool:
-	if not has(u.def) or u.destroyed or u.shutdown:
+	if not has(u.def) or u.destroyed or u.shutdown or Stealth.active(u):  # no C3 under stealth (p. 202)
 		return false
 	var loc := u.def.c3_master_loc if is_master(u.def) else (u.def.c3i_loc if C3i.has(u.def) else u.def.c3_slave_loc)
 	if u.is_location_out(loc):

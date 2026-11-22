@@ -1,0 +1,70 @@
+{
+ "id": "clint_clnt34t",
+ "name": "Clint",
+ "model": "CLNT-3-4T",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "reflective",
+ "armor": {
+  "LA": 9,
+  "RA": 9,
+  "LT": 13,
+  "RT": 13,
+  "CT": 15,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "RA": [
+   "lb5x_ac"
+  ],
+  "LT": [
+   "jump_jet",
+   "x_pulse_medium_laser",
+   "reflective*7"
+  ],
+  "RT": [
+   "heat_sink",
+   "jump_jet",
+   "ammo:lb5x_ac",
+   "case2",
+   "reflective*3"
+  ],
+  "CT": [
+   "x_pulse_medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9462,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 31/Clint CLNT-3 4T.mtf",
+  "published": "RG31,RSFP:MERCS",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Clint CLNT-3-4T (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 1157
+ },
+ "bv": 1157,
+ "sprite": "clint",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Medium X-Pulse Lasers, LB 5-X AC; walks 6, runs 9, jumps 6."
+}

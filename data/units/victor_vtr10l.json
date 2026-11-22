@@ -1,0 +1,84 @@
+{
+ "id": "victor_vtr10l",
+ "name": "Victor",
+ "model": "VTR-10L",
+ "tonnage": 80,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "stealth",
+ "armor": {
+  "LA": 26,
+  "RA": 26,
+  "LT": 26,
+  "RT": 26,
+  "CT": 38,
+  "HD": 9,
+  "LL": 34,
+  "RL": 34
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser*2",
+   "endo_steel*4",
+   "stealth*2"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "endo_steel",
+   "stealth*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "guardian_ecm",
+   "endo_steel*6",
+   "stealth*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "srm6",
+   "ammo:srm6",
+   "ammo:gauss_rifle*3",
+   "case",
+   "endo_steel",
+   "stealth*2"
+  ],
+  "CT": [
+   "er_medium_laser",
+   "endo_steel"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "stealth*2"
+  ],
+  "RL": [
+   "stealth*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3405,
+  "megamek": "data/mekfiles/meks/3050U/Victor VTR-10L.mtf",
+  "published": "RS:3050Uu-I",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 2279
+ },
+ "bv": 2279,
+ "sprite": "victor",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 ER Medium Lasers, Gauss Rifle, SRM 6; walks 4, runs 6, jumps 4."
+}

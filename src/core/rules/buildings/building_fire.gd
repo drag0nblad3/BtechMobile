@@ -27,7 +27,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 	if tile == null:
 		th.impossible = "No building there"
 		return th
-	if w.def.ams or not attacker.can_fire(w):
+	if w.def.ams or not attacker.can_fire(w) or w.mode == PpcCapacitor.CHARGE:
 		th.impossible = "%s can't fire at a building" % w.def.name
 		return th
 	if ProneFire.blocked(attacker, w) != "":
@@ -82,6 +82,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		return
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
+	var extra := PpcCapacitor.discharge(attacker, w)
 	data["roll"] = dice.roll_2d6()
 	if RotaryAc.check_jam(w, shots, data["roll"]):
 		data["jammed"] = true
@@ -90,7 +91,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		Fire.add_heat(state, c, w.def.damage)
 		return
-	var dmg := w.def.damage * shots  # every shot or pellet finds a building
+	var dmg := w.def.damage * shots + extra  # every shot or pellet finds a building
 	if data["hit"] and w.def.is_cluster():
 		data["missiles"] = w.def.missiles  # every missile finds a building
 		dmg = data["missiles"] * w.def.damage

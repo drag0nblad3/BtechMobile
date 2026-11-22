@@ -13,6 +13,9 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 	if d["missiles"] > 0:
 		var unit := "shots" if d.get("mode", "") == WeaponModes.ULTRA or d.get("shots", 1) > 1 else (
 				"pellets" if d.get("mode", "") == WeaponModes.CLUSTER else "missiles")
+		var wid := String(d.get("weapon_id", ""))
+		if wid.begins_with("ba_") and not wid.contains("srm"):
+			unit = "troopers' shots"  # a squad attack: one shot per trooper (BaFire)
 		res += ", %d %s" % [d["missiles"], unit]
 		if d.get("cluster_bonus", 0) > 0 and level != ExplainLevel.OFF:
 			res += " (%s +%d)" % ["Narc" if d.get("narc_homing", false) else
@@ -23,6 +26,8 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 			res += " (a Streak only fires once it locks on, so every missile hits: no cluster roll)"
 		if d.has("artemis_blocked") and level != ExplainLevel.OFF:
 			res += " (no Artemis bonus: %s)" % d["artemis_blocked"]
+	if d.get("capacitor", false) and level != ExplainLevel.OFF:
+		res += " (charged capacitor: +%d damage, +%d heat)" % [PpcCapacitor.DAMAGE, PpcCapacitor.HEAT]
 	if d.has("ams_roll"):
 		res += "; anti-missile fire %s the %s (1D6: %d, 4-6 destroys it)" % [
 				"shoots down" if d.get("pod_shot_down", false) else "misses", d.get("ams_target", "Narc pod"), d["ams_roll"]] \

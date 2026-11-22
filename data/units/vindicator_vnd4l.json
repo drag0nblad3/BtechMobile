@@ -1,0 +1,80 @@
+{
+ "id": "vindicator_vnd4l",
+ "name": "Vindicator",
+ "model": "VND-4L",
+ "tonnage": 45,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 13,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "stealth",
+ "armor": {
+  "LA": 14,
+  "RA": 14,
+  "LT": 16,
+  "RT": 16,
+  "CT": 18,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "stealth*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "er_ppc",
+   "stealth*2"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "lrm5",
+   "guardian_ecm",
+   "stealth*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "ammo:lrm5",
+   "heat_sink",
+   "case",
+   "stealth*2"
+  ],
+  "CT": [
+   "jump_jet",
+   "er_medium_laser"
+  ],
+  "HD": [
+   "medium_pulse_laser"
+  ],
+  "LL": [
+   "stealth*2"
+  ],
+  "RL": [
+   "stealth*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3429,
+  "megamek": "data/mekfiles/meks/3050U/Vindicator VND-4L.mtf",
+  "published": "RS:3050Uu-I",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1411
+ },
+ "bv": 1411,
+ "sprite": "vindicator",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. ER PPC, LRM 5, ER Medium Laser, Medium Pulse Laser; walks 5, runs 8, jumps 5."
+}

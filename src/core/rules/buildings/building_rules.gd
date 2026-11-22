@@ -99,14 +99,14 @@ static func inside_mod(map: BattleMap, u: Unit) -> int:
 	var tile := map.get_tile(u.coord)
 	if tile == null or tile.building == null or tile.building.type.civilian or u.on_roof:
 		return 0
-	return 2 if tile.building.height >= (1 if u.prone or u.asset != null or u.vehicle != null else 2) else 0
+	return 2 if tile.building.height >= (1 if u.prone or u.def.is_support() else 2) else 0
 
 
 ## A standing 'Mech half inside a level 1 'Mech-scale building.
 static func half_inside(map: BattleMap, u: Unit) -> bool:
 	var tile := map.get_tile(u.coord)
 	return tile != null and tile.building != null and not tile.building.type.civilian \
-			and tile.building.height == 1 and not u.prone and not u.on_roof and u.asset == null and u.vehicle == null
+			and tile.building.height == 1 and not u.prone and not u.on_roof and not u.def.is_support()
 
 
 ## The hex comes down: rubble for 'Mech-scale buildings (and civilian ones
@@ -136,4 +136,4 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 	if inside == null or inside.destroyed:
 		return
 	for p in Damage.clusters(dmg, 5):
-		WeaponFire.hit_with(state, dice, emit, inside, FiringArc.FRONT, p, inside.id, "falling building")
+		WeaponFire.hit_with(state, dice, emit, inside, FiringArc.FRONT, p, inside.id, "falling building", {}, Hex.INVALID, ["collapse"])

@@ -15,6 +15,8 @@ static func weapons(state: GameState, attacker: Unit, options: Array, shots: Dic
 			extra = "  (aimed at %s)" % target_name(state, aim)
 		elif o["to_hit"].possible():
 			extra = "  avg %.1f, %d heat" % [Advisor.expected_damage(w, o["to_hit"]), w.def.heat * WeaponModes.shots(w)]
+			if w.cap_charged:
+				extra += " (charged: +%d damage, +%d heat)" % [PpcCapacitor.DAMAGE, PpcCapacitor.HEAT]
 		var row := {"key": o["index"], "label": w.label(), "to_hit": o["to_hit"], "extra": extra}
 		if WeaponModes.modes(w).size() > 1:
 			row["mode"] = mode_text(w)
@@ -32,6 +34,8 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Narc-equipped missiles (home on Narc pods)"
 		RotaryAc.UNJAM:
 			return "Clear the jam (Gunnery +3, stand or walk)"
+		PpcCapacitor.CHARGE:
+			return "Charge the capacitor instead (5 heat a turn; next shot +5 damage)"
 	if not w.def.munitions.is_empty():
 		return Atm.mode_text(w)
 	if w.def.rotary:
@@ -39,6 +43,8 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Jammed: tap to try clearing it"
 		var n := WeaponModes.shots(w)
 		return "1 shot" if n == 1 else "%d shots (jams on %d or less)" % [n, RotaryAc.jams_on(n)]
+	if w.capacitor:
+		return "Fire (capacitor empty)"
 	return "Single shot" if w.def.rapid > 1 else "Standard ammo"
 
 

@@ -52,6 +52,11 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return _declared(s, d, level)
 		GameEvent.WEAPON_FIRED:
 			return WeaponText.fired(s, d, level, seen)
+		GameEvent.CAPACITOR:
+			var t := "%s charges the capacitor on its %s." % [_u(s, d), d["weapon"]]
+			if level == ExplainLevel.FULL:
+				t += " Its next shot does +%d damage; holding the charge costs %d heat a turn, and a critical hit on it while charged makes it explode." % [PpcCapacitor.DAMAGE, PpcCapacitor.HEAT]
+			return t
 		GameEvent.TAG:
 			return TagText.describe(s, d, level, seen)
 		GameEvent.UNJAM:
@@ -76,6 +81,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.DAMAGE:
 			if d.get("vehicle", false):
 				return VehicleText.damage(s, d, level)
+			if d.get("ba", false):
+				return BaText.damage(s, d, level)
 			return AssetText.damage(s, d, level) if d.get("asset", false) else DamageText.damage(s, d, level)
 		GameEvent.TRANSPORT:
 			return AssetText.transport(s, d, level)
@@ -106,7 +113,7 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 				t += " Next physical phase it can swing it for 1 damage per 5 tons, and the target must make a piloting roll." + (
 						" A tree breaks after one hit." if d["club"] == "tree" else "")
 			return t
-		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN, GameEvent.HEAT_SINKS_SWITCHED:
+		GameEvent.HEAT, GameEvent.HEAT_ROLL, GameEvent.SHUTDOWN, GameEvent.HEAT_SINKS_SWITCHED, GameEvent.STEALTH:
 			return HeatText.describe(e, s, level)
 		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.MASC, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
 			return PilotText.describe(e, s, level, seen)

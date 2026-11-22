@@ -6,6 +6,9 @@ extends RefCounted
 
 
 static func build(def: UnitDef, side: int) -> Node3D:
+	var voxel := VoxelAsset.build(def, side)
+	if voxel != null:
+		return voxel
 	var root := Node3D.new()
 	root.name = "PlaceholderAsset"
 	var c := def.asset
@@ -23,6 +26,15 @@ static func build(def: UnitDef, side: int) -> Node3D:
 		_box(root, Vector3(0.08, 0.03, 1.2), Vector3(0, 1.08, 0), dark)
 	else:
 		_vehicle(root, body, dark, c.motive, not c.has("NOTUR"))
+	return root
+
+
+## A battle armor squad (UnitDef.battle_armor): one suit per trooper.
+static func build_squad(def: UnitDef, side: int) -> Node3D:
+	var root := Node3D.new()
+	root.name = "PlaceholderSquad"
+	var body := PlaceholderMech._mat(PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()])
+	_squad(root, body, PlaceholderMech._mat(Color(0.18, 0.18, 0.2)), def.battle_armor.troopers, true)
 	return root
 
 

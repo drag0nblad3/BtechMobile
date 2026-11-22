@@ -31,7 +31,7 @@ static func working(u: Unit) -> bool:
 static func clears(state: GameState, attacker: Unit, target: Unit) -> bool:
 	return target != null and working(attacker) \
 			and Hex.distance(attacker.coord, target.coord) <= range_of(attacker.def) \
-			and not Ecm.hostile_at(state, attacker.side, attacker.coord)
+			and not Ecm.jammed(state, attacker)
 
 
 ## Line of sight with the to-hit points of intervening smoke/fog removed when

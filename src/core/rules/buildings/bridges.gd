@@ -110,7 +110,7 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 			Fall.fall(state, dice, emit, u, maxi(0, b.level - tile.floor_level()), "the bridge gave way")
 		else:
 			for p in Damage.clusters(dmg, 5):
-				WeaponFire.hit_with(state, dice, emit, u, FiringArc.FRONT, p, u.id, "falling bridge")
+				WeaponFire.hit_with(state, dice, emit, u, FiringArc.FRONT, p, u.id, "falling bridge", {}, Hex.INVALID, ["collapse"])
 	var standing: Array[MapTile] = []
 	for c: Vector2i in b.span:
 		var t := state.map.get_tile(c)

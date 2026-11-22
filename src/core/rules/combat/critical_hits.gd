@@ -25,11 +25,14 @@ static func after_damage(state: GameState, dice: Dice, emit: Callable, u: Unit,
 	for i in steps.size():
 		var st: Dictionary = steps[i]
 		var loc: int = st["loc"]
-		var first_tac := tac and i == 0
+		var armor_tac: Variant = st.get("tac_mod", 0)  # special armor (ArmorTypes)
+		var first_tac := tac and i == 0 and armor_tac != null
 		if checked.has(loc) or (not st["breached"] and not first_tac) or u.destroyed:
 			continue
 		checked[loc] = true
 		var mod := -1 if st.get("case2", false) else 0  # CASE II (p. 91)
+		if first_tac and not st["breached"]:
+			mod += int(armor_tac)
 		if st["destroyed"]:
 			if _has_explosive(u, loc):
 				roll_location(state, dice, emit, u, loc, true, mod)

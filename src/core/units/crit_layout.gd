@@ -27,6 +27,8 @@ static func build(def: UnitDef) -> Array:
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.ARTEMIS, "Artemis IV FCS", i), def)
 		if m.get("apollo", false):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.APOLLO, "Apollo FCS", i), def)
+		if m.get("capacitor", false):
+			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.CAPACITOR, "PPC Capacitor", i), def)
 	for i in def.ammo_mounts.size():
 		var a: Dictionary = def.ammo_mounts[i]
 		var aw: WeaponDef = a["weapon"]
@@ -86,7 +88,10 @@ static func build(def: UnitDef) -> Array:
 	return out
 
 
-const BULK_NAMES := {"endo_steel": "Endo Steel", "ferro_fibrous": "Ferro-Fibrous", "light_ferro": "Light Ferro-Fibrous", "heavy_ferro": "Heavy Ferro-Fibrous", "tsm": "Triple-Strength Myomer"}
+const BULK_NAMES := {"endo_steel": "Endo Steel", "ferro_fibrous": "Ferro-Fibrous", "light_ferro": "Light Ferro-Fibrous", "heavy_ferro": "Heavy Ferro-Fibrous", "tsm": "Triple-Strength Myomer",
+		"endo_composite": "Endo-Composite", "ferro_lamellor": "Ferro-Lamellor", "reflective": "Reflective",
+		"reactive": "Reactive", "ballistic_reinforced": "Ballistic-Reinforced", "anti_penetrative": "Anti-Penetrative Ablation",
+		"impact_resistant": "Impact-Resistant", "heat_dissipating": "Heat-Dissipating", "stealth": "Stealth"}
 
 
 static func _fixed(def: UnitDef, loc: int) -> Array[CritSlot]:

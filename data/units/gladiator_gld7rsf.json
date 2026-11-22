@@ -1,0 +1,73 @@
+{
+ "id": "gladiator_gld7rsf",
+ "name": "Gladiator",
+ "model": "GLD-7R/SF",
+ "tonnage": 55,
+ "walk_mp": 4,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "gyro_type": "xl",
+ "armor_type": "hardened",
+ "clan_parts": {
+  "case": true
+ },
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 15,
+  "RT": 15,
+  "CT": 19,
+  "HD": 9,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "equipment": {
+  "LA": [
+   "c_improved_heavy_medium_laser*2",
+   "case2",
+   "tsm*3"
+  ],
+  "RA": [
+   "c_lb5x_ac",
+   "tsm*3"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "jump_jet*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "c_srm6",
+   "ammo:c_srm6*2",
+   "ammo:c_lb5x_ac",
+   "ammo:c_lb5x_ac:cluster",
+   "case2"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "source": {
+  "mul_id": 9540,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 15/Gladiator GLD-7R_SF.mtf",
+  "published": "ShrapRS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Gladiator GLD-7R/SF (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1748
+ },
+ "bv": 1748,
+ "sprite": "gladiator",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Improved Heavy Medium Lasers, LB 5-X AC, SRM 6; walks 4, runs 6, jumps 6."
+}

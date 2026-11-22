@@ -32,8 +32,8 @@ static func option(state: GameState, a: Unit, t: Unit, kind: String) -> Dictiona
 		th.impossible = "No enemy target"
 	elif a.asset != null or t.asset != null:
 		th.impossible = "Assets can't charge or be charged (p. 145)"
-	elif a.vehicle != null or t.vehicle != null:
-		th.impossible = "Charges by or against vehicles aren't in the game yet"  # TODO(rules)
+	elif a.vehicle != null or t.vehicle != null or a.ba != null or t.ba != null:
+		th.impossible = "Charges by or against vehicles and battle armor aren't in the game yet"  # TODO(rules)
 	elif Hex.distance(a.coord, t.coord) != 1 or FiringArc.wedge(a.coord, a.facing, t.coord) != 0:
 		th.impossible = "The target must be in the hex directly in front of you"
 	elif kind == "charge" and a.move_mode == MoveMode.Kind.JUMP:

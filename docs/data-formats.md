@@ -87,7 +87,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 ```
 - Location codes: `HD CT LT RT LA RA LL RL`. Internal structure comes from tonnage.
 - Equipment items: a weapon id (`@rear` for rear-firing, `+artemis` for a launcher with
-  Artemis IV, `+apollo` for an MRM with Apollo FCS, 1 t, 1 slot), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
+  Artemis IV, `+apollo` for an MRM with Apollo FCS, `+capacitor` for a PPC with a PPC capacitor, each 1 t, 1 slot), `ammo:<weapon id>` (one ton; `ammo:<id>:cluster` for LB-X cluster rounds),
   `heat_sink`, `jump_jet`, `ams` (anti-missile system; give it `ammo:ams`), `targeting_computer` (its slots are sized automatically), `guardian_ecm` (Guardian ECM suite, 1.5 t, 2 slots), `masc` (MASC; tons and slots sized automatically: tonnage / 20, Clan / 25), `c3_master` (C3 Master, 5 t, 5 slots), `c3_slave` (C3 Slave, 1 t, 1 slot), `beagle_probe` / `c_active_probe` / `c_light_active_probe` (`ActiveProbe`), `a_pod` (`InertGear`, no effect yet), `tag` / `c_tag` (1 t) / `c_light_tag` (0.5 t) (`Tag`, 1 slot), `light_ferro` / `heavy_ferro` (bulky armor slots; set `"armor_type"` too; also `"engine_type": "light"|"compact"` and `"gyro_type": "xl"|"compact"|"heavy_duty"` on the design), `<weapon>~N` (its last N slots spill into the next location in), `ammo:<id>:half` (half-ton bin), `supercharger` (1 slot, sized automatically: engine tons / 10), `tsm` (triple-strength myomer: list six `tsm` slots, e.g. `"tsm*3"`; no weight). They fill free critical slots in the order listed, after the
   engine, gyro, cockpit and actuators (see `CritLayout`).
 - `heat_sinks` is the total. The first 10 are inside the engine and weigh nothing; an engine of
@@ -96,7 +96,7 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   3 slots each). A `case` item puts CASE in that location, `case2` CASE II. `c3bs_master` / `c3bs_slave` are boosted C3; `"jump_jet_type": "improved"` makes every `jump_jet` an improved jet (2 slots). `hatchet` or `sword` in an arm mounts that physical weapon.
   `"engine_type": "xl"` puts 3 engine slots in each side torso; `"structure_type": "endo_steel"`
   and `"armor_type": "ferro_fibrous"` need their bulky slots listed as `endo_steel` /
-  `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). A test checks heat sinks, jump jets and armor maximums.
+  `ferro_fibrous` items (14 each for Inner Sphere, 7 for Clan; `"endo_steel*7"` repeats an item). Other `"structure_type"` values: `endo_composite` (bulky `endo_composite` slots), `composite`, `reinforced` (`StructureTypes`). Special `"armor_type"` values: `hardened`, `ferro_lamellor`, `reflective`, `reactive`, `ballistic_reinforced`, `anti_penetrative`, `impact_resistant`, `heat_dissipating` (`ArmorTypes`), `stealth` (`Stealth`; needs an ECM suite), with bulky slots listed under the same item name. A test checks heat sinks, jump jets and armor maximums.
 - `"quad": true`: a four-legged 'Mech. Its armor and equipment use `FLL`, `FRL`, `RLL`, `RRL`
   for the legs (the front legs live in the arm slots; `LA`/`RA` also work). Every leg has 6 slots
   and leg actuators; structure for the front legs comes from the leg column.
@@ -118,6 +118,19 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
+
+## `data/battle_armor/<id>.json`
+A battle armor squad's record sheet (`BaSpec`). Each weapon is a `WeaponDef` dictionary for one
+trooper's weapon; the squad fires it as one attack with a shot (or `missiles`) per living trooper.
+```json
+{"id": "elemental_ba_laser", "name": "Elemental Battle Armor", "model": "[Laser](Sqd5)", "tonnage": 1,
+ "tech_base": "clan", "battle_armor": {"troopers": 5, "armor": 10, "ground_mp": 1, "jump_mp": 3, "claw": true,
+ "weapons": [{"id": "small_laser", "name": "Small Laser", "type": "energy", "damage": 3, "short": 1, "medium": 2, "long": 3},
+  {"id": "srm2", "name": "SRM 2", "type": "missile", "damage": 2, "missiles": 2, "short": 3, "medium": 6, "long": 9,
+   "ammo_per_ton": 2, "ammo_explodes": false}]},
+ "source": {"mul_id": 8497, "megamek": "...", "bv": "sheet", "sheet": "..."}, "bv": 447}
+```
+`armor` is per trooper (each trooper also takes 1 more point to kill); `ammo_per_ton` is the squad's volleys.
 
 ## `data/scenarios/<id>.json`
 ```json

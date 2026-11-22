@@ -20,7 +20,7 @@ static func place(state: GameState, units: Array[Unit], zones: Array) -> void:
 		for i in groups[z].size():
 			var u: Unit = groups[z][i]
 			u.coord = spots[i] if i < spots.size() else u.coord
-			if u.asset != null or u.vehicle != null:
+			if u.def.is_support():
 				u.coord = _asset_spot(state, u)
 			if u.coord != centre:
 				u.facing = Hex.direction_to(u.coord, centre)
@@ -73,6 +73,8 @@ static func _asset_spot(state: GameState, u: Unit) -> Vector2i:
 static func _may_be(u: Unit, tile: MapTile) -> bool:
 	if u.vehicle != null:
 		return VehicleMoveCost.may_enter(u.def.vehicle.motive, tile)
+	if u.ba != null:
+		return BaMoveCost.may_enter(tile)
 	return AssetMoveCost.may_enter(u.asset.card, tile)
 
 

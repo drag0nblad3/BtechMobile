@@ -7,10 +7,12 @@ const DEFAULT_DIR := "res://data/units"
 ## Battlefield Support Asset cards (vehicles, infantry): data/assets/.
 const ASSET_DIR := "res://data/assets"
 const VEHICLE_DIR := "res://data/vehicles"
+const BA_DIR := "res://data/battle_armor"
 
 var by_id: Dictionary = {}  # String -> UnitDef
 var assets: Dictionary = {}  # String -> UnitDef with an AssetCard
 var vehicles: Dictionary = {}  # String -> UnitDef with a VehicleSpec
+var battle_armor: Dictionary = {}  # String -> UnitDef with a BaSpec
 var weapons: WeaponDb
 
 
@@ -24,6 +26,7 @@ static func load_dir(dir_path: String = DEFAULT_DIR, weapon_db: WeaponDb = null)
 	if dir_path == DEFAULT_DIR:
 		db.add_assets(ASSET_DIR)
 		db.add_vehicles(VEHICLE_DIR)
+		db.add_battle_armor(BA_DIR)
 	return db
 
 
@@ -39,6 +42,22 @@ func add_vehicles(dir_path: String) -> void:
 	for path in JsonFile.list_dir(dir_path):
 		var def := UnitDef.from_dict(JsonFile.read(path), weapons)
 		vehicles[def.id] = def
+
+
+func add_battle_armor(dir_path: String) -> void:
+	for path in JsonFile.list_dir(dir_path):
+		var def := UnitDef.from_dict(JsonFile.read(path), weapons)
+		battle_armor[def.id] = def
+
+
+## Battle armor designs: Inner Sphere first, then by BV.
+func sorted_battle_armor() -> Array[UnitDef]:
+	var out: Array[UnitDef] = []
+	for d: UnitDef in battle_armor.values():
+		out.append(d)
+	out.sort_custom(func(a: UnitDef, b: UnitDef):
+			return a.bv < b.bv if a.is_clan() == b.is_clan() else not a.is_clan())
+	return out
 
 
 ## Asset designs sorted by cost, then name.
@@ -62,7 +81,7 @@ func sorted_vehicles() -> Array[UnitDef]:
 
 
 func get_def(id: String) -> UnitDef:
-	return by_id.get(id, assets.get(id, vehicles.get(id)))
+	return by_id.get(id, assets.get(id, vehicles.get(id, battle_armor.get(id))))
 
 
 ## Designs sorted light to heavy, then by name.
