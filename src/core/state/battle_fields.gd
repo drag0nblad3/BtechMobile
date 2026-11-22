@@ -34,7 +34,7 @@ static func names(o: Object) -> Array:
 				"sensor_hits", "stabilizers", "turret_locked", "turret_lost",
 				"crew_stunned", "commander_hit", "driver_hit", "engine_hit"]
 	if o is BaState:
-		return ["troopers", "carried_by", "deployed_turn"]
+		return ["troopers", "carried_by", "deployed_turn", "swarming"]
 	if o is VehicleSpec:
 		return ["motive", "cruise_mp", "engine", "turret"]
 	if o is AssetCard:

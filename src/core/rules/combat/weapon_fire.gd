@@ -30,6 +30,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaLegAttack.is_leg_attack(w):
 		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if BaSwarm.is_swarm(w):
+		BaSwarm.resolve(state, dice, emit, attacker, w, target, th)
+		return
 	var kind := WeaponModes.ammo_kind(w)
 	var shots := take_shots(attacker, w)
 	if shots == 0:
@@ -129,6 +132,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		if th.legs_only:
 			hl = HitTable.roll_kick(dice, arc_id, target.def.quad)
 			hl["no_cover"] = true
+		if BaSwarm.on(attacker) == target.id:
+			hl = BaSwarm.location(dice, target)
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex, ArmorTypes.weapon_attack(w.def))
 
 
