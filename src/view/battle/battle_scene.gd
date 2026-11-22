@@ -109,6 +109,13 @@ func _watch_replay() -> void:
 		hud.set_tip("Could not save the replay.")
 
 
+func _open_forensics() -> void:
+	if BattleSave.save_replay(recorder.frames):
+		get_tree().change_scene_to_file("res://scenes/battle_forensics.tscn")
+	else:
+		hud.set_tip("Could not archive battle for analysis.")
+
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
 		_autosave()
@@ -199,6 +206,7 @@ func _wire() -> void:
 	hud.explain_cycled.connect(_cycle_explain)
 	hud.save_battle.connect(_save_battle)
 	hud.watch_replay.connect(_watch_replay)
+	hud.battle_forensics.connect(_open_forensics)
 	hud.new_battle.connect(func():
 			BattleLaunch.open_training = training >= 0
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))

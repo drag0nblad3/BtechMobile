@@ -29,6 +29,7 @@ signal flip_arms
 signal new_battle
 signal save_battle
 signal watch_replay
+signal battle_forensics
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 68)
@@ -152,6 +153,7 @@ func _build_game_over(parent: Control) -> void:
 	game_over_detail = _label(game_over_box, FONT_SIZE)
 	game_over_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	game_over_detail.custom_minimum_size.x = 760  # training debriefs run long
+	_button(game_over_box, "Analyze Battle", battle_forensics)
 	_button(game_over_box, "New Battle", new_battle)
 
 

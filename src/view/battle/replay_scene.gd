@@ -33,7 +33,8 @@ func _ready() -> void:
 	touch.tilted.connect(func(px: float): _rig.tilt(px * 0.006))
 	_make_hud()
 	if not _frames.is_empty():
-		_show_frame(0)
+		_show_frame(clampi(BattleLaunch.replay_focus, 0, _frames.size() - 1))
+		BattleLaunch.replay_focus = -1
 	else:
 		_status.text = "No recorded battle yet."
 
@@ -57,7 +58,13 @@ func _make_hud() -> void:
 	_play_button = _button(row, "Play", _toggle_play)
 	_next = _button(row, ">", func(): _show_frame(_index + 1))
 	_button(row, ">|", func(): _show_frame(_frames.size() - 1))
+	_button(row, "Forensics", _open_forensics)
 	_button(row, "Exit", func(): get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
+
+
+func _open_forensics() -> void:
+	BattleLaunch.replay_focus = _index
+	get_tree().change_scene_to_file("res://scenes/battle_forensics.tscn")
 
 
 func _button(row: HBoxContainer, label: String, action: Callable) -> Button:
