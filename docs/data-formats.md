@@ -58,6 +58,7 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
 - `to_hit_by_range: [s, m, l]` (VSP lasers) replaces `to_hit` by range bracket.
 - `large_missile: true` (Thunderbolt): one missile, no cluster roll; AMS rolls to destroy it.
 - Electronics items: `angel_ecm`, `watchdog_ecm` (ECM + 5-hex probe), `c3i` (improved C3, 2 slots).
+- `"cockpit_type": "small"` (Cockpit): 2 t, two free head slots, +1 piloting.
 - `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
