@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Low, wide crab-like upper carapace, paired broad laser housings and articulated offset ankles; 7 jump-jet nozzles in the official LT/RT/CT distribution.\n2026-11-22 topology correction: one rooted rig, independently constructed upper/lower shin and arm masses; distinct source-level moving components. Not final silhouette sign-off.",
+  "notes": "Low, wide crab-like upper carapace, paired broad laser housings and articulated offset ankles; 7 jump-jet nozzles in the official LT/RT/CT distribution.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
   "parts": [
     {
       "name": "ct",
@@ -590,11 +590,11 @@
                   ],
                   [
                     -10.9,
-                    -5.2
+                    -5.202
                   ],
                   [
                     -10.9,
-                    0.8
+                    0.804
                   ],
                   [
                     -12.07,
@@ -606,11 +606,11 @@
                   ],
                   [
                     -18.7,
-                    0.8
+                    0.804
                   ],
                   [
                     -18.7,
-                    -5.2
+                    -5.202
                   ]
                 ]
               },
@@ -698,7 +698,164 @@
         22,
         0
       ],
-      "shapes": []
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 17,
+                "polygon": [
+                  [
+                    -17.38,
+                    -5.7
+                  ],
+                  [
+                    -12.62,
+                    -5.7
+                  ],
+                  [
+                    -11.6,
+                    -4.3
+                  ],
+                  [
+                    -11.6,
+                    0.9
+                  ],
+                  [
+                    -12.62,
+                    2.3
+                  ],
+                  [
+                    -17.38,
+                    2.3
+                  ],
+                  [
+                    -18.4,
+                    0.9
+                  ],
+                  [
+                    -18.4,
+                    -4.3
+                  ]
+                ]
+              },
+              {
+                "at": 22,
+                "polygon": [
+                  [
+                    -17.87,
+                    -7.3
+                  ],
+                  [
+                    -12.13,
+                    -7.3
+                  ],
+                  [
+                    -10.9,
+                    -5.62
+                  ],
+                  [
+                    -10.9,
+                    0.62
+                  ],
+                  [
+                    -12.13,
+                    2.3
+                  ],
+                  [
+                    -17.87,
+                    2.3
+                  ],
+                  [
+                    -19.1,
+                    0.62
+                  ],
+                  [
+                    -19.1,
+                    -5.62
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -18,
+              20,
+              -9
+            ],
+            [
+              -14,
+              22,
+              -6
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -19,
+              19,
+              -10
+            ],
+            [
+              -16,
+              22,
+              -10
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              -17,
+              21,
+              -10
+            ],
+            [
+              -16,
+              22,
+              -7
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -17,
+              17,
+              -3
+            ],
+            [
+              -15,
+              19,
+              2
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -19,
+              18,
+              -10
+            ],
+            [
+              -19,
+              21,
+              -8
+            ]
+          ],
+          "mat": "gun"
+        }
+      ]
     },
     {
       "name": "ra",
@@ -913,11 +1070,11 @@
                   ],
                   [
                     -2.5,
-                    -1.49
+                    -1.495
                   ],
                   [
                     -2.5,
-                    1.5
+                    1.495
                   ],
                   [
                     -3.25,
@@ -929,11 +1086,11 @@
                   ],
                   [
                     -7.5,
-                    1.5
+                    1.495
                   ],
                   [
                     -7.5,
-                    -1.49
+                    -1.495
                   ]
                 ]
               },
@@ -1006,7 +1163,105 @@
         8,
         0
       ],
-      "shapes": []
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 5,
+                "polygon": [
+                  [
+                    -6.89,
+                    -3
+                  ],
+                  [
+                    -3.11,
+                    -3
+                  ],
+                  [
+                    -2.3,
+                    -2.12
+                  ],
+                  [
+                    -2.3,
+                    1.13
+                  ],
+                  [
+                    -3.11,
+                    2
+                  ],
+                  [
+                    -6.89,
+                    2
+                  ],
+                  [
+                    -7.7,
+                    1.13
+                  ],
+                  [
+                    -7.7,
+                    -2.12
+                  ]
+                ]
+              },
+              {
+                "at": 8,
+                "polygon": [
+                  [
+                    -6.68,
+                    -2.2
+                  ],
+                  [
+                    -3.32,
+                    -2.2
+                  ],
+                  [
+                    -2.6,
+                    -1.43
+                  ],
+                  [
+                    -2.6,
+                    1.43
+                  ],
+                  [
+                    -3.32,
+                    2.2
+                  ],
+                  [
+                    -6.68,
+                    2.2
+                  ],
+                  [
+                    -7.4,
+                    1.43
+                  ],
+                  [
+                    -7.4,
+                    -1.43
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -7,
+              6,
+              -3
+            ],
+            [
+              -5,
+              8,
+              -3
+            ]
+          ],
+          "mat": "plate"
+        }
+      ]
     },
     {
       "name": "ll_tarsus",
