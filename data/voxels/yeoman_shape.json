@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Bespo​​ke sculpt: 50 recessed LRM bores in paired 25-tube side-torso towers; narrow cockpit and independent limb pivots. IWM/TRO and current mini references; do not treat it as a generic humanoid.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
+  "notes": "Bespo​​ke sculpt: 50 recessed LRM bores in paired 25-tube side-torso towers; narrow cockpit and independent limb pivots. IWM/TRO and current mini references; do not treat it as a generic humanoid.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nReference resculpt: replace unsupported large humanoid arms with two-stage short structural launcher braces.",
   "parts": [
     {
       "name": "ct",
@@ -933,71 +933,55 @@
       "name": "la",
       "loc": "LA",
       "pivot": [
-        -14,
-        26,
+        -12,
+        27,
         0
       ],
       "shapes": [
         {
           "box": [
             [
-              -16,
-              23,
+              -12,
+              25,
+              -2
+            ],
+            [
+              -10,
+              28,
+              2
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -15,
+              24,
               -2
             ],
             [
               -12,
-              26,
-              3
+              27,
+              2
             ]
           ],
           "mat": "frame"
         },
         {
-          "shell": [
-            [
-              -17,
-              23,
-              -3
-            ],
-            [
-              -11,
-              25,
-              4
-            ]
-          ],
-          "mat": "armor",
-          "core": "frame"
-        },
-        {
           "box": [
             [
-              -18,
-              23,
+              -15,
+              26,
               -3
             ],
             [
-              -18,
-              25,
-              4
+              -13,
+              28,
+              2
             ]
           ],
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -13,
-              24,
-              -1
-            ],
-            [
-              -11,
-              26,
-              1
-            ]
-          ],
-          "mat": "joint"
         }
       ],
       "parent": "lt",
@@ -1008,8 +992,8 @@
       "parent": "la",
       "loc": "LA",
       "pivot": [
-        -14,
-        22,
+        -15,
+        24,
         0
       ],
       "shapes": [
@@ -1017,62 +1001,46 @@
           "box": [
             [
               -16,
-              20,
-              -2
+              21,
+              -1
             ],
             [
-              -12,
-              22,
-              3
+              -14,
+              25,
+              2
             ]
           ],
           "mat": "frame"
         },
         {
-          "shell": [
+          "box": [
             [
               -17,
-              17,
-              -3
+              21,
+              -2
             ],
             [
-              -11,
-              22,
-              4
+              -15,
+              23,
+              2
             ]
           ],
-          "mat": "armor",
-          "core": "frame"
+          "mat": "armor"
         },
         {
           "box": [
             [
-              -18,
-              22,
-              -3
-            ],
-            [
-              -18,
-              22,
-              4
-            ]
-          ],
-          "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -16,
-              18,
-              -4
+              -15,
+              24,
+              -1
             ],
             [
               -12,
-              20,
-              -4
+              25,
+              1
             ]
           ],
-          "mat": "gun"
+          "mat": "joint"
         }
       ]
     },
