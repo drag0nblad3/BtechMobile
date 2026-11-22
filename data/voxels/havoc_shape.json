@@ -1,6 +1,6 @@
 {
   "id": "havoc_shape",
-  "name": "Havoc HVC-P6 \u2014 low-poly shape",
+  "name": "Havoc HVC-P6 — low-poly shape",
   "unit": "havoc_hvcp6",
   "voxel_size": 0.051991,
   "subdivide": 1,
@@ -2767,6 +2767,22 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "erase": [
+            [
+              5,
+              29,
+              -7
+            ],
+            [
+              5,
+              29,
+              -7
+            ]
+          ]
+        }
       ]
     },
     {
@@ -2803,11 +2819,11 @@
                   ],
                   [
                     2.45657,
-                    0.0
+                    0
                   ],
                   [
                     -3.26772,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -2832,11 +2848,11 @@
                   ],
                   [
                     3.2771,
-                    0.0
+                    0
                   ],
                   [
                     -4.08835,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -2861,11 +2877,11 @@
                   ],
                   [
                     2.45657,
-                    0.0
+                    0
                   ],
                   [
                     -2.44716,
-                    0.0
+                    0
                   ]
                 ]
               }
@@ -4324,5 +4340,6 @@
     }
   ],
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "connectivity_source_patch": "2026-11-22-rig-mass-v2"
 }
