@@ -44,6 +44,8 @@ static func is_special(def: UnitDef) -> bool:
 
 ## The packet after armor that reduces whole hits.
 static func reduce(def: UnitDef, amount: int, attack: Array) -> int:
+	if attack.has("RE") and def.armor_type == "ferro_lamellor":
+		return amount
 	match def.armor_type:
 		"ferro_lamellor":
 			return amount - ceili(amount / 5.0)
@@ -61,6 +63,9 @@ static func reduce(def: UnitDef, amount: int, attack: Array) -> int:
 ## How much of `amount` the armor takes and how many pips it loses:
 ## {used, pips, partial}. `pips` armor left, `partial` odd points carried.
 static func absorb(def: UnitDef, pips: int, partial: int, amount: int, attack: Array) -> Dictionary:
+	if attack.has("RE") and def.armor_type in ["hardened", "reflective"]:
+		var gone := mini(pips, amount)
+		return {"used": gone, "pips": gone, "partial": partial}
 	match def.armor_type:
 		"hardened":
 			var total := amount + partial
