@@ -15,7 +15,7 @@ interior cutouts and narrow structure-role supports conserve fine-grid density.
 | Awesome AWS-8Q | `awesome_aws8q` | `awesome_shape.json` | `awesome.json` | 13,297 | 173,340 |
 | Griffin GRF-1N | `griffin_grf1n` | `griffin_shape.json` | `griffin.json` | 9,871 | 146,340 |
 | Thunderbolt TDR-5S | `thunderbolt_tdr5s` | `thunderbolt_shape.json` | `thunderbolt.json` | 14,985 | 185,085 |
-| Locust LCT-1V | `locust_lct1v` | `locust_shape.json` | `locust.json` | 7,012 | 105,354 |
+| Locust LCT-1V | `locust_lct1v` | `locust_shape.json` | `locust.json` | 5,534 | 86,157 |
 | Centurion CN9-A | `centurion_cn9a` | `centurion_shape.json` | `centurion.json` | 12,490 | 175,473 |
 | BattleMaster BLR-1G | `battlemaster_blr1g` | `battlemaster_shape.json` | `battlemaster.json` | 16,771 | 198,396 |
 
@@ -67,3 +67,12 @@ pass and should be optimized in later passes without changing the primary shape.
 Reference image priorities: Catalyst 2019 *A Game of Armored Combat* plastics and
 Beginner Box Griffin, plus front/three-quarter modern sculpt views. Primary
 reference index: <https://www.sarna.net/wiki/Miniatures_-_Catalyst_Game_Labs>.
+
+### Locust silhouette correction
+
+A later front/side geometry comparison exposed too-upright legs and oversized
+arm-side housings on the LCT-1V. Both resolutions were resculpted with a
+recessed rear knee, forward ankle, narrow sharply bent shin and lower small
+MG pods. The lower ~86k pre-bevel voxel count is intentional for this 20-ton
+chassis: it preserves light weight-class proportions rather than bloating armor
+to meet an arbitrary count. The test budget permits 80k+ for the Locust only.

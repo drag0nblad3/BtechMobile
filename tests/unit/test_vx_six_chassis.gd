@@ -65,7 +65,7 @@ func test_both_lods_have_exclusive_grid_and_all_locations() -> void:
 				# Pre-bevel voxel estimate. Dense assault designs are deliberately
 				# permitted more than lighter scouts, pending mobile profiling.
 				var projected: int = model.cell_count() * scale * scale * scale
-				check(projected >= 95000 and projected <= 210000,
+				check(projected >= (80000 if id == "locust" else 95000) and projected <= 210000,
 						"%s high-LOD projected voxels: %d" % [id, projected])
 
 
