@@ -1,0 +1,6864 @@
+{
+  "model_count": 151,
+  "views": [
+    "front",
+    "side",
+    "top",
+    "quarter"
+  ],
+  "weights": [
+    0.47,
+    0.23,
+    0.2,
+    0.1
+  ],
+  "method": "Scale-normalized 4-view silhouette cosine similarity. These are candidates for blind human review, not demonstrated misidentification.",
+  "critical_models": 59,
+  "high_models": 72,
+  "top_pairs": [
+    {
+      "a": "crockett",
+      "b": "katana",
+      "similarity": 0.9801
+    },
+    {
+      "a": "battleaxe",
+      "b": "ymir",
+      "similarity": 0.9668
+    },
+    {
+      "a": "hel",
+      "b": "starslayer",
+      "similarity": 0.966
+    },
+    {
+      "a": "katana",
+      "b": "spartan",
+      "similarity": 0.9646
+    },
+    {
+      "a": "chameleon",
+      "b": "lancelot",
+      "similarity": 0.9628
+    },
+    {
+      "a": "icarus_ii",
+      "b": "sentinel",
+      "similarity": 0.9593
+    },
+    {
+      "a": "ymir",
+      "b": "zeus",
+      "similarity": 0.9588
+    },
+    {
+      "a": "guillotine",
+      "b": "thanatos",
+      "similarity": 0.9557
+    },
+    {
+      "a": "black_knight",
+      "b": "vindicator",
+      "similarity": 0.9555
+    },
+    {
+      "a": "ostwar",
+      "b": "shogun",
+      "similarity": 0.9551
+    },
+    {
+      "a": "sagittaire",
+      "b": "ymir",
+      "similarity": 0.9549
+    },
+    {
+      "a": "battleaxe",
+      "b": "sagittaire",
+      "similarity": 0.953
+    },
+    {
+      "a": "icarus_ii",
+      "b": "starslayer",
+      "similarity": 0.9527
+    },
+    {
+      "a": "battleaxe",
+      "b": "flashman",
+      "similarity": 0.9522
+    },
+    {
+      "a": "goliath",
+      "b": "tarantula",
+      "similarity": 0.9522
+    },
+    {
+      "a": "dragon",
+      "b": "stormcrow",
+      "similarity": 0.9518
+    },
+    {
+      "a": "crusader",
+      "b": "kintaro",
+      "similarity": 0.951
+    },
+    {
+      "a": "goliath",
+      "b": "scorpion",
+      "similarity": 0.951
+    },
+    {
+      "a": "crockett",
+      "b": "spartan",
+      "similarity": 0.9507
+    },
+    {
+      "a": "sentinel",
+      "b": "starslayer",
+      "similarity": 0.9507
+    },
+    {
+      "a": "victor",
+      "b": "zeus",
+      "similarity": 0.9499
+    },
+    {
+      "a": "cataphract",
+      "b": "flashman",
+      "similarity": 0.9493
+    },
+    {
+      "a": "orion",
+      "b": "quickdraw",
+      "similarity": 0.9487
+    },
+    {
+      "a": "thug",
+      "b": "victor",
+      "similarity": 0.9484
+    },
+    {
+      "a": "sagittaire",
+      "b": "zeus",
+      "similarity": 0.9483
+    },
+    {
+      "a": "banshee",
+      "b": "cyclops",
+      "similarity": 0.9481
+    },
+    {
+      "a": "javelin",
+      "b": "quickdraw",
+      "similarity": 0.948
+    },
+    {
+      "a": "nightstar",
+      "b": "warhawk",
+      "similarity": 0.948
+    },
+    {
+      "a": "crockett",
+      "b": "pillager",
+      "similarity": 0.9475
+    },
+    {
+      "a": "cataphract",
+      "b": "victor",
+      "similarity": 0.9474
+    },
+    {
+      "a": "kintaro",
+      "b": "trebuchet",
+      "similarity": 0.9469
+    },
+    {
+      "a": "valkyrie",
+      "b": "whitworth",
+      "similarity": 0.9469
+    },
+    {
+      "a": "awesome",
+      "b": "centurion",
+      "similarity": 0.9467
+    },
+    {
+      "a": "gunslinger",
+      "b": "penetrator",
+      "similarity": 0.9467
+    },
+    {
+      "a": "battleaxe",
+      "b": "zeus",
+      "similarity": 0.9463
+    },
+    {
+      "a": "guillotine",
+      "b": "lancelot",
+      "similarity": 0.9461
+    },
+    {
+      "a": "annihilator",
+      "b": "cataphract",
+      "similarity": 0.9451
+    },
+    {
+      "a": "flashman",
+      "b": "ymir",
+      "similarity": 0.945
+    },
+    {
+      "a": "crusader",
+      "b": "trebuchet",
+      "similarity": 0.9448
+    },
+    {
+      "a": "falconer",
+      "b": "hoplite",
+      "similarity": 0.9447
+    },
+    {
+      "a": "annihilator",
+      "b": "flashman",
+      "similarity": 0.9442
+    },
+    {
+      "a": "grasshopper",
+      "b": "quickdraw",
+      "similarity": 0.9441
+    },
+    {
+      "a": "battleaxe",
+      "b": "kintaro",
+      "similarity": 0.944
+    },
+    {
+      "a": "cataphract",
+      "b": "zeus",
+      "similarity": 0.9438
+    },
+    {
+      "a": "akuma",
+      "b": "ymir",
+      "similarity": 0.9435
+    },
+    {
+      "a": "mongoose",
+      "b": "stinger",
+      "similarity": 0.9435
+    },
+    {
+      "a": "annihilator",
+      "b": "battleaxe",
+      "similarity": 0.9434
+    },
+    {
+      "a": "gargoyle",
+      "b": "nova",
+      "similarity": 0.9434
+    },
+    {
+      "a": "quickdraw",
+      "b": "valkyrie",
+      "similarity": 0.9432
+    },
+    {
+      "a": "awesome",
+      "b": "battlemaster",
+      "similarity": 0.9431
+    },
+    {
+      "a": "flashman",
+      "b": "zeus",
+      "similarity": 0.9429
+    },
+    {
+      "a": "battleaxe",
+      "b": "cataphract",
+      "similarity": 0.9428
+    },
+    {
+      "a": "crockett",
+      "b": "ymir",
+      "similarity": 0.9428
+    },
+    {
+      "a": "penetrator",
+      "b": "sagittaire",
+      "similarity": 0.9426
+    },
+    {
+      "a": "awesome",
+      "b": "griffin",
+      "similarity": 0.9425
+    },
+    {
+      "a": "javelin",
+      "b": "orion",
+      "similarity": 0.9421
+    },
+    {
+      "a": "battlemaster",
+      "b": "centurion",
+      "similarity": 0.9413
+    },
+    {
+      "a": "akuma",
+      "b": "cyclops",
+      "similarity": 0.9406
+    },
+    {
+      "a": "akuma",
+      "b": "flashman",
+      "similarity": 0.9406
+    },
+    {
+      "a": "crab",
+      "b": "kintaro",
+      "similarity": 0.9406
+    },
+    {
+      "a": "gunslinger",
+      "b": "thanatos",
+      "similarity": 0.9404
+    },
+    {
+      "a": "hellspawn",
+      "b": "viper",
+      "similarity": 0.9402
+    },
+    {
+      "a": "battleaxe",
+      "b": "merlin",
+      "similarity": 0.9397
+    },
+    {
+      "a": "griffin",
+      "b": "thunderbolt",
+      "similarity": 0.9394
+    },
+    {
+      "a": "black_knight",
+      "b": "firestarter",
+      "similarity": 0.9393
+    },
+    {
+      "a": "chameleon",
+      "b": "starslayer",
+      "similarity": 0.9393
+    },
+    {
+      "a": "highlander",
+      "b": "panther",
+      "similarity": 0.9393
+    },
+    {
+      "a": "enforcer",
+      "b": "flashman",
+      "similarity": 0.9392
+    },
+    {
+      "a": "firestarter",
+      "b": "vindicator",
+      "similarity": 0.9392
+    },
+    {
+      "a": "kintaro",
+      "b": "shogun",
+      "similarity": 0.9391
+    },
+    {
+      "a": "awesome",
+      "b": "thunderbolt",
+      "similarity": 0.9386
+    },
+    {
+      "a": "javelin",
+      "b": "whitworth",
+      "similarity": 0.9381
+    },
+    {
+      "a": "hel",
+      "b": "sentinel",
+      "similarity": 0.9377
+    },
+    {
+      "a": "battlemaster",
+      "b": "vindicator",
+      "similarity": 0.9374
+    },
+    {
+      "a": "quickdraw",
+      "b": "whitworth",
+      "similarity": 0.9373
+    },
+    {
+      "a": "cataphract",
+      "b": "spartan",
+      "similarity": 0.937
+    },
+    {
+      "a": "grizzly",
+      "b": "helios",
+      "similarity": 0.9369
+    },
+    {
+      "a": "lancelot",
+      "b": "thanatos",
+      "similarity": 0.9366
+    },
+    {
+      "a": "cataphract",
+      "b": "katana",
+      "similarity": 0.936
+    },
+    {
+      "a": "flashman",
+      "b": "victor",
+      "similarity": 0.9359
+    },
+    {
+      "a": "battlemaster",
+      "b": "thunderbolt",
+      "similarity": 0.9358
+    },
+    {
+      "a": "charger",
+      "b": "orion",
+      "similarity": 0.9356
+    },
+    {
+      "a": "cyclops",
+      "b": "ymir",
+      "similarity": 0.9356
+    },
+    {
+      "a": "akuma",
+      "b": "cataphract",
+      "similarity": 0.9355
+    },
+    {
+      "a": "annihilator",
+      "b": "zeus",
+      "similarity": 0.9354
+    },
+    {
+      "a": "centurion",
+      "b": "griffin",
+      "similarity": 0.9354
+    },
+    {
+      "a": "battleaxe",
+      "b": "cyclops",
+      "similarity": 0.935
+    },
+    {
+      "a": "cataphract",
+      "b": "ymir",
+      "similarity": 0.9345
+    },
+    {
+      "a": "akuma",
+      "b": "battleaxe",
+      "similarity": 0.9339
+    },
+    {
+      "a": "battleaxe",
+      "b": "crockett",
+      "similarity": 0.9338
+    },
+    {
+      "a": "gunslinger",
+      "b": "night_gyr",
+      "similarity": 0.9337
+    },
+    {
+      "a": "hel",
+      "b": "helios",
+      "similarity": 0.9336
+    },
+    {
+      "a": "excalibur",
+      "b": "falconer",
+      "similarity": 0.9333
+    },
+    {
+      "a": "penetrator",
+      "b": "zeus",
+      "similarity": 0.9333
+    },
+    {
+      "a": "falconer",
+      "b": "night_gyr",
+      "similarity": 0.9332
+    },
+    {
+      "a": "flashman",
+      "b": "sagittaire",
+      "similarity": 0.9332
+    },
+    {
+      "a": "annihilator",
+      "b": "ymir",
+      "similarity": 0.9331
+    },
+    {
+      "a": "crusader",
+      "b": "shogun",
+      "similarity": 0.9331
+    },
+    {
+      "a": "battlemaster",
+      "b": "black_knight",
+      "similarity": 0.9328
+    },
+    {
+      "a": "katana",
+      "b": "ymir",
+      "similarity": 0.9326
+    }
+  ],
+  "models": [
+    {
+      "model": "adder",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "grendel",
+          "similarity": 0.9212,
+          "front": 0.94,
+          "side": 0.944,
+          "top": 0.865
+        },
+        {
+          "name": "chimera",
+          "similarity": 0.8988,
+          "front": 0.921,
+          "side": 0.883,
+          "top": 0.859
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.8891,
+          "front": 0.903,
+          "side": 0.876,
+          "top": 0.855
+        },
+        {
+          "name": "piranha",
+          "similarity": 0.8836,
+          "front": 0.908,
+          "side": 0.885,
+          "top": 0.838
+        },
+        {
+          "name": "flea",
+          "similarity": 0.8795,
+          "front": 0.921,
+          "side": 0.888,
+          "top": 0.787
+        }
+      ],
+      "top_similarity": 0.9212
+    },
+    {
+      "model": "akuma",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "ymir",
+          "similarity": 0.9435,
+          "front": 0.963,
+          "side": 0.904,
+          "top": 0.939
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9406,
+          "front": 0.962,
+          "side": 0.922,
+          "top": 0.909
+        },
+        {
+          "name": "cyclops",
+          "similarity": 0.9406,
+          "front": 0.971,
+          "side": 0.908,
+          "top": 0.908
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.9355,
+          "front": 0.952,
+          "side": 0.92,
+          "top": 0.902
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9339,
+          "front": 0.959,
+          "side": 0.886,
+          "top": 0.914
+        }
+      ],
+      "top_similarity": 0.9435
+    },
+    {
+      "model": "albatross",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "sagittaire",
+          "similarity": 0.9284,
+          "front": 0.95,
+          "side": 0.924,
+          "top": 0.875
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9185,
+          "front": 0.945,
+          "side": 0.94,
+          "top": 0.823
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9176,
+          "front": 0.951,
+          "side": 0.915,
+          "top": 0.834
+        },
+        {
+          "name": "thanatos",
+          "similarity": 0.9158,
+          "front": 0.91,
+          "side": 0.897,
+          "top": 0.939
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9145,
+          "front": 0.938,
+          "side": 0.919,
+          "top": 0.847
+        }
+      ],
+      "top_similarity": 0.9284
+    },
+    {
+      "model": "annihilator",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "cataphract",
+          "similarity": 0.9451,
+          "front": 0.96,
+          "side": 0.933,
+          "top": 0.911
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9442,
+          "front": 0.938,
+          "side": 0.953,
+          "top": 0.937
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9434,
+          "front": 0.959,
+          "side": 0.926,
+          "top": 0.918
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9354,
+          "front": 0.938,
+          "side": 0.931,
+          "top": 0.921
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9331,
+          "front": 0.949,
+          "side": 0.892,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9451
+    },
+    {
+      "model": "archer",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "timber_wolf",
+          "similarity": 0.8942,
+          "front": 0.923,
+          "side": 0.813,
+          "top": 0.884
+        },
+        {
+          "name": "crab",
+          "similarity": 0.8837,
+          "front": 0.878,
+          "side": 0.892,
+          "top": 0.891
+        },
+        {
+          "name": "charger",
+          "similarity": 0.8825,
+          "front": 0.858,
+          "side": 0.905,
+          "top": 0.902
+        },
+        {
+          "name": "trebuchet",
+          "similarity": 0.8727,
+          "front": 0.891,
+          "side": 0.841,
+          "top": 0.858
+        },
+        {
+          "name": "atlas",
+          "similarity": 0.8706,
+          "front": 0.826,
+          "side": 0.933,
+          "top": 0.895
+        }
+      ],
+      "top_similarity": 0.8942
+    },
+    {
+      "model": "argus",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "supernova",
+          "similarity": 0.9055,
+          "front": 0.927,
+          "side": 0.906,
+          "top": 0.823
+        },
+        {
+          "name": "hoplite",
+          "similarity": 0.9052,
+          "front": 0.934,
+          "side": 0.856,
+          "top": 0.878
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9032,
+          "front": 0.929,
+          "side": 0.89,
+          "top": 0.871
+        },
+        {
+          "name": "penetrator",
+          "similarity": 0.901,
+          "front": 0.923,
+          "side": 0.877,
+          "top": 0.859
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9001,
+          "front": 0.937,
+          "side": 0.877,
+          "top": 0.835
+        }
+      ],
+      "top_similarity": 0.9055
+    },
+    {
+      "model": "assassin",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "quickdraw",
+          "similarity": 0.9056,
+          "front": 0.94,
+          "side": 0.881,
+          "top": 0.829
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.9043,
+          "front": 0.949,
+          "side": 0.913,
+          "top": 0.804
+        },
+        {
+          "name": "dervish",
+          "similarity": 0.9015,
+          "front": 0.925,
+          "side": 0.878,
+          "top": 0.853
+        },
+        {
+          "name": "exterminator",
+          "similarity": 0.8995,
+          "front": 0.931,
+          "side": 0.933,
+          "top": 0.793
+        },
+        {
+          "name": "whitworth",
+          "similarity": 0.8989,
+          "front": 0.925,
+          "side": 0.895,
+          "top": 0.853
+        }
+      ],
+      "top_similarity": 0.9056
+    },
+    {
+      "model": "atlas",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "javelin",
+          "similarity": 0.8881,
+          "front": 0.913,
+          "side": 0.886,
+          "top": 0.827
+        },
+        {
+          "name": "spider",
+          "similarity": 0.8843,
+          "front": 0.849,
+          "side": 0.918,
+          "top": 0.911
+        },
+        {
+          "name": "crab",
+          "similarity": 0.8793,
+          "front": 0.859,
+          "side": 0.887,
+          "top": 0.928
+        },
+        {
+          "name": "orion",
+          "similarity": 0.8781,
+          "front": 0.859,
+          "side": 0.916,
+          "top": 0.863
+        },
+        {
+          "name": "ostroc",
+          "similarity": 0.8762,
+          "front": 0.857,
+          "side": 0.882,
+          "top": 0.894
+        }
+      ],
+      "top_similarity": 0.8881
+    },
+    {
+      "model": "awesome",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "centurion",
+          "similarity": 0.9467,
+          "front": 0.957,
+          "side": 0.936,
+          "top": 0.938
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9431,
+          "front": 0.932,
+          "side": 0.937,
+          "top": 0.969
+        },
+        {
+          "name": "griffin",
+          "similarity": 0.9425,
+          "front": 0.951,
+          "side": 0.927,
+          "top": 0.936
+        },
+        {
+          "name": "thunderbolt",
+          "similarity": 0.9386,
+          "front": 0.963,
+          "side": 0.896,
+          "top": 0.936
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.9274,
+          "front": 0.927,
+          "side": 0.925,
+          "top": 0.933
+        }
+      ],
+      "top_similarity": 0.9467
+    },
+    {
+      "model": "axman",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "nightsky",
+          "similarity": 0.9041,
+          "front": 0.901,
+          "side": 0.883,
+          "top": 0.922
+        },
+        {
+          "name": "malice",
+          "similarity": 0.8117,
+          "front": 0.769,
+          "side": 0.886,
+          "top": 0.772
+        },
+        {
+          "name": "hatchetman",
+          "similarity": 0.8057,
+          "front": 0.769,
+          "side": 0.799,
+          "top": 0.899
+        },
+        {
+          "name": "vindicator",
+          "similarity": 0.8049,
+          "front": 0.769,
+          "side": 0.877,
+          "top": 0.771
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.7986,
+          "front": 0.788,
+          "side": 0.848,
+          "top": 0.746
+        }
+      ],
+      "top_similarity": 0.9041
+    },
+    {
+      "model": "banshee",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "cyclops",
+          "similarity": 0.9481,
+          "front": 0.987,
+          "side": 0.92,
+          "top": 0.881
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9304,
+          "front": 0.967,
+          "side": 0.913,
+          "top": 0.874
+        },
+        {
+          "name": "katana",
+          "similarity": 0.9236,
+          "front": 0.961,
+          "side": 0.895,
+          "top": 0.853
+        },
+        {
+          "name": "spartan",
+          "similarity": 0.9197,
+          "front": 0.969,
+          "side": 0.837,
+          "top": 0.9
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9172,
+          "front": 0.967,
+          "side": 0.88,
+          "top": 0.858
+        }
+      ],
+      "top_similarity": 0.9481
+    },
+    {
+      "model": "battleaxe",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "ymir",
+          "similarity": 0.9668,
+          "front": 0.98,
+          "side": 0.948,
+          "top": 0.953
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.953,
+          "front": 0.974,
+          "side": 0.944,
+          "top": 0.914
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9522,
+          "front": 0.974,
+          "side": 0.946,
+          "top": 0.906
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9463,
+          "front": 0.959,
+          "side": 0.935,
+          "top": 0.924
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.944,
+          "front": 0.968,
+          "side": 0.923,
+          "top": 0.894
+        }
+      ],
+      "top_similarity": 0.9668
+    },
+    {
+      "model": "battlemaster",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "awesome",
+          "similarity": 0.9431,
+          "front": 0.932,
+          "side": 0.937,
+          "top": 0.969
+        },
+        {
+          "name": "centurion",
+          "similarity": 0.9413,
+          "front": 0.928,
+          "side": 0.938,
+          "top": 0.959
+        },
+        {
+          "name": "vindicator",
+          "similarity": 0.9374,
+          "front": 0.94,
+          "side": 0.932,
+          "top": 0.932
+        },
+        {
+          "name": "thunderbolt",
+          "similarity": 0.9358,
+          "front": 0.948,
+          "side": 0.914,
+          "top": 0.941
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.9328,
+          "front": 0.944,
+          "side": 0.898,
+          "top": 0.932
+        }
+      ],
+      "top_similarity": 0.9431
+    },
+    {
+      "model": "black_knight",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "vindicator",
+          "similarity": 0.9555,
+          "front": 0.947,
+          "side": 0.944,
+          "top": 0.983
+        },
+        {
+          "name": "firestarter",
+          "similarity": 0.9393,
+          "front": 0.972,
+          "side": 0.923,
+          "top": 0.866
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9328,
+          "front": 0.944,
+          "side": 0.898,
+          "top": 0.932
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.9274,
+          "front": 0.927,
+          "side": 0.925,
+          "top": 0.933
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9193,
+          "front": 0.944,
+          "side": 0.887,
+          "top": 0.882
+        }
+      ],
+      "top_similarity": 0.9555
+    },
+    {
+      "model": "blackjack",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "hel",
+          "similarity": 0.9057,
+          "front": 0.913,
+          "side": 0.927,
+          "top": 0.838
+        },
+        {
+          "name": "emperor",
+          "similarity": 0.8932,
+          "front": 0.88,
+          "side": 0.885,
+          "top": 0.93
+        },
+        {
+          "name": "jagermech",
+          "similarity": 0.8928,
+          "front": 0.903,
+          "side": 0.846,
+          "top": 0.916
+        },
+        {
+          "name": "annihilator",
+          "similarity": 0.8882,
+          "front": 0.896,
+          "side": 0.862,
+          "top": 0.884
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.8875,
+          "front": 0.891,
+          "side": 0.886,
+          "top": 0.881
+        }
+      ],
+      "top_similarity": 0.9057
+    },
+    {
+      "model": "bushwacker",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "dragon",
+          "similarity": 0.9294,
+          "front": 0.939,
+          "side": 0.932,
+          "top": 0.918
+        },
+        {
+          "name": "wolfhound",
+          "similarity": 0.9156,
+          "front": 0.924,
+          "side": 0.915,
+          "top": 0.896
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9119,
+          "front": 0.954,
+          "side": 0.909,
+          "top": 0.812
+        },
+        {
+          "name": "mist_lynx",
+          "similarity": 0.9112,
+          "front": 0.931,
+          "side": 0.933,
+          "top": 0.861
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.911,
+          "front": 0.965,
+          "side": 0.867,
+          "top": 0.837
+        }
+      ],
+      "top_similarity": 0.9294
+    },
+    {
+      "model": "caesar",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "grizzly",
+          "similarity": 0.8959,
+          "front": 0.966,
+          "side": 0.822,
+          "top": 0.827
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.8856,
+          "front": 0.943,
+          "side": 0.852,
+          "top": 0.784
+        },
+        {
+          "name": "helios",
+          "similarity": 0.8808,
+          "front": 0.916,
+          "side": 0.837,
+          "top": 0.848
+        },
+        {
+          "name": "excalibur",
+          "similarity": 0.8751,
+          "front": 0.918,
+          "side": 0.817,
+          "top": 0.858
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.8738,
+          "front": 0.927,
+          "side": 0.862,
+          "top": 0.764
+        }
+      ],
+      "top_similarity": 0.8959
+    },
+    {
+      "model": "cataphract",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "flashman",
+          "similarity": 0.9493,
+          "front": 0.968,
+          "side": 0.949,
+          "top": 0.897
+        },
+        {
+          "name": "victor",
+          "similarity": 0.9474,
+          "front": 0.958,
+          "side": 0.939,
+          "top": 0.925
+        },
+        {
+          "name": "annihilator",
+          "similarity": 0.9451,
+          "front": 0.96,
+          "side": 0.933,
+          "top": 0.911
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9438,
+          "front": 0.962,
+          "side": 0.932,
+          "top": 0.898
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9428,
+          "front": 0.971,
+          "side": 0.899,
+          "top": 0.911
+        }
+      ],
+      "top_similarity": 0.9493
+    },
+    {
+      "model": "centurion",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "awesome",
+          "similarity": 0.9467,
+          "front": 0.957,
+          "side": 0.936,
+          "top": 0.938
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9413,
+          "front": 0.928,
+          "side": 0.938,
+          "top": 0.959
+        },
+        {
+          "name": "griffin",
+          "similarity": 0.9354,
+          "front": 0.928,
+          "side": 0.964,
+          "top": 0.925
+        },
+        {
+          "name": "thunderbolt",
+          "similarity": 0.9219,
+          "front": 0.938,
+          "side": 0.899,
+          "top": 0.917
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.9185,
+          "front": 0.915,
+          "side": 0.884,
+          "top": 0.949
+        }
+      ],
+      "top_similarity": 0.9467
+    },
+    {
+      "model": "chameleon",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "lancelot",
+          "similarity": 0.9628,
+          "front": 0.962,
+          "side": 0.974,
+          "top": 0.942
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.9393,
+          "front": 0.981,
+          "side": 0.885,
+          "top": 0.919
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.9301,
+          "front": 0.961,
+          "side": 0.897,
+          "top": 0.889
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.9247,
+          "front": 0.989,
+          "side": 0.867,
+          "top": 0.83
+        },
+        {
+          "name": "commando",
+          "similarity": 0.922,
+          "front": 0.947,
+          "side": 0.913,
+          "top": 0.858
+        }
+      ],
+      "top_similarity": 0.9628
+    },
+    {
+      "model": "charger",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "orion",
+          "similarity": 0.9356,
+          "front": 0.95,
+          "side": 0.931,
+          "top": 0.894
+        },
+        {
+          "name": "crab",
+          "similarity": 0.9267,
+          "front": 0.912,
+          "side": 0.934,
+          "top": 0.947
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.9221,
+          "front": 0.957,
+          "side": 0.887,
+          "top": 0.889
+        },
+        {
+          "name": "shogun",
+          "similarity": 0.922,
+          "front": 0.959,
+          "side": 0.872,
+          "top": 0.901
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9191,
+          "front": 0.945,
+          "side": 0.868,
+          "top": 0.931
+        }
+      ],
+      "top_similarity": 0.9356
+    },
+    {
+      "model": "chimera",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "hellspawn",
+          "similarity": 0.9303,
+          "front": 0.952,
+          "side": 0.91,
+          "top": 0.909
+        },
+        {
+          "name": "viper",
+          "similarity": 0.9207,
+          "front": 0.931,
+          "side": 0.912,
+          "top": 0.913
+        },
+        {
+          "name": "grendel",
+          "similarity": 0.9031,
+          "front": 0.916,
+          "side": 0.878,
+          "top": 0.898
+        },
+        {
+          "name": "adder",
+          "similarity": 0.8988,
+          "front": 0.921,
+          "side": 0.883,
+          "top": 0.859
+        },
+        {
+          "name": "mist_lynx",
+          "similarity": 0.897,
+          "front": 0.936,
+          "side": 0.893,
+          "top": 0.805
+        }
+      ],
+      "top_similarity": 0.9303
+    },
+    {
+      "model": "cicada",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "flea",
+          "similarity": 0.9228,
+          "front": 0.956,
+          "side": 0.913,
+          "top": 0.848
+        },
+        {
+          "name": "piranha",
+          "similarity": 0.9112,
+          "front": 0.94,
+          "side": 0.919,
+          "top": 0.881
+        },
+        {
+          "name": "raven",
+          "similarity": 0.8974,
+          "front": 0.932,
+          "side": 0.811,
+          "top": 0.884
+        },
+        {
+          "name": "shockwave",
+          "similarity": 0.8933,
+          "front": 0.895,
+          "side": 0.906,
+          "top": 0.879
+        },
+        {
+          "name": "mist_lynx",
+          "similarity": 0.8771,
+          "front": 0.897,
+          "side": 0.858,
+          "top": 0.861
+        }
+      ],
+      "top_similarity": 0.9228
+    },
+    {
+      "model": "clint",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "night_gyr",
+          "similarity": 0.9293,
+          "front": 0.951,
+          "side": 0.92,
+          "top": 0.87
+        },
+        {
+          "name": "helios",
+          "similarity": 0.9112,
+          "front": 0.924,
+          "side": 0.864,
+          "top": 0.94
+        },
+        {
+          "name": "excalibur",
+          "similarity": 0.9049,
+          "front": 0.883,
+          "side": 0.918,
+          "top": 0.924
+        },
+        {
+          "name": "hermes_ii",
+          "similarity": 0.902,
+          "front": 0.905,
+          "side": 0.92,
+          "top": 0.886
+        },
+        {
+          "name": "spector",
+          "similarity": 0.899,
+          "front": 0.912,
+          "side": 0.853,
+          "top": 0.921
+        }
+      ],
+      "top_similarity": 0.9293
+    },
+    {
+      "model": "commando",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "lancelot",
+          "similarity": 0.9247,
+          "front": 0.945,
+          "side": 0.903,
+          "top": 0.893
+        },
+        {
+          "name": "havoc",
+          "similarity": 0.9221,
+          "front": 0.935,
+          "side": 0.912,
+          "top": 0.896
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.922,
+          "front": 0.947,
+          "side": 0.913,
+          "top": 0.858
+        },
+        {
+          "name": "venom",
+          "similarity": 0.9189,
+          "front": 0.943,
+          "side": 0.916,
+          "top": 0.861
+        },
+        {
+          "name": "mercury",
+          "similarity": 0.918,
+          "front": 0.934,
+          "side": 0.921,
+          "top": 0.878
+        }
+      ],
+      "top_similarity": 0.9247
+    },
+    {
+      "model": "crab",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "kintaro",
+          "similarity": 0.9406,
+          "front": 0.963,
+          "side": 0.906,
+          "top": 0.93
+        },
+        {
+          "name": "charger",
+          "similarity": 0.9267,
+          "front": 0.912,
+          "side": 0.934,
+          "top": 0.947
+        },
+        {
+          "name": "shogun",
+          "similarity": 0.9245,
+          "front": 0.944,
+          "side": 0.903,
+          "top": 0.91
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9236,
+          "front": 0.918,
+          "side": 0.937,
+          "top": 0.916
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.9208,
+          "front": 0.926,
+          "side": 0.901,
+          "top": 0.924
+        }
+      ],
+      "top_similarity": 0.9406
+    },
+    {
+      "model": "crockett",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "katana",
+          "similarity": 0.9801,
+          "front": 0.992,
+          "side": 0.97,
+          "top": 0.963
+        },
+        {
+          "name": "spartan",
+          "similarity": 0.9507,
+          "front": 0.985,
+          "side": 0.936,
+          "top": 0.879
+        },
+        {
+          "name": "pillager",
+          "similarity": 0.9475,
+          "front": 0.971,
+          "side": 0.894,
+          "top": 0.957
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9428,
+          "front": 0.986,
+          "side": 0.94,
+          "top": 0.837
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9338,
+          "front": 0.983,
+          "side": 0.916,
+          "top": 0.826
+        }
+      ],
+      "top_similarity": 0.9801
+    },
+    {
+      "model": "crossbow",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "gargoyle",
+          "similarity": 0.9063,
+          "front": 0.928,
+          "side": 0.916,
+          "top": 0.855
+        },
+        {
+          "name": "argus",
+          "similarity": 0.8836,
+          "front": 0.923,
+          "side": 0.804,
+          "top": 0.866
+        },
+        {
+          "name": "trebuchet",
+          "similarity": 0.8747,
+          "front": 0.864,
+          "side": 0.892,
+          "top": 0.869
+        },
+        {
+          "name": "supernova",
+          "similarity": 0.8729,
+          "front": 0.883,
+          "side": 0.838,
+          "top": 0.864
+        },
+        {
+          "name": "nova",
+          "similarity": 0.8724,
+          "front": 0.91,
+          "side": 0.857,
+          "top": 0.794
+        }
+      ],
+      "top_similarity": 0.9063
+    },
+    {
+      "model": "crusader",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "kintaro",
+          "similarity": 0.951,
+          "front": 0.943,
+          "side": 0.963,
+          "top": 0.951
+        },
+        {
+          "name": "trebuchet",
+          "similarity": 0.9448,
+          "front": 0.937,
+          "side": 0.936,
+          "top": 0.967
+        },
+        {
+          "name": "shogun",
+          "similarity": 0.9331,
+          "front": 0.949,
+          "side": 0.898,
+          "top": 0.936
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9287,
+          "front": 0.957,
+          "side": 0.891,
+          "top": 0.885
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9267,
+          "front": 0.937,
+          "side": 0.924,
+          "top": 0.912
+        }
+      ],
+      "top_similarity": 0.951
+    },
+    {
+      "model": "cyclops",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "banshee",
+          "similarity": 0.9481,
+          "front": 0.987,
+          "side": 0.92,
+          "top": 0.881
+        },
+        {
+          "name": "akuma",
+          "similarity": 0.9406,
+          "front": 0.971,
+          "side": 0.908,
+          "top": 0.908
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9356,
+          "front": 0.969,
+          "side": 0.911,
+          "top": 0.889
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.935,
+          "front": 0.961,
+          "side": 0.921,
+          "top": 0.884
+        },
+        {
+          "name": "katana",
+          "similarity": 0.9273,
+          "front": 0.966,
+          "side": 0.897,
+          "top": 0.848
+        }
+      ],
+      "top_similarity": 0.9481
+    },
+    {
+      "model": "dervish",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "quickdraw",
+          "similarity": 0.9218,
+          "front": 0.923,
+          "side": 0.89,
+          "top": 0.948
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.9157,
+          "front": 0.945,
+          "side": 0.877,
+          "top": 0.911
+        },
+        {
+          "name": "exterminator",
+          "similarity": 0.9102,
+          "front": 0.912,
+          "side": 0.898,
+          "top": 0.921
+        },
+        {
+          "name": "assassin",
+          "similarity": 0.9015,
+          "front": 0.925,
+          "side": 0.878,
+          "top": 0.853
+        },
+        {
+          "name": "orion",
+          "similarity": 0.8952,
+          "front": 0.866,
+          "side": 0.893,
+          "top": 0.966
+        }
+      ],
+      "top_similarity": 0.9218
+    },
+    {
+      "model": "devastator",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "thug",
+          "similarity": 0.9186,
+          "front": 0.939,
+          "side": 0.9,
+          "top": 0.88
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.9115,
+          "front": 0.96,
+          "side": 0.881,
+          "top": 0.816
+        },
+        {
+          "name": "grizzly",
+          "similarity": 0.9039,
+          "front": 0.88,
+          "side": 0.943,
+          "top": 0.905
+        },
+        {
+          "name": "mackie",
+          "similarity": 0.9002,
+          "front": 0.974,
+          "side": 0.797,
+          "top": 0.824
+        },
+        {
+          "name": "malice",
+          "similarity": 0.8939,
+          "front": 0.963,
+          "side": 0.818,
+          "top": 0.814
+        }
+      ],
+      "top_similarity": 0.9186
+    },
+    {
+      "model": "dire_wolf",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "stalker",
+          "similarity": 0.9135,
+          "front": 0.915,
+          "side": 0.921,
+          "top": 0.903
+        },
+        {
+          "name": "mauler",
+          "similarity": 0.907,
+          "front": 0.913,
+          "side": 0.932,
+          "top": 0.883
+        },
+        {
+          "name": "urbanmech",
+          "similarity": 0.8995,
+          "front": 0.905,
+          "side": 0.867,
+          "top": 0.897
+        },
+        {
+          "name": "king_crab",
+          "similarity": 0.8909,
+          "front": 0.887,
+          "side": 0.86,
+          "top": 0.921
+        },
+        {
+          "name": "nova",
+          "similarity": 0.8891,
+          "front": 0.898,
+          "side": 0.883,
+          "top": 0.879
+        }
+      ],
+      "top_similarity": 0.9135
+    },
+    {
+      "model": "dragon",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "stormcrow",
+          "similarity": 0.9518,
+          "front": 0.971,
+          "side": 0.953,
+          "top": 0.908
+        },
+        {
+          "name": "bushwacker",
+          "similarity": 0.9294,
+          "front": 0.939,
+          "side": 0.932,
+          "top": 0.918
+        },
+        {
+          "name": "nova",
+          "similarity": 0.9279,
+          "front": 0.953,
+          "side": 0.9,
+          "top": 0.896
+        },
+        {
+          "name": "thug",
+          "similarity": 0.9235,
+          "front": 0.972,
+          "side": 0.88,
+          "top": 0.846
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9188,
+          "front": 0.938,
+          "side": 0.94,
+          "top": 0.84
+        }
+      ],
+      "top_similarity": 0.9518
+    },
+    {
+      "model": "emperor",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "enforcer",
+          "similarity": 0.9278,
+          "front": 0.933,
+          "side": 0.923,
+          "top": 0.916
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.9204,
+          "front": 0.971,
+          "side": 0.905,
+          "top": 0.801
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.917,
+          "front": 0.951,
+          "side": 0.889,
+          "top": 0.874
+        },
+        {
+          "name": "victor",
+          "similarity": 0.9122,
+          "front": 0.937,
+          "side": 0.905,
+          "top": 0.87
+        },
+        {
+          "name": "akuma",
+          "similarity": 0.9042,
+          "front": 0.954,
+          "side": 0.874,
+          "top": 0.84
+        }
+      ],
+      "top_similarity": 0.9278
+    },
+    {
+      "model": "enforcer",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "flashman",
+          "similarity": 0.9392,
+          "front": 0.964,
+          "side": 0.921,
+          "top": 0.886
+        },
+        {
+          "name": "victor",
+          "similarity": 0.9296,
+          "front": 0.929,
+          "side": 0.939,
+          "top": 0.904
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.9293,
+          "front": 0.956,
+          "side": 0.914,
+          "top": 0.883
+        },
+        {
+          "name": "emperor",
+          "similarity": 0.9278,
+          "front": 0.933,
+          "side": 0.923,
+          "top": 0.916
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.9211,
+          "front": 0.938,
+          "side": 0.89,
+          "top": 0.905
+        }
+      ],
+      "top_similarity": 0.9392
+    },
+    {
+      "model": "excalibur",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "falconer",
+          "similarity": 0.9333,
+          "front": 0.969,
+          "side": 0.928,
+          "top": 0.853
+        },
+        {
+          "name": "night_gyr",
+          "similarity": 0.9089,
+          "front": 0.943,
+          "side": 0.886,
+          "top": 0.846
+        },
+        {
+          "name": "legionnaire",
+          "similarity": 0.9078,
+          "front": 0.934,
+          "side": 0.878,
+          "top": 0.884
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.905,
+          "front": 0.953,
+          "side": 0.854,
+          "top": 0.835
+        },
+        {
+          "name": "clint",
+          "similarity": 0.9049,
+          "front": 0.883,
+          "side": 0.918,
+          "top": 0.924
+        }
+      ],
+      "top_similarity": 0.9333
+    },
+    {
+      "model": "executioner",
+      "risk": "lower",
+      "closest": [
+        {
+          "name": "hellbringer",
+          "similarity": 0.814,
+          "front": 0.8,
+          "side": 0.758,
+          "top": 0.91
+        },
+        {
+          "name": "phoenix_hawk",
+          "similarity": 0.8046,
+          "front": 0.848,
+          "side": 0.747,
+          "top": 0.743
+        },
+        {
+          "name": "guillotine",
+          "similarity": 0.8046,
+          "front": 0.804,
+          "side": 0.732,
+          "top": 0.871
+        },
+        {
+          "name": "dervish",
+          "similarity": 0.8036,
+          "front": 0.857,
+          "side": 0.674,
+          "top": 0.838
+        },
+        {
+          "name": "vulcan",
+          "similarity": 0.8021,
+          "front": 0.81,
+          "side": 0.73,
+          "top": 0.859
+        }
+      ],
+      "top_similarity": 0.814
+    },
+    {
+      "model": "exterminator",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "whitworth",
+          "similarity": 0.9232,
+          "front": 0.923,
+          "side": 0.908,
+          "top": 0.937
+        },
+        {
+          "name": "quickdraw",
+          "similarity": 0.92,
+          "front": 0.931,
+          "side": 0.919,
+          "top": 0.898
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.9163,
+          "front": 0.913,
+          "side": 0.927,
+          "top": 0.908
+        },
+        {
+          "name": "dervish",
+          "similarity": 0.9102,
+          "front": 0.912,
+          "side": 0.898,
+          "top": 0.921
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9051,
+          "front": 0.954,
+          "side": 0.826,
+          "top": 0.878
+        }
+      ],
+      "top_similarity": 0.9232
+    },
+    {
+      "model": "falconer",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "hoplite",
+          "similarity": 0.9447,
+          "front": 0.952,
+          "side": 0.923,
+          "top": 0.948
+        },
+        {
+          "name": "excalibur",
+          "similarity": 0.9333,
+          "front": 0.969,
+          "side": 0.928,
+          "top": 0.853
+        },
+        {
+          "name": "night_gyr",
+          "similarity": 0.9332,
+          "front": 0.953,
+          "side": 0.899,
+          "top": 0.93
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.9151,
+          "front": 0.958,
+          "side": 0.865,
+          "top": 0.881
+        },
+        {
+          "name": "thanatos",
+          "similarity": 0.9111,
+          "front": 0.987,
+          "side": 0.81,
+          "top": 0.891
+        }
+      ],
+      "top_similarity": 0.9447
+    },
+    {
+      "model": "fire_moth",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "howler",
+          "similarity": 0.8896,
+          "front": 0.872,
+          "side": 0.902,
+          "top": 0.928
+        },
+        {
+          "name": "ostscout",
+          "similarity": 0.8835,
+          "front": 0.863,
+          "side": 0.897,
+          "top": 0.909
+        },
+        {
+          "name": "assassin",
+          "similarity": 0.8713,
+          "front": 0.854,
+          "side": 0.873,
+          "top": 0.88
+        },
+        {
+          "name": "commando",
+          "similarity": 0.852,
+          "front": 0.844,
+          "side": 0.822,
+          "top": 0.907
+        },
+        {
+          "name": "dervish",
+          "similarity": 0.8449,
+          "front": 0.86,
+          "side": 0.806,
+          "top": 0.834
+        }
+      ],
+      "top_similarity": 0.8896
+    },
+    {
+      "model": "firebee",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "viper",
+          "similarity": 0.923,
+          "front": 0.907,
+          "side": 0.963,
+          "top": 0.911
+        },
+        {
+          "name": "ostwar",
+          "similarity": 0.9167,
+          "front": 0.935,
+          "side": 0.882,
+          "top": 0.901
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9116,
+          "front": 0.934,
+          "side": 0.905,
+          "top": 0.854
+        },
+        {
+          "name": "hellspawn",
+          "similarity": 0.9116,
+          "front": 0.884,
+          "side": 0.955,
+          "top": 0.922
+        },
+        {
+          "name": "firefly",
+          "similarity": 0.9099,
+          "front": 0.946,
+          "side": 0.924,
+          "top": 0.814
+        }
+      ],
+      "top_similarity": 0.923
+    },
+    {
+      "model": "firefly",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "howler",
+          "similarity": 0.9281,
+          "front": 0.961,
+          "side": 0.923,
+          "top": 0.855
+        },
+        {
+          "name": "firebee",
+          "similarity": 0.9099,
+          "front": 0.946,
+          "side": 0.924,
+          "top": 0.814
+        },
+        {
+          "name": "venom",
+          "similarity": 0.9054,
+          "front": 0.956,
+          "side": 0.849,
+          "top": 0.848
+        },
+        {
+          "name": "suburbanmech",
+          "similarity": 0.9003,
+          "front": 0.937,
+          "side": 0.828,
+          "top": 0.91
+        },
+        {
+          "name": "mercury",
+          "similarity": 0.8886,
+          "front": 0.934,
+          "side": 0.904,
+          "top": 0.747
+        }
+      ],
+      "top_similarity": 0.9281
+    },
+    {
+      "model": "firestarter",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "black_knight",
+          "similarity": 0.9393,
+          "front": 0.972,
+          "side": 0.923,
+          "top": 0.866
+        },
+        {
+          "name": "vindicator",
+          "similarity": 0.9392,
+          "front": 0.962,
+          "side": 0.933,
+          "top": 0.884
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9241,
+          "front": 0.951,
+          "side": 0.891,
+          "top": 0.88
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9186,
+          "front": 0.953,
+          "side": 0.872,
+          "top": 0.894
+        },
+        {
+          "name": "summoner",
+          "similarity": 0.9159,
+          "front": 0.912,
+          "side": 0.91,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9393
+    },
+    {
+      "model": "flashman",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "battleaxe",
+          "similarity": 0.9522,
+          "front": 0.974,
+          "side": 0.946,
+          "top": 0.906
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.9493,
+          "front": 0.968,
+          "side": 0.949,
+          "top": 0.897
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.945,
+          "front": 0.966,
+          "side": 0.924,
+          "top": 0.911
+        },
+        {
+          "name": "annihilator",
+          "similarity": 0.9442,
+          "front": 0.938,
+          "side": 0.953,
+          "top": 0.937
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9429,
+          "front": 0.959,
+          "side": 0.937,
+          "top": 0.904
+        }
+      ],
+      "top_similarity": 0.9522
+    },
+    {
+      "model": "flea",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "cicada",
+          "similarity": 0.9228,
+          "front": 0.956,
+          "side": 0.913,
+          "top": 0.848
+        },
+        {
+          "name": "raven",
+          "similarity": 0.922,
+          "front": 0.929,
+          "side": 0.884,
+          "top": 0.936
+        },
+        {
+          "name": "nova",
+          "similarity": 0.9041,
+          "front": 0.906,
+          "side": 0.892,
+          "top": 0.911
+        },
+        {
+          "name": "piranha",
+          "similarity": 0.8922,
+          "front": 0.899,
+          "side": 0.934,
+          "top": 0.833
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.8906,
+          "front": 0.908,
+          "side": 0.864,
+          "top": 0.896
+        }
+      ],
+      "top_similarity": 0.9228
+    },
+    {
+      "model": "gargoyle",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "nova",
+          "similarity": 0.9434,
+          "front": 0.943,
+          "side": 0.945,
+          "top": 0.933
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9242,
+          "front": 0.886,
+          "side": 0.959,
+          "top": 0.96
+        },
+        {
+          "name": "crab",
+          "similarity": 0.9147,
+          "front": 0.904,
+          "side": 0.899,
+          "top": 0.938
+        },
+        {
+          "name": "crossbow",
+          "similarity": 0.9063,
+          "front": 0.928,
+          "side": 0.916,
+          "top": 0.855
+        },
+        {
+          "name": "trebuchet",
+          "similarity": 0.903,
+          "front": 0.87,
+          "side": 0.937,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9434
+    },
+    {
+      "model": "goliath",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "tarantula",
+          "similarity": 0.9522,
+          "front": 0.963,
+          "side": 0.924,
+          "top": 0.966
+        },
+        {
+          "name": "scorpion",
+          "similarity": 0.951,
+          "front": 0.949,
+          "side": 0.95,
+          "top": 0.967
+        },
+        {
+          "name": "thunder_stallion",
+          "similarity": 0.8962,
+          "front": 0.933,
+          "side": 0.822,
+          "top": 0.921
+        },
+        {
+          "name": "kit_fox",
+          "similarity": 0.8046,
+          "front": 0.797,
+          "side": 0.787,
+          "top": 0.845
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.7993,
+          "front": 0.83,
+          "side": 0.758,
+          "top": 0.777
+        }
+      ],
+      "top_similarity": 0.9522
+    },
+    {
+      "model": "grasshopper",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "quickdraw",
+          "similarity": 0.9441,
+          "front": 0.96,
+          "side": 0.947,
+          "top": 0.9
+        },
+        {
+          "name": "spider",
+          "similarity": 0.9234,
+          "front": 0.942,
+          "side": 0.894,
+          "top": 0.917
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9161,
+          "front": 0.921,
+          "side": 0.927,
+          "top": 0.902
+        },
+        {
+          "name": "javelin",
+          "similarity": 0.9128,
+          "front": 0.923,
+          "side": 0.914,
+          "top": 0.898
+        },
+        {
+          "name": "charger",
+          "similarity": 0.9086,
+          "front": 0.899,
+          "side": 0.923,
+          "top": 0.92
+        }
+      ],
+      "top_similarity": 0.9441
+    },
+    {
+      "model": "grendel",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "adder",
+          "similarity": 0.9212,
+          "front": 0.94,
+          "side": 0.944,
+          "top": 0.865
+        },
+        {
+          "name": "chimera",
+          "similarity": 0.9031,
+          "front": 0.916,
+          "side": 0.878,
+          "top": 0.898
+        },
+        {
+          "name": "helios",
+          "similarity": 0.897,
+          "front": 0.923,
+          "side": 0.849,
+          "top": 0.873
+        },
+        {
+          "name": "linebacker",
+          "similarity": 0.887,
+          "front": 0.922,
+          "side": 0.861,
+          "top": 0.818
+        },
+        {
+          "name": "piranha",
+          "similarity": 0.8869,
+          "front": 0.93,
+          "side": 0.859,
+          "top": 0.826
+        }
+      ],
+      "top_similarity": 0.9212
+    },
+    {
+      "model": "griffin",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "awesome",
+          "similarity": 0.9425,
+          "front": 0.951,
+          "side": 0.927,
+          "top": 0.936
+        },
+        {
+          "name": "thunderbolt",
+          "similarity": 0.9394,
+          "front": 0.957,
+          "side": 0.905,
+          "top": 0.93
+        },
+        {
+          "name": "centurion",
+          "similarity": 0.9354,
+          "front": 0.928,
+          "side": 0.964,
+          "top": 0.925
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9207,
+          "front": 0.913,
+          "side": 0.931,
+          "top": 0.923
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.9118,
+          "front": 0.914,
+          "side": 0.895,
+          "top": 0.916
+        }
+      ],
+      "top_similarity": 0.9425
+    },
+    {
+      "model": "grizzly",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "helios",
+          "similarity": 0.9369,
+          "front": 0.94,
+          "side": 0.951,
+          "top": 0.902
+        },
+        {
+          "name": "linebacker",
+          "similarity": 0.9299,
+          "front": 0.928,
+          "side": 0.935,
+          "top": 0.931
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.9144,
+          "front": 0.896,
+          "side": 0.942,
+          "top": 0.902
+        },
+        {
+          "name": "thug",
+          "similarity": 0.9062,
+          "front": 0.925,
+          "side": 0.903,
+          "top": 0.861
+        },
+        {
+          "name": "hel",
+          "similarity": 0.9052,
+          "front": 0.902,
+          "side": 0.898,
+          "top": 0.908
+        }
+      ],
+      "top_similarity": 0.9369
+    },
+    {
+      "model": "guillotine",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "thanatos",
+          "similarity": 0.9557,
+          "front": 0.975,
+          "side": 0.952,
+          "top": 0.918
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9461,
+          "front": 0.961,
+          "side": 0.936,
+          "top": 0.924
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9208,
+          "front": 0.934,
+          "side": 0.927,
+          "top": 0.877
+        },
+        {
+          "name": "wolfhound",
+          "similarity": 0.9143,
+          "front": 0.954,
+          "side": 0.902,
+          "top": 0.861
+        },
+        {
+          "name": "akuma",
+          "similarity": 0.9106,
+          "front": 0.928,
+          "side": 0.908,
+          "top": 0.889
+        }
+      ],
+      "top_similarity": 0.9557
+    },
+    {
+      "model": "gunslinger",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "penetrator",
+          "similarity": 0.9467,
+          "front": 0.96,
+          "side": 0.918,
+          "top": 0.945
+        },
+        {
+          "name": "thanatos",
+          "similarity": 0.9404,
+          "front": 0.966,
+          "side": 0.874,
+          "top": 0.956
+        },
+        {
+          "name": "night_gyr",
+          "similarity": 0.9337,
+          "front": 0.946,
+          "side": 0.926,
+          "top": 0.907
+        },
+        {
+          "name": "emperor",
+          "similarity": 0.9204,
+          "front": 0.971,
+          "side": 0.905,
+          "top": 0.801
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.9175,
+          "front": 0.958,
+          "side": 0.871,
+          "top": 0.88
+        }
+      ],
+      "top_similarity": 0.9467
+    },
+    {
+      "model": "hatamoto_chi",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "akuma",
+          "similarity": 0.9281,
+          "front": 0.926,
+          "side": 0.906,
+          "top": 0.949
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9116,
+          "front": 0.937,
+          "side": 0.852,
+          "top": 0.904
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.9074,
+          "front": 0.93,
+          "side": 0.866,
+          "top": 0.885
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9073,
+          "front": 0.915,
+          "side": 0.868,
+          "top": 0.914
+        },
+        {
+          "name": "guillotine",
+          "similarity": 0.9047,
+          "front": 0.927,
+          "side": 0.882,
+          "top": 0.867
+        }
+      ],
+      "top_similarity": 0.9281
+    },
+    {
+      "model": "hatchetman",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "nightsky",
+          "similarity": 0.8706,
+          "front": 0.854,
+          "side": 0.872,
+          "top": 0.914
+        },
+        {
+          "name": "scarabus",
+          "similarity": 0.8079,
+          "front": 0.806,
+          "side": 0.796,
+          "top": 0.784
+        },
+        {
+          "name": "axman",
+          "similarity": 0.8057,
+          "front": 0.769,
+          "side": 0.799,
+          "top": 0.899
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.8044,
+          "front": 0.754,
+          "side": 0.868,
+          "top": 0.846
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.8032,
+          "front": 0.757,
+          "side": 0.88,
+          "top": 0.801
+        }
+      ],
+      "top_similarity": 0.8706
+    },
+    {
+      "model": "havoc",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "commando",
+          "similarity": 0.9221,
+          "front": 0.935,
+          "side": 0.912,
+          "top": 0.896
+        },
+        {
+          "name": "suburbanmech",
+          "similarity": 0.9067,
+          "front": 0.922,
+          "side": 0.909,
+          "top": 0.841
+        },
+        {
+          "name": "venom",
+          "similarity": 0.9036,
+          "front": 0.92,
+          "side": 0.905,
+          "top": 0.876
+        },
+        {
+          "name": "mercury",
+          "similarity": 0.901,
+          "front": 0.921,
+          "side": 0.928,
+          "top": 0.841
+        },
+        {
+          "name": "hel",
+          "similarity": 0.896,
+          "front": 0.939,
+          "side": 0.845,
+          "top": 0.826
+        }
+      ],
+      "top_similarity": 0.9221
+    },
+    {
+      "model": "hel",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "starslayer",
+          "similarity": 0.966,
+          "front": 0.966,
+          "side": 0.957,
+          "top": 0.974
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.9377,
+          "front": 0.962,
+          "side": 0.933,
+          "top": 0.865
+        },
+        {
+          "name": "helios",
+          "similarity": 0.9336,
+          "front": 0.949,
+          "side": 0.932,
+          "top": 0.894
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.9219,
+          "front": 0.956,
+          "side": 0.912,
+          "top": 0.857
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9081,
+          "front": 0.955,
+          "side": 0.824,
+          "top": 0.915
+        }
+      ],
+      "top_similarity": 0.966
+    },
+    {
+      "model": "helios",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "grizzly",
+          "similarity": 0.9369,
+          "front": 0.94,
+          "side": 0.951,
+          "top": 0.902
+        },
+        {
+          "name": "hel",
+          "similarity": 0.9336,
+          "front": 0.949,
+          "side": 0.932,
+          "top": 0.894
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.9281,
+          "front": 0.915,
+          "side": 0.965,
+          "top": 0.901
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.9136,
+          "front": 0.922,
+          "side": 0.915,
+          "top": 0.885
+        },
+        {
+          "name": "clint",
+          "similarity": 0.9112,
+          "front": 0.924,
+          "side": 0.864,
+          "top": 0.94
+        }
+      ],
+      "top_similarity": 0.9369
+    },
+    {
+      "model": "hellbringer",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "gunslinger",
+          "similarity": 0.8805,
+          "front": 0.875,
+          "side": 0.873,
+          "top": 0.887
+        },
+        {
+          "name": "ice_ferret",
+          "similarity": 0.8748,
+          "front": 0.881,
+          "side": 0.874,
+          "top": 0.879
+        },
+        {
+          "name": "hatamoto_chi",
+          "similarity": 0.8719,
+          "front": 0.9,
+          "side": 0.82,
+          "top": 0.849
+        },
+        {
+          "name": "emperor",
+          "similarity": 0.8692,
+          "front": 0.883,
+          "side": 0.843,
+          "top": 0.843
+        },
+        {
+          "name": "legionnaire",
+          "similarity": 0.8657,
+          "front": 0.899,
+          "side": 0.873,
+          "top": 0.789
+        }
+      ],
+      "top_similarity": 0.8805
+    },
+    {
+      "model": "hellspawn",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "viper",
+          "similarity": 0.9402,
+          "front": 0.947,
+          "side": 0.948,
+          "top": 0.931
+        },
+        {
+          "name": "chimera",
+          "similarity": 0.9303,
+          "front": 0.952,
+          "side": 0.91,
+          "top": 0.909
+        },
+        {
+          "name": "mist_lynx",
+          "similarity": 0.9178,
+          "front": 0.934,
+          "side": 0.941,
+          "top": 0.869
+        },
+        {
+          "name": "firebee",
+          "similarity": 0.9116,
+          "front": 0.884,
+          "side": 0.955,
+          "top": 0.922
+        },
+        {
+          "name": "ostwar",
+          "similarity": 0.91,
+          "front": 0.914,
+          "side": 0.91,
+          "top": 0.904
+        }
+      ],
+      "top_similarity": 0.9402
+    },
+    {
+      "model": "hermes_ii",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "legionnaire",
+          "similarity": 0.9081,
+          "front": 0.932,
+          "side": 0.867,
+          "top": 0.893
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.9063,
+          "front": 0.925,
+          "side": 0.856,
+          "top": 0.928
+        },
+        {
+          "name": "clint",
+          "similarity": 0.902,
+          "front": 0.905,
+          "side": 0.92,
+          "top": 0.886
+        },
+        {
+          "name": "ice_ferret",
+          "similarity": 0.8952,
+          "front": 0.922,
+          "side": 0.86,
+          "top": 0.895
+        },
+        {
+          "name": "night_gyr",
+          "similarity": 0.893,
+          "front": 0.907,
+          "side": 0.857,
+          "top": 0.911
+        }
+      ],
+      "top_similarity": 0.9081
+    },
+    {
+      "model": "highlander",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "panther",
+          "similarity": 0.9393,
+          "front": 0.96,
+          "side": 0.926,
+          "top": 0.888
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.932,
+          "front": 0.969,
+          "side": 0.922,
+          "top": 0.852
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9301,
+          "front": 0.961,
+          "side": 0.897,
+          "top": 0.889
+        },
+        {
+          "name": "centurion",
+          "similarity": 0.9185,
+          "front": 0.915,
+          "side": 0.884,
+          "top": 0.949
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.9174,
+          "front": 0.911,
+          "side": 0.908,
+          "top": 0.93
+        }
+      ],
+      "top_similarity": 0.9393
+    },
+    {
+      "model": "hollander",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "pack_hunter",
+          "similarity": 0.8795,
+          "front": 0.92,
+          "side": 0.8,
+          "top": 0.939
+        },
+        {
+          "name": "legionnaire",
+          "similarity": 0.839,
+          "front": 0.879,
+          "side": 0.781,
+          "top": 0.804
+        },
+        {
+          "name": "hermes_ii",
+          "similarity": 0.8168,
+          "front": 0.923,
+          "side": 0.726,
+          "top": 0.692
+        },
+        {
+          "name": "kit_fox",
+          "similarity": 0.8113,
+          "front": 0.809,
+          "side": 0.812,
+          "top": 0.822
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.8012,
+          "front": 0.863,
+          "side": 0.771,
+          "top": 0.683
+        }
+      ],
+      "top_similarity": 0.8795
+    },
+    {
+      "model": "hoplite",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "falconer",
+          "similarity": 0.9447,
+          "front": 0.952,
+          "side": 0.923,
+          "top": 0.948
+        },
+        {
+          "name": "penetrator",
+          "similarity": 0.9316,
+          "front": 0.962,
+          "side": 0.916,
+          "top": 0.879
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.9165,
+          "front": 0.949,
+          "side": 0.86,
+          "top": 0.899
+        },
+        {
+          "name": "thanatos",
+          "similarity": 0.9063,
+          "front": 0.952,
+          "side": 0.819,
+          "top": 0.916
+        },
+        {
+          "name": "argus",
+          "similarity": 0.9052,
+          "front": 0.934,
+          "side": 0.856,
+          "top": 0.878
+        }
+      ],
+      "top_similarity": 0.9447
+    },
+    {
+      "model": "howler",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "firefly",
+          "similarity": 0.9281,
+          "front": 0.961,
+          "side": 0.923,
+          "top": 0.855
+        },
+        {
+          "name": "mercury",
+          "similarity": 0.9096,
+          "front": 0.921,
+          "side": 0.893,
+          "top": 0.896
+        },
+        {
+          "name": "firebee",
+          "similarity": 0.9066,
+          "front": 0.927,
+          "side": 0.928,
+          "top": 0.849
+        },
+        {
+          "name": "venom",
+          "similarity": 0.9053,
+          "front": 0.92,
+          "side": 0.855,
+          "top": 0.925
+        },
+        {
+          "name": "hellspawn",
+          "similarity": 0.9004,
+          "front": 0.872,
+          "side": 0.946,
+          "top": 0.902
+        }
+      ],
+      "top_similarity": 0.9281
+    },
+    {
+      "model": "hunchback_iic",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "legionnaire",
+          "similarity": 0.8641,
+          "front": 0.867,
+          "side": 0.868,
+          "top": 0.829
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.8564,
+          "front": 0.903,
+          "side": 0.779,
+          "top": 0.833
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.8468,
+          "front": 0.901,
+          "side": 0.81,
+          "top": 0.746
+        },
+        {
+          "name": "firebee",
+          "similarity": 0.8422,
+          "front": 0.886,
+          "side": 0.746,
+          "top": 0.847
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.8399,
+          "front": 0.888,
+          "side": 0.754,
+          "top": 0.802
+        }
+      ],
+      "top_similarity": 0.8641
+    },
+    {
+      "model": "icarus_ii",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "sentinel",
+          "similarity": 0.9593,
+          "front": 0.979,
+          "side": 0.907,
+          "top": 0.981
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.9527,
+          "front": 0.989,
+          "side": 0.951,
+          "top": 0.871
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9247,
+          "front": 0.989,
+          "side": 0.867,
+          "top": 0.83
+        },
+        {
+          "name": "hel",
+          "similarity": 0.9219,
+          "front": 0.956,
+          "side": 0.912,
+          "top": 0.857
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.9173,
+          "front": 0.918,
+          "side": 0.885,
+          "top": 0.941
+        }
+      ],
+      "top_similarity": 0.9593
+    },
+    {
+      "model": "ice_ferret",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "legionnaire",
+          "similarity": 0.9128,
+          "front": 0.945,
+          "side": 0.893,
+          "top": 0.888
+        },
+        {
+          "name": "kit_fox",
+          "similarity": 0.9076,
+          "front": 0.931,
+          "side": 0.878,
+          "top": 0.865
+        },
+        {
+          "name": "hermes_ii",
+          "similarity": 0.8952,
+          "front": 0.922,
+          "side": 0.86,
+          "top": 0.895
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.8919,
+          "front": 0.891,
+          "side": 0.866,
+          "top": 0.911
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.8906,
+          "front": 0.89,
+          "side": 0.859,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9128
+    },
+    {
+      "model": "jagermech",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "blackjack",
+          "similarity": 0.8928,
+          "front": 0.903,
+          "side": 0.846,
+          "top": 0.916
+        },
+        {
+          "name": "annihilator",
+          "similarity": 0.8803,
+          "front": 0.893,
+          "side": 0.854,
+          "top": 0.868
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.8739,
+          "front": 0.906,
+          "side": 0.819,
+          "top": 0.858
+        },
+        {
+          "name": "akuma",
+          "similarity": 0.8716,
+          "front": 0.895,
+          "side": 0.865,
+          "top": 0.809
+        },
+        {
+          "name": "bushwacker",
+          "similarity": 0.87,
+          "front": 0.908,
+          "side": 0.876,
+          "top": 0.79
+        }
+      ],
+      "top_similarity": 0.8928
+    },
+    {
+      "model": "javelin",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "quickdraw",
+          "similarity": 0.948,
+          "front": 0.96,
+          "side": 0.919,
+          "top": 0.97
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9421,
+          "front": 0.954,
+          "side": 0.921,
+          "top": 0.938
+        },
+        {
+          "name": "whitworth",
+          "similarity": 0.9381,
+          "front": 0.95,
+          "side": 0.91,
+          "top": 0.949
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.9316,
+          "front": 0.938,
+          "side": 0.91,
+          "top": 0.937
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9132,
+          "front": 0.939,
+          "side": 0.845,
+          "top": 0.932
+        }
+      ],
+      "top_similarity": 0.948
+    },
+    {
+      "model": "jenner",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "stalker",
+          "similarity": 0.8484,
+          "front": 0.906,
+          "side": 0.793,
+          "top": 0.756
+        },
+        {
+          "name": "locust",
+          "similarity": 0.842,
+          "front": 0.888,
+          "side": 0.691,
+          "top": 0.924
+        },
+        {
+          "name": "bushwacker",
+          "similarity": 0.8384,
+          "front": 0.87,
+          "side": 0.797,
+          "top": 0.803
+        },
+        {
+          "name": "suburbanmech",
+          "similarity": 0.8377,
+          "front": 0.876,
+          "side": 0.736,
+          "top": 0.879
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.8364,
+          "front": 0.862,
+          "side": 0.811,
+          "top": 0.816
+        }
+      ],
+      "top_similarity": 0.8484
+    },
+    {
+      "model": "katana",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "crockett",
+          "similarity": 0.9801,
+          "front": 0.992,
+          "side": 0.97,
+          "top": 0.963
+        },
+        {
+          "name": "spartan",
+          "similarity": 0.9646,
+          "front": 0.987,
+          "side": 0.954,
+          "top": 0.914
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.936,
+          "front": 0.964,
+          "side": 0.939,
+          "top": 0.859
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9326,
+          "front": 0.981,
+          "side": 0.913,
+          "top": 0.832
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9321,
+          "front": 0.984,
+          "side": 0.91,
+          "top": 0.819
+        }
+      ],
+      "top_similarity": 0.9801
+    },
+    {
+      "model": "king_crab",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "urbanmech",
+          "similarity": 0.9093,
+          "front": 0.926,
+          "side": 0.896,
+          "top": 0.89
+        },
+        {
+          "name": "stalker",
+          "similarity": 0.8954,
+          "front": 0.885,
+          "side": 0.896,
+          "top": 0.915
+        },
+        {
+          "name": "firestarter",
+          "similarity": 0.8923,
+          "front": 0.904,
+          "side": 0.844,
+          "top": 0.919
+        },
+        {
+          "name": "dire_wolf",
+          "similarity": 0.8909,
+          "front": 0.887,
+          "side": 0.86,
+          "top": 0.921
+        },
+        {
+          "name": "vindicator",
+          "similarity": 0.8802,
+          "front": 0.873,
+          "side": 0.889,
+          "top": 0.868
+        }
+      ],
+      "top_similarity": 0.9093
+    },
+    {
+      "model": "kintaro",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "crusader",
+          "similarity": 0.951,
+          "front": 0.943,
+          "side": 0.963,
+          "top": 0.951
+        },
+        {
+          "name": "trebuchet",
+          "similarity": 0.9469,
+          "front": 0.926,
+          "side": 0.965,
+          "top": 0.971
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.944,
+          "front": 0.968,
+          "side": 0.923,
+          "top": 0.894
+        },
+        {
+          "name": "crab",
+          "similarity": 0.9406,
+          "front": 0.963,
+          "side": 0.906,
+          "top": 0.93
+        },
+        {
+          "name": "shogun",
+          "similarity": 0.9391,
+          "front": 0.965,
+          "side": 0.897,
+          "top": 0.936
+        }
+      ],
+      "top_similarity": 0.951
+    },
+    {
+      "model": "kit_fox",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "ice_ferret",
+          "similarity": 0.9076,
+          "front": 0.931,
+          "side": 0.878,
+          "top": 0.865
+        },
+        {
+          "name": "helios",
+          "similarity": 0.8975,
+          "front": 0.925,
+          "side": 0.884,
+          "top": 0.817
+        },
+        {
+          "name": "legionnaire",
+          "similarity": 0.8969,
+          "front": 0.91,
+          "side": 0.873,
+          "top": 0.903
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.881,
+          "front": 0.933,
+          "side": 0.873,
+          "top": 0.755
+        },
+        {
+          "name": "grendel",
+          "similarity": 0.8791,
+          "front": 0.931,
+          "side": 0.802,
+          "top": 0.826
+        }
+      ],
+      "top_similarity": 0.9076
+    },
+    {
+      "model": "kodiak",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "pillager",
+          "similarity": 0.8635,
+          "front": 0.856,
+          "side": 0.862,
+          "top": 0.853
+        },
+        {
+          "name": "hatamoto_chi",
+          "similarity": 0.8566,
+          "front": 0.868,
+          "side": 0.825,
+          "top": 0.857
+        },
+        {
+          "name": "turkina",
+          "similarity": 0.856,
+          "front": 0.89,
+          "side": 0.772,
+          "top": 0.852
+        },
+        {
+          "name": "crockett",
+          "similarity": 0.8556,
+          "front": 0.845,
+          "side": 0.817,
+          "top": 0.894
+        },
+        {
+          "name": "cyclops",
+          "similarity": 0.8503,
+          "front": 0.837,
+          "side": 0.799,
+          "top": 0.911
+        }
+      ],
+      "top_similarity": 0.8635
+    },
+    {
+      "model": "lancelot",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "chameleon",
+          "similarity": 0.9628,
+          "front": 0.962,
+          "side": 0.974,
+          "top": 0.942
+        },
+        {
+          "name": "guillotine",
+          "similarity": 0.9461,
+          "front": 0.961,
+          "side": 0.936,
+          "top": 0.924
+        },
+        {
+          "name": "thanatos",
+          "similarity": 0.9366,
+          "front": 0.954,
+          "side": 0.92,
+          "top": 0.901
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.932,
+          "front": 0.969,
+          "side": 0.922,
+          "top": 0.852
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9271,
+          "front": 0.956,
+          "side": 0.895,
+          "top": 0.91
+        }
+      ],
+      "top_similarity": 0.9628
+    },
+    {
+      "model": "legionnaire",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "ice_ferret",
+          "similarity": 0.9128,
+          "front": 0.945,
+          "side": 0.893,
+          "top": 0.888
+        },
+        {
+          "name": "hermes_ii",
+          "similarity": 0.9081,
+          "front": 0.932,
+          "side": 0.867,
+          "top": 0.893
+        },
+        {
+          "name": "excalibur",
+          "similarity": 0.9078,
+          "front": 0.934,
+          "side": 0.878,
+          "top": 0.884
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.8972,
+          "front": 0.952,
+          "side": 0.826,
+          "top": 0.857
+        },
+        {
+          "name": "kit_fox",
+          "similarity": 0.8969,
+          "front": 0.91,
+          "side": 0.873,
+          "top": 0.903
+        }
+      ],
+      "top_similarity": 0.9128
+    },
+    {
+      "model": "linebacker",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "grizzly",
+          "similarity": 0.9299,
+          "front": 0.928,
+          "side": 0.935,
+          "top": 0.931
+        },
+        {
+          "name": "thug",
+          "similarity": 0.9188,
+          "front": 0.923,
+          "side": 0.918,
+          "top": 0.915
+        },
+        {
+          "name": "piranha",
+          "similarity": 0.9032,
+          "front": 0.918,
+          "side": 0.851,
+          "top": 0.918
+        },
+        {
+          "name": "stormcrow",
+          "similarity": 0.9027,
+          "front": 0.916,
+          "side": 0.901,
+          "top": 0.873
+        },
+        {
+          "name": "mad_dog",
+          "similarity": 0.9,
+          "front": 0.92,
+          "side": 0.897,
+          "top": 0.856
+        }
+      ],
+      "top_similarity": 0.9299
+    },
+    {
+      "model": "locust",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "suburbanmech",
+          "similarity": 0.9014,
+          "front": 0.935,
+          "side": 0.822,
+          "top": 0.943
+        },
+        {
+          "name": "cicada",
+          "similarity": 0.8652,
+          "front": 0.857,
+          "side": 0.836,
+          "top": 0.903
+        },
+        {
+          "name": "mercury",
+          "similarity": 0.86,
+          "front": 0.903,
+          "side": 0.789,
+          "top": 0.826
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.8595,
+          "front": 0.87,
+          "side": 0.86,
+          "top": 0.836
+        },
+        {
+          "name": "ostsol",
+          "similarity": 0.8589,
+          "front": 0.898,
+          "side": 0.797,
+          "top": 0.819
+        }
+      ],
+      "top_similarity": 0.9014
+    },
+    {
+      "model": "longbow",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "trebuchet",
+          "similarity": 0.902,
+          "front": 0.884,
+          "side": 0.918,
+          "top": 0.93
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.8787,
+          "front": 0.85,
+          "side": 0.902,
+          "top": 0.924
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.8633,
+          "front": 0.819,
+          "side": 0.917,
+          "top": 0.903
+        },
+        {
+          "name": "crab",
+          "similarity": 0.8618,
+          "front": 0.845,
+          "side": 0.858,
+          "top": 0.905
+        },
+        {
+          "name": "ostsol",
+          "similarity": 0.8529,
+          "front": 0.845,
+          "side": 0.953,
+          "top": 0.76
+        }
+      ],
+      "top_similarity": 0.902
+    },
+    {
+      "model": "mackie",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "devastator",
+          "similarity": 0.9002,
+          "front": 0.974,
+          "side": 0.797,
+          "top": 0.824
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.8931,
+          "front": 0.957,
+          "side": 0.844,
+          "top": 0.781
+        },
+        {
+          "name": "penetrator",
+          "similarity": 0.8827,
+          "front": 0.898,
+          "side": 0.846,
+          "top": 0.879
+        },
+        {
+          "name": "falconer",
+          "similarity": 0.877,
+          "front": 0.832,
+          "side": 0.934,
+          "top": 0.899
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.8738,
+          "front": 0.86,
+          "side": 0.838,
+          "top": 0.93
+        }
+      ],
+      "top_similarity": 0.9002
+    },
+    {
+      "model": "mad_dog",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "shockwave",
+          "similarity": 0.9188,
+          "front": 0.945,
+          "side": 0.861,
+          "top": 0.9
+        },
+        {
+          "name": "stormcrow",
+          "similarity": 0.9098,
+          "front": 0.905,
+          "side": 0.932,
+          "top": 0.891
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.907,
+          "front": 0.911,
+          "side": 0.928,
+          "top": 0.88
+        },
+        {
+          "name": "raven",
+          "similarity": 0.9042,
+          "front": 0.913,
+          "side": 0.882,
+          "top": 0.904
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.9038,
+          "front": 0.936,
+          "side": 0.892,
+          "top": 0.84
+        }
+      ],
+      "top_similarity": 0.9188
+    },
+    {
+      "model": "malice",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "zeus",
+          "similarity": 0.9258,
+          "front": 0.936,
+          "side": 0.921,
+          "top": 0.881
+        },
+        {
+          "name": "stalker",
+          "similarity": 0.9251,
+          "front": 0.937,
+          "side": 0.898,
+          "top": 0.922
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9246,
+          "front": 0.929,
+          "side": 0.902,
+          "top": 0.916
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.9192,
+          "front": 0.983,
+          "side": 0.845,
+          "top": 0.869
+        },
+        {
+          "name": "mauler",
+          "similarity": 0.919,
+          "front": 0.946,
+          "side": 0.899,
+          "top": 0.9
+        }
+      ],
+      "top_similarity": 0.9258
+    },
+    {
+      "model": "marauder",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "nova",
+          "similarity": 0.9171,
+          "front": 0.899,
+          "side": 0.918,
+          "top": 0.944
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9082,
+          "front": 0.937,
+          "side": 0.877,
+          "top": 0.867
+        },
+        {
+          "name": "bushwacker",
+          "similarity": 0.9036,
+          "front": 0.925,
+          "side": 0.877,
+          "top": 0.866
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9028,
+          "front": 0.918,
+          "side": 0.897,
+          "top": 0.861
+        },
+        {
+          "name": "warhammer",
+          "similarity": 0.8983,
+          "front": 0.907,
+          "side": 0.861,
+          "top": 0.897
+        }
+      ],
+      "top_similarity": 0.9171
+    },
+    {
+      "model": "mauler",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "malice",
+          "similarity": 0.919,
+          "front": 0.946,
+          "side": 0.899,
+          "top": 0.9
+        },
+        {
+          "name": "dire_wolf",
+          "similarity": 0.907,
+          "front": 0.913,
+          "side": 0.932,
+          "top": 0.883
+        },
+        {
+          "name": "mad_dog",
+          "similarity": 0.9024,
+          "front": 0.904,
+          "side": 0.933,
+          "top": 0.844
+        },
+        {
+          "name": "nova",
+          "similarity": 0.9012,
+          "front": 0.933,
+          "side": 0.888,
+          "top": 0.832
+        },
+        {
+          "name": "stalker",
+          "similarity": 0.9003,
+          "front": 0.917,
+          "side": 0.886,
+          "top": 0.871
+        }
+      ],
+      "top_similarity": 0.919
+    },
+    {
+      "model": "mercury",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "mongoose",
+          "similarity": 0.9267,
+          "front": 0.951,
+          "side": 0.885,
+          "top": 0.901
+        },
+        {
+          "name": "venom",
+          "similarity": 0.925,
+          "front": 0.954,
+          "side": 0.915,
+          "top": 0.858
+        },
+        {
+          "name": "commando",
+          "similarity": 0.918,
+          "front": 0.934,
+          "side": 0.921,
+          "top": 0.878
+        },
+        {
+          "name": "suburbanmech",
+          "similarity": 0.9154,
+          "front": 0.97,
+          "side": 0.903,
+          "top": 0.811
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9132,
+          "front": 0.934,
+          "side": 0.894,
+          "top": 0.889
+        }
+      ],
+      "top_similarity": 0.9267
+    },
+    {
+      "model": "merlin",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "battleaxe",
+          "similarity": 0.9397,
+          "front": 0.945,
+          "side": 0.934,
+          "top": 0.915
+        },
+        {
+          "name": "wolfhound",
+          "similarity": 0.9319,
+          "front": 0.95,
+          "side": 0.915,
+          "top": 0.897
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9317,
+          "front": 0.934,
+          "side": 0.923,
+          "top": 0.929
+        },
+        {
+          "name": "ostwar",
+          "similarity": 0.9316,
+          "front": 0.979,
+          "side": 0.908,
+          "top": 0.853
+        },
+        {
+          "name": "whitworth",
+          "similarity": 0.9296,
+          "front": 0.958,
+          "side": 0.886,
+          "top": 0.913
+        }
+      ],
+      "top_similarity": 0.9397
+    },
+    {
+      "model": "mist_lynx",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "merlin",
+          "similarity": 0.9202,
+          "front": 0.926,
+          "side": 0.907,
+          "top": 0.924
+        },
+        {
+          "name": "hellspawn",
+          "similarity": 0.9178,
+          "front": 0.934,
+          "side": 0.941,
+          "top": 0.869
+        },
+        {
+          "name": "shockwave",
+          "similarity": 0.9145,
+          "front": 0.904,
+          "side": 0.909,
+          "top": 0.935
+        },
+        {
+          "name": "bushwacker",
+          "similarity": 0.9112,
+          "front": 0.931,
+          "side": 0.933,
+          "top": 0.861
+        },
+        {
+          "name": "viper",
+          "similarity": 0.9047,
+          "front": 0.951,
+          "side": 0.929,
+          "top": 0.81
+        }
+      ],
+      "top_similarity": 0.9202
+    },
+    {
+      "model": "mongoose",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "stinger",
+          "similarity": 0.9435,
+          "front": 0.958,
+          "side": 0.966,
+          "top": 0.896
+        },
+        {
+          "name": "mercury",
+          "similarity": 0.9267,
+          "front": 0.951,
+          "side": 0.885,
+          "top": 0.901
+        },
+        {
+          "name": "ostroc",
+          "similarity": 0.9178,
+          "front": 0.935,
+          "side": 0.938,
+          "top": 0.853
+        },
+        {
+          "name": "commando",
+          "similarity": 0.914,
+          "front": 0.937,
+          "side": 0.92,
+          "top": 0.844
+        },
+        {
+          "name": "venom",
+          "similarity": 0.913,
+          "front": 0.968,
+          "side": 0.894,
+          "top": 0.789
+        }
+      ],
+      "top_similarity": 0.9435
+    },
+    {
+      "model": "night_gyr",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "gunslinger",
+          "similarity": 0.9337,
+          "front": 0.946,
+          "side": 0.926,
+          "top": 0.907
+        },
+        {
+          "name": "falconer",
+          "similarity": 0.9332,
+          "front": 0.953,
+          "side": 0.899,
+          "top": 0.93
+        },
+        {
+          "name": "thanatos",
+          "similarity": 0.9321,
+          "front": 0.968,
+          "side": 0.886,
+          "top": 0.916
+        },
+        {
+          "name": "clint",
+          "similarity": 0.9293,
+          "front": 0.951,
+          "side": 0.92,
+          "top": 0.87
+        },
+        {
+          "name": "excalibur",
+          "similarity": 0.9089,
+          "front": 0.943,
+          "side": 0.886,
+          "top": 0.846
+        }
+      ],
+      "top_similarity": 0.9337
+    },
+    {
+      "model": "nightsky",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "axman",
+          "similarity": 0.9041,
+          "front": 0.901,
+          "side": 0.883,
+          "top": 0.922
+        },
+        {
+          "name": "hatchetman",
+          "similarity": 0.8706,
+          "front": 0.854,
+          "side": 0.872,
+          "top": 0.914
+        },
+        {
+          "name": "scarabus",
+          "similarity": 0.8629,
+          "front": 0.889,
+          "side": 0.845,
+          "top": 0.8
+        },
+        {
+          "name": "vindicator",
+          "similarity": 0.8305,
+          "front": 0.794,
+          "side": 0.881,
+          "top": 0.821
+        },
+        {
+          "name": "malice",
+          "similarity": 0.8261,
+          "front": 0.776,
+          "side": 0.899,
+          "top": 0.819
+        }
+      ],
+      "top_similarity": 0.9041
+    },
+    {
+      "model": "nightstar",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "warhawk",
+          "similarity": 0.948,
+          "front": 0.952,
+          "side": 0.943,
+          "top": 0.938
+        },
+        {
+          "name": "stormcrow",
+          "similarity": 0.9165,
+          "front": 0.903,
+          "side": 0.955,
+          "top": 0.892
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.9058,
+          "front": 0.889,
+          "side": 0.947,
+          "top": 0.886
+        },
+        {
+          "name": "thug",
+          "similarity": 0.9047,
+          "front": 0.902,
+          "side": 0.879,
+          "top": 0.916
+        },
+        {
+          "name": "linebacker",
+          "similarity": 0.8986,
+          "front": 0.907,
+          "side": 0.892,
+          "top": 0.903
+        }
+      ],
+      "top_similarity": 0.948
+    },
+    {
+      "model": "nova",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "gargoyle",
+          "similarity": 0.9434,
+          "front": 0.943,
+          "side": 0.945,
+          "top": 0.933
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.9279,
+          "front": 0.953,
+          "side": 0.9,
+          "top": 0.896
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9245,
+          "front": 0.928,
+          "side": 0.93,
+          "top": 0.899
+        },
+        {
+          "name": "stormcrow",
+          "similarity": 0.9231,
+          "front": 0.945,
+          "side": 0.897,
+          "top": 0.893
+        },
+        {
+          "name": "stalker",
+          "similarity": 0.9229,
+          "front": 0.945,
+          "side": 0.922,
+          "top": 0.85
+        }
+      ],
+      "top_similarity": 0.9434
+    },
+    {
+      "model": "orion",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "quickdraw",
+          "similarity": 0.9487,
+          "front": 0.956,
+          "side": 0.95,
+          "top": 0.938
+        },
+        {
+          "name": "javelin",
+          "similarity": 0.9421,
+          "front": 0.954,
+          "side": 0.921,
+          "top": 0.938
+        },
+        {
+          "name": "charger",
+          "similarity": 0.9356,
+          "front": 0.95,
+          "side": 0.931,
+          "top": 0.894
+        },
+        {
+          "name": "whitworth",
+          "similarity": 0.9312,
+          "front": 0.946,
+          "side": 0.917,
+          "top": 0.919
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.9267,
+          "front": 0.937,
+          "side": 0.924,
+          "top": 0.912
+        }
+      ],
+      "top_similarity": 0.9487
+    },
+    {
+      "model": "ostroc",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "whitworth",
+          "similarity": 0.9231,
+          "front": 0.942,
+          "side": 0.917,
+          "top": 0.893
+        },
+        {
+          "name": "mongoose",
+          "similarity": 0.9178,
+          "front": 0.935,
+          "side": 0.938,
+          "top": 0.853
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9156,
+          "front": 0.903,
+          "side": 0.917,
+          "top": 0.926
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.912,
+          "front": 0.965,
+          "side": 0.874,
+          "top": 0.87
+        },
+        {
+          "name": "stinger",
+          "similarity": 0.9097,
+          "front": 0.923,
+          "side": 0.947,
+          "top": 0.825
+        }
+      ],
+      "top_similarity": 0.9231
+    },
+    {
+      "model": "ostscout",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "wasp",
+          "similarity": 0.9124,
+          "front": 0.941,
+          "side": 0.895,
+          "top": 0.848
+        },
+        {
+          "name": "venom",
+          "similarity": 0.8979,
+          "front": 0.928,
+          "side": 0.845,
+          "top": 0.907
+        },
+        {
+          "name": "howler",
+          "similarity": 0.8915,
+          "front": 0.855,
+          "side": 0.925,
+          "top": 0.955
+        },
+        {
+          "name": "assassin",
+          "similarity": 0.8886,
+          "front": 0.848,
+          "side": 0.935,
+          "top": 0.917
+        },
+        {
+          "name": "fire_moth",
+          "similarity": 0.8835,
+          "front": 0.863,
+          "side": 0.897,
+          "top": 0.909
+        }
+      ],
+      "top_similarity": 0.9124
+    },
+    {
+      "model": "ostsol",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "shockwave",
+          "similarity": 0.901,
+          "front": 0.904,
+          "side": 0.891,
+          "top": 0.903
+        },
+        {
+          "name": "javelin",
+          "similarity": 0.8999,
+          "front": 0.891,
+          "side": 0.92,
+          "top": 0.875
+        },
+        {
+          "name": "cyclops",
+          "similarity": 0.8997,
+          "front": 0.888,
+          "side": 0.891,
+          "top": 0.928
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.8955,
+          "front": 0.915,
+          "side": 0.895,
+          "top": 0.858
+        },
+        {
+          "name": "banshee",
+          "similarity": 0.8941,
+          "front": 0.883,
+          "side": 0.931,
+          "top": 0.856
+        }
+      ],
+      "top_similarity": 0.901
+    },
+    {
+      "model": "ostwar",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "shogun",
+          "similarity": 0.9551,
+          "front": 0.968,
+          "side": 0.954,
+          "top": 0.928
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9316,
+          "front": 0.979,
+          "side": 0.908,
+          "top": 0.853
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.9194,
+          "front": 0.945,
+          "side": 0.89,
+          "top": 0.889
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9173,
+          "front": 0.942,
+          "side": 0.904,
+          "top": 0.88
+        },
+        {
+          "name": "firebee",
+          "similarity": 0.9167,
+          "front": 0.935,
+          "side": 0.882,
+          "top": 0.901
+        }
+      ],
+      "top_similarity": 0.9551
+    },
+    {
+      "model": "pack_hunter",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "legionnaire",
+          "similarity": 0.8923,
+          "front": 0.889,
+          "side": 0.944,
+          "top": 0.854
+        },
+        {
+          "name": "hollander",
+          "similarity": 0.8795,
+          "front": 0.92,
+          "side": 0.8,
+          "top": 0.939
+        },
+        {
+          "name": "hermes_ii",
+          "similarity": 0.8671,
+          "front": 0.908,
+          "side": 0.881,
+          "top": 0.732
+        },
+        {
+          "name": "kit_fox",
+          "similarity": 0.8586,
+          "front": 0.864,
+          "side": 0.865,
+          "top": 0.861
+        },
+        {
+          "name": "adder",
+          "similarity": 0.8521,
+          "front": 0.92,
+          "side": 0.829,
+          "top": 0.707
+        }
+      ],
+      "top_similarity": 0.8923
+    },
+    {
+      "model": "panther",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "highlander",
+          "similarity": 0.9393,
+          "front": 0.96,
+          "side": 0.926,
+          "top": 0.888
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9138,
+          "front": 0.953,
+          "side": 0.873,
+          "top": 0.86
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9109,
+          "front": 0.943,
+          "side": 0.855,
+          "top": 0.893
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.9094,
+          "front": 0.912,
+          "side": 0.879,
+          "top": 0.926
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9086,
+          "front": 0.963,
+          "side": 0.851,
+          "top": 0.86
+        }
+      ],
+      "top_similarity": 0.9393
+    },
+    {
+      "model": "penetrator",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "gunslinger",
+          "similarity": 0.9467,
+          "front": 0.96,
+          "side": 0.918,
+          "top": 0.945
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.9426,
+          "front": 0.979,
+          "side": 0.877,
+          "top": 0.929
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9333,
+          "front": 0.965,
+          "side": 0.917,
+          "top": 0.882
+        },
+        {
+          "name": "hoplite",
+          "similarity": 0.9316,
+          "front": 0.962,
+          "side": 0.916,
+          "top": 0.879
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9284,
+          "front": 0.978,
+          "side": 0.887,
+          "top": 0.865
+        }
+      ],
+      "top_similarity": 0.9467
+    },
+    {
+      "model": "phoenix_hawk",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "quickdraw",
+          "similarity": 0.8888,
+          "front": 0.931,
+          "side": 0.816,
+          "top": 0.87
+        },
+        {
+          "name": "firestarter",
+          "similarity": 0.8876,
+          "front": 0.89,
+          "side": 0.867,
+          "top": 0.904
+        },
+        {
+          "name": "grasshopper",
+          "similarity": 0.8824,
+          "front": 0.914,
+          "side": 0.82,
+          "top": 0.865
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.8787,
+          "front": 0.929,
+          "side": 0.77,
+          "top": 0.88
+        },
+        {
+          "name": "dervish",
+          "similarity": 0.8762,
+          "front": 0.928,
+          "side": 0.809,
+          "top": 0.842
+        }
+      ],
+      "top_similarity": 0.8888
+    },
+    {
+      "model": "pillager",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "crockett",
+          "similarity": 0.9475,
+          "front": 0.971,
+          "side": 0.894,
+          "top": 0.957
+        },
+        {
+          "name": "katana",
+          "similarity": 0.923,
+          "front": 0.967,
+          "side": 0.86,
+          "top": 0.902
+        },
+        {
+          "name": "penetrator",
+          "similarity": 0.9141,
+          "front": 0.967,
+          "side": 0.905,
+          "top": 0.792
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9081,
+          "front": 0.982,
+          "side": 0.856,
+          "top": 0.776
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.9042,
+          "front": 0.967,
+          "side": 0.89,
+          "top": 0.773
+        }
+      ],
+      "top_similarity": 0.9475
+    },
+    {
+      "model": "piranha",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "cicada",
+          "similarity": 0.9112,
+          "front": 0.94,
+          "side": 0.919,
+          "top": 0.881
+        },
+        {
+          "name": "shockwave",
+          "similarity": 0.9051,
+          "front": 0.904,
+          "side": 0.912,
+          "top": 0.899
+        },
+        {
+          "name": "linebacker",
+          "similarity": 0.9032,
+          "front": 0.918,
+          "side": 0.851,
+          "top": 0.918
+        },
+        {
+          "name": "mad_dog",
+          "similarity": 0.9013,
+          "front": 0.908,
+          "side": 0.904,
+          "top": 0.875
+        },
+        {
+          "name": "chimera",
+          "similarity": 0.894,
+          "front": 0.904,
+          "side": 0.89,
+          "top": 0.866
+        }
+      ],
+      "top_similarity": 0.9112
+    },
+    {
+      "model": "quickdraw",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "orion",
+          "similarity": 0.9487,
+          "front": 0.956,
+          "side": 0.95,
+          "top": 0.938
+        },
+        {
+          "name": "javelin",
+          "similarity": 0.948,
+          "front": 0.96,
+          "side": 0.919,
+          "top": 0.97
+        },
+        {
+          "name": "grasshopper",
+          "similarity": 0.9441,
+          "front": 0.96,
+          "side": 0.947,
+          "top": 0.9
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.9432,
+          "front": 0.946,
+          "side": 0.949,
+          "top": 0.937
+        },
+        {
+          "name": "whitworth",
+          "similarity": 0.9373,
+          "front": 0.938,
+          "side": 0.94,
+          "top": 0.935
+        }
+      ],
+      "top_similarity": 0.9487
+    },
+    {
+      "model": "raven",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "flea",
+          "similarity": 0.922,
+          "front": 0.929,
+          "side": 0.884,
+          "top": 0.936
+        },
+        {
+          "name": "mad_dog",
+          "similarity": 0.9042,
+          "front": 0.913,
+          "side": 0.882,
+          "top": 0.904
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.8986,
+          "front": 0.915,
+          "side": 0.882,
+          "top": 0.903
+        },
+        {
+          "name": "cicada",
+          "similarity": 0.8974,
+          "front": 0.932,
+          "side": 0.811,
+          "top": 0.884
+        },
+        {
+          "name": "piranha",
+          "similarity": 0.8798,
+          "front": 0.927,
+          "side": 0.861,
+          "top": 0.794
+        }
+      ],
+      "top_similarity": 0.922
+    },
+    {
+      "model": "rifleman",
+      "risk": "lower",
+      "closest": [
+        {
+          "name": "blackjack",
+          "similarity": 0.8263,
+          "front": 0.87,
+          "side": 0.705,
+          "top": 0.851
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.8236,
+          "front": 0.868,
+          "side": 0.783,
+          "top": 0.769
+        },
+        {
+          "name": "urbanmech",
+          "similarity": 0.8213,
+          "front": 0.948,
+          "side": 0.666,
+          "top": 0.67
+        },
+        {
+          "name": "stalker",
+          "similarity": 0.817,
+          "front": 0.919,
+          "side": 0.638,
+          "top": 0.78
+        },
+        {
+          "name": "king_crab",
+          "similarity": 0.8148,
+          "front": 0.885,
+          "side": 0.686,
+          "top": 0.755
+        }
+      ],
+      "top_similarity": 0.8263
+    },
+    {
+      "model": "sagittaire",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "ymir",
+          "similarity": 0.9549,
+          "front": 0.985,
+          "side": 0.937,
+          "top": 0.901
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.953,
+          "front": 0.974,
+          "side": 0.944,
+          "top": 0.914
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9483,
+          "front": 0.969,
+          "side": 0.93,
+          "top": 0.923
+        },
+        {
+          "name": "penetrator",
+          "similarity": 0.9426,
+          "front": 0.979,
+          "side": 0.877,
+          "top": 0.929
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9332,
+          "front": 0.958,
+          "side": 0.93,
+          "top": 0.86
+        }
+      ],
+      "top_similarity": 0.9549
+    },
+    {
+      "model": "scarabus",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "nightsky",
+          "similarity": 0.8629,
+          "front": 0.889,
+          "side": 0.845,
+          "top": 0.8
+        },
+        {
+          "name": "hatchetman",
+          "similarity": 0.8079,
+          "front": 0.806,
+          "side": 0.796,
+          "top": 0.784
+        },
+        {
+          "name": "timber_wolf",
+          "similarity": 0.7875,
+          "front": 0.695,
+          "side": 0.904,
+          "top": 0.804
+        },
+        {
+          "name": "axman",
+          "similarity": 0.7806,
+          "front": 0.799,
+          "side": 0.762,
+          "top": 0.725
+        },
+        {
+          "name": "gargoyle",
+          "similarity": 0.776,
+          "front": 0.685,
+          "side": 0.923,
+          "top": 0.817
+        }
+      ],
+      "top_similarity": 0.8629
+    },
+    {
+      "model": "scorpion",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "goliath",
+          "similarity": 0.951,
+          "front": 0.949,
+          "side": 0.95,
+          "top": 0.967
+        },
+        {
+          "name": "tarantula",
+          "similarity": 0.9326,
+          "front": 0.929,
+          "side": 0.95,
+          "top": 0.954
+        },
+        {
+          "name": "thunder_stallion",
+          "similarity": 0.9099,
+          "front": 0.932,
+          "side": 0.877,
+          "top": 0.891
+        },
+        {
+          "name": "kit_fox",
+          "similarity": 0.7671,
+          "front": 0.749,
+          "side": 0.712,
+          "top": 0.863
+        },
+        {
+          "name": "shadow_cat",
+          "similarity": 0.7578,
+          "front": 0.765,
+          "side": 0.711,
+          "top": 0.804
+        }
+      ],
+      "top_similarity": 0.951
+    },
+    {
+      "model": "sentinel",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "icarus_ii",
+          "similarity": 0.9593,
+          "front": 0.979,
+          "side": 0.907,
+          "top": 0.981
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.9507,
+          "front": 0.988,
+          "side": 0.92,
+          "top": 0.879
+        },
+        {
+          "name": "hel",
+          "similarity": 0.9377,
+          "front": 0.962,
+          "side": 0.933,
+          "top": 0.865
+        },
+        {
+          "name": "helios",
+          "similarity": 0.9281,
+          "front": 0.915,
+          "side": 0.965,
+          "top": 0.901
+        },
+        {
+          "name": "grizzly",
+          "similarity": 0.9144,
+          "front": 0.896,
+          "side": 0.942,
+          "top": 0.902
+        }
+      ],
+      "top_similarity": 0.9593
+    },
+    {
+      "model": "shadow_cat",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "mad_dog",
+          "similarity": 0.9038,
+          "front": 0.936,
+          "side": 0.892,
+          "top": 0.84
+        },
+        {
+          "name": "raven",
+          "similarity": 0.8986,
+          "front": 0.915,
+          "side": 0.882,
+          "top": 0.903
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.8958,
+          "front": 0.949,
+          "side": 0.822,
+          "top": 0.824
+        },
+        {
+          "name": "stormcrow",
+          "similarity": 0.8914,
+          "front": 0.938,
+          "side": 0.813,
+          "top": 0.851
+        },
+        {
+          "name": "adder",
+          "similarity": 0.8891,
+          "front": 0.903,
+          "side": 0.876,
+          "top": 0.855
+        }
+      ],
+      "top_similarity": 0.9038
+    },
+    {
+      "model": "shadow_hawk",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "centurion",
+          "similarity": 0.8978,
+          "front": 0.946,
+          "side": 0.832,
+          "top": 0.886
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.8971,
+          "front": 0.947,
+          "side": 0.828,
+          "top": 0.864
+        },
+        {
+          "name": "griffin",
+          "similarity": 0.8947,
+          "front": 0.926,
+          "side": 0.848,
+          "top": 0.872
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.8897,
+          "front": 0.944,
+          "side": 0.818,
+          "top": 0.862
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.8864,
+          "front": 0.933,
+          "side": 0.832,
+          "top": 0.855
+        }
+      ],
+      "top_similarity": 0.8978
+    },
+    {
+      "model": "shockwave",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "stalker",
+          "similarity": 0.9194,
+          "front": 0.916,
+          "side": 0.899,
+          "top": 0.951
+        },
+        {
+          "name": "mad_dog",
+          "similarity": 0.9188,
+          "front": 0.945,
+          "side": 0.861,
+          "top": 0.9
+        },
+        {
+          "name": "nova",
+          "similarity": 0.9183,
+          "front": 0.935,
+          "side": 0.951,
+          "top": 0.835
+        },
+        {
+          "name": "mist_lynx",
+          "similarity": 0.9145,
+          "front": 0.904,
+          "side": 0.909,
+          "top": 0.935
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9112,
+          "front": 0.893,
+          "side": 0.926,
+          "top": 0.913
+        }
+      ],
+      "top_similarity": 0.9194
+    },
+    {
+      "model": "shogun",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "ostwar",
+          "similarity": 0.9551,
+          "front": 0.968,
+          "side": 0.954,
+          "top": 0.928
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.9391,
+          "front": 0.965,
+          "side": 0.897,
+          "top": 0.936
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.9331,
+          "front": 0.949,
+          "side": 0.898,
+          "top": 0.936
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.9279,
+          "front": 0.985,
+          "side": 0.85,
+          "top": 0.873
+        },
+        {
+          "name": "crab",
+          "similarity": 0.9245,
+          "front": 0.944,
+          "side": 0.903,
+          "top": 0.91
+        }
+      ],
+      "top_similarity": 0.9551
+    },
+    {
+      "model": "spartan",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "katana",
+          "similarity": 0.9646,
+          "front": 0.987,
+          "side": 0.954,
+          "top": 0.914
+        },
+        {
+          "name": "crockett",
+          "similarity": 0.9507,
+          "front": 0.985,
+          "side": 0.936,
+          "top": 0.879
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.937,
+          "front": 0.969,
+          "side": 0.93,
+          "top": 0.853
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9277,
+          "front": 0.98,
+          "side": 0.885,
+          "top": 0.85
+        },
+        {
+          "name": "akuma",
+          "similarity": 0.9271,
+          "front": 0.964,
+          "side": 0.894,
+          "top": 0.86
+        }
+      ],
+      "top_similarity": 0.9646
+    },
+    {
+      "model": "spector",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "chameleon",
+          "similarity": 0.9156,
+          "front": 0.912,
+          "side": 0.979,
+          "top": 0.835
+        },
+        {
+          "name": "venom",
+          "similarity": 0.9127,
+          "front": 0.929,
+          "side": 0.919,
+          "top": 0.89
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9081,
+          "front": 0.904,
+          "side": 0.959,
+          "top": 0.838
+        },
+        {
+          "name": "commando",
+          "similarity": 0.905,
+          "front": 0.95,
+          "side": 0.881,
+          "top": 0.819
+        },
+        {
+          "name": "clint",
+          "similarity": 0.899,
+          "front": 0.912,
+          "side": 0.853,
+          "top": 0.921
+        }
+      ],
+      "top_similarity": 0.9156
+    },
+    {
+      "model": "spider",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "grasshopper",
+          "similarity": 0.9234,
+          "front": 0.942,
+          "side": 0.894,
+          "top": 0.917
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9113,
+          "front": 0.939,
+          "side": 0.922,
+          "top": 0.849
+        },
+        {
+          "name": "quickdraw",
+          "similarity": 0.911,
+          "front": 0.959,
+          "side": 0.875,
+          "top": 0.849
+        },
+        {
+          "name": "mongoose",
+          "similarity": 0.8975,
+          "front": 0.932,
+          "side": 0.865,
+          "top": 0.872
+        },
+        {
+          "name": "charger",
+          "similarity": 0.8953,
+          "front": 0.877,
+          "side": 0.912,
+          "top": 0.933
+        }
+      ],
+      "top_similarity": 0.9234
+    },
+    {
+      "model": "stalker",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "malice",
+          "similarity": 0.9251,
+          "front": 0.937,
+          "side": 0.898,
+          "top": 0.922
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.924,
+          "front": 0.918,
+          "side": 0.906,
+          "top": 0.949
+        },
+        {
+          "name": "nova",
+          "similarity": 0.9229,
+          "front": 0.945,
+          "side": 0.922,
+          "top": 0.85
+        },
+        {
+          "name": "shockwave",
+          "similarity": 0.9194,
+          "front": 0.916,
+          "side": 0.899,
+          "top": 0.951
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9149,
+          "front": 0.913,
+          "side": 0.889,
+          "top": 0.941
+        }
+      ],
+      "top_similarity": 0.9251
+    },
+    {
+      "model": "starslayer",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "hel",
+          "similarity": 0.966,
+          "front": 0.966,
+          "side": 0.957,
+          "top": 0.974
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.9527,
+          "front": 0.989,
+          "side": 0.951,
+          "top": 0.871
+        },
+        {
+          "name": "sentinel",
+          "similarity": 0.9507,
+          "front": 0.988,
+          "side": 0.92,
+          "top": 0.879
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9393,
+          "front": 0.981,
+          "side": 0.885,
+          "top": 0.919
+        },
+        {
+          "name": "enforcer",
+          "similarity": 0.9211,
+          "front": 0.938,
+          "side": 0.89,
+          "top": 0.905
+        }
+      ],
+      "top_similarity": 0.966
+    },
+    {
+      "model": "stinger",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "mongoose",
+          "similarity": 0.9435,
+          "front": 0.958,
+          "side": 0.966,
+          "top": 0.896
+        },
+        {
+          "name": "wasp",
+          "similarity": 0.9218,
+          "front": 0.929,
+          "side": 0.929,
+          "top": 0.924
+        },
+        {
+          "name": "ostroc",
+          "similarity": 0.9097,
+          "front": 0.923,
+          "side": 0.947,
+          "top": 0.825
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.908,
+          "front": 0.932,
+          "side": 0.915,
+          "top": 0.865
+        },
+        {
+          "name": "whitworth",
+          "similarity": 0.9042,
+          "front": 0.925,
+          "side": 0.928,
+          "top": 0.857
+        }
+      ],
+      "top_similarity": 0.9435
+    },
+    {
+      "model": "stormcrow",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "dragon",
+          "similarity": 0.9518,
+          "front": 0.971,
+          "side": 0.953,
+          "top": 0.908
+        },
+        {
+          "name": "nova",
+          "similarity": 0.9231,
+          "front": 0.945,
+          "side": 0.897,
+          "top": 0.893
+        },
+        {
+          "name": "warhawk",
+          "similarity": 0.9225,
+          "front": 0.921,
+          "side": 0.941,
+          "top": 0.889
+        },
+        {
+          "name": "thug",
+          "similarity": 0.919,
+          "front": 0.956,
+          "side": 0.894,
+          "top": 0.85
+        },
+        {
+          "name": "nightstar",
+          "similarity": 0.9165,
+          "front": 0.903,
+          "side": 0.955,
+          "top": 0.892
+        }
+      ],
+      "top_similarity": 0.9518
+    },
+    {
+      "model": "suburbanmech",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "mercury",
+          "similarity": 0.9154,
+          "front": 0.97,
+          "side": 0.903,
+          "top": 0.811
+        },
+        {
+          "name": "havoc",
+          "similarity": 0.9067,
+          "front": 0.922,
+          "side": 0.909,
+          "top": 0.841
+        },
+        {
+          "name": "venom",
+          "similarity": 0.9039,
+          "front": 0.947,
+          "side": 0.845,
+          "top": 0.878
+        },
+        {
+          "name": "locust",
+          "similarity": 0.9014,
+          "front": 0.935,
+          "side": 0.822,
+          "top": 0.943
+        },
+        {
+          "name": "firefly",
+          "similarity": 0.9003,
+          "front": 0.937,
+          "side": 0.828,
+          "top": 0.91
+        }
+      ],
+      "top_similarity": 0.9154
+    },
+    {
+      "model": "summoner",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "battlemaster",
+          "similarity": 0.9299,
+          "front": 0.934,
+          "side": 0.922,
+          "top": 0.925
+        },
+        {
+          "name": "thunderbolt",
+          "similarity": 0.9281,
+          "front": 0.923,
+          "side": 0.943,
+          "top": 0.912
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9224,
+          "front": 0.921,
+          "side": 0.92,
+          "top": 0.923
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9215,
+          "front": 0.936,
+          "side": 0.9,
+          "top": 0.919
+        },
+        {
+          "name": "firestarter",
+          "similarity": 0.9159,
+          "front": 0.912,
+          "side": 0.91,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9299
+    },
+    {
+      "model": "supernova",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "argus",
+          "similarity": 0.9055,
+          "front": 0.927,
+          "side": 0.906,
+          "top": 0.823
+        },
+        {
+          "name": "kintaro",
+          "similarity": 0.8998,
+          "front": 0.919,
+          "side": 0.888,
+          "top": 0.876
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.8984,
+          "front": 0.918,
+          "side": 0.893,
+          "top": 0.847
+        },
+        {
+          "name": "nova",
+          "similarity": 0.8958,
+          "front": 0.915,
+          "side": 0.887,
+          "top": 0.864
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.8957,
+          "front": 0.926,
+          "side": 0.884,
+          "top": 0.826
+        }
+      ],
+      "top_similarity": 0.9055
+    },
+    {
+      "model": "tarantula",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "goliath",
+          "similarity": 0.9522,
+          "front": 0.963,
+          "side": 0.924,
+          "top": 0.966
+        },
+        {
+          "name": "scorpion",
+          "similarity": 0.9326,
+          "front": 0.929,
+          "side": 0.95,
+          "top": 0.954
+        },
+        {
+          "name": "thunder_stallion",
+          "similarity": 0.8968,
+          "front": 0.927,
+          "side": 0.877,
+          "top": 0.905
+        },
+        {
+          "name": "jenner",
+          "similarity": 0.8021,
+          "front": 0.783,
+          "side": 0.724,
+          "top": 0.941
+        },
+        {
+          "name": "mad_dog",
+          "similarity": 0.7906,
+          "front": 0.88,
+          "side": 0.633,
+          "top": 0.768
+        }
+      ],
+      "top_similarity": 0.9522
+    },
+    {
+      "model": "thanatos",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "guillotine",
+          "similarity": 0.9557,
+          "front": 0.975,
+          "side": 0.952,
+          "top": 0.918
+        },
+        {
+          "name": "gunslinger",
+          "similarity": 0.9404,
+          "front": 0.966,
+          "side": 0.874,
+          "top": 0.956
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9366,
+          "front": 0.954,
+          "side": 0.92,
+          "top": 0.901
+        },
+        {
+          "name": "night_gyr",
+          "similarity": 0.9321,
+          "front": 0.968,
+          "side": 0.886,
+          "top": 0.916
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.9243,
+          "front": 0.917,
+          "side": 0.941,
+          "top": 0.915
+        }
+      ],
+      "top_similarity": 0.9557
+    },
+    {
+      "model": "thug",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "victor",
+          "similarity": 0.9484,
+          "front": 0.947,
+          "side": 0.935,
+          "top": 0.962
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.925,
+          "front": 0.952,
+          "side": 0.871,
+          "top": 0.926
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.9235,
+          "front": 0.972,
+          "side": 0.88,
+          "top": 0.846
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.9204,
+          "front": 0.941,
+          "side": 0.895,
+          "top": 0.903
+        },
+        {
+          "name": "warhawk",
+          "similarity": 0.92,
+          "front": 0.932,
+          "side": 0.888,
+          "top": 0.913
+        }
+      ],
+      "top_similarity": 0.9484
+    },
+    {
+      "model": "thunder_hawk",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "malice",
+          "similarity": 0.9192,
+          "front": 0.983,
+          "side": 0.845,
+          "top": 0.869
+        },
+        {
+          "name": "devastator",
+          "similarity": 0.9115,
+          "front": 0.96,
+          "side": 0.881,
+          "top": 0.816
+        },
+        {
+          "name": "penetrator",
+          "similarity": 0.9039,
+          "front": 0.93,
+          "side": 0.906,
+          "top": 0.819
+        },
+        {
+          "name": "mackie",
+          "similarity": 0.8931,
+          "front": 0.957,
+          "side": 0.844,
+          "top": 0.781
+        },
+        {
+          "name": "crockett",
+          "similarity": 0.893,
+          "front": 0.915,
+          "side": 0.852,
+          "top": 0.916
+        }
+      ],
+      "top_similarity": 0.9192
+    },
+    {
+      "model": "thunder_stallion",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "scorpion",
+          "similarity": 0.9099,
+          "front": 0.932,
+          "side": 0.877,
+          "top": 0.891
+        },
+        {
+          "name": "tarantula",
+          "similarity": 0.8968,
+          "front": 0.927,
+          "side": 0.877,
+          "top": 0.905
+        },
+        {
+          "name": "goliath",
+          "similarity": 0.8962,
+          "front": 0.933,
+          "side": 0.822,
+          "top": 0.921
+        },
+        {
+          "name": "thunder_hawk",
+          "similarity": 0.7425,
+          "front": 0.726,
+          "side": 0.708,
+          "top": 0.779
+        },
+        {
+          "name": "jenner",
+          "similarity": 0.7419,
+          "front": 0.676,
+          "side": 0.744,
+          "top": 0.879
+        }
+      ],
+      "top_similarity": 0.9099
+    },
+    {
+      "model": "thunderbolt",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "griffin",
+          "similarity": 0.9394,
+          "front": 0.957,
+          "side": 0.905,
+          "top": 0.93
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.9386,
+          "front": 0.963,
+          "side": 0.896,
+          "top": 0.936
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9358,
+          "front": 0.948,
+          "side": 0.914,
+          "top": 0.941
+        },
+        {
+          "name": "summoner",
+          "similarity": 0.9281,
+          "front": 0.923,
+          "side": 0.943,
+          "top": 0.912
+        },
+        {
+          "name": "centurion",
+          "similarity": 0.9219,
+          "front": 0.938,
+          "side": 0.899,
+          "top": 0.917
+        }
+      ],
+      "top_similarity": 0.9394
+    },
+    {
+      "model": "timber_wolf",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "archer",
+          "similarity": 0.8942,
+          "front": 0.923,
+          "side": 0.813,
+          "top": 0.884
+        },
+        {
+          "name": "trebuchet",
+          "similarity": 0.8653,
+          "front": 0.864,
+          "side": 0.876,
+          "top": 0.857
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.8515,
+          "front": 0.813,
+          "side": 0.934,
+          "top": 0.854
+        },
+        {
+          "name": "quickdraw",
+          "similarity": 0.8505,
+          "front": 0.829,
+          "side": 0.874,
+          "top": 0.843
+        },
+        {
+          "name": "crab",
+          "similarity": 0.8503,
+          "front": 0.809,
+          "side": 0.881,
+          "top": 0.913
+        }
+      ],
+      "top_similarity": 0.8942
+    },
+    {
+      "model": "trebuchet",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "kintaro",
+          "similarity": 0.9469,
+          "front": 0.926,
+          "side": 0.965,
+          "top": 0.971
+        },
+        {
+          "name": "crusader",
+          "similarity": 0.9448,
+          "front": 0.937,
+          "side": 0.936,
+          "top": 0.967
+        },
+        {
+          "name": "crab",
+          "similarity": 0.9113,
+          "front": 0.917,
+          "side": 0.902,
+          "top": 0.908
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9046,
+          "front": 0.927,
+          "side": 0.873,
+          "top": 0.867
+        },
+        {
+          "name": "gargoyle",
+          "similarity": 0.903,
+          "front": 0.87,
+          "side": 0.937,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9469
+    },
+    {
+      "model": "turkina",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "kodiak",
+          "similarity": 0.856,
+          "front": 0.89,
+          "side": 0.772,
+          "top": 0.852
+        },
+        {
+          "name": "ymir",
+          "similarity": 0.8486,
+          "front": 0.843,
+          "side": 0.763,
+          "top": 0.934
+        },
+        {
+          "name": "hatamoto_chi",
+          "similarity": 0.8421,
+          "front": 0.851,
+          "side": 0.758,
+          "top": 0.898
+        },
+        {
+          "name": "shogun",
+          "similarity": 0.8408,
+          "front": 0.844,
+          "side": 0.759,
+          "top": 0.909
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.8398,
+          "front": 0.862,
+          "side": 0.715,
+          "top": 0.893
+        }
+      ],
+      "top_similarity": 0.856
+    },
+    {
+      "model": "urbanmech",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "king_crab",
+          "similarity": 0.9093,
+          "front": 0.926,
+          "side": 0.896,
+          "top": 0.89
+        },
+        {
+          "name": "stalker",
+          "similarity": 0.9002,
+          "front": 0.918,
+          "side": 0.92,
+          "top": 0.82
+        },
+        {
+          "name": "dire_wolf",
+          "similarity": 0.8995,
+          "front": 0.905,
+          "side": 0.867,
+          "top": 0.897
+        },
+        {
+          "name": "vindicator",
+          "similarity": 0.8923,
+          "front": 0.863,
+          "side": 0.902,
+          "top": 0.935
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.8915,
+          "front": 0.877,
+          "side": 0.867,
+          "top": 0.958
+        }
+      ],
+      "top_similarity": 0.9093
+    },
+    {
+      "model": "valkyrie",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "whitworth",
+          "similarity": 0.9469,
+          "front": 0.943,
+          "side": 0.952,
+          "top": 0.942
+        },
+        {
+          "name": "quickdraw",
+          "similarity": 0.9432,
+          "front": 0.946,
+          "side": 0.949,
+          "top": 0.937
+        },
+        {
+          "name": "javelin",
+          "similarity": 0.9316,
+          "front": 0.938,
+          "side": 0.91,
+          "top": 0.937
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9165,
+          "front": 0.902,
+          "side": 0.899,
+          "top": 0.966
+        },
+        {
+          "name": "exterminator",
+          "similarity": 0.9163,
+          "front": 0.913,
+          "side": 0.927,
+          "top": 0.908
+        }
+      ],
+      "top_similarity": 0.9469
+    },
+    {
+      "model": "venom",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "mercury",
+          "similarity": 0.925,
+          "front": 0.954,
+          "side": 0.915,
+          "top": 0.858
+        },
+        {
+          "name": "commando",
+          "similarity": 0.9189,
+          "front": 0.943,
+          "side": 0.916,
+          "top": 0.861
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9163,
+          "front": 0.935,
+          "side": 0.928,
+          "top": 0.868
+        },
+        {
+          "name": "mongoose",
+          "similarity": 0.913,
+          "front": 0.968,
+          "side": 0.894,
+          "top": 0.789
+        },
+        {
+          "name": "spector",
+          "similarity": 0.9127,
+          "front": 0.929,
+          "side": 0.919,
+          "top": 0.89
+        }
+      ],
+      "top_similarity": 0.925
+    },
+    {
+      "model": "victor",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "zeus",
+          "similarity": 0.9499,
+          "front": 0.973,
+          "side": 0.933,
+          "top": 0.907
+        },
+        {
+          "name": "thug",
+          "similarity": 0.9484,
+          "front": 0.947,
+          "side": 0.935,
+          "top": 0.962
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.9474,
+          "front": 0.958,
+          "side": 0.939,
+          "top": 0.925
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.9359,
+          "front": 0.957,
+          "side": 0.907,
+          "top": 0.908
+        },
+        {
+          "name": "enforcer",
+          "similarity": 0.9296,
+          "front": 0.929,
+          "side": 0.939,
+          "top": 0.904
+        }
+      ],
+      "top_similarity": 0.9499
+    },
+    {
+      "model": "vindicator",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "black_knight",
+          "similarity": 0.9555,
+          "front": 0.947,
+          "side": 0.944,
+          "top": 0.983
+        },
+        {
+          "name": "firestarter",
+          "similarity": 0.9392,
+          "front": 0.962,
+          "side": 0.933,
+          "top": 0.884
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9374,
+          "front": 0.94,
+          "side": 0.932,
+          "top": 0.932
+        },
+        {
+          "name": "warhammer",
+          "similarity": 0.9303,
+          "front": 0.95,
+          "side": 0.924,
+          "top": 0.887
+        },
+        {
+          "name": "awesome",
+          "similarity": 0.9069,
+          "front": 0.884,
+          "side": 0.929,
+          "top": 0.928
+        }
+      ],
+      "top_similarity": 0.9555
+    },
+    {
+      "model": "viper",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "hellspawn",
+          "similarity": 0.9402,
+          "front": 0.947,
+          "side": 0.948,
+          "top": 0.931
+        },
+        {
+          "name": "firebee",
+          "similarity": 0.923,
+          "front": 0.907,
+          "side": 0.963,
+          "top": 0.911
+        },
+        {
+          "name": "chimera",
+          "similarity": 0.9207,
+          "front": 0.931,
+          "side": 0.912,
+          "top": 0.913
+        },
+        {
+          "name": "mist_lynx",
+          "similarity": 0.9047,
+          "front": 0.951,
+          "side": 0.929,
+          "top": 0.81
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9041,
+          "front": 0.911,
+          "side": 0.912,
+          "top": 0.862
+        }
+      ],
+      "top_similarity": 0.9402
+    },
+    {
+      "model": "vulcan",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "chameleon",
+          "similarity": 0.9026,
+          "front": 0.93,
+          "side": 0.892,
+          "top": 0.852
+        },
+        {
+          "name": "icarus_ii",
+          "similarity": 0.8904,
+          "front": 0.924,
+          "side": 0.846,
+          "top": 0.887
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.8878,
+          "front": 0.931,
+          "side": 0.847,
+          "top": 0.836
+        },
+        {
+          "name": "starslayer",
+          "similarity": 0.8871,
+          "front": 0.913,
+          "side": 0.857,
+          "top": 0.894
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.8868,
+          "front": 0.919,
+          "side": 0.887,
+          "top": 0.819
+        }
+      ],
+      "top_similarity": 0.9026
+    },
+    {
+      "model": "warhammer",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "vindicator",
+          "similarity": 0.9303,
+          "front": 0.95,
+          "side": 0.924,
+          "top": 0.887
+        },
+        {
+          "name": "black_knight",
+          "similarity": 0.9172,
+          "front": 0.914,
+          "side": 0.921,
+          "top": 0.898
+        },
+        {
+          "name": "firestarter",
+          "similarity": 0.9126,
+          "front": 0.948,
+          "side": 0.864,
+          "top": 0.863
+        },
+        {
+          "name": "battlemaster",
+          "similarity": 0.9098,
+          "front": 0.948,
+          "side": 0.854,
+          "top": 0.856
+        },
+        {
+          "name": "thug",
+          "similarity": 0.9036,
+          "front": 0.949,
+          "side": 0.846,
+          "top": 0.854
+        }
+      ],
+      "top_similarity": 0.9303
+    },
+    {
+      "model": "warhawk",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "nightstar",
+          "similarity": 0.948,
+          "front": 0.952,
+          "side": 0.943,
+          "top": 0.938
+        },
+        {
+          "name": "stormcrow",
+          "similarity": 0.9225,
+          "front": 0.921,
+          "side": 0.941,
+          "top": 0.889
+        },
+        {
+          "name": "thug",
+          "similarity": 0.92,
+          "front": 0.932,
+          "side": 0.888,
+          "top": 0.913
+        },
+        {
+          "name": "dragon",
+          "similarity": 0.9141,
+          "front": 0.906,
+          "side": 0.932,
+          "top": 0.894
+        },
+        {
+          "name": "malice",
+          "similarity": 0.9096,
+          "front": 0.92,
+          "side": 0.917,
+          "top": 0.86
+        }
+      ],
+      "top_similarity": 0.948
+    },
+    {
+      "model": "wasp",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "stinger",
+          "similarity": 0.9218,
+          "front": 0.929,
+          "side": 0.929,
+          "top": 0.924
+        },
+        {
+          "name": "ostscout",
+          "similarity": 0.9124,
+          "front": 0.941,
+          "side": 0.895,
+          "top": 0.848
+        },
+        {
+          "name": "mongoose",
+          "similarity": 0.8998,
+          "front": 0.921,
+          "side": 0.895,
+          "top": 0.881
+        },
+        {
+          "name": "valkyrie",
+          "similarity": 0.8955,
+          "front": 0.928,
+          "side": 0.917,
+          "top": 0.819
+        },
+        {
+          "name": "quickdraw",
+          "similarity": 0.8891,
+          "front": 0.876,
+          "side": 0.933,
+          "top": 0.861
+        }
+      ],
+      "top_similarity": 0.9218
+    },
+    {
+      "model": "whitworth",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "valkyrie",
+          "similarity": 0.9469,
+          "front": 0.943,
+          "side": 0.952,
+          "top": 0.942
+        },
+        {
+          "name": "javelin",
+          "similarity": 0.9381,
+          "front": 0.95,
+          "side": 0.91,
+          "top": 0.949
+        },
+        {
+          "name": "quickdraw",
+          "similarity": 0.9373,
+          "front": 0.938,
+          "side": 0.94,
+          "top": 0.935
+        },
+        {
+          "name": "orion",
+          "similarity": 0.9312,
+          "front": 0.946,
+          "side": 0.917,
+          "top": 0.919
+        },
+        {
+          "name": "merlin",
+          "similarity": 0.9296,
+          "front": 0.958,
+          "side": 0.886,
+          "top": 0.913
+        }
+      ],
+      "top_similarity": 0.9469
+    },
+    {
+      "model": "wolfhound",
+      "risk": "high",
+      "closest": [
+        {
+          "name": "merlin",
+          "similarity": 0.9319,
+          "front": 0.95,
+          "side": 0.915,
+          "top": 0.897
+        },
+        {
+          "name": "chameleon",
+          "similarity": 0.9187,
+          "front": 0.937,
+          "side": 0.911,
+          "top": 0.888
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9185,
+          "front": 0.925,
+          "side": 0.933,
+          "top": 0.861
+        },
+        {
+          "name": "lancelot",
+          "similarity": 0.9165,
+          "front": 0.936,
+          "side": 0.913,
+          "top": 0.876
+        },
+        {
+          "name": "bushwacker",
+          "similarity": 0.9156,
+          "front": 0.924,
+          "side": 0.915,
+          "top": 0.896
+        }
+      ],
+      "top_similarity": 0.9319
+    },
+    {
+      "model": "wolverine",
+      "risk": "review",
+      "closest": [
+        {
+          "name": "chameleon",
+          "similarity": 0.8995,
+          "front": 0.909,
+          "side": 0.859,
+          "top": 0.917
+        },
+        {
+          "name": "highlander",
+          "similarity": 0.8938,
+          "front": 0.883,
+          "side": 0.913,
+          "top": 0.873
+        },
+        {
+          "name": "panther",
+          "similarity": 0.8896,
+          "front": 0.879,
+          "side": 0.884,
+          "top": 0.907
+        },
+        {
+          "name": "commando",
+          "similarity": 0.8857,
+          "front": 0.906,
+          "side": 0.87,
+          "top": 0.825
+        },
+        {
+          "name": "stinger",
+          "similarity": 0.885,
+          "front": 0.897,
+          "side": 0.913,
+          "top": 0.824
+        }
+      ],
+      "top_similarity": 0.8995
+    },
+    {
+      "model": "ymir",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "battleaxe",
+          "similarity": 0.9668,
+          "front": 0.98,
+          "side": 0.948,
+          "top": 0.953
+        },
+        {
+          "name": "zeus",
+          "similarity": 0.9588,
+          "front": 0.959,
+          "side": 0.965,
+          "top": 0.944
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.9549,
+          "front": 0.985,
+          "side": 0.937,
+          "top": 0.901
+        },
+        {
+          "name": "flashman",
+          "similarity": 0.945,
+          "front": 0.966,
+          "side": 0.924,
+          "top": 0.911
+        },
+        {
+          "name": "akuma",
+          "similarity": 0.9435,
+          "front": 0.963,
+          "side": 0.904,
+          "top": 0.939
+        }
+      ],
+      "top_similarity": 0.9668
+    },
+    {
+      "model": "zeus",
+      "risk": "critical",
+      "closest": [
+        {
+          "name": "ymir",
+          "similarity": 0.9588,
+          "front": 0.959,
+          "side": 0.965,
+          "top": 0.944
+        },
+        {
+          "name": "victor",
+          "similarity": 0.9499,
+          "front": 0.973,
+          "side": 0.933,
+          "top": 0.907
+        },
+        {
+          "name": "sagittaire",
+          "similarity": 0.9483,
+          "front": 0.969,
+          "side": 0.93,
+          "top": 0.923
+        },
+        {
+          "name": "battleaxe",
+          "similarity": 0.9463,
+          "front": 0.959,
+          "side": 0.935,
+          "top": 0.924
+        },
+        {
+          "name": "cataphract",
+          "similarity": 0.9438,
+          "front": 0.962,
+          "side": 0.932,
+          "top": 0.898
+        }
+      ],
+      "top_similarity": 0.9588
+    }
+  ]
+}
