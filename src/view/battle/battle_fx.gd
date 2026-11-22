@@ -87,7 +87,9 @@ func _recoil(view: UnitView, weapon: String) -> void:
 	var tw := view.create_tween()
 	tw.tween_property(view, "scale", start * (1.0 - intensity), 0.07)
 	tw.tween_property(view, "scale", start, 0.16)
-	tw.tween_callback(func(): if is_instance_valid(view): view.remove_meta("recoiling"))
+	tw.tween_callback(func():
+		if is_instance_valid(view):
+			view.remove_meta("recoiling"))
 
 
 func _flash_armor(view: UnitView, at: Vector3) -> void:

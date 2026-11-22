@@ -45,11 +45,21 @@ static func _shoreline(map: BattleMap) -> MeshInstance3D:
 		if not t.is_water():
 			continue
 		for side in 6:
-			var neighbor: MapTile = map.get_tile(Hex.neighbor(t.coord, side))
-			if neighbor != null and neighbor.is_water():
-				continue
 			var a := corners[side]
 			var b := corners[(side + 1) % 6]
+			var midpoint := (a + b) * 0.5
+			var nearest := Hex.INVALID
+			var best := -INF
+			for direction in 6:
+				var candidate := Hex.neighbor(t.coord, direction)
+				var offset := HexLayout.to_world(candidate) - HexLayout.to_world(t.coord)
+				var score := midpoint.dot(offset)
+				if score > best:
+					best = score
+					nearest = candidate
+			var neighbor: MapTile = map.get_tile(nearest)
+			if neighbor != null and neighbor.is_water():
+				continue
 			var toward_center := 0.09
 			var c := a * (1.0 - toward_center)
 			var d := b * (1.0 - toward_center)

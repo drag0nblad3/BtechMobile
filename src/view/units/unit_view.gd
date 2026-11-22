@@ -175,7 +175,7 @@ func _footfall(coord: Vector2i, side: int) -> void:
 	var offset := global_transform.basis.x * (0.22 if side % 2 == 0 else -0.22)
 	var point := _hex_pos(coord) + offset + Vector3(0, 0.04, 0)
 	var kind := "splash" if tile.is_water() else "step"
-	VxBlast.spawn(self, point - global_position, kind, unit.id * 103 + side)
+	VxBlast.spawn(self, point, kind, unit.id * 103 + side)
 
 
 func _turn_delta(from_f: int, to_f: int) -> float:
