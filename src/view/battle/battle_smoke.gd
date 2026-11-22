@@ -45,6 +45,8 @@ func update_heat(unit_id: int) -> void:
 	var view: UnitView = _units.view_of(u) if u != null else null
 	if view == null or u.def.is_support():
 		return
+	if u.heat < 5 and not _vents.has(unit_id):
+		return  # do not allocate GPU emitters for cool units on scene load
 	if not _vents.has(unit_id):
 		var steam := _emitter(Color("#d7dedf", 0.26), 11, 0.12)
 		steam.name = "HeatSteam"
