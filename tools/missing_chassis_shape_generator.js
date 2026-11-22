@@ -216,7 +216,40 @@
    if(changed<1)throw new Error("No actual changes at pass "+cycle+" for "+id);
    edits.push(changed);
   }
-  const model={id:id+(detail===1?"_shape":""),name:unit.name+" "+unit.model+(detail===1?" — silhouette":""),
+if(detail>1){
+   // Fine-grid surface features, independent of the low/high primary contours.
+   const ct=parts.find(p=>p.name==="ct");
+   const bz=Math.round((zbody+depth*.45)*3),fy=(roof-3)*3;
+   ct.detail=[
+     box([-7,fy,bz],[-4,fy+2,bz+1],"plate"),
+     box([4,fy,bz],[7,fy+2,bz+1],"plate"),
+     box([-3,fy+3,bz],[-2,fy+7,bz+1],"frame"),
+     box([2,fy+3,bz],[3,fy+7,bz+1],"frame")
+   ];
+   const head=parts.find(p=>p.name==="hd");
+   const hz=Math.round(headFront*3)-1;
+   head.detail=[box([-2,hy*3,hz],[2,hy*3+1,hz],"glass"),
+                box([-3,hy*3+2,hz+1],[3,hy*3+2,hz+1],"plate")];
+   for(const p of parts){
+     if(p.name==="lt"||p.name==="rt"){
+       const sx=p.name==="lt"?-1:1;
+       const px=Math.round(sx*(chest/2+shoulderW*.45)*3);
+       p.detail=[
+         box([px-2,roof*3-9,bz],[px+2,roof*3-8,bz+1],"frame"),
+         box([px-2,roof*3-6,bz],[px+2,roof*3-5,bz+1],"frame")
+       ];
+     }
+     if(p.name.endsWith("_weapon")){
+       const loc=p.loc;
+       const m=muzzles[loc],v=Array.isArray(m[0])?m[0]:m;
+       if(v){
+         const [x,y,z]=v;
+         p.detail=[box([x*3-3,y*3-1,(z+3)*3],[x*3+3,y*3+1,(z+3)*3],"frame")];
+       }
+     }
+   }
+  }
+    const model={id:id+(detail===1?"_shape":""),name:unit.name+" "+unit.model+(detail===1?" — silhouette":""),
    unit:unit.id,voxel_size:round(cfg.voxel||(.044+Math.max(0,unit.tonnage-35)*.00012)),
    subdivide:detail,legs:bird?"digitigrade":"plantigrade",punch:true,
    materials:colors,exclusive_parts:true,parts,muzzles,jets,weapons,
