@@ -60,7 +60,7 @@ func test_verified_bundle_examples() -> void:
 	check_eq(a.check("jenner_jr7d", 2750, "draconis_combine")["status"], "unavailable")
 	check_eq(a.check("timber_wolf_prime", 3050, "clan_wolf")["status"], "available")
 	check_eq(a.check("atlas_as7d", 3025, "clan_wolf")["status"], "unavailable")
-	check_eq(a.check("atlas_as7d", 3025, "clan_jade_falcon")["status"], "unverified")
+	check_eq(a.check("atlas_as7d", 3025, "clan_jade_falcon")["status"], "unavailable")
 
 
 func test_starter_templates_follow_historical_policy_without_mutation() -> void:
@@ -107,3 +107,29 @@ func test_changing_year_invalidates_assembled_force_without_removing_it() -> voi
 	check(fb.first_restriction_issue().contains("2755"),
 		"an existing unit can become anachronistic with a changed date")
 	check_eq(fb.rosters[0], saved, "changing era never erases units")
+
+
+func test_imported_bulk_snapshot_covers_catalog() -> void:
+	var imported := EraAvailability.new()
+	check(imported.records.size() >= 650, "most game designs have exact MUL records")
+	for id in ["atlas_as7d", "locust_lct1v", "hunchback_hbk4g",
+			"timber_wolf_prime", "fire_moth_prime"]:
+		var row: Dictionary = imported.records.get(id, {})
+		check(not row.is_empty(), "published variant: " + id)
+		check_eq(row.get("matrix_status", ""), "published", "complete faction matrix for " + id)
+		check(String(row.get("source", "")).begins_with(
+			"https://masterunitlist.battletech.com/units/"), "canonical source for " + id)
+		check(int(row.get("intro_year", 0)) > 2000, "verified introduction year for " + id)
+
+
+func test_published_sparse_matrix_has_definite_absences() -> void:
+	var a := EraAvailability.new({"units": {
+		"locust_lct1v": {"intro_year": 2499, "matrix_status": "published",
+			"factions": {"federated_suns": ["sw_renaissance"]}}
+	}})
+	check_eq(a.check("locust_lct1v", 3025, "federated_suns")["status"], "available")
+	check_eq(a.check("locust_lct1v", 3025, "draconis_combine")["status"], "unavailable",
+		"published matrix omits unavailable factions")
+	check_eq(a.check("locust_lct1v", 3025, "clan_wolf")["status"], "unavailable")
+	check_eq(a.check("unmatched_unit", 3025, "federated_suns")["status"], "unverified",
+		"unmatched variants must not be treated as unavailable")
