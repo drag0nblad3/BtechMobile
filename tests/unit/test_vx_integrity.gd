@@ -63,7 +63,7 @@ func test_genuine_joint_contact_gets_a_short_structure_bridge() -> void:
 			"cells": {Vector3i(4, 0, 0): 0}})
 	var report := VxIntegrity.repair(m)
 	check_eq(report["joint_contacts"], 1)
-	check_eq(report["added"], 1)
+	check(int(report["added"]) >= 1, "joint is bridged and its support collar is reinforced")
 	check(not m.part("ct")["cells"].has(Vector3i(3, 0, 0)),
 			"bridge belongs to articulated child, not torso")
 	check(m.part("arm")["cells"].has(Vector3i(3, 0, 0)))
@@ -210,3 +210,60 @@ func test_high_density_boundary_search_ignores_faraway_source_surface() -> void:
 	check_eq(route.size(), 1, "one missing bridge cell even when source has 51k voxels")
 	if not route.is_empty():
 		check_eq(route[0], Vector3i(160,0,0))
+
+
+func test_load_bearing_joint_requires_a_contiguous_patch_not_a_touch() -> void:
+	for n in [1, 2, 3]:
+		for offset: Vector3i in [Vector3i.ZERO, Vector3i(-31, 17, 52)]:
+			var parent := {}
+			for x in range(3 * n):
+				for y in range(3 * n):
+					for z in range(3 * n):
+						parent[Vector3i(x,y,z) + offset] = 0
+			var child := {Vector3i(3 * n, 0, 0) + offset: 0}
+			var info := VxIntegrity._solid_contact(child, parent, n)
+			check(not info["strong"], "single voxel contact cannot carry a structural joint")
+			check_eq(info["patch"], 1, "measure connected face area, not voxel occupancy")
+			for y in range(3 * n):
+				for z in range(3 * n):
+					child[Vector3i(3 * n,y,z) + offset] = 0
+			info = VxIntegrity._solid_contact(child, parent, n)
+			check(info["strong"], "broad continuous 3x3 socket survives resolution shifts")
+			check(info["patch"] >= info["needed"], "mass interface exceeds load-bearing threshold")
+
+
+func test_scattered_contacts_are_not_equivalent_to_one_connected_mass() -> void:
+	var parent := {}
+	var child := {}
+	for k in range(6):
+		var offset := Vector3i(0, k * 5, 0)
+		parent[offset] = 0
+		child[offset + Vector3i.RIGHT] = 0
+	var info := VxIntegrity._solid_contact(child, parent)
+	check_eq(info["patch"], 1, "individual distant face touches cannot add up into a joint")
+	check(not info["strong"], "minimum patch is contiguous not total touching faces")
+
+
+func test_reinforcement_preserves_authored_negative_spaces() -> void:
+	var parent := {}
+	for y in range(4):
+		for z in range(4):
+			for x in range(3):
+				parent[Vector3i(x,y,z)] = 0
+	var arm := {Vector3i(3,1,1): 0}
+	var m := VxModel.new()
+	m._mat["frame"] = 0
+	m.colors.append(Color.WHITE)
+	m.roles.append("structure")
+	m.parts.append({"name": "ct", "loc": Location.CT, "parent": "",
+			"joint": "", "pivot": Vector3.ZERO, "cells": parent})
+	m.parts.append({"name": "arm", "loc": Location.LA, "parent": "ct",
+			"joint": "shoulder", "pivot": Vector3(3,1,1), "cells": arm})
+	var raw := {"parts": [{"name": "arm", "shapes": [
+			{"erase": [[3,0,1], [3,0,1]]}]}]}
+	var report := VxIntegrity.repair(m, raw)
+	check(not m.part("arm")["cells"].has(Vector3i(3,0,1)),
+			"no collision with explicitly carved geometry")
+	check(int(report["mass_reinforced"]) > 0, "joint grows a multi-face socket")
+	check(VxIntegrity._solid_contact(arm, parent)["strong"],
+			"reinforcement builds continuous contact mass")
