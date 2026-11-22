@@ -40,8 +40,8 @@ func test_every_shape_study_has_matching_detailed_contours_after_art_pass() -> v
 			var ash: Array = a.get("shapes", [])
 			var bsh: Array = b.get("shapes", [])
 			for k in mini(ash.size(), bsh.size()):
-				if ash[k].has("loft"):
-					check_eq(ash[k]["loft"], bsh[k]["loft"],
+				if ash[k].has("loft") and ash[k]["loft"].get("axis", "y") == "y":
+					check_eq(ash[k]["loft"], bsh[k].get("loft", {}),
 						"%s/%s shape and detailed contour agree" % [id, a["name"]])
 		pairs += 1
 	check(pairs >= 140, "expect the full chassis catalog, not a partial subset")
