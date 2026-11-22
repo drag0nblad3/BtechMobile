@@ -82,10 +82,12 @@ func _populate_templates() -> void:
 		for i in matches:
 			var form: Dictionary = forms[i]
 			var preview: Dictionary = StarterFormations.plan(_builder, _side, form)
-			var cost := int(preview.get("cost", 0))
 			var short_type := "Star" if form["kind"] == "star" else "Lance"
-			var caption := "%s  ·  %s  ·  %d BV" % [
-				form["name"], short_type, cost]
+			var detail := "Unavailable at this pilot skill"
+			if bool(preview.get("ok", false)):
+				detail = "%d BV" % int(preview["cost"])
+			var caption := "%s  ·  %s  ·  %s" % [
+				form["name"], short_type, detail]
 			menu.add_item(caption, i)
 			if not bool(preview.get("ok", false)):
 				menu.set_item_disabled(menu.get_item_count() - 1, true)
