@@ -27,8 +27,17 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	elif u.def.battle_armor != null:
 		set_model(PlaceholderAsset.build_squad(u.def, u.side))
 	else:
-		var sprite := SpriteMech.try_build(u.def)
-		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
+		refresh_look()
+	snap_to_state()
+
+
+## Switches display modes without touching the rules' Unit.
+func refresh_look() -> void:
+	if unit.def.is_support():
+		return
+	var voxel := UnitVoxels.choose(unit.def, unit.side)
+	var sprite := SpriteMech.try_build(unit.def) if voxel == null else null
+	set_model(voxel if voxel else sprite if sprite else PlaceholderMech.build(unit.def, unit.side))
 	snap_to_state()
 
 
@@ -51,6 +60,8 @@ func show_condition() -> void:
 	if _model == null:
 		return
 	visible = unit.carrier_id() < 0  # riders ride inside or on top
+	if UnitVoxels.sync(_model, unit):
+		return
 	var down := unit.prone or (unit.destroyed and not unit.def.is_support())
 	_model.rotation.z = PI / 2.4 if down else 0.0
 	_model.position.y = 0.25 if down else 0.0
@@ -77,10 +88,22 @@ func _dark(m: StandardMaterial3D) -> StandardMaterial3D:
 
 
 ## Each step is a Vector3i(q, r, facing) from MoveOptions.path_to().
-func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
+func play_path(path: Array, start_coord: Vector2i, start_facing: int,
+		mode: int = MoveMode.Kind.WALK) -> void:
 	if path.is_empty():
 		animation_finished.emit.call_deferred()
 		return
+	if mode == MoveMode.Kind.JUMP and _model is VxMech:
+		var destination: Vector3i = path[-1]
+		_yaw += _turn_delta(start_facing, destination.z)
+		(_model as VxMech).anim.jump(Vector3.ZERO)
+		var jump_tween := create_tween().set_parallel()
+		jump_tween.tween_property(self, "position", _hex_pos(Vector2i(destination.x, destination.y)), 1.32)
+		jump_tween.tween_property(self, "rotation:y", _yaw, 0.3)
+		jump_tween.finished.connect(func(): show_condition(); animation_finished.emit())
+		return
+	if _model is VxMech:
+		(_model as VxMech).anim.walk(true, mode == MoveMode.Kind.RUN)
 	var tw := create_tween()
 	var last_c := start_coord
 	var last_f := start_facing
@@ -100,6 +123,8 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 			foot_side += 1
 			last_c = c
 	tw.finished.connect(func():
+			if _model is VxMech:
+				(_model as VxMech).anim.walk(false)
 			show_condition()
 			animation_finished.emit())
 
@@ -107,6 +132,13 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 ## Resolve authored weapon sockets first; fall back to the actual model bounds.
 ## This avoids center-to-center fire and follows a turning chassis.
 func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
+	if _model is VxMech and weapon_index >= 0 and weapon_index < unit.def.weapon_mounts.size():
+		var m := _model as VxMech
+		var loc := int(unit.def.weapon_mounts[weapon_index]["loc"])
+		if not m.model.parts_at(loc).is_empty() and m.is_attached(m.part_at(loc)):
+			var ports := m.muzzles(loc)
+			if not ports.is_empty():
+				return ports[0]
 	var key := weapon_name.to_lower()
 	var socket_names := ["muzzle_%d" % weapon_index, "weapon_%d" % weapon_index,
 		"muzzle", "Muzzle", "WeaponMuzzle"]
