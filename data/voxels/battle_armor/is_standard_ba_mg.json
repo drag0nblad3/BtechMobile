@@ -2,7 +2,7 @@
   "id": "is_standard_ba_mg",
   "name": "IS Standard Battle Armor",
   "asset_kind": "battle_armor",
-  "motive": "f",
+  "motive": "j",
   "voxel_size": 0.022,
   "subdivide": 2,
   "voxel_cap": 50000,
@@ -321,6 +321,21 @@
         {
           "box": [
             [
+              -12,
+              8,
+              -20
+            ],
+            [
+              -12,
+              8,
+              -13
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
               -19,
               10,
               -11
@@ -608,6 +623,21 @@
               0
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -5,
+              8,
+              -2
+            ],
+            [
+              -5,
+              8,
+              5
+            ]
+          ],
+          "mat": "frame"
         },
         {
           "box": [
@@ -903,6 +933,21 @@
         {
           "box": [
             [
+              3,
+              8,
+              -19
+            ],
+            [
+              3,
+              8,
+              -12
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
               -4,
               10,
               -10
@@ -1194,6 +1239,21 @@
         {
           "box": [
             [
+              12,
+              8,
+              -2
+            ],
+            [
+              12,
+              8,
+              5
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
               5,
               10,
               7
@@ -1215,8 +1275,8 @@
   "exclusive_parts": true,
   "armor_shape_revision": "unit-specific-50-cycle-20261122",
   "geometry_edits": 2400,
-  "weapon_kind": "laser",
-  "signature": "Inner Sphere laser 4 armored troopers",
+  "weapon_kind": "mg",
+  "signature": "Inner Sphere mg 4 armored troopers",
   "refinement_focus": [
     "helmet",
     "shoulder",
