@@ -138,7 +138,9 @@ def unit_url(u,urls):
 def matrix(uid,raw,dictionary,known_factions,known_eras):
     entries=raw.get(uid)
     if not entries:return {},"unverified",0
-    out={ident:[] for ident in sorted(known_factions.values())}
+    # Positive-only rows. The published matrix is complete, so omitted
+    # factions are known-negative without storing 71 empty arrays per unit.
+    out={}
     positives=0
     for era_id,set_index in entries:
         era=known_eras.get(int(era_id))
@@ -147,6 +149,8 @@ def matrix(uid,raw,dictionary,known_factions,known_eras):
         for fac in dictionary[set_index]:
             ident=known_factions.get(int(fac))
             if ident is None:raise RuntimeError("Unknown faction in "+uid)
+            if ident not in out:
+                out[ident]=[]
             if era not in out[ident]:
                 out[ident].append(era)
                 positives+=1
@@ -210,7 +214,7 @@ def main():
       "snapshot_date":dt.date.today().isoformat(),
       "manifest_version":manifest.get("version",""),
       "source_files":{k:files[k] for k in ("units","availability","eras","factions")},
-      "note":"Official canonical search index, exact variants. Missing cells in a published complete matrix are unavailable; units without a published matrix remain unverified.",
+      "note":"Official canonical search index, exact variants. Published matrix stores only positive factions and eras; absent cells are unavailable. Unmatched variants remain unverified.",
       "units":records}
     report={"date":dt.date.today().isoformat(),
       "source":BASE+"/data/manifest.json",
