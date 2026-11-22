@@ -1,0 +1,39 @@
+name: Full voxelized sculpt preview
+on:
+  push:
+    branches:
+      - 'feature/full-loft-voxelization-*'
+  workflow_dispatch:
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import project
+        run: godot --headless --import
+      - name: Render true hi-res voxels, all three chassis and four views
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/full-voxel-renders
+          timeout --signal=TERM --kill-after=5s 480s xvfb-run -a godot \
+            --rendering-method gl_compatibility --resolution 1400x800 \
+            -s tools/capture_full_voxels.gd -- /tmp/full-voxel-renders \
+            2>&1 | tee voxel-render.log
+          test -s /tmp/full-voxel-renders/atlas_wolverine_jenner_full_voxels.png
+          [ "$(grep -c '^VOXELIZED|' voxel-render.log)" -eq 3 ]
+          grep -q '^VOXEL_RENDER|' voxel-render.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|VOXELIZE_ERROR' voxel-render.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-voxel-geometry-render
+          path: |
+            /tmp/full-voxel-renders/*.png
+            voxel-render.log
+          if-no-files-found: warn
