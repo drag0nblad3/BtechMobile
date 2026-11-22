@@ -10,6 +10,7 @@ var map_view: MapView
 var fx := BattleFx.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
+var cinematic: CinematicDirector
 var gestures: TouchGestures
 var hud: BattleHud
 var movement: MovementInput
@@ -65,6 +66,7 @@ func _ready() -> void:
 	_build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
+	hud.set_cinematic_label(GameSettings.cinematic_camera)
 	if saved.is_empty():
 		controller.start_turn()
 	else:
@@ -133,6 +135,10 @@ func _build_views(state: GameState) -> void:
 	var bounds := HexLayout.map_bounds(state.map)
 	rig.bounds = bounds
 	rig.snap(bounds.get_center(), 22.0)
+	cinematic = CinematicDirector.new()
+	add_child(cinematic)
+	cinematic.setup(rig, units_layer)
+	cinematic.set_enabled(GameSettings.cinematic_camera)
 	gestures = TouchGestures.new()
 	add_child(gestures)
 	hud = BattleHud.new()
@@ -164,13 +170,14 @@ func _build_views(state: GameState) -> void:
 
 
 func _wire() -> void:
-	gestures.panned.connect(rig.pan)
-	gestures.pinched.connect(rig.zoom)
-	gestures.twisted.connect(rig.orbit)
-	gestures.tilted.connect(func(px: float): rig.tilt(px * 0.006))
+	gestures.panned.connect(func(d: Vector2): cinematic.manual_input(); rig.pan(d))
+	gestures.pinched.connect(func(f: float): cinematic.manual_input(); rig.zoom(f))
+	gestures.twisted.connect(func(a: float): cinematic.manual_input(); rig.orbit(a))
+	gestures.tilted.connect(func(px: float): cinematic.manual_input(); rig.tilt(px * 0.006))
 	gestures.tapped.connect(_on_tap)
 	gestures.double_tapped.connect(_on_double_tap)
-	hud.top_down_toggled.connect(rig.toggle_top_down)
+	hud.top_down_toggled.connect(func(): cinematic.manual_input(); rig.toggle_top_down())
+	hud.cinematic_toggled.connect(_toggle_cinematic)
 	hud.mode_toggled.connect(movement.on_mode_toggled)
 	hud.turn_left.connect(movement.on_turn.bind(-1))
 	hud.turn_right.connect(movement.on_turn.bind(1))
@@ -201,12 +208,14 @@ func _wire() -> void:
 
 
 func _focus_unit(u: Unit) -> void:
+	cinematic.manual_input()
 	rig.focus(units_layer.view_of(u).position)
 	sheet_unit = u
 	_show_sheet_if_open()
 
 
 func _on_tap(pos: Vector2) -> void:
+	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c == Hex.INVALID:
 		return
@@ -223,6 +232,7 @@ func _on_tap(pos: Vector2) -> void:
 
 
 func _on_double_tap(pos: Vector2) -> void:
+	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c != Hex.INVALID:
 		rig.focus(HexLayout.tile_top(controller.state.map.get_tile(c)))
@@ -248,6 +258,13 @@ func _show_sheet_if_open() -> void:
 				controller.request_power(sheet_unit, want)
 			_show_sheet_if_open()
 		hud.show_side(RecordSheetView.build(sheet_unit, Callable() if bots.bot_sides.has(sheet_unit.side) else power))
+
+
+func _toggle_cinematic() -> void:
+	GameSettings.set_cinematic_camera(not GameSettings.cinematic_camera)
+	cinematic.set_enabled(GameSettings.cinematic_camera)
+	hud.set_cinematic_label(GameSettings.cinematic_camera)
+	hud.set_tip("Cinematic camera follows major actions; drag to take control." if GameSettings.cinematic_camera else "Tactical camera restored.")
 
 
 func _cycle_explain() -> void:
@@ -306,6 +323,7 @@ func _on_event(e: GameEvent) -> void:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
 			attacks.clear()
 			movement.clear_selection()
+	cinematic.on_event(e)
 
 
 func _rebuild_objectives() -> void:

@@ -16,6 +16,7 @@ signal smash
 signal masc
 signal supercharger
 signal leave  ## Move off the battlefield where the mission allows.
+signal cinematic_toggled
 signal top_down_toggled
 signal sheet_toggled
 signal log_toggled
@@ -44,6 +45,7 @@ var smash_button: Button
 var masc_button: Button
 var sc_button: Button
 var explain_button: Button
+var cinematic_button: Button
 var attack_button: Button
 var skip_button: Button
 var twist_buttons: Array[Button] = []
@@ -78,6 +80,7 @@ func _ready() -> void:
 	_button(top, "Sheet", sheet_toggled)
 	explain_button = _button(top, "Explain", explain_cycled)
 	_button(top, "Map View", top_down_toggled)
+	cinematic_button = _button(top, "Cine: Off", cinematic_toggled)
 	info = _label(col)
 	var middle := _row(col)
 	middle.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -175,6 +178,10 @@ func set_tip(text: String) -> void:
 
 func set_mode_label(text: String) -> void:
 	mode_button.text = text
+
+
+func set_cinematic_label(enabled: bool) -> void:
+	cinematic_button.text = "Cine: On" if enabled else "Cine: Off"
 
 
 func set_explain_label(level: int) -> void:
