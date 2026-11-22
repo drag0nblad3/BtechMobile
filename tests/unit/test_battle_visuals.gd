@@ -55,3 +55,18 @@ func test_environment_responds_to_battlefield_conditions() -> void:
 	daylight.free()
 	night.free()
 	storm.free()
+
+
+func test_edge_camera_keeps_battlefield_in_frame() -> void:
+	var rig := CameraRig.new()
+	rig.bounds = AABB(Vector3(-16, 0, -12), Vector3(32, 0, 24))
+	rig.snap(Vector3.ZERO, 22.0)
+	rig.focus(Vector3(16.0, 0.0, 12.0))
+	check(rig._goal_target.x < 16.0 and rig._goal_target.z < 12.0,
+			"focus should retain playable map around edge units")
+	var padded := rig._goal_target
+	rig.zoom(20.0)
+	rig.focus(Vector3(16.0, 0.0, 12.0))
+	check(rig._goal_target.x > padded.x and rig._goal_target.z > padded.z,
+			"zooming in should permit a closer look at boundary hexes")
+	rig.free()

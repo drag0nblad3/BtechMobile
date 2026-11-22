@@ -69,3 +69,7 @@ saturation to calm bright grass, lowered the selection/path fill opacity so
 unit rings read better, narrowed/collapsed combat log dimensions to reveal
 more terrain, and made the Actions MenuButton explicitly non-flat. The final
 preview is refreshed by PR CI after these adjustments.
+
+Camera focus now reserves a distance-scaled interior margin on all map sides,
+keeping selected units near the screen edge rather than centering empty space
+beyond the battlefield. The margin shrinks at close zoom for inspection.

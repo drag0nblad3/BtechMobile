@@ -107,7 +107,15 @@ func _apply() -> void:
 	camera.look_at(_target, Vector3.UP)
 
 
+## Keep some terrain around a selected edge unit, instead of centering the
+## camera on the map boundary and showing half a screen of empty sky.
+## The margin shrinks when zoomed in so edge hexes remain inspectable.
 func _clamp_to_bounds(p: Vector3) -> Vector3:
 	var lo := bounds.position
 	var hi := bounds.end
-	return Vector3(clampf(p.x, lo.x, hi.x), p.y, clampf(p.z, lo.z, hi.z))
+	var margin_x := minf(bounds.size.x * 0.25, _goal_dist * 0.20)
+	var margin_z := minf(bounds.size.z * 0.25, _goal_dist * 0.20)
+	return Vector3(
+		clampf(p.x, lo.x + margin_x, hi.x - margin_x),
+		p.y,
+		clampf(p.z, lo.z + margin_z, hi.z - margin_z))
