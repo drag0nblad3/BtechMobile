@@ -54,13 +54,16 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 			continue
 		report["before"] += groups.size() - 1
 		var main: Dictionary = groups[0]
-		# Never join a full barrel, independent plate or another large module.
+		# Tiny fragments may cross a short cavity; substantial modules get
+		# only a one- or two-cell local stitch, never a sweeping support bar.
+		# Glazing and emissive details must remain separate pieces.
+		if _optical_detail(cells, m):
+			continue
 		var cap := mini(18 * n * n * n, maxi(2 * n * n * n, floori(main.size() * 0.06)))
 		for i in range(1, groups.size()):
 			var island: Dictionary = groups[i]
-			if island.size() > cap:
-				continue
-			var route := _path(island.keys(), main, owned, voids, muzzle_guard, GAP * n)
+			var gap := GAP * n if island.size() <= cap else 2 * n
+			var route := _path(island.keys(), main, owned, voids, muzzle_guard, gap)
 			if route.is_empty():
 				continue
 			for c: Vector3i in route:
@@ -106,6 +109,20 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 					"joint": p.get("joint", ""), "loc": p.get("loc", -1)}
 	report["residual_parts"] = residual
 	return report
+
+
+## Do not bridge optical planes or independent cockpit glow/window pieces.
+static func _optical_detail(cells: Dictionary, m: VxModel) -> bool:
+	var optical := {}
+	for key in ["window", "glass", "glow", "recess"]:
+		if m._mat.has(key):
+			optical[m._mat[key]] = true
+	if optical.is_empty():
+		return false
+	for id: int in cells.values():
+		if not optical.has(id):
+			return false
+	return true
 
 
 static func _structure(m: VxModel) -> int:
