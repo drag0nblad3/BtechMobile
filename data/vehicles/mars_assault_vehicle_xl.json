@@ -1,0 +1,52 @@
+{
+ "id": "mars_assault_vehicle_xl",
+ "name": "Mars Assault Vehicle (XL)",
+ "tonnage": 100,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 48,
+  "RS": 42,
+  "LS": 42,
+  "RR": 34,
+  "TU": 45
+ },
+ "equipment": {
+  "FR": [
+   "c_lb10x_ac",
+   "c_lrm15+artemis*3"
+  ],
+  "RS": [
+   "c_streak_srm6"
+  ],
+  "LS": [
+   "c_streak_srm6"
+  ],
+  "TU": [
+   "c_er_large_laser",
+   "c_gauss_rifle"
+  ],
+  "BD": [
+   "ammo:c_gauss_rifle*2",
+   "ammo:c_streak_srm6*2",
+   "ammo:c_lrm15*3",
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_lb10x_ac",
+   "guardian_ecm",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2083,
+  "megamek": "data/mekfiles/vehicles/3060u/Mars Assault Vehicle (XL).blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 2520
+}

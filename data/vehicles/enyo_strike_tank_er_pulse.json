@@ -1,0 +1,38 @@
+{
+ "id": "enyo_strike_tank_er_pulse",
+ "name": "Enyo Strike Tank (ER Pulse)",
+ "tonnage": 55,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 5,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "hardened",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 20,
+  "RS": 19,
+  "LS": 19,
+  "RR": 19,
+  "TU": 15
+ },
+ "equipment": {
+  "FR": [
+   "c_srm6*2"
+  ],
+  "TU": [
+   "c_er_medium_pulse_laser*2"
+  ],
+  "BD": [
+   "ammo:c_srm6*2"
+  ]
+ },
+ "source": {
+  "mul_id": 4126,
+  "megamek": "data/mekfiles/vehicles/ProtoTypes/Enyo Strike Tank ER Pulse.blk",
+  "role": "Skirmisher",
+  "bv": "megamek"
+ },
+ "bv": 1130
+}

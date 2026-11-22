@@ -1,0 +1,43 @@
+{
+ "id": "ishtar_heavy_fire_support_tank_original",
+ "name": "Ishtar Heavy Fire Support Tank (Original)",
+ "tonnage": 65,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 30,
+  "RS": 28,
+  "LS": 28,
+  "RR": 20,
+  "TU": 28
+ },
+ "equipment": {
+  "FR": [
+   "c_lrm10+artemis"
+  ],
+  "TU": [
+   "c_lb10x_ac",
+   "c_ultra_ac10"
+  ],
+  "BD": [
+   "ammo:c_ultra_ac10*2",
+   "ammo:c_lb10x_ac",
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_lrm10",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 1634,
+  "megamek": "data/mekfiles/vehicles/3060u/Ishtar Heavy Fire Support Tank (Original).blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 1072
+}

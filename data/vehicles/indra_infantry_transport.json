@@ -1,0 +1,39 @@
+{
+ "id": "indra_infantry_transport",
+ "name": "Indra Infantry Transport",
+ "tonnage": 35,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 5,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 25,
+  "RS": 20,
+  "LS": 20,
+  "RR": 14,
+  "TU": 17
+ },
+ "equipment": {
+  "FR": [
+   "c_er_ppc"
+  ],
+  "TU": [
+   "c_machine_gun*4"
+  ],
+  "BD": [
+   "ammo:c_machine_gun:half",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 1613,
+  "megamek": "data/mekfiles/vehicles/3060u/Indra Infantry Transport.blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 897
+}
