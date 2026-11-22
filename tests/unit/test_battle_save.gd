@@ -155,3 +155,32 @@ func test_asset_round_trip_keeps_card_state_and_generated_weapon() -> void:
 	check_eq(v.weapons[0].def.id, "asset_attack")
 	check_eq(v.weapons[0].def.damage, 3)
 	check(v.weapons[0].fired, "generated asset weapon firing state persisted")
+
+
+func test_vehicle_round_trip_keeps_motive_and_crew_damage() -> void:
+	var c := _battle()
+	var db := UnitDb.load_dir()
+	var def := db.get_def("manticore_heavy_tank")
+	var tank := Unit.new(98, def, 0, hex_at(1, 0), 0)
+	c.state.add_unit(tank)
+	tank.vehicle.cruise_lost = 1
+	tank.vehicle.turret_locked = true
+	tank.vehicle.crew_stunned = 2
+	tank.armor[VehicleLoc.TURRET] = 3
+	var payload := BattleSave.capture(c, [], BotSkill.Level.REGULAR, -1, [])
+	var restored := BattleSave.restore(payload, db, terrain())
+	check(not restored.is_empty(), "vehicle battle should restore")
+	if restored.is_empty():
+		return
+	var v: Unit = restored["controller"].state.unit_by_id(98)
+	check(v != null and v.vehicle != null, "vehicle state restored")
+	if v == null or v.vehicle == null:
+		return
+	check_eq(v.vehicle.cruise_lost, 1)
+	check(v.vehicle.turret_locked, "turret lock persisted")
+	check_eq(v.vehicle.crew_stunned, 2)
+	check_eq(v.vehicle.spec.cruise_mp, def.vehicle.cruise_mp)
+	check(v.vehicle.spec.turret, "turret spec persisted")
+	check_eq(v.armor[VehicleLoc.TURRET], 3)
+	check(v.weapons[0].on_vehicle and v.weapons[0].label().contains("("), "vehicle weapon label")
+	check(not v.weapons[0].label().contains("(HD"), "vehicle weapon uses vehicle location codes")

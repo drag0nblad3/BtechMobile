@@ -22,12 +22,23 @@ static func build(def: UnitDef, side: int) -> Node3D:
 		_box(root, Vector3(1.2, 0.03, 0.08), Vector3(0, 1.08, 0), dark)
 		_box(root, Vector3(0.08, 0.03, 1.2), Vector3(0, 1.08, 0), dark)
 	else:
-		_vehicle(root, body, dark, c)
+		_vehicle(root, body, dark, c.motive, not c.has("NOTUR"))
 	return root
 
 
-static func _vehicle(root: Node3D, body: Material, dark: Material, c: AssetCard) -> void:
-	match c.motive:
+## A record-sheet combat vehicle (UnitDef.vehicle) in the same style.
+static func build_vehicle(def: UnitDef, side: int) -> Node3D:
+	var root := Node3D.new()
+	root.name = "PlaceholderVehicle"
+	var body := PlaceholderMech._mat(PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()])
+	var dark := PlaceholderMech._mat(Color(0.18, 0.18, 0.2))
+	_vehicle(root, body, dark, def.vehicle.motive, def.vehicle.turret)
+	root.scale = Vector3.ONE * (0.9 + clampf(def.tonnage / 100.0, 0.0, 1.0) * 0.4)  # heavier, bigger
+	return root
+
+
+static func _vehicle(root: Node3D, body: Material, dark: Material, motive: String, turret: bool) -> void:
+	match motive:
 		"h":
 			_box(root, Vector3(0.8, 0.12, 1.0), Vector3(0, 0.08, 0), dark)  # skirt
 			_box(root, Vector3(0.66, 0.2, 0.86), Vector3(0, 0.24, 0), body)
@@ -40,7 +51,7 @@ static func _vehicle(root: Node3D, body: Material, dark: Material, c: AssetCard)
 			_box(root, Vector3(0.14, 0.2, 1.0), Vector3(-0.33, 0.1, 0), dark)  # tracks
 			_box(root, Vector3(0.14, 0.2, 1.0), Vector3(0.33, 0.1, 0), dark)
 			_box(root, Vector3(0.56, 0.22, 0.92), Vector3(0, 0.26, 0), body)
-	if not c.has("NOTUR"):
+	if turret:
 		_box(root, Vector3(0.36, 0.16, 0.36), Vector3(0, 0.45, 0.05), body)  # turret
 		_box(root, Vector3(0.06, 0.06, 0.45), Vector3(0, 0.46, -0.3), dark)
 	else:

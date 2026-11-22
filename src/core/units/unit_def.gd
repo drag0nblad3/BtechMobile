@@ -182,6 +182,11 @@ func is_xl() -> bool:
 	return engine_type == "xl"
 
 
+## A Battlefield Support Asset or a combat vehicle (not a 'Mech).
+func is_support() -> bool:
+	return asset != null or vehicle != null
+
+
 func is_clan() -> bool:
 	return tech_base == "clan"
 

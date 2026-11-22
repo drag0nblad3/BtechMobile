@@ -51,6 +51,16 @@ func sorted_assets() -> Array[UnitDef]:
 	return out
 
 
+## Combat vehicle designs sorted light to heavy, then by name.
+func sorted_vehicles() -> Array[UnitDef]:
+	var out: Array[UnitDef] = []
+	for d: UnitDef in vehicles.values():
+		out.append(d)
+	out.sort_custom(func(a: UnitDef, b: UnitDef):
+			return a.name < b.name if a.tonnage == b.tonnage else a.tonnage < b.tonnage)
+	return out
+
+
 func get_def(id: String) -> UnitDef:
 	return by_id.get(id, assets.get(id, vehicles.get(id)))
 
