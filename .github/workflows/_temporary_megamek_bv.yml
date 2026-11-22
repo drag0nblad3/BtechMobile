@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - feature/add-missing-official-meks-batch01-20261122
+concurrency:
+  group: temp-megamek-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: write
 jobs:
@@ -309,6 +312,8 @@ jobs:
           
           PYIMPORT
           python3 /tmp/bt_import.py | tee /tmp/import-results.txt
+      - name: Keep MegaMek source tree outside the Godot import scan
+        run: mv mm-data /tmp/megamek-source-checkout
       - name: Install Godot and run all requested precommit checks
         shell: bash
         run: |
