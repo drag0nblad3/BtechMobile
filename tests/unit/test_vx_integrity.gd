@@ -147,3 +147,34 @@ func test_optical_details_are_not_welded_across_an_intentional_gap() -> void:
 	var report := VxIntegrity.repair(m)
 	check_eq(report["rejoined"], 0, "paired glass parts must remain separate")
 	check_eq(report["after"], 1)
+
+
+func test_boundary_search_handles_large_components_without_coordinate_pins() -> void:
+	# A large solid component and a separate plate are one missing-cell
+	# gap apart. The internal 7k+ voxels must not consume the search limit.
+	for offset: Vector3i in [Vector3i.ZERO, Vector3i(-37, 22, 58)]:
+		var block := {}
+		var dims := Vector3i(10, 45, 16)
+		for x in dims.x:
+			for y in dims.y:
+				for z in dims.z:
+					block[offset + Vector3i(x, y, z)] = true
+		var center := offset + Vector3i(dims.x + 1, dims.y / 2, dims.z / 2)
+		var path := VxIntegrity._path(block.keys(), {center: true}, {}, [],
+				{}, VxIntegrity.GAP)
+		check_eq(path.size(), 1, "single-cell crack at any translation")
+		if not path.is_empty():
+			check(path[0] == center + Vector3i.LEFT,
+					"bridge should be the immediate missing contact")
+
+
+func test_rigid_assembly_repair_does_not_bridge_two_hinged_parts() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
+	m.parts.append({"name": "separate_hip", "loc": Location.LL, "parent": "ct",
+			"joint": "hip", "pivot": Vector3(4, 0, 0),
+			"cells": {Vector3i(5, 0, 0): 0}})
+	var count := m.part("ct")["cells"].size()
+	var report := VxIntegrity.repair(m)
+	check_eq(report["rig_rejoined"], 0, "each articulated hinge is a separate frame")
+	check_eq(m.part("ct")["cells"].size(), count, "do not attach stray hip to torso")
