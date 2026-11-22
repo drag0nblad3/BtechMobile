@@ -7,7 +7,8 @@ extends RefCounted
 ## rest (water too) as clear; tracked can't enter heavy woods; wheeled can't
 ## enter woods, rough or rubble; VTOLs treat everything as clear.
 ## Only infantry and VTOLs enter building hexes (1 MP, no roll).
-## TODO(rules): garages, sand, roof moves and VTOL flight levels.
+## VTOLs also pay 1 MP per level climbed or dropped (VtolFlight).
+## TODO(rules): garages, sand and roof moves.
 
 const PROHIBITED := MoveCost.PROHIBITED
 const LEVEL_MP := 2
@@ -23,7 +24,7 @@ static func enter_cost(state: GameState, u: Unit, from: Vector2i, to: Vector2i,
 	var m := card.motive
 	var wind := 1 if state.conditions.wind and ["h", "j", "v"].has(m) else 0
 	if m == "v":
-		return 1 + wind
+		return 1 + wind + VtolFlight.climb_mp(src, dst)
 	if not may_enter(card, dst):
 		return PROHIBITED
 	if dst.building != null:

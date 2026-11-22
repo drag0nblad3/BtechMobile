@@ -165,6 +165,8 @@ static func run(state: GameState, emit: Callable, u: Unit, target: Vector3i, mod
 	u.facing = target.z
 	u.has_moved = true
 	u.move_mode = opts.mode if moved else -1
+	if VtolFlight.is_vtol(u):
+		VtolFlight.settle(state.map, u)
 	if not u.asset.card.has("FR"):
 		u.outside_heat += Fire.move_heat(state.map, path, MoveOptions.coord_of(from), jumped)
 	emit.call(GameEvent.UNIT_MOVED, {"unit_id": u.id, "from": from, "path": path,

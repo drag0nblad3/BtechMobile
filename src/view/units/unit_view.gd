@@ -107,7 +107,9 @@ func _hex_pos(c: Vector2i) -> Vector3:
 	if t == null:  # off the field (waiting to combat drop)
 		return Vector3(0, -100, 0)
 	var p := HexLayout.tile_top(t)
-	if unit.on_bridge and t.bridge != null:
+	if VtolFlight.is_vtol(unit):  # flies over the hex's woods or buildings
+		p.y = HexLayout.level_y(VtolFlight.min_level(t) - 1)
+	elif unit.on_bridge and t.bridge != null:
 		p.y = HexLayout.level_y(t.bridge.level) + VxBuildingGen.PITCH  # on the deck slab
 	elif unit.on_roof and Roofs.has_roof(t):
 		p.y += t.building.height * HexLayout.LEVEL_HEIGHT
