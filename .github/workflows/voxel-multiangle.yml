@@ -3,12 +3,7 @@ name: Voxel connectivity and silhouette review
 on:
   pull_request:
     paths:
-      - 'data/voxels/**_shape.json'
-      - 'data/voxels/icarus_ii.json'
-      - 'data/voxels/starslayer.json'
-      - 'data/voxels/katana.json'
-      - 'data/voxels/spartan.json'
-      - 'data/voxels/crockett.json'
+      - 'data/voxels/*.json'
       - 'src/view/vox/vx_connectivity.gd'
       - 'src/view/vox/vx_model.gd'
       - 'src/view/vox/vx_silhouette.gd'
@@ -57,6 +52,12 @@ jobs:
           print('Sculpt count:', audit['count'])
           print('Residual island parts:', audit['total_island_parts'])
           print('Residual weak joints:', audit['total_weak_joints'])
+          if audit['total_island_parts'] or audit['total_weak_joints']:
+              print('Topology regressions:', {
+                  name: model['faults'] for name, model in audit['models'].items()
+                  if model['faults']
+              })
+              raise SystemExit('No floating islands or weak joints allowed')
           print('Closest blind silhouette matches:')
           for item in audit['confusion_pairs'][:10]:
               print(item)
