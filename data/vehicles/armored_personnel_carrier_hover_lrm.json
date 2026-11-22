@@ -1,0 +1,34 @@
+{
+ "id": "armored_personnel_carrier_hover_lrm",
+ "name": "Armored Personnel Carrier (Hover LRM)",
+ "tonnage": 10,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 10,
+  "engine": "ice",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 6,
+  "RS": 6,
+  "LS": 6,
+  "RR": 6
+ },
+ "equipment": {
+  "FR": [
+   "lrm5"
+  ],
+  "BD": [
+   "ammo:lrm5"
+  ]
+ },
+ "source": {
+  "mul_id": 111,
+  "megamek": "data/mekfiles/vehicles/3039u/APC (Hover LRM).blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 193
+}

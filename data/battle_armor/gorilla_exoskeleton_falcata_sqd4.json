@@ -1,0 +1,35 @@
+{
+ "id": "gorilla_exoskeleton_falcata_sqd4",
+ "name": "Gorilla Exoskeleton",
+ "model": "'Falcata'(Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 2,
+  "ground_mp": 1,
+  "jump_mp": 0,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "small_laser",
+    "name": "Small Laser",
+    "type": "energy",
+    "damage": 3,
+    "short": 1,
+    "medium": 2,
+    "long": 3
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 5440,
+  "megamek": "data/mekfiles/battlearmor/TRO VA/Gorilla Exo 'Falcata' (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 60
+}

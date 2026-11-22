@@ -1,0 +1,48 @@
+{
+ "id": "longinus_battle_armor_flamer_sqd4",
+ "name": "Longinus Battle Armor",
+ "model": "[Flamer](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 9,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "flamer",
+    "name": "Flamer",
+    "type": "energy",
+    "damage": 2,
+    "short": 1,
+    "medium": 2,
+    "long": 3,
+    "heat_damage": true,
+    "ai": true
+   },
+   {
+    "id": "srm2",
+    "name": "SRM 2 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 2,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 1943,
+  "megamek": "data/mekfiles/battlearmor/3058Uu/Longinus BA [Flamer] (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 195
+}

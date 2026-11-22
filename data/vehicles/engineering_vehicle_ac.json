@@ -1,0 +1,34 @@
+{
+ "id": "engineering_vehicle_ac",
+ "name": "Engineering Vehicle (AC)",
+ "tonnage": 40,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 5,
+  "engine": "ice",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 8,
+  "RS": 8,
+  "LS": 8,
+  "RR": 8
+ },
+ "equipment": {
+  "FR": [
+   "ac20"
+  ],
+  "BD": [
+   "ammo:ac20"
+  ]
+ },
+ "source": {
+  "mul_id": 988,
+  "megamek": "data/mekfiles/vehicles/3039u/Engineering Vehicle (Autocannon).blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 423
+}

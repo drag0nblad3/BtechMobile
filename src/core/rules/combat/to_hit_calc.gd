@@ -122,6 +122,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
 	Stealth.add_mods(th, target, br)
+	BaStealth.add_mods(th, target, br)
 	if p.min_range > 0 and dist <= p.min_range:
 		th.add("minimum range", p.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])
