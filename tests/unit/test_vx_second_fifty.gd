@@ -31,13 +31,16 @@ func test_second_pass_did_not_disrupt_mirrors_or_kinematic_hierarchy() -> void:
 			continue
 		var raw: Dictionary = JsonFile.read("res://data/voxels/" + path)
 		var known := {}
+		var all_names := {}
+		for item: Dictionary in raw.get("parts", []):
+			all_names[item["name"]] = true
 		for part: Dictionary in raw.get("parts", []):
 			var name: String = part.get("name", "")
 			check(not known.has(name), "%s duplicate part %s" % [path,name])
 			if part.has("mirror"):
 				check(known.has(part["mirror"]), "%s unknown mirror %s" % [path,name])
 			if part.has("parent"):
-				check(known.has(part["parent"]), "%s unknown parent %s" % [path,name])
+				check(all_names.has(part["parent"]), "%s unknown parent %s" % [path,name])
 			for shape: Dictionary in part.get("shapes", []):
 				if not shape.has("loft"):
 					continue
@@ -48,3 +51,17 @@ func test_second_pass_did_not_disrupt_mirrors_or_kinematic_hierarchy() -> void:
 					check(stations[i]["polygon"].size() == stations[i-1]["polygon"].size(),
 							"%s %s: polygon correspondence" % [path,name])
 			known[name] = true
+
+func test_runtime_rig_resolves_parents_regardless_of_part_order() -> void:
+	var mech := VxMech.from_file("res://data/voxels/locust_shape.json")
+	check(mech.model.errors.is_empty(), "sample rig loads")
+	var checked := 0
+	for spec: Dictionary in mech.model.parts:
+		var parent_name: String = spec.get("parent", "")
+		if parent_name.is_empty():
+			continue
+		checked += 1
+		check(mech.pivots[spec["name"]].get_parent() == mech.pivots[parent_name],
+				"rig child %s must follow parent %s" % [spec["name"],parent_name])
+	check(checked > 0, "joint hierarchy contains parented child parts")
+	mech.free()
