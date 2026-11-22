@@ -5,26 +5,31 @@ extends RefCounted
 static func build(parent: Control, def: UnitDef, variants: Array,
 		on_add: Callable, on_variant: Callable) -> Dictionary:
 	var box := UiKit.panel(parent)
-	var name := UiKit.label(box, def.display_name(), 23)
+	box.add_theme_constant_override("separation", 2)
+	var name := UiKit.label(box, def.display_name(), 21)
 	UiSkin.label(name, "body")
-	var summary := UiKit.label(box, description(def), 18)
+	var summary := UiKit.label(box, description(def) + "  •  " + weapons_line(def), 16)
+	summary.autowrap_mode = TextServer.AUTOWRAP_OFF
+	summary.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	summary.tooltip_text = weapons_line(def)
 	UiSkin.label(summary, "muted")
-	var weapons := UiKit.label(box, weapons_line(def), 17)
-	weapons.max_lines_visible = 2
-	UiSkin.label(weapons, "muted")
-	var cost := UiKit.label(box, "", 18)
-	UiSkin.label(cost, "section")
-	var info := UiKit.label(box, "", 16)
-	UiSkin.label(info, "muted")
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 8)
 	box.add_child(actions)
-	var add := UiKit.button(actions, "ADD", on_add, Vector2(0, 52), "primary")
-	add.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var text := VBoxContainer.new()
+	text.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	text.add_theme_constant_override("separation", 0)
+	actions.add_child(text)
+	var cost := UiKit.label(text, "", 17)
+	UiSkin.label(cost, "section")
+	var info := UiKit.label(text, "", 15)
+	UiSkin.label(info, "muted")
 	if variants.size() > 1:
 		var cycle := UiKit.button(actions, "CONFIG %d/%d" % [variants.find(def) + 1, variants.size()],
-			on_variant, Vector2(140, 52), "subtle")
-		cycle.add_theme_font_size_override("font_size", 16)
+			on_variant, Vector2(120, 48), "subtle")
+		cycle.add_theme_font_size_override("font_size", 15)
+	var add := UiKit.button(actions, "ADD", on_add, Vector2(150, 48), "primary")
+	add.add_theme_font_size_override("font_size", 18)
 	return {"def": def, "button": add, "cost": cost, "info": info}
 
 

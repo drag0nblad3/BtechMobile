@@ -72,6 +72,18 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
   `ammo:<launcher>:<kind>` bins and is picked as the firing mode (`Atm`).
 - `tech: "clan"` marks Clan versions; their ids start `c_` (`c_er_medium_laser`) and keep the
   book's names. `to_hit` is the weapon's own modifier (pulse -2, ER pulse -1, heavy lasers +1).
+- The advanced weapon expansion includes re-engineered lasers, chemical lasers, binary lasers,
+  Clan improved lasers and autocannons, hyper-velocity ACs, AP/improved Gauss rifles and primitive
+  rifle cannons. `reengineered: true` adds an armor-bypass attack tag against reflective, hardened
+  and ferro-lamellor armor; `rifle: true` reduces damage by 3 against military-grade armor
+  (`RifleCannon`); `explosion_damage` sets a weapon-specific critical explosion instead of the
+  fallback of two damage per slot (`ComponentExplosion`). Ammunition-using energy weapons such as
+  chemical lasers must still list `ammo:<weapon id>` bins. Existing weapons remain unchanged.
+- `source_megamek` on an advanced weapon records its MegaMek Java equipment definition, with
+  ammunition capacity and BV verified against `megamek/common/equipment/AmmoType.java`.
+  This catalogs equipment statistics; it does not create unofficial BattleMech loadouts.
+  `TODO(rules)`: HVAC rapid-fire mode, primitive rifles against commercial armor, and
+  chemical-laser specialty fire effects remain outside this pass.
 
 ## `data/bv_skill.json`
 `{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;
@@ -116,7 +128,11 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
   (`data/construction.json`, rating = tonnage × walk MP), gyro rating/100 rounded up,
   XL half, endo steel structure half, cockpit 3, 1 t per heat sink over 10, jump jets 0.5/1/2 t by weight class, 16 armor
   points per ton (17.92 ferro-fibrous, rounded up to the half ton), weapon tons, 1 t per ammo item.
+- `source.bv: "mul"` identifies the official Master Unit List's published BV,
+  and `source.mul_url` links its listing (used when a matching free sheet is
+  not independently verified). Never invent BV values.
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
+  Voxel showcase art is separate, under `data/voxels/`.
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
 

@@ -1,0 +1,50 @@
+{
+  "id": "koschei_ksc3i",
+  "name": "Koschei",
+  "model": "KSC-3I",
+  "tonnage": 65,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 20,
+    "RA": 20,
+    "LT": 20,
+    "RT": 20,
+    "CT": 29,
+    "HD": 9,
+    "LL": 24,
+    "RL": 24
+  },
+  "rear_armor": {
+    "LT": 8,
+    "RT": 8,
+    "CT": 10
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "ac10",
+      "ammo:ac10*2"
+    ],
+    "RT": [
+      "medium_laser*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. AC/10, 2x Medium Laser; walks 5, runs 8.",
+  "sprite": "koschei",
+  "source": {
+    "mul_id": 1820,
+    "megamek": "data/mekfiles/meks/3075/Koschei KSC-3I.mtf",
+    "published": "RS:3075u-AW",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1255
+  },
+  "bv": 1255
+}

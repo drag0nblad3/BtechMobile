@@ -1,0 +1,73 @@
+{
+  "id": "eris_ers2h",
+  "name": "Eris",
+  "model": "ERS-2H",
+  "tonnage": 50,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 14,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 15,
+    "RA": 15,
+    "LT": 18,
+    "RT": 18,
+    "CT": 23,
+    "HD": 9,
+    "LL": 22,
+    "RL": 22
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 8
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "er_medium_laser*2",
+      "endo_steel*6"
+    ],
+    "RA": [
+      "heavy_ppc",
+      "endo_steel*5"
+    ],
+    "LT": [
+      "heat_sink",
+      "streak_srm6",
+      "ammo:streak_srm6",
+      "case2",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "heat_sink*3"
+    ],
+    "CT": [
+      "jump_jet",
+      "endo_steel"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. 2x ER Medium Laser, Heavy PPC, Streak SRM 6; walks 5, runs 8, jumps 5.",
+  "sprite": "eris",
+  "source": {
+    "mul_id": 9328,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Eris ERS-2H.mtf",
+    "published": "RG18",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1674
+  },
+  "bv": 1674
+}

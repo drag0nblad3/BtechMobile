@@ -1,0 +1,65 @@
+{
+  "id": "griffin_grf1rg",
+  "name": "Griffin",
+  "model": "GRF-1RG",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 17,
+  "armor": {
+    "LA": 14,
+    "RA": 14,
+    "LT": 20,
+    "RT": 20,
+    "CT": 20,
+    "HD": 9,
+    "LL": 18,
+    "RL": 18
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 7
+  },
+  "equipment": {
+    "RA": [
+      "large_laser",
+      "medium_laser"
+    ],
+    "LT": [
+      "medium_laser",
+      "small_laser",
+      "machine_gun",
+      "ammo:machine_gun:half"
+    ],
+    "RT": [
+      "medium_laser",
+      "small_laser",
+      "machine_gun",
+      "ammo:machine_gun:half"
+    ],
+    "CT": [
+      "heat_sink"
+    ],
+    "HD": [
+      "heat_sink"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Large Laser, 3x Medium Laser, 2x Small Laser, 2x Machine Gun; walks 5, runs 8.",
+  "sprite": "griffin",
+  "source": {
+    "mul_id": 9402,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 1/Griffin GRF-1RG.mtf",
+    "published": "RG01,RGv1",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1141
+  },
+  "bv": 1141
+}

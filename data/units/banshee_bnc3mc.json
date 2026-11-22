@@ -1,0 +1,47 @@
+{
+  "id": "banshee_bnc3mc",
+  "name": "Banshee",
+  "model": "BNC-3MC",
+  "tonnage": 95,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 11,
+  "armor": {
+    "LA": 21,
+    "RA": 21,
+    "LT": 30,
+    "RT": 30,
+    "CT": 40,
+    "HD": 9,
+    "LL": 26,
+    "RL": 26
+  },
+  "rear_armor": {
+    "LT": 10,
+    "RT": 10,
+    "CT": 17
+  },
+  "equipment": {
+    "LT": [
+      "ac10",
+      "ammo:ac10*2"
+    ],
+    "RT": [
+      "ppc"
+    ],
+    "HD": [
+      "small_laser"
+    ]
+  },
+  "role": "Brawler: close-range firepower. AC/10, PPC, Small Laser; walks 4, runs 6.",
+  "sprite": "banshee",
+  "source": {
+    "mul_id": 242,
+    "megamek": "data/mekfiles/meks/3039u/Banshee BNC-3MC.mtf",
+    "published": "RS:SW",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1487
+  },
+  "bv": 1487
+}

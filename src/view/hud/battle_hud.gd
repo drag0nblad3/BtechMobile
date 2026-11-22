@@ -32,9 +32,10 @@ signal watch_replay
 signal battle_forensics
 signal pause_toggled
 signal exit_battle
+signal next_unit  ## Go to the next of your units (camera + selection).
 
 const FONT_SIZE := 24
-const BUTTON_SIZE := Vector2(140, 68)
+const BUTTON_SIZE := Vector2(140, 60)
 const MARGIN := 18
 
 const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
@@ -70,6 +71,7 @@ var prone_button: Button
 var more_button: MenuButton
 var _tools_menu: MenuButton
 var pause_menu: BattlePauseMenu
+var roll_feed: RollFeed  ## Recent dice rolls, top right.
 var _move_actions: Array[Button] = []
 var game_over_label: Label
 var sheet_open := false  ## Side panel shows the record sheet, not attack choices.
@@ -105,16 +107,19 @@ func _ready() -> void:
 	_event_label = _label(_event_panel, 19)
 	_event_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_event_panel.custom_minimum_size.x = 170
-	var phase_strip := _row(col)
-	phase_strip.add_theme_constant_override("separation", 5)
+	# The phase timeline sits at the right of the status row (one row, not
+	# two), leaving more of a 720 px screen for the map.
+	var phase_strip := HBoxContainer.new()
+	phase_strip.add_theme_constant_override("separation", 4)
 	phase_strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	heading.add_child(phase_strip)
 	for tag in PHASE_TAGS:
 		var cell := PanelContainer.new()
-		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.custom_minimum_size = Vector2(70, 0)
 		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		phase_strip.add_child(cell)
 		_phase_cells.append(cell)
-		var stage := _label(cell, 15)
+		var stage := _label(cell, 14)
 		stage.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		stage.text = tag
 		stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -126,6 +131,7 @@ func _ready() -> void:
 	_button(shortcuts, "Pause", pause_toggled)
 	_button(shortcuts, "Log", log_toggled)
 	_button(shortcuts, "Sheet", sheet_toggled)
+	_button(shortcuts, "Next ▸", next_unit).tooltip_text = "Go to your next unit"
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
 	_tools_menu = MenuButton.new()
@@ -211,6 +217,10 @@ func _ready() -> void:
 	UiSkin.button(attack_button, "danger")
 	show_move_controls(false)
 	show_attack_controls(false)
+	roll_feed = RollFeed.new()
+	roll_feed.offset_right = -(MARGIN + safe["right"])
+	roll_feed.offset_top = 100 + safe["top"]
+	add_child(roll_feed)
 	pause_menu = BattlePauseMenu.new()
 	pause_menu.visible = false
 	add_child(pause_menu)

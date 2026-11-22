@@ -1,0 +1,78 @@
+{
+  "id": "initiate_ini02",
+  "name": "Initiate",
+  "model": "INI-02",
+  "tonnage": 40,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 11,
+  "heat_sink_type": "double",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 12,
+    "RA": 12,
+    "LT": 15,
+    "RT": 15,
+    "CT": 17,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 6
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink",
+      "medium_laser*2",
+      "endo_steel*3"
+    ],
+    "RA": [
+      "heat_sink",
+      "er_small_laser*3"
+    ],
+    "LT": [
+      "lrm15",
+      "ams",
+      "ammo:ams",
+      "ammo:lrm15",
+      "case",
+      "endo_steel*5"
+    ],
+    "RT": [
+      "heat_sink*3",
+      "srm6",
+      "ammo:srm6"
+    ],
+    "CT": [
+      "endo_steel*2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Brawler: close-range firepower. 2x Medium Laser, 3x ER Small Laser, LRM 15, Anti-Missile System, SRM 6; walks 4, runs 6.",
+  "sprite": "initiate",
+  "source": {
+    "mul_id": 1620,
+    "megamek": "data/mekfiles/meks/3060u/Initiate INI-02.mtf",
+    "published": "RS:J",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1036
+  },
+  "bv": 1036
+}

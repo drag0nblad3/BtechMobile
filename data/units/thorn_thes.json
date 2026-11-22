@@ -1,0 +1,62 @@
+{
+  "id": "thorn_thes",
+  "name": "Thorn",
+  "model": "THE-S",
+  "tonnage": 20,
+  "walk_mp": 6,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 6,
+    "RT": 6,
+    "CT": 8,
+    "HD": 8,
+    "LL": 7,
+    "RL": 7
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 4
+  },
+  "missing_actuators": {
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "medium_laser"
+    ],
+    "RA": [
+      "lrm5"
+    ],
+    "LT": [
+      "heat_sink*2"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "ammo:lrm5"
+    ],
+    "CT": [
+      "heat_sink*2"
+    ],
+    "HD": [
+      "medium_laser"
+    ]
+  },
+  "role": "Striker: mobile direct fire. 2x Medium Laser, LRM 5; walks 6, runs 9.",
+  "sprite": "thorn",
+  "source": {
+    "mul_id": 3195,
+    "megamek": "data/mekfiles/meks/3039u/Thorn THE-S.mtf",
+    "published": "RS:3039u",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 510
+  },
+  "bv": 510
+}

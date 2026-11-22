@@ -1,0 +1,64 @@
+{
+  "id": "night_hawk_ntk2q",
+  "name": "Night Hawk",
+  "model": "NTK-2Q",
+  "tonnage": 35,
+  "walk_mp": 6,
+  "jump_mp": 0,
+  "heat_sinks": 12,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor": {
+    "LA": 10,
+    "RA": 10,
+    "LT": 13,
+    "RT": 13,
+    "CT": 17,
+    "HD": 9,
+    "LL": 15,
+    "RL": 15
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 4
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "medium_pulse_laser"
+    ],
+    "RA": [
+      "er_large_laser"
+    ],
+    "LT": [
+      "heat_sink*2"
+    ],
+    "RT": [
+      "heat_sink*2"
+    ],
+    "CT": [
+      "large_laser"
+    ]
+  },
+  "role": "Striker: mobile direct fire. Medium Pulse Laser, ER Large Laser, Large Laser; walks 6, runs 9.",
+  "sprite": "night_hawk",
+  "source": {
+    "mul_id": 2271,
+    "megamek": "data/mekfiles/meks/3058Uu/Night Hawk NTK-2Q.mtf",
+    "published": "RS:SW",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 997
+  },
+  "bv": 997
+}

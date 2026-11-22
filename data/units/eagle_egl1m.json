@@ -1,0 +1,74 @@
+{
+  "id": "eagle_egl1m",
+  "name": "Eagle",
+  "model": "EGL-1M",
+  "tonnage": 25,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 7,
+    "RA": 7,
+    "LT": 10,
+    "RT": 10,
+    "CT": 12,
+    "HD": 9,
+    "LL": 9,
+    "RL": 9
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 3
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "er_small_laser",
+      "endo_steel*3"
+    ],
+    "RA": [
+      "er_large_laser",
+      "endo_steel*3"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet*2",
+      "ams",
+      "ammo:ams",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "heat_sink*3",
+      "jump_jet*2",
+      "endo_steel"
+    ],
+    "CT": [
+      "jump_jet",
+      "endo_steel"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Brawler: close-range firepower. ER Small Laser, ER Large Laser, Anti-Missile System; walks 5, runs 8, jumps 5.",
+  "sprite": "eagle",
+  "source": {
+    "mul_id": 936,
+    "megamek": "data/mekfiles/meks/3060u/Eagle EGL-1M.mtf",
+    "published": "RS:3060u",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 757
+  },
+  "bv": 757
+}

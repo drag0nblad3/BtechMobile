@@ -1,0 +1,75 @@
+{
+  "id": "behemoth_bhn6h",
+  "name": "Behemoth",
+  "model": "BHN-6H",
+  "tonnage": 100,
+  "walk_mp": 2,
+  "jump_mp": 2,
+  "heat_sinks": 22,
+  "armor": {
+    "LA": 32,
+    "RA": 32,
+    "LT": 27,
+    "RT": 27,
+    "CT": 46,
+    "HD": 9,
+    "LL": 36,
+    "RL": 36
+  },
+  "rear_armor": {
+    "LT": 14,
+    "RT": 14,
+    "CT": 15
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink*2",
+      "ppc"
+    ],
+    "RA": [
+      "heat_sink*2",
+      "ppc"
+    ],
+    "LT": [
+      "heat_sink*3",
+      "ac10",
+      "ammo:ac10*2"
+    ],
+    "RT": [
+      "heat_sink*3",
+      "ac10",
+      "ammo:ac10*2"
+    ],
+    "CT": [
+      "jump_jet*2"
+    ],
+    "HD": [
+      "small_laser"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Juggernaut: heavy assault. 2x PPC, 2x AC/10, Small Laser; walks 2, runs 3, jumps 2.",
+  "sprite": "behemoth",
+  "source": {
+    "mul_id": 8301,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 2/Behemoth BHN-6H.mtf",
+    "published": "RG02,RGv1",
+    "role": "Juggernaut",
+    "bv": "megamek",
+    "megamek_bv": 1703
+  },
+  "bv": 1703
+}

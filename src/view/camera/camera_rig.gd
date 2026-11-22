@@ -65,6 +65,15 @@ func focus(point: Vector3) -> void:
 	_goal_target = _clamp_to_bounds(point)
 
 
+## Glide to this camera distance (clamped to the zoom limits).
+func set_distance(dist: float) -> void:
+	_goal_dist = clampf(dist, MIN_DIST, MAX_DIST)
+
+
+func distance() -> float:
+	return _goal_dist
+
+
 ## Temporarily reframe on a dramatic action without moving the physical camera instantly.
 func cinematic_frame(point: Vector3, distance: float, yaw: float, pitch: float) -> void:
 	_goal_target = _clamp_to_bounds(point)
