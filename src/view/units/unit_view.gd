@@ -100,7 +100,9 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 		var jump_tween := create_tween().set_parallel()
 		jump_tween.tween_property(self, "position", _hex_pos(Vector2i(destination.x, destination.y)), 1.32)
 		jump_tween.tween_property(self, "rotation:y", _yaw, 0.3)
-		jump_tween.finished.connect(func(): show_condition(); animation_finished.emit())
+		jump_tween.finished.connect(func():
+			show_condition()
+			animation_finished.emit())
 		return
 	if _model is VxMech:
 		(_model as VxMech).anim.walk(true, mode == MoveMode.Kind.RUN)
