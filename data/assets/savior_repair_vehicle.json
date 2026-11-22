@@ -1,0 +1,10 @@
+{
+  "id": "savior_repair_vehicle",
+  "name": "Savior Repair Vehicle",
+  "tech_base": "inner_sphere",
+  "role": "Field repair truck: weak gun, carries two infantry platoons.",
+  "asset": {"type": "vehicle", "motive": "t", "mp": 4, "tmm": 1, "range": [1, 2, 3],
+    "skill": 6, "skill_improved": 5, "damage": 3, "groupings": 1, "check": 7, "threshold": 5,
+    "bsp": 13, "bsp_improved": 15, "specials": {"APC": 2, "MFB": 1}},
+  "source": {"card": "Core Rulebook p. 141 (example Asset card)"}
+}

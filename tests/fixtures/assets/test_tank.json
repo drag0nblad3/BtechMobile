@@ -1,0 +1,1 @@
+{"id": "test_tank", "name": "Test Tank", "asset": {"type": "vehicle", "motive": "t", "mp": 4, "tmm": 1, "range": [3, 6, 9], "skill": 5, "skill_improved": 4, "damage": 5, "groupings": 2, "check": 9, "threshold": 8, "bsp": 20, "bsp_improved": 24}}

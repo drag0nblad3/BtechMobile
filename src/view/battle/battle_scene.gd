@@ -83,6 +83,9 @@ func _build_views(state: GameState) -> void:
 	movement.hud = hud
 	movement.units_layer = units_layer
 	add_child(movement)
+	var transport := TransportInput.new()
+	add_child(transport)
+	transport.setup(controller, movement, hud)
 	attacks = AttackInput.new()
 	attacks.controller = controller
 	attacks.hud = hud
@@ -207,7 +210,7 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
-		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
+		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:

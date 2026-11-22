@@ -29,7 +29,7 @@ func on_hex_tapped(c: Vector2i) -> void:
 		return
 	if controller.state.game_over or (bots and bots.is_bot_turn()):
 		return
-	var u := controller.state.unit_at(c)
+	var u := _pending_at(c)
 	if u and u != selected and controller.pending_units().has(u):
 		_select(u)
 	elif selected and has_preview and MoveOptions.coord_of(preview) == c:
@@ -40,8 +40,22 @@ func on_hex_tapped(c: Vector2i) -> void:
 		clear_selection()
 
 
+## A unit in the hex still to move, other than the selected one (infantry
+## can share a hex with a 'Mech or vehicle).
+func _pending_at(c: Vector2i) -> Unit:
+	for p in controller.pending_units():
+		if p.coord == c and p != selected:
+			return p
+	return controller.state.unit_at(c)
+
+
 func on_mode_toggled() -> void:
 	if selected == null:
+		return
+	if selected.asset != null:  # Assets: move, or declare backward movement
+		if mode != MoveMode.Kind.JUMP:
+			mode = MoveMode.Kind.WALK if mode == MoveMode.Kind.RUN else MoveMode.Kind.RUN
+		_replan()
 		return
 	mode = (mode + 1) % MoveMode.Kind.size()
 	if mode == MoveMode.Kind.JUMP and selected.jump_mp() <= 0:
@@ -166,6 +180,8 @@ func clear_selection() -> void:
 func _select(u: Unit) -> void:
 	selected = u
 	mode = MoveMode.Kind.RUN if u.masc_used or u.sc_used else MoveMode.Kind.WALK
+	if u.asset != null:
+		mode = MoveMode.Kind.JUMP if u.asset.card.motive == "j" else MoveMode.Kind.RUN
 	smash = false
 	hud.show_move_controls(true)
 	unit_selected.emit(u)
@@ -211,11 +227,11 @@ func _refresh() -> void:
 			hexes[MoveOptions.coord_of(k)] = HexHighlighter.PATH
 	hexes[selected.coord] = HexHighlighter.SELECTED
 	highlighter.show_hexes(hexes)
-	hud.set_mode_label(MoveMode.name_of(mode))
+	hud.set_mode_label(AssetMove.mode_name(selected, mode))
 	var spent: int = options.cost[preview] if has_preview else 0
 	var where := Hex.label(MoveOptions.coord_of(preview)) if has_preview else "-"
 	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s" % [selected.def.display_name(),
-			MoveMode.name_of(mode), spent, options.budget, where,
+			AssetMove.mode_name(selected, mode), spent, options.budget, where,
 			"  |  prone: standing costs 2 MP and a roll" if selected.prone else ""])
 	var ct := charge_target()
 	hud.charge_button.visible = ct != null

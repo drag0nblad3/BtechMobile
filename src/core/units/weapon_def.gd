@@ -52,6 +52,7 @@ var heat_dice: int     ## Plasma: a hit adds this many d6 of heat to the target 
 var to_hit_by_range: Array[int] = []  ## VSP lasers: own to-hit modifier at short, medium, long.
 var large_missile: bool  ## Thunderbolt: one big missile; AMS may shoot it down (Thunderbolt).
 var explosion_damage: int  ## Component explosion damage, if not 2 a slot (improved heavy lasers).
+var ai: bool           ## Anti-Infantry type (AI, book weapon tables): more harm to infantry Assets.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -100,6 +101,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 		w.to_hit_by_range.append(int(v))
 	w.explosion_damage = int(d.get("explosion_damage", 0))
 	w.large_missile = bool(d.get("large_missile", false))
+	w.ai = bool(d.get("ai", false))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()
@@ -112,6 +114,24 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 
 func is_clan() -> bool:
 	return tech == "clan"
+
+
+## Weapon Type codes from the book's tables (p. 182) that Assets care about:
+## DE direct energy, P pulse, DB direct ballistic, M missile, AI, H heat.
+func attack_types() -> Array[String]:
+	var out: Array[String] = []
+	match type:
+		"energy":
+			out.append("P" if pulse else "DE")
+		"ballistic":
+			out.append("DB")
+		"missile":
+			out.append("M")
+	if ai:
+		out.append("AI")
+	if heat_damage:
+		out.append("H")
+	return out
 
 
 func uses_ammo() -> bool:
