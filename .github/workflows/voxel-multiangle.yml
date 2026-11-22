@@ -11,6 +11,7 @@ on:
       - 'tests/unit/test_vx_silhouette.gd'
       - 'tools/voxel_multiangle_audit.gd'
       - 'tools/capture_silhouette_review.gd'
+      - 'tools/capture_proportion_review.gd'
       - '.github/workflows/voxel-multiangle.yml'
   workflow_dispatch:
 
@@ -81,6 +82,15 @@ jobs:
             2>&1 | tee silhouette-review-render.log
           test -s /tmp/voxel-qa/seven_chassis_multiangle.png
           ! grep -E 'SCRIPT ERROR|Parse Error|SILHOUETTE_RENDER_ERROR' silhouette-review-render.log
+      - name: Render the 41-chassis front and side stance survey
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 600s xvfb-run -a godot \
+            --rendering-method gl_compatibility --resolution 1400x800 \
+            -s tools/capture_proportion_review.gd -- /tmp/voxel-qa \
+            2>&1 | tee proportion-review-render.log
+          test -s /tmp/voxel-qa/proportion_queue_front_side.png
+          ! grep -E 'SCRIPT ERROR|Parse Error|SILHOUETTE_RENDER_ERROR' proportion-review-render.log
       - name: Upload compact review evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -94,4 +104,5 @@ jobs:
             catalog-audit.log
             voxel-render.log
             silhouette-review-render.log
+            proportion-review-render.log
           if-no-files-found: warn
