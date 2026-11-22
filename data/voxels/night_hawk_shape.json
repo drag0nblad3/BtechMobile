@@ -250,6 +250,34 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -3,
+              35,
+              -3
+            ],
+            [
+              -3,
+              36,
+              1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              2,
+              35,
+              -3
+            ],
+            [
+              2,
+              36,
+              1
+            ]
+          ]
         }
       ]
     },
@@ -1407,6 +1435,20 @@
               -10
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              -12,
+              20,
+              2
+            ],
+            [
+              -10,
+              22,
+              3
+            ]
+          ]
         }
       ]
     },
@@ -1546,5 +1588,5 @@
       ]
     ]
   },
-  "notes": "Shape-first bespoke 35-ton mech, sensor_owl. Owl-headed light chassis, slender no-hand cannon arms, uneven long ER laser and central laser mount. Weapon port count from official night_hawk_ntk2q. Unapproved draft needing further multiple-angle likeness work."
+  "notes": "Shape-first bespoke 35-ton mech, sensor_owl. Owl-headed light chassis, slender no-hand cannon arms, uneven long ER laser and central laser mount. Weapon port count from official night_hawk_ntk2q. Unapproved draft needing further multiple-angle likeness work.\nForensic voxel-level correction: removed actual unsupported tail fragments and materially connected chest/neck sections; pass assessed with six-neighbor flood-fill of all moving parts."
 }

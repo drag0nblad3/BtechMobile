@@ -1422,6 +1422,20 @@
               -16
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              11,
+              19,
+              1
+            ],
+            [
+              16,
+              24,
+              4
+            ]
+          ]
         }
       ]
     },
@@ -1751,5 +1765,5 @@
       ]
     ]
   },
-  "notes": "Shape-first bespoke 45-ton mech, asymmetric_heavy_shoulder. Prominent right-side arm LB 10-X, blocky sloping shoulder shields, recessed head with high roof tubes. Weapon port count from official wolf_trap_tora_wft1. Unapproved draft needing further multiple-angle likeness work."
+  "notes": "Shape-first bespoke 45-ton mech, asymmetric_heavy_shoulder. Prominent right-side arm LB 10-X, blocky sloping shoulder shields, recessed head with high roof tubes. Weapon port count from official wolf_trap_tora_wft1. Unapproved draft needing further multiple-angle likeness work.\nForensic voxel-level correction: removed actual unsupported tail fragments and materially connected chest/neck sections; pass assessed with six-neighbor flood-fill of all moving parts."
 }
