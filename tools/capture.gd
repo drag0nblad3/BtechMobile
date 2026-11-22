@@ -4,7 +4,7 @@ extends SceneTree
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · setupmenu (its Battlefield page) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
-## tutorial (training battle, first lesson) · rolls (sample roll feed) ·
+## jump (mid-air jump-jet preview) · tutorial (training battle, first lesson) · rolls (sample roll feed) ·
 ## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played).
 
 var _frames := 0
@@ -18,14 +18,14 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
-	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode == "vfx":  # two lances on that map
+	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode in ["vfx", "jump"]:  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
 			fb.add(0, id)
 		for id in ["marauder_mad3r", "wasp_wsp1a"]:
 			fb.add(1, id)
 		BattleLaunch.pending = fb.build(_capture_map())
-	if _mode == "vfx":
+	if _mode in ["vfx", "jump"]:
 		BattleLaunch.bot_sides = []  # cinematic frame, no bot actions
 	if _mode == "tutorial":
 		var tut := "res://data/scenarios/tutorial.json"
@@ -62,20 +62,30 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
-	if _frames == 8 and _mode == "vfx":
+	if _frames == 8 and _mode in ["vfx", "jump"]:
 		_stage_battle_visuals()
+	if _frames == 12 and _mode == "jump":
+		# The CI Compatibility renderer can take hundreds of milliseconds
+		# per frame; slow this *review capture* so frame 40 is airborne.
+		Engine.time_scale = 0.025
+		_stage_jump()
 	if _frames == 39 and _mode == "vfx":
 		# Visual review only: place a PPC across the visible battlefield.
 		# Does not affect the actual combat resolution or either roster.
 		var all_units: Array = _scene.controller.state.units
 		if all_units.size() >= 2:
-			var muzzle: Vector3 = _scene.units_layer.view_of(all_units[0]).global_position + Vector3(0, 0.65, 0)
-			var target: Vector3 = _scene.units_layer.view_of(all_units[all_units.size() - 1]).global_position + Vector3(0, 0.55, 0)
+			var shooter: UnitView = _scene.units_layer.view_of(all_units[0])
+			var victim: UnitView = _scene.units_layer.view_of(all_units[all_units.size() - 1])
+			var muzzle: Vector3 = shooter.weapon_origin("ppc", 0)
+			var target: Vector3 = victim.impact_point(muzzle)
 			ShotFx.spawn(_scene.fx, muzzle, target, "er_ppc", true)
 			VxBlast.spawn(_scene.fx, target, "impact")
 		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
 	if _frames == 40:
+		if _mode == "jump" and get_nodes_in_group("jump_fx").is_empty():
+			printerr("CAPTURE_JUMP_FAILED: exhaust absent on review frame")
 		root.get_viewport().get_texture().get_image().save_png(_out)
+		Engine.time_scale = 1.0
 		print("saved ", _out)
 		return true
 	return false
@@ -123,8 +133,8 @@ func _target_nearest() -> void:
 
 func _capture_map() -> BattleMap:
 	var arg := _mode.substr(4)
-	if _mode.begins_with("map=") or _mode == "vfx":
-		var id := "city_outskirts" if _mode == "vfx" else arg
+	if _mode.begins_with("map=") or _mode in ["vfx", "jump"]:
+		var id := "city_outskirts" if _mode in ["vfx", "jump"] else arg
 		return MapLoader.load_file("res://data/maps/%s.json" % id, TerrainDb.load_file())
 	var parts := arg.split(":")
 	var seed_value := int(parts[1]) if parts.size() > 1 else 1
@@ -139,6 +149,12 @@ func _stage_battle_visuals() -> void:
 		return
 	var box := HexLayout.map_bounds(state.map)
 	var center := box.get_center()
+	# Review close-ups expose physical sockets and exhausts; gameplay uses
+	# the normal free tactical camera, never these screenshot-only changes.
+	_scene.rig.snap(center + Vector3(0, 0.35, 0), 12.5)
+	_scene.rig.cinematic_frame(center + Vector3(0, 0.35, 0),
+		12.5, deg_to_rad(24.0), deg_to_rad(38.0))
+	_scene.hud.set_tip("")
 	var targets := [center + Vector3(-3.5, 0, 0), center + Vector3(3.5, 0, 0)]
 	var staged := [state.units[0], state.units[state.units.size() - 1]]
 	for i in staged.size():
@@ -170,3 +186,36 @@ func _show_sample_rolls() -> void:
 			GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": a.id, "weapon": "AC/20", "roll": 6, "need": 8, "hit": false}),
 			GameEvent.new(GameEvent.PSR, {"unit_id": t.id, "roll": 5, "need": 7, "ok": false})]:
 		_scene.hud.roll_feed.add_event(e, s)
+
+
+## Review-only jumping unit, independent of GameController combat state.
+func _stage_jump() -> void:
+	var state: GameState = _scene.controller.state
+	var chosen: Unit = null
+	for u: Unit in state.units:
+		if u.def.jump_mp >= 3 and not u.destroyed:
+			chosen = u
+			break
+	if chosen == null:
+		printerr("CAPTURE_JUMP_FAILED: no jet-capable unit")
+		return
+	var center := HexLayout.map_bounds(state.map).get_center()
+	var destination := Hex.INVALID
+	var closest := INF
+	for c: Vector2i in state.map.coords():
+		var t: MapTile = state.map.get_tile(c)
+		if t.building != null or t.depth > 0 or state.unit_at(c) != null:
+			continue
+		var distance := Hex.distance(chosen.coord, c)
+		if distance < 2 or distance > mini(4, chosen.jump_mp()):
+			continue
+		var score := HexLayout.to_world(c).distance_to(center)
+		if score < closest:
+			closest = score
+			destination = c
+	if destination == Hex.INVALID:
+		printerr("CAPTURE_JUMP_FAILED: no nearby landing hex")
+		return
+	var view: UnitView = _scene.units_layer.view_of(chosen)
+	view.play_path([Vector3i(destination.x, destination.y, chosen.facing)],
+		chosen.coord, chosen.facing, MoveMode.Kind.JUMP)

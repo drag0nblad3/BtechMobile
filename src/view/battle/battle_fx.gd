@@ -49,7 +49,7 @@ func _weapon_fire(d: Dictionary) -> void:
 	var victim: Unit = _state.unit_by_id(target_id) if target_id >= 0 else null
 	var av: UnitView = _units.view_of(attacker) if attacker != null else null
 	var tv: UnitView = _units.view_of(victim) if victim != null else null
-	var weapon_index := int(d.get("weapon_index", d.get("weapon", -1))) if d.get("weapon", -1) is int else -1
+	var weapon_index := int(d.get("weapon_index", -1))
 	var weapon_name := String(d.get("weapon_id", d.get("weapon_name", "")))
 	var a := av.weapon_origin(weapon_name, weapon_index) if av != null and av.visible else Vector3.INF
 	var target := tv.impact_point(a) if tv != null and tv.visible and a != Vector3.INF else _unit_pos(target_id)
@@ -67,11 +67,11 @@ func _weapon_fire(d: Dictionary) -> void:
 		VxBlast.spawn(self, destination, "impact", attacker_id * 131 + target_id)
 		if tv != null:
 			_flash_armor(tv, destination)
-	if av != null:
-		_recoil(av, weapon)
 	else:
 		VxBlast.spawn(self, destination - Vector3(0, 0.3, 0), "miss",
 			int(d.get("attacker_id", 0)) * 131 + int(d.get("target_id", 0)))
+	if av != null:
+		_recoil(av, weapon)
 
 
 ## Subtle view-only kick and a localized armor flash, bounded by short tweens.
