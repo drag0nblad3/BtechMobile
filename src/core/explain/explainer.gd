@@ -102,8 +102,10 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return HeatText.describe(e, s, level)
 		GameEvent.PSR, GameEvent.FALL, GameEvent.STAND, GameEvent.MASC, GameEvent.WENT_PRONE, GameEvent.PILOT_HIT, GameEvent.CONSCIOUSNESS:
 			return PilotText.describe(e, s, level, seen)
-		GameEvent.GAME_OVER, GameEvent.CRIPPLED, GameEvent.UNIT_EXITED, GameEvent.MISSION:
+		GameEvent.GAME_OVER, GameEvent.CRIPPLED, GameEvent.UNIT_EXITED, GameEvent.MISSION, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.WAVE:
 			return MissionText.describe(e, s, level)
+		GameEvent.UNIT_REVEALED, GameEvent.POINT_BLANK, GameEvent.COMBAT_DROP:
+			return HiddenText.describe(e, s, level)
 	return ""
 
 

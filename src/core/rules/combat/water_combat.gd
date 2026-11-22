@@ -18,7 +18,7 @@ enum Zone { DRY, WADING, UNDER }
 
 static func zone(map: BattleMap, u: Unit) -> int:
 	var tile := map.get_tile(u.coord)
-	if tile == null or not tile.is_water() or u.on_roof:
+	if tile == null or not tile.is_water() or u.on_roof or u.on_bridge:
 		return Zone.DRY
 	if tile.depth >= 2 or u.prone:
 		return Zone.UNDER

@@ -10,6 +10,7 @@ var torso_saved: Dictionary = {}   ## unit id -> true: passed the roll to ignore
 var withdraw_from: Dictionary = {} ## unit id -> distance to its home edge at turn start
 var withdraw_fails: Dictionary = {}## unit id -> turns in a row it couldn't get closer
 var exited: Dictionary = {}        ## unit id -> "withdraw" | "mission"
+var scans: Dictionary = {}        ## unit id -> enemy 'Mechs it has scanned (Sensor Check)
 var last_turn: int = 0             ## Random Duration: the mission ends after this turn (0 = not set)
 
 

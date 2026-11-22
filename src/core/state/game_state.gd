@@ -41,6 +41,16 @@ var conditions := Conditions.new():
 var sees_through: Dictionary = {}
 ## Mission and its running score (Mission, MissionState).
 var mission := MissionState.new()
+## Hidden units (HiddenUnits): off `units` until revealed, so nothing can see them.
+var hidden: Array[Unit] = []
+## Point-blank shots waiting for their owners' answers: [{unit_id, target_id}].
+var point_blank: Array[Dictionary] = []
+## 'Mechs waiting to combat drop (CombatDrop): off the field until they land.
+var reserves: Array[Unit] = []
+## 'Mechs held back for a later wave (Waves).
+var waiting: Array[Unit] = []
+## Units that beat ECM Interference this turn: id -> true (EcmInterference).
+var ecm_clear: Dictionary = {}
 var game_over: bool = false
 var winner: int = -1
 
@@ -54,7 +64,7 @@ func add_unit(u: Unit) -> void:
 
 
 func unit_by_id(unit_id: int) -> Unit:
-	for u in units:
+	for u in all_units():
 		if u.id == unit_id:
 			return u
 	return null
@@ -81,10 +91,19 @@ func units_of_side(side: int) -> Array[Unit]:
 	return out
 
 
-## Sides that still have a 'Mech on the field.
+## On the field and hidden alike.
+func all_units() -> Array[Unit]:
+	var out: Array[Unit] = units.duplicate()
+	out.append_array(hidden)
+	out.append_array(reserves)
+	out.append_array(waiting)
+	return out
+
+
+## Sides that still have a 'Mech on the field (hidden ones count).
 func sides_alive() -> Array[int]:
 	var out: Array[int] = []
-	for u in units:
+	for u in all_units():
 		if not u.destroyed and not out.has(u.side):
 			out.append(u.side)
 	out.sort()
@@ -93,7 +112,7 @@ func sides_alive() -> Array[int]:
 
 func sides() -> Array[int]:
 	var out: Array[int] = []
-	for u in units:
+	for u in all_units():
 		if not out.has(u.side):
 			out.append(u.side)
 	out.sort()

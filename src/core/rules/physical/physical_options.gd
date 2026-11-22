@@ -41,7 +41,7 @@ static func _push(state: GameState, a: Unit, t: Unit) -> Dictionary:
 		th.impossible = "Can't push a 'Mech that is already down"
 	elif PhysicalMods.level_diff(state, a, t) != 0:
 		th.impossible = "Pushes need both 'Mechs on the same level"
-	elif a.is_location_out(Location.LA) or a.is_location_out(Location.RA):
+	elif a.is_location_out(Location.LA) or a.is_location_out(Location.RA) or a.carry_arm >= 0:
 		th.impossible = "Pushing needs both arms"
 	elif PhysicalMods.limb_fired(a, Location.LA) or PhysicalMods.limb_fired(a, Location.RA):
 		th.impossible = "Both arms are needed; one fired a weapon"
@@ -82,6 +82,8 @@ static func _punch(state: GameState, a: Unit, t: Unit, arm: int) -> Dictionary:
 		th.impossible = "The target is below you; kick it instead"
 	elif PhysicalMods.limb_fired(a, arm):
 		th.impossible = "That arm fired a weapon this turn"
+	elif a.carry_arm == arm:
+		th.impossible = "That arm is carrying the objective"
 	if th.impossible != "":
 		return opt
 	PhysicalMods.add(th, state, a, t, true, false)

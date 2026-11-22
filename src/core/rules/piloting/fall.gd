@@ -21,7 +21,7 @@ static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: 
 	u.prone = true
 	var total := damage_for(u, levels)
 	var tile := state.map.get_tile(u.coord)
-	var in_water := tile != null and tile.is_water() and tile.depth >= 1
+	var in_water := tile != null and tile.is_water() and tile.depth >= 1 and not u.on_bridge
 	if in_water:
 		@warning_ignore("integer_division")
 		total = total / 2
