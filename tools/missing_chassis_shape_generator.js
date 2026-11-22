@@ -115,7 +115,7 @@
    ],parent,"ankle",[xx,3,zbody]));
   }
   // Unit record sheets alone determine which visible mounts exist.
-  const gear=unit.equipment||{}, isWeapon=s=> !/^(ammo:|heat_sink|jump_jet|endo_|ferro_|stealth|tsm|masc|supercharger|guardian_ecm|angel_ecm|c3|case|targeting|ballistic_|reactive|composite)/.test(s);
+  const gear=unit.equipment||{}, isWeapon=s=> !/^(ammo:|heat_sink|jump_jet|endo_|ferro_|stealth|tsm|masc|supercharger|guardian_ecm|angel_ecm|c3|case|targeting|ballistic_|reactive|composite|reflective|anti_penetrative|hardened|heat_dissipating|ferro_lamellor|sword|a_pod|c_ams|c_tag|c_active_probe|c_angel_ecm|c_watchdog)/.test(s);
   const classify=s=> /lrm|srm|mml|atm|rocket|narc|streak/i.test(s)?"missile":/gauss|ac\d|ppc|plasma|rifle|autocannon/i.test(s)?"cannon":"laser";
   let gunParts=0;
   for(const loc of ["LA","RA","LT","RT","CT","HD"]){
@@ -131,20 +131,21 @@
    const c=Math.round(x),v=Math.round(y);
    const tag=loc.toLowerCase()+"_weapon";
    const gauge=/gauss|lb20|ultra_ac10/i.test(eq[0])?3:/ppc|ac|srm|lrm/i.test(eq[0])?2:1;
-   const barrel=kind==="missile"?5+((/\d\d/.test(eq[0]))?2:0):gauge+1;
+   const multiplier=Number((eq[0].match(/\*(\d+)/)||[])[1]||1);
+   const missiles=kind==="missile"? Math.max(3,Math.min(24,Number((eq[0].match(/(?:lrm|srm|mml|atm|streak_srm)(\d+)/i)||[])[1]||6)*multiplier)):0;
+   const barrel=kind==="missile"?(missiles>12?10:5+((/\d\d/.test(eq[0]))?2:0)):Math.max(gauge+1,Math.min(6,multiplier)+1);
    const len=kind==="cannon"?(cfg.longGun||8):kind==="missile"?6:4;
    const muzzleZ=z-len;
    const shapes=[
-     loft([ {at:muzzleZ,polygon:poly(c,v,barrel,kind==="missile"?6:barrel,0.65)},
-            {at:muzzleZ+2,polygon:poly(c,v,barrel+1,kind==="missile"?7:barrel+1,.65)},
-            {at:z-1,polygon:poly(c,v,barrel+2,kind==="missile"?7:barrel+2,.65)},
+     loft([ {at:muzzleZ,polygon:poly(c,v,barrel,kind==="missile"?(missiles>12?10:6):barrel,0.65)},
+            {at:muzzleZ+2,polygon:poly(c,v,barrel+1,kind==="missile"?(missiles>12?11:7):barrel+1,.65)},
+            {at:z-1,polygon:poly(c,v,barrel+2,kind==="missile"?(missiles>12?11:7):barrel+2,.65)},
             {at:z+2,polygon:poly(c,v,barrel+2,kind==="missile"?7:barrel+2,.65)} ],"plate","z")
    ];
    const mouths=[];
    if(kind==="missile"){
-     let count=Number((eq[0].match(/(?:lrm|srm|mml|atm|streak_srm)(\d+)/i)||[])[1]||6);
-     count=Math.max(3,Math.min(12,count));
-     const columns= count<=6?2:3,rows=Math.ceil(count/columns);
+     let count=missiles;
+     const columns=count<=6?2:count<=12?3:4,rows=Math.ceil(count/columns);
      // Missile muzzle openings are actual negative volume, not painted circles.
      for(let i=0;i<count;i++){
        const mx=c+Math.round((i%columns-(columns-1)/2)*1.55);
@@ -153,15 +154,29 @@
        mouths.push([mx,my,muzzleZ]);
      }
    }else{
-     shapes.push(erase([c,v,muzzleZ],[c,v,muzzleZ+2]));
-     mouths.push([c,v,muzzleZ]);
+     const count=Math.max(1,Math.min(4,multiplier));
+     for(let i=0;i<count;i++){
+       const mx=c+Math.round((i-(count-1)/2)*1.25);
+       shapes.push(erase([mx,v,muzzleZ],[mx,v,muzzleZ+2]));
+       mouths.push([mx,v,muzzleZ]);
+     }
    }
    parts.push(part(tag,loc,shapes,parent));
    muzzles[loc]=mouths.length===1?mouths[0]:mouths;
    weapons.push({label:label.slice(0,45),locs:[loc],kind});
    gunParts++;
   }
-  if(!gunParts)throw new Error("No signature weapons for "+id);
+if(id==="shiro"){
+   const xx=chest/2+shoulderW+3;
+   parts.push(part("ra_sword","RA",[
+      loft([cross(14,xx,zbody-4,2.6,2.6,.4),
+            cross(21,xx+1,zbody-6,4.5,3.0,.5),
+            cross(31,xx+2,zbody-6,3.2,2.5,.5),
+            cross(37,xx+3,zbody-6,.6,1.5,.2)],"plate"),
+      box([Math.round(xx)-2,14,-5],[Math.round(xx)+1,16,-4],"frame")
+   ],"ra"));
+  }
+    if(!gunParts)throw new Error("No signature weapons for "+id);
   // Chassis-specific furniture never substitutes for the principal silhouette.
   const details={
    tian_zong:[box([-1,roof,3],[1,roof+4,4],"frame")],
