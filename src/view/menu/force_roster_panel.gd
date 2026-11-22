@@ -9,10 +9,11 @@ var _budget: ProgressBar
 var _rows: VBoxContainer
 var _side := 0
 var _remove: Callable
+var _templates: MenuButton
 
 
 func build(parent: Control, side: int, on_select: Callable,
-		on_remove: Callable) -> void:
+		on_remove: Callable, on_template: Callable) -> void:
 	_side = side
 	_remove = on_remove
 	frame = PanelContainer.new()
@@ -24,6 +25,21 @@ func build(parent: Control, side: int, on_select: Callable,
 	frame.add_child(box)
 	_select = UiKit.button(box, "", on_select, Vector2(0, 52), "subtle")
 	_select.add_theme_font_size_override("font_size", 19)
+	_templates = MenuButton.new()
+	_templates.name = "StarterFormations"
+	_templates.text = "LOAD STARTER FORCE  ▾"
+	_templates.tooltip_text = "Replace this side with a ready-made lance or Clan star."
+	_templates.custom_minimum_size.y = 48
+	_templates.add_theme_font_size_override("font_size", 16)
+	UiSkin.button(_templates, "subtle")
+	box.add_child(_templates)
+	var popup := _templates.get_popup()
+	popup.add_theme_font_size_override("font_size", 19)
+	for i in StarterFormations.all().size():
+		var form: Dictionary = StarterFormations.all()[i]
+		popup.add_item("%s  •  %s" % [
+			form["name"], StarterFormations.description(form)], i)
+	popup.id_pressed.connect(func(index: int): on_template.call(_side, index))
 	_summary = UiKit.label(box, "", 17)
 	UiSkin.label(_summary, "muted")
 	_budget = ProgressBar.new()

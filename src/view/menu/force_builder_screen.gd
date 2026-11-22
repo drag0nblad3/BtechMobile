@@ -14,6 +14,9 @@ var _status: Label
 var _feedback: Label
 var _start_button: Button
 var _setup: ForceBuilderSetup
+var _starter_confirm: ConfirmationDialog
+var _pending_starter: Dictionary = {}
+var _pending_side := -1
 
 
 ## Android Back returns to the launcher without exiting the app.
@@ -79,7 +82,8 @@ func _ready() -> void:
 	for side in 2:
 		var idx := side
 		var roster := ForceRosterPanel.new()
-		roster.build(roster_row, idx, func(): _select_side(idx), _on_remove)
+		roster.build(roster_row, idx, func(): _select_side(idx), _on_remove,
+			_choose_starter)
 		_rosters.append(roster)
 	_feedback = UiKit.label(right, "", 18)
 	UiSkin.label(_feedback, "section")
@@ -96,6 +100,14 @@ func _ready() -> void:
 	_start_button = UiKit.button(footer, "START BATTLE", _start,
 		Vector2(275, 68), "primary")
 	_start_button.name = "StartBattle"
+	_starter_confirm = ConfirmationDialog.new()
+	_starter_confirm.title = "Replace selected force?"
+	_starter_confirm.ok_button_text = "LOAD FORMATION"
+	_starter_confirm.cancel_button_text = "KEEP FORCE"
+	add_child(_starter_confirm)
+	_starter_confirm.confirmed.connect(_apply_pending_starter)
+	UiSkin.button(_starter_confirm.get_ok_button(), "primary")
+	UiSkin.button(_starter_confirm.get_cancel_button(), "subtle")
 	_refresh()
 	if BattleLaunch.open_training:
 		BattleLaunch.open_training = false
@@ -111,6 +123,53 @@ func _select_side(side: int) -> void:
 
 func _notify(message: String) -> void:
 	_feedback.text = message
+
+
+## A template changes only the selected roster. Confirm replacements and budget raises.
+func _choose_starter(side: int, index: int) -> void:
+	var forms := StarterFormations.all()
+	if index < 0 or index >= forms.size():
+		return
+	_select_side(side)
+	var form: Dictionary = forms[index]
+	var plan := StarterFormations.plan(builder, side, form)
+	if not plan.get("ok", false):
+		_notify(String(plan.get("reason", "Formation not available.")))
+		return
+	_pending_side = side
+	_pending_starter = form
+	if not builder.rosters[side].is_empty() or plan["raises_budget"]:
+		var msg := "%s: %s\n\nReplace %s's current roster with %d 'Mechs?" % [
+			form["name"], form["description"], Names.side(side),
+			(form["units"] as Array).size()]
+		msg += "\n\nTotal BV at this side's pilot skill: %d." % int(plan["cost"])
+		if plan["raises_budget"]:
+			msg += "\nThis will raise the BV limit for BOTH sides from %d to %d." % [
+				builder.budget, int(plan["budget"])]
+		_starter_confirm.dialog_text = msg
+		_starter_confirm.popup_centered(Vector2i(575, 0))
+	else:
+		_apply_pending_starter()
+
+
+func _apply_pending_starter() -> void:
+	if _pending_side < 0 or _pending_starter.is_empty():
+		return
+	var side := _pending_side
+	var name := String(_pending_starter["name"])
+	var before := builder.budget
+	var result := StarterFormations.apply(builder, side, _pending_starter)
+	_pending_side = -1
+	_pending_starter = {}
+	if not result.get("ok", false):
+		_notify(String(result.get("reason", "Unable to load formation.")))
+		return
+	var message := "%s loaded for %s (%d BV)." % [
+		name, Names.side(side), int(result["cost"])]
+	if builder.budget > before:
+		message += " BV limit raised to %d for both sides." % builder.budget
+	_notify(message)
+	_refresh()
 
 
 func _on_remove(side: int, index: int) -> void:

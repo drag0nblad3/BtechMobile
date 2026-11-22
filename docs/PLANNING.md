@@ -99,6 +99,16 @@ session on a real phone are the next checks.
 - See `docs/force-builder-usability.md`. On-device scrolling and touch QA
   remain required.
 
+### Starter formations (2026-11-22)
+
+- Six optional curated official-design examples, four Inner Sphere lances
+  and two Clan stars, loaded through a menu on either roster.
+- Atomic roster replacement and dynamic BV preflight (including pilot skill
+  and C3); confirmation before replacing a populated force or raising the
+  global BV tier. No forced changes to the opposing roster.
+- Unit and force-builder UI smoke coverage added.
+- Android touch and 720p visual QA still required.
+
 ### Remaining Android work
 - **Device testing.** One recent phone, one low-end phone, one tablet. Watch frame rate
   with a whole map on screen, touch feel, and text size.
