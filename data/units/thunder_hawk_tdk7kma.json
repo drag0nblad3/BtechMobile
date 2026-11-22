@@ -1,0 +1,60 @@
+{
+ "id": "thunder_hawk_tdk7kma",
+ "name": "Thunder Hawk",
+ "model": "TDK-7KMA",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 32,
+  "RT": 32,
+  "CT": 50,
+  "HD": 9,
+  "LL": 42,
+  "RL": 42
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 12
+ },
+ "equipment": {
+  "LA": [
+   "medium_laser*2",
+   "arrow_iv~9"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "medium_laser"
+  ],
+  "RT": [
+   "gauss_rifle",
+   "ammo:gauss_rifle*2"
+  ],
+  "CT": [
+   "ammo:gauss_rifle*2"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "ammo:arrow_iv*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3220,
+  "megamek": "data/mekfiles/meks/3058Uu/Thunder Hawk TDK-7KMA.mtf",
+  "published": "RS:3058Uu-C",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 2449
+ },
+ "bv": 2449,
+ "sprite": "thunder_hawk",
+ "role": "Missile boat: rains missiles from a distance. 4 Medium Lasers, 2 Gauss Rifles, Arrow IV; walks 3, runs 5."
+}
