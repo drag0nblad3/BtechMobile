@@ -241,7 +241,7 @@
             "axis": "z",
             "sections": [
               {
-                "at": -14,
+                "at": -9,
                 "polygon": [
                   [
                     -1.23,
@@ -278,7 +278,7 @@
                 ]
               },
               {
-                "at": -8,
+                "at": -7,
                 "polygon": [
                   [
                     -3.2,
@@ -530,6 +530,21 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -2,
+              30,
+              -7
+            ],
+            [
+              1,
+              33,
+              -1
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1131,6 +1146,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -7,
+              13,
+              4
+            ],
+            [
+              -5,
+              14,
+              5
+            ]
+          ]
         }
       ]
     },
@@ -1774,5 +1803,5 @@
       ]
     ]
   },
-  "notes": "Shape-first bespoke 55-ton mech, sleek_low_fuselage. Forward-projecting snout and sloped horizontal cockpit, spindly legs and asymmetric gun hands, not a bulky humanoid. Weapon port count from official lightray_lgh4y. Unapproved draft needing further multiple-angle likeness work."
+  "notes": "Shape-first bespoke 55-ton mech, sleek_low_fuselage. Forward-projecting snout and sloped horizontal cockpit, spindly legs and asymmetric gun hands, not a bulky humanoid. Weapon port count from official lightray_lgh4y. Unapproved draft needing further multiple-angle likeness work.\nForensic voxel-level correction: removed actual unsupported tail fragments and materially connected chest/neck sections; pass assessed with six-neighbor flood-fill of all moving parts."
 }

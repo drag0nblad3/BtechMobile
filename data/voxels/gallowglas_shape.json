@@ -1421,6 +1421,20 @@
               -10
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              -15,
+              21,
+              2
+            ],
+            [
+              -11,
+              23,
+              3
+            ]
+          ]
         }
       ]
     },
@@ -1475,6 +1489,20 @@
               13,
               22,
               -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              12,
+              21,
+              2
+            ],
+            [
+              14,
+              23,
+              3
             ]
           ]
         }
@@ -1647,5 +1675,5 @@
       ]
     ]
   },
-  "notes": "Shape-first bespoke 70-ton mech, bulky_armor_brawler. High broad angular torso shields with long, imposing arm PPC and RT paired large lasers; jump capable armored heavy. Weapon port count from official gallowglas_gal1gls. Unapproved draft needing further multiple-angle likeness work."
+  "notes": "Shape-first bespoke 70-ton mech, bulky_armor_brawler. High broad angular torso shields with long, imposing arm PPC and RT paired large lasers; jump capable armored heavy. Weapon port count from official gallowglas_gal1gls. Unapproved draft needing further multiple-angle likeness work.\nForensic voxel-level correction: removed actual unsupported tail fragments and materially connected chest/neck sections; pass assessed with six-neighbor flood-fill of all moving parts."
 }

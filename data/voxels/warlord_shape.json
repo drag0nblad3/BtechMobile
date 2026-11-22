@@ -593,7 +593,23 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "erase": [
+            [
+              14,
+              32,
+              -4
+            ],
+            [
+              14,
+              32,
+              -4
+            ]
+          ]
+        }
+      ]
     },
     {
       "name": "la",
@@ -1729,5 +1745,5 @@
       ]
     ]
   },
-  "notes": "Shape-first bespoke 80-ton mech, ppc_gauntlets. Huge weapon-gauntlet brawler with strongly differentiated heavy PPC arm emitters and numerous small ER torso lasers. Weapon port count from official warlord_blr2d. Unapproved draft needing further multiple-angle likeness work."
+  "notes": "Shape-first bespoke 80-ton mech, ppc_gauntlets. Huge weapon-gauntlet brawler with strongly differentiated heavy PPC arm emitters and numerous small ER torso lasers. Weapon port count from official warlord_blr2d. Unapproved draft needing further multiple-angle likeness work.\nForensic voxel-level correction: removed actual unsupported tail fragments and materially connected chest/neck sections; pass assessed with six-neighbor flood-fill of all moving parts."
 }
