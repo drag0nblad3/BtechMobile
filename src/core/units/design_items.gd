@@ -13,6 +13,11 @@ extends RefCounted
 ## "a_pod", "tag", "c_tag", "c_light_tag" (InertGear, Tag), "case2" (CASE II).
 ## In the file, "<item>*N" repeats an item N times.
 
+## Bulky slots: structure, armor and myomer that only take up space.
+const BULK := ["endo_steel", "ferro_fibrous", "light_ferro", "heavy_ferro", "tsm", "endo_composite",
+		"ferro_lamellor", "reflective", "reactive", "ballistic_reinforced", "anti_penetrative",
+		"impact_resistant", "heat_dissipating"]
+
 ## One-per-'Mech items stored as a location: item -> UnitDef property.
 const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
 		"supercharger": "supercharger_loc", "c3_master": "c3_master_loc", "c3_slave": "c3_slave_loc",
@@ -21,7 +26,7 @@ const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "
 
 
 static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void:
-	if item in ["endo_steel", "ferro_fibrous", "light_ferro", "heavy_ferro", "tsm"]:
+	if item in BULK:
 		_append(def.bulk_slots, loc, item)
 	elif InertGear.KINDS.has(item):
 		def.inert.append({"kind": item, "loc": loc})

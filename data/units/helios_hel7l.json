@@ -1,0 +1,86 @@
+{
+ "id": "helios_hel7l",
+ "name": "Helios",
+ "model": "HEL-7L",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "structure_type": "endo_composite",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 19,
+  "RA": 19,
+  "LT": 21,
+  "RT": 21,
+  "CT": 25,
+  "HD": 9,
+  "LL": 19,
+  "RL": 19
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "light_ppc*2",
+   "endo_composite*3",
+   "light_ferro*2"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "endo_composite",
+   "light_ferro"
+  ],
+  "LT": [
+   "heat_sink",
+   "mml5",
+   "c3bs_slave",
+   "endo_composite"
+  ],
+  "RT": [
+   "mml5",
+   "ammo:mml5:srm",
+   "ammo:mml5",
+   "ammo:gauss_rifle*2",
+   "case2",
+   "light_ferro"
+  ],
+  "HD": [
+   "light_ferro"
+  ],
+  "LL": [
+   "endo_composite",
+   "light_ferro"
+  ],
+  "RL": [
+   "endo_composite",
+   "light_ferro"
+  ]
+ },
+ "source": {
+  "mul_id": 7989,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/NTNU/Helios HEL-7L.mtf",
+  "published": "RS:3150,RSFP:SLDF2",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Helios HEL-7L (ForcePack-Record-Sheets-Second-Star-League-Assault-Lance)",
+  "megamek_bv": 1459
+ },
+ "bv": 1459,
+ "sprite": "helios",
+ "role": "Sniper: hangs back and hits from long range. 2 Light PPCs, 2 MML 5s, Gauss Rifle; walks 4, runs 6."
+}

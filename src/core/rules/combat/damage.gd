@@ -4,27 +4,37 @@ extends RefCounted
 ## whatever is left transfers inward (arm/leg -> side torso -> center torso).
 ## Rear hits use rear armor; structure is shared front and back.
 ## Pips actually marked off count toward the 20-damage piloting roll.
+## `attack` tags the source ("DB", "M", "DE", "P", "AE", "heat", "physical",
+## "fall", "collapse") for special armor and structure (ArmorTypes, StructureTypes).
 
 
 ## Returns one step per location touched:
 ## {loc, rear, armor, structure, destroyed (location), breached (structure hit)}.
-static func apply(u: Unit, loc: int, amount: int, rear: bool = false) -> Array[Dictionary]:
+static func apply(u: Unit, loc: int, amount: int, rear: bool = false, attack: Array = []) -> Array[Dictionary]:
 	var steps: Array[Dictionary] = []
 	while amount > 0 and loc >= 0 and not u.destroyed:
 		var step := {"loc": loc, "rear": rear, "armor": 0, "structure": 0,
 				"destroyed": false, "breached": false}
 		if not u.is_location_destroyed(loc):
-			var arm := u.rear_armor if rear and Location.HAS_REAR.has(loc) else u.armor
-			var a := mini(arm[loc], amount)
-			arm[loc] -= a
-			amount -= a
-			step["armor"] = a
-			var s := mini(u.structure[loc], amount)
-			u.structure[loc] -= s
-			amount -= s
-			step["structure"] = s
-			step["breached"] = s > 0
-			u.damage_this_phase += a + s
+			var back := rear and Location.HAS_REAR.has(loc)
+			var arm := u.rear_armor if back else u.armor
+			var part := u.rear_partial if back else u.armor_partial
+			if arm[loc] > 0 and ArmorTypes.is_special(u.def):
+				amount = ArmorTypes.reduce(u.def, amount, attack)
+				step["tac_mod"] = ArmorTypes.tac_mod(u.def) if amount > 0 else null  # a hit cut to 0 can't TAC
+			var ab := ArmorTypes.absorb(u.def, arm[loc], part[loc], amount, attack) if arm[loc] > 0 \
+					else {"used": 0, "pips": 0, "partial": part[loc]}
+			arm[loc] -= int(ab["pips"])
+			part[loc] = int(ab["partial"])
+			amount -= int(ab["used"])
+			step["armor"] = ab["pips"]
+			var sb := StructureTypes.absorb(u.def, u.structure[loc], u.structure_partial[loc], amount)
+			u.structure[loc] -= int(sb["pips"])
+			u.structure_partial[loc] = int(sb["partial"])
+			amount -= int(sb["used"])
+			step["structure"] = sb["pips"]
+			step["breached"] = int(sb["pips"]) > 0
+			u.damage_this_phase += int(ab["pips"]) + int(sb["pips"])
 			if u.structure[loc] <= 0:
 				step["destroyed"] = true
 				destroy_location(u, loc)
@@ -40,7 +50,7 @@ static func apply_internal(u: Unit, loc: int, amount: int) -> Array[Dictionary]:
 	var steps: Array[Dictionary] = []
 	while amount > 0 and loc >= 0 and not u.destroyed:
 		var step := apply_internal_one(u, loc, amount)
-		amount -= int(step["structure"])
+		amount -= int(step.get("used", step["structure"]))
 		steps.append(step)
 		loc = Location.transfer(loc)
 	return steps
@@ -51,10 +61,13 @@ static func apply_internal_one(u: Unit, loc: int, amount: int) -> Dictionary:
 	var step := {"loc": loc, "rear": false, "armor": 0, "structure": 0,
 			"destroyed": false, "breached": false}
 	if not u.is_location_destroyed(loc):
-		var s := mini(u.structure[loc], amount)
+		var sb := StructureTypes.absorb(u.def, u.structure[loc], u.structure_partial[loc], amount)
+		var s := int(sb["pips"])
 		u.structure[loc] -= s
+		u.structure_partial[loc] = int(sb["partial"])
 		u.damage_this_phase += s
 		step["structure"] = s
+		step["used"] = sb["used"]
 		step["breached"] = s > 0
 		if u.structure[loc] <= 0:
 			step["destroyed"] = true

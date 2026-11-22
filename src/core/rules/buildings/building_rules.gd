@@ -136,4 +136,4 @@ static func collapse(state: GameState, dice: Dice, emit: Callable, tile: MapTile
 	if inside == null or inside.destroyed:
 		return
 	for p in Damage.clusters(dmg, 5):
-		WeaponFire.hit_with(state, dice, emit, inside, FiringArc.FRONT, p, inside.id, "falling building")
+		WeaponFire.hit_with(state, dice, emit, inside, FiringArc.FRONT, p, inside.id, "falling building", {}, Hex.INVALID, ["collapse"])

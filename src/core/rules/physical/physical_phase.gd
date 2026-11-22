@@ -73,7 +73,7 @@ static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Un
 		_:
 			hl = HitTable.roll_punch(dice, arc_id, t.def.quad)
 	var dmg := WaterCombat.physical_damage(state.map, t, hl["loc"], d["damage"])
-	WeaponFire.hit_with(state, dice, emit, t, arc_id, dmg, a.id, d["kind"], hl)
+	WeaponFire.hit_with(state, dice, emit, t, arc_id, dmg, a.id, d["kind"], hl, Hex.INVALID, ["physical"])
 
 
 static func _push(state: GameState, dice: Dice, emit: Callable, step: Dictionary, steps: Array[Dictionary]) -> void:

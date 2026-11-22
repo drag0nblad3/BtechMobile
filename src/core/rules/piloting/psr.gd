@@ -17,6 +17,7 @@ static func standing_mods(u: Unit) -> ToHit:
 	if Gyro.psr_mod(u) > 0:
 		th.add("gyro hit", Gyro.psr_mod(u), "A damaged gyro makes balance hard: +%d." % Gyro.psr_mod(u))
 	Cockpit.add_psr(th, u)
+	ArmorTypes.add_psr(th, u)
 	if u.def.quad:
 		Quad.psr_mods(u, th)
 		return th

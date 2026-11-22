@@ -1,0 +1,79 @@
+{
+ "id": "cougar_x_3",
+ "name": "Cougar",
+ "model": "X 3",
+ "tonnage": 35,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "heavy_duty",
+ "structure_type": "composite",
+ "armor_type": "ferro_fibrous",
+ "clan_parts": {
+  "engine": true,
+  "armor": true,
+  "tc": true
+ },
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 12,
+  "RT": 12,
+  "CT": 14,
+  "HD": 8,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*2",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "heat_sink",
+   "c_er_large_pulse_laser",
+   "c_er_medium_pulse_laser",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "c_streak_lrm10",
+   "ammo:c_streak_lrm10"
+  ],
+  "RT": [
+   "heat_sink",
+   "targeting_computer"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "ferro_fibrous*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6953,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/Cougar X 3.mtf",
+  "published": "RS:3145-NTNU,RS:3145",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1391
+ },
+ "bv": 1391,
+ "sprite": "cougar",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. ER Large Pulse Laser, ER Medium Pulse Laser, Streak LRM 10; walks 5, runs 8."
+}

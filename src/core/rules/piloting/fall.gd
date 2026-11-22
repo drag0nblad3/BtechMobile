@@ -31,7 +31,7 @@ static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: 
 			"water": in_water})
 	for p in Damage.clusters(total, 5):
 		var hl := HitTable.roll(dice, side)
-		var steps := Damage.apply(u, hl["loc"], p, hl["rear"])
+		var steps := Damage.apply(u, hl["loc"], p, hl["rear"], ["fall"])
 		emit.call(GameEvent.DAMAGE, {"unit_id": u.id, "source_id": u.id, "source": "fall",
 				"amount": p, "loc": hl["loc"], "rear": hl["rear"], "steps": steps,
 				"covered": false, "tac": hl["tac"]})
