@@ -317,7 +317,8 @@ func _on_event(e: GameEvent) -> void:
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
 	var explanation := explainer.describe(e, s)
-	hud.log_view.add_line(explanation, bold)
+	hud.log_view.add_line(explanation, bold, CombatLogView.tone_for(e))
+	hud.show_combat_event(e)
 	recorder.record(e, s, explanation)
 	if e.type == GameEvent.ACTIVE_SIDE and s.turn > _last_autosave_turn:
 		_last_autosave_turn = s.turn
@@ -375,6 +376,7 @@ func _update_status() -> void:
 	var s := controller.state
 	hud.set_status("Turn %d  ·  %s  ·  %s to act%s" % [s.turn, Phase.name_of(s.phase), Names.side(s.active_side()),
 			MissionText.status(s)])
+	hud.set_phase(s.phase)
 	if bots.is_bot_turn():
 		hud.set_tip("The computer is thinking. Its reasons appear in the log." if GameSettings.explain_level != ExplainLevel.OFF else "")
 	elif s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:
