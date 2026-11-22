@@ -27,12 +27,13 @@ func is_busy() -> bool:
 
 
 ## path/start come from the controller's UNIT_MOVED event.
-func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int) -> void:
+func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int,
+		mode: int = -1) -> void:
 	var v: UnitView = views[unit_id]
 	_playing += 1
 	busy_changed.emit(true)
 	v.animation_finished.connect(_on_done, CONNECT_ONE_SHOT)
-	v.play_path(path, from_coord, from_facing)
+	v.play_path(path, from_coord, from_facing, mode)
 
 
 ## Re-reads a unit's condition (prone, destroyed, facing after a fall).

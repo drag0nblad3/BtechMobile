@@ -79,9 +79,13 @@ func _dark(m: StandardMaterial3D) -> StandardMaterial3D:
 
 
 ## Each step is a Vector3i(q, r, facing) from MoveOptions.path_to().
-func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
+func play_path(path: Array, start_coord: Vector2i, start_facing: int,
+		mode: int = -1) -> void:
 	if path.is_empty():
 		animation_finished.emit.call_deferred()
+		return
+	if mode == MoveMode.Kind.JUMP and unit.def.jump_mp > 0:
+		_jump_path(path, start_coord, start_facing)
 		return
 	var tw := create_tween()
 	var last_c := start_coord
@@ -104,6 +108,52 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 	tw.finished.connect(func():
 			show_condition()
 			animation_finished.emit())
+
+
+## Jump moves are one continuous three-dimensional arc rather than walking
+## one tile at a time. This path is presentation only; the resolved position
+## and heat remain entirely in the movement rules.
+func _jump_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
+	var last: Vector3i = path[-1]
+	var destination := Vector2i(last.x, last.y)
+	var start := _hex_pos(start_coord)
+	var finish := _hex_pos(destination)
+	var distance := Hex.distance(start_coord, destination)
+	if distance <= 0:
+		_yaw = HexLayout.facing_yaw(last.z)
+		var turn := create_tween()
+		turn.tween_property(self, "rotation:y", _yaw, TURN_TIME)
+		turn.finished.connect(func(): animation_finished.emit())
+		return
+	var duration := clampf(0.35 + float(distance) * 0.105, 0.50, 1.35)
+	var apex := clampf(0.75 + float(distance) * 0.22, 0.95, 2.25)
+	var from_yaw := rotation.y
+	var final_yaw := HexLayout.facing_yaw(last.z)
+	var plume := JumpJetFx.spawn(self)
+	_ground_burst(start_coord, true)
+	var tween := create_tween()
+	tween.tween_method(func(t: float) -> void:
+		position = JumpJetFx.arc(start, finish, t, apex)
+		rotation.y = lerp_angle(from_yaw, final_yaw, t)
+		JumpJetFx.animate(plume, t), 0.0, 1.0, duration)
+	tween.finished.connect(func() -> void:
+		position = finish
+		_yaw = final_yaw
+		rotation.y = final_yaw
+		if is_instance_valid(plume):
+			plume.queue_free()
+		_ground_burst(destination, false)
+		show_condition()
+		animation_finished.emit())
+
+
+func _ground_burst(coord: Vector2i, launching: bool) -> void:
+	var tile: MapTile = map.get_tile(coord)
+	if tile == null:
+		return
+	var pos := _hex_pos(coord) + Vector3(0, 0.06, 0)
+	var kind := "jet_splash" if tile.is_water() else ("jet_launch" if launching else "jet_land")
+	VxBlast.spawn(self, pos, kind, unit.id * 283 + (1 if launching else 2))
 
 
 ## Resolve authored weapon sockets first; fall back to the actual model bounds.
