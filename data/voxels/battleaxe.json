@@ -2805,7 +2805,7 @@
   ],
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "multi_angle_reference_revision": "2026-11-22-reference-geometry-round-2",
   "proportion_sculpt_revision": "2026-11-22-reference-anchored-stance-and-profile",
   "proportion_sculpt_profile": {
@@ -2819,5 +2819,43 @@
     "method": "part-specific structural loft correction",
     "source": "Catalyst plastic/force-pack photographs (documented in docs/graphics/reference-sculpt-reconciliation-20261122.md)",
     "note": "Compact torso and shoulder roofs; keep asymmetric launcher, separated arms and barrel projections."
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 20,
+    "stages_with_changes": 5
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "strong paired energy arms; angular shoulders",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Recovered historic 100-pass multiview and 59-chassis identity records, preserving current source loft sculpt."
   }
 }

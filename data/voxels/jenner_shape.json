@@ -1271,35 +1271,35 @@
                 "at": -39,
                 "polygon": [
                   [
-                    -1.15,
+                    -3.45,
                     24.5
                   ],
                   [
-                    1.15,
+                    3.45,
                     24.5
                   ],
                   [
-                    2,
+                    4.3,
                     25.35
                   ],
                   [
-                    2,
+                    4.3,
                     26.65
                   ],
                   [
-                    1.15,
+                    3.45,
                     27.5
                   ],
                   [
-                    -1.15,
+                    -3.45,
                     27.5
                   ],
                   [
-                    -2,
+                    -4.3,
                     26.65
                   ],
                   [
-                    -2,
+                    -4.3,
                     25.35
                   ]
                 ]
@@ -7290,5 +7290,10 @@
     "source_commit": "2779714f",
     "geometry_source": "post-213 strong-joint 151-model sculpt",
     "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  },
+  "cockpit_nose_refinement_20261122": {
+    "reason": "Broad forward oval disc, not pinched pointed beak",
+    "first_station_z": -39,
+    "leading_profile_width": 8.6
   }
 }
