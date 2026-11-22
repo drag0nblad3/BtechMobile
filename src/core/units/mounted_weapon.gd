@@ -11,6 +11,7 @@ var exploded: bool = false  ## An explosive weapon only blows up once.
 ## "x2".."x6" rotary shots, "unjam" (RotaryAc), "er"/"he" ATM munitions (Atm).
 var mode: String = ""
 var artemis: bool = false       ## Linked Artemis IV fire control.
+var artemis_v: bool = false     ## Linked Clan Artemis V guidance.
 var artemis_lost: bool = false  ## Its fire control took a critical hit.
 var apollo: bool = false  ## Linked Apollo MRM fire control (Apollo).
 var apollo_lost: bool = false
