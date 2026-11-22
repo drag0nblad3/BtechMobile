@@ -69,7 +69,7 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	if not model.errors.is_empty() or model.cell_count() > MAX_VOXELS:
 		push_warning("VoxelAsset %s: %s" % [id, model.errors])
 		return null  # Keep existing placeholder rather than display an invalid mesh.
-	var color := PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()]
+	var color: Color = PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()]
 	for i in model.colors.size():
 		if model.roles[i] == "armor":
 			model.colors[i] = model.colors[i].lerp(color, 0.18)
