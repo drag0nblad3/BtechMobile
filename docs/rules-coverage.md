@@ -255,7 +255,8 @@ The Core Rulebook has only these simplified rules for vehicles and infantry; cla
 
 ## Combat vehicles (classic record sheets)
 Not in the Core Rulebook: these follow general Total Warfare practice, all `TODO(rules)`.
-- 🟡 Record sheets (`VehicleSpec`, `VehicleLoc`, `data/vehicles/`): 22 official designs (18 Inner Sphere, 4 Clan), MegaMek loadouts, sheet BV; structure = tonnage / 10 rounded up. Not playable yet (hit locations, motive damage and critical hits next).
+- 🟡 Record sheets (`VehicleSpec`, `VehicleLoc`, `data/vehicles/`): 22 official designs (18 Inner Sphere, 4 Clan), MegaMek loadouts, sheet BV; structure = tonnage / 10 rounded up. Not playable yet (movement, firing arcs and the force builder next).
+- 🟡 Damage (`VehicleDamage`, `VehicleHitTable`, `MotiveDamage`, `VehicleCrits`, `VehicleState`): 2D6 hit table by attack direction (3-5 and 9 call for motive rolls, 2 and 12 for a critical check, no turret: the facing side), armor then structure with no transfer; losing a location destroys the vehicle, losing the turret blows it off. Motive damage 2D6 (+1 rear, +2 side, +2 wheeled, +3 hover): minor/moderate/heavy/major. Structure damage or a 2/12 result: 8+ for one roll on the location's critical table (crew, driver, commander, stabilizers, sensors, weapon jam/destroyed, turret lock/blown off, engine, fuel, ammo). Stunned crews lose a turn. `VehicleText` explains each.
 
 ## Pilots
 - ✅ 6 hits kill; consciousness numbers 3, 5, 7, 10, 11 (timing under Piloting skill rolls and falls).

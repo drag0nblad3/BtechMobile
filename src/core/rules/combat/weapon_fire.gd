@@ -100,7 +100,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
-	if w.def.heat_damage and target.asset == null:  # flamers: heat as well as damage (book pp. 183-184)
+	if w.def.heat_damage and target.asset == null and target.vehicle == null:  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points
 	if w.def.heat_dice > 0:
@@ -158,6 +158,9 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
 	if target.asset != null:
 		AssetDamage.take(emit, target, amount, source_id, source, [], arc_id)
+		return
+	if target.vehicle != null:  # its own hit table and damage (VehicleDamage)
+		VehicleDamage.take(dice, emit, target, arc_id, amount, source_id, source)
 		return
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
