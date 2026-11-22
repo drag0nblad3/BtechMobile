@@ -50,7 +50,7 @@ func snap_to_state() -> void:
 func show_condition() -> void:
 	if _model == null:
 		return
-	visible = unit.asset == null or unit.asset.carried_by < 0  # riders ride inside
+	visible = unit.carrier_id() < 0  # riders ride inside or on top
 	var down := unit.prone or (unit.destroyed and not unit.def.is_support())
 	_model.rotation.z = PI / 2.4 if down else 0.0
 	_model.position.y = 0.25 if down else 0.0

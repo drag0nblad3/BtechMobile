@@ -15,7 +15,7 @@ static func is_infantry(u: Unit) -> bool:
 static func others(state: GameState, u: Unit, c: Vector2i) -> Array[Unit]:
 	var out: Array[Unit] = []
 	for o in state.units:
-		if o != u and o.coord == c and not o.destroyed and (o.asset == null or o.asset.carried_by < 0):
+		if o != u and o.coord == c and not o.destroyed and o.carrier_id() < 0 and BaSwarm.on(o) < 0:
 			out.append(o)
 	return out
 

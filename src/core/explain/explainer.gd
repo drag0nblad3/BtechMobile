@@ -183,7 +183,7 @@ static func _declared(s: GameState, d: Dictionary, level: int) -> String:
 
 const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
 		"charge": "charges", "dfa": "jumps on", "hatchet": "hacks at",
-		"sword": "slashes", "club": "clubs"}
+		"sword": "slashes", "club": "clubs", "brush_off": "swats at"}
 
 
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:

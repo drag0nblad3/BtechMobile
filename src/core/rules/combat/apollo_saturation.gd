@@ -62,7 +62,7 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, c: Vector
 static func caught(state: GameState, c: Vector2i) -> Array[Unit]:
 	var out: Array[Unit] = []
 	for u in state.units:
-		if u.coord == c and not u.destroyed and not (u.asset != null and u.asset.carried_by >= 0) \
+		if u.coord == c and not u.destroyed and u.carrier_id() < 0 \
 				and not EndPhase.submerged(state, u):
 			out.append(u)
 	return out

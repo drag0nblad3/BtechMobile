@@ -52,7 +52,7 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		out.append({"attacker_id": attacker.id, "weapon_index": wi,
 				"target_id": target.id, "to_hit": th})
 	if attacker.ba != null:
-		out = BaLegAttack.filter(out, attacker)
+		out = BaSwarm.filter(BaLegAttack.filter(out, attacker), attacker)
 	if attacker.asset != null:
 		out = AssetIndirect.filter(out, attacker)
 		AssetSpecials.add_swarm(state, attacker, out)
