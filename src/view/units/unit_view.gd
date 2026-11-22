@@ -84,6 +84,7 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 	var tw := create_tween()
 	var last_c := start_coord
 	var last_f := start_facing
+	var foot_side := 0
 	for k: Vector3i in path:
 		var c := Vector2i(k.x, k.y)
 		if k.z != last_f:
@@ -93,6 +94,10 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 		if c != last_c:
 			tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
 					.set_trans(Tween.TRANS_SINE)
+			var foot_at := c
+			var side := foot_side
+			tw.tween_callback(func(): _footfall(foot_at, side))
+			foot_side += 1
 			last_c = c
 	tw.finished.connect(func():
 			show_condition()
@@ -157,6 +162,20 @@ func _model_bounds(root: Node3D, transform_: Transform3D) -> AABB:
 			if child is Node3D:
 				stack.append({"node": child, "transform": tr})
 	return box
+
+
+## A small puff at the end of each actual translation, not a timer-driven
+## fake gait. Water splashes and ground dust use different profiles.
+func _footfall(coord: Vector2i, side: int) -> void:
+	if not visible or unit.def.is_support():
+		return
+	var tile: MapTile = map.get_tile(coord)
+	if tile == null:
+		return
+	var offset := global_transform.basis.x * (0.22 if side % 2 == 0 else -0.22)
+	var point := _hex_pos(coord) + offset + Vector3(0, 0.04, 0)
+	var kind := "splash" if tile.is_water() else "step"
+	VxBlast.spawn(self, point - global_position, kind, unit.id * 103 + side)
 
 
 func _turn_delta(from_f: int, to_f: int) -> float:
