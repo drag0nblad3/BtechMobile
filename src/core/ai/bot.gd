@@ -28,11 +28,22 @@ static func act(gc: GameController, side: int, skill: int = BotSkill.Level.VETER
 				var d := BotDrop.plan(s, u)
 				gc.announce(u, d["reason"])
 				return gc.combat_drop(u, d["hex"], d["facing"])
-			var m := BotMove.plan(s, u)
+			var ride := BotTransport.ride(s, u)
+			if ride != null:
+				gc.announce(u, "climbs aboard %s to cover the distance faster" % Names.unit(ride))
+				return gc.board(u, ride)
+			var m := BotTransport.pickup(s, u)
+			if m.is_empty():
+				m = BotMove.plan(s, u)
 			if BotSkill.advanced_tricks():
 				m = BotMasc.plan(gc, u, m)
 			gc.announce(u, m["reason"])
-			return gc.submit_move(u, m["key"], m["mode"], m.get("charge", -1), false, false, m.get("leave", false))
+			if not gc.submit_move(u, m["key"], m["mode"], m.get("charge", -1), false, false, m.get("leave", false)):
+				return false
+			var drop := BotTransport.after_move(gc, u)
+			if drop != "":
+				gc.announce(u, drop)
+			return true
 		Phase.Kind.WEAPON_ATTACK:
 			var f := BotFire.plan(s, u)
 			var club := BotPhysical.club_instead(s, u, f["value"]) if BotSkill.advanced_tricks() else ""
