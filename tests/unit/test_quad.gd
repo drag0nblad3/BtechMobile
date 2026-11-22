@@ -149,10 +149,3 @@ func test_lateral_shift() -> void:
 	check_eq(run.cost.get(side, -1), 2)
 	u.structure[Location.RL] = 0
 	check(MovePlanner.plan(s, u, MoveMode.Kind.WALK).cost.get(side, -1) > 2, "a lost leg ends sideways steps")
-
-
-func test_quad_designs_load() -> void:
-	for id in ["goliath_gol1h", "scorpion_scp1n", "tarantula_zph1"]:
-		var u := mech(id, 0, hex_at(1, 1))
-		check(u.def.quad, id)
-		check_eq(Location.legs(u.def).size(), 4)

@@ -86,7 +86,7 @@ func _contiguous(cells: Dictionary) -> bool:
 	return seen.size() == cells.size()
 
 func test_low_and_high_preserve_original_contours_and_unit_ids() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	for spec: Dictionary in MECHS:
 		var id: String = spec["id"]
 		var low: Dictionary = _raw(id, false)

@@ -55,7 +55,7 @@ func test_complication_names_cover_the_new_results() -> void:
 
 
 func test_bots_play_with_waves() -> void:
-	var b := ForceBuilder.new(UnitDb.load_dir())
+	var b := ForceBuilder.new(designs())
 	b.rosters = [["hunchback_hbk4g", "jenner_jr7d"], ["wolverine_wvr6r", "hunchback_hbk4g"]]
 	b.mission_id = "general_melee"
 	var map := MapLoader.load_file("res://data/maps/test_valley.json", terrain())

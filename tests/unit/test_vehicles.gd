@@ -3,7 +3,7 @@ extends TestCase
 
 
 func test_vehicles_load_apart_from_mechs() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	check(db.vehicles.size() >= 20, "vehicle sheets loaded (%d)" % db.vehicles.size())
 	check(not db.by_id.has("manticore_heavy_tank"), "not in the 'Mech list")
 	check(db.get_def("manticore_heavy_tank") != null, "found by id")
@@ -21,7 +21,7 @@ func test_vehicles_load_apart_from_mechs() -> void:
 
 
 func test_manticore_sheet() -> void:
-	var d := UnitDb.load_dir().get_def("manticore_heavy_tank")
+	var d := designs().get_def("manticore_heavy_tank")
 	check_eq(d.tonnage, 60, "60 tons")
 	check_eq(d.vehicle.motive, "t", "tracked")
 	check_eq(d.walk_mp, 4, "cruise 4")

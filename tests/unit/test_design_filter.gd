@@ -3,7 +3,7 @@ extends TestCase
 
 
 func test_filter_and_groups() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var all := DesignFilter.groups(db, DesignFilter.Mode.ALL)
 	var clan := DesignFilter.groups(db, DesignFilter.Mode.CLAN)
 	var inner := DesignFilter.groups(db, DesignFilter.Mode.INNER_SPHERE)
@@ -27,7 +27,7 @@ func test_filter_and_groups() -> void:
 
 
 func test_tips() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	check(DesignFilter.tech_tip(db.get_def("timber_wolf_prime")).contains("OmniMech"))
 	check(DesignFilter.tech_tip(db.get_def("timber_wolf_prime")).contains("Clan"))
 	check_eq(DesignFilter.tech_tip(db.get_def("atlas_as7d")), "")

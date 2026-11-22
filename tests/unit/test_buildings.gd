@@ -106,7 +106,7 @@ func test_inside_and_half_inside() -> void:
 
 
 func test_city_battle_runs() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+	var fb := ForceBuilder.new(designs(), 8000)
 	for id in ["atlas_as7d", "jenner_jr7d", "griffin_grf1n"]:
 		fb.add(0, id)
 	for id in ["warhammer_whm6r", "commando_com2d", "hunchback_hbk4g"]:

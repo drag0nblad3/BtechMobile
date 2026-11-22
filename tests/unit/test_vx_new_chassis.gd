@@ -15,7 +15,7 @@ func test_both_designs_have_coarse_and_fine_versions() -> void:
 		check(high.cell_count() >= 100000 and high.cell_count() <= 160000,
 				"%s fine voxels: %d" % [id, high.cell_count()])
 		check_eq(low.unit_id, high.unit_id, "both LODs use one official record")
-		check(UnitDb.load_dir().get_def(low.unit_id) != null, "unit exists for " + id)
+		check(designs().get_def(low.unit_id) != null, "unit exists for " + id)
 		check_eq(low.legs, "digitigrade")
 		check_eq(high.legs, "digitigrade")
 		for loc in Location.COUNT:

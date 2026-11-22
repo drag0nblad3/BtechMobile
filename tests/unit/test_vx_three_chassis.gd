@@ -6,7 +6,7 @@ const EXPECTED_UNITS := ["warhammer_whm6r", "archer_arc2r", "shadow_hawk_shd2h"]
 
 
 func test_coarse_silhouettes_and_fine_models_have_full_rigs() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	for i in CHASSIS.size():
 		var id: String = CHASSIS[i]
 		for suffix in ["_shape", ""]:

@@ -164,7 +164,7 @@ func test_burning_hex_drives_it_out() -> void:
 
 
 func test_bots_play_with_a_hidden_side() -> void:
-	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), designs())
 	HiddenUnits.place_side(s, 1)
 	var gc := GameController.new(s, 4)
 	gc.start_turn()

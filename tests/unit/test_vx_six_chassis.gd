@@ -8,7 +8,7 @@ const UNITS := ["awesome_aws8q", "griffin_grf1n", "thunderbolt_tdr5s",
 
 
 func test_official_records_and_distinct_shapes() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	for index in IDS.size():
 		var id: String = IDS[index]
 		var low: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)

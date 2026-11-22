@@ -34,7 +34,7 @@ func test_bad_data_reports_errors() -> void:
 
 func test_damage_matches_record_sheet() -> void:
 	var mech := VxMech.from_file(PATH)
-	var u := Unit.new(1, UnitDb.load_dir().get_def("hunchback_hbk4g"), 0, Vector2i.ZERO, 0)
+	var u := Unit.new(1, designs().get_def("hunchback_hbk4g"), 0, Vector2i.ZERO, 0)
 	var full := mech.voxel_count()
 	Damage.apply(u, Location.CT, 13)  # half the CT front armor
 	mech.show_unit(u)
@@ -50,7 +50,7 @@ func test_damage_matches_record_sheet() -> void:
 
 func test_destroyed_arm_drops() -> void:
 	var mech := VxMech.from_file(PATH)
-	var u := Unit.new(1, UnitDb.load_dir().get_def("hunchback_hbk4g"), 0, Vector2i.ZERO, 0)
+	var u := Unit.new(1, designs().get_def("hunchback_hbk4g"), 0, Vector2i.ZERO, 0)
 	Damage.apply(u, Location.LA, 60)
 	mech.show_unit(u)
 	check(mech.lost.has(Location.LA), "LA should be lost")
@@ -73,7 +73,7 @@ func test_catapult_is_digitigrade_and_complete() -> void:
 	check_eq(m.legs, "digitigrade")
 	check_eq(m.muzzles[Location.LA].size(), 15, "every LRM-15 has its own muzzle")
 	check_eq(m.muzzles[Location.RA].size(), 15, "mirrored LRM-15 needs fifteen muzzles")
-	check(UnitDb.load_dir().get_def(m.unit_id) != null, "unit id must exist")
+	check(designs().get_def(m.unit_id) != null, "unit id must exist")
 	var mech := VxMech.from_file("res://data/voxels/catapult.json")
 	check(mech.hocks[0] != null and mech.hocks[1] != null, "hocks found")
 	check(mech.tarsus > 0.0, "tarsus length")

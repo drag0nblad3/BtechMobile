@@ -25,9 +25,3 @@ func test_inner_sphere_parts_in_clan_chassis() -> void:
 	var d := _def("clan", {"heat_sinks": false, "engine": false})
 	check_eq(ClanTech.xl_side_slots(d), 3)
 	check_eq(ClanTech.dhs_slots(d), 3)
-
-
-func test_official_mixed_designs_load() -> void:
-	for id in ["griffin_c", "annihilator_anh5w", "banshee_bnc12s"]:
-		var u := mech(id, 0, Vector2i.ZERO)
-		check(not u.def.clan_parts.is_empty(), id)

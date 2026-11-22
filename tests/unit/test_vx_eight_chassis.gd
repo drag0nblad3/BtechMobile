@@ -18,7 +18,7 @@ func _data(id: String, high: bool) -> Dictionary:
 
 
 func test_unit_ids_and_both_lod_recipes() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	for spec: Dictionary in CASES:
 		var id: String = spec["id"]
 		var low := _data(id, false)

@@ -4,7 +4,7 @@ extends TestCase
 
 func _skirmish() -> GameController:
 	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json",
-			terrain(), UnitDb.load_dir())
+			terrain(), designs())
 	return GameController.new(s, 22)
 
 
@@ -89,7 +89,7 @@ func test_reasons_not_repeated() -> void:
 
 func test_tutorial_lessons_fire_once_in_order() -> void:
 	var path := "res://data/scenarios/tutorial.json"
-	var s := ScenarioLoader.load_file(path, terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file(path, terrain(), designs())
 	var tut := Tutorial.from_scenario(path)
 	check(tut.lessons.size() >= 8, "has lessons")
 	var gc := GameController.new(s, 9)

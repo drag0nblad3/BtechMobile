@@ -86,7 +86,7 @@ func test_ecm_and_standard_ammo_get_no_help() -> void:
 
 
 func test_designs_carry_narc() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var kto := Unit.new(9, db.get_def("kintaro_kto19"), 0, Vector2i.ZERO, 0)
 	check(kto.weapons.any(func(w: MountedWeapon) -> bool: return w.def.beacon), "Kintaro has a beacon")
 	check(kto.weapons.filter(func(w: MountedWeapon) -> bool: return w.narc_ammo).size() == 3, "every launcher can load Narc missiles")

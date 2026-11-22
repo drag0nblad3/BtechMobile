@@ -7,7 +7,7 @@ func test_skirmish_games_finish() -> void:
 	var finished := 0
 	for seed_value in [11, 22, 33, 44, 55]:
 		var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json",
-				terrain(), UnitDb.load_dir())
+				terrain(), designs())
 		var gc := GameController.new(s, seed_value)
 		SimBot.play(gc)
 		if s.game_over:
@@ -20,7 +20,7 @@ func test_skirmish_games_finish() -> void:
 
 
 func test_every_design_fights() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var ids: Array = db.by_id.keys()
 	ids.sort()
 	var map := MapLoader.load_file("res://data/maps/river_crossing.json", terrain())

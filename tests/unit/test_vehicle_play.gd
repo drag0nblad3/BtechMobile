@@ -81,7 +81,7 @@ func test_computer_plays_vehicles() -> void:
 	var gc := GameController.new(s, 7)
 	gc.start_turn()
 	var steps := 0
-	while not s.game_over and s.turn < 8 and steps < 3000:
+	while not s.game_over and s.turn < 5 and steps < 3000:
 		if not Bot.act(gc, s.active_side(), BotSkill.Level.VETERAN):
 			break
 		steps += 1

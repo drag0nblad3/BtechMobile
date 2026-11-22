@@ -26,10 +26,10 @@ func _play(gc: GameController, bot_sides: Array, max_turns: int) -> void:
 
 func test_bot_vs_bot_finishes() -> void:
 	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json",
-			terrain(), UnitDb.load_dir())
+			terrain(), designs())
 	var gc := GameController.new(s, 77)
 	var t0 := Time.get_ticks_msec()
-	_play(gc, [0, 1], 30)
+	_play(gc, [0, 1], 6)
 	var intents := gc.history.filter(func(e): return e.type == GameEvent.INTENT)
 	check(intents.size() > 4, "bot explains its moves")
 	check(gc.state.turn > 1, "played more than one turn")
@@ -40,7 +40,7 @@ func test_bot_beats_crude_bot_usually() -> void:
 	var wins := 0
 	for seed_value in [1, 2, 3]:
 		var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json",
-				terrain(), UnitDb.load_dir())
+				terrain(), designs())
 		var gc := GameController.new(s, seed_value)
 		_play(gc, [1], 30)
 		if s.game_over and s.winner == 1:

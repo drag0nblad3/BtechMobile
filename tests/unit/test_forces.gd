@@ -3,7 +3,7 @@ extends TestCase
 
 
 func test_budget_and_lance_size() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var fb := ForceBuilder.new(db, 3000)
 	check(fb.add(0, "atlas_as7d"), "Atlas fits")
 	check(fb.add(0, "hunchback_hbk4g"), "plus a Hunchback fits")
@@ -17,7 +17,7 @@ func test_budget_and_lance_size() -> void:
 
 
 func test_battle_value_ordering() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	check_eq(BattleValue.of(db.get_def("atlas_as7d")), 1897, "the official sheet's BV")
 	var atlas := BattleValue.breakdown(db.get_def("atlas_as7d"))
 	# Our simplified estimate, for designs without a sheet, lands near it.
@@ -33,7 +33,7 @@ func test_battle_value_ordering() -> void:
 
 
 func test_balance_text() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+	var fb := ForceBuilder.new(designs(), 8000)
 	check_eq(fb.balance_text(), "")
 	fb.add(0, "griffin_grf1n")
 	fb.add(1, "griffin_grf1n")
@@ -43,7 +43,7 @@ func test_balance_text() -> void:
 
 
 func test_build_deploys_both_edges() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
+	var fb := ForceBuilder.new(designs(), 6000)
 	fb.add(0, "jenner_jr7d")
 	fb.add(0, "catapult_cplt_c1")
 	fb.add(1, "atlas_as7d")
@@ -68,7 +68,7 @@ func test_skill_changes_bv_and_pilots() -> void:
 	check_eq(BvSkill.multiplier(4, 5), 1.0, "regular 4/5 is the base")
 	check_eq(BvSkill.multiplier(5, 3), 1.08, "the book's example")
 	check_eq(BvSkill.adjusted(1000, 3, 4), 1320)
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+	var fb := ForceBuilder.new(designs(), 8000)
 	fb.add(0, "hunchback_hbk4g")
 	var base := fb.bv(0)
 	check(fb.next_skill(0), "veteran fits the budget")
@@ -84,7 +84,7 @@ func test_skill_changes_bv_and_pilots() -> void:
 
 
 func test_clan_star_of_five() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+	var fb := ForceBuilder.new(designs(), 8000)
 	check_eq(fb.formation(0), "Lance")
 	for i in 4:
 		check(fb.add(0, "kit_fox_prime"), "Clan 'Mech %d" % (i + 1))

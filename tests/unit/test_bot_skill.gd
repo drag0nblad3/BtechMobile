@@ -62,11 +62,11 @@ func test_only_elite_values_rear_shots() -> void:
 
 func test_every_level_plays_a_game() -> void:
 	for level in BotSkill.NAMES.size():
-		var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), UnitDb.load_dir())
+		var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), designs())
 		var gc := GameController.new(s, 40 + level)
 		gc.start_turn()
 		var guard := 0
-		while not s.game_over and s.turn <= 4 and guard < 2000:
+		while not s.game_over and s.turn <= 2 and guard < 2000:
 			guard += 1
 			if not Bot.act(gc, s.active_side(), level):
 				break

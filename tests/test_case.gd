@@ -39,9 +39,25 @@ func weapons() -> WeaponDb:
 const FIXTURES := "res://tests/fixtures/units"
 
 
+## Design catalogs shared by every test: loading all designs per mech() call
+## used to cost more than the rules being tested. Tests must not edit defs.
+static var _db_cache := {}
+
+
+func _designs(dir_path: String) -> UnitDb:
+	if not _db_cache.has(dir_path):
+		_db_cache[dir_path] = UnitDb.load_dir(dir_path)
+	return _db_cache[dir_path]
+
+
+## The shipped catalog ('Mechs, Assets, vehicles), loaded once.
+func designs() -> UnitDb:
+	return _designs(UnitDb.DEFAULT_DIR)
+
+
 ## A 'Mech from data/units/ by id, or a test fixture ("test_...").
 func mech(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int = 0) -> Unit:
-	var def := (UnitDb.load_dir(FIXTURES) if def_id.begins_with("test_") else UnitDb.load_dir()).get_def(def_id)
+	var def := _designs(FIXTURES if def_id.begins_with("test_") else UnitDb.DEFAULT_DIR).get_def(def_id)
 	return Unit.new(uid if uid > 0 else side * 10 + at.x + 1, def, side, at, facing)
 
 

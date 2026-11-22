@@ -4,7 +4,7 @@ extends TestCase
 
 
 func test_force_builder_buys_vehicles_as_support() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var fb := ForceBuilder.new(db, 12000)
 	check(fb.add(0, "atlas_as7d"), "a 'Mech")
 	var before := fb.bv(0)
@@ -19,7 +19,7 @@ func test_force_builder_buys_vehicles_as_support() -> void:
 
 
 func test_vehicle_bv_follows_crew_skill() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 12000)
+	var fb := ForceBuilder.new(designs(), 12000)
 	var def := fb.units.get_def("manticore_heavy_tank")
 	var regular := fb.unit_bv(0, def)
 	fb.skills[0] = Vector2i(3, 4)
@@ -27,7 +27,7 @@ func test_vehicle_bv_follows_crew_skill() -> void:
 
 
 func test_built_vehicles_deploy_on_ground_they_can_use() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir(), 12000)
+	var fb := ForceBuilder.new(designs(), 12000)
 	fb.add(0, "atlas_as7d")
 	fb.add(0, "pegasus_scout_hover_tank")
 	fb.add(0, "hetzer_wheeled_assault_gun")

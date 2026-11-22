@@ -104,7 +104,7 @@ func test_explanations_and_start_event() -> void:
 
 
 func test_force_builder_cycles_presets() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir())
+	var fb := ForceBuilder.new(designs())
 	check(fb.conditions.is_clear())
 	fb.next_conditions()
 	check(fb.conditions.night, "second preset is night")
