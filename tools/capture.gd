@@ -18,6 +18,16 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
+	if _mode == "voxel":
+		GameSettings.load_settings()
+		GameSettings.voxel_mechs = true  # capture-only override, never saved
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 20000)
+		for side in 2:
+			for i in 4:
+				fb.add(side, "hunchback_hbk4g")
+		BattleLaunch.pending = fb.build(MapLoader.load_file(
+				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
+		BattleLaunch.bot_sides = []
 	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode in ["vfx", "jump"]:  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
@@ -69,6 +79,8 @@ func _process(_delta: float) -> bool:
 		# per frame; slow this *review capture* so frame 40 is airborne.
 		Engine.time_scale = 0.025
 		_stage_jump()
+	if _frames == 8 and _mode == "voxel":
+		_stage_voxel_group()
 	if _frames == 39 and _mode == "vfx":
 		# Visual review only: place a PPC across the visible battlefield.
 		# Does not affect the actual combat resolution or either roster.
@@ -174,6 +186,42 @@ func _stage_battle_visuals() -> void:
 		if chosen != Hex.INVALID:
 			unit.coord = chosen
 			_scene.units_layer.refresh_unit(unit.id)
+
+
+## Camera-centered group shot: all eight voxel views must be in frame.
+func _stage_voxel_group() -> void:
+	var state: GameState = _scene.controller.state
+	var center := HexLayout.map_bounds(state.map).get_center()
+	var taken := {}
+	var sum := Vector3.ZERO
+	var count := 0
+	for i in state.units.size():
+		var unit: Unit = state.units[i]
+		var desired := center + Vector3((i % 4 - 1.5) * 2.3, 0,
+				(floori(float(i) / 4.0) - 0.5) * 3.3)
+		var selected := Hex.INVALID
+		var closest := INF
+		for c: Vector2i in state.map.coords():
+			var tile: MapTile = state.map.get_tile(c)
+			if tile.building != null or tile.depth > 0 or taken.has(c):
+				continue
+			var occupant := state.unit_at(c)
+			if occupant != null and occupant != unit:
+				continue
+			var p := HexLayout.to_world(c, tile.level)
+			var distance := Vector2(p.x - desired.x, p.z - desired.z).length_squared()
+			if distance < closest:
+				closest = distance
+				selected = c
+		if selected == Hex.INVALID:
+			continue
+		unit.coord = selected  # capture-only; never submitted to controller
+		taken[selected] = true
+		_scene.units_layer.refresh_unit(unit.id)
+		sum += _scene.units_layer.view_of(unit).global_position
+		count += 1
+	if count > 0:
+		_scene.rig.snap(sum / float(count), 16.0)
 
 
 ## Review only: sample lines in the roll feed, nothing is resolved.

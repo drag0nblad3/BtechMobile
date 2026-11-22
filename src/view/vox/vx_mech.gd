@@ -7,6 +7,8 @@ extends Node3D
 const MAX_DEBRIS := 6
 
 var model: VxModel
+var cache_path := ""
+var side := 0
 var body: Node3D               ## Whole-body pose root (falls, jumps).
 var pivots: Dictionary = {}    ## part name -> Node3D joint
 var parts: Dictionary = {}     ## part name -> VxPart
@@ -29,7 +31,8 @@ var _centers: Dictionary = {}  ## Location -> grid center of its first part
 
 static func from_file(path: String) -> VxMech:
 	var m := VxMech.new()
-	m.model = VxModel.load_file(path)
+	m.cache_path = path
+	m.model = VxRenderCache.model_at(path)
 	m.build()
 	return m
 
@@ -80,6 +83,16 @@ func build() -> void:
 
 ## Every part learns which neighbor cells belong to other parts, then meshes.
 func _mark_touching() -> void:
+	var cached := VxRenderCache.geometry_at(cache_path) if cache_path != "" else {}
+	if not cached.is_empty():
+		for key: String in parts:
+			var p: VxPart = parts[key]
+			var entry: Dictionary = cached[key]
+			p.mesh = entry["mesh"]
+			p.triangles = entry["triangles"]
+			p.faces_before_merge = entry["faces"]
+			p.touching = entry["touching"]
+		return
 	var owner_of := {}
 	for spec in model.parts:
 		for c: Vector3i in spec["cells"]:
@@ -91,6 +104,8 @@ func _mark_touching() -> void:
 				if o != p.part_name:
 					p.touching[c + d] = true
 		p.rebuild()
+	if cache_path != "":
+		VxRenderCache.remember(cache_path, parts)
 
 
 ## Matches the voxels to the unit's record sheet; drops destroyed limbs.
@@ -107,9 +122,16 @@ func show_unit(u: Unit) -> void:
 	set_wrecked(u.destroyed)
 
 
+func set_side(value: int) -> void:
+	side = value
+	set_wrecked(false)
+
+
 func set_wrecked(on: bool) -> void:
 	for p: VxPart in parts.values():
 		p.set_wrecked(on)
+		if not on:
+			p.material_override = VxRenderCache.side_material(side)
 
 
 ## World positions of a location's weapon muzzles (they move with the limb).

@@ -27,9 +27,17 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	elif u.def.battle_armor != null:
 		set_model(PlaceholderAsset.build_squad(u.def, u.side))
 	else:
-		var sprite := SpriteMech.try_build(u.def)
-		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
+		refresh_look()
 	snap_to_state()
+
+
+## Choose the strongest supported representation without touching the Unit.
+func refresh_look() -> void:
+	if unit.def.is_support():
+		return
+	var voxel := UnitVoxels.choose(unit.def, unit.side)
+	var sprite := SpriteMech.try_build(unit.def) if voxel == null else null
+	set_model(voxel if voxel else sprite if sprite else PlaceholderMech.build(unit.def, unit.side))
 
 
 func set_model(model: Node3D) -> void:
@@ -53,6 +61,8 @@ func show_condition() -> void:
 	if _model == null:
 		return
 	visible = unit.carrier_id() < 0  # riders ride inside or on top
+	if UnitVoxels.sync(_model, unit):
+		return
 	var down := unit.prone or (unit.destroyed and not unit.def.is_support())
 	_model.rotation.z = PI / 2.4 if down else 0.0
 	_model.position.y = 0.25 if down else 0.0
@@ -87,6 +97,8 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 	if mode == MoveMode.Kind.JUMP and unit.def.jump_mp > 0 and not unit.def.is_support():
 		_jump_path(path, start_coord, start_facing)
 		return
+	if _model is VxMech:
+		(_model as VxMech).anim.walk(true, mode == MoveMode.Kind.RUN)
 	var tw := create_tween()
 	var last_c := start_coord
 	var last_f := start_facing
@@ -106,6 +118,8 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 			foot_side += 1
 			last_c = c
 	tw.finished.connect(func():
+			if _model is VxMech:
+				(_model as VxMech).anim.walk(false)
 			show_condition()
 			animation_finished.emit())
 
@@ -130,6 +144,10 @@ func _jump_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 	var from_yaw := rotation.y
 	var final_yaw := HexLayout.facing_yaw(last.z)
 	var plume := JumpJetFx.spawn(self)
+	if _model is VxMech:
+		# World trajectory belongs to UnitView; local anim only tucks limbs and
+		# lights jets (height zero avoids a second jump arc).
+		(_model as VxMech).anim.jump(Vector3.ZERO, 0.0)
 	_ground_burst(start_coord, true, start)
 	var tween := create_tween()
 	tween.tween_method(func(t: float) -> void:
@@ -159,6 +177,13 @@ func _ground_burst(coord: Vector2i, launching: bool, at: Vector3 = Vector3.INF) 
 ## Resolve authored weapon sockets first; fall back to the actual model bounds.
 ## This avoids center-to-center fire and follows a turning chassis.
 func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
+	if _model is VxMech and unit != null and weapon_index >= 0 and weapon_index < unit.def.weapon_mounts.size():
+		var vox := _model as VxMech
+		var loc := int(unit.def.weapon_mounts[weapon_index]["loc"])
+		if not vox.model.parts_at(loc).is_empty() and vox.is_attached(vox.part_at(loc)):
+			var ports := vox.muzzles(loc)
+			if not ports.is_empty():
+				return ports[0]
 	var socket_names := ["muzzle_%d" % weapon_index, "weapon_%d" % weapon_index,
 		"muzzle", "Muzzle", "WeaponMuzzle"]
 	for candidate in socket_names:

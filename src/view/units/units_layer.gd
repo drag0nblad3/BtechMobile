@@ -43,6 +43,29 @@ func refresh_unit(unit_id: int) -> void:
 		v.snap_to_state()
 
 
+## Plays a cosmetic pose after the record-sheet snapshot has been applied.
+func react(e: GameEvent) -> void:
+	var id := int(e.data.get("unit_id", -1))
+	var v: UnitView = views.get(id)
+	if v != null:
+		UnitVoxels.react(v._model, e)
+	if e.type != GameEvent.PHYSICAL:
+		return
+	var attacker: UnitView = views.get(int(e.data.get("attacker_id", -1)))
+	if attacker == null or not (attacker._model is VxMech):
+		return
+	var anim := (attacker._model as VxMech).anim
+	var side := 0 if int(e.data.get("limb", Location.LA)) in [Location.LA, Location.LL] else 1
+	match String(e.data.get("kind", "")):
+		"punch": anim.punch(side)
+		"kick": anim.kick(side)
+
+
+func reload_looks() -> void:
+	for view: UnitView in views.values():
+		view.refresh_look()
+
+
 func _on_done() -> void:
 	_playing -= 1
 	if _playing == 0:

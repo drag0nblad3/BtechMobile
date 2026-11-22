@@ -61,7 +61,8 @@ func _weapon_fire(d: Dictionary) -> void:
 	if not hit:
 		destination += ShotFx.miss_offset(int(d.get("attacker_id", 0)),
 			int(d.get("target_id", 0)), weapon)
-	if get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
+	var voxel_fired := av != null and UnitVoxels.fire(av, d, destination)
+	if not voxel_fired and get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
 		ShotFx.spawn(self, a, destination, weapon, hit)
 	if hit:
 		VxBlast.spawn(self, destination, "impact", attacker_id * 131 + target_id)
@@ -70,7 +71,7 @@ func _weapon_fire(d: Dictionary) -> void:
 	else:
 		VxBlast.spawn(self, destination - Vector3(0, 0.3, 0), "miss",
 			int(d.get("attacker_id", 0)) * 131 + int(d.get("target_id", 0)))
-	if av != null:
+	if av != null and not voxel_fired:
 		_recoil(av, weapon)
 
 
