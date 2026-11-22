@@ -71,6 +71,18 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
   `ammo:<launcher>:<kind>` bins and is picked as the firing mode (`Atm`).
 - `tech: "clan"` marks Clan versions; their ids start `c_` (`c_er_medium_laser`) and keep the
   book's names. `to_hit` is the weapon's own modifier (pulse -2, ER pulse -1, heavy lasers +1).
+- The advanced weapon expansion includes re-engineered lasers, chemical lasers, binary lasers,
+  Clan improved lasers and autocannons, hyper-velocity ACs, AP/improved Gauss rifles and primitive
+  rifle cannons. `reengineered: true` adds an armor-bypass attack tag against reflective, hardened
+  and ferro-lamellor armor; `rifle: true` reduces damage by 3 against military-grade armor
+  (`RifleCannon`); `explosion_damage` sets a weapon-specific critical explosion instead of the
+  fallback of two damage per slot (`ComponentExplosion`). Ammunition-using energy weapons such as
+  chemical lasers must still list `ammo:<weapon id>` bins. Existing weapons remain unchanged.
+- `source_megamek` on an advanced weapon records its MegaMek Java equipment definition, with
+  ammunition capacity and BV verified against `megamek/common/equipment/AmmoType.java`.
+  This catalogs equipment statistics; it does not create unofficial BattleMech loadouts.
+  `TODO(rules)`: HVAC rapid-fire mode, primitive rifles against commercial armor, and
+  chemical-laser specialty fire effects remain outside this pass.
 
 ## `data/bv_skill.json`
 `{"multipliers": [[...9 numbers...] x 9]}`: row = gunnery 0-8, column = piloting 0-8;

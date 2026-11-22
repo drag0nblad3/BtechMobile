@@ -11,7 +11,7 @@ static var _pattern: RegEx
 static func is_autocannon(d: WeaponDef) -> bool:
 	if _pattern == null:
 		_pattern = RegEx.create_from_string("(^|_)ac\\d*$")
-	return d.type == "ballistic" and _pattern.search(d.id) != null
+	return d.type == "ballistic" and (_pattern.search(d.id) != null or d.id.begins_with("hvac"))
 
 
 ## Applies one critical hit to the weapon. True when the gun still works.
