@@ -1,6 +1,6 @@
 {
   "id": "victor_shape",
-  "name": "Victor VTR-9B \u2014 low-poly shape",
+  "name": "Victor VTR-9B — low-poly shape",
   "unit": "victor_vtr9b",
   "voxel_size": 0.060375,
   "subdivide": 1,
@@ -1673,6 +1673,22 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "erase": [
+            [
+              2,
+              31,
+              -9
+            ],
+            [
+              2,
+              31,
+              -9
+            ]
+          ]
+        }
       ]
     },
     {
@@ -1709,11 +1725,11 @@
                   ],
                   [
                     2.16928,
-                    0.0
+                    0
                   ],
                   [
                     -2.16101,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -1738,11 +1754,11 @@
                   ],
                   [
                     2.89095,
-                    0.0
+                    0
                   ],
                   [
                     -2.88277,
-                    0.0
+                    0
                   ]
                 ]
               },
@@ -1767,11 +1783,11 @@
                   ],
                   [
                     2.16928,
-                    0.0
+                    0
                   ],
                   [
                     -2.16101,
-                    0.0
+                    0
                   ]
                 ]
               }
@@ -3494,5 +3510,6 @@
     }
   ],
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "connectivity_source_patch": "2026-11-22-rig-mass-v2"
 }
