@@ -27,6 +27,8 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		var wi: int = s["weapon"]
 		if used.has(wi) or wi < 0 or wi >= attacker.weapons.size():
 			continue
+		if s.has("hex") and attacker.asset != null:
+			continue  # infantry Asset attacks don't hurt buildings (p. 146); TODO(rules): vehicles?
 		if s.has("hex"):  # shooting a building
 			var bth := BuildingFire.to_hit(state, attacker, attacker.weapons[wi], s["hex"])
 			if bth.possible():
@@ -37,6 +39,8 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		var target := state.unit_by_id(int(s["target_id"]))
 		if target == null or target.side == attacker.side:
 			continue
+		if attacker.asset != null and primary >= 0 and target.id != primary:
+			continue  # an Asset attacks one target a turn (p. 144)
 		var th := ToHitCalc.weapon(state, attacker, attacker.weapons[wi], target,
 				target.id != primary)
 		var aim := int(s.get("aim", -1))

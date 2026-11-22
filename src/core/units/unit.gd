@@ -10,6 +10,8 @@ var side: int
 var coord: Vector2i
 var facing: int
 var pilot: Pilot
+## Battlefield Support Asset (vehicle, infantry): its card state; null for 'Mechs.
+var asset: AssetState = null
 
 # Record sheet ------------------------------------------------------------
 var armor: Array[int] = []
@@ -82,6 +84,9 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	coord = at
 	facing = face
 	pilot = mech_pilot if mech_pilot else Pilot.new()
+	if def.asset != null:
+		_init_asset()
+		return
 	for loc in Location.COUNT:
 		armor.append(def.armor[loc] if def.armor.size() > loc else 0)
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
@@ -98,6 +103,32 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	Narc.setup_ammo(self)
 	Atm.setup_ammo(self)
 	slots = CritLayout.build(def)
+
+
+## An Asset has no locations: one placeholder point each keeps 'Mech checks
+## (legs, head) quiet; damage goes to AssetDamage instead. Its single
+## attack is mounted once per damage grouping.
+func _init_asset() -> void:
+	asset = AssetState.new(def.asset)
+	for loc in Location.COUNT:
+		armor.append(0)
+		rear_armor.append(0)
+		structure.append(1)
+		slots.append([])
+	var w := def.asset.attack_weapon(def.name)
+	for i in def.asset.groupings:
+		weapons.append(MountedWeapon.new(w, Location.CT, false))
+	pilot.gunnery = asset.skill()
+
+
+func is_asset() -> bool:
+	return asset != null
+
+
+## Improved Skill (p. 141): lower base number, higher cost.
+func set_asset_improved(on: bool) -> void:
+	asset.improved = on
+	pilot.gunnery = asset.skill()
 
 
 func reset_for_turn() -> void:
@@ -199,6 +230,8 @@ func lose_heat_sink(slot: CritSlot) -> bool:
 ## leg, lower leg or foot hit is -1, but leg damage can't go below 1; a
 ## destroyed leg sets the base to 1; both legs gone is 0.
 func walk_mp() -> int:
+	if asset != null:
+		return 0 if asset.card.immobile() else def.walk_mp
 	if def.quad:
 		var qb := Quad.walk_base(self)
 		return maxi(0, qb + (Tsm.mp_bonus(self) if qb > 0 else 0) - HeatScale.mp_penalty(heat))
@@ -212,6 +245,8 @@ func walk_mp() -> int:
 
 
 func run_mp() -> int:
+	if asset != null:
+		return walk_mp()  # one fixed allowance every turn (p. 141)
 	if masc_active and sc_active:
 		return ceili(walk_mp() * 2.5)
 	return walk_mp() * 2 if masc_active or sc_active else ceili(walk_mp() * 1.5)
@@ -219,6 +254,8 @@ func run_mp() -> int:
 
 ## Jump MP after jump jet damage.
 func jump_mp() -> int:
+	if asset != null:
+		return def.jump_mp
 	var lost := {}  # jets by ref: an improved jet's two slots are one jet
 	for loc in Location.COUNT:
 		for s: CritSlot in slots[loc]:

@@ -90,10 +90,16 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
-	if w.def.heat_damage:  # flamers: heat as well as damage (book pp. 183-184)
+	if w.def.heat_damage and target.asset == null:  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points
 	emit.call(GameEvent.WEAPON_FIRED, data)
+	if target.asset != null:  # no hit locations: the total goes on the card (p. 146)
+		var total := 0
+		for p in packets:
+			total += p
+		AssetDamage.weapon_hit(emit, attacker, w.def, target, total, arc_id)
+		return
 	for p in packets:
 		var hl := aimed.duplicate()
 		if th.legs_only:
@@ -136,6 +142,9 @@ static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
 		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
+	if target.asset != null:
+		AssetDamage.take(emit, target, amount, source_id, source, [], arc_id)
+		return
 	if hl.is_empty():
 		hl = HitTable.roll(dice, arc_id)
 	if cover != Hex.INVALID and Location.is_leg_of(target.def, hl["loc"]):

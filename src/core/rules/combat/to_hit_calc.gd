@@ -11,6 +11,11 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if target == null or target.destroyed:
 		th.impossible = "No target"
 		return th
+	if attacker.asset != null:
+		return AssetFire.to_hit(state, attacker, w, target)
+	if target.coord == attacker.coord:
+		th.impossible = "A 'Mech can't shoot at a unit in its own hex"
+		return th
 	if w.def.ams:
 		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
 		return th
@@ -110,6 +115,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 ## Attacker and target movement.
 static func add_movement(th: ToHit, attacker: Unit, target: Unit, ignore_target := false) -> void:
 	add_attacker_movement(th, attacker)
+	if target.asset != null:
+		return  # fixed TMM, weighed against terrain in add_conditions (AssetFire)
 	var jumped := target.move_mode == MoveMode.Kind.JUMP
 	var tm := target_movement_mod(target.hexes_moved, jumped)
 	if target.landed and not ignore_target:
@@ -136,6 +143,9 @@ static func add_attacker_movement(th: ToHit, attacker: Unit) -> void:
 static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: Unit,
 		los: Dictionary) -> void:
 	add_attacker_conditions(th, attacker, los)
+	if target.asset != null:
+		AssetFire.add_target_mods(th, state, target)
+		return
 	var tile := state.map.get_tile(target.coord)
 	var tw := LineOfSight.woods_value(tile) if tile else 0
 	if tw > 0:

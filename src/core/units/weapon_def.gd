@@ -46,6 +46,7 @@ var munitions: Dictionary = {}
 var label := ""       ## Munition name for the firing mode (MML "LRM"/"SRM").
 var cluster_mod: int   ## Added to Cluster Hits rolls (MRM -1, p. 186).
 var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 182).
+var ai: bool           ## Anti-Infantry type (AI, book weapon tables): more harm to infantry Assets.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -87,6 +88,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.label = d.get("label", "")
 	w.cluster_mod = int(d.get("cluster_mod", 0))
 	w.one_shot = bool(d.get("one_shot", false))
+	w.ai = bool(d.get("ai", false))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()
@@ -99,6 +101,24 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 
 func is_clan() -> bool:
 	return tech == "clan"
+
+
+## Weapon Type codes from the book's tables (p. 182) that Assets care about:
+## DE direct energy, P pulse, DB direct ballistic, M missile, AI, H heat.
+func attack_types() -> Array[String]:
+	var out: Array[String] = []
+	match type:
+		"energy":
+			out.append("P" if pulse else "DE")
+		"ballistic":
+			out.append("DB")
+		"missile":
+			out.append("M")
+	if ai:
+		out.append("AI")
+	if heat_damage:
+		out.append("H")
+	return out
 
 
 func uses_ammo() -> bool:
