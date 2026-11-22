@@ -57,8 +57,6 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
   primitive light/medium/heavy rifles suffer -3 damage against military armor (`RifleCannon`).
   `TODO(rules)`: HVAC rapid-fire and jams, laser AMS, re-engineered treatment of every exotic
   armor interaction, specialty chemical laser effects and commercial-armor rifle modifiers.
-
-## Weapon attacks
 - ✅ To-hit: gunnery + attacker movement (walk +1, run +2) + target movement
   (3-4 +1, 5-6 +2, 7-9 +3, 10-17 +4, 18-24 +5, 25+ +6) + range (+0/+2/+4) + minimum range.
 - ✅ Woods: intervening +1 light / +2 heavy, target hex the same.
