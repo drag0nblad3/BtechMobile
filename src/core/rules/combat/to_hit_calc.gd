@@ -19,6 +19,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if target.coord == attacker.coord:
 		th.impossible = "A 'Mech can't shoot at a unit in its own hex"
 		return th
+	if secondary and Stealth.active(target):
+		th.impossible = "Stealth armor: it can only be your primary target"
+		return th
 	if w.def.ams:
 		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
 		return th
@@ -104,6 +107,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		WeaponDef.Bracket.LONG:
 			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
+	Stealth.add_mods(th, target, br)
 	if p.min_range > 0 and dist <= p.min_range:
 		th.add("minimum range", p.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])

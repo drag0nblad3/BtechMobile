@@ -8,7 +8,7 @@ extends RefCounted
 ## intel on 4+ scores 2 VP, once per side and counter) or "potential"
 ## (Objective Raid: a good scan confirms a counter on 4+, else it's removed).
 ## TODO(rules): the scan target is picked automatically (the most useful
-## one in range); active probes and stealth armor aren't in the game.
+## one in range); active probes and stealth armor aren't counted here.
 
 const RANGE := 2
 const MOD := 3

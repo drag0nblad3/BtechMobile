@@ -1,0 +1,89 @@
+{
+ "id": "hunchback_hbk5sg",
+ "name": "Hunchback",
+ "model": "HBK-5SG",
+ "tonnage": 50,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "gyro_type": "compact",
+ "structure_type": "endo_steel",
+ "armor_type": "stealth",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "medium_pulse_laser",
+   "endo_steel",
+   "stealth*2",
+   "endo_steel*3"
+  ],
+  "RA": [
+   "heat_sink",
+   "medium_pulse_laser",
+   "stealth*2",
+   "endo_steel*4"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "ammo:gauss_rifle*2",
+   "endo_steel*4",
+   "stealth*2"
+  ],
+  "RT": [
+   "gauss_rifle",
+   "endo_steel",
+   "stealth*2"
+  ],
+  "CT": [
+   "guardian_ecm",
+   "jump_jet*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "stealth*2"
+  ],
+  "RL": [
+   "stealth*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1565,
+  "megamek": "data/mekfiles/meks/3050U/Hunchback HBK-5SG.mtf",
+  "published": "RS:3050Uu-I",
+  "role": "Brawler",
+  "bv": "megamek",
+  "megamek_bv": 1577
+ },
+ "bv": 1577,
+ "sprite": "hunchback",
+ "role": "Brawler: built to slug it out at medium range. 2 Medium Pulse Lasers, Gauss Rifle; walks 4, runs 6, jumps 4."
+}

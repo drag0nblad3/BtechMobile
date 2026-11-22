@@ -16,7 +16,7 @@ extends RefCounted
 ## Bulky slots: structure, armor and myomer that only take up space.
 const BULK := ["endo_steel", "ferro_fibrous", "light_ferro", "heavy_ferro", "tsm", "endo_composite",
 		"ferro_lamellor", "reflective", "reactive", "ballistic_reinforced", "anti_penetrative",
-		"impact_resistant", "heat_dissipating"]
+		"impact_resistant", "heat_dissipating", "stealth"]
 
 ## One-per-'Mech items stored as a location: item -> UnitDef property.
 const LOC_ITEMS := {"guardian_ecm": "ecm_loc", "targeting_computer": "tc_loc", "masc": "masc_loc",
