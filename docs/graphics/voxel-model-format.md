@@ -42,6 +42,38 @@ Test both pipelines after cross-edits:
 `godot --headless -s tests/run_tests.gd` and the respective lab/showcase
 smoke tests. No APK build or screenshots unless specifically requested.
 
+## Variant-specific weapon geometry
+
+Official variants with the same chassis use a small source recipe instead
+of duplicating or replacing the large chassis geometry. Example:
+
+```json
+{
+  "source": "res://data/voxels/spider.json",
+  "unit": "spider_sdr10k",
+  "name": "Spider SDR-10K",
+  "muzzles": {"RT": [9.5, 35.5, -16]},
+  "part_overlays": [{
+    "part": "rt",
+    "add": [{"box": [[9,34,-16],[11,36,-11]], "mat": "gun"}]
+  }]
+}
+```
+
+`VxVariant.resolve` deep-copies the base recipe. `part_overlays` appends
+`shapes` before mirroring or `add` after mirroring to the named part.
+A variant must match its `unit` ID, place the actual weapon in its
+record-sheet location, preserve the base rig and all eight damageable
+locations, and put visible muzzles through real openings. The source model
+and other variants remain untouched.
+
+The advanced-equipment batch provides variant sculpts for Spider SDR-10K,
+Victor VTR-Cr and Black Hawk (Nova) T, plus newly authored Rook NH-3X and
+Nova Cat G chassis. The Nova Cat G's unique 20/40 left/right LRM apertures
+are cut out of the physical launcher pods, not painted on as black squares.
+All five can be inspected in the voxel showcase; none of these art files
+changes the record-sheet rules.
+
 ## The grid
 - One shared grid for the whole 'Mech: **x right, y up, -z front**. A cell `[x, y, z]`
   fills the cube from `(x, y, z)` to `(x+1, y+1, z+1)`.

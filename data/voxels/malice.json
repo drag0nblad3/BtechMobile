@@ -157,19 +157,19 @@
                   ],
                   [
                     8.68643,
-                    2.66171
+                    2.42433
                   ],
                   [
                     4.67253,
-                    10.01726
+                    9.27922
                   ],
                   [
                     -5.3524,
-                    9.34497
+                    8.65268
                   ],
                   [
                     -9.35644,
-                    1.9993
+                    1.80701
                   ]
                 ]
               },
@@ -5778,6 +5778,18 @@
       "kind": "laser"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 20,
+    "stages_with_changes": 5
+  }
 }

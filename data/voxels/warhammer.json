@@ -2057,36 +2057,36 @@
                 "at": 18,
                 "polygon": [
                   [
-                    -9.96978,
-                    -3
+                    -9.83571,
+                    -3.0
                   ],
                   [
                     -8,
                     -5
                   ],
                   [
-                    -5.04533,
-                    -4
+                    -5.24646,
+                    -4.0
                   ],
                   [
-                    -4.06043,
-                    -2
+                    -4.32858,
+                    -2.0
                   ],
                   [
-                    -4.06043,
-                    4
+                    -4.32858,
+                    3.84096
                   ],
                   [
-                    -6.03022,
-                    5
+                    -6.16429,
+                    4.8016
                   ],
                   [
-                    -9.96978,
-                    5
+                    -9.83571,
+                    4.8016
                   ],
                   [
-                    -11.93957,
-                    2
+                    -11.67142,
+                    1.9197
                   ]
                 ]
               },
@@ -2094,36 +2094,36 @@
                 "at": 22,
                 "polygon": [
                   [
-                    -9.96978,
-                    -3
+                    -9.83571,
+                    -3.0
                   ],
                   [
                     -8,
                     -4
                   ],
                   [
-                    -5.04533,
-                    -4
+                    -5.24646,
+                    -4.0
                   ],
                   [
-                    -4.06043,
-                    -2
+                    -4.32858,
+                    -2.0
                   ],
                   [
-                    -4.06043,
-                    4
+                    -4.32858,
+                    4.0
                   ],
                   [
-                    -6.03022,
-                    5
+                    -6.16429,
+                    5.0
                   ],
                   [
-                    -9.96978,
-                    5
+                    -9.83571,
+                    5.0
                   ],
                   [
-                    -11.93957,
-                    2
+                    -11.67142,
+                    2.0
                   ]
                 ]
               }
@@ -2339,23 +2339,23 @@
                   ],
                   [
                     -4.6116,
-                    0
+                    -0.00158
                   ],
                   [
                     -4.6116,
-                    3
+                    2.88032
                   ],
                   [
                     -6.3058,
-                    5
+                    4.8016
                   ],
                   [
                     -10.5413,
-                    5
+                    4.8016
                   ],
                   [
                     -11.3884,
-                    1
+                    0.95905
                   ]
                 ]
               },
@@ -2795,7 +2795,19 @@
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
-  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition"
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_passes": 100,
+  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 114,
+    "stages_with_changes": 10
+  }
 }
