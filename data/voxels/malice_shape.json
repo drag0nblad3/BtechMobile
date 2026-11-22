@@ -3632,6 +3632,22 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "erase": [
+            [
+              -3,
+              33,
+              -9
+            ],
+            [
+              -3,
+              33,
+              -9
+            ]
+          ]
+        }
       ]
     },
     {
@@ -4895,5 +4911,6 @@
     "front": 0.87,
     "rear": 0.73,
     "torso_width": 0.96
-  }
+  },
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
 }

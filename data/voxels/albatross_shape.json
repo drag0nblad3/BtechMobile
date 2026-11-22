@@ -5382,6 +5382,21 @@
               -5
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              7,
+              27,
+              -3
+            ],
+            [
+              10,
+              30,
+              1
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -6203,5 +6218,6 @@
     "front": 0.83,
     "rear": 0.69,
     "torso_width": 0.95
-  }
+  },
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
 }

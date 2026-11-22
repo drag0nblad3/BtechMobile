@@ -392,6 +392,36 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -5,
+              29,
+              -2
+            ],
+            [
+              -2,
+              33,
+              2
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              1,
+              29,
+              -2
+            ],
+            [
+              4,
+              33,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1102,7 +1132,24 @@
         28,
         0
       ],
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "box": [
+            [
+              -9,
+              29,
+              -2
+            ],
+            [
+              -6,
+              33,
+              2
+            ]
+          ],
+          "mat": "joint"
+        }
+      ]
     },
     {
       "name": "rt",
@@ -4617,5 +4664,6 @@
     "front": 0.86,
     "rear": 0.71,
     "torso_width": 0.95
-  }
+  },
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
 }
