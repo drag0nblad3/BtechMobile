@@ -46,7 +46,7 @@ func test_bots_play_with_assets() -> void:
 	for seed_value in [3, 4]:
 		var fb := ForceBuilder.new(db, 8000)
 		fb.add(0, "griffin_grf1n")
-		for id in ["test_tank", "test_foot", "test_hover"]:
+		for id in ["test_apc", "test_foot", "test_hover"]:
 			fb.add(0, id)
 		fb.add(1, "hunchback_hbk4g")
 		for id in ["test_wheeled", "test_jump", "savior_repair_vehicle"]:
