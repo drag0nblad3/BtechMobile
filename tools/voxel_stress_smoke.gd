@@ -133,6 +133,30 @@ func _run() -> void:
 	if hits <= 0 or stress.voxels_removed <= 0:
 		_fail("Automatic random damage did not remove any voxels")
 		return
+	# Deterministically cover the severed-limb path even when random pings
+	# only crater armor. Headless SceneTree tests have no current_scene.
+	var detached := false
+	for model: VoxelMech in stress.models:
+		for key: String in model.sockets:
+			var joint: Node3D = model.sockets[key]
+			if not is_instance_valid(joint) or joint.get_parent() != model._upper:
+				continue
+			var original_debris := model.debris.size()
+			model.detach(key)
+			if model.debris.size() != original_debris + 1:
+				_fail("Detaching an articulated limb must create wreckage")
+				return
+			var wreck: RigidBody3D = model.debris[-1]
+			if not wreck.is_inside_tree() or wreck.get_parent() == null:
+				_fail("Detached limb wreckage must have a valid scene parent")
+				return
+			detached = true
+			break
+		if detached:
+			break
+	if not detached:
+		_fail("No attached shoulder joint could be detached in stress scene")
+		return
 	await process_frame
 	if not lab.info.text.contains("FPS") or not lab.info.text.contains("hits"):
 		_fail("Live FPS and damage stats are not displayed")
