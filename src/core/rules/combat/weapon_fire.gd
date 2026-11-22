@@ -52,7 +52,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var shots := take_shots(attacker, w)
 	if shots == 0:
 		emit.call(GameEvent.WEAPON_FIRED, {"attacker_id": attacker.id, "target_id": target.id,
-				"weapon": Atm.profile(w).name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
+				"weapon": Atm.profile(w).name, "weapon_id": w.def.id,
+				"weapon_index": attacker.weapons.find(w), "roll": 0, "need": th.target(),
 				"hit": false, "no_ammo": true, "mods": th.mods, "missiles": 0})
 		return
 	w.fired = true
@@ -62,7 +63,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var need := th.target()
 	var hit := roll >= need
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": Atm.profile(w).name,
-			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
+			"weapon_id": w.def.id, "weapon_index": attacker.weapons.find(w), "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
 	if decoy != null:
 		data["nemesis"] = true

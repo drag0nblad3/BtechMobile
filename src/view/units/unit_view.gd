@@ -37,6 +37,8 @@ func set_model(model: Node3D) -> void:
 		_model.queue_free()
 	_model = model
 	add_child(model)
+	if unit != null and model.name == "Placeholder":
+		WeaponSockets.attach(model, unit.def)
 
 
 func snap_to_state() -> void:
@@ -107,7 +109,6 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 ## Resolve authored weapon sockets first; fall back to the actual model bounds.
 ## This avoids center-to-center fire and follows a turning chassis.
 func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
-	var key := weapon_name.to_lower()
 	var socket_names := ["muzzle_%d" % weapon_index, "weapon_%d" % weapon_index,
 		"muzzle", "Muzzle", "WeaponMuzzle"]
 	for candidate in socket_names:
@@ -119,7 +120,7 @@ func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
 	var side := -1.0 if weapon_index >= 0 and weapon_index % 2 == 0 else 1.0
 	var height := bounds.position.y + size.y * 0.67
 	var local := Vector3(side * size.x * 0.32, height, bounds.position.z - size.z * 0.43)
-	return global_transform * local
+	return global_transform * (_model.transform * local)
 
 
 func impact_point(from: Vector3) -> Vector3:
@@ -127,8 +128,8 @@ func impact_point(from: Vector3) -> Vector3:
 	var center := bounds.get_center()
 	var direction := (to_local(from) - center).normalized()
 	var extent := bounds.size * 0.45
-	return global_transform * (center + Vector3(direction.x * extent.x,
-		direction.y * extent.y, direction.z * extent.z))
+	return global_transform * (_model.transform * (center + Vector3(direction.x * extent.x,
+		direction.y * extent.y, direction.z * extent.z)))
 
 
 func _find_socket(root: Node, wanted: String) -> Node3D:
