@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Low, wide crab-like upper carapace, paired broad laser housings and articulated offset ankles; 7 jump-jet nozzles in the official LT/RT/CT distribution.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
+  "notes": "Low, wide crab-like upper carapace, paired broad laser housings and articulated offset ankles; 7 jump-jet nozzles in the official LT/RT/CT distribution.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nLoad-bearing shoulder bosses: separately authored contiguous 3D frame collars, 5+ coarse-cell z-span, no isolated floating armor lips; broad arm bearings retained while surrounding profiles remain slim.",
   "parts": [
     {
       "name": "ct",
@@ -523,6 +523,21 @@
             ]
           ],
           "mat": "glow"
+        },
+        {
+          "box": [
+            [
+              -11,
+              23,
+              -3
+            ],
+            [
+              -5,
+              29,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "ct"
@@ -684,6 +699,21 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -14,
+              24,
+              -2
+            ],
+            [
+              -10,
+              29,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",

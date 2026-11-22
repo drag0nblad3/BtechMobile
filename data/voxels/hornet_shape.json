@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Hornet insect-like suspended ovoid cockpit and very slender, inward-jointed stilt legs, distinct asymmetric right-torso LRM-5 wing pod; no arm manipulators. Source anchors: TRO 3039 and N-scale Hornet frontal resin photos. 2026 multi-view resculpt: replaced bulky forearms with small weapons suspended below a central spheroid; sunken cockpit and slender strut legs, retained physical sockets.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nReference resculpt: independently shape tiny left and right laser stalks under a round canopy; do not copy the LRM pod as the opposite arm.",
+  "notes": "Hornet insect-like suspended ovoid cockpit and very slender, inward-jointed stilt legs, distinct asymmetric right-torso LRM-5 wing pod; no arm manipulators. Source anchors: TRO 3039 and N-scale Hornet frontal resin photos. 2026 multi-view resculpt: replaced bulky forearms with small weapons suspended below a central spheroid; sunken cockpit and slender strut legs, retained physical sockets.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nReference resculpt: independently shape tiny left and right laser stalks under a round canopy; do not copy the LRM pod as the opposite arm.\nLoad-bearing shoulder bosses: separately authored contiguous 3D frame collars, 5+ coarse-cell z-span, no isolated floating armor lips; broad arm bearings retained while surrounding profiles remain slim.",
   "parts": [
     {
       "name": "ct",
@@ -839,6 +839,21 @@
             ]
           ],
           "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -10,
+              26,
+              -3
+            ],
+            [
+              -4,
+              32,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "ct"
@@ -1033,6 +1048,21 @@
             ]
           ],
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -12,
+              26,
+              -2
+            ],
+            [
+              -9,
+              30,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",
@@ -1133,6 +1163,21 @@
             ]
           ],
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              9,
+              26,
+              -2
+            ],
+            [
+              12,
+              30,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },

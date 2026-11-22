@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Hussar aircraft-like elongated ovoid fuselage, forward glass canopy under a long dorsal center-torso laser cannon, high rear fins, spindly landing-gear limbs. Reference: TRO 3039 Hussar original art. 2026 multi-view resculpt: widened forward fuselage reach and extended center dorsal laser, reduced dangling arm bulk and narrowed legs.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.",
+  "notes": "Hussar aircraft-like elongated ovoid fuselage, forward glass canopy under a long dorsal center-torso laser cannon, high rear fins, spindly landing-gear limbs. Reference: TRO 3039 Hussar original art. 2026 multi-view resculpt: widened forward fuselage reach and extended center dorsal laser, reduced dangling arm bulk and narrowed legs.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nLoad-bearing shoulder bosses: separately authored contiguous 3D frame collars, 5+ coarse-cell z-span, no isolated floating armor lips; broad arm bearings retained while surrounding profiles remain slim.",
   "parts": [
     {
       "name": "ct",
@@ -994,6 +994,21 @@
             ]
           ],
           "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -9,
+              25,
+              -3
+            ],
+            [
+              -4,
+              32,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ],
       "parent": "ct"
@@ -1123,6 +1138,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -12,
+              25,
+              -2
+            ],
+            [
+              -8,
+              30,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",

@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Bespo​​ke sculpt: 50 recessed LRM bores in paired 25-tube side-torso towers; narrow cockpit and independent limb pivots. IWM/TRO and current mini references; do not treat it as a generic humanoid.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nReference resculpt: replace unsupported large humanoid arms with two-stage short structural launcher braces.",
+  "notes": "Bespo​​ke sculpt: 50 recessed LRM bores in paired 25-tube side-torso towers; narrow cockpit and independent limb pivots. IWM/TRO and current mini references; do not treat it as a generic humanoid.\nSecond source pass: individually separate lower arm, shin, torso/launcher moving masses; require fully rooted and face-connected assembly.\nReference resculpt: replace unsupported large humanoid arms with two-stage short structural launcher braces.\nLoad-bearing shoulder bosses: separately authored contiguous 3D frame collars, 5+ coarse-cell z-span, no isolated floating armor lips; broad arm bearings retained while surrounding profiles remain slim.",
   "parts": [
     {
       "name": "ct",
@@ -458,6 +458,21 @@
             [
               -5,
               32,
+              3
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -10,
+              25,
+              -3
+            ],
+            [
+              -4,
+              31,
               3
             ]
           ],
@@ -982,6 +997,21 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -13,
+              24,
+              -2
+            ],
+            [
+              -9,
+              28,
+              2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "lt",
