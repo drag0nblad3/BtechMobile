@@ -23,6 +23,7 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 	PpcCapacitor.end_phase(state, emit)
 	BuildingDamage.end_phase(state, dice, emit)
 	Fire.end_phase(state, emit)
+	ArrowSmoke.apply_pending(state, emit)
 	RotaryAc.resolve_unjams(state, dice, emit)
 
 

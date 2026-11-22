@@ -30,6 +30,9 @@ static func describe(tile: MapTile, level: int) -> String:
 	if tile.fog > 0:
 		parts.append("%s fog: like %s woods for line of sight and to-hit (at most +2 with woods)" % [
 				"heavy" if tile.fog == 2 else "light", "heavy" if tile.fog == 2 else "light"])
+	if tile.smoke > 0:
+		parts.append("%s smoke from an Arrow IV: like %s woods for line of sight and to-hit, thinning each turn" % [
+				"heavy" if tile.smoke == 2 else "light", "heavy" if tile.smoke == 2 else "light"])
 	if tile.is_water():
 		parts.append("plus %d level%s down to the bottom" % [tile.depth, "" if tile.depth == 1 else "s"])
 		parts.append("running in needs a piloting roll")
@@ -101,6 +104,8 @@ static func building_event(s: GameState, d: Dictionary, level: int) -> String:
 			if level == ExplainLevel.FULL:
 				t += " Up here it sees and shoots from higher ground, but it can only leave by jumping or crossing to another roof, and a roof too weak for it may give way."
 			return t
+		"smoke", "smoke_thins":
+			return ArrowText.smoke(d, level)
 		"fire":
 			var t := "  The %s at %s catches fire!" % [bname, where]
 			if level == ExplainLevel.FULL:

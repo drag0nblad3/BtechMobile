@@ -1,0 +1,80 @@
+{
+ "id": "thunder_thr3l",
+ "name": "Thunder",
+ "model": "THR-3L",
+ "tonnage": 70,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "stealth",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 23,
+  "RT": 23,
+  "CT": 34,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "guardian_ecm",
+   "stealth*2",
+   "tsm*4"
+  ],
+  "RA": [
+   "arrow_iv~7",
+   "stealth*2"
+  ],
+  "LT": [
+   "streak_srm6",
+   "er_medium_laser",
+   "ammo:arrow_iv",
+   "ammo:arrow_iv:homing",
+   "ammo:streak_srm6",
+   "case",
+   "stealth*2"
+  ],
+  "RT": [
+   "stealth*2"
+  ],
+  "CT": [
+   "er_medium_laser",
+   "tsm"
+  ],
+  "HD": [
+   "tsm"
+  ],
+  "LL": [
+   "stealth*2"
+  ],
+  "RL": [
+   "stealth*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3216,
+  "megamek": "data/mekfiles/meks/3055U/Thunder THR-3L.mtf",
+  "published": "RS:J",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 1904
+ },
+ "bv": 1904,
+ "sprite": "thunder",
+ "role": "Missile boat: rains missiles from a distance. 2 ER Medium Lasers, Arrow IV, Streak SRM 6; walks 5, runs 8."
+}

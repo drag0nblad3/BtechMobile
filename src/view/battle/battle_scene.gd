@@ -354,7 +354,7 @@ func _on_event(e: GameEvent) -> void:
 			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
 		GameEvent.BUILDING:
-			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire"]:
+			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))

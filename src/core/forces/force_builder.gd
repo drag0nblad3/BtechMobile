@@ -48,20 +48,21 @@ func bv(side: int, extra: String = "") -> int:
 	var ids: Array = rosters[side] + ([extra] if extra != "" else [])
 	var defs: Array = ids.map(func(id: String) -> UnitDef: return units.get_def(id))
 	var net := C3.form(defs)
+	var homing := HomingBv.launchers(defs)
 	var n := 0
 	for i in defs.size():
-		var b := unit_bv(side, defs[i])
+		var b := unit_bv(side, defs[i], HomingBv.surcharge(defs[i], homing))
 		n += b + (roundi(b * C3.bv_percent(net.size()) / 100.0) if net.has(i) else 0)
 	return n  # C3 networks raise each member's BV (p. 222)
 
 
 ## A design's BV with this side's MechWarrior skill (book p. 222).
-func unit_bv(side: int, def: UnitDef) -> int:
+func unit_bv(side: int, def: UnitDef, extra := 0) -> int:
 	if def.asset != null:
 		return def.bv  # an Asset's Skill is on its card, not the side's pilots
 	if def.vehicle != null or def.battle_armor != null:
 		return BvSkill.adjusted(def.bv, skills[side].x, skills[side].y)  # the sheet BV, crew skill
-	return BvSkill.adjusted(BattleValue.of(def), skills[side].x, skills[side].y)
+	return BvSkill.adjusted(BattleValue.of(def) + extra, skills[side].x, skills[side].y)  # extra: HomingBv
 
 
 ## Switches a side to the next skill preset. Returns false (and keeps the

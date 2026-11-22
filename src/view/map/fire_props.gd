@@ -22,8 +22,9 @@ static func build(map: BattleMap) -> Node3D:
 	var fog := _fog_material()
 	var bases: Array[Vector3] = []
 	for t: MapTile in map.tiles.values():
-		if t.fog > 0 and not map.windy:  # fog banks (Obscurant), two levels tall
-			root.add_child(_block(smoke_mesh, fog, HexLayout.tile_top(t), Obscurant.HEIGHT * HexLayout.LEVEL_HEIGHT * (0.6 + 0.4 * t.fog)))
+		var cloud := Obscurant.cloud(t)
+		if cloud > 0 and not map.windy:  # fog banks and Arrow IV smoke (Obscurant), two levels tall
+			root.add_child(_block(smoke_mesh, fog, HexLayout.tile_top(t), Obscurant.HEIGHT * HexLayout.LEVEL_HEIGHT * (0.6 + 0.4 * cloud)))
 		if not t.on_fire:
 			continue
 		var base := HexLayout.tile_top(t)

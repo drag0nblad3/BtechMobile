@@ -1,0 +1,81 @@
+{
+ "id": "urbanmech_umaiv",
+ "name": "UrbanMech",
+ "model": "UM-AIV",
+ "tonnage": 30,
+ "walk_mp": 2,
+ "jump_mp": 2,
+ "heat_sinks": 10,
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "cockpit_type": "small",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 8,
+  "RT": 8,
+  "CT": 11,
+  "HD": 9,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 8
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "endo_steel*7"
+  ],
+  "RA": [
+   "arrow_iv~5"
+  ],
+  "LT": [
+   "heat_sink*2",
+   "jump_jet",
+   "ammo:arrow_iv",
+   "ammo:arrow_iv:homing",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "heat_sink",
+   "endo_steel"
+  ],
+  "LL": [
+   "heat_sink",
+   "endo_steel"
+  ],
+  "RL": [
+   "heat_sink*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3353,
+  "megamek": "data/mekfiles/meks/3085u/ONN/UrbanMech UM-AIV.mtf",
+  "published": "RS:3085u-ONN",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 603
+ },
+ "bv": 603,
+ "sprite": "urbanmech",
+ "role": "Missile boat: rains missiles from a distance. ER Medium Laser, Arrow IV; walks 2, runs 3, jumps 2."
+}
