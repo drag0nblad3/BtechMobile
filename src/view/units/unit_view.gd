@@ -20,8 +20,11 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	map = battle_map
 	name = "Unit_%d" % u.id
 	add_to_group(GROUP)
-	var sprite := SpriteMech.try_build(u.def)
-	set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
+	if u.def.asset != null:
+		set_model(PlaceholderAsset.build(u.def, u.side))
+	else:
+		var sprite := SpriteMech.try_build(u.def)
+		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
 	snap_to_state()
 
 
@@ -43,8 +46,10 @@ func snap_to_state() -> void:
 func show_condition() -> void:
 	if _model == null:
 		return
-	_model.rotation.z = PI / 2.4 if unit.prone or unit.destroyed else 0.0
-	_model.position.y = 0.25 if unit.prone or unit.destroyed else 0.0
+	visible = unit.asset == null or unit.asset.carried_by < 0  # riders ride inside
+	var down := unit.prone or (unit.destroyed and unit.asset == null)
+	_model.rotation.z = PI / 2.4 if down else 0.0
+	_model.position.y = 0.25 if down else 0.0
 	var tint := Color(0.3, 0.3, 0.3) if unit.destroyed else Color.WHITE
 	_tint(_model, tint)
 
@@ -102,7 +107,9 @@ func _hex_pos(c: Vector2i) -> Vector3:
 	if t == null:  # off the field (waiting to combat drop)
 		return Vector3(0, -100, 0)
 	var p := HexLayout.tile_top(t)
-	if unit.on_bridge and t.bridge != null:
+	if VtolFlight.is_vtol(unit):  # flies over the hex's woods or buildings
+		p.y = HexLayout.level_y(VtolFlight.min_level(t) - 1)
+	elif unit.on_bridge and t.bridge != null:
 		p.y = HexLayout.level_y(t.bridge.level) + VxBuildingGen.PITCH  # on the deck slab
 	elif unit.on_roof and Roofs.has_roof(t):
 		p.y += t.building.height * HexLayout.LEVEL_HEIGHT

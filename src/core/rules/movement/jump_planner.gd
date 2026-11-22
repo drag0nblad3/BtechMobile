@@ -35,7 +35,7 @@ static func plan(state: GameState, unit: Unit) -> MoveOptions:
 					continue
 				seen[n] = true
 				next.append(n)
-				var ok := state.unit_at(n) == null
+				var ok := AssetStacking.can_end(state, unit, n)
 				for f in 6:
 					var k := MoveOptions.key(n, f)
 					opts.cost[k] = d

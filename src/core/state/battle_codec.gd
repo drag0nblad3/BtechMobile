@@ -35,6 +35,12 @@ static func pack(v: Variant) -> Variant:
 			if v is UnitDef:
 				return {"$": "unit_def", "id": v.id}
 			if v is WeaponDef:
+				# Asset weapons are synthesized from a card, not in the weapon catalog.
+				if String(v.id).begins_with("asset_"):
+					var inline := {}
+					for n: String in BattleFields.names(v):
+						inline[n] = pack(v.get(n))
+					return {"$": "object", "class": "WeaponDef", "properties": inline}
 				return {"$": "weapon_def", "id": v.id}
 			if v is TerrainType:
 				return {"$": "terrain", "id": v.id}
@@ -98,6 +104,8 @@ static func unpack(v: Variant, units: UnitDb, terrain: TerrainDb) -> Variant:
 				obj.conditions = unpack(props["conditions"], units, terrain)
 				obj.map = unpack(props["map"], units, terrain)
 			for n: String in BattleFields.names(obj):
+				if not props.has(n):  # forward-compatible optional fields
+					continue
 				if obj is GameState and n in ["map", "conditions"]:
 					continue
 				var value: Variant = unpack(props[n], units, terrain)

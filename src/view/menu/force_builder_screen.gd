@@ -135,8 +135,10 @@ func _on_add(side: int, def_id: String) -> void:
 func _refresh() -> void:
 	for side in 2:
 		UiKit.clear(_rosters[side])
-		_totals[side].text = "%s of %d/%d  ·  %d / %d BV  ·  %d tons  ·  %s" % [builder.formation(side),
-				builder.rosters[side].size(), builder.max_units(side), builder.bv(side), builder.budget, builder.tons(side), BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
+		var support := builder.asset_ids(side).size()
+		_totals[side].text = "%s of %d/%d%s  ·  %d / %d BV  ·  %d tons  ·  %s" % [builder.formation(side),
+				builder.mech_ids(side).size(), builder.max_units(side), (" + %d support" % support) if support > 0 else "",
+				builder.bv(side), builder.budget, builder.tons(side), BvSkill.preset_name(builder.skills[side].x, builder.skills[side].y)]
 		var ids: Array = builder.rosters[side]
 		for i in ids.size():
 			UiKit.button(_rosters[side], "✕ " + db.get_def(ids[i]).display_name(),

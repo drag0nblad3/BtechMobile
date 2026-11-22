@@ -111,6 +111,19 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
 
+## `data/assets/<id>.json`
+A Battlefield Support Asset card (book pp. 140-141). Values come only from official cards.
+```json
+{"id": "savior_repair_vehicle", "name": "Savior Repair Vehicle", "tech_base": "inner_sphere",
+ "asset": {"type": "vehicle", "motive": "t", "mp": 4, "tmm": 1, "range": [1, 2, 3],
+   "skill": 6, "skill_improved": 5, "damage": 3, "groupings": 1, "check": 7, "threshold": 5,
+   "bsp": 13, "bsp_improved": 15, "specials": {"APC": 2, "MFB": 1}},
+ "source": {"card": "Core Rulebook p. 141"}}
+```
+`type`: vehicle, infantry, battle_armor, vtol, emplacement. `motive`: f h j t v w ("" immobile).
+`specials`: card codes (APC, AI, NOTUR, BRA, RCA, RFA, FR, SWARM, ...) with their number (1 if none).
+BV is 20 x `bsp`. Rule-test cards live in `tests/fixtures/assets/` (ids `test_*`).
+
 ## `data/scenarios/<id>.json`
 ```json
 {"map": "test_valley", "units": [{"def": "atlas_as7d", "side": 0, "hex": "0616", "facing": 0}]}

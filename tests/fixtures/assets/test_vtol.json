@@ -1,0 +1,1 @@
+{"id": "test_vtol", "name": "Test VTOL", "asset": {"type": "vtol", "motive": "v", "mp": 8, "tmm": 3, "range": [3, 6, 9], "skill": 5, "damage": 2, "groupings": 1, "check": 6, "threshold": 4, "bsp": 12, "specials": {}}}

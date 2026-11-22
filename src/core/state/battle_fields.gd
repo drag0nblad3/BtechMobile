@@ -12,7 +12,7 @@ static func names(o: Object) -> Array:
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
-		return ["id", "def", "side", "coord", "facing", "pilot", "armor",
+		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "armor",
 				"rear_armor", "structure", "weapons", "ammo", "slots", "heat",
 				"engine_hits", "gyro_hits", "sensor_hits", "heat_sinks_lost",
 				"sinks_off", "sinks_off_request", "melee_lost", "club",
@@ -25,6 +25,22 @@ static func names(o: Object) -> Array:
 				"sc_used", "sc_active", "sc_failed", "torso_twist",
 				"arms_flipped", "landed", "tmm_zero", "heat_generated",
 				"outside_heat", "damage_this_phase", "psr_pending"]
+	if o is AssetState:
+		return ["card", "improved", "check", "damage", "ai_hit", "flushed",
+				"last_attacker", "auto_fail", "deployed_turn", "indirect_turn",
+				"carried_by", "altitude"]
+	if o is AssetCard:
+		return ["kind", "motive", "mp", "tmm", "short_range", "medium_range",
+				"long_range", "skill", "skill_improved", "damage", "groupings",
+				"check", "threshold", "bsp", "bsp_improved", "specials", "mechanized"]
+	if o is WeaponDef:
+		return ["id", "name", "type", "heat", "damage", "damage_by_range",
+				"missiles", "group", "min_range", "short_range", "medium_range",
+				"long_range", "slots", "tons", "ammo_per_ton", "bv", "ammo_bv",
+				"heat_damage", "heat_points", "indirect", "to_hit_mod", "explodes",
+				"ammo_explodes", "rapid", "lbx", "rotary", "beacon", "ammo_damage",
+				"streak", "pulse", "ams", "tech", "artemis_builtin", "munitions",
+				"label", "cluster_mod", "one_shot", "ai"]
 	if o is BattleMap:
 		return ["name", "width", "height", "tiles", "colors", "rubble", "ground",
 				"no_fire", "windy"]
@@ -85,8 +101,13 @@ static func create(tag: String, p: Dictionary, units: UnitDb, terrain: TerrainDb
 		"Building": return Building.new(terrain.buildings.get(String(p["type"]["id"])))
 		"Bridge": return Bridge.new(terrain.buildings.get(String(p["type"]["id"])), 0, [])
 		"Pilot": return Pilot.new()
+		"AssetCard": return AssetCard.new()
+		"AssetState": return AssetState.new(AssetCard.new())
+		"WeaponDef": return WeaponDef.new()
 		"MountedWeapon":
-			return MountedWeapon.new(units.weapons.get_def(String(p["def"]["id"])), 0, false)
+			var saved_def: Dictionary = p["def"]
+			var w: WeaponDef = units.weapons.get_def(String(saved_def["id"])) 					if String(saved_def.get("$", "")) == "weapon_def" else WeaponDef.new()
+			return MountedWeapon.new(w, 0, false)
 		"AmmoBin":
 			return AmmoBin.new(units.weapons.get_def(String(p["weapon"]["id"])), 0)
 		"CritSlot": return CritSlot.new(0, "")

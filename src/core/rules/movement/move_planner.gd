@@ -8,6 +8,8 @@ extends RefCounted
 
 
 static func plan(state: GameState, unit: Unit, mode: int) -> MoveOptions:
+	if unit.asset != null:
+		return AssetMove.plan(state, unit, mode)
 	if mode == MoveMode.Kind.JUMP:
 		return JumpPlanner.plan(state, unit)
 	if unit.prone and not Psr.can_stand(unit):
@@ -124,16 +126,14 @@ static func _successors(state: GameState, unit: Unit, k: Vector3i, mode: int) ->
 	return out
 
 
-## Units may move through friendly units but not enemy units.
+## Units may move through friendly units but not enemy units (AssetStacking).
 static func can_pass(state: GameState, unit: Unit, c: Vector2i) -> bool:
 	var tile := state.map.get_tile(c)
 	if tile != null and tile.building != null and not tile.building.admits(unit.def.tonnage):
 		return false  # too light to force its way into this class (p. 132)
-	var other := state.unit_at(c)
-	return other == null or other == unit or other.side == unit.side
+	return AssetStacking.can_pass(state, unit, c)
 
 
-## Only one 'Mech may end its movement in a hex.
+## Only one 'Mech may end its movement in a hex (infantry Assets can join it).
 static func _can_end_in(state: GameState, unit: Unit, c: Vector2i) -> bool:
-	var other := state.unit_at(c)
-	return other == null or other == unit
+	return AssetStacking.can_end(state, unit, c)

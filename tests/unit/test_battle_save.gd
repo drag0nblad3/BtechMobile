@@ -119,3 +119,39 @@ func test_compressed_payload_round_trip() -> void:
 	var restored := BattleSave.restore(disk, UnitDb.load_dir(), terrain())
 	check(not restored.is_empty(), "compressed save should decode")
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+
+
+
+func test_asset_round_trip_keeps_card_state_and_generated_weapon() -> void:
+	var c := _battle()
+	var db := UnitDb.load_dir()
+	var def := db.get_def("savior_repair_vehicle")
+	check(def != null, "sample Battlefield Support Asset must be present")
+	if def == null:
+		return
+	var vehicle := Unit.new(99, def, 0, hex_at(1, 0), 0)
+	c.state.add_unit(vehicle)
+	vehicle.asset.improved = true
+	vehicle.asset.check = 5
+	vehicle.asset.damage = 3
+	vehicle.asset.carried_by = 2
+	vehicle.asset.altitude = 1
+	vehicle.weapons[0].fired = true
+	var payload := BattleSave.capture(c, [], BotSkill.Level.REGULAR, -1, [])
+	var restored := BattleSave.restore(payload, db, terrain())
+	check(not restored.is_empty(), "asset battle should restore")
+	if restored.is_empty():
+		return
+	var v: Unit = restored["controller"].state.unit_by_id(99)
+	check(v != null and v.asset != null, "asset card restored")
+	if v == null or v.asset == null:
+		return
+	check_eq(v.asset.check, 5)
+	check_eq(v.asset.damage, 3)
+	check_eq(v.asset.carried_by, 2)
+	check_eq(v.asset.altitude, 1)
+	check_eq(v.asset.card.short_range, def.asset.short_range)
+	check_eq(v.asset.card.special("APC"), 2)
+	check_eq(v.weapons[0].def.id, "asset_attack")
+	check_eq(v.weapons[0].def.damage, 3)
+	check(v.weapons[0].fired, "generated asset weapon firing state persisted")

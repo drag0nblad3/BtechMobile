@@ -1,0 +1,1 @@
+{"id": "test_lrm_carrier", "name": "Test LRM Carrier", "asset": {"type": "vehicle", "motive": "t", "mp": 3, "tmm": 1, "range": [3, 6, 9], "skill": 5, "damage": 2, "groupings": 1, "check": 6, "threshold": 4, "bsp": 12, "specials": {"IF": 2}}}

@@ -174,6 +174,9 @@ func _build_views(state: GameState) -> void:
 	off_field.hud = hud
 	off_field.bots = bots
 	add_child(off_field)
+	var transport := TransportInput.new()
+	add_child(transport)
+	transport.setup(controller, movement, hud)
 
 
 func _wire() -> void:
@@ -303,7 +306,7 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
-		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN:
+		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:
