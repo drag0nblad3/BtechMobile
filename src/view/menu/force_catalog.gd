@@ -12,6 +12,7 @@ var category := 0
 var active_side := 0
 var query := ""
 var verified_only := false
+var _context_key := ""
 var _on_add: Callable
 var _config := {}
 var _shown := PAGE_SIZE
@@ -142,11 +143,15 @@ func _draw() -> void:
 				_draw())
 		_cards.append(card)
 	_more.visible = count < matches.size()
+	_context_key = "%d:%s" % [builder.era_year, builder.factions[active_side]]
 	refresh()
 
 
 func refresh() -> void:
 	if _list == null:
+		return
+	if verified_only and _context_key != ("%d:%s" % [builder.era_year, builder.factions[active_side]]):
+		rebuild()
 		return
 	for card: Dictionary in _cards:
 		var def: UnitDef = card["def"]
