@@ -32,20 +32,13 @@ func test_heavy_gauss_damage_by_range() -> void:
 	check_eq(weapons().get_def("light_gauss_rifle").long_range, 25)
 
 
-func test_heavy_gauss_recoil_roll_after_moving() -> void:
+func test_heavy_gauss_has_no_recoil_roll() -> void:
 	var a := _unit({"RT": ["heavy_gauss_rifle"], "LT": ["ammo:heavy_gauss_rifle"]}, 1, 0, Vector2i.ZERO, 2, 35)
 	a.move_mode = MoveMode.Kind.WALK
 	var dice := LoadedDice.new()
 	dice.queue_2d6(2)  # miss
 	_shoot(a, 5, dice)
-	check_eq(a.psr_pending.size(), 1)
-	check_eq(int(a.psr_pending[0]["mod"]), 2, "light 'Mech +2")
-	var b := _unit({"RT": ["heavy_gauss_rifle"], "LT": ["ammo:heavy_gauss_rifle"]}, 3, 0, Vector2i.ZERO, 2, 85)
-	var d2 := LoadedDice.new()
-	d2.queue_2d6(2)
-	_shoot(b, 5, d2)
-	check(b.psr_pending.is_empty(), "standing still: no roll")
-
+	check(a.psr_pending.is_empty(), "the book gives heavy Gauss no special firing rule (p. 184)")
 
 func test_hag_cluster_range_modifier() -> void:
 	var w := weapons().get_def("c_hag20")

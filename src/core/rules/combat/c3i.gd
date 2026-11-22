@@ -4,8 +4,8 @@ extends RefCounted
 ## computers share one network and its range bracket (C3.improve). A
 ## member's network is down while fewer than two members work; hostile ECM
 ## around a member degrades its link like standard C3.
-## TODO(rules): from MegaMek (2.5 t / 2 slots each), not in the Core
-## Rulebook; a side with both C3 and C3i only networks its C3.
+## Book p. 199. TODO(rules): 2.5 t / 2 slots each is MegaMek construction
+## data; a side with both C3 and C3i only networks its C3.
 
 const TONS := 2.5
 const SLOTS := 2
