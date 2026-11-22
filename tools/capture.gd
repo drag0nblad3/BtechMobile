@@ -29,6 +29,12 @@ func _initialize() -> void:
 				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
 		BattleLaunch.bot_sides = []
 	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode in ["vfx", "jump"]:  # two lances on that map
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
+		for id in ["griffin_grf1n", "warhammer_whm6r"]:
+			fb.add(0, id)
+		for id in ["marauder_mad3r", "wasp_wsp1a"]:
+			fb.add(1, id)
+		BattleLaunch.pending = fb.build(_capture_map())
 	if _mode.begins_with("weather="):
 		var preset := _mode.substr(8)
 		var cfg := {}
@@ -48,12 +54,6 @@ func _initialize() -> void:
 		BattleLaunch.pending = fb.build(MapLoader.load_file(
 				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
 		BattleLaunch.bot_sides = []
-		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
-		for id in ["griffin_grf1n", "warhammer_whm6r"]:
-			fb.add(0, id)
-		for id in ["marauder_mad3r", "wasp_wsp1a"]:
-			fb.add(1, id)
-		BattleLaunch.pending = fb.build(_capture_map())
 	if _mode in ["vfx", "jump"]:
 		BattleLaunch.bot_sides = []  # cinematic frame, no bot actions
 	if _mode == "tutorial":
