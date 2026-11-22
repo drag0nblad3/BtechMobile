@@ -8,6 +8,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
+var audio := BattleAudio.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
 var cinematic: CinematicDirector
@@ -108,6 +109,7 @@ func _toggle_pause() -> void:
 	if opening:
 		hud.pause_menu.set_message("The battle is stopped until you resume.")
 	get_tree().paused = opening
+	audio.set_paused(opening)
 
 
 func _exit_to_menu() -> void:
@@ -155,6 +157,8 @@ func _build_views(state: GameState) -> void:
 	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
 	fx.setup(state, units_layer, map_view)
 	add_child(fx)
+	add_child(audio)
+	audio.setup(state)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -173,6 +177,7 @@ func _build_views(state: GameState) -> void:
 	add_child(gestures)
 	hud = BattleHud.new()
 	add_child(hud)
+	audio.attach_ui(hud)
 	movement = MovementInput.new()
 	movement.controller = controller
 	movement.highlighter = highlighter
@@ -373,6 +378,7 @@ func _on_event(e: GameEvent) -> void:
 		_autosave.call_deferred()
 		BattleSave.save_replay.call_deferred(recorder.frames)
 	fx.play(e)
+	audio.on_event(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:
