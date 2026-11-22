@@ -28,6 +28,26 @@ func test_new_shape_studies_are_complete_and_connected() -> void:
                         name + "/" + p["name"] + " has no 2x2 backed joint")
 
 
+
+func test_new_high_detail_models_preserve_connected_masses() -> void:
+    for name: String in MODELS:
+        var path := "res://data/voxels/%s.json" % name
+        var m := VxModel.load_file(path)
+        check(m.errors.is_empty(), name + " high detail: " + str(m.errors))
+        check_eq(m.detail, 2, name + " should be a 2x detailed source sculpt")
+        check(m.cell_count() > 30000, name + " detail count " + str(m.cell_count()))
+        for p: Dictionary in m.parts:
+            var cells: Dictionary = p["cells"]
+            check_eq(_groups(cells), 1, name + " high/" + p["name"] + " islands")
+            var parent_name: String = p.get("parent", "")
+            if not parent_name.is_empty():
+                var parent: Dictionary = m.part(parent_name)
+                check(not parent.is_empty(), name + " high/" + p["name"] + " missing parent")
+                if not parent.is_empty():
+                    check(_solid_joint(cells, parent["cells"]),
+                            name + " high/" + p["name"] + " weak joint")
+
+
 func test_muzzles_are_at_real_openings() -> void:
     for name: String in MODELS:
         var m := VxModel.load_file("res://data/voxels/%s_shape.json" % name)
