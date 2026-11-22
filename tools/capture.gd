@@ -18,13 +18,15 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
-	if _mode.begins_with("map=") or _mode.begins_with("gen="):  # two lances on that map
+	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode == "vfx":  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
 			fb.add(0, id)
 		for id in ["marauder_mad3r", "wasp_wsp1a"]:
 			fb.add(1, id)
 		BattleLaunch.pending = fb.build(_capture_map())
+	if _mode == "vfx":
+		BattleLaunch.bot_sides = []  # cinematic frame, no bot actions
 	if _mode == "tutorial":
 		var tut := "res://data/scenarios/tutorial.json"
 		BattleLaunch.pending = ScenarioLoader.load_file(tut, TerrainDb.load_file(), UnitDb.load_dir())
@@ -56,6 +58,18 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
+	if _frames == 8 and _mode == "vfx":
+		_stage_battle_visuals()
+	if _frames == 39 and _mode == "vfx":
+		# Visual review only: place a PPC across the visible battlefield.
+		# Does not affect the actual combat resolution or either roster.
+		var all_units: Array = _scene.controller.state.units
+		if all_units.size() >= 2:
+			var muzzle: Vector3 = _scene.units_layer.view_of(all_units[0]).global_position + Vector3(0, 0.65, 0)
+			var target: Vector3 = _scene.units_layer.view_of(all_units[all_units.size() - 1]).global_position + Vector3(0, 0.55, 0)
+			ShotFx.spawn(_scene.fx, muzzle, target, "er_ppc", true)
+			VxBlast.spawn(_scene.fx, target, "impact")
+		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
 	if _frames == 40:
 		root.get_viewport().get_texture().get_image().save_png(_out)
 		print("saved ", _out)
@@ -105,8 +119,38 @@ func _target_nearest() -> void:
 
 func _capture_map() -> BattleMap:
 	var arg := _mode.substr(4)
-	if _mode.begins_with("map="):
-		return MapLoader.load_file("res://data/maps/%s.json" % arg, TerrainDb.load_file())
+	if _mode.begins_with("map=") or _mode == "vfx":
+		var id := "city_outskirts" if _mode == "vfx" else arg
+		return MapLoader.load_file("res://data/maps/%s.json" % id, TerrainDb.load_file())
 	var parts := arg.split(":")
 	var seed_value := int(parts[1]) if parts.size() > 1 else 1
 	return MapGenerator.build(MapTheme.find(parts[0]), Vector2i(2, 1), seed_value, TerrainDb.load_file())
+
+
+## Screenshot-only staging: show real loaded model views in the frame.
+## This script is not used by gameplay and does not change deployment rules.
+func _stage_battle_visuals() -> void:
+	var state: GameState = _scene.controller.state
+	if state.units.size() < 2:
+		return
+	var box := HexLayout.map_bounds(state.map)
+	var center := box.get_center()
+	var targets := [center + Vector3(-3.5, 0, 0), center + Vector3(3.5, 0, 0)]
+	var staged := [state.units[0], state.units[state.units.size() - 1]]
+	for i in staged.size():
+		var unit: Unit = staged[i]
+		var chosen := Hex.INVALID
+		var nearest := INF
+		for coord: Vector2i in state.map.coords():
+			var tile: MapTile = state.map.get_tile(coord)
+			if tile.building != null or tile.depth > 0:
+				continue
+			if state.unit_at(coord) != null:
+				continue
+			var distance := HexLayout.to_world(coord).distance_to(targets[i])
+			if distance < nearest:
+				nearest = distance
+				chosen = coord
+		if chosen != Hex.INVALID:
+			unit.coord = chosen
+			_scene.units_layer.refresh_unit(unit.id)

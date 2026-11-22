@@ -57,7 +57,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 		var top := HexLayout.tile_top(t)
 		var height := top.y - HexLayout.BASE_Y
 		mm.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3(1, height, 1)), top))
-		mm.set_instance_color(i, _level_tint(t.floor_level(), range_))
+		mm.set_instance_color(i, _level_tint(t.floor_level(), range_, t.coord))
 	var mat := ShaderMaterial.new()
 	mat.shader = SHADER
 	var own: Variant = map.colors.get(terrain.id)
@@ -73,9 +73,13 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 
 
 ## Higher ground is slightly brighter so levels read at a glance.
-func _level_tint(level: int, range_: Vector2i) -> Color:
+func _level_tint(level: int, range_: Vector2i, coord: Vector2i = Vector2i.ZERO) -> Color:
 	var span := maxf(1.0, range_.y - range_.x)
-	var v := 0.7 + 0.3 * (level - range_.x) / span
+	var elevation := 0.78 + 0.22 * (level - range_.x) / span
+	# Deterministic microvariation: adjacent tiles stay visually separate,
+	# but rebuilding the map never makes the soil colors jump.
+	var grain := float(posmod(coord.x * 73 + coord.y * 139, 23)) / 22.0
+	var v := elevation * lerpf(0.965, 1.035, grain)
 	return Color(v, v, v)
 
 
@@ -85,7 +89,8 @@ func _ground_plane() -> MeshInstance3D:
 	var plane := PlaneMesh.new()
 	plane.size = Vector2(box.size.x, box.size.z)
 	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.08, 0.08, 0.07)
+	mat.albedo_color = Color("#101b22")
+	mat.roughness = 1.0
 	plane.material = mat
 	var inst := MeshInstance3D.new()
 	inst.mesh = plane

@@ -27,6 +27,20 @@ static func prism(radius: float) -> ArrayMesh:
 	return st.commit()
 
 
+## Thin border for move/attack selection. Covers far less terrain than a
+## filled overlay and shares its colors and transforms.
+static func ring(radius: float, width: float) -> ArrayMesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var outside := corners(radius)
+	var inside := corners(maxf(0.01, radius - width))
+	for i in 6:
+		var next := (i + 1) % 6
+		_tri(st, Vector3.UP, outside[i], outside[next], inside[next])
+		_tri(st, Vector3.UP, outside[i], inside[next], inside[i])
+	return st.commit()
+
+
 ## Flat hexagon at y=0 facing up (water surface, highlights).
 static func cap(radius: float) -> ArrayMesh:
 	var st := SurfaceTool.new()
