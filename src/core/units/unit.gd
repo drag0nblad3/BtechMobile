@@ -160,6 +160,10 @@ func _init_ba() -> void:
 		weapons.append(mw)
 		if mw.def.uses_ammo():
 			ammo.append(AmmoBin.new(mw.def, Location.CT))
+	if def.battle_armor.claw:
+		var leg := MountedWeapon.new(BaLegAttack.weapon(), Location.CT, false)
+		leg.on_squad = true
+		weapons.append(leg)
 
 
 ## A combat vehicle: armor and structure per VehicleLoc, no critical slots;
