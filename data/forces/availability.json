@@ -1,0 +1,360 @@
+{
+  "schema": 1,
+  "source": "https://masterunitlist.battletech.com/",
+  "note": "Only verified exact-variant faction-era cells are recorded. Missing data is unverified, not unavailable.",
+  "units": {
+    "atlas_as7d": {
+      "intro_year": 2755,
+      "source": "https://masterunitlist.battletech.com/units/atlas-as7-d",
+      "factions": {
+        "federated_suns": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "draconis_combine": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "capellan_confederation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "free_worlds_league": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "taurian_concordat": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_wolf": [
+          "sw_early"
+        ]
+      }
+    },
+    "locust_lct1v": {
+      "intro_year": 2499,
+      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
+      "factions": {
+        "federated_suns": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "draconis_combine": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_worlds_league": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "lyran_commonwealth": [
+          "age_of_war",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "taurian_concordat": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "jenner_jr7d": {
+      "intro_year": 2785,
+      "source": "https://masterunitlist.battletech.com/units/jenner-jr7-d",
+      "factions": {
+        "draconis_combine": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "federated_suns": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "free_worlds_league": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "capellan_confederation": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "comstar": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "timber_wolf_prime": {
+      "intro_year": 2945,
+      "source": "https://masterunitlist.battletech.com/units/mad-cat-timber-wolf-prime",
+      "factions": {
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "clan_wolf_in_exile": [
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "wolf_empire": [
+          "ilclan"
+        ],
+        "mercenary": [
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ]
+      }
+    },
+    "atlas_as7k": {
+      "intro_year": 3049,
+      "source": "https://masterunitlist.battletech.com/units/atlas-as7-d",
+      "factions": {}
+    },
+    "atlas_c_2": {
+      "intro_year": 2840,
+      "source": "https://masterunitlist.battletech.com/units/atlas-as7-d",
+      "factions": {}
+    },
+    "jenner_jr7k": {
+      "intro_year": 3047,
+      "source": "https://masterunitlist.battletech.com/units/jenner-jr7-d",
+      "factions": {}
+    },
+    "locust_lct3d": {
+      "intro_year": 3049,
+      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
+      "factions": {}
+    },
+    "locust_lct3s": {
+      "intro_year": 3049,
+      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
+      "factions": {}
+    },
+    "timber_wolf_a": {
+      "intro_year": 2945,
+      "source": "https://masterunitlist.battletech.com/units/mad-cat-timber-wolf-prime",
+      "factions": {}
+    },
+    "timber_wolf_b": {
+      "intro_year": 2945,
+      "source": "https://masterunitlist.battletech.com/units/mad-cat-timber-wolf-prime",
+      "factions": {}
+    }
+  }
+}
