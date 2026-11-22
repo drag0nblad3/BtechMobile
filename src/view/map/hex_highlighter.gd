@@ -3,8 +3,8 @@ extends MultiMeshInstance3D
 ## Draws translucent colored hexes over the map (reachable area, path, etc).
 
 const REACH_WALK := Color(0.25, 0.75, 1.0, 0.35)
-const PATH := Color(1.0, 1.0, 1.0, 0.55)
-const SELECTED := Color(1.0, 0.85, 0.2, 0.6)
+const PATH := Color(1.0, 1.0, 1.0, 0.43)
+const SELECTED := Color(1.0, 0.85, 0.2, 0.31)
 
 var map: BattleMap
 

@@ -165,6 +165,7 @@ func _ready() -> void:
 	_button(move_bar, "Turn ▶", turn_right)
 	more_button = MenuButton.new()
 	more_button.text = "Actions"
+	more_button.flat = false
 	more_button.tooltip_text = "Prone, charge, equipment and mission actions"
 	more_button.custom_minimum_size = BUTTON_SIZE
 	more_button.add_theme_font_size_override("font_size", FONT_SIZE)

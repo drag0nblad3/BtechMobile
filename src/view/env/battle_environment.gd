@@ -23,7 +23,7 @@ static func build(conditions: Conditions = null) -> Node3D:
 	env.background_mode = Environment.BG_SKY
 	env.sky = sky
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.ambient_light_energy = 0.37 if night else (0.5 if rain or snow else 0.55)
+	env.ambient_light_energy = 0.34 if night else (0.44 if rain or snow else 0.48)
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	# Distance haze adds depth without costly volumetric fog or a second light.
 	if hazy or rain or snow:
@@ -38,7 +38,7 @@ static func build(conditions: Conditions = null) -> Node3D:
 	sun.rotation_degrees = Vector3(-34, -43, 0) if night else Vector3(-52, -38, 0)
 	sun.light_color = Color("#a9c8ea") if night else (
 		Color("#dce7f5") if rain or snow else Color("#fff0d5"))
-	sun.light_energy = 0.30 if night else (0.72 if rain or snow else 1.05)
+	sun.light_energy = 0.30 if night else (0.68 if rain or snow else 0.94)
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 65.0
 	root.add_child(sun)

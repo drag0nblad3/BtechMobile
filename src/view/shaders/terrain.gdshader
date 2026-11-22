@@ -93,7 +93,10 @@ void fragment() {
 				abs(tile_local.x - tile_local.y / 1.7320508)) / hex_radius);
 	float rim = smoothstep(0.88, 0.99, edge);
 	top *= 1.0 - 0.17 * rim;
-	ALBEDO = mix(side, top, is_top) * tint;
+	vec3 pigment = mix(side, top, is_top) * tint;
+	float luminosity = dot(pigment, vec3(0.2126, 0.7152, 0.0722));
+	// A gentler military/terrain palette reads as material, not neon paint.
+	ALBEDO = mix(vec3(luminosity), pigment, 0.82) * 0.91;
 	// Distant cliffs retain a subtle geological band instead of becoming
 	// a monochrome vertical wall.
 	ROUGHNESS = mix(1.0, 0.91, is_top);

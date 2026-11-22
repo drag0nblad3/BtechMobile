@@ -18,9 +18,9 @@ static func refresh(ai: AttackInput) -> void:
 	ai.hud.flip_button.disabled = not ai.attacker.arms_flipped and ArmFlip.problem(ai.attacker) != ""
 	var hexes := {ai.attacker.coord: HexHighlighter.SELECTED}
 	if ai.target:
-		hexes[ai.target.coord] = Color(1, 0.2, 0.2, 0.55)
+		hexes[ai.target.coord] = Color(1, 0.2, 0.2, 0.32)
 	if ai.target_hex != Hex.INVALID:
-		hexes[ai.target_hex] = Color(1, 0.6, 0.2, 0.55)
+		hexes[ai.target_hex] = Color(1, 0.6, 0.2, 0.34)
 	ai.highlighter.show_hexes(hexes)
 	var twist: String = ["  (torso twisted left)", "", "  (torso twisted right)"][ai.attacker.torso_twist + 1]
 	if ai.attacker.arms_flipped:

@@ -61,3 +61,11 @@ Run CI including `test_battle_visuals.gd`, the default and city UI smoke,
 plus a single 1280x720 software-rendered battlefield preview on this PR.
 Check final contrast and readability on a real Android landscape screen,
 particularly text in dense terrain and through fog; there is **no** APK build.
+
+### Single-frame preview refinements
+
+Inspected the 1280×720 gameplay capture: reduced daylight energy and terrain
+saturation to calm bright grass, lowered the selection/path fill opacity so
+unit rings read better, narrowed/collapsed combat log dimensions to reveal
+more terrain, and made the Actions MenuButton explicitly non-flat. The final
+preview is refreshed by PR CI after these adjustments.
