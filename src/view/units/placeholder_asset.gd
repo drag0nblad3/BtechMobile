@@ -26,6 +26,15 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	return root
 
 
+## A battle armor squad (UnitDef.battle_armor): one suit per trooper.
+static func build_squad(def: UnitDef, side: int) -> Node3D:
+	var root := Node3D.new()
+	root.name = "PlaceholderSquad"
+	var body := PlaceholderMech._mat(PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()])
+	_squad(root, body, PlaceholderMech._mat(Color(0.18, 0.18, 0.2)), def.battle_armor.troopers, true)
+	return root
+
+
 ## A record-sheet combat vehicle (UnitDef.vehicle) in the same style.
 static func build_vehicle(def: UnitDef, side: int) -> Node3D:
 	var root := Node3D.new()

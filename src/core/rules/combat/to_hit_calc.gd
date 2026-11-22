@@ -39,7 +39,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			return th
 		VehicleFire.add_mods(th, attacker, w)
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if attacker.vehicle == null and not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
+	if attacker.vehicle == null and attacker.ba == null and not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -179,6 +179,7 @@ static func add_conditions(th: ToHit, state: GameState, attacker: Unit, target: 
 		var adjacent := Hex.distance(attacker.coord, target.coord) <= 1
 		th.add("target prone", -2 if adjacent else 1,
 				"A 'Mech on the ground is easier to hit from next to it (-2), harder from afar (+1).")
+	BaFire.add_target_mod(th, target)
 	if is_immobile(target):
 		th.add("target immobile", -4, "A shut-down, unconscious or legless 'Mech can't dodge: -4.")
 

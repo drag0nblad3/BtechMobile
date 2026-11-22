@@ -12,6 +12,7 @@ var _config := {}  ## Chassis id -> index of the shown configuration.
 var _bv_labels: Array = []  ## [Label, UnitDef] per shown panel.
 var _assets: VBoxContainer
 var _vehicles: VBoxContainer
+var _squads: VBoxContainer
 var _asset_tips: Array[Label] = []
 
 
@@ -36,6 +37,9 @@ func build(parent: Control) -> void:
 	UiKit.label(outer, "Combat vehicles (record sheets)")
 	_vehicles = VBoxContainer.new()
 	outer.add_child(_vehicles)
+	UiKit.label(outer, "Battle armor infantry (record sheets)")
+	_squads = VBoxContainer.new()
+	outer.add_child(_squads)
 	UiKit.label(outer, "Vehicles and infantry (Battlefield Support)")
 	_assets = VBoxContainer.new()
 	outer.add_child(_assets)
@@ -45,6 +49,7 @@ func build(parent: Control) -> void:
 func rebuild() -> void:
 	UiKit.clear(_list)
 	_bv_labels.clear()
+	_asset_tips.clear()
 	_filter_button.text = "Show: " + DesignFilter.NAMES[mode]
 	for g: Array in DesignFilter.groups(db, mode):
 		_panel(g)
@@ -52,8 +57,11 @@ func rebuild() -> void:
 	for def in db.sorted_vehicles():
 		if DesignFilter.keeps(def, mode):
 			_vehicle_panel(def)
+	UiKit.clear(_squads)
+	for def in db.sorted_battle_armor():
+		if DesignFilter.keeps(def, mode):
+			_squad_panel(def)
 	UiKit.clear(_assets)
-	_asset_tips.clear()
 	for def in db.sorted_assets():
 		if DesignFilter.keeps(def, mode):
 			_asset_panel(def)
@@ -102,6 +110,23 @@ func _vehicle_panel(def: UnitDef) -> void:
 			"  ·  turret" if v.turret else ""])
 	UiKit.label(box, weapons_line(def), UiKit.SMALL)
 	_asset_tips.append(UiKit.label(box, "Record-sheet vehicle: hit locations, motive damage and critical hits, no heat. Counts as support (4 per side).", UiKit.SMALL))
+	var row := HBoxContainer.new()
+	box.add_child(row)
+	for side in 2:
+		UiKit.button(row, "+ " + Names.side(side), _on_add.bind(side, def.id), Vector2(140, 56))
+
+
+## One battle armor squad: BV, troopers, armor, MP, weapons.
+func _squad_panel(def: UnitDef) -> void:
+	var b := def.battle_armor
+	var box := UiKit.panel(_squads)
+	UiKit.label(box, "%s %s  ·  BV %d  ·  %d troopers, %d armor each  ·  %d/%d MP jump" % [def.name, def.model, def.bv,
+			b.troopers, b.armor, b.ground_mp, b.jump_mp])
+	var ws: Array[String] = []
+	for w: Dictionary in b.weapons:
+		ws.append(String(w["name"]))
+	UiKit.label(box, ", ".join(ws) + (", battle claws" if b.claw else ""), UiKit.SMALL)
+	_asset_tips.append(UiKit.label(box, "Armored infantry: each trooper fires, more troopers mean more hits. Hard to hit (+1). Counts as support (4 per side).", UiKit.SMALL))
 	var row := HBoxContainer.new()
 	box.add_child(row)
 	for side in 2:

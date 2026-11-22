@@ -97,6 +97,8 @@ static func _careful_entry(state: GameState, unit: Unit, opts: MoveOptions, star
 static func enter_cost(state: GameState, unit: Unit, from: Vector2i, to: Vector2i, mode: int, max_change: int) -> int:
 	if unit.vehicle != null:
 		return VehicleMoveCost.enter_cost(state.map, unit, from, to)
+	if unit.ba != null:
+		return BaMoveCost.enter_cost(state.map, from, to, mode)
 	return MoveCost.enter_cost(state.map, from, to, mode, max_change)
 
 

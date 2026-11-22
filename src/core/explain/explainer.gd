@@ -76,6 +76,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 		GameEvent.DAMAGE:
 			if d.get("vehicle", false):
 				return VehicleText.damage(s, d, level)
+			if d.get("ba", false):
+				return BaText.damage(s, d, level)
 			return AssetText.damage(s, d, level) if d.get("asset", false) else DamageText.damage(s, d, level)
 		GameEvent.TRANSPORT:
 			return AssetText.transport(s, d, level)

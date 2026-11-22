@@ -59,7 +59,7 @@ func bv(side: int, extra: String = "") -> int:
 func unit_bv(side: int, def: UnitDef) -> int:
 	if def.asset != null:
 		return def.bv  # an Asset's Skill is on its card, not the side's pilots
-	if def.vehicle != null:
+	if def.vehicle != null or def.battle_armor != null:
 		return BvSkill.adjusted(def.bv, skills[side].x, skills[side].y)  # the sheet BV, crew skill
 	return BvSkill.adjusted(BattleValue.of(def), skills[side].x, skills[side].y)
 
@@ -233,6 +233,7 @@ func _free_hex(state: GameState, c: Vector2i, def: UnitDef = null) -> Vector2i:
 			var tile := state.map.get_tile(t)
 			if tile.depth < 2 and state.unit_at(t) == null and (def == null or not def.is_support() \
 					or (def.asset != null and AssetMoveCost.may_enter(def.asset, tile))
-					or (def.vehicle != null and VehicleMoveCost.may_enter(def.vehicle.motive, tile))):
+					or (def.vehicle != null and VehicleMoveCost.may_enter(def.vehicle.motive, tile))
+					or (def.battle_armor != null and BaMoveCost.may_enter(tile))):
 				return t
 	return c
