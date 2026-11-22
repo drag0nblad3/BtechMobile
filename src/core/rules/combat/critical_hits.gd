@@ -69,6 +69,8 @@ static func roll_location(state: GameState, dice: Dice, emit: Callable, u: Unit,
 ## (unless `transfer` is false: MASC's own criticals never move).
 static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: int, transfer := true) -> void:
 	var options := _hittable(u, loc)
+	if ReactiveCrit.lands(dice, u, loc, options.size()) and ReactiveCrit.roll(state, dice, emit, u, loc) and options.is_empty():
+		return  # only reactive slots: a 2 uses up the hit
 	while options.is_empty():
 		if not transfer or _hit_this_phase(state, u, loc):
 			return
@@ -76,6 +78,8 @@ static func apply_one(state: GameState, dice: Dice, emit: Callable, u: Unit, loc
 		if loc < 0 or u.is_location_destroyed(loc):
 			return
 		options = _hittable(u, loc)
+	if u.destroyed or u.is_location_destroyed(loc):
+		return
 	hit_slot(state, dice, emit, u, loc, options[dice.pick(options.size())])
 
 
