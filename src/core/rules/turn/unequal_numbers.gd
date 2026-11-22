@@ -38,4 +38,7 @@ static func eligible(state: GameState, done: Callable) -> Dictionary:
 	for u in state.units:
 		if u.can_act() and not done.call(u):
 			counts[u.side] = int(counts.get(u.side, 0)) + 1
+	for u in state.reserves:  # combat drops take a movement turn
+		if CombatDrop.ready(state, u):
+			counts[u.side] = int(counts.get(u.side, 0)) + 1
 	return counts
