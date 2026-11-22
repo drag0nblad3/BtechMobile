@@ -1,0 +1,333 @@
+{
+  "base_ref": "feature/shape-three-mech-p256-275",
+  "primary_view": "front",
+  "reference_priority": "CGL plastic",
+  "cycles": [
+    {
+      "cycle": 276,
+      "objective": "Rebuild large shoulder and disc silhouettes",
+      "atlas": [
+        "lt:0:all:roundAtlasL",
+        "rt:0:all:roundAtlasR",
+        "lt_round_shoulder_band:0:all:roundAtlasBand"
+      ],
+      "wolverine": [
+        "lt:0:all:roundWolvL",
+        "rt:0:all:roundWolvR",
+        "ct:0:core:widen"
+      ],
+      "jenner": [
+        "hd:0:all:flattenJennerDisc",
+        "hd_front_windscreen:0:core:topDown",
+        "hd_disc_lower_fairing:0:core:bottomUp"
+      ]
+    },
+    {
+      "cycle": 277,
+      "objective": "Chest plates and helmet proportions",
+      "atlas": [
+        "ct_left_breast_plate:0:front:widen",
+        "ct_right_breast_plate:0:front:widen",
+        "hd:0:mid:widen"
+      ],
+      "wolverine": [
+        "ct_lower_breastplate:0:mid:widen",
+        "ct_lower_breastplate:1:mid:widen",
+        "hd:0:upper:lowerStation"
+      ],
+      "jenner": [
+        "hd_disc_rim:0:mid:topDown",
+        "hd_disc_rim:1:mid:topDown",
+        "hd_disc_crown:0:mid:topDown"
+      ]
+    },
+    {
+      "cycle": 278,
+      "objective": "Shoulder socket and cheek transitions",
+      "atlas": [
+        "lt_round_shoulder_underplate:0:mid:bottomUp",
+        "la_rotator_socket:0:mid:widen"
+      ],
+      "wolverine": [
+        "hd_angular_cheek_left:0:mid:outerIn",
+        "hd_neck_yoke:0:mid:narrow"
+      ],
+      "jenner": [
+        "hd_left_disc_crescent:0:mid:topDown",
+        "hd_top_glass_left:0:mid:topDown"
+      ]
+    },
+    {
+      "cycle": 279,
+      "objective": "Thoracic width / launcher height",
+      "atlas": [
+        "ct:0:lower:widen",
+        "ct:0:mid:widen"
+      ],
+      "wolverine": [
+        "lt_srm6_inner_mount:0:mid:topDown",
+        "ct:0:upper:widen"
+      ],
+      "jenner": [
+        "ct:0:mid:widen",
+        "lt:0:mid:outerOut"
+      ]
+    },
+    {
+      "cycle": 280,
+      "objective": "Shoulder and upper arm shape",
+      "atlas": [
+        "la:0:mid:outerOut",
+        "la:1:mid:narrow"
+      ],
+      "wolverine": [
+        "la:0:mid:outerOut",
+        "la_shoulder_yoke:0:mid:narrow"
+      ],
+      "jenner": [
+        "la_pod_yoke:0:mid:widen",
+        "lt_disc_bridge:0:mid:widen"
+      ]
+    },
+    {
+      "cycle": 281,
+      "objective": "Gauntlet / cannon arm / side rim",
+      "atlas": [
+        "la:2:mid:outerOut",
+        "la_knuckle_cuff:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "ra:1:mid:outerOut",
+        "ra_compact_elbow_armor:0:mid:outerOut"
+      ],
+      "jenner": [
+        "la:1:mid:narrow",
+        "hd_disc_rim:0:front:bottomUp"
+      ]
+    },
+    {
+      "cycle": 282,
+      "objective": "Hips and leg sockets",
+      "atlas": [
+        "pelvis:0:lower:widen",
+        "ll_hip_socket:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "pelvis:0:lower:widen",
+        "ll_hip_bearing:0:mid:outerOut"
+      ],
+      "jenner": [
+        "belly:0:mid:widen",
+        "ll_leg_root:0:mid:outerOut"
+      ]
+    },
+    {
+      "cycle": 283,
+      "objective": "Thigh mass and knee cowls",
+      "atlas": [
+        "ll:0:mid:widen",
+        "ll:1:mid:outerOut"
+      ],
+      "wolverine": [
+        "ll:0:mid:widen",
+        "ll_tapered_thigh_cuff:0:mid:widen"
+      ],
+      "jenner": [
+        "ll:0:mid:widen",
+        "ll_knee_cowl:0:mid:widen"
+      ]
+    },
+    {
+      "cycle": 284,
+      "objective": "Knee/shin transitions",
+      "atlas": [
+        "ll_knee_guard:0:mid:widen",
+        "ll_shin:0:upper:narrow"
+      ],
+      "wolverine": [
+        "ll_knee_yoke:0:mid:widen",
+        "ll_shin:0:upper:narrow"
+      ],
+      "jenner": [
+        "ll_knee_cowl:0:mid:widen",
+        "ll_hock_joint:0:mid:outerIn"
+      ]
+    },
+    {
+      "cycle": 285,
+      "objective": "Calf and hock dimensions",
+      "atlas": [
+        "ll_shin:0:mid:widen",
+        "ll_shin_plate:0:mid:widen"
+      ],
+      "wolverine": [
+        "ll_shin:0:mid:widen",
+        "ll_shin_fairing:0:mid:widen"
+      ],
+      "jenner": [
+        "ll_shin:0:mid:outerOut",
+        "ll_rear_hock_brace:0:lower:outerIn"
+      ]
+    },
+    {
+      "cycle": 286,
+      "objective": "Ankle and foot stance",
+      "atlas": [
+        "ll_ankle_collar:0:mid:widen",
+        "ll_foot:0:mid:widen"
+      ],
+      "wolverine": [
+        "ll_foot:0:lower:widen",
+        "ll_shin:0:lower:widen"
+      ],
+      "jenner": [
+        "ll_tarsus:0:mid:outerOut",
+        "ll_foot:0:lower:widen"
+      ]
+    },
+    {
+      "cycle": 287,
+      "objective": "Helmet and disc upper profile",
+      "atlas": [
+        "hd:0:upper:lowerStation",
+        "hd_lower_mandible:0:mid:narrow"
+      ],
+      "wolverine": [
+        "hd:1:mid:narrow",
+        "hd_angular_cheek_left:0:front:outerIn"
+      ],
+      "jenner": [
+        "hd_disc_crown:0:upper:topDown",
+        "hd_front_windscreen:0:upper:topDown"
+      ]
+    },
+    {
+      "cycle": 288,
+      "objective": "Pectoral and shoulder side seams",
+      "atlas": [
+        "ct_right_breast_plate:0:mid:outerOut",
+        "ct_left_breast_plate:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "lt:0:mid:outerOut",
+        "rt:0:mid:outerOut"
+      ],
+      "jenner": [
+        "hd_disc_neck_brace:0:mid:widen",
+        "hd_rear_disc_saddle:0:mid:widen"
+      ]
+    },
+    {
+      "cycle": 289,
+      "objective": "Hands and outer nacelles",
+      "atlas": [
+        "la:2:lower:outerOut",
+        "la_outer_thumb_pad:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "la:2:mid:outerOut",
+        "ra_grip_wrist_collar:0:mid:outerOut"
+      ],
+      "jenner": [
+        "lt:0:mid:outerIn",
+        "la:0:mid:outerIn"
+      ]
+    },
+    {
+      "cycle": 290,
+      "objective": "Lower front torso",
+      "atlas": [
+        "ct_lower_abdominal_armor:0:mid:widen",
+        "pelvis_front_codpiece:0:mid:widen"
+      ],
+      "wolverine": [
+        "ct_wide_abdomen:0:front:widen",
+        "ct_faceted_waist_spine:0:mid:widen"
+      ],
+      "jenner": [
+        "ct_belly_front_apron:0:mid:widen",
+        "ct:2:mid:widen"
+      ]
+    },
+    {
+      "cycle": 291,
+      "objective": "Crests and launcher support",
+      "atlas": [
+        "lt_round_shoulder_band:0:mid:topDown",
+        "lt_shoulder_ridge:0:mid:topDown"
+      ],
+      "wolverine": [
+        "lt_srm6_inner_mount:0:front:topDown",
+        "lt:0:front:topDown"
+      ],
+      "jenner": [
+        "hd_disc_rim:0:rear:topDown",
+        "hd_disc_rim:1:rear:topDown"
+      ]
+    },
+    {
+      "cycle": 292,
+      "objective": "Front-view leg spacing",
+      "atlas": [
+        "ll:0:lower:curveOut",
+        "ll_hip_joint:0:mid:outerOut"
+      ],
+      "wolverine": [
+        "ll:0:lower:curveOut",
+        "ll_hip_bearing:0:lower:outerOut"
+      ],
+      "jenner": [
+        "ll:0:upper:curveOut",
+        "ll_hip_link:0:upper:outerOut"
+      ]
+    },
+    {
+      "cycle": 293,
+      "objective": "Toe/ankle stance",
+      "atlas": [
+        "ll_foot:0:front:outerOut",
+        "ll_shin:0:lower:outerIn"
+      ],
+      "wolverine": [
+        "ll_foot:0:front:outerOut",
+        "ll_shin:0:lower:outerIn"
+      ],
+      "jenner": [
+        "ll_foot:0:front:outerOut",
+        "ll_tarsus:0:lower:outerIn"
+      ]
+    },
+    {
+      "cycle": 294,
+      "objective": "Front armor cleanup",
+      "atlas": [
+        "ct_skull_well:0:mid:widen",
+        "lt_round_shoulder_underplate:0:mid:bottomUp"
+      ],
+      "wolverine": [
+        "ct:0:mid:widen",
+        "ra_compact_elbow_armor:0:rear:outerOut"
+      ],
+      "jenner": [
+        "hd:0:mid:bottomUp",
+        "hd_disc_lower_fairing:0:mid:bottomUp"
+      ]
+    },
+    {
+      "cycle": 295,
+      "objective": "Final frontal balance",
+      "atlas": [
+        "ct:0:upper:widen",
+        "la:0:front:outerOut"
+      ],
+      "wolverine": [
+        "ct:0:lower:widen",
+        "ra:0:front:outerOut"
+      ],
+      "jenner": [
+        "ct:0:mid:outerOut",
+        "la_pod_yoke:0:rear:outerOut"
+      ]
+    }
+  ]
+}
