@@ -39,10 +39,19 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 	if d.get("jammed", false):
 		res += "; the rotary AC JAMS" + (" (a roll of %d or less jams it at %d shots; clearing it takes a Gunnery roll +3 while standing or walking)"
 				% [RotaryAc.jams_on(d["shots"]), d["shots"]] if level == ExplainLevel.FULL else "")
+	if d.get("nemesis", false):
+		res += "; an enemy Nemesis pod drew the missiles onto your own 'Mech in the line of fire"
+	if d.has("pod_damage"):
+		res += "; the explosive pod blows up for %d damage" % d["pod_damage"]
 	if d.has("narc_loc"):
-		res += "; a Narc pod sticks to the %s" % Location.name_of(d["narc_loc"]).to_lower()
+		var pk: String = d.get("pod_kind", "")
+		res += "; a %s pod sticks to the %s" % ["Narc" if pk == "" else pk.capitalize() if pk != "ecm" else "ECM",
+				Location.name_of(d["narc_loc"]).to_lower()]
 		if level == ExplainLevel.FULL:
-			res += " (from next turn, your side's Narc-equipped missiles get -1 to hit and +2 on the cluster roll against it)"
+			res += " (from next turn, %s)" % {"": "your side's Narc-equipped missiles get -1 to hit and +2 on the cluster roll against it",
+					"haywire": "it shoots at +1 and can't spot for indirect fire",
+					"ecm": "it acts as if inside enemy ECM: no Artemis bonus, probe or C3 link",
+					"nemesis": "enemy Artemis and Narc missiles fired past it hit it instead"}.get(pk, "")
 	if d.get("heat_added", 0) > 0:
 		res += ", +%d heat to the target" % d["heat_added"]
 	if d.has("aim_roll"):

@@ -33,4 +33,4 @@ static func tons(def: UnitDef) -> float:
 static func jammed(state: GameState, side: int, u: Unit) -> bool:
 	if u.def.c3_boosted:
 		return Ecm.hostile_angel_at(state, side, u.coord)
-	return Ecm.hostile_at(state, side, u.coord)
+	return Ecm.hostile_at(state, side, u.coord) or NarcPods.has(state, u, NarcPods.ECM)

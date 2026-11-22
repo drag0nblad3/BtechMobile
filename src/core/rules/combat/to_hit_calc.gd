@@ -127,6 +127,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 				w.def.name, "more" if own < 0 else "less", own, " at this range" if not w.def.to_hit_by_range.is_empty() else ""])
 	TargetingComputer.add(th, attacker, w)
 	Narc.add(th, state, attacker, w, target)
+	NarcPods.add_haywire(th, state, attacker)
 	if WeaponModes.to_hit_mod(w) != 0:
 		th.add("cluster ammo", WeaponModes.to_hit_mod(w), "LB-X cluster rounds spread like a shotgun: -1 to hit, but each pellet only does 1 damage.")
 	LowVisibility.add(th, state, attacker, target)
