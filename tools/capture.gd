@@ -27,7 +27,7 @@ func _initialize() -> void:
 			"snow": cfg = {"snowfall": true, "wind": true}
 			"fog": cfg = {"low_visibility": true}
 			"heat": cfg = {"heat": 3}
-			"cold": cfg = {"cold": 3, "snowfall": true}
+			"cold": cfg = {"cold": 3}
 			"wind": cfg = {"wind": true, "rain": true}
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
 		for side in 2:
