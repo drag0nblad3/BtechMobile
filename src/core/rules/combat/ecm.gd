@@ -31,9 +31,9 @@ static func suite_ok(u: Unit) -> bool:
 			and not u.is_location_destroyed(u.def.ecm_loc)
 
 
-## Is `u` working as if inside hostile ECM (enemy ECM, or its own stealth)?
+## Is `u` working as if inside hostile ECM (enemy ECM, its own stealth, an ECM pod)?
 static func jammed(state: GameState, u: Unit) -> bool:
-	return Stealth.active(u) or hostile_at(state, u.side, u.coord)
+	return Stealth.active(u) or hostile_at(state, u.side, u.coord) or NarcPods.has(state, u, NarcPods.ECM)
 
 
 ## Is `c` inside ECM hostile to `side`?

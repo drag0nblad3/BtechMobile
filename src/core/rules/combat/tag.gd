@@ -40,6 +40,8 @@ static func problem(state: GameState, u: Unit) -> String:
 		return "TAG already fired this turn"
 	if u.has_fired:
 		return "TAG goes before your weapons fire"
+	if NarcPods.has(state, u, NarcPods.HAYWIRE):
+		return "a haywire pod stops it designating"
 	if mounts(u).is_empty() or u.shutdown or not u.pilot.conscious:
 		return "TAG is out of action"
 	return ""

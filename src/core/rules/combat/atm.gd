@@ -33,5 +33,7 @@ static func profile(w: MountedWeapon) -> WeaponDef:
 
 static func mode_text(w: MountedWeapon) -> String:
 	var p := profile(w)
+	if w.def.beacon:
+		return "%s pods" % (p.label if w.mode != "" else "Homing")
 	var label := p.label if p.label != "" else ("Standard" if w.mode == "" else w.mode.to_upper())
 	return "%s missiles (%d each, %s)" % [label, p.damage, p.range_text()]

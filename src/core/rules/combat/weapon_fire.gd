@@ -30,6 +30,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaLegAttack.is_leg_attack(w):
 		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	var decoy := NarcPods.decoy(state, dice, attacker, w, target)
+	if decoy != null:  # an enemy Nemesis pod pulls the missiles onto a friend
+		target = decoy
+		th = ToHitCalc.weapon(state, attacker, w, decoy)
 	var kind := WeaponModes.ammo_kind(w)
 	var shots := take_shots(attacker, w)
 	if shots == 0:
@@ -46,6 +50,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": Atm.profile(w).name,
 			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
+	if decoy != null:
+		data["nemesis"] = true
 	if RotaryAc.check_jam(w, shots, roll):
 		data["jammed"] = true
 	if not hit:
@@ -77,7 +83,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 				data["pod_shot_down"] = true
 				emit.call(GameEvent.WEAPON_FIRED, data)
 				return
-		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
+		NarcPods.land(state, dice, emit, attacker, w, target, th, arc_id, data)
 		return
 	var was_ams := ams_on
 	if w.def.large_missile and ams_on and Thunderbolt.shot_down(dice, data):
@@ -133,15 +139,6 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 
 
 ## Spends ammo for the shots this weapon fires; returns how many (0 = none).
-## A Narc beacon hit: the pod sticks where it lands (aimed or rolled), no damage.
-static func _attach_pod(state: GameState, dice: Dice, emit: Callable, attacker: Unit, target: Unit,
-		th: ToHit, arc_id: int, data: Dictionary) -> void:
-	var hl := AimedShot.location(dice, th, arc_id, target.def.quad) if th.aim_loc >= 0 else HitTable.roll(dice, arc_id)
-	Narc.attach(state, attacker, target, hl["loc"])
-	data["narc_loc"] = hl["loc"]
-	emit.call(GameEvent.WEAPON_FIRED, data)
-
-
 static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 	var want := WeaponModes.shots(w)
 	if w.def.one_shot:  # p. 182: once a game

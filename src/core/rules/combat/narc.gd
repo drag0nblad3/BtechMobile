@@ -11,8 +11,7 @@ extends RefCounted
 ## but no -1 or cluster bonus either; the target's own hex still counts
 ## (pp. 70, 188, 193).
 ## iNarc beacons (`inarc_beacon`, p. 188) work the same with longer range and
-## 3-point pods. TODO(rules): special pods (explosive, haywire, ECM, Nemesis,
-## pp. 193-194) aren't modelled; designs carrying them are skipped.
+## 3-point pods. Special pods (explosive, haywire, ECM, Nemesis): NarcPods.
 
 const KIND := "narc"
 const TO_HIT_MOD := -1
@@ -32,7 +31,7 @@ static func homing(state: GameState, attacker: Unit, target: Unit) -> bool:
 	if Ecm.hostile_at(state, attacker.side, target.coord):
 		return false
 	for p: Dictionary in target.narc_pods:
-		if p["side"] == attacker.side and p["turn"] < state.turn and not target.is_location_destroyed(p["loc"]):
+		if p["side"] == attacker.side and String(p.get("kind", "")) == "" and p["turn"] < state.turn and not target.is_location_destroyed(p["loc"]):
 			return true
 	return false
 
@@ -45,8 +44,9 @@ static func add(th: ToHit, state: GameState, attacker: Unit, w: MountedWeapon, t
 	th.add("Narc homing pod", TO_HIT_MOD, "A Narc pod on the target guides these missiles in: -1 to hit and +2 on the cluster roll.")
 
 
-static func attach(state: GameState, attacker: Unit, target: Unit, loc: int) -> void:
-	target.narc_pods.append({"side": attacker.side, "loc": loc, "turn": state.turn})
+## `kind` "" is a homing pod; others are NarcPods.
+static func attach(state: GameState, attacker: Unit, target: Unit, loc: int, kind := "") -> void:
+	target.narc_pods.append({"side": attacker.side, "loc": loc, "turn": state.turn, "kind": kind})
 
 
 ## Can `w` fire indirectly at `target` homing on a pod, with no spotter?
