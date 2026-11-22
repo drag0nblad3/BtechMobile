@@ -17,6 +17,7 @@ const HEAT_ROLL := &"heat_roll"           # {unit_id, kind: ammo|shutdown|restar
 const SHUTDOWN := &"shutdown"             # {unit_id, shutdown: bool}
 const UNJAM := &"unjam"                   # {unit_id, weapon, roll, need, ok, why?} clearing a rotary AC
 const CLUB := &"club"                     # {unit_id, club: "tree"|"girder"}
+const TAG := &"tag"                       # {unit_id, target_id, roll, need, hit, mods, why?} TAG designation
 const AMMO_EXPLOSION := &"ammo_explosion" # {unit_id, loc, ammo, damage, steps}
 const PILOT_HIT := &"pilot_hit"           # {unit_id, hits, why}
 const CONSCIOUSNESS := &"consciousness"   # {unit_id, roll, need, conscious, was_conscious}

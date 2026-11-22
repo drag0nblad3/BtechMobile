@@ -25,6 +25,8 @@ static func build(def: UnitDef) -> Array:
 			_place(out[loc], CritSlot.new(CritSlot.Kind.WEAPON, w.name, i), def)
 		if m.get("artemis", false):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.ARTEMIS, "Artemis IV FCS", i), def)
+		if m.get("apollo", false):
+			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.APOLLO, "Apollo FCS", i), def)
 	for i in def.ammo_mounts.size():
 		var a: Dictionary = def.ammo_mounts[i]
 		var aw: WeaponDef = a["weapon"]

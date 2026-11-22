@@ -1,16 +1,16 @@
 class_name InertGear
 extends RefCounted
-## Gear that official designs carry but that does nothing in this game yet:
-## it takes its slots and weight, can be destroyed by a critical hit, and the
-## record sheet says why it sits idle. TODO(rules): A-pods only hurt infantry
-## (p. 189), which the game doesn't have; TAG (p. 200) only guides
-## semi-guided missiles and artillery homing rounds, which it doesn't have
-## either. Weights and slots are construction data.
+## Gear with no battle rules of its own here: it takes its slots and weight,
+## can be destroyed by a critical hit, and the record sheet says what it does.
+## TAG's designation attack lives in Tag. TODO(rules): A-pods only hurt
+## infantry (p. 189), which the game doesn't have. Weights and slots are
+## construction data.
 
 const KINDS := {
 	"a_pod": {"name": "A-Pod", "tons": 0.5, "slots": 1, "why": "anti-infantry pods: no infantry in this game"},
-	"tag": {"name": "TAG", "tons": 1.0, "slots": 1, "why": "target designator: no TAG-guided munitions in this game"},
-	"c_tag": {"name": "TAG", "tons": 1.0, "slots": 1, "why": "target designator: no TAG-guided munitions in this game"},
+	"tag": {"name": "TAG", "tons": 1.0, "slots": 1, "why": "target designator: spots for indirect fire"},
+	"c_tag": {"name": "TAG", "tons": 1.0, "slots": 1, "why": "target designator: spots for indirect fire"},
+	"c_light_tag": {"name": "Light TAG", "tons": 0.5, "slots": 1, "why": "short-range target designator: spots for indirect fire"},
 }
 
 

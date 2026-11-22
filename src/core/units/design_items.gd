@@ -2,6 +2,7 @@ class_name DesignItems
 extends RefCounted
 ## Reads one equipment entry of a design file into a UnitDef.
 ## Items: "<weapon id>", "<weapon id>@rear", "<launcher>+artemis",
+## "<MRM>+apollo" (Apollo),
 ## "<weapon id>~N" (its last N slots sit in the next location in, as on
 ## official sheets: an arm's AC/20 spilling into the side torso),
 ## "ammo:<weapon id>", "ammo:<weapon id>:cluster" (or ":narc"; ":half" for
@@ -9,7 +10,7 @@ extends RefCounted
 ## "case", "hatchet", "sword", "endo_steel", "ferro_fibrous", "tsm",
 ## "targeting_computer", "guardian_ecm", "masc", "supercharger", "c3_master",
 ## "c3_slave", "c3bs_master", "c3bs_slave" (C3Boosted), "c3i" (C3i), "angel_ecm", "watchdog_ecm" (EcmTypes), "beagle_probe", "c_active_probe", "c_light_active_probe",
-## "a_pod", "tag", "c_tag" (InertGear), "case2" (CASE II).
+## "a_pod", "tag", "c_tag", "c_light_tag" (InertGear, Tag), "case2" (CASE II).
 ## In the file, "<item>*N" repeats an item N times.
 
 ## One-per-'Mech items stored as a location: item -> UnitDef property.
@@ -50,9 +51,10 @@ static func add(def: UnitDef, loc: int, item: String, weapons: WeaponDb) -> void
 	else:
 		var spill := item.split("~")
 		var artemis := spill[0].ends_with("+artemis")
-		var parts := spill[0].trim_suffix("+artemis").split("@")
+		var apollo := spill[0].ends_with("+apollo")
+		var parts := spill[0].trim_suffix("+artemis").trim_suffix("+apollo").split("@")
 		def.weapon_mounts.append({"weapon": _weapon(def, weapons, parts[0]), "loc": loc,
-				"rear": parts.size() > 1, "artemis": artemis, "spill": int(spill[1]) if spill.size() > 1 else 0})
+				"rear": parts.size() > 1, "artemis": artemis, "apollo": apollo, "spill": int(spill[1]) if spill.size() > 1 else 0})
 
 
 static func _weapon(def: UnitDef, weapons: WeaponDb, id: String) -> WeaponDef:

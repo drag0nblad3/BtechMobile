@@ -1,0 +1,76 @@
+{
+ "id": "whitworth_wth2h",
+ "name": "Whitworth",
+ "model": "WTH-2H",
+ "tonnage": 40,
+ "walk_mp": 5,
+ "jump_mp": 4,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "armor_type": "heavy_ferro",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 12,
+  "RT": 12,
+  "CT": 16,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "heavy_ferro*6"
+  ],
+  "RA": [
+   "er_medium_laser",
+   "heavy_ferro*6"
+  ],
+  "LT": [
+   "heat_sink",
+   "mrm10+apollo",
+   "ammo:mrm10*2",
+   "case2",
+   "heavy_ferro*3"
+  ],
+  "RT": [
+   "heat_sink",
+   "mrm10+apollo",
+   "heavy_ferro*6"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9428,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 30/Whitworth WTH-2H.mtf",
+  "published": "RG30",
+  "role": "Brawler",
+  "bv": "megamek",
+  "megamek_bv": 1148
+ },
+ "bv": 1148,
+ "sprite": "whitworth",
+ "role": "Brawler: built to slug it out at medium range. 2 ER Medium Lasers, 2 MRM 10s, Medium Laser; walks 5, runs 8, jumps 4."
+}

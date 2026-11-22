@@ -45,6 +45,10 @@ static func act(gc: GameController, side: int, skill: int = BotSkill.Level.VETER
 				gc.announce(u, drop)
 			return true
 		Phase.Kind.WEAPON_ATTACK:
+			var tag_at := BotTag.choose(s, u) if BotSkill.basic_tricks() else null
+			if tag_at != null:
+				gc.announce(u, "fires TAG at %s so its lancemates' missiles can arc in" % Names.unit(tag_at))
+				gc.fire_tag(u, tag_at.id)
 			var f := BotFire.plan(s, u)
 			var club := BotPhysical.club_instead(s, u, f["value"]) if BotSkill.advanced_tricks() else ""
 			if club != "":

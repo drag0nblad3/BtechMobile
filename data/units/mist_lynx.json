@@ -78,7 +78,6 @@
      "ammo:c_machine_gun:half"
     ]
    },
-   "role": "Scout: fast and light, finds the enemy and stays alive. 2 Machine Guns, LRM 10, Streak SRM 4; walks 7, runs 11, jumps 6.",
    "source": {
     "mul_id": 1836,
     "megamek": "data/mekfiles/meks/3050U/Koshi (Mist Lynx) Prime.mtf",
@@ -87,7 +86,8 @@
     "bv": "sheet",
     "sheet": "Koshi (Mist Lynx) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
     "megamek_bv": 871
-   }
+   },
+   "role": "Scout: fast and light, finds the enemy and stays alive. 2 Machine Guns, LRM 10, Streak SRM 4; walks 7, runs 11, jumps 6."
   },
   {
    "model": "A",
@@ -112,7 +112,6 @@
      "a_pod"
     ]
    },
-   "role": "Scout: fast and light, finds the enemy and stays alive. 2 Anti-Missile Systems, 2 Machine Guns, Flamer; walks 7, runs 11, jumps 6.",
    "source": {
     "mul_id": 1827,
     "megamek": "data/mekfiles/meks/3050U/Koshi (Mist Lynx) A.mtf",
@@ -121,7 +120,8 @@
     "bv": "sheet",
     "sheet": "Koshi (Mist Lynx) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
     "megamek_bv": 608
-   }
+   },
+   "role": "Scout: fast and light, finds the enemy and stays alive. 2 Anti-Missile Systems, 2 Machine Guns, Flamer; walks 7, runs 11, jumps 6."
   },
   {
    "model": "B",
@@ -138,7 +138,6 @@
      "ammo:c_srm6*2"
     ]
    },
-   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Medium Lasers, 2 SRM 6s, ER Small Laser; walks 7, runs 11, jumps 6.",
    "source": {
     "mul_id": 1828,
     "megamek": "data/mekfiles/meks/3050U/Koshi (Mist Lynx) B.mtf",
@@ -147,7 +146,38 @@
     "bv": "sheet",
     "sheet": "Koshi (Mist Lynx) B (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
     "megamek_bv": 1209
-   }
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Medium Lasers, 2 SRM 6s, ER Small Laser; walks 7, runs 11, jumps 6."
+  },
+  {
+   "model": "F",
+   "bv": 1173,
+   "heat_sinks": 10,
+   "jump_mp": 6,
+   "equipment": {
+    "LA": [
+     "c_heavy_medium_laser",
+     "c_heavy_small_laser*2",
+     "c_light_tag"
+    ],
+    "RA": [
+     "c_heavy_medium_laser*2",
+     "c_heavy_small_laser*2"
+    ],
+    "RT": [
+     "guardian_ecm",
+     "targeting_computer"
+    ]
+   },
+   "source": {
+    "mul_id": 1832,
+    "megamek": "data/mekfiles/meks/3050U/Koshi (Mist Lynx) F.mtf",
+    "published": "RS:CI",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 1173
+   },
+   "role": "Scout: fast and light, finds the enemy and stays alive. 4 Heavy Small Lasers, 3 Heavy Medium Lasers; walks 7, runs 11, jumps 6."
   }
  ]
 }

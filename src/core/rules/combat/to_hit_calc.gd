@@ -83,7 +83,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if pod:
 		Narc.add_indirect(th)
 	elif spotter:
-		IndirectFire.add_mods(th, state, spotter)
+		IndirectFire.add_mods(th, state, spotter, target)
 		th.spotter_id = spotter.id
 	IndirectFire.add_spotting_mod(th, state, attacker)
 	var rdist: int = c3.get("dist", dist)

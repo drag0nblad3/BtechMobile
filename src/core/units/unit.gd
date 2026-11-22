@@ -94,6 +94,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for m in def.weapon_mounts:
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
+		mw.apollo = m.get("apollo", false)
 		weapons.append(mw)
 	for a in def.ammo_mounts:
 		var bin := AmmoBin.new(a["weapon"], a["loc"], a.get("kind", ""))

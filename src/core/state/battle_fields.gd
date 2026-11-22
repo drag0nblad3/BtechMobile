@@ -8,7 +8,7 @@ static func names(o: Object) -> Array:
 		return ["map", "units", "turn", "phase", "initiative_order", "side_order",
 				"order_index", "initiative_rolls", "declared_fire", "declared_physical",
 				"building_hits", "doomed_buildings", "initiative_die_rule",
-				"initiative_die", "fire_heat", "spotting", "conditions", "sees_through",
+				"initiative_die", "fire_heat", "spotting", "tagged", "tag_used", "conditions", "sees_through",
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
@@ -58,7 +58,7 @@ static func names(o: Object) -> Array:
 				"out_since_turn"]
 	if o is MountedWeapon:
 		return ["def", "loc", "rear", "destroyed", "exploded", "mode", "artemis",
-				"artemis_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
+				"artemis_lost", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
 				"jammed", "spent", "crit_hits"]
 	if o is AmmoBin:
 		return ["weapon", "loc", "shots", "destroyed", "kind"]
