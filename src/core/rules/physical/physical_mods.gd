@@ -29,6 +29,9 @@ static func add(th: ToHit, state: GameState, a: Unit, t: Unit, terrain: bool = t
 		cover: bool = true) -> void:
 	th.add("Piloting", a.pilot.piloting, "Physical attacks use piloting skill, not gunnery.")
 	ToHitCalc.add_movement(th, a, t)
+	if t.asset != null:
+		AssetFire.add_target_mods(th, state, t)
+		return
 	if terrain:
 		var tile := state.map.get_tile(t.coord)
 		var tw := LineOfSight.woods_value(tile) if tile else 0

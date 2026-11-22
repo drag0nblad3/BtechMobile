@@ -7,6 +7,9 @@ extends Node3D
 const MODELS := [
 	"res://data/voxels/catapult.json",
 	"res://data/voxels/hunchback.json",
+	"res://data/voxels/atlas_voxel.json",
+	"res://data/voxels/wolverine_voxel.json",
+	"res://data/voxels/jenner_voxel.json",
 	"res://data/voxels/marauder_shape.json",
 	"res://data/voxels/marauder.json",
 	"res://data/voxels/timber_wolf_shape.json",

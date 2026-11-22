@@ -12,7 +12,9 @@ var camera: Camera3D
 var models: Array[VxShapePreview] = []
 var labels: Array[Label3D] = []
 var views: Array[Dictionary] = []
+var capture_images: Array[Image] = []
 var step := 0
+var review_view_label: Label
 var frame := 0
 
 
@@ -25,6 +27,14 @@ func _initialize() -> void:
 	scene.name = "UnrefinedComponentShapeStudies"
 	root.add_child(scene)
 	_lighting()
+	# One tiny caption per row; camera geometry remains unchanged.
+	var overlay := CanvasLayer.new()
+	scene.add_child(overlay)
+	review_view_label = Label.new()
+	review_view_label.position = Vector2(24, 18)
+	review_view_label.add_theme_font_size_override("font_size", 28)
+	review_view_label.add_theme_color_override("font_color", Color("eaf3ff"))
+	overlay.add_child(review_view_label)
 	for i in IDS.size():
 		var model := VxModel.load_file("res://data/voxels/%s.json" % IDS[i])
 		if not model.errors.is_empty() or model.detail != 1:
@@ -42,16 +52,28 @@ func _initialize() -> void:
 		label.pixel_size = 0.0015
 		label.outline_size = 6
 		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		label.position = Vector3((i - 1) * SPACING, 2.55, 0)
+		# Head and launcher heights differ between 35t, 55t and 100t chassis.
+		# Label each actual bounding volume instead of pinning to 2.55 meters.
+		var highest_cell := 0
+		for component: Dictionary in model.parts:
+			for voxel: Vector3i in component["cells"]:
+				highest_cell = maxi(highest_cell, voxel.y)
+		label.position = Vector3((i - 1) * SPACING,
+				(float(highest_cell) + 5.0) * model.voxel_size, 0)
 		scene.add_child(label)
 		labels.append(label)
 	camera = Camera3D.new()
-	camera.fov = 44
+	camera.fov = 40
 	camera.current = true
 	scene.add_child(camera)
-	# One combined picture per iteration. Extra angles or isolated components
-	# are captured only during a deliberate targeted diagnostic run.
+	# Five geometry-audit viewpoints in ONE combined image: no per-view
+	# render spam. Top down and head-on are vital for detecting duplicated
+	# limbs, over-wide shoulders and missing equipment.
 	views.append({"name": "gallery_three_quarter", "who": -1, "view": "three_quarter"})
+	views.append({"name": "gallery_front", "who": -1, "view": "front"})
+	views.append({"name": "gallery_side", "who": -1, "view": "side"})
+	views.append({"name": "gallery_rear_three_quarter", "who": -1, "view": "rear_three_quarter"})
+	views.append({"name": "gallery_top_down", "who": -1, "view": "top"})
 	_setup_view(step)
 
 
@@ -89,27 +111,42 @@ func _setup_view(index: int) -> void:
 	var target: Dictionary = views[index]
 	var who: int = target["who"]
 	var view: String = target["view"]
+	var review_names := [
+		"FRONT THREE-QUARTER", "HEAD-ON FRONT", "LEFT/RIGHT SIDE",
+		"REAR THREE-QUARTER", "TOP-DOWN · FORWARD = -Z"]
+	review_view_label.text = "COMPONENT SHAPE REVIEW · " + review_names[index]
 	var look_x := 0.0 if who == -1 else (float(who) - 1.0) * SPACING
 
 	for i in models.size():
+		# Turn each model about its own origin instead of orbiting the camera
+		# down the gallery's X-spacing axis (which stacks all three mechs).
+		models[i].rotation.y = PI / 2.0 if view == "side" else (PI if view.begins_with("rear") else 0.0)
 		models[i].visible = who == -1 or i == who
-		labels[i].visible = who == -1
+		labels[i].visible = (who == -1 and view != "top")
 		var selected: Array[String] = []
 		if i == who and target.has("parts"):
 			for name: String in target["parts"]:
 				selected.append(name)
 		models[i].isolate_parts(selected)
-	var distance: float = float(target.get("distance", 9.5 if who == -1 else 4.7))
+	var distance: float = float(target.get("distance", 8.6 if who == -1 else 4.7))
 	var center := Vector3(look_x, float(target.get("height", 1.08)), 0)
 	match view:
 		"front":
 			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"three_quarter":
-			camera.look_at_from_position(center + Vector3(distance * 0.53, 1.1, -distance * 0.85), center)
+			camera.look_at_from_position(center + Vector3(distance * 0.63, 1.1, -distance * 0.79), center)
 		"side":
-			camera.look_at_from_position(center + Vector3(distance, 0.37, 0), center)
+			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
 		"rear":
-			camera.look_at_from_position(center + Vector3(0, 0.30, distance), center)
+			camera.look_at_from_position(center + Vector3(0, 0.28, -distance), center)
+		"rear_three_quarter":
+			camera.look_at_from_position(center + Vector3(distance * 0.63, 1.1, -distance * 0.79), center)
+		"top":
+			# Explicit +Z up avoids degenerate look_at() with straight-down
+			# camera; all three chassis stay spaced along world X.
+			camera.look_at_from_position(
+					center + Vector3(0, distance, 0),
+					center, Vector3(0, 0, 1))
 
 
 func _process(_delta: float) -> bool:
@@ -123,21 +160,32 @@ func _process(_delta: float) -> bool:
 		printerr("SHAPE_ERROR|camera not current")
 		quit(1)
 		return true
-	var path := output_dir.path_join("%s.png" % views[step]["name"])
 	var image := root.get_texture().get_image()
 	if image == null or image.get_width() < 500:
-		printerr("SHAPE_ERROR|viewport empty: %s" % path)
+		printerr("SHAPE_ERROR|viewport empty: %s" % views[step]["name"])
 		quit(1)
 		return true
-	if image.save_png(path) != OK:
-		printerr("SHAPE_ERROR|png write failed: %s" % path)
-		quit(1)
-		return true
-	print("SHAPE_RENDER|%s.png" % views[step]["name"])
+	capture_images.append(image)
 	step += 1
 	if step >= views.size():
-		# Returning true alone does not shut down SceneTree.
-		# This explicit quit ends xvfb-run / GitHub Actions after saving.
+		# Five views, one combined PNG. Downscale only in this diagnostic,
+		# never the sculpt or mesh, to keep uploads small.
+		var tile_w := 1200
+		var tile_h := 600
+		var contact := Image.create(tile_w, tile_h * capture_images.size(),
+				false, Image.FORMAT_RGBA8)
+		for i in capture_images.size():
+			var tile: Image = capture_images[i]
+			tile.convert(Image.FORMAT_RGBA8)
+			tile.resize(tile_w, tile_h, Image.INTERPOLATE_LANCZOS)
+			contact.blit_rect(tile, Rect2i(0, 0, tile_w, tile_h),
+					Vector2i(0, i * tile_h))
+		var path := output_dir.path_join("gallery_three_quarter.png")
+		if contact.save_png(path) != OK:
+			printerr("SHAPE_ERROR|png write failed: %s" % path)
+			quit(1)
+			return true
+		print("SHAPE_RENDER|gallery_three_quarter.png")
 		quit(0)
 		return true
 	frame = 0

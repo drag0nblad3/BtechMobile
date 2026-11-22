@@ -25,6 +25,18 @@ var _mat: Dictionary = {}  ## material name -> index
 
 static func load_file(path: String) -> VxModel:
 	var d: Variant = JsonFile.read(path)
+	# Keep source-only geometry manifests from the silhouette refinement stack.
+	if d is Dictionary and d.has("source"):
+		var base: Variant = JsonFile.read(str(d["source"]))
+		if base is Dictionary:
+			var resolved: Dictionary = base.duplicate(true)
+			for key in d:
+				if key != "source":
+					resolved[key] = d[key]
+			d = resolved
+		else:
+			push_error("Voxel source not found: %s" % d["source"])
+			return from_dict({})
 	return from_dict(d if d is Dictionary else {})
 
 
@@ -41,7 +53,7 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m._add_part(p)
 	m.muzzles = _points(d.get("muzzles", {}))
 	m.jets = _points(d.get("jets", {}))
-	VxRefine.apply(m, int(d.get("subdivide", 1)))
+	VxRefine.apply(m, int(d.get("subdivide", 1)), d)
 	for p: Dictionary in d.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
 	if bool(d.get("exclusive_parts", false)):

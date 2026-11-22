@@ -6,6 +6,7 @@ extends Node3D
 ## Erases are intentionally not shown: compare voxel renders for cutouts.
 
 var _mesh_by_part: Dictionary = {}
+var _review_material_cache: Dictionary = {}
 var _joints: Dictionary = {}
 
 
@@ -57,17 +58,43 @@ func _build(d: Dictionary) -> void:
 		for s: Dictionary in p.get("add", []):
 			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
 
-	# Neutral animation axes mask the reverse-jointed Jenner's profile.
-	# Only the review rig is posed; source voxels and animation remain untouched.
+	# The Jenner's bent leg shapes are authored in its sections already.
+	# Apply only a small asymmetric stance, not a second exaggerated knee bend.
+	# These review angles do not alter the animation rig or voxel geometry.
 	if d.get("legs", "") == "digitigrade":
 		for side in ["ll", "rl"]:
 			if _joints.has(side + "_tarsus"):
 				var left: bool = side == "ll"
-				_joints[side].rotation.x = deg_to_rad(-24.0 if left else 9.0)
-				_joints[side + "_shin"].rotation.x = deg_to_rad(48.0 if left else 16.0)
-				_joints[side + "_tarsus"].rotation.x = deg_to_rad(-24.0 if left else -25.0)
+				_joints[side].rotation.x = deg_to_rad(-10.0 if left else 5.0)
+				_joints[side + "_shin"].rotation.x = deg_to_rad(15.0 if left else 12.0)
+				_joints[side + "_tarsus"].rotation.x = deg_to_rad(-6.0 if left else -8.0)
 
 
+
+
+## Preview-only low-saturation component tones to expose intersections and
+## misplaced proportions. Source voxel colors and game materials are unchanged.
+func _preview_material(name: String, part_name: String, materials: Dictionary) -> StandardMaterial3D:
+	var key := part_name + ":" + name
+	if _review_material_cache.has(key):
+		return _review_material_cache[key]
+	var base: StandardMaterial3D = materials.get(name, materials.values()[0])
+	var result: StandardMaterial3D = base.duplicate() as StandardMaterial3D
+	if name in ["form", "edge"]:
+		if part_name in ["lt", "rt"]:
+			result.albedo_color = Color("#909fb0")
+		elif part_name in ["la", "ra"]:
+			result.albedo_color = Color("#b2b2b1")
+		elif part_name.begins_with("hd"):
+			result.albedo_color = Color("#c3aaa0")
+		elif part_name.begins_with("ll") or part_name.begins_with("rl"):
+			result.albedo_color = Color("#a9b0a9")
+		elif part_name.contains("laser") or part_name.contains("srm"):
+			result.albedo_color = Color("#959ba7")
+		else:
+			result.albedo_color = Color("#bec4ca")
+	_review_material_cache[key] = result
+	return result
 
 
 func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
@@ -80,39 +107,66 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 			return
 		var st := SurfaceTool.new()
 		st.begin(Mesh.PRIMITIVE_TRIANGLES)
+		# Default smooth group 0 averages normals across the custom loft.
+		# These are hand-authored armor planes: retain one normal per face.
+		st.set_smooth_group(-1)
 		for j in range(sections.size() - 1):
 			var one: Dictionary = sections[j]
 			var two: Dictionary = sections[j + 1]
 			var points_a: Array = one["polygon"]
 			var points_b: Array = two["polygon"]
-			if points_a.size() != points_b.size():
+			if points_a.size() != points_b.size() or points_a.size() < 3:
 				continue
+			# Determine outward normals from the interpolated centerline.
+			# Wrong cap/side winding made solid armor shields look like open cups.
+			var centerline := Vector3.ZERO
+			for k in points_a.size():
+				centerline += (
+						_point(axis, int(one["at"]), points_a[k], mirrored)
+						+ _point(axis, int(two["at"]), points_b[k], mirrored)
+						) * (unit_scale * 0.5)
+			centerline /= float(points_a.size())
 			for k in points_a.size():
 				var k2 := (k + 1) % points_a.size()
 				var a := _point(axis, int(one["at"]), points_a[k], mirrored) * unit_scale
 				var b := _point(axis, int(one["at"]), points_a[k2], mirrored) * unit_scale
 				var c := _point(axis, int(two["at"]), points_b[k2], mirrored) * unit_scale
 				var d := _point(axis, int(two["at"]), points_b[k], mirrored) * unit_scale
-				_triangle(st, a, b, c)
-				_triangle(st, a, c, d)
-		for cap in [sections.front(), sections.back()]:
+				var outward := ((a + b + c + d) * 0.25) - centerline
+				var face_normal := (b - a).cross(c - a)
+				if face_normal.dot(outward) < 0.0:
+					_triangle(st, a, c, b)
+					_triangle(st, a, d, c)
+				else:
+					_triangle(st, a, b, c)
+					_triangle(st, a, c, d)
+		for cap_index in range(2):
+			var cap: Dictionary = sections[0] if cap_index == 0 else sections.back()
 			var at: int = int(cap["at"])
 			var points: Array = cap["polygon"]
 			var center := Vector3.ZERO
 			for point: Array in points:
 				center += _point(axis, at, point, mirrored)
 			center /= float(points.size())
+			var expected := Vector3.UP if axis == "y" else Vector3.BACK
+			if cap_index == 0:
+				expected = -expected
 			for k in points.size():
 				var a := _point(axis, at, points[k], mirrored) * unit_scale
 				var b := _point(axis, at, points[(k + 1) % points.size()], mirrored) * unit_scale
-				_triangle(st, center * unit_scale, a, b)
+				var pivot_center: Vector3 = center * unit_scale
+				var normal := (a - pivot_center).cross(b - pivot_center)
+				if normal.dot(expected) < 0.0:
+					_triangle(st, pivot_center, b, a)
+				else:
+					_triangle(st, pivot_center, a, b)
 		st.generate_normals()
 		var mesh := st.commit()
 		if mesh:
 			var inst := MeshInstance3D.new()
 			inst.name = part_name + "_outline"
 			inst.mesh = mesh
-			inst.material_override = materials.get(s.get("mat", ""), materials.values()[0])
+			inst.material_override = _preview_material(s.get("mat", ""), part_name, materials)
 			inst.position = -pivot * unit_scale
 			joint.add_child(inst)
 			_mesh_by_part[part_name].append(inst)
@@ -130,7 +184,7 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 		var inst := MeshInstance3D.new()
 		inst.mesh = mesh
 		inst.position = (Vector3(cx, cy, cz) - pivot) * unit_scale
-		inst.material_override = materials.get(s.get("mat", ""), materials.values()[0])
+		inst.material_override = _preview_material(s.get("mat", ""), part_name, materials)
 		inst.name = part_name + "_box"
 		joint.add_child(inst)
 		_mesh_by_part[part_name].append(inst)

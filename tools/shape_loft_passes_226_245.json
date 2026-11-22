@@ -1,0 +1,387 @@
+{
+  "baseline": "feature/shape-reference-cycles-206-225",
+  "stage": "polygon-loft-only",
+  "subdivide": 1,
+  "cycles": [
+    {
+      "cycle": 226,
+      "objective": "Expose Atlas shoulder apron; frame Wolverine helmet; lower Jenner saucer",
+      "atlas": [
+        "lt_round_shoulder_underplate:0:all:lipDown:3",
+        "lt:0:middle:outerIn:1",
+        "hd:0:upper:widthIn:1"
+      ],
+      "wolverine": [
+        "hd:0:upper:heightDown:1",
+        "hd_angular_cheek_left:0:all:outerIn:1",
+        "ct_lower_breastplate:0:middle:widthOut:1"
+      ],
+      "jenner": [
+        "hd:0:front:lipUp:1",
+        "hd_disc_lower_fairing:0:front:lipUp:1",
+        "hd_front_windscreen:0:front:tipDown:1"
+      ]
+    },
+    {
+      "cycle": 227,
+      "objective": "Differentiate Atlas shoulder crest; broaden Wolverine ribs; flatten Jenner crown",
+      "atlas": [
+        "lt_round_shoulder_band:0:middle:crestDown:1",
+        "hd_left_orbit_brow:0:all:outerIn:1",
+        "ct_left_clavicle:0:all:widthIn:1"
+      ],
+      "wolverine": [
+        "ct_wide_abdomen:0:middle:widthOut:1",
+        "ct:0:middle:widthOut:1",
+        "hd:1:middle:widthIn:1"
+      ],
+      "jenner": [
+        "hd_disc_crown:0:middle:tipDown:1",
+        "hd_top_glass_left:0:middle:tipDown:1",
+        "hd_disc_rim:0:middle:lipUp:1"
+      ]
+    },
+    {
+      "cycle": 228,
+      "objective": "Shallow Atlas chest; taper Wolverine shoulder; compress Jenner underlip",
+      "atlas": [
+        "ct:0:middle:frontIn:1",
+        "ct_left_breast_plate:0:middle:lipUp:1",
+        "ct_right_breast_plate:0:middle:lipUp:1"
+      ],
+      "wolverine": [
+        "lt:0:middle:outerIn:1",
+        "rt:0:middle:outerIn:1",
+        "lt_srm6_inner_mount:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "hd_round_underlip:0:middle:lipUp:1",
+        "hd_disc_lower_fairing:0:middle:lipUp:1",
+        "hd_chin_fairing:0:middle:lipUp:1"
+      ]
+    },
+    {
+      "cycle": 229,
+      "objective": "Seat Atlas head; slim Wolverine bent elbow; taper Jenner laser pod",
+      "atlas": [
+        "hd:0:middle:frontIn:1",
+        "hd_lower_mandible:0:middle:lipUp:1",
+        "lt:0:ends:crestDown:1"
+      ],
+      "wolverine": [
+        "ra:1:middle:widthIn:1",
+        "ra_compact_elbow_armor:0:middle:widthIn:1",
+        "ra_elbow_link:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "la:0:middle:widthIn:1",
+        "la_pod_yoke:0:middle:widthIn:1",
+        "lt:0:middle:crestDown:1"
+      ]
+    },
+    {
+      "cycle": 230,
+      "objective": "Refine Atlas hand assembly; Wolverine chest V; Jenner windshield",
+      "atlas": [
+        "la:2:middle:widthIn:1",
+        "la_knuckle_cuff:0:middle:widthIn:1",
+        "la_rotator_socket:0:middle:widthIn:1"
+      ],
+      "wolverine": [
+        "ct_lower_breastplate:0:middle:lipUp:1",
+        "ct_lower_breastplate:1:middle:lipUp:1",
+        "ct:0:lower:widthOut:1"
+      ],
+      "jenner": [
+        "hd_front_windscreen:0:middle:tipDown:1",
+        "hd_forward_canopy_lip:0:middle:lipUp:1",
+        "hd_low_glazing_brow:0:middle:lipUp:1"
+      ]
+    },
+    {
+      "cycle": 231,
+      "objective": "Round Atlas shoulder crowns; lower Wolverine dorsal equipment; lower Jenner hull",
+      "atlas": [
+        "lt:0:middle:crestDown:1",
+        "rt:0:middle:crestDown:1",
+        "lt_shoulder_ridge:0:middle:crestDown:1"
+      ],
+      "wolverine": [
+        "ct_rear_jump_pack:0:upper:heightDown:1",
+        "ct_lower_reactor_spine:0:upper:rearIn:1",
+        "ct:0:upper:widthIn:1"
+      ],
+      "jenner": [
+        "ct:0:middle:tipDown:1",
+        "ct:1:middle:tipDown:1",
+        "ct_rear_reactor_spine:0:middle:tipDown:1"
+      ]
+    },
+    {
+      "cycle": 232,
+      "objective": "Make Atlas knee/shin narrow; Wolverine leg joint distinct; Jenner knee less columnar",
+      "atlas": [
+        "ll_shin:0:middle:widthIn:1",
+        "ll_shin_plate:0:middle:widthIn:1",
+        "ll_knee_guard:0:middle:widthIn:1"
+      ],
+      "wolverine": [
+        "ll_shin:0:middle:widthIn:1",
+        "ll_shin_fairing:0:middle:widthIn:1",
+        "ll_knee_yoke:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "ll:0:middle:widthIn:1",
+        "ll_knee_cowl:0:middle:widthIn:1",
+        "ll_shin:0:middle:rearIn:1"
+      ]
+    },
+    {
+      "cycle": 233,
+      "objective": "Angle Atlas pectoral armor, Wolverine cannon arm and Jenner disc saddle",
+      "atlas": [
+        "ct_left_breast_plate:0:upper:crestDown:1",
+        "ct_right_breast_plate:0:upper:crestDown:1",
+        "ct_skull_well:0:middle:widthIn:1"
+      ],
+      "wolverine": [
+        "ra:1:front:lipUp:1",
+        "ra_cannon_mount:0:middle:widthIn:1",
+        "ra_grip_wrist_collar:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "hd_rear_disc_saddle:0:middle:lipUp:1",
+        "hd_disc_neck_brace:0:middle:lipUp:1",
+        "hd_left_disc_strut:0:middle:widthIn:1"
+      ]
+    },
+    {
+      "cycle": 234,
+      "objective": "Sharpen Atlas brow over narrow jaw; shorten Wolverine helmet; simplify Jenner nose",
+      "atlas": [
+        "hd_left_orbit_brow:0:middle:outerOut:1",
+        "hd_nasal_bridge:0:middle:widthIn:1",
+        "hd_lower_mandible:0:front:widthIn:1"
+      ],
+      "wolverine": [
+        "hd:0:upper:widthIn:1",
+        "hd:0:lower:frontIn:1",
+        "hd_neck_yoke:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "hd:0:front:widthIn:1",
+        "hd_front_windscreen:0:front:widthIn:1",
+        "hd_disc_rim:1:front:widthIn:1"
+      ]
+    },
+    {
+      "cycle": 235,
+      "objective": "Remove Atlas tree trunk arms; Wolverine left-arm bulk; shorten Jenner nacelles",
+      "atlas": [
+        "la:0:middle:widthIn:1",
+        "la:1:middle:widthIn:1",
+        "la:3:middle:widthIn:1"
+      ],
+      "wolverine": [
+        "la:0:middle:widthIn:1",
+        "la:2:middle:widthIn:1",
+        "ct_wide_abdomen:0:middle:crestDown:1"
+      ],
+      "jenner": [
+        "la:0:rear:widthIn:1",
+        "la_laser_upper:0:rear:widthIn:1",
+        "la_laser_lower:0:rear:widthIn:1"
+      ]
+    },
+    {
+      "cycle": 236,
+      "objective": "Blend Atlas knee transitions; Wolverine cannon elbow; Jenner reverse-knee profile",
+      "atlas": [
+        "ll:0:lower:widthIn:1",
+        "ll_knee_inner_yoke:0:middle:widthIn:1",
+        "ll_shin:0:upper:widthIn:1"
+      ],
+      "wolverine": [
+        "ra:0:lower:widthIn:1",
+        "ra_compact_elbow_armor:0:rear:lipUp:1",
+        "ra_cannon_mount:0:rear:widthIn:1"
+      ],
+      "jenner": [
+        "ll_shin:0:upper:rearIn:1",
+        "ll_hock_joint:0:middle:frontIn:1",
+        "ll_rear_hock_brace:0:middle:rearIn:1"
+      ]
+    },
+    {
+      "cycle": 237,
+      "objective": "Unify Atlas shoulder socket; widen Wolverine load-bearing thighs; trim Jenner vent",
+      "atlas": [
+        "lt_round_shoulder_underplate:0:middle:lipDown:1",
+        "la_rotator_socket:0:middle:widthIn:1",
+        "la:0:upper:widthIn:1"
+      ],
+      "wolverine": [
+        "pelvis:0:upper:widthOut:1",
+        "ll:0:upper:widthOut:1",
+        "ll_tapered_thigh_cuff:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "lt:0:rear:widthIn:1",
+        "lt:1:middle:widthIn:1",
+        "ct_rear_reactor_spine:0:rear:tipDown:1"
+      ]
+    },
+    {
+      "cycle": 238,
+      "objective": "Reduce Atlas back; Wolverine gun wrist connection; Jenner belly width",
+      "atlas": [
+        "ct:0:upper:rearIn:1",
+        "ct_rear_left_radiator:0:middle:widthIn:1",
+        "pelvis:0:middle:rearIn:1"
+      ],
+      "wolverine": [
+        "ra_integrated_hand:0:middle:widthIn:1",
+        "ra_grip_wrist_collar:0:front:widthIn:1",
+        "ra_elbow_link:0:rear:widthIn:1"
+      ],
+      "jenner": [
+        "belly:0:middle:widthIn:1",
+        "ct_belly_front_apron:0:middle:widthIn:1",
+        "ll_leg_root:0:upper:widthIn:1"
+      ]
+    },
+    {
+      "cycle": 239,
+      "objective": "Match Atlas collar jaw and shoulder; Wolverine neck and reactor; Jenner ankle",
+      "atlas": [
+        "hd_neck_collar:0:middle:widthIn:1",
+        "hd_recessed_brow_bridge:0:middle:crestDown:1",
+        "hd_cheek_left:0:middle:outerIn:1"
+      ],
+      "wolverine": [
+        "hd_angular_cheek_left:0:middle:outerIn:1",
+        "hd_neck_yoke:0:middle:tipDown:1",
+        "ct_center_keel:0:middle:widthIn:1"
+      ],
+      "jenner": [
+        "ll_tarsus:0:lower:widthIn:1",
+        "ll_foot:0:upper:widthIn:1",
+        "ll_front_ankle_link:0:middle:widthIn:1"
+      ]
+    },
+    {
+      "cycle": 240,
+      "objective": "Taper Atlas boots; thin Wolverine knee armor; spread Jenner toes",
+      "atlas": [
+        "ll_foot:0:upper:widthIn:1",
+        "ll_ankle_collar:0:middle:widthIn:1",
+        "ll_shin_plate:0:front:lipUp:1"
+      ],
+      "wolverine": [
+        "ll_foot:0:upper:widthIn:1",
+        "ll_shin:1:middle:widthIn:1",
+        "ll_tapered_thigh_cuff:0:lower:widthIn:1"
+      ],
+      "jenner": [
+        "ll_foot:0:lower:widthOut:1",
+        "ll_tarsus:0:upper:widthIn:1",
+        "ll_rear_hock_brace:0:upper:rearIn:1"
+      ]
+    },
+    {
+      "cycle": 241,
+      "objective": "Tie Atlas clavicle around skull; lower Wolverine launcher caps; remove Jenner tall glass",
+      "atlas": [
+        "ct_left_clavicle:0:middle:widthIn:1",
+        "hd_recessed_brow_bridge:0:middle:widthIn:1",
+        "hd:0:upper:frontIn:1"
+      ],
+      "wolverine": [
+        "lt:0:upper:crestDown:1",
+        "lt_srm6_inner_mount:0:upper:widthIn:1",
+        "ct:0:upper:rearIn:1"
+      ],
+      "jenner": [
+        "hd_top_glass_left:0:rear:tipDown:1",
+        "hd_front_windscreen:0:rear:tipDown:1",
+        "hd_disc_crown:0:rear:tipDown:1"
+      ]
+    },
+    {
+      "cycle": 242,
+      "objective": "Balance Atlas gun shoulder; tighten Wolverine gun cuff; slim Jenner disc struts",
+      "atlas": [
+        "rt:0:middle:crestDown:1",
+        "rt_ac20_root_bushing:0:middle:widthIn:1",
+        "la:0:lower:widthIn:1"
+      ],
+      "wolverine": [
+        "ra:1:rear:widthIn:1",
+        "ra_compact_elbow_armor:0:middle:widthIn:1",
+        "ra_integrated_hand:0:rear:widthIn:1"
+      ],
+      "jenner": [
+        "hd_left_disc_strut:0:front:widthIn:1",
+        "hd_disc_neck_brace:0:rear:widthIn:1",
+        "hd_rear_disc_saddle:0:rear:lipUp:1"
+      ]
+    },
+    {
+      "cycle": 243,
+      "objective": "Finish Atlas recessed face; Wolverine forward pauldron slope; Jenner disc section",
+      "atlas": [
+        "hd:0:lower:frontIn:1",
+        "hd_lower_mandible:0:middle:lipUp:1",
+        "ct_left_breast_plate:0:lower:widthOut:1"
+      ],
+      "wolverine": [
+        "lt:0:front:lipUp:1",
+        "rt:0:front:lipUp:1",
+        "ct_lower_breastplate:1:front:widthOut:1"
+      ],
+      "jenner": [
+        "hd:0:middle:tipDown:1",
+        "hd_disc_rim:0:middle:lipUp:1",
+        "hd_disc_rim:1:middle:lipUp:1"
+      ]
+    },
+    {
+      "cycle": 244,
+      "objective": "Smooth Atlas fist and shoulder; Wolverine collar and fist; Jenner rear hock",
+      "atlas": [
+        "lt_round_shoulder_band:0:rear:crestDown:1",
+        "la_knuckle_cuff:0:front:widthIn:1",
+        "la_outer_thumb_pad:0:lower:widthIn:1"
+      ],
+      "wolverine": [
+        "ct_wide_abdomen:0:rear:widthOut:1",
+        "hd:0:upper:heightDown:1",
+        "la:3:middle:widthIn:1"
+      ],
+      "jenner": [
+        "ll_shin:0:middle:rearIn:1",
+        "ll_hock_joint:0:upper:rearIn:1",
+        "ll_knee_cowl:0:middle:widthIn:1"
+      ]
+    },
+    {
+      "cycle": 245,
+      "objective": "Last coupled adjustments: Atlas shallow CT, Wolverine ONE cannon arm, Jenner low disc",
+      "atlas": [
+        "ct:0:middle:rearIn:1",
+        "lt_round_shoulder_underplate:0:front:lipDown:1",
+        "ll_shin:0:middle:widthIn:1"
+      ],
+      "wolverine": [
+        "ra_cannon_mount:0:middle:widthIn:1",
+        "ra:1:middle:widthIn:1",
+        "ct_wide_abdomen:0:front:widthOut:1"
+      ],
+      "jenner": [
+        "hd:0:rear:tipDown:1",
+        "la_pod_yoke:0:middle:widthIn:1",
+        "ll_hock_joint:0:lower:frontIn:1"
+      ]
+    }
+  ]
+}

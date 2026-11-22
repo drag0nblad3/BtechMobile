@@ -1,0 +1,1 @@
+{"id": "test_jump", "name": "Test Jumpers", "asset": {"type": "infantry", "motive": "j", "mp": 3, "tmm": 2, "range": [1, 2, 3], "skill": 6, "damage": 2, "groupings": 1, "check": 6, "threshold": 1, "bsp": 5}}

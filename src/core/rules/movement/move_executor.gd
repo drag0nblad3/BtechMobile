@@ -18,6 +18,8 @@ static func go_prone(emit: Callable, unit: Unit) -> void:
 ## drops the 'Mech to the ground at the end (1 MP, no charge).
 static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target: Vector3i,
 		mode: int, charge_target_id: int, then_prone := false, smash := false) -> bool:
+	if unit.asset != null:
+		return AssetMove.run(state, emit, unit, target, mode)
 	var opts := MovePlanner.plan(state, unit, mode)
 	if not opts.can_reach(target):
 		return false
