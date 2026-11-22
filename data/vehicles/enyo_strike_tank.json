@@ -1,0 +1,48 @@
+{
+ "id": "enyo_strike_tank",
+ "name": "Enyo Strike Tank",
+ "tonnage": 55,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 6,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 30,
+  "RS": 29,
+  "LS": 29,
+  "RR": 29,
+  "TU": 27
+ },
+ "equipment": {
+  "FR": [
+   "c_streak_srm6*2"
+  ],
+  "RS": [
+   "c_machine_gun"
+  ],
+  "LS": [
+   "c_machine_gun"
+  ],
+  "TU": [
+   "c_streak_srm6",
+   "c_large_pulse_laser"
+  ],
+  "BD": [
+   "ammo:c_streak_srm6*2",
+   "ammo:c_machine_gun:half",
+   "case",
+   "ammo:c_streak_srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 4127,
+  "megamek": "data/mekfiles/vehicles/3067/3067 Clan Land/Enyo Strike Tank.blk",
+  "role": "Skirmisher",
+  "bv": "megamek"
+ },
+ "bv": 1527
+}

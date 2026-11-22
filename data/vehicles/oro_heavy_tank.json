@@ -1,0 +1,41 @@
+{
+ "id": "oro_heavy_tank",
+ "name": "Oro Heavy Tank",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 24,
+  "RS": 21,
+  "LS": 21,
+  "RR": 17,
+  "TU": 22
+ },
+ "equipment": {
+  "FR": [
+   "c_er_medium_laser"
+  ],
+  "TU": [
+   "c_large_pulse_laser",
+   "c_lb20x_ac"
+  ],
+  "BD": [
+   "ammo:c_lb20x_ac:cluster",
+   "ammo:c_lb20x_ac",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2342,
+  "megamek": "data/mekfiles/vehicles/3060u/Oro Heavy Tank.blk",
+  "role": "Brawler",
+  "bv": "megamek"
+ },
+ "bv": 1116
+}

@@ -1,0 +1,37 @@
+{
+ "id": "oro_heavy_tank_hag",
+ "name": "Oro Heavy Tank (HAG)",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 45,
+  "RS": 30,
+  "LS": 30,
+  "RR": 28,
+  "TU": 30
+ },
+ "equipment": {
+  "TU": [
+   "c_large_pulse_laser",
+   "c_hag30"
+  ],
+  "BD": [
+   "ammo:c_hag30*4",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2341,
+  "megamek": "data/mekfiles/vehicles/3060u/Oro Heavy Tank (HAG).blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 1492
+}

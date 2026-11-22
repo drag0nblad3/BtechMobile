@@ -1,0 +1,54 @@
+{
+ "id": "shoden_assault_vehicle",
+ "name": "Shoden Assault Vehicle",
+ "tonnage": 70,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 55,
+  "RS": 37,
+  "LS": 37,
+  "RR": 25,
+  "TU": 30
+ },
+ "equipment": {
+  "FR": [
+   "c_light_machine_gun*2"
+  ],
+  "RS": [
+   "c_light_machine_gun"
+  ],
+  "LS": [
+   "c_light_machine_gun"
+  ],
+  "TU": [
+   "c_atm9*3"
+  ],
+  "BD": [
+   "ammo:c_atm9:er",
+   "ammo:c_atm9",
+   "ammo:c_atm9:he",
+   "ammo:c_atm9:er",
+   "ammo:c_atm9",
+   "ammo:c_atm9:he",
+   "ammo:c_atm9:er",
+   "ammo:c_atm9",
+   "ammo:c_atm9:he",
+   "ammo:c_light_machine_gun",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 5056,
+  "megamek": "data/mekfiles/vehicles/3067/3067 Clan Land/Shoden Assault Vehicle.blk",
+  "role": "Brawler",
+  "bv": "megamek"
+ },
+ "bv": 1412
+}

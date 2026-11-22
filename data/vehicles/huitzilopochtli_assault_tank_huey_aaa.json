@@ -1,0 +1,49 @@
+{
+ "id": "huitzilopochtli_assault_tank_huey_aaa",
+ "name": "Huitzilopochtli Assault Tank 'Huey' (AAA)",
+ "tonnage": 85,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 2,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "heavy_ferro",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 28,
+  "RS": 25,
+  "LS": 25,
+  "RR": 22,
+  "TU": 24
+ },
+ "equipment": {
+  "FR": [
+   "c_arrow_iv*2"
+  ],
+  "RS": [
+   "c_machine_gun"
+  ],
+  "LS": [
+   "c_machine_gun"
+  ],
+  "TU": [
+   "c_hag20*2"
+  ],
+  "BD": [
+   "case",
+   "guardian_ecm",
+   "ammo:c_arrow_iv*3",
+   "ammo:c_arrow_iv:homing*3",
+   "ammo:c_hag20*4",
+   "ammo:c_machine_gun:half"
+  ]
+ },
+ "source": {
+  "mul_id": 1550,
+  "megamek": "data/mekfiles/vehicles/3060u/Huitzilopochtli Assault Tank 'Huey' (AAA).blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 1496
+}

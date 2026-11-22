@@ -1,0 +1,41 @@
+{
+ "id": "epona_pursuit_tank_c",
+ "name": "Epona Pursuit Tank C",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 21,
+  "RS": 20,
+  "LS": 20,
+  "RR": 18,
+  "TU": 17
+ },
+ "equipment": {
+  "FR": [
+   "c_tag"
+  ],
+  "TU": [
+   "c_er_ppc",
+   "c_streak_srm6"
+  ],
+  "BD": [
+   "ammo:c_streak_srm6",
+   "guardian_ecm",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 993,
+  "megamek": "data/mekfiles/vehicles/3060u/Epona Pursuit Tank C.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 1563
+}

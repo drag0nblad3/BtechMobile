@@ -1,0 +1,40 @@
+{
+ "id": "mithras_light_tank",
+ "name": "Mithras Light Tank",
+ "tonnage": 25,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 6,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 16,
+  "RS": 14,
+  "LS": 14,
+  "RR": 9,
+  "TU": 14
+ },
+ "equipment": {
+  "FR": [
+   "c_er_medium_laser"
+  ],
+  "TU": [
+   "c_er_medium_laser",
+   "c_ultra_ac2"
+  ],
+  "BD": [
+   "ammo:c_ultra_ac2",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2193,
+  "megamek": "data/mekfiles/vehicles/3060u/Mithras Light Tank.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 670
+}
