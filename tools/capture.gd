@@ -74,6 +74,14 @@ func _process(_delta: float) -> bool:
 			ShotFx.spawn(_scene.fx, muzzle, target, "er_ppc", true)
 			VxBlast.spawn(_scene.fx, target, "impact")
 		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
+	if _frames == 28 and _mode == "hitfx":
+		var victim: Unit = _scene.controller.state.units[-1]
+		var view: UnitView = _scene.units_layer.view_of(victim)
+		_scene.rig.focus(view.position)
+		victim.heat = 22  # capture-only: never submitted to controller
+		_scene.fx.play(GameEvent.new(GameEvent.HEAT, {"unit_id": victim.id, "heat": victim.heat}))
+		_scene.fx.play(GameEvent.new(GameEvent.DAMAGE,
+				{"unit_id": victim.id, "loc": Location.RA, "rear": false, "amount": 24}))
 	if _frames == 40:
 		root.get_viewport().get_texture().get_image().save_png(_out)
 		print("saved ", _out)
