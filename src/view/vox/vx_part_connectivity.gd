@@ -21,7 +21,9 @@ static func audit(model: VxModel) -> Dictionary:
 		var name: String = part["name"]
 		var cells: Dictionary = part["cells"]
 		var sizes := _islands(cells)
-		var disconnected_samples := _island_samples(cells) if sizes.size() > 1 else []
+		var disconnected_samples: Array[Dictionary] = []
+		if sizes.size() > 1:
+			disconnected_samples = _island_samples(cells)
 		var parent_name: String = part.get("parent", "")
 		var parent_contacts := -1
 		if parent_name != "":
