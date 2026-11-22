@@ -195,3 +195,18 @@ func test_unsupported_island_metric_catches_free_floating_piece() -> void:
 	var m := _with_island(Vector3i.ZERO, 1)
 	check_eq(VxIntegrity.physical_components(m)["islands"], 1,
 			"disconnected volume is a real floating island")
+
+func test_high_density_boundary_search_ignores_faraway_source_surface() -> void:
+	# Large connected slab; the closest edge is deliberately inserted last.
+	# Old breadth-first routing would exhaust its budget on the first 30k
+	# source cells instead of reaching the near side of this assembly.
+	var surface := {}
+	for x in range(160):
+		for y in range(160):
+			for z in range(2):
+				surface[Vector3i(x,y,z)] = true
+	var target := {Vector3i(161,0,0): true}
+	var route := VxIntegrity._path(surface.keys(), target, {}, [], {}, 3)
+	check_eq(route.size(), 1, "one missing bridge cell even when source has 51k voxels")
+	if not route.is_empty():
+		check_eq(route[0], Vector3i(160,0,0))
