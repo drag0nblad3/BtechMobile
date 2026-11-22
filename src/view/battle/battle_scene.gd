@@ -8,6 +8,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
+var aim_guides := BattleAimOverlay.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
 var cinematic: CinematicDirector
@@ -158,6 +159,8 @@ func _build_views(state: GameState) -> void:
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
+	add_child(aim_guides)
+	aim_guides.setup(state)
 	var marker := FacingMarker.new()
 	add_child(marker)
 	rig = CameraRig.new()
@@ -176,6 +179,7 @@ func _build_views(state: GameState) -> void:
 	movement = MovementInput.new()
 	movement.controller = controller
 	movement.highlighter = highlighter
+	movement.aim_guide = aim_guides
 	movement.marker = marker
 	movement.hud = hud
 	movement.units_layer = units_layer
@@ -184,6 +188,7 @@ func _build_views(state: GameState) -> void:
 	attacks.controller = controller
 	attacks.hud = hud
 	attacks.highlighter = highlighter
+	attacks.aim_guide = aim_guides
 	attacks.bots = bots
 	movement.bots = bots
 	add_child(attacks)
