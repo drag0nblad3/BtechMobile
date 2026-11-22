@@ -77,7 +77,6 @@
      "targeting_computer"
     ]
    },
-   "role": "Sniper: hangs back and hits from long range. 4 ER PPCs, LRM 10; walks 4, runs 6.",
    "source": {
     "mul_id": 2097,
     "megamek": "data/mekfiles/meks/3050U/Masakari (Warhawk) Prime.mtf",
@@ -85,7 +84,42 @@
     "role": "Sniper",
     "bv": "megamek",
     "megamek_bv": 3194
-   }
+   },
+   "role": "Sniper: hangs back and hits from long range. 4 ER PPCs, LRM 10; walks 4, runs 6."
+  },
+  {
+   "model": "L",
+   "bv": 3695,
+   "heat_sinks": 20,
+   "equipment": {
+    "LA": [
+     "c_er_ppc+capacitor*2",
+     "c_er_flamer*2"
+    ],
+    "RA": [
+     "c_atm12",
+     "ammo:c_atm12",
+     "ammo:c_atm12:er",
+     "ammo:c_atm12:he",
+     "case2"
+    ],
+    "RT": [
+     "targeting_computer",
+     "watchdog_ecm"
+    ],
+    "CT": [
+     "supercharger"
+    ]
+   },
+   "source": {
+    "mul_id": 8340,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 20/Masakari (Warhawk) L.mtf",
+    "published": "RG20",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 3695
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 ER PPCs, 2 ER Flamers, ATM 12; walks 4, runs 6."
   }
  ]
 }

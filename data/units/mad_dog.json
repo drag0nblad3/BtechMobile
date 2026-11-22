@@ -72,7 +72,6 @@
      "ammo:c_lrm20"
     ]
    },
-   "role": "Missile boat: rains missiles from a distance. 2 Large Pulse Lasers, 2 Medium Pulse Lasers, 2 LRM 20s; walks 5, runs 8.",
    "source": {
     "mul_id": 3473,
     "megamek": "data/mekfiles/meks/3050U/Vulture (Mad Dog) Prime.mtf",
@@ -81,7 +80,8 @@
     "bv": "sheet",
     "sheet": "Vulture (Mad Dog) Prime (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
     "megamek_bv": 2351
-   }
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 Large Pulse Lasers, 2 Medium Pulse Lasers, 2 LRM 20s; walks 5, runs 8."
   },
   {
    "model": "A",
@@ -115,7 +115,6 @@
      "ammo:c_srm6*2"
     ]
    },
-   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 6 SRM 6s, LB 5-X AC, ER PPC; walks 5, runs 8.",
    "source": {
     "mul_id": 3466,
     "megamek": "data/mekfiles/meks/3050U/Vulture (Mad Dog) A.mtf",
@@ -124,7 +123,8 @@
     "bv": "sheet",
     "sheet": "Vulture (Mad Dog) A (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)",
     "megamek_bv": 1923
-   }
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 6 SRM 6s, LB 5-X AC, ER PPC; walks 5, runs 8."
   },
   {
    "model": "B",
@@ -157,6 +157,48 @@
     "megamek_bv": 2284
    },
    "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Medium Pulse Lasers, 2 ER Large Lasers, 2 Streak SRM 6s, LRM 20; walks 5, runs 8."
+  },
+  {
+   "model": "I",
+   "bv": 2042,
+   "heat_sinks": 15,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_ppc+capacitor"
+    ],
+    "RA": [
+     "c_rotary_ac2*2"
+    ],
+    "LT": [
+     "heat_sink"
+    ],
+    "RT": [
+     "heat_sink",
+     "ammo:c_rotary_ac2*2"
+    ],
+    "CT": [
+     "heat_sink"
+    ]
+   },
+   "source": {
+    "mul_id": 7728,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 10/Vulture (Mad Dog) I.mtf",
+    "published": "RG10",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2042
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 Rotary AC/2s, ER PPC; walks 5, runs 8."
   }
  ]
 }

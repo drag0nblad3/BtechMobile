@@ -22,6 +22,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if w.def.ams:
 		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
 		return th
+	if w.mode == PpcCapacitor.CHARGE:
+		th.impossible = "%s is charging its capacitor instead of firing" % w.def.name
+		return th
 	if not attacker.can_fire(w):
 		th.impossible = "%s can't fire (%s)" % [w.def.name, "jammed" if w.jammed else
 				("no ammo" if not w.destroyed and not attacker.is_location_destroyed(w.loc) else "destroyed")]

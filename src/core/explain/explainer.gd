@@ -52,6 +52,11 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return _declared(s, d, level)
 		GameEvent.WEAPON_FIRED:
 			return WeaponText.fired(s, d, level, seen)
+		GameEvent.CAPACITOR:
+			var t := "%s charges the capacitor on its %s." % [_u(s, d), d["weapon"]]
+			if level == ExplainLevel.FULL:
+				t += " Its next shot does +%d damage; holding the charge costs %d heat a turn, and a critical hit on it while charged makes it explode." % [PpcCapacitor.DAMAGE, PpcCapacitor.HEAT]
+			return t
 		GameEvent.TAG:
 			return TagText.describe(s, d, level, seen)
 		GameEvent.UNJAM:

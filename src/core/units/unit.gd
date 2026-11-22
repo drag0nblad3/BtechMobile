@@ -103,6 +103,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
 		mw.apollo = m.get("apollo", false)
+		mw.capacitor = m.get("capacitor", false)
 		weapons.append(mw)
 	for a in def.ammo_mounts:
 		var bin := AmmoBin.new(a["weapon"], a["loc"], a.get("kind", ""))
@@ -203,6 +204,7 @@ func reset_for_turn() -> void:
 	for w in weapons:
 		w.fired = false
 		w.engaged = 0
+		w.cap_released = false
 
 
 ## Still on the field and able to take its turn in a phase.

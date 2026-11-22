@@ -19,6 +19,7 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 		resolve(state, dice, emit, a, a.weapons[d["weapon_index"]],
 				state.unit_by_id(d["target_id"]), d["to_hit"])
 	state.declared_fire.clear()
+	PpcCapacitor.end_phase(state, emit)
 	BuildingDamage.end_phase(state, dice, emit)
 	Fire.end_phase(state, emit)
 	RotaryAc.resolve_unjams(state, dice, emit)
@@ -35,6 +36,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		return
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
+	PpcCapacitor.discharge(attacker, w)
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
@@ -92,6 +94,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
 		packets = [w.def.damage_at(dist, shift)] as Array[int]
 		data["damage_at_range"] = packets[0]
+	if w.cap_released:
+		packets[0] += PpcCapacitor.DAMAGE
+		data["capacitor"] = true
 	if c["n"] > 0 or ams_on:
 		data["missiles"] = c["n"]
 		data["cluster_roll"] = c["roll"]

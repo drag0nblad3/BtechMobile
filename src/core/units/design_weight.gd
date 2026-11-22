@@ -22,7 +22,8 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	var weapons := 0.0
 	for m in def.weapon_mounts:
 		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0) \
-				+ (Apollo.TONS if m.get("apollo", false) else 0.0)
+				+ (Apollo.TONS if m.get("apollo", false) else 0.0) \
+				+ (PpcCapacitor.TONS if m.get("capacitor", false) else 0.0)
 	return {
 		"structure": _half_up(def.tonnage / 10.0 * (0.5 if def.structure_type == "endo_steel" else 1.0)),
 		"engine": XlEngine.tons(engine_tons(rating), def.engine_type),

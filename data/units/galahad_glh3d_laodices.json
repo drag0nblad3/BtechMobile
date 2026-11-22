@@ -1,0 +1,85 @@
+{
+ "id": "galahad_glh3d_laodices",
+ "name": "Galahad",
+ "model": "GLH-3D (Laodices)",
+ "tonnage": 60,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "gyro_type": "compact",
+ "cockpit_type": "small",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 20,
+  "RT": 20,
+  "CT": 30,
+  "HD": 9,
+  "LL": 28,
+  "RL": 28
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "light_gauss_rifle",
+   "ammo:light_gauss_rifle*3",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "er_ppc+capacitor",
+   "endo_steel*2",
+   "ferro_fibrous*4"
+  ],
+  "LT": [
+   "endo_steel*3",
+   "ferro_fibrous*6"
+  ],
+  "RT": [
+   "heat_sink",
+   "endo_steel*3",
+   "ferro_fibrous*4"
+  ],
+  "CT": [
+   "light_ppc",
+   "guardian_ecm"
+  ],
+  "HD": [
+   "c3i"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6978,
+  "megamek": "data/mekfiles/meks/Turning Points/JTP Hespersus/Galahad GLH-3D Laodices.mtf",
+  "published": "JTP:Hesperus II",
+  "role": "Sniper",
+  "bv": "megamek",
+  "megamek_bv": 1549
+ },
+ "bv": 1549,
+ "sprite": "galahad",
+ "role": "Sniper: hangs back and hits from long range. Light Gauss Rifle, ER PPC, Light PPC; walks 4, runs 6."
+}
