@@ -38,3 +38,17 @@ visual polish branch (#197). The game rules and saved battle formats do not chan
 - On Android, verify 1280×720 and notched landscape, tap targets, virtual
   keyboard, fast scrolling, the advanced panel, and Start Battle visibility.
 - No APK build unless requested.
+
+## Curated starter formations
+
+Starter formations are optional and loaded from
+`data/forces/starter_formations.json`: Recon Patrol, Fast Strike,
+Medium Maneuver, Fire Support, Clan Recon Star and Clan Spearhead Star.
+Each lists only existing official unit IDs; Clan entries use five
+distinct designs, while Inner Sphere lances use four.
+
+Each roster has a **Load Starter Force** menu. Preflight honors pilot
+skill, variant-specific BV and `ForceBuilder.cant_add`. Existing units
+are replaced *only on that side*. If the required tier is above the
+current global BV limit, the confirmation explicitly says both sides'
+limit will increase. A failed validation never alters either roster.

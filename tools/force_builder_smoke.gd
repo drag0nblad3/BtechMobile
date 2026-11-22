@@ -48,6 +48,27 @@ func _check_builder() -> void:
 	if not _verify(screen.builder.rosters[1].is_empty() and screen._start_button.disabled,
 			"removing Blue prevents launch"):
 		return
+	var forms := StarterFormations.all()
+	var star_index := -1
+	for i in forms.size():
+		if forms[i]["id"] == "clan_recon":
+			star_index = i
+			break
+	if not _verify(star_index >= 0, "Clan Star template not found"):
+		return
+	screen._choose_starter(1, star_index)
+	if not _verify(screen.builder.rosters[1].is_empty(), "confirmation preserves previous roster"):
+		return
+	if not _verify(screen._starter_confirm.visible, "budget raise requires confirmation"):
+		return
+	screen._starter_confirm.confirmed.emit()
+	if not _verify(screen.builder.rosters[1].size() == 5, "starter Star loads all five units"):
+		return
+	if not _verify(screen.builder.rosters[0].size() == 1, "other force untouched"):
+		return
+	if not _verify(screen.builder.budget >= screen.builder.bv(1),
+			"budget accommodates selected Star"):
+		return
 	print("force builder smoke ok")
 	quit(0)
 
