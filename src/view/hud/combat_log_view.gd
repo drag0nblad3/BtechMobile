@@ -11,19 +11,26 @@ var _lines: Array[String] = []
 
 
 func _ready() -> void:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0, 0, 0, 0.55)
-	style.set_corner_radius_all(8)
-	style.set_content_margin_all(8)
-	add_theme_stylebox_override("panel", style)
+	add_theme_stylebox_override("panel",
+		UiSkin.panel_style(Color("#0a1723e8"), UiSkin.BORDER, 8))
 	custom_minimum_size = Vector2(540, HEIGHTS[0])
 	size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	var contents := VBoxContainer.new()
+	contents.add_theme_constant_override("separation", 4)
+	add_child(contents)
+	var header := Label.new()
+	header.text = "COMBAT TELEMETRY    /    LIVE"
+	header.add_theme_font_size_override("font_size", 16)
+	UiSkin.label(header, "section")
+	contents.add_child(header)
 	text = RichTextLabel.new()
 	text.scroll_following = true
 	text.bbcode_enabled = true
 	text.add_theme_font_size_override("normal_font_size", 18)
 	text.add_theme_font_size_override("bold_font_size", 18)
-	add_child(text)
+	text.add_theme_color_override("default_color", UiSkin.TEXT)
+	text.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	contents.add_child(text)
 
 
 func add_line(t: String, bold: bool = false) -> void:

@@ -14,10 +14,7 @@ func _ready() -> void:
 	if db == null:
 		db = UnitDb.load_dir()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
-	var bg := ColorRect.new()
-	bg.color = Color(0.09, 0.1, 0.12)
-	bg.set_anchors_preset(PRESET_FULL_RECT)
-	add_child(bg)
+	UiSkin.backdrop(self)
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(PRESET_FULL_RECT)
 	for side in ["left", "right", "top", "bottom"]:
@@ -39,10 +36,11 @@ func _build() -> void:
 	_list.add_child(head)
 	var title := UiKit.label(head, campaign.name, 32)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	title.modulate = Color(1.0, 0.85, 0.45)
+	UiSkin.label(title, "heading")
 	if not campaign.notebook(p).is_empty():
 		UiKit.button(head, "Notebook", _show_notebook, Vector2(180, 60))
 	UiKit.button(head, "Back", queue_free, Vector2(140, 60))
+	UiSkin.rule(_list)
 	UiKit.label(_list, campaign.intro, UiKit.SMALL)
 	var next := campaign.next_index(p)
 	for i in campaign.missions.size():
@@ -54,10 +52,12 @@ func _build() -> void:
 				start.bind(i), Vector2(0, 64))
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.disabled = not open
+		UiSkin.button(b, "selected" if won else "primary" if i == next and open else "secondary")
 		if i == next and open:
 			var lvl := int(JsonFile.read(campaign.scenario_path(i)).get("bot_level", -1))
 			var vs := "  (computer: %s)" % BotSkill.name_of(lvl) if lvl >= 0 else ""
-			UiKit.label(_list, m.get("briefing", "") + vs, UiKit.SMALL).modulate = Color(0.8, 0.85, 0.9)
+			var briefing := UiKit.label(_list, m.get("briefing", "") + vs, UiKit.SMALL)
+			UiSkin.label(briefing, "muted")
 	if campaign.finished(p):
 		UiKit.label(_list, "Campaign complete. Replay any lesson whenever you like.", UiKit.SMALL)
 

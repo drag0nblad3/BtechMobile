@@ -13,6 +13,21 @@ var _moments: ItemList
 var _timeline: ItemList
 
 
+## Deliberate Android Back navigation when automatic exit is disabled.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		var key := event as InputEventKey
+		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
+			return
+		get_viewport().set_input_as_handled()
+		get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
+
+
 func _ready() -> void:
 	set_anchors_preset(PRESET_FULL_RECT)
 	_frames = BattleSave.load_replay()
@@ -29,10 +44,7 @@ func _ready() -> void:
 
 
 func _build_ui() -> void:
-	var bg := ColorRect.new()
-	bg.color = Color(0.055, 0.075, 0.10)
-	bg.set_anchors_preset(PRESET_FULL_RECT)
-	add_child(bg)
+	UiSkin.backdrop(self)
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(PRESET_FULL_RECT)
 	margin.add_theme_constant_override("margin_left", 20)
@@ -46,6 +58,7 @@ func _build_ui() -> void:
 	var header := HBoxContainer.new()
 	col.add_child(header)
 	var title := _label(header, "TACTICAL ACADEMY  /  BATTLE FORENSICS", 28)
+	UiSkin.label(title, "heading")
 	title.size_flags_horizontal = SIZE_EXPAND_FILL
 	_button(header, "Replay", _open_replay)
 	_button(header, "Menu", func(): get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
@@ -60,6 +73,7 @@ func _build_ui() -> void:
 		overview = "%d actions  ·  %d hits  ·  %.1f expected hits (2d6 odds)  ·  %d logged damage  ·  %d wrecks  ·  %d failed piloting rolls" % [
 				int(s["attacks"]), int(s["hits"]), float(s["expected_hits"]),
 				int(s["damage"]), int(s["kills"]), int(s["psr_failures"])]
+	UiSkin.rule(col)
 	_label(col, overview, 21)
 	var split := HBoxContainer.new()
 	split.size_flags_vertical = SIZE_EXPAND_FILL
@@ -70,6 +84,7 @@ func _build_ui() -> void:
 	_moments = ItemList.new()
 	_moments.size_flags_vertical = SIZE_EXPAND_FILL
 	_moments.add_theme_font_size_override("font_size", 19)
+	UiSkin.list_control(_moments)
 	left.add_child(_moments)
 	var insights: Array = _report["moments"]
 	for m: Dictionary in insights.slice(0, 120):
@@ -104,6 +119,7 @@ func _build_ui() -> void:
 	_timeline = ItemList.new()
 	_timeline.size_flags_vertical = SIZE_EXPAND_FILL
 	_timeline.add_theme_font_size_override("font_size", 19)
+	UiSkin.list_control(_timeline)
 	right.add_child(_timeline)
 	for e: Dictionary in timeline.slice(0, MAX_TIMELINE):
 		_timeline.add_item("T%d · %s" % [int(e["turn"]), String(e["text"])])
@@ -112,6 +128,7 @@ func _build_ui() -> void:
 	_detail.custom_minimum_size.y = 50
 	_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_inspect = _button(right, "Inspect in replay", _open_replay)
+	UiSkin.button(_inspect, "primary")
 	_inspect.disabled = true
 	_label(col, "Analysis uses recorded outcomes, not speculative causes. Unframed events jump to the nearest later state; damage totals reflect logged events.", 16)
 
@@ -120,6 +137,7 @@ func _panel(parent: HBoxContainer, share: float) -> VBoxContainer:
 	var panel := PanelContainer.new()
 	panel.size_flags_horizontal = SIZE_EXPAND_FILL
 	panel.size_flags_stretch_ratio = share
+	UiSkin.panel(panel, "info")
 	parent.add_child(panel)
 	var inner := VBoxContainer.new()
 	inner.add_theme_constant_override("separation", 8)
@@ -131,6 +149,7 @@ func _label(parent: Control, value: String, size: int) -> Label:
 	var label := Label.new()
 	label.text = value
 	label.add_theme_font_size_override("font_size", size)
+	UiSkin.label(label, "section" if size >= 22 else "muted" if size <= 18 else "body")
 	parent.add_child(label)
 	return label
 
@@ -140,6 +159,7 @@ func _button(parent: Control, value: String, action: Callable) -> Button:
 	b.text = value
 	b.custom_minimum_size = Vector2(138, 57)
 	b.add_theme_font_size_override("font_size", 19)
+	UiSkin.button(b)
 	b.pressed.connect(action)
 	parent.add_child(b)
 	return b

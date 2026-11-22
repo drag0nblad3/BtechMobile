@@ -67,10 +67,16 @@ func _on_drag(e: InputEventScreenDrag) -> void:
 	var v0 := before - other
 	var v1 := e.position - other
 	if v0.length() > 1.0:
-		pinched.emit(v1.length() / v0.length())
-		twisted.emit(v0.angle_to(v1))
-	# Each finger reports separately; half the vertical motion per finger.
-	tilted.emit(e.relative.y * 0.5)
+		var scale := v1.length() / v0.length()
+		var rotation := v0.angle_to(v1)
+		if absf(scale - 1.0) > 0.004:
+			pinched.emit(scale)
+		if absf(rotation) > 0.004:
+			twisted.emit(rotation)
+		# A pinch or twist should not pitch the camera at the same time.
+		# Each finger reports separately; halve the vertical displacement.
+		if absf(scale - 1.0) < 0.015 and absf(rotation) < 0.015:
+			tilted.emit(e.relative.y * 0.5)
 
 
 func _on_mouse_button(e: InputEventMouseButton) -> void:

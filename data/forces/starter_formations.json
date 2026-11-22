@@ -1,0 +1,78 @@
+{
+  "formations": [
+    {
+      "id": "is_recon",
+      "name": "Recon Patrol",
+      "kind": "lance",
+      "description": "Four inexpensive scouts. Practice movement, spotting and flanking.",
+      "units": [
+        "locust_lct1v",
+        "wasp_wsp1a",
+        "stinger_stg3r",
+        "commando_com2d"
+      ]
+    },
+    {
+      "id": "is_strike",
+      "name": "Fast Strike",
+      "kind": "lance",
+      "description": "Mobile lasers, missiles and PPCs for learning combined ranges.",
+      "units": [
+        "jenner_jr7d",
+        "panther_pnt9r",
+        "valkyrie_vlkqa",
+        "commando_com2d"
+      ]
+    },
+    {
+      "id": "is_maneuver",
+      "name": "Medium Maneuver",
+      "kind": "lance",
+      "description": "A flexible lance with skirmishers and missile fire support.",
+      "units": [
+        "wolverine_wvr6r",
+        "shadow_hawk_shd2h",
+        "phoenix_hawk_pxh1",
+        "trebuchet_tbt5n"
+      ]
+    },
+    {
+      "id": "is_fire_support",
+      "name": "Fire Support",
+      "kind": "lance",
+      "description": "Long-range missile support protected by tougher direct-fire units.",
+      "units": [
+        "catapult_cplt_c1",
+        "trebuchet_tbt5n",
+        "centurion_cn9a",
+        "wolverine_wvr6r"
+      ]
+    },
+    {
+      "id": "clan_recon",
+      "name": "Clan Recon Star",
+      "kind": "star",
+      "description": "Five fast Clan OmniMechs for learning Clan speed and range.",
+      "units": [
+        "fire_moth_prime",
+        "mist_lynx_prime",
+        "kit_fox_prime",
+        "viper_prime",
+        "ice_ferret_a"
+      ]
+    },
+    {
+      "id": "clan_spearhead",
+      "name": "Clan Spearhead Star",
+      "kind": "star",
+      "description": "Five distinct Clan roles anchored by a Timber Wolf and Stormcrow.",
+      "units": [
+        "timber_wolf_b",
+        "stormcrow_prime",
+        "nova_b",
+        "mist_lynx_a",
+        "kit_fox_prime"
+      ]
+    }
+  ]
+}

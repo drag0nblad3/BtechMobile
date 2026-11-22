@@ -1,6 +1,6 @@
 # BtechMobile planning
 
-**Last updated:** 2026-11-21
+**Last updated:** 2026-11-22
 **Target:** Android phones, landscape. Godot 4.5, typed GDScript.
 
 See `architecture.md` for how the code is layered and `rules-coverage.md` for
@@ -67,6 +67,48 @@ session on a real phone are the next checks.
 - A compact per-event replay ledger powers Tactical Academy Battle Forensics: hit rates versus exact 2d6 expected hits, damage attribution, heat, piloting failures and decisive events, with replay checkpoints for inspection.
 - Available at game over, from a replay, and from the force builder. Godot focused unit and scene-navigation tests passed on the feature branch; full-suite and Android on-device usability checks are still required. See `docs/tactical-academy.md`.
 
+### Experience polish (2026-11-22 feature branch)
+
+- The movement bar keeps mode, turn, Cancel and Confirm visible. Contextual
+  actions are available through "Actions" without overflowing a phone screen.
+- Pause, Save and Save & Exit are available in battle; Android Back opens
+  the pause overlay instead of immediately quitting a running game.
+- Pinch and twist gestures no longer simultaneously tilt the camera.
+- Headless CI and on-device validation remain to be done. See
+  `docs/experience-polish.md`.
+
+### Tactical UI art direction (2026-11-22 stacked feature branch)
+
+- A shared `UiSkin` palette and button/panel styles introduce a restrained
+  field-command aesthetic with dark slate, cyan information and amber
+  primary actions across launcher, force builder, battle, and analysis.
+- No new heavy assets or external fonts; all interface visuals remain native
+  Godot controls suitable for Android.
+- Visual and touchscreen verification required (see `docs/ui-visual-polish.md`).
+
+### Force builder usability (2026-11-22 stacked PR)
+
+- Search by name, chassis, model, or armament, with a tech filter, separate unit
+  categories and 12-result pagination instead of rendering the whole catalog.
+- Choose an explicit Red/Blue destination, view live BV affordability and
+  remaining unit slots, remove units with dedicated buttons and monitor both
+  rosters simultaneously.
+- Move battle setup behind a compact panel with optional settings collapsed by
+  default. The Start Battle button stays in a fixed footer, disabled until
+  both sides are legal and within the BV limit.
+- See `docs/force-builder-usability.md`. On-device scrolling and touch QA
+  remain required.
+
+### Starter formations (2026-11-22)
+
+- Six optional curated official-design examples, four Inner Sphere lances
+  and two Clan stars, loaded through a menu on either roster.
+- Atomic roster replacement and dynamic BV preflight (including pilot skill
+  and C3); confirmation before replacing a populated force or raising the
+  global BV tier. No forced changes to the opposing roster.
+- Unit and force-builder UI smoke coverage added.
+- Android touch and 720p visual QA still required.
+
 ### Remaining Android work
 - **Device testing.** One recent phone, one low-end phone, one tablet. Watch frame rate
   with a whole map on screen, touch feel, and text size.
@@ -75,7 +117,7 @@ session on a real phone are the next checks.
   default), but `terrain.gdshader` should be checked under that fallback, or the
   project switched to the Compatibility renderer if low-end support matters more
   than visuals.
-- **App lifecycle.** Pause autosave is implemented on this branch; verify on Android and decide what Back does (currently quits). Restore UI selections and tutorial-card progress if needed.
+- **App lifecycle.** Pause autosave and a Back-driven battle pause menu are implemented; verify on Android and restore UI selections/tutorial-card progress if needed.
 - **Release signing.** Create a release keystore kept out of git; store it as GitHub
   secrets (`GODOT_ANDROID_KEYSTORE_RELEASE_PATH`, `_USER`, `_PASSWORD`).
 - **Play Store build.** The store needs an Android App Bundle (AAB), which requires

@@ -322,6 +322,21 @@ var _model_index := 0
 var _hud: CanvasLayer
 
 
+## Android Back remains available with automatic back-to-exit disabled.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		var key := event as InputEventKey
+		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
+			return
+		get_viewport().set_input_as_handled()
+		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
+
+
 func _ready() -> void:
 	target = VxStage.build(self)
 	camera = Camera3D.new()
