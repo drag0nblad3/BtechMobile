@@ -33,9 +33,9 @@ signal battle_forensics
 signal pause_toggled
 signal exit_battle
 
-const FONT_SIZE := 24
-const BUTTON_SIZE := Vector2(140, 68)
-const MARGIN := 18
+const FONT_SIZE := 22
+const BUTTON_SIZE := Vector2(126, 60)
+const MARGIN := 12
 
 const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
 
@@ -68,6 +68,8 @@ var game_over_detail: Label  ## Training debrief under the result.
 var leave_button: Button
 var prone_button: Button
 var more_button: MenuButton
+var utility_button: MenuButton
+var _utility_actions: Array[Button] = []
 var pause_menu: BattlePauseMenu
 var _move_actions: Array[Button] = []
 var game_over_label: Label
@@ -118,23 +120,34 @@ func _ready() -> void:
 		stage.text = tag
 		stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	set_phase(Phase.Kind.INITIATIVE)
-	# Give the full battle status its own line: seven 140px buttons and a
-	# turn/mission label cannot fit side by side at 1280x720 on a phone.
+	# Keep immediate tactical controls in a compact, phone-friendly row.
+	# Save, replay and explanation settings remain one tap away in More.
 	var shortcuts := _row(col)
 	shortcuts.add_theme_constant_override("separation", 6)
 	_button(shortcuts, "Pause", pause_toggled)
-	_button(shortcuts, "Save", save_battle)
-	_button(shortcuts, "Replay", watch_replay)
 	_button(shortcuts, "Log", log_toggled)
 	_button(shortcuts, "Sheet", sheet_toggled)
-	explain_button = _button(shortcuts, "Explain", explain_cycled)
-	_button(shortcuts, "Map View", top_down_toggled)
+	_button(shortcuts, "Map", top_down_toggled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
-	for b: Button in shortcuts.get_children():
-		b.custom_minimum_size = Vector2(112, 52)
-		b.add_theme_font_size_override("font_size", 19)
+	var utilities := Control.new()
+	utilities.visible = false
+	add_child(utilities)
+	_utility_actions.append(_button(utilities, "Save Battle", save_battle))
+	_utility_actions.append(_button(utilities, "Watch Replay", watch_replay))
+	explain_button = _button(utilities, "Explain", explain_cycled)
+	_utility_actions.append(explain_button)
+	utility_button = MenuButton.new()
+	utility_button.text = "More"
+	utility_button.tooltip_text = "Save, replay, explanations"
+	shortcuts.add_child(utility_button)
+	UiSkin.button(utility_button, "subtle")
+	utility_button.about_to_popup.connect(_populate_utility_menu)
+	utility_button.get_popup().id_pressed.connect(_on_utility_action)
+	for b: Control in shortcuts.get_children():
+		b.custom_minimum_size = Vector2(94, 43)
+		b.add_theme_font_size_override("font_size", 17)
 	UiSkin.button(shortcuts.get_child(0) as Button, "primary")
-	info = _label(col, 22)
+	info = _label(col, 19)
 	UiSkin.label(info, "section")
 	info.visible = false  # No empty advice row over the battlefield.
 	var middle := _row(col)
@@ -149,10 +162,10 @@ func _ready() -> void:
 	_tip_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#0a1824cc"), UiSkin.BORDER, 8, 7))
 	left.add_child(_tip_panel)
 	_tip_panel.visible = false
-	tip = _label(_tip_panel, 20)
+	tip = _label(_tip_panel, 18)
 	UiSkin.label(tip, "muted")
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	tip.custom_minimum_size.x = 420
+	tip.custom_minimum_size.x = 350
 	var spacer := Control.new()
 	spacer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	spacer.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -221,6 +234,18 @@ func refresh_move_actions() -> void:
 	more_button.disabled = not available
 
 
+func _populate_utility_menu() -> void:
+	var popup := utility_button.get_popup()
+	popup.clear()
+	for i in _utility_actions.size():
+		popup.add_item(_utility_actions[i].text, i)
+
+
+func _on_utility_action(id: int) -> void:
+	if id >= 0 and id < _utility_actions.size():
+		_utility_actions[id].pressed.emit()
+
+
 func _populate_move_menu() -> void:
 	var popup := more_button.get_popup()
 	popup.clear()
@@ -245,7 +270,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _build_side_panel(parent: Control) -> void:
 	side_panel = PanelContainer.new()
-	side_panel.custom_minimum_size = Vector2(470, 0)
+	side_panel.custom_minimum_size = Vector2(420, 0)
 	side_panel.add_theme_stylebox_override("panel",
 		UiSkin.panel_style(Color("#0d1c2ae8"), UiSkin.CYAN, 12))
 	parent.add_child(side_panel)
@@ -402,7 +427,7 @@ func _bar(parent: Control) -> HBoxContainer:
 	parent.add_child(frame)
 	var bar := _row(frame)
 	bar.alignment = BoxContainer.ALIGNMENT_CENTER
-	bar.add_theme_constant_override("separation", 12)
+	bar.add_theme_constant_override("separation", 7)
 	return bar
 
 

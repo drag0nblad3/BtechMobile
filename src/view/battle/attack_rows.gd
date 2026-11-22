@@ -17,7 +17,9 @@ static func weapons(state: GameState, attacker: Unit, options: Array, shots: Dic
 			extra = "  avg %.1f, %d heat" % [Advisor.expected_damage(w, o["to_hit"]), w.def.heat * WeaponModes.shots(w)]
 			if w.cap_charged:
 				extra += " (charged: +%d damage, +%d heat)" % [PpcCapacitor.DAMAGE, PpcCapacitor.HEAT]
-		var row := {"key": o["index"], "label": w.label(), "to_hit": o["to_hit"], "extra": extra}
+		var row := {"key": o["index"], "label": w.label(), "to_hit": o["to_hit"], "extra": extra,
+			"heat": w.def.heat * WeaponModes.shots(w),
+			"expected": Advisor.expected_damage(w, o["to_hit"]) if o["to_hit"].possible() else 0.0}
 		if WeaponModes.modes(w).size() > 1:
 			row["mode"] = mode_text(w)
 		rows.append(row)
