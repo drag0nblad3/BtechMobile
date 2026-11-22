@@ -1,0 +1,42 @@
+{
+ "id": "sturmfeur_heavy_tank_srm",
+ "name": "SturmFeur Heavy Tank (SRM)",
+ "tonnage": 85,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 66,
+  "RS": 66,
+  "LS": 66,
+  "RR": 48,
+  "TU": 66
+ },
+ "equipment": {
+  "FR": [
+   "lrm20"
+  ],
+  "TU": [
+   "srm4*4",
+   "machine_gun*3"
+  ],
+  "BD": [
+   "ammo:lrm20*3",
+   "ammo:srm4*2",
+   "ammo:machine_gun"
+  ]
+ },
+ "source": {
+  "mul_id": 3114,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 28/SturmFeur Heavy Tank (SRM).blk",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "SturmFeur Heavy Tank (SRM) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1390
+}

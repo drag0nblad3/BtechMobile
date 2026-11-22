@@ -1,0 +1,36 @@
+{
+ "id": "vedette_medium_tank_ultra",
+ "name": "Vedette Medium Tank (Ultra)",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 5,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 25,
+  "RS": 21,
+  "LS": 21,
+  "RR": 24,
+  "TU": 25
+ },
+ "equipment": {
+  "TU": [
+   "ultra_ac5"
+  ],
+  "BD": [
+   "ammo:ultra_ac5"
+  ]
+ },
+ "source": {
+  "mul_id": 3396,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Vedette Medium Tank (Ultra).blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Vedette Medium Tank (Ultra) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 590
+}

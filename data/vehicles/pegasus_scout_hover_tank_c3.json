@@ -1,0 +1,38 @@
+{
+ "id": "pegasus_scout_hover_tank_c3",
+ "name": "Pegasus Scout Hover Tank (C3)",
+ "tonnage": 35,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 29,
+  "RS": 17,
+  "LS": 17,
+  "RR": 10,
+  "TU": 25
+ },
+ "equipment": {
+  "TU": [
+   "medium_pulse_laser*2",
+   "streak_srm4*2"
+  ],
+  "BD": [
+   "ammo:streak_srm4",
+   "c3_slave"
+  ]
+ },
+ "source": {
+  "mul_id": 2456,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Pegasus Scout Hover Tank (C3).blk",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Pegasus Scout Hover Tank (C3) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 785
+}

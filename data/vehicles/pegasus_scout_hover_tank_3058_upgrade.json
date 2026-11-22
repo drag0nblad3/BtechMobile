@@ -1,0 +1,42 @@
+{
+ "id": "pegasus_scout_hover_tank_3058_upgrade",
+ "name": "Pegasus Scout Hover Tank (3058 Upgrade)",
+ "tonnage": 35,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 20,
+  "RS": 16,
+  "LS": 16,
+  "RR": 10,
+  "TU": 18
+ },
+ "equipment": {
+  "FR": [
+   "medium_pulse_laser",
+   "beagle_probe",
+   "tag"
+  ],
+  "TU": [
+   "srm6*2"
+  ],
+  "BD": [
+   "ammo:srm6",
+   "guardian_ecm"
+  ]
+ },
+ "source": {
+  "mul_id": 2455,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Pegasus Scout Hover Tank (3058 Upgrade).blk",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Pegasus Scout Hover Tank (3058 Upgrade) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 706
+}

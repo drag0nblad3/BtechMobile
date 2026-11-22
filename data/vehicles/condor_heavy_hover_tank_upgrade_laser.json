@@ -1,0 +1,44 @@
+{
+ "id": "condor_heavy_hover_tank_upgrade_laser",
+ "name": "Condor Heavy Hover Tank (Upgrade) (Laser)",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 31,
+  "RS": 21,
+  "LS": 21,
+  "RR": 14,
+  "TU": 20
+ },
+ "equipment": {
+  "FR": [
+   "machine_gun*2",
+   "er_large_laser"
+  ],
+  "TU": [
+   "lrm15",
+   "ams"
+  ],
+  "BD": [
+   "ammo:ams",
+   "ammo:lrm15*2",
+   "guardian_ecm",
+   "ammo:machine_gun:half"
+  ]
+ },
+ "source": {
+  "mul_id": 684,
+  "megamek": "data/mekfiles/vehicles/3075/Condor Heavy Hover Tank (Upgrade Laser).blk",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Condor Heavy Hover Tank (Upgrade) (Laser) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1197
+}
