@@ -16,3 +16,14 @@ Status: **source and rig fixes on a review branch**, pending Godot CI and four-a
 - Added source/regression tests in `tests/unit/test_vx_model.gd` for mirrored rig attachments, the Wolverine's single right cannon arm and Jenner disc proportions.
 - Still required: **Godot import, full test suite, active animation/limb-loss test and front/side/rear/top visual approval**. Source-level review alone cannot certify all 151 models.
 - No edits to `src/core/` gameplay rules. No Android APK and no fabricated renderer screenshot. No merge without approval.
+
+## Generalized tests and whole-catalog integrity handling
+
+- Regression assertions now use **proportional silhouettes, mirror-parent semantics, actual muzzle planes and structural invariants** instead of checking hard-coded vertex coordinates and fixed authored shape counts.
+- `VxIntegrity` is called on the final occupied cells for any recipe opting into exclusive moving-part ownership, including ordinary shape-first BattleMechs, high-resolution direct loft voxelization and the 16 supported vehicles/infantry archetypes. The previous Raven/Shadow Cat-only special case is removed.
+- The repair traverses each *part* separately, connects small nearby islands with a minimal, structure-colored route, and cautiously joins short explicit hinge/ankle/shoulder gaps to their parent. It does not combine two separately articulated parts.
+- Source `erase` openings, the firing corridor around every muzzle and all cells owned by another part are **non-fillable**. Large/displaced islands and long articulation gaps are deliberately reported, rather than hidden with a broad rectangular support.
+- A per-model `quality_report` contains disconnected components **before/after**, actual repaired islands, bridged mechanical contacts, inserted cells and fully empty parts. The topology tests translate and scale a synthetic defect, verify obstruction and cutout safety, and inspect the full catalog's source loft/mirror relationships.
+- The repair is executed **after** `VxShapeRaster.rebuild`, because that stage replaces the coarse occupancy grid; fixing coarse cells alone did not reliably survive the fine visual pipeline.
+
+**Limit:** Automated reconnection is intentionally not a promise that every deliberately detached shape has been made watertight. Remaining large or inaccessible disconnected components need source-specific inspection and a reference-based resculpt. Engine CI and multi-angle miniature comparison are required before final art approval.
