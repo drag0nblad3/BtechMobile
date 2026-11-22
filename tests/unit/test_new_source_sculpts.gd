@@ -103,9 +103,9 @@ func _assert_rooted_hierarchy(m: VxModel, name: String) -> void:
             check_eq(str(current["name"]), "ct", name + " disconnected hierarchy for " + str(p["name"]))
     check_eq(roots.size(), 1, name + " must have exactly one rooted rigid hierarchy")
     check_eq(roots[0] if not roots.is_empty() else "", "ct", name + " root must be central torso")
-    for side in ["l", "r"]:
-        var forearm := side + "a_forearm"
-        var calf := side + "l_calf"
+    for side: String in ["l", "r"]:
+        var forearm: String = side + "a_forearm"
+        var calf: String = side + "l_calf"
         check(not m.part(forearm).is_empty(), name + " missing independently defined lower arm " + forearm)
         check(not m.part(calf).is_empty(), name + " missing independently defined lower shin " + calf)
 
