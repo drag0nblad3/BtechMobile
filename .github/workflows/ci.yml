@@ -85,6 +85,20 @@ jobs:
         with:
           name: voxel-counts
           path: voxel-counts.log
+      - name: Capture hit location and heat effect at 1280x720
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-hit-location-fx')
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/battle-hitfx.png hitfx 2>&1 | tee hitfx-capture.log
+          test -s /tmp/battle-hitfx.png
+          ! grep -E "SCRIPT ERROR|Parse Error" hitfx-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-hit-location-fx')
+        with:
+          name: battle-hitfx-1280x720
+          path: /tmp/battle-hitfx.png
+          if-no-files-found: error
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail
