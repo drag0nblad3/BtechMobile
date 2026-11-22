@@ -1,6 +1,6 @@
 # Era and faction availability
 
-Force creation supports **Off**, **Advisory**, and **Strict** restrictions. Both sides share an exact year and choose factions independently.
+Force creation supports **Off**, **Advisory**, and **Strict** restrictions. Both sides share an exact year and choose factions independently. The official MUL lists **71 factions across five allegiances**; all are exposed in the selector with their founded and dissolved years. A faction outside its published active years is unavailable regardless of the chosen unit.
 
 - Off (default) preserves existing unrestricted play.
 - Advisory keeps all units selectable but marks unverified or unavailable variants in the catalog, roster, and add feedback.
@@ -13,6 +13,6 @@ The initial bundled snapshot deliberately covers only several verified MUL examp
 
 Eras run from Age of War (2398) through the published ilClan timeline (3153). The year control supports individual years, including dates inside each era. Nothing here changes unit performance, Battle Value, weapons, or physical combat rules.
 
-Sources: https://masterunitlist.battletech.com/ , https://battletech.com/mul-help/ , https://battletech.com/how-the-master-unit-list-organizes-its-data/
+Sources: https://masterunitlist.battletech.com/ , https://masterunitlist.battletech.com/factions , https://battletech.com/mul-help/ , https://battletech.com/how-the-master-unit-list-organizes-its-data/
 
 Regression tests: `tests/unit/test_era_availability.gd`.
