@@ -92,12 +92,20 @@ const FACTIONS := [
 	{"id": "star_league_first", "name": "Star League (First)", "start": 2571, "end": 2780},
 	{"id": "star_league_second", "name": "Star League (Second)", "start": 3058, "end": 3067},
 ]
+## Shared immutable snapshot: avoid decoding the full MUL table each time
+## the force builder preflights another starter formation.
+static var _cached_records: Dictionary = {}
 var records: Dictionary = {}
 
 
 func _init(source: Dictionary = {}) -> void:
-	var data: Dictionary = source if not source.is_empty() else JsonFile.read(PATH)
-	records = data.get("units", {})
+	if not source.is_empty():
+		records = source.get("units", {})
+	elif _cached_records.is_empty():
+		_cached_records = JsonFile.read(PATH).get("units", {})
+		records = _cached_records
+	else:
+		records = _cached_records
 
 
 static func era_index(year: int) -> int:
@@ -149,6 +157,9 @@ func check(def_id: String, year: int, faction_id: String) -> Dictionary:
 		return {"status": "unavailable", "reason": "Not introduced until %d." % intro}
 	var by_faction: Dictionary = row.get("factions", {})
 	if not by_faction.has(faction_id):
+		if String(row.get("matrix_status", "")) == "published":
+			return {"status": "unavailable", "reason": "MUL does not list this variant for %s during %s." % [
+				faction_name(faction_id), era_name(year)]}
 		return {"status": "unverified", "reason": "No verified MUL faction record for %s." % faction_name(faction_id)}
 	var allowed: Array = by_faction[faction_id]
 	if allowed.has(era):
