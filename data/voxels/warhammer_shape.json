@@ -445,6 +445,23 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              0,
+              29,
+              -1
+            ],
+            [
+              5,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
       ]
     },
     {
@@ -845,7 +862,24 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "box": [
+            [
+              4,
+              29,
+              -1
+            ],
+            [
+              9,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "la",
@@ -1716,5 +1750,6 @@
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
   "art_quality_passes": 50,
-  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition"
+  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
 }

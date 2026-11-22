@@ -291,6 +291,38 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -5,
+              28,
+              -1
+            ],
+            [
+              -1,
+              32,
+              2
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              0,
+              28,
+              -1
+            ],
+            [
+              4,
+              32,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
       ]
     },
     {
@@ -765,6 +797,23 @@
             ]
           ],
           "mat": "plate"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -8,
+              28,
+              -1
+            ],
+            [
+              -4,
+              32,
+              2
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -1889,5 +1938,6 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50
+  "art_quality_passes": 50,
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
 }
