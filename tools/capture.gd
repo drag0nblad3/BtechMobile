@@ -18,6 +18,25 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
+	if _mode.begins_with("weather="):
+		var preset := _mode.substr(8)
+		var cfg := {}
+		match preset:
+			"night": cfg = {"night": true}
+			"rain": cfg = {"rain": true, "wind": true}
+			"snow": cfg = {"snowfall": true, "wind": true}
+			"fog": cfg = {"low_visibility": true}
+			"heat": cfg = {"heat": 3}
+			"cold": cfg = {"cold": 3, "snowfall": true}
+			"wind": cfg = {"wind": true, "rain": true}
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+		for side in 2:
+			fb.add(side, "hunchback_hbk4g")
+			fb.add(side, "warhammer_whm6r")
+		fb.conditions = Conditions.from_dict(cfg)
+		BattleLaunch.pending = fb.build(MapLoader.load_file(
+				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
+		BattleLaunch.bot_sides = []
 	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode == "vfx":  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
@@ -62,7 +81,7 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
-	if _frames == 8 and _mode == "vfx":
+	if _frames == 8 and (_mode == "vfx" or _mode.begins_with("weather=")):
 		_stage_battle_visuals()
 	if _frames == 39 and _mode == "vfx":
 		# Visual review only: place a PPC across the visible battlefield.
