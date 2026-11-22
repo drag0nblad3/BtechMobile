@@ -59,7 +59,13 @@ session on a real phone are the next checks.
 - Versioned, compressed complete `GameState` save, including declared attacks, map state, objectives, pilot/critical details, and exact PRNG continuation.
 - Save button, one autosave at the first active side of each turn, and pause autosave. Continue button in the force builder.
 - Independent last-battle replay archive and read-only frame-by-frame viewer; recordings cover significant game events, not animation frames.
-- Round-trip and RNG tests added; **CI and device verification remain pending**. A save slot and replay archive may grow on long battles; next optimize snapshot deltas and storage quotas. See `docs/battle-save-replay.md`.
+- Round-trip and RNG tests, plus battle save/resume/replay scene smoke, **passed Godot CI**. Android device testing remains pending. A save slot and replay archive may grow on long battles; next optimize snapshot deltas and storage quotas. See `docs/battle-save-replay.md`.
+
+### Cinematic gameplay and Tactical Academy (2026-11-21 stacked PR #171)
+
+- A persistent **Cine: On/Off** battle-HUD camera toggle reframes movement, weapon fire, physical attacks, falls and destruction; manual gestures take priority. Purely cosmetic, no effect on dice or turn progression.
+- A compact per-event replay ledger powers Tactical Academy Battle Forensics: hit rates versus exact 2d6 expected hits, damage attribution, heat, piloting failures and decisive events, with replay checkpoints for inspection.
+- Available at game over, from a replay, and from the force builder. Godot focused unit and scene-navigation tests passed on the feature branch; full-suite and Android on-device usability checks are still required. See `docs/tactical-academy.md`.
 
 ### Remaining Android work
 - **Device testing.** One recent phone, one low-end phone, one tablet. Watch frame rate

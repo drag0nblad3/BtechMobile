@@ -92,6 +92,7 @@ func _build_options(parent: Control) -> void:
 		UiKit.button(box, "Continue saved battle", _continue_saved, Vector2(0, 64))
 	if BattleSave.has_replay():
 		UiKit.button(box, "Watch last replay", _watch_saved_replay, Vector2(0, 64))
+		UiKit.button(box, "Tactical Academy: Forensics", _open_forensics, Vector2(0, 64))
 	UiKit.button(box, "Start battle", _start, Vector2(0, 80))
 	UiKit.button(box, "Training campaign", open_training, Vector2(0, 64))
 
@@ -103,6 +104,10 @@ func _continue_saved() -> void:
 
 func _watch_saved_replay() -> void:
 	get_tree().change_scene_to_file("res://scenes/battle_replay.tscn")
+
+
+func _open_forensics() -> void:
+	get_tree().change_scene_to_file("res://scenes/battle_forensics.tscn")
 
 
 func _next_budget() -> void:

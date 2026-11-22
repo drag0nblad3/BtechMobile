@@ -42,6 +42,12 @@ its MP cost and the path, so the UI can preview any destination and facing insta
 
 `BattleCodec` encodes rule-object graphs (including typed integer hex keys) into JSON-compatible data, and `BattleSave` stores compressed files in `user://`. `BattleRecorder` listens to significant events and captures the authoritative `GameState`; `replay_scene.gd` reconstructs presentation scenes without any `GameController`. Save/load and replay never use voxel counts to determine game mechanics. See `battle-save-replay.md` for the schema, lifecycle and limitations.
 
+## Cinematic camera and Tactical Academy
+
+`CinematicDirector` (src/view/camera) is a presentation-only subscriber to resolved battle events. It changes `CameraRig` goals to follow movement and frame attacks, falls, and destruction. Manual camera gestures interrupt it. `GameSettings` persists the mode; camera poses are not part of any battle save. No camera action delays or changes the rules.
+
+`BattleRecorder` stores a compact event ledger in addition to major full-world replay checkpoints. `BattleForensics` (src/core/explain) analyzes that ledger without reconstructing dice or inferring hypothetical outcomes; `forensics_scene.gd` displays unit performance and decision points linked to nearby replay checkpoints. See `tactical-academy.md`.
+
 ## Planned modules (historical order)
 1. Backward walking, jumping, prone/standing, minimum movement.
 2. Line of sight (`Hex.line` + woods/levels) and to-hit modifiers.
