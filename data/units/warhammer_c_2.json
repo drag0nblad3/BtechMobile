@@ -1,0 +1,69 @@
+{
+ "id": "warhammer_c_2",
+ "name": "Warhammer",
+ "model": "C 2",
+ "tonnage": 70,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 18,
+ "heat_sink_type": "double",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 17,
+  "RT": 17,
+  "CT": 22,
+  "HD": 9,
+  "LL": 15,
+  "RL": 15
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "c_er_ppc"
+  ],
+  "RA": [
+   "heat_sink",
+   "c_er_ppc"
+  ],
+  "LT": [
+   "heat_sink*3",
+   "c_medium_pulse_laser",
+   "c_er_small_laser",
+   "c_small_pulse_laser"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "c_streak_srm6",
+   "c_medium_pulse_laser",
+   "c_er_small_laser",
+   "c_small_pulse_laser",
+   "ammo:c_streak_srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 7565,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 7/Warhammer C 2.mtf",
+  "published": "RSFP:NWH,RG07,RGv1",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Warhammer C 2 (ForcePack-Record-Sheets-Northwind-Highlanders)",
+  "megamek_bv": 2157
+ },
+ "bv": 2157,
+ "sprite": "warhammer",
+ "role": "Brawler: built to slug it out at medium range. 2 ER PPCs, 2 Medium Pulse Lasers, 2 ER Small Lasers, 2 Small Pulse Lasers, Streak SRM 6; walks 4, runs 6."
+}

@@ -18,7 +18,7 @@ func test_filter_and_groups() -> void:
 		if g[0].omni:
 			check_eq(g[0].config, "Prime", "%s lists the Prime first" % g[0].chassis)
 	for g: Array in inner:
-		check_eq(g.size(), 1)
+		check(g[0].omni or g.size() == 1, "one entry per Inner Sphere design, configs grouped for OmniMechs")
 		check(not g[0].is_clan())
 	var tw: Array = clan.filter(func(g: Array) -> bool: return g[0].chassis == "timber_wolf")[0]
 	check_eq(tw.map(func(d: UnitDef) -> String: return d.config), ["Prime", "A", "B", "Pryde"])

@@ -1,0 +1,87 @@
+{
+ "id": "mad_cat_mk_ii_4",
+ "name": "Mad Cat Mk II",
+ "model": "4",
+ "tonnage": 90,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 20,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 30,
+  "RT": 30,
+  "CT": 45,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink*3",
+   "c_er_large_laser*2",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "heat_sink*3",
+   "c_er_large_laser*2",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "c_lrm15",
+   "ammo:c_lrm15*3",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "c_lrm15",
+   "ammo:c_lrm15*3",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "HD": [
+   "c_light_active_probe"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6850,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/Mad Cat Mk II 4.mtf",
+  "published": "RS:3145-NTNU,RS:3145",
+  "role": "Sniper",
+  "bv": "megamek",
+  "megamek_bv": 2962
+ },
+ "bv": 2962,
+ "sprite": "mad_cat_mk_ii",
+ "role": "Sniper: hangs back and hits from long range. 4 ER Large Lasers, 2 LRM 15s; walks 4, runs 6, jumps 4."
+}

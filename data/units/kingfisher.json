@@ -1,0 +1,517 @@
+{
+ "id": "kingfisher",
+ "name": "Kingfisher",
+ "tonnage": 90,
+ "walk_mp": 4,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 28,
+  "RT": 28,
+  "CT": 44,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "omni": true,
+ "sprite": "kingfisher",
+ "equipment": {
+  "LT": [
+   "endo_steel*4",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "heat_sink",
+   "endo_steel*3",
+   "ferro_fibrous*3"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2401,
+   "heat_sinks": 17,
+   "equipment": {
+    "LA": [
+     "c_streak_srm6",
+     "c_er_small_laser",
+     "ammo:c_streak_srm6"
+    ],
+    "RA": [
+     "c_large_pulse_laser"
+    ],
+    "LT": [
+     "c_lrm10",
+     "c_medium_pulse_laser",
+     "ammo:c_lrm10"
+    ],
+    "RT": [
+     "c_medium_pulse_laser"
+    ],
+    "CT": [
+     "c_large_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 1786,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher Prime.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2401
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Large Pulse Lasers, 2 Medium Pulse Lasers, Streak SRM 6, ER Small Laser, LRM 10; walks 4, runs 6."
+  },
+  {
+   "model": "A",
+   "bv": 2261,
+   "heat_sinks": 17,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_medium_laser",
+     "c_medium_pulse_laser"
+    ],
+    "RA": [
+     "c_lb10x_ac"
+    ],
+    "LT": [
+     "c_srm6",
+     "ammo:c_srm6"
+    ],
+    "RT": [
+     "c_er_small_laser",
+     "ammo:c_lb10x_ac",
+     "ammo:c_lb10x_ac:cluster"
+    ],
+    "CT": [
+     "c_er_ppc"
+    ]
+   },
+   "source": {
+    "mul_id": 1779,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher A.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2261
+   },
+   "role": "Brawler: built to slug it out at medium range. ER Medium Laser, Medium Pulse Laser, LB 10-X AC, SRM 6, ER Small Laser, ER PPC; walks 4, runs 6."
+  },
+  {
+   "model": "B",
+   "bv": 2472,
+   "heat_sinks": 17,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_large_laser",
+     "c_er_medium_laser",
+     "c_er_small_laser"
+    ],
+    "RA": [
+     "c_ultra_ac20"
+    ],
+    "LT": [
+     "c_er_medium_laser*2"
+    ],
+    "RT": [
+     "c_er_medium_laser",
+     "ammo:c_ultra_ac20*2"
+    ],
+    "CT": [
+     "c_ams",
+     "ammo:c_ams"
+    ]
+   },
+   "source": {
+    "mul_id": 1780,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher B.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2472
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, ER Large Laser, ER Small Laser, Ultra AC/20, Anti-Missile System; walks 4, runs 6."
+  },
+  {
+   "model": "C",
+   "bv": 2644,
+   "heat_sinks": 25,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "c_er_ppc",
+     "c_er_medium_laser"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "c_er_ppc",
+     "c_er_medium_laser"
+    ],
+    "LT": [
+     "heat_sink*2"
+    ],
+    "RT": [
+     "heat_sink*2"
+    ],
+    "CT": [
+     "c_er_medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 1781,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher C.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2644
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, 2 ER PPCs; walks 4, runs 6."
+  },
+  {
+   "model": "D",
+   "bv": 2364,
+   "heat_sinks": 17,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_er_large_laser*2"
+    ],
+    "RA": [
+     "c_ultra_ac10"
+    ],
+    "RT": [
+     "ammo:c_ultra_ac10*2"
+    ],
+    "CT": [
+     "c_er_large_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 1782,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher D.mtf",
+    "published": "RS:CI",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2364
+   },
+   "role": "Sniper: hangs back and hits from long range. 3 ER Large Lasers, Ultra AC/10; walks 4, runs 6."
+  },
+  {
+   "model": "E",
+   "bv": 2443,
+   "heat_sinks": 17,
+   "equipment": {
+    "LA": [
+     "c_atm12"
+    ],
+    "RA": [
+     "c_large_pulse_laser"
+    ],
+    "LT": [
+     "c_medium_pulse_laser",
+     "ammo:c_atm12",
+     "ammo:c_atm12:er",
+     "ammo:c_atm12:he"
+    ],
+    "RT": [
+     "c_medium_pulse_laser"
+    ],
+    "CT": [
+     "c_medium_pulse_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 1783,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher E.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2443
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 Medium Pulse Lasers, ATM 12, Large Pulse Laser; walks 4, runs 6."
+  },
+  {
+   "model": "F",
+   "bv": 2568,
+   "heat_sinks": 17,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_hag30"
+    ],
+    "RA": [
+     "c_er_medium_laser*3"
+    ],
+    "LT": [
+     "ammo:c_hag30*3"
+    ],
+    "CT": [
+     "c_er_large_laser",
+     "guardian_ecm"
+    ]
+   },
+   "source": {
+    "mul_id": 1784,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Kingfisher F.mtf",
+    "published": "RG18",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2568
+   },
+   "role": "Brawler: built to slug it out at medium range. 3 ER Medium Lasers, HAG 30, ER Large Laser; walks 4, runs 6."
+  },
+  {
+   "model": "G",
+   "bv": 2319,
+   "heat_sinks": 17,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_srm6",
+     "c_er_small_laser",
+     "ammo:c_srm6"
+    ],
+    "RA": [
+     "c_lb20x_ac"
+    ],
+    "LT": [
+     "c_improved_heavy_medium_laser*2"
+    ],
+    "RT": [
+     "c_improved_heavy_medium_laser",
+     "ammo:c_lb20x_ac",
+     "ammo:c_lb20x_ac:cluster"
+    ],
+    "CT": [
+     "c_er_small_laser",
+     "supercharger"
+    ]
+   },
+   "source": {
+    "mul_id": 8261,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Kingfisher G.mtf",
+    "published": "RG18",
+    "role": "Juggernaut",
+    "bv": "megamek",
+    "megamek_bv": 2319
+   },
+   "role": "Juggernaut: slow and heavily armed, wins up close. 3 Improved Heavy Medium Lasers, 2 ER Small Lasers, SRM 6, LB 20-X AC; walks 4, runs 6."
+  },
+  {
+   "model": "H",
+   "bv": 2525,
+   "heat_sinks": 26,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "c_heavy_large_laser",
+     "targeting_computer"
+    ],
+    "RA": [
+     "heat_sink*3",
+     "c_heavy_large_laser",
+     "c_er_medium_laser"
+    ],
+    "LT": [
+     "heat_sink*2",
+     "c_er_medium_laser"
+    ],
+    "RT": [
+     "heat_sink*2"
+    ],
+    "CT": [
+     "c_er_medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 1785,
+    "megamek": "data/mekfiles/meks/3058Uu/Kingfisher H.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2525
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, 2 Heavy Large Lasers; walks 4, runs 6."
+  },
+  {
+   "model": "I",
+   "bv": 2348,
+   "heat_sinks": 19,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_improved_heavy_large_laser*2"
+    ],
+    "RA": [
+     "c_gauss_rifle",
+     "ammo:c_gauss_rifle"
+    ],
+    "LT": [
+     "heat_sink"
+    ],
+    "RT": [
+     "ammo:c_gauss_rifle"
+    ],
+    "CT": [
+     "heat_sink"
+    ]
+   },
+   "source": {
+    "mul_id": 8262,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Kingfisher I.mtf",
+    "published": "RG18",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2348
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Improved Heavy Large Lasers, Gauss Rifle; walks 4, runs 6."
+  },
+  {
+   "model": "T",
+   "bv": 2637,
+   "heat_sinks": 19,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_streak_srm6",
+     "c_er_medium_laser",
+     "ammo:c_streak_srm6",
+     "case2"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_improved_heavy_large_laser",
+     "c_improved_heavy_small_laser",
+     "case2"
+    ],
+    "LT": [
+     "c_streak_lrm10",
+     "c_er_medium_laser",
+     "ammo:c_streak_lrm10",
+     "case2"
+    ],
+    "RT": [
+     "targeting_computer",
+     "c_er_medium_laser"
+    ],
+    "CT": [
+     "c_er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 8260,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 18/Kingfisher T.mtf",
+    "published": "RG18",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2637
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, Streak SRM 6, Improved Heavy Large Laser, Improved Heavy Small Laser, Streak LRM 10; walks 4, runs 6."
+  }
+ ]
+}

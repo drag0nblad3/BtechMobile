@@ -22,8 +22,8 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 		if d.has("artemis_blocked") and level != ExplainLevel.OFF:
 			res += " (no Artemis bonus: %s)" % d["artemis_blocked"]
 	if d.has("ams_roll"):
-		res += "; anti-missile fire %s the Narc pod (1D6: %d, 4-6 destroys it)" % [
-				"shoots down" if d.get("pod_shot_down", false) else "misses", d["ams_roll"]] \
+		res += "; anti-missile fire %s the %s (1D6: %d, 4-6 destroys it)" % [
+				"shoots down" if d.get("pod_shot_down", false) else "misses", d.get("ams_target", "Narc pod"), d["ams_roll"]] \
 				if level != ExplainLevel.OFF else (", AMS shot it down" if d.get("pod_shot_down", false) else "")
 	elif d.get("ams", false):
 		res += "; anti-missile fire shot some down (-4 to the cluster roll)" if level != ExplainLevel.OFF else ", AMS"

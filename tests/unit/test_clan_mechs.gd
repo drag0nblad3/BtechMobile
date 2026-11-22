@@ -19,7 +19,8 @@ func test_roster() -> void:
 		seen[def.chassis] = true
 		check(def.omni == (def.config != ""), def.id + " OmniMechs name their configuration")
 		for m in def.weapon_mounts:
-			check((m["weapon"] as WeaponDef).is_clan(), "%s carries Clan %s" % [def.id, m["weapon"].name])
+			var w: WeaponDef = m["weapon"]  # mixed tech may carry Inner Sphere-only weapons
+			check(w.is_clan() or weapons().get_def("c_" + w.id) == null, "%s carries Clan %s" % [def.id, w.name])
 	for c: String in CHASSIS:
 		check(seen.has(c), c)
 	for id: String in ["hunchback_iic", "phoenix_hawk_iic", "rifleman_iic", "warhammer_iic", "marauder_iic", "kodiak"]:

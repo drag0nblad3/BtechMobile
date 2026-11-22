@@ -54,6 +54,9 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
 - `bv` is the weapon's Battle Value; `ammo_bv` is the value of one ton of its ammo.
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - `cluster_mod` adds to Cluster Hits rolls (MRM -1); `one_shot: true` fires once a game with no ammo bins (rocket launchers); `munitions` (ATM, MML) give a kind's own stats, `label` and `ammo_per_ton` for `ammo:<id>:<kind>` bins.
+- `fire_psr: true` (heavy Gauss) costs a piloting roll when fired after moving; `range_cluster: true` (HAG) gives +2/-2 to its cluster roll at short/long range; `heat_dice: n` (plasma) adds n d6 of heat to a 'Mech it hits.
+- `to_hit_by_range: [s, m, l]` (VSP lasers) replaces `to_hit` by range bracket; `explosion_damage` overrides a component explosion's 2 damage a slot.
+- `large_missile: true` (Thunderbolt): one missile, no cluster roll; AMS rolls to destroy it.
 - `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
@@ -98,6 +101,9 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - `"tech_base": "clan"` (ClanTech): XL engines take 2 slots a side, double heat sinks 2 slots,
   CASE is free in every location (don't list `case`), ferro-fibrous gives 19.2 points a ton and a
   targeting computer 1 t per 5 t of linked weapons. Use Clan weapons (`c_*`).
+- Mixed tech: `"clan_parts": {"engine": true, "heat_sinks": true, "armor": true, "tc": true, "ecm": true,
+  "masc": true, "case": true}` lists parts whose tech differs from `tech_base` (`false` on a Clan
+  chassis means Inner Sphere-made). Weapons carry their own tech via `c_*` ids.
 - OmniMechs (`OmniConfig`): one file per chassis with `"configs": [{"model": "Prime", "equipment": {...}, ...}]`.
   The top level holds the fixed parts (engine, armor, structure, fixed `equipment` such as
   endo/ferro slots); each config adds its pod `equipment` per location and may override any
@@ -110,19 +116,6 @@ the unit's Battle Value is multiplied by the entry for its pilot (4/5 = 1.0).
 - `sprite` names a folder under `assets/mechs/`; empty means the box placeholder.
 
 Maps may also list `"surface": {"ice": ["XXYY"], "mud": [...], "snow": [...]}` (p. 124) and `"fog": {"light": ["XXYY"], "heavy": ["XXYY"]}` (fog banks, book p. 124).
-
-## `data/assets/<id>.json`
-A Battlefield Support Asset card (book pp. 140-141). Values come only from official cards.
-```json
-{"id": "savior_repair_vehicle", "name": "Savior Repair Vehicle", "tech_base": "inner_sphere",
- "asset": {"type": "vehicle", "motive": "t", "mp": 4, "tmm": 1, "range": [1, 2, 3],
-   "skill": 6, "skill_improved": 5, "damage": 3, "groupings": 1, "check": 7, "threshold": 5,
-   "bsp": 13, "bsp_improved": 15, "specials": {"APC": 2, "MFB": 1}},
- "source": {"card": "Core Rulebook p. 141"}}
-```
-`type`: vehicle, infantry, battle_armor, vtol, emplacement. `motive`: f h j t v w ("" immobile).
-`specials`: card codes (APC, AI, NOTUR, BRA, RCA, RFA, FR, SWARM, ...) with their number (1 if none).
-BV is 20 x `bsp`. Rule-test cards live in `tests/fixtures/assets/` (ids `test_*`).
 
 ## `data/scenarios/<id>.json`
 ```json
@@ -151,3 +144,17 @@ Optional `"mission"` (book pp. 212-233; see `Mission`): `name`, `summary`, `turn
 (`[{"hex", "radius", "owner", "vp"}]`), `home_edges` (per side: `north`/`south`/`east`/`west`),
 `exit` (`"home"` or `"enemy_home"`: the edge units may leave by to score) and `exit_from_turn`.
 `scan` (`"units"`: enemy 'Mechs, 1 VP per scan for a 'Mech that leaves; `"intel"`: objectives with `"kind": "intel"`; `"potential"`: objectives with `"potential": true`) turns on End Phase scanning. Objectives may also set `"fragile"` and `"mobile"`. `exit_side` limits leaving to one side; `attacker` names the attacking side (Steel Rain scoring, `"scoring": "steel_rain"`).
+
+
+## `data/assets/<id>.json`
+A Battlefield Support Asset card (book pp. 140-141). Values come only from official cards.
+```json
+{"id": "savior_repair_vehicle", "name": "Savior Repair Vehicle", "tech_base": "inner_sphere",
+ "asset": {"type": "vehicle", "motive": "t", "mp": 4, "tmm": 1, "range": [1, 2, 3],
+   "skill": 6, "skill_improved": 5, "damage": 3, "groupings": 1, "check": 7, "threshold": 5,
+   "bsp": 13, "bsp_improved": 15, "specials": {"APC": 2, "MFB": 1}},
+ "source": {"card": "Core Rulebook p. 141"}}
+```
+`type`: vehicle, infantry, battle_armor, vtol, emplacement. `motive`: f h j t v w ("" immobile).
+`specials`: card codes (APC, AI, NOTUR, BRA, RCA, RFA, FR, SWARM, ...) with their number (1 if none).
+BV is 20 x `bsp`. Rule-test cards live in `tests/fixtures/assets/` (ids `test_*`).

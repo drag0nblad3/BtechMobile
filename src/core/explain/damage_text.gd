@@ -33,7 +33,7 @@ static func damage(s: GameState, d: Dictionary, level: int) -> String:
 		if d.get("tac", false):
 			t += "\n  A location roll of 2 can cause a critical hit even through armor."
 		var u := s.unit_by_id(d["unit_id"])
-		if u.def.is_xl() and u.def.is_clan() and not u.destroyed and d["steps"].any(func(st: Dictionary) -> bool:
+		if u.def.is_xl() and u.def.clan_part("engine") and not u.destroyed and d["steps"].any(func(st: Dictionary) -> bool:
 				return st["destroyed"] and (st["loc"] == Location.LT or st["loc"] == Location.RT)):
 			t += "\n  The Clan XL engine loses its 2 slots in that side torso (2 engine hits, +%d heat a turn) but keeps running." % (2 * HeatPhase.ENGINE_HIT_HEAT)
 	return t + "."

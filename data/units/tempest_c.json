@@ -1,0 +1,78 @@
+{
+ "id": "tempest_c",
+ "name": "Tempest",
+ "model": "C",
+ "tonnage": 65,
+ "walk_mp": 4,
+ "jump_mp": 4,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 24,
+  "RT": 24,
+  "CT": 32,
+  "HD": 9,
+  "LL": 28,
+  "RL": 28
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_large_pulse_laser",
+   "endo_steel*7"
+  ],
+  "RA": [
+   "c_gauss_rifle",
+   "ammo:c_gauss_rifle*2",
+   "endo_steel"
+  ],
+  "LT": [
+   "c_atm9",
+   "ammo:c_atm9*2",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "medium_laser*2"
+  ],
+  "HD": [
+   "medium_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 8005,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/NTNU/Tempest C.mtf",
+  "published": "RS:3150",
+  "role": "Sniper",
+  "bv": "megamek",
+  "megamek_bv": 2179
+ },
+ "bv": 2179,
+ "sprite": "tempest",
+ "role": "Sniper: hangs back and hits from long range. 3 Medium Lasers, Large Pulse Laser, Gauss Rifle, ATM 9; walks 4, runs 6, jumps 4."
+}

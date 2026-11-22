@@ -1,0 +1,74 @@
+{
+ "id": "albatross_alb5u",
+ "name": "Albatross",
+ "model": "ALB-5U",
+ "tonnage": 95,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 13,
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "gyro_type": "heavy_duty",
+ "armor_type": "heavy_ferro",
+ "armor": {
+  "LA": 32,
+  "RA": 32,
+  "LT": 30,
+  "RT": 30,
+  "CT": 45,
+  "HD": 9,
+  "LL": 40,
+  "RL": 40
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "rotary_ac2",
+   "heavy_ferro*5"
+  ],
+  "RA": [
+   "x_pulse_large_laser",
+   "er_medium_laser*2",
+   "heavy_ferro*4"
+  ],
+  "LT": [
+   "er_small_laser",
+   "ammo:mml7:srm",
+   "ammo:mml7",
+   "ammo:rotary_ac2",
+   "case",
+   "heavy_ferro*5"
+  ],
+  "RT": [
+   "mml7",
+   "heavy_ferro*6"
+  ],
+  "CT": [
+   "heavy_ferro"
+  ]
+ },
+ "source": {
+  "mul_id": 9511,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 13/Albatross ALB-5U.mtf",
+  "published": "ShrapRS",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Albatross ALB-5U (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 1885
+ },
+ "bv": 1885,
+ "sprite": "albatross",
+ "role": "Brawler: built to slug it out at medium range. 2 ER Medium Lasers, Rotary AC/2, Large X-Pulse Laser, ER Small Laser, MML 7; walks 4, runs 6."
+}

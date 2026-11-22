@@ -1,0 +1,75 @@
+{
+ "id": "griffin_iic_9",
+ "name": "Griffin IIC",
+ "model": "9",
+ "tonnage": 40,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 15,
+  "RT": 15,
+  "CT": 17,
+  "HD": 9,
+  "LL": 20,
+  "RL": 20
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 6
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "thunderbolt5",
+   "ammo:thunderbolt5",
+   "endo_steel",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "thunderbolt5",
+   "ammo:thunderbolt5",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "x_pulse_medium_laser"
+  ],
+  "HD": [
+   "c_er_small_laser"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 8159,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 14/Griffin IIC 9.mtf",
+  "published": "RG14,RGv1,RSFP:MERCS-CLAN",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Griffin IIC 9 (ForcePack-Record-Sheets-Mercenaries-Clan)",
+  "megamek_bv": 1106
+ },
+ "bv": 1106,
+ "sprite": "griffin_iic",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Thunderbolt 5s, Medium X-Pulse Laser, ER Small Laser; walks 6, runs 9, jumps 6."
+}
