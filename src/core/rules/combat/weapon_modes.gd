@@ -45,6 +45,8 @@ static func ammo_kind(w: MountedWeapon) -> String:
 		return Narc.KIND
 	if w.def.munitions.has(w.mode):
 		return w.mode
+	if w.artemis_v:
+		return "artemis_v"
 	return CLUSTER if w.mode == CLUSTER and w.def.lbx else ""
 
 
@@ -54,7 +56,14 @@ static func to_hit_mod(w: MountedWeapon) -> int:
 
 ## Artemis needs standard missiles: Narc-equipped ones don't use it.
 static func has_artemis(w: MountedWeapon) -> bool:
-	return (w.artemis or w.def.artemis_builtin) and not w.artemis_lost and ammo_kind(w) != Narc.KIND
+	return (w.artemis or w.artemis_v or w.def.artemis_builtin) and not w.artemis_lost and ammo_kind(w) != Narc.KIND
+
+
+## Clan Artemis V adds three cluster points; standard Artemis IV adds two.
+static func artemis_bonus(w: MountedWeapon) -> int:
+	if not has_artemis(w):
+		return 0
+	return 3 if w.artemis_v else ARTEMIS_BONUS
 
 
 ## Average damage when the attack hits, in the weapon's current mode.
@@ -67,7 +76,7 @@ static func expected_per_hit(w: MountedWeapon) -> float:
 	if ammo_kind(w) == CLUSTER:
 		return ClusterTable.expected(d.damage)
 	if d.is_cluster():
-		return ClusterTable.expected(d.missiles, ARTEMIS_BONUS if has_artemis(w) else 0) * d.damage
+		return ClusterTable.expected(d.missiles, artemis_bonus(w)) * d.damage
 	return float(d.damage)
 
 
@@ -93,7 +102,7 @@ static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false, no_a
 		return {"n": pellets, "roll": r2, "packets": _packets(pellets, 1)}
 	if d.is_cluster():
 		var r3 := dice.roll_2d6()
-		var bonus := (ARTEMIS_BONUS if has_artemis(w) and not no_artemis else 0) + (AntiMissile.CLUSTER_MOD if ams else 0) \
+		var bonus := (artemis_bonus(w) if not no_artemis else 0) + (AntiMissile.CLUSTER_MOD if ams else 0) \
 				+ (Narc.CLUSTER_BONUS if narc else 0) + Apollo.cluster_mod(w, d) + range_mod
 		var m := 0 if r3 + bonus < 2 and range_mod == 0 else ClusterTable.hits(d.missiles, r3 + bonus)
 		return {"n": m, "roll": r3, "bonus": bonus, "packets": _packets(m * d.damage, d.group * d.damage)}

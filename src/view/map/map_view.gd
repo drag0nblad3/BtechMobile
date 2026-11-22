@@ -15,6 +15,7 @@ var buildings: BuildingProps
 var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
 var bridges: BridgeProps
 var bridge_scars := {}  ## The same for bridge stonework.
+var weather_tint := Color.WHITE
 
 
 func build(battle_map: BattleMap) -> void:
@@ -65,11 +66,21 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	mat.set_shader_parameter("detail_color", own.darkened(0.25) if own != null else terrain.detail_color)
 	mat.set_shader_parameter("noise_tex", noise)
 	mat.set_shader_parameter("pattern", 0 if surface != "" else PATTERNS.get(terrain.pattern, 0))
+	mat.set_shader_parameter("weather_tint", weather_tint)
 	var inst := MultiMeshInstance3D.new()
 	inst.name = "Terrain_%s%s" % [terrain.id, "_" + surface if surface != "" else ""]
 	inst.multimesh = mm
 	inst.material_override = mat
 	return inst
+
+
+## Cosmetic weather wash; retained when the terrain meshes rebuild.
+func set_conditions(c: Conditions) -> void:
+	weather_tint = Color("#9ca8bd") if c.night else Color("#c6d9f1") if c.cold > 0 \
+			else Color("#f4d7b6") if c.heat > 0 else Color.WHITE
+	for node in get_children():
+		if node is MultiMeshInstance3D and node.material_override is ShaderMaterial:
+			(node.material_override as ShaderMaterial).set_shader_parameter("weather_tint", weather_tint)
 
 
 ## Higher ground is slightly brighter so levels read at a glance.

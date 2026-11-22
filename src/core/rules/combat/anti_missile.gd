@@ -8,7 +8,7 @@ extends RefCounted
 ## while the MechWarrior is unconscious.
 ## A single missile (a Narc pod) is shot down on 1D6 4-6 instead.
 ## TODO(rules): the defender always engages (the book lets them choose);
-## laser AMS isn't modelled.
+## laser AMS generates heat without consuming ammunition.
 
 const CLUSTER_MOD := -4
 const STREAK_ROLL := 7
@@ -30,7 +30,7 @@ static func engaging(target: Unit, attacker: Unit, w: MountedWeapon) -> MountedW
 
 ## Engages: spends a shot, adds heat. Returns false if it had no ammo left.
 static func engage(target: Unit, a: MountedWeapon) -> bool:
-	if not target.use_ammo(a.def):
+	if a.def.uses_ammo() and not target.use_ammo(a.def):
 		return false
 	a.engaged += 1
 	target.heat_generated += a.def.heat

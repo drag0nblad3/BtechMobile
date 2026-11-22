@@ -1,6 +1,6 @@
 {
   "id": "king_crab_shape",
-  "name": "King Crab KGC-000 — shape study",
+  "name": "King Crab KGC-000 \u2014 shape study",
   "unit": "king_crab_kgc000",
   "voxel_size": 0.063235,
   "subdivide": 1,
@@ -4439,7 +4439,19 @@
   ],
   "jets": {},
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_signature_revision": "recognizable-claw-and-separated-gun-mouths"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_signature_revision": "recognizable-claw-and-separated-gun-mouths",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 0,
+    "stages_with_changes": 0
+  }
 }

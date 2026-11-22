@@ -5,9 +5,11 @@ extends Control
 signal resumed
 signal save_requested
 signal exit_requested
+signal voxel_toggled
 signal shake_toggled
 
 var _message: Label
+var _voxel_button: Button
 var _shake_button: Button
 
 
@@ -43,6 +45,9 @@ func _ready() -> void:
 	_message.add_theme_font_size_override("font_size", 21)
 	UiSkin.label(_message, "muted")
 	box.add_child(_message)
+	_voxel_button = _add_button(box, "Voxel 'Mechs: On", func(): voxel_toggled.emit())
+	var audio_settings := BattleAudioSettings.new()
+	box.add_child(audio_settings)
 	_shake_button = _add_button(box, "Camera shake: On", func(): shake_toggled.emit())
 	_add_button(box, "Resume Battle", func(): resumed.emit(), "primary")
 	_add_button(box, "Save Battle", func(): save_requested.emit())
@@ -51,6 +56,11 @@ func _ready() -> void:
 
 func set_message(value: String) -> void:
 	_message.text = value
+
+
+func set_voxel_label(enabled: bool) -> void:
+	if _voxel_button != null:
+		_voxel_button.text = "Voxel 'Mechs: On" if enabled else "Voxel 'Mechs: Off"
 
 
 func set_shake_label(on: bool) -> void:

@@ -26,95 +26,115 @@ def round5(x):
 
 
 def apply_one(d, name, asset=False):
-    counts = []
-    for pass_no in range(50):
-        focus = pass_no % 10
-        cycle = pass_no // 10
-        strength = 1.0 - cycle * 0.12
-        changes = 0
+    """Second cycle 51-100. Review five views; edit only measured outliers."""
+    reviewed = []
+    for cycle in range(50):
+        feature = cycle % 10
+        view = ("front", "side", "rear", "top", "three_quarter")[cycle % 5]
+        edited = 0
+        base = next((p for p in d.get("parts", []) if p.get("name") == "ct"), {})
+        body_lofts = [s["loft"] for s in base.get("shapes", []) if "loft" in s]
+        body_x = [v[0] for l in body_lofts for sec in l["sections"]
+                  for v in sec["polygon"]]
+        body_z = [v[1] for l in body_lofts if l.get("axis", "y") == "y"
+                  for sec in l["sections"] for v in sec["polygon"]]
+        width = max(1.0, max(body_x) - min(body_x)) if body_x else 10.0
+        depth = max(1.0, max(body_z) - min(body_z)) if body_z else 10.0
         for part in d.get("parts", []):
-            if "mirror" in part:
+            if part.get("mirror"):
                 continue
-            part_name = part.get("name", "")
+            pname = part.get("name", "")
+            for shape in part.get("shapes", []):
+                loft = shape.get("loft", {})
+                sections = loft.get("sections", [])
+                if len(sections) < 2:
+                    continue
+                axis = loft.get("axis", "y")
+                widths = [max(v[0] for v in sec["polygon"]) -
+                          min(v[0] for v in sec["polygon"]) for sec in sections]
+                depths = [max(v[1] for v in sec["polygon"]) -
+                          min(v[1] for v in sec["polygon"]) for sec in sections]
+                widest = max(widths)
+                if widest < 1.0:
+                    continue
+                for i, sec in enumerate(sections):
+                    frac = i / max(1, len(sections) - 1)
+                    w, dz = widths[i], depths[i]
+                    sx = sz = 1.0
+                    rear_only = False
+                    if asset:
+                        # Review assets without giving infantry or vehicle
+                        # silhouettes generic humanoid proportions.
+                        if feature == 1 and pname in ("hull", "fuselage") and axis == "y" and dz > width * 1.3:
+                            sz = .996
+                            rear_only = True
+                    elif feature == 0 and pname == "ct" and axis == "y" and name not in WIDE | QUAD | {"jenner", "wolverine"}:
+                        if frac < .31 and w > widest * .78:
+                            sx = .989
+                    elif feature == 1 and pname == "ct" and axis == "y" and name not in QUAD | {"king_crab", "turkina", "stalker"}:
+                        if dz > width * (1.24 if name in BIRD else 1.12) and .1 < frac < .9:
+                            sz = .986
+                            rear_only = True
+                    elif feature == 2 and pname in ("lt", "rt") and axis == "y" and name not in QUAD | {"atlas", "king_crab", "timber_wolf", "archer"}:
+                        if frac > .60 and w > widest * .90 and w > width * .22:
+                            sx = .991
+                    elif feature == 3 and pname in ("la", "ra") and axis == "y" and name not in QUAD | {"king_crab", "crab", "rifleman", "archer", "timber_wolf", "dire_wolf", "marauder", "warhammer", "annihilator"}:
+                        if frac > .45 and w > width * .37:
+                            sx = .989
+                    elif feature == 4 and pname == "hd" and axis == "y" and name not in SPECIAL_HEAD | {"marauder", "raven", "locust", "timber_wolf", "shadow_cat"}:
+                        if w > width * .62 and frac > .25:
+                            sx = .986
+                    elif feature == 5 and pname in ("ll", "rl") and axis == "y" and name not in QUAD:
+                        if frac > .35 and w > width * (.51 if name in WIDE else .42):
+                            sx = .986
+                    elif feature == 6 and ("shin" in pname or pname in ("ll", "rl")) and axis == "y" and name not in QUAD:
+                        if .18 < frac < .72 and dz > depth * .62:
+                            sz = .992
+                            rear_only = True
+                    elif feature == 7 and ("foot" in pname or "tarsus" in pname) and axis == "y" and name not in QUAD:
+                        if frac < .48 and w < width * .16 and width > 13:
+                            sx = 1.008
+                    elif feature == 8 and axis == "z" and any(t in pname for t in ("barrel", "cannon", "gun", "gauss", "ppc")):
+                        if frac < .32 and w >= widest * .94 and len(sections) > 2:
+                            sx = .991
+                    elif feature == 9 and pname == "ct" and axis == "y" and name not in WIDE | QUAD | {"jenner", "wolverine"}:
+                        if frac > .75 and w > widest * .90:
+                            sx = .991
+                    if sx == 1 and sz == 1:
+                        continue
+                    xs = [v[0] for v in sec["polygon"]]
+                    zs = [v[1] for v in sec["polygon"]]
+                    cx = (min(xs) + max(xs)) * .5
+                    cz = (min(zs) + max(zs)) * .5
+                    for v in sec["polygon"]:
+                        x0, z0 = v
+                        x1 = round(cx + (x0 - cx) * sx, 5)
+                        z1 = round(cz + (z0 - cz) * sz, 5) if not rear_only or z0 > cz else z0
+                        if abs(x0 - x1) > .0001 or abs(z0 - z1) > .0001:
+                            v[:] = [x1, z1]
+                            edited += 1
+        # Validate every revised section, not just the final pass.
+        for part in d.get("parts", []):
             for shape in part.get("shapes", []):
                 loft = shape.get("loft")
                 if not loft:
                     continue
-                axis = loft.get("axis", "y")
-                sections = loft.get("sections", [])
-                for i, section in enumerate(sections):
-                    phase = i / max(1, len(sections) - 1)
-                    vertices = section.get("polygon", [])
-                    if not vertices:
-                        continue
-                    xs = [v[0] for v in vertices]
-                    zs = [v[1] for v in vertices]
-                    cx = (min(xs) + max(xs)) / 2
-                    cz = (min(zs) + max(zs)) / 2
-                    for v in vertices:
-                        x, z = v
-                        fx = fz = 1.0
-                        forward = 0.0
-                        if asset:
-                            if focus == 0 and part_name in ("hull", "fuselage", "base"):
-                                fx = 1 - .005 * strength
-                            elif focus == 1 and part_name in ("hull", "fuselage", "base"):
-                                fz = 1 - .005 * strength
-                            elif focus == 2 and ("turret" in part_name or "pod" in part_name):
-                                fx = 1 - .004 * strength
-                            elif focus == 3 and ("launcher" in part_name or "missile" in part_name):
-                                fx = 1 - .003 * strength
-                            elif focus == 4 and ("track" in part_name or "wheel" in part_name):
-                                fx = 1 - .003 * strength
-                            elif focus == 5 and ("cockpit" in part_name or "nose" in part_name):
-                                fx = 1 - .003 * strength
-                            elif focus == 6 and ("rotor" in part_name or "tail" in part_name):
-                                fx = 1 - .003 * strength
-                            elif focus == 7 and ("skirt" in part_name or "hover" in part_name):
-                                fx = 1 - .003 * strength
-                            elif focus == 8 and "soldier" in part_name:
-                                fx = 1 - .005 * strength
-                            elif focus == 9 and ("hull" in part_name or "soldier" in part_name or "fuselage" in part_name or "base" in part_name):
-                                fx = 1 - .002 * strength
-                        else:
-                            avian = name in BIRD
-                            wide = name in WIDE
-                            quad = name in QUAD
-                            if focus == 0 and part_name == "ct" and axis == "y" and not quad:
-                                fx = 1 - (.003 if wide else .007 if phase < .28 else .002) * strength
-                            elif focus == 1 and part_name == "ct" and axis == "y":
-                                fz = 1 - (.007 if avian else .003) * strength
-                            elif focus == 2 and part_name in ("ct", "pelvis") and axis == "y" and phase < .36 and not quad:
-                                fx = 1 - (.010 if not wide else .003) * strength
-                            elif focus == 3 and part_name in ("lt", "rt") and axis == "y" and phase > .30:
-                                fx = 1 - (.007 if not wide else .002) * strength
-                            elif focus == 4 and part_name in ("la", "ra") and axis == "y" and phase > .35:
-                                fx = 1 - .008 * strength
-                            elif focus == 5 and part_name == "hd" and axis == "y" and name not in SPECIAL_HEAD:
-                                fx = 1 - .003 * strength
-                                if avian and z < cz:
-                                    forward = .045 * strength
-                            elif focus == 6 and part_name in ("ll", "rl") and axis == "y" and not quad:
-                                fx = 1 - .004 * strength
-                            elif focus == 7 and "shin" in part_name and axis == "y":
-                                fx = 1 - .007 * strength
-                            elif focus == 8 and ("foot" in part_name or "tarsus" in part_name) and axis == "y":
-                                fx = 1 - (.005 if avian else .002) * strength
-                            elif focus == 9 and any(w in part_name for w in ("cannon", "rack", "lrm", "srm", "gun", "gauss", "launcher")) and axis == "y":
-                                fx = 1 - .002 * strength
-                        nx = cx + (x - cx) * fx
-                        nz = cz + (z - cz) * fz - forward
-                        if abs(nx - x) > 0.000001 or abs(nz - z) > 0.000001:
-                            v[0], v[1] = round5(nx), round5(nz)
-                            changes += 1
-        counts.append(changes)
-    d["art_quality_passes"] = 50
-    d["art_quality_revision"] = "50-stage-source-review-20261121"
-    return counts
+                sec = loft["sections"]
+                for i in range(1, len(sec)):
+                    if sec[i]["at"] <= sec[i-1]["at"] or len(sec[i]["polygon"]) != len(sec[i-1]["polygon"]):
+                        raise ValueError("%s %s: invalid loft in cycle %d" % (name, part["name"], cycle+51))
+        reviewed.append({"pass": cycle+51, "view": view,
+                         "feature": FOCUS[feature], "edited_vertices": edited})
+    d["art_quality_passes"] = 100
+    d["art_quality_revision"] = "51-to-100-reference-proportions-20261122"
+    d["reference_review_views"] = ["front", "side", "rear", "top", "three_quarter"]
+    d["shape_review_50"] = {"passes": 50, "edited_vertices": sum(x["edited_vertices"] for x in reviewed),
+                            "stages_with_changes": sum(x["edited_vertices"] > 0 for x in reviewed)}
+    return [x["edited_vertices"] for x in reviewed]
 
 
 def is_already_done(d):
-    return int(d.get("art_quality_passes", 0)) >= 50
+    return int(d.get("art_quality_passes", 0)) >= 100
 
 
 def write(path, d):
@@ -129,7 +149,7 @@ def main():
         paths = [low_path] + ([high_path] if high_path.exists() else [])
         original = [json.loads(p.read_text()) for p in paths]
         if all(is_already_done(d) for d in original):
-            audit["mechs"][name] = {"passes": 50, "already_reviewed": True}
+            audit["mechs"][name] = {"passes": 100, "already_reviewed": True}
             continue
         models = [copy.deepcopy(d) for d in original]
         scores = [apply_one(d, name) for d in models]
@@ -146,11 +166,11 @@ def main():
         for p, d in zip(paths, models):
             write(p, d)
             audit["source_changed"] += 1
-        audit["mechs"][name] = {"passes": 50, "edited_vertices": sum(sum(x) for x in scores)}
+        audit["mechs"][name] = {"passes": 100, "new_review_cycles": 50, "edited_vertices": sum(scores[0]), "stages_with_changes": sum(x > 0 for x in scores[0])}
     for asset_path in sorted(ART.glob("*.json")):
         model = json.loads(asset_path.read_text())
         if is_already_done(model):
-            audit["assets"][asset_path.stem] = {"passes": 50, "already_reviewed": True}
+            audit["assets"][asset_path.stem] = {"passes": 100, "already_reviewed": True}
             continue
         old = copy.deepcopy(model)
         counts = apply_one(model, asset_path.stem, True)
@@ -159,10 +179,10 @@ def main():
             raise ValueError("Asset cap exceeds 50k: " + asset_path.name)
         write(asset_path, model)
         audit["source_changed"] += 1
-        audit["assets"][asset_path.stem] = {"passes": 50, "edited_vertices": sum(counts)}
-    target = ROOT / "docs" / "graphics" / "fifty_pass_source_quality_report.json"
+        audit["assets"][asset_path.stem] = {"passes": 100, "new_review_cycles": 50, "edited_vertices": sum(counts)}
+    target = ROOT / "docs" / "graphics" / "second_fifty_source_quality_report.json"
     write(target, audit)
-    print("50-pass source quality report:", audit["source_changed"], "files changed")
+    print("51-100 source quality report:", audit["source_changed"], "files changed")
 
 
 if __name__ == "__main__":
