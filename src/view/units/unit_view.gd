@@ -84,7 +84,7 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 	if path.is_empty():
 		animation_finished.emit.call_deferred()
 		return
-	if mode == MoveMode.Kind.JUMP and unit.def.jump_mp > 0:
+	if mode == MoveMode.Kind.JUMP and unit.def.jump_mp > 0 and not unit.def.is_support():
 		_jump_path(path, start_coord, start_facing)
 		return
 	var tw := create_tween()
@@ -116,7 +116,7 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 func _jump_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 	var last: Vector3i = path[-1]
 	var destination := Vector2i(last.x, last.y)
-	var start := _hex_pos(start_coord)
+	var start := position  # exact visual start, even from a rooftop or bridge
 	var finish := _hex_pos(destination)
 	var distance := Hex.distance(start_coord, destination)
 	if distance <= 0:
@@ -130,7 +130,7 @@ func _jump_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 	var from_yaw := rotation.y
 	var final_yaw := HexLayout.facing_yaw(last.z)
 	var plume := JumpJetFx.spawn(self)
-	_ground_burst(start_coord, true)
+	_ground_burst(start_coord, true, start)
 	var tween := create_tween()
 	tween.tween_method(func(t: float) -> void:
 		position = JumpJetFx.arc(start, finish, t, apex)
@@ -147,11 +147,11 @@ func _jump_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
 		animation_finished.emit())
 
 
-func _ground_burst(coord: Vector2i, launching: bool) -> void:
+func _ground_burst(coord: Vector2i, launching: bool, at: Vector3 = Vector3.INF) -> void:
 	var tile: MapTile = map.get_tile(coord)
 	if tile == null:
 		return
-	var pos := _hex_pos(coord) + Vector3(0, 0.06, 0)
+	var pos := (at if at != Vector3.INF else _hex_pos(coord)) + Vector3(0, 0.06, 0)
 	var kind := "jet_splash" if tile.is_water() else ("jet_launch" if launching else "jet_land")
 	VxBlast.spawn(self, pos, kind, unit.id * 283 + (1 if launching else 2))
 
@@ -170,7 +170,7 @@ func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
 	var side := -1.0 if weapon_index >= 0 and weapon_index % 2 == 0 else 1.0
 	var height := bounds.position.y + size.y * 0.67
 	var local := Vector3(side * size.x * 0.32, height, bounds.position.z - size.z * 0.43)
-	return global_transform * (_model.transform * local)
+	return global_transform * local
 
 
 func impact_point(from: Vector3) -> Vector3:
@@ -178,8 +178,8 @@ func impact_point(from: Vector3) -> Vector3:
 	var center := bounds.get_center()
 	var direction := (to_local(from) - center).normalized()
 	var extent := bounds.size * 0.45
-	return global_transform * (_model.transform * (center + Vector3(direction.x * extent.x,
-		direction.y * extent.y, direction.z * extent.z)))
+	return global_transform * (center + Vector3(direction.x * extent.x,
+		direction.y * extent.y, direction.z * extent.z))
 
 
 func _find_socket(root: Node, wanted: String) -> Node3D:
