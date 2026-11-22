@@ -122,7 +122,28 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 	var rigid := rigid_components(m)
 	report["rig_islands"] = rigid["unanchored"]
 	report["rig_groups"] = rigid["groups"]
+	var assembled := physical_components(m)
+	report["floating_islands"] = assembled["islands"]
+	report["floating_groups"] = assembled["groups"]
 	return report
+
+
+## Geometrically unsupported fragments in the intact assembled 'Mech.
+## This is the strict floating-island metric. Keep it separate from the more
+## conservative per-rig diagnostic, which also records intentionally separated
+## armor plates that share physical support through another articulated part.
+static func physical_components(m: VxModel) -> Dictionary:
+	var occupied := {}
+	for p: Dictionary in m.parts:
+		for c: Vector3i in p["cells"]:
+			occupied[c] = true
+	var groups := components(occupied)
+	if groups.size() <= 1:
+		return {"islands": 0, "groups": []}
+	var sizes := []
+	for i in range(1, groups.size()):
+		sizes.append(groups[i].size())
+	return {"islands": groups.size()-1, "groups": sizes}
 
 
 ## A rigid frame includes non-jointed children. A single cannon hand may
