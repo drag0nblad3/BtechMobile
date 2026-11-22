@@ -138,6 +138,25 @@ jobs:
           name: battlefield-polish-visual-review
           path: /tmp/battle-visuals/city_vfx.png
           if-no-files-found: error
+      - name: Capture jump plume and muzzle preview (Compatibility renderer)
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'weapon-sockets-jump-fx')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/jump-review
+          timeout --signal=TERM --kill-after=5s 110s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/jump-review/jump.png jump 2>&1 | tee jump-capture.log
+          timeout --signal=TERM --kill-after=5s 110s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/jump-review/weapons.png vfx 2>&1 | tee -a jump-capture.log
+          test -s /tmp/jump-review/jump.png
+          test -s /tmp/jump-review/weapons.png
+          ! cmp -s /tmp/jump-review/jump.png /tmp/jump-review/weapons.png
+          ! grep -E "SCRIPT ERROR|Parse Error|CAPTURE_JUMP_FAILED" jump-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'weapon-sockets-jump-fx')
+        with:
+          name: weapon-sockets-and-jump-review
+          path: /tmp/jump-review/*.png
+          if-no-files-found: error
       - name: Launcher navigation smoke
         run: |
           set -o pipefail

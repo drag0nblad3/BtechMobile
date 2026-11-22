@@ -28,7 +28,7 @@ func is_busy() -> bool:
 
 ## path/start come from the controller's UNIT_MOVED event.
 func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int,
-		mode: int = MoveMode.Kind.WALK) -> void:
+		mode: int = -1) -> void:
 	var v: UnitView = views[unit_id]
 	_playing += 1
 	busy_changed.emit(true)

@@ -65,7 +65,7 @@ static func names(o: Object) -> Array:
 				"out_since_turn"]
 	if o is MountedWeapon:
 		return ["def", "loc", "rear", "destroyed", "exploded", "mode", "artemis",
-				"artemis_lost", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
+				"artemis_lost", "artemis_v", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
 				"jammed", "spent", "crit_hits", "on_vehicle", "on_squad", "capacitor", "capacitor_lost",
 				"cap_charged", "cap_released"]
 	if o is AmmoBin:
