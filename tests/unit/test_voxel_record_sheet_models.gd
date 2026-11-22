@@ -16,7 +16,7 @@ func test_all_vehicle_records_have_individual_fifty_pass_voxel_models() -> void:
 		check_eq(int(d.get("voxel_cap", 0)), 50000, id + " strict cap")
 		check_eq(int(d.get("art_quality_passes", 0)), 50, id + " 50 source edits")
 		check(int(d.get("geometry_edits", 0)) > 500, id + " actual geometry refinements")
-		check(d.get("signature", "").length() > 15, id + " recognisable weapon/silhouette")
+		check(String(d.get("signature", "")).length() > 15, id + " recognisable weapon/silhouette")
 		check_eq(d.get("vehicle_shape_revision", ""), "unit-specific-50-cycle-20261122")
 		var m := VoxelAsset.model_from_dict(d)
 		check(m.errors.is_empty(), "%s geometry errors: %s" % [id, m.errors])
@@ -35,8 +35,14 @@ func test_all_record_sheet_battle_armor_have_distinct_squads_and_weapons() -> vo
 		check_eq(int(d.get("voxel_cap", 0)), 50000)
 		check_eq(int(d.get("art_quality_passes", 0)), 50)
 		check(int(d.get("geometry_edits", 0)) > 0, id + " fifty actual edits")
-		check_eq(String(d.get("weapon_kind", "")), "gauss" if id.contains("gauss")
-			else "flamer" if id.contains("flamer") else "mg" if id.ends_with("_mg") else "laser",
+		var expected := "laser"
+		if id.contains("gauss"):
+			expected = "gauss"
+		elif id.contains("flamer"):
+			expected = "flamer"
+		elif id.ends_with("_mg"):
+			expected = "mg"
+		check_eq(String(d.get("weapon_kind", "")), expected,
 			id + " distinctive anti-personnel weapon")
 		check_eq(d["parts"].size(), 4 if id.begins_with("is_standard") else 5,
 			id + " squad silhouette has official trooper count")
