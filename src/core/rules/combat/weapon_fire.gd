@@ -71,7 +71,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 				return
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
+	if w.def.large_missile and ams != null and Thunderbolt.shot_down(dice, data):
+		emit.call(GameEvent.WEAPON_FIRED, data)
+		return
 	var dist := Hex.distance(attacker.coord, target.coord)
+	if w.def.large_missile:
+		ams = null  # already rolled against
 	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing,
 			GaussWeapons.cluster_mod(w.def, dist))
 	if th.narc_homing:

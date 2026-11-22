@@ -359,6 +359,40 @@
    "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Heavy Medium Lasers, Heavy Large Laser, Medium Pulse Laser, Ultra AC/20; walks 5, runs 8."
   },
   {
+   "model": "T",
+   "bv": 2219,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "c_ultra_ac5"
+    ],
+    "RA": [
+     "c_er_ppc"
+    ],
+    "LT": [
+     "c_improved_heavy_medium_laser",
+     "c_streak_lrm10",
+     "ammo:c_streak_lrm10",
+     "ammo:c_ultra_ac5",
+     "case2"
+    ],
+    "RT": [
+     "thunderbolt5*2",
+     "ammo:thunderbolt5*2",
+     "case2"
+    ]
+   },
+   "source": {
+    "mul_id": 8209,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 16/Cauldron-Born (Ebon Jaguar) T.mtf",
+    "published": "RG16",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2219
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 Thunderbolt 5s, Ultra AC/5, ER PPC, Improved Heavy Medium Laser, Streak LRM 10; walks 5, runs 8."
+  },
+  {
    "model": "Samantha",
    "bv": 2372,
    "heat_sinks": 13,

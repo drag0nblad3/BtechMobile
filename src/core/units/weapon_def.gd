@@ -50,6 +50,7 @@ var fire_psr: bool     ## Heavy Gauss: firing after moving costs a piloting roll
 var range_cluster: bool  ## HAG: cluster roll +2 at short range, -2 at long (GaussWeapons).
 var heat_dice: int     ## Plasma: a hit adds this many d6 of heat to the target (Plasma).
 var to_hit_by_range: Array[int] = []  ## VSP lasers: own to-hit modifier at short, medium, long.
+var large_missile: bool  ## Thunderbolt: one big missile; AMS may shoot it down (Thunderbolt).
 var explosion_damage: int  ## Component explosion damage, if not 2 a slot (improved heavy lasers).
 
 
@@ -98,6 +99,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	for v in d.get("to_hit_by_range", []):
 		w.to_hit_by_range.append(int(v))
 	w.explosion_damage = int(d.get("explosion_damage", 0))
+	w.large_missile = bool(d.get("large_missile", false))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()
