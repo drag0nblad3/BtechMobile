@@ -174,6 +174,8 @@ func clear_selection() -> void:
 	hud.leave_button.visible = false
 	hud.masc_button.visible = false
 	hud.sc_button.visible = false
+	hud.prone_button.visible = false
+	hud.refresh_move_actions()
 	hud.set_info("")
 
 
@@ -243,6 +245,8 @@ func _refresh() -> void:
 	hud.smash_button.visible = _forces_entry()
 	hud.smash_button.text = "Smash in: on" if smash else "Smash in"
 	hud.leave_button.visible = has_preview and controller.state.mission.def != null and _can_leave()
+	hud.prone_button.visible = not selected.prone
+	hud.refresh_move_actions()
 	if has_preview:
 		var tip := Advisor.move(controller.state, selected, mode, preview, options,
 				GameSettings.explain_level)

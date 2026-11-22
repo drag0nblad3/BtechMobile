@@ -8,6 +8,7 @@ config/description="Rules-complete BattleTech simulator for phones."
 run/main_scene="res://scenes/launcher.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+config/quit_on_go_back=false
 
 [display]
 

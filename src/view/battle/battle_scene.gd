@@ -95,7 +95,27 @@ func _autosave() -> bool:
 
 
 func _save_battle() -> void:
-	hud.set_tip("Battle saved." if _autosave() else "Save failed.")
+	var saved := _autosave()
+	hud.set_tip("Battle saved." if saved else "Save failed.")
+	if hud.pause_menu.visible:
+		hud.pause_menu.set_message("Battle saved." if saved else "Save failed; battle is still open.")
+
+
+func _toggle_pause() -> void:
+	var opening := not hud.pause_menu.visible
+	hud.pause_menu.visible = opening
+	if opening:
+		hud.pause_menu.set_message("The battle is stopped until you resume.")
+	get_tree().paused = opening
+
+
+func _exit_to_menu() -> void:
+	if not _autosave():
+		hud.pause_menu.set_message("Save failed. The battle is still open.")
+		return
+	get_tree().paused = false
+	BattleLaunch.open_training = training >= 0
+	get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
 
 
 func _watch_replay() -> void:
@@ -117,7 +137,9 @@ func _open_forensics() -> void:
 
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST and controller != null:
+		_toggle_pause()
+	elif what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
 		_autosave()
 
 
@@ -208,6 +230,8 @@ func _wire() -> void:
 	hud.sheet_toggled.connect(_toggle_sheet)
 	hud.explain_cycled.connect(_cycle_explain)
 	hud.save_battle.connect(_save_battle)
+	hud.pause_toggled.connect(_toggle_pause)
+	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
 	hud.battle_forensics.connect(_open_forensics)
 	hud.new_battle.connect(func():

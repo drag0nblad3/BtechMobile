@@ -18,6 +18,18 @@ var _prev: Button
 var _next: Button
 
 
+## Deliberate Android Back navigation when automatic exit is disabled.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+		get_viewport().set_input_as_handled()
+		get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
+
+
 func _ready() -> void:
 	_frames = BattleSave.load_replay()
 	_db = UnitDb.load_dir()

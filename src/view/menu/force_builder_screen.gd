@@ -14,6 +14,18 @@ var catalog: ForceCatalog
 var bot_sides := [1]
 
 
+## Deliberate Android Back navigation when automatic exit is disabled.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		get_tree().quit()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+		get_viewport().set_input_as_handled()
+		get_tree().quit()
+
+
 func _ready() -> void:
 	GameSettings.load_settings()
 	db = UnitDb.load_dir()
