@@ -33,7 +33,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var t := 1.0 - exp(-EASE * delta)
 	_target = _target.lerp(_goal_target, t)
-	_yaw = lerpf(_yaw, _goal_yaw, t)
+	_yaw = lerp_angle(_yaw, _goal_yaw, t)
 	_pitch = lerpf(_pitch, _goal_pitch, t)
 	_dist = lerpf(_dist, _goal_dist, t)
 	_apply()
@@ -63,6 +63,26 @@ func tilt(delta_pitch: float) -> void:
 
 func focus(point: Vector3) -> void:
 	_goal_target = _clamp_to_bounds(point)
+
+
+## Temporarily reframe on a dramatic action without moving the physical camera instantly.
+func cinematic_frame(point: Vector3, distance: float, yaw: float, pitch: float) -> void:
+	_goal_target = _clamp_to_bounds(point)
+	_goal_dist = clampf(distance, MIN_DIST, MAX_DIST)
+	_goal_yaw = yaw
+	_goal_pitch = clampf(pitch, MIN_PITCH, MAX_PITCH)
+
+
+func capture_pose() -> Dictionary:
+	return {"target": _goal_target, "distance": _goal_dist,
+			"yaw": _goal_yaw, "pitch": _goal_pitch}
+
+
+func restore_pose(pose: Dictionary) -> void:
+	if pose.is_empty():
+		return
+	cinematic_frame(pose["target"], float(pose["distance"]),
+			float(pose["yaw"]), float(pose["pitch"]))
 
 
 ## Top-down tactical view toggle.

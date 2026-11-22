@@ -1,0 +1,81 @@
+{
+ "id": "grand_crusader_grnd01",
+ "name": "Grand Crusader",
+ "model": "GRN-D-01",
+ "tonnage": 80,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 26,
+  "RA": 26,
+  "LT": 24,
+  "RT": 24,
+  "CT": 35,
+  "HD": 9,
+  "LL": 34,
+  "RL": 34
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 15
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "large_pulse_laser",
+   "medium_pulse_laser",
+   "endo_steel*4"
+  ],
+  "RA": [
+   "large_pulse_laser",
+   "medium_pulse_laser",
+   "endo_steel*6"
+  ],
+  "LT": [
+   "lrm20+artemis",
+   "ammo:lrm20*3"
+  ],
+  "RT": [
+   "lrm20+artemis",
+   "ammo:lrm20*3"
+  ],
+  "CT": [
+   "ammo:ams*2"
+  ],
+  "HD": [
+   "ams"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1252,
+  "megamek": "data/mekfiles/meks/3055U/Grand Crusader GRN-D-01.mtf",
+  "published": "RGv1,RG23",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 1758
+ },
+ "bv": 1758,
+ "sprite": "grand_crusader",
+ "role": "Missile boat: rains missiles from a distance. 2 Large Pulse Lasers, 2 Medium Pulse Lasers, 2 LRM 20s, Anti-Missile System; walks 3, runs 5."
+}

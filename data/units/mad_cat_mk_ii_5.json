@@ -1,0 +1,84 @@
+{
+ "id": "mad_cat_mk_ii_5",
+ "name": "Mad Cat Mk II",
+ "model": "5",
+ "tonnage": 90,
+ "walk_mp": 4,
+ "jump_mp": 6,
+ "heat_sinks": 14,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 30,
+  "RT": 30,
+  "CT": 45,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_improved_heavy_large_laser",
+   "c_improved_heavy_medium_laser",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "c_gauss_rifle",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "endo_steel*2",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "ammo:c_gauss_rifle*2",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "HD": [
+   "c_light_active_probe"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6849,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/Mad Cat Mk II 5.mtf",
+  "published": "RS:3145-NTNU,RS:3145",
+  "role": "Brawler",
+  "bv": "megamek",
+  "megamek_bv": 2491
+ },
+ "bv": 2491,
+ "sprite": "mad_cat_mk_ii",
+ "role": "Brawler: built to slug it out at medium range. Improved Heavy Large Laser, Improved Heavy Medium Laser, Gauss Rifle; walks 4, runs 6, jumps 6."
+}

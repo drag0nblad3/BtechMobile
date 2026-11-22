@@ -1,0 +1,74 @@
+{
+ "id": "highlander_hgn694",
+ "name": "Highlander",
+ "model": "HGN-694",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 28,
+  "RT": 28,
+  "CT": 42,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 16
+ },
+ "missing_actuators": {
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "ammo:heavy_gauss_rifle*4",
+   "endo_steel*4"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "endo_steel*3"
+  ],
+  "LT": [
+   "heavy_gauss_rifle~2",
+   "case"
+  ],
+  "RT": [
+   "large_laser*2",
+   "ammo:gauss_rifle*3",
+   "case",
+   "endo_steel*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5493,
+  "megamek": "data/mekfiles/meks/3050U/Highlander HGN-694.mtf",
+  "published": "RSFP:SI",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Highlander HGN-694 (ForcePack-Record-Sheets-Snords-Irregulars)",
+  "megamek_bv": 2358
+ },
+ "bv": 2369,
+ "sprite": "highlander",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 2 Large Lasers, Gauss Rifle, Heavy Gauss Rifle; walks 3, runs 5."
+}

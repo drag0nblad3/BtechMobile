@@ -1,0 +1,59 @@
+{
+ "id": "champion_chp2n",
+ "name": "Champion",
+ "model": "CHP-2N",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 16,
+  "RT": 16,
+  "CT": 22,
+  "HD": 9,
+  "LL": 13,
+  "RL": 13
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LT": [
+   "srm6",
+   "medium_laser*2",
+   "ammo:srm6"
+  ],
+  "RT": [
+   "ac10",
+   "ammo:ac10*2"
+  ],
+  "CT": [
+   "small_laser*2"
+  ]
+ },
+ "source": {
+  "mul_id": 551,
+  "megamek": "data/mekfiles/meks/3039u/Champion CHP-2N.mtf",
+  "published": "RS:3039u",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1116
+ },
+ "bv": 1116,
+ "sprite": "champion",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Lasers, 2 Small Lasers, SRM 6, AC/10; walks 5, runs 8."
+}

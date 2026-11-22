@@ -10,7 +10,7 @@ extends RefCounted
 ## the network gained (never stacking). C3 adds to Battle Value (p. 222).
 ## TODO(rules): networks are formed for you (first Master, then up to three
 ## Slaves, or Masters if no Slaves); company networks, submerged computers,
-## stealth, C3i and the Master's TAG function are not modelled.
+## stealth and the Master's TAG function are not modelled.
 ## Construction (Master 5 t / 5 slots, Slave 1 t / 1 slot) is general knowledge.
 
 const MASTER_TONS := 5.0
@@ -20,7 +20,7 @@ const MAX_LINKS := 3
 
 
 static func has(def: UnitDef) -> bool:
-	return def.c3_master_loc >= 0 or def.c3_slave_loc >= 0
+	return def.c3_master_loc >= 0 or def.c3_slave_loc >= 0 or C3i.has(def)
 
 
 static func is_master(def: UnitDef) -> bool:
@@ -31,7 +31,7 @@ static func is_master(def: UnitDef) -> bool:
 static func working(u: Unit) -> bool:
 	if not has(u.def) or u.destroyed or u.shutdown:
 		return false
-	var loc := u.def.c3_master_loc if is_master(u.def) else u.def.c3_slave_loc
+	var loc := u.def.c3_master_loc if is_master(u.def) else (u.def.c3i_loc if C3i.has(u.def) else u.def.c3_slave_loc)
 	if u.is_location_out(loc):
 		return false
 	for s: CritSlot in u.slots[loc]:
@@ -50,7 +50,7 @@ static func form(defs: Array) -> Array[int]:
 			master = i
 			break
 	if master < 0:
-		return out
+		return C3i.form(defs)
 	var slaves: Array[int] = []
 	var masters: Array[int] = []
 	for i in defs.size():
@@ -66,6 +66,8 @@ static func form(defs: Array) -> Array[int]:
 
 ## The live network `u` belongs to: its Master first. [] if none or down.
 static func network(state: GameState, u: Unit) -> Array[Unit]:
+	if C3i.has(u.def) and not is_master(u.def):
+		return C3i.network(state, u)
 	var side: Array = state.units.filter(func(o: Unit) -> bool: return o.side == u.side)
 	var idx := form(side.map(func(o: Unit) -> UnitDef: return o.def))
 	var out: Array[Unit] = []
@@ -88,7 +90,7 @@ static func improve(state: GameState, attacker: Unit, target: Unit, p: WeaponDef
 	var net := network(state, attacker)
 	if net.is_empty() or not working(attacker):
 		return {}
-	var master_jammed := C3Boosted.jammed(state, attacker.side, net[0])
+	var master_jammed := C3Boosted.jammed(state, attacker.side, net[0]) if is_master(net[0].def) else false
 	var self_jammed := C3Boosted.jammed(state, attacker.side, attacker)
 	var best := {}
 	var best_cost := _cost(br, 0)

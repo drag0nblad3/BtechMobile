@@ -17,10 +17,12 @@ const KINDS := {
 
 
 static func range_of(def: UnitDef) -> int:
-	return int(KINDS[def.probe]["range"]) if def.probe != "" else 0
+	return int(KINDS[def.probe]["range"]) if def.probe != "" else EcmTypes.probe_range(def)
 
 
 static func working(u: Unit) -> bool:
+	if u.def.probe == "" and EcmTypes.probe_range(u.def) > 0:
+		return Ecm.working(u)  # Watchdog CEWS
 	return u.def.probe != "" and not u.probe_lost and not u.destroyed and not u.shutdown \
 			and not u.is_location_destroyed(u.def.probe_loc)
 

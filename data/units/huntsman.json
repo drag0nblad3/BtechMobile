@@ -1,0 +1,391 @@
+{
+ "id": "huntsman",
+ "name": "Huntsman",
+ "tonnage": 50,
+ "walk_mp": 5,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 25,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 7
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "omni": true,
+ "sprite": "huntsman",
+ "equipment": {
+  "LA": [
+   "endo_steel*2",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet",
+   "endo_steel",
+   "ferro_fibrous*3"
+  ],
+  "RT": [
+   "jump_jet",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "jump_jet"
+  ],
+  "RL": [
+   "jump_jet"
+  ]
+ },
+ "configs": [
+  {
+   "model": "Prime",
+   "bv": 2108,
+   "heat_sinks": 10,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "c_streak_srm6",
+     "c_er_medium_laser*2",
+     "ammo:c_streak_srm6"
+    ],
+    "RA": [
+     "c_er_medium_laser*2",
+     "c_ultra_ac2",
+     "ammo:c_ultra_ac2"
+    ],
+    "LT": [
+     "c_ams",
+     "ammo:c_ams",
+     "c_flamer",
+     "c_tag"
+    ],
+    "RT": [
+     "c_lrm10+artemis",
+     "ammo:c_lrm10",
+     "c_active_probe"
+    ],
+    "LL": [
+     "a_pod"
+    ],
+    "RL": [
+     "a_pod"
+    ]
+   },
+   "source": {
+    "mul_id": 2296,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) Prime.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2108
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 ER Medium Lasers, Streak SRM 6, Ultra AC/2, Anti-Missile System, Flamer, LRM 10; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "A",
+   "bv": 2034,
+   "heat_sinks": 12,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "c_large_pulse_laser",
+     "c_lrm10"
+    ],
+    "RA": [
+     "c_large_pulse_laser",
+     "c_lb2x_ac"
+    ],
+    "LT": [
+     "heat_sink",
+     "ammo:c_lrm10"
+    ],
+    "RT": [
+     "heat_sink",
+     "ammo:c_lb2x_ac"
+    ]
+   },
+   "source": {
+    "mul_id": 2289,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) A.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2034
+   },
+   "role": "Sniper: hangs back and hits from long range. 2 Large Pulse Lasers, LRM 10, LB 2-X AC; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "B",
+   "bv": 2156,
+   "heat_sinks": 10,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_lb10x_ac"
+    ],
+    "RA": [
+     "c_er_ppc",
+     "c_medium_pulse_laser*2"
+    ],
+    "LT": [
+     "ammo:c_lb10x_ac",
+     "ammo:c_lb10x_ac:cluster"
+    ],
+    "RT": [
+     "c_machine_gun*2",
+     "ammo:c_machine_gun"
+    ]
+   },
+   "source": {
+    "mul_id": 2290,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) B.mtf",
+    "published": "RSFP:Wave 2",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2156
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Pulse Lasers, 2 Machine Guns, LB 10-X AC, ER PPC; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "C",
+   "bv": 2199,
+   "heat_sinks": 10,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_ultra_ac5",
+     "ammo:c_ultra_ac5"
+    ],
+    "RA": [
+     "c_streak_srm4",
+     "ammo:c_streak_srm4"
+    ],
+    "LT": [
+     "c_lrm15",
+     "c_er_medium_laser",
+     "c_er_small_laser",
+     "ammo:c_lrm15"
+    ],
+    "RT": [
+     "c_lrm20",
+     "c_flamer",
+     "ammo:c_lrm20"
+    ]
+   },
+   "source": {
+    "mul_id": 2291,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) C.mtf",
+    "published": "RS:CI",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 2199
+   },
+   "role": "Missile boat: rains missiles from a distance. Ultra AC/5, Streak SRM 4, LRM 15, ER Medium Laser, ER Small Laser, LRM 20, Flamer; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "D",
+   "bv": 2007,
+   "heat_sinks": 10,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_ultra_ac10",
+     "ammo:c_ultra_ac10*2"
+    ],
+    "RA": [
+     "c_atm6",
+     "ammo:c_atm6",
+     "ammo:c_atm6:er",
+     "ammo:c_atm6:he"
+    ],
+    "RT": [
+     "c_medium_pulse_laser*2",
+     "c_small_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 2292,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) D.mtf",
+    "published": "RS:CI",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2007
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Pulse Lasers, Ultra AC/10, ATM 6, Small Pulse Laser; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "H",
+   "bv": 2495,
+   "heat_sinks": 16,
+   "jump_mp": 5,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "lower_arm",
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_heavy_medium_laser*2"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_large_laser",
+     "c_heavy_medium_laser*2",
+     "c_heavy_small_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "targeting_computer"
+    ],
+    "RT": [
+     "heat_sink*3"
+    ],
+    "LL": [
+     "guardian_ecm"
+    ],
+    "RL": [
+     "c_active_probe"
+    ]
+   },
+   "source": {
+    "mul_id": 2294,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) H.mtf",
+    "published": "RS:CI",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2495
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Heavy Medium Lasers, 2 ER Large Lasers, Heavy Small Laser; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "I",
+   "bv": 2277,
+   "heat_sinks": 10,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "c_er_large_laser",
+     "c_plasma_cannon",
+     "ammo:c_plasma_cannon*2"
+    ],
+    "RA": [
+     "c_hag20"
+    ],
+    "LT": [
+     "c_er_small_pulse_laser"
+    ],
+    "RT": [
+     "ammo:c_hag20*3"
+    ]
+   },
+   "source": {
+    "mul_id": 7784,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 12/Nobori-nin (Huntsman) I.mtf",
+    "published": "RG12",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2277
+   },
+   "role": "Sniper: hangs back and hits from long range. ER Large Laser, Plasma Cannon, HAG 20, ER Small Pulse Laser; walks 5, runs 8, jumps 5."
+  },
+  {
+   "model": "N",
+   "bv": 2556,
+   "heat_sinks": 13,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_atm6",
+     "c_er_large_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_er_ppc",
+     "c_heavy_medium_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "ammo:c_atm6",
+     "ammo:c_atm6:er",
+     "ammo:c_atm6:he"
+    ],
+    "RT": [
+     "targeting_computer"
+    ]
+   },
+   "source": {
+    "mul_id": 2295,
+    "megamek": "data/mekfiles/meks/3058Uu/Nobori-nin (Huntsman) N.mtf",
+    "published": "RS:CI",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2556
+   },
+   "role": "Sniper: hangs back and hits from long range. ATM 6, ER Large Laser, ER PPC, Heavy Medium Laser; walks 5, runs 8, jumps 5."
+  }
+ ]
+}

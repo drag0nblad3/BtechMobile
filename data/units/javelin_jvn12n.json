@@ -1,0 +1,76 @@
+{
+ "id": "javelin_jvn12n",
+ "name": "Javelin",
+ "model": "JVN-12N",
+ "tonnage": 30,
+ "walk_mp": 8,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "light_ferro",
+ "armor": {
+  "LA": 8,
+  "RA": 8,
+  "LT": 10,
+  "RT": 10,
+  "CT": 15,
+  "HD": 8,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 3,
+  "RT": 3,
+  "CT": 4
+ },
+ "equipment": {
+  "LA": [
+   "endo_steel*5",
+   "light_ferro*3"
+  ],
+  "RA": [
+   "endo_steel*5",
+   "light_ferro*3"
+  ],
+  "LT": [
+   "heat_sink",
+   "jump_jet",
+   "c_srm6",
+   "endo_steel*2",
+   "light_ferro"
+  ],
+  "RT": [
+   "jump_jet",
+   "c_srm6",
+   "ammo:c_srm6*2",
+   "case2",
+   "endo_steel*2"
+  ],
+  "CT": [
+   "jump_jet*2"
+  ],
+  "HD": [
+   "tag"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 9461,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 31/Javelin JVN-12N.mtf",
+  "published": "RG31,RSFP:MERCS",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Javelin JVN-12N (ForcePack-Record-Sheets-Mercenaries)",
+  "megamek_bv": 795
+ },
+ "bv": 795,
+ "sprite": "javelin",
+ "role": "Scout: fast and light, finds the enemy and stays alive. 2 SRM 6s; walks 8, runs 12, jumps 8."
+}
