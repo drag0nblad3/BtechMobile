@@ -69,6 +69,7 @@ func _ready() -> void:
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
 	if saved.is_empty():
 		controller.start_turn()
+		_look_at_mine()
 	else:
 		_resume_ui()
 
@@ -231,6 +232,7 @@ func _wire() -> void:
 	hud.explain_cycled.connect(_cycle_explain)
 	hud.save_battle.connect(_save_battle)
 	hud.pause_toggled.connect(_toggle_pause)
+	hud.next_unit.connect(_next_unit)
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
 	hud.battle_forensics.connect(_open_forensics)
@@ -247,6 +249,39 @@ func _focus_unit(u: Unit) -> void:
 	rig.focus(units_layer.view_of(u).position)
 	sheet_unit = u
 	_show_sheet_if_open()
+
+
+## Next button: select the next unit still to act, or just look at the next one.
+func _next_unit() -> void:
+	var current: Unit = movement.selected if movement.selected else attacks.attacker if attacks.attacker else sheet_unit
+	var u := UnitCycler.after(UnitCycler.candidates(controller, bots.bot_sides), current)
+	if u == null:
+		return
+	if attacks.active() and controller.pending_units().has(u):
+		attacks._select(u)
+	elif controller.state.phase == Phase.Kind.MOVEMENT and not bots.is_bot_turn() \
+			and controller.pending_units().has(u):
+		movement.select(u)
+	else:
+		_focus_unit(u)
+
+
+## Start a battle looking at the player's own force, not the map centre.
+func _look_at_mine() -> void:
+	var mine := UnitCycler.candidates(controller, bots.bot_sides)
+	if not mine.is_empty():
+		rig.focus(units_layer.view_of(mine[0]).position)
+
+
+## On the player's movement turn, bring their next 'Mech on screen.
+func _look_at_my_turn() -> void:
+	if cinematic.enabled or bots.is_bot_turn() or controller.state.game_over:
+		return
+	if controller.state.phase != Phase.Kind.MOVEMENT or movement.selected:
+		return
+	var p := controller.pending_units()
+	if not p.is_empty():
+		rig.focus(units_layer.view_of(p[0]).position)
 
 
 func _on_tap(pos: Vector2) -> void:
@@ -355,6 +390,7 @@ func _on_event(e: GameEvent) -> void:
 				_rebuild_objectives()  # carried counters move with their 'Mechs
 			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
+				_look_at_my_turn.call_deferred()
 		GameEvent.BUILDING:
 			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
 				map_view.rebuild()

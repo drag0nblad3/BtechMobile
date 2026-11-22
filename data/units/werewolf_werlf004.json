@@ -1,0 +1,69 @@
+{
+  "id": "werewolf_werlf004",
+  "name": "Werewolf",
+  "model": "WER-LF-004",
+  "tonnage": 40,
+  "walk_mp": 5,
+  "jump_mp": 4,
+  "heat_sinks": 16,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor": {
+    "LA": 12,
+    "RA": 12,
+    "LT": 15,
+    "RT": 15,
+    "CT": 16,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 7
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink*2",
+      "medium_pulse_laser"
+    ],
+    "RA": [
+      "heat_sink*2",
+      "srm6"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "small_pulse_laser"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "small_pulse_laser",
+      "ammo:srm6",
+      "ammo:machine_gun"
+    ],
+    "CT": [
+      "machine_gun"
+    ],
+    "HD": [
+      "machine_gun"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. Medium Pulse Laser, SRM 6, 2x Small Pulse Laser, 2x Machine Gun; walks 5, runs 8, jumps 4.",
+  "sprite": "werewolf",
+  "source": {
+    "mul_id": 3535,
+    "megamek": "data/mekfiles/meks/3055U/Werewolf WER-LF-004.mtf",
+    "published": "RS:3055Uu",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 802
+  },
+  "bv": 802
+}

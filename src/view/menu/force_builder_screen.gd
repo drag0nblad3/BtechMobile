@@ -52,7 +52,9 @@ func _ready() -> void:
 	var title := UiKit.label(heading, "FORCE BUILDER  /  SKIRMISH", 27)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(title, "heading")
-	UiSkin.label(UiKit.label(heading, "SEARCH → ADD → DEPLOY", 16), "section")
+	var steps := UiKit.label(heading, "SEARCH → ADD → DEPLOY", 16)
+	steps.autowrap_mode = TextServer.AUTOWRAP_OFF
+	UiSkin.label(steps, "section")
 	UiSkin.rule(layout)
 	var body := HBoxContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -67,7 +69,9 @@ func _ready() -> void:
 	body.add_child(right)
 	var side_row := HBoxContainer.new()
 	right.add_child(side_row)
-	UiSkin.label(UiKit.label(side_row, "ADD TO:", 18), "section")
+	var add_to := UiKit.label(side_row, "ADD TO:", 18)
+	add_to.autowrap_mode = TextServer.AUTOWRAP_OFF
+	UiSkin.label(add_to, "section")
 	for side in 2:
 		var idx := side
 		var choose := UiKit.button(side_row, "", func(): _select_side(idx),

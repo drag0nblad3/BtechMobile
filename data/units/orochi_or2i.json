@@ -1,0 +1,71 @@
+{
+  "id": "orochi_or2i",
+  "name": "Orochi",
+  "model": "OR-2I",
+  "tonnage": 90,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 30,
+    "RA": 30,
+    "LT": 28,
+    "RT": 28,
+    "CT": 44,
+    "HD": 9,
+    "LL": 38,
+    "RL": 38
+  },
+  "rear_armor": {
+    "LT": 10,
+    "RT": 10,
+    "CT": 14
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "thunderbolt20",
+      "streak_srm4",
+      "ammo:streak_srm4",
+      "ammo:thunderbolt20*3"
+    ],
+    "RA": [
+      "thunderbolt20",
+      "streak_srm4",
+      "ammo:streak_srm4",
+      "ammo:thunderbolt20*3"
+    ],
+    "LT": [
+      "endo_steel*7"
+    ],
+    "RT": [
+      "endo_steel*7"
+    ],
+    "HD": [
+      "er_small_laser"
+    ]
+  },
+  "role": "Missile Boat: long-range missiles. 2x Thunderbolt 20, 2x Streak SRM 4, ER Small Laser; walks 4, runs 6.",
+  "sprite": "orochi",
+  "source": {
+    "mul_id": 2343,
+    "megamek": "data/mekfiles/meks/3085u/Cutting Edge/Orochi OR-2I.mtf",
+    "published": "RS:DA",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 2077
+  },
+  "bv": 2077
+}

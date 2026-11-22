@@ -32,6 +32,7 @@ signal watch_replay
 signal battle_forensics
 signal pause_toggled
 signal exit_battle
+signal next_unit  ## Go to the next of your units (camera + selection).
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 68)
@@ -127,6 +128,7 @@ func _ready() -> void:
 	_button(shortcuts, "Pause", pause_toggled)
 	_button(shortcuts, "Log", log_toggled)
 	_button(shortcuts, "Sheet", sheet_toggled)
+	_button(shortcuts, "Next ▸", next_unit).tooltip_text = "Go to your next unit"
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
 	_tools_menu = MenuButton.new()

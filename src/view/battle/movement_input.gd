@@ -179,6 +179,12 @@ func clear_selection() -> void:
 	hud.set_info("")
 
 
+## Select a unit to move (the HUD's Next button).
+func select(u: Unit) -> void:
+	if u != selected:
+		_select(u)
+
+
 func _select(u: Unit) -> void:
 	selected = u
 	mode = MoveMode.Kind.RUN if u.masc_used or u.sc_used else MoveMode.Kind.WALK

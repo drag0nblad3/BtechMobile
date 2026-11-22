@@ -1,0 +1,68 @@
+{
+  "id": "brigand_ldt1",
+  "name": "Brigand",
+  "model": "LDT-1",
+  "tonnage": 25,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 5,
+    "RA": 5,
+    "LT": 7,
+    "RT": 7,
+    "CT": 12,
+    "HD": 6,
+    "LL": 8,
+    "RL": 8
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 2
+  },
+  "equipment": {
+    "LA": [
+      "er_medium_laser",
+      "endo_steel*2"
+    ],
+    "RA": [
+      "er_medium_laser",
+      "endo_steel*2"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "medium_pulse_laser",
+      "jump_jet*3",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "medium_pulse_laser",
+      "jump_jet*3",
+      "endo_steel*2"
+    ],
+    "CT": [
+      "endo_steel*2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. 2x ER Medium Laser, 2x Medium Pulse Laser; walks 6, runs 9, jumps 6.",
+  "sprite": "brigand",
+  "source": {
+    "mul_id": 3859,
+    "megamek": "data/mekfiles/meks/3067/Brigand LDT-1.mtf",
+    "published": "RS:3067u",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 771
+  },
+  "bv": 771
+}

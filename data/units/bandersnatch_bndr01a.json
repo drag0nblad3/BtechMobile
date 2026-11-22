@@ -1,0 +1,75 @@
+{
+  "id": "bandersnatch_bndr01a",
+  "name": "Bandersnatch",
+  "model": "BNDR-01A",
+  "tonnage": 75,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor": {
+    "LA": 18,
+    "RA": 18,
+    "LT": 23,
+    "RT": 23,
+    "CT": 23,
+    "HD": 9,
+    "LL": 18,
+    "RL": 18
+  },
+  "rear_armor": {
+    "LT": 8,
+    "RT": 8,
+    "CT": 10
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "lb10x_ac",
+      "medium_laser*2"
+    ],
+    "RA": [
+      "lb10x_ac",
+      "medium_laser*2"
+    ],
+    "LT": [
+      "lrm5",
+      "ammo:lrm5",
+      "ammo:lb10x_ac",
+      "ammo:lb10x_ac:cluster",
+      "case"
+    ],
+    "RT": [
+      "lrm5",
+      "ammo:lrm5",
+      "ammo:lb10x_ac",
+      "ammo:lb10x_ac:cluster",
+      "case"
+    ],
+    "CT": [
+      "medium_laser@rear*2"
+    ],
+    "HD": [
+      "lrm5"
+    ]
+  },
+  "role": "Brawler: close-range firepower. 2x LB 10-X AC, 6x Medium Laser, 3x LRM 5; walks 4, runs 6.",
+  "sprite": "bandersnatch",
+  "source": {
+    "mul_id": 217,
+    "megamek": "data/mekfiles/meks/3055U/Bandersnatch BNDR-01A.mtf",
+    "published": "RS:J",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1478
+  },
+  "bv": 1478
+}
