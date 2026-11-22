@@ -49,7 +49,7 @@ func _init() -> void:
 		if not high:
 			raw["subdivide"] = 1
 		var model := VoxelAsset.model_from_dict(raw)
-		var info := model.quality_report.duplicate()
+		var info: Dictionary = model.quality_report.duplicate()
 		info["voxels"] = model.cell_count()
 		info["errors"] = Array(model.errors)
 		if not info.has("before"):
