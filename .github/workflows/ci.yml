@@ -56,7 +56,7 @@ jobs:
       - name: Battle save + replay scene smoke
         run: |
           set -o pipefail
-          godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
+          timeout --signal=TERM --kill-after=5s 65s godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
           grep -q "battle save replay smoke ok" battle-save-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" battle-save-smoke.log
       - name: Tactical Academy forensic unit tests
