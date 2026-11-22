@@ -17,4 +17,4 @@ jobs:
       - name: Strict shape topology and muzzle checks
         run: |
           godot --headless --import
-          godot --headless -s tests/run_tests.gd -- new_source_sculpts
+          godot --headless -s tests/run_tests.gd -- new_cohort_sculpts
