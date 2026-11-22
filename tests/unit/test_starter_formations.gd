@@ -31,7 +31,7 @@ func test_replaces_only_target_and_upgrades_budget_if_needed() -> void:
 	var db := designs()
 	var fb := ForceBuilder.new(db, 3000)
 	check(fb.add(1, "locust_lct1v"))
-	var unchanged := fb.rosters[1].duplicate()
+	var unchanged: Array = fb.rosters[1].duplicate()
 	var form: Dictionary = StarterFormations.all().filter(
 		func(f: Dictionary) -> bool: return f["id"] == "clan_recon")[0]
 	var preview := StarterFormations.plan(fb, 0, form)
@@ -49,7 +49,7 @@ func test_replaces_only_target_and_upgrades_budget_if_needed() -> void:
 func test_invalid_formation_never_clears_existing_roster() -> void:
 	var fb := ForceBuilder.new(designs(), 3000)
 	fb.add(0, "locust_lct1v")
-	var previous := fb.rosters[0].duplicate()
+	var previous: Array = fb.rosters[0].duplicate()
 	var bad := {"id": "invalid", "kind": "lance",
 		"units": ["locust_lct1v", "wasp_wsp1a", "unknown_mech", "commando_com2d"]}
 	var result := StarterFormations.apply(fb, 0, bad)
