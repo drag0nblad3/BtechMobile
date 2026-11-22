@@ -126,6 +126,17 @@ func _process(_delta: float) -> bool:
 		var hit: Unit = _scene.controller.state.units[0]
 		_scene.fx.play(GameEvent.new(GameEvent.DAMAGE,
 				{"unit_id": hit.id, "loc": Location.RA, "rear": false, "amount": 24}))
+	if _frames == 8 and _mode == "scars":
+		var wreck: Unit = _scene.controller.state.units[0]
+		wreck.destroyed = true  # capture only, no controller action
+		var view: UnitView = _scene.units_layer.view_of(wreck)
+		view.snap_to_state()
+		_scene.scars.on_event(GameEvent.new(GameEvent.BUILDING,
+				{"kind": "fire", "coord": wreck.coord}))
+		_scene.scars.on_event(GameEvent.new(GameEvent.DAMAGE,
+				{"unit_id": wreck.id, "amount": 24, "loc": Location.CT}))
+		_scene.scars.on_event(GameEvent.new(GameEvent.UNIT_DESTROYED, {"unit_id": wreck.id}))
+		_scene.rig.focus(view.position)
 	if _frames == 40:
 		if _mode == "jump" and get_nodes_in_group("jump_fx").is_empty():
 			printerr("CAPTURE_JUMP_FAILED: exhaust absent on review frame")
