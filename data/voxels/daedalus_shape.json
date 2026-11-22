@@ -2,7 +2,7 @@
   "id": "daedalus_shape",
   "name": "Daedalus — unique coarse sculpt",
   "unit": "daedalus_dad3c",
-  "voxel_size": 0.05,
+  "voxel_size": 0.049,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -244,6 +244,36 @@
               1
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -2,
+              22,
+              3
+            ],
+            [
+              1,
+              25,
+              6
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -2,
+              24,
+              6
+            ],
+            [
+              1,
+              25,
+              7
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -1891,5 +1921,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (asymmetric_jump), 45 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame.\nDetached voxel group forensic repair: removed only the exact unsupported four-cell rim fragments / rear accessory dots; Eagle forearm breech was relocated forward to leave room for a solid rear elbow spar."
+  "notes": "Individual reference-oriented shape study (asymmetric_jump), 45 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame.\nDetached voxel group forensic repair: removed only the exact unsupported four-cell rim fragments / rear accessory dots; Eagle forearm breech was relocated forward to leave room for a solid rear elbow spar.\nPrimary-shape reference resculpt: chassis-specific larger shoulder/cockpit/cannon profiles and tonnage-dependent physical scale, pending five-view approval."
 }

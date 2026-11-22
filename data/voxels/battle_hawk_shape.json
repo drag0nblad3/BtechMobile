@@ -2,7 +2,7 @@
   "id": "battle_hawk_shape",
   "name": "Battle Hawk — unique coarse sculpt",
   "unit": "battle_hawk_bhk305",
-  "voxel_size": 0.05,
+  "voxel_size": 0.041,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -436,6 +436,21 @@
             ]
           ],
           "mat": "glow"
+        },
+        {
+          "box": [
+            [
+              -2,
+              34,
+              -9
+            ],
+            [
+              1,
+              35,
+              -5
+            ]
+          ],
+          "mat": "armor"
         }
       ]
     },
@@ -457,36 +472,36 @@
                 "at": 27,
                 "polygon": [
                   [
-                    -8.82,
-                    -3.6
+                    -8.5,
+                    -3.1
                   ],
                   [
-                    -5.58,
-                    -3.6
+                    -5.7,
+                    -3.1
                   ],
                   [
-                    -4.7,
-                    -2.73
+                    -5.1,
+                    -2.5
                   ],
                   [
-                    -4.7,
-                    2.32
+                    -5.1,
+                    2.5
                   ],
                   [
-                    -5.58,
-                    3.2
+                    -5.7,
+                    3.1
                   ],
                   [
-                    -8.82,
-                    3.2
+                    -8.5,
+                    3.1
                   ],
                   [
-                    -9.7,
-                    2.32
+                    -9.1,
+                    2.5
                   ],
                   [
-                    -9.7,
-                    -2.73
+                    -9.1,
+                    -2.5
                   ]
                 ]
               },
@@ -494,36 +509,36 @@
                 "at": 31,
                 "polygon": [
                   [
-                    -9.54,
+                    -10.98,
                     -4.8
                   ],
                   [
-                    -4.86,
+                    -5.82,
                     -4.8
                   ],
                   [
-                    -4,
-                    -3.94
+                    -5,
+                    -3.98
                   ],
                   [
-                    -4,
-                    3.34
+                    -5,
+                    4.38
                   ],
                   [
-                    -4.86,
-                    4.2
+                    -5.82,
+                    5.2
                   ],
                   [
-                    -9.54,
-                    4.2
+                    -10.98,
+                    5.2
                   ],
                   [
-                    -10.4,
-                    3.34
+                    -11.8,
+                    4.38
                   ],
                   [
-                    -10.4,
-                    -3.94
+                    -11.8,
+                    -3.98
                   ]
                 ]
               },
@@ -531,36 +546,36 @@
                 "at": 35,
                 "polygon": [
                   [
-                    -7.96,
-                    -3.3
+                    -10.42,
+                    -3.6
                   ],
                   [
-                    -5.44,
-                    -3.3
+                    -7.38,
+                    -3.6
                   ],
                   [
-                    -4.4,
-                    -2.26
+                    -6.6,
+                    -2.82
                   ],
                   [
-                    -4.4,
-                    2.46
+                    -6.6,
+                    4.22
                   ],
                   [
-                    -5.44,
-                    3.5
+                    -7.38,
+                    5
                   ],
                   [
-                    -7.96,
-                    3.5
+                    -10.42,
+                    5
                   ],
                   [
-                    -9,
-                    2.46
+                    -11.2,
+                    4.22
                   ],
                   [
-                    -9,
-                    -2.26
+                    -11.2,
+                    -2.82
                   ]
                 ]
               }
@@ -1673,5 +1688,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (bird_snout), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
+  "notes": "Individual reference-oriented shape study (bird_snout), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame.\nPrimary-shape reference resculpt: chassis-specific larger shoulder/cockpit/cannon profiles and tonnage-dependent physical scale, pending five-view approval."
 }
