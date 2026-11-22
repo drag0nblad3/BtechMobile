@@ -54,7 +54,7 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m._add_part(p)
 	m.muzzles = _points(recipe.get("muzzles", {}))
 	m.jets = _points(recipe.get("jets", {}))
-	VxRefine.apply(m, int(recipe.get("subdivide", 1)), d)
+	VxRefine.apply(m, int(recipe.get("subdivide", 1)), recipe)
 	for p: Dictionary in recipe.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
 	if bool(recipe.get("exclusive_parts", false)):
