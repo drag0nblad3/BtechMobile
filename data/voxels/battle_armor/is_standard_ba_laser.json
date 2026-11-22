@@ -2,7 +2,7 @@
   "id": "is_standard_ba_laser",
   "name": "IS Standard Battle Armor",
   "asset_kind": "battle_armor",
-  "motive": "f",
+  "motive": "j",
   "voxel_size": 0.022,
   "subdivide": 2,
   "voxel_cap": 50000,
