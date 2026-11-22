@@ -22,8 +22,9 @@
      // Remove the archetype's arbitrary single cannon; use actual sheet weapons.
      p.shapes=p.shapes.filter(s=>!(s.box && s.mat==="gun") && !s.erase);
    }
-   const gunlist=primary.length?primary:equipped.slice(0,1);
-   const mcount=Math.max(1,Math.min(cfg.barrels||gunlist.reduce((n,w)=>n+(Number((w.gear.match(/\*(\d+)/)||[])[1]||1)),0)||1,4));
+   const preferred=primary.filter(w=>w.loc===(unit.vehicle?.turret!==false?"TU":"FR"));
+   const gunlist=preferred.length?preferred:primary.length?primary:equipped.slice(0,1);
+   const mcount=cfg.noBarrel?0:Math.max(1,Math.min(cfg.barrels||gunlist.reduce((n,w)=>n+(Number((w.gear.match(/\*(\d+)/)||[])[1]||1)),0)||1,6));
    const gunZ=cfg.mountZ||-7, muzzleZ=cfg.muzzleZ||-23;
    const y=cfg.gunY||(turret?14:9);
    const large=/ac20|gauss|heavy_ppc|ppc|lb20/i.test(gunlist.map(w=>w.gear).join(" "));
@@ -37,7 +38,7 @@
      p.shapes.push({erase:[[x,y,muzzleZ],[x,y,muzzleZ+3]]});
      positions.push([x,y,muzzleZ]);
    }
-   if(missile || cfg.pods){
+   if((missile && cfg.pods!==false)||cfg.pods===true){
      const count=Math.max(4,Math.min(12, Number((gunlist[0]?.gear.match(/(?:srm|lrm|mrm)(\d+)/i)||[])[1]||6)));
      const podY=turret?y+3:y+2, xx=cfg.podX||7;
      for(const sign of [-1,1]){
