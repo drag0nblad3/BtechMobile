@@ -210,7 +210,7 @@ static func apply_asset(raw: Dictionary) -> Dictionary:
 				if int(z[0]) - int(a[0]) < 4 or int(z[1]) - int(a[1]) < 4:
 					continue
 				# A real polygonal waist/chest, not one rectangular body slab.
-				var middle_y: int = (int(a[1]) + int(z[1])) / 2
+				var middle_y: int = int((int(a[1]) + int(z[1])) / 2)
 				var x0: int = int(a[0])
 				var x1: int = int(z[0])
 				var z0: int = int(a[2])
