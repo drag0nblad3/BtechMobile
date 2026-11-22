@@ -49,6 +49,8 @@ var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 
 var fire_psr: bool     ## Heavy Gauss: firing after moving costs a piloting roll (GaussWeapons).
 var range_cluster: bool  ## HAG: cluster roll +2 at short range, -2 at long (GaussWeapons).
 var heat_dice: int     ## Plasma: a hit adds this many d6 of heat to the target (Plasma).
+var to_hit_by_range: Array[int] = []  ## VSP lasers: own to-hit modifier at short, medium, long.
+var explosion_damage: int  ## Component explosion damage, if not 2 a slot (improved heavy lasers).
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -93,6 +95,9 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.fire_psr = bool(d.get("fire_psr", false))
 	w.range_cluster = bool(d.get("range_cluster", false))
 	w.heat_dice = int(d.get("heat_dice", 0))
+	for v in d.get("to_hit_by_range", []):
+		w.to_hit_by_range.append(int(v))
+	w.explosion_damage = int(d.get("explosion_damage", 0))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()
@@ -123,6 +128,13 @@ func damage_at(dist: int, shift := 0) -> int:
 	if damage_by_range.is_empty() or br == Bracket.OUT:
 		return damage
 	return damage_by_range[clampi(br + shift - Bracket.SHORT, 0, 2)]
+
+
+## The weapon's own to-hit modifier in range bracket `br`.
+func to_hit_at(br: int) -> int:
+	if to_hit_by_range.is_empty() or br < Bracket.SHORT:
+		return to_hit_mod
+	return to_hit_by_range[br - Bracket.SHORT]
 
 
 func max_damage() -> int:

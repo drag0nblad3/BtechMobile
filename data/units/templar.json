@@ -337,6 +337,51 @@
    "role": "Brawler: built to slug it out at medium range. 5 Medium Pulse Lasers, ER PPC, LB 20-X AC, ER Medium Laser; walks 4, runs 6, jumps 4."
   },
   {
+   "model": "TLR1-OD",
+   "bv": 1840,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "x_pulse_large_laser"
+    ],
+    "RA": [
+     "endo_steel",
+     "x_pulse_large_laser"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "light_gauss_rifle"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "light_gauss_rifle"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "ammo:light_gauss_rifle*2"
+    ]
+   },
+   "source": {
+    "mul_id": 5707,
+    "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Templar TLR1-OD.mtf",
+    "published": "RS:3067u",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1840
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Large X-Pulse Lasers, 2 Light Gauss Rifles; walks 4, runs 6."
+  },
+  {
    "model": "TLR1-OE",
    "bv": 1865,
    "heat_sinks": 14,

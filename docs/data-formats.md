@@ -55,6 +55,7 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
 - Ranges are the top of each bracket in hexes. `min` > 0 adds a minimum-range penalty.
 - `cluster_mod` adds to Cluster Hits rolls (MRM -1); `one_shot: true` fires once a game with no ammo bins (rocket launchers); `munitions` (ATM, MML) give a kind's own stats, `label` and `ammo_per_ton` for `ammo:<id>:<kind>` bins.
 - `fire_psr: true` (heavy Gauss) costs a piloting roll when fired after moving; `range_cluster: true` (HAG) gives +2/-2 to its cluster roll at short/long range; `heat_dice: n` (plasma) adds n d6 of heat to a 'Mech it hits.
+- `to_hit_by_range: [s, m, l]` (VSP lasers) replaces `to_hit` by range bracket; `explosion_damage` overrides a component explosion's 2 damage a slot.
 - `damage_by_range: [short, medium, long]` gives variable damage (snub-nose PPC); `damage` is the short-range value.
 - Missile weapons: `damage` is per missile, `missiles` is the rack size, `group` is the
   damage cluster (LRMs hit in groups of 5, SRMs missile by missile).
