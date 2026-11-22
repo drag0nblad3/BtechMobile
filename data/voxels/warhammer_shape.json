@@ -445,6 +445,23 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              0,
+              29,
+              -1
+            ],
+            [
+              5,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
       ]
     },
     {
@@ -845,7 +862,24 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "box": [
+            [
+              4,
+              29,
+              -1
+            ],
+            [
+              9,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "la",
@@ -1203,36 +1237,36 @@
                 "at": 18,
                 "polygon": [
                   [
-                    -9.83571,
-                    -3.0
+                    -9.96978,
+                    -3
                   ],
                   [
                     -8,
                     -5
                   ],
                   [
-                    -5.24646,
-                    -4.0
+                    -5.04533,
+                    -4
                   ],
                   [
-                    -4.32858,
-                    -2.0
+                    -4.06043,
+                    -2
                   ],
                   [
-                    -4.32858,
-                    3.84096
+                    -4.06043,
+                    4
                   ],
                   [
-                    -6.16429,
-                    4.8016
+                    -6.03022,
+                    5
                   ],
                   [
-                    -9.83571,
-                    4.8016
+                    -9.96978,
+                    5
                   ],
                   [
-                    -11.67142,
-                    1.9197
+                    -11.93957,
+                    2
                   ]
                 ]
               },
@@ -1240,36 +1274,36 @@
                 "at": 22,
                 "polygon": [
                   [
-                    -9.83571,
-                    -3.0
+                    -9.96978,
+                    -3
                   ],
                   [
                     -8,
                     -4
                   ],
                   [
-                    -5.24646,
-                    -4.0
+                    -5.04533,
+                    -4
                   ],
                   [
-                    -4.32858,
-                    -2.0
+                    -4.06043,
+                    -2
                   ],
                   [
-                    -4.32858,
-                    4.0
+                    -4.06043,
+                    4
                   ],
                   [
-                    -6.16429,
-                    5.0
+                    -6.03022,
+                    5
                   ],
                   [
-                    -9.83571,
-                    5.0
+                    -9.96978,
+                    5
                   ],
                   [
-                    -11.67142,
-                    2.0
+                    -11.93957,
+                    2
                   ]
                 ]
               }
@@ -1378,23 +1412,23 @@
                   ],
                   [
                     -4.6116,
-                    -0.00158
+                    0
                   ],
                   [
                     -4.6116,
-                    2.88032
+                    3
                   ],
                   [
                     -6.3058,
-                    4.8016
+                    5
                   ],
                   [
                     -10.5413,
-                    4.8016
+                    5
                   ],
                   [
                     -11.3884,
-                    0.95905
+                    1
                   ]
                 ]
               },
@@ -1714,9 +1748,10 @@
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "art_quality_passes": 100,
   "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
   "reference_review_views": [
     "front",
     "side",
@@ -1728,5 +1763,10 @@
     "passes": 50,
     "edited_vertices": 114,
     "stages_with_changes": 10
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
   }
 }
