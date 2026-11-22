@@ -3247,6 +3247,23 @@
           },
           "mat": "edge"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -7,
+              19,
+              -2
+            ],
+            [
+              -5,
+              21,
+              2
+            ]
+          ],
+          "mat": "form"
+        }
       ]
     },
     {
@@ -4350,6 +4367,23 @@
             ]
           },
           "mat": "edge"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              17,
+              29,
+              -19
+            ],
+            [
+              19,
+              31,
+              -13
+            ]
+          ],
+          "mat": "form"
         }
       ]
     },
@@ -6402,6 +6436,23 @@
           ],
           "mat": "edge"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -21,
+              25,
+              -7
+            ],
+            [
+              -18,
+              26,
+              -5
+            ]
+          ],
+          "mat": "form"
+        }
       ]
     },
     {
@@ -7858,5 +7909,7 @@
   "art_quality_passes": 50,
   "art_quality_signature": "Narrow angular head, offset shoulder launcher and integrated gun hand",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "articulation_connection_revision": "part-island-godot-socket-20261122",
+  "articulation_socket_passes": 3
 }

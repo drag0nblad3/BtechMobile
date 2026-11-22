@@ -3663,6 +3663,23 @@
           },
           "mat": "form"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -7,
+              7,
+              -2
+            ],
+            [
+              -6,
+              8,
+              1
+            ]
+          ],
+          "mat": "inside"
+        }
       ]
     },
     {
@@ -4103,6 +4120,23 @@
               12,
               41,
               -14
+            ]
+          ],
+          "mat": "inside"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              10,
+              40,
+              -12
+            ],
+            [
+              12,
+              42,
+              -5
             ]
           ],
           "mat": "inside"
@@ -5025,6 +5059,23 @@
               -11,
               51,
               -12
+            ]
+          ],
+          "mat": "inside"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -14,
+              44,
+              -13
+            ],
+            [
+              -12,
+              46,
+              -6
             ]
           ],
           "mat": "inside"
@@ -9430,5 +9481,7 @@
   "art_quality_passes": 50,
   "art_quality_signature": "Keep recessed skull head and balanced rounded shoulders",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "articulation_connection_revision": "part-island-godot-socket-20261122",
+  "articulation_socket_passes": 3
 }

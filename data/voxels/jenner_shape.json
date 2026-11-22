@@ -1469,6 +1469,23 @@
           },
           "mat": "window"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -2,
+              27,
+              -21
+            ],
+            [
+              2,
+              29,
+              -11
+            ]
+          ],
+          "mat": "inside"
+        }
       ]
     },
     {
@@ -2680,6 +2697,23 @@
               }
             ]
           },
+          "mat": "inside"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -7,
+              7,
+              7
+            ],
+            [
+              -6,
+              9,
+              10
+            ]
+          ],
           "mat": "inside"
         }
       ]
@@ -6227,6 +6261,23 @@
           },
           "mat": "inside"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -1,
+              27,
+              -24
+            ],
+            [
+              1,
+              29,
+              -21
+            ]
+          ],
+          "mat": "inside"
+        }
       ]
     },
     {
@@ -6623,6 +6674,23 @@
             ]
           },
           "mat": "edge"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -2,
+              31,
+              -34
+            ],
+            [
+              2,
+              34,
+              -30
+            ]
+          ],
+          "mat": "inside"
         }
       ]
     },
@@ -7237,5 +7305,7 @@
   "art_quality_passes": 50,
   "art_quality_signature": "Preserve projecting disc canopy and small twin laser pods",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "articulation_connection_revision": "part-island-godot-socket-20261122",
+  "articulation_socket_passes": 4
 }
