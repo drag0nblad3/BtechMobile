@@ -1,6 +1,6 @@
 {
   "id": "hatamoto_chi_shape",
-  "name": "Hatamoto-Chi HTM-27T — low-poly shape",
+  "name": "Hatamoto-Chi HTM-27T \u2014 low-poly shape",
   "unit": "hatamoto_chi_htm27t",
   "voxel_size": 0.067043,
   "subdivide": 1,
@@ -157,19 +157,19 @@
                   ],
                   [
                     5.96199,
-                    1.90446
+                    1.81024
                   ],
                   [
                     2.9748,
-                    6.84772
+                    6.54877
                   ],
                   [
                     -4.21034,
-                    6.35339
+                    6.07492
                   ],
                   [
                     -6.61199,
-                    1.41014
+                    1.33639
                   ]
                 ]
               },
@@ -4255,6 +4255,18 @@
       "kind": "cannon"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 12,
+    "stages_with_changes": 3
+  }
 }

@@ -1,6 +1,6 @@
 {
   "id": "cyclops_shape",
-  "name": "Cyclops CP-10-Z — low-poly shape",
+  "name": "Cyclops CP-10-Z \u2014 low-poly shape",
   "unit": "cyclops_cp10z",
   "voxel_size": 0.065305,
   "subdivide": 1,
@@ -120,19 +120,19 @@
                   ],
                   [
                     4.34393,
-                    2.82335
+                    2.59966
                   ],
                   [
                     2.40861,
-                    6.21441
+                    5.7599
                   ],
                   [
                     -3.39732,
-                    6.21441
+                    5.7599
                   ],
                   [
                     -4.84393,
-                    1.69628
+                    1.54931
                   ]
                 ]
               },
@@ -157,19 +157,19 @@
                   ],
                   [
                     4.95984,
-                    3.16881
+                    2.91744
                   ],
                   [
                     2.75516,
-                    6.97511
+                    6.46465
                   ],
                   [
                     -3.85891,
-                    6.97511
+                    6.46465
                   ],
                   [
                     -5.51984,
-                    1.90332
+                    1.73807
                   ]
                 ]
               },
@@ -4042,27 +4042,27 @@
                 "at": 13,
                 "polygon": [
                   [
-                    -9.18019,
+                    -9.00355,
                     -1.98
                   ],
                   [
-                    -4.63983,
+                    -4.77223,
                     -2.63
                   ],
                   [
-                    -3.33978,
+                    -3.56067,
                     -1.32
                   ],
                   [
-                    -3.98981,
+                    -4.16645,
                     1.98
                   ],
                   [
-                    -9.18019,
+                    -9.00355,
                     2.63
                   ],
                   [
-                    -9.83022,
+                    -9.60933,
                     1.32
                   ]
                 ]
@@ -4712,6 +4712,18 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 70,
+    "stages_with_changes": 10
+  }
 }

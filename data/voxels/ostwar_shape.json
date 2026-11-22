@@ -1,6 +1,6 @@
 {
   "id": "ostwar_shape",
-  "name": "Ostwar OWR-2Mb — low-poly shape",
+  "name": "Ostwar OWR-2Mb \u2014 low-poly shape",
   "unit": "ostwar_owr2mb",
   "voxel_size": 0.058585,
   "subdivide": 1,
@@ -169,19 +169,19 @@
                   ],
                   [
                     8.00605,
-                    3.61586
+                    3.28476
                   ],
                   [
                     4.36386,
-                    9.41924
+                    8.69313
                   ],
                   [
                     -4.36947,
-                    8.69753
+                    8.02054
                   ],
                   [
                     -8.74605,
-                    2.16254
+                    1.93036
                   ]
                 ]
               },
@@ -5159,6 +5159,18 @@
       "kind": "laser"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 20,
+    "stages_with_changes": 5
+  }
 }

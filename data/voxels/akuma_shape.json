@@ -1,6 +1,6 @@
 {
   "id": "akuma_shape",
-  "name": "Akuma AKU-1X — low-poly shape",
+  "name": "Akuma AKU-1X \u2014 low-poly shape",
   "unit": "akuma_aku1x",
   "voxel_size": 0.069212,
   "subdivide": 1,
@@ -4548,27 +4548,27 @@
                 "at": 12,
                 "polygon": [
                   [
-                    -8.44578,
+                    -8.41455,
                     -1.75
                   ],
                   [
-                    -4.5456,
+                    -4.56897,
                     -2.34
                   ],
                   [
-                    -3.43268,
+                    -3.47163,
                     -1.17
                   ],
                   [
-                    -3.98422,
+                    -4.01545,
                     1.75
                   ],
                   [
-                    -8.44578,
+                    -8.41455,
                     2.34
                   ],
                   [
-                    -8.99732,
+                    -8.95837,
                     1.17
                   ]
                 ]
@@ -5297,6 +5297,18 @@
     }
   ],
   "exclusive_parts": true,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_passes": 100,
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 6,
+    "stages_with_changes": 1
+  }
 }

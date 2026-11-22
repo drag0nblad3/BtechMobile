@@ -124,23 +124,23 @@
                   ],
                   [
                     4.46323,
-                    -1.14633
+                    -1.25057
                   ],
                   [
                     4.46323,
-                    3.37179
+                    2.96
                   ],
                   [
                     1.2344,
-                    5.08216
+                    4.55395
                   ],
                   [
                     -2.64401,
-                    5.08216
+                    4.55395
                   ],
                   [
                     -5.22323,
-                    0.54425
+                    0.32493
                   ]
                 ]
               },
@@ -165,23 +165,23 @@
                   ],
                   [
                     5.36586,
-                    -1.29828
+                    -1.41488
                   ],
                   [
                     5.36586,
-                    3.79328
+                    3.33011
                   ],
                   [
                     1.51525,
-                    5.71127
+                    5.11755
                   ],
                   [
                     -3.10942,
-                    5.71127
+                    5.11755
                   ],
                   [
                     -6.19586,
-                    0.60982
+                    0.36335
                   ]
                 ]
               },
@@ -5100,7 +5100,19 @@
       "kind": "cannon"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_fix_round": "connected-assembly-20261122"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_fix_round": "connected-assembly-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 50,
+    "stages_with_changes": 5
+  }
 }

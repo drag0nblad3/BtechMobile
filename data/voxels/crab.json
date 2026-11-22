@@ -157,19 +157,19 @@
                   ],
                   [
                     7.22484,
-                    3.24693
+                    3.03637
                   ],
                   [
                     3.93993,
-                    7.80462
+                    7.34415
                   ],
                   [
                     -3.93993,
-                    7.80462
+                    7.34415
                   ],
                   [
                     -7.22484,
-                    3.24693
+                    3.03637
                   ]
                 ]
               },
@@ -3150,27 +3150,27 @@
                 "at": 12,
                 "polygon": [
                   [
-                    -8.18853,
+                    -8.00451,
                     -2.74
                   ],
                   [
-                    -3.46105,
+                    -3.59882,
                     -3.43
                   ],
                   [
-                    -2.11175,
+                    -2.34136,
                     -2.06
                   ],
                   [
-                    -2.78147,
+                    -2.96549,
                     2.06
                   ],
                   [
-                    -8.18853,
+                    -8.00451,
                     3.43
                   ],
                   [
-                    -8.85825,
+                    -8.62864,
                     2.06
                   ]
                 ]
@@ -3997,6 +3997,18 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 46,
+    "stages_with_changes": 9
+  }
 }

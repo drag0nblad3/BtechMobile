@@ -157,19 +157,19 @@
                   ],
                   [
                     7.54972,
-                    4.11471
+                    3.89656
                   ],
                   [
                     3.43118,
-                    10.274
+                    9.63661
                   ],
                   [
                     -4.12118,
-                    9.59183
+                    9.00086
                   ],
                   [
                     -8.23972,
-                    2.75037
+                    2.62509
                   ]
                 ]
               },
@@ -3576,27 +3576,27 @@
                 "at": 13,
                 "polygon": [
                   [
-                    -9.64814,
+                    -9.57229,
                     -2.08
                   ],
                   [
-                    -4.87143,
+                    -4.92839,
                     -2.77
                   ],
                   [
-                    -3.51227,
+                    -3.60702,
                     -1.38
                   ],
                   [
-                    -4.19186,
+                    -4.26771,
                     2.08
                   ],
                   [
-                    -9.64814,
+                    -9.57229,
                     2.77
                   ],
                   [
-                    -10.32773,
+                    -10.23298,
                     1.38
                   ]
                 ]
@@ -4240,6 +4240,18 @@
       "kind": "laser"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 32,
+    "stages_with_changes": 7
+  }
 }

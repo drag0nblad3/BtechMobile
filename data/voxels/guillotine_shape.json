@@ -3645,27 +3645,27 @@
                 "at": 13,
                 "polygon": [
                   [
-                    -7.73272,
+                    -7.68329,
                     -1.86
                   ],
                   [
-                    -4.7682,
+                    -4.8012,
                     -2.49
                   ],
                   [
-                    -3.58634,
+                    -3.6522,
                     -1.24
                   ],
                   [
-                    -4.17728,
+                    -4.22671,
                     1.86
                   ],
                   [
-                    -7.73272,
+                    -7.68329,
                     2.49
                   ],
                   [
-                    -8.32366,
+                    -8.2578,
                     1.24
                   ]
                 ]
@@ -4253,6 +4253,18 @@
       "kind": "cannon"
     }
   ],
-  "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_passes": 100,
+  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 12,
+    "stages_with_changes": 2
+  }
 }
