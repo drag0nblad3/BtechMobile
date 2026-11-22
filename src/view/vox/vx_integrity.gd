@@ -40,7 +40,8 @@ static func components(cells: Dictionary) -> Array[Dictionary]:
 static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 	var report := {"before": 0, "after": 0, "rejoined": 0,
 			"joint_contacts": 0, "added": 0, "empty_parts": 0,
-			"weak_joint_contacts": 0, "mass_reinforced": 0}
+			"weak_joint_contacts": 0, "mass_reinforced": 0,
+			"weak_joint_parts": []}
 	var owned := {}
 	for p: Dictionary in m.parts:
 		for c: Vector3i in p["cells"]:
@@ -103,8 +104,15 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 				muzzle_guard, n, _structure(m))
 		report["mass_reinforced"] += reinforced
 		report["added"] += reinforced
-		if not _solid_contact(p["cells"], parent["cells"], n)["strong"]:
+		var final_contact := _solid_contact(p["cells"], parent["cells"], n)
+		if not final_contact["strong"]:
 			report["weak_joint_contacts"] += 1
+			report["weak_joint_parts"].append({"part": p["name"],
+					"parent": parent["name"], "joint": p["joint"],
+					"face_patch": final_contact["patch"],
+					"backed_patch": final_contact["backed_patch"],
+					"needed": final_contact["needed"],
+					"depth_needed": final_contact["depth_needed"]})
 
 	# The actual floating-island requirement is measured on rigid assemblies.
 	# Join only very close unsupported geometry, after articulation ownership
@@ -284,20 +292,29 @@ static func _structure(m: VxModel) -> int:
 ## required area by resolution and by the smaller component's size.
 static func _solid_contact(child: Dictionary, parent: Dictionary, n: int = 1) -> Dictionary:
 	var face: Dictionary = {}
+	var backed: Dictionary = {}
 	for c: Vector3i in child:
 		for d: Vector3i in DIRS:
 			if parent.has(c + d):
 				face[c] = true
+				# The face must connect to at least one voxel of physical
+				# interior immediately behind it, not a one-layer skin.
+				if child.has(c - d):
+					backed[c] = true
 				break
 	var patch := 0
+	var backed_patch := 0
 	if not face.is_empty():
 		patch = components(face)[0].size()
+	if not backed.is_empty():
+		backed_patch = components(backed)[0].size()
 	var scale := maxi(1, n)
 	var required := mini(12 * scale * scale,
 			maxi(4 * scale * scale, mini(child.size(), parent.size()) / 12))
-	return {"strong": patch >= required, "patch": patch,
-			"area": face.size(), "needed": required}
-
+	var depth_needed := mini(required, maxi(2 * scale * scale, required / 2))
+	return {"strong": patch >= required and backed_patch >= depth_needed,
+			"patch": patch, "backed_patch": backed_patch,
+			"area": face.size(), "needed": required, "depth_needed": depth_needed}
 
 ## Extend the moving part's existing joint socket into a *broad* collar.
 ## Never modify the stationary parent, authored subtractive geometry,
@@ -337,6 +354,25 @@ static func _reinforce_joint_mass(child: Dictionary, parent: Dictionary,
 		for v: Vector3i in staged:
 			cvox[v] = mat
 			owned[v] = child["name"]
+			added += 1
+		# Back the broad contact patch with an actual second structural
+		# layer. A contact-only veneer over a one-voxel neck is not a joint.
+		var supported: Dictionary = {}
+		for c: Vector3i in cvox:
+			if absi(c.x-socket.x) + absi(c.y-socket.y) + absi(c.z-socket.z) > 4 * n + 3:
+				continue
+			for d: Vector3i in DIRS:
+				if not pvox.has(c + d):
+					continue
+				var behind: Vector3i = c - d
+				if cvox.has(behind) or owned.has(behind) or guard.has(behind):
+					continue
+				if _in_void(behind, voids):
+					continue
+				supported[behind] = true
+		for c: Vector3i in supported:
+			cvox[c] = mat
+			owned[c] = child["name"]
 			added += 1
 		if _solid_contact(cvox, pvox, n)["strong"]:
 			break
