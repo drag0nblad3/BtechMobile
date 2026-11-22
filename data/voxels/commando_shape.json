@@ -2336,6 +2336,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              5,
+              26,
+              -4
+            ],
+            [
+              5,
+              26,
+              -4
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -3692,5 +3707,6 @@
   "art_quality_passes": 50,
   "art_quality_revision": "50-stage-source-review-20261121",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "part_connectivity_revision": "six-face-refit-20261122"
 }
