@@ -130,7 +130,7 @@ func test_no_mission_keeps_last_side_standing() -> void:
 
 
 func test_bots_play_a_vp_mission_with_withdrawal() -> void:
-	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), designs())
 	s.mission.def = Mission.from_dict({"victory": "vp", "turns": 6, "unit_vp": true, "forced_withdrawal": true,
 			"scoring": "each", "objectives": [{"hex": "0809", "radius": 2, "vp": 3}]})
 	var gc := GameController.new(s, 7)

@@ -68,7 +68,7 @@ func test_split_weapon_spills_inward() -> void:
 
 
 func test_official_battle_value() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var atlas := db.get_def("atlas_as7d")
 	check_eq(atlas.source.get("bv"), "sheet")
 	check_eq(BattleValue.of(atlas), 1897)

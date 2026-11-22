@@ -102,7 +102,7 @@ func test_steel_rain_setup_and_scoring() -> void:
 
 
 func test_bots_play_steel_rain() -> void:
-	var b := ForceBuilder.new(UnitDb.load_dir())
+	var b := ForceBuilder.new(designs())
 	b.rosters = [["hunchback_hbk4g", "jenner_jr7d"], ["wolverine_wvr6r", "hunchback_hbk4g"]]
 	b.mission_id = "steel_rain"
 	var s := b.build(MapLoader.load_file("res://data/maps/test_valley.json", terrain()), Dice.new(6))

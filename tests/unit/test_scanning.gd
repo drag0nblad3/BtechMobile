@@ -81,7 +81,7 @@ func test_standard_missions_set_up() -> void:
 
 
 func test_bots_play_urban_sweep() -> void:
-	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), designs())
 	var setup := StandardMissions.setup("urban_sweep", s.map, Dice.new(4))
 	s.mission.def = setup["mission"]
 	s.mission.def.random_duration = false

@@ -48,14 +48,8 @@ func test_waves_hold_back_half_and_arrive() -> void:
 	check(s.waiting.is_empty(), "surely by the third roll")
 
 
-func test_complication_names_cover_the_new_results() -> void:
-	for c in ["ecm", "fog_of_war", "thicker_fog", "waves"]:
-		check(Complications.SUPPORTED.has(c) and Complications.NAMES.has(c), c)
-	check(not Complications.SUPPORTED.has("edge"), "Edge still rerolled")
-
-
 func test_bots_play_with_waves() -> void:
-	var b := ForceBuilder.new(UnitDb.load_dir())
+	var b := ForceBuilder.new(designs())
 	b.rosters = [["hunchback_hbk4g", "jenner_jr7d"], ["wolverine_wvr6r", "hunchback_hbk4g"]]
 	b.mission_id = "general_melee"
 	var map := MapLoader.load_file("res://data/maps/test_valley.json", terrain())

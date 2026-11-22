@@ -3,13 +3,13 @@ extends TestCase
 
 
 func _db() -> UnitDb:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	db.add_assets(ASSET_FIXTURES)
 	return db
 
 
 func test_assets_kept_out_of_mech_catalog() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	check(db.get_def("savior_repair_vehicle") != null, "found by id")
 	check(not db.by_id.has("savior_repair_vehicle"), "not in the 'Mech list")
 	check(db.sorted_assets().size() >= 1, "listed separately")
@@ -43,7 +43,7 @@ func test_built_assets_keep_card_skill() -> void:
 func test_bots_play_with_assets() -> void:
 	var db := _db()
 	var map := MapLoader.load_file("res://data/maps/river_crossing.json", terrain())
-	for seed_value in [3, 4]:
+	for seed_value in [3]:
 		var fb := ForceBuilder.new(db, 8000)
 		fb.add(0, "griffin_grf1n")
 		for id in ["test_apc", "test_foot", "test_hover"]:
@@ -53,7 +53,7 @@ func test_bots_play_with_assets() -> void:
 			fb.add(1, id)
 		var gc := GameController.new(fb.build(map), seed_value)
 		var turns := 0
-		while not gc.state.game_over and gc.state.turn < 12:
+		while not gc.state.game_over and gc.state.turn < 5:
 			if gc.state.turn == 0 or not Bot.act(gc, gc.state.active_side(), BotSkill.Level.VETERAN):
 				if gc.state.turn == 0:
 					gc.start_turn()

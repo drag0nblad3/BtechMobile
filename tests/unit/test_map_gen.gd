@@ -53,7 +53,7 @@ func test_themes_differ() -> void:
 
 
 func test_forces_deploy_on_a_generated_map() -> void:
-	var fb := ForceBuilder.new(UnitDb.load_dir())
+	var fb := ForceBuilder.new(designs())
 	fb.budget = 100000
 	for side in 2:
 		for k in 4:

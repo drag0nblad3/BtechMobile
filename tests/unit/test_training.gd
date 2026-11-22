@@ -5,7 +5,7 @@ extends TestCase
 func test_campaign_missions_load_and_teach() -> void:
 	var c := TrainingCampaign.load_file()
 	check(c.missions.size() >= 5, "several training games")
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var last_level := BotSkill.Level.NOVICE
 	for i in c.missions.size():
 		var path := c.scenario_path(i)
@@ -38,7 +38,7 @@ func test_missions_unlock_in_order() -> void:
 
 func test_result_and_debrief() -> void:
 	var path := "res://data/scenarios/tutorial.json"
-	var s := ScenarioLoader.load_file(path, terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file(path, terrain(), designs())
 	s.units[1].destroyed = true
 	var r := TrainingCampaign.result(s, 0, 0)
 	check(r["won"], "won")
@@ -53,7 +53,7 @@ func test_each_mission_plays_and_shows_its_opening() -> void:
 	var c := TrainingCampaign.load_file()
 	for i in c.missions.size():
 		var path := c.scenario_path(i)
-		var s := ScenarioLoader.load_file(path, terrain(), UnitDb.load_dir())
+		var s := ScenarioLoader.load_file(path, terrain(), designs())
 		var tut := Tutorial.from_scenario(path)
 		var gc := GameController.new(s, 3 + i)
 		var titles: Array[String] = []
@@ -66,7 +66,7 @@ func test_each_mission_plays_and_shows_its_opening() -> void:
 
 
 func test_lesson_kind_and_min_turn_filters() -> void:
-	var s := ScenarioLoader.load_file("res://data/scenarios/tutorial.json", terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file("res://data/scenarios/tutorial.json", terrain(), designs())
 	var t := Tutorial.new()
 	t.lessons = [{"event": "physical", "kind": "kick", "unit_side": 0, "title": "k"},
 			{"event": "turn_started", "min_turn": 3, "title": "late"}]

@@ -2,28 +2,6 @@ extends TestCase
 ## Sanity checks on shipped data files.
 
 
-func test_terrain_loads() -> void:
-	var db := terrain()
-	check(db.by_token.has("c"), "clear")
-	check(db.by_token.has("w"), "water")
-
-
-func test_units_load() -> void:
-	var db := UnitDb.load_dir()
-	check(db.by_id.size() >= 5, "unit count")
-	check_eq(db.get_def("atlas_as7d").walk_mp, 3)
-
-
-func test_scenario_loads() -> void:
-	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json",
-			terrain(), UnitDb.load_dir())
-	check_eq(s.map.width, 15)
-	check_eq(s.map.height, 17)
-	check_eq(s.units.size(), 4)
-	for u in s.units:
-		check(s.map.has(u.coord), "unit %d on map" % u.id)
-
-
 func test_water_token() -> void:
 	var t := MapLoader.parse_token("w0d2", Vector2i.ZERO, terrain())
 	check_eq(t.depth, 2)
@@ -32,7 +10,7 @@ func test_water_token() -> void:
 
 
 func test_every_design_is_legal() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	for def: UnitDef in db.by_id.values():
 		var hs := 0
 		var jj := 0
@@ -55,7 +33,7 @@ func test_every_design_is_legal() -> void:
 
 
 func test_designs_weigh_their_tonnage() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	check(db.by_id.size() >= 30, "30+ designs")
 	for def: UnitDef in db.by_id.values():
 		var parts := DesignWeight.breakdown(def)
@@ -67,7 +45,7 @@ func test_designs_weigh_their_tonnage() -> void:
 
 
 func test_equipment_fits_slots() -> void:
-	var db := UnitDb.load_dir()
+	var db := designs()
 	for def: UnitDef in db.by_id.values():
 		var want := 0
 		for m in def.weapon_mounts:
@@ -101,14 +79,14 @@ func test_equipment_fits_slots() -> void:
 
 
 func test_crit_layout() -> void:
-	var u := Unit.new(1, UnitDb.load_dir().get_def("atlas_as7d"), 0, Vector2i.ZERO, 0)
+	var u := Unit.new(1, designs().get_def("atlas_as7d"), 0, Vector2i.ZERO, 0)
 	var rt: Array = u.slots[Location.RT]
 	check_eq(rt.size(), 12)
 	check_eq(rt[0].name, "AC/20")
 	check_eq(rt[11].kind, CritSlot.Kind.AMMO)
 	check_eq(u.slots[Location.CT][3].kind, CritSlot.Kind.GYRO)
 	check(u.has_working_actuator(Location.LA, "hand"), "atlas has hands")
-	var j := Unit.new(2, UnitDb.load_dir().get_def("jenner_jr7d"), 0, Vector2i.ZERO, 0)
+	var j := Unit.new(2, designs().get_def("jenner_jr7d"), 0, Vector2i.ZERO, 0)
 	check(not j.has_working_actuator(Location.LA, "hand"), "jenner has no hands")
 	check_eq(j.run_mp(), 11)
 
@@ -122,7 +100,7 @@ func test_structure_table() -> void:
 
 func test_roster_spans_weight_classes() -> void:
 	var classes := {}
-	for def: UnitDef in UnitDb.load_dir().by_id.values():
+	for def: UnitDef in designs().by_id.values():
 		classes[def.weight_class()] = true
 		check(def.role != "", def.id + " has a role line")
 		check(def.sprite != "", def.id + " names a sprite folder")

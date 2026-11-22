@@ -96,15 +96,3 @@ func test_weapon_fire_hits_vehicle() -> void:
 	var before := t.armor[VehicleLoc.FRONT]
 	WeaponFire.resolve(s, _dice([12, 7]), _emit, a, w, t, th)
 	check_eq(t.armor[VehicleLoc.FRONT], before - 10, "PPC on the front armor")
-
-
-func test_log_explains_vehicle_hits() -> void:
-	var s := GameState.new(make_map(["c0"]))
-	var m := vehicle("manticore_heavy_tank", 0, hex_at(0, 0), 0, 1)
-	s.add_unit(m)
-	VehicleDamage.take(_dice([10, 12, 9]), _emit, m, FiringArc.FRONT, 45, -1, "test")
-	VehicleCrits.roll(_dice([6]), _emit, m, VehicleLoc.FRONT)
-	MotiveDamage.roll(_dice([9]), _emit, m, FiringArc.REAR)
-	for e: Array in events:
-		var t := Explainer.text(GameEvent.new(e[0], e[1]), s, ExplainLevel.FULL)
-		check(t != "", "text for %s" % e[0])

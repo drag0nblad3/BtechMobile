@@ -121,7 +121,7 @@ func test_objective_raid_setup() -> void:
 
 
 func test_bots_play_objective_raid() -> void:
-	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), UnitDb.load_dir())
+	var s := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", terrain(), designs())
 	var setup := StandardMissions.setup("objective_raid", s.map, Dice.new(8))
 	s.mission.def = setup["mission"]
 	s.mission.def.random_duration = false

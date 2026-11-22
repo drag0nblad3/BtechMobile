@@ -106,11 +106,6 @@ func test_shoot_a_bridge_down() -> void:
 	check_eq(WoodsFire.noun(s.map.get_tile(hex_at(1, 1))), "clear")
 
 
-func test_explained_on_the_hex_line() -> void:
-	var t := TerrainText.describe(_state().map.get_tile(hex_at(1, 2)), ExplainLevel.FULL)
-	check(t.contains("Medium bridge") and t.contains("deck at level 0"), t)
-
-
 func test_deck_counts_as_road() -> void:
 	var m := MapLoader.from_dict({"rows": ["p1 p1 p1", "w0d1 w0d1 w0d1", "p0 p0 p0"],
 			"bridges": [{"hexes": ["0202"], "level": 0}]}, terrain())

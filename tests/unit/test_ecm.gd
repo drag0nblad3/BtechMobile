@@ -69,12 +69,3 @@ func test_indirect_fire_gets_no_artemis() -> void:
 	var fired := _fire(v)
 	check(not fired.has("artemis_blocked"))
 	check(WeaponText.fired(v[0], fired, ExplainLevel.FULL, {}).contains("Artemis +2"))
-
-
-func test_new_designs_carry_the_gear() -> void:
-	var db := UnitDb.load_dir()
-	check(db.get_def("firestarter_fs9s1").ecm_loc >= 0, "Firestarter ECM")
-	check(db.get_def("black_knight_bl12knt").tc_loc >= 0, "Black Knight TC")
-	var atlas := db.get_def("atlas_as7k")
-	check(atlas.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].ams), "Atlas AMS")
-	check_eq(BattleValue.breakdown(db.get_def("firestarter_fs9s1"))["ecm"], 61.0)

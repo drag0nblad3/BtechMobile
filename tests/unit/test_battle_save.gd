@@ -9,7 +9,7 @@ func _battle() -> GameController:
 		"fog": {"heavy": ["0303"]}
 	}, terrain())
 	var state := GameState.new(map)
-	var db := UnitDb.load_dir()
+	var db := designs()
 	state.add_unit(Unit.new(1, db.get_def("atlas_as7d"), 0, hex_at(0, 3), 0))
 	state.add_unit(Unit.new(2, db.get_def("jenner_jr7d"), 1, hex_at(2, 0), 3))
 	state.mission.def = Mission.from_dict({"name": "Hold Ground", "victory": "vp",
@@ -45,7 +45,7 @@ func test_round_trip_mid_phase_preserves_rules_and_rng() -> void:
 			"target_id": 2, "to_hit": th})
 	c.state.building_hits[1] = {hex_at(1, 1): 8}
 	var payload := BattleSave.capture(c, [1], BotSkill.Level.REGULAR, -1, [])
-	var restored := BattleSave.restore(payload, UnitDb.load_dir(), terrain())
+	var restored := BattleSave.restore(payload, designs(), terrain())
 	check(not restored.is_empty(), "valid save should restore")
 	if restored.is_empty():
 		return
@@ -83,7 +83,7 @@ func test_recorded_frames_are_immutable_after_capture() -> void:
 	recorder.record(GameEvent.new(GameEvent.DAMAGE, {"unit_id": at.id}),
 			c.state, "Jenner hit in the left leg.")
 	at.armor[Location.LL] -= 4
-	var replayed := BattleRecorder.state_at(recorder.frames[1], UnitDb.load_dir(), terrain())
+	var replayed := BattleRecorder.state_at(recorder.frames[1], designs(), terrain())
 	check_eq(replayed.unit_by_id(2).armor[Location.LL],
 			at.def.armor[Location.LL] - 10)
 	check_eq(recorder.frames.size(), 2)
@@ -97,7 +97,7 @@ func test_round_trip_hidden_and_reserve_units() -> void:
 	c.state.reserves.append(u)
 	c.state.hidden.append(u)
 	var data := BattleSave.capture(c, [], 0, -1, [])
-	var restored := BattleSave.restore(data, UnitDb.load_dir(), terrain())
+	var restored := BattleSave.restore(data, designs(), terrain())
 	check(not restored.is_empty())
 	if restored.is_empty():
 		return
@@ -116,7 +116,7 @@ func test_compressed_payload_round_trip() -> void:
 	check(BattleSave._write(path, payload), "compressed save should be writable")
 	var disk := BattleSave._read(path)
 	check_eq(disk.get("schema", -1), BattleSave.VERSION)
-	var restored := BattleSave.restore(disk, UnitDb.load_dir(), terrain())
+	var restored := BattleSave.restore(disk, designs(), terrain())
 	check(not restored.is_empty(), "compressed save should decode")
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 
@@ -124,7 +124,7 @@ func test_compressed_payload_round_trip() -> void:
 
 func test_asset_round_trip_keeps_card_state_and_generated_weapon() -> void:
 	var c := _battle()
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var def := db.get_def("savior_repair_vehicle")
 	check(def != null, "sample Battlefield Support Asset must be present")
 	if def == null:
@@ -159,7 +159,7 @@ func test_asset_round_trip_keeps_card_state_and_generated_weapon() -> void:
 
 func test_vehicle_round_trip_keeps_motive_and_crew_damage() -> void:
 	var c := _battle()
-	var db := UnitDb.load_dir()
+	var db := designs()
 	var def := db.get_def("manticore_heavy_tank")
 	var tank := Unit.new(98, def, 0, hex_at(1, 0), 0)
 	c.state.add_unit(tank)

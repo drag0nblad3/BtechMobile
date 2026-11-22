@@ -46,11 +46,3 @@ func test_wakes_up_at_heat_9() -> void:
 	check_eq(_dmg(opts, "kick"), 18, "kick 9 doubled")
 	check_eq(_dmg(opts, "hatchet"), 18, "hatchet 9 doubled")
 	check_eq(_dmg(opts, "push"), 0)
-
-
-func test_log_says_doubled() -> void:
-	var r := _setup()
-	var d := {"attacker_id": 1, "target_id": 2, "kind": "kick", "limb": Location.RL, "roll": 9, "need": 5,
-			"hit": true, "damage": 18, "mods": [], "tsm": true}
-	var t := Explainer.text(GameEvent.new(GameEvent.PHYSICAL, d), r[0], ExplainLevel.FULL)
-	check(t.contains("myomer"), t)

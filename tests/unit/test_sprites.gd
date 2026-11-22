@@ -13,5 +13,5 @@ func test_view_index_follows_camera() -> void:
 
 
 func test_missing_sprite_falls_back() -> void:
-	var def := UnitDb.load_dir().get_def("atlas_as7d")
+	var def := designs().get_def("atlas_as7d")
 	check(SpriteMech.try_build(def) == null, "no art yet -> placeholder")
