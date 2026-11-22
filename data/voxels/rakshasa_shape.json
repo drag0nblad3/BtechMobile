@@ -1034,6 +1034,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -8,
+              13,
+              5
+            ],
+            [
+              -4,
+              13,
+              5
+            ]
+          ]
         }
       ]
     },
@@ -1719,5 +1733,5 @@
       ]
     ]
   },
-  "notes": "Shape-first source, miniature referenced; all structural masses separately authored from the other chassis. Long horizontal descending prow, no incorrect missile pods on this rotary/laser MDG-2A loadout; bent raptor legs."
+  "notes": "Shape-first source, miniature referenced; all structural masses separately authored from the other chassis. Long horizontal descending prow, no incorrect missile pods on this rotary/laser MDG-2A loadout; bent raptor legs.\nSpecific connected-mass correction after 19-source audit: removed only unsupported fin/island geometry and inserted a real continuous helmet structural crown. No blind rod repairs."
 }
