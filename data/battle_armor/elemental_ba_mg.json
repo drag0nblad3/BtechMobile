@@ -1,0 +1,45 @@
+{
+ "id": "elemental_ba_mg",
+ "name": "Elemental Battle Armor",
+ "model": "[MG](Sqd5)",
+ "tonnage": 1,
+ "tech_base": "clan",
+ "battle_armor": {
+  "troopers": 5,
+  "armor": 10,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": true,
+  "weapons": [
+   {
+    "id": "machine_gun",
+    "name": "Machine Gun",
+    "type": "ballistic",
+    "damage": 2,
+    "short": 1,
+    "medium": 2,
+    "long": 3,
+    "ai": true
+   },
+   {
+    "id": "srm2",
+    "name": "SRM 2",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 2,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ammo_per_ton": 2,
+    "ammo_explodes": false
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 8498,
+  "megamek": "data/mekfiles/battlearmor/3058Uu/Elemental BA [MG] (Sqd5).blk",
+  "bv": "sheet",
+  "sheet": "Elemental Battle Armor [MG] (BATTLETECH_ForcePacks_Record_Sheets_-_Wave_One)"
+ },
+ "bv": 404
+}

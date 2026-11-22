@@ -26,6 +26,7 @@ var jammed: bool = false ## Rotary AC jammed: can't fire until cleared (RotaryAc
 var spent: bool = false  ## A one-shot weapon has fired its shot.
 var crit_hits: int = 0   ## Critical hits taken (an autocannon survives one, AutocannonCrit).
 var on_vehicle: bool = false  ## Mounted on a combat vehicle: `loc` is a VehicleLoc.
+var on_squad: bool = false  ## A battle armor squad's attack: every trooper fires it.
 
 
 func _init(w: WeaponDef, location: int, rear_mounted: bool) -> void:
@@ -35,4 +36,6 @@ func _init(w: WeaponDef, location: int, rear_mounted: bool) -> void:
 
 
 func label() -> String:
+	if on_squad:
+		return "%s (squad)" % def.name
 	return "%s (%s%s)" % [def.name, VehicleLoc.CODES[loc] if on_vehicle else Location.code(loc), "R" if rear else ""]

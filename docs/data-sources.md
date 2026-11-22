@@ -19,6 +19,11 @@ Tyler's rule: designs and Battle Values are official, never guessed.
 - **Combat vehicles** (`data/vehicles/`) come from MegaMek's `.blk` files
   (`data/mekfiles/vehicles/**`, same CC BY-NC-SA terms) with the BV printed
   on the official Battlefield Support / Mercenaries record sheets.
+- **Battle armor** (`data/battle_armor/`) comes from MegaMek's `.blk` files
+  (`data/mekfiles/battlearmor/**`) checked against the weapons on the free
+  official sheets (Mercenaries ForcePack, ForcePacks Wave One, Aces: Scouring
+  Sands), with the BV printed there. Conventional infantry has no free sheet
+  with a BV yet, so none is in the game.
 - Record sheet PDFs and their text stay out of the repository (project files
   only). The converter scripts live outside the repo; to rebuild, convert the
   `.mtf` files again and look up the sheet BVs.
