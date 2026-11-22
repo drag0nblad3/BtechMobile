@@ -55,8 +55,11 @@ func _build(d: Dictionary) -> void:
 		shapes_by_name[p["name"]] = shapes
 		for s: Dictionary in shapes:
 			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
+		# Additional forms on mirrored parts are authored in final world-grid coordinates.
+		# Only the inherited source shape is mirrored. Mirroring 'add' again
+		# visibly relocates right-side plates onto the left shoulder.
 		for s: Dictionary in p.get("add", []):
-			_draw_shape(s, mirror_part, unit_scale, materials, name, joint, spec["pivot"])
+			_draw_shape(s, false, unit_scale, materials, name, joint, spec["pivot"])
 
 	# The Jenner's bent leg shapes are authored in its sections already.
 	# Apply only a small asymmetric stance, not a second exaggerated knee bend.
@@ -170,17 +173,21 @@ func _draw_shape(s: Dictionary, mirrored: bool, unit_scale: float,
 			inst.position = -pivot * unit_scale
 			joint.add_child(inst)
 			_mesh_by_part[part_name].append(inst)
-	elif s.has("box"):
-		var lo: Array = s["box"][0]
-		var hi: Array = s["box"][1]
-		var bounds := Vector3(float(hi[0]-lo[0]+1), float(hi[1]-lo[1]+1), float(hi[2]-lo[2]+1))
+	elif s.has("box") or s.has("shell"):
+		# A shell is a solid armor hull with internal structure, not empty air.
+		# Missing this case made major shoulder armor and launcher pods vanish
+		# from the shape-review renders although voxel models contain them.
+		var bounds: Array = s.get("box", s.get("shell", []))
+		var lo: Array = bounds[0]
+		var hi: Array = bounds[1]
+		var extent := Vector3(float(hi[0]-lo[0]+1), float(hi[1]-lo[1]+1), float(hi[2]-lo[2]+1))
 		var cx := (float(lo[0]) + float(hi[0]+1)) * 0.5
 		var cy := (float(lo[1]) + float(hi[1]+1)) * 0.5
 		var cz := (float(lo[2]) + float(hi[2]+1)) * 0.5
 		if mirrored:
 			cx = -cx
 		var mesh := BoxMesh.new()
-		mesh.size = bounds * unit_scale
+		mesh.size = extent * unit_scale
 		var inst := MeshInstance3D.new()
 		inst.mesh = mesh
 		inst.position = (Vector3(cx, cy, cz) - pivot) * unit_scale
