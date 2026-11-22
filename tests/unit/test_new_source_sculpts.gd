@@ -69,6 +69,27 @@ func _groups(cells: Dictionary) -> int:
                 var next: Vector3i = cell + move
                 if pending.erase(next):
                     queue.append(next)
+    if count > 1:
+        var remaining := {}
+        for c: Vector3i in cells:
+            remaining[c] = true
+        while not remaining.is_empty():
+            var sample: Vector3i = remaining.keys()[0]
+            var frontier: Array[Vector3i] = [sample]
+            remaining.erase(sample)
+            var minimum: Vector3i = sample
+            var maximum: Vector3i = sample
+            var idx := 0
+            while idx < frontier.size():
+                var cell2: Vector3i = frontier[idx]
+                idx += 1
+                minimum = Vector3i(mini(minimum.x, cell2.x), mini(minimum.y, cell2.y), mini(minimum.z, cell2.z))
+                maximum = Vector3i(maxi(maximum.x, cell2.x), maxi(maximum.y, cell2.y), maxi(maximum.z, cell2.z))
+                for move2: Vector3i in AXES:
+                    var n2: Vector3i = cell2 + move2
+                    if remaining.erase(n2):
+                        frontier.append(n2)
+            print("SCULPT_COMPONENT|count=%d|lo=%s|hi=%s" % [frontier.size(), minimum, maximum])
     return count
 
 
