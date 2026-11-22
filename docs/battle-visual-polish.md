@@ -52,3 +52,11 @@ scenario data, and unit geometry. It adds no gameplay effects or damage rules.
 - PR CI also captures an actual 1280×720 Compatibility-renderer city scene
   with a temporary PPC tracer and combat HUD callout. Review the screenshot
   artifact **battlefield-polish-visual-review** for final composition QA.
+
+## Screenshot review findings
+
+The first city screenshot revealed a blank contextual-tip panel obscuring terrain
+when explanation level was Off. Empty tip and information panels now collapse,
+and the shore palette is toned down for less neon-like water. The temporary
+PPC tracer in the review screenshot is placed in the visible area of the map;
+it remains screenshot-only and never changes combat logic.

@@ -3,9 +3,9 @@
 shader_type spatial;
 render_mode blend_mix, depth_draw_never, cull_back;
 
-uniform vec4 deep_color : source_color = vec4(0.07, 0.27, 0.38, 1.0);
-uniform vec4 shallow_color : source_color = vec4(0.19, 0.52, 0.60, 1.0);
-uniform vec4 foam_color : source_color = vec4(0.56, 0.79, 0.79, 1.0);
+uniform vec4 deep_color : source_color = vec4(0.065, 0.18, 0.27, 1.0);
+uniform vec4 shallow_color : source_color = vec4(0.12, 0.39, 0.46, 1.0);
+uniform vec4 foam_color : source_color = vec4(0.45, 0.67, 0.70, 1.0);
 uniform float wave_speed = 0.7;
 
 varying vec2 field;
@@ -30,7 +30,7 @@ void fragment() {
 	float crests = smoothstep(1.0, 1.8, w1 + w2);
 	vec3 water = mix(deep_color.rgb, shallow_color.rgb, 0.4 + shore * 0.55);
 	water *= depth_tint;
-	water = mix(water, foam_color.rgb * depth_tint, crests * 0.24 + shore * 0.16);
+	water = mix(water, foam_color.rgb * depth_tint, crests * 0.19 + shore * 0.12);
 	ALBEDO = water;
 	ROUGHNESS = 0.23;
 	METALLIC = 0.07;

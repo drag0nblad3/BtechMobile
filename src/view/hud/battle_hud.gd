@@ -46,6 +46,7 @@ var _event_tween: Tween
 var status: Label
 var info: Label
 var tip: Label
+var _tip_panel: PanelContainer
 var move_bar: HBoxContainer
 var attack_bar: HBoxContainer
 var mode_button: Button
@@ -135,18 +136,20 @@ func _ready() -> void:
 	UiSkin.button(shortcuts.get_child(0) as Button, "primary")
 	info = _label(col, 22)
 	UiSkin.label(info, "section")
+	info.visible = false  # No empty advice row over the battlefield.
 	var middle := _row(col)
 	middle.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	var left := VBoxContainer.new()
 	left.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	middle.add_child(left)
-	var tip_panel := PanelContainer.new()
-	tip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	tip_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	tip_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#0a1824cc"), UiSkin.BORDER, 8, 7))
-	left.add_child(tip_panel)
-	tip = _label(tip_panel, 20)
+	_tip_panel = PanelContainer.new()
+	_tip_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_tip_panel.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+	_tip_panel.add_theme_stylebox_override("panel", UiSkin.panel_style(Color("#0a1824cc"), UiSkin.BORDER, 8, 7))
+	left.add_child(_tip_panel)
+	_tip_panel.visible = false
+	tip = _label(_tip_panel, 20)
 	UiSkin.label(tip, "muted")
 	tip.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	tip.custom_minimum_size.x = 420
@@ -341,10 +344,12 @@ func set_status(text: String) -> void:
 
 func set_info(text: String) -> void:
 	info.text = text
+	info.visible = not text.strip_edges().is_empty()
 
 
 func set_tip(text: String) -> void:
 	tip.text = text
+	_tip_panel.visible = not text.strip_edges().is_empty()
 
 
 func set_mode_label(text: String) -> void:

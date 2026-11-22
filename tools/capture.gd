@@ -59,15 +59,13 @@ func _process(_delta: float) -> bool:
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
 	if _frames == 37 and _mode == "vfx":
-		# Visual review only: preview a shot without changing the combat rules.
-		var units: Array = _scene.controller.state.units
-		if units.size() >= 2:
-			var attacker: Unit = units[0]
-			var target: Unit = units[units.size() - 1]
-			_scene.fx.play(GameEvent.new(GameEvent.WEAPON_FIRED, {
-				"attacker_id": attacker.id, "target_id": target.id,
-				"weapon_id": "er_ppc", "hit": true}))
-			_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
+		# Visual review only: place a PPC across the visible battlefield.
+		# Does not affect the actual combat resolution or either roster.
+		var middle: Vector3 = HexLayout.map_bounds(_scene.controller.state.map).get_center()
+		ShotFx.spawn(_scene.fx, middle + Vector3(-3.0, 1.1, 0.5),
+			middle + Vector3(3.0, 0.8, -0.5), "er_ppc", true)
+		VxBlast.spawn(_scene.fx, middle + Vector3(3.0, 0.8, -0.5), "impact")
+		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
 	if _frames == 40:
 		root.get_viewport().get_texture().get_image().save_png(_out)
 		print("saved ", _out)
