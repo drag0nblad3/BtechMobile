@@ -52,7 +52,7 @@ static func solid_contact(child: Dictionary, parent: Dictionary) -> bool:
 					var b: Vector3i = axes[1] * b_sign
 					var ok := true
 					for offset in [Vector3i.ZERO, a, b, a + b]:
-						var pos := c + offset
+						var pos: Vector3i = c + offset
 						if not child.has(pos) or not child.has(pos - normal) \
 								or not parent.has(pos + normal) \
 								or not parent.has(pos + normal * 2):
