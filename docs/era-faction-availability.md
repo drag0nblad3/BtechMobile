@@ -1,18 +1,39 @@
 # Era and faction availability
 
-Force creation supports **Off**, **Advisory**, and **Strict** restrictions. Both sides share an exact year and choose factions independently. The official MUL lists **71 factions across five allegiances**; all are exposed in the selector with their founded and dissolved years. A faction outside its published active years is unavailable regardless of the chosen unit.
+The force builder supports **Off**, **Advisory**, and **Strict** historical availability restrictions. Each side chooses a faction; both share a scenario year. These settings affect roster eligibility, not combat statistics or BV.
 
-- Off (default) preserves existing unrestricted play.
-- Advisory keeps all units selectable but marks unverified or unavailable variants in the catalog, roster, and add feedback.
-- Strict blocks unavailable and unverified variants and disables deployment if an existing roster conflicts. Switching era, faction, or policy does **not** erase the roster. Starter formation previews use the same validator.
-- A separate **History: Verified Only** catalog toggle filters down to confirmed variants and works in any mode.
+- **Off (default):** unrestricted force construction.
+- **Advisory:** display unavailable/unverified reasons while allowing additions and deployment.
+- **Strict:** block unavailable and unverified variants and prevent deployment until already-built forces comply. Switching years, factions, or policies never silently removes units. Starter formation previews use the same validation.
+- **History: Verified Only:** a separate catalog filter shows designs the chosen faction may field in the selected era.
 
-`data/forces/availability.json` stores the **exact UnitDef ID**, MUL introduction year, and selected verified faction-by-era cells. Missing variants or factions mean **unverified**, not unavailable. An explicitly recorded faction without the selected era means unavailable. Introduction year is checked within the chosen era, not only against era start.
+## Official MUL snapshot — 2026-11-22
 
-The initial bundled snapshot deliberately covers only several verified MUL examples (Atlas AS7-D, Locust LCT-1V, Jenner JR7-D, Timber Wolf Prime) and a small group of separately verified introduction years. It is **not** a complete MUL mirror. In Strict, absent records fail closed. Expand the offline snapshot only by checking individual variant pages against the official faction/era matrix. No tech-base, chassis, or manufacturer heuristic is acceptable evidence.
+A reproducible import from the official **Master Unit List** static search index and complete availability matrix is included in `data/forces/availability.json`. The source is the public `https://masterunitlist.battletech.com/data/manifest.json` plus its versioned `units`, `availability`, `factions`, and `eras` files. Source units are matched to individual game variants using exact name/model (including uniquely recognized aliases), tonnage, BV, and canonical unit-page URLs. No chassis or technology heuristics are permitted.
 
-Eras run from Age of War (2398) through the published ilClan timeline (3153). The year control supports individual years, including dates inside each era. Nothing here changes unit performance, Battle Value, weapons, or physical combat rules.
+The current snapshot contains:
 
-Sources: https://masterunitlist.battletech.com/ , https://masterunitlist.battletech.com/factions , https://battletech.com/mul-help/ , https://battletech.com/how-the-master-unit-list-organizes-its-data/
+- **697** game variants in the source catalog.
+- **674** exact-matched MUL unit variants (**96.7%** coverage), each with verified introduction year and a published faction/era matrix.
+- **41,311** positive faction/era cells across those units.
+- **71** official factions and **12** eras, and faction founding/dissolution dates.
+- **23** unmatched variants, primarily special or unusual named configurations, held out as **unverified** rather than assigned guessed availability. See `docs/mul-import-coverage.json` for a variant-by-variant audit.
 
-Regression tests: `tests/unit/test_era_availability.gd`.
+A record with `matrix_status: "published"` is a **complete** official matrix. Factions appearing in `factions` have positive era marks; all other valid factions or eras are conclusively **unavailable** for that variant. To keep this Android-friendly, published matrices are stored **sparsely**, omitting negative faction rows. A missing variant or a record whose matrix is not published is **unverified**. The exact `intro_year` prevents a design being fielded before its first year, even inside its introductory era. Unknown factions are unverified, while factions outside known dates are unavailable.
+
+Each imported variant records its game's unit ID, public MUL unit UID, original numerical MUL ID when present, canonical URL, verification date, introduction year, and positive faction/era cells. The rule engine caches this immutable snapshot to avoid decoding the large JSON repeatedly when evaluating starter formations.
+
+## Refresh
+
+Run `python3 tools/import_mul_availability.py` from the repository root in an environment with access to the official site, or dispatch the GitHub Actions workflow `Import canonical MUL availability`. The importer respects the site's `robots.txt` and its **10-second crawl delay**, validates the public index and 71-faction/12-era vocabulary, compares existing page-verified records for contradictions, and fails on insufficient coverage rather than overwriting good data with a partial result. The workflow commits the refreshed data and coverage report to its feature branch. Manually review unmatched variants against canonical record sheets and MUL before adding mappings.
+
+## References and tests
+
+- Official MUL: https://masterunitlist.battletech.com/
+- Public manifest: https://masterunitlist.battletech.com/data/manifest.json
+- Faction list: https://masterunitlist.battletech.com/factions
+- Official MUL help: https://battletech.com/mul-help/
+- Regression tests: `tests/unit/test_era_availability.gd`
+- Importer and audit: `tools/import_mul_availability.py`, `docs/mul-import-coverage.json`
+
+Eras cover the site's published Age of War through ilClan period. The source's Alpha Strike stats are not used to change Classic BattleTech unit loadouts, BV, or combat behavior.
