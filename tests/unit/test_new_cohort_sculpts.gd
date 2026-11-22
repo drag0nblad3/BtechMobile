@@ -32,7 +32,10 @@ func test_cohort_15_all_parts_are_real_solid_connected_masses() -> void:
         for p: Dictionary in m.parts:
             var cells: Dictionary = p["cells"]
             check(not cells.is_empty(), name + "/" + p["name"] + " empty")
-            check_eq(_groups(cells), 1, name + "/" + p["name"] + " floating mass")
+            var groups := _groups(cells)
+            if groups > 1:
+                print("COHORT_COMPONENTS|", name, "|", p["name"], "|", _component_report(cells))
+            check_eq(groups, 1, name + "/" + p["name"] + " floating mass")
             for c: Vector3i in cells:
                 all_cells[c] = true
             var parent_name: String = p.get("parent", "")
@@ -54,6 +57,32 @@ func test_cohort_15_open_muzzles() -> void:
                 for p: Dictionary in m.parts_at(loc):
                     check(not (p["cells"] as Dictionary).has(c),
                         name + " plugged " + Location.code(loc) + " muzzle at " + str(c))
+
+
+
+func _component_report(cells: Dictionary) -> String:
+    var left := {}
+    for c: Vector3i in cells:
+        left[c] = true
+    var report: Array[String] = []
+    while not left.is_empty():
+        var start: Vector3i = left.keys()[0]
+        var queue: Array[Vector3i] = [start]
+        left.erase(start)
+        var lo := start
+        var hi := start
+        var i := 0
+        while i < queue.size():
+            var p: Vector3i = queue[i]
+            i += 1
+            lo = Vector3i(mini(lo.x,p.x),mini(lo.y,p.y),mini(lo.z,p.z))
+            hi = Vector3i(maxi(hi.x,p.x),maxi(hi.y,p.y),maxi(hi.z,p.z))
+            for d: Vector3i in DIRS:
+                var next: Vector3i = p + d
+                if left.erase(next):
+                    queue.append(next)
+        report.append("%d voxels: %s to %s" % [queue.size(),lo,hi])
+    return "; ".join(report)
 
 
 func _groups(cells: Dictionary) -> int:
