@@ -354,6 +354,7 @@ func _on_event(e: GameEvent) -> void:
 	var explanation := explainer.describe(e, s)
 	hud.log_view.add_line(explanation, bold, CombatLogView.tone_for(e))
 	hud.show_combat_event(e)
+	hud.roll_feed.add_event(e, s)
 	recorder.record(e, s, explanation)
 	if e.type == GameEvent.ACTIVE_SIDE and s.turn > _last_autosave_turn:
 		_last_autosave_turn = s.turn

@@ -4,7 +4,7 @@ extends SceneTree
 ## Modes: (none) battle start · select (move highlights) · attack (weapon phase,
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · setupmenu (its Battlefield page) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
-## tutorial (training battle, first lesson) ·
+## tutorial (training battle, first lesson) · rolls (sample roll feed) ·
 ## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played).
 
 var _frames := 0
@@ -47,7 +47,7 @@ func _process(_delta: float) -> bool:
 		match _mode:
 			"select":
 				_select_far_move()
-			"attack", "sheet":
+			"attack", "sheet", "rolls":
 				_to_weapon_phase()
 			"notebook":
 				_scene.get_child(_scene.get_child_count() - 1)._show_notebook()
@@ -56,6 +56,8 @@ func _process(_delta: float) -> bool:
 			"clanmenu":
 				_scene.catalog.mode = DesignFilter.Mode.CLAN
 				_scene.catalog.rebuild()
+	if _frames == 30 and _mode == "rolls":
+		_show_sample_rolls()
 	if _frames == 7 and (_mode == "attack" or _mode == "sheet"):
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
@@ -156,3 +158,15 @@ func _stage_battle_visuals() -> void:
 		if chosen != Hex.INVALID:
 			unit.coord = chosen
 			_scene.units_layer.refresh_unit(unit.id)
+
+
+## Review only: sample lines in the roll feed, nothing is resolved.
+func _show_sample_rolls() -> void:
+	var s: GameState = _scene.controller.state
+	var a: Unit = s.units[0]
+	var t: Unit = s.units[s.units.size() - 1]
+	for e in [GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": a.id, "weapon": "Medium Laser", "roll": 9, "need": 8, "hit": true}),
+			GameEvent.new(GameEvent.DAMAGE, {"unit_id": t.id, "amount": 5, "loc": Location.LT}),
+			GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": a.id, "weapon": "AC/20", "roll": 6, "need": 8, "hit": false}),
+			GameEvent.new(GameEvent.PSR, {"unit_id": t.id, "roll": 5, "need": 7, "ok": false})]:
+		_scene.hud.roll_feed.add_event(e, s)

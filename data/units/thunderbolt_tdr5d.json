@@ -1,0 +1,51 @@
+{
+  "id": "thunderbolt_tdr5d",
+  "name": "Thunderbolt",
+  "model": "TDR-5D",
+  "tonnage": 65,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 14,
+  "armor": {
+    "LA": 20,
+    "RA": 20,
+    "LT": 24,
+    "RT": 24,
+    "CT": 30,
+    "HD": 9,
+    "LL": 29,
+    "RL": 29
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 11
+  },
+  "equipment": {
+    "LT": [
+      "lrm10",
+      "ammo:lrm10"
+    ],
+    "RT": [
+      "ac20",
+      "ammo:ac20*2"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Brawler: close-range firepower. LRM 10, AC/20; walks 4, runs 6.",
+  "sprite": "thunderbolt",
+  "source": {
+    "mul_id": 7431,
+    "megamek": "data/mekfiles/meks/RS Succession Wars/Thunderbolt TDR-5D.mtf",
+    "published": "RS:SW",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1231
+  },
+  "bv": 1231
+}

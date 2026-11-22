@@ -71,6 +71,7 @@ var prone_button: Button
 var more_button: MenuButton
 var _tools_menu: MenuButton
 var pause_menu: BattlePauseMenu
+var roll_feed: RollFeed  ## Recent dice rolls, top right.
 var _move_actions: Array[Button] = []
 var game_over_label: Label
 var sheet_open := false  ## Side panel shows the record sheet, not attack choices.
@@ -213,6 +214,10 @@ func _ready() -> void:
 	UiSkin.button(attack_button, "danger")
 	show_move_controls(false)
 	show_attack_controls(false)
+	roll_feed = RollFeed.new()
+	roll_feed.offset_right = -(MARGIN + safe["right"])
+	roll_feed.offset_top = 100 + safe["top"]
+	add_child(roll_feed)
 	pause_menu = BattlePauseMenu.new()
 	pause_menu.visible = false
 	add_child(pause_menu)

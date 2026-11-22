@@ -48,6 +48,21 @@ func _check_builder() -> void:
 	if not _verify(screen.builder.rosters[1].is_empty() and screen._start_button.disabled,
 			"removing Blue prevents launch"):
 		return
+	search.text = ""
+	search.text_changed.emit("")
+	screen.catalog.weight = 4
+	screen.catalog.sort_by = 1
+	screen.catalog.rebuild()
+	var cards: Array = screen.catalog._cards
+	if not _verify(cards.size() > 1 and cards.all(func(c: Dictionary) -> bool:
+			return (c["def"] as UnitDef).weight_class() == "Assault"), "Assault filter failed"):
+		return
+	var first_bv: int = screen.builder.unit_bv(1, cards[0]["def"])
+	if not _verify(first_bv >= screen.builder.unit_bv(1, cards[1]["def"]), "BV sort is not high to low"):
+		return
+	screen.catalog.weight = 0
+	screen.catalog.sort_by = 0
+	screen.catalog.rebuild()
 	var forms := StarterFormations.all()
 	var star_index := -1
 	for i in forms.size():
