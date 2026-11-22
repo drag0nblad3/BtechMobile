@@ -1,0 +1,40 @@
+name: Temporary Imp Rakshasa Wraith source review
+on:
+  push:
+    branches: ["art/new-source-mechs-shape-first-20261122"]
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip -O /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.5.1-stable_linux.x86_64
+          sudo mv /tmp/Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Render three exceptional chassis from five angles
+        run: |
+          set -euo pipefail
+          godot --headless --import
+          mkdir -p /tmp/specific
+          timeout 140s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1500x900 -s tools/_temporary_sculpt_gallery_bespoke.gd -- /tmp/specific
+      - name: Compact inline render
+        run: |
+          python3 -m pip install --quiet --break-system-packages pillow
+          python3 - <<'PY'
+          from PIL import Image
+          import base64,io
+          im=Image.open("/tmp/specific/gallery_three_quarter.png").convert("RGB").resize((700,1250),Image.Resampling.LANCZOS)
+          b=io.BytesIO();im.save(b,format="JPEG",quality=57,optimize=True)
+          raw=base64.b64encode(b.getvalue()).decode()
+          for k in range(0,len(raw),3000):
+              print("BESPOKE_IMAGE_CHUNK|"+str(k//3000)+"|"+raw[k:k+3000])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: imp-rakshasa-wraith-five-angle-study
+          path: /tmp/specific/gallery_three_quarter.png
+          if-no-files-found: ignore
