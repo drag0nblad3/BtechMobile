@@ -21,6 +21,16 @@ func _run() -> void:
 	if not _check(active.border_color == UiSkin.AMBER, "weapon phase indicator"):
 		return
 	scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": false}))
+	if not _check(scene.hud.utility_button != null, "secondary HUD actions accessible"):
+		return
+	scene.hud._populate_utility_menu()
+	if not _check(scene.hud.utility_button.get_popup().item_count == 3,
+			"save/replay/explain remain in utility menu"):
+		return
+	var stage: Label3D = scene.movement._preview_plate
+	if not _check(stage != null and stage.name == "PathCost",
+			"movement path cost signage is instantiated"):
+		return
 	if not _check(scene.hud._event_panel.visible and
 			scene.hud._event_label.text == "SHOT MISSED", "miss banner"):
 		return
@@ -42,6 +52,11 @@ func _run() -> void:
 	var env := scene.get_node_or_null("Environment/SkyFill") as DirectionalLight3D
 	if not _check(env != null and not env.shadow_enabled,
 			"mobile fill light must be shadowless"):
+		return
+	var model: UnitView = scene.units_layer.view_of(scene.controller.state.units[0])
+	if not _check(model != null and model.impact_world(Location.HEAD).y >
+			model.impact_world(Location.LL).y,
+			"hit locations map to different points on model"):
 		return
 	var fx: Node3D = scene.fx
 	var trail := ShotFx.spawn(fx, Vector3(0, 1, 0), Vector3(5, 1, 0),
