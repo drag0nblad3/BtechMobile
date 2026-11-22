@@ -22,3 +22,28 @@ Use current Catalyst plastic miniatures from multiple angles as the leading
 visual reference; line art is secondary. Do not add duplicate hidden arms,
 enlarge hulls indiscriminately, or replace distinct cockpit silhouettes with a
 unified family template.
+
+
+## Reference surgery and first whole-catalog audit (2026-11-22)
+
+References consulted include the current Catalyst/ForcePack plastic silhouettes
+for Raven, King Crab, Locust, Rifleman and Hunchback, plus Shadow Cat and
+quadruped documentation. The sculpting emphasis is a recognisable cockpit,
+distinct weapon housings and correct plan/side depth, **not** a generic taper.
+Nonuniform contour operations were applied to both low and detailed source
+models on seven chassis: Raven, Shadow Cat, King Crab, Locust, Rifleman,
+Hunchback IIC and Goliath. A proposed Scorpion hull edit was rejected because
+it created detached or overlapping pieces.
+
+On the offline 146-chassis shape-study set, the pre-repair geometry had
+1,838 named parts, 32 detached intra-part islands and 2 parent gaps. The
+component-specific repair added minimal supports or removed stray cells,
+rather than dilating whole arms/hulls. The combined offline audit then reported
+zero loose islands, zero parent gaps, zero empty parts and zero overlapping
+cells **at coarse resolution only**. This is not an engine-level approval.
+
+The companion Godot workflow writes an artifact with one JSON record per part
+and checks the full Godot catalog, including the five high-fidelity standalone
+shape sculpts. It may expose further differences, particularly under refined
+voxel ownership and beveling. Keep any failures visible and repair them in the
+source; do not weaken the assertions to turn CI green.

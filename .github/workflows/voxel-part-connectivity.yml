@@ -1,0 +1,54 @@
+name: Voxel component connectivity audit
+on:
+  pull_request:
+    paths:
+      - 'data/voxels/**'
+      - 'src/view/vox/vx_part_connectivity.gd'
+      - 'tools/audit_voxel_parts.gd'
+      - '.github/workflows/voxel-part-connectivity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import model classes
+        run: godot --headless --import
+      - name: Audit every coarse component and its immediate parent
+        run: |
+          set -o pipefail
+          timeout 240s godot --headless --path . --script res://tools/audit_voxel_parts.gd 2>&1 | tee part-connectivity.log
+          ! grep -E 'SCRIPT ERROR|Parse Error' part-connectivity.log
+          grep -q '^VOXEL_PART_AUDIT_SUMMARY ' part-connectivity.log
+          p="$(sed -n 's/^VOXEL_PART_AUDIT_REPORT //p' part-connectivity.log | tail -1)"
+          test -n "$p" && test -s "$p"
+          cp "$p" ./voxel-part-connectivity.json
+      - name: Upload per-part occupancy and joint diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: voxel-part-connectivity-report
+          path: |
+            part-connectivity.log
+            voxel-part-connectivity.json
+          if-no-files-found: ignore
+      - name: Assert connected parts at coarse scale
+        run: |
+          python - <<'PY'
+          import json
+          data=json.load(open('voxel-part-connectivity.json'))
+          totals=data['summary']
+          print('Part connectivity:', totals)
+          assert totals['scanned'] >= 150, 'Catalog was not fully scanned'
+          assert totals['loose_islands'] == 0, 'Disconnected part islands found'
+          assert totals['parent_gaps'] == 0, 'Detached parent joint(s) found'
+          assert totals['empty_parts'] == 0, 'Empty parts found'
+          PY

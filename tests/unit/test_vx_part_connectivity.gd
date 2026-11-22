@@ -3,7 +3,7 @@ extends TestCase
 func test_per_part_auditor_catches_islands_and_missing_parent_contacts() -> void:
 	var model := VxModel.new()
 	model.id = "synthetic_connectivity"
-	model.parts = [
+	model.parts.append_array([
 		{"name": "hull", "parent": "", "pivot": Vector3.ZERO,
 		 "cells": {Vector3i(0, 0, 0): 0, Vector3i(0, 1, 0): 0}},
 		{"name": "connected", "parent": "hull", "pivot": Vector3.ZERO,
@@ -11,7 +11,7 @@ func test_per_part_auditor_catches_islands_and_missing_parent_contacts() -> void
 		{"name": "isolated", "parent": "hull", "pivot": Vector3.ZERO,
 		 "cells": {Vector3i(9, 0, 0): 0, Vector3i(9, 1, 0): 0,
 		  Vector3i(15, 1, 0): 0}}
-	]
+	])
 	var record := VxPartConnectivity.audit(model)
 	check_eq(record["part_count"], 3)
 	check_eq(record["loose_islands"], 1)
