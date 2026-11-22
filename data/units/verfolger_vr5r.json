@@ -1,0 +1,73 @@
+{
+  "id": "verfolger_vr5r",
+  "name": "Verfolger",
+  "model": "VR5-R",
+  "tonnage": 65,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 13,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 20,
+    "RA": 20,
+    "LT": 24,
+    "RT": 24,
+    "CT": 31,
+    "HD": 9,
+    "LL": 26,
+    "RL": 26
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*3"
+    ],
+    "RA": [
+      "er_ppc",
+      "endo_steel*3"
+    ],
+    "LT": [
+      "medium_laser",
+      "lb10x_ac",
+      "endo_steel*2"
+    ],
+    "RT": [
+      "medium_laser",
+      "ammo:lb10x_ac:cluster",
+      "ammo:lb10x_ac",
+      "ammo:lb10x_ac:cluster",
+      "ammo:ams*2",
+      "case",
+      "endo_steel*2"
+    ],
+    "CT": [
+      "medium_laser"
+    ],
+    "HD": [
+      "ams"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. ER PPC, 3x Medium Laser, LB 10-X AC, Anti-Missile System; walks 5, runs 8.",
+  "sprite": "verfolger",
+  "source": {
+    "mul_id": 5346,
+    "megamek": "data/mekfiles/meks/3067/Verfolger VR5-R.mtf",
+    "published": "RS:3067u",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1639
+  },
+  "bv": 1639
+}

@@ -1,0 +1,70 @@
+{
+  "id": "garm_grm01a",
+  "name": "Garm",
+  "model": "GRM-01A",
+  "tonnage": 35,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 10,
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 9,
+    "RT": 9,
+    "CT": 10,
+    "HD": 6,
+    "LL": 6,
+    "RL": 6
+  },
+  "rear_armor": {
+    "LT": 1,
+    "RT": 1,
+    "CT": 2
+  },
+  "equipment": {
+    "LA": [
+      "ferro_fibrous*8"
+    ],
+    "RA": [
+      "endo_steel*8"
+    ],
+    "LT": [
+      "heat_sink",
+      "lrm10",
+      "ammo:lrm10",
+      "ferro_fibrous*6"
+    ],
+    "RT": [
+      "heat_sink",
+      "lb5x_ac",
+      "ammo:lb5x_ac",
+      "endo_steel*5"
+    ],
+    "CT": [
+      "heat_sink",
+      "jump_jet"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Missile Boat: long-range missiles. LRM 10, LB 5-X AC; walks 5, runs 8, jumps 5.",
+  "sprite": "garm",
+  "source": {
+    "mul_id": 1189,
+    "megamek": "data/mekfiles/meks/3060u/Garm GRM-01A.mtf",
+    "published": "RS:3060u",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 701
+  },
+  "bv": 701
+}
