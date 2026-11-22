@@ -1,0 +1,55 @@
+{
+ "id": "challenger_mbt_x",
+ "name": "Challenger MBT X",
+ "tonnage": 90,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 57,
+  "RS": 50,
+  "LS": 50,
+  "RR": 36,
+  "TU": 57
+ },
+ "equipment": {
+  "FR": [
+   "medium_pulse_laser*2"
+  ],
+  "RS": [
+   "streak_srm2"
+  ],
+  "LS": [
+   "streak_srm2"
+  ],
+  "RR": [
+   "small_pulse_laser"
+  ],
+  "TU": [
+   "gauss_rifle",
+   "lb10x_ac",
+   "lrm10+artemis",
+   "ams"
+  ],
+  "BD": [
+   "ammo:gauss_rifle*2",
+   "ammo:ams",
+   "ammo:streak_srm2",
+   "ammo:lrm10",
+   "ammo:lb10x_ac:cluster",
+   "ammo:lb10x_ac"
+  ]
+ },
+ "source": {
+  "mul_id": 538,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Challenger X MBT.blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 1710
+}

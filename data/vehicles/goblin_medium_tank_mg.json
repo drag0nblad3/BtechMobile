@@ -1,0 +1,49 @@
+{
+ "id": "goblin_medium_tank_mg",
+ "name": "Goblin Medium Tank (MG)",
+ "tonnage": 45,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 30,
+  "RS": 24,
+  "LS": 24,
+  "RR": 20,
+  "TU": 30
+ },
+ "equipment": {
+  "FR": [
+   "machine_gun*2"
+  ],
+  "RS": [
+   "machine_gun"
+  ],
+  "LS": [
+   "machine_gun"
+  ],
+  "RR": [
+   "machine_gun"
+  ],
+  "TU": [
+   "machine_gun",
+   "srm6"
+  ],
+  "BD": [
+   "ammo:machine_gun:half*5",
+   "ammo:srm6*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1224,
+  "megamek": "data/mekfiles/vehicles/3039u/Goblin Medium Tank (MG).blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 527
+}

@@ -1,0 +1,40 @@
+{
+ "id": "moltke_mbt_m2",
+ "name": "Moltke MBT M2",
+ "tonnage": 75,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "heavy_ferro",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 62,
+  "RS": 47,
+  "LS": 47,
+  "RR": 32,
+  "TU": 50
+ },
+ "equipment": {
+  "FR": [
+   "mml7"
+  ],
+  "TU": [
+   "snub_nose_ppc",
+   "mml7*4"
+  ],
+  "BD": [
+   "ammo:mml7*3",
+   "ammo:mml7:srm*3"
+  ]
+ },
+ "source": {
+  "mul_id": 2206,
+  "megamek": "data/mekfiles/vehicles/3085u/Cutting Edge/Moltke M2 MBT.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 1363
+}
