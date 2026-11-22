@@ -1,0 +1,40 @@
+{
+ "id": "pike_support_vehicle_clan",
+ "name": "Pike Support Vehicle (Clan)",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 45,
+  "RS": 26,
+  "LS": 26,
+  "RR": 26,
+  "TU": 40
+ },
+ "equipment": {
+  "FR": [
+   "c_er_small_laser"
+  ],
+  "TU": [
+   "c_ultra_ac2*5"
+  ],
+  "BD": [
+   "ammo:c_ultra_ac2*4",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2520,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 30/Pike Support Vehicle (Clan).blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Pike Support Vehicle (Clan) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 892
+}

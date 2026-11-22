@@ -6,9 +6,11 @@ extends RefCounted
 const DEFAULT_DIR := "res://data/units"
 ## Battlefield Support Asset cards (vehicles, infantry): data/assets/.
 const ASSET_DIR := "res://data/assets"
+const VEHICLE_DIR := "res://data/vehicles"
 
 var by_id: Dictionary = {}  # String -> UnitDef
 var assets: Dictionary = {}  # String -> UnitDef with an AssetCard
+var vehicles: Dictionary = {}  # String -> UnitDef with a VehicleSpec
 var weapons: WeaponDb
 
 
@@ -21,6 +23,7 @@ static func load_dir(dir_path: String = DEFAULT_DIR, weapon_db: WeaponDb = null)
 			db.by_id[def.id] = def
 	if dir_path == DEFAULT_DIR:
 		db.add_assets(ASSET_DIR)
+		db.add_vehicles(VEHICLE_DIR)
 	return db
 
 
@@ -29,6 +32,13 @@ func add_assets(dir_path: String) -> void:
 	for path in JsonFile.list_dir(dir_path):
 		var def := UnitDef.from_dict(JsonFile.read(path), weapons)
 		assets[def.id] = def
+
+
+## Loads combat vehicle record sheets (kept apart from the 'Mech catalog).
+func add_vehicles(dir_path: String) -> void:
+	for path in JsonFile.list_dir(dir_path):
+		var def := UnitDef.from_dict(JsonFile.read(path), weapons)
+		vehicles[def.id] = def
 
 
 ## Asset designs sorted by cost, then name.
@@ -42,7 +52,7 @@ func sorted_assets() -> Array[UnitDef]:
 
 
 func get_def(id: String) -> UnitDef:
-	return by_id.get(id, assets.get(id))
+	return by_id.get(id, assets.get(id, vehicles.get(id)))
 
 
 ## Designs sorted light to heavy, then by name.

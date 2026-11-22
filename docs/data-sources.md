@@ -16,6 +16,9 @@ Tyler's rule: designs and Battle Values are official, never guessed.
   checked. `source.megamek_bv` keeps MegaMek's number for every design.
 - **Role lines** use the Master Unit List role (in MegaMek's files) with our
   own wording, the weapons and the speed.
+- **Combat vehicles** (`data/vehicles/`) come from MegaMek's `.blk` files
+  (`data/mekfiles/vehicles/**`, same CC BY-NC-SA terms) with the BV printed
+  on the official Battlefield Support / Mercenaries record sheets.
 - Record sheet PDFs and their text stay out of the repository (project files
   only). The converter scripts live outside the repo; to rebuild, convert the
   `.mtf` files again and look up the sheet BVs.

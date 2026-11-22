@@ -27,9 +27,9 @@ var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 n
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
 var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
 var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
-var c3_boosted := false  ## Its C3 computer is boosted (C3Boosted).
 var c3i_loc := -1  ## Improved C3 computer (C3i), -1 none.
-var ecm_type := "guardian_ecm"  ## Which ECM suite (EcmTypes).
+var ecm_type := "guardian_ecm"  ## ECM suite kind (EcmTypes).
+var c3_boosted := false  ## Its C3 computer is boosted (C3Boosted).
 var jump_jet_type := ""  ## "" standard or "improved" (JumpJets).
 var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
 var probe_loc := -1
@@ -56,6 +56,8 @@ var source: Dictionary = {}  ## Where the data came from (sheet, MegaMek file).
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 ## Battlefield Support Asset card (vehicles, infantry), null for 'Mechs.
 var asset: AssetCard = null
+## Combat vehicle record sheet; static specification, not an Asset card.
+var vehicle: VehicleSpec = null
 ## Mixed technology allows equipment subsystems from the other tech base.
 var clan_parts: Dictionary = {}
 var armor: Array[int] = []       ## Per Location, front.
@@ -81,7 +83,9 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 		u.asset = AssetCard.from_dict(d["asset"])
 		AssetSpecials.setup_def(u)
 	u.tonnage = int(d.get("tonnage", 0)) if u.asset else int(d["tonnage"])
-	u.walk_mp = u.asset.mp if u.asset else int(d["walk_mp"])
+	if d.has("vehicle"):
+		u.vehicle = VehicleSpec.from_dict(d["vehicle"])
+	u.walk_mp = u.asset.mp if u.asset else u.vehicle.cruise_mp if u.vehicle else int(d["walk_mp"])
 	u.jump_mp = u.asset.mp if u.asset and u.asset.motive == "j" else int(d.get("jump_mp", 0))
 	u.jump_jet_type = d.get("jump_jet_type", "")
 	u.heat_sinks = int(d.get("heat_sinks", ENGINE_HEAT_SINKS))
@@ -103,6 +107,10 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	var arm: Dictionary = d.get("armor", {})
 	var rear: Dictionary = d.get("rear_armor", {})
 	for loc in Location.COUNT:
+		if u.vehicle:
+			u.armor.append(int(arm.get(VehicleLoc.CODES[loc], 0)) if loc < VehicleLoc.COUNT else 0)
+			u.rear_armor.append(0)
+			continue
 		u.armor.append(int(arm.get(Location.code(loc), arm.get(Location.QUAD_CODES[loc], 0))))
 		u.rear_armor.append(int(rear.get(Location.code(loc), 0)))
 	for code: String in d.get("missing_actuators", {}):
@@ -112,7 +120,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 		for item: String in eq[code]:
 			var rep := item.split("*")  # "endo_steel*3" = three slots
 			for i in (int(rep[1]) if rep.size() > 1 else 1):
-				DesignItems.add(u, Location.from_code(code), rep[0], weapons)
+				DesignItems.add(u, VehicleLoc.from_code(code) if u.vehicle else Location.from_code(code), rep[0], weapons)
 	return u
 
 

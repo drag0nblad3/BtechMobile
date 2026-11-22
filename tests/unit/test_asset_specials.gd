@@ -112,3 +112,21 @@ func test_ams_special_cuts_cluster_roll() -> void:
 	var shot: Dictionary = events.filter(func(e: Array) -> bool: return e[0] == GameEvent.WEAPON_FIRED)[0][1]
 	check(shot.get("ams", false), "AMS engaged")
 	check_eq(apc.asset.damage, 6, "LRM 10 on a 7: 6 missiles")
+
+
+func test_narc_special_tags_mechs_only() -> void:
+	var a := asset("test_narc_tank", 0, hex_at(0, 0), 3, 1)
+	var m := mech("griffin_grf1n", 1, hex_at(0, 2), 0, 2)
+	var t := asset("test_tank", 1, hex_at(1, 2), 0, 3)
+	var gc := _gc([a, m, t])
+	var w := a.weapons[1]
+	check(w.def.beacon, "Narc beacon mounted")
+	check(not ToHitCalc.weapon(gc.state, a, w, t).possible(), "never at an Asset")
+	var th := ToHitCalc.weapon(gc.state, a, w, m)
+	check(th.possible(), th.impossible)
+	var dice := LoadedDice.new()
+	dice.queue_2d6(12)  # hit
+	dice.queue_2d6(7)   # location
+	WeaponFire.resolve(gc.state, dice, _emit, a, w, m, th)
+	check_eq(m.narc_pods.size(), 1, "pod attached")
+	check_eq(m.armor, mech("griffin_grf1n", 1, hex_at(0, 2), 0, 2).armor, "no damage")

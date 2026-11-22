@@ -1,0 +1,36 @@
+{
+ "id": "srm_carrier_c",
+ "name": "SRM Carrier C",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 12,
+  "RS": 12,
+  "LS": 12,
+  "RR": 12,
+  "TU": 12
+ },
+ "equipment": {
+  "TU": [
+   "c_srm6*10"
+  ],
+  "BD": [
+   "ammo:c_srm6*4"
+  ]
+ },
+ "source": {
+  "mul_id": 9425,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 30/SRM Carrier C.blk",
+  "role": "Ambusher",
+  "bv": "sheet",
+  "sheet": "SRM Carrier C (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1098
+}
