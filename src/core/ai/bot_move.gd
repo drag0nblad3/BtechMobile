@@ -84,6 +84,9 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	if enemy:
 		gap = maxi(0, Hex.distance(u.coord, enemy.coord) - preferred_range(u))
 		score -= 0.3 * gap
+	else:  # nobody in sight (all hiding): sweep toward the middle of the field
+		gap = Hex.distance(u.coord, Deployment.center(state.map))
+		score -= 0.3 * gap
 	var obj := BotObjectives.bonus(state, u, u.coord)
 	score += obj[0]
 	var tile := state.map.get_tile(u.coord)
@@ -92,6 +95,8 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	var reason := "%s: can deal about %.1f next phase, risks %.1f" % [where, dealt, taken]
 	if not charge.is_empty():
 		reason = "%s and %s" % [where, charge["reason"]]
+	elif dealt == 0.0 and gap > 0 and enemy == null:
+		reason = "%s to search the field: no enemy in sight" % where
 	elif dealt == 0.0 and gap > 0:
 		reason = "%s to close in (its weapons work best within %d hexes)" % [where, preferred_range(u)]
 	if obj[1] != "":

@@ -6,17 +6,22 @@ extends RefCounted
 ## nothing. Restricted table (1D6): 1 nothing, 2 Edge, 3 Edge: Commanders,
 ## 4 Random Duration, 5 Battlefield Conditions, 6 ECM Interference.
 ## Annihilation rolls once on the master table, then a second time on a 4+.
-## TODO(rules): Edge, ECM Interference, Fog of War and Waves aren't in the
-## game yet; those results are rerolled (as is Random Duration where a
-## mission forbids it).
+## Fog of War and Thicker Fog hide where forces deploy; both sides deploy at
+## once here, so they change nothing.
+## TODO(rules): Edge isn't in the game yet; those results are rerolled (as
+## is Random Duration where a mission forbids it).
 
 const MASTER := {3: "knife_fight", 4: "edge", 5: "edge_commanders", 6: "random_duration",
 		7: "conditions", 8: "ecm", 9: "fog_of_war", 10: "thicker_fog", 11: "waves"}
 const RESTRICTED := {2: "edge", 3: "edge_commanders", 4: "random_duration", 5: "conditions", 6: "ecm"}
-const SUPPORTED := ["", "knife_fight", "random_duration", "conditions"]
+const SUPPORTED := ["", "knife_fight", "random_duration", "conditions", "ecm", "fog_of_war", "thicker_fog", "waves"]
 const NAMES := {"": "none", "knife_fight": "Knife-Fight (both sides deploy 4 hexes closer)",
 		"random_duration": "Random Duration (the battle may end from turn 7)",
-		"conditions": "Battlefield Conditions"}
+		"conditions": "Battlefield Conditions",
+		"ecm": "ECM Interference (Artemis needs a sensor check each turn)",
+		"fog_of_war": "Fog of War (deployment is hidden; both sides deploy at once)",
+		"thicker_fog": "Thicker Fog (decoy blips; both sides deploy at once)",
+		"waves": "Waves (half of each force arrives from turn 2)"}
 
 
 ## Complication ids for a mission: `table` is "master", "restricted" or "annihilation".

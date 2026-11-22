@@ -50,9 +50,10 @@ static func sensor_check(s: GameState, d: Dictionary, level: int) -> String:
 	var who := Names.unit(s.unit_by_id(d["unit_id"]))
 	var t := "%s sensor check (%s): %d vs %d+: %s" % [who, d["why"], d["roll"], d["need"],
 			"sees through it" if d["ok"] else "still blind"]
-	if level == ExplainLevel.FULL:
-		t += ". Passing ignores the +1 for low visibility on this turn's shots; failing never makes a 'Mech fall" \
-				if d["why"] == "low visibility" else ""
+	if level == ExplainLevel.FULL and d["why"] == "low visibility":
+		t += ". Passing ignores the +1 for low visibility on this turn's shots; failing never makes a 'Mech fall"
+	elif level == ExplainLevel.FULL:
+		t += ". Passing lets its Artemis launchers guide missiles this turn despite the jamming; failing loses their cluster bonus"
 	return t + "."
 
 

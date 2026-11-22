@@ -41,13 +41,17 @@ func _building(d: Dictionary) -> void:
 		return
 	var at := HexLayout.tile_top(t)
 	match d["kind"]:
-		"collapsed", "flattened":
+		"collapsed", "bridge_collapsed", "flattened":
 			VxBlast.spawn(self, at + Vector3(0, 0.25, 0), "dust")
 		"shot", "smash", "entry_failed":
 			var from := _unit_pos(d.get("unit_id", -1))
-			if t.building == null or from == Vector3.INF or _map.buildings == null:
+			if from == Vector3.INF or (t.building == null and t.bridge == null):
 				return
-			var hit := _map.buildings.scar(t.coord, from, int(d.get("damage", 10)))
+			var hit := Vector3.ZERO
+			if t.building != null and _map.buildings != null:
+				hit = _map.buildings.scar(t.coord, from, int(d.get("damage", 10)))
+			elif t.bridge != null and _map.bridges != null:
+				hit = _map.bridges.scar(t.coord, from, int(d.get("damage", 10)))
 			VxBlast.spawn(self, hit, "impact" if d["kind"] == "shot" else "dust", randi())
 
 
