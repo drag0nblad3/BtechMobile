@@ -1,7 +1,7 @@
 extends TestCase
 ## General face-connected mass and two-layer joint checks for newly hand-sculpted models.
 
-const MODELS := ["yeoman", "jackrabbit"]
+const MODELS := ["yeoman", "jackrabbit", "hermit_crab", "garm"]
 const AXES := [Vector3i.RIGHT, Vector3i.LEFT, Vector3i.UP,
         Vector3i.DOWN, Vector3i.FORWARD, Vector3i.BACK]
 
@@ -42,6 +42,12 @@ func test_muzzles_are_at_real_openings() -> void:
             check_eq(m.muzzles[Location.RT].size(), 25)
         elif name == "jackrabbit":
             check_eq(m.muzzles[Location.LA].size(), 2)
+            check_eq(m.muzzles[Location.RA].size(), 1)
+        elif name == "garm":
+            check_eq(m.muzzles[Location.LT].size(), 10)
+            check_eq(m.muzzles[Location.RT].size(), 1)
+        elif name == "hermit_crab":
+            check_eq(m.muzzles[Location.LA].size(), 1)
             check_eq(m.muzzles[Location.RA].size(), 1)
 
 
