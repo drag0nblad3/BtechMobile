@@ -1,0 +1,83 @@
+{
+ "id": "thanatos_tns7d",
+ "name": "Thanatos",
+ "model": "TNS-7D",
+ "tonnage": 75,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 16,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 25,
+  "RT": 25,
+  "CT": 28,
+  "HD": 9,
+  "LL": 27,
+  "RL": 27
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_large_pulse_laser",
+   "c_medium_pulse_laser",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "c_lrm20",
+   "ammo:c_lrm20*2",
+   "case2",
+   "endo_steel"
+  ],
+  "LT": [
+   "c_er_medium_laser",
+   "guardian_ecm",
+   "endo_steel*4"
+  ],
+  "RT": [
+   "heat_sink",
+   "c_er_medium_laser",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "jump_jet",
+   "c3_slave"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": null,
+  "megamek": "data/mekfiles/meks/Shrapnel/Vol 22/Thanatos TNS-7D.mtf",
+  "published": "ShrapRS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Thanatos TNS-7D (Record-Sheets-Shrapnel-Year-02-2)",
+  "megamek_bv": 2571
+ },
+ "bv": 2571,
+ "sprite": "thanatos",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, Large Pulse Laser, Medium Pulse Laser, LRM 20; walks 5, runs 8, jumps 5."
+}

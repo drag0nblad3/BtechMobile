@@ -1,0 +1,59 @@
+{
+ "id": "shadow_hawk_c",
+ "name": "Shadow Hawk",
+ "model": "C",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 13,
+ "armor": {
+  "LA": 16,
+  "RA": 16,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 9,
+  "LL": 16,
+  "RL": 16
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "equipment": {
+  "RA": [
+   "c_er_medium_laser"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "c_lb5x_ac",
+   "ammo:c_lb5x_ac"
+  ],
+  "RT": [
+   "heat_sink*2",
+   "jump_jet*2",
+   "c_lrm5",
+   "ammo:c_lrm5"
+  ],
+  "CT": [
+   "jump_jet",
+   "ammo:c_streak_srm2"
+  ],
+  "HD": [
+   "c_streak_srm2"
+  ]
+ },
+ "source": {
+  "mul_id": 2895,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 12/Shadow Hawk C.mtf",
+  "published": "RSFP:GDL,RG12,RGv1",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Shadow Hawk C (ForcePack-Record-Sheets-Gray-Death-Legion)",
+  "megamek_bv": 1309
+ },
+ "bv": 1309,
+ "sprite": "shadow_hawk",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. ER Medium Laser, LB 5-X AC, LRM 5, Streak SRM 2; walks 5, runs 8, jumps 5."
+}

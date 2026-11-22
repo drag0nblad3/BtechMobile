@@ -1,0 +1,54 @@
+{
+ "id": "spartan_sptn3",
+ "name": "Spartan",
+ "model": "SPT-N3",
+ "tonnage": 80,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 16,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 26,
+  "RA": 26,
+  "LT": 26,
+  "RT": 26,
+  "CT": 31,
+  "HD": 9,
+  "LL": 26,
+  "RL": 26
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "equipment": {
+  "RA": [
+   "er_medium_laser*3"
+  ],
+  "LT": [
+   "er_ppc",
+   "ammo:streak_srm2*2",
+   "tag"
+  ],
+  "RT": [
+   "c3i"
+  ],
+  "CT": [
+   "streak_srm2*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2996,
+  "megamek": "data/mekfiles/meks/3058Uu/Spartan SPT-N3.mtf",
+  "published": "RSFP:SI",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Spartan SPT-N3 (ForcePack-Record-Sheets-Snords-Irregulars)",
+  "megamek_bv": 1631
+ },
+ "bv": 1631,
+ "sprite": "spartan",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 ER Medium Lasers, 2 Streak SRM 2s, ER PPC; walks 5, runs 8."
+}

@@ -30,6 +30,9 @@ static func to_hit(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			and FiringArc.fire_arc(attacker.coord, attacker.facing, target.coord) != FiringArc.FRONT:
 		th.impossible = "No turret: it can only fire into its front arc"
 		return th
+	if w.def.beacon and target.asset != null:
+		th.impossible = "A Narc pod can't be fired at an Asset"
+		return th
 	if AssetIndirect.is_indirect(w.def):
 		return AssetIndirect.to_hit(state, attacker, w, target, th)
 	var los := LineOfSight.check(state.map, attacker, target) if dist > 0 else LineOfSight.none()

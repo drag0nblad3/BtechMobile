@@ -21,12 +21,14 @@ var double_heat_sinks := false
 var melee: Array[Dictionary] = []
 var case_locs: Array[int] = []
 var case2_locs: Array[int] = []  ## CASE II (AmmoExplosion).
-var ecm_loc := -1  ## Location of a Guardian ECM suite (Ecm), -1 none.
+var ecm_loc := -1  ## Location of its ECM suite (Ecm, EcmTypes), -1 none.
 var masc_loc := -1  ## Location of MASC (Masc), -1 none.
 var supercharger_loc := -1  ## Location of the supercharger (Supercharger), -1 none.
 var tc_loc := -1  ## Location of a targeting computer (TargetingComputer), -1 none.
 var c3_master_loc := -1  ## C3 Master computer (C3), -1 none.
 var c3_slave_loc := -1  ## C3 Slave unit (C3), -1 none.
+var c3i_loc := -1  ## Improved C3 computer (C3i), -1 none.
+var ecm_type := "guardian_ecm"  ## ECM suite kind (EcmTypes).
 var c3_boosted := false  ## Its C3 computer is boosted (C3Boosted).
 var jump_jet_type := ""  ## "" standard or "improved" (JumpJets).
 var probe := ""  ## Active probe kind (ActiveProbe.KINDS), "" none.
@@ -54,7 +56,10 @@ var source: Dictionary = {}  ## Where the data came from (sheet, MegaMek file).
 var sprite: String = ""  ## Folder under res://assets/mechs/, "" = placeholder.
 ## Battlefield Support Asset card (vehicles, infantry), null for 'Mechs.
 var asset: AssetCard = null
-var vehicle: VehicleSpec = null  ## Combat vehicle record sheet (VehicleLoc locations).
+## Combat vehicle record sheet; static specification, not an Asset card.
+var vehicle: VehicleSpec = null
+## Mixed technology allows equipment subsystems from the other tech base.
+var clan_parts: Dictionary = {}
 var armor: Array[int] = []       ## Per Location, front.
 var rear_armor: Array[int] = []  ## Per Location (torsos only).
 ## [{weapon: WeaponDef, loc: int, rear: bool}] in record-sheet order.
@@ -88,6 +93,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.engine_type = d.get("engine_type", "standard")
 	u.gyro_type = d.get("gyro_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
+	u.clan_parts = d.get("clan_parts", {})
 	u.omni = bool(d.get("omni", false))
 	u.quad = bool(d.get("quad", false))
 	u.chassis = d.get("chassis", "")
@@ -178,6 +184,11 @@ func is_xl() -> bool:
 
 func is_clan() -> bool:
 	return tech_base == "clan"
+
+
+## Individual equipment subsystems may differ from chassis technology.
+func clan_part(part: String) -> bool:
+	return bool(clan_parts.get(part, is_clan()))
 
 
 ## Clan 'Mechs have CASE built into every location (ClanTech).

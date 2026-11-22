@@ -1,0 +1,82 @@
+{
+ "id": "quickdraw_qkd9g",
+ "name": "Quickdraw",
+ "model": "QKD-9G",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 12,
+ "heat_sink_type": "double",
+ "engine_type": "light",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 17,
+  "RA": 17,
+  "LT": 20,
+  "RT": 20,
+  "CT": 26,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 8
+ },
+ "equipment": {
+  "LA": [
+   "er_medium_laser",
+   "endo_steel*2",
+   "ferro_fibrous*5"
+  ],
+  "RA": [
+   "er_medium_laser",
+   "endo_steel*2",
+   "ferro_fibrous*5"
+  ],
+  "LT": [
+   "jump_jet*2",
+   "c_streak_srm6",
+   "c_streak_srm4",
+   "ammo:c_streak_srm6",
+   "ammo:c_streak_srm4",
+   "case2",
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RT": [
+   "jump_jet*2",
+   "medium_laser@rear*2",
+   "masc",
+   "targeting_computer",
+   "supercharger",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "jump_jet",
+   "c_streak_srm4"
+  ],
+  "LL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ],
+  "RL": [
+   "endo_steel",
+   "ferro_fibrous"
+  ]
+ },
+ "source": {
+  "mul_id": 9320,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 26/Quickdraw QKD-9G.mtf",
+  "published": "RG26,RS:MERCS",
+  "role": "Skirmisher",
+  "bv": "sheet",
+  "sheet": "Quickdraw QKD-9G (Record-Sheets-Mercenaries-Box-Set)",
+  "megamek_bv": 2224
+ },
+ "bv": 2224,
+ "sprite": "quickdraw",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, 2 Streak SRM 4s, 2 Medium Lasers, Streak SRM 6; walks 5, runs 8, jumps 5."
+}

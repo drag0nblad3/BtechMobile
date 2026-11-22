@@ -3,7 +3,11 @@ extends RefCounted
 ## Fires a weapon group from a VxMech: lasers from every muzzle, a cannon
 ## shell with recoil, or a missile salvo rippling out of the launch tubes.
 
-const MISSILES := 15  ## Shown per LRM-15 rack; tubes are reused in turn
+const MISSILES := 15  ## Legacy Catapult rack size; salvo_count uses real visual launcher ports.
+
+
+static func salvo_count(port_count: int) -> int:
+	return maxi(1, port_count)
 
 
 static func fire(anim: Node, m: VxMech, locs: Array[int], target: Vector3, kind: String) -> void:
@@ -14,7 +18,9 @@ static func fire(anim: Node, m: VxMech, locs: Array[int], target: Vector3, kind:
 			continue
 		var points := m.muzzles(loc)
 		if kind == "missile":
-			for i in MISSILES:
+			if points.is_empty():
+				continue
+			for i in salvo_count(points.size()):
 				var off := Vector3(sin(i * 2.4), 0.0, cos(i * 1.7)) * 0.35
 				VxTrails.missile(holder, points[i % points.size()], target + off, delay + i * 0.045)
 			delay += 0.2

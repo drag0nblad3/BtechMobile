@@ -104,9 +104,10 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if p.min_range > 0 and dist <= p.min_range:
 		th.add("minimum range", p.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])
-	if w.def.to_hit_mod != 0:
-		th.add(w.def.name, w.def.to_hit_mod, "%s is %s accurate than a standard weapon: %+d to hit." % [
-				w.def.name, "more" if w.def.to_hit_mod < 0 else "less", w.def.to_hit_mod])
+	var own := w.def.to_hit_at(br)
+	if own != 0:
+		th.add(w.def.name, own, "%s is %s accurate than a standard weapon: %+d to hit%s." % [
+				w.def.name, "more" if own < 0 else "less", own, " at this range" if not w.def.to_hit_by_range.is_empty() else ""])
 	TargetingComputer.add(th, attacker, w)
 	Narc.add(th, state, attacker, w, target)
 	if WeaponModes.to_hit_mod(w) != 0:

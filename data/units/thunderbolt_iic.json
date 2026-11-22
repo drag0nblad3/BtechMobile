@@ -1,0 +1,60 @@
+{
+ "id": "thunderbolt_iic",
+ "name": "Thunderbolt IIC",
+ "model": "",
+ "tonnage": 70,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 17,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 22,
+  "RA": 22,
+  "LT": 24,
+  "RT": 24,
+  "CT": 33,
+  "HD": 9,
+  "LL": 30,
+  "RL": 30
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 10
+ },
+ "equipment": {
+  "LA": [
+   "c_improved_heavy_large_laser"
+  ],
+  "RA": [
+   "c_improved_heavy_large_laser"
+  ],
+  "LT": [
+   "heat_sink",
+   "c_er_medium_laser*3"
+  ],
+  "RT": [
+   "heat_sink",
+   "c_streak_lrm15",
+   "ammo:c_streak_lrm15*2",
+   "case2"
+  ],
+  "CT": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 5239,
+  "megamek": "data/mekfiles/meks/ProtoTypes/Thunderbolt IIC.mtf",
+  "published": "RS:Proto",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Thunderbolt IIC (BattleTech-Record-Sheets-Aces-Scouring-Sands-2)",
+  "megamek_bv": 2475
+ },
+ "bv": 2475,
+ "sprite": "thunderbolt_iic",
+ "role": "Brawler: built to slug it out at medium range. 3 ER Medium Lasers, 2 Improved Heavy Large Lasers, Streak LRM 15; walks 5, runs 8."
+}
