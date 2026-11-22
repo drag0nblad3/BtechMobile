@@ -27,12 +27,13 @@ func is_busy() -> bool:
 
 
 ## path/start come from the controller's UNIT_MOVED event.
-func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int) -> void:
+func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int,
+		mode: int = MoveMode.Kind.WALK) -> void:
 	var v: UnitView = views[unit_id]
 	_playing += 1
 	busy_changed.emit(true)
 	v.animation_finished.connect(_on_done, CONNECT_ONE_SHOT)
-	v.play_path(path, from_coord, from_facing)
+	v.play_path(path, from_coord, from_facing, mode)
 
 
 ## Re-reads a unit's condition (prone, destroyed, facing after a fall).
@@ -40,6 +41,29 @@ func refresh_unit(unit_id: int) -> void:
 	var v: UnitView = views.get(unit_id)
 	if v and not is_busy():
 		v.snap_to_state()
+
+
+## Plays a cosmetic pose after the record-sheet snapshot has been applied.
+func react(e: GameEvent) -> void:
+	var id := int(e.data.get("unit_id", -1))
+	var v: UnitView = views.get(id)
+	if v != null:
+		UnitVoxels.react(v._model, e)
+	if e.type != GameEvent.PHYSICAL:
+		return
+	var attacker: UnitView = views.get(int(e.data.get("attacker_id", -1)))
+	if attacker == null or not (attacker._model is VxMech):
+		return
+	var anim := (attacker._model as VxMech).anim
+	var side := 0 if int(e.data.get("limb", Location.LA)) in [Location.LA, Location.LL] else 1
+	match String(e.data.get("kind", "")):
+		"punch": anim.punch(side)
+		"kick": anim.kick(side)
+
+
+func reload_looks() -> void:
+	for view: UnitView in views.values():
+		view.refresh_look()
 
 
 func _on_done() -> void:
