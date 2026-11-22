@@ -361,6 +361,48 @@
    "role": "Sniper: hangs back and hits from long range. 2 Medium Lasers, 2 Heavy PPCs, 2 MML 3s; walks 4, runs 6."
   },
   {
+   "model": "AV1-OI",
+   "bv": 1606,
+   "heat_sinks": 16,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "er_medium_laser"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "er_medium_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "thunderbolt15",
+     "ammo:thunderbolt15*2"
+    ],
+    "RT": [
+     "heat_sink",
+     "thunderbolt15",
+     "ammo:thunderbolt15*2"
+    ]
+   },
+   "source": {
+    "mul_id": 169,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OI.mtf",
+    "published": "RS:3058Uu-I",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 1606
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 Medium Lasers, 2 ER Medium Lasers, 2 Thunderbolt 15s; walks 4, runs 6."
+  },
+  {
    "model": "AV1-OR",
    "bv": 1833,
    "heat_sinks": 10,

@@ -358,6 +358,43 @@
     "megamek_bv": 1323
    },
    "role": "Brawler: built to slug it out at medium range. 3 Heavy Medium Lasers, Ultra AC/5; walks 5, runs 8, jumps 4."
+  },
+  {
+   "model": "I",
+   "bv": 1738,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "heat_sink",
+     "c_improved_heavy_large_laser"
+    ],
+    "RA": [
+     "heat_sink",
+     "c_improved_heavy_large_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "c_lrm10",
+     "ammo:c_lrm10"
+    ],
+    "RT": [
+     "c_lrm10",
+     "ammo:c_lrm10",
+     "supercharger"
+    ],
+    "HD": [
+     "c_micro_pulse_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 6928,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 19/Cougar I.mtf",
+    "published": "RS:3145,RG19",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1738
+   },
+   "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Improved Heavy Large Lasers, 2 LRM 10s, Micro Pulse Laser; walks 5, runs 8."
   }
  ]
 }

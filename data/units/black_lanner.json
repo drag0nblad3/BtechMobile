@@ -302,6 +302,95 @@
     "megamek_bv": 1928
    },
    "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Medium Pulse Lasers, Heavy Large Laser; walks 7, runs 11."
+  },
+  {
+   "model": "I",
+   "bv": 1803,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_er_medium_laser*2"
+    ],
+    "RA": [
+     "vsp_medium_laser"
+    ],
+    "LT": [
+     "c_streak_srm4",
+     "ammo:c_streak_srm4",
+     "targeting_computer"
+    ],
+    "RT": [
+     "c_heavy_machine_gun*3",
+     "ammo:c_heavy_machine_gun:half"
+    ]
+   },
+   "source": {
+    "mul_id": 8187,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 15/Black Lanner I.mtf",
+    "published": "RG15",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1803
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 3 Heavy Machine Guns, 2 ER Medium Lasers, Medium VSP Laser, Streak SRM 4; walks 7, runs 11."
+  },
+  {
+   "model": "T",
+   "bv": 2040,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_improved_heavy_medium_laser*2"
+    ],
+    "RA": [
+     "c_plasma_cannon",
+     "ammo:c_plasma_cannon*2"
+    ],
+    "LT": [
+     "c_lrm10",
+     "ammo:c_lrm10"
+    ],
+    "RT": [
+     "c_srm6",
+     "ammo:c_srm6"
+    ]
+   },
+   "source": {
+    "mul_id": 8184,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 15/Black Lanner T.mtf",
+    "published": "RG15",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2040
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Improved Heavy Medium Lasers, Plasma Cannon, LRM 10, SRM 6; walks 7, runs 11."
+  },
+  {
+   "model": "X",
+   "bv": 1672,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_improved_heavy_medium_laser*2",
+     "case2"
+    ],
+    "RA": [
+     "c_rotary_ac2"
+    ],
+    "RT": [
+     "ammo:c_rotary_ac2*2",
+     "case2"
+    ]
+   },
+   "source": {
+    "mul_id": 370,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 15/Black Lanner X.mtf",
+    "published": "RG15",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1672
+   },
+   "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 Improved Heavy Medium Lasers, Rotary AC/2; walks 7, runs 11."
   }
  ]
 }
