@@ -48,6 +48,7 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 		return false
 	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone, smash):
 		return false
+	AssetTransport.follow(state, unit)
 	if then_prone and unit.prone:
 		MobileObjectives.drop_prone(state, dice, _emit_cb, unit)
 	MobileObjectives.after_move(state, _emit_cb, unit)
@@ -64,6 +65,36 @@ func combat_drop(unit: Unit, c: Vector2i, facing: int) -> bool:
 	if not _may_act(unit, Phase.Kind.MOVEMENT) or not CombatDrop.drop(state, dice, _emit_cb, unit, c, facing):
 		return false
 	_unit_done()
+	return true
+
+
+## Infantry boards a friendly transport in its hex (APC Special, p. 148),
+## as its move or right after it. Returns false if it can't.
+func board(rider: Unit, carrier: Unit) -> bool:
+	if state.phase != Phase.Kind.MOVEMENT or state.game_over:
+		return false
+	var acting := rider.side == state.active_side() and pending_units().has(rider)
+	if not acting and not (rider.has_moved and rider.asset != null and rider.asset.carried_by < 0):
+		return false
+	if AssetTransport.board_problem(state, rider, carrier) != "":
+		return false
+	AssetTransport.board(state, _emit_cb, rider, carrier)
+	if acting:
+		_unit_done()
+	return true
+
+
+## Infantry gets off its transport into the transport's hex; it can't
+## fire this turn. Returns false if it can't.
+func deploy(rider: Unit) -> bool:
+	if state.phase != Phase.Kind.MOVEMENT or state.game_over or rider.asset == null:
+		return false
+	var carrier := state.unit_by_id(rider.asset.carried_by)
+	if carrier == null or not (carrier.has_moved or rider.side == state.active_side()):
+		return false
+	if AssetTransport.deploy_problem(state, rider) != "":
+		return false
+	AssetTransport.deploy(state, _emit_cb, rider)
 	return true
 
 
@@ -337,6 +368,7 @@ func _heat_and_end() -> void:
 
 ## Game ends when at most one side has a 'Mech left, or as the mission says.
 func _check_game_over(end_of_turn := false) -> bool:
+	AssetTransport.check_losses(state, _emit_cb)
 	Crippled.update(state, dice, _emit_cb)
 	var r := MissionFlow.outcome(state, end_of_turn)
 	if r.is_empty():

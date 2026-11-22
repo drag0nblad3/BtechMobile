@@ -37,6 +37,7 @@ const BUILDING := &"building"             # {kind: flattened|entry_failed|destro
 const INTENT := &"intent"                 # {unit_id, text} why a player chose its action
 const SENSOR_CHECK := &"sensor_check"     # {unit_id, roll, need, ok, why, mods}
 const DESTROY_CHECK := &"destroy_check"   # {unit_id, damage, roll, bonus, need, destroyed, auto, by, degraded?, check?} an Asset (DestroyCheck)
+const TRANSPORT := &"transport"         # {unit_id, carrier_id, kind: board|deploy|thrown} infantry and its APC (AssetTransport)
 const CRIPPLED := &"crippled"             # {unit_id, why, withdraw: bool}
 const UNIT_EXITED := &"unit_exited"       # {unit_id, kind: withdraw|mission, vp}
 const MISSION := &"mission"               # {kind: vp, side, vp, total} | {kind: duration, roll, ends_on, last}
