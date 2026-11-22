@@ -94,16 +94,17 @@ func _build_ui() -> void:
 				float(u["expected_hits"]), int(u["damage_dealt"]),
 				int(u["damage_taken"]), int(u["heat_peak"]),
 				int(u["criticals_taken"]), int(u["psr_failures"])]
-		_label(unit_stats, info, 18)
+		var stat_line := _label(unit_stats, info, 18)
+		stat_line.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	if _report["units"].is_empty():
 		_label(unit_stats, "No unit statistics recorded.", 18)
 	var right := _panel(split, 0.55)
-	_label(right, "EVENT LEDGER  /  all recorded combat events", 22)
+	var timeline: Array = _report["timeline"]
+	_label(right, "EVENT LEDGER  /  %d of %d recorded events" % [mini(MAX_TIMELINE, timeline.size()), timeline.size()], 22)
 	_timeline = ItemList.new()
 	_timeline.size_flags_vertical = SIZE_EXPAND_FILL
 	_timeline.add_theme_font_size_override("font_size", 19)
 	right.add_child(_timeline)
-	var timeline: Array = _report["timeline"]
 	for e: Dictionary in timeline.slice(0, MAX_TIMELINE):
 		_timeline.add_item("T%d · %s" % [int(e["turn"]), String(e["text"])])
 	_timeline.item_selected.connect(_on_timeline)
