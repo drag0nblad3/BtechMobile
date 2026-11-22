@@ -35,8 +35,10 @@ static func check_hex(map: BattleMap, from: Unit, c: Vector2i, height: int) -> D
 
 
 static func los_level(map: BattleMap, u: Unit) -> int:
-	if u.asset != null:  # one level high, VTOLs plus their flight level (p. 144)
-		return Roofs.floor_of(map, u) + 1 + u.asset.altitude
+	if VtolFlight.is_vtol(u):  # its flight level + 1 (p. 142)
+		return VtolFlight.level(map, u) + 1
+	if u.asset != null:  # one level high (p. 144)
+		return Roofs.floor_of(map, u) + 1
 	return Roofs.floor_of(map, u) + (1 if u.prone else 2)
 
 

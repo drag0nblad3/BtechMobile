@@ -15,7 +15,7 @@ var auto_fail := false  ## Degraded to 2 or less: the next check destroys it.
 var deployed_turn := -1 ## Turn it left an APC: no fire and TMM 0 (p. 148).
 var indirect_turn := -1 ## Turn it fired indirectly: TMM 0 (p. 145).
 var carried_by := -1    ## Unit id of the APC carrying it, -1 if on foot.
-var altitude := 0       ## VTOL: levels above its hex's ground (p. 142).
+var altitude := 0       ## VTOL: its flight level (VtolFlight, p. 142).
 
 
 func _init(c: AssetCard, improved_skill := false) -> void:
