@@ -1,0 +1,61 @@
+name: Temporary MegaMek BV verification
+on:
+  push:
+    branches:
+      - feature/add-missing-official-meks-batch01-20261122
+jobs:
+  bv:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: MegaMek/mm-data
+          path: mm-data
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compute actual MegaMek battle values
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/mm
+          curl -fLSs --retry 3 https://github.com/MegaMek/megamek/releases/download/v0.51.01.12/MegaMek-0.51.01.12.tar.gz -o /tmp/mm.tar.gz
+          tar -xzf /tmp/mm.tar.gz -C /tmp/mm
+          JAR=$(find /tmp/mm -name MegaMek.jar -type f | head -1)
+          test -n "$JAR"
+          ROOT=$(dirname "$JAR")
+          echo "Using MegaMek at $ROOT"
+          cat >/tmp/BVScan.java <<'JAVA'
+          import java.io.*;
+          import java.nio.file.*;
+          import megamek.common.loaders.MekFileParser;
+          import megamek.common.units.Entity;
+          public class BVScan {
+              public static void main(String[] args) throws Exception {
+                  for (String filename : Files.readAllLines(Path.of(args[0]))) {
+                      try {
+                          Entity e = new MekFileParser(new File(filename)).getEntity();
+                          System.out.println("MEK_BV|" + filename + "|" + e.calculateBattleValue(true,true));
+                      } catch (Throwable x) {
+                          System.out.println("MEK_ERR|" + filename + "|" + x.toString());
+                      }
+                  }
+              }
+          }
+          JAVA
+          javac -cp "$JAR:$ROOT/lib/*" /tmp/BVScan.java
+          for dir in '3039u' '3050U' '3055U' '3058Uu' '3060u' '3067' '3075'; do
+            find "mm-data/data/mekfiles/meks/$dir" -type f -name '*.mtf'
+          done | sort > /tmp/bv-paths.txt
+          echo "Processing $(wc -l < /tmp/bv-paths.txt) source designs"
+          timeout 800s java -Xmx4g -cp "/tmp:$JAR:$ROOT/lib/*" BVScan /tmp/bv-paths.txt | tee /tmp/bv-results.txt
+          echo "BVs computed: $(grep -c '^MEK_BV' /tmp/bv-results.txt || true)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: megamek-bv-source-verification
+          path: /tmp/bv-results.txt
+          if-no-files-found: ignore
