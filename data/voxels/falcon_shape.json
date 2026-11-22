@@ -2,7 +2,7 @@
   "id": "falcon_shape",
   "name": "Falcon — unique coarse sculpt",
   "unit": "falcon_flc4n",
-  "voxel_size": 0.05,
+  "voxel_size": 0.041,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -576,36 +576,36 @@
                 "at": 27,
                 "polygon": [
                   [
-                    -9.03,
-                    -3.6
+                    -8.6,
+                    -3
                   ],
                   [
-                    -5.78,
-                    -3.6
+                    -6.2,
+                    -3
                   ],
                   [
-                    -4.9,
-                    -2.73
+                    -5.5,
+                    -2.3
                   ],
                   [
-                    -4.9,
-                    2.32
+                    -5.5,
+                    3.1
                   ],
                   [
-                    -5.78,
-                    3.2
+                    -6.2,
+                    3.8
                   ],
                   [
-                    -9.03,
-                    3.2
+                    -8.6,
+                    3.8
                   ],
                   [
-                    -9.9,
-                    2.32
+                    -9.3,
+                    3.1
                   ],
                   [
-                    -9.9,
-                    -2.73
+                    -9.3,
+                    -2.3
                   ]
                 ]
               },
@@ -613,36 +613,36 @@
                 "at": 31,
                 "polygon": [
                   [
-                    -9.74,
-                    -4.8
+                    -10.94,
+                    -5.1
                   ],
                   [
-                    -5.06,
-                    -4.8
+                    -6.26,
+                    -5.1
                   ],
                   [
-                    -4.2,
-                    -3.94
+                    -5.3,
+                    -4.14
                   ],
                   [
-                    -4.2,
-                    3.34
+                    -5.3,
+                    4.74
                   ],
                   [
-                    -5.06,
-                    4.2
+                    -6.26,
+                    5.7
                   ],
                   [
-                    -9.74,
-                    4.2
+                    -10.94,
+                    5.7
                   ],
                   [
-                    -10.6,
-                    3.34
+                    -11.9,
+                    4.74
                   ],
                   [
-                    -10.6,
-                    -3.94
+                    -11.9,
+                    -4.14
                   ]
                 ]
               },
@@ -650,36 +650,36 @@
                 "at": 35,
                 "polygon": [
                   [
-                    -8.16,
-                    -3.3
+                    -9.48,
+                    -2.3
                   ],
                   [
-                    -5.64,
-                    -3.3
+                    -6.32,
+                    -2.3
                   ],
                   [
-                    -4.6,
-                    -2.26
+                    -5.5,
+                    -1.48
                   ],
                   [
-                    -4.6,
-                    2.46
+                    -5.5,
+                    5.48
                   ],
                   [
-                    -5.64,
-                    3.5
+                    -6.32,
+                    6.3
                   ],
                   [
-                    -8.16,
-                    3.5
+                    -9.48,
+                    6.3
                   ],
                   [
-                    -9.2,
-                    2.46
+                    -10.3,
+                    5.48
                   ],
                   [
-                    -9.2,
-                    -2.26
+                    -10.3,
+                    -1.48
                   ]
                 ]
               }
@@ -1802,5 +1802,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (raptor_beak), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods."
+  "notes": "Individual reference-oriented shape study (raptor_beak), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods.\nSecond bespoke silhouette pass: head height/wing sweep/heavy cannon mass and overall size revised from reference comparisons; draft only."
 }

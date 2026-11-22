@@ -2,7 +2,7 @@
   "id": "enforcer_iii_shape",
   "name": "Enforcer Iii — unique coarse sculpt",
   "unit": "enforcer_iii_enf6h",
-  "voxel_size": 0.05,
+  "voxel_size": 0.051,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -1439,7 +1439,7 @@
             [
               9,
               21,
-              -13
+              -20
             ],
             [
               13,
@@ -1469,14 +1469,29 @@
             [
               10,
               22,
-              -13
+              -20
             ],
             [
               10,
               22,
-              -10
+              -15
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              9,
+              20,
+              -19
+            ],
+            [
+              10,
+              26,
+              -8
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -1654,7 +1669,7 @@
       [
         10.5,
         22.5,
-        -12.5
+        -19.5
       ]
     ],
     "LT": [
@@ -1679,5 +1694,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (one_heavy_arm), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods."
+  "notes": "Individual reference-oriented shape study (one_heavy_arm), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods.\nSecond bespoke silhouette pass: head height/wing sweep/heavy cannon mass and overall size revised from reference comparisons; draft only."
 }

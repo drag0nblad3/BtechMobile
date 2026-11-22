@@ -2,7 +2,7 @@
   "id": "duan_gung_shape",
   "name": "Duan Gung — unique coarse sculpt",
   "unit": "duan_gung_d9g9",
-  "voxel_size": 0.05,
+  "voxel_size": 0.038,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -260,6 +260,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -4,
+              29,
+              -6
+            ],
+            [
+              3,
+              30,
+              -4
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -333,73 +348,73 @@
                 "at": 34,
                 "polygon": [
                   [
-                    -1.95,
-                    -7.1
+                    -2.14,
+                    -6.6
                   ],
                   [
-                    1.95,
-                    -7.1
+                    2.14,
+                    -6.6
                   ],
                   [
-                    3,
-                    -6.05
+                    3.1,
+                    -5.64
                   ],
                   [
-                    3,
-                    -0.95
+                    3.1,
+                    -0.56
                   ],
                   [
-                    1.95,
-                    0.1
+                    2.14,
+                    0.4
                   ],
                   [
-                    -1.95,
-                    0.1
+                    -2.14,
+                    0.4
                   ],
                   [
-                    -3,
-                    -0.95
+                    -3.1,
+                    -0.56
                   ],
                   [
-                    -3,
-                    -6.05
+                    -3.1,
+                    -5.64
                   ]
                 ]
               },
               {
-                "at": 37,
+                "at": 36,
                 "polygon": [
                   [
-                    -1.31,
-                    -5.1
+                    -1.54,
+                    -5.7
                   ],
                   [
-                    1.31,
-                    -5.1
+                    1.54,
+                    -5.7
                   ],
                   [
-                    1.9,
-                    -4.51
+                    2.4,
+                    -4.84
                   ],
                   [
-                    1.9,
-                    -1.49
+                    2.4,
+                    -1.16
                   ],
                   [
-                    1.31,
-                    -0.9
+                    1.54,
+                    -0.3
                   ],
                   [
-                    -1.31,
-                    -0.9
+                    -1.54,
+                    -0.3
                   ],
                   [
-                    -1.9,
-                    -1.49
+                    -2.4,
+                    -1.16
                   ],
                   [
-                    -1.9,
-                    -4.51
+                    -2.4,
+                    -4.84
                   ]
                 ]
               }
@@ -1845,5 +1860,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (fuselage_missile), 25 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods.\nDetached voxel group forensic repair: removed only the exact unsupported four-cell rim fragments / rear accessory dots; Eagle forearm breech was relocated forward to leave room for a solid rear elbow spar."
+  "notes": "Individual reference-oriented shape study (fuselage_missile), 25 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods.\nDetached voxel group forensic repair: removed only the exact unsupported four-cell rim fragments / rear accessory dots; Eagle forearm breech was relocated forward to leave room for a solid rear elbow spar.\nSecond bespoke silhouette pass: head height/wing sweep/heavy cannon mass and overall size revised from reference comparisons; draft only."
 }
