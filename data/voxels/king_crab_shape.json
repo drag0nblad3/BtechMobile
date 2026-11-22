@@ -1,6 +1,6 @@
 {
   "id": "king_crab_shape",
-  "name": "King Crab KGC-000 \u2014 shape study",
+  "name": "King Crab KGC-000 — shape study",
   "unit": "king_crab_kgc000",
   "voxel_size": 0.063235,
   "subdivide": 1,
@@ -3515,7 +3515,7 @@
                   ],
                   [
                     -10.55638,
-                    0.0
+                    0
                   ],
                   [
                     -13.49536,
@@ -3631,6 +3631,66 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -20,
+              16,
+              -24
+            ],
+            [
+              -17,
+              18,
+              -19
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -14,
+              16,
+              -24
+            ],
+            [
+              -12,
+              18,
+              -19
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -20,
+              18,
+              -21
+            ],
+            [
+              -17,
+              19,
+              -19
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -14,
+              18,
+              -21
+            ],
+            [
+              -12,
+              19,
+              -19
+            ]
+          ],
+          "mat": "plate"
         }
       ],
       "parent": "lt",
@@ -4335,12 +4395,12 @@
     "LA": [
       -14.96,
       17,
-      -20.4
+      -24.5
     ],
     "RA": [
       14.28,
       17,
-      -20.4
+      -24.5
     ],
     "LT": [
       -8.16,
@@ -4380,5 +4440,6 @@
   "jets": {},
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "art_quality_passes": 50,
-  "art_quality_revision": "50-stage-source-review-20261121"
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_signature_revision": "recognizable-claw-and-separated-gun-mouths"
 }
