@@ -1,0 +1,33 @@
+{
+ "id": "schrek_ppc_carrier_xl",
+ "name": "Schrek PPC Carrier (XL)",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "heavy_ferro",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 38,
+  "RS": 26,
+  "LS": 26,
+  "RR": 20,
+  "TU": 28
+ },
+ "equipment": {
+  "TU": [
+   "ppc*3"
+  ]
+ },
+ "source": {
+  "mul_id": 9480,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 32/Schrek PPC Carrier (XL).blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Schrek PPC Carrier (XL) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1074
+}

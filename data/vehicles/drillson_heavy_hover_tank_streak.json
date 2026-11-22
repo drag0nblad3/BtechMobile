@@ -1,0 +1,40 @@
+{
+ "id": "drillson_heavy_hover_tank_streak",
+ "name": "Drillson Heavy Hover Tank (Streak)",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 25,
+  "RS": 21,
+  "LS": 21,
+  "RR": 20,
+  "TU": 25
+ },
+ "equipment": {
+  "FR": [
+   "streak_srm2*2"
+  ],
+  "TU": [
+   "large_pulse_laser",
+   "streak_srm2*2"
+  ],
+  "BD": [
+   "ammo:streak_srm2*2"
+  ]
+ },
+ "source": {
+  "mul_id": 933,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 32/Drillson Heavy Hover Tank (Streak).blk",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Drillson Heavy Hover Tank (Streak) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 899
+}

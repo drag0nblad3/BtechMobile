@@ -1,0 +1,35 @@
+{
+ "id": "arrow_iv_carrier",
+ "name": "Arrow IV Carrier",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "ice",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 12,
+  "RS": 12,
+  "LS": 12,
+  "RR": 12
+ },
+ "equipment": {
+  "FR": [
+   "arrow_iv*2"
+  ],
+  "BD": [
+   "ammo:arrow_iv*4"
+  ]
+ },
+ "source": {
+  "mul_id": 3735,
+  "megamek": "data/mekfiles/vehicles/FM DC/Arrow IV Carrier.blk",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Arrow IV Carrier (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 798
+}
