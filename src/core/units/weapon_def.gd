@@ -32,6 +32,7 @@ var rapid: int         ## Most shots in one attack (Ultra ACs 2), 0 = normal.
 var lbx: bool          ## LB-X: can fire cluster ammo.
 var rotary: bool       ## Rotary AC: 1-6 shots, may jam (RotaryAc).
 var beacon: bool       ## Narc: a hit attaches a homing pod, no damage (Narc).
+var artillery: bool    ## Arrow IV: fired at a hex, area-effect damage (ArrowIv).
 var ammo_damage: int   ## Explosion damage per shot, if not its damage (Narc pods 2).
 var streak: bool       ## Streak: all missiles hit, or it doesn't fire.
 var pulse: bool        ## Pulse laser (no targeting computer bonus on aimed shots).
@@ -83,6 +84,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.lbx = bool(d.get("lbx", false))
 	w.rotary = bool(d.get("rotary", false))
 	w.beacon = bool(d.get("beacon", false))
+	w.artillery = bool(d.get("artillery", false))
 	w.ammo_damage = int(d.get("ammo_damage", 0))
 	w.streak = bool(d.get("streak", false))
 	w.ams = bool(d.get("ams", false))
@@ -130,6 +132,8 @@ func attack_types() -> Array[String]:
 			out.append("DB")
 		"missile":
 			out.append("M")
+		"artillery":
+			out.append("AE")
 	if ai:
 		out.append("AI")
 	if heat_damage:

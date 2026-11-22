@@ -33,6 +33,8 @@ var spotting: Dictionary = {}
 ## TAG designations (Tag): target id -> {by, turn}; tag_used: unit id -> turn.
 var tagged: Dictionary = {}
 var tag_used: Dictionary = {}
+## Distant Arrow IV missiles in flight (ArrowIv): [{attacker_id, weapon_index, hex, turn, need, mods}].
+var artillery: Array[Dictionary] = []
 ## Weather, temperature and gravity for the whole map.
 var conditions := Conditions.new():
 	set(v):

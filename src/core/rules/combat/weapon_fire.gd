@@ -7,6 +7,7 @@ extends RefCounted
 ## Resolves every shot declared this phase, in declaration order.
 ## Each attacker's building damage is checked once its shots are done.
 static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> void:
+	ArrowIv.resolve_due(state, dice, emit)
 	var prev := -1
 	for d in state.declared_fire:
 		var a := state.unit_by_id(d["attacker_id"])
@@ -29,6 +30,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		w: MountedWeapon, target: Unit, th: ToHit) -> void:
 	if BaLegAttack.is_leg_attack(w):
 		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
+		return
+	if ArrowIv.is_arrow(w):
+		ArrowIv.fire(state, dice, emit, attacker, w, target, th)
 		return
 	if ApolloSaturation.on(w):
 		ApolloSaturation.resolve(state, dice, emit, attacker, w, target.coord, th)

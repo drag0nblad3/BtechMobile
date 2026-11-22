@@ -39,6 +39,14 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 	if d.get("jammed", false):
 		res += "; the rotary AC JAMS" + (" (a roll of %d or less jams it at %d shots; clearing it takes a Gunnery roll +3 while standing or walking)"
 				% [RotaryAc.jams_on(d["shots"]), d["shots"]] if level == ExplainLevel.FULL else "")
+	if d.get("arrives_next_turn", false):
+		return "%s: launched, it lands next turn (18+ hexes away), needing %d" % [who, d["need"]] + ModsText.lines(d["mods"], level, seen)
+	if d.get("artillery", false):
+		res += "" if not d["hit"] else "; %d to everything in the hex, %d to the hexes around it" % [ArrowIv.CENTER, ArrowIv.RING]
+		if d.has("scatter"):
+			var sc: Dictionary = d["scatter"]
+			res += ("; it scatters %d hex%s (1D6: %d) to %s" % [sc["hexes"], "" if sc["hexes"] == 1 else "es", sc["dir"],
+					Hex.label(sc["to"])]) if sc["to"] != Hex.INVALID else "; it scatters off the map"
 	if d.has("saturation_damage"):
 		res += "; saturation fire: %d damage to everything in the hex" % d["saturation_damage"]
 		if level == ExplainLevel.FULL:

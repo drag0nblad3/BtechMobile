@@ -43,6 +43,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if prone_why != "":
 		th.impossible = prone_why
 		return th
+	if ArrowIv.is_arrow(w):
+		return ArrowIv.to_hit(state, attacker, w, target)
 	if attacker.vehicle != null:
 		th.impossible = VehicleFire.arc_problem(attacker, w, target)
 		if th.impossible != "":
