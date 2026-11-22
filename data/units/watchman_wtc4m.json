@@ -1,0 +1,64 @@
+{
+  "id": "watchman_wtc4m",
+  "name": "Watchman",
+  "model": "WTC-4M",
+  "tonnage": 40,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 12,
+  "armor": {
+    "LA": 12,
+    "RA": 12,
+    "LT": 14,
+    "RT": 14,
+    "CT": 16,
+    "HD": 8,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "LA": [
+      "large_laser",
+      "machine_gun*2"
+    ],
+    "RA": [
+      "medium_laser*2"
+    ],
+    "LT": [
+      "ammo:machine_gun",
+      "case"
+    ],
+    "RT": [
+      "heat_sink*2"
+    ],
+    "CT": [
+      "heat_sink",
+      "jump_jet"
+    ],
+    "HD": [
+      "heat_sink"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Large Laser, 2x Machine Gun, 2x Medium Laser; walks 5, runs 8, jumps 5.",
+  "sprite": "watchman",
+  "source": {
+    "mul_id": 3534,
+    "megamek": "data/mekfiles/meks/3055U/Watchman WTC-4M.mtf",
+    "published": "RS:CI",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1067
+  },
+  "bv": 1067
+}

@@ -1,0 +1,67 @@
+{
+  "id": "snake_snk1v",
+  "name": "Snake",
+  "model": "SNK-1V",
+  "tonnage": 45,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 11,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor": {
+    "LA": 10,
+    "RA": 10,
+    "LT": 11,
+    "RT": 11,
+    "CT": 16,
+    "HD": 8,
+    "LL": 16,
+    "RL": 16
+  },
+  "rear_armor": {
+    "LT": 4,
+    "RT": 4,
+    "CT": 6
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "RA": [
+      "lb10x_ac"
+    ],
+    "LT": [
+      "heat_sink",
+      "streak_srm2*3"
+    ],
+    "RT": [
+      "heat_sink",
+      "ammo:lb10x_ac",
+      "ammo:lb10x_ac:cluster",
+      "ammo:streak_srm2",
+      "case"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Striker: mobile direct fire. LB 10-X AC, 3x Streak SRM 2; walks 5, runs 8, jumps 5.",
+  "sprite": "snake",
+  "source": {
+    "mul_id": 2974,
+    "megamek": "data/mekfiles/meks/3055U/Snake SNK-1V.mtf",
+    "published": "RS:J",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 980
+  },
+  "bv": 980
+}
