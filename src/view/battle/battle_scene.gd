@@ -67,6 +67,7 @@ func _ready() -> void:
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
+	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
@@ -165,6 +166,7 @@ func _build_views(state: GameState) -> void:
 	var bounds := HexLayout.map_bounds(state.map)
 	rig.bounds = bounds
 	rig.snap(bounds.get_center(), 22.0)
+	fx.attach_camera(rig)
 	cinematic = CinematicDirector.new()
 	add_child(cinematic)
 	cinematic.setup(rig, units_layer)
@@ -232,6 +234,7 @@ func _wire() -> void:
 	hud.explain_cycled.connect(_cycle_explain)
 	hud.save_battle.connect(_save_battle)
 	hud.pause_toggled.connect(_toggle_pause)
+	hud.pause_menu.shake_toggled.connect(_toggle_shake)
 	hud.next_unit.connect(_next_unit)
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
@@ -316,6 +319,11 @@ func _on_double_tap(pos: Vector2) -> void:
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c != Hex.INVALID:
 		rig.focus(HexLayout.tile_top(controller.state.map.get_tile(c)))
+
+
+func _toggle_shake() -> void:
+	GameSettings.set_camera_shake(not GameSettings.camera_shake)
+	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
 
 
 func _toggle_sheet() -> void:
