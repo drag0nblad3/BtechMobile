@@ -1049,6 +1049,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -7,
+              13,
+              -3
+            ],
+            [
+              -3,
+              15,
+              -3
+            ]
+          ]
         }
       ]
     },
@@ -1428,6 +1442,20 @@
               -9
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              -14,
+              21,
+              1
+            ],
+            [
+              -11,
+              23,
+              1
+            ]
+          ]
         }
       ]
     },
@@ -1507,5 +1535,5 @@
       -14.5
     ]
   },
-  "notes": "Shape-first source, miniature referenced; all structural masses separately authored from the other chassis. Thin owl/V chest, narrow jumping chassis, two dorsal antennae physically rooted in CT; asymmetric pulse gun lengths."
+  "notes": "Shape-first source, miniature referenced; all structural masses separately authored from the other chassis. Thin owl/V chest, narrow jumping chassis, two dorsal antennae physically rooted in CT; asymmetric pulse gun lengths.\nSpecific connected-mass correction after 19-source audit: removed only unsupported fin/island geometry and inserted a real continuous helmet structural crown. No blind rod repairs."
 }
