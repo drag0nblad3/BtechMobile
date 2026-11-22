@@ -1243,7 +1243,7 @@
             [
               -10,
               16,
-              -21
+              -15
             ],
             [
               -10,
@@ -1258,7 +1258,7 @@
             [
               -8,
               16,
-              -21
+              -15
             ],
             [
               -7,
@@ -1273,12 +1273,12 @@
             [
               -10,
               17,
-              -22
+              -16
             ],
             [
               -10,
               18,
-              -21
+              -15
             ]
           ],
           "mat": "recess"
@@ -1288,12 +1288,12 @@
             [
               -8,
               17,
-              -22
+              -16
             ],
             [
               -7,
               18,
-              -21
+              -15
             ]
           ],
           "mat": "recess"
@@ -2341,24 +2341,24 @@
       [
         -10.13,
         20,
-        -8.88
+        -16
       ],
       [
         -6.93,
         20,
-        -8.14
+        -15
       ]
     ],
     "RA": [
       [
         6.67,
         20,
-        -8.14
+        -16
       ],
       [
         9.87,
         20,
-        -8.88
+        -15
       ]
     ],
     "LT": [
@@ -2418,5 +2418,6 @@
     "rear_mass_scale": 0.54,
     "category": "human-upright"
   },
-  "reference_contour_round": "2026-11-22-human-side-profile-second-pass"
+  "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
+  "weapon_housing_refine": "2026-11-22-short-recessed-flamer-nozzles"
 }
