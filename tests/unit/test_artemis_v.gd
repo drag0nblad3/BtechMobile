@@ -47,8 +47,9 @@ func test_direct_shot_uses_three_cluster_and_accuracy_bonus() -> void:
 	var dice := LoadedDice.new()
 	dice.queue_2d6(12)  # Hits.
 	dice.queue_2d6(6)   # Cluster roll becomes 9 with Artemis V.
-	WeaponFire.resolve(v[0], dice, func(ty: StringName, e: Dictionary) -> void:
-		events.append([ty, e]), a, w, t, th)
+	var emit := func(ty: StringName, e: Dictionary) -> void:
+		events.append([ty, e])
+	WeaponFire.resolve(v[0], dice, emit, a, w, t, th)
 	var fired: Dictionary = events.filter(func(e: Array) -> bool:
 		return e[0] == GameEvent.WEAPON_FIRED)[0][1]
 	check_eq(fired["cluster_bonus"], 3)
@@ -63,8 +64,9 @@ func test_destroyed_guidance_keeps_ammo_but_loses_bonuses() -> void:
 	var w: MountedWeapon = a.weapons[0]
 	var fcs: Array = a.slots[Location.RT].filter(func(slot: CritSlot) -> bool:
 		return slot.kind == CritSlot.Kind.ARTEMIS)
-	CriticalHits.hit_slot(v[0], LoadedDice.new(), func(_ty: StringName, _e: Dictionary) -> void:
-		pass, a, Location.RT, fcs[0])
+	var emit := func(_ty: StringName, _e: Dictionary) -> void:
+		pass
+	CriticalHits.hit_slot(v[0], LoadedDice.new(), emit, a, Location.RT, fcs[0])
 	check(w.artemis_lost, "one critical hit disables Artemis V")
 	check_eq(WeaponModes.artemis_bonus(w), 0)
 	check_eq(WeaponModes.ammo_kind(w), "artemis_v", "ammunition stays the same")
