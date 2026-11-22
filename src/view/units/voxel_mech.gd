@@ -215,7 +215,12 @@ func detach(key: String) -> void:
 	root.get_parent().remove_child(root)
 	var body := RigidBody3D.new()
 	body.name = key + "_wreck"
-	get_tree().current_scene.add_child(body)
+	# A headless or dynamically-created test scene may not have current_scene.
+	# Debris still belongs to the active model's parent, never a null node.
+	var holder: Node = get_tree().current_scene
+	if holder == null:
+		holder = get_parent() if get_parent() != null else get_tree().root
+	holder.add_child(body)
 	body.global_transform = old_transform
 	body.add_child(root)
 	root.transform = Transform3D.IDENTITY
