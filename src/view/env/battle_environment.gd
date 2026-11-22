@@ -29,8 +29,8 @@ static func build(c: Conditions = null) -> Node3D:
 	env.ambient_light_energy = 0.15 if c.night else 0.48 if c.low_visibility else 0.52
 	if c.low_visibility or c.rain or c.snowfall:
 		env.fog_enabled = true
-		env.fog_density = 0.034 if c.low_visibility else 0.013
-		env.fog_light_color = Color("#8495aa") if c.night else Color("#acb9c6")
+		env.fog_density = 0.013 if c.low_visibility else 0.0045
+		env.fog_light_color = Color("#62758e") if c.night else Color("#8b9fab")
 	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	var we := WorldEnvironment.new()
 	we.environment = env
