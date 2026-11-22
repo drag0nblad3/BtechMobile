@@ -36,20 +36,23 @@ static func recipe_for(def: UnitDef) -> String:
 ## Asset models intentionally do NOT use the eight-location Mech validator.
 ## The model painter / mesher is shared, while gameplay hit locations aren't.
 static func model_from_dict(data: Dictionary) -> VxModel:
+	var recipe: Dictionary = VxArtQuality.apply_asset(data)
 	var m := VxModel.new()
-	if int(data.get("voxel_cap", MAX_VOXELS)) > MAX_VOXELS:
+	if int(recipe.get("voxel_cap", MAX_VOXELS)) > MAX_VOXELS:
 		m.errors.append("declared asset cap exceeds 50000")
 		return m
-	m.voxel_size = float(data.get("voxel_size", 0.028))
-	for material: Dictionary in data.get("materials", []):
+	m.voxel_size = float(recipe.get("voxel_size", 0.028))
+	for material: Dictionary in recipe.get("materials", []):
 		m._mat[material["name"]] = m.colors.size()
 		m.colors.append(Color(material["color"]))
 		m.roles.append(material.get("role", "armor"))
-	for p: Dictionary in data.get("parts", []):
+	for p: Dictionary in recipe.get("parts", []):
 		m._add_part(p)
-	VxRefine.apply(m, int(data.get("subdivide", 1)))
-	for p: Dictionary in data.get("parts", []):
+	VxRefine.apply(m, int(recipe.get("subdivide", 1)))
+	for p: Dictionary in recipe.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))
+	if bool(recipe.get("exclusive_parts", false)):
+		m._claim_exclusive_cells()
 	if m.cell_count() > MAX_VOXELS:
 		m.errors.append("asset exceeds 50000 voxels (%d)" % m.cell_count())
 	return m
