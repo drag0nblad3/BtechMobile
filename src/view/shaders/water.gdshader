@@ -22,9 +22,7 @@ void fragment() {
 	// Hex apothem for a unit-radius hex is sqrt(3) / 2. This masks the
 	// shoreline without introducing visible circular rims or new geometry.
 	vec2 p = local_hex;
-	float rim = max(abs(p.y), max(abs(0.8660254 * p.x + 0.5 * p.y),
-								 abs(0.8660254 * p.x - 0.5 * p.y)));
-	float shore = smoothstep(0.68, 0.86, rim);
+	float shore = 0.0; // Real shore strips are built only at land boundaries.
 	float w1 = sin(field.x * 12.0 + field.y * 4.5 + TIME * wave_speed * 2.2);
 	float w2 = sin(field.y * 14.0 - field.x * 3.0 - TIME * wave_speed * 1.65);
 	float crests = smoothstep(1.0, 1.8, w1 + w2);

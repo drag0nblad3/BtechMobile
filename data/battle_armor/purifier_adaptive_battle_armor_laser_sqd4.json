@@ -1,0 +1,35 @@
+{
+ "id": "purifier_adaptive_battle_armor_laser_sqd4",
+ "name": "Purifier Adaptive Battle Armor",
+ "model": "[Laser](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 6,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "er_small_laser",
+    "name": "ER Small Laser",
+    "type": "energy",
+    "damage": 3,
+    "short": 2,
+    "medium": 4,
+    "long": 5
+   }
+  ],
+  "armor_type": "mimetic"
+ },
+ "source": {
+  "mul_id": 2603,
+  "megamek": "data/mekfiles/battlearmor/3058Uu/Purifier Adaptive BA [Laser] (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 269
+}

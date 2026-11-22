@@ -90,6 +90,8 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return VehicleText.event(s, d, level)
 		GameEvent.DESTROY_CHECK:
 			return AssetText.destroy_check(s, d, level)
+		GameEvent.MINEFIELD:
+			return MineText.describe(s, d, level)
 		GameEvent.BUILDING:
 			return TerrainText.building_event(s, d, level)
 		GameEvent.HULL_BREACH:

@@ -27,6 +27,9 @@ var heat_points: int   ## Heat a flamer hit adds: its damage unless noted (ER fl
 var indirect: bool     ## May fire without line of sight via a spotter (LRMs).
 var to_hit_mod: int    ## The weapon's own to-hit modifier (pulse lasers -2).
 var explodes: bool     ## Blows up on its first critical hit (Gauss rifles, p. 184).
+var explosion_damage: int = -1 ## Component's critical explosion; -1 uses 2 per slot.
+var reengineered: bool ## Ignores reflective, hardened and ferro-lamellor armor reduction.
+var rifle: bool ## Primitive rifle: 3 less damage to modern armored targets.
 var ammo_explodes: bool = true  ## False for Gauss slugs.
 var rapid: int         ## Most shots in one attack (Ultra ACs 2), 0 = normal.
 var lbx: bool          ## LB-X: can fire cluster ammo.
@@ -79,6 +82,9 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.heat_points = int(d.get("heat_points", d.get("damage", 0)))
 	w.to_hit_mod = int(d.get("to_hit", 0))
 	w.explodes = bool(d.get("explodes", false))
+	w.explosion_damage = int(d.get("explosion_damage", -1))
+	w.reengineered = bool(d.get("reengineered", false))
+	w.rifle = bool(d.get("rifle", false))
 	w.ammo_explodes = bool(d.get("ammo_explodes", true))
 	w.rapid = int(d.get("rapid", 0))
 	w.lbx = bool(d.get("lbx", false))
@@ -134,6 +140,8 @@ func attack_types() -> Array[String]:
 			out.append("M")
 		"artillery":
 			out.append("AE")
+	if reengineered:
+		out.append("RE")
 	if ai:
 		out.append("AI")
 	if heat_damage:

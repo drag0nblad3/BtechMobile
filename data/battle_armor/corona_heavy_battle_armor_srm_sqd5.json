@@ -1,0 +1,57 @@
+{
+ "id": "corona_heavy_battle_armor_srm_sqd5",
+ "name": "Corona Heavy Battle Armor",
+ "model": "(SRM) (Sqd5)",
+ "tonnage": 1,
+ "tech_base": "clan",
+ "battle_armor": {
+  "troopers": 5,
+  "armor": 8,
+  "ground_mp": 2,
+  "jump_mp": 0,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "heavy_recoilless_rifle",
+    "name": "Heavy Recoilless Rifle",
+    "type": "ballistic",
+    "damage": 3,
+    "short": 3,
+    "medium": 5,
+    "long": 7
+   },
+   {
+    "id": "flamer",
+    "name": "Flamer",
+    "type": "energy",
+    "damage": 2,
+    "short": 1,
+    "medium": 2,
+    "long": 3,
+    "heat_damage": true,
+    "ai": true
+   },
+   {
+    "id": "srm5",
+    "name": "SRM 5",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 5,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ammo_per_ton": 3,
+    "ammo_explodes": false
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 8612,
+  "megamek": "data/mekfiles/battlearmor/3075/Corona Heavy BA (SRM) (Sqd5).blk",
+  "bv": "megamek"
+ },
+ "bv": 502
+}

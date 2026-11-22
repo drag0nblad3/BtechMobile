@@ -1,0 +1,71 @@
+{
+  "id": "daimyo_dmo1k",
+  "name": "Daimyo",
+  "model": "DMO-1K",
+  "tonnage": 40,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 11,
+  "heat_sink_type": "double",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 12,
+    "RA": 12,
+    "LT": 15,
+    "RT": 15,
+    "CT": 16,
+    "HD": 9,
+    "LL": 19,
+    "RL": 19
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 7
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "er_ppc",
+      "ferro_fibrous*2"
+    ],
+    "RA": [
+      "medium_laser*2",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "ferro_fibrous*2"
+    ],
+    "RT": [
+      "heat_sink",
+      "srm6",
+      "ammo:srm6*2",
+      "ferro_fibrous*2"
+    ],
+    "CT": [
+      "ferro_fibrous*2"
+    ],
+    "LL": [
+      "ferro_fibrous*2"
+    ],
+    "RL": [
+      "ferro_fibrous*2"
+    ]
+  },
+  "role": "Brawler: close-range firepower. ER PPC, 2x Medium Laser, SRM 6; walks 5, runs 8.",
+  "sprite": "daimyo",
+  "source": {
+    "mul_id": 802,
+    "megamek": "data/mekfiles/meks/3055U/Daimyo DMO-1K.mtf",
+    "published": "RS:J",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1148
+  },
+  "bv": 1148
+}

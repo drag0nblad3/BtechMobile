@@ -39,14 +39,20 @@ func build() -> void:
 	body.name = "Body"
 	add_child(body)
 	var size := model.voxel_size
+	# Build all joints before attaching children. Authored add-on details
+	# can legitimately precede their parent in the JSON and must still follow
+	# the right knee/arm when it animates.
 	for spec in model.parts:
-		var parent: Node3D = pivots.get(spec["parent"], body)
-		var base: Vector3 = model.part(spec["parent"]).get("pivot", Vector3.ZERO)
 		var joint := Node3D.new()
 		joint.name = spec["name"]
+		pivots[spec["name"]] = joint
+	for spec in model.parts:
+		var joint: Node3D = pivots[spec["name"]]
+		var parent_name: String = spec.get("parent", "")
+		var parent: Node3D = pivots.get(parent_name, body)
+		var base: Vector3 = model.part(parent_name).get("pivot", Vector3.ZERO)
 		joint.position = (spec["pivot"] - base) * size
 		parent.add_child(joint)
-		pivots[spec["name"]] = joint
 		var part := VxPart.new()
 		part.setup(spec, model)
 		joint.add_child(part)

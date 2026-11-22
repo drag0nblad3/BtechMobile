@@ -179,6 +179,12 @@ func clear_selection() -> void:
 	hud.set_info("")
 
 
+## Select a unit to move (the HUD's Next button).
+func select(u: Unit) -> void:
+	if u != selected:
+		_select(u)
+
+
 func _select(u: Unit) -> void:
 	selected = u
 	mode = MoveMode.Kind.RUN if u.masc_used or u.sc_used else MoveMode.Kind.WALK
@@ -225,15 +231,25 @@ func _refresh() -> void:
 	for c in options.reachable_hexes():
 		hexes[c] = base
 	if has_preview:
-		for k in options.path_to(preview):
-			hexes[MoveOptions.coord_of(k)] = HexHighlighter.PATH
+		var route: Array[Vector3i] = options.path_to(preview)
+		for i in route.size():
+			var progress := float(i + 1) / float(maxi(1, route.size()))
+			hexes[MoveOptions.coord_of(route[i])] = HexHighlighter.PATH.lerp(
+				HexHighlighter.DESTINATION, progress)
+		hexes[MoveOptions.coord_of(preview)] = HexHighlighter.DESTINATION
 	hexes[selected.coord] = HexHighlighter.SELECTED
 	highlighter.show_hexes(hexes)
 	hud.set_mode_label(AssetMove.mode_name(selected, mode))
 	var spent: int = options.cost[preview] if has_preview else 0
 	var where := Hex.label(MoveOptions.coord_of(preview)) if has_preview else "-"
-	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s" % [selected.def.display_name(),
-			AssetMove.mode_name(selected, mode), spent, options.budget, where,
+	var heat_text := ""
+	if selected.asset == null and selected.vehicle == null and selected.ba == null:
+		var heat_gain := 0
+		if has_preview:
+			heat_gain = 1 if mode == MoveMode.Kind.WALK else 2 if mode == MoveMode.Kind.RUN else maxi(3, MoveOptions.hexes_entered(options.path_to(preview), selected.coord))
+		heat_text = "  |  heat %d (+%d)" % [selected.heat, heat_gain]
+	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s%s" % [selected.def.display_name(),
+			AssetMove.mode_name(selected, mode), spent, options.budget, where, heat_text,
 			"  |  prone: standing costs 2 MP and a roll" if selected.prone else ""])
 	var ct := charge_target()
 	hud.charge_button.visible = ct != null

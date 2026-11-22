@@ -1,0 +1,48 @@
+{
+ "id": "von_luckner_heavy_tank_vnl_k70",
+ "name": "Von Luckner Heavy Tank VNL-K70",
+ "tonnage": 75,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 41,
+  "RS": 30,
+  "LS": 30,
+  "RR": 30,
+  "TU": 45
+ },
+ "equipment": {
+  "FR": [
+   "flamer"
+  ],
+  "RR": [
+   "lrm10"
+  ],
+  "TU": [
+   "srm4",
+   "ppc",
+   "ac10",
+   "machine_gun"
+  ],
+  "BD": [
+   "ammo:ac10*2",
+   "ammo:machine_gun:half",
+   "ammo:srm4",
+   "ammo:lrm10"
+  ]
+ },
+ "source": {
+  "mul_id": 3453,
+  "megamek": "data/mekfiles/vehicles/3039u/Von Luckner Heavy Tank VNL-K70.blk",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Von Luckner Heavy Tank VNL-K70 (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1060
+}

@@ -1,0 +1,40 @@
+{
+ "id": "epona_pursuit_tank_a",
+ "name": "Epona Pursuit Tank A",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 21,
+  "RS": 20,
+  "LS": 20,
+  "RR": 18,
+  "TU": 17
+ },
+ "equipment": {
+  "FR": [
+   "c_er_medium_laser*2",
+   "c_tag"
+  ],
+  "TU": [
+   "c_lrm20*2"
+  ],
+  "BD": [
+   "ammo:c_lrm20*4",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 991,
+  "megamek": "data/mekfiles/vehicles/3060u/Epona Pursuit Tank A.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 1976
+}

@@ -1,0 +1,72 @@
+{
+  "id": "victor_vtrcr",
+  "name": "Victor",
+  "model": "VTR-Cr",
+  "tonnage": 80,
+  "walk_mp": 4,
+  "jump_mp": 4,
+  "heat_sinks": 14,
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 18,
+    "RA": 18,
+    "LT": 23,
+    "RT": 23,
+    "CT": 34,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 10,
+    "RT": 10,
+    "CT": 15
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "medium_laser*2"
+    ],
+    "RA": [
+      "hvac10"
+    ],
+    "LT": [
+      "streak_srm4",
+      "ammo:streak_srm4",
+      "c3bs_slave",
+      "case",
+      "endo_steel*6"
+    ],
+    "RT": [
+      "ammo:hvac10*2",
+      "case",
+      "endo_steel*8"
+    ],
+    "CT": [
+      "jump_jet*2"
+    ],
+    "LL": [
+      "heat_sink",
+      "jump_jet"
+    ],
+    "RL": [
+      "heat_sink",
+      "jump_jet"
+    ]
+  },
+  "source": {
+    "mul_id": 3416,
+    "megamek": "data/mekfiles/meks/3085u/ONN/Victor VTR-Cr.mtf",
+    "published": "RS:3085u-ONN",
+    "role": "Skirmisher",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/victor-vtr-cr"
+  },
+  "bv": 1465,
+  "role": "Skirmisher: arm-mounted HVAC/10, paired lasers and Streak SRM 4; walks 4, runs 6, jumps 4.",
+  "sprite": "victor"
+}

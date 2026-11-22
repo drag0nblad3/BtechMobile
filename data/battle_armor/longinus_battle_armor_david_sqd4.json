@@ -1,0 +1,46 @@
+{
+ "id": "longinus_battle_armor_david_sqd4",
+ "name": "Longinus Battle Armor",
+ "model": "[David](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 9,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "david_light_gauss",
+    "name": "David Light Gauss Rifle",
+    "type": "ballistic",
+    "damage": 1,
+    "short": 3,
+    "medium": 5,
+    "long": 8
+   },
+   {
+    "id": "srm2",
+    "name": "SRM 2 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 2,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 1942,
+  "megamek": "data/mekfiles/battlearmor/3058Uu/Longinus BA [David] (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 203
+}

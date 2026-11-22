@@ -1,0 +1,72 @@
+{
+  "id": "marshal_mhlx1",
+  "name": "Marshal",
+  "model": "MHL-X1",
+  "tonnage": 55,
+  "walk_mp": 4,
+  "jump_mp": 4,
+  "heat_sinks": 18,
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 18,
+    "RA": 18,
+    "LT": 20,
+    "RT": 20,
+    "CT": 26,
+    "HD": 9,
+    "LL": 24,
+    "RL": 24
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "LA": [
+      "medium_laser",
+      "ferro_fibrous*2"
+    ],
+    "RA": [
+      "large_laser",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "heat_sink*5",
+      "machine_gun*2",
+      "ammo:machine_gun:half",
+      "ferro_fibrous*4"
+    ],
+    "RT": [
+      "heat_sink*5",
+      "medium_pulse_laser",
+      "lrm5",
+      "ammo:lrm5",
+      "ferro_fibrous*4"
+    ],
+    "CT": [
+      "flamer",
+      "ferro_fibrous"
+    ],
+    "HD": [
+      "ferro_fibrous"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Medium Laser, Large Laser, 2x Machine Gun, Medium Pulse Laser, LRM 5, Flamer; walks 4, runs 6, jumps 4.",
+  "sprite": "marshal",
+  "source": {
+    "mul_id": 2090,
+    "megamek": "data/mekfiles/meks/3060u/Marshal MHL-X1.mtf",
+    "published": "RS:3060u",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1163
+  },
+  "bv": 1163
+}

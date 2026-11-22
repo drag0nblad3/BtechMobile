@@ -1,0 +1,44 @@
+{
+ "id": "drillson_heavy_hover_tank_c_2",
+ "name": "Drillson Heavy Hover Tank C 2",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 25,
+  "RS": 22,
+  "LS": 22,
+  "RR": 21,
+  "TU": 25
+ },
+ "equipment": {
+  "FR": [
+   "c_atm3*2",
+   "c_machine_gun*2"
+  ],
+  "TU": [
+   "c_large_pulse_laser",
+   "c_atm3*2"
+  ],
+  "BD": [
+   "ammo:c_machine_gun:half",
+   "ammo:c_atm3:er",
+   "ammo:c_atm3:he",
+   "ammo:c_atm3",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 9471,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 32/Drillson Heavy Hover Tank  C 2.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 1516
+}

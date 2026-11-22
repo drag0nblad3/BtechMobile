@@ -41,6 +41,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaSwarm.is_swarm(w):
 		BaSwarm.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if BaSwarm.is_let_go(w):
+		BaSwarm.let_go(emit, attacker, w, target)
+		return
 	var decoy := NarcPods.decoy(state, dice, attacker, w, target)
 	if decoy != null:  # an enemy Nemesis pod pulls the missiles onto a friend
 		target = decoy
@@ -127,6 +130,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
+	if w.def.rifle:
+		for i in packets.size():
+			packets[i] = RifleCannon.damage(packets[i], target)
 	if w.def.heat_damage and not target.def.is_support():  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points

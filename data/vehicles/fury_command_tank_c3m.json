@@ -1,0 +1,38 @@
+{
+ "id": "fury_command_tank_c3m",
+ "name": "Fury Command Tank (C3M)",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 62,
+  "RS": 41,
+  "LS": 41,
+  "RR": 37,
+  "TU": 60
+ },
+ "equipment": {
+  "TU": [
+   "plasma_rifle",
+   "rotary_ac5"
+  ],
+  "BD": [
+   "ammo:rotary_ac5",
+   "c3_master",
+   "ammo:plasma_rifle"
+  ]
+ },
+ "source": {
+  "mul_id": 1158,
+  "megamek": "data/mekfiles/vehicles/3050U/Fury Command Tank (C3M).blk",
+  "role": "Brawler",
+  "bv": "megamek"
+ },
+ "bv": 1336
+}

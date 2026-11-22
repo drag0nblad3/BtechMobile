@@ -32,9 +32,10 @@ signal watch_replay
 signal battle_forensics
 signal pause_toggled
 signal exit_battle
+signal next_unit  ## Go to the next of your units (camera + selection).
 
 const FONT_SIZE := 24
-const BUTTON_SIZE := Vector2(140, 68)
+const BUTTON_SIZE := Vector2(140, 60)
 const MARGIN := 18
 
 const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
@@ -68,7 +69,9 @@ var game_over_detail: Label  ## Training debrief under the result.
 var leave_button: Button
 var prone_button: Button
 var more_button: MenuButton
+var _tools_menu: MenuButton
 var pause_menu: BattlePauseMenu
+var roll_feed: RollFeed  ## Recent dice rolls, top right.
 var _move_actions: Array[Button] = []
 var game_over_label: Label
 var sheet_open := false  ## Side panel shows the record sheet, not attack choices.
@@ -104,16 +107,19 @@ func _ready() -> void:
 	_event_label = _label(_event_panel, 19)
 	_event_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_event_panel.custom_minimum_size.x = 170
-	var phase_strip := _row(col)
-	phase_strip.add_theme_constant_override("separation", 5)
+	# The phase timeline sits at the right of the status row (one row, not
+	# two), leaving more of a 720 px screen for the map.
+	var phase_strip := HBoxContainer.new()
+	phase_strip.add_theme_constant_override("separation", 4)
 	phase_strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	heading.add_child(phase_strip)
 	for tag in PHASE_TAGS:
 		var cell := PanelContainer.new()
-		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.custom_minimum_size = Vector2(70, 0)
 		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		phase_strip.add_child(cell)
 		_phase_cells.append(cell)
-		var stage := _label(cell, 15)
+		var stage := _label(cell, 14)
 		stage.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		stage.text = tag
 		stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -123,16 +129,26 @@ func _ready() -> void:
 	var shortcuts := _row(col)
 	shortcuts.add_theme_constant_override("separation", 6)
 	_button(shortcuts, "Pause", pause_toggled)
-	_button(shortcuts, "Save", save_battle)
-	_button(shortcuts, "Replay", watch_replay)
 	_button(shortcuts, "Log", log_toggled)
 	_button(shortcuts, "Sheet", sheet_toggled)
+	_button(shortcuts, "Next ▸", next_unit).tooltip_text = "Go to your next unit"
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
-	_button(shortcuts, "Map View", top_down_toggled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
-	for b: Button in shortcuts.get_children():
-		b.custom_minimum_size = Vector2(112, 52)
-		b.add_theme_font_size_override("font_size", 19)
+	_tools_menu = MenuButton.new()
+	_tools_menu.text = "More ▾"
+	_tools_menu.tooltip_text = "Save, replay and camera options"
+	shortcuts.add_child(_tools_menu)
+	UiSkin.button(_tools_menu, "subtle")
+	var popup := _tools_menu.get_popup()
+	popup.add_item("Save battle", 0)
+	popup.add_item("Watch replay", 1)
+	popup.add_item("Top-down map", 2)
+	popup.add_item("Battle analysis", 3)
+	popup.id_pressed.connect(_on_tool_action)
+	for b in shortcuts.get_children():
+		if b is Button:
+			b.custom_minimum_size = Vector2(100, 46)
+			b.add_theme_font_size_override("font_size", 17)
 	UiSkin.button(shortcuts.get_child(0) as Button, "primary")
 	info = _label(col, 22)
 	UiSkin.label(info, "section")
@@ -201,12 +217,24 @@ func _ready() -> void:
 	UiSkin.button(attack_button, "danger")
 	show_move_controls(false)
 	show_attack_controls(false)
+	roll_feed = RollFeed.new()
+	roll_feed.offset_right = -(MARGIN + safe["right"])
+	roll_feed.offset_top = 100 + safe["top"]
+	add_child(roll_feed)
 	pause_menu = BattlePauseMenu.new()
 	pause_menu.visible = false
 	add_child(pause_menu)
 	pause_menu.resumed.connect(func(): pause_toggled.emit())
 	pause_menu.save_requested.connect(func(): save_battle.emit())
 	pause_menu.exit_requested.connect(func(): exit_battle.emit())
+
+
+func _on_tool_action(id: int) -> void:
+	match id:
+		0: save_battle.emit()
+		1: watch_replay.emit()
+		2: top_down_toggled.emit()
+		3: battle_forensics.emit()
 
 
 ## Refresh the Actions button from the same eligibility flags MovementInput sets.

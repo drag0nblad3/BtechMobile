@@ -4,7 +4,7 @@ extends Node3D
 ## plus woods, water and building props from their own helpers.
 
 const SHADER := preload("res://src/view/shaders/terrain.gdshader")
-const INSET := 0.97  ## Slight gap between hexes shows the grid.
+const INSET := 0.985  ## Narrower seams: a continuous landscape with a legible hex grid.
 ## Hex top colors for ice, mud and snow (Surfaces), replacing the terrain's.
 const SURFACE_TOPS := {"ice": Color("#b8d4e3"), "mud": Color("#5a4632"), "snow": Color("#e8ecef")}
 ## Shader pattern index per TerrainType.pattern (see terrain.gdshader).

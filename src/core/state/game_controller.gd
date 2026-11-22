@@ -157,6 +157,7 @@ func go_prone(unit: Unit) -> bool:
 			or unit.def.is_support() or state.reserves.has(unit):
 		return false
 	MoveExecutor.go_prone(_emit_cb, unit)
+	BaShakeOff.drop_prone(state, dice, _emit_cb, unit)
 	MobileObjectives.drop_prone(state, dice, _emit_cb, unit)
 	_unit_done()
 	return true
