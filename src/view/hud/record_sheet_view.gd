@@ -13,8 +13,8 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	l.add_theme_font_size_override("normal_font_size", 19)
 	l.add_theme_font_size_override("bold_font_size", 21)
-	l.text = AssetSheetView.text(u) if u.asset != null else text(u)
-	if u.asset != null:
+	l.text = AssetSheetView.text(u) if u.asset != null else VehicleSheetView.text(u) if u.vehicle != null else text(u)
+	if u.def.is_support():
 		return l
 	var want := power_choice(u)
 	if not on_power.is_valid() or u.destroyed:

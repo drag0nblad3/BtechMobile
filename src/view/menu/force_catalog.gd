@@ -11,6 +11,7 @@ var _filter_button: Button
 var _config := {}  ## Chassis id -> index of the shown configuration.
 var _bv_labels: Array = []  ## [Label, UnitDef] per shown panel.
 var _assets: VBoxContainer
+var _vehicles: VBoxContainer
 var _asset_tips: Array[Label] = []
 
 
@@ -32,6 +33,9 @@ func build(parent: Control) -> void:
 	_filter_button = UiKit.button(outer, "", func(): mode = DesignFilter.next(mode); rebuild(), Vector2(0, 56))
 	_list = VBoxContainer.new()
 	outer.add_child(_list)
+	UiKit.label(outer, "Combat vehicles (record sheets)")
+	_vehicles = VBoxContainer.new()
+	outer.add_child(_vehicles)
 	UiKit.label(outer, "Vehicles and infantry (Battlefield Support)")
 	_assets = VBoxContainer.new()
 	outer.add_child(_assets)
@@ -44,6 +48,10 @@ func rebuild() -> void:
 	_filter_button.text = "Show: " + DesignFilter.NAMES[mode]
 	for g: Array in DesignFilter.groups(db, mode):
 		_panel(g)
+	UiKit.clear(_vehicles)
+	for def in db.sorted_vehicles():
+		if DesignFilter.keeps(def, mode):
+			_vehicle_panel(def)
 	UiKit.clear(_assets)
 	_asset_tips.clear()
 	for def in db.sorted_assets():
@@ -83,6 +91,21 @@ func _panel(g: Array) -> void:
 		UiKit.button(row, "%s %d/%d ▸" % [def.config, g.find(def) + 1, g.size()], func():
 				_config[def.chassis] = g.find(def) + 1
 				rebuild(), Vector2(120, 56))
+
+
+## One combat vehicle record sheet: BV, motive, MP, armor, weapons.
+func _vehicle_panel(def: UnitDef) -> void:
+	var v := def.vehicle
+	var box := UiKit.panel(_vehicles)
+	UiKit.label(box, "%s%s  ·  BV %d  ·  %d t %s  ·  %d/%d MP  ·  %d armor%s" % [def.name, " [Clan]" if def.is_clan() else "",
+			def.bv, def.tonnage, v.motive_name().to_lower(), v.cruise_mp, v.flank_mp(), def.total_armor(),
+			"  ·  turret" if v.turret else ""])
+	UiKit.label(box, weapons_line(def), UiKit.SMALL)
+	_asset_tips.append(UiKit.label(box, "Record-sheet vehicle: hit locations, motive damage and critical hits, no heat. Counts as support (4 per side).", UiKit.SMALL))
+	var row := HBoxContainer.new()
+	box.add_child(row)
+	for side in 2:
+		UiKit.button(row, "+ " + Names.side(side), _on_add.bind(side, def.id), Vector2(140, 56))
 
 
 ## One Asset card: its numbers, role and add buttons.

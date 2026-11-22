@@ -25,6 +25,12 @@ static func health(u: Unit) -> float:
 		return clampf((u.asset.check - 2) / maxf(1.0, u.asset.card.check - 2.0), 0.0, 1.0)
 	var full := 0.0
 	var now := 0.0
+	if u.vehicle != null:  # armor and structure in the armored locations
+		for loc: int in VehicleLoc.ARMORED:
+			if loc != VehicleLoc.TURRET or u.def.vehicle.turret:
+				full += u.def.armor[loc] + VehicleLoc.structure(u.def.tonnage)
+				now += u.armor[loc] + u.structure[loc]
+		return clampf(now / maxf(1.0, full), 0.0, 1.0)
 	for loc in Location.COUNT:
 		full += u.def.armor[loc] + u.def.rear_armor[loc] + StructureTable.points(u.def.tonnage, loc, u.def.quad)
 		now += u.armor[loc] + u.rear_armor[loc] + u.structure[loc]

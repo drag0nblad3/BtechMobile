@@ -142,7 +142,9 @@ func _init_vehicle() -> void:
 		structure.append(VehicleLoc.structure(def.tonnage) if armored else 0 if loc == VehicleLoc.TURRET else 1)
 		slots.append([])
 	for m in def.weapon_mounts:
-		weapons.append(MountedWeapon.new(m["weapon"], m["loc"], false))
+		var mw := MountedWeapon.new(m["weapon"], m["loc"], false)
+		mw.on_vehicle = true
+		weapons.append(mw)
 	for a in def.ammo_mounts:
 		var bin := AmmoBin.new(a["weapon"], a["loc"], a.get("kind", ""))
 		if a.get("half", false):

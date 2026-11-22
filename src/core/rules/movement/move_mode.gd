@@ -7,6 +7,8 @@ enum Kind { WALK, RUN, JUMP }
 
 const NAMES := ["Walk", "Run", "Jump"]
 const VERBS := ["walked", "ran", "jumped"]
+const VEHICLE_NAMES := ["Cruise", "Flank"]
+const VEHICLE_VERBS := ["cruised", "flanked"]
 
 
 static func name_of(k: int) -> String:
@@ -15,6 +17,13 @@ static func name_of(k: int) -> String:
 
 static func verb(k: int) -> String:
 	return VERBS[k] if k >= 0 and k < VERBS.size() else "stood still"
+
+
+## The verb for this unit: combat vehicles cruise and flank (TODO(rules)).
+static func verb_for(u: Unit, k: int) -> String:
+	if u != null and u.vehicle != null and k >= 0 and k < VEHICLE_VERBS.size():
+		return VEHICLE_VERBS[k]
+	return verb(k)
 
 
 ## MP available this turn, after heat and damage. Standing up costs 2 MP.

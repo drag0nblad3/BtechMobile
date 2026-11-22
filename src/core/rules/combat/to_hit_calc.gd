@@ -135,7 +135,7 @@ static func add_movement(th: ToHit, attacker: Unit, target: Unit, ignore_target 
 		th.add("target caught off guard", 0, "A point-blank ambush shot ignores how far the target moved." if ignore_target
 				else "It was just found hiding, so its movement doesn't count this turn.")
 	elif tm > 0:
-		th.add("target %s %d hexes" % [MoveMode.verb(target.move_mode), target.hexes_moved], tm,
+		th.add("target %s %d hexes" % [MoveMode.verb_for(target, target.move_mode), target.hexes_moved], tm,
 				"Fast targets are harder to hit: 3-4 hexes +1, 5-6 +2, 7-9 +3, 10+ +4; +1 more if it jumped.")
 
 
