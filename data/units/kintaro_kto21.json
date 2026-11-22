@@ -1,0 +1,69 @@
+{
+ "id": "kintaro_kto21",
+ "name": "Kintaro",
+ "model": "KTO-21",
+ "tonnage": 55,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "armor": {
+  "LA": 17,
+  "RA": 17,
+  "LT": 18,
+  "RT": 18,
+  "CT": 23,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 6,
+  "RT": 6,
+  "CT": 8
+ },
+ "equipment": {
+  "LA": [
+   "srm6",
+   "ferro_fibrous*3",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "er_medium_laser*2",
+   "endo_steel*6"
+  ],
+  "LT": [
+   "inarc_beacon",
+   "ferro_fibrous*9"
+  ],
+  "RT": [
+   "srm6",
+   "ammo:inarc_beacon*3",
+   "ammo:srm6:narc*2",
+   "endo_steel*4",
+   "case"
+  ],
+  "CT": [
+   "c3i"
+  ],
+  "LL": [
+   "ferro_fibrous*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1794,
+  "megamek": "data/mekfiles/meks/3050U/Kintaro KTO-21.mtf",
+  "published": "RS:3050Uu-C",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 1295
+ },
+ "bv": 1295,
+ "sprite": "kintaro",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 SRM 6s, 2 ER Medium Lasers, iNarc Missile Beacon; walks 5, runs 8."
+}

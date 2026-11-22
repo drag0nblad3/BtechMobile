@@ -10,8 +10,9 @@ extends RefCounted
 ## +1 for indirect fire, no spotter modifiers and nothing in between counts,
 ## but no -1 or cluster bonus either; the target's own hex still counts
 ## (pp. 70, 188, 193).
-## TODO(rules): iNarc and special pods; the computer
-## doesn't fire beacons.
+## iNarc beacons (`inarc_beacon`, p. 188) work the same with longer range and
+## 3-point pods. TODO(rules): special pods (explosive, haywire, ECM, Nemesis,
+## pp. 193-194) aren't modelled; designs carrying them are skipped.
 
 const KIND := "narc"
 const TO_HIT_MOD := -1
