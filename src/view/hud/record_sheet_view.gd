@@ -63,11 +63,11 @@ static func text(u: Unit) -> String:
 	if d.structure_type == "endo_steel":
 		tech.append("endo steel structure")
 	if d.ecm_loc >= 0:
-		tech.append("Guardian ECM%s" % (" (destroyed)" if u.ecm_lost else ""))
+		tech.append("%s%s" % [EcmTypes.name_of(d), " (destroyed)" if u.ecm_lost else ""])
 	if d.masc_loc >= 0:
 		tech.append("MASC%s" % (" (destroyed)" if Masc.broken(u) else " (next use %d+)" % Masc.need(u)))
 	if C3.has(d):
-		tech.append("C3 %s%s" % ["Master" if C3.is_master(d) else "Slave", "" if C3.working(u) else " (offline)"])
+		tech.append("C3 %s%s" % ["Master" if C3.is_master(d) else ("i" if C3i.has(d) else "Slave"), "" if C3.working(u) else " (offline)"])
 	if d.supercharger_loc >= 0:
 		tech.append("supercharger%s" % (" (wrecked)" if Supercharger.broken(u) else " (next use %d+)" % Supercharger.need(u)))
 	if Tsm.has(d):

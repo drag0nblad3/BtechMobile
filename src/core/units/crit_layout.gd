@@ -50,7 +50,7 @@ static func build(def: UnitDef) -> Array:
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.MELEE, String(m["kind"]).capitalize(), i), def)
 	if def.ecm_loc >= 0:
 		for s in Ecm.slots(def):
-			_place(out[def.ecm_loc], CritSlot.new(CritSlot.Kind.ECM, "Guardian ECM"), def)
+			_place(out[def.ecm_loc], CritSlot.new(CritSlot.Kind.ECM, EcmTypes.name_of(def)), def)
 	if def.masc_loc >= 0:
 		for s in Masc.size(def):
 			_place(out[def.masc_loc], CritSlot.new(CritSlot.Kind.MASC, "MASC"), def)
@@ -62,6 +62,9 @@ static func build(def: UnitDef) -> Array:
 	if def.c3_slave_loc >= 0:
 		for s in C3Boosted.slave_slots(def):
 			_place(out[def.c3_slave_loc], CritSlot.new(CritSlot.Kind.C3, "C3 Boosted Slave" if def.c3_boosted else "C3 Slave"), def)
+	if def.c3i_loc >= 0:
+		for s in C3i.SLOTS:
+			_place(out[def.c3i_loc], CritSlot.new(CritSlot.Kind.C3, "C3i"), def)
 	for g: Dictionary in def.inert:
 		for s in InertGear.KINDS[g["kind"]]["slots"]:
 			_place(out[g["loc"]], CritSlot.new(CritSlot.Kind.GEAR, InertGear.KINDS[g["kind"]]["name"]), def)

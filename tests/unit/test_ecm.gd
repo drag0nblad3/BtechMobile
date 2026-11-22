@@ -77,4 +77,4 @@ func test_new_designs_carry_the_gear() -> void:
 	check(db.get_def("black_knight_bl12knt").tc_loc >= 0, "Black Knight TC")
 	var atlas := db.get_def("atlas_as7k")
 	check(atlas.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].ams), "Atlas AMS")
-	check_eq(BattleValue.breakdown(db.get_def("firestarter_fs9s1"))["ecm"], BattleValue.ECM_BV)
+	check_eq(BattleValue.breakdown(db.get_def("firestarter_fs9s1"))["ecm"], 61.0)

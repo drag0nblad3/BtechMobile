@@ -395,6 +395,39 @@
     "megamek_bv": 1738
    },
    "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 Improved Heavy Large Lasers, 2 LRM 10s, Micro Pulse Laser; walks 5, runs 8."
+  },
+  {
+   "model": "T",
+   "bv": 1748,
+   "heat_sinks": 10,
+   "equipment": {
+    "LA": [
+     "c_er_medium_pulse_laser"
+    ],
+    "RA": [
+     "c_er_medium_pulse_laser"
+    ],
+    "LT": [
+     "c_streak_lrm10",
+     "ammo:c_streak_lrm10",
+     "watchdog_ecm"
+    ],
+    "RT": [
+     "c_streak_lrm10",
+     "ammo:c_streak_lrm10",
+     "targeting_computer",
+     "supercharger"
+    ]
+   },
+   "source": {
+    "mul_id": 8325,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 19/Cougar T.mtf",
+    "published": "RG19",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1748
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 ER Medium Pulse Lasers, 2 Streak LRM 10s; walks 5, runs 8."
   }
  ]
 }
