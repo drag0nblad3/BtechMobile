@@ -8,6 +8,7 @@ const SCENARIO := "res://data/scenarios/test_skirmish.json"
 var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
+var audio := BattleAudio.new()
 var scars := BattleScars.new()
 var units_layer: UnitsLayer
 var rig: CameraRig
@@ -63,11 +64,13 @@ func _ready() -> void:
 		bots.lessons = lessons
 	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
-	add_child(BattleEnvironment.build())
+	add_child(BattleEnvironment.build(state.conditions))
 	_build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
+	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
+	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
@@ -109,6 +112,7 @@ func _toggle_pause() -> void:
 	if opening:
 		hud.pause_menu.set_message("The battle is stopped until you resume.")
 	get_tree().paused = opening
+	audio.set_paused(opening)
 
 
 func _exit_to_menu() -> void:
@@ -149,6 +153,7 @@ func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
 	map_view.build(state.map)
+	map_view.set_conditions(state.conditions)
 	objectives = ObjectiveMarkers.build(state)
 	add_child(objectives)
 	units_layer = UnitsLayer.new()
@@ -158,6 +163,8 @@ func _build_views(state: GameState) -> void:
 	scars.setup(state, units_layer, recorder.frames)
 	fx.setup(state, units_layer, map_view)
 	add_child(fx)
+	add_child(audio)
+	audio.setup(state)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -168,6 +175,10 @@ func _build_views(state: GameState) -> void:
 	var bounds := HexLayout.map_bounds(state.map)
 	rig.bounds = bounds
 	rig.snap(bounds.get_center(), 22.0)
+	var weather := get_node_or_null("Environment/BattleWeather") as BattleWeather
+	if weather != null:
+		weather.setup(state.conditions, rig.camera, units_layer)
+	fx.attach_camera(rig)
 	cinematic = CinematicDirector.new()
 	add_child(cinematic)
 	cinematic.setup(rig, units_layer)
@@ -176,6 +187,7 @@ func _build_views(state: GameState) -> void:
 	add_child(gestures)
 	hud = BattleHud.new()
 	add_child(hud)
+	audio.attach_ui(hud)
 	movement = MovementInput.new()
 	movement.controller = controller
 	movement.highlighter = highlighter
@@ -235,6 +247,8 @@ func _wire() -> void:
 	hud.explain_cycled.connect(_cycle_explain)
 	hud.save_battle.connect(_save_battle)
 	hud.pause_toggled.connect(_toggle_pause)
+	hud.pause_menu.voxel_toggled.connect(_toggle_voxels)
+	hud.pause_menu.shake_toggled.connect(_toggle_shake)
 	hud.next_unit.connect(_next_unit)
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
@@ -321,6 +335,18 @@ func _on_double_tap(pos: Vector2) -> void:
 		rig.focus(HexLayout.tile_top(controller.state.map.get_tile(c)))
 
 
+func _toggle_voxels() -> void:
+	GameSettings.set_voxel_mechs(not GameSettings.voxel_mechs)
+	units_layer.reload_looks()
+	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
+	hud.pause_menu.set_message("Voxel models enabled." if GameSettings.voxel_mechs else "Sprites and placeholders enabled.")
+
+
+func _toggle_shake() -> void:
+	GameSettings.set_camera_shake(not GameSettings.camera_shake)
+	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
+
+
 func _toggle_sheet() -> void:
 	hud.sheet_open = not hud.sheet_open
 	if hud.sheet_open and sheet_unit == null and not controller.state.units.is_empty():
@@ -376,15 +402,20 @@ func _on_event(e: GameEvent) -> void:
 		_autosave.call_deferred()
 		BattleSave.save_replay.call_deferred(recorder.frames)
 	fx.play(e)
+	audio.on_event(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
 			var from: Vector3i = e.data["from"]
-			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z)
+			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z,
+				int(e.data.get("mode", -1)))
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
+			units_layer.react(e)
 			_show_sheet_if_open()
+		GameEvent.PHYSICAL:
+			units_layer.react(e)
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
 			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:

@@ -7,6 +7,7 @@ shader_type spatial;
 uniform vec4 top_color : source_color = vec4(0.48, 0.6, 0.29, 1.0);
 uniform vec4 detail_color : source_color = vec4(0.37, 0.5, 0.22, 1.0);
 uniform vec4 side_color : source_color = vec4(0.42, 0.34, 0.25, 1.0);
+uniform vec4 weather_tint : source_color = vec4(1.0);
 uniform sampler2D noise_tex : repeat_enable, filter_linear_mipmap;
 uniform float tex_scale = 0.45;
 uniform int pattern = 0;
@@ -91,6 +92,6 @@ void fragment() {
 	// Subtle broad soil patches break up featureless flat terrain.
 	float soil_patch = smoothstep(0.45, 0.8, n2(world_pos.xz + 31.0, 0.11));
 	top *= mix(0.91, 1.055, soil_patch);
-	ALBEDO = mix(side, top, is_top) * tint;
+	ALBEDO = mix(side, top, is_top) * tint * weather_tint.rgb;
 	ROUGHNESS = mix(0.99, 0.91, is_top);
 }

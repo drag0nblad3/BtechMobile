@@ -56,7 +56,7 @@ jobs:
       - name: Battle save + replay scene smoke
         run: |
           set -o pipefail
-          godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
+          timeout --signal=TERM --kill-after=5s 120s godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
           grep -q "battle save replay smoke ok" battle-save-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" battle-save-smoke.log
       - name: Tactical Academy forensic unit tests
@@ -85,6 +85,76 @@ jobs:
         with:
           name: voxel-counts
           path: voxel-counts.log
+      - name: Voxel battle 8/16 triangle and headless timing report
+        run: |
+          set -o pipefail
+          godot --headless -s tools/voxel_battle_bench.gd 2>&1 | tee voxel-battle-bench.log
+          grep -q 'VOXEL_BATTLE_BENCH|count=8|' voxel-battle-bench.log
+          grep -q 'VOXEL_BATTLE_BENCH|count=16|' voxel-battle-bench.log
+          ! grep -E "SCRIPT ERROR|Parse Error" voxel-battle-bench.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: voxel-battle-timing
+          path: voxel-battle-bench.log
+      - name: Capture eight voxel battle units at phone resolution
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'voxel-mechs-battle')
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/battle-voxel.png voxel 2>&1 | tee voxel-capture.log
+          test -s /tmp/battle-voxel.png
+          ! grep -E "SCRIPT ERROR|Parse Error" voxel-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'voxel-mechs-battle')
+        with:
+          name: battle-voxel-1280x720
+          path: /tmp/battle-voxel.png
+          if-no-files-found: error
+      - name: Battle audio settings capture at phone resolution
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-audio')
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/battle-audio.png audio 2>&1 | tee audio-capture.log
+          test -s /tmp/battle-audio.png
+          ! grep -E "SCRIPT ERROR|Parse Error" audio-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-audio')
+        with:
+          name: battle-audio-controls-1280x720
+          path: /tmp/battle-audio.png
+          if-no-files-found: error
+      - name: Capture weather conditions at 1280x720
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-weather')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/weather-captures
+          for condition in night rain snow fog heat cold wind; do
+            timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+              -s tools/capture.gd -- "/tmp/weather-captures/$condition.png" "weather=$condition" 2>&1 | tee -a weather-capture.log
+            test -s "/tmp/weather-captures/$condition.png"
+          done
+          ! grep -E "SCRIPT ERROR|Parse Error" weather-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-weather')
+        with:
+          name: battle-weather-1280x720
+          path: /tmp/weather-captures/*.png
+          if-no-files-found: error
+      - name: Capture hit location and heat effect at 1280x720
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-hit-location-fx')
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/battle-hitfx.png hitfx 2>&1 | tee hitfx-capture.log
+          test -s /tmp/battle-hitfx.png
+          ! grep -E "SCRIPT ERROR|Parse Error" hitfx-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-hit-location-fx')
+        with:
+          name: battle-hitfx-1280x720
+          path: /tmp/battle-hitfx.png
+          if-no-files-found: error
       - name: Capture scars and smoking wreck at 1280x720
         if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-scar-wrecks')
         run: |
@@ -126,6 +196,25 @@ jobs:
         with:
           name: battlefield-polish-visual-review
           path: /tmp/battle-visuals/city_vfx.png
+          if-no-files-found: error
+      - name: Capture jump plume and muzzle preview (Compatibility renderer)
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'weapon-sockets-jump-fx')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/jump-review
+          timeout --signal=TERM --kill-after=5s 110s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/jump-review/jump.png jump 2>&1 | tee jump-capture.log
+          timeout --signal=TERM --kill-after=5s 110s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/jump-review/weapons.png vfx 2>&1 | tee -a jump-capture.log
+          test -s /tmp/jump-review/jump.png
+          test -s /tmp/jump-review/weapons.png
+          ! cmp -s /tmp/jump-review/jump.png /tmp/jump-review/weapons.png
+          ! grep -E "SCRIPT ERROR|Parse Error|CAPTURE_JUMP_FAILED" jump-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'weapon-sockets-jump-fx')
+        with:
+          name: weapon-sockets-and-jump-review
+          path: /tmp/jump-review/*.png
           if-no-files-found: error
       - name: Launcher navigation smoke
         run: |

@@ -21,7 +21,7 @@ static func breakdown(def: UnitDef) -> Dictionary:
 	var armor_pts := def.total_armor()
 	var weapons := 0.0
 	for m in def.weapon_mounts:
-		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0) \
+		weapons += (m["weapon"] as WeaponDef).tons + (1.0 if m.get("artemis", false) else 0.0) + (1.5 if m.get("artemis_v", false) else 0.0) \
 				+ (Apollo.TONS if m.get("apollo", false) else 0.0) \
 				+ (PpcCapacitor.TONS if m.get("capacitor", false) else 0.0)
 	return {

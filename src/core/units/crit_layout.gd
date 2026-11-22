@@ -25,6 +25,9 @@ static func build(def: UnitDef) -> Array:
 			_place(out[loc], CritSlot.new(CritSlot.Kind.WEAPON, w.name, i), def)
 		if m.get("artemis", false):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.ARTEMIS, "Artemis IV FCS", i), def)
+		if m.get("artemis_v", false):
+			for slot in 2:
+				_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.ARTEMIS, "Artemis V FCS", i), def)
 		if m.get("apollo", false):
 			_place(out[m["loc"]], CritSlot.new(CritSlot.Kind.APOLLO, "Apollo FCS", i), def)
 		if m.get("capacitor", false):
