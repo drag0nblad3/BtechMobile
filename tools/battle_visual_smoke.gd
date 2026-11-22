@@ -9,7 +9,7 @@ func _initialize() -> void:
 
 func _run() -> void:
 	BattleLaunch.bot_sides = []  # prevent AI turns while inspecting.
-	var scene := load("res://scenes/main.tscn").instantiate()
+	var scene: Node = load("res://scenes/main.tscn").instantiate()
 	root.add_child(scene)
 	await process_frame
 	await process_frame
