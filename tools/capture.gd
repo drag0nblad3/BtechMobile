@@ -61,6 +61,9 @@ func _process(_delta: float) -> bool:
 	if _frames == 8 and _mode in ["vfx", "jump"]:
 		_stage_battle_visuals()
 	if _frames == 12 and _mode == "jump":
+		# The CI Compatibility renderer can take hundreds of milliseconds
+		# per frame; slow this *review capture* so frame 40 is airborne.
+		Engine.time_scale = 0.025
 		_stage_jump()
 	if _frames == 39 and _mode == "vfx":
 		# Visual review only: place a PPC across the visible battlefield.
@@ -78,6 +81,7 @@ func _process(_delta: float) -> bool:
 		if _mode == "jump" and get_nodes_in_group("jump_fx").is_empty():
 			printerr("CAPTURE_JUMP_FAILED: exhaust absent on review frame")
 		root.get_viewport().get_texture().get_image().save_png(_out)
+		Engine.time_scale = 1.0
 		print("saved ", _out)
 		return true
 	return false
