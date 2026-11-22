@@ -5,8 +5,10 @@ extends Control
 signal resumed
 signal save_requested
 signal exit_requested
+signal shake_toggled
 
 var _message: Label
+var _shake_button: Button
 
 
 func _ready() -> void:
@@ -41,6 +43,7 @@ func _ready() -> void:
 	_message.add_theme_font_size_override("font_size", 21)
 	UiSkin.label(_message, "muted")
 	box.add_child(_message)
+	_shake_button = _add_button(box, "Camera shake: On", func(): shake_toggled.emit())
 	_add_button(box, "Resume Battle", func(): resumed.emit(), "primary")
 	_add_button(box, "Save Battle", func(): save_requested.emit())
 	_add_button(box, "Save & Exit to Menu", func(): exit_requested.emit(), "subtle")
@@ -50,7 +53,12 @@ func set_message(value: String) -> void:
 	_message.text = value
 
 
-func _add_button(parent: Control, caption: String, action: Callable, tone: String = "secondary") -> void:
+func set_shake_label(on: bool) -> void:
+	if _shake_button != null:
+		_shake_button.text = "Camera shake: On" if on else "Camera shake: Off"
+
+
+func _add_button(parent: Control, caption: String, action: Callable, tone: String = "secondary") -> Button:
 	var button := Button.new()
 	button.text = caption
 	button.custom_minimum_size = Vector2(0, 68)
@@ -58,3 +66,4 @@ func _add_button(parent: Control, caption: String, action: Callable, tone: Strin
 	UiSkin.button(button, tone)
 	button.pressed.connect(action)
 	parent.add_child(button)
+	return button
