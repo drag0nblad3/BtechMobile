@@ -36,6 +36,8 @@ static func mode_text(w: MountedWeapon) -> String:
 			return "Clear the jam (Gunnery +3, stand or walk)"
 		PpcCapacitor.CHARGE:
 			return "Charge the capacitor instead (5 heat a turn; next shot +5 damage)"
+		ApolloSaturation.MODE:
+			return "Saturation: blast the target's hex (a third of the missiles hit everyone there)"
 	if not w.def.munitions.is_empty():
 		return Atm.mode_text(w)
 	if w.def.rotary:

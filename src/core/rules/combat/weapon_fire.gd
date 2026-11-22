@@ -30,6 +30,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaLegAttack.is_leg_attack(w):
 		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if ApolloSaturation.on(w):
+		ApolloSaturation.resolve(state, dice, emit, attacker, w, target.coord, th)
+		return
 	var decoy := NarcPods.decoy(state, dice, attacker, w, target)
 	if decoy != null:  # an enemy Nemesis pod pulls the missiles onto a friend
 		target = decoy
