@@ -1,0 +1,55 @@
+name: Orthographic 50-pass voxel refinement
+on:
+  push:
+    branches: [chatgpt/orthographic-50-20261122]
+    paths:
+      - tools/voxel_orthographic_50.py
+      - .github/workflows/voxel-orthographic-50.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: chatgpt/orthographic-50-20261122
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check refinement script
+        run: python -m py_compile tools/voxel_orthographic_50.py
+      - name: Execute 50 orthographic passes across model catalog
+        run: python tools/voxel_orthographic_50.py
+      - name: Assert model count, 50-stage audit and source invariants
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('docs/graphics/orthographic-50-pass-audit.json')
+          r=json.loads(p.read_text())
+          s=r['summary']
+          assert s['mechs']>=150, s
+          assert s['assets']==16, s
+          assert s['total_passes']==(s['mechs']+s['assets'])*50, s
+          assert s['modified_models']>140, s
+          print('ORTHOGRAPHIC_AUDIT_OK',s)
+          PY
+      - name: Commit reviewed geometry and audit to working branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/voxels docs/graphics/orthographic-50-pass-audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Art: 50 side, top, rear and underside refinement passes per model [skip ci]'
+            git push origin HEAD:chatgpt/orthographic-50-20261122
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: orthographic-50-pass-audit
+          path: docs/graphics/orthographic-50-pass-audit.json
+          if-no-files-found: warn
