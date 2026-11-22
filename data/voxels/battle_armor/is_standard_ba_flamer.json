@@ -2,7 +2,7 @@
   "id": "is_standard_ba_flamer",
   "name": "IS Standard Battle Armor",
   "asset_kind": "battle_armor",
-  "motive": "f",
+  "motive": "j",
   "voxel_size": 0.022,
   "subdivide": 2,
   "voxel_cap": 50000,
@@ -294,7 +294,7 @@
             [
               -14,
               8,
-              -20
+              -18
             ],
             [
               -13,
@@ -309,12 +309,41 @@
             [
               -14,
               8,
-              -20
+              -18
             ],
             [
               -14,
               8,
+              -16
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -14,
+              9,
+              -14
+            ],
+            [
+              -12,
+              10,
+              -11
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              -14,
+              9,
               -18
+            ],
+            [
+              -14,
+              9,
+              -17
             ]
           ]
         },
@@ -585,7 +614,7 @@
             [
               -7,
               8,
-              -2
+              0
             ],
             [
               -6,
@@ -600,12 +629,41 @@
             [
               -7,
               8,
-              -2
+              0
             ],
             [
               -7,
               8,
+              2
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -7,
+              9,
+              4
+            ],
+            [
+              -5,
+              10,
+              7
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              -7,
+              9,
               0
+            ],
+            [
+              -7,
+              9,
+              1
             ]
           ]
         },
@@ -876,7 +934,7 @@
             [
               1,
               8,
-              -19
+              -17
             ],
             [
               2,
@@ -891,12 +949,41 @@
             [
               1,
               8,
-              -19
+              -17
             ],
             [
               1,
               8,
+              -15
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              1,
+              9,
+              -13
+            ],
+            [
+              3,
+              10,
+              -10
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              1,
+              9,
               -17
+            ],
+            [
+              1,
+              9,
+              -16
             ]
           ]
         },
@@ -1167,7 +1254,7 @@
             [
               10,
               8,
-              -2
+              0
             ],
             [
               11,
@@ -1182,12 +1269,41 @@
             [
               10,
               8,
-              -2
+              0
             ],
             [
               10,
               8,
+              2
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              10,
+              9,
+              4
+            ],
+            [
+              12,
+              10,
+              7
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              10,
+              9,
               0
+            ],
+            [
+              10,
+              9,
+              1
             ]
           ]
         },
@@ -1215,8 +1331,8 @@
   "exclusive_parts": true,
   "armor_shape_revision": "unit-specific-50-cycle-20261122",
   "geometry_edits": 2400,
-  "weapon_kind": "laser",
-  "signature": "Inner Sphere laser 4 armored troopers",
+  "weapon_kind": "flamer",
+  "signature": "Inner Sphere flamer 4 armored troopers",
   "refinement_focus": [
     "helmet",
     "shoulder",
