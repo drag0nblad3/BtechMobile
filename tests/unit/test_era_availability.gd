@@ -18,7 +18,7 @@ func test_era_boundaries_and_factions() -> void:
 	check_eq(EraAvailability.era_id(3151), "ilclan")
 	check_eq(EraAvailability.era_id(2397), "")
 	check_eq(EraAvailability.era_id(3154), "")
-	check(EraAvailability.FACTIONS.size() >= 20, "Houses and Clans listed")
+	check_eq(EraAvailability.FACTIONS.size(), 71, "complete published MUL faction list")
 
 
 func test_intro_year_faction_matrix_and_unknown_are_distinct() -> void:
@@ -82,3 +82,28 @@ func test_starter_templates_follow_historical_policy_without_mutation() -> void:
 	check_eq(fb.rosters[0], old, "failure preserves roster")
 	fb.availability_mode = EraAvailability.Mode.OFF
 	check(StarterFormations.plan(fb, 0, template)["ok"], "off keeps existing starters")
+
+
+func test_faction_lifetimes_enforce_history_without_unit_records() -> void:
+	var available := _sample()
+	check_eq(available.check("atlas_as7d", 3025, "federated_commonwealth")["status"],
+		"unavailable", "Federated Commonwealth does not yet exist in 3025")
+	check_eq(available.check("atlas_as7d", 3152, "comstar")["status"],
+		"unavailable", "ComStar has dissolved by ilClan")
+	check_eq(available.check("atlas_as7d", 3152, "ilclan_wolf")["status"],
+		"unverified", "a historically active faction still needs an exact-variant record")
+	check_eq(available.check("atlas_as7d", 3025, "invented_faction")["status"],
+		"unverified", "unrecognized faction is unknown, not valid")
+
+func test_changing_year_invalidates_assembled_force_without_removing_it() -> void:
+	var fb := ForceBuilder.new(designs(), 12000)
+	fb.availability = _sample()
+	fb.availability_mode = EraAvailability.Mode.STRICT
+	fb.era_year = 3025
+	fb.factions[0] = "federated_suns"
+	check(fb.add(0, "atlas_as7d"))
+	var saved: Array = fb.rosters[0].duplicate()
+	fb.era_year = 2700
+	check(fb.first_restriction_issue().contains("2755"),
+		"an existing unit can become anachronistic with a changed date")
+	check_eq(fb.rosters[0], saved, "changing era never erases units")
