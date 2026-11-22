@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "source": "https://masterunitlist.battletech.com/",
-  "note": "Only verified exact-variant faction-era cells are recorded. Missing data is unverified, not unavailable.",
+  "note": "Only individually verified exact-variant faction/era cells are recorded. Missing data is unverified, not unavailable. Never infer intro years or availability from other variants.",
   "units": {
     "atlas_as7d": {
       "intro_year": 2755,
@@ -34,8 +34,7 @@
           "clan_invasion",
           "civil_war",
           "jihad",
-          "republic",
-          "late_republic"
+          "republic"
         ],
         "free_worlds_league": [
           "sw_early",
@@ -320,41 +319,6 @@
           "ilclan"
         ]
       }
-    },
-    "atlas_as7k": {
-      "intro_year": 3049,
-      "source": "https://masterunitlist.battletech.com/units/atlas-as7-d",
-      "factions": {}
-    },
-    "atlas_c_2": {
-      "intro_year": 2840,
-      "source": "https://masterunitlist.battletech.com/units/atlas-as7-d",
-      "factions": {}
-    },
-    "jenner_jr7k": {
-      "intro_year": 3047,
-      "source": "https://masterunitlist.battletech.com/units/jenner-jr7-d",
-      "factions": {}
-    },
-    "locust_lct3d": {
-      "intro_year": 3049,
-      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
-      "factions": {}
-    },
-    "locust_lct3s": {
-      "intro_year": 3049,
-      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
-      "factions": {}
-    },
-    "timber_wolf_a": {
-      "intro_year": 2945,
-      "source": "https://masterunitlist.battletech.com/units/mad-cat-timber-wolf-prime",
-      "factions": {}
-    },
-    "timber_wolf_b": {
-      "intro_year": 2945,
-      "source": "https://masterunitlist.battletech.com/units/mad-cat-timber-wolf-prime",
-      "factions": {}
     }
   }
 }
