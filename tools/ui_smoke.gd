@@ -25,6 +25,21 @@ func _process(_delta: float) -> bool:
 	_frames += 1
 	if _frames < 3 or _scene.units_layer.is_busy():
 		return false
+	if _frames == 3:
+		if _scene.focus_fx == null or _scene.fx._trails == null:
+			printerr("BATTLE_VISUAL_SMOKE_FAILED: missing selection rings or projectile effects")
+			quit(1)
+			return true
+		if _scene.hud.info_panel == null or _scene.hud.tip_panel == null:
+			printerr("BATTLE_VISUAL_SMOKE_FAILED: missing compact tactical callouts")
+			quit(1)
+			return true
+		BattleShotFx.spawn(_scene.fx._trails, Vector3(0.0, 2.0, 0.0),
+				Vector3(4.0, 2.0, 4.0), "large_laser", true)
+		if _scene.fx._trails.get_child_count() != 1:
+			printerr("BATTLE_VISUAL_SMOKE_FAILED: tracer did not spawn")
+			quit(1)
+			return true
 	var gc: GameController = _scene.controller
 	if gc.state.game_over or gc.state.turn > 4:
 		var intents := gc.history.filter(func(e): return e.type == GameEvent.INTENT).size()

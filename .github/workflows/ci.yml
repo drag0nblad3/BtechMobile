@@ -92,6 +92,20 @@ jobs:
           godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
+      - name: Battle visual preview (single frame, no APK)
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-visual-polish')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/battle-visual-preview
+          timeout --signal=TERM --kill-after=5s 150s xvfb-run -a godot             --rendering-method gl_compatibility --resolution 1280x720             -s tools/capture.gd -- /tmp/battle-visual-preview/battle.png select             2>&1 | tee battle-preview.log
+          test -s /tmp/battle-visual-preview/battle.png
+          ! grep -E "SCRIPT ERROR|Parse Error|SHADER ERROR" battle-preview.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-visual-polish')
+        with:
+          name: battle-visual-preview
+          path: /tmp/battle-visual-preview/battle.png
+          if-no-files-found: error
       - name: Launcher navigation smoke
         run: |
           set -o pipefail
