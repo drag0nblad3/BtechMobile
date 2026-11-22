@@ -98,18 +98,23 @@ func cell_count() -> int:
 
 func _add_part(p: Dictionary) -> void:
 	var spec: Dictionary
+	var inherited_parent := ""
 	if p.has("mirror"):
 		var src := part(p["mirror"])
 		if src.is_empty():
 			errors.append("%s mirrors unknown part %s" % [p["name"], p["mirror"]])
 			return
 		spec = _mirrored(src)
+		# A mirror without an explicit parent follows the corresponding rig,
+		# not the body root. This keeps mirrored knuckles, pod fairings and
+		# cockpit details attached when their parent joint animates.
+		inherited_parent = _mirrored_parent_name(String(src.get("parent", "")))
 	else:
 		spec = {"loc": Location.from_code(p.get("loc", "")), "pivot": _vec(p.get("pivot", [0, 0, 0])),
 				"joint": p.get("joint", ""), "cells": {}}
 		_paint(spec["cells"], p.get("shapes", []))
 	spec["name"] = p["name"]
-	spec["parent"] = p.get("parent", "")
+	spec["parent"] = p.get("parent", inherited_parent)
 	_paint(spec["cells"], p.get("add", []))
 	parts.append(spec)
 
@@ -247,6 +252,20 @@ func _bridge_small_islands(cells: Dictionary, material: int) -> void:
 				main[pos] = true
 		for c: Vector3i in groups[i]:
 			main[c] = true
+
+
+## Map an implicit mirror's rig attachment to its reflected counterpart.
+## Explicit "parent" values in JSON always win.
+func _mirrored_parent_name(source_parent: String) -> String:
+	if source_parent.is_empty():
+		return ""
+	var names := {"la": "ra", "ra": "la", "lt": "rt", "rt": "lt",
+		"ll": "rl", "rl": "ll", "left": "right", "right": "left"}
+	var tokens := source_parent.split("_")
+	for i in tokens.size():
+		if names.has(tokens[i]):
+			tokens[i] = names[tokens[i]]
+	return "_".join(tokens)
 
 
 func _mirrored(src: Dictionary) -> Dictionary:

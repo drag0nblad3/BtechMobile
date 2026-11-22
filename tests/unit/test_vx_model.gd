@@ -144,3 +144,53 @@ func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
 	for c: Vector3i in left:
 		check(right.has(Vector3i(-c.x - 1, c.y, c.z)),
 				"right launcher geometry must mirror the left")
+
+func test_mirrored_details_keep_their_rig_parent() -> void:
+	# Omitted parent on a mirror must not leave its mesh at Body during gait.
+	for case in [
+		["atlas_shape", "ra_finger_knuckles", "ra"],
+		["atlas_shape", "rt_round_shoulder_band", "rt"],
+		["jenner_shape", "hd_right_disc_crescent", "hd"],
+		["jenner_shape", "rt_rear_exhaust", "rt"],
+		["wolverine_shape", "hd_angular_cheek_right", "hd"],
+		["wolverine_shape", "rl_tapered_thigh_cuff", "rl"]
+	]:
+		var m := VxModel.load_file("res://data/voxels/%s.json" % case[0])
+		check_eq(String(m.part(case[1]).get("parent", "")), case[2],
+				"%s %s mirrored rig parent" % [case[0], case[1]])
+
+
+func test_wolverine_has_one_canted_right_cannon_arm() -> void:
+	var d: Dictionary = JsonFile.read("res://data/voxels/wolverine_shape.json")
+	var count := 0
+	var hand := false
+	for p: Dictionary in d["parts"]:
+		if p["name"] == "ra":
+			count = p.get("shapes", []).size()
+		if p["name"] == "ra_integrated_hand":
+			hand = true
+		check(p["name"] != "ra_cannon_mount", "duplicate full-length cannon arm returned")
+	check_eq(count, 2, "right arm keeps upper and bent forearm profiles")
+	check(hand, "integrated cannon-hand assembly retained")
+	check(d["muzzles"].has("RA"), "right autocannon muzzle retained")
+
+
+func test_jenner_forward_disc_is_rounded_not_pointed() -> void:
+	var d: Dictionary = JsonFile.read("res://data/voxels/jenner_shape.json")
+	var head: Dictionary = {}
+	for p: Dictionary in d["parts"]:
+		if p["name"] == "hd":
+			head = p
+	var stations: Array = head["shapes"][0]["loft"]["sections"]
+	var front: Array = stations[0]["polygon"]
+	var widest: Array = stations[2]["polygon"]
+	var front_x := []
+	var wide_x := []
+	for p: Array in front:
+		front_x.append(float(p[0]))
+	for p: Array in widest:
+		wide_x.append(float(p[0]))
+	check(front_x.max() - front_x.min() >= 10.0, "disc nose shouldn't collapse to a point")
+	check_eq(wide_x.max() - wide_x.min(), 20.0, "Jenner's signature disc span retained")
+	check_eq(stations[0]["at"], -36, "forward nose landmark retained")
+	check_eq(stations[2]["at"], -31, "widest disc landmark retained")
