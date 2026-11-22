@@ -41,27 +41,28 @@ static func load_file(path: String) -> VxModel:
 
 
 static func from_dict(d: Dictionary) -> VxModel:
+	var recipe: Dictionary = VxArtQuality.apply(d)
 	var m := VxModel.new()
-	m.id = d.get("id", "")
-	m.name = d.get("name", m.id)
-	m.voxel_size = float(d.get("voxel_size", 0.05))
-	for mat: Dictionary in d.get("materials", []):
+	m.id = recipe.get("id", "")
+	m.name = recipe.get("name", m.id)
+	m.voxel_size = float(recipe.get("voxel_size", 0.05))
+	for mat: Dictionary in recipe.get("materials", []):
 		m._mat[mat["name"]] = m.colors.size()
 		m.colors.append(Color(mat["color"]))
 		m.roles.append(mat.get("role", "armor"))
-	for p: Dictionary in d.get("parts", []):
+	for p: Dictionary in recipe.get("parts", []):
 		m._add_part(p)
-	m.muzzles = _points(d.get("muzzles", {}))
-	m.jets = _points(d.get("jets", {}))
-	VxRefine.apply(m, int(d.get("subdivide", 1)), d)
-	for p: Dictionary in d.get("parts", []):
+	m.muzzles = _points(recipe.get("muzzles", {}))
+	m.jets = _points(recipe.get("jets", {}))
+	VxRefine.apply(m, int(recipe.get("subdivide", 1)), d)
+	for p: Dictionary in recipe.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
-	if bool(d.get("exclusive_parts", false)):
+	if bool(recipe.get("exclusive_parts", false)):
 		m._claim_exclusive_cells()
-	m.unit_id = d.get("unit", "")
-	m.legs = d.get("legs", "plantigrade")
-	m.can_punch = d.get("punch", true)
-	for w: Dictionary in d.get("weapons", []):
+	m.unit_id = recipe.get("unit", "")
+	m.legs = recipe.get("legs", "plantigrade")
+	m.can_punch = recipe.get("punch", true)
+	for w: Dictionary in recipe.get("weapons", []):
 		var locs: Array[int] = []
 		for code: String in w.get("locs", []):
 			locs.append(Location.from_code(code))
