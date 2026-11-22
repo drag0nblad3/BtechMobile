@@ -1,0 +1,1490 @@
+[
+  {
+    "model": "raven",
+    "part_count": 14,
+    "before_count": 5158,
+    "after_count": 5320,
+    "edited_vertices": 101,
+    "modules": [
+      [
+        "ct",
+        1
+      ],
+      [
+        "la",
+        2
+      ],
+      [
+        "ra",
+        3
+      ]
+    ],
+    "repairs": [
+      [
+        "ct",
+        "remove stray island",
+        1
+      ]
+    ],
+    "overlap_clips": [
+      [
+        "rt",
+        6
+      ]
+    ],
+    "parent_repairs": [],
+    "base_warnings": 0,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 2096,
+        "island_sizes": [
+          2096
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 477,
+        "island_sizes": [
+          477
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 33
+      },
+      {
+        "name": "lt",
+        "cells": 360,
+        "island_sizes": [
+          360
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 29
+      },
+      {
+        "name": "rt",
+        "cells": 452,
+        "island_sizes": [
+          452
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 100
+      },
+      {
+        "name": "la",
+        "cells": 382,
+        "island_sizes": [
+          382
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 47
+      },
+      {
+        "name": "ra",
+        "cells": 325,
+        "island_sizes": [
+          325
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 94
+      },
+      {
+        "name": "ll",
+        "cells": 247,
+        "island_sizes": [
+          247
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 124,
+        "island_sizes": [
+          124
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 18
+      },
+      {
+        "name": "ll_tarsus",
+        "cells": 36,
+        "island_sizes": [
+          36
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 9
+      },
+      {
+        "name": "ll_foot",
+        "cells": 207,
+        "island_sizes": [
+          207
+        ],
+        "components": 1,
+        "parent": "ll_tarsus",
+        "parent_touch": 12
+      },
+      {
+        "name": "rl",
+        "cells": 247,
+        "island_sizes": [
+          247
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 124,
+        "island_sizes": [
+          124
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 18
+      },
+      {
+        "name": "rl_tarsus",
+        "cells": 36,
+        "island_sizes": [
+          36
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 9
+      },
+      {
+        "name": "rl_foot",
+        "cells": 207,
+        "island_sizes": [
+          207
+        ],
+        "components": 1,
+        "parent": "rl_tarsus",
+        "parent_touch": 12
+      }
+    ]
+  },
+  {
+    "model": "shadow_cat",
+    "part_count": 14,
+    "before_count": 5304,
+    "after_count": 5796,
+    "edited_vertices": 97,
+    "modules": [
+      [
+        "lt",
+        1
+      ],
+      [
+        "la",
+        2
+      ],
+      [
+        "ra",
+        3
+      ]
+    ],
+    "repairs": [
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ]
+    ],
+    "overlap_clips": [
+      [
+        "ct",
+        133
+      ]
+    ],
+    "parent_repairs": [],
+    "base_warnings": 0,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 2365,
+        "island_sizes": [
+          2365
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 451,
+        "island_sizes": [
+          451
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 53
+      },
+      {
+        "name": "lt",
+        "cells": 490,
+        "island_sizes": [
+          490
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 102
+      },
+      {
+        "name": "rt",
+        "cells": 490,
+        "island_sizes": [
+          490
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 106
+      },
+      {
+        "name": "la",
+        "cells": 430,
+        "island_sizes": [
+          430
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 25
+      },
+      {
+        "name": "ra",
+        "cells": 568,
+        "island_sizes": [
+          568
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 25
+      },
+      {
+        "name": "ll",
+        "cells": 204,
+        "island_sizes": [
+          204
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 99,
+        "island_sizes": [
+          99
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 17
+      },
+      {
+        "name": "ll_tarsus",
+        "cells": 24,
+        "island_sizes": [
+          24
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 4
+      },
+      {
+        "name": "ll_foot",
+        "cells": 174,
+        "island_sizes": [
+          174
+        ],
+        "components": 1,
+        "parent": "ll_tarsus",
+        "parent_touch": 12
+      },
+      {
+        "name": "rl",
+        "cells": 204,
+        "island_sizes": [
+          204
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 99,
+        "island_sizes": [
+          99
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 17
+      },
+      {
+        "name": "rl_tarsus",
+        "cells": 24,
+        "island_sizes": [
+          24
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 4
+      },
+      {
+        "name": "rl_foot",
+        "cells": 174,
+        "island_sizes": [
+          174
+        ],
+        "components": 1,
+        "parent": "rl_tarsus",
+        "parent_touch": 12
+      }
+    ]
+  },
+  {
+    "model": "flea",
+    "part_count": 14,
+    "before_count": 5005,
+    "after_count": 3997,
+    "edited_vertices": 132,
+    "modules": [
+      [
+        "ct",
+        1
+      ],
+      [
+        "la",
+        1
+      ]
+    ],
+    "repairs": [
+      [
+        "hd",
+        "remove stray island",
+        4
+      ],
+      [
+        "lt",
+        "bridge island",
+        18,
+        2
+      ]
+    ],
+    "overlap_clips": [],
+    "parent_repairs": [],
+    "base_warnings": 0,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 1301,
+        "island_sizes": [
+          1301
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 258,
+        "island_sizes": [
+          258
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 24
+      },
+      {
+        "name": "lt",
+        "cells": 190,
+        "island_sizes": [
+          190
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 6
+      },
+      {
+        "name": "rt",
+        "cells": 190,
+        "island_sizes": [
+          190
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 24
+      },
+      {
+        "name": "la",
+        "cells": 168,
+        "island_sizes": [
+          168
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 8
+      },
+      {
+        "name": "ra",
+        "cells": 168,
+        "island_sizes": [
+          168
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 8
+      },
+      {
+        "name": "ll",
+        "cells": 313,
+        "island_sizes": [
+          313
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 223,
+        "island_sizes": [
+          223
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 21
+      },
+      {
+        "name": "ll_tarsus",
+        "cells": 32,
+        "island_sizes": [
+          32
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 6
+      },
+      {
+        "name": "ll_foot",
+        "cells": 293,
+        "island_sizes": [
+          293
+        ],
+        "components": 1,
+        "parent": "ll_tarsus",
+        "parent_touch": 16
+      },
+      {
+        "name": "rl",
+        "cells": 313,
+        "island_sizes": [
+          313
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 223,
+        "island_sizes": [
+          223
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 21
+      },
+      {
+        "name": "rl_tarsus",
+        "cells": 32,
+        "island_sizes": [
+          32
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 6
+      },
+      {
+        "name": "rl_foot",
+        "cells": 293,
+        "island_sizes": [
+          293
+        ],
+        "components": 1,
+        "parent": "rl_tarsus",
+        "parent_touch": 16
+      }
+    ]
+  },
+  {
+    "model": "jagermech",
+    "part_count": 12,
+    "before_count": 5288,
+    "after_count": 4808,
+    "edited_vertices": 101,
+    "modules": [
+      [
+        "la",
+        5
+      ]
+    ],
+    "repairs": [],
+    "overlap_clips": [],
+    "parent_repairs": [],
+    "base_warnings": 0,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 1007,
+        "island_sizes": [
+          1007
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 118,
+        "island_sizes": [
+          118
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 18
+      },
+      {
+        "name": "lt",
+        "cells": 419,
+        "island_sizes": [
+          419
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 10
+      },
+      {
+        "name": "rt",
+        "cells": 419,
+        "island_sizes": [
+          419
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 10
+      },
+      {
+        "name": "la",
+        "cells": 754,
+        "island_sizes": [
+          754
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 14
+      },
+      {
+        "name": "ra",
+        "cells": 789,
+        "island_sizes": [
+          789
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 14
+      },
+      {
+        "name": "ll",
+        "cells": 281,
+        "island_sizes": [
+          281
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 203,
+        "island_sizes": [
+          203
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 17
+      },
+      {
+        "name": "ll_foot",
+        "cells": 167,
+        "island_sizes": [
+          167
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 18
+      },
+      {
+        "name": "rl",
+        "cells": 281,
+        "island_sizes": [
+          281
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 203,
+        "island_sizes": [
+          203
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 17
+      },
+      {
+        "name": "rl_foot",
+        "cells": 167,
+        "island_sizes": [
+          167
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 18
+      }
+    ]
+  },
+  {
+    "model": "king_crab",
+    "part_count": 12,
+    "before_count": 8973,
+    "after_count": 9765,
+    "edited_vertices": 112,
+    "modules": [
+      [
+        "la",
+        3
+      ]
+    ],
+    "repairs": [
+      [
+        "ct",
+        "remove stray island",
+        3
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        4
+      ],
+      [
+        "ct",
+        "remove stray island",
+        4
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ]
+    ],
+    "overlap_clips": [
+      [
+        "ct",
+        266
+      ],
+      [
+        "lt",
+        3
+      ],
+      [
+        "rt",
+        3
+      ]
+    ],
+    "parent_repairs": [],
+    "base_warnings": 1,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 2808,
+        "island_sizes": [
+          2808
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 125,
+        "island_sizes": [
+          125
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 58
+      },
+      {
+        "name": "lt",
+        "cells": 1070,
+        "island_sizes": [
+          1070
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 199
+      },
+      {
+        "name": "rt",
+        "cells": 1070,
+        "island_sizes": [
+          1070
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 212
+      },
+      {
+        "name": "la",
+        "cells": 1360,
+        "island_sizes": [
+          1360
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 32
+      },
+      {
+        "name": "ra",
+        "cells": 1360,
+        "island_sizes": [
+          1360
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 32
+      },
+      {
+        "name": "ll",
+        "cells": 347,
+        "island_sizes": [
+          347
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 311,
+        "island_sizes": [
+          311
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 32
+      },
+      {
+        "name": "ll_foot",
+        "cells": 328,
+        "island_sizes": [
+          328
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 37
+      },
+      {
+        "name": "rl",
+        "cells": 347,
+        "island_sizes": [
+          347
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 311,
+        "island_sizes": [
+          311
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 32
+      },
+      {
+        "name": "rl_foot",
+        "cells": 328,
+        "island_sizes": [
+          328
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 37
+      }
+    ]
+  },
+  {
+    "model": "rifleman",
+    "part_count": 12,
+    "before_count": 6603,
+    "after_count": 5964,
+    "edited_vertices": 116,
+    "modules": [
+      [
+        "la",
+        5
+      ]
+    ],
+    "repairs": [
+      [
+        "ct",
+        "bridge island",
+        18,
+        2
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ],
+      [
+        "ct",
+        "remove stray island",
+        1
+      ]
+    ],
+    "overlap_clips": [],
+    "parent_repairs": [],
+    "base_warnings": 0,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 983,
+        "island_sizes": [
+          983
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 129,
+        "island_sizes": [
+          129
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 31
+      },
+      {
+        "name": "lt",
+        "cells": 552,
+        "island_sizes": [
+          552
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 28
+      },
+      {
+        "name": "rt",
+        "cells": 552,
+        "island_sizes": [
+          552
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 34
+      },
+      {
+        "name": "la",
+        "cells": 1032,
+        "island_sizes": [
+          1032
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 15
+      },
+      {
+        "name": "ra",
+        "cells": 1032,
+        "island_sizes": [
+          1032
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 15
+      },
+      {
+        "name": "ll",
+        "cells": 260,
+        "island_sizes": [
+          260
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 338,
+        "island_sizes": [
+          338
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 28
+      },
+      {
+        "name": "ll_foot",
+        "cells": 244,
+        "island_sizes": [
+          244
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 36
+      },
+      {
+        "name": "rl",
+        "cells": 260,
+        "island_sizes": [
+          260
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 338,
+        "island_sizes": [
+          338
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 28
+      },
+      {
+        "name": "rl_foot",
+        "cells": 244,
+        "island_sizes": [
+          244
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 36
+      }
+    ]
+  },
+  {
+    "model": "hunchback_iic",
+    "part_count": 12,
+    "before_count": 7522,
+    "after_count": 7206,
+    "edited_vertices": 100,
+    "modules": [
+      [
+        "lt",
+        2
+      ]
+    ],
+    "repairs": [
+      [
+        "ct",
+        "remove stray island",
+        3
+      ]
+    ],
+    "overlap_clips": [
+      [
+        "ct",
+        31
+      ],
+      [
+        "lt",
+        2
+      ],
+      [
+        "rt",
+        2
+      ]
+    ],
+    "parent_repairs": [],
+    "base_warnings": 0,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 1812,
+        "island_sizes": [
+          1812
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 489,
+        "island_sizes": [
+          489
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 79
+      },
+      {
+        "name": "lt",
+        "cells": 1225,
+        "island_sizes": [
+          1225
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 69
+      },
+      {
+        "name": "rt",
+        "cells": 1336,
+        "island_sizes": [
+          1336
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 92
+      },
+      {
+        "name": "la",
+        "cells": 657,
+        "island_sizes": [
+          657
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 27
+      },
+      {
+        "name": "ra",
+        "cells": 645,
+        "island_sizes": [
+          645
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 44
+      },
+      {
+        "name": "ll",
+        "cells": 178,
+        "island_sizes": [
+          178
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 172,
+        "island_sizes": [
+          172
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 14
+      },
+      {
+        "name": "ll_foot",
+        "cells": 171,
+        "island_sizes": [
+          171
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 18
+      },
+      {
+        "name": "rl",
+        "cells": 178,
+        "island_sizes": [
+          178
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 172,
+        "island_sizes": [
+          172
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 14
+      },
+      {
+        "name": "rl_foot",
+        "cells": 171,
+        "island_sizes": [
+          171
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 18
+      }
+    ]
+  },
+  {
+    "model": "locust",
+    "part_count": 12,
+    "before_count": 6469,
+    "after_count": 5639,
+    "edited_vertices": 128,
+    "modules": [
+      [
+        "ct",
+        1
+      ],
+      [
+        "la",
+        1
+      ]
+    ],
+    "repairs": [],
+    "overlap_clips": [],
+    "parent_repairs": [
+      [
+        "rt",
+        "ct",
+        1
+      ]
+    ],
+    "base_warnings": 1,
+    "after_warnings": 0,
+    "after_overlaps": 0,
+    "after_issues": [],
+    "newly_disconnected": [],
+    "parts": [
+      {
+        "name": "ct",
+        "cells": 1591,
+        "island_sizes": [
+          1591
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "hd",
+        "cells": 273,
+        "island_sizes": [
+          273
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 30
+      },
+      {
+        "name": "lt",
+        "cells": 609,
+        "island_sizes": [
+          609
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 14
+      },
+      {
+        "name": "rt",
+        "cells": 610,
+        "island_sizes": [
+          610
+        ],
+        "components": 1,
+        "parent": "ct",
+        "parent_touch": 1
+      },
+      {
+        "name": "la",
+        "cells": 214,
+        "island_sizes": [
+          214
+        ],
+        "components": 1,
+        "parent": "lt",
+        "parent_touch": 21
+      },
+      {
+        "name": "ra",
+        "cells": 214,
+        "island_sizes": [
+          214
+        ],
+        "components": 1,
+        "parent": "rt",
+        "parent_touch": 21
+      },
+      {
+        "name": "ll",
+        "cells": 334,
+        "island_sizes": [
+          334
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "ll_shin",
+        "cells": 484,
+        "island_sizes": [
+          484
+        ],
+        "components": 1,
+        "parent": "ll",
+        "parent_touch": 50
+      },
+      {
+        "name": "ll_foot",
+        "cells": 246,
+        "island_sizes": [
+          246
+        ],
+        "components": 1,
+        "parent": "ll_shin",
+        "parent_touch": 16
+      },
+      {
+        "name": "rl",
+        "cells": 334,
+        "island_sizes": [
+          334
+        ],
+        "components": 1,
+        "parent": "",
+        "parent_touch": -1
+      },
+      {
+        "name": "rl_shin",
+        "cells": 484,
+        "island_sizes": [
+          484
+        ],
+        "components": 1,
+        "parent": "rl",
+        "parent_touch": 50
+      },
+      {
+        "name": "rl_foot",
+        "cells": 246,
+        "island_sizes": [
+          246
+        ],
+        "components": 1,
+        "parent": "rl_shin",
+        "parent_touch": 16
+      }
+    ]
+  }
+]

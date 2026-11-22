@@ -1,49 +1,39 @@
-# Reference-driven major resculpt and per-part connectivity gates
+# Reference-focused resculpt and part-by-part connectivity — eight priority chassis
 
-This audit is specifically **not** an assertion that the entire mesh is connected.
-It rasterizes each authored coarse part and checks:
-1. 6-face-connected islands **within** the part, with island size in cells.
-2. Face-connected or shared-voxel contact with the named parent part.
-3. Empty parts, missing parent nodes, and loader errors.
-4. Chassis-specific silhouette/weapon placement regression checks separately.
+**Scope:** Raven, Shadow Cat, Flea, JagerMech, King Crab, Rifleman, Hunchback IIC, and Locust. Three nontrivial macro-cycles per chassis (primary volume and head/body proportion; loadout-specific weapons and silhouette detail; part-by-part connectivity, collision removal, and hinge/contact repairs). This is the first intentionally hand-targeted reference-resculpt batch following two automated fifty-pass contour rounds.
 
-Run `godot --headless --path . --script res://tools/audit_voxel_parts.gd`.
-The complete JSON report is written to `user://voxel_part_connectivity_report.json`;
-`VOXEL_PART_AUDIT_SUMMARY` and per-model warning lines appear in CI logs.
+**Reference selection:** Give highest priority to recent Catalyst Game Labs plastic miniatures and production sculpt photographs. The [Catalyst miniature index](https://www.sarna.net/wiki/Miniatures_-_Catalyst_Game_Labs) identifies relevant force packs. Reference examples used in this pass include the [Shadow Cat Clan Command Star miniature](https://www.rpgminihunter.com.au/products/shadow-cat-battletech-clan-command-star-catalyst-game-lab), [King Crab ComStar Command miniature](https://www.rpgminihunter.com.au/products/king-crab-battletech-comstar-command-lvl-ii-set-catalyst-game-lab), and [Hunchback IIC plastic miniature](https://www.wargamesemporium.co.uk/products/battletech-hunchback-iic-single-mech). A [Raven Urban Lance](https://www.sarna.net/wiki/BattleTech:_Inner_Sphere_Urban_Lance) reference guided the avian hull. Side/rear views are supplemented by source miniatures and the in-game weapon layout; the models have *not* yet received final per-angle artist sign-off.
 
-The catalog contains legacy disjoint decorative pieces and author-authored erasures;
-**warnings are not silently repaired or mislabeled as acceptable**. The strict
-six-face rule is intentional: corner contact does not make a structural joint.
-Detailed models should also be checked after refinement because beveling and
-exclusive cell ownership can sever coarse connections. Vehicles and infantry
-retain their 50,000-final-voxel runtime cap.
+## Distinctive resculpt changes
 
-Use current Catalyst plastic miniatures from multiple angles as the leading
-visual reference; line art is secondary. Do not add duplicate hidden arms,
-enlarge hulls indiscriminately, or replace distinct cockpit silhouettes with a
-unified family template.
+| Chassis | Main silhouette change | Weapons / recognition | Specific structural safeguard |
+|---|---|---|---|
+| Raven | Longer, narrower avian nose, widened rear equipment body and slender lower legs | Rear EW sensor mast; NARC pod differentiated from twin laser barrels | Clip right shoulder-to-arm overlap; retain all hip/knee/hock parent contacts |
+| Shadow Cat | Broader vented upper core and narrow forward pod with distinctly lean arms | Large **right** Gauss barrel and left dual medium-laser ports | Carve torso/shoulder colliding cells; ensure weapon and radiator mounts remain attached |
+| Flea | Smaller, narrower body, lightweight arms, thin lower legs and short cockpit | Tiny gun and compact exhaust/engine, not a swollen torso | Reconnect head and left shoulder fragments |
+| JagerMech | Narrower center torso, reduced forearm housings, longer side-facing weapon profile | Twin separate AC barrels on each arm rather than slabs | Verify long barrels are joined to the arm within each part |
+| King Crab | Broad, flatter carapace above slimmer legs, with stronger lateral pincer mass | Two distinct talons at the front of each claw | Carve shared CT/shoulder/arm cells and repair/reject stray carapace islands |
+| Rifleman | Slimmer upright cockpit and torso with gun arms distinct from the main chassis | Paired independently drilled long cannon tubes on both sides | Retain independent weapon bores and arm/shoulder contacts |
+| Hunchback IIC | Narrow core and squat central cockpit below widened upper shoulders | Twin large shoulder weapon housings and their mounting braces | Trim penetrating torso/shoulder/arm cells without severing attachments |
+| Locust | Tiny ovoid torso with narrow reverse-jointed limbs and elongated nose | Front-mounted light gun barrel and aft engine assembly | One explicit right-shoulder-to-CT joint bridge; remove old disconnected engine geometry |
 
+## Validation methodology
 
-## Reference surgery and first whole-catalog audit (2026-11-22)
+The offline authoring script `reference_resculpt_cycles.py` (included in the downloadable audit bundle) projects each source shape onto the **same integer coarse voxel grid** used by `VxModel._paint` (including loft interpolation, boxes, erase masks, mirrored parts, and ordered additive detail). For every resulting part it performs a six-neighbor flood fill and requires one connected island. It separately verifies the named parent part shares a cell **or face adjacency**, and checks all owned cells across parts are disjoint. It trims collisions from parent armor rather than hiding parts inside each other, then reruns the same checks until stable. Changes are mirrored into coarse and detailed model manifests without altering location assignments, pivots, or baseline muzzle target coordinates.
 
-References consulted include the current Catalyst/ForcePack plastic silhouettes
-for Raven, King Crab, Locust, Rifleman and Hunchback, plus Shadow Cat and
-quadruped documentation. The sculpting emphasis is a recognisable cockpit,
-distinct weapon housings and correct plan/side depth, **not** a generic taper.
-Nonuniform contour operations were applied to both low and detailed source
-models on seven chassis: Raven, Shadow Cat, King Crab, Locust, Rifleman,
-Hunchback IIC and Goliath. A proposed Scorpion hull edit was rejected because
-it created detached or overlapping pieces.
+A separate Godot regression test (`tests/unit/test_vx_reference_resculpt_connectivity.gd`) loads **both** LOD recipes at coarse grid resolution and independently verifies every part's connectivity, parent contact, and exclusive voxel ownership. That Godot test is authoritative; local Python checks alone do not prove final 3× voxelization or game animation correctness.
 
-On the offline 146-chassis shape-study set, the pre-repair geometry had
-1,838 named parts, 32 detached intra-part islands and 2 parent gaps. The
-component-specific repair added minimal supports or removed stray cells,
-rather than dilating whole arms/hulls. The combined offline audit then reported
-zero loose islands, zero parent gaps, zero empty parts and zero overlapping
-cells **at coarse resolution only**. This is not an engine-level approval.
+## Local offline results
 
-The companion Godot workflow writes an artifact with one JSON record per part
-and checks the full Godot catalog, including the five high-fidelity standalone
-shape sculpts. It may expose further differences, particularly under refined
-voxel ownership and beveling. Keep any failures visible and repair them in the
-source; do not weaken the assertions to turn CI green.
+| Model | Part count | Before coarse cells | After coarse cells | Final disconnected parts | Final overlapping cells | Final missing parent contacts |
+|---|---:|---:|---:|---:|---:|---:|
+| Raven | 14 | 5,158 | 5,320 | 0 | 0 | 0 |
+| Shadow Cat | 14 | 5,304 | 5,796 | 0 | 0 | 0 |
+| Flea | 14 | 5,005 | 3,997 | 0 | 0 | 0 |
+| Jagermech | 12 | 5,288 | 4,808 | 0 | 0 | 0 |
+| King Crab | 12 | 8,973 | 9,765 | 0 | 0 | 0 |
+| Rifleman | 12 | 6,603 | 5,964 | 0 | 0 | 0 |
+| Hunchback Iic | 12 | 7,522 | 7,206 | 0 | 0 | 0 |
+| Locust | 12 | 6,469 | 5,639 | 0 | 0 | 0 |
+
+**Limitations:** All local *coarse* grid checks above pass. This does not imply the entire mech catalog is now fixed; earlier merged work had extensive Godot test failures, and newly resculpted models require engine-level tests, firing-angle checks, multi-angle mini/photo comparison, rig animation review, and final art approval. No APK requested or built. Review branch remains unmerged.
