@@ -85,6 +85,23 @@ jobs:
         with:
           name: voxel-counts
           path: voxel-counts.log
+      - name: Capture weather conditions at 1280x720
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-weather')
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/weather-captures
+          for condition in night rain snow fog heat cold wind; do
+            timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+              -s tools/capture.gd -- "/tmp/weather-captures/$condition.png" "weather=$condition" 2>&1 | tee -a weather-capture.log
+            test -s "/tmp/weather-captures/$condition.png"
+          done
+          ! grep -E "SCRIPT ERROR|Parse Error" weather-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-weather')
+        with:
+          name: battle-weather-1280x720
+          path: /tmp/weather-captures/*.png
+          if-no-files-found: error
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail
