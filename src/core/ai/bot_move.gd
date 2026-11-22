@@ -91,7 +91,7 @@ static func _score(state: GameState, u: Unit, mode: int, k: Vector3i, opts: Move
 	score += obj[0]
 	var tile := state.map.get_tile(u.coord)
 	var where := "stays at %s" % Hex.label(u.coord) if not moved else "%s to %s" % [
-			MoveMode.name_of(mode).to_lower() + "s", Hex.label(u.coord)]
+			(AssetMove.mode_name(u, mode) if u.vehicle != null else MoveMode.name_of(mode)).to_lower() + "s", Hex.label(u.coord)]
 	var reason := "%s: can deal about %.1f next phase, risks %.1f" % [where, dealt, taken]
 	if not charge.is_empty():
 		reason = "%s and %s" % [where, charge["reason"]]

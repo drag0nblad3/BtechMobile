@@ -56,3 +56,13 @@ func test_vehicle_sheet_text() -> void:
 	check(t.contains("cruise") and t.contains("TU  armor"), "MP and turret line")
 	check(t.contains("turret locked"), "damage listed")
 	check(not t.contains("Heat "), "no heat scale")
+
+
+func test_vehicles_cruise_and_flank() -> void:
+	var tank := vehicle("manticore_heavy_tank", 0, hex_at(0, 0))
+	check_eq(AssetMove.mode_name(tank, MoveMode.Kind.WALK), "Cruise")
+	check_eq(AssetMove.mode_name(tank, MoveMode.Kind.RUN), "Flank")
+	check_eq(MoveMode.verb_for(tank, MoveMode.Kind.RUN), "flanked")
+	var mech := mech("griffin_grf1n", 1, hex_at(2, 0))
+	check_eq(AssetMove.mode_name(mech, MoveMode.Kind.RUN), "Run")
+	check_eq(MoveMode.verb_for(mech, MoveMode.Kind.RUN), "ran")
