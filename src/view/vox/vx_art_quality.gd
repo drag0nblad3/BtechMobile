@@ -115,6 +115,37 @@ static func apply(raw: Dictionary) -> Dictionary:
 					if pz > cz and fz < 1.0:
 						point[1] = snappedf(cz + (pz - cz) * fz, 0.01)
 
+	# Distinct cannon silhouette: replace unusually broad rectangular gun
+	# prisms with tapered front-to-breech geometry. Never touch cutout ports.
+	for part: Dictionary in d["parts"]:
+		if part.has("mirror"):
+			continue
+		for shape: Dictionary in part.get("shapes", []):
+			if shape.get("mat", "") != "gun" or not shape.has("box"):
+				continue
+			var a: Array = shape["box"][0]
+			var b: Array = shape["box"][1]
+			var w: float = float(b[0]) - float(a[0]) + 1.0
+			var h: float = float(b[1]) - float(a[1]) + 1.0
+			var len_z: float = float(b[2]) - float(a[2]) + 1.0
+			if w < 4.0 or h < 2.0 or len_z < 9.0:
+				continue
+			var fx0: float = float(a[0]) + 0.8
+			var fx1: float = float(b[0]) + 0.2
+			var fy0: float = float(a[1]) + 0.2
+			var fy1: float = float(b[1]) + 0.8
+			var front: Array = [[fx0,fy0],[fx1,fy0],[fx1,fy1],[fx0,fy1]]
+			var full: Array = [[float(a[0]),float(a[1])],
+				[float(b[0])+1.0,float(a[1])],
+				[float(b[0])+1.0,float(b[1])+1.0],
+				[float(a[0]),float(b[1])+1.0]]
+			var z_mid: int = int((int(a[2]) + int(b[2])) / 2)
+			shape.erase("box")
+			shape["loft"] = {"axis":"z","sections":[
+				{"at":int(a[2]),"polygon":front},
+				{"at":z_mid,"polygon":full},
+				{"at":int(b[2]),"polygon":full}]}
+
 	# A previously colliding weapon mount is never allowed to share voxels with
 	# a moving shoulder or torso. This is performed by VxModel after painting.
 	d["exclusive_parts"] = true
