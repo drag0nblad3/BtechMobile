@@ -940,6 +940,21 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -12,
+              21,
+              1
+            ],
+            [
+              -10,
+              25,
+              4
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1459,7 +1474,7 @@
             [
               -10,
               23,
-              2
+              0
             ]
           ],
           "mat": "frame"
@@ -1515,7 +1530,7 @@
             [
               11,
               23,
-              2
+              0
             ]
           ],
           "mat": "frame"
@@ -1616,5 +1631,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (swept_wings), 25 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods."
+  "notes": "Individual reference-oriented shape study (swept_wings), 25 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods.\nDetached voxel group forensic repair: removed only the exact unsupported four-cell rim fragments / rear accessory dots; Eagle forearm breech was relocated forward to leave room for a solid rear elbow spar."
 }

@@ -230,6 +230,34 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -4,
+              34,
+              -2
+            ],
+            [
+              -4,
+              34,
+              1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              3,
+              34,
+              -2
+            ],
+            [
+              3,
+              34,
+              1
+            ]
+          ]
         }
       ]
     },
@@ -1700,5 +1728,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (samurai_visor), 40 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame."
+  "notes": "Individual reference-oriented shape study (samurai_visor), 40 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nProportion/connectivity pass: independently shaped supported elbow collars replace unsupported exposed cuff detail; unconnected outer head/rear armor extensions removed or remade as contiguous frame.\nDetached voxel group forensic repair: removed only the exact unsupported four-cell rim fragments / rear accessory dots; Eagle forearm breech was relocated forward to leave room for a solid rear elbow spar."
 }
