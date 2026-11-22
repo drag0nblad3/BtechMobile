@@ -63,7 +63,7 @@ func _ready() -> void:
 		bots.lessons = lessons
 	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
-	add_child(BattleEnvironment.build())
+	add_child(BattleEnvironment.build(state.conditions))
 	_build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
@@ -151,6 +151,7 @@ func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
 	map_view.build(state.map)
+	map_view.set_conditions(state.conditions)
 	objectives = ObjectiveMarkers.build(state)
 	add_child(objectives)
 	units_layer = UnitsLayer.new()
@@ -170,6 +171,9 @@ func _build_views(state: GameState) -> void:
 	var bounds := HexLayout.map_bounds(state.map)
 	rig.bounds = bounds
 	rig.snap(bounds.get_center(), 22.0)
+	var weather := get_node_or_null("Environment/BattleWeather") as BattleWeather
+	if weather != null:
+		weather.setup(state.conditions, rig.camera, units_layer)
 	cinematic = CinematicDirector.new()
 	add_child(cinematic)
 	cinematic.setup(rig, units_layer)

@@ -29,6 +29,25 @@ func _initialize() -> void:
 				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
 		BattleLaunch.bot_sides = []
 	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode in ["vfx", "jump"]:  # two lances on that map
+	if _mode.begins_with("weather="):
+		var preset := _mode.substr(8)
+		var cfg := {}
+		match preset:
+			"night": cfg = {"night": true}
+			"rain": cfg = {"rain": true, "wind": true}
+			"snow": cfg = {"snowfall": true, "wind": true}
+			"fog": cfg = {"low_visibility": true}
+			"heat": cfg = {"heat": 3}
+			"cold": cfg = {"cold": 3}
+			"wind": cfg = {"wind": true, "rain": true}
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 8000)
+		for side in 2:
+			fb.add(side, "hunchback_hbk4g")
+			fb.add(side, "warhammer_whm6r")
+		fb.conditions = Conditions.from_dict(cfg)
+		BattleLaunch.pending = fb.build(MapLoader.load_file(
+				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
+		BattleLaunch.bot_sides = []
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
 			fb.add(0, id)
@@ -74,7 +93,7 @@ func _process(_delta: float) -> bool:
 		_scene._toggle_sheet()
 	if _frames == 8 and _mode == "audio":
 		_scene.hud.pause_menu.visible = true  # capture UI without pausing SceneTree
-	if _frames == 8 and _mode in ["vfx", "jump"]:
+	if _frames == 8 and (_mode in ["vfx", "jump"] or _mode.begins_with("weather=")):
 		_stage_battle_visuals()
 	if _frames == 12 and _mode == "jump":
 		# The CI Compatibility renderer can take hundreds of milliseconds
