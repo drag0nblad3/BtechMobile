@@ -20,6 +20,7 @@ var muzzles: Dictionary = {}  ## Location -> Array[Vector3] (grid coords)
 var jets: Dictionary = {}     ## Location -> Array[Vector3], jump jet nozzles
 var weapons: Array[Dictionary] = []  ## {label, locs: Array[int], kind: laser|cannon|missile}
 var errors: PackedStringArray = []
+var quality_report: Dictionary = {}  ## Post-raster topology audit
 var _mat: Dictionary = {}  ## material name -> index
 
 
@@ -29,11 +30,7 @@ static func load_file(path: String) -> VxModel:
 	if d is Dictionary and d.has("source"):
 		var base: Variant = JsonFile.read(str(d["source"]))
 		if base is Dictionary:
-			var resolved: Dictionary = base.duplicate(true)
-			for key in d:
-				if key != "source":
-					resolved[key] = d[key]
-			d = resolved
+			d = VxVariant.resolve(base, d)
 		else:
 			push_error("Voxel source not found: %s" % d["source"])
 			return from_dict({})
@@ -56,17 +53,12 @@ static func from_dict(d: Dictionary) -> VxModel:
 	m.jets = _points(recipe.get("jets", {}))
 	if bool(recipe.get("exclusive_parts", false)):
 		m._claim_exclusive_cells() # settle coarse moving-part ownership before connecting joints
-		if not bool(recipe.get("voxelize_lofts", false)):
-			VxConnectivity.repair(m)
 	VxRefine.apply(m, int(recipe.get("subdivide", 1)), recipe)
 	for p: Dictionary in recipe.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
 	if bool(recipe.get("exclusive_parts", false)):
 		m._claim_exclusive_cells()
-		# Direct loft rasterization rebuilds the grid from source contours; its
-		# welds must therefore be applied AFTER high-resolution rasterization.
-		if bool(recipe.get("voxelize_lofts", false)):
-			VxConnectivity.repair(m)
+		m.quality_report = VxIntegrity.repair(m, recipe)
 	m.unit_id = recipe.get("unit", "")
 	m.legs = recipe.get("legs", "plantigrade")
 	m.can_punch = recipe.get("punch", true)
@@ -103,18 +95,23 @@ func cell_count() -> int:
 
 func _add_part(p: Dictionary) -> void:
 	var spec: Dictionary
+	var inherited_parent := ""
 	if p.has("mirror"):
 		var src := part(p["mirror"])
 		if src.is_empty():
 			errors.append("%s mirrors unknown part %s" % [p["name"], p["mirror"]])
 			return
 		spec = _mirrored(src)
+		# A mirror without an explicit parent follows the corresponding rig,
+		# not the body root. This keeps mirrored knuckles, pod fairings and
+		# cockpit details attached when their parent joint animates.
+		inherited_parent = _mirrored_parent_name(String(src.get("parent", "")))
 	else:
 		spec = {"loc": Location.from_code(p.get("loc", "")), "pivot": _vec(p.get("pivot", [0, 0, 0])),
 				"joint": p.get("joint", ""), "cells": {}}
 		_paint(spec["cells"], p.get("shapes", []))
 	spec["name"] = p["name"]
-	spec["parent"] = p.get("parent", "")
+	spec["parent"] = p.get("parent", inherited_parent)
 	_paint(spec["cells"], p.get("add", []))
 	parts.append(spec)
 
@@ -136,6 +133,20 @@ func _claim_exclusive_cells() -> void:
 				cells.erase(c)
 			else:
 				occupied[c] = p["name"]
+
+
+## Map an implicit mirror's rig attachment to its reflected counterpart.
+## Explicit "parent" values in JSON always win.
+func _mirrored_parent_name(source_parent: String) -> String:
+	if source_parent.is_empty():
+		return ""
+	var names := {"la": "ra", "ra": "la", "lt": "rt", "rt": "lt",
+		"ll": "rl", "rl": "ll", "left": "right", "right": "left"}
+	var tokens := source_parent.split("_")
+	for i in tokens.size():
+		if names.has(tokens[i]):
+			tokens[i] = names[tokens[i]]
+	return "_".join(tokens)
 
 
 func _mirrored(src: Dictionary) -> Dictionary:
