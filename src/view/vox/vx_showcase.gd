@@ -17,6 +17,18 @@ const MODELS := [
 	"res://data/voxels/archer.json",
 	"res://data/voxels/shadow_hawk_shape.json",
 	"res://data/voxels/shadow_hawk.json",
+	"res://data/voxels/awesome_shape.json",
+	"res://data/voxels/awesome.json",
+	"res://data/voxels/griffin_shape.json",
+	"res://data/voxels/griffin.json",
+	"res://data/voxels/thunderbolt_shape.json",
+	"res://data/voxels/thunderbolt.json",
+	"res://data/voxels/locust_shape.json",
+	"res://data/voxels/locust.json",
+	"res://data/voxels/centurion_shape.json",
+	"res://data/voxels/centurion.json",
+	"res://data/voxels/battlemaster_shape.json",
+	"res://data/voxels/battlemaster.json",
 ]
 
 var mech: VxMech
