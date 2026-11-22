@@ -29,6 +29,22 @@ const MODELS := [
 	"res://data/voxels/centurion.json",
 	"res://data/voxels/battlemaster_shape.json",
 	"res://data/voxels/battlemaster.json",
+	"res://data/voxels/king_crab_shape.json",
+	"res://data/voxels/king_crab.json",
+	"res://data/voxels/stalker_shape.json",
+	"res://data/voxels/stalker.json",
+	"res://data/voxels/rifleman_shape.json",
+	"res://data/voxels/rifleman.json",
+	"res://data/voxels/phoenix_hawk_shape.json",
+	"res://data/voxels/phoenix_hawk.json",
+	"res://data/voxels/urbanmech_shape.json",
+	"res://data/voxels/urbanmech.json",
+	"res://data/voxels/firestarter_shape.json",
+	"res://data/voxels/firestarter.json",
+	"res://data/voxels/black_knight_shape.json",
+	"res://data/voxels/black_knight.json",
+	"res://data/voxels/vindicator_shape.json",
+	"res://data/voxels/vindicator.json",
 ]
 
 var mech: VxMech
