@@ -100,7 +100,7 @@
  makeArmor(unit, base, cfg={}) {
    const d=JSON.parse(JSON.stringify(base));
    d.id=unit.id;d.name=unit.name;d.official_unit=unit.id;
-   d.asset_kind="battle_armor";d.motive="j";
+   d.asset_kind="battle_armor";d.motive=cfg.isStandard?"f":"j";
    d.voxel_cap=50000;d.exclusive_parts=true;
    d.art_quality_revision="silhouette-and-weapon-clarity-20261121";
    delete d.count_verified_fine_voxels;
@@ -118,6 +118,18 @@
      }else{
        part.shapes.push({box:[[x-3,12,z+2],[x+3,15,z+3]],mat:"armor"});
      }
+   }
+   // Convert oversize cuboid chest armor to tapered polygonal torso before
+   // refining. This leaves the helmet, legs and separate rifle geometry intact.
+   for(const p of d.parts)for(const sh of p.shapes){
+     if(!sh.box || sh.mat!=="armor")continue;
+     const a=sh.box[0],b=sh.box[1];
+     if(b[0]-a[0]<4 || b[1]-a[1]<4)continue;
+     const waist=[[a[0]+1,a[2]],[b[0]-1,a[2]],[b[0]-1,b[2]],[a[0]+1,b[2]]];
+     const chest=[[a[0],a[2]],[b[0],a[2]],[b[0],b[2]],[a[0],b[2]]];
+     delete sh.box;
+     sh.loft={axis:"y",sections:[{at:a[1],polygon:waist},
+       {at:Math.round((a[1]+b[1])/2),polygon:chest},{at:b[1],polygon:chest.map(x=>x.slice())}]};
    }
    const focus=["helmet","shoulder","weapon barrel","backpack","waist","upper leg","knee","boot","front outline","side outline"];
    const counts=[];
