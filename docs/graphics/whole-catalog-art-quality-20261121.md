@@ -6,7 +6,7 @@ Status: **implemented art pass; provisional until Godot CI and multi-angle visua
 - **151** shape-first BattleMech silhouettes and paired detailed JSONs are loaded through `VxArtQuality.apply` in `VxModel.from_dict`.
 - The separate established Catapult and Hunchback examples and three specialized Atlas/Jenner/Wolverine procedural source descriptors are supported by the existing loader, but some do not use the same generic cross-section drawing conventions.
 - **16** vehicle, VTOL, emplacement and infantry archetypes use `VxArtQuality.apply_asset` in `VoxelAsset.model_from_dict`, subject to the unchanged **50,000 occupied-voxel hard cap**.
-- The first 12 flagship chassis pairs also have their revised primary contours **baked directly into both JSON sources**. Other models receive the class-specific pass on load; the original editable geometry is retained for future hand-sculpting.
+- The first 19 flagship chassis pairs also have their revised primary contours **baked directly into both JSON sources**. Other models receive the class-specific pass on load; the original editable geometry is retained for future hand-sculpting.
 
 ## Five geometry-first passes
 1. **Silhouette:** break rectangular torso profiles into waist / chest / roof regions, with restrained changes for very broad assault machines and none of the forced humanoid waist on quadrupeds or the UrbanMech. Reference-facing special heads (Atlas skull, Jenner disc, Wolverine angular cockpit, Marauder and Timber Wolf nose, King Crab) are preserved.
