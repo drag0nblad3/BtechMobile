@@ -178,3 +178,20 @@ func test_rigid_assembly_repair_does_not_bridge_two_hinged_parts() -> void:
 	var report := VxIntegrity.repair(m)
 	check_eq(report["rig_rejoined"], 0, "each articulated hinge is a separate frame")
 	check_eq(m.part("ct")["cells"].size(), count, "do not attach stray hip to torso")
+
+func test_assembled_support_is_not_confused_with_per_rig_part_islands() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	# Detach this tiny synthetic cap, then give it a face-adjacent support
+	# on an independently articulated limb. It is not unsupported globally.
+	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
+	m.parts.append({"name": "arm", "loc": Location.LA, "parent": "ct",
+			"joint": "shoulder", "pivot": Vector3(4, 0, 0),
+			"cells": {Vector3i(4, 0, 0): 0}})
+	check_eq(VxIntegrity.physical_components(m)["islands"], 0,
+			"an assembled articulated neighbor can physically support a panel")
+
+
+func test_unsupported_island_metric_catches_free_floating_piece() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	check_eq(VxIntegrity.physical_components(m)["islands"], 1,
+			"disconnected volume is a real floating island")
