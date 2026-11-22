@@ -26,6 +26,11 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	# arm guns pointing forward
 	_box(root, Vector3(0.07, 0.07, 0.3), Vector3(-0.39, 0.5, -0.18), dark, s)
 	_box(root, Vector3(0.07, 0.07, 0.3), Vector3(0.39, 0.5, -0.18), dark, s)
+	for side in 2:
+		var m := Marker3D.new()
+		m.name = "Muzzle_LA" if side == 0 else "Muzzle_RA"
+		m.position = Vector3(-0.39 if side == 0 else 0.39, 0.5, -0.35) * s
+		root.add_child(m)
 	return root
 
 

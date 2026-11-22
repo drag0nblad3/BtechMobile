@@ -13,6 +13,59 @@ var unit: Unit
 var map: BattleMap
 var _yaw := 0.0  # Continuous yaw so turns never spin the long way round.
 var _model: Node3D
+var _recoil_tween: Tween
+
+## Local geometry-based approximation used when a model does not provide its
+## own mount markers. Left/right follows BattleTech hit locations, not camera.
+static func anchor_offset(loc: int, rear: bool = false, tons: int = 50) -> Vector3:
+	var scale_ := 1.25 + float(tons) / 250.0
+	var at := Vector3(0.0, 0.83, -0.26)
+	match loc:
+		Location.HEAD: at = Vector3(0.0, 1.05, -0.23)
+		Location.CT: at = Vector3(0.0, 0.78, -0.30)
+		Location.LT: at = Vector3(-0.30, 0.85, -0.28)
+		Location.RT: at = Vector3(0.30, 0.85, -0.28)
+		Location.LA: at = Vector3(-0.41, 0.56, -0.38)
+		Location.RA: at = Vector3(0.41, 0.56, -0.38)
+		Location.LL: at = Vector3(-0.17, 0.33, -0.20)
+		Location.RL: at = Vector3(0.17, 0.33, -0.20)
+	if rear:
+		at.z = absf(at.z)
+	return at * scale_
+
+
+## On real 3-D models a named Muzzle_<location> marker is authoritative;
+## fallback anchors preserve meaningful weapon location for sprites and props.
+func mount_world(w: MountedWeapon) -> Vector3:
+	if _model == null or w == null:
+		return global_position + Vector3.UP * 0.6
+	var code := Location.code(w.loc) if not w.on_vehicle else "CT"
+	var marker := _model.get_node_or_null("Muzzle_" + code) as Marker3D
+	if marker != null and not w.rear:
+		return marker.global_position
+	return _model.to_global(anchor_offset(w.loc if not w.on_vehicle else Location.CT,
+			w.rear, unit.def.tonnage))
+
+
+func impact_world(loc: int, rear := false) -> Vector3:
+	if _model == null:
+		return global_position + Vector3.UP * 0.7
+	var point := anchor_offset(loc, rear, unit.def.tonnage)
+	point.z *= 0.76  # armor face is behind a muzzle tip
+	return _model.to_global(point)
+
+
+## Small, non-stacking physical feedback only; rules and gait are unchanged.
+func recoil(strength: float = 1.0) -> void:
+	if _model == null or unit.def.is_support():
+		return
+	if _recoil_tween != null and _recoil_tween.is_running():
+		_recoil_tween.kill()
+	_model.position.z = 0.0
+	_recoil_tween = create_tween()
+	_recoil_tween.tween_property(_model, "position:z", 0.065 * strength, 0.065)
+	_recoil_tween.tween_property(_model, "position:z", 0.0, 0.16)
+
 
 
 func setup(u: Unit, battle_map: BattleMap) -> void:

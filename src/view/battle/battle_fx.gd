@@ -10,6 +10,7 @@ const MECH_HEIGHT := 0.55  ## Where on a 'Mech model blasts are centred.
 var _state: GameState
 var _units: UnitsLayer
 var _map: MapView
+var _fire_sequence: Dictionary = {}  # Tracks identical mounts within a volley.
 
 
 func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
@@ -26,6 +27,10 @@ func play(e: GameEvent) -> void:
 		GameEvent.PHYSICAL:
 			if e.data.get("hit", false):
 				_at_unit(e.data.get("target_id", -1), "impact")
+		GameEvent.DAMAGE:
+			_location_impact(e.data)
+		GameEvent.PHASE_CHANGED:
+			_fire_sequence.clear()
 		GameEvent.FALL:
 			var fallen := _unit_pos(int(e.data.get("unit_id", -1)))
 			if fallen != Vector3.INF:
@@ -43,23 +48,67 @@ func play(e: GameEvent) -> void:
 func _weapon_fire(d: Dictionary) -> void:
 	if d.get("no_ammo", false) or d.get("streak_held", false):
 		return
-	var a := _unit_pos(int(d.get("attacker_id", -1)))
-	var target := _unit_pos(int(d.get("target_id", -1)))
-	if a == Vector3.INF or target == Vector3.INF:
+	var attacker_id := int(d.get("attacker_id", -1))
+	var target_id := int(d.get("target_id", -1))
+	var av: UnitView = _visible_view(attacker_id)
+	var tv: UnitView = _visible_view(target_id)
+	if av == null or tv == null:
 		return
-	var hit := bool(d.get("hit", false))
 	var weapon := String(d.get("weapon_id", d.get("weapon", "")))
+	var mount := _fired_mount(attacker_id, weapon)
+	var a := av.mount_world(mount) if mount != null else _unit_pos(attacker_id)
+	var target := _unit_pos(target_id)
+	var hit := bool(d.get("hit", false))
+	if mount != null:
+		av.recoil(0.9 if ShotFx.style(weapon) == "ballistic" else 0.45)
+	VxBlast.spawn(self, a, "muzzle", attacker_id * 37 + weapon.length())
 	var destination := target
 	if not hit:
 		destination += ShotFx.miss_offset(int(d.get("attacker_id", 0)),
 			int(d.get("target_id", 0)), weapon)
 	if get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
 		ShotFx.spawn(self, a, destination, weapon, hit)
-	if hit:
-		_at_unit(int(d.get("target_id", -1)), "impact", Vector3(0, 0.1, 0))
-	else:
+	if not hit:
 		VxBlast.spawn(self, destination - Vector3(0, 0.3, 0), "miss",
 			int(d.get("attacker_id", 0)) * 131 + int(d.get("target_id", 0)))
+
+
+## The actual DAMAGE event provides the rolled location; do not guess one
+## from the preceding WEAPON_FIRED event or modify the rules' damage rolls.
+func _location_impact(d: Dictionary) -> void:
+	if d.get("covered", false):
+		return
+	var v := _visible_view(int(d.get("unit_id", -1)))
+	if v == null:
+		return
+	var loc := int(d.get("loc", Location.CT))
+	if loc < 0 or loc >= Location.COUNT:
+		return
+	var point := v.impact_world(loc, bool(d.get("rear", false)))
+	VxBlast.spawn(self, point, "armor", int(d.get("unit_id", 0)) * 47 + loc)
+
+
+func _visible_view(id: int) -> UnitView:
+	var u := _state.unit_by_id(id) if id >= 0 else null
+	var v := _units.view_of(u) if u != null else null
+	return v if v != null and v.visible else null
+
+
+## Cycle repeated weapon IDs across their actual record-sheet mounts.
+func _fired_mount(id: int, weapon: String) -> MountedWeapon:
+	var u := _state.unit_by_id(id) if id >= 0 else null
+	if u == null:
+		return null
+	var matches: Array[MountedWeapon] = []
+	for w: MountedWeapon in u.weapons:
+		if w.def.id == weapon or w.def.name == weapon:
+			matches.append(w)
+	if matches.is_empty():
+		return null
+	var key := "%d:%s" % [id, weapon]
+	var step := int(_fire_sequence.get(key, 0))
+	_fire_sequence[key] = step + 1
+	return matches[step % matches.size()]
 
 
 func _building(d: Dictionary) -> void:
