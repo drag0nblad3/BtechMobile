@@ -67,3 +67,17 @@ func test_jump_arcs_and_effect_budgets() -> void:
 		"mobile effect budgets are bounded")
 	for key in ["jet_launch", "jet_land", "jet_splash"]:
 		check(VxBlast.KINDS.has(key), key + " has a low-cost burst")
+
+
+
+func test_fallback_sockets_follow_mount_side_and_direction() -> void:
+	var box := AABB(Vector3(-0.5, 0.0, -0.5), Vector3(1.0, 1.4, 1.0))
+	var left := UnitView.fallback_muzzle(box, Location.LA, false)
+	var right := UnitView.fallback_muzzle(box, Location.RA, false)
+	var torso := UnitView.fallback_muzzle(box, Location.CT, true)
+	var head := UnitView.fallback_muzzle(box, Location.HEAD, false)
+	var quad := UnitView.fallback_muzzle(box, Location.LA, false, true)
+	check(left.x < 0.0 and right.x > 0.0, "fallback honors actual arm locations")
+	check(torso.z > 0.0, "rear weapon aims behind the model")
+	check(head.y > left.y, "head weapon is higher than the arm")
+	check(quad.y < left.y, "quad front leg mount is lower than a humanoid arm")

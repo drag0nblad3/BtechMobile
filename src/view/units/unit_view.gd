@@ -166,11 +166,44 @@ func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
 		if marker != null:
 			return marker.global_position
 	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
-	var size: Vector3 = bounds.size
-	var side := -1.0 if weapon_index >= 0 and weapon_index % 2 == 0 else 1.0
-	var height := bounds.position.y + size.y * 0.67
-	var local := Vector3(side * size.x * 0.32, height, bounds.position.z - size.z * 0.43)
-	return global_transform * local
+	var location := -1
+	var rear := false
+	if unit != null and weapon_index >= 0 and weapon_index < unit.def.weapon_mounts.size():
+		var mount: Dictionary = unit.def.weapon_mounts[weapon_index]
+		location = int(mount.get("loc", -1))
+		rear = bool(mount.get("rear", false))
+	return global_transform * fallback_muzzle(bounds, location, rear,
+		unit.def.quad if unit != null else false)
+
+
+## When no per-chassis socket exists, use record-sheet location and actual
+## rendered model bounds rather than alternating left/right by weapon index.
+static func fallback_muzzle(bounds: AABB, location: int, rear: bool,
+		quad: bool = false) -> Vector3:
+	var side := 0.5
+	var height := 0.70
+	match location:
+		Location.LA:
+			side = 0.10
+			height = 0.26 if quad else 0.57
+		Location.RA:
+			side = 0.90
+			height = 0.26 if quad else 0.57
+		Location.LT:
+			side = 0.28
+			height = 0.78
+		Location.RT:
+			side = 0.72
+			height = 0.78
+		Location.HEAD:
+			height = 0.91
+		Location.LL:
+			side = 0.31
+			height = 0.23
+		Location.RL:
+			side = 0.69
+			height = 0.23
+	return bounds.position + bounds.size * Vector3(side, height, 0.94 if rear else 0.04)
 
 
 func impact_point(from: Vector3) -> Vector3:

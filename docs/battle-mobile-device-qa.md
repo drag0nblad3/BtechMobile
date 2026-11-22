@@ -60,3 +60,7 @@ Android performance from CI's software-rendered frame rates.
   `weapons.png` and `jump.png` for before/device comparison. Both are
   deterministic **visual demonstrations**, not a playthrough.
 - On-device validation is still an outstanding acceptance condition.
+
+- For unprofiled units, the fallback now uses the **record-sheet mount
+  location and rear-facing flag** projected onto the visible model bounds.
+  This avoids the previous arbitrary even/odd weapon-side assignment.
