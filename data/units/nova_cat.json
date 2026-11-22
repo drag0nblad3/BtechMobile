@@ -77,5 +77,15 @@
       },
       "role": "Missile Boat: three Artemis-guided LRM 20s, eight AP Gauss rifles and an ER large laser; walks 4, runs 6."
     }
-  ]
+  ],
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  }
 }
