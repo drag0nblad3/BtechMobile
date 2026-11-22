@@ -108,7 +108,54 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 					"main": groups[0].size(), "parent": p.get("parent", ""),
 					"joint": p.get("joint", ""), "loc": p.get("loc", -1)}
 	report["residual_parts"] = residual
+	# The visual model can contain several connected sub-meshes within one
+	# damage location. Evaluate real, unsupported islands by their *rigid*
+	# assembly rather than treating each armor panel as an island.
+	var rigid := rigid_components(m)
+	report["rig_islands"] = rigid["unanchored"]
+	report["rig_groups"] = rigid["groups"]
 	return report
+
+
+## A parent with no articulated joint inherits the ancestor's rigid frame.
+## Actual hinges (shoulder, knee, hip, ankle, hock) begin a new assembly.
+static func _rig_root(m: VxModel, p: Dictionary) -> String:
+	var current: Dictionary = p
+	var seen := {}
+	while not current.is_empty():
+		var name: String = current["name"]
+		if seen.has(name):
+			return name
+		seen[name] = true
+		var parent: String = current.get("parent", "")
+		if parent.is_empty() or not String(current.get("joint", "")).is_empty():
+			return name
+		current = m.part(parent)
+	return String(p["name"])
+
+
+## Check physical occupancy across all subparts of each rigid assembly.
+## Disjoint optical panels touching a common skull are not flying debris.
+static func rigid_components(m: VxModel) -> Dictionary:
+	var rigs := {}
+	for p: Dictionary in m.parts:
+		var root := _rig_root(m, p)
+		if not rigs.has(root):
+			rigs[root] = {}
+		for c: Vector3i in p["cells"]:
+			rigs[root][c] = true
+	var details := {}
+	var count := 0
+	for root: String in rigs:
+		var groups := components(rigs[root])
+		if groups.size() <= 1:
+			continue
+		var sizes := []
+		for i in range(1, groups.size()):
+			sizes.append(groups[i].size())
+		count += groups.size() - 1
+		details[root] = sizes
+	return {"unanchored": count, "groups": details}
 
 
 ## Do not bridge optical planes or independent cockpit glow/window pieces.
