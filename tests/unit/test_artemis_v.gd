@@ -27,7 +27,7 @@ func test_guided_ammo_weight_critical_slots_and_modes() -> void:
 	check(a.can_fire(w), "guided ammunition is available")
 	check_eq(a.ammo[0].kind, "artemis_v")
 	check_eq(DesignWeight.breakdown(a.def)["weapons"], w.def.tons + 1.5)
-	var fcs := a.slots[Location.RT].filter(func(slot: CritSlot) -> bool:
+	var fcs: Array = a.slots[Location.RT].filter(func(slot: CritSlot) -> bool:
 		return slot.kind == CritSlot.Kind.ARTEMIS)
 	check_eq(fcs.size(), 2, "Artemis V occupies two critical slots")
 	check(BattleFields.names(w).has("artemis_v"), "battle saves preserve Artemis V linkage")
