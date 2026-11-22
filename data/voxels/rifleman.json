@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "rifleman",
   "name": "Rifleman RFL-3N",
   "unit": "rifleman_rfl3n",

@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "firestarter_shape",
   "name": "Firestarter FS9-H — shape study",
   "unit": "firestarter_fs9h",

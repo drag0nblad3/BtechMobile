@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "firestarter",
   "name": "Firestarter FS9-H",
   "unit": "firestarter_fs9h",

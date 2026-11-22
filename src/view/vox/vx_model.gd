@@ -44,6 +44,8 @@ static func from_dict(d: Dictionary) -> VxModel:
 	VxRefine.apply(m, int(d.get("subdivide", 1)))
 	for p: Dictionary in d.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
+	if bool(d.get("exclusive_parts", false)):
+		m._claim_exclusive_cells()
 	m.unit_id = d.get("unit", "")
 	m.legs = d.get("legs", "plantigrade")
 	m.can_punch = d.get("punch", true)
@@ -94,6 +96,25 @@ func _add_part(p: Dictionary) -> void:
 	spec["parent"] = p.get("parent", "")
 	_paint(spec["cells"], p.get("add", []))
 	parts.append(spec)
+
+
+## The smallest independently articulated part owns a shared cell; larger
+## hulls lose duplicates to avoid interior coincident voxel faces. Explicitly
+## opt in per sculpt, leaving existing intentional overlap studies unchanged.
+func _claim_exclusive_cells() -> void:
+	var ordered := parts.duplicate()
+	ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		if a["cells"].size() == b["cells"].size():
+			return String(a["name"]) < String(b["name"])
+		return a["cells"].size() < b["cells"].size())
+	var occupied := {}
+	for p: Dictionary in ordered:
+		var cells: Dictionary = p["cells"]
+		for c: Vector3i in cells.keys():
+			if occupied.has(c):
+				cells.erase(c)
+			else:
+				occupied[c] = p["name"]
 
 
 func _mirrored(src: Dictionary) -> Dictionary:

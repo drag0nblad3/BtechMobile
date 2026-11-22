@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "centurion",
   "name": "Centurion CN9-A",
   "unit": "centurion_cn9a",

@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "stalker",
   "name": "Stalker STK-3F",
   "unit": "stalker_stk3f",

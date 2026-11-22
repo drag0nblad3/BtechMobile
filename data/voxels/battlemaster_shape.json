@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "battlemaster_shape",
   "name": "BattleMaster BLR-1G — shape-first low resolution",
   "unit": "battlemaster_blr1g",

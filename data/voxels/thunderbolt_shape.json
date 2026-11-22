@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "thunderbolt_shape",
   "name": "Thunderbolt TDR-5S — shape-first low resolution",
   "unit": "thunderbolt_tdr5s",

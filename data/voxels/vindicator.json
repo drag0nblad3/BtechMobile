@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "vindicator",
   "name": "Vindicator VND-1R",
   "unit": "vindicator_vnd1r",

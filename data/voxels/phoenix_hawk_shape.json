@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "phoenix_hawk_shape",
   "name": "Phoenix Hawk PXH-1 — shape study",
   "unit": "phoenix_hawk_pxh1",

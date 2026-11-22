@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "centurion_shape",
   "name": "Centurion CN9-A — shape-first low resolution",
   "unit": "centurion_cn9a",

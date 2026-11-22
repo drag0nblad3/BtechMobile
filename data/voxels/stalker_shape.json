@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "stalker_shape",
   "name": "Stalker STK-3F — shape study",
   "unit": "stalker_stk3f",

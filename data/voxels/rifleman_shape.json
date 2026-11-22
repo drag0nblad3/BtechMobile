@@ -1,4 +1,5 @@
 {
+  "exclusive_parts": true,
   "id": "rifleman_shape",
   "name": "Rifleman RFL-3N — shape study",
   "unit": "rifleman_rfl3n",
