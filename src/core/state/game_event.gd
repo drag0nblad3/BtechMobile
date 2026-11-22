@@ -29,6 +29,7 @@ const PSR := &"psr"                       # {unit_id, roll, need, ok, reasons: [
 const FALL := &"fall"                     # {unit_id, damage, levels}
 const WENT_PRONE := &"went_prone"         # {unit_id} dropped prone on purpose
 const HEAT_SINKS_SWITCHED := &"heat_sinks_switched"  # {unit_id, off}
+const STEALTH := &"stealth"  # {unit_id, on}
 const MASC := &"masc"                     # {unit_id, roll, need, ok, next}
 const STAND := &"stand"                   # {unit_id, ok}
 const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb, roll, need, hit, damage, mods}

@@ -14,6 +14,8 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 			if level != ExplainLevel.OFF:
 				var outside: int = d.get("outside", 0)
 				var from_out := (", %d of it from enemy flamers" % outside) if outside > 0 else ""
+				if d.get("stealth", 0) > 0:
+					from_out += ", %d from stealth armor" % d["stealth"]
 				t += " (+%d built%s, -%d sinks%s)" % [d["gained"], from_out, d["sinks"],
 						ConditionsText.heat_note(d.get("weather", 0))]
 			if d["heat"] > 0:
@@ -37,6 +39,12 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 			if level == ExplainLevel.FULL and d["off"] > 0:
 				h += " They shed no heat from next turn" + (", so it can run hot enough (heat %d+) to wake its triple-strength myomer." % Tsm.HEAT if Tsm.has(u.def) else ".")
 			return h
+		GameEvent.STEALTH:
+			var st := "%s switches its stealth armor %s." % [who, "on" if d["on"] else "off"]
+			if level == ExplainLevel.FULL:
+				st += (" Shots from medium and long range get harder, but it builds 10 heat a turn and its ECM and C3 stop working."
+						if d["on"] else " No more 10 heat a turn, and its ECM works again, but it is easier to hit from range.")
+			return st
 		GameEvent.SHUTDOWN:
 			if d.get("voluntary", false):
 				if not d["shutdown"]:

@@ -33,6 +33,8 @@ var sensor_hits: int = 0
 var heat_sinks_lost: int = 0
 var sinks_off: int = 0  ## Heat sinks switched off by choice (HeatSinkSwitch).
 var sinks_off_request: int = -1  ## Sinks to have off after the End Phase, -1 none.
+var stealth_off: bool = false  ## Stealth armor switched off by choice (Stealth).
+var stealth_request: int = -1  ## Stealth after the End Phase: 1 on, 0 off, -1 no change.
 ## Physical weapons destroyed by critical hits: index into def.melee -> true.
 var melee_lost: Dictionary = {}
 ## Club carried: "" none, "tree" or "girder" (MeleeWeapons).

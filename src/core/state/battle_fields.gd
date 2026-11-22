@@ -15,7 +15,7 @@ static func names(o: Object) -> Array:
 		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "vehicle", "ba", "armor",
 				"rear_armor", "structure", "armor_partial", "rear_partial", "structure_partial", "weapons", "ammo", "slots", "heat",
 				"engine_hits", "gyro_hits", "sensor_hits", "heat_sinks_lost",
-				"sinks_off", "sinks_off_request", "melee_lost", "club",
+				"sinks_off", "sinks_off_request", "stealth_off", "stealth_request", "melee_lost", "club",
 				"destroyed", "destroyed_reason", "destroyed_announced", "prone",
 				"flooded", "ecm_lost", "probe_lost", "tc_lost", "narc_pods",
 				"drop_turn", "carry_arm", "on_roof", "on_bridge", "shutdown",

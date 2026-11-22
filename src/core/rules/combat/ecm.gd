@@ -20,9 +20,20 @@ static func slots(def: UnitDef) -> int:
 	return EcmTypes.slots(def)
 
 
+## Jamming: off while the 'Mech's stealth armor is on (Stealth).
 static func working(u: Unit) -> bool:
+	return suite_ok(u) and not Stealth.active(u)
+
+
+## The suite itself is intact and powered.
+static func suite_ok(u: Unit) -> bool:
 	return u.def.ecm_loc >= 0 and not u.ecm_lost and not u.destroyed and not u.shutdown \
 			and not u.is_location_destroyed(u.def.ecm_loc)
+
+
+## Is `u` working as if inside hostile ECM (enemy ECM, or its own stealth)?
+static func jammed(state: GameState, u: Unit) -> bool:
+	return Stealth.active(u) or hostile_at(state, u.side, u.coord)
 
 
 ## Is `c` inside ECM hostile to `side`?
@@ -51,7 +62,7 @@ static func angel_blocks_streak(state: GameState, attacker: Unit, target: Unit) 
 static func artemis_blocked(state: GameState, attacker: Unit, target: Unit, th: ToHit) -> String:
 	if th.indirect:
 		return "indirect fire gets no Artemis bonus"
-	if hostile_at(state, attacker.side, attacker.coord) or hostile_at(state, attacker.side, target.coord):
+	if jammed(state, attacker) or hostile_at(state, attacker.side, target.coord):
 		return "enemy ECM jams the Artemis guidance"
 	if EcmInterference.jams(state, attacker):
 		return "battlefield ECM interference jams the Artemis guidance"

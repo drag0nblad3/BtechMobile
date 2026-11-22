@@ -10,6 +10,7 @@ extends RefCounted
 static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 	for u in state.units:
 		HeatSinkSwitch.apply(emit, u)
+		Stealth.apply(emit, u)
 		if u.destroyed or u.pilot.is_dead():
 			continue
 		if u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT) and submerged(state, u):

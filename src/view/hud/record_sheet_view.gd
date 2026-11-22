@@ -29,6 +29,9 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 		b.pressed.connect(func() -> void: on_power.call(want[0]))
 		box.add_child(b)
 	box.add_child(SinkButtons.row(u, on_power))
+	var st := SinkButtons.stealth_row(u, on_power)
+	if st != null:
+		box.add_child(st)
 	return box
 
 

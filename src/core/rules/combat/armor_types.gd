@@ -12,6 +12,7 @@ extends RefCounted
 ## Impact-resistant: falls and collapses halved (round down), physical attacks
 ## -1 per 3 (or part), at least 1. Heat-dissipating: flamer and plasma damage
 ## halved (round up), no outside heat. Anti-penetrative ablation: no TAC.
+## Stealth armor stops damage like standard armor; its effects are in Stealth.
 ## TODO(rules): weights and slots are MegaMek construction data; reactive
 ## armor's critical reroll on its slots and AP ammo are not modelled.
 
@@ -25,6 +26,7 @@ const KINDS := {
 	"anti_penetrative": {"name": "Anti-Penetrative Ablation", "mult": 0.75, "about": "no through-armor criticals"},
 	"impact_resistant": {"name": "Impact-Resistant", "mult": 0.875, "about": "halves fall and collapse damage, -1 per 3 from physical attacks"},
 	"heat_dissipating": {"name": "Heat-Dissipating", "mult": 0.625, "about": "halves flamer and plasma damage; no outside heat"},
+	"stealth": {"name": "Stealth", "mult": 1.0, "about": "while on: +1 to hit it at medium range, +2 at long, 10 heat a turn, its ECM and C3 off (Stealth)"},
 }
 const COLLISION := ["fall", "collapse"]
 

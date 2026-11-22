@@ -24,12 +24,12 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 				else mini(u.outside_heat + Fire.stand_heat(state.map, u), OUTSIDE_HEAT_CAP)
 		var engine := 0 if u.shutdown else ENGINE_HIT_HEAT * u.engine_hits
 		var c := state.conditions
-		var gained := u.heat_generated + engine + outside + ExtremeTemp.heat_added(c)
+		var gained := u.heat_generated + engine + outside + ExtremeTemp.heat_added(c) + Stealth.heat(u)
 		var sinks := u.dissipation() + water_cooling(state.map.get_tile(u.coord), u) \
 				+ ExtremeTemp.extra_sinks(c) + Surfaces.snow_cooling(state, u)
 		u.heat = maxi(0, u.heat + gained - sinks)
 		emit.call(GameEvent.HEAT, {"unit_id": u.id, "before": before, "gained": gained,
-				"sinks": sinks, "outside": outside, "heat": u.heat,
+				"sinks": sinks, "outside": outside, "heat": u.heat, "stealth": Stealth.heat(u),
 				"weather": ExtremeTemp.heat_added(c) - ExtremeTemp.extra_sinks(c),
 				"effects": HeatScale.effects_text(u.heat, c)})
 		VoluntaryShutdown.apply(dice, emit, u)

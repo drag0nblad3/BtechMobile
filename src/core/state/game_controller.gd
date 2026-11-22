@@ -244,6 +244,14 @@ func request_sinks_off(unit: Unit, n: int) -> bool:
 	return true
 
 
+## Asks to have stealth armor on or off from the next End Phase (p. 202).
+func request_stealth(unit: Unit, on: bool) -> bool:
+	if unit == null or Stealth.problem(unit) != "":
+		return false
+	unit.stealth_request = 1 if on else 0
+	return true
+
+
 func set_torso_twist(unit: Unit, dir: int) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad or unit.arms_flipped:
 		return false

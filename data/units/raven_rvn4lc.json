@@ -1,0 +1,81 @@
+{
+ "id": "raven_rvn4lc",
+ "name": "Raven",
+ "model": "RVN-4LC",
+ "tonnage": 35,
+ "walk_mp": 6,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "stealth",
+ "armor": {
+  "LA": 10,
+  "RA": 10,
+  "LT": 10,
+  "RT": 10,
+  "CT": 15,
+  "HD": 9,
+  "LL": 10,
+  "RL": 10
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 4
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "narc_beacon",
+   "stealth*2"
+  ],
+  "RA": [
+   "er_medium_laser*2",
+   "stealth*2"
+  ],
+  "LT": [
+   "guardian_ecm",
+   "ammo:srm6:narc",
+   "ammo:narc_beacon*2",
+   "stealth*2"
+  ],
+  "RT": [
+   "heat_sink",
+   "srm6",
+   "tag",
+   "stealth*2"
+  ],
+  "CT": [
+   "c3_slave",
+   "er_small_laser"
+  ],
+  "LL": [
+   "stealth*2"
+  ],
+  "RL": [
+   "stealth*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2667,
+  "megamek": "data/mekfiles/meks/3050U/Raven RVN-4LC.mtf",
+  "published": "RS:3050Uu-I",
+  "role": "Scout",
+  "bv": "megamek",
+  "megamek_bv": 871
+ },
+ "bv": 871,
+ "sprite": "raven",
+ "role": "Scout: fast and light, finds the enemy and stays alive. 2 ER Medium Lasers, Narc Missile Beacon, SRM 6, ER Small Laser; walks 6, runs 9."
+}
