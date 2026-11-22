@@ -69,6 +69,7 @@ func _ready() -> void:
 	hud.set_explain_label(GameSettings.explain_level)
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
 	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
+	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
@@ -174,6 +175,7 @@ func _build_views(state: GameState) -> void:
 	var weather := get_node_or_null("Environment/BattleWeather") as BattleWeather
 	if weather != null:
 		weather.setup(state.conditions, rig.camera, units_layer)
+	fx.attach_camera(rig)
 	cinematic = CinematicDirector.new()
 	add_child(cinematic)
 	cinematic.setup(rig, units_layer)
@@ -243,6 +245,7 @@ func _wire() -> void:
 	hud.save_battle.connect(_save_battle)
 	hud.pause_toggled.connect(_toggle_pause)
 	hud.pause_menu.voxel_toggled.connect(_toggle_voxels)
+	hud.pause_menu.shake_toggled.connect(_toggle_shake)
 	hud.next_unit.connect(_next_unit)
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
@@ -334,6 +337,11 @@ func _toggle_voxels() -> void:
 	units_layer.reload_looks()
 	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
 	hud.pause_menu.set_message("Voxel models enabled." if GameSettings.voxel_mechs else "Sprites and placeholders enabled.")
+
+
+func _toggle_shake() -> void:
+	GameSettings.set_camera_shake(not GameSettings.camera_shake)
+	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
 
 
 func _toggle_sheet() -> void:

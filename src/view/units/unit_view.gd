@@ -231,6 +231,37 @@ static func fallback_muzzle(bounds: AABB, location: int, rear: bool,
 	return bounds.position + bounds.size * Vector3(side, height, 0.94 if rear else 0.04)
 
 
+## GameEvent location, not a raycast, determines the visual hit position.
+func impact_location(loc: int, rear: bool) -> Vector3:
+	if _model is VxMech:
+		var voxel := _model as VxMech
+		if not voxel.model.parts_at(loc).is_empty():
+			var part := voxel.part_at(loc)
+			var bounds := part.get_aabb()
+			var where := bounds.get_center()
+			where.z = bounds.end.z if rear else bounds.position.z
+			return part.to_global(where)
+	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
+	var center := bounds.get_center()
+	var radius := bounds.size
+	match loc:
+		Location.HEAD:
+			center.y = bounds.position.y + radius.y * 0.91
+		Location.CT:
+			center.y = bounds.position.y + radius.y * 0.67
+		Location.LT, Location.RT:
+			center.y = bounds.position.y + radius.y * 0.71
+			center.x += radius.x * (-0.29 if loc == Location.LT else 0.29)
+		Location.LA, Location.RA:
+			center.y = bounds.position.y + radius.y * 0.57
+			center.x += radius.x * (-0.44 if loc == Location.LA else 0.44)
+		Location.LL, Location.RL:
+			center.y = bounds.position.y + radius.y * 0.20
+			center.x += radius.x * (-0.22 if loc == Location.LL else 0.22)
+	center.z = bounds.end.z if rear else bounds.position.z
+	return global_transform * center
+
+
 func impact_point(from: Vector3) -> Vector3:
 	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
 	var center := bounds.get_center()

@@ -114,6 +114,18 @@ func _process(_delta: float) -> bool:
 			ShotFx.spawn(_scene.fx, muzzle, target, "er_ppc", true)
 			VxBlast.spawn(_scene.fx, target, "impact")
 		_scene.hud.show_combat_event(GameEvent.new(GameEvent.WEAPON_FIRED, {"hit": true}))
+	if _frames == 8 and _mode == "hitfx":
+		var target: Unit = _scene.controller.state.units[0]
+		var target_view: UnitView = _scene.units_layer.view_of(target)
+		_scene.rig.snap(target_view.position, 10.0)
+	if _frames == 24 and _mode == "hitfx":
+		var hot: Unit = _scene.controller.state.units[0]
+		hot.heat = 22  # cosmetic staging for capture, not a combat action
+		_scene.fx.play(GameEvent.new(GameEvent.HEAT, {"unit_id": hot.id, "heat": hot.heat}))
+	if _frames == 36 and _mode == "hitfx":
+		var hit: Unit = _scene.controller.state.units[0]
+		_scene.fx.play(GameEvent.new(GameEvent.DAMAGE,
+				{"unit_id": hit.id, "loc": Location.RA, "rear": false, "amount": 24}))
 	if _frames == 40:
 		if _mode == "jump" and get_nodes_in_group("jump_fx").is_empty():
 			printerr("CAPTURE_JUMP_FAILED: exhaust absent on review frame")

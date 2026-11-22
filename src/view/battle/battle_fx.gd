@@ -4,12 +4,14 @@ extends Node3D
 ## and destroyed 'Mechs blow up, collapsing buildings throw dust and rubble,
 ## and shots or 'Mechs forcing their way in knock holes in building walls.
 ## Reads state only; the record sheet and events decide what happened.
+## PHYSICAL is not a hit location; only DAMAGE emits a contact spark.
 
 const MECH_HEIGHT := 0.55  ## Where on a 'Mech model blasts are centred.
 
 var _state: GameState
 var _units: UnitsLayer
 var _map: MapView
+var hits := BattleHitFx.new()
 
 
 func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
@@ -17,15 +19,19 @@ func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
 	_state = state
 	_units = units
 	_map = map_view
+	add_child(hits)
+	hits.setup(state, units)
+
+
+func attach_camera(camera: CameraRig) -> void:
+	hits.attach_camera(camera)
 
 
 func play(e: GameEvent) -> void:
+	hits.play(e)
 	match e.type:
 		GameEvent.WEAPON_FIRED:
 			_weapon_fire(e.data)
-		GameEvent.PHYSICAL:
-			if e.data.get("hit", false):
-				_at_unit(e.data.get("target_id", -1), "impact")
 		GameEvent.FALL:
 			var fallen := _unit_pos(int(e.data.get("unit_id", -1)))
 			if fallen != Vector3.INF:
@@ -64,10 +70,7 @@ func _weapon_fire(d: Dictionary) -> void:
 	var voxel_fired := av != null and UnitVoxels.fire(av, d, destination)
 	if not voxel_fired and get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
 		ShotFx.spawn(self, a, destination, weapon, hit)
-	if hit:
-		VxBlast.spawn(self, destination, "impact", attacker_id * 131 + target_id)
-		if tv != null:
-			_flash_armor(tv, destination)
+	# The authoritative DAMAGE event (not this firing preview) chooses a hit location.
 	else:
 		VxBlast.spawn(self, destination - Vector3(0, 0.3, 0), "miss",
 			int(d.get("attacker_id", 0)) * 131 + int(d.get("target_id", 0)))

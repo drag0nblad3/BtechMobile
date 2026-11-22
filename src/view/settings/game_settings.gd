@@ -16,6 +16,7 @@ static var sound_master := 0.85
 static var sound_effects := 0.9
 static var sound_ui := 0.65
 static var sound_muted := false
+static var camera_shake := true
 static var _loaded := false
 
 
@@ -34,6 +35,7 @@ static func load_settings() -> void:
 		sound_effects = clampf(float(cfg.get_value("audio", "effects", 0.9)), 0.0, 1.0)
 		sound_ui = clampf(float(cfg.get_value("audio", "ui", 0.65)), 0.0, 1.0)
 		sound_muted = bool(cfg.get_value("audio", "muted", false))
+		camera_shake = bool(cfg.get_value("camera", "shake", true))
 
 
 static func set_explain_level(level: int) -> void:
@@ -97,6 +99,14 @@ static func _save_audio(key: String, value: Variant) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("audio", key, value)
+	cfg.save(PATH)
+
+
+static func set_camera_shake(on: bool) -> void:
+	camera_shake = on
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("camera", "shake", on)
 	cfg.save(PATH)
 
 

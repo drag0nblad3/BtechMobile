@@ -6,9 +6,11 @@ signal resumed
 signal save_requested
 signal exit_requested
 signal voxel_toggled
+signal shake_toggled
 
 var _message: Label
 var _voxel_button: Button
+var _shake_button: Button
 
 
 func _ready() -> void:
@@ -46,6 +48,7 @@ func _ready() -> void:
 	_voxel_button = _add_button(box, "Voxel 'Mechs: On", func(): voxel_toggled.emit())
 	var audio_settings := BattleAudioSettings.new()
 	box.add_child(audio_settings)
+	_shake_button = _add_button(box, "Camera shake: On", func(): shake_toggled.emit())
 	_add_button(box, "Resume Battle", func(): resumed.emit(), "primary")
 	_add_button(box, "Save Battle", func(): save_requested.emit())
 	_add_button(box, "Save & Exit to Menu", func(): exit_requested.emit(), "subtle")
@@ -58,6 +61,11 @@ func set_message(value: String) -> void:
 func set_voxel_label(enabled: bool) -> void:
 	if _voxel_button != null:
 		_voxel_button.text = "Voxel 'Mechs: On" if enabled else "Voxel 'Mechs: Off"
+
+
+func set_shake_label(on: bool) -> void:
+	if _shake_button != null:
+		_shake_button.text = "Camera shake: On" if on else "Camera shake: Off"
 
 
 func _add_button(parent: Control, caption: String, action: Callable, tone: String = "secondary") -> Button:
