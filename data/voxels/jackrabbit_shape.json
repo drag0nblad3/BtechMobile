@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Original sculpt keyed to Jackrabbit TRO art: tall narrow angular head, left-arm two-port Streak rack, long right-arm autocannon, thin extended runner legs without hand manipulators.",
+  "notes": "Original sculpt keyed to Jackrabbit TRO art: tall narrow angular head, left-arm two-port Streak rack, long right-arm autocannon, thin extended runner legs without hand manipulators.\n2026-11-22 topology correction: one rooted rig, independently constructed upper/lower shin and arm masses; distinct source-level moving components. Not final silhouette sign-off.",
   "parts": [
     {
       "name": "ct",
@@ -516,39 +516,39 @@
             "axis": "y",
             "sections": [
               {
-                "at": 18,
+                "at": 23,
                 "polygon": [
                   [
-                    -13.41,
-                    -1.7
+                    -13.63,
+                    -2.7
                   ],
                   [
-                    -10.59,
-                    -1.7
+                    -10.36,
+                    -2.7
                   ],
                   [
-                    -9.9,
-                    -1
+                    -9.57,
+                    -1.87
                   ],
                   [
-                    -9.9,
-                    2
+                    -9.57,
+                    1.7
                   ],
                   [
-                    -10.59,
-                    2.7
+                    -10.36,
+                    2.53
                   ],
                   [
-                    -13.41,
-                    2.7
+                    -13.63,
+                    2.53
                   ],
                   [
-                    -14.1,
-                    2
+                    -14.43,
+                    1.7
                   ],
                   [
-                    -14.1,
-                    -1
+                    -14.43,
+                    -1.87
                   ]
                 ]
               },
@@ -677,23 +677,8 @@
         {
           "box": [
             [
-              -15,
-              17,
-              -3
-            ],
-            [
-              -11,
-              19,
-              2
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
               -16,
-              19,
+              23,
               2
             ],
             [
@@ -707,6 +692,17 @@
       ],
       "parent": "lt",
       "joint": "shoulder"
+    },
+    {
+      "name": "la_forearm",
+      "parent": "la",
+      "loc": "LA",
+      "pivot": [
+        -10,
+        22,
+        0
+      ],
+      "shapes": []
     },
     {
       "name": "ra",
@@ -737,39 +733,39 @@
             "axis": "y",
             "sections": [
               {
-                "at": 18,
+                "at": 23,
                 "polygon": [
                   [
-                    10.53,
-                    -1
+                    10.38,
+                    -2.21
                   ],
                   [
-                    13.47,
-                    -1
+                    13.62,
+                    -2.21
                   ],
                   [
-                    14.2,
-                    -0.36
+                    14.41,
+                    -1.42
                   ],
                   [
-                    14.2,
-                    2.36
+                    14.41,
+                    1.99
                   ],
                   [
-                    13.47,
-                    3
+                    13.62,
+                    2.79
                   ],
                   [
-                    10.53,
-                    3
+                    10.38,
+                    2.79
                   ],
                   [
-                    9.8,
-                    2.36
+                    9.59,
+                    1.99
                   ],
                   [
-                    9.8,
-                    -0.36
+                    9.59,
+                    -1.42
                   ]
                 ]
               },
@@ -855,7 +851,7 @@
           "box": [
             [
               10,
-              22,
+              23,
               -12
             ],
             [
@@ -914,21 +910,6 @@
           "box": [
             [
               11,
-              17,
-              -3
-            ],
-            [
-              15,
-              19,
-              2
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              11,
               23,
               -7
             ],
@@ -943,6 +924,17 @@
       ],
       "parent": "rt",
       "joint": "shoulder"
+    },
+    {
+      "name": "ra_forearm",
+      "parent": "ra",
+      "loc": "RA",
+      "pivot": [
+        10,
+        22,
+        0
+      ],
+      "shapes": []
     },
     {
       "name": "ll",
@@ -1135,76 +1127,39 @@
             "axis": "y",
             "sections": [
               {
-                "at": 4,
+                "at": 11,
                 "polygon": [
                   [
-                    -6.14,
-                    -2.8
-                  ],
-                  [
-                    -3.86,
-                    -2.8
-                  ],
-                  [
-                    -3.3,
-                    -2.06
-                  ],
-                  [
-                    -3.3,
-                    1.06
-                  ],
-                  [
-                    -3.86,
-                    1.8
-                  ],
-                  [
-                    -6.14,
-                    1.8
-                  ],
-                  [
-                    -6.7,
-                    1.06
-                  ],
-                  [
-                    -6.7,
-                    -2.06
-                  ]
-                ]
-              },
-              {
-                "at": 9,
-                "polygon": [
-                  [
-                    -6.34,
+                    -6.45,
                     -2.3
                   ],
                   [
-                    -3.66,
+                    -3.55,
                     -2.3
                   ],
                   [
-                    -3,
-                    -1.56
+                    -2.84,
+                    -1.52
                   ],
                   [
-                    -3,
-                    1.56
+                    -2.84,
+                    1.76
                   ],
                   [
-                    -3.66,
-                    2.3
+                    -3.55,
+                    2.54
                   ],
                   [
-                    -6.34,
-                    2.3
+                    -6.45,
+                    2.54
                   ],
                   [
-                    -7,
-                    1.56
+                    -7.16,
+                    1.76
                   ],
                   [
-                    -7,
-                    -1.56
+                    -7.16,
+                    -1.52
                   ]
                 ]
               },
@@ -1253,7 +1208,7 @@
           "box": [
             [
               -7,
-              6,
+              11,
               -3
             ],
             [
@@ -1267,6 +1222,17 @@
       ],
       "parent": "ll",
       "joint": "knee"
+    },
+    {
+      "name": "ll_calf",
+      "parent": "ll_shin",
+      "loc": "LL",
+      "pivot": [
+        -5,
+        10,
+        0
+      ],
+      "shapes": []
     },
     {
       "name": "ll_foot",
@@ -1427,13 +1393,13 @@
           "mat": "edge"
         }
       ],
-      "parent": "ll_shin",
+      "parent": "ll_calf",
       "joint": "ankle"
     },
     {
       "name": "rl",
       "mirror": "ll",
-      "parent": ""
+      "parent": "ct"
     },
     {
       "name": "rl_shin",
@@ -1441,9 +1407,14 @@
       "parent": "rl"
     },
     {
+      "name": "rl_calf",
+      "parent": "rl_shin",
+      "mirror": "ll_calf"
+    },
+    {
       "name": "rl_foot",
       "mirror": "ll_foot",
-      "parent": "rl_shin"
+      "parent": "rl_calf"
     }
   ],
   "muzzles": {

@@ -49,7 +49,7 @@
       "role": "armor"
     }
   ],
-  "notes": "Low, wide crab-like upper carapace, paired broad laser housings and articulated offset ankles; 7 jump-jet nozzles in the official LT/RT/CT distribution.",
+  "notes": "Low, wide crab-like upper carapace, paired broad laser housings and articulated offset ankles; 7 jump-jet nozzles in the official LT/RT/CT distribution.\n2026-11-22 topology correction: one rooted rig, independently constructed upper/lower shin and arm masses; distinct source-level moving components. Not final silhouette sign-off.",
   "parts": [
     {
       "name": "ct",
@@ -578,76 +578,39 @@
             "axis": "y",
             "sections": [
               {
-                "at": 17,
+                "at": 23,
                 "polygon": [
                   [
-                    -17.38,
-                    -5.7
+                    -17.53,
+                    -6.82
                   ],
                   [
-                    -12.62,
-                    -5.7
-                  ],
-                  [
-                    -11.6,
-                    -4.3
-                  ],
-                  [
-                    -11.6,
-                    0.9
-                  ],
-                  [
-                    -12.62,
-                    2.3
-                  ],
-                  [
-                    -17.38,
-                    2.3
-                  ],
-                  [
-                    -18.4,
-                    0.9
-                  ],
-                  [
-                    -18.4,
-                    -4.3
-                  ]
-                ]
-              },
-              {
-                "at": 22,
-                "polygon": [
-                  [
-                    -17.87,
-                    -7.3
-                  ],
-                  [
-                    -12.13,
-                    -7.3
+                    -12.07,
+                    -6.82
                   ],
                   [
                     -10.9,
-                    -5.62
+                    -5.2
                   ],
                   [
                     -10.9,
-                    0.62
+                    0.8
                   ],
                   [
-                    -12.13,
-                    2.3
+                    -12.07,
+                    2.42
                   ],
                   [
-                    -17.87,
-                    2.3
+                    -17.53,
+                    2.42
                   ],
                   [
-                    -19.1,
-                    0.62
+                    -18.7,
+                    0.8
                   ],
                   [
-                    -19.1,
-                    -5.62
+                    -18.7,
+                    -5.2
                   ]
                 ]
               },
@@ -696,7 +659,7 @@
           "box": [
             [
               -18,
-              20,
+              23,
               -9
             ],
             [
@@ -711,7 +674,7 @@
           "box": [
             [
               -19,
-              19,
+              23,
               -10
             ],
             [
@@ -721,59 +684,31 @@
             ]
           ],
           "mat": "plate"
-        },
-        {
-          "erase": [
-            [
-              -17,
-              21,
-              -10
-            ],
-            [
-              -16,
-              22,
-              -7
-            ]
-          ]
-        },
-        {
-          "box": [
-            [
-              -17,
-              17,
-              -3
-            ],
-            [
-              -15,
-              19,
-              2
-            ]
-          ],
-          "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -19,
-              18,
-              -10
-            ],
-            [
-              -19,
-              21,
-              -8
-            ]
-          ],
-          "mat": "gun"
         }
       ],
       "parent": "lt",
       "joint": "shoulder"
     },
     {
+      "name": "la_forearm",
+      "parent": "la",
+      "loc": "LA",
+      "pivot": [
+        -12,
+        22,
+        0
+      ],
+      "shapes": []
+    },
+    {
       "name": "ra",
       "mirror": "la",
       "parent": "rt"
+    },
+    {
+      "name": "ra_forearm",
+      "parent": "ra",
+      "mirror": "la_forearm"
     },
     {
       "name": "ll",
@@ -966,76 +901,39 @@
             "axis": "y",
             "sections": [
               {
-                "at": 5,
+                "at": 9,
                 "polygon": [
                   [
-                    -6.89,
-                    -3
+                    -6.75,
+                    -2.3
                   ],
                   [
-                    -3.11,
-                    -3
+                    -3.25,
+                    -2.3
                   ],
                   [
-                    -2.3,
-                    -2.12
+                    -2.5,
+                    -1.49
                   ],
                   [
-                    -2.3,
-                    1.13
+                    -2.5,
+                    1.5
                   ],
                   [
-                    -3.11,
-                    2
+                    -3.25,
+                    2.3
                   ],
                   [
-                    -6.89,
-                    2
+                    -6.75,
+                    2.3
                   ],
                   [
-                    -7.7,
-                    1.13
+                    -7.5,
+                    1.5
                   ],
                   [
-                    -7.7,
-                    -2.12
-                  ]
-                ]
-              },
-              {
-                "at": 8,
-                "polygon": [
-                  [
-                    -6.68,
-                    -2.2
-                  ],
-                  [
-                    -3.32,
-                    -2.2
-                  ],
-                  [
-                    -2.6,
-                    -1.43
-                  ],
-                  [
-                    -2.6,
-                    1.43
-                  ],
-                  [
-                    -3.32,
-                    2.2
-                  ],
-                  [
-                    -6.68,
-                    2.2
-                  ],
-                  [
-                    -7.4,
-                    1.43
-                  ],
-                  [
-                    -7.4,
-                    -1.43
+                    -7.5,
+                    -1.49
                   ]
                 ]
               },
@@ -1084,7 +982,7 @@
           "box": [
             [
               -7,
-              6,
+              9,
               -3
             ],
             [
@@ -1098,6 +996,17 @@
       ],
       "parent": "ll",
       "joint": "knee"
+    },
+    {
+      "name": "ll_calf",
+      "parent": "ll_shin",
+      "loc": "LL",
+      "pivot": [
+        -5,
+        8,
+        0
+      ],
+      "shapes": []
     },
     {
       "name": "ll_tarsus",
@@ -1154,7 +1063,7 @@
           "mat": "armor"
         }
       ],
-      "parent": "ll_shin",
+      "parent": "ll_calf",
       "joint": "hock"
     },
     {
@@ -1337,7 +1246,7 @@
     {
       "name": "rl",
       "mirror": "ll",
-      "parent": ""
+      "parent": "ct"
     },
     {
       "name": "rl_shin",
@@ -1345,9 +1254,14 @@
       "parent": "rl"
     },
     {
+      "name": "rl_calf",
+      "parent": "rl_shin",
+      "mirror": "ll_calf"
+    },
+    {
       "name": "rl_tarsus",
       "mirror": "ll_tarsus",
-      "parent": "rl_shin"
+      "parent": "rl_calf"
     },
     {
       "name": "rl_foot",
