@@ -716,21 +716,6 @@
             ]
           ],
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -9,
-              31,
-              3
-            ],
-            [
-              -7,
-              34,
-              6
-            ]
-          ],
-          "mat": "plate"
         }
       ]
     },
@@ -883,6 +868,21 @@
             ]
           },
           "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -13,
+              26,
+              -3
+            ],
+            [
+              -9,
+              32,
+              3
+            ]
+          ],
+          "mat": "joint"
         }
       ]
     },
@@ -1033,17 +1033,17 @@
         {
           "box": [
             [
-              -12,
-              19,
-              2
+              -13,
+              22,
+              -3
             ],
             [
-              -10,
-              21,
+              -9,
+              27,
               3
             ]
           ],
-          "mat": "plate"
+          "mat": "joint"
         }
       ]
     },
@@ -1802,5 +1802,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (raptor_beak), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry."
+  "notes": "Individual reference-oriented shape study (raptor_beak), 30 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods."
 }
