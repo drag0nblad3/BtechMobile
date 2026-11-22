@@ -21,6 +21,7 @@ static func audit(model: VxModel) -> Dictionary:
 		var name: String = part["name"]
 		var cells: Dictionary = part["cells"]
 		var sizes := _islands(cells)
+		var disconnected_samples := _island_samples(cells) if sizes.size() > 1 else []
 		var parent_name: String = part.get("parent", "")
 		var parent_contacts := -1
 		if parent_name != "":
@@ -41,6 +42,7 @@ static func audit(model: VxModel) -> Dictionary:
 			"voxels": cells.size(),
 			"islands": sizes.size(),
 			"island_sizes": sizes,
+			"island_samples": disconnected_samples,
 			"parent_contacts": parent_contacts,
 			"pivot": [pivot.x, pivot.y, pivot.z]
 		}
@@ -88,4 +90,38 @@ static func _islands(cells: Dictionary) -> Array[int]:
 		groups.append(queue.size())
 	groups.sort()
 	groups.reverse()
+	return groups
+
+
+## The audit reports a representative cell from each disconnected island,
+## with its dimensions. This makes repairing a detail possible without
+## merging unrelated guns or covering the entire component with solid armor.
+static func _island_samples(cells: Dictionary) -> Array[Dictionary]:
+	var unseen := cells.duplicate()
+	var groups: Array[Dictionary] = []
+	while not unseen.is_empty():
+		var origin: Vector3i = unseen.keys()[0]
+		var queue: Array[Vector3i] = [origin]
+		unseen.erase(origin)
+		var lo := origin
+		var hi := origin
+		var i := 0
+		while i < queue.size():
+			var c: Vector3i = queue[i]
+			i += 1
+			lo = Vector3i(mini(lo.x, c.x), mini(lo.y, c.y), mini(lo.z, c.z))
+			hi = Vector3i(maxi(hi.x, c.x), maxi(hi.y, c.y), maxi(hi.z, c.z))
+			for d: Vector3i in DELTAS:
+				var n: Vector3i = c + d
+				if unseen.has(n):
+					unseen.erase(n)
+					queue.append(n)
+		groups.append({
+			"size": queue.size(),
+			"sample": [origin.x, origin.y, origin.z],
+			"min": [lo.x, lo.y, lo.z],
+			"max": [hi.x, hi.y, hi.z]
+		})
+	groups.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return int(a["size"]) > int(b["size"]))
 	return groups
