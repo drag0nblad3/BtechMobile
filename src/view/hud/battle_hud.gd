@@ -72,16 +72,23 @@ func _ready() -> void:
 	var col := VBoxContainer.new()
 	col.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	root.add_child(col)
-	var top := _row(col)
-	status = _label(top)
+	var heading := _row(col)
+	status = _label(heading)
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_button(top, "Save", save_battle)
-	_button(top, "Replay", watch_replay)
-	_button(top, "Log", log_toggled)
-	_button(top, "Sheet", sheet_toggled)
-	explain_button = _button(top, "Explain", explain_cycled)
-	_button(top, "Map View", top_down_toggled)
-	cinematic_button = _button(top, "Cine: Off", cinematic_toggled)
+	# Give the full battle status its own line: seven 140px buttons and a
+	# turn/mission label cannot fit side by side at 1280x720 on a phone.
+	var shortcuts := _row(col)
+	shortcuts.add_theme_constant_override("separation", 6)
+	_button(shortcuts, "Save", save_battle)
+	_button(shortcuts, "Replay", watch_replay)
+	_button(shortcuts, "Log", log_toggled)
+	_button(shortcuts, "Sheet", sheet_toggled)
+	explain_button = _button(shortcuts, "Explain", explain_cycled)
+	_button(shortcuts, "Map View", top_down_toggled)
+	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
+	for b: Button in shortcuts.get_children():
+		b.custom_minimum_size = Vector2(120, 54)
+		b.add_theme_font_size_override("font_size", 20)
 	info = _label(col)
 	var middle := _row(col)
 	middle.size_flags_vertical = Control.SIZE_EXPAND_FILL
