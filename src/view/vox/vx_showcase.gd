@@ -76,6 +76,54 @@ const MODELS := [
 	"res://data/voxels/mad_dog.json",
 	"res://data/voxels/shadow_cat_shape.json",
 	"res://data/voxels/shadow_cat.json",
+	"res://data/voxels/annihilator_shape.json",
+	"res://data/voxels/annihilator.json",
+	"res://data/voxels/nightstar_shape.json",
+	"res://data/voxels/nightstar.json",
+	"res://data/voxels/dire_wolf_shape.json",
+	"res://data/voxels/dire_wolf.json",
+	"res://data/voxels/warhawk_shape.json",
+	"res://data/voxels/warhawk.json",
+	"res://data/voxels/grasshopper_shape.json",
+	"res://data/voxels/grasshopper.json",
+	"res://data/voxels/quickdraw_shape.json",
+	"res://data/voxels/quickdraw.json",
+	"res://data/voxels/dragon_shape.json",
+	"res://data/voxels/dragon.json",
+	"res://data/voxels/trebuchet_shape.json",
+	"res://data/voxels/trebuchet.json",
+	"res://data/voxels/cicada_shape.json",
+	"res://data/voxels/cicada.json",
+	"res://data/voxels/commando_shape.json",
+	"res://data/voxels/commando.json",
+	"res://data/voxels/javelin_shape.json",
+	"res://data/voxels/javelin.json",
+	"res://data/voxels/fire_moth_shape.json",
+	"res://data/voxels/fire_moth.json",
+	"res://data/voxels/mist_lynx_shape.json",
+	"res://data/voxels/mist_lynx.json",
+	"res://data/voxels/banshee_shape.json",
+	"res://data/voxels/banshee.json",
+	"res://data/voxels/cyclops_shape.json",
+	"res://data/voxels/cyclops.json",
+	"res://data/voxels/mauler_shape.json",
+	"res://data/voxels/mauler.json",
+	"res://data/voxels/enforcer_shape.json",
+	"res://data/voxels/enforcer.json",
+	"res://data/voxels/blackjack_shape.json",
+	"res://data/voxels/blackjack.json",
+	"res://data/voxels/crusader_shape.json",
+	"res://data/voxels/crusader.json",
+	"res://data/voxels/cataphract_shape.json",
+	"res://data/voxels/cataphract.json",
+	"res://data/voxels/ostsol_shape.json",
+	"res://data/voxels/ostsol.json",
+	"res://data/voxels/ostroc_shape.json",
+	"res://data/voxels/ostroc.json",
+	"res://data/voxels/gargoyle_shape.json",
+	"res://data/voxels/gargoyle.json",
+	"res://data/voxels/stormcrow_shape.json",
+	"res://data/voxels/stormcrow.json",
 ]
 
 var mech: VxMech
@@ -109,6 +157,12 @@ func reset() -> void:
 	unit = Unit.new(1, UnitDb.load_dir().get_def(mech.model.unit_id), 0, Vector2i.ZERO, 0)
 	mech.show_unit(unit)
 	_make_hud()
+
+
+func prev_mech() -> void:
+	_model_index = posmod(_model_index - 1, MODELS.size())
+	_last = "Tap a button. Hits use the real hit table and damage rules."
+	reset()
 
 
 func next_mech() -> void:
@@ -170,7 +224,7 @@ func _make_hud() -> void:
 	var top := VBoxContainer.new()
 	top.position = Vector2(16, 12)
 	_hud.add_child(top)
-	UiKit.label(top, "CLAUDE VOXEL TEST · %s" % mech.model.name, UiKit.SMALL)
+	UiKit.label(top, "CLAUDE VOXEL TEST · %s (%d/%d)" % [mech.model.name, _model_index + 1, MODELS.size()], UiKit.SMALL)
 	info = UiKit.label(top, "", 16)
 	info.custom_minimum_size.x = 760
 	var rows := VBoxContainer.new()
@@ -191,6 +245,7 @@ func _make_hud() -> void:
 	if mech.model.can_punch:
 		_button(a, "PUNCH", func(): mech.anim.punch(1))
 	_button(a, "KICK", func(): mech.anim.kick(0))
+	_button(a, "PREV MECH", prev_mech)
 	_button(a, "NEXT MECH", next_mech).name = "VxNext"
 	for w in mech.model.weapons:
 		_button(b, w["label"], fire.bind(w))

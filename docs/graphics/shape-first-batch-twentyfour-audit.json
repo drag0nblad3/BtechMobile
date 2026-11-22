@@ -1,0 +1,554 @@
+[
+  {
+    "id": "annihilator",
+    "unit": "annihilator_anh2a",
+    "low": {
+      "cells": 4594,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4594,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 124038,
+    "audit_ok": true,
+    "signature_bores": 4
+  },
+  {
+    "id": "nightstar",
+    "unit": "nightstar_nsr9j",
+    "low": {
+      "cells": 4473,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4473,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 120771,
+    "audit_ok": true,
+    "signature_bores": 3
+  },
+  {
+    "id": "dire_wolf",
+    "unit": "dire_wolf_prime",
+    "low": {
+      "cells": 4556,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4556,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 123012,
+    "audit_ok": true,
+    "signature_bores": 24
+  },
+  {
+    "id": "warhawk",
+    "unit": "warhawk_prime",
+    "low": {
+      "cells": 4574,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4574,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 123498,
+    "audit_ok": true,
+    "signature_bores": 5
+  },
+  {
+    "id": "grasshopper",
+    "unit": "grasshopper_ghr5h",
+    "low": {
+      "cells": 4563,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4563,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 123201,
+    "audit_ok": true,
+    "signature_bores": 8
+  },
+  {
+    "id": "quickdraw",
+    "unit": "quickdraw_qkd4g",
+    "low": {
+      "cells": 4623,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4623,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 124821,
+    "audit_ok": true,
+    "signature_bores": 16
+  },
+  {
+    "id": "dragon",
+    "unit": "dragon_drg1n",
+    "low": {
+      "cells": 4326,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4326,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 116802,
+    "audit_ok": true,
+    "signature_bores": 12
+  },
+  {
+    "id": "trebuchet",
+    "unit": "trebuchet_tbt5n",
+    "low": {
+      "cells": 4649,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4649,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 125523,
+    "audit_ok": true,
+    "signature_bores": 32
+  },
+  {
+    "id": "cicada",
+    "unit": "cicada_cda2a",
+    "low": {
+      "cells": 4431,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4431,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 119637,
+    "audit_ok": true,
+    "signature_bores": 3
+  },
+  {
+    "id": "commando",
+    "unit": "commando_com2d",
+    "low": {
+      "cells": 4612,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4612,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 124524,
+    "audit_ok": true,
+    "signature_bores": 11
+  },
+  {
+    "id": "javelin",
+    "unit": "javelin_jvn10n",
+    "low": {
+      "cells": 4524,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4524,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 122148,
+    "audit_ok": true,
+    "signature_bores": 12
+  },
+  {
+    "id": "fire_moth",
+    "unit": "fire_moth_prime",
+    "low": {
+      "cells": 4530,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4530,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 122310,
+    "audit_ok": true,
+    "signature_bores": 12
+  },
+  {
+    "id": "mist_lynx",
+    "unit": "mist_lynx_prime",
+    "low": {
+      "cells": 4725,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4725,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 127575,
+    "audit_ok": true,
+    "signature_bores": 14
+  },
+  {
+    "id": "banshee",
+    "unit": "banshee_bnc3e",
+    "low": {
+      "cells": 4577,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4577,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 123579,
+    "audit_ok": true,
+    "signature_bores": 2
+  },
+  {
+    "id": "cyclops",
+    "unit": "cyclops_cp10z",
+    "low": {
+      "cells": 4508,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4508,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 121716,
+    "audit_ok": true,
+    "signature_bores": 15
+  },
+  {
+    "id": "mauler",
+    "unit": "mauler_mal1r",
+    "low": {
+      "cells": 4441,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4441,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 119907,
+    "audit_ok": true,
+    "signature_bores": 32
+  },
+  {
+    "id": "enforcer",
+    "unit": "enforcer_enf4r",
+    "low": {
+      "cells": 4429,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4429,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 119583,
+    "audit_ok": true,
+    "signature_bores": 2
+  },
+  {
+    "id": "blackjack",
+    "unit": "blackjack_bj1",
+    "low": {
+      "cells": 4397,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4397,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 118719,
+    "audit_ok": true,
+    "signature_bores": 4
+  },
+  {
+    "id": "crusader",
+    "unit": "crusader_crd3r",
+    "low": {
+      "cells": 4493,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4493,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 121311,
+    "audit_ok": true,
+    "signature_bores": 42
+  },
+  {
+    "id": "cataphract",
+    "unit": "cataphract_ctf1x",
+    "low": {
+      "cells": 4420,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4420,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 119340,
+    "audit_ok": true,
+    "signature_bores": 3
+  },
+  {
+    "id": "ostsol",
+    "unit": "ostsol_otl4d",
+    "low": {
+      "cells": 4094,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4094,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 110538,
+    "audit_ok": true,
+    "signature_bores": 4
+  },
+  {
+    "id": "ostroc",
+    "unit": "ostroc_osr2c",
+    "low": {
+      "cells": 4190,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4190,
+      "parts": 12,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 113130,
+    "audit_ok": true,
+    "signature_bores": 5
+  },
+  {
+    "id": "gargoyle",
+    "unit": "gargoyle_prime",
+    "low": {
+      "cells": 4347,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 4347,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 117369,
+    "audit_ok": true,
+    "signature_bores": 12
+  },
+  {
+    "id": "stormcrow",
+    "unit": "stormcrow_prime",
+    "low": {
+      "cells": 3944,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high": {
+      "cells": 3944,
+      "parts": 14,
+      "overlaps": 0,
+      "islands": {},
+      "parent_gaps": [],
+      "miss": []
+    },
+    "high_voxels_projected": 106488,
+    "audit_ok": true,
+    "signature_bores": 5
+  }
+]
