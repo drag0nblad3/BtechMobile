@@ -101,18 +101,27 @@
  makeArmor(unit, base, cfg={}) {
    const d=JSON.parse(JSON.stringify(base));
    d.id=unit.id;d.name=unit.name;d.official_unit=unit.id;
-   d.asset_kind="battle_armor";d.motive=cfg.isStandard?"f":"j";
+   d.asset_kind="battle_armor";d.motive=unit.battle_armor?.jump_mp>0?"j":"f";
    d.voxel_cap=50000;d.exclusive_parts=true;
    d.art_quality_revision="silhouette-and-weapon-clarity-20261121";
    delete d.count_verified_fine_voxels;
    const troopers=Math.max(1,Math.min(6,unit.battle_armor?.troopers||5));
    d.parts=d.parts.slice(0,troopers);
-   const gear=JSON.stringify(unit.equipment||{}).toLowerCase(),typ=/flamer/.test(gear)?"flamer":/machine_gun|mg/.test(gear)?"mg":/gauss/.test(gear)?"gauss":"laser";
+   const gear=JSON.stringify(unit.battle_armor?.weapons||unit.equipment||{}).toLowerCase(),typ=/flamer/.test(gear)?"flamer":/machine_gun|mg/.test(gear)?"mg":/gauss/.test(gear)?"gauss":"laser";
    for(const part of d.parts){
      const first=part.shapes[2]?.box?.[0]||[0,7,0],x=(first[0]+3),z=first[2]-3;
      const gunLen=typ==="gauss"?9:typ==="flamer"?5:7;
      part.shapes.push({box:[[x+1,8,z-gunLen],[x+2,9,z]],mat:"frame"});
      part.shapes.push({erase:[[x+1,8,z-gunLen],[x+1,8,z-gunLen+2]]});
+     if(typ==="mg"){
+       part.shapes.push({box:[[x+3,8,z-gunLen],[x+3,8,z]],mat:"frame"});
+     }else if(typ==="flamer"){
+       part.shapes.push({box:[[x+1,9,z-1],[x+3,10,z+2]],mat:"armor"});
+       part.shapes.push({erase:[[x+1,9,z-gunLen],[x+1,9,z-gunLen+1]]});
+     }else if(typ==="gauss"){
+       part.shapes.push({box:[[x+1,9,z-4],[x+3,11,z-1]],mat:"armor"});
+     }
+
      if(cfg.isStandard){
        // IS standard: lower, square shoulder plates and no oversized Clan jump pack.
        part.shapes.push({box:[[x-4,10,z+2],[x-2,12,z+4]],mat:"armor"});
