@@ -1,0 +1,344 @@
+name: Temporary MegaMek BV verification
+on:
+  push:
+    branches:
+      - feature/add-missing-official-meks-batch02-20261122
+concurrency:
+  group: temp-megamek-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  bv:
+    if: ${{ !startsWith(github.event.head_commit.message, 'Batch 02:') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: MegaMek/mm-data
+          path: mm-data
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compute actual MegaMek battle values
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/mm
+          curl -fLSs --retry 3 https://github.com/MegaMek/megamek/releases/download/v0.51.01.12/MegaMek-0.51.01.12.tar.gz -o /tmp/mm.tar.gz
+          tar -xzf /tmp/mm.tar.gz -C /tmp/mm
+          JAR=$(find /tmp/mm -name MegaMek.jar -type f | head -1)
+          test -n "$JAR"
+          ROOT=$(dirname "$JAR")
+          echo "Using MegaMek at $ROOT"
+          cat >/tmp/BVScan.java <<'JAVA'
+          import java.io.*;
+          import java.nio.file.*;
+          import megamek.common.loaders.MekFileParser;
+          import megamek.common.units.Entity;
+          public class BVScan {
+              public static void main(String[] args) throws Exception {
+                  for (String filename : Files.readAllLines(Path.of(args[0]))) {
+                      try {
+                          Entity e = new MekFileParser(new File(filename)).getEntity();
+                          System.out.println("MEK_BV|" + filename + "|" + e.calculateBattleValue(true,true));
+                      } catch (Throwable x) {
+                          System.out.println("MEK_ERR|" + filename + "|" + x.toString());
+                      }
+                  }
+              }
+          }
+          JAVA
+          CP=$(find /tmp/mm -type f -name '*.jar' -print | paste -sd ':' -)
+          javac -cp "$CP" /tmp/BVScan.java
+          for dir in '3039u' '3050U' '3055U' '3058Uu' '3060u' '3067' '3075'; do
+            find "mm-data/data/mekfiles/meks/$dir" -type f -name '*.mtf'
+          done | sort > /tmp/bv-paths.txt
+          echo "Processing $(wc -l < /tmp/bv-paths.txt) source designs"
+          sed -i "s|^mm-data/|$GITHUB_WORKSPACE/mm-data/|" /tmp/bv-paths.txt
+          cd "$ROOT"
+          timeout 800s java -Xmx4g -cp "/tmp:$CP" BVScan /tmp/bv-paths.txt | tee /tmp/bv-results.txt
+          echo "BVs computed: $(grep -c '^MEK_BV' /tmp/bv-results.txt || true)"
+          test "$(grep -c '^MEK_BV' /tmp/bv-results.txt || true)" -gt 500
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: megamek-bv-source-verification
+          path: /tmp/bv-results.txt
+          if-no-files-found: ignore
+
+      - name: Generate strict-valid designs with temporary converter outside repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/bt_import.py <<'PYIMPORT'
+          import json, re, math, pathlib, collections
+          
+          ROOT=pathlib.Path.cwd()
+          DATA=ROOT/'mm-data/data/mekfiles/meks'
+          OUTPUT=ROOT/'data/units'
+          W=json.loads((ROOT/'data/weapons.json').read_text())['weapons']
+          ENGINE=json.loads((ROOT/'data/construction.json').read_text())['engine_tons']
+          DIRS=['3039u','3050U','3055U','3058Uu','3060u','3067','3075']
+          ROLE_DESC={'Scout':'quick reconnaissance','Striker':'mobile direct fire','Missile Boat':'long-range missiles','Brawler':'close-range firepower','Skirmisher':'mobile combined arms','Juggernaut':'heavy assault','Sniper':'long-range fire','Ambusher':'close-range surprise attacks'}
+          LOCS={'Left Arm':'LA','Right Arm':'RA','Left Torso':'LT','Right Torso':'RT','Center Torso':'CT','Head':'HD','Left Leg':'LL','Right Leg':'RL'}
+          SIMPLE_SKIP={'shoulder','upperarmactuator','lowerarmactuator','handactuator','hip','upperlegactuator','lowerlegactuator','footactuator','lifesupport','sensors','cockpit','gyro','fusionengine','xlengine'}
+          def key(s): return re.sub(r'[^a-z0-9]','',s.lower())
+          def snake(s): return re.sub(r'^_|_$','',re.sub(r'[^a-z0-9]+','_',s.lower()))
+          def field(s,n):
+              m=re.search(r'^'+re.escape(n)+r':\s*(.*)$',s,re.M|re.I)
+              return m.group(1).strip() if m else ''
+          def halfup(x): return math.ceil((x-1e-8)*2)/2
+          def equipkey(s): 
+              x=key(s.replace('(R)',''))
+              if x.startswith('inner sphere'): x=x[11:]
+              if x.startswith('clan'): x=x[4:]
+              if x.startswith('is') and len(x)>2: x=x[2:]
+              if x.startswith('cl') and len(x)>2: x=x[2:]
+              return x
+          LOOKUP={}
+          for w in W:
+              if w['id'].startswith('c_'): continue
+              LOOKUP[key(w['name'])]=w
+              LOOKUP[key(w['id'])]=w
+          for n in [2,5,10,20]:
+              w=next((x for x in W if x['id']==f'lb{n}x_ac'),None)
+              if w:
+                  for s in [f'lbxac{n}',f'lb{n}xac',f'lbx{n}ac',f'lb{n}x']:
+                      LOOKUP[s]=w
+          for n in [2,5,10,20]:
+              w=LOOKUP.get('ac'+str(n))
+              if w: LOOKUP['autocannon'+str(n)]=w
+          for a,b in {'mg':'machine_gun','antimissilesystem':'ams','isams':'ams','gaussrifle':'gauss','narcbeacon':'narc'}.items():
+              w=next((x for x in W if x['id']==b),None)
+              if w: LOOKUP[a]=w
+          def resolve(s):
+              k=equipkey(s)
+              return LOOKUP.get(k)
+          def ammo_item(s):
+              t=s.strip()
+              if not re.search(r'\bammo\b',t,re.I) and not re.search(r'(?:^IS|^CL)[A-Za-z0-9\- ]*Ammo\b',t):
+                  return None
+              t=re.sub(r'^(?:IS|CL)\s*Ammo\s*','',t,flags=re.I)
+              if t==s.strip():
+                  t=re.sub(r'^(?:IS|CL)\s*','',t,flags=re.I)
+                  t=re.sub(r'\s*Ammo\b.*$','',t,flags=re.I)
+              t=re.sub(r'\s*-\s*Full\b.*$','',t,flags=re.I)
+              half=bool(re.search(r'Half',s,re.I))
+              t=re.sub(r'\s*-\s*Half\b.*$','',t,flags=re.I)
+              kind=''
+              if re.search('cluster',t,re.I):
+                  kind=':cluster'
+                  t=re.sub('cluster','',t,flags=re.I)
+                  if re.search(r'(?:LB.?X)\s*$',t,re.I): t+=' AC'
+              if re.search(r'inferno|arrow.?iv.?cluster',s,re.I): return ('error','unsupported ammo '+s)
+              w=resolve(t)
+              if not w:
+                  # Legacy labels: "AC/20", "LRM-10", "Streak SRM-2", "MG"
+                  w=resolve(t.replace(' - ',' ').replace('-',' '))
+              if not w: return ('error','unknown ammo '+s)
+              return ('ammo:'+w['id']+kind+(':half' if half else ''),.5 if half else 1,w['id'])
+          def load_mtf(path,bvs):
+              rel='data/mekfiles/meks/'+str(path.relative_to(DATA))
+              bv=bvs.get(rel)
+              if not bv: raise ValueError('missing calculator BV')
+              raw=path.read_text(errors='replace')
+              head=re.split(r'^(?:overview|capabilities|deployment|history):',raw,maxsplit=1,flags=re.I|re.M)[0]
+              chassis=field(head,'chassis')
+              model=field(head,'model')
+              mass=int(field(head,'mass'))
+              walk=int(field(head,'walk mp')); jump=int(field(head,'jump mp'))
+              if not chassis or not model: raise ValueError('missing chassis/model')
+              if field(head,'Config')!='Biped': raise ValueError('not a standard biped')
+              if field(head,'techbase')!='Inner Sphere': raise ValueError('not plain IS tech')
+              if re.search(r'^quirk:prototype\b',head,re.M|re.I): raise ValueError('prototype')
+              if re.search(r'(?i)primitive|industrial|prototype|quadvee|tripod|lam\b',field(head,'engine')+' '+field(head,'structure')+' '+field(head,'armor')): raise ValueError('unsupported chassis')
+              engine=field(head,'engine')
+              mt=re.fullmatch(r'(\d+) (Fusion|XL) Engine',engine)
+              if not mt or int(mt.group(1))!=mass*walk: raise ValueError('unsupported/incorrect engine')
+              struct=field(head,'structure')
+              armor_type=field(head,'armor')
+              if struct not in ('IS Standard','IS Endo Steel'): raise ValueError('unsupported structure')
+              if armor_type not in ('Standard(Inner Sphere)','Ferro-Fibrous(Inner Sphere)'): raise ValueError('unsupported armor')
+              hs=field(head,'heat sinks'); mh=re.fullmatch(r'(\d+) (Single|IS Double)',hs)
+              if not mh: raise ValueError('unsupported heat sinks')
+              heat=int(mh.group(1)); double=mh.group(2)!='Single'
+              if re.search(r'^(?:cockpit|gyro|myomer):.*(?:torso|command|primitive|prototype|superheavy)',head,re.I|re.M):
+                  raise ValueError('unsupported cockpit or gyro')
+              if 'RSFP:' in field(head,'published') or 'RS:Mercenaries' in field(head,'published'):
+                  raise ValueError('free record sheet may require printed BV verification')
+              # Preserve exact critical slot order; ignore any written unit description.
+              slots={x:[] for x in LOCS.values()}
+              current=None
+              for rawline in head.splitlines():
+                  line=rawline.strip()
+                  if line.endswith(':') and line[:-1] in LOCS:
+                      current=LOCS[line[:-1]];continue
+                  if current and line and line!='-Empty-':
+                      slots[current].append(line)
+              if not any(slots.values()): raise ValueError('no critical slots')
+              ar={loc:int(field(head,loc+' armor')) for loc in ['LA','RA','LT','RT','CT','HD','LL','RL']}
+              rear={loc:int(field(head,rloc+' armor')) for loc,rloc in [('LT','RTL'),('RT','RTR'),('CT','RTC')]}
+              eq={}; missing={}; gun_count=0; gun_tons=0; ammo_tons=0; ctons=0; jj=0; hs_slots=0
+              ammo_kinds=[]; guns=[]; bulk=collections.Counter()
+              for loc,lines in slots.items():
+                  out=[]; used=0; fixed=5 if loc=='HD' else (10 if loc=='CT' else (3 if loc in ('LT','RT') and mt.group(2)=='XL' else (4 if loc in ('LA','RA','LL','RL') else 0)))
+                  if loc in ('LA','RA'):
+                      act={'shoulder':'Shoulder','upper_arm':'Upper Arm Actuator','lower_arm':'Lower Arm Actuator','hand':'Hand Actuator'}
+                      absent=[k for k,v in act.items() if v not in lines]
+                      if absent: missing[loc]=absent; fixed-=len(absent)
+                  i=0
+                  while i<len(lines):
+                      item=lines[i]; k=key(item); nk=equipkey(item)
+                      if k in SIMPLE_SKIP or nk in SIMPLE_SKIP: i+=1; continue
+                      if nk in ('heatsink','singleheatsink'):
+                          out.append('heat_sink'); hs_slots+=1;used+=1;i+=1;continue
+                      if nk=='doubleheatsink':
+                          run=0
+                          while i+run<len(lines) and lines[i+run]==item: run+=1
+                          if run%3: raise ValueError(loc+' broken double sink slots '+str(run))
+                          out.extend(['heat_sink']*(run//3));hs_slots+=run//3; used+=run;i+=run;continue
+                      if nk in ('jumpjet','standardjumpjet'):
+                          out.append('jump_jet');jj+=1;used+=1;i+=1;continue
+                      if nk=='endosteel':
+                          out.append('endo_steel');bulk['endo_steel']+=1;used+=1;i+=1;continue
+                      if nk=='ferrofibrous':
+                          out.append('ferro_fibrous');bulk['ferro_fibrous']+=1;used+=1;i+=1;continue
+                      if nk=='case':
+                          out.append('case');used+=1;ctons+=.5;i+=1;continue
+                      if nk=='caseii':
+                          out.append('case2');used+=1;ctons+=1;i+=1;continue
+                      a=ammo_item(item)
+                      if a is not None:
+                          if a[0]=='error': raise ValueError(loc+' '+a[1])
+                          out.append(a[0]);ammo_tons+=a[1];used+=1;ammo_kinds.append(a[2]);i+=1;continue
+                      w=resolve(item)
+                      if w is None: raise ValueError(loc+' unsupported item '+item)
+                      # Critical slots of one mounted weapon are contiguous. Distinct 1-slot guns repeat normally.
+                      run=0
+                      while i+run<len(lines) and lines[i+run]==item: run+=1
+                      ns=int(w['slots'])
+                      if run%ns: raise ValueError(loc+' split or mismatched weapon '+item+': '+str(run)+'/'+str(ns))
+                      for unused in range(run//ns):
+                          out.append(w['id']+('@rear' if re.search(r'\(R\)\s*$',item) else ''))
+                          guns.append(w);gun_tons+=float(w['tons']);gun_count+=1
+                      used+=run;i+=run
+                  bound=6 if loc in ('HD','LL','RL') else 12
+                  if used+fixed>bound: raise ValueError(loc+' critical slots exceed '+str(bound)+': '+str(used+fixed))
+                  if out:
+                      compressed=[];i=0
+                      while i<len(out):
+                          j=i+1
+                          while j<len(out) and out[j]==out[i]: j+=1
+                          compressed.append(out[i]+('*'+str(j-i) if j-i>1 else ''))
+                          i=j
+                      eq[loc]=compressed
+              if bulk['endo_steel'] != (14 if struct=='IS Endo Steel' else 0): raise ValueError('endo slots incorrect '+str(bulk))
+              if bulk['ferro_fibrous'] != (14 if armor_type.startswith('Ferro') else 0): raise ValueError('ferro slots incorrect '+str(bulk))
+              guns_expected=int(field(head,'Weapons'))
+              if gun_count!=guns_expected: raise ValueError('weapon count mismatch '+str(gun_count)+' vs '+str(guns_expected))
+              if jj != jump: raise ValueError('jump jets mismatch')
+              if not max(0,heat-(mass*walk//25))<=hs_slots<=heat: raise ValueError('heat sink slots mismatch '+str(hs_slots)+' total '+str(heat))
+              if not gun_count: raise ValueError('no weapons')
+              for gun in guns:
+                  if gun.get('ammo_per_ton') and gun['id'] not in ammo_kinds and not gun.get('one_shot'):
+                      raise ValueError('missing ammo for '+gun['id'])
+              points=sum(ar.values())+sum(rear.values())
+              armor_t=halfup(points/(16*(1.12 if armor_type.startswith('Ferro') else 1)))
+              struct_t=halfup(mass/10*(.5 if struct=='IS Endo Steel' else 1))
+              rating=mass*walk
+              engine_t=float(ENGINE.get(str(rating),-1))
+              if engine_t<=0: raise ValueError('engine not in table')
+              engine_t*=.5 if mt.group(2)=='XL' else 1
+              ton=struct_t+engine_t+math.ceil(rating/100)+3+max(0,heat-10)+jump*(.5 if mass<=55 else (1 if mass<=85 else 2))+armor_t+gun_tons+ammo_tons+ctons
+              if ton>mass+1e-6 or ton<mass-1.0-1e-6: raise ValueError('weight mismatch %.2f vs %d'%(ton,mass))
+              unit={'id':snake(chassis)+'_'+key(model),'name':chassis,'model':model,'tonnage':mass,'walk_mp':walk,'jump_mp':jump,'heat_sinks':heat}
+              if double:unit['heat_sink_type']='double'
+              if mt.group(2)=='XL':unit['engine_type']='xl'
+              if struct=='IS Endo Steel':unit['structure_type']='endo_steel'
+              if armor_type.startswith('Ferro'):unit['armor_type']='ferro_fibrous'
+              unit['armor']=ar;unit['rear_armor']=rear
+              if missing:unit['missing_actuators']=missing
+              unit['equipment']=eq
+              role=field(head,'role') or 'Skirmisher'
+              weapon_names=collections.Counter(w['name'] for w in guns)
+              summary=', '.join((str(n)+'x ' if n>1 else '')+w for w,n in weapon_names.items())
+              unit['role']=role+': '+ROLE_DESC.get(role,'combined battlefield combat')+'. '+summary+f'; walks {walk}, runs {math.ceil(walk*1.5)}'+(f', jumps {jump}' if jump else '')+'.'
+              unit['sprite']=snake(chassis)
+              unit['source']={'mul_id':int(field(head,'mul id')),'megamek':rel,'published':field(head,'published'),'role':role,'bv':'megamek','megamek_bv':bv}
+              unit['bv']=bv
+              return unit
+          
+          def main():
+              bvs={}
+              for line in pathlib.Path('/tmp/bv-results.txt').read_text().splitlines():
+                  m=re.match(r'MEK_BV\|.*?/data/mekfiles/meks/(.*?)\|(\d+)$',line)
+                  if m: bvs['data/mekfiles/meks/'+m.group(1)]=int(m.group(2))
+              assert len(bvs)>500,len(bvs)
+              known_names=set();known_ids=set()
+              for path in OUTPUT.glob('*.json'):
+                  d=json.loads(path.read_text());known_names.add(key(d['name']));known_ids.add(d['id'])
+              allc=collections.defaultdict(list)
+              for p in (p for di in DIRS for p in (DATA/di).rglob('*.mtf')):
+                  try:
+                      raw=p.read_text(errors='replace')
+                      chassis=field(raw,'chassis')
+                      if not chassis or key(chassis) in known_names: continue
+                      model=field(raw,'model')
+                      year=int(field(raw,'era') or '9999')
+                      prefer=0 if re.match(r'^(?:[A-Z]{1,6}[- ]?\d|Prime$)',model) else 1
+                      allc[key(chassis)].append((DIRS.index(p.relative_to(DATA).parts[0]),year,prefer,str(p),p))
+                  except (ValueError,OSError): pass
+              accepted=[];failed=collections.Counter();seen=set()
+              for ch,options in sorted(allc.items(),key=lambda kv:(min(x[0] for x in kv[1]),min(x[1] for x in kv[1]),kv[0])):
+                  if len(accepted)>=50:break
+                  for _dir,_year,_prefer,_path,path in sorted(options):
+                      try: unit=load_mtf(path,bvs)
+                      except Exception as e:failed[str(e)]+=1;continue
+                      if unit['id'] in known_ids or unit['id'] in seen: continue
+                      out=OUTPUT/(unit['id']+'.json')
+                      if out.exists():continue
+                      out.write_text(json.dumps(unit,indent=2,ensure_ascii=False)+'\n')
+                      seen.add(unit['id']);accepted.append(unit)
+                      print('IMPORTED|%s|%s %s|BV %d|%s'%(unit['id'],unit['name'],unit['model'],unit['bv'],unit['source']['megamek']),flush=True)
+                      break
+              print('IMPORTED_TOTAL|%d|candidates=%d|verified_bvs=%d'%(len(accepted),len(allc),len(bvs)),flush=True)
+              print('SKIPPED_TOP|%s'%failed.most_common(25),flush=True)
+              if len(accepted)<40: raise SystemExit('Not enough strict-valid designs to make a batch')
+          if __name__=='__main__':main()
+          
+          PYIMPORT
+          python3 /tmp/bt_import.py | tee /tmp/import-results.txt
+      - name: Keep MegaMek source tree outside the Godot import scan
+        run: mv mm-data /tmp/megamek-source-checkout
+      - name: Install Godot and run all requested precommit checks
+        shell: bash
+        run: |
+          set -euo pipefail
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip -O /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.5.1-stable_linux.x86_64
+          mv /tmp/Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+          godot --headless --import
+          godot --headless -s tests/run_tests.gd
+          godot --headless --quit-after 30
+          godot --headless -s tools/ui_smoke.gd
+      - name: Commit and push validated new data only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "BattleTech data importer"
+          git config user.email "data-import@users.noreply.github.com"
+          git add data/units
+          test "$(git diff --cached --name-only | wc -l)" -ge 40
+          git commit -m "Batch 02: import source-verified official BattleMechs"
+          git push origin HEAD:"$GITHUB_REF_NAME"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: batch02-import-diagnostics
+          path: /tmp/import-results.txt
+          if-no-files-found: ignore
