@@ -845,7 +845,24 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "box": [
+            [
+              7,
+              34,
+              0
+            ],
+            [
+              7,
+              34,
+              0
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "la",
@@ -1718,5 +1735,6 @@
   "art_quality_passes": 50,
   "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "part_connectivity_revision": "six-face-refit-20261122"
 }
