@@ -35,6 +35,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if w.def.ams:
 		th.impossible = "Anti-missile system: it shoots down incoming missiles on its own"
 		return th
+	if ApolloSaturation.on(w):
+		return ApolloSaturation.to_hit(state, attacker, w, target.coord)
 	if w.mode == PpcCapacitor.CHARGE:
 		th.impossible = "%s is charging its capacitor instead of firing" % w.def.name
 		return th

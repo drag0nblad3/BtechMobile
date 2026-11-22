@@ -30,6 +30,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaLegAttack.is_leg_attack(w):
 		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if ApolloSaturation.on(w):
+		ApolloSaturation.resolve(state, dice, emit, attacker, w, target.coord, th)
+		return
 	if BaSwarm.is_swarm(w):
 		BaSwarm.resolve(state, dice, emit, attacker, w, target, th)
 		return

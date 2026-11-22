@@ -24,6 +24,8 @@ static func modes(w: MountedWeapon) -> Array[String]:
 		return ["", Narc.KIND]
 	if w.ammo_kinds.size() > 1:
 		return w.ammo_kinds
+	if Apollo.working(w):
+		return ApolloSaturation.modes(w)
 	return PpcCapacitor.modes(w)
 
 

@@ -39,6 +39,10 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 	if d.get("jammed", false):
 		res += "; the rotary AC JAMS" + (" (a roll of %d or less jams it at %d shots; clearing it takes a Gunnery roll +3 while standing or walking)"
 				% [RotaryAc.jams_on(d["shots"]), d["shots"]] if level == ExplainLevel.FULL else "")
+	if d.has("saturation_damage"):
+		res += "; saturation fire: %d damage to everything in the hex" % d["saturation_damage"]
+		if level == ExplainLevel.FULL:
+			res += " (a third of the missiles that hit, friend or foe, and any building there)"
 	if d.get("nemesis", false):
 		res += "; an enemy Nemesis pod drew the missiles onto your own 'Mech in the line of fire"
 	if d.has("pod_damage"):
