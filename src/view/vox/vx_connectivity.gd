@@ -17,7 +17,8 @@ static func components(cells: Dictionary) -> Array[Dictionary]:
 	var groups: Array[Dictionary] = []
 	while not pending.is_empty():
 		var seed: Vector3i = pending.keys()[0]
-		var group := {seed: true}
+		var group := {}
+		group[seed] = true
 		var queue: Array[Vector3i] = [seed]
 		pending.erase(seed)
 		var head := 0
