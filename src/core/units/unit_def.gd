@@ -38,6 +38,7 @@ var inert: Array[Dictionary] = []  ## [{kind, loc}] of InertGear.
 ## "compact" or "heavy_duty" (Gyro).
 var engine_type := "standard"
 var gyro_type := "standard"
+var cockpit_type := "standard"  ## "small" (Cockpit).
 ## "inner_sphere" or "clan" (ClanTech: smaller XL engine and double heat
 ## sinks, free CASE everywhere, lighter armor and targeting computers).
 var tech_base := "inner_sphere"
@@ -92,6 +93,7 @@ static func from_dict(d: Dictionary, weapons: WeaponDb = null) -> UnitDef:
 	u.double_heat_sinks = d.get("heat_sink_type", "single") == "double"
 	u.engine_type = d.get("engine_type", "standard")
 	u.gyro_type = d.get("gyro_type", "standard")
+	u.cockpit_type = d.get("cockpit_type", "standard")
 	u.tech_base = d.get("tech_base", "inner_sphere")
 	u.clan_parts = d.get("clan_parts", {})
 	u.omni = bool(d.get("omni", false))
