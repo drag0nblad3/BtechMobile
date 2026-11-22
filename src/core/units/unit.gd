@@ -136,7 +136,8 @@ func _init_vehicle() -> void:
 		var armored := loc in VehicleLoc.ARMORED and (loc != VehicleLoc.TURRET or def.vehicle.turret)
 		armor.append(def.armor[loc] if armored else 0)
 		rear_armor.append(0)
-		structure.append(VehicleLoc.structure(def.tonnage) if armored else 0)
+		# Body and the unused 'Mech leg slots: 1, never hit, so leg and ammo checks stay quiet.
+		structure.append(VehicleLoc.structure(def.tonnage) if armored else 0 if loc == VehicleLoc.TURRET else 1)
 		slots.append([])
 	for m in def.weapon_mounts:
 		weapons.append(MountedWeapon.new(m["weapon"], m["loc"], false))

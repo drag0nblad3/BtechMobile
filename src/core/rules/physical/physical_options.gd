@@ -16,14 +16,14 @@ extends RefCounted
 ## [{kind: "punch"|"kick"|"push", limb, to_hit, damage, table: "punch"|"kick"|"full"}]
 static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
-	if a.asset != null or (t.asset != null and t.asset.card.kind == AssetCard.VTOL):
+	if a.asset != null or a.vehicle != null or (t.asset != null and t.asset.card.kind == AssetCard.VTOL):
 		return out  # Assets make no physical attacks; VTOLs can't be hit by them (p. 145)
 	if not a.def.quad:  # no arms: no punches, pushes or swings (p. 238)
 		for arm in [Location.LA, Location.RA]:
 			out.append(_punch(state, a, t, arm))
 	for leg in QuadKick.limbs(a):
 		out.append(_kick(state, a, t, leg))
-	if not a.def.quad and t.asset == null:  # Assets: club, kick, punch, weapon only
+	if not a.def.quad and t.asset == null and t.vehicle == null:  # Assets: club, kick, punch, weapon only
 		out.append(_push(state, a, t))
 		out.append_array(MeleeWeapons.options(state, a, t))
 	Tsm.boost(a, out)
@@ -76,7 +76,7 @@ static func _punch(state: GameState, a: Unit, t: Unit, arm: int) -> Dictionary:
 		th.impossible = "Its arms are flipped backwards this turn"
 	elif arc_id != FiringArc.FRONT and arc_id != side:
 		th.impossible = "Target isn't in front of that arm"
-	elif (t.prone or t.asset != null) and dl != 1:  # Assets are one level high (p. 145)
+	elif (t.prone or t.asset != null or t.vehicle != null) and dl != 1:  # Assets are one level high (p. 145)
 		th.impossible = "You can't punch a 'Mech lying at your feet; kick it"
 	elif dl == -1:
 		th.impossible = "The target is below you; kick it instead"

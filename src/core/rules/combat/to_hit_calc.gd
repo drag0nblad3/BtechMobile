@@ -33,8 +33,13 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if prone_why != "":
 		th.impossible = prone_why
 		return th
+	if attacker.vehicle != null:
+		th.impossible = VehicleFire.arc_problem(attacker, w, target)
+		if th.impossible != "":
+			return th
+		VehicleFire.add_mods(th, attacker, w)
 	var arc_id := FiringArc.fire_arc(attacker.coord, FiringArc.weapon_facing(attacker, w.loc), target.coord)
-	if not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
+	if attacker.vehicle == null and not FiringArc.weapon_covers(w.loc, ArmFlip.rear(attacker, w), arc_id, attacker.def.quad):
 		th.impossible = "Target is in your %s arc; %s can't point there" % [
 				FiringArc.NAMES[arc_id], w.label()]
 		return th
@@ -222,7 +227,8 @@ static func target_movement_mod(hexes: int, jumped: bool = false) -> int:
 ## Shut down, MechWarrior unconscious, or no MP left from damage (both legs
 ## gone), book p. 49. Heat alone taking MP to 0 doesn't count.
 static func is_immobile(u: Unit) -> bool:
-	return u.shutdown or not u.pilot.conscious or u.legs_destroyed() >= 2
+	return u.shutdown or not u.pilot.conscious or u.legs_destroyed() >= 2 \
+			or (u.vehicle != null and (u.vehicle.immobile or u.vehicle.crew_stunned > 0))
 
 
 ## Standing in depth 1 water.
