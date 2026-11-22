@@ -16,14 +16,14 @@ static func text(u: Unit) -> String:
 				else "%d  armor %d/%d\n" % [i + 1, a, b.armor]
 	t += "\n[b]Squad weapons[/b] (one cluster roll per weapon, a shot per trooper)\n"
 	for w in u.weapons:
-		if BaLegAttack.is_leg_attack(w) or BaSwarm.is_swarm(w):
+		if BaLegAttack.is_leg_attack(w) or BaSwarm.is_swarm(w) or BaSwarm.is_let_go(w):
 			continue
 		var line := "%s · %d×%d · %s" % [w.def.name, w.def.missiles, w.def.damage, w.def.range_text()]
 		if w.def.uses_ammo():
 			line += " · %d volley%s left" % [u.ammo_for(w.def), "" if u.ammo_for(w.def) == 1 else "s"]
 		t += ("[color=#888888][s]%s[/s][/color]\n" % line) if not u.can_fire(w) else line + "\n"
-	if b.claw:
-		t += "Battle claws: leg attacks (4 damage to a leg) or swarm attacks on an enemy 'Mech in its hex; a swarming squad's weapons hit that 'Mech automatically\n"
+	if b.anti_mech:
+		t += "Anti-'Mech: leg attacks (4 damage to a leg) or swarm attacks on an enemy 'Mech in its hex; a swarming squad's weapons hit that 'Mech automatically%s\n" % (" (magnetic claws: -1)" if b.magnets else "")
 	if b.mechanized():
 		t += "Mechanized: can ride a friendly OmniMech\n"
 	return t

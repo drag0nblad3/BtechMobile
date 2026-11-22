@@ -1,10 +1,10 @@
 class_name BaBrushOff
 extends RefCounted
-## A 'Mech swats at battle armor swarming it, as its physical attack: one
+## A 'Mech swats at battle armor swarming it, as its physical attack: each
 ## arm, Piloting +4 (plus the punch modifiers for a missing hand or arm
 ## actuators). A hit does the arm's punch damage to the squad and knocks it
-## off into the hex. TODO(rules): Total Warfare from general knowledge; a
-## miss does nothing here.
+## off into the hex; a miss punches the 'Mech itself (Punch table, front).
+## TODO(rules): Total Warfare via MegaMek's brush-off.
 
 const MOD := 4
 
@@ -27,6 +27,8 @@ static func options(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 		else:
 			th.add("piloting", a.pilot.piloting, "Swatting troopers off your own hull uses Piloting.")
 			th.add("brush off", MOD, "Small targets clinging to you are hard to hit: +4.")
+			if t.def.battle_armor.magnets:
+				th.add("magnetic claws", 1, "Magnets hold them on: +1.")
 			if not a.has_working_actuator(arm, "hand"):
 				th.add("no hand", 1, "No working hand: +1.")
 			for act in ["upper_arm", "lower_arm"]:
@@ -43,12 +45,16 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, d: Dictionary)
 	var t := state.unit_by_id(d["target_id"])
 	var th: ToHit = d["to_hit"]
 	var roll := dice.roll_2d6()
-	var hit := roll >= th.target() and BaSwarm.on(t) == a.id
+	var hit := roll >= th.target()
 	emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id, "kind": "brush_off",
 			"limb": d["limb"], "roll": roll, "need": th.target(), "hit": hit,
 			"damage": d["damage"] if hit else 0, "mods": th.mods})
 	if not hit:
+		var hl := HitTable.roll_punch(dice, FiringArc.FRONT, a.def.quad)
+		WeaponFire.hit_with(state, dice, emit, a, FiringArc.FRONT, d["damage"], a.id, "its own swat", hl, Hex.INVALID, ["physical"])
 		return
+	if BaSwarm.on(t) != a.id:
+		return  # already knocked off by the other arm
 	BaDamage.take(dice, emit, t, d["damage"], a.id, "brush off")
 	t.ba.swarming = -1
 	if not t.destroyed:

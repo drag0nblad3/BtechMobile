@@ -336,7 +336,7 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
 			_show_sheet_if_open()
-		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE:
+		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
 			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
@@ -355,7 +355,7 @@ func _on_event(e: GameEvent) -> void:
 			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
 		GameEvent.BUILDING:
-			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins"]:
+			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1))))
@@ -365,7 +365,8 @@ func _on_event(e: GameEvent) -> void:
 
 
 func _rebuild_objectives() -> void:
-	if controller.state.mission.def == null or controller.state.mission.def.objectives.is_empty() and objectives.get_child_count() == 0:
+	var no_obj: bool = controller.state.mission.def == null or controller.state.mission.def.objectives.is_empty()
+	if no_obj and controller.state.minefields.is_empty() and objectives.get_child_count() == 0:
 		return
 	objectives.queue_free()
 	objectives = ObjectiveMarkers.build(controller.state)

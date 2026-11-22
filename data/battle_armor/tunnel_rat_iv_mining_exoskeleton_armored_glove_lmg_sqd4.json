@@ -1,0 +1,35 @@
+{
+ "id": "tunnel_rat_iv_mining_exoskeleton_armored_glove_lmg_sqd4",
+ "name": "Tunnel Rat IV Mining Exoskeleton",
+ "model": "[Armored Glove/LMG](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 2,
+  "ground_mp": 1,
+  "jump_mp": 2,
+  "claw": false,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "light_machine_gun",
+    "name": "Light Machine Gun",
+    "type": "ballistic",
+    "damage": 1,
+    "short": 2,
+    "medium": 4,
+    "long": 6,
+    "ai": true
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 7215,
+  "megamek": "data/mekfiles/battlearmor/TRO VA/Tunnel Rat Mining Exo IV [AG-LMG] (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 71
+}

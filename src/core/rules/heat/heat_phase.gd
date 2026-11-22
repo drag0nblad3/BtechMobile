@@ -2,7 +2,7 @@ class_name HeatPhase
 extends RefCounted
 ## Heat Phase (book pp. 102-107): add this turn's heat, dissipate, then
 ## resolve shutdown (or restart), ammo cook-off, and last the MechWarrior
-## hits from damaged life support. Extreme temperatures shift all of it (ExtremeTemp).
+## hits from damaged life support. Inferno ammo has its own rolls (InfernoAmmo). Extreme temperatures shift all of it (ExtremeTemp).
 
 const ENGINE_HIT_HEAT := 5
 ## Most heat outside sources (flamers, fire) can add in one turn (book p. 102).
@@ -36,6 +36,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		if not u.voluntary_shutdown:
 			HeatShutdown.check(dice, emit, u, c)
 		_ammo_check(state, dice, emit, u)
+		InfernoAmmo.check(state, dice, emit, u)
 		var ls := ExtremeTemp.life_support_hits(c, u.heat)
 		if not u.destroyed and u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT) and ls > 0:
 			PilotDamage.wound(dice, emit, u, ls, "cold with life support damaged" if c.cold > 0
@@ -89,7 +90,7 @@ static func _ammo_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -
 static func worst_bin(u: Unit) -> AmmoBin:
 	var best: AmmoBin = null
 	for a in u.ammo:
-		if a.explosion_damage() <= 0:
+		if a.explosion_damage() <= 0 or InfernoAmmo.is_inferno(a):
 			continue
 		if best == null or a.weapon.max_damage() > best.weapon.max_damage() \
 				or (a.weapon.max_damage() == best.weapon.max_damage() and a.shots > best.shots):

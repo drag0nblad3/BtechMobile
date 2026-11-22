@@ -1,0 +1,36 @@
+{
+ "id": "simian_battle_armor_flamer_sqd4",
+ "name": "Simian Battle Armor",
+ "model": "[Flamer](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 7,
+  "ground_mp": 2,
+  "jump_mp": 3,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": true,
+  "weapons": [
+   {
+    "id": "flamer",
+    "name": "Flamer",
+    "type": "energy",
+    "damage": 2,
+    "short": 1,
+    "medium": 2,
+    "long": 3,
+    "heat_damage": true,
+    "ai": true
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 6649,
+  "megamek": "data/mekfiles/battlearmor/3145/Republic/Simian BA (Flamer) (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 177
+}
