@@ -293,7 +293,7 @@ jobs:
                       year=int(field(raw,'era') or '9999')
                       prefer=0 if re.match(r'^(?:[A-Z]{1,6}[- ]?\d|Prime$)',model) else 1
                       target=variants if key(chassis) in known_names else allc
-                  target[key(chassis)].append((DIRS.index(p.relative_to(DATA).parts[0]),year,prefer,str(p),p))
+                      target[key(chassis)].append((DIRS.index(p.relative_to(DATA).parts[0]),year,prefer,str(p),p))
                   except (ValueError,OSError): pass
               accepted=[];failed=collections.Counter();seen=set()
               for ch,options in sorted(allc.items(),key=lambda kv:(min(x[0] for x in kv[1]),min(x[1] for x in kv[1]),kv[0])):
