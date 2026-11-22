@@ -60,8 +60,19 @@ func _process(_delta: float) -> bool:
 			for e in gc.state.units:
 				if e.side != u.side and not e.destroyed:
 					_scene.attacks.on_hex_tapped(e.coord)
+			# Exercise the reported case: submit only one weapon and verify
+			# its targeting panel disappears immediately after the declaration.
+			if gc.state.phase == Phase.Kind.WEAPON_ATTACK and not _scene.attacks.shots.is_empty():
+				var weapon: Variant = _scene.attacks.shots.keys()[0]
+				var target: Variant = _scene.attacks.shots[weapon]
+				_scene.attacks.shots.clear()
+				_scene.attacks.shots[weapon] = target
 			_scene._toggle_sheet()
 			_scene._cycle_explain()
 			_scene._toggle_sheet()
 			_scene.attacks.on_confirm()
+			if _scene.hud.side_panel.visible:
+				push_error("Stale targeting menu after a submitted attack")
+				quit(1)
+				return true
 	return false
