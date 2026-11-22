@@ -1,0 +1,44 @@
+{
+ "id": "pab_28_sniper_suit_sqd4",
+ "name": "PAB-28 Sniper Suit",
+ "model": "(Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 2,
+  "ground_mp": 1,
+  "jump_mp": 0,
+  "claw": false,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "david_light_gauss",
+    "name": "David Light Gauss Rifle",
+    "type": "ballistic",
+    "damage": 1,
+    "short": 3,
+    "medium": 5,
+    "long": 8
+   },
+   {
+    "id": "david_light_gauss",
+    "name": "David Light Gauss Rifle",
+    "type": "ballistic",
+    "damage": 1,
+    "short": 3,
+    "medium": 5,
+    "long": 8
+   }
+  ],
+  "armor_type": "stealth"
+ },
+ "source": {
+  "mul_id": 6307,
+  "megamek": "data/mekfiles/battlearmor/3145/Davion/PAB-28 Sniper Suit (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 119
+}

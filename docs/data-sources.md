@@ -18,8 +18,9 @@ Tyler's rule: designs and Battle Values are official, never guessed.
   own wording, the weapons and the speed.
 - **Combat vehicles** (`data/vehicles/`) come from MegaMek's `.blk` files
   (`data/mekfiles/vehicles/**`, same CC BY-NC-SA terms) with the BV printed
-  on the official Battlefield Support / Mercenaries record sheets. Clan
-  vehicles have no free sheet, so their BV comes from MegaMek's calculator
+  on the official Battlefield Support / Mercenaries record sheets. Vehicles
+  with no free sheet (all Clan ones, most newer IS ones) take their BV from
+  MegaMek's calculator
   (`source.bv: "megamek"`), which matches every sheet BV above.
 - **Battle armor** (`data/battle_armor/`) comes from MegaMek's `.blk` files
   (`data/mekfiles/battlearmor/**`) checked against the weapons on the free

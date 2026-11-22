@@ -1,0 +1,35 @@
+{
+ "id": "amazon_battle_armor_support_ppc_sqd4",
+ "name": "Amazon Battle Armor",
+ "model": "[Support PPC](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 10,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "support_ppc",
+    "name": "Support PPC",
+    "type": "energy",
+    "damage": 2,
+    "short": 2,
+    "medium": 5,
+    "long": 7
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 6429,
+  "megamek": "data/mekfiles/battlearmor/3145/Liao/Amazon BA PPC (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 288
+}
