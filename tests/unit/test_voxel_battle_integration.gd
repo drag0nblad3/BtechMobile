@@ -25,7 +25,8 @@ func test_voxel_damage_only_reads_record_sheet() -> void:
 	var def := designs().get_def("hunchback_hbk4g")
 	var u := Unit.new(22, def, 0, Vector2i.ZERO, 0)
 	var mech := UnitVoxels.choose(def, 0)
-	if not check(mech != null, "need a voxel model"):
+	check(mech != null, "need a voxel model")
+	if mech == null:
 		GameSettings.voxel_mechs = old
 		return
 	var original := mech.voxel_count()
