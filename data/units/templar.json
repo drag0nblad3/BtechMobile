@@ -1,0 +1,580 @@
+{
+ "id": "templar",
+ "name": "Templar",
+ "tonnage": 85,
+ "walk_mp": 4,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 28,
+  "RA": 28,
+  "LT": 26,
+  "RT": 26,
+  "CT": 44,
+  "HD": 9,
+  "LL": 36,
+  "RL": 36
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "omni": true,
+ "sprite": "templar",
+ "equipment": {},
+ "configs": [
+  {
+   "model": "TLR1-O",
+   "bv": 2045,
+   "heat_sinks": 14,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heat_sink",
+     "large_pulse_laser",
+     "medium_pulse_laser"
+    ],
+    "RA": [
+     "endo_steel",
+     "gauss_rifle"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "targeting_computer"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "streak_srm4",
+     "ammo:streak_srm4",
+     "ammo:gauss_rifle*2"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "er_medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 5191,
+    "megamek": "data/mekfiles/meks/3067/Templar TLR1-O.mtf",
+    "published": "RS:J,RSFP:Davion",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2045
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 ER Medium Lasers, Large Pulse Laser, Medium Pulse Laser, Gauss Rifle, Streak SRM 4; walks 4, runs 6."
+  },
+  {
+   "model": "TLR1-O (Grayson)",
+   "bv": 1868,
+   "heat_sinks": 14,
+   "jump_mp": 3,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "ac5",
+     "streak_srm4*2"
+    ],
+    "RA": [
+     "endo_steel",
+     "heat_sink",
+     "ac5",
+     "er_medium_laser*2"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "jump_jet",
+     "er_medium_laser",
+     "targeting_computer"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "jump_jet",
+     "ammo:ac5*4",
+     "ammo:streak_srm4"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "jump_jet",
+     "er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 5192,
+    "megamek": "data/mekfiles/meks/3067/Templar TLR1-O (Grayson).mtf",
+    "published": "RS:3067u",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1868
+   },
+   "role": "Brawler: built to slug it out at medium range. 4 ER Medium Lasers, 2 AC/5s, 2 Streak SRM 4s; walks 4, runs 6, jumps 3."
+  },
+  {
+   "model": "TLR1-O (Tancred)",
+   "bv": 2273,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "rotary_ac5"
+    ],
+    "RA": [
+     "endo_steel",
+     "rotary_ac5",
+     "er_large_laser",
+     "er_medium_laser"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "targeting_computer"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "ammo:rotary_ac5*5"
+    ],
+    "CT": [
+     "endo_steel",
+     "er_medium_laser"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "HD": [
+     "er_medium_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 5193,
+    "megamek": "data/mekfiles/meks/3067/Templar TLR1-O (Tancred).mtf",
+    "published": "RS:3067u,RSFP:Davion",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2273
+   },
+   "role": "Brawler: built to slug it out at medium range. 3 ER Medium Lasers, 2 Rotary AC/5s, ER Large Laser; walks 4, runs 6."
+  },
+  {
+   "model": "TLR1-OA",
+   "bv": 2070,
+   "heat_sinks": 14,
+   "jump_mp": 4,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heat_sink",
+     "er_ppc"
+    ],
+    "RA": [
+     "endo_steel",
+     "ultra_ac10",
+     "streak_srm6"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "jump_jet*2",
+     "targeting_computer"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "jump_jet*2",
+     "ammo:ultra_ac10*3",
+     "ammo:streak_srm6"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "guardian_ecm"
+    ]
+   },
+   "source": {
+    "mul_id": 5195,
+    "megamek": "data/mekfiles/meks/3067/Templar TLR1-OA.mtf",
+    "published": "RS:J",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2070
+   },
+   "role": "Brawler: built to slug it out at medium range. ER PPC, Ultra AC/10, Streak SRM 6; walks 4, runs 6, jumps 4."
+  },
+  {
+   "model": "TLR1-OB",
+   "bv": 1806,
+   "heat_sinks": 17,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heat_sink",
+     "er_ppc"
+    ],
+    "RA": [
+     "endo_steel",
+     "rotary_ac2*3"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "heat_sink*2"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "heat_sink",
+     "ammo:rotary_ac2*3"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "er_medium_laser*2"
+    ]
+   },
+   "source": {
+    "mul_id": 5196,
+    "megamek": "data/mekfiles/meks/3067/Templar TLR1-OB.mtf",
+    "published": "RS:J",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1806
+   },
+   "role": "Sniper: hangs back and hits from long range. 3 Rotary AC/2s, 2 ER Medium Lasers, ER PPC; walks 4, runs 6."
+  },
+  {
+   "model": "TLR1-OC",
+   "bv": 2063,
+   "heat_sinks": 14,
+   "jump_mp": 4,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "er_ppc",
+     "medium_pulse_laser*3"
+    ],
+    "RA": [
+     "endo_steel",
+     "lb20x_ac~2"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "heat_sink",
+     "jump_jet",
+     "medium_pulse_laser*2",
+     "er_medium_laser"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "jump_jet",
+     "ammo:lb20x_ac",
+     "ammo:lb20x_ac:cluster*2"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "jump_jet*2"
+    ]
+   },
+   "source": {
+    "mul_id": 5197,
+    "megamek": "data/mekfiles/meks/3067/Templar TLR1-OC.mtf",
+    "published": "RS:J",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2063
+   },
+   "role": "Brawler: built to slug it out at medium range. 5 Medium Pulse Lasers, ER PPC, LB 20-X AC, ER Medium Laser; walks 4, runs 6, jumps 4."
+  },
+  {
+   "model": "TLR1-OD",
+   "bv": 1840,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "x_pulse_large_laser"
+    ],
+    "RA": [
+     "endo_steel",
+     "x_pulse_large_laser"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "light_gauss_rifle"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "light_gauss_rifle"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "ammo:light_gauss_rifle*2"
+    ]
+   },
+   "source": {
+    "mul_id": 5707,
+    "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Templar TLR1-OD.mtf",
+    "published": "RS:3067u",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1840
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Large X-Pulse Lasers, 2 Light Gauss Rifles; walks 4, runs 6."
+  },
+  {
+   "model": "TLR1-OE",
+   "bv": 1865,
+   "heat_sinks": 14,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heat_sink",
+     "er_ppc"
+    ],
+    "RA": [
+     "endo_steel",
+     "lrm15+artemis*2"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "medium_pulse_laser",
+     "small_laser",
+     "c3_master"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "medium_pulse_laser",
+     "ammo:lrm15*5"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "guardian_ecm"
+    ]
+   },
+   "source": {
+    "mul_id": 5708,
+    "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Templar TLR1-OE.mtf",
+    "published": "RS:3067u",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 1865
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 LRM 15s, 2 Medium Pulse Lasers, ER PPC, Small Laser; walks 4, runs 6."
+  },
+  {
+   "model": "TLR1-OF",
+   "bv": 2029,
+   "heat_sinks": 14,
+   "jump_mp": 4,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heat_sink",
+     "medium_pulse_laser*3"
+    ],
+    "RA": [
+     "endo_steel",
+     "light_gauss_rifle"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "jump_jet",
+     "er_medium_laser",
+     "c3_master"
+    ],
+    "RT": [
+     "endo_steel*2",
+     "case",
+     "jump_jet",
+     "heavy_ppc",
+     "ammo:light_gauss_rifle"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "jump_jet*2"
+    ]
+   },
+   "source": {
+    "mul_id": 5709,
+    "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Templar TLR1-OF.mtf",
+    "published": "RS:3067u",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2029
+   },
+   "role": "Brawler: built to slug it out at medium range. 3 Medium Pulse Lasers, Light Gauss Rifle, ER Medium Laser, Heavy PPC; walks 4, runs 6, jumps 4."
+  },
+  {
+   "model": "TLR1-OG",
+   "bv": 1632,
+   "heat_sinks": 13,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "er_ppc"
+    ],
+    "RA": [
+     "endo_steel",
+     "light_gauss_rifle",
+     "lb2x_ac"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "lb2x_ac"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "lb2x_ac",
+     "ammo:lb2x_ac",
+     "ammo:light_gauss_rifle"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "c3_slave"
+    ]
+   },
+   "source": {
+    "mul_id": 5710,
+    "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Templar TLR1-OG.mtf",
+    "published": "RS:3067u",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1632
+   },
+   "role": "Sniper: hangs back and hits from long range. 3 LB 2-X ACs, ER PPC, Light Gauss Rifle; walks 4, runs 6."
+  },
+  {
+   "model": "TLR1-OI",
+   "bv": 2202,
+   "heat_sinks": 15,
+   "equipment": {
+    "LA": [
+     "endo_steel*4",
+     "heavy_ppc"
+    ],
+    "RA": [
+     "endo_steel",
+     "gauss_rifle"
+    ],
+    "LT": [
+     "endo_steel*2",
+     "heat_sink",
+     "heavy_ppc"
+    ],
+    "RT": [
+     "case",
+     "endo_steel*2",
+     "heat_sink",
+     "ammo:gauss_rifle*2"
+    ],
+    "HD": [
+     "endo_steel"
+    ],
+    "LL": [
+     "endo_steel*2"
+    ],
+    "RL": [
+     "endo_steel*2"
+    ],
+    "CT": [
+     "c3_slave"
+    ]
+   },
+   "source": {
+    "mul_id": 5712,
+    "megamek": "data/mekfiles/meks/3067 Unabridged/IS Meks/Templar TLR1-OI.mtf",
+    "published": "RS:3067u",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 2202
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Heavy PPCs, Gauss Rifle; walks 4, runs 6."
+  }
+ ]
+}

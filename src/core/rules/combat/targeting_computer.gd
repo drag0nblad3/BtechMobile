@@ -3,7 +3,7 @@ extends RefCounted
 ## Targeting computer (p. 200): -1 to hit for linked weapons, which are
 ## direct-fire energy and ballistic weapons (pulse lasers included) except
 ## flamers, machine guns (Clan light and heavy too) and cluster weapons or
-## attacks (missiles, LB-X cluster rounds). Rapid-firing Ultra and rotary
+## attacks (missiles, LB-X cluster rounds); a HAG links (MegaMek). Rapid-firing Ultra and rotary
 ## ACs keep the -1 (p. 200). It also allows aimed shots at moving
 ## 'Mechs (AimedShot): +3 instead of the -1, never at the head, not with
 ## pulse weapons. A critical hit destroys it.
@@ -24,7 +24,7 @@ static func linked(w: MountedWeapon) -> bool:
 ## Weapon types a targeting computer links to (and is sized by).
 static func eligible(d: WeaponDef) -> bool:
 	return not d.ams and not d.heat_damage and not d.name.ends_with("Machine Gun") \
-			and not d.is_cluster() and (d.type == "energy" or d.type == "ballistic")
+			and (not d.is_cluster() or d.range_cluster) and (d.type == "energy" or d.type == "ballistic")
 
 
 ## Has a working targeting computer.

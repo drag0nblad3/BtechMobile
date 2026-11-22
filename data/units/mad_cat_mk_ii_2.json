@@ -1,0 +1,92 @@
+{
+ "id": "mad_cat_mk_ii_2",
+ "name": "Mad Cat Mk II",
+ "model": "2",
+ "tonnage": 90,
+ "walk_mp": 4,
+ "jump_mp": 3,
+ "heat_sinks": 13,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 27,
+  "RA": 27,
+  "LT": 26,
+  "RT": 26,
+  "CT": 38,
+  "HD": 9,
+  "LL": 34,
+  "RL": 34
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 12
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_lb20x_ac",
+   "ferro_fibrous"
+  ],
+  "RA": [
+   "c_gauss_rifle",
+   "ferro_fibrous"
+  ],
+  "LT": [
+   "jump_jet",
+   "c_streak_srm4*2",
+   "c_er_medium_laser",
+   "ammo:c_streak_srm4",
+   "ammo:c_lb20x_ac",
+   "ammo:c_lb20x_ac:cluster",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "jump_jet",
+   "c_streak_srm4*2",
+   "c_er_medium_laser",
+   "ammo:c_streak_srm4",
+   "ammo:c_gauss_rifle*2",
+   "endo_steel",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "jump_jet",
+   "endo_steel"
+  ],
+  "HD": [
+   "ferro_fibrous"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5715,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/Clan Meks/Mad Cat Mk II 2.mtf",
+  "published": "RS:3067u",
+  "role": "Brawler",
+  "bv": "megamek",
+  "megamek_bv": 2822
+ },
+ "bv": 2822,
+ "sprite": "mad_cat_mk_ii",
+ "role": "Brawler: built to slug it out at medium range. 4 Streak SRM 4s, 2 ER Medium Lasers, LB 20-X AC, Gauss Rifle; walks 4, runs 6, jumps 3."
+}

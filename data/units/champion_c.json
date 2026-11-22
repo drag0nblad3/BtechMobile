@@ -1,0 +1,84 @@
+{
+ "id": "champion_c",
+ "name": "Champion",
+ "model": "C",
+ "tonnage": 60,
+ "walk_mp": 5,
+ "jump_mp": 5,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 19,
+  "RA": 19,
+  "LT": 20,
+  "RT": 20,
+  "CT": 28,
+  "HD": 9,
+  "LL": 27,
+  "RL": 27
+ },
+ "rear_armor": {
+  "LT": 7,
+  "RT": 7,
+  "CT": 9
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_er_medium_laser",
+   "ferro_fibrous*2"
+  ],
+  "RA": [
+   "c_er_medium_laser",
+   "ferro_fibrous*2"
+  ],
+  "LT": [
+   "c_medium_pulse_laser*2",
+   "c_srm6+artemis",
+   "ammo:c_srm6",
+   "ferro_fibrous*2"
+  ],
+  "RT": [
+   "c_lb10x_ac",
+   "ammo:c_lb10x_ac",
+   "ammo:c_lb10x_ac:cluster",
+   "ferro_fibrous"
+  ],
+  "CT": [
+   "jump_jet",
+   "c_small_pulse_laser"
+  ],
+  "HD": [
+   "c_small_pulse_laser"
+  ],
+  "LL": [
+   "jump_jet*2"
+  ],
+  "RL": [
+   "jump_jet*2"
+  ]
+ },
+ "source": {
+  "mul_id": 547,
+  "megamek": "data/mekfiles/meks/3050U/Champion C.mtf",
+  "published": "RS:3050Uu-C",
+  "role": "Skirmisher",
+  "bv": "megamek",
+  "megamek_bv": 2191
+ },
+ "bv": 2191,
+ "sprite": "champion",
+ "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 2 ER Medium Lasers, 2 Medium Pulse Lasers, 2 Small Pulse Lasers, SRM 6, LB 10-X AC; walks 5, runs 8, jumps 5."
+}

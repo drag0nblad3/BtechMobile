@@ -1,0 +1,77 @@
+{
+ "id": "uziel_uzl3s",
+ "name": "Uziel",
+ "model": "UZL-3S",
+ "tonnage": 50,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 14,
+  "RT": 14,
+  "CT": 17,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "large_pulse_laser",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "er_medium_laser",
+   "lb2x_ac"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "er_small_laser",
+   "endo_steel*5"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "er_small_laser",
+   "ammo:srm6",
+   "ammo:lb2x_ac",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "srm6"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5332,
+  "megamek": "data/mekfiles/meks/3067/Uziel UZL-3S.mtf",
+  "published": "RS:J",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1189
+ },
+ "bv": 1189,
+ "sprite": "uziel",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 ER Small Lasers, Large Pulse Laser, ER Medium Laser, LB 2-X AC, SRM 6; walks 6, runs 9, jumps 6."
+}

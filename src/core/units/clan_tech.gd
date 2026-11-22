@@ -9,6 +9,7 @@ extends RefCounted
 ## - CASE is built into every location for free.
 ## - Ferro-fibrous armor gives 20% more points per ton (not 12%).
 ## - A targeting computer weighs 1 t per 5 t of linked weapons (not 4).
+## Mixed-tech designs ("clan_parts") take each part's own tech (UnitDef.clan_part).
 ## TODO(rules): construction data, not in the Core Rulebook (TechManual
 ## figures, general knowledge).
 
@@ -22,12 +23,12 @@ const IS_TC_TONS_PER_SLOT := 4.0
 
 
 static func xl_side_slots(def: UnitDef) -> int:
-	return XL_SIDE_SLOTS if def.is_clan() else IS_XL_SIDE_SLOTS
+	return XL_SIDE_SLOTS if def.clan_part("engine") else IS_XL_SIDE_SLOTS
 
 
 static func dhs_slots(def: UnitDef) -> int:
-	return DHS_SLOTS if def.is_clan() else IS_DHS_SLOTS
+	return DHS_SLOTS if def.clan_part("heat_sinks") else IS_DHS_SLOTS
 
 
 static func tc_tons_per_slot(def: UnitDef) -> float:
-	return TC_TONS_PER_SLOT if def.is_clan() else IS_TC_TONS_PER_SLOT
+	return TC_TONS_PER_SLOT if def.clan_part("tc") else IS_TC_TONS_PER_SLOT

@@ -3,13 +3,14 @@ extends RefCounted
 ## An explosive component blows up on its first critical hit (p. 96, Gauss
 ## rifles p. 184): 2 damage per slot it fills, handled like an ammo explosion
 ## (20 cap, CASE, pilot hit) in the location of the slot that was hit.
+## Improved heavy lasers name their own damage (3/5/8, from MegaMek).
 ## TODO(rules): Gauss rifles are always treated as activated (p. 180).
 
 const PER_SLOT := 2
 
 
 static func damage(w: MountedWeapon) -> int:
-	return PER_SLOT * w.def.slots
+	return w.def.explosion_damage if w.def.explosion_damage > 0 else PER_SLOT * w.def.slots
 
 
 static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, w: MountedWeapon, loc: int) -> void:

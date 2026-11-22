@@ -1,0 +1,78 @@
+{
+ "id": "uziel_uzl2s",
+ "name": "Uziel",
+ "model": "UZL-2S",
+ "tonnage": 50,
+ "walk_mp": 6,
+ "jump_mp": 6,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 12,
+  "RA": 12,
+  "LT": 14,
+  "RT": 14,
+  "CT": 17,
+  "HD": 9,
+  "LL": 18,
+  "RL": 18
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 6
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "ppc",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "ppc",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "jump_jet*3",
+   "machine_gun",
+   "ammo:machine_gun:half",
+   "ammo:srm6",
+   "beagle_probe",
+   "endo_steel"
+  ],
+  "RT": [
+   "jump_jet*3",
+   "machine_gun",
+   "endo_steel*5"
+  ],
+  "CT": [
+   "srm6"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 5331,
+  "megamek": "data/mekfiles/meks/3067/Uziel UZL-2S.mtf",
+  "published": "RS:J",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1352
+ },
+ "bv": 1352,
+ "sprite": "uziel",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. 2 PPCs, 2 Machine Guns, SRM 6; walks 6, runs 9, jumps 6."
+}
