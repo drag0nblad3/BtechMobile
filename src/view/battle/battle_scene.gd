@@ -68,6 +68,7 @@ func _ready() -> void:
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
+	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
@@ -237,6 +238,7 @@ func _wire() -> void:
 	hud.explain_cycled.connect(_cycle_explain)
 	hud.save_battle.connect(_save_battle)
 	hud.pause_toggled.connect(_toggle_pause)
+	hud.pause_menu.voxel_toggled.connect(_toggle_voxels)
 	hud.next_unit.connect(_next_unit)
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
@@ -323,6 +325,13 @@ func _on_double_tap(pos: Vector2) -> void:
 		rig.focus(HexLayout.tile_top(controller.state.map.get_tile(c)))
 
 
+func _toggle_voxels() -> void:
+	GameSettings.set_voxel_mechs(not GameSettings.voxel_mechs)
+	units_layer.reload_looks()
+	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
+	hud.pause_menu.set_message("Voxel models enabled." if GameSettings.voxel_mechs else "Sprites and placeholders enabled.")
+
+
 func _toggle_sheet() -> void:
 	hud.sheet_open = not hud.sheet_open
 	if hud.sheet_open and sheet_unit == null and not controller.state.units.is_empty():
@@ -388,7 +397,10 @@ func _on_event(e: GameEvent) -> void:
 				int(e.data.get("mode", -1)))
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
 			units_layer.refresh_unit(e.data["unit_id"])
+			units_layer.react(e)
 			_show_sheet_if_open()
+		GameEvent.PHYSICAL:
+			units_layer.react(e)
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
 			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:

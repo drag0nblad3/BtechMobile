@@ -11,6 +11,7 @@ static var explain_level: int = ExplainLevel.FULL
 static var training: Dictionary = {}
 static var ai_level: int = BotSkill.Level.REGULAR
 static var cinematic_camera := false
+static var voxel_mechs := true
 static var sound_master := 0.85
 static var sound_effects := 0.9
 static var sound_ui := 0.65
@@ -28,6 +29,7 @@ static func load_settings() -> void:
 		training = cfg.get_value("training", "progress", {})
 		ai_level = clampi(int(cfg.get_value("ai", "level", BotSkill.Level.REGULAR)), 0, BotSkill.NAMES.size() - 1)
 		cinematic_camera = bool(cfg.get_value("camera", "cinematic", false))
+		voxel_mechs = bool(cfg.get_value("graphics", "voxel_mechs", true))
 		sound_master = clampf(float(cfg.get_value("audio", "master", 0.85)), 0.0, 1.0)
 		sound_effects = clampf(float(cfg.get_value("audio", "effects", 0.9)), 0.0, 1.0)
 		sound_ui = clampf(float(cfg.get_value("audio", "ui", 0.65)), 0.0, 1.0)
@@ -59,6 +61,15 @@ static func set_ai_level(level: int) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("ai", "level", ai_level)
+	cfg.save(PATH)
+
+
+## Choose JSON voxel rigs, or use sprites and placeholders on slower phones.
+static func set_voxel_mechs(enabled: bool) -> void:
+	voxel_mechs = enabled
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("graphics", "voxel_mechs", enabled)
 	cfg.save(PATH)
 
 
