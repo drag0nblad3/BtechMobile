@@ -1,0 +1,46 @@
+name: Temporary 15-chassis source-shape render review
+on:
+  push:
+    branches: ["art/new-source-mechs-shape-first-20261122"]
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip -O /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.5.1-stable_linux.x86_64
+          sudo mv /tmp/Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Render 15 independently authored coarse chassis from five angles
+        run: |
+          set -euo pipefail
+          godot --headless --import
+          for n in 1 2 3 4 5; do
+            mkdir -p /tmp/cohort/$n
+            timeout 150s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1500x900 -s tools/_temporary_sculpt_gallery_cohort_${n}.gd -- /tmp/cohort/$n
+          done
+      - name: Print a low-resolution 15-chassis composite in the action log
+        run: |
+          python3 -m pip install --quiet --break-system-packages pillow
+          python3 - <<'PY'
+          from PIL import Image
+          import io,base64
+          paths=[f'/tmp/cohort/{i}/gallery_three_quarter.png' for i in range(1,6)]
+          out=Image.new('RGB',(1700,950),(34,37,42))
+          for i,path in enumerate(paths):
+              im=Image.open(path).convert('RGB').resize((340,950),Image.Resampling.LANCZOS)
+              out.paste(im,(340*i,0))
+          b=io.BytesIO();out.save(b,format='JPEG',quality=52,optimize=True)
+          raw=base64.b64encode(b.getvalue()).decode()
+          for j in range(0,len(raw),3000):
+              print('COHORT_IMAGE_CHUNK|'+str(j//3000)+'|'+raw[j:j+3000])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fifteen-chassis-five-angle-source-review
+          path: /tmp/cohort/*/gallery_three_quarter.png
+          if-no-files-found: ignore
