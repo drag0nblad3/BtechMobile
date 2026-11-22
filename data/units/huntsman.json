@@ -321,6 +321,37 @@
    "role": "Skirmisher: fast enough to pick its fights and trade fire on the move. 4 Heavy Medium Lasers, 2 ER Large Lasers, Heavy Small Laser; walks 5, runs 8, jumps 5."
   },
   {
+   "model": "I",
+   "bv": 2277,
+   "heat_sinks": 10,
+   "jump_mp": 5,
+   "equipment": {
+    "LA": [
+     "c_er_large_laser",
+     "c_plasma_cannon",
+     "ammo:c_plasma_cannon*2"
+    ],
+    "RA": [
+     "c_hag20"
+    ],
+    "LT": [
+     "c_er_small_pulse_laser"
+    ],
+    "RT": [
+     "ammo:c_hag20*3"
+    ]
+   },
+   "source": {
+    "mul_id": 7784,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 12/Nobori-nin (Huntsman) I.mtf",
+    "published": "RG12",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 2277
+   },
+   "role": "Sniper: hangs back and hits from long range. ER Large Laser, Plasma Cannon, HAG 20, ER Small Pulse Laser; walks 5, runs 8, jumps 5."
+  },
+  {
    "model": "N",
    "bv": 2556,
    "heat_sinks": 13,

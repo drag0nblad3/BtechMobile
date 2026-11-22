@@ -196,6 +196,42 @@
    "role": "Sniper: hangs back and hits from long range. 2 Medium Lasers, 2 LRM 10s, PPC, Ultra AC/5; walks 4, runs 6."
   },
   {
+   "model": "AV1-OD",
+   "bv": 1475,
+   "heat_sinks": 12,
+   "equipment": {
+    "LA": [
+     "er_medium_laser*2"
+    ],
+    "RA": [
+     "light_gauss_rifle"
+    ],
+    "LT": [
+     "heat_sink",
+     "mrm20",
+     "ammo:mrm20"
+    ],
+    "RT": [
+     "heat_sink",
+     "mrm20",
+     "ammo:mrm20",
+     "ammo:light_gauss_rifle"
+    ],
+    "HD": [
+     "c3_slave"
+    ]
+   },
+   "source": {
+    "mul_id": 164,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OD.mtf",
+    "published": "RS:CI",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1475
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, 2 ER Medium Lasers, 2 MRM 20s, Light Gauss Rifle; walks 4, runs 6."
+  },
+  {
    "model": "AV1-OF",
    "bv": 1667,
    "heat_sinks": 15,
@@ -323,6 +359,90 @@
     "megamek_bv": 1604
    },
    "role": "Sniper: hangs back and hits from long range. 2 Medium Lasers, 2 Heavy PPCs, 2 MML 3s; walks 4, runs 6."
+  },
+  {
+   "model": "AV1-OI",
+   "bv": 1606,
+   "heat_sinks": 16,
+   "missing_actuators": {
+    "LA": [
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "heat_sink*2",
+     "er_medium_laser"
+    ],
+    "RA": [
+     "heat_sink*2",
+     "er_medium_laser"
+    ],
+    "LT": [
+     "heat_sink",
+     "thunderbolt15",
+     "ammo:thunderbolt15*2"
+    ],
+    "RT": [
+     "heat_sink",
+     "thunderbolt15",
+     "ammo:thunderbolt15*2"
+    ]
+   },
+   "source": {
+    "mul_id": 169,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OI.mtf",
+    "published": "RS:3058Uu-I",
+    "role": "Missile Boat",
+    "bv": "megamek",
+    "megamek_bv": 1606
+   },
+   "role": "Missile boat: rains missiles from a distance. 2 Medium Lasers, 2 ER Medium Lasers, 2 Thunderbolt 15s; walks 4, runs 6."
+  },
+  {
+   "model": "AV1-OR",
+   "bv": 1833,
+   "heat_sinks": 10,
+   "missing_actuators": {
+    "LA": [
+     "lower_arm",
+     "hand"
+    ],
+    "RA": [
+     "hand"
+    ]
+   },
+   "equipment": {
+    "LA": [
+     "c_gauss_rifle"
+    ],
+    "RA": [
+     "mrm40"
+    ],
+    "LT": [
+     "ammo:c_gauss_rifle"
+    ],
+    "RT": [
+     "c_streak_srm4",
+     "ammo:c_streak_srm4",
+     "ammo:mrm40*2"
+    ],
+    "HD": [
+     "c_er_large_laser"
+    ]
+   },
+   "source": {
+    "mul_id": 170,
+    "megamek": "data/mekfiles/meks/3058Uu/Avatar AV1-OR.mtf",
+    "published": "RS:3058Uu-I",
+    "role": "Brawler",
+    "bv": "megamek",
+    "megamek_bv": 1833
+   },
+   "role": "Brawler: built to slug it out at medium range. 2 Medium Lasers, Gauss Rifle, MRM 40, Streak SRM 4, ER Large Laser; walks 4, runs 6."
   }
  ]
 }

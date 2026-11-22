@@ -35,6 +35,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		return
 	w.fired = true
 	attacker.heat_generated += w.def.heat * shots
+	GaussWeapons.after_firing(attacker, w.def)
 	var roll := dice.roll_2d6()
 	var need := th.target()
 	var hit := roll >= need
@@ -70,7 +71,14 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 				return
 		_attach_pod(state, dice, emit, attacker, target, th, arc_id, data)
 		return
-	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing)
+	if w.def.large_missile and ams != null and Thunderbolt.shot_down(dice, data):
+		emit.call(GameEvent.WEAPON_FIRED, data)
+		return
+	var dist := Hex.distance(attacker.coord, target.coord)
+	if w.def.large_missile:
+		ams = null  # already rolled against
+	var c := WeaponModes.cluster(w, shots, dice, ams != null, jam != "", th.narc_homing,
+			GaussWeapons.cluster_mod(w.def, dist))
 	if th.narc_homing:
 		data["narc_homing"] = true
 	if ams != null:
@@ -78,7 +86,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var packets: Array[int] = c["packets"]
 	if not w.def.damage_by_range.is_empty():  # variable damage (p. 182)
 		var shift := 1 if WaterCombat.shot(state.map, attacker, w, target)["under_range"] else 0
-		packets = [w.def.damage_at(Hex.distance(attacker.coord, target.coord), shift)] as Array[int]
+		packets = [w.def.damage_at(dist, shift)] as Array[int]
 		data["damage_at_range"] = packets[0]
 	if c["n"] > 0 or ams != null:
 		data["missiles"] = c["n"]
@@ -93,8 +101,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if w.def.heat_damage:  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points
+	if w.def.heat_dice > 0:
+		Plasma.add_heat(dice, w.def, target, data)
 	emit.call(GameEvent.WEAPON_FIRED, data)
 	for p in packets:
+		if p <= 0:
+			continue
 		var hl := aimed.duplicate()
 		if th.legs_only:
 			hl = HitTable.roll_kick(dice, arc_id, target.def.quad)
