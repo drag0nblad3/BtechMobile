@@ -11,6 +11,10 @@ extends RefCounted
 const FLIP := 2
 
 
+## A leg attack's 4 damage comes with a critical hit chance: worth a bit more.
+const LEG_CRIT_WEIGHT := 1.5
+
+
 static func plan(state: GameState, u: Unit) -> Dictionary:
 	var best := {"shots": [], "twist": 0, "reason": "holds fire: no enemy in range and sight", "value": 0.0}
 	var original := u.torso_twist
@@ -49,10 +53,13 @@ static func _modes(u: Unit, shots: Array) -> Dictionary:
 
 static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 	var opts := []
+	var leg := []  # a leg attack replaces every other attack (BaLegAttack)
 	for o in FireOptions.for_target(state, u, e):
 		if o["to_hit"].possible():
 			var ed := Advisor.expected_damage(o["weapon"], o["to_hit"])
-			if ed > 0.0:
+			if BaLegAttack.is_leg_attack(o["weapon"]):
+				leg = [ed * LEG_CRIT_WEIGHT, o]
+			elif ed > 0.0:
 				opts.append([ed, o])
 	opts.sort_custom(func(a, b): return a[0] / maxf(1.0, _heat(a[1]["weapon"])) > b[0] / maxf(1.0, _heat(b[1]["weapon"])))
 	var limit := BotSkill.heat_stretch() if _fragile(e) else BotSkill.heat_limit()
@@ -69,9 +76,14 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 		idx.append(o["index"])
 		shots.append({"weapon": o["index"], "target_id": e.id})
 		total += pair[0]
+	var why := "fires at %s: %.1f expected damage" % [Names.unit(e), total]
+	if not leg.is_empty() and leg[0] > total:
+		shots = [{"weapon": leg[1]["index"], "target_id": e.id}]
+		total = leg[0]
+		held.clear()
+		why = "climbs %s's legs: %s to hit, a chance of a critical hit" % [Names.unit(e), Names.pct(leg[1]["to_hit"].chance())]
 	# Prefer damaged or slow targets a little: finishing one off matters.
 	var value := total * (1.0 + 0.5 * _damage_fraction(e))
-	var why := "fires at %s: %.1f expected damage" % [Names.unit(e), total]
 	if _damage_fraction(e) > 0.3:
 		why += ", it is already badly hurt"
 	if not held.is_empty():

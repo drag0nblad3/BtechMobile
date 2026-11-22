@@ -27,6 +27,9 @@ static func resolve_declared(state: GameState, dice: Dice, emit: Callable) -> vo
 
 static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit,
 		w: MountedWeapon, target: Unit, th: ToHit) -> void:
+	if BaLegAttack.is_leg_attack(w):
+		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
+		return
 	var kind := WeaponModes.ammo_kind(w)
 	var shots := take_shots(attacker, w)
 	if shots == 0:

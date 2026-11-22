@@ -80,3 +80,28 @@ func test_bought_deployed_and_saved() -> void:
 	check_eq(r.ba.alive(), 4, "troopers saved")
 	check_eq(gun(r, "ba_ap_gauss").def.missiles, 4, "squad attack size saved")
 	check_eq(r.ammo_for(gun(r, "ba_srm2").def), 2, "ammo still matches its weapon")
+
+
+func test_leg_attack() -> void:
+	var s := GameState.new(open_map(4, 4))
+	var sq := _squad("elemental_ba_laser", 0, hex_at(1, 1), 0, 1)
+	var m := mech("hunchback_hbk4g", 1, hex_at(1, 2), 0, 2)
+	s.add_unit(sq)
+	s.add_unit(m)
+	var leg := gun(sq, BaLegAttack.ID)
+	check(not ToHitCalc.weapon(s, sq, leg, m).possible(), "needs the 'Mech's hex")
+	sq.coord = m.coord
+	var th := ToHitCalc.weapon(s, sq, leg, m)
+	check_eq(th.target(), 5, "anti-'Mech skill 5, five troopers")
+	sq.ba.troopers[0] = BaState.DEAD
+	sq.ba.troopers[1] = BaState.DEAD
+	check_eq(ToHitCalc.weapon(s, sq, leg, m).target(), 7, "three troopers: +2")
+	var decl := FireOptions.declare(s, sq, [{"weapon": 0, "target_id": 2}, {"weapon": sq.weapons.find(leg), "target_id": 2}])
+	check(decl.size() == 1 and BaLegAttack.is_leg_attack(sq.weapons[decl[0]["weapon_index"]]), "the leg attack is the whole attack")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(9)
+	dice.pick_queue.append(1)
+	dice.queue_2d6(2)  # critical check
+	var before := m.armor[Location.RL]
+	BaLegAttack.resolve(s, dice, func(_t: StringName, _d: Dictionary) -> void: pass, sq, leg, m, ToHitCalc.weapon(s, sq, leg, m))
+	check_eq(before - m.armor[Location.RL], 4, "4 damage to the right leg")

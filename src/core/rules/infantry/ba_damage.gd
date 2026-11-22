@@ -30,5 +30,5 @@ static func take(dice: Dice, emit: Callable, u: Unit, amount: int, source_id: in
 ## Fewer troopers, fewer shots in each of the squad's cluster rolls.
 static func resize_weapons(u: Unit) -> void:
 	var spec := u.def.battle_armor
-	for i in mini(u.weapons.size(), spec.weapons.size()):
+	for i in mini(u.weapons.size(), spec.weapons.size()):  # the leg attack comes after
 		u.weapons[i].def.missiles = spec.per_trooper(i) * u.ba.alive()
