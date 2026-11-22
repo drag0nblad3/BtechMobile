@@ -92,8 +92,19 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 		report["added"] += route.size()
 		report["joint_contacts"] += 1
 
+	var residual := {}
 	for p: Dictionary in m.parts:
-		report["after"] += maxi(0, components(p["cells"]).size() - 1)
+		var groups := components(p["cells"])
+		var count := maxi(0, groups.size() - 1)
+		report["after"] += count
+		if count > 0:
+			var sizes := []
+			for i in range(1, groups.size()):
+				sizes.append(groups[i].size())
+			residual[p["name"]] = {"count": count, "sizes": sizes,
+					"main": groups[0].size(), "parent": p.get("parent", ""),
+					"joint": p.get("joint", ""), "loc": p.get("loc", -1)}
+	report["residual_parts"] = residual
 	return report
 
 
