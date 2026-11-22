@@ -18,6 +18,16 @@ func _initialize() -> void:
 	if args.size() > 0:
 		_out = args[0]
 	_mode = args[1] if args.size() > 1 else ""
+	if _mode == "voxel":
+		GameSettings.load_settings()
+		GameSettings.voxel_mechs = true  # capture-only override, never saved
+		var fb := ForceBuilder.new(UnitDb.load_dir(), 20000)
+		for side in 2:
+			for i in 4:
+				fb.add(side, "hunchback_hbk4g")
+		BattleLaunch.pending = fb.build(MapLoader.load_file(
+				"res://data/maps/city_outskirts.json", TerrainDb.load_file()))
+		BattleLaunch.bot_sides = []
 	if _mode.begins_with("map=") or _mode.begins_with("gen=") or _mode == "vfx":  # two lances on that map
 		var fb := ForceBuilder.new(UnitDb.load_dir(), 6000)
 		for id in ["griffin_grf1n", "warhammer_whm6r"]:
@@ -62,7 +72,7 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
-	if _frames == 8 and _mode == "vfx":
+	if _frames == 8 and _mode in ["vfx", "voxel"]:
 		_stage_battle_visuals()
 	if _frames == 39 and _mode == "vfx":
 		# Visual review only: place a PPC across the visible battlefield.
