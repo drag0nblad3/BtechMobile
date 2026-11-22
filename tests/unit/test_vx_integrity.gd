@@ -174,7 +174,7 @@ func test_rigid_assembly_repair_does_not_bridge_two_hinged_parts() -> void:
 	m.parts.append({"name": "separate_hip", "loc": Location.LL, "parent": "ct",
 			"joint": "hip", "pivot": Vector3(4, 0, 0),
 			"cells": {Vector3i(5, 0, 0): 0}})
-	var count := m.part("ct")["cells"].size()
+	var count: int = m.part("ct")["cells"].size()
 	var report := VxIntegrity.repair(m)
 	check_eq(report["rig_rejoined"], 0, "each articulated hinge is a separate frame")
 	check_eq(m.part("ct")["cells"].size(), count, "do not attach stray hip to torso")
