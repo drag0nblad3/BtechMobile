@@ -9,10 +9,15 @@ const SEAM_EVERY := 12  ## Fine cells between panel seams
 const SEAM_DARK := 0.86
 
 
-static func apply(m: VxModel, n: int) -> void:
+static func apply(m: VxModel, n: int, source: Dictionary = {}) -> void:
 	if n <= 1:
 		return
 	m.detail = n
+	# Direct sampling of original polygon lofts preserves contours between
+	# source layers. The old block split remains for hand-authored box recipes.
+	if source.get("voxelize_lofts", false):
+		VxShapeRaster.rebuild(m, source, n)
+		return  # Authored armor edges need neither automatic bevel nor fake seams.
 	_subdivide(m, n)
 	var owner := _owner_map(m)
 	for p in m.parts:
