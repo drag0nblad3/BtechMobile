@@ -18,9 +18,16 @@ static func refresh(ai: AttackInput) -> void:
 	ai.hud.flip_button.disabled = not ai.attacker.arms_flipped and ArmFlip.problem(ai.attacker) != ""
 	var hexes := {ai.attacker.coord: HexHighlighter.SELECTED}
 	if ai.target:
-		hexes[ai.target.coord] = Color(1, 0.2, 0.2, 0.55)
+		var los := LineOfSight.check(ai.controller.state.map, ai.attacker, ai.target)
+		var shade := HexHighlighter.LOS_BLOCKED if los["blocked"] else HexHighlighter.LOS_CLEAR
+		var line := Hex.line(ai.attacker.coord, ai.target.coord)
+		for i in range(1, line.size() - 1):
+			hexes[line[i]] = shade
+		if los["cover"] != Hex.INVALID:
+			hexes[los["cover"]] = HexHighlighter.COVER
+		hexes[ai.target.coord] = HexHighlighter.TARGET
 	if ai.target_hex != Hex.INVALID:
-		hexes[ai.target_hex] = Color(1, 0.6, 0.2, 0.55)
+		hexes[ai.target_hex] = HexHighlighter.COVER
 	ai.highlighter.show_hexes(hexes)
 	var twist: String = ["  (torso twisted left)", "", "  (torso twisted right)"][ai.attacker.torso_twist + 1]
 	if ai.attacker.arms_flipped:
@@ -54,8 +61,13 @@ static func refresh(ai: AttackInput) -> void:
 		if not ai.hud.sheet_open:
 			ai.hud.show_side(null)
 		return
-	ai.hud.set_info("%s -> %s (%d hexes)%s" % [Names.unit(ai.attacker), Names.unit(ai.target),
-			Hex.distance(ai.attacker.coord, ai.target.coord), twist])
+	var los_hint := ""
+	if weapon:
+		var shot_los := LineOfSight.check(ai.controller.state.map, ai.attacker, ai.target)
+		los_hint = "  |  LOS BLOCKED: %s" % shot_los["reason"] if shot_los["blocked"] else (
+			"  |  PARTIAL COVER" if shot_los["cover"] != Hex.INVALID else "  |  LOS CLEAR")
+	ai.hud.set_info("%s -> %s (%d hexes)%s%s" % [Names.unit(ai.attacker), Names.unit(ai.target),
+			Hex.distance(ai.attacker.coord, ai.target.coord), twist, los_hint])
 	if weapon:
 		ai.hud.set_tip(Advisor.volley(ai.controller.state, ai.attacker, ai._shot_list(), level))
 		if not ai.hud.sheet_open:
