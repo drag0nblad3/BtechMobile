@@ -1,0 +1,1 @@
+{"id": "test_wheeled", "name": "Test Truck", "asset": {"type": "vehicle", "motive": "w", "mp": 5, "tmm": 1, "range": [1, 2, 3], "skill": 6, "damage": 2, "groupings": 1, "check": 6, "threshold": 5, "bsp": 8, "specials": {"BRA": 1}}}

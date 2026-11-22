@@ -7,6 +7,7 @@ extends RefCounted
 ## Terrain counts from the spotter; the shooter's range still applies.
 ## A 'Mech spots one target per turn (p. 62).
 ## A 'Mech that declared a charge or death from above can't spot (p. 62).
+## Assets spot too, with fixed movement modifiers (AssetIndirect).
 
 
 ## Best friendly 'Mech that can see the target (lowest added modifier), or null.
@@ -16,7 +17,7 @@ static func spotter(state: GameState, attacker: Unit, target: Unit) -> Unit:
 	for u in state.units_of_side(attacker.side):
 		if u == attacker or u.destroyed or u.shutdown or not u.pilot.conscious:
 			continue
-		if PhysicalMods.charging(state, u):
+		if PhysicalMods.charging(state, u) or (u.asset != null and u.asset.carried_by >= 0):
 			continue
 		var spots := spotting_target(state, u)
 		if spots >= 0 and spots != target.id:
@@ -33,15 +34,22 @@ static func spotter(state: GameState, attacker: Unit, target: Unit) -> Unit:
 
 static func add_mods(th: ToHit, state: GameState, spotter: Unit) -> void:
 	th.add("indirect fire", 1, "You can't see the target, so %s spots for you; the missiles arc over the terrain." % Names.unit(spotter))
-	var m := MoveMode.attacker_mod(spotter.move_mode)
-	if m > 0:
+	var m := move_mod(spotter)
+	if m > 0 and spotter.asset != null:
+		th.add("spotter Asset", m, "A vehicle spotting always counts as running (+2), moved or not.")
+	elif m > 0:
 		th.add("spotter %s" % MoveMode.verb(spotter.move_mode), m, "Your spotter's own movement spoils its aim for you too.")
 	if _spotter_fires(state, spotter):
 		th.add("spotter firing", 1, "Your spotter is also shooting this phase, so it's busier: +1.")
 
 
 static func _spotter_mod(state: GameState, u: Unit) -> int:
-	return MoveMode.attacker_mod(u.move_mode) + (1 if _spotter_fires(state, u) else 0)
+	return move_mod(u) + (1 if _spotter_fires(state, u) else 0)
+
+
+## The spotter's movement modifier; Assets use fixed values (p. 145).
+static func move_mod(u: Unit) -> int:
+	return AssetIndirect.spotter_mod(u) if u.asset != null else MoveMode.attacker_mod(u.move_mode)
 
 
 static func _spotter_fires(state: GameState, u: Unit) -> bool:

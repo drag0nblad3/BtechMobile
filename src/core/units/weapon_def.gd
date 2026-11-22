@@ -49,6 +49,7 @@ var one_shot: bool     ## Fires once a game, no ammo bins (rocket launchers, p. 
 var fire_psr: bool     ## Heavy Gauss: firing after moving costs a piloting roll (GaussWeapons).
 var range_cluster: bool  ## HAG: cluster roll +2 at short range, -2 at long (GaussWeapons).
 var heat_dice: int     ## Plasma: a hit adds this many d6 of heat to the target (Plasma).
+var ai: bool           ## Anti-Infantry type (AI, book weapon tables): more harm to infantry Assets.
 
 
 static func from_dict(d: Dictionary) -> WeaponDef:
@@ -93,6 +94,7 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 	w.fire_psr = bool(d.get("fire_psr", false))
 	w.range_cluster = bool(d.get("range_cluster", false))
 	w.heat_dice = int(d.get("heat_dice", 0))
+	w.ai = bool(d.get("ai", false))
 	var mun: Dictionary = d.get("munitions", {})
 	for kind: String in mun:
 		var v := d.duplicate()
@@ -105,6 +107,24 @@ static func from_dict(d: Dictionary) -> WeaponDef:
 
 func is_clan() -> bool:
 	return tech == "clan"
+
+
+## Weapon Type codes from the book's tables (p. 182) that Assets care about:
+## DE direct energy, P pulse, DB direct ballistic, M missile, AI, H heat.
+func attack_types() -> Array[String]:
+	var out: Array[String] = []
+	match type:
+		"energy":
+			out.append("P" if pulse else "DE")
+		"ballistic":
+			out.append("DB")
+		"missile":
+			out.append("M")
+	if ai:
+		out.append("AI")
+	if heat_damage:
+		out.append("H")
+	return out
 
 
 func uses_ammo() -> bool:
