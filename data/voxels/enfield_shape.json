@@ -2,7 +2,7 @@
   "id": "enfield_shape",
   "name": "Enfield — unique coarse sculpt",
   "unit": "enfield_end6q",
-  "voxel_size": 0.05,
+  "voxel_size": 0.051,
   "subdivide": 1,
   "exclusive_parts": true,
   "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
@@ -1509,7 +1509,7 @@
             [
               10,
               21,
-              -13
+              -18
             ],
             [
               14,
@@ -1539,14 +1539,29 @@
             [
               11,
               22,
-              -13
+              -18
             ],
             [
               11,
               22,
-              -10
+              -12
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              10,
+              21,
+              -17
+            ],
+            [
+              11,
+              25,
+              -8
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -1638,7 +1653,7 @@
       [
         11.5,
         22.5,
-        -12.5
+        -17.5
       ]
     ],
     "CT": [
@@ -1654,5 +1669,5 @@
       ]
     ]
   },
-  "notes": "Individual reference-oriented shape study (asym_big_gun), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods."
+  "notes": "Individual reference-oriented shape study (asym_big_gun), 50 tons. Custom torso and head contours, split arms and lower legs, separate location-correct gun pods. DRAFT; not approved for likeness. No reused mech geometry.\nConnectivity resculpt: lower arms are now supported by wide volume bearings; distant decorative plates removed, and CT missile cassette braced into chest rather than hung as isolated large pods.\nSecond bespoke silhouette pass: head height/wing sweep/heavy cannon mass and overall size revised from reference comparisons; draft only."
 }
