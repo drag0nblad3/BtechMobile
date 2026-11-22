@@ -46,13 +46,17 @@ jobs:
               }
           }
           JAVA
-          javac -cp "$JAR:$ROOT/lib/*" /tmp/BVScan.java
+          CP=$(find /tmp/mm -type f -name '*.jar' -print | paste -sd ':' -)
+          javac -cp "$CP" /tmp/BVScan.java
           for dir in '3039u' '3050U' '3055U' '3058Uu' '3060u' '3067' '3075'; do
             find "mm-data/data/mekfiles/meks/$dir" -type f -name '*.mtf'
           done | sort > /tmp/bv-paths.txt
           echo "Processing $(wc -l < /tmp/bv-paths.txt) source designs"
-          timeout 800s java -Xmx4g -cp "/tmp:$JAR:$ROOT/lib/*" BVScan /tmp/bv-paths.txt | tee /tmp/bv-results.txt
+          sed -i "s|^mm-data/|$GITHUB_WORKSPACE/mm-data/|" /tmp/bv-paths.txt
+          cd "$ROOT"
+          timeout 800s java -Xmx4g -cp "/tmp:$CP" BVScan /tmp/bv-paths.txt | tee /tmp/bv-results.txt
           echo "BVs computed: $(grep -c '^MEK_BV' /tmp/bv-results.txt || true)"
+          test "$(grep -c '^MEK_BV' /tmp/bv-results.txt || true)" -gt 500
       - uses: actions/upload-artifact@v4
         if: always()
         with:
