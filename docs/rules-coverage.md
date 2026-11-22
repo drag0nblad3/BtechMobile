@@ -49,6 +49,16 @@ Status: ✅ done + tested · 🟡 partial · ⬜ not started. Keep one line per 
 - ✅ Hull breaches (`HullBreach`, p. 127): damage to a location under water rolls 2D6, 2-4 floods it; a bare location (no armor, front or rear for a torso) under water floods at once, now or after moving or falling. A flooded location stops working as if destroyed, without explosions or crits (later crits there do nothing except ammo); a flooded leg counts as destroyed, a flooded side torso floods its arm; it stays flooded out of the water. The record sheet marks it.
 
 ## Weapon attacks
+- 🟡 Advanced equipment catalog (21 sourced weapon types, `test_expanded_equipment`):
+  re-engineered small/medium/large lasers ignore reflective, hardened and ferro-lamellor
+  reductions; chemical lasers require their own ammo bins; binary laser cannon, Clan improved
+  large/pulse lasers, HVAC 2/5/10 and improved Clan ACs use sourced stats and critical slots;
+  AP/improved Clan Gauss use their specified component explosions and inert ammunition;
+  primitive light/medium/heavy rifles suffer -3 damage against military armor (`RifleCannon`).
+  `TODO(rules)`: HVAC rapid-fire and jams, laser AMS, re-engineered treatment of every exotic
+  armor interaction, specialty chemical laser effects and commercial-armor rifle modifiers.
+
+## Weapon attacks
 - ✅ To-hit: gunnery + attacker movement (walk +1, run +2) + target movement
   (3-4 +1, 5-6 +2, 7-9 +3, 10-17 +4, 18-24 +5, 25+ +6) + range (+0/+2/+4) + minimum range.
 - ✅ Woods: intervening +1 light / +2 heavy, target hex the same.
