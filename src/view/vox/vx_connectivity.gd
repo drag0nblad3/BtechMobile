@@ -141,10 +141,28 @@ static func repair(model: VxModel) -> Dictionary:
 		var goals := _near_pivot(parent_cells, pivot, JOINT_REACH)
 		if starts.is_empty() or goals.is_empty():
 			continue
-		var path := _route(starts, goals, occupied, JOINT_REACH)
-		if path.size() >= 2 and _weld(path, child_cells, parent_cells,
-				occupied, p["name"], parent_name, mat) \
-				and solid_contact(child_cells, parent_cells):
+		# A first nearest-neighbor contact can be blocked by the armor of a
+		# third moving part. Explore every actual face seam around the pivot
+		# before giving up or attempting any gap-spanning reinforcement.
+		var fixed := false
+		for c: Vector3i in starts:
+			for delta: Vector3i in DIRS:
+				if not parent_cells.has(c + delta):
+					continue
+				var seam_path: Array[Vector3i] = [c, c + delta]
+				if _weld(seam_path, child_cells, parent_cells,
+						occupied, p["name"], parent_name, mat):
+					fixed = solid_contact(child_cells, parent_cells)
+					if fixed:
+						break
+			if fixed:
+				break
+		if not fixed:
+			var path := _route(starts, goals, occupied, JOINT_REACH)
+			if path.size() >= 2 and _weld(path, child_cells, parent_cells,
+					occupied, p["name"], parent_name, mat):
+				fixed = solid_contact(child_cells, parent_cells)
+		if fixed:
 			joints_fixed += 1
 	return {"islands_fixed": islands_fixed, "joints_fixed": joints_fixed}
 
