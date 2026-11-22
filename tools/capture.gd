@@ -72,8 +72,10 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
-	if _frames == 8 and _mode in ["vfx", "voxel"]:
+	if _frames == 8 and _mode == "vfx":
 		_stage_battle_visuals()
+	if _frames == 8 and _mode == "voxel":
+		_stage_voxel_group()
 	if _frames == 39 and _mode == "vfx":
 		# Visual review only: place a PPC across the visible battlefield.
 		# Does not affect the actual combat resolution or either roster.
@@ -168,6 +170,42 @@ func _stage_battle_visuals() -> void:
 		if chosen != Hex.INVALID:
 			unit.coord = chosen
 			_scene.units_layer.refresh_unit(unit.id)
+
+
+## Camera-centered group shot: all eight voxel views must be in frame.
+func _stage_voxel_group() -> void:
+	var state: GameState = _scene.controller.state
+	var center := HexLayout.map_bounds(state.map).get_center()
+	var taken := {}
+	var sum := Vector3.ZERO
+	var count := 0
+	for i in state.units.size():
+		var unit: Unit = state.units[i]
+		var desired := center + Vector3((i % 4 - 1.5) * 2.3, 0,
+				(floori(float(i) / 4.0) - 0.5) * 3.3)
+		var selected := Hex.INVALID
+		var closest := INF
+		for c: Vector2i in state.map.coords():
+			var tile: MapTile = state.map.get_tile(c)
+			if tile.building != null or tile.depth > 0 or taken.has(c):
+				continue
+			var occupant := state.unit_at(c)
+			if occupant != null and occupant != unit:
+				continue
+			var p := HexLayout.to_world(c, tile.level)
+			var distance := Vector2(p.x - desired.x, p.z - desired.z).length_squared()
+			if distance < closest:
+				closest = distance
+				selected = c
+		if selected == Hex.INVALID:
+			continue
+		unit.coord = selected  # capture-only; never submitted to controller
+		taken[selected] = true
+		_scene.units_layer.refresh_unit(unit.id)
+		sum += _scene.units_layer.view_of(unit).global_position
+		count += 1
+	if count > 0:
+		_scene.rig.snap(sum / float(count), 16.0)
 
 
 ## Review only: sample lines in the roll feed, nothing is resolved.
