@@ -92,6 +92,12 @@ jobs:
           godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
+      - name: Battle visuals smoke (scene and effect lifetime)
+        run: |
+          set -o pipefail
+          godot --headless -s tools/battle_visual_smoke.gd 2>&1 | tee battle-visual.log
+          grep -q "battle visuals smoke ok" battle-visual.log
+          ! grep -E "SCRIPT ERROR|Parse Error|BATTLE_VISUAL_FAILED" battle-visual.log
       - name: Launcher navigation smoke
         run: |
           set -o pipefail
