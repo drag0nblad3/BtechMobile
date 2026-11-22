@@ -45,6 +45,18 @@ func mech(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int = 0
 	return Unit.new(uid if uid > 0 else side * 10 + at.x + 1, def, side, at, facing)
 
 
+## Made-up Asset cards for rule tests (tests/fixtures/assets, ids "test_*").
+const ASSET_FIXTURES := "res://tests/fixtures/assets"
+
+
+## An Asset (vehicle, infantry) from data/assets/ or a test fixture card.
+func asset(def_id: String, side: int, at: Vector2i, facing: int = 0, uid: int = 0) -> Unit:
+	var db := UnitDb.new()
+	db.weapons = WeaponDb.load_file()
+	db.add_assets(ASSET_FIXTURES if def_id.begins_with("test_") else UnitDb.ASSET_DIR)
+	return Unit.new(uid if uid > 0 else side * 10 + at.x + 1, db.get_def(def_id), side, at, facing)
+
+
 ## Index in u.weapons of the `nth` weapon with this id (-1 if none).
 func gun_index(u: Unit, weapon_id: String, nth: int = 0) -> int:
 	for i in u.weapons.size():

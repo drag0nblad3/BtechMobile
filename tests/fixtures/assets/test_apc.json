@@ -1,0 +1,1 @@
+{"id": "test_apc", "name": "Test APC", "asset": {"type": "vehicle", "motive": "w", "mp": 6, "tmm": 1, "range": [3, 6, 9], "skill": 6, "damage": 2, "groupings": 1, "check": 7, "threshold": 5, "bsp": 10, "specials": {"APC": 2, "AMS": 1, "ECM": 1, "PRB": 1}}}
