@@ -3101,27 +3101,27 @@
                 "at": 28,
                 "polygon": [
                   [
-                    -3.71307,
-                    -6.76
+                    -3.2225,
+                    -7.48
                   ],
                   [
-                    -2.22022,
-                    -15.78
+                    -1.9088,
+                    -16.78
                   ],
                   [
-                    2.22871,
-                    -15.78
+                    2.0063,
+                    -16.78
                   ],
                   [
-                    4.46307,
-                    -6.76
+                    3.9725,
+                    -7.48
                   ],
                   [
-                    2.98009,
+                    2.6675,
                     -0.17324
                   ],
                   [
-                    -3.71307,
+                    -3.2225,
                     -0.17324
                   ]
                 ]
@@ -3816,6 +3816,21 @@
               -29
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -15,
+              32,
+              -25
+            ],
+            [
+              -13,
+              36,
+              -16
+            ]
+          ],
+          "mat": "gun"
         }
       ],
       "parent": "ct"
@@ -5130,5 +5145,7 @@
   "art_quality_revision": "50-stage-source-review-20261121",
   "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "reference_resculpt_revision": "validated-reference-chassis-refit-20261122",
+  "reference_resculpt_passes": 2
 }

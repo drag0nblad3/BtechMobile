@@ -2792,6 +2792,21 @@
               -14
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -1,
+              23,
+              -13
+            ],
+            [
+              1,
+              24,
+              -7
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -2841,28 +2856,28 @@
                 "at": 19,
                 "polygon": [
                   [
-                    -2.64578,
-                    -12.06992
+                    -2.5564,
+                    -13.8699
                   ],
                   [
-                    -1.32099,
-                    -20.07
+                    -1.2713,
+                    -21.87
                   ],
                   [
-                    1.3286,
-                    -20.07
+                    1.2988,
+                    -21.87
                   ],
                   [
-                    3.31578,
-                    -11.41457
+                    3.2264,
+                    -13.2146
                   ],
                   [
-                    1.99098,
-                    -6.83689
+                    1.9413,
+                    -8.1502
                   ],
                   [
-                    -2.64578,
-                    -6.83689
+                    -2.5564,
+                    -8.1502
                   ]
                 ]
               },
@@ -5005,5 +5020,7 @@
   "art_quality_passes": 50,
   "art_quality_revision": "50-stage-source-review-20261121",
   "art_view_revision": "50-side-rear-top-passes-20261122",
-  "art_view_passes": 50
+  "art_view_passes": 50,
+  "reference_resculpt_revision": "validated-reference-chassis-refit-20261122",
+  "reference_resculpt_passes": 2
 }
