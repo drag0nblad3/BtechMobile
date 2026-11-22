@@ -4,6 +4,7 @@ extends Node3D
 ## and destroyed 'Mechs blow up, collapsing buildings throw dust and rubble,
 ## and shots or 'Mechs forcing their way in knock holes in building walls.
 ## Reads state only; the record sheet and events decide what happened.
+## PHYSICAL is not a hit location; only DAMAGE emits a contact spark.
 
 const MECH_HEIGHT := 0.55  ## Where on a 'Mech model blasts are centred.
 
@@ -31,9 +32,6 @@ func play(e: GameEvent) -> void:
 	match e.type:
 		GameEvent.WEAPON_FIRED:
 			_weapon_fire(e.data)
-		GameEvent.PHYSICAL:
-			if e.data.get("hit", false):
-				_at_unit(e.data.get("target_id", -1), "impact")
 		GameEvent.FALL:
 			var fallen := _unit_pos(int(e.data.get("unit_id", -1)))
 			if fallen != Vector3.INF:
