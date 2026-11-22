@@ -15,7 +15,12 @@ const HEIGHT := 2
 static func value(map: BattleMap, tile: MapTile, smoke := true) -> int:
 	if tile == null or map.windy:
 		return 0
-	return mini(CAP, tile.fog + (1 if smoke and tile.on_fire else 0))
+	return mini(CAP, cloud(tile) + (1 if smoke and tile.on_fire else 0))
+
+
+## Fog plus Arrow IV smoke in a hex (0-2), ignoring fire.
+static func cloud(tile: MapTile) -> int:
+	return mini(CAP, tile.fog + tile.smoke)
 
 
 ## Extra to-hit on a 'Mech in this hex on top of its woods value.
@@ -28,4 +33,4 @@ static func to_hit_mod(map: BattleMap, u: Unit, woods: int) -> int:
 
 ## Name for logs: "fog" when fog is present, else "smoke".
 static func name_of(tile: MapTile) -> String:
-	return "fog" if tile != null and tile.fog > 0 else "smoke"
+	return "fog" if tile != null and tile.fog > tile.smoke else "smoke"

@@ -41,8 +41,10 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 				% [RotaryAc.jams_on(d["shots"]), d["shots"]] if level == ExplainLevel.FULL else "")
 	if d.get("arrives_next_turn", false):
 		return "%s: launched, it lands next turn (18+ hexes away), needing %d" % [who, d["need"]] + ModsText.lines(d["mods"], level, seen)
+	if d.get("homing", false):
+		return ArrowText.homing(who, d, level)
 	if d.get("artillery", false):
-		res += "" if not d["hit"] else "; %d to everything in the hex, %d to the hexes around it" % [ArrowIv.CENTER, ArrowIv.RING]
+		res += "" if not d["hit"] else ArrowText.hit_text(d, level)
 		if d.has("scatter"):
 			var sc: Dictionary = d["scatter"]
 			res += ("; it scatters %d hex%s (1D6: %d) to %s" % [sc["hexes"], "" if sc["hexes"] == 1 else "es", sc["dir"],

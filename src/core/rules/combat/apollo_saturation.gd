@@ -7,7 +7,7 @@ extends RefCounted
 ## in the hex, friend or foe, and to a building there. AMS in the hex cuts the
 ## roll as usual. Fully submerged units are never hit.
 ## TODO(rules): damage is applied in 5-point groups; units on a roof are hit
-## too; the bot never uses saturation; a miss does nothing (no scatter).
+## too; the bot (BotArtillery) weighs it only against units; a miss does nothing (no scatter).
 
 const MODE := "saturation"
 const GROUP := 5

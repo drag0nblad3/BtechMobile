@@ -35,6 +35,8 @@ var tagged: Dictionary = {}
 var tag_used: Dictionary = {}
 ## Distant Arrow IV missiles in flight (ArrowIv): [{attacker_id, weapon_index, hex, turn, need, mods}].
 var artillery: Array[Dictionary] = []
+## Hexes a Smoke Arrow IV struck this phase; smoke fills them after it (ArrowSmoke).
+var smoke_pending: Array[Vector2i] = []
 ## Weather, temperature and gravity for the whole map.
 var conditions := Conditions.new():
 	set(v):

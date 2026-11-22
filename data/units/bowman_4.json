@@ -1,0 +1,79 @@
+{
+ "id": "bowman_4",
+ "name": "Bowman",
+ "model": "4",
+ "tonnage": 70,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_steel",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 20,
+  "RA": 20,
+  "LT": 20,
+  "RT": 20,
+  "CT": 29,
+  "HD": 9,
+  "LL": 28,
+  "RL": 28
+ },
+ "rear_armor": {
+  "LT": 8,
+  "RT": 8,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_arrow_iv~2"
+  ],
+  "RA": [
+   "c_arrow_iv~2"
+  ],
+  "LT": [
+   "ammo:c_arrow_iv",
+   "ammo:c_arrow_iv:homing",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "ammo:c_arrow_iv",
+   "ammo:c_arrow_iv:homing",
+   "endo_steel*3"
+  ],
+  "CT": [
+   "endo_steel"
+  ],
+  "HD": [
+   "guardian_ecm"
+  ],
+  "LL": [
+   "a_pod"
+  ],
+  "RL": [
+   "a_pod"
+  ]
+ },
+ "source": {
+  "mul_id": 5691,
+  "megamek": "data/mekfiles/meks/3067 Unabridged/Clan Meks/Bowman 4.mtf",
+  "published": "RS:3067u",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 1854
+ },
+ "bv": 1854,
+ "sprite": "bowman",
+ "role": "Missile boat: rains missiles from a distance. 2 Arrow IVs; walks 5, runs 8."
+}

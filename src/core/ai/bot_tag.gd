@@ -1,7 +1,8 @@
 class_name BotTag
 extends RefCounted
 ## Bot TAG: before firing, designates the enemy that the most friendly
-## 'Mechs still to fire could hit with indirect fire but can't see.
+## 'Mechs still to fire could hit with indirect fire but can't see, or with
+## homing Arrow IV.
 
 
 ## The enemy to TAG, or null.
@@ -29,6 +30,9 @@ static func _helpers(state: GameState, u: Unit, e: Unit) -> int:
 	var n := 0
 	for f in state.units_of_side(u.side):
 		if f == u or f.destroyed or f.has_fired or f.asset != null:
+			continue
+		if BotArtillery.homing_ready(f) and Hex.distance(f.coord, e.coord) >= ArrowIv.MIN_HEXES:
+			n += 1  # homing Arrow IV rides the TAG beam, seen or not
 			continue
 		if not LineOfSight.check(state.map, f, e)["blocked"]:
 			continue

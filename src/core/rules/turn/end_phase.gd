@@ -20,6 +20,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 			PilotDamage.consciousness_roll(dice, emit, u)
 	PilotDamage.resolve_owed(state, dice, emit)
 	DestroyCheck.run(state, dice, emit)
+	ArrowSmoke.end_phase(state, emit)
 	for u in state.units:
 		if Disarmed.check(u):
 			Damage.announce(emit, u)
