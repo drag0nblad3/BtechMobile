@@ -62,7 +62,24 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	var id := recipe_for(def)
 	if id == "":
 		return null
-	var path := DIR + id + ".json"
+	return _build_file(DIR + id + ".json", side)
+
+
+## Official combat-vehicle record sheet. The renderer does not touch combat data.
+static func build_record_vehicle(def: UnitDef, side: int) -> Node3D:
+	if def.vehicle == null:
+		return null
+	return _build_file("res://data/voxels/vehicles/" + def.id + ".json", side)
+
+
+## Official Elemental and Inner Sphere battle armor squads.
+static func build_record_squad(def: UnitDef, side: int) -> Node3D:
+	if def.battle_armor == null:
+		return null
+	return _build_file("res://data/voxels/battle_armor/" + def.id + ".json", side)
+
+
+static func _build_file(path: String, side: int) -> Node3D:
 	if not FileAccess.file_exists(path):
 		return null
 	var data: Variant = JsonFile.read(path)
