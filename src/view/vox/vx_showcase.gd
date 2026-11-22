@@ -385,6 +385,12 @@ const MODELS := [
 	"res://data/voxels/thunderbolt_iic.json",
 	"res://data/voxels/glass_spider_shape.json",
 	"res://data/voxels/glass_spider.json",
+	"res://data/voxels/tiburon_shape.json",
+	"res://data/voxels/tiburon.json",
+	"res://data/voxels/toro_shape.json",
+	"res://data/voxels/toro.json",
+	"res://data/voxels/rattlesnake_shape.json",
+	"res://data/voxels/rattlesnake.json",
 ]
 
 var mech: VxMech
