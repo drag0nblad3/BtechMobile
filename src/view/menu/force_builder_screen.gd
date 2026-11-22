@@ -34,18 +34,27 @@ func _ready() -> void:
 	db = UnitDb.load_dir()
 	builder = ForceBuilder.new(db)
 	set_anchors_preset(PRESET_FULL_RECT)
-	var bg := ColorRect.new()
-	bg.color = Color(0.11, 0.12, 0.13)
-	bg.set_anchors_preset(PRESET_FULL_RECT)
-	add_child(bg)
+	UiSkin.backdrop(self)
 	var margin := MarginContainer.new()
 	margin.set_anchors_preset(PRESET_FULL_RECT)
 	for side in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + side, 24)
 	add_child(margin)
+	var layout := VBoxContainer.new()
+	layout.add_theme_constant_override("separation", 10)
+	margin.add_child(layout)
+	var heading := HBoxContainer.new()
+	layout.add_child(heading)
+	var title := UiKit.label(heading, "FORCE ASSEMBLY   /   SKIRMISH SETUP", 26)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiSkin.label(title, "heading")
+	var eyebrow := UiKit.label(heading, "TACTICAL OPERATIONS", 16)
+	UiSkin.label(eyebrow, "section")
+	UiSkin.rule(layout)
 	var cols := HBoxContainer.new()
-	cols.add_theme_constant_override("separation", 16)
-	margin.add_child(cols)
+	cols.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	cols.add_theme_constant_override("separation", 12)
+	layout.add_child(cols)
 	catalog = ForceCatalog.new(db, _on_add)
 	catalog.build(cols)
 	for side in 2:
@@ -60,7 +69,9 @@ func _ready() -> void:
 func _build_roster(parent: Control, side: int) -> void:
 	var box := UiKit.panel(parent)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiKit.label(box, "%s force" % Names.side(side)).modulate = PlaceholderMech.SIDE_COLORS[side].lightened(0.3)
+	var heading := UiKit.label(box, "%s  /  FORCE ROSTER" % Names.side(side).to_upper(), 21)
+	heading.modulate = PlaceholderMech.SIDE_COLORS[side].lightened(0.4)
+	UiSkin.rule(box, PlaceholderMech.SIDE_COLORS[side].lightened(0.3))
 	_totals.append(UiKit.label(box, "", UiKit.SMALL))
 	var r := VBoxContainer.new()
 	box.add_child(r)
@@ -74,7 +85,10 @@ func _build_options(parent: Control) -> void:
 	parent.add_child(scroll)
 	var box := UiKit.panel(scroll)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_info = UiKit.label(box, "", UiKit.SMALL)
+	var setup_title := UiKit.label(box, "BATTLE CONDITIONS", 22)
+	UiSkin.label(setup_title, "section")
+	_info = UiKit.label(box, "", 18)
+	UiSkin.label(_info, "muted")
 	map_picker.build(box, _refresh)
 	var row1 := HBoxContainer.new()
 	box.add_child(row1)
@@ -103,12 +117,14 @@ func _build_options(parent: Control) -> void:
 	UiKit.button(box, "Explanations", func():
 			GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level)); _refresh(), Vector2(0, 60))
 	_status = UiKit.label(box, "", UiKit.SMALL)
+	UiSkin.label(_status, "heading")
+	UiSkin.rule(box)
 	if BattleSave.has_game():
-		UiKit.button(box, "Continue saved battle", _continue_saved, Vector2(0, 64))
+		UiKit.button(box, "Continue saved battle", _continue_saved, Vector2(0, 64), "selected")
 	if BattleSave.has_replay():
 		UiKit.button(box, "Watch last replay", _watch_saved_replay, Vector2(0, 64))
 		UiKit.button(box, "Tactical Academy: Forensics", _open_forensics, Vector2(0, 64))
-	UiKit.button(box, "Start battle", _start, Vector2(0, 80))
+	UiKit.button(box, "START BATTLE", _start, Vector2(0, 80), "primary")
 	UiKit.button(box, "Training campaign", open_training, Vector2(0, 64))
 
 

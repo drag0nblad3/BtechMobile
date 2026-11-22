@@ -22,7 +22,8 @@ func _ready() -> void:
 	_box = UiKit.panel(center)
 	_box.get_parent().custom_minimum_size = Vector2(WIDTH, 0)
 	_title = UiKit.label(_box, "", 28)
-	_title.modulate = Color(1.0, 0.85, 0.45)
+	UiSkin.label(_title, "heading")
+	UiSkin.rule(_box)
 	_text = UiKit.label(_box, "", UiKit.SMALL)
 	_text.custom_minimum_size = Vector2(WIDTH - 24, 0)
 	var row := HBoxContainer.new()
@@ -30,7 +31,7 @@ func _ready() -> void:
 	_box.add_child(row)
 	_more = UiKit.label(row, "", UiKit.SMALL)
 	_more.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiKit.button(row, "Got it", _next, Vector2(160, 60))
+	UiKit.button(row, "Got it", _next, Vector2(160, 60), "primary")
 	_box.get_parent().visible = false
 
 
