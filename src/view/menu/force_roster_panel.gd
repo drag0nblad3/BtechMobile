@@ -10,12 +10,15 @@ var _rows: VBoxContainer
 var _side := 0
 var _remove: Callable
 var _templates: MenuButton
+var _choose_template: Callable
+var _builder: ForceBuilder
 
 
 func build(parent: Control, side: int, on_select: Callable,
 		on_remove: Callable, on_template: Callable) -> void:
 	_side = side
 	_remove = on_remove
+	_choose_template = on_template
 	frame = PanelContainer.new()
 	frame.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	frame.size_flags_stretch_ratio = 1.0
@@ -27,19 +30,15 @@ func build(parent: Control, side: int, on_select: Callable,
 	_select.add_theme_font_size_override("font_size", 19)
 	_templates = MenuButton.new()
 	_templates.name = "StarterFormations"
-	_templates.text = "LOAD STARTER FORCE  ▾"
-	_templates.tooltip_text = "Replace this side with a ready-made lance or Clan star."
+	_templates.text = "LOAD FORMATION  ▾"
+	_templates.tooltip_text = "Browse ready-made lances and Clan stars by BV tier."
 	_templates.custom_minimum_size.y = 48
 	_templates.add_theme_font_size_override("font_size", 16)
 	UiSkin.button(_templates, "subtle")
 	box.add_child(_templates)
 	var popup := _templates.get_popup()
 	popup.add_theme_font_size_override("font_size", 19)
-	for i in StarterFormations.all().size():
-		var form: Dictionary = StarterFormations.all()[i]
-		popup.add_item("%s  •  %s" % [
-			form["name"], StarterFormations.description(form)], i)
-	popup.id_pressed.connect(func(index: int): on_template.call(_side, index))
+	_templates.about_to_popup.connect(_populate_templates)
 	_summary = UiKit.label(box, "", 17)
 	UiSkin.label(_summary, "muted")
 	_budget = ProgressBar.new()
@@ -57,7 +56,46 @@ func build(parent: Control, side: int, on_select: Callable,
 	scroll.add_child(_rows)
 
 
+## Keep the menu short on mobile: first choose a BV tier, then a role.
+## Cost labels are computed with this roster's current pilot skill.
+func _populate_templates() -> void:
+	var popup := _templates.get_popup()
+	popup.clear()
+	for child in popup.get_children():
+		if child is PopupMenu:
+			popup.remove_child(child)
+			child.queue_free()
+	var forms := StarterFormations.all()
+	for tier: int in ForceBuilder.BUDGETS:
+		var matches: Array[int] = []
+		for i in forms.size():
+			if int(forms[i].get("recommended_bv", 0)) == tier:
+				matches.append(i)
+		if matches.is_empty():
+			continue
+		var menu := PopupMenu.new()
+		menu.name = "BV%d" % tier
+		menu.add_theme_font_size_override("font_size", 18)
+		popup.add_child(menu)
+		popup.add_submenu_node_item("%d BV  ·  %d formations" % [
+			tier, matches.size()], menu)
+		for i in matches:
+			var form: Dictionary = forms[i]
+			var preview: Dictionary = StarterFormations.plan(_builder, _side, form)
+			var short_type := "Star" if form["kind"] == "star" else "Lance"
+			var detail := "Unavailable at this pilot skill"
+			if bool(preview.get("ok", false)):
+				detail = "%d BV" % int(preview["cost"])
+			var caption := "%s  ·  %s  ·  %s" % [
+				form["name"], short_type, detail]
+			menu.add_item(caption, i)
+			if not bool(preview.get("ok", false)):
+				menu.set_item_disabled(menu.get_item_count() - 1, true)
+		menu.id_pressed.connect(func(index: int): _choose_template.call(_side, index))
+
+
 func refresh(builder: ForceBuilder, db: UnitDb, active: bool) -> void:
+	_builder = builder
 	UiSkin.panel(frame, "focus" if active else "regular")
 	_select.text = ("%s  ● ADD HERE" if active else "%s  • SELECT") % Names.side(_side).to_upper()
 	UiSkin.button(_select, "selected" if active else "subtle")

@@ -10,7 +10,8 @@
         "wasp_wsp1a",
         "stinger_stg3r",
         "commando_com2d"
-      ]
+      ],
+      "recommended_bv": 2000
     },
     {
       "id": "is_strike",
@@ -22,7 +23,8 @@
         "panther_pnt9r",
         "valkyrie_vlkqa",
         "commando_com2d"
-      ]
+      ],
+      "recommended_bv": 3000
     },
     {
       "id": "is_maneuver",
@@ -34,7 +36,8 @@
         "shadow_hawk_shd2h",
         "phoenix_hawk_pxh1",
         "trebuchet_tbt5n"
-      ]
+      ],
+      "recommended_bv": 4500
     },
     {
       "id": "is_fire_support",
@@ -46,7 +49,8 @@
         "trebuchet_tbt5n",
         "centurion_cn9a",
         "wolverine_wvr6r"
-      ]
+      ],
+      "recommended_bv": 6000
     },
     {
       "id": "clan_recon",
@@ -59,7 +63,8 @@
         "kit_fox_prime",
         "viper_prime",
         "ice_ferret_a"
-      ]
+      ],
+      "recommended_bv": 6000
     },
     {
       "id": "clan_spearhead",
@@ -72,6 +77,355 @@
         "nova_b",
         "mist_lynx_a",
         "kit_fox_prime"
+      ],
+      "recommended_bv": 8000
+    },
+    {
+      "id": "perimeter_screen",
+      "name": "Perimeter Screen",
+      "kind": "lance",
+      "recommended_bv": 2000,
+      "description": "An evasive scout screen with multiple jumpers and a fast interceptor.",
+      "units": [
+        "ostscout_ott7j",
+        "stinger_stg3r",
+        "wasp_wsp1a",
+        "flea_fle17"
+      ]
+    },
+    {
+      "id": "raider_flight",
+      "name": "Raider Flight",
+      "kind": "lance",
+      "recommended_bv": 2000,
+      "description": "Harass with mobility, heat weapons and fast hit-and-run attacks.",
+      "units": [
+        "firestarter_fs9h",
+        "flea_fle17",
+        "wasp_wsp1a",
+        "stinger_stg3r"
+      ]
+    },
+    {
+      "id": "courier_interdiction",
+      "name": "Courier Interdiction",
+      "kind": "lance",
+      "recommended_bv": 2000,
+      "description": "Catch a fleeing objective with a Cicada and light missile support.",
+      "units": [
+        "cicada_cda2a",
+        "commando_com2d",
+        "locust_lct1v",
+        "stinger_stg3r"
+      ]
+    },
+    {
+      "id": "urban_defense",
+      "name": "Urban Defense",
+      "kind": "lance",
+      "recommended_bv": 3000,
+      "description": "Slow-approach urban defenders backed by a fast missile flanker.",
+      "units": [
+        "urbanmech_umr60",
+        "centurion_cn9a",
+        "hatchetman_hct3f",
+        "javelin_jvn10n"
+      ]
+    },
+    {
+      "id": "scout_hunters",
+      "name": "Scout Hunters",
+      "kind": "lance",
+      "recommended_bv": 3000,
+      "description": "Intercept enemy reconnaissance with speed, sensors and precision fire.",
+      "units": [
+        "wolfhound_wlf1",
+        "raven_rvn3l",
+        "assassin_asn21",
+        "flea_fle17"
+      ]
+    },
+    {
+      "id": "jump_raiders",
+      "name": "Jump Raiders",
+      "kind": "lance",
+      "recommended_bv": 3000,
+      "description": "Jump-capable strikers with close missiles and mid-range PPC cover.",
+      "units": [
+        "jenner_jr7d",
+        "javelin_jvn10n",
+        "firestarter_fs9h",
+        "panther_pnt9r"
+      ]
+    },
+    {
+      "id": "militia_fire_support",
+      "name": "Militia Fire Support",
+      "kind": "lance",
+      "recommended_bv": 3000,
+      "description": "Affordable direct fire and long-range missiles with a light screen.",
+      "units": [
+        "blackjack_bj1",
+        "valkyrie_vlkqa",
+        "panther_pnt9r",
+        "commando_com2d"
+      ]
+    },
+    {
+      "id": "line_troopers",
+      "name": "Line Troopers",
+      "kind": "lance",
+      "recommended_bv": 4500,
+      "description": "A versatile medium lance: autocannon, lasers, missiles and a PPC.",
+      "units": [
+        "phoenix_hawk_pxh1",
+        "centurion_cn9a",
+        "griffin_grf1n",
+        "vindicator_vnd1r"
+      ]
+    },
+    {
+      "id": "cavalry_screen",
+      "name": "Cavalry Screen",
+      "kind": "lance",
+      "recommended_bv": 4500,
+      "description": "Mobile troopers fight on the move and choose their own engagement.",
+      "units": [
+        "dragon_drg1n",
+        "quickdraw_qkd4g",
+        "wolverine_wvr6r",
+        "phoenix_hawk_pxh1"
+      ]
+    },
+    {
+      "id": "close_quarters",
+      "name": "Close Quarters",
+      "kind": "lance",
+      "recommended_bv": 4500,
+      "description": "Brawl through dense terrain with an axe, jump jets and autocannons.",
+      "units": [
+        "grasshopper_ghr5h",
+        "hatchetman_hct3f",
+        "wolverine_wvr6r",
+        "centurion_cn9a"
+      ]
+    },
+    {
+      "id": "missile_battery",
+      "name": "Missile Battery",
+      "kind": "lance",
+      "recommended_bv": 4500,
+      "description": "An LRM core protected by a Centurion and a sensor-equipped Raven.",
+      "units": [
+        "archer_arc2r",
+        "trebuchet_tbt5n",
+        "centurion_cn9a",
+        "raven_rvn3l"
+      ]
+    },
+    {
+      "id": "clan_cadre",
+      "name": "Clan Cadre Star",
+      "kind": "star",
+      "recommended_bv": 4500,
+      "description": "Budget Clan training: three OmniMechs and two second-line IICs.",
+      "units": [
+        "fire_moth_a",
+        "mist_lynx_a",
+        "kit_fox_prime",
+        "jenner_iic",
+        "locust_iic"
+      ]
+    },
+    {
+      "id": "command_lance",
+      "name": "Command Lance",
+      "kind": "lance",
+      "recommended_bv": 6000,
+      "description": "Four classic command-line heavies with both brawling and LRM range.",
+      "units": [
+        "battlemaster_blr1g",
+        "orion_on1k",
+        "thunderbolt_tdr5s",
+        "archer_arc2r"
+      ]
+    },
+    {
+      "id": "siege_line",
+      "name": "Siege Line",
+      "kind": "lance",
+      "recommended_bv": 6000,
+      "description": "Hold commanding terrain with PPCs, autocannons and missile barrages.",
+      "units": [
+        "stalker_stk3f",
+        "awesome_aws8q",
+        "catapult_cplt_c1",
+        "rifleman_rfl3n"
+      ]
+    },
+    {
+      "id": "breakthrough",
+      "name": "Breakthrough",
+      "kind": "lance",
+      "recommended_bv": 6000,
+      "description": "An Atlas and Highlander push the center while two bruisers follow.",
+      "units": [
+        "atlas_as7d",
+        "highlander_hgn733",
+        "thunderbolt_tdr5s",
+        "hatchetman_hct3f"
+      ]
+    },
+    {
+      "id": "clan_patrol",
+      "name": "Clan Patrol Star",
+      "kind": "star",
+      "recommended_bv": 6000,
+      "description": "Distributed Clan ranged fire backed by very fast recon elements.",
+      "units": [
+        "fire_moth_a",
+        "mist_lynx_prime",
+        "kit_fox_prime",
+        "adder_a",
+        "ice_ferret_a"
+      ]
+    },
+    {
+      "id": "assault_spearhead",
+      "name": "Assault Spearhead",
+      "kind": "lance",
+      "recommended_bv": 8000,
+      "description": "A heavy four-unit hammer with sustained PPC and autocannon pressure.",
+      "units": [
+        "atlas_as7d",
+        "highlander_hgn733",
+        "marauder_ii_mad4a",
+        "awesome_aws8q"
+      ]
+    },
+    {
+      "id": "shield_wall",
+      "name": "Shield Wall",
+      "kind": "lance",
+      "recommended_bv": 8000,
+      "description": "Four durable assault units win by grinding down enemy armor.",
+      "units": [
+        "banshee_bnc3s",
+        "highlander_hgn733",
+        "stalker_stk3f",
+        "marauder_ii_mad4a"
+      ]
+    },
+    {
+      "id": "clan_battle_star",
+      "name": "Clan Battle Star",
+      "kind": "star",
+      "recommended_bv": 8000,
+      "description": "Clan long-range main battle star with a light scout to spot targets.",
+      "units": [
+        "timber_wolf_b",
+        "stormcrow_prime",
+        "adder_a",
+        "nova_b",
+        "mist_lynx_a"
+      ]
+    },
+    {
+      "id": "clan_fast_attack",
+      "name": "Clan Fast Attack",
+      "kind": "star",
+      "recommended_bv": 8000,
+      "description": "Fast Clan combat star with mobile lasers and a violent close-range punch.",
+      "units": [
+        "fire_moth_a",
+        "viper_prime",
+        "stormcrow_prime",
+        "kit_fox_a",
+        "nova_b"
+      ]
+    },
+    {
+      "id": "clan_hunter_killer",
+      "name": "Clan Hunter-Killer",
+      "kind": "star",
+      "recommended_bv": 8000,
+      "description": "Mobile Clan hunters combine sustained fire with flanking scouts.",
+      "units": [
+        "ice_ferret_prime",
+        "viper_prime",
+        "stormcrow_prime",
+        "adder_b",
+        "mist_lynx_prime"
+      ]
+    },
+    {
+      "id": "clan_assault_star",
+      "name": "Clan Assault Star",
+      "kind": "star",
+      "recommended_bv": 10000,
+      "description": "Premium frontline OmniMechs with a Timber Wolf and laser-heavy Nova.",
+      "units": [
+        "timber_wolf_prime",
+        "stormcrow_prime",
+        "nova_prime",
+        "adder_a",
+        "kit_fox_prime"
+      ]
+    },
+    {
+      "id": "clan_strike_star",
+      "name": "Clan Strike Star",
+      "kind": "star",
+      "recommended_bv": 10000,
+      "description": "High-BV speed and firepower with flanking scout OmniMechs.",
+      "units": [
+        "timber_wolf_a",
+        "nova_prime",
+        "stormcrow_a",
+        "fire_moth_prime",
+        "mist_lynx_prime"
+      ]
+    },
+    {
+      "id": "clan_iron_fist",
+      "name": "Clan Iron Fist",
+      "kind": "star",
+      "recommended_bv": 10000,
+      "description": "Heavy Clan weapons supported by a fast Ice Ferret and Locust IIC.",
+      "units": [
+        "dire_wolf_prime",
+        "mad_dog_prime",
+        "hellbringer_a",
+        "ice_ferret_a",
+        "locust_iic"
+      ]
+    },
+    {
+      "id": "clan_heavy_strike",
+      "name": "Clan Heavy Strike",
+      "kind": "star",
+      "recommended_bv": 12000,
+      "description": "An elite combined-arms Star anchored by three very heavy OmniMechs.",
+      "units": [
+        "dire_wolf_prime",
+        "executioner_prime",
+        "timber_wolf_prime",
+        "nova_prime",
+        "kit_fox_prime"
+      ]
+    },
+    {
+      "id": "clan_siege_star",
+      "name": "Clan Siege Star",
+      "kind": "star",
+      "recommended_bv": 12000,
+      "description": "Sustained missile, laser and assault fire with one light scout.",
+      "units": [
+        "dire_wolf_a",
+        "executioner_b",
+        "timber_wolf_a",
+        "mad_dog_prime",
+        "mist_lynx_a"
       ]
     }
   ]

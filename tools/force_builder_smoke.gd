@@ -56,6 +56,11 @@ func _check_builder() -> void:
 			break
 	if not _verify(star_index >= 0, "Clan Star template not found"):
 		return
+	screen._rosters[1]._populate_templates()
+	var picker: PopupMenu = screen._rosters[1]._templates.get_popup()
+	if not _verify(picker.get_item_count() == ForceBuilder.BUDGETS.size(),
+			"formation picker does not group all BV tiers"):
+		return
 	screen._choose_starter(1, star_index)
 	if not _verify(screen.builder.rosters[1].is_empty(), "confirmation preserves previous roster"):
 		return
