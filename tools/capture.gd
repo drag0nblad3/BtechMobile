@@ -72,6 +72,8 @@ func _process(_delta: float) -> bool:
 		_target_nearest()
 	if _frames == 8 and _mode == "sheet":
 		_scene._toggle_sheet()
+	if _frames == 8 and _mode == "audio":
+		_scene.hud.pause_menu.visible = true  # capture UI without pausing SceneTree
 	if _frames == 8 and _mode in ["vfx", "jump"]:
 		_stage_battle_visuals()
 	if _frames == 12 and _mode == "jump":

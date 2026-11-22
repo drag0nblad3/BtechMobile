@@ -110,6 +110,20 @@ jobs:
           name: battle-voxel-1280x720
           path: /tmp/battle-voxel.png
           if-no-files-found: error
+      - name: Battle audio settings capture at phone resolution
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-audio')
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 120s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1280x720 \
+            -s tools/capture.gd -- /tmp/battle-audio.png audio 2>&1 | tee audio-capture.log
+          test -s /tmp/battle-audio.png
+          ! grep -E "SCRIPT ERROR|Parse Error" audio-capture.log
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && contains(github.head_ref, 'battle-audio')
+        with:
+          name: battle-audio-controls-1280x720
+          path: /tmp/battle-audio.png
+          if-no-files-found: error
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail

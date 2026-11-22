@@ -44,6 +44,8 @@ func _ready() -> void:
 	UiSkin.label(_message, "muted")
 	box.add_child(_message)
 	_voxel_button = _add_button(box, "Voxel 'Mechs: On", func(): voxel_toggled.emit())
+	var audio_settings := BattleAudioSettings.new()
+	box.add_child(audio_settings)
 	_add_button(box, "Resume Battle", func(): resumed.emit(), "primary")
 	_add_button(box, "Save Battle", func(): save_requested.emit())
 	_add_button(box, "Save & Exit to Menu", func(): exit_requested.emit(), "subtle")
