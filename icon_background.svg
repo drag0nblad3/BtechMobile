@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0d253d"/><stop offset=".55" stop-color="#19263c"/><stop offset="1" stop-color="#0b1424"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#ffe5a0"/><stop offset=".47" stop-color="#ff9b37"/><stop offset="1" stop-color="#b74625" stop-opacity=".15"/></radialGradient>
+ <linearGradient id="gold" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff3a3"/><stop offset=".31" stop-color="#ffc64b"/><stop offset=".65" stop-color="#f5a82c"/><stop offset="1" stop-color="#995018"/></linearGradient>
+ <linearGradient id="steel" x1="0" y1="0" x2=".9" y2="1"><stop stop-color="#92a9c2"/><stop offset=".30" stop-color="#586e87"/><stop offset=".64" stop-color="#35445c"/><stop offset="1" stop-color="#192338"/></linearGradient>
+ <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b5870"/><stop offset=".55" stop-color="#253145"/><stop offset="1" stop-color="#131b2b"/></linearGradient>
+ <linearGradient id="orange" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#fff2a7"/><stop offset=".32" stop-color="#ffb92e"/><stop offset=".75" stop-color="#fb6b10"/><stop offset="1" stop-color="#a93211"/></linearGradient>
+ <linearGradient id="armorAccent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffb83c"/><stop offset=".42" stop-color="#ec6e22"/><stop offset="1" stop-color="#994025"/></linearGradient>
+ <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<rect width="512" height="512" rx="94" fill="url(#sky)"/>
+<circle cx="248" cy="275" r="167" fill="url(#sun)" opacity=".88"/>
+<path d="M0 342 49 306 91 331 154 273 203 312 248 268 287 305 348 271 399 310 465 279 512 310V512H0Z" fill="#17233b" opacity=".67"/>
+<path d="M0 395 55 365 105 389 164 342 217 383 281 345 348 377 424 341 512 385V512H0Z" fill="#283145" opacity=".66"/>
+<path d="M256 16 470 137V379L256 497 42 379V137Z" fill="none" stroke="#52351d" stroke-width="20" stroke-linejoin="round"/>
+<path d="M256 16 470 137V379L256 497 42 379V137Z" fill="none" stroke="url(#gold)" stroke-width="12" stroke-linejoin="round"/>
+<path d="M256 27 461 145" fill="none" stroke="#fff7c1" stroke-width="3" opacity=".7"/>
+</svg>
