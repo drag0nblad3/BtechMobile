@@ -39,7 +39,7 @@ static func los_level(map: BattleMap, u: Unit) -> int:
 		return VtolFlight.level(map, u) + 1
 	if u.def.is_support():  # one level high (p. 144); hovercraft ride the surface
 		var tile := map.get_tile(u.coord)
-		var hover := tile != null and tile.is_water() and (u.def.vehicle.motive if u.vehicle else u.asset.card.motive) == "h"
+		var hover := tile != null and tile.is_water() and (u.def.vehicle.motive if u.vehicle else (u.asset.card.motive if u.asset else "")) == "h"
 		return (tile.level if hover else Roofs.floor_of(map, u)) + 1
 	return Roofs.floor_of(map, u) + (1 if u.prone else 2)
 

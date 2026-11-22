@@ -13,6 +13,7 @@ const FLIP := 2
 
 ## A leg attack's 4 damage comes with a critical hit chance: worth a bit more.
 const LEG_CRIT_WEIGHT := 1.5
+const SWARM_TURNS := 2.0  ## Turns of sure hits a swarm is worth.
 
 
 static func plan(state: GameState, u: Unit) -> Dictionary:
@@ -58,7 +59,10 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 		if o["to_hit"].possible():
 			var ed := Advisor.expected_damage(o["weapon"], o["to_hit"])
 			if BaLegAttack.is_leg_attack(o["weapon"]):
-				leg = [ed * LEG_CRIT_WEIGHT, o]
+				leg = [ed * LEG_CRIT_WEIGHT, o] if leg.is_empty() or ed * LEG_CRIT_WEIGHT > leg[0] else leg
+			elif BaSwarm.is_swarm(o["weapon"]):
+				var sv: float = o["to_hit"].chance() * _swarm_damage(u) * SWARM_TURNS
+				leg = [sv, o] if leg.is_empty() or sv > leg[0] else leg
 			elif ed > 0.0:
 				opts.append([ed, o])
 	opts.sort_custom(func(a, b): return a[0] / maxf(1.0, _heat(a[1]["weapon"])) > b[0] / maxf(1.0, _heat(b[1]["weapon"])))
@@ -81,7 +85,8 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 		shots = [{"weapon": leg[1]["index"], "target_id": e.id}]
 		total = leg[0]
 		held.clear()
-		why = "climbs %s's legs: %s to hit, a chance of a critical hit" % [Names.unit(e), Names.pct(leg[1]["to_hit"].chance())]
+		why = ("swarms %s: %s to hit, then its weapons can't miss" if BaSwarm.is_swarm(leg[1]["weapon"])
+				else "climbs %s's legs: %s to hit, a chance of a critical hit") % [Names.unit(e), Names.pct(leg[1]["to_hit"].chance())]
 	# Prefer damaged or slow targets a little: finishing one off matters.
 	var value := total * (1.0 + 0.5 * _damage_fraction(e))
 	if _damage_fraction(e) > 0.3:
@@ -89,6 +94,17 @@ static func _volley(state: GameState, u: Unit, e: Unit) -> Dictionary:
 	if not held.is_empty():
 		why += "; holds %s to stay cool" % ", ".join(held)
 	return {"shots": shots, "value": value, "reason": why}
+
+
+## What the squad's weapons do in a turn when they can't miss.
+static func _swarm_damage(u: Unit) -> float:
+	var sure := ToHit.new()
+	sure.auto_hit = "swarming"
+	var total := 0.0
+	for w in u.weapons:
+		if w.on_squad and u.can_fire(w) and not BaSwarm.is_swarm(w) and not BaLegAttack.is_leg_attack(w):
+			total += Advisor.expected_damage(w, sure)
+	return total
 
 
 static func _heat(w: MountedWeapon) -> float:

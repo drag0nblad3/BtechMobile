@@ -20,6 +20,12 @@ static func transport(s: GameState, d: Dictionary, level: int) -> String:
 	var ride := Names.unit(s.unit_by_id(d["carrier_id"]))
 	var squad := s.unit_by_id(d["unit_id"]).ba != null
 	match String(d["kind"]):
+		"swarm":
+			return "%s swarms all over %s!" % [who, ride] + (" From now on its weapons hit that 'Mech automatically, all over its body, until it is brushed off or the 'Mech falls." if level == ExplainLevel.FULL else "")
+		"swarm_off":
+			return "%s drops off the wreck of %s." % [who, ride]
+		"brushed":
+			return "%s swats %s off its hull." % [ride, who]
 		"board" when squad:
 			return "%s climbs onto %s." % [who, ride] + (" Troopers riding a 'Mech's torso take hits aimed at their spots, and are set down if it is destroyed." if level == ExplainLevel.FULL else "")
 		"deploy" when squad:

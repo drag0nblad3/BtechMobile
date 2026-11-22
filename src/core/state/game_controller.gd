@@ -49,6 +49,7 @@ func submit_move(unit: Unit, target: Vector3i, mode: int, charge_target_id: int 
 	if not MoveExecutor.run(state, dice, _emit_cb, unit, target, mode, charge_target_id, then_prone, smash):
 		return false
 	AssetTransport.follow(state, unit)
+	BaSwarm.update(state, _emit_cb)
 	if then_prone and unit.prone:
 		MobileObjectives.drop_prone(state, dice, _emit_cb, unit)
 	MobileObjectives.after_move(state, _emit_cb, unit)
@@ -389,6 +390,7 @@ func _heat_and_end() -> void:
 ## Game ends when at most one side has a 'Mech left, or as the mission says.
 func _check_game_over(end_of_turn := false) -> bool:
 	AssetTransport.check_losses(state, _emit_cb)
+	BaSwarm.update(state, _emit_cb)
 	Crippled.update(state, dice, _emit_cb)
 	var r := MissionFlow.outcome(state, end_of_turn)
 	if r.is_empty():

@@ -10,6 +10,7 @@ extends RefCounted
 const PSR_BONUS := 1.5  ## Expected-damage value of making the target roll.
 const CLUB_IF_FIRE_BELOW := 2.0  ## Expected weapon damage under which a club is better.
 const CLUB_RANGE := 3
+const BRUSH_BONUS := 10.0  ## Getting a swarming squad off is worth a lot.
 const OFF_MAP_VALUE := 100.0  ## Shoving a 'Mech off the battlefield destroys it.
 
 
@@ -38,6 +39,9 @@ static func plan(s: GameState, u: Unit) -> Dictionary:
 			elif kind == "kick":
 				var fall_risk := (1.0 - th.chance()) * (1.0 - Dice.chance_2d6(Psr.standing_mods(u).target()))
 				v -= fall_risk * Fall.damage_for(u, 0)
+			elif kind == "brush_off":
+				v += th.chance() * BRUSH_BONUS
+				why += ", knocking the swarming troopers off"
 			elif kind == "club":
 				v += th.chance() * PSR_BONUS
 				why += ", and the target must roll to stay standing"

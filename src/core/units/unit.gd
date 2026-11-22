@@ -161,9 +161,10 @@ func _init_ba() -> void:
 		if mw.def.uses_ammo():
 			ammo.append(AmmoBin.new(mw.def, Location.CT))
 	if def.battle_armor.claw:
-		var leg := MountedWeapon.new(BaLegAttack.weapon(), Location.CT, false)
-		leg.on_squad = true
-		weapons.append(leg)
+		for wd in [BaLegAttack.weapon(), BaSwarm.weapon()]:
+			var mw := MountedWeapon.new(wd, Location.CT, false)
+			mw.on_squad = true
+			weapons.append(mw)
 
 
 ## A combat vehicle: armor and structure per VehicleLoc, no critical slots;
@@ -320,7 +321,7 @@ func walk_mp() -> int:
 	if vehicle != null:
 		return vehicle.cruise_mp()
 	if ba != null:
-		return def.walk_mp
+		return 0 if ba.swarming >= 0 else def.walk_mp
 	if def.quad:
 		var qb := Quad.walk_base(self)
 		return maxi(0, qb + (Tsm.mp_bonus(self) if qb > 0 else 0) - HeatScale.mp_penalty(heat))
@@ -348,6 +349,8 @@ func run_mp() -> int:
 
 ## Jump MP after jump jet damage.
 func jump_mp() -> int:
+	if ba != null and ba.swarming >= 0:
+		return 0  # it rides the 'Mech it swarms
 	if asset != null or vehicle != null or ba != null:
 		return def.jump_mp
 	var lost := {}  # jets by ref: an improved jet's two slots are one jet
