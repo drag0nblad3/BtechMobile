@@ -30,6 +30,8 @@ static func option(state: GameState, a: Unit, t: Unit, kind: String) -> Dictiona
 	var tile := state.map.get_tile(a.coord)
 	if t == null or t.destroyed or t.side == a.side:
 		th.impossible = "No enemy target"
+	elif a.asset != null or t.asset != null:
+		th.impossible = "Assets can't charge or be charged (p. 145)"
 	elif Hex.distance(a.coord, t.coord) != 1 or FiringArc.wedge(a.coord, a.facing, t.coord) != 0:
 		th.impossible = "The target must be in the hex directly in front of you"
 	elif kind == "charge" and a.move_mode == MoveMode.Kind.JUMP:
