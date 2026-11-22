@@ -13,7 +13,7 @@ static func names(o: Object) -> Array:
 				"game_over", "winner"]
 	if o is Unit:
 		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "vehicle", "ba", "armor",
-				"rear_armor", "structure", "weapons", "ammo", "slots", "heat",
+				"rear_armor", "structure", "armor_partial", "rear_partial", "structure_partial", "weapons", "ammo", "slots", "heat",
 				"engine_hits", "gyro_hits", "sensor_hits", "heat_sinks_lost",
 				"sinks_off", "sinks_off_request", "melee_lost", "club",
 				"destroyed", "destroyed_reason", "destroyed_announced", "prone",

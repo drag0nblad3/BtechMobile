@@ -1,0 +1,82 @@
+{
+ "id": "gunslinger_gun3erd",
+ "name": "Gunslinger",
+ "model": "GUN-3ERD",
+ "tonnage": 85,
+ "walk_mp": 3,
+ "jump_mp": 2,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "armor_type": "ballistic_reinforced",
+ "clan_parts": {
+  "engine": true
+ },
+ "armor": {
+  "LA": 25,
+  "RA": 25,
+  "LT": 25,
+  "RT": 25,
+  "CT": 34,
+  "HD": 9,
+  "LL": 32,
+  "RL": 32
+ },
+ "rear_armor": {
+  "LT": 11,
+  "RT": 11,
+  "CT": 17
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "gauss_rifle",
+   "case2"
+  ],
+  "RA": [
+   "gauss_rifle",
+   "case2"
+  ],
+  "LT": [
+   "c_er_medium_laser*2",
+   "ammo:gauss_rifle*2",
+   "ballistic_reinforced*5"
+  ],
+  "RT": [
+   "c_er_medium_laser*2",
+   "ammo:gauss_rifle*2",
+   "ballistic_reinforced*5"
+  ],
+  "HD": [
+   "x_pulse_small_laser"
+  ],
+  "LL": [
+   "jump_jet",
+   "x_pulse_small_laser@rear"
+  ],
+  "RL": [
+   "jump_jet",
+   "x_pulse_small_laser@rear"
+  ]
+ },
+ "source": {
+  "mul_id": 9354,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 27/Gunslinger GUN-3ERD.mtf",
+  "published": "RSFP:NWH,RG27",
+  "role": "Juggernaut",
+  "bv": "sheet",
+  "sheet": "Gunslinger GUN-3ERD (ForcePack-Record-Sheets-Northwind-Highlanders)",
+  "megamek_bv": 2844
+ },
+ "bv": 2844,
+ "sprite": "gunslinger",
+ "role": "Juggernaut: slow and heavily armed, wins up close. 4 ER Medium Lasers, 3 Small X-Pulse Lasers, 2 Gauss Rifles; walks 3, runs 5, jumps 2."
+}

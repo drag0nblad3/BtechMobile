@@ -19,6 +19,10 @@ var ba: BaState = null  ## A battle armor squad's troopers.
 var armor: Array[int] = []
 var rear_armor: Array[int] = []
 var structure: Array[int] = []
+## Odd points carried by hardened armor / reinforced structure (ArmorTypes, StructureTypes).
+var armor_partial: Array[int] = []
+var rear_partial: Array[int] = []
+var structure_partial: Array[int] = []
 var weapons: Array[MountedWeapon] = []
 var ammo: Array[AmmoBin] = []
 var slots: Array = []  ## Per Location: Array[CritSlot].
@@ -99,6 +103,9 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 		armor.append(def.armor[loc] if def.armor.size() > loc else 0)
 		rear_armor.append(def.rear_armor[loc] if def.rear_armor.size() > loc else 0)
 		structure.append(StructureTable.points(def.tonnage, loc, def.quad))
+		armor_partial.append(0)
+		rear_partial.append(0)
+		structure_partial.append(0)
 	for m in def.weapon_mounts:
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
@@ -313,9 +320,10 @@ func run_mp() -> int:
 		return vehicle.flank_mp()
 	if ba != null:
 		return walk_mp()  # battle armor doesn't run (TODO(rules))
+	var slow := 1 if def.armor_type == "hardened" else 0  # hardened armor: -1 running MP (p. 202)
 	if masc_active and sc_active:
-		return ceili(walk_mp() * 2.5)
-	return walk_mp() * 2 if masc_active or sc_active else ceili(walk_mp() * 1.5)
+		return maxi(walk_mp(), ceili(walk_mp() * 2.5) - slow)
+	return maxi(walk_mp(), (walk_mp() * 2 if masc_active or sc_active else ceili(walk_mp() * 1.5)) - slow)
 
 
 ## Jump MP after jump jet damage.

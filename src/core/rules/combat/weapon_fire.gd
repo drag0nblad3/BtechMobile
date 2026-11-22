@@ -126,7 +126,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		if th.legs_only:
 			hl = HitTable.roll_kick(dice, arc_id, target.def.quad)
 			hl["no_cover"] = true
-		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex)
+		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex, ArmorTypes.weapon_attack(w.def))
 
 
 ## Spends ammo for the shots this weapon fires; returns how many (0 = none).
@@ -162,7 +162,7 @@ static func take_shots(attacker: Unit, w: MountedWeapon) -> int:
 ## hit, taken by the building (charges excepted).
 static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		arc_id: int, amount: int, source_id: int, source: String,
-		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID) -> void:
+		hl: Dictionary = {}, cover: Vector2i = Hex.INVALID, attack: Array = []) -> void:
 	if target.asset != null:
 		AssetDamage.take(emit, target, amount, source_id, source, [], arc_id)
 		return
@@ -195,7 +195,7 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
 		return
-	var steps := Damage.apply(target, loc, amount, hl["rear"])
+	var steps := Damage.apply(target, loc, amount, hl["rear"], attack)
 	emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 			"source": source, "amount": amount, "loc": loc, "rear": hl["rear"],
 			"steps": steps, "covered": false, "tac": hl["tac"]})

@@ -1,0 +1,87 @@
+{
+ "id": "bane_5",
+ "name": "Bane",
+ "model": "5",
+ "tonnage": 100,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 17,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "endo_composite",
+ "tech_base": "clan",
+ "armor": {
+  "LA": 34,
+  "RA": 34,
+  "LT": 32,
+  "RT": 32,
+  "CT": 46,
+  "HD": 9,
+  "LL": 42,
+  "RL": 42
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 13
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "heat_sink",
+   "c_rotary_ac2*2"
+  ],
+  "RA": [
+   "heat_sink",
+   "c_rotary_ac2*2"
+  ],
+  "LT": [
+   "heat_sink",
+   "c_lrm10",
+   "ammo:c_lrm10",
+   "ammo:c_rotary_ac2*3",
+   "case2"
+  ],
+  "RT": [
+   "heat_sink",
+   "c_er_large_laser",
+   "c_lrm10",
+   "ammo:c_lrm10",
+   "ammo:c_rotary_ac2*3",
+   "case2"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "HD": [
+   "guardian_ecm"
+  ],
+  "LL": [
+   "endo_composite*2"
+  ],
+  "RL": [
+   "endo_composite*2"
+  ]
+ },
+ "source": {
+  "mul_id": 8242,
+  "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 17/Kraken (Bane) 5.mtf",
+  "published": "RG17,RGv1",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Kraken (Bane) 5 (BattleTech-Record-Sheets-Aces-Scouring-Sands-2)",
+  "megamek_bv": 2554
+ },
+ "bv": 2554,
+ "sprite": "bane",
+ "role": "Sniper: hangs back and hits from long range. 4 Rotary AC/2s, 2 LRM 10s, ER Large Laser; walks 3, runs 5."
+}

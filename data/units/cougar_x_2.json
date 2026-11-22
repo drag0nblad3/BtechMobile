@@ -1,0 +1,79 @@
+{
+ "id": "cougar_x_2",
+ "name": "Cougar",
+ "model": "X 2",
+ "tonnage": 35,
+ "walk_mp": 5,
+ "jump_mp": 8,
+ "heat_sinks": 10,
+ "jump_jet_type": "improved",
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "structure_type": "composite",
+ "armor_type": "ferro_fibrous",
+ "clan_parts": {
+  "engine": true,
+  "heat_sinks": true,
+  "armor": true
+ },
+ "armor": {
+  "LA": 11,
+  "RA": 11,
+  "LT": 12,
+  "RT": 12,
+  "CT": 14,
+  "HD": 8,
+  "LL": 12,
+  "RL": 12
+ },
+ "rear_armor": {
+  "LT": 4,
+  "RT": 4,
+  "CT": 5
+ },
+ "missing_actuators": {
+  "LA": [
+   "hand"
+  ],
+  "RA": [
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "c_streak_lrm15",
+   "ammo:c_streak_lrm15*2"
+  ],
+  "RA": [
+   "c_er_medium_pulse_laser",
+   "ferro_fibrous*5"
+  ],
+  "LT": [
+   "jump_jet*4"
+  ],
+  "RT": [
+   "jump_jet*4",
+   "ferro_fibrous*2"
+  ],
+  "CT": [
+   "heat_sink"
+  ],
+  "LL": [
+   "heat_sink"
+  ],
+  "RL": [
+   "heat_sink"
+  ]
+ },
+ "source": {
+  "mul_id": 6952,
+  "megamek": "data/mekfiles/meks/3145/NTNU RS/Cougar X 2.mtf",
+  "published": "RS:3145-NTNU,RS:3145",
+  "role": "Striker",
+  "bv": "megamek",
+  "megamek_bv": 1293
+ },
+ "bv": 1293,
+ "sprite": "cougar",
+ "role": "Striker: quick and hard-hitting, best when it closes in fast. Streak LRM 15, ER Medium Pulse Laser; walks 5, runs 8, jumps 8."
+}

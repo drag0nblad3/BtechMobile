@@ -20,7 +20,8 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		if u.vehicle != null or u.ba != null:  # vehicles and battle armor track no heat; TODO(rules) fire and flamer effects
 			continue
 		var before := u.heat
-		var outside := mini(u.outside_heat + Fire.stand_heat(state.map, u), OUTSIDE_HEAT_CAP)
+		var outside := 0 if ArmorTypes.no_outside_heat(u.def) \
+				else mini(u.outside_heat + Fire.stand_heat(state.map, u), OUTSIDE_HEAT_CAP)
 		var engine := 0 if u.shutdown else ENGINE_HIT_HEAT * u.engine_hits
 		var c := state.conditions
 		var gained := u.heat_generated + engine + outside + ExtremeTemp.heat_added(c)

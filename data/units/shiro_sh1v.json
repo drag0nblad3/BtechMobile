@@ -1,0 +1,71 @@
+{
+ "id": "shiro_sh1v",
+ "name": "Shiro",
+ "model": "SH-1V",
+ "tonnage": 75,
+ "walk_mp": 5,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "gyro_type": "xl",
+ "structure_type": "endo_steel",
+ "armor_type": "hardened",
+ "armor": {
+  "LA": 18,
+  "RA": 18,
+  "LT": 18,
+  "RT": 18,
+  "CT": 25,
+  "HD": 9,
+  "LL": 22,
+  "RL": 22
+ },
+ "rear_armor": {
+  "LT": 5,
+  "RT": 5,
+  "CT": 8
+ },
+ "equipment": {
+  "LA": [
+   "lb2x_ac",
+   "ammo:lb2x_ac",
+   "endo_steel*2"
+  ],
+  "RA": [
+   "sword",
+   "endo_steel*2"
+  ],
+  "LT": [
+   "c_lrm10*2",
+   "guardian_ecm",
+   "endo_steel*3"
+  ],
+  "RT": [
+   "c_lrm10*2",
+   "ammo:c_lrm10*3",
+   "endo_steel*2"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 6416,
+  "megamek": "data/mekfiles/meks/3145/Kurita/Shiro SH-1V.mtf",
+  "published": "RS:DA",
+  "role": "Missile Boat",
+  "bv": "sheet",
+  "sheet": "Shiro SH-1V (ForcePack-Record-Sheets-House-Kurita)",
+  "megamek_bv": 2016
+ },
+ "bv": 2016,
+ "sprite": "shiro",
+ "role": "Missile boat: rains missiles from a distance. 4 LRM 10s, LB 2-X AC; walks 5, runs 8."
+}
