@@ -1029,6 +1029,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -8,
+              12,
+              -3
+            ],
+            [
+              -8,
+              12,
+              2
+            ]
+          ]
         }
       ]
     },
@@ -1769,5 +1783,5 @@
       ]
     ]
   },
-  "notes": "Official talos_tls1b, bespoke primary hull and weapon-bearing geometry (one_side_cannon_two_racks); unique head (visor), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official talos_tls1b, bespoke primary hull and weapon-bearing geometry (one_side_cannon_two_racks); unique head (visor), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nMeasured real mass fix: delete disconnected one-cell fins, replace Yu Huang's unsupported frontal panel with a joined plate, and build full-height substantial JagerMech III upper cannon support pylons."
 }

@@ -1250,6 +1250,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -8,
+              12,
+              5
+            ],
+            [
+              -5,
+              12,
+              5
+            ]
+          ]
         }
       ]
     },
@@ -1895,5 +1909,5 @@
       ]
     ]
   },
-  "notes": "Official von_rohrs_hebi_von4rh5, bespoke primary hull and weapon-bearing geometry (snake_like); unique head (beak), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official von_rohrs_hebi_von4rh5, bespoke primary hull and weapon-bearing geometry (snake_like); unique head (beak), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nMeasured real mass fix: delete disconnected one-cell fins, replace Yu Huang's unsupported frontal panel with a joined plate, and build full-height substantial JagerMech III upper cannon support pylons."
 }

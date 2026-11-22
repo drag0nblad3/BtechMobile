@@ -682,7 +682,23 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "erase": [
+            [
+              13,
+              34,
+              -4
+            ],
+            [
+              13,
+              34,
+              -4
+            ]
+          ]
+        }
+      ]
     },
     {
       "name": "la",
@@ -828,6 +844,21 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -16,
+              33,
+              -4
+            ],
+            [
+              -12,
+              43,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -1706,5 +1737,5 @@
       ]
     ]
   },
-  "notes": "Official jagermech_iii_jm6d3, bespoke primary hull and weapon-bearing geometry (high_dorsal_guns); unique head (slit), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official jagermech_iii_jm6d3, bespoke primary hull and weapon-bearing geometry (high_dorsal_guns); unique head (slit), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nMeasured real mass fix: delete disconnected one-cell fins, replace Yu Huang's unsupported frontal panel with a joined plate, and build full-height substantial JagerMech III upper cannon support pylons."
 }

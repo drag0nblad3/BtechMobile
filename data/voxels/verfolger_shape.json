@@ -557,13 +557,43 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -14,
+              31,
+              -4
+            ],
+            [
+              -14,
+              31,
+              -4
+            ]
+          ]
         }
       ]
     },
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "erase": [
+            [
+              13,
+              31,
+              -4
+            ],
+            [
+              13,
+              31,
+              -4
+            ]
+          ]
+        }
+      ]
     },
     {
       "name": "la",
@@ -1616,5 +1646,5 @@
       ]
     ]
   },
-  "notes": "Official verfolger_vr5r, bespoke primary hull and weapon-bearing geometry (heavy_angular_wedge); unique head (visor), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official verfolger_vr5r, bespoke primary hull and weapon-bearing geometry (heavy_angular_wedge); unique head (visor), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nMeasured real mass fix: delete disconnected one-cell fins, replace Yu Huang's unsupported frontal panel with a joined plate, and build full-height substantial JagerMech III upper cannon support pylons."
 }

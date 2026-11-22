@@ -1250,6 +1250,20 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -7,
+              12,
+              5
+            ],
+            [
+              -5,
+              12,
+              5
+            ]
+          ]
         }
       ]
     },
@@ -1733,5 +1747,5 @@
       ]
     ]
   },
-  "notes": "Official phoenix_px3r, bespoke primary hull and weapon-bearing geometry (slender_raptor); unique head (beak), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement."
+  "notes": "Official phoenix_px3r, bespoke primary hull and weapon-bearing geometry (slender_raptor); unique head (beak), jointed two-stage arms, multi-stage legs, physically recessed counted muzzles. Miniature silhouette likeness still draft pending angle-by-angle refinement.\nMeasured real mass fix: delete disconnected one-cell fins, replace Yu Huang's unsupported frontal panel with a joined plate, and build full-height substantial JagerMech III upper cannon support pylons."
 }
