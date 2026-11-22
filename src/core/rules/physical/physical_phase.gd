@@ -18,6 +18,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 			if not step.is_empty():
 				steps.append(step)
 			continue
+		if d["kind"] == "brush_off":
+			BaBrushOff.resolve(state, dice, emit, d)
+			continue
 		var a := state.unit_by_id(d["attacker_id"])
 		var t := state.unit_by_id(d["target_id"])
 		var th: ToHit = d["to_hit"]

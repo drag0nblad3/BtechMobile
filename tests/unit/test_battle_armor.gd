@@ -105,3 +105,55 @@ func test_leg_attack() -> void:
 	var before := m.armor[Location.RL]
 	BaLegAttack.resolve(s, dice, func(_t: StringName, _d: Dictionary) -> void: pass, sq, leg, m, ToHitCalc.weapon(s, sq, leg, m))
 	check_eq(before - m.armor[Location.RL], 4, "4 damage to the right leg")
+
+
+func test_rides_omnimech() -> void:
+	var s := GameState.new(open_map(4, 4))
+	var omni := mech("timber_wolf_prime", 0, hex_at(1, 1), 0, 1)
+	var sq := _squad("elemental_ba_laser", 0, hex_at(1, 1), 0, 2)
+	s.add_unit(omni)
+	s.add_unit(sq)
+	check_eq(AssetTransport.capacity(mech("griffin_grf1n", 0, hex_at(0, 0)), sq), 0, "only OmniMechs")
+	var emit := func(_t: StringName, _d: Dictionary) -> void: pass
+	check_eq(AssetTransport.board_problem(s, sq, omni), "")
+	AssetTransport.board(s, emit, sq, omni)
+	check(not sq.can_act() and s.unit_at(omni.coord) == omni, "rides, not a unit while aboard")
+	var before := omni.armor[Location.RT]
+	WeaponFire.hit_with(s, LoadedDice.new(), emit, omni, FiringArc.FRONT, 5, 9, "test",
+			{"loc": Location.RT, "rear": false, "tac": false})
+	check_eq(sq.ba.troopers[0], 5, "trooper 1 on the right torso takes it")
+	check_eq(omni.armor[Location.RT], before, "the 'Mech is shielded")
+	WeaponFire.hit_with(s, LoadedDice.new(), emit, omni, FiringArc.FRONT, 10, 9, "test",
+			{"loc": Location.RT, "rear": false, "tac": false})
+	check_eq(omni.armor[Location.RT], before - 4, "damage past the trooper goes on")
+	AssetTransport.deploy(s, emit, sq)
+	check(ToHitCalc.weapon(s, sq, sq.weapons[0], omni).impossible != "", "no attacks the turn it climbs down")
+
+
+func test_swarm_attack() -> void:
+	var s := GameState.new(open_map(4, 4))
+	var sq := _squad("elemental_ba_laser", 0, hex_at(1, 2), 0, 1)
+	var m := mech("hunchback_hbk4g", 1, hex_at(1, 2), 0, 2)
+	s.add_unit(sq)
+	s.add_unit(m)
+	var emit := func(_t: StringName, _d: Dictionary) -> void: pass
+	var swarm := gun(sq, BaSwarm.ID)
+	check_eq(ToHitCalc.weapon(s, sq, swarm, m).target(), 7, "skill 5, five troopers +2")
+	var dice := LoadedDice.new()
+	dice.queue_2d6(7)
+	BaSwarm.resolve(s, dice, emit, sq, swarm, m, ToHitCalc.weapon(s, sq, swarm, m))
+	check_eq(BaSwarm.on(sq), m.id, "on the 'Mech")
+	check_eq(sq.walk_mp(), 0, "rides it")
+	check(ToHitCalc.weapon(s, sq, gun(sq, "ba_small_laser"), m).auto_hit != "", "its guns can't miss")
+	m.coord = hex_at(2, 2)
+	BaSwarm.update(s, emit)
+	check_eq(sq.coord, m.coord, "goes where the 'Mech goes")
+	var brush: Array = PhysicalOptions.for_target(s, m, sq)
+	check(brush.size() == 2 and brush[0]["kind"] == "brush_off", "the 'Mech can swat at it")
+	check_eq(brush[0]["to_hit"].target(), 9, "piloting 5 +4")
+	dice = LoadedDice.new([3])
+	dice.queue_2d6(9)
+	BaBrushOff.resolve(s, dice, emit, {"attacker_id": m.id, "target_id": sq.id, "limb": Location.LA,
+			"to_hit": brush[0]["to_hit"], "damage": brush[0]["damage"]})
+	check_eq(BaSwarm.on(sq), -1, "knocked off")
+	check_eq(sq.ba.troopers[2], 5, "a 50-ton punch: 5 damage to one trooper")

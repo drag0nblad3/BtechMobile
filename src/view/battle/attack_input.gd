@@ -72,6 +72,8 @@ func on_hex_tapped(c: Vector2i) -> bool:
 			_default_shots()
 		_refresh()
 		return true
+	if u == attacker and not is_weapon_phase() and not BaSwarm.swarmers(controller.state, u).is_empty():
+		u = BaSwarm.swarmers(controller.state, u)[0]  # tap your own hex to swat swarmers off
 	if controller.pending_units().has(u):
 		_select(u)
 	elif attacker and u.side != attacker.side:

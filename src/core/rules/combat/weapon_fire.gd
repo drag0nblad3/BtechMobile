@@ -30,6 +30,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaLegAttack.is_leg_attack(w):
 		BaLegAttack.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if BaSwarm.is_swarm(w):
+		BaSwarm.resolve(state, dice, emit, attacker, w, target, th)
+		return
 	var decoy := NarcPods.decoy(state, dice, attacker, w, target)
 	if decoy != null:  # an enemy Nemesis pod pulls the missiles onto a friend
 		target = decoy
@@ -135,6 +138,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		if th.legs_only:
 			hl = HitTable.roll_kick(dice, arc_id, target.def.quad)
 			hl["no_cover"] = true
+		if BaSwarm.on(attacker) == target.id:
+			hl = BaSwarm.location(dice, target)
 		hit_with(state, dice, emit, target, arc_id, p, attacker.id, w.def.name, hl, th.cover_hex, ArmorTypes.weapon_attack(w.def))
 
 
@@ -194,6 +199,9 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 	if Location.is_leg_of(target.def, loc) and not hl.get("no_cover", false) and ToHitCalc.in_partial_cover(state.map, target):
 		emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
 				"source": source, "amount": amount, "loc": loc, "steps": [], "covered": true})
+		return
+	amount = BaRiders.shield(state, emit, target, loc, hl["rear"], amount, source_id, source)
+	if amount <= 0:
 		return
 	var steps := Damage.apply(target, loc, amount, hl["rear"], attack)
 	emit.call(GameEvent.DAMAGE, {"unit_id": target.id, "source_id": source_id,
