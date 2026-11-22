@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "source": "https://masterunitlist.battletech.com/",
-  "note": "Only individually verified exact-variant faction/era cells are recorded. Missing data is unverified, not unavailable. Never infer intro years or availability from other variants.",
+  "note": "Every imported matrix cell is from an exact official MUL unit page. Rows missing from a unit page are unverified, not negative evidence. A listed faction with an empty era array has no availability marks.",
   "units": {
     "atlas_as7d": {
       "intro_year": 2755,
@@ -93,13 +93,1326 @@
         ]
       }
     },
-    "locust_lct1v": {
-      "intro_year": 2499,
-      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
+    "catapult_cplt_c1": {
+      "intro_year": 2561,
+      "mul_id": 478,
+      "source": "https://masterunitlist.battletech.com/units/catapult-cplt-c1",
+      "verified_at": "2026-11-22",
       "factions": {
-        "federated_suns": [
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "capellan_confederation": [
           "age_of_war",
           "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_sea_fox": [
+          "sw_early"
+        ],
+        "clan_wolf": [
+          "sw_early"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "kell_hounds": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "magistracy_of_canopus": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "mercenary": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "rim_worlds_republic": [
+          "star_league"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "terran_hegemony": [
+          "age_of_war",
+          "star_league"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "centurion_cn9a": {
+      "intro_year": 2801,
+      "mul_id": 516,
+      "source": "https://masterunitlist.battletech.com/units/centurion-cn9-a",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "capellan_confederation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "clan_invasion"
+        ],
+        "draconis_combine": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "magistracy_of_canopus": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "outworlds_alliance": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "star_league_second": [
+          "clan_invasion"
+        ],
+        "taurian_concordat": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "word_of_blake": [
+          "clan_invasion"
+        ]
+      }
+    },
+    "commando_com2d": {
+      "intro_year": 2486,
+      "mul_id": 670,
+      "source": "https://masterunitlist.battletech.com/units/commando-com-2d",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_early"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_early"
+        ],
+        "draconis_combine": [
+          "age_of_war"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "age_of_war"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "magistracy_of_canopus": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "outworlds_alliance": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "age_of_war",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "terran_hegemony": [
+          "age_of_war"
+        ]
+      }
+    },
+    "fire_moth_prime": {
+      "intro_year": 2874,
+      "mul_id": 846,
+      "source": "https://masterunitlist.battletech.com/units/dasher-fire-moth-prime",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "alyina_mercantile_league": [
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "civil_war",
+          "jihad"
+        ],
+        "clan_blood_spirit": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_fire_mandrill": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "clan_protectorate": [
+          "ilclan"
+        ],
+        "clan_sea_fox": [
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "comstar": [
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "civil_war"
+        ],
+        "federated_suns": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "civil_war",
+          "jihad"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "solaris_7": [
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "civil_war"
+        ],
+        "star_league_second": [
+          "civil_war"
+        ],
+        "wolf_empire": [
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ],
+        "ilclan_wolf": [
+          "ilclan"
+        ]
+      }
+    },
+    "flea_fle17": {
+      "intro_year": 3049,
+      "mul_id": 1137,
+      "source": "https://masterunitlist.battletech.com/units/flea-fle-17",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "circinus_federation": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_worlds_league": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "magistracy_of_canopus": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "taurian_concordat": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "ice_ferret_a": {
+      "intro_year": 2948,
+      "mul_id": 1046,
+      "source": "https://masterunitlist.battletech.com/units/fenris-ice-ferret-a",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "capellan_confederation": [
+          "civil_war",
+          "jihad"
+        ],
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_fire_mandrill": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "comstar": [
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "civil_war"
+        ],
+        "federated_suns": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "civil_war",
+          "jihad"
+        ],
+        "kell_hounds": [
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "lyran_alliance": [
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "solaris_7": [
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "civil_war"
+        ],
+        "star_league_second": [
+          "civil_war"
+        ],
+        "tamar_pact": [
+          "ilclan"
+        ],
+        "wolf_empire": [
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ],
+        "ilclan_wolf": [
+          "ilclan"
+        ]
+      }
+    },
+    "jenner_jr7d": {
+      "intro_year": 2785,
+      "mul_id": 1692,
+      "source": "https://masterunitlist.battletech.com/units/jenner-jr7-d",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "capellan_confederation": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "circinus_federation": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_nova_cat": [
+          "republic",
+          "late_republic"
+        ],
+        "comstar": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic"
+        ],
+        "magistracy_of_canopus": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "outworlds_alliance": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "taurian_concordat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "kit_fox_prime": {
+      "intro_year": 2890,
+      "mul_id": 3347,
+      "source": "https://masterunitlist.battletech.com/units/uller-kit-fox-prime",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_fire_mandrill": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
           "sw_early",
           "sw_lostech",
           "sw_renaissance",
@@ -111,14 +1424,100 @@
           "dark_age",
           "ilclan"
         ],
-        "draconis_combine": [
-          "age_of_war",
-          "star_league",
-          "sw_early",
+        "clan_nova_cat": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_sea_fox": [
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "clan_snow_raven": [
           "sw_lostech",
           "sw_renaissance",
           "clan_invasion",
           "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "comstar": [
+          "late_republic",
+          "dark_age"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "mercenary": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "wolf_empire": [
+          "dark_age"
+        ]
+      }
+    },
+    "locust_lct1v": {
+      "intro_year": 2499,
+      "mul_id": 1901,
+      "source": "https://masterunitlist.battletech.com/units/locust-lct-1v",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
           "jihad",
           "republic",
           "late_republic",
@@ -139,6 +1538,67 @@
           "dark_age",
           "ilclan"
         ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
         "free_worlds_league": [
           "age_of_war",
           "star_league",
@@ -151,12 +1611,56 @@
           "dark_age",
           "ilclan"
         ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
         "lyran_commonwealth": [
           "age_of_war",
           "sw_early",
           "sw_lostech",
           "sw_renaissance",
           "clan_invasion",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "magistracy_of_canopus": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
           "republic",
           "late_republic",
           "dark_age",
@@ -174,6 +1678,83 @@
           "republic",
           "late_republic",
           "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "rim_worlds_republic": [
+          "age_of_war",
+          "star_league"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "tamar_pact": [
           "ilclan"
         ],
         "taurian_concordat": [
@@ -190,52 +1771,154 @@
           "dark_age",
           "ilclan"
         ],
-        "comstar": [
-          "sw_early",
-          "sw_lostech",
-          "sw_renaissance",
+        "terran_hegemony": [
+          "age_of_war",
+          "star_league"
+        ],
+        "vesper_marches": [
+          "ilclan"
+        ],
+        "word_of_blake": [
           "clan_invasion",
           "civil_war",
           "jihad"
         ]
       }
     },
-    "jenner_jr7d": {
-      "intro_year": 2785,
-      "source": "https://masterunitlist.battletech.com/units/jenner-jr7-d",
+    "mist_lynx_a": {
+      "intro_year": 2926,
+      "mul_id": 1827,
+      "source": "https://masterunitlist.battletech.com/units/koshi-mist-lynx-a",
+      "verified_at": "2026-11-22",
       "factions": {
-        "draconis_combine": [
-          "sw_early",
-          "sw_lostech",
-          "sw_renaissance",
-          "clan_invasion",
-          "civil_war",
-          "jihad",
-          "republic"
-        ],
-        "federated_suns": [
-          "sw_lostech",
-          "sw_renaissance",
-          "clan_invasion",
-          "civil_war",
-          "jihad",
-          "republic"
-        ],
-        "free_worlds_league": [
-          "sw_lostech",
-          "sw_renaissance",
-          "clan_invasion",
-          "civil_war",
-          "jihad"
+        "alyina_mercantile_league": [
+          "ilclan"
         ],
         "capellan_confederation": [
+          "civil_war",
+          "jihad"
+        ],
+        "clan_blood_spirit": [
           "sw_lostech",
           "sw_renaissance",
           "clan_invasion",
           "civil_war",
           "jihad"
         ],
-        "mercenary": [
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "clan_fire_mandrill": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "clan_protectorate": [
+          "ilclan"
+        ],
+        "clan_sea_fox": [
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
           "sw_lostech",
           "sw_renaissance",
           "clan_invasion",
@@ -244,9 +1927,619 @@
           "republic",
           "late_republic"
         ],
-        "comstar": [
+        "clan_wolf_in_exile": [
           "clan_invasion",
           "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "comstar": [
+          "civil_war",
+          "jihad",
+          "late_republic",
+          "dark_age"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "federated_commonwealth": [
+          "civil_war"
+        ],
+        "federated_suns": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "civil_war",
+          "jihad"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "solaris_7": [
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "civil_war"
+        ],
+        "star_league_second": [
+          "civil_war"
+        ],
+        "wolf_empire": [
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ],
+        "ilclan_wolf": [
+          "ilclan"
+        ]
+      }
+    },
+    "mist_lynx_prime": {
+      "intro_year": 2926,
+      "mul_id": 1836,
+      "source": "https://masterunitlist.battletech.com/units/koshi-mist-lynx-prime",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "alyina_mercantile_league": [
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "civil_war",
+          "jihad"
+        ],
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "clan_fire_mandrill": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "clan_protectorate": [
+          "ilclan"
+        ],
+        "clan_sea_fox": [
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "comstar": [
+          "civil_war",
+          "jihad",
+          "late_republic",
+          "dark_age"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "federated_commonwealth": [
+          "civil_war"
+        ],
+        "federated_suns": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "civil_war",
+          "jihad"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "solaris_7": [
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "civil_war"
+        ],
+        "star_league_second": [
+          "civil_war"
+        ],
+        "wolf_empire": [
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ],
+        "ilclan_wolf": [
+          "ilclan"
+        ]
+      }
+    },
+    "nova_b": {
+      "intro_year": 2870,
+      "mul_id": 336,
+      "source": "https://masterunitlist.battletech.com/units/black-hawk-nova-b",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "capellan_confederation": [
+          "civil_war",
+          "jihad"
+        ],
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_fire_mandrill": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_sea_fox": [
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "comstar": [
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "civil_war"
+        ],
+        "federated_suns": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "civil_war",
+          "jihad"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "solaris_7": [
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "civil_war"
+        ],
+        "star_league_second": [
+          "civil_war"
+        ],
+        "wolf_empire": [
+          "dark_age"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "ostscout_ott7j": {
+      "intro_year": 2600,
+      "mul_id": 2366,
+      "source": "https://masterunitlist.battletech.com/units/ostscout-ott-7j",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad"
+        ],
+        "capellan_confederation": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "filtvelt_coalition": [
           "jihad"
         ],
         "free_rasalhague_republic": [
@@ -254,6 +2547,1427 @@
           "clan_invasion",
           "civil_war",
           "jihad"
+        ],
+        "free_worlds_league": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "magistracy_of_canopus": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "pirates": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "rim_worlds_republic": [
+          "star_league"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "terran_hegemony": [
+          "star_league"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "panther_pnt9r": {
+      "intro_year": 2759,
+      "mul_id": 2425,
+      "source": "https://masterunitlist.battletech.com/units/panther-pnt-9r",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "capellan_confederation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "circinus_federation": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_early"
+        ],
+        "clan_wolf": [
+          "republic",
+          "late_republic"
+        ],
+        "draconis_combine": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "magistracy_of_canopus": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "outworlds_alliance": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "pirates": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "wolf_empire": [
+          "dark_age"
+        ]
+      }
+    },
+    "phoenix_hawk_pxh1": {
+      "intro_year": 2568,
+      "mul_id": 2491,
+      "source": "https://masterunitlist.battletech.com/units/phoenix-hawk-pxh-1",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic"
+        ],
+        "capellan_confederation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_early"
+        ],
+        "clan_ice_hellion": [
+          "sw_early"
+        ],
+        "clan_jade_falcon": [
+          "sw_early"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic"
+        ],
+        "magistracy_of_canopus": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "republic_of_the_sphere": [
+          "republic"
+        ],
+        "rim_worlds_republic": [
+          "star_league"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "terran_hegemony": [
+          "age_of_war",
+          "star_league"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "shadow_hawk_shd2h": {
+      "intro_year": 2550,
+      "mul_id": 2901,
+      "source": "https://masterunitlist.battletech.com/units/shadow-hawk-shd-2h",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "magistracy_of_canopus": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic"
+        ],
+        "republic_of_the_sphere": [
+          "republic"
+        ],
+        "rim_worlds_republic": [
+          "star_league"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "terran_hegemony": [
+          "age_of_war",
+          "star_league"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "stinger_stg3r": {
+      "intro_year": 2479,
+      "mul_id": 3061,
+      "source": "https://masterunitlist.battletech.com/units/stinger-stg-3r",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "magistracy_of_canopus": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "rim_worlds_republic": [
+          "age_of_war",
+          "star_league"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "tamar_pact": [
+          "ilclan"
+        ],
+        "taurian_concordat": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "terran_hegemony": [
+          "age_of_war",
+          "star_league"
+        ],
+        "vesper_marches": [
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "stormcrow_prime": {
+      "intro_year": 2930,
+      "mul_id": 2757,
+      "source": "https://masterunitlist.battletech.com/units/ryoken-stormcrow-prime",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "alyina_mercantile_league": [
+          "ilclan"
+        ],
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "clan_fire_mandrill": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "clan_protectorate": [
+          "ilclan"
+        ],
+        "clan_sea_fox": [
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "federated_suns": [
+          "dark_age",
+          "ilclan"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "wolf_empire": [
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "jihad"
+        ],
+        "ilclan_wolf": [
+          "ilclan"
+        ]
+      }
+    },
+    "timber_wolf_b": {
+      "intro_year": 2945,
+      "mul_id": 1979,
+      "source": "https://masterunitlist.battletech.com/units/mad-cat-timber-wolf-b",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "alyina_mercantile_league": [
+          "ilclan"
+        ],
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "clan_fire_mandrill": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "clan_protectorate": [
+          "ilclan"
+        ],
+        "clan_sea_fox": [
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "comstar": [
+          "late_republic",
+          "dark_age"
+        ],
+        "jade_falcon_remnant": [
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "wolf_empire": [
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "jihad"
+        ],
+        "ilclan_wolf": [
+          "ilclan"
         ]
       }
     },
@@ -319,6 +4033,983 @@
           "ilclan"
         ]
       }
+    },
+    "trebuchet_tbt5n": {
+      "intro_year": 2799,
+      "mul_id": 3297,
+      "source": "https://masterunitlist.battletech.com/units/trebuchet-tbt-5n",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "circinus_federation": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "magistracy_of_canopus": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "taurian_concordat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "valkyrie_vlkqa": {
+      "intro_year": 2787,
+      "mul_id": 3372,
+      "source": "https://masterunitlist.battletech.com/units/valkyrie-vlk-qa",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "comstar": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "pirates": [
+          "dark_age",
+          "ilclan"
+        ],
+        "taurian_concordat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ]
+      }
+    },
+    "viper_prime": {
+      "intro_year": 2940,
+      "mul_id": 926,
+      "source": "https://masterunitlist.battletech.com/units/dragonfly-viper-prime",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "capellan_confederation": [
+          "civil_war",
+          "jihad"
+        ],
+        "clan_blood_spirit": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_burrock": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "jihad"
+        ],
+        "clan_cloud_cobra": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_coyote": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_diamond_shark": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_fire_mandrill": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ghost_bear": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_goliath_scorpion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_ice_hellion": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_jade_falcon": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_nova_cat": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_smoke_jaguar": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "ilclan"
+        ],
+        "clan_snow_raven": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_star_adder": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_steel_viper": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_stone_lion": [
+          "jihad"
+        ],
+        "clan_wolf": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "clan_wolf_in_exile": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "civil_war",
+          "jihad"
+        ],
+        "federated_commonwealth": [
+          "civil_war"
+        ],
+        "federated_suns": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_rasalhague_republic": [
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "civil_war",
+          "jihad"
+        ],
+        "kell_hounds": [
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "civil_war",
+          "jihad"
+        ],
+        "mercenary": [
+          "civil_war",
+          "jihad"
+        ],
+        "rasalhague_dominion": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "society": [
+          "jihad"
+        ],
+        "solaris_7": [
+          "civil_war",
+          "jihad"
+        ],
+        "st_ives_compact": [
+          "civil_war"
+        ],
+        "star_league_second": [
+          "civil_war"
+        ],
+        "word_of_blake": [
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "wasp_wsp1a": {
+      "intro_year": 2471,
+      "mul_id": 3520,
+      "source": "https://masterunitlist.battletech.com/units/wasp-wsp-1a",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "capellan_confederation": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "circinus_federation": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "dark_age",
+          "ilclan"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "magistracy_of_canopus": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "mercenary": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "raven_alliance": [
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "rim_worlds_republic": [
+          "age_of_war",
+          "star_league"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "tamar_pact": [
+          "ilclan"
+        ],
+        "taurian_concordat": [
+          "age_of_war",
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "terran_hegemony": [
+          "age_of_war",
+          "star_league"
+        ],
+        "vesper_marches": [
+          "ilclan"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
+    },
+    "wolverine_wvr6r": {
+      "intro_year": 2575,
+      "mul_id": 3573,
+      "source": "https://masterunitlist.battletech.com/units/wolverine-wvr-6r",
+      "verified_at": "2026-11-22",
+      "factions": {
+        "calderon_protectorate": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "capellan_confederation": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "circinus_federation": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "comstar": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "draconis_combine": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age"
+        ],
+        "federated_commonwealth": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "federated_suns": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "filtvelt_coalition": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "free_rasalhague_republic": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "free_worlds_league": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "fronc_reaches": [
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "kell_hounds": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_alliance": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ],
+        "lyran_commonwealth": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "republic",
+          "late_republic"
+        ],
+        "magistracy_of_canopus": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "marian_hegemony": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "mercenary": [
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "outworlds_alliance": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "pirates": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "republic_of_the_sphere": [
+          "republic"
+        ],
+        "rim_worlds_republic": [
+          "star_league"
+        ],
+        "scorpion_empire": [
+          "jihad",
+          "republic",
+          "late_republic",
+          "dark_age",
+          "ilclan"
+        ],
+        "solaris_7": [
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic"
+        ],
+        "st_ives_compact": [
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_first": [
+          "star_league"
+        ],
+        "star_league_second": [
+          "clan_invasion",
+          "civil_war"
+        ],
+        "star_league_in_exile": [
+          "sw_early"
+        ],
+        "taurian_concordat": [
+          "star_league",
+          "sw_early",
+          "sw_lostech",
+          "sw_renaissance",
+          "clan_invasion",
+          "civil_war",
+          "jihad",
+          "republic",
+          "late_republic"
+        ],
+        "terran_hegemony": [
+          "star_league"
+        ],
+        "word_of_blake": [
+          "clan_invasion",
+          "civil_war",
+          "jihad"
+        ]
+      }
     }
-  }
+  },
+  "snapshot_date": "2026-11-22"
 }
