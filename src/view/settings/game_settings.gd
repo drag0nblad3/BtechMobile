@@ -11,6 +11,7 @@ static var explain_level: int = ExplainLevel.FULL
 static var training: Dictionary = {}
 static var ai_level: int = BotSkill.Level.REGULAR
 static var cinematic_camera := false
+static var camera_shake := true
 static var _loaded := false
 
 
@@ -24,6 +25,7 @@ static func load_settings() -> void:
 		training = cfg.get_value("training", "progress", {})
 		ai_level = clampi(int(cfg.get_value("ai", "level", BotSkill.Level.REGULAR)), 0, BotSkill.NAMES.size() - 1)
 		cinematic_camera = bool(cfg.get_value("camera", "cinematic", false))
+		camera_shake = bool(cfg.get_value("camera", "shake", true))
 
 
 static func set_explain_level(level: int) -> void:
@@ -51,6 +53,14 @@ static func set_ai_level(level: int) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("ai", "level", ai_level)
+	cfg.save(PATH)
+
+
+static func set_camera_shake(on: bool) -> void:
+	camera_shake = on
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("camera", "shake", on)
 	cfg.save(PATH)
 
 
