@@ -1,0 +1,127 @@
+extends TestCase
+## Tests topology, scale, motion boundaries and negative space, not coordinates
+## from particular miniatures. Synthetic coordinates are fixture-relative.
+
+
+func test_islands_reconnect_at_multiple_resolutions_and_origins() -> void:
+	for scale in [1, 2, 3]:
+		for translation: Vector3i in [Vector3i.ZERO, Vector3i(41, -25, 53)]:
+			var m := _with_island(translation, scale)
+			var initial := m.part("ct")["cells"].size()
+			var report := VxIntegrity.repair(m)
+			check_eq(int(report["before"]), 1, "synthetic model starts disconnected")
+			check_eq(int(report["after"]), 0, "islands merge at each origin and grid pitch")
+			check_eq(int(report["rejoined"]), 1)
+			check_eq(m.part("ct")["cells"].size() - initial, int(report["added"]))
+			check(int(report["added"]) <= VxIntegrity.GAP * scale,
+					"join is a thin structural path, not an added slab")
+
+
+func test_authored_void_cannot_be_filled_by_repair() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	var raw := {"parts": [{"name": "ct", "shapes": [
+			{"erase": [[3, 0, 0], [4, 0, 0]]}]}]}
+	var before := m.part("ct")["cells"].duplicate()
+	var report := VxIntegrity.repair(m, raw)
+	check_eq(report["rejoined"], 0)
+	check_eq(report["after"], 1)
+	check_eq(m.part("ct")["cells"], before, "keep an authored bore clear")
+
+
+func test_repair_never_claims_cells_occupied_by_another_part() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	var occupied := {Vector3i(3, 0, 0): 0}
+	m.parts.append({"name": "other", "loc": Location.LT, "parent": "",
+			"joint": "", "pivot": Vector3.ZERO, "cells": occupied})
+	var report := VxIntegrity.repair(m)
+	check_eq(report["rejoined"], 0, "a separating moving part blocks the join")
+	for p: Dictionary in m.parts:
+		if p["name"] == "other":
+			continue
+		for cell: Vector3i in p["cells"]:
+			check(not occupied.has(cell), "a voxel must have only one owner")
+
+
+func test_muzzle_and_distant_modules_stay_open() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	m.muzzles[Location.CT] = [Vector3(3.5, 0.5, 0.5)]
+	var report := VxIntegrity.repair(m)
+	check_eq(report["rejoined"], 0, "avoid repairing across the shot corridor")
+	m = _with_island(Vector3i.ZERO, 1)
+	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
+	m.part("ct")["cells"][Vector3i(30, 0, 0)] = 0
+	report = VxIntegrity.repair(m)
+	check_eq(report["rejoined"], 0, "distant islands require a new sculpt")
+	check(report["after"] > 0, "unresolved islands must be reported")
+
+
+func test_genuine_joint_contact_gets_a_short_structure_bridge() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
+	m.parts.append({"name": "arm", "loc": Location.LA, "parent": "ct",
+			"joint": "shoulder", "pivot": Vector3(4, 0, 0),
+			"cells": {Vector3i(4, 0, 0): 0}})
+	var report := VxIntegrity.repair(m)
+	check_eq(report["joint_contacts"], 1)
+	check_eq(report["added"], 1)
+	check(not m.part("ct")["cells"].has(Vector3i(3, 0, 0)),
+			"bridge belongs to articulated child, not torso")
+	check(m.part("arm")["cells"].has(Vector3i(3, 0, 0)))
+
+
+func test_nonjoint_cosmetic_detail_does_not_get_welded() -> void:
+	var m := _with_island(Vector3i.ZERO, 1)
+	m.part("ct")["cells"].erase(Vector3i(5, 0, 0))
+	m.parts.append({"name": "detail", "loc": Location.CT, "parent": "ct",
+			"joint": "", "pivot": Vector3(4, 0, 0),
+			"cells": {Vector3i(4, 0, 0): 0}})
+	var report := VxIntegrity.repair(m)
+	check_eq(report["joint_contacts"], 0, "not every gap is a broken hinge")
+
+
+func test_source_catalog_mirrors_and_lofts_are_well_formed() -> void:
+	var visited := 0
+	for f: String in DirAccess.get_files_at("res://data/voxels"):
+		if not f.ends_with("_shape.json"):
+			continue
+		visited += 1
+		var raw: Dictionary = JsonFile.read("res://data/voxels/" + f)
+		var prior := {}
+		for p: Dictionary in raw.get("parts", []):
+			if p.has("mirror"):
+				check(prior.has(p["mirror"]), "%s: mirror must follow its source" % f)
+			var parent: String = p.get("parent", "")
+			if not parent.is_empty():
+				check(prior.has(parent), "%s: parent must precede child" % f)
+			for shape: Dictionary in p.get("shapes", []):
+				if not shape.has("loft"):
+					continue
+				var stations: Array = shape["loft"].get("sections", [])
+				check(stations.size() >= 2, "%s: loft has >=2 stations" % f)
+				for i in range(1, stations.size()):
+					check(stations[i]["at"] > stations[i - 1]["at"],
+							"%s: strictly ordered stations" % f)
+					check(stations[i]["polygon"].size() == stations[i - 1]["polygon"].size(),
+							"%s: matching contour vertices" % f)
+			prior[p["name"]] = true
+	check(visited > 100, "whole shape-source catalog scanned")
+
+
+func _with_island(offset: Vector3i, n: int) -> VxModel:
+	var m := VxModel.new()
+	m.detail = n
+	m._mat["frame"] = 0
+	m.colors.append(Color.WHITE)
+	m.roles.append("structure")
+	var cells := {}
+	for x in range(3 * n):
+		for y in range(3 * n):
+			for z in range(3 * n):
+				cells[Vector3i(x, y, z) + offset] = 0
+	for x in range(5 * n, 6 * n):
+		for y in range(n):
+			for z in range(n):
+				cells[Vector3i(x, y, z) + offset] = 0
+	m.parts.append({"name": "ct", "loc": Location.CT, "parent": "",
+			"joint": "", "pivot": Vector3(offset), "cells": cells})
+	return m
