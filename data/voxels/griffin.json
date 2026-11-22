@@ -4665,5 +4665,41 @@
     "rear": 0.71,
     "torso_width": 0.95
   },
-  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "off-center shoulder LRM; heavy PPC",
+    "modified_polygon_vertices": 178,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "rt",
+      "la",
+      "ra",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "ra",
+      "anchor": [
+        14,
+        29,
+        -25
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

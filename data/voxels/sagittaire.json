@@ -2596,5 +2596,39 @@
     "category": "human-upright"
   },
   "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
-  "recessed_chest_profile": "2026-11-22-central-prow-spine-and-tapered-chest"
+  "recessed_chest_profile": "2026-11-22-central-prow-spine-and-tapered-chest",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "tall fire-support laser shoulders",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "la",
+      "anchor": [
+        -13,
+        22,
+        -24
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

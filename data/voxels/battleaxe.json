@@ -2814,5 +2814,27 @@
     "rear_mass_scale": 0.62,
     "category": "human-upright"
   },
-  "reference_contour_round": "2026-11-22-human-side-profile-second-pass"
+  "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "strong paired energy arms; angular shoulders",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  }
 }

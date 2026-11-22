@@ -3978,5 +3978,39 @@
   ],
   "art_quality_passes": 50,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "multi_angle_reference_revision": "2026-11-22-front-then-side"
+  "multi_angle_reference_revision": "2026-11-22-front-then-side",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "one AC10 arm; slim early medium",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "la",
+      "anchor": [
+        -12,
+        23,
+        -27
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

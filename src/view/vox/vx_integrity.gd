@@ -128,9 +128,17 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 	var pruned_orphans := 0
 	for p: Dictionary in m.parts:
 		var groups := components(p["cells"])
+		# Preserve intentional gaps and distant silhouette details instead of
+		# silently deleting a fragment the authored sculpt must retain.
+		if not voids.is_empty() or not muzzle_guard.is_empty() or _optical_detail(p["cells"], m):
+			continue
 		for i in range(1, groups.size()):
 			var orphan: Dictionary = groups[i]
 			if orphan.size() > 12 * n * n * n:
+				continue
+			var tip: Vector3i = orphan.keys()[0]
+			var near: Vector3i = _nearest(groups[0], tip)
+			if absi(tip.x-near.x) + absi(tip.y-near.y) + absi(tip.z-near.z) > GAP * n:
 				continue
 			for c: Vector3i in orphan:
 				p["cells"].erase(c)

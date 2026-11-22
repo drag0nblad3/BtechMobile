@@ -3545,5 +3545,17 @@
       "three_quarter"
     ],
     "automatic_not_human_approved": true
-  }
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "ra",
+      "anchor": [
+        12,
+        19,
+        -25
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

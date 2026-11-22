@@ -4267,5 +4267,40 @@
     "front": 0.91,
     "rear": 0.79,
     "torso_width": 0.98
-  }
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "narrow knight helmet; long right PPC",
+    "modified_polygon_vertices": 192,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ra",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "ra",
+      "anchor": [
+        13,
+        16,
+        -18
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

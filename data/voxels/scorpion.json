@@ -4400,5 +4400,27 @@
   "quad": true,
   "art_quality_passes": 50,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "long flat forward quad hull; arthropod legs",
+    "modified_polygon_vertices": 100,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  }
 }

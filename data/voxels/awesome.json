@@ -4599,5 +4599,58 @@
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
   "art_quality_passes": 50,
-  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "broad triple PPC fighting chest; small cockpit",
+    "modified_polygon_vertices": 166,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ra",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "lt",
+      "anchor": [
+        -9,
+        33,
+        -8
+      ]
+    },
+    {
+      "kind": "barrel",
+      "part": "rt",
+      "anchor": [
+        7,
+        36,
+        -8
+      ]
+    },
+    {
+      "kind": "barrel",
+      "part": "ra",
+      "anchor": [
+        14,
+        26,
+        -24
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

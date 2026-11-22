@@ -3721,5 +3721,39 @@
   ],
   "art_quality_passes": 50,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "connectivity_source_patch": "2026-11-22-rig-mass-v2"
+  "connectivity_source_patch": "2026-11-22-rig-mass-v2",
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "one massive right AC20 gun",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "barrel",
+      "part": "ra",
+      "anchor": [
+        12,
+        19,
+        -25
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }

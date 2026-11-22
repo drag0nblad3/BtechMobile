@@ -3448,5 +3448,48 @@
     "front": 0.8,
     "rear": 0.65,
     "torso_width": 0.93
-  }
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "paired LRM shoulder pods; narrow arms",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_modules": [
+    {
+      "kind": "rack",
+      "part": "lt",
+      "anchor": [
+        -11,
+        31,
+        -18
+      ]
+    },
+    {
+      "kind": "rack",
+      "part": "rt",
+      "anchor": [
+        8,
+        31,
+        -18
+      ]
+    }
+  ],
+  "blind_identity_weapon_stage": "2026-11-22-v1"
 }
