@@ -8,6 +8,7 @@ extends Node
 ## phase you may also tap a building to shoot it, or woods to set them alight.
 
 signal attacker_selected(u: Unit)
+signal target_chosen(attacker: Unit, target: Unit)  ## The camera frames the pair.
 
 var controller: GameController
 var hud: BattleHud
@@ -82,6 +83,7 @@ func on_hex_tapped(c: Vector2i) -> bool:
 		physical.clear()
 		if is_weapon_phase():
 			_default_shots()
+		target_chosen.emit(attacker, u)
 	_refresh()
 	return true
 

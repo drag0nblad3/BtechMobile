@@ -35,7 +35,7 @@ signal exit_battle
 signal next_unit  ## Go to the next of your units (camera + selection).
 
 const FONT_SIZE := 24
-const BUTTON_SIZE := Vector2(140, 68)
+const BUTTON_SIZE := Vector2(140, 60)
 const MARGIN := 18
 
 const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
@@ -107,16 +107,19 @@ func _ready() -> void:
 	_event_label = _label(_event_panel, 19)
 	_event_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_event_panel.custom_minimum_size.x = 170
-	var phase_strip := _row(col)
-	phase_strip.add_theme_constant_override("separation", 5)
+	# The phase timeline sits at the right of the status row (one row, not
+	# two), leaving more of a 720 px screen for the map.
+	var phase_strip := HBoxContainer.new()
+	phase_strip.add_theme_constant_override("separation", 4)
 	phase_strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	heading.add_child(phase_strip)
 	for tag in PHASE_TAGS:
 		var cell := PanelContainer.new()
-		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.custom_minimum_size = Vector2(70, 0)
 		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		phase_strip.add_child(cell)
 		_phase_cells.append(cell)
-		var stage := _label(cell, 15)
+		var stage := _label(cell, 14)
 		stage.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		stage.text = tag
 		stage.mouse_filter = Control.MOUSE_FILTER_IGNORE

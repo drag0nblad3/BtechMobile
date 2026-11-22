@@ -241,6 +241,7 @@ func _wire() -> void:
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
+	attacks.target_chosen.connect(_frame_attack)
 	controller.event.connect(_on_event)
 
 
@@ -249,6 +250,15 @@ func _focus_unit(u: Unit) -> void:
 	rig.focus(units_layer.view_of(u).position)
 	sheet_unit = u
 	_show_sheet_if_open()
+
+
+## Keep attacker and target in view beside the weapons panel.
+func _frame_attack(a: Unit, t: Unit) -> void:
+	cinematic.manual_input()
+	var frame := CameraFraming.beside_panel(rig.camera, rig.distance(), units_layer.view_of(a).position,
+			units_layer.view_of(t).position, get_viewport().get_visible_rect().size)
+	rig.set_distance(frame["distance"])
+	rig.focus(frame["focus"])
 
 
 ## Next button: select the next unit still to act, or just look at the next one.
