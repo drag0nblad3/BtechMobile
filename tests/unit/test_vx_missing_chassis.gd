@@ -9,22 +9,20 @@ func _raw(id: String, high: bool) -> Dictionary:
 
 func test_missing_chassis_have_official_records_and_fifty_geometric_passes() -> void:
 	var db := UnitDb.load_dir()
+	# OmniMechs are catalogued by their playable configuration id
+	# (e.g. huntsman_prime), while a sculpt targets the chassis id.
+	var known := {}
+	for design: UnitDef in db.by_id.values():
+		known[design.id] = true
+		if not design.chassis.is_empty():
+			known[design.chassis] = true
 	for id: String in IDS:
 		var lo := _raw(id, false)
 		var hi := _raw(id, true)
 		check(not lo.is_empty() and not hi.is_empty(), id + " both LOD recipes exist")
 		if lo.is_empty() or hi.is_empty():
 			continue
-		var unit_ref: String = String(lo.get("unit", ""))
-		var found_sheet := db.get_def(unit_ref) != null
-		if not found_sheet:
-			# OmniMechs expand to configuration IDs; their sprite still maps
-			# to the one official chassis art recipe.
-			for official: UnitDef in db.by_id.values():
-				if official.sprite == unit_ref:
-					found_sheet = true
-					break
-		check(found_sheet, id + " official design")
+		check(known.has(String(lo.get("unit", ""))), id + " official design")
 		check_eq(lo["unit"], hi["unit"], id + " same official sheet")
 		check_eq(int(lo.get("subdivide", 0)), 1, id + " coarse silhouette")
 		check_eq(int(hi.get("subdivide", 0)), 3, id + " fine voxelization")
