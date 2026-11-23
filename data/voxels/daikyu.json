@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/daikyu_shape.json",
+  "id": "daikyu",
+  "subdivide": 2
+}

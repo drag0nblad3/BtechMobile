@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/dart_shape.json",
+  "id": "dart",
+  "subdivide": 2
+}

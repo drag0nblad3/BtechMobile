@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/behemoth_shape.json",
+  "id": "behemoth",
+  "subdivide": 2
+}

@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/imp_shape.json",
+  "id": "imp",
+  "subdivide": 2
+}
