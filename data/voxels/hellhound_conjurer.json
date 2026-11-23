@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Recognition Guide Conjurer. High offset paired horn antenna above a sharply set cockpit, asymmetrical shoulder missile window, broad but shallow chest, right arm pulse cannon, independent hand and long panelled shins. Never share Solitaire or generic armor geometry.",
+  "notes": "Second ilClan Recognition Guide Conjurer pass: more projecting transverse armored chest, slimmer waist rear, right forearm laser tube carries forward with open muzzle, and paired antennas reduced from generic high poles. Torso SRM mouths preserved.",
   "parts": [
     {
       "name": "ct",
@@ -108,19 +108,19 @@
                   ],
                   [
                     8,
-                    5
+                    4
                   ],
                   [
                     5,
-                    8
+                    7
                   ],
                   [
                     -5,
-                    8
+                    7
                   ],
                   [
                     -8,
-                    5
+                    4
                   ],
                   [
                     -8,
@@ -265,6 +265,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -6,
+              31,
+              -12
+            ],
+            [
+              6,
+              33,
+              -10
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -421,7 +436,7 @@
             ],
             [
               -2,
-              49,
+              47,
               -10
             ]
           ],
@@ -436,7 +451,7 @@
             ],
             [
               3,
-              49,
+              47,
               -10
             ]
           ],
@@ -1249,7 +1264,7 @@
             [
               18,
               23,
-              -23
+              -27
             ],
             [
               21,
@@ -1264,12 +1279,12 @@
             [
               17,
               24,
-              -23
+              -28
             ],
             [
               22,
               26,
-              -22
+              -27
             ]
           ],
           "mat": "plate"
@@ -1279,7 +1294,7 @@
             [
               19,
               24,
-              -24
+              -29
             ],
             [
               20,
@@ -1729,7 +1744,7 @@
     "RA": [
       19.5,
       24.5,
-      -24.5
+      -28.5
     ],
     "LT": [
       [

@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Fixed-gun Black Hawk (Standard), NOT the Nova Omni rig. Slim torso with low recessed head and tall dorsal engine pack; separated broad round shoulder actuators and paired Streak-4 launcher blocks mounted on both arms; two torso ER large emitters and tall thin legs. Inspired by TRO 3145 Mercenaries without copying Nova geometry.",
+  "notes": "Second reference-first Black Hawk **Standard BattleMech** pass: shallow central armor deck and separated lateral arm actuator facets. Retains both eight-port Streak launcher blocks and separate low cockpit; not the Nova Omni hull. Follow-up render correction: independent rounded/tapered shoulder cooling drums rise above the lower recessed cockpit, with shallow physical front inset and intact torso lasers; Standard's shoulders now break the humanoid upper outline without borrowing a Nova Omni sculpt.",
   "parts": [
     {
       "name": "ct",
@@ -108,19 +108,19 @@
                   ],
                   [
                     8,
-                    4
+                    2
                   ],
                   [
                     6,
-                    8
+                    6
                   ],
                   [
                     -6,
-                    8
+                    6
                   ],
                   [
                     -8,
-                    4
+                    2
                   ],
                   [
                     -8,
@@ -145,19 +145,19 @@
                   ],
                   [
                     8,
-                    6
+                    4
                   ],
                   [
                     5,
-                    9
+                    7
                   ],
                   [
                     -5,
-                    9
+                    7
                   ],
                   [
                     -8,
-                    6
+                    4
                   ],
                   [
                     -8,
@@ -616,6 +616,206 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 35,
+                "polygon": [
+                  [
+                    -15,
+                    -2
+                  ],
+                  [
+                    -11,
+                    -2
+                  ],
+                  [
+                    -9,
+                    0
+                  ],
+                  [
+                    -9,
+                    5
+                  ],
+                  [
+                    -11,
+                    7
+                  ],
+                  [
+                    -15,
+                    7
+                  ],
+                  [
+                    -17,
+                    5
+                  ],
+                  [
+                    -17,
+                    0
+                  ]
+                ]
+              },
+              {
+                "at": 40,
+                "polygon": [
+                  [
+                    -15,
+                    -4
+                  ],
+                  [
+                    -10,
+                    -4
+                  ],
+                  [
+                    -8,
+                    -1
+                  ],
+                  [
+                    -8,
+                    6
+                  ],
+                  [
+                    -11,
+                    8
+                  ],
+                  [
+                    -16,
+                    8
+                  ],
+                  [
+                    -18,
+                    6
+                  ],
+                  [
+                    -18,
+                    -1
+                  ]
+                ]
+              },
+              {
+                "at": 45,
+                "polygon": [
+                  [
+                    -14,
+                    -3
+                  ],
+                  [
+                    -11,
+                    -3
+                  ],
+                  [
+                    -9,
+                    -1
+                  ],
+                  [
+                    -9,
+                    5
+                  ],
+                  [
+                    -11,
+                    7
+                  ],
+                  [
+                    -15,
+                    7
+                  ],
+                  [
+                    -17,
+                    5
+                  ],
+                  [
+                    -17,
+                    -1
+                  ]
+                ]
+              },
+              {
+                "at": 48,
+                "polygon": [
+                  [
+                    -13,
+                    0
+                  ],
+                  [
+                    -12,
+                    0
+                  ],
+                  [
+                    -11,
+                    1
+                  ],
+                  [
+                    -11,
+                    4
+                  ],
+                  [
+                    -12,
+                    5
+                  ],
+                  [
+                    -14,
+                    5
+                  ],
+                  [
+                    -15,
+                    4
+                  ],
+                  [
+                    -15,
+                    1
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -15,
+              40,
+              -6
+            ],
+            [
+              -10,
+              44,
+              -4
+            ]
+          ],
+          "mat": "rack"
+        },
+        {
+          "erase": [
+            [
+              -14,
+              41,
+              -7
+            ],
+            [
+              -11,
+              43,
+              -3
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -16,
+              39,
+              7
+            ],
+            [
+              -11,
+              41,
+              8
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -885,6 +1085,36 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -21,
+              31,
+              -1
+            ],
+            [
+              -19,
+              34,
+              4
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -21,
+              27,
+              3
+            ],
+            [
+              -19,
+              30,
+              5
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -1150,6 +1380,36 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              19,
+              31,
+              -1
+            ],
+            [
+              21,
+              34,
+              4
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              19,
+              27,
+              3
+            ],
+            [
+              21,
+              30,
+              5
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
