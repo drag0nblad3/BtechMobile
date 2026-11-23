@@ -3582,21 +3582,6 @@
             [
               -14,
               18,
-              -13
-            ]
-          ],
-          "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              -16,
-              16,
-              -20
-            ],
-            [
-              -14,
-              18,
               -20
             ]
           ],
@@ -3631,66 +3616,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -20,
-              16,
-              -24
-            ],
-            [
-              -17,
-              18,
-              -19
-            ]
-          ],
-          "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              -14,
-              16,
-              -24
-            ],
-            [
-              -12,
-              18,
-              -19
-            ]
-          ],
-          "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              -20,
-              18,
-              -21
-            ],
-            [
-              -17,
-              19,
-              -19
-            ]
-          ],
-          "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -14,
-              18,
-              -21
-            ],
-            [
-              -12,
-              19,
-              -19
-            ]
-          ],
-          "mat": "plate"
         }
       ],
       "parent": "lt",
@@ -3700,6 +3625,142 @@
       "name": "ra",
       "mirror": "la",
       "parent": "rt"
+    },
+    {
+      "name": "la_ac20_claw",
+      "loc": "LA",
+      "parent": "la",
+      "pivot": [
+        -15,
+        18,
+        -17
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -18,
+              17,
+              -19
+            ],
+            [
+              -13,
+              19,
+              -18
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -16,
+              16,
+              -20
+            ],
+            [
+              -14,
+              18,
+              -13
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -20,
+              16,
+              -24
+            ],
+            [
+              -17,
+              18,
+              -19
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -14,
+              16,
+              -24
+            ],
+            [
+              -12,
+              18,
+              -19
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -20,
+              18,
+              -21
+            ],
+            [
+              -17,
+              19,
+              -19
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -14,
+              18,
+              -21
+            ],
+            [
+              -12,
+              19,
+              -19
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -16,
+              16,
+              -24
+            ],
+            [
+              -13,
+              18,
+              -19
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "erase": [
+            [
+              -15,
+              17,
+              -24
+            ],
+            [
+              -15,
+              17,
+              -21
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ra_ac20_claw",
+      "mirror": "la_ac20_claw",
+      "parent": "ra"
     },
     {
       "name": "ll",
@@ -4465,5 +4526,6 @@
     ],
     "reference_basis": "Catalyst plastic miniature catalog",
     "review_status": "source only; runtime connectivity and art approval pending"
-  }
+  },
+  "notes": " Both oversized pincers become matching separate, supported AC/20 claw assemblies with recessed firing channels; keep the low skull cockpit under the broad disc carapace."
 }
