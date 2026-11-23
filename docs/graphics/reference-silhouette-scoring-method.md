@@ -1,6 +1,6 @@
 # Reference-silhouette review: full voxel catalog (22 November 2026)
 
-**Status: inventory and scoring pipeline implemented; reference-fit evaluation NOT YET EXECUTED.**
+**Status (23 November 2026): 334 visual recipes inventoried, 270 source-paired provisional single-image trials; verified four-angle evaluation remains incomplete.**
 Do not interpret blank score fields as zero or turn model-to-model confusion similarity
 into a reference-image fit percentage.
 
@@ -156,9 +156,21 @@ Synthetic image-mask score tests are in
 `python -m unittest discover -s tests/tools -p 'test_score_reference_silhouettes.py'`.
 Stance corrections are temporary audit pose profiles only; the reference pose
 must not be persisted as a default game stance or used to hide badly sculpted
-body proportions. The mask projection uses centers of actual authored occupied
-voxel cells after joint transforms; visual inspection of Godot render meshes is
-still needed, especially for thin antennae and visible contact points.
+body proportions. The current camera projector uses the eight projected corners of each
+occupied voxel after joint transforms, with perspective depth if selected;
+visual inspection of Godot render meshes is still needed, especially for thin antennae and visible contact points.
 
 This documentation and tooling change does not modify combat rules, official
 design JSONs, existing voxel geometry, game rendering, or build an Android APK.
+
+## Catalog-level source and image-measurement passes (23 November 2026)
+
+- [158 source-matched modern plastic miniature photographs](plastic-reference-refined-158.csv), plus one source linked but inaccessible (Shadow Hawk IIC, HTTP 404). The original 158-photo mean was 37.3; removing disconnected logos/printed marks increased the mean provisional fit to 46.7. This is **a scoring cleanup, not an improvement to the sculpts**.
+- [82 official legacy Technical Readout illustrations](tro-reference-first-pass-82.csv) measured through five batches, with older art and unknown camera style explicitly labeled.
+- [30 BattleTechWiki infobox illustrations](sarna-art-first-pass-30.csv) successfully source-linked and measured; twelve source filenames indicate newer Recognition Guide images. Their exact release and model-variant fit have not been manually approved.
+- [Full 334-row scorecard](all-model-reference-silhouette-scorecard.csv) preserves source URLs, source tier, an exploratory score and camera estimate for 270 measured designs, and a per-chassis photographic mismatch observation for the 158 modern-plastic matches. **All verified front/side/quarter/top and weighted overall score fields remain empty.**
+- 63 recipes have no model-specific source match, including 16 generic support archetypes that have no unique canonical sculpture. Generic assets should have category-appropriate visual review criteria rather than comparisons against unrelated named units.
+
+A single photographed pose from an uncertain angle does not establish four independent views. Display bases, missing thin details, ink contours and perspective may contaminate score accuracy. Removing disconnected photograph components can also remove legitimate separated guns or antennae. Camera fitting now compares orthographic and perspective projections; tentative articulated pose fitting tries conservative changes only to real hip, knee, ankle and shoulder joints. **Neither the best-matching camera nor the best-matching joint candidate is verified merely because it maximizes a 2D score**; these trials are diagnostic until visually approved.
+
+The 85/70/50 acceptance bands above should not be applied directly to these preliminary single-source matches.
