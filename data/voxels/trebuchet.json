@@ -5751,7 +5751,7 @@
   "blind_identity_weapon_modules": [
     {
       "kind": "rack",
-      "part": "la",
+      "part": "la_lrm15",
       "anchor": [
         -15,
         24,
@@ -5760,7 +5760,7 @@
     },
     {
       "kind": "rack",
-      "part": "rt",
+      "part": "rt_lrm15",
       "anchor": [
         6,
         28,
