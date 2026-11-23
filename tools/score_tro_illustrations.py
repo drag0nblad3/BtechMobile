@@ -15,7 +15,7 @@ from collections import deque
 from PIL import Image, ImageFilter, ImageOps
 from score_reference_silhouettes import locate, read_mask, score_masks
 
-ALLOWED = {"www.sarna.net"}
+ALLOWED = {"www.sarna.net", "cfw.sarna.net"}
 STEPS = ((1, 0), (-1, 0), (0, 1), (0, -1))
 
 
@@ -23,8 +23,12 @@ def download(url):
     uri = urllib.parse.urlparse(url)
     if uri.scheme != "https" or uri.hostname not in ALLOWED:
         raise ValueError("Unvetted TRO artwork download domain")
-    if "/files/download/media/images/product_scans/tro_scans/" not in uri.path:
-        raise ValueError("Not an archive-verified TRO image path")
+    allowed_path = (uri.hostname == "www.sarna.net" and
+        "/files/download/media/images/product_scans/tro_scans/" in uri.path
+        or uri.hostname == "cfw.sarna.net" and
+        "/wiki/images/" in uri.path)
+    if not allowed_path:
+        raise ValueError("Not a recognized TRO or verified Sarna image path")
     req = urllib.request.Request(url, headers={"User-Agent":
         "BtechMobile-reference-review/1.0 (noncommercial art QA)"})
     with urllib.request.urlopen(req, timeout=35) as response:
@@ -101,8 +105,12 @@ def main():
     for candidate in records:
         model, angle = candidate["model"], candidate["view"]
         row = {"model": model, "view": angle, "source_url":
-               candidate["reference_page"], "art": candidate["image_filename"],
-               "result_kind": "EXPLORATORY_LEGACY_TRO_NOT_APPROVED"}
+               candidate["reference_page"], "art": candidate.get(
+                   "image_filename", candidate.get("filename", "")),
+               "source_type": candidate.get("source_type",
+                   "legacy_official_TRO_illustration"),
+               "source_status": candidate.get("status", ""),
+               "result_kind": "EXPLORATORY_ART_UNVERIFIED_POSE_VIEW_AND_MASK"}
         try:
             image = download(candidate["image_url"])
             foreground, coverage = fill_art_contour(image)
@@ -123,7 +131,7 @@ def main():
                 row["provisional_camera_fit_0_100"] = scored[0][0]
                 row["camera_candidate"] = scored[0][1]["camera"]
             row["review_needed"] = (
-                "Manually isolate official line art, exclude annotations, "
+                "Manually isolate reference subject from backgrounds, check licensing, "
                 "fit rig pose and verify interpretation of legacy design.")
         except (OSError, ValueError, urllib.error.URLError) as e:
             row["error"] = str(e)
