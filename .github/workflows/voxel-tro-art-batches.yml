@@ -8,6 +8,9 @@ on:
       - 'tests/tools/test_score_tro_illustrations.py'
       - 'docs/graphics/tro-reference-art-index.json'
       - '.github/workflows/voxel-tro-art-batches.yml'
+  push:
+    branches:
+      - audit/mul-reference-source-20261123
   workflow_dispatch:
 
 permissions:
@@ -38,7 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/reference-tro
-          for offset in 0; do
+          for offset in $(seq 0 20 80); do
             python3 tools/run_tro_batch.py \
               --index docs/graphics/tro-reference-art-index.json \
               --poses res://docs/graphics/reference-stance-poses.json \
