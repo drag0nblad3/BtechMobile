@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "scored_at": "2026-11-23",
+  "source": "GitHub Actions pre-sculpt-reference-pair-goals artifact",
+  "sha": "e6e560711b0f3e548368471f5cbac3b693c5ee90",
+  "score_definition": "0.7 normalized mask IoU + 0.3 boundary-F1 tolerance 2 pixels",
+  "mask_method": "coarse manual component outlines traced from original official source illustrations; foreground visual check performed, but camera/pose not registered",
+  "approved_4_view": false,
+  "results": [
+    {
+      "pair": "Conjurer / Dominator",
+      "models": [
+        "hellhound_conjurer",
+        "dominator"
+      ],
+      "reference_pair_similarity": 60.2,
+      "model_pair_similarity": 67.8,
+      "goal_pair_similarity_range": [
+        52.2,
+        68.2
+      ],
+      "model_a_reference_fit": 35.8,
+      "model_b_reference_fit": 32.8,
+      "model_a_identity_margin": 3.2,
+      "model_b_identity_margin": -0.8,
+      "own_fit_step_goal": 5,
+      "min_identification_margin_step_goal": 8,
+      "status": "EXPLORATORY_CONTOURS_UNVERIFIED_CAMERA",
+      "notes": "No frame-by-frame source alignment. Improve each model's own source silhouette and distinctive head/shoulder/gun elements, not just lower pair similarity."
+    },
+    {
+      "pair": "HawkWolf / Black Hawk Standard",
+      "models": [
+        "hawkwolf_hwk4f",
+        "black_hawk_standard"
+      ],
+      "reference_pair_similarity_diagnostic_only": 38.4,
+      "model_pair_similarity_diagnostic_only": 58.1,
+      "goal_pair_similarity_range": null,
+      "model_a_reference_fit_diagnostic_only": 40.9,
+      "model_b_reference_fit_diagnostic_only": 49.4,
+      "status": "INCOMPARABLE_POSE_AND_VIEW",
+      "notes": "Black Hawk Standard 3145Merc image depicts an extreme crouch/lateral aim while the HawkWolf stands upright; no numerical pair sculpt target until stance/camera matched."
+    }
+  ]
+}

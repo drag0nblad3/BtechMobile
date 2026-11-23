@@ -21,6 +21,8 @@ var faces_before_merge := 0  ## Visible voxel faces (2 triangles each without me
 var _pivot := Vector3.ZERO
 var _size := 0.05
 var _colors := PackedColorArray()
+var _paintable: Array[bool] = []  ## Independent of the source's damage role.
+var _paint_material: ShaderMaterial
 
 
 func setup(spec: Dictionary, model: VxModel) -> void:
@@ -32,7 +34,55 @@ func setup(spec: Dictionary, model: VxModel) -> void:
 	_pivot = spec["pivot"]
 	_size = model.voxel_size
 	_colors = model.colors
+	_paintable.resize(model.roles.size())
+	for i in model.roles.size():
+		_paintable[i] = model.roles[i] == "armor"
+	for material_name: String in model._mat:
+		if _is_unpainted(String(material_name)):
+			_paintable[int(model._mat[material_name])] = false
 	material_override = shared_material()
+	_setup_paint_space(model)
+
+
+## Paint coordinates are bound to the articulated part, not the camera.
+## Only the largest torso plates receive insignia; weapon pods stay clear.
+func _setup_paint_space(model: VxModel) -> void:
+	if original.is_empty():
+		return
+	var low := Vector3i(100000, 100000, 100000)
+	var high := Vector3i(-100000, -100000, -100000)
+	for c: Vector3i in original:
+		low = Vector3i(mini(low.x, c.x), mini(low.y, c.y), mini(low.z, c.z))
+		high = Vector3i(maxi(high.x, c.x), maxi(high.y, c.y), maxi(high.z, c.z))
+	set_instance_shader_parameter("paint_origin", _pivot * _size)
+	set_instance_shader_parameter("panel_min", Vector3(low) * _size)
+	var span := Vector3(high - low + Vector3i.ONE) * _size
+	set_instance_shader_parameter("panel_span", span)
+	var largest: Dictionary = {}
+	for candidate: Dictionary in model.parts_at(loc):
+		if largest.is_empty() or candidate["cells"].size() > largest["cells"].size():
+			largest = candidate
+	var badge: bool = loc in [Location.LT, Location.RT] and String(largest.get("name", "")) == part_name
+	badge = badge and span.x > 0.16 and span.y > 0.16
+	set_instance_shader_parameter("badge_enabled", 1.0 if badge else 0.0)
+
+
+## A barrel or cockpit may still be damageable armor in the source recipe;
+## that must not make its gunmetal or glass into camouflaged plating.
+static func _is_unpainted(mat_name: String) -> bool:
+	var key := mat_name.to_lower()
+	for token in ["gun", "barrel", "muzzle", "bore", "port", "glow", "light",
+			"window", "glass", "cockpit", "sensor", "lens", "jet", "vent",
+			"thruster", "exhaust", "grille", "engine", "piston", "joint",
+			"frame", "structure", "dark"]:
+		if key.contains(token):
+			return true
+	return false
+
+
+func set_paint(mat: ShaderMaterial) -> void:
+	_paint_material = mat
+	material_override = mat
 
 
 ## Keeps every original cell except those in `removed`.
@@ -54,7 +104,7 @@ func set_wrecked(on: bool) -> void:
 	if _wreck_material == null:
 		_wreck_material = shared_material().duplicate()
 		_wreck_material.albedo_color = Color(0.32, 0.3, 0.28)
-	material_override = _wreck_material if on else shared_material()
+	material_override = _wreck_material if on else (_paint_material if _paint_material else shared_material())
 
 
 ## Point in this part's local space for a grid coordinate.
@@ -66,7 +116,9 @@ func rebuild() -> void:
 	var faces: Array = [{}, {}, {}, {}, {}, {}]  ## per direction: slice -> {Vector2i: Color}
 	var count := 0
 	for c: Vector3i in cells:
-		var color: Color = _colors[cells[c]]
+		var material_index: int = cells[c]
+		var color: Color = _colors[material_index]
+		var role_alpha := 1.0 if _paintable[material_index] else 0.25
 		if _near_hole(c):
 			color = color.lerp(SCORCH, 0.3)
 		for f in 6:
@@ -74,7 +126,7 @@ func rebuild() -> void:
 			if cells.has(c + d):
 				continue
 			var axis := 0 if d.x != 0 else (1 if d.y != 0 else 2)
-			var shaded := Color(color * SHADE[f], 0.5 if touching.has(c + d) else 1.0)
+			var shaded := Color(color * SHADE[f], role_alpha * (0.5 if touching.has(c + d) else 1.0))
 			var slices: Dictionary = faces[f]
 			if not slices.has(c[axis]):
 				slices[c[axis]] = {}

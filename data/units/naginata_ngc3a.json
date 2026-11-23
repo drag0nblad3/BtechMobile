@@ -1,0 +1,67 @@
+{
+  "id": "naginata_ngc3a",
+  "name": "Naginata",
+  "model": "NG-C3A",
+  "tonnage": 95,
+  "walk_mp": 3,
+  "jump_mp": 0,
+  "heat_sinks": 15,
+  "armor": {
+    "LA": 25,
+    "RA": 25,
+    "LT": 26,
+    "RT": 26,
+    "CT": 35,
+    "HD": 9,
+    "LL": 32,
+    "RL": 32
+  },
+  "rear_armor": {
+    "LT": 8,
+    "RT": 8,
+    "CT": 14
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink*2",
+      "er_ppc"
+    ],
+    "RA": [
+      "heat_sink",
+      "lrm15+artemis"
+    ],
+    "LT": [
+      "case",
+      "c3_master",
+      "ammo:lrm15",
+      "ammo:lrm15",
+      "lrm15+artemis"
+    ],
+    "RT": [
+      "heat_sink",
+      "case",
+      "ammo:lrm15",
+      "ammo:lrm15",
+      "ammo:lrm15",
+      "ammo:lrm15",
+      "lrm15+artemis"
+    ]
+  },
+  "bv": 1954,
+  "sprite": "naginata",
+  "role": "Missile Boat: Naginata NG-C3A carrying ER PPC, LRM 15, LRM 15, LRM 15; walks 3, jumps 0.",
+  "source": {
+    "mul_id": 2252,
+    "megamek": "data/mekfiles/meks/3055U/Naginata NG-C3A.mtf",
+    "published": "RS:3055Uu",
+    "role": "Missile Boat",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/naginata-ng-c3a"
+  },
+  "heat_sink_type": "double",
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ]
+  }
+}
