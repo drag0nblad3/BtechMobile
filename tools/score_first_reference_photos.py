@@ -40,9 +40,15 @@ def fetch_photo(url):
 
 
 def remove_noise(pixels, w, h):
+    """Keep the photographed miniature, not scattered watermark/background ink.
+
+    The largest connected foreground component is usually the sculpt and its
+    attached display base. Any detached weapon or antenna becomes a potential
+    mask-review omission and must not be silently claimed as fully verified.
+    """
     occupied = set(pixels)
     seen = set()
-    cleaned = set()
+    largest = []
     for start in occupied:
         if start in seen:
             continue
@@ -57,9 +63,9 @@ def remove_noise(pixels, w, h):
                 if near in occupied and near not in seen:
                     seen.add(near)
                     queue.append(near)
-        if len(component) >= 8:
-            cleaned.update(component)
-    return cleaned
+        if len(component) > len(largest):
+            largest = component
+    return set(largest), round(len(largest) / len(occupied), 4) if occupied else 0.0
 
 
 def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0,
@@ -83,14 +89,14 @@ def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0,
     if exclude_logo_bottom_right:
         occupied = {(x, y) for x, y in occupied
                     if not (x >= 0.78 * w and y >= 0.78 * h)}
-    occupied = remove_noise(occupied, w, h)
+    occupied, subject_share = remove_noise(occupied, w, h)
     if not (0.008 <= len(occupied) / (w * h) <= 0.7):
         raise ValueError("Subject segmentation fraction is implausible")
     out = Image.new("RGB", (w, h), "white")
     outpix = out.load()
     for x, y in occupied:
         outpix[x, y] = (0, 0, 0)
-    return out, len(occupied) / (w * h)
+    return out, len(occupied) / (w * h), subject_share
 
 
 def main():
@@ -116,7 +122,7 @@ def main():
                "source_type": entry["source_type"], "score_0_100": None}
         try:
             photo = fetch_photo(entry["image_url"])
-            mask, share = prepare_mask(
+            mask, share, primary_share = prepare_mask(
                 photo, entry["white_background_threshold"],
                 entry["crop_bottom_fraction"],
                 entry.get("exclude_dark_base_below"),
@@ -125,6 +131,11 @@ def main():
             out_file.parent.mkdir(parents=True, exist_ok=True)
             mask.save(out_file)
             row["foreground_fraction"] = round(share, 3)
+            row["source_primary_component_fraction"] = primary_share
+            if primary_share < 0.95:
+                row["segmentation_review"] = "MANY_DETACHED_REGIONS_NEED_MANUAL_REVIEW"
+            else:
+                row["segmentation_review"] = "PRIMARY_COMPONENT_ONLY_UNVERIFIED"
             model_file = locate(args.models, model, view)
             if model_file is None:
                 raise ValueError("No pose-matched model silhouette exported")
