@@ -23,10 +23,17 @@ func observe(e: GameEvent, state: GameState, player_side: int) -> Array[String]:
 func restore(frames: Array, state: GameState, player_side: int) -> void:
 	for frame: Dictionary in frames:
 		for fact: Dictionary in frame.get("events", []):
+			var kind := String(fact.get("event", ""))
+			var relevant := false
+			for goal: Dictionary in goals:
+				if String(goal.get("event", "")) == kind:
+					relevant = true
+					break
+			if not relevant:
+				continue
 			var data: Variant = BattleCodec.unpack(fact.get("data", {}), null, null)
 			if data is Dictionary:
-				_record(String(fact.get("event", "")), data, state, player_side,
-						int(fact.get("turn", 0)))
+				_record(kind, data, state, player_side, int(fact.get("turn", 0)))
 
 
 func _record(kind: String, data: Dictionary, state: GameState,
@@ -65,6 +72,11 @@ static func _matches(goal: Dictionary, kind: String, data: Dictionary,
 			return false
 		var wanted := player_side if goal["side"] == "player" else 1 - player_side
 		if unit.side != wanted:
+			return false
+	if goal.has("source_side"):
+		var source := state.unit_by_id(int(data.get("source_id", -1)))
+		var source_wanted := player_side if goal["source_side"] == "player" else 1 - player_side
+		if source == null or source.side != source_wanted:
 			return false
 	if goal.has("hit") and (not data.has("hit") or bool(data["hit"]) != bool(goal["hit"])):
 		return false
