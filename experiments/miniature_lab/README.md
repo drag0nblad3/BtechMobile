@@ -364,3 +364,66 @@ camera location measured on set, and full foot/ankle/arm pose. Camera
 distances were inferred from rough landmarks and are only relative to the
 model scale. Calibrated or better-lit image sets are required before setting
 acceptance thresholds. No merged source art or production pipeline changed.
+
+## Jenner v11 — five successive camera/stance-matched sculpting passes
+
+The new `make_jenner_v11.py` source reproducibly starts from the independent
+v10 JSON, never from any model on `main`. It performs five distinct geometry
+passes. The exported v11 sculpt remains in `jenner_assembly_v11.json`,
+with detailed per-pass results in `jenner_v11_pass_scores.json`.
+
+- **01 · Torso:** remove excess rear hull depth while preserving 30 owner
+  parts, all head/hip pivots, and the front launcher. This alone is a minor
+  silhouette tradeoff rather than a guaranteed likeness gain.
+- **02 · Cockpit:** extend, flatten and re-profile the distinctive forward
+  Jenner disc with individually retained, paint-only glass panes.
+- **03 · Shoulders and pods:** give the shoulder plating directional slopes
+  and a less generic faceted profile on both weapon housings.
+- **04 · Knees:** refine front/rear thigh and shin contours but leave
+  contact endpoints and the photographed stance solver unchanged.
+- **05 · Dorsal sensor:** add a short, 24-vertex, physically connected
+  sensor dish/cap visible in the current Catalyst plastic sculpt.
+
+### Measured but still low-confidence changes
+
+One registration is fitted against the control v8 Jenner using a shared
+2021 sculpt photo set, then **frozen across the entire v10/v11 sweep**.
+The comparison includes camera yaw, elevation, roll, effective distance,
+crop translation and per-leg pose. Do not independently align each v11
+shape to maximize a silhouette score.
+
+| Experimental source pass | Voxels | Frozen-view IoU | Landmark RMSE | Geometry faults |
+|---|---:|---:|---:|---:|
+| v10 control | 15,234 | 0.7182 | 0.02308 | 0 |
+| 01 Torso | 14,786 | 0.7177 | 0.02300 | 0 |
+| 02 Cockpit | 14,784 | 0.7185 | 0.02258 | 0 |
+| 03 Shoulder/pods | 14,919 | 0.7183 | 0.02247 | 0 |
+| 04 Knees | 14,965 | 0.7186 | 0.02247 | 0 |
+| 05 Sensor dish / v11 | **14,977** | **0.7211** | **0.02183** | **0** |
+
+These numbers are **not** measured plastic-miniature accuracy. Three out
+of four reference photos have a usable provisional registration; the
+rear-right photo is explicitly **unscored**, not counted as a zero. The
+original camera lens/FOV and photo mask accuracy are unknown. Multiple
+alternatives were rejected because of structural overlaps/disconnected
+child parts or poorer view fits; see the earlier baseline pass results.
+This is a small but directionally useful improvement, not a definitive
+art replacement.
+
+Validation: all five intermediate assemblies and final 30-part sculpt
+passed the non-bridging occupancy/attachment audit. Their 29 attachment
+interfaces still require backed 2×2 structural contacts and directionally
+valid joint normals. The **seven new targeted v11 tests passed locally**
+using a repository-equivalent control source. A previous full local lab
+suite passed 53 tests; a separate current full CI confirmation is needed
+before promoting v11. An isolated, actual-geometry four-view render and
+v10/v11 comparison are available in the conversation.
+
+Reproduce from the repository root:
+
+    python experiments/miniature_lab/make_jenner_v11.py
+    python -m unittest discover -s experiments/miniature_lab -p 'test_jenner_v11.py' -v
+    python experiments/miniature_lab/photo_registration.py --calibration-model experiments/miniature_lab/jenner_assembly_v8.json --compare experiments/miniature_lab/jenner_assembly_v10.json experiments/miniature_lab/jenner_assembly_v11.json --masks experiments/miniature_lab/jenner_photo_annotations.json --landmarks experiments/miniature_lab/jenner_photo_landmarks.json
+
+**No production `data/voxels/` or `src/` changes; no merge, Android APK
+build, or in-engine Godot smoke test in this pass.**
