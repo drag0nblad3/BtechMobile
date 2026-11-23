@@ -20,7 +20,7 @@ func test_melee_weapon_is_an_independent_supported_rig_component() -> void:
 				"%s: shaft must have a backed 2x2 grip contact" % id)
 
 
-func test_hatchets_have_broad_blades_and_narrow_hafts() -> void:
+func test_hatchets_have_broad_cutting_bits_and_narrow_hafts() -> void:
 	for id: String in IDS:
 		var d: Dictionary = _recipe(id)
 		var meta: Dictionary = d.get("melee_weapon", {})
@@ -28,23 +28,41 @@ func test_hatchets_have_broad_blades_and_narrow_hafts() -> void:
 		var p := VxModel.from_dict(d).part("ra_hatchet")
 		if p.is_empty():
 			continue
-		var cells: Dictionary = p["cells"]
-		var bottom := 100000
-		var top := -100000
-		for cell: Vector3i in cells:
-			bottom = mini(bottom, cell.y)
-			top = maxi(top, cell.y)
-		var haft: Dictionary = {}
-		var head: Dictionary = {}
-		for cell: Vector3i in cells:
-			if cell.y <= bottom + (top - bottom) / 3.0:
-				haft[cell.x] = true
-			if cell.y >= top - (top - bottom) / 3.0:
-				head[cell.x] = true
-		check(head.size() > haft.size() * 2,
-				"%s: hatchet blade must be much wider than haft" % id)
-		check(head.size() >= 7, "%s: head must survive small game-camera scale" % id)
-
+		var rows: Dictionary = {}
+		for cell: Vector3i in p["cells"]:
+			if not rows.has(cell.y):
+				rows[cell.y] = {}
+			rows[cell.y][cell.x] = true
+		var keys: Array = rows.keys()
+		keys.sort()
+		var low: int = keys[0]
+		var high: int = keys.back()
+		var shaft_width := 10000
+		var blade_width := 0
+		for y: int in keys:
+			var width: int = rows[y].size()
+			if float(y) <= float(low) + (high - low) * 0.30:
+				shaft_width = mini(shaft_width, width)
+			if float(y) >= float(low) + (high - low) * 0.50:
+				blade_width = maxi(blade_width, width)
+		check(blade_width >= shaft_width + 4,
+				"%s: upper cutting bit must exceed narrow haft" % id)
+		var blade_profiles := 0
+		for part: Dictionary in d.get("parts", []):
+			if part.get("name", "") != "ra_hatchet":
+				continue
+			for form: Dictionary in part.get("shapes", []):
+				if form.has("loft") and form.get("mat", "") == "plate":
+					var points: Array = form["loft"]["sections"][0]["polygon"]
+					var bottom := INF
+					var top := -INF
+					for uv: Array in points:
+						bottom = minf(bottom, float(uv[1]))
+						top = maxf(top, float(uv[1]))
+					if top - bottom >= 9.0:
+						blade_profiles += 1
+		check(blade_profiles > 0,
+				"%s: blade should flare vertically, not become a hammer" % id)
 
 func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
 	for id: String in IDS:
