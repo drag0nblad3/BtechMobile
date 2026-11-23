@@ -2102,7 +2102,7 @@
             "axis": "z",
             "sections": [
               {
-                "at": -15,
+                "at": -10,
                 "polygon": [
                   [
                     5.69,
@@ -2139,7 +2139,7 @@
                 ]
               },
               {
-                "at": -13,
+                "at": -9,
                 "polygon": [
                   [
                     5.38,
@@ -3052,7 +3052,7 @@
             "axis": "z",
             "sections": [
               {
-                "at": -15,
+                "at": -10,
                 "polygon": [
                   [
                     -15.35,
@@ -3089,7 +3089,7 @@
                 ]
               },
               {
-                "at": -13,
+                "at": -9,
                 "polygon": [
                   [
                     -15.68,
@@ -3251,125 +3251,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -24,
-                "polygon": [
-                  [
-                    -17.7,
-                    20.16
-                  ],
-                  [
-                    -12.3,
-                    20.16
-                  ],
-                  [
-                    -11.25,
-                    21.389
-                  ],
-                  [
-                    -11.25,
-                    26.611
-                  ],
-                  [
-                    -12.3,
-                    27.84
-                  ],
-                  [
-                    -17.7,
-                    27.84
-                  ],
-                  [
-                    -18.75,
-                    26.611
-                  ],
-                  [
-                    -18.75,
-                    21.389
-                  ]
-                ]
-              },
-              {
-                "at": -22,
-                "polygon": [
-                  [
-                    -17.765,
-                    20.25
-                  ],
-                  [
-                    -12.235,
-                    20.25
-                  ],
-                  [
-                    -11.16,
-                    21.45
-                  ],
-                  [
-                    -11.16,
-                    26.55
-                  ],
-                  [
-                    -12.235,
-                    27.75
-                  ],
-                  [
-                    -17.765,
-                    27.75
-                  ],
-                  [
-                    -18.84,
-                    26.55
-                  ],
-                  [
-                    -18.84,
-                    21.45
-                  ]
-                ]
-              },
-              {
-                "at": -12,
-                "polygon": [
-                  [
-                    -17.376,
-                    20.7
-                  ],
-                  [
-                    -12.624,
-                    20.7
-                  ],
-                  [
-                    -11.7,
-                    21.756
-                  ],
-                  [
-                    -11.7,
-                    26.244
-                  ],
-                  [
-                    -12.624,
-                    27.3
-                  ],
-                  [
-                    -17.376,
-                    27.3
-                  ],
-                  [
-                    -18.3,
-                    26.244
-                  ],
-                  [
-                    -18.3,
-                    21.756
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "plate"
         }
       ],
       "parent": "lt",
@@ -4561,6 +4442,125 @@
       ],
       "shapes": [
         {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -24,
+                "polygon": [
+                  [
+                    -17.7,
+                    20.16
+                  ],
+                  [
+                    -12.3,
+                    20.16
+                  ],
+                  [
+                    -11.25,
+                    21.389
+                  ],
+                  [
+                    -11.25,
+                    26.611
+                  ],
+                  [
+                    -12.3,
+                    27.84
+                  ],
+                  [
+                    -17.7,
+                    27.84
+                  ],
+                  [
+                    -18.75,
+                    26.611
+                  ],
+                  [
+                    -18.75,
+                    21.389
+                  ]
+                ]
+              },
+              {
+                "at": -22,
+                "polygon": [
+                  [
+                    -17.765,
+                    20.25
+                  ],
+                  [
+                    -12.235,
+                    20.25
+                  ],
+                  [
+                    -11.16,
+                    21.45
+                  ],
+                  [
+                    -11.16,
+                    26.55
+                  ],
+                  [
+                    -12.235,
+                    27.75
+                  ],
+                  [
+                    -17.765,
+                    27.75
+                  ],
+                  [
+                    -18.84,
+                    26.55
+                  ],
+                  [
+                    -18.84,
+                    21.45
+                  ]
+                ]
+              },
+              {
+                "at": -12,
+                "polygon": [
+                  [
+                    -17.376,
+                    20.7
+                  ],
+                  [
+                    -12.624,
+                    20.7
+                  ],
+                  [
+                    -11.7,
+                    21.756
+                  ],
+                  [
+                    -11.7,
+                    26.244
+                  ],
+                  [
+                    -12.624,
+                    27.3
+                  ],
+                  [
+                    -17.376,
+                    27.3
+                  ],
+                  [
+                    -18.3,
+                    26.244
+                  ],
+                  [
+                    -18.3,
+                    21.756
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "plate"
+        },
+        {
           "box": [
             [
               -17,
@@ -4570,7 +4570,7 @@
             [
               -11,
               30,
-              -18
+              -22
             ]
           ],
           "mat": "plate"
@@ -4585,7 +4585,7 @@
             [
               -11,
               26,
-              -9
+              -11
             ]
           ],
           "mat": "frame"
@@ -5780,5 +5780,5 @@
     "reference_basis": "Catalyst contemporary miniature forms",
     "review_status": "awaiting Godot and rendered multi-angle review"
   },
-  "notes": " Rebuild both visually distinctive 15-tube LRM pods: physical 3x5 barrel mouths, intact mounting members, and narrow head/torso separation rather than a generic shoulder mass."
+  "notes": " Rebuild both visually distinctive 15-tube LRM pods: physical 3x5 barrel mouths, intact mounting members, and narrow head/torso separation rather than a generic shoulder mass. Follow-up topology correction: old LRM frontal loft transfers out of the parent arm to the detachable launcher, the aft cannon socket stops at a face-connected seam, and the new mask is only a thin face plate."
 }
