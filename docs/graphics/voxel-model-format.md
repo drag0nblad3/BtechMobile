@@ -188,3 +188,37 @@ part counts, every damage location and official launcher-opening counts.
 Status: authored baseline **not rendered or reference-scored**. A proper
 multi-angle render/contact audit, configuration-specific muzzle placement
 inspection, and performance review remain required for acceptance.
+
+## Faction paint and insignia
+
+The force builder's **faction** picker is also the paint selector, even when
+historical availability restrictions are off. The selected faction for each
+side is remembered as a view-only preference in `user://settings.cfg`.
+Battle states, record-sheet unit JSON and the voxel geometry source are not
+changed by selecting a paint scheme.
+
+`data/graphics/faction_liveries.json` defines the primary/secondary armor
+colors, stripe/camouflage pattern, contrasting ink, and a simple **stylized**
+field emblem. These markings are artistic shorthand, **not official faction
+heraldry or canonical parade schemes**. Major factions have named presets;
+unlisted factions use a repeatable fallback palette. Aliases give successor
+factions a consistent family resemblance.
+
+`VxMesher` stores the source recipe's armor/structure role as an extra vertex
+attribute in UV2. `VxLivery` applies the faction colors only to armor in a
+shared mobile-friendly spatial shader. Weapons, gun bores, joints, structure,
+and the damage-removal order keep their source material and shape. Emblems are
+masked onto existing front-facing torso armor, never separate floating planes.
+The shader follows the articulated part through walks, falls, and limb drops;
+damaged armor removes the corresponding paint automatically. Each team has a
+small red/blue identification stripe so opponents choosing the same faction
+are still distinguishable.
+
+The fallback geometric `PlaceholderMech` also uses the selected palette;
+authored 2D sprite artwork is not repainted. Shader materials are reused
+between units on the same team, and the base voxel meshes remain shared in
+`VxRenderCache` instead of regenerating per paint color.
+
+Tests: `godot --headless -s tests/run_tests.gd -- vx_livery`, full suite and
+the battle/UI smoke tests. Inspect torso markings at phone resolution with the
+normal visual capture tools; no Android build unless requested.
