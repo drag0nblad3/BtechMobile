@@ -19,19 +19,34 @@ def center(cells, axis=None, extreme=None):
     return tuple(sum(p[i] for p in pts) / len(pts) for i in range(3))
 
 
+def owned_assembly(spec, parts, root):
+    """Recombine material-transfer subassemblies for observational landmarks."""
+    claims = {p["name"]: p.get("claim_from") for p in spec["parts"]}
+    names = {root}
+    found = True
+    while found:
+        found = False
+        for name, source in claims.items():
+            if source in names and name not in names:
+                names.add(name)
+                found = True
+    return {cell: material
+            for name in names for cell, material in parts[name].items()}
+
+
 def anchors(spec, parts):
     pitch = spec["pitch"]
     names = {p["name"]: p for p in spec["parts"]}
-    out = {"dorsal": center(parts["ct"], 1, "max"),
-           "nose": center(parts["hd"], 2, "min"),
-           "left_pod": center(parts["la"], 0, "min"),
-           "right_pod": center(parts["ra"], 0, "max"),
-           "waist": center(parts["ct"], 1, "min")}
+    out = {"dorsal": center(owned_assembly(spec, parts, "ct"), 1, "max"),
+           "nose": center(owned_assembly(spec, parts, "hd"), 2, "min"),
+           "left_pod": center(owned_assembly(spec, parts, "la"), 0, "min"),
+           "right_pod": center(owned_assembly(spec, parts, "ra"), 0, "max"),
+           "waist": center(owned_assembly(spec, parts, "ct"), 1, "min")}
     for s in ("l", "r"):
         for name, part_name in (("hip", s + "l"), ("knee", s + "l_shin"),
                                 ("ankle", s + "l_foot")):
             out[s + "_" + name] = tuple(v / pitch for v in names[part_name]["pivot"])
-        out[s + "_foot"] = center(parts[s + "l_foot"], 1, "min")
+        out[s + "_foot"] = center(owned_assembly(spec, parts, s + "l_foot"), 1, "min")
     return out
 
 
