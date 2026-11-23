@@ -1,0 +1,240 @@
+{
+  "reference_url": "https://jadedfalconer.com/Pictures/1Light/35jenner/Jenner6.jpg",
+  "sculpt": "Catalyst Game Labs Jenner CAT35729 plastic; same 4-photo collage",
+  "confidence": "COARSE manual inspection of web preview; hand-picked pixel landmarks with uncertain +/- 5 to 15 px; do not treat as ground-truth silhouette overlap",
+  "image_size": [
+    750,
+    1000
+  ],
+  "views": [
+    {
+      "name": "front_left_3quarter",
+      "crop": [
+        107,
+        173,
+        170,
+        220
+      ],
+      "yaw_candidates": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70
+      ],
+      "elevation_candidates": [
+        0,
+        10,
+        20,
+        30,
+        40
+      ],
+      "landmarks_px": {
+        "dorsal": [
+          197,
+          183
+        ],
+        "nose": [
+          160,
+          282
+        ],
+        "left_pod": [
+          125,
+          226
+        ],
+        "right_pod": [
+          268,
+          236
+        ],
+        "waist": [
+          189,
+          307
+        ],
+        "l_knee": [
+          157,
+          339
+        ],
+        "r_knee": [
+          223,
+          337
+        ],
+        "l_ankle": [
+          158,
+          364
+        ],
+        "r_ankle": [
+          238,
+          356
+        ],
+        "l_foot": [
+          163,
+          380
+        ],
+        "r_foot": [
+          247,
+          377
+        ]
+      }
+    },
+    {
+      "name": "front_right_3quarter",
+      "crop": [
+        480,
+        172,
+        180,
+        220
+      ],
+      "yaw_candidates": [
+        -70,
+        -65,
+        -60,
+        -55,
+        -50,
+        -45,
+        -40,
+        -35,
+        -30,
+        -25,
+        -20,
+        -15,
+        -10,
+        -5,
+        0
+      ],
+      "elevation_candidates": [
+        0,
+        10,
+        20,
+        30,
+        40
+      ],
+      "landmarks_px": {
+        "dorsal": [
+          561,
+          183
+        ],
+        "nose": [
+          608,
+          283
+        ],
+        "left_pod": [
+          491,
+          229
+        ],
+        "right_pod": [
+          638,
+          231
+        ],
+        "waist": [
+          574,
+          310
+        ],
+        "l_knee": [
+          535,
+          341
+        ],
+        "r_knee": [
+          608,
+          347
+        ],
+        "l_ankle": [
+          537,
+          362
+        ],
+        "r_ankle": [
+          609,
+          363
+        ],
+        "l_foot": [
+          529,
+          383
+        ],
+        "r_foot": [
+          617,
+          380
+        ]
+      }
+    },
+    {
+      "name": "rear_left_3quarter",
+      "crop": [
+        110,
+        674,
+        167,
+        206
+      ],
+      "yaw_candidates": [
+        130,
+        140,
+        150,
+        160,
+        170,
+        180,
+        190,
+        200,
+        210,
+        220,
+        230
+      ],
+      "elevation_candidates": [
+        0,
+        10,
+        20,
+        30,
+        40
+      ],
+      "landmarks_px": {
+        "dorsal": [
+          188,
+          684
+        ],
+        "left_pod": [
+          261,
+          734
+        ],
+        "right_pod": [
+          123,
+          734
+        ],
+        "waist": [
+          188,
+          788
+        ],
+        "l_knee": [
+          230,
+          828
+        ],
+        "r_knee": [
+          161,
+          821
+        ],
+        "l_ankle": [
+          227,
+          858
+        ],
+        "r_ankle": [
+          161,
+          857
+        ],
+        "l_foot": [
+          230,
+          870
+        ],
+        "r_foot": [
+          159,
+          877
+        ]
+      }
+    }
+  ]
+}
