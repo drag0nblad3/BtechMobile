@@ -108,7 +108,11 @@ func test_training_practice_counts_only_real_player_actions() -> void:
 	p.observe(GameEvent.new(GameEvent.UNIT_MOVED, {"unit_id": own, "hexes": 0}), s, 0)
 	check_eq(p.completed_count(), 0, "enemy and zero-length moves do not count")
 	p.observe(GameEvent.new(GameEvent.UNIT_MOVED, {"unit_id": own, "hexes": 3}), s, 0)
-	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": own}), s, 0)
+	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": own, "shots": []}), s, 0)
+	check_eq(p.completed_count(), 1, "holding fire is not an attack")
+	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": own, "shots": [{"weapon": 0}]}), s, 0)
+	p.observe(GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": own, "no_ammo": true}), s, 0)
+	check_eq(p.completed_count(), 2, "an empty ammunition bin is not practice fire")
 	p.observe(GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": own, "need": 7, "hit": false}), s, 0)
 	check_eq(p.completed_count(), 3, "practice rewards taking a shot, even if it misses")
 	check(p.summary().contains("3 of 3"), "practice summary includes completed checks")
@@ -120,10 +124,10 @@ func test_practice_tracks_distinct_units_and_heat_control() -> void:
 	var p := TrainingPractice.from_mission(c.missions[3])
 	var own := s.units[0].id
 	var wingman := s.units[1].id
-	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": own}), s, 0)
+	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": own, "shots": [{"weapon": 0}]}), s, 0)
 	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": own}), s, 0)
 	check_eq(p.completed_count(), 0, "one unit cannot satisfy two-unit goal")
-	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": wingman}), s, 0)
+	p.observe(GameEvent.new(GameEvent.FIRE_DECLARED, {"unit_id": wingman, "shots": [{"weapon": 0}]}), s, 0)
 	check_eq(p.completed_count(), 1, "both friendlies declared")
 	var heat := TrainingPractice.from_mission(c.missions[2])
 	var warm := ScenarioLoader.load_file(c.scenario_path(2), terrain(), designs())
@@ -173,3 +177,21 @@ func test_training_retry_keeps_best_result_and_old_records() -> void:
 	check_eq(after_win["wins"], 2)
 	check_eq(after_win["practice"], 2, "best practice not reduced by retries")
 	check_eq(after_win["kills"], 3, "best kills can improve")
+
+
+
+func test_damage_practice_requires_player_source_and_real_hit() -> void:
+	var c := TrainingCampaign.load_file()
+	var s := ScenarioLoader.load_file(c.scenario_path(3), terrain(), designs())
+	var p := TrainingPractice.from_mission(c.missions[3])
+	var own := s.units[0].id
+	var enemy := s.units[2].id
+	p.observe(GameEvent.new(GameEvent.DAMAGE, {
+			"unit_id": enemy, "source_id": enemy, "amount": 6}), s, 0)
+	check_eq(p.completed_count(), 0, "enemy self-damage is not player practice")
+	p.observe(GameEvent.new(GameEvent.DAMAGE, {
+			"unit_id": enemy, "source_id": own, "amount": 6, "covered": true}), s, 0)
+	check_eq(p.completed_count(), 0, "covered hits do not count as actual damage")
+	p.observe(GameEvent.new(GameEvent.DAMAGE, {
+			"unit_id": enemy, "source_id": own, "amount": 6, "covered": false}), s, 0)
+	check_eq(p.completed_count(), 1, "player damage to enemy completes check")
