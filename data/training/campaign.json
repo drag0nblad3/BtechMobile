@@ -1,36 +1,186 @@
 {
   "name": "Cadet Training",
-  "intro": "You are a new cadet with Kestrel's Lance, a small mercenary company. Over six training engagements your instructor, Sergeant Vey, puts you through the rules of 'Mech combat one layer at a time: the essentials first, the finer points once those feel natural. Each battle opens the same way to set up its lessons, then plays out however you and the computer fight it.",
+  "intro": "Join Kestrel's Lance for six short lessons, starting with movement and weapon attacks and ending with full-lance tactics. Each battle is real BattleTech combat, with optional practice checks that reward using what you learn. Losses still unlock the next lesson, and you can retry any mission to improve your record.",
   "missions": [
-    {"id": "first_steps", "title": "1. First Steps", "scenario": "tutorial",
-     "teaches": "Initiative, moving, shooting, damage",
-     "briefing": "Your first time at the controls of the company's Wolverine. A training Commando waits at the far end of the valley. Learn to move, aim and shoot.",
-     "debrief_win": "Sergeant Vey: \"Not bad for a first run. You moved, you shot, you lived. Next time the target won't stand in the open.\"",
-     "debrief_loss": "Sergeant Vey: \"Everybody loses their first one. Watch where the hits landed on the Sheet and try again, or move on and learn from the next lesson.\""},
-    {"id": "woods", "title": "2. Shadows in the Trees", "scenario": "training_woods",
-     "teaches": "To-hit modifiers: range, movement, woods, line of sight",
-     "briefing": "A fast Jenner raider is hiding in the forest. Before you can catch it you need to understand why some shots are easy and others nearly impossible.",
-     "debrief_win": "Sergeant Vey: \"You read the numbers before you pulled the trigger. That's the whole game, cadet.\"",
-     "debrief_loss": "Sergeant Vey: \"Fast 'Mechs in woods are a nightmare. Get close, stay out of its rear arc and make it come to you.\""},
-    {"id": "heat", "title": "3. Running Hot", "scenario": "training_heat",
-     "teaches": "Heat scale, heat sinks, shutdown, high ground",
-     "briefing": "Your Wolverine is in for repairs, so you borrow the company's Warhammer. Its two PPCs hit hard and run hot. Keep it under control against a Griffin and a Wasp.",
-     "debrief_win": "Sergeant Vey: \"You fired when it counted and cooled off when it didn't. That's how you keep a Warhammer alive.\"",
-     "debrief_loss": "Sergeant Vey: \"A hot 'Mech is slow, inaccurate and one bad roll from blowing its own ammo. Next time, count the heat before you fire.\""},
-    {"id": "arcs", "title": "4. Watch Your Back", "scenario": "training_arcs",
-     "teaches": "Lances, firing arcs, torso twists, rear armor, critical hits",
-     "briefing": "Your Wolverine is back and you get a wingman: Corporal Daan in a Hunchback. Two fast enemies will try to get behind you.",
-     "debrief_win": "Sergeant Vey: \"Two 'Mechs working together beat two working alone. And you kept your backs covered.\"",
-     "debrief_loss": "Sergeant Vey: \"Rear armor is paper. Keep the light 'Mechs in your front arc and finish them while they're close.\""},
-    {"id": "melee", "title": "5. Knife Fight", "scenario": "training_melee",
-     "teaches": "Punches, kicks, hatchets, charges, falling, buildings",
-     "briefing": "Urban training. You take the Hatchetman, Daan brings your old Wolverine. The enemy starts close, so expect fists, feet and a hatchet.",
-     "debrief_win": "Sergeant Vey: \"You kept your footing and made every swing count. Close quarters belongs to you now.\"",
-     "debrief_loss": "Sergeant Vey: \"A missed kick lands you on your back. Pick the attack whose to-hit and risk you can live with.\""},
-    {"id": "lance", "title": "6. Final Exam", "scenario": "training_lance",
-     "teaches": "Everything together: a full lance, water, jumping",
-     "briefing": "Your full lance against a full enemy lance at the river crossing. No new tricks: use everything you've learned. Consider setting explanations to Light.",
-     "debrief_win": "Sergeant Vey: \"Welcome to Kestrel's Lance, MechWarrior. Build your own forces from the start screen any time.\"",
-     "debrief_loss": "Sergeant Vey: \"Close one. You know the rules now; the rest is practice. Replay any lesson or build your own battle from the start screen.\""}
+    {
+      "id": "first_steps",
+      "title": "1. First Steps",
+      "scenario": "tutorial",
+      "teaches": "Initiative, moving, shooting, damage",
+      "briefing": "Your first time at the controls of the company's Wolverine. A training Commando waits at the far end of the valley. Learn to move, aim and shoot.",
+      "debrief_win": "Sergeant Vey: \"Not bad for a first run. You moved, you shot, you lived. Next time the target won't stand in the open.\"",
+      "debrief_loss": "Sergeant Vey: \"Everybody loses their first one. Watch where the hits landed on the Sheet and try again, or move on and learn from the next lesson.\"",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Move your Wolverine at least one hex",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "declare",
+          "title": "Declare a weapon attack",
+          "event": "fire_declared",
+          "side": "player"
+        },
+        {
+          "id": "fire",
+          "title": "Resolve a weapon shot",
+          "event": "weapon_fired",
+          "side": "player"
+        }
+      ]
+    },
+    {
+      "id": "woods",
+      "title": "2. Shadows in the Trees",
+      "scenario": "training_woods",
+      "teaches": "To-hit modifiers: range, movement, woods, line of sight",
+      "briefing": "A fast Jenner raider is hiding in the forest. Before you can catch it you need to understand why some shots are easy and others nearly impossible.",
+      "debrief_win": "Sergeant Vey: \"You read the numbers before you pulled the trigger. That's the whole game, cadet.\"",
+      "debrief_loss": "Sergeant Vey: \"Fast 'Mechs in woods are a nightmare. Get close, stay out of its rear arc and make it come to you.\"",
+      "practice": [
+        {
+          "id": "reposition",
+          "title": "Reposition at least three hexes",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 3
+        },
+        {
+          "id": "favorable_shot",
+          "title": "Find a shot needing 8 or less",
+          "event": "weapon_fired",
+          "side": "player",
+          "max_need": 8
+        },
+        {
+          "id": "hit",
+          "title": "Land a weapon hit",
+          "event": "weapon_fired",
+          "side": "player",
+          "hit": true
+        }
+      ]
+    },
+    {
+      "id": "heat",
+      "title": "3. Running Hot",
+      "scenario": "training_heat",
+      "teaches": "Heat scale, heat sinks, shutdown, high ground",
+      "briefing": "Your Wolverine is in for repairs, so you borrow the company's Warhammer. Its two PPCs hit hard and run hot. Keep it under control against a Griffin and a Wasp.",
+      "debrief_win": "Sergeant Vey: \"You fired when it counted and cooled off when it didn't. That's how you keep a Warhammer alive.\"",
+      "debrief_loss": "Sergeant Vey: \"A hot 'Mech is slow, inaccurate and one bad roll from blowing its own ammo. Next time, count the heat before you fire.\"",
+      "practice": [
+        {
+          "id": "fire",
+          "title": "Fire a weapon from the Warhammer",
+          "event": "weapon_fired",
+          "side": "player"
+        },
+        {
+          "id": "cool",
+          "title": "Finish a later turn at 7 heat or less",
+          "event": "heat",
+          "side": "player",
+          "max_heat": 7,
+          "min_turn": 2
+        }
+      ]
+    },
+    {
+      "id": "arcs",
+      "title": "4. Watch Your Back",
+      "scenario": "training_arcs",
+      "teaches": "Lances, firing arcs, torso twists, rear armor, critical hits",
+      "briefing": "Your Wolverine is back and you get a wingman: Corporal Daan in a Hunchback. Two fast enemies will try to get behind you.",
+      "debrief_win": "Sergeant Vey: \"Two 'Mechs working together beat two working alone. And you kept your backs covered.\"",
+      "debrief_loss": "Sergeant Vey: \"Rear armor is paper. Keep the light 'Mechs in your front arc and finish them while they're close.\"",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Reposition a friendly 'Mech",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "team_fire",
+          "title": "Declare shots from both friendly 'Mechs",
+          "event": "fire_declared",
+          "side": "player",
+          "distinct_units": 2
+        },
+        {
+          "id": "damage",
+          "title": "Damage an enemy 'Mech",
+          "event": "damage",
+          "side": "enemy"
+        }
+      ]
+    },
+    {
+      "id": "melee",
+      "title": "5. Knife Fight",
+      "scenario": "training_melee",
+      "teaches": "Punches, kicks, hatchets, charges, falling, buildings",
+      "briefing": "Urban training. You take the Hatchetman, Daan brings your old Wolverine. The enemy starts close, so expect fists, feet and a hatchet.",
+      "debrief_win": "Sergeant Vey: \"You kept your footing and made every swing count. Close quarters belongs to you now.\"",
+      "debrief_loss": "Sergeant Vey: \"A missed kick lands you on your back. Pick the attack whose to-hit and risk you can live with.\"",
+      "practice": [
+        {
+          "id": "approach",
+          "title": "Move toward the close-quarters fight",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "physical",
+          "title": "Attempt a physical attack",
+          "event": "physical",
+          "side": "player"
+        },
+        {
+          "id": "hit",
+          "title": "Land a physical attack",
+          "event": "physical",
+          "side": "player",
+          "hit": true
+        }
+      ]
+    },
+    {
+      "id": "lance",
+      "title": "6. Final Exam",
+      "scenario": "training_lance",
+      "teaches": "Everything together: a full lance, water, jumping",
+      "briefing": "Your full lance against a full enemy lance at the river crossing. No new tricks: use everything you've learned. Consider setting explanations to Light.",
+      "debrief_win": "Sergeant Vey: \"Welcome to Kestrel's Lance, MechWarrior. Build your own forces from the start screen any time.\"",
+      "debrief_loss": "Sergeant Vey: \"Close one. You know the rules now; the rest is practice. Replay any lesson or build your own battle from the start screen.\"",
+      "practice": [
+        {
+          "id": "maneuver",
+          "title": "Move at least two friendly 'Mechs",
+          "event": "unit_moved",
+          "side": "player",
+          "distinct_units": 2
+        },
+        {
+          "id": "team_fire",
+          "title": "Declare shots from three friendly 'Mechs",
+          "event": "fire_declared",
+          "side": "player",
+          "distinct_units": 3
+        },
+        {
+          "id": "destroy",
+          "title": "Destroy an opposing unit",
+          "event": "unit_destroyed",
+          "side": "enemy"
+        }
+      ]
+    }
   ]
 }
