@@ -8,6 +8,8 @@ on:
       - 'tools/score_reference_silhouettes.py'
       - 'tools/score_first_reference_photos.py'
       - 'tools/preview_reference_mask_pairs.py'
+      - 'tools/discover_reference_photos.py'
+      - 'tests/tools/test_discover_reference_photos.py'
       - 'docs/graphics/first-reference-*.json'
       - 'docs/graphics/reference-stance-poses.json'
       - 'tests/unit/test_reference_*.gd'
@@ -39,6 +41,13 @@ jobs:
           godot --headless -s tests/run_tests.gd -- reference_camera | tee /tmp/camera-tests.log
           godot --headless -s tests/run_tests.gd -- reference_stance_rig | tee /tmp/stance-tests.log
           python3 -m unittest discover -s tests/tools -p 'test_score_reference_silhouettes.py'
+          python3 -m unittest discover -s tests/tools -p 'test_discover_reference_photos.py'
+      - name: Discover additional documented Catalyst plastic references
+        run: |
+          mkdir -p /tmp/reference-qa
+          python3 tools/discover_reference_photos.py \
+            --scorecard docs/graphics/all-model-reference-silhouette-scorecard.csv \
+            --output /tmp/reference-qa/discovered-plastic-photos.json
       - name: Export two candidate pose-and-camera silhouette sets
         run: |
           set -o pipefail
