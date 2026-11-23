@@ -6,6 +6,7 @@ from pathlib import Path
 
 import miniature_lab as vox
 import reference_fit as fit
+import photo_fit as silhouette_fit
 
 ROOT = Path(__file__).resolve().parent
 
@@ -15,9 +16,11 @@ class ReferenceFitTests(unittest.TestCase):
     def setUpClass(cls):
         cls.early = json.loads((ROOT / "jenner_assembly.json").read_text())
         cls.latest = json.loads((ROOT / "jenner_assembly_v4.json").read_text())
+        cls.combined = json.loads((ROOT / "jenner_assembly_combined.json").read_text())
         cls.ann = json.loads((ROOT / "jenner_photo_landmarks.json").read_text())
         cls.base_parts = vox.rasterize(cls.early)
         cls.latest_parts = vox.rasterize(cls.latest)
+        cls.combined_parts = vox.rasterize(cls.combined)
 
     def test_source_is_same_plastic_sculpt_and_no_photos_committed(self):
         self.assertIn("Jenner6.jpg", self.ann["reference_url"])
@@ -30,7 +33,8 @@ class ReferenceFitTests(unittest.TestCase):
 
     def test_revisions_are_complete_and_physically_connected(self):
         for spec, parts in ((self.early, self.base_parts),
-                            (self.latest, self.latest_parts)):
+                            (self.latest, self.latest_parts),
+                            (self.combined, self.combined_parts)):
             self.assertFalse(vox.audit(spec, parts))
             self.assertEqual({p["loc"] for p in spec["parts"]},
                              {"HD", "CT", "LT", "RT", "LA", "RA", "LL", "RL"})
@@ -50,6 +54,18 @@ class ReferenceFitTests(unittest.TestCase):
         self.assertLess(after["mean_rigid_rmse"], before["mean_rigid_rmse"])
         # This only checks these provisional hand-picked landmarks; it is
         # NOT a quantitative claim of improved miniature silhouette accuracy.
+
+    def test_combined_sculpt_improves_two_independent_coarse_reference_proxies(self):
+        landmarks = fit.score(self.combined, self.combined_parts, self.ann)
+        base_landmarks = fit.score(self.early, self.base_parts, self.ann)
+        self.assertLess(landmarks["mean_rigid_rmse"],
+                        base_landmarks["mean_rigid_rmse"])
+        silhouettes = json.loads((ROOT / "jenner_photo_annotations.json").read_text())
+        initial = silhouette_fit.fit(self.early, self.base_parts, silhouettes, 58)
+        combined = silhouette_fit.fit(self.combined, self.combined_parts,
+                                      silhouettes, 58)
+        self.assertGreater(combined["mean_iou"], initial["mean_iou"] + .01)
+        # Not a ground-truth quality target; both inputs are hand-approximated.
 
     def test_real_gun_boress_and_exported_muzzles_are_consistent(self):
         out = vox.export(self.latest, self.latest_parts)
