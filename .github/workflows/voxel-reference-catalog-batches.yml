@@ -1,13 +1,16 @@
 name: Cataloged plastic photo silhouette batches
 
 on:
+  push:
+    branches:
+      - audit/photo-pose-lens-sweep-20261123
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: photo-batch-${{ github.ref }}
+  group: photo-batch-stage2-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
