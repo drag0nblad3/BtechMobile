@@ -1989,6 +1989,21 @@
               -21
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              7,
+              29,
+              -13
+            ],
+            [
+              9,
+              32,
+              -7
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -3178,5 +3193,5 @@
     "edited_vertices": 50,
     "stages_with_changes": 10
   },
-  "notes": " Hatchet blade is a separate durable right-arm tool on an actual backed haft, not a second stray arm; right dorsal AC-10 receives an open longitudinal bore."
+  "notes": " Hatchet blade is a separate durable right-arm tool on an actual backed haft, not a second stray arm; right dorsal AC-10 receives an open longitudinal bore. Ownership QA: independent Spider optic banks and backed Hatchetman/Wolfhound sockets eliminate unconnected regions without growing shoulders."
 }
