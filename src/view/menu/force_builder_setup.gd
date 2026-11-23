@@ -13,6 +13,7 @@ var _era: OptionButton
 var _year: SpinBox
 var _policy: OptionButton
 var _factions: Array[OptionButton] = []
+var _paint_swatches: Array[ColorRect] = []
 var _mission_button: Button
 var _players: Array[Button] = []
 var _advanced: VBoxContainer
@@ -95,6 +96,12 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 			picker_for_faction.add_item(String(faction["name"]))
 		faction_row.add_child(picker_for_faction)
 		_factions.append(picker_for_faction)
+		for color_index in 2:
+			var swatch := ColorRect.new()
+			swatch.custom_minimum_size = Vector2(21, 32)
+			swatch.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			faction_row.add_child(swatch)
+			_paint_swatches.append(swatch)
 		picker_for_faction.item_selected.connect(func(index: int):
 			builder.factions[idx] = String(EraAvailability.FACTIONS[index]["id"])
 			GameSettings.set_paint_faction(idx, builder.factions[idx])
@@ -184,6 +191,9 @@ func refresh() -> void:
 	_year.set_value_no_signal(builder.era_year)
 	_policy.select(builder.availability_mode)
 	for side in 2:
+		var paint := VxLivery.scheme(builder.factions[side])
+		_paint_swatches[side * 2].color = Color(String(paint["primary"]))
+		_paint_swatches[side * 2 + 1].color = Color(String(paint["secondary"]))
 		for i in EraAvailability.FACTIONS.size():
 			if EraAvailability.FACTIONS[i]["id"] == builder.factions[side]:
 				_factions[side].select(i)
