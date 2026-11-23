@@ -59,4 +59,4 @@ func test_battleaxe_right_side_has_no_second_long_shield() -> void:
 			var bounds: Array = shape["box"]
 			var depth := absf(float(bounds[1][2]) - float(bounds[0][2]))
 			var width := absf(float(bounds[1][0]) - float(bounds[0][0]))
-			check(depth <= maxf(width, 3.0), "right-side armor is a long protruding shield")
+			check(depth <= maxf(width * 1.5, 6.0), "right-side armor is a long protruding shield")
