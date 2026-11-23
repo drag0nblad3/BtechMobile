@@ -99,6 +99,15 @@ def main():
         reader = csv.DictReader(file)
         columns, entries = list(reader.fieldnames or []), list(reader)
     for row in entries:
+        stance = row.get("stance_review_status", "")
+        if stance and stance not in ("VERIFIED_RIG_MATCH", "NOT_APPLICABLE_STATIC"):
+            for view in VIEWS:
+                row[view + "_0_100"] = ""
+            row["overall_0_100"] = ""
+            row["status"] = "AWAITING_RIG_STANCE_MATCH"
+            continue
+        if stance == "VERIFIED_RIG_MATCH" and not row.get("stance_profile", "").strip():
+            raise ValueError(f"{row['model']}: verified pose needs a recorded stance_profile")
         scores = {}
         for view in VIEWS:
             key = view + "_0_100"
