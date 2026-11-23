@@ -1,0 +1,71 @@
+{
+  "id": "huron_warrior_hurwor4l",
+  "name": "Huron Warrior",
+  "model": "HUR-WO-R4L",
+  "tonnage": 50,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 11,
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 17,
+    "RT": 17,
+    "CT": 22,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 9
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel",
+      "er_large_laser"
+    ],
+    "RA": [
+      "endo_steel",
+      "gauss_rifle"
+    ],
+    "LT": [
+      "endo_steel*3",
+      "heat_sink",
+      "medium_pulse_laser"
+    ],
+    "RT": [
+      "endo_steel*3",
+      "ammo:gauss_rifle",
+      "ammo:gauss_rifle"
+    ],
+    "CT": [
+      "endo_steel*2"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "bv": 1530,
+  "sprite": "huron_warrior",
+  "role": "Skirmisher: Huron Warrior HUR-WO-R4L carrying ER Large Laser, Gauss Rifle, Medium Pulse Laser; walks 5, jumps 0.",
+  "source": {
+    "mul_id": 1580,
+    "megamek": "data/mekfiles/meks/3055U/Huron Warrior HUR-WO-R4L.mtf",
+    "published": "RS:CI",
+    "role": "Skirmisher",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/huron-warrior-hur-wo-r4l"
+  },
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ]
+  }
+}

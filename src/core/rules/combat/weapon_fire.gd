@@ -72,7 +72,10 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if not hit:
 		if w.def.streak:  # no lock: it doesn't launch (p. 187)
 			attacker.heat_generated -= w.def.heat
-			attacker.refund_ammo(w.def, kind)
+			if w.def.one_shot:
+				w.spent = false  # an OS Streak launcher keeps its shot without a lock
+			else:
+				attacker.refund_ammo(w.def, kind)
 			data["streak_held"] = true
 		emit.call(GameEvent.WEAPON_FIRED, data)
 		return
