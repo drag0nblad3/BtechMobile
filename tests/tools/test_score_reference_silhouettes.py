@@ -106,7 +106,9 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
                        "quarter_0_100", "top_0_100", "overall_0_100",
                        "stance_profile", "stance_front_review",
                        "stance_side_review", "stance_quarter_review",
-                       "stance_top_review"]
+                       "stance_top_review", "camera_front_review",
+                       "camera_side_review", "camera_quarter_review",
+                       "camera_top_review", "camera_profile"]
             scorecard = root / "scorecard.csv"
             with scorecard.open("w", newline="", encoding="utf-8") as output:
                 writer = csv.DictWriter(output, fieldnames=headers)
@@ -116,7 +118,12 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
                                  "stance_front_review": "VERIFIED_RIG_MATCH",
                                  "stance_side_review": "UNVERIFIED_POSE",
                                  "stance_quarter_review": "UNVERIFIED_POSE",
-                                 "stance_top_review": "UNVERIFIED_POSE"})
+                                 "stance_top_review": "UNVERIFIED_POSE",
+                                 "camera_front_review": "VERIFIED_CAMERA_MATCH",
+                                 "camera_side_review": "UNVERIFIED_CAMERA",
+                                 "camera_quarter_review": "UNVERIFIED_CAMERA",
+                                 "camera_top_review": "UNVERIFIED_CAMERA",
+                                 "camera_profile": "reference-stance-poses.json"})
             scored = root / "scored.csv"
             run = subprocess.run([sys.executable,
                                   str(ROOT / "tools/score_reference_silhouettes.py"),
@@ -132,6 +139,41 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
             self.assertEqual(row["side_0_100"], "")
             self.assertEqual(row["overall_0_100"], "")
             self.assertIn("OTHER_POSES_UNVERIFIED", row["status"])
+
+    def test_unmatched_camera_blocks_approved_stance(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            for folder in ("renders", "references"):
+                (root / folder / "atlas").mkdir(parents=True)
+                (root / folder / "atlas" / "front.txt").write_text(
+                    "##\\n##\\n", encoding="utf-8")
+            source = root / "source.csv"
+            fields = ["model", "status", "front_0_100", "side_0_100",
+                      "quarter_0_100", "top_0_100", "overall_0_100",
+                      "stance_front_review", "stance_profile",
+                      "camera_front_review", "camera_profile"]
+            with source.open("w", encoding="utf-8", newline="") as handle:
+                writer = csv.DictWriter(handle, fieldnames=fields)
+                writer.writeheader()
+                writer.writerow({"model": "atlas",
+                    "stance_front_review": "VERIFIED_RIG_MATCH",
+                    "stance_profile": "pose.json",
+                    "camera_front_review": "UNVERIFIED_CAMERA",
+                    "camera_profile": "pose.json"})
+            output = root / "output.csv"
+            command = [sys.executable,
+                       str(ROOT / "tools/score_reference_silhouettes.py"),
+                       "--scorecard", str(source),
+                       "--renders", str(root / "renders"),
+                       "--references", str(root / "references"),
+                       "--output", str(output)]
+            run = subprocess.run(command, capture_output=True, text=True)
+            self.assertEqual(run.returncode, 0, run.stderr)
+            with output.open(encoding="utf-8", newline="") as handle:
+                row = next(csv.DictReader(handle))
+            self.assertEqual(row["front_0_100"], "")
+            self.assertEqual(row["status"], "AWAITING_RIG_STANCE_MATCH")
+
 
 
 if __name__ == "__main__":
