@@ -124,7 +124,9 @@ func test_missile_bores_and_muzzles_follow_actual_record_sheets() -> void:
 		for suffix: String in ["_shape", ""]:
 			var raw := _data(chassis, suffix)
 			var mounts: Variant = raw.get("muzzles", {}).get(spec["loc"], [])
-			var count := mounts.size() if mounts is Array and 					not mounts.is_empty() and mounts[0] is Array else 1
+			var count: int = 1
+			if mounts is Array and not mounts.is_empty() and mounts[0] is Array:
+				count = mounts.size()
 			check_eq(count, int(spec["amount"]),
 					"%s%s/%s visible tubes must match record sheet" % [
 						chassis, suffix, spec["loc"]])
