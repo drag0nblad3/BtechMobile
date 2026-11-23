@@ -1,0 +1,35 @@
+name: Official Master Unit List art discovery
+
+on:
+  push:
+    branches:
+      - audit/mul-reference-source-20261123
+    paths:
+      - 'tools/discover_mul_art.py'
+      - 'tests/tools/test_discover_mul_art.py'
+      - '.github/workflows/voxel-mul-art-discovery.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  official-reference-search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate exact model and official URL matching
+        run: python3 -m unittest discover -s tests/tools -p 'test_discover_mul_art.py'
+      - name: Discover official current Master Unit List art for unmatched recipes
+        run: |
+          python3 tools/discover_mul_art.py \
+            --unmatched docs/graphics/tro-reference-art-index.json \
+            --output /tmp/official-mul-discovered.json --limit 100
+      - name: Upload provenance-linked official source index
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-mul-art-candidates
+          path: /tmp/official-mul-discovered.json
+          if-no-files-found: warn
