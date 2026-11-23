@@ -1,11 +1,5 @@
 name: Discover missing reference art and test silhouettes
 on:
-  pull_request:
-    paths:
-      - 'docs/graphics/missing-model-reference-leads-20261123.json'
-      - 'tools/resolve_missing_reference_gallery.py'
-      - 'tests/tools/test_resolve_missing_reference_gallery.py'
-      - '.github/workflows/voxel-missing-references.yml'
   workflow_dispatch:
 permissions:
   contents: read
