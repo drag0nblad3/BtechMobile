@@ -4659,21 +4659,6 @@
         {
           "box": [
             [
-              7,
-              23,
-              -10
-            ],
-            [
-              11,
-              26,
-              -6
-            ]
-          ],
-          "mat": "plate"
-        },
-        {
-          "box": [
-            [
               8,
               26,
               2
@@ -4770,6 +4755,21 @@
         -7
       ],
       "shapes": [
+        {
+          "box": [
+            [
+              7,
+              23,
+              -10
+            ],
+            [
+              11,
+              26,
+              -6
+            ]
+          ],
+          "mat": "plate"
+        },
         {
           "box": [
             [
@@ -7309,5 +7309,5 @@
     "edited_vertices": 40,
     "stages_with_changes": 5
   },
-  "notes": " Reduced Raven dorsal hull depth, added raised left ECM antenna module, physical RT SRM-6 bores, distinct double RA laser emitters; asymmetric NarC-bearing left arm retained."
+  "notes": " Reduced Raven dorsal hull depth, added raised left ECM antenna module, physical RT SRM-6 bores, distinct double RA laser emitters; asymmetric NarC-bearing left arm retained. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells."
 }
