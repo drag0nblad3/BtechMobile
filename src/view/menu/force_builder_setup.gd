@@ -13,6 +13,7 @@ var _era: OptionButton
 var _year: SpinBox
 var _policy: OptionButton
 var _factions: Array[OptionButton] = []
+var _paint_swatches: Array[ColorRect] = []
 var _mission_button: Button
 var _players: Array[Button] = []
 var _advanced: VBoxContainer
@@ -47,7 +48,7 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	var history := VBoxContainer.new()
 	history.add_theme_constant_override("separation", 8)
 	box.add_child(history)
-	UiSkin.label(UiKit.label(history, "HISTORICAL AVAILABILITY", 18), "section")
+	UiSkin.label(UiKit.label(history, "FACTIONS, PAINT & AVAILABILITY", 18), "section")
 	var era_row := HBoxContainer.new()
 	history.add_child(era_row)
 	_era = OptionButton.new()
@@ -88,14 +89,22 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		UiSkin.label(faction_label, "section")
 		var picker_for_faction := OptionButton.new()
 		picker_for_faction.custom_minimum_size.y = 50
+		picker_for_faction.tooltip_text = "Also paints this side's voxel 'Mechs and adds a stylized armor insignia. Historical restrictions are optional."
 		picker_for_faction.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		picker_for_faction.add_theme_font_size_override("font_size", 17)
 		for faction: Dictionary in EraAvailability.FACTIONS:
 			picker_for_faction.add_item(String(faction["name"]))
 		faction_row.add_child(picker_for_faction)
 		_factions.append(picker_for_faction)
+		for color_index in 2:
+			var swatch := ColorRect.new()
+			swatch.custom_minimum_size = Vector2(21, 32)
+			swatch.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			faction_row.add_child(swatch)
+			_paint_swatches.append(swatch)
 		picker_for_faction.item_selected.connect(func(index: int):
 			builder.factions[idx] = String(EraAvailability.FACTIONS[index]["id"])
+			GameSettings.set_paint_faction(idx, builder.factions[idx])
 			_changed.call())
 	map_picker.build(box, changed)
 	_budget_button = UiKit.button(box, "", _next_budget, Vector2(0, 52))
@@ -182,6 +191,9 @@ func refresh() -> void:
 	_year.set_value_no_signal(builder.era_year)
 	_policy.select(builder.availability_mode)
 	for side in 2:
+		var paint := VxLivery.scheme(builder.factions[side])
+		_paint_swatches[side * 2].color = Color(String(paint["primary"]))
+		_paint_swatches[side * 2 + 1].color = Color(String(paint["secondary"]))
 		for i in EraAvailability.FACTIONS.size():
 			if EraAvailability.FACTIONS[i]["id"] == builder.factions[side]:
 				_factions[side].select(i)
