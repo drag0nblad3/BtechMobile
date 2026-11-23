@@ -91,5 +91,48 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
             self.assertEqual(rejected["status"], "AWAITING_RIG_STANCE_MATCH")
 
 
+    def test_per_angle_stance_review_prevents_wrong_pose_scoring(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            for d in ("renders", "references"):
+                (root / d / "atlas").mkdir(parents=True)
+            sample = "\\n".join("".join("#" if (x, y) in self.shape else "."
+                                     for x in range(25)) for y in range(25)) + "\\n"
+            for view in ("front", "side"):
+                for folder in ("renders", "references"):
+                    (root / folder / "atlas" / (view + ".txt")).write_text(
+                        sample, encoding="utf-8")
+            headers = ["model", "status", "front_0_100", "side_0_100",
+                       "quarter_0_100", "top_0_100", "overall_0_100",
+                       "stance_profile", "stance_front_review",
+                       "stance_side_review", "stance_quarter_review",
+                       "stance_top_review"]
+            scorecard = root / "scorecard.csv"
+            with scorecard.open("w", newline="", encoding="utf-8") as output:
+                writer = csv.DictWriter(output, fieldnames=headers)
+                writer.writeheader()
+                writer.writerow({"model": "atlas",
+                                 "stance_profile": "reference-stance-poses.json",
+                                 "stance_front_review": "VERIFIED_RIG_MATCH",
+                                 "stance_side_review": "UNVERIFIED_POSE",
+                                 "stance_quarter_review": "UNVERIFIED_POSE",
+                                 "stance_top_review": "UNVERIFIED_POSE"})
+            scored = root / "scored.csv"
+            run = subprocess.run([sys.executable,
+                                  str(ROOT / "tools/score_reference_silhouettes.py"),
+                                  "--scorecard", str(scorecard),
+                                  "--renders", str(root / "renders"),
+                                  "--references", str(root / "references"),
+                                  "--output", str(scored)],
+                                 capture_output=True, text=True)
+            self.assertEqual(run.returncode, 0, run.stderr)
+            with scored.open(newline="", encoding="utf-8") as file:
+                row = next(csv.DictReader(file))
+            self.assertEqual(row["front_0_100"], "100.0")
+            self.assertEqual(row["side_0_100"], "")
+            self.assertEqual(row["overall_0_100"], "")
+            self.assertIn("OTHER_POSES_UNVERIFIED", row["status"])
+
+
 if __name__ == "__main__":
     unittest.main()
