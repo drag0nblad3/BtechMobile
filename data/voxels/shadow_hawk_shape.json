@@ -1,6 +1,6 @@
 {
   "id": "shadow_hawk_shape",
-  "name": "Shadow Hawk SHD-2H \u2014 silhouette study",
+  "name": "Shadow Hawk SHD-2H — silhouette study",
   "unit": "shadow_hawk_shd2h",
   "voxel_size": 0.043,
   "subdivide": 1,
@@ -822,6 +822,115 @@
       "name": "rt",
       "mirror": "lt",
       "parent": "ct"
+    },
+    {
+      "name": "lt_jet_vane",
+      "loc": "LT",
+      "parent": "lt",
+      "pivot": [
+        -10,
+        38,
+        4
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 37,
+                "polygon": [
+                  [
+                    -11.2,
+                    5.4
+                  ],
+                  [
+                    -8.8,
+                    5.4
+                  ],
+                  [
+                    -8.8,
+                    7.6
+                  ],
+                  [
+                    -11.2,
+                    7.6
+                  ]
+                ]
+              },
+              {
+                "at": 41,
+                "polygon": [
+                  [
+                    -10.9,
+                    5.3
+                  ],
+                  [
+                    -9,
+                    5.3
+                  ],
+                  [
+                    -9,
+                    7.2
+                  ],
+                  [
+                    -10.9,
+                    7.2
+                  ]
+                ]
+              },
+              {
+                "at": 44,
+                "polygon": [
+                  [
+                    -10.6,
+                    5.4
+                  ],
+                  [
+                    -9.3,
+                    5.4
+                  ],
+                  [
+                    -9.3,
+                    6.8
+                  ],
+                  [
+                    -10.6,
+                    6.8
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -12,
+              36,
+              5
+            ],
+            [
+              -9,
+              39,
+              6
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
+    },
+    {
+      "name": "rt_jet_vane",
+      "mirror": "lt_jet_vane",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        9,
+        38,
+        4
+      ]
     },
     {
       "name": "lt_cannon",
