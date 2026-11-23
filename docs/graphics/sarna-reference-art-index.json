@@ -1,0 +1,1479 @@
+{
+  "schema_version": 1,
+  "requested": 93,
+  "matches": 30,
+  "unmatched": [
+    {
+      "model": "blade",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Blade"
+    },
+    {
+      "model": "daedalus",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Daedalus"
+    },
+    {
+      "model": "dragoon",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Dragoon"
+    },
+    {
+      "model": "eisenfaust",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Eisenfaust"
+    },
+    {
+      "model": "hatamoto_hi",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hatamoto-Hi"
+    },
+    {
+      "model": "hatamoto_kaze",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hatamoto-Kaze"
+    },
+    {
+      "model": "hatamoto_ku",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hatamoto-Ku"
+    },
+    {
+      "model": "hatamoto_mizo",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hatamoto-Mizo"
+    },
+    {
+      "model": "hel",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hel"
+    },
+    {
+      "model": "hermes_iii",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hermes_III"
+    },
+    {
+      "model": "juggernaut",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Juggernaut"
+    },
+    {
+      "model": "nova_t",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Nova_T"
+    },
+    {
+      "model": "onslaught",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Onslaught"
+    },
+    {
+      "model": "phoenix",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Phoenix"
+    },
+    {
+      "model": "rattlesnake",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Rattlesnake"
+    },
+    {
+      "model": "rattlesnake_ii",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Rattlesnake_Ii"
+    },
+    {
+      "model": "rook",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Rook"
+    },
+    {
+      "model": "rook_nh1b",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Rook"
+    },
+    {
+      "model": "suburbanmech",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Suburbanmech"
+    },
+    {
+      "model": "talos",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Talos"
+    },
+    {
+      "model": "tiburon",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Tiburon"
+    },
+    {
+      "model": "titan",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Titan"
+    },
+    {
+      "model": "tsunami",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Tsunami"
+    },
+    {
+      "model": "von_rohrs_hebi",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Von_Rohrs_(Hebi)"
+    },
+    {
+      "model": "warlord",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Warlord"
+    },
+    {
+      "model": "werewolf",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Werewolf"
+    },
+    {
+      "model": "archetype/artillery_carrier",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/attack_vtol",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/battle_armor_elementals",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/field_emplacement",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/hover_scout",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/hover_tank",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/infantry_jump",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/infantry_motorized",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/infantry_rifles",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/lrm_carrier",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/missile_emplacement",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/savior_repair_vehicle",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/tracked_tank",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/transport_vtol",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/wheeled_apc",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "archetype/wheeled_supply_truck",
+      "reason": "Generic visual archetype has no unique canonical sculpt"
+    },
+    {
+      "model": "vehicle/behemoth_heavy_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Behemoth_Heavy_Tank"
+    },
+    {
+      "model": "vehicle/condor_heavy_hover_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Condor_Heavy_Hover_Tank"
+    },
+    {
+      "model": "vehicle/demolisher_heavy_tank_clan",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Demolisher_Heavy_Tank"
+    },
+    {
+      "model": "vehicle/demolisher_heavy_tank_mk_i",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Demolisher_Heavy_Tank"
+    },
+    {
+      "model": "vehicle/drillson_heavy_hover_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Drillson_Heavy_Hover_Tank"
+    },
+    {
+      "model": "vehicle/galleon_light_tank_gal_100",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Galleon_Light_Tank"
+    },
+    {
+      "model": "vehicle/hetzer_wheeled_assault_gun",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Hetzer_Wheeled_Assault_Gun"
+    },
+    {
+      "model": "vehicle/j_edgar_light_hover_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/J_Edgar_Light_Hover_Tank"
+    },
+    {
+      "model": "vehicle/lrm_carrier",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Lrm_Carrier"
+    },
+    {
+      "model": "vehicle/manticore_heavy_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Manticore_Heavy_Tank"
+    },
+    {
+      "model": "vehicle/patton_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Patton_Tank"
+    },
+    {
+      "model": "vehicle/pike_support_vehicle",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Pike_Support_Vehicle"
+    },
+    {
+      "model": "vehicle/pike_support_vehicle_clan",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Pike_Support_Vehicle"
+    },
+    {
+      "model": "vehicle/schrek_ppc_carrier",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Schrek_Ppc_Carrier"
+    },
+    {
+      "model": "vehicle/skulker_wheeled_scout_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Skulker_Wheeled_Scout_Tank"
+    },
+    {
+      "model": "vehicle/srm_carrier",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Srm_Carrier"
+    },
+    {
+      "model": "vehicle/vedette_medium_tank",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Vedette_Medium_Tank"
+    },
+    {
+      "model": "vehicle/von_luckner_heavy_tank_vnl_k65n",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Von_Luckner_Heavy_Tank"
+    },
+    {
+      "model": "battle_armor/is_standard_ba_flamer",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Standard_Battle_Armor"
+    },
+    {
+      "model": "battle_armor/is_standard_ba_laser",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Standard_Battle_Armor"
+    },
+    {
+      "model": "battle_armor/is_standard_ba_mg",
+      "reason": "No page with verified matching infobox illustration",
+      "tried": "https://www.sarna.net/wiki/Standard_Battle_Armor"
+    }
+  ],
+  "candidates": [
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/4/46/Alfar.jpg/300px-iy0getbks3snltdygk4mcczbs5e0dio.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Alfar.jpg",
+      "filename": "Alfar.jpg",
+      "title": "Álfar",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "alfar",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Alfar",
+      "reference_name": "Alfar",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/0/09/Bombard.JPG/300px-m8l2bq84p5h86pdymldi9vnsi6bd8qi.png",
+      "file_link": "https://www.sarna.net/wiki/File:Bombard.JPG",
+      "filename": "Bombard.JPG",
+      "title": "Bombard",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "bombard",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Bombard",
+      "reference_name": "Bombard",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/a/a5/Ebon_Jaguar_RGilClan_v16.png/300px-9zsksw1dpq0z3ye9mhsi5z8pgy7l9fs.png",
+      "file_link": "https://www.sarna.net/wiki/File:Ebon_Jaguar_RGilClan_v16.png",
+      "filename": "Ebon_Jaguar_RGilClan_v16.png",
+      "title": "Ebon Jaguar (Cauldron-Born)",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "ebon_jaguar",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Ebon_Jaguar",
+      "reference_name": "Ebon_Jaguar",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/d/de/Exhumer.jpg/300px-rbagvtsn3plzytvvwu7crvd8p95n8sy.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Exhumer.jpg",
+      "filename": "Exhumer.jpg",
+      "title": "Exhumer",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "exhumer",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Exhumer",
+      "reference_name": "Exhumer",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/7/78/Flashfire.JPG/300px-2zuaxr7uyrj7h2mvq86e85t892xn1g1.png",
+      "file_link": "https://www.sarna.net/wiki/File:Flashfire.JPG",
+      "filename": "Flashfire.JPG",
+      "title": "Flashfire",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "flashfire",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Flashfire",
+      "reference_name": "Flashfire",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/8/88/Glass_Spider_RGilClan_v13.png/300px-k1kt7i04i1qeya6wh499cmnp3nr4dqj.png",
+      "file_link": "https://www.sarna.net/wiki/File:Glass_Spider_RGilClan_v13.png",
+      "filename": "Glass_Spider_RGilClan_v13.png",
+      "title": "Glass Spider (Galahad)",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "glass_spider",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Glass_Spider",
+      "reference_name": "Glass_Spider",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/b/bf/Gravedigger.jpg/300px-p2dmlkcwzawbzhsjhytb96w4bj4ah39.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Gravedigger.jpg",
+      "filename": "Gravedigger.jpg",
+      "title": "Gravedigger",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "gravedigger",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Gravedigger",
+      "reference_name": "Gravedigger",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/7/73/Hammerhands.jpg/300px-s7169vs4h07dohvjm5jepr940wynlm3.png",
+      "file_link": "https://www.sarna.net/wiki/File:Hammerhands.jpg",
+      "filename": "Hammerhands.jpg",
+      "title": "Hammerhands",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "hammerhands",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hammerhands",
+      "reference_name": "Hammerhands",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/7/7e/Hermit_Crab_RGilClan_v10.png/300px-i7fgtql7v2es2lryht0i7pode72xym6.png",
+      "file_link": "https://www.sarna.net/wiki/File:Hermit_Crab_RGilClan_v10.png",
+      "filename": "Hermit_Crab_RGilClan_v10.png",
+      "title": "Hermit Crab",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "hermit_crab",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hermit_Crab",
+      "reference_name": "Hermit_Crab",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/0/02/HD2F_Hound.png/300px-pwg8jeaxi9nxd84conbvzo8aqaybvz4.png",
+      "file_link": "https://www.sarna.net/wiki/File:HD2F_Hound.png",
+      "filename": "HD2F_Hound.png",
+      "title": "Hound",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "hound",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hound",
+      "reference_name": "Hound",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/f/f3/Jackrabbit.jpg/300px-ji6bwdwvcp32eqsr9ln9ypbt72dvk0n.png",
+      "file_link": "https://www.sarna.net/wiki/File:Jackrabbit.jpg",
+      "filename": "Jackrabbit.jpg",
+      "title": "Jackrabbit",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "jackrabbit",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Jackrabbit",
+      "reference_name": "Jackrabbit",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/f/f0/JagerMechIII.jpg/300px-1935dfo4jpcr4f7tg8fbb2d4iep55fg.png",
+      "file_link": "https://www.sarna.net/wiki/File:JagerMechIII.jpg",
+      "filename": "JagerMechIII.jpg",
+      "title": "JagerMech III",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "jagermech_iii",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/JagerMech_III",
+      "reference_name": "JagerMech_III",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/b/b6/Koschei.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Koschei.jpg",
+      "filename": "Koschei.jpg",
+      "title": "Koschei",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "koschei",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Koschei",
+      "reference_name": "Koschei",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/3/31/Koto.jpg/300px-m56o9np422roovzs7h8hipl0g8wcjv3.png",
+      "file_link": "https://www.sarna.net/wiki/File:Koto.jpg",
+      "filename": "Koto.jpg",
+      "title": "Koto",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "koto",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Koto",
+      "reference_name": "Koto",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/4/4c/Orochi.jpg/300px-6s87lm2moj9xfezf05zxn543t9juijl.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Orochi.jpg",
+      "filename": "Orochi.jpg",
+      "title": "Orochi",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "orochi",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Orochi",
+      "reference_name": "Orochi",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/f/f4/Rampage.jpg/300px-ea0j6x5p3nj8n4bc1wceojuiugusrku.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Rampage.jpg",
+      "filename": "Rampage.jpg",
+      "title": "Rampage",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "rampage",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rampage",
+      "reference_name": "Rampage",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/a/a6/Spider_RGilClan_v19.png/300px-mo6pu9i750il11zfkcosnf16mx179kh.png",
+      "file_link": "https://www.sarna.net/wiki/File:Spider_RGilClan_v19.png",
+      "filename": "Spider_RGilClan_v19.png",
+      "title": "Spider",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "spider_sdr10k",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Spider",
+      "reference_name": "Spider",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/3/34/Swordsman.JPG/300px-dwyiwuok18hgh75h9vcurl690yoe58k.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Swordsman.JPG",
+      "filename": "Swordsman.JPG",
+      "title": "Swordsman",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "swordsman",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Swordsman",
+      "reference_name": "Swordsman",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/3/39/Toro.jpg/300px-58k7a1zqfqrtcpjho1dmaezf60osmsv.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Toro.jpg",
+      "filename": "Toro.jpg",
+      "title": "Toro",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "toro",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Toro",
+      "reference_name": "Toro",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/2/25/Verfolger.gif/300px-5btfznpexqd5w63klnymmavwlcrtrb1.gif",
+      "file_link": "https://www.sarna.net/wiki/File:Verfolger.gif",
+      "filename": "Verfolger.gif",
+      "title": "Verfolger",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "verfolger",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Verfolger",
+      "reference_name": "Verfolger",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/1/14/Victor_RGilClan_v18.png/300px-5910h7bwiw18z2k1igou96anbghj0dz.png",
+      "file_link": "https://www.sarna.net/wiki/File:Victor_RGilClan_v18.png",
+      "filename": "Victor_RGilClan_v18.png",
+      "title": "Victor",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "victor_vtrcr",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Victor",
+      "reference_name": "Victor",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/0/08/3050_WolfTrap.jpg/300px-q4bnqfepvwquud4h988ujp51jhramgs.png",
+      "file_link": "https://www.sarna.net/wiki/File:3050_WolfTrap.jpg",
+      "filename": "3050_WolfTrap.jpg",
+      "title": "Wolf Trap",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "wolf_trap_tora",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Wolf_Trap",
+      "reference_name": "Wolf_Trap",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/e/e8/Bulldog_RGilClan_v25.jpg/191px-jcni0yym94r9zsolj9hwbcx6m18nu4m.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Bulldog_RGilClan_v25.jpg",
+      "filename": "Bulldog_RGilClan_v25.jpg",
+      "title": "Bulldog Medium Tank",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "vehicle/bulldog_medium_tank",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Bulldog_Medium_Tank",
+      "reference_name": "Bulldog_Medium_Tank",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/f/fb/LRM_Carrier_RGilClan_v30.jpg/191px-bom9de8gyotu558b8z0xz0c0zmrt9on.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:LRM_Carrier_RGilClan_v30.jpg",
+      "filename": "LRM_Carrier_RGilClan_v30.jpg",
+      "title": "LRM Carrier",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "vehicle/lrm_carrier_c",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/LRM_Carrier",
+      "reference_name": "LRM_Carrier",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/c/c6/Pegasus_Shrapnel010.jpg/191px-6kjuq9tbsgvjr0nlmgsdw1oskx5iz2e.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Pegasus_Shrapnel010.jpg",
+      "filename": "Pegasus_Shrapnel010.jpg",
+      "title": "Pegasus Scout Hover Tank",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "vehicle/pegasus_scout_hover_tank",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Pegasus_Scout_Hover_Tank",
+      "reference_name": "Pegasus_Scout_Hover_Tank",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/0/0e/SRM_Carrier_RGilClan_v30.jpg/191px-hkpawaem20jm1t0futwrf55w7bt0m28.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:SRM_Carrier_RGilClan_v30.jpg",
+      "filename": "SRM_Carrier_RGilClan_v30.jpg",
+      "title": "SRM Carrier",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "vehicle/srm_carrier_c",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/SRM_Carrier",
+      "reference_name": "SRM_Carrier",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/9f/Elemental_%28III%29_RGilClan_v24.png/191px-1s49yq0vq1cwqzirs7ex76u6fphqx4q.png",
+      "file_link": "https://www.sarna.net/wiki/File:Elemental_(III)_RGilClan_v24.png",
+      "filename": "Elemental_(III)_RGilClan_v24.png",
+      "title": "Elemental (Battle Armor)",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "battle_armor/elemental_ba_ap_gauss",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Elemental_(Battle_Armor)",
+      "reference_name": "Elemental_(Battle_Armor)",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/9f/Elemental_%28III%29_RGilClan_v24.png/191px-1s49yq0vq1cwqzirs7ex76u6fphqx4q.png",
+      "file_link": "https://www.sarna.net/wiki/File:Elemental_(III)_RGilClan_v24.png",
+      "filename": "Elemental_(III)_RGilClan_v24.png",
+      "title": "Elemental (Battle Armor)",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "battle_armor/elemental_ba_flamer",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Elemental_(Battle_Armor)",
+      "reference_name": "Elemental_(Battle_Armor)",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/9f/Elemental_%28III%29_RGilClan_v24.png/191px-1s49yq0vq1cwqzirs7ex76u6fphqx4q.png",
+      "file_link": "https://www.sarna.net/wiki/File:Elemental_(III)_RGilClan_v24.png",
+      "filename": "Elemental_(III)_RGilClan_v24.png",
+      "title": "Elemental (Battle Armor)",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "battle_armor/elemental_ba_laser",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Elemental_(Battle_Armor)",
+      "reference_name": "Elemental_(Battle_Armor)",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/9f/Elemental_%28III%29_RGilClan_v24.png/191px-1s49yq0vq1cwqzirs7ex76u6fphqx4q.png",
+      "file_link": "https://www.sarna.net/wiki/File:Elemental_(III)_RGilClan_v24.png",
+      "filename": "Elemental_(III)_RGilClan_v24.png",
+      "title": "Elemental (Battle Armor)",
+      "reference_tier": "modern_Recognition_Guide_illustration",
+      "generation_approved": false,
+      "model": "battle_armor/elemental_ba_mg",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Elemental_(Battle_Armor)",
+      "reference_name": "Elemental_(Battle_Armor)",
+      "source_type": "modern_Recognition_Guide_illustration",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    }
+  ],
+  "qualification": "Not verified silhouette angle, pose, or image generation; family images are not exact chassis variants"
+}
