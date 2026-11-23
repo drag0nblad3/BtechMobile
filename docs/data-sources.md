@@ -111,3 +111,20 @@ not silently converted into alternate weapons or combat rules. Distinct
 source-aware voxel models are still needed for all five new chassis; game
 statistics and their source files are committed first.
 
+
+## First 20-source-unit expansion complete (data records)
+
+The first import batch now has **20 playable official variants**:
+Solitaire 3, Mauler MAL-4R, Hatamoto-Chi HTM-30T, all six Vulture Mk IV
+(Mad Dog Mk IV) configurations, Hellhound (Conjurer), Black Hawk
+(Standard), Dominator, HawkWolf HWK-4F, Koshi (Standard), and six
+follow-on variants: Hellhound (Conjurer) 7; Koshi (Standard) 2 and 3;
+Black Hawk (Standard) 2 and 3; Dominator 2.
+
+Each JSON contains the exact MegaMek MTF source path and a published
+Master Unit List BV and link. Variant-specific armor, heat sinks,
+Clan gear, TAG, ECM, probes, MASC, Artemis V and munitions are represented
+by existing combat systems; no unofficial refits are introduced.
+The import doesn't supply original multi-angle geometry or a refreshed
+canonical MUL faction-era availability matrix; these are separate pending
+tasks. A published MUL match is distinct from free-record-sheet BV verification.
