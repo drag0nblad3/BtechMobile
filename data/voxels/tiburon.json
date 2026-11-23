@@ -1603,35 +1603,35 @@
                 "at": 11,
                 "polygon": [
                   [
-                    -4.68573,
+                    -4.26401,
                     2.305
                   ],
                   [
-                    -3.51427,
+                    -3.19799,
                     2.305
                   ],
                   [
-                    -2.97734,
+                    -2.70938,
                     2.855
                   ],
                   [
-                    -2.97734,
+                    -2.70938,
                     7.145
                   ],
                   [
-                    -3.51427,
+                    -3.19799,
                     7.695
                   ],
                   [
-                    -4.68573,
+                    -4.26401,
                     7.695
                   ],
                   [
-                    -5.22266,
+                    -4.75262,
                     7.145
                   ],
                   [
-                    -5.22266,
+                    -4.75262,
                     2.855
                   ]
                 ]
@@ -2109,35 +2109,35 @@
                 "at": 11,
                 "polygon": [
                   [
-                    3.51427,
+                    3.19799,
                     2.305
                   ],
                   [
-                    4.68573,
+                    4.26401,
                     2.305
                   ],
                   [
-                    5.22266,
+                    4.75262,
                     2.855
                   ],
                   [
-                    5.22266,
+                    4.75262,
                     7.145
                   ],
                   [
-                    4.68573,
+                    4.26401,
                     7.695
                   ],
                   [
-                    3.51427,
+                    3.19799,
                     7.695
                   ],
                   [
-                    2.97734,
+                    2.70938,
                     7.145
                   ],
                   [
-                    2.97734,
+                    2.70938,
                     2.855
                   ]
                 ]
@@ -3668,5 +3668,9 @@
     "shin and hock",
     "ankle/foot",
     "weapon housing"
-  ]
+  ],
+  "reference_sculpt_batch": "remaining-fourteen-reference-20261123",
+  "reference_sculpt_focus": "Compact cockpit with original strong backed neck seam; reduced rear roof slab and slim reverse-jointed legs, head weapon retained",
+  "reference_sculpt_approved": false,
+  "reference_sculpt_reconciled_with": "merged-reference-batch-ten-20261123"
 }

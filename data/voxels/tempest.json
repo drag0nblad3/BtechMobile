@@ -1573,35 +1573,35 @@
                 "at": 11,
                 "polygon": [
                   [
-                    -5.38098,
+                    -5.00431,
                     -1.25
                   ],
                   [
-                    -3.81902,
+                    -3.55169,
                     -1.25
                   ],
                   [
-                    -3.2821,
+                    -3.05235,
                     -0.7
                   ],
                   [
-                    -3.2821,
+                    -3.05235,
                     3.7
                   ],
                   [
-                    -3.81902,
+                    -3.55169,
                     4.25
                   ],
                   [
-                    -5.38098,
+                    -5.00431,
                     4.25
                   ],
                   [
-                    -5.9179,
+                    -5.50365,
                     3.7
                   ],
                   [
-                    -5.9179,
+                    -5.50365,
                     -0.7
                   ]
                 ]
@@ -2012,35 +2012,35 @@
                 "at": 11,
                 "polygon": [
                   [
-                    3.81902,
+                    3.55169,
                     -1.25
                   ],
                   [
-                    5.38098,
+                    5.00431,
                     -1.25
                   ],
                   [
-                    5.9179,
+                    5.50365,
                     -0.7
                   ],
                   [
-                    5.9179,
+                    5.50365,
                     3.7
                   ],
                   [
-                    5.38098,
+                    5.00431,
                     4.25
                   ],
                   [
-                    3.81902,
+                    3.55169,
                     4.25
                   ],
                   [
-                    3.2821,
+                    3.05235,
                     3.7
                   ],
                   [
-                    3.2821,
+                    3.05235,
                     -0.7
                   ]
                 ]
@@ -3500,5 +3500,9 @@
     "shin and hock",
     "ankle/foot",
     "weapon housing"
-  ]
+  ],
+  "reference_sculpt_batch": "remaining-fourteen-reference-20261123",
+  "reference_sculpt_focus": "triangular high collar with heavy sloping left shoulder, skewed gun arm silhouette and slim calves; intact head-mounted emitter",
+  "reference_sculpt_approved": false,
+  "reference_sculpt_reconciled_with": "merged-reference-batch-ten-20261123"
 }
