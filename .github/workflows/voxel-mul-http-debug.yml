@@ -1,4 +1,4 @@
-name: Debug official Master Unit List HTML access
+name: Debug Sarna BattleTech wiki reference images
 on:
   push:
     branches:
@@ -11,18 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch one known official page and compare parser
+      - name: Inspect official-unit picture source pages and image URLs
         run: |
           python3 - <<'PY'
-          import sys
-          sys.path.insert(0, 'tools')
-          from discover_mul_art import fetch_page, accept_page, Page
-          for link, name in [('https://masterunitlist.battletech.com/units/bulldog-medium-tank','vehicle/bulldog_medium_tank'),
-                              ('https://masterunitlist.battletech.com/units/galahad-glass-spider','glass_spider'),
-                              ('https://masterunitlist.battletech.com/units/elemental-battle-armor-laser-sqd4','battle_armor/elemental_ba_laser')]:
-            text=fetch_page(link)
-            p=Page()
-            p.feed(text)
-            print('MUL_DEBUG',name,'length',len(text),'title',repr(p.title[:120]),'images',p.art[:3],'head',repr(text[:350]))
-            print('MUL_PARSE',accept_page(text,name))
+          import urllib.request,urllib.error,re,html
+          for slug in ['Alfar','Glass_Spider','Bulldog_Medium_Tank','Elemental_(Battle_Armor)','Hetzer','Rook']:
+            url='https://www.sarna.net/wiki/'+slug
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 BtechMobileReferenceAudit/1.0'})
+              with urllib.request.urlopen(req,timeout=20) as r:
+                data=r.read(800000).decode('utf-8','replace')
+              t=re.search(r'<title[^>]*>(.*?)</title>',data,re.I|re.S)
+              table=re.search(r'<table[^>]*class="[^"]*infobox[^"]*"[^>]*>',data,re.I)
+              img=re.findall(r'<img[^>]*src="([^"]+)"[^>]*>',data,re.I)[:3]
+              print('SARNA_DEBUG',slug,'len',len(data),'title',html.unescape(t.group(1) if t else ''),'infobox',bool(table),'imgs',img,'head',repr(data[:100]))
+            except Exception as e:
+              print('SARNA_ERROR',slug,type(e).__name__,str(e))
           PY
