@@ -60,8 +60,8 @@ and records public MUL IDs, first introduction year, faction-era cells and
 snapshot date. `docs/mul-import-coverage.json` lists every unit variant still
 unmatched so these cannot accidentally be treated as canon.
 
-The November 22, 2026 snapshot verifies **674 of 697** game variants and
-**41,311** positive faction-era cells for **71** factions and **12** eras.
+The November 23, 2026 snapshot verifies **1,039 of 1,122** game variants and
+**57,872** positive faction-era cells for **71** factions and **12** eras.
 An absent faction-era cell in a *published* matrix means unavailable;
 an unmatched variant means unverified and is blocked only in Strict mode.
 See `docs/era-faction-availability.md` for implementation and play rules.
