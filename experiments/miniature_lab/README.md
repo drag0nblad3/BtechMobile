@@ -221,3 +221,54 @@ The v6 source is a **trial**, not production art. There has been no Godot
 in-engine animation or device performance validation. All lower-priority
 geometry refinements should continue in the experiment branch, while main
 stays untouched.
+
+
+## Further iteration: Jenner v7/v8 (30 assemblies, real oblique interfaces)
+
+The v7 assembly adds five named components on top of v6: left and right
+nose cheek cowls, left and right **inboard arm/pod mounting sockets**, and
+an independent lower-torso/hip skirt. These are **angled owner transfers**:
+the arm pods attach through their own load-bearing socket instead of merely
+intersecting shoulder armor, and the hips attach to the separated skirt.
+Each cheek, socket and skirt is solidly supported. The geometry remains
+fully independent from all merged BattleMech models.
+
+The v8 pass also shapes the central torso and both shoulder cross sections
+with 16-point polygon profiles instead of the original 8-point sections.
+Head and launcher shells retain their 24/32-point curves. All 29 parent-child
+joints now carry explicit intended support directions, including the
+original hip/knee/ankle chain, and are checked against the *measured*
+face-contact normal and a contiguous backed 2x2 patch. The worst measured
+attachment-normal deviation is under **15 degrees**; no seams are silently
+filled.
+
+| Check (same approximate source photos, not calibrated) | v5 | v7 | v8 |
+|---|---:|---:|---:|
+| Distinct geometry components | 12 | 30 | 30 |
+| Total polygon cross-section vertices | 1,064 | 1,296 | 1,424 |
+| Occupied voxels | 14,860 | 14,996 | 14,986 |
+| Four-view silhouette IoU proxy, 58px | 0.576 | 0.582 | 0.582 |
+| Three-view rigid landmark RMSE | 0.02337 | 0.02355 | 0.02355 |
+| Geometry/attachment audit failures | 0 | 0 | 0 |
+
+**Interpretation:** this is a useful structural authoring advance, not a
+demonstrated major likeness improvement. The silhouette proxy increases
+slightly at 58px, but at 50px is effectively unchanged. More detailed,
+calibrated reference views and recognizable head/torso proportions remain
+the most important next sculpting work.
+
+Run from repository root:
+
+    python experiments/miniature_lab/make_jenner_v7.py
+    python experiments/miniature_lab/make_jenner_v8.py
+    python -m unittest discover -s experiments/miniature_lab -v
+    python experiments/miniature_lab/miniature_lab.py experiments/miniature_lab/jenner_assembly_v8.json --output experiments/miniature_lab/generated/jenner_v8_compiled.json --svg experiments/miniature_lab/generated/jenner_v8_silhouettes.svg
+
+The actual v8 voxel geometry has also been rendered separately as a
+four-angle shaded raster and a component-color assembly diagnostic. These
+are **offline voxel-geometry previews**, not Godot in-engine captures. No
+production recipe has been overwritten, no Android build was attempted,
+and the v5/v6/v7 sources remain available for comparisons.
+
+Do not promote v8 or merge this experiment as production art without a
+high-confidence photographic fit and a Godot rig/animation smoke test.
