@@ -84,10 +84,18 @@ def rasterize(spec):
                         c = (x, y, z)
                         world = tuple((q + .5) * pitch for q in c)
                         if field_contains(shape, world):
-                            if shape.get("op") == "subtract":
+                            operation = shape.get("op", "add")
+                            if operation == "subtract":
                                 cells.pop(c, None)
-                            else:
+                            elif operation == "paint":
+                                # Surface color must not invent unsupported
+                                # voxels beyond the underlying hull.
+                                if c in cells:
+                                    cells[c] = shape["mat"]
+                            elif operation == "add":
                                 cells[c] = shape["mat"]
+                            else:
+                                raise ValueError("unsupported loft operation: " + operation)
         if not cells:
             raise ValueError("empty component: " + part["name"])
         if part["name"] in all_parts:
