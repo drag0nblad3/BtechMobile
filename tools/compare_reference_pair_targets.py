@@ -103,6 +103,36 @@ def reference_mask(image, bounds, threshold=222, close_size=9):
                            "auto_mask_status": "UNVERIFIED_OUTLINE_AND_CAMERA"}
 
 
+
+def traced_reference_mask(image, trace):
+    """Human-reviewed rough component outlines, excluding illustrated scenery.
+
+    The 160-pixel coordinates are traced from the cited official line art.
+    They are honest *annotation-based estimates*, not pixel-perfect masks.
+    """
+    photo = image.copy()
+    photo.thumbnail((160, 160))
+    w, h = photo.size
+    canvas = Image.new("L", (w, h), 0)
+    pen = ImageDraw.Draw(canvas)
+    for polygon in trace["include"]:
+        if len(polygon) < 3:
+            raise ValueError("Invalid positive outline annotation")
+        pen.polygon([tuple(map(int, p)) for p in polygon], fill=255)
+    for polygon in trace.get("exclude", []):
+        if len(polygon) < 3:
+            raise ValueError("Invalid negative-space annotation")
+        pen.polygon([tuple(map(int, p)) for p in polygon], fill=0)
+    a = np.asarray(canvas, dtype=np.uint8)
+    share = float(np.mean(a > 0))
+    if not 0.07 < share < 0.75:
+        raise ValueError("Manual outline foreground fraction implausible")
+    return ({(int(x), int(y)) for y, x in np.argwhere(a > 0)},
+            Image.fromarray(255 - a, mode="L").convert("RGB"),
+            {"foreground_fraction": round(share, 4),
+             "trace_parts": len(trace["include"]),
+             "mask_mode": "COARSE_HAND_TRACED_OFFICIAL_ILLUSTRATION_UNVERIFIED"})
+
 def assess(pairs, model_root, output, downloader=fetch_art):
     output.mkdir(parents=True, exist_ok=True)
     masks = {}
@@ -122,9 +152,12 @@ def assess(pairs, model_root, output, downloader=fetch_art):
                 source_preview = source_preview.point(
                     lambda value: 0 if value < 210 else 255)
                 source_preview.save(output / (key + "_line_qa_160.png"))
-                ink, picture, diagnostics = reference_mask(
-                    raw, ref["bounds"], ref.get("threshold", 222),
-                    ref.get("close_size", 9))
+                if ref.get("trace"):
+                    ink, picture, diagnostics = traced_reference_mask(raw, ref["trace"])
+                else:
+                    ink, picture, diagnostics = reference_mask(
+                        raw, ref["bounds"], ref.get("threshold", 222),
+                        ref.get("close_size", 9))
                 picture.save(output / (key + "_reference_mask.png"))
                 masks[key] = ink
                 subjects[key] = {"status": "PROVISIONAL",
@@ -177,13 +210,20 @@ def assess(pairs, model_root, output, downloader=fetch_art):
                 "identity_margin_b": round(own_b - wrong_b, 1),
                 # The sculpt target is to converge on reference difference,
                 # not to drive unrelated chassis indefinitely far apart.
-                "goal_model_pair_interval_0_100": [max(0, target - 6),
-                                                    min(100, target + 6)],
+                "goal_model_pair_interval_0_100": [
+                    max(0, target - pair.get("target_uncertainty", 8)),
+                    min(100, target + pair.get("target_uncertainty", 8))],
                 "gap_model_minus_reference": round(current - target, 1),
                 "individual_goal": "Improve each own-reference fit by >=5 from "
                                     "the pre-sculpt baseline without shrinking "
                                     "the identity margin; manually verify camera."
             })
+            if not pair.get("pose_comparable", False):
+                row["status"] = "REFERENCE_POSE_MISMATCH_NO_SCULPT_GOAL"
+                row["goal_model_pair_interval_0_100"] = None
+                row["individual_goal"] = ("Use qualitative component differences only; "
+                    "source images have incompatible poses/cameras.")
+            row["camera_review"] = pair.get("camera_review", "NOT_APPROVED")
         except (OSError, ValueError) as exc:
             row["error"] = str(exc)
         results.append(row)

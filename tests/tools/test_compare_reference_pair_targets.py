@@ -5,7 +5,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
-from compare_reference_pair_targets import assess, fetch_art, reference_mask
+from compare_reference_pair_targets import assess, fetch_art, reference_mask, traced_reference_mask
 from PIL import Image, ImageDraw
 
 
@@ -38,6 +38,15 @@ class PairTrialTests(unittest.TestCase):
             self.assertEqual(result["pairs"][0]["reference_similarity_0_100"],100)
             self.assertEqual(result["pairs"][0]["model_similarity_0_100"],100)
             self.assertEqual(result["approved_four_angle_scores"],0)
+
+    def test_manual_foreground_trace_discards_source_background(self):
+        photo = Image.new("RGB", (160, 160), "white")
+        trace = {"include": [[[25, 25], [95, 25], [95, 120], [25, 120]]],
+                 "exclude": [[[45, 70], [75, 70], [75, 115], [45, 115]]]}
+        mask, _, status = traced_reference_mask(photo.convert("RGBA"), trace)
+        self.assertIn((30, 40), mask)
+        self.assertNotIn((60, 90), mask)
+        self.assertEqual(status["trace_parts"], 1)
 
     def test_missing_source_stays_unscored(self):
         with tempfile.TemporaryDirectory() as root:
