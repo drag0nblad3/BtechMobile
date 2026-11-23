@@ -61,7 +61,8 @@ def remove_noise(pixels, w, h):
     return cleaned
 
 
-def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0):
+def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0,
+                 dark_base_floor=None):
     image = photo.copy()
     image.thumbnail((700, 700))
     w, h = image.size
@@ -73,6 +74,11 @@ def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0):
                 if (sum(pix[x, y]) > 3 * (255 - int(threshold))
                     if dark_background else
                     sum(pix[x, y]) < 3 * int(threshold))}
+    if dark_base_floor:
+        start = int(h * float(dark_base_floor.get("start_y_fraction", 0.72)))
+        min_bright = 3 * int(dark_base_floor.get("min_channel_mean", 80))
+        occupied = {(x, y) for x, y in occupied
+                    if y < start or sum(pix[x, y]) >= min_bright}
     occupied = remove_noise(occupied, w, h)
     if not (0.008 <= len(occupied) / (w * h) <= 0.7):
         raise ValueError("Subject segmentation fraction is implausible")
@@ -105,7 +111,8 @@ def main():
             photo = fetch_photo(entry["image_url"])
             mask, share = prepare_mask(
                 photo, entry["white_background_threshold"],
-                entry["crop_bottom_fraction"])
+                entry["crop_bottom_fraction"],
+                entry.get("exclude_dark_base_below"))
             out_file = masks / model / (view + ".png")
             out_file.parent.mkdir(parents=True, exist_ok=True)
             mask.save(out_file)
