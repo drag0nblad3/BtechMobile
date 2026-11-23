@@ -96,8 +96,8 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
             root = pathlib.Path(td)
             for d in ("renders", "references"):
                 (root / d / "atlas").mkdir(parents=True)
-            sample = "\\n".join("".join("#" if (x, y) in self.shape else "."
-                                     for x in range(25)) for y in range(25)) + "\\n"
+            sample = "\n".join("".join("#" if (x, y) in self.shape else "."
+                                     for x in range(25)) for y in range(25)) + "\n"
             for view in ("front", "side"):
                 for folder in ("renders", "references"):
                     (root / folder / "atlas" / (view + ".txt")).write_text(
