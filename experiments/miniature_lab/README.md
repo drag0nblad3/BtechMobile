@@ -272,3 +272,49 @@ and the v5/v6/v7 sources remain available for comparisons.
 
 Do not promote v8 or merge this experiment as production art without a
 high-confidence photographic fit and a Godot rig/animation smoke test.
+
+## v9/v10 targeted sculpt correction — shape, not just segmentation
+
+The **2021 Catalyst plastic Jenner** remains the only intended reference
+generation (Inner Sphere Striker Lance, CAT35729). No alternate metal
+sculpts are mixed into this comparison.
+
+Two more experimental sculpt revisions are retained alongside v8:
+- **v9**: flatten the projecting cockpit disc and distinguish three actual
+  forward window panels plus two roof panes; narrow lower torso depth,
+  angle knees forward and carve two shallow cuts separating three foot tips.
+  Window panels now use an explicit **paint-only** voxel operation:
+  glazing cannot add unsupported geometry outside the source hull.
+- **v10**: widen and angle the shoulder fairings, reshape their real front
+  creases, and shorten the inboard weapon-pod housings without extending
+  their outboard reach. The medium-laser bores and the matching muzzle
+  coordinates are remapped together. No duplicate arms or invisible
+  connector blocks are introduced.
+
+| Diagnostic (hand-estimated plastic reference) | v8 | v9 | v10 |
+|---|---:|---:|---:|
+| Independently owned pieces | 30 | 30 | 30 |
+| Cross-section control vertices | 1,424 | 1,504 | 1,520 |
+| Voxels | 14,986 | 14,802 | 15,226 |
+| Four-view silhouette IoU, 58px (higher better) | 0.582 | 0.581 | 0.580 |
+| Rigid landmark RMSE (lower better) | 0.02355 | 0.02324 | 0.02322 |
+| Connection, island and overlap errors | 0 | 0 | 0 |
+| Worst joint-direction deviation | 9.25° | 9.25° | 9.25° |
+
+**Important limitation:** reference masks and landmarks are hand-estimated.
+A one- or two-thousandth change is not evidence of accurate miniature
+likeness. This is a **plausible geometric improvement**, not a verified
+fidelity win: the raw silhouette proxy actually slips slightly. We retain
+v8/v9 as controls, rather than promoting v10 or altering the merged Jenner.
+
+To inspect and reproduce the offline source-geometry proof:
+
+    python -m unittest discover -s experiments/miniature_lab -v
+    python experiments/miniature_lab/miniature_lab.py experiments/miniature_lab/jenner_assembly_v10.json --output experiments/miniature_lab/generated/v10_compiled.json --svg experiments/miniature_lab/generated/v10_silhouettes.svg
+    python experiments/miniature_lab/photo_fit.py --source experiments/miniature_lab/jenner_assembly_v10.json --reference experiments/miniature_lab/jenner_photo_annotations.json --size 58
+    python experiments/miniature_lab/reference_fit.py experiments/miniature_lab/jenner_photo_landmarks.json experiments/miniature_lab/jenner_assembly_v8.json experiments/miniature_lab/jenner_assembly_v10.json
+
+The isolated sculpt has passed Python geometry tests, **not an in-engine
+Godot pose/renderer smoke test**. A four-angle shaded voxel render and
+an eight-panel v8-versus-v10 comparison were produced from actual source
+geometry in the conversation. New artwork remains opt-in and draft.
