@@ -1,0 +1,28 @@
+name: Debug official Master Unit List HTML access
+on:
+  push:
+    branches:
+      - audit/mul-debug-20261123
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch one known official page and compare parser
+        run: |
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, 'tools')
+          from discover_mul_art import fetch_page, accept_page, Page
+          for link, name in [('https://masterunitlist.battletech.com/units/bulldog-medium-tank','vehicle/bulldog_medium_tank'),
+                              ('https://masterunitlist.battletech.com/units/galahad-glass-spider','glass_spider'),
+                              ('https://masterunitlist.battletech.com/units/elemental-battle-armor-laser-sqd4','battle_armor/elemental_ba_laser')]:
+            text=fetch_page(link)
+            p=Page()
+            p.feed(text)
+            print('MUL_DEBUG',name,'length',len(text),'title',repr(p.title[:120]),'images',p.art[:3],'head',repr(text[:350]))
+            print('MUL_PARSE',accept_page(text,name))
+          PY
