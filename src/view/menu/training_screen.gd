@@ -1,7 +1,7 @@
 class_name TrainingScreen
 extends Control
-## The training campaign: its story, the cadet's record and the six
-## connected lessons. Each mission opens after the one before it is played.
+## Six connected lessons with optional practice checks and retry records.
+## Each mission opens after the previous one is played, even after a loss.
 
 var campaign: TrainingCampaign
 var db: UnitDb
@@ -46,20 +46,30 @@ func _build() -> void:
 	for i in campaign.missions.size():
 		var m := campaign.missions[i]
 		var open := campaign.unlocked(i, p)
-		var won: bool = p.get(m["id"], {}).get("won", false)
+		var record: Dictionary = p.get(m["id"], {})
+		var won: bool = record.get("won", false)
 		var mark := "✓ " if won else ("· " if p.has(m["id"]) else ("▶ " if open else ""))
 		var b := UiKit.button(_list, "%s%s   —   %s%s" % [mark, m["title"], m["teaches"], "" if open else "  (locked)"],
 				start.bind(i), Vector2(0, 64))
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.disabled = not open
 		UiSkin.button(b, "selected" if won else "primary" if i == next and open else "secondary")
+		if not record.is_empty():
+			var best := int(record.get("practice", 0))
+			var count := int(record.get("practice_total", m.get("practice", []).size()))
+			var attempts := int(record.get("attempts", 1))
+			UiKit.label(_list, "  %d attempts  ·  best practice %d/%d" % [attempts, best, count], UiKit.SMALL)
 		if i == next and open:
 			var lvl := int(JsonFile.read(campaign.scenario_path(i)).get("bot_level", -1))
 			var vs := "  (computer: %s)" % BotSkill.name_of(lvl) if lvl >= 0 else ""
 			var briefing := UiKit.label(_list, m.get("briefing", "") + vs, UiKit.SMALL)
 			UiSkin.label(briefing, "muted")
+			var checks := PackedStringArray()
+			for goal: Dictionary in m.get("practice", []):
+				checks.append(String(goal.get("title", "")))
+			UiKit.label(_list, "Practice (optional): " + "  ·  ".join(checks), UiKit.SMALL)
 	if campaign.finished(p):
-		UiKit.label(_list, "Campaign complete. Replay any lesson whenever you like.", UiKit.SMALL)
+		UiKit.label(_list, "All six missions attempted. Retry to improve your practice record or win the remaining battles.", UiKit.SMALL)
 
 
 ## Every lesson seen so far, to reread between games.
@@ -92,11 +102,16 @@ func start(i: int) -> void:
 
 ## Saves a finished training mission's result and returns its debrief
 ## ("" when `index` is -1, i.e. not a training battle).
-static func finish(index: int, s: GameState, bot_sides: Array, winner: int) -> String:
+static func finish(index: int, s: GameState, bot_sides: Array, winner: int,
+		practice: TrainingPractice = null) -> String:
 	if index < 0:
 		return ""
 	var player := 0 if not bot_sides.has(0) else 1
 	var c := TrainingCampaign.load_file()
 	var r := TrainingCampaign.result(s, player, winner)
+	if practice == null:
+		practice = TrainingPractice.from_mission(c.missions[index])
+	r["practice"] = practice.completed_count()
+	r["practice_total"] = practice.goals.size()
 	GameSettings.record_training(c.missions[index]["id"], r)
-	return c.debrief(index, r["won"], GameSettings.training)
+	return c.debrief(index, r["won"], GameSettings.training) + "\n\n" + practice.summary()
