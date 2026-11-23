@@ -1,7 +1,7 @@
 {
   "id": "black_lanner_shape",
   "name": "Black Lanner Prime — silhouette",
-  "unit": "black_lanner",
+  "unit": "black_lanner_prime",
   "voxel_size": 0.0464,
   "subdivide": 1,
   "legs": "digitigrade",

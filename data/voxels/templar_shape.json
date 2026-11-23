@@ -1,7 +1,7 @@
 {
   "id": "templar_shape",
   "name": "Templar TLR1-O — silhouette",
-  "unit": "templar",
+  "unit": "templar_tlr1-o",
   "voxel_size": 0.05,
   "subdivide": 1,
   "legs": "plantigrade",

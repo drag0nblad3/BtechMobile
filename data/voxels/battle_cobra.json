@@ -1,7 +1,7 @@
 {
   "id": "battle_cobra",
   "name": "Battle Cobra Prime",
-  "unit": "battle_cobra",
+  "unit": "battle_cobra_prime",
   "voxel_size": 0.0446,
   "subdivide": 3,
   "legs": "digitigrade",

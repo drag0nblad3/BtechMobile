@@ -1,7 +1,7 @@
 {
   "id": "sunder_shape",
   "name": "Sunder SD1-O — silhouette",
-  "unit": "sunder",
+  "unit": "sunder_sd1-o",
   "voxel_size": 0.0506,
   "subdivide": 1,
   "legs": "plantigrade",

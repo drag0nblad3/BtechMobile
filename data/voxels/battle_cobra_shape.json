@@ -1,7 +1,7 @@
 {
   "id": "battle_cobra_shape",
   "name": "Battle Cobra Prime — silhouette",
-  "unit": "battle_cobra",
+  "unit": "battle_cobra_prime",
   "voxel_size": 0.0446,
   "subdivide": 1,
   "legs": "digitigrade",

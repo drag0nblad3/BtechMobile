@@ -1,7 +1,7 @@
 {
   "id": "raptor_shape",
   "name": "Raptor RTX1-O — silhouette",
-  "unit": "raptor",
+  "unit": "raptor_rtx1-o",
   "voxel_size": 0.044,
   "subdivide": 1,
   "legs": "digitigrade",
