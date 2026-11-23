@@ -15,9 +15,14 @@ import urllib.request
 
 GALLERY = "https://jadedfalconer.com/Pages/6How/miniatures"
 HOST = "jadedfalconer.com"
-ALIASES = {"mad_cat": "timberwolf", "mad_dog": "maddog",
-           "thor": "summoner", "loki": "hellbringer",
-           "black_hawk": "nova"}
+ALIASES = {"madcat": "timberwolf", "thor": "summoner",
+           "loki": "hellbringer", "blackhawk": "nova",
+           "arcticcheetahhankyu": "arcticcheetah",
+           "stonerhinobehemoth": "stonerhino",
+           "blackpythonviper": "blackpython",
+           "direwolfdaishi": "direwolf",
+           "conjurerhellhound": "conjurer",
+           "mistlynxkoshi": "mistlynx"}
 
 
 def normalized(name):
