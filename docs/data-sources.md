@@ -128,3 +128,19 @@ by existing combat systems; no unofficial refits are introduced.
 The import doesn't supply original multi-angle geometry or a refreshed
 canonical MUL faction-era availability matrix; these are separate pending
 tasks. A published MUL match is distinct from free-record-sheet BV verification.
+
+### Official MUL refresh access status (2026-11-23)
+
+The November 23 automated snapshot refresh could not complete: the
+`/data/manifest.json` endpoint responded with a `text/html` page that
+redirects to a CAPTCHA rather than the required JSON. The importer rejects
+this response and leaves the November 22 snapshot unchanged. Do not bypass
+the challenge or guess availability cells. Recently imported designs not
+present in the snapshot remain unverified and are ineligible under Strict
+mode; Off and Advisory continue to behave as documented.
+
+Once the official JSON source becomes available again, run the existing
+`Import canonical MUL availability` workflow (or the importer) and review
+`docs/mul-import-coverage.json` for exact matches. Faction-era records must
+come from the authoritative published index, not a chassis's introduction
+date or Clan affiliation.
