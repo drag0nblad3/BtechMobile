@@ -16,7 +16,7 @@ from PIL import Image, ImageOps
 
 from score_reference_silhouettes import locate, read_mask, score_masks
 
-ALLOWED_HOSTS = {"store.catalystgamelabs.com", "www.wargamesemporium.co.uk"}
+ALLOWED_HOSTS = {"store.catalystgamelabs.com", "www.wargamesemporium.co.uk", "jadedfalconer.com"}
 OFFSETS = ((0, 1), (1, 0), (0, -1), (-1, 0))
 
 
@@ -62,7 +62,7 @@ def remove_noise(pixels, w, h):
 
 
 def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0,
-                 dark_base_floor=None):
+                 dark_base_floor=None, exclude_logo_bottom_right=False):
     image = photo.copy()
     image.thumbnail((700, 700))
     w, h = image.size
@@ -79,6 +79,9 @@ def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0,
         min_bright = 3 * int(dark_base_floor.get("min_channel_mean", 80))
         occupied = {(x, y) for x, y in occupied
                     if y < start or sum(pix[x, y]) >= min_bright}
+    if exclude_logo_bottom_right:
+        occupied = {(x, y) for x, y in occupied
+                    if not (x >= 0.78 * w and y >= 0.78 * h)}
     occupied = remove_noise(occupied, w, h)
     if not (0.008 <= len(occupied) / (w * h) <= 0.7):
         raise ValueError("Subject segmentation fraction is implausible")
@@ -112,7 +115,8 @@ def main():
             mask, share = prepare_mask(
                 photo, entry["white_background_threshold"],
                 entry["crop_bottom_fraction"],
-                entry.get("exclude_dark_base_below"))
+                entry.get("exclude_dark_base_below"),
+                entry.get("exclude_logo_bottom_right", False))
             out_file = masks / model / (view + ".png")
             out_file.parent.mkdir(parents=True, exist_ok=True)
             mask.save(out_file)
