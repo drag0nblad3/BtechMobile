@@ -25,17 +25,17 @@ Official primary source interfaces:
 
 | New source | Machine-readable location | Suitable use | Caveat |
 | --- | --- | --- | --- |
-| **MegaMek mm-data, forcegenerator** | [data/forcegenerator](https://github.com/MegaMek/mm-data/tree/main/data/forcegenerator) | Chassis **and model** rarity weights (1–10), keyed by faction, year and sub-command; supports weighted force composition | Community interpretation, **not** proof of official entitlement; weights can be inherited, overridden or missing |
+| **MegaMek mm-data, forcegenerator** | [data/forcegenerator](https://github.com/MegaMek/mm-data/tree/main/data/forcegenerator) | Chassis **and model** rarity weights (0–10; 0 none, 10 ubiquitous, non-linear scale), keyed by faction, year and sub-command; supports weighted force composition | Community interpretation, **not** proof of official entitlement; weights can be inherited, overridden or missing |
 | **MegaMek mm-data, faction definitions** | [factions.xml](https://github.com/MegaMek/mm-data/blob/main/data/forcegenerator/factions.xml) | Faction code aliases, naming, active date ranges and faction hierarchy/cross-faction mappings | Codes differ from MUL; don't auto-match by display name |
 | **MegaMek mm-data, 39 historical year slices** | [3049.xml](https://github.com/MegaMek/mm-data/blob/main/data/forcegenerator/3049.xml) and [3150.xml](https://github.com/MegaMek/mm-data/blob/main/data/forcegenerator/3150.xml) among others | Interpolate or select explicit **year-specific rarity snapshots** for force suggestions, separately from legal eligibility | Some slices have scant documented data; interpolation must be recorded as approximate and never written as canonical |
 | **MegaMek mm-data, published random assignment tables** | [data/rat](https://github.com/MegaMek/mm-data/tree/main/data/rat) | Independent sourcebook-linked crosschecks for historic compositions (e.g. Field Manuals, era reports) | Tables represent faction/formation distributions, not a complete unit permission matrix |
 | **MegaMek RAT generator documentation** | [RAT generator API](https://megamek.org/megamek/megamek/client/ratgenerator/package-summary.html) | Verify generator semantics: faction, era, weight class, role and equipment rating | Generator outputs must retain source/seed for replay and are not BattleTech rules |
-| **MegaMek Command Generator (2026-11-21)** | [developer overview](https://megamek.org/2026/11/21/Feature-Highlight-The-Command-Generator.html) | Explains chassis/model availability 1–10 and known uneven coverage | Explicitly calls data incomplete for underdocumented eras and smaller factions |
+| **MegaMek Command Generator (2026-11-21)** | [developer overview](https://megamek.org/2026/11/21/Feature-Highlight-The-Command-Generator.html) | Explains chassis/model availability 0–10 and known uneven coverage | Explicitly calls data incomplete for underdocumented eras and smaller factions |
 
 **Verified sample:** `data/forcegenerator/3049.xml` contains
 `<chassis name='Marauder II' unitType='Mek'>` with chassis and
 per-`<model>` `<availability>` entries, and `data/forcegenerator/factions.xml`
-uses `<faction key='...'>` and `<years>` metadata. The source header says
+uses `<faction key='...'>` and `<years>` metadata. [MegaMek's generator API](https://megamek.org/megamek/megamek/common/units/ForceGeneratorAvailability.html) specifies AV 0 as none and 10 as ubiquitous, with 6 typical and a log-scale frequency relationship; do not interpret differences as linear probabilities. The source header says
 **CC BY-NC-SA 4.0**; commercial distribution requires a separate licensing
 review. Historical assignment tables are named for particular sourcebooks and
 years. Do not call this information official MUL content.
@@ -70,7 +70,7 @@ years. Do not call this information official MUL content.
 - **Sourcebook-derived RATs:** useful qualitative or formation-specific
   independent crosschecks; not universally exhaustive.
 - **Sarna lore and fan photos:** useful context and visual reference leads,
-  not authoritative faction-era permission or 1–10 rarity weights.
+  not authoritative faction-era permission or 0–10 rarity weights.
 
 This is a **source inventory and integration design**. No change to
 `data/forces/availability.json`, game combat rules, roster legality or
