@@ -218,10 +218,16 @@
       ],
       "primary": [
         "ct",
+        "lt",
         "la",
         "ll_shin"
       ],
-      "rig": true
+      "rig": true,
+      "areaParts": [
+        "ct",
+        "la",
+        "ll_shin"
+      ]
     },
     {
       "cohort": "eight",
