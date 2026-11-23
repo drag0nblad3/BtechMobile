@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "_guide": "Add verified per-model and per-angle actual articulated joint rotations in degrees after selecting the specific reference photo/pose. Do not invent default poses or change geometry to improve scores. Only named joints with a nonempty authored joint type may be rotated. Keep ground contact and anatomy plausible.",
+  "_example_not_applied": {
+    "models": {
+      "example_chassis": {
+        "default": {
+          "body_rotation_deg": [0, 0, 0],
+          "joints": {
+            "ll": [0, 0, 0],
+            "rl": [0, 0, 0]
+          }
+        },
+        "front": {
+          "joints": {
+            "la": [0, 0, 0],
+            "ra": [0, 0, 0]
+          }
+        }
+      }
+    }
+  },
+  "models": {}
+}

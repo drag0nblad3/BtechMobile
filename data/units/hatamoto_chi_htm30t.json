@@ -1,0 +1,78 @@
+{
+  "id": "hatamoto_chi_htm30t",
+  "name": "Hatamoto-Chi",
+  "model": "HTM-30T",
+  "tonnage": 80,
+  "walk_mp": 3,
+  "jump_mp": 0,
+  "heat_sinks": 15,
+  "armor": {
+    "LA": 26,
+    "RA": 26,
+    "LT": 25,
+    "RT": 25,
+    "CT": 34,
+    "HD": 9,
+    "LL": 34,
+    "RL": 34
+  },
+  "rear_armor": {
+    "LT": 9,
+    "RT": 9,
+    "CT": 16
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink",
+      "heavy_ppc",
+      "ballistic_reinforced*2"
+    ],
+    "RA": [
+      "heat_sink",
+      "heavy_ppc",
+      "ballistic_reinforced"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "srm6",
+      "ammo:srm6",
+      "case2",
+      "ballistic_reinforced"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "srm6",
+      "ammo:srm6",
+      "case2",
+      "ballistic_reinforced"
+    ],
+    "HD": [
+      "ballistic_reinforced"
+    ],
+    "LL": [
+      "ballistic_reinforced*2"
+    ],
+    "RL": [
+      "ballistic_reinforced*2"
+    ]
+  },
+  "heat_sink_type": "double",
+  "gyro_type": "xl",
+  "armor_type": "ballistic_reinforced",
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ]
+  },
+  "source": {
+    "mul_id": 9577,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 33/Hatamoto-Chi HTM-30T.mtf",
+    "published": "RG33",
+    "role": "Juggernaut",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/hatamoto-chi-htm-30t"
+  },
+  "bv": 2196,
+  "sprite": "hatamoto_chi",
+  "role": "Juggernaut: ballistic-reinforced armor, two heavy PPCs and two SRM 6 launchers; walks 3, runs 5."
+}

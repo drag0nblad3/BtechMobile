@@ -67,19 +67,19 @@
                   ],
                   [
                     3.7316,
-                    2.9826
+                    2.5593
                   ],
                   [
                     3.7316,
-                    2.9826
+                    2.5593
                   ],
                   [
                     -3.7316,
-                    2.9826
+                    2.5593
                   ],
                   [
                     -3.7316,
-                    2.9826
+                    2.5593
                   ],
                   [
                     -3.7316,
@@ -112,19 +112,19 @@
                   ],
                   [
                     3.8707,
-                    3.9768
+                    3.2255
                   ],
                   [
                     3.8707,
-                    4.5826
+                    3.6313
                   ],
                   [
                     -3.8707,
-                    4.5826
+                    3.6313
                   ],
                   [
                     -3.8707,
-                    3.9768
+                    3.2255
                   ],
                   [
                     -3.8707,
@@ -157,19 +157,19 @@
                   ],
                   [
                     5.88,
-                    3.9768
+                    3.2255
                   ],
                   [
                     3.92,
-                    5.17906
+                    4.031
                   ],
                   [
                     -3.92,
-                    5.17906
+                    4.031
                   ],
                   [
                     -6.86,
-                    3.9768
+                    3.2255
                   ],
                   [
                     -6.86,
@@ -202,19 +202,19 @@
                   ],
                   [
                     6.9,
-                    2.9826
+                    2.5593
                   ],
                   [
                     4.93,
-                    2.9826
+                    2.5593
                   ],
                   [
                     -4.92,
-                    2.9826
+                    2.5593
                   ],
                   [
                     -9.85,
-                    2.9826
+                    2.5593
                   ],
                   [
                     -9.85,
@@ -247,19 +247,19 @@
                   ],
                   [
                     6.83,
-                    3.9768
+                    3.2255
                   ],
                   [
                     4.88,
-                    4.5826
+                    3.6313
                   ],
                   [
                     -4.87,
-                    4.5826
+                    3.6313
                   ],
                   [
                     -8.77,
-                    3.9768
+                    3.2255
                   ],
                   [
                     -8.77,
@@ -292,19 +292,19 @@
                   ],
                   [
                     4.8,
-                    3.9768
+                    3.2255
                   ],
                   [
                     3.84,
-                    3.9768
+                    3.2255
                   ],
                   [
                     -3.84,
-                    3.9768
+                    3.2255
                   ],
                   [
                     -6.72,
-                    3.9768
+                    3.2255
                   ],
                   [
                     -6.72,
@@ -337,19 +337,19 @@
                   ],
                   [
                     3.72,
-                    1.9883
+                    1.8932
                   ],
                   [
                     2.79,
-                    1.9883
+                    1.8932
                   ],
                   [
                     -2.79,
-                    1.9883
+                    1.8932
                   ],
                   [
                     -5.58,
-                    1.9883
+                    1.8932
                   ],
                   [
                     -5.58,
@@ -4204,7 +4204,7 @@
                 ]
               },
               {
-                "at": 1,
+                "at": 0.73,
                 "polygon": [
                   [
                     -17.6,
@@ -4241,7 +4241,7 @@
                 ]
               },
               {
-                "at": 4,
+                "at": 2.92,
                 "polygon": [
                   [
                     -16.5,
@@ -4278,7 +4278,7 @@
                 ]
               },
               {
-                "at": 5,
+                "at": 3.65,
                 "polygon": [
                   [
                     -14.299999999999999,
@@ -6054,7 +6054,7 @@
                 ]
               },
               {
-                "at": 1,
+                "at": 0.73,
                 "polygon": [
                   [
                     9.4,
@@ -6091,7 +6091,7 @@
                 ]
               },
               {
-                "at": 4,
+                "at": 2.92,
                 "polygon": [
                   [
                     9.8,
@@ -6128,7 +6128,7 @@
                 ]
               },
               {
-                "at": 5,
+                "at": 3.65,
                 "polygon": [
                   [
                     10.6,
@@ -7816,6 +7816,51 @@
             ]
           },
           "mat": "inside"
+        },
+        {
+          "box": [
+            [
+              -19,
+              25,
+              -8
+            ],
+            [
+              -16,
+              28,
+              -5
+            ]
+          ],
+          "mat": "form"
+        },
+        {
+          "box": [
+            [
+              -20,
+              25,
+              -9
+            ],
+            [
+              -16,
+              26,
+              -8
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              -19,
+              27,
+              -9
+            ],
+            [
+              -16,
+              29,
+              -8
+            ]
+          ],
+          "mat": "edge"
         }
       ]
     },
@@ -9705,7 +9750,7 @@
   "weapons": [],
   "art_revision": "sculpt-specific-slab-relief-v2-20261121",
   "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_signature": "Keep recessed skull head and balanced rounded shoulders",
   "structural_consolidation": "2026-11-22-geometry-union",
   "visual_part_unification": {
@@ -9713,5 +9758,22 @@
     "mirrors_inherited": 14,
     "source_shapes_preserved": 113
   },
-  "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2"
+  "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 80,
+    "stages_with_changes": 5
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; do not restore disconnected decorative parts."
+  }
 }

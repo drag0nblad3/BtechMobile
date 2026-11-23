@@ -1,0 +1,56 @@
+{
+  "note": "Stylized tabletop-inspired team liveries and geometric field insignia; not official heraldry or canon unit paint guides.",
+  "factions": {
+    "federated_suns": {"primary": "#244b74", "secondary": "#e8c36a", "insignia": "#f6f2db", "pattern": 1, "badge": 3},
+    "draconis_combine": {"primary": "#8d3037", "secondary": "#1b252b", "insignia": "#f0d8bc", "pattern": 2, "badge": 5},
+    "lyran_commonwealth": {"primary": "#335578", "secondary": "#e0e8e7", "insignia": "#f4d58a", "pattern": 3, "badge": 4},
+    "free_worlds_league": {"primary": "#51396c", "secondary": "#e6d9a3", "insignia": "#fff0c0", "pattern": 1, "badge": 4},
+    "capellan_confederation": {"primary": "#31674d", "secondary": "#d0b35e", "insignia": "#fff5bd", "pattern": 2, "badge": 5},
+    "comstar": {"primary": "#d5d7d0", "secondary": "#4e5a62", "insignia": "#eebd55", "pattern": 0, "badge": 3},
+    "word_of_blake": {"primary": "#eee4d5", "secondary": "#752f30", "insignia": "#202126", "pattern": 2, "badge": 6},
+    "republic_of_the_sphere": {"primary": "#d4e0dc", "secondary": "#497a72", "insignia": "#c39b48", "pattern": 3, "badge": 3},
+    "free_rasalhague_republic": {"primary": "#47768c", "secondary": "#f2e4bd", "insignia": "#fdf4da", "pattern": 1, "badge": 4},
+    "clan_wolf": {"primary": "#46494a", "secondary": "#bd9a66", "insignia": "#f0e6d2", "pattern": 1, "badge": 1},
+    "clan_jade_falcon": {"primary": "#286b55", "secondary": "#d3bd70", "insignia": "#f5f3d2", "pattern": 3, "badge": 2},
+    "clan_ghost_bear": {"primary": "#8caeb7", "secondary": "#e9e9df", "insignia": "#244c67", "pattern": 2, "badge": 1},
+    "clan_smoke_jaguar": {"primary": "#2b3839", "secondary": "#a0b5af", "insignia": "#e9ce7c", "pattern": 4, "badge": 1},
+    "clan_nova_cat": {"primary": "#343f7a", "secondary": "#b6a6d6", "insignia": "#f1e8ff", "pattern": 1, "badge": 3},
+    "clan_diamond_shark": {"primary": "#26777d", "secondary": "#c9dad5", "insignia": "#f0f1d8", "pattern": 3, "badge": 2},
+    "clan_hells_horses": {"primary": "#87452f", "secondary": "#c9b995", "insignia": "#f2e3c5", "pattern": 2, "badge": 5},
+    "clan_steel_viper": {"primary": "#415d43", "secondary": "#ae9b53", "insignia": "#f4e6c5", "pattern": 1, "badge": 5},
+    "clan_snow_raven": {"primary": "#586c7e", "secondary": "#c9d7dd", "insignia": "#f5f2e9", "pattern": 4, "badge": 2},
+    "taurian_concordat": {"primary": "#7e4e31", "secondary": "#d0b879", "insignia": "#f8e7b5", "pattern": 2, "badge": 5},
+    "magistracy_of_canopus": {"primary": "#695c80", "secondary": "#d1b2aa", "insignia": "#f8e6d8", "pattern": 1, "badge": 4},
+    "kell_hounds": {"primary": "#922f32", "secondary": "#232830", "insignia": "#f3d7ce", "pattern": 3, "badge": 1},
+    "wolfs_dragoons": {"primary": "#333f49", "secondary": "#b83534", "insignia": "#e3dbd3", "pattern": 1, "badge": 1},
+    "mercenary": {"primary": "#5b6651", "secondary": "#d2b777", "insignia": "#eae9cf", "pattern": 4, "badge": 4},
+    "pirates": {"primary": "#594b49", "secondary": "#a64e3a", "insignia": "#efe0bd", "pattern": 2, "badge": 6}
+  },
+  "aliases": {
+    "federated_commonwealth": "federated_suns",
+    "lyran_alliance": "lyran_commonwealth",
+    "clan_wolf_in_exile": "clan_wolf",
+    "ilclan_wolf": "clan_wolf",
+    "wolf_empire": "clan_wolf",
+    "jade_falcon_remnant": "clan_jade_falcon",
+    "rasalhague_dominion": "clan_ghost_bear",
+    "raven_alliance": "clan_snow_raven",
+    "clan_sea_fox": "clan_diamond_shark",
+    "st_ives_compact": "capellan_confederation",
+    "clan_protectorate": "clan_nova_cat",
+    "star_league_first": "comstar",
+    "star_league_second": "comstar",
+    "star_league_in_exile": "comstar"
+  },
+  "clan_fallbacks": [
+    {"primary": "#555c52", "secondary": "#c3b97a", "insignia": "#f2f0dc", "pattern": 4, "badge": 2},
+    {"primary": "#486275", "secondary": "#d6c8ad", "insignia": "#f3e2c5", "pattern": 1, "badge": 1},
+    {"primary": "#61516b", "secondary": "#b7adca", "insignia": "#efe7ef", "pattern": 2, "badge": 5}
+  ],
+  "other_fallbacks": [
+    {"primary": "#536248", "secondary": "#cbb07a", "insignia": "#f2e6c1", "pattern": 4, "badge": 4},
+    {"primary": "#595d74", "secondary": "#baaa96", "insignia": "#f8e9d9", "pattern": 1, "badge": 6},
+    {"primary": "#805646", "secondary": "#d3b99a", "insignia": "#f6eee1", "pattern": 2, "badge": 3},
+    {"primary": "#55696b", "secondary": "#c6ccbb", "insignia": "#f5f3e6", "pattern": 3, "badge": 5}
+  ]
+}

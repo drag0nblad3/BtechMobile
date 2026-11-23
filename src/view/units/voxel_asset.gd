@@ -66,14 +66,14 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	return _build_file(DIR + id + ".json", side)
 
 
-## Official combat-vehicle record sheet. The renderer does not touch combat data.
+## A combat-vehicle record sheet uses its own model, not a generic tank.
 static func build_record_vehicle(def: UnitDef, side: int) -> Node3D:
 	if def.vehicle == null:
 		return null
 	return _build_file("res://data/voxels/vehicles/" + def.id + ".json", side)
 
 
-## Official Elemental and Inner Sphere battle armor squads.
+## Battle armor loads the specific squad's visual recipe.
 static func build_record_squad(def: UnitDef, side: int) -> Node3D:
 	if def.battle_armor == null:
 		return null

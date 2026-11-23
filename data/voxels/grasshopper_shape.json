@@ -87,11 +87,11 @@
                   ],
                   [
                     1.18,
-                    3.79
+                    3.5197
                   ],
                   [
                     -1.44,
-                    4.18
+                    3.8434
                   ],
                   [
                     -1.94,
@@ -124,11 +124,11 @@
                   ],
                   [
                     2.38,
-                    4.07
+                    3.7521
                   ],
                   [
                     -2.87,
-                    4.58
+                    4.1754
                   ],
                   [
                     -3.83,
@@ -161,11 +161,11 @@
                   ],
                   [
                     2.92,
-                    4.58
+                    4.1754
                   ],
                   [
                     -3.52,
-                    5.15
+                    4.6485
                   ],
                   [
                     -4.68,
@@ -198,11 +198,11 @@
                   ],
                   [
                     1.58,
-                    4.05
+                    3.7355
                   ],
                   [
                     -1.9,
-                    4.49
+                    4.1007
                   ],
                   [
                     -2.52,
@@ -1800,7 +1800,7 @@
                 ]
               },
               {
-                "at": -7,
+                "at": -6.75,
                 "polygon": [
                   [
                     -1.6,
@@ -1892,11 +1892,11 @@
                   ],
                   [
                     -4.81,
-                    2.41
+                    2.3764
                   ],
                   [
                     -7.4,
-                    4.22
+                    3.8968
                   ],
                   [
                     -9.34,
@@ -1925,11 +1925,11 @@
                   ],
                   [
                     -5.05,
-                    3.02
+                    2.8888
                   ],
                   [
                     -7.38,
-                    4.83
+                    4.4092
                   ],
                   [
                     -9.71,
@@ -1958,11 +1958,11 @@
                   ],
                   [
                     -5.88,
-                    2.41
+                    2.3764
                   ],
                   [
                     -7.35,
-                    3.62
+                    3.3928
                   ],
                   [
                     -8.82,
@@ -2495,11 +2495,11 @@
                   ],
                   [
                     -8.25,
-                    1.76
+                    1.6742
                   ],
                   [
                     -10.82,
-                    2.35
+                    2.1875
                   ],
                   [
                     -12.75,
@@ -2524,11 +2524,11 @@
                   ],
                   [
                     -9.45,
-                    2.35
+                    2.1875
                   ],
                   [
                     -11.23,
-                    2.94
+                    2.7008
                   ],
                   [
                     -12.57,
@@ -2553,11 +2553,11 @@
                   ],
                   [
                     -10.29,
-                    1.76
+                    1.6742
                   ],
                   [
                     -11.25,
-                    2.35
+                    2.1875
                   ],
                   [
                     -11.57,
@@ -3311,11 +3311,11 @@
                   ],
                   [
                     -3.75,
-                    2.02
+                    2.018
                   ],
                   [
                     -6.54,
-                    2.68
+                    2.612
                   ],
                   [
                     -7.24,
@@ -3340,15 +3340,15 @@
                   ],
                   [
                     -4.52,
-                    2.68
+                    2.612
                   ],
                   [
                     -7.2,
-                    3.36
+                    3.224
                   ],
                   [
                     -7.87,
-                    2.02
+                    2.018
                   ]
                 ]
               },
@@ -3369,11 +3369,11 @@
                   ],
                   [
                     -4.57,
-                    2.02
+                    2.018
                   ],
                   [
                     -7.16,
-                    2.68
+                    2.612
                   ],
                   [
                     -7.8,
@@ -3534,7 +3534,7 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -3542,5 +3542,43 @@
     "front": 0.89,
     "rear": 0.79,
     "torso_width": 0.97
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 130,
+    "stages_with_changes": 15
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "tall upright jumper; narrow lower legs",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

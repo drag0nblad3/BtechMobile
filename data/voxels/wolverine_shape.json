@@ -45,7 +45,7 @@
                 "at": 32,
                 "polygon": [
                   [
-                    -7.9397,
+                    -7.777,
                     -3
                   ],
                   [
@@ -57,31 +57,31 @@
                     -4
                   ],
                   [
-                    7.9397,
+                    7.777,
                     -3
                   ],
                   [
-                    7.9397,
+                    7.777,
                     0
                   ],
                   [
-                    7.9397,
-                    3.9768
+                    7.777,
+                    2.9428
                   ],
                   [
                     3.9699,
-                    4.971
+                    3.6785
                   ],
                   [
                     -3.9699,
-                    4.971
+                    3.6785
                   ],
                   [
-                    -7.9397,
-                    3.9768
+                    -7.777,
+                    2.9428
                   ],
                   [
-                    -7.9397,
+                    -7.777,
                     0
                   ]
                 ]
@@ -90,43 +90,43 @@
                 "at": 36,
                 "polygon": [
                   [
-                    -7.9397,
+                    -7.777,
                     -4
                   ],
                   [
-                    -7.9397,
+                    -7.777,
                     -5
                   ],
                   [
-                    7.9397,
+                    7.777,
                     -5
                   ],
                   [
-                    7.9397,
+                    7.777,
                     -4
                   ],
                   [
-                    7.9397,
+                    7.777,
                     0
                   ],
                   [
-                    7.9397,
-                    4.971
+                    7.777,
+                    3.6785
                   ],
                   [
                     3.9699,
-                    5.9651
+                    4.4142
                   ],
                   [
                     -3.9699,
-                    5.9651
+                    4.4142
                   ],
                   [
-                    -7.9397,
-                    4.971
+                    -7.777,
+                    3.6785
                   ],
                   [
-                    -7.9397,
+                    -7.777,
                     0
                   ]
                 ]
@@ -135,7 +135,7 @@
                 "at": 41,
                 "polygon": [
                   [
-                    -9.9,
+                    -9.306,
                     -5
                   ],
                   [
@@ -147,31 +147,31 @@
                     -6
                   ],
                   [
-                    9.9,
+                    9.306,
                     -5
                   ],
                   [
-                    9.9,
+                    9.306,
                     -2
                   ],
                   [
-                    9.9,
-                    3.9768
+                    9.306,
+                    2.9428
                   ],
                   [
                     3.96,
-                    5.9651
+                    4.4142
                   ],
                   [
                     -3.96,
-                    5.9651
+                    4.4142
                   ],
                   [
-                    -9.9,
-                    3.9768
+                    -9.306,
+                    2.9428
                   ],
                   [
-                    -9.9,
+                    -9.306,
                     -2
                   ]
                 ]
@@ -180,7 +180,7 @@
                 "at": 46,
                 "polygon": [
                   [
-                    -9.8,
+                    -9.228,
                     -5
                   ],
                   [
@@ -192,31 +192,31 @@
                     -7
                   ],
                   [
-                    9.8,
+                    9.228,
                     -5
                   ],
                   [
-                    9.8,
+                    9.228,
                     -1
                   ],
                   [
-                    9.8,
-                    4.971
+                    9.228,
+                    3.6785
                   ],
                   [
                     4.9,
-                    6.9594
+                    5.15
                   ],
                   [
                     -4.9,
-                    6.9594
+                    5.15
                   ],
                   [
-                    -9.8,
-                    4.971
+                    -9.228,
+                    3.6785
                   ],
                   [
-                    -9.8,
+                    -9.228,
                     -1
                   ]
                 ]
@@ -241,27 +241,27 @@
                     -4
                   ],
                   [
-                    7.52,
+                    7.4496,
                     -1
                   ],
                   [
                     5.64,
-                    4.971
+                    3.6785
                   ],
                   [
                     3.76,
-                    5.9651
+                    4.4142
                   ],
                   [
                     -3.76,
-                    5.9651
+                    4.4142
                   ],
                   [
                     -5.64,
-                    4.971
+                    3.6785
                   ],
                   [
-                    -7.52,
+                    -7.4496,
                     -1
                   ]
                 ]
@@ -287,27 +287,27 @@
                   ],
                   [
                     5.52,
-                    0.9942
+                    0.7357
                   ],
                   [
                     5.52,
-                    3.9768
+                    2.9428
                   ],
                   [
                     2.76,
-                    3.9768
+                    2.9428
                   ],
                   [
                     -2.76,
-                    3.9768
+                    2.9428
                   ],
                   [
                     -5.52,
-                    3.9768
+                    2.9428
                   ],
                   [
                     -5.52,
-                    0.9942
+                    0.7357
                   ]
                 ]
               }
@@ -8233,7 +8233,7 @@
   "weapons": [],
   "art_revision": "sculpt-specific-slab-relief-v2-20261121",
   "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_signature": "Narrow angular head, offset shoulder launcher and integrated gun hand",
   "structural_consolidation": "2026-11-22-geometry-union",
   "visual_part_unification": {
@@ -8241,5 +8241,33 @@
     "mirrors_inherited": 4,
     "source_shapes_preserved": 82
   },
-  "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2"
+  "multi_angle_reference_revision": "2026-11-22-hero-proportion-round-2",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 110,
+    "stages_with_changes": 11
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  },
+  "reference_geometry_round_20261122": {
+    "revision": "profile-and-distinctive-parts-2",
+    "intent": "source-level corrective sculpt, reference-specific, no blanket body scaling",
+    "review_views": [
+      "front",
+      "side",
+      "three_quarter",
+      "top"
+    ],
+    "automated_not_art_approved": true
+  }
 }

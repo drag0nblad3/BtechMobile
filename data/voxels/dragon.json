@@ -91,11 +91,11 @@
                   ],
                   [
                     1.13,
-                    4.41
+                    4.108
                   ],
                   [
                     -1.36,
-                    4.06
+                    3.828
                   ],
                   [
                     -2.26,
@@ -132,11 +132,11 @@
                   ],
                   [
                     2.23,
-                    4.96
+                    4.548
                   ],
                   [
                     -2.67,
-                    4.51
+                    4.188
                   ],
                   [
                     -4.44,
@@ -169,15 +169,15 @@
                   ],
                   [
                     4.67,
-                    3.04
+                    3.012
                   ],
                   [
                     2.58,
-                    5.57
+                    5.036
                   ],
                   [
                     -3.12,
-                    5.06
+                    4.628
                   ],
                   [
                     -5.19,
@@ -214,11 +214,11 @@
                   ],
                   [
                     1.45,
-                    4.75
+                    4.38
                   ],
                   [
                     -1.74,
-                    4.36
+                    4.068
                   ],
                   [
                     -2.89,
@@ -2623,7 +2623,7 @@
                   ],
                   [
                     -7.41,
-                    3.74
+                    3.4628
                   ],
                   [
                     -9.35,
@@ -2652,11 +2652,11 @@
                   ],
                   [
                     -5.06,
-                    2.67
+                    2.5854
                   ],
                   [
                     -7.39,
-                    4.28
+                    3.9056
                   ],
                   [
                     -9.72,
@@ -2689,7 +2689,7 @@
                   ],
                   [
                     -7.35,
-                    3.21
+                    3.0282
                   ],
                   [
                     -8.84,
@@ -3230,11 +3230,11 @@
                   ],
                   [
                     -8.54,
-                    1.76
+                    1.7534
                   ],
                   [
                     -10.96,
-                    2.36
+                    2.2874
                   ],
                   [
                     -12.79,
@@ -3259,11 +3259,11 @@
                   ],
                   [
                     -9.71,
-                    2.36
+                    2.2874
                   ],
                   [
                     -11.37,
-                    2.94
+                    2.8036
                   ],
                   [
                     -12.62,
@@ -3288,11 +3288,11 @@
                   ],
                   [
                     -10.62,
-                    1.76
+                    1.7534
                   ],
                   [
                     -11.44,
-                    2.36
+                    2.2874
                   ],
                   [
                     -11.72,
@@ -4153,7 +4153,7 @@
                   ],
                   [
                     -7.28,
-                    2.69
+                    2.6639
                   ],
                   [
                     -7.99,
@@ -4178,11 +4178,11 @@
                   ],
                   [
                     -5.26,
-                    2.69
+                    2.6639
                   ],
                   [
                     -7.95,
-                    3.36
+                    3.2736
                   ],
                   [
                     -8.61,
@@ -4211,7 +4211,7 @@
                   ],
                   [
                     -7.9,
-                    2.69
+                    2.6639
                   ],
                   [
                     -8.55,
@@ -4450,7 +4450,7 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -4458,5 +4458,56 @@
     "front": 0.85,
     "rear": 0.7,
     "torso_width": 0.94
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 70,
+    "stages_with_changes": 10
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "long low sloped cockpit; forward autocannon",
+    "modified_polygon_vertices": 141,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  },
+  "reference_geometry_batch_01": {
+    "batch": 1,
+    "review": "source profile sculpt: forward head projections and weapon placements retained",
+    "angles_considered": [
+      "front",
+      "side",
+      "top",
+      "three_quarter"
+    ],
+    "reference_basis": "modern Catalyst miniature form",
+    "review_status": "pending runtime validation and art comparison"
   }
 }

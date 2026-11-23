@@ -26,6 +26,9 @@ func refresh() -> void:
 	for c in _box.get_children():
 		c.queue_free()
 	var s := controller.state
+	if _dropping != null and (s.game_over or bots.is_bot_turn() \
+			or not s.reserves.has(_dropping) or not controller.pending_units().has(_dropping)):
+		_dropping = null
 	if s.game_over:
 		return
 	if not s.point_blank.is_empty():
@@ -53,6 +56,12 @@ func _arm(r: Unit) -> void:
 ## Aims an armed combat drop at hex `c`. Returns true if it used the tap.
 func on_hex_tapped(c: Vector2i) -> bool:
 	if _dropping == null:
+		return false
+	var s := controller.state
+	if s.game_over or bots.is_bot_turn() or not s.reserves.has(_dropping) \
+			or not controller.pending_units().has(_dropping):
+		_dropping = null
+		refresh()
 		return false
 	var u := _dropping
 	_dropping = null

@@ -78,19 +78,19 @@
                   ],
                   [
                     3.48,
-                    2.02
+                    1.6766
                   ],
                   [
                     1.4,
-                    3.36
+                    2.7888
                   ],
                   [
                     -2.09,
-                    3.36
+                    2.7888
                   ],
                   [
                     -3.48,
-                    1.34
+                    1.1122
                   ]
                 ]
               },
@@ -115,19 +115,19 @@
                   ],
                   [
                     4.57,
-                    2.01
+                    1.6683
                   ],
                   [
                     2.29,
-                    4.03
+                    3.3449
                   ],
                   [
                     -3.05,
-                    4.03
+                    3.3449
                   ],
                   [
                     -4.57,
-                    1.34
+                    1.1122
                   ]
                 ]
               },
@@ -152,19 +152,19 @@
                   ],
                   [
                     3.98,
-                    2.02
+                    1.6766
                   ],
                   [
                     1.59,
-                    4.04
+                    3.3532
                   ],
                   [
                     -3.19,
-                    4.04
+                    3.3532
                   ],
                   [
                     -4.77,
-                    0.67
+                    0.5561
                   ]
                 ]
               },
@@ -193,11 +193,11 @@
                   ],
                   [
                     2.19,
-                    2.01
+                    1.6683
                   ],
                   [
                     -2.19,
-                    2.01
+                    1.6683
                   ],
                   [
                     -2.19,
@@ -943,15 +943,15 @@
                   ],
                   [
                     -5.15,
-                    2.84
+                    2.4708
                   ],
                   [
                     -8.35,
-                    4.26
+                    3.7062
                   ],
                   [
                     -10.76,
-                    2.13
+                    1.8531
                   ]
                 ]
               },
@@ -972,15 +972,15 @@
                   ],
                   [
                     -5.31,
-                    2.84
+                    2.4708
                   ],
                   [
                     -7.56,
-                    4.97
+                    4.3239
                   ],
                   [
                     -11.29,
-                    3.55
+                    3.0885
                   ],
                   [
                     -12.04,
@@ -1005,15 +1005,15 @@
                   ],
                   [
                     -6.12,
-                    2.84
+                    2.4708
                   ],
                   [
                     -8.85,
-                    4.97
+                    4.3239
                   ],
                   [
                     -10.9,
-                    2.84
+                    2.4708
                   ],
                   [
                     -9.88,
@@ -2674,14 +2674,14 @@
                   ],
                   [
                     -9.12,
-                    1.54
+                    1.309
                   ],
                   [
                     -12.23,
-                    2.31
+                    1.9635
                   ],
                   [
-                    -14.56,
+                    -14.404,
                     -0.86
                   ]
                 ]
@@ -2690,7 +2690,7 @@
                 "at": 27,
                 "polygon": [
                   [
-                    -14.3,
+                    -14.17,
                     -5.16
                   ],
                   [
@@ -2703,15 +2703,15 @@
                   ],
                   [
                     -8.64,
-                    1.54
+                    1.309
                   ],
                   [
                     -12.88,
-                    3.85
+                    3.2725
                   ],
                   [
-                    -15.71,
-                    0.77
+                    -15.439,
+                    0.6545
                   ]
                 ]
               },
@@ -2732,14 +2732,14 @@
                   ],
                   [
                     -10.22,
-                    2.31
+                    1.9635
                   ],
                   [
-                    -13.35,
-                    3.08
+                    -13.315,
+                    2.618
                   ],
                   [
-                    -14.61,
+                    -14.449,
                     0
                   ]
                 ]
@@ -4655,7 +4655,7 @@
     ]
   },
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
@@ -4665,5 +4665,57 @@
     "rear": 0.71,
     "torso_width": 0.95
   },
-  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 250,
+    "stages_with_changes": 20
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "off-center shoulder LRM; heavy PPC",
+    "modified_polygon_vertices": 178,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "rt",
+      "la",
+      "ra",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  },
+  "reference_geometry_round_20261122": {
+    "revision": "profile-and-distinctive-parts-2",
+    "intent": "source-level corrective sculpt, reference-specific, no blanket body scaling",
+    "review_views": [
+      "front",
+      "side",
+      "three_quarter",
+      "top"
+    ],
+    "automated_not_art_approved": true
+  }
 }

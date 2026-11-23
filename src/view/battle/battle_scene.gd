@@ -434,6 +434,10 @@ func _on_event(e: GameEvent) -> void:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
 			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
+			if e.type == GameEvent.PHASE_CHANGED:
+				attacks.clear()
+				if s.phase != Phase.Kind.MOVEMENT and movement.selected != null:
+					movement.clear_selection()
 			_update_status()
 			if e.type == GameEvent.ACTIVE_SIDE:
 				_rebuild_objectives()  # carried counters move with their 'Mechs

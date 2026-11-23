@@ -5,6 +5,14 @@ extends SceneTree
 ## godot --headless -s tools/voxel_multiangle_audit.gd -- /tmp/voxel_audit.json
 ## Front 55%, side 28%, oblique 12%, top 5%.
 
+# Independent initial sculpts must also participate in the blind, multi-angle
+# catalog audit; _shape-only selection previously overlooked these new models.
+const SOURCE_CHASSIS := [
+    "solitaire", "vulture_mk_iv", "hellhound_conjurer", "koshi_standard",
+    "hawkwolf_hwk4f", "black_hawk_standard", "dominator"
+]
+
+
 func _init() -> void:
 	var output := "user://voxel_multiangle_audit.json"
 	var args := OS.get_cmdline_user_args()
@@ -15,9 +23,11 @@ func _init() -> void:
 	var paths := DirAccess.get_files_at("res://data/voxels")
 	paths.sort()
 	for filename: String in paths:
-		if not filename.ends_with("_shape.json"):
+		var is_shape := filename.ends_with("_shape.json")
+		var is_source := filename.trim_suffix(".json") in SOURCE_CHASSIS
+		if not is_shape and not is_source:
 			continue
-		var id := filename.trim_suffix("_shape.json")
+		var id := filename.trim_suffix("_shape.json") if is_shape else filename.trim_suffix(".json")
 		var m := VxModel.load_file("res://data/voxels/" + filename)
 		fingerprints[id] = VxSilhouette.signature(m)
 		var inspection := VxConnectivity.audit(m)

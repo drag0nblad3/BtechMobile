@@ -87,11 +87,11 @@
                   ],
                   [
                     1.73,
-                    4.81
+                    4.4513
                   ],
                   [
                     -2.63,
-                    4.81
+                    4.4513
                   ],
                   [
                     -4.38,
@@ -124,11 +124,11 @@
                   ],
                   [
                     2.58,
-                    5.41
+                    4.9493
                   ],
                   [
                     -3.91,
-                    5.41
+                    4.9493
                   ],
                   [
                     -6.5,
@@ -157,15 +157,15 @@
                   ],
                   [
                     6.59,
-                    2.76
+                    2.7498
                   ],
                   [
                     2.93,
-                    6.07
+                    5.4971
                   ],
                   [
                     -4.4,
-                    6.07
+                    5.4971
                   ],
                   [
                     -7.33,
@@ -198,11 +198,11 @@
                   ],
                   [
                     1.96,
-                    5.17
+                    4.7501
                   ],
                   [
                     -2.94,
-                    5.17
+                    4.7501
                   ],
                   [
                     -4.91,
@@ -2913,11 +2913,11 @@
                   ],
                   [
                     -4.52,
-                    2.24
+                    2.1958
                   ],
                   [
                     -6.03,
-                    3.92
+                    3.6574
                   ],
                   [
                     -8.29,
@@ -2946,11 +2946,11 @@
                   ],
                   [
                     -4.58,
-                    2.8
+                    2.683
                   ],
                   [
                     -6.05,
-                    4.48
+                    4.1446
                   ],
                   [
                     -8.99,
@@ -2979,11 +2979,11 @@
                   ],
                   [
                     -5.32,
-                    2.24
+                    2.1958
                   ],
                   [
                     -6.05,
-                    3.36
+                    3.1702
                   ],
                   [
                     -8.25,
@@ -3841,11 +3841,11 @@
                   ],
                   [
                     -7.3,
-                    1.79
+                    1.731
                   ],
                   [
                     -10.23,
-                    2.39
+                    2.271
                   ],
                   [
                     -12.42,
@@ -3870,11 +3870,11 @@
                   ],
                   [
                     -7.38,
-                    2.39
+                    2.271
                   ],
                   [
                     -10.22,
-                    3
+                    2.82
                   ],
                   [
                     -12.34,
@@ -3899,11 +3899,11 @@
                   ],
                   [
                     -8.08,
-                    1.79
+                    1.731
                   ],
                   [
                     -10.21,
-                    2.39
+                    2.271
                   ],
                   [
                     -10.92,
@@ -4525,11 +4525,11 @@
                   ],
                   [
                     -3.02,
-                    2.05
+                    2.0255
                   ],
                   [
                     -5.93,
-                    2.74
+                    2.6672
                   ],
                   [
                     -6.65,
@@ -4554,15 +4554,15 @@
                   ],
                   [
                     -3.77,
-                    2.74
+                    2.6672
                   ],
                   [
                     -6.67,
-                    3.42
+                    3.2996
                   ],
                   [
                     -7.4,
-                    2.05
+                    2.0255
                   ]
                 ]
               },
@@ -4583,11 +4583,11 @@
                   ],
                   [
                     -3.77,
-                    2.05
+                    2.0255
                   ],
                   [
                     -6.67,
-                    2.74
+                    2.6672
                   ],
                   [
                     -7.4,
@@ -4789,7 +4789,7 @@
       "kind": "missile"
     }
   ],
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "multi_angle_reference_revision": "2026-11-22-front-then-side",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
@@ -4798,5 +4798,44 @@
     "front": 0.86,
     "rear": 0.72,
     "torso_width": 0.95
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 40,
+    "stages_with_changes": 5
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "slim jumping torso; offset main gun",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

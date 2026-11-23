@@ -1,0 +1,188 @@
+{
+  "source": "res://data/voxels/black_hawk_standard.json",
+  "id": "black_hawk_standard_3",
+  "name": "Black Hawk (Standard) 3 — ER medium laser arms",
+  "unit": "black_hawk_standard_3",
+  "part_overlays": [
+    {
+      "part": "la",
+      "shapes": [
+        {
+          "box": [
+            [
+              -24,
+              26,
+              -17
+            ],
+            [
+              -14,
+              31,
+              -12
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              -20,
+              27,
+              -17
+            ],
+            [
+              -20,
+              27,
+              -13
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -17,
+              29,
+              -17
+            ],
+            [
+              -17,
+              29,
+              -13
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -21,
+              32,
+              -4
+            ],
+            [
+              -17,
+              34,
+              2
+            ]
+          ],
+          "mat": "plate"
+        }
+      ]
+    },
+    {
+      "part": "ra",
+      "shapes": [
+        {
+          "box": [
+            [
+              13,
+              26,
+              -17
+            ],
+            [
+              23,
+              31,
+              -12
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "erase": [
+            [
+              19,
+              27,
+              -17
+            ],
+            [
+              19,
+              27,
+              -13
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              16,
+              29,
+              -17
+            ],
+            [
+              16,
+              29,
+              -13
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              17,
+              32,
+              -4
+            ],
+            [
+              21,
+              34,
+              2
+            ]
+          ],
+          "mat": "plate"
+        }
+      ]
+    }
+  ],
+  "muzzles": {
+    "LT": [
+      -13.5,
+      36.5,
+      -15.5
+    ],
+    "RT": [
+      12.5,
+      36.5,
+      -15.5
+    ],
+    "LA": [
+      [
+        -19.5,
+        27.5,
+        -16.5
+      ],
+      [
+        -16.5,
+        29.5,
+        -16.5
+      ]
+    ],
+    "RA": [
+      [
+        19.5,
+        27.5,
+        -16.5
+      ],
+      [
+        16.5,
+        29.5,
+        -16.5
+      ]
+    ]
+  },
+  "weapons": [
+    {
+      "label": "Pair of ER medium lasers in each arm",
+      "locs": [
+        "LA",
+        "RA"
+      ],
+      "kind": "laser"
+    },
+    {
+      "label": "ER large lasers",
+      "locs": [
+        "LT",
+        "RT"
+      ],
+      "kind": "laser"
+    }
+  ]
+}

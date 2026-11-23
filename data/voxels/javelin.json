@@ -83,15 +83,15 @@
                   ],
                   [
                     1.43,
-                    1.9
+                    1.834
                   ],
                   [
                     0.94,
-                    2.94
+                    2.6452
                   ],
                   [
                     -1.2,
-                    2.94
+                    2.6452
                   ],
                   [
                     -1.69,
@@ -120,15 +120,15 @@
                   ],
                   [
                     2.95,
-                    1.77
+                    1.7326
                   ],
                   [
                     1.97,
-                    3.1
+                    2.77
                   ],
                   [
                     -2.49,
-                    3.1
+                    2.77
                   ],
                   [
                     -3.47,
@@ -157,15 +157,15 @@
                   ],
                   [
                     3.37,
-                    1.99
+                    1.9042
                   ],
                   [
                     2.24,
-                    3.48
+                    3.0664
                   ],
                   [
                     -2.81,
-                    3.48
+                    3.0664
                   ],
                   [
                     -3.92,
@@ -194,15 +194,15 @@
                   ],
                   [
                     1.84,
-                    2.01
+                    1.9198
                   ],
                   [
                     1.22,
-                    3.15
+                    2.809
                   ],
                   [
                     -1.53,
-                    3.15
+                    2.809
                   ],
                   [
                     -2.14,
@@ -1508,7 +1508,7 @@
                   ],
                   [
                     -6.5,
-                    3.67
+                    3.2932
                   ],
                   [
                     -8.57,
@@ -1537,11 +1537,11 @@
                   ],
                   [
                     -5.31,
-                    2.62
+                    2.4952
                   ],
                   [
                     -6.56,
-                    4.2
+                    3.696
                   ],
                   [
                     -9.07,
@@ -1574,7 +1574,7 @@
                   ],
                   [
                     -6.66,
-                    3.15
+                    2.898
                   ],
                   [
                     -8.25,
@@ -2465,11 +2465,11 @@
                   ],
                   [
                     -8.01,
-                    1.89
+                    1.8393
                   ],
                   [
                     -10.07,
-                    2.53
+                    2.3961
                   ],
                   [
                     -12.14,
@@ -2494,11 +2494,11 @@
                   ],
                   [
                     -8.96,
-                    2.53
+                    2.3961
                   ],
                   [
                     -10.41,
-                    3.16
+                    2.9442
                   ],
                   [
                     -11.84,
@@ -2523,11 +2523,11 @@
                   ],
                   [
                     -9.74,
-                    1.89
+                    1.8393
                   ],
                   [
                     -10.42,
-                    2.53
+                    2.3961
                   ],
                   [
                     -10.77,
@@ -3214,7 +3214,7 @@
                   ],
                   [
                     -6.24,
-                    2.89
+                    2.8552
                   ],
                   [
                     -7,
@@ -3239,11 +3239,11 @@
                   ],
                   [
                     -4.07,
-                    2.89
+                    2.8552
                   ],
                   [
                     -6.95,
-                    3.61
+                    3.4888
                   ],
                   [
                     -7.67,
@@ -3272,7 +3272,7 @@
                   ],
                   [
                     -6.9,
-                    2.89
+                    2.8552
                   ],
                   [
                     -7.6,
@@ -3507,7 +3507,7 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -3515,5 +3515,56 @@
     "front": 0.77,
     "rear": 0.64,
     "torso_width": 0.9
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 192,
+    "stages_with_changes": 23
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "narrow scout with matched SRM pods",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  },
+  "reference_geometry_batch_01": {
+    "batch": 1,
+    "review": "model-specific anatomy correction",
+    "reference_basis": "Catalyst contemporary miniatures / distinctive chassis components",
+    "angles_considered": [
+      "front",
+      "side",
+      "top",
+      "three_quarter"
+    ],
+    "review_status": "source-adjusted, pending render+connectivity approval"
   }
 }

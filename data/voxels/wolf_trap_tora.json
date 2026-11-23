@@ -1,0 +1,6 @@
+{
+  "source": "res://data/voxels/wolf_trap_shape.json",
+  "id": "wolf_trap_tora",
+  "name": "Wolf Trap (Tora) WFT-1",
+  "subdivide": 2
+}

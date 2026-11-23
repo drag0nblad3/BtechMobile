@@ -2,12 +2,12 @@ class_name CinematicDirector
 extends Node
 ## Presentation-only camera director. Reacts to resolved combat events; never
 ## pauses the controller, changes a unit, or consumes battle RNG.
-## Manual gestures suspend the director until the next meaningful action.
+## Manual gestures own the camera until cinematics are explicitly toggled again.
 
 const HOLD_ACTION := 0.85
 const HOLD_IMPACT := 1.35
 const RETURN_DELAY := 0.45
-const MAX_QUEUE := 4
+const MAX_QUEUE := 2
 
 var rig: CameraRig
 var units: UnitsLayer
@@ -19,6 +19,7 @@ var _manual := 0.0
 var _tracking := -1
 var _return_wait := 0.0
 var _in_shot := false
+var _projectile := CinematicProjectileTrack.new()
 
 
 func setup(camera_rig: CameraRig, unit_layer: UnitsLayer) -> void:
@@ -36,6 +37,7 @@ func set_enabled(on: bool) -> void:
 	_tracking = -1
 	_return_wait = 0.0
 	_in_shot = false
+	_projectile.stop()
 	if on:
 		_return_pose = rig.capture_pose()
 	else:
@@ -50,6 +52,7 @@ func manual_input() -> void:
 	_tracking = -1
 	_return_wait = 0.0
 	_in_shot = false
+	_projectile.stop()
 	_queue.clear()
 
 
@@ -61,13 +64,13 @@ func on_event(e: GameEvent) -> void:
 	var urgent := false
 	match e.type:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
-			if units.is_busy():
+			if units.is_busy() and CinematicShotPolicy.follow_move(d):
 				shot = {"kind": "follow", "unit_id": int(d.get("unit_id", -1))}
 		GameEvent.WEAPON_FIRED:
-			# Routine misses and shots without ammunition should not hijack
-			# the camera; preserve cinematic framing for consequential hits.
-			if d.get("hit", false) and not d.get("no_ammo", false):
-				shot = {"kind": "pair", "unit_id": int(d.get("attacker_id", -1)),
+			# Reserve dramatic shots for consequential weapons, not every hit.
+			var kind := CinematicShotPolicy.weapon_kind(d)
+			if kind != "":
+				shot = {"kind": kind, "unit_id": int(d.get("attacker_id", -1)),
 					"target_id": int(d.get("target_id", -1))}
 		GameEvent.PHYSICAL:
 			if d.get("hit", false):
@@ -82,6 +85,7 @@ func on_event(e: GameEvent) -> void:
 	if _manual > 0.0:
 		return  # Touch control always wins, including subsequent combat events.
 	if urgent:
+		_projectile.stop()
 		_queue.clear()
 		_hold = 0.0
 		_tracking = -1
@@ -98,6 +102,7 @@ func _process(delta: float) -> void:
 	if _manual > 0.0:
 		_manual = maxf(0.0, _manual - delta)
 		return
+	_projectile.tick(delta, rig, units)
 	if _tracking >= 0:
 		var v: UnitView = units.views.get(_tracking)
 		if v != null and v.visible and units.is_busy():
@@ -134,7 +139,7 @@ func _next_shot() -> void:
 				_tracking = id
 				rig.cinematic_frame(at, 10.5, yaw + 0.22, deg_to_rad(42.0))
 				_hold = HOLD_ACTION
-			"pair":
+			"pair", "missile":
 				var other: UnitView = units.views.get(int(shot["target_id"]))
 				if other != null and other.visible:
 					var target := other.global_position
@@ -146,6 +151,8 @@ func _next_shot() -> void:
 				else:
 					rig.cinematic_frame(at, 9.0, yaw + 0.20, deg_to_rad(40.0))
 				_hold = HOLD_ACTION
+				if shot["kind"] == "missile" and other != null and other.visible:
+					_projectile.begin(id, int(shot["target_id"]))
 			"impact":
 				rig.cinematic_frame(at, 7.8, yaw + 0.28, deg_to_rad(36.0))
 				_hold = HOLD_IMPACT
