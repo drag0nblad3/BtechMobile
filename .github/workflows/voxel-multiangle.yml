@@ -95,10 +95,7 @@ jobs:
       - name: Render newly imported source chassis from front, side, quarter and rear
         run: |
           set -o pipefail
-          timeout --signal=TERM --kill-after=5s 600s xvfb-run -a godot \\
-            --rendering-method gl_compatibility --resolution 1400x800 \\
-            -s tools/capture_new_source_review.gd -- /tmp/voxel-qa \\
-            2>&1 | tee new-source-render.log
+          timeout --signal=TERM --kill-after=5s 600s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1400x800 -s tools/capture_new_source_review.gd -- /tmp/voxel-qa 2>&1 | tee new-source-render.log
           test -s /tmp/voxel-qa/new_source_chassis_four_angles.png
           [ "$(grep -c '^NEW_SOURCE_REVIEW_MODEL|' new-source-render.log)" -eq 7 ]
           grep -q '^NEW_SOURCE_REVIEW_RENDER|' new-source-render.log
