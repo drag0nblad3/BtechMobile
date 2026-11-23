@@ -82,3 +82,12 @@ Solitaire 3 still requires a reference-driven geometry and voxel pass.
 The November 22 availability snapshot predates these additions and must be
 refreshed through the canonical MUL importer before Strict availability can
 verify them. Do not fabricate faction/era cells.
+
+The Vulture Mk IV (Mad Dog Mk IV) **E** follows
+`Core Rules/Vulture Mk IV (Mad Dog Mk IV) E.mtf`, with its own
+`vulture_mk_iv` Omni chassis identity rather than the earlier Mad Dog.
+The new ProtoMech AC/8 uses standard sourced PAC ammunition; the other
+loadout parts are implemented Clan equipment. Its published MUL BV is 2,151.
+The MTF's `era: 3137` is not the official MUL introduction year (3140).
+The chassis requires its own reference-based voxel sculpt, not a remapped
+first-generation Mad Dog shape.

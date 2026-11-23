@@ -1,0 +1,99 @@
+{
+  "id": "vulture_mk_iv",
+  "name": "Vulture Mk IV (Mad Dog Mk IV)",
+  "tonnage": 60,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "tech_base": "clan",
+  "omni": true,
+  "heat_sink_type": "double",
+  "heat_sinks": 12,
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_lamellor",
+  "armor": {
+    "LA": 20,
+    "RA": 20,
+    "LT": 20,
+    "RT": 20,
+    "CT": 30,
+    "HD": 9,
+    "LL": 28,
+    "RL": 28
+  },
+  "rear_armor": {
+    "LT": 8,
+    "RT": 8,
+    "CT": 10
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "ferro_lamellor*4"
+    ],
+    "RA": [
+      "ferro_lamellor*4"
+    ],
+    "LT": [
+      "endo_steel*3"
+    ],
+    "RT": [
+      "endo_steel*3"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "ferro_lamellor*2"
+    ],
+    "RL": [
+      "ferro_lamellor*2"
+    ]
+  },
+  "configs": [
+    {
+      "model": "E",
+      "bv": 2151,
+      "role": "Juggernaut: an AC/8 in the left arm, four Clan Streak SRM 6 racks, improved heavy medium laser and ECM; walks 5, runs 8.",
+      "equipment": {
+        "LA": [
+          "c_proto_ac8",
+          "ammo:c_proto_ac8*2"
+        ],
+        "RA": [
+          "c_improved_heavy_medium_laser"
+        ],
+        "LT": [
+          "c_streak_srm6*2",
+          "ammo:c_streak_srm6",
+          "c_light_active_probe"
+        ],
+        "RT": [
+          "c_streak_srm6*2",
+          "ammo:c_streak_srm6",
+          "guardian_ecm"
+        ],
+        "CT": [
+          "c_er_small_laser*2"
+        ]
+      },
+      "source": {
+        "mul_id": null,
+        "megamek": "data/mekfiles/meks/Core Rules/Vulture Mk IV (Mad Dog Mk IV) E.mtf",
+        "published": "BT:CB",
+        "role": "Juggernaut",
+        "bv": "mul",
+        "mul_url": "https://masterunitlist.battletech.com/units/vulture-mk-iv-e"
+      }
+    }
+  ]
+}
