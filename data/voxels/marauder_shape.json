@@ -6,7 +6,7 @@
   "subdivide": 1,
   "legs": "digitigrade",
   "punch": false,
-  "notes": "Shape-first reference study of Catalyst-era MAD-3R. The low narrow beak, flattened carapace, dorsal AC/5, horizontal PPC forearms, raised hip joints, and backward knee silhouette are the priority. X right; -Z front.",
+  "notes": "Shape-first reference study of Catalyst-era MAD-3R. The low narrow beak, flattened carapace, dorsal AC/5, horizontal PPC forearms, raised hip joints, and backward knee silhouette are the priority. X right; -Z front. Distinct mirrored long PPC barrel subassemblies, low forward head chin and genuinely bored dorsal autocannon, without adding false torso volume or extra arms.",
   "materials": [
     {
       "name": "armor",
@@ -586,6 +586,33 @@
       ]
     },
     {
+      "name": "hd_chin",
+      "loc": "HD",
+      "parent": "hd",
+      "pivot": [
+        0,
+        29,
+        -22
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -1,
+              29,
+              -23
+            ],
+            [
+              1,
+              30,
+              -23
+            ]
+          ],
+          "mat": "trim"
+        }
+      ]
+    },
+    {
       "name": "lt",
       "loc": "LT",
       "parent": "ct",
@@ -994,21 +1021,6 @@
         {
           "box": [
             [
-              -20,
-              21,
-              -21
-            ],
-            [
-              -18,
-              23,
-              -15
-            ]
-          ],
-          "mat": "gun"
-        },
-        {
-          "box": [
-            [
               -18,
               18,
               -2
@@ -1034,6 +1046,38 @@
               2
             ]
           ]
+        }
+      ]
+    },
+    {
+      "name": "ra",
+      "mirror": "la",
+      "parent": "rt"
+    },
+    {
+      "name": "la_ppc",
+      "loc": "LA",
+      "parent": "la",
+      "pivot": [
+        -17,
+        23,
+        -14
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -20,
+              21,
+              -21
+            ],
+            [
+              -18,
+              23,
+              -15
+            ]
+          ],
+          "mat": "gun"
         },
         {
           "box": [
@@ -1064,13 +1108,27 @@
             ]
           ],
           "mat": "trim"
+        },
+        {
+          "erase": [
+            [
+              -19,
+              22,
+              -21
+            ],
+            [
+              -19,
+              22,
+              -19
+            ]
+          ]
         }
       ]
     },
     {
-      "name": "ra",
-      "mirror": "la",
-      "parent": "rt"
+      "name": "ra_ppc",
+      "mirror": "la_ppc",
+      "parent": "ra"
     },
     {
       "name": "rt_cannon",
@@ -1219,21 +1277,6 @@
         {
           "box": [
             [
-              1,
-              39,
-              -24
-            ],
-            [
-              1,
-              40,
-              -24
-            ]
-          ],
-          "mat": "recess"
-        },
-        {
-          "box": [
-            [
               0,
               37,
               -1
@@ -1275,6 +1318,20 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              1,
+              39,
+              -24
+            ],
+            [
+              1,
+              39,
+              -21
+            ]
+          ]
         }
       ]
     },

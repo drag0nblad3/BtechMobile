@@ -59,17 +59,41 @@ func test_all_critical_identity_recipes_have_paired_primary_resculpts() -> void:
 				chassis + " matching source and detailed edit")
 		for key: String in ["unit", "legs", "weapons"]:
 			check_eq(low.get(key), high.get(key), chassis + " " + key + " parity")
+		# Separate, location-owned weapon subassemblies may exist in the
+		# coarse rig without a dedicated detailed sculpt. Compare shared
+		# damageable parts by identity, not by array index or total count.
 		var parts_low: Array = low.get("parts", [])
 		var parts_high: Array = high.get("parts", [])
-		check_eq(parts_low.size(), parts_high.size(), chassis + " rig inventory")
-		for index in mini(parts_low.size(), parts_high.size()):
-			var a: Dictionary = parts_low[index]
-			var b: Dictionary = parts_high[index]
+		var low_by_name := {}
+		var high_by_name := {}
+		for part: Dictionary in parts_low:
+			var part_name: String = String(part.get("name", ""))
+			check(not low_by_name.has(part_name),
+					chassis + " duplicate source part " + part_name)
+			low_by_name[part_name] = part
+		for part: Dictionary in parts_high:
+			var part_name: String = String(part.get("name", ""))
+			check(not high_by_name.has(part_name),
+					chassis + " duplicate detail part " + part_name)
+			high_by_name[part_name] = part
+			check(low_by_name.has(part_name),
+					chassis + " detailed part missing in source: " + part_name)
+			if not low_by_name.has(part_name):
+				continue
+			var source_part: Dictionary = low_by_name[part_name]
 			for key: String in ["name", "loc", "parent", "pivot", "joint", "mirror"]:
-				check_eq(a.get(key), b.get(key), chassis + " " + key)
-			var a_loft := _first_y_loft(a)
-			var b_loft := _first_y_loft(b)
-			check_eq(a_loft, b_loft, chassis + " " + str(a["name"]) + " main contour")
+				check_eq(source_part.get(key), part.get(key),
+						chassis + " " + part_name + " " + key)
+			check_eq(_first_y_loft(source_part), _first_y_loft(part),
+						chassis + " " + part_name + " main contour")
+		for part: Dictionary in parts_low:
+			var part_name: String = String(part.get("name", ""))
+			if high_by_name.has(part_name):
+				continue
+			check(not String(part.get("parent", "")).is_empty(),
+					chassis + " new articulated part needs a parent: " + part_name)
+			check(not String(part.get("loc", "")).is_empty(),
+					chassis + " new articulated part needs a hit location: " + part_name)
 	check(retained >= 20, "preserve at least twenty unsuperseded identity resculpts")
 
 

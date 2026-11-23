@@ -48,6 +48,195 @@
       "role": "structure"
     }
   ],
+  "muzzles": {
+    "LA": [
+      -12,
+      22,
+      -25.5
+    ],
+    "RA": [
+      11,
+      22,
+      -25.5
+    ],
+    "LT": [
+      [
+        -8,
+        40,
+        -12.5
+      ],
+      [
+        -6,
+        40,
+        -12.5
+      ],
+      [
+        -8,
+        42,
+        -12.5
+      ],
+      [
+        -6,
+        42,
+        -12.5
+      ],
+      [
+        -8,
+        44,
+        -12.5
+      ]
+    ],
+    "RT": [
+      [
+        7.5,
+        39.5,
+        -12.5
+      ],
+      [
+        7.5,
+        41.5,
+        -12.5
+      ],
+      [
+        7.5,
+        43.5,
+        -12.5
+      ],
+      [
+        9.5,
+        39.5,
+        -12.5
+      ],
+      [
+        9.5,
+        41.5,
+        -12.5
+      ],
+      [
+        9.5,
+        43.5,
+        -12.5
+      ],
+      [
+        4.5,
+        40.5,
+        -12.5
+      ],
+      [
+        4.5,
+        41.5,
+        -12.5
+      ],
+      [
+        4.5,
+        42.5,
+        -12.5
+      ],
+      [
+        4.5,
+        43.5,
+        -12.5
+      ],
+      [
+        4.5,
+        44.5,
+        -12.5
+      ]
+    ]
+  },
+  "jets": {},
+  "weapons": [
+    {
+      "label": "Arm weapons",
+      "locs": [
+        "LA",
+        "RA"
+      ],
+      "kind": "cannon"
+    },
+    {
+      "label": "Torso weapons",
+      "locs": [
+        "LT",
+        "RT"
+      ],
+      "kind": "missile"
+    }
+  ],
+  "exclusive_parts": true,
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_quality_passes": 100,
+  "multi_angle_reference_revision": "2026-11-22-reference-geometry-round-2",
+  "proportion_sculpt_revision": "2026-11-22-reference-anchored-stance-and-profile",
+  "proportion_sculpt_profile": {
+    "leg_growth_voxels": 4,
+    "front_mass_scale": 0.81,
+    "rear_mass_scale": 0.62,
+    "category": "human-upright"
+  },
+  "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
+  "reference_contour_round_20261122": {
+    "method": "part-specific structural loft correction",
+    "source": "Catalyst plastic/force-pack photographs (documented in docs/graphics/reference-sculpt-reconciliation-20261122.md)",
+    "note": "Compact torso and shoulder roofs; keep asymmetric launcher, separated arms and barrel projections."
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 20,
+    "stages_with_changes": 5
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "strong paired energy arms; angular shoulders",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Recovered historic 100-pass multiview and 59-chassis identity records, preserving current source loft sculpt."
+  },
+  "reference_geometry_round_20261122": {
+    "revision": "profile-and-distinctive-parts-2",
+    "intent": "source-level corrective sculpt, reference-specific, no blanket body scaling",
+    "review_views": [
+      "front",
+      "side",
+      "three_quarter",
+      "top"
+    ],
+    "automated_not_art_approved": true
+  },
+  "reference_identity_resculpt": {
+    "revision": "targeted-critical-confusion-20261122-c",
+    "neighbor": "ymir/kintaro/flashman",
+    "intent": "Thin shoulders and forearm armor around arm weapons; remove round continuous side shield mass while keeping real top-shoulder weapon cap",
+    "reference": "https://www.sarna.net/wiki/BattleAxe",
+    "primary_loft_vertices_reshaped": 140
+  },
+  "notes": " Narrowed and shortened the exaggerated shoulder slab; separated LT five-port LRM and RT six-port SRM racks with real cutouts; reshaped arm PPC muzzle bores and retained articulated supporting frames. Corrected the official BKX-7K right-torso weapon complement: separate SRM-6 and LRM-5 housings, with eleven distinct ports plus the left LRM-5. A narrow inner launcher is used instead of recreating an oversized side plate.",
   "parts": [
     {
       "name": "ct",
@@ -842,109 +1031,109 @@
                 "at": 39,
                 "polygon": [
                   [
-                    -8.26,
+                    -7.822,
                     -8.91
                   ],
                   [
-                    -5.32,
+                    -5.764,
                     -8.91
                   ],
                   [
-                    -4.08,
+                    -4.896,
                     -7.86
                   ],
                   [
-                    -4.08,
+                    -4.896,
                     -3.48
                   ],
                   [
-                    -5.32,
+                    -5.764,
                     -2.43
                   ],
                   [
-                    -8.26,
+                    -7.822,
                     -2.43
                   ],
                   [
-                    -9.5,
+                    -8.69,
                     -3.48
                   ],
                   [
-                    -9.5,
-                    -7.86
-                  ]
-                ]
-              },
-              {
-                "at": 43,
-                "polygon": [
-                  [
-                    -8.26,
-                    -8.91
-                  ],
-                  [
-                    -5.32,
-                    -8.91
-                  ],
-                  [
-                    -4.08,
-                    -7.86
-                  ],
-                  [
-                    -4.08,
-                    -3.48
-                  ],
-                  [
-                    -5.32,
-                    -2.43
-                  ],
-                  [
-                    -8.26,
-                    -2.43
-                  ],
-                  [
-                    -9.5,
-                    -3.48
-                  ],
-                  [
-                    -9.5,
+                    -8.69,
                     -7.86
                   ]
                 ]
               },
               {
-                "at": 46,
+                "at": 42,
                 "polygon": [
                   [
-                    -7.31,
+                    -7.822,
+                    -8.91
+                  ],
+                  [
+                    -5.764,
+                    -8.91
+                  ],
+                  [
+                    -4.896,
+                    -7.86
+                  ],
+                  [
+                    -4.896,
+                    -3.48
+                  ],
+                  [
+                    -5.764,
+                    -2.43
+                  ],
+                  [
+                    -7.822,
+                    -2.43
+                  ],
+                  [
+                    -8.69,
+                    -3.48
+                  ],
+                  [
+                    -8.69,
+                    -7.86
+                  ]
+                ]
+              },
+              {
+                "at": 44,
+                "polygon": [
+                  [
+                    -7.157,
                     -8.1
                   ],
                   [
-                    -5.98,
+                    -6.226,
                     -8.1
                   ],
                   [
-                    -4.75,
+                    -5.365,
                     -7.05
                   ],
                   [
-                    -4.75,
+                    -5.365,
                     -4.29
                   ],
                   [
-                    -5.98,
+                    -6.226,
                     -3.24
                   ],
                   [
-                    -7.31,
+                    -7.157,
                     -3.24
                   ],
                   [
-                    -8.55,
+                    -8.025,
                     -4.29
                   ],
                   [
-                    -8.55,
+                    -8.025,
                     -7.05
                   ]
                 ]
@@ -1027,6 +1216,34 @@
             ]
           ],
           "mat": "recess"
+        },
+        {
+          "erase": [
+            [
+              -8,
+              42,
+              -11
+            ],
+            [
+              -8,
+              42,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -6,
+              42,
+              -11
+            ],
+            [
+              -6,
+              42,
+              -10
+            ]
+          ]
         }
       ],
       "parent": "ct"
@@ -1109,6 +1326,371 @@
             ]
           ],
           "mat": "recess"
+        },
+        {
+          "box": [
+            [
+              7,
+              36,
+              -7
+            ],
+            [
+              9,
+              38,
+              -6
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
+    },
+    {
+      "name": "lt_lrm5",
+      "loc": "LT",
+      "parent": "lt",
+      "pivot": [
+        -7,
+        40,
+        -8
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -9,
+              38,
+              -12
+            ],
+            [
+              -5,
+              45,
+              -10
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -9,
+              38,
+              -9
+            ],
+            [
+              -5,
+              42,
+              -8
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -8,
+              40,
+              -12
+            ],
+            [
+              -8,
+              40,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -6,
+              40,
+              -12
+            ],
+            [
+              -6,
+              40,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -8,
+              42,
+              -12
+            ],
+            [
+              -8,
+              42,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -6,
+              42,
+              -12
+            ],
+            [
+              -6,
+              42,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -8,
+              44,
+              -12
+            ],
+            [
+              -8,
+              44,
+              -10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rt_srm6",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        8,
+        40,
+        -8
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              6,
+              38,
+              -12
+            ],
+            [
+              10,
+              45,
+              -10
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              7,
+              36,
+              -9
+            ],
+            [
+              9,
+              39,
+              -8
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              7,
+              39,
+              -12
+            ],
+            [
+              7,
+              39,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              7,
+              41,
+              -12
+            ],
+            [
+              7,
+              41,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              7,
+              43,
+              -12
+            ],
+            [
+              7,
+              43,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              9,
+              39,
+              -12
+            ],
+            [
+              9,
+              39,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              9,
+              41,
+              -12
+            ],
+            [
+              9,
+              41,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              9,
+              43,
+              -12
+            ],
+            [
+              9,
+              43,
+              -10
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "rt_lrm5",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        6,
+        39,
+        -7
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              3,
+              39,
+              -12
+            ],
+            [
+              5,
+              45,
+              -10
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              5,
+              38,
+              -9
+            ],
+            [
+              7,
+              41,
+              -7
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              4,
+              40,
+              -12
+            ],
+            [
+              4,
+              40,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              41,
+              -12
+            ],
+            [
+              4,
+              41,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              42,
+              -12
+            ],
+            [
+              4,
+              42,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              43,
+              -12
+            ],
+            [
+              4,
+              43,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              44,
+              -12
+            ],
+            [
+              4,
+              44,
+              -10
+            ]
+          ]
         }
       ]
     },
@@ -1329,6 +1911,20 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -12,
+              22,
+              -25
+            ],
+            [
+              -12,
+              23,
+              -23
+            ]
+          ]
         }
       ],
       "parent": "lt",
@@ -2032,98 +2628,5 @@
       "mirror": "ll_foot",
       "parent": "rl_shin"
     }
-  ],
-  "muzzles": {},
-  "jets": {},
-  "weapons": [
-    {
-      "label": "Arm weapons",
-      "locs": [
-        "LA",
-        "RA"
-      ],
-      "kind": "cannon"
-    },
-    {
-      "label": "Torso weapons",
-      "locs": [
-        "LT",
-        "RT"
-      ],
-      "kind": "missile"
-    }
-  ],
-  "exclusive_parts": true,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 100,
-  "multi_angle_reference_revision": "2026-11-22-reference-geometry-round-2",
-  "proportion_sculpt_revision": "2026-11-22-reference-anchored-stance-and-profile",
-  "proportion_sculpt_profile": {
-    "leg_growth_voxels": 4,
-    "front_mass_scale": 0.81,
-    "rear_mass_scale": 0.62,
-    "category": "human-upright"
-  },
-  "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
-  "reference_contour_round_20261122": {
-    "method": "part-specific structural loft correction",
-    "source": "Catalyst plastic/force-pack photographs (documented in docs/graphics/reference-sculpt-reconciliation-20261122.md)",
-    "note": "Compact torso and shoulder roofs; keep asymmetric launcher, separated arms and barrel projections."
-  },
-  "reference_review_views": [
-    "front",
-    "side",
-    "rear",
-    "top",
-    "three_quarter"
-  ],
-  "shape_review_50": {
-    "passes": 50,
-    "edited_vertices": 20,
-    "stages_with_changes": 5
-  },
-  "blind_identity_resculpt": {
-    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
-    "identity_signature": "strong paired energy arms; angular shoulders",
-    "modified_polygon_vertices": 137,
-    "major_form_targets": [
-      "ct",
-      "hd",
-      "lt",
-      "la",
-      "ll",
-      "ll_shin",
-      "ll_foot"
-    ],
-    "review_views": [
-      "front",
-      "side",
-      "top",
-      "rear",
-      "three_quarter"
-    ],
-    "automatic_not_human_approved": true
-  },
-  "review_lineage_reconciled_20261122": {
-    "source_commit": "2779714f",
-    "reason": "Recovered historic 100-pass multiview and 59-chassis identity records, preserving current source loft sculpt."
-  },
-  "reference_geometry_round_20261122": {
-    "revision": "profile-and-distinctive-parts-2",
-    "intent": "source-level corrective sculpt, reference-specific, no blanket body scaling",
-    "review_views": [
-      "front",
-      "side",
-      "three_quarter",
-      "top"
-    ],
-    "automated_not_art_approved": true
-  },
-  "reference_identity_resculpt": {
-    "revision": "targeted-critical-confusion-20261122-c",
-    "neighbor": "ymir/kintaro/flashman",
-    "intent": "Thin shoulders and forearm armor around arm weapons; remove round continuous side shield mass while keeping real top-shoulder weapon cap",
-    "reference": "https://www.sarna.net/wiki/BattleAxe",
-    "primary_loft_vertices_reshaped": 140
-  }
+  ]
 }
