@@ -1,0 +1,62 @@
+{
+  "reference_sculpt": "Catalyst Game Labs 2021 Inner Sphere Striker Lance 35729, base 63",
+  "control_camera_model": "jenner_assembly_v8.json",
+  "reference_registration": "Perspective yaw/elevation/roll/distance and independent left/right leg pose fixed using the same 2021 photo annotations",
+  "registration_coverage": "3 of 4 photos; rear-right unscored due to missing trustworthy pose/camera landmarks",
+  "metric_note": "Coarse hand-annotated photos and uncalibrated lens; IoU/RMSE are experimental proxies, not accuracy percentages",
+  "reference_geometry": "Original v10 experimental repository recipe",
+  "tested_locally_with_repo_equivalent_source": true,
+  "passes": [
+    {
+      "stage": "00_v10_control",
+      "subassemblies": 30,
+      "voxels": 15234,
+      "registered_iou": 0.7182,
+      "rigid_landmark_rmse": 0.02308,
+      "issues": 0
+    },
+    {
+      "stage": "01_torso",
+      "subassemblies": 30,
+      "voxels": 14786,
+      "registered_iou": 0.7177,
+      "rigid_landmark_rmse": 0.023,
+      "issues": 0
+    },
+    {
+      "stage": "02_disc_cockpit",
+      "subassemblies": 30,
+      "voxels": 14784,
+      "registered_iou": 0.7185,
+      "rigid_landmark_rmse": 0.02258,
+      "issues": 0
+    },
+    {
+      "stage": "03_shoulders_pods",
+      "subassemblies": 30,
+      "voxels": 14919,
+      "registered_iou": 0.7183,
+      "rigid_landmark_rmse": 0.02247,
+      "issues": 0
+    },
+    {
+      "stage": "04_knees",
+      "subassemblies": 30,
+      "voxels": 14965,
+      "registered_iou": 0.7186,
+      "rigid_landmark_rmse": 0.02247,
+      "issues": 0
+    },
+    {
+      "stage": "05_dorsal_dish",
+      "subassemblies": 30,
+      "voxels": 14977,
+      "registered_iou": 0.7211,
+      "rigid_landmark_rmse": 0.02183,
+      "issues": 0
+    }
+  ],
+  "interpretation": "Small, uncertain proxy improvements plus less occupied mass; image matching must be verified against better calibrated photos; no production art replaced",
+  "test_status": "Five-pass regression suite passed locally (7 tests). Earlier full experimental suite passed 53 tests on the prior local control files. GitHub CI is separately checked.",
+  "scope": "Only experiments/miniature_lab/ changed; no merged models or game rules touched"
+}
