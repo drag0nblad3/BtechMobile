@@ -31,6 +31,9 @@ static func build(def: UnitDef, side: int) -> Node3D:
 
 ## A battle armor squad (UnitDef.battle_armor): one suit per trooper.
 static func build_squad(def: UnitDef, side: int) -> Node3D:
+	var voxel := VoxelAsset.build_record_squad(def, side)
+	if voxel != null:
+		return voxel
 	var root := Node3D.new()
 	root.name = "PlaceholderSquad"
 	var body := PlaceholderMech._mat(PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()])
@@ -40,6 +43,9 @@ static func build_squad(def: UnitDef, side: int) -> Node3D:
 
 ## A record-sheet combat vehicle (UnitDef.vehicle) in the same style.
 static func build_vehicle(def: UnitDef, side: int) -> Node3D:
+	var voxel := VoxelAsset.build_record_vehicle(def, side)
+	if voxel != null:
+		return voxel
 	var root := Node3D.new()
 	root.name = "PlaceholderVehicle"
 	var body := PlaceholderMech._mat(PlaceholderMech.SIDE_COLORS[side % PlaceholderMech.SIDE_COLORS.size()])
