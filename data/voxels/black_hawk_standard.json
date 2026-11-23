@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Second reference-first Black Hawk **Standard BattleMech** pass: shallow central armor deck and separated lateral arm actuator facets. Retains both eight-port Streak launcher blocks and separate low cockpit; not the Nova Omni hull.",
+  "notes": "Second reference-first Black Hawk **Standard BattleMech** pass: shallow central armor deck and separated lateral arm actuator facets. Retains both eight-port Streak launcher blocks and separate low cockpit; not the Nova Omni hull. Follow-up render correction: independent rounded/tapered shoulder cooling drums rise above the lower recessed cockpit, with shallow physical front inset and intact torso lasers; Standard's shoulders now break the humanoid upper outline without borrowing a Nova Omni sculpt.",
   "parts": [
     {
       "name": "ct",
@@ -612,6 +612,206 @@
             [
               -10,
               43,
+              8
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 35,
+                "polygon": [
+                  [
+                    -15,
+                    -2
+                  ],
+                  [
+                    -11,
+                    -2
+                  ],
+                  [
+                    -9,
+                    0
+                  ],
+                  [
+                    -9,
+                    5
+                  ],
+                  [
+                    -11,
+                    7
+                  ],
+                  [
+                    -15,
+                    7
+                  ],
+                  [
+                    -17,
+                    5
+                  ],
+                  [
+                    -17,
+                    0
+                  ]
+                ]
+              },
+              {
+                "at": 40,
+                "polygon": [
+                  [
+                    -15,
+                    -4
+                  ],
+                  [
+                    -10,
+                    -4
+                  ],
+                  [
+                    -8,
+                    -1
+                  ],
+                  [
+                    -8,
+                    6
+                  ],
+                  [
+                    -11,
+                    8
+                  ],
+                  [
+                    -16,
+                    8
+                  ],
+                  [
+                    -18,
+                    6
+                  ],
+                  [
+                    -18,
+                    -1
+                  ]
+                ]
+              },
+              {
+                "at": 45,
+                "polygon": [
+                  [
+                    -14,
+                    -3
+                  ],
+                  [
+                    -11,
+                    -3
+                  ],
+                  [
+                    -9,
+                    -1
+                  ],
+                  [
+                    -9,
+                    5
+                  ],
+                  [
+                    -11,
+                    7
+                  ],
+                  [
+                    -15,
+                    7
+                  ],
+                  [
+                    -17,
+                    5
+                  ],
+                  [
+                    -17,
+                    -1
+                  ]
+                ]
+              },
+              {
+                "at": 48,
+                "polygon": [
+                  [
+                    -13,
+                    0
+                  ],
+                  [
+                    -12,
+                    0
+                  ],
+                  [
+                    -11,
+                    1
+                  ],
+                  [
+                    -11,
+                    4
+                  ],
+                  [
+                    -12,
+                    5
+                  ],
+                  [
+                    -14,
+                    5
+                  ],
+                  [
+                    -15,
+                    4
+                  ],
+                  [
+                    -15,
+                    1
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -15,
+              40,
+              -6
+            ],
+            [
+              -10,
+              44,
+              -4
+            ]
+          ],
+          "mat": "rack"
+        },
+        {
+          "erase": [
+            [
+              -14,
+              41,
+              -7
+            ],
+            [
+              -11,
+              43,
+              -3
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -16,
+              39,
+              7
+            ],
+            [
+              -11,
+              41,
               8
             ]
           ],

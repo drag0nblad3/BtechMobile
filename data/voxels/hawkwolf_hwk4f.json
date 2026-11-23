@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Second TRO3145 Mercs HawkWolf pass: towering arm missile racks now rake forward with canted, faceted lower noses and **15 actual open ports per arm**; torso head pitched forward with a lower shielded visor. Rockets remain in their canonical arms.",
+  "notes": "Second TRO3145 Mercs HawkWolf pass: towering arm missile racks now rake forward with canted, faceted lower noses and **15 actual open ports per arm**; torso head pitched forward with a lower shielded visor. Rockets remain in their canonical arms. Follow-up render correction: arm launcher grilles are no longer front-on rectangular slabs but vertically chamfered eight-vertex tapered racks, preserving all 15 cut openings each and independent arm pivots.",
   "parts": [
     {
       "name": "ct",
@@ -961,18 +961,122 @@
           "mat": "armor"
         },
         {
-          "box": [
-            [
-              -23,
-              26,
-              -20
-            ],
-            [
-              -17,
-              37,
-              -13
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 25,
+                "polygon": [
+                  [
+                    -23,
+                    -20
+                  ],
+                  [
+                    -17,
+                    -20
+                  ],
+                  [
+                    -16,
+                    -18
+                  ],
+                  [
+                    -16,
+                    -14
+                  ],
+                  [
+                    -18,
+                    -12
+                  ],
+                  [
+                    -22,
+                    -12
+                  ],
+                  [
+                    -24,
+                    -14
+                  ],
+                  [
+                    -24,
+                    -18
+                  ]
+                ]
+              },
+              {
+                "at": 31,
+                "polygon": [
+                  [
+                    -24,
+                    -20
+                  ],
+                  [
+                    -16,
+                    -20
+                  ],
+                  [
+                    -15,
+                    -18
+                  ],
+                  [
+                    -15,
+                    -13
+                  ],
+                  [
+                    -17,
+                    -12
+                  ],
+                  [
+                    -23,
+                    -12
+                  ],
+                  [
+                    -25,
+                    -14
+                  ],
+                  [
+                    -25,
+                    -18
+                  ]
+                ]
+              },
+              {
+                "at": 38,
+                "polygon": [
+                  [
+                    -23,
+                    -17
+                  ],
+                  [
+                    -18,
+                    -17
+                  ],
+                  [
+                    -17,
+                    -15
+                  ],
+                  [
+                    -17,
+                    -13
+                  ],
+                  [
+                    -18,
+                    -12
+                  ],
+                  [
+                    -22,
+                    -12
+                  ],
+                  [
+                    -24,
+                    -13
+                  ],
+                  [
+                    -24,
+                    -15
+                  ]
+                ]
+              }
             ]
-          ],
+          },
           "mat": "edge"
         },
         {
@@ -1339,18 +1443,122 @@
           "mat": "armor"
         },
         {
-          "box": [
-            [
-              16,
-              26,
-              -20
-            ],
-            [
-              22,
-              37,
-              -13
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 25,
+                "polygon": [
+                  [
+                    24,
+                    -18
+                  ],
+                  [
+                    24,
+                    -14
+                  ],
+                  [
+                    22,
+                    -12
+                  ],
+                  [
+                    18,
+                    -12
+                  ],
+                  [
+                    16,
+                    -14
+                  ],
+                  [
+                    16,
+                    -18
+                  ],
+                  [
+                    17,
+                    -20
+                  ],
+                  [
+                    23,
+                    -20
+                  ]
+                ]
+              },
+              {
+                "at": 31,
+                "polygon": [
+                  [
+                    25,
+                    -18
+                  ],
+                  [
+                    25,
+                    -14
+                  ],
+                  [
+                    23,
+                    -12
+                  ],
+                  [
+                    17,
+                    -12
+                  ],
+                  [
+                    15,
+                    -13
+                  ],
+                  [
+                    15,
+                    -18
+                  ],
+                  [
+                    16,
+                    -20
+                  ],
+                  [
+                    24,
+                    -20
+                  ]
+                ]
+              },
+              {
+                "at": 38,
+                "polygon": [
+                  [
+                    24,
+                    -15
+                  ],
+                  [
+                    24,
+                    -13
+                  ],
+                  [
+                    22,
+                    -12
+                  ],
+                  [
+                    18,
+                    -12
+                  ],
+                  [
+                    17,
+                    -13
+                  ],
+                  [
+                    17,
+                    -15
+                  ],
+                  [
+                    18,
+                    -17
+                  ],
+                  [
+                    23,
+                    -17
+                  ]
+                ]
+              }
             ]
-          ],
+          },
           "mat": "edge"
         },
         {

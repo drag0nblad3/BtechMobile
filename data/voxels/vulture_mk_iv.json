@@ -44,7 +44,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Second source-led pass: compressed deep torso rear quarters and extended *both* supported forward gun nacelles to reflect the horizontal avian flight profile of the Mk IV plastic, retaining 12 open tubes in each high missile cheek. Not the original Mad Dog.",
+  "notes": "Second source-led pass: compressed deep torso rear quarters and extended *both* supported forward gun nacelles to reflect the horizontal avian flight profile of the Mk IV plastic, retaining 12 open tubes in each high missile cheek. Not the original Mad Dog. Follow-up review of the 4-view contact sheet: raised both long arm gun modules toward shoulder level so they read as lateral wing/nacelle structures rather than hanging humanoid forearms; parent shoulder contacts remain overlapping.",
   "parts": [
     {
       "name": "ct",
@@ -982,7 +982,7 @@
       "parent": "lt",
       "pivot": [
         -18,
-        32,
+        36,
         -2
       ],
       "joint": "shoulder",
@@ -991,12 +991,12 @@
           "box": [
             [
               -21,
-              30,
+              34,
               -4
             ],
             [
               -15,
-              34,
+              38,
               3
             ]
           ],
@@ -1007,7 +1007,7 @@
             "axis": "y",
             "sections": [
               {
-                "at": 22,
+                "at": 26,
                 "polygon": [
                   [
                     -23,
@@ -1036,7 +1036,7 @@
                 ]
               },
               {
-                "at": 29,
+                "at": 33,
                 "polygon": [
                   [
                     -24,
@@ -1065,7 +1065,7 @@
                 ]
               },
               {
-                "at": 34,
+                "at": 38,
                 "polygon": [
                   [
                     -21,
@@ -1101,12 +1101,12 @@
           "box": [
             [
               -23,
-              25,
+              29,
               -22
             ],
             [
               -19,
-              29,
+              33,
               -14
             ]
           ],
@@ -1116,12 +1116,12 @@
           "box": [
             [
               -22,
-              25,
+              29,
               -29
             ],
             [
               -20,
-              28,
+              32,
               -20
             ]
           ],
@@ -1131,12 +1131,12 @@
           "box": [
             [
               -23,
-              25,
+              29,
               -27
             ],
             [
               -20,
-              29,
+              33,
               -22
             ]
           ],
@@ -1146,12 +1146,12 @@
           "erase": [
             [
               -22,
-              26,
+              30,
               -30
             ],
             [
               -21,
-              27,
+              31,
               -22
             ]
           ]
@@ -1160,12 +1160,12 @@
           "box": [
             [
               -22,
-              20,
+              24,
               -8
             ],
             [
               -20,
-              23,
+              27,
               -3
             ]
           ],
@@ -1179,7 +1179,7 @@
       "parent": "rt",
       "pivot": [
         18,
-        32,
+        36,
         -2
       ],
       "joint": "shoulder",
@@ -1188,12 +1188,12 @@
           "box": [
             [
               15,
-              30,
+              34,
               -4
             ],
             [
               21,
-              34,
+              38,
               3
             ]
           ],
@@ -1204,7 +1204,7 @@
             "axis": "y",
             "sections": [
               {
-                "at": 22,
+                "at": 26,
                 "polygon": [
                   [
                     17,
@@ -1233,7 +1233,7 @@
                 ]
               },
               {
-                "at": 29,
+                "at": 33,
                 "polygon": [
                   [
                     17,
@@ -1262,7 +1262,7 @@
                 ]
               },
               {
-                "at": 34,
+                "at": 38,
                 "polygon": [
                   [
                     17,
@@ -1298,12 +1298,12 @@
           "box": [
             [
               20,
-              23,
+              27,
               -22
             ],
             [
               24,
-              30,
+              34,
               -14
             ]
           ],
@@ -1313,12 +1313,12 @@
           "box": [
             [
               21,
-              25,
+              29,
               -29
             ],
             [
               23,
-              28,
+              32,
               -20
             ]
           ],
@@ -1328,12 +1328,12 @@
           "box": [
             [
               20,
-              25,
+              29,
               -27
             ],
             [
               24,
-              29,
+              33,
               -22
             ]
           ],
@@ -1343,12 +1343,12 @@
           "erase": [
             [
               22,
-              26,
+              30,
               -30
             ],
             [
               22,
-              27,
+              31,
               -22
             ]
           ]
@@ -1357,12 +1357,12 @@
           "box": [
             [
               20,
-              19,
+              23,
               -7
             ],
             [
               22,
-              22,
+              26,
               -3
             ]
           ],
@@ -1935,12 +1935,12 @@
   "muzzles": {
     "LA": [
       -21.5,
-      26.5,
+      30.5,
       -29.5
     ],
     "RA": [
       22.5,
-      26.5,
+      30.5,
       -29.5
     ],
     "LT": [

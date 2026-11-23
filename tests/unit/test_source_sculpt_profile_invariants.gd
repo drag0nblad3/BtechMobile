@@ -104,3 +104,12 @@ func test_new_chassis_bores_remain_physical_after_resculpt() -> void:
 		check(m.errors.is_empty(), id + " has valid source geometry")
 		check_eq(int(m.quality_report.get("floating_islands", -1)), 0,
 			id + " must not add floating detail islands")
+
+
+func test_black_hawk_standard_has_higher_split_shoulders_than_head() -> void:
+	var d := _source("black_hawk_standard")
+	check(_extent(_part(d, "lt"), 1, true) > _extent(_part(d, "hd"), 1, true),
+		"Black Hawk Standard shoulders frame a low inset pilot, not a generic head atop the shoulders")
+	var right: Dictionary = _part(d, "rt")
+	check_eq(String(right.get("mirror", "")), "lt",
+		"new shoulder mass is reflected as a matched independent moving part")
