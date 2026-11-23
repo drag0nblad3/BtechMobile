@@ -32,6 +32,44 @@ Selecting an item and pressing **Inspect in replay** opens the read-only replay 
 
 Legacy replay files without event ledgers still open. Their numerical forensic summary says it lacks telemetry instead of inventing statistics.
 
+## Cadet training — guided practice update
+
+The existing six-mission campaign still plays using the authoritative battle rules. Each
+mission now declares **optional practice checks** in `data/training/campaign.json`.
+Examples are moving, selecting a favorable shot, coordinating two or three units,
+controlling heat on a later turn, and making physical attacks. The player sees the
+checks in the Training screen before launching the next mission. During the battle,
+real `GameEvent` facts complete them; a brief HUD tip announces each completion.
+The after-action debrief lists completed and unfinished checks. No practice check
+modifies hit rolls, enemy difficulty, combat rewards, or mission victory.
+
+Progression remains accessible: **playing** a mission unlocks the next one,
+including after a defeat. All played missions can be retried. Training preferences
+now retain per-mission attempts, victories, best destroyed enemies and best practice
+score, so a loss cannot erase a prior win. Existing `user://settings.cfg` records
+with only `won` and `kills` are recognized as one historical attempt on the
+next result update.
+
+Lesson cards support **Later**, which hides the card and resumes bot turns, and
+a compact **Lessons (N)** button to return to the current card and queued tips
+without losing them. **Got it** still advances to the next card.
+
+Practice state is deliberately not added to `GameState` or combat saves.
+`TrainingPractice.restore` reads only recorded `GameEvent` telemetry from the
+existing battle-save ledger on resume, using each event's original turn and
+unit side. It does not replay a move or consume RNG. Legacy saves without event
+telemetry remain loadable; they simply cannot restore earlier practice checks.
+
+### Training validation
+
+- `godot --headless --import` then `godot --headless -s tests/run_tests.gd -- training`
+- `godot --headless -s tests/run_tests.gd` and `godot --headless -s tools/ui_smoke.gd`
+- At 1280×720, begin First Steps, choose **Later** on a lesson, perform an action,
+  then reopen **Lessons (N)**; verify the lesson is still there and the bot resumes.
+- Finish a mission, retry and lose; confirm attempts increase, but the earlier
+  victory and best checks remain. Save midway through a mission and resume to verify
+  completed practice checks are restored from the recorder.
+
 ## Next Academy iterations
 
 A later pass can identify decision quality using legal alternative moves/attacks and reproducible branching from a full RNG-inclusive checkpoint. This first forensic pass **does not** claim which untried decision would have been better.

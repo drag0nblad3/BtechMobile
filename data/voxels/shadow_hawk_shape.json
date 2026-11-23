@@ -1003,21 +1003,6 @@
           "mat": "edge"
         },
         {
-          "box": [
-            [
-              -12,
-              42,
-              -23
-            ],
-            [
-              -11,
-              43,
-              -23
-            ]
-          ],
-          "mat": "recess"
-        },
-        {
           "erase": [
             [
               -12,
@@ -1269,6 +1254,61 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "erase": [
+            [
+              -12,
+              42,
+              -23
+            ],
+            [
+              -12,
+              42,
+              -21
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lt_cannon_shroud",
+      "loc": "LT",
+      "parent": "lt_cannon",
+      "pivot": [
+        -11,
+        42,
+        -21
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -13,
+              41,
+              -23
+            ],
+            [
+              -10,
+              44,
+              -20
+            ]
+          ],
+          "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -12,
+              42,
+              -23
+            ],
+            [
+              -11,
+              43,
+              -20
+            ]
+          ]
         }
       ]
     },
@@ -2598,5 +2638,6 @@
   "review_lineage_reconciled_20261122": {
     "source_commit": "2779714f",
     "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
-  }
+  },
+  "notes": " AC/5 front shroud now a real separate open assembly, supported by the retained cannon behind it; missile shoulder, jump vanes and arm rig remain asymmetric."
 }

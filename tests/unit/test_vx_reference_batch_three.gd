@@ -72,8 +72,16 @@ func test_melee_and_cannon_components_are_not_replaced_with_generic_arms() -> vo
 		check(axe_arm.has("mirror"), "missing melee arm rig: %s" % chassis)
 		check(not axe_arm.get("add", []).is_empty(),
 				"missing right-hand axe tool geometry: %s" % chassis)
-	var panther := _part(_load("panther", "_shape"), "ra")
-	check(not panther.get("add", []).is_empty(), "lost Panther right-arm PPC")
+	var panther_recipe := _load("panther", "_shape")
+	var panther_arm := _part(panther_recipe, "ra")
+	var panther_ppc := _part(panther_recipe, "ra_ppc")
+	check(not panther_arm.get("add", []).is_empty() or not panther_ppc.is_empty(),
+			"lost Panther right-arm PPC")
+	if not panther_ppc.is_empty():
+		check_eq(panther_ppc.get("parent", ""), "ra",
+				"independent PPC must still animate with the right arm")
+		check(not panther_ppc.get("shapes", []).is_empty(),
+				"independent PPC retains physical barrel geometry")
 	var crab := _load("crab", "_shape")
 	check(not _part(crab, "la").is_empty() and not _part(crab, "ra").is_empty(),
 			"lost Crab paired claw hands")

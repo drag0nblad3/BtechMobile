@@ -48,6 +48,91 @@
       "role": "structure"
     }
   ],
+  "muzzles": {
+    "LA": [
+      -17.5,
+      20.5,
+      -24.5
+    ],
+    "RA": [
+      16.5,
+      20.5,
+      -24.5
+    ],
+    "RT": [
+      [
+        10.5,
+        35.5,
+        -13.5
+      ],
+      [
+        10.5,
+        37.5,
+        -13.5
+      ],
+      [
+        12.5,
+        35.5,
+        -13.5
+      ],
+      [
+        12.5,
+        37.5,
+        -13.5
+      ],
+      [
+        14.5,
+        35.5,
+        -13.5
+      ],
+      [
+        14.5,
+        37.5,
+        -13.5
+      ]
+    ]
+  },
+  "weapons": [
+    {
+      "label": "Twin PPCs",
+      "locs": [
+        "LA",
+        "RA"
+      ],
+      "kind": "laser"
+    },
+    {
+      "label": "SRM-6",
+      "locs": [
+        "RT"
+      ],
+      "kind": "missile"
+    }
+  ],
+  "art_revision": "shape-first-slab-relief-v2-20261121",
+  "exclusive_parts": true,
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "art_quality_passes": 100,
+  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 114,
+    "stages_with_changes": 10
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  },
+  "notes": " Both arm PPCs split into supported, damageable forebarrels with their existing apertures, plus a physical RT SRM mount; deep central torso reduced while keeping armored shoulders.",
   "parts": [
     {
       "name": "ct",
@@ -878,6 +963,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              11,
+              35,
+              -6
+            ],
+            [
+              13,
+              36,
+              -6
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -1056,7 +1156,7 @@
                 "at": 17,
                 "polygon": [
                   [
-                    -17.84,
+                    -17.7664,
                     -8
                   ],
                   [
@@ -1073,18 +1173,18 @@
                   ],
                   [
                     -11.36,
-                    0.55
+                    0.5445
                   ],
                   [
                     -15.06,
-                    2.35
+                    2.3265
                   ],
                   [
-                    -18.77,
+                    -18.6592,
                     -0.35
                   ],
                   [
-                    -19.69,
+                    -19.5424,
                     -4
                   ]
                 ]
@@ -1093,11 +1193,11 @@
                 "at": 21,
                 "polygon": [
                   [
-                    -18.54497,
+                    -18.36682,
                     -8
                   ],
                   [
-                    -16.02307,
+                    -16.02146,
                     -10
                   ],
                   [
@@ -1110,18 +1210,18 @@
                   ],
                   [
                     -12.65729,
-                    0.55
+                    0.528
                   ],
                   [
-                    -16.02307,
-                    2.35
+                    -16.02146,
+                    2.256
                   ],
                   [
-                    -19.38883,
+                    -19.15161,
                     -0.35
                   ],
                   [
-                    -20.23271,
+                    -19.93642,
                     -4
                   ]
                 ]
@@ -1154,11 +1254,11 @@
                     1.55
                   ],
                   [
-                    -16.51512,
+                    -16.50997,
                     -0.25
                   ],
                   [
-                    -17.21349,
+                    -17.20136,
                     -3
                   ]
                 ]
@@ -1181,21 +1281,6 @@
             ]
           ],
           "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              -18,
-              19,
-              -19
-            ],
-            [
-              -17,
-              20,
-              -19
-            ]
-          ],
-          "mat": "recess"
         },
         {
           "box": [
@@ -1256,6 +1341,53 @@
             ]
           ],
           "mat": "frame"
+        }
+      ]
+    },
+    {
+      "name": "ra",
+      "mirror": "la",
+      "parent": "rt"
+    },
+    {
+      "name": "la_ppc",
+      "loc": "LA",
+      "parent": "la",
+      "pivot": [
+        -17,
+        21,
+        -17
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -18,
+              19,
+              -19
+            ],
+            [
+              -16,
+              21,
+              -18
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -18,
+              19,
+              -19
+            ],
+            [
+              -17,
+              20,
+              -19
+            ]
+          ],
+          "mat": "recess"
         },
         {
           "box": [
@@ -1304,9 +1436,9 @@
       ]
     },
     {
-      "name": "ra",
-      "mirror": "la",
-      "parent": "rt"
+      "name": "ra_ppc",
+      "mirror": "la_ppc",
+      "parent": "ra"
     },
     {
       "name": "ll",
@@ -1852,89 +1984,5 @@
       "mirror": "ll_foot",
       "parent": "rl_shin"
     }
-  ],
-  "muzzles": {
-    "LA": [
-      -17.5,
-      20.5,
-      -24.5
-    ],
-    "RA": [
-      16.5,
-      20.5,
-      -24.5
-    ],
-    "RT": [
-      [
-        10.5,
-        35.5,
-        -13.5
-      ],
-      [
-        10.5,
-        37.5,
-        -13.5
-      ],
-      [
-        12.5,
-        35.5,
-        -13.5
-      ],
-      [
-        12.5,
-        37.5,
-        -13.5
-      ],
-      [
-        14.5,
-        35.5,
-        -13.5
-      ],
-      [
-        14.5,
-        37.5,
-        -13.5
-      ]
-    ]
-  },
-  "weapons": [
-    {
-      "label": "Twin PPCs",
-      "locs": [
-        "LA",
-        "RA"
-      ],
-      "kind": "laser"
-    },
-    {
-      "label": "SRM-6",
-      "locs": [
-        "RT"
-      ],
-      "kind": "missile"
-    }
-  ],
-  "art_revision": "shape-first-slab-relief-v2-20261121",
-  "exclusive_parts": true,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 100,
-  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
-  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
-  "reference_review_views": [
-    "front",
-    "side",
-    "rear",
-    "top",
-    "three_quarter"
-  ],
-  "shape_review_50": {
-    "passes": 50,
-    "edited_vertices": 114,
-    "stages_with_changes": 10
-  },
-  "review_lineage_reconciled_20261122": {
-    "source_commit": "2779714f",
-    "geometry_source": "post-213 strong-joint 151-model sculpt",
-    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
-  }
+  ]
 }
