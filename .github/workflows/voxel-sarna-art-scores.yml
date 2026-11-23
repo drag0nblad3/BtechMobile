@@ -1,0 +1,43 @@
+name: Score verified BattleTechWiki source art for missing units
+on:
+  push:
+    branches:
+      - audit/sarna-reference-score-20261123
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: sarna-score-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  remaining-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 32
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Install Pillow and import scripts
+        run: |
+          python3 -m pip install --quiet --user Pillow
+          godot --headless --import
+      - name: Score all 30 sourced drawings including eligible support units
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/sarna-trials
+          for offset in 0 20; do
+            python3 tools/run_tro_batch.py \
+              --index docs/graphics/sarna-reference-art-index.json \
+              --poses res://docs/graphics/reference-stance-poses.json \
+              --output /tmp/sarna-trials --offset "$offset" --limit 20
+          done
+      - name: Publish derived subject masks and unapproved fit results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: matched-sarna-reference-scores
+          path: /tmp/sarna-trials
+          if-no-files-found: warn
