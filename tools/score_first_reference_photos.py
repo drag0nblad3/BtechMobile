@@ -8,6 +8,7 @@ import argparse
 import io
 import json
 import pathlib
+import time
 import urllib.parse
 import urllib.request
 from collections import deque
@@ -97,6 +98,7 @@ def main():
     for key in ("candidates", "models", "output"):
         parser.add_argument("--" + key, type=pathlib.Path, required=True)
     parser.add_argument("--sweep", type=pathlib.Path)
+    parser.add_argument("--request-delay", type=float, default=0.0)
     args = parser.parse_args()
     registry = json.loads(args.candidates.read_text(encoding="utf-8"))
     camera_trials = []
@@ -106,6 +108,8 @@ def main():
     out = []
     masks = args.output.parent / "reference-masks"
     for entry in registry["candidates"]:
+        if args.request_delay > 0:
+            time.sleep(max(0.0, min(3.0, args.request_delay)))
         model, view = entry["model"], entry["view"]
         row = {"model": model, "view": view, "source_url": entry["reference_page"],
                "result_kind": "EXPLORATORY_UNVERIFIED_POSE_CAMERA_AND_MASK",
