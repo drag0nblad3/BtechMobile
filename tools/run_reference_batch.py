@@ -37,11 +37,21 @@ def run_batch(models, poses, output, index):
             "--candidates", manifest, "--models", exported,
             "--sweep", folder / "camera-sweep/index.json",
             "--request-delay", "0.4", "--output", report)
-    data = json.loads(report.read_text(encoding="utf-8"))
+    execute("godot", "--headless", "-s",
+            "tools/reference_pose_sweep.gd", "--",
+            folder / "pose-sweep", poses, report)
+    refined = folder / "pose-fit.json"
+    execute(sys.executable, "tools/score_reference_pose_candidates.py",
+            "--report", report,
+            "--pose-index", folder / "pose-sweep/index.json",
+            "--references", folder / "reference-masks", "--output", refined)
+    data = json.loads(refined.read_text(encoding="utf-8"))
     usable = [r for r in data["candidates"]
               if r.get("score_camera_adjusted_unverified") is not None]
-    print("REFERENCE_BATCH|index=%d|size=%d|measured=%d|failed=%d" % (
-        index, len(names), len(usable), len(names) - len(usable)), flush=True)
+    print("REFERENCE_BATCH|index=%d|size=%d|measured=%d|posed=%d|failed=%d" % (
+        index, len(names), len(usable),
+        sum(r.get("pose_fit_0_100_provisional") is not None
+            for r in usable), len(names) - len(usable)), flush=True)
     for row in data["candidates"]:
         print("REFERENCE_RESULT_JSON|" + json.dumps(row, sort_keys=True),
               flush=True)
