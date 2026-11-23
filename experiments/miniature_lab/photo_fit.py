@@ -117,7 +117,8 @@ def fit(spec, parts, reference, size=72):
         })
     return {
         "chassis": spec["id"],
-        "status": "approximate manually traced outlines, not pixel-perfect",
+        "status": "legacy_unregistered_orthographic_grid_diagnostic_only",
+        "warning": "This legacy fit independently optimizes coarse camera and stance grids and auto-centers each sculpt. Do not use as a fidelity comparison. Use photo_registration.py with a frozen camera and pose.",
         "reference_id": reference["reference_id"],
         "views": results,
         "mean_iou": round(sum(v["iou"] for v in results) / len(results), 3),
