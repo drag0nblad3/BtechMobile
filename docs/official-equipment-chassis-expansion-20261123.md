@@ -50,10 +50,13 @@ missed lock rather than refunding a nonexistent ammo bin.
   also run `godot --headless -s tests/run_tests.gd -- data` and the full
   CI pipeline. Tests check all design tonnages, critical slots, ammunition,
   source identities, and one-shot Streak behavior.
-- **Availability:** the existing official MUL faction-era snapshot was not
-  regenerated in this PR. New designs might appear *unverified* in Strict
-  historical mode until `tools/import_mul_availability.py` is refreshed.
-  Do not infer eligibility from their MegaMek files or introductory era.
+- **Availability:** the official MUL faction-era snapshot **was regenerated**
+  with `tools/import_mul_availability.py` after the new unit imports. The
+  November 23 catalog has **1,039/1,122** exact published matrices and
+  **57,872** positive faction-era cells; **all 11 new designs** were
+  matched, so Strict mode uses the actual MUL matrix and introduction year.
+  The remaining **83** unmatched game variants remain unverified, never
+  filled from introductory-era heuristics.
 - **Art:** the new design files specify their chassis `sprite` identifiers,
   but **do not provide new reference-fitted voxel sculptures**. The art and
   rigging for these 11 distinct silhouettes require a separate photo-guided
