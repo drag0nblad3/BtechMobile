@@ -50,7 +50,7 @@ const SCULPTED := {
 		"ll_shin"
 	],
 	"warhammer": [
-		"ct"
+		"la"
 	],
 	"ostsol": [
 		"ct",
