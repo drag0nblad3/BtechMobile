@@ -6,6 +6,8 @@ on:
       - 'tools/run_tro_batch.py'
       - 'tools/score_tro_illustrations.py'
       - 'tools/reference_camera_sweep.gd'
+      - 'tools/reference_pose_sweep.gd'
+      - 'tools/score_reference_pose_candidates.py'
       - '.github/workflows/voxel-sarna-remaining.yml'
   workflow_dispatch:
 permissions:
@@ -36,6 +38,20 @@ jobs:
             --poses res://docs/graphics/reference-stance-poses.json \
             --offset ${{ matrix.offset }} --limit 20 \
             --output /tmp/sarna-remaining
+      - name: Fit articulated pose candidates at the best provisional camera
+        run: |
+          set -o pipefail
+          batch=$(printf 'batch_%02d' $(( ${{ matrix.offset }} / 20 + 1 )))
+          folder="/tmp/sarna-remaining/$batch"
+          timeout 900s godot --headless -s tools/reference_pose_sweep.gd -- \
+            "$folder/pose-sweep" \
+            res://docs/graphics/reference-stance-poses.json \
+            "$folder/scores.json" | tee "$folder/pose-sweep.log"
+          python3 tools/score_reference_pose_candidates.py \
+            --report "$folder/scores.json" \
+            --pose-index "$folder/pose-sweep/index.json" \
+            --references "$folder/masked-TRO" \
+            --output "$folder/pose-fit.json"
       - name: Upload provisional masks and metrics
         if: always()
         uses: actions/upload-artifact@v4
