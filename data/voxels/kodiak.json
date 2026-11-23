@@ -4374,6 +4374,148 @@
           "mat": "frame"
         },
         {
+          "box": [
+            [
+              -11,
+              28,
+              -7
+            ],
+            [
+              -10,
+              29,
+              -6
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -10,
+              25,
+              1
+            ],
+            [
+              -10,
+              25,
+              1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -10,
+              25,
+              1
+            ],
+            [
+              -10,
+              25,
+              1
+            ]
+          ]
+        }
+      ],
+      "parent": "ct",
+      "detail": [
+        {
+          "erase": [
+            [
+              -35,
+              82,
+              -42
+            ],
+            [
+              -35,
+              82,
+              -37
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -26,
+              82,
+              -39
+            ],
+            [
+              -26,
+              82,
+              -34
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -35,
+              85,
+              -42
+            ],
+            [
+              -35,
+              85,
+              -37
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -26,
+              85,
+              -42
+            ],
+            [
+              -26,
+              85,
+              -37
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -35,
+              88,
+              -42
+            ],
+            [
+              -35,
+              88,
+              -37
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -26,
+              88,
+              -42
+            ],
+            [
+              -26,
+              88,
+              -37
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "lt_streak_pair",
+      "loc": "LT",
+      "parent": "lt",
+      "pivot": [
+        -9,
+        29,
+        -7
+      ],
+      "shapes": [
+        {
           "loft": {
             "axis": "z",
             "sections": [
@@ -4540,148 +4682,6 @@
           },
           "mat": "plate"
         },
-        {
-          "box": [
-            [
-              -11,
-              28,
-              -7
-            ],
-            [
-              -10,
-              29,
-              -6
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "erase": [
-            [
-              -10,
-              25,
-              1
-            ],
-            [
-              -10,
-              25,
-              1
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -10,
-              25,
-              1
-            ],
-            [
-              -10,
-              25,
-              1
-            ]
-          ]
-        }
-      ],
-      "parent": "ct",
-      "detail": [
-        {
-          "erase": [
-            [
-              -35,
-              82,
-              -42
-            ],
-            [
-              -35,
-              82,
-              -37
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -26,
-              82,
-              -39
-            ],
-            [
-              -26,
-              82,
-              -34
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -35,
-              85,
-              -42
-            ],
-            [
-              -35,
-              85,
-              -37
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -26,
-              85,
-              -42
-            ],
-            [
-              -26,
-              85,
-              -37
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -35,
-              88,
-              -42
-            ],
-            [
-              -35,
-              88,
-              -37
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -26,
-              88,
-              -42
-            ],
-            [
-              -26,
-              88,
-              -37
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "name": "lt_streak_pair",
-      "loc": "LT",
-      "parent": "lt",
-      "pivot": [
-        -9,
-        29,
-        -7
-      ],
-      "shapes": [
         {
           "box": [
             [
@@ -6583,5 +6583,5 @@
     "note": "Bear-like domed shoulders and claws remain prominent above trimmed central torso/rear",
     "edited_primary_loft_vertices": 72
   },
-  "notes": " Kodiak preserves massive bear-claw laser fists, but RT Ultra AC/20 and the two LT Streak SRM-6 groups become separate load-bearing, bored modules instead of generic slabs."
+  "notes": " Kodiak preserves massive bear-claw laser fists, but RT Ultra AC/20 and the two LT Streak SRM-6 groups become separate load-bearing, bored modules instead of generic slabs. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells."
 }
