@@ -3097,7 +3097,8 @@
     "ankle/foot",
     "weapon housing"
   ],
-  "reference_sculpt_focus": "early compact boxy torso, raised short visor, separate side missile launchers and sturdier old-style leg greaves",
   "reference_sculpt_batch": "remaining-fourteen-reference-20261123",
-  "reference_sculpt_approved": false
+  "reference_sculpt_focus": "early compact boxy torso, raised short visor, separate side missile launchers and sturdier old-style leg greaves",
+  "reference_sculpt_approved": false,
+  "reference_sculpt_reconciled_with": "merged-reference-batch-ten-20261123"
 }

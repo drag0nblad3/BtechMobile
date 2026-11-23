@@ -24,3 +24,7 @@ Reference hierarchy: prioritize newer Catalyst plastics and BattleTech Technical
 **Work not yet visually approved.** These are geometry source edits, not proof of a one-to-one likeness: final front, side, rear, top and oblique mesh renders and comparisons with miniature angles are required. The original 42-chassis strong 2x2 backed joint patches from #242 remain unchanged, and no changes are made to independent weapon bore regions, muzzle coordinates, animation pivots or official record sheet assets.
 
 The tests in `tests/unit/test_vx_reference_remaining_fourteen.gd` check low/high geometric parity, positive loft area, review labels, preserved rigs, weapons and individual Shiro sword/banner parts. Godot 4.5 full CI, multi-angle/bounded-joint review and 3x detailed connectivity audit must all pass before any merge. No APK or core rule changes.
+
+## Reconciliation with merged batch ten
+
+#260 merged newer CT, LT, RT and arm lofts for 13 of these 14 chassis during this pass. The reconciled recipes retain that newer geometry and selectively apply independent head, calf, rooted accessories and line-specific detail. Toro was not in #260 and receives its complete source changes. This preserves hard-won joint sockets and cannot be interpreted as a completed reference photo sign-off.
