@@ -6,6 +6,7 @@ extends SceneTree
 
 const MASK_SIZE := 64
 var destination := "/tmp/mech-masks"
+var stance_catalog: Dictionary = {}
 var completed := 0
 var failures: Array[String] = []
 
@@ -14,6 +15,13 @@ func _init() -> void:
     var args := OS.get_cmdline_user_args()
     if not args.is_empty():
         destination = args[0]
+    if args.size() > 1:
+        var file: Variant = JsonFile.read(args[1])
+        if not file is Dictionary:
+            printerr("MODEL_MASK_EXPORT: invalid stance file " + args[1])
+            quit(1)
+            return
+        stance_catalog = file
     _mechs()
     _assets("assets", "archetype")
     _assets("vehicles", "vehicle")
@@ -65,7 +73,17 @@ func _export(path: String, id: String, mech: bool) -> void:
     if model.cell_count() <= 0 or not model.errors.is_empty():
         failures.append("%s: %s" % [id, str(model.errors)])
         return
-    var masks := VxSilhouette.signature(model, MASK_SIZE)
+    var masks := {}
+    for view: String in VxSilhouette.VIEWS:
+        var pose := ReferenceStanceRig.profile(stance_catalog, id, view)
+        if mech:
+            var issues := ReferenceStanceRig.errors(model, pose)
+            if not issues.is_empty():
+                failures.append("%s/%s: %s" % [id, view, ", ".join(issues)])
+                return
+            masks[view] = ReferenceStanceRig.project(model, view, pose, MASK_SIZE)
+        else:
+            masks[view] = VxSilhouette.project(VxSilhouette.model_cells(model), view, MASK_SIZE)
     var folder := destination.path_join(id)
     if DirAccess.make_dir_recursive_absolute(folder) != OK:
         failures.append(id + ": cannot create output folder")
