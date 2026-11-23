@@ -204,9 +204,11 @@ heraldry or canonical parade schemes**. Major factions have named presets;
 unlisted factions use a repeatable fallback palette. Aliases give successor
 factions a consistent family resemblance.
 
-`VxMesher` stores the source recipe's armor/structure role as an extra vertex
-attribute in UV2. `VxLivery` applies the faction colors only to armor in a
-shared mobile-friendly spatial shader. Weapons, gun bores, joints, structure,
+`VxMesher` stores a cosmetic paint-eligibility mask in UV2, derived from
+armor roles and protected material names (gun, cockpit glass, glow, joints,
+etc.). The original source roles remain unchanged for the damage system.
+`VxLivery` applies the faction colors only to paintable armor in a shared
+mobile-friendly spatial shader. Weapons, gun bores, joints, structure,
 and the damage-removal order keep their source material and shape. Emblems are
 masked onto existing front-facing torso armor, never separate floating planes.
 The shader follows the articulated part through walks, falls, and limb drops;
