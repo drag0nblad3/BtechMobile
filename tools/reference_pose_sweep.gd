@@ -40,7 +40,7 @@ func _model_for(id: String) -> VxModel:
     var path := "res://data/voxels/%s_shape.json" % id
     if asset:
         var pieces := id.split("/", false)
-        var subfolder := {"archetype": "assets", "vehicle": "vehicles",
+        var subfolder: String = {"archetype": "assets", "vehicle": "vehicles",
             "battle_armor": "battle_armor"}.get(pieces[0], "")
         path = "res://data/voxels/%s/%s.json" % [subfolder, pieces[1]]
     elif not FileAccess.file_exists(path):
