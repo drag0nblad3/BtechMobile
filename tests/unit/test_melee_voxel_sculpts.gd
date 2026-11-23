@@ -53,6 +53,47 @@ func test_forward_blade_is_thin_not_a_side_facing_slab() -> void:
 		check(cutting_loft, "%s: needs a real forward cutting edge" % id)
 
 
+func test_cutting_wedge_tapers_to_a_high_contrast_steel_edge() -> void:
+	for id: String in IDS:
+		var d: Dictionary = _recipe(id)
+		var steel := Color.BLACK
+		var bright := Color.BLACK
+		for material: Dictionary in d.get("materials", []):
+			if material.get("name", "") == "steel":
+				steel = Color(material["color"])
+			elif material.get("name", "") == "steel_edge":
+				bright = Color(material["color"])
+		check(bright.get_luminance() > steel.get_luminance() * 1.35,
+				"%s: cutting edge must stand out from the blade" % id)
+		var cutting: Dictionary = {}
+		for part: Dictionary in d.get("parts", []):
+			if part.get("name", "") != "ra_hatchet":
+				continue
+			for shape: Dictionary in part.get("shapes", []):
+				if shape.get("mat", "") == "steel_edge":
+					cutting = shape
+		check(cutting.has("loft"), "%s: edge needs tapered geometry" % id)
+		if not cutting.has("loft"):
+			continue
+		var sections: Array = cutting["loft"]["sections"]
+		check(sections.size() >= 3, "%s: edge should taper through three profiles" % id)
+		var narrow: float = _vertical_span(sections[0]["polygon"])
+		var wide: float = _vertical_span(sections.back()["polygon"])
+		check(wide > narrow * 1.5,
+				"%s: front-most edge must taper to a sharp, narrow lip" % id)
+		check(VxPart._is_unpainted("steel_edge"),
+				"%s: team paint must not recolor the metal edge" % id)
+
+
+static func _vertical_span(polygon: Array) -> float:
+	var low := INF
+	var high := -INF
+	for uv: Array in polygon:
+		low = minf(low, float(uv[1]))
+		high = maxf(high, float(uv[1]))
+	return high - low
+
+
 func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
 	for id: String in IDS:
 		var m := _model(id)
