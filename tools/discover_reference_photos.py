@@ -71,7 +71,7 @@ def discover(html, models):
             continue
         images = [urllib.parse.urljoin(GALLERY, href)
                   for c in cells[6:] for href in c["links"]
-                  if re.search(r"\\.(?:jpg|jpeg|png)(?:[?#]|$)", href, re.I)]
+                  if re.search(r"\.(?:jpg|jpeg|png)(?:[?#]|$)", href, re.I)]
         images = [url for url in images if
                   urllib.parse.urlparse(url).hostname == HOST
                   and "/Pictures/CGLminis/" in url]
