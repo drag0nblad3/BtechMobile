@@ -5335,7 +5335,7 @@
   "blind_identity_weapon_modules": [
     {
       "kind": "barrel",
-      "part": "ra",
+      "part": "ra_ac10",
       "anchor": [
         14,
         27,
