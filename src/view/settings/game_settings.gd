@@ -12,6 +12,8 @@ static var training: Dictionary = {}
 static var ai_level: int = BotSkill.Level.REGULAR
 static var cinematic_camera := false
 static var voxel_mechs := true
+## Presentation-only team paint preferences; not serialized into GameState.
+static var paint_factions: Array[String] = ["federated_suns", "clan_wolf"]
 static var sound_master := 0.85
 static var sound_effects := 0.9
 static var sound_ui := 0.65
@@ -31,6 +33,10 @@ static func load_settings() -> void:
 		ai_level = clampi(int(cfg.get_value("ai", "level", BotSkill.Level.REGULAR)), 0, BotSkill.NAMES.size() - 1)
 		cinematic_camera = bool(cfg.get_value("camera", "cinematic", false))
 		voxel_mechs = bool(cfg.get_value("graphics", "voxel_mechs", true))
+		var painted: Array = cfg.get_value("graphics", "paint_factions", [])
+		for i in mini(2, painted.size()):
+			if painted[i] is String and not String(painted[i]).is_empty():
+				paint_factions[i] = String(painted[i])
 		sound_master = clampf(float(cfg.get_value("audio", "master", 0.85)), 0.0, 1.0)
 		sound_effects = clampf(float(cfg.get_value("audio", "effects", 0.9)), 0.0, 1.0)
 		sound_ui = clampf(float(cfg.get_value("audio", "ui", 0.65)), 0.0, 1.0)
@@ -72,6 +78,21 @@ static func set_voxel_mechs(enabled: bool) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("graphics", "voxel_mechs", enabled)
+	cfg.save(PATH)
+
+
+## Each side may select a historical faction and use its stylized livery.
+static func paint_faction(side: int) -> String:
+	return paint_factions[clampi(side, 0, paint_factions.size() - 1)]
+
+
+static func set_paint_faction(side: int, faction: String) -> void:
+	if side < 0 or side >= paint_factions.size() or faction.is_empty():
+		return
+	paint_factions[side] = faction
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("graphics", "paint_factions", paint_factions)
 	cfg.save(PATH)
 
 
