@@ -172,7 +172,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "akuma",
@@ -209,7 +210,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "annihilator",
@@ -246,7 +248,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "archer",
@@ -283,7 +286,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "argus",
@@ -320,7 +324,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "assassin",
@@ -357,7 +362,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "atlas",
@@ -394,7 +400,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "avatar",
@@ -431,7 +438,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "awesome",
@@ -468,7 +476,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "axman",
@@ -505,7 +514,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "banshee",
@@ -542,7 +552,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "battle_cobra",
@@ -579,7 +590,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "battleaxe",
@@ -616,7 +628,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "battlemaster",
@@ -653,7 +666,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "black_knight",
@@ -690,7 +704,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "black_lanner",
@@ -727,7 +742,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "blackjack",
@@ -764,7 +780,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "bushwacker",
@@ -801,7 +818,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "caesar",
@@ -838,7 +856,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "cataphract",
@@ -875,7 +894,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "catapult",
@@ -912,7 +932,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "centurion",
@@ -949,7 +970,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "chameleon",
@@ -986,7 +1008,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "charger",
@@ -1023,7 +1046,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "chimera",
@@ -1060,7 +1084,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "cicada",
@@ -1097,7 +1122,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "clint",
@@ -1134,7 +1160,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "commando",
@@ -1171,7 +1198,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "cougar",
@@ -1208,7 +1236,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "crab",
@@ -1245,7 +1274,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "crockett",
@@ -1282,7 +1312,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "crossbow",
@@ -1319,7 +1350,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "crusader",
@@ -1356,7 +1388,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "cyclops",
@@ -1393,7 +1426,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "dervish",
@@ -1430,7 +1464,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "devastator",
@@ -1467,7 +1502,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "dire_wolf",
@@ -1504,7 +1540,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "dragon",
@@ -1541,7 +1578,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "dragon_fire",
@@ -1578,7 +1616,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "emperor",
@@ -1615,7 +1654,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "enforcer",
@@ -1652,7 +1692,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "eris",
@@ -1689,7 +1730,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "excalibur",
@@ -1726,7 +1768,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "exterminator",
@@ -1763,7 +1806,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "falconer",
@@ -1800,7 +1844,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "firebee",
@@ -1837,7 +1882,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "firefly",
@@ -1874,7 +1920,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "firestarter",
@@ -1911,7 +1958,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "flashman",
@@ -1948,7 +1996,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "flea",
@@ -1985,7 +2034,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "gladiator",
@@ -2022,7 +2072,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "goliath",
@@ -2059,7 +2110,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "grand_dragon",
@@ -2096,7 +2148,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "grasshopper",
@@ -2133,7 +2186,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "griffin",
@@ -2170,7 +2224,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "griffin_iic",
@@ -2207,7 +2262,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "grizzly",
@@ -2244,7 +2300,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "guillotine",
@@ -2281,7 +2338,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "gunslinger",
@@ -2318,7 +2376,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "gunsmith",
@@ -2355,7 +2414,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hatamoto_chi",
@@ -2392,7 +2452,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hatchetman",
@@ -2429,7 +2490,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "havoc",
@@ -2466,7 +2528,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "helios",
@@ -2503,7 +2566,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hellspawn",
@@ -2540,7 +2604,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hermes_ii",
@@ -2577,7 +2642,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "highlander",
@@ -2614,7 +2680,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "highlander_iic",
@@ -2651,7 +2718,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hollander",
@@ -2688,7 +2756,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hoplite",
@@ -2725,7 +2794,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hunchback",
@@ -2762,7 +2832,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "hunchback_iic",
@@ -2799,7 +2870,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "icarus_ii",
@@ -2836,7 +2908,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "jackalope",
@@ -2873,7 +2946,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "jagermech",
@@ -2910,7 +2984,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "javelin",
@@ -2947,7 +3022,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "jenner",
@@ -2984,7 +3060,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "jenner_iic",
@@ -3021,7 +3098,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "king_crab",
@@ -3058,7 +3136,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "kingfisher",
@@ -3095,7 +3174,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "kintaro",
@@ -3132,7 +3212,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "kodiak",
@@ -3169,7 +3250,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "lancelot",
@@ -3206,7 +3288,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "legionnaire",
@@ -3243,7 +3326,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "linebacker",
@@ -3280,7 +3364,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "locust",
@@ -3317,7 +3402,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "locust_iic",
@@ -3354,7 +3440,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "longbow",
@@ -3391,7 +3478,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "mackie",
@@ -3428,7 +3516,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "mad_cat_mk_ii",
@@ -3465,7 +3554,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "malice",
@@ -3502,7 +3592,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "marauder",
@@ -3539,7 +3630,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "marauder_ii",
@@ -3576,7 +3668,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "mauler",
@@ -3613,7 +3706,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "mercury",
@@ -3650,7 +3744,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "merlin",
@@ -3687,7 +3782,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "mist_lynx",
@@ -3724,7 +3820,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "mongoose",
@@ -3761,7 +3858,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "night_gyr",
@@ -3798,7 +3896,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "nightsky",
@@ -3835,7 +3934,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "nightstar",
@@ -3872,7 +3972,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "nova_cat",
@@ -3909,7 +4010,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "orion",
@@ -3946,7 +4048,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "ostroc",
@@ -3983,7 +4086,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "ostscout",
@@ -4020,7 +4124,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "ostsol",
@@ -4057,7 +4162,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "ostwar",
@@ -4094,7 +4200,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "pack_hunter",
@@ -4131,7 +4238,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "panther",
@@ -4168,7 +4276,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "peacekeeper",
@@ -4205,7 +4314,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "penetrator",
@@ -4242,7 +4352,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "phoenix_hawk",
@@ -4279,7 +4390,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "pillager",
@@ -4316,7 +4428,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "piranha",
@@ -4353,7 +4466,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "quickdraw",
@@ -4390,7 +4504,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "rakshasa",
@@ -4427,7 +4542,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "raven",
@@ -4464,7 +4580,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "rifleman",
@@ -4501,7 +4618,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "sagittaire",
@@ -4538,7 +4656,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "scarabus",
@@ -4575,7 +4694,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "scorpion",
@@ -4612,7 +4732,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "sentinel",
@@ -4649,7 +4770,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "shadow_cat",
@@ -4686,7 +4808,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "shadow_hawk",
@@ -4723,7 +4846,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "shadow_hawk_iic",
@@ -4760,7 +4884,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "shiro",
@@ -4797,7 +4922,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "shockwave",
@@ -4834,7 +4960,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "shogun",
@@ -4871,7 +4998,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "spartan",
@@ -4908,7 +5036,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "spector",
@@ -4945,7 +5074,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "spider",
@@ -4982,7 +5112,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "stalker",
@@ -5019,7 +5150,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "starslayer",
@@ -5056,7 +5188,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "stinger",
@@ -5093,7 +5226,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "summoner",
@@ -5130,7 +5264,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "supernova",
@@ -5167,7 +5302,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "templar",
@@ -5204,7 +5340,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "thanatos",
@@ -5241,7 +5378,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "thug",
@@ -5278,7 +5416,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "thunder_hawk",
@@ -5315,7 +5454,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "thunderbolt",
@@ -5352,7 +5492,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "thunderbolt_iic",
@@ -5389,7 +5530,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "tian_zong",
@@ -5426,7 +5568,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "trebuchet",
@@ -5463,7 +5606,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "turkina",
@@ -5500,7 +5644,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "uziel",
@@ -5537,7 +5682,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "valkyrie",
@@ -5574,7 +5720,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "venom",
@@ -5611,7 +5758,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "victor",
@@ -5648,7 +5796,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "vindicator",
@@ -5685,7 +5834,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "vulcan",
@@ -5722,7 +5872,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "warhammer",
@@ -5759,7 +5910,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "wasp",
@@ -5796,7 +5948,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "whitworth",
@@ -5833,7 +5986,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "wolfhound",
@@ -5870,7 +6024,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "wolverine",
@@ -5907,7 +6062,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "wraith",
@@ -5944,7 +6100,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "ymir",
@@ -5981,7 +6138,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     },
     {
       "model": "zeus",
@@ -6018,7 +6176,8 @@
         ]
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
-      "pose_review": "UNVERIFIED_RIG_POSE"
+      "pose_review": "UNVERIFIED_RIG_POSE",
+      "exclude_logo_bottom_right": true
     }
   ]
 }
