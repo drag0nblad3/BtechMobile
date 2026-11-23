@@ -1,0 +1,87 @@
+{
+  "reference_sculpt": "Catalyst Game Labs Jenner from 2021 CAT35729, base 63",
+  "original_views": "Four painted same-sculpt crops from Jaded Falconer: three registered, rear-right unscored",
+  "additional_views": "Two unpainted actual miniature photos from RPG Mini Hunter: one registered front, one low-confidence oblique side excluded from numerical score",
+  "supplemental_digital_render": "Promotional CAD-like sculpt render from eBay used only for shape cues, no photo score",
+  "photo_landmark_method": "Hand-estimated silhouettes/landmarks from 500px image-query previews; source pixels not redistributed",
+  "registration_policy": "One fit on v11 control for each photograph (perspective yaw/elevation/roll/distance/crop, independent left and right leg pose); freeze controls across all six passes",
+  "calibration": {
+    "new_front": {
+      "rigid_rmse_normalized_crop": 0.05114,
+      "source_status": "tentative full-body scored",
+      "camera_yaw_degrees": 0
+    },
+    "new_oblique_side": {
+      "rigid_rmse_normalized_crop": 0.11408,
+      "source_status": "camera conflict and hidden far leg; diagnostic geometry cue only, unscored",
+      "best_candidate_camera_yaw_degrees": -40
+    }
+  },
+  "passes": [
+    {
+      "stage": "00_v11",
+      "voxels": 14977,
+      "painted_three_view_iou": 0.7239,
+      "new_unpainted_frontal_iou": 0.7755,
+      "legacy_landmark_rmse": 0.02183,
+      "geometry_faults": 0
+    },
+    {
+      "stage": "01_disc",
+      "voxels": 15159,
+      "painted_three_view_iou": 0.7233,
+      "new_unpainted_frontal_iou": 0.7762,
+      "legacy_landmark_rmse": 0.02183,
+      "geometry_faults": 0
+    },
+    {
+      "stage": "02_glazing",
+      "voxels": 15159,
+      "painted_three_view_iou": 0.7233,
+      "new_unpainted_frontal_iou": 0.7762,
+      "legacy_landmark_rmse": 0.02183,
+      "geometry_faults": 0
+    },
+    {
+      "stage": "03_grille",
+      "voxels": 15161,
+      "painted_three_view_iou": 0.7233,
+      "new_unpainted_frontal_iou": 0.7762,
+      "legacy_landmark_rmse": 0.02183,
+      "geometry_faults": 0
+    },
+    {
+      "stage": "04_shoulders",
+      "voxels": 15199,
+      "painted_three_view_iou": 0.7235,
+      "new_unpainted_frontal_iou": 0.778,
+      "legacy_landmark_rmse": 0.02183,
+      "geometry_faults": 0
+    },
+    {
+      "stage": "05_toes",
+      "voxels": 15129,
+      "painted_three_view_iou": 0.725,
+      "new_unpainted_frontal_iou": 0.7813,
+      "legacy_landmark_rmse": 0.02183,
+      "geometry_faults": 0
+    }
+  ],
+  "final_v11_to_v12": {
+    "original_three_view_iou_delta": 0.0011,
+    "new_independent_front_iou_delta": 0.0058,
+    "extra_voxels": 152,
+    "percent_volume_change": 1.015
+  },
+  "comparison_warning": "DO NOT interpret these metrics as absolute miniature accuracy. Different photo sets and approximate camera/pose annotation make improvements uncertain. The lower-confidence side view is explicitly excluded from acceptance.",
+  "validation": {
+    "independent_parts": 30,
+    "parent_child_links": 29,
+    "all_stage_structural_faults": 0,
+    "new_generator": "make_jenner_v12.py",
+    "new_regression": "test_jenner_v12.py",
+    "full_suite": "Local full run exceeded available execution window; not claimed passed",
+    "godot_smoke": "not run",
+    "production_models": "unchanged"
+  }
+}
