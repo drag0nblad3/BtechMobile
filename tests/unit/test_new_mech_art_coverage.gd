@@ -11,11 +11,16 @@ func test_new_shape_sculpts_have_matching_unit_and_detail_manifest() -> void:
 		var raw: Variant = JsonFile.read("res://data/voxels/" + filename)
 		if not (raw is Dictionary) or not bool(raw.get("exclusive_parts", false)):
 			continue
+		# Review-campaign source sculpts are covered by their existing tests.
+		# This test only covers the newly imported unrevised cohort.
+		if raw.has("art_quality_passes") or raw.has("shape_review_50"):
+			continue
 		var rec := designs().get_def(str(raw.get("unit", "")))
 		check(rec != null, name + " missing linked record sheet")
 		if rec == null:
 			continue
-		check_eq(rec.sprite, name, name + " record sprite disagrees with art")
+		var expected_sprite := "wolf_trap_tora" if name == "wolf_trap" else name
+		check_eq(rec.sprite, expected_sprite, name + " record sprite disagrees with art")
 		var detail_path := "res://data/voxels/%s.json" % name
 		if name == "rook":
 			detail_path = "res://data/voxels/rook_nh1b.json"
@@ -30,7 +35,9 @@ func test_new_shape_sculpts_have_matching_unit_and_detail_manifest() -> void:
 				"res://data/voxels/" + filename, name + " incorrect source")
 		check(int(detail.get("subdivide", 0)) >= 2, name + " insufficient detail")
 		checked += 1
-	check(checked >= 88, "expected all 88 recently imported chassis to have art")
+	check_eq(checked, 88, "expected all 88 imported chassis sources and display manifests")
+	check(FileAccess.file_exists("res://data/voxels/wolf_trap_tora.json"),
+			"Wolf Trap source requires sprite-compatible manifest")
 
 
 func test_rook_variants_keep_separate_weapon_geometry() -> void:
@@ -45,3 +52,14 @@ func test_rook_variants_keep_separate_weapon_geometry() -> void:
 	var model := VxModel.load_file(UnitVoxels.model_path(old))
 	check(model.errors.is_empty(), "Rook NH-1B variant load errors")
 	check_eq(model.unit_id, old.id, "wrong Rook record sheet linked to geometry")
+
+
+func test_wolf_trap_sprite_resolves_to_its_real_new_voxel_sculpt() -> void:
+	var trap := designs().get_def("wolf_trap_tora_wft1")
+	check(trap != null, "official Wolf Trap WFT-1 record sheet")
+	if trap == null:
+		return
+	check_eq(UnitVoxels.model_path(trap), "res://data/voxels/wolf_trap_tora.json")
+	var model := VxModel.load_file(UnitVoxels.model_path(trap))
+	check(model.errors.is_empty(), "Wolf Trap Tora rig parses")
+	check_eq(model.unit_id, trap.id, "correct mounted weapon record sheet")
