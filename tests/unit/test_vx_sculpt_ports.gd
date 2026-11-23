@@ -85,3 +85,33 @@ func test_new_accessories_have_broad_face_contacts_to_parent() -> void:
 			check(patch.size() >= 4 and backed.size() >= 2,
 					"weak unsupported accessory: %s%s:%s patch=%d backed=%d" % [
 					spec["chassis"], tier, spec["part"], patch.size(), backed.size()])
+
+
+func test_accessory_geometry_does_not_overlap_parent_in_authored_recipe() -> void:
+	for tier: String in ["", "_shape"]:
+		for spec: Dictionary in DETAILS:
+			var data: Dictionary = JsonFile.read("res://data/voxels/%s%s.json" % [
+				spec["chassis"], tier])
+			var raw := VxModel.new()
+			for material: Dictionary in data.get("materials", []):
+				raw._mat[material["name"]] = raw.colors.size()
+				raw.colors.append(Color(material["color"]))
+				raw.roles.append(material.get("role", "armor"))
+			for part: Dictionary in data["parts"]:
+				raw._add_part(part)
+			check(raw.errors.is_empty(), "source geometry paint failed: %s%s" % [
+				spec["chassis"], tier])
+			var detail: Dictionary = raw.part(spec["part"])
+			check(not detail.is_empty(), "missing raw accessory %s" % spec["part"])
+			if detail.is_empty():
+				continue
+			var parent: Dictionary = raw.part(detail["parent"])
+			check(not parent.is_empty(), "missing raw parent: %s" % spec["part"])
+			if parent.is_empty():
+				continue
+			var common := 0
+			for cell: Vector3i in detail["cells"]:
+				if parent["cells"].has(cell):
+					common += 1
+			check_eq(common, 0, "source accessory intersects armor: %s%s/%s" % [
+				spec["chassis"], tier, spec["part"]])
