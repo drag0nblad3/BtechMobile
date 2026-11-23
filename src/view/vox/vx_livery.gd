@@ -36,6 +36,8 @@ static func material_for(faction: String, side: int) -> ShaderMaterial:
 	mat.set_shader_parameter("paint_primary", Color(String(colors["primary"])))
 	mat.set_shader_parameter("paint_secondary", Color(String(colors["secondary"])))
 	mat.set_shader_parameter("badge_ink", Color(String(colors["insignia"])))
+	mat.set_shader_parameter("team_mark", PlaceholderMech.SIDE_COLORS[
+		posmod(side, PlaceholderMech.SIDE_COLORS.size())])
 	mat.set_shader_parameter("paint_pattern", int(colors["pattern"]))
 	mat.set_shader_parameter("badge_shape", int(colors["badge"]))
 	_materials[key] = mat
