@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "purpose": "Exploratory comparison only. Photo/background and joint/camera fit need human review; raw candidate scores must not populate the approved scorecard.",
+  "candidates": [
+    {
+      "model": "phoenix_hawk",
+      "view": "quarter",
+      "source_type": "modern_CGL_plastic",
+      "reference_page": "https://store.catalystgamelabs.com/products/battletech-phoenix-hawk-premium-miniature",
+      "image_url": "https://store.catalystgamelabs.com/cdn/shop/products/Upload_20221116-013936.png?v=1678428560&width=1445",
+      "pose_description": "Painted premium sculpt, one raised knee, left cannon arm aimed sideways, right arm down, no base visible",
+      "camera_assessment": "Slight high-angle front three-quarter; initial yaw/pitch only, not a calibrated camera",
+      "white_background_threshold": 233,
+      "crop_bottom_fraction": 1.0,
+      "status": "REQUIRES_RENDER_AND_SEGMENTATION_REVIEW"
+    },
+    {
+      "model": "battleaxe",
+      "view": "front",
+      "source_type": "modern_CGL_plastic",
+      "reference_page": "https://www.wargamesemporium.co.uk/products/battletech-battleaxe-single-mech",
+      "image_url": "https://www.wargamesemporium.co.uk/cdn/shop/files/PXL_20230713_140603417_2048x.jpg?v=1689257994",
+      "pose_description": "Near-front plastic photo with raised asymmetric launcher, cannon arms slightly downward, one foot advanced and hex base visible",
+      "camera_assessment": "Almost front-on, slight camera elevation and perspective; remove base before trusting mask",
+      "white_background_threshold": 229,
+      "crop_bottom_fraction": 0.89,
+      "status": "EXPLORATORY_ONLY_BASE_OCCLUSION"
+    }
+  ]
+}
