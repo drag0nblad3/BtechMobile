@@ -22,6 +22,7 @@ var _pivot := Vector3.ZERO
 var _size := 0.05
 var _colors := PackedColorArray()
 var _roles: Array[String] = []
+var _paintable: Dictionary = {}  ## Material index -> eligibility, separate from damage role.
 var _paint_material: ShaderMaterial
 
 
@@ -35,6 +36,11 @@ func setup(spec: Dictionary, model: VxModel) -> void:
 	_size = model.voxel_size
 	_colors = model.colors
 	_roles = model.roles
+	for i in model.roles.size():
+		_paintable[i] = model.roles[i] == "armor"
+	for material_name: String in model._mat:
+		if _is_unpainted(String(material_name)):
+			_paintable[int(model._mat[material_name])] = false
 	material_override = shared_material()
 	_setup_paint_space(model)
 
@@ -60,6 +66,19 @@ func _setup_paint_space(model: VxModel) -> void:
 	var badge: bool = loc in [Location.LT, Location.RT] and String(largest.get("name", "")) == part_name
 	badge = badge and span.x > 0.16 and span.y > 0.16
 	set_instance_shader_parameter("badge_enabled", 1.0 if badge else 0.0)
+
+
+## A barrel or cockpit may still be damageable armor in the source recipe;
+## that must not make its gunmetal or glass into camouflaged plating.
+static func _is_unpainted(mat_name: String) -> bool:
+	var key := mat_name.to_lower()
+	for token in ["gun", "barrel", "muzzle", "bore", "port", "glow", "light",
+			"window", "glass", "cockpit", "sensor", "lens", "jet", "vent",
+			"thruster", "exhaust", "grille", "engine", "piston", "joint",
+			"frame", "structure", "dark"]:
+		if key.contains(token):
+			return true
+	return false
 
 
 func set_paint(mat: ShaderMaterial) -> void:
@@ -100,7 +119,7 @@ func rebuild() -> void:
 	for c: Vector3i in cells:
 		var material_index: int = cells[c]
 		var color: Color = _colors[material_index]
-		var role_alpha := 1.0 if _roles[material_index] == "armor" else 0.25
+		var role_alpha := 1.0 if _paintable.get(material_index, false) else 0.25
 		if _near_hole(c):
 			color = color.lerp(SCORCH, 0.3)
 		for f in 6:
