@@ -81,5 +81,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/dominator"
   },
   "bv": 3018,
-  "role": "Skirmisher: supercharged jumping Clan 65-tonner with ER PPC, ER large laser, Streak SRM 6 and targeting computer; walks 5, jumps 5."
+  "role": "Skirmisher: supercharged jumping Clan 65-tonner with ER PPC, ER large laser, Streak SRM 6 and targeting computer; walks 5, jumps 5.",
+  "sprite": "dominator"
 }

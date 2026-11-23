@@ -72,5 +72,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/koshi-standard-3"
   },
   "bv": 777,
-  "role": "Scout: six Clan heavy small lasers, ECM, active probe, light TAG, MASC, targeting computer and jump jets"
+  "role": "Scout: six Clan heavy small lasers, ECM, active probe, light TAG, MASC, targeting computer and jump jets",
+  "sprite": "koshi_standard"
 }

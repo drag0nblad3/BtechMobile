@@ -75,5 +75,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/koshi-standard"
   },
   "bv": 760,
-  "role": "Striker: non-Omni Koshi with four Clan SRM 4 launchers, light TAG, probe and six jump jets; walks 7, jumps 6."
+  "role": "Striker: non-Omni Koshi with four Clan SRM 4 launchers, light TAG, probe and six jump jets; walks 7, jumps 6.",
+  "sprite": "koshi_standard"
 }

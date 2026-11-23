@@ -72,5 +72,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/koshi-standard-2"
   },
   "bv": 948,
-  "role": "Striker: paired Clan Streak SRM 6 launchers, light TAG and six jump jets"
+  "role": "Striker: paired Clan Streak SRM 6 launchers, light TAG and six jump jets",
+  "sprite": "koshi_standard"
 }
