@@ -47,13 +47,13 @@ func test_primary_lofts_are_valid_volumes_in_every_cohort() -> void:
 		var area_min := float(cohort.get("areaMin", 0.01))
 		for chassis: String in cohort["models"]:
 			var low := _data(chassis, "_shape")
-			for name: String in cohort["primary"]:
+			for name: String in cohort.get("areaParts", cohort["primary"]):
 				var loft := _loft(_part(low, name))
 				check(not loft.is_empty(), "missing loft %s/%s" % [chassis, name])
 				if loft.is_empty():
 					continue
 				if bool(cohort.get("axes", false)):
-					check_eq(loft.get("axis", "y"), "y", "incorrect loft axis %s/%s" % [chassis, name])
+					check_eq(loft.get("axis", ""), "y", "incorrect loft axis %s/%s" % [chassis, name])
 				for section: Dictionary in loft.get("sections", []):
 					var poly: Array = section.get("polygon", [])
 					check(poly.size() >= 3, "short profile %s/%s" % [chassis, name])
@@ -79,6 +79,9 @@ func test_authored_detail_tiers_retain_primary_anatomy() -> void:
 			if high.has("source"):
 				check_eq(high["source"], _path(chassis, "_shape"),
 						"detail alias drift %s" % chassis)
+				continue
+			if chassis in cohort.get("independent", []):
+				check(not high.has("source"), "independent detail lost %s" % chassis)
 				continue
 			check_eq(high.get("unit"), low.get("unit"), "design drift %s" % chassis)
 			check_eq(high.get("legs"), low.get("legs"), "gait tier drift %s" % chassis)
