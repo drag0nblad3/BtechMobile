@@ -1,0 +1,5388 @@
+{
+  "schema_version": 2,
+  "purpose": "Unverified cataloged plastic photo leads; no approved pose/angle/masks",
+  "source_catalog": "https://jadedfalconer.com/Pages/6How/miniatures",
+  "total_mechs": 289,
+  "matched": 159,
+  "missing_model_ids": [
+    "albatross",
+    "alfar",
+    "apollo",
+    "arctic_wolf",
+    "bandersnatch",
+    "bane",
+    "battle_hawk",
+    "behemoth",
+    "blade",
+    "bombard",
+    "brigand",
+    "cerberus",
+    "cestus",
+    "champion",
+    "cobra",
+    "cossack",
+    "cronus",
+    "daedalus",
+    "daikyu",
+    "daimyo",
+    "dart",
+    "dragoon",
+    "duan_gung",
+    "eagle",
+    "ebon_jaguar",
+    "eisenfaust",
+    "enfield",
+    "enforcer_iii",
+    "executioner",
+    "exhumer",
+    "falcon",
+    "falcon_hawk",
+    "fire_moth",
+    "fireball",
+    "flashfire",
+    "galahad",
+    "gallowglas",
+    "gargoyle",
+    "garm",
+    "glass_spider",
+    "gravedigger",
+    "grendel",
+    "grim_reaper",
+    "ha_otoko",
+    "hammerhands",
+    "hatamoto_hi",
+    "hatamoto_kaze",
+    "hatamoto_ku",
+    "hatamoto_mizo",
+    "hel",
+    "hellbringer",
+    "hercules",
+    "hermes",
+    "hermes_iii",
+    "hermit_crab",
+    "hornet",
+    "hound",
+    "howler",
+    "huntsman",
+    "hussar",
+    "ice_ferret",
+    "imp",
+    "initiate",
+    "jackal",
+    "jackrabbit",
+    "jagermech_iii",
+    "jinggau",
+    "juggernaut",
+    "kabuto",
+    "katana",
+    "kit_fox",
+    "koschei",
+    "koto",
+    "lightray",
+    "lineholder",
+    "lynx",
+    "mad_dog",
+    "marshal",
+    "nexus",
+    "night_hawk",
+    "nova",
+    "nova_t",
+    "onslaught",
+    "orochi",
+    "phoenix",
+    "raijin",
+    "rampage",
+    "raptor",
+    "rattlesnake",
+    "rattlesnake_ii",
+    "razorback",
+    "rook",
+    "rook_nh1b",
+    "salamander",
+    "sentry",
+    "shootist",
+    "snake",
+    "spider_sdr10k",
+    "stealth",
+    "stormcrow",
+    "striker",
+    "suburbanmech",
+    "sunder",
+    "swordsman",
+    "talon",
+    "talos",
+    "tarantula",
+    "tempest",
+    "thorn",
+    "thunder",
+    "thunder_stallion",
+    "tiburon",
+    "timber_wolf",
+    "titan",
+    "toro",
+    "tsunami",
+    "urbanmech",
+    "verfolger",
+    "victor_vtrcr",
+    "viper",
+    "von_rohrs_hebi",
+    "warhawk",
+    "warlord",
+    "watchman",
+    "werewolf",
+    "wolf_trap",
+    "wolf_trap_tora",
+    "wyvern",
+    "yeoman",
+    "yu_huang"
+  ],
+  "candidates": [
+    {
+      "model": "adder",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/adder11.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Adder",
+      "base_number": "11",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Invasion Box Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "akuma",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/akuma4-71.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Akuma",
+      "base_number": "4-71",
+      "sculpt_variant": "AKU-2XC",
+      "source_pack": "House Kurita Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "annihilator",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/annihilator3-1.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Annihilator",
+      "base_number": "3-1",
+      "sculpt_variant": "ANH-2A",
+      "source_pack": "Wolf's Dragoons Assault Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "archer",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/archer25.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Archer",
+      "base_number": "25",
+      "sculpt_variant": "ARC-2R",
+      "source_pack": "Legendary MechWarriors Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "argus",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/argus4-19.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Argus",
+      "base_number": "4-19",
+      "sculpt_variant": "AGS-4D",
+      "source_pack": "Second Star League Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "assassin",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/assassin3-45.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Assassin",
+      "base_number": "3-45",
+      "sculpt_variant": "ASN-21",
+      "source_pack": "Inner Sphere Heavy Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "atlas",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/atlas4-1.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Atlas",
+      "base_number": "4-1",
+      "sculpt_variant": "AS7-D",
+      "source_pack": "Hansen’s Roughriders Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "avatar",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/avatar4-67.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Avatar",
+      "base_number": "4-67",
+      "sculpt_variant": "AV1-O",
+      "source_pack": "House Kurita Ranger Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "awesome",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/awesome3.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Awesome",
+      "base_number": "3",
+      "sculpt_variant": "AWS-8Q",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "axman",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/axman3-84.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Axman",
+      "base_number": "3-84",
+      "sculpt_variant": "AXM-2N",
+      "source_pack": "Somerset Strikers ForcePack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "banshee",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/banshee4-5.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Banshee",
+      "base_number": "4-5",
+      "sculpt_variant": "BNC-3S",
+      "source_pack": "Eridani Light Horse Hunter Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "battle_cobra",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/battlecobra40.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Battle Cobra",
+      "base_number": "40",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Support Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "battleaxe",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/battleaxe4-35.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Battleaxe",
+      "base_number": "4-35",
+      "sculpt_variant": "BKX-7K",
+      "source_pack": "Proliferation Cycle Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "battlemaster",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/battlemaster7.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "BattleMaster",
+      "base_number": "7",
+      "sculpt_variant": "BLR-1G",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "black_knight",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/blackknight57.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Black Knight",
+      "base_number": "57",
+      "sculpt_variant": "BL-6-KNT",
+      "source_pack": "ComStar Command Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "black_lanner",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/blacklanner41.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Black Lanner",
+      "base_number": "41",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Support Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "blackjack",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/blackjack3-3.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Blackjack",
+      "base_number": "3-3",
+      "sculpt_variant": "BJ-2",
+      "source_pack": "Wolf's Dragoons Assault Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "bushwacker",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/bushwacker91.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Bushwacker",
+      "base_number": "91",
+      "sculpt_variant": "BSW-X2",
+      "source_pack": "Inner Sphere Heavy Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "caesar",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/caesar3-64.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Caesar",
+      "base_number": "3-64",
+      "sculpt_variant": "CES-3R",
+      "source_pack": "Legendary MechWarriors II Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cataphract",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/cataphract92.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Cataphract",
+      "base_number": "92",
+      "sculpt_variant": "CTF-3D",
+      "source_pack": "Inner Sphere Heavy Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "catapult",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/catapult4.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Catapult",
+      "base_number": "4",
+      "sculpt_variant": "CPLT-C1",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "centurion",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/centurion45.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Centurion",
+      "base_number": "45",
+      "sculpt_variant": "CN9-A",
+      "source_pack": "Inner Sphere Heavy Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "chameleon",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/chameleon3-8.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Chameleon",
+      "base_number": "3-8",
+      "sculpt_variant": "CLN-7V",
+      "source_pack": "Mercenaries Box Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "charger",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/charger3-66.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Charger",
+      "base_number": "3-66",
+      "sculpt_variant": "CGR-3K",
+      "source_pack": "Legendary MechWarriors II Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "chimera",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/chimera4-68.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Chimera",
+      "base_number": "4-68",
+      "sculpt_variant": "CMA-1S",
+      "source_pack": "House Kurita Ranger Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cicada",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/cicada3-20.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Cicada",
+      "base_number": "3-20",
+      "sculpt_variant": "CDA-2A",
+      "source_pack": "Inner Sphere Pursuit Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "clint",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/clint3-21.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Clint",
+      "base_number": "3-21",
+      "sculpt_variant": "CLNT-2-3T",
+      "source_pack": "Inner Sphere Pursuit Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "commando",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/commando6.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Commando",
+      "base_number": "9",
+      "sculpt_variant": "COM-2D",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cougar",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/cougar30.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Cougar",
+      "base_number": "30",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Fire Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "crab",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/crab80.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Crab",
+      "base_number": "80",
+      "sculpt_variant": "CRB-27/-27b/-20",
+      "source_pack": "ComStar Battle Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "crockett",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/crockett81.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Crockett",
+      "base_number": "81",
+      "sculpt_variant": "CRK-5003-1",
+      "source_pack": "ComStar Battle Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "crossbow",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/crossbow86.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Crossbow",
+      "base_number": "86",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Heavy Battle Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "crusader",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/crusader4-12.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Crusader",
+      "base_number": "4-12",
+      "sculpt_variant": "CRD-5M",
+      "source_pack": "Kell Hounds Striker Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cyclops",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/cyclops4-6.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Cyclops",
+      "base_number": "4-6",
+      "sculpt_variant": "CP-11-A",
+      "source_pack": "Eridani Light Horse Hunter Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "dervish",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/dervish3-23.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Dervish",
+      "base_number": "3-23",
+      "sculpt_variant": "DV-6M",
+      "source_pack": "Inner Sphere Pursuit Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "devastator",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/devastator3-65.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Devastator",
+      "base_number": "3-65",
+      "sculpt_variant": "DVS-2",
+      "source_pack": "Legendary MechWarriors II Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "dire_wolf",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/direwolf1.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Dire Wolf (Daishi)",
+      "base_number": "1",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Command Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "dragon",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/dragon99.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Dragon",
+      "base_number": "99",
+      "sculpt_variant": "DRG-1N",
+      "source_pack": "Inner Sphere Support Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "dragon_fire",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/dragonfire4-29a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Dragon Fire",
+      "base_number": "4-29A",
+      "sculpt_variant": "DGR-3F",
+      "source_pack": "Black Remnant Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "emperor",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/emperor4-21.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Emperor",
+      "base_number": "4-21",
+      "sculpt_variant": "EMP-6A",
+      "source_pack": "Second Star League Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "enforcer",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/enforcer4-2.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Enforcer",
+      "base_number": "4-2",
+      "sculpt_variant": "ENF-5D",
+      "source_pack": "Hansen’s Roughriders Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "eris",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/eris4-90.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Eris",
+      "base_number": "4-90",
+      "sculpt_variant": "ERS-2N",
+      "source_pack": "BattleTech Core Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "excalibur",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/excalibur4-44.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Excalibur",
+      "base_number": "4-44",
+      "sculpt_variant": "EXC-B2",
+      "source_pack": "Third Star League Battle Group",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "exterminator",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/exterminator60.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Exterminator",
+      "base_number": "60",
+      "sculpt_variant": "EXT-4D",
+      "source_pack": "ComStar Command Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "falconer",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/falconer4-35a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Falconer",
+      "base_number": "4-35A",
+      "sculpt_variant": "FLC-8R",
+      "source_pack": "House Davion Heavy Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "firebee",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/firebee4-33.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Firebee",
+      "base_number": "4-33",
+      "sculpt_variant": "FRB-2E",
+      "source_pack": "Proliferation Cycle Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "firefly",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/firefly3-7.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Firefly",
+      "base_number": "3-7",
+      "sculpt_variant": "FFL-4B",
+      "source_pack": "Mercenaries Box Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "firestarter",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/firestarter3-18.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Firestarter",
+      "base_number": "3-18",
+      "sculpt_variant": "FS9-H",
+      "source_pack": "Inner Sphere Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "flashman",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/flashman82.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Flashman",
+      "base_number": "82",
+      "sculpt_variant": "FLS-8K",
+      "source_pack": "ComStar Battle Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "flea",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/flea3-6.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Flea",
+      "base_number": "3-6",
+      "sculpt_variant": "FLE-17",
+      "source_pack": "Mercenaries Box Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "gladiator",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/gladiator4-34.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Gladiator",
+      "base_number": "4-34",
+      "sculpt_variant": "GLD-4R",
+      "source_pack": "Proliferation Cycle Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "goliath",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/goliath3-42.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Goliath",
+      "base_number": "3-42",
+      "sculpt_variant": "GOL-1H",
+      "source_pack": "Inner Sphere Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "grand_dragon",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/granddragon4-72.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Grand Dragon",
+      "base_number": "4-72",
+      "sculpt_variant": "DRG-10K",
+      "source_pack": "House Kurita Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "grasshopper",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/grasshopper46.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Grasshopper",
+      "base_number": "46",
+      "sculpt_variant": "GHR-5H",
+      "source_pack": "Inner Sphere Heavy Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "griffin",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/griffin1.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Griffin",
+      "base_number": "1",
+      "sculpt_variant": "GRF-1N",
+      "source_pack": "BattleTech Beginner Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "griffin_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/griffiniic3-34.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Griffin IIC",
+      "base_number": "3-34",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Cavalry Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "grizzly",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/grizzly3-54.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Grizzly",
+      "base_number": "3-54",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Direct Fire Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "guillotine",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/guillotine4-30.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Guillotine",
+      "base_number": "4-30",
+      "sculpt_variant": "GLT-3N",
+      "source_pack": "Snord's Irregulars Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "gunslinger",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/gunslinger4-14.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Gunslinger",
+      "base_number": "4-14",
+      "sculpt_variant": "GUN-1ERD",
+      "source_pack": "Northwind Highlanders Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "gunsmith",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/gunsmith4-31a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Gunsmith",
+      "base_number": "4-31A",
+      "sculpt_variant": "CH11-NG",
+      "source_pack": "House Davion Cavalry Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hatamoto_chi",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hatamotochi3-87.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hatamoto-Chi",
+      "base_number": "3-87",
+      "sculpt_variant": "HTM-27T",
+      "source_pack": "Somerset Strikers ForcePack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hatchetman",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hatchetman47.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hatchetman",
+      "base_number": "47",
+      "sculpt_variant": "HCT-3F",
+      "source_pack": "Inner Sphere Heavy Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "havoc",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/havoc4-39.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Havoc",
+      "base_number": "4-39",
+      "sculpt_variant": "HVC-P6",
+      "source_pack": "Third Star League Strike Team",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "helios",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/helios4-18.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Helios",
+      "base_number": "4-18",
+      "sculpt_variant": "HEL-3D",
+      "source_pack": "Second Star League Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hellspawn",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hellspawn4-32a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hellspawn",
+      "base_number": "4-32A",
+      "sculpt_variant": "HSN-7D",
+      "source_pack": "House Davion Cavalry Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hermes_ii",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hermesii3-22.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hermes II",
+      "base_number": "3-22",
+      "sculpt_variant": "HER-2S",
+      "source_pack": "Inner Sphere Pursuit Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "highlander",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/highlander4-29.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Highlander",
+      "base_number": "4-29",
+      "sculpt_variant": "HGN-694",
+      "source_pack": "Snord's Irregulars Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "highlander_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/highlanderiic3-56.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Highlander IIC",
+      "base_number": "3-56",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Direct Fire Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hollander",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hollander4-89.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hollander",
+      "base_number": "4-89",
+      "sculpt_variant": "BZK-F3",
+      "source_pack": "BattleTech Core Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hoplite",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hoplite3-41.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hoplite",
+      "base_number": "3-41",
+      "sculpt_variant": "HOP-4D",
+      "source_pack": "Inner Sphere Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hunchback",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hunchback62.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hunchback",
+      "base_number": "62",
+      "sculpt_variant": "HBK-4G",
+      "source_pack": "Inner Sphere Urban Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hunchback_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/hunchbackiic48.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Hunchback IIC",
+      "base_number": "48",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Heavy Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "icarus_ii",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/icarusii4-32.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Icarus II",
+      "base_number": "4-32",
+      "sculpt_variant": "ICR-1S",
+      "source_pack": "Proliferation Cycle Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "jackalope",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/jackalope4-40.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Jackalope",
+      "base_number": "4-40",
+      "sculpt_variant": "JLP-BD",
+      "source_pack": "Third Star League Strike Team",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "jagermech",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/jagermech3-31.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "JagerMech",
+      "base_number": "3-31",
+      "sculpt_variant": "JM6-S/JM6-DGr",
+      "source_pack": "Inner Sphere Security Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "javelin",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/javelin3-17.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Javelin",
+      "base_number": "3-17",
+      "sculpt_variant": "JVN-10N",
+      "source_pack": "Inner Sphere Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "jenner",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/jenner63.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Jenner",
+      "base_number": "63",
+      "sculpt_variant": "JR7-D / JR7-K",
+      "source_pack": "Inner Sphere Striker Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "jenner_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/jenneriic3-33.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Jenner IIC",
+      "base_number": "3-33",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Cavalry Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "king_crab",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/kingcrab64.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "King Crab",
+      "base_number": "64",
+      "sculpt_variant": "KGC-000",
+      "source_pack": "ComStar Command Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "kingfisher",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/kingfisher89.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Kingfisher",
+      "base_number": "89",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Heavy Battle Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "kintaro",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/kintaro4-41.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Kintaro",
+      "base_number": "4-41",
+      "sculpt_variant": "KTO-20",
+      "source_pack": "Third Star League Strike Team",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "kodiak",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/kodiak96.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Kodiak",
+      "base_number": "96",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Ad Hoc Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "lancelot",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/lancelot84.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Lancelot",
+      "base_number": "84",
+      "sculpt_variant": "LNC25-01",
+      "source_pack": "ComStar Battle Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "legionnaire",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/legionnaire4-33a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Legionnaire",
+      "base_number": "4-33A",
+      "sculpt_variant": "LGN-2D",
+      "source_pack": "House Davion Cavalry Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "linebacker",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/linebacker42.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Linebacker",
+      "base_number": "42",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Support Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "locust",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/locust6.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Locust",
+      "base_number": "6",
+      "sculpt_variant": "LCT-1V",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "locust_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/locustiic3-32.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Locust IIC",
+      "base_number": "3-32",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Cavalry Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "longbow",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/longbow53.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Longbow",
+      "base_number": "53",
+      "sculpt_variant": "LGB-7Q",
+      "source_pack": "Inner Sphere Fire Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mackie",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/mackie4-36.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Mackie",
+      "base_number": "4-36",
+      "sculpt_variant": "MSK-6S",
+      "source_pack": "Proliferation Cycle Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mad_cat_mk_ii",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/madcatmkii4-94.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Mad Cat Mk II",
+      "base_number": "4-94",
+      "sculpt_variant": "Standard",
+      "source_pack": "BattleTech Core Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "malice",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/malice4-45.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Malice",
+      "base_number": "4-45",
+      "sculpt_variant": "MAL-XT",
+      "source_pack": "Third Star League Battle Group",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "marauder",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/marauder27.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Marauder",
+      "base_number": "27",
+      "sculpt_variant": "MAD-3R",
+      "source_pack": "Legendary MechWarriors Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "marauder_ii",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/marauderii3-73.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Marauder II",
+      "base_number": "3-73",
+      "sculpt_variant": "Bounty Hunter",
+      "source_pack": "Legendary MechWarriors III Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mauler",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/mauler3-85.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Mauler",
+      "base_number": "3-85",
+      "sculpt_variant": "MAL-1R",
+      "source_pack": "Somerset Strikers ForcePack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mercury",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/mercury65.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Mercury",
+      "base_number": "65",
+      "sculpt_variant": "MCY-99",
+      "source_pack": "ComStar Command Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "merlin",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/merlin3-46.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Merlin",
+      "base_number": "3-46",
+      "sculpt_variant": "MLN-1A",
+      "source_pack": "Inner Sphere Heavy Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mist_lynx",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/mistlynx2.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Mist Lynx (Koshi)",
+      "base_number": "2",
+      "sculpt_variant": "Prime/Alt. Config. A",
+      "source_pack": "Clan Command Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mongoose",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/mongoose85.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Mongoose",
+      "base_number": "85",
+      "sculpt_variant": "MON-66",
+      "source_pack": "ComStar Battle Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "night_gyr",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/nightgyr43.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Night Gyr",
+      "base_number": "43",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Support Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "nightsky",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/nightsky4-10.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Nightsky",
+      "base_number": "4-10",
+      "sculpt_variant": "NGS-4S",
+      "source_pack": "Kell Hounds Striker Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "nightstar",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/nightstar93.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "NightStar",
+      "base_number": "93",
+      "sculpt_variant": "NSR-9FC",
+      "source_pack": "Inner Sphere Heavy Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "nova_cat",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/novacat33.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Nova Cat",
+      "base_number": "33",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Fire Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "orion",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/orion3-99.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Orion",
+      "base_number": "3-99",
+      "sculpt_variant": "ON1-Kb",
+      "source_pack": "Star League Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ostroc",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/ostroc3-47.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Ostroc",
+      "base_number": "3-47",
+      "sculpt_variant": "OSR-2C",
+      "source_pack": "Inner Sphere Heavy Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ostscout",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/ostscout3-16.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Ostscout",
+      "base_number": "3-16",
+      "sculpt_variant": "OTT-7J",
+      "source_pack": "Inner Sphere Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ostsol",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/ostsol3-10.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Ostsol",
+      "base_number": "3-10",
+      "sculpt_variant": "OTL-4D",
+      "source_pack": "Mercenaries Box Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ostwar",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/ostwar4-76.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Ostwar",
+      "base_number": "4-76",
+      "sculpt_variant": "OWR-3M",
+      "source_pack": "Illician Lancers Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "pack_hunter",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/packhunter97.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Pack Hunter",
+      "base_number": "97",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Ad Hoc Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "panther",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/Panther66.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Panther",
+      "base_number": "66",
+      "sculpt_variant": "PNT-9R",
+      "source_pack": "Inner Sphere Striker Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "peacekeeper",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/peacekeeper4-46.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Peacekeeper",
+      "base_number": "4-46",
+      "sculpt_variant": "PKP-1A",
+      "source_pack": "Third Star League Battle Group",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "penetrator",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/penetrator4-3.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Penetrator",
+      "base_number": "4-3",
+      "sculpt_variant": "PTR-4D",
+      "source_pack": "Hansen’s Roughriders Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "phoenix_hawk",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/phoenixhawk17.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Phoenix Hawk",
+      "base_number": "17",
+      "sculpt_variant": "PXH-1",
+      "source_pack": "Inner Sphere Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "pillager",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/pillager3-44.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Pillager",
+      "base_number": "3-44",
+      "sculpt_variant": "PLG-3Z",
+      "source_pack": "Inner Sphere Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "piranha",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/piranha76.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Piranha",
+      "base_number": "76",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Striker Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "quickdraw",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/quickdraw3-11.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Quickdraw",
+      "base_number": "3-11",
+      "sculpt_variant": "QKD-4G",
+      "source_pack": "Mercenaries Box Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "rakshasa",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/rakshasa4-93.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Rakshasa",
+      "base_number": "4-93",
+      "sculpt_variant": "MDG-1A",
+      "source_pack": "BattleTech Core Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "raven",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/raven67.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Raven",
+      "base_number": "67",
+      "sculpt_variant": "RVN-3L",
+      "source_pack": "Inner Sphere Urban Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "rifleman",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/rifleman3-4.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Rifleman",
+      "base_number": "3-4",
+      "sculpt_variant": "RFL-3N",
+      "source_pack": "Wolf's Dragoons Assault Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "sagittaire",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/sagittaire4-7.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Sagittaire",
+      "base_number": "4-7",
+      "sculpt_variant": "SGT-8R",
+      "source_pack": "Eridani Light Horse Hunter Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "scarabus",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/scarabus4-78.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Scarabus",
+      "base_number": "4-78",
+      "sculpt_variant": "SCB-9A",
+      "source_pack": "Illician Lancers Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "scorpion",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/scorpion3-30.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Scorpion",
+      "base_number": "3-30",
+      "sculpt_variant": "SCP-1N",
+      "source_pack": "Inner Sphere Security Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "sentinel",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/sentinel68.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Sentinel",
+      "base_number": "68",
+      "sculpt_variant": "STN-3L",
+      "source_pack": "ComStar Command Level II",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shadow_cat",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/shadowcat3.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Shadow Cat",
+      "base_number": "3",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Command Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shadow_hawk",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/shadowhawk8.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Shadow Hawk",
+      "base_number": "8",
+      "sculpt_variant": "SHD-2H",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shadow_hawk_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/shadowhawkiic3-35%20.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Shadow Hawk IIC",
+      "base_number": "3-35",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Cavalry Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shiro",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/shiro4-74.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Shiro",
+      "base_number": "4-74",
+      "sculpt_variant": "SH-1V",
+      "source_pack": "House Kurita Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shockwave",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/shockwave4-65.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Shockwave",
+      "base_number": "4-65",
+      "sculpt_variant": "SKW-2F",
+      "source_pack": "21st Centauri Lancers Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shogun",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/shogun3-43.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Shogun",
+      "base_number": "3-43",
+      "sculpt_variant": "SHG-2F",
+      "source_pack": "Inner Sphere Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "spartan",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/spartan4-27.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Spartan",
+      "base_number": "4-27",
+      "sculpt_variant": "SPT-N2",
+      "source_pack": "Snord's Irregulars Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "spector",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/spector3-19.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Spector",
+      "base_number": "3-19",
+      "sculpt_variant": "SPR-5F",
+      "source_pack": "Inner Sphere Recon Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "spider",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/spider100.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Spider",
+      "base_number": "100",
+      "sculpt_variant": "SDR-5V",
+      "source_pack": "Inner Sphere Support Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "stalker",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/stalker54.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Stalker",
+      "base_number": "54",
+      "sculpt_variant": "Stalker STK-3F",
+      "source_pack": "Inner Sphere Fire Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "starslayer",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/starslayer4-22.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Starslayer",
+      "base_number": "4-22",
+      "sculpt_variant": "STY-2C/3C",
+      "source_pack": "McCarron's Armored Cavalry Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "stinger",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/stinger23.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Stinger",
+      "base_number": "23",
+      "sculpt_variant": "STG-3R",
+      "source_pack": "Inner Sphere Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "summoner",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/summoner4-61.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Summoner",
+      "base_number": "4-61",
+      "sculpt_variant": "Alt. Config. H",
+      "source_pack": "BattleTech Aces: Scouring Sands",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "supernova",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/supernova51th.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Supernova",
+      "base_number": "51",
+      "sculpt_variant": "Standard",
+      "source_pack": "Clan Heavy Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "templar",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/templar4-36a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Templar",
+      "base_number": "4-36A",
+      "sculpt_variant": "TLR1-O",
+      "source_pack": "House Davion Heavy Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thanatos",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/thanatos4-34a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Thanatos",
+      "base_number": "4-34A",
+      "sculpt_variant": "TNS-4S",
+      "source_pack": "House Davion Heavy Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thug",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/thug79.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Thug",
+      "base_number": "79",
+      "sculpt_variant": "THG-11E",
+      "source_pack": "Inner Sphere Support Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thunder_hawk",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/thunderhawk3-98.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Thunder Hawk",
+      "base_number": "3-98",
+      "sculpt_variant": "TDK-7S",
+      "source_pack": "Star League Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thunderbolt",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/thunderbolt5.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Thunderbolt",
+      "base_number": "5",
+      "sculpt_variant": "TDR-5S",
+      "source_pack": "BattleTech: A Game of Armored Combat",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thunderbolt_iic",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/thunderboltiic4-62.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Thunderbolt IIC",
+      "base_number": "4-62",
+      "sculpt_variant": "Standard",
+      "source_pack": "BattleTech Aces: Scouring Sands",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "tian_zong",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/tianzong4-25.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Tian-Zong",
+      "base_number": "4-25",
+      "sculpt_variant": "TNZ-N1",
+      "source_pack": "McCarron's Armored Cavalry Assault Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "trebuchet",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/trebuchet55.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Trebuchet",
+      "base_number": "55",
+      "sculpt_variant": "TBT-5N",
+      "source_pack": "Inner Sphere Fire Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "turkina",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/turkina72.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Turkina",
+      "base_number": "72",
+      "sculpt_variant": "Prime",
+      "source_pack": "Clan Heavy Battle Star",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "uziel",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/uziel4-91.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Uziel",
+      "base_number": "4-91",
+      "sculpt_variant": "UZL-3S",
+      "source_pack": "BattleTech Core Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "valkyrie",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/valkyrie24.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Valkyrie",
+      "base_number": "24",
+      "sculpt_variant": "VLK-QA",
+      "source_pack": "Inner Sphere Command Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "venom",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/venom4-70.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Venom",
+      "base_number": "4-70",
+      "sculpt_variant": "SDR-9K",
+      "source_pack": "House Kurita Ranger Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "victor",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/victor69.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Victor",
+      "base_number": "69",
+      "sculpt_variant": "VTR-9B",
+      "source_pack": "Inner Sphere Urban Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "vindicator",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/vindicator3-8a.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Vindicator",
+      "base_number": "3-8A",
+      "sculpt_variant": "VND-1R",
+      "source_pack": "BattleTech Beginner Box, Second Edition",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "vulcan",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/vulcan3-28.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Vulcan",
+      "base_number": "3-28",
+      "sculpt_variant": "VL-2T",
+      "source_pack": "Inner Sphere Security Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "warhammer",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/warhammer19.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Warhammer",
+      "base_number": "19",
+      "sculpt_variant": "WHM-6R",
+      "source_pack": "Inner Sphere Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "wasp",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/wasp20.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Wasp",
+      "base_number": "20",
+      "sculpt_variant": "WSP-1A",
+      "source_pack": "Inner Sphere Battle Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "whitworth",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/whitworth3-29.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Whitworth",
+      "base_number": "3-29",
+      "sculpt_variant": "WTH-1",
+      "source_pack": "Inner Sphere Security Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "wolfhound",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/wolfhound4-9.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Wolfhound",
+      "base_number": "4-9",
+      "sculpt_variant": "WLF-1",
+      "source_pack": "Kell Hounds Striker Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "wolverine",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/wolverine2.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Wolverine",
+      "base_number": "2",
+      "sculpt_variant": "WVR-6R",
+      "source_pack": "BattleTech Beginner Box",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "wraith",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/wraitha6.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Wraith",
+      "base_number": "a6",
+      "sculpt_variant": "TR1",
+      "source_pack": "Alpha Strike Boxed Set",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ymir",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/ymir4-37.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Ymir",
+      "base_number": "4-37",
+      "sculpt_variant": "BWP-2B",
+      "source_pack": "Proliferation Cycle Pack",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "zeus",
+      "view": "front",
+      "reference_page": "https://jadedfalconer.com/Pages/6How/miniatures",
+      "image_url": "https://jadedfalconer.com/Pictures/CGLminis/zeus56.jpg",
+      "photo_credit": "Jaded Falconer miniature photo catalog",
+      "source_type": "modern_CGL_plastic_photo",
+      "miniature_name": "Zeus",
+      "base_number": "56",
+      "sculpt_variant": "ZEU-6S",
+      "source_pack": "Inner Sphere Fire Lance",
+      "white_background_threshold": 235,
+      "crop_bottom_fraction": 0.95,
+      "exclude_dark_base_below": {
+        "start_y_fraction": 0.78,
+        "min_channel_mean": 68
+      },
+      "camera_assessment": "Unverified front/quarter photographed angle",
+      "pose_description": "Unverified physical miniature stance",
+      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "camera_search": {
+        "yaw_offsets": [
+          -15,
+          0,
+          15
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    }
+  ]
+}
