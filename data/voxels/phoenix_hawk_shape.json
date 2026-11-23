@@ -2067,7 +2067,7 @@
       "joint": "shoulder"
     },
     {
-      "name": "ra_laser",
+      "name": "ra_large_laser",
       "loc": "RA",
       "parent": "ra",
       "pivot": [
@@ -2122,6 +2122,47 @@
           "mat": "recess"
         },
         {
+          "erase": [
+            [
+              12,
+              15,
+              -17
+            ],
+            [
+              12,
+              15,
+              -14
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ra_small_emitter",
+      "loc": "RA",
+      "parent": "ra",
+      "pivot": [
+        9,
+        14,
+        -7
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              8,
+              14,
+              -8
+            ],
+            [
+              9,
+              15,
+              -6
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
           "box": [
             [
               8,
@@ -2150,20 +2191,6 @@
             ]
           ],
           "mat": "glow"
-        },
-        {
-          "erase": [
-            [
-              12,
-              15,
-              -17
-            ],
-            [
-              12,
-              15,
-              -14
-            ]
-          ]
         }
       ]
     },
@@ -2911,5 +2938,5 @@
     "stages_with_changes": 20
   },
   "silhouette_signature_revision": "20261122-blind-recognition-rig-and-silhouette-01",
-  "notes": " Lighter fighter-like central silhouette; large-laser and smaller emitter separated into independently damageable right forearm weapon assembly; high rear jump pack silhouette preserved."
+  "notes": " Lighter fighter-like central silhouette; large-laser and smaller emitter separated into independently damageable right forearm weapon assembly; high rear jump pack silhouette preserved. The smaller forward machine-gun emitter has its own rigid attachment instead of relying on a long bridge through the large-laser barrel."
 }
