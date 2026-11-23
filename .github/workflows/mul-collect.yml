@@ -1,13 +1,8 @@
 name: Import canonical MUL availability
 on:
   workflow_dispatch:
-  push:
-    branches: [feature/era-faction-availability]
-    paths:
-      - tools/import_mul_availability.py
-      - .github/workflows/mul-collect.yml
 permissions:
-  contents: write
+  contents: read
 jobs:
   import:
     runs-on: ubuntu-latest
@@ -17,21 +12,14 @@ jobs:
       cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
-        with: {persist-credentials: true}
+        with: {persist-credentials: false}
       - name: Read official public MUL search index with robots-compliant pacing
         run: python3 tools/import_mul_availability.py
-      - name: Commit official availability snapshot
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/forces/availability.json docs/mul-import-coverage.json
-          if git diff --cached --quiet; then echo "Snapshot unchanged."; else
-            git commit -m "Sync all exact-variant faction-era records from MUL public index"
-            git push origin HEAD:feature/era-faction-availability
-          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: mul-import-coverage
-          path: docs/mul-import-coverage.json
+          name: mul-import-review-snapshot
+          path: |
+            docs/mul-import-coverage.json
+            data/forces/availability.json
           if-no-files-found: ignore
