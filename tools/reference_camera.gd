@@ -23,7 +23,7 @@ static func settings_errors(spec: Dictionary) -> Array[String]:
         issues.append("projection must be orthographic or perspective")
     for key: String in ["yaw_deg", "pitch_deg", "roll_deg",
             "distance_heights"]:
-        var value: Variant = spec.get(key, 0.0)
+        var value: Variant = spec.get(key, 3.5 if key == "distance_heights" else 0.0)
         if not (value is int or value is float):
             issues.append(key + " must be numeric")
             continue
