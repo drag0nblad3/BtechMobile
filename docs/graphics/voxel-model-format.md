@@ -150,3 +150,23 @@ damage makes thicker smoke.
 Leave the cell row at each pivot empty in the parent, and fill it with a small `joint`
 block in the child, centered on the pivot. That block stays covered when the joint bends,
 so no gap opens up. Never let two parts fill the same cell: overlapping faces flicker.
+
+## New sourced silhouettes: Solitaire and Vulture Mk IV
+
+`solitaire.json` is a separate light-mech source sculpt rather than a clone
+of the Jenner or a generic biped. Its angular shoulder plates, forward
+cockpit, antenna, hands, exposed arm joints, thin lower legs and asymmetric
+torso emitters are authored as linked independent masses.
+
+`vulture_mk_iv.json` is an entirely independent 3145-style chassis sculpt
+with bird-legged hocks and ankles, an extended narrow cockpit beak, two
+supported gun arms and shoulder launcher panels with **twelve physically
+cut tubes each**. Five overlay files `vulture_mk_iv_a.json` through `_e.json`
+replace barrel contours and modify launcher counts according to the
+official loadouts: A ten per pod, B fifteen, C none, D twelve, E twelve.
+Prime uses the base sculpt and twelve per pod.
+
+These authored source meshes have connectivity and open-port regression
+tests. The source geometry still needs multi-angle reference-aligned renders,
+part by part proportion corrections and Godot device performance inspection.
+The models do not determine damage or replace the record-sheet equipment.
