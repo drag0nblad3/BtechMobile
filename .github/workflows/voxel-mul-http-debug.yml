@@ -1,42 +1,21 @@
-name: Debug Sarna BattleTech wiki reference images
+name: Inspect archived vehicle reference filenames
 on:
   push:
-    branches:
-      - audit/mul-debug-20261123
-  workflow_dispatch:
+    branches: [audit/mul-debug-20261123]
 permissions:
   contents: read
 jobs:
-  inspect:
+  reference-names:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inspect official-unit picture source pages and image URLs
+      - name: Inspect actual listing and exact chassis basename
         run: |
           python3 - <<'PY'
-          import urllib.request,urllib.error,re,html
-          for slug in ['Alfar','Glass_Spider','Bulldog_Medium_Tank','Elemental_(Battle_Armor)','Hetzer','Rook']:
-            url='https://www.sarna.net/wiki/'+slug
-            try:
-              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 BtechMobileReferenceAudit/1.0'})
-              with urllib.request.urlopen(req,timeout=20) as r:
-                data=r.read(800000).decode('utf-8','replace')
-              t=re.search(r'<title[^>]*>(.*?)</title>',data,re.I|re.S)
-              table=re.search(r'<table[^>]*class="[^"]*infobox[^"]*"[^>]*>',data,re.I)
-              img=re.findall(r'<img[^>]*src="([^"]+)"[^>]*>',data,re.I)[:3]
-              print('SARNA_DEBUG',slug,'len',len(data),'title',html.unescape(t.group(1) if t else ''),'infobox',bool(table),'imgs',img,'head',repr(data[:100]))
-              if table:
-                print('SARNA_INFOBOX',slug,repr(data[table.start():table.start()+2300]))
-                pic=re.search(r'<img[^>]+src="([^"]+)"',data[table.start():table.start()+3000],re.I)
-                if pic:
-                  image=pic.group(1)
-                  print('SARNA_IMG_URL',slug,image)
-                  try:
-                    with urllib.request.urlopen(urllib.request.Request(image,headers={'User-Agent':'Mozilla/5.0'}),timeout=15) as ri:
-                      body=ri.read(2000000)
-                      print('SARNA_IMG_OK',slug,ri.status,len(body),ri.headers.get('Content-Type'))
-                  except Exception as e:
-                    print('SARNA_IMG_ERROR',slug,type(e).__name__,str(e))
-            except Exception as e:
-              print('SARNA_ERROR',slug,type(e).__name__,str(e))
+          import sys
+          sys.path.insert(0,'tools')
+          from discover_tro_reference_art import fetch_index
+          for category in ('vehicle','mech'):
+            files=fetch_index(category)
+            print('ARCHIVE_LIST',category,'size',len(files),'names',sorted(files)[:300] if category=='vehicle' else sorted(files)[:30])
           PY
