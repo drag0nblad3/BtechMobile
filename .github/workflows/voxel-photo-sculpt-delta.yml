@@ -44,11 +44,10 @@ jobs:
               raise SystemExit('Unmatched source photos: %s' % sorted(ids - {i['model'] for i in records}))
           Path('/tmp/sculpt-reference/cohort.json').write_text(json.dumps({'candidates':records},indent=2))
           PY
-      - name: Measure the main-branch baseline
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      - name: Measure the current main-branch baseline
         run: |
-          git checkout --detach "$BASE_SHA"
+          git fetch --no-tags origin main
+          git checkout --detach origin/main
           godot --headless --import
           python3 tools/run_reference_batch.py --index /tmp/sculpt-reference/cohort.json --poses res://docs/graphics/first-reference-pose-hypotheses.json --output /tmp/sculpt-reference/before --offset 0 --limit 20
       - name: Measure the proposed resculpts independently
