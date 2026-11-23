@@ -77,10 +77,14 @@ func test_cutting_wedge_tapers_to_a_high_contrast_steel_edge() -> void:
 			continue
 		var sections: Array = cutting["loft"]["sections"]
 		check(sections.size() >= 3, "%s: edge should taper through three profiles" % id)
-		var narrow: float = _vertical_span(sections[0]["polygon"])
-		var wide: float = _vertical_span(sections.back()["polygon"])
-		check(wide > narrow * 1.5,
-				"%s: front-most edge must taper to a sharp, narrow lip" % id)
+		var edge_height: float = _vertical_span(sections[0]["polygon"])
+		var body_height: float = _vertical_span(sections.back()["polygon"])
+		var edge_thickness: float = _horizontal_span(sections[0]["polygon"])
+		var body_thickness: float = _horizontal_span(sections.back()["polygon"])
+		check(edge_height >= body_height * 0.6,
+				"%s: axe needs a long cutting edge, not a mace point" % id)
+		check(edge_thickness < body_thickness * 0.6,
+				"%s: edge must be tapered thin across X" % id)
 		check(VxPart._is_unpainted("steel_edge"),
 				"%s: team paint must not recolor the metal edge" % id)
 
@@ -92,6 +96,15 @@ static func _vertical_span(polygon: Array) -> float:
 		low = minf(low, float(uv[1]))
 		high = maxf(high, float(uv[1]))
 	return high - low
+
+static func _horizontal_span(polygon: Array) -> float:
+	var low := INF
+	var high := -INF
+	for uv: Array in polygon:
+		low = minf(low, float(uv[0]))
+		high = maxf(high, float(uv[0]))
+	return high - low
+
 
 
 func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
