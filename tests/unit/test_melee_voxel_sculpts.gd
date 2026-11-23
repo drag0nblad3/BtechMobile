@@ -47,7 +47,7 @@ func test_forward_blade_is_thin_not_a_side_facing_slab() -> void:
 			if item.get("name", "") != "ra_hatchet":
 				continue
 			for shape: Dictionary in item.get("shapes", []):
-				if shape.get("mat", "") != "plate" or not shape.has("loft"):
+				if shape.get("mat", "") != "steel_edge" or not shape.has("loft"):
 					continue
 				cutting_loft = shape["loft"].get("axis", "") == "z"
 		check(cutting_loft, "%s: needs a real forward cutting edge" % id)
