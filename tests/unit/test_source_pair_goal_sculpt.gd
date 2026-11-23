@@ -48,7 +48,7 @@ func test_dominator_long_rt_laser_contrasts_conjurer_short_rt_emitters() -> void
 	var tip: Array = dominator["muzzles"]["RT"]
 	check(float(tip[2]) < _front_depth(_part(conjurer, "rt")),
 		"ER large laser muzzle must lie ahead of Conjurer's torso laser mouths")
-	var official := JsonFile.read("res://data/units/dominator.json")
+	var official: Dictionary = JsonFile.read("res://data/units/dominator.json")
 	check("c_er_large_laser" in official["equipment"]["RT"],
 		"protrusion belongs to official RT laser, not invented shoulder armor")
 
