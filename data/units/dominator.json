@@ -1,0 +1,85 @@
+{
+  "id": "dominator",
+  "name": "Dominator",
+  "model": "",
+  "tonnage": 65,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 18,
+  "tech_base": "clan",
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 15,
+    "RA": 20,
+    "LT": 23,
+    "RT": 23,
+    "CT": 31,
+    "HD": 9,
+    "LL": 28,
+    "RL": 28
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 10
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*2",
+      "ferro_fibrous*3"
+    ],
+    "RA": [
+      "heat_sink",
+      "c_er_ppc",
+      "endo_steel*2",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "heat_sink",
+      "jump_jet*2",
+      "c_streak_srm6",
+      "ammo:c_streak_srm6",
+      "endo_steel*2",
+      "ferro_fibrous"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*2",
+      "c_er_large_laser",
+      "targeting_computer",
+      "endo_steel",
+      "ferro_fibrous"
+    ],
+    "CT": [
+      "jump_jet",
+      "supercharger"
+    ],
+    "HD": [
+      "c_er_small_laser@rear"
+    ],
+    "LL": [
+      "heat_sink"
+    ],
+    "RL": [
+      "heat_sink"
+    ]
+  },
+  "source": {
+    "mul_id": 7434,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 1/Dominator.mtf",
+    "published": "RG01",
+    "role": "Skirmisher",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/dominator"
+  },
+  "bv": 3018,
+  "role": "Skirmisher: supercharged jumping Clan 65-tonner with ER PPC, ER large laser, Streak SRM 6 and targeting computer; walks 5, jumps 5."
+}

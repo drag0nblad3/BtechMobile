@@ -101,3 +101,13 @@ variants share the fixed 60-ton Clan XL engine, endo steel internal structure,
 ferro-lamellor armor, and canonical chassis identifier. Published MUL BVs
 Prime–E: 2,110; 2,177; 2,649; 2,584; 2,346; 2,151.
 
+Five additional **separate chassis** use exact official records, not variants
+of lookalike OmniMechs: Hellhound (Conjurer) from Recognition Guide Vol. 5,
+Dominator from Recognition Guide Vol. 1, and Black Hawk (Standard), Koshi
+(Standard), HawkWolf HWK-4F from `3145/Merc`. Official MUL entries and
+published BV are linked in each unit JSON: 1,813; 3,018; 2,183; 760; 1,428.
+Unmodeled unit quirks (e.g. exposed weapon linkage / protected actuators) are
+not silently converted into alternate weapons or combat rules. Distinct
+source-aware voxel models are still needed for all five new chassis; game
+statistics and their source files are committed first.
+

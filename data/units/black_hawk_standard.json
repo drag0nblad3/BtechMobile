@@ -1,0 +1,70 @@
+{
+  "id": "black_hawk_standard",
+  "name": "Black Hawk (Standard)",
+  "model": "",
+  "tonnage": 50,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 14,
+  "tech_base": "clan",
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 13,
+    "RA": 13,
+    "LT": 14,
+    "RT": 14,
+    "CT": 19,
+    "HD": 9,
+    "LL": 19,
+    "RL": 19
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 6
+  },
+  "equipment": {
+    "LA": [
+      "c_streak_srm4*2"
+    ],
+    "RA": [
+      "c_streak_srm4*2"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "c_er_large_laser",
+      "ammo:c_streak_srm4*2",
+      "endo_steel*3"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "c_er_large_laser",
+      "ammo:c_streak_srm4*2",
+      "endo_steel*3"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "source": {
+    "mul_id": 6554,
+    "megamek": "data/mekfiles/meks/3145/Merc/Black Hawk (Standard).mtf",
+    "published": "RS:DA",
+    "role": "Skirmisher",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/black-hawk-standard"
+  },
+  "bv": 2183,
+  "role": "Skirmisher: non-Omni Clan Black Hawk with four Streak SRM 4s and two ER large lasers; walks 5, jumps 5."
+}
