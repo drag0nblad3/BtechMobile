@@ -12,10 +12,10 @@ pose, cropping and foreground are reviewed.
 | --- | ---: | --- |
 | Catalyst plastic photography | 159 | Existing provisional front/off-axis camera+pose trials |
 | Legacy official TRO scans (nonoverlapping) | 82 | Existing provisional camera trials |
-| Additional Sarna infobox images | 36 | 44 candidates indexed; 36 newly covered, 8 duplicates; new 3-batch GitHub Action launched |
+| Additional Sarna infobox images | 36 | 44 candidates indexed: 36 new Mechs and 8 non-Mech family candidates; new 3-batch GitHub Action launched |
 | No qualified image lead | **12** | Reference discovery required |
 | **Total BattleMechs** | **289** | 277 have a reference candidate, 12 do not |
-| Support/vehicle/battle-armor recipes | **45** | Not part of Mech-photo coverage; require their own category-matched source art |
+| Support/vehicle/battle-armor recipes | **45** | 8 family-level illustration candidates are in the same Sarna index; 37 still lack this source track |
 
 **Important:** A source candidate does not imply verified angle, plastic
 generation, pose or clean contour. The source-qualified final four-angle
@@ -43,7 +43,7 @@ The Sarna infobox discovery tool tried named pages for these 12 and did not
 verify matching illustrations. Missing images are recorded explicitly; no
 numeric reference-fit scores are invented.
 
-## Evaluation procedure for the 44 newly indexed candidate images
+## Evaluation procedure for the 44 newly indexed candidate images (36 BattleMechs, 4 vehicles and 4 battle-armor variants)
 
 1. The matrix job `voxel-sarna-remaining.yml` exports authored voxel
    silhouettes, then projects each through a bounded camera search
@@ -61,4 +61,6 @@ numeric reference-fit scores are invented.
 
 The 45 non-Mech assets should use reference material appropriate to each
 vehicle, battle armor, or support archetype rather than a BattleMech plastic
-photo. They must not be silently counted as completed Mech scoring.
+photo. Four vehicles and four Elemental battle-armor variants have family-level
+art leads in the 44-image Sarna batch. These 8 are not counted as Mechs and
+must not be marked as exact-variant matches.
