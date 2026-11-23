@@ -39,6 +39,7 @@ static func load_file(path: String) -> VxModel:
 
 static func from_dict(d: Dictionary) -> VxModel:
 	var recipe: Dictionary = VxArtQuality.apply(d)
+	var sockets := {}
 	var m := VxModel.new()
 	m.id = recipe.get("id", "")
 	m.name = recipe.get("name", m.id)
@@ -55,6 +56,8 @@ static func from_dict(d: Dictionary) -> VxModel:
 		m._claim_exclusive_cells() # settle coarse moving-part ownership before connecting joints
 		if not bool(recipe.get("voxelize_lofts", false)):
 			VxConnectivity.repair(m) # coarse load-bearing joints before subdivision
+			if recipe.get("shape_refinement_revision", "") == "new-chassis-50-real-passes-20261122":
+				sockets = VxJointBacking.repair(m, recipe)
 	VxRefine.apply(m, int(recipe.get("subdivide", 1)), recipe)
 	for p: Dictionary in recipe.get("parts", []):
 		m._paint(m.part(p["name"]).get("cells", {}), p.get("detail", []))  # fine-grid touches
@@ -63,6 +66,8 @@ static func from_dict(d: Dictionary) -> VxModel:
 		if bool(recipe.get("voxelize_lofts", false)):
 			VxConnectivity.repair(m) # rebuild lofts first, then close their joints
 		m.quality_report = VxIntegrity.repair(m, recipe)
+		if not sockets.is_empty():
+			m.quality_report["joint_sculpt"] = sockets
 	m.unit_id = recipe.get("unit", "")
 	m.legs = recipe.get("legs", "plantigrade")
 	m.can_punch = recipe.get("punch", true)
