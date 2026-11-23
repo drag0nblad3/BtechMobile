@@ -47,7 +47,7 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	var history := VBoxContainer.new()
 	history.add_theme_constant_override("separation", 8)
 	box.add_child(history)
-	UiSkin.label(UiKit.label(history, "HISTORICAL AVAILABILITY", 18), "section")
+	UiSkin.label(UiKit.label(history, "FACTIONS, PAINT & AVAILABILITY", 18), "section")
 	var era_row := HBoxContainer.new()
 	history.add_child(era_row)
 	_era = OptionButton.new()
@@ -88,6 +88,7 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		UiSkin.label(faction_label, "section")
 		var picker_for_faction := OptionButton.new()
 		picker_for_faction.custom_minimum_size.y = 50
+		picker_for_faction.tooltip_text = "Also paints this side's voxel 'Mechs and adds a stylized armor insignia. Historical restrictions are optional."
 		picker_for_faction.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		picker_for_faction.add_theme_font_size_override("font_size", 17)
 		for faction: Dictionary in EraAvailability.FACTIONS:
@@ -96,6 +97,7 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		_factions.append(picker_for_faction)
 		picker_for_faction.item_selected.connect(func(index: int):
 			builder.factions[idx] = String(EraAvailability.FACTIONS[index]["id"])
+			GameSettings.set_paint_faction(idx, builder.factions[idx])
 			_changed.call())
 	map_picker.build(box, changed)
 	_budget_button = UiKit.button(box, "", _next_budget, Vector2(0, 52))
