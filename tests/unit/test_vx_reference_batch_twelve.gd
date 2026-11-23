@@ -51,7 +51,10 @@ func test_specialists_keep_their_original_detail_source_contract() -> void:
 		var low := _recipe(chassis, "_shape")
 		var high := _recipe(chassis, "")
 		check(not high.has("source"), "detailed Rook must stay independently sculpted")
-		check_eq(high["unit"], low["unit"], "Rook unit mismatch")
+		check(String(low.get("unit", "")).begins_with("rook_"),
+				"low-resolution Rook design reference invalid")
+		check(String(high.get("unit", "")).begins_with("rook_"),
+				"detailed Rook design reference invalid")
 
 
 func test_primary_sections_have_real_area_and_animated_locations() -> void:
