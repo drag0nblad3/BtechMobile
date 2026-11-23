@@ -1801,6 +1801,34 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -7,
+              31,
+              -13
+            ],
+            [
+              -7,
+              31,
+              -13
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -8,
+              31,
+              -13
+            ],
+            [
+              -8,
+              31,
+              -13
+            ]
+          ]
         }
       ],
       "parent": "ct",
@@ -1840,6 +1868,76 @@
             ]
           ],
           "mat": "gun"
+        },
+        {
+          "erase": [
+            [
+              8,
+              31,
+              -19
+            ],
+            [
+              8,
+              31,
+              -19
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              8,
+              31,
+              -18
+            ],
+            [
+              8,
+              31,
+              -18
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              8,
+              31,
+              -17
+            ],
+            [
+              8,
+              31,
+              -17
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              7,
+              31,
+              -13
+            ],
+            [
+              7,
+              31,
+              -13
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              6,
+              31,
+              -13
+            ],
+            [
+              6,
+              31,
+              -13
+            ]
+          ]
         }
       ],
       "detail": [
@@ -3023,5 +3121,5 @@
     "edited_vertices": 132,
     "stages_with_changes": 15
   },
-  "notes": " Thinner, sharper Wolfhound dog-beak abdomen; shoulder lasers and right arm large laser are separately supported and bored; rear-facing CT laser remains a rear-facing cosmetic effect. Ownership QA: independent Spider optic banks and backed Hatchetman/Wolfhound sockets eliminate unconnected regions without growing shoulders."
+  "notes": " Thinner, sharper Wolfhound dog-beak abdomen; shoulder lasers and right arm large laser are separately supported and bored; rear-facing CT laser remains a rear-facing cosmetic effect. Ownership QA: independent Spider optic banks and backed Hatchetman/Wolfhound sockets eliminate unconnected regions without growing shoulders. Topology QA: subtract disconnected orphan corner/launcher strip voxels at the measured audit locations without adding generic armor."
 }
