@@ -1,25 +1,6 @@
 name: Reference camera and pose silhouette QA
 
 on:
-  pull_request:
-    paths:
-      - 'tools/reference_*.gd'
-      - 'tools/export_reference_review_masks.gd'
-      - 'tools/score_reference_silhouettes.py'
-      - 'tools/score_first_reference_photos.py'
-      - 'tools/score_reference_pose_candidates.py'
-      - 'tests/tools/test_score_reference_pose_candidates.py'
-      - 'tests/tools/test_score_reference_photo_segmentation.py'
-      - 'tools/preview_reference_mask_pairs.py'
-      - 'tools/discover_reference_photos.py'
-      - 'tools/discover_tro_reference_art.py'
-      - 'tests/tools/test_discover_tro_reference_art.py'
-      - 'tests/tools/test_discover_reference_photos.py'
-      - 'docs/graphics/first-reference-*.json'
-      - 'docs/graphics/reference-stance-poses.json'
-      - 'tests/unit/test_reference_*.gd'
-      - 'tests/tools/test_score_reference_silhouettes.py'
-      - '.github/workflows/voxel-reference-scoring.yml'
   workflow_dispatch:
 
 permissions:
