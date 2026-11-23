@@ -261,21 +261,6 @@
             ]
           ],
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -1,
-              28,
-              -9
-            ],
-            [
-              1,
-              30,
-              -2
-            ]
-          ],
-          "mat": "joint"
         }
       ],
       "detail": [
@@ -490,6 +475,21 @@
               1,
               29,
               -9
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -1,
+              28,
+              -10
+            ],
+            [
+              1,
+              29,
+              -2
             ]
           ],
           "mat": "joint"
@@ -3058,5 +3058,5 @@
     "ankle/foot",
     "weapon housing"
   ],
-  "structural_socket_revision": "targeted-neck-and-mounts-20261123"
+  "structural_socket_revision": "head-owned-backed-necks-20261123"
 }
