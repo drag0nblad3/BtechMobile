@@ -1,0 +1,50 @@
+name: Melee voxel model screenshots
+on:
+  push:
+    branches:
+      - 'feature/melee-showcase-*'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import Godot project
+        run: godot --headless --import
+      - name: Capture actual voxel BattleMechs from three angles
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/melee-renders
+          timeout --signal=TERM --kill-after=5s 480s xvfb-run -a godot \
+            --rendering-method gl_compatibility --resolution 1400x800 \
+            -s tools/capture_melee_showcase.gd -- /tmp/melee-renders \
+            2>&1 | tee melee-capture.log
+          test -s /tmp/melee-renders/melee_chassis_three_angles.png
+          grep -q 'MELEE_REVIEW_RENDER|' melee-capture.log
+          [ "$(grep -c 'MELEE_REVIEW_MODEL|' melee-capture.log)" -eq 4 ]
+          ! grep -E 'SCRIPT ERROR|Parse Error|MELEE_RENDER_ERROR' melee-capture.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: melee-chassis-real-godot-renders
+          path: |
+            /tmp/melee-renders/*.png
+            melee-capture.log
+          if-no-files-found: warn
+      - name: Publish contact sheet to branch
+        if: success()
+        run: |
+          cp /tmp/melee-renders/melee_chassis_three_angles.png previews/melee_chassis_three_angles.png
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add previews/melee_chassis_three_angles.png
+          git commit -m "Capture in-engine melee chassis preview"
+          git push
