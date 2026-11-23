@@ -261,6 +261,21 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -1,
+              28,
+              -9
+            ],
+            [
+              1,
+              30,
+              -2
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "detail": [
@@ -3042,5 +3057,6 @@
     "shin and hock",
     "ankle/foot",
     "weapon housing"
-  ]
+  ],
+  "structural_socket_revision": "targeted-neck-and-mounts-20261123"
 }
