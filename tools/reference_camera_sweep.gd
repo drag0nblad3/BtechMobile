@@ -40,7 +40,7 @@ func _score_camera_grid(profile: Dictionary, candidate: Dictionary) -> void:
     var path := "res://data/voxels/%s_shape.json" % model_id
     if asset:
         var pair := model_id.split("/", false)
-        var subfolder := {"archetype": "assets", "vehicle": "vehicles",
+        var subfolder: String = {"archetype": "assets", "vehicle": "vehicles",
             "battle_armor": "battle_armor"}.get(pair[0], "")
         path = "res://data/voxels/%s/%s.json" % [subfolder, pair[1]]
     elif not FileAccess.file_exists(path):
