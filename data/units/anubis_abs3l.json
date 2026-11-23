@@ -1,0 +1,84 @@
+{
+  "id": "anubis_abs3l",
+  "name": "Anubis",
+  "model": "ABS-3L",
+  "tonnage": 30,
+  "walk_mp": 8,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 8,
+    "RA": 8,
+    "LT": 9,
+    "RT": 9,
+    "CT": 11,
+    "HD": 9,
+    "LL": 12,
+    "RL": 12
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 4
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*4",
+      "stealth*2",
+      "er_small_laser"
+    ],
+    "RA": [
+      "endo_steel*5",
+      "stealth*2"
+    ],
+    "LT": [
+      "endo_steel*3",
+      "stealth*2",
+      "ammo:lrm5",
+      "lrm5",
+      "lrm5"
+    ],
+    "RT": [
+      "endo_steel",
+      "stealth*2",
+      "heat_sink",
+      "lrm5",
+      "lrm5"
+    ],
+    "CT": [
+      "guardian_ecm"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "stealth*2"
+    ],
+    "RL": [
+      "stealth*2"
+    ]
+  },
+  "bv": 951,
+  "sprite": "anubis",
+  "role": "Missile Boat: Anubis ABS-3L carrying ER Small Laser, LRM 5, LRM 5, LRM 5, LRM 5; walks 8, jumps 0.",
+  "source": {
+    "mul_id": 3702,
+    "megamek": "data/mekfiles/meks/3067/Anubis ABS-3L.mtf",
+    "published": "RS:3067u",
+    "role": "Missile Boat",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/anubis-abs-3l"
+  },
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "stealth",
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  }
+}
