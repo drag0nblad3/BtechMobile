@@ -43,8 +43,7 @@
     ],
     "CT": [
       "c_er_small_laser",
-      "supercharger",
-      "endo_steel"
+      "supercharger"
     ],
     "LL": [
       "endo_steel",
@@ -69,5 +68,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/solitaire-3"
   },
   "bv": 1608,
-  "role": "Striker: fast 25-ton Clan scout with an improved heavy large laser, two ER small lasers, a heavy small laser and a supercharger; walks 10, runs 15."
+  "role": "Striker: fast 25-ton Clan scout with an improved heavy large laser, two ER small lasers, a heavy small laser and a supercharger; walks 10, runs 15.",
+  "sprite": "solitaire"
 }

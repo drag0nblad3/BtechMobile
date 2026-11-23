@@ -11,7 +11,7 @@ const SINKS := [12, 12, 12, 13, 14, 12]
 func test_all_official_vulture_mk_iv_configs_exist_and_validate() -> void:
 	var db := designs()
 	for i in VARIANTS.size():
-		var id := "vulture_mk_iv_" + VARIANTS[i]
+		var id: String = "vulture_mk_iv_" + str(VARIANTS[i])
 		var d: UnitDef = db.get_def(id)
 		check(d != null, id + " loaded from official MegaMek")
 		if d == null:
