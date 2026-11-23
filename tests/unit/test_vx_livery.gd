@@ -52,6 +52,24 @@ func test_mesher_keeps_structure_unpainted() -> void:
 	part.free()
 
 
+func test_gunmetal_and_cockpit_are_not_paintable() -> void:
+	var m := VxModel.new()
+	m.colors = PackedColorArray([Color.WHITE, Color(0.15, 0.15, 0.18), Color(0.5, 0.8, 1.0)])
+	m.roles = ["armor", "armor", "armor"]
+	m._mat = {"plate": 0, "gun": 1, "glass": 2}
+	var p := VxPart.new()
+	p.setup({"name": "ct", "loc": Location.CT, "pivot": Vector3.ZERO,
+			"cells": {Vector3i.ZERO: 1, Vector3i(3, 0, 0): 2}}, m)
+	p.rebuild()
+	var surfaces := p.mesh.surface_get_arrays(0)
+	var roles: PackedVector2Array = surfaces[Mesh.ARRAY_TEX_UV2]
+	check(not roles.is_empty(), "gun and glass faces were built")
+	for role: Vector2 in roles:
+		check(role.x < 0.5, "weapon and glass armor keep original materials")
+		check(role.y == 0.0, "role stays in the first channel")
+	p.free()
+
+
 func test_livery_survives_damage_and_wreck_recovery() -> void:
 	var mech := VxMech.from_file("res://data/voxels/hunchback.json")
 	mech.set_faction("federated_suns")
