@@ -99,19 +99,18 @@ def main():
         reader = csv.DictReader(file)
         columns, entries = list(reader.fieldnames or []), list(reader)
     for row in entries:
-        stance = row.get("stance_review_status", "")
-        if stance and stance not in ("VERIFIED_RIG_MATCH", "NOT_APPLICABLE_STATIC"):
-            for view in VIEWS:
-                row[view + "_0_100"] = ""
-            row["overall_0_100"] = ""
-            row["status"] = "AWAITING_RIG_STANCE_MATCH"
-            continue
-        if stance == "VERIFIED_RIG_MATCH" and not row.get("stance_profile", "").strip():
-            raise ValueError(f"{row['model']}: verified pose needs a recorded stance_profile")
         scores = {}
+        any_unverified = False
         for view in VIEWS:
             key = view + "_0_100"
-            row[key] = ""  # Never reuse a stale provisional score.
+            row[key] = ""  # No stale scores from an earlier review.
+            stance = row.get("stance_" + view + "_review",
+                             row.get("stance_review_status", ""))
+            if stance and stance not in ("VERIFIED_RIG_MATCH", "NOT_APPLICABLE_STATIC"):
+                any_unverified = True
+                continue
+            if stance == "VERIFIED_RIG_MATCH" and not row.get("stance_profile", "").strip():
+                raise ValueError(f"{row['model']}/{view}: approved rig pose requires a stance_profile")
             model = locate(args.renders, row["model"], view)
             ref = locate(args.references, row["model"], view)
             if model is None or ref is None:
@@ -124,7 +123,10 @@ def main():
         overall = weighted_overall(scores)
         row["overall_0_100"] = "" if overall is None else f"{overall:.1f}"
         row["status"] = ("SCORED_MASK_PAIR_4_OF_4" if len(scores) == 4 else
+                         f"PARTIAL_MASK_PAIR_{len(scores)}_OF_4__OTHER_POSES_UNVERIFIED"
+                         if scores and any_unverified else
                          f"PARTIAL_MASK_PAIR_{len(scores)}_OF_4" if scores else
+                         "AWAITING_RIG_STANCE_MATCH" if any_unverified else
                          "UNSCORED – no matched silhouette masks")
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", newline="", encoding="utf-8") as file:
