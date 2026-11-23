@@ -27,7 +27,7 @@ class PairTrialTests(unittest.TestCase):
                     "".join("." * 16 + "\n" for _ in range(4)))
             im = Image.new("RGB", (250, 250), "white")
             ImageDraw.Draw(im).rectangle((55, 35, 195, 225), fill="black")
-            result = assess([{"name":"Synthetic","view":"quarter",
+            result = assess([{"name":"Synthetic","view":"quarter","pose_comparable":True,
                 "a":{"model":"m1","image_url":"https://cfw.sarna.net/a","source_page":"a",
                      "bounds":[0.1,0.1,0.9,0.95]},
                 "b":{"model":"m2","image_url":"https://cfw.sarna.net/b","source_page":"b",
