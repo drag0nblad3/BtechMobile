@@ -245,21 +245,6 @@
           "mat": "recess"
         },
         {
-          "box": [
-            [
-              -2,
-              26,
-              -9
-            ],
-            [
-              2,
-              28,
-              -8
-            ]
-          ],
-          "mat": "gun"
-        },
-        {
           "erase": [
             [
               0,
@@ -1394,6 +1379,21 @@
         -8
       ],
       "shapes": [
+        {
+          "box": [
+            [
+              -2,
+              26,
+              -9
+            ],
+            [
+              2,
+              28,
+              -8
+            ]
+          ],
+          "mat": "gun"
+        },
         {
           "box": [
             [
@@ -3213,5 +3213,5 @@
     "edited_vertices": 160,
     "stages_with_changes": 20
   },
-  "notes": " Panther compact torso and intentionally distinct right PPC/central SRM-4; both muzzles are physical bores, not decorative black faces."
+  "notes": " Panther compact torso and intentionally distinct right PPC/central SRM-4; both muzzles are physical bores, not decorative black faces. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells."
 }
