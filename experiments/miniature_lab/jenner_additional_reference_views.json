@@ -1,0 +1,520 @@
+{
+  "sculpt": "Catalyst Game Labs 2021 Inner Sphere Striker Lance 35729 base 63",
+  "provenance": "Two independent unpainted photos from RPG Mini Hunter, physically same Catalyst 2021 Jenner plastic sculpt. No copyrighted photo pixels committed.",
+  "annotation_precision": "Manually estimated on 500x500 image-query previews; likely ±8–15 px. No measured camera, FOV or segmentation. The lenses and poses are not calibrated truth.",
+  "new_photos": [
+    {
+      "name": "hunter_unpainted_near_front",
+      "image_url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190416_Final_1200x1200.jpg?v=1708318633",
+      "page_url": "https://www.rpgminihunter.com.au/products/jenner-battletech-inner-sphere-striker-lance-set-catalyst-game-lab",
+      "preview_size_px": [
+        500,
+        500
+      ],
+      "crop_px": [
+        108,
+        69,
+        410,
+        385
+      ],
+      "yaw_candidates": [
+        -24,
+        -12,
+        0,
+        12,
+        24
+      ],
+      "elevation_candidates": [
+        -4,
+        8,
+        20,
+        32
+      ],
+      "region": "all_visible_body",
+      "rigid_px": {
+        "dorsal": [
+          260,
+          102
+        ],
+        "nose": [
+          251,
+          247
+        ],
+        "left_pod": [
+          163,
+          176
+        ],
+        "right_pod": [
+          364,
+          175
+        ],
+        "waist": [
+          251,
+          283
+        ]
+      },
+      "pose_px": {
+        "l_knee": [
+          201,
+          304
+        ],
+        "l_ankle": [
+          200,
+          347
+        ],
+        "l_foot": [
+          204,
+          364
+        ],
+        "r_knee": [
+          289,
+          308
+        ],
+        "r_ankle": [
+          281,
+          343
+        ],
+        "r_foot": [
+          290,
+          361
+        ]
+      },
+      "outline_px": [
+        [
+          252,
+          88
+        ],
+        [
+          264,
+          94
+        ],
+        [
+          272,
+          109
+        ],
+        [
+          280,
+          121
+        ],
+        [
+          304,
+          123
+        ],
+        [
+          321,
+          129
+        ],
+        [
+          330,
+          138
+        ],
+        [
+          343,
+          137
+        ],
+        [
+          361,
+          144
+        ],
+        [
+          373,
+          161
+        ],
+        [
+          370,
+          184
+        ],
+        [
+          362,
+          201
+        ],
+        [
+          340,
+          201
+        ],
+        [
+          330,
+          209
+        ],
+        [
+          325,
+          234
+        ],
+        [
+          309,
+          249
+        ],
+        [
+          297,
+          257
+        ],
+        [
+          300,
+          276
+        ],
+        [
+          309,
+          302
+        ],
+        [
+          306,
+          324
+        ],
+        [
+          298,
+          339
+        ],
+        [
+          293,
+          355
+        ],
+        [
+          284,
+          365
+        ],
+        [
+          269,
+          359
+        ],
+        [
+          264,
+          339
+        ],
+        [
+          263,
+          312
+        ],
+        [
+          260,
+          288
+        ],
+        [
+          240,
+          288
+        ],
+        [
+          229,
+          312
+        ],
+        [
+          226,
+          338
+        ],
+        [
+          216,
+          368
+        ],
+        [
+          202,
+          373
+        ],
+        [
+          189,
+          366
+        ],
+        [
+          179,
+          352
+        ],
+        [
+          180,
+          328
+        ],
+        [
+          181,
+          308
+        ],
+        [
+          191,
+          280
+        ],
+        [
+          202,
+          258
+        ],
+        [
+          189,
+          242
+        ],
+        [
+          178,
+          219
+        ],
+        [
+          168,
+          203
+        ],
+        [
+          145,
+          201
+        ],
+        [
+          137,
+          186
+        ],
+        [
+          137,
+          163
+        ],
+        [
+          146,
+          143
+        ],
+        [
+          163,
+          136
+        ],
+        [
+          180,
+          140
+        ],
+        [
+          189,
+          129
+        ],
+        [
+          212,
+          120
+        ],
+        [
+          232,
+          121
+        ],
+        [
+          236,
+          107
+        ],
+        [
+          243,
+          92
+        ]
+      ],
+      "confidence": "low: manually traced 500px thumbnail, approximate stance, base excluded",
+      "limitations": "Legs and toes partially occluded by hex base; front hull/pod features clearer than precise shin pose."
+    },
+    {
+      "name": "hunter_unpainted_right_profile",
+      "image_url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190417_Final_1200x1200.jpg?v=1708318633",
+      "page_url": "https://www.rpgminihunter.com.au/products/jenner-battletech-inner-sphere-striker-lance-set-catalyst-game-lab",
+      "preview_size_px": [
+        500,
+        500
+      ],
+      "crop_px": [
+        93,
+        68,
+        420,
+        354
+      ],
+      "yaw_candidates": [
+        -115,
+        -100,
+        -85,
+        -70,
+        -55,
+        -40
+      ],
+      "elevation_candidates": [
+        -4,
+        8,
+        20,
+        32
+      ],
+      "region": "upper_body_only",
+      "upper_y_fraction": 0.68,
+      "rigid_px": {
+        "dorsal": [
+          315,
+          107
+        ],
+        "nose": [
+          309,
+          162
+        ],
+        "left_pod": [
+          186,
+          175
+        ],
+        "waist": [
+          265,
+          236
+        ]
+      },
+      "pose_px": {},
+      "outline_px": [
+        [
+          323,
+          88
+        ],
+        [
+          331,
+          94
+        ],
+        [
+          334,
+          109
+        ],
+        [
+          318,
+          118
+        ],
+        [
+          309,
+          129
+        ],
+        [
+          321,
+          143
+        ],
+        [
+          343,
+          146
+        ],
+        [
+          355,
+          158
+        ],
+        [
+          356,
+          176
+        ],
+        [
+          338,
+          183
+        ],
+        [
+          319,
+          187
+        ],
+        [
+          313,
+          194
+        ],
+        [
+          308,
+          202
+        ],
+        [
+          302,
+          213
+        ],
+        [
+          287,
+          223
+        ],
+        [
+          289,
+          242
+        ],
+        [
+          278,
+          257
+        ],
+        [
+          273,
+          270
+        ],
+        [
+          264,
+          276
+        ],
+        [
+          253,
+          259
+        ],
+        [
+          252,
+          245
+        ],
+        [
+          232,
+          226
+        ],
+        [
+          207,
+          223
+        ],
+        [
+          195,
+          211
+        ],
+        [
+          180,
+          200
+        ],
+        [
+          163,
+          196
+        ],
+        [
+          139,
+          193
+        ],
+        [
+          117,
+          181
+        ],
+        [
+          113,
+          164
+        ],
+        [
+          125,
+          150
+        ],
+        [
+          149,
+          148
+        ],
+        [
+          174,
+          141
+        ],
+        [
+          196,
+          145
+        ],
+        [
+          218,
+          148
+        ],
+        [
+          237,
+          138
+        ],
+        [
+          258,
+          131
+        ],
+        [
+          284,
+          127
+        ],
+        [
+          291,
+          113
+        ],
+        [
+          301,
+          101
+        ]
+      ],
+      "confidence": "very low: 500px perspective side photo; far leg occluded and pod labeling ambiguous",
+      "limitations": "Rigid camera residual 0.114 normalized crop; treat for shape cues and upper-body diagnostic only; do not rank candidates using this view."
+    }
+  ],
+  "supplemental_shape_only": [
+    {
+      "source_url": "https://i.ebayimg.com/images/g/dHUAAOSwaWRidYD4/s-l500.png",
+      "page_url": "https://www.ebay.com/itm/403292195264",
+      "type": "promotional digital render; NOT independent real-world photographic calibration",
+      "constrains": [
+        "raised dorsal dish",
+        "recessed upper torso missile grille",
+        "round lower cockpit disc",
+        "multi-port outboard weapon pods"
+      ],
+      "score": "none"
+    }
+  ]
+}
