@@ -88,11 +88,11 @@
                   ],
                   [
                     3.1227,
-                    6.99268
+                    6.7837
                   ],
                   [
                     -2.50008,
-                    6.99268
+                    6.7837
                   ],
                   [
                     -5.63234,
@@ -125,11 +125,11 @@
                   ],
                   [
                     5.74716,
-                    8.14365
+                    7.7735
                   ],
                   [
                     -5.74716,
-                    8.14365
+                    7.7735
                   ],
                   [
                     -8.30144,
@@ -162,11 +162,11 @@
                   ],
                   [
                     5.78392,
-                    8.72772
+                    8.2758
                   ],
                   [
                     -5.78392,
-                    8.72772
+                    8.2758
                   ],
                   [
                     -8.99719,
@@ -199,11 +199,11 @@
                   ],
                   [
                     5.11896,
-                    6.98239
+                    6.7749
                   ],
                   [
                     -5.11162,
-                    6.98239
+                    6.7749
                   ],
                   [
                     -7.66926,
@@ -3662,11 +3662,11 @@
                   ],
                   [
                     -6.16,
-                    8.84
+                    8.5352
                   ],
                   [
                     -9.39,
-                    7.48
+                    7.3384
                   ],
                   [
                     -10.69,
@@ -3695,15 +3695,15 @@
                   ],
                   [
                     -4.98581,
-                    6.8
+                    6.74
                   ],
                   [
                     -6.83171,
-                    9.52
+                    9.1336
                   ],
                   [
                     -9.89829,
-                    8.16
+                    7.9368
                   ],
                   [
                     -11.74419,
@@ -3736,11 +3736,11 @@
                   ],
                   [
                     -6.8386,
-                    8.16
+                    7.9368
                   ],
                   [
                     -9.08148,
-                    7.48
+                    7.3384
                   ],
                   [
                     -10.20292,
@@ -4946,11 +4946,11 @@
                   ],
                   [
                     -10.2,
-                    4.08
+                    4.0176
                   ],
                   [
                     -13.43,
-                    3.4
+                    3.392
                   ],
                   [
                     -15.37,
@@ -4983,11 +4983,11 @@
                   ],
                   [
                     -10.34924,
-                    4.76
+                    4.6432
                   ],
                   [
                     -14.2406,
-                    3.4
+                    3.392
                   ],
                   [
                     -15.90177,
@@ -6852,5 +6852,17 @@
     "source": "Sculpt/photo reference and source geometry proportion audit",
     "note": "Preserve beaked missile-carrying body and paired weapon arms while reducing continuous rear slab",
     "edited_primary_loft_vertices": 64
+  },
+  "reference_geometry_batch_01": {
+    "batch": 1,
+    "review": "retain digitigrade hips, forward nose and compact weapon arms",
+    "angles_considered": [
+      "front",
+      "side",
+      "top",
+      "three_quarter"
+    ],
+    "reference_basis": "Catalyst plastic miniature reference",
+    "review_status": "pending source connectivity / render"
   }
 }
