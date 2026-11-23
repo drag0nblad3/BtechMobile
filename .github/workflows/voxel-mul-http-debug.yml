@@ -27,6 +27,16 @@ jobs:
               print('SARNA_DEBUG',slug,'len',len(data),'title',html.unescape(t.group(1) if t else ''),'infobox',bool(table),'imgs',img,'head',repr(data[:100]))
               if table:
                 print('SARNA_INFOBOX',slug,repr(data[table.start():table.start()+2300]))
+                pic=re.search(r'<img[^>]+src="([^"]+)"',data[table.start():table.start()+3000],re.I)
+                if pic:
+                  image=pic.group(1)
+                  print('SARNA_IMG_URL',slug,image)
+                  try:
+                    with urllib.request.urlopen(urllib.request.Request(image,headers={'User-Agent':'Mozilla/5.0'}),timeout=15) as ri:
+                      body=ri.read(2000000)
+                      print('SARNA_IMG_OK',slug,ri.status,len(body),ri.headers.get('Content-Type'))
+                  except Exception as e:
+                    print('SARNA_IMG_ERROR',slug,type(e).__name__,str(e))
             except Exception as e:
               print('SARNA_ERROR',slug,type(e).__name__,str(e))
           PY
