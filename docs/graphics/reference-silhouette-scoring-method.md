@@ -77,11 +77,16 @@ into a reference-image fit percentage.
          --renders /tmp/model-masks --references /tmp/reference-masks \
          --output /tmp/model-reference-scores.csv
 
-6. **Do not score unverified poses.** Set the row's `stance_review_status`
-   to `VERIFIED_RIG_MATCH` only after verifying every compared angle against its
-   selected reference, and put the actual pose JSON path in `stance_profile`.
-   For non-articulated assets, use `NOT_APPLICABLE_STATIC`. A BattleMech row
-   with `UNVERIFIED_POSE` is refused even if four reference files exist.
+6. **Do not score unverified poses.** Set each view's
+   `stance_front_review`, `stance_side_review`, `stance_quarter_review`, or
+   `stance_top_review` to `VERIFIED_RIG_MATCH` only once that view's rigged pose
+   is visually checked against its actual reference. Store the active pose JSON
+   path in `stance_profile`. The summary `stance_review_status` may then be
+   set to verified after **all four** are confirmed. Unverified views stay blank;
+   the workflow can produce partial per-angle results, but never an overall
+   score until every view is approved and paired. For static assets use
+   `NOT_APPLICABLE_STATIC`. The historical summary status is only a fallback
+   for older CSVs that lack per-view fields.
    
    Score each angle on **0–100**, combining **70% mask intersection-over-union**
    and **30% 2-pixel-tolerant silhouette-boundary F1**, after an isotropic
