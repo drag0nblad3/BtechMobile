@@ -1,4 +1,7 @@
 name: In-engine melee weapon resculpt validation
+concurrency:
+  group: melee-resculpt-${{ github.ref }}
+  cancel-in-progress: true
 on:
   push:
     branches:
