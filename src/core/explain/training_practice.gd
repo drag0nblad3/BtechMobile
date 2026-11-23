@@ -78,8 +78,10 @@ static func _matches(goal: Dictionary, kind: String, data: Dictionary,
 		var source_wanted := player_side if goal["source_side"] == "player" else 1 - player_side
 		if source == null or source.side != source_wanted:
 			return false
-	if goal.has("min_shots") and Array(data.get("shots", [])).size() < int(goal["min_shots"]):
-		return false
+	if goal.has("min_shots"):
+		var shots: Array = data.get("shots", [])
+		if shots.size() < int(goal["min_shots"]):
+			return false
 	if bool(goal.get("ammo_required", false)) and bool(data.get("no_ammo", false)):
 		return false
 	if goal.has("min_amount") and int(data.get("amount", 0)) < int(goal["min_amount"]):
