@@ -73,7 +73,7 @@ def find_art(name, available):
     # e.g. 3025_phoenix_hawk1: published legacy revision, still a provisional lead.
     indexed = [file for file in available if
                re.fullmatch(r"(?:3025|3050)_" +
-                            re.escape(name) + r"\\d*", pathlib.Path(file).stem,
+                            re.escape(name) + r"\d*", pathlib.Path(file).stem,
                             re.IGNORECASE)]
     return sorted(indexed)[0] if indexed else None
 
