@@ -1,88 +1,72 @@
-# Miniature-first reconstruction lab (NOT production art)
+# Miniature-first Jenner reconstruction laboratory
 
-This is an isolated **proof of concept**, not a replacement for existing
-BattleMech sculpts. The merged models in `data/voxels/`,
-`data/graphics/voxel_chassis.json`, and `src/view/units/` are untouched.
-Nothing in this directory registers models with the game or changes rules.
+**Draft experiment only. No merged model or production model recipe is changed.**
+Everything is isolated to experiments/miniature_lab/. No photographs are
+redistributed in the repository.
 
-## What has been tried
+## Artifacts
 
-A new **Jenner JR7-D** component assembly is independently authored from the
-2021 Catalyst Game Labs Inner Sphere Striker Lance sculpt, rather than using
-or modifying the merged Jenner. Its editable source is
-`jenner_assembly.json`. The current assembly has separate CT, LT, RT, head,
-arm/pod, thigh, shin, and foot geometry (12 articulated/owned components,
-all eight damage locations).
+- jenner_assembly.json: preserved independent baseline hypothesis
+- jenner_resculpt.json: *new* loft-based Jenner resculpt, not production art
+- miniature_lab.py: continuous cross-sections to voxel recipe plus joint and
+  overlap checks; rejects geometry issues rather than fabricating bridges
+- jenner_photo_annotations.json: four hand-estimated mini silhouettes from the
+  same sculpt, camera yaw/elevation candidates and articulated stance samples
+- photo_fit.py: pose-dependent 3D projections and camera search, total silhouette
+  and selected component intersection-over-union (IoU) comparisons
+- test_miniature_lab.py and test_photo_fit.py: ten local regression tests
 
-Geometry is defined in continuous coordinates using **independent polygon
-cross-sections**, including planes normal to x, y, or z. The compiler
-samples these editable lofts at the desired voxel pitch, applies subtractive
-cuts for physical openings, and writes a legacy `VxModel`-compatible recipe.
-All coordinates are quantized only during compilation, not during design.
+Source miniature: **Catalyst Game Labs 2021 Jenner**, Inner Sphere Striker Lance
+35729, base 63. Four-angle photographic montage:
+https://jadedfalconer.com/Pictures/1Light/35jenner/Jenner6.jpg
+Scuplt provenance:
+https://jadedfalconer.com/Pages/1Light/jenner
 
-The audit rejects:
-- overlapping cells belonging to different articulated components;
-- disconnected pieces inside a component;
-- missing parents or joints without a **contiguous 2x2 face patch backed
-  by material on both sides**.
+The reference outlines were hand-estimated by inspecting a 750x1000 montage,
+not segmented at native resolution. Poses and camera angles are chosen from
+a finite small candidate set. The metric is a *low-confidence diagnostic*, not
+a real percent sculpt accuracy or a calibrated photogrammetric validation.
 
-The compiler **does not perform connectivity repair**. Modelers must correct
-the assembly itself. A broken model refuses export; old models are never
-auto-adjusted. The output does not claim physical fidelity just because it
-passes these tests.
+## Reproduce (Python 3.9+ standard library)
 
-## Run (standard-library Python 3.9+; no Godot, no external photos required)
+From the repository root:
 
-```sh
-python -m unittest discover -s experiments/miniature_lab -v
-python experiments/miniature_lab/miniature_lab.py \
-  experiments/miniature_lab/jenner_assembly.json \
-  --output experiments/miniature_lab/generated/jenner_trial.json \
-  --svg experiments/miniature_lab/generated/jenner_views.svg
-```
+    python -m unittest discover -s experiments/miniature_lab -v
 
-The compiled JSON is an **offline experiment only**. Review it independently
-before copying anything into a Godot test scene. The command actively refuses
-to write files anywhere in the production repository tree.
+    python experiments/miniature_lab/photo_fit.py --source experiments/miniature_lab/jenner_assembly.json --reference experiments/miniature_lab/jenner_photo_annotations.json --size 58
 
-For manually annotated source photographs, add normalized silhouette
-polygons to an annotation JSON and pass `--annotations ... --report ...`.
-The comparison searches the specified yaw/elevation candidates and reports
-whole-model IoU plus any annotated component-specific IoUs. An unannotated
-photo is labeled *unscored* rather than assigned a fictional similarity
-percentage. The camera optimizer is orthographic and currently **does not
-fit limb posing or photographic perspective**.
+    python experiments/miniature_lab/photo_fit.py --source experiments/miniature_lab/jenner_resculpt.json --reference experiments/miniature_lab/jenner_photo_annotations.json --size 58
 
-## Reference provenance (external links only)
+    python experiments/miniature_lab/miniature_lab.py experiments/miniature_lab/jenner_resculpt.json --output experiments/miniature_lab/generated/jenner_trial.json --svg experiments/miniature_lab/generated/jenner_views.svg
 
-- Intended version: **Catalyst Game Labs 2021 Jenner** (Inner Sphere Striker
-  Lance, product 35729, miniature base 63).
-- Photograph catalog: https://jadedfalconer.com/Pages/1Light/jenner
-- Multi-view painted reference: https://jadedfalconer.com/Pictures/1Light/35jenner/Jenner6.jpg
+The generated voxel recipe is offline only. The compiler blocks writes to
+production directories; no game catalog, merged recipe, or rules asset changes.
 
-Reference photos have *not* been copied into the repository. Different
-generations of the same chassis must not be mixed when annotating.
+## Changes made directly to this experiment
 
-## What this prototype demonstrates, and what remains
+Replaced the rectangular beak with a flattened tapered cockpit and segmented
+glazing. Reshaped the constant-section shoulder pods into variable section
+beveled housings with actual forward-facing laser bores (two per side), aligned
+muzzle coordinates and smaller outboard caps. Resculpted the center torso
+and dorsal hump, plus real narrow upper grille recesses. Replaced stick-like
+legs with bent, tapered thigh/shin/foot assemblies. Kept 12 independent parts
+covering all eight record-sheet hit locations and checked 2x2 backed joints.
 
-The isolated Jenner scaffold compiles to roughly **15k voxels**, not 100k:
-voxel density deliberately follows silhouette and details rather than
-an arbitrary target. Its geometry has passed local topology and aperture
-tests, but the **reference-aligned sculpt and recognizability test are NOT
-complete**. In particular, front silhouette and upper armor breaks need
-significant additional work; the four-view SVG is only a shape diagnostic,
-not a physically shaded in-engine render.
+## Preliminary scores — approximate manually traced 2D silhouettes
 
-Before any model can be considered for production, the next experiment must:
-1. Obtain high-quality photos of the *same* plastic sculpt from front, side,
-   rear, top, with pose/camera annotations and usage provenance.
-2. Fit camera **and** stance, then annotate named components and score
-   silhouette overlap, landmark offsets, negative spaces, and volume.
-3. Rebuild components with large geometric corrections until the reference
-   tests visibly improve. Compare against the *current* merged Jenner without
-   editing that model.
-4. Test rig pivots, VxModel loadability, authored openings, and Android
-   performance in a separate Godot scene; keep the merged model untouched
-   unless separately authorized.
+| View | Baseline | Resculpt |
+|---|---:|---:|
+| Front left | 0.479 | 0.498 |
+| Front right | 0.577 | 0.621 |
+| Rear left | 0.616 | 0.642 |
+| Rear right | 0.539 | 0.575 |
+| **Mean** | **0.553** | **0.584** |
 
-Do not merge this experiment automatically into the game catalog.
+A 0.584 *IoU proxy* is not 58.4% miniature accuracy. Photo clutter,
+unknown lens perspective and coarse outlines make the score uncertain.
+The head's component-specific overlap remains low. No photographic
+fidelity acceptance, Godot load test or phone rendering is claimed.
+
+Local prototype: 10 Python tests passed, no detected geometric overlap,
+component islands or weak joints. In-engine animation and performance
+checks remain pending. Do not merge as production art or build an APK.
