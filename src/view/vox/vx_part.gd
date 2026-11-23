@@ -74,7 +74,7 @@ static func _is_unpainted(mat_name: String) -> bool:
 	for token in ["gun", "barrel", "muzzle", "bore", "port", "glow", "light",
 			"window", "glass", "cockpit", "sensor", "lens", "jet", "vent",
 			"thruster", "exhaust", "grille", "engine", "piston", "joint",
-			"frame", "structure", "dark"]:
+			"frame", "structure", "dark", "steel"]:
 		if key.contains(token):
 			return true
 	return false
