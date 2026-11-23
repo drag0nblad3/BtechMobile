@@ -22,13 +22,15 @@
           "id": "declare",
           "title": "Declare a weapon attack",
           "event": "fire_declared",
-          "side": "player"
+          "side": "player",
+          "min_shots": 1
         },
         {
           "id": "fire",
           "title": "Resolve a weapon shot",
           "event": "weapon_fired",
-          "side": "player"
+          "side": "player",
+          "ammo_required": true
         }
       ]
     },
@@ -53,14 +55,16 @@
           "title": "Find a shot needing 8 or less",
           "event": "weapon_fired",
           "side": "player",
-          "max_need": 8
+          "max_need": 8,
+          "ammo_required": true
         },
         {
           "id": "hit",
           "title": "Land a weapon hit",
           "event": "weapon_fired",
           "side": "player",
-          "hit": true
+          "hit": true,
+          "ammo_required": true
         }
       ]
     },
@@ -77,7 +81,8 @@
           "id": "fire",
           "title": "Fire a weapon from the Warhammer",
           "event": "weapon_fired",
-          "side": "player"
+          "side": "player",
+          "ammo_required": true
         },
         {
           "id": "cool",
@@ -110,14 +115,17 @@
           "title": "Declare shots from both friendly 'Mechs",
           "event": "fire_declared",
           "side": "player",
-          "distinct_units": 2
+          "distinct_units": 2,
+          "min_shots": 1
         },
         {
           "id": "damage",
           "title": "Damage an enemy 'Mech",
           "event": "damage",
           "side": "enemy",
-          "source_side": "player"
+          "source_side": "player",
+          "min_amount": 1,
+          "uncovered": true
         }
       ]
     },
@@ -173,7 +181,8 @@
           "title": "Declare shots from three friendly 'Mechs",
           "event": "fire_declared",
           "side": "player",
-          "distinct_units": 3
+          "distinct_units": 3,
+          "min_shots": 1
         },
         {
           "id": "destroy",
