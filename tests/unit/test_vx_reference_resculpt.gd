@@ -9,7 +9,7 @@ const IDS := [
 const ADDED := {
 	"firestarter": ["hd_antenna"],
 	"sagittaire": ["lt_ppc", "rt_pulse"],
-	"battleaxe": ["lt_lrm5", "rt_srm6"],
+	"battleaxe": ["lt_lrm5", "rt_srm6", "rt_lrm5"],
 	"warhammer": ["la_ppc", "ra_ppc"],
 	"archer": ["la_fist", "ra_fist"],
 	"timber_wolf": ["hd_glazing"],
@@ -76,6 +76,7 @@ func test_launchers_have_individual_open_ports_not_painted_dots() -> void:
 	for spec: Dictionary in [
 			{"id": "battleaxe", "part": "lt_lrm5", "count": 5},
 			{"id": "battleaxe", "part": "rt_srm6", "count": 6},
+			{"id": "battleaxe", "part": "rt_lrm5", "count": 5},
 			{"id": "thunderbolt", "part": "rt_rack", "count": 15}]:
 		var raw: Dictionary = JsonFile.read(
 				"res://data/voxels/%s_shape.json" % spec["id"])
