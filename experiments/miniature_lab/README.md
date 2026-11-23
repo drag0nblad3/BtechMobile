@@ -318,3 +318,49 @@ The isolated sculpt has passed Python geometry tests, **not an in-engine
 Godot pose/renderer smoke test**. A four-angle shaded voxel render and
 an eight-panel v8-versus-v10 comparison were produced from actual source
 geometry in the conversation. New artwork remains opt-in and draft.
+
+
+## Camera and pose registration — required before claiming a photo match
+
+**Do not compare the neutral-pose source silhouette against a posed,
+perspective photograph.** Otherwise a changed camera or bent ankle can be
+mistaken for incorrect geometry. The older `photo_fit.py` scores in this
+document are retained for historical reproducibility but are now explicitly
+labeled **legacy unregistered diagnostics**, not accepted similarity scores.
+
+The new `photo_registration.py` pipeline makes the adjustment explicit:
+
+1. Restrict each photograph to the **same plastic sculpt generation**.
+2. Fit camera **yaw, elevation, roll, effective distance/perspective,
+   uniform scale and image translation** to annotated, rigid torso landmarks.
+   The camera crop is fixed to the photograph, not independently recentered
+   for each candidate model. Mirror and anisotropic stretch are prohibited.
+3. Fit each leg's **thigh pitch, thigh roll, and knee flex** to knee, ankle,
+   and foot landmarks *after* camera fitting. Geometry is not edited to
+   resolve stance differences.
+4. **Freeze the registered camera, image transform, and pose** from a
+   nominated control model and apply the identical registration to all
+   candidates. Only then compute silhouette IoU. Camera/rig choices never
+   maximize the candidate's silhouette overlap.
+5. Mark photos **unscored** when camera or pose landmarks are missing.
+   Report the residual landmark errors, measured view coverage, and unknown
+   optical calibration. Never portray approximate IoU as a percent of
+   plastic-miniature accuracy.
+
+Reproduce on the independent v8 and v10 experimental Jenner:
+
+    python -m unittest discover -s experiments/miniature_lab -p test_photo_registration.py -v
+    python experiments/miniature_lab/photo_registration.py --calibration-model experiments/miniature_lab/jenner_assembly_v8.json --compare experiments/miniature_lab/jenner_assembly_v8.json experiments/miniature_lab/jenner_assembly_v10.json --masks experiments/miniature_lab/jenner_photo_annotations.json --landmarks experiments/miniature_lab/jenner_photo_landmarks.json --output experiments/miniature_lab/generated/jenner_registered_v8_v10.json
+
+The initial synthetic camera/leg tests passed locally. Using the current
+coarsely hand-labeled photos and 58px masks, a locally registered comparison
+of v8 and v10 yielded **0.7178 versus 0.7184**, respectively, across
+**3 of 4** matched views. The fourth photograph has insufficient pose and
+camera landmarks and therefore receives **no score**. The numbers are so
+close that neither should be called a demonstrated likeness improvement.
+
+**Not yet calibrated:** original lens focal length/FOV, camera distortion,
+camera location measured on set, and full foot/ankle/arm pose. Camera
+distances were inferred from rough landmarks and are only relative to the
+model scale. Calibrated or better-lit image sets are required before setting
+acceptance thresholds. No merged source art or production pipeline changed.
