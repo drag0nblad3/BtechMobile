@@ -1,0 +1,410 @@
+{
+  "schema_version": 1,
+  "status": "SOURCE_DISCOVERY_NOT_YET_VISUALLY_APPROVED",
+  "method": "Match documented Sarna gallery illustrations to exact in-game unit models; missing files never silently borrow another Mech",
+  "sources": [
+    {
+      "model": "hatamoto_hi",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Hi HTM-27U GU28.jpg",
+      "match_class": "exact_variant",
+      "notes": "Official GU 28 HTM-27U, not generic Hatamoto-Chi",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hatamoto_kaze",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Kaze HTM-27V GU28.jpg",
+      "match_class": "exact_variant",
+      "notes": "Official GU 28 HTM-27V",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hatamoto_ku",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Ku HTM-27W2 XTRORepv2.jpg",
+      "match_class": "same_chassis_variant",
+      "notes": "Art is HTM-27W2; game has HTM-27W. Verify weapons and armor differences",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hatamoto_mizo",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Mizo HTM-27Y GU28.jpg",
+      "match_class": "exact_variant",
+      "notes": "Official GU 28 HTM-27Y",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hel",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Eris",
+      "expected_filename": null,
+      "match_class": "exact_variant",
+      "notes": "HL-1 Hel in Shrapnel #10. Do not use Loki Mk II / Hel image",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hermes_iii",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hermes_II",
+      "expected_filename": "Hermes III 6K Shrapnel 23.jpg",
+      "match_class": "same_chassis_variant",
+      "notes": "Illustrated HER-6K, game HER-4K, compare component layout",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "nova_t",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Nova_(Black_Hawk)",
+      "expected_filename": null,
+      "match_class": "chassis_only",
+      "notes": "Nova T config differs from Prime; source must not imply exact variant",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "rattlesnake",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rattlesnake",
+      "expected_filename": null,
+      "match_class": "lookalike_only",
+      "notes": "JR7-31 outwardly Jenner-like; Jenner art is a proxy, not an exact JR7-31 picture",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "rattlesnake_ii",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rattlesnake_II",
+      "expected_filename": null,
+      "match_class": "unresolved",
+      "notes": "RSN-1 from Shrapnel 9; cannot reuse original Rattlesnake or Jenner as exact reference",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "suburbanmech",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/UrbanMech",
+      "expected_filename": null,
+      "match_class": "visually_identical_chassis",
+      "notes": "Sarna explicitly describes SuburbanMech as visually identical to UrbanMech, with different engine",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "titan",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Titan_II",
+      "expected_filename": null,
+      "match_class": "apocryphal_variant_art",
+      "notes": "Original TIT-1A from BattleTechnology 11 is apocryphal; TI-1A canonical variant differs in details",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "von_rohrs_hebi",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Von_Rohrs_(BattleMech)",
+      "expected_filename": null,
+      "match_class": "exact_chassis",
+      "notes": "TRO:3075 original Von Rohrs/Hebi VON 4RH-5",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "tsunami",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Tsunami_(BattleMech)",
+      "expected_filename": "Tsunami TS-P1 RS3055Uu.jpg",
+      "match_class": "exact_variant",
+      "notes": "Original TS-P1 from RS 3055Uu; preferred replacement for failing TS-P1D TRO segmentation",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    }
+  ]
+}
