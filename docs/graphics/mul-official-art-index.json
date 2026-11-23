@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "total_requested": 93,
+  "matched": 0,
+  "unmatched": [
+    {
+      "model": "alfar",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/alfar"
+      ]
+    },
+    {
+      "model": "blade",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/blade"
+      ]
+    },
+    {
+      "model": "bombard",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/bombard"
+      ]
+    },
+    {
+      "model": "daedalus",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/daedalus"
+      ]
+    },
+    {
+      "model": "dragoon",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/dragoon"
+      ]
+    },
+    {
+      "model": "ebon_jaguar",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/ebon-jaguar"
+      ]
+    },
+    {
+      "model": "eisenfaust",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/eisenfaust"
+      ]
+    },
+    {
+      "model": "exhumer",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/exhumer"
+      ]
+    },
+    {
+      "model": "flashfire",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/flashfire"
+      ]
+    },
+    {
+      "model": "glass_spider",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/galahad-glass-spider",
+        "https://masterunitlist.battletech.com/units/glass-spider"
+      ]
+    },
+    {
+      "model": "gravedigger",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/gravedigger"
+      ]
+    },
+    {
+      "model": "hammerhands",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hammerhands"
+      ]
+    },
+    {
+      "model": "hatamoto_hi",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hatamoto-hi"
+      ]
+    },
+    {
+      "model": "hatamoto_kaze",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hatamoto-kaze"
+      ]
+    },
+    {
+      "model": "hatamoto_ku",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hatamoto-ku"
+      ]
+    },
+    {
+      "model": "hatamoto_mizo",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hatamoto-mizo"
+      ]
+    },
+    {
+      "model": "hel",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hel"
+      ]
+    },
+    {
+      "model": "hermes_iii",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hermes-iii"
+      ]
+    },
+    {
+      "model": "hermit_crab",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hermit-crab"
+      ]
+    },
+    {
+      "model": "hound",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hound"
+      ]
+    },
+    {
+      "model": "jackrabbit",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/jackrabbit"
+      ]
+    },
+    {
+      "model": "jagermech_iii",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/jagermech-iii"
+      ]
+    },
+    {
+      "model": "juggernaut",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/juggernaut"
+      ]
+    },
+    {
+      "model": "koschei",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/koschei"
+      ]
+    },
+    {
+      "model": "koto",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/koto"
+      ]
+    },
+    {
+      "model": "nova_t",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/nova-t"
+      ]
+    },
+    {
+      "model": "onslaught",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/onslaught"
+      ]
+    },
+    {
+      "model": "orochi",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/orochi"
+      ]
+    },
+    {
+      "model": "phoenix",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/phoenix"
+      ]
+    },
+    {
+      "model": "rampage",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/rampage"
+      ]
+    },
+    {
+      "model": "rattlesnake",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/rattlesnake"
+      ]
+    },
+    {
+      "model": "rattlesnake_ii",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/rattlesnake-ii"
+      ]
+    },
+    {
+      "model": "rook",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/rook"
+      ]
+    },
+    {
+      "model": "rook_nh1b",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/rook-nh1b"
+      ]
+    },
+    {
+      "model": "spider_sdr10k",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/spider-sdr10k"
+      ]
+    },
+    {
+      "model": "suburbanmech",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/suburbanmech"
+      ]
+    },
+    {
+      "model": "swordsman",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/swordsman"
+      ]
+    },
+    {
+      "model": "talos",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/talos"
+      ]
+    },
+    {
+      "model": "tiburon",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/tiburon"
+      ]
+    },
+    {
+      "model": "titan",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/titan"
+      ]
+    },
+    {
+      "model": "toro",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/toro"
+      ]
+    },
+    {
+      "model": "tsunami",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/tsunami"
+      ]
+    },
+    {
+      "model": "verfolger",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/verfolger"
+      ]
+    },
+    {
+      "model": "victor_vtrcr",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/victor-vtrcr"
+      ]
+    },
+    {
+      "model": "von_rohrs_hebi",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/von-rohrs-hebi"
+      ]
+    },
+    {
+      "model": "warlord",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/warlord"
+      ]
+    },
+    {
+      "model": "werewolf",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/werewolf"
+      ]
+    },
+    {
+      "model": "wolf_trap_tora",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/wolf-trap-tora"
+      ]
+    },
+    {
+      "model": "archetype/artillery_carrier",
+      "tried": []
+    },
+    {
+      "model": "archetype/attack_vtol",
+      "tried": []
+    },
+    {
+      "model": "archetype/battle_armor_elementals",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/battle-armor-elementals"
+      ]
+    },
+    {
+      "model": "archetype/field_emplacement",
+      "tried": []
+    },
+    {
+      "model": "archetype/hover_scout",
+      "tried": []
+    },
+    {
+      "model": "archetype/hover_tank",
+      "tried": []
+    },
+    {
+      "model": "archetype/infantry_jump",
+      "tried": []
+    },
+    {
+      "model": "archetype/infantry_motorized",
+      "tried": []
+    },
+    {
+      "model": "archetype/infantry_rifles",
+      "tried": []
+    },
+    {
+      "model": "archetype/lrm_carrier",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/lrm-carrier"
+      ]
+    },
+    {
+      "model": "archetype/missile_emplacement",
+      "tried": []
+    },
+    {
+      "model": "archetype/savior_repair_vehicle",
+      "tried": []
+    },
+    {
+      "model": "archetype/tracked_tank",
+      "tried": []
+    },
+    {
+      "model": "archetype/transport_vtol",
+      "tried": []
+    },
+    {
+      "model": "archetype/wheeled_apc",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/wheeled-apc"
+      ]
+    },
+    {
+      "model": "archetype/wheeled_supply_truck",
+      "tried": []
+    },
+    {
+      "model": "vehicle/behemoth_heavy_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/behemoth-heavy-tank"
+      ]
+    },
+    {
+      "model": "vehicle/bulldog_medium_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/bulldog-medium-tank"
+      ]
+    },
+    {
+      "model": "vehicle/condor_heavy_hover_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/condor-heavy-hover-tank"
+      ]
+    },
+    {
+      "model": "vehicle/demolisher_heavy_tank_clan",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/demolisher-heavy-tank-clan",
+        "https://masterunitlist.battletech.com/units/demolisher-heavy-tank"
+      ]
+    },
+    {
+      "model": "vehicle/demolisher_heavy_tank_mk_i",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/demolisher-heavy-tank-mk-i",
+        "https://masterunitlist.battletech.com/units/demolisher-heavy-tank"
+      ]
+    },
+    {
+      "model": "vehicle/drillson_heavy_hover_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/drillson-heavy-hover-tank"
+      ]
+    },
+    {
+      "model": "vehicle/galleon_light_tank_gal_100",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/galleon-light-tank-gal-100"
+      ]
+    },
+    {
+      "model": "vehicle/hetzer_wheeled_assault_gun",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/hetzer-wheeled-assault-gun"
+      ]
+    },
+    {
+      "model": "vehicle/j_edgar_light_hover_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/j-edgar-light-hover-tank"
+      ]
+    },
+    {
+      "model": "vehicle/lrm_carrier",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/lrm-carrier"
+      ]
+    },
+    {
+      "model": "vehicle/lrm_carrier_c",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/lrm-carrier",
+        "https://masterunitlist.battletech.com/units/lrm-carrier-c"
+      ]
+    },
+    {
+      "model": "vehicle/manticore_heavy_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/manticore-heavy-tank"
+      ]
+    },
+    {
+      "model": "vehicle/patton_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/patton-tank"
+      ]
+    },
+    {
+      "model": "vehicle/pegasus_scout_hover_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/pegasus-scout-hover-tank"
+      ]
+    },
+    {
+      "model": "vehicle/pike_support_vehicle",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/pike-support-vehicle"
+      ]
+    },
+    {
+      "model": "vehicle/pike_support_vehicle_clan",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/pike-support-vehicle-clan",
+        "https://masterunitlist.battletech.com/units/pike-support-vehicle"
+      ]
+    },
+    {
+      "model": "vehicle/schrek_ppc_carrier",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/schrek-ppc-carrier"
+      ]
+    },
+    {
+      "model": "vehicle/skulker_wheeled_scout_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/skulker-wheeled-scout-tank"
+      ]
+    },
+    {
+      "model": "vehicle/srm_carrier",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/srm-carrier"
+      ]
+    },
+    {
+      "model": "vehicle/srm_carrier_c",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/srm-carrier",
+        "https://masterunitlist.battletech.com/units/srm-carrier-c"
+      ]
+    },
+    {
+      "model": "vehicle/vedette_medium_tank",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/vedette-medium-tank"
+      ]
+    },
+    {
+      "model": "vehicle/von_luckner_heavy_tank_vnl_k65n",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/von-luckner-heavy-tank-vnl-k65n"
+      ]
+    },
+    {
+      "model": "battle_armor/elemental_ba_ap_gauss",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/elemental-battle-armor-ap-gauss-sqd4",
+        "https://masterunitlist.battletech.com/units/elemental-ba-ap-gauss"
+      ]
+    },
+    {
+      "model": "battle_armor/elemental_ba_flamer",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/elemental-battle-armor-flamer-sqd4",
+        "https://masterunitlist.battletech.com/units/elemental-ba-flamer"
+      ]
+    },
+    {
+      "model": "battle_armor/elemental_ba_laser",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/elemental-battle-armor-laser-sqd4",
+        "https://masterunitlist.battletech.com/units/elemental-ba-laser"
+      ]
+    },
+    {
+      "model": "battle_armor/elemental_ba_mg",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/elemental-battle-armor-mg-sqd4",
+        "https://masterunitlist.battletech.com/units/elemental-ba-mg"
+      ]
+    },
+    {
+      "model": "battle_armor/is_standard_ba_flamer",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/is-standard-battle-armor-flamer-sqd4",
+        "https://masterunitlist.battletech.com/units/is-standard-ba-flamer"
+      ]
+    },
+    {
+      "model": "battle_armor/is_standard_ba_laser",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/is-standard-battle-armor-laser-sqd4",
+        "https://masterunitlist.battletech.com/units/is-standard-ba-laser"
+      ]
+    },
+    {
+      "model": "battle_armor/is_standard_ba_mg",
+      "tried": [
+        "https://masterunitlist.battletech.com/units/is-standard-battle-armor-mg-sqd4",
+        "https://masterunitlist.battletech.com/units/is-standard-ba-mg"
+      ]
+    }
+  ],
+  "candidates": []
+}
