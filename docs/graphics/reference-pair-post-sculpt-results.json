@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "experiment": "2026-11-23 source-pair preflight and resculpt",
+  "source": "GitHub Actions 45189419091 before and 45190240272 after, actual Godot projected voxel masks",
+  "pre_sculpt_commit": "ad2e83db92b2ecc8d62e08ee57f3ab09e4ae0576",
+  "post_sculpt_commit": "4c57b0d8c84431eb95c785373133df55b6a181a2",
+  "basis": "one official illustration each; hand-drawn rough external contours, camera/pose not verified",
+  "approved_4_view": false,
+  "conjurer_dominator": {
+    "reference_pair_similarity_0_100": 60.2,
+    "provisional_target_interval": [
+      52.2,
+      68.2
+    ],
+    "model_pair_similarity_before": 67.8,
+    "model_pair_similarity_after": 60.8,
+    "model_pair_similarity_delta": -7,
+    "conjurer_own_fit_before": 35.8,
+    "conjurer_own_fit_after": 35.7,
+    "conjurer_own_fit_delta": -0.1,
+    "dominator_own_fit_before": 32.8,
+    "dominator_own_fit_after": 33.9,
+    "dominator_own_fit_delta": 1.1,
+    "conjurer_identity_margin_before": 3.2,
+    "conjurer_identity_margin_after": 4.8,
+    "dominator_identity_margin_before": -0.8,
+    "dominator_identity_margin_after": -0.6,
+    "pair_similarity_goal_reached": true,
+    "individual_own_fit_plus5_reached": false,
+    "positive_identity_margin_both_reached": false,
+    "reference_camera_approved": false,
+    "reference_pose_approved": false,
+    "interpretation": "Better discrimination between the two rendered quarter profiles, but still poor recognition against their own source art. Do not infer an accurate sculpt."
+  },
+  "hawkwolf_black_hawk_standard": {
+    "reference_pair_similarity_diagnostic_only": 38.4,
+    "model_pair_similarity_diagnostic_only": 58.1,
+    "provisional_target_interval": null,
+    "pose_comparable": false,
+    "interpretation": "No target set; illustrated Black Hawk is crouched sideways, HawkWolf upright. No geometry optimization from this score."
+  }
+}
