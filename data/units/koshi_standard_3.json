@@ -1,0 +1,76 @@
+{
+  "id": "koshi_standard_3",
+  "name": "Koshi (Standard)",
+  "model": "3",
+  "tonnage": 25,
+  "walk_mp": 7,
+  "jump_mp": 6,
+  "heat_sinks": 11,
+  "tech_base": "clan",
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 4,
+    "RA": 4,
+    "LT": 7,
+    "RT": 7,
+    "CT": 10,
+    "HD": 9,
+    "LL": 5,
+    "RL": 5
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 6
+  },
+  "equipment": {
+    "LA": [
+      "c_heavy_small_laser*3",
+      "endo_steel",
+      "ferro_fibrous*3"
+    ],
+    "RA": [
+      "c_heavy_small_laser*3",
+      "endo_steel",
+      "ferro_fibrous*3"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet*3",
+      "guardian_ecm",
+      "ferro_fibrous"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "jump_jet*3",
+      "c_light_tag",
+      "endo_steel"
+    ],
+    "CT": [
+      "targeting_computer",
+      "masc"
+    ],
+    "HD": [
+      "c_active_probe"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "source": {
+    "mul_id": 6549,
+    "megamek": "data/mekfiles/meks/3145/Merc/Koshi (Standard) 3.mtf",
+    "published": "RS:DA",
+    "role": "Scout",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/koshi-standard-3"
+  },
+  "bv": 777,
+  "role": "Scout: six Clan heavy small lasers, ECM, active probe, light TAG, MASC, targeting computer and jump jets"
+}
