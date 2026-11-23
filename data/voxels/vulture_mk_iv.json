@@ -44,7 +44,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Reworked November 23 after four-angle render and Vulture Mk IV canon art comparison: the cockpit is a strongly protruding pitched avian beak rather than a flat upright face, backed by a sloped dorsal nacelle. Rearward missile cheek pods rise above the cockpit, while arms and digitigrade hocks retain distinct articulation. Ports remain physical cuts; this is an incremental sculpt to be reviewed from multiple angles.",
+  "notes": "Second source-led pass: compressed deep torso rear quarters and extended *both* supported forward gun nacelles to reflect the horizontal avian flight profile of the Mk IV plastic, retaining 12 open tubes in each high missile cheek. Not the original Mad Dog.",
   "parts": [
     {
       "name": "ct",
@@ -76,19 +76,19 @@
                   ],
                   [
                     5,
-                    4
+                    2
                   ],
                   [
                     3,
-                    6
+                    4
                   ],
                   [
                     -3,
-                    6
+                    4
                   ],
                   [
                     -5,
-                    4
+                    2
                   ],
                   [
                     -5,
@@ -101,35 +101,35 @@
                 "polygon": [
                   [
                     -4,
-                    -11
+                    -10
                   ],
                   [
                     4,
-                    -11
+                    -10
                   ],
                   [
                     7,
-                    -8
+                    -7
                   ],
                   [
                     7,
-                    4
+                    2
                   ],
                   [
                     4,
-                    9
+                    7
                   ],
                   [
                     -4,
-                    9
+                    7
                   ],
                   [
                     -7,
-                    4
+                    2
                   ],
                   [
                     -7,
-                    -8
+                    -7
                   ]
                 ]
               },
@@ -138,35 +138,35 @@
                 "polygon": [
                   [
                     -5,
-                    -15
+                    -14
                   ],
                   [
                     5,
-                    -15
+                    -14
                   ],
                   [
                     8,
-                    -11
+                    -10
                   ],
                   [
                     8,
-                    7
+                    5
                   ],
                   [
                     4,
-                    11
+                    9
                   ],
                   [
                     -4,
-                    11
+                    9
                   ],
                   [
                     -8,
-                    7
+                    5
                   ],
                   [
                     -8,
-                    -11
+                    -10
                   ]
                 ]
               },
@@ -175,35 +175,35 @@
                 "polygon": [
                   [
                     -4,
-                    -13
+                    -12
                   ],
                   [
                     4,
-                    -13
+                    -12
                   ],
                   [
                     6,
-                    -10
+                    -9
                   ],
                   [
                     6,
-                    9
+                    7
                   ],
                   [
                     4,
-                    12
+                    10
                   ],
                   [
                     -4,
-                    12
+                    10
                   ],
                   [
                     -6,
-                    9
+                    7
                   ],
                   [
                     -6,
-                    -10
+                    -9
                   ]
                 ]
               },
@@ -212,11 +212,11 @@
                 "polygon": [
                   [
                     -3,
-                    -9
+                    -8
                   ],
                   [
                     3,
-                    -9
+                    -8
                   ],
                   [
                     5,
@@ -224,19 +224,19 @@
                   ],
                   [
                     5,
-                    8
+                    6
                   ],
                   [
                     3,
-                    11
+                    9
                   ],
                   [
                     -3,
-                    11
+                    9
                   ],
                   [
                     -5,
-                    8
+                    6
                   ],
                   [
                     -5,
@@ -1102,7 +1102,7 @@
             [
               -23,
               25,
-              -20
+              -22
             ],
             [
               -19,
@@ -1117,7 +1117,7 @@
             [
               -22,
               25,
-              -24
+              -29
             ],
             [
               -20,
@@ -1128,16 +1128,31 @@
           "mat": "launcher"
         },
         {
+          "box": [
+            [
+              -23,
+              25,
+              -27
+            ],
+            [
+              -20,
+              29,
+              -22
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
           "erase": [
             [
               -22,
               26,
-              -24
+              -30
             ],
             [
               -21,
               27,
-              -21
+              -22
             ]
           ]
         },
@@ -1284,7 +1299,7 @@
             [
               20,
               23,
-              -20
+              -22
             ],
             [
               24,
@@ -1299,7 +1314,7 @@
             [
               21,
               25,
-              -24
+              -29
             ],
             [
               23,
@@ -1310,16 +1325,31 @@
           "mat": "launcher"
         },
         {
+          "box": [
+            [
+              20,
+              25,
+              -27
+            ],
+            [
+              24,
+              29,
+              -22
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
           "erase": [
             [
               22,
               26,
-              -24
+              -30
             ],
             [
               22,
               27,
-              -20
+              -22
             ]
           ]
         },
@@ -1906,12 +1936,12 @@
     "LA": [
       -21.5,
       26.5,
-      -24.5
+      -29.5
     ],
     "RA": [
       22.5,
       26.5,
-      -24.5
+      -29.5
     ],
     "LT": [
       [

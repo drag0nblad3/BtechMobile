@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Recognition Guide ilClan Dominator: wide overhanging upper shoulders, narrow down-sloping armored pilot head, recessed central waist, right shoulder-tied ER PPC with open emitter, right torso laser, left shoulder missile rack, empty left arm ending in a real fist. Tall lean thighs and shins, not squat armored slabs.",
+  "notes": "Second ilClan Dominator pass: right PPC projects farther out from the asymmetric shoulder/arm rather than stopping at the torso, with hollow emitter; torso loses unreferenced rear bulk and left fist acquires separated knuckle seams. Left SRM six-mouth panel remains open.",
   "parts": [
     {
       "name": "ct",
@@ -108,19 +108,19 @@
                   ],
                   [
                     8,
-                    5
+                    3
                   ],
                   [
                     5,
-                    9
+                    7
                   ],
                   [
                     -5,
-                    9
+                    7
                   ],
                   [
                     -8,
-                    5
+                    3
                   ],
                   [
                     -8,
@@ -145,19 +145,19 @@
                   ],
                   [
                     9,
-                    7
+                    5
                   ],
                   [
                     5,
-                    10
+                    8
                   ],
                   [
                     -5,
-                    10
+                    8
                   ],
                   [
                     -9,
-                    7
+                    5
                   ],
                   [
                     -9,
@@ -1104,6 +1104,34 @@
             ]
           ],
           "mat": "edge"
+        },
+        {
+          "erase": [
+            [
+              -21,
+              9,
+              -9
+            ],
+            [
+              -21,
+              10,
+              -7
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -19,
+              9,
+              -9
+            ],
+            [
+              -19,
+              10,
+              -7
+            ]
+          ]
         }
       ]
     },
@@ -1248,7 +1276,7 @@
             [
               18,
               25,
-              -26
+              -31
             ],
             [
               22,
@@ -1263,12 +1291,12 @@
             [
               17,
               26,
-              -27
+              -32
             ],
             [
               23,
               28,
-              -26
+              -31
             ]
           ],
           "mat": "edge"
@@ -1278,7 +1306,7 @@
             [
               19,
               26,
-              -28
+              -33
             ],
             [
               21,
@@ -1780,7 +1808,7 @@
     "RA": [
       20,
       27,
-      -27.5
+      -32.5
     ],
     "HD": [
       0,

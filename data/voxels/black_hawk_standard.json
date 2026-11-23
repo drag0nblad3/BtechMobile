@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Fixed-gun Black Hawk (Standard), NOT the Nova Omni rig. Slim torso with low recessed head and tall dorsal engine pack; separated broad round shoulder actuators and paired Streak-4 launcher blocks mounted on both arms; two torso ER large emitters and tall thin legs. Inspired by TRO 3145 Mercenaries without copying Nova geometry.",
+  "notes": "Second reference-first Black Hawk **Standard BattleMech** pass: shallow central armor deck and separated lateral arm actuator facets. Retains both eight-port Streak launcher blocks and separate low cockpit; not the Nova Omni hull.",
   "parts": [
     {
       "name": "ct",
@@ -108,19 +108,19 @@
                   ],
                   [
                     8,
-                    4
+                    2
                   ],
                   [
                     6,
-                    8
+                    6
                   ],
                   [
                     -6,
-                    8
+                    6
                   ],
                   [
                     -8,
-                    4
+                    2
                   ],
                   [
                     -8,
@@ -145,19 +145,19 @@
                   ],
                   [
                     8,
-                    6
+                    4
                   ],
                   [
                     5,
-                    9
+                    7
                   ],
                   [
                     -5,
-                    9
+                    7
                   ],
                   [
                     -8,
-                    6
+                    4
                   ],
                   [
                     -8,
@@ -885,6 +885,36 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -21,
+              31,
+              -1
+            ],
+            [
+              -19,
+              34,
+              4
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -21,
+              27,
+              3
+            ],
+            [
+              -19,
+              30,
+              5
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },
@@ -1150,6 +1180,36 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              19,
+              31,
+              -1
+            ],
+            [
+              21,
+              34,
+              4
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              19,
+              27,
+              3
+            ],
+            [
+              21,
+              30,
+              5
+            ]
+          ],
+          "mat": "plate"
         }
       ]
     },

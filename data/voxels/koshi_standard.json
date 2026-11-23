@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Revised after November 23 front/side contact sheet and TRO 3145 Mercenaries Koshi line art: the cockpit is a faceted near-spherical forward pod with framed glazing, two genuinely tall rear cooling ducts rise behind it, and the two SRM arm housings have deliberately different proportions, rather than matched blocky gauntlets. Slender lower limbs remain independent articulations.",
+  "notes": "Second TRO-3145 Koshi BattleMech pass: two tall hollow intake mouths with crossbars rise clear above its round face, left eight-tube arm box grows into a much longer supported forward launcher, while right arm remains compact and ends in a separate knuckle. Different from the Mist Lynx OmniMech.",
   "parts": [
     {
       "name": "ct",
@@ -639,7 +639,7 @@
             ],
             [
               -7,
-              44,
+              49,
               8
             ]
           ],
@@ -649,12 +649,12 @@
           "box": [
             [
               -12,
-              37,
+              39,
               2
             ],
             [
               -8,
-              43,
+              48,
               3
             ]
           ],
@@ -664,12 +664,12 @@
           "box": [
             [
               -12,
-              41,
+              39,
               1
             ],
             [
               -8,
-              42,
+              40,
               2
             ]
           ],
@@ -689,6 +689,64 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -11,
+              41,
+              1
+            ],
+            [
+              -9,
+              43,
+              5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -11,
+              45,
+              1
+            ],
+            [
+              -9,
+              47,
+              5
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -12,
+              44,
+              1
+            ],
+            [
+              -8,
+              44,
+              3
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -12,
+              48,
+              1
+            ],
+            [
+              -8,
+              49,
+              3
+            ]
+          ],
+          "mat": "rib"
         }
       ]
     },
@@ -823,7 +881,7 @@
             [
               -19,
               25,
-              -15
+              -21
             ],
             [
               -10,
@@ -838,7 +896,7 @@
             [
               -17,
               27,
-              -15
+              -22
             ],
             [
               -17,
@@ -852,7 +910,7 @@
             [
               -15,
               27,
-              -15
+              -22
             ],
             [
               -15,
@@ -866,7 +924,7 @@
             [
               -13,
               27,
-              -15
+              -22
             ],
             [
               -13,
@@ -880,7 +938,7 @@
             [
               -11,
               27,
-              -15
+              -22
             ],
             [
               -11,
@@ -894,7 +952,7 @@
             [
               -17,
               29,
-              -15
+              -22
             ],
             [
               -17,
@@ -908,7 +966,7 @@
             [
               -15,
               29,
-              -15
+              -22
             ],
             [
               -15,
@@ -922,7 +980,7 @@
             [
               -13,
               29,
-              -15
+              -22
             ],
             [
               -13,
@@ -936,7 +994,7 @@
             [
               -11,
               29,
-              -15
+              -22
             ],
             [
               -11,
@@ -1001,6 +1059,21 @@
               -18,
               25,
               -8
+            ]
+          ],
+          "mat": "rib"
+        },
+        {
+          "box": [
+            [
+              -20,
+              31,
+              -21
+            ],
+            [
+              -10,
+              32,
+              -14
             ]
           ],
           "mat": "rib"
@@ -1318,7 +1391,7 @@
           "box": [
             [
               16,
-              18,
+              17,
               -10
             ],
             [
@@ -1343,6 +1416,21 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              17,
+              15,
+              -6
+            ],
+            [
+              19,
+              18,
+              0
+            ]
+          ],
+          "mat": "rib"
         }
       ]
     },
