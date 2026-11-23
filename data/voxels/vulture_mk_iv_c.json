@@ -1,0 +1,251 @@
+{
+  "source": "res://data/voxels/vulture_mk_iv.json",
+  "id": "vulture_mk_iv_c",
+  "name": "Vulture Mk IV C — Gauss and improved heavy laser",
+  "unit": "vulture_mk_iv_c",
+  "part_overlays": [
+    {
+      "part": "la",
+      "shapes": [
+        {
+          "box": [
+            [
+              -22,
+              25,
+              -30
+            ],
+            [
+              -20,
+              28,
+              -21
+            ]
+          ],
+          "mat": "launcher"
+        },
+        {
+          "box": [
+            [
+              -23,
+              26,
+              -27
+            ],
+            [
+              -19,
+              29,
+              -24
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              -22,
+              26,
+              -31
+            ],
+            [
+              -21,
+              27,
+              -28
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "ra",
+      "shapes": [
+        {
+          "box": [
+            [
+              21,
+              25,
+              -26
+            ],
+            [
+              23,
+              28,
+              -21
+            ]
+          ],
+          "mat": "launcher"
+        },
+        {
+          "box": [
+            [
+              20,
+              25,
+              -23
+            ],
+            [
+              24,
+              29,
+              -22
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              22,
+              26,
+              -27
+            ],
+            [
+              22,
+              27,
+              -24
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "part": "lt",
+      "shapes": [
+        {
+          "erase": [
+            [
+              -17,
+              33,
+              -16
+            ],
+            [
+              -9,
+              41,
+              -12
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              -16,
+              34,
+              -12
+            ],
+            [
+              -10,
+              40,
+              -11
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -15,
+              35,
+              -13
+            ],
+            [
+              -14,
+              39,
+              -13
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
+    },
+    {
+      "part": "rt",
+      "shapes": [
+        {
+          "erase": [
+            [
+              9,
+              33,
+              -16
+            ],
+            [
+              16,
+              41,
+              -12
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              10,
+              34,
+              -12
+            ],
+            [
+              16,
+              40,
+              -11
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              13,
+              35,
+              -13
+            ],
+            [
+              14,
+              39,
+              -13
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
+    }
+  ],
+  "weapons": [
+    {
+      "label": "Gauss rifle",
+      "locs": [
+        "LA"
+      ],
+      "kind": "cannon"
+    },
+    {
+      "label": "Improved heavy large",
+      "locs": [
+        "RA"
+      ],
+      "kind": "laser"
+    },
+    {
+      "label": "ER medium chin lasers",
+      "locs": [
+        "CT"
+      ],
+      "kind": "laser"
+    }
+  ],
+  "muzzles": {
+    "LA": [
+      -21.5,
+      26.5,
+      -30.5
+    ],
+    "RA": [
+      22.5,
+      26.5,
+      -26.5
+    ],
+    "CT": [
+      [
+        -2,
+        29,
+        -14
+      ],
+      [
+        2,
+        29,
+        -14
+      ]
+    ]
+  }
+}
