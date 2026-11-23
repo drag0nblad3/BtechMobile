@@ -170,3 +170,21 @@ These authored source meshes have connectivity and open-port regression
 tests. The source geometry still needs multi-angle reference-aligned renders,
 part by part proportion corrections and Godot device performance inspection.
 The models do not determine damage or replace the record-sheet equipment.
+
+
+## Further new chassis and weapon variants
+
+Initial independent shapes now also exist for Hellhound (Conjurer),
+Koshi (Standard), HawkWolf HWK-4F, Black Hawk (Standard) and Dominator.
+They are stored in `data/voxels/` and derive their weapon placements from
+each unit's source MTF, not generic silhouette templates. Each includes
+separate moving arm, shin and foot parts. Source geometry uses explicit
+open launcher tubes; the alternate weapon overlays adjust the number and
+size of ports for each record sheet (for example HawkWolf 15+15 arm
+launchers, Dominator 2's 20-tube LRM and Koshi 3's triple-laser arms).
+A general catalog regression checks live loadability, connection masses,
+part counts, every damage location and official launcher-opening counts.
+
+Status: authored baseline **not rendered or reference-scored**. A proper
+multi-angle render/contact audit, configuration-specific muzzle placement
+inspection, and performance review remain required for acceptance.
