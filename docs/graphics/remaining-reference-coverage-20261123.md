@@ -12,7 +12,7 @@ pose, cropping and foreground are reviewed.
 | --- | ---: | --- |
 | Catalyst plastic photography | 159 | Existing provisional front/off-axis camera+pose trials |
 | Legacy official TRO scans (nonoverlapping) | 82 | Existing provisional camera trials |
-| Additional Sarna infobox images | 36 | 44 candidates indexed: 36 new Mechs and 8 non-Mech family candidates; new 3-batch GitHub Action launched |
+| Additional Sarna infobox images | 36 | 44 candidates indexed: 36 new Mechs and 8 non-Mech family candidates; 43/44 exploratory masks measured (Tsunami contour rejected) |
 | No qualified image lead | **12** | Reference discovery required |
 | **Total BattleMechs** | **289** | 277 have a reference candidate, 12 do not |
 | Support/vehicle/battle-armor recipes | **45** | 8 family-level illustration candidates are in the same Sarna index; 37 still lack this source track |
@@ -64,3 +64,9 @@ vehicle, battle armor, or support archetype rather than a BattleMech plastic
 photo. Four vehicles and four Elemental battle-armor variants have family-level
 art leads in the 44-image Sarna batch. These 8 are not counted as Mechs and
 must not be marked as exact-variant matches.
+
+## Measured results from the remaining-source batch
+
+The GitHub Actions matrix run [45166256559](https://github.com/drag0nblad3/BtechMobile/actions/runs/45166256559) exported **44/44** projected source models with **zero projection failures** and **792 camera candidates** (360 + 360 + 72). The reference contour extractor returned **43 provisional scores**, comprising **35 BattleMechs** and **8 vehicle/battle-armor family examples**. The remaining `tsunami` illustration was **rejected** because ink/background extraction covered 76.7% of the image and failed the contour sanity threshold; it must be manually isolated, not forced through a permissive cutoff.
+
+Per-model measurements, provisional camera yaw/pitch, source URL and rejection reasons are recorded in [sarna-reference-first-pass-44.csv](sarna-reference-first-pass-44.csv). No per-angle or overall *approved* score was written. This batch did not optimize joint poses to the photographed/illustrated stance, and the reference viewpoints have not been manually approved. Numerical fit alone must not be treated as proof of sculpt accuracy.
