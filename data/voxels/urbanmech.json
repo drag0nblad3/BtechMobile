@@ -3102,6 +3102,62 @@
       ]
     },
     {
+      "name": "ct_top_exhaust",
+      "loc": "CT",
+      "parent": "ct",
+      "pivot": [
+        0,
+        26,
+        6
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              -3,
+              27,
+              5
+            ],
+            [
+              3,
+              28,
+              7
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -2,
+              28,
+              6
+            ],
+            [
+              2,
+              29,
+              8
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              0,
+              29,
+              7
+            ],
+            [
+              0,
+              29,
+              8
+            ]
+          ]
+        }
+      ]
+    },
+    {
       "name": "hd",
       "loc": "HD",
       "pivot": [
@@ -4467,36 +4523,6 @@
         {
           "box": [
             [
-              13,
-              19,
-              -18
-            ],
-            [
-              15,
-              21,
-              -8
-            ]
-          ],
-          "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              13,
-              20,
-              -19
-            ],
-            [
-              15,
-              20,
-              -19
-            ]
-          ],
-          "mat": "recess"
-        },
-        {
-          "box": [
-            [
               12,
               20,
               2
@@ -4539,6 +4565,77 @@
               44,
               62,
               -49
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ra_ac10",
+      "loc": "RA",
+      "parent": "ra",
+      "pivot": [
+        14,
+        20,
+        -9
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              13,
+              19,
+              -9
+            ],
+            [
+              15,
+              21,
+              -8
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              13,
+              19,
+              -18
+            ],
+            [
+              15,
+              21,
+              -8
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              13,
+              20,
+              -19
+            ],
+            [
+              15,
+              20,
+              -19
+            ]
+          ],
+          "mat": "recess"
+        },
+        {
+          "erase": [
+            [
+              14,
+              20,
+              -19
+            ],
+            [
+              14,
+              20,
+              -16
             ]
           ]
         }
@@ -5462,5 +5559,6 @@
     ],
     "reference_basis": "Catalyst current plastic sculpt",
     "review_status": "pending renderer and connectivity checks"
-  }
+  },
+  "notes": " Keep squat trashcan body, sculpt supported dorsal exhaust cap and independent hollow RA AC-10 with the tiny LA laser unchanged. Avoid generic wide shoulders."
 }
