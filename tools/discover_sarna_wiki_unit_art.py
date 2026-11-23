@@ -176,8 +176,22 @@ def main():
                 "reason": "Generic visual archetype has no unique canonical sculpt"})
             continue
         query = canonical(model)
-        url, page = fetch(query)
-        parsed = decode_page(page, model) if page else None
+        page_names = [query]
+        if not model.startswith(("vehicle/", "battle_armor/")):
+            page_names.extend([query + "_(BattleMech)",
+                query + "_(BattleMech_Series)"])
+        elif model.startswith("vehicle/"):
+            page_names.extend([query + "_(Combat_Vehicle)",
+                query + "_(Vehicle)"])
+        else:
+            page_names.append(query + "_(Battle_Armor)")
+        parsed = None
+        url = ""
+        for page_name in page_names:
+            url, page = fetch(page_name)
+            parsed = decode_page(page, model) if page else None
+            if parsed:
+                break
         if parsed:
             family_only = (model.startswith("battle_armor/") or
                            model in FAMILY_EXCEPTIONS)
