@@ -117,9 +117,14 @@ def accept_page(markup, model):
         base = re.sub(r"(?:clan|mki|mkii|c|gal100|vnlk65n)$", "", name)
         equal_family = base in title_n and len(base) >= 7
     else:
-        prefix = re.sub(r"(?:nh1b|sdr10k|vtrcr|tora)$", "", name)
-        equal_family = name in title_n or (
-            len(prefix) >= 5 and title_n.startswith(prefix))
+        # Compare complete chassis names. A prefix such as Phoenix must NEVER
+        # silently accept Phoenix Hawk, nor Locust accept Locust IIC.
+        exact = title_n == name
+        spoken = key.replace("_", " ")
+        suffix = title[len(spoken):] if title.casefold().startswith(
+            spoken.casefold()) else ""
+        variant = re.match(r"^ [A-Z]{2,6}[-]?[0-9][A-Za-z0-9-]*", suffix)
+        equal_family = exact or variant is not None
     if not equal_family:
         return None
     for src, alt in page.art:
