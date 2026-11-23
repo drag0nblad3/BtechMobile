@@ -20,65 +20,54 @@ func test_melee_weapon_is_an_independent_supported_rig_component() -> void:
 				"%s: shaft must have a backed 2x2 grip contact" % id)
 
 
-func test_hatchets_have_broad_cutting_bits_and_narrow_hafts() -> void:
+func test_forward_blade_is_thin_not_a_side_facing_slab() -> void:
 	for id: String in IDS:
 		var d: Dictionary = _recipe(id)
 		var meta: Dictionary = d.get("melee_weapon", {})
-		check_eq(meta.get("kind", ""), "hatchet", "%s: intended silhouette" % id)
-		var p := VxModel.from_dict(d).part("ra_hatchet")
+		check_eq(meta.get("blade_axis", ""), "-z", "%s: cutting bit must face -z" % id)
+		var p: Dictionary = VxModel.from_dict(d).part("ra_hatchet")
 		if p.is_empty():
 			continue
-		var rows: Dictionary = {}
-		for cell: Vector3i in p["cells"]:
-			if not rows.has(cell.y):
-				rows[cell.y] = {}
-			rows[cell.y][cell.x] = true
-		var keys: Array = rows.keys()
-		keys.sort()
-		var low: int = keys[0]
-		var high: int = keys.back()
-		var shaft_width := 10000
-		var blade_width := 0
-		for y: int in keys:
-			var width: int = rows[y].size()
-			if float(y) <= float(low) + (high - low) * 0.30:
-				shaft_width = mini(shaft_width, width)
-			if float(y) >= float(low) + (high - low) * 0.50:
-				blade_width = maxi(blade_width, width)
-		check(blade_width >= shaft_width + 4,
-				"%s: upper cutting bit must exceed narrow haft" % id)
-		var blade_profiles := 0
-		for part: Dictionary in d.get("parts", []):
-			if part.get("name", "") != "ra_hatchet":
+		var low := Vector3i(999, 999, 999)
+		var high := Vector3i(-999, -999, -999)
+		for c: Vector3i in p["cells"]:
+			low.x = mini(low.x, c.x)
+			low.y = mini(low.y, c.y)
+			low.z = mini(low.z, c.z)
+			high.x = maxi(high.x, c.x)
+			high.y = maxi(high.y, c.y)
+			high.z = maxi(high.z, c.z)
+		var sideways: int = high.x - low.x + 1
+		var forward: int = high.z - low.z + 1
+		check(forward >= 9 and forward >= sideways * 2,
+				"%s: head must project forward of grip" % id)
+		check(sideways <= 5, "%s: blade too thick laterally" % id)
+		var cutting_loft := false
+		for item: Dictionary in d.get("parts", []):
+			if item.get("name", "") != "ra_hatchet":
 				continue
-			for form: Dictionary in part.get("shapes", []):
-				if form.has("loft") and form.get("mat", "") == "plate":
-					var points: Array = form["loft"]["sections"][0]["polygon"]
-					var bottom := INF
-					var top := -INF
-					for uv: Array in points:
-						bottom = minf(bottom, float(uv[1]))
-						top = maxf(top, float(uv[1]))
-					if top - bottom >= 9.0:
-						blade_profiles += 1
-		check(blade_profiles > 0,
-				"%s: blade should flare vertically, not become a hammer" % id)
+			for shape: Dictionary in item.get("shapes", []):
+				if shape.get("mat", "") != "plate" or not shape.has("loft"):
+					continue
+				cutting_loft = shape["loft"].get("axis", "") == "z"
+		check(cutting_loft, "%s: needs a real forward cutting edge" % id)
+
 
 func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
 	for id: String in IDS:
 		var m := _model(id)
-		check(float(m.ready_arm.get("RA", 0.0)) > 0.2,
+		check(float(m.ready_arm.get("RA", 0.0)) > 0.08 and float(m.ready_arm.get("RA", 0.0)) <= 0.20,
 				"%s: weapon arm should have a readable guard pose" % id)
 		check(not m.ready_arm.has("LA"), "%s: off-hand must stay free" % id)
-		check(float(m.ready_roll.get("RA", 0.0)) > 0.1,
+		check(float(m.ready_roll.get("RA", 0.0)) >= 0.0 and float(m.ready_roll.get("RA", 0.0)) < 0.10,
 				"%s: axe should clear the torso in the front silhouette" % id)
 		var mech := VxMech.new()
 		mech.model = m
 		mech.build()
 		mech.anim._process(0.016)
-		check(mech.shoulders[1].rotation.x > 0.2,
+		check(mech.shoulders[1].rotation.x > 0.08 and mech.shoulders[1].rotation.x <= 0.20,
 				"%s: actual rig must raise weapon arm" % id)
-		check(mech.shoulders[1].rotation.z > 0.1,
+		check(mech.shoulders[1].rotation.z >= 0.0 and mech.shoulders[1].rotation.z < 0.10,
 				"%s: actual rig must present the head clear of the torso" % id)
 		mech.free()
 
