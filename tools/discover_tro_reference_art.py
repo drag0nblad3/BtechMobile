@@ -63,11 +63,14 @@ def find_art(name, available):
         pathlib.Path(file).stem) == key]
     if exact:
         return sorted(exact, key=lambda s: (not s.endswith(".gif"), s))[0]
-    # One explicitly labeled chassis variant is an identifiable source lead.
-    suffix = [file for file in available if
-              pathlib.Path(file).stem.casefold().startswith(name.casefold() + "_")
-              or pathlib.Path(file).stem.casefold().startswith(
-                  name.casefold().replace("_", "") + "_")]
+    # Admit variant illustration only when a chassis code follows, not another
+    # chassis name (e.g. Phoenix cannot borrow Phoenix Hawk artwork).
+    suffix = []
+    for file in available:
+        stem = pathlib.Path(file).stem
+        variant = re.fullmatch(r"(.+?)[_-]([a-zA-Z]{2,6}-\\d[a-zA-Z0-9-]*)", stem)
+        if variant and norm(variant.group(1)) == key:
+            suffix.append(file)
     if suffix:
         return sorted(suffix, key=len)[0]
     # e.g. 3025_phoenix_hawk1: published legacy revision, still a provisional lead.
