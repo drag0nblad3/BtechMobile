@@ -11,6 +11,12 @@ static var explain_level: int = ExplainLevel.FULL
 static var training: Dictionary = {}
 static var ai_level: int = BotSkill.Level.REGULAR
 static var cinematic_camera := false
+static var voxel_mechs := true
+static var sound_master := 0.85
+static var sound_effects := 0.9
+static var sound_ui := 0.65
+static var sound_muted := false
+static var camera_shake := true
 static var _loaded := false
 
 
@@ -24,6 +30,12 @@ static func load_settings() -> void:
 		training = cfg.get_value("training", "progress", {})
 		ai_level = clampi(int(cfg.get_value("ai", "level", BotSkill.Level.REGULAR)), 0, BotSkill.NAMES.size() - 1)
 		cinematic_camera = bool(cfg.get_value("camera", "cinematic", false))
+		voxel_mechs = bool(cfg.get_value("graphics", "voxel_mechs", true))
+		sound_master = clampf(float(cfg.get_value("audio", "master", 0.85)), 0.0, 1.0)
+		sound_effects = clampf(float(cfg.get_value("audio", "effects", 0.9)), 0.0, 1.0)
+		sound_ui = clampf(float(cfg.get_value("audio", "ui", 0.65)), 0.0, 1.0)
+		sound_muted = bool(cfg.get_value("audio", "muted", false))
+		camera_shake = bool(cfg.get_value("camera", "shake", true))
 
 
 static func set_explain_level(level: int) -> void:
@@ -51,6 +63,50 @@ static func set_ai_level(level: int) -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("ai", "level", ai_level)
+	cfg.save(PATH)
+
+
+## Choose JSON voxel rigs, or use sprites and placeholders on slower phones.
+static func set_voxel_mechs(enabled: bool) -> void:
+	voxel_mechs = enabled
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("graphics", "voxel_mechs", enabled)
+	cfg.save(PATH)
+
+
+static func set_sound_master(value: float) -> void:
+	sound_master = clampf(value, 0.0, 1.0)
+	_save_audio("master", sound_master)
+
+
+static func set_sound_effects(value: float) -> void:
+	sound_effects = clampf(value, 0.0, 1.0)
+	_save_audio("effects", sound_effects)
+
+
+static func set_sound_ui(value: float) -> void:
+	sound_ui = clampf(value, 0.0, 1.0)
+	_save_audio("ui", sound_ui)
+
+
+static func set_sound_muted(on: bool) -> void:
+	sound_muted = on
+	_save_audio("muted", on)
+
+
+static func _save_audio(key: String, value: Variant) -> void:
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("audio", key, value)
+	cfg.save(PATH)
+
+
+static func set_camera_shake(on: bool) -> void:
+	camera_shake = on
+	var cfg := ConfigFile.new()
+	cfg.load(PATH)
+	cfg.set_value("camera", "shake", on)
 	cfg.save(PATH)
 
 

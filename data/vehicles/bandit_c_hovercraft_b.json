@@ -1,0 +1,36 @@
+{
+ "id": "bandit_c_hovercraft_b",
+ "name": "Bandit (C) Hovercraft B",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 40,
+  "RS": 40,
+  "LS": 40,
+  "RR": 20,
+  "TU": 32
+ },
+ "equipment": {
+  "TU": [
+   "c_lrm20"
+  ],
+  "BD": [
+   "ammo:c_lrm20*3",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 221,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Bandit (C) Hovercraft B.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 1162
+}

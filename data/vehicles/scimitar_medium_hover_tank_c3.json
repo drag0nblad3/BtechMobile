@@ -1,0 +1,36 @@
+{
+ "id": "scimitar_medium_hover_tank_c3",
+ "name": "Scimitar Medium Hover Tank (C3)",
+ "tonnage": 35,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 8,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "heavy_ferro",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 32,
+  "RS": 28,
+  "LS": 28,
+  "RR": 22,
+  "TU": 28
+ },
+ "equipment": {
+  "TU": [
+   "rotary_ac2",
+   "c3_slave"
+  ],
+  "BD": [
+   "ammo:rotary_ac2*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2829,
+  "megamek": "data/mekfiles/vehicles/3085u/ONN/Scimitar Medium Hover Tank (C3).blk",
+  "role": "Scout",
+  "bv": "megamek"
+ },
+ "bv": 680
+}

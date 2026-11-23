@@ -8,7 +8,7 @@
   "engine": "ice",
   "turret": true
  },
- "armor_type": "ferro_fibrous",
+ "armor_type": "hardened",
  "tech_base": "clan",
  "armor": {
   "FR": 12,

@@ -8,7 +8,21 @@ const SHADER := preload("res://src/view/shaders/vx_blast.gdshader")
 
 ## Presets: cube counts, cube size, burst speed, seconds.
 const KINDS := {
-	"impact": {"fire": 6, "smoke": 4, "debris": 4, "cube": 0.06, "speed": 0.9, "time": 0.8},
+	"impact": {"fire": 8, "smoke": 5, "debris": 6, "cube": 0.065, "speed": 1.1, "time": 0.75},
+	"miss": {"fire": 0, "smoke": 5, "debris": 7, "cube": 0.055, "speed": 0.65, "time": 0.6,
+		"smoke_color": Color(0.40, 0.37, 0.31), "debris_color": Color(0.33, 0.29, 0.25)},
+	"jet_launch": {"fire": 1, "smoke": 9, "debris": 3, "cube": 0.065, "speed": 0.9, "time": 0.65,
+		"smoke_color": Color(0.44, 0.40, 0.36), "debris_color": Color(0.41, 0.38, 0.34)},
+	"jet_land": {"fire": 0, "smoke": 14, "debris": 8, "cube": 0.075, "speed": 1.1, "time": 0.80,
+		"smoke_color": Color(0.45, 0.41, 0.36), "debris_color": Color(0.40, 0.37, 0.32)},
+	"jet_splash": {"fire": 0, "smoke": 13, "debris": 8, "cube": 0.060, "speed": 0.95, "time": 0.68,
+		"smoke_color": Color(0.42, 0.69, 0.74), "debris_color": Color(0.53, 0.78, 0.86)},
+	"step": {"fire": 0, "smoke": 4, "debris": 2, "cube": 0.05, "speed": 0.35, "time": 0.42,
+		"smoke_color": Color(0.42, 0.39, 0.33), "debris_color": Color(0.38, 0.35, 0.30)},
+	"splash": {"fire": 0, "smoke": 5, "debris": 4, "cube": 0.055, "speed": 0.48, "time": 0.50,
+		"smoke_color": Color(0.45, 0.68, 0.74), "debris_color": Color(0.55, 0.78, 0.84)},
+	"fall": {"fire": 0, "smoke": 16, "debris": 12, "cube": 0.09, "speed": 1.0, "time": 1.0,
+		"smoke_color": Color(0.34, 0.33, 0.31), "debris_color": Color(0.35, 0.34, 0.32)},
 	"blast": {"fire": 26, "smoke": 14, "debris": 18, "cube": 0.11, "speed": 2.2, "time": 1.6},
 	"mech": {"fire": 56, "smoke": 22, "debris": 30, "cube": 0.13, "speed": 3.0, "time": 2.2},
 	"dust": {"fire": 0, "smoke": 30, "debris": 24, "cube": 0.14, "speed": 1.6, "time": 2.0,

@@ -11,6 +11,7 @@ var _terrain: TerrainDb
 var _rig: CameraRig
 var _map: MapView
 var _units: UnitsLayer
+var _scars: BattleScars
 var _objectives: Node3D
 var _status: Label
 var _play_button: Button
@@ -113,12 +114,17 @@ func _show_frame(index: int) -> void:
 		_units.queue_free()
 	if _objectives:
 		_objectives.queue_free()
+	if _scars:
+		_scars.queue_free()
 	_map = MapView.new()
 	add_child(_map)
 	_map.build(state.map)
 	_units = UnitsLayer.new()
 	add_child(_units)
 	_units.build(state)
+	_scars = BattleScars.new()
+	add_child(_scars)
+	_scars.setup(state, _units, _frames.slice(0, index + 1))
 	_objectives = ObjectiveMarkers.build(state)
 	add_child(_objectives)
 	if index == 0:

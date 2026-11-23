@@ -1,0 +1,37 @@
+{
+ "id": "ontos_heavy_tank_light_gauss",
+ "name": "Ontos Heavy Tank (Light Gauss)",
+ "tonnage": 95,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 40,
+  "RS": 32,
+  "LS": 32,
+  "RR": 30,
+  "TU": 36
+ },
+ "equipment": {
+  "TU": [
+   "light_gauss_rifle*3",
+   "er_medium_laser*2"
+  ],
+  "BD": [
+   "ammo:light_gauss_rifle*4"
+  ]
+ },
+ "source": {
+  "mul_id": 2327,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Ontos Heavy Tank (Light Gauss).blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Ontos Heavy Tank (Light Gauss) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1269
+}

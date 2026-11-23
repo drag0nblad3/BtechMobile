@@ -94,8 +94,9 @@ static func _trace(map: BattleMap, line: Array[Vector2i], a_lvl: int, b_lvl: int
 			out["light" if w == 1 else "heavy"] += 1
 		var obs := 0  # smoke and fog count like woods, 2 per hex at most (Obscurant)
 		if not map.windy:
-			if tile.fog > 0 and _intervenes(tile.level + Obscurant.HEIGHT, a_lvl, b_lvl, next_a, next_b):
-				obs += tile.fog
+			var cloud := Obscurant.cloud(tile)
+			if cloud > 0 and _intervenes(tile.level + Obscurant.HEIGHT, a_lvl, b_lvl, next_a, next_b):
+				obs += cloud
 			if tile.on_fire and _intervenes(Fire.smoke_top(tile), a_lvl, b_lvl, next_a, next_b):
 				obs += 1
 		if obs > 0:

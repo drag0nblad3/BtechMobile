@@ -1,0 +1,59 @@
+{
+  "id": "hound_hd2f",
+  "name": "Hound",
+  "model": "HD-2F",
+  "tonnage": 70,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 15,
+  "armor": {
+    "LA": 22,
+    "RA": 22,
+    "LT": 20,
+    "RT": 20,
+    "CT": 30,
+    "HD": 9,
+    "LL": 26,
+    "RL": 26
+  },
+  "rear_armor": {
+    "LT": 10,
+    "RT": 10,
+    "CT": 13
+  },
+  "equipment": {
+    "LA": [
+      "srm4"
+    ],
+    "RA": [
+      "light_ppc*2"
+    ],
+    "LT": [
+      "lb10x_ac",
+      "ammo:lb10x_ac",
+      "ammo:lb10x_ac:cluster",
+      "ammo:srm4"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "medium_laser"
+    ],
+    "LL": [
+      "heat_sink"
+    ],
+    "RL": [
+      "heat_sink"
+    ]
+  },
+  "role": "Sniper: long-range fire. SRM 4, 2x Light PPC, LB 10-X AC, Medium Laser; walks 4, runs 6.",
+  "sprite": "hound",
+  "source": {
+    "mul_id": 6563,
+    "megamek": "data/mekfiles/meks/3145/Merc/Hound HD-2F.mtf",
+    "published": "RS:DA",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1389
+  },
+  "bv": 1389
+}

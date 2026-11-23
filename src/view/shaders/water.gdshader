@@ -1,26 +1,38 @@
-// Two slow cross-waves, shallow variation and modest specular response.
-// Uses world position, not a per-tile texture, so adjacent water hexes join.
+// Mobile-friendly water: soft shoreline shallows and two intersecting wave
+// bands. The shader runs only on water caps; no extra render passes or textures.
 shader_type spatial;
-render_mode cull_back;
+render_mode blend_mix, depth_draw_never, cull_back;
 
-uniform vec4 deep_color : source_color = vec4(0.075, 0.23, 0.33, 1.0);
-uniform vec4 shallow_color : source_color = vec4(0.19, 0.43, 0.49, 1.0);
-uniform float opacity = 0.77;
-uniform float speed = 0.55;
-varying vec2 water_pos;
+uniform vec4 deep_color : source_color = vec4(0.065, 0.18, 0.27, 1.0);
+uniform vec4 shallow_color : source_color = vec4(0.12, 0.39, 0.46, 1.0);
+uniform vec4 foam_color : source_color = vec4(0.45, 0.67, 0.70, 1.0);
+uniform float wave_speed = 0.7;
+
+varying vec2 field;
+varying vec2 local_hex;
+varying float depth_tint;
 
 void vertex() {
-	water_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xz;
+	field = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xz;
+	local_hex = VERTEX.xz;
+	depth_tint = COLOR.r;
 }
 
 void fragment() {
-	float a = sin(water_pos.x * 2.5 + water_pos.y * 1.6 + TIME * speed);
-	float b = sin(water_pos.x * -1.4 + water_pos.y * 3.2 - TIME * speed * 0.75);
-	float ripple = 0.5 + 0.25 * a + 0.25 * b;
-	float shine = pow(max(0.0, ripple), 5.0);
-	ALBEDO = mix(deep_color.rgb, shallow_color.rgb, clamp(ripple, 0.0, 1.0));
-	EMISSION = shallow_color.rgb * shine * 0.075;
+	// Hex apothem for a unit-radius hex is sqrt(3) / 2. This masks the
+	// shoreline without introducing visible circular rims or new geometry.
+	vec2 p = local_hex;
+	float shore = 0.0; // Real shore strips are built only at land boundaries.
+	float w1 = sin(field.x * 12.0 + field.y * 4.5 + TIME * wave_speed * 2.2);
+	float w2 = sin(field.y * 14.0 - field.x * 3.0 - TIME * wave_speed * 1.65);
+	float crests = smoothstep(1.0, 1.8, w1 + w2);
+	vec3 water = mix(deep_color.rgb, shallow_color.rgb, 0.4 + shore * 0.55);
+	water *= depth_tint;
+	water = mix(water, foam_color.rgb * depth_tint, crests * 0.19 + shore * 0.12);
+	ALBEDO = water;
 	ROUGHNESS = 0.23;
-	SPECULAR = 0.8;
-	ALPHA = opacity;
+	METALLIC = 0.07;
+	SPECULAR = 0.7;
+	EMISSION = shallow_color.rgb * crests * 0.07 * depth_tint;
+	ALPHA = 0.78 + shore * 0.12;
 }

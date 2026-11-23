@@ -1,0 +1,37 @@
+{
+ "id": "regulator_ii_hovertank_rac",
+ "name": "Regulator II Hovertank (RAC)",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 10,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "heavy_ferro",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 38,
+  "RS": 33,
+  "LS": 33,
+  "RR": 30,
+  "TU": 34
+ },
+ "equipment": {
+  "TU": [
+   "rotary_ac5"
+  ],
+  "BD": [
+   "ammo:rotary_ac5*3",
+   "targeting_computer",
+   "guardian_ecm"
+  ]
+ },
+ "source": {
+  "mul_id": 2678,
+  "megamek": "data/mekfiles/vehicles/3085u/Cutting Edge/Regulator II Hovertank (RAC).blk",
+  "role": "Skirmisher",
+  "bv": "megamek"
+ },
+ "bv": 1490
+}

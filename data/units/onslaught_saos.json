@@ -1,0 +1,79 @@
+{
+  "id": "onslaught_saos",
+  "name": "Onslaught",
+  "model": "SA-OS",
+  "tonnage": 75,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 23,
+    "RA": 23,
+    "LT": 20,
+    "RT": 20,
+    "CT": 30,
+    "HD": 9,
+    "LL": 16,
+    "RL": 16
+  },
+  "rear_armor": {
+    "LT": 10,
+    "RT": 10,
+    "CT": 15
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "large_laser",
+      "endo_steel*8"
+    ],
+    "RA": [
+      "ultra_ac5",
+      "ammo:ultra_ac5",
+      "endo_steel*2"
+    ],
+    "LT": [
+      "jump_jet*2",
+      "srm6",
+      "machine_gun*3",
+      "ammo:srm6",
+      "case"
+    ],
+    "RT": [
+      "jump_jet*2",
+      "srm6",
+      "machine_gun*3",
+      "ammo:srm6",
+      "case"
+    ],
+    "CT": [
+      "jump_jet",
+      "ammo:machine_gun:half"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Large Laser, Ultra AC/5, 2x SRM 6, 6x Machine Gun; walks 5, runs 8, jumps 5.",
+  "sprite": "onslaught",
+  "source": {
+    "mul_id": 2321,
+    "megamek": "data/mekfiles/meks/3055U/Onslaught SA-OS.mtf",
+    "published": "RS:3055Uu",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1562
+  },
+  "bv": 1562
+}

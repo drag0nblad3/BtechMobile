@@ -1,0 +1,35 @@
+{
+ "id": "skulker_wheeled_scout_tank_srm",
+ "name": "Skulker Wheeled Scout Tank (SRM)",
+ "tonnage": 20,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 7,
+  "engine": "ice",
+  "turret": false
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 18,
+  "RS": 18,
+  "LS": 18,
+  "RR": 18
+ },
+ "equipment": {
+  "FR": [
+   "srm4"
+  ],
+  "BD": [
+   "ammo:srm4*2"
+  ]
+ },
+ "source": {
+  "mul_id": 2957,
+  "megamek": "data/mekfiles/vehicles/3039u/Skulker Wheeled Scout Tank (SRM).blk",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "Skulker Wheeled Scout Tank (SRM) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 319
+}

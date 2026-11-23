@@ -4,8 +4,9 @@ extends Node
 ## pauses the controller, changes a unit, or consumes battle RNG.
 ## Manual gestures suspend the director until the next meaningful action.
 
-const HOLD_ACTION := 1.25
-const HOLD_IMPACT := 1.9
+const HOLD_ACTION := 0.85
+const HOLD_IMPACT := 1.35
+const RETURN_DELAY := 0.45
 const MAX_QUEUE := 4
 
 var rig: CameraRig
@@ -16,6 +17,8 @@ var _queue: Array[Dictionary] = []
 var _hold := 0.0
 var _manual := 0.0
 var _tracking := -1
+var _return_wait := 0.0
+var _in_shot := false
 
 
 func setup(camera_rig: CameraRig, unit_layer: UnitsLayer) -> void:
@@ -31,6 +34,8 @@ func set_enabled(on: bool) -> void:
 	_hold = 0.0
 	_manual = 0.0
 	_tracking = -1
+	_return_wait = 0.0
+	_in_shot = false
 	if on:
 		_return_pose = rig.capture_pose()
 	else:
@@ -40,9 +45,11 @@ func set_enabled(on: bool) -> void:
 func manual_input() -> void:
 	if not enabled:
 		return
-	_manual = 3.0
+	_manual = 999999.0  # Player owns the camera until cinematic is toggled again.
 	_hold = 0.0
 	_tracking = -1
+	_return_wait = 0.0
+	_in_shot = false
 	_queue.clear()
 
 
@@ -54,9 +61,17 @@ func on_event(e: GameEvent) -> void:
 	var urgent := false
 	match e.type:
 		GameEvent.UNIT_MOVED, GameEvent.DISPLACED:
-			shot = {"kind": "follow", "unit_id": int(d.get("unit_id", -1))}
-		GameEvent.WEAPON_FIRED, GameEvent.PHYSICAL:
-			shot = {"kind": "pair", "unit_id": int(d.get("attacker_id", -1)),
+			if units.is_busy():
+				shot = {"kind": "follow", "unit_id": int(d.get("unit_id", -1))}
+		GameEvent.WEAPON_FIRED:
+			# Routine misses and shots without ammunition should not hijack
+			# the camera; preserve cinematic framing for consequential hits.
+			if d.get("hit", false) and not d.get("no_ammo", false):
+				shot = {"kind": "pair", "unit_id": int(d.get("attacker_id", -1)),
+					"target_id": int(d.get("target_id", -1))}
+		GameEvent.PHYSICAL:
+			if d.get("hit", false):
+				shot = {"kind": "pair", "unit_id": int(d.get("attacker_id", -1)),
 					"target_id": int(d.get("target_id", -1))}
 		GameEvent.AMMO_EXPLOSION, GameEvent.UNIT_DESTROYED, GameEvent.FALL:
 			shot = {"kind": "impact", "unit_id": int(d.get("unit_id", -1))}
@@ -64,7 +79,8 @@ func on_event(e: GameEvent) -> void:
 	if shot.is_empty():
 		return
 	# A committed action takes priority over earlier manual navigation.
-	_manual = 0.0
+	if _manual > 0.0:
+		return  # Touch control always wins, including subsequent combat events.
 	if urgent:
 		_queue.clear()
 		_hold = 0.0
@@ -92,11 +108,21 @@ func _process(delta: float) -> void:
 	_hold = maxf(0.0, _hold - delta)
 	if _hold <= 0.0 and not _queue.is_empty():
 		_next_shot()
+	elif _hold <= 0.0 and _queue.is_empty() and _in_shot and _tracking < 0:
+		_return_wait += delta
+		if _return_wait >= RETURN_DELAY:
+			rig.restore_pose(_return_pose)
+			_in_shot = false
+			_return_wait = 0.0
 
 
 func _next_shot() -> void:
 	while not _queue.is_empty():
 		var shot: Dictionary = _queue.pop_front()
+		if not _in_shot:
+			_return_pose = rig.capture_pose()
+		_in_shot = true
+		_return_wait = 0.0
 		var id := int(shot["unit_id"])
 		var v: UnitView = units.views.get(id)
 		if v == null or not v.visible:

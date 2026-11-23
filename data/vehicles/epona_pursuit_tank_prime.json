@@ -1,0 +1,37 @@
+{
+ "id": "epona_pursuit_tank_prime",
+ "name": "Epona Pursuit Tank Prime",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 21,
+  "RS": 20,
+  "LS": 20,
+  "RR": 18,
+  "TU": 17
+ },
+ "equipment": {
+  "TU": [
+   "c_medium_pulse_laser*4",
+   "c_streak_srm4"
+  ],
+  "BD": [
+   "ammo:c_streak_srm4",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 996,
+  "megamek": "data/mekfiles/vehicles/3060u/Epona Pursuit Tank Prime.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 1477
+}

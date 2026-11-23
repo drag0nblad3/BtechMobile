@@ -1,0 +1,48 @@
+{
+ "id": "heimdall_ground_monitor_tank_a",
+ "name": "Heimdall Ground Monitor Tank A",
+ "tonnage": 95,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 106,
+  "RS": 70,
+  "LS": 70,
+  "RR": 47,
+  "TU": 59
+ },
+ "equipment": {
+  "FR": [
+   "c_lb10x_ac*2"
+  ],
+  "TU": [
+   "c_atm12*2",
+   "c_heavy_medium_laser"
+  ],
+  "BD": [
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_lb10x_ac",
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_atm12:er",
+   "ammo:c_atm12",
+   "ammo:c_atm12:he",
+   "ammo:c_atm12:er",
+   "ammo:c_atm12",
+   "ammo:c_atm12:he",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 4292,
+  "megamek": "data/mekfiles/vehicles/3067/3067 Clan Land/Heimdall Ground Monitor Tank A.blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 2244
+}

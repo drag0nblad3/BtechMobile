@@ -1,0 +1,35 @@
+{
+ "id": "amazon_battle_armor_mrr_sqd4",
+ "name": "Amazon Battle Armor",
+ "model": "[MRR](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 10,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "medium_recoilless_rifle",
+    "name": "Medium Recoilless Rifle",
+    "type": "ballistic",
+    "damage": 3,
+    "short": 2,
+    "medium": 4,
+    "long": 6
+   }
+  ],
+  "armor_type": "advanced"
+ },
+ "source": {
+  "mul_id": 6428,
+  "megamek": "data/mekfiles/battlearmor/3145/Liao/Amazon BA MRR (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 328
+}

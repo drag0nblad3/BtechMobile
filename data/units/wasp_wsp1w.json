@@ -1,0 +1,66 @@
+{
+  "id": "wasp_wsp1w",
+  "name": "Wasp",
+  "model": "WSP-1W",
+  "tonnage": 20,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 4,
+    "RA": 4,
+    "LT": 6,
+    "RT": 6,
+    "CT": 6,
+    "HD": 4,
+    "LL": 5,
+    "RL": 5
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 4
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "RA": [
+      "small_laser*2"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet",
+      "small_laser*2"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "jump_jet",
+      "small_laser*2"
+    ],
+    "CT": [
+      "jump_jet*2"
+    ],
+    "LL": [
+      "heat_sink",
+      "jump_jet"
+    ],
+    "RL": [
+      "heat_sink",
+      "jump_jet"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. 6x Small Laser; walks 6, runs 9, jumps 6.",
+  "sprite": "wasp",
+  "source": {
+    "mul_id": 3525,
+    "megamek": "data/mekfiles/meks/3039u/Wasp WSP-1W.mtf",
+    "published": "RS:3039u",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 373
+  },
+  "bv": 373
+}

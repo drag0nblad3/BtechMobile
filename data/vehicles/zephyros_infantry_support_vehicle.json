@@ -1,0 +1,38 @@
+{
+ "id": "zephyros_infantry_support_vehicle",
+ "name": "Zephyros Infantry Support Vehicle",
+ "tonnage": 25,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 8,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 31,
+  "RS": 18,
+  "LS": 18,
+  "RR": 18,
+  "TU": 20
+ },
+ "equipment": {
+  "TU": [
+   "c_er_medium_laser*2",
+   "c_light_machine_gun*2"
+  ],
+  "BD": [
+   "ammo:c_light_machine_gun",
+   "guardian_ecm",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 3634,
+  "megamek": "data/mekfiles/vehicles/3085u/Cutting Edge/Zephyros Infantry Support Vehicle.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 840
+}

@@ -7,6 +7,7 @@ shader_type spatial;
 uniform vec4 top_color : source_color = vec4(0.48, 0.6, 0.29, 1.0);
 uniform vec4 detail_color : source_color = vec4(0.37, 0.5, 0.22, 1.0);
 uniform vec4 side_color : source_color = vec4(0.42, 0.34, 0.25, 1.0);
+uniform vec4 weather_tint : source_color = vec4(1.0);
 uniform sampler2D noise_tex : repeat_enable, filter_linear_mipmap;
 uniform float tex_scale = 0.45;
 uniform int pattern = 0;
@@ -15,14 +16,13 @@ uniform float pixel = 0.07;  // ground "voxel" size in world units
 varying vec3 world_pos;
 varying vec3 world_normal;
 varying vec3 tint;
-varying vec2 tile_local;
-uniform float hex_radius = 0.97;
+varying float cliff_height;
 
 void vertex() {
 	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	world_normal = normalize((MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz);
 	tint = COLOR.rgb;
-	tile_local = VERTEX.xz;
+	cliff_height = VERTEX.y;
 }
 
 float tri_noise(vec3 p, vec3 n, float s) {
@@ -80,24 +80,18 @@ vec3 top_pattern(vec2 p) {
 
 void fragment() {
 	float fine = tri_noise(world_pos, world_normal, tex_scale * 4.0);
-	vec3 side = side_color.rgb * (0.75 + 0.5 * fine);
-	// Horizontal strata on cliff sides make levels readable.
-	side *= 0.85 + 0.15 * step(0.5, fract(world_pos.y / 0.45));
 	float is_top = smoothstep(0.6, 0.9, world_normal.y);
+	// Rock strata catch the sunlight. The thin lighter shelf at the lip
+	// separates hill levels at an oblique camera angle without geometry.
+	float strata = fract(world_pos.y * 3.6 + fine * 0.16);
+	float bedrock = smoothstep(0.15, 0.24, strata) * (1.0 - smoothstep(0.75, 0.85, strata));
+	vec3 side = side_color.rgb * mix(0.63, 1.02, bedrock) * (0.86 + 0.26 * fine);
+	float rim = smoothstep(-0.24, -0.035, cliff_height);
+	side = mix(side, top_color.rgb * 0.78, rim * 0.55);
 	vec3 top = is_top > 0.0 ? top_pattern(world_pos.xz) : vec3(0.0);
-	// Shade just the inside of each hex rim. This creates a precise
-	// readable grid without a second mesh or screen-space outlines.
-	vec2 a = abs(tile_local);
-	float edge = max(a.y / (0.8660254 * hex_radius),
-			max(abs(tile_local.x + tile_local.y / 1.7320508),
-				abs(tile_local.x - tile_local.y / 1.7320508)) / hex_radius);
-	float rim = smoothstep(0.88, 0.99, edge);
-	top *= 1.0 - 0.17 * rim;
-	vec3 pigment = mix(side, top, is_top) * tint;
-	float luminosity = dot(pigment, vec3(0.2126, 0.7152, 0.0722));
-	// A gentler military/terrain palette reads as material, not neon paint.
-	ALBEDO = mix(vec3(luminosity), pigment, 0.82) * 0.91;
-	// Distant cliffs retain a subtle geological band instead of becoming
-	// a monochrome vertical wall.
-	ROUGHNESS = mix(1.0, 0.91, is_top);
+	// Subtle broad soil patches break up featureless flat terrain.
+	float soil_patch = smoothstep(0.45, 0.8, n2(world_pos.xz + 31.0, 0.11));
+	top *= mix(0.91, 1.055, soil_patch);
+	ALBEDO = mix(side, top, is_top) * tint * weather_tint.rgb;
+	ROUGHNESS = mix(0.99, 0.91, is_top);
 }

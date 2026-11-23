@@ -708,6 +708,23 @@
           ],
           "mat": "edge"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              0,
+              29,
+              -1
+            ],
+            [
+              5,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
       ]
     },
     {
@@ -1373,6 +1390,50 @@
         {
           "box": [
             [
+              4,
+              29,
+              -1
+            ],
+            [
+              9,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "detail": [
+        {
+          "box": [
+            [
+              37,
+              100,
+              22
+            ],
+            [
+              40,
+              101,
+              22
+            ]
+          ],
+          "mat": "edge"
+        }
+      ]
+    },
+    {
+      "name": "rt_srm",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        12,
+        36,
+        -7
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
               9,
               34,
               -12
@@ -1483,23 +1544,21 @@
               -11
             ]
           ]
-        }
-      ],
-      "detail": [
+        },
         {
           "box": [
             [
-              37,
-              100,
-              22
+              10,
+              34,
+              -7
             ],
             [
-              40,
-              101,
-              22
+              14,
+              36,
+              -7
             ]
           ],
-          "mat": "edge"
+          "mat": "frame"
         }
       ]
     },
@@ -2796,6 +2855,24 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
-  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition"
+  "art_quality_passes": 100,
+  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 114,
+    "stages_with_changes": 10
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  }
 }

@@ -1,0 +1,47 @@
+{
+ "id": "svantovit_infantry_fighting_vehicle",
+ "name": "Svantovit Infantry Fighting Vehicle",
+ "tonnage": 35,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 10,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 14,
+  "RS": 11,
+  "LS": 11,
+  "RR": 10,
+  "TU": 11
+ },
+ "equipment": {
+  "FR": [
+   "c_lrm5*2"
+  ],
+  "RS": [
+   "c_machine_gun"
+  ],
+  "LS": [
+   "c_machine_gun"
+  ],
+  "TU": [
+   "c_streak_srm2*2"
+  ],
+  "BD": [
+   "ammo:c_machine_gun:half",
+   "ammo:c_lrm5",
+   "ammo:c_streak_srm2",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 3139,
+  "megamek": "data/mekfiles/vehicles/3060u/Svantovit Infantry Fighting Vehicle.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 698
+}

@@ -4,14 +4,14 @@ extends Node3D
 ## and destroyed 'Mechs blow up, collapsing buildings throw dust and rubble,
 ## and shots or 'Mechs forcing their way in knock holes in building walls.
 ## Reads state only; the record sheet and events decide what happened.
+## PHYSICAL is not a hit location; only DAMAGE emits a contact spark.
 
 const MECH_HEIGHT := 0.55  ## Where on a 'Mech model blasts are centred.
 
 var _state: GameState
 var _units: UnitsLayer
 var _map: MapView
-var _trails: Node3D
-var _damage_text: Node3D
+var hits := BattleHitFx.new()
 
 
 func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
@@ -19,23 +19,23 @@ func setup(state: GameState, units: UnitsLayer, map_view: MapView) -> void:
 	_state = state
 	_units = units
 	_map = map_view
-	_trails = Node3D.new()
-	_trails.name = "WeaponTrails"
-	add_child(_trails)
-	_damage_text = Node3D.new()
-	_damage_text.name = "DamageText"
-	add_child(_damage_text)
+	add_child(hits)
+	hits.setup(state, units)
+
+
+func attach_camera(camera: CameraRig) -> void:
+	hits.attach_camera(camera)
 
 
 func play(e: GameEvent) -> void:
+	hits.play(e)
 	match e.type:
 		GameEvent.WEAPON_FIRED:
-			_weapon(e.data)
-		GameEvent.DAMAGE:
-			_damage_popup(e.data)
-		GameEvent.PHYSICAL:
-			if e.data.get("hit", false):
-				_at_unit(e.data.get("target_id", -1), "impact")
+			_weapon_fire(e.data)
+		GameEvent.FALL:
+			var fallen := _unit_pos(int(e.data.get("unit_id", -1)))
+			if fallen != Vector3.INF:
+				VxBlast.spawn(self, fallen - Vector3(0, 0.35, 0), "fall", randi())
 		GameEvent.AMMO_EXPLOSION:
 			_at_unit(e.data["unit_id"], "blast")
 		GameEvent.UNIT_DESTROYED:
@@ -44,46 +44,70 @@ func play(e: GameEvent) -> void:
 			_building(e.data)
 
 
-## A clear visual path from shooter to target, including near misses.
-func _weapon(d: Dictionary) -> void:
+## Brief readable beams/projectiles are purely visual; rules still resolve
+## immediately and no projectile affects targeting, damage or replay state.
+func _weapon_fire(d: Dictionary) -> void:
 	if d.get("no_ammo", false) or d.get("streak_held", false):
 		return
-	var source := _unit_pos(int(d.get("attacker_id", -1)))
-	var target := _unit_pos(int(d.get("target_id", -1)))
-	if source != Vector3.INF and target != Vector3.INF:
-		var seed := int(d.get("attacker_id", 0)) * 47 				+ int(d.get("target_id", 0)) * 13 + int(d.get("roll", 0))
-		BattleShotFx.spawn(_trails, source, target,
-				String(d.get("weapon_id", "")), bool(d.get("hit", false)), seed)
-	if d.get("hit", false):
-		_at_unit(int(d.get("target_id", -1)), "impact", Vector3(0, 0.1, 0))
+	var attacker_id := int(d.get("attacker_id", -1))
+	var target_id := int(d.get("target_id", -1))
+	var attacker: Unit = _state.unit_by_id(attacker_id) if attacker_id >= 0 else null
+	var victim: Unit = _state.unit_by_id(target_id) if target_id >= 0 else null
+	var av: UnitView = _units.view_of(attacker) if attacker != null else null
+	var tv: UnitView = _units.view_of(victim) if victim != null else null
+	var weapon_index := int(d.get("weapon_index", -1))
+	var weapon_name := String(d.get("weapon_id", d.get("weapon_name", "")))
+	var a := av.weapon_origin(weapon_name, weapon_index) if av != null and av.visible else Vector3.INF
+	var target := tv.impact_point(a) if tv != null and tv.visible and a != Vector3.INF else _unit_pos(target_id)
+	if a == Vector3.INF or target == Vector3.INF:
+		return
+	var hit := bool(d.get("hit", false))
+	var weapon := weapon_name
+	var destination := target
+	if not hit:
+		destination += ShotFx.miss_offset(int(d.get("attacker_id", 0)),
+			int(d.get("target_id", 0)), weapon)
+	var voxel_fired := av != null and UnitVoxels.fire(av, d, destination)
+	if not voxel_fired and get_tree().get_nodes_in_group("battle_shot").size() < ShotFx.MAX_ACTIVE:
+		ShotFx.spawn(self, a, destination, weapon, hit)
+	# The authoritative DAMAGE event (not this firing preview) chooses a hit location.
+	else:
+		VxBlast.spawn(self, destination - Vector3(0, 0.3, 0), "miss",
+			int(d.get("attacker_id", 0)) * 131 + int(d.get("target_id", 0)))
+	if av != null and not voxel_fired:
+		_recoil(av, weapon)
 
 
-## Damage numbers rise once per packet, with a strict mobile-friendly cap.
-func _damage_popup(d: Dictionary) -> void:
-	if bool(d.get("covered", false)) or int(d.get("amount", 0)) <= 0 			or _damage_text.get_child_count() >= 18:
+## Subtle view-only kick and a localized armor flash, bounded by short tweens.
+func _recoil(view: UnitView, weapon: String) -> void:
+	if not is_instance_valid(view) or view.get_meta("recoiling", false):
 		return
-	var p := _unit_pos(int(d.get("unit_id", -1)))
-	if p == Vector3.INF:
+	view.set_meta("recoiling", true)
+	var model := view.get_node_or_null("WeaponRecoil")
+	if model != null:
 		return
-	var number := Label3D.new()
-	number.text = "-%d" % int(d["amount"])
-	number.font_size = 38
-	number.pixel_size = 0.002
-	number.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	number.no_depth_test = true
-	number.fixed_size = true
-	number.outline_size = 7
-	number.outline_modulate = Color("#1b1920")
-	number.modulate = Color("#ffc17a")
-	_damage_text.add_child(number)
-	var offset := float((_damage_text.get_child_count() % 5) - 2) * 0.16
-	number.global_position = p + Vector3(offset, 0.12, 0.0)
-	var tw := number.create_tween().set_parallel(true)
-	tw.tween_property(number, "position:y", number.position.y + 0.65, 0.68)
-	tw.tween_property(number, "modulate:a", 0.0, 0.68).set_delay(0.12)
-	var done := number.create_tween()
-	done.tween_interval(0.84)
-	done.tween_callback(number.queue_free)
+	var intensity := 0.045 if ShotFx.style(weapon) == "ballistic" else 0.018
+	var start := view.scale
+	var tw := view.create_tween()
+	tw.tween_property(view, "scale", start * (1.0 - intensity), 0.07)
+	tw.tween_property(view, "scale", start, 0.16)
+	tw.tween_callback(func():
+		if is_instance_valid(view):
+			view.remove_meta("recoiling"))
+
+
+func _flash_armor(view: UnitView, at: Vector3) -> void:
+	var light := OmniLight3D.new()
+	light.name = "ArmorSpark"
+	light.light_color = Color("#ffe3b3")
+	light.light_energy = 0.6
+	light.omni_range = 1.3
+	light.shadow_enabled = false
+	add_child(light)
+	light.global_position = at
+	var tw := create_tween()
+	tw.tween_property(light, "light_energy", 0.0, 0.15)
+	tw.tween_callback(light.queue_free)
 
 
 func _building(d: Dictionary) -> void:

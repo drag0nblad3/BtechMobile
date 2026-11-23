@@ -1,0 +1,71 @@
+{
+ "id": "o_bakemono_obkm10",
+ "name": "O-Bakemono",
+ "model": "OBK-M10",
+ "tonnage": 80,
+ "walk_mp": 4,
+ "jump_mp": 0,
+ "heat_sinks": 10,
+ "heat_sink_type": "double",
+ "engine_type": "xl",
+ "armor": {
+  "LA": 26,
+  "RA": 26,
+  "LT": 25,
+  "RT": 25,
+  "CT": 37,
+  "HD": 9,
+  "LL": 24,
+  "RL": 24
+ },
+ "rear_armor": {
+  "LT": 9,
+  "RT": 9,
+  "CT": 10
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "arrow_iv~5"
+  ],
+  "RA": [
+   "arrow_iv~5"
+  ],
+  "LT": [
+   "ammo:arrow_iv",
+   "ammo:arrow_iv:homing*2",
+   "case"
+  ],
+  "RT": [
+   "ammo:arrow_iv*2",
+   "ammo:arrow_iv:homing",
+   "case"
+  ],
+  "CT": [
+   "medium_laser*2"
+  ],
+  "HD": [
+   "small_laser"
+  ]
+ },
+ "source": {
+  "mul_id": 2310,
+  "megamek": "data/mekfiles/meks/3058Uu/O-Bakemono OBK-M10.mtf",
+  "published": "RS:CI",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 1659
+ },
+ "bv": 1659,
+ "sprite": "o_bakemono",
+ "role": "Missile boat: rains missiles from a distance. 2 Arrow IVs, 2 Medium Lasers, Small Laser; walks 4, runs 6."
+}

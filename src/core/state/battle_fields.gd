@@ -8,7 +8,7 @@ static func names(o: Object) -> Array:
 		return ["map", "units", "turn", "phase", "initiative_order", "side_order",
 				"order_index", "initiative_rolls", "declared_fire", "declared_physical",
 				"building_hits", "doomed_buildings", "initiative_die_rule",
-				"initiative_die", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "conditions", "sees_through",
+				"initiative_die", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "conditions", "sees_through",
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
@@ -55,7 +55,7 @@ static func names(o: Object) -> Array:
 				"no_fire", "windy"]
 	if o is MapTile:
 		return ["coord", "terrain", "level", "depth", "building", "bridge",
-				"on_fire", "surface", "fog"]
+				"on_fire", "surface", "fog", "smoke", "smoke_turn", "fire_out"]
 	if o is Bridge:
 		return ["type", "height", "level", "span"]
 	if o is Building:
@@ -65,7 +65,7 @@ static func names(o: Object) -> Array:
 				"out_since_turn"]
 	if o is MountedWeapon:
 		return ["def", "loc", "rear", "destroyed", "exploded", "mode", "artemis",
-				"artemis_lost", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
+				"artemis_lost", "artemis_v", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",
 				"jammed", "spent", "crit_hits", "on_vehicle", "on_squad", "capacitor", "capacitor_lost",
 				"cap_charged", "cap_released"]
 	if o is AmmoBin:

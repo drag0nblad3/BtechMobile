@@ -1,0 +1,43 @@
+{
+ "id": "ishtar_heavy_fire_support_tank_gauss",
+ "name": "Ishtar Heavy Fire Support Tank (Gauss)",
+ "tonnage": 65,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 32,
+  "RS": 30,
+  "LS": 30,
+  "RR": 24,
+  "TU": 28
+ },
+ "equipment": {
+  "FR": [
+   "c_er_medium_laser*2",
+   "c_lrm15+artemis"
+  ],
+  "TU": [
+   "c_hag20",
+   "c_gauss_rifle"
+  ],
+  "BD": [
+   "ammo:c_hag20*2",
+   "ammo:c_gauss_rifle*2",
+   "ammo:c_lrm15*2",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 1633,
+  "megamek": "data/mekfiles/vehicles/3060u/Ishtar Heavy Fire Support Tank (Gauss).blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 1616
+}

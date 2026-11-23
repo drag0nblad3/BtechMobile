@@ -1,0 +1,46 @@
+{
+ "id": "morrigu_fire_support_vehicle_hag",
+ "name": "Morrigu Fire Support Vehicle (HAG)",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 63,
+  "RS": 41,
+  "LS": 41,
+  "RR": 28,
+  "TU": 35
+ },
+ "equipment": {
+  "RS": [
+   "c_srm2"
+  ],
+  "LS": [
+   "c_srm2"
+  ],
+  "TU": [
+   "c_hag40",
+   "c_lrm15*2"
+  ],
+  "BD": [
+   "guardian_ecm",
+   "ammo:c_srm2",
+   "ammo:c_hag40*5",
+   "ammo:c_lrm15*4",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 5738,
+  "megamek": "data/mekfiles/vehicles/3067 Unabridged/Clan Vehicles/Morrigu Fire Support Vehicle (HAG).blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 2059
+}

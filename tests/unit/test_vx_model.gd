@@ -125,13 +125,13 @@ func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
 		for point: Vector3 in points:
 			var x := floori(point.x)
 			var y := floori(point.y)
-			var opening := Vector3i(x, y, -9)
+			var opening := Vector3i(x, y, ceili(point.z))
 			unique[opening] = true
 			check(not cells.has(opening) and not cells.has(opening + Vector3i(0, 0, 1)),
 					"missile must emerge through a real two-cell-deep opening: " + str(opening))
 			check(cells.has(opening + Vector3i(0, 1, 0)),
 					"each port should have armor separating it from the next row")
-		check_eq(unique.size(), 15, "all fifteen launch tubes must be distinct")
+		check_eq(unique.size(), points.size(), "each muzzle needs a distinct open tube")
 	var left: Dictionary = m.part("la")["cells"]
 	var right: Dictionary = m.part("ra")["cells"]
 	var left_torso: Dictionary = m.part("lt")["cells"]
@@ -144,3 +144,74 @@ func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
 	for c: Vector3i in left:
 		check(right.has(Vector3i(-c.x - 1, c.y, c.z)),
 				"right launcher geometry must mirror the left")
+
+## The following tests check rig relationships and dimensionless silhouette
+## properties. A proportional resculpt or a changed grid origin must still pass.
+
+func test_mirror_inherits_the_reflected_parent() -> void:
+	var m := VxModel.new()
+	m._mat["frame"] = 0
+	m.colors.append(Color.WHITE)
+	m.roles.append("structure")
+	for spec in [
+		{"name": "ct", "loc": "CT"},
+		{"name": "lt", "loc": "LT", "parent": "ct"},
+		{"name": "rt", "mirror": "lt", "parent": "ct"},
+		{"name": "left_detail", "loc": "LT", "parent": "lt"},
+		{"name": "right_detail", "mirror": "left_detail"},
+		{"name": "left_collar", "loc": "CT", "parent": "ct"},
+		{"name": "right_collar", "mirror": "left_collar"},
+		{"name": "manual", "mirror": "left_detail", "parent": "ct"}
+	]:
+		m._add_part(spec)
+	check_eq(m.part("right_detail")["parent"], m.part("rt")["name"],
+			"mirrored accessory must move with the reflected shoulder")
+	check_eq(m.part("right_collar")["parent"], m.part("ct")["name"],
+			"midline accessory stays attached to midline")
+	check_eq(m.part("manual")["parent"], m.part("ct")["name"],
+			"explicit parent overrides reflected default")
+
+
+func test_cannon_arm_preserves_weapon_and_rig_without_source_part_counts() -> void:
+	var d: Dictionary = JsonFile.read("res://data/voxels/wolverine_shape.json")
+	var m := VxModel.from_dict(d)
+	check(m.muzzles.has(Location.RA), "cannon muzzle is still present")
+	check(not m.parts_at(Location.RA).is_empty(), "gun arm retains its damage location")
+	var arm: Dictionary = m.part("ra")
+	check(arm.has("pivot") and not arm.get("cells", {}).is_empty(),
+			"gun arm remains articulated and occupied")
+	# No coordinate or exact count of sculpt details is pinned here.
+	for part: Dictionary in m.parts_at(Location.RA):
+		if part["name"] != arm["name"]:
+			check(part["parent"] != "", "weapon accessories must follow an arm joint")
+
+
+func test_forward_disc_has_rounded_relative_width() -> void:
+	var d: Dictionary = JsonFile.read("res://data/voxels/jenner_shape.json")
+	var head: Dictionary = {}
+	for part: Dictionary in d["parts"]:
+		if part.get("name", "") == "hd":
+			head = part
+	var broadest := 0.0
+	var leading_width := 0.0
+	for shape: Dictionary in head.get("shapes", []):
+		if not shape.has("loft") or shape["loft"].get("axis", "") != "z":
+			continue
+		var sections: Array = shape["loft"]["sections"]
+		var max_width := 0.0
+		for section: Dictionary in sections:
+			max_width = maxf(max_width, _profile_width(section["polygon"]))
+		if max_width > broadest:
+			broadest = max_width
+			leading_width = _profile_width(sections[0]["polygon"])
+	check(broadest > 0.0 and leading_width / maxf(1.0, broadest) >= 0.45,
+			"forward disc should not collapse to a narrow beak")
+
+
+func _profile_width(points: Array) -> float:
+	var low := INF
+	var high := -INF
+	for point: Array in points:
+		low = minf(low, float(point[0]))
+		high = maxf(high, float(point[0]))
+	return high - low

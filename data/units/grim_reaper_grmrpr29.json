@@ -1,0 +1,73 @@
+{
+  "id": "grim_reaper_grmrpr29",
+  "name": "Grim Reaper",
+  "model": "GRM-R-PR29",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 18,
+    "RA": 18,
+    "LT": 18,
+    "RT": 18,
+    "CT": 26,
+    "HD": 9,
+    "LL": 26,
+    "RL": 26
+  },
+  "rear_armor": {
+    "LT": 8,
+    "RT": 8,
+    "CT": 10
+  },
+  "equipment": {
+    "LA": [
+      "srm6",
+      "medium_pulse_laser",
+      "ferro_fibrous*2"
+    ],
+    "RA": [
+      "er_large_laser",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "ammo:srm6",
+      "case",
+      "ferro_fibrous*3"
+    ],
+    "RT": [
+      "lrm20",
+      "ammo:lrm20*2",
+      "ammo:ams",
+      "ferro_fibrous"
+    ],
+    "CT": [
+      "ams",
+      "ferro_fibrous"
+    ],
+    "HD": [
+      "ferro_fibrous"
+    ],
+    "LL": [
+      "ferro_fibrous*2"
+    ],
+    "RL": [
+      "ferro_fibrous*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. SRM 6, Medium Pulse Laser, ER Large Laser, LRM 20, Anti-Missile System; walks 5, runs 8.",
+  "sprite": "grim_reaper",
+  "source": {
+    "mul_id": 1328,
+    "megamek": "data/mekfiles/meks/3055U/Grim Reaper GRM-R-PR29.mtf",
+    "published": "RS:J",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1469
+  },
+  "bv": 1469
+}

@@ -1,0 +1,39 @@
+{
+ "id": "goblin_medium_tank_lrm",
+ "name": "Goblin Medium Tank (LRM)",
+ "tonnage": 45,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 30,
+  "RS": 24,
+  "LS": 24,
+  "RR": 20,
+  "TU": 30
+ },
+ "equipment": {
+  "FR": [
+   "machine_gun"
+  ],
+  "TU": [
+   "lrm10*2"
+  ],
+  "BD": [
+   "ammo:machine_gun:half",
+   "ammo:lrm10*3"
+  ]
+ },
+ "source": {
+  "mul_id": 1223,
+  "megamek": "data/mekfiles/vehicles/3039u/Goblin Medium Tank (LRM).blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 656
+}

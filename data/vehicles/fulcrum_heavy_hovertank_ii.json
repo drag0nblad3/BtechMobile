@@ -1,0 +1,43 @@
+{
+ "id": "fulcrum_heavy_hovertank_ii",
+ "name": "Fulcrum Heavy Hovertank II",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 10,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 46,
+  "RS": 27,
+  "LS": 27,
+  "RR": 20,
+  "TU": 40
+ },
+ "equipment": {
+  "FR": [
+   "tag"
+  ],
+  "TU": [
+   "lrm10",
+   "medium_laser*3",
+   "srm6"
+  ],
+  "BD": [
+   "guardian_ecm",
+   "ammo:lrm10",
+   "ammo:srm6"
+  ]
+ },
+ "source": {
+  "mul_id": 1155,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Fulcrum Heavy Hovertank II.blk",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Fulcrum Heavy Hovertank II (BattleTech-Record-Sheets-Aces-Scouring-Sands-2)"
+ },
+ "bv": 1248
+}

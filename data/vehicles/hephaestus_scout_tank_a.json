@@ -1,0 +1,38 @@
+{
+ "id": "hephaestus_scout_tank_a",
+ "name": "Hephaestus Scout Tank A",
+ "tonnage": 30,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 8,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 20,
+  "RS": 20,
+  "LS": 20,
+  "RR": 18,
+  "TU": 18
+ },
+ "equipment": {
+  "TU": [
+   "c_lrm15+artemis",
+   "c_er_small_laser"
+  ],
+  "BD": [
+   "ammo:c_lrm15",
+   "c_active_probe",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 4313,
+  "megamek": "data/mekfiles/vehicles/3067/3067 Clan Land/Hephaestus Scout Tank A.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 768
+}

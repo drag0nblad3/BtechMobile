@@ -111,6 +111,7 @@ func _init(unit_id: int, unit_def: UnitDef, unit_side: int, at: Vector2i, face: 
 	for m in def.weapon_mounts:
 		var mw := MountedWeapon.new(m["weapon"], m["loc"], m["rear"])
 		mw.artemis = m.get("artemis", false)
+		mw.artemis_v = m.get("artemis_v", false)
 		mw.apollo = m.get("apollo", false)
 		mw.capacitor = m.get("capacitor", false)
 		weapons.append(mw)
@@ -160,8 +161,8 @@ func _init_ba() -> void:
 		weapons.append(mw)
 		if mw.def.uses_ammo():
 			ammo.append(AmmoBin.new(mw.def, Location.CT))
-	if def.battle_armor.claw:
-		for wd in [BaLegAttack.weapon(), BaSwarm.weapon()]:
+	if def.battle_armor.anti_mech:
+		for wd in [BaLegAttack.weapon(), BaSwarm.weapon(), BaSwarm.let_go_weapon()]:
 			var mw := MountedWeapon.new(wd, Location.CT, false)
 			mw.on_squad = true
 			weapons.append(mw)

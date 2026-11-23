@@ -1,0 +1,57 @@
+{
+  "id": "shadow_hawk_shd2k",
+  "name": "Shadow Hawk",
+  "model": "SHD-2K",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 3,
+  "heat_sinks": 17,
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 18,
+    "RT": 18,
+    "CT": 23,
+    "HD": 9,
+    "LL": 16,
+    "RL": 16
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 8
+  },
+  "equipment": {
+    "LT": [
+      "heat_sink",
+      "jump_jet",
+      "ppc"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet",
+      "lrm5",
+      "ammo:lrm5"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Sniper: long-range fire. PPC, LRM 5; walks 5, runs 8, jumps 3.",
+  "sprite": "shadow_hawk",
+  "source": {
+    "mul_id": 2903,
+    "megamek": "data/mekfiles/meks/3039u/Shadow Hawk SHD-2K.mtf",
+    "published": "RS:SW",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1147
+  },
+  "bv": 1147
+}

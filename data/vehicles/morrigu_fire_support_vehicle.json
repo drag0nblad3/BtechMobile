@@ -1,0 +1,45 @@
+{
+ "id": "morrigu_fire_support_vehicle",
+ "name": "Morrigu Fire Support Vehicle",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 63,
+  "RS": 41,
+  "LS": 41,
+  "RR": 28,
+  "TU": 35
+ },
+ "equipment": {
+  "RS": [
+   "c_srm2"
+  ],
+  "LS": [
+   "c_srm2"
+  ],
+  "TU": [
+   "c_er_large_laser*2",
+   "c_lrm15*2"
+  ],
+  "BD": [
+   "ammo:c_lrm15*4",
+   "ammo:c_srm2",
+   "guardian_ecm",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 4674,
+  "megamek": "data/mekfiles/vehicles/3067/3067 Clan Land/Morrigu Fire Support Vehicle.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 1685
+}

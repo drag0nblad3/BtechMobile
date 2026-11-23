@@ -1,0 +1,42 @@
+{
+ "id": "schiltron_mobile_fire_support_platform_d",
+ "name": "Schiltron Mobile Fire-Support Platform D",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 46,
+  "RS": 34,
+  "LS": 34,
+  "RR": 25,
+  "TU": 40
+ },
+ "equipment": {
+  "FR": [
+   "lrm15+artemis"
+  ],
+  "TU": [
+   "rotary_ac5*2"
+  ],
+  "BD": [
+   "ammo:rotary_ac5*6",
+   "ammo:lrm15*3",
+   "c3_master",
+   "guardian_ecm",
+   "targeting_computer"
+  ]
+ },
+ "source": {
+  "mul_id": 2818,
+  "megamek": "data/mekfiles/vehicles/3060u/Schiltron Mobile Fire-Support Platform D.blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 1603
+}

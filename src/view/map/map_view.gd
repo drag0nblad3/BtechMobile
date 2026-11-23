@@ -4,7 +4,7 @@ extends Node3D
 ## plus woods, water and building props from their own helpers.
 
 const SHADER := preload("res://src/view/shaders/terrain.gdshader")
-const INSET := 0.97  ## Slight gap between hexes shows the grid.
+const INSET := 0.985  ## Narrower seams: a continuous landscape with a legible hex grid.
 ## Hex top colors for ice, mud and snow (Surfaces), replacing the terrain's.
 const SURFACE_TOPS := {"ice": Color("#b8d4e3"), "mud": Color("#5a4632"), "snow": Color("#e8ecef")}
 ## Shader pattern index per TerrainType.pattern (see terrain.gdshader).
@@ -15,6 +15,7 @@ var buildings: BuildingProps
 var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
 var bridges: BridgeProps
 var bridge_scars := {}  ## The same for bridge stonework.
+var weather_tint := Color.WHITE
 
 
 func build(battle_map: BattleMap) -> void:
@@ -57,7 +58,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 		var top := HexLayout.tile_top(t)
 		var height := top.y - HexLayout.BASE_Y
 		mm.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3(1, height, 1)), top))
-		mm.set_instance_color(i, _level_tint(t.floor_level(), range_))
+		mm.set_instance_color(i, _level_tint(t.floor_level(), range_, t.coord))
 	var mat := ShaderMaterial.new()
 	mat.shader = SHADER
 	var own: Variant = map.colors.get(terrain.id)
@@ -65,6 +66,7 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	mat.set_shader_parameter("detail_color", own.darkened(0.25) if own != null else terrain.detail_color)
 	mat.set_shader_parameter("noise_tex", noise)
 	mat.set_shader_parameter("pattern", 0 if surface != "" else PATTERNS.get(terrain.pattern, 0))
+	mat.set_shader_parameter("weather_tint", weather_tint)
 	var inst := MultiMeshInstance3D.new()
 	inst.name = "Terrain_%s%s" % [terrain.id, "_" + surface if surface != "" else ""]
 	inst.multimesh = mm
@@ -72,10 +74,23 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	return inst
 
 
+## Cosmetic weather wash; retained when the terrain meshes rebuild.
+func set_conditions(c: Conditions) -> void:
+	weather_tint = Color("#9ca8bd") if c.night else Color("#c6d9f1") if c.cold > 0 \
+			else Color("#f4d7b6") if c.heat > 0 else Color.WHITE
+	for node in get_children():
+		if node is MultiMeshInstance3D and node.material_override is ShaderMaterial:
+			(node.material_override as ShaderMaterial).set_shader_parameter("weather_tint", weather_tint)
+
+
 ## Higher ground is slightly brighter so levels read at a glance.
-func _level_tint(level: int, range_: Vector2i) -> Color:
+func _level_tint(level: int, range_: Vector2i, coord: Vector2i = Vector2i.ZERO) -> Color:
 	var span := maxf(1.0, range_.y - range_.x)
-	var v := 0.81 + 0.19 * (level - range_.x) / span
+	var elevation := 0.78 + 0.22 * (level - range_.x) / span
+	# Deterministic microvariation: adjacent tiles stay visually separate,
+	# but rebuilding the map never makes the soil colors jump.
+	var grain := float(posmod(coord.x * 73 + coord.y * 139, 23)) / 22.0
+	var v := elevation * lerpf(0.965, 1.035, grain)
 	return Color(v, v, v)
 
 
@@ -86,6 +101,7 @@ func _ground_plane() -> MeshInstance3D:
 	plane.size = Vector2(box.size.x, box.size.z)
 	var mat := StandardMaterial3D.new()
 	mat.albedo_color = Color("#101b22")
+	mat.roughness = 1.0
 	plane.material = mat
 	var inst := MeshInstance3D.new()
 	inst.mesh = plane

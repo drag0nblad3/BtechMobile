@@ -13,6 +13,9 @@ var bridge: Bridge = null  ## Bridge deck over this hex, if any (Bridges).
 var on_fire := false  ## Burning (Fire).
 var surface := ""  ## Terrain modification: "", "ice", "mud" or "snow" (Surfaces).
 var fog := 0  ## Fog in the hex: 0 none, 1 light, 2 heavy (Obscurant).
+var smoke := 0  ## Smoke from Smoke Arrow IV: 0 none, 1 light, 2 heavy (ArrowSmoke).
+var smoke_turn := -1  ## Turn the smoke reached its current density.
+var fire_out := -1  ## Inferno IV fire on ground that can't burn: goes out in this turn's End Phase (ArrowInferno).
 
 
 func _init(c: Vector2i, t: TerrainType, lvl: int, dep: int = 0) -> void:

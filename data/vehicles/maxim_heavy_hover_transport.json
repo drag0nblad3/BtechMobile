@@ -1,0 +1,52 @@
+{
+ "id": "maxim_heavy_hover_transport",
+ "name": "Maxim Heavy Hover Transport",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 8,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 20,
+  "RS": 20,
+  "LS": 20,
+  "RR": 12,
+  "TU": 16
+ },
+ "equipment": {
+  "FR": [
+   "lrm5*2"
+  ],
+  "RS": [
+   "srm2"
+  ],
+  "LS": [
+   "srm2"
+  ],
+  "RR": [
+   "lrm5"
+  ],
+  "TU": [
+   "machine_gun*3",
+   "srm6"
+  ],
+  "BD": [
+   "ammo:machine_gun",
+   "ammo:srm6",
+   "ammo:srm2",
+   "ammo:lrm5"
+  ]
+ },
+ "source": {
+  "mul_id": 2127,
+  "megamek": "data/mekfiles/vehicles/3039u/Maxim Heavy Hover Transport.blk",
+  "role": "Striker",
+  "bv": "sheet",
+  "sheet": "Maxim Heavy Hover Transport (Record-Sheets-Mercenaries-Box-Set)"
+ },
+ "bv": 764
+}

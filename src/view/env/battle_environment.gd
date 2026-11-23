@@ -1,45 +1,57 @@
 class_name BattleEnvironment
 extends RefCounted
-## Low-cost sky, lighting and weather color grading for the battlefield.
-## Visual conditions mirror the rules without affecting line-of-sight rolls.
+## Sky, ambient light and sun for the battlefield.
 
-static func build(conditions: Conditions = null) -> Node3D:
+
+static func build(c: Conditions = null) -> Node3D:
+	if c == null:
+		c = Conditions.new()
 	var root := Node3D.new()
 	root.name = "Environment"
-	var night := conditions != null and conditions.night
-	var snow := conditions != null and conditions.snowfall
-	var rain := conditions != null and conditions.rain
-	var hazy := conditions != null and conditions.low_visibility
 	var sky_mat := ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color("#101a36") if night else (
-		Color("#65798a") if rain or snow else Color("#47769b"))
-	sky_mat.sky_horizon_color = Color("#343f58") if night else (
-		Color("#a2b4b9") if rain or snow else Color("#c4c6bc"))
-	sky_mat.ground_bottom_color = Color("#080e17") if night else Color("#242c2e")
-	sky_mat.ground_horizon_color = Color("#263044") if night else Color("#777d74")
+	sky_mat.sky_top_color = Color("#31465f")
+	sky_mat.sky_horizon_color = Color("#9da9a8")
+	sky_mat.ground_bottom_color = Color("#1b252b")
+	sky_mat.ground_horizon_color = Color("#696e66")
+	if c.night:
+		sky_mat.sky_top_color = Color("#08111f")
+		sky_mat.sky_horizon_color = Color("#28374f")
+	elif c.heat > 0:
+		sky_mat.sky_horizon_color = Color("#e2af7b")
+	elif c.cold > 0:
+		sky_mat.sky_horizon_color = Color("#afc7d4")
 	var sky := Sky.new()
 	sky.sky_material = sky_mat
 	var env := Environment.new()
 	env.background_mode = Environment.BG_SKY
 	env.sky = sky
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.ambient_light_energy = 0.34 if night else (0.44 if rain or snow else 0.48)
-	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
-	# Distance haze adds depth without costly volumetric fog or a second light.
-	if hazy or rain or snow:
+	env.ambient_light_energy = 0.15 if c.night else 0.48 if c.low_visibility else 0.52
+	if c.low_visibility or c.rain or c.snowfall:
 		env.fog_enabled = true
-		env.fog_light_color = Color("#4c5971") if night else (
-			Color("#b7c5cc") if snow else Color("#929ca4"))
-		env.fog_density = 0.026 if hazy else 0.009
+		env.fog_density = 0.013 if c.low_visibility else 0.0045
+		env.fog_light_color = Color("#62758e") if c.night else Color("#8b9fab")
+	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
 	var we := WorldEnvironment.new()
 	we.environment = env
 	root.add_child(we)
 	var sun := DirectionalLight3D.new()
-	sun.rotation_degrees = Vector3(-34, -43, 0) if night else Vector3(-52, -38, 0)
-	sun.light_color = Color("#a9c8ea") if night else (
-		Color("#dce7f5") if rain or snow else Color("#fff0d5"))
-	sun.light_energy = 0.30 if night else (0.68 if rain or snow else 0.94)
+	sun.rotation_degrees = Vector3(-50, -35, 0)
+	sun.light_energy = 0.22 if c.night else 0.65 if c.low_visibility else 1.0
+	sun.light_color = Color("#b6ceec") if c.night or c.cold > 0 else Color("#ffba88") if c.heat > 0 else Color("#ffe6c3")
 	sun.shadow_enabled = true
 	sun.directional_shadow_max_distance = 65.0
 	root.add_child(sun)
+	# A soft cool fill keeps shadow-side voxel silhouettes legible without
+	# expensive screen-space ambient occlusion or an additional shadow map.
+	var fill := DirectionalLight3D.new()
+	fill.name = "SkyFill"
+	fill.rotation_degrees = Vector3(-34, 143, 0)
+	fill.light_energy = 0.13 if c.night else 0.22
+	fill.light_color = Color("#a3c9e3")
+	fill.shadow_enabled = false
+	root.add_child(fill)
+	var weather := BattleWeather.new()
+	weather.name = "BattleWeather"
+	root.add_child(weather)
 	return root

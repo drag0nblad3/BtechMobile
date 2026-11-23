@@ -1,0 +1,65 @@
+{
+  "id": "wasp_wsp3p",
+  "name": "Wasp",
+  "model": "WSP-3P",
+  "tonnage": 20,
+  "walk_mp": 7,
+  "jump_mp": 7,
+  "heat_sinks": 10,
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 7,
+    "RT": 7,
+    "CT": 8,
+    "HD": 9,
+    "LL": 7,
+    "RL": 7
+  },
+  "rear_armor": {
+    "LT": 2,
+    "RT": 2,
+    "CT": 3
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*6"
+    ],
+    "RA": [
+      "heat_sink",
+      "er_medium_laser",
+      "endo_steel*2"
+    ],
+    "LT": [
+      "heat_sink*2",
+      "jump_jet*3",
+      "endo_steel*3"
+    ],
+    "RT": [
+      "heat_sink*2",
+      "jump_jet*3",
+      "rl10",
+      "endo_steel*3"
+    ],
+    "CT": [
+      "jump_jet"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. ER Medium Laser, Rocket Launcher 10; walks 7, runs 11, jumps 7.",
+  "sprite": "wasp",
+  "source": {
+    "mul_id": 6950,
+    "megamek": "data/mekfiles/meks/3145/NTNU RS/Wasp WSP-3P.mtf",
+    "published": "RS:3145-NTNU,RS:3145",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 537
+  },
+  "bv": 537
+}

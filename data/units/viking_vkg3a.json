@@ -1,0 +1,86 @@
+{
+ "id": "viking_vkg3a",
+ "name": "Viking",
+ "model": "VKG-3A",
+ "tonnage": 90,
+ "walk_mp": 3,
+ "jump_mp": 0,
+ "heat_sinks": 11,
+ "heat_sink_type": "double",
+ "engine_type": "compact",
+ "structure_type": "endo_steel",
+ "armor": {
+  "LA": 30,
+  "RA": 30,
+  "LT": 28,
+  "RT": 28,
+  "CT": 44,
+  "HD": 9,
+  "LL": 38,
+  "RL": 38
+ },
+ "rear_armor": {
+  "LT": 10,
+  "RT": 10,
+  "CT": 14
+ },
+ "missing_actuators": {
+  "LA": [
+   "lower_arm",
+   "hand"
+  ],
+  "RA": [
+   "lower_arm",
+   "hand"
+  ]
+ },
+ "equipment": {
+  "LA": [
+   "mml7+artemis",
+   "endo_steel*5"
+  ],
+  "RA": [
+   "arrow_iv~5"
+  ],
+  "LT": [
+   "mml7+artemis",
+   "medium_pulse_laser",
+   "ammo:mml7",
+   "ammo:mml7:srm*2",
+   "case",
+   "endo_steel*2"
+  ],
+  "RT": [
+   "medium_pulse_laser",
+   "ammo:arrow_iv*2",
+   "ammo:arrow_iv:homing*2",
+   "case",
+   "endo_steel"
+  ],
+  "CT": [
+   "heat_sink",
+   "small_pulse_laser",
+   "endo_steel"
+  ],
+  "HD": [
+   "endo_steel"
+  ],
+  "LL": [
+   "endo_steel*2"
+  ],
+  "RL": [
+   "endo_steel*2"
+  ]
+ },
+ "source": {
+  "mul_id": 3419,
+  "megamek": "data/mekfiles/meks/3060u/Viking VKG-3A.mtf",
+  "published": "RS:3060u",
+  "role": "Missile Boat",
+  "bv": "megamek",
+  "megamek_bv": 1876
+ },
+ "bv": 1876,
+ "sprite": "viking",
+ "role": "Missile boat: rains missiles from a distance. 2 MML 7s, 2 Medium Pulse Lasers, Arrow IV, Small Pulse Laser; walks 3, runs 5."
+}
