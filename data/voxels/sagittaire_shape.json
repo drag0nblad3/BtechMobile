@@ -48,6 +48,122 @@
       "role": "structure"
     }
   ],
+  "muzzles": {
+    "LA": [
+      -12,
+      26,
+      -24.5
+    ],
+    "RA": [
+      11,
+      26,
+      -24.5
+    ],
+    "LT": [
+      -10,
+      34,
+      -19.5
+    ],
+    "RT": [
+      10,
+      33,
+      -14.5
+    ]
+  },
+  "jets": {},
+  "weapons": [
+    {
+      "label": "Arm weapons",
+      "locs": [
+        "LA",
+        "RA"
+      ],
+      "kind": "cannon"
+    },
+    {
+      "label": "Torso weapons",
+      "locs": [
+        "LT",
+        "RT"
+      ],
+      "kind": "laser"
+    }
+  ],
+  "art_quality_passes": 100,
+  "art_quality_revision": "50-stage-source-review-20261121",
+  "multi_angle_reference_revision": "2026-11-22-reference-geometry-round-2",
+  "proportion_sculpt_revision": "2026-11-22-reference-anchored-stance-and-profile",
+  "proportion_sculpt_profile": {
+    "leg_growth_voxels": 4,
+    "front_mass_scale": 0.74,
+    "rear_mass_scale": 0.56,
+    "category": "human-upright"
+  },
+  "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
+  "recessed_chest_profile": "2026-11-22-central-prow-spine-and-tapered-chest",
+  "reference_contour_round_20261122": {
+    "method": "part-specific structural loft correction",
+    "source": "Catalyst plastic/force-pack photographs (documented in docs/graphics/reference-sculpt-reconciliation-20261122.md)",
+    "note": "Taper central beaked chest and rear hull while keeping paired arm barrels and raised equipment distinct."
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 32,
+    "stages_with_changes": 7
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "tall fire-support laser shoulders",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Recovered historic 100-pass multiview and 59-chassis identity records, preserving current source loft sculpt."
+  },
+  "reference_geometry_round_20261122": {
+    "revision": "profile-and-distinctive-parts-2",
+    "intent": "source-level corrective sculpt, reference-specific, no blanket body scaling",
+    "review_views": [
+      "front",
+      "side",
+      "three_quarter",
+      "top"
+    ],
+    "automated_not_art_approved": true
+  },
+  "reference_identity_resculpt": {
+    "revision": "targeted-critical-confusion-20261122-c",
+    "neighbor": "gunslinger",
+    "intent": "Thin sharply tapered battleship cockpit, distinct forward high cannon housings and less outsized shoulder shield armor; slimmer shins",
+    "reference": "https://www.sarna.net/wiki/Sagittaire",
+    "primary_loft_vertices_reshaped": 140
+  },
+  "notes": " Shoulder fin height/width reduced against recognition art; LT ER PPC and RT pulse barrel have independent attached housings and true recessed bores. Arm emitters stay mirrored; rig unchanged.",
   "parts": [
     {
       "name": "ct",
@@ -66,36 +182,36 @@
                 "at": 21,
                 "polygon": [
                   [
-                    -2.444,
-                    -2.466
+                    -2.1752,
+                    -2.7192
                   ],
                   [
-                    2.444,
-                    -2.466
+                    2.1752,
+                    -2.7192
                   ],
                   [
-                    3.008,
-                    -2.034
+                    2.6771,
+                    -2.2248
                   ],
                   [
-                    3.008,
-                    0.6956
+                    2.6771,
+                    0.6547
                   ],
                   [
-                    2.444,
-                    1.0583
+                    2.1752,
+                    0.9569
                   ],
                   [
-                    -2.444,
-                    1.0583
+                    -2.1752,
+                    0.9569
                   ],
                   [
-                    -3.008,
-                    0.6956
+                    -2.6771,
+                    0.6547
                   ],
                   [
-                    -3.008,
-                    -2.034
+                    -2.6771,
+                    -2.2248
                   ]
                 ]
               },
@@ -103,36 +219,36 @@
                 "at": 26,
                 "polygon": [
                   [
-                    -3.9151,
-                    -3.114
+                    -3.519,
+                    -3.4608
                   ],
                   [
-                    3.9151,
-                    -3.114
+                    3.519,
+                    -3.4608
                   ],
                   [
-                    4.4744,
-                    -2.682
+                    4.0217,
+                    -2.9664
                   ],
                   [
-                    4.4744,
-                    0.9978
+                    4.0217,
+                    0.9065
                   ],
                   [
-                    3.9151,
-                    1.3604
+                    3.519,
+                    1.2087
                   ],
                   [
-                    -3.9151,
-                    1.3604
+                    -3.519,
+                    1.2087
                   ],
                   [
-                    -4.4744,
-                    0.9978
+                    -4.0217,
+                    0.9065
                   ],
                   [
-                    -4.4744,
-                    -2.682
+                    -4.0217,
+                    -2.9664
                   ]
                 ]
               },
@@ -140,36 +256,36 @@
                 "at": 33,
                 "polygon": [
                   [
-                    -5.6384,
-                    -3.906
+                    -5.1376,
+                    -4.3672
                   ],
                   [
-                    5.6384,
-                    -3.906
+                    5.1376,
+                    -4.3672
                   ],
                   [
-                    6.193,
-                    -3.474
+                    5.6429,
+                    -3.8728
                   ],
                   [
-                    6.193,
-                    1.3604
+                    5.6429,
+                    1.2087
                   ],
                   [
-                    5.6384,
-                    1.7231
+                    5.1376,
+                    1.5109
                   ],
                   [
-                    -5.6384,
-                    1.7231
+                    -5.1376,
+                    1.5109
                   ],
                   [
-                    -6.193,
-                    1.3604
+                    -5.6429,
+                    1.2087
                   ],
                   [
-                    -6.193,
-                    -3.474
+                    -5.6429,
+                    -3.8728
                   ]
                 ]
               },
@@ -177,36 +293,36 @@
                 "at": 38,
                 "polygon": [
                   [
-                    -4.5825,
-                    -3.042
+                    -4.2159,
+                    -3.3784
                   ],
                   [
-                    4.5825,
-                    -3.042
+                    4.2159,
+                    -3.3784
                   ],
                   [
-                    5.1324,
-                    -2.61
+                    4.7218,
+                    -2.884
                   ],
                   [
-                    5.1324,
-                    1.1187
+                    4.7218,
+                    1.0072
                   ],
                   [
-                    4.5825,
-                    1.4813
+                    4.2159,
+                    1.3094
                   ],
                   [
-                    -4.5825,
-                    1.4813
+                    -4.2159,
+                    1.3094
                   ],
                   [
-                    -5.1324,
-                    1.1187
+                    -4.7218,
+                    1.0072
                   ],
                   [
-                    -5.1324,
-                    -2.61
+                    -4.7218,
+                    -2.884
                   ]
                 ]
               }
@@ -615,36 +731,36 @@
                 "at": 34,
                 "polygon": [
                   [
-                    -1,
-                    -7.83
+                    -0.9,
+                    -8.5347
                   ],
                   [
-                    1,
-                    -7.83
+                    0.9,
+                    -8.5347
                   ],
                   [
-                    2.3,
-                    -6.7
+                    2.07,
+                    -7.303
                   ],
                   [
-                    2.3,
-                    -1.13
+                    2.07,
+                    -1.2317
                   ],
                   [
-                    1,
+                    0.9,
                     0
                   ],
                   [
-                    -1,
+                    -0.9,
                     0
                   ],
                   [
-                    -2.3,
-                    -1.13
+                    -2.07,
+                    -1.2317
                   ],
                   [
-                    -2.3,
-                    -6.7
+                    -2.07,
+                    -7.303
                   ]
                 ]
               },
@@ -652,36 +768,36 @@
                 "at": 38,
                 "polygon": [
                   [
-                    -1.4,
-                    -8.7
+                    -1.22,
+                    -9.483
                   ],
                   [
-                    1.4,
-                    -8.7
+                    1.22,
+                    -9.483
                   ],
                   [
-                    2.7,
-                    -7.57
+                    2.3529,
+                    -8.2513
                   ],
                   [
-                    2.7,
-                    -1.13
+                    2.3529,
+                    -1.2317
                   ],
                   [
-                    1.4,
+                    1.22,
                     0
                   ],
                   [
-                    -1.4,
+                    -1.22,
                     0
                   ],
                   [
-                    -2.7,
-                    -1.13
+                    -2.3529,
+                    -1.2317
                   ],
                   [
-                    -2.7,
-                    -7.57
+                    -2.3529,
+                    -8.2513
                   ]
                 ]
               },
@@ -689,36 +805,36 @@
                 "at": 41,
                 "polygon": [
                   [
-                    -0.6,
-                    -6.52
+                    -0.51,
+                    -7.1068
                   ],
                   [
-                    0.6,
-                    -6.52
+                    0.51,
+                    -7.1068
                   ],
                   [
-                    1.9,
-                    -5.39
+                    1.615,
+                    -5.8751
                   ],
                   [
-                    1.9,
-                    -1.13
+                    1.615,
+                    -1.2317
                   ],
                   [
-                    0.6,
+                    0.51,
                     0
                   ],
                   [
-                    -0.6,
+                    -0.51,
                     0
                   ],
                   [
-                    -1.9,
-                    -1.13
+                    -1.615,
+                    -1.2317
                   ],
                   [
-                    -1.9,
-                    -5.39
+                    -1.615,
+                    -5.8751
                   ]
                 ]
               }
@@ -806,36 +922,36 @@
                 "at": 30,
                 "polygon": [
                   [
-                    -9.4467,
-                    -3.42
+                    -8.7588,
+                    -3.5055
                   ],
                   [
-                    -5.2105,
-                    -3.42
+                    -5.2427,
+                    -3.5055
                   ],
                   [
-                    -4.6285,
-                    -2.88
+                    -4.7597,
+                    -2.952
                   ],
                   [
-                    -4.6285,
-                    1.0595
+                    -4.7597,
+                    0.8264
                   ],
                   [
-                    -5.2105,
-                    1.5136
+                    -5.2427,
+                    1.1806
                   ],
                   [
-                    -9.4467,
-                    1.5136
+                    -8.7588,
+                    1.1806
                   ],
                   [
-                    -9.9996,
-                    1.0595
+                    -9.2177,
+                    0.8264
                   ],
                   [
-                    -9.9996,
-                    -2.88
+                    -9.2177,
+                    -2.952
                   ]
                 ]
               },
@@ -843,36 +959,36 @@
                 "at": 34,
                 "polygon": [
                   [
-                    -9.601,
-                    -3.96
+                    -8.9709,
+                    -4.059
                   ],
                   [
-                    -5.4056,
-                    -3.96
+                    -5.4048,
+                    -4.059
                   ],
                   [
-                    -4.828,
-                    -3.42
+                    -4.9138,
+                    -3.5055
                   ],
                   [
-                    -4.828,
-                    1.3622
+                    -4.9138,
+                    1.0625
                   ],
                   [
-                    -5.4056,
-                    1.8163
+                    -5.4048,
+                    1.4167
                   ],
                   [
-                    -9.601,
-                    1.8163
+                    -8.9709,
+                    1.4167
                   ],
                   [
-                    -10.1497,
-                    1.3622
+                    -9.4372,
+                    1.0625
                   ],
                   [
-                    -10.1497,
-                    -3.42
+                    -9.4372,
+                    -3.5055
                   ]
                 ]
               },
@@ -880,36 +996,36 @@
                 "at": 38,
                 "polygon": [
                   [
-                    -8.5724,
-                    -2.79
+                    -8.16,
+                    -2.8597
                   ],
                   [
-                    -5.8844,
-                    -2.79
+                    -5.8214,
+                    -2.8597
                   ],
                   [
-                    -5.3111,
-                    -2.25
+                    -5.3227,
+                    -2.3062
                   ],
                   [
-                    -5.3111,
-                    1.1352
+                    -5.3227,
+                    0.8855
                   ],
                   [
-                    -5.8844,
-                    1.5893
+                    -5.8214,
+                    1.2397
                   ],
                   [
-                    -8.5724,
-                    1.5893
+                    -8.16,
+                    1.2397
                   ],
                   [
-                    -9.1171,
-                    1.1352
+                    -8.6339,
+                    0.8855
                   ],
                   [
-                    -9.1171,
-                    -2.25
+                    -8.6339,
+                    -2.3062
                   ]
                 ]
               }
@@ -1203,36 +1319,36 @@
                 "at": 16,
                 "polygon": [
                   [
-                    -14.4045,
-                    -7.68
+                    -13.9641,
+                    -7.7952
                   ],
                   [
-                    -12.1623,
-                    -7.68
+                    -11.9461,
+                    -7.7952
                   ],
                   [
-                    -11.4984,
-                    -7.008
+                    -11.3486,
+                    -7.1131
                   ],
                   [
-                    -11.4984,
-                    -2.112
+                    -11.3486,
+                    -2.1437
                   ],
                   [
-                    -12.1623,
-                    -1.44
+                    -11.9461,
+                    -1.4616
                   ],
                   [
-                    -14.4045,
-                    -1.44
+                    -13.9641,
+                    -1.4616
                   ],
                   [
-                    -15.0082,
-                    -2.112
+                    -14.5074,
+                    -2.1437
                   ],
                   [
-                    -15.0082,
-                    -7.008
+                    -14.5074,
+                    -7.1131
                   ]
                 ]
               },
@@ -1240,36 +1356,36 @@
                 "at": 25,
                 "polygon": [
                   [
-                    -14.3827,
-                    -7.872
+                    -13.9908,
+                    -7.9901
                   ],
                   [
-                    -12.1572,
-                    -7.872
+                    -11.9643,
+                    -7.9901
                   ],
                   [
-                    -11.4978,
-                    -7.2
+                    -11.3639,
+                    -7.308
                   ],
                   [
-                    -11.4978,
-                    -1.632
+                    -11.3639,
+                    -1.6565
                   ],
                   [
-                    -12.1572,
-                    -0.96
+                    -11.9643,
+                    -0.9744
                   ],
                   [
-                    -14.3827,
-                    -0.96
+                    -13.9908,
+                    -0.9744
                   ],
                   [
-                    -14.9818,
-                    -1.632
+                    -14.5364,
+                    -1.6565
                   ],
                   [
-                    -14.9818,
-                    -7.2
+                    -14.5364,
+                    -7.308
                   ]
                 ]
               },
@@ -1277,36 +1393,36 @@
                 "at": 33,
                 "polygon": [
                   [
-                    -13.0866,
-                    -6.048
+                    -12.8397,
+                    -6.1387
                   ],
                   [
-                    -11.6903,
-                    -6.048
+                    -11.5551,
+                    -6.1387
                   ],
                   [
-                    -11.0146,
-                    -5.376
+                    -10.9334,
+                    -5.4566
                   ],
                   [
-                    -11.0146,
-                    -0.192
+                    -10.9334,
+                    -0.1949
                   ],
                   [
-                    -11.6903,
-                    0.4275
+                    -11.5551,
+                    0.3847
                   ],
                   [
-                    -13.0866,
-                    0.4275
+                    -12.8397,
+                    0.3847
                   ],
                   [
-                    -13.6812,
-                    -0.192
+                    -13.3867,
+                    -0.1949
                   ],
                   [
-                    -13.6812,
-                    -5.376
+                    -13.3867,
+                    -5.4566
                   ]
                 ]
               }
@@ -1507,28 +1623,28 @@
                 "at": 14,
                 "polygon": [
                   [
-                    -9.08,
+                    -8.8652,
                     -1.32
                   ],
                   [
-                    -5.63,
+                    -5.6222,
                     -2
                   ],
                   [
-                    -4.24,
+                    -4.3156,
                     -0.66
                   ],
                   [
-                    -4.93,
-                    1.25
+                    -4.9642,
+                    1.125
                   ],
                   [
-                    -9.08,
-                    1.89
+                    -8.8652,
+                    1.701
                   ],
                   [
-                    -9.76,
-                    0.63
+                    -9.5044,
+                    0.567
                   ]
                 ]
               },
@@ -1536,28 +1652,28 @@
                 "at": 17,
                 "polygon": [
                   [
-                    -9.76,
+                    -9.3926,
                     -2
                   ],
                   [
-                    -4.93,
+                    -4.9792,
                     -2.66
                   ],
                   [
-                    -3.55,
+                    -3.7182,
                     -1.32
                   ],
                   [
-                    -4.24,
-                    1.89
+                    -4.3487,
+                    1.701
                   ],
                   [
-                    -9.76,
-                    2.51
+                    -9.3926,
+                    2.259
                   ],
                   [
-                    -10.45,
-                    1.25
+                    -10.0231,
+                    1.125
                   ]
                 ]
               },
@@ -1565,28 +1681,28 @@
                 "at": 22,
                 "polygon": [
                   [
-                    -8.38,
+                    -8.0056,
                     -1.32
                   ],
                   [
-                    -4.92,
+                    -4.9954,
                     -2
                   ],
                   [
-                    -3.54,
+                    -3.7948,
                     -0.66
                   ],
                   [
-                    -4.23,
-                    1.89
+                    -4.3951,
+                    1.701
                   ],
                   [
-                    -8.38,
-                    2.51
+                    -8.0056,
+                    2.259
                   ],
                   [
-                    -9.07,
-                    1.25
+                    -8.6059,
+                    1.125
                   ]
                 ]
               }
@@ -1937,28 +2053,28 @@
                 "at": 4,
                 "polygon": [
                   [
-                    -7.67,
+                    -7.3011,
                     -2
                   ],
                   [
-                    -5.62,
+                    -5.5996,
                     -2.66
                   ],
                   [
-                    -4.26,
+                    -4.4708,
                     -1.32
                   ],
                   [
-                    -4.94,
-                    1.89
+                    -5.0352,
+                    1.6821
                   ],
                   [
-                    -7.67,
-                    2.51
+                    -7.3011,
+                    2.2339
                   ],
                   [
-                    -8.35,
-                    1.25
+                    -7.8655,
+                    1.1125
                   ]
                 ]
               },
@@ -1966,28 +2082,28 @@
                 "at": 9,
                 "polygon": [
                   [
-                    -8.37,
+                    -7.9108,
                     -2.66
                   ],
                   [
-                    -6.32,
+                    -6.1888,
                     -3.32
                   ],
                   [
-                    -4.95,
+                    -5.038,
                     -2
                   ],
                   [
-                    -5.64,
-                    2.51
+                    -5.6176,
+                    2.2339
                   ],
                   [
-                    -8.37,
-                    3.14
+                    -7.9108,
+                    2.7946
                   ],
                   [
-                    -9.05,
-                    1.89
+                    -8.482,
+                    1.6821
                   ]
                 ]
               },
@@ -1995,28 +2111,28 @@
                 "at": 14,
                 "polygon": [
                   [
-                    -8.37,
+                    -7.9395,
                     -1.32
                   ],
                   [
-                    -6.32,
+                    -6.197,
                     -2
                   ],
                   [
-                    -4.95,
+                    -5.0325,
                     -0.66
                   ],
                   [
-                    -5.64,
-                    1.89
+                    -5.619,
+                    1.6821
                   ],
                   [
-                    -8.37,
-                    2.51
+                    -7.9395,
+                    2.2339
                   ],
                   [
-                    -9.05,
-                    1.25
+                    -8.5175,
+                    1.1125
                   ]
                 ]
               }
@@ -2151,114 +2267,5 @@
       "mirror": "ll_foot",
       "parent": "rl_shin"
     }
-  ],
-  "muzzles": {
-    "LA": [
-      -12,
-      26,
-      -24.5
-    ],
-    "RA": [
-      11,
-      26,
-      -24.5
-    ],
-    "LT": [
-      -10,
-      34,
-      -19.5
-    ],
-    "RT": [
-      10,
-      33,
-      -14.5
-    ]
-  },
-  "jets": {},
-  "weapons": [
-    {
-      "label": "Arm weapons",
-      "locs": [
-        "LA",
-        "RA"
-      ],
-      "kind": "cannon"
-    },
-    {
-      "label": "Torso weapons",
-      "locs": [
-        "LT",
-        "RT"
-      ],
-      "kind": "laser"
-    }
-  ],
-  "art_quality_passes": 100,
-  "art_quality_revision": "50-stage-source-review-20261121",
-  "multi_angle_reference_revision": "2026-11-22-reference-geometry-round-2",
-  "proportion_sculpt_revision": "2026-11-22-reference-anchored-stance-and-profile",
-  "proportion_sculpt_profile": {
-    "leg_growth_voxels": 4,
-    "front_mass_scale": 0.74,
-    "rear_mass_scale": 0.56,
-    "category": "human-upright"
-  },
-  "reference_contour_round": "2026-11-22-human-side-profile-second-pass",
-  "recessed_chest_profile": "2026-11-22-central-prow-spine-and-tapered-chest",
-  "reference_contour_round_20261122": {
-    "method": "part-specific structural loft correction",
-    "source": "Catalyst plastic/force-pack photographs (documented in docs/graphics/reference-sculpt-reconciliation-20261122.md)",
-    "note": "Taper central beaked chest and rear hull while keeping paired arm barrels and raised equipment distinct."
-  },
-  "reference_review_views": [
-    "front",
-    "side",
-    "rear",
-    "top",
-    "three_quarter"
-  ],
-  "shape_review_50": {
-    "passes": 50,
-    "edited_vertices": 32,
-    "stages_with_changes": 7
-  },
-  "blind_identity_resculpt": {
-    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
-    "identity_signature": "tall fire-support laser shoulders",
-    "modified_polygon_vertices": 137,
-    "major_form_targets": [
-      "ct",
-      "hd",
-      "lt",
-      "la",
-      "ll",
-      "ll_shin",
-      "ll_foot"
-    ],
-    "review_views": [
-      "front",
-      "side",
-      "top",
-      "rear",
-      "three_quarter"
-    ],
-    "automatic_not_human_approved": true
-  },
-  "blind_identity_weapon_stage": "2026-11-22-v1",
-  "review_lineage_reconciled_20261122": {
-    "source_commit": "2779714f",
-    "reason": "Recovered historic 100-pass multiview and 59-chassis identity records, preserving current source loft sculpt."
-  },
-  "reference_geometry_round_20261122": {
-    "revision": "profile-and-distinctive-parts-2",
-    "intent": "source-level corrective sculpt, reference-specific, no blanket body scaling",
-    "review_views": [
-      "front",
-      "side",
-      "three_quarter",
-      "top"
-    ],
-    "automated_not_art_approved": true
-  },
-  "notes": " Shoulder fin height/width reduced against recognition art; LT ER PPC and RT pulse barrel have independent attached housings and true recessed bores. Arm emitters stay mirrored; rig unchanged."
+  ]
 }

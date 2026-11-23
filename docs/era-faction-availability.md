@@ -7,17 +7,17 @@ The force builder supports **Off**, **Advisory**, and **Strict** historical avai
 - **Strict:** block unavailable and unverified variants and prevent deployment until already-built forces comply. Switching years, factions, or policies never silently removes units. Starter formation previews use the same validation.
 - **History: Verified Only:** a separate catalog filter shows designs the chosen faction may field in the selected era.
 
-## Official MUL snapshot — 2026-11-22
+## Official MUL snapshot — 2026-11-23
 
 A reproducible import from the official **Master Unit List** static search index and complete availability matrix is included in `data/forces/availability.json`. The source is the public `https://masterunitlist.battletech.com/data/manifest.json` plus its versioned `units`, `availability`, `factions`, and `eras` files. Source units are matched to individual game variants using exact name/model (including uniquely recognized aliases), tonnage, BV, and canonical unit-page URLs. No chassis or technology heuristics are permitted.
 
 The current snapshot contains:
 
-- **697** game variants in the source catalog.
-- **674** exact-matched MUL unit variants (**96.7%** coverage), each with verified introduction year and a published faction/era matrix.
-- **41,311** positive faction/era cells across those units.
+- **1,122** game variants in the source catalog.
+- **1,039** exact-matched MUL unit variants (**92.6%** coverage), each with verified introduction year and a published faction/era matrix.
+- **57,872** positive faction/era cells across those units.
 - **71** official factions and **12** eras, and faction founding/dissolution dates.
-- **23** unmatched variants, primarily special or unusual named configurations, held out as **unverified** rather than assigned guessed availability. See `docs/mul-import-coverage.json` for a variant-by-variant audit.
+- **83** unmatched variants, primarily special or unusual named configurations, held out as **unverified** rather than assigned guessed availability. See `docs/mul-import-coverage.json` for a variant-by-variant audit.
 
 A record with `matrix_status: "published"` is a **complete** official matrix. Factions appearing in `factions` have positive era marks; all other valid factions or eras are conclusively **unavailable** for that variant. To keep this Android-friendly, published matrices are stored **sparsely**, omitting negative faction rows. A missing variant or a record whose matrix is not published is **unverified**. The exact `intro_year` prevents a design being fielded before its first year, even inside its introductory era. Unknown factions are unverified, while factions outside known dates are unavailable.
 

@@ -1,0 +1,49 @@
+name: Pre-sculpt official-art pair target trial
+on:
+  pull_request:
+    paths:
+      - 'tools/compare_reference_pair_targets.py'
+      - 'docs/graphics/reference-pair-candidates.json'
+      - 'tests/tools/test_compare_reference_pair_targets.py'
+      - '.github/workflows/voxel-reference-pair-targets.yml'
+      - 'data/voxels/hellhound_conjurer.json'
+      - 'data/voxels/dominator.json'
+      - 'data/voxels/hawkwolf_hwk4f.json'
+      - 'data/voxels/black_hawk_standard.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare-pairs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Install transient mask utilities
+        run: python3 -m pip install --quiet --user Pillow numpy opencv-python-headless
+      - name: Import Godot scripts and resources
+        run: godot --headless --import
+      - name: Targeted synthetic scoring tests
+        run: python3 -m unittest discover -s tests/tools -p 'test_compare_reference_pair_targets.py'
+      - name: Export current pre-sculpt model quarter silhouettes
+        run: |
+          mkdir -p /tmp/reference-pair-goals/models
+          godot --headless -s tools/export_reference_review_masks.gd --             /tmp/reference-pair-goals/models             res://docs/graphics/reference-stance-poses.json             hellhound_conjurer,dominator,hawkwolf_hwk4f,black_hawk_standard
+      - name: Extract source silhouettes and calculate numerical pair goals
+        run: |
+          python3 tools/compare_reference_pair_targets.py             --manifest docs/graphics/reference-pair-candidates.json             --models /tmp/reference-pair-goals/models             --output /tmp/reference-pair-goals/measurements
+          cat /tmp/reference-pair-goals/measurements/pair-goals.json
+      - name: Upload derived masks and provisional scores only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-sculpt-reference-pair-goals
+          path: /tmp/reference-pair-goals
+          if-no-files-found: warn

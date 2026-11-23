@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Reference-led Dominator pass (Recognition Guide ilClan v1): tall asymmetrical left missile shoulder rises above the opposite side and retains its original six bores; small low armored pilot head, V-shaped central cuirass, tucked waist, reduced right shoulder, long tapered right PPC as a true longitudinal loft, and separate battlefist knuckles. Does not reuse Conjurer hull. Record-sheet rear-facing ER small laser corrected: its HD muzzle and slender physically open nozzle now exit the back of the low cockpit instead of misidentifying a forward-facing head shot.",
+  "notes": "Reference-led Dominator pass (Recognition Guide ilClan v1): tall asymmetrical left missile shoulder rises above the opposite side and retains its original six bores; small low armored pilot head, V-shaped central cuirass, tucked waist, reduced right shoulder, long tapered right PPC as a true longitudinal loft, and separate battlefist knuckles. Does not reuse Conjurer hull. Record-sheet rear-facing ER small laser corrected: its HD muzzle and slender physically open nozzle now exit the back of the low cockpit instead of misidentifying a forward-facing head shot. Official-art pair pre-sculpt goal (reference contrast vs Conjurer): Dominator's RT ER large laser now a thin, long, backed, tapered horizontal loft integrated into the high right shoulder rather than the prior indistinguishable box. Has a genuinely opened 2x2 emitter and correct RT firing origin; lower RA PPC and asymmetric high LT SRM rack unchanged. Camera/pose remains unverified.",
   "parts": [
     {
       "name": "ct",
@@ -1129,18 +1129,122 @@
           "mat": "frame"
         },
         {
-          "box": [
-            [
-              11,
-              35,
-              -16
-            ],
-            [
-              16,
-              38,
-              -12
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -28,
+                "polygon": [
+                  [
+                    12,
+                    36
+                  ],
+                  [
+                    15,
+                    36
+                  ],
+                  [
+                    16,
+                    37
+                  ],
+                  [
+                    16,
+                    38
+                  ],
+                  [
+                    15,
+                    39
+                  ],
+                  [
+                    12,
+                    39
+                  ],
+                  [
+                    11,
+                    38
+                  ],
+                  [
+                    11,
+                    37
+                  ]
+                ]
+              },
+              {
+                "at": -21,
+                "polygon": [
+                  [
+                    11,
+                    35
+                  ],
+                  [
+                    16,
+                    35
+                  ],
+                  [
+                    17,
+                    36
+                  ],
+                  [
+                    17,
+                    39
+                  ],
+                  [
+                    16,
+                    40
+                  ],
+                  [
+                    11,
+                    40
+                  ],
+                  [
+                    10,
+                    39
+                  ],
+                  [
+                    10,
+                    36
+                  ]
+                ]
+              },
+              {
+                "at": -12,
+                "polygon": [
+                  [
+                    11,
+                    35
+                  ],
+                  [
+                    16,
+                    35
+                  ],
+                  [
+                    17,
+                    36
+                  ],
+                  [
+                    17,
+                    39
+                  ],
+                  [
+                    16,
+                    40
+                  ],
+                  [
+                    11,
+                    40
+                  ],
+                  [
+                    10,
+                    39
+                  ],
+                  [
+                    10,
+                    36
+                  ]
+                ]
+              }
             ]
-          ],
+          },
           "mat": "cannon"
         },
         {
@@ -1148,12 +1252,12 @@
             [
               12,
               36,
-              -17
+              -29
             ],
             [
               15,
-              37,
-              -16
+              38,
+              -28
             ]
           ],
           "mat": "edge"
@@ -1162,13 +1266,13 @@
           "erase": [
             [
               13,
-              36,
-              -17
+              37,
+              -30
             ],
             [
               14,
-              37,
-              -14
+              38,
+              -25
             ]
           ]
         },
@@ -2215,8 +2319,8 @@
     ],
     "RT": [
       13.5,
-      36.5,
-      -17.5
+      37.5,
+      -29.5
     ],
     "RA": [
       20,

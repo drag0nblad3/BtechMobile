@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Reference-led Conjurer pass: rebuilt tapered shoulder-to-waist chest with two distinct 3D forward armor facets and central separation, slimmer recessed helmet, paired angled horns (not vertical poles), one-sided right pulse-gun shroud and mechanically supported angular knee armor. Compared with Recognition Guide ilClan v5 art and Clan Striker Star plastic, not a general-purpose slab.",
+  "notes": "Reference-led Conjurer pass: rebuilt tapered shoulder-to-waist chest with two distinct 3D forward armor facets and central separation, slimmer recessed helmet, paired angled horns (not vertical poles), one-sided right pulse-gun shroud and mechanically supported angular knee armor. Compared with Recognition Guide ilClan v5 art and Clan Striker Star plastic, not a general-purpose slab. Pre-sculpt pair target correction: trimmed the generic wide lateral shoulder excess without shrinking official 4-tube LT SRM and 2 RT lasers, and extended both mechanically contiguous outward-raking helmet horns two cells above the shoulder tops. Contrasts Dominator's low visor and long horizontal shoulder laser; no added torso plates.",
   "parts": [
     {
       "name": "ct",
@@ -809,6 +809,36 @@
             ]
           ],
           "mat": "cannon"
+        },
+        {
+          "box": [
+            [
+              -6,
+              48,
+              -14
+            ],
+            [
+              -5,
+              50,
+              -13
+            ]
+          ],
+          "mat": "cannon"
+        },
+        {
+          "box": [
+            [
+              5,
+              48,
+              -14
+            ],
+            [
+              6,
+              50,
+              -13
+            ]
+          ],
+          "mat": "cannon"
         }
       ]
     },
@@ -867,7 +897,7 @@
                 "at": 35,
                 "polygon": [
                   [
-                    -18,
+                    -17,
                     -11
                   ],
                   [
@@ -887,15 +917,15 @@
                     8
                   ],
                   [
-                    -17,
+                    -16,
                     5
                   ],
                   [
-                    -19,
+                    -18,
                     1
                   ],
                   [
-                    -19,
+                    -18,
                     -7
                   ]
                 ]
@@ -928,11 +958,11 @@
                     4
                   ],
                   [
-                    -17,
+                    -16,
                     1
                   ],
                   [
-                    -17,
+                    -16,
                     -6
                   ]
                 ]
@@ -1103,19 +1133,19 @@
                     -12
                   ],
                   [
-                    18,
+                    17,
                     -11
                   ],
                   [
-                    19,
+                    18,
                     -7
                   ],
                   [
-                    19,
+                    18,
                     1
                   ],
                   [
-                    17,
+                    16,
                     5
                   ],
                   [
@@ -1144,11 +1174,11 @@
                     -9
                   ],
                   [
-                    17,
+                    16,
                     -6
                   ],
                   [
-                    17,
+                    16,
                     1
                   ],
                   [

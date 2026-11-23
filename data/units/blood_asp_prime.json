@@ -1,0 +1,89 @@
+{
+  "id": "blood_asp_prime",
+  "name": "Star Adder (Blood Asp)",
+  "model": "Prime",
+  "tonnage": 90,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 18,
+  "armor": {
+    "LA": 28,
+    "RA": 28,
+    "LT": 24,
+    "RT": 24,
+    "CT": 40,
+    "HD": 9,
+    "LL": 34,
+    "RL": 34
+  },
+  "rear_armor": {
+    "LT": 11,
+    "RT": 11,
+    "CT": 13
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*3",
+      "c_heavy_medium_laser",
+      "c_heavy_medium_laser",
+      "c_medium_pulse_laser"
+    ],
+    "RA": [
+      "endo_steel",
+      "heat_sink",
+      "c_heavy_medium_laser",
+      "c_heavy_medium_laser",
+      "c_medium_pulse_laser"
+    ],
+    "LT": [
+      "endo_steel",
+      "heat_sink",
+      "ammo:c_gauss_rifle",
+      "c_gauss_rifle"
+    ],
+    "RT": [
+      "endo_steel",
+      "ammo:c_gauss_rifle",
+      "ammo:c_streak_srm6",
+      "c_gauss_rifle"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "heat_sink"
+    ],
+    "RL": [
+      "heat_sink"
+    ],
+    "CT": [
+      "c_streak_srm6"
+    ]
+  },
+  "bv": 2654,
+  "sprite": "blood_asp",
+  "role": "Brawler: Star Adder Prime carrying Heavy Medium Laser, Heavy Medium Laser, Medium Pulse Laser, Heavy Medium Laser, Heavy Medium Laser, Medium Pulse Laser, Gauss Rifle, Gauss Rifle, Streak SRM 6; walks 4, jumps 0.",
+  "source": {
+    "mul_id": 406,
+    "megamek": "data/mekfiles/meks/3060u/Star Adder (Blood Asp) Prime.mtf",
+    "published": "RS:3060u",
+    "role": "Brawler",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/star-adder-blood-asp-prime"
+  },
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "tech_base": "clan",
+  "omni": true,
+  "chassis": "blood_asp",
+  "config": "Prime",
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "hand"
+    ]
+  }
+}
