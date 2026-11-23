@@ -48,18 +48,30 @@ jobs:
             phoenix_hawk,battleaxe | tee /tmp/reference-qa/export.log
           test -s /tmp/reference-qa/models/phoenix_hawk/quarter.txt
           test -s /tmp/reference-qa/models/battleaxe/front.txt
+      - name: Explore nearby camera yaw/pitch without changing the sculpt or pose
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/reference-qa/camera-sweep
+          timeout 900s godot --headless -s tools/reference_camera_sweep.gd -- \
+            /tmp/reference-qa/camera-sweep \
+            res://docs/graphics/first-reference-pose-hypotheses.json \
+            res://docs/graphics/first-reference-photo-candidates.json \
+            | tee /tmp/reference-qa/camera-sweep.log
+          test -s /tmp/reference-qa/camera-sweep/index.json
       - name: Fetch candidate photos, segment and measure exploratory score
         run: |
           python3 tools/score_first_reference_photos.py \
             --candidates docs/graphics/first-reference-photo-candidates.json \
             --models /tmp/reference-qa/models \
+            --sweep /tmp/reference-qa/camera-sweep/index.json \
             --output /tmp/reference-qa/candidate-fit.json
           python3 - <<'PY'
           import json
           report = json.load(open('/tmp/reference-qa/candidate-fit.json'))
           for item in report['candidates']:
               print('PROVISIONAL_REFERENCE_FIT', item['model'], item['view'],
-                    item.get('score_0_100'), item.get('error', ''))
+                    item.get('score_0_100'), item.get('score_camera_adjusted_unverified'),
+                    item.get('best_camera_provisional'), item.get('error', ''))
           PY
       - name: Upload only masks and provisional metrics, never source photos
         if: always()
