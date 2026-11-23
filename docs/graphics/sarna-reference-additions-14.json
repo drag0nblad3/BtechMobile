@@ -1,0 +1,553 @@
+{
+  "schema_version": 1,
+  "provenance": "https://www.sarna.net/wiki/",
+  "status": "UNKNOWN_ART_CAMERA_AND_SILHOUETTE",
+  "candidates": [
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/3/32/Blade_TRO3085S.png/300px-halj976n27m7aml42j8uno8e1etg2x2.png",
+      "file_link": "https://www.sarna.net/wiki/File:Blade_TRO3085S.png",
+      "filename": "Blade_TRO3085S.png",
+      "title": "Blade (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "blade",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Blade_(BattleMech)",
+      "reference_name": "Blade",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/93/Daedalus.JPG/300px-m02483zy42hwh821r8zdkbvvv3l3mqg.png",
+      "file_link": "https://www.sarna.net/wiki/File:Daedalus.JPG",
+      "filename": "Daedalus.JPG",
+      "title": "Daedalus (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "daedalus",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Daedalus_(BattleMech)",
+      "reference_name": "Daedalus",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/7/78/Dragoon.jpg/300px-6csn701o0531idehoki6cvm4xlzol30.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Dragoon.jpg",
+      "filename": "Dragoon.jpg",
+      "title": "Dragoon (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "dragoon",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Dragoon_(BattleMech)",
+      "reference_name": "Dragoon",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/2/25/Eisenfaust.jpg/300px-ko6ceeb5wqkzk8sqtrluze4jxb7edv3.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Eisenfaust.jpg",
+      "filename": "Eisenfaust.jpg",
+      "title": "Eisenfaust (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "eisenfaust",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Eisenfaust_(BattleMech)",
+      "reference_name": "Eisenfaust",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/6/61/Juggernaut.JPG/300px-8iniv1yvet0bmsso2c8djr6a0c0njoh.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Juggernaut.JPG",
+      "filename": "Juggernaut.JPG",
+      "title": "Juggernaut (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "juggernaut",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Juggernaut_(BattleMech)",
+      "reference_name": "Juggernaut",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/c/cb/Onslaught.JPG/300px-csylbgpqci93ox0251f8kscxxohq5en.png",
+      "file_link": "https://www.sarna.net/wiki/File:Onslaught.JPG",
+      "filename": "Onslaught.JPG",
+      "title": "Onslaught (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "onslaught",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Onslaught_(BattleMech)",
+      "reference_name": "Onslaught",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/a/ac/Phoenix.jpg/300px-43ve4lrc1ng393kudugmz44sv3w273g.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Phoenix.jpg",
+      "filename": "Phoenix.jpg",
+      "title": "Phoenix (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "phoenix",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Phoenix_(BattleMech)",
+      "reference_name": "Phoenix",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/9c/Rook_NH-2_TRO3085.jpg/300px-dt33a0apdc1t25mfxhfzo301dwx9vbl.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Rook_NH-2_TRO3085.jpg",
+      "filename": "Rook_NH-2_TRO3085.jpg",
+      "title": "Rook (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "rook",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rook_(BattleMech)",
+      "reference_name": "Rook",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/9c/Rook_NH-2_TRO3085.jpg/300px-dt33a0apdc1t25mfxhfzo301dwx9vbl.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Rook_NH-2_TRO3085.jpg",
+      "filename": "Rook_NH-2_TRO3085.jpg",
+      "title": "Rook (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "rook_nh1b",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rook_(BattleMech)",
+      "reference_name": "Rook",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "FAMILY_ONLY_NOT_AN_EXACT_VARIANT",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/6/6b/Talos_tls1b.jpg/300px-hqcvydxl3g6t65tf1st6p0f8cxop7xu.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Talos_tls1b.jpg",
+      "filename": "Talos_tls1b.jpg",
+      "title": "Talos (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "talos",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Talos_(BattleMech)",
+      "reference_name": "Talos",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/c/c2/Tiburon_TRO3145Mercs.jpg/300px-owjr677d9uu8rrfnwyso7fb48k915hy.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Tiburon_TRO3145Mercs.jpg",
+      "filename": "Tiburon_TRO3145Mercs.jpg",
+      "title": "Tiburon (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "tiburon",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Tiburon_(BattleMech)",
+      "reference_name": "Tiburon",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/d/d5/Tsunami_TRO3055U.jpg/300px-pae6it0vhxkk7g5cy0v1psafkw4plc8.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Tsunami_TRO3055U.jpg",
+      "filename": "Tsunami_TRO3055U.jpg",
+      "title": "Tsunami (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "tsunami",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Tsunami_(BattleMech)",
+      "reference_name": "Tsunami",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/8/8d/Warlord.jpg/300px-ohytdw0p6i1wjoxh2sptyxr2jit524i.jpg",
+      "file_link": "https://www.sarna.net/wiki/File:Warlord.jpg",
+      "filename": "Warlord.jpg",
+      "title": "Warlord (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "warlord",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Warlord_(BattleMech)",
+      "reference_name": "Warlord",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/1/18/Werewolf.JPG/300px-1ngwg41k3vhxa6lnyp2j1gjtk7kx6th.png",
+      "file_link": "https://www.sarna.net/wiki/File:Werewolf.JPG",
+      "filename": "Werewolf.JPG",
+      "title": "Werewolf (BattleMech)",
+      "reference_tier": "Sarna_infobox_art_generation_unverified",
+      "generation_approved": false,
+      "model": "werewolf",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Werewolf_(BattleMech)",
+      "reference_name": "Werewolf",
+      "source_type": "Sarna_infobox_art_generation_unverified",
+      "status": "IMAGE_SOURCE_FOUND_VIEW_NOT_APPROVED",
+      "camera_assessment": "UNKNOWN_VIEW_AND_PROJECTION",
+      "pose_description": "NO_MATCHED_ARTICULATED_POSE",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "hawkwolf_hwk4f",
+  "name": "HawkWolf",
+  "model": "HWK-4F",
+  "tonnage": 80,
+  "walk_mp": 4,
+  "jump_mp": 0,
+  "heat_sinks": 14,
+  "armor": {
+    "LA": 20,
+    "RA": 20,
+    "LT": 25,
+    "RT": 25,
+    "CT": 35,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 6
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "lrm15"
+    ],
+    "RA": [
+      "lrm15"
+    ],
+    "LT": [
+      "mml5"
+    ],
+    "RT": [
+      "mml5",
+      "ammo:mml5",
+      "ammo:mml5:srm",
+      "ammo:lrm15*4",
+      "case"
+    ],
+    "LL": [
+      "heat_sink"
+    ],
+    "RL": [
+      "heat_sink"
+    ]
+  },
+  "source": {
+    "mul_id": 6576,
+    "megamek": "data/mekfiles/meks/3145/Merc/HawkWolf HWK-4F.mtf",
+    "published": "RS:3150",
+    "role": "Missile Boat",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/hawkwolf-hwk-4f"
+  },
+  "bv": 1428,
+  "role": "Missile Boat: twin LRM 15 arm launchers and two MML 5 torso racks with CASE; walks 4, runs 6.",
+  "sprite": "hawkwolf_hwk4f"
+}

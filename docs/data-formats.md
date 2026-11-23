@@ -79,6 +79,7 @@ Themes for generated battlefields (`MapGenerator`, `src/core/map/gen/`). Each en
   (`RifleCannon`); `explosion_damage` sets a weapon-specific critical explosion instead of the
   fallback of two damage per slot (`ComponentExplosion`). Ammunition-using energy weapons such as
   chemical lasers must still list `ammo:<weapon id>` bins. Existing weapons remain unchanged.
+- The Clan ProtoMech AC/2, AC/4 and AC/8 use ordinary ballistic attacks and one standard ammunition bin type per caliber. Their statistics, critical slots, BV and standard ammo capacities come from MegaMek's `CLProtoMekAC{2,4,8}.java` and `AmmoType.java`. Optional precision/AP/flechette/flak rounds require a separate ammunition-rule pass.
 - `source_megamek` on an advanced weapon records its MegaMek Java equipment definition, with
   ammunition capacity and BV verified against `megamek/common/equipment/AmmoType.java`.
   This catalogs equipment statistics; it does not create unofficial BattleMech loadouts.
