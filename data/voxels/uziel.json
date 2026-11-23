@@ -3495,7 +3495,8 @@
     "ankle/foot",
     "weapon housing"
   ],
-  "reference_sculpt_focus": "low spherical canopy, rounded high shoulder cannon housings, slender arm cuffs and calves",
   "reference_sculpt_batch": "distinctive-eight-20261123",
-  "reference_sculpt_approved": false
+  "reference_sculpt_focus": "low spherical canopy, rounded high shoulder cannon housings, slender arm cuffs and calves",
+  "reference_sculpt_approved": false,
+  "reference_sculpt_reconciled_with": "merged-reference-batch-ten-20261123"
 }

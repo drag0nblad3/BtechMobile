@@ -22,3 +22,7 @@ Prefer Catalyst plastic when available. Jenner IIC, Locust IIC and Shadow Hawk I
 These are authored source-contour changes, **not approved 1:1 reference matches**. Current renders must still be compared from front, side, oblique, top and rear. Moving joint roots, shrinking arm-gun mounting seams, filling bores or attaching unsupported floating shapes is not permitted. The two small Jenner antennae begin inside the head and the Locust dorsal spine begins inside its torso, rather than existing as floating islands.
 
 `tests/unit/test_vx_reference_distinctive_eight.gd` enforces paired authoring source, unchanged kinematics and weapon locations, valid loft sections and a positive section area. The earlier full catalog backed-contact/connectivity audit, voxel integrity, performance smoke tests and scene render audits remain mandatory. No rules, unit designs, combat outcomes or Android APK changed.
+
+## Reconciliation with merged batch ten
+
+While this work was being authored, #260 merged newer torso and arm contours for seven of these eight chassis. The integration deliberately keeps #260 CT/LT/RT/arm lofts and re-applies this work's independent cockpit/helmet, calf, and attached aerial/dorsal details. Uziel is outside #260 and retains its complete individually sculpted contours. Do not restore older body lofts to settle conflicts.
