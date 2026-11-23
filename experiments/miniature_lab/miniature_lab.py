@@ -190,6 +190,10 @@ def export(spec, parts):
                         for v in p.get("pivot", [0, 0, 0])]
         obj["shapes"] = encode_boxes(parts[p["name"]])
         out["parts"].append(obj)
+    # Preserve the exact bore-to-muzzle relationship through quantization.
+    for loc, points in spec.get("muzzles", {}).items():
+        out["muzzles"][loc] = [[round(v / pitch, 4) for v in point]
+                               for point in points]
     return out
 
 
