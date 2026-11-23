@@ -46,7 +46,7 @@ func test_koshi_2_and_3_keep_distinct_gear() -> void:
 	check_eq(k3.masc_loc, Location.CT)
 	check_eq(k3.ecm_loc, Location.LT)
 	check_eq(k3.probe, "c_active_probe")
-	check_eq(k3.probe_loc, Location.HD)
+	check_eq(k3.probe_loc, Location.HEAD)
 	check_eq(_count(k3, "c_heavy_small_laser", Location.LA), 3)
 	check_eq(_count(k3, "c_heavy_small_laser", Location.RA), 3)
 
@@ -75,7 +75,7 @@ func test_dominator_2_uses_artemis_v_not_supercharger() -> void:
 	check_eq(d.ammo_mounts.filter(func(a: Dictionary) -> bool:
 			return a["kind"] == "artemis_v").size(), 2)
 	check(d.weapon_mounts.any(func(m: Dictionary) -> bool:
-			return m["loc"] == Location.HD and m["rear"]), "rear-facing head laser")
+			return m["loc"] == Location.HEAD and m["rear"]), "rear-facing head laser")
 
 
 func _count(d: UnitDef, id: String, loc: int) -> int:

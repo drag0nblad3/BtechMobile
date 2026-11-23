@@ -53,7 +53,7 @@ func test_dominator_has_rear_laser_computer_and_supercharger() -> void:
 	check_eq(d.jump_mp, 5)
 	check_eq(_count(d, "c_er_ppc", Location.RA), 1)
 	check(d.weapon_mounts.any(func(m: Dictionary) -> bool:
-			return m["loc"] == Location.HD and m["rear"]), "rear-facing head laser")
+			return m["loc"] == Location.HEAD and m["rear"]), "rear-facing head laser")
 
 
 func test_hawkwolf_and_koshi_support_loadouts() -> void:
@@ -69,7 +69,7 @@ func test_hawkwolf_and_koshi_support_loadouts() -> void:
 			return a["kind"] == "srm"), "MML SRM ammo is retained")
 	var k: UnitDef = designs().get_def("koshi_standard")
 	check_eq(k.probe, "c_active_probe")
-	check_eq(k.probe_loc, Location.HD)
+	check_eq(k.probe_loc, Location.HEAD)
 	check_eq(k.jump_mp, 6)
 	check_eq(_count(k, "c_srm4", Location.LA), 2)
 	check_eq(_count(k, "c_srm4", Location.RA), 2)
