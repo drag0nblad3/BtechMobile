@@ -52,12 +52,10 @@ static func set_explain_level(level: int) -> void:
 	cfg.save(PATH)
 
 
-## Records a played training mission; a win is never overwritten by a loss.
+## Records every training attempt, preserving prior wins and best practice.
 static func record_training(id: String, result: Dictionary) -> void:
 	var old: Dictionary = training.get(id, {})
-	if old.get("won", false) and not result.get("won", false):
-		return
-	training[id] = result
+	training[id] = TrainingCampaign.merge_result(old, result)
 	var cfg := ConfigFile.new()
 	cfg.load(PATH)
 	cfg.set_value("training", "progress", training)
