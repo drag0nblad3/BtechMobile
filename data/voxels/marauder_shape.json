@@ -1,6 +1,6 @@
 {
   "id": "marauder_shape",
-  "name": "Marauder MAD-3R — low-resolution silhouette",
+  "name": "Marauder MAD-3R \u2014 low-resolution silhouette",
   "unit": "marauder_mad3r",
   "voxel_size": 0.043,
   "subdivide": 1,
@@ -290,6 +290,38 @@
               2
             ]
           ]
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -5,
+              28,
+              -1
+            ],
+            [
+              -1,
+              32,
+              2
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              0,
+              28,
+              -1
+            ],
+            [
+              4,
+              32,
+              2
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -765,6 +797,23 @@
             ]
           ],
           "mat": "plate"
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -8,
+              28,
+              -1
+            ],
+            [
+              -4,
+              32,
+              2
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -1889,5 +1938,23 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "2026-11-21-50-passes-reference-specific",
-  "art_quality_passes": 50
+  "art_quality_passes": 100,
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 110,
+    "stages_with_changes": 15
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  }
 }

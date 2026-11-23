@@ -1,6 +1,6 @@
 {
   "id": "warhammer_shape",
-  "name": "Warhammer WHM-6R — silhouette study",
+  "name": "Warhammer WHM-6R \u2014 silhouette study",
   "unit": "warhammer_whm6r",
   "voxel_size": 0.043,
   "subdivide": 1,
@@ -445,6 +445,23 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              0,
+              29,
+              -1
+            ],
+            [
+              5,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
       ]
     },
     {
@@ -845,7 +862,24 @@
     {
       "name": "rt",
       "mirror": "lt",
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "box": [
+            [
+              4,
+              29,
+              -1
+            ],
+            [
+              9,
+              33,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "la",
@@ -1715,6 +1749,24 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
-  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition"
+  "art_quality_passes": 100,
+  "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 114,
+    "stages_with_changes": 10
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  }
 }

@@ -1,0 +1,62 @@
+name: Anonymous voxel identity audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [fix/model-rig-and-silhouettes-20261122]
+    paths:
+      - data/voxels/*_shape.json
+      - tools/vx_blind_identity.py
+      - .github/workflows/voxel-blind-identity.yml
+permissions:
+  contents: write
+concurrency:
+  group: vx-anonymous-identity-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  blind-identity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install 'numpy>=1.26' 'pillow>=10'
+      - name: Produce anonymous atlas and quantitative near-neighbor audit
+        run: python tools/vx_blind_identity.py --root data/voxels --out /tmp/voxel-blind
+      - name: Validate full catalog and publish report to PR
+        run: |
+          python - <<'PY'
+          import json,glob,shutil
+          path='/tmp/voxel-blind/blind_confusion_report.json'
+          d=json.load(open(path))
+          expected=len(glob.glob('data/voxels/*_shape.json'))
+          assert expected==d['model_count'] and expected>=151
+          assert len(d['models'])==expected
+          assert all(len(m['closest'])==5 for m in d['models'])
+          assert len(glob.glob('/tmp/voxel-blind/blind_page_*.png'))>=7
+          shutil.copyfile(path,'docs/graphics/blind-recognition-confusion.json')
+          print('BLIND_AUDIT|models=%d|critical=%d|high=%d' %
+                (d['model_count'],d['critical_models'],d['high_models']))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/graphics/blind-recognition-confusion.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Art audit: record every Mech top-five anonymous silhouette confusion candidates'
+            git push origin HEAD:fix/model-rig-and-silhouettes-20261122
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blind-model-gallery-no-names
+          path: /tmp/voxel-blind/blind_page_*.png
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: blind-model-identity-key-and-report
+          path: |
+            /tmp/voxel-blind/blind_key.json
+            /tmp/voxel-blind/blind_confusion_report.json
+          if-no-files-found: warn

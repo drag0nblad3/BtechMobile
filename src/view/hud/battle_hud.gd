@@ -35,7 +35,7 @@ signal exit_battle
 signal next_unit  ## Go to the next of your units (camera + selection).
 
 const FONT_SIZE := 24
-const BUTTON_SIZE := Vector2(140, 68)
+const BUTTON_SIZE := Vector2(140, 60)
 const MARGIN := 18
 
 const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
@@ -70,6 +70,7 @@ var leave_button: Button
 var prone_button: Button
 var more_button: MenuButton
 var _tools_menu: MenuButton
+var perf_readout: BattlePerfReadout
 var pause_menu: BattlePauseMenu
 var roll_feed: RollFeed  ## Recent dice rolls, top right.
 var _move_actions: Array[Button] = []
@@ -107,16 +108,19 @@ func _ready() -> void:
 	_event_label = _label(_event_panel, 19)
 	_event_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_event_panel.custom_minimum_size.x = 170
-	var phase_strip := _row(col)
-	phase_strip.add_theme_constant_override("separation", 5)
+	# The phase timeline sits at the right of the status row (one row, not
+	# two), leaving more of a 720 px screen for the map.
+	var phase_strip := HBoxContainer.new()
+	phase_strip.add_theme_constant_override("separation", 4)
 	phase_strip.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	heading.add_child(phase_strip)
 	for tag in PHASE_TAGS:
 		var cell := PanelContainer.new()
-		cell.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		cell.custom_minimum_size = Vector2(70, 0)
 		cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		phase_strip.add_child(cell)
 		_phase_cells.append(cell)
-		var stage := _label(cell, 15)
+		var stage := _label(cell, 14)
 		stage.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		stage.text = tag
 		stage.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -141,6 +145,7 @@ func _ready() -> void:
 	popup.add_item("Watch replay", 1)
 	popup.add_item("Top-down map", 2)
 	popup.add_item("Battle analysis", 3)
+	popup.add_item("Performance overlay", 4)
 	popup.id_pressed.connect(_on_tool_action)
 	for b in shortcuts.get_children():
 		if b is Button:
@@ -224,6 +229,9 @@ func _ready() -> void:
 	pause_menu.resumed.connect(func(): pause_toggled.emit())
 	pause_menu.save_requested.connect(func(): save_battle.emit())
 	pause_menu.exit_requested.connect(func(): exit_battle.emit())
+	perf_readout = BattlePerfReadout.new()
+	add_child(perf_readout)
+	perf_readout.visible = false
 
 
 func _on_tool_action(id: int) -> void:
@@ -232,6 +240,7 @@ func _on_tool_action(id: int) -> void:
 		1: watch_replay.emit()
 		2: top_down_toggled.emit()
 		3: battle_forensics.emit()
+		4: perf_readout.visible = not perf_readout.visible
 
 
 ## Refresh the Actions button from the same eligibility flags MovementInput sets.

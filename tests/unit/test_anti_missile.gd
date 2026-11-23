@@ -67,3 +67,30 @@ func test_ams_cant_fire_at_targets() -> void:
 	var v := _setup(["ams", "ammo:ams"])
 	var t: Unit = v[2]
 	check(not ToHitCalc.weapon(v[0], t, t.weapons[0], v[1], false).possible())
+
+
+func test_laser_ams_intercepts_without_ammunition() -> void:
+	var v := _setup(["laser_ams"])
+	var t: Unit = v[2]
+	var hit := _fire(v, [6, 6, 3, 3])
+	check(hit.get("ams", false), "laser AMS intercepts incoming missiles")
+	check_eq(hit["missiles"], 3, "same anti-missile cluster penalty")
+	check_eq(t.ammo.size(), 0, "laser AMS needs no ammunition")
+	check_eq(t.heat_generated, 7, "Inner Sphere laser AMS generates 7 heat per engagement")
+	_fire(v, [6, 6, 3, 3])
+	check_eq(t.heat_generated, 14, "each engagement adds heat")
+	check(not _fire(v, [6, 6, 3, 3]).has("ams"), "two engagements per turn")
+
+
+func test_clan_laser_ams_construction_stats() -> void:
+	var is_lams := weapons().get_def("laser_ams")
+	var clan := weapons().get_def("c_laser_ams")
+	check_eq(is_lams.tons, 1.5)
+	check_eq(is_lams.slots, 2)
+	check_eq(clan.tons, 1.0)
+	check_eq(clan.slots, 1)
+	check_eq(clan.heat, 5)
+	check(not clan.uses_ammo())
+	var v := _setup(["c_laser_ams"])
+	_fire(v, [6, 6, 3, 3])
+	check_eq(v[2].heat_generated, 5)

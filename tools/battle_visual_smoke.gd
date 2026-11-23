@@ -17,6 +17,12 @@ func _run() -> void:
 			"phase tracker must display all battle phases"):
 		return
 	scene.hud.set_phase(Phase.Kind.WEAPON_ATTACK)
+	scene.hud._on_tool_action(4)
+	if not _check(scene.hud.perf_readout.visible, "performance overlay can be enabled"):
+		return
+	scene.hud._on_tool_action(4)
+	if not _check(not scene.hud.perf_readout.visible, "performance overlay can be hidden"):
+		return
 	var active: StyleBoxFlat = scene.hud._phase_cells[Phase.Kind.WEAPON_ATTACK].get_theme_stylebox("panel")
 	if not _check(active.border_color == UiSkin.AMBER, "weapon phase indicator"):
 		return
@@ -50,6 +56,34 @@ func _run() -> void:
 		return
 	await create_timer(0.6).timeout
 	if not _check(not is_instance_valid(trail), "shot FX frees itself"):
+		return
+	# A real jump-capable unit must take off, reach an arc, and clean up.
+	var jumper: Unit = null
+	for unit: Unit in scene.controller.state.units:
+		if unit.def.jump_mp >= 3:
+			jumper = unit
+			break
+	if not _check(jumper != null, "scenario has a jumper"):
+		return
+	var original: Vector2i = jumper.coord
+	var landing := Hex.INVALID
+	for coord: Vector2i in scene.controller.state.map.coords():
+		if Hex.distance(original, coord) == 2 and scene.controller.state.map.get_tile(coord) != null:
+			landing = coord
+			break
+	if not _check(landing != Hex.INVALID, "jump endpoint exists"):
+		return
+	var jumper_view: UnitView = scene.units_layer.view_of(jumper)
+	var initial: Vector3 = jumper_view.position
+	jumper_view.play_path([Vector3i(landing.x, landing.y, jumper.facing)],
+		original, jumper.facing, MoveMode.Kind.JUMP)
+	await create_timer(0.20).timeout
+	if not _check(jumper_view.position.y > initial.y + 0.15, "jumper rises off ground"):
+		return
+	if not _check(get_nodes_in_group("jump_fx").size() > 0, "jump plumes are active"):
+		return
+	await create_timer(1.35).timeout
+	if not _check(get_nodes_in_group("jump_fx").is_empty(), "jump plume cleanup"):
 		return
 	print("battle visuals smoke ok")
 	quit(0)

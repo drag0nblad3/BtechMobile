@@ -65,7 +65,7 @@ static func apply(state: GameState, dice: Dice, emit: Callable, u: Unit, loc: in
 			return "%s destroyed" % slot.name.to_lower()
 		CritSlot.Kind.ARTEMIS:
 			u.weapons[slot.ref].artemis_lost = true
-			return "Artemis IV fire control destroyed: no cluster bonus"
+			return "Artemis fire control destroyed: no guidance bonus"
 		CritSlot.Kind.CAPACITOR:
 			var cw := u.weapons[slot.ref]
 			if PpcCapacitor.explodes(state, u, cw):

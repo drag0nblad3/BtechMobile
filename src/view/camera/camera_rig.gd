@@ -20,6 +20,10 @@ var _goal_target := Vector3.ZERO
 var _goal_yaw := 0.0
 var _goal_pitch := deg_to_rad(55.0)
 var _goal_dist := 20.0
+var _shake_left := 0.0
+var _shake_strength := 0.0
+var _shake_phase := 0.0
+var _shake_seed := 0
 
 
 func _ready() -> void:
@@ -36,7 +40,17 @@ func _process(delta: float) -> void:
 	_yaw = lerp_angle(_yaw, _goal_yaw, t)
 	_pitch = lerpf(_pitch, _goal_pitch, t)
 	_dist = lerpf(_dist, _goal_dist, t)
+	_shake_left = maxf(_shake_left - delta, 0.0)
+	_shake_phase += delta
 	_apply()
+
+
+## Screen-only tremor after a big hit; does not move the tactical focus point.
+func shake(strength: float, seed: int) -> void:
+	_shake_strength = clampf(strength, 0.0, 0.5)
+	_shake_left = 0.38
+	_shake_phase = 0.0
+	_shake_seed = seed
 
 
 ## Drag the map: screen pixels -> ground movement, scaled by zoom.
@@ -63,6 +77,15 @@ func tilt(delta_pitch: float) -> void:
 
 func focus(point: Vector3) -> void:
 	_goal_target = _clamp_to_bounds(point)
+
+
+## Glide to this camera distance (clamped to the zoom limits).
+func set_distance(dist: float) -> void:
+	_goal_dist = clampf(dist, MIN_DIST, MAX_DIST)
+
+
+func distance() -> float:
+	return _goal_dist
 
 
 ## Temporarily reframe on a dramatic action without moving the physical camera instantly.
@@ -105,6 +128,12 @@ func _apply() -> void:
 			sin(_yaw) * cos(_pitch), sin(_pitch), cos(_yaw) * cos(_pitch)) * _dist
 	camera.position = _target + offset
 	camera.look_at(_target, Vector3.UP)
+	if _shake_left > 0.0 and GameSettings.camera_shake:
+		var envelope := _shake_left / 0.38
+		var n := float(posmod(_shake_seed, 83))
+		var kick_offset := Vector3(sin(_shake_phase * 53.0 + n),
+				cos(_shake_phase * 67.0 + n * 0.7), 0) * _shake_strength * envelope
+		camera.global_position += camera.global_basis * kick_offset
 
 
 func _clamp_to_bounds(p: Vector3) -> Vector3:
