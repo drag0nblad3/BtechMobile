@@ -13,8 +13,12 @@ static func profile(catalog: Dictionary, id: String, view: String) -> Dictionary
     var specific: Dictionary = spec.get(view, {})
     var joints: Dictionary = common.get("joints", {}).duplicate(true)
     joints.merge(specific.get("joints", {}), true)
+    var camera := ReferenceCamera.preset(view)
+    camera.merge(common.get("camera", {}), true)
+    camera.merge(specific.get("camera", {}), true)
     return {"joints": joints, "body_rotation_deg": specific.get(
-        "body_rotation_deg", common.get("body_rotation_deg", [0, 0, 0]))}
+        "body_rotation_deg", common.get("body_rotation_deg", [0, 0, 0])),
+        "camera": camera}
 
 
 static func errors(model: VxModel, pose: Dictionary) -> Array[String]:
@@ -32,6 +36,7 @@ static func errors(model: VxModel, pose: Dictionary) -> Array[String]:
         _check_angles(pose["joints"][id], MAX_JOINT_ROT, id, issues)
     _check_angles(pose.get("body_rotation_deg", [0, 0, 0]),
         MAX_BODY_TILT, "body", issues)
+    issues.append_array(ReferenceCamera.settings_errors(pose.get("camera", {})))
     return issues
 
 
@@ -61,7 +66,7 @@ static func project(model: VxModel, view: String, pose: Dictionary,
     var body_basis := _basis(pose.get("body_rotation_deg", [0, 0, 0]))
     var body := Transform3D(body_basis, Vector3.ZERO)
     var joints: Dictionary = pose.get("joints", {})
-    var points := {}
+    var cubes: Array[PackedVector3Array] = []
     for part: Dictionary in model.parts:
         var id: String = part["name"]
         var parent: String = part.get("parent", "")
@@ -69,12 +74,18 @@ static func project(model: VxModel, view: String, pose: Dictionary,
         var base: Vector3 = pivots.get(parent, Vector3.ZERO)
         var parent_transform: Transform3D = transforms.get(parent, body)
         var angles: Array = joints.get(id, [0, 0, 0])
-        var local_joint := Transform3D(_basis(angles), pivot - base)
-        var transform: Transform3D = parent_transform * local_joint
+        var transform: Transform3D = parent_transform * Transform3D(
+            _basis(angles), pivot - base)
         transforms[id] = transform
         pivots[id] = pivot
         for c: Vector3i in part["cells"]:
-            var center: Vector3 = Vector3(c) + Vector3.ONE * 0.5 - pivot
-            var p: Vector3 = transform * center
-            points[Vector3i(roundi(p.x), roundi(p.y), roundi(p.z))] = true
-    return VxSilhouette.project(points, view, size)
+            var corners := PackedVector3Array()
+            for x in 2:
+                for y in 2:
+                    for z in 2:
+                        corners.append(transform * (
+                            Vector3(c) + Vector3(x, y, z) - pivot))
+            cubes.append(corners)
+    var camera := ReferenceCamera.preset(view)
+    camera.merge(pose.get("camera", {}), true)
+    return ReferenceCamera.mask(cubes, camera, size)
