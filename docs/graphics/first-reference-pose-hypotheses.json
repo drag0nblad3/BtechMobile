@@ -5,21 +5,53 @@
     "phoenix_hawk": {
       "quarter": {
         "camera": {
-          "yaw_deg": 28,
-          "pitch_deg": -11,
+          "yaw_deg": 18,
+          "pitch_deg": -19,
           "roll_deg": 0,
           "projection": "perspective",
           "distance_heights": 4
         },
         "joints": {
-          "la": [8, 0, -55],
-          "ra": [0, 0, 12],
-          "ll": [28, 0, -4],
-          "ll_shin": [-55, 0, 0],
-          "ll_foot": [25, 0, 0],
-          "rl": [-24, 0, 2],
-          "rl_shin": [38, 0, 0],
-          "rl_foot": [-12, 0, 0]
+          "la": [
+            8,
+            0,
+            -72
+          ],
+          "ra": [
+            0,
+            0,
+            12
+          ],
+          "ll": [
+            -5,
+            0,
+            -2
+          ],
+          "ll_shin": [
+            -12,
+            0,
+            0
+          ],
+          "ll_foot": [
+            12,
+            0,
+            0
+          ],
+          "rl": [
+            62,
+            0,
+            5
+          ],
+          "rl_shin": [
+            -84,
+            0,
+            0
+          ],
+          "rl_foot": [
+            24,
+            0,
+            0
+          ]
         }
       }
     },
@@ -33,14 +65,39 @@
           "distance_heights": 4.8
         },
         "joints": {
-          "la": [-12, 0, -9],
-          "ra": [-10, 0, 7],
-          "ll": [3, 0, -6],
-          "ll_shin": [-8, 0, 0],
-          "rl": [-5, 0, 8],
-          "rl_shin": [9, 0, 0]
+          "la": [
+            -12,
+            0,
+            -9
+          ],
+          "ra": [
+            -10,
+            0,
+            7
+          ],
+          "ll": [
+            3,
+            0,
+            -6
+          ],
+          "ll_shin": [
+            -8,
+            0,
+            0
+          ],
+          "rl": [
+            -5,
+            0,
+            8
+          ],
+          "rl_shin": [
+            9,
+            0,
+            0
+          ]
         }
       }
     }
-  }
+  },
+  "_guide": "Reference photo pose hypothesis revision based on side-by-side silhouette log: one planted leg, one sharply raised knee, outstretched cannon arm; angle estimated from current Catalyst studio artwork. These are NOT approved rig settings."
 }
