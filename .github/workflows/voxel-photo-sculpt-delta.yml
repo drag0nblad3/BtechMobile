@@ -1,0 +1,70 @@
+name: Camera-aware sculpt photo delta (diagnostic)
+
+on:
+  pull_request:
+    paths:
+      - 'data/voxels/*.json'
+      - 'tools/qa/photo_fit_delta.py'
+      - '.github/workflows/voxel-photo-sculpt-delta.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sculpt-photo-delta-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compare-reference-camera:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Godot 4.5.1
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+          python3 -m pip install --quiet --user Pillow
+      - name: Test provisional score-delta handling
+        run: python3 -m unittest discover -s tests/tools -p 'test_photo_fit_delta.py'
+      - name: Select the same 20 source photos for both revisions
+        run: |
+          mkdir -p /tmp/sculpt-reference
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          ids = set('turkina,crossbow,hunchback_iic,uziel,cyclops,jagermech,dragon_fire,nightstar,charger,highlander_iic,banshee,warhammer,ostsol,victor,devastator,pillager,enforcer,annihilator,argus,archer'.split(','))
+          source = json.loads(Path('docs/graphics/catalyst-photo-reference-index.json').read_text())
+          records = [item for item in source['candidates'] if item['model'] in ids]
+          if len(records) != 20 or {i['model'] for i in records} != ids:
+              raise SystemExit('Unmatched source photos: %s' % sorted(ids - {i['model'] for i in records}))
+          Path('/tmp/sculpt-reference/cohort.json').write_text(json.dumps({'candidates':records},indent=2))
+          PY
+      - name: Measure the main-branch baseline
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git checkout --detach "$BASE_SHA"
+          godot --headless --import
+          python3 tools/run_reference_batch.py --index /tmp/sculpt-reference/cohort.json --poses res://docs/graphics/first-reference-pose-hypotheses.json --output /tmp/sculpt-reference/before --offset 0 --limit 20
+      - name: Measure the proposed resculpts independently
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git checkout --detach "$HEAD_SHA"
+          godot --headless --import
+          python3 tools/run_reference_batch.py --index /tmp/sculpt-reference/cohort.json --poses res://docs/graphics/first-reference-pose-hypotheses.json --output /tmp/sculpt-reference/after --offset 0 --limit 20
+      - name: Report provisional per-photo delta without approval
+        run: |
+          python3 tools/qa/photo_fit_delta.py --before /tmp/sculpt-reference/before/batch_01/summary.json --after /tmp/sculpt-reference/after/batch_01/summary.json --output /tmp/sculpt-reference/deltas.json
+      - name: Upload derived masks and the unapproved comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: camera-resculpt-provisional-deltas
+          path: /tmp/sculpt-reference
+          if-no-files-found: warn
