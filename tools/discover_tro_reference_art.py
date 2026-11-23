@@ -68,7 +68,7 @@ def find_art(name, available):
     suffix = []
     for file in available:
         stem = pathlib.Path(file).stem
-        variant = re.fullmatch(r"(.+?)[_-]([a-zA-Z]{2,6}-\\d[a-zA-Z0-9-]*)", stem)
+        variant = re.fullmatch(r"(.+?)[_-]([a-zA-Z]{2,6}-\d[a-zA-Z0-9-]*)", stem)
         if variant and norm(variant.group(1)) == key:
             suffix.append(file)
     if suffix:
