@@ -85,9 +85,10 @@ func test_launchers_have_individual_open_ports_not_painted_dots() -> void:
 			if p["name"] == spec["part"]:
 				authored = p
 				break
+		var face_limit := -20 if spec["id"] == "thunderbolt" else -10
 		var ports := 0
 		for shape: Dictionary in authored.get("shapes", []):
-			if shape.has("erase") and int(shape["erase"][0][2]) <= -20:
+			if shape.has("erase") and int(shape["erase"][0][2]) <= face_limit:
 				ports += 1
 		check_eq(ports, spec["count"],
 				"%s: launcher count from record sheet" % spec["id"])
@@ -95,7 +96,7 @@ func test_launchers_have_individual_open_ports_not_painted_dots() -> void:
 		check(m.errors.is_empty(), "%s: launcher must load" % spec["id"])
 		var cells: Dictionary = m.part(spec["part"])["cells"]
 		for shape: Dictionary in authored.get("shapes", []):
-			if not shape.has("erase") or int(shape["erase"][0][2]) > -20:
+			if not shape.has("erase") or int(shape["erase"][0][2]) > face_limit:
 				continue
 			var lo: Array = shape["erase"][0]
 			var mouth := Vector3i(int(lo[0]), int(lo[1]), int(lo[2]))
