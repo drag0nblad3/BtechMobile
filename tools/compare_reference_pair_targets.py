@@ -88,6 +88,11 @@ def reference_mask(image, bounds, threshold=222, close_size=9):
         cv2.drawContours(foreground, [contour], -1, 255, cv2.FILLED)
         kept += 1
     share = float(np.mean(foreground > 0))
+    lower = foreground[int(h * 0.82):int(h * 0.96)] > 0
+    ground_strip = float(np.max(np.mean(lower, axis=1))) if lower.size else 0.0
+    if ground_strip > 0.62:
+        raise ValueError("Ground/background ink merged into figure (row share %.3f)"
+                         % ground_strip)
     if kept == 0 or not 0.04 <= share <= 0.78:
         raise ValueError("Unreliable foreground segmentation (share %.3f, parts %d)"
                          % (share, kept))
@@ -110,6 +115,13 @@ def assess(pairs, model_root, output, downloader=fetch_art):
                 continue
             try:
                 raw = downloader(ref["image_url"])
+                # Low-resolution threshold-only QA preview, not an original
+                # copyrighted source image or an approved silhouette mask.
+                source_preview = raw.convert("L")
+                source_preview.thumbnail((160, 160))
+                source_preview = source_preview.point(
+                    lambda value: 0 if value < 210 else 255)
+                source_preview.save(output / (key + "_line_qa_160.png"))
                 ink, picture, diagnostics = reference_mask(
                     raw, ref["bounds"], ref.get("threshold", 222),
                     ref.get("close_size", 9))
