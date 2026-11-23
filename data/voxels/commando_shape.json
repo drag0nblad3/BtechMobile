@@ -1198,6 +1198,20 @@
               -2
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              -1,
+              34,
+              -6
+            ],
+            [
+              -1,
+              34,
+              -6
+            ]
+          ]
         }
       ]
     },
@@ -4009,5 +4023,5 @@
     "reference_basis": "modern Catalyst miniature form",
     "review_status": "pending runtime validation and art comparison"
   },
-  "notes": " Slim Commando's rear upper body and give it physically cut CT SRM-6/RA SRM-4, while the single left medium laser stays separate. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells."
+  "notes": " Slim Commando's rear upper body and give it physically cut CT SRM-6/RA SRM-4, while the single left medium laser stays separate. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells. Topology QA: subtract exact sparse unsupported slivers leftover after launcher openings; no new positive hull added."
 }
