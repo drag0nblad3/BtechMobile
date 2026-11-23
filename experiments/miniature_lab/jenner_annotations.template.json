@@ -1,0 +1,45 @@
+{
+  "sculpt": "Catalyst Game Labs 2021 Jenner JR7-D, Inner Sphere Striker Lance 35729",
+  "source": "https://jadedfalconer.com/Pictures/1Light/35jenner/Jenner6.jpg",
+  "note": "Crop each camera view around the miniature first. Trace external silhouette clockwise in normalized 0..1 coordinates. No trace or camera calibration has been completed; do not report an accuracy score.",
+  "views": [
+    {
+      "name": "front-three-quarter",
+      "yaw_candidates": [
+        -45,
+        -30,
+        -15,
+        0,
+        15,
+        30,
+        45
+      ],
+      "elevation_candidates": [
+        0,
+        10,
+        20
+      ],
+      "outline": [],
+      "parts": {}
+    },
+    {
+      "name": "rear-three-quarter",
+      "yaw_candidates": [
+        130,
+        145,
+        160,
+        180,
+        200,
+        215,
+        230
+      ],
+      "elevation_candidates": [
+        0,
+        10,
+        20
+      ],
+      "outline": [],
+      "parts": {}
+    }
+  ]
+}
