@@ -148,7 +148,7 @@
       "base_number": "11",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Invasion Box Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -159,16 +159,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "akuma",
@@ -181,7 +185,7 @@
       "base_number": "4-71",
       "sculpt_variant": "AKU-2XC",
       "source_pack": "House Kurita Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -192,16 +196,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "annihilator",
@@ -214,7 +222,7 @@
       "base_number": "3-1",
       "sculpt_variant": "ANH-2A",
       "source_pack": "Wolf's Dragoons Assault Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -225,16 +233,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "archer",
@@ -247,7 +259,7 @@
       "base_number": "25",
       "sculpt_variant": "ARC-2R",
       "source_pack": "Legendary MechWarriors Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -258,16 +270,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "argus",
@@ -280,7 +296,7 @@
       "base_number": "4-19",
       "sculpt_variant": "AGS-4D",
       "source_pack": "Second Star League Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -291,16 +307,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "assassin",
@@ -313,7 +333,7 @@
       "base_number": "3-45",
       "sculpt_variant": "ASN-21",
       "source_pack": "Inner Sphere Heavy Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -324,16 +344,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "atlas",
@@ -346,7 +370,7 @@
       "base_number": "4-1",
       "sculpt_variant": "AS7-D",
       "source_pack": "Hansen’s Roughriders Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -357,16 +381,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "avatar",
@@ -379,7 +407,7 @@
       "base_number": "4-67",
       "sculpt_variant": "AV1-O",
       "source_pack": "House Kurita Ranger Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -390,16 +418,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "awesome",
@@ -412,7 +444,7 @@
       "base_number": "3",
       "sculpt_variant": "AWS-8Q",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -423,16 +455,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "axman",
@@ -445,7 +481,7 @@
       "base_number": "3-84",
       "sculpt_variant": "AXM-2N",
       "source_pack": "Somerset Strikers ForcePack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -456,16 +492,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "banshee",
@@ -478,7 +518,7 @@
       "base_number": "4-5",
       "sculpt_variant": "BNC-3S",
       "source_pack": "Eridani Light Horse Hunter Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -489,16 +529,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "battle_cobra",
@@ -511,7 +555,7 @@
       "base_number": "40",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Support Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -522,16 +566,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "battleaxe",
@@ -544,7 +592,7 @@
       "base_number": "4-35",
       "sculpt_variant": "BKX-7K",
       "source_pack": "Proliferation Cycle Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -555,16 +603,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "battlemaster",
@@ -577,7 +629,7 @@
       "base_number": "7",
       "sculpt_variant": "BLR-1G",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -588,16 +640,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "black_knight",
@@ -610,7 +666,7 @@
       "base_number": "57",
       "sculpt_variant": "BL-6-KNT",
       "source_pack": "ComStar Command Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -621,16 +677,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "black_lanner",
@@ -643,7 +703,7 @@
       "base_number": "41",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Support Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -654,16 +714,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "blackjack",
@@ -676,7 +740,7 @@
       "base_number": "3-3",
       "sculpt_variant": "BJ-2",
       "source_pack": "Wolf's Dragoons Assault Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -687,16 +751,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "bushwacker",
@@ -709,7 +777,7 @@
       "base_number": "91",
       "sculpt_variant": "BSW-X2",
       "source_pack": "Inner Sphere Heavy Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -720,16 +788,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "caesar",
@@ -742,7 +814,7 @@
       "base_number": "3-64",
       "sculpt_variant": "CES-3R",
       "source_pack": "Legendary MechWarriors II Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -753,16 +825,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "cataphract",
@@ -775,7 +851,7 @@
       "base_number": "92",
       "sculpt_variant": "CTF-3D",
       "source_pack": "Inner Sphere Heavy Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -786,16 +862,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "catapult",
@@ -808,7 +888,7 @@
       "base_number": "4",
       "sculpt_variant": "CPLT-C1",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -819,16 +899,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "centurion",
@@ -841,7 +925,7 @@
       "base_number": "45",
       "sculpt_variant": "CN9-A",
       "source_pack": "Inner Sphere Heavy Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -852,16 +936,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "chameleon",
@@ -874,7 +962,7 @@
       "base_number": "3-8",
       "sculpt_variant": "CLN-7V",
       "source_pack": "Mercenaries Box Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -885,16 +973,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "charger",
@@ -907,7 +999,7 @@
       "base_number": "3-66",
       "sculpt_variant": "CGR-3K",
       "source_pack": "Legendary MechWarriors II Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -918,16 +1010,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "chimera",
@@ -940,7 +1036,7 @@
       "base_number": "4-68",
       "sculpt_variant": "CMA-1S",
       "source_pack": "House Kurita Ranger Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -951,16 +1047,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "cicada",
@@ -973,7 +1073,7 @@
       "base_number": "3-20",
       "sculpt_variant": "CDA-2A",
       "source_pack": "Inner Sphere Pursuit Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -984,16 +1084,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "clint",
@@ -1006,7 +1110,7 @@
       "base_number": "3-21",
       "sculpt_variant": "CLNT-2-3T",
       "source_pack": "Inner Sphere Pursuit Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1017,16 +1121,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "commando",
@@ -1039,7 +1147,7 @@
       "base_number": "9",
       "sculpt_variant": "COM-2D",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1050,16 +1158,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "cougar",
@@ -1072,7 +1184,7 @@
       "base_number": "30",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Fire Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1083,16 +1195,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "crab",
@@ -1105,7 +1221,7 @@
       "base_number": "80",
       "sculpt_variant": "CRB-27/-27b/-20",
       "source_pack": "ComStar Battle Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1116,16 +1232,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "crockett",
@@ -1138,7 +1258,7 @@
       "base_number": "81",
       "sculpt_variant": "CRK-5003-1",
       "source_pack": "ComStar Battle Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1149,16 +1269,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "crossbow",
@@ -1171,7 +1295,7 @@
       "base_number": "86",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Heavy Battle Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1182,16 +1306,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "crusader",
@@ -1204,7 +1332,7 @@
       "base_number": "4-12",
       "sculpt_variant": "CRD-5M",
       "source_pack": "Kell Hounds Striker Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1215,16 +1343,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "cyclops",
@@ -1237,7 +1369,7 @@
       "base_number": "4-6",
       "sculpt_variant": "CP-11-A",
       "source_pack": "Eridani Light Horse Hunter Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1248,16 +1380,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "dervish",
@@ -1270,7 +1406,7 @@
       "base_number": "3-23",
       "sculpt_variant": "DV-6M",
       "source_pack": "Inner Sphere Pursuit Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1281,16 +1417,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "devastator",
@@ -1303,7 +1443,7 @@
       "base_number": "3-65",
       "sculpt_variant": "DVS-2",
       "source_pack": "Legendary MechWarriors II Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1314,16 +1454,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "dire_wolf",
@@ -1336,7 +1480,7 @@
       "base_number": "1",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Command Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1347,16 +1491,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "dragon",
@@ -1369,7 +1517,7 @@
       "base_number": "99",
       "sculpt_variant": "DRG-1N",
       "source_pack": "Inner Sphere Support Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1380,16 +1528,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "dragon_fire",
@@ -1402,7 +1554,7 @@
       "base_number": "4-29A",
       "sculpt_variant": "DGR-3F",
       "source_pack": "Black Remnant Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1413,16 +1565,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "emperor",
@@ -1435,7 +1591,7 @@
       "base_number": "4-21",
       "sculpt_variant": "EMP-6A",
       "source_pack": "Second Star League Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1446,16 +1602,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "enforcer",
@@ -1468,7 +1628,7 @@
       "base_number": "4-2",
       "sculpt_variant": "ENF-5D",
       "source_pack": "Hansen’s Roughriders Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1479,16 +1639,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "eris",
@@ -1501,7 +1665,7 @@
       "base_number": "4-90",
       "sculpt_variant": "ERS-2N",
       "source_pack": "BattleTech Core Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1512,16 +1676,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "excalibur",
@@ -1534,7 +1702,7 @@
       "base_number": "4-44",
       "sculpt_variant": "EXC-B2",
       "source_pack": "Third Star League Battle Group",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1545,16 +1713,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "exterminator",
@@ -1567,7 +1739,7 @@
       "base_number": "60",
       "sculpt_variant": "EXT-4D",
       "source_pack": "ComStar Command Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1578,16 +1750,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "falconer",
@@ -1600,7 +1776,7 @@
       "base_number": "4-35A",
       "sculpt_variant": "FLC-8R",
       "source_pack": "House Davion Heavy Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1611,16 +1787,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "firebee",
@@ -1633,7 +1813,7 @@
       "base_number": "4-33",
       "sculpt_variant": "FRB-2E",
       "source_pack": "Proliferation Cycle Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1644,16 +1824,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "firefly",
@@ -1666,7 +1850,7 @@
       "base_number": "3-7",
       "sculpt_variant": "FFL-4B",
       "source_pack": "Mercenaries Box Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1677,16 +1861,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "firestarter",
@@ -1699,7 +1887,7 @@
       "base_number": "3-18",
       "sculpt_variant": "FS9-H",
       "source_pack": "Inner Sphere Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1710,16 +1898,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "flashman",
@@ -1732,7 +1924,7 @@
       "base_number": "82",
       "sculpt_variant": "FLS-8K",
       "source_pack": "ComStar Battle Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1743,16 +1935,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "flea",
@@ -1765,7 +1961,7 @@
       "base_number": "3-6",
       "sculpt_variant": "FLE-17",
       "source_pack": "Mercenaries Box Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1776,16 +1972,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "gladiator",
@@ -1798,7 +1998,7 @@
       "base_number": "4-34",
       "sculpt_variant": "GLD-4R",
       "source_pack": "Proliferation Cycle Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1809,16 +2009,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "goliath",
@@ -1831,7 +2035,7 @@
       "base_number": "3-42",
       "sculpt_variant": "GOL-1H",
       "source_pack": "Inner Sphere Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1842,16 +2046,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "grand_dragon",
@@ -1864,7 +2072,7 @@
       "base_number": "4-72",
       "sculpt_variant": "DRG-10K",
       "source_pack": "House Kurita Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1875,16 +2083,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "grasshopper",
@@ -1897,7 +2109,7 @@
       "base_number": "46",
       "sculpt_variant": "GHR-5H",
       "source_pack": "Inner Sphere Heavy Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1908,16 +2120,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "griffin",
@@ -1930,7 +2146,7 @@
       "base_number": "1",
       "sculpt_variant": "GRF-1N",
       "source_pack": "BattleTech Beginner Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1941,16 +2157,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "griffin_iic",
@@ -1963,7 +2183,7 @@
       "base_number": "3-34",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Cavalry Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -1974,16 +2194,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "grizzly",
@@ -1996,7 +2220,7 @@
       "base_number": "3-54",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Direct Fire Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2007,16 +2231,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "guillotine",
@@ -2029,7 +2257,7 @@
       "base_number": "4-30",
       "sculpt_variant": "GLT-3N",
       "source_pack": "Snord's Irregulars Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2040,16 +2268,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "gunslinger",
@@ -2062,7 +2294,7 @@
       "base_number": "4-14",
       "sculpt_variant": "GUN-1ERD",
       "source_pack": "Northwind Highlanders Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2073,16 +2305,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "gunsmith",
@@ -2095,7 +2331,7 @@
       "base_number": "4-31A",
       "sculpt_variant": "CH11-NG",
       "source_pack": "House Davion Cavalry Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2106,16 +2342,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hatamoto_chi",
@@ -2128,7 +2368,7 @@
       "base_number": "3-87",
       "sculpt_variant": "HTM-27T",
       "source_pack": "Somerset Strikers ForcePack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2139,16 +2379,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hatchetman",
@@ -2161,7 +2405,7 @@
       "base_number": "47",
       "sculpt_variant": "HCT-3F",
       "source_pack": "Inner Sphere Heavy Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2172,16 +2416,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "havoc",
@@ -2194,7 +2442,7 @@
       "base_number": "4-39",
       "sculpt_variant": "HVC-P6",
       "source_pack": "Third Star League Strike Team",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2205,16 +2453,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "helios",
@@ -2227,7 +2479,7 @@
       "base_number": "4-18",
       "sculpt_variant": "HEL-3D",
       "source_pack": "Second Star League Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2238,16 +2490,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hellspawn",
@@ -2260,7 +2516,7 @@
       "base_number": "4-32A",
       "sculpt_variant": "HSN-7D",
       "source_pack": "House Davion Cavalry Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2271,16 +2527,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hermes_ii",
@@ -2293,7 +2553,7 @@
       "base_number": "3-22",
       "sculpt_variant": "HER-2S",
       "source_pack": "Inner Sphere Pursuit Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2304,16 +2564,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "highlander",
@@ -2326,7 +2590,7 @@
       "base_number": "4-29",
       "sculpt_variant": "HGN-694",
       "source_pack": "Snord's Irregulars Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2337,16 +2601,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "highlander_iic",
@@ -2359,7 +2627,7 @@
       "base_number": "3-56",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Direct Fire Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2370,16 +2638,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hollander",
@@ -2392,7 +2664,7 @@
       "base_number": "4-89",
       "sculpt_variant": "BZK-F3",
       "source_pack": "BattleTech Core Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2403,16 +2675,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hoplite",
@@ -2425,7 +2701,7 @@
       "base_number": "3-41",
       "sculpt_variant": "HOP-4D",
       "source_pack": "Inner Sphere Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2436,16 +2712,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hunchback",
@@ -2458,7 +2738,7 @@
       "base_number": "62",
       "sculpt_variant": "HBK-4G",
       "source_pack": "Inner Sphere Urban Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2469,16 +2749,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "hunchback_iic",
@@ -2491,7 +2775,7 @@
       "base_number": "48",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Heavy Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2502,16 +2786,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "icarus_ii",
@@ -2524,7 +2812,7 @@
       "base_number": "4-32",
       "sculpt_variant": "ICR-1S",
       "source_pack": "Proliferation Cycle Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2535,16 +2823,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "jackalope",
@@ -2557,7 +2849,7 @@
       "base_number": "4-40",
       "sculpt_variant": "JLP-BD",
       "source_pack": "Third Star League Strike Team",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2568,16 +2860,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "jagermech",
@@ -2590,7 +2886,7 @@
       "base_number": "3-31",
       "sculpt_variant": "JM6-S/JM6-DGr",
       "source_pack": "Inner Sphere Security Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2601,16 +2897,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "javelin",
@@ -2623,7 +2923,7 @@
       "base_number": "3-17",
       "sculpt_variant": "JVN-10N",
       "source_pack": "Inner Sphere Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2634,16 +2934,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "jenner",
@@ -2656,7 +2960,7 @@
       "base_number": "63",
       "sculpt_variant": "JR7-D / JR7-K",
       "source_pack": "Inner Sphere Striker Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2667,16 +2971,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "jenner_iic",
@@ -2689,7 +2997,7 @@
       "base_number": "3-33",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Cavalry Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2700,16 +3008,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "king_crab",
@@ -2722,7 +3034,7 @@
       "base_number": "64",
       "sculpt_variant": "KGC-000",
       "source_pack": "ComStar Command Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2733,16 +3045,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "kingfisher",
@@ -2755,7 +3071,7 @@
       "base_number": "89",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Heavy Battle Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2766,16 +3082,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "kintaro",
@@ -2788,7 +3108,7 @@
       "base_number": "4-41",
       "sculpt_variant": "KTO-20",
       "source_pack": "Third Star League Strike Team",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2799,16 +3119,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "kodiak",
@@ -2821,7 +3145,7 @@
       "base_number": "96",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Ad Hoc Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2832,16 +3156,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "lancelot",
@@ -2854,7 +3182,7 @@
       "base_number": "84",
       "sculpt_variant": "LNC25-01",
       "source_pack": "ComStar Battle Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2865,16 +3193,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "legionnaire",
@@ -2887,7 +3219,7 @@
       "base_number": "4-33A",
       "sculpt_variant": "LGN-2D",
       "source_pack": "House Davion Cavalry Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2898,16 +3230,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "linebacker",
@@ -2920,7 +3256,7 @@
       "base_number": "42",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Support Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2931,16 +3267,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "locust",
@@ -2953,7 +3293,7 @@
       "base_number": "6",
       "sculpt_variant": "LCT-1V",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2964,16 +3304,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "locust_iic",
@@ -2986,7 +3330,7 @@
       "base_number": "3-32",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Cavalry Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -2997,16 +3341,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "longbow",
@@ -3019,7 +3367,7 @@
       "base_number": "53",
       "sculpt_variant": "LGB-7Q",
       "source_pack": "Inner Sphere Fire Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3030,16 +3378,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "mackie",
@@ -3052,7 +3404,7 @@
       "base_number": "4-36",
       "sculpt_variant": "MSK-6S",
       "source_pack": "Proliferation Cycle Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3063,16 +3415,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "mad_cat_mk_ii",
@@ -3085,7 +3441,7 @@
       "base_number": "4-94",
       "sculpt_variant": "Standard",
       "source_pack": "BattleTech Core Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3096,16 +3452,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "malice",
@@ -3118,7 +3478,7 @@
       "base_number": "4-45",
       "sculpt_variant": "MAL-XT",
       "source_pack": "Third Star League Battle Group",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3129,16 +3489,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "marauder",
@@ -3151,7 +3515,7 @@
       "base_number": "27",
       "sculpt_variant": "MAD-3R",
       "source_pack": "Legendary MechWarriors Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3162,16 +3526,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "marauder_ii",
@@ -3184,7 +3552,7 @@
       "base_number": "3-73",
       "sculpt_variant": "Bounty Hunter",
       "source_pack": "Legendary MechWarriors III Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3195,16 +3563,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "mauler",
@@ -3217,7 +3589,7 @@
       "base_number": "3-85",
       "sculpt_variant": "MAL-1R",
       "source_pack": "Somerset Strikers ForcePack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3228,16 +3600,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "mercury",
@@ -3250,7 +3626,7 @@
       "base_number": "65",
       "sculpt_variant": "MCY-99",
       "source_pack": "ComStar Command Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3261,16 +3637,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "merlin",
@@ -3283,7 +3663,7 @@
       "base_number": "3-46",
       "sculpt_variant": "MLN-1A",
       "source_pack": "Inner Sphere Heavy Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3294,16 +3674,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "mist_lynx",
@@ -3316,7 +3700,7 @@
       "base_number": "2",
       "sculpt_variant": "Prime/Alt. Config. A",
       "source_pack": "Clan Command Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3327,16 +3711,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "mongoose",
@@ -3349,7 +3737,7 @@
       "base_number": "85",
       "sculpt_variant": "MON-66",
       "source_pack": "ComStar Battle Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3360,16 +3748,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "night_gyr",
@@ -3382,7 +3774,7 @@
       "base_number": "43",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Support Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3393,16 +3785,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "nightsky",
@@ -3415,7 +3811,7 @@
       "base_number": "4-10",
       "sculpt_variant": "NGS-4S",
       "source_pack": "Kell Hounds Striker Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3426,16 +3822,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "nightstar",
@@ -3448,7 +3848,7 @@
       "base_number": "93",
       "sculpt_variant": "NSR-9FC",
       "source_pack": "Inner Sphere Heavy Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3459,16 +3859,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "nova_cat",
@@ -3481,7 +3885,7 @@
       "base_number": "33",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Fire Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3492,16 +3896,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "orion",
@@ -3514,7 +3922,7 @@
       "base_number": "3-99",
       "sculpt_variant": "ON1-Kb",
       "source_pack": "Star League Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3525,16 +3933,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "ostroc",
@@ -3547,7 +3959,7 @@
       "base_number": "3-47",
       "sculpt_variant": "OSR-2C",
       "source_pack": "Inner Sphere Heavy Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3558,16 +3970,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "ostscout",
@@ -3580,7 +3996,7 @@
       "base_number": "3-16",
       "sculpt_variant": "OTT-7J",
       "source_pack": "Inner Sphere Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3591,16 +4007,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "ostsol",
@@ -3613,7 +4033,7 @@
       "base_number": "3-10",
       "sculpt_variant": "OTL-4D",
       "source_pack": "Mercenaries Box Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3624,16 +4044,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "ostwar",
@@ -3646,7 +4070,7 @@
       "base_number": "4-76",
       "sculpt_variant": "OWR-3M",
       "source_pack": "Illician Lancers Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3657,16 +4081,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "pack_hunter",
@@ -3679,7 +4107,7 @@
       "base_number": "97",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Ad Hoc Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3690,16 +4118,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "panther",
@@ -3712,7 +4144,7 @@
       "base_number": "66",
       "sculpt_variant": "PNT-9R",
       "source_pack": "Inner Sphere Striker Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3723,16 +4155,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "peacekeeper",
@@ -3745,7 +4181,7 @@
       "base_number": "4-46",
       "sculpt_variant": "PKP-1A",
       "source_pack": "Third Star League Battle Group",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3756,16 +4192,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "penetrator",
@@ -3778,7 +4218,7 @@
       "base_number": "4-3",
       "sculpt_variant": "PTR-4D",
       "source_pack": "Hansen’s Roughriders Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3789,16 +4229,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "phoenix_hawk",
@@ -3811,7 +4255,7 @@
       "base_number": "17",
       "sculpt_variant": "PXH-1",
       "source_pack": "Inner Sphere Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3822,16 +4266,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "pillager",
@@ -3844,7 +4292,7 @@
       "base_number": "3-44",
       "sculpt_variant": "PLG-3Z",
       "source_pack": "Inner Sphere Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3855,16 +4303,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "piranha",
@@ -3877,7 +4329,7 @@
       "base_number": "76",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Striker Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3888,16 +4340,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "quickdraw",
@@ -3910,7 +4366,7 @@
       "base_number": "3-11",
       "sculpt_variant": "QKD-4G",
       "source_pack": "Mercenaries Box Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3921,16 +4377,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "rakshasa",
@@ -3943,7 +4403,7 @@
       "base_number": "4-93",
       "sculpt_variant": "MDG-1A",
       "source_pack": "BattleTech Core Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3954,16 +4414,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "raven",
@@ -3976,7 +4440,7 @@
       "base_number": "67",
       "sculpt_variant": "RVN-3L",
       "source_pack": "Inner Sphere Urban Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -3987,16 +4451,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "rifleman",
@@ -4009,7 +4477,7 @@
       "base_number": "3-4",
       "sculpt_variant": "RFL-3N",
       "source_pack": "Wolf's Dragoons Assault Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4020,16 +4488,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "sagittaire",
@@ -4042,7 +4514,7 @@
       "base_number": "4-7",
       "sculpt_variant": "SGT-8R",
       "source_pack": "Eridani Light Horse Hunter Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4053,16 +4525,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "scarabus",
@@ -4075,7 +4551,7 @@
       "base_number": "4-78",
       "sculpt_variant": "SCB-9A",
       "source_pack": "Illician Lancers Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4086,16 +4562,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "scorpion",
@@ -4108,7 +4588,7 @@
       "base_number": "3-30",
       "sculpt_variant": "SCP-1N",
       "source_pack": "Inner Sphere Security Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4119,16 +4599,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "sentinel",
@@ -4141,7 +4625,7 @@
       "base_number": "68",
       "sculpt_variant": "STN-3L",
       "source_pack": "ComStar Command Level II",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4152,16 +4636,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "shadow_cat",
@@ -4174,7 +4662,7 @@
       "base_number": "3",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Command Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4185,16 +4673,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "shadow_hawk",
@@ -4207,7 +4699,7 @@
       "base_number": "8",
       "sculpt_variant": "SHD-2H",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4218,16 +4710,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "shadow_hawk_iic",
@@ -4240,7 +4736,7 @@
       "base_number": "3-35",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Cavalry Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4251,16 +4747,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "shiro",
@@ -4273,7 +4773,7 @@
       "base_number": "4-74",
       "sculpt_variant": "SH-1V",
       "source_pack": "House Kurita Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4284,16 +4784,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "shockwave",
@@ -4306,7 +4810,7 @@
       "base_number": "4-65",
       "sculpt_variant": "SKW-2F",
       "source_pack": "21st Centauri Lancers Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4317,16 +4821,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "shogun",
@@ -4339,7 +4847,7 @@
       "base_number": "3-43",
       "sculpt_variant": "SHG-2F",
       "source_pack": "Inner Sphere Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4350,16 +4858,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "spartan",
@@ -4372,7 +4884,7 @@
       "base_number": "4-27",
       "sculpt_variant": "SPT-N2",
       "source_pack": "Snord's Irregulars Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4383,16 +4895,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "spector",
@@ -4405,7 +4921,7 @@
       "base_number": "3-19",
       "sculpt_variant": "SPR-5F",
       "source_pack": "Inner Sphere Recon Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4416,16 +4932,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "spider",
@@ -4438,7 +4958,7 @@
       "base_number": "100",
       "sculpt_variant": "SDR-5V",
       "source_pack": "Inner Sphere Support Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4449,16 +4969,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "stalker",
@@ -4471,7 +4995,7 @@
       "base_number": "54",
       "sculpt_variant": "Stalker STK-3F",
       "source_pack": "Inner Sphere Fire Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4482,16 +5006,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "starslayer",
@@ -4504,7 +5032,7 @@
       "base_number": "4-22",
       "sculpt_variant": "STY-2C/3C",
       "source_pack": "McCarron's Armored Cavalry Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4515,16 +5043,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "stinger",
@@ -4537,7 +5069,7 @@
       "base_number": "23",
       "sculpt_variant": "STG-3R",
       "source_pack": "Inner Sphere Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4548,16 +5080,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "summoner",
@@ -4570,7 +5106,7 @@
       "base_number": "4-61",
       "sculpt_variant": "Alt. Config. H",
       "source_pack": "BattleTech Aces: Scouring Sands",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4581,16 +5117,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "supernova",
@@ -4603,7 +5143,7 @@
       "base_number": "51",
       "sculpt_variant": "Standard",
       "source_pack": "Clan Heavy Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4614,16 +5154,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "templar",
@@ -4636,7 +5180,7 @@
       "base_number": "4-36A",
       "sculpt_variant": "TLR1-O",
       "source_pack": "House Davion Heavy Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4647,16 +5191,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "thanatos",
@@ -4669,7 +5217,7 @@
       "base_number": "4-34A",
       "sculpt_variant": "TNS-4S",
       "source_pack": "House Davion Heavy Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4680,16 +5228,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "thug",
@@ -4702,7 +5254,7 @@
       "base_number": "79",
       "sculpt_variant": "THG-11E",
       "source_pack": "Inner Sphere Support Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4713,16 +5265,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "thunder_hawk",
@@ -4735,7 +5291,7 @@
       "base_number": "3-98",
       "sculpt_variant": "TDK-7S",
       "source_pack": "Star League Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4746,16 +5302,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "thunderbolt",
@@ -4768,7 +5328,7 @@
       "base_number": "5",
       "sculpt_variant": "TDR-5S",
       "source_pack": "BattleTech: A Game of Armored Combat",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4779,16 +5339,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "thunderbolt_iic",
@@ -4801,7 +5365,7 @@
       "base_number": "4-62",
       "sculpt_variant": "Standard",
       "source_pack": "BattleTech Aces: Scouring Sands",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4812,16 +5376,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "tian_zong",
@@ -4834,7 +5402,7 @@
       "base_number": "4-25",
       "sculpt_variant": "TNZ-N1",
       "source_pack": "McCarron's Armored Cavalry Assault Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4845,16 +5413,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "trebuchet",
@@ -4867,7 +5439,7 @@
       "base_number": "55",
       "sculpt_variant": "TBT-5N",
       "source_pack": "Inner Sphere Fire Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4878,16 +5450,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "turkina",
@@ -4900,7 +5476,7 @@
       "base_number": "72",
       "sculpt_variant": "Prime",
       "source_pack": "Clan Heavy Battle Star",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4911,16 +5487,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "uziel",
@@ -4933,7 +5513,7 @@
       "base_number": "4-91",
       "sculpt_variant": "UZL-3S",
       "source_pack": "BattleTech Core Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4944,16 +5524,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "valkyrie",
@@ -4966,7 +5550,7 @@
       "base_number": "24",
       "sculpt_variant": "VLK-QA",
       "source_pack": "Inner Sphere Command Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -4977,16 +5561,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "venom",
@@ -4999,7 +5587,7 @@
       "base_number": "4-70",
       "sculpt_variant": "SDR-9K",
       "source_pack": "House Kurita Ranger Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5010,16 +5598,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "victor",
@@ -5032,7 +5624,7 @@
       "base_number": "69",
       "sculpt_variant": "VTR-9B",
       "source_pack": "Inner Sphere Urban Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5043,16 +5635,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "vindicator",
@@ -5065,7 +5661,7 @@
       "base_number": "3-8A",
       "sculpt_variant": "VND-1R",
       "source_pack": "BattleTech Beginner Box, Second Edition",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5076,16 +5672,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "vulcan",
@@ -5098,7 +5698,7 @@
       "base_number": "3-28",
       "sculpt_variant": "VL-2T",
       "source_pack": "Inner Sphere Security Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5109,16 +5709,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "warhammer",
@@ -5131,7 +5735,7 @@
       "base_number": "19",
       "sculpt_variant": "WHM-6R",
       "source_pack": "Inner Sphere Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5142,16 +5746,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "wasp",
@@ -5164,7 +5772,7 @@
       "base_number": "20",
       "sculpt_variant": "WSP-1A",
       "source_pack": "Inner Sphere Battle Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5175,16 +5783,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "whitworth",
@@ -5197,7 +5809,7 @@
       "base_number": "3-29",
       "sculpt_variant": "WTH-1",
       "source_pack": "Inner Sphere Security Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5208,16 +5820,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "wolfhound",
@@ -5230,7 +5846,7 @@
       "base_number": "4-9",
       "sculpt_variant": "WLF-1",
       "source_pack": "Kell Hounds Striker Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5241,16 +5857,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "wolverine",
@@ -5263,7 +5883,7 @@
       "base_number": "2",
       "sculpt_variant": "WVR-6R",
       "source_pack": "BattleTech Beginner Box",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5274,16 +5894,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "wraith",
@@ -5296,7 +5920,7 @@
       "base_number": "a6",
       "sculpt_variant": "TR1",
       "source_pack": "Alpha Strike Boxed Set",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5307,16 +5931,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "ymir",
@@ -5329,7 +5957,7 @@
       "base_number": "4-37",
       "sculpt_variant": "BWP-2B",
       "source_pack": "Proliferation Cycle Pack",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5340,16 +5968,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     },
     {
       "model": "zeus",
@@ -5362,7 +5994,7 @@
       "base_number": "56",
       "sculpt_variant": "ZEU-6S",
       "source_pack": "Inner Sphere Fire Lance",
-      "white_background_threshold": 235,
+      "white_background_threshold": 205,
       "crop_bottom_fraction": 0.95,
       "exclude_dark_base_below": {
         "start_y_fraction": 0.78,
@@ -5373,16 +6005,20 @@
       "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
       "camera_search": {
         "yaw_offsets": [
+          -30,
           -15,
           0,
-          15
+          15,
+          30
         ],
         "pitch_offsets": [
           -12,
           0,
           12
         ]
-      }
+      },
+      "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
+      "pose_review": "UNVERIFIED_RIG_POSE"
     }
   ]
 }
