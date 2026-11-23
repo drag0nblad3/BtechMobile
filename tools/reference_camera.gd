@@ -4,14 +4,14 @@ extends RefCounted
 ## Geometry is never moved to compensate for a mismatched photograph.
 
 const DEFAULTS := {
-    "front": 0.0, "side": 90.0, "quarter": 45.0, "top": 0.0
+    "front": 0.0, "side": -90.0, "quarter": 45.0, "top": 0.0
 }
 const MARGIN := 3
 
 
 static func preset(view: String) -> Dictionary:
     return {"yaw_deg": float(DEFAULTS.get(view, 0.0)),
-        "pitch_deg": 90.0 if view == "top" else 0.0,
+        "pitch_deg": -90.0 if view == "top" else 0.0,
         "roll_deg": 0.0, "projection": "orthographic",
         "distance_heights": 3.5}
 
@@ -41,7 +41,7 @@ static func settings_errors(spec: Dictionary) -> Array[String]:
 
 static func _project_vertex(vertex: Vector3, center: Vector3,
         basis: Basis, spec: Dictionary, distance: float) -> Vector2:
-    var local: Vector3 = basis.inverse() * (vertex - center)
+    var local: Vector3 = basis * (vertex - center)
     if spec.get("projection", "orthographic") == "perspective":
         var depth := maxf(0.15 * distance, distance - local.z)
         local *= distance / depth
@@ -66,7 +66,7 @@ static func mask(cells: Array[PackedVector3Array], spec: Dictionary,
     var rot := Vector3(deg_to_rad(float(spec.get("pitch_deg", 0.0))),
         deg_to_rad(float(spec.get("yaw_deg", 0.0))),
         deg_to_rad(float(spec.get("roll_deg", 0.0))))
-    var basis := Basis.from_euler(rot)
+    var basis := Basis.from_euler(rot).inverse()
     var projected: Array[PackedVector2Array] = []
     var low := Vector2(INF, INF)
     var high := Vector2(-INF, -INF)
