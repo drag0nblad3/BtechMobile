@@ -65,3 +65,20 @@ The November 22, 2026 snapshot verifies **674 of 697** game variants and
 An absent faction-era cell in a *published* matrix means unavailable;
 an unmatched variant means unverified and is blocked only in Strict mode.
 See `docs/era-faction-availability.md` for implementation and play rules.
+
+## November 2026 incremental imports
+
+New official record-sheet conversions: Solitaire 3 (`Core Rules/Solitaire 3.mtf`),
+Mauler MAL-4R and Hatamoto-Chi HTM-30T (`Rec Guides ilClan/Vol 33/`).
+Their playable equipment and armor are sourced from those MegaMek MTF records.
+Their Battle Values (1,608; 2,050; 2,196) are from the published Master Unit
+List unit pages, marked `source.bv: "mul"`; no free-sheet verification is claimed.
+The official Solitaire 3 MUL introduction year (3106) differs from the `era`
+field in this particular MegaMek MTF (3150); the MUL governs availability.
+
+Importing a BattleMech does not create a finished voxel sculpt. Existing
+Mauler and Hatamoto-Chi chassis art can be reused for their exact variants;
+Solitaire 3 still requires a reference-driven geometry and voxel pass.
+The November 22 availability snapshot predates these additions and must be
+refreshed through the canonical MUL importer before Strict availability can
+verify them. Do not fabricate faction/era cells.
