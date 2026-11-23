@@ -1,6 +1,6 @@
 {
   "id": "malice_shape",
-  "name": "Malice MAL-XT — low-poly shape",
+  "name": "Malice MAL-XT \u2014 low-poly shape",
   "unit": "malice_malxt",
   "voxel_size": 0.063609,
   "subdivide": 1,
@@ -4903,7 +4903,7 @@
       "kind": "laser"
     }
   ],
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -4912,5 +4912,21 @@
     "rear": 0.73,
     "torso_width": 0.96
   },
-  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 20,
+    "stages_with_changes": 5
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  }
 }

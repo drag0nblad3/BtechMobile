@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/hercules_shape.json",
+  "id": "hercules",
+  "subdivide": 2
+}

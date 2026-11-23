@@ -824,6 +824,115 @@
       "parent": "ct"
     },
     {
+      "name": "lt_jet_vane",
+      "loc": "LT",
+      "parent": "lt",
+      "pivot": [
+        -10,
+        38,
+        4
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 37,
+                "polygon": [
+                  [
+                    -11.2,
+                    5.4
+                  ],
+                  [
+                    -8.8,
+                    5.4
+                  ],
+                  [
+                    -8.8,
+                    7.6
+                  ],
+                  [
+                    -11.2,
+                    7.6
+                  ]
+                ]
+              },
+              {
+                "at": 41,
+                "polygon": [
+                  [
+                    -10.9,
+                    5.3
+                  ],
+                  [
+                    -9,
+                    5.3
+                  ],
+                  [
+                    -9,
+                    7.2
+                  ],
+                  [
+                    -10.9,
+                    7.2
+                  ]
+                ]
+              },
+              {
+                "at": 44,
+                "polygon": [
+                  [
+                    -10.6,
+                    5.4
+                  ],
+                  [
+                    -9.3,
+                    5.4
+                  ],
+                  [
+                    -9.3,
+                    6.8
+                  ],
+                  [
+                    -10.6,
+                    6.8
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -12,
+              36,
+              5
+            ],
+            [
+              -9,
+              39,
+              6
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
+    },
+    {
+      "name": "rt_jet_vane",
+      "mirror": "lt_jet_vane",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        9,
+        38,
+        4
+      ]
+    },
+    {
       "name": "lt_cannon",
       "loc": "LT",
       "parent": "lt",
@@ -2465,7 +2574,7 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -2473,5 +2582,21 @@
     "front": 0.86,
     "rear": 0.71,
     "torso_width": 0.95
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 258,
+    "stages_with_changes": 24
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

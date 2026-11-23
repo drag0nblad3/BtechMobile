@@ -401,7 +401,7 @@ func set_explain_label(level: int) -> void:
 
 func show_move_controls(visible_: bool) -> void:
 	if not visible_ and more_button != null:
-		more_button.get_popup().hide()  # The selection/phase that offered Actions is gone.
+		more_button.get_popup().hide()
 	move_bar.visible = visible_
 	move_bar.get_parent().visible = visible_
 
@@ -421,7 +421,9 @@ func show_game_over(text: String, detail: String = "") -> void:
 	game_over_detail.visible = detail != ""
 	game_over_box.visible = true
 	sheet_open = false
-	show_side(null)  # Clear even an explicitly opened sheet at battle end.
+	show_side(null)  # No contextual panel survives the end of battle.
+	if _tools_menu != null:
+		_tools_menu.get_popup().hide()
 	show_move_controls(false)
 	show_attack_controls(false)
 

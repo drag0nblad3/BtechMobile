@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/cronus_shape.json",
+  "id": "cronus",
+  "subdivide": 2
+}

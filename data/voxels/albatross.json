@@ -6653,7 +6653,7 @@
   ],
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 3,
@@ -6661,5 +6661,21 @@
     "rear": 0.69,
     "torso_width": 0.95
   },
-  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up"
+  "proportion_socket_review": "2026-11-22-solid-attachment-follow-up",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 0,
+    "stages_with_changes": 0
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review metadata after later PR #213 contour resculpt; preserve current physical sculpt."
+  }
 }

@@ -7,6 +7,7 @@ var _state: GameState
 var _units: UnitsLayer
 var _camera: CameraRig
 var smoke := BattleSmoke.new()
+var numbers := BattleDamageNumbers.new()
 var _hits := 0
 
 
@@ -15,6 +16,7 @@ func setup(state: GameState, units: UnitsLayer) -> void:
 	_units = units
 	add_child(smoke)
 	smoke.setup(state, units)
+	add_child(numbers)
 
 
 func attach_camera(camera: CameraRig) -> void:
@@ -35,6 +37,7 @@ func play(e: GameEvent) -> void:
 					info["breached"] = s.get("breached", false)
 					info["destroyed"] = s.get("destroyed", false)
 					_impact(info)
+			_damage_popup(e.data)  # Once per damage packet, not per transfer location.
 		GameEvent.HEAT:
 			smoke.update_heat(int(e.data.get("unit_id", -1)))
 		GameEvent.UNIT_DESTROYED:
@@ -64,6 +67,19 @@ func _impact(d: Dictionary) -> void:
 	var power := clampf(float(amount) / 35.0, 0.0, 0.25)
 	if power > 0.1:
 		_shake(seed, power)
+
+
+## Show the event's resolved damage; never infer it from visual impacts.
+func _damage_popup(d: Dictionary) -> void:
+	if bool(d.get("covered", false)) or int(d.get("amount", 0)) <= 0:
+		return
+	var u: Unit = _state.unit_by_id(int(d.get("unit_id", -1)))
+	var v: UnitView = _units.view_of(u) if u != null else null
+	if v == null or not v.visible:
+		return
+	var loc := int(d.get("loc", -1))
+	var at := v.impact_location(loc, bool(d.get("rear", false))) if loc >= 0 and loc < Location.COUNT else v.global_position + Vector3.UP
+	numbers.spawn(at, int(d["amount"]))
 
 
 func _shake(seed: int, intensity: float) -> void:

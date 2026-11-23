@@ -435,7 +435,7 @@ func _on_event(e: GameEvent) -> void:
 			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			if e.type == GameEvent.PHASE_CHANGED:
-				attacks.clear()  # No targeting panel survives its phase.
+				attacks.clear()
 				if s.phase != Phase.Kind.MOVEMENT and movement.selected != null:
 					movement.clear_selection()
 			_update_status()

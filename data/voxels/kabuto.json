@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/kabuto_shape.json",
+  "id": "kabuto",
+  "subdivide": 2
+}

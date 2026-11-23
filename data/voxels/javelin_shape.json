@@ -1,6 +1,6 @@
 {
   "id": "javelin_shape",
-  "name": "Javelin JVN-10N — low-poly shape",
+  "name": "Javelin JVN-10N \u2014 low-poly shape",
   "unit": "javelin_jvn10n",
   "voxel_size": 0.052431,
   "subdivide": 1,
@@ -3202,7 +3202,7 @@
     }
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -3210,5 +3210,44 @@
     "front": 0.77,
     "rear": 0.64,
     "torso_width": 0.9
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 192,
+    "stages_with_changes": 23
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "narrow scout with matched SRM pods",
+    "modified_polygon_vertices": 137,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

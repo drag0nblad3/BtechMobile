@@ -1,6 +1,6 @@
 {
   "id": "hermes_ii_shape",
-  "name": "Hermes II HER-2S — low-poly shape",
+  "name": "Hermes II HER-2S \u2014 low-poly shape",
   "unit": "hermes_ii_her2s",
   "voxel_size": 0.038956,
   "subdivide": 1,
@@ -3484,7 +3484,7 @@
       "kind": "cannon"
     }
   ],
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -3492,5 +3492,21 @@
     "front": 0.79,
     "rear": 0.63,
     "torso_width": 0.88
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 65,
+    "stages_with_changes": 15
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

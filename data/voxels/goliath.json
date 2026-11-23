@@ -2792,6 +2792,20 @@
               -14
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              9,
+              22,
+              -4
+            ],
+            [
+              9,
+              22,
+              -3
+            ]
+          ]
         }
       ],
       "detail": [
@@ -5477,5 +5491,22 @@
       "three_quarter"
     ],
     "automatic_not_human_approved": true
+  },
+  "disconnected_source_chip_cleanup_20261122": {
+    "reason": "Remove audited unconnected decorative source raster fragments, never runtime-prune real connected geometry",
+    "part": "ct",
+    "removed_bounds": [
+      [
+        9,
+        22,
+        -4
+      ],
+      [
+        9,
+        22,
+        -3
+      ]
+    ],
+    "measured_fragment_size": 2
   }
 }
