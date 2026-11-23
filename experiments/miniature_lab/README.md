@@ -166,3 +166,58 @@ lower cockpit disc profile and dorsal/vent armor plates, then obtain sharper
 head-specific reference images and calibrated camera poses. Preserve the
 previous combined candidate as the scored baseline until both independent
 reference tests support replacing it.
+
+## Third pass: v6 — physically owned angled subassemblies and richer polygons
+
+The new trial is `jenner_assembly_v6.json`, generated from the independent
+v5 source by `make_jenner_v6.py`; **no merged Jenner has been opened for
+editing**. All changes remain under `experiments/miniature_lab/`.
+
+### More meaningful component separation
+
+- 12 -> **25 rigid/rigged pieces**, including a forward nose cowling,
+  separate cockpit crown, raised dorsal torso plate, paired slanted shoulder
+  cap plates, pod endcaps, knee armor cuffs, angled calf plates, and toes.
+- The moving lower-leg chain explicitly attaches through these actual
+  subassemblies. Rig export now topologically sorts parent before child, which
+  is required by VxModel's loader.
+- `subassembly.py` partitions existing occupied material along author-supplied
+  **inclined 3D planes**. Material and voxel ownership transfer rather than
+  new overlapping plate slabs. Automatic repairs are forbidden.
+- All 13 added interfaces require the existing backed 2×2 solid attachment
+  patch **and** a measured child-to-parent contact normal within 38 degrees
+  of the authored attachment angle.
+- Reconstructed curved contours use Catmull-Rom intermediate vertices;
+  sharp plate contours use additional chamfer facets. Total polygon-section
+  vertices rise from **1,064 to 1,584** (max section 16 -> 32 points).
+  Physical launcher openings remain subtractive.
+
+### Checkable results (no photographic quality claims)
+
+| Measure | v5 | v6 |
+|---|---:|---:|
+| Distinct components | 12 | 25 |
+| Occupied voxels | 14,860 | 14,966 |
+| Polygon-section vertices | 1,064 | 1,584 |
+| Detected topology/attachment faults | 0 | 0 |
+| Three-view approximate landmark RMSE | 0.02337 | 0.02355 |
+| Four-view coarse silhouette IoU (size 50) | 0.578 | 0.578 |
+
+The ~0.7% voxel change comes only from modifying primary polygon contours,
+**not** splitting the pieces: the segmentation test proves its source geometry
+is exactly conserved cell-for-cell and material-for-material. Neither
+reference metric establishes improved plastic-miniature resemblance; the
+landmark score is slightly worse within the uncertainty of hand-picked
+pixels, and silhouette overlap is unchanged. The sculpt still needs a more
+faithful cockpit and launcher proportion correction.
+
+Reproduce from the repository root (standard-library Python):
+
+    python experiments/miniature_lab/make_jenner_v6.py
+    python -m unittest discover -s experiments/miniature_lab -v
+    python experiments/miniature_lab/miniature_lab.py experiments/miniature_lab/jenner_assembly_v6.json --output experiments/miniature_lab/generated/jenner_v6_compiled.json --svg experiments/miniature_lab/generated/jenner_v6_views.svg
+
+The v6 source is a **trial**, not production art. There has been no Godot
+in-engine animation or device performance validation. All lower-priority
+geometry refinements should continue in the experiment branch, while main
+stays untouched.
