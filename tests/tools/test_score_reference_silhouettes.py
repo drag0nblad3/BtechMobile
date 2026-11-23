@@ -45,9 +45,12 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
             with scorecard.open("w", newline="", encoding="utf-8") as output:
                 writer = csv.DictWriter(output, fieldnames=[
                     "model", "status", "front_0_100", "side_0_100",
-                    "quarter_0_100", "top_0_100", "overall_0_100"])
+                    "quarter_0_100", "top_0_100", "overall_0_100",
+                    "stance_review_status", "stance_profile"])
                 writer.writeheader()
-                writer.writerow({"model": "atlas", "front_0_100": "12.0"})
+                writer.writerow({"model": "atlas", "front_0_100": "12.0",
+                                 "stance_review_status": "VERIFIED_RIG_MATCH",
+                                 "stance_profile": "reference-stance-poses.json"})
             result = root / "output.csv"
             run = subprocess.run([sys.executable,
                                   str(ROOT / "tools/score_reference_silhouettes.py"),
@@ -63,6 +66,29 @@ class ReferenceSilhouetteScoreTests(unittest.TestCase):
             self.assertEqual(row["side_0_100"], "")
             self.assertEqual(row["overall_0_100"], "")
             self.assertIn("1_OF_4", row["status"])
+
+            # Same image evidence is rejected when stance verification is revoked.
+            with scorecard.open("w", newline="", encoding="utf-8") as output:
+                writer = csv.DictWriter(output, fieldnames=[
+                    "model", "status", "front_0_100", "side_0_100",
+                    "quarter_0_100", "top_0_100", "overall_0_100",
+                    "stance_review_status", "stance_profile"])
+                writer.writeheader()
+                writer.writerow({"model": "atlas", "front_0_100": "98.0",
+                                 "stance_review_status": "UNVERIFIED_POSE"})
+            again = subprocess.run([sys.executable,
+                                    str(ROOT / "tools/score_reference_silhouettes.py"),
+                                    "--scorecard", str(scorecard),
+                                    "--renders", str(root / "renders"),
+                                    "--references", str(root / "references"),
+                                    "--output", str(result)],
+                                   capture_output=True, text=True)
+            self.assertEqual(again.returncode, 0, again.stderr)
+            with result.open(newline="", encoding="utf-8") as file:
+                rejected = next(csv.DictReader(file))
+            self.assertEqual(rejected["front_0_100"], "")
+            self.assertEqual(rejected["overall_0_100"], "")
+            self.assertEqual(rejected["status"], "AWAITING_RIG_STANCE_MATCH")
 
 
 if __name__ == "__main__":
