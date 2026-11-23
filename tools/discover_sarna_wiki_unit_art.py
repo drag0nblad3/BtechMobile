@@ -102,7 +102,9 @@ class Infobox(HTMLParser):
 
 
 def canonical(model):
-    return ALIASES.get(model, model.split("/", 1)[-1].replace("_", " "))
+    key = model.split("/", 1)[-1]
+    return ALIASES.get(model, "_".join(p.capitalize()
+        for p in key.split("_")))
 
 
 def decode_page(page, model):
@@ -130,6 +132,15 @@ def decode_page(page, model):
         return None
     filename = urllib.parse.unquote(link.split("/wiki/File:", 1)[-1])
     if normal(filename.split(".", 1)[0]) in ("", "nopic", "none"):
+        return None
+    # Article titles can be correct while their lead image is a magazine
+    # cover, secondary unit or advertisement. Don't use unrelated cover art.
+    family = normal(model.split("/", 1)[-1].split("_")[0])
+    if model in FAMILY_EXCEPTIONS:
+        family = normal(expected.split(" ", 1)[0])
+    if model.startswith("battle_armor/"):
+        family = "elemental" if "elemental" in model else "standard"
+    if len(family) >= 4 and family not in normal(filename):
         return None
     tier = ("modern_Recognition_Guide_illustration" if
         re.search(r"rgilclan|recognition.guide", filename, re.I)
