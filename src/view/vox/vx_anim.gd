@@ -175,6 +175,7 @@ func _process(delta: float) -> void:
 		if mech.model.can_punch and mech.is_attached(sh) and not arm_busy[side]:
 			var code := "LA" if side == 0 else "RA"
 			var ready: float = float(mech.model.ready_arm.get(code, 0.0))
+			sh.rotation.z = float(mech.model.ready_roll.get(code, 0.0))
 			sh.rotation.x = ready + (-sin((phase + 0.5 * side) * TAU) * (
 					0.8 if running else 0.55) if walking else 0.0)
 
