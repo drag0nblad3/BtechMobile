@@ -39,7 +39,7 @@
       "role": "structure"
     }
   ],
-  "notes": "Reference-led Dominator pass (Recognition Guide ilClan v1): tall asymmetrical left missile shoulder rises above the opposite side and retains its original six bores; small low armored pilot head, V-shaped central cuirass, tucked waist, reduced right shoulder, long tapered right PPC as a true longitudinal loft, and separate battlefist knuckles. Does not reuse Conjurer hull.",
+  "notes": "Reference-led Dominator pass (Recognition Guide ilClan v1): tall asymmetrical left missile shoulder rises above the opposite side and retains its original six bores; small low armored pilot head, V-shaped central cuirass, tucked waist, reduced right shoulder, long tapered right PPC as a true longitudinal loft, and separate battlefist knuckles. Does not reuse Conjurer hull. Record-sheet rear-facing ER small laser corrected: its HD muzzle and slender physically open nozzle now exit the back of the low cockpit instead of misidentifying a forward-facing head shot.",
   "parts": [
     {
       "name": "ct",
@@ -611,6 +611,35 @@
             ]
           ],
           "mat": "edge"
+        },
+        {
+          "box": [
+            [
+              0,
+              37,
+              -6
+            ],
+            [
+              1,
+              38,
+              10
+            ]
+          ],
+          "mat": "cannon"
+        },
+        {
+          "erase": [
+            [
+              0,
+              37,
+              9
+            ],
+            [
+              1,
+              38,
+              11
+            ]
+          ]
         }
       ]
     },
@@ -2195,9 +2224,9 @@
       -32.5
     ],
     "HD": [
-      0,
-      37,
-      -15
+      0.5,
+      37.5,
+      9.5
     ]
   },
   "weapons": [

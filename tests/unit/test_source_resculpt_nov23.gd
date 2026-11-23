@@ -117,3 +117,27 @@ func test_koshi_three_models_keep_separate_art_and_weapon_muzzles() -> void:
         var expected := 8 if name == "koshi_standard" else (6 if name == "koshi_standard_2" else 3)
         check_eq(left.size(), expected, name + " source laser/missile aperture count")
         check(not model.part("la").is_empty(), name + " keeps independent gun arm")
+
+func test_solitaire_3_large_laser_is_in_right_torso() -> void:
+    var recipe := _data("solitaire")
+    var installed: Dictionary = JsonFile.read("res://data/units/solitaire_3.json")
+    check("c_improved_heavy_large_laser" in installed["equipment"]["RT"],
+        "right-torso heavy large laser is official variant equipment")
+    check_eq((recipe["muzzles"]["LT"] as Array).size(), 2,
+        "both left torso small lasers have separate visual origins")
+    var main: Array = recipe["muzzles"]["RT"]
+    check(float(main[2]) < float(recipe["muzzles"]["LT"][0][2]),
+        "oversize RT gun extends farther forward than LT small emitters")
+    check(_part_peak(_part(recipe, "rt")) > _part_peak(_part(recipe, "lt")),
+        "main heavy-laser cooling jacket belongs to the right shoulder")
+
+
+func test_dominator_head_laser_points_to_the_rear() -> void:
+    var recipe := _data("dominator")
+    var installed: Dictionary = JsonFile.read("res://data/units/dominator.json")
+    check("c_er_small_laser@rear" in installed["equipment"]["HD"],
+        "rear direction is based on the official record sheet")
+    var origin: Array = recipe["muzzles"]["HD"]
+    check(float(origin[2]) > 0.0,
+        "head laser must visibly leave behind the cockpit, not forward")
+
