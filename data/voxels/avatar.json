@@ -1,7 +1,7 @@
 {
   "id": "avatar",
   "name": "Avatar AV1-O",
-  "unit": "avatar",
+  "unit": "avatar_av1-o",
   "voxel_size": 0.0482,
   "subdivide": 3,
   "legs": "plantigrade",
@@ -3685,7 +3685,7 @@
       "locs": [
         "RA"
       ],
-      "kind": "laser"
+      "kind": "cannon"
     },
     {
       "label": "lrm10, machine_gun",

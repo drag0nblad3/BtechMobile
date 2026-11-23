@@ -1,7 +1,7 @@
 {
   "id": "huntsman_shape",
   "name": "Huntsman Prime — silhouette",
-  "unit": "huntsman",
+  "unit": "huntsman_prime",
   "voxel_size": 0.0458,
   "subdivide": 1,
   "legs": "digitigrade",

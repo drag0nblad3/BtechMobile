@@ -1,7 +1,7 @@
 {
   "id": "ebon_jaguar",
   "name": "Ebon Jaguar Prime",
-  "unit": "ebon_jaguar",
+  "unit": "ebon_jaguar_prime",
   "voxel_size": 0.0476,
   "subdivide": 3,
   "legs": "digitigrade",

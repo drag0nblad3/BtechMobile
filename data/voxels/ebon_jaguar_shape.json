@@ -1,7 +1,7 @@
 {
   "id": "ebon_jaguar_shape",
   "name": "Ebon Jaguar Prime — silhouette",
-  "unit": "ebon_jaguar",
+  "unit": "ebon_jaguar_prime",
   "voxel_size": 0.0476,
   "subdivide": 1,
   "legs": "digitigrade",

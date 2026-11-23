@@ -1,7 +1,7 @@
 {
   "id": "cougar",
   "name": "Cougar Prime",
-  "unit": "cougar",
+  "unit": "cougar_prime",
   "voxel_size": 0.044,
   "subdivide": 3,
   "legs": "digitigrade",

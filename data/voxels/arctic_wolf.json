@@ -1,7 +1,7 @@
 {
   "id": "arctic_wolf",
   "name": "Arctic Wolf Prime",
-  "unit": "arctic_wolf",
+  "unit": "arctic_wolf_prime",
   "voxel_size": 0.0446,
   "subdivide": 3,
   "legs": "digitigrade",

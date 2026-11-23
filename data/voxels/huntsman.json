@@ -1,7 +1,7 @@
 {
   "id": "huntsman",
   "name": "Huntsman Prime",
-  "unit": "huntsman",
+  "unit": "huntsman_prime",
   "voxel_size": 0.0458,
   "subdivide": 3,
   "legs": "digitigrade",

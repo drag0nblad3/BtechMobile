@@ -1,7 +1,7 @@
 {
   "id": "avatar_shape",
   "name": "Avatar AV1-O — silhouette",
-  "unit": "avatar",
+  "unit": "avatar_av1-o",
   "voxel_size": 0.0482,
   "subdivide": 1,
   "legs": "plantigrade",
@@ -3442,7 +3442,7 @@
       "locs": [
         "RA"
       ],
-      "kind": "laser"
+      "kind": "cannon"
     },
     {
       "label": "lrm10, machine_gun",

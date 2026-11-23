@@ -1,7 +1,7 @@
 {
   "id": "arctic_wolf_shape",
   "name": "Arctic Wolf Prime — silhouette",
-  "unit": "arctic_wolf",
+  "unit": "arctic_wolf_prime",
   "voxel_size": 0.0446,
   "subdivide": 1,
   "legs": "digitigrade",

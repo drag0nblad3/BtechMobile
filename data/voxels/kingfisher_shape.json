@@ -1,7 +1,7 @@
 {
   "id": "kingfisher_shape",
   "name": "Kingfisher Prime — silhouette",
-  "unit": "kingfisher",
+  "unit": "kingfisher_prime",
   "voxel_size": 0.0506,
   "subdivide": 1,
   "legs": "plantigrade",

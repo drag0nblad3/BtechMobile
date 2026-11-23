@@ -1,7 +1,7 @@
 {
   "id": "cougar_shape",
   "name": "Cougar Prime — silhouette",
-  "unit": "cougar",
+  "unit": "cougar_prime",
   "voxel_size": 0.044,
   "subdivide": 1,
   "legs": "digitigrade",
