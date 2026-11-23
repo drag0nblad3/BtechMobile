@@ -165,9 +165,13 @@ func test_resculpted_source_recipes_load_all_animated_hit_locations() -> void:
 			check(not model.parts_at(loc).is_empty(),
 					"missing hit location %s in %s" % [
 							Location.code(loc), chassis])
+		var inspected := VxConnectivity.audit(model)
+		check(inspected["pass"],
+				"weak or detached connected masses %s: %s" % [
+						chassis, inspected["faults"]])
 
 
-func test_no_reused_mirror_target_or_unparented_mirrored_arms() -> void:
+func test_unique_parts_and_valid_mirror_targets() -> void:
 	for chassis: String in SCULPTED:
 		var source := _recipe(chassis, "_shape")
 		var names := {}
