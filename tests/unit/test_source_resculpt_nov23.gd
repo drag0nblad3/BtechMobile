@@ -108,8 +108,8 @@ func test_source_resculpts_keep_connected_articulated_parts() -> void:
 
 
 func test_koshi_three_models_keep_separate_art_and_weapon_muzzles() -> void:
-    for name in ["koshi_standard", "koshi_standard_2", "koshi_standard_3"]:
-        var path := "res://data/voxels/" + name + ".json"
+    for name: String in ["koshi_standard", "koshi_standard_2", "koshi_standard_3"]:
+        var path: String = "res://data/voxels/" + name + ".json"
         var model := VxModel.load_file(path)
         check(model.errors.is_empty(), name + " overlay resolves cleanly")
         var d := _data(name)
