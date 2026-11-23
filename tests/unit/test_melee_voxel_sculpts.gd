@@ -52,12 +52,16 @@ func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
 		check(float(m.ready_arm.get("RA", 0.0)) > 0.2,
 				"%s: weapon arm should have a readable guard pose" % id)
 		check(not m.ready_arm.has("LA"), "%s: off-hand must stay free" % id)
+		check(float(m.ready_roll.get("RA", 0.0)) > 0.1,
+				"%s: axe should clear the torso in the front silhouette" % id)
 		var mech := VxMech.new()
 		mech.model = m
 		mech.build()
 		mech.anim._process(0.016)
 		check(mech.shoulders[1].rotation.x > 0.2,
 				"%s: actual rig must raise weapon arm" % id)
+		check(mech.shoulders[1].rotation.z > 0.1,
+				"%s: actual rig must present the head clear of the torso" % id)
 		mech.free()
 
 
