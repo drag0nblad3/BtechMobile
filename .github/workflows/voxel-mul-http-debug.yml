@@ -25,6 +25,8 @@ jobs:
               table=re.search(r'<table[^>]*class="[^"]*infobox[^"]*"[^>]*>',data,re.I)
               img=re.findall(r'<img[^>]*src="([^"]+)"[^>]*>',data,re.I)[:3]
               print('SARNA_DEBUG',slug,'len',len(data),'title',html.unescape(t.group(1) if t else ''),'infobox',bool(table),'imgs',img,'head',repr(data[:100]))
+              if table:
+                print('SARNA_INFOBOX',slug,repr(data[table.start():table.start()+2300]))
             except Exception as e:
               print('SARNA_ERROR',slug,type(e).__name__,str(e))
           PY
