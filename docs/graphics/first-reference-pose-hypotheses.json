@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "status": "ROUGH_VISUAL_HYPOTHESES_NOT_VERIFIED_AGAINST_RENDER",
+  "models": {
+    "phoenix_hawk": {
+      "quarter": {
+        "camera": {
+          "yaw_deg": 18,
+          "pitch_deg": -19,
+          "roll_deg": 0,
+          "projection": "perspective",
+          "distance_heights": 4
+        },
+        "joints": {
+          "la": [
+            8,
+            0,
+            -72
+          ],
+          "ra": [
+            0,
+            0,
+            12
+          ],
+          "ll": [
+            -5,
+            0,
+            -2
+          ],
+          "ll_shin": [
+            -12,
+            0,
+            0
+          ],
+          "ll_foot": [
+            12,
+            0,
+            0
+          ],
+          "rl": [
+            62,
+            0,
+            5
+          ],
+          "rl_shin": [
+            -84,
+            0,
+            0
+          ],
+          "rl_foot": [
+            24,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "battleaxe": {
+      "front": {
+        "camera": {
+          "yaw_deg": 7,
+          "pitch_deg": -6,
+          "roll_deg": 0,
+          "projection": "perspective",
+          "distance_heights": 4.8
+        },
+        "joints": {
+          "la": [
+            -12,
+            0,
+            -9
+          ],
+          "ra": [
+            -10,
+            0,
+            7
+          ],
+          "ll": [
+            3,
+            0,
+            -6
+          ],
+          "ll_shin": [
+            -8,
+            0,
+            0
+          ],
+          "rl": [
+            -5,
+            0,
+            8
+          ],
+          "rl_shin": [
+            9,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  },
+  "_guide": "Reference photo pose hypothesis revision based on side-by-side silhouette log: one planted leg, one sharply raised knee, outstretched cannon arm; angle estimated from current Catalyst studio artwork. These are NOT approved rig settings."
+}

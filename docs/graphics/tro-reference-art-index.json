@@ -1,0 +1,2731 @@
+{
+  "schema_version": 1,
+  "source_catalogs": [
+    "https://www.sarna.net/files/media/images/product_scans/tro_scans/mech/",
+    "https://www.sarna.net/files/media/images/product_scans/tro_scans/vehicle/"
+  ],
+  "total_visuals": 334,
+  "already_plastic": 159,
+  "matched_TRO": 82,
+  "unmatched": [
+    "alfar",
+    "blade",
+    "bombard",
+    "daedalus",
+    "dragoon",
+    "ebon_jaguar",
+    "eisenfaust",
+    "exhumer",
+    "flashfire",
+    "glass_spider",
+    "gravedigger",
+    "hammerhands",
+    "hatamoto_hi",
+    "hatamoto_kaze",
+    "hatamoto_ku",
+    "hatamoto_mizo",
+    "hel",
+    "hermes_iii",
+    "hermit_crab",
+    "hound",
+    "jackrabbit",
+    "jagermech_iii",
+    "juggernaut",
+    "koschei",
+    "koto",
+    "nova_t",
+    "onslaught",
+    "orochi",
+    "phoenix",
+    "rampage",
+    "rattlesnake",
+    "rattlesnake_ii",
+    "rook",
+    "rook_nh1b",
+    "spider_sdr10k",
+    "suburbanmech",
+    "swordsman",
+    "talos",
+    "tiburon",
+    "titan",
+    "toro",
+    "tsunami",
+    "verfolger",
+    "victor_vtrcr",
+    "von_rohrs_hebi",
+    "warlord",
+    "werewolf",
+    "wolf_trap_tora",
+    "archetype/artillery_carrier",
+    "archetype/attack_vtol",
+    "archetype/battle_armor_elementals",
+    "archetype/field_emplacement",
+    "archetype/hover_scout",
+    "archetype/hover_tank",
+    "archetype/infantry_jump",
+    "archetype/infantry_motorized",
+    "archetype/infantry_rifles",
+    "archetype/lrm_carrier",
+    "archetype/missile_emplacement",
+    "archetype/savior_repair_vehicle",
+    "archetype/tracked_tank",
+    "archetype/transport_vtol",
+    "archetype/wheeled_apc",
+    "archetype/wheeled_supply_truck",
+    "vehicle/behemoth_heavy_tank",
+    "vehicle/bulldog_medium_tank",
+    "vehicle/condor_heavy_hover_tank",
+    "vehicle/demolisher_heavy_tank_clan",
+    "vehicle/demolisher_heavy_tank_mk_i",
+    "vehicle/drillson_heavy_hover_tank",
+    "vehicle/galleon_light_tank_gal_100",
+    "vehicle/hetzer_wheeled_assault_gun",
+    "vehicle/j_edgar_light_hover_tank",
+    "vehicle/lrm_carrier",
+    "vehicle/lrm_carrier_c",
+    "vehicle/manticore_heavy_tank",
+    "vehicle/patton_tank",
+    "vehicle/pegasus_scout_hover_tank",
+    "vehicle/pike_support_vehicle",
+    "vehicle/pike_support_vehicle_clan",
+    "vehicle/schrek_ppc_carrier",
+    "vehicle/skulker_wheeled_scout_tank",
+    "vehicle/srm_carrier",
+    "vehicle/srm_carrier_c",
+    "vehicle/vedette_medium_tank",
+    "vehicle/von_luckner_heavy_tank_vnl_k65n",
+    "battle_armor/elemental_ba_ap_gauss",
+    "battle_armor/elemental_ba_flamer",
+    "battle_armor/elemental_ba_laser",
+    "battle_armor/elemental_ba_mg",
+    "battle_armor/is_standard_ba_flamer",
+    "battle_armor/is_standard_ba_laser",
+    "battle_armor/is_standard_ba_mg"
+  ],
+  "candidates": [
+    {
+      "model": "albatross",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/albatross.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/albatross.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "albatross.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "apollo",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/apollo.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/apollo.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "apollo.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "arctic_wolf",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/arcticwolf.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/arcticwolf.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "arcticwolf.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "bandersnatch",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/bandersnatch.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/bandersnatch.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "bandersnatch.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "bane",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/bane.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/bane.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "bane.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "battle_hawk",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/battlehawk.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/battlehawk.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "battlehawk.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "behemoth",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/behemoth.jpg",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/behemoth.jpg",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "behemoth.jpg",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "brigand",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/brigand_ldt-1.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/brigand_ldt-1.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "brigand_ldt-1.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cerberus",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/cerberus.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/cerberus.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "cerberus.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cestus",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/cestus.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/cestus.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "cestus.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "champion",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/champion.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/champion.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "champion.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cobra",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/cobra.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/cobra.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "cobra.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cossack",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/cossack.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/cossack.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "cossack.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "cronus",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/cronus_cns-5m.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/cronus_cns-5m.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "cronus_cns-5m.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "daikyu",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/daikyu.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/daikyu.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "daikyu.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "daimyo",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/daimyo.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/daimyo.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "daimyo.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "dart",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/dart.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/dart.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "dart.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "duan_gung",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/duangung.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/duangung.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "duangung.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "eagle",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/eagle.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/eagle.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "eagle.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "enfield",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/enfield.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/enfield.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "enfield.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "enforcer_iii",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/enforceriii.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/enforceriii.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "enforceriii.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "executioner",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/executioner.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/executioner.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "executioner.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "falcon",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/falcon.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/falcon.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "falcon.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "falcon_hawk",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/falconhawk.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/falconhawk.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "falconhawk.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "fire_moth",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/firemoth.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/firemoth.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "firemoth.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "fireball",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/fireball.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/fireball.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "fireball.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "galahad",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/galahad.jpg",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/galahad.jpg",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "galahad.jpg",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "gallowglas",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/gallowglas.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/gallowglas.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "gallowglas.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "gargoyle",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/gargoyle.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/gargoyle.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "gargoyle.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "garm",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/garm.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/garm.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "garm.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "grendel",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/grendel.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/grendel.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "grendel.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "grim_reaper",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/grimreaper.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/grimreaper.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "grimreaper.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ha_otoko",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/haotoko.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/haotoko.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "haotoko.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hellbringer",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/hellbringer.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/hellbringer.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "hellbringer.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hercules",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/hercules.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/hercules.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "hercules.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hermes",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/hermes.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/hermes.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "hermes.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hornet",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/hornet.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/hornet.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "hornet.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "howler",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/howler.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/howler.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "howler.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "huntsman",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/huntsman.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/huntsman.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "huntsman.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "hussar",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/hussar.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/hussar.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "hussar.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "ice_ferret",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/iceferret.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/iceferret.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "iceferret.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "imp",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/imp.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/imp.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "imp.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "initiate",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/initiate.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/initiate.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "initiate.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "jackal",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/jackal.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/jackal.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "jackal.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "jinggau",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/jinggau.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/jinggau.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "jinggau.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "kabuto",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/kabuto.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/kabuto.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "kabuto.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "katana",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/katana.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/katana.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "katana.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "kit_fox",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/kitfox.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/kitfox.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "kitfox.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "lightray",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/lightray_lgh-4w.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/lightray_lgh-4w.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "lightray_lgh-4w.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "lineholder",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/lineholder.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/lineholder.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "lineholder.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "lynx",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/lynx.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/lynx.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "lynx.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "mad_dog",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/maddog.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/maddog.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "maddog.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "marshal",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/marshal.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/marshal.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "marshal.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "nexus",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/nexus.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/nexus.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "nexus.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "night_hawk",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/nighthawk.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/nighthawk.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "nighthawk.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "nova",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/nova.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/nova.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "nova.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "raijin",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/raijin.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/raijin.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "raijin.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "raptor",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/raptor.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/raptor.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "raptor.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "razorback",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/razorback.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/razorback.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "razorback.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "salamander",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/salamander.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/salamander.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "salamander.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "sentry",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/sentry.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/sentry.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "sentry.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "shootist",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/shootist.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/shootist.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "shootist.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "snake",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/snake.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/snake.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "snake.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "stealth",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/stealth.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/stealth.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "stealth.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "stormcrow",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/stormcrow.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/stormcrow.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "stormcrow.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "striker",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/striker.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/striker.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "striker.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "sunder",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/sunder.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/sunder.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "sunder.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "talon",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/talon.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/talon.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "talon.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "tarantula",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/tarantula.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/tarantula.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "tarantula.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "tempest",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/tempest.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/tempest.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "tempest.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thorn",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/thorn.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/thorn.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "thorn.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thunder",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/thunder.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/thunder.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "thunder.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "thunder_stallion",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/thunderstallion.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/thunderstallion.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "thunderstallion.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "timber_wolf",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/timberwolf.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/timberwolf.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "timberwolf.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "urbanmech",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/urbanmech.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/urbanmech.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "urbanmech.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "viper",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/viper.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/viper.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "viper.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "warhawk",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/warhawk.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/warhawk.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "warhawk.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "watchman",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/watchman.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/watchman.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "watchman.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "wolf_trap",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/wolftrap.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/wolftrap.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "wolftrap.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "wyvern",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/wyvern.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/wyvern.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "wyvern.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "yeoman",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/yeoman.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/yeoman.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "yeoman.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    },
+    {
+      "model": "yu_huang",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/yuhuang.gif",
+      "image_url": "https://www.sarna.net/files/download/media/images/product_scans/tro_scans/mech/yuhuang.gif",
+      "photo_credit": "Official TRO illustration, hosted by Sarna",
+      "source_type": "legacy_official_TRO_illustration",
+      "image_filename": "yuhuang.gif",
+      "white_background_threshold": 192,
+      "crop_bottom_fraction": 1,
+      "pose_description": "Illustration pose, not verified against rig",
+      "camera_assessment": "Illustration perspective not yet measured",
+      "status": "TRO_IMAGE_LEAD_NEEDS_POSE_CAMERA_AND_MASK_REVIEW",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": 0,
+        "projection": "orthographic",
+        "distance_heights": 4.5
+      },
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      }
+    }
+  ]
+}
