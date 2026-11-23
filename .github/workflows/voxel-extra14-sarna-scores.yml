@@ -1,0 +1,34 @@
+name: Additional 14 BattleTechWiki source silhouettes
+on:
+  push:
+    branches: [audit/sarna-extra-14-scores-20261123]
+permissions:
+  contents: read
+jobs:
+  silhouettes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - name: Godot 4.5.1 for real posed-source geometry
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Import classes and install photo masking dependency
+        run: |
+          python3 -m pip install --quiet --user Pillow
+          godot --headless --import
+      - name: Score 14 new legitimate art references at camera candidates
+        run: |
+          python3 tools/run_tro_batch.py \
+            --index docs/graphics/sarna-reference-additions-14.json \
+            --poses res://docs/graphics/reference-stance-poses.json \
+            --output /tmp/extra-14 --offset 0 --limit 20
+      - name: Derived masks and scores; no copied reference art
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extra-14-reference-trials
+          path: /tmp/extra-14
+          if-no-files-found: warn
