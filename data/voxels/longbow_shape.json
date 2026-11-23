@@ -1302,6 +1302,118 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -9,
+              25,
+              -11
+            ],
+            [
+              -9,
+              25,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              25,
+              -10
+            ],
+            [
+              -9,
+              25,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              27,
+              -11
+            ],
+            [
+              -9,
+              27,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              27,
+              -10
+            ],
+            [
+              -9,
+              27,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -7,
+              25,
+              -11
+            ],
+            [
+              -7,
+              25,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -7,
+              25,
+              -10
+            ],
+            [
+              -7,
+              25,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -7,
+              27,
+              -11
+            ],
+            [
+              -7,
+              27,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -7,
+              27,
+              -10
+            ],
+            [
+              -7,
+              27,
+              -10
+            ]
+          ]
         }
       ],
       "parent": "ct"
@@ -1325,6 +1437,118 @@
             ]
           ],
           "mat": "gun"
+        },
+        {
+          "erase": [
+            [
+              8,
+              25,
+              -11
+            ],
+            [
+              8,
+              25,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              8,
+              25,
+              -10
+            ],
+            [
+              8,
+              25,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              8,
+              27,
+              -11
+            ],
+            [
+              8,
+              27,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              8,
+              27,
+              -10
+            ],
+            [
+              8,
+              27,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              6,
+              25,
+              -11
+            ],
+            [
+              6,
+              25,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              6,
+              25,
+              -10
+            ],
+            [
+              6,
+              25,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              6,
+              27,
+              -11
+            ],
+            [
+              6,
+              27,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              6,
+              27,
+              -10
+            ],
+            [
+              6,
+              27,
+              -10
+            ]
+          ]
         }
       ]
     },
@@ -3804,5 +4028,5 @@
     "edited_vertices": 130,
     "stages_with_changes": 15
   },
-  "notes": " Re-proportion the two circular arm launcher faces to accommodate twenty actually separated LRM-20 tubes per arm, not contiguous empty strips, and add individual torso LRM-5 muzzles."
+  "notes": " Re-proportion the two circular arm launcher faces to accommodate twenty actually separated LRM-20 tubes per arm, not contiguous empty strips, and add individual torso LRM-5 muzzles. Topology QA: subtract exact sparse unsupported slivers leftover after launcher openings; no new positive hull added."
 }
