@@ -60,6 +60,12 @@ def rasterize(spec):
     pitch = spec["pitch"]
     all_parts = {}
     for part in spec["parts"]:
+        if part.get("claim_from"):
+            from subassembly import claim
+            if part["name"] in all_parts:
+                raise ValueError("duplicate subassembly: " + part["name"])
+            all_parts[part["name"]] = claim(all_parts, part, pitch)
+            continue
         cells = {}
         for shape in part["shapes"]:
             sections = shape["sections"]
@@ -153,6 +159,9 @@ def audit(spec, parts):
         if not strong_contact(parts[name], parent):
             errors.append("%s: no backed 2x2 face contact to %s" %
                           (name, parent_name))
+        if part.get("attach_normal"):
+            from subassembly import check_direction
+            errors.extend(check_direction(part, parts[name], parent))
     return errors
 
 
@@ -175,6 +184,24 @@ def encode_boxes(cells):
     return boxes
 
 
+def ordered_for_export(spec):
+    """Source claim order may differ from Godot's required parent-first order."""
+    pending = {p["name"]: p for p in spec["parts"]}
+    ordered = []
+    done = set()
+    while pending:
+        ready = [n for n, p in pending.items()
+                 if not p.get("parent") or p["parent"] in done]
+        if not ready:
+            raise ValueError("cyclic or orphaned rig hierarchy: " +
+                             ",".join(pending))
+        for name in ready:
+            p = pending.pop(name)
+            ordered.append(p)
+            done.add(name)
+    return ordered
+
+
 def export(spec, parts):
     pitch = spec["pitch"]
     out = {"id": spec["id"] + "_experiment",
@@ -183,7 +210,7 @@ def export(spec, parts):
            "exclusive_parts": False, "legs": spec["legs"],
            "punch": spec.get("punch", False),
            "materials": spec["materials"], "parts": [], "muzzles": {}}
-    for p in spec["parts"]:
+    for p in ordered_for_export(spec):
         obj = {key: p[key] for key in ("name", "loc", "parent", "joint")
                if key in p}
         obj["pivot"] = [round(v / pitch, 4)
