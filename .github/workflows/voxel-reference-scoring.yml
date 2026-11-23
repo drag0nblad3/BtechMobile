@@ -7,6 +7,7 @@ on:
       - 'tools/export_reference_review_masks.gd'
       - 'tools/score_reference_silhouettes.py'
       - 'tools/score_first_reference_photos.py'
+      - 'tools/preview_reference_mask_pairs.py'
       - 'docs/graphics/first-reference-*.json'
       - 'docs/graphics/reference-stance-poses.json'
       - 'tests/unit/test_reference_*.gd'
@@ -73,6 +74,11 @@ jobs:
                     item.get('score_0_100'), item.get('score_camera_adjusted_unverified'),
                     item.get('best_camera_provisional'), item.get('error', ''))
           PY
+      - name: Inspect compact silhouette overlays in logs
+        run: |
+          python3 tools/preview_reference_mask_pairs.py \
+            --report /tmp/reference-qa/candidate-fit.json \
+            --models /tmp/reference-qa/models
       - name: Upload only masks and provisional metrics, never source photos
         if: always()
         uses: actions/upload-artifact@v4
