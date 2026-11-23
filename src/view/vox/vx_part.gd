@@ -21,8 +21,7 @@ var faces_before_merge := 0  ## Visible voxel faces (2 triangles each without me
 var _pivot := Vector3.ZERO
 var _size := 0.05
 var _colors := PackedColorArray()
-var _roles: Array[String] = []
-var _paintable: Dictionary = {}  ## Material index -> eligibility, separate from damage role.
+var _paintable: Array[bool] = []  ## Independent of the source's damage role.
 var _paint_material: ShaderMaterial
 
 
@@ -35,7 +34,7 @@ func setup(spec: Dictionary, model: VxModel) -> void:
 	_pivot = spec["pivot"]
 	_size = model.voxel_size
 	_colors = model.colors
-	_roles = model.roles
+	_paintable.resize(model.roles.size())
 	for i in model.roles.size():
 		_paintable[i] = model.roles[i] == "armor"
 	for material_name: String in model._mat:
@@ -119,7 +118,7 @@ func rebuild() -> void:
 	for c: Vector3i in cells:
 		var material_index: int = cells[c]
 		var color: Color = _colors[material_index]
-		var role_alpha := 1.0 if _paintable.get(material_index, false) else 0.25
+		var role_alpha := 1.0 if _paintable[material_index] else 0.25
 		if _near_hole(c):
 			color = color.lerp(SCORCH, 0.3)
 		for f in 6:
