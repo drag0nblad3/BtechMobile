@@ -1,0 +1,35 @@
+{
+ "id": "harasser_missile_platform_lrm",
+ "name": "Harasser Missile Platform (LRM)",
+ "tonnage": 25,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 10,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 7,
+  "RS": 6,
+  "LS": 6,
+  "RR": 7,
+  "TU": 6
+ },
+ "equipment": {
+  "TU": [
+   "lrm10"
+  ],
+  "BD": [
+   "ammo:lrm10*3"
+  ]
+ },
+ "source": {
+  "mul_id": 1389,
+  "megamek": "data/mekfiles/vehicles/3039u/Harasser Missile Platform (LRM).blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 412
+}

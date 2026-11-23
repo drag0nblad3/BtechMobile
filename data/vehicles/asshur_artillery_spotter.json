@@ -1,0 +1,40 @@
+{
+ "id": "asshur_artillery_spotter",
+ "name": "Asshur Artillery Spotter",
+ "tonnage": 20,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 13,
+  "RS": 11,
+  "LS": 11,
+  "RR": 9,
+  "TU": 13
+ },
+ "equipment": {
+  "FR": [
+   "c_tag"
+  ],
+  "TU": [
+   "c_er_medium_laser*2",
+   "c_streak_srm6"
+  ],
+  "BD": [
+   "ammo:c_streak_srm6",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 133,
+  "megamek": "data/mekfiles/vehicles/3060u/Asshur Artillery Spotter.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 930
+}

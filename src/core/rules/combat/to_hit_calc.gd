@@ -16,7 +16,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	th.impossible = BaFire.problem(state, attacker)
 	if th.impossible != "":
 		return th
-	var swarm := BaSwarm.fire_check(attacker, w, target)
+	var swarm := BaSwarm.fire_check(state, attacker, w, target)
 	if swarm != null:
 		return swarm
 	if BaSwarm.is_swarm(w):
@@ -122,6 +122,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 			th.add("long range" + wet, 4, "%d hexes is long range for %s (%s)%s. Closing in would remove this." % [rdist, p.name, p.range_text(),
 					"; water slows the beam by one range bracket" if wet != "" else ""])
 	Stealth.add_mods(th, target, br)
+	BaStealth.add_mods(th, target, br)
 	if p.min_range > 0 and dist <= p.min_range:
 		th.add("minimum range", p.min_range - dist + 1,
 				"%s is clumsy up close: inside its minimum range of %d, each hex nearer is +1." % [p.name, p.min_range])
@@ -129,6 +130,8 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	if own != 0:
 		th.add(w.def.name, own, "%s is %s accurate than a standard weapon: %+d to hit%s." % [
 				w.def.name, "more" if own < 0 else "less", own, " at this range" if not w.def.to_hit_by_range.is_empty() else ""])
+	if w.artemis_v and WeaponModes.has_artemis(w) and Ecm.artemis_blocked(state, attacker, target, th) == "":
+		th.add("Artemis V", -1, "Clan Artemis V guidance improves this direct missile attack.")
 	TargetingComputer.add(th, attacker, w)
 	Narc.add(th, state, attacker, w, target)
 	NarcPods.add_haywire(th, state, attacker)

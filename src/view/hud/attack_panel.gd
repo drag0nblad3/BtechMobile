@@ -18,23 +18,11 @@ static func build(title: String, options: Array, selected: Dictionary, level: in
 	UiSkin.label(head, "heading")
 	box.add_child(head)
 	UiSkin.rule(box, UiSkin.CYAN)
-	var heat := 0
-	var expected := 0.0
-	for o: Dictionary in options:
-		if selected.has(o["key"]) and o["to_hit"].possible():
-			heat += int(o.get("heat", 0))
-			expected += float(o.get("expected", 0.0))
-	if options.any(func(o: Dictionary) -> bool: return o.has("heat")):
-		var volley := Label.new()
-		volley.text = "SELECTED VOLLEY  ·  +%d heat  ·  ~%.1f expected damage" % [heat, expected]
-		volley.add_theme_font_size_override("font_size", 17)
-		UiSkin.label(volley, "section")
-		box.add_child(volley)
 	for o: Dictionary in options:
 		var th: ToHit = o["to_hit"]
 		var b := CheckButton.new()
-		b.custom_minimum_size = Vector2(0, 52)
-		b.add_theme_font_size_override("font_size", 19)
+		b.custom_minimum_size = Vector2(0, 58)
+		b.add_theme_font_size_override("font_size", 20)
 		UiSkin.button(b, "selected" if selected.has(o["key"]) else "subtle")
 		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		if th.possible():

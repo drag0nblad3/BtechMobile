@@ -1,0 +1,37 @@
+{
+ "id": "badger_c_tracked_transport_e",
+ "name": "Badger (C) Tracked Transport E",
+ "tonnage": 30,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 6,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 20,
+  "RS": 18,
+  "LS": 18,
+  "RR": 14,
+  "TU": 18
+ },
+ "equipment": {
+  "TU": [
+   "c_atm3",
+   "c_er_small_laser"
+  ],
+  "BD": [
+   "ammo:c_atm3*2",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 196,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Badger (C) Tracked Transport E.blk",
+  "role": "Scout",
+  "bv": "megamek"
+ },
+ "bv": 474
+}

@@ -120,7 +120,12 @@ func refresh(builder: ForceBuilder, db: UnitDb, active: bool) -> void:
 		var d: UnitDef = db.get_def(roster[i])
 		var row := HBoxContainer.new()
 		_rows.add_child(row)
-		var name := UiKit.label(row, d.display_name(), 17)
+		var history := ""
+		if builder.availability_mode != EraAvailability.Mode.OFF:
+			var report := builder.availability_for(_side, d.id)
+			if report["status"] != "available":
+				history = "  [!] " + String(report["reason"])
+		var name := UiKit.label(row, d.display_name() + history, 17)
 		name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name.max_lines_visible = 2
 		UiSkin.label(name)

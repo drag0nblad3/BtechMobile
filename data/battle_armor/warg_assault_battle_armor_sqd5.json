@@ -1,0 +1,70 @@
+{
+ "id": "warg_assault_battle_armor_sqd5",
+ "name": "Warg Assault Battle Armor",
+ "model": "(Sqd5)",
+ "tonnage": 1,
+ "tech_base": "clan",
+ "battle_armor": {
+  "troopers": 5,
+  "armor": 16,
+  "ground_mp": 1,
+  "jump_mp": 0,
+  "claw": true,
+  "mechanized": false,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "small_pulse_laser",
+    "name": "Small Pulse Laser",
+    "type": "energy",
+    "damage": 3,
+    "short": 2,
+    "medium": 4,
+    "long": 6,
+    "to_hit": -2,
+    "pulse": true
+   },
+   {
+    "id": "light_machine_gun",
+    "name": "Light Machine Gun",
+    "type": "ballistic",
+    "damage": 1,
+    "short": 2,
+    "medium": 4,
+    "long": 6,
+    "ai": true
+   },
+   {
+    "id": "srm3",
+    "name": "SRM 3",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ammo_per_ton": 3,
+    "ammo_explodes": false
+   },
+   {
+    "id": "srm3",
+    "name": "SRM 3",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 3,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "ammo_per_ton": 3,
+    "ammo_explodes": false
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 8599,
+  "megamek": "data/mekfiles/battlearmor/3085u/Cutting Edge/Warg Assault BA (Sqd5).blk",
+  "bv": "megamek"
+ },
+ "bv": 655
+}

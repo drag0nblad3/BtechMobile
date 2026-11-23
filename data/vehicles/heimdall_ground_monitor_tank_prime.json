@@ -1,0 +1,43 @@
+{
+ "id": "heimdall_ground_monitor_tank_prime",
+ "name": "Heimdall Ground Monitor Tank Prime",
+ "tonnage": 95,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 106,
+  "RS": 70,
+  "LS": 70,
+  "RR": 47,
+  "TU": 59
+ },
+ "equipment": {
+  "FR": [
+   "c_lb10x_ac*2"
+  ],
+  "TU": [
+   "c_heavy_large_laser",
+   "c_streak_srm4*3"
+  ],
+  "BD": [
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_lb10x_ac",
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_streak_srm4*3",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 4293,
+  "megamek": "data/mekfiles/vehicles/3067/3067 Clan Land/Heimdall Ground Monitor Tank Prime.blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 1943
+}

@@ -1,0 +1,46 @@
+{
+ "id": "kobold_battle_armor_sl_flamer_sqd4",
+ "name": "Kobold Battle Armor",
+ "model": "[SL/Flamer](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 5,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": false,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "small_laser",
+    "name": "Small Laser",
+    "type": "energy",
+    "damage": 3,
+    "short": 1,
+    "medium": 2,
+    "long": 3
+   },
+   {
+    "id": "flamer",
+    "name": "Flamer",
+    "type": "energy",
+    "damage": 2,
+    "short": 1,
+    "medium": 2,
+    "long": 3,
+    "heat_damage": true,
+    "ai": true
+   }
+  ],
+  "armor_type": "stealth"
+ },
+ "source": {
+  "mul_id": 4457,
+  "megamek": "data/mekfiles/battlearmor/3075/Kobold BA [SL Flamer] (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 187
+}

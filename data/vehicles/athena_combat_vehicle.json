@@ -1,0 +1,43 @@
+{
+ "id": "athena_combat_vehicle",
+ "name": "Athena Combat Vehicle",
+ "tonnage": 75,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 38,
+  "RS": 26,
+  "LS": 26,
+  "RR": 24,
+  "TU": 30
+ },
+ "equipment": {
+  "FR": [
+   "c_gauss_rifle*2",
+   "c_lrm10"
+  ],
+  "TU": [
+   "c_er_medium_laser*2",
+   "c_machine_gun*2"
+  ],
+  "BD": [
+   "targeting_computer",
+   "ammo:c_machine_gun:half",
+   "ammo:c_lrm10",
+   "ammo:c_gauss_rifle*4"
+  ]
+ },
+ "source": {
+  "mul_id": 137,
+  "megamek": "data/mekfiles/vehicles/3060u/Athena Combat Vehicle.blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 1855
+}

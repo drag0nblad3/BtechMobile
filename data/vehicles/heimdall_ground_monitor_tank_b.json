@@ -1,0 +1,41 @@
+{
+ "id": "heimdall_ground_monitor_tank_b",
+ "name": "Heimdall Ground Monitor Tank B",
+ "tonnage": 95,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 106,
+  "RS": 70,
+  "LS": 70,
+  "RR": 47,
+  "TU": 59
+ },
+ "equipment": {
+  "FR": [
+   "c_lb10x_ac*2"
+  ],
+  "TU": [
+   "c_lrm20*3"
+  ],
+  "BD": [
+   "case",
+   "ammo:c_lb10x_ac*2",
+   "ammo:c_lb10x_ac:cluster",
+   "ammo:c_lrm20*6"
+  ]
+ },
+ "source": {
+  "mul_id": 5742,
+  "megamek": "data/mekfiles/vehicles/3067 Unabridged/Clan Vehicles/Heimdall Ground Monitor Tank B.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 2254
+}

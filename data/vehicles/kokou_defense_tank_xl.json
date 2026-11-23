@@ -1,0 +1,39 @@
+{
+ "id": "kokou_defense_tank_xl",
+ "name": "Kokou Defense Tank (XL)",
+ "tonnage": 70,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 45,
+  "RS": 30,
+  "LS": 30,
+  "RR": 22,
+  "TU": 45
+ },
+ "equipment": {
+  "FR": [
+   "c_lrm10"
+  ],
+  "TU": [
+   "c_large_pulse_laser*3"
+  ],
+  "BD": [
+   "ammo:c_lrm10",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 7673,
+  "megamek": "data/mekfiles/vehicles/Golden Century/Kokou Defense Tank (XL).blk",
+  "role": "Sniper",
+  "bv": "megamek"
+ },
+ "bv": 1474
+}

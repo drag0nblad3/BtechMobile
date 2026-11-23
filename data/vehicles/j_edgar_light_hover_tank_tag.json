@@ -1,0 +1,37 @@
+{
+ "id": "j_edgar_light_hover_tank_tag",
+ "name": "J. Edgar Light Hover Tank (TAG)",
+ "tonnage": 25,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 11,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 31,
+  "RS": 20,
+  "LS": 20,
+  "RR": 12,
+  "TU": 24
+ },
+ "equipment": {
+  "TU": [
+   "medium_laser*2",
+   "tag"
+  ],
+  "BD": [
+   "beagle_probe"
+  ]
+ },
+ "source": {
+  "mul_id": 1642,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 32/J. Edgar Light Hover Tank (TAG).blk",
+  "role": "Scout",
+  "bv": "sheet",
+  "sheet": "J. Edgar Light Hover Tank (TAG) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 564
+}

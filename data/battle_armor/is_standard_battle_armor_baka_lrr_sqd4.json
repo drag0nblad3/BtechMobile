@@ -1,0 +1,56 @@
+{
+ "id": "is_standard_battle_armor_baka_lrr_sqd4",
+ "name": "IS Standard Battle Armor",
+ "model": "(Baka) [LRR](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 9,
+  "ground_mp": 1,
+  "jump_mp": 0,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": false,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "light_recoilless_rifle",
+    "name": "Light Recoilless Rifle",
+    "type": "ballistic",
+    "damage": 2,
+    "short": 2,
+    "medium": 4,
+    "long": 6
+   },
+   {
+    "id": "srm2",
+    "name": "SRM 2 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 2,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   },
+   {
+    "id": "srm2",
+    "name": "SRM 2 (one-shot)",
+    "type": "missile",
+    "damage": 2,
+    "missiles": 2,
+    "short": 3,
+    "medium": 6,
+    "long": 9,
+    "one_shot": true
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 8022,
+  "megamek": "data/mekfiles/battlearmor/3150/IS Standard BA (Baka) [LRR](Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 191
+}

@@ -1,0 +1,55 @@
+{
+  "id": "stinger_stg3p",
+  "name": "Stinger",
+  "model": "STG-3P",
+  "tonnage": 20,
+  "walk_mp": 6,
+  "jump_mp": 6,
+  "heat_sinks": 10,
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 6,
+    "RA": 6,
+    "LT": 7,
+    "RT": 7,
+    "CT": 8,
+    "HD": 6,
+    "LL": 7,
+    "RL": 7
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 4
+  },
+  "equipment": {
+    "LT": [
+      "heat_sink",
+      "jump_jet*3",
+      "endo_steel*8"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*3",
+      "light_ppc",
+      "endo_steel*6"
+    ],
+    "LL": [
+      "heat_sink*2"
+    ],
+    "RL": [
+      "heat_sink*2"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. Light PPC; walks 6, runs 9, jumps 6.",
+  "sprite": "stinger",
+  "source": {
+    "mul_id": 3060,
+    "megamek": "data/mekfiles/meks/3085u/Phoenix/Stinger STG-3P.mtf",
+    "published": "RS:3085u-PP",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 489
+  },
+  "bv": 489
+}

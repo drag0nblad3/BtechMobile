@@ -14,19 +14,54 @@ Tyler's rule: designs and Battle Values are official, never guessed.
   with no free sheet, the value comes from MegaMek's own BV calculator
   (`source.bv: "megamek"`); it matched 486 of the 491 printed values we
   checked. `source.megamek_bv` keeps MegaMek's number for every design.
+- **Advanced-equipment variants** may use the official Master Unit List's published
+  BV when a free sheet is unavailable or cannot be verified. These carry
+  `source.bv: "mul"`, the MUL unit ID and its official URL; do not label such
+  values as independently verified free sheets or MegaMek calculations.
+  Initial additions: Spider SDR-10K, Victor VTR-Cr, Rook NH-3X,
+  Black Hawk (Nova) T and Nova Cat G. Their placements, cooling and armor
+  come from the individually named `.mtf` source files. These values are
+  strictly record-sheet data, not homebrew refits.
 - **Role lines** use the Master Unit List role (in MegaMek's files) with our
   own wording, the weapons and the speed.
 - **Combat vehicles** (`data/vehicles/`) come from MegaMek's `.blk` files
   (`data/mekfiles/vehicles/**`, same CC BY-NC-SA terms) with the BV printed
-  on the official Battlefield Support / Mercenaries record sheets.
+  on the official Battlefield Support / Mercenaries record sheets. Vehicles
+  with no free sheet (all Clan ones, most newer IS ones) take their BV from
+  MegaMek's calculator
+  (`source.bv: "megamek"`), which matches every sheet BV above.
 - **Battle armor** (`data/battle_armor/`) comes from MegaMek's `.blk` files
   (`data/mekfiles/battlearmor/**`) checked against the weapons on the free
   official sheets (Mercenaries ForcePack, ForcePacks Wave One, Aces: Scouring
-  Sands), with the BV printed there. Conventional infantry has no free sheet
-  with a BV yet, so none is in the game.
+  Sands), with the BV printed there. Squads without a free sheet use MegaMek's
+  BV calculator (`source.bv: "megamek"`), which gives the printed value for
+  all seven sheet squads. The `mechanized`, `anti_mech` and `magnets` flags
+  come from MegaMek's unit (canDoMechanizedBA, canMakeAntiMekAttacks, magnetic
+  claws). Conventional infantry needs its own rules and isn't in the game.
 - Record sheet PDFs and their text stay out of the repository (project files
   only). The converter scripts live outside the repo; to rebuild, convert the
   `.mtf` files again and look up the sheet BVs.
 - Loadouts that only exist to test one rule (a TSM or supercharger refit)
   are test fixtures in `tests/fixtures/units/`, ids `test_*`, never in the
   game.
+
+## Faction and era availability (official MUL)
+
+The offline historical-selection snapshot is generated from the official
+[Master Unit List](https://masterunitlist.battletech.com/) public static search
+index and its complete faction/era availability matrix, **not** from MegaMek
+file names or inferred technology periods.
+
+Run `python3 tools/import_mul_availability.py` or the repository's
+**Import canonical MUL availability** GitHub workflow to refresh
+`data/forces/availability.json`. The importer checks exact name/model,
+published BV, tonnage and official unit URL, respects the site's crawl delay,
+and records public MUL IDs, first introduction year, faction-era cells and
+snapshot date. `docs/mul-import-coverage.json` lists every unit variant still
+unmatched so these cannot accidentally be treated as canon.
+
+The November 22, 2026 snapshot verifies **674 of 697** game variants and
+**41,311** positive faction-era cells for **71** factions and **12** eras.
+An absent faction-era cell in a *published* matrix means unavailable;
+an unmatched variant means unverified and is blocked only in Strict mode.
+See `docs/era-faction-availability.md` for implementation and play rules.

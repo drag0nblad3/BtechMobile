@@ -17,6 +17,8 @@ var _setup: ForceBuilderSetup
 var _starter_confirm: ConfirmationDialog
 var _pending_starter: Dictionary = {}
 var _pending_side := -1
+var _tabs: Array[Button] = []  ## FORCES, BATTLEFIELD
+var _pages: Array[Control] = []
 
 
 ## Android Back returns to the launcher without exiting the app.
@@ -52,7 +54,9 @@ func _ready() -> void:
 	var title := UiKit.label(heading, "FORCE BUILDER  /  SKIRMISH", 27)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(title, "heading")
-	UiSkin.label(UiKit.label(heading, "SEARCH → ADD → DEPLOY", 16), "section")
+	var steps := UiKit.label(heading, "SEARCH → ADD → DEPLOY", 16)
+	steps.autowrap_mode = TextServer.AUTOWRAP_OFF
+	UiSkin.label(steps, "section")
 	UiSkin.rule(layout)
 	var body := HBoxContainer.new()
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -65,9 +69,32 @@ func _ready() -> void:
 	right.size_flags_stretch_ratio = 1.0
 	right.add_theme_constant_override("separation", 8)
 	body.add_child(right)
+	# Two pages share the right column so neither is squeezed: the rosters,
+	# and the battlefield setup (map, BV limit, mission, players, options).
+	var tab_row := HBoxContainer.new()
+	tab_row.add_theme_constant_override("separation", 6)
+	right.add_child(tab_row)
+	for i in 2:
+		var page := i
+		var tab := UiKit.button(tab_row, "", func(): _show_page(page), Vector2(0, 50), "subtle")
+		tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tab.add_theme_font_size_override("font_size", 17)
+		tab.clip_text = true
+		_tabs.append(tab)
+	_tabs[1].name = "BattlefieldTab"
+	var forces := VBoxContainer.new()
+	forces.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	forces.add_theme_constant_override("separation", 8)
+	right.add_child(forces)
+	var field := VBoxContainer.new()
+	field.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	right.add_child(field)
+	_pages = [forces, field]
 	var side_row := HBoxContainer.new()
-	right.add_child(side_row)
-	UiSkin.label(UiKit.label(side_row, "ADD TO:", 18), "section")
+	forces.add_child(side_row)
+	var add_to := UiKit.label(side_row, "ADD TO:", 18)
+	add_to.autowrap_mode = TextServer.AUTOWRAP_OFF
+	UiSkin.label(add_to, "section")
 	for side in 2:
 		var idx := side
 		var choose := UiKit.button(side_row, "", func(): _select_side(idx),
@@ -78,17 +105,17 @@ func _ready() -> void:
 	var roster_row := HBoxContainer.new()
 	roster_row.custom_minimum_size.y = 180
 	roster_row.add_theme_constant_override("separation", 8)
-	right.add_child(roster_row)
+	forces.add_child(roster_row)
 	for side in 2:
 		var idx := side
 		var roster := ForceRosterPanel.new()
 		roster.build(roster_row, idx, func(): _select_side(idx), _on_remove,
 			_choose_starter)
 		_rosters.append(roster)
-	_feedback = UiKit.label(right, "", 18)
+	_feedback = UiKit.label(forces, "", 18)
 	UiSkin.label(_feedback, "section")
 	_setup = ForceBuilderSetup.new()
-	_setup.build(right, builder, map_picker, bot_sides, _refresh, _notify,
+	_setup.build(field, builder, map_picker, bot_sides, _refresh, _notify,
 		{"continue": _continue_saved, "replay": _watch_saved_replay,
 		"forensics": _open_forensics, "training": open_training})
 	var footer := HBoxContainer.new()
@@ -100,6 +127,10 @@ func _ready() -> void:
 	_start_button = UiKit.button(footer, "START BATTLE", _start,
 		Vector2(275, 68), "primary")
 	_start_button.name = "StartBattle"
+	if BattleSave.has_game():
+		var resume := UiKit.button(footer, "CONTINUE", _continue_saved, Vector2(190, 68), "selected")
+		resume.tooltip_text = "Resume your saved battle"
+		footer.move_child(resume, _start_button.get_index())
 	_starter_confirm = ConfirmationDialog.new()
 	_starter_confirm.title = "Replace selected force?"
 	_starter_confirm.ok_button_text = "LOAD FORMATION"
@@ -108,10 +139,17 @@ func _ready() -> void:
 	_starter_confirm.confirmed.connect(_apply_pending_starter)
 	UiSkin.button(_starter_confirm.get_ok_button(), "primary")
 	UiSkin.button(_starter_confirm.get_cancel_button(), "subtle")
-	_refresh()
+	_show_page(0)
 	if BattleLaunch.open_training:
 		BattleLaunch.open_training = false
 		open_training.call_deferred()
+
+
+func _show_page(page: int) -> void:
+	for i in _pages.size():
+		_pages[i].visible = i == page
+		UiSkin.button(_tabs[i], "selected" if i == page else "subtle")
+	_refresh()
 
 
 func _select_side(side: int) -> void:
@@ -184,7 +222,12 @@ func _on_add(side: int, def_id: String) -> void:
 		_notify(reason)
 		return
 	builder.add(side, def_id)
-	_notify("%s added to %s." % [db.get_def(def_id).display_name(), Names.side(side)])
+	var message := "%s added to %s." % [db.get_def(def_id).display_name(), Names.side(side)]
+	if builder.availability_mode == EraAvailability.Mode.ADVISORY:
+		var report := builder.availability_for(side, def_id)
+		if report["status"] != "available":
+			message += " Historical note: " + String(report["reason"])
+	_notify(message)
 	_refresh()
 
 
@@ -195,12 +238,17 @@ func _refresh() -> void:
 		UiSkin.button(_side_buttons[side], "selected" if side == _active_side else "subtle")
 	catalog.refresh()
 	_setup.refresh()
+	_tabs[0].text = "FORCES  •  %d vs %d" % [builder.rosters[0].size(), builder.rosters[1].size()]
+	_tabs[1].text = "BATTLEFIELD  •  %d BV" % builder.budget
 	var red := builder.bv(0)
 	var blue := builder.bv(1)
 	var within := red <= builder.budget and blue <= builder.budget
 	var ready := builder.ready_to_fight() and within
 	_start_button.disabled = not ready
-	if not builder.ready_to_fight():
+	var historical_issue := builder.first_restriction_issue()
+	if builder.availability_mode == EraAvailability.Mode.STRICT and historical_issue != "":
+		_status.text = "Historical restriction: " + historical_issue
+	elif not builder.ready_to_fight():
 		_status.text = "Add at least one unit to each force to begin."
 	elif not within:
 		_status.text = "A force is over budget. Increase the limit or remove a unit."

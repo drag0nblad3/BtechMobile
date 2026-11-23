@@ -1,0 +1,79 @@
+{
+  "id": "jagermech_iii_jm6d3",
+  "name": "JagerMech III",
+  "model": "JM6-D3",
+  "tonnage": 65,
+  "walk_mp": 5,
+  "jump_mp": 0,
+  "heat_sinks": 12,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 16,
+    "RA": 16,
+    "LT": 22,
+    "RT": 22,
+    "CT": 26,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 6,
+    "RT": 6,
+    "CT": 7
+  },
+  "missing_actuators": {
+    "LA": [
+      "lower_arm",
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "ppc",
+      "ultra_ac2",
+      "ferro_fibrous*4"
+    ],
+    "RA": [
+      "ppc",
+      "ultra_ac2",
+      "endo_steel*4"
+    ],
+    "LT": [
+      "medium_laser",
+      "ferro_fibrous*8"
+    ],
+    "RT": [
+      "medium_laser",
+      "ammo:ultra_ac2",
+      "endo_steel*7"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "ferro_fibrous*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Sniper: long-range fire. 2x PPC, 2x Ultra AC/2, 2x Medium Laser; walks 5, runs 8.",
+  "sprite": "jagermech_iii",
+  "source": {
+    "mul_id": 1672,
+    "megamek": "data/mekfiles/meks/3060u/JagerMech III JM6-D3.mtf",
+    "published": "RS:3060u",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1537
+  },
+  "bv": 1537
+}

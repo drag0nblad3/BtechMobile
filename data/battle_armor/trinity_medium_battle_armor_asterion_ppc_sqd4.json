@@ -1,0 +1,34 @@
+{
+ "id": "trinity_medium_battle_armor_asterion_ppc_sqd4",
+ "name": "Trinity Medium Battle Armor",
+ "model": "(Asterion)[PPC](Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 8,
+  "ground_mp": 3,
+  "jump_mp": 0,
+  "claw": true,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "support_ppc",
+    "name": "Support PPC",
+    "type": "energy",
+    "damage": 2,
+    "short": 2,
+    "medium": 5,
+    "long": 7
+   }
+  ]
+ },
+ "source": {
+  "mul_id": 5281,
+  "megamek": "data/mekfiles/battlearmor/3075/Trinity Med BA (Asterion) [PPC] (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 187
+}

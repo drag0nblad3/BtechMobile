@@ -1,0 +1,41 @@
+{
+ "id": "bulldog_medium_tank_ac2",
+ "name": "Bulldog Medium Tank (AC2)",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 24,
+  "RS": 20,
+  "LS": 20,
+  "RR": 20,
+  "TU": 20
+ },
+ "equipment": {
+  "FR": [
+   "machine_gun*2"
+  ],
+  "TU": [
+   "srm4*2",
+   "ac2*2"
+  ],
+  "BD": [
+   "ammo:srm4",
+   "ammo:ac2",
+   "ammo:machine_gun:half"
+  ]
+ },
+ "source": {
+  "mul_id": 439,
+  "megamek": "data/mekfiles/vehicles/3039u/Bulldog Medium Tank (AC2).blk",
+  "role": "Brawler",
+  "bv": "megamek"
+ },
+ "bv": 556
+}

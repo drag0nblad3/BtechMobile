@@ -54,7 +54,9 @@ Rewinding never changes the live battle and consumes no gameplay randomness.
 3. Saving at the active-side boundary supports mid-phase continuation. The
    temporary selection and camera angle are not retained on resume.
 4. Replay frames cover significant events. Missile trails, debris and
-   intermediate animation frames are not stored.
+   intermediate animation frames are not stored. Burned hexes, heavy-impact
+   scorch decals and wreck smoke are reconstructed from the existing event ledger
+   plus the saved map and Unit state, never used for combat or movement rules.
 5. Tutorial popup progress is not saved separately; lesson cards may repeat
    after resuming a training battle.
 6. One save slot and one replay archive are supported. Snapshots are not

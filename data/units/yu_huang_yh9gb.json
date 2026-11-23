@@ -1,0 +1,75 @@
+{
+  "id": "yu_huang_yh9gb",
+  "name": "Yu Huang",
+  "model": "Y-H9GB",
+  "tonnage": 90,
+  "walk_mp": 4,
+  "jump_mp": 4,
+  "heat_sinks": 15,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 29,
+    "RA": 29,
+    "LT": 28,
+    "RT": 28,
+    "CT": 43,
+    "HD": 9,
+    "LL": 37,
+    "RL": 37
+  },
+  "rear_armor": {
+    "LT": 9,
+    "RT": 9,
+    "CT": 14
+  },
+  "missing_actuators": {
+    "LA": [
+      "hand"
+    ],
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "large_laser",
+      "medium_laser*3",
+      "endo_steel*4"
+    ],
+    "RA": [
+      "ultra_ac20"
+    ],
+    "LT": [
+      "endo_steel*8"
+    ],
+    "RT": [
+      "heat_sink",
+      "ammo:ultra_ac20*3",
+      "ammo:lrm10",
+      "endo_steel*2"
+    ],
+    "CT": [
+      "lrm10"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. Large Laser, 3x Medium Laser, Ultra AC/20, LRM 10; walks 4, runs 6, jumps 4.",
+  "sprite": "yu_huang",
+  "source": {
+    "mul_id": 3627,
+    "megamek": "data/mekfiles/meks/3060u/Yu Huang Y-H9GB.mtf",
+    "published": "RS:3060u",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 2039
+  },
+  "bv": 2039
+}

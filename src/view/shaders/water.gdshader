@@ -11,32 +11,18 @@ uniform float wave_speed = 0.7;
 varying vec2 field;
 varying vec2 local_hex;
 varying float depth_tint;
-varying float shoreline_mask;
-
-const vec2 EDGE_NORMALS[6] = vec2[6](
-	vec2(0.8660254, 0.5), vec2(0.0, 1.0),
-	vec2(-0.8660254, 0.5), vec2(-0.8660254, -0.5),
-	vec2(0.0, -1.0), vec2(0.8660254, -0.5)
-);
 
 void vertex() {
 	field = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xz;
 	local_hex = VERTEX.xz;
 	depth_tint = COLOR.r;
-	shoreline_mask = INSTANCE_CUSTOM.r;
 }
 
 void fragment() {
-	// Shore foam is emitted only toward actual land edges, never along
-	// water-water tile borders (the previous all-edges rim looked like a grid).
-	int mask = int(round(shoreline_mask * 63.0));
-	float shore = 0.0;
-	for (int edge = 0; edge < 6; edge++) {
-		if ((mask & (1 << edge)) != 0) {
-			shore = max(shore, smoothstep(0.69, 0.85,
-				dot(local_hex, EDGE_NORMALS[edge])));
-		}
-	}
+	// Hex apothem for a unit-radius hex is sqrt(3) / 2. This masks the
+	// shoreline without introducing visible circular rims or new geometry.
+	vec2 p = local_hex;
+	float shore = 0.0; // Real shore strips are built only at land boundaries.
 	float w1 = sin(field.x * 12.0 + field.y * 4.5 + TIME * wave_speed * 2.2);
 	float w2 = sin(field.y * 14.0 - field.x * 3.0 - TIME * wave_speed * 1.65);
 	float crests = smoothstep(1.0, 1.8, w1 + w2);

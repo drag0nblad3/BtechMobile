@@ -1,0 +1,40 @@
+{
+ "id": "bandit_c_hovercraft_a",
+ "name": "Bandit (C) Hovercraft A",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 9,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 40,
+  "RS": 40,
+  "LS": 40,
+  "RR": 20,
+  "TU": 32
+ },
+ "equipment": {
+  "FR": [
+   "c_srm2"
+  ],
+  "TU": [
+   "c_er_large_laser",
+   "c_srm2"
+  ],
+  "BD": [
+   "ammo:c_srm2",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 220,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Bandit (C) Hovercraft A.blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 1145
+}

@@ -1,0 +1,74 @@
+{
+  "id": "wraith_tr1",
+  "name": "Wraith",
+  "model": "TR1",
+  "tonnage": 55,
+  "walk_mp": 7,
+  "jump_mp": 7,
+  "heat_sinks": 10,
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 14,
+    "RA": 14,
+    "LT": 18,
+    "RT": 18,
+    "CT": 23,
+    "HD": 8,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 7
+  },
+  "equipment": {
+    "LA": [
+      "medium_pulse_laser*2",
+      "endo_steel*3",
+      "ferro_fibrous*2"
+    ],
+    "RA": [
+      "large_pulse_laser",
+      "endo_steel*3",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "jump_jet*3",
+      "endo_steel*2",
+      "ferro_fibrous*4"
+    ],
+    "RT": [
+      "jump_jet*3",
+      "endo_steel*2",
+      "ferro_fibrous*4"
+    ],
+    "CT": [
+      "jump_jet",
+      "ferro_fibrous"
+    ],
+    "HD": [
+      "ferro_fibrous"
+    ],
+    "LL": [
+      "endo_steel*2"
+    ],
+    "RL": [
+      "endo_steel*2"
+    ]
+  },
+  "role": "Skirmisher: mobile combined arms. 2x Medium Pulse Laser, Large Pulse Laser; walks 7, runs 11, jumps 7.",
+  "sprite": "wraith",
+  "source": {
+    "mul_id": 3588,
+    "megamek": "data/mekfiles/meks/3055U/Wraith TR1.mtf",
+    "published": "RS:CI,RS:AS",
+    "role": "Skirmisher",
+    "bv": "megamek",
+    "megamek_bv": 1287
+  },
+  "bv": 1287
+}

@@ -10,10 +10,12 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 		GameEvent.HEAT:
 			if d["before"] == d["heat"] and d["heat"] == 0 and level != ExplainLevel.FULL:
 				return ""
+			if d.get("inferno", false):
+				return "%s's inferno ammo cooks off: heat %d -> %d, at once." % [who, d["before"], d["heat"]]
 			var t := "%s heat %d -> %d" % [who, d["before"], d["heat"]]
 			if level != ExplainLevel.OFF:
 				var outside: int = d.get("outside", 0)
-				var from_out := (", %d of it from enemy flamers" % outside) if outside > 0 else ""
+				var from_out := (", %d of it from fire and flamers" % outside) if outside > 0 else ""
 				if d.get("stealth", 0) > 0:
 					from_out += ", %d from stealth armor" % d["stealth"]
 				t += " (+%d built%s, -%d sinks%s)" % [d["gained"], from_out, d["sinks"],
@@ -25,7 +27,7 @@ static func describe(e: GameEvent, s: GameState, level: int) -> String:
 			return t + "."
 		GameEvent.HEAT_ROLL:
 			var what: String = {"ammo": "avoid an ammo explosion", "shutdown": "avoid shutting down",
-					"restart": "restart"}[d["kind"]]
+					"restart": "restart", "inferno": "keep its inferno ammo from exploding"}[d["kind"]]
 			if level == ExplainLevel.OFF:
 				return "" if d["ok"] or d["kind"] == "restart" else "%s fails to %s." % [who, what]
 			if d["need"] >= 99:

@@ -1,0 +1,46 @@
+{
+  "id": "dart_drt3s",
+  "name": "Dart",
+  "model": "DRT-3S",
+  "tonnage": 25,
+  "walk_mp": 9,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "armor": {
+    "LA": 5,
+    "RA": 5,
+    "LT": 7,
+    "RT": 7,
+    "CT": 7,
+    "HD": 6,
+    "LL": 5,
+    "RL": 5
+  },
+  "rear_armor": {
+    "LT": 3,
+    "RT": 3,
+    "CT": 3
+  },
+  "equipment": {
+    "CT": [
+      "small_pulse_laser*2"
+    ],
+    "HD": [
+      "small_pulse_laser"
+    ],
+    "RL": [
+      "heat_sink"
+    ]
+  },
+  "role": "Scout: quick reconnaissance. 3x Small Pulse Laser; walks 9, runs 14.",
+  "sprite": "dart",
+  "source": {
+    "mul_id": 828,
+    "megamek": "data/mekfiles/meks/3055U/Dart DRT-3S.mtf",
+    "published": "RS:CI",
+    "role": "Scout",
+    "bv": "megamek",
+    "megamek_bv": 436
+  },
+  "bv": 436
+}

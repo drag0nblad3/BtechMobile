@@ -1,0 +1,50 @@
+{
+ "id": "maxim_heavy_hover_transport_clan",
+ "name": "Maxim Heavy Hover Transport (Clan)",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 8,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 25,
+  "RS": 22,
+  "LS": 22,
+  "RR": 12,
+  "TU": 24
+ },
+ "equipment": {
+  "FR": [
+   "c_lrm15"
+  ],
+  "RS": [
+   "c_srm2"
+  ],
+  "LS": [
+   "c_srm2"
+  ],
+  "TU": [
+   "c_machine_gun*2",
+   "c_streak_srm6"
+  ],
+  "BD": [
+   "ammo:c_machine_gun:half",
+   "ammo:c_srm2",
+   "ammo:c_lrm15*2",
+   "ammo:c_streak_srm6",
+   "guardian_ecm",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2123,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Maxim Heavy Hover Transport (Clan).blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 1147
+}

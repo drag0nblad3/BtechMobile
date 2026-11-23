@@ -1,0 +1,41 @@
+{
+ "id": "ares_medium_tank",
+ "name": "Ares Medium Tank",
+ "tonnage": 40,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 5,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 19,
+  "RS": 17,
+  "LS": 17,
+  "RR": 16,
+  "TU": 17
+ },
+ "equipment": {
+  "FR": [
+   "c_lrm10+artemis",
+   "c_lrm15+artemis"
+  ],
+  "TU": [
+   "c_er_large_laser"
+  ],
+  "BD": [
+   "ammo:c_lrm15",
+   "ammo:c_lrm10",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 109,
+  "megamek": "data/mekfiles/vehicles/3060u/Ares Medium Tank.blk",
+  "role": "Missile Boat",
+  "bv": "megamek"
+ },
+ "bv": 1151
+}

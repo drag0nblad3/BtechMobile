@@ -1,0 +1,35 @@
+{
+ "id": "kage_light_battle_armor_dest_sqd4",
+ "name": "Kage Light Battle Armor",
+ "model": "(DEST)(Sqd4)",
+ "tonnage": 1,
+ "tech_base": "inner_sphere",
+ "battle_armor": {
+  "troopers": 4,
+  "armor": 5,
+  "ground_mp": 1,
+  "jump_mp": 3,
+  "claw": false,
+  "mechanized": true,
+  "anti_mech": true,
+  "magnets": false,
+  "weapons": [
+   {
+    "id": "small_laser",
+    "name": "Small Laser",
+    "type": "energy",
+    "damage": 3,
+    "short": 1,
+    "medium": 2,
+    "long": 3
+   }
+  ],
+  "armor_type": "stealth_basic"
+ },
+ "source": {
+  "mul_id": 1730,
+  "megamek": "data/mekfiles/battlearmor/3058Uu/Kage Light BA (DEST) (Sqd4).blk",
+  "bv": "megamek"
+ },
+ "bv": 177
+}

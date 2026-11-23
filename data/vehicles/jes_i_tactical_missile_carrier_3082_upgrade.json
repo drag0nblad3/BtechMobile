@@ -1,0 +1,43 @@
+{
+ "id": "jes_i_tactical_missile_carrier_3082_upgrade",
+ "name": "JES I Tactical Missile Carrier (3082 Upgrade)",
+ "tonnage": 50,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 8,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 22,
+  "RS": 14,
+  "LS": 14,
+  "RR": 10,
+  "TU": 12
+ },
+ "equipment": {
+  "FR": [
+   "srm6*2",
+   "srm4*4",
+   "er_small_laser",
+   "machine_gun"
+  ],
+  "TU": [
+   "srm6"
+  ],
+  "BD": [
+   "ammo:srm6*2",
+   "ammo:srm4*2",
+   "ammo:machine_gun:half"
+  ]
+ },
+ "source": {
+  "mul_id": 1702,
+  "megamek": "data/mekfiles/vehicles/3085u/ONN/JES I Tactical Missile Carrier (3082 Upgrade).blk",
+  "role": "Striker",
+  "bv": "megamek"
+ },
+ "bv": 978
+}

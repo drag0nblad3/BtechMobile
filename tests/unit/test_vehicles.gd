@@ -10,14 +10,14 @@ func test_vehicles_load_apart_from_mechs() -> void:
 	var clan := 0
 	for d: UnitDef in db.vehicles.values():
 		check(d.vehicle != null and d.vehicle.cruise_mp > 0, d.id + " has a motive system")
-		check(d.bv > 0 and d.source.get("bv", "") == "sheet", d.id + " BV from its official sheet")
+		check(d.bv > 0 and d.source.get("bv", "") in ["sheet", "megamek"], d.id + " BV from its sheet or MegaMek")
 		check(d.source.get("megamek", "") != "", d.id + " loadout from MegaMek")
 		check(not d.weapon_mounts.is_empty(), d.id + " is armed")
 		for m in d.weapon_mounts:
 			check(m["weapon"] != null and m["loc"] >= 0 and m["loc"] < VehicleLoc.BODY, d.id + " weapon placed")
 		if d.tech_base == "clan":
 			clan += 1
-	check(clan >= 4, "some Clan vehicles (%d)" % clan)
+	check(clan >= 80, "some Clan vehicles (%d)" % clan)
 
 
 func test_manticore_sheet() -> void:

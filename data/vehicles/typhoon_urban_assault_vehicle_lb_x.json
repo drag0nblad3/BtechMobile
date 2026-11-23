@@ -1,0 +1,45 @@
+{
+ "id": "typhoon_urban_assault_vehicle_lb_x",
+ "name": "Typhoon Urban Assault Vehicle (LB-X)",
+ "tonnage": 70,
+ "vehicle": {
+  "motive": "w",
+  "cruise_mp": 3,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 43,
+  "RS": 40,
+  "LS": 40,
+  "RR": 32,
+  "TU": 42
+ },
+ "equipment": {
+  "FR": [
+   "streak_srm4"
+  ],
+  "RR": [
+   "er_small_laser"
+  ],
+  "TU": [
+   "lb10x_ac*2",
+   "streak_srm4"
+  ],
+  "BD": [
+   "c3_slave",
+   "ammo:lb10x_ac*2",
+   "ammo:lb10x_ac:cluster*2",
+   "ammo:streak_srm4"
+  ]
+ },
+ "source": {
+  "mul_id": 3335,
+  "megamek": "data/mekfiles/vehicles/3058Uu/Typhoon Urban Assault Vehicle (LB-X).blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 1064
+}

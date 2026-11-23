@@ -1,0 +1,32 @@
+{
+ "id": "harasser_laser_platform",
+ "name": "Harasser Laser Platform",
+ "tonnage": 25,
+ "vehicle": {
+  "motive": "h",
+  "cruise_mp": 10,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 5,
+  "RS": 5,
+  "LS": 5,
+  "RR": 4,
+  "TU": 5
+ },
+ "equipment": {
+  "TU": [
+   "medium_laser*2"
+  ]
+ },
+ "source": {
+  "mul_id": 1385,
+  "megamek": "data/mekfiles/vehicles/3039u/Harasser Laser Platform.blk",
+  "role": "Scout",
+  "bv": "megamek"
+ },
+ "bv": 321
+}

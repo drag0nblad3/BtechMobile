@@ -1,0 +1,47 @@
+{
+ "id": "schrek_ac_carrier",
+ "name": "Schrek AC Carrier",
+ "tonnage": 80,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 3,
+  "engine": "ice",
+  "turret": true
+ },
+ "armor_type": "standard",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 36,
+  "RS": 24,
+  "LS": 24,
+  "RR": 24,
+  "TU": 36
+ },
+ "equipment": {
+  "FR": [
+   "machine_gun*2"
+  ],
+  "RS": [
+   "machine_gun"
+  ],
+  "LS": [
+   "machine_gun"
+  ],
+  "TU": [
+   "machine_gun*4",
+   "ac5*3"
+  ],
+  "BD": [
+   "ammo:ac5*3",
+   "ammo:machine_gun:half*4"
+  ]
+ },
+ "source": {
+  "mul_id": 2822,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 32/Schrek AC Carrier.blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Schrek AC Carrier (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 773
+}

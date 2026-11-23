@@ -11,6 +11,7 @@ const COLOR_JUMP := Color(0.7, 0.4, 1.0, 0.33)
 
 var controller: GameController
 var highlighter: HexHighlighter
+var aim_guide: BattleAimOverlay
 var marker: FacingMarker
 var hud: BattleHud
 var units_layer: UnitsLayer
@@ -22,22 +23,6 @@ var options: MoveOptions
 var preview: Vector3i
 var has_preview := false
 var smash := false  ## Fail building entry rolls on purpose (Destroy Checks).
-var _preview_plate: Label3D
-
-
-func _ready() -> void:
-	_preview_plate = Label3D.new()
-	_preview_plate.name = "PathCost"
-	_preview_plate.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	_preview_plate.fixed_size = true
-	_preview_plate.pixel_size = 0.0009
-	_preview_plate.font_size = 28
-	_preview_plate.outline_size = 8
-	_preview_plate.outline_modulate = Color.BLACK
-	_preview_plate.modulate = UiSkin.AMBER
-	_preview_plate.no_depth_test = true
-	_preview_plate.visible = false
-	add_child(_preview_plate)
 
 
 func on_hex_tapped(c: Vector2i) -> void:
@@ -184,8 +169,9 @@ func clear_selection() -> void:
 	selected = null
 	has_preview = false
 	options = null
-	_preview_plate.visible = false
 	highlighter.clear()
+	if aim_guide != null:
+		aim_guide.clear()
 	marker.visible = false
 	hud.show_move_controls(false)
 	hud.leave_button.visible = false
@@ -194,6 +180,12 @@ func clear_selection() -> void:
 	hud.prone_button.visible = false
 	hud.refresh_move_actions()
 	hud.set_info("")
+
+
+## Select a unit to move (the HUD's Next button).
+func select(u: Unit) -> void:
+	if u != selected:
+		_select(u)
 
 
 func _select(u: Unit) -> void:
@@ -239,50 +231,33 @@ func _set_preview(k: Vector3i) -> void:
 func _refresh() -> void:
 	var hexes := {}
 	var base: Color = [COLOR_WALK, COLOR_RUN, COLOR_JUMP][mode]
-	var reachable := options.reachable_hexes()
-	for c: Vector2i in reachable:
-		var col := base
-		col.a = lerpf(0.18, base.a, 1.0 - float(reachable[c]) / maxf(1.0, float(options.budget)))
-		hexes[c] = col
-	# Highlight only explicit proximity to visible enemies, not speculative
-	# weapon threat ranges or unseen/hidden units.
-	for enemy: Unit in controller.state.units:
-		if enemy.side == selected.side or enemy.destroyed:
-			continue
-		var view := units_layer.view_of(enemy)
-		if view == null or not view.visible:
-			continue
-		for c: Vector2i in reachable:
-			if Hex.distance(c, enemy.coord) <= 1:
-				hexes[c] = HexHighlighter.CONTESTED
+	for c in options.reachable_hexes():
+		hexes[c] = base
 	if has_preview:
-		for k in options.path_to(preview):
-			hexes[MoveOptions.coord_of(k)] = HexHighlighter.PATH
+		var route: Array[Vector3i] = options.path_to(preview)
+		for i in route.size():
+			var progress := float(i + 1) / float(maxi(1, route.size()))
+			hexes[MoveOptions.coord_of(route[i])] = HexHighlighter.PATH.lerp(
+				HexHighlighter.DESTINATION, progress)
+		hexes[MoveOptions.coord_of(preview)] = HexHighlighter.DESTINATION
 	hexes[selected.coord] = HexHighlighter.SELECTED
 	highlighter.show_hexes(hexes)
+	if aim_guide != null:
+		var facing := preview.z if has_preview else selected.facing
+		var pos := MoveOptions.coord_of(preview) if has_preview else selected.coord
+		aim_guide.show_arcs(selected, pos, facing)
 	hud.set_mode_label(AssetMove.mode_name(selected, mode))
 	var spent: int = options.cost[preview] if has_preview else 0
 	var where := Hex.label(MoveOptions.coord_of(preview)) if has_preview else "-"
-	var heat := 0
-	var elevation := 0
-	if has_preview:
-		var destination := MoveOptions.coord_of(preview)
-		var start_tile := controller.state.map.get_tile(selected.coord)
-		var end_tile := controller.state.map.get_tile(destination)
-		elevation = end_tile.floor_level() - start_tile.floor_level()
-		var hexes_moved := Hex.distance(selected.coord, destination) if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(options.path_to(preview), selected.coord)
-		if not selected.def.is_support():
-			heat = MoveMode.heat(mode, hexes_moved, JumpJets.improved(selected.def))
-		_preview_plate.visible = true
-		_preview_plate.text = "%d/%d MP  |  +%d heat  |  %s%d lvl" % [spent, options.budget, heat,
-			"+" if elevation >= 0 else "", elevation]
-		_preview_plate.position = HexLayout.tile_top(end_tile) + Vector3.UP * 1.75
-	else:
-		_preview_plate.visible = false
-	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s" % [selected.def.display_name(),
-			AssetMove.mode_name(selected, mode), spent, options.budget, where,
-			"  |  prone: standing costs 2 MP and a roll" if selected.prone else ""] +
-		("  |  +%d heat, %+d levels" % [heat, elevation] if has_preview else ""))
+	var heat_text := ""
+	if selected.asset == null and selected.vehicle == null and selected.ba == null:
+		var heat_gain := 0
+		if has_preview:
+			heat_gain = 1 if mode == MoveMode.Kind.WALK else 2 if mode == MoveMode.Kind.RUN else maxi(3, MoveOptions.hexes_entered(options.path_to(preview), selected.coord))
+		heat_text = "  |  heat %d (+%d)" % [selected.heat, heat_gain]
+	hud.set_info("%s  |  %s %d/%d MP  |  to %s%s%s" % [selected.def.display_name(),
+			AssetMove.mode_name(selected, mode), spent, options.budget, where, heat_text,
+			"  |  prone: standing costs 2 MP and a roll" if selected.prone else ""])
 	var ct := charge_target()
 	hud.charge_button.visible = ct != null
 	hud.charge_button.text = "Death from Above" if mode == MoveMode.Kind.JUMP else "Charge"

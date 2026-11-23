@@ -1,0 +1,52 @@
+{
+  "id": "shadow_hawk_shd4h",
+  "name": "Shadow Hawk",
+  "model": "SHD-4H",
+  "tonnage": 55,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 12,
+  "heat_sink_type": "double",
+  "armor": {
+    "LA": 18,
+    "RA": 18,
+    "LT": 19,
+    "RT": 19,
+    "CT": 23,
+    "HD": 9,
+    "LL": 20,
+    "RL": 20
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 8
+  },
+  "equipment": {
+    "RA": [
+      "light_ppc"
+    ],
+    "LT": [
+      "jump_jet*2",
+      "heavy_ppc"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*2"
+    ],
+    "CT": [
+      "jump_jet"
+    ]
+  },
+  "role": "Sniper: long-range fire. Light PPC, Heavy PPC; walks 5, runs 8, jumps 5.",
+  "sprite": "shadow_hawk",
+  "source": {
+    "mul_id": 7785,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 12/Shadow Hawk SHD-4H.mtf",
+    "published": "RG12,RGv1",
+    "role": "Sniper",
+    "bv": "megamek",
+    "megamek_bv": 1569
+  },
+  "bv": 1569
+}

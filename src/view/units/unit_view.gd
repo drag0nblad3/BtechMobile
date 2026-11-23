@@ -13,59 +13,6 @@ var unit: Unit
 var map: BattleMap
 var _yaw := 0.0  # Continuous yaw so turns never spin the long way round.
 var _model: Node3D
-var _recoil_tween: Tween
-
-## Local geometry-based approximation used when a model does not provide its
-## own mount markers. Left/right follows BattleTech hit locations, not camera.
-static func anchor_offset(loc: int, rear: bool = false, tons: int = 50) -> Vector3:
-	var scale_ := 1.25 + float(tons) / 250.0
-	var at := Vector3(0.0, 0.83, -0.26)
-	match loc:
-		Location.HEAD: at = Vector3(0.0, 1.05, -0.23)
-		Location.CT: at = Vector3(0.0, 0.78, -0.30)
-		Location.LT: at = Vector3(-0.30, 0.85, -0.28)
-		Location.RT: at = Vector3(0.30, 0.85, -0.28)
-		Location.LA: at = Vector3(-0.41, 0.56, -0.38)
-		Location.RA: at = Vector3(0.41, 0.56, -0.38)
-		Location.LL: at = Vector3(-0.17, 0.33, -0.20)
-		Location.RL: at = Vector3(0.17, 0.33, -0.20)
-	if rear:
-		at.z = absf(at.z)
-	return at * scale_
-
-
-## On real 3-D models a named Muzzle_<location> marker is authoritative;
-## fallback anchors preserve meaningful weapon location for sprites and props.
-func mount_world(w: MountedWeapon) -> Vector3:
-	if _model == null or w == null:
-		return global_position + Vector3.UP * 0.6
-	var code := Location.code(w.loc) if not w.on_vehicle else "CT"
-	var marker := _model.get_node_or_null("Muzzle_" + code) as Marker3D
-	if marker != null and not w.rear:
-		return marker.global_position
-	return _model.to_global(anchor_offset(w.loc if not w.on_vehicle else Location.CT,
-			w.rear, unit.def.tonnage))
-
-
-func impact_world(loc: int, rear := false) -> Vector3:
-	if _model == null:
-		return global_position + Vector3.UP * 0.7
-	var point := anchor_offset(loc, rear, unit.def.tonnage)
-	point.z *= 0.76  # armor face is behind a muzzle tip
-	return _model.to_global(point)
-
-
-## Small, non-stacking physical feedback only; rules and gait are unchanged.
-func recoil(strength: float = 1.0) -> void:
-	if _model == null or unit.def.is_support():
-		return
-	if _recoil_tween != null and _recoil_tween.is_running():
-		_recoil_tween.kill()
-	_model.position.z = 0.0
-	_recoil_tween = create_tween()
-	_recoil_tween.tween_property(_model, "position:z", 0.065 * strength, 0.065)
-	_recoil_tween.tween_property(_model, "position:z", 0.0, 0.16)
-
 
 
 func setup(u: Unit, battle_map: BattleMap) -> void:
@@ -80,9 +27,17 @@ func setup(u: Unit, battle_map: BattleMap) -> void:
 	elif u.def.battle_armor != null:
 		set_model(PlaceholderAsset.build_squad(u.def, u.side))
 	else:
-		var sprite := SpriteMech.try_build(u.def)
-		set_model(sprite if sprite else PlaceholderMech.build(u.def, u.side))
+		refresh_look()
 	snap_to_state()
+
+
+## Choose the strongest supported representation without touching the Unit.
+func refresh_look() -> void:
+	if unit.def.is_support():
+		return
+	var voxel := UnitVoxels.choose(unit.def, unit.side)
+	var sprite := SpriteMech.try_build(unit.def) if voxel == null else null
+	set_model(voxel if voxel else sprite if sprite else PlaceholderMech.build(unit.def, unit.side))
 
 
 func set_model(model: Node3D) -> void:
@@ -90,6 +45,8 @@ func set_model(model: Node3D) -> void:
 		_model.queue_free()
 	_model = model
 	add_child(model)
+	if unit != null and model.name == "Placeholder":
+		WeaponSockets.attach(model, unit.def)
 
 
 func snap_to_state() -> void:
@@ -104,6 +61,8 @@ func show_condition() -> void:
 	if _model == null:
 		return
 	visible = unit.carrier_id() < 0  # riders ride inside or on top
+	if UnitVoxels.sync(_model, unit):
+		return
 	var down := unit.prone or (unit.destroyed and not unit.def.is_support())
 	_model.rotation.z = PI / 2.4 if down else 0.0
 	_model.position.y = 0.25 if down else 0.0
@@ -131,16 +90,19 @@ func _dark(m: StandardMaterial3D) -> StandardMaterial3D:
 
 ## Each step is a Vector3i(q, r, facing) from MoveOptions.path_to().
 func play_path(path: Array, start_coord: Vector2i, start_facing: int,
-		mode: int = MoveMode.Kind.WALK) -> void:
+		mode: int = -1) -> void:
 	if path.is_empty():
 		animation_finished.emit.call_deferred()
 		return
+	if mode == MoveMode.Kind.JUMP and unit.def.jump_mp > 0 and not unit.def.is_support():
+		_jump_path(path, start_coord, start_facing)
+		return
+	if _model is VxMech:
+		(_model as VxMech).anim.walk(true, mode == MoveMode.Kind.RUN)
 	var tw := create_tween()
 	var last_c := start_coord
 	var last_f := start_facing
-	var jumped := mode == MoveMode.Kind.JUMP
-	if jumped:
-		_surface_effect(start_coord, "jet")
+	var foot_side := 0
 	for k: Vector3i in path:
 		var c := Vector2i(k.x, k.y)
 		if k.z != last_f:
@@ -148,60 +110,212 @@ func play_path(path: Array, start_coord: Vector2i, start_facing: int,
 			tw.tween_property(self, "rotation:y", _yaw, TURN_TIME)
 			last_f = k.z
 		if c != last_c:
-			if jumped:
-				var from_pos := _hex_pos(last_c)
-				var to_pos := _hex_pos(c)
-				tw.tween_method(Callable(self, "_jump_fraction").bind(from_pos, to_pos),
-					0.0, 1.0, STEP_TIME).set_trans(Tween.TRANS_SINE)
-			else:
-				tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
-						.set_trans(Tween.TRANS_SINE)
-			var contact := c
-			tw.tween_callback(func() -> void: _surface_effect(contact,
-					"landing" if jumped else "step"))
+			tw.tween_property(self, "position", _hex_pos(c), STEP_TIME) \
+					.set_trans(Tween.TRANS_SINE)
+			var foot_at := c
+			var side := foot_side
+			tw.tween_callback(func(): _footfall(foot_at, side))
+			foot_side += 1
 			last_c = c
 	tw.finished.connect(func():
+			if _model is VxMech:
+				(_model as VxMech).anim.walk(false)
 			show_condition()
 			animation_finished.emit())
 
 
-func _jump_fraction(progress: float, from_pos: Vector3, to_pos: Vector3) -> void:
-	position = from_pos.lerp(to_pos, progress) + Vector3.UP * sin(progress * PI) * 0.85
+## Jump moves are one continuous three-dimensional arc rather than walking
+## one tile at a time. This path is presentation only; the resolved position
+## and heat remain entirely in the movement rules.
+func _jump_path(path: Array, start_coord: Vector2i, start_facing: int) -> void:
+	var last: Vector3i = path[-1]
+	var destination := Vector2i(last.x, last.y)
+	var start := position  # exact visual start, even from a rooftop or bridge
+	var finish := _hex_pos(destination)
+	var distance := Hex.distance(start_coord, destination)
+	if distance <= 0:
+		_yaw = HexLayout.facing_yaw(last.z)
+		var turn := create_tween()
+		turn.tween_property(self, "rotation:y", _yaw, TURN_TIME)
+		turn.finished.connect(func(): animation_finished.emit())
+		return
+	var duration := clampf(0.35 + float(distance) * 0.105, 0.50, 1.35)
+	var apex := clampf(0.75 + float(distance) * 0.22, 0.95, 2.25)
+	var from_yaw := rotation.y
+	var final_yaw := HexLayout.facing_yaw(last.z)
+	var plume := JumpJetFx.spawn(self)
+	if _model is VxMech:
+		# World trajectory belongs to UnitView; local anim only tucks limbs and
+		# lights jets (height zero avoids a second jump arc).
+		(_model as VxMech).anim.jump(Vector3.ZERO, 0.0)
+	_ground_burst(start_coord, true, start)
+	var tween := create_tween()
+	tween.tween_method(func(t: float) -> void:
+		position = JumpJetFx.arc(start, finish, t, apex)
+		rotation.y = lerp_angle(from_yaw, final_yaw, t)
+		JumpJetFx.animate(plume, t), 0.0, 1.0, duration)
+	tween.finished.connect(func() -> void:
+		position = finish
+		_yaw = final_yaw
+		rotation.y = final_yaw
+		if is_instance_valid(plume):
+			plume.queue_free()
+		_ground_burst(destination, false)
+		show_condition()
+		animation_finished.emit())
 
 
-## Footstep cues occur at actual movement tween contacts, not on a timer.
-static func surface_kind(tile: MapTile, action: String) -> String:
+func _ground_burst(coord: Vector2i, launching: bool, at: Vector3 = Vector3.INF) -> void:
+	var tile: MapTile = map.get_tile(coord)
 	if tile == null:
-		return ""
-	if action == "jet":
-		return "jumpjet"
-	if tile.is_water():
-		return "splash"
-	if tile.surface == "snow":
-		return "snow_dust"
-	if action == "landing":
-		return "landing"
-	if tile.terrain.id in ["pavement", "rough", "rubble"]:
-		return "hard_step"
-	return "soft_step"
+		return
+	var pos := (at if at != Vector3.INF else _hex_pos(coord)) + Vector3(0, 0.06, 0)
+	var kind := "jet_splash" if tile.is_water() else ("jet_launch" if launching else "jet_land")
+	VxBlast.spawn(self, pos, kind, unit.id * 283 + (1 if launching else 2))
 
 
-func _surface_effect(coord: Vector2i, action: String) -> void:
-	if unit.def.is_support():
+## Resolve authored weapon sockets first; fall back to the actual model bounds.
+## This avoids center-to-center fire and follows a turning chassis.
+func weapon_origin(weapon_name: String, weapon_index: int = -1) -> Vector3:
+	if _model is VxMech and unit != null and weapon_index >= 0 and weapon_index < unit.def.weapon_mounts.size():
+		var vox := _model as VxMech
+		var loc := int(unit.def.weapon_mounts[weapon_index]["loc"])
+		if not vox.model.parts_at(loc).is_empty() and vox.is_attached(vox.part_at(loc)):
+			var ports := vox.muzzles(loc)
+			if not ports.is_empty():
+				return ports[0]
+	var socket_names := ["muzzle_%d" % weapon_index, "weapon_%d" % weapon_index,
+		"muzzle", "Muzzle", "WeaponMuzzle"]
+	for candidate in socket_names:
+		var marker := _find_socket(_model, candidate)
+		if marker != null:
+			return marker.global_position
+	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
+	var location := -1
+	var rear := false
+	if unit != null and weapon_index >= 0 and weapon_index < unit.def.weapon_mounts.size():
+		var mount: Dictionary = unit.def.weapon_mounts[weapon_index]
+		location = int(mount.get("loc", -1))
+		rear = bool(mount.get("rear", false))
+	return global_transform * fallback_muzzle(bounds, location, rear,
+		unit.def.quad if unit != null else false)
+
+
+## When no per-chassis socket exists, use record-sheet location and actual
+## rendered model bounds rather than alternating left/right by weapon index.
+static func fallback_muzzle(bounds: AABB, location: int, rear: bool,
+		quad: bool = false) -> Vector3:
+	var side := 0.5
+	var height := 0.70
+	match location:
+		Location.LA:
+			side = 0.10
+			height = 0.26 if quad else 0.57
+		Location.RA:
+			side = 0.90
+			height = 0.26 if quad else 0.57
+		Location.LT:
+			side = 0.28
+			height = 0.78
+		Location.RT:
+			side = 0.72
+			height = 0.78
+		Location.HEAD:
+			height = 0.91
+		Location.LL:
+			side = 0.31
+			height = 0.23
+		Location.RL:
+			side = 0.69
+			height = 0.23
+	return bounds.position + bounds.size * Vector3(side, height, 0.94 if rear else 0.04)
+
+
+## GameEvent location, not a raycast, determines the visual hit position.
+func impact_location(loc: int, rear: bool) -> Vector3:
+	if _model is VxMech:
+		var voxel := _model as VxMech
+		if not voxel.model.parts_at(loc).is_empty():
+			var part := voxel.part_at(loc)
+			var bounds := part.get_aabb()
+			var where := bounds.get_center()
+			where.z = bounds.end.z if rear else bounds.position.z
+			return part.to_global(where)
+	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
+	var center := bounds.get_center()
+	var radius := bounds.size
+	match loc:
+		Location.HEAD:
+			center.y = bounds.position.y + radius.y * 0.91
+		Location.CT:
+			center.y = bounds.position.y + radius.y * 0.67
+		Location.LT, Location.RT:
+			center.y = bounds.position.y + radius.y * 0.71
+			center.x += radius.x * (-0.29 if loc == Location.LT else 0.29)
+		Location.LA, Location.RA:
+			center.y = bounds.position.y + radius.y * 0.57
+			center.x += radius.x * (-0.44 if loc == Location.LA else 0.44)
+		Location.LL, Location.RL:
+			center.y = bounds.position.y + radius.y * 0.20
+			center.x += radius.x * (-0.22 if loc == Location.LL else 0.22)
+	center.z = bounds.end.z if rear else bounds.position.z
+	return global_transform * center
+
+
+func impact_point(from: Vector3) -> Vector3:
+	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
+	var center := bounds.get_center()
+	var direction := (to_local(from) - center).normalized()
+	var extent := bounds.size * 0.45
+	return global_transform * (center + Vector3(direction.x * extent.x,
+		direction.y * extent.y, direction.z * extent.z))
+
+
+func _find_socket(root: Node, wanted: String) -> Node3D:
+	if root == null:
+		return null
+	if root is Node3D and root.name.to_lower() == wanted.to_lower():
+		return root as Node3D
+	for child in root.get_children():
+		var found := _find_socket(child, wanted)
+		if found != null:
+			return found
+	return null
+
+
+func _model_bounds(root: Node3D, transform_: Transform3D) -> AABB:
+	var box := AABB(Vector3(-0.45, 0.15, -0.45), Vector3(0.9, 1.1, 0.9))
+	if root == null:
+		return box
+	var found := false
+	var stack: Array = [{"node": root, "transform": transform_}]
+	while not stack.is_empty():
+		var entry: Dictionary = stack.pop_back()
+		var node: Node3D = entry["node"]
+		var tr: Transform3D = entry["transform"] * node.transform
+		if node is MeshInstance3D and (node as MeshInstance3D).mesh != null:
+			var b: AABB = (node as MeshInstance3D).get_aabb()
+			var transformed := tr * b
+			box = box.merge(transformed) if found else transformed
+			found = true
+		for child in node.get_children():
+			if child is Node3D:
+				stack.append({"node": child, "transform": tr})
+	return box
+
+
+## A small puff at the end of each actual translation, not a timer-driven
+## fake gait. Water splashes and ground dust use different profiles.
+func _footfall(coord: Vector2i, side: int) -> void:
+	if not visible or unit.def.is_support():
 		return
-	var tile := map.get_tile(coord)
-	if tile == null or not is_inside_tree():
+	var tile: MapTile = map.get_tile(coord)
+	if tile == null:
 		return
-	var kind := surface_kind(tile, action)
-	if kind == "" or get_tree().get_nodes_in_group("surface_fx").size() >= 32:
-		return
-	var at := _hex_pos(coord)
-	if tile.is_water():
-		at.y = HexLayout.level_y(tile.level)
-	var fx := VxBlast.spawn(get_parent(), at + Vector3.UP * 0.08, kind,
-		unit.id * 193 + coord.x * 37 + coord.y * 71 + action.length())
-	fx.add_to_group("surface_fx")
-	fx.scale = Vector3.ONE * clampf(0.7 + float(unit.def.tonnage) / 190.0, 0.78, 1.28)
+	var offset := global_transform.basis.x * (0.22 if side % 2 == 0 else -0.22)
+	var point := _hex_pos(coord) + offset + Vector3(0, 0.04, 0)
+	var kind := "splash" if tile.is_water() else "step"
+	VxBlast.spawn(self, point, kind, unit.id * 103 + side)
 
 
 func _turn_delta(from_f: int, to_f: int) -> float:

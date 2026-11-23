@@ -10,7 +10,7 @@ const PER_SLOT := 2
 
 
 static func damage(w: MountedWeapon) -> int:
-	return PER_SLOT * w.def.slots
+	return w.def.explosion_damage if w.def.explosion_damage >= 0 else PER_SLOT * w.def.slots
 
 
 static func explode(state: GameState, dice: Dice, emit: Callable, u: Unit, w: MountedWeapon, loc: int,

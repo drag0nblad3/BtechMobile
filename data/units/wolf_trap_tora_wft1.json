@@ -1,0 +1,65 @@
+{
+  "id": "wolf_trap_tora_wft1",
+  "name": "Wolf Trap (Tora)",
+  "model": "WFT-1",
+  "tonnage": 45,
+  "walk_mp": 6,
+  "jump_mp": 0,
+  "heat_sinks": 10,
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 11,
+    "RA": 11,
+    "LT": 13,
+    "RT": 13,
+    "CT": 17,
+    "HD": 9,
+    "LL": 15,
+    "RL": 15
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 6
+  },
+  "missing_actuators": {
+    "RA": [
+      "lower_arm",
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*2"
+    ],
+    "RA": [
+      "lb10x_ac"
+    ],
+    "LT": [
+      "medium_laser*2",
+      "endo_steel*7"
+    ],
+    "RT": [
+      "ammo:lb10x_ac:cluster",
+      "ammo:lb10x_ac",
+      "ammo:lrm10",
+      "case",
+      "endo_steel*5"
+    ],
+    "CT": [
+      "lrm10"
+    ]
+  },
+  "role": "Striker: mobile direct fire. LB 10-X AC, 2x Medium Laser, LRM 10; walks 6, runs 9.",
+  "sprite": "wolf_trap_tora",
+  "source": {
+    "mul_id": 3554,
+    "megamek": "data/mekfiles/meks/3050U/Wolf Trap (Tora) WFT-1.mtf",
+    "published": "RS:CI",
+    "role": "Striker",
+    "bv": "megamek",
+    "megamek_bv": 1070
+  },
+  "bv": 1070
+}

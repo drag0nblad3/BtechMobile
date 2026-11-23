@@ -1,0 +1,41 @@
+{
+ "id": "manticore_heavy_tank_hppc",
+ "name": "Manticore Heavy Tank (HPPC)",
+ "tonnage": 60,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 43,
+  "RS": 34,
+  "LS": 34,
+  "RR": 26,
+  "TU": 42
+ },
+ "equipment": {
+  "TU": [
+   "heavy_ppc",
+   "mml7",
+   "ams"
+  ],
+  "BD": [
+   "ammo:mml7",
+   "ammo:mml7:srm",
+   "ammo:ams",
+   "targeting_computer"
+  ]
+ },
+ "source": {
+  "mul_id": 2018,
+  "megamek": "data/mekfiles/vehicles/3085u/ONN/Manticore Heavy Tank (HPPC).blk",
+  "role": "Sniper",
+  "bv": "sheet",
+  "sheet": "Manticore Heavy Tank (HPPC) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1149
+}

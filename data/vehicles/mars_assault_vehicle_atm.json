@@ -1,0 +1,59 @@
+{
+ "id": "mars_assault_vehicle_atm",
+ "name": "Mars Assault Vehicle (ATM)",
+ "tonnage": 100,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 2,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "clan",
+ "armor": {
+  "FR": 50,
+  "RS": 43,
+  "LS": 43,
+  "RR": 37,
+  "TU": 47
+ },
+ "equipment": {
+  "FR": [
+   "c_atm9*3"
+  ],
+  "RS": [
+   "c_streak_srm4"
+  ],
+  "LS": [
+   "c_streak_srm4"
+  ],
+  "TU": [
+   "c_heavy_large_laser",
+   "c_gauss_rifle",
+   "c_machine_gun*2"
+  ],
+  "BD": [
+   "ammo:c_machine_gun",
+   "ammo:c_gauss_rifle*2",
+   "ammo:c_streak_srm4*2",
+   "ammo:c_atm9:er",
+   "ammo:c_atm9",
+   "ammo:c_atm9:he",
+   "ammo:c_atm9:er",
+   "ammo:c_atm9",
+   "ammo:c_atm9:he",
+   "ammo:c_atm9:er",
+   "ammo:c_atm9",
+   "ammo:c_atm9:he",
+   "guardian_ecm",
+   "case"
+  ]
+ },
+ "source": {
+  "mul_id": 2080,
+  "megamek": "data/mekfiles/vehicles/3060u/Mars Assault Vehicle (ATM).blk",
+  "role": "Juggernaut",
+  "bv": "megamek"
+ },
+ "bv": 1948
+}

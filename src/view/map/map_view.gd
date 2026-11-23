@@ -4,7 +4,7 @@ extends Node3D
 ## plus woods, water and building props from their own helpers.
 
 const SHADER := preload("res://src/view/shaders/terrain.gdshader")
-const INSET := 0.97  ## Slight gap between hexes shows the grid.
+const INSET := 0.985  ## Narrower seams: a continuous landscape with a legible hex grid.
 ## Hex top colors for ice, mud and snow (Surfaces), replacing the terrain's.
 const SURFACE_TOPS := {"ice": Color("#b8d4e3"), "mud": Color("#5a4632"), "snow": Color("#e8ecef")}
 ## Shader pattern index per TerrainType.pattern (see terrain.gdshader).
@@ -15,6 +15,7 @@ var buildings: BuildingProps
 var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
 var bridges: BridgeProps
 var bridge_scars := {}  ## The same for bridge stonework.
+var weather_tint := Color.WHITE
 
 
 func build(battle_map: BattleMap) -> void:
@@ -49,7 +50,6 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	var mm := MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.use_colors = true
-	mm.use_custom_data = true
 	mm.mesh = mesh
 	mm.instance_count = tiles.size()
 	var range_ := map.level_range()
@@ -59,7 +59,6 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 		var height := top.y - HexLayout.BASE_Y
 		mm.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3(1, height, 1)), top))
 		mm.set_instance_color(i, _level_tint(t.floor_level(), range_, t.coord))
-		mm.set_instance_custom_data(i, TerrainEdges.land_mix(map, t))
 	var mat := ShaderMaterial.new()
 	mat.shader = SHADER
 	var own: Variant = map.colors.get(terrain.id)
@@ -67,11 +66,21 @@ func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture
 	mat.set_shader_parameter("detail_color", own.darkened(0.25) if own != null else terrain.detail_color)
 	mat.set_shader_parameter("noise_tex", noise)
 	mat.set_shader_parameter("pattern", 0 if surface != "" else PATTERNS.get(terrain.pattern, 0))
+	mat.set_shader_parameter("weather_tint", weather_tint)
 	var inst := MultiMeshInstance3D.new()
 	inst.name = "Terrain_%s%s" % [terrain.id, "_" + surface if surface != "" else ""]
 	inst.multimesh = mm
 	inst.material_override = mat
 	return inst
+
+
+## Cosmetic weather wash; retained when the terrain meshes rebuild.
+func set_conditions(c: Conditions) -> void:
+	weather_tint = Color("#9ca8bd") if c.night else Color("#c6d9f1") if c.cold > 0 \
+			else Color("#f4d7b6") if c.heat > 0 else Color.WHITE
+	for node in get_children():
+		if node is MultiMeshInstance3D and node.material_override is ShaderMaterial:
+			(node.material_override as ShaderMaterial).set_shader_parameter("weather_tint", weather_tint)
 
 
 ## Higher ground is slightly brighter so levels read at a glance.

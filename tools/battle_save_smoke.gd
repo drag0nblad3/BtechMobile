@@ -6,20 +6,16 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	print("battle save smoke trace: initializing")
 	BattleLaunch.bot_sides = []
 	BattleLaunch.load_autosave = false
-	print("battle save smoke trace: opening battle")
 	change_scene_to_file("res://scenes/main.tscn")
 	await process_frame
 	await process_frame
-	print("battle save smoke trace: battle opened")
 	var battle: Variant = current_scene
-	if not _check(battle != null and battle.get_script() != null and battle.controller.state.turn == 1,
+	if not _check(battle != null and battle.controller.state.turn == 1,
 			"battle scene did not start"):
 		return
 	var before: GameController = battle.controller
-	print("battle save smoke trace: saving battle")
 	if not _check(battle._autosave(), "could not save the live scene"):
 		return
 	var last_turn := before.state.turn
@@ -41,7 +37,6 @@ func _run() -> void:
 	if not _check(battle.recorder.frames.size() == frames.size(),
 			"resume lost recorded replay frames"):
 		return
-	print("battle save smoke trace: opening replay")
 	change_scene_to_file("res://scenes/battle_replay.tscn")
 	await process_frame
 	await process_frame

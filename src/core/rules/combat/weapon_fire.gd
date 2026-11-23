@@ -41,6 +41,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if BaSwarm.is_swarm(w):
 		BaSwarm.resolve(state, dice, emit, attacker, w, target, th)
 		return
+	if BaSwarm.is_let_go(w):
+		BaSwarm.let_go(emit, attacker, w, target)
+		return
 	var decoy := NarcPods.decoy(state, dice, attacker, w, target)
 	if decoy != null:  # an enemy Nemesis pod pulls the missiles onto a friend
 		target = decoy
@@ -49,7 +52,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var shots := take_shots(attacker, w)
 	if shots == 0:
 		emit.call(GameEvent.WEAPON_FIRED, {"attacker_id": attacker.id, "target_id": target.id,
-				"weapon": Atm.profile(w).name, "weapon_id": w.def.id, "roll": 0, "need": th.target(),
+				"weapon": Atm.profile(w).name, "weapon_id": w.def.id,
+				"weapon_index": attacker.weapons.find(w), "roll": 0, "need": th.target(),
 				"hit": false, "no_ammo": true, "mods": th.mods, "missiles": 0})
 		return
 	w.fired = true
@@ -59,7 +63,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	var need := th.target()
 	var hit := roll >= need
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": Atm.profile(w).name,
-			"weapon_id": w.def.id, "roll": roll, "need": need, "hit": hit,
+			"weapon_id": w.def.id, "weapon_index": attacker.weapons.find(w), "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
 	if decoy != null:
 		data["nemesis"] = true
@@ -127,6 +131,9 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 		data["aim"] = th.aim_loc
 		data["aim_roll"] = aimed["aim_roll"]
 		data["aim_hit"] = aimed["aimed"]
+	if w.def.rifle:
+		for i in packets.size():
+			packets[i] = RifleCannon.damage(packets[i], target)
 	if w.def.heat_damage and not target.def.is_support():  # flamers: heat as well as damage (book pp. 183-184)
 		data["heat_added"] = w.def.heat_points
 		target.outside_heat += w.def.heat_points

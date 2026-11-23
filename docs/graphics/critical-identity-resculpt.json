@@ -1,0 +1,597 @@
+{
+  "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+  "original_critical_cohort": 59,
+  "models": {
+    "akuma": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "annihilator": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 4
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 4
+      }
+    },
+    "awesome": {
+      "coarse": {
+        "contour_vertices": 166,
+        "weapon_modules": 3
+      },
+      "detailed": {
+        "contour_vertices": 166,
+        "weapon_modules": 3
+      }
+    },
+    "banshee": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "battleaxe": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "battlemaster": {
+      "coarse": {
+        "contour_vertices": 163,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 163,
+        "weapon_modules": 1
+      }
+    },
+    "black_knight": {
+      "coarse": {
+        "contour_vertices": 192,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 192,
+        "weapon_modules": 1
+      }
+    },
+    "cataphract": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "centurion": {
+      "coarse": {
+        "contour_vertices": 181,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 181,
+        "weapon_modules": 2
+      }
+    },
+    "chameleon": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "crab": {
+      "coarse": {
+        "contour_vertices": 134,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 134,
+        "weapon_modules": 0
+      }
+    },
+    "crockett": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "crusader": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "cyclops": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "dragon": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 1
+      }
+    },
+    "falconer": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "flashman": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 0
+      }
+    },
+    "gargoyle": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 0
+      }
+    },
+    "goliath": {
+      "coarse": {
+        "contour_vertices": 100,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 100,
+        "weapon_modules": 0
+      }
+    },
+    "grasshopper": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "griffin": {
+      "coarse": {
+        "contour_vertices": 178,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 178,
+        "weapon_modules": 1
+      }
+    },
+    "guillotine": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "gunslinger": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "hel": {
+      "coarse": {
+        "contour_vertices": 125,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 125,
+        "weapon_modules": 1
+      }
+    },
+    "hellspawn": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "hoplite": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "icarus_ii": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "javelin": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "katana": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "kintaro": {
+      "coarse": {
+        "contour_vertices": 101,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 101,
+        "weapon_modules": 1
+      }
+    },
+    "lancelot": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "mongoose": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "nightstar": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 2
+      }
+    },
+    "nova": {
+      "coarse": {
+        "contour_vertices": 134,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 134,
+        "weapon_modules": 2
+      }
+    },
+    "orion": {
+      "coarse": {
+        "contour_vertices": 134,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 134,
+        "weapon_modules": 0
+      }
+    },
+    "ostwar": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 0
+      }
+    },
+    "penetrator": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "pillager": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "quickdraw": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "sagittaire": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "scorpion": {
+      "coarse": {
+        "contour_vertices": 100,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 100,
+        "weapon_modules": 0
+      }
+    },
+    "sentinel": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "shogun": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "spartan": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "starslayer": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "stinger": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "stormcrow": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 1
+      }
+    },
+    "tarantula": {
+      "coarse": {
+        "contour_vertices": 100,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 100,
+        "weapon_modules": 0
+      }
+    },
+    "thanatos": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "thug": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "trebuchet": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "valkyrie": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "victor": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 1
+      }
+    },
+    "vindicator": {
+      "coarse": {
+        "contour_vertices": 216,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 216,
+        "weapon_modules": 2
+      }
+    },
+    "viper": {
+      "coarse": {
+        "contour_vertices": 141,
+        "weapon_modules": 1
+      },
+      "detailed": {
+        "contour_vertices": 141,
+        "weapon_modules": 1
+      }
+    },
+    "warhawk": {
+      "coarse": {
+        "contour_vertices": 145,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 145,
+        "weapon_modules": 2
+      }
+    },
+    "whitworth": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    },
+    "ymir": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 0
+      }
+    },
+    "zeus": {
+      "coarse": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      },
+      "detailed": {
+        "contour_vertices": 137,
+        "weapon_modules": 2
+      }
+    }
+  },
+  "limitations": "Chassis-authored geometry edits and nearest-neighbor screening; no complete photographic signoff."
+}

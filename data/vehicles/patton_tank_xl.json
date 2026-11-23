@@ -1,0 +1,47 @@
+{
+ "id": "patton_tank_xl",
+ "name": "Patton Tank (XL)",
+ "tonnage": 65,
+ "vehicle": {
+  "motive": "t",
+  "cruise_mp": 4,
+  "engine": "fusion",
+  "turret": true
+ },
+ "armor_type": "ferro_fibrous",
+ "tech_base": "inner_sphere",
+ "armor": {
+  "FR": 51,
+  "RS": 46,
+  "LS": 46,
+  "RR": 38,
+  "TU": 51
+ },
+ "equipment": {
+  "FR": [
+   "x_pulse_medium_laser"
+  ],
+  "RR": [
+   "flamer"
+  ],
+  "TU": [
+   "ultra_ac10",
+   "mml5+artemis"
+  ],
+  "BD": [
+   "targeting_computer",
+   "case",
+   "ammo:ultra_ac10*3",
+   "ammo:mml5",
+   "ammo:mml5:srm"
+  ]
+ },
+ "source": {
+  "mul_id": 9344,
+  "megamek": "data/mekfiles/vehicles/Rec Guides ilClan/Vol 27/Patton Tank (XL).blk",
+  "role": "Brawler",
+  "bv": "sheet",
+  "sheet": "Patton Tank (XL) (ForcePack-Record-Sheets-Battlefield-Support)"
+ },
+ "bv": 1278
+}
