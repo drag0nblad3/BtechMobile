@@ -27,6 +27,19 @@ jobs:
           set -o pipefail
           godot --headless -s tests/run_tests.gd -- melee_voxel_sculpts 2>&1 | tee melee-tests.log
           ! grep -E 'SCRIPT ERROR|Parse Error|FAIL test_melee' melee-tests.log
+      - name: Complete Godot unit regression suite
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 480s godot --headless             -s tests/run_tests.gd 2>&1 | tee godot-all-tests.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|^FAIL ' godot-all-tests.log
+      - name: Voxel battle and UI smoke
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 180s godot --headless             -s tools/ui_smoke.gd 2>&1 | tee melee-ui-smoke.log
+          grep -q 'ui smoke ok' melee-ui-smoke.log
+          timeout --signal=TERM --kill-after=5s 180s godot --headless             -s tools/battle_visual_smoke.gd 2>&1 | tee melee-battle-visual-smoke.log
+          grep -q 'battle visuals smoke ok' melee-battle-visual-smoke.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|BATTLE_VISUAL_FAILED' melee-*-smoke.log
       - name: Capture actual 3D VxMech meshes and poses
         run: |
           set -o pipefail
@@ -46,6 +59,9 @@ jobs:
           path: |
             /tmp/melee-resculpt-renders/*.png
             melee-tests.log
+            godot-all-tests.log
+            melee-ui-smoke.log
+            melee-battle-visual-smoke.log
             melee-render.log
           if-no-files-found: warn
       - name: Publish actual engine screenshot
