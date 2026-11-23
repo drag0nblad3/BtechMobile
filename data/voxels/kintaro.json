@@ -3295,21 +3295,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              6,
-              28,
-              -15
-            ],
-            [
-              8,
-              30,
-              -6
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -3644,7 +3629,7 @@
                 ]
               },
               {
-                "at": -8,
+                "at": -7,
                 "polygon": [
                   [
                     -10.41,
@@ -3697,7 +3682,7 @@
                 ]
               },
               {
-                "at": -7,
+                "at": -6.75,
                 "polygon": [
                   [
                     -10.71,
@@ -4766,7 +4751,7 @@
       "kind": "missile"
     }
   ],
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -4774,6 +4759,18 @@
     "front": 0.86,
     "rear": 0.72,
     "torso_width": 0.95
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 100,
+    "stages_with_changes": 15
   },
   "blind_identity_resculpt": {
     "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
@@ -4797,16 +4794,9 @@
     ],
     "automatic_not_human_approved": true
   },
-  "blind_identity_weapon_modules": [
-    {
-      "kind": "rack",
-      "part": "rt",
-      "anchor": [
-        7,
-        29,
-        -15
-      ]
-    }
-  ],
-  "blind_identity_weapon_stage": "2026-11-22-v1"
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  }
 }

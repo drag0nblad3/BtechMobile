@@ -1,6 +1,6 @@
 {
   "id": "albatross_shape",
-  "name": "Albatross ALB-4Ur — low-poly shape",
+  "name": "Albatross ALB-4Ur \u2014 low-poly shape",
   "unit": "albatross_alb4ur",
   "voxel_size": 0.069645,
   "subdivide": 1,
@@ -6210,7 +6210,7 @@
     }
   ],
   "exclusive_parts": true,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "art_quality_passes": 100,
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -6231,5 +6231,9 @@
     "passes": 50,
     "edited_vertices": 0,
     "stages_with_changes": 0
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review metadata after later PR #213 contour resculpt; preserve current physical sculpt."
   }
 }

@@ -1,6 +1,6 @@
 {
   "id": "assassin_shape",
-  "name": "Assassin ASN-21 — low-poly shape",
+  "name": "Assassin ASN-21 \u2014 low-poly shape",
   "unit": "assassin_asn21",
   "voxel_size": 0.052294,
   "subdivide": 1,
@@ -1342,7 +1342,7 @@
                 ]
               },
               {
-                "at": -6,
+                "at": -5,
                 "polygon": [
                   [
                     -6.94,
@@ -1395,7 +1395,7 @@
                 ]
               },
               {
-                "at": -5,
+                "at": -4.75,
                 "polygon": [
                   [
                     -7.16,
@@ -3067,7 +3067,7 @@
     }
   ],
   "exclusive_parts": true,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "art_quality_passes": 100,
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -3087,5 +3087,9 @@
     "passes": 50,
     "edited_vertices": 150,
     "stages_with_changes": 15
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review metadata after later PR #213 contour resculpt; preserve current physical sculpt."
   }
 }

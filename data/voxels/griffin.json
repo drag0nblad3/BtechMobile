@@ -4655,7 +4655,7 @@
     ]
   },
   "art_revision": "shape-first-slab-relief-v2-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
@@ -4666,6 +4666,18 @@
     "torso_width": 0.95
   },
   "proportion_socket_review": "2026-11-22-solid-attachment-follow-up",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 250,
+    "stages_with_changes": 20
+  },
   "blind_identity_resculpt": {
     "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
     "identity_signature": "off-center shoulder LRM; heavy PPC",
@@ -4690,16 +4702,9 @@
     ],
     "automatic_not_human_approved": true
   },
-  "blind_identity_weapon_modules": [
-    {
-      "kind": "barrel",
-      "part": "ra",
-      "anchor": [
-        14,
-        29,
-        -25
-      ]
-    }
-  ],
-  "blind_identity_weapon_stage": "2026-11-22-v1"
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  }
 }

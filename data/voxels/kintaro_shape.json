@@ -1,6 +1,6 @@
 {
   "id": "kintaro_shape",
-  "name": "Kintaro KTO-18 — low-poly shape",
+  "name": "Kintaro KTO-18 \u2014 low-poly shape",
   "unit": "kintaro_kto18",
   "voxel_size": 0.058177,
   "subdivide": 1,
@@ -3177,21 +3177,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              6,
-              28,
-              -15
-            ],
-            [
-              8,
-              30,
-              -6
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -3440,7 +3425,7 @@
                 ]
               },
               {
-                "at": -8,
+                "at": -7,
                 "polygon": [
                   [
                     -10.41,
@@ -3493,7 +3478,7 @@
                 ]
               },
               {
-                "at": -7,
+                "at": -6.75,
                 "polygon": [
                   [
                     -10.71,
@@ -4348,7 +4333,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 2.7,
@@ -4390,16 +4375,9 @@
     ],
     "automatic_not_human_approved": true
   },
-  "blind_identity_weapon_modules": [
-    {
-      "kind": "rack",
-      "part": "rt",
-      "anchor": [
-        7,
-        29,
-        -15
-      ]
-    }
-  ],
-  "blind_identity_weapon_stage": "2026-11-22-v1"
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
+  }
 }

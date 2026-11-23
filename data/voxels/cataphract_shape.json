@@ -1,6 +1,6 @@
 {
   "id": "cataphract_shape",
-  "name": "Cataphract CTF-1X — low-poly shape",
+  "name": "Cataphract CTF-1X \u2014 low-poly shape",
   "unit": "cataphract_ctf1x",
   "voxel_size": 0.061847,
   "subdivide": 1,
@@ -3334,21 +3334,6 @@
             ]
           ],
           "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              10,
-              17,
-              -19
-            ],
-            [
-              12,
-              19,
-              -11
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -4049,7 +4034,7 @@
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 3,
@@ -4091,25 +4076,9 @@
     ],
     "automatic_not_human_approved": true
   },
-  "blind_identity_weapon_modules": [
-    {
-      "kind": "barrel",
-      "part": "rt",
-      "anchor": [
-        7,
-        25,
-        -22
-      ]
-    },
-    {
-      "kind": "barrel",
-      "part": "ra",
-      "anchor": [
-        11,
-        18,
-        -19
-      ]
-    }
-  ],
-  "blind_identity_weapon_stage": "2026-11-22-v1"
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review metadata after later PR #213 contour resculpt; preserve current physical sculpt."
+  }
 }

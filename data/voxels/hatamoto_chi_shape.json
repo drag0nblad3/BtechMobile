@@ -1,6 +1,6 @@
 {
   "id": "hatamoto_chi_shape",
-  "name": "Hatamoto-Chi HTM-27T — low-poly shape",
+  "name": "Hatamoto-Chi HTM-27T \u2014 low-poly shape",
   "unit": "hatamoto_chi_htm27t",
   "voxel_size": 0.067043,
   "subdivide": 1,
@@ -2865,7 +2865,7 @@
                 ]
               },
               {
-                "at": -6,
+                "at": -5,
                 "polygon": [
                   [
                     -8.71,
@@ -2902,7 +2902,7 @@
                 ]
               },
               {
-                "at": -5,
+                "at": -4.75,
                 "polygon": [
                   [
                     -8.39,
@@ -4293,7 +4293,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 3.6,
@@ -4312,5 +4312,9 @@
     "passes": 50,
     "edited_vertices": 12,
     "stages_with_changes": 3
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

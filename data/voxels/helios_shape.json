@@ -1,6 +1,6 @@
 {
   "id": "helios_shape",
-  "name": "Helios HEL-3D — low-poly shape",
+  "name": "Helios HEL-3D \u2014 low-poly shape",
   "unit": "helios_hel3d",
   "voxel_size": 0.056248,
   "subdivide": 1,
@@ -4525,7 +4525,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 2.7,
@@ -4544,5 +4544,9 @@
     "passes": 50,
     "edited_vertices": 40,
     "stages_with_changes": 5
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

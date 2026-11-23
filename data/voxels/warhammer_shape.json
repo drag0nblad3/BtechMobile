@@ -882,6 +882,147 @@
       ]
     },
     {
+      "name": "rt_srm",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        12,
+        36,
+        -7
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              9,
+              34,
+              -12
+            ],
+            [
+              16,
+              39,
+              -8
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              9,
+              34,
+              -13
+            ],
+            [
+              16,
+              39,
+              -13
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              10,
+              35,
+              -13
+            ],
+            [
+              10,
+              35,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              10,
+              37,
+              -13
+            ],
+            [
+              10,
+              37,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              12,
+              35,
+              -13
+            ],
+            [
+              12,
+              35,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              12,
+              37,
+              -13
+            ],
+            [
+              12,
+              37,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              14,
+              35,
+              -13
+            ],
+            [
+              14,
+              35,
+              -11
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              14,
+              37,
+              -13
+            ],
+            [
+              14,
+              37,
+              -11
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              10,
+              34,
+              -7
+            ],
+            [
+              14,
+              36,
+              -7
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
+    },
+    {
       "name": "la",
       "loc": "LA",
       "parent": "lt",
@@ -1724,9 +1865,36 @@
       -24.5
     ],
     "RT": [
-      10,
-      34,
-      -10
+      [
+        10.5,
+        35.5,
+        -13.5
+      ],
+      [
+        10.5,
+        37.5,
+        -13.5
+      ],
+      [
+        12.5,
+        35.5,
+        -13.5
+      ],
+      [
+        12.5,
+        37.5,
+        -13.5
+      ],
+      [
+        14.5,
+        35.5,
+        -13.5
+      ],
+      [
+        14.5,
+        37.5,
+        -13.5
+      ]
     ]
   },
   "weapons": [
@@ -1748,7 +1916,7 @@
   ],
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "art_quality_passes": 100,
   "art_signature_revision": "weapon-bank-and-forearm-cannon-definition",
   "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
@@ -1763,5 +1931,10 @@
     "passes": 50,
     "edited_vertices": 114,
     "stages_with_changes": 10
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
   }
 }

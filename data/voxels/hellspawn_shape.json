@@ -1,6 +1,6 @@
 {
   "id": "hellspawn_shape",
-  "name": "Hellspawn HSN-7D — low-poly shape",
+  "name": "Hellspawn HSN-7D \u2014 low-poly shape",
   "unit": "hellspawn_hsn7d",
   "voxel_size": 0.056377,
   "subdivide": 1,
@@ -1892,7 +1892,7 @@
                 ]
               },
               {
-                "at": -11,
+                "at": -11.75,
                 "polygon": [
                   [
                     -5.92,
@@ -4424,7 +4424,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
     "growth": 2.7,
@@ -4465,5 +4465,9 @@
       "three_quarter"
     ],
     "automatic_not_human_approved": true
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

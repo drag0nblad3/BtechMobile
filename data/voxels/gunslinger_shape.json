@@ -1,6 +1,6 @@
 {
   "id": "gunslinger_shape",
-  "name": "Gunslinger GUN-1ERD — low-poly shape",
+  "name": "Gunslinger GUN-1ERD \u2014 low-poly shape",
   "unit": "gunslinger_gun1erd",
   "voxel_size": 0.062149,
   "subdivide": 1,
@@ -4289,5 +4289,22 @@
       "three_quarter"
     ],
     "automatic_not_human_approved": true
+  },
+  "disconnected_source_chip_cleanup_20261122": {
+    "reason": "Remove one-cell disconnected raster artifact at authored source; mirrored geometry remains source-controlled",
+    "part": "lt",
+    "removed_bounds": [
+      [
+        -11,
+        26,
+        1
+      ],
+      [
+        -11,
+        26,
+        1
+      ]
+    ],
+    "measured_fragment_size": 1
   }
 }

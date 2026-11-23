@@ -4421,5 +4421,22 @@
     "passes": 50,
     "edited_vertices": 105,
     "stages_with_changes": 15
+  },
+  "disconnected_source_chip_cleanup_20261122": {
+    "reason": "Remove audited unconnected decorative source raster fragments, never runtime-prune real connected geometry",
+    "part": "ct",
+    "removed_bounds": [
+      [
+        0,
+        29,
+        -15
+      ],
+      [
+        0,
+        29,
+        -15
+      ]
+    ],
+    "measured_fragment_size": 1
   }
 }

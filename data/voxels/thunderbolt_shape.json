@@ -1,7 +1,7 @@
 {
   "exclusive_parts": true,
   "id": "thunderbolt_shape",
-  "name": "Thunderbolt TDR-5S — shape-first low resolution",
+  "name": "Thunderbolt TDR-5S \u2014 shape-first low resolution",
   "unit": "thunderbolt_tdr5s",
   "voxel_size": 0.043,
   "subdivide": 1,
@@ -3258,5 +3258,22 @@
     "edited_vertices": 209,
     "stages_with_changes": 20
   },
-  "silhouette_signature_revision": "20261122-blind-recognition-rig-and-silhouette-01"
+  "silhouette_signature_revision": "20261122-blind-recognition-rig-and-silhouette-01",
+  "disconnected_source_chip_cleanup_20261122": {
+    "reason": "Remove one-cell disconnected raster artifact at authored source; mirrored geometry remains source-controlled",
+    "part": "hd",
+    "removed_bounds": [
+      [
+        -3,
+        39,
+        -4
+      ],
+      [
+        -3,
+        39,
+        -4
+      ]
+    ],
+    "measured_fragment_size": 1
+  }
 }

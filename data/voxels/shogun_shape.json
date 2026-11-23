@@ -1,6 +1,6 @@
 {
   "id": "shogun_shape",
-  "name": "Shogun SHG-2F — low-poly shape",
+  "name": "Shogun SHG-2F \u2014 low-poly shape",
   "unit": "shogun_shg2f",
   "voxel_size": 0.063215,
   "subdivide": 1,
@@ -5033,5 +5033,22 @@
         -7
       ]
     }
-  ]
+  ],
+  "disconnected_source_chip_cleanup_20261122": {
+    "reason": "Remove one-cell disconnected raster artifact at authored source; mirrored geometry remains source-controlled",
+    "part": "lt",
+    "removed_bounds": [
+      [
+        -11,
+        26,
+        1
+      ],
+      [
+        -11,
+        26,
+        1
+      ]
+    ],
+    "measured_fragment_size": 1
+  }
 }
