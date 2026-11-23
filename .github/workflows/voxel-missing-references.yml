@@ -1,0 +1,51 @@
+name: Discover missing reference art and test silhouettes
+on:
+  pull_request:
+    paths:
+      - 'docs/graphics/missing-model-reference-leads-20261123.json'
+      - 'tools/resolve_missing_reference_gallery.py'
+      - 'tests/tools/test_resolve_missing_reference_gallery.py'
+      - '.github/workflows/voxel-missing-references.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  missing-reference-art:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test strict gallery matching without network
+        run: python3 -m unittest discover -s tests/tools -p 'test_resolve_missing_reference_gallery.py'
+      - name: Resolve precise source-gallery images
+        run: |
+          mkdir -p /tmp/new-reference
+          python3 tools/resolve_missing_reference_gallery.py \
+            --leads docs/graphics/missing-model-reference-leads-20261123.json \
+            --output /tmp/new-reference/discovered.json
+      - name: Install Godot 4.5.1 (headless)
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Install Pillow and import project classes
+        run: |
+          python3 -m pip install --quiet --user Pillow
+          godot --headless --import
+      - name: Run camera and subject-mask trials against discovered images
+        run: |
+          count=$(python3 -c "import json;print(len(json.load(open('/tmp/new-reference/discovered.json'))['candidates']))")
+          echo "GALLERY_MATCHES=$count"
+          if [ "$count" -gt 0 ]; then
+            python3 tools/run_tro_batch.py \
+              --index /tmp/new-reference/discovered.json \
+              --poses res://docs/graphics/reference-stance-poses.json \
+              --offset 0 --limit 20 --output /tmp/new-reference/batches
+          fi
+      - name: Upload link provenance, masks and exploratory scores only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: missing-reference-art-discovery
+          path: /tmp/new-reference
+          if-no-files-found: warn

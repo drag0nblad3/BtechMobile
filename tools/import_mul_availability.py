@@ -80,12 +80,23 @@ class Site:
             time.sleep(max(0.0,self.delay-(time.monotonic()-self.last)))
         self.last=time.monotonic()
         req=urllib.request.Request(url,headers={"User-Agent":AGENT,"Accept":
-                     "application/json" if json_mode else "application/xml"})
+                     "application/json" if json_mode else "text/html,application/xml",
+                     "Cache-Control":"no-cache"})
         with urllib.request.urlopen(req,timeout=65) as r:
             content=r.read(16000000)
+            mime=r.headers.get("Content-Type","unknown")
+            final=r.geturl()
         if len(content)>=16000000:
             raise RuntimeError("Truncated source "+path)
-        return json.loads(content) if json_mode else content.decode("utf8","replace")
+        if not json_mode:
+            return content.decode("utf8","replace")
+        try:
+            return json.loads(content)
+        except json.JSONDecodeError as exc:
+            sample=content[:140].decode("utf8","replace").replace("\\n"," ")
+            raise RuntimeError("Official MUL endpoint returned non-JSON: "
+                +path+" (type="+mime+", final="+final+", sample="
+                +repr(sample)+"). Preserving prior availability snapshot.") from exc
 
 
 def sitemap(xml):

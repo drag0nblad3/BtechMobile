@@ -1,0 +1,53 @@
+name: Official TRO illustration silhouette batches
+
+on:
+  pull_request:
+    paths:
+      - 'tools/score_tro_illustrations.py'
+      - 'tools/run_tro_batch.py'
+      - 'tests/tools/test_score_tro_illustrations.py'
+      - 'docs/graphics/tro-reference-art-index.json'
+      - '.github/workflows/voxel-tro-art-batches.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tro-batch-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  art-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Install image processing
+        run: python3 -m pip install --quiet --user Pillow
+      - name: Import typed Godot classes
+        run: godot --headless --import
+      - name: Test official source drawing segmentation
+        run: python3 -m unittest discover -s tests/tools -p 'test_score_tro_illustrations.py'
+      - name: Compare official archived artwork to posed source voxel geometry
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/reference-tro
+          for offset in 0; do
+            python3 tools/run_tro_batch.py \
+              --index docs/graphics/tro-reference-art-index.json \
+              --poses res://docs/graphics/reference-stance-poses.json \
+              --output /tmp/reference-tro --offset "$offset" --limit 20
+          done
+      - name: Upload derived ink silhouettes and clearly provisional metrics only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tro-art-reference-trials
+          path: /tmp/reference-tro
+          if-no-files-found: warn

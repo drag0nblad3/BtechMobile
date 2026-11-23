@@ -39,6 +39,8 @@ func _ready() -> void:
 	GameSettings.load_settings()
 	db = UnitDb.load_dir()
 	builder = ForceBuilder.new(db)
+	for side in 2:
+		builder.factions[side] = GameSettings.paint_faction(side)
 	set_anchors_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	var margin := MarginContainer.new()

@@ -1,0 +1,603 @@
+{
+  "schema_version": 1,
+  "generated_from_run": "https://github.com/drag0nblad3/BtechMobile/actions/runs/45179562210",
+  "provenance": "Direct page-gallery image URLs, verified present in source pages by CI. Images not stored; masks and scores provisional.",
+  "reference_silhouette_approved": 0,
+  "candidates": [
+    {
+      "model": "hatamoto_hi",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Hi HTM-27U GU28.jpg",
+      "match_class": "exact_variant",
+      "notes": "Official GU 28 HTM-27U, not generic Hatamoto-Chi",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_exact_variant",
+      "source_status": "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/c/c3/Hatamoto-Hi_HTM-27U_GU28.jpg/189px-cz51tz38eoksayohgvzz2q5n42ohply.jpg",
+      "filename": "Hatamoto-Hi HTM-27U GU28.jpg",
+      "initial_0_100_provisional": 40.8,
+      "camera_fit_0_100_provisional": 44.8,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": 6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 25
+      },
+      "foreground_fraction": 0.4835,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "hatamoto_kaze",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Kaze HTM-27V GU28.jpg",
+      "match_class": "exact_variant",
+      "notes": "Official GU 28 HTM-27V",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_exact_variant",
+      "source_status": "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/c/c3/Hatamoto-Kaze_HTM-27V_GU28.jpg/189px-m5g5n5hg8a2d2xegz6ryhnrfu82amxl.jpg",
+      "filename": "Hatamoto-Kaze HTM-27V GU28.jpg",
+      "initial_0_100_provisional": 40.6,
+      "camera_fit_0_100_provisional": 43,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": 6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 25
+      },
+      "foreground_fraction": 0.4875,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "hatamoto_ku",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Ku HTM-27W2 XTRORepv2.jpg",
+      "match_class": "same_chassis_variant",
+      "notes": "Art is HTM-27W2; game has HTM-27W. Verify weapons and armor differences",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_same_chassis_variant",
+      "source_status": "SIBLING_OR_NONCANON_SOURCE_NOT_EXACT",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/6/61/Hatamoto-Ku_HTM-27W2_XTRORepv2.jpg/173px-b4ljbpeuhwk8jtr8e5r8qcl8d37b0i8.jpg",
+      "filename": "Hatamoto-Ku HTM-27W2 XTRORepv2.jpg",
+      "initial_0_100_provisional": 36.6,
+      "camera_fit_0_100_provisional": 41.5,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 25
+      },
+      "foreground_fraction": 0.5053,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "hatamoto_mizo",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hatamoto-Chi",
+      "expected_filename": "Hatamoto-Mizo HTM-27Y GU28.jpg",
+      "match_class": "exact_variant",
+      "notes": "Official GU 28 HTM-27Y",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_exact_variant",
+      "source_status": "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/7/72/Hatamoto-Mizo_HTM-27Y_GU28.jpg/189px-g10qdzszmqog9900m80yo47wi2avfqn.jpg",
+      "filename": "Hatamoto-Mizo HTM-27Y GU28.jpg",
+      "initial_0_100_provisional": 40.9,
+      "camera_fit_0_100_provisional": 45.1,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": 6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 25
+      },
+      "foreground_fraction": 0.4917,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "hel",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Eris",
+      "expected_filename": "Hel_Shrapnel010.jpg",
+      "match_class": "exact_variant",
+      "notes": "Hel HL-1 image discovered in Eris gallery (Shrapnel #10), different from Loki Mk II",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_exact_variant",
+      "source_status": "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/e/ef/Hel_Shrapnel010.jpg/88px-f0qyb4rkqwypppkjw02w1le4d7jsmg3.jpg",
+      "filename": "Hel_Shrapnel010.jpg",
+      "initial_0_100_provisional": 42.6,
+      "camera_fit_0_100_provisional": 44.9,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": 6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 0
+      },
+      "foreground_fraction": 0.4014,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "hermes_iii",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Hermes_II",
+      "expected_filename": "Hermes III 6K Shrapnel 23.jpg",
+      "match_class": "same_chassis_variant",
+      "notes": "Illustrated HER-6K, game HER-4K, compare component layout",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_same_chassis_variant",
+      "source_status": "SIBLING_OR_NONCANON_SOURCE_NOT_EXACT",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/9/93/Hermes_III_6K_Shrapnel_23.jpg/120px-93ayk1wsi6bym3g9t7yrox511xg7e9p.jpg",
+      "filename": "Hermes III 6K Shrapnel 23.jpg",
+      "initial_0_100_provisional": 39.1,
+      "camera_fit_0_100_provisional": 44.8,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": -18,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 25
+      },
+      "foreground_fraction": 0.4858,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "nova_t",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Nova_(Black_Hawk)",
+      "expected_filename": "Nova_RGilClan_v14.png",
+      "match_class": "chassis_only",
+      "notes": "Nova RG ilClan modern family art; NOT Nova T weapons configuration",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_chassis_only",
+      "source_status": "SIBLING_OR_NONCANON_SOURCE_NOT_EXACT",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/0/05/Nova_RGilClan_v14.png/300px-9huhg2o8hg2rt85rs0bl49k4qe3dydl.png",
+      "filename": "Nova_RGilClan_v14.png",
+      "initial_0_100_provisional": null,
+      "camera_fit_0_100_provisional": null,
+      "selected_camera_provisional": null,
+      "foreground_fraction": null,
+      "segmentation_error": "Unreliable artwork segmentation area: 0.772",
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "suburbanmech",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/UrbanMech",
+      "expected_filename": "UrbanMech_RGilClan_v02.png",
+      "match_class": "visually_identical_chassis",
+      "notes": "Modern RG ilClan UrbanMech artwork is a silhouette proxy only; SuburbanMech variant-specific weapons still need checking",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_visually_identical_chassis",
+      "source_status": "SIBLING_OR_NONCANON_SOURCE_NOT_EXACT",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/a/af/UrbanMech_RGilClan_v02.png/300px-ta0swaic2xiamr43qbrunlfqatv1ieb.png",
+      "filename": "UrbanMech_RGilClan_v02.png",
+      "initial_0_100_provisional": 35.6,
+      "camera_fit_0_100_provisional": 43.1,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": -18,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": 25
+      },
+      "foreground_fraction": 0.6271,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "titan",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Titan_II",
+      "expected_filename": "Titan_TIT-1A_BT11.jpg",
+      "match_class": "apocryphal_variant_art",
+      "notes": "Original TIT-1A art from BattleTechnology #11, apocryphal publication; TI-1A game unit may differ",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_apocryphal_variant_art",
+      "source_status": "SIBLING_OR_NONCANON_SOURCE_NOT_EXACT",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/2/2a/Titan_TIT-1A_BT11.jpg/89px-pje71d8aw78zqx0l4nndc7t9r554dck.jpg",
+      "filename": "Titan_TIT-1A_BT11.jpg",
+      "initial_0_100_provisional": 40.2,
+      "camera_fit_0_100_provisional": 42.4,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": -6,
+        "projection": "perspective",
+        "roll_deg": 0,
+        "yaw_deg": -25
+      },
+      "foreground_fraction": 0.5051,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "von_rohrs_hebi",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Von_Rohrs_(BattleMech)",
+      "expected_filename": "Von_Rohrs.jpg",
+      "match_class": "exact_chassis",
+      "notes": "Original Von Rohrs (Hebi) image explicitly in Von Rohrs gallery, in-game VON 4RH-5; verify artwork variant",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_exact_chassis",
+      "source_status": "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/b/ba/Von_Rohrs.jpg/300px-is4kwbmsmax643n9vd0m1eexe5mo4kp.png",
+      "filename": "Von_Rohrs.jpg",
+      "initial_0_100_provisional": 38.4,
+      "camera_fit_0_100_provisional": 45.2,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": -18,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": -25
+      },
+      "foreground_fraction": 0.5711,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "tsunami",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Tsunami_(BattleMech)",
+      "expected_filename": "Tsunami TS-P1 RS3055Uu.jpg",
+      "match_class": "exact_variant",
+      "notes": "Original TS-P1 from RS 3055Uu; preferred replacement for failing TS-P1D TRO segmentation",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_exact_variant",
+      "source_status": "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED",
+      "image_url": "https://cfw.sarna.net/wiki/images/thumb/3/39/Tsunami_TS-P1_RS3055Uu.jpg/89px-jcvuko5xi01qy4nffrixsjxvfznakh2.jpg",
+      "filename": "Tsunami TS-P1 RS3055Uu.jpg",
+      "initial_0_100_provisional": 41.9,
+      "camera_fit_0_100_provisional": 47,
+      "selected_camera_provisional": {
+        "distance_heights": 4.5,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "yaw_deg": -25
+      },
+      "foreground_fraction": 0.452,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    }
+  ],
+  "unresolved": [
+    {
+      "model": "rattlesnake",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rattlesnake",
+      "expected_filename": null,
+      "match_class": "lookalike_only",
+      "notes": "JR7-31 outwardly Jenner-like; Jenner art is a proxy, not an exact JR7-31 picture",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_lookalike_only",
+      "source_status": "NO_GALLERY_IMAGE",
+      "image_url": null,
+      "filename": null,
+      "initial_0_100_provisional": null,
+      "camera_fit_0_100_provisional": null,
+      "selected_camera_provisional": null,
+      "foreground_fraction": null,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    },
+    {
+      "model": "rattlesnake_ii",
+      "view": "front",
+      "reference_page": "https://www.sarna.net/wiki/Rattlesnake_II",
+      "expected_filename": null,
+      "match_class": "unresolved",
+      "notes": "RSN-1 from Shrapnel 9; cannot reuse original Rattlesnake or Jenner as exact reference",
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -6,
+        "projection": "orthographic",
+        "roll_deg": 0,
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ],
+      "camera_search": {
+        "yaw_offsets": [
+          -25,
+          0,
+          25
+        ],
+        "pitch_offsets": [
+          -12,
+          0,
+          12
+        ]
+      },
+      "source_type": "Sarna_gallery_unresolved",
+      "source_status": "NO_GALLERY_IMAGE",
+      "image_url": null,
+      "filename": null,
+      "initial_0_100_provisional": null,
+      "camera_fit_0_100_provisional": null,
+      "selected_camera_provisional": null,
+      "foreground_fraction": null,
+      "segmentation_error": null,
+      "review_status": "VIEW_CAMERA_RIG_MASK_AND_EXACT_VARIANT_NOT_MANUALLY_APPROVED"
+    }
+  ]
+}

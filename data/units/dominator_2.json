@@ -1,0 +1,83 @@
+{
+  "id": "dominator_2",
+  "name": "Dominator",
+  "model": "2",
+  "tonnage": 65,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 17,
+  "tech_base": "clan",
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor_type": "ferro_fibrous",
+  "armor": {
+    "LA": 15,
+    "RA": 20,
+    "LT": 23,
+    "RT": 23,
+    "CT": 31,
+    "HD": 9,
+    "LL": 28,
+    "RL": 28
+  },
+  "rear_armor": {
+    "LT": 7,
+    "RT": 7,
+    "CT": 10
+  },
+  "missing_actuators": {
+    "RA": [
+      "hand"
+    ]
+  },
+  "equipment": {
+    "LA": [
+      "endo_steel*4",
+      "ferro_fibrous*4"
+    ],
+    "RA": [
+      "heat_sink",
+      "c_er_large_laser",
+      "c_er_medium_laser",
+      "endo_steel*2",
+      "ferro_fibrous*2"
+    ],
+    "LT": [
+      "jump_jet*2",
+      "c_lrm20+artemis_v",
+      "ammo:c_lrm20:artemis_v*2"
+    ],
+    "RT": [
+      "heat_sink",
+      "jump_jet*2",
+      "c_er_large_laser",
+      "targeting_computer",
+      "endo_steel",
+      "ferro_fibrous"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "HD": [
+      "c_er_small_laser@rear"
+    ],
+    "LL": [
+      "heat_sink"
+    ],
+    "RL": [
+      "heat_sink"
+    ]
+  },
+  "source": {
+    "mul_id": 7435,
+    "megamek": "data/mekfiles/meks/Rec Guides ilClan/Vol 1/Dominator 2.mtf",
+    "published": "RG01",
+    "role": "Sniper",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/dominator-2"
+  },
+  "bv": 2906,
+  "role": "Sniper: paired Clan ER large lasers, ER medium laser, Artemis V LRM 20 and targeting computer, five jump jets",
+  "sprite": "dominator"
+}

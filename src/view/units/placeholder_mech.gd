@@ -11,7 +11,9 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	var root := Node3D.new()
 	root.name = "Placeholder"
 	var s := 1.25 + def.tonnage / 250.0
-	var body := _mat(SIDE_COLORS[side % SIDE_COLORS.size()])
+	var livery := VxLivery.scheme(GameSettings.paint_faction(side))
+	var body := _mat(Color(String(livery["primary"])))
+	var accent := _mat(Color(String(livery["secondary"])))
 	var dark := _mat(Color(0.18, 0.18, 0.2))
 	var glass := _mat(Color(0.5, 0.9, 1.0), true)
 	# legs
@@ -19,8 +21,8 @@ static func build(def: UnitDef, side: int) -> Node3D:
 	_box(root, Vector3(0.16, 0.5, 0.2), Vector3(0.17, 0.25, 0), dark, s)
 	# torso, arms
 	_box(root, Vector3(0.6, 0.42, 0.4), Vector3(0, 0.72, 0), body, s)
-	_box(root, Vector3(0.14, 0.4, 0.18), Vector3(-0.39, 0.66, 0), body, s)
-	_box(root, Vector3(0.14, 0.4, 0.18), Vector3(0.39, 0.66, 0), body, s)
+	_box(root, Vector3(0.14, 0.4, 0.18), Vector3(-0.39, 0.66, 0), accent, s)
+	_box(root, Vector3(0.14, 0.4, 0.18), Vector3(0.39, 0.66, 0), accent, s)
 	# cockpit on the front so facing is obvious
 	_box(root, Vector3(0.24, 0.14, 0.12), Vector3(0, 0.84, -0.24), glass, s)
 	# arm guns pointing forward

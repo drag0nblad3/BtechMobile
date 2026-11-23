@@ -150,3 +150,77 @@ damage makes thicker smoke.
 Leave the cell row at each pivot empty in the parent, and fill it with a small `joint`
 block in the child, centered on the pivot. That block stays covered when the joint bends,
 so no gap opens up. Never let two parts fill the same cell: overlapping faces flicker.
+
+## New sourced silhouettes: Solitaire and Vulture Mk IV
+
+`solitaire.json` is a separate light-mech source sculpt rather than a clone
+of the Jenner or a generic biped. Its angular shoulder plates, forward
+cockpit, antenna, hands, exposed arm joints, thin lower legs and asymmetric
+torso emitters are authored as linked independent masses.
+
+`vulture_mk_iv.json` is an entirely independent 3145-style chassis sculpt
+with bird-legged hocks and ankles, an extended narrow cockpit beak, two
+supported gun arms and shoulder launcher panels with **twelve physically
+cut tubes each**. Five overlay files `vulture_mk_iv_a.json` through `_e.json`
+replace barrel contours and modify launcher counts according to the
+official loadouts: A ten per pod, B fifteen, C none, D twelve, E twelve.
+Prime uses the base sculpt and twelve per pod.
+
+These authored source meshes have connectivity and open-port regression
+tests. The source geometry still needs multi-angle reference-aligned renders,
+part by part proportion corrections and Godot device performance inspection.
+The models do not determine damage or replace the record-sheet equipment.
+
+
+## Further new chassis and weapon variants
+
+Initial independent shapes now also exist for Hellhound (Conjurer),
+Koshi (Standard), HawkWolf HWK-4F, Black Hawk (Standard) and Dominator.
+They are stored in `data/voxels/` and derive their weapon placements from
+each unit's source MTF, not generic silhouette templates. Each includes
+separate moving arm, shin and foot parts. Source geometry uses explicit
+open launcher tubes; the alternate weapon overlays adjust the number and
+size of ports for each record sheet (for example HawkWolf 15+15 arm
+launchers, Dominator 2's 20-tube LRM and Koshi 3's triple-laser arms).
+A general catalog regression checks live loadability, connection masses,
+part counts, every damage location and official launcher-opening counts.
+
+Status: authored baseline **not rendered or reference-scored**. A proper
+multi-angle render/contact audit, configuration-specific muzzle placement
+inspection, and performance review remain required for acceptance.
+
+## Faction paint and insignia
+
+The force builder's **faction** picker is also the paint selector, even when
+historical availability restrictions are off. The selected faction for each
+side is remembered as a view-only preference in `user://settings.cfg`.
+Battle states, record-sheet unit JSON and the voxel geometry source are not
+changed by selecting a paint scheme.
+
+`data/graphics/faction_liveries.json` defines the primary/secondary armor
+colors, stripe/camouflage pattern, contrasting ink, and a simple **stylized**
+field emblem. These markings are artistic shorthand, **not official faction
+heraldry or canonical parade schemes**. Major factions have named presets;
+unlisted factions use a repeatable fallback palette. Aliases give successor
+factions a consistent family resemblance.
+
+`VxMesher` stores a cosmetic paint-eligibility mask in UV2, derived from
+armor roles and protected material names (gun, cockpit glass, glow, joints,
+etc.). The original source roles remain unchanged for the damage system.
+`VxLivery` applies the faction colors only to paintable armor in a shared
+mobile-friendly spatial shader. Weapons, gun bores, joints, structure,
+and the damage-removal order keep their source material and shape. Emblems are
+masked onto existing front-facing torso armor, never separate floating planes.
+The shader follows the articulated part through walks, falls, and limb drops;
+damaged armor removes the corresponding paint automatically. Each team has a
+small red/blue identification stripe so opponents choosing the same faction
+are still distinguishable.
+
+The fallback geometric `PlaceholderMech` also uses the selected palette;
+authored 2D sprite artwork is not repainted. Shader materials are reused
+between units on the same team, and the base voxel meshes remain shared in
+`VxRenderCache` instead of regenerating per paint color.
+
+Tests: `godot --headless -s tests/run_tests.gd -- vx_livery`, full suite and
+the battle/UI smoke tests. Inspect torso markings at phone resolution with the
+normal visual capture tools; no Android build unless requested.
