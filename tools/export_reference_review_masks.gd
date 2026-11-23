@@ -7,6 +7,7 @@ extends SceneTree
 const MASK_SIZE := 64
 var destination := "/tmp/mech-masks"
 var stance_catalog: Dictionary = {}
+var selected_ids: Array[String] = []
 var completed := 0
 var failures: Array[String] = []
 
@@ -22,6 +23,9 @@ func _init() -> void:
             quit(1)
             return
         stance_catalog = file
+    if args.size() > 2:
+        for id: String in args[2].split(",", false):
+            selected_ids.append(id.strip_edges())
     _mechs()
     _assets("assets", "archetype")
     _assets("vehicles", "vehicle")
@@ -62,6 +66,8 @@ func _assets(folder: String, prefix: String) -> void:
 
 
 func _export(path: String, id: String, mech: bool) -> void:
+    if not selected_ids.is_empty() and not selected_ids.has(id):
+        return
     var raw: Dictionary = JsonFile.read(path)
     var data: Dictionary = raw
     if mech and raw.has("source"):
@@ -76,14 +82,12 @@ func _export(path: String, id: String, mech: bool) -> void:
     var masks := {}
     for view: String in VxSilhouette.VIEWS:
         var pose := ReferenceStanceRig.profile(stance_catalog, id, view)
-        if mech:
-            var issues := ReferenceStanceRig.errors(model, pose)
-            if not issues.is_empty():
-                failures.append("%s/%s: %s" % [id, view, ", ".join(issues)])
-                return
-            masks[view] = ReferenceStanceRig.project(model, view, pose, MASK_SIZE)
-        else:
-            masks[view] = VxSilhouette.project(VxSilhouette.model_cells(model), view, MASK_SIZE)
+        var issues := ReferenceStanceRig.errors(model, pose) if mech else (
+            ReferenceCamera.settings_errors(pose.get("camera", {})))
+        if not issues.is_empty():
+            failures.append("%s/%s: %s" % [id, view, ", ".join(issues)])
+            return
+        masks[view] = ReferenceStanceRig.project(model, view, pose, MASK_SIZE)
     var folder := destination.path_join(id)
     if DirAccess.make_dir_recursive_absolute(folder) != OK:
         failures.append(id + ": cannot create output folder")
