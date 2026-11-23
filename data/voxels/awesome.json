@@ -4598,6 +4598,47 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
-  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints"
+  "art_quality_passes": 100,
+  "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 200,
+    "stages_with_changes": 20
+  },
+  "blind_identity_resculpt": {
+    "revision": "2026-11-22-critical-chassis-identity-geometry-v1",
+    "identity_signature": "broad triple PPC fighting chest; small cockpit",
+    "modified_polygon_vertices": 166,
+    "major_form_targets": [
+      "ct",
+      "hd",
+      "lt",
+      "la",
+      "ra",
+      "ll",
+      "ll_shin",
+      "ll_foot"
+    ],
+    "review_views": [
+      "front",
+      "side",
+      "top",
+      "rear",
+      "three_quarter"
+    ],
+    "automatic_not_human_approved": true
+  },
+  "blind_identity_weapon_stage": "2026-11-22-v1",
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "geometry_source": "post-213 strong-joint 151-model sculpt",
+    "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
+  }
 }

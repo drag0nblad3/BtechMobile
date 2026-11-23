@@ -1,6 +1,6 @@
 {
   "id": "shadow_hawk_shape",
-  "name": "Shadow Hawk SHD-2H — silhouette study",
+  "name": "Shadow Hawk SHD-2H \u2014 silhouette study",
   "unit": "shadow_hawk_shd2h",
   "voxel_size": 0.043,
   "subdivide": 1,
@@ -2465,7 +2465,7 @@
   "art_revision": "shape-first-slab-relief-v2-20261121",
   "exclusive_parts": true,
   "art_quality_revision": "50-stage-source-review-20261121",
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "solid_socket_revision": "2026-11-22-2x2-backed-parent-joints",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -2473,5 +2473,21 @@
     "front": 0.86,
     "rear": 0.71,
     "torso_width": 0.95
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 258,
+    "stages_with_changes": 24
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

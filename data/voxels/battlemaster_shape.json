@@ -239,6 +239,20 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              7,
+              40,
+              -7
+            ],
+            [
+              7,
+              40,
+              2
+            ]
+          ]
         }
       ],
       "pivot": [
@@ -2627,5 +2641,22 @@
         -25
       ]
     }
-  ]
+  ],
+  "disconnected_source_chip_cleanup_20261122": {
+    "reason": "Remove audited unconnected decorative source raster fragments, never runtime-prune real connected geometry",
+    "part": "ct",
+    "removed_bounds": [
+      [
+        7,
+        40,
+        -7
+      ],
+      [
+        7,
+        40,
+        2
+      ]
+    ],
+    "measured_fragment_size": 10
+  }
 }

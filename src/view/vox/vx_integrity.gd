@@ -121,22 +121,6 @@ static func repair(m: VxModel, recipe: Dictionary = {}) -> Dictionary:
 	report["rig_rejoined"] = rigid_fix["rejoined"]
 	report["rig_added"] = rigid_fix["added"]
 	report["added"] += rigid_fix["added"]
-	# A tiny detached chip is not a viable armor plate or load-bearing frame.
-	# When safe routing cannot attach it without sealing a real cavity, remove
-	# only the small isolated fragment rather than leave a floating voxel.
-	# This happens AFTER joint/socket repairs and never modifies another part.
-	var pruned_orphans := 0
-	for p: Dictionary in m.parts:
-		var groups := components(p["cells"])
-		for i in range(1, groups.size()):
-			var orphan: Dictionary = groups[i]
-			if orphan.size() > 12 * n * n * n:
-				continue
-			for c: Vector3i in orphan:
-				p["cells"].erase(c)
-				owned.erase(c)
-				pruned_orphans += 1
-	report["pruned_orphan_voxels"] = pruned_orphans
 	var residual := {}
 	for p: Dictionary in m.parts:
 		var groups := components(p["cells"])
