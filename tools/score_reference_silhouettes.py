@@ -106,11 +106,15 @@ def main():
             row[key] = ""  # No stale scores from an earlier review.
             stance = row.get("stance_" + view + "_review",
                              row.get("stance_review_status", ""))
-            if stance and stance not in ("VERIFIED_RIG_MATCH", "NOT_APPLICABLE_STATIC"):
+            camera = row.get("camera_" + view + "_review", "")
+            if (stance and stance not in ("VERIFIED_RIG_MATCH", "NOT_APPLICABLE_STATIC")
+                    or camera and camera != "VERIFIED_CAMERA_MATCH"):
                 any_unverified = True
                 continue
             if stance == "VERIFIED_RIG_MATCH" and not row.get("stance_profile", "").strip():
                 raise ValueError(f"{row['model']}/{view}: approved rig pose requires a stance_profile")
+            if camera == "VERIFIED_CAMERA_MATCH" and not row.get("camera_profile", "").strip():
+                raise ValueError(f"{row['model']}/{view}: approved camera requires camera_profile")
             model = locate(args.renders, row["model"], view)
             ref = locate(args.references, row["model"], view)
             if model is None or ref is None:
