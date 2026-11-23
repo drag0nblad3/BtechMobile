@@ -57,6 +57,18 @@ into a reference-image fit percentage.
    side/angle, and verification in the per-model scorecard. Never optimize joints
    to artificially maximize the metric: use the photographed stance first.
 
+   **Camera matching:** `default.camera` and `<view>.camera` accept independent
+   `yaw_deg`, `pitch_deg`, `roll_deg`, `projection` (`orthographic` or
+   `perspective`), and `distance_heights` (viewpoint distance measured in
+   model heights). The projector uses eight corners of **every** posed voxel
+   to produce filled projected silhouettes and includes perspective depth;
+   it is no longer the old coarse rounded-center projection.
+   Use `tools/reference_camera_sweep.gd` to try a **bounded** yaw/pitch
+   neighborhood around a photo-estimated angle without touching the rig.
+   Do not treat the camera candidate with maximum pixel overlap as proven:
+   compare the pose, viewed side, elevation and any photographed base against
+   the actual source image. Camera angle must not hide sculpt mistakes.
+
 4. Export the **rigged, pose-adjusted** source voxel occupancy silhouettes:
 
        godot --headless --import
@@ -100,6 +112,19 @@ into a reference-image fit percentage.
    whenever the shape-mask score hides material/rendered anatomy problems.
    Retain the current scorecard's angle-specific improvement prompts and
    replace them with measured corrections as the comparisons are completed.
+
+
+## Initial camera-calibrated reference trials
+
+A small **real photo** smoke trial has started, documented in
+[first-reference-photo-trials-20261123.md](first-reference-photo-trials-20261123.md)
+and [the provisional CSV](first-reference-photo-trials.csv). Its Battleaxe
+front-view score and Phoenix Hawk three-quarter score were calculated from
+modern plastic reference photographs and actual posed voxel occupancy.
+They are **not approved scores**: the Battleaxe photo contains a base and both
+camera/pose selections remain under manual review. They are separately labeled
+in the full catalog and are not inserted into its final front/side/quarter/top
+or overall reference-fit fields.
 
 ## Interpreting scores
 
