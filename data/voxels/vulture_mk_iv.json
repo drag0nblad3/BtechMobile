@@ -19,6 +19,11 @@
       "role": "armor"
     },
     {
+      "name": "edge",
+      "color": "a7b4ab",
+      "role": "armor"
+    },
+    {
       "name": "launcher",
       "color": "303e43",
       "role": "armor"
