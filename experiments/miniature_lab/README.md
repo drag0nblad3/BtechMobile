@@ -427,3 +427,103 @@ Reproduce from the repository root:
 
 **No production `data/voxels/` or `src/` changes; no merge, Android APK
 build, or in-engine Godot smoke test in this pass.**
+
+
+## v12: additional real-world reference photos and multi-source resculpt
+
+The new trial is **still an isolated experiment**. All changes are in this
+directory; there are no changes to any merged chassis, rules, the game
+renderer or the Android project.
+
+### Confirmed sculpt and new sources
+
+The reference generation remains **Catalyst Game Labs' 2021 Jenner** from
+Inner Sphere Striker Lance **CAT35729 / base 63**, and not the older Iron Wind
+Metals/Ral Partha sculpts or the similarly named Jenner IIC.
+
+- **Existing:** Jaded Falconer, four painted photos of the 2021 plastic
+  sculpt, from `jenner_photo_annotations.json`. Three photos have sufficient
+  provisional camera and leg landmarks; the fourth rear view remains unscored.
+- **New real miniature frontal view:** RPG Mini Hunter, unpainted grey 2021
+  plastic Jenner. Photo:
+  https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190416_Final_1200x1200.jpg?v=1708318633
+- **New real miniature oblique side view:** same retailer, separate
+  unpainted photo:
+  https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190417_Final_1200x1200.jpg?v=1708318633
+- **Supplemental visual geometry check, NOT independent photo scoring:**
+  promotional digital sculpt render:
+  https://i.ebayimg.com/images/g/dHUAAOSwaWRidYD4/s-l500.png
+
+The new `jenner_additional_reference_views.json` holds *only* source URLs,
+crop metadata, estimated manually traced polygon masks and rigid/leg landmarks.
+**No copyrighted photographs or thumbnail pixels were committed.**
+
+### Calibration before any geometric comparison
+
+The new `multisource_fit.py` uses `photo_registration.py` to fit an
+individual perspective camera (yaw, elevation, roll, effective distance,
+uniform crop scale/translation) to rigid geometry, then fits both visible
+legs to the photograph **without changing the modeled bones or source
+geometry**. The camera and pose are fitted **once to v11**, then frozen
+identically for every v12 variant.
+
+- New front registration: rigid landmark RMSE **0.05114**, normalized to
+  the manually cropped photograph; both leg poses estimated. This receives
+  an **exploratory** full-body silhouette score.
+- New oblique side registration: rigid RMSE **0.11408**, with the far leg
+  obscured. This **fails the 0.08 registration-residual gate** and is
+  **unscored** numerically. Use only as a qualitative upper-body geometry
+  reference. Do not invent missing leg angles or exploit this angle in an
+  automated "score improvement".
+
+The reference crop traces come from 500px previews with approximately
+±8–15px uncertainty; camera focal length, distortion and actual scene
+coordinates are unknown. These values are provisional *diagnostics*,
+**not calibrated likeness percentages**. The digital render has no
+photographic calibration or numeric score.
+
+### Five actual source-geometry resculpt passes
+
+Reproducible via `make_jenner_v12.py`, starting from the untouched
+experimental v11 source:
+
+1. Broaden the distinctive Jenner disc cockpit by a controlled 8%.
+2. Separate the three forward cockpit-glazing panels so voxel quantization
+   cannot collapse them into a single blue strip.
+3. Replace the undersized upper-torso grille with **sixteen actual
+   subtractive openings**, not black painted rectangles or overlapping
+   armor patches.
+4. Reshape the upper left/right shoulder fairing attachment profiles,
+   without modifying weapon-pod roots or camera pose.
+5. Narrow the lower toes/foot tips while preserving knee, ankle and hip
+   connection locations and physical grooves.
+
+| Frozen per-photo diagnostic | v11 | v12 |
+|---|---:|---:|
+| Jaded Falconer three registered views, mean IoU | 0.7239 | 0.7250 |
+| New RPG Mini Hunter front, IoU | 0.7755 | 0.7813 |
+| Occupied voxels | 14,977 | 15,129 |
+| Independent geometry components | 30 | 30 |
+| Overlap/disconnection/unsupported joint faults | 0 | 0 |
+
+Intermediate pass measurements, including minor temporary regressions,
+are in `jenner_v12_multisource_scorecard.json`. The rough fixed-camera
+landmark residual remains essentially unchanged, and **one poorly
+registered side photo was not included in the score**. This is a small,
+mixed-evidence incremental trial, not a proven production-quality resculpt.
+
+### Reproduction and acceptance
+
+    python experiments/miniature_lab/make_jenner_v12.py
+    python -m unittest discover -s experiments/miniature_lab -p test_jenner_v12.py -v
+    python experiments/miniature_lab/multisource_fit.py --control experiments/miniature_lab/jenner_assembly_v11.json --compare experiments/miniature_lab/jenner_assembly_v11.json experiments/miniature_lab/jenner_assembly_v12.json --size 58 --output experiments/miniature_lab/generated/jenner_v12_registered.json
+
+Six equivalent targeted local tests passed on the actual assembled voxel
+occupancy, including 29 physical attachment checks, real recesses,
+glazing, frozen camera/pose, and photo exclusion. The existing **full**
+local regression suite did *not* finish before the execution timeout,
+so it must not be claimed green. Godot 4.5 in-engine rig, scene and
+device-render tests are outstanding. The actual source-voxel v12 render
+and v11/v12 comparison were provided in the conversation.
+
+**Do not merge v12 as production art on these proxy scores alone.**
