@@ -124,14 +124,20 @@ func show_unit(u: Unit) -> void:
 
 func set_side(value: int) -> void:
 	side = value
+	set_faction(GameSettings.paint_faction(side))
+
+
+## Cosmetic paint never changes the model or the unit's record sheet.
+func set_faction(faction: String) -> void:
+	var paint := VxLivery.material_for(faction, side)
+	for p: VxPart in parts.values():
+		p.set_paint(paint)
 	set_wrecked(false)
 
 
 func set_wrecked(on: bool) -> void:
 	for p: VxPart in parts.values():
 		p.set_wrecked(on)
-		if not on:
-			p.material_override = VxRenderCache.side_material(side)
 
 
 ## World positions of a location's weapon muzzles (they move with the limb).
