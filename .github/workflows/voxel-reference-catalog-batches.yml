@@ -1,15 +1,6 @@
 name: Cataloged plastic photo silhouette batches
 
 on:
-  pull_request:
-    paths:
-      - 'tools/run_reference_batch.py'
-      - 'tools/score_first_reference_photos.py'
-      - 'tools/reference_camera_sweep.gd'
-      - 'tools/reference_camera.gd'
-      - 'tools/reference_stance_rig.gd'
-      - 'docs/graphics/catalyst-photo-reference-index.json'
-      - '.github/workflows/voxel-reference-catalog-batches.yml'
   workflow_dispatch:
 
 permissions:
