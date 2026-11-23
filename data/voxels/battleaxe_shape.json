@@ -1366,6 +1366,118 @@
       ]
     },
     {
+      "name": "rt_lrm5",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        6,
+        39,
+        -7
+      ],
+      "shapes": [
+        {
+          "box": [
+            [
+              3,
+              39,
+              -12
+            ],
+            [
+              5,
+              45,
+              -10
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              5,
+              38,
+              -9
+            ],
+            [
+              7,
+              41,
+              -7
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              4,
+              40,
+              -12
+            ],
+            [
+              4,
+              40,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              41,
+              -12
+            ],
+            [
+              4,
+              41,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              42,
+              -12
+            ],
+            [
+              4,
+              42,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              43,
+              -12
+            ],
+            [
+              4,
+              43,
+              -10
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              44,
+              -12
+            ],
+            [
+              4,
+              44,
+              -10
+            ]
+          ]
+        }
+      ]
+    },
+    {
       "name": "la",
       "loc": "LA",
       "pivot": [
@@ -2339,9 +2451,61 @@
       ]
     ],
     "RT": [
-      7,
-      39,
-      -12.5
+      [
+        7.5,
+        39.5,
+        -12.5
+      ],
+      [
+        7.5,
+        41.5,
+        -12.5
+      ],
+      [
+        7.5,
+        43.5,
+        -12.5
+      ],
+      [
+        9.5,
+        39.5,
+        -12.5
+      ],
+      [
+        9.5,
+        41.5,
+        -12.5
+      ],
+      [
+        9.5,
+        43.5,
+        -12.5
+      ],
+      [
+        4.5,
+        40.5,
+        -12.5
+      ],
+      [
+        4.5,
+        41.5,
+        -12.5
+      ],
+      [
+        4.5,
+        42.5,
+        -12.5
+      ],
+      [
+        4.5,
+        43.5,
+        -12.5
+      ],
+      [
+        4.5,
+        44.5,
+        -12.5
+      ]
     ]
   },
   "jets": {},
@@ -2429,5 +2593,5 @@
     ],
     "automated_not_art_approved": true
   },
-  "notes": " Narrowed and shortened the exaggerated shoulder slab; separated LT five-port LRM and RT six-port SRM racks with real cutouts; reshaped arm PPC muzzle bores and retained articulated supporting frames."
+  "notes": " Narrowed and shortened the exaggerated shoulder slab; separated LT five-port LRM and RT six-port SRM racks with real cutouts; reshaped arm PPC muzzle bores and retained articulated supporting frames. Corrected the official BKX-7K right-torso weapon complement: separate SRM-6 and LRM-5 housings, with eleven distinct ports plus the left LRM-5. A narrow inner launcher is used instead of recreating an oversized side plate."
 }
