@@ -3574,6 +3574,48 @@
             ]
           ],
           "mat": "plate"
+        },
+        {
+          "erase": [
+            [
+              -14,
+              19,
+              -20
+            ],
+            [
+              -14,
+              19,
+              -20
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -12,
+              19,
+              -20
+            ],
+            [
+              -12,
+              19,
+              -20
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -10,
+              17,
+              -19
+            ],
+            [
+              -10,
+              17,
+              -19
+            ]
+          ]
         }
       ],
       "parent": "lt",
@@ -5052,5 +5094,5 @@
     "reference_basis": "Catalyst plastic miniature reference",
     "review_status": "pending source connectivity / render"
   },
-  "notes": " Stalker heavy hunched central deck gains a slightly flatter back; both arms now carry ten carved long-range missile ports in separate paired weapon modules without generic human fists."
+  "notes": " Stalker heavy hunched central deck gains a slightly flatter back; both arms now carry ten carved long-range missile ports in separate paired weapon modules without generic human fists. Topology QA: subtract disconnected orphan corner/launcher strip voxels at the measured audit locations without adding generic armor."
 }
