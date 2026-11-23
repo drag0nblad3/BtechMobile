@@ -79,8 +79,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for key in ("candidates", "models", "output"):
         parser.add_argument("--" + key, type=pathlib.Path, required=True)
+    parser.add_argument("--sweep", type=pathlib.Path)
     args = parser.parse_args()
     registry = json.loads(args.candidates.read_text(encoding="utf-8"))
+    camera_trials = []
+    if args.sweep and args.sweep.is_file():
+        camera_trials = json.loads(args.sweep.read_text(
+            encoding="utf-8")).get("candidates", [])
     out = []
     masks = args.output.parent / "reference-masks"
     for entry in registry["candidates"]:
@@ -100,8 +105,24 @@ def main():
             model_file = locate(args.models, model, view)
             if model_file is None:
                 raise ValueError("No pose-matched model silhouette exported")
-            row["score_0_100"] = score_masks(
-                read_mask(model_file), read_mask(out_file))
+            reference = read_mask(out_file)
+            row["score_0_100"] = score_masks(read_mask(model_file), reference)
+            trials = [t for t in camera_trials
+                      if t["model"] == model and t["view"] == view]
+            ranked = []
+            for trial in trials:
+                trial_score = score_masks(read_mask(
+                    pathlib.Path(trial["path"])), reference)
+                ranked.append((trial_score, trial))
+            if ranked:
+                # Only a restricted grid near the manually estimated photo angle.
+                ranked.sort(key=lambda item: item[0], reverse=True)
+                best_score, best = ranked[0]
+                row["camera_grid_count"] = len(ranked)
+                row["best_camera_provisional"] = best["camera"]
+                row["score_camera_adjusted_unverified"] = best_score
+                row["raw_score_initial_guess"] = row["score_0_100"]
+                row["camera_fit_status"] = "GRID_CANDIDATE_REQUIRES_VISUAL_APPROVAL"
             row["review_needed"] = ("Check foreground extraction including base, "
                 "verify arm/leg joint pose, verify camera yaw/pitch/projection; "
                 "DO NOT promote this result to approved scorecard yet.")
