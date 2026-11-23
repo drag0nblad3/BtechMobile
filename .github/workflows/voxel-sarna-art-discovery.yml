@@ -1,0 +1,28 @@
+name: Reference source discovery for unpaired BattleTech visuals
+on:
+  push:
+    branches:
+      - audit/sarna-reference-index-20261123
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  art-discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate strict same-chassis image extraction
+        run: python3 -m unittest discover -s tests/tools -p 'test_discover_sarna_wiki_unit_art.py'
+      - name: Discover actual official or community-sourced infobox art
+        run: |
+          python3 tools/discover_sarna_wiki_unit_art.py \
+            --index docs/graphics/tro-reference-art-index.json \
+            --output /tmp/sarna-source-index.json
+      - name: Upload source references only (no photographs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sarna-source-index
+          path: /tmp/sarna-source-index.json
+          if-no-files-found: warn
