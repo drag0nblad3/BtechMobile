@@ -7,12 +7,12 @@
       "view": "quarter",
       "source_type": "modern_CGL_plastic",
       "reference_page": "https://store.catalystgamelabs.com/products/battletech-phoenix-hawk-premium-miniature",
-      "image_url": "https://store.catalystgamelabs.com/cdn/shop/files/Phoenix_Hawk_3.png?v=1746465275&width=1445",
-      "pose_description": "Unpainted Catalyst premium miniature with forward weapon arm and bent leg, black/grey hex base visible",
+      "image_url": "https://store.catalystgamelabs.com/cdn/shop/files/upload_20221116-013936.png?v=1790075417",
+      "pose_description": "Official CGL painted premium sculpt in raised-knee action pose, outstretched left gun and hanging right arm; transparent-background studio figure without base",
       "camera_assessment": "Slight high-angle front three-quarter; initial yaw/pitch only, not a calibrated camera",
       "white_background_threshold": 233,
-      "crop_bottom_fraction": 0.9,
-      "status": "EXPLORATORY_ONLY_BASE_OCCLUSION",
+      "crop_bottom_fraction": 1,
+      "status": "EXPLORATORY_CAMERA_AND_STANCE_NOT_VERIFIED",
       "camera_search": {
         "yaw_offsets": [
           -10,
