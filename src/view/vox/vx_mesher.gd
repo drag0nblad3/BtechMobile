@@ -8,7 +8,8 @@ const INSET := 0.04
 
 
 ## faces: Array of 6 Dictionaries (one per VxPart.DIRS entry), each
-## {slice: int -> {Vector2i(u, v): Color}}; inset faces carry alpha 0.5.
+## {slice: int -> {Vector2i(u, v): Color}}; alpha encodes temporary
+## face inset and paint eligibility; UV2.x keeps the paint mask.
 static func build(faces: Array, pivot: Vector3, size: float) -> ArrayMesh:
 	var verts := PackedVector3Array()
 	var normals := PackedVector3Array()
@@ -68,8 +69,8 @@ static func _quad(axis: int, sgn: int, slice: int, k: Vector2i, w: int, h: int, 
 		cols: PackedColorArray, roles: PackedVector2Array) -> void:
 	var ua := (axis + 1) % 3
 	var va := (axis + 2) % 3
-	# Alpha is temporary mesh metadata: 1/.5 for armor, .25/.125 for
-	# structure, with the half value marking faces inset at part joints.
+	# Alpha is temporary mesh metadata: 1/.5 for paintable armor,
+	# .25/.125 for unpainted surfaces; the half value marks joint insets.
 	var inset := is_equal_approx(color.a, 0.5) or is_equal_approx(color.a, 0.125)
 	var role := 1.0 if color.a > 0.3 else 0.0
 	var plane := float(slice + (1 if sgn > 0 else 0)) - (INSET * sgn if inset else 0.0)
