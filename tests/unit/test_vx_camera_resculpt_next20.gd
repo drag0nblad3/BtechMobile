@@ -184,3 +184,20 @@ func test_unique_parts_and_valid_mirror_targets() -> void:
 			if source_part != "":
 				check(names.has(source_part),
 						"dangling mirrored part %s/%s" % [chassis, p.get("name", "")])
+
+func test_turkina_head_does_not_have_an_extra_mast_above_cockpit() -> void:
+	var source := _recipe("turkina", "_shape")
+	var head := _part(source, "hd")
+	var core := _primary_loft(head)
+	check(not core.is_empty(), "Turkina cockpit shape must remain")
+	if core.is_empty():
+		return
+	var highest := -INF
+	for section: Dictionary in core["sections"]:
+		highest = maxf(highest, float(section["at"]))
+	for shape: Dictionary in head.get("shapes", []):
+		if not shape.has("box"):
+			continue
+		var upper: Array = shape["box"][1]
+		check(float(upper[1]) <= highest + 2.0,
+				"detached-looking Turkina head mast not in CGL plastic sculpt")

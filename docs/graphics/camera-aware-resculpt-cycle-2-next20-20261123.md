@@ -91,3 +91,23 @@ PRs (#264–#267) were not included.
 
 No game rules, dice, save/replay behavior, official unit loadout data,
 or Android builds are changed.
+
+## Reference-specific identity correction: Turkina cockpit mast
+
+After the small first contour pass, the matched silhouette overlays exposed a
+**large, source-authored T-shaped bar and thin vertical pillar** protruding
+above the Turkina's forward cockpit. Unlike a camera/stance change, the
+physical parts were plainly present in both source tiers: one transverse
+upper box and fourteen individual single-cell pole boxes. Neither appears
+on the [modern CGL Turkina plastic sculpt photographed by BattleTechWiki](https://www.sarna.net/wiki/File:Clan_Heavy_Battle_Star_-_Turkina.jpg)
+or in the photo catalog matching the Turkina silhouette.
+
+Removed those **fifteen false antenna shapes from the head part in both
+quality tiers**, retaining its authored cockpit loft, two visor/glow plates,
+saucer torso, missiles, cannon arms and all head/torso attachment geometry.
+The new relative-height regression test prevents recreating a second,
+disconnected-looking head mast. This is a substantial reference-driven
+silhouette difference, not a generic percent shrink. The latest photo
+score run predates this removal; its reported Turkina delta must **not** be
+reused as a post-correction score. Rerun CI connectivity and independent
+photo fit before asserting anything about visual improvement.
