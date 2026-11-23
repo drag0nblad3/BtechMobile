@@ -110,18 +110,18 @@ static func _horizontal_span(polygon: Array) -> float:
 func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
 	for id: String in IDS:
 		var m := _model(id)
-		check(float(m.ready_arm.get("RA", 0.0)) > 0.08 and float(m.ready_arm.get("RA", 0.0)) <= 0.20,
-				"%s: weapon arm should have a readable guard pose" % id)
+		check(absf(float(m.ready_arm.get("RA", 0.0))) < 0.01,
+				"%s: blade should point forward without pitching the whole arm" % id)
 		check(not m.ready_arm.has("LA"), "%s: off-hand must stay free" % id)
-		check(float(m.ready_roll.get("RA", 0.0)) >= 0.0 and float(m.ready_roll.get("RA", 0.0)) < 0.10,
+		check(absf(float(m.ready_roll.get("RA", 0.0))) < 0.01,
 				"%s: axe should clear the torso in the front silhouette" % id)
 		var mech := VxMech.new()
 		mech.model = m
 		mech.build()
 		mech.anim._process(0.016)
-		check(mech.shoulders[1].rotation.x > 0.08 and mech.shoulders[1].rotation.x <= 0.20,
+		check(absf(mech.shoulders[1].rotation.x) < 0.01,
 				"%s: actual rig must raise weapon arm" % id)
-		check(mech.shoulders[1].rotation.z >= 0.0 and mech.shoulders[1].rotation.z < 0.10,
+		check(absf(mech.shoulders[1].rotation.z) < 0.01,
 				"%s: actual rig must present the head clear of the torso" % id)
 		mech.free()
 
