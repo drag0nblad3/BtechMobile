@@ -44,6 +44,12 @@ jobs:
               --poses res://docs/graphics/first-reference-pose-hypotheses.json \
               --output /tmp/reference-catalog --offset "$offset" --limit 20
           done
+      - name: Inspect four sample photo and model outlines
+        run: |
+          python3 tools/preview_reference_mask_pairs.py \
+            --report /tmp/reference-catalog/batch_01/candidate-fit.json \
+            --models /tmp/reference-catalog/batch_01/model-masks \
+            --select adder,archer,atlas,battleaxe
       - name: Upload only derived masks and exploratory score results
         if: always()
         uses: actions/upload-artifact@v4
