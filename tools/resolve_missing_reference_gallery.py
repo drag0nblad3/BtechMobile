@@ -107,8 +107,10 @@ def main():
             if selected:
                 row["image_url"] = selected
                 row["filename"] = expected
-                row["source_type"] = "Sarna_official_illustration_from_named_gallery"
-                row["status"] = "IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED"
+                row["source_type"] = "Sarna_gallery_" + row["match_class"]
+                row["status"] = ("IMAGE_FOUND_VIEW_POSE_AND_MASK_UNVERIFIED"
+                    if row["match_class"] in ("exact_variant", "exact_chassis")
+                    else "SIBLING_OR_NONCANON_SOURCE_NOT_EXACT")
                 row["camera_assessment"] = "GALLERY_IMAGE_CAMERA_NOT_CALIBRATED"
                 row["pose_description"] = "GALLERY_POSE_NOT_FITTED"
                 candidates.append(row)
@@ -124,7 +126,8 @@ def main():
             unresolved.append(row)
         print("REFERENCE_DISCOVERED|" + json.dumps({
             "model": row["model"], "matched": "image_url" in row,
-            "filename": row.get("filename"), "error": row.get("error")},
+            "filename": row.get("filename"), "image_url": row.get("image_url"),
+            "match_class": row["match_class"], "error": row.get("error")},
             sort_keys=True), flush=True)
     result = {"schema_version": 1, "status": "EXPLORATORY_IMAGES_ONLY",
               "candidates": candidates, "unresolved": unresolved}
