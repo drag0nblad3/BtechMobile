@@ -91,3 +91,13 @@ loadout parts are implemented Clan equipment. Its published MUL BV is 2,151.
 The MTF's `era: 3137` is not the official MUL introduction year (3140).
 The chassis requires its own reference-based voxel sculpt, not a remapped
 first-generation Mad Dog shape.
+ 
+Vulture Mk IV's five additional official Omni configurations, **Prime, A, B,
+C and D**, are from `mm-data/data/mekfiles/meks/3145/Merc/Vulture Mk IV
+<configuration>.mtf`. Prime uses LB 5-X cluster ammunition, C has a podded
+targeting computer and an additional Clan double heat sink, and D has two
+additional Clan double heat sinks and mixed ATM ammunition bins. All six
+variants share the fixed 60-ton Clan XL engine, endo steel internal structure,
+ferro-lamellor armor, and canonical chassis identifier. Published MUL BVs
+Prime–E: 2,110; 2,177; 2,649; 2,584; 2,346; 2,151.
+
