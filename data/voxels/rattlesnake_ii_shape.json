@@ -416,6 +416,36 @@
             ]
           ],
           "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -1,
+              31,
+              -5
+            ],
+            [
+              1,
+              33,
+              0
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -1,
+              34,
+              -7
+            ],
+            [
+              1,
+              36,
+              -3
+            ]
+          ],
+          "mat": "joint"
         }
       ],
       "parent": "ct"
@@ -3016,5 +3046,6 @@
     "shin and hock",
     "ankle/foot",
     "weapon housing"
-  ]
+  ],
+  "structural_socket_revision": "targeted-neck-and-mounts-20261123"
 }

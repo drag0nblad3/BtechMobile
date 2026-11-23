@@ -3204,6 +3204,34 @@
               -13
             ]
           ]
+        },
+        {
+          "erase": [
+            [
+              -2,
+              27,
+              -15
+            ],
+            [
+              -2,
+              28,
+              -13
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              0,
+              27,
+              -15
+            ],
+            [
+              0,
+              28,
+              -13
+            ]
+          ]
         }
       ],
       "parent": "hd"
@@ -3363,5 +3391,6 @@
     "shin and hock",
     "ankle/foot",
     "weapon housing"
-  ]
+  ],
+  "structural_socket_revision": "targeted-neck-and-mounts-20261123"
 }
