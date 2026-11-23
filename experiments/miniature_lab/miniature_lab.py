@@ -106,6 +106,28 @@ def components(cells):
     return n
 
 
+def strong_contact(child, parent):
+    """Require a contiguous 2x2 contact patch with mass behind BOTH faces."""
+    for c in child:
+        for d in DIRECTIONS:
+            axes = [k for k in range(3) if d[k] == 0]
+            for a in (-1, 1):
+                for b in (-1, 1):
+                    block = []
+                    for u, v in ((0, 0), (a, 0), (0, b), (a, b)):
+                        q = list(c)
+                        q[axes[0]] += u
+                        q[axes[1]] += v
+                        block.append(tuple(q))
+                    if all(q in child and
+                           tuple(q[i] - d[i] for i in range(3)) in child and
+                           tuple(q[i] + d[i] for i in range(3)) in parent and
+                           tuple(q[i] + 2 * d[i] for i in range(3)) in parent
+                           for q in block):
+                        return True
+    return False
+
+
 def audit(spec, parts):
     """Reject flawed geometry; NEVER auto-fill seams or invent supports."""
     errors = []
@@ -128,11 +150,9 @@ def audit(spec, parts):
             errors.append("%s: missing parent %s" % (name, parent_name))
             continue
         parent = parts[parent_name]
-        contact = sum(tuple(c[i] + d[i] for i in range(3)) in parent
-                      for c in parts[name] for d in DIRECTIONS)
-        if contact < 4:
-            errors.append("%s: weak joint to %s (%d face contacts)" %
-                          (name, parent_name, contact))
+        if not strong_contact(parts[name], parent):
+            errors.append("%s: no backed 2x2 face contact to %s" %
+                          (name, parent_name))
     return errors
 
 
@@ -287,6 +307,11 @@ def main():
     cli.add_argument("--annotations", type=Path)
     cli.add_argument("--report", type=Path)
     args = cli.parse_args()
+    repo_root = Path(__file__).resolve().parents[2]
+    output = args.output.resolve()
+    lab_dir = (repo_root / "experiments" / "miniature_lab").resolve()
+    if output.is_relative_to(repo_root) and not output.is_relative_to(lab_dir):
+        raise SystemExit("Refusing to write any shipped model or other production file")
     spec = json.loads(args.source.read_text(encoding="utf-8"))
     parts = rasterize(spec)
     faults = audit(spec, parts)
