@@ -38,7 +38,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/reference-catalog
-          for offset in 0; do
+          for offset in $(seq 0 20 140); do
             python3 tools/run_reference_batch.py \
               --index docs/graphics/catalyst-photo-reference-index.json \
               --poses res://docs/graphics/first-reference-pose-hypotheses.json \
