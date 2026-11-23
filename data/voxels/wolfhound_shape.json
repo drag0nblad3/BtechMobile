@@ -1832,6 +1832,21 @@
               -17
             ]
           ]
+        },
+        {
+          "box": [
+            [
+              -9,
+              30,
+              -12
+            ],
+            [
+              -7,
+              32,
+              -9
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -2878,5 +2893,5 @@
     "edited_vertices": 132,
     "stages_with_changes": 15
   },
-  "notes": " Thinner, sharper Wolfhound dog-beak abdomen; shoulder lasers and right arm large laser are separately supported and bored; rear-facing CT laser remains a rear-facing cosmetic effect."
+  "notes": " Thinner, sharper Wolfhound dog-beak abdomen; shoulder lasers and right arm large laser are separately supported and bored; rear-facing CT laser remains a rear-facing cosmetic effect. Ownership QA: independent Spider optic banks and backed Hatchetman/Wolfhound sockets eliminate unconnected regions without growing shoulders."
 }
