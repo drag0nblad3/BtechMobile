@@ -34,21 +34,42 @@ tests, without fetching external images.
 - `voxel-multiangle.yml` retains four render-review operations on **manual**
   runs; its geometry audit stays automatic.
 
-The older `mul-collect.yml`, `voxel-quality-50.yml`,
-`voxel-second-fifty.yml`, `voxel-critical-refinement.yml`, and
-`voxel-blind-identity.yml` are branch-scoped workflows that may **write
-source files**. They are not general-purpose PR merge gates. Review their
-destination branches before dispatching or retiring them; deleting a workflow
-from `main` does not remove the copy on an old feature branch.
+The legacy one-off `voxel-quality-50.yml`, `voxel-second-fifty.yml`,
+and `voxel-critical-refinement.yml` workflows were retired. They were
+hard-wired to historical branches and one required exactly 151 models,
+though the catalog now contains more. Their Python sculpt tools remain
+available for separate, reviewed changes. `mul-collect.yml` and
+`voxel-blind-identity.yml` remain manual-only, read-only diagnostics with
+downloadable report artifacts. Matching copies on the original feature
+branches were also disabled/removed so those branches cannot revive the
+auto-commit workflows simply by receiving a new push.
+
+## Consolidated voxel cohort tests
+
+Thirteen numbered `tests/unit/test_vx_reference_batch_*.gd` suites have
+been replaced by:
+
+- `tests/fixtures/voxel_reference_cohorts.json` — the exact 260 unique
+  historical chassis and their paired-resolution, sculpt area and rig contracts
+- `tests/unit/test_vx_reference_catalog_profiles.gd` — shared coverage for
+  source/detail parity, finite lofts, articulations, muzzle parity and the
+  cohorts that require actual VxModel hit-location loading
+- `tests/unit/test_vx_reference_signatures.gd` — specific gait, weapon,
+  shell, alias and quadruped invariants
+- `tests/unit/test_vx_reference_anatomy_spotchecks.gd` — Atlas fist
+  volumes and physically backed Jenner head connection
+
+These are **tests**, not automatic resculpt steps. Existing broader catalog
+checks in `test_vx_catalog.gd` and `test_vx_integrity.gd` remain.
+
 
 ## Test cleanup guidelines
 
 1. Retain deterministic combat rules, save/restore/replay, AI, equipment,
    faction/era, connectivity, and gameplay UI regression assertions.
-2. Prefer catalog-driven tests over one new copy of the same loft/rig checks
-   per modeling batch. Existing `test_vx_reference_batch_*.gd` files also
-   encode batch-specific chassis, weapon and gait expectations: migrate those
-   assertions first, then remove redundant boilerplate, not whole cohorts.
+2. Keep catalog-driven loft/rig assertions in the cohort manifest and
+   preserve unusual weapon, silhouette and articulation checks as focused
+   signature tests rather than adding another 20-chassis copy of the same code.
 3. Run expensive graphical comparisons on demand; save artifacts rather than
    auto-committing generated images from CI. A pass/fail gate must be
    deterministic and independent of an external photo host.
