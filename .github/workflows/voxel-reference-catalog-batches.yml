@@ -1,0 +1,53 @@
+name: Cataloged plastic photo silhouette batches
+
+on:
+  pull_request:
+    paths:
+      - 'tools/run_reference_batch.py'
+      - 'tools/score_first_reference_photos.py'
+      - 'tools/reference_camera_sweep.gd'
+      - 'tools/reference_camera.gd'
+      - 'tools/reference_stance_rig.gd'
+      - 'docs/graphics/catalyst-photo-reference-index.json'
+      - '.github/workflows/voxel-reference-catalog-batches.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: photo-batch-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  photo-catalog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Install pillow
+        run: python3 -m pip install --quiet --user Pillow
+      - name: Import typed GDScript
+        run: godot --headless --import
+      - name: Batch score actual reference photos with bounded camera fitting
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/reference-catalog
+          for offset in 0; do
+            python3 tools/run_reference_batch.py \
+              --index docs/graphics/catalyst-photo-reference-index.json \
+              --poses res://docs/graphics/first-reference-pose-hypotheses.json \
+              --output /tmp/reference-catalog --offset "$offset" --limit 20
+          done
+      - name: Upload only derived masks and exploratory score results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-reference-scores
+          path: /tmp/reference-catalog
+          if-no-files-found: warn
