@@ -7,6 +7,7 @@ on:
       - 'tools/export_reference_review_masks.gd'
       - 'tools/score_reference_silhouettes.py'
       - 'tools/score_first_reference_photos.py'
+      - 'tests/tools/test_score_reference_photo_segmentation.py'
       - 'tools/preview_reference_mask_pairs.py'
       - 'tools/discover_reference_photos.py'
       - 'tools/discover_tro_reference_art.py'
@@ -43,6 +44,7 @@ jobs:
           godot --headless -s tests/run_tests.gd -- reference_camera | tee /tmp/camera-tests.log
           godot --headless -s tests/run_tests.gd -- reference_stance_rig | tee /tmp/stance-tests.log
           python3 -m unittest discover -s tests/tools -p 'test_score_reference_silhouettes.py'
+          python3 -m unittest discover -s tests/tools -p 'test_score_reference_photo_segmentation.py'
           python3 -m unittest discover -s tests/tools -p 'test_discover_reference_photos.py'
           python3 -m unittest discover -s tests/tools -p 'test_discover_tro_reference_art.py'
       - name: Discover additional documented Catalyst plastic references
