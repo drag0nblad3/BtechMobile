@@ -49,7 +49,8 @@ def main():
     results = []
     for row in rows:
         result = dict(row)
-        if row.get("score_camera_adjusted_unverified") is not None:
+        if (row.get("score_camera_adjusted_unverified") is not None or
+                row.get("provisional_camera_fit_0_100") is not None):
             result.update(select_candidates(row, args.references, poses))
         print("POSE_FIT_JSON|" + json.dumps(result, sort_keys=True), flush=True)
         results.append(result)
