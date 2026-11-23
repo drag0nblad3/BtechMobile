@@ -5,6 +5,7 @@ extends RefCounted
 
 const DATA_PATH := "res://data/graphics/faction_liveries.json"
 const PAINT_SHADER := preload("res://src/view/vox/vx_livery.gdshader")
+const TEAM_MARKS := [Color("#bd3535"), Color("#3977be"), Color("#c6aa42"), Color("#3e9e5a")]
 static var _data: Dictionary = {}
 static var _materials: Dictionary = {}
 static var _loaded := false
@@ -36,8 +37,7 @@ static func material_for(faction: String, side: int) -> ShaderMaterial:
 	mat.set_shader_parameter("paint_primary", Color(String(colors["primary"])))
 	mat.set_shader_parameter("paint_secondary", Color(String(colors["secondary"])))
 	mat.set_shader_parameter("badge_ink", Color(String(colors["insignia"])))
-	mat.set_shader_parameter("team_mark", PlaceholderMech.SIDE_COLORS[
-		posmod(side, PlaceholderMech.SIDE_COLORS.size())])
+	mat.set_shader_parameter("team_mark", TEAM_MARKS[posmod(side, TEAM_MARKS.size())])
 	mat.set_shader_parameter("paint_pattern", int(colors["pattern"]))
 	mat.set_shader_parameter("badge_shape", int(colors["badge"]))
 	_materials[key] = mat
