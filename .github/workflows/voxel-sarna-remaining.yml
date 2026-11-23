@@ -1,0 +1,45 @@
+name: Remaining Sarna reference silhouettes (44)
+on:
+  pull_request:
+    paths:
+      - 'docs/graphics/sarna-reference-art-index.json'
+      - 'tools/run_tro_batch.py'
+      - 'tools/score_tro_illustrations.py'
+      - 'tools/reference_camera_sweep.gd'
+      - '.github/workflows/voxel-sarna-remaining.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  remaining-sarna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        offset: [0, 20, 40]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/godot.zip" https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP"
+          sudo install "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64" /usr/local/bin/godot
+      - name: Install Pillow
+        run: python3 -m pip install --quiet --user Pillow
+      - name: Import typed GDScript classes
+        run: godot --headless --import
+      - name: Measure remaining source images with bounded camera search
+        run: |
+          python3 tools/run_tro_batch.py \
+            --index docs/graphics/sarna-reference-art-index.json \
+            --poses res://docs/graphics/reference-stance-poses.json \
+            --offset ${{ matrix.offset }} --limit 20 \
+            --output /tmp/sarna-remaining
+      - name: Upload provisional masks and metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: remaining-sarna-offset-${{ matrix.offset }}
+          path: /tmp/sarna-remaining
+          if-no-files-found: warn
