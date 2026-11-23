@@ -113,3 +113,56 @@ Next: replace the still-generic cockpit and shoulder transitions with
 component-matched plates, collect cleaner same-edition photos, calibrate
 perspective, and do isolated Godot rig/performance smoke runs. Do not
 install an experimental recipe into data/voxels/ or merge production art.
+
+## Second sculpt pass: rounded lower cockpit and stepped shoulder armor (v5)
+
+The v5 candidate is an additional experimental **source assembly**, not a
+replacement for either the older experimental candidates or any merged
+game model. Source: jenner_assembly_v5.json.
+
+- Replaced the wedge-like cockpit hull with seven circular/oval cross
+  sections, a shallow forward face, and segmented glazing.
+- Added a deliberately modeled, mass-backed cockpit-to-torso neck instead
+  of relying on automatic geometry bridges. No face overlap is permitted.
+- Reshaped left/right shoulder fairings while preserving the paired arm pod
+  positions and their independent damage locations.
+- Made upper-torso missile/vent apertures into real negative space.
+- Preserved all twelve articulated pieces and all eight record-sheet
+  locations. No game rules, merged models, or battle art were edited.
+
+The independent source-raster geometry audit reports 0 disconnected
+components, 0 inter-part overlaps, and 0 weak, unsupported joints.
+Local test run: 19 Python unittest tests passed, including the new
+test_jenner_v5.py checks.
+
+### Two distinct reference proxies (not accepted fidelity scores)
+
+| Experimental candidate | 3-view landmark RMSE (lower) | 4-view coarse silhouette IoU (higher) |
+|---|---:|---:|
+| Previous combined geometry | 0.02402 | 0.585 |
+| Rounded-cockpit/shoulder v5 | 0.02337 | 0.576 |
+
+**Interpretation:** the nose-related landmarks improve slightly, but the
+coarse silhouette metric regresses. This is NOT a net proven art improvement,
+and v5 must not be promoted as the new accepted model. The manual annotated
+photo crops contain pose, lens, and silhouette-label uncertainties. The
+head is still the largest modeling problem.
+
+### Visual comparison with the unchanged main model
+
+[Open a four-angle comparison of the actual main Jenner voxel recipe and
+v5 experimental recipe](generated/jenner_main_vs_v5.svg).
+
+The visualization reads data/voxels/jenner_shape.json **from main** as of
+blob 3a20aedd14ad63f187ee2e84bb595e015acd40bd. Its source is not
+edited, copied into a production model, or merged. Both render rows are
+generated from occupied voxels with matching orthographic view transforms:
+front, three-quarter, side, and rear. This is a **source-geometry preview**,
+not a Godot in-engine render; it does not include rig animations,
+renderer-specific refinement, or lighting.
+
+The next sculpting pass should focus on the plastic miniature's faceplate,
+lower cockpit disc profile and dorsal/vent armor plates, then obtain sharper
+head-specific reference images and calibrated camera poses. Preserve the
+previous combined candidate as the scored baseline until both independent
+reference tests support replacing it.
