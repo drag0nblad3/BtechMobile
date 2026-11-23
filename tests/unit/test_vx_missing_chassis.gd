@@ -15,7 +15,16 @@ func test_missing_chassis_have_official_records_and_fifty_geometric_passes() -> 
 		check(not lo.is_empty() and not hi.is_empty(), id + " both LOD recipes exist")
 		if lo.is_empty() or hi.is_empty():
 			continue
-		check(db.get_def(String(lo.get("unit", ""))) != null, id + " official design")
+		var unit_ref: String = String(lo.get("unit", ""))
+		var found_sheet := db.get_def(unit_ref) != null
+		if not found_sheet:
+			# OmniMechs expand to configuration IDs; their sprite still maps
+			# to the one official chassis art recipe.
+			for official: UnitDef in db.by_id.values():
+				if official.sprite == unit_ref:
+					found_sheet = true
+					break
+		check(found_sheet, id + " official design")
 		check_eq(lo["unit"], hi["unit"], id + " same official sheet")
 		check_eq(int(lo.get("subdivide", 0)), 1, id + " coarse silhouette")
 		check_eq(int(hi.get("subdivide", 0)), 3, id + " fine voxelization")
