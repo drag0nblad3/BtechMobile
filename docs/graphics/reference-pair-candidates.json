@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "method": "PROVISIONAL_SINGLE_QUARTER_REFERENCE_IMAGE",
+  "pairs": [
+    {
+      "name": "Conjurer / Dominator",
+      "view": "quarter",
+      "a": {
+        "model": "hellhound_conjurer",
+        "image_url": "https://cfw.sarna.net/wiki/images/b/b8/Hellhound_RGilClan_v05.png",
+        "source_page": "https://www.sarna.net/wiki/Conjurer_(Hellhound)",
+        "bounds": [
+          0.015,
+          0.03,
+          0.92,
+          0.93
+        ],
+        "threshold": 219,
+        "close_size": 11
+      },
+      "b": {
+        "model": "dominator",
+        "image_url": "https://cfw.sarna.net/wiki/images/6/6e/Dominator.png",
+        "source_page": "https://www.sarna.net/wiki/Dominator",
+        "bounds": [
+          0.005,
+          0.02,
+          0.985,
+          0.95
+        ],
+        "threshold": 220,
+        "close_size": 11
+      },
+      "shared": [
+        "Bipedal humanoid frame and torso broadening at shoulder level",
+        "Asymmetric right-arm major energy weapon and free left hand",
+        "Medium-size forward armored chest and long articulated shins"
+      ],
+      "differences": [
+        "Conjurer's elevated small cockpit has twin angled horns, Dominator's cockpit is low and recessed",
+        "Dominator has a wide, nearly horizontal left-to-right shoulder line and projected upper shoulder gun; Conjurer shoulders are more separated upright modules",
+        "Conjurer has stacked chest facets, Dominator has a pronounced V central breastplate and longer side-facing weapon deck",
+        "Dominator long PPC is in lower right forearm with separate left fist, Conjurer's right pulse cannon sits higher on arm"
+      ]
+    },
+    {
+      "name": "HawkWolf / Black Hawk Standard",
+      "view": "quarter",
+      "a": {
+        "model": "hawkwolf_hwk4f",
+        "image_url": "https://cfw.sarna.net/wiki/images/d/de/HWolf-4F.jpg",
+        "source_page": "https://www.sarna.net/wiki/HawkWolf",
+        "bounds": [
+          0.105,
+          0.025,
+          0.94,
+          0.94
+        ],
+        "threshold": 230,
+        "close_size": 11
+      },
+      "b": {
+        "model": "black_hawk_standard",
+        "image_url": "https://cfw.sarna.net/wiki/images/a/a0/Black_Hawk_Standard_3145Merc.png",
+        "source_page": "https://www.sarna.net/wiki/Black_Hawk_(BattleMech)",
+        "bounds": [
+          0.01,
+          0.02,
+          0.99,
+          0.98
+        ],
+        "threshold": 220,
+        "close_size": 11
+      },
+      "shared": [
+        "Broad shoulders with large arm weapon pods and inset central cockpit",
+        "Long two-leg chassis with weapon-bearing forearms and thick shoulder joints"
+      ],
+      "differences": [
+        "HawkWolf has high, downward-canted paired 15-hole arm missile bricks and two additional 5-hole torso racks; Black Hawk Standard carries 8-hole arm SRM arrays",
+        "HawkWolf missile racks visually dominate the height and width of the upper body; Black Hawk Standard has separate raised upper shoulder caps and thinner arms",
+        "HawkWolf art has a small high open cockpit and narrow center torso below the rack bank; Black Hawk Standard cockpit is recessed between tall shoulders"
+      ]
+    }
+  ]
+}
