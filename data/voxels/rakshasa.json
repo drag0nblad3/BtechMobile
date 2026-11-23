@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/rakshasa_shape.json",
+  "id": "rakshasa",
+  "subdivide": 2
+}

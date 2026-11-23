@@ -1,6 +1,6 @@
 {
   "id": "firebee_shape",
-  "name": "Firebee FRB-2E — low-poly shape",
+  "name": "Firebee FRB-2E \u2014 low-poly shape",
   "unit": "firebee_frb2e",
   "voxel_size": 0.054815,
   "subdivide": 1,
@@ -4084,7 +4084,7 @@
       "kind": "cannon"
     }
   ],
-  "art_quality_passes": 50,
+  "art_quality_passes": 100,
   "art_quality_revision": "50-stage-source-review-20261121",
   "proportion_revision": "2026-11-22-source-side-stance-pass",
   "reference_sculpt_profile": {
@@ -4092,5 +4092,21 @@
     "front": 0.76,
     "rear": 0.62,
     "torso_width": 0.87
+  },
+  "reference_review_views": [
+    "front",
+    "side",
+    "rear",
+    "top",
+    "three_quarter"
+  ],
+  "shape_review_50": {
+    "passes": 50,
+    "edited_vertices": 64,
+    "stages_with_changes": 12
+  },
+  "review_lineage_reconciled_20261122": {
+    "source_commit": "2779714f",
+    "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   }
 }

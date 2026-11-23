@@ -6,10 +6,17 @@ extends RefCounted
 const PATH := "res://data/voxels/%s.json"
 
 
+## A unit-specific render may differ in visible armament from the shared chassis.
+## Fall back to the established sprite model for ordinary variants.
+static func model_path(def: UnitDef) -> String:
+	var exact := PATH % def.id
+	return exact if FileAccess.file_exists(exact) else PATH % def.sprite
+
+
 static func choose(def: UnitDef, side: int) -> VxMech:
 	if not GameSettings.voxel_mechs or def.sprite.is_empty():
 		return null
-	var path := PATH % def.sprite
+	var path := model_path(def)
 	if not FileAccess.file_exists(path):
 		return null
 	var mech := VxMech.from_file(path)

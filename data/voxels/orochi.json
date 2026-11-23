@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/orochi_shape.json",
+  "id": "orochi",
+  "subdivide": 2
+}

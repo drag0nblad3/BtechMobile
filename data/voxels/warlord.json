@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/warlord_shape.json",
+  "id": "warlord",
+  "subdivide": 2
+}

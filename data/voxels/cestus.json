@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/cestus_shape.json",
+  "id": "cestus",
+  "subdivide": 2
+}

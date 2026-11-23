@@ -1,0 +1,5 @@
+{
+  "source": "res://data/voxels/koschei_shape.json",
+  "id": "koschei",
+  "subdivide": 2
+}
