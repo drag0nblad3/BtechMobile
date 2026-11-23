@@ -7,12 +7,24 @@
       "view": "quarter",
       "source_type": "modern_CGL_plastic",
       "reference_page": "https://store.catalystgamelabs.com/products/battletech-phoenix-hawk-premium-miniature",
-      "image_url": "https://store.catalystgamelabs.com/cdn/shop/products/Upload_20221116-013936.png?v=1678428560&width=1445",
-      "pose_description": "Painted premium sculpt, one raised knee, left cannon arm aimed sideways, right arm down, no base visible",
+      "image_url": "https://store.catalystgamelabs.com/cdn/shop/files/Phoenix_Hawk_3.png?v=1746465275&width=1445",
+      "pose_description": "Unpainted Catalyst premium miniature with forward weapon arm and bent leg, black/grey hex base visible",
       "camera_assessment": "Slight high-angle front three-quarter; initial yaw/pitch only, not a calibrated camera",
       "white_background_threshold": 233,
-      "crop_bottom_fraction": 1.0,
-      "status": "REQUIRES_RENDER_AND_SEGMENTATION_REVIEW"
+      "crop_bottom_fraction": 0.9,
+      "status": "EXPLORATORY_ONLY_BASE_OCCLUSION",
+      "camera_search": {
+        "yaw_offsets": [
+          -10,
+          0,
+          10
+        ],
+        "pitch_offsets": [
+          -8,
+          0,
+          8
+        ]
+      }
     },
     {
       "model": "battleaxe",
@@ -24,7 +36,19 @@
       "camera_assessment": "Almost front-on, slight camera elevation and perspective; remove base before trusting mask",
       "white_background_threshold": 229,
       "crop_bottom_fraction": 0.89,
-      "status": "EXPLORATORY_ONLY_BASE_OCCLUSION"
+      "status": "EXPLORATORY_ONLY_BASE_OCCLUSION",
+      "camera_search": {
+        "yaw_offsets": [
+          -10,
+          0,
+          10
+        ],
+        "pitch_offsets": [
+          -8,
+          0,
+          8
+        ]
+      }
     }
   ]
 }
