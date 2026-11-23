@@ -57,7 +57,7 @@ func _setup_paint_space(model: VxModel) -> void:
 	for candidate: Dictionary in model.parts_at(loc):
 		if largest.is_empty() or candidate["cells"].size() > largest["cells"].size():
 			largest = candidate
-	var badge := loc in [Location.LT, Location.RT] and largest.get("name", "") == part_name
+	var badge: bool = loc in [Location.LT, Location.RT] and String(largest.get("name", "")) == part_name
 	badge = badge and span.x > 0.16 and span.y > 0.16
 	set_instance_shader_parameter("badge_enabled", 1.0 if badge else 0.0)
 
