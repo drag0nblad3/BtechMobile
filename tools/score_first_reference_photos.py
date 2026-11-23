@@ -31,7 +31,11 @@ def fetch_photo(url):
     if len(raw) > 8_000_000:
         raise ValueError("Reference photograph exceeds 8 MB")
     with Image.open(io.BytesIO(raw)) as image:
-        return ImageOps.exif_transpose(image).convert("RGB")
+        color = ImageOps.exif_transpose(image).convert("RGBA")
+        # Shopify product PNGs are sometimes transparent; composite on white,
+        # never treat the previewer's black transparency as foreground.
+        background = Image.new("RGBA", color.size, (255, 255, 255, 255))
+        return Image.alpha_composite(background, color).convert("RGB")
 
 
 def remove_noise(pixels, w, h):
@@ -63,8 +67,12 @@ def prepare_mask(photo, threshold=232, crop_bottom_fraction=1.0):
     w, h = image.size
     pix = image.load()
     bottom = int(h * float(crop_bottom_fraction))
+    bg = pix[0, 0]
+    dark_background = sum(bg) < 150
     occupied = {(x, y) for y in range(bottom) for x in range(w)
-                if sum(pix[x, y]) < 3 * int(threshold)}
+                if (sum(pix[x, y]) > 3 * (255 - int(threshold))
+                    if dark_background else
+                    sum(pix[x, y]) < 3 * int(threshold))}
     occupied = remove_noise(occupied, w, h)
     if not (0.008 <= len(occupied) / (w * h) <= 0.7):
         raise ValueError("Subject segmentation fraction is implausible")
