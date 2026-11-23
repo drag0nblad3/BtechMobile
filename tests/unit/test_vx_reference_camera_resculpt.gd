@@ -87,3 +87,6 @@ func test_camera_resculpts_preserve_animated_parts_and_hits() -> void:
 		for loc in Location.COUNT:
 			check(not model.parts_at(loc).is_empty(),
 					"missing location %s for %s" % [Location.code(loc), chassis])
+		var joints := VxConnectivity.audit(model)
+		check(joints["pass"], "unsupported joint or island %s: %s" % [
+				chassis, joints["faults"]])
