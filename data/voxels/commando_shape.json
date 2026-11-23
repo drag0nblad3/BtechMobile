@@ -245,162 +245,6 @@
           "mat": "recess"
         },
         {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -12,
-                "polygon": [
-                  [
-                    -2.55,
-                    30
-                  ],
-                  [
-                    -1.78,
-                    29
-                  ],
-                  [
-                    1.78,
-                    29
-                  ],
-                  [
-                    2.55,
-                    30
-                  ],
-                  [
-                    2.55,
-                    34
-                  ],
-                  [
-                    1.78,
-                    34
-                  ],
-                  [
-                    -1.78,
-                    34
-                  ],
-                  [
-                    -2.55,
-                    34
-                  ]
-                ]
-              },
-              {
-                "at": -11,
-                "polygon": [
-                  [
-                    -2.87,
-                    29
-                  ],
-                  [
-                    -2.09,
-                    29
-                  ],
-                  [
-                    2.09,
-                    29
-                  ],
-                  [
-                    2.87,
-                    29
-                  ],
-                  [
-                    2.87,
-                    34
-                  ],
-                  [
-                    2.09,
-                    35
-                  ],
-                  [
-                    -2.09,
-                    35
-                  ],
-                  [
-                    -2.87,
-                    34
-                  ]
-                ]
-              },
-              {
-                "at": -7,
-                "polygon": [
-                  [
-                    -2.87,
-                    29
-                  ],
-                  [
-                    -2.09,
-                    29
-                  ],
-                  [
-                    2.09,
-                    29
-                  ],
-                  [
-                    2.87,
-                    29
-                  ],
-                  [
-                    2.87,
-                    34
-                  ],
-                  [
-                    2.09,
-                    35
-                  ],
-                  [
-                    -2.09,
-                    35
-                  ],
-                  [
-                    -2.87,
-                    34
-                  ]
-                ]
-              },
-              {
-                "at": -6,
-                "polygon": [
-                  [
-                    -2.38,
-                    30
-                  ],
-                  [
-                    -1.6,
-                    29
-                  ],
-                  [
-                    1.6,
-                    29
-                  ],
-                  [
-                    2.38,
-                    30
-                  ],
-                  [
-                    2.38,
-                    33
-                  ],
-                  [
-                    1.6,
-                    34
-                  ],
-                  [
-                    -1.6,
-                    34
-                  ],
-                  [
-                    -2.38,
-                    33
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "plate"
-        },
-        {
           "box": [
             [
               -1,
@@ -1367,6 +1211,162 @@
         -6
       ],
       "shapes": [
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -12,
+                "polygon": [
+                  [
+                    -2.55,
+                    30
+                  ],
+                  [
+                    -1.78,
+                    29
+                  ],
+                  [
+                    1.78,
+                    29
+                  ],
+                  [
+                    2.55,
+                    30
+                  ],
+                  [
+                    2.55,
+                    34
+                  ],
+                  [
+                    1.78,
+                    34
+                  ],
+                  [
+                    -1.78,
+                    34
+                  ],
+                  [
+                    -2.55,
+                    34
+                  ]
+                ]
+              },
+              {
+                "at": -11,
+                "polygon": [
+                  [
+                    -2.87,
+                    29
+                  ],
+                  [
+                    -2.09,
+                    29
+                  ],
+                  [
+                    2.09,
+                    29
+                  ],
+                  [
+                    2.87,
+                    29
+                  ],
+                  [
+                    2.87,
+                    34
+                  ],
+                  [
+                    2.09,
+                    35
+                  ],
+                  [
+                    -2.09,
+                    35
+                  ],
+                  [
+                    -2.87,
+                    34
+                  ]
+                ]
+              },
+              {
+                "at": -7,
+                "polygon": [
+                  [
+                    -2.87,
+                    29
+                  ],
+                  [
+                    -2.09,
+                    29
+                  ],
+                  [
+                    2.09,
+                    29
+                  ],
+                  [
+                    2.87,
+                    29
+                  ],
+                  [
+                    2.87,
+                    34
+                  ],
+                  [
+                    2.09,
+                    35
+                  ],
+                  [
+                    -2.09,
+                    35
+                  ],
+                  [
+                    -2.87,
+                    34
+                  ]
+                ]
+              },
+              {
+                "at": -6,
+                "polygon": [
+                  [
+                    -2.38,
+                    30
+                  ],
+                  [
+                    -1.6,
+                    29
+                  ],
+                  [
+                    1.6,
+                    29
+                  ],
+                  [
+                    2.38,
+                    30
+                  ],
+                  [
+                    2.38,
+                    33
+                  ],
+                  [
+                    1.6,
+                    34
+                  ],
+                  [
+                    -1.6,
+                    34
+                  ],
+                  [
+                    -2.38,
+                    33
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "plate"
+        },
         {
           "box": [
             [
@@ -4009,5 +4009,5 @@
     "reference_basis": "modern Catalyst miniature form",
     "review_status": "pending runtime validation and art comparison"
   },
-  "notes": " Slim Commando's rear upper body and give it physically cut CT SRM-6/RA SRM-4, while the single left medium laser stays separate."
+  "notes": " Slim Commando's rear upper body and give it physically cut CT SRM-6/RA SRM-4, while the single left medium laser stays separate. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells."
 }
