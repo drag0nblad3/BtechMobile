@@ -10,17 +10,17 @@ exact-chassis artwork pages, but no reliable source image ingestion yet.
 All numerical scores are **provisional camera candidates, not approved
 shape-fidelity or matched-pose judgments**.
 
-The exact discovered and tested image URLs are versioned as
+The exact discovered and tested gallery thumbnail URLs are versioned as
 [newly-found-visual-references-20261123.json](newly-found-visual-references-20261123.json).
 Only URLs, provenance and metrics are committed; copyrighted art remains
 at its original hosts.
 
 | Visual recipe | Actual source image / scope | Camera-fit exploratory score / 100 | Qualification |
 | --- | --- | ---: | --- |
-| `hatamoto_hi` | Graph/Gear Up #28 `HTM-27U` | 44.8 | Exact variant name and published illustration |
-| `hatamoto_kaze` | Graph/Gear Up #28 `HTM-27V` | 43.0 | Exact variant |
+| `hatamoto_hi` | Games Unplugged #28 `HTM-27U` | 44.8 | Exact variant name and published illustration |
+| `hatamoto_kaze` | Games Unplugged #28 `HTM-27V` | 43.0 | Exact variant |
 | `hatamoto_ku` | `HTM-27W2` XTRO | 41.5 | Same chassis, **not** in-game `HTM-27W` |
-| `hatamoto_mizo` | Graph/Gear Up #28 `HTM-27Y` | 45.1 | Exact variant |
+| `hatamoto_mizo` | Games Unplugged #28 `HTM-27Y` | 45.1 | Exact variant |
 | `hel` | `Hel_Shrapnel010.jpg` from the Eris page | 44.9 | Hel HL-1 (not Loki Mk II) |
 | `hermes_iii` | Shrapnel #23 Hermes III `HER-6K` | 44.8 | Sibling, **not** in-game `HER-4K` |
 | `nova_t` | Recognition Guide: ilClan Nova | — | Family only, **rejected** background segmentation (0.772 coverage) |
