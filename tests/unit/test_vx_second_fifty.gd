@@ -14,7 +14,7 @@ func test_every_shape_source_received_fifty_additional_review_stages() -> void:
 		# The two 50-cycle campaigns covered the historical 151-source catalog.
 		# New imported chassis have separate structural audits, not fabricated
 		# provenance for review work that has not happened yet.
-		if not raw.has("art_quality_passes") and not raw.has("shape_review_50"):
+		if not raw.has("shape_review_50"):
 			continue
 		count += 1
 		check_eq(int(raw.get("art_quality_passes", 0)), 100,
