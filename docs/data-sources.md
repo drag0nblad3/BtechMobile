@@ -65,3 +65,82 @@ The November 22, 2026 snapshot verifies **674 of 697** game variants and
 An absent faction-era cell in a *published* matrix means unavailable;
 an unmatched variant means unverified and is blocked only in Strict mode.
 See `docs/era-faction-availability.md` for implementation and play rules.
+
+## November 2026 incremental imports
+
+New official record-sheet conversions: Solitaire 3 (`Core Rules/Solitaire 3.mtf`),
+Mauler MAL-4R and Hatamoto-Chi HTM-30T (`Rec Guides ilClan/Vol 33/`).
+Their playable equipment and armor are sourced from those MegaMek MTF records.
+Their Battle Values (1,608; 2,050; 2,196) are from the published Master Unit
+List unit pages, marked `source.bv: "mul"`; no free-sheet verification is claimed.
+The official Solitaire 3 MUL introduction year (3106) differs from the `era`
+field in this particular MegaMek MTF (3150); the MUL governs availability.
+
+Importing a BattleMech does not create a finished voxel sculpt. Existing
+Mauler and Hatamoto-Chi chassis art can be reused for their exact variants;
+Solitaire 3 still requires a reference-driven geometry and voxel pass.
+The November 22 availability snapshot predates these additions and must be
+refreshed through the canonical MUL importer before Strict availability can
+verify them. Do not fabricate faction/era cells.
+
+The Vulture Mk IV (Mad Dog Mk IV) **E** follows
+`Core Rules/Vulture Mk IV (Mad Dog Mk IV) E.mtf`, with its own
+`vulture_mk_iv` Omni chassis identity rather than the earlier Mad Dog.
+The new ProtoMech AC/8 uses standard sourced PAC ammunition; the other
+loadout parts are implemented Clan equipment. Its published MUL BV is 2,151.
+The MTF's `era: 3137` is not the official MUL introduction year (3140).
+The chassis requires its own reference-based voxel sculpt, not a remapped
+first-generation Mad Dog shape.
+ 
+Vulture Mk IV's five additional official Omni configurations, **Prime, A, B,
+C and D**, are from `mm-data/data/mekfiles/meks/3145/Merc/Vulture Mk IV
+<configuration>.mtf`. Prime uses LB 5-X cluster ammunition, C has a podded
+targeting computer and an additional Clan double heat sink, and D has two
+additional Clan double heat sinks and mixed ATM ammunition bins. All six
+variants share the fixed 60-ton Clan XL engine, endo steel internal structure,
+ferro-lamellor armor, and canonical chassis identifier. Published MUL BVs
+Prime–E: 2,110; 2,177; 2,649; 2,584; 2,346; 2,151.
+
+Five additional **separate chassis** use exact official records, not variants
+of lookalike OmniMechs: Hellhound (Conjurer) from Recognition Guide Vol. 5,
+Dominator from Recognition Guide Vol. 1, and Black Hawk (Standard), Koshi
+(Standard), HawkWolf HWK-4F from `3145/Merc`. Official MUL entries and
+published BV are linked in each unit JSON: 1,813; 3,018; 2,183; 760; 1,428.
+Unmodeled unit quirks (e.g. exposed weapon linkage / protected actuators) are
+not silently converted into alternate weapons or combat rules. Distinct
+source-aware voxel models are still needed for all five new chassis; game
+statistics and their source files are committed first.
+
+
+## First 20-source-unit expansion complete (data records)
+
+The first import batch now has **20 playable official variants**:
+Solitaire 3, Mauler MAL-4R, Hatamoto-Chi HTM-30T, all six Vulture Mk IV
+(Mad Dog Mk IV) configurations, Hellhound (Conjurer), Black Hawk
+(Standard), Dominator, HawkWolf HWK-4F, Koshi (Standard), and six
+follow-on variants: Hellhound (Conjurer) 7; Koshi (Standard) 2 and 3;
+Black Hawk (Standard) 2 and 3; Dominator 2.
+
+Each JSON contains the exact MegaMek MTF source path and a published
+Master Unit List BV and link. Variant-specific armor, heat sinks,
+Clan gear, TAG, ECM, probes, MASC, Artemis V and munitions are represented
+by existing combat systems; no unofficial refits are introduced.
+The import doesn't supply original multi-angle geometry or a refreshed
+canonical MUL faction-era availability matrix; these are separate pending
+tasks. A published MUL match is distinct from free-record-sheet BV verification.
+
+### Official MUL refresh access status (2026-11-23)
+
+The November 23 automated snapshot refresh could not complete: the
+`/data/manifest.json` endpoint responded with a `text/html` page that
+redirects to a CAPTCHA rather than the required JSON. The importer rejects
+this response and leaves the November 22 snapshot unchanged. Do not bypass
+the challenge or guess availability cells. Recently imported designs not
+present in the snapshot remain unverified and are ineligible under Strict
+mode; Off and Advisory continue to behave as documented.
+
+Once the official JSON source becomes available again, run the existing
+`Import canonical MUL availability` workflow (or the importer) and review
+`docs/mul-import-coverage.json` for exact matches. Faction-era records must
+come from the authoritative published index, not a chassis's introduction
+date or Clan affiliation.

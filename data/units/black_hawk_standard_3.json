@@ -1,0 +1,71 @@
+{
+  "id": "black_hawk_standard_3",
+  "name": "Black Hawk (Standard)",
+  "model": "3",
+  "tonnage": 50,
+  "walk_mp": 5,
+  "jump_mp": 5,
+  "heat_sinks": 22,
+  "tech_base": "clan",
+  "heat_sink_type": "double",
+  "engine_type": "xl",
+  "structure_type": "endo_steel",
+  "armor": {
+    "LA": 13,
+    "RA": 13,
+    "LT": 14,
+    "RT": 14,
+    "CT": 19,
+    "HD": 9,
+    "LL": 19,
+    "RL": 19
+  },
+  "rear_armor": {
+    "LT": 5,
+    "RT": 5,
+    "CT": 6
+  },
+  "equipment": {
+    "LA": [
+      "heat_sink*3",
+      "c_er_medium_laser*2"
+    ],
+    "RA": [
+      "heat_sink*3",
+      "c_er_medium_laser*2"
+    ],
+    "LT": [
+      "heat_sink*3",
+      "c_er_large_laser",
+      "endo_steel*3"
+    ],
+    "RT": [
+      "heat_sink*3",
+      "c_er_large_laser",
+      "endo_steel*3"
+    ],
+    "CT": [
+      "jump_jet"
+    ],
+    "HD": [
+      "endo_steel"
+    ],
+    "LL": [
+      "jump_jet*2"
+    ],
+    "RL": [
+      "jump_jet*2"
+    ]
+  },
+  "source": {
+    "mul_id": 6556,
+    "megamek": "data/mekfiles/meks/3145/Merc/Black Hawk (Standard) 3.mtf",
+    "published": "RS:DA",
+    "role": "Skirmisher",
+    "bv": "mul",
+    "mul_url": "https://masterunitlist.battletech.com/units/black-hawk-standard-3"
+  },
+  "bv": 2317,
+  "role": "Skirmisher: four Clan ER medium lasers, two ER large lasers, 22 double heat sinks and five jump jets",
+  "sprite": "black_hawk_standard"
+}

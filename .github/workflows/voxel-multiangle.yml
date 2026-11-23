@@ -12,6 +12,7 @@ on:
       - 'tools/voxel_multiangle_audit.gd'
       - 'tools/capture_silhouette_review.gd'
       - 'tools/capture_proportion_review.gd'
+      - 'tools/capture_new_source_review.gd'
       - '.github/workflows/voxel-multiangle.yml'
   workflow_dispatch:
 
@@ -91,6 +92,14 @@ jobs:
             2>&1 | tee proportion-review-render.log
           test -s /tmp/voxel-qa/proportion_queue_front_side.png
           ! grep -E 'SCRIPT ERROR|Parse Error|SILHOUETTE_RENDER_ERROR' proportion-review-render.log
+      - name: Render newly imported source chassis from front, side, quarter and rear
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 600s xvfb-run -a godot --rendering-method gl_compatibility --resolution 1400x800 -s tools/capture_new_source_review.gd -- /tmp/voxel-qa 2>&1 | tee new-source-render.log
+          test -s /tmp/voxel-qa/new_source_chassis_four_angles.png
+          [ "$(grep -c '^NEW_SOURCE_REVIEW_MODEL|' new-source-render.log)" -eq 7 ]
+          grep -q '^NEW_SOURCE_REVIEW_RENDER|' new-source-render.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|NEW_SOURCE_RENDER_ERROR' new-source-render.log
       - name: Upload compact review evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -105,4 +114,5 @@ jobs:
             voxel-render.log
             silhouette-review-render.log
             proportion-review-render.log
+            new-source-render.log
           if-no-files-found: warn
