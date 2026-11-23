@@ -51,6 +51,7 @@ func _score_camera_grid(profile: Dictionary, candidate: Dictionary) -> void:
         faults.append("%s: %s %s" % [model_id, model.errors, errors])
         return
     var initial: Dictionary = pose["camera"].duplicate(true)
+    initial.merge(candidate.get("camera_guess", {}), true)
     var offsets: Dictionary = candidate.get("camera_search", {})
     var yaws: Array = offsets.get("yaw_offsets", [-10, 0, 10])
     var pitches: Array = offsets.get("pitch_offsets", [-8, 0, 8])
