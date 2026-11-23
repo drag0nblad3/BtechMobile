@@ -54,7 +54,8 @@ func _model_for(id: String) -> VxModel:
 
 
 func _export_candidates(trial: Dictionary) -> void:
-    var camera: Dictionary = trial.get("best_camera_provisional", {})
+    var camera: Dictionary = trial.get("best_camera_provisional",
+        trial.get("camera_candidate", {}))
     if camera.is_empty():
         return
     var id: String = trial["model"]
