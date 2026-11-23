@@ -156,7 +156,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -173,7 +173,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "akuma",
@@ -194,7 +205,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -211,7 +222,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "annihilator",
@@ -232,7 +254,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -249,7 +271,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "archer",
@@ -270,7 +303,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -287,7 +320,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "argus",
@@ -308,7 +352,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -325,7 +369,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "assassin",
@@ -346,7 +401,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -363,7 +418,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "atlas",
@@ -384,7 +450,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -401,7 +467,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "avatar",
@@ -422,7 +499,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -439,7 +516,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "awesome",
@@ -460,7 +548,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -477,7 +565,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "axman",
@@ -498,7 +597,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -515,7 +614,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "banshee",
@@ -536,7 +646,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -553,7 +663,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "battle_cobra",
@@ -574,7 +695,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -591,7 +712,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "battleaxe",
@@ -612,7 +744,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -629,7 +761,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "battlemaster",
@@ -650,7 +793,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -667,7 +810,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "black_knight",
@@ -688,7 +842,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -705,7 +859,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "black_lanner",
@@ -726,7 +891,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -743,7 +908,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "blackjack",
@@ -764,7 +940,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -781,7 +957,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "bushwacker",
@@ -802,7 +989,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -819,7 +1006,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "caesar",
@@ -840,7 +1038,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -857,7 +1055,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "cataphract",
@@ -878,7 +1087,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -895,7 +1104,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "catapult",
@@ -916,7 +1136,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -933,7 +1153,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "centurion",
@@ -954,7 +1185,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -971,7 +1202,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "chameleon",
@@ -992,7 +1234,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1009,7 +1251,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "charger",
@@ -1030,7 +1283,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1047,7 +1300,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "chimera",
@@ -1068,7 +1332,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1085,7 +1349,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "cicada",
@@ -1106,7 +1381,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1123,7 +1398,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "clint",
@@ -1144,7 +1430,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1161,7 +1447,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "commando",
@@ -1182,7 +1479,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1199,7 +1496,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "cougar",
@@ -1220,7 +1528,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1237,7 +1545,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "crab",
@@ -1258,7 +1577,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1275,7 +1594,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "crockett",
@@ -1296,7 +1626,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1313,7 +1643,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "crossbow",
@@ -1334,7 +1675,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1351,7 +1692,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "crusader",
@@ -1372,7 +1724,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1389,7 +1741,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "cyclops",
@@ -1410,7 +1773,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1427,7 +1790,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "dervish",
@@ -1448,7 +1822,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1465,7 +1839,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "devastator",
@@ -1486,7 +1871,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1503,7 +1888,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "dire_wolf",
@@ -1524,7 +1920,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1541,7 +1937,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "dragon",
@@ -1562,7 +1969,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1579,7 +1986,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "dragon_fire",
@@ -1600,7 +2018,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1617,7 +2035,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "emperor",
@@ -1638,7 +2067,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1655,7 +2084,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "enforcer",
@@ -1676,7 +2116,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1693,7 +2133,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "eris",
@@ -1714,7 +2165,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1731,7 +2182,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "excalibur",
@@ -1752,7 +2214,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1769,7 +2231,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "exterminator",
@@ -1790,7 +2263,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1807,7 +2280,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "falconer",
@@ -1828,7 +2312,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1845,7 +2329,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "firebee",
@@ -1866,7 +2361,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1883,7 +2378,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "firefly",
@@ -1904,7 +2410,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1921,7 +2427,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "firestarter",
@@ -1942,7 +2459,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1959,7 +2476,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "flashman",
@@ -1980,7 +2508,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -1997,7 +2525,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "flea",
@@ -2018,7 +2557,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2035,7 +2574,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "gladiator",
@@ -2056,7 +2606,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2073,7 +2623,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "goliath",
@@ -2094,7 +2655,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2111,7 +2672,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "grand_dragon",
@@ -2132,7 +2704,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2149,7 +2721,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "grasshopper",
@@ -2170,7 +2753,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2187,7 +2770,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "griffin",
@@ -2208,7 +2802,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2225,7 +2819,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "griffin_iic",
@@ -2246,7 +2851,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2263,7 +2868,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "grizzly",
@@ -2284,7 +2900,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2301,7 +2917,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "guillotine",
@@ -2322,7 +2949,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2339,7 +2966,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "gunslinger",
@@ -2360,7 +2998,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2377,7 +3015,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "gunsmith",
@@ -2398,7 +3047,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2415,7 +3064,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hatamoto_chi",
@@ -2436,7 +3096,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2453,7 +3113,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hatchetman",
@@ -2474,7 +3145,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2491,7 +3162,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "havoc",
@@ -2512,7 +3194,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2529,7 +3211,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "helios",
@@ -2550,7 +3243,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2567,7 +3260,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hellspawn",
@@ -2588,7 +3292,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2605,7 +3309,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hermes_ii",
@@ -2626,7 +3341,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2643,7 +3358,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "highlander",
@@ -2664,7 +3390,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2681,7 +3407,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "highlander_iic",
@@ -2702,7 +3439,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2719,7 +3456,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hollander",
@@ -2740,7 +3488,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2757,7 +3505,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hoplite",
@@ -2778,7 +3537,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2795,7 +3554,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hunchback",
@@ -2816,7 +3586,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2833,7 +3603,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "hunchback_iic",
@@ -2854,7 +3635,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2871,7 +3652,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "icarus_ii",
@@ -2892,7 +3684,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2909,7 +3701,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "jackalope",
@@ -2930,7 +3733,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2947,7 +3750,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "jagermech",
@@ -2968,7 +3782,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -2985,7 +3799,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "javelin",
@@ -3006,7 +3831,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3023,7 +3848,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "jenner",
@@ -3044,7 +3880,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3061,7 +3897,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "jenner_iic",
@@ -3082,7 +3929,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3099,7 +3946,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "king_crab",
@@ -3120,7 +3978,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3137,7 +3995,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "kingfisher",
@@ -3158,7 +4027,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3175,7 +4044,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "kintaro",
@@ -3196,7 +4076,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3213,7 +4093,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "kodiak",
@@ -3234,7 +4125,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3251,7 +4142,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "lancelot",
@@ -3272,7 +4174,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3289,7 +4191,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "legionnaire",
@@ -3310,7 +4223,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3327,7 +4240,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "linebacker",
@@ -3348,7 +4272,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3365,7 +4289,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "locust",
@@ -3386,7 +4321,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3403,7 +4338,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "locust_iic",
@@ -3424,7 +4370,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3441,7 +4387,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "longbow",
@@ -3462,7 +4419,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3479,7 +4436,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "mackie",
@@ -3500,7 +4468,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3517,7 +4485,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "mad_cat_mk_ii",
@@ -3538,7 +4517,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3555,7 +4534,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "malice",
@@ -3576,7 +4566,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3593,7 +4583,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "marauder",
@@ -3614,7 +4615,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3631,7 +4632,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "marauder_ii",
@@ -3652,7 +4664,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3669,7 +4681,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "mauler",
@@ -3690,7 +4713,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3707,7 +4730,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "mercury",
@@ -3728,7 +4762,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3745,7 +4779,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "merlin",
@@ -3766,7 +4811,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3783,7 +4828,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "mist_lynx",
@@ -3804,7 +4860,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3821,7 +4877,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "mongoose",
@@ -3842,7 +4909,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3859,7 +4926,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "night_gyr",
@@ -3880,7 +4958,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3897,7 +4975,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "nightsky",
@@ -3918,7 +5007,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3935,7 +5024,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "nightstar",
@@ -3956,7 +5056,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -3973,7 +5073,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "nova_cat",
@@ -3994,7 +5105,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4011,7 +5122,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "orion",
@@ -4032,7 +5154,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4049,7 +5171,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "ostroc",
@@ -4070,7 +5203,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4087,7 +5220,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "ostscout",
@@ -4108,7 +5252,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4125,7 +5269,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "ostsol",
@@ -4146,7 +5301,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4163,7 +5318,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "ostwar",
@@ -4184,7 +5350,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4201,7 +5367,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "pack_hunter",
@@ -4222,7 +5399,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4239,7 +5416,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "panther",
@@ -4260,7 +5448,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4277,7 +5465,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "peacekeeper",
@@ -4298,7 +5497,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4315,7 +5514,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "penetrator",
@@ -4336,7 +5546,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4353,7 +5563,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "phoenix_hawk",
@@ -4374,7 +5595,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4391,7 +5612,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "pillager",
@@ -4412,7 +5644,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4429,7 +5661,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "piranha",
@@ -4450,7 +5693,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4467,7 +5710,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "quickdraw",
@@ -4488,7 +5742,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4505,7 +5759,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "rakshasa",
@@ -4526,7 +5791,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4543,7 +5808,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "raven",
@@ -4564,7 +5840,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4581,7 +5857,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "rifleman",
@@ -4602,7 +5889,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4619,7 +5906,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "sagittaire",
@@ -4640,7 +5938,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4657,7 +5955,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "scarabus",
@@ -4678,7 +5987,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4695,7 +6004,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "scorpion",
@@ -4716,7 +6036,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4733,7 +6053,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "sentinel",
@@ -4754,7 +6085,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4771,7 +6102,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "shadow_cat",
@@ -4792,7 +6134,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4809,7 +6151,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "shadow_hawk",
@@ -4830,7 +6183,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4847,7 +6200,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "shadow_hawk_iic",
@@ -4868,7 +6232,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4885,7 +6249,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "shiro",
@@ -4906,7 +6281,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4923,7 +6298,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "shockwave",
@@ -4944,7 +6330,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4961,7 +6347,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "shogun",
@@ -4982,7 +6379,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -4999,7 +6396,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "spartan",
@@ -5020,7 +6428,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5037,7 +6445,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "spector",
@@ -5058,7 +6477,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5075,7 +6494,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "spider",
@@ -5096,7 +6526,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5113,7 +6543,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "stalker",
@@ -5134,7 +6575,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5151,7 +6592,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "starslayer",
@@ -5172,7 +6624,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5189,7 +6641,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "stinger",
@@ -5210,7 +6673,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5227,7 +6690,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "summoner",
@@ -5248,7 +6722,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5265,7 +6739,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "supernova",
@@ -5286,7 +6771,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5303,7 +6788,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "templar",
@@ -5324,7 +6820,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5341,7 +6837,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "thanatos",
@@ -5362,7 +6869,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5379,7 +6886,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "thug",
@@ -5400,7 +6918,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5417,7 +6935,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "thunder_hawk",
@@ -5438,7 +6967,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5455,7 +6984,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "thunderbolt",
@@ -5476,7 +7016,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5493,7 +7033,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "thunderbolt_iic",
@@ -5514,7 +7065,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5531,7 +7082,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "tian_zong",
@@ -5552,7 +7114,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5569,7 +7131,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "trebuchet",
@@ -5590,7 +7163,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5607,7 +7180,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "turkina",
@@ -5628,7 +7212,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5645,7 +7229,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "uziel",
@@ -5666,7 +7261,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5683,7 +7278,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "valkyrie",
@@ -5704,7 +7310,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5721,7 +7327,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "venom",
@@ -5742,7 +7359,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5759,7 +7376,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "victor",
@@ -5780,7 +7408,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5797,7 +7425,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "vindicator",
@@ -5818,7 +7457,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5835,7 +7474,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "vulcan",
@@ -5856,7 +7506,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5873,7 +7523,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "warhammer",
@@ -5894,7 +7555,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5911,7 +7572,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "wasp",
@@ -5932,7 +7604,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5949,7 +7621,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "whitworth",
@@ -5970,7 +7653,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -5987,7 +7670,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "wolfhound",
@@ -6008,7 +7702,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -6025,7 +7719,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "wolverine",
@@ -6046,7 +7751,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -6063,7 +7768,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "wraith",
@@ -6084,7 +7800,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -6101,7 +7817,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "ymir",
@@ -6122,7 +7849,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -6139,7 +7866,18 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     },
     {
       "model": "zeus",
@@ -6160,7 +7898,7 @@
       },
       "camera_assessment": "Unverified front/quarter photographed angle",
       "pose_description": "Unverified physical miniature stance",
-      "status": "DISCOVERED_PHOTO_NEEDS_POSE_CAMERA_MASK_REVIEW",
+      "status": "DISCOVERED_SOURCE_NO_VERIFIED_ANGLE_OR_POSE",
       "camera_search": {
         "yaw_offsets": [
           -30,
@@ -6177,7 +7915,19 @@
       },
       "segmentation_review": "UNVERIFIED_ADAPTIVE_BACKGROUND_CUTOFF_AND_BASE_REMOVAL",
       "pose_review": "UNVERIFIED_RIG_POSE",
-      "exclude_logo_bottom_right": true
+      "exclude_logo_bottom_right": true,
+      "camera_guess": {
+        "yaw_deg": 0,
+        "pitch_deg": -12,
+        "roll_deg": 0,
+        "projection": "perspective",
+        "distance_heights": 4.5
+      },
+      "camera_projections": [
+        "orthographic",
+        "perspective"
+      ]
     }
-  ]
+  ],
+  "revision_notes": "Compare orthographic and perspective camera candidates against subject-only foreground segmentation; never accept a winning camera as photographic calibration without human review."
 }
