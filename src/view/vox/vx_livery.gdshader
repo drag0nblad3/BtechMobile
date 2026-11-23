@@ -4,6 +4,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back;
 uniform vec4 paint_primary : source_color = vec4(0.35, 0.45, 0.45, 1.0);
 uniform vec4 paint_secondary : source_color = vec4(0.75, 0.70, 0.55, 1.0);
 uniform vec4 badge_ink : source_color = vec4(0.97, 0.92, 0.78, 1.0);
+uniform vec4 team_mark : source_color = vec4(0.9, 0.25, 0.25, 1.0);
 uniform int paint_pattern = 1;
 uniform int badge_shape = 4;
 
@@ -29,9 +30,7 @@ void fragment() {
 	METALLIC = 0.15;
 	// UV2.x is the armor/structure role from the mesher. Weapons, joints,
 	// exposed internals and scorched cavities keep their authored colors.
-	if (UV2.x < 0.5) {
-		return;
-	}
+	if (UV2.x > 0.5) {
 	vec3 span = max(panel_span, vec3(0.01));
 	vec3 rel = (paint_pos - panel_min) / span;
 	float accent = 0.0;
@@ -78,5 +77,12 @@ void fragment() {
 			armor = mix(armor, badge_ink.rgb, ink * 0.97);
 		}
 	}
+	// Thin red/blue identification flash distinguishes opposing teams even
+	// when they field the same faction; it stays on the main torso plating.
+	if (badge_enabled > 0.5 && paint_normal.z < -0.9 &&
+			rel.y > 0.13 && rel.y < 0.19 && rel.x > 0.17 && rel.x < 0.83) {
+		armor = mix(armor, team_mark.rgb, 0.88);
+	}
 	ALBEDO = armor;
+	}
 }
