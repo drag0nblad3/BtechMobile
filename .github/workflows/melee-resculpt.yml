@@ -1,0 +1,75 @@
+name: In-engine melee weapon resculpt validation
+concurrency:
+  group: melee-resculpt-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  push:
+    branches:
+      - 'feature/melee-weapon-resculpt-*'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  test-and-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import Godot project
+        run: godot --headless --import
+      - name: Test melee weapon geometry and grip
+        run: |
+          set -o pipefail
+          godot --headless -s tests/run_tests.gd -- melee_voxel_sculpts 2>&1 | tee melee-tests.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|FAIL test_melee' melee-tests.log
+      - name: Complete Godot unit regression suite
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 480s godot --headless             -s tests/run_tests.gd 2>&1 | tee godot-all-tests.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|^FAIL ' godot-all-tests.log
+      - name: Voxel battle and UI smoke
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 180s godot --headless             -s tools/ui_smoke.gd 2>&1 | tee melee-ui-smoke.log
+          grep -q 'ui smoke ok' melee-ui-smoke.log
+          timeout --signal=TERM --kill-after=5s 180s godot --headless             -s tools/battle_visual_smoke.gd 2>&1 | tee melee-battle-visual-smoke.log
+          grep -q 'battle visuals smoke ok' melee-battle-visual-smoke.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|BATTLE_VISUAL_FAILED' melee-*-smoke.log
+      - name: Capture actual 3D VxMech meshes and poses
+        run: |
+          set -o pipefail
+          mkdir -p /tmp/melee-resculpt-renders
+          timeout --signal=TERM --kill-after=5s 480s xvfb-run -a godot \
+            --rendering-method gl_compatibility --resolution 1400x800 \
+            -s tools/capture_melee_resculpt.gd -- /tmp/melee-resculpt-renders \
+            2>&1 | tee melee-render.log
+          test -s /tmp/melee-resculpt-renders/melee_resculpt_three_angles.png
+          grep -q '^MELEE_RESCULPT_RENDER|' melee-render.log
+          [ "$(grep -c '^MELEE_RESCULPT_MODEL|' melee-render.log)" -eq 4 ]
+          ! grep -E 'SCRIPT ERROR|Parse Error|MELEE_RESCULPT_ERROR' melee-render.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: actual-godot-melee-resculpt
+          path: |
+            /tmp/melee-resculpt-renders/*.png
+            melee-tests.log
+            godot-all-tests.log
+            melee-ui-smoke.log
+            melee-battle-visual-smoke.log
+            melee-render.log
+          if-no-files-found: warn
+      - name: Publish actual engine screenshot
+        if: success()
+        run: |
+          cp /tmp/melee-resculpt-renders/melee_resculpt_three_angles.png previews/melee_resculpt_three_angles.png
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add previews/melee_resculpt_three_angles.png
+          git commit -m "Capture post-resculpt in-engine melee weapon models"
+          git push

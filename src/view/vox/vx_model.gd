@@ -16,6 +16,8 @@ var parts: Array[Dictionary] = []  ## {name, loc, parent, pivot, joint, cells}
 var unit_id := ""   ## data/units id this model shows in the test scene
 var legs := "plantigrade"  ## or "digitigrade" (reverse-jointed)
 var can_punch := true
+var ready_arm: Dictionary = {}  ## Optional per-side melee guard pitch, radians.
+var ready_roll: Dictionary = {}  ## Outward clearance for a held weapon.
 var muzzles: Dictionary = {}  ## Location -> Array[Vector3] (grid coords)
 var jets: Dictionary = {}     ## Location -> Array[Vector3], jump jet nozzles
 var weapons: Array[Dictionary] = []  ## {label, locs: Array[int], kind: laser|cannon|missile}
@@ -71,6 +73,8 @@ static func from_dict(d: Dictionary) -> VxModel:
 	m.unit_id = recipe.get("unit", "")
 	m.legs = recipe.get("legs", "plantigrade")
 	m.can_punch = recipe.get("punch", true)
+	m.ready_arm = recipe.get("ready_arm", {})
+	m.ready_roll = recipe.get("ready_roll", {})
 	for w: Dictionary in recipe.get("weapons", []):
 		var locs: Array[int] = []
 		for code: String in w.get("locs", []):

@@ -20,7 +20,9 @@ static func punch(a: VxAnim, side: int) -> void:
 	tw.parallel().tween_property(torso, "rotation:y", turn, 0.07)
 	tw.parallel().tween_property(a, "lean", 0.18, 0.07)
 	tw.tween_interval(0.1)
-	tw.tween_property(s, "rotation:x", 0.0, 0.22).set_trans(Tween.TRANS_BACK)
+	var code := "LA" if side == 0 else "RA"
+	var ready: float = float(a.mech.model.ready_arm.get(code, 0.0))
+	tw.tween_property(s, "rotation:x", ready, 0.22).set_trans(Tween.TRANS_BACK)
 	tw.parallel().tween_property(torso, "rotation:y", 0.0, 0.22)
 	tw.parallel().tween_property(a, "lean", 0.0, 0.22)
 	tw.tween_callback(_done.bind(a, side))
