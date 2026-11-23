@@ -70,3 +70,46 @@ fidelity acceptance, Godot load test or phone rendering is claimed.
 Local prototype: 10 Python tests passed, no detected geometric overlap,
 component islands or weak joints. In-engine animation and performance
 checks remain pending. Do not merge as production art or build an APK.
+
+## Additional measured pass: camera/leg-pose landmarks and combined geometry
+
+The independent landmark fitter (reference_fit.py) uses
+jenner_photo_landmarks.json: three approximate same-sculpt photo views with
+annotated dorsal peak, projecting cockpit, launcher edges, lower torso, and
+knee/foot landmarks. Camera yaw/elevation/scale/translation are fitted first;
+then individual two-joint leg pitches are fitted separately. These are
+low-confidence hand-estimated points, not pixel-precise mask annotations;
+perspective/lens distortion and the complete pose are not calibrated.
+
+The next candidate is jenner_assembly_combined.json. It starts from the
+independent jenner_resculpt.json (which has a stronger four-view silhouette
+proxy than the separate v3/v4 exploration) and lowers the head by 0.06
+source units while pushing the bottom two torso cross sections 0.10 source
+units forward. This correction retains eight damage locations, physical
+launcher ports and the strict geometry audit. The earlier experimental
+v3/v4 sources are retained for diagnostic comparisons, not replacements.
+
+| Coarsely hand-traced diagnostic | Initial experiment | Combined trial |
+|---|---:|---:|
+| Three-view rigid landmark RMSE (lower better) | 0.03500 | 0.02402 |
+| Four-view silhouette IoU proxy (higher better) | 0.553 | 0.585 |
+| Occupied source voxels | 14,864 | ~14,127 |
+| Structural audit issues | 0 | 0 |
+
+These are **low-confidence proxy scores**, not accuracy percentages.
+The front cockpit component silhouette overlap is still only about
+0.09–0.11 in two annotated three-quarter views, and this is a blocking
+modeling defect. The landmark fitter and silhouette tester use different
+camera/stance approximations; agreement is helpful but not proof of
+miniature fidelity. The reference photographs are linked, never committed.
+
+Commands from repository root:
+
+    python -m unittest discover -s experiments/miniature_lab -v
+    python experiments/miniature_lab/reference_fit.py experiments/miniature_lab/jenner_photo_landmarks.json experiments/miniature_lab/jenner_assembly.json experiments/miniature_lab/jenner_assembly_combined.json
+    python experiments/miniature_lab/photo_fit.py --source experiments/miniature_lab/jenner_assembly_combined.json --reference experiments/miniature_lab/jenner_photo_annotations.json --size 58
+
+Next: replace the still-generic cockpit and shoulder transitions with
+component-matched plates, collect cleaner same-edition photos, calibrate
+perspective, and do isolated Godot rig/performance smoke runs. Do not
+install an experimental recipe into data/voxels/ or merge production art.
