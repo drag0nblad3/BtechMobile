@@ -66,5 +66,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/black-hawk-standard-3"
   },
   "bv": 2317,
-  "role": "Skirmisher: four Clan ER medium lasers, two ER large lasers, 22 double heat sinks and five jump jets"
+  "role": "Skirmisher: four Clan ER medium lasers, two ER large lasers, 22 double heat sinks and five jump jets",
+  "sprite": "black_hawk_standard"
 }

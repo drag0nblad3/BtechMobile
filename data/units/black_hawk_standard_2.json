@@ -68,5 +68,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/black-hawk-standard-2"
   },
   "bv": 2161,
-  "role": "Skirmisher: two Clan ATM 6s, two ER large lasers, mixed ATM munitions, and six movement points through jumps"
+  "role": "Skirmisher: two Clan ATM 6s, two ER large lasers, mixed ATM munitions, and six movement points through jumps",
+  "sprite": "black_hawk_standard"
 }

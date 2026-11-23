@@ -264,5 +264,6 @@
         "mul_url": "https://masterunitlist.battletech.com/units/vulture-mk-iv-e"
       }
     }
-  ]
+  ],
+  "sprite": "vulture_mk_iv"
 }

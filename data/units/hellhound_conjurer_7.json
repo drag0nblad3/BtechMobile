@@ -65,5 +65,6 @@
     "mul_url": "https://masterunitlist.battletech.com/units/hellhound-conjurer-7"
   },
   "bv": 1845,
-  "role": "Skirmisher: twin LRM 5 launchers, large pulse laser, twin ER medium lasers and six jump jets"
+  "role": "Skirmisher: twin LRM 5 launchers, large pulse laser, twin ER medium lasers and six jump jets",
+  "sprite": "hellhound_conjurer"
 }
