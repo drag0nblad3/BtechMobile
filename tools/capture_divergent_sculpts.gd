@@ -2,7 +2,7 @@ extends SceneTree
 ## Actual Godot VxPart renders; matched orthographic camera and world scale.
 const IDS := ["hel", "katana", "kodiak", "legionnaire", "malice", "nightsky",
 	"penetrator", "rook", "scarabus", "spartan", "spector", "starslayer",
-	"thunder_stallion", "ymir"]
+	"thunder_stallion", "ymir", "battleaxe", "ostwar", "pillager", "sagittaire", "shogun", "thunder_hawk"]
 const VIEWS := ["front", "three-quarter", "side", "rear", "top"]
 var output := "/tmp/compare"
 var scene: Node3D

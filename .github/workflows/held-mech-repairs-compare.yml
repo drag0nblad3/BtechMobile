@@ -1,25 +1,11 @@
-name: Held Mech repairs and divergent render comparison
+name: Additional repaired Mech render comparisons
 on:
   push:
     branches: [chatgpt/repair-held-sculpts-compare-20261124]
+  workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  repair:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - run: node tools/repair_held_sculpts.cjs
-      - name: Commit strictly passing repaired source recipes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/voxels/ docs/graphics/held-sculpt-repair-20261124.json experiments/divergent_mech_review_20261124/
-          git commit -m "Repair held Mech source geometry with backed mounts and protected bores"
-          git push origin HEAD:chatgpt/repair-held-sculpts-compare-20261124
   render:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -27,10 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {start: 0, end: 4}
-          - {start: 4, end: 8}
-          - {start: 8, end: 11}
-          - {start: 11, end: 14}
+          - {start: 14, end: 17}
+          - {start: 17, end: 20}
     steps:
       - uses: actions/checkout@v4
       - name: Install Godot
