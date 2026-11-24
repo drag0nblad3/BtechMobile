@@ -1,0 +1,2174 @@
+{
+  "status": "diagnostic only; manually estimated polygons, unknown lens, incomplete occlusion; no photographic accuracy claim",
+  "sculpt": "CGL Inner Sphere Striker Lance 35729, base 58",
+  "anchors": {
+    "dorsal": [
+      0,
+      43,
+      0
+    ],
+    "nose": [
+      0,
+      40,
+      -3.5
+    ],
+    "l_shoulder": [
+      -12,
+      35,
+      0
+    ],
+    "r_shoulder": [
+      12,
+      35,
+      0
+    ],
+    "waist": [
+      0,
+      25,
+      0
+    ],
+    "rear": [
+      0,
+      34,
+      7
+    ]
+  },
+  "photos": [
+    {
+      "name": "unpainted_front_quarter",
+      "url": "https://jadedfalconer.com/Pictures/CGLminis/blackjack58.jpg",
+      "size": [
+        500,
+        500
+      ],
+      "yaw": [
+        0,
+        45
+      ],
+      "rigid": {
+        "dorsal": [
+          269,
+          139
+        ],
+        "nose": [
+          251,
+          164
+        ],
+        "l_shoulder": [
+          213,
+          172
+        ],
+        "r_shoulder": [
+          319,
+          183
+        ],
+        "waist": [
+          252,
+          236
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                203,
+                294
+              ]
+            },
+            {
+              "point": [
+                -5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                191,
+                353
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                176,
+                364
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                279,
+                315
+              ]
+            },
+            {
+              "point": [
+                5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                300,
+                374
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                294,
+                392
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "la",
+          "child": "la_cannon",
+          "arm": true,
+          "marks": [
+            {
+              "point": [
+                -12,
+                34,
+                -15
+              ],
+              "pixel": [
+                154,
+                185
+              ]
+            }
+          ]
+        },
+        {
+          "root": "ra",
+          "child": "ra_cannon",
+          "arm": true,
+          "marks": [
+            {
+              "point": [
+                12,
+                34,
+                -15
+              ],
+              "pixel": [
+                275,
+                205
+              ]
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "head",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              242,
+              146
+            ],
+            [
+              252,
+              140
+            ],
+            [
+              274,
+              138
+            ],
+            [
+              289,
+              151
+            ],
+            [
+              278,
+              168
+            ],
+            [
+              260,
+              173
+            ],
+            [
+              239,
+              162
+            ]
+          ]
+        },
+        {
+          "name": "chest",
+          "parts": [
+            "ct",
+            "ct_breastplate",
+            "pelvis"
+          ],
+          "polygon": [
+            [
+              235,
+              171
+            ],
+            [
+              254,
+              169
+            ],
+            [
+              267,
+              178
+            ],
+            [
+              284,
+              198
+            ],
+            [
+              284,
+              218
+            ],
+            [
+              266,
+              235
+            ],
+            [
+              260,
+              258
+            ],
+            [
+              242,
+              268
+            ],
+            [
+              230,
+              250
+            ],
+            [
+              230,
+              234
+            ],
+            [
+              217,
+              224
+            ],
+            [
+              222,
+              202
+            ]
+          ]
+        },
+        {
+          "name": "right_leg",
+          "parts": [
+            "rl",
+            "rl_shin",
+            "rl_foot"
+          ],
+          "polygon": [
+            [
+              273,
+              239
+            ],
+            [
+              300,
+              240
+            ],
+            [
+              314,
+              254
+            ],
+            [
+              308,
+              278
+            ],
+            [
+              294,
+              303
+            ],
+            [
+              297,
+              316
+            ],
+            [
+              312,
+              334
+            ],
+            [
+              318,
+              365
+            ],
+            [
+              329,
+              380
+            ],
+            [
+              327,
+              398
+            ],
+            [
+              307,
+              407
+            ],
+            [
+              279,
+              402
+            ],
+            [
+              272,
+              392
+            ],
+            [
+              284,
+              375
+            ],
+            [
+              280,
+              357
+            ],
+            [
+              269,
+              336
+            ],
+            [
+              265,
+              319
+            ],
+            [
+              273,
+              306
+            ],
+            [
+              265,
+              293
+            ],
+            [
+              266,
+              264
+            ]
+          ]
+        },
+        {
+          "name": "left_cannon",
+          "parts": [
+            "la",
+            "la_cannon",
+            "la_laser_housing"
+          ],
+          "polygon": [
+            [
+              153,
+              177
+            ],
+            [
+              179,
+              171
+            ],
+            [
+              189,
+              157
+            ],
+            [
+              213,
+              151
+            ],
+            [
+              232,
+              151
+            ],
+            [
+              239,
+              166
+            ],
+            [
+              228,
+              181
+            ],
+            [
+              221,
+              196
+            ],
+            [
+              192,
+              205
+            ],
+            [
+              177,
+              195
+            ],
+            [
+              150,
+              191
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "white_front_left",
+      "url": "https://jadedfalconer.com/Pictures/2Medium/45blackjack/Blackjack5.jpg",
+      "size": [
+        669,
+        1000
+      ],
+      "yaw": [
+        0,
+        45
+      ],
+      "rigid": {
+        "dorsal": [
+          179,
+          115
+        ],
+        "nose": [
+          173,
+          142
+        ],
+        "l_shoulder": [
+          108,
+          150
+        ],
+        "r_shoulder": [
+          236,
+          164
+        ],
+        "waist": [
+          167,
+          217
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                100,
+                289
+              ]
+            },
+            {
+              "point": [
+                -5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                79,
+                348
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                62,
+                363
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                205,
+                299
+              ]
+            },
+            {
+              "point": [
+                5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                220,
+                374
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                226,
+                393
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "la",
+          "child": "la_cannon",
+          "arm": true,
+          "marks": [
+            {
+              "point": [
+                -12,
+                34,
+                -15
+              ],
+              "pixel": [
+                67,
+                154
+              ]
+            }
+          ]
+        },
+        {
+          "root": "ra",
+          "child": "ra_cannon",
+          "arm": true,
+          "marks": [
+            {
+              "point": [
+                12,
+                34,
+                -15
+              ],
+              "pixel": [
+                205,
+                182
+              ]
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "head",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              155,
+              120
+            ],
+            [
+              172,
+              114
+            ],
+            [
+              192,
+              119
+            ],
+            [
+              200,
+              130
+            ],
+            [
+              193,
+              150
+            ],
+            [
+              174,
+              155
+            ],
+            [
+              154,
+              148
+            ]
+          ]
+        },
+        {
+          "name": "chest",
+          "parts": [
+            "ct",
+            "ct_breastplate",
+            "pelvis"
+          ],
+          "polygon": [
+            [
+              151,
+              153
+            ],
+            [
+              188,
+              150
+            ],
+            [
+              195,
+              175
+            ],
+            [
+              194,
+              199
+            ],
+            [
+              184,
+              216
+            ],
+            [
+              180,
+              239
+            ],
+            [
+              168,
+              265
+            ],
+            [
+              148,
+              263
+            ],
+            [
+              139,
+              241
+            ],
+            [
+              134,
+              216
+            ],
+            [
+              134,
+              197
+            ],
+            [
+              145,
+              176
+            ]
+          ]
+        },
+        {
+          "name": "right_leg",
+          "parts": [
+            "rl",
+            "rl_shin",
+            "rl_foot"
+          ],
+          "polygon": [
+            [
+              188,
+              226
+            ],
+            [
+              210,
+              224
+            ],
+            [
+              230,
+              240
+            ],
+            [
+              224,
+              263
+            ],
+            [
+              211,
+              293
+            ],
+            [
+              220,
+              307
+            ],
+            [
+              235,
+              326
+            ],
+            [
+              239,
+              364
+            ],
+            [
+              250,
+              386
+            ],
+            [
+              250,
+              399
+            ],
+            [
+              228,
+              408
+            ],
+            [
+              205,
+              401
+            ],
+            [
+              198,
+              385
+            ],
+            [
+              205,
+              367
+            ],
+            [
+              195,
+              339
+            ],
+            [
+              189,
+              313
+            ],
+            [
+              194,
+              298
+            ],
+            [
+              183,
+              286
+            ],
+            [
+              184,
+              252
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "white_front_right",
+      "url": "https://jadedfalconer.com/Pictures/2Medium/45blackjack/Blackjack5.jpg",
+      "size": [
+        669,
+        1000
+      ],
+      "yaw": [
+        -45,
+        0
+      ],
+      "rigid": {
+        "dorsal": [
+          481,
+          96
+        ],
+        "nose": [
+          503,
+          132
+        ],
+        "l_shoulder": [
+          429,
+          144
+        ],
+        "r_shoulder": [
+          551,
+          139
+        ],
+        "waist": [
+          502,
+          211
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                431,
+                291
+              ]
+            },
+            {
+              "point": [
+                -5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                410,
+                360
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                401,
+                382
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                551,
+                292
+              ]
+            },
+            {
+              "point": [
+                5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                548,
+                352
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                563,
+                376
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "la",
+          "child": "la_cannon",
+          "arm": true,
+          "marks": [
+            {
+              "point": [
+                -12,
+                34,
+                -15
+              ],
+              "pixel": [
+                486,
+                153
+              ]
+            }
+          ]
+        },
+        {
+          "root": "ra",
+          "child": "ra_cannon",
+          "arm": true,
+          "marks": [
+            {
+              "point": [
+                12,
+                34,
+                -15
+              ],
+              "pixel": [
+                619,
+                156
+              ]
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "head",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              462,
+              100
+            ],
+            [
+              476,
+              93
+            ],
+            [
+              497,
+              99
+            ],
+            [
+              515,
+              111
+            ],
+            [
+              516,
+              133
+            ],
+            [
+              506,
+              141
+            ],
+            [
+              484,
+              141
+            ],
+            [
+              475,
+              129
+            ]
+          ]
+        },
+        {
+          "name": "chest",
+          "parts": [
+            "ct",
+            "ct_breastplate",
+            "pelvis"
+          ],
+          "polygon": [
+            [
+              480,
+              140
+            ],
+            [
+              519,
+              139
+            ],
+            [
+              536,
+              167
+            ],
+            [
+              536,
+              190
+            ],
+            [
+              518,
+              209
+            ],
+            [
+              521,
+              239
+            ],
+            [
+              507,
+              263
+            ],
+            [
+              491,
+              268
+            ],
+            [
+              476,
+              246
+            ],
+            [
+              473,
+              225
+            ],
+            [
+              458,
+              211
+            ],
+            [
+              461,
+              183
+            ]
+          ]
+        },
+        {
+          "name": "left_leg",
+          "parts": [
+            "ll",
+            "ll_shin",
+            "ll_foot"
+          ],
+          "polygon": [
+            [
+              415,
+              211
+            ],
+            [
+              440,
+              207
+            ],
+            [
+              459,
+              222
+            ],
+            [
+              462,
+              250
+            ],
+            [
+              447,
+              274
+            ],
+            [
+              449,
+              292
+            ],
+            [
+              439,
+              314
+            ],
+            [
+              437,
+              339
+            ],
+            [
+              423,
+              355
+            ],
+            [
+              435,
+              374
+            ],
+            [
+              428,
+              397
+            ],
+            [
+              399,
+              401
+            ],
+            [
+              379,
+              389
+            ],
+            [
+              381,
+              374
+            ],
+            [
+              397,
+              358
+            ],
+            [
+              401,
+              328
+            ],
+            [
+              407,
+              306
+            ],
+            [
+              413,
+              294
+            ],
+            [
+              411,
+              278
+            ],
+            [
+              407,
+              249
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "white_rear_left",
+      "url": "https://jadedfalconer.com/Pictures/2Medium/45blackjack/Blackjack5.jpg",
+      "size": [
+        669,
+        1000
+      ],
+      "yaw": [
+        125,
+        180
+      ],
+      "rigid": {
+        "dorsal": [
+          150,
+          616
+        ],
+        "rear": [
+          133,
+          670
+        ],
+        "r_shoulder": [
+          84,
+          657
+        ],
+        "l_shoulder": [
+          216,
+          658
+        ],
+        "waist": [
+          135,
+          723
+        ]
+      },
+      "chains": [
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                105,
+                790
+              ]
+            },
+            {
+              "point": [
+                5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                88,
+                854
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                77,
+                871
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                183,
+                802
+              ]
+            },
+            {
+              "point": [
+                -5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                192,
+                881
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                204,
+                901
+              ],
+              "bend": true
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "back",
+          "parts": [
+            "ct_backpack",
+            "lt_vents",
+            "rt_vents"
+          ],
+          "polygon": [
+            [
+              96,
+              633
+            ],
+            [
+              126,
+              625
+            ],
+            [
+              155,
+              627
+            ],
+            [
+              183,
+              642
+            ],
+            [
+              192,
+              669
+            ],
+            [
+              176,
+              699
+            ],
+            [
+              146,
+              713
+            ],
+            [
+              110,
+              708
+            ],
+            [
+              93,
+              683
+            ]
+          ]
+        },
+        {
+          "name": "left_leg",
+          "parts": [
+            "ll",
+            "ll_shin",
+            "ll_foot"
+          ],
+          "polygon": [
+            [
+              152,
+              727
+            ],
+            [
+              183,
+              729
+            ],
+            [
+              208,
+              750
+            ],
+            [
+              216,
+              781
+            ],
+            [
+              197,
+              801
+            ],
+            [
+              207,
+              828
+            ],
+            [
+              214,
+              860
+            ],
+            [
+              219,
+              888
+            ],
+            [
+              235,
+              901
+            ],
+            [
+              229,
+              913
+            ],
+            [
+              202,
+              918
+            ],
+            [
+              181,
+              904
+            ],
+            [
+              173,
+              887
+            ],
+            [
+              170,
+              862
+            ],
+            [
+              168,
+              833
+            ],
+            [
+              165,
+              814
+            ],
+            [
+              153,
+              796
+            ],
+            [
+              145,
+              760
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "red_front_holdout",
+      "url": "https://jadedfalconer.com/Pictures/2Medium/45blackjack/Blackjack3.jpg",
+      "size": [
+        750,
+        1000
+      ],
+      "yaw": [
+        -45,
+        5
+      ],
+      "rigid": {
+        "dorsal": [
+          170,
+          140
+        ],
+        "nose": [
+          182,
+          161
+        ],
+        "l_shoulder": [
+          128,
+          176
+        ],
+        "r_shoulder": [
+          217,
+          160
+        ],
+        "waist": [
+          179,
+          218
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                147,
+                265
+              ]
+            },
+            {
+              "point": [
+                -5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                139,
+                325
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                136,
+                344
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                5.5,
+                12,
+                0
+              ],
+              "pixel": [
+                215,
+                257
+              ]
+            },
+            {
+              "point": [
+                5.5,
+                4,
+                0
+              ],
+              "pixel": [
+                228,
+                300
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                5.5,
+                1,
+                -4
+              ],
+              "pixel": [
+                244,
+                311
+              ],
+              "bend": true
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "head",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              151,
+              143
+            ],
+            [
+              169,
+              137
+            ],
+            [
+              189,
+              144
+            ],
+            [
+              196,
+              155
+            ],
+            [
+              191,
+              167
+            ],
+            [
+              175,
+              170
+            ],
+            [
+              155,
+              163
+            ]
+          ]
+        },
+        {
+          "name": "chest",
+          "parts": [
+            "ct",
+            "ct_breastplate",
+            "pelvis"
+          ],
+          "polygon": [
+            [
+              159,
+              169
+            ],
+            [
+              188,
+              167
+            ],
+            [
+              202,
+              185
+            ],
+            [
+              202,
+              209
+            ],
+            [
+              188,
+              219
+            ],
+            [
+              196,
+              240
+            ],
+            [
+              179,
+              252
+            ],
+            [
+              163,
+              246
+            ],
+            [
+              157,
+              226
+            ],
+            [
+              147,
+              210
+            ],
+            [
+              148,
+              185
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "view": "unpainted_front_quarter",
+      "camera": {
+        "yaw": 35,
+        "elev": 5,
+        "roll": -6,
+        "distance": 220,
+        "target": [
+          0,
+          25,
+          0
+        ],
+        "scale": 1165.326278896897,
+        "tx": 256.4331141141797,
+        "ty": 234.82103280478574,
+        "rmse": 6.118682480847264
+      },
+      "pose": {
+        "pose": {
+          "ll": [
+            25,
+            0,
+            -10
+          ],
+          "ll_shin": [
+            -15,
+            0,
+            0
+          ],
+          "rl": [
+            5,
+            0,
+            20
+          ],
+          "rl_shin": [
+            -15,
+            0,
+            0
+          ],
+          "la": [
+            -10,
+            0,
+            -25
+          ],
+          "la_cannon": [
+            0,
+            0,
+            0
+          ],
+          "ra": [
+            -10,
+            0,
+            15
+          ],
+          "ra_cannon": [
+            0,
+            0,
+            0
+          ]
+        },
+        "residuals": {
+          "ll": 17.25022259850179,
+          "rl": 20.94107699102616,
+          "la": 4.375883200347511,
+          "ra": 4.77321333772984
+        }
+      },
+      "original": {
+        "head": {
+          "iou": 0.8011,
+          "reference_pixels": 305,
+          "model_pixels": 329
+        },
+        "chest": {
+          "iou": 0.6199,
+          "reference_pixels": 1051,
+          "model_pixels": 1327
+        },
+        "right_leg": {
+          "iou": 0.5247,
+          "reference_pixels": 1631,
+          "model_pixels": 1237
+        },
+        "left_cannon": {
+          "iou": 0.6262,
+          "reference_pixels": 717,
+          "model_pixels": 597
+        }
+      },
+      "candidate": {
+        "head": {
+          "iou": 0.8011,
+          "reference_pixels": 305,
+          "model_pixels": 329
+        },
+        "chest": {
+          "iou": 0.6199,
+          "reference_pixels": 1051,
+          "model_pixels": 1327
+        },
+        "right_leg": {
+          "iou": 0.523,
+          "reference_pixels": 1631,
+          "model_pixels": 1255
+        },
+        "left_cannon": {
+          "iou": 0.6262,
+          "reference_pixels": 717,
+          "model_pixels": 597
+        }
+      },
+      "method": "fixed camera and unchanged pivots; approximate visible part masks"
+    },
+    {
+      "view": "white_front_left",
+      "camera": {
+        "yaw": 5,
+        "elev": 15,
+        "roll": -6,
+        "distance": 400,
+        "target": [
+          0,
+          25,
+          0
+        ],
+        "scale": 2192.0604001993765,
+        "tx": 167.04375773084075,
+        "ty": 213.08027589668725,
+        "rmse": 3.7951678268697178
+      },
+      "pose": {
+        "pose": {
+          "ll": [
+            15,
+            0,
+            -20
+          ],
+          "ll_shin": [
+            -5,
+            0,
+            0
+          ],
+          "rl": [
+            15,
+            0,
+            20
+          ],
+          "rl_shin": [
+            -15,
+            0,
+            0
+          ],
+          "la": [
+            30,
+            0,
+            35
+          ],
+          "la_cannon": [
+            0,
+            0,
+            0
+          ],
+          "ra": [
+            10,
+            0,
+            35
+          ],
+          "ra_cannon": [
+            0,
+            0,
+            0
+          ]
+        },
+        "residuals": {
+          "ll": 35.46137535645315,
+          "rl": 39.52300532837612,
+          "la": 13.018960730156778,
+          "ra": 20.119065461155124
+        }
+      },
+      "original": {
+        "head": {
+          "iou": 0.8175,
+          "reference_pixels": 360,
+          "model_pixels": 347
+        },
+        "chest": {
+          "iou": 0.671,
+          "reference_pixels": 1284,
+          "model_pixels": 1525
+        },
+        "right_leg": {
+          "iou": 0.503,
+          "reference_pixels": 1704,
+          "model_pixels": 1051
+        }
+      },
+      "candidate": {
+        "head": {
+          "iou": 0.8175,
+          "reference_pixels": 360,
+          "model_pixels": 347
+        },
+        "chest": {
+          "iou": 0.671,
+          "reference_pixels": 1284,
+          "model_pixels": 1525
+        },
+        "right_leg": {
+          "iou": 0.5135,
+          "reference_pixels": 1704,
+          "model_pixels": 1102
+        }
+      },
+      "method": "fixed camera and unchanged pivots; approximate visible part masks"
+    },
+    {
+      "view": "white_front_right",
+      "camera": {
+        "yaw": -35,
+        "elev": 0,
+        "roll": 6,
+        "distance": 400,
+        "target": [
+          0,
+          25,
+          0
+        ],
+        "scale": 2437.8698849775965,
+        "tx": 497.9264802714508,
+        "ty": 209.00261890938577,
+        "rmse": 9.372992752376796
+      },
+      "pose": {
+        "pose": {
+          "ll": [
+            -25,
+            0,
+            -25
+          ],
+          "ll_shin": [
+            -5,
+            0,
+            0
+          ],
+          "rl": [
+            5,
+            0,
+            5
+          ],
+          "rl_shin": [
+            -15,
+            0,
+            0
+          ],
+          "la": [
+            0,
+            0,
+            0
+          ],
+          "la_cannon": [
+            0,
+            0,
+            0
+          ],
+          "ra": [
+            -20,
+            0,
+            35
+          ],
+          "ra_cannon": [
+            0,
+            0,
+            0
+          ]
+        },
+        "residuals": {
+          "ll": 34.28965142000252,
+          "rl": 21.334853657628305,
+          "la": 1.960373586520654,
+          "ra": 3.7806974425732425
+        }
+      },
+      "original": {
+        "head": {
+          "iou": 0.6079,
+          "reference_pixels": 449,
+          "model_pixels": 363
+        },
+        "chest": {
+          "iou": 0.6352,
+          "reference_pixels": 1706,
+          "model_pixels": 1764
+        },
+        "left_leg": {
+          "iou": 0.2985,
+          "reference_pixels": 1949,
+          "model_pixels": 1514
+        }
+      },
+      "candidate": {
+        "head": {
+          "iou": 0.6079,
+          "reference_pixels": 449,
+          "model_pixels": 363
+        },
+        "chest": {
+          "iou": 0.6352,
+          "reference_pixels": 1706,
+          "model_pixels": 1764
+        },
+        "left_leg": {
+          "iou": 0.2992,
+          "reference_pixels": 1949,
+          "model_pixels": 1529
+        }
+      },
+      "method": "fixed camera and unchanged pivots; approximate visible part masks"
+    },
+    {
+      "view": "white_rear_left",
+      "camera": {
+        "yaw": 180,
+        "elev": 5,
+        "roll": -3,
+        "distance": 400,
+        "target": [
+          0,
+          25,
+          0
+        ],
+        "scale": 2271.4492150651704,
+        "tx": 140.83664447551948,
+        "ty": 717.5279644794018,
+        "rmse": 7.9454041771847
+      },
+      "pose": {
+        "pose": {
+          "rl": [
+            -5,
+            0,
+            10
+          ],
+          "rl_shin": [
+            -15,
+            0,
+            0
+          ],
+          "ll": [
+            -5,
+            0,
+            -15
+          ],
+          "ll_shin": [
+            -15,
+            0,
+            0
+          ]
+        },
+        "residuals": {
+          "rl": 18.030304334537046,
+          "ll": 38.65785945781704
+        }
+      },
+      "original": {
+        "back": {
+          "iou": 0.3708,
+          "reference_pixels": 1719,
+          "model_pixels": 732
+        },
+        "left_leg": {
+          "iou": 0.4585,
+          "reference_pixels": 2258,
+          "model_pixels": 1066
+        }
+      },
+      "candidate": {
+        "back": {
+          "iou": 0.3708,
+          "reference_pixels": 1719,
+          "model_pixels": 732
+        },
+        "left_leg": {
+          "iou": 0.4708,
+          "reference_pixels": 2258,
+          "model_pixels": 1094
+        }
+      },
+      "method": "fixed camera and unchanged pivots; approximate visible part masks"
+    },
+    {
+      "view": "red_front_holdout",
+      "camera": {
+        "yaw": -30,
+        "elev": 15,
+        "roll": 3,
+        "distance": 400,
+        "target": [
+          0,
+          25,
+          0
+        ],
+        "scale": 1717.7033425598531,
+        "tx": 176.224309811626,
+        "ty": 214.75296450509956,
+        "rmse": 4.952480182409804
+      },
+      "pose": {
+        "pose": {
+          "ll": [
+            5,
+            0,
+            -20
+          ],
+          "ll_shin": [
+            -15,
+            0,
+            0
+          ],
+          "rl": [
+            25,
+            0,
+            15
+          ],
+          "rl_shin": [
+            -15,
+            0,
+            0
+          ]
+        },
+        "residuals": {
+          "ll": 18.345779171773497,
+          "rl": 7.955122936697336
+        }
+      },
+      "original": {
+        "head": {
+          "iou": 0.6809,
+          "reference_pixels": 268,
+          "model_pixels": 206
+        },
+        "chest": {
+          "iou": 0.6111,
+          "reference_pixels": 857,
+          "model_pixels": 854
+        }
+      },
+      "candidate": {
+        "head": {
+          "iou": 0.6809,
+          "reference_pixels": 268,
+          "model_pixels": 206
+        },
+        "chest": {
+          "iou": 0.6111,
+          "reference_pixels": 857,
+          "model_pixels": 854
+        }
+      },
+      "method": "fixed camera and unchanged pivots; approximate visible part masks"
+    }
+  ],
+  "aggregate": {
+    "before": 0.5875928571428571,
+    "after": 0.58915
+  },
+  "audit": {
+    "faults": [],
+    "interfaces": {
+      "pelvis": {
+        "patches": 35,
+        "faces": {
+          "0,1,0": 48
+        }
+      },
+      "hd": {
+        "patches": 23,
+        "faces": {
+          "0,-1,0": 34
+        }
+      },
+      "ct_breastplate": {
+        "patches": 10,
+        "faces": {
+          "0,0,1": 18
+        }
+      },
+      "ct_backpack": {
+        "patches": 23,
+        "faces": {
+          "0,0,-1": 34
+        }
+      },
+      "lt": {
+        "patches": 27,
+        "faces": {
+          "1,0,0": 46
+        }
+      },
+      "lt_vents": {
+        "patches": 2,
+        "faces": {
+          "0,0,-1": 12
+        }
+      },
+      "la": {
+        "patches": 28,
+        "faces": {
+          "1,0,0": 47
+        }
+      },
+      "la_cannon": {
+        "patches": 9,
+        "faces": {
+          "0,0,1": 16
+        }
+      },
+      "la_laser_housing": {
+        "patches": 14,
+        "faces": {
+          "0,1,0": 23
+        }
+      },
+      "ll": {
+        "patches": 9,
+        "faces": {
+          "0,1,0": 17
+        }
+      },
+      "ll_shin": {
+        "patches": 9,
+        "faces": {
+          "0,1,0": 16
+        }
+      },
+      "ll_foot": {
+        "patches": 9,
+        "faces": {
+          "0,1,0": 16
+        }
+      },
+      "rt": {
+        "patches": 27,
+        "faces": {
+          "-1,0,0": 46
+        }
+      },
+      "rt_vents": {
+        "patches": 2,
+        "faces": {
+          "0,0,-1": 12
+        }
+      },
+      "ra": {
+        "patches": 23,
+        "faces": {
+          "-1,0,0": 41
+        }
+      },
+      "ra_cannon": {
+        "patches": 9,
+        "faces": {
+          "0,0,1": 16
+        }
+      },
+      "ra_laser_housing": {
+        "patches": 10,
+        "faces": {
+          "0,1,0": 18
+        }
+      },
+      "rl": {
+        "patches": 9,
+        "faces": {
+          "0,1,0": 17
+        }
+      },
+      "rl_shin": {
+        "patches": 9,
+        "faces": {
+          "0,1,0": 16
+        }
+      },
+      "rl_foot": {
+        "patches": 9,
+        "faces": {
+          "0,1,0": 16
+        }
+      }
+    },
+    "voxels": 4258,
+    "parts": 21,
+    "locations": [
+      "CT",
+      "HD",
+      "LA",
+      "LL",
+      "LT",
+      "RA",
+      "RL",
+      "RT"
+    ]
+  }
+}
