@@ -1,0 +1,496 @@
+[
+  {
+    "id": "timber_wolf",
+    "parts": 21,
+    "cells": 12998,
+    "faults": 0,
+    "examples": [],
+    "repairs": 11,
+    "trials": [],
+    "apertures": {
+      "open": 42,
+      "total": 42,
+      "blocked": []
+    }
+  },
+  {
+    "id": "executioner",
+    "parts": 17,
+    "cells": 9562,
+    "faults": 0,
+    "examples": [],
+    "repairs": 9,
+    "trials": [],
+    "apertures": {
+      "open": 1,
+      "total": 1,
+      "blocked": []
+    }
+  },
+  {
+    "id": "nova",
+    "parts": 19,
+    "cells": 8798,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 8,
+      "total": 12,
+      "blocked": [
+        {
+          "loc": "LA",
+          "point": [
+            -15,
+            19.925,
+            -10
+          ]
+        },
+        {
+          "loc": "LA",
+          "point": [
+            -15,
+            22.075,
+            -10
+          ]
+        },
+        {
+          "loc": "RA",
+          "point": [
+            15,
+            19.925,
+            -10
+          ]
+        },
+        {
+          "loc": "RA",
+          "point": [
+            15,
+            22.075,
+            -10
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "grendel",
+    "parts": 19,
+    "cells": 6929,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "dire_wolf",
+    "parts": 18,
+    "cells": 13945,
+    "faults": 0,
+    "examples": [],
+    "repairs": 8,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 260,
+        "faults": 0,
+        "accepted": true
+      },
+      {
+        "part": "ra_weapon",
+        "change": 260,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 9,
+      "total": 9,
+      "blocked": []
+    }
+  },
+  {
+    "id": "stormcrow",
+    "parts": 17,
+    "cells": 7561,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [
+      {
+        "part": "ra_weapon",
+        "change": 120,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 3,
+      "total": 3,
+      "blocked": []
+    }
+  },
+  {
+    "id": "shadow_cat",
+    "parts": 19,
+    "cells": 6729,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "mist_lynx",
+    "parts": 17,
+    "cells": 4965,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "summoner",
+    "parts": 18,
+    "cells": 10377,
+    "faults": 0,
+    "examples": [],
+    "repairs": 8,
+    "trials": [],
+    "apertures": {
+      "open": 17,
+      "total": 17,
+      "blocked": []
+    }
+  },
+  {
+    "id": "gargoyle",
+    "parts": 17,
+    "cells": 9586,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      },
+      {
+        "part": "ra_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 4,
+      "total": 4,
+      "blocked": []
+    }
+  },
+  {
+    "id": "hellbringer",
+    "parts": 18,
+    "cells": 9435,
+    "faults": 0,
+    "examples": [],
+    "repairs": 8,
+    "trials": [],
+    "apertures": {
+      "open": 8,
+      "total": 8,
+      "blocked": []
+    }
+  },
+  {
+    "id": "mad_dog",
+    "parts": 21,
+    "cells": 10804,
+    "faults": 0,
+    "examples": [],
+    "repairs": 11,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      },
+      {
+        "part": "ra_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 42,
+      "total": 44,
+      "blocked": [
+        {
+          "loc": "LT",
+          "point": [
+            -2.76,
+            34,
+            -13
+          ]
+        },
+        {
+          "loc": "RT",
+          "point": [
+            2.76,
+            34,
+            -13
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "ice_ferret",
+    "parts": 17,
+    "cells": 7073,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "viper",
+    "parts": 17,
+    "cells": 5591,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "warhawk",
+    "parts": 18,
+    "cells": 11944,
+    "faults": 0,
+    "examples": [],
+    "repairs": 8,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      },
+      {
+        "part": "ra_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 14,
+      "total": 14,
+      "blocked": []
+    }
+  },
+  {
+    "id": "nova_cat",
+    "parts": 17,
+    "cells": 8672,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 184,
+        "faults": 0,
+        "accepted": true
+      },
+      {
+        "part": "ra_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 4,
+      "total": 5,
+      "blocked": [
+        {
+          "loc": "LA",
+          "point": [
+            -15,
+            23,
+            -10
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "cougar",
+    "parts": 21,
+    "cells": 8115,
+    "faults": 0,
+    "examples": [],
+    "repairs": 9,
+    "trials": [],
+    "apertures": {
+      "open": 22,
+      "total": 22,
+      "blocked": []
+    }
+  },
+  {
+    "id": "kit_fox",
+    "parts": 19,
+    "cells": 5473,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "fire_moth",
+    "parts": 17,
+    "cells": 5033,
+    "faults": 0,
+    "examples": [],
+    "repairs": 9,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 80,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 8,
+      "total": 8,
+      "blocked": []
+    }
+  },
+  {
+    "id": "crossbow",
+    "parts": 19,
+    "cells": 10352,
+    "faults": 0,
+    "examples": [],
+    "repairs": 11,
+    "trials": [],
+    "apertures": {
+      "open": 42,
+      "total": 42,
+      "blocked": []
+    }
+  },
+  {
+    "id": "ebon_jaguar",
+    "parts": 19,
+    "cells": 9382,
+    "faults": 0,
+    "examples": [],
+    "repairs": 9,
+    "trials": [],
+    "apertures": {
+      "open": 2,
+      "total": 2,
+      "blocked": []
+    }
+  },
+  {
+    "id": "huntsman",
+    "parts": 18,
+    "cells": 7711,
+    "faults": 0,
+    "examples": [],
+    "repairs": 8,
+    "trials": [],
+    "apertures": {
+      "open": 8,
+      "total": 8,
+      "blocked": []
+    }
+  },
+  {
+    "id": "kingfisher",
+    "parts": 17,
+    "cells": 10724,
+    "faults": 0,
+    "examples": [],
+    "repairs": 7,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 3,
+      "total": 3,
+      "blocked": []
+    }
+  },
+  {
+    "id": "turkina",
+    "parts": 21,
+    "cells": 14868,
+    "faults": 0,
+    "examples": [],
+    "repairs": 9,
+    "trials": [
+      {
+        "part": "la_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      },
+      {
+        "part": "ra_weapon",
+        "change": 140,
+        "faults": 0,
+        "accepted": true
+      }
+    ],
+    "apertures": {
+      "open": 34,
+      "total": 34,
+      "blocked": []
+    }
+  }
+]
