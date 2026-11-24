@@ -1,0 +1,1934 @@
+[
+  {
+    "n": "battleaxe",
+    "baseline_rmse": 14.33,
+    "refined_rmse": 13.13,
+    "baseline_bounds_iou": 0.594,
+    "refined_bounds_iou": 0.625,
+    "changes": [
+      {
+        "part": "ct",
+        "axis": "y",
+        "factor": 0.9
+      },
+      {
+        "part": "lt",
+        "axis": "y",
+        "factor": 0.9
+      },
+      {
+        "part": "ll",
+        "axis": "y",
+        "factor": 0.9
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://www.wargamesemporium.co.uk/cdn/shop/files/PXL_20230713_140603417_2048x.jpg?v=1689257994",
+      "reference_quality": "Catalyst plastic, approximate visible contours",
+      "parameters": {
+        "yaw": -3,
+        "pitch": 18,
+        "roll": 0,
+        "la": 18,
+        "ra": 39,
+        "ll": -4,
+        "rl": 17,
+        "ll_shin": 22,
+        "rl_shin": -18,
+        "laSpread": -7,
+        "raSpread": 35,
+        "llSpread": -11,
+        "rlSpread": 8
+      },
+      "reflected_projection": false,
+      "scale": 7.067070495693864,
+      "dx": 261.2664242517569,
+      "dy": 422.60005846546596,
+      "rmse_px": 13.133704521012747,
+      "mean_bounds_iou": 0.6253223177111286,
+      "changes": [
+        {
+          "part": "ct",
+          "axis": "y",
+          "factor": 0.9
+        },
+        {
+          "part": "lt",
+          "axis": "y",
+          "factor": 0.9
+        },
+        {
+          "part": "ll",
+          "axis": "y",
+          "factor": 0.9
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          232,
+          138,
+          286,
+          229
+        ],
+        "projected": [
+          241.03392770317654,
+          149.10952492840187,
+          277.80030187805295,
+          203.88646826998686
+        ],
+        "iou": 0.40983915243238067
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          205,
+          172,
+          327,
+          266
+        ],
+        "projected": [
+          207.11549009845905,
+          162.00149769772077,
+          318.83509249798254,
+          282.0491965000207
+        ],
+        "iou": 0.730394663110322
+      },
+      {
+        "name": "left_shoulder",
+        "model": "lt",
+        "target": [
+          143,
+          144,
+          217,
+          193
+        ],
+        "projected": [
+          147.34963200365954,
+          122.14975869137447,
+          255.3186246072497,
+          224.55354844633203
+        ],
+        "iou": 0.30283934943142876
+      },
+      {
+        "name": "right_shoulder",
+        "model": "rt",
+        "target": [
+          288,
+          140,
+          361,
+          188
+        ],
+        "projected": [
+          260.8965623595285,
+          123.74986923515814,
+          368.12583117866177,
+          226.72512704146698
+        ],
+        "iou": 0.3173349198816661
+      },
+      {
+        "name": "left_arm",
+        "model": "la",
+        "target": [
+          136,
+          190,
+          210,
+          293
+        ],
+        "projected": [
+          136.41848116589534,
+          170.95470346920126,
+          207.67092524650775,
+          299.012579175675
+        ],
+        "iou": 0.7801278274072557
+      },
+      {
+        "name": "right_arm",
+        "model": "ra",
+        "target": [
+          312,
+          183,
+          398,
+          284
+        ],
+        "projected": [
+          301.64659590073387,
+          172.429394333509,
+          396.81756594446153,
+          284.03937431151803
+        ],
+        "iou": 0.797524491987187
+      },
+      {
+        "name": "left_thigh",
+        "model": "ll",
+        "target": [
+          180,
+          252,
+          234,
+          335
+        ],
+        "projected": [
+          180.11406554064078,
+          257.8911730002467,
+          230.9149119870851,
+          343.41787116137607
+        ],
+        "iou": 0.7978584346530144
+      },
+      {
+        "name": "right_thigh",
+        "model": "rl",
+        "target": [
+          269,
+          259,
+          328,
+          340
+        ],
+        "projected": [
+          284.1069729670507,
+          266.3060669025867,
+          331.7146422800951,
+          346.2700125772821
+        ],
+        "iou": 0.604466515059607
+      },
+      {
+        "name": "left_shin",
+        "model": "ll_shin",
+        "target": [
+          165,
+          319,
+          220,
+          407
+        ],
+        "projected": [
+          166.01468846573482,
+          322.3632516806306,
+          218.0899810408407,
+          403.62593968975693
+        ],
+        "iou": 0.8743343498997528
+      },
+      {
+        "name": "right_shin",
+        "model": "rl_shin",
+        "target": [
+          286,
+          323,
+          348,
+          420
+        ],
+        "projected": [
+          291.36944875303635,
+          327.2128208880815,
+          342.89689007066215,
+          412.4813636377809
+        ],
+        "iou": 0.7305736336505819
+      },
+      {
+        "name": "left_foot",
+        "model": "ll_foot",
+        "target": [
+          157,
+          389,
+          207,
+          425
+        ],
+        "projected": [
+          152.76652973335814,
+          384.7149059321471,
+          208.75472616108033,
+          426.6812332296435
+        ],
+        "iou": 0.7660816576316857
+      },
+      {
+        "name": "right_foot",
+        "model": "rl_foot",
+        "target": [
+          298,
+          402,
+          354,
+          461
+        ],
+        "projected": [
+          294.4034975567889,
+          386.9062452085982,
+          353.41656599276126,
+          445.8343964189365
+        ],
+        "iou": 0.5581204107977998
+      },
+      {
+        "name": "launcher",
+        "model": "lt_launcher",
+        "target": [
+          183,
+          94,
+          235,
+          153
+        ],
+        "projected": [
+          178.627045489129,
+          111.01722391398198,
+          229.13832841416206,
+          151.79431200100515
+        ],
+        "iou": 0.57954508382539
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "3a7056722c5800ecba178fc6c8bce0e024b4418f"
+  },
+  {
+    "n": "firestarter",
+    "baseline_rmse": 15.58,
+    "refined_rmse": 14.39,
+    "baseline_bounds_iou": 0.526,
+    "refined_bounds_iou": 0.547,
+    "changes": [
+      {
+        "part": "hd",
+        "axis": "y",
+        "factor": 0.9
+      },
+      {
+        "part": "lt",
+        "axis": "x",
+        "factor": 0.9
+      },
+      {
+        "part": "la",
+        "axis": "z",
+        "factor": 0.9
+      },
+      {
+        "part": "ll",
+        "axis": "y",
+        "factor": 0.9
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://i.ebayimg.com/00/s/MTAyNFgxMjgw/z/qLcAAOSwh39nBin-/%24_57.PNG?set_id=880000500F",
+      "reference_quality": "secondary resin interpretation, not Catalyst plastic",
+      "parameters": {
+        "yaw": 0,
+        "pitch": -20,
+        "roll": 0,
+        "la": 35,
+        "ra": 37,
+        "ll": -41,
+        "rl": -21,
+        "ll_shin": 12,
+        "rl_shin": 0,
+        "laSpread": -31,
+        "raSpread": 14,
+        "llSpread": -14,
+        "rlSpread": 10
+      },
+      "reflected_projection": false,
+      "scale": 9.096750143568256,
+      "dx": 255.6453858795674,
+      "dy": 437.53115774525304,
+      "rmse_px": 14.385094570537776,
+      "mean_bounds_iou": 0.5469357295398369,
+      "changes": [
+        {
+          "part": "hd",
+          "axis": "y",
+          "factor": 0.9
+        },
+        {
+          "part": "lt",
+          "axis": "x",
+          "factor": 0.9
+        },
+        {
+          "part": "la",
+          "axis": "z",
+          "factor": 0.9
+        },
+        {
+          "part": "ll",
+          "axis": "y",
+          "factor": 0.9
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          222,
+          155,
+          280,
+          204
+        ],
+        "projected": [
+          228.35513544886265,
+          135.78149864379128,
+          282.9356363102722,
+          202.84989390186578
+        ],
+        "iou": 0.612984514349742
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          207,
+          190,
+          310,
+          281
+        ],
+        "projected": [
+          210.16163516172614,
+          181.85665776721746,
+          310.22588674097693,
+          301.5464403972039
+        ],
+        "iou": 0.7407869933410524
+      },
+      {
+        "name": "left_shoulder",
+        "model": "lt",
+        "target": [
+          171,
+          172,
+          218,
+          233
+        ],
+        "projected": [
+          172.41012206591785,
+          174.8641446781237,
+          242.90993567857186,
+          247.14627471103748
+        ],
+        "iou": 0.4989028595578141
+      },
+      {
+        "name": "right_shoulder",
+        "model": "rt",
+        "target": [
+          305,
+          172,
+          353,
+          230
+        ],
+        "projected": [
+          259.2840859369947,
+          174.8641446781237,
+          329.7838995496487,
+          247.14627471103748
+        ],
+        "iou": 0.20979557649714406
+      },
+      {
+        "name": "left_arm",
+        "model": "la",
+        "target": [
+          123,
+          225,
+          197,
+          259
+        ],
+        "projected": [
+          121.61481914334865,
+          197.66000340819545,
+          221.4951889321736,
+          284.2912868959964
+        ],
+        "iou": 0.2907741175883301
+      },
+      {
+        "name": "right_arm",
+        "model": "ra",
+        "target": [
+          288,
+          224,
+          353,
+          267
+        ],
+        "projected": [
+          286.10815785037903,
+          199.21415322366354,
+          356.86560579872884,
+          292.1209236881922
+        ],
+        "iou": 0.42516968157561225
+      },
+      {
+        "name": "left_thigh",
+        "model": "ll",
+        "target": [
+          171,
+          266,
+          235,
+          342
+        ],
+        "projected": [
+          179.22961661279783,
+          275.91256551418604,
+          227.2787367113973,
+          358.13125273433616
+        ],
+        "iou": 0.5631124292840408
+      },
+      {
+        "name": "right_thigh",
+        "model": "rl",
+        "target": [
+          277,
+          267,
+          321,
+          355
+        ],
+        "projected": [
+          275.6449034430865,
+          280.9289902973921,
+          318.88608106293884,
+          359.43584754926036
+        ],
+        "iou": 0.7450544544865676
+      },
+      {
+        "name": "left_shin",
+        "model": "ll_shin",
+        "target": [
+          169,
+          329,
+          212,
+          403
+        ],
+        "projected": [
+          169.794625203691,
+          327.87857324461004,
+          220.510977907998,
+          415.48035896706347
+        ],
+        "iou": 0.6937902717449212
+      },
+      {
+        "name": "right_shin",
+        "model": "rl_shin",
+        "target": [
+          281,
+          351,
+          331,
+          428
+        ],
+        "projected": [
+          281.83139863779087,
+          335.8004126722513,
+          328.3253804195555,
+          420.50810515819626
+        ],
+        "iou": 0.7092229327903966
+      },
+      {
+        "name": "left_foot",
+        "model": "ll_foot",
+        "target": [
+          142,
+          406,
+          224,
+          458
+        ],
+        "projected": [
+          150.22576486973446,
+          389.2172886489452,
+          207.0375301785875,
+          449.368210583777
+        ],
+        "iou": 0.47222724202196503
+      },
+      {
+        "name": "right_foot",
+        "model": "rl_foot",
+        "target": [
+          282,
+          415,
+          354,
+          458
+        ],
+        "projected": [
+          292.15440687807495,
+          398.6192855090018,
+          343.8040910980871,
+          449.47074929779404
+        ],
+        "iou": 0.45164302149192415
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "6ab98ea5bafcaf28710402f2fde510a4b9505df0"
+  },
+  {
+    "n": "jenner",
+    "baseline_rmse": 6.17,
+    "refined_rmse": 5.94,
+    "baseline_bounds_iou": 0.735,
+    "refined_bounds_iou": 0.742,
+    "changes": [
+      {
+        "part": "ll",
+        "axis": "y",
+        "factor": 0.9
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190416_Final_1200x1200.jpg?v=1708318633",
+      "reference_quality": "Catalyst plastic, approximate visible contours",
+      "parameters": {
+        "yaw": -1,
+        "pitch": 24,
+        "roll": 0,
+        "la": 13,
+        "ra": 43,
+        "ll": 42,
+        "rl": 11,
+        "ll_shin": -18,
+        "rl_shin": 37,
+        "laSpread": 0,
+        "raSpread": -2,
+        "llSpread": 0,
+        "rlSpread": 9
+      },
+      "reflected_projection": true,
+      "scale": 8.146325626428034,
+      "dx": 261.44761980590647,
+      "dy": 338.3834976971757,
+      "rmse_px": 5.935844281243311,
+      "mean_bounds_iou": 0.7422720560684939,
+      "changes": [
+        {
+          "part": "ll",
+          "axis": "y",
+          "factor": 0.9
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          207,
+          151,
+          311,
+          237
+        ],
+        "projected": [
+          213.20267153397404,
+          153.03396612708562,
+          311.967335850685,
+          236.15469296517523
+        ],
+        "iou": 0.9007778830074569
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          185,
+          77,
+          343,
+          188
+        ],
+        "projected": [
+          183.50062129770856,
+          83.39038240636407,
+          339.1102723424986,
+          198.03316053997986
+        ],
+        "iou": 0.837210629233725
+      },
+      {
+        "name": "left_arm",
+        "model": "ra",
+        "target": [
+          152,
+          106,
+          191,
+          170
+        ],
+        "projected": [
+          143.79119531397328,
+          104.26729384685501,
+          189.8090172221069,
+          176.13057194257897
+        ],
+        "iou": 0.7152301905825371
+      },
+      {
+        "name": "right_arm",
+        "model": "la",
+        "target": [
+          344,
+          112,
+          384,
+          186
+        ],
+        "projected": [
+          342.52546472973995,
+          102.1572370822519,
+          388.03745790924404,
+          183.66812266275792
+        ],
+        "iou": 0.7538065849866039
+      },
+      {
+        "name": "left_thigh",
+        "model": "rl",
+        "target": [
+          176,
+          178,
+          236,
+          260
+        ],
+        "projected": [
+          185.742668090309,
+          176.82878658747362,
+          230.7999598104509,
+          260.9125661770035
+        ],
+        "iou": 0.7368925755057851
+      },
+      {
+        "name": "right_thigh",
+        "model": "ll",
+        "target": [
+          300,
+          188,
+          347,
+          250
+        ],
+        "projected": [
+          298.58251972685855,
+          175.9546749468521,
+          339.8890473877176,
+          251.5370542172695
+        ],
+        "iou": 0.6941266360953604
+      },
+      {
+        "name": "left_shin",
+        "model": "rl_shin",
+        "target": [
+          169,
+          244,
+          216,
+          336
+        ],
+        "projected": [
+          179.90043405294603,
+          237.71835488458177,
+          220.95527534590957,
+          335.36062183856166
+        ],
+        "iou": 0.6550814186283525
+      },
+      {
+        "name": "right_shin",
+        "model": "ll_shin",
+        "target": [
+          301,
+          244,
+          338,
+          311
+        ],
+        "projected": [
+          302.86512832029894,
+          230.03541540017756,
+          336.0970314897011,
+          319.7856075456714
+        ],
+        "iou": 0.6882582264309471
+      },
+      {
+        "name": "left_foot",
+        "model": "rl_foot",
+        "target": [
+          175,
+          315,
+          224,
+          363
+        ],
+        "projected": [
+          170.64950481136592,
+          310.70079032098255,
+          216.08366488477077,
+          358.5314725331758
+        ],
+        "iou": 0.6534961783676957
+      },
+      {
+        "name": "right_foot",
+        "model": "ll_foot",
+        "target": [
+          294,
+          300,
+          344,
+          335
+        ],
+        "projected": [
+          299.5372226085617,
+          303.351420745827,
+          340.9120545433478,
+          344.2851084823945
+        ],
+        "iou": 0.6135662897126904
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "dca59b5706b07dd9830a1f3fb3e0eef89a47ab36"
+  },
+  {
+    "n": "atlas",
+    "baseline_rmse": 11.59,
+    "refined_rmse": 10.4,
+    "baseline_bounds_iou": 0.588,
+    "refined_bounds_iou": 0.616,
+    "changes": [
+      {
+        "part": "ct",
+        "axis": "y",
+        "factor": 0.9
+      },
+      {
+        "part": "lt",
+        "axis": "x",
+        "factor": 0.9
+      },
+      {
+        "part": "ll",
+        "axis": "y",
+        "factor": 0.9
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://images.dakkadakka.com/gallery/2023/2/6/1159478-Atlas%2C%20Battletech%2C%20Catalyst%2C%20February%202023%2C%20Marauders%2C%20Mech%2C%20Robot.JPG",
+      "reference_quality": "painted Catalyst plastic, approximate visible contours",
+      "parameters": {
+        "yaw": 0,
+        "pitch": 0,
+        "roll": 0,
+        "la": 55,
+        "ra": 48,
+        "ll": -4,
+        "rl": -1,
+        "ll_shin": -9,
+        "rl_shin": -13,
+        "laSpread": 12,
+        "raSpread": -13,
+        "llSpread": 3,
+        "rlSpread": 10
+      },
+      "reflected_projection": true,
+      "scale": 5.729999813456662,
+      "dx": 224.7810997277257,
+      "dy": 399.671412315657,
+      "rmse_px": 10.395928204394421,
+      "mean_bounds_iou": 0.6156856953555302,
+      "changes": [
+        {
+          "part": "ct",
+          "axis": "y",
+          "factor": 0.9
+        },
+        {
+          "part": "lt",
+          "axis": "x",
+          "factor": 0.9
+        },
+        {
+          "part": "ll",
+          "axis": "y",
+          "factor": 0.9
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          195,
+          139,
+          253,
+          190
+        ],
+        "projected": [
+          201.86110047389903,
+          147.55142052356385,
+          247.70109898155235,
+          193.39141903121714
+        ],
+        "iou": 0.6249770891006339
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          159,
+          177,
+          283,
+          254
+        ],
+        "projected": [
+          158.88610187297405,
+          169.32541981469916,
+          290.6760975824773,
+          272.4654164569191
+        ],
+        "iou": 0.7024296798032432
+      },
+      {
+        "name": "left_shoulder",
+        "model": "rt",
+        "target": [
+          158,
+          153,
+          205,
+          192
+        ],
+        "projected": [
+          122.50060305752426,
+          153.2814203370205,
+          218.47809993292336,
+          216.3114182850438
+        ],
+        "iou": 0.30015946524782233
+      },
+      {
+        "name": "right_shoulder",
+        "model": "lt",
+        "target": [
+          252,
+          148,
+          320,
+          202
+        ],
+        "projected": [
+          236.81409933598468,
+          153.2814203370205,
+          332.79159621138376,
+          216.3114182850438
+        ],
+        "iou": 0.5169404306261404
+      },
+      {
+        "name": "left_arm",
+        "model": "ra",
+        "target": [
+          124,
+          193,
+          180,
+          275
+        ],
+        "projected": [
+          118.06624814169768,
+          175.45684807452514,
+          182.2328509770459,
+          273.9353236429856
+        ],
+        "iou": 0.7105543239401358
+      },
+      {
+        "name": "right_arm",
+        "model": "la",
+        "target": [
+          279,
+          197,
+          329,
+          265
+        ],
+        "projected": [
+          276.0547143247112,
+          176.77326077395665,
+          339.8128609126125,
+          264.0668789152318
+        ],
+        "iou": 0.5974952908417078
+      },
+      {
+        "name": "left_thigh",
+        "model": "rl",
+        "target": [
+          157,
+          250,
+          213,
+          315
+        ],
+        "projected": [
+          152.05932739359844,
+          257.96834170854083,
+          207.05999868744647,
+          325.1744668313555
+        ],
+        "iou": 0.6370819895539119
+      },
+      {
+        "name": "right_thigh",
+        "model": "ll",
+        "target": [
+          237,
+          251,
+          283,
+          329
+        ],
+        "projected": [
+          242.65058346560875,
+          259.82230494511305,
+          294.27332853310185,
+          324.49910701311876
+        ],
+        "iou": 0.6044931600446853
+      },
+      {
+        "name": "left_shin",
+        "model": "rl_shin",
+        "target": [
+          142,
+          307,
+          190,
+          392
+        ],
+        "projected": [
+          145.75097817800858,
+          309.5384268925049,
+          193.37591721355687,
+          384.54131387510404
+        ],
+        "iou": 0.7659008754816425
+      },
+      {
+        "name": "right_shin",
+        "model": "ll_shin",
+        "target": [
+          243,
+          318,
+          293,
+          394
+        ],
+        "projected": [
+          242.81891276993775,
+          310.6165531888239,
+          288.9198945191244,
+          384.82856079426375
+        ],
+        "iou": 0.7390176638047811
+      },
+      {
+        "name": "left_foot",
+        "model": "rl_foot",
+        "target": [
+          130,
+          377,
+          190,
+          418
+        ],
+        "projected": [
+          131.39752034127326,
+          364.29171251138564,
+          189.99342209188563,
+          409.9824751434611
+        ],
+        "iou": 0.6030723239618321
+      },
+      {
+        "name": "right_foot",
+        "model": "ll_foot",
+        "target": [
+          239,
+          379,
+          292,
+          419
+        ],
+        "projected": [
+          234.48259008456967,
+          366.37144108612506,
+          292.3111956250145,
+          409.26394175334275
+        ],
+        "iou": 0.5353009446398879
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "404c6b422d1ac8d76dec0bb0b7d0c78a2419fe3c"
+  },
+  {
+    "n": "wolverine",
+    "baseline_rmse": 22.51,
+    "refined_rmse": 21.25,
+    "baseline_bounds_iou": 0.535,
+    "refined_bounds_iou": 0.552,
+    "changes": [
+      {
+        "part": "ct",
+        "axis": "y",
+        "factor": 0.9
+      },
+      {
+        "part": "lt",
+        "axis": "x",
+        "factor": 0.9
+      },
+      {
+        "part": "ll",
+        "axis": "y",
+        "factor": 0.9
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://images.dakkadakka.com/gallery/2023/7/9/1170805-Battletech%2C%20Cgl%2C%20Mech%2C%20Wolverine.jpg",
+      "reference_quality": "painted Catalyst plastic, weapon handedness can be reflected in projection",
+      "parameters": {
+        "yaw": 0,
+        "pitch": -20,
+        "roll": 0,
+        "la": 23,
+        "ra": 15,
+        "ll": -45,
+        "rl": 21,
+        "ll_shin": 8,
+        "rl_shin": 1,
+        "laSpread": -35,
+        "raSpread": 10,
+        "llSpread": 5,
+        "rlSpread": 17
+      },
+      "reflected_projection": false,
+      "scale": 9.841062507770465,
+      "dx": 247.2285647224812,
+      "dy": 403.0136704705999,
+      "rmse_px": 21.252250509287933,
+      "mean_bounds_iou": 0.5518872819070236,
+      "changes": [
+        {
+          "part": "ct",
+          "axis": "y",
+          "factor": 0.9
+        },
+        {
+          "part": "lt",
+          "axis": "x",
+          "factor": 0.9
+        },
+        {
+          "part": "ll",
+          "axis": "y",
+          "factor": 0.9
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          211,
+          59,
+          252,
+          111
+        ],
+        "projected": [
+          222.62590845305505,
+          43.17428010271192,
+          271.83122099190734,
+          114.65596126931968
+        ],
+        "iou": 0.37057674700777987
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          169,
+          70,
+          336,
+          196
+        ],
+        "projected": [
+          163.57953340643223,
+          57.2292160038611,
+          330.87759603853016,
+          238.16545615587052
+        ],
+        "iou": 0.6597480755765202
+      },
+      {
+        "name": "left_shoulder",
+        "model": "lt",
+        "target": [
+          100,
+          73,
+          177,
+          153
+        ],
+        "projected": [
+          114.37422086757991,
+          69.2510619688793,
+          230.49875845927141,
+          161.74378137445234
+        ],
+        "iou": 0.42134604639886236
+      },
+      {
+        "name": "right_shoulder",
+        "model": "rt",
+        "target": [
+          327,
+          56,
+          405,
+          156
+        ],
+        "projected": [
+          254.11730847792052,
+          69.2510619688793,
+          370.241846069612,
+          161.74378137445234
+        ],
+        "iou": 0.25363851040456387
+      },
+      {
+        "name": "left_arm",
+        "model": "la",
+        "target": [
+          23,
+          147,
+          158,
+          225
+        ],
+        "projected": [
+          37.642578670865646,
+          97.25061537219648,
+          192.5748260375645,
+          223.58452397133553
+        ],
+        "iou": 0.4413318394333328
+      },
+      {
+        "name": "right_arm",
+        "model": "ra",
+        "target": [
+          348,
+          147,
+          409,
+          268
+        ],
+        "projected": [
+          304.39255203817817,
+          92.98970097876975,
+          399.7557592070302,
+          264.64561310074635
+        ],
+        "iou": 0.34474578071763623
+      },
+      {
+        "name": "left_thigh",
+        "model": "ll",
+        "target": [
+          168,
+          195,
+          240,
+          294
+        ],
+        "projected": [
+          161.30357985784036,
+          205.62337269011164,
+          223.3546790183624,
+          315.9356175284523
+        ],
+        "iou": 0.5387175646534181
+      },
+      {
+        "name": "right_thigh",
+        "model": "rl",
+        "target": [
+          264,
+          193,
+          338,
+          290
+        ],
+        "projected": [
+          269.8935417095084,
+          196.73840943162782,
+          344.68049607609856,
+          305.88675841873004
+        ],
+        "iou": 0.7065976663051652
+      },
+      {
+        "name": "left_shin",
+        "model": "ll_shin",
+        "target": [
+          155,
+          280,
+          224,
+          374
+        ],
+        "projected": [
+          166.64708916563825,
+          280.91367903020466,
+          227.32702228786007,
+          379.74597819498274
+        ],
+        "iou": 0.7472701689931455
+      },
+      {
+        "name": "right_shin",
+        "model": "rl_shin",
+        "target": [
+          289,
+          272,
+          361,
+          360
+        ],
+        "projected": [
+          297.7450294740849,
+          265.54658894275866,
+          364.13952558582093,
+          354.2115054537259
+        ],
+        "iou": 0.7405097901668781
+      },
+      {
+        "name": "left_foot",
+        "model": "ll_foot",
+        "target": [
+          150,
+          354,
+          257,
+          426
+        ],
+        "projected": [
+          165.95848054207278,
+          346.59433636488956,
+          238.30027531736442,
+          422.51824036636265
+        ],
+        "iou": 0.6015642587258752
+      },
+      {
+        "name": "right_foot",
+        "model": "rl_foot",
+        "target": [
+          318,
+          298,
+          389,
+          387
+        ],
+        "projected": [
+          310.4223600866598,
+          303.57595754271927,
+          384.6359143751645,
+          382.92669088809424
+        ],
+        "iou": 0.7640731373430651
+      },
+      {
+        "name": "launcher",
+        "model": "rt_rack",
+        "target": [
+          260,
+          19,
+          312,
+          91
+        ],
+        "projected": [
+          261.9901584841369,
+          30.15287038275352,
+          311.19547102298924,
+          104.9834119456205
+        ],
+        "iou": 0.6755331101497124
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "adaf7e79f55191712c5569ca401d7b6bcbd001f9"
+  },
+  {
+    "n": "marauder",
+    "baseline_rmse": 36.84,
+    "refined_rmse": 35.45,
+    "baseline_bounds_iou": 0.314,
+    "refined_bounds_iou": 0.333,
+    "changes": [
+      {
+        "part": "ct",
+        "axis": "y",
+        "factor": 1.1
+      },
+      {
+        "part": "hd",
+        "axis": "y",
+        "factor": 1.1
+      },
+      {
+        "part": "lt",
+        "axis": "z",
+        "factor": 0.9
+      },
+      {
+        "part": "la",
+        "axis": "z",
+        "factor": 0.9
+      },
+      {
+        "part": "ll",
+        "axis": "y",
+        "factor": 1.1
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190357_Final_1200x1200.jpg?v=1708313439",
+      "reference_quality": "Catalyst Command Lance plastic, oblique contours",
+      "parameters": {
+        "yaw": 103,
+        "pitch": -1,
+        "roll": 0,
+        "la": -6,
+        "ra": -32,
+        "ll": -45,
+        "rl": 45,
+        "ll_shin": 4,
+        "rl_shin": -35,
+        "laSpread": 1,
+        "raSpread": -35,
+        "llSpread": 10,
+        "rlSpread": 1
+      },
+      "reflected_projection": true,
+      "scale": 7.587394841538353,
+      "dx": 246.56991061992989,
+      "dy": 401.0283171948628,
+      "rmse_px": 35.448291725635706,
+      "mean_bounds_iou": 0.3330861196697133,
+      "changes": [
+        {
+          "part": "ct",
+          "axis": "y",
+          "factor": 1.1
+        },
+        {
+          "part": "hd",
+          "axis": "y",
+          "factor": 1.1
+        },
+        {
+          "part": "lt",
+          "axis": "z",
+          "factor": 0.9
+        },
+        {
+          "part": "la",
+          "axis": "z",
+          "factor": 0.9
+        },
+        {
+          "part": "ll",
+          "axis": "y",
+          "factor": 1.1
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          141,
+          112,
+          227,
+          185
+        ],
+        "projected": [
+          109.40086143412853,
+          136.64811690479564,
+          228.48742133641264,
+          204.5991333080184
+        ],
+        "iou": 0.40720202868348576
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          196,
+          66,
+          336,
+          170
+        ],
+        "projected": [
+          166.60835471340613,
+          86.0802380023726,
+          326.53146652645364,
+          236.2408266356698
+        ],
+        "iou": 0.39660311122545017
+      },
+      {
+        "name": "left_shoulder",
+        "model": "rt",
+        "target": [
+          238,
+          128,
+          296,
+          205
+        ],
+        "projected": [
+          234.63377640426108,
+          128.63904234844063,
+          309.3627538867399,
+          197.8852177936949
+        ],
+        "iou": 0.7140789292458083
+      },
+      {
+        "name": "right_shoulder",
+        "model": "lt",
+        "target": [
+          145,
+          158,
+          187,
+          213
+        ],
+        "projected": [
+          195.37754960973422,
+          125.92952939906053,
+          271.3012818207421,
+          195.1757048443148
+        ],
+        "iou": 0
+      },
+      {
+        "name": "left_arm",
+        "model": "ra",
+        "target": [
+          163,
+          218,
+          274,
+          301
+        ],
+        "projected": [
+          133.9278759976479,
+          136.5554991826633,
+          301.62742817054345,
+          318.6528434993244
+        ],
+        "iou": 0.3016932240549123
+      },
+      {
+        "name": "right_arm",
+        "model": "la",
+        "target": [
+          65,
+          194,
+          169,
+          259
+        ],
+        "projected": [
+          57.010471289024736,
+          140.10868530361864,
+          250.4841940265122,
+          265.0643785823901
+        ],
+        "iou": 0.27962027551493374
+      },
+      {
+        "name": "left_thigh",
+        "model": "rl",
+        "target": [
+          164,
+          261,
+          250,
+          344
+        ],
+        "projected": [
+          197.83258287350912,
+          203.02189610887856,
+          278.2043909159067,
+          317.10453950695955
+        ],
+        "iou": 0.21874329577840082
+      },
+      {
+        "name": "right_thigh",
+        "model": "ll",
+        "target": [
+          293,
+          156,
+          381,
+          249
+        ],
+        "projected": [
+          214.0025805916532,
+          198.96972869573085,
+          332.1750940035733,
+          278.3601431116382
+        ],
+        "iou": 0.12559032783921467
+      },
+      {
+        "name": "left_shin",
+        "model": "rl_shin",
+        "target": [
+          149,
+          326,
+          207,
+          379
+        ],
+        "projected": [
+          166.95209317772475,
+          278.8528507335128,
+          247.64607042464323,
+          374.9054641330933
+        ],
+        "iou": 0.22089937864564502
+      },
+      {
+        "name": "right_shin",
+        "model": "ll_shin",
+        "target": [
+          305,
+          243,
+          367,
+          365
+        ],
+        "projected": [
+          290.14559234078,
+          225.89396098061698,
+          355.159076832278,
+          343.113532933615
+        ],
+        "iou": 0.49409413095963284
+      },
+      {
+        "name": "left_foot",
+        "model": "rl_foot",
+        "target": [
+          139,
+          344,
+          229,
+          402
+        ],
+        "projected": [
+          114.71669508468781,
+          355.9497176307943,
+          217.6232918796007,
+          400.4325080418505
+        ],
+        "iou": 0.5551235563889708
+      },
+      {
+        "name": "right_foot",
+        "model": "ll_foot",
+        "target": [
+          304,
+          344,
+          400,
+          398
+        ],
+        "projected": [
+          306.99492509130454,
+          307.64203095293465,
+          385.1202222567312,
+          392.91337081795007
+        ],
+        "iou": 0.4762144082021032
+      },
+      {
+        "name": "cannon",
+        "model": "rt_cannon",
+        "target": [
+          98,
+          23,
+          319,
+          80
+        ],
+        "projected": [
+          102.1248874925667,
+          74.72012078160452,
+          292.0685249830706,
+          120.98258727718377
+        ],
+        "iou": 0.04920566617882892
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "a043d61f0f7eb3be4f2a58df1ba017569133778d"
+  },
+  {
+    "n": "phoenix_hawk",
+    "baseline_rmse": 9.08,
+    "refined_rmse": 8.79,
+    "baseline_bounds_iou": 0.604,
+    "refined_bounds_iou": 0.613,
+    "changes": [
+      {
+        "part": "lt",
+        "axis": "y",
+        "factor": 0.9
+      }
+    ],
+    "fit": {
+      "method": "projected component bounding-box residual, approximate manually traced visible contours",
+      "reference": "https://images.dakkadakka.com/gallery/2023/2/2/1159253-Battletech%2C%20Catalyst%2C%20January%20202e%2C%20Mech%2C%20Phoenix%20Hawk%2C%20Rifleman%2C%20Stinger.JPG",
+      "reference_quality": "painted Catalyst plastic, center-right figure only",
+      "parameters": {
+        "yaw": 0,
+        "pitch": -11,
+        "roll": 0,
+        "la": 50,
+        "ra": 23,
+        "ll": -7,
+        "rl": -34,
+        "ll_shin": -4,
+        "rl_shin": 23,
+        "laSpread": 0,
+        "raSpread": 31,
+        "llSpread": -10,
+        "rlSpread": 2
+      },
+      "reflected_projection": true,
+      "scale": 6.180927784094311,
+      "dx": 338.0119382466821,
+      "dy": 375.80867580713266,
+      "rmse_px": 8.79444474981518,
+      "mean_bounds_iou": 0.6125077950709976,
+      "changes": [
+        {
+          "part": "lt",
+          "axis": "y",
+          "factor": 0.9
+        }
+      ]
+    },
+    "regions": [
+      {
+        "name": "cockpit",
+        "model": "hd",
+        "target": [
+          315,
+          166,
+          361,
+          211
+        ],
+        "projected": [
+          319.4691548943992,
+          170.86806717402163,
+          356.55472159896505,
+          212.5794623591861
+        ],
+        "iou": 0.699207353430896
+      },
+      {
+        "name": "torso",
+        "model": "ct",
+        "target": [
+          294,
+          198,
+          386,
+          267
+        ],
+        "projected": [
+          294.74544375802196,
+          195.72722241168626,
+          378.18796884329515,
+          276.2015712295702
+        ],
+        "iou": 0.7881150789411437
+      },
+      {
+        "name": "left_shoulder",
+        "model": "rt",
+        "target": [
+          271,
+          181,
+          311,
+          234
+        ],
+        "projected": [
+          276.20266040573904,
+          171.28727185760673,
+          338.0119382466821,
+          238.4304622282345
+        ],
+        "iou": 0.41670512345511274
+      },
+      {
+        "name": "right_shoulder",
+        "model": "lt",
+        "target": [
+          365,
+          177,
+          405,
+          225
+        ],
+        "projected": [
+          344.19286603077643,
+          171.28727185760673,
+          406.00214387171957,
+          238.4304622282345
+        ],
+        "iou": 0.4626425637168987
+      },
+      {
+        "name": "left_arm",
+        "model": "ra",
+        "target": [
+          235,
+          222,
+          299,
+          277
+        ],
+        "projected": [
+          232.5996870428542,
+          201.34897252936722,
+          316.2593610953373,
+          293.97196998830987
+        ],
+        "iou": 0.4542633128466636
+      },
+      {
+        "name": "right_arm",
+        "model": "la",
+        "target": [
+          381,
+          220,
+          410,
+          279
+        ],
+        "projected": [
+          368.91657716715366,
+          209.72882650858023,
+          409.0926077637667,
+          277.475640789088
+        ],
+        "iou": 0.5729419526432895
+      },
+      {
+        "name": "left_thigh",
+        "model": "rl",
+        "target": [
+          294,
+          252,
+          339,
+          317
+        ],
+        "projected": [
+          293.47469568584347,
+          260.88728556034033,
+          324.92744212569573,
+          321.99430727088367
+        ],
+        "iou": 0.5577338084375943
+      },
+      {
+        "name": "right_thigh",
+        "model": "ll",
+        "target": [
+          351,
+          255,
+          387,
+          323
+        ],
+        "projected": [
+          358.43638434870064,
+          263.67210406850165,
+          393.1221151424831,
+          323.730675379747
+        ],
+        "iou": 0.5974213396843737
+      },
+      {
+        "name": "left_shin",
+        "model": "rl_shin",
+        "target": [
+          291,
+          309,
+          326,
+          357
+        ],
+        "projected": [
+          292.4154632633923,
+          299.4152267979533,
+          323.42475486433347,
+          355.7111376384132
+        ],
+        "iou": 0.7325848746752275
+      },
+      {
+        "name": "right_shin",
+        "model": "ll_shin",
+        "target": [
+          365,
+          313,
+          405,
+          371
+        ],
+        "projected": [
+          367.3488083687012,
+          301.4122688310638,
+          400.2686013082498,
+          359.73916189864013
+        ],
+        "iou": 0.5695587864636956
+      },
+      {
+        "name": "left_foot",
+        "model": "rl_foot",
+        "target": [
+          289,
+          341,
+          320,
+          371
+        ],
+        "projected": [
+          287.89998705507173,
+          342.65632410673436,
+          325.2346159276855,
+          374.4973104504639
+        ],
+        "iou": 0.7085247843842354
+      },
+      {
+        "name": "right_foot",
+        "model": "ll_foot",
+        "target": [
+          376,
+          351,
+          410,
+          376
+        ],
+        "projected": [
+          372.3143294451017,
+          344.04537963132486,
+          410.41186425068,
+          379.2791967572488
+        ],
+        "iou": 0.6332312735498492
+      }
+    ],
+    "connectivity_pass": true,
+    "commit": "6eaedee9f90e24b42e66954831133802b9f4f930"
+  }
+]
