@@ -1,0 +1,85 @@
+{
+  "models": 30,
+  "unique": 30,
+  "scored": 21,
+  "improved": 19,
+  "retained": 2,
+  "unrankedModels": 9,
+  "blocked": 0,
+  "unrankedAlternatives": 20,
+  "unrankedDelta": 3593,
+  "views": 28,
+  "trials": 423,
+  "selectedParts": 42,
+  "changed": 7124,
+  "before": 0.4754195181405897,
+  "after": 0.4868113775510204,
+  "faults": 0,
+  "clearBefore": 381,
+  "clearAfter": 381,
+  "muzzleTotal": 385,
+  "roundtripFailures": 0,
+  "poorCamera": [
+    "viper",
+    "turkina",
+    "dire_wolf",
+    "warhawk",
+    "nightstar",
+    "longbow"
+  ],
+  "selectedFamilies": {
+    "photo_hull": 38,
+    "bell": 1,
+    "wedge": 3
+  },
+  "top": [
+    {
+      "id": "kit_fox",
+      "before": 0.4753200000000001,
+      "after": 0.51766,
+      "changed": 551
+    },
+    {
+      "id": "marauder_ii",
+      "before": 0.5208200000000001,
+      "after": 0.5505,
+      "changed": 509
+    },
+    {
+      "id": "executioner",
+      "before": 0.56084,
+      "after": 0.5814799999999999,
+      "changed": 746
+    },
+    {
+      "id": "nightstar",
+      "before": 0.33951249999999994,
+      "after": 0.3599625,
+      "changed": 422
+    },
+    {
+      "id": "gargoyle",
+      "before": 0.60936,
+      "after": 0.62822,
+      "changed": 689
+    },
+    {
+      "id": "shadow_cat",
+      "before": 0.46078,
+      "after": 0.4758,
+      "changed": 354
+    },
+    {
+      "id": "nova",
+      "before": 0.53376,
+      "after": 0.54758,
+      "changed": 217
+    },
+    {
+      "id": "hellbringer",
+      "before": 0.4455166666666666,
+      "after": 0.4570999999999999,
+      "changed": 403
+    }
+  ]
+}

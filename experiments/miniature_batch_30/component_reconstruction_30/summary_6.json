@@ -1,0 +1,144 @@
+[
+  {
+    "id": "orion",
+    "source": "cohort_is_24; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 2586
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 200
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 871
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 343,
+        "before": 2586,
+        "after": 2563,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "delta": 134,
+        "before": 871,
+        "after": 885,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 129,
+        "before": 871,
+        "after": 910,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 173,
+        "before": 871,
+        "after": 880,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "delta": 111,
+        "before": 871,
+        "after": 914,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 13,
+    "clearAfter": 13,
+    "muzzleTotal": 13,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 343
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 173
+      }
+    ]
+  }
+]
