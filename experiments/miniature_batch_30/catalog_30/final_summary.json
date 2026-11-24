@@ -1,0 +1,450 @@
+{
+  "totals": {
+    "models": 30,
+    "parts": 563,
+    "cells": 248592,
+    "faults": 0,
+    "clear": 280,
+    "samples": 280,
+    "sharpModels": 18,
+    "sharpParts": 222,
+    "scored": 4,
+    "changed": 2874,
+    "before": 0.3123392857142857,
+    "after": 0.32793988095238097
+  },
+  "rows": [
+    {
+      "id": "akuma",
+      "parts": 21,
+      "cells": 10513,
+      "faults": [],
+      "clear": 13,
+      "total": 13,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "akuma_aku1x",
+      "score": {
+        "before": 0.36746666666666666,
+        "after": 0.38338333333333335,
+        "changed": 886,
+        "views": [
+          {
+            "name": "catalog pack render; different variant",
+            "cameraRms": 3.660147229667102,
+            "poseRms": {
+              "ra": 5.711044588073635,
+              "la": 3.7644274514611187,
+              "rl": 7.999392131276135,
+              "ll": 7.166293046351528
+            },
+            "before": 0.36746666666666666,
+            "after": 0.38338333333333335
+          }
+        ]
+      }
+    },
+    {
+      "id": "avatar",
+      "parts": 20,
+      "cells": 10078,
+      "faults": [],
+      "clear": 25,
+      "total": 25,
+      "edgeParts": 13,
+      "source": "receiver_rebuilds.json",
+      "unit": "avatar_av1-o",
+      "score": {
+        "before": 0.33044999999999997,
+        "after": 0.3474,
+        "changed": 762,
+        "views": [
+          {
+            "name": "physical miniature photo",
+            "cameraRms": 5.529141481726761,
+            "poseRms": {
+              "ra": 4.048871763271038,
+              "la": 5.337978983480779,
+              "rl": 3.455484410622475,
+              "ll": 5.237167873073021
+            },
+            "before": 0.33044999999999997,
+            "after": 0.3474
+          }
+        ]
+      }
+    },
+    {
+      "id": "grand_dragon",
+      "parts": 18,
+      "cells": 7824,
+      "faults": [],
+      "clear": 4,
+      "total": 4,
+      "edgeParts": 10,
+      "source": "initial + repair_results",
+      "unit": "grand_dragon_drg10k",
+      "score": {
+        "before": 0.38458333333333333,
+        "after": 0.4050333333333333,
+        "changed": 696,
+        "views": [
+          {
+            "name": "catalog pack render",
+            "cameraRms": 5.183739471942529,
+            "poseRms": {
+              "ra": 5.601346914742573,
+              "la": 2.1426119902852685,
+              "rl": 7.295648326047117,
+              "ll": 7.328018072545845
+            },
+            "before": 0.38458333333333333,
+            "after": 0.4050333333333333
+          }
+        ]
+      }
+    },
+    {
+      "id": "shiro",
+      "parts": 22,
+      "cells": 11147,
+      "faults": [],
+      "clear": 41,
+      "total": 41,
+      "edgeParts": 15,
+      "source": "initial + repair_results",
+      "unit": "shiro_sh1v",
+      "score": {
+        "before": 0.16685714285714284,
+        "after": 0.17594285714285715,
+        "changed": 530,
+        "views": [
+          {
+            "name": "catalog pack render",
+            "cameraRms": 4.07364880692077,
+            "poseRms": {
+              "ra": 2.373465552761168,
+              "la": 3.4029837380092287,
+              "rl": 4.383530906587742,
+              "ll": 9.254091506977463
+            },
+            "before": 0.16685714285714284,
+            "after": 0.17594285714285715
+          }
+        ]
+      }
+    },
+    {
+      "id": "chimera",
+      "parts": 20,
+      "cells": 7177,
+      "faults": [],
+      "clear": 12,
+      "total": 12,
+      "edgeParts": 12,
+      "source": "initial + repair_results",
+      "unit": "chimera_cma1s",
+      "score": null
+    },
+    {
+      "id": "venom",
+      "parts": 19,
+      "cells": 6082,
+      "faults": [],
+      "clear": 4,
+      "total": 4,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "venom_sdr9k",
+      "score": null
+    },
+    {
+      "id": "bane",
+      "parts": 19,
+      "cells": 14086,
+      "faults": [],
+      "clear": 15,
+      "total": 15,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "bane_5",
+      "score": null
+    },
+    {
+      "id": "firebee",
+      "parts": 18,
+      "cells": 5658,
+      "faults": [],
+      "clear": 4,
+      "total": 4,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "firebee_frb2e",
+      "score": null
+    },
+    {
+      "id": "firefly",
+      "parts": 18,
+      "cells": 5919,
+      "faults": [],
+      "clear": 7,
+      "total": 7,
+      "edgeParts": 12,
+      "source": "initial + repair_results",
+      "unit": "firefly_ffl4c",
+      "score": null
+    },
+    {
+      "id": "gladiator",
+      "parts": 18,
+      "cells": 8154,
+      "faults": [],
+      "clear": 7,
+      "total": 7,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "gladiator_gld7r",
+      "score": null
+    },
+    {
+      "id": "goliath",
+      "parts": 18,
+      "cells": 9655,
+      "faults": [],
+      "clear": 2,
+      "total": 2,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "goliath_gol1h",
+      "score": null
+    },
+    {
+      "id": "havoc",
+      "parts": 19,
+      "cells": 6297,
+      "faults": [],
+      "clear": 2,
+      "total": 2,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "havoc_hvcp6",
+      "score": null
+    },
+    {
+      "id": "highlander_iic",
+      "parts": 19,
+      "cells": 12551,
+      "faults": [],
+      "clear": 36,
+      "total": 36,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "highlander_iic_3",
+      "score": null
+    },
+    {
+      "id": "hunchback_iic",
+      "parts": 19,
+      "cells": 7959,
+      "faults": [],
+      "clear": 2,
+      "total": 2,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "hunchback_iic",
+      "score": null
+    },
+    {
+      "id": "icarus_ii",
+      "parts": 17,
+      "cells": 6987,
+      "faults": [],
+      "clear": 1,
+      "total": 1,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "icarus_ii_icr1s",
+      "score": null
+    },
+    {
+      "id": "javelin",
+      "parts": 19,
+      "cells": 6653,
+      "faults": [],
+      "clear": 12,
+      "total": 12,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "javelin_jvn10n",
+      "score": null
+    },
+    {
+      "id": "jenner_iic",
+      "parts": 21,
+      "cells": 7138,
+      "faults": [],
+      "clear": 11,
+      "total": 11,
+      "edgeParts": 0,
+      "source": "mount_rebuilds.json",
+      "unit": "jenner_iic_5",
+      "score": null
+    },
+    {
+      "id": "lancelot",
+      "parts": 18,
+      "cells": 8203,
+      "faults": [],
+      "clear": 3,
+      "total": 3,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "lancelot_lnc2501",
+      "score": null
+    },
+    {
+      "id": "linebacker",
+      "parts": 19,
+      "cells": 8311,
+      "faults": [],
+      "clear": 2,
+      "total": 2,
+      "edgeParts": 11,
+      "source": "initial + repair_results",
+      "unit": "linebacker_prime",
+      "score": null
+    },
+    {
+      "id": "locust_iic",
+      "parts": 18,
+      "cells": 5426,
+      "faults": [],
+      "clear": 9,
+      "total": 9,
+      "edgeParts": 9,
+      "source": "receiver_rebuilds.json",
+      "unit": "locust_iic_10",
+      "score": null
+    },
+    {
+      "id": "mackie",
+      "parts": 19,
+      "cells": 11456,
+      "faults": [],
+      "clear": 4,
+      "total": 4,
+      "edgeParts": 0,
+      "source": "mount_rebuilds.json",
+      "unit": "mackie_msk9h",
+      "score": null
+    },
+    {
+      "id": "mauler",
+      "parts": 19,
+      "cells": 12106,
+      "faults": [],
+      "clear": 34,
+      "total": 34,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "mauler_mal1r",
+      "score": null
+    },
+    {
+      "id": "mercury",
+      "parts": 19,
+      "cells": 5554,
+      "faults": [],
+      "clear": 1,
+      "total": 1,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "mercury_mcy98",
+      "score": null
+    },
+    {
+      "id": "merlin",
+      "parts": 18,
+      "cells": 7985,
+      "faults": [],
+      "clear": 6,
+      "total": 6,
+      "edgeParts": 12,
+      "source": "initial + repair_results",
+      "unit": "merlin_mln1a",
+      "score": null
+    },
+    {
+      "id": "mongoose",
+      "parts": 17,
+      "cells": 5291,
+      "faults": [],
+      "clear": 2,
+      "total": 2,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "mongoose_mon66",
+      "score": null
+    },
+    {
+      "id": "night_gyr",
+      "parts": 17,
+      "cells": 10598,
+      "faults": [],
+      "clear": 4,
+      "total": 4,
+      "edgeParts": 11,
+      "source": "initial + repair_results",
+      "unit": "night_gyr_prime",
+      "score": null
+    },
+    {
+      "id": "ostroc",
+      "parts": 19,
+      "cells": 8187,
+      "faults": [],
+      "clear": 6,
+      "total": 6,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "ostroc_osr2c",
+      "score": null
+    },
+    {
+      "id": "ostscout",
+      "parts": 18,
+      "cells": 5507,
+      "faults": [],
+      "clear": 0,
+      "total": 0,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "ostscout_ott7j",
+      "score": null
+    },
+    {
+      "id": "ostsol",
+      "parts": 19,
+      "cells": 8099,
+      "faults": [],
+      "clear": 4,
+      "total": 4,
+      "edgeParts": 0,
+      "source": "initial + repair_results",
+      "unit": "ostsol_otl4d",
+      "score": null
+    },
+    {
+      "id": "scorpion",
+      "parts": 18,
+      "cells": 7991,
+      "faults": [],
+      "clear": 7,
+      "total": 7,
+      "edgeParts": 13,
+      "source": "initial + repair_results",
+      "unit": "scorpion_scp1n",
+      "score": null
+    }
+  ]
+}
