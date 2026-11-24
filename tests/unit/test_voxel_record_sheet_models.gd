@@ -49,3 +49,36 @@ func test_all_record_sheet_battle_armor_have_distinct_squads_and_weapons() -> vo
 		var model := VoxelAsset.model_from_dict(d)
 		check(model.errors.is_empty(), "%s errors: %s" % [id, model.errors])
 		check(model.cell_count() <= 50000, id + " squad under voxel cap")
+
+
+## Audit coarse authored geometry independently of runtime repair.
+func test_record_support_source_assemblies_are_connected() -> void:
+	for id: String in VEHICLES:
+		_check_source_assembly("vehicles", id, 1)
+	for id: String in BATTLE_ARMOR:
+		_check_source_assembly("battle_armor", id, 4 if id.begins_with("is_standard") else 5)
+
+
+func _check_source_assembly(folder: String, id: String, expected: int) -> void:
+	var data: Dictionary = JsonFile.read("res://data/voxels/%s/%s.json" % [folder, id])
+	var model := VxModel.new()
+	for material: Dictionary in data["materials"]:
+		model._mat[material["name"]] = model.colors.size()
+		model.colors.append(Color(material["color"]))
+		model.roles.append(material.get("role", "armor"))
+	for part: Dictionary in data["parts"]:
+		model._add_part(part)
+	check(model.errors.is_empty(), "%s source painter issues" % id)
+	var occupied := {}
+	for part: Dictionary in model.parts:
+		var cells: Dictionary = part["cells"]
+		if expected > 1:
+			check_eq(VxIntegrity.components(cells).size(), 1,
+				"%s: %s must have connected limbs and gear" % [id, part["name"]])
+		for cell: Vector3i in cells:
+			occupied[cell] = true
+	check_eq(VxIntegrity.components(occupied).size(), expected,
+		"%s authored physical assemblies" % id)
+	var n := int(data.get("subdivide", 1))
+	check(occupied.size() * n * n * n <= VoxelAsset.MAX_VOXELS,
+		"%s authored mass must fit the pre-bevel budget" % id)
