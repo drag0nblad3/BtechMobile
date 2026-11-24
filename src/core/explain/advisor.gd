@@ -30,8 +30,10 @@ static func move(state: GameState, u: Unit, mode: int, key: Vector3i, opts: Move
 	if tile and tile.is_water() and tile.depth == 1:
 		cover += 1
 	var cool := HeatPhase.water_cooling(tile, u) if tile else 0
+	var danger := Threat.text(state, u, MoveOptions.coord_of(key), key.z, mode if moved else -1,
+			hexes if moved else 0, level)
 	if level == ExplainLevel.LIGHT:
-		return "Your shots +%d · enemy shots +%d · heat +%d" % [own, tm + cover, heat]
+		return "Your shots +%d · enemy shots +%d · heat +%d · %s" % [own, tm + cover, heat, danger]
 	var t := "Moving %d hexes: enemies get +%d to hit you" % [hexes, tm]
 	t += (", +%d more from cover here." % cover) if cover > 0 else "."
 	t += " Your own shots get +%d and you build %d heat." % [own, heat]
@@ -48,7 +50,7 @@ static func move(state: GameState, u: Unit, mode: int, key: Vector3i, opts: Move
 	var rear := _rear_shots(state, u, MoveOptions.coord_of(key), key.z)
 	if rear != "":
 		t += " " + rear
-	return t
+	return t + " " + danger
 
 
 ## Mentions enemies whose rear or side this position would face.
