@@ -4614,6 +4614,173 @@
           ],
           "mat": "joint"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -7,
+              7,
+              -3
+            ],
+            [
+              -4,
+              7,
+              -3
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -7,
+              8,
+              -3
+            ],
+            [
+              -4,
+              8,
+              -3
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -7,
+              9,
+              -3
+            ],
+            [
+              -4,
+              9,
+              -3
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -7,
+              10,
+              -3
+            ],
+            [
+              -4,
+              10,
+              -3
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -7,
+              11,
+              -3
+            ],
+            [
+              -4,
+              11,
+              -3
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -8,
+              12,
+              -3
+            ],
+            [
+              -4,
+              12,
+              -3
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -8,
+              7,
+              -2
+            ],
+            [
+              -8,
+              7,
+              -2
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -8,
+              8,
+              -2
+            ],
+            [
+              -8,
+              8,
+              -2
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -8,
+              9,
+              -2
+            ],
+            [
+              -8,
+              9,
+              -2
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -8,
+              10,
+              -2
+            ],
+            [
+              -8,
+              10,
+              -2
+            ]
+          ],
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -8,
+              11,
+              -2
+            ],
+            [
+              -8,
+              11,
+              -2
+            ]
+          ],
+          "mat": "armor"
+        }
       ]
     },
     {
@@ -6579,9 +6746,10 @@
   "source_sculpt_promotion": {
     "revision": "20261124-exact-neutral-source-selection",
     "source_blob": "81189c2eb00e7e5697f522c9c34dc58a9e22fbcd",
-    "expected_coarse_cells": 7013,
-    "selected_from": "batch_01.json",
+    "expected_coarse_cells": 7073,
+    "selected_from": "batch_01.json + batch_09_summary.json",
     "original_art_quality_revision": "silhouette-and-weapon-clarity-20261121",
-    "source_diagnostic_only": true
+    "source_diagnostic_only": true,
+    "photo_selection": "batch_09_summary.json"
   }
 }

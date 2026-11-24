@@ -128,19 +128,19 @@
                   ],
                   [
                     4.75759,
-                    2.87279
+                    1.56731
                   ],
                   [
                     2.3694,
-                    5.9087
+                    3.76181
                   ],
                   [
                     -3.2094,
-                    5.9087
+                    3.76181
                   ],
                   [
                     -5.59759,
-                    2.1265
+                    1.02785
                   ]
                 ]
               },
@@ -169,19 +169,19 @@
                   ],
                   [
                     5.39533,
-                    3.2228
+                    1.86581
                   ],
                   [
                     2.69594,
-                    6.5618
+                    4.35437
                   ],
                   [
                     -3.60594,
-                    6.5618
+                    4.35437
                   ],
                   [
                     -6.30533,
-                    2.39011
+                    1.2452
                   ]
                 ]
               },
@@ -1554,6 +1554,68 @@
           ],
           "mat": "edge"
         }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              -1,
+              33,
+              7
+            ],
+            [
+              0,
+              33,
+              7
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -1,
+              33,
+              6
+            ],
+            [
+              0,
+              33,
+              6
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -1,
+              34,
+              7
+            ],
+            [
+              0,
+              34,
+              7
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -1,
+              34,
+              6
+            ],
+            [
+              0,
+              34,
+              6
+            ]
+          ],
+          "mat": "frame"
+        }
       ]
     },
     {
@@ -1762,15 +1824,15 @@
                   ],
                   [
                     -5.5116,
-                    4.3492
+                    2.66438
                   ],
                   [
                     -7.27396,
-                    6.634
+                    4.30944
                   ],
                   [
                     -10.8084,
-                    2.72
+                    1.49136
                   ]
                 ]
               },
@@ -3444,7 +3506,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
   "reference_review_views": [
     "front",
     "side",
@@ -3456,5 +3518,14 @@
     "passes": 50,
     "edited_vertices": 130,
     "stages_with_changes": 20
+  },
+  "exclusive_parts": true,
+  "source_sculpt_promotion": {
+    "revision": "20261124-exact-neutral-source-selection",
+    "source_blob": "7e3a5c4bf0807744e254e612c8ef223b1a50f05f",
+    "expected_coarse_cells": 4921,
+    "selected_from": "second_06.json",
+    "original_art_quality_revision": "51-to-100-reference-proportions-20261122",
+    "source_diagnostic_only": true
   }
 }

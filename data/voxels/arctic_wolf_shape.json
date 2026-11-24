@@ -2096,6 +2096,62 @@
       ],
       "add": [
         {
+          "erase": [
+            [
+              -5,
+              10,
+              6
+            ],
+            [
+              -4,
+              10,
+              6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -5,
+              11,
+              6
+            ],
+            [
+              -4,
+              11,
+              6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -5,
+              11,
+              7
+            ],
+            [
+              -5,
+              11,
+              7
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -5,
+              12,
+              6
+            ],
+            [
+              -4,
+              12,
+              6
+            ]
+          ]
+        },
+        {
           "box": [
             [
               -6,
@@ -2144,21 +2200,6 @@
           "box": [
             [
               -6,
-              10,
-              6
-            ],
-            [
-              -6,
-              10,
-              6
-            ]
-          ],
-          "mat": "armor"
-        },
-        {
-          "box": [
-            [
-              -6,
               11,
               3
             ],
@@ -2196,21 +2237,6 @@
               -6,
               11,
               5
-            ]
-          ],
-          "mat": "armor"
-        },
-        {
-          "box": [
-            [
-              -6,
-              11,
-              6
-            ],
-            [
-              -6,
-              11,
-              6
             ]
           ],
           "mat": "armor"
@@ -2226,21 +2252,6 @@
               -4,
               11,
               2
-            ]
-          ],
-          "mat": "armor"
-        },
-        {
-          "box": [
-            [
-              -4,
-              11,
-              7
-            ],
-            [
-              -4,
-              11,
-              7
             ]
           ],
           "mat": "armor"
@@ -3148,6 +3159,62 @@
       ],
       "add": [
         {
+          "erase": [
+            [
+              3,
+              10,
+              6
+            ],
+            [
+              4,
+              10,
+              6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              3,
+              11,
+              6
+            ],
+            [
+              4,
+              11,
+              6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              11,
+              7
+            ],
+            [
+              4,
+              11,
+              7
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              3,
+              12,
+              6
+            ],
+            [
+              4,
+              12,
+              6
+            ]
+          ]
+        },
+        {
           "box": [
             [
               5,
@@ -3188,21 +3255,6 @@
               5,
               10,
               5
-            ]
-          ],
-          "mat": "armor"
-        },
-        {
-          "box": [
-            [
-              5,
-              10,
-              6
-            ],
-            [
-              5,
-              10,
-              6
             ]
           ],
           "mat": "armor"
@@ -3225,21 +3277,6 @@
         {
           "box": [
             [
-              3,
-              11,
-              7
-            ],
-            [
-              3,
-              11,
-              7
-            ]
-          ],
-          "mat": "armor"
-        },
-        {
-          "box": [
-            [
               5,
               11,
               3
@@ -3278,21 +3315,6 @@
               5,
               11,
               5
-            ]
-          ],
-          "mat": "armor"
-        },
-        {
-          "box": [
-            [
-              5,
-              11,
-              6
-            ],
-            [
-              5,
-              11,
-              6
             ]
           ],
           "mat": "armor"
@@ -4998,9 +5020,10 @@
   "source_sculpt_promotion": {
     "revision": "20261124-exact-neutral-source-selection",
     "source_blob": "67c98e4df45293f943f4e44569c9a9b6cf03db93",
-    "expected_coarse_cells": 3806,
-    "selected_from": "third_01.json",
+    "expected_coarse_cells": 3786,
+    "selected_from": "third_01.json + batch_06_summary.json",
     "original_art_quality_revision": "silhouette-and-weapon-clarity-20261121",
-    "source_diagnostic_only": true
+    "source_diagnostic_only": true,
+    "photo_selection": "batch_06_summary.json"
   }
 }
