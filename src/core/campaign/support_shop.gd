@@ -32,6 +32,7 @@ static func new_month(c: Campaign) -> void:
 	c.month += 1
 	c.converted = 0
 	c.done.clear()
+	c.market.clear()
 
 
 ## Why nothing can be bought now, or "".
@@ -43,7 +44,8 @@ static func closed(c: Campaign) -> String:
 	return ""
 
 
-static func _pay(c: Campaign, n: int) -> String:
+## Takes `n` SP, or says why it can't.
+static func pay(c: Campaign, n: int) -> String:
 	var why := closed(c)
 	if why == "" and c.sp < n:
 		why = "Needs %d SP; you have %d." % [n, c.sp]
@@ -55,7 +57,7 @@ static func _pay(c: Campaign, n: int) -> String:
 static func repair(c: Campaign, m: CampaignMech, def: UnitDef, job: String, rules: ChaosRules) -> String:
 	if not MechRepair.needs(m, def, job):
 		return "Nothing to do."
-	var why := _pay(c, MechRepair.cost(def, job, rules))
+	var why := pay(c, MechRepair.cost(def, job, rules))
 	if why == "":
 		MechRepair.apply(m, def, job)
 	return why
@@ -66,7 +68,7 @@ static func heal(c: Campaign, p: CampaignPilot, rules: ChaosRules) -> String:
 		return "No wounds to heal."
 	if c.done.count("heal:" + p.id) >= rules.sp("heals_per_month"):
 		return "Only one wound heals a month."
-	var why := _pay(c, rules.sp("heal_wound"))
+	var why := pay(c, rules.sp("heal_wound"))
 	if why == "":
 		p.wounds -= 1
 		c.done.append("heal:" + p.id)
@@ -88,7 +90,7 @@ static func train(c: Campaign, p: CampaignPilot, skill: String, rules: ChaosRule
 		return "Already as good as it gets."
 	if c.done.has(key):
 		return "One point per skill between contracts."
-	var why := _pay(c, train_cost(p, skill, rules))
+	var why := pay(c, train_cost(p, skill, rules))
 	if why == "":
 		p.set(skill, int(p.get(skill)) - 1)
 		c.done.append(key)
@@ -101,7 +103,7 @@ static func hire_cost(level: String, rules: ChaosRules) -> int:
 
 
 static func hire(c: Campaign, level: String, rules: ChaosRules) -> String:
-	var why := _pay(c, hire_cost(level, rules))
+	var why := pay(c, hire_cost(level, rules))
 	if why == "":
 		var names: Array = rules.support().get("recruit_names", ["MechWarrior"])
 		var s := rules.skill(level)
