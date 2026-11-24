@@ -606,3 +606,104 @@ landmarks; score each CT/hip/shoulder/weapon/thigh/knee/calf/toe
 assembly in the registered pose; rerun all Python regressions; perform
 a Godot 4.5 rig, export, and battle-pose smoke test; only consider
 production promotion after human review of the actual engine render.
+
+
+## v16: do NOT discard an improved sculpt because its old joints broke
+
+**Policy correction:** connectivity is a deliverable, not an unchangeable
+precondition on every intermediate geometric edit. If a better-authored
+chassis part invalidates its existing attachments, the next operation is
+**reattach and rerig that part**. Only abandon the new geometry if no
+physically plausible repaired attachment passes validation.
+
+The generic reattach_after_resculpt.py tool tests authored new cut planes
+against real voxel occupancy. It requires:
+- Exactly one connected mass on each side of a proposed attachment,
+  with a fully backed 2x2 face-contact patch and correct measured normal.
+- Every existing downstream child must physically connect through the
+  revised interface as well.
+- Material transfer through the cut must preserve ownership and volume:
+  NO hidden voxel bridges, filler blocks, duplicate parents, detached
+  armor, or one-voxel contact shortcuts.
+- Choose anatomically placed interface centers and hinge pivots over
+  artificial maximal-contact cuts through the middle of incorrect parts.
+- Repair attachment planes, neighboring geometry, part parentage, and
+  articulating pivots as needed. Rerun the rig and geometry tests afterward.
+
+The synthetic test in test_reattach_after_resculpt.py demonstrates the
+policy: a good rebuilt mass is split into separate unsupported islands
+by an outdated seam, while a different physically real seam recovers
+connected parents, a backed 2x2 patch, and its downstream child, with
+**no changed source material**.
+
+### Specific Jenner thigh/knee rescue
+
+The isolated v16 candidate starts from the still-preserved v15 trial.
+It broadens and tapers the middle thigh sections, adds a real projecting
+two-station knee-knuckle hull, then repartitions knee armor on an oblique
+interface through world-space (0, 0.825, -0.14) with normal
+(0, -1, 0.24). The knee armor joint pivots move to
+(±0.37, 0.79, -0.16), and the shin hinges move from z=0 to z=-0.14,
+a point in the remodeled physical knee volume.
+
+| 0.04-unit source voxel audit | v15 | v16 |
+|---|---:|---:|
+| Total occupied | 15,119 | 15,265 |
+| Each thigh owner | 541 | 554 |
+| Each separately owned knee cuff | 164 | 224 |
+| Connected parts | 30 | 30 |
+| Solid parent attachments | 29 | 29 |
+| Islands, overlaps or unsupported joints | 0 | 0 |
+| Knee contact-normal error | — | 1.95° |
+
+Both feet, their independent three toe tips, their connected tarsus,
+weapon muzzles, and the rest of the model retain their geometry. Only
+the knee armor and shin pivot locations change to reflect the new
+construction.
+
+### Pose and camera after physical reattachment
+
+A *fixed old leg angle* is not a fair comparison after moving its
+rotation center. pose_recalibration.py therefore keeps the same
+**camera yaw, elevation, roll, perspective, framing and crop** and
+**refits only the leg articulation from photographed knee/ankle/foot
+landmarks**. It cannot optimize the candidate's silhouette score.
+If pivots have not changed, it reuses the original frozen pose.
+
+The low-confidence 58px Jaded Falconer/RPG Mini Hunter reference proxy
+produces the following provisional values:
+
+| Frozen-camera photo, leg pose refit by landmarks | v15 | v16 |
+|---|---:|---:|
+| Painted front-left | 0.7205 | 0.7151 |
+| Painted front-right | 0.7302 | 0.7373 |
+| Painted rear-left | 0.7226 | 0.7163 |
+| Unpainted front | 0.7841 | 0.7792 |
+| Four-view mean | 0.7393 | 0.7370 |
+
+This is a **small regression in an approximate metric**, not a reason to
+throw away the structurally superior mechanical knee design. Treat v16
+as a **candidate awaiting better-calibrated reference photos, part-specific
+shape scores and Godot rig validation**, not as accepted replacement
+production art. The two other views remain unscored for insufficient
+pose/camera evidence. This must not be portrayed as miniature likeness
+accuracy.
+
+[Four common-camera renders of v15 and v16, from actual voxel
+geometry](generated/jenner_v15_v16_reattached_thighs.svg).
+The knee-armor pieces are individually colored. The render is neutral
+pose, not a Godot in-engine capture.
+
+Reproduce the isolated experiment:
+
+    python experiments/miniature_lab/make_jenner_v16.py
+    python -m unittest discover -s experiments/miniature_lab -p test_reattach_after_resculpt.py -v
+    python -m unittest discover -s experiments/miniature_lab -p test_jenner_v16.py -v
+    python -m unittest discover -s experiments/miniature_lab -p test_pose_recalibration.py -v
+    python experiments/miniature_lab/pose_recalibration.py
+
+The Python test files are committed but **could not be run in the
+current local sandbox**, which does not have a live Git checkout.
+The independent JS voxel/attachment audit passed. Godot 4.5 engine
+tests and CI are separate checks, not claimed passing here. No files
+outside experiments/miniature_lab/ are changed.
