@@ -61,35 +61,35 @@
                 "at": 25,
                 "polygon": [
                   [
-                    -2.92958,
+                    -3.2225,
                     -3.95597
                   ],
                   [
-                    -2.19852,
+                    -2.4184,
                     -5.93327
                   ],
                   [
-                    1.42853,
+                    1.5714,
                     -5.93327
                   ],
                   [
-                    3.6029,
+                    3.9632,
                     -3.95597
                   ],
                   [
-                    3.6029,
+                    3.9632,
                     2.84596
                   ],
                   [
-                    1.42853,
+                    1.5714,
                     5.2575
                   ],
                   [
-                    -2.92958,
+                    -3.2225,
                     5.2575
                   ],
                   [
-                    -4.3729,
+                    -4.8102,
                     1.89684
                   ]
                 ]
@@ -98,35 +98,35 @@
                 "at": 32,
                 "polygon": [
                   [
-                    -4.77582,
+                    -5.2534,
                     -5.94507
                   ],
                   [
-                    -3.19007,
+                    -3.5091,
                     -9.89967
                   ],
                   [
-                    3.15294,
+                    3.4682,
                     -9.89967
                   ],
                   [
-                    4.73871,
+                    5.2126,
                     -6.93373
                   ],
                   [
-                    5.53158,
+                    6.0847,
                     1.66939
                   ],
                   [
-                    3.15294,
+                    3.4682,
                     6.2969
                   ],
                   [
-                    -3.19007,
+                    -3.5091,
                     6.2969
                   ],
                   [
-                    -6.36158,
+                    -6.9977,
                     1.66939
                   ]
                 ]
@@ -135,35 +135,35 @@
                 "at": 39,
                 "polygon": [
                   [
-                    -5.79893,
+                    -6.3788,
                     -7.92805
                   ],
                   [
-                    -3.31787,
+                    -3.6497,
                     -10.894
                   ],
                   [
-                    3.31152,
+                    3.6427,
                     -10.894
                   ],
                   [
-                    6.61627,
+                    7.2779,
                     -6.93939
                   ],
                   [
-                    6.61627,
+                    7.2779,
                     2.51411
                   ],
                   [
-                    3.31152,
+                    3.6427,
                     6.2647
                   ],
                   [
-                    -4.97523,
+                    -5.4728,
                     6.2647
                   ],
                   [
-                    -7.45627,
+                    -8.2019,
                     1.6296
                   ]
                 ]
@@ -172,35 +172,35 @@
                 "at": 44,
                 "polygon": [
                   [
-                    -3.03102,
+                    -3.3341,
                     -4.95597
                   ],
                   [
-                    -1.51261,
+                    -1.6639,
                     -7.92191
                   ],
                   [
-                    2.28837,
+                    2.5172,
                     -7.92191
                   ],
                   [
-                    3.80678,
+                    4.1875,
                     -4.95597
                   ],
                   [
-                    4.56102,
+                    5.0171,
                     2.8346
                   ],
                   [
-                    2.28837,
+                    2.5172,
                     5.2483
                   ],
                   [
-                    -3.03102,
+                    -3.3341,
                     5.2483
                   ],
                   [
-                    -3.03102,
+                    -3.3341,
                     0.46184
                   ]
                 ]
@@ -1857,21 +1857,6 @@
               4
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -7,
-              29,
-              -1
-            ],
-            [
-              -6,
-              31,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "pivot": [
@@ -2243,36 +2228,6 @@
               6,
               41,
               -4
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              5,
-              30,
-              -4
-            ],
-            [
-              6,
-              32,
-              -2
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              4,
-              30,
-              -4
-            ],
-            [
-              6,
-              32,
-              -2
             ]
           ],
           "mat": "frame"
@@ -4179,36 +4134,6 @@
               -4
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -13,
-              28,
-              -1
-            ],
-            [
-              -12,
-              30,
-              1
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -13,
-              28,
-              -1
-            ],
-            [
-              -11,
-              30,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "pivot": [
@@ -5232,21 +5157,6 @@
               2
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -6,
-              24,
-              -1
-            ],
-            [
-              -4,
-              26,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "pivot": [
@@ -5788,21 +5698,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -9,
-              3,
-              -1
-            ],
-            [
-              -7,
-              4,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "pivot": [
@@ -6256,7 +6151,7 @@
     "reference_basis": "Catalyst current plastic sculpt lineup",
     "review_status": "pending Godot source connectivity and render"
   },
-  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only.",
   "pass1": {
     "changes": [
       "Chamfered large missile launcher housing, preserve existing face",
@@ -6421,19 +6316,285 @@
       ]
     }
   },
-  "pass2": {
-    "repairs": [
-      "lt → ct: local structural sleeve (gap 1)",
-      "rt → ct: local structural sleeve (gap 1)",
-      "la → lt: local structural sleeve (gap 1)",
-      "ll → ct: local structural sleeve (gap 2)",
-      "ll_foot → ll_shin: local structural sleeve (gap 1)"
+  "experimental_photo_fit": {
+    "method": "Approximate manually traced visible part bounds; per-view orthographic camera and articulated pose; geometry changes gated by neutral voxel connectivity penalty. Not pixel-mask IoU; not a multi-angle validated plastic match.",
+    "references": [
+      {
+        "url": "https://i.pinimg.com/736x/dc/41/f4/dc41f4ecfcff5e3df26307c0dc9b8ee9.jpg",
+        "quality": "modern painted TDR-5S; round launcher, strongly oblique",
+        "baseline_rmse": 21.963922593445208,
+        "refined_rmse": 21.505541612061,
+        "parameters": {
+          "yaw": -16,
+          "pitch": 7,
+          "roll": -8,
+          "la": -11,
+          "ra": -20,
+          "ll": 7,
+          "rl": -2,
+          "ll_shin": -23,
+          "rl_shin": 30,
+          "laSpread": -30,
+          "raSpread": 34,
+          "llSpread": -10,
+          "rlSpread": 2
+        },
+        "swap_bilateral": false,
+        "scale": 8.168905696580476,
+        "dx": 298.10792354608736,
+        "dy": 425.23987994796767,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              213,
+              112,
+              270,
+              187
+            ],
+            "projected": [
+              205.0174274497803,
+              69.41400169865182,
+              263.598691077,
+              141.59425437563112
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              177,
+              66,
+              356,
+              237
+            ],
+            "projected": [
+              184.72414193140355,
+              65.27272431536221,
+              307.43494381933544,
+              236.2656283094178
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "lt",
+            "target": [
+              117,
+              79,
+              181,
+              179
+            ],
+            "projected": [
+              129.62841839093903,
+              71.7829110395669,
+              221.16701048448454,
+              207.791831194223
+            ]
+          },
+          {
+            "part": "rt",
+            "model": "rt",
+            "target": [
+              343,
+              40,
+              414,
+              141
+            ],
+            "projected": [
+              291.70620335825436,
+              58.84426824303131,
+              384.86051960949186,
+              179.85682857281157
+            ]
+          },
+          {
+            "part": "rt_rack",
+            "model": "rt_rack",
+            "target": [
+              248,
+              27,
+              344,
+              117
+            ],
+            "projected": [
+              280.47554408754297,
+              36.793063942030074,
+              381.2082287204847,
+              138.84414858654242
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              79,
+              151,
+              144,
+              337
+            ],
+            "projected": [
+              83.25723998831052,
+              165.8190153872365,
+              177.94699652803394,
+              329.64622361453246
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              365,
+              128,
+              463,
+              282
+            ],
+            "projected": [
+              352.3061242376712,
+              140.85526904301759,
+              461.20824552692875,
+              282.1191241972924
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              167,
+              217,
+              247,
+              310
+            ],
+            "projected": [
+              159.88256489294548,
+              229.59647345983558,
+              235.07969167202035,
+              322.55431077972656
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              282,
+              215,
+              356,
+              308
+            ],
+            "projected": [
+              300.4776092029575,
+              214.5064281042156,
+              378.02959797787275,
+              314.8966996495234
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "ll_shin",
+            "target": [
+              150,
+              309,
+              248,
+              417
+            ],
+            "projected": [
+              156.43634699559433,
+              304.1062778167717,
+              231.0750010736238,
+              413.4902464140039
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "rl_shin",
+            "target": [
+              292,
+              294,
+              380,
+              389
+            ],
+            "projected": [
+              292.4663673349336,
+              277.590043068662,
+              383.4830723146451,
+              393.12706697696257
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "ll_foot",
+            "target": [
+              148,
+              393,
+              234,
+              477
+            ],
+            "projected": [
+              150.562884987595,
+              391.758506687755,
+              246.58262984284818,
+              460.28896084549893
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "rl_foot",
+            "target": [
+              310,
+              365,
+              390,
+              412
+            ],
+            "projected": [
+              287.9674335446485,
+              370.8045048217208,
+              393.01886218302576,
+              429.01431662025925
+            ]
+          }
+        ]
+      }
     ],
-    "audit": {
-      "voxels": 11049,
-      "islands": [],
-      "parts": [],
-      "weak": []
+    "changes": [
+      {
+        "part": "ct",
+        "axis": "x",
+        "factor": 1.1
+      }
+    ],
+    "validation": {
+      "cells": 11232,
+      "whole_components": [
+        11232
+      ],
+      "issues": [
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 0
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ],
+      "penalty": 20
     }
   }
 }
