@@ -1,0 +1,3767 @@
+{
+  "id": "hunchback_experimental_batch03_p4",
+  "name": "Hunchback HBK-4G",
+  "unit": "hunchback_hbk4g",
+  "voxel_size": 0.05,
+  "subdivide": 2,
+  "legs": "plantigrade",
+  "notes": "All coordinates are voxel cells in one shared model grid: x right, y up, -z front. Pivots are joint points in the same grid.",
+  "materials": [
+    {
+      "name": "armor",
+      "color": "6b7a55",
+      "role": "armor"
+    },
+    {
+      "name": "plate",
+      "color": "8d9a74",
+      "role": "armor"
+    },
+    {
+      "name": "trim",
+      "color": "c9a45c",
+      "role": "armor"
+    },
+    {
+      "name": "gun",
+      "color": "3d4147",
+      "role": "armor"
+    },
+    {
+      "name": "glow",
+      "color": "7fd8ff",
+      "role": "armor"
+    },
+    {
+      "name": "frame",
+      "color": "7c8188",
+      "role": "structure"
+    },
+    {
+      "name": "joint",
+      "color": "8f959e",
+      "role": "structure"
+    }
+  ],
+  "parts": [
+    {
+      "name": "ct",
+      "loc": "CT",
+      "pivot": [
+        0,
+        19,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 19,
+                "polygon": [
+                  [
+                    -2.9,
+                    -4
+                  ],
+                  [
+                    2.4,
+                    -4
+                  ],
+                  [
+                    4,
+                    -2.4
+                  ],
+                  [
+                    4,
+                    2.4
+                  ],
+                  [
+                    2.4,
+                    4
+                  ],
+                  [
+                    -2.9,
+                    4
+                  ],
+                  [
+                    -4.5,
+                    2.4
+                  ],
+                  [
+                    -4.5,
+                    -2.4
+                  ]
+                ]
+              },
+              {
+                "at": 24,
+                "polygon": [
+                  [
+                    -4,
+                    -5
+                  ],
+                  [
+                    3.5,
+                    -5
+                  ],
+                  [
+                    5.5,
+                    -3
+                  ],
+                  [
+                    5.5,
+                    3
+                  ],
+                  [
+                    3.5,
+                    5
+                  ],
+                  [
+                    -4,
+                    5
+                  ],
+                  [
+                    -6,
+                    3
+                  ],
+                  [
+                    -6,
+                    -3
+                  ]
+                ]
+              },
+              {
+                "at": 29,
+                "polygon": [
+                  [
+                    -4.2,
+                    -4.5
+                  ],
+                  [
+                    3.7,
+                    -4.5
+                  ],
+                  [
+                    5.5,
+                    -2.7
+                  ],
+                  [
+                    5.5,
+                    2.7
+                  ],
+                  [
+                    3.7,
+                    4.5
+                  ],
+                  [
+                    -4.2,
+                    4.5
+                  ],
+                  [
+                    -6,
+                    2.7
+                  ],
+                  [
+                    -6,
+                    -2.7
+                  ]
+                ]
+              },
+              {
+                "at": 31,
+                "polygon": [
+                  [
+                    -2.8800000000000003,
+                    -3.8
+                  ],
+                  [
+                    2.48,
+                    -3.8
+                  ],
+                  [
+                    4,
+                    -2.28
+                  ],
+                  [
+                    4,
+                    2.28
+                  ],
+                  [
+                    2.48,
+                    3.8
+                  ],
+                  [
+                    -2.8800000000000003,
+                    3.8
+                  ],
+                  [
+                    -4.4,
+                    2.28
+                  ],
+                  [
+                    -4.4,
+                    -2.28
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -3,
+              21,
+              -5
+            ],
+            [
+              2,
+              27,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -2,
+              22,
+              -6
+            ],
+            [
+              1,
+              25,
+              -6
+            ]
+          ],
+          "mat": "trim"
+        },
+        {
+          "box": [
+            [
+              -2,
+              21,
+              5
+            ],
+            [
+              1,
+              27,
+              5
+            ]
+          ],
+          "mat": "gun"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "hd",
+      "loc": "HD",
+      "parent": "ct",
+      "pivot": [
+        0,
+        30,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 30,
+                "polygon": [
+                  [
+                    -0.5,
+                    -6
+                  ],
+                  [
+                    2.5,
+                    -6
+                  ],
+                  [
+                    3.5,
+                    -5
+                  ],
+                  [
+                    3.5,
+                    -1
+                  ],
+                  [
+                    2.5,
+                    0
+                  ],
+                  [
+                    -0.5,
+                    0
+                  ],
+                  [
+                    -1.5,
+                    -1
+                  ],
+                  [
+                    -1.5,
+                    -5
+                  ]
+                ]
+              },
+              {
+                "at": 32,
+                "polygon": [
+                  [
+                    -0.8,
+                    -7
+                  ],
+                  [
+                    2.8,
+                    -7
+                  ],
+                  [
+                    4,
+                    -5.8
+                  ],
+                  [
+                    4,
+                    -1.2000000000000002
+                  ],
+                  [
+                    2.8,
+                    0
+                  ],
+                  [
+                    -0.8,
+                    0
+                  ],
+                  [
+                    -2,
+                    -1.2000000000000002
+                  ],
+                  [
+                    -2,
+                    -5.8
+                  ]
+                ]
+              },
+              {
+                "at": 35,
+                "polygon": [
+                  [
+                    -0.2,
+                    -5
+                  ],
+                  [
+                    2.2,
+                    -5
+                  ],
+                  [
+                    3,
+                    -4.2
+                  ],
+                  [
+                    3,
+                    -0.8
+                  ],
+                  [
+                    2.2,
+                    0
+                  ],
+                  [
+                    -0.2,
+                    0
+                  ],
+                  [
+                    -1,
+                    -0.8
+                  ],
+                  [
+                    -1,
+                    -4.2
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              0,
+              31,
+              -7
+            ],
+            [
+              3,
+              33,
+              -7
+            ]
+          ],
+          "mat": "glow"
+        },
+        {
+          "box": [
+            [
+              1,
+              30,
+              -8
+            ],
+            [
+              2,
+              30,
+              -7
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -1,
+              35,
+              -4
+            ],
+            [
+              0,
+              36,
+              -3
+            ]
+          ],
+          "mat": "trim"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "lt",
+      "loc": "LT",
+      "parent": "ct",
+      "pivot": [
+        0,
+        19,
+        0
+      ],
+      "shapes": [
+        {
+          "shell": [
+            [
+              -10,
+              20,
+              -4
+            ],
+            [
+              -5,
+              29,
+              4
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -10,
+              23,
+              -5
+            ],
+            [
+              -6,
+              28,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -11,
+              21,
+              -3
+            ],
+            [
+              -11,
+              27,
+              3
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -9,
+              21,
+              5
+            ],
+            [
+              -6,
+              25,
+              5
+            ]
+          ],
+          "mat": "gun"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "rt",
+      "mirror": "lt",
+      "parent": "ct",
+      "add": [],
+      "pivot": [
+        -1,
+        19,
+        0
+      ]
+    },
+    {
+      "name": "la",
+      "loc": "LA",
+      "parent": "lt",
+      "pivot": [
+        -12,
+        28,
+        0
+      ],
+      "joint": "shoulder",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -15,
+              25,
+              -4
+            ],
+            [
+              -11,
+              29,
+              4
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -14,
+              21,
+              -2
+            ],
+            [
+              -12,
+              24,
+              2
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "shell": [
+            [
+              -15,
+              16,
+              -3
+            ],
+            [
+              -11,
+              20,
+              3
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -14,
+              14,
+              -2
+            ],
+            [
+              -12,
+              15,
+              1
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -14,
+              17,
+              -8
+            ],
+            [
+              -13,
+              18,
+              -4
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -14,
+              17,
+              -9
+            ],
+            [
+              -13,
+              18,
+              -9
+            ]
+          ],
+          "mat": "glow"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "ra",
+      "mirror": "la",
+      "parent": "rt",
+      "pivot": [
+        11,
+        28,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "ll",
+      "loc": "LL",
+      "pivot": [
+        -5,
+        19,
+        0
+      ],
+      "joint": "hip",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -8,
+              12,
+              -3
+            ],
+            [
+              -3,
+              18,
+              3
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -8,
+              17,
+              -4
+            ],
+            [
+              -3,
+              18,
+              4
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -5,
+              18,
+              -1
+            ],
+            [
+              -3,
+              19,
+              1
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "ll_shin",
+      "loc": "LL",
+      "parent": "ll",
+      "pivot": [
+        -5,
+        12,
+        0
+      ],
+      "joint": "knee",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -8,
+              3,
+              -3
+            ],
+            [
+              -3,
+              11,
+              3
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -8,
+              8,
+              -4
+            ],
+            [
+              -3,
+              11,
+              -4
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -7,
+              4,
+              4
+            ],
+            [
+              -4,
+              8,
+              4
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -6,
+              11,
+              -1
+            ],
+            [
+              -4,
+              12,
+              1
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "ll_foot",
+      "loc": "LL",
+      "parent": "ll_shin",
+      "pivot": [
+        -5,
+        3,
+        0
+      ],
+      "joint": "ankle",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -8,
+              0,
+              -8
+            ],
+            [
+              -3,
+              2,
+              3
+            ]
+          ],
+          "mat": "plate",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -8,
+              0,
+              -9
+            ],
+            [
+              -3,
+              1,
+              -9
+            ]
+          ],
+          "mat": "trim"
+        },
+        {
+          "box": [
+            [
+              -6,
+              2,
+              -1
+            ],
+            [
+              -4,
+              3,
+              1
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "rl",
+      "mirror": "ll",
+      "pivot": [
+        4,
+        19,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "rl_shin",
+      "mirror": "ll_shin",
+      "parent": "rl",
+      "pivot": [
+        4,
+        12,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "rl_foot",
+      "mirror": "ll_foot",
+      "parent": "rl_shin",
+      "pivot": [
+        4,
+        3,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "rt_hunch",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        8,
+        28,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 26.12,
+                "polygon": [
+                  [
+                    5.2,
+                    -4
+                  ],
+                  [
+                    8.8,
+                    -4
+                  ],
+                  [
+                    10,
+                    -2.8
+                  ],
+                  [
+                    10,
+                    2.8
+                  ],
+                  [
+                    8.8,
+                    4
+                  ],
+                  [
+                    5.2,
+                    4
+                  ],
+                  [
+                    4,
+                    2.8
+                  ],
+                  [
+                    4,
+                    -2.8
+                  ]
+                ]
+              },
+              {
+                "at": 30.42,
+                "polygon": [
+                  [
+                    5.92,
+                    -5.8
+                  ],
+                  [
+                    10.48,
+                    -5.8
+                  ],
+                  [
+                    12,
+                    -4.279999999999999
+                  ],
+                  [
+                    12,
+                    3.48
+                  ],
+                  [
+                    10.48,
+                    5
+                  ],
+                  [
+                    5.92,
+                    5
+                  ],
+                  [
+                    4.4,
+                    3.48
+                  ],
+                  [
+                    4.4,
+                    -4.279999999999999
+                  ]
+                ]
+              },
+              {
+                "at": 35.58,
+                "polygon": [
+                  [
+                    6.4,
+                    -5.5
+                  ],
+                  [
+                    10.6,
+                    -5.5
+                  ],
+                  [
+                    12,
+                    -4.1
+                  ],
+                  [
+                    12,
+                    3.0999999999999996
+                  ],
+                  [
+                    10.6,
+                    4.5
+                  ],
+                  [
+                    6.4,
+                    4.5
+                  ],
+                  [
+                    5,
+                    3.0999999999999996
+                  ],
+                  [
+                    5,
+                    -4.1
+                  ]
+                ]
+              },
+              {
+                "at": 39.02,
+                "polygon": [
+                  [
+                    7,
+                    -4.1
+                  ],
+                  [
+                    10,
+                    -4.1
+                  ],
+                  [
+                    11,
+                    -3.0999999999999996
+                  ],
+                  [
+                    11,
+                    2.8
+                  ],
+                  [
+                    10,
+                    3.8
+                  ],
+                  [
+                    7,
+                    3.8
+                  ],
+                  [
+                    6,
+                    2.8
+                  ],
+                  [
+                    6,
+                    -3.0999999999999996
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -14,
+                "polygon": [
+                  [
+                    6.82,
+                    31.28
+                  ],
+                  [
+                    10.18,
+                    31.28
+                  ],
+                  [
+                    11.5,
+                    32.4152
+                  ],
+                  [
+                    11.5,
+                    35.3048
+                  ],
+                  [
+                    10.18,
+                    36.44
+                  ],
+                  [
+                    6.82,
+                    36.44
+                  ],
+                  [
+                    5.5,
+                    35.3048
+                  ],
+                  [
+                    5.5,
+                    32.4152
+                  ]
+                ]
+              },
+              {
+                "at": -10,
+                "polygon": [
+                  [
+                    6.19,
+                    30.42
+                  ],
+                  [
+                    10.81,
+                    30.42
+                  ],
+                  [
+                    12,
+                    31.4434
+                  ],
+                  [
+                    12,
+                    36.2766
+                  ],
+                  [
+                    10.81,
+                    37.3
+                  ],
+                  [
+                    6.19,
+                    37.3
+                  ],
+                  [
+                    5,
+                    36.2766
+                  ],
+                  [
+                    5,
+                    31.4434
+                  ]
+                ]
+              },
+              {
+                "at": -4,
+                "polygon": [
+                  [
+                    5.86,
+                    29.99
+                  ],
+                  [
+                    11.14,
+                    29.99
+                  ],
+                  [
+                    12.5,
+                    31.1596
+                  ],
+                  [
+                    12.5,
+                    36.1304
+                  ],
+                  [
+                    11.14,
+                    37.3
+                  ],
+                  [
+                    5.86,
+                    37.3
+                  ],
+                  [
+                    4.5,
+                    36.1304
+                  ],
+                  [
+                    4.5,
+                    31.1596
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "gun"
+        },
+        {
+          "erase": [
+            [
+              7,
+              33,
+              -14
+            ],
+            [
+              9,
+              35,
+              -12
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              5,
+              27,
+              -2
+            ],
+            [
+              8,
+              29,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    }
+  ],
+  "muzzles": {
+    "RT": [
+      7,
+      33,
+      -14
+    ],
+    "LA": [
+      -13,
+      18,
+      -9
+    ],
+    "RA": [
+      13,
+      18,
+      -9
+    ],
+    "HD": [
+      0,
+      30.5,
+      -8
+    ]
+  },
+  "weapons": [
+    {
+      "label": "AC/20",
+      "locs": [
+        "RT"
+      ],
+      "kind": "cannon"
+    },
+    {
+      "label": "LASERS",
+      "locs": [
+        "LA",
+        "RA",
+        "HD"
+      ],
+      "kind": "laser"
+    }
+  ],
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "pass1": {
+    "changes": [
+      "Tapered compact torso and helmet",
+      "Independent asymmetric right-shoulder AC/20 hunch"
+    ],
+    "rejected": [
+      {
+        "rejected": "Polygonal upper and lower limbs",
+        "a": {
+          "voxels": 5992,
+          "islands": [],
+          "parts": [],
+          "weak": [
+            {
+              "part": "la",
+              "parent": "lt",
+              "overlap": 0
+            },
+            {
+              "part": "ra",
+              "parent": "rt",
+              "overlap": 0
+            },
+            {
+              "part": "ll",
+              "parent": "ct",
+              "overlap": 0
+            },
+            {
+              "part": "ll_shin",
+              "parent": "ll",
+              "overlap": 0
+            },
+            {
+              "part": "ll_foot",
+              "parent": "ll_shin",
+              "overlap": 0
+            },
+            {
+              "part": "rl",
+              "parent": "ct",
+              "overlap": 0
+            },
+            {
+              "part": "rl_shin",
+              "parent": "rl",
+              "overlap": 0
+            },
+            {
+              "part": "rl_foot",
+              "parent": "rl_shin",
+              "overlap": 0
+            }
+          ]
+        }
+      }
+    ],
+    "baseline_audit": {
+      "voxels": 6105,
+      "islands": [],
+      "parts": [],
+      "weak": [
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ]
+    },
+    "audit": {
+      "voxels": 6302,
+      "islands": [],
+      "parts": [],
+      "weak": [
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ]
+    }
+  },
+  "pass2": {
+    "repairs": [
+      "ll → ct: local structural sleeve (gap 1)",
+      "ll_shin → ll: local structural sleeve (gap 1)",
+      "ll_foot → ll_shin: local structural sleeve (gap 1)"
+    ],
+    "audit": {
+      "voxels": 6308,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    }
+  },
+  "experimental_photo_fit": {
+    "method": "Manually traced visible component bounds; independently optimized orthographic pose/camera; no pixel IoU claim.",
+    "references": [
+      {
+        "url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190402_Final_1200x1200.jpg?v=1708317528",
+        "quality": "unpainted Catalyst Urban Lance HBK-4G",
+        "baseline_rmse": 38.85433394910362,
+        "refined_rmse": 38.85433394910362,
+        "parameters": {
+          "yaw": -51,
+          "pitch": -1,
+          "roll": 3,
+          "la": 30,
+          "ra": -30,
+          "ll": -30,
+          "rl": 19,
+          "ll_shin": -6,
+          "rl_shin": -12,
+          "laSpread": -22,
+          "raSpread": 30,
+          "llSpread": 25,
+          "rlSpread": -18
+        },
+        "swap_bilateral": true,
+        "scale": 8.497070928416969,
+        "dx": 267.34104387938817,
+        "dy": 375.0205902885913,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              226,
+              51,
+              294,
+              119
+            ],
+            "projected": [
+              219.40438963546075,
+              67.34228307406983,
+              280.770538570383,
+              120.05778641974703
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              193,
+              98,
+              341,
+              209
+            ],
+            "projected": [
+              223.2356556951535,
+              118.41185661626685,
+              317.6399127769615,
+              215.46798137774317
+            ]
+          },
+          {
+            "part": "rt_hunch",
+            "model": "rt_hunch",
+            "target": [
+              170,
+              35,
+              240,
+              139
+            ],
+            "projected": [
+              213.1148135919022,
+              60.34109604394479,
+              365.40048296399436,
+              157.83601617795765
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "rt",
+            "target": [
+              337,
+              87,
+              389,
+              150
+            ],
+            "projected": [
+              209.81099021023496,
+              59.846780515138676,
+              363.1668420492653,
+              208.5760460342838
+            ]
+          },
+          {
+            "part": "la",
+            "model": "ra",
+            "target": [
+              366,
+              124,
+              433,
+              213
+            ],
+            "projected": [
+              310.21850578973783,
+              106.98569191242126,
+              430.1568805234482,
+              239.10103137493266
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "la",
+            "target": [
+              119,
+              115,
+              195,
+              237
+            ],
+            "projected": [
+              106.31647169908354,
+              101.82573477542678,
+              243.81114572714682,
+              231.32441537110907
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "rl",
+            "target": [
+              190,
+              205,
+              256,
+              292
+            ],
+            "projected": [
+              241.8639710077625,
+              204.26138246241538,
+              330.1273193941562,
+              283.96033716380276
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "ll",
+            "target": [
+              292,
+              191,
+              358,
+              273
+            ],
+            "projected": [
+              219.74774821371994,
+              199.06682652070754,
+              307.77747856855245,
+              282.37656917549464
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "rl_shin",
+            "target": [
+              191,
+              277,
+              261,
+              388
+            ],
+            "projected": [
+              213.9038461249207,
+              262.35801435014383,
+              299.26425014622356,
+              350.26508395708663
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "ll_shin",
+            "target": [
+              294,
+              264,
+              361,
+              341
+            ],
+            "projected": [
+              256.6919080828447,
+              248.6155100112797,
+              354.53723541804953,
+              343.30974829141627
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "rl_foot",
+            "target": [
+              191,
+              365,
+              264,
+              433
+            ],
+            "projected": [
+              167.59107430986091,
+              328.73820498582495,
+              273.50176010540537,
+              373.9792823591742
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "ll_foot",
+            "target": [
+              283,
+              318,
+              352,
+              355
+            ],
+            "projected": [
+              288.10796336003074,
+              307.4303004528288,
+              370.66244216026894,
+              388.14802400760055
+            ]
+          }
+        ]
+      }
+    ],
+    "changes": [],
+    "validation": {
+      "cells": 6308,
+      "whole_components": [
+        6308
+      ],
+      "issues": [],
+      "penalty": 0
+    },
+    "baseline_audit": {
+      "cells": 6308,
+      "whole_components": [
+        6308
+      ],
+      "issues": [],
+      "penalty": 0
+    }
+  },
+  "experimental_reconstruction": {
+    "pass": 3,
+    "notes": [
+      "Raised asymmetric AC/20 hunch with actual bore; removed redundant right torso overlay; broader center chest."
+    ],
+    "source": "p2",
+    "repair": [],
+    "validation": {
+      "cells": 6436,
+      "whole": [
+        6436
+      ],
+      "parts": [
+        {
+          "part": "ct",
+          "components": [
+            1196
+          ]
+        },
+        {
+          "part": "hd",
+          "components": [
+            188
+          ]
+        },
+        {
+          "part": "lt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "rt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "la",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ra",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ll",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "ll_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "ll_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rl",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "rl_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "rl_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rt_hunch",
+          "components": [
+            1377
+          ]
+        }
+      ],
+      "joints": [
+        {
+          "part": "hd",
+          "parent": "ct",
+          "overlap": 39,
+          "contact": 240
+        },
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 121,
+          "contact": 719
+        },
+        {
+          "part": "rt",
+          "parent": "ct",
+          "overlap": 68,
+          "contact": 415
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 9,
+          "contact": 59
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 6,
+          "contact": 44
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rt_hunch",
+          "parent": "rt",
+          "overlap": 258,
+          "contact": 1478
+        }
+      ],
+      "pass": true
+    },
+    "limitations": "Neutral low-resolution geometry audit, not Godot runtime or completed photographic multi-view match. P2 fit parameters are stale until P3 is refitted."
+  },
+  "experimental_photo_fit_p3": {
+    "method": "Camera pose and articulation refitted separately to each annotated view; projected polygon overlap and occlusion-aware visible voxel region IoU. Approximate manual outlines, not camera metrology.",
+    "references": [
+      {
+        "url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190402_Final_1200x1200.jpg?v=1708317528",
+        "quality": "unpainted Catalyst Urban Lance HBK-4G",
+        "verified_preview": false,
+        "rmse": 32.73480378222441,
+        "hull_iou": 0.2989115082891432,
+        "visible_iou": 0.26594813405224704,
+        "parameters": {
+          "yaw": 26,
+          "pitch": 0,
+          "roll": 0,
+          "la": -14,
+          "ra": 0,
+          "ll": 18,
+          "rl": -32,
+          "ll_shin": -10,
+          "rl_shin": 0,
+          "laSpread": -36,
+          "raSpread": 7,
+          "llSpread": 25,
+          "rlSpread": -25
+        },
+        "flip": true,
+        "swap": false,
+        "scale": 8.675843576376833,
+        "dx": 273.19482826211987,
+        "dy": 380.42007154479774,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              226,
+              51,
+              294,
+              119
+            ],
+            "projected": [
+              230.9765586704064,
+              59.413859218854896,
+              300.58277497646236,
+              120.14476425349272
+            ],
+            "iou": 0.6376995572995271,
+            "hull": [
+              [
+                230.9765586704064,
+                85.44138994798544
+              ],
+              [
+                238.58303766628433,
+                76.7655463716086
+              ],
+              [
+                246.38083421935468,
+                68.08970279523174
+              ],
+              [
+                281.3752599295751,
+                59.413859218854896
+              ],
+              [
+                288.98173892545304,
+                59.413859218854896
+              ],
+              [
+                292.78497842339203,
+                68.08970279523174
+              ],
+              [
+                300.58277497646236,
+                102.79307710073908
+              ],
+              [
+                296.58821792133097,
+                120.14476425349272
+              ],
+              [
+                234.9711157255378,
+                120.14476425349272
+              ],
+              [
+                230.9765586704064,
+                111.46892067711593
+              ]
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              193,
+              98,
+              341,
+              209
+            ],
+            "projected": [
+              218.99288750501216,
+              102.79307710073908,
+              335.19456557229796,
+              215.57904359363792
+            ],
+            "iou": 0.7012484891686063,
+            "hull": [
+              [
+                218.99288750501216,
+                120.14476425349272
+              ],
+              [
+                222.79612700295112,
+                111.46892067711593
+              ],
+              [
+                230.5939235560215,
+                102.79307710073908
+              ],
+              [
+                315.7957329682182,
+                102.79307710073908
+              ],
+              [
+                331.391326074359,
+                120.14476425349272
+              ],
+              [
+                335.19456557229796,
+                172.19982571175376
+              ],
+              [
+                323.5935295212886,
+                206.90320001726107
+              ],
+              [
+                319.79029002334966,
+                215.57904359363792
+              ],
+              [
+                230.5939235560215,
+                215.57904359363792
+              ],
+              [
+                222.79612700295112,
+                198.22735644088425
+              ],
+              [
+                218.99288750501216,
+                180.87566928813058
+              ]
+            ]
+          },
+          {
+            "part": "rt_hunch",
+            "model": "rt_hunch",
+            "target": [
+              170,
+              35,
+              240,
+              139
+            ],
+            "projected": [
+              130.1791561520689,
+              24.710484913347614,
+              257.21660004159423,
+              163.5239821353769
+            ],
+            "iou": 0.4261487924819871,
+            "hull": [
+              [
+                130.1791561520689,
+                102.79307710073908
+              ],
+              [
+                134.17371320720034,
+                59.413859218854896
+              ],
+              [
+                172.20610818658994,
+                24.710484913347614
+              ],
+              [
+                237.81776743751453,
+                24.710484913347614
+              ],
+              [
+                245.61556399058492,
+                42.062172066101255
+              ],
+              [
+                257.21660004159423,
+                128.82060782986957
+              ],
+              [
+                253.41336054365527,
+                163.5239821353769
+              ],
+              [
+                183.8071442375993,
+                163.5239821353769
+              ],
+              [
+                134.17371320720034,
+                111.46892067711593
+              ]
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "lt",
+            "target": [
+              337,
+              87,
+              389,
+              150
+            ],
+            "projected": [
+              289.1730564826455,
+              120.14476425349272,
+              374.18354833764977,
+              206.90320001726107
+            ],
+            "iou": 0.07131417415669394,
+            "hull": [
+              [
+                289.1730564826455,
+                120.14476425349272
+              ],
+              [
+                370.1889912825184,
+                120.14476425349272
+              ],
+              [
+                374.18354833764977,
+                198.22735644088425
+              ],
+              [
+                370.1889912825184,
+                206.90320001726107
+              ],
+              [
+                289.1730564826455,
+                206.90320001726107
+              ]
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              366,
+              124,
+              433,
+              213
+            ],
+            "projected": [
+              333.0908084929197,
+              100.0868919620944,
+              460.42820792747005,
+              241.33782576819428
+            ],
+            "iou": 0.34070994520838993,
+            "hull": [
+              [
+                333.0908084929197,
+                140.86679748158485
+              ],
+              [
+                364.63355814348125,
+                115.36913295463143
+              ],
+              [
+                387.8664731600193,
+                100.0868919620944
+              ],
+              [
+                414.70331950619374,
+                134.1389590701873
+              ],
+              [
+                460.42820792747005,
+                197.13070664170309
+              ],
+              [
+                459.69152653215235,
+                219.24711994422802
+              ],
+              [
+                440.7658767418154,
+                234.54571866040007
+              ],
+              [
+                430.4401367344652,
+                241.33782576819428
+              ],
+              [
+                410.8154132640455,
+                234.5145586072964
+              ],
+              [
+                402.5765338440099,
+                227.69324003658775
+              ],
+              [
+                359.9276548390941,
+                174.91886458967775
+              ]
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              119,
+              115,
+              195,
+              237
+            ],
+            "projected": [
+              119.51745601157353,
+              116.04482365774135,
+              216.07556131993178,
+              258.05290356189516
+            ],
+            "iou": 0.3209260508239246,
+            "hull": [
+              [
+                119.51745601157353,
+                229.047420019554
+              ],
+              [
+                143.1480410383213,
+                116.04482365774135
+              ],
+              [
+                177.37719651977199,
+                116.04482365774135
+              ],
+              [
+                216.07556131993178,
+                121.33142045843539
+              ],
+              [
+                211.32399959028373,
+                164.38729622830996
+              ],
+              [
+                198.9679489789783,
+                241.88787261408413
+              ],
+              [
+                181.72117233120923,
+                258.05290356189516
+              ],
+              [
+                166.50821433945336,
+                258.05290356189516
+              ],
+              [
+                143.28919545935747,
+                254.88094548147873
+              ]
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              190,
+              205,
+              256,
+              292
+            ],
+            "projected": [
+              253.01975277613988,
+              194.67139519982217,
+              346.37908681235035,
+              288.6449359887981
+            ],
+            "iou": 0.00011189524235395555,
+            "hull": [
+              [
+                253.01975277613988,
+                249.63694534162124
+              ],
+              [
+                271.96834007259673,
+                209.81643580549922
+              ],
+              [
+                280.5872681569037,
+                194.86015033727224
+              ],
+              [
+                292.69293094198895,
+                194.67139519982217
+              ],
+              [
+                313.89454215531464,
+                205.67110499396995
+              ],
+              [
+                346.37908681235035,
+                238.72773271555806
+              ],
+              [
+                337.7601587280434,
+                253.68401818378507
+              ],
+              [
+                313.61410560296537,
+                288.6449359887981
+              ],
+              [
+                271.21088317631404,
+                266.6455164005026
+              ]
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              292,
+              191,
+              358,
+              273
+            ],
+            "projected": [
+              207.81888417716968,
+              187.41216868151164,
+              295.7250069949588,
+              289.4228881445243
+            ],
+            "iou": 0.0015668837652444262,
+            "hull": [
+              [
+                207.81888417716968,
+                246.91231135865712
+              ],
+              [
+                209.29786990756162,
+                242.7455643487849
+              ],
+              [
+                221.12975575069726,
+                209.4115882698072
+              ],
+              [
+                263.5329781773486,
+                187.41216868151164
+              ],
+              [
+                273.15326804820637,
+                200.74854690886576
+              ],
+              [
+                295.7250069949588,
+                238.25623948712325
+              ],
+              [
+                285.37210688221506,
+                267.4234685562287
+              ],
+              [
+                250.03608819333897,
+                285.7563182131417
+              ],
+              [
+                242.96888445556374,
+                289.4228881445243
+              ],
+              [
+                217.43917404802744,
+                260.2486895860112
+              ]
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "ll_shin",
+            "target": [
+              191,
+              277,
+              261,
+              388
+            ],
+            "projected": [
+              216.7586475330423,
+              251.71212435430115,
+              316.4495055443718,
+              353.38117942226
+            ],
+            "iou": 0.14063382820149467,
+            "hull": [
+              [
+                216.7586475330423,
+                323.7215481943031
+              ],
+              [
+                232.41470645951497,
+                283.69491941156474
+              ],
+              [
+                247.5856199204229,
+                252.54906914419246
+              ],
+              [
+                268.3683007224117,
+                251.71212435430115
+              ],
+              [
+                289.5699119357373,
+                262.71183414844893
+              ],
+              [
+                316.4495055443718,
+                283.30301632067244
+              ],
+              [
+                282.31495025732903,
+                353.38117942226
+              ],
+              [
+                259.16186995969366,
+                345.7209677825987
+              ]
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "rl_shin",
+            "target": [
+              294,
+              264,
+              361,
+              341
+            ],
+            "projected": [
+              241.4898987251718,
+              238.25623948712325,
+              339.0163114138186,
+              349.4365901676178
+            ],
+            "iou": 0.21756305215446095,
+            "hull": [
+              [
+                241.4898987251718,
+                293.5896351543965
+              ],
+              [
+                242.96888445556374,
+                289.4228881445243
+              ],
+              [
+                253.3217845683074,
+                260.2556590754188
+              ],
+              [
+                295.7250069949588,
+                238.25623948712325
+              ],
+              [
+                339.0163114138186,
+                298.2699415102167
+              ],
+              [
+                328.663411301075,
+                327.43717057932224
+              ],
+              [
+                293.3273926121988,
+                345.7700202362352
+              ],
+              [
+                286.2601888744236,
+                349.4365901676178
+              ],
+              [
+                260.7304784668873,
+                320.2623916091047
+              ]
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "ll_foot",
+            "target": [
+              191,
+              365,
+              264,
+              433
+            ],
+            "projected": [
+              185.53496503938823,
+              318.24996845168783,
+              282.31495025732903,
+              376.7405671227892
+            ],
+            "iou": 0.00008002215900344335,
+            "hull": [
+              [
+                185.53496503938823,
+                340.515040203694
+              ],
+              [
+                193.12042176984218,
+                324.94211507000784
+              ],
+              [
+                200.22073303473132,
+                318.24996845168783
+              ],
+              [
+                234.23374543536886,
+                321.79028745588874
+              ],
+              [
+                255.43535664869455,
+                332.7899972500365
+              ],
+              [
+                282.31495025732903,
+                353.38117942226
+              ],
+              [
+                270.9367651616481,
+                376.7405671227892
+              ],
+              [
+                231.24577036570173,
+                363.6087757405126
+              ],
+              [
+                227.93818746603955,
+                362.51445979198957
+              ]
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "rl_foot",
+            "target": [
+              283,
+              318,
+              352,
+              355
+            ],
+            "projected": [
+              278.86526022246386,
+              298.2699415102167,
+              353.44674622010524,
+              394.4416395678822
+            ],
+            "iou": 0.38802208268744315,
+            "hull": [
+              [
+                278.86526022246386,
+                370.27032521697885
+              ],
+              [
+                296.61308898716726,
+                320.26936109851226
+              ],
+              [
+                339.0163114138186,
+                298.2699415102167
+              ],
+              [
+                353.44674622010524,
+                318.2745088512479
+              ],
+              [
+                335.69891745540184,
+                368.2754729697145
+              ],
+              [
+                334.21993172500987,
+                372.44221997958664
+              ],
+              [
+                298.8839130361337,
+                390.7750696364996
+              ],
+              [
+                291.8167092983585,
+                394.4416395678822
+              ],
+              [
+                282.19641942750076,
+                381.1052613405281
+              ]
+            ]
+          }
+        ],
+        "visible_regions": [
+          {
+            "part": "hd",
+            "visible_iou": 0.6611570247933884
+          },
+          {
+            "part": "ct",
+            "visible_iou": 0.5266497461928934
+          },
+          {
+            "part": "rt_hunch",
+            "visible_iou": 0.5550239234449761
+          },
+          {
+            "part": "lt",
+            "visible_iou": 0.012295081967213115
+          },
+          {
+            "part": "la",
+            "visible_iou": 0.39263803680981596
+          },
+          {
+            "part": "ra",
+            "visible_iou": 0.3218390804597701
+          },
+          {
+            "part": "ll",
+            "visible_iou": 0
+          },
+          {
+            "part": "rl",
+            "visible_iou": 0
+          },
+          {
+            "part": "ll_shin",
+            "visible_iou": 0.13704819277108435
+          },
+          {
+            "part": "rl_shin",
+            "visible_iou": 0.3215686274509804
+          },
+          {
+            "part": "ll_foot",
+            "visible_iou": 0
+          },
+          {
+            "part": "rl_foot",
+            "visible_iou": 0.2631578947368421
+          }
+        ]
+      }
+    ],
+    "validation": {
+      "cells": 6436,
+      "whole": [
+        6436
+      ],
+      "parts": [
+        {
+          "part": "ct",
+          "components": [
+            1196
+          ]
+        },
+        {
+          "part": "hd",
+          "components": [
+            188
+          ]
+        },
+        {
+          "part": "lt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "rt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "la",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ra",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ll",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "ll_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "ll_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rl",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "rl_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "rl_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rt_hunch",
+          "components": [
+            1377
+          ]
+        }
+      ],
+      "joints": [
+        {
+          "part": "hd",
+          "parent": "ct",
+          "overlap": 39,
+          "contact": 240
+        },
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 121,
+          "contact": 719
+        },
+        {
+          "part": "rt",
+          "parent": "ct",
+          "overlap": 68,
+          "contact": 415
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 9,
+          "contact": 59
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 6,
+          "contact": 44
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rt_hunch",
+          "parent": "rt",
+          "overlap": 258,
+          "contact": 1478
+        }
+      ],
+      "pass": true
+    }
+  },
+  "experimental_photo_fit_p4": {
+    "method": "Shared geometry refined across annotated reference views, independent camera and articulated stance; candidate shape edits accepted only after actual voxel repair, objective improvement and visible region overlap gate.",
+    "baseline": {
+      "objective": 27.19555852216029,
+      "rmse": 16.62982796858395,
+      "hull_iou": 0.5197395202919846,
+      "visible_iou": 0.5091574174109597
+    },
+    "refined": {
+      "objective": 24.930027807226043,
+      "rmse": 14.995728982760069,
+      "hull_iou": 0.5484409625242739,
+      "visible_iou": 0.5250155880858248
+    },
+    "changes": [
+      {
+        "name": "hd",
+        "axis": 0,
+        "factor": 1,
+        "delta": 1.5,
+        "center": -1,
+        "score": 26.539896857153163,
+        "before": {
+          "objective": 27.19555852216029,
+          "rmse": 16.62982796858395,
+          "hull_iou": 0.5197395202919846,
+          "visible_iou": 0.5091574174109597
+        },
+        "after": {
+          "objective": 25.679592987000273,
+          "rmse": 15.552996518894574,
+          "hull_iou": 0.5397001605406501,
+          "visible_iou": 0.5184152432285956
+        },
+        "repair": []
+      },
+      {
+        "name": "rt_hunch",
+        "axis": 1,
+        "factor": 0.86,
+        "delta": 0,
+        "center": 33,
+        "score": 25.092009565361387,
+        "before": {
+          "objective": 25.679592987000273,
+          "rmse": 15.552996518894574,
+          "hull_iou": 0.5397001605406501,
+          "visible_iou": 0.5184152432285956
+        },
+        "after": {
+          "objective": 24.930027807226043,
+          "rmse": 14.995728982760069,
+          "hull_iou": 0.5484409625242739,
+          "visible_iou": 0.5250155880858248
+        },
+        "repair": []
+      }
+    ],
+    "references": [
+      {
+        "url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190402_Final_1200x1200.jpg?v=1708317528",
+        "verified_preview": false,
+        "quality": "unpainted Catalyst Urban Lance HBK-4G",
+        "rmse": 14.995728982760069,
+        "hull_iou": 0.5484409625242739,
+        "visible_iou": 0.5316139572437025,
+        "parameters": {
+          "yaw": 3,
+          "pitch": -1,
+          "roll": -5,
+          "la": -1,
+          "ra": -1,
+          "ll": 34,
+          "rl": -5,
+          "ll_shin": -19,
+          "rl_shin": -11,
+          "laSpread": -7,
+          "raSpread": 18,
+          "llSpread": 6,
+          "rlSpread": 10
+        },
+        "flip": true,
+        "swap": false,
+        "scale": 9.18382613905425,
+        "dx": 297.60882150442046,
+        "dy": 385.1659356810333,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              226,
+              51,
+              294,
+              119
+            ],
+            "projected": [
+              230.40678117323563,
+              45.43104898687187,
+              291.37823678949985,
+              113.16441914830779
+            ],
+            "iou": 0.8065870422016465,
+            "hull": [
+              [
+                230.40678117323563,
+                76.55923838041628
+              ],
+              [
+                238.92731918826482,
+                57.69170512190044
+              ],
+              [
+                275.1622217611477,
+                45.43104898687187
+              ],
+              [
+                286.5135054865011,
+                80.97818779222064
+              ],
+              [
+                291.37823678949985,
+                109.00844535057513
+              ],
+              [
+                282.7353926919427,
+                109.93368828456994
+              ],
+              [
+                246.19295433152183,
+                113.16441914830779
+              ],
+              [
+                243.23636137623333,
+                112.4590578399459
+              ],
+              [
+                242.25083039113716,
+                112.22393740382523
+              ],
+              [
+                232.80768501349394,
+                104.00169484846901
+              ]
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              193,
+              98,
+              341,
+              209
+            ],
+            "projected": [
+              225.64313739358104,
+              88.86298850388363,
+              335.18631029317777,
+              214.94712290128382
+            ],
+            "iou": 0.6253956334305625,
+            "hull": [
+              [
+                225.64313739358104,
+                105.2796184366448
+              ],
+              [
+                233.97844570360016,
+                95.32445023135938
+              ],
+              [
+                242.6212898011573,
+                94.39920729736457
+              ],
+              [
+                297.43494734178864,
+                89.55311100175777
+              ],
+              [
+                307.06332242444194,
+                88.86298850388363
+              ],
+              [
+                310.01991537973043,
+                89.56834981224551
+              ],
+              [
+                329.8917371201131,
+                106.24795535907856
+              ],
+              [
+                335.18631029317777,
+                161.2504285132446
+              ],
+              [
+                329.06667611840686,
+                207.5604182398133
+              ],
+              [
+                311.78098792329257,
+                209.41090410780288
+              ],
+              [
+                256.96733038266126,
+                214.25700040340968
+              ],
+              [
+                247.33895530000797,
+                214.94712290128382
+              ],
+              [
+                244.38236234471944,
+                214.2417615929219
+              ],
+              [
+                233.64615019444204,
+                196.75447333015444
+              ],
+              [
+                231.55278214172176,
+                178.34194213339222
+              ],
+              [
+                225.95067318111904,
+                114.30954370793546
+              ]
+            ]
+          },
+          {
+            "part": "rt_hunch",
+            "model": "rt_hunch",
+            "target": [
+              170,
+              35,
+              240,
+              139
+            ],
+            "projected": [
+              152.76470893693312,
+              23.64237153036032,
+              240.93654505931917,
+              146.73089550014325
+            ],
+            "iou": 0.6097086620344998,
+            "hull": [
+              [
+                152.76470893693312,
+                64.02036782082808
+              ],
+              [
+                155.59899580969372,
+                46.78343880466906
+              ],
+              [
+                163.13400283962676,
+                27.680785110032673
+              ],
+              [
+                208.81205079015285,
+                23.64237153036032
+              ],
+              [
+                212.26140923798943,
+                24.465293056782457
+              ],
+              [
+                222.99762138826685,
+                41.95258131954989
+              ],
+              [
+                239.02840671160897,
+                114.44234273648357
+              ],
+              [
+                240.93654505931917,
+                141.76723898647612
+              ],
+              [
+                232.29370096176206,
+                142.6924819204709
+              ],
+              [
+                186.6156530112359,
+                146.73089550014325
+              ],
+              [
+                182.67352907085126,
+                145.79041375566072
+              ],
+              [
+                172.73761820065994,
+                137.45061098224417
+              ],
+              [
+                162.0014060503825,
+                119.96332271947676
+              ],
+              [
+                155.96591405727753,
+                100.61030977823191
+              ]
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "lt",
+            "target": [
+              337,
+              87,
+              389,
+              150
+            ],
+            "projected": [
+              308.17115949206607,
+              102.19430296891846,
+              383.26526208396217,
+              199.5732961205778
+            ],
+            "iou": 0.17104657904040668,
+            "hull": [
+              [
+                308.17115949206607,
+                107.04039926452526
+              ],
+              [
+                362.9848170326974,
+                102.19430296891846
+              ],
+              [
+                367.41970646563016,
+                103.25234493146132
+              ],
+              [
+                383.26526208396217,
+                184.65447140162522
+              ],
+              [
+                375.42271926649113,
+                194.72719982497097
+              ],
+              [
+                320.6090617258598,
+                199.5732961205778
+              ],
+              [
+                316.17417229292704,
+                198.5152541580349
+              ]
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              366,
+              124,
+              433,
+              213
+            ],
+            "projected": [
+              361.21815778618077,
+              95.43568346973672,
+              436.56718656823995,
+              247.08075166773813
+            ],
+            "iou": 0.4272543056543815,
+            "hull": [
+              [
+                361.21815778618077,
+                105.37074486382073
+              ],
+              [
+                406.0680675363113,
+                95.78844275460432
+              ],
+              [
+                410.20263800161746,
+                95.43568346973672
+              ],
+              [
+                419.7826184605424,
+                140.3434516503472
+              ],
+              [
+                436.56718656823995,
+                221.2166298515424
+              ],
+              [
+                430.5104033650491,
+                241.17458849782264
+              ],
+              [
+                403.6004575149708,
+                246.9239697633525
+              ],
+              [
+                401.7628706415014,
+                247.08075166773813
+              ],
+              [
+                388.501499789538,
+                231.07330029343362
+              ],
+              [
+                370.79813824510575,
+                150.27851304443124
+              ]
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              119,
+              115,
+              195,
+              237
+            ],
+            "projected": [
+              112.74334656147087,
+              111.59321344798605,
+              190.39387380636424,
+              263.29887171158674
+            ],
+            "iou": 0.4025880668423555,
+            "hull": [
+              [
+                112.74334656147087,
+                237.20310698775205
+              ],
+              [
+                130.69178649681194,
+                156.69128419682116
+              ],
+              [
+                140.95685092075368,
+                111.94102397198316
+              ],
+              [
+                145.71493517054077,
+                111.59321344798605
+              ],
+              [
+                154.65072289770546,
+                113.65179000990526
+              ],
+              [
+                190.39387380636424,
+                121.88609625758215
+              ],
+              [
+                180.12880938242247,
+                166.63635648242018
+              ],
+              [
+                161.12301739157317,
+                247.22547050090594
+              ],
+              [
+                147.02385183932356,
+                263.1442892564769
+              ],
+              [
+                144.90914772830706,
+                263.29887171158674
+              ],
+              [
+                127.03757227397767,
+                259.18171858774826
+              ],
+              [
+                118.10178454681295,
+                257.123142025829
+              ]
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              292,
+              191,
+              358,
+              273
+            ],
+            "projected": [
+              296.7630290450987,
+              185.9391164979359,
+              357.1868070148777,
+              281.53571006999704
+            ],
+            "iou": 0.6439158176757114,
+            "hull": [
+              [
+                296.7630290450987,
+                243.99520694332952
+              ],
+              [
+                298.4803255753883,
+                201.03175391523527
+              ],
+              [
+                299.2950848113444,
+                185.9391164979359
+              ],
+              [
+                354.3103929784717,
+                186.856603230682
+              ],
+              [
+                357.1868070148777,
+                233.9433385942953
+              ],
+              [
+                356.3720477789215,
+                249.03597601159464
+              ],
+              [
+                354.0155481294306,
+                281.53571006999704
+              ],
+              [
+                299.0002399623033,
+                280.618223337251
+              ]
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              190,
+              205,
+              256,
+              292
+            ],
+            "projected": [
+              202.37033512883875,
+              206.1504974982941,
+              266.9345462884176,
+              282.0906668587058
+            ],
+            "iou": 0.5777564294567322,
+            "hull": [
+              [
+                202.37033512883875,
+                277.3324749497002
+              ],
+              [
+                205.57114448397448,
+                232.39173224554722
+              ],
+              [
+                207.07565282144117,
+                214.14333326787508
+              ],
+              [
+                212.119806218219,
+                208.02104060762926
+              ],
+              [
+                246.05245150256616,
+                206.1504974982941
+              ],
+              [
+                264.32403152596567,
+                207.73656146796262
+              ],
+              [
+                266.9345462884176,
+                212.7792325166348
+              ],
+              [
+                265.4300379509509,
+                231.02763149430692
+              ],
+              [
+                261.10830561875343,
+                277.32888367851456
+              ],
+              [
+                257.1850751990373,
+                282.0906668587058
+              ],
+              [
+                211.5061251405385,
+                278.1255069345345
+              ]
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "ll_shin",
+            "target": [
+              294,
+              264,
+              361,
+              341
+            ],
+            "projected": [
+              293.88718044277425,
+              248.51520922711686,
+              354.476418058154,
+              350.1147914018525
+            ],
+            "iou": 0.5644108168233087,
+            "hull": [
+              [
+                293.88718044277425,
+                331.7674497586194
+              ],
+              [
+                294.8580259319827,
+                285.08491371928585
+              ],
+              [
+                295.9825575567746,
+                249.7308683061604
+              ],
+              [
+                306.7373656161717,
+                248.51520922711686
+              ],
+              [
+                334.24501969973534,
+                248.97395259348986
+              ],
+              [
+                350.99786572390195,
+                250.64835503890646
+              ],
+              [
+                354.476418058154,
+                270.5681892223202
+              ],
+              [
+                351.94622190237214,
+                350.1147914018525
+              ],
+              [
+                296.9309137352448,
+                349.1973046691064
+              ]
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "rl_shin",
+            "target": [
+              191,
+              277,
+              261,
+              388
+            ],
+            "projected": [
+              196.28718788471775,
+              265.6567671993785,
+              261.64126404311503,
+              366.71698198336776
+            ],
+            "iou": 0.6384935579992196,
+            "hull": [
+              [
+                196.28718788471775,
+                361.95879007436224
+              ],
+              [
+                198.75094702667974,
+                320.2337083474421
+              ],
+              [
+                201.2769152159463,
+                284.926654259858
+              ],
+              [
+                201.97061631056755,
+                282.5179183772981
+              ],
+              [
+                206.82652397291645,
+                265.6567671993785
+              ],
+              [
+                261.64126404311503,
+                270.4149591083841
+              ],
+              [
+                255.95783561726523,
+                349.85583080544825
+              ],
+              [
+                251.10192795491636,
+                366.71698198336776
+              ]
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "ll_foot",
+            "target": [
+              283,
+              318,
+              352,
+              355
+            ],
+            "projected": [
+              290.43486747349124,
+              319.3175533939858,
+              351.94622190237214,
+              376.6303254616965
+            ],
+            "iou": 0.5196759366003333,
+            "hull": [
+              [
+                290.43486747349124,
+                343.3431081809032
+              ],
+              [
+                290.9971332858872,
+                325.6660854743405
+              ],
+              [
+                291.7130852338667,
+                319.3175533939858
+              ],
+              [
+                346.72839340099404,
+                320.23504012673186
+              ],
+              [
+                351.94622190237214,
+                350.1147914018525
+              ],
+              [
+                351.1028231837782,
+                376.6303254616965
+              ],
+              [
+                296.08751501665085,
+                375.7128387289505
+              ],
+              [
+                290.86968651527275,
+                345.83308745382993
+              ]
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "rl_foot",
+            "target": [
+              191,
+              365,
+              264,
+              433
+            ],
+            "projected": [
+              190.23050517504026,
+              345.0976388964427,
+              255.95783561726523,
+              407.64968784441544
+            ],
+            "iou": 0.4035773494699491,
+            "hull": [
+              [
+                190.23050517504026,
+                402.89149593540986
+              ],
+              [
+                191.49348926967352,
+                385.2379688916178
+              ],
+              [
+                192.8186824116114,
+                374.0024694871619
+              ],
+              [
+                201.14309554706665,
+                345.0976388964427
+              ],
+              [
+                255.95783561726523,
+                349.85583080544825
+              ],
+              [
+                254.06335947531534,
+                376.3361213711363
+              ],
+              [
+                245.73894633986012,
+                405.2409519618555
+              ],
+              [
+                245.04524524523885,
+                407.64968784441544
+              ]
+            ]
+          }
+        ],
+        "visible_regions": [
+          {
+            "part": "hd",
+            "visible_iou": 0.7792792792792793
+          },
+          {
+            "part": "ct",
+            "visible_iou": 0.6228710462287105
+          },
+          {
+            "part": "rt_hunch",
+            "visible_iou": 0.6252465483234714
+          },
+          {
+            "part": "lt",
+            "visible_iou": 0.14025974025974025
+          },
+          {
+            "part": "la",
+            "visible_iou": 0.39618138424821003
+          },
+          {
+            "part": "ra",
+            "visible_iou": 0.3425287356321839
+          },
+          {
+            "part": "ll",
+            "visible_iou": 0.6263736263736264
+          },
+          {
+            "part": "rl",
+            "visible_iou": 0.591044776119403
+          },
+          {
+            "part": "ll_shin",
+            "visible_iou": 0.5686274509803921
+          },
+          {
+            "part": "rl_shin",
+            "visible_iou": 0.6706161137440758
+          },
+          {
+            "part": "ll_foot",
+            "visible_iou": 0.5144230769230769
+          },
+          {
+            "part": "rl_foot",
+            "visible_iou": 0.5019157088122606
+          }
+        ]
+      }
+    ],
+    "validation": {
+      "cells": 6331,
+      "whole": [
+        6331
+      ],
+      "parts": [
+        {
+          "part": "ct",
+          "components": [
+            1196
+          ]
+        },
+        {
+          "part": "hd",
+          "components": [
+            194
+          ]
+        },
+        {
+          "part": "lt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "rt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "la",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ra",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ll",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "ll_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "ll_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rl",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "rl_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "rl_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rt_hunch",
+          "components": [
+            1150
+          ]
+        }
+      ],
+      "joints": [
+        {
+          "part": "hd",
+          "parent": "ct",
+          "overlap": 40,
+          "contact": 244
+        },
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 121,
+          "contact": 719
+        },
+        {
+          "part": "rt",
+          "parent": "ct",
+          "overlap": 68,
+          "contact": 415
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 9,
+          "contact": 59
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 6,
+          "contact": 44
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rt_hunch",
+          "parent": "rt",
+          "overlap": 150,
+          "contact": 870
+        }
+      ],
+      "pass": true
+    }
+  },
+  "experimental_render_payload": {
+    "size": 112,
+    "palette": [
+      "eef1f3",
+      "404c4b",
+      "505f5e",
+      "647775",
+      "5a6665",
+      "71807e",
+      "8da09e",
+      "7f6d59",
+      "9f886f",
+      "c7aa8b",
+      "1a2328",
+      "212c32",
+      "29373e",
+      "1a2024",
+      "21282d",
+      "293238",
+      "50888f",
+      "64aab2",
+      "7dd5df",
+      "2c3135",
+      "373e42",
+      "454d53",
+      "4a4f4f",
+      "5d6363",
+      "747c7c",
+      "5a6665",
+      "71807e",
+      "8da09e",
+      "7f6d59",
+      "9f886f",
+      "c7aa8b",
+      "ef476f",
+      "00a889",
+      "2463cb"
+    ],
+    "encoding": "LZW 12-bit codes, 64-symbol initial dictionary, clear=4095; alphabet A-Z a-z 0-9 - _",
+    "views": [
+      {
+        "label": "Front",
+        "data": "AABABBBCBDBEBFBGBHBIBJBKBLBMBNBOBPBQBRBSBTBUBVBWBXBYBZBaBbBcBdBeBfBgBhBiBjBkBAADBnBoBpBnBlBsBTBqBvADBtByBPACB1B2B3B1BzB6BLB4B9ACB7CABHB2BwB5CBCGBmADB-B4BoCHCABnCKB3CMCNB6CQCKCTCUCVB9CXBbAdCdCdBHAPAPCZACChAPCbBaCeCdAGCrAGBDClCvCwCwCnBZCpAdCsCtBAChAOAOCxCxC7AOCzBYAFDDDEDEBBC_DIDJDKDADBBWDFDPDHDLDSC_DNBWC3DXDRC6DTC7ClDVBSCsDPDFCsDbDTDeBRDgDhDDDjDkDLDmBQDPARDxDyDzDsDtDuBMBnDwDzD7D1DKD3BKBpDECrD7D8D9DID_BJEBDFEED0EGDUEIBEBoB3D6EMARDLC9DJEQERCPB2EUEMEOEPCOBwEjCEB9EeEEB1EgBwBtEkEtBpB-DpAFCvB4EqBvEsEuE4EcB1ExDIE0EOErBsCjFCFCE9B9DsCVBtFDFKFLB3FHCQFJCVExDFFMFUFCFQCQFSDEFVFbFPFBFRFZAFFcFiB4FXCKFgFhETFnFoEdFgCjFlEwFtFpFnB4FzCZFvEmFxFsF1F6FSFuFeFYF5E7FqF0GBCWF_FmGFDDAeGLGMGNDDGEFZF-BlCZF7GCC1C1GPFyF9F2ByAXGeGfAXFqAFESACDDGXCpGZF8FZGgGfCAGsGeGiGEGnCeGpGCFnGvAXGuGvGxFpGzCdG1GlFqG4G6GsG8FsG-AdHAGiHDB7G4HGGWG-HKHCGvHEGgHACjGmHRFrFDDDHMB6HOHbFCHZGzHXGUAFHeE3HgFMHjGnHlFfG4CSBlBnHqFLHPHiHnGvHxBkFjGQGFH8F3H8IBFLIAICIFGcGTFIBCAYILIMAYFiAUAUINIMBDGSH7IJBBISILIPIRIZIUIHIWCwB3BDIZIZFDIkISIeB2EzCFIIIhB2BDG4HoBEIxHUBCB4IrB_FeD7IiBCI0GsBII-GgIpB1DzIvI6JFJGBBJBGtBHJLGeJDACJII5III7JJBAJOG5JNJOJQJSFQJVIsBAFDBIJiI2B3JdJHDyI8BBJkBGJsJhJmJpJgBlIyJvIVBEJuJKI1HfJ6JlJ2JQFdIwJ8GdKCJ1IfJ3FWIzKEBsJ0AAJ4J_GGKBI_HNKKKOJ9KGJXKKCbKVJrKIEaKHJ-KWIXKeKhKABFKbEaKnKNKdKjKcKgKtKXKjGiBIKyKsBCK0BGK3K1AAK5BEK8KsK-K2FqK6BBLALELCLDK7LHK4LKK6LFBALOEQLQLQEILSLMK1KpKpEILYKrLXLcKPB-LIKqKuKFKiLdLjLiKwKeLbLnLaLeKkKQK6LrLpKoLuKvLlKsLyL3KjL5KlLmLzLoL6KeDXMDCsBIMEMELhLVFnMJLWBDLTD_MKFgLhHICpBIMUCeMTMXAdMWMaMZMXMcMfLIMaMbBHMjMeMUMgMoLhMrMsMtMuMvMwMxMyMzM0D3"
+      },
+      {
+        "label": "Front oblique",
+        "data": "AABABBBCBDBEBFBGBHBIBJBKBLBMBNBOBPBQBRBSBTBUBVBWBXBYBZBaBbBcBdBeBfBgBVADADAABjBhBnBeACBjBrBsBsBoBvBVACBqBtB0B0BwB3BLByB6B6B1ADB7B4CABGB7CDCECECBCHBCCFCKB8BmCICICLCFB-B8COCHCMBjCQCDCUCBCKBsCQCaCACYCYAPCjCjCfBgBqChCECkCrCsClCmBZChAOCyCtC0C1CvBXB7AeAeCECyC9C9C1C1CyC3BUByAdAdC6DGB6CkC-DMDNCrDMDDBSAGDTDGDVAdDTDTDNDaDbC-CkDRBPAFDhDWDXDTDhAFDcCzDLDoAODfBODmDVDmDxDnDrD0C9DtBNDvDGDyDYDhD1D0D3BMDyDxDlDxD-AOCjDbEABLEEECDyASEPAREGDaEKBIBkEDD8DhEPASAREcEcESDNEUBEBtENDxEdEmEREGDPDsEhB9ADEkDmEnEdEfDQEUEtEuEvEwEnEzD2EhCDB1E4AFExE7ErEKCoCpACEkFCE7E9ByBrCYFJEcDqESEsCSCECdCXFIENDNB7ETEhBAB9FHFZECFbCeEKE2B1CQEuByAFFhCZDfFnFwCdFtFrDmCGC3FxFxFzFiECF2CvE-F4FYF6FsEvF9CmFpFgCFD8CFDyF7GMFuF-F6B7EYF1F0ENGNDxB6DtGRB6GEGVF8EvAXEAGbGeGOGXF1GgGiGjGdGNC6AeAdGmDhGhD3GjGwFsF0DIDWG1GyGaGqEkGcAFDjDJGoGzG9GWF0HBGvEkAXG7DfG0EvCSDiHBGNByHLHMDRHOG-HHHSCFHLFYEUAXFtGrHRDjCcGPD3HVHVGLDhG1G_HIFHHfHoHxHVGnHZFZHuCpHwHyHxH0F8HtDWHrH4EKH6HyH8G2CEGrCFCsICIDHoGUCQH9CYDMC0DDIMINIAIPIGB6AYIbIcAYFcDbAREbEcCvIVHzIXFzIdHpB6DcEnCaBrIlHLIOFzH6IfDaItCUF_ADHxFOF6IlCFDNI3COGHGbIwHLCFBDAOEmCfGRIdJNJFIqB6HVEUGRHVIbIDHUHyB7H6JTI9IwCpJbFFCpCsJFJfHyJcIRC_CtHxFtAAHLFeBACpDcEQARGRJvCJCxIgEdJ1J2JwJ4I2J6F6J8J9JxJAKAFzKCBDHgFHCyKGKHKIBBI0HoG0JHKPBAJeKTACEYKVJtI-GbGTDmKbKQJZHFENKhBDKeCDE4KmJ3FHGTB7KqKrKDCLKfIyKwKxChE4KvEvKxKyCKK5G_EkK8AAK4IIK2KmAOLEH1GmByLCLIFPLFInLMK8LOIYLKCLLNLJHGCYLYLPGYJsLTLEGjLcKYLXLgLkLlKxLULnGFLHLrCKLjLuB6DTLCGbIZCDDYL4L5KbL1D7L5L-KaKPL8EvL-ECKVLRChL4FAENGtAdKILaL3L_L5E4MMDVMOFAMRMEEkDHHIMNKCMKECMJMKMcDGMWMfMKG4DxMjMdJ8MmEvMUDwD5DjKbMtDyMqMrHAMkLCAAM0M2M6BLFAM9M-DgMpHBNCBYMVNGNJNKNLNMNNNONPNQNRNSBO"
+      },
+      {
+        "label": "Rear oblique",
+        "data": "AABABBBCBDBEBFBGBHBIBJBKBLBMBNBOBPBQBRBSBTBUBVBWBXBYBZBaBbBcBdBeBfBgBhBiBjBBADBmBnBnBkBqBVBoBtBtACACBrByBKBuB1ADBwB4BzB6BGABABB2B3B4CBAPCDCECDB7ByB9CJABBwCLCBCOCFCQAPAOAOCHBhB-CKCNCNCOCCCRCSCTCVBgCYCJBmCbACBnBwCQCTCTCGCgBcCiCKCOCkCPCqCqCeCUCtBbCvCJBwCyCOC0C_C0CSC4BZC6B9ACDGClDACTAeAeC_DDBYDFCLDICbAOC2AOAcDYDMAdAdCfDPBsADDFDHCaCOANANCTAGAGDYDYDbDcC3DeBTB-BnCiDiClACANDoD4DpDrDbAFDuDvBRCvB1D1AEEEEED5AFDsAFAGD_DwDhDTCbEFERAEAFEIAdEUEUEMEAEODjCOESEFEXEgAFEZBQDRD0ClEeEfEgD4EjBPElEPCBEoEEEUD4EXEsBOEuEcB4ExETEyEqE2BME4EDExAFE9EgE_BLFBCbADE7FEETEhFHBKFJC8BoFDFFADEYFQBIFBB9B_BnEyFLBuFZBEBoFbCjFdECBwFiBAB1FlC6B_FKBxFZCYBmDRDGCjF1EmCBCyFiF1C6DiF9DSCNCnCOFyGAFzF0GAB3EvFTBtEsGGCvF_F9F5CmFnBoDeGPDzGPCmCLGVGdADCHGYEBDyDFGeGlFpB6GhF9FkGkGlBoGEGoGpGYDgGJFvClB7GxCKANCFG4FuD1B5GwG8DlHCDlCSG8C7G-GnBzF1APF1HDHDAOHGGLCbCtCiHDG7G5HODlHQHRHIHJCHAWHgHgABHZDmHbB9HkDmHRE5HTCgHhHiHkCTHYHZHmG8HdFxCVHuAWHjHzH0HoH0G4H2CtH5H7HOHxCJH-HyG6CEGSHdICHuIEHPH9HwIJHPF4G-DDIDHwISHzIUHCH_DzCbAXDeIZH8IdHaImHpGBIgBwAXItIiHUBoHhIQIeHbDHIIIHITCLEyIPACIuI-C4EBIzHaI1JCInI4IcI6ETH5AWI-IuJAC6IaF2I3HnI5ACI7H5JNItJPDRIRJSI5JUJIJWJKJYJZJbGhBwJTJFIpJiAFJLJZIvCgElB4IgJHJGJgIFDGJXHuJvJmIrBwAYKAKBAYGAI3JsJuJZCkCVJyAWKCKNGPJhJ6HhIuGDGnASHAGQACJLKMKBF4KdCKFoCPCEAOARBrKLKaKSIuAUAUAXCwDIATGZDhD1DWKkBqKmKnJMJvKbKNK7KAJyDJC0K0BkK2KnJvKZJLK7IuK-DULAHfCwItCJKaI-CBK3HgJNLKC-LMB7JkKsC6JME5LUK4LJKxK_D-LaJ7LPIWLTLULWLjHsC4LbIMCOLQKHItGRJ-GvEjLxCBLpL2CYIXGOL8JzLKLXCBE2L6MCLtMEFQMHCMMEL9CaJOFHMMMPCwD1LbMRE_MTMBLqKoI_MSMbMUHHClMXJwMZMgMgG_LVFqBAMaMOB4EiMrBCMtLtCbMwMxMsMnMuBwM2M3MzF-G-M8MxM-KYD1NBMrNDL3CONGFqIEHXHSMoM7M3BBJFIGClNQACNLF8JRHrNXNZFyNbNWHCNOHINSNTNgCbNUHQNkNlAANpNPJRNrNlNuNcNwL_NyNnLyN1D1NsNtN4L7N6G2NsNzNhIlNxNSODNoOALuOHJCNVOJOFN2OMMEAFNuHID5DoMrESNEEgOVG-E0FYFiE7EEABEhEUJ3JDHrMvEhAeAdOhOiFOEhMgOlEXDbOuOiOzOaL-OqOzO0OtFZOvOwEgOvNYO8OlO1O_OvO4O3PFPGO-FQPAFPAAPJPMFGN8PSEROgBAPTPMPWBOPbOlPdBQPfPZPhBVPYPkPlPpPqPrPsPtPuPvPwPxPyCg"
+      },
+      {
+        "label": "Fitted outline",
+        "data": "AABABBBCBDBEBFBGBHBIBJBKBLBMBNBOBPBQBRBSBTBUBVBWBXBYBZBaBbBcBdBeBfBgBFACBjACBhBmBdBkBpBpBnBsBYBqBvBtBxBUBvBjAhB2AhByB5BPBpB3AhB8B4B6CBBGBqB-B0BlB2BCAdCKAdCCByCEAOCQCRCQBlBACAAAAdAfCZCZCNBsCSAhCSCgCUAfAhCaAfAFCnCMAfCcBmCeANCgCvCjCnCyCyBACqCrBeCeCvCwAAAhCzCzC1C3BfCRCfC6CSCqC9C-CnBBC2DBBbDDDFDGC8ARDTDUC_DMDNBZDPDQAOAfDUAhDUDTDWDYDOCQDEDQAfAODTDfDgDiDjDZDlDbCQDdARDrDVC0CqCUBGB3DuBKDaDbDzD1DhCyACAfBkBED7CVD8BID-D_D0DgARCzEEBkAgAgBCCWBBEXBrD8EMDnD0CRDJESEUBjEUEJBABjC8CGEKDaCuC6BkCjEfC-EUAgBvEiCFB8B0DjADBBDwDbBkCkAEETEyAgEFCGACAgCFCnE-E4DNBpAOB3CQANANEjFCEUAhFUBjCZCGC-DIFJB1FLC3BvB-B9ETCEBvFZFFFbERFKBqFMFlCFCFAgFbFFFzFpEDB1E2EGDBFhB1CnC9FxCyF4ACDJC-BpF1F9B2FeEaFgE3F8AFF-CzF4GDGEBkCzFxFcE2FiFsCrF7E-B9B9AFGFGSF2BjGVGOGAFKGBGLGMGkF9EgGUGiFdGsCnGWGXACGYAXAXFtGrCyFHGuGsCLHAAdGxGCG8GAB3G2G4G4AhG5F6FlGyFcFqG_HBCKHDGlFbB4HJHKDYHOHEGmG-HEHTHUGgGvAFF_ERC9AAHZHaDNHJGRGmHmGjHgHhHVGzGSHYHqAXEXCNHZHLG5GAHlHfCoHzHjGsHwFdGOHpH4H6CCH8G4BAHeIGGxICIDBpEzFaC9H4G5ILB6INHMHeIAGTGkHhHiIVFoIIH4ElH7HKIOIPFcIWFaAFIjGxIvB0F9IJG4CEIqH5HJEYIEFGImGwEjFzBjAEEoCGIbBtHtI8CVI-I_I1GwGgI0FFAAGJFhCBBjIrJLDIE0JSGCFAFFEzGICGABABJUG2EpJIBhFrJaHDIlJDFBB2AYAYAhJyJ1HMBBFrDTAOEnJpBfFrI5EmCGJdB0FHAhAWKHKHB2KIJ3J4B1DUJ7B1B5JVB8BCBqJkJlB2FXBqJhACADKeKfADAhKeKMKBACD0DrKRKSGBFeBHJyJxJzIVFUCVKgK0KiKkJmBjDqKnD5BxEBJ7JiD6B2HqJ0J1BFKiK0KfKiK8KlKmFSE2KqDgFOGKEYH9IZLVLGLIKgB-BiJTCOEBF4LGI3IKJLEWLZLaLLLMACLkCOG2DqGaBDH3IZI7K3LHLmKeIbJlIZB6F3KrLhCGHtLoL1L2JpL6CBKrEnLwLpF7EHL2KfG2BHIoIcHqF5MJK4JHLoC8KXKXK0MPBGG4AWCcMFLhMWB0LbEHMaMoJkMdEKLiLrMVJDMmBDAGAhAGM1M2M3J9HsHZBICAFzMxMyM0M3NCM5DuK3EWMKE3BGM1NBNCMzMYMsBKB4MwNPNLM4FjNQBQNSM-NUNLB3M2GINYBPNaMXNcNMMzNeNENhEWGeB9KhBjE6BFNVNNM1C8NqBMB2CnNNL1NPAEAhAEN_OAM3IpN2BHGfGQHeNPKhMNODOED6GHB3H_NPMCLZOMONEHJQM_LlOLN1OWOFOYMYOTOUNpOEHQGDOZBAOKL2CHOdM8JQIIBEOpLmOrOsOOOYBFL3OqOcO0MJBqOmNxNsNeAGMrO7EWJvPDEYAeAeAhPJPMPKAePHPEJGMwLGPMB2PNPKOjOkPGILPLPXPWPJCIPRLwPGO6CVPXPVPLC9PZNqMHBwEXB4AcPxPyPzAhAcOvPiCVPkH6B2OAP9P9PrPsP6BEN9N-P-B9P4PFJDP3BCOANsOAAFQIEWM2IXBFP-QWAEQQQRCVPAB2M1QLBBQXP-QZQRNyN6MzBHQhP9QaAAGtCzNWQrBTGmOlHGQwBSAdAhQ3PeQHQ1BQQ3CKGeCLQQQAQ8Q-IjCMOVQ8M8RGCKEYRJBNCWIjRNROBLOjRDQ1RVRTN3RURZRbNRRcRdOFRWQ8Q7LURfBRGeRmRpRqRrRsRtRuRvRwRxRyRzR0R1R2R3R4R5R6BX"
+      }
+    ]
+  }
+}
