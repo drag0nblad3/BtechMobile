@@ -89,7 +89,7 @@ class JennerReattachedThighTests(unittest.TestCase):
                              self.after[side+"l_foot_toe"])
 
     def test_camera_must_stay_fixed_but_pose_refit_when_pivot_moves(self):
-        self.assertIn("reattach",self.v16["reference_review"]["reattach_policy"])
+        self.assertIn("re-anchor",self.v16["reference_review"]["reattach_policy"])
         for side in ("l","r"):
             self.assertNotEqual(self.by15[side+"l_shin"]["pivot"],
                                 self.by16[side+"l_shin"]["pivot"])
