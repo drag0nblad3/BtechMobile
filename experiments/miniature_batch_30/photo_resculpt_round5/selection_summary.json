@@ -1,0 +1,544 @@
+[
+  {
+    "id": "grasshopper",
+    "majorSelected": false,
+    "selectedChanged": true,
+    "parts": 20,
+    "cells": 6991,
+    "faults": [],
+    "clear": 1,
+    "points": 1,
+    "scores": [
+      {
+        "view": "grasshopper view 1",
+        "before": 0.41586,
+        "after": 0.43048000000000003
+      },
+      {
+        "view": "grasshopper view 2",
+        "before": 0.27968000000000004,
+        "after": 0.29159999999999997
+      }
+    ],
+    "majorCandidate": {
+      "faults": [],
+      "blocked": [],
+      "scores": [
+        {
+          "view": "grasshopper view 1",
+          "before": 0.41586,
+          "after": 0.42026
+        },
+        {
+          "view": "grasshopper view 2",
+          "before": 0.27968000000000004,
+          "after": 0.26534
+        }
+      ]
+    },
+    "componentTrials": [
+      {
+        "op": "head and central torso",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.41586,
+          0.27968000000000004
+        ],
+        "after": [
+          0.41385999999999995,
+          0.25808
+        ]
+      },
+      {
+        "op": "shoulder links",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.41586,
+          0.27968000000000004
+        ],
+        "after": [
+          0.40546,
+          0.27384
+        ]
+      },
+      {
+        "op": "weapon/forearm clusters",
+        "accepted": true,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.41586,
+          0.27968000000000004
+        ],
+        "after": [
+          0.41927999999999993,
+          0.28208
+        ]
+      },
+      {
+        "op": "lower-leg armor and feet",
+        "accepted": true,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.41927999999999993,
+          0.28208
+        ],
+        "after": [
+          0.43048000000000003,
+          0.29159999999999997
+        ]
+      }
+    ]
+  },
+  {
+    "id": "wolfhound",
+    "majorSelected": false,
+    "selectedChanged": true,
+    "parts": 18,
+    "cells": 5639,
+    "faults": [],
+    "clear": 2,
+    "points": 2,
+    "scores": [
+      {
+        "view": "wolfhound view 1",
+        "before": 0.37248000000000003,
+        "after": 0.39605999999999997
+      },
+      {
+        "view": "wolfhound view 2",
+        "before": 0.25962,
+        "after": 0.27149999999999996
+      }
+    ],
+    "majorCandidate": {
+      "faults": [],
+      "blocked": [
+        {
+          "loc": "LT",
+          "p": [
+            -2.7,
+            30.5,
+            -8
+          ]
+        },
+        {
+          "loc": "RT",
+          "p": [
+            2.7,
+            30.5,
+            -8
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "view": "wolfhound view 1",
+          "before": 0.37248000000000003,
+          "after": 0.38926
+        },
+        {
+          "view": "wolfhound view 2",
+          "before": 0.25962,
+          "after": 0.27649999999999997
+        }
+      ]
+    },
+    "componentTrials": [
+      {
+        "op": "head and central torso",
+        "accepted": false,
+        "faults": [],
+        "blocked": [
+          {
+            "loc": "LT",
+            "p": [
+              -2.7,
+              30.5,
+              -8
+            ]
+          },
+          {
+            "loc": "RT",
+            "p": [
+              2.7,
+              30.5,
+              -8
+            ]
+          }
+        ],
+        "before": [
+          0.37248000000000003,
+          0.25962
+        ],
+        "after": [
+          0.3686,
+          0.25314000000000003
+        ]
+      },
+      {
+        "op": "shoulder links",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.37248000000000003,
+          0.25962
+        ],
+        "after": [
+          0.36912,
+          0.27128
+        ]
+      },
+      {
+        "op": "lower-leg armor and feet",
+        "accepted": true,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.37248000000000003,
+          0.25962
+        ],
+        "after": [
+          0.39605999999999997,
+          0.27149999999999996
+        ]
+      }
+    ]
+  },
+  {
+    "id": "longbow",
+    "majorSelected": false,
+    "selectedChanged": false,
+    "parts": 19,
+    "cells": 12674,
+    "faults": [],
+    "clear": 50,
+    "points": 50,
+    "scores": [
+      {
+        "view": "longbow view 1",
+        "before": 0.4404199999999999,
+        "after": 0.4404199999999999
+      },
+      {
+        "view": "longbow view 2",
+        "before": 0.088575,
+        "after": 0.088575
+      }
+    ],
+    "majorCandidate": {
+      "faults": [],
+      "blocked": [
+        {
+          "loc": "LT",
+          "p": [
+            -7,
+            37.7,
+            -9
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "view": "longbow view 1",
+          "before": 0.4404199999999999,
+          "after": 0.5487200000000001
+        },
+        {
+          "view": "longbow view 2",
+          "before": 0.088575,
+          "after": 0.09065000000000001
+        }
+      ]
+    },
+    "componentTrials": [
+      {
+        "op": "head and central torso",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.4404199999999999,
+          0.088575
+        ],
+        "after": [
+          0.43987999999999994,
+          0.094075
+        ]
+      },
+      {
+        "op": "shoulder links",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.4404199999999999,
+          0.088575
+        ],
+        "after": [
+          0.3944,
+          0.096625
+        ]
+      },
+      {
+        "op": "weapon/forearm clusters",
+        "accepted": false,
+        "faults": [
+          [
+            "la_forearm",
+            "islands",
+            []
+          ],
+          [
+            "la_forearm",
+            "weak",
+            "la"
+          ],
+          [
+            "la_weapon",
+            "weak",
+            "la_forearm"
+          ],
+          [
+            "ra_forearm",
+            "islands",
+            []
+          ],
+          [
+            "ra_forearm",
+            "weak",
+            "ra"
+          ],
+          [
+            "ra_weapon",
+            "weak",
+            "ra_forearm"
+          ]
+        ],
+        "blocked": [
+          {
+            "loc": "LT",
+            "p": [
+              -7,
+              36,
+              -9
+            ]
+          },
+          {
+            "loc": "LT",
+            "p": [
+              -7,
+              37.7,
+              -9
+            ]
+          }
+        ],
+        "before": [
+          0.4404199999999999,
+          0.088575
+        ],
+        "after": [
+          0.5543,
+          0.09512500000000002
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nightstar",
+    "majorSelected": false,
+    "selectedChanged": true,
+    "parts": 19,
+    "cells": 12490,
+    "faults": [],
+    "clear": 4,
+    "points": 4,
+    "scores": [
+      {
+        "view": "nightstar view 1",
+        "before": 0.44132,
+        "after": 0.45546
+      },
+      {
+        "view": "nightstar view 2",
+        "before": 0.5088600000000001,
+        "after": 0.51418
+      }
+    ],
+    "majorCandidate": {
+      "faults": [],
+      "blocked": [],
+      "scores": [
+        {
+          "view": "nightstar view 1",
+          "before": 0.44132,
+          "after": 0.4855199999999999
+        },
+        {
+          "view": "nightstar view 2",
+          "before": 0.5088600000000001,
+          "after": 0.49858
+        }
+      ]
+    },
+    "componentTrials": [
+      {
+        "op": "head and central torso",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.44132,
+          0.5088600000000001
+        ],
+        "after": [
+          0.45289999999999997,
+          0.49834000000000006
+        ]
+      },
+      {
+        "op": "shoulder links",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.44132,
+          0.5088600000000001
+        ],
+        "after": [
+          0.4537999999999999,
+          0.5069600000000001
+        ]
+      },
+      {
+        "op": "weapon/forearm clusters",
+        "accepted": true,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.44132,
+          0.5088600000000001
+        ],
+        "after": [
+          0.45546,
+          0.51418
+        ]
+      },
+      {
+        "op": "lower-leg armor and feet",
+        "accepted": false,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.45546,
+          0.51418
+        ],
+        "after": [
+          0.4575,
+          0.5092800000000001
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zeus",
+    "majorSelected": true,
+    "selectedChanged": true,
+    "parts": 17,
+    "cells": 8840,
+    "faults": [],
+    "clear": 7,
+    "points": 7,
+    "scores": [
+      {
+        "view": "zeus view 1",
+        "before": 0.34828,
+        "after": 0.39211999999999997
+      }
+    ],
+    "majorCandidate": {
+      "faults": [],
+      "blocked": [],
+      "scores": [
+        {
+          "view": "zeus view 1",
+          "before": 0.34828,
+          "after": 0.39211999999999997
+        }
+      ]
+    },
+    "componentTrials": []
+  },
+  {
+    "id": "crusader",
+    "majorSelected": false,
+    "selectedChanged": true,
+    "parts": 19,
+    "cells": 9384,
+    "faults": [],
+    "clear": 30,
+    "points": 30,
+    "scores": [
+      {
+        "view": "crusader view 1",
+        "before": 0.49555999999999994,
+        "after": 0.5151
+      }
+    ],
+    "majorCandidate": {
+      "faults": [
+        [
+          "rt_fin",
+          "weak",
+          "ct"
+        ]
+      ],
+      "blocked": [],
+      "scores": [
+        {
+          "view": "crusader view 1",
+          "before": 0.49555999999999994,
+          "after": 0.5158
+        }
+      ]
+    },
+    "componentTrials": [
+      {
+        "op": "head and central torso",
+        "accepted": false,
+        "faults": [
+          [
+            "rt_fin",
+            "weak",
+            "ct"
+          ]
+        ],
+        "blocked": [],
+        "before": [
+          0.49555999999999994
+        ],
+        "after": [
+          0.49605999999999995
+        ]
+      },
+      {
+        "op": "weapon/forearm clusters",
+        "accepted": true,
+        "faults": [],
+        "blocked": [],
+        "before": [
+          0.49555999999999994
+        ],
+        "after": [
+          0.5151
+        ]
+      }
+    ]
+  }
+]
