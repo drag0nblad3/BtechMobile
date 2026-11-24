@@ -1,0 +1,29 @@
+{
+  "errors": [],
+  "support": {
+    "pelvis": 25,
+    "hd": 17,
+    "ct_srm6": 20,
+    "rear_pack": 20,
+    "lt": 35,
+    "la_shoulder": 24,
+    "la": 6,
+    "la_forearm": 6,
+    "la_hand": 6,
+    "la_weapon": 8,
+    "ll": 12,
+    "ll_shin": 9,
+    "ll_foot": 8,
+    "rt": 30,
+    "ra_shoulder": 24,
+    "ra": 6,
+    "ra_forearm": 6,
+    "ra_hand": 6,
+    "ra_weapon": 8,
+    "rl": 12,
+    "rl_shin": 9,
+    "rl_foot": 8
+  },
+  "voxels": 3597,
+  "parts": 23
+}
