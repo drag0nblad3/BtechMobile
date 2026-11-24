@@ -1,0 +1,267 @@
+[
+  {
+    "id": "shadow_cat",
+    "before": 0.45042,
+    "after": 0.46078,
+    "changed": 208,
+    "faults": 0,
+    "cache": {
+      "hits": 474,
+      "misses": 58
+    },
+    "muzzles": {
+      "before": [
+        2,
+        2
+      ],
+      "after": [
+        2,
+        2
+      ]
+    },
+    "regression": false,
+    "cam": [
+      6.1850928576548165
+    ],
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "narrow"
+      ]
+    ]
+  },
+  {
+    "id": "viper",
+    "before": 0.5286799999999999,
+    "after": 0.53796,
+    "changed": 252,
+    "faults": 0,
+    "cache": {
+      "hits": 420,
+      "misses": 56
+    },
+    "muzzles": {
+      "before": [
+        2,
+        2
+      ],
+      "after": [
+        2,
+        2
+      ]
+    },
+    "regression": false,
+    "cam": [
+      21.290431525800077
+    ],
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "flatten"
+      ]
+    ]
+  },
+  {
+    "id": "gargoyle",
+    "before": 0.59048,
+    "after": 0.60936,
+    "changed": 514,
+    "faults": 0,
+    "cache": {
+      "hits": 420,
+      "misses": 56
+    },
+    "muzzles": {
+      "before": [
+        4,
+        4
+      ],
+      "after": [
+        4,
+        4
+      ]
+    },
+    "regression": false,
+    "cam": [
+      9.0435083621966
+    ],
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "narrow"
+      ]
+    ]
+  },
+  {
+    "id": "executioner",
+    "before": 0.55164,
+    "after": 0.56084,
+    "changed": 518,
+    "faults": 0,
+    "cache": {
+      "hits": 417,
+      "misses": 59
+    },
+    "muzzles": {
+      "before": [
+        1,
+        1
+      ],
+      "after": [
+        1,
+        1
+      ]
+    },
+    "regression": false,
+    "cam": [
+      5.73839723163716
+    ],
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "lower legs",
+        "flatten"
+      ],
+      [
+        "feet",
+        "flatten"
+      ]
+    ]
+  },
+  {
+    "id": "grendel",
+    "before": 0.55124,
+    "after": 0.56012,
+    "changed": 150,
+    "faults": 0,
+    "cache": {
+      "hits": 474,
+      "misses": 58
+    },
+    "muzzles": {
+      "before": [
+        2,
+        2
+      ],
+      "after": [
+        2,
+        2
+      ]
+    },
+    "regression": false,
+    "cam": [
+      6.711524094102466
+    ],
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "retain control"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "narrow"
+      ]
+    ]
+  },
+  {
+    "id": "turkina",
+    "before": 0.41957857142857147,
+    "after": 0.42589285714285713,
+    "changed": 346,
+    "faults": 0,
+    "cache": {
+      "hits": 522,
+      "misses": 66
+    },
+    "muzzles": {
+      "before": [
+        34,
+        34
+      ],
+      "after": [
+        34,
+        34
+      ]
+    },
+    "regression": false,
+    "cam": [
+      10.169248513612676,
+      36.29780635941663
+    ],
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "broaden"
+      ]
+    ]
+  }
+]
