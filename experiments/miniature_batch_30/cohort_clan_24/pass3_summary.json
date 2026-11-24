@@ -1,0 +1,906 @@
+[
+  {
+    "id": "timber_wolf",
+    "parts": 21,
+    "cells": 12998,
+    "faults": 0,
+    "clear": 42,
+    "points": 42,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.18",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.11699999999999999",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.072",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "executioner",
+    "parts": 17,
+    "cells": 9542,
+    "faults": 0,
+    "clear": 1,
+    "points": 1,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 1,
+        "after": 1,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.22",
+        "delta": 20,
+        "faults": 0,
+        "before": 1,
+        "after": 1,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "nova",
+    "parts": 19,
+    "cells": 8738,
+    "faults": 0,
+    "clear": 12,
+    "points": 12,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 12,
+        "after": 12,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la_forearm/ra_forearm 0.2",
+        "delta": 48,
+        "faults": 0,
+        "before": 12,
+        "after": 12,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "grendel",
+    "parts": 19,
+    "cells": 6929,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.2",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.13",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.08000000000000002",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "dire_wolf",
+    "parts": 18,
+    "cells": 13707,
+    "faults": 0,
+    "clear": 9,
+    "points": 9,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 9,
+        "after": 9,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.14",
+        "delta": 322,
+        "faults": 1,
+        "before": 9,
+        "after": 9,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.09100000000000001",
+        "delta": 238,
+        "faults": 0,
+        "before": 9,
+        "after": 9,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "stormcrow",
+    "parts": 17,
+    "cells": 7561,
+    "faults": 0,
+    "clear": 3,
+    "points": 3,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.18",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.11699999999999999",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.072",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "shadow_cat",
+    "parts": 19,
+    "cells": 6729,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.18",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.11699999999999999",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.072",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "mist_lynx",
+    "parts": 17,
+    "cells": 4893,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.19",
+        "delta": 140,
+        "faults": 1,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.12350000000000001",
+        "delta": 72,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "summoner",
+    "parts": 18,
+    "cells": 10377,
+    "faults": 0,
+    "clear": 17,
+    "points": 17,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 17,
+        "after": 17,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.15",
+        "delta": 0,
+        "faults": 0,
+        "before": 17,
+        "after": 17,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.0975",
+        "delta": 0,
+        "faults": 0,
+        "before": 17,
+        "after": 17,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.06",
+        "delta": 0,
+        "faults": 0,
+        "before": 17,
+        "after": 17,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "gargoyle",
+    "parts": 17,
+    "cells": 9586,
+    "faults": 0,
+    "clear": 4,
+    "points": 4,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 4,
+        "after": 4,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la_forearm/ra_forearm 0.2",
+        "delta": 48,
+        "faults": 2,
+        "before": 4,
+        "after": 4,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la_forearm/ra_forearm 0.13",
+        "delta": 0,
+        "faults": 0,
+        "before": 4,
+        "after": 4,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la_forearm/ra_forearm 0.08000000000000002",
+        "delta": 0,
+        "faults": 0,
+        "before": 4,
+        "after": 4,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "hellbringer",
+    "parts": 18,
+    "cells": 9215,
+    "faults": 0,
+    "clear": 8,
+    "points": 8,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.18",
+        "delta": 220,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "mad_dog",
+    "parts": 21,
+    "cells": 10796,
+    "faults": 0,
+    "clear": 44,
+    "points": 44,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 8,
+        "faults": 0,
+        "before": 40,
+        "after": 44,
+        "accepted": true
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.22",
+        "delta": 0,
+        "faults": 0,
+        "before": 44,
+        "after": 44,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.14300000000000002",
+        "delta": 0,
+        "faults": 0,
+        "before": 44,
+        "after": 44,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.08800000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 44,
+        "after": 44,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "ice_ferret",
+    "parts": 17,
+    "cells": 7073,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.14",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.09100000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.05600000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "viper",
+    "parts": 17,
+    "cells": 5591,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.23",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.14950000000000002",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.09200000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "warhawk",
+    "parts": 18,
+    "cells": 11708,
+    "faults": 0,
+    "clear": 14,
+    "points": 14,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 14,
+        "after": 14,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.14",
+        "delta": 276,
+        "faults": 1,
+        "before": 14,
+        "after": 14,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.09100000000000001",
+        "delta": 236,
+        "faults": 0,
+        "before": 14,
+        "after": 14,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "nova_cat",
+    "parts": 17,
+    "cells": 8669,
+    "faults": 0,
+    "clear": 5,
+    "points": 5,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 5,
+        "after": 5,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.18",
+        "delta": 0,
+        "faults": 0,
+        "before": 5,
+        "after": 5,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.11699999999999999",
+        "delta": 0,
+        "faults": 0,
+        "before": 5,
+        "after": 5,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.072",
+        "delta": 0,
+        "faults": 0,
+        "before": 5,
+        "after": 5,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "cougar",
+    "parts": 21,
+    "cells": 8115,
+    "faults": 0,
+    "clear": 22,
+    "points": 22,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 22,
+        "after": 22,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.15",
+        "delta": 0,
+        "faults": 0,
+        "before": 22,
+        "after": 22,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.0975",
+        "delta": 0,
+        "faults": 0,
+        "before": 22,
+        "after": 22,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.06",
+        "delta": 0,
+        "faults": 0,
+        "before": 22,
+        "after": 22,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "kit_fox",
+    "parts": 19,
+    "cells": 5473,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.18",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.11699999999999999",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.072",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "fire_moth",
+    "parts": 17,
+    "cells": 4977,
+    "faults": 0,
+    "clear": 8,
+    "points": 8,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief ct 0.24",
+        "delta": 56,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": true
+      }
+    ]
+  },
+  {
+    "id": "crossbow",
+    "parts": 19,
+    "cells": 10352,
+    "faults": 0,
+    "clear": 42,
+    "points": 42,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.19",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.12350000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.07600000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 42,
+        "after": 42,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "ebon_jaguar",
+    "parts": 19,
+    "cells": 9382,
+    "faults": 0,
+    "clear": 2,
+    "points": 2,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.19",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.12350000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.07600000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 2,
+        "after": 2,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "huntsman",
+    "parts": 18,
+    "cells": 7711,
+    "faults": 0,
+    "clear": 8,
+    "points": 8,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.18",
+        "delta": 0,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.11699999999999999",
+        "delta": 0,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief l_shin/r_shin 0.072",
+        "delta": 0,
+        "faults": 0,
+        "before": 8,
+        "after": 8,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "kingfisher",
+    "parts": 17,
+    "cells": 10724,
+    "faults": 0,
+    "clear": 3,
+    "points": 3,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.14",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.09100000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief la/ra 0.05600000000000001",
+        "delta": 0,
+        "faults": 0,
+        "before": 3,
+        "after": 3,
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "turkina",
+    "parts": 21,
+    "cells": 14866,
+    "faults": 0,
+    "clear": 34,
+    "points": 34,
+    "history": [
+      {
+        "label": "Clear first three axial muzzle cells across all owners",
+        "delta": 0,
+        "faults": 0,
+        "before": 34,
+        "after": 34,
+        "accepted": false
+      },
+      {
+        "label": "Chassis-specific tapered armor relief hd 0.17",
+        "delta": 2,
+        "faults": 0,
+        "before": 34,
+        "after": 34,
+        "accepted": true
+      }
+    ]
+  }
+]
