@@ -1,0 +1,1600 @@
+{
+  "scope": 149,
+  "batch": 6,
+  "attempted": 12,
+  "cumulativeAttempted": 61,
+  "remaining": 88,
+  "registeredViews": 10,
+  "selectedMultiView": 0,
+  "selectedSingleView": 2,
+  "changed": 62,
+  "trials": 1096,
+  "metrics": {
+    "physical": [
+      0,
+      0
+    ],
+    "weak": [
+      0,
+      0
+    ],
+    "partIslands": [
+      0,
+      0
+    ],
+    "clear": [
+      175,
+      175
+    ],
+    "total": [
+      175,
+      175
+    ]
+  },
+  "baselineVerified": true,
+  "rows": [
+    {
+      "id": "behemoth",
+      "source": "data/voxels/behemoth_shape.json",
+      "selectedFrom": "batch_01.json",
+      "before": {
+        "cells": 10043,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 10043,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "Catalyst plastic side, variant uncertain; heavy occlusion",
+          "url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190723_Final_1200x1200.jpg?v=1708493590",
+          "score": 0.4388,
+          "camera": {
+            "yaw": 80,
+            "elev": 5,
+            "roll": -6,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 3183.2543837135568,
+            "tx": 324.6272042375053,
+            "ty": 223.553427323372,
+            "rmse": 8.31971107354414
+          },
+          "pose": {
+            "rl": 8.448796457046173,
+            "ll": 6.380957985945075
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": true
+        }
+      ],
+      "firstPassSelection": null,
+      "resultFile": "batch_06_a.json"
+    },
+    {
+      "id": "arctic_wolf",
+      "source": "data/voxels/arctic_wolf_shape.json",
+      "selectedFrom": "third_01.json",
+      "before": {
+        "cells": 3806,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 24,
+        "total": 24
+      },
+      "after": {
+        "cells": 3786,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 24,
+        "total": 24
+      },
+      "changed": 20,
+      "patches": [
+        {
+          "part": "ll_shin",
+          "shapes": [
+            {
+              "erase": [
+                [
+                  -6,
+                  10,
+                  6
+                ],
+                [
+                  -4,
+                  10,
+                  6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  11,
+                  6
+                ],
+                [
+                  -4,
+                  11,
+                  6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -5,
+                  11,
+                  7
+                ],
+                [
+                  -4,
+                  11,
+                  7
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -5,
+                  12,
+                  6
+                ],
+                [
+                  -4,
+                  12,
+                  6
+                ]
+              ]
+            }
+          ],
+          "count": 10
+        },
+        {
+          "part": "rl_shin",
+          "shapes": [
+            {
+              "erase": [
+                [
+                  3,
+                  10,
+                  6
+                ],
+                [
+                  5,
+                  10,
+                  6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  3,
+                  11,
+                  6
+                ],
+                [
+                  5,
+                  11,
+                  6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  3,
+                  11,
+                  7
+                ],
+                [
+                  4,
+                  11,
+                  7
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  3,
+                  12,
+                  6
+                ],
+                [
+                  4,
+                  12,
+                  6
+                ]
+              ]
+            }
+          ],
+          "count": 10
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.587
+        ],
+        "gain": 0.0015999999999999348,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 2,
+        "mode": "trim",
+        "amount": 2
+      },
+      "views": [
+        {
+          "class": "unofficial proxy, Prime variant unverified",
+          "url": "https://down-ph.img.susercontent.com/file/ph-11134207-7r991-lu9mdyvqbts9f9",
+          "score": 0.5854,
+          "camera": {
+            "yaw": 40,
+            "elev": 10,
+            "roll": -6,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2117.754251916221,
+            "tx": 247.2097976462444,
+            "ty": 210.98445364198932,
+            "rmse": 4.870659448189933
+          },
+          "pose": {
+            "rl": 17.186545892141584,
+            "ll": 27.736055936212004
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.587
+        ],
+        "gain": 0.0015999999999999348,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 2,
+        "mode": "trim",
+        "amount": 2
+      },
+      "resultFile": "batch_06_recheck_a.json"
+    },
+    {
+      "id": "cestus",
+      "source": "data/voxels/cestus_shape.json",
+      "selectedFrom": "batch_02.json",
+      "before": {
+        "cells": 5772,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 5772,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial resin 6Z, source 6X; variant mismatch",
+          "url": "https://theblacksheepindustries.com/cdn/shop/files/Screenshot2023-06-12101153_3cc0467b-263e-40b1-b8a5-e531df07f411.png?v=1776038691",
+          "score": 0.5541,
+          "camera": {
+            "yaw": -40,
+            "elev": 0,
+            "roll": 0,
+            "distance": 220,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2520.2434147945382,
+            "tx": 273.18684289612236,
+            "ty": 183.15274929730373,
+            "rmse": 16.69681787471249
+          },
+          "pose": {
+            "rl": 9.586466315707224,
+            "ll": 8.05851481354027
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": null,
+      "resultFile": "batch_06_recheck_a.json"
+    },
+    {
+      "id": "sunder",
+      "source": "data/voxels/sunder_shape.json",
+      "selectedFrom": "second_06.json",
+      "before": {
+        "cells": 5135,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "after": {
+        "cells": 5135,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "painted physical miniature, SD1-O configuration not independently confirmed",
+          "url": "https://images.dakkadakka.com/gallery/2020/7/13/1069000-Battletech%2C%20Mech%2C%20Sunder.jpg",
+          "score": 0.4751,
+          "camera": {
+            "yaw": -20,
+            "elev": 0,
+            "roll": 0,
+            "distance": 140,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1022.7882120039211,
+            "tx": 251.61502635648742,
+            "ty": 218.55931582786155,
+            "rmse": 28.42856695583966
+          },
+          "pose": {
+            "rl": 62.904337611380924,
+            "ll": 46.95471041117362
+          },
+          "fitOK": false,
+          "boundary": true,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.4712
+        ],
+        "gain": 0.006800000000000028,
+        "names": [
+          "la",
+          "ra"
+        ],
+        "axis": 2,
+        "mode": "expand",
+        "amount": 2
+      },
+      "resultFile": "batch_06_recheck_a.json"
+    },
+    {
+      "id": "shootist",
+      "source": "data/voxels/shootist_shape.json",
+      "selectedFrom": "batch_11.json",
+      "before": {
+        "cells": 6149,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 6149,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial physical resin proxy, ST-8A armament unverified",
+          "url": "https://i.etsystatic.com/23026726/r/il/69510e/5740242693/il_fullxfull.5740242693_m6lf.jpg",
+          "score": 0.6154,
+          "camera": {
+            "yaw": -45,
+            "elev": 0,
+            "roll": 6,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2537.1961320884857,
+            "tx": 229.2425054781755,
+            "ty": 215.83011313358708,
+            "rmse": 20.605074603571907
+          },
+          "pose": {
+            "rl": 33.99004775296105,
+            "ll": 35.38373200546513
+          },
+          "fitOK": false,
+          "boundary": true,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.4714
+        ],
+        "gain": 0.0040000000000000036,
+        "names": [
+          "la_forearm",
+          "ra_forearm"
+        ],
+        "axis": 2,
+        "mode": "trim",
+        "amount": 2
+      },
+      "resultFile": "batch_06_recheck_b.json"
+    },
+    {
+      "id": "thorn",
+      "source": "data/voxels/thorn_shape.json",
+      "selectedFrom": "batch_13.json",
+      "before": {
+        "cells": 3466,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 7,
+        "total": 7
+      },
+      "after": {
+        "cells": 3466,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 7,
+        "total": 7
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial catalog render, variant unknown",
+          "url": "https://i.etsystatic.com/23026726/r/il/84c259/5763138860/il_fullxfull.5763138860_p2c7.jpg",
+          "score": 0.5975,
+          "camera": {
+            "yaw": -45,
+            "elev": 0,
+            "roll": -6,
+            "distance": 90,
+            "target": [
+              0,
+              21.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 947.2561548705273,
+            "tx": 203.47751645436588,
+            "ty": 250.83519604173324,
+            "rmse": 12.756951907671896
+          },
+          "pose": {
+            "rl": 5.689848334760684,
+            "ll": 7.424745603485703
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.5365
+        ],
+        "gain": 0.0040000000000000036,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 0,
+        "mode": "trim",
+        "amount": 2
+      },
+      "resultFile": "batch_06_recheck_b.json"
+    },
+    {
+      "id": "wyvern",
+      "source": "data/voxels/wyvern_shape.json",
+      "selectedFrom": "batch_15.json",
+      "before": {
+        "cells": 6099,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 19,
+        "total": 19
+      },
+      "after": {
+        "cells": 6099,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 19,
+        "total": 19
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial 6N catalog render",
+          "url": "https://i.ebayimg.com/00/s/MTIwMFgxNjAw/z/K4MAAOSwYD5macIY/%24_57.PNG?set_id=880000500F",
+          "score": 0.527,
+          "camera": {
+            "yaw": -45,
+            "elev": 0,
+            "roll": 0,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2173.9790692050206,
+            "tx": 250.90135652465548,
+            "ty": 210.35803549304987,
+            "rmse": 20.7575299700098
+          },
+          "pose": {
+            "rl": 11.990271334708885,
+            "ll": 11.102793573711455
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.3659
+        ],
+        "gain": 0.0028000000000000247,
+        "names": [
+          "la_forearm",
+          "ra_forearm"
+        ],
+        "axis": 2,
+        "mode": "trim",
+        "amount": 2
+      },
+      "resultFile": "batch_06_recheck_b.json"
+    },
+    {
+      "id": "salamander",
+      "source": "data/voxels/salamander_shape.json",
+      "selectedFrom": "second_05.json",
+      "before": {
+        "cells": 11340,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 62,
+        "total": 62
+      },
+      "after": {
+        "cells": 11340,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 62,
+        "total": 62
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial catalog render, variant not confirmed",
+          "url": "https://i.etsystatic.com/23026726/r/il/96f870/6933570891/il_fullxfull.6933570891_bawy.jpg",
+          "score": 0.5426,
+          "camera": {
+            "yaw": -35,
+            "elev": 0,
+            "roll": -3,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 773.1444246166938,
+            "tx": 254.31852026505004,
+            "ty": 197.88424057321396,
+            "rmse": 6.400164654461239
+          },
+          "pose": {
+            "rl": 38.60530356078377,
+            "ll": 22.4890493769028
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.554
+        ],
+        "gain": 0.006500000000000061,
+        "names": [
+          "la_forearm",
+          "ra_forearm"
+        ],
+        "axis": 0,
+        "mode": "expand",
+        "amount": 2
+      },
+      "resultFile": "batch_06_recheck_b.json"
+    },
+    {
+      "id": "hermes",
+      "source": "data/voxels/hermes_shape.json",
+      "selectedFrom": "batch_06.json",
+      "before": {
+        "cells": 2114,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 2156,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 42,
+      "patches": [
+        {
+          "part": "ll_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  -6,
+                  10,
+                  0
+                ],
+                [
+                  -6,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  0
+                ],
+                [
+                  -3,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  10,
+                  1
+                ],
+                [
+                  -6,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  1
+                ],
+                [
+                  -3,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  10,
+                  2
+                ],
+                [
+                  -6,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  2
+                ],
+                [
+                  -3,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  -1
+                ],
+                [
+                  -3,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  11,
+                  0
+                ],
+                [
+                  -6,
+                  11,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -2,
+                  11,
+                  0
+                ],
+                [
+                  -2,
+                  11,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  11,
+                  1
+                ],
+                [
+                  -6,
+                  11,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -2,
+                  11,
+                  1
+                ],
+                [
+                  -2,
+                  11,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  11,
+                  2
+                ],
+                [
+                  -6,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -2,
+                  11,
+                  2
+                ],
+                [
+                  -2,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  11,
+                  -1
+                ],
+                [
+                  -3,
+                  11,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  11,
+                  3
+                ],
+                [
+                  -3,
+                  11,
+                  3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  12,
+                  0
+                ],
+                [
+                  -6,
+                  12,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -2,
+                  12,
+                  0
+                ],
+                [
+                  -2,
+                  12,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  12,
+                  1
+                ],
+                [
+                  -6,
+                  12,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -2,
+                  12,
+                  1
+                ],
+                [
+                  -2,
+                  12,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  12,
+                  2
+                ],
+                [
+                  -6,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -2,
+                  12,
+                  2
+                ],
+                [
+                  -2,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  12,
+                  3
+                ],
+                [
+                  -6,
+                  12,
+                  3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  12,
+                  3
+                ],
+                [
+                  -3,
+                  12,
+                  3
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 23
+        },
+        {
+          "part": "rl_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  4,
+                  10,
+                  -1
+                ],
+                [
+                  4,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  10,
+                  0
+                ],
+                [
+                  5,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  10,
+                  1
+                ],
+                [
+                  5,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  10,
+                  2
+                ],
+                [
+                  5,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  4,
+                  11,
+                  -1
+                ],
+                [
+                  4,
+                  11,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  4,
+                  11,
+                  3
+                ],
+                [
+                  4,
+                  11,
+                  3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  1,
+                  11,
+                  0
+                ],
+                [
+                  1,
+                  11,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  11,
+                  0
+                ],
+                [
+                  5,
+                  11,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  1,
+                  11,
+                  1
+                ],
+                [
+                  1,
+                  11,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  11,
+                  1
+                ],
+                [
+                  5,
+                  11,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  1,
+                  11,
+                  2
+                ],
+                [
+                  1,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  11,
+                  2
+                ],
+                [
+                  5,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  1,
+                  12,
+                  0
+                ],
+                [
+                  1,
+                  12,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  12,
+                  0
+                ],
+                [
+                  5,
+                  12,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  1,
+                  12,
+                  1
+                ],
+                [
+                  1,
+                  12,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  12,
+                  1
+                ],
+                [
+                  5,
+                  12,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  1,
+                  12,
+                  2
+                ],
+                [
+                  1,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  12,
+                  2
+                ],
+                [
+                  5,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  12,
+                  3
+                ],
+                [
+                  5,
+                  12,
+                  3
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 19
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.6451
+        ],
+        "gain": 0.0121,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 0,
+        "mode": "expand",
+        "amount": 1
+      },
+      "views": [
+        {
+          "class": "unofficial HER-1S catalog render, source 4WB variant mismatch",
+          "url": "https://i.ebayimg.com/00/s/MTAyNFgxMjgw/z/ZYUAAOSw8xVnBQ3r/%24_57.PNG?set_id=880000500F",
+          "score": 0.633,
+          "camera": {
+            "yaw": 15,
+            "elev": 25,
+            "roll": -6,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2021.8413205074357,
+            "tx": 247.11471972485526,
+            "ty": 240.4573795734553,
+            "rmse": 1.543127678794633
+          },
+          "pose": {
+            "rl": 9.589909395895619,
+            "ll": 10.785005315057607
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        }
+      ],
+      "firstPassSelection": {
+        "scores": [
+          0.6451
+        ],
+        "gain": 0.0121,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 0,
+        "mode": "expand",
+        "amount": 1
+      },
+      "resultFile": "batch_06_recheck_a.json"
+    },
+    {
+      "id": "champion",
+      "source": "data/voxels/champion_shape.json",
+      "selectedFrom": "third_01.json",
+      "before": {
+        "cells": 4230,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 4230,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial physical resin proxy, source 3P variant unverified",
+          "url": "https://i.etsystatic.com/23026726/r/il/aad09a/6432034478/il_fullxfull.6432034478_l8jg.jpg",
+          "score": 0.557,
+          "camera": {
+            "yaw": 45,
+            "elev": 0,
+            "roll": 3,
+            "distance": 140,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1285.0263204945197,
+            "tx": 277.4687043400235,
+            "ty": 200.58023082578484,
+            "rmse": 3.572688615724001
+          },
+          "pose": {
+            "rl": 42.07327789627865,
+            "ll": 20.857392689053555
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": true
+        }
+      ],
+      "firstPassSelection": null,
+      "resultFile": "batch_06_c.json"
+    },
+    {
+      "id": "hussar",
+      "source": "data/voxels/hussar_shape.json",
+      "selectedFrom": "second_03.json",
+      "before": {
+        "cells": 5658,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 1,
+        "total": 1
+      },
+      "after": {
+        "cells": 5658,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 1,
+        "total": 1
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "firstPassSelection": null,
+      "resultFile": "batch_06_c.json"
+    },
+    {
+      "id": "imp",
+      "source": "data/voxels/imp_shape.json",
+      "selectedFrom": "second_03.json",
+      "before": {
+        "cells": 12513,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 20,
+        "total": 20
+      },
+      "after": {
+        "cells": 12513,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 20,
+        "total": 20
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "firstPassSelection": null,
+      "resultFile": "batch_06_c.json"
+    }
+  ],
+  "limitations": "Ten single-view manual outline fits, no two-view registration. Actual Catalyst Stone Rhino photo and Sunder miniature photo were diagnostic/failed camera constraint respectively; other imagery is lower-priority unofficial proxy or catalog rendering; variant caveats. Two cropped exact variant technical illustrations were inspected qualitatively, not registered. Arctic Wolf and Hermes selected single-view proxy comparisons are strictly provisional, not verified official likeness. Five initial candidates were rejected after visually plausible camera yaw constraints. No full semantic masks, articulated arm fitting, Godot tests, full weapon-channel certification or production changes."
+}
