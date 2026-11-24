@@ -1,0 +1,1785 @@
+{
+  "id": "hunchback_experimental_batch03_p3",
+  "name": "Hunchback HBK-4G",
+  "unit": "hunchback_hbk4g",
+  "voxel_size": 0.05,
+  "subdivide": 2,
+  "legs": "plantigrade",
+  "notes": "All coordinates are voxel cells in one shared model grid: x right, y up, -z front. Pivots are joint points in the same grid.",
+  "materials": [
+    {
+      "name": "armor",
+      "color": "6b7a55",
+      "role": "armor"
+    },
+    {
+      "name": "plate",
+      "color": "8d9a74",
+      "role": "armor"
+    },
+    {
+      "name": "trim",
+      "color": "c9a45c",
+      "role": "armor"
+    },
+    {
+      "name": "gun",
+      "color": "3d4147",
+      "role": "armor"
+    },
+    {
+      "name": "glow",
+      "color": "7fd8ff",
+      "role": "armor"
+    },
+    {
+      "name": "frame",
+      "color": "7c8188",
+      "role": "structure"
+    },
+    {
+      "name": "joint",
+      "color": "8f959e",
+      "role": "structure"
+    }
+  ],
+  "parts": [
+    {
+      "name": "ct",
+      "loc": "CT",
+      "pivot": [
+        0,
+        19,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 19,
+                "polygon": [
+                  [
+                    -2.9,
+                    -4
+                  ],
+                  [
+                    2.4,
+                    -4
+                  ],
+                  [
+                    4,
+                    -2.4
+                  ],
+                  [
+                    4,
+                    2.4
+                  ],
+                  [
+                    2.4,
+                    4
+                  ],
+                  [
+                    -2.9,
+                    4
+                  ],
+                  [
+                    -4.5,
+                    2.4
+                  ],
+                  [
+                    -4.5,
+                    -2.4
+                  ]
+                ]
+              },
+              {
+                "at": 24,
+                "polygon": [
+                  [
+                    -4,
+                    -5
+                  ],
+                  [
+                    3.5,
+                    -5
+                  ],
+                  [
+                    5.5,
+                    -3
+                  ],
+                  [
+                    5.5,
+                    3
+                  ],
+                  [
+                    3.5,
+                    5
+                  ],
+                  [
+                    -4,
+                    5
+                  ],
+                  [
+                    -6,
+                    3
+                  ],
+                  [
+                    -6,
+                    -3
+                  ]
+                ]
+              },
+              {
+                "at": 29,
+                "polygon": [
+                  [
+                    -4.2,
+                    -4.5
+                  ],
+                  [
+                    3.7,
+                    -4.5
+                  ],
+                  [
+                    5.5,
+                    -2.7
+                  ],
+                  [
+                    5.5,
+                    2.7
+                  ],
+                  [
+                    3.7,
+                    4.5
+                  ],
+                  [
+                    -4.2,
+                    4.5
+                  ],
+                  [
+                    -6,
+                    2.7
+                  ],
+                  [
+                    -6,
+                    -2.7
+                  ]
+                ]
+              },
+              {
+                "at": 31,
+                "polygon": [
+                  [
+                    -2.8800000000000003,
+                    -3.8
+                  ],
+                  [
+                    2.48,
+                    -3.8
+                  ],
+                  [
+                    4,
+                    -2.28
+                  ],
+                  [
+                    4,
+                    2.28
+                  ],
+                  [
+                    2.48,
+                    3.8
+                  ],
+                  [
+                    -2.8800000000000003,
+                    3.8
+                  ],
+                  [
+                    -4.4,
+                    2.28
+                  ],
+                  [
+                    -4.4,
+                    -2.28
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "box": [
+            [
+              -3,
+              21,
+              -5
+            ],
+            [
+              2,
+              27,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -2,
+              22,
+              -6
+            ],
+            [
+              1,
+              25,
+              -6
+            ]
+          ],
+          "mat": "trim"
+        },
+        {
+          "box": [
+            [
+              -2,
+              21,
+              5
+            ],
+            [
+              1,
+              27,
+              5
+            ]
+          ],
+          "mat": "gun"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "hd",
+      "loc": "HD",
+      "parent": "ct",
+      "pivot": [
+        0,
+        30,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 30,
+                "polygon": [
+                  [
+                    -2,
+                    -6
+                  ],
+                  [
+                    1,
+                    -6
+                  ],
+                  [
+                    2,
+                    -5
+                  ],
+                  [
+                    2,
+                    -1
+                  ],
+                  [
+                    1,
+                    0
+                  ],
+                  [
+                    -2,
+                    0
+                  ],
+                  [
+                    -3,
+                    -1
+                  ],
+                  [
+                    -3,
+                    -5
+                  ]
+                ]
+              },
+              {
+                "at": 32,
+                "polygon": [
+                  [
+                    -2.3,
+                    -7
+                  ],
+                  [
+                    1.2999999999999998,
+                    -7
+                  ],
+                  [
+                    2.5,
+                    -5.8
+                  ],
+                  [
+                    2.5,
+                    -1.2000000000000002
+                  ],
+                  [
+                    1.2999999999999998,
+                    0
+                  ],
+                  [
+                    -2.3,
+                    0
+                  ],
+                  [
+                    -3.5,
+                    -1.2000000000000002
+                  ],
+                  [
+                    -3.5,
+                    -5.8
+                  ]
+                ]
+              },
+              {
+                "at": 35,
+                "polygon": [
+                  [
+                    -1.7,
+                    -5
+                  ],
+                  [
+                    0.7,
+                    -5
+                  ],
+                  [
+                    1.5,
+                    -4.2
+                  ],
+                  [
+                    1.5,
+                    -0.8
+                  ],
+                  [
+                    0.7,
+                    0
+                  ],
+                  [
+                    -1.7,
+                    0
+                  ],
+                  [
+                    -2.5,
+                    -0.8
+                  ],
+                  [
+                    -2.5,
+                    -4.2
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -2,
+              31,
+              -7
+            ],
+            [
+              1,
+              33,
+              -7
+            ]
+          ],
+          "mat": "glow"
+        },
+        {
+          "box": [
+            [
+              -1,
+              30,
+              -8
+            ],
+            [
+              0,
+              30,
+              -7
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -3,
+              35,
+              -4
+            ],
+            [
+              -2,
+              36,
+              -3
+            ]
+          ],
+          "mat": "trim"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "lt",
+      "loc": "LT",
+      "parent": "ct",
+      "pivot": [
+        0,
+        19,
+        0
+      ],
+      "shapes": [
+        {
+          "shell": [
+            [
+              -10,
+              20,
+              -4
+            ],
+            [
+              -5,
+              29,
+              4
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -10,
+              23,
+              -5
+            ],
+            [
+              -6,
+              28,
+              -5
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -11,
+              21,
+              -3
+            ],
+            [
+              -11,
+              27,
+              3
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -9,
+              21,
+              5
+            ],
+            [
+              -6,
+              25,
+              5
+            ]
+          ],
+          "mat": "gun"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "rt",
+      "mirror": "lt",
+      "parent": "ct",
+      "add": [],
+      "pivot": [
+        -1,
+        19,
+        0
+      ]
+    },
+    {
+      "name": "la",
+      "loc": "LA",
+      "parent": "lt",
+      "pivot": [
+        -12,
+        28,
+        0
+      ],
+      "joint": "shoulder",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -15,
+              25,
+              -4
+            ],
+            [
+              -11,
+              29,
+              4
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -14,
+              21,
+              -2
+            ],
+            [
+              -12,
+              24,
+              2
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "shell": [
+            [
+              -15,
+              16,
+              -3
+            ],
+            [
+              -11,
+              20,
+              3
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -14,
+              14,
+              -2
+            ],
+            [
+              -12,
+              15,
+              1
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -14,
+              17,
+              -8
+            ],
+            [
+              -13,
+              18,
+              -4
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -14,
+              17,
+              -9
+            ],
+            [
+              -13,
+              18,
+              -9
+            ]
+          ],
+          "mat": "glow"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "ra",
+      "mirror": "la",
+      "parent": "rt",
+      "pivot": [
+        11,
+        28,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "ll",
+      "loc": "LL",
+      "pivot": [
+        -5,
+        19,
+        0
+      ],
+      "joint": "hip",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -8,
+              12,
+              -3
+            ],
+            [
+              -3,
+              18,
+              3
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -8,
+              17,
+              -4
+            ],
+            [
+              -3,
+              18,
+              4
+            ]
+          ],
+          "mat": "joint"
+        },
+        {
+          "box": [
+            [
+              -5,
+              18,
+              -1
+            ],
+            [
+              -3,
+              19,
+              1
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "ll_shin",
+      "loc": "LL",
+      "parent": "ll",
+      "pivot": [
+        -5,
+        12,
+        0
+      ],
+      "joint": "knee",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -8,
+              3,
+              -3
+            ],
+            [
+              -3,
+              11,
+              3
+            ]
+          ],
+          "mat": "armor",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -8,
+              8,
+              -4
+            ],
+            [
+              -3,
+              11,
+              -4
+            ]
+          ],
+          "mat": "plate"
+        },
+        {
+          "box": [
+            [
+              -7,
+              4,
+              4
+            ],
+            [
+              -4,
+              8,
+              4
+            ]
+          ],
+          "mat": "gun"
+        },
+        {
+          "box": [
+            [
+              -6,
+              11,
+              -1
+            ],
+            [
+              -4,
+              12,
+              1
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "ll_foot",
+      "loc": "LL",
+      "parent": "ll_shin",
+      "pivot": [
+        -5,
+        3,
+        0
+      ],
+      "joint": "ankle",
+      "shapes": [
+        {
+          "shell": [
+            [
+              -8,
+              0,
+              -8
+            ],
+            [
+              -3,
+              2,
+              3
+            ]
+          ],
+          "mat": "plate",
+          "core": "frame"
+        },
+        {
+          "box": [
+            [
+              -8,
+              0,
+              -9
+            ],
+            [
+              -3,
+              1,
+              -9
+            ]
+          ],
+          "mat": "trim"
+        },
+        {
+          "box": [
+            [
+              -6,
+              2,
+              -1
+            ],
+            [
+              -4,
+              3,
+              1
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    },
+    {
+      "name": "rl",
+      "mirror": "ll",
+      "pivot": [
+        4,
+        19,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "rl_shin",
+      "mirror": "ll_shin",
+      "parent": "rl",
+      "pivot": [
+        4,
+        12,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "rl_foot",
+      "mirror": "ll_foot",
+      "parent": "rl_shin",
+      "pivot": [
+        4,
+        3,
+        0
+      ],
+      "add": []
+    },
+    {
+      "name": "rt_hunch",
+      "loc": "RT",
+      "parent": "rt",
+      "pivot": [
+        8,
+        28,
+        0
+      ],
+      "shapes": [
+        {
+          "loft": {
+            "axis": "y",
+            "sections": [
+              {
+                "at": 25,
+                "polygon": [
+                  [
+                    5.2,
+                    -4
+                  ],
+                  [
+                    8.8,
+                    -4
+                  ],
+                  [
+                    10,
+                    -2.8
+                  ],
+                  [
+                    10,
+                    2.8
+                  ],
+                  [
+                    8.8,
+                    4
+                  ],
+                  [
+                    5.2,
+                    4
+                  ],
+                  [
+                    4,
+                    2.8
+                  ],
+                  [
+                    4,
+                    -2.8
+                  ]
+                ]
+              },
+              {
+                "at": 30,
+                "polygon": [
+                  [
+                    5.92,
+                    -5.8
+                  ],
+                  [
+                    10.48,
+                    -5.8
+                  ],
+                  [
+                    12,
+                    -4.279999999999999
+                  ],
+                  [
+                    12,
+                    3.48
+                  ],
+                  [
+                    10.48,
+                    5
+                  ],
+                  [
+                    5.92,
+                    5
+                  ],
+                  [
+                    4.4,
+                    3.48
+                  ],
+                  [
+                    4.4,
+                    -4.279999999999999
+                  ]
+                ]
+              },
+              {
+                "at": 36,
+                "polygon": [
+                  [
+                    6.4,
+                    -5.5
+                  ],
+                  [
+                    10.6,
+                    -5.5
+                  ],
+                  [
+                    12,
+                    -4.1
+                  ],
+                  [
+                    12,
+                    3.0999999999999996
+                  ],
+                  [
+                    10.6,
+                    4.5
+                  ],
+                  [
+                    6.4,
+                    4.5
+                  ],
+                  [
+                    5,
+                    3.0999999999999996
+                  ],
+                  [
+                    5,
+                    -4.1
+                  ]
+                ]
+              },
+              {
+                "at": 40,
+                "polygon": [
+                  [
+                    7,
+                    -4.1
+                  ],
+                  [
+                    10,
+                    -4.1
+                  ],
+                  [
+                    11,
+                    -3.0999999999999996
+                  ],
+                  [
+                    11,
+                    2.8
+                  ],
+                  [
+                    10,
+                    3.8
+                  ],
+                  [
+                    7,
+                    3.8
+                  ],
+                  [
+                    6,
+                    2.8
+                  ],
+                  [
+                    6,
+                    -3.0999999999999996
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "armor"
+        },
+        {
+          "loft": {
+            "axis": "z",
+            "sections": [
+              {
+                "at": -14,
+                "polygon": [
+                  [
+                    6.82,
+                    31
+                  ],
+                  [
+                    10.18,
+                    31
+                  ],
+                  [
+                    11.5,
+                    32.32
+                  ],
+                  [
+                    11.5,
+                    35.68
+                  ],
+                  [
+                    10.18,
+                    37
+                  ],
+                  [
+                    6.82,
+                    37
+                  ],
+                  [
+                    5.5,
+                    35.68
+                  ],
+                  [
+                    5.5,
+                    32.32
+                  ]
+                ]
+              },
+              {
+                "at": -10,
+                "polygon": [
+                  [
+                    6.19,
+                    30
+                  ],
+                  [
+                    10.81,
+                    30
+                  ],
+                  [
+                    12,
+                    31.19
+                  ],
+                  [
+                    12,
+                    36.81
+                  ],
+                  [
+                    10.81,
+                    38
+                  ],
+                  [
+                    6.19,
+                    38
+                  ],
+                  [
+                    5,
+                    36.81
+                  ],
+                  [
+                    5,
+                    31.19
+                  ]
+                ]
+              },
+              {
+                "at": -4,
+                "polygon": [
+                  [
+                    5.86,
+                    29.5
+                  ],
+                  [
+                    11.14,
+                    29.5
+                  ],
+                  [
+                    12.5,
+                    30.86
+                  ],
+                  [
+                    12.5,
+                    36.64
+                  ],
+                  [
+                    11.14,
+                    38
+                  ],
+                  [
+                    5.86,
+                    38
+                  ],
+                  [
+                    4.5,
+                    36.64
+                  ],
+                  [
+                    4.5,
+                    30.86
+                  ]
+                ]
+              }
+            ]
+          },
+          "mat": "gun"
+        },
+        {
+          "erase": [
+            [
+              7,
+              33,
+              -14
+            ],
+            [
+              9,
+              35,
+              -12
+            ]
+          ]
+        },
+        {
+          "box": [
+            [
+              5,
+              26,
+              -2
+            ],
+            [
+              8,
+              29,
+              2
+            ]
+          ],
+          "mat": "frame"
+        }
+      ],
+      "add": []
+    }
+  ],
+  "muzzles": {
+    "RT": [
+      7,
+      33,
+      -14
+    ],
+    "LA": [
+      -13,
+      18,
+      -9
+    ],
+    "RA": [
+      13,
+      18,
+      -9
+    ],
+    "HD": [
+      0,
+      30.5,
+      -8
+    ]
+  },
+  "weapons": [
+    {
+      "label": "AC/20",
+      "locs": [
+        "RT"
+      ],
+      "kind": "cannon"
+    },
+    {
+      "label": "LASERS",
+      "locs": [
+        "LA",
+        "RA",
+        "HD"
+      ],
+      "kind": "laser"
+    }
+  ],
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "pass1": {
+    "changes": [
+      "Tapered compact torso and helmet",
+      "Independent asymmetric right-shoulder AC/20 hunch"
+    ],
+    "rejected": [
+      {
+        "rejected": "Polygonal upper and lower limbs",
+        "a": {
+          "voxels": 5992,
+          "islands": [],
+          "parts": [],
+          "weak": [
+            {
+              "part": "la",
+              "parent": "lt",
+              "overlap": 0
+            },
+            {
+              "part": "ra",
+              "parent": "rt",
+              "overlap": 0
+            },
+            {
+              "part": "ll",
+              "parent": "ct",
+              "overlap": 0
+            },
+            {
+              "part": "ll_shin",
+              "parent": "ll",
+              "overlap": 0
+            },
+            {
+              "part": "ll_foot",
+              "parent": "ll_shin",
+              "overlap": 0
+            },
+            {
+              "part": "rl",
+              "parent": "ct",
+              "overlap": 0
+            },
+            {
+              "part": "rl_shin",
+              "parent": "rl",
+              "overlap": 0
+            },
+            {
+              "part": "rl_foot",
+              "parent": "rl_shin",
+              "overlap": 0
+            }
+          ]
+        }
+      }
+    ],
+    "baseline_audit": {
+      "voxels": 6105,
+      "islands": [],
+      "parts": [],
+      "weak": [
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ]
+    },
+    "audit": {
+      "voxels": 6302,
+      "islands": [],
+      "parts": [],
+      "weak": [
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ]
+    }
+  },
+  "pass2": {
+    "repairs": [
+      "ll → ct: local structural sleeve (gap 1)",
+      "ll_shin → ll: local structural sleeve (gap 1)",
+      "ll_foot → ll_shin: local structural sleeve (gap 1)"
+    ],
+    "audit": {
+      "voxels": 6308,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    }
+  },
+  "experimental_photo_fit": {
+    "method": "Manually traced visible component bounds; independently optimized orthographic pose/camera; no pixel IoU claim.",
+    "references": [
+      {
+        "url": "https://www.rpgminihunter.com.au/cdn/shop/files/Fit_P1190402_Final_1200x1200.jpg?v=1708317528",
+        "quality": "unpainted Catalyst Urban Lance HBK-4G",
+        "baseline_rmse": 38.85433394910362,
+        "refined_rmse": 38.85433394910362,
+        "parameters": {
+          "yaw": -51,
+          "pitch": -1,
+          "roll": 3,
+          "la": 30,
+          "ra": -30,
+          "ll": -30,
+          "rl": 19,
+          "ll_shin": -6,
+          "rl_shin": -12,
+          "laSpread": -22,
+          "raSpread": 30,
+          "llSpread": 25,
+          "rlSpread": -18
+        },
+        "swap_bilateral": true,
+        "scale": 8.497070928416969,
+        "dx": 267.34104387938817,
+        "dy": 375.0205902885913,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              226,
+              51,
+              294,
+              119
+            ],
+            "projected": [
+              219.40438963546075,
+              67.34228307406983,
+              280.770538570383,
+              120.05778641974703
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              193,
+              98,
+              341,
+              209
+            ],
+            "projected": [
+              223.2356556951535,
+              118.41185661626685,
+              317.6399127769615,
+              215.46798137774317
+            ]
+          },
+          {
+            "part": "rt_hunch",
+            "model": "rt_hunch",
+            "target": [
+              170,
+              35,
+              240,
+              139
+            ],
+            "projected": [
+              213.1148135919022,
+              60.34109604394479,
+              365.40048296399436,
+              157.83601617795765
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "rt",
+            "target": [
+              337,
+              87,
+              389,
+              150
+            ],
+            "projected": [
+              209.81099021023496,
+              59.846780515138676,
+              363.1668420492653,
+              208.5760460342838
+            ]
+          },
+          {
+            "part": "la",
+            "model": "ra",
+            "target": [
+              366,
+              124,
+              433,
+              213
+            ],
+            "projected": [
+              310.21850578973783,
+              106.98569191242126,
+              430.1568805234482,
+              239.10103137493266
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "la",
+            "target": [
+              119,
+              115,
+              195,
+              237
+            ],
+            "projected": [
+              106.31647169908354,
+              101.82573477542678,
+              243.81114572714682,
+              231.32441537110907
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "rl",
+            "target": [
+              190,
+              205,
+              256,
+              292
+            ],
+            "projected": [
+              241.8639710077625,
+              204.26138246241538,
+              330.1273193941562,
+              283.96033716380276
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "ll",
+            "target": [
+              292,
+              191,
+              358,
+              273
+            ],
+            "projected": [
+              219.74774821371994,
+              199.06682652070754,
+              307.77747856855245,
+              282.37656917549464
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "rl_shin",
+            "target": [
+              191,
+              277,
+              261,
+              388
+            ],
+            "projected": [
+              213.9038461249207,
+              262.35801435014383,
+              299.26425014622356,
+              350.26508395708663
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "ll_shin",
+            "target": [
+              294,
+              264,
+              361,
+              341
+            ],
+            "projected": [
+              256.6919080828447,
+              248.6155100112797,
+              354.53723541804953,
+              343.30974829141627
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "rl_foot",
+            "target": [
+              191,
+              365,
+              264,
+              433
+            ],
+            "projected": [
+              167.59107430986091,
+              328.73820498582495,
+              273.50176010540537,
+              373.9792823591742
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "ll_foot",
+            "target": [
+              283,
+              318,
+              352,
+              355
+            ],
+            "projected": [
+              288.10796336003074,
+              307.4303004528288,
+              370.66244216026894,
+              388.14802400760055
+            ]
+          }
+        ]
+      }
+    ],
+    "changes": [],
+    "validation": {
+      "cells": 6308,
+      "whole_components": [
+        6308
+      ],
+      "issues": [],
+      "penalty": 0
+    },
+    "baseline_audit": {
+      "cells": 6308,
+      "whole_components": [
+        6308
+      ],
+      "issues": [],
+      "penalty": 0
+    }
+  },
+  "experimental_reconstruction": {
+    "pass": 3,
+    "notes": [
+      "Raised asymmetric AC/20 hunch with actual bore; removed redundant right torso overlay; broader center chest."
+    ],
+    "source": "p2",
+    "repair": [],
+    "validation": {
+      "cells": 6436,
+      "whole": [
+        6436
+      ],
+      "parts": [
+        {
+          "part": "ct",
+          "components": [
+            1196
+          ]
+        },
+        {
+          "part": "hd",
+          "components": [
+            188
+          ]
+        },
+        {
+          "part": "lt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "rt",
+          "components": [
+            639
+          ]
+        },
+        {
+          "part": "la",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ra",
+          "components": [
+            508
+          ]
+        },
+        {
+          "part": "ll",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "ll_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "ll_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rl",
+          "components": [
+            327
+          ]
+        },
+        {
+          "part": "rl_shin",
+          "components": [
+            431
+          ]
+        },
+        {
+          "part": "rl_foot",
+          "components": [
+            237
+          ]
+        },
+        {
+          "part": "rt_hunch",
+          "components": [
+            1377
+          ]
+        }
+      ],
+      "joints": [
+        {
+          "part": "hd",
+          "parent": "ct",
+          "overlap": 39,
+          "contact": 240
+        },
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 121,
+          "contact": 719
+        },
+        {
+          "part": "rt",
+          "parent": "ct",
+          "overlap": 68,
+          "contact": 415
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 21,
+          "contact": 184
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 9,
+          "contact": 59
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 6,
+          "contact": 44
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 9,
+          "contact": 87
+        },
+        {
+          "part": "rt_hunch",
+          "parent": "rt",
+          "overlap": 258,
+          "contact": 1478
+        }
+      ],
+      "pass": true
+    },
+    "limitations": "Neutral low-resolution geometry audit, not Godot runtime or completed photographic multi-view match. P2 fit parameters are stale until P3 is refitted."
+  }
+}
