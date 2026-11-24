@@ -655,36 +655,6 @@
               4
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -1,
-              26,
-              -8
-            ],
-            [
-              1,
-              28,
-              -6
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -1,
-              32,
-              5
-            ],
-            [
-              1,
-              34,
-              7
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -764,27 +734,27 @@
                   ],
                   [
                     2,
-                    -6
+                    -6.1
                   ],
                   [
                     2,
-                    -1
+                    -1.6
                   ],
                   [
                     1,
-                    0
+                    -0.7
                   ],
                   [
                     -2,
-                    0
+                    -0.7
                   ],
                   [
                     -3,
-                    -1
+                    -1.6
                   ],
                   [
                     -3,
-                    -6
+                    -6.1
                   ]
                 ]
               },
@@ -793,35 +763,35 @@
                 "polygon": [
                   [
                     -2.32,
-                    -9.5
+                    -9.25
                   ],
                   [
                     1.5199999999999996,
-                    -9.5
+                    -9.25
                   ],
                   [
                     2.8,
-                    -8.219999999999999
+                    -8.098
                   ],
                   [
                     2.8,
-                    -1.2800000000000002
+                    -1.852
                   ],
                   [
                     1.5199999999999996,
-                    0
+                    -0.7
                   ],
                   [
                     -2.32,
-                    0
+                    -0.7
                   ],
                   [
                     -3.6,
-                    -1.2800000000000002
+                    -1.852
                   ],
                   [
                     -3.6,
-                    -8.219999999999999
+                    -8.098
                   ]
                 ]
               },
@@ -830,35 +800,35 @@
                 "polygon": [
                   [
                     -1.6,
-                    -6
+                    -6.1
                   ],
                   [
                     1.1,
-                    -6
+                    -6.1
                   ],
                   [
                     2,
-                    -5.1
+                    -5.29
                   ],
                   [
                     2,
-                    -0.9
+                    -1.51
                   ],
                   [
                     1.1,
-                    0
+                    -0.7
                   ],
                   [
                     -1.6,
-                    0
+                    -0.7
                   ],
                   [
                     -2.5,
-                    -0.9
+                    -1.51
                   ],
                   [
                     -2.5,
-                    -5.1
+                    -5.29
                   ]
                 ]
               }
@@ -2265,21 +2235,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -15,
-              32,
-              -1
-            ],
-            [
-              -15,
-              34,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -2645,21 +2600,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -16,
-              27,
-              1
-            ],
-            [
-              -15,
-              29,
-              3
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": []
@@ -2951,21 +2891,6 @@
               -4
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -6,
-              22,
-              -1
-            ],
-            [
-              -5,
-              24,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -3414,21 +3339,6 @@
             ]
           },
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -9,
-              13,
-              -1
-            ],
-            [
-              -7,
-              14,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -3637,21 +3547,6 @@
             ]
           ],
           "mat": "joint"
-        },
-        {
-          "box": [
-            [
-              -10,
-              4,
-              -6
-            ],
-            [
-              -8,
-              5,
-              -4
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -3958,7 +3853,7 @@
     "geometry_source": "post-213 strong-joint 151-model sculpt",
     "reason": "Structural restoration retains 100-pass historic review lineage; do not restore disconnected decorative parts."
   },
-  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only.",
   "pass1": {
     "changes": [
       "Broad chest with recessed central cockpit and narrow waist",
@@ -4177,21 +4072,236 @@
       ]
     }
   },
-  "pass2": {
-    "repairs": [
-      "ct: supported 30-cell local mass (gap 2)",
-      "ct: supported 20-cell local mass (gap 2)",
-      "lt_rack → lt: local structural sleeve (gap 0)",
-      "la → lt: local structural sleeve (gap 1)",
-      "ll → ct: local structural sleeve (gap 1)",
-      "ll_shin → ll: local structural sleeve (gap 1)",
-      "ll_foot → ll_shin: local structural sleeve (gap 1)"
+  "experimental_photo_fit": {
+    "method": "Approximate manually traced visible part bounds; per-view orthographic camera and articulated pose; geometry changes gated by neutral voxel connectivity penalty. Not pixel-mask IoU; not a multi-angle validated plastic match.",
+    "references": [
+      {
+        "url": "https://images.dakkadakka.com/s/i/gallery/img/2023/2/11/1159864.jpg",
+        "quality": "Catalyst ARC-2R, front high oblique, cropped legs",
+        "baseline_rmse": 41.84915536192105,
+        "refined_rmse": 41.363319413658736,
+        "parameters": {
+          "yaw": -24,
+          "pitch": 26,
+          "roll": -4,
+          "la": 18,
+          "ra": -2,
+          "ll": 26,
+          "rl": 16,
+          "ll_shin": 0,
+          "rl_shin": 0,
+          "laSpread": -38,
+          "raSpread": 25,
+          "llSpread": -25,
+          "rlSpread": 25
+        },
+        "swap_bilateral": false,
+        "scale": 10.270313175186066,
+        "dx": 283.98915197039463,
+        "dy": 499.5566468174909,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              171,
+              177,
+              258,
+              298
+            ],
+            "projected": [
+              191.17333349264584,
+              137.6643904547558,
+              268.1420921842402,
+              220.45321104174502
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              181,
+              57,
+              314,
+              296
+            ],
+            "projected": [
+              172.40369320396462,
+              127.37058293471466,
+              331.3043471771135,
+              312.07948912404703
+            ]
+          },
+          {
+            "part": "lt_rack",
+            "model": "lt_rack",
+            "target": [
+              95,
+              18,
+              198,
+              255
+            ],
+            "projected": [
+              10.505130677707484,
+              85.29651371758462,
+              123.24046292183507,
+              223.96336822714136
+            ]
+          },
+          {
+            "part": "rt_rack",
+            "model": "rt_rack",
+            "target": [
+              295,
+              32,
+              410,
+              275
+            ],
+            "projected": [
+              323.585432936226,
+              123.9814112004484,
+              438.7082426588698,
+              262.64826571000515
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              10,
+              185,
+              110,
+              335
+            ],
+            "projected": [
+              0.05621935336404249,
+              203.2244767850588,
+              122.84612784475843,
+              347.394003219561
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              389,
+              171,
+              492,
+              430
+            ],
+            "projected": [
+              378.0337500054826,
+              244.55222263311757,
+              499.68708662435154,
+              406.7758941803913
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              111,
+              289,
+              191,
+              434
+            ],
+            "projected": [
+              127.09416850588954,
+              266.81621841804684,
+              209.5692383771333,
+              379.830524871228
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              300,
+              292,
+              397,
+              434
+            ],
+            "projected": [
+              305.0011040084939,
+              287.23773506560974,
+              398.3321312236252,
+              398.75022982618987
+            ]
+          }
+        ]
+      }
     ],
-    "audit": {
-      "voxels": 8474,
-      "islands": [],
-      "parts": [],
-      "weak": []
+    "changes": [
+      {
+        "part": "hd",
+        "axis": "z",
+        "factor": 0.9
+      }
+    ],
+    "validation": {
+      "cells": 8362,
+      "whole_components": [
+        8312,
+        30,
+        20
+      ],
+      "issues": [
+        {
+          "part": "ct",
+          "islands": 50
+        },
+        {
+          "part": "lt_rack",
+          "parent": "lt",
+          "overlap": 2
+        },
+        {
+          "part": "rt_rack",
+          "parent": "rt",
+          "overlap": 2
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 0
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ],
+      "penalty": 136
     }
   }
 }
