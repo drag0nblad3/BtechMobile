@@ -70,6 +70,12 @@ jobs:
           godot --headless -s tools/academy_smoke.gd 2>&1 | tee academy-smoke.log
           grep -q "academy cinematic forensic smoke ok" academy-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" academy-smoke.log
+      - name: Campaign route smoke
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/campaign_smoke.gd 2>&1 | tee campaign-smoke.log
+          grep -q "CAMPAIGN SMOKE OK" campaign-smoke.log
+          ! grep -E "SCRIPT ERROR|Parse Error" campaign-smoke.log
       - name: Unit tests
         run: |
           set -o pipefail

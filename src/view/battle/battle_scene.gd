@@ -25,6 +25,7 @@ var tutorial: Tutorial
 var practice: TrainingPractice
 var lessons: LessonCard
 var training := -1  ## Training campaign mission index, -1 outside training.
+var in_campaign := false  ## A campaign company battle (CampaignStore).
 var objectives: Node3D
 var off_field: HiddenInput
 var recorder := BattleRecorder.new()
@@ -70,6 +71,10 @@ func _ready() -> void:
 		bots.lessons = lessons
 	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
+	if saved.is_empty() and not BattleLaunch.campaign:
+		CampaignStore.drop_pending()  # its autosave is about to be replaced
+	in_campaign = not CampaignStore.pending_roster().is_empty()
+	BattleLaunch.campaign = false
 	if training >= 0:
 		var campaign := TrainingCampaign.load_file()
 		if training < campaign.missions.size():
@@ -134,6 +139,7 @@ func _exit_to_menu() -> void:
 		return
 	get_tree().paused = false
 	BattleLaunch.open_training = training >= 0
+	BattleLaunch.open_campaign = in_campaign
 	get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
 
 
@@ -274,6 +280,7 @@ func _wire() -> void:
 	hud.battle_forensics.connect(_open_forensics)
 	hud.new_battle.connect(func():
 			BattleLaunch.open_training = training >= 0
+			BattleLaunch.open_campaign = in_campaign
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
@@ -469,8 +476,10 @@ func _on_event(e: GameEvent) -> void:
 			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
-			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides,
-					int(e.data.get("winner", -1)), practice))
+			var after := TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1)), practice)
+			if in_campaign:
+				after = CampaignStore.finish(s, 0, int(e.data.get("winner", -1)), recorder.frames)
+			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), after)
 			attacks.clear()
 			movement.clear_selection()
 	scars.on_event(e)

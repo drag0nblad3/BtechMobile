@@ -145,6 +145,9 @@ func _ready() -> void:
 	if BattleLaunch.open_training:
 		BattleLaunch.open_training = false
 		open_training.call_deferred()
+	if BattleLaunch.open_campaign:
+		BattleLaunch.open_campaign = false
+		open_campaign.call_deferred()
 
 
 func _show_page(page: int) -> void:
@@ -278,6 +281,13 @@ func open_training() -> void:
 	var t := TrainingScreen.new()
 	t.db = db
 	add_child(t)
+
+
+## The campaign company between battles (see Campaign).
+func open_campaign() -> void:
+	var c := CampaignScreen.new()
+	c.db = db
+	add_child(c)
 
 
 func _start() -> void:

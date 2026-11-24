@@ -5,7 +5,8 @@ extends SceneTree
 ## first enemy targeted) · sheet (record sheet open) · menu (force builder) · setupmenu (its Battlefield page) · clanmenu (its Clan list) ·
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
 ## jump (mid-air jump-jet preview) · tutorial (training battle, first lesson) · rolls (sample roll feed) ·
-## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played).
+## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played) ·
+## campaign (company screen after one battle; replaces user://campaign.json).
 
 var _frames := 0
 var _scene: Node
@@ -65,9 +66,33 @@ func _initialize() -> void:
 	if _mode == "notebook":
 		GameSettings.load_settings()
 		GameSettings.training = {"first_steps": {"won": true, "kills": 1}, "woods": {"won": false, "kills": 0}}
-	var path := "res://scenes/launcher.tscn" if _mode == "launcher" else "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training else "res://scenes/main.tscn"
+	if _mode == "campaign":
+		_sample_company()
+	var path := "res://scenes/launcher.tscn" if _mode == "launcher" else "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training or BattleLaunch.open_campaign else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
+
+
+## A company after one battle: one 'Mech hurt, its pilot wounded.
+func _sample_company() -> void:
+	var c := Campaign.create(CampaignRules.load_file(), ChaosRules.load_file())
+	var u := c.mechs[0].to_unit(UnitDb.load_dir(), 1, 0, Pilot.new())
+	u.armor[Location.LA] = 0
+	u.structure[Location.LA] -= 4
+	u.armor[Location.CT] -= 9
+	u.slots[Location.LA][2].hit = true
+	c.mechs[0].condition = MechCondition.lasting(u)
+	c.pilots[0].wounds = 1
+	c.pilots[1].kills = 1
+	for p in c.pilots:
+		p.battles = 1
+	c.battles = 1
+	c.last_report.assign(["Battle 1: victory.", "Captain Ada Rhee's Wolverine WVR-6R needs repairs.",
+		"Lt. Joss Marek fought, 1 kill.", "✓ Advance Attack (300 WP)", "✗ Frugal is the Word (300 WP)",
+		"Warchest: +300 WP, now 550 WP."])
+	c.wp = 550
+	CampaignStore.save(c)
+	BattleLaunch.open_campaign = true
 
 
 func _process(_delta: float) -> bool:
