@@ -207,35 +207,35 @@
                 "polygon": [
                   [
                     -3.54561,
-                    -6.0
+                    -6
                   ],
                   [
                     -0.88639,
-                    -8.0
+                    -8
                   ],
                   [
                     0.88639,
-                    -9.0
+                    -9
                   ],
                   [
                     4.432,
-                    -6.0
+                    -6
                   ],
                   [
                     5.31841,
-                    2.0
+                    2
                   ],
                   [
                     3.54561,
-                    6.0
+                    6
                   ],
                   [
                     -3.54561,
-                    6.0
+                    6
                   ],
                   [
                     -5.31841,
-                    2.0
+                    2
                   ]
                 ]
               },
@@ -244,35 +244,35 @@
                 "polygon": [
                   [
                     -3.93957,
-                    -6.0
+                    -6
                   ],
                   [
                     -0.98489,
-                    -8.0
+                    -8
                   ],
                   [
                     0.98489,
-                    -9.0
+                    -9
                   ],
                   [
                     4.92445,
-                    -6.0
+                    -6
                   ],
                   [
                     5.90934,
-                    2.0
+                    2
                   ],
                   [
                     3.93957,
-                    6.0
+                    6
                   ],
                   [
                     -3.93957,
-                    6.0
+                    6
                   ],
                   [
                     -5.90934,
-                    2.0
+                    2
                   ]
                 ]
               },
@@ -360,23 +360,26 @@
             ]
           ],
           "mat": "glass"
+        },
+        {
+          "box": [
+            [
+              -3,
+              6,
+              -3
+            ],
+            [
+              3,
+              7,
+              3
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     }
   ],
-  "count_verified_fine_voxels": 30832,
-  "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
-  "reference_review_views": [
-    "front",
-    "side",
-    "rear",
-    "top",
-    "three_quarter"
-  ],
-  "shape_review_50": {
-    "passes": 50,
-    "edited_vertices": 0,
-    "stages_with_changes": 0
-  }
+  "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
+  "exclusive_parts": true,
+  "support_sculpt_revision": "source-mass-and-profile-20261124"
 }

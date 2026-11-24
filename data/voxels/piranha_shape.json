@@ -2658,7 +2658,69 @@
           ]
         }
       ],
-      "parent": "ct"
+      "parent": "ct",
+      "add": [
+        {
+          "box": [
+            [
+              -5,
+              24,
+              -1
+            ],
+            [
+              -5,
+              24,
+              -1
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -5,
+              25,
+              -1
+            ],
+            [
+              -5,
+              25,
+              -1
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -5,
+              24,
+              0
+            ],
+            [
+              -5,
+              24,
+              0
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -5,
+              25,
+              0
+            ],
+            [
+              -5,
+              25,
+              0
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "rt",
@@ -2899,6 +2961,62 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              4,
+              24,
+              -1
+            ],
+            [
+              4,
+              24,
+              -1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              25,
+              -1
+            ],
+            [
+              4,
+              25,
+              -1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              24,
+              0
+            ],
+            [
+              4,
+              24,
+              0
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              4,
+              25,
+              0
+            ],
+            [
+              4,
+              25,
+              0
+            ]
+          ]
         }
       ]
     },
@@ -3773,7 +3891,37 @@
         }
       ],
       "parent": "lt",
-      "joint": "shoulder"
+      "joint": "shoulder",
+      "add": [
+        {
+          "erase": [
+            [
+              -6,
+              24,
+              -1
+            ],
+            [
+              -6,
+              24,
+              -1
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -6,
+              24,
+              0
+            ],
+            [
+              -6,
+              24,
+              0
+            ]
+          ]
+        }
+      ]
     },
     {
       "name": "ra",
@@ -3873,27 +4021,27 @@
                 "at": 16,
                 "polygon": [
                   [
-                    -7.83976,
+                    -8.20389,
                     -2.1902
                   ],
                   [
-                    -5.89144,
+                    -5.71004,
                     -2.914
                   ],
                   [
-                    -4.5957,
+                    -4.05149,
                     -1.457
                   ],
                   [
-                    -5.23883,
+                    -4.8747,
                     2.1902
                   ],
                   [
-                    -7.83976,
+                    -8.20389,
                     2.914
                   ],
                   [
-                    -8.4829,
+                    -9.02711,
                     1.457
                   ]
                 ]
@@ -4219,7 +4367,7 @@
                 "at": 8,
                 "polygon": [
                   [
-                    -9.75185,
+                    -9.93525,
                     -3.1
                   ],
                   [
@@ -4227,19 +4375,19 @@
                     -3.88
                   ],
                   [
-                    -7.74605,
+                    -7.38191,
                     -2.33
                   ],
                   [
-                    -8.4179,
+                    -8.23716,
                     3.012
                   ],
                   [
-                    -9.75185,
+                    -9.93525,
                     3.7296
                   ],
                   [
-                    -10.41395,
+                    -10.77809,
                     2.3036
                   ]
                 ]
@@ -4391,7 +4539,54 @@
         }
       ],
       "parent": "ll",
-      "joint": "knee"
+      "joint": "knee",
+      "add": [
+        {
+          "box": [
+            [
+              -7,
+              10,
+              -1
+            ],
+            [
+              -7,
+              10,
+              -1
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -7,
+              10,
+              0
+            ],
+            [
+              -7,
+              10,
+              0
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -6,
+              5,
+              0
+            ],
+            [
+              -6,
+              5,
+              0
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "ll_tarsus",
@@ -4754,7 +4949,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
   "art_fix_round": "connected-assembly-20261122",
   "reference_review_views": [
     "front",
@@ -4772,5 +4967,15 @@
     "source": "Current Catalyst plastic and four-angle reference study",
     "note": "Slim light scout center and limbs while preserving numerous protruding micro-gun muzzles",
     "edited_primary_loft_vertices": 72
+  },
+  "exclusive_parts": true,
+  "source_sculpt_promotion": {
+    "revision": "20261124-exact-neutral-source-selection",
+    "source_blob": "436efabf42d4415f2aecc41b4fbc992b6550b593",
+    "expected_coarse_cells": 3008,
+    "selected_from": "second_05.json + batch_02_selected.json",
+    "original_art_quality_revision": "51-to-100-reference-proportions-20261122",
+    "source_diagnostic_only": true,
+    "photo_selection": "batch_02_selected.json"
   }
 }

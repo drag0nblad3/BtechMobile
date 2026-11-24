@@ -257,6 +257,174 @@
             ]
           ],
           "mat": "frame"
+        },
+        {
+          "erase": [
+            [
+              -6,
+              8,
+              -7
+            ],
+            [
+              -6,
+              8,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -6,
+              10,
+              -7
+            ],
+            [
+              -6,
+              10,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -6,
+              12,
+              -7
+            ],
+            [
+              -6,
+              12,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -1,
+              8,
+              -7
+            ],
+            [
+              -1,
+              8,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -1,
+              10,
+              -7
+            ],
+            [
+              -1,
+              10,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -1,
+              12,
+              -7
+            ],
+            [
+              -1,
+              12,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              1,
+              8,
+              -7
+            ],
+            [
+              1,
+              8,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              1,
+              10,
+              -7
+            ],
+            [
+              1,
+              10,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              1,
+              12,
+              -7
+            ],
+            [
+              1,
+              12,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              5,
+              8,
+              -7
+            ],
+            [
+              5,
+              8,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              5,
+              10,
+              -7
+            ],
+            [
+              5,
+              10,
+              -5
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              5,
+              12,
+              -7
+            ],
+            [
+              5,
+              12,
+              -5
+            ]
+          ]
         }
       ],
       "detail": [
@@ -557,19 +725,7 @@
       ]
     }
   ],
-  "count_verified_fine_voxels": 35327,
-  "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
-  "reference_review_views": [
-    "front",
-    "side",
-    "rear",
-    "top",
-    "three_quarter"
-  ],
-  "shape_review_50": {
-    "passes": 50,
-    "edited_vertices": 0,
-    "stages_with_changes": 0
-  }
+  "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
+  "exclusive_parts": true,
+  "support_sculpt_revision": "source-mass-and-profile-20261124"
 }

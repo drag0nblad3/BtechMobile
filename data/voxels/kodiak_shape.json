@@ -3088,6 +3088,78 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "erase": [
+            [
+              -4,
+              26,
+              -8
+            ],
+            [
+              -4,
+              26,
+              -8
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -4,
+              27,
+              -8
+            ],
+            [
+              -4,
+              27,
+              -8
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -4,
+              28,
+              -8
+            ],
+            [
+              -4,
+              28,
+              -8
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -4,
+              29,
+              -9
+            ],
+            [
+              -4,
+              29,
+              -9
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -4,
+              29,
+              -8
+            ],
+            [
+              -4,
+              29,
+              -8
+            ]
+          ]
+        }
       ]
     },
     {
@@ -4004,6 +4076,148 @@
             ]
           ]
         }
+      ],
+      "add": [
+        {
+          "erase": [
+            [
+              -11,
+              27,
+              -14
+            ],
+            [
+              -11,
+              27,
+              -14
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -11,
+              29,
+              -14
+            ],
+            [
+              -11,
+              29,
+              -14
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              29,
+              -14
+            ],
+            [
+              -9,
+              29,
+              -14
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -11,
+              28,
+              -7
+            ],
+            [
+              -7,
+              28,
+              -7
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -11,
+              29,
+              -7
+            ],
+            [
+              -9,
+              29,
+              -7
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              27,
+              -7
+            ],
+            [
+              -7,
+              27,
+              -7
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -10,
+              28,
+              -6
+            ],
+            [
+              -7,
+              28,
+              -6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -10,
+              29,
+              -6
+            ],
+            [
+              -7,
+              29,
+              -6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              27,
+              -6
+            ],
+            [
+              -7,
+              27,
+              -6
+            ]
+          ]
+        },
+        {
+          "erase": [
+            [
+              -9,
+              30,
+              -6
+            ],
+            [
+              -7,
+              30,
+              -6
+            ]
+          ]
+        }
       ]
     },
     {
@@ -4065,6 +4279,38 @@
               -22
             ]
           ]
+        }
+      ],
+      "add": [
+        {
+          "box": [
+            [
+              8,
+              28,
+              -8
+            ],
+            [
+              9,
+              28,
+              -8
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              8,
+              28,
+              -9
+            ],
+            [
+              9,
+              28,
+              -9
+            ]
+          ],
+          "mat": "frame"
         }
       ]
     },
@@ -4470,7 +4716,69 @@
         }
       ],
       "parent": "lt",
-      "joint": "shoulder"
+      "joint": "shoulder",
+      "add": [
+        {
+          "box": [
+            [
+              -13,
+              25,
+              -1
+            ],
+            [
+              -11,
+              25,
+              -1
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -14,
+              26,
+              -1
+            ],
+            [
+              -11,
+              26,
+              -1
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -13,
+              25,
+              0
+            ],
+            [
+              -11,
+              25,
+              0
+            ]
+          ],
+          "mat": "frame"
+        },
+        {
+          "box": [
+            [
+              -14,
+              26,
+              0
+            ],
+            [
+              -11,
+              26,
+              0
+            ]
+          ],
+          "mat": "frame"
+        }
+      ]
     },
     {
       "name": "ra",
@@ -5476,7 +5784,7 @@
     }
   ],
   "art_quality_passes": 100,
-  "art_quality_revision": "51-to-100-reference-proportions-20261122",
+  "art_quality_revision": "silhouette-and-weapon-clarity-20261121",
   "reference_review_views": [
     "front",
     "side",
@@ -5494,5 +5802,14 @@
     "note": "Bear-like domed shoulders and claws remain prominent above trimmed central torso/rear",
     "edited_primary_loft_vertices": 72
   },
-  "notes": " Kodiak preserves massive bear-claw laser fists, but RT Ultra AC/20 and the two LT Streak SRM-6 groups become separate load-bearing, bored modules instead of generic slabs. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells."
+  "notes": " Kodiak preserves massive bear-claw laser fists, but RT Ultra AC/20 and the two LT Streak SRM-6 groups become separate load-bearing, bored modules instead of generic slabs. Ownership QA: moved source missile/weapon geometry into its correct hit-location child, or reinforced genuine socket contact; no orphan duplicate hull shells.",
+  "exclusive_parts": true,
+  "source_sculpt_promotion": {
+    "revision": "20261124-exact-neutral-source-selection",
+    "source_blob": "1241be3b29b430eaa5bcef94da1b756c98262350",
+    "expected_coarse_cells": 6631,
+    "selected_from": "second_04.json",
+    "original_art_quality_revision": "51-to-100-reference-proportions-20261122",
+    "source_diagnostic_only": true
+  }
 }

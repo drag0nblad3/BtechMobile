@@ -1,0 +1,1736 @@
+{
+  "baseline": "00d4f7db1c60e7559a375e6e6234deb63a88ce19",
+  "experimental": "a23eeb349ada0682d2938aeedc8dedcbf165315b",
+  "photo": "23bc9935d5f4076c306702c35ded8b4c733f5558",
+  "counts": {
+    "transferred detailed recipe": 34,
+    "linked detailed recipe": 86,
+    "held: source defects": 15,
+    "shape only: detailed recipe differs": 14
+  },
+  "photoSelected": 35,
+  "rows": [
+    {
+      "id": "albatross",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/albatross_shape.json",
+      "source_blob": "60f99251f5fa459a259e3462b21208a08e49ad9a",
+      "cells": 2831,
+      "selectedFrom": "batch_01.json",
+      "photo": null,
+      "residual_ops": 27
+    },
+    {
+      "id": "alfar",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/alfar_shape.json",
+      "source_blob": "30c8af30c4a63ab05d81f88c36788673606c44d5",
+      "cells": 5864,
+      "selectedFrom": "batch_01.json",
+      "photo": null,
+      "residual_ops": 384
+    },
+    {
+      "id": "apollo",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/apollo_shape.json",
+      "source_blob": "6adc7fd7b412cbedf5dfcce48549aaf09fd0dd39",
+      "cells": 6178,
+      "selectedFrom": "second_01.json",
+      "photo": null,
+      "residual_ops": 349
+    },
+    {
+      "id": "arctic_wolf",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/arctic_wolf_shape.json",
+      "source_blob": "67c98e4df45293f943f4e44569c9a9b6cf03db93",
+      "cells": 3786,
+      "selectedFrom": "third_01.json + batch_06_summary.json",
+      "photo": "batch_06_summary.json",
+      "residual_ops": 102
+    },
+    {
+      "id": "argus",
+      "status": "held: source defects",
+      "final": {
+        "cells": 3085,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 2,
+        "faults": [
+          [
+            "la",
+            "weak",
+            "lt"
+          ],
+          [
+            "ra",
+            "weak",
+            "rt"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "bandersnatch",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/bandersnatch_shape.json",
+      "source_blob": "81189c2eb00e7e5697f522c9c34dc58a9e22fbcd",
+      "cells": 7073,
+      "selectedFrom": "batch_01.json + batch_09_summary.json",
+      "photo": "batch_09_summary.json",
+      "residual_ops": 323
+    },
+    {
+      "id": "battle_hawk",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/battle_hawk_shape.json",
+      "source_blob": "2558de9a5939f5fa3649cb52f544601fc78c73e2",
+      "cells": 4672,
+      "selectedFrom": "second_01.json",
+      "photo": null,
+      "residual_ops": 235
+    },
+    {
+      "id": "battleaxe",
+      "status": "held: source defects",
+      "final": {
+        "cells": 4863,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              848,
+              504
+            ]
+          ]
+        ],
+        "clear": 18,
+        "total": 18
+      }
+    },
+    {
+      "id": "behemoth",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/behemoth_shape.json",
+      "source_blob": "1a64dcdf2364ca1623a03f18a0e539befad87b3c",
+      "cells": 10043,
+      "selectedFrom": "batch_01.json",
+      "photo": null,
+      "residual_ops": 466
+    },
+    {
+      "id": "blade",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/blade_shape.json",
+      "source_blob": "268ea14c55735ac35f085b6b89fb4ceaa81ee6a0",
+      "cells": 4452,
+      "selectedFrom": "batch_01.json",
+      "photo": null,
+      "residual_ops": 228
+    },
+    {
+      "id": "bombard",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/bombard_shape.json",
+      "source_blob": "9c2c89abf33adbddce23ab59a99a2ee2b67de67c",
+      "cells": 4570,
+      "selectedFrom": "batch_02.json",
+      "photo": null,
+      "residual_ops": 188
+    },
+    {
+      "id": "brigand",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/brigand_shape.json",
+      "source_blob": "1072b1f5ec77bb484dad7e989d4975b8283025f6",
+      "cells": 4314,
+      "selectedFrom": "batch_02.json + batch_09_summary.json",
+      "photo": "batch_09_summary.json",
+      "residual_ops": 291
+    },
+    {
+      "id": "cerberus",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/cerberus_shape.json",
+      "source_blob": "a07dafd5a5b59b9544cb06947f87119f57f5b0ef",
+      "cells": 5580,
+      "selectedFrom": "second_01.json",
+      "photo": null,
+      "residual_ops": 189
+    },
+    {
+      "id": "cestus",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/cestus_shape.json",
+      "source_blob": "14760a98fe71578d67d3f3115c3aa75e5d68be0e",
+      "cells": 5772,
+      "selectedFrom": "batch_02.json",
+      "photo": null,
+      "residual_ops": 236
+    },
+    {
+      "id": "champion",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/champion_shape.json",
+      "source_blob": "131b3367a2e897641390dc6287ab43ab51ee080a",
+      "cells": 4230,
+      "selectedFrom": "third_01.json",
+      "photo": null,
+      "residual_ops": 188
+    },
+    {
+      "id": "cobra",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/cobra_shape.json",
+      "source_blob": "68bf6914d6812a4c9bf6a9b16a99aa62ff5da303",
+      "cells": 8055,
+      "selectedFrom": "batch_02.json",
+      "photo": null,
+      "residual_ops": 374
+    },
+    {
+      "id": "cossack",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/cossack_shape.json",
+      "source_blob": "e3d5f66d583df331d2daf714e3dfd48f5558f14a",
+      "cells": 4218,
+      "selectedFrom": "second_01.json",
+      "photo": null,
+      "residual_ops": 357
+    },
+    {
+      "id": "cronus",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/cronus_shape.json",
+      "source_blob": "a211cf90216bf4ff8b03d9a36148f80ba3eb9ba9",
+      "cells": 5259,
+      "selectedFrom": "batch_02.json",
+      "photo": null,
+      "residual_ops": 354
+    },
+    {
+      "id": "daedalus",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/daedalus_shape.json",
+      "source_blob": "f816ad2dc9eb2c32c2864bcfe22dec410d700f48",
+      "cells": 5257,
+      "selectedFrom": "second_01.json",
+      "photo": null,
+      "residual_ops": 313
+    },
+    {
+      "id": "daikyu",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/daikyu_shape.json",
+      "source_blob": "693f8281e88e367834be4808c57b4dcaa490f996",
+      "cells": 5990,
+      "selectedFrom": "second_01.json + batch_07_summary.json",
+      "photo": "batch_07_summary.json",
+      "residual_ops": 375
+    },
+    {
+      "id": "daimyo",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/daimyo_shape.json",
+      "source_blob": "3562d03097995474ba98cd109f9ef7355150fc4e",
+      "cells": 4633,
+      "selectedFrom": "batch_03.json",
+      "photo": null,
+      "residual_ops": 248
+    },
+    {
+      "id": "dart",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/dart_shape.json",
+      "source_blob": "cc5e5b32eb286ceca8923ce8911ec500677d5ef8",
+      "cells": 3567,
+      "selectedFrom": "batch_03.json",
+      "photo": null,
+      "residual_ops": 193
+    },
+    {
+      "id": "dragon_fire",
+      "status": "held: source defects",
+      "final": {
+        "cells": 4077,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              32,
+              31
+            ]
+          ]
+        ],
+        "clear": 5,
+        "total": 5
+      }
+    },
+    {
+      "id": "dragoon",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/dragoon_shape.json",
+      "source_blob": "7afaf194c701e19e701a5f49f4bcce1b6cdc4baa",
+      "cells": 6830,
+      "selectedFrom": "batch_03.json",
+      "photo": null,
+      "residual_ops": 392
+    },
+    {
+      "id": "duan_gung",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/duan_gung_shape.json",
+      "source_blob": "00edea994761e0c796fc3ae47068b4770c0303e8",
+      "cells": 4199,
+      "selectedFrom": "batch_03.json + batch_09_summary.json",
+      "photo": "batch_09_summary.json",
+      "residual_ops": 268
+    },
+    {
+      "id": "eagle",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/eagle_shape.json",
+      "source_blob": "c77f3325b1cee1f97db8ffdb0642997a7b429044",
+      "cells": 4533,
+      "selectedFrom": "batch_03.json",
+      "photo": null,
+      "residual_ops": 224
+    },
+    {
+      "id": "eisenfaust",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/eisenfaust_shape.json",
+      "source_blob": "d9114d9f4101d82ac740582a10d888410173b3cf",
+      "cells": 5554,
+      "selectedFrom": "batch_03.json",
+      "photo": null,
+      "residual_ops": 333
+    },
+    {
+      "id": "enfield",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/enfield_shape.json",
+      "source_blob": "e6ef72731e1f01d85e36465a57fdfa42717ae36f",
+      "cells": 4767,
+      "selectedFrom": "second_02.json",
+      "photo": null,
+      "residual_ops": 245
+    },
+    {
+      "id": "enforcer_iii",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/enforcer_iii_shape.json",
+      "source_blob": "ed6a6299b4151df84db399a593e881fa3fcb2153",
+      "cells": 5233,
+      "selectedFrom": "second_02.json",
+      "photo": null,
+      "residual_ops": 273
+    },
+    {
+      "id": "eris",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/eris_shape.json",
+      "source_blob": "6218fd5bb1b039cd9bbe65c3cc43d869c558c67f",
+      "cells": 5952,
+      "selectedFrom": "batch_03.json",
+      "photo": null,
+      "residual_ops": 318
+    },
+    {
+      "id": "excalibur",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/excalibur_shape.json",
+      "source_blob": "d2e05672dc74f1839d23aafbc5c5625542ed15b1",
+      "cells": 3162,
+      "selectedFrom": "second_02.json + batch_03_refined_a.json",
+      "photo": "batch_03_refined_a.json",
+      "residual_ops": 10
+    },
+    {
+      "id": "exhumer",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/exhumer_shape.json",
+      "source_blob": "e910718865804603f3934e8377c99e57031efdc1",
+      "cells": 7227,
+      "selectedFrom": "batch_04.json",
+      "photo": null,
+      "residual_ops": 415
+    },
+    {
+      "id": "falcon_hawk",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/falcon_hawk_shape.json",
+      "source_blob": "d198edc607287d3a6361637840d189aceeb66d42",
+      "cells": 5818,
+      "selectedFrom": "batch_04.json",
+      "photo": null,
+      "residual_ops": 243
+    },
+    {
+      "id": "falcon",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/falcon_shape.json",
+      "source_blob": "9b7fe28ebd105e2ca4de895b2dde56a2cae69a73",
+      "cells": 4216,
+      "selectedFrom": "batch_04.json",
+      "photo": null,
+      "residual_ops": 209
+    },
+    {
+      "id": "falconer",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/falconer_shape.json",
+      "source_blob": "1bf634d5b90873662b7e02ad105e9c34387a9225",
+      "cells": 3157,
+      "selectedFrom": "second_02.json",
+      "photo": null,
+      "residual_ops": 11
+    },
+    {
+      "id": "fireball",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/fireball_shape.json",
+      "source_blob": "57bbd0a3faa0d62719e9b90aa1750f2ecda8aec6",
+      "cells": 3532,
+      "selectedFrom": "second_02.json + batch_08_summary.json",
+      "photo": "batch_08_summary.json",
+      "residual_ops": 330
+    },
+    {
+      "id": "flashfire",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/flashfire_shape.json",
+      "source_blob": "3db3f9e7467cf6a682d9c1b853e9b7b125acbb46",
+      "cells": 5648,
+      "selectedFrom": "second_02.json",
+      "photo": null,
+      "residual_ops": 307
+    },
+    {
+      "id": "galahad",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/galahad_shape.json",
+      "source_blob": "304b5269fca7e52f6b3ac855e3020fb6b5c069aa",
+      "cells": 3614,
+      "selectedFrom": "second_02.json",
+      "photo": null,
+      "residual_ops": 137
+    },
+    {
+      "id": "gallowglas",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/gallowglas_shape.json",
+      "source_blob": "5fd590bc5e33641336442ca736096e95d709027d",
+      "cells": 6777,
+      "selectedFrom": "batch_04.json",
+      "photo": null,
+      "residual_ops": 365
+    },
+    {
+      "id": "garm",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/garm_shape.json",
+      "source_blob": "308a3b12048079db7a278ce2faef785534f74670",
+      "cells": 5814,
+      "selectedFrom": "second_02.json",
+      "photo": null,
+      "residual_ops": 249
+    },
+    {
+      "id": "glass_spider",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/glass_spider_shape.json",
+      "source_blob": "f8f7527e0816f02e2de8287941ac1064eb11f6aa",
+      "cells": 2918,
+      "selectedFrom": "third_01.json",
+      "photo": null,
+      "residual_ops": 106
+    },
+    {
+      "id": "gravedigger",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/gravedigger_shape.json",
+      "source_blob": "1c61fe73c356577a8402747974cbfce9d253dbfc",
+      "cells": 6625,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 328
+    },
+    {
+      "id": "grim_reaper",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/grim_reaper_shape.json",
+      "source_blob": "0da93cabfca9b81c9649f22c86df4a4e34cc7565",
+      "cells": 7820,
+      "selectedFrom": "second_03.json",
+      "photo": null,
+      "residual_ops": 446
+    },
+    {
+      "id": "gunsmith",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/gunsmith_shape.json",
+      "source_blob": "87436b970dd4e9da9d52549d1f3c258c82620e5d",
+      "cells": 2220,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 42
+    },
+    {
+      "id": "ha_otoko",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/ha_otoko_shape.json",
+      "source_blob": "78165ba6bcaa3cd1ae0ccc482ad8abf940c1425d",
+      "cells": 10870,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 421
+    },
+    {
+      "id": "hammerhands",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hammerhands_shape.json",
+      "source_blob": "a770969bc0024e20416dd28e7bb573028a995d5c",
+      "cells": 7089,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 335
+    },
+    {
+      "id": "hatamoto_hi",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hatamoto_hi_shape.json",
+      "source_blob": "cbcbc54117897003d90d0086ec2aab735faac68f",
+      "cells": 6532,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 345
+    },
+    {
+      "id": "hatamoto_kaze",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hatamoto_kaze_shape.json",
+      "source_blob": "59048d6f1e00b9e339c82715eb00593fa4d43135",
+      "cells": 7454,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 346
+    },
+    {
+      "id": "hatamoto_ku",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hatamoto_ku_shape.json",
+      "source_blob": "f0ca5fff7ee5310001b6aca397e12ccbcc49d39e",
+      "cells": 6417,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 323
+    },
+    {
+      "id": "hatamoto_mizo",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hatamoto_mizo_shape.json",
+      "source_blob": "1d3a8e9d1aefe41c84b8b4f4d465f48865e8c9cd",
+      "cells": 6240,
+      "selectedFrom": "batch_05.json",
+      "photo": null,
+      "residual_ops": 323
+    },
+    {
+      "id": "hel",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/hel_shape.json",
+      "source_blob": "2d7b8686e5b58dd40ac1f4af9fe7b444315cbf3f",
+      "cells": 6706,
+      "selectedFrom": "second_03.json",
+      "photo": null,
+      "residual_ops": 134
+    },
+    {
+      "id": "hellspawn",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/hellspawn_shape.json",
+      "source_blob": "beb31a2214e4918f5c814c309dced445059a93f3",
+      "cells": 2718,
+      "selectedFrom": "second_03.json + batch_04_selected.json",
+      "photo": "batch_04_selected.json",
+      "residual_ops": 12
+    },
+    {
+      "id": "hercules",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hercules_shape.json",
+      "source_blob": "eb1c8b1aa02dd8aefbda6fcd541efcd44ec81b4e",
+      "cells": 6148,
+      "selectedFrom": "batch_06.json",
+      "photo": null,
+      "residual_ops": 296
+    },
+    {
+      "id": "hermes_iii",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hermes_iii_shape.json",
+      "source_blob": "8a0c8acc10ab4e9eddadf38e054f3352da91931f",
+      "cells": 4335,
+      "selectedFrom": "batch_06.json",
+      "photo": null,
+      "residual_ops": 308
+    },
+    {
+      "id": "hermes",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/hermes_shape.json",
+      "source_blob": "79c1c4cf142df3ca517a145031619ffef2e22dfb",
+      "cells": 2156,
+      "selectedFrom": "batch_06.json + batch_06_summary.json",
+      "photo": "batch_06_summary.json",
+      "residual_ops": 83
+    },
+    {
+      "id": "hermit_crab",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hermit_crab_shape.json",
+      "source_blob": "e97f27b8101b75789379f08176b964867bac1596",
+      "cells": 6111,
+      "selectedFrom": "batch_06.json",
+      "photo": null,
+      "residual_ops": 199
+    },
+    {
+      "id": "hollander",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/hollander_shape.json",
+      "source_blob": "086a3a5360d3d539499d74b35f3ae214208bbc3e",
+      "cells": 4955,
+      "selectedFrom": "second_03.json + batch_04_selected.json",
+      "photo": "batch_04_selected.json",
+      "residual_ops": 8
+    },
+    {
+      "id": "hornet",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hornet_shape.json",
+      "source_blob": "0ba1f2c2c37eb055f7ba5e8bc8ab19e54d826176",
+      "cells": 5007,
+      "selectedFrom": "batch_06.json",
+      "photo": null,
+      "residual_ops": 320
+    },
+    {
+      "id": "hound",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hound_shape.json",
+      "source_blob": "fb0210374924b3ed4e1618e360aa058497575f47",
+      "cells": 6527,
+      "selectedFrom": "batch_06.json",
+      "photo": null,
+      "residual_ops": 367
+    },
+    {
+      "id": "hussar",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/hussar_shape.json",
+      "source_blob": "4b4988e7be8fc3855f27978ae3e6c964e48a6ccf",
+      "cells": 5658,
+      "selectedFrom": "second_03.json",
+      "photo": null,
+      "residual_ops": 334
+    },
+    {
+      "id": "imp",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/imp_shape.json",
+      "source_blob": "e3d931748880ba1b504c20d77ea64b814dcf89d6",
+      "cells": 12513,
+      "selectedFrom": "second_03.json",
+      "photo": null,
+      "residual_ops": 819
+    },
+    {
+      "id": "initiate",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/initiate_shape.json",
+      "source_blob": "fab0c24f142227f336d756fdeb3ce815c535292a",
+      "cells": 7694,
+      "selectedFrom": "second_03.json",
+      "photo": null,
+      "residual_ops": 409
+    },
+    {
+      "id": "jackal",
+      "status": "held: source defects",
+      "final": {
+        "cells": 4430,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 4
+      }
+    },
+    {
+      "id": "jackalope",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/jackalope_shape.json",
+      "source_blob": "09d4dec9ab792849322314b9e8f9c0404df26889",
+      "cells": 2949,
+      "selectedFrom": "second_03.json + batch_04_selected.json",
+      "photo": "batch_04_selected.json",
+      "residual_ops": 53
+    },
+    {
+      "id": "jackrabbit",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/jackrabbit_shape.json",
+      "source_blob": "81ab2a7d9f32231c400e586900bab8ed449c51fe",
+      "cells": 4870,
+      "selectedFrom": "second_03.json",
+      "photo": null,
+      "residual_ops": 183
+    },
+    {
+      "id": "jagermech_iii",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/jagermech_iii_shape.json",
+      "source_blob": "2a0bdf9e5a1e6a444b2902fc910bed8dcd23c7c2",
+      "cells": 8078,
+      "selectedFrom": "batch_07.json",
+      "photo": null,
+      "residual_ops": 391
+    },
+    {
+      "id": "jinggau",
+      "status": "held: source defects",
+      "final": {
+        "cells": 3809,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              59,
+              14,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      }
+    },
+    {
+      "id": "juggernaut",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/juggernaut_shape.json",
+      "source_blob": "75987d3e62e98dc2178c2ae1000c04a7287bda1b",
+      "cells": 9515,
+      "selectedFrom": "second_04.json",
+      "photo": null,
+      "residual_ops": 495
+    },
+    {
+      "id": "kabuto",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/kabuto_shape.json",
+      "source_blob": "8b07b4067376eb35811914f8f1c40610a2d8e391",
+      "cells": 4020,
+      "selectedFrom": "second_04.json",
+      "photo": null,
+      "residual_ops": 296
+    },
+    {
+      "id": "katana",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/katana_shape.json",
+      "source_blob": "8cf9a91ea219b501637f82270537eada01c7975e",
+      "cells": 6941,
+      "selectedFrom": "batch_07.json",
+      "photo": null,
+      "residual_ops": 108
+    },
+    {
+      "id": "kodiak",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/kodiak_shape.json",
+      "source_blob": "1241be3b29b430eaa5bcef94da1b756c98262350",
+      "cells": 6631,
+      "selectedFrom": "second_04.json",
+      "photo": null,
+      "residual_ops": 21
+    },
+    {
+      "id": "koschei",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/koschei_shape.json",
+      "source_blob": "a387760c58187dcb34d67de5b264d0160f6811fc",
+      "cells": 6001,
+      "selectedFrom": "batch_08.json",
+      "photo": null,
+      "residual_ops": 295
+    },
+    {
+      "id": "koto",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/koto_shape.json",
+      "source_blob": "aadc35ab22bbfc9d9ed2994548e54300c775223b",
+      "cells": 4160,
+      "selectedFrom": "batch_08.json",
+      "photo": null,
+      "residual_ops": 289
+    },
+    {
+      "id": "legionnaire",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/legionnaire_shape.json",
+      "source_blob": "007d69259614516d246166721049e87ebff2fe16",
+      "cells": 5503,
+      "selectedFrom": "second_04.json + batch_04_selected.json",
+      "photo": "batch_04_selected.json",
+      "residual_ops": 75
+    },
+    {
+      "id": "lightray",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/lightray_shape.json",
+      "source_blob": "c171da7cb937cd5ed19b5cae6a03e0218654c18e",
+      "cells": 5526,
+      "selectedFrom": "batch_08.json",
+      "photo": null,
+      "residual_ops": 476
+    },
+    {
+      "id": "lineholder",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/lineholder_shape.json",
+      "source_blob": "6f9d7890863376e4bb0e35305ee1fc8769efbe36",
+      "cells": 6514,
+      "selectedFrom": "batch_08.json + batch_10_summary.json",
+      "photo": "batch_10_summary.json",
+      "residual_ops": 392
+    },
+    {
+      "id": "lynx",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/lynx_shape.json",
+      "source_blob": "859ac59a922fa215d922a5d1e4626eb3b7635c53",
+      "cells": 5890,
+      "selectedFrom": "batch_08.json + batch_07_summary.json",
+      "photo": "batch_07_summary.json",
+      "residual_ops": 406
+    },
+    {
+      "id": "mad_cat_mk_ii",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/mad_cat_mk_ii_shape.json",
+      "source_blob": "3527218ffd0200a742874406bb523969a3d0bf50",
+      "cells": 5038,
+      "selectedFrom": "third_02.json",
+      "photo": null,
+      "residual_ops": 113
+    },
+    {
+      "id": "malice",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/malice_shape.json",
+      "source_blob": "7b45b331ac48e88cf41c297b528e4125e4439076",
+      "cells": 5528,
+      "selectedFrom": "second_04.json + batch_05_a.json",
+      "photo": "batch_05_a.json",
+      "residual_ops": 14
+    },
+    {
+      "id": "marshal",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/marshal_shape.json",
+      "source_blob": "c3d049318fe10ed8af14f3206de6c75ad89ee8c4",
+      "cells": 5612,
+      "selectedFrom": "batch_08.json",
+      "photo": null,
+      "residual_ops": 353
+    },
+    {
+      "id": "nexus",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/nexus_shape.json",
+      "source_blob": "32507038edc0722d422a8cc78489d64341d110b1",
+      "cells": 4798,
+      "selectedFrom": "batch_09.json",
+      "photo": null,
+      "residual_ops": 339
+    },
+    {
+      "id": "night_hawk",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/night_hawk_shape.json",
+      "source_blob": "218d9f05cbd47258ad2d090566a2cf1617fbce63",
+      "cells": 4644,
+      "selectedFrom": "batch_09.json + batch_07_summary.json",
+      "photo": "batch_07_summary.json",
+      "residual_ops": 340
+    },
+    {
+      "id": "nightsky",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/nightsky_shape.json",
+      "source_blob": "d8e7ea1ea03164bc282a82cbd65e69a998f216b2",
+      "cells": 5175,
+      "selectedFrom": "second_04.json + batch_02_selected.json",
+      "photo": "batch_02_selected.json",
+      "residual_ops": 254
+    },
+    {
+      "id": "onslaught",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/onslaught_shape.json",
+      "source_blob": "2ba4d7b0af15d64f16993bc8c1648bc5b214aa99",
+      "cells": 8249,
+      "selectedFrom": "batch_09.json",
+      "photo": null,
+      "residual_ops": 334
+    },
+    {
+      "id": "orochi",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/orochi_shape.json",
+      "source_blob": "9c063b1a482ebcd4e7f07c27df0ffee0fa0fe5d4",
+      "cells": 9154,
+      "selectedFrom": "batch_09.json",
+      "photo": null,
+      "residual_ops": 307
+    },
+    {
+      "id": "ostwar",
+      "status": "held: source defects",
+      "final": {
+        "cells": 6057,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 5,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1921,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "pack_hunter",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/pack_hunter_shape.json",
+      "source_blob": "748f1292a2d9ea1076f737a162bcfae858466988",
+      "cells": 3074,
+      "selectedFrom": "second_04.json + batch_02_selected.json",
+      "photo": "batch_02_selected.json",
+      "residual_ops": 91
+    },
+    {
+      "id": "peacekeeper",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/peacekeeper_shape.json",
+      "source_blob": "f42ae32fd9366b6332ee46a2286329723c2b79fc",
+      "cells": 5283,
+      "selectedFrom": "batch_09.json",
+      "photo": null,
+      "residual_ops": 36
+    },
+    {
+      "id": "penetrator",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/penetrator_shape.json",
+      "source_blob": "8501e1a86d9b577a1ffd69bacdcb5411792f7c76",
+      "cells": 6015,
+      "selectedFrom": "batch_09.json + batch_03_refined_a.json",
+      "photo": "batch_03_refined_a.json",
+      "residual_ops": 97
+    },
+    {
+      "id": "phoenix",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/phoenix_shape.json",
+      "source_blob": "b94d00f61fec68c8cc992fd8fefd37de8711639d",
+      "cells": 5509,
+      "selectedFrom": "second_05.json",
+      "photo": null,
+      "residual_ops": 357
+    },
+    {
+      "id": "pillager",
+      "status": "held: source defects",
+      "final": {
+        "cells": 8136,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 7,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2463,
+              6,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      }
+    },
+    {
+      "id": "piranha",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/piranha_shape.json",
+      "source_blob": "436efabf42d4415f2aecc41b4fbc992b6550b593",
+      "cells": 3008,
+      "selectedFrom": "second_05.json + batch_02_selected.json",
+      "photo": "batch_02_selected.json",
+      "residual_ops": 13
+    },
+    {
+      "id": "quickdraw",
+      "status": "held: source defects",
+      "final": {
+        "cells": 3336,
+        "parts": 12,
+        "physical": 1,
+        "physicalGroups": [
+          6
+        ],
+        "partIslands": 1,
+        "weak": 2,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              541,
+              6
+            ]
+          ],
+          [
+            "la",
+            "weak",
+            "lt"
+          ],
+          [
+            "ra",
+            "weak",
+            "rt"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "raijin",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/raijin_shape.json",
+      "source_blob": "01018ef48aa9a9b69ab6b827be1de637a9f082ee",
+      "cells": 6228,
+      "selectedFrom": "batch_10.json + batch_10_summary.json",
+      "photo": "batch_10_summary.json",
+      "residual_ops": 325
+    },
+    {
+      "id": "rakshasa",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/rakshasa_shape.json",
+      "source_blob": "95c854920d725b748d4ddc056d1dfae15c444467",
+      "cells": 7524,
+      "selectedFrom": "batch_10.json",
+      "photo": null,
+      "residual_ops": 362
+    },
+    {
+      "id": "rampage",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/rampage_shape.json",
+      "source_blob": "59bfd8863a9564055905e4209004b87cd2dc8227",
+      "cells": 8840,
+      "selectedFrom": "batch_10.json",
+      "photo": null,
+      "residual_ops": 376
+    },
+    {
+      "id": "raptor",
+      "status": "held: source defects",
+      "final": {
+        "cells": 2986,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 17
+      }
+    },
+    {
+      "id": "rattlesnake_ii",
+      "status": "held: source defects",
+      "final": {
+        "cells": 2263,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 4,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              30,
+              14,
+              10,
+              5,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      }
+    },
+    {
+      "id": "rattlesnake",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/rattlesnake_shape.json",
+      "source_blob": "e624c394eaf9e71e82f7a64d818486cdece6c77d",
+      "cells": 2596,
+      "selectedFrom": "second_05.json",
+      "photo": null,
+      "residual_ops": 91
+    },
+    {
+      "id": "razorback",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/razorback_shape.json",
+      "source_blob": "42a9657bef7ff0823c9699acf1c7912e4a3758bd",
+      "cells": 4501,
+      "selectedFrom": "second_05.json",
+      "photo": null,
+      "residual_ops": 288
+    },
+    {
+      "id": "rook",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/rook_shape.json",
+      "source_blob": "723306c931e9fa9af2b025d74192ccde5ac5f8d8",
+      "cells": 6051,
+      "selectedFrom": "batch_11.json",
+      "photo": null,
+      "residual_ops": 403
+    },
+    {
+      "id": "sagittaire",
+      "status": "held: source defects",
+      "final": {
+        "cells": 5486,
+        "parts": 14,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 1,
+        "faults": [
+          [
+            "rt_pulse",
+            "weak",
+            "rt"
+          ],
+          [
+            "ra",
+            "islands",
+            [
+              719,
+              178
+            ]
+          ]
+        ],
+        "clear": 4,
+        "total": 4
+      }
+    },
+    {
+      "id": "salamander",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/salamander_shape.json",
+      "source_blob": "99f96bec4bee3bb11c5ce38879115bd14b240376",
+      "cells": 11340,
+      "selectedFrom": "second_05.json",
+      "photo": null,
+      "residual_ops": 527
+    },
+    {
+      "id": "scarabus",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/scarabus_shape.json",
+      "source_blob": "f778a82b49351658787c6a4fc42b8890b042960b",
+      "cells": 5299,
+      "selectedFrom": "second_06.json + batch_04_selected.json",
+      "photo": "batch_04_selected.json",
+      "residual_ops": 13
+    },
+    {
+      "id": "sentry",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/sentry_shape.json",
+      "source_blob": "21c9199c8f20e55141cd31390b78248de5e73f6c",
+      "cells": 5160,
+      "selectedFrom": "second_06.json",
+      "photo": null,
+      "residual_ops": 340
+    },
+    {
+      "id": "shadow_hawk_iic",
+      "status": "held: source defects",
+      "final": {
+        "cells": 3378,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              52,
+              7,
+              4
+            ]
+          ]
+        ],
+        "clear": 11,
+        "total": 12
+      }
+    },
+    {
+      "id": "shockwave",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/shockwave_shape.json",
+      "source_blob": "0c9e6418bb6e414e4754a227e6cd29202538a6e8",
+      "cells": 3856,
+      "selectedFrom": "batch_11.json + batch_03_refined_a.json",
+      "photo": "batch_03_refined_a.json",
+      "residual_ops": 67
+    },
+    {
+      "id": "shogun",
+      "status": "held: source defects",
+      "final": {
+        "cells": 7844,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 6,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2488,
+              5,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      }
+    },
+    {
+      "id": "shootist",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/shootist_shape.json",
+      "source_blob": "31005842fbb362134dfae37091d573c7c8b278a2",
+      "cells": 6149,
+      "selectedFrom": "batch_11.json",
+      "photo": null,
+      "residual_ops": 279
+    },
+    {
+      "id": "snake",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/snake_shape.json",
+      "source_blob": "2a645988c6c1a593180e6bd9bb404ff433ae279a",
+      "cells": 5611,
+      "selectedFrom": "batch_11.json",
+      "photo": null,
+      "residual_ops": 282
+    },
+    {
+      "id": "spartan",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/spartan_shape.json",
+      "source_blob": "52390fbe81a878d9fa2c521911defbfb34b6428c",
+      "cells": 5971,
+      "selectedFrom": "second_06.json",
+      "photo": null,
+      "residual_ops": 98
+    },
+    {
+      "id": "spector",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/spector_shape.json",
+      "source_blob": "707f037d2d57a3478690022765e46670aa7683b7",
+      "cells": 5995,
+      "selectedFrom": "second_06.json + batch_03_refined_b.json",
+      "photo": "batch_03_refined_b.json",
+      "residual_ops": 21
+    },
+    {
+      "id": "starslayer",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/starslayer_shape.json",
+      "source_blob": "8824d129813a5fdeafa6485c8296506e9fdf8f7e",
+      "cells": 5388,
+      "selectedFrom": "batch_12.json + batch_05_a.json",
+      "photo": "batch_05_a.json",
+      "residual_ops": 47
+    },
+    {
+      "id": "stealth",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/stealth_shape.json",
+      "source_blob": "b534550f38305bef514f600fe21287bc4af4b96d",
+      "cells": 2326,
+      "selectedFrom": "second_06.json + batch_08_summary.json",
+      "photo": "batch_08_summary.json",
+      "residual_ops": 110
+    },
+    {
+      "id": "striker",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/striker_shape.json",
+      "source_blob": "14a3b9e93053c5b340f4933a8f80036cac13f4f1",
+      "cells": 6728,
+      "selectedFrom": "batch_12.json",
+      "photo": null,
+      "residual_ops": 464
+    },
+    {
+      "id": "suburbanmech",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/suburbanmech_shape.json",
+      "source_blob": "7e3a5c4bf0807744e254e612c8ef223b1a50f05f",
+      "cells": 4921,
+      "selectedFrom": "second_06.json",
+      "photo": null,
+      "residual_ops": 4
+    },
+    {
+      "id": "sunder",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/sunder_shape.json",
+      "source_blob": "dcca073fb3061745cf9dbfcbdfa5359311eeff52",
+      "cells": 5135,
+      "selectedFrom": "second_06.json",
+      "photo": null,
+      "residual_ops": 192
+    },
+    {
+      "id": "supernova",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/supernova_shape.json",
+      "source_blob": "a42263e4724560da2e04ffe6d401c2f3f913ec48",
+      "cells": 3351,
+      "selectedFrom": "second_06.json",
+      "photo": null,
+      "residual_ops": 46
+    },
+    {
+      "id": "swordsman",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/swordsman_shape.json",
+      "source_blob": "0dd3967ae6fc08a80409dd39a2906699f8ec557b",
+      "cells": 5889,
+      "selectedFrom": "batch_12.json",
+      "photo": null,
+      "residual_ops": 343
+    },
+    {
+      "id": "talon",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/talon_shape.json",
+      "source_blob": "901e7b297fb696495bd7732667038162872b8a7e",
+      "cells": 4239,
+      "selectedFrom": "second_07.json",
+      "photo": null,
+      "residual_ops": 291
+    },
+    {
+      "id": "talos",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/talos_shape.json",
+      "source_blob": "21c72cd13c3f5816a0c514723d52de4507cf0fc4",
+      "cells": 7070,
+      "selectedFrom": "batch_13.json",
+      "photo": null,
+      "residual_ops": 359
+    },
+    {
+      "id": "tarantula",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/tarantula_shape.json",
+      "source_blob": "63d852058e34079ad6e7640cd2aea700c3768613",
+      "cells": 4379,
+      "selectedFrom": "second_07.json + batch_05_b.json",
+      "photo": "batch_05_b.json",
+      "residual_ops": 147
+    },
+    {
+      "id": "tempest",
+      "status": "held: source defects",
+      "final": {
+        "cells": 4264,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              43,
+              6,
+              2
+            ]
+          ]
+        ],
+        "clear": 10,
+        "total": 11
+      }
+    },
+    {
+      "id": "templar",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/templar_shape.json",
+      "source_blob": "5f2f9d8615a7d97f931f229050d8b4499defe831",
+      "cells": 4905,
+      "selectedFrom": "third_03.json + batch_03_refined_b.json",
+      "photo": "batch_03_refined_b.json",
+      "residual_ops": 209
+    },
+    {
+      "id": "thanatos",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/thanatos_shape.json",
+      "source_blob": "50d21a76c78375c4ac555df2c02e39e4251ae592",
+      "cells": 4618,
+      "selectedFrom": "second_07.json + batch_03_refined_b.json",
+      "photo": "batch_03_refined_b.json",
+      "residual_ops": 69
+    },
+    {
+      "id": "thorn",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/thorn_shape.json",
+      "source_blob": "cf0c6af5b8c4111f321b3cd04ac0c119aa1f8d07",
+      "cells": 3466,
+      "selectedFrom": "batch_13.json",
+      "photo": null,
+      "residual_ops": 223
+    },
+    {
+      "id": "thunder_hawk",
+      "status": "held: source defects",
+      "final": {
+        "cells": 6316,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2211,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      }
+    },
+    {
+      "id": "thunder",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/thunder_shape.json",
+      "source_blob": "2f0b9f6dbffb266c1f41d3f7ffdf7c5cc3836335",
+      "cells": 3797,
+      "selectedFrom": "second_07.json + batch_08_summary.json",
+      "photo": "batch_08_summary.json",
+      "residual_ops": 132
+    },
+    {
+      "id": "thunder_stallion",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/thunder_stallion_shape.json",
+      "source_blob": "9c0eacf8c43b04b276e13d937de27fe5f692b11c",
+      "cells": 7537,
+      "selectedFrom": "second_07.json + batch_05_b.json",
+      "photo": "batch_05_b.json",
+      "residual_ops": 25
+    },
+    {
+      "id": "thunderbolt_iic",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/thunderbolt_iic_shape.json",
+      "source_blob": "e540375f71d9cac1a80009a0ceba995895dd1602",
+      "cells": 4733,
+      "selectedFrom": "third_03.json + batch_03_refined_b.json",
+      "photo": "batch_03_refined_b.json",
+      "residual_ops": 174
+    },
+    {
+      "id": "tian_zong",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/tian_zong_shape.json",
+      "source_blob": "7c56fa9deaf6acc4941d6467a114b79813b1c611",
+      "cells": 4580,
+      "selectedFrom": "third_03.json",
+      "photo": null,
+      "residual_ops": 152
+    },
+    {
+      "id": "tiburon",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/tiburon_shape.json",
+      "source_blob": "6edc05881549aeb0d4f76f3c856a2b7d855c6ad7",
+      "cells": 3134,
+      "selectedFrom": "third_03.json",
+      "photo": null,
+      "residual_ops": 71
+    },
+    {
+      "id": "titan",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/titan_shape.json",
+      "source_blob": "148468f2cff4520612859d614e5d58d2ebaa4da3",
+      "cells": 10897,
+      "selectedFrom": "batch_14.json",
+      "photo": null,
+      "residual_ops": 425
+    },
+    {
+      "id": "toro",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/toro_shape.json",
+      "source_blob": "3f46c1dbc5e56b011202b12d9d4a5c9dc23579a5",
+      "cells": 3167,
+      "selectedFrom": "batch_14.json",
+      "photo": null,
+      "residual_ops": 30
+    },
+    {
+      "id": "tsunami",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/tsunami_shape.json",
+      "source_blob": "d3fcc87b3b17c468121030e2f6b5497ffabe78cf",
+      "cells": 4834,
+      "selectedFrom": "batch_14.json",
+      "photo": null,
+      "residual_ops": 305
+    },
+    {
+      "id": "uziel",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/uziel_shape.json",
+      "source_blob": "5937f5f0e75d36fde02189b0c5270f48df902225",
+      "cells": 3304,
+      "selectedFrom": "second_08.json",
+      "photo": null,
+      "residual_ops": 98
+    },
+    {
+      "id": "verfolger",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/verfolger_shape.json",
+      "source_blob": "c1e3a47bb5341c8610b76ea9a78662a1d93a7a71",
+      "cells": 6189,
+      "selectedFrom": "batch_14.json",
+      "photo": null,
+      "residual_ops": 357
+    },
+    {
+      "id": "von_rohrs_hebi",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/von_rohrs_hebi_shape.json",
+      "source_blob": "19bdab3737001607f9167df3d8ac6ad50eecc897",
+      "cells": 6800,
+      "selectedFrom": "batch_14.json",
+      "photo": null,
+      "residual_ops": 368
+    },
+    {
+      "id": "vulcan",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/vulcan_shape.json",
+      "source_blob": "8abec5fbbcd0f71c348b140933433cc0afbf9afd",
+      "cells": 4666,
+      "selectedFrom": "third_03.json + batch_02_selected.json",
+      "photo": "batch_02_selected.json",
+      "residual_ops": 188
+    },
+    {
+      "id": "warlord",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/warlord_shape.json",
+      "source_blob": "1dd00687c3f4025502a4386975b3ee90d5f9e98f",
+      "cells": 8439,
+      "selectedFrom": "third_03.json",
+      "photo": null,
+      "residual_ops": 659
+    },
+    {
+      "id": "watchman",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/watchman_shape.json",
+      "source_blob": "be208d4d4b2011243c5ee9073abeb367c47cf47e",
+      "cells": 4694,
+      "selectedFrom": "batch_15.json",
+      "photo": null,
+      "residual_ops": 271
+    },
+    {
+      "id": "werewolf",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/werewolf_shape.json",
+      "source_blob": "ead454a0f02deb08fa8026d284182c14cb30dbe8",
+      "cells": 5790,
+      "selectedFrom": "second_08.json",
+      "photo": null,
+      "residual_ops": 452
+    },
+    {
+      "id": "whitworth",
+      "status": "transferred detailed recipe",
+      "source": "data/voxels/whitworth_shape.json",
+      "source_blob": "24702e8c343e0468d0fb777d8924b9f0ebb9f5a2",
+      "cells": 4005,
+      "selectedFrom": "second_08.json + batch_02_selected.json",
+      "photo": "batch_02_selected.json",
+      "residual_ops": 119
+    },
+    {
+      "id": "wolf_trap",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/wolf_trap_shape.json",
+      "source_blob": "ce78239d704c76ddb1f55b1d628551a89001d940",
+      "cells": 6694,
+      "selectedFrom": "second_08.json",
+      "photo": null,
+      "residual_ops": 445
+    },
+    {
+      "id": "wraith",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/wraith_shape.json",
+      "source_blob": "55b9bffdca7caa4bbc18ad18d6eb0abaf0134e4c",
+      "cells": 4578,
+      "selectedFrom": "batch_15.json",
+      "photo": null,
+      "residual_ops": 242
+    },
+    {
+      "id": "wyvern",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/wyvern_shape.json",
+      "source_blob": "ce3aa76fe10aac814279a88b4e35abea87c3d886",
+      "cells": 6099,
+      "selectedFrom": "batch_15.json",
+      "photo": null,
+      "residual_ops": 324
+    },
+    {
+      "id": "yeoman",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/yeoman_shape.json",
+      "source_blob": "b607ab66b7d924dc9bbbbfb9d5489582fed3dff4",
+      "cells": 11541,
+      "selectedFrom": "batch_15.json",
+      "photo": null,
+      "residual_ops": 213
+    },
+    {
+      "id": "ymir",
+      "status": "shape only: detailed recipe differs",
+      "source": "data/voxels/ymir_shape.json",
+      "source_blob": "fd726b49aa97f9ad732c566bf1b417cc2f564674",
+      "cells": 7244,
+      "selectedFrom": "second_08.json + batch_03_refined_b.json",
+      "photo": "batch_03_refined_b.json",
+      "residual_ops": 233
+    },
+    {
+      "id": "yu_huang",
+      "status": "linked detailed recipe",
+      "source": "data/voxels/yu_huang_shape.json",
+      "source_blob": "ab44cb1f68d3199998c416f8e513c29d2886b0eb",
+      "cells": 8574,
+      "selectedFrom": "batch_15.json",
+      "photo": null,
+      "residual_ops": 294
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+name: 150k Mech fine-detail catalog
+on:
+  pull_request:
+    paths:
+      - 'data/voxels/**'
+      - 'src/view/vox/vx_fine*.gd'
+      - 'tools/vx_fine_catalog_build.gd'
+      - '.github/workflows/vx-fine-catalog.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vx-fine-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.5.1
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import
+        run: godot --headless --import
+      - name: Build occupied voxel geometry
+        run: |
+          set -o pipefail
+          godot --headless -s tools/vx_fine_catalog_build.gd -- /tmp/fine ${{ matrix.shard }} 8 2>&1 | tee fine.log
+          grep -q '^FINE_CATALOG|' fine.log
+          ! grep -E 'SCRIPT ERROR|Parse Error|FINE_ERROR' fine.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mech-fine-150k-${{ matrix.shard }}
+          path: |
+            /tmp/fine/
+            fine.log
+          if-no-files-found: warn
+          retention-days: 14

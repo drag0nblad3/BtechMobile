@@ -584,6 +584,8 @@ var _pitch := 0.32
 var _dist := 3.6
 var _last := "Tap a button. Hits use the real hit table and damage rules."
 var _model_index := 0
+var _fine := false
+var _fine_paths := PackedStringArray()
 var _hud: CanvasLayer
 
 
@@ -603,6 +605,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	_fine_paths = VxFineCatalog.paths()
 	target = VxStage.build(self)
 	camera = Camera3D.new()
 	camera.fov = 45.0
@@ -614,7 +617,7 @@ func _ready() -> void:
 func reset() -> void:
 	if mech:
 		mech.queue_free()
-	mech = VxMech.from_file(MODELS[_model_index])
+	mech = VxMech.from_file(_model_path(), _fine)
 	add_child(mech)
 	unit = Unit.new(1, UnitDb.load_dir().get_def(mech.model.unit_id), 0, Vector2i.ZERO, 0)
 	mech.show_unit(unit)
@@ -622,14 +625,30 @@ func reset() -> void:
 
 
 func prev_mech() -> void:
-	_model_index = posmod(_model_index - 1, MODELS.size())
+	_model_index = posmod(_model_index - 1, _model_count())
 	_last = "Tap a button. Hits use the real hit table and damage rules."
 	reset()
 
 
 func next_mech() -> void:
-	_model_index = (_model_index + 1) % MODELS.size()
+	_model_index = (_model_index + 1) % _model_count()
 	_last = "Tap a button. Hits use the real hit table and damage rules."
+	reset()
+
+
+func _model_count() -> int:
+	return _fine_paths.size() if _fine else MODELS.size()
+
+
+func _model_path() -> String:
+	return _fine_paths[_model_index] if _fine else MODELS[_model_index]
+
+
+func _toggle_fine() -> void:
+	var path := VxFineCatalog.canonical(_model_path())
+	_fine = not _fine
+	var next := _fine_paths.find(path) if _fine else MODELS.find(path)
+	_model_index = maxi(0, next)
 	reset()
 
 
@@ -686,7 +705,7 @@ func _make_hud() -> void:
 	var top := VBoxContainer.new()
 	top.position = Vector2(16, 12)
 	_hud.add_child(top)
-	UiKit.label(top, "CLAUDE VOXEL TEST · %s (%d/%d)" % [mech.model.name, _model_index + 1, MODELS.size()], UiKit.SMALL)
+	UiKit.label(top, "CLAUDE VOXEL TEST · %s (%d/%d)" % [mech.model.name, _model_index + 1, _model_count()], UiKit.SMALL)
 	info = UiKit.label(top, "", 16)
 	info.custom_minimum_size.x = 760
 	var rows := VBoxContainer.new()
@@ -709,6 +728,7 @@ func _make_hud() -> void:
 	_button(a, "KICK", func(): mech.anim.kick(0))
 	_button(a, "PREV MECH", prev_mech)
 	_button(a, "NEXT MECH", next_mech).name = "VxNext"
+	_button(b, "NORMAL" if _fine else "FINE 150K", _toggle_fine)
 	for w in mech.model.weapons:
 		_button(b, w["label"], fire.bind(w))
 	_button(b, "HIT 5", hit.bind(5)).name = "VxHit5"
