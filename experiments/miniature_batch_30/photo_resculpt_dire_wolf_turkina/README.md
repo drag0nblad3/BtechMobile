@@ -1,0 +1,9 @@
+# Dire Wolf and Turkina independent reconstruction follow-up
+
+Four retrieved current plastic-miniature photographs, manually estimated 512px component polygons and joint landmarks in annotations.json. Camera and limb-pose fits held fixed per view during candidate evaluation. Front and rear projections for both; Turkina rear photograph crops the screen-right arm, so this arm is not scored in that view. Dire Wolf uses mirrored camera convention to preserve anatomical weapon-side identifiers.
+
+Two full replacement candidates each. Dire Wolf's full shell/cockpit and toe changes worsened at least one comparison, so kept only newly sculpted arm/weapon housings and elevated single missile rack. Turkina retains variant 1, with a flattened elliptical central carapace, projecting shallow cockpit, wider angled missile pods, dual cannon tubes, redesigned shoulder links and segmented foot pads. Two blocked sampled cells were repaired after selection.
+
+All selected candidates pass neutral structural audit: 39 parts, 27,260 occupied cells, 45/45 sampled three-cell axial openings clear. This is not an audit of full weapon bores or official weapon inventories. Dire Wolf's third visible tube in each housing is an appearance hypothesis; verify variant-specific armaments before production export. The source cell model can still differ from photographs despite increased mean component IoU. Rigid residuals 0.28–11.53px and pose residuals up to 20.05px; rear camera has just three rigid landmarks. Side views and independent holdout imagery remain necessary.
+
+See [before/after source projections](contact_sheet.svg), *_trials.json, dire_wolf_component_trials.json, *_final.json and summary.json. Other round5 files on the shared branch deliberately left unchanged. No production integration, engine tests or merged assets changed.
