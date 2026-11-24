@@ -1,0 +1,3347 @@
+{
+  "scope": 149,
+  "batch": 9,
+  "attempted": 12,
+  "cumulativeAttempted": 97,
+  "remaining": 52,
+  "distinctRegisteredViews": 8,
+  "modelsWithRegisteredAttempts": 6,
+  "selectedIndependentOfficialMultiView": 0,
+  "selectedSingleReference": 3,
+  "changed": 208,
+  "trials": 135,
+  "metrics": {
+    "physical": [
+      0,
+      0
+    ],
+    "weak": [
+      0,
+      0
+    ],
+    "partIslands": [
+      0,
+      0
+    ],
+    "clear": [
+      116,
+      116
+    ],
+    "total": [
+      116,
+      116
+    ]
+  },
+  "baselineVerified": true,
+  "rows": [
+    {
+      "id": "bandersnatch",
+      "source": "data/voxels/bandersnatch_shape.json",
+      "selectedFrom": "batch_01.json",
+      "before": {
+        "cells": 7013,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 21,
+        "total": 21
+      },
+      "after": {
+        "cells": 7073,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 21,
+        "total": 21
+      },
+      "changed": 60,
+      "patches": [
+        {
+          "part": "ll_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  -7,
+                  7,
+                  -3
+                ],
+                [
+                  -4,
+                  7,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  8,
+                  -3
+                ],
+                [
+                  -4,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  9,
+                  -3
+                ],
+                [
+                  -4,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  10,
+                  -3
+                ],
+                [
+                  -4,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  11,
+                  -3
+                ],
+                [
+                  -4,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  12,
+                  -3
+                ],
+                [
+                  -4,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  7,
+                  -2
+                ],
+                [
+                  -8,
+                  7,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  8,
+                  -2
+                ],
+                [
+                  -8,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  9,
+                  -2
+                ],
+                [
+                  -8,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  -2
+                ],
+                [
+                  -8,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  11,
+                  -2
+                ],
+                [
+                  -8,
+                  11,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 30
+        },
+        {
+          "part": "rl_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  3,
+                  7,
+                  -3
+                ],
+                [
+                  6,
+                  7,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  8,
+                  -3
+                ],
+                [
+                  6,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  9,
+                  -3
+                ],
+                [
+                  6,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  10,
+                  -3
+                ],
+                [
+                  6,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  11,
+                  -3
+                ],
+                [
+                  6,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  12,
+                  -3
+                ],
+                [
+                  7,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  7,
+                  -2
+                ],
+                [
+                  7,
+                  7,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  8,
+                  -2
+                ],
+                [
+                  7,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  9,
+                  -2
+                ],
+                [
+                  7,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  -2
+                ],
+                [
+                  7,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  11,
+                  -2
+                ],
+                [
+                  7,
+                  11,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 30
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.5046,
+          0.4921
+        ],
+        "gain": 0.0019000000000000128,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 2,
+        "sideMode": "front",
+        "mode": "expand",
+        "amount": 1
+      },
+      "views": [
+        {
+          "class": "CamoSpecs official BNDR-01A metal resculpt",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/30_jalphoenix_ch_bander_3.jpg",
+          "score": 0.5032,
+          "camera": {
+            "yaw": 10,
+            "elev": -10,
+            "roll": -6,
+            "distance": 90,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 907.7524639556674,
+            "tx": 255.9574572796363,
+            "ty": 229.02638082894683,
+            "rmse": 21.83205700719184
+          },
+          "pose": {
+            "rl": 21.942488468042885,
+            "ll": 16.644239068634736,
+            "ra": 9.570392001422524,
+            "la": 17.21623142127163
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        },
+        {
+          "class": "CamoSpecs official BNDR-01A metal resculpt",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/30_jalphoenix_ch_bander_3.jpg",
+          "score": 0.4897,
+          "camera": {
+            "yaw": 20,
+            "elev": -5,
+            "roll": -6,
+            "distance": 90,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 936.7487538338626,
+            "tx": 257.2237333171036,
+            "ty": 230.2881532183281,
+            "rmse": 21.20151969969105
+          },
+          "pose": {
+            "rl": 18.56304961871891,
+            "ll": 19.98773390893968,
+            "ra": 8.121827080538276,
+            "la": 16.773555932690037
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        }
+      ],
+      "resultFile": "batch_09_recheck_a.json"
+    },
+    {
+      "id": "brigand",
+      "source": "data/voxels/brigand_shape.json",
+      "selectedFrom": "batch_02.json",
+      "before": {
+        "cells": 4238,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "after": {
+        "cells": 4314,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "changed": 76,
+      "patches": [
+        {
+          "part": "ll_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  -6,
+                  8,
+                  -3
+                ],
+                [
+                  -6,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  -3
+                ],
+                [
+                  -3,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  8,
+                  -2
+                ],
+                [
+                  -7,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  -2
+                ],
+                [
+                  -3,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  8,
+                  -1
+                ],
+                [
+                  -7,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  -1
+                ],
+                [
+                  -3,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  8,
+                  0
+                ],
+                [
+                  -7,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  0
+                ],
+                [
+                  -3,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  8,
+                  1
+                ],
+                [
+                  -7,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  1
+                ],
+                [
+                  -3,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  9,
+                  -3
+                ],
+                [
+                  -6,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  -3
+                ],
+                [
+                  -3,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  9,
+                  -2
+                ],
+                [
+                  -7,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  -2
+                ],
+                [
+                  -3,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  9,
+                  -1
+                ],
+                [
+                  -7,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  -1
+                ],
+                [
+                  -3,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  9,
+                  0
+                ],
+                [
+                  -7,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  0
+                ],
+                [
+                  -3,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  9,
+                  1
+                ],
+                [
+                  -7,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  1
+                ],
+                [
+                  -3,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  10,
+                  -2
+                ],
+                [
+                  -7,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  -2
+                ],
+                [
+                  -3,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  10,
+                  -1
+                ],
+                [
+                  -7,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  -1
+                ],
+                [
+                  -3,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  10,
+                  0
+                ],
+                [
+                  -7,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  0
+                ],
+                [
+                  -3,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -7,
+                  10,
+                  1
+                ],
+                [
+                  -7,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  1
+                ],
+                [
+                  -3,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  10,
+                  -3
+                ],
+                [
+                  -6,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  -3
+                ],
+                [
+                  -3,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  10,
+                  2
+                ],
+                [
+                  -6,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  2
+                ],
+                [
+                  -3,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  11,
+                  -3
+                ],
+                [
+                  -6,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  11,
+                  -3
+                ],
+                [
+                  -3,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -6,
+                  11,
+                  2
+                ],
+                [
+                  -6,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  11,
+                  2
+                ],
+                [
+                  -3,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  12,
+                  -3
+                ],
+                [
+                  -3,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  12,
+                  2
+                ],
+                [
+                  -3,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 38
+        },
+        {
+          "part": "rl_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  -3
+                ],
+                [
+                  2,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  8,
+                  -3
+                ],
+                [
+                  5,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  -2
+                ],
+                [
+                  2,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  8,
+                  -2
+                ],
+                [
+                  6,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  -1
+                ],
+                [
+                  2,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  8,
+                  -1
+                ],
+                [
+                  6,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  0
+                ],
+                [
+                  2,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  8,
+                  0
+                ],
+                [
+                  6,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  1
+                ],
+                [
+                  2,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  8,
+                  1
+                ],
+                [
+                  6,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  -3
+                ],
+                [
+                  2,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  9,
+                  -3
+                ],
+                [
+                  5,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  -2
+                ],
+                [
+                  2,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  9,
+                  -2
+                ],
+                [
+                  6,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  -1
+                ],
+                [
+                  2,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  9,
+                  -1
+                ],
+                [
+                  6,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  0
+                ],
+                [
+                  2,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  9,
+                  0
+                ],
+                [
+                  6,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  1
+                ],
+                [
+                  2,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  9,
+                  1
+                ],
+                [
+                  6,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  -2
+                ],
+                [
+                  2,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  10,
+                  -2
+                ],
+                [
+                  6,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  -1
+                ],
+                [
+                  2,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  10,
+                  -1
+                ],
+                [
+                  6,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  0
+                ],
+                [
+                  2,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  10,
+                  0
+                ],
+                [
+                  6,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  1
+                ],
+                [
+                  2,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  6,
+                  10,
+                  1
+                ],
+                [
+                  6,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  -3
+                ],
+                [
+                  2,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  10,
+                  -3
+                ],
+                [
+                  5,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  2
+                ],
+                [
+                  2,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  10,
+                  2
+                ],
+                [
+                  5,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  11,
+                  -3
+                ],
+                [
+                  2,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  11,
+                  -3
+                ],
+                [
+                  5,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  11,
+                  2
+                ],
+                [
+                  2,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  5,
+                  11,
+                  2
+                ],
+                [
+                  5,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  12,
+                  -3
+                ],
+                [
+                  2,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  12,
+                  2
+                ],
+                [
+                  2,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 38
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.6399,
+          0.6176
+        ],
+        "gain": 0.004300000000000026,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 0,
+        "sideMode": "both",
+        "mode": "expand",
+        "amount": 1
+      },
+      "views": [
+        {
+          "class": "unofficial LDT-1 catalog rendering",
+          "url": "https://i.ebayimg.com/images/g/rccAAOSwILRnIQg9/s-l1600.png",
+          "score": 0.634,
+          "camera": {
+            "yaw": 10,
+            "elev": -5,
+            "roll": 3,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 760.0695652107637,
+            "tx": 260.3674069012316,
+            "ty": 259.5566305735969,
+            "rmse": 11.447497667336144
+          },
+          "pose": {
+            "rl": 15.515157107663242,
+            "ll": 19.105076212562302,
+            "ra": 10.16637210315389,
+            "la": 15.638356306951174
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        },
+        {
+          "class": "unofficial LDT-1 catalog rendering",
+          "url": "https://i.ebayimg.com/images/g/rccAAOSwILRnIQg9/s-l1600.png",
+          "score": 0.6149,
+          "camera": {
+            "yaw": 20,
+            "elev": -10,
+            "roll": 6,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 791.4733306038866,
+            "tx": 262.1161779770819,
+            "ty": 259.86325882684065,
+            "rmse": 10.67270189212282
+          },
+          "pose": {
+            "rl": 10.019669420261115,
+            "ll": 15.40130050330063,
+            "ra": 8.295024181473993,
+            "la": 15.029693972512664
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        }
+      ],
+      "resultFile": "batch_09_recheck_a.json"
+    },
+    {
+      "id": "cobra",
+      "source": "data/voxels/cobra_shape.json",
+      "selectedFrom": "batch_02.json",
+      "before": {
+        "cells": 8055,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 32,
+        "total": 32
+      },
+      "after": {
+        "cells": 8055,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 32,
+        "total": 32
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_09_a.json"
+    },
+    {
+      "id": "cossack",
+      "source": "data/voxels/cossack_shape.json",
+      "selectedFrom": "second_01.json",
+      "before": {
+        "cells": 4218,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 9,
+        "total": 9
+      },
+      "after": {
+        "cells": 4218,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 9,
+        "total": 9
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "line drawing from catalog, not photograph",
+          "url": "https://i.ebayimg.com/images/g/6cIAAOSw7zNnIKr-/s-l1200.png",
+          "score": 0.5772,
+          "camera": {
+            "yaw": -35,
+            "elev": 0,
+            "roll": 3,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2648.713331826783,
+            "tx": 244.3402306170947,
+            "ty": 216.92564770432094,
+            "rmse": 12.949695447527963
+          },
+          "pose": {
+            "rl": 18.095204862212082,
+            "ll": 11.688981444986679
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": true
+        }
+      ],
+      "resultFile": "batch_09_a.json"
+    },
+    {
+      "id": "cronus",
+      "source": "data/voxels/cronus_shape.json",
+      "selectedFrom": "batch_02.json",
+      "before": {
+        "cells": 5259,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "after": {
+        "cells": 5259,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_09_b.json"
+    },
+    {
+      "id": "daimyo",
+      "source": "data/voxels/daimyo_shape.json",
+      "selectedFrom": "batch_03.json",
+      "before": {
+        "cells": 4633,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 9,
+        "total": 9
+      },
+      "after": {
+        "cells": 4633,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 9,
+        "total": 9
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "CamoSpecs DMO-1K metal front",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/65_mastergunz9thbenjidaimyofront.jpg",
+          "score": 0.5196,
+          "camera": {
+            "yaw": -15,
+            "elev": -5,
+            "roll": -3,
+            "distance": 90,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 667.3310149551188,
+            "tx": 257.314259826051,
+            "ty": 287.0109040001236,
+            "rmse": 19.142425813338622
+          },
+          "pose": {
+            "rl": 13.592420952027217,
+            "ll": 5.745503054585349,
+            "ra": 25.699756169328523,
+            "la": 1.3802284126170585
+          },
+          "fitOK": false,
+          "boundary": false,
+          "diagnosticOnly": false
+        },
+        {
+          "class": "same DMO-1K physical miniature rear view",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/65_mastergunz9thbenjidaimyoback.jpg",
+          "score": 0.5206,
+          "camera": {
+            "yaw": 165,
+            "elev": -10,
+            "roll": -3,
+            "distance": 90,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 710.0968764123521,
+            "tx": 254.03328028583837,
+            "ty": 291.26566086780076,
+            "rmse": 22.66536017798767
+          },
+          "pose": {
+            "rl": 7.8017320496334275,
+            "ll": 16.634573026002297,
+            "ra": 4.077034327400936,
+            "la": 5.162719894514712
+          },
+          "fitOK": false,
+          "boundary": false,
+          "diagnosticOnly": false
+        }
+      ],
+      "resultFile": "batch_09_recheck_b.json"
+    },
+    {
+      "id": "dart",
+      "source": "data/voxels/dart_shape.json",
+      "selectedFrom": "batch_03.json",
+      "before": {
+        "cells": 3567,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 3567,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "CamoSpecs Dart metal miniature; grass obscures one foot",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/61_25thag_dart1.jpg",
+          "score": 0.6298,
+          "camera": {
+            "yaw": -20,
+            "elev": 0,
+            "roll": -3,
+            "distance": 220,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1345.944405192789,
+            "tx": 201.8235786569149,
+            "ty": 179.71319959671985,
+            "rmse": 21.796024937523693
+          },
+          "pose": {
+            "rl": 14.413523950304306,
+            "ll": 37.92971501293613,
+            "ra": 27.961589727484842,
+            "la": 26.74952681126751
+          },
+          "fitOK": false,
+          "boundary": true,
+          "diagnosticOnly": true
+        },
+        {
+          "class": "same physical Dart from oblique side; vegetation hides feet",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/61_25thag_dart2.jpg",
+          "score": 0.3171,
+          "camera": {
+            "yaw": -65,
+            "elev": 0,
+            "roll": 6,
+            "distance": 400,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 4421.6405523016265,
+            "tx": 183.3249503536544,
+            "ty": 180.64963860522695,
+            "rmse": 9.033242617562841
+          },
+          "pose": {
+            "rl": 38.283644700095145,
+            "ll": 40.182961587287785,
+            "ra": 19.48320646981611,
+            "la": 8.795616227900341
+          },
+          "fitOK": false,
+          "boundary": true,
+          "diagnosticOnly": true
+        }
+      ],
+      "resultFile": "batch_09_dart.json"
+    },
+    {
+      "id": "duan_gung",
+      "source": "data/voxels/duan_gung_shape.json",
+      "selectedFrom": "batch_03.json",
+      "before": {
+        "cells": 4271,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "after": {
+        "cells": 4199,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "changed": 72,
+      "patches": [
+        {
+          "part": "ll_foot",
+          "shapes": [
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  -1
+                ],
+                [
+                  -6,
+                  3,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  -1
+                ],
+                [
+                  -3,
+                  3,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  0
+                ],
+                [
+                  -6,
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  0
+                ],
+                [
+                  -3,
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  1
+                ],
+                [
+                  -6,
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  1
+                ],
+                [
+                  -3,
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  4,
+                  -1
+                ],
+                [
+                  -6,
+                  4,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  4,
+                  0
+                ],
+                [
+                  -6,
+                  4,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  4,
+                  1
+                ],
+                [
+                  -6,
+                  4,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -6
+                ],
+                [
+                  -6,
+                  2,
+                  -6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  -6
+                ],
+                [
+                  -3,
+                  2,
+                  -6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -5
+                ],
+                [
+                  -6,
+                  2,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  -5
+                ],
+                [
+                  -3,
+                  2,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -4
+                ],
+                [
+                  -6,
+                  2,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  -4
+                ],
+                [
+                  -3,
+                  2,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -3
+                ],
+                [
+                  -6,
+                  2,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  -3
+                ],
+                [
+                  -3,
+                  2,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -2
+                ],
+                [
+                  -6,
+                  2,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  -2
+                ],
+                [
+                  -3,
+                  2,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -1
+                ],
+                [
+                  -6,
+                  2,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  -1
+                ],
+                [
+                  -3,
+                  2,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  0
+                ],
+                [
+                  -6,
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  0
+                ],
+                [
+                  -3,
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  1
+                ],
+                [
+                  -6,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  2,
+                  1
+                ],
+                [
+                  -3,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  -5
+                ],
+                [
+                  -6,
+                  3,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  -5
+                ],
+                [
+                  -3,
+                  3,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  -4
+                ],
+                [
+                  -6,
+                  3,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  -4
+                ],
+                [
+                  -3,
+                  3,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  -3
+                ],
+                [
+                  -6,
+                  3,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  -3
+                ],
+                [
+                  -3,
+                  3,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  3,
+                  -2
+                ],
+                [
+                  -6,
+                  3,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -3,
+                  3,
+                  -2
+                ],
+                [
+                  -3,
+                  3,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  4,
+                  -3
+                ],
+                [
+                  -6,
+                  4,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  4,
+                  -2
+                ],
+                [
+                  -6,
+                  4,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -6,
+                  2,
+                  -7
+                ],
+                [
+                  -6,
+                  2,
+                  -7
+                ]
+              ]
+            }
+          ],
+          "count": 36
+        },
+        {
+          "part": "rl_foot",
+          "shapes": [
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  -1
+                ],
+                [
+                  2,
+                  3,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  -1
+                ],
+                [
+                  5,
+                  3,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  0
+                ],
+                [
+                  2,
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  0
+                ],
+                [
+                  5,
+                  3,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  1
+                ],
+                [
+                  2,
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  1
+                ],
+                [
+                  5,
+                  3,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  4,
+                  -1
+                ],
+                [
+                  5,
+                  4,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  4,
+                  0
+                ],
+                [
+                  5,
+                  4,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  4,
+                  1
+                ],
+                [
+                  5,
+                  4,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  -6
+                ],
+                [
+                  2,
+                  2,
+                  -6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -6
+                ],
+                [
+                  5,
+                  2,
+                  -6
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  -5
+                ],
+                [
+                  2,
+                  2,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -5
+                ],
+                [
+                  5,
+                  2,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  -4
+                ],
+                [
+                  2,
+                  2,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -4
+                ],
+                [
+                  5,
+                  2,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  -3
+                ],
+                [
+                  2,
+                  2,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -3
+                ],
+                [
+                  5,
+                  2,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  -2
+                ],
+                [
+                  2,
+                  2,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -2
+                ],
+                [
+                  5,
+                  2,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  -1
+                ],
+                [
+                  2,
+                  2,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -1
+                ],
+                [
+                  5,
+                  2,
+                  -1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  0
+                ],
+                [
+                  5,
+                  2,
+                  0
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  2,
+                  1
+                ],
+                [
+                  2,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  1
+                ],
+                [
+                  5,
+                  2,
+                  1
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  -5
+                ],
+                [
+                  2,
+                  3,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  -5
+                ],
+                [
+                  5,
+                  3,
+                  -5
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  -4
+                ],
+                [
+                  2,
+                  3,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  -4
+                ],
+                [
+                  5,
+                  3,
+                  -4
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  -3
+                ],
+                [
+                  2,
+                  3,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  -3
+                ],
+                [
+                  5,
+                  3,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  2,
+                  3,
+                  -2
+                ],
+                [
+                  2,
+                  3,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  3,
+                  -2
+                ],
+                [
+                  5,
+                  3,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  4,
+                  -3
+                ],
+                [
+                  5,
+                  4,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  4,
+                  -2
+                ],
+                [
+                  5,
+                  4,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  5,
+                  2,
+                  -7
+                ],
+                [
+                  5,
+                  2,
+                  -7
+                ]
+              ]
+            }
+          ],
+          "count": 36
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.6521,
+          0.6455
+        ],
+        "gain": 0.0020499999999999963,
+        "names": [
+          "ll_foot",
+          "rl_foot"
+        ],
+        "axis": 0,
+        "sideMode": "both",
+        "mode": "trim",
+        "amount": 1
+      },
+      "views": [
+        {
+          "class": "unofficial running pose proxy D9-G9 variant unverified",
+          "url": "https://cdn.freewebstore.com/origin/768983/runfront_1765487348633.jpg",
+          "score": 0.6506,
+          "camera": {
+            "yaw": 5,
+            "elev": 0,
+            "roll": 3,
+            "distance": 90,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1018.9411637374789,
+            "tx": 283.48118912882643,
+            "ty": 222.3886463288329,
+            "rmse": 16.212287226098244
+          },
+          "pose": {
+            "rl": 6.490308775902563,
+            "ll": 10.506862793203942,
+            "ra": 5.754865056478037,
+            "la": 7.697053883402713
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        },
+        {
+          "class": "unofficial running pose proxy D9-G9 variant unverified",
+          "url": "https://cdn.freewebstore.com/origin/768983/runfront_1765487348633.jpg",
+          "score": 0.6429,
+          "camera": {
+            "yaw": 15,
+            "elev": 0,
+            "roll": 3,
+            "distance": 140,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1625.9263510035644,
+            "tx": 283.95814626841525,
+            "ty": 222.95579938613668,
+            "rmse": 15.097543105499307
+          },
+          "pose": {
+            "rl": 6.943576848451334,
+            "ll": 9.292485651440689,
+            "ra": 4.214304966027536,
+            "la": 6.793478313851521
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false
+        }
+      ],
+      "resultFile": "batch_09_recheck_b.json"
+    },
+    {
+      "id": "enfield",
+      "source": "data/voxels/enfield_shape.json",
+      "selectedFrom": "second_02.json",
+      "before": {
+        "cells": 4767,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 4767,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_09_c.json"
+    },
+    {
+      "id": "falcon_hawk",
+      "source": "data/voxels/falcon_hawk_shape.json",
+      "selectedFrom": "batch_04.json",
+      "before": {
+        "cells": 5818,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 5818,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_09_c.json"
+    },
+    {
+      "id": "falcon",
+      "source": "data/voxels/falcon_shape.json",
+      "selectedFrom": "batch_04.json",
+      "before": {
+        "cells": 4216,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 4216,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_09_c.json"
+    },
+    {
+      "id": "galahad",
+      "source": "data/voxels/galahad_shape.json",
+      "selectedFrom": "second_02.json",
+      "before": {
+        "cells": 3614,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 3614,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_09_c.json"
+    }
+  ],
+  "notes": {
+    "cobra": {
+      "reason": "search returned Battle Cobra (different chassis); no qualifying visual reference"
+    },
+    "cronus": {
+      "url": "https://camospecs.com/mini/cronus-cns-5m-2/",
+      "reason": "official metal gallery located but actual image not delivered by web; source CNS-3M differs"
+    },
+    "dart": {
+      "urls": [
+        "https://s3.amazonaws.com/cso-images/schemes/61_25thag_dart1.jpg",
+        "https://s3.amazonaws.com/cso-images/schemes/61_25thag_dart2.jpg"
+      ],
+      "reason": "two actual miniature photos inspected and registered, both diagnostic due to occluded feet and failed fit"
+    },
+    "enfield": {
+      "url": "https://camospecs.com/mini/enfield-end-6q/",
+      "reason": "official gallery located; image not delivered"
+    },
+    "falcon_hawk": {
+      "url": "https://camospecs.com/mini/falcon-hawk-fnhk-9k-2/",
+      "reason": "official gallery located; image not delivered"
+    },
+    "falcon": {
+      "reason": "no verified chassis image"
+    },
+    "galahad": {
+      "url": "https://cfw.sarna.net/wiki/images/7/7a/SLGalahad.jpg",
+      "reason": "illustration cropped at top and variant differs from GLH-3D; not registered; official GLH-2D gallery located"
+    }
+  },
+  "limitations": "Three provisional changes from single reference images and two fixed yaw hypotheses each; Bandersnatch official metal photograph, Brigand unofficial render, Duan Gung unofficial proxy variant unverified. Daimyo independent front and rear physical pair rejected due to residuals; Dart independent photos diagnostic only. Cossack line art diagnostic only; six source-only audits. No full semantic masks, precise optical calibration, Godot runtime validation or production changes."
+}
