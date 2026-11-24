@@ -1443,21 +1443,6 @@
               4
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -1,
-              26,
-              2
-            ],
-            [
-              1,
-              28,
-              6
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -2688,21 +2673,6 @@
             ]
           ],
           "mat": "edge"
-        },
-        {
-          "box": [
-            [
-              -11,
-              25,
-              -1
-            ],
-            [
-              -10,
-              27,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "parent": "lt",
@@ -3538,21 +3508,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -4,
-              16,
-              -3
-            ],
-            [
-              -4,
-              18,
-              -1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "joint": "hip",
@@ -4008,21 +3963,6 @@
             ]
           },
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -7,
-              10,
-              -1
-            ],
-            [
-              -5,
-              11,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "parent": "ll",
@@ -4150,21 +4090,6 @@
             ]
           },
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -7,
-              2,
-              -2
-            ],
-            [
-              -5,
-              3,
-              0
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "parent": "ll_shin",
@@ -4178,23 +4103,6 @@
         4.6,
         16.8,
         0
-      ],
-      "add": [
-        {
-          "box": [
-            [
-              3,
-              17,
-              -4
-            ],
-            [
-              3,
-              19,
-              -2
-            ]
-          ],
-          "mat": "frame"
-        }
       ]
     },
     {
@@ -4291,7 +4199,7 @@
     "automated_not_art_approved": true
   },
   "notes": " Rifleman thin waist/torso and symmetrical double-gun arms: separate backed AC/5 and large-laser forebarrels with real longitudinal bores on both sides.",
-  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only.",
   "pass1": {
     "changes": [
       "Distinct shallow low torso with cockpit brow",
@@ -4447,20 +4355,283 @@
       ]
     }
   },
-  "pass2": {
-    "repairs": [
-      "ct: supported 18-cell local mass (gap 4)",
-      "la → lt: local structural sleeve (gap 1)",
-      "ll → ct: local structural sleeve (gap 0)",
-      "ll_shin → ll: local structural sleeve (gap 1)",
-      "ll_foot → ll_shin: local structural sleeve (gap 1)",
-      "rl → ct: local structural sleeve (gap 0)"
+  "experimental_photo_fit": {
+    "method": "Approximate manually traced visible part bounds; per-view orthographic camera and articulated pose; geometry changes gated by neutral voxel connectivity penalty. Not pixel-mask IoU; not a multi-angle validated plastic match.",
+    "references": [
+      {
+        "url": "https://i.pinimg.com/originals/bf/f6/1f/bff61f8a202230c9d5d939ef946e20bd.jpg",
+        "quality": "front RFL-3N, raised guns",
+        "baseline_rmse": 14.774852552302741,
+        "refined_rmse": 14.774852552302741,
+        "parameters": {
+          "yaw": 4,
+          "pitch": 4,
+          "roll": 1,
+          "la": 25,
+          "ra": 21,
+          "ll": -7,
+          "rl": -4,
+          "ll_shin": -4,
+          "rl_shin": -12,
+          "laSpread": -9,
+          "raSpread": 15,
+          "llSpread": -4,
+          "rlSpread": 9
+        },
+        "swap_bilateral": false,
+        "scale": 7.878717696350069,
+        "dx": 256.7509898000458,
+        "dy": 389.22034004432896,
+        "regions": [
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              195,
+              135,
+              325,
+              230
+            ],
+            "projected": [
+              215.04878567989448,
+              163.06567817428035,
+              302.4492014359559,
+              264.8002779369257
+            ]
+          },
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              241,
+              139,
+              281,
+              210
+            ],
+            "projected": [
+              231.05857811420412,
+              122.75734965575509,
+              293.7933910806418,
+              197.88081246686926
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "lt",
+            "target": [
+              187,
+              142,
+              239,
+              218
+            ],
+            "projected": [
+              174.6826497562143,
+              150.90767920444694,
+              223.1821185230744,
+              226.29239528542152
+            ]
+          },
+          {
+            "part": "rt",
+            "model": "rt",
+            "target": [
+              283,
+              145,
+              326,
+              226
+            ],
+            "projected": [
+              293.91309669863307,
+              152.39021775760267,
+              339.7215988325179,
+              227.77493383857725
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              151,
+              126,
+              195,
+              215
+            ],
+            "projected": [
+              117.64601293363177,
+              122.05042259693283,
+              194.22130795241245,
+              237.21594054559344
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              324,
+              136,
+              369,
+              226
+            ],
+            "projected": [
+              337.11441214374906,
+              132.9310789692699,
+              398.85517559193636,
+              239.22191220594786
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              182,
+              237,
+              236,
+              308
+            ],
+            "projected": [
+              185.13578978322255,
+              242.83134194475343,
+              228.46837016179657,
+              309.2700315778817
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              268,
+              241,
+              320,
+              311
+            ],
+            "projected": [
+              280.8736122825154,
+              243.4781709986486,
+              325.6750867328229,
+              308.59988468548505
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "ll_shin",
+            "target": [
+              178,
+              300,
+              237,
+              383
+            ],
+            "projected": [
+              180.27579724845768,
+              300.7322403636164,
+              222.59854566138551,
+              370.7886363862883
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "rl_shin",
+            "target": [
+              281,
+              302,
+              338,
+              390
+            ],
+            "projected": [
+              289.23266160566664,
+              299.331125587525,
+              336.60323064836297,
+              373.1554191584472
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "ll_foot",
+            "target": [
+              161,
+              374,
+              236,
+              414
+            ],
+            "projected": [
+              167.39327547061038,
+              357.2431973871343,
+              225.79902279499663,
+              404.3912193924209
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "rl_foot",
+            "target": [
+              291,
+              379,
+              363,
+              425
+            ],
+            "projected": [
+              294.7312483932183,
+              354.8132471501899,
+              347.42385436267375,
+              409.6521945169207
+            ]
+          }
+        ]
+      }
     ],
-    "audit": {
-      "voxels": 5919,
-      "islands": [],
-      "parts": [],
-      "weak": []
+    "changes": [],
+    "validation": {
+      "cells": 5883,
+      "whole_components": [
+        5865,
+        18
+      ],
+      "issues": [
+        {
+          "part": "ct",
+          "islands": 18
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 0
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 1
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ],
+      "penalty": 67
     }
   }
 }
