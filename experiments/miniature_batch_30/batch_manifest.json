@@ -1,0 +1,769 @@
+{
+  "requested": 30,
+  "changed": 30,
+  "clean": 6,
+  "with_inherited_faults": 24,
+  "changed_cells_total": 2395,
+  "prior_camera_records": 30,
+  "photo_leads": 30,
+  "newly_registered_photos": 0,
+  "new_fidelity_scores": 0,
+  "models": [
+    {
+      "name": "catapult",
+      "source": "data/voxels/catapult.json",
+      "target": "ct",
+      "changed_cells": 8,
+      "baseline_faults": [
+        "ct:islands=3",
+        "la:weak->lt",
+        "ra:weak->rt"
+      ],
+      "trial_faults": [
+        "ct:islands=3",
+        "la:weak->lt",
+        "ra:weak->rt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/catapult4.jpg",
+      "sculpt_variant": "CPLT-C1",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "0",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[14,0,-5],\"ll_foot\":[4,0,0],\"ll_shin\":[-12,0,0],\"rl\":[-18,0,5],\"rl_foot\":[-12,0,0],\"rl_shin\":[30,0,0]}",
+        "previous_provisional_fit": "47.6"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "atlas",
+      "source": "data/voxels/atlas_shape.json",
+      "target": "hd",
+      "changed_cells": 5,
+      "baseline_faults": [
+        "lt:islands=2"
+      ],
+      "trial_faults": [
+        "lt:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/atlas4-1.jpg",
+      "sculpt_variant": "AS7-D",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "59.7"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "adder",
+      "source": "data/voxels/adder_shape.json",
+      "target": "lt",
+      "changed_cells": 46,
+      "baseline_faults": [
+        "lt:islands=2",
+        "rt:islands=2",
+        "ll_shin:weak->ll",
+        "ll_tarsus:weak->ll_shin",
+        "rl_shin:weak->rl",
+        "rl_tarsus:weak->rl_shin"
+      ],
+      "trial_faults": [
+        "lt:islands=2",
+        "rt:islands=2",
+        "ll_shin:weak->ll",
+        "ll_tarsus:weak->ll_shin",
+        "rl_shin:weak->rl",
+        "rl_tarsus:weak->rl_shin"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/adder11.jpg",
+      "sculpt_variant": "Prime",
+      "previous_unverified_camera": {
+        "yaw": "15",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[-18,0,-5],\"ll_foot\":[-12,0,0],\"ll_shin\":[30,0,0],\"rl\":[14,0,5],\"rl_foot\":[4,0,0],\"rl_shin\":[-12,0,0]}",
+        "previous_provisional_fit": "46.7"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "blackjack",
+      "source": "data/voxels/blackjack_shape.json",
+      "target": "ct",
+      "changed_cells": 63,
+      "baseline_faults": [
+        "ct:islands=2",
+        "lt:islands=2",
+        "lt:weak->ct",
+        "rt:islands=2",
+        "rt:weak->ct",
+        "la:weak->lt",
+        "ra:weak->rt"
+      ],
+      "trial_faults": [
+        "ct:islands=2",
+        "lt:islands=2",
+        "lt:weak->ct",
+        "rt:islands=2",
+        "rt:weak->ct",
+        "la:weak->lt",
+        "ra:weak->rt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/blackjack3-3.jpg",
+      "sculpt_variant": "BJ-2",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[-8,0,-22],\"ra\":[4,0,7]}",
+        "previous_provisional_fit": "44.1"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "locust",
+      "source": "data/voxels/locust_shape.json",
+      "target": "ll_shin",
+      "changed_cells": 46,
+      "baseline_faults": [
+        "ct:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/locust6.jpg",
+      "sculpt_variant": "LCT-1V",
+      "previous_unverified_camera": {
+        "yaw": "-15",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[-8,0,-22],\"ra\":[4,0,7]}",
+        "previous_provisional_fit": "43.2"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "archer",
+      "source": "data/voxels/archer_shape.json",
+      "target": "ct",
+      "changed_cells": 195,
+      "baseline_faults": [
+        "ct:islands=2",
+        "ll_foot:weak->ll_shin",
+        "rl_foot:weak->rl_shin"
+      ],
+      "trial_faults": [
+        "ct:islands=2",
+        "ll_foot:weak->ll_shin",
+        "rl_foot:weak->rl_shin"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/archer25.jpg",
+      "sculpt_variant": "ARC-2R",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[4,0,-7],\"ra\":[-8,0,22]}",
+        "previous_provisional_fit": "52.2"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "awesome",
+      "source": "data/voxels/awesome_shape.json",
+      "target": "lt",
+      "changed_cells": 162,
+      "baseline_faults": [
+        "lt_ppc:weak->lt"
+      ],
+      "trial_faults": [
+        "lt_ppc:weak->lt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/awesome3.jpg",
+      "sculpt_variant": "AWS-8Q",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[-18,0,-5],\"ll_foot\":[-12,0,0],\"ll_shin\":[30,0,0],\"rl\":[14,0,5],\"rl_foot\":[4,0,0],\"rl_shin\":[-12,0,0]}",
+        "previous_provisional_fit": "69"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "banshee",
+      "source": "data/voxels/banshee_shape.json",
+      "target": "ll",
+      "changed_cells": 26,
+      "baseline_faults": [],
+      "trial_faults": [],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/banshee4-5.jpg",
+      "sculpt_variant": "BNC-3S",
+      "previous_unverified_camera": {
+        "yaw": "15",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[0,0,8],\"rl\":[0,0,-8]}",
+        "previous_provisional_fit": "48.2"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "battlemaster",
+      "source": "data/voxels/battlemaster_shape.json",
+      "target": "hd",
+      "changed_cells": 2,
+      "baseline_faults": [
+        "hd:weak->ct",
+        "la:weak->lt"
+      ],
+      "trial_faults": [
+        "hd:weak->ct",
+        "la:weak->lt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/battlemaster7.jpg",
+      "sculpt_variant": "BLR-1G",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[-8,0,-22],\"ra\":[4,0,7]}",
+        "previous_provisional_fit": "49.2"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "centurion",
+      "source": "data/voxels/centurion_shape.json",
+      "target": "la",
+      "changed_cells": 76,
+      "baseline_faults": [],
+      "trial_faults": [],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/centurion45.jpg",
+      "sculpt_variant": "CN9-A",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "46.3"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "charger",
+      "source": "data/voxels/charger_shape.json",
+      "target": "ll_shin",
+      "changed_cells": 30,
+      "baseline_faults": [],
+      "trial_faults": [],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/charger3-66.jpg",
+      "sculpt_variant": "CGR-3K",
+      "previous_unverified_camera": {
+        "yaw": "15",
+        "pitch": "-24",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[0,0,8],\"rl\":[0,0,-8]}",
+        "previous_provisional_fit": "49.1"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "crab",
+      "source": "data/voxels/crab_shape.json",
+      "target": "ct",
+      "changed_cells": 187,
+      "baseline_faults": [],
+      "trial_faults": [],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/crab80.jpg",
+      "sculpt_variant": "CRB-27/-27b/-20",
+      "previous_unverified_camera": {
+        "yaw": "15",
+        "pitch": "-12",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "51.9"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "cyclops",
+      "source": "data/voxels/cyclops_shape.json",
+      "target": "ct",
+      "changed_cells": 96,
+      "baseline_faults": [
+        "ct:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/cyclops4-6.jpg",
+      "sculpt_variant": "CP-11-A",
+      "previous_unverified_camera": {
+        "yaw": "15",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "47.1"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "dragon",
+      "source": "data/voxels/dragon_shape.json",
+      "target": "ct",
+      "changed_cells": 44,
+      "baseline_faults": [
+        "ct:islands=2",
+        "la:weak->lt",
+        "ra:weak->rt"
+      ],
+      "trial_faults": [
+        "ct:islands=2",
+        "la:weak->lt",
+        "ra:weak->rt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/dragon99.jpg",
+      "sculpt_variant": "DRG-1N",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "0",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[0,0,-8],\"ll\":[0,0,-10],\"ra\":[0,0,8],\"rl\":[0,0,10]}",
+        "previous_provisional_fit": "56.9"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "enforcer",
+      "source": "data/voxels/enforcer_shape.json",
+      "target": "ll",
+      "changed_cells": 30,
+      "baseline_faults": [
+        "ct:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/enforcer4-2.jpg",
+      "sculpt_variant": "ENF-5D",
+      "previous_unverified_camera": {
+        "yaw": "-15",
+        "pitch": "-24",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[0,0,8],\"rl\":[0,0,-8]}",
+        "previous_provisional_fit": "51.5"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "firestarter",
+      "source": "data/voxels/firestarter_shape.json",
+      "target": "ct",
+      "changed_cells": 74,
+      "baseline_faults": [
+        "ct:islands=3",
+        "hd:islands=2",
+        "hd_antenna:weak->hd",
+        "lt:islands=2",
+        "rt:islands=2",
+        "la:islands=2",
+        "ra:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=3",
+        "hd:islands=2",
+        "hd_antenna:weak->hd",
+        "lt:islands=2",
+        "rt:islands=2",
+        "la:islands=2",
+        "ra:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/firestarter3-18.jpg",
+      "sculpt_variant": "FS9-H",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "0",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "40.3"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "griffin",
+      "source": "data/voxels/griffin_shape.json",
+      "target": "lt",
+      "changed_cells": 65,
+      "baseline_faults": [
+        "ra_ppc_barrel:weak->ra"
+      ],
+      "trial_faults": [
+        "ra_ppc_barrel:weak->ra"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/griffin1.jpg",
+      "sculpt_variant": "GRF-1N",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "0",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[-12,0,-4],\"ll_foot\":[-8,0,0],\"ll_shin\":[22,0,0],\"rl\":[-12,0,4],\"rl_foot\":[-8,0,0],\"rl_shin\":[22,0,0]}",
+        "previous_provisional_fit": "55"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "hatchetman",
+      "source": "data/voxels/hatchetman_shape.json",
+      "target": "ll_shin",
+      "changed_cells": 36,
+      "baseline_faults": [
+        "ct:islands=2",
+        "rt_ac10:weak->rt",
+        "ra:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=2",
+        "rt_ac10:weak->rt",
+        "ra:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/hatchetman47.jpg",
+      "sculpt_variant": "HCT-3F",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "-24",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[14,0,-5],\"ll_foot\":[4,0,0],\"ll_shin\":[-12,0,0],\"rl\":[-18,0,5],\"rl_foot\":[-12,0,0],\"rl_shin\":[30,0,0]}",
+        "previous_provisional_fit": "37.6"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "highlander",
+      "source": "data/voxels/highlander_shape.json",
+      "target": "ll",
+      "changed_cells": 26,
+      "baseline_faults": [],
+      "trial_faults": [],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/highlander4-29.jpg",
+      "sculpt_variant": "HGN-694",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "0",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[0,0,8],\"rl\":[0,0,-8]}",
+        "previous_provisional_fit": "58.3"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "hunchback",
+      "source": "data/voxels/hunchback.json",
+      "target": "ct",
+      "changed_cells": 8,
+      "baseline_faults": [],
+      "trial_faults": [],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/hunchback62.jpg",
+      "sculpt_variant": "HBK-4G",
+      "previous_unverified_camera": {
+        "yaw": "30",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "46.3"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "jagermech",
+      "source": "data/voxels/jagermech_shape.json",
+      "target": "ct",
+      "changed_cells": 137,
+      "baseline_faults": [
+        "la:islands=2",
+        "ra:islands=2"
+      ],
+      "trial_faults": [
+        "la:islands=2",
+        "ra:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/jagermech3-31.jpg",
+      "sculpt_variant": "JM6-S/JM6-DGr",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "44"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "marauder",
+      "source": "data/voxels/marauder_shape.json",
+      "target": "ct",
+      "changed_cells": 180,
+      "baseline_faults": [
+        "ct:islands=2",
+        "hd:islands=2",
+        "hd:weak->ct",
+        "hd_chin:weak->hd",
+        "la:islands=2",
+        "la:weak->lt",
+        "ra:islands=2",
+        "ra:weak->rt",
+        "rt_cannon:weak->rt"
+      ],
+      "trial_faults": [
+        "ct:islands=2",
+        "hd:islands=2",
+        "hd:weak->ct",
+        "hd_chin:weak->hd",
+        "la:islands=2",
+        "la:weak->lt",
+        "ra:islands=2",
+        "ra:weak->rt",
+        "rt_cannon:weak->rt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/marauder27.jpg",
+      "sculpt_variant": "MAD-3R",
+      "previous_unverified_camera": {
+        "yaw": "30",
+        "pitch": "-24",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "49.6"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "panther",
+      "source": "data/voxels/panther_shape.json",
+      "target": "lt",
+      "changed_cells": 118,
+      "baseline_faults": [
+        "ll_foot:weak->ll_shin",
+        "rl_foot:weak->rl_shin"
+      ],
+      "trial_faults": [
+        "ll_foot:weak->ll_shin",
+        "rl_foot:weak->rl_shin"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/Panther66.jpg",
+      "sculpt_variant": "PNT-9R",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "0",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[0,0,8],\"rl\":[0,0,-8]}",
+        "previous_provisional_fit": "49.6"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "phoenix_hawk",
+      "source": "data/voxels/phoenix_hawk_shape.json",
+      "target": "ll_shin",
+      "changed_cells": 50,
+      "baseline_faults": [
+        "lt:islands=2",
+        "rt:islands=2"
+      ],
+      "trial_faults": [
+        "lt:islands=2",
+        "rt:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/phoenixhawk17.jpg",
+      "sculpt_variant": "PXH-1",
+      "previous_unverified_camera": {
+        "yaw": "0",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "38.5"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "shadow_hawk",
+      "source": "data/voxels/shadow_hawk_shape.json",
+      "target": "ct",
+      "changed_cells": 81,
+      "baseline_faults": [
+        "lt_jet_vane:weak->lt",
+        "rt_jet_vane:weak->rt",
+        "lt_cannon_shroud:weak->lt_cannon",
+        "rt_missiles:weak->rt",
+        "ll_shin:islands=2",
+        "ll_shin:weak->ll",
+        "rl_shin:islands=2",
+        "rl_shin:weak->rl"
+      ],
+      "trial_faults": [
+        "lt_jet_vane:weak->lt",
+        "rt_jet_vane:weak->rt",
+        "lt_cannon_shroud:weak->lt_cannon",
+        "rt_missiles:weak->rt",
+        "ll_shin:islands=2",
+        "ll_shin:weak->ll",
+        "rl_shin:islands=2",
+        "rl_shin:weak->rl"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/shadowhawk8.jpg",
+      "sculpt_variant": "SHD-2H",
+      "previous_unverified_camera": {
+        "yaw": "-15",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[-12,0,-4],\"ll_foot\":[-8,0,0],\"ll_shin\":[22,0,0],\"rl\":[-12,0,4],\"rl_foot\":[-8,0,0],\"rl_shin\":[22,0,0]}",
+        "previous_provisional_fit": "48.8"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "stalker",
+      "source": "data/voxels/stalker_shape.json",
+      "target": "ct",
+      "changed_cells": 206,
+      "baseline_faults": [
+        "ct:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/stalker54.jpg",
+      "sculpt_variant": "Stalker STK-3F",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "0",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{}",
+        "previous_provisional_fit": "46"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "thunderbolt",
+      "source": "data/voxels/thunderbolt_shape.json",
+      "target": "lt",
+      "changed_cells": 162,
+      "baseline_faults": [
+        "la:weak->lt"
+      ],
+      "trial_faults": [
+        "la:weak->lt"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/thunderbolt5.jpg",
+      "sculpt_variant": "TDR-5S",
+      "previous_unverified_camera": {
+        "yaw": "-30",
+        "pitch": "-12",
+        "projection": "perspective",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[-8,0,-22],\"ra\":[4,0,7]}",
+        "previous_provisional_fit": "57"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "trebuchet",
+      "source": "data/voxels/trebuchet_shape.json",
+      "target": "ll",
+      "changed_cells": 38,
+      "baseline_faults": [
+        "ct:islands=2"
+      ],
+      "trial_faults": [
+        "ct:islands=2"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/trebuchet55.jpg",
+      "sculpt_variant": "TBT-5N",
+      "previous_unverified_camera": {
+        "yaw": "15",
+        "pitch": "0",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"la\":[-8,0,-22],\"ra\":[4,0,7]}",
+        "previous_provisional_fit": "40.6"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "warhammer",
+      "source": "data/voxels/warhammer_shape.json",
+      "target": "ll_shin",
+      "changed_cells": 100,
+      "baseline_faults": [
+        "ll_foot:weak->ll_shin",
+        "rl_foot:weak->rl_shin"
+      ],
+      "trial_faults": [
+        "ll_foot:weak->ll_shin",
+        "rl_foot:weak->rl_shin"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/warhammer19.jpg",
+      "sculpt_variant": "WHM-6R",
+      "previous_unverified_camera": {
+        "yaw": "-15",
+        "pitch": "-24",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[0,0,8],\"rl\":[0,0,-8]}",
+        "previous_provisional_fit": "51"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    },
+    {
+      "name": "wolverine",
+      "source": "data/voxels/wolverine_shape.json",
+      "target": "ll_shin",
+      "changed_cells": 98,
+      "baseline_faults": [
+        "hd:islands=3"
+      ],
+      "trial_faults": [
+        "hd:islands=3"
+      ],
+      "photo_url": "https://jadedfalconer.com/Pictures/CGLminis/wolverine2.jpg",
+      "sculpt_variant": "WVR-6R",
+      "previous_unverified_camera": {
+        "yaw": "-15",
+        "pitch": "0",
+        "projection": "orthographic",
+        "distance_heights": "4.5",
+        "pose_joints": "{\"ll\":[14,0,-5],\"ll_foot\":[4,0,0],\"ll_shin\":[-12,0,0],\"rl\":[-18,0,5],\"rl_foot\":[-12,0,0],\"rl_shin\":[30,0,0]}",
+        "previous_provisional_fit": "50.6"
+      },
+      "photo_comparison_status": "Not performed in this batch; no reviewed multi-photo part masks"
+    }
+  ]
+}
