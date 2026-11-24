@@ -1,0 +1,577 @@
+{
+  "scope": 149,
+  "batch": 5,
+  "attempted": 12,
+  "cumulativeAttempted": 49,
+  "remaining": 100,
+  "photoRegistrations": 2,
+  "modelsWithRegisteredAttempts": 1,
+  "selectedMultiView": 1,
+  "changed": 125,
+  "trials": 57,
+  "metrics": {
+    "physical": [
+      0,
+      0
+    ],
+    "weak": [
+      8,
+      0
+    ],
+    "partIslands": [
+      16,
+      4
+    ],
+    "clear": [
+      57,
+      57
+    ],
+    "total": [
+      62,
+      62
+    ]
+  },
+  "baselineVerified": true,
+  "rows": [
+    {
+      "id": "malice",
+      "changed": 1,
+      "before": {
+        "cells": 5527,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1880,
+              2
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 5528,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_04.json"
+    },
+    {
+      "id": "ostwar",
+      "changed": 3,
+      "before": {
+        "cells": 6057,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 5,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1921,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 6060,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1928,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_04.json"
+    },
+    {
+      "id": "peacekeeper",
+      "changed": 0,
+      "before": {
+        "cells": 5283,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 5283,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "batch_09.json"
+    },
+    {
+      "id": "starslayer",
+      "changed": 80,
+      "before": {
+        "cells": 5468,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 5388,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "photoSelected": {
+        "scores": [
+          0.4907,
+          0.4587
+        ],
+        "gain": 0.0020499999999999963,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 0,
+        "mode": "trim",
+        "amount": 1
+      },
+      "photoViews": [
+        {
+          "url": "https://jadedfalconer.com/Pictures/CGLminis/starslayer3-9.jpg",
+          "score": 0.4894,
+          "camera": {
+            "yaw": -25,
+            "elev": -10,
+            "roll": -3,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 3569.190451448581,
+            "tx": 243.11830074799835,
+            "ty": 220.73158653624205,
+            "rmse": 3.145040407926309
+          },
+          "pose": {
+            "rl": 5.752901113273503,
+            "ll": 10.035873196144767
+          },
+          "fitOK": true,
+          "boundary": false
+        },
+        {
+          "url": "https://jadedfalconer.com/Pictures/CGLminis/starslayer4-22.jpg",
+          "score": 0.4559,
+          "camera": {
+            "yaw": -40,
+            "elev": 0,
+            "roll": -3,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1832.4796498531452,
+            "tx": 250.77378701009857,
+            "ty": 212.1588614842615,
+            "rmse": 4.6420046614950605
+          },
+          "pose": {
+            "rl": 21.792089718480568,
+            "ll": 13.986798523510528
+          },
+          "fitOK": true,
+          "boundary": false
+        }
+      ],
+      "selectedFrom": "batch_12.json"
+    },
+    {
+      "id": "uziel",
+      "changed": 0,
+      "before": {
+        "cells": 3304,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 10,
+        "total": 10
+      },
+      "after": {
+        "cells": 3304,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 10,
+        "total": 10
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_08.json"
+    },
+    {
+      "id": "tarantula",
+      "changed": 24,
+      "before": {
+        "cells": 4355,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 5,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1679,
+              1,
+              1
+            ]
+          ],
+          [
+            "la_shin",
+            "weak",
+            "la"
+          ],
+          [
+            "ll_shin",
+            "weak",
+            "ll"
+          ],
+          [
+            "ra_shin",
+            "weak",
+            "ra"
+          ],
+          [
+            "rl",
+            "weak",
+            "ct"
+          ],
+          [
+            "rl_shin",
+            "weak",
+            "rl"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 4379,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_07.json"
+    },
+    {
+      "id": "thunder_stallion",
+      "changed": 11,
+      "before": {
+        "cells": 7526,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 3,
+        "faults": [
+          [
+            "la_shin",
+            "weak",
+            "la"
+          ],
+          [
+            "ra",
+            "weak",
+            "ct"
+          ],
+          [
+            "ra_shin",
+            "weak",
+            "ra"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 7537,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_07.json"
+    },
+    {
+      "id": "tempest",
+      "changed": 0,
+      "before": {
+        "cells": 4264,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              43,
+              6,
+              2
+            ]
+          ]
+        ],
+        "clear": 10,
+        "total": 11
+      },
+      "after": {
+        "cells": 4264,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              43,
+              6,
+              2
+            ]
+          ]
+        ],
+        "clear": 10,
+        "total": 11
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "third_03.json"
+    },
+    {
+      "id": "jackal",
+      "changed": 0,
+      "before": {
+        "cells": 4430,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 4
+      },
+      "after": {
+        "cells": 4430,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 4
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_03.json"
+    },
+    {
+      "id": "jinggau",
+      "changed": 2,
+      "before": {
+        "cells": 3809,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              59,
+              14,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      },
+      "after": {
+        "cells": 3811,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 7
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "third_02.json"
+    },
+    {
+      "id": "raptor",
+      "changed": 0,
+      "before": {
+        "cells": 2986,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 17
+      },
+      "after": {
+        "cells": 2986,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 17
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_05.json"
+    },
+    {
+      "id": "rattlesnake_ii",
+      "changed": 4,
+      "before": {
+        "cells": 2263,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 4,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              30,
+              14,
+              10,
+              5,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      },
+      "after": {
+        "cells": 2267,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 7
+      },
+      "photoSelected": null,
+      "photoViews": [],
+      "selectedFrom": "second_05.json"
+    }
+  ],
+  "limitations": "Only Starslayer has approximate two-view camera and leg registration, smoke partially occludes jumping photo. Other 11 source-only. No full component segmentation, arm fitting, optical calibration, full weapon-channel certification, or Godot tests. All 12 selected baseline QA snapshots matched manifest."
+}
