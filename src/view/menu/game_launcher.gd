@@ -1,11 +1,12 @@
 class_name GameLauncher
 extends Control
-## Start screen: training (first for new players), a quick battle, the force
-## builder, and the voxel graphics labs.
+## Start screen: training (first for new players), rules drills, a quick
+## battle, the force builder, and the voxel graphics labs.
 
 const BATTLE_MENU := "res://scenes/menu.tscn"
 const VOXEL_LAB := "res://scenes/voxel_mech_lab.tscn"
 const VX_SHOWCASE := "res://scenes/vx_showcase.tscn"
+const DRILLS := "res://scenes/drills.tscn"
 
 
 ## Android Back remains available with automatic back-to-exit disabled.
@@ -47,6 +48,9 @@ func _ready() -> void:
 	var train := UiKit.button(box, "TRAINING  ·  START HERE" if new_player else "TRAINING",
 		_open_training, Vector2(0, 76), "primary" if new_player else "secondary")
 	train.name = "TrainingButton"
+	var drills := UiKit.button(box, "RULES DRILLS", func(): get_tree().change_scene_to_file(DRILLS), Vector2(0, 58))
+	drills.name = "DrillsButton"
+	drills.tooltip_text = "Quick questions on to-hit numbers, hit locations, missiles, heat and odds"
 	var quick := UiKit.button(box, "QUICK BATTLE", _quick_battle, Vector2(0, 70))
 	quick.name = "QuickBattleButton"
 	quick.tooltip_text = "Two matched lances on a random map, you against the computer"
