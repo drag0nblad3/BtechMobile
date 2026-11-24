@@ -21,6 +21,7 @@ func _build_catalog() -> void:
 	var paths := VxFineCatalog.paths()
 	var records := {}
 	var failed := 0
+	var warnings := 0
 	for i in paths.size():
 		if i % shards != shard:
 			continue
@@ -33,6 +34,15 @@ func _build_catalog() -> void:
 			failed += 1
 			printerr("FINE_ERROR|%s|%s" % [name_, model.errors])
 		else:
+			var regressions := int(info["floating_islands"]) > int(info["source_floating_islands"]) or int(info["rig_islands"]) > int(info["source_rig_islands"])
+			var over_budget := not bool(info["existing_above_target"]) and model.cell_count() > VxFineGrid.TARGET
+			if regressions or over_budget:
+				failed += 1
+				printerr("FINE_ERROR|%s|topology regression or over budget" % name_)
+			if bool(info["below_target"]) or bool(info["missing_detail"]) or int(info["floating_islands"]) > 0 or int(info["rig_islands"]) > 0:
+				warnings += 1
+				print("FINE_REVIEW|%s|below_target=%s|missing_detail=%s|islands=%d|rig=%d" % [
+					name_, info["below_target"], info["missing_detail"], info["floating_islands"], info["rig_islands"]])
 			var file := FileAccess.open_compressed(output.path_join(name_ + ".vx150"),
 				FileAccess.WRITE, FileAccess.COMPRESSION_ZSTD)
 			if file == null:
@@ -49,9 +59,9 @@ func _build_catalog() -> void:
 		quit(1)
 		return
 	report.store_string(JSON.stringify({"catalog_size": paths.size(), "shard": shard,
-		"shards": shards, "failed": failed, "models": records}, "  "))
+		"shards": shards, "failed": failed, "warnings": warnings, "models": records}, "  "))
 	report.close()
-	print("FINE_CATALOG|%d/%d|models=%d|failed=%d" % [shard, shards, records.size(), failed])
+	print("FINE_CATALOG|%d/%d|models=%d|failed=%d|warnings=%d" % [shard, shards, records.size(), failed, warnings])
 	quit(1 if failed > 0 or paths.is_empty() else 0)
 
 

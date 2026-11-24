@@ -59,6 +59,8 @@ static func build(path: String) -> VxModel:
 	# Distinct tier never shares mutable geometry with VxRenderCache.
 	model._claim_exclusive_cells()
 	var before := model.cell_count()
+	var source_physical := VxIntegrity.physical_components(model)
+	var source_rigid := VxIntegrity.rigid_components(model)
 	var scale := VxFineGrid.target_scale(model)
 	VxFineGrid.expand(model, scale)
 	var high_count := model.cell_count()
@@ -67,6 +69,10 @@ static func build(path: String) -> VxModel:
 		"source": actual, "source_voxels": before, "resampled_voxels": high_count,
 		"target": VxFineGrid.TARGET, "scale": scale, "voxel_size": model.voxel_size,
 		"existing_above_target": before > VxFineGrid.TARGET,
+		"source_floating_islands": source_physical["islands"],
+		"source_rig_islands": source_rigid["unanchored"],
+		"below_target": model.cell_count() < VxFineGrid.MIN_FINE,
+		"missing_detail": int(detail["panel_count"]) == 0,
 		"cut_cells": detail["cut_cells"], "panel_count": detail["panel_count"],
 		"panels": _serializable_panels(detail["panels"]),
 		"final_voxels": model.cell_count(),
@@ -83,9 +89,11 @@ static func build(path: String) -> VxModel:
 static func _serializable_panels(panels: Dictionary) -> Dictionary:
 	var result := {}
 	for name_: String in panels:
-		var p: Dictionary = panels[name_]
-		var c: Vector3i = p["center"]
-		var n: Vector3i = p["normal"]
-		result[name_] = {"center": [c.x, c.y, c.z], "normal": [n.x, n.y, n.z],
-			"cut_cells": p["cut_cells"]}
+		var entries := []
+		for p: Dictionary in panels[name_]:
+			var c: Vector3i = p["center"]
+			var n: Vector3i = p["normal"]
+			entries.append({"center": [c.x, c.y, c.z], "normal": [n.x, n.y, n.z],
+				"kind": p["kind"], "cut_cells": p["cut_cells"]})
+		result[name_] = entries
 	return result
