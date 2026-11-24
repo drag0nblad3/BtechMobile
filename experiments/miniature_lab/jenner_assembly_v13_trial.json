@@ -6714,35 +6714,35 @@
               "polygon": [
                 [
                   -0.431,
-                  -0.268
+                  -0.248
                 ],
                 [
                   -0.209,
-                  -0.268
+                  -0.248
                 ],
                 [
                   -0.17,
-                  -0.229
+                  -0.209
                 ],
                 [
                   -0.17,
-                  0.069
+                  0.051
                 ],
                 [
                   -0.209,
-                  0.108
+                  0.09
                 ],
                 [
                   -0.431,
-                  0.108
+                  0.09
                 ],
                 [
                   -0.47,
-                  0.069
+                  0.051
                 ],
                 [
                   -0.47,
-                  -0.229
+                  -0.209
                 ]
               ]
             },
@@ -8576,35 +8576,35 @@
               "polygon": [
                 [
                   0.209,
-                  -0.268
+                  -0.248
                 ],
                 [
                   0.431,
-                  -0.268
+                  -0.248
                 ],
                 [
                   0.47,
-                  -0.229
+                  -0.209
                 ],
                 [
                   0.47,
-                  0.069
+                  0.051
                 ],
                 [
                   0.431,
-                  0.108
+                  0.09
                 ],
                 [
                   0.209,
-                  0.108
+                  0.09
                 ],
                 [
                   0.17,
-                  0.069
+                  0.051
                 ],
                 [
                   0.17,
-                  -0.229
+                  -0.209
                 ]
               ]
             },
@@ -9822,9 +9822,9 @@
     ],
     "trial_changes": [
       "Reduce only posterior waist and chest depth; preserve shoulder/head physical contacts",
-      "Thicken thigh and mid-calf armor locally, not every leg segment",
       "Extend individual toe tips, continue subtractive toe gaps to their new ends",
-      "Preserve all hip, knee, ankle pivots and independent rig ownership"
+      "Preserve all hip, knee, ankle pivots and independent rig ownership",
+      "Do NOT broaden upper thigh: detected disconnection of its knee-armor ownership after oblique segmentation; revert that change"
     ],
     "pose_caveat": "Standing neutral source projection is not calibrated to actual miniature's bent and staggered leg pose. Do not interpret neutral front similarity as proof.",
     "acceptance": "Do not promote without per-part 2x2 contact, multi-view camera+pose frozen reference metrics, and actual engine rig test"
