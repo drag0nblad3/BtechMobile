@@ -1,0 +1,72 @@
+[
+  {
+    "id": "king_crab",
+    "parts": 23,
+    "cells": 15420,
+    "faults": [],
+    "clear": 18,
+    "total": 18,
+    "scores": [
+      {
+        "name": "RPG Mini Hunter front elevated",
+        "before": 0.3685714285714286,
+        "after": 0.38295714285714283,
+        "cameraRMSE": 4.742853045709901,
+        "poseRMSE": {
+          "la": 15.66258777388457,
+          "ra": 7.7458679857754404,
+          "ll": 23.18341942722993,
+          "rl": 7.923087982579246
+        }
+      },
+      {
+        "name": "Wargames Emporium quarter",
+        "before": 0.3612714285714285,
+        "after": 0.3789142857142857,
+        "cameraRMSE": 6.208272593329694,
+        "poseRMSE": {
+          "la": 19.9576166691286,
+          "ra": 16.751275052790316,
+          "ll": 36.41611263288378,
+          "rl": 22.46107541621677
+        }
+      }
+    ],
+    "selected": true
+  },
+  {
+    "id": "mad_dog",
+    "parts": 21,
+    "cells": 10441,
+    "faults": [],
+    "clear": 44,
+    "total": 44,
+    "scores": [
+      {
+        "name": "Wargames Emporium front quarter",
+        "before": 0.4053285714285715,
+        "after": 0.41414285714285715,
+        "cameraRMSE": 14.98104332618801,
+        "poseRMSE": {
+          "la": 8.920037478179388,
+          "ra": 3.8707248758094845,
+          "ll": 29.31245553572784,
+          "rl": 27.327436700219955
+        }
+      },
+      {
+        "name": "RPG Mini Hunter near frontal",
+        "before": 0.3661428571428571,
+        "after": 0.3882285714285714,
+        "cameraRMSE": 7.35853083375993,
+        "poseRMSE": {
+          "la": 3.6352007377553606,
+          "ra": 5.306493630095089,
+          "ll": 12.384554807532053,
+          "rl": 20.995353975462262
+        }
+      }
+    ],
+    "selected": true
+  }
+]
