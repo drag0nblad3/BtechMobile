@@ -22,6 +22,7 @@ var mode := MoveMode.Kind.WALK
 var options: MoveOptions
 var preview: Vector3i
 var has_preview := false
+var before_move := Callable()  ## Called just before a move is submitted (training undo).
 var smash := false  ## Fail building entry rolls on purpose (Destroy Checks).
 
 
@@ -107,6 +108,8 @@ func on_confirm() -> void:
 			hud.set_tip(why)
 			return
 		clear_selection()
+		if before_move.is_valid():
+			before_move.call()
 		controller.submit_move(u, k, mode, -1, false, sm)
 
 

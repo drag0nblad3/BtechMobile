@@ -9,6 +9,8 @@ const BATTLE_SCENE := "res://scenes/main.tscn"
 static var pending: GameState = null
 ## Continue the last saved live battle instead of creating a new one.
 static var load_autosave := false
+## Training undo: a BattleSave capture to restart the battle scene from.
+static var restore_snapshot := {}
 ## Optional frame to inspect when opening the last recorded replay.
 static var replay_focus := -1
 ## Sides the computer plays in the next battle.

@@ -28,6 +28,7 @@ var training := -1  ## Training campaign mission index, -1 outside training.
 var objectives: Node3D
 var off_field: HiddenInput
 var recorder := BattleRecorder.new()
+var undo_input := UndoInput.new()  ## Training: take back your last move.
 var _last_autosave_turn := -1
 var _tutorial_path := ""
 
@@ -38,6 +39,9 @@ func _ready() -> void:
 	if BattleLaunch.load_autosave:
 		BattleLaunch.load_autosave = false
 		saved = BattleSave.load_game()
+	if not BattleLaunch.restore_snapshot.is_empty():
+		saved = BattleSave.restore(BattleLaunch.restore_snapshot, UnitDb.load_dir(), TerrainDb.load_file())
+		BattleLaunch.restore_snapshot = {}
 	var state: GameState
 	if saved.is_empty():
 		state = BattleLaunch.take()
@@ -263,6 +267,7 @@ func _wire() -> void:
 	hud.pause_menu.voxel_toggled.connect(_toggle_voxels)
 	hud.pause_menu.shake_toggled.connect(_toggle_shake)
 	hud.next_unit.connect(_next_unit)
+	undo_input.setup(self)
 	hud.hint.connect(func(): movement.on_hint() if controller.state.phase == Phase.Kind.MOVEMENT else attacks.on_hint())
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
@@ -409,6 +414,7 @@ func _on_event(e: GameEvent) -> void:
 	hud.show_combat_event(e)
 	hud.roll_feed.add_event(e, s)
 	recorder.record(e, s, explanation)
+	undo_input.refresh()
 	if practice != null:
 		var player_side := 0 if not bots.bot_sides.has(0) else 1
 		var checks := practice.observe(e, s, player_side)
