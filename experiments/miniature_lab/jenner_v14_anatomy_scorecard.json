@@ -1,0 +1,165 @@
+{
+  "model": "Jenner JR7-D",
+  "sculpt": "2021 CGL CAT35729 / base 63",
+  "version": "miniature-v14-whole-anatomy-trial",
+  "status": "DRAFT; no production replacement",
+  "source_v12": "jenner_assembly_v12.json",
+  "source_v14": "jenner_assembly_v14_trial.json",
+  "reference_set": {
+    "original": "jenner_photo_annotations.json",
+    "new": "jenner_additional_reference_views.json",
+    "same_sculpt_only": true,
+    "reference_photos": 6,
+    "ranked_views": 4,
+    "excluded": [
+      "painted rear-right (no pose calibration)",
+      "unpainted oblique right profile (rigid residual ~0.114 and far leg hidden)"
+    ],
+    "render_source": "eBay white digital sculpt render used only for construction shape cues"
+  },
+  "camera_policy": "Register rigid photo landmarks on unchanged v12, then fit pose independently per leg and freeze camera and pose across v12 and v14; estimate uniform perspective distance and crop. Crops, manual points and lens are not physically calibrated.",
+  "stages": [
+    {
+      "name": "00_v12_control",
+      "voxels": 15126,
+      "structural_faults": 0
+    },
+    {
+      "name": "01_torso_pelvis",
+      "voxels": 14766,
+      "structural_faults": 0,
+      "description": "Narrow compact hip saddle and reduce upper rear torso excess"
+    },
+    {
+      "name": "02_cockpit",
+      "voxels": 14704,
+      "structural_faults": 0,
+      "description": "Flatten front-projecting saucer cockpit while retaining actual glazed panels"
+    },
+    {
+      "name": "03_shoulders_weapons",
+      "voxels": 14714,
+      "structural_faults": 0,
+      "description": "Angle shoulder mounting armor and facet both outboard dual-laser housings"
+    },
+    {
+      "name": "04_thigh_knees",
+      "voxels": 14820,
+      "structural_faults": 0,
+      "description": "Strengthen thigh and forward knee armor shape with no pivot movement"
+    },
+    {
+      "name": "05_shin_calves",
+      "voxels": 15016,
+      "structural_faults": 0,
+      "description": "Add required mid-calf armor mass symmetrically while keeping physical connection"
+    },
+    {
+      "name": "06_three_toes",
+      "voxels": 15098,
+      "structural_faults": 0,
+      "description": "Three extended independent toe tips per foot with through cuts at 0.04 pitch"
+    },
+    {
+      "name": "07_dorsal",
+      "voxels": 15126,
+      "structural_faults": 0,
+      "description": "Reshape dorsal sensor mass at a resolvable scale"
+    }
+  ],
+  "source_audit": {
+    "baseline_voxels": 15126,
+    "trial_voxels": 15126,
+    "connected_parts": 30,
+    "backed_attachment_count": 29,
+    "disconnected_islands": 0,
+    "overlapping_voxels": 0,
+    "unsupported_joints": 0,
+    "max_joint_normal_degrees": 14.45,
+    "pivots_unchanged": true,
+    "muzzles_unchanged": true
+  },
+  "per_part_deltas": {
+    "ct": -170,
+    "hd": -20,
+    "lt": 34,
+    "rt": 34,
+    "la": -25,
+    "ra": -25,
+    "ll": 52,
+    "rl": 52,
+    "ll_shin": 54,
+    "rl_shin": 54,
+    "ll_shin_calf_plate": 44,
+    "rl_shin_calf_plate": 44,
+    "ll_foot_toe": 41,
+    "rl_foot_toe": 41,
+    "ct_dorsal": 28
+  },
+  "frozen_reference_assessment": {
+    "method": "independent JS port of perspective + articulated photo registration logic, approx hand annotations (58 px masks)",
+    "views": [
+      {
+        "name": "painted_front_left",
+        "camera": {
+          "yaw": 20,
+          "elevation": 10,
+          "roll": 0,
+          "distance": 12
+        },
+        "rigid_rmse": 0.0403,
+        "iou_v12": 0.7141,
+        "iou_v14": 0.7192
+      },
+      {
+        "name": "painted_front_right",
+        "camera": {
+          "yaw": -25,
+          "elevation": 10,
+          "roll": -4,
+          "distance": 12
+        },
+        "rigid_rmse": 0.042,
+        "iou_v12": 0.7356,
+        "iou_v14": 0.7342
+      },
+      {
+        "name": "painted_rear_left",
+        "camera": {
+          "yaw": 210,
+          "elevation": 0,
+          "roll": -4,
+          "distance": 7
+        },
+        "rigid_rmse": 0.0098,
+        "iou_v12": 0.7256,
+        "iou_v14": 0.7324
+      },
+      {
+        "name": "unpainted_front",
+        "camera": {
+          "yaw": 0,
+          "elevation": 20,
+          "roll": 0,
+          "distance": 3
+        },
+        "rigid_rmse": 0.0512,
+        "iou_v12": 0.7894,
+        "iou_v14": 0.7879
+      }
+    ],
+    "mean_iou_v12": 0.7412,
+    "mean_iou_v14": 0.7434,
+    "mean_delta": 0.0022,
+    "warning": "This is NOT miniature accuracy. Approximate hand-annotated silhouettes + unknown actual focal length; two scored views slightly regress. Use per-view checks, not only mean."
+  },
+  "render": "generated/jenner_v12_v14_five_view_anatomy.svg",
+  "validation": {
+    "independent_occupancy_audit": "PASS",
+    "python_test_file": "test_jenner_v14.py",
+    "python_test_status": "Committed, has not been run in this runtime",
+    "godot_in_engine": "Not run; Godot unavailable",
+    "ci": "Check current GitHub run separately"
+  },
+  "next_work": "Validate full Python suite and Godot rig, obtain sharper calibrated side/top/oblique photos, rebuild remaining knee hub/hip socket anatomy and score local component masks before production promotion"
+}
