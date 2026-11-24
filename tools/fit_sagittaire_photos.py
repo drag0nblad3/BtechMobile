@@ -170,6 +170,10 @@ if __name__=="__main__":
             if img is None:raise ValueError("No image decoded")
             img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
             mask=photo_mask(img)
+            # Reject unusable segmentation rather than optimize against background.
+            foreground_fraction=float(np.mean(mask>0))
+            if foreground_fraction<.035 or foreground_fraction>.80:
+                raise ValueError(f"Implausible photo foreground: {foreground_fraction:.3f}")
             cv2.imwrite(str(OUT/(name+"_mask.png")),mask)
             yaw=view["yaw"]
             bounds=[(yaw-50,yaw+50),(-10,40),(2.7,5.6),(-35,35),(-35,35),
