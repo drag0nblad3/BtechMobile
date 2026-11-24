@@ -1,0 +1,1169 @@
+[
+  {
+    "id": "stormcrow",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 1864
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 100
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 709
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "delta": 224,
+        "before": 1864,
+        "after": 1852,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 264,
+        "before": 1864,
+        "after": 1852,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 113,
+        "before": 709,
+        "after": 758,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 110,
+        "before": 709,
+        "after": 725,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 3,
+    "clearAfter": 3,
+    "muzzleTotal": 3,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 264
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 113
+      }
+    ]
+  },
+  {
+    "id": "mist_lynx",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 1120
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 100
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 402
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "delta": 146,
+        "before": 1120,
+        "after": 1110,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 172,
+        "before": 1120,
+        "after": 1140,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 53,
+        "before": 402,
+        "after": 407,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 58,
+        "before": 402,
+        "after": 400,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 2,
+    "clearAfter": 2,
+    "muzzleTotal": 2,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 172
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 58
+      }
+    ]
+  },
+  {
+    "id": "ice_ferret",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 2088
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 314
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 599
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "delta": 252,
+        "before": 2088,
+        "after": 2024,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 280,
+        "before": 2088,
+        "after": 2032,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "delta": 60,
+        "before": 314,
+        "after": 362,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "delta": 62,
+        "before": 314,
+        "after": 344,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 74,
+        "before": 314,
+        "after": 376,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "delta": 75,
+        "before": 599,
+        "after": 588,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 104,
+        "before": 599,
+        "after": 635,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 121,
+        "before": 599,
+        "after": 586,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 2,
+    "clearAfter": 2,
+    "muzzleTotal": 2,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 280
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 74
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 121
+      }
+    ]
+  },
+  {
+    "id": "nova_cat",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 2228
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 200
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 709
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "delta": 294,
+        "before": 2228,
+        "after": 2182,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 312,
+        "before": 2228,
+        "after": 2208,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 113,
+        "before": 709,
+        "after": 758,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 110,
+        "before": 709,
+        "after": 725,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 5,
+    "clearAfter": 5,
+    "muzzleTotal": 5,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 312
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 113
+      }
+    ]
+  },
+  {
+    "id": "crossbow",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 2500
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 224
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 623
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "delta": 40,
+        "before": 224,
+        "after": 256,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 50,
+        "before": 224,
+        "after": 258,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 100,
+        "before": 623,
+        "after": 663,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 107,
+        "before": 623,
+        "after": 640,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 42,
+    "clearAfter": 42,
+    "muzzleTotal": 42,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 50
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 107
+      }
+    ]
+  },
+  {
+    "id": "ebon_jaguar",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 2700
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 224
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 402
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 398,
+        "before": 2700,
+        "after": 2610,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "delta": 40,
+        "before": 224,
+        "after": 256,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 50,
+        "before": 224,
+        "after": 258,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "delta": 61,
+        "before": 402,
+        "after": 417,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 76,
+        "before": 402,
+        "after": 434,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 79,
+        "before": 402,
+        "after": 419,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 2,
+    "clearAfter": 2,
+    "muzzleTotal": 2,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 398
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 50
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 79
+      }
+    ]
+  },
+  {
+    "id": "huntsman",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 1666
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 100
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 685
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "delta": 86,
+        "before": 685,
+        "after": 669,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 117,
+        "before": 685,
+        "after": 730,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 114,
+        "before": 685,
+        "after": 693,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 8,
+    "clearAfter": 8,
+    "muzzleTotal": 8,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 117
+      }
+    ]
+  },
+  {
+    "id": "kingfisher",
+    "source": "cohort_clan_24 pass3; no registered individual mask",
+    "status": "unranked structural alternatives",
+    "views": 0,
+    "before": null,
+    "after": null,
+    "perView": [],
+    "targets": [
+      {
+        "name": "ct",
+        "score": null,
+        "cells": 3260
+      },
+      {
+        "name": "hd",
+        "score": null,
+        "cells": 340
+      },
+      {
+        "name": "ll_shin",
+        "score": null,
+        "cells": 871
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ct",
+        "family": "rounded",
+        "delta": 400,
+        "before": 3260,
+        "after": 3236,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 524,
+        "before": 3260,
+        "after": 3196,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "hd",
+        "family": "rounded",
+        "delta": 42,
+        "before": 340,
+        "after": 378,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "faceted",
+        "delta": 66,
+        "before": 340,
+        "after": 402,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "wedge",
+        "delta": 68,
+        "before": 340,
+        "after": 396,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 72,
+        "before": 340,
+        "after": 392,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "delta": 134,
+        "before": 871,
+        "after": 885,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 129,
+        "before": 871,
+        "after": 910,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 173,
+        "before": 871,
+        "after": 880,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "delta": 111,
+        "before": 871,
+        "after": 914,
+        "score": null,
+        "local": null,
+        "perView": [],
+        "worstRegion": 0,
+        "status": "unranked structural pass"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 3,
+    "clearAfter": 3,
+    "muzzleTotal": 3,
+    "roundTrip": true,
+    "unranked": [
+      {
+        "part": "ct",
+        "family": "wedge",
+        "delta": 524
+      },
+      {
+        "part": "hd",
+        "family": "bell",
+        "delta": 72
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 173
+      }
+    ]
+  }
+]
