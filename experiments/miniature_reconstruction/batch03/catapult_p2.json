@@ -67,35 +67,35 @@
                 "at": 22,
                 "polygon": [
                   [
-                    -2.7,
+                    -2.97,
                     -9
                   ],
                   [
-                    2.7,
+                    2.97,
                     -9
                   ],
                   [
-                    4.5,
+                    4.95,
                     -7.2
                   ],
                   [
-                    4.5,
+                    4.95,
                     4.2
                   ],
                   [
-                    2.7,
+                    2.97,
                     6
                   ],
                   [
-                    -2.7,
+                    -2.97,
                     6
                   ],
                   [
-                    -4.5,
+                    -4.95,
                     4.2
                   ],
                   [
-                    -4.5,
+                    -4.95,
                     -7.2
                   ]
                 ]
@@ -104,35 +104,35 @@
                 "at": 26,
                 "polygon": [
                   [
-                    -3.5999999999999996,
+                    -3.96,
                     -12
                   ],
                   [
-                    3.5999999999999996,
+                    3.96,
                     -12
                   ],
                   [
-                    6,
+                    6.6,
                     -9.6
                   ],
                   [
-                    6,
+                    6.6,
                     5.6
                   ],
                   [
-                    3.5999999999999996,
+                    3.96,
                     8
                   ],
                   [
-                    -3.5999999999999996,
+                    -3.96,
                     8
                   ],
                   [
-                    -6,
+                    -6.6,
                     5.6
                   ],
                   [
-                    -6,
+                    -6.6,
                     -9.6
                   ]
                 ]
@@ -141,35 +141,35 @@
                 "at": 31,
                 "polygon": [
                   [
-                    -3.5999999999999996,
+                    -3.96,
                     -11
                   ],
                   [
-                    3.5999999999999996,
+                    3.96,
                     -11
                   ],
                   [
-                    6,
+                    6.6,
                     -8.6
                   ],
                   [
-                    6,
+                    6.6,
                     5.6
                   ],
                   [
-                    3.5999999999999996,
+                    3.96,
                     8
                   ],
                   [
-                    -3.5999999999999996,
+                    -3.96,
                     8
                   ],
                   [
-                    -6,
+                    -6.6,
                     5.6
                   ],
                   [
-                    -6,
+                    -6.6,
                     -8.6
                   ]
                 ]
@@ -178,35 +178,35 @@
                 "at": 35,
                 "polygon": [
                   [
-                    -2.7,
+                    -2.97,
                     -7
                   ],
                   [
-                    2.7,
+                    2.97,
                     -7
                   ],
                   [
-                    4.5,
+                    4.95,
                     -5.2
                   ],
                   [
-                    4.5,
+                    4.95,
                     5.2
                   ],
                   [
-                    2.7,
+                    2.97,
                     7
                   ],
                   [
-                    -2.7,
+                    -2.97,
                     7
                   ],
                   [
-                    -4.5,
+                    -4.95,
                     5.2
                   ],
                   [
-                    -4.5,
+                    -4.95,
                     -5.2
                   ]
                 ]
@@ -483,19 +483,19 @@
                 "polygon": [
                   [
                     -2,
-                    -13
+                    -13.5
                   ],
                   [
                     1,
-                    -13
+                    -13.5
                   ],
                   [
                     2,
-                    -12
+                    -12.4
                   ],
                   [
                     2,
-                    -9
+                    -9.1
                   ],
                   [
                     1,
@@ -507,11 +507,11 @@
                   ],
                   [
                     -3,
-                    -9
+                    -9.1
                   ],
                   [
                     -3,
-                    -12
+                    -12.4
                   ]
                 ]
               },
@@ -520,19 +520,19 @@
                 "polygon": [
                   [
                     -2.36,
-                    -15
+                    -15.7
                   ],
                   [
                     1.3599999999999999,
-                    -15
+                    -15.7
                   ],
                   [
                     2.6,
-                    -13.76
+                    -14.336
                   ],
                   [
                     2.6,
-                    -9.24
+                    -9.364
                   ],
                   [
                     1.3599999999999999,
@@ -544,11 +544,11 @@
                   ],
                   [
                     -3.6,
-                    -9.24
+                    -9.364
                   ],
                   [
                     -3.6,
-                    -13.76
+                    -14.336
                   ]
                 ]
               },
@@ -557,19 +557,19 @@
                 "polygon": [
                   [
                     -2,
-                    -13
+                    -13.5
                   ],
                   [
                     1,
-                    -13
+                    -13.5
                   ],
                   [
                     2,
-                    -12
+                    -12.4
                   ],
                   [
                     2,
-                    -9
+                    -9.1
                   ],
                   [
                     1,
@@ -581,11 +581,11 @@
                   ],
                   [
                     -3,
-                    -9
+                    -9.1
                   ],
                   [
                     -3,
-                    -12
+                    -12.4
                   ]
                 ]
               },
@@ -594,19 +594,19 @@
                 "polygon": [
                   [
                     -1.6,
-                    -10
+                    -10.2
                   ],
                   [
                     0.6,
-                    -10
+                    -10.2
                   ],
                   [
                     1,
-                    -9.6
+                    -9.76
                   ],
                   [
                     1,
-                    -8.4
+                    -8.44
                   ],
                   [
                     0.6,
@@ -618,11 +618,11 @@
                   ],
                   [
                     -2,
-                    -8.4
+                    -8.44
                   ],
                   [
                     -2,
-                    -9.6
+                    -9.76
                   ]
                 ]
               }
@@ -1455,21 +1455,6 @@
             ]
           ],
           "mat": "trim"
-        },
-        {
-          "box": [
-            [
-              -11,
-              32,
-              -1
-            ],
-            [
-              -9,
-              33,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -1627,21 +1612,6 @@
             ]
           ],
           "mat": "gun"
-        },
-        {
-          "box": [
-            [
-              -7,
-              15,
-              0
-            ],
-            [
-              -5,
-              16,
-              2
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -1700,21 +1670,6 @@
             ]
           ],
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -7,
-              6,
-              0
-            ],
-            [
-              -5,
-              7,
-              2
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -1878,21 +1833,6 @@
             ]
           ],
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -7,
-              2,
-              0
-            ],
-            [
-              -5,
-              3,
-              2
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -2149,7 +2089,7 @@
       "kind": "laser"
     }
   ],
-  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only.",
   "pass1": {
     "changes": [
       "Replace box hull with low forward-sloping polygon loft",
@@ -2336,18 +2276,348 @@
       ]
     }
   },
-  "pass2": {
-    "repairs": [
-      "la → lt: local structural sleeve (gap 1)",
-      "ll_shin → ll: local structural sleeve (gap 1)",
-      "ll_tarsus → ll_shin: local structural sleeve (gap 1)",
-      "ll_foot → ll_tarsus: local structural sleeve (gap 1)"
+  "experimental_photo_fit": {
+    "method": "Approximate manually traced visible part bounds; per-view orthographic camera and articulated pose; geometry changes gated by neutral voxel connectivity penalty. Not pixel-mask IoU; not a multi-angle validated plastic match.",
+    "references": [
+      {
+        "url": "https://i.pinimg.com/originals/92/b1/d2/92b1d2acd13ffdd4a745663dd959b42c.jpg",
+        "quality": "CPLT-C1 open lids; upper body only, cropped legs",
+        "baseline_rmse": 17.426772479256964,
+        "refined_rmse": 15.660045951721933,
+        "parameters": {
+          "yaw": 1,
+          "pitch": 25,
+          "roll": -1,
+          "la": -1,
+          "ra": -8,
+          "ll": 24,
+          "rl": 25,
+          "ll_shin": 0,
+          "rl_shin": 0,
+          "laSpread": -27,
+          "raSpread": -12,
+          "llSpread": -11,
+          "rlSpread": 2
+        },
+        "swap_bilateral": false,
+        "scale": 11.3098286855407,
+        "dx": 267.029451253603,
+        "dy": 579.4641012684834,
+        "regions": [
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              172,
+              198,
+              337,
+              420
+            ],
+            "projected": [
+              180.94555780451384,
+              185.7971395422628,
+              333.0154580176988,
+              417.1903077377626
+            ]
+          },
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              204,
+              305,
+              311,
+              423
+            ],
+            "projected": [
+              219.78728740653074,
+              304.44953331160826,
+              288.7398912362869,
+              400.90638004835034
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              69,
+              97,
+              177,
+              286
+            ],
+            "projected": [
+              30.681699682620064,
+              116.56813963962037,
+              179.1542943563831,
+              298.15299206586303
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              327,
+              94,
+              449,
+              279
+            ],
+            "projected": [
+              345.096485388337,
+              116.20564050097141,
+              473.9156674941787,
+              290.3746726748084
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              138,
+              337,
+              201,
+              420
+            ],
+            "projected": [
+              140.35334320867224,
+              334.6203771730761,
+              218.37977355382162,
+              423.96457548733474
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              319,
+              344,
+              369,
+              421
+            ],
+            "projected": [
+              297.0103035175997,
+              336.05424291007205,
+              368.6392674688616,
+              418.9384210402891
+            ]
+          }
+        ]
+      },
+      {
+        "url": "https://d1w82usnq70pt2.cloudfront.net/wp-content/uploads/2023/08/Mechs_Mercs_Catapult.jpg",
+        "quality": "K2 variant; use hull and legs ONLY; omit incompatible gun pods",
+        "baseline_rmse": 10.382732168662876,
+        "refined_rmse": 9.699885041288494,
+        "parameters": {
+          "yaw": 22,
+          "pitch": -10,
+          "roll": 8,
+          "la": 0,
+          "ra": 0,
+          "ll": -22,
+          "rl": 10,
+          "ll_shin": 28,
+          "rl_shin": 10,
+          "laSpread": 0,
+          "raSpread": 0,
+          "llSpread": -3,
+          "rlSpread": 24
+        },
+        "swap_bilateral": false,
+        "scale": 8.253462897359027,
+        "dx": 222.85497521896656,
+        "dy": 351.95385407753105,
+        "regions": [
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              189,
+              52,
+              324,
+              171
+            ],
+            "projected": [
+              183.51017306023695,
+              50.49046280753004,
+              332.16202740320887,
+              184.8056247033758
+            ]
+          },
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              249,
+              88,
+              321,
+              158
+            ],
+            "projected": [
+              255.85100017081493,
+              90.38624041116447,
+              314.00428580698656,
+              151.51908658095297
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              147,
+              153,
+              222,
+              223
+            ],
+            "projected": [
+              153.53460241287036,
+              147.42647204414217,
+              221.29740292857863,
+              222.24685885984437
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              277,
+              157,
+              329,
+              244
+            ],
+            "projected": [
+              266.50228276376555,
+              163.14383453647358,
+              337.0871215794345,
+              237.6187879666636
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "ll_shin",
+            "target": [
+              139,
+              213,
+              202,
+              307
+            ],
+            "projected": [
+              146.661530328526,
+              209.974722538323,
+              199.73178637714292,
+              285.7201974580871
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "rl_shin",
+            "target": [
+              294,
+              225,
+              372,
+              311
+            ],
+            "projected": [
+              287.8874073650604,
+              224.608074904825,
+              350.6453404866041,
+              300.3126260404042
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "ll_foot",
+            "target": [
+              140,
+              298,
+              208,
+              340
+            ],
+            "projected": [
+              140.89733882413162,
+              312.27756348921076,
+              203.09790971248276,
+              341.8565112267641
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "rl_foot",
+            "target": [
+              308,
+              306,
+              405,
+              345
+            ],
+            "projected": [
+              336.65545404708894,
+              311.4305831782243,
+              395.7667407084622,
+              356.15506445586664
+            ]
+          }
+        ]
+      }
     ],
-    "audit": {
-      "voxels": 7925,
-      "islands": [],
-      "parts": [],
-      "weak": []
+    "changes": [
+      {
+        "part": "ct",
+        "axis": "x",
+        "factor": 1.1
+      },
+      {
+        "part": "hd",
+        "axis": "z",
+        "factor": 1.1
+      }
+    ],
+    "validation": {
+      "cells": 8037,
+      "whole_components": [
+        8037
+      ],
+      "issues": [
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 0
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_tarsus",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_tarsus",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_tarsus",
+          "parent": "rl_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_tarsus",
+          "overlap": 0
+        }
+      ],
+      "penalty": 32
     }
   }
 }
