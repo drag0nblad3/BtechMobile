@@ -3643,5 +3643,246 @@
       "ll_foot → ll_shin: local structural sleeve (gap 1)",
       "Reattached 48-voxel rear exhaust mass with a tapered engine nacelle"
     ]
+  },
+  "experimental_photo_fit": {
+    "method": "Manually traced visible component bounds; independently optimized orthographic pose/camera; no pixel IoU claim.",
+    "references": [
+      {
+        "url": "https://images.dakkadakka.com/s/i/gallery/img/2023/8/18/1173077.jpg",
+        "quality": "modern plastic style Locust, high three-quarter",
+        "baseline_rmse": 13.78486424495472,
+        "refined_rmse": 13.78486424495472,
+        "parameters": {
+          "yaw": -20,
+          "pitch": 16,
+          "roll": -3,
+          "la": 30,
+          "ra": 6,
+          "ll": 30,
+          "rl": -8,
+          "ll_shin": 2,
+          "rl_shin": 22,
+          "laSpread": -19,
+          "raSpread": 30,
+          "llSpread": -1,
+          "rlSpread": 25
+        },
+        "swap_bilateral": true,
+        "scale": 7.819330054081882,
+        "dx": 269.66558861210615,
+        "dy": 393.51860069333696,
+        "regions": [
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              198,
+              135,
+              331,
+              244
+            ],
+            "projected": [
+              200.4651806477254,
+              126.79473925761073,
+              314.9077417168532,
+              248.86510373377916
+            ]
+          },
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              183,
+              191,
+              264,
+              269
+            ],
+            "projected": [
+              179.7052255948355,
+              177.42572062511508,
+              256.63071921869044,
+              254.8109494472543
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "rt",
+            "target": [
+              282,
+              154,
+              334,
+              213
+            ],
+            "projected": [
+              269.92316668198515,
+              138.13220069358002,
+              342.91486873148796,
+              233.44831771511357
+            ]
+          },
+          {
+            "part": "rt",
+            "model": "lt",
+            "target": [
+              171,
+              120,
+              227,
+              184
+            ],
+            "projected": [
+              188.67071276030475,
+              133.5614892922361,
+              251.63041140377572,
+              230.28397905264478
+            ]
+          },
+          {
+            "part": "la",
+            "model": "ra",
+            "target": [
+              266,
+              192,
+              320,
+              236
+            ],
+            "projected": [
+              273.6721263173112,
+              187.6023652401074,
+              340.5615809716674,
+              235.43599107187595
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "la",
+            "target": [
+              155,
+              154,
+              203,
+              203
+            ],
+            "projected": [
+              153.55176101971537,
+              162.25681903214473,
+              205.95282900159523,
+              222.91679398074643
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "rl",
+            "target": [
+              302,
+              204,
+              365,
+              286
+            ],
+            "projected": [
+              274.5588684180892,
+              225.269966275162,
+              361.8893011399537,
+              283.38442118478713
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "ll",
+            "target": [
+              194,
+              253,
+              260,
+              329
+            ],
+            "projected": [
+              196.1384662490717,
+              220.89260799902345,
+              249.27535111327256,
+              307.4242910631283
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "rl_shin",
+            "target": [
+              311,
+              259,
+              353,
+              348
+            ],
+            "projected": [
+              315.35747539723627,
+              263.36901267974315,
+              362.8464011751276,
+              341.5084420712419
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "ll_shin",
+            "target": [
+              173,
+              303,
+              228,
+              358
+            ],
+            "projected": [
+              174.4247817797147,
+              291.78849486703973,
+              232.2962182325224,
+              353.88197167475323
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "rl_foot",
+            "target": [
+              300,
+              331,
+              369,
+              371
+            ],
+            "projected": [
+              296.3980103819564,
+              333.71846616883875,
+              365.74980054932075,
+              374.3300048166448
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "ll_foot",
+            "target": [
+              135,
+              343,
+              220,
+              373
+            ],
+            "projected": [
+              141.6671102732566,
+              344.83995513619163,
+              205.8316503863653,
+              380.10610847677964
+            ]
+          }
+        ]
+      }
+    ],
+    "changes": [],
+    "validation": {
+      "cells": 4720,
+      "whole_components": [
+        4720
+      ],
+      "issues": [],
+      "penalty": 0
+    },
+    "baseline_audit": {
+      "cells": 4720,
+      "whole_components": [
+        4720
+      ],
+      "issues": [],
+      "penalty": 0
+    }
   }
 }
