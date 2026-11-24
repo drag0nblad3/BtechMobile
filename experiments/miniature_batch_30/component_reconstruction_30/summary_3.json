@@ -1,0 +1,1127 @@
+[
+  {
+    "id": "nova",
+    "source": "photo_clan_3",
+    "status": "photo-scored replacement",
+    "views": 2,
+    "before": 0.53376,
+    "after": 0.54758,
+    "perView": [
+      {
+        "name": "Walmart near-front",
+        "before": 0.53308,
+        "after": 0.5467,
+        "cameraRms": 5.024736685129244
+      },
+      {
+        "name": "Emporium elevated quarter",
+        "before": 0.5344399999999999,
+        "after": 0.54846,
+        "cameraRms": 2.3752765534981464
+      }
+    ],
+    "targets": [
+      {
+        "name": "ra",
+        "score": 0.47175,
+        "cells": 408
+      },
+      {
+        "name": "ra_forearm",
+        "score": 0.47175,
+        "cells": 176
+      },
+      {
+        "name": "rl_foot",
+        "score": 0.479,
+        "cells": 252
+      }
+    ],
+    "selected": [
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "delta": 124,
+        "before": 408,
+        "after": 354,
+        "score": 0.5440699999999999,
+        "local": 0.05100000000000002,
+        "perView": [
+          0.010719999999999952,
+          0.00990000000000002
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "delta": 38,
+        "before": 176,
+        "after": 210,
+        "score": 0.54596,
+        "local": 0.009449999999999986,
+        "perView": [
+          0.0012600000000000389,
+          0.0025199999999999667
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "rl_foot",
+        "family": "photo_hull",
+        "delta": 55,
+        "before": 252,
+        "after": 281,
+        "score": 0.54758,
+        "local": 0.008099999999999996,
+        "perView": [
+          0.0016399999999999748,
+          0.0016000000000000458
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "ra",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "delta": 124,
+        "before": 408,
+        "after": 354,
+        "score": 0.5440699999999999,
+        "local": 0.05100000000000002,
+        "perView": [
+          0.010719999999999952,
+          0.00990000000000002
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "wedge",
+        "delta": 36,
+        "before": 176,
+        "after": 172,
+        "score": 0.54267,
+        "local": -0.007000000000000006,
+        "perView": [
+          -0.0011599999999999389,
+          -0.0016399999999999748
+        ],
+        "worstRegion": -0.008199999999999985,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "delta": 38,
+        "before": 176,
+        "after": 210,
+        "score": 0.54596,
+        "local": 0.009449999999999986,
+        "perView": [
+          0.0012600000000000389,
+          0.0025199999999999667
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "rl_foot",
+        "family": "rounded",
+        "delta": 52,
+        "before": 252,
+        "after": 292,
+        "score": 0.54378,
+        "local": -0.010899999999999993,
+        "perView": [
+          -0.0045800000000000285,
+          0.000220000000000109
+        ],
+        "worstRegion": -0.022899999999999976,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl_foot",
+        "family": "faceted",
+        "delta": 78,
+        "before": 252,
+        "after": 318,
+        "score": 0.5399700000000001,
+        "local": -0.029950000000000004,
+        "perView": [
+          -0.00768000000000002,
+          -0.0042999999999999705
+        ],
+        "worstRegion": -0.03839999999999999,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl_foot",
+        "family": "wedge",
+        "delta": 70,
+        "before": 252,
+        "after": 286,
+        "score": 0.5436099999999999,
+        "local": -0.011749999999999983,
+        "perView": [
+          -0.006400000000000072,
+          0.0017000000000000348
+        ],
+        "worstRegion": -0.03199999999999997,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl_foot",
+        "family": "bell",
+        "delta": 68,
+        "before": 252,
+        "after": 316,
+        "score": 0.5405300000000001,
+        "local": -0.027150000000000007,
+        "perView": [
+          -0.007259999999999933,
+          -0.0035999999999999366
+        ],
+        "worstRegion": -0.0363,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl_foot",
+        "family": "photo_hull",
+        "delta": 55,
+        "before": 252,
+        "after": 281,
+        "score": 0.54758,
+        "local": 0.008099999999999996,
+        "perView": [
+          0.0016399999999999748,
+          0.0016000000000000458
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "changed": 217,
+    "faults": 0,
+    "clearBefore": 12,
+    "clearAfter": 12,
+    "muzzleTotal": 12,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "timber_wolf",
+    "source": "photo_clan_3",
+    "status": "photo-scored replacement",
+    "views": 2,
+    "before": 0.5708214285714287,
+    "after": 0.5716357142857144,
+    "perView": [
+      {
+        "name": "ToyWiz tabletop Prime",
+        "before": 0.6034,
+        "after": 0.6043571428571429,
+        "cameraRms": 3.7214015166967935
+      },
+      {
+        "name": "Catalyst 100mm enlarged sculpt quarter (secondary, scale/variant caveat)",
+        "before": 0.5382428571428571,
+        "after": 0.5389142857142858,
+        "cameraRms": 4.382128478050011
+      }
+    ],
+    "targets": [
+      {
+        "name": "ra_forearm",
+        "score": 0.4495,
+        "cells": 222
+      },
+      {
+        "name": "ra",
+        "score": 0.4495,
+        "cells": 208
+      },
+      {
+        "name": "ll",
+        "score": 0.5318,
+        "cells": 463
+      }
+    ],
+    "selected": [
+      {
+        "part": "ll",
+        "family": "photo_hull",
+        "delta": 78,
+        "before": 463,
+        "after": 459,
+        "score": 0.5716357142857144,
+        "local": 0.0048000000000000265,
+        "perView": [
+          0.0009571428571428786,
+          0.0006714285714286561
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "ra_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll",
+        "family": "rounded",
+        "delta": 67,
+        "before": 463,
+        "after": 472,
+        "score": 0.57015,
+        "local": -0.0023000000000000242,
+        "perView": [
+          -0.00040000000000006697,
+          -0.0009428571428571342
+        ],
+        "worstRegion": -0.0042000000000000925,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "faceted",
+        "delta": 90,
+        "before": 463,
+        "after": 495,
+        "score": 0.5689142857142857,
+        "local": -0.010499999999999954,
+        "perView": [
+          -0.001771428571428535,
+          -0.002042857142857124
+        ],
+        "worstRegion": -0.01100000000000001,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "wedge",
+        "delta": 112,
+        "before": 463,
+        "after": 457,
+        "score": 0.5695142857142858,
+        "local": -0.005950000000000011,
+        "perView": [
+          -0.0010857142857142454,
+          -0.0015285714285714347
+        ],
+        "worstRegion": -0.007500000000000062,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "bell",
+        "delta": 79,
+        "before": 463,
+        "after": 490,
+        "score": 0.5701142857142858,
+        "local": -0.007550000000000001,
+        "perView": [
+          -0.0012999999999999678,
+          -0.00011428571428573342
+        ],
+        "worstRegion": -0.009099999999999997,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "photo_hull",
+        "delta": 78,
+        "before": 463,
+        "after": 459,
+        "score": 0.5716357142857144,
+        "local": 0.0048000000000000265,
+        "perView": [
+          0.0009571428571428786,
+          0.0006714285714286561
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "changed": 78,
+    "faults": 0,
+    "clearBefore": 44,
+    "clearAfter": 44,
+    "muzzleTotal": 44,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "fire_moth",
+    "source": "photo_clan_3",
+    "status": "photo-scored replacement",
+    "views": 2,
+    "before": 0.50936,
+    "after": 0.51678,
+    "perView": [
+      {
+        "name": "Gauntlet elevated front",
+        "before": 0.5074,
+        "after": 0.51466,
+        "cameraRms": 5.749051548003
+      },
+      {
+        "name": "Emporium quarter",
+        "before": 0.5113199999999999,
+        "after": 0.5189,
+        "cameraRms": 5.794218676066326
+      }
+    ],
+    "targets": [
+      {
+        "name": "rl_shin",
+        "score": 0.42469999999999997,
+        "cells": 504
+      },
+      {
+        "name": "rl",
+        "score": 0.42469999999999997,
+        "cells": 280
+      },
+      {
+        "name": "rl_foot",
+        "score": 0.42469999999999997,
+        "cells": 138
+      }
+    ],
+    "selected": [
+      {
+        "part": "rl",
+        "family": "photo_hull",
+        "delta": 112,
+        "before": 280,
+        "after": 298,
+        "score": 0.5137,
+        "local": 0.02125000000000002,
+        "perView": [
+          0.0043800000000000505,
+          0.0043000000000000815
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "rl_foot",
+        "family": "photo_hull",
+        "delta": 37,
+        "before": 138,
+        "after": 157,
+        "score": 0.51678,
+        "local": 0.01539999999999997,
+        "perView": [
+          0.0028799999999999937,
+          0.0032800000000000606
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "rl_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl_shin",
+        "family": "faceted",
+        "delta": 70,
+        "before": 504,
+        "after": 528,
+        "score": 0.5084500000000001,
+        "local": -0.0045499999999999985,
+        "perView": [
+          -0.0029799999999999827,
+          0.0011600000000000499
+        ],
+        "worstRegion": -0.014899999999999969,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl_shin",
+        "family": "wedge",
+        "delta": 81,
+        "before": 504,
+        "after": 493,
+        "score": 0.5094700000000001,
+        "local": 0.0005499999999999949,
+        "perView": [
+          0.0006000000000000449,
+          -0.00037999999999993594
+        ],
+        "worstRegion": -0.0019000000000000128,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl_shin",
+        "family": "photo_hull",
+        "delta": 96,
+        "before": 504,
+        "after": 588,
+        "score": 0.50911,
+        "local": -0.0012500000000000011,
+        "perView": [
+          -0.00013999999999991797,
+          -0.00035999999999991594
+        ],
+        "worstRegion": -0.0018000000000000238,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl",
+        "family": "wedge",
+        "delta": 42,
+        "before": 280,
+        "after": 290,
+        "score": 0.5087,
+        "local": -0.004049999999999998,
+        "perView": [
+          -0.0008000000000000229,
+          -0.0005199999999999649
+        ],
+        "worstRegion": -0.005199999999999982,
+        "status": "photo rejection"
+      },
+      {
+        "part": "rl",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl",
+        "family": "photo_hull",
+        "delta": 112,
+        "before": 280,
+        "after": 298,
+        "score": 0.5137,
+        "local": 0.02125000000000002,
+        "perView": [
+          0.0043800000000000505,
+          0.0043000000000000815
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "rl_foot",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl_foot",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl_foot",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl_foot",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "rl_foot",
+        "family": "photo_hull",
+        "delta": 37,
+        "before": 138,
+        "after": 157,
+        "score": 0.51678,
+        "local": 0.01539999999999997,
+        "perView": [
+          0.0028799999999999937,
+          0.0032800000000000606
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "changed": 149,
+    "faults": 0,
+    "clearBefore": 8,
+    "clearAfter": 8,
+    "muzzleTotal": 8,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "dire_wolf",
+    "source": "photo_clan_heavy",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.4855,
+    "after": 0.48666666666666664,
+    "perView": [
+      {
+        "name": "RPG Mini Hunter front",
+        "before": 0.4855,
+        "after": 0.48666666666666664,
+        "cameraRms": 15.872179832224807
+      }
+    ],
+    "targets": [
+      {
+        "name": "ra",
+        "score": 0.4848,
+        "cells": 256
+      },
+      {
+        "name": "ra_forearm",
+        "score": 0.4848,
+        "cells": 236
+      },
+      {
+        "name": "la",
+        "score": 0.4912,
+        "cells": 256
+      }
+    ],
+    "selected": [
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "delta": 102,
+        "before": 236,
+        "after": 314,
+        "score": 0.48666666666666664,
+        "local": 0.007000000000000006,
+        "perView": [
+          0.0011666666666666492
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "ra",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "delta": 102,
+        "before": 236,
+        "after": 314,
+        "score": 0.48666666666666664,
+        "local": 0.007000000000000006,
+        "perView": [
+          0.0011666666666666492
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "la",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 102,
+    "faults": 0,
+    "clearBefore": 16,
+    "clearAfter": 16,
+    "muzzleTotal": 16,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "warhawk",
+    "source": "photo_clan_heavy",
+    "status": "retained control",
+    "views": 1,
+    "before": 0.48344999999999994,
+    "after": 0.48344999999999994,
+    "perView": [
+      {
+        "name": "Bellford quarter",
+        "before": 0.48344999999999994,
+        "after": 0.48344999999999994,
+        "cameraRms": 22.847470991969058
+      }
+    ],
+    "targets": [
+      {
+        "name": "ra",
+        "score": 0.3456,
+        "cells": 256
+      },
+      {
+        "name": "ra_forearm",
+        "score": 0.3456,
+        "cells": 208
+      },
+      {
+        "name": "ll_shin",
+        "score": 0.4751,
+        "cells": 440
+      }
+    ],
+    "selected": [],
+    "trials": [
+      {
+        "part": "ra",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 63,
+        "before": 440,
+        "after": 501,
+        "score": 0.48208333333333325,
+        "local": -0.00820000000000004,
+        "perView": [
+          -0.0013666666666666827
+        ],
+        "worstRegion": -0.00820000000000004,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 85,
+        "before": 440,
+        "after": 483,
+        "score": 0.48305,
+        "local": -0.0024000000000000132,
+        "perView": [
+          -0.00039999999999995595
+        ],
+        "worstRegion": -0.0024000000000000132,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "delta": 76,
+        "before": 440,
+        "after": 492,
+        "score": 0.48146666666666665,
+        "local": -0.011900000000000022,
+        "perView": [
+          -0.0019833333333332814
+        ],
+        "worstRegion": -0.011900000000000022,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 0,
+    "faults": 0,
+    "clearBefore": 14,
+    "clearAfter": 14,
+    "muzzleTotal": 14,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "summoner",
+    "source": "photo_clan_heavy",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.4982166666666667,
+    "after": 0.5054333333333334,
+    "perView": [
+      {
+        "name": "Emporium front quarter",
+        "before": 0.4982166666666667,
+        "after": 0.5054333333333334,
+        "cameraRms": 11.204286365639629
+      }
+    ],
+    "targets": [
+      {
+        "name": "ra",
+        "score": 0.4738,
+        "cells": 256
+      },
+      {
+        "name": "ra_forearm",
+        "score": 0.4738,
+        "cells": 208
+      },
+      {
+        "name": "ll_shin",
+        "score": 0.5646,
+        "cells": 458
+      }
+    ],
+    "selected": [
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "delta": 98,
+        "before": 208,
+        "after": 242,
+        "score": 0.5021333333333334,
+        "local": 0.03469999999999995,
+        "perView": [
+          0.003916666666666735
+        ],
+        "worstRegion": -0.011199999999999988,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "delta": 61,
+        "before": 458,
+        "after": 519,
+        "score": 0.5054333333333334,
+        "local": 0.01980000000000004,
+        "perView": [
+          0.0032999999999999696
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "ra",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra_forearm",
+        "family": "photo_hull",
+        "delta": 98,
+        "before": 208,
+        "after": 242,
+        "score": 0.5021333333333334,
+        "local": 0.03469999999999995,
+        "perView": [
+          0.003916666666666735
+        ],
+        "worstRegion": -0.011199999999999988,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 61,
+        "before": 458,
+        "after": 515,
+        "score": 0.50285,
+        "local": 0.0042999999999999705,
+        "perView": [
+          0.0007166666666665877
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 87,
+        "before": 458,
+        "after": 491,
+        "score": 0.5026166666666667,
+        "local": 0.0029000000000000137,
+        "perView": [
+          0.0004833333333332801
+        ],
+        "worstRegion": 0,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "delta": 61,
+        "before": 458,
+        "after": 519,
+        "score": 0.5054333333333334,
+        "local": 0.01980000000000004,
+        "perView": [
+          0.0032999999999999696
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 159,
+    "faults": 0,
+    "clearBefore": 17,
+    "clearAfter": 17,
+    "muzzleTotal": 17,
+    "roundTrip": true,
+    "unranked": []
+  }
+]
