@@ -1,0 +1,61 @@
+extends SceneTree
+## Headless campaign route: launcher -> campaign -> start company -> battle
+## -> end the battle -> company report written back.
+
+const OUT := "user://campaign.json"
+
+
+func _initialize() -> void:
+	call_deferred("_run")
+
+
+func _run() -> void:
+	CampaignStore.delete()
+	change_scene_to_file("res://scenes/launcher.tscn")
+	await _frames(2)
+	var b := current_scene.find_child("CampaignButton", true, false) as Button
+	if not _check(b != null, "campaign button missing"):
+		return
+	b.pressed.emit()
+	await _frames(4)
+	var screen := current_scene.find_child("*CampaignScreen*", true, false)
+	for n in current_scene.get_children():
+		if n is CampaignScreen:
+			screen = n
+	if not _check(screen is CampaignScreen, "campaign screen did not open"):
+		return
+	(screen.find_child("StartCompany", true, false) as Button).pressed.emit()
+	await _frames(1)
+	var fight := screen.find_child("FightButton", true, false) as Button
+	if not _check(fight != null and not fight.disabled, "fight button missing"):
+		return
+	fight.pressed.emit()
+	await _frames(6)
+	if not _check(current_scene.get("in_campaign") == true, "battle is not a campaign battle"):
+		return
+	var ctl: GameController = current_scene.get("controller")
+	var mine := ctl.state.units_of_side(0)
+	mine[0].armor[Location.LA] = 0
+	for u in ctl.state.units_of_side(1):
+		Damage.destroy_unit(u, "engine destroyed")
+	ctl.state.game_over = true
+	current_scene.call("_on_event", GameEvent.new(GameEvent.GAME_OVER, {"winner": 0}))
+	await _frames(1)
+	var c := CampaignStore.load_company()
+	if not _check(c != null and c.battles == 1 and CampaignStore.pending_roster().is_empty(), "battle not written back"):
+		return
+	print("CAMPAIGN SMOKE OK: ", " | ".join(c.last_report))
+	CampaignStore.delete()
+	quit(0)
+
+
+func _frames(n: int) -> void:
+	for i in n:
+		await process_frame
+
+
+func _check(ok: bool, msg: String) -> bool:
+	if not ok:
+		push_error("CAMPAIGN SMOKE FAILED: " + msg)
+		quit(1)
+	return ok

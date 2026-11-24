@@ -48,6 +48,9 @@ func _ready() -> void:
 	var train := UiKit.button(box, "TRAINING  ·  START HERE" if new_player else "TRAINING",
 		_open_training, Vector2(0, 76), "primary" if new_player else "secondary")
 	train.name = "TrainingButton"
+	var camp := UiKit.button(box, "CAMPAIGN", _open_campaign, Vector2(0, 64))
+	camp.name = "CampaignButton"
+	camp.tooltip_text = "A mercenary company whose damage, wounds and experience carry from battle to battle"
 	var drills := UiKit.button(box, "RULES DRILLS", func(): get_tree().change_scene_to_file(DRILLS), Vector2(0, 58))
 	drills.name = "DrillsButton"
 	drills.tooltip_text = "Quick questions on to-hit numbers, hit locations, missiles, heat and odds"
@@ -71,6 +74,11 @@ func _ready() -> void:
 
 func _open_training() -> void:
 	BattleLaunch.open_training = true
+	get_tree().change_scene_to_file(BATTLE_MENU)
+
+
+func _open_campaign() -> void:
+	BattleLaunch.open_campaign = true
 	get_tree().change_scene_to_file(BATTLE_MENU)
 
 

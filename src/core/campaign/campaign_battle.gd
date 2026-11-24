@@ -72,22 +72,24 @@ static func finish(c: Campaign, rules: CampaignRules, state: GameState, roster: 
 		if u == null or m == null:
 			continue
 		var p := c.pilot(m.pilot_id)
-		report.append(_mech_result(u, m))
+		report.append(_mech_result(u, m, p.name if p != null else "Unassigned"))
 		if p != null:
 			report.append(_pilot_result(rules, u, p, won, int(kills.get(uid, 0))))
 	var heal := rules.wounds_healed()
+	var healed := 0
 	for p in c.pilots:
 		if not p.dead and p.wounds > 0 and heal > 0:
 			p.wounds = maxi(0, p.wounds - heal)
-	if heal > 0:
+			healed += 1
+	if healed > 0:
 		report.append("Between battles each MechWarrior heals %d wound%s." % [heal, "" if heal == 1 else "s"])
 	c.log.append(report[0])
 	c.last_report = report.duplicate()
 	return report
 
 
-static func _mech_result(u: Unit, m: CampaignMech) -> String:
-	var who := "%s (%s)" % [u.def.name, m.id]
+static func _mech_result(u: Unit, m: CampaignMech, pilot_name: String) -> String:
+	var who := "%s's %s" % [pilot_name, ("%s %s" % [u.def.name, u.def.model]).strip_edges()]
 	m.condition = MechCondition.lasting(u)
 	if u.destroyed and u.destroyed_reason in LEFT_MAP:
 		m.condition["destroyed"] = false
