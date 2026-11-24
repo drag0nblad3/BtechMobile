@@ -84,6 +84,19 @@ func on_turn(step: int) -> void:
 			return
 
 
+## Hint: preview the move an Elite computer player would make, with its reasons.
+func on_hint() -> void:
+	if selected == null or controller.state.phase != Phase.Kind.MOVEMENT:
+		return
+	var h := Hint.move(controller.state, selected, GameSettings.explain_level)
+	if h["mode"] != mode:
+		mode = h["mode"]
+		_replan()
+	if options.can_reach(h["key"]):
+		_set_preview(h["key"])
+	hud.set_tip(h["text"] + "\n" + hud.tip.text)
+
+
 func on_confirm() -> void:
 	if selected and has_preview:
 		var u := selected
