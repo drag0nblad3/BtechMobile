@@ -1,0 +1,51 @@
+{
+  "chassis": "Sagittaire SGT-8R",
+  "source_model": "data/voxels/sagittaire.json",
+  "candidate": "experiments/miniature_reconstruction/sagittaire/sagittaire_candidate.json",
+  "sculpt_generation": "Catalyst Games 2023 Eridani Light Horse Hunter Lance CAT35763",
+  "references": [
+    {
+      "url": "https://www.catalystgamelabs.com/news/eridani-light-horse-hunter-lance-forcepack",
+      "type": "manufacturer group photograph",
+      "sculpt_generation_verified": true,
+      "score_eligible": false,
+      "reason": "Group photo; not a calibrated isolated multi-view image"
+    },
+    {
+      "url": "https://mechpainters.org/miniature/sagittaire-davion-guards/",
+      "type": "painted plastic sculpt photographs",
+      "sculpt_generation_verified": true,
+      "score_eligible": false,
+      "reason": "No camera calibration, pose landmarks, or perspective solution yet"
+    },
+    {
+      "url": "https://thebaselair.com/projects/234827-eridani-light-horse-hunter-lance",
+      "type": "painted force pack photograph",
+      "sculpt_generation_verified": false,
+      "score_eligible": false,
+      "reason": "Need isolated Sagittaire identification and per-view camera calibration"
+    }
+  ],
+  "candidate_passes": [
+    {
+      "id": 1,
+      "operation": "remove 20 isolated-looking single-cell frame additions from CT recipe",
+      "status": "unvalidated",
+      "risks": [
+        "Some cells may bridge real joints",
+        "May expose holes after voxelization",
+        "Not yet compared using matched cameras"
+      ]
+    }
+  ],
+  "required_validation": [
+    "Compare source/candidate connectivity and supported joint volume",
+    "Render actual candidate from Godot",
+    "Fit camera and articulated pose to reference landmarks",
+    "Reject poorly calibrated views from numerical scoring",
+    "Restore any removed cell necessary for connection"
+  ],
+  "test_status": "not_run",
+  "render_status": "not_rendered",
+  "promotion_status": "blocked"
+}
