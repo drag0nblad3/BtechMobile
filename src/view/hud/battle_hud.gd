@@ -33,6 +33,7 @@ signal battle_forensics
 signal pause_toggled
 signal exit_battle
 signal next_unit  ## Go to the next of your units (camera + selection).
+signal undo_move  ## Training: take back your last move.
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 60)
@@ -57,6 +58,7 @@ var masc_button: Button
 var sc_button: Button
 var explain_button: Button
 var cinematic_button: Button
+var undo_button: Button  ## Training only, while a move can be taken back.
 var attack_button: Button
 var skip_button: Button
 var twist_buttons: Array[Button] = []
@@ -135,6 +137,8 @@ func _ready() -> void:
 	_button(shortcuts, "Next ▸", next_unit).tooltip_text = "Go to your next unit"
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
+	undo_button = _button(shortcuts, "Undo move", undo_move)
+	undo_button.tooltip_text = "Training: take back your last move (no dice rolled since)"
 	_tools_menu = MenuButton.new()
 	_tools_menu.text = "More ▾"
 	_tools_menu.tooltip_text = "Save, replay and camera options"
