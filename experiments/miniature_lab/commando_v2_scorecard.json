@@ -1,0 +1,181 @@
+{
+  "status": "manual approximate visible-part masks; amodal predictions do not resolve occlusion; unknown optics; not fidelity acceptance",
+  "registration": "camera and pose fitted from v1 landmark positions, frozen for v2",
+  "results": [
+    {
+      "view": "unpainted_quarter",
+      "camera": {
+        "yaw": -30,
+        "elev": 5,
+        "roll": -6,
+        "distance": 350,
+        "scale": 3048.230069598979,
+        "tx": 254.7415874393377,
+        "ty": 166.46926900052927,
+        "rmse": 19.92589679714598
+      },
+      "pose": {
+        "rl": [
+          30,
+          0,
+          10
+        ],
+        "rl_shin": [
+          -20,
+          0,
+          0
+        ],
+        "ra_shoulder": [
+          60,
+          0,
+          60
+        ],
+        "ra_forearm": [
+          -60,
+          0,
+          0
+        ],
+        "ll": [
+          0,
+          0,
+          -20
+        ],
+        "ll_shin": [
+          0,
+          0,
+          0
+        ],
+        "la_shoulder": [
+          -50,
+          0,
+          0
+        ],
+        "la_forearm": [
+          30,
+          0,
+          0
+        ]
+      },
+      "pose_rmse_px": {
+        "l_leg": 26.986028630924427,
+        "l_arm": 15.056503784030564,
+        "r_leg": 39.866459052769976,
+        "r_arm": 7.059833270498415
+      },
+      "baseline": {
+        "hd": 0.5741,
+        "ct": 0.7318,
+        "ll_shin": 0.5538,
+        "rl_shin": 0.386
+      },
+      "candidate": {
+        "hd": 0.5741,
+        "ct": 0.7318,
+        "ll_shin": 0.5358,
+        "rl_shin": 0.3676
+      }
+    },
+    {
+      "view": "painted_front_quarter",
+      "camera": {
+        "yaw": 15,
+        "elev": 5,
+        "roll": 0,
+        "distance": 350,
+        "scale": 2329.126603652784,
+        "tx": 253.0556718518412,
+        "ty": 189.07802740181958,
+        "rmse": 15.271535833055237
+      },
+      "pose": {
+        "rl": [
+          0,
+          0,
+          0
+        ],
+        "rl_shin": [
+          0,
+          0,
+          0
+        ],
+        "ra_shoulder": [
+          -70,
+          0,
+          20
+        ],
+        "ra_forearm": [
+          30,
+          0,
+          0
+        ],
+        "ll": [
+          10,
+          0,
+          0
+        ],
+        "ll_shin": [
+          0,
+          0,
+          0
+        ],
+        "la_shoulder": [
+          -40,
+          0,
+          -20
+        ],
+        "la_forearm": [
+          30,
+          0,
+          0
+        ]
+      },
+      "pose_rmse_px": {
+        "l_leg": 40.44161914555658,
+        "l_arm": 3.8208633509437964,
+        "r_leg": 9.052304672054868,
+        "r_arm": 8.860287373288392
+      },
+      "baseline": {
+        "hd": 0.6847,
+        "ct": 0.6635,
+        "ll_shin": 0.4385,
+        "rl_shin": 0.6313
+      },
+      "candidate": {
+        "hd": 0.6847,
+        "ct": 0.6635,
+        "ll_shin": 0.4522,
+        "rl_shin": 0.6223
+      }
+    }
+  ],
+  "qa": {
+    "errors": [],
+    "support": {
+      "pelvis": 25,
+      "hd": 17,
+      "ct_srm6": 20,
+      "rear_pack": 20,
+      "lt": 35,
+      "la_shoulder": 24,
+      "la": 6,
+      "la_forearm": 6,
+      "la_hand": 6,
+      "la_weapon": 8,
+      "ll": 12,
+      "ll_shin": 9,
+      "ll_foot": 8,
+      "rt": 30,
+      "ra_shoulder": 24,
+      "ra": 6,
+      "ra_forearm": 6,
+      "ra_hand": 6,
+      "ra_weapon": 8,
+      "rl": 12,
+      "rl_shin": 9,
+      "rl_foot": 8
+    },
+    "voxels": 3722,
+    "parts": 23
+  }
+}
