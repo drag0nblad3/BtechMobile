@@ -1,0 +1,37 @@
+name: Experimental Sagittaire photo pose fit
+on:
+  push:
+    branches:
+      - experiment/worst-first-miniature-reconstruction
+    paths:
+      - tools/fit_sagittaire_photos.py
+      - .github/workflows/experimental-sagittaire-photo-fit.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  photo-fit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: experiment/worst-first-miniature-reconstruction
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy scipy opencv-python-headless pillow matplotlib
+      - run: python tools/fit_sagittaire_photos.py
+      - name: Upload matched-view comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sagittaire-photo-matched-views
+          path: experiments/miniature_reconstruction/sagittaire/fitted/
+      - name: Commit fitted comparison images and scores
+        if: success()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add experiments/miniature_reconstruction/sagittaire/fitted/
+          git diff --cached --quiet || (git commit -m 'Record photo-calibrated Sagittaire camera pose comparison renders' && git push)
