@@ -1,0 +1,84 @@
+{
+  "total": 30,
+  "unique": 30,
+  "improved": 30,
+  "retained": 0,
+  "rejected": 0,
+  "blocked": 0,
+  "views": 46,
+  "trials": 708,
+  "changed": 10152,
+  "faults": 0,
+  "baseline": 0.47527670899470903,
+  "candidate": 0.48118510978835977,
+  "cache": {
+    "hits": 14790,
+    "misses": 2804
+  },
+  "muzzles": {
+    "before": 157,
+    "after": 157,
+    "total": 291
+  },
+  "poorCamera": [
+    "catapult",
+    "battlemaster",
+    "atlas",
+    "crab",
+    "firestarter",
+    "thunderbolt",
+    "marauder",
+    "stalker"
+  ],
+  "lowScore": [
+    "locust",
+    "archer",
+    "battlemaster",
+    "charger",
+    "hatchetman",
+    "jagermech",
+    "phoenix_hawk",
+    "trebuchet",
+    "firestarter",
+    "thunderbolt",
+    "marauder"
+  ],
+  "worstView": -0.0008333333333332416,
+  "top": [
+    {
+      "id": "banshee",
+      "before": 0.5025,
+      "after": 0.5202
+    },
+    {
+      "id": "blackjack",
+      "before": 0.48943333333333333,
+      "after": 0.5029
+    },
+    {
+      "id": "centurion",
+      "before": 0.48276666666666673,
+      "after": 0.4942333333333333
+    },
+    {
+      "id": "warhammer",
+      "before": 0.5731499999999999,
+      "after": 0.5842166666666667
+    },
+    {
+      "id": "highlander",
+      "before": 0.4618,
+      "after": 0.4723
+    },
+    {
+      "id": "awesome",
+      "before": 0.5397,
+      "after": 0.5492
+    },
+    {
+      "id": "griffin",
+      "before": 0.458575,
+      "after": 0.46724999999999994
+    }
+  ]
+}

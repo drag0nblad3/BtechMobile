@@ -1,0 +1,413 @@
+[
+  {
+    "id": "dragon",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog front quarter",
+        "before": 0.548925,
+        "after": 0.550125,
+        "cameraRms": 5.326925011690176,
+        "poseRms": {
+          "rl": 27.784558567179804,
+          "ra": 4.816351241658475
+        }
+      },
+      {
+        "name": "painted front",
+        "before": 0.528025,
+        "after": 0.52845,
+        "cameraRms": 5.581215465296228,
+        "poseRms": {
+          "rl": 31.563503476554395,
+          "la": 7.867359392040565
+        }
+      }
+    ],
+    "baseline": 0.538475,
+    "candidate": 0.5392875,
+    "changed": 104,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 680,
+      "misses": 104
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 11
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "cyclops",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog CP-11-A",
+        "before": 0.5643,
+        "after": 0.5647333333333334,
+        "cameraRms": 3.8601060408548094,
+        "poseRms": {
+          "rl": 35.86106404485677
+        }
+      },
+      {
+        "name": "painted CP-11-A rear",
+        "before": 0.4842,
+        "after": 0.48675,
+        "cameraRms": 11.221918405425555,
+        "poseRms": {
+          "rl": 59.30769865287684
+        }
+      }
+    ],
+    "baseline": 0.5322600000000001,
+    "candidate": 0.53354,
+    "changed": 48,
+    "trials": 18,
+    "faults": 0,
+    "cache": {
+      "hits": 511,
+      "misses": 83
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 11
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "griffin",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog front quarter",
+        "before": 0.471,
+        "after": 0.48224,
+        "cameraRms": 6.491019821997775,
+        "poseRms": {
+          "ll": 17.650580109879893,
+          "ra": 2.0548516110002213
+        }
+      },
+      {
+        "name": "painted gun-side quarter",
+        "before": 0.4378666666666667,
+        "after": 0.44226666666666664,
+        "cameraRms": 7.295807267385499,
+        "poseRms": {
+          "rl": 37.807426870003255,
+          "ra": 9.794001384254278
+        }
+      }
+    ],
+    "baseline": 0.458575,
+    "candidate": 0.46724999999999994,
+    "changed": 498,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 626,
+      "misses": 102
+    },
+    "muzzles": {
+      "before": 9,
+      "after": 9,
+      "total": 11
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "wolverine",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog front",
+        "before": 0.53398,
+        "after": 0.5375400000000001,
+        "cameraRms": 9.994286226837005,
+        "poseRms": {
+          "rl": 18.373640248721713,
+          "la": 3.9385987647381793
+        }
+      },
+      {
+        "name": "painted rear",
+        "before": 0.4895,
+        "after": 0.48866666666666675,
+        "cameraRms": 9.142336443626691,
+        "poseRms": {
+          "rl": 31.784490330786188
+        }
+      }
+    ],
+    "baseline": 0.5173,
+    "candidate": 0.5192125000000001,
+    "changed": 344,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 626,
+      "misses": 102
+    },
+    "muzzles": {
+      "before": 5,
+      "after": 5,
+      "total": 7
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "firestarter",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog front",
+        "before": 0.471375,
+        "after": 0.47650000000000003,
+        "cameraRms": 6.969130656231988,
+        "poseRms": {
+          "rl": 12.645058798297791,
+          "la": 21.922268197373608
+        }
+      },
+      {
+        "name": "painted side",
+        "before": 0.260875,
+        "after": 0.260425,
+        "cameraRms": 29.080794040503324,
+        "poseRms": {
+          "ll": 34.07635036164889,
+          "la": 29.55900054812072
+        }
+      }
+    ],
+    "baseline": 0.36612500000000003,
+    "candidate": 0.3684625000000001,
+    "changed": 224,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 572,
+      "misses": 100
+    },
+    "muzzles": {
+      "before": 4,
+      "after": 4,
+      "total": 4
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "shadow_hawk",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog front",
+        "before": 0.51732,
+        "after": 0.52122,
+        "cameraRms": 4.2889056703895525,
+        "poseRms": {
+          "ll": 33.61235595940222,
+          "la": 6.111347397993139
+        }
+      },
+      {
+        "name": "painted front",
+        "before": 0.42364999999999997,
+        "after": 0.42515,
+        "cameraRms": 9.61183490262958,
+        "poseRms": {
+          "rl": 24.314894378182455
+        }
+      }
+    ],
+    "baseline": 0.4756888888888889,
+    "candidate": 0.47852222222222224,
+    "changed": 214,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 626,
+      "misses": 102
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 6
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "thunderbolt",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "painted olive-drab front",
+        "before": 0.31978,
+        "after": 0.31982,
+        "cameraRms": 16.614790882611683,
+        "poseRms": {
+          "rl": 24.0387212309368,
+          "ra": 16.7895090058199
+        }
+      },
+      {
+        "name": "painted other front quarter, TDR-7S tag",
+        "before": 0.40890000000000004,
+        "after": 0.41240000000000004,
+        "cameraRms": 28.880813277185787,
+        "poseRms": {
+          "ll": 36.56113813724058
+        }
+      }
+    ],
+    "baseline": 0.3532,
+    "candidate": 0.3545375,
+    "changed": 388,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 653,
+      "misses": 103
+    },
+    "muzzles": {
+      "before": 15,
+      "after": 15,
+      "total": 18
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "marauder",
+    "source": "cohort_eight",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.34854999999999997,
+        "after": 0.3528,
+        "cameraRms": 18.120858060034326,
+        "poseRms": {
+          "rl": 15.452820474467527,
+          "ra": 37.65096997776895
+        }
+      },
+      {
+        "name": "painted opposite elevated quarter",
+        "before": 0.134525,
+        "after": 0.137,
+        "cameraRms": 46.897677999128234,
+        "poseRms": {
+          "rl": 76.79038918571814,
+          "ra": 105.45816722239513
+        }
+      }
+    ],
+    "baseline": 0.2415375,
+    "candidate": 0.2449,
+    "changed": 335,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 514,
+      "misses": 102
+    },
+    "muzzles": {
+      "before": 5,
+      "after": 5,
+      "total": 5
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "stalker",
+    "source": "next_reconstruction",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.5350333333333334,
+        "after": 0.5408333333333334,
+        "cameraRms": 9.166324046598865,
+        "poseRms": {
+          "rl": 34.56503794153766
+        }
+      },
+      {
+        "name": "painted rear",
+        "before": 0.4717,
+        "after": 0.47303333333333336,
+        "cameraRms": 22.466100287155598,
+        "poseRms": {
+          "ll": 85.4636690340365
+        }
+      },
+      {
+        "name": "painted opposite quarter",
+        "before": 0.48185,
+        "after": 0.48185,
+        "cameraRms": 22.1908746009053,
+        "poseRms": {}
+      }
+    ],
+    "baseline": 0.4979875,
+    "candidate": 0.5006625,
+    "changed": 272,
+    "trials": 22,
+    "faults": 0,
+    "cache": {
+      "hits": 415,
+      "misses": 79
+    },
+    "muzzles": {
+      "before": 0,
+      "after": 0,
+      "total": 22
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "panther",
+    "source": "next_reconstruction",
+    "views": [
+      {
+        "name": "painted left quarter",
+        "before": 0.5583750000000001,
+        "after": 0.56515,
+        "cameraRms": 5.424817228746453,
+        "poseRms": {
+          "ll": 78.40129349931725,
+          "la": 23.706192987780053,
+          "ra": 8.1509094039987
+        }
+      },
+      {
+        "name": "painted right quarter",
+        "before": 0.5662333333333333,
+        "after": 0.5661333333333333,
+        "cameraRms": 8.658401774764137,
+        "poseRms": {
+          "rl": 96.07808012010125,
+          "ra": 15.100386733436448
+        }
+      }
+    ],
+    "baseline": 0.5617428571428572,
+    "candidate": 0.5655714285714286,
+    "changed": 269,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 410,
+      "misses": 94
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 5
+    },
+    "status": "provisional improvement"
+  }
+]
