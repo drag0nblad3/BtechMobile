@@ -1,0 +1,73 @@
+{
+  "status": "initial_view_hypotheses_not_calibrated",
+  "views": [
+    {
+      "name": "front",
+      "photo": "https://mechpainters.org/wp-content/uploads/2025/08/image.jpeg",
+      "yaw": 0,
+      "pitch": 9,
+      "roll": 0,
+      "zoom": 10,
+      "joints_deg": {
+        "la": -9,
+        "ra": 8,
+        "ll": -7,
+        "ll_shin": 15,
+        "rl": 8,
+        "rl_shin": -12
+      },
+      "calibrated": false
+    },
+    {
+      "name": "left_oblique",
+      "photo": "https://mechpainters.org/wp-content/uploads/2025/08/Saggitaire-6-1024x1024.jpg",
+      "yaw": 52,
+      "pitch": 12,
+      "roll": 0,
+      "zoom": 10,
+      "joints_deg": {
+        "la": -9,
+        "ra": 8,
+        "ll": -7,
+        "ll_shin": 15,
+        "rl": 8,
+        "rl_shin": -12
+      },
+      "calibrated": false
+    },
+    {
+      "name": "rear_oblique",
+      "photo": "https://mechpainters.org/wp-content/uploads/2025/08/Saggitaire-5-1024x1024.jpg",
+      "yaw": 155,
+      "pitch": 14,
+      "roll": 0,
+      "zoom": 10,
+      "joints_deg": {
+        "la": -9,
+        "ra": 8,
+        "ll": -7,
+        "ll_shin": 15,
+        "rl": 8,
+        "rl_shin": -12
+      },
+      "calibrated": false
+    },
+    {
+      "name": "opposite_side",
+      "photo": "https://mechpainters.org/wp-content/uploads/2025/08/Saggitaire-3-1024x1024.jpg",
+      "yaw": -73,
+      "pitch": 10,
+      "roll": 0,
+      "zoom": 10,
+      "joints_deg": {
+        "la": -9,
+        "ra": 8,
+        "ll": -7,
+        "ll_shin": 15,
+        "rl": 8,
+        "rl_shin": -12
+      },
+      "calibrated": false
+    }
+  ]
+}
