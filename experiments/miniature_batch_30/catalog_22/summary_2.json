@@ -1,0 +1,162 @@
+[
+  {
+    "id": "flea",
+    "unit": "flea_fle17",
+    "parts": 16,
+    "cells": 3005,
+    "faults": [],
+    "clear": 2,
+    "total": 2,
+    "score": {
+      "before": 0.225925,
+      "after": 0.24525000000000002,
+      "changed": 272,
+      "views": [
+        {
+          "name": "catalog plastic quarter",
+          "cameraRms": 5.873059850606778,
+          "poseRms": {
+            "rl": 25.939856391436376,
+            "ll": 14.831394441462367
+          },
+          "before": 0.225925,
+          "after": 0.24525000000000002
+        }
+      ]
+    }
+  },
+  {
+    "id": "caesar",
+    "unit": "caesar_ces3r",
+    "parts": 19,
+    "cells": 8407,
+    "faults": [],
+    "clear": 2,
+    "total": 2,
+    "score": null
+  },
+  {
+    "id": "chameleon",
+    "unit": "chameleon_cln7v",
+    "parts": 23,
+    "cells": 6862,
+    "faults": [],
+    "clear": 4,
+    "total": 4,
+    "score": null
+  },
+  {
+    "id": "griffin_iic",
+    "unit": "griffin_iic_9",
+    "parts": 21,
+    "cells": 7695,
+    "faults": [],
+    "clear": 11,
+    "total": 12,
+    "score": null
+  },
+  {
+    "id": "grizzly",
+    "unit": "grizzly",
+    "parts": 19,
+    "cells": 10963,
+    "faults": [],
+    "clear": 12,
+    "total": 12,
+    "score": null
+  },
+  {
+    "id": "gunslinger",
+    "unit": "gunslinger_gun1erd",
+    "parts": 17,
+    "cells": 9744,
+    "faults": [],
+    "clear": 2,
+    "total": 2,
+    "score": null
+  },
+  {
+    "id": "hatamoto_chi",
+    "unit": "hatamoto_chi_htm27t",
+    "parts": 25,
+    "cells": 10274,
+    "faults": [],
+    "clear": 16,
+    "total": 16,
+    "score": null
+  },
+  {
+    "id": "helios",
+    "unit": "helios_hel3d",
+    "parts": 19,
+    "cells": 7997,
+    "faults": [],
+    "clear": 5,
+    "total": 5,
+    "score": null
+  },
+  {
+    "id": "hermes_ii",
+    "unit": "hermes_ii_her2s",
+    "parts": 20,
+    "cells": 5545,
+    "faults": [],
+    "clear": 2,
+    "total": 2,
+    "score": null
+  },
+  {
+    "id": "hoplite",
+    "unit": "hoplite_hop4d",
+    "parts": 13,
+    "cells": 6675,
+    "faults": [],
+    "clear": 2,
+    "total": 2,
+    "score": {
+      "before": 0.435175,
+      "after": 0.45235000000000003,
+      "changed": 434,
+      "views": [
+        {
+          "name": "catalog plastic quarter",
+          "cameraRms": 7.550839302962464,
+          "poseRms": {
+            "rl": 20.766185410946207,
+            "ll": 18.66533584943646
+          },
+          "before": 0.435175,
+          "after": 0.45235000000000003
+        }
+      ]
+    }
+  },
+  {
+    "id": "howler",
+    "unit": "howler",
+    "parts": 20,
+    "cells": 6080,
+    "faults": [],
+    "clear": 15,
+    "total": 15,
+    "score": {
+      "before": 0.5541,
+      "after": 0.5684833333333333,
+      "changed": 301,
+      "views": [
+        {
+          "name": "catalog plastic quarter",
+          "cameraRms": 2.722492255719433,
+          "poseRms": {
+            "ra": 3.2084376183813594,
+            "la": 21.053425737005572,
+            "rl": 10.124851259104805,
+            "ll": 8.367511752790113
+          },
+          "before": 0.5541,
+          "after": 0.5684833333333333
+        }
+      ]
+    }
+  }
+]
