@@ -83,3 +83,12 @@ Run:
     godot --headless -s tools/academy_smoke.gd
 
 Also verify the cinematic button stays usable on 1280×720 landscape screens and small Android phones; test with several simultaneous attack animations and with manual camera gestures. No APK is built by the feature branch.
+
+## Lessons (likely mistakes)
+
+The Academy's **Lessons** list (`BattleLessons`) scans the same recorded event
+facts for habits worth fixing, judging the decision rather than the dice:
+ending a turn at shutdown-roll heat (14+, also ammo risk at 19+), shots that
+needed 11 or 12 on 2d6, running 2 hexes or fewer (no defense gain over walking),
+and hits taken in rear armor. Each row names the unit and turn; selecting it
+shows a one-line lesson and links to the replay checkpoint.

@@ -268,6 +268,7 @@ func _wire() -> void:
 	hud.pause_menu.shake_toggled.connect(_toggle_shake)
 	hud.next_unit.connect(_next_unit)
 	undo_input.setup(self)
+	hud.hint.connect(func(): movement.on_hint() if controller.state.phase == Phase.Kind.MOVEMENT else attacks.on_hint())
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
 	hud.battle_forensics.connect(_open_forensics)

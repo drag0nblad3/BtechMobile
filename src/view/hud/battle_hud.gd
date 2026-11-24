@@ -34,6 +34,7 @@ signal pause_toggled
 signal exit_battle
 signal next_unit  ## Go to the next of your units (camera + selection).
 signal undo_move  ## Training: take back your last move.
+signal hint  ## Ask what the computer would do in your place (Hint).
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 60)
@@ -211,6 +212,7 @@ func _ready() -> void:
 	_move_actions = [prone_button, charge_button, smash_button, masc_button, sc_button, leave_button]
 	for b in _move_actions:
 		b.visible = false
+	_button(move_bar, "Hint", hint).tooltip_text = "What would an Elite computer player do here?"
 	_button(move_bar, "Cancel", cancel)
 	UiSkin.button(_button(move_bar, "Confirm", confirm), "primary")
 	refresh_move_actions()
@@ -218,6 +220,7 @@ func _ready() -> void:
 	twist_buttons = [_button(attack_bar, "◀ Twist", twist_left), _button(attack_bar, "Twist ▶", twist_right)]
 	flip_button = _button(attack_bar, "Flip arms", flip_arms)
 	flip_button.visible = false
+	_button(attack_bar, "Hint", hint).tooltip_text = "What would an Elite computer player do here?"
 	skip_button = _button(attack_bar, "Hold Fire", attack_skip)
 	attack_button = _button(attack_bar, "Fire", attack_confirm)
 	UiSkin.button(attack_button, "danger")
