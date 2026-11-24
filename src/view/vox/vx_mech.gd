@@ -29,10 +29,10 @@ var debris: Array[Node3D] = []
 var _centers: Dictionary = {}  ## Location -> grid center of its first part
 
 
-static func from_file(path: String) -> VxMech:
+static func from_file(path: String, fine: bool = false) -> VxMech:
 	var m := VxMech.new()
-	m.cache_path = path
-	m.model = VxRenderCache.model_at(path)
+	m.cache_path = "" if fine else path
+	m.model = VxFineCatalog.build(path) if fine else VxRenderCache.model_at(path)
 	m.build()
 	return m
 

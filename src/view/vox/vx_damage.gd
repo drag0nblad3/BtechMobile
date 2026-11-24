@@ -19,7 +19,8 @@ func _init(model: VxModel, parts: Dictionary) -> void:
 	_model_id = model.id
 	_detail = model.detail
 	var cache_id := model.get_instance_id()
-	if _cached_orders.has(cache_id):
+	var cacheable := not model.quality_report.has("fine_catalog")
+	if cacheable and _cached_orders.has(cache_id):
 		_orders = _cached_orders[cache_id]
 		return
 	for loc in Location.COUNT:
@@ -39,7 +40,8 @@ func _init(model: VxModel, parts: Dictionary) -> void:
 		_orders["%d:a" % loc] = _craters(front, "%d:a" % loc)
 		_orders["%d:r" % loc] = _craters(rear, "%d:r" % loc)
 		_orders["%d:s" % loc] = _craters(inner, "%d:s" % loc)
-	_cached_orders[cache_id] = _orders
+	if cacheable:
+		_cached_orders[cache_id] = _orders
 
 
 ## Fractions are 0 (untouched) .. 1 (all gone). Rebuilds only changed parts.
