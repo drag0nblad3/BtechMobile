@@ -21,7 +21,7 @@ Experimental branch only. Production geometry must not be edited or merged witho
 - Commit source geometry, reference metadata, reproducible camera/pose settings, tests, and honest residual defects.
 
 ## Queue status
-UNRANKED — no validated all-chassis score table has yet been confirmed on this branch. Do not label a chassis worst without evidence.
+PRELIMINARY TRIAGE — `tools/miniature_anatomy_triage.py` ranks authored torso depth (CT/HD/LT/RT) over source-geometry height. This is a bloat proxy, not a reference fidelity score. Initial manually inspected source extents: Sagittaire 0.794, Firestarter 0.739, BattleAxe 0.515. These are only three sampled chassis; the full catalog still needs scoring. Sagittaire is first **audit candidate**, not proven worst. Its forward weapon projections must be excluded from any unjustified torso reduction. Do not change geometry until sculpt-generation verification and camera/pose calibration.
 
 ## Completion gate
 A chassis is finished only after source geometry, rig attachments, voxelization, tests, and calibrated multi-view comparisons are checked. Do not merge this branch automatically.
