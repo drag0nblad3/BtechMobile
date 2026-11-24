@@ -1,0 +1,376 @@
+[
+  {
+    "id": "catapult",
+    "parts": 17,
+    "cells": 9168,
+    "before": 0.5766333333333333,
+    "after": 0.5804166666666667,
+    "changed": 64,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 10.8697410191694,
+        "pose": {
+          "rl": 12.090589410336827
+        }
+      },
+      {
+        "name": "painted opposite quarter",
+        "rmse": 38.29435025205432,
+        "pose": {
+          "ll": 20.451507039883218
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/catapult4.jpg"
+  },
+  {
+    "id": "adder",
+    "parts": 17,
+    "cells": 8783,
+    "before": 0.6143333333333333,
+    "after": 0.6143333333333333,
+    "changed": 0,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 8.393802428713645,
+        "pose": {
+          "rl": 4.812236666476715
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/adder11.jpg"
+  },
+  {
+    "id": "blackjack",
+    "parts": 17,
+    "cells": 5450,
+    "before": 0.4833,
+    "after": 0.48943333333333333,
+    "changed": 352,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 12.933085099202733,
+        "pose": {
+          "rl": 5.654741474590362
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/blackjack3-3.jpg"
+  },
+  {
+    "id": "locust",
+    "parts": 18,
+    "cells": 4651,
+    "before": 0.41609999999999997,
+    "after": 0.41873333333333335,
+    "changed": 127,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 2.7306421905602916,
+        "pose": {
+          "rl": 4.946635410425622
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/locust6.jpg"
+  },
+  {
+    "id": "archer",
+    "parts": 21,
+    "cells": 10513,
+    "before": 0.321975,
+    "after": 0.323325,
+    "changed": 108,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 6.2449574504374725,
+        "pose": {
+          "rl": 10.696183825019077
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/archer25.jpg"
+  },
+  {
+    "id": "awesome",
+    "parts": 23,
+    "cells": 10266,
+    "before": 0.5358999999999999,
+    "after": 0.5397,
+    "changed": 180,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 10.01019944131042,
+        "pose": {
+          "rl": 18.998753723756767
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/awesome3.jpg"
+  },
+  {
+    "id": "banshee",
+    "parts": 22,
+    "cells": 8590,
+    "before": 0.5014666666666666,
+    "after": 0.5025,
+    "changed": 68,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 12.018380570661295,
+        "pose": {
+          "rl": 17.767223061207382
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/banshee4-5.jpg"
+  },
+  {
+    "id": "battlemaster",
+    "parts": 20,
+    "cells": 9221,
+    "before": 0.41686666666666666,
+    "after": 0.4186666666666667,
+    "changed": 156,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 20.468110430436862,
+        "pose": {
+          "rl": 24.366011215590362
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/battlemaster7.jpg"
+  },
+  {
+    "id": "centurion",
+    "parts": 20,
+    "cells": 5964,
+    "before": 0.4799333333333333,
+    "after": 0.48276666666666673,
+    "changed": 120,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 7.236843431536484,
+        "pose": {
+          "rl": 7.973593435469788
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/centurion45.jpg"
+  },
+  {
+    "id": "charger",
+    "parts": 18,
+    "cells": 8039,
+    "before": 0.3741333333333334,
+    "after": 0.37799999999999995,
+    "changed": 154,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 8.27502799238668,
+        "pose": {
+          "rl": 28.608211185141567
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/charger3-66.jpg"
+  },
+  {
+    "id": "enforcer",
+    "parts": 19,
+    "cells": 5965,
+    "before": 0.5247,
+    "after": 0.5302333333333333,
+    "changed": 323,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 7.016453382695527,
+        "pose": {
+          "rl": 21.762468561512737
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/enforcer4-2.jpg"
+  },
+  {
+    "id": "hatchetman",
+    "parts": 19,
+    "cells": 5221,
+    "before": 0.3542666666666667,
+    "after": 0.3652333333333333,
+    "changed": 112,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 7.165146315177619,
+        "pose": {
+          "rl": 7.137606303317999
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/hatchetman47.jpg"
+  },
+  {
+    "id": "highlander",
+    "parts": 21,
+    "cells": 9970,
+    "before": 0.45796666666666663,
+    "after": 0.4618,
+    "changed": 192,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 5.34196026777239,
+        "pose": {
+          "rl": 18.07384500762694
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/highlander4-29.jpg"
+  },
+  {
+    "id": "hunchback",
+    "parts": 18,
+    "cells": 8215,
+    "before": 0.492325,
+    "after": 0.49515,
+    "changed": 104,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 2.7746085420527935,
+        "pose": {
+          "rl": 16.16256229311757
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/hunchback62.jpg"
+  },
+  {
+    "id": "jagermech",
+    "parts": 20,
+    "cells": 6486,
+    "before": 0.4246666666666667,
+    "after": 0.4267666666666667,
+    "changed": 386,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 5.186882769307763,
+        "pose": {
+          "rl": 16.73985280524755
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/jagermech3-31.jpg"
+  },
+  {
+    "id": "phoenix_hawk",
+    "parts": 21,
+    "cells": 6550,
+    "before": 0.43416666666666665,
+    "after": 0.4382333333333333,
+    "changed": 120,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 7.844246640342512,
+        "pose": {
+          "rl": 16.47906481936649
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/phoenixhawk17.jpg"
+  },
+  {
+    "id": "trebuchet",
+    "parts": 20,
+    "cells": 6013,
+    "before": 0.4316,
+    "after": 0.43629999999999997,
+    "changed": 280,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 5.408753635216981,
+        "pose": {
+          "rl": 8.181091771217792
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/trebuchet55.jpg"
+  },
+  {
+    "id": "warhammer",
+    "parts": 19,
+    "cells": 8916,
+    "before": 0.5669166666666666,
+    "after": 0.5731499999999999,
+    "changed": 184,
+    "faults": 0,
+    "views": [
+      {
+        "name": "catalog quarter",
+        "rmse": 5.146573525234194,
+        "pose": {
+          "rl": 22.958652967539898
+        }
+      },
+      {
+        "name": "painted front crop of montage",
+        "rmse": 4.838236009472472,
+        "pose": {
+          "rl": 20.94935376625668
+        }
+      }
+    ],
+    "trials": 7,
+    "reference": "https://jadedfalconer.com/Pictures/CGLminis/warhammer19.jpg"
+  }
+]
