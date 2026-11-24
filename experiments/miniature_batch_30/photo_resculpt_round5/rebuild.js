@@ -1,0 +1,22 @@
+function rebuild(lib,src,v){
+const s=lib.clone(src),{L,B,cyl,loft,ellipse}=lib,P=n=>s.parts.find(p=>p.name===n),Y=(r,m="plate")=>L("y",r,m),Z=(r,m="plate")=>L("z",r,m),X=(r,m="plate")=>L("x",r,m),set=(n,shapes)=>P(n).shapes=shapes;
+function part(name,loc,parent,pivot,shapes){s.parts.push({name,loc,parent,pivot,shapes})}
+if(s.id==="wolfhound"){
+set("ct",[Y([[27,-3.5,3.5,-3,3,.12],[30,-4.5,4.5,-4,4,.2],[34,-7,7,-5,5,.25],[37,-7.5,7.5,-4,5,.2],[39,-4,4,-3,4,.16]],"armor")]);
+set("hd",[Z([[-10,-2.4,2.4,37,41,.16],[-5,-3.2,3.2,37,43,.18],[2,-3,3,39,44,.16],[4,-2.5,2.5,39,43,.2]],"plate"),B([-2,38,-10],[2,40,-8],"glass","paint"),...[-1,1].map(k=>Y([[41,k*2.6-.8,k*2.6+.8,0,2,.1],[47,k*2.6-.6,k*2.6+.6,1,2,.1]],"plate"))]);
+for(let k of [-1,1]){let q=k<0?"l":"r",x=k*12,r=v===1?3:3.7;set(q+"a",[Y([[26,x-1.8,x+1.8,-2,2,.12],[30,x-2,x+2,-2,2,.12],[33,x-r,x+r,-r,r,.22],[38,x-r*.85,x+r*.85,-r*.85,r*.85,.25]],"plate")]);let lx=k*6;set(q+"l_shin",[Y([[4,k*7-1.8,k*7+1.8,-2,2,.12],[8,lx-2.5,lx+2.5,-2.5,2.5,.22],[12,lx-2.6,lx+2.6,-3,2.5,.2],[13,lx-2,lx+2,-2,2,.12]],"plate")]);let tx=k*2.7;part(q+"t_laser",q.toUpperCase()+"T","ct",[tx,30,-4],[B([tx-1.2,29,-6],[tx+1.2,32,-3],"frame"),cyl("z",-8,-4,tx,30.5,1.3,1.3),cyl("z",-8,-5,tx,30.5,.7,.7,"gun","subtract")]);s.muzzles[q.toUpperCase()+"T"]=[[tx,30.5,-8]];}
+}else if(s.id==="longbow"){
+set("ct",[Y([[25,-5,5,-3,4,.14],[28,-9,9,-6,6,.2],[33,-11,11,-7,7,.16],[39,-11,11,-6,7,.17],[41,-7,7,-4,5,.22]],"armor")]);
+set("hd",[Y([[40,-2,2,-2,2,.12],[43,-3,3,-3,3,.15],[47,-3,3,-3,3,.2]],"plate"),B([-2,43,-3],[2,46,-2],"glass","paint")]);P("hd").pivot=[0,40,0];
+for(let k of [-1,1]){let q=k<0?"l":"r",x=k*15,y=33,r=v===1?6.7:7.8,z=-12;set(q+"a",[X([[Math.min(k*10,k*15),29,37,-4,4,.15],[Math.max(k*10,k*15),29,37,-4,4,.15]],"frame")]);set(q+"a_forearm",[Y([[26,x-3,x+3,-3,3,.15],[33,x-3,x+3,-3,3,.15]],"frame")]);let pts=[];for(let [row,n] of [3,4,6,4,3].entries())for(let j=0;j<n;j++)pts.push([x+(j-(n-1)/2)*1.85,y+(row-2)*2.2,z]);set(q+"a_weapon",[loft("z",[[z,ellipse(x,y,r,r,20)],[z+5,ellipse(x,y,r+1,r+1,20)],[7,ellipse(x,y,r,r,20)]],"plate"),...pts.map(([x,y,z])=>cyl("z",z,z+4,x,y,.8,.8,"gun","subtract"))]);s.muzzles[q.toUpperCase()+"A"]=pts;let tx=k*8,ty=36,zz=-9,mp=Array.from({length:5},(_,i)=>[tx+(i%2-.5)*2,ty+Math.floor(i/2)*1.7,zz]);set(q+"t_rack",[Z([[zz,tx-3.4,tx+3.4,ty-2,ty+4.5,.15],[0,tx-3.4,tx+3.4,ty-2,ty+4.5,.15]],"plate"),...mp.map(([x,y,z])=>cyl("z",z,z+3,x,y,.75,.75,"gun","subtract"))]);s.muzzles[q.toUpperCase()+"T"]=mp;}
+}else if(s.id==="nightstar"){
+set("ct",[Z([[-16,-4,4,30,35,.23],[-9,-9,9,29,39,.2],[0,-12,12,29,43,.2],[8,-10,10,30,43,.2],[12,-7,7,32,40,.25]],"armor"),Y([[27,-5,5,-3,4,.1],[30,-7,7,-4,5,.12]],"frame")]);
+set("hd",[Z([[-18,-2.7,2.7,29,33,.2],[-14,-4,4,29,36,.17],[-9,-4.5,4.5,31,37,.2]],"plate"),B([-2,30,-18],[2,32,-16],"glass","paint")]);
+for(let k of [-1,1]){let q=k<0?"l":"r",x=k*17,y=29,z=-20,r=v===1?4.3:4.9;set(q+"a",[X([[Math.min(k*12,k*17),32,40,-3.5,3.5,.2],[Math.max(k*12,k*17),32,40,-3.5,3.5,.2]],"frame"),Y([[28,x-2.8,x+2.8,-3,3,.15],[35,x-4,x+4,-4,4,.22]],"plate")]);set(q+"a_forearm",[Y([[24,x-3,x+3,-3,3,.12],[28,x-2.8,x+2.8,-3,3,.12]],"frame")]);let pts=[[x,y,z],[x+k*2.7,y-3,z-3]];set(q+"a_weapon",[Z([[-9,x-r,x+r,23,33,.19],[3,x-4,x+4,23,33,.18]],"plate"),...pts.flatMap(([x,y,z],j)=>[cyl("z",z,-5,x,y,j?1.5:2.5,j?1.5:2.5),cyl("z",z,z+4,x,y,.85,.85,"gun","subtract")])]);s.muzzles[q.toUpperCase()+"A"]=pts;let lx=k*11;set(q+"l_shin",[Y([[8,lx-2.7,lx+2.7,-2.7,2.7,.15],[12,lx-4,lx+4,-4,4,.24],[16,k*10-3,k*10+3,2,8,.2]],"plate")]);set(q+"l_foot",[Y([[0,lx-5,lx+5,-7,4,.3],[2,lx-5,lx+5,-6,4,.22],[4,lx-3,lx+3,-3,2,.14]],"plate")]);}
+}else if(s.id==="crusader"){
+set("ct",[Y([[27,-4.5,4.5,-3,4,.1],[30,-6,6,-5,5,.2],[33,-9,9,-6,6,.18],[37,-9,9,-5,6,.18],[41,-5,5,-4,5,.16]],"armor")]);
+set("hd",[Z([[-7,-3.5,3.5,38,44,.22],[-3,-4,4,38,45,.18],[3,-3.5,3.5,39,44,.2]],"plate"),B([-2,40,-7],[2,42,-6],"glass","paint")]);
+for(let k of [-1,1]){let q=k<0?"l":"r",x=k*14,y=24,z=-12,r=v===1?4.6:5.2,pts=[];for(let row=0;row<4;row++)for(let j=0;j<(row===3?3:4);j++)pts.push([x+(j-1.5)*1.8,y+(row-1.5)*1.8,z]);set(q+"a_weapon",[loft("z",[[z,ellipse(x,y,r,r,20)],[z+5,ellipse(x,y,r+.4,r+.4,20)],[-2,ellipse(x,y,3.5,3.5,20)]],"plate"),...pts.map(([x,y,z])=>cyl("z",z,z+3,x,y,.7,.7,"gun","subtract"))]);s.muzzles[q.toUpperCase()+"A"]=pts;let fx=k*6;part(q+"t_fin",q.toUpperCase()+"T","ct",[fx,40,4],[Y([[39,fx-1.5,fx+1.5,2,6,.12],[47,fx-1.4,fx+1.4,3,6,.18],[50,fx-1,fx+1,4,6,.1]],"plate")]);}
+}
+return s;
+};rebuild
