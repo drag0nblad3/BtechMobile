@@ -1,0 +1,341 @@
+{
+  "totals": {
+    "models": 24,
+    "parts": 441,
+    "cells": 216612,
+    "faults": 0,
+    "open": 288,
+    "points": 290
+  },
+  "summary": [
+    {
+      "id": "timber_wolf",
+      "name": "Timber Wolf",
+      "parts": 21,
+      "cells": 12998,
+      "faults": 0,
+      "apertures": {
+        "points": 42,
+        "open": 42,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "executioner",
+      "name": "Executioner",
+      "parts": 17,
+      "cells": 9562,
+      "faults": 0,
+      "apertures": {
+        "points": 1,
+        "open": 1,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "nova",
+      "name": "Nova",
+      "parts": 19,
+      "cells": 8786,
+      "faults": 0,
+      "apertures": {
+        "points": 12,
+        "open": 12,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "grendel",
+      "name": "Grendel",
+      "parts": 19,
+      "cells": 6929,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "dire_wolf",
+      "name": "Dire Wolf",
+      "parts": 18,
+      "cells": 13945,
+      "faults": 0,
+      "apertures": {
+        "points": 9,
+        "open": 9,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 2
+    },
+    {
+      "id": "stormcrow",
+      "name": "Stormcrow",
+      "parts": 17,
+      "cells": 7561,
+      "faults": 0,
+      "apertures": {
+        "points": 3,
+        "open": 3,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 1
+    },
+    {
+      "id": "shadow_cat",
+      "name": "Shadow Cat",
+      "parts": 19,
+      "cells": 6729,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "mist_lynx",
+      "name": "Mist Lynx",
+      "parts": 17,
+      "cells": 4965,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "summoner",
+      "name": "Summoner",
+      "parts": 18,
+      "cells": 10377,
+      "faults": 0,
+      "apertures": {
+        "points": 17,
+        "open": 17,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "gargoyle",
+      "name": "Gargoyle",
+      "parts": 17,
+      "cells": 9586,
+      "faults": 0,
+      "apertures": {
+        "points": 4,
+        "open": 4,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 2
+    },
+    {
+      "id": "hellbringer",
+      "name": "Hellbringer",
+      "parts": 18,
+      "cells": 9435,
+      "faults": 0,
+      "apertures": {
+        "points": 8,
+        "open": 8,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "mad_dog",
+      "name": "Mad Dog",
+      "parts": 21,
+      "cells": 10804,
+      "faults": 0,
+      "apertures": {
+        "points": 44,
+        "open": 42,
+        "blocked": [
+          {
+            "loc": "LT",
+            "point": [
+              -2.76,
+              34,
+              -13
+            ]
+          },
+          {
+            "loc": "RT",
+            "point": [
+              2.76,
+              34,
+              -13
+            ]
+          }
+        ]
+      },
+      "acceptedBarrelTrials": 2
+    },
+    {
+      "id": "ice_ferret",
+      "name": "Ice Ferret",
+      "parts": 17,
+      "cells": 7073,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "viper",
+      "name": "Viper",
+      "parts": 17,
+      "cells": 5591,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "warhawk",
+      "name": "Warhawk",
+      "parts": 18,
+      "cells": 11944,
+      "faults": 0,
+      "apertures": {
+        "points": 14,
+        "open": 14,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 2
+    },
+    {
+      "id": "nova_cat",
+      "name": "Nova Cat",
+      "parts": 17,
+      "cells": 8669,
+      "faults": 0,
+      "apertures": {
+        "points": 5,
+        "open": 5,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 2
+    },
+    {
+      "id": "cougar",
+      "name": "Cougar",
+      "parts": 21,
+      "cells": 8115,
+      "faults": 0,
+      "apertures": {
+        "points": 22,
+        "open": 22,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "kit_fox",
+      "name": "Kit Fox",
+      "parts": 19,
+      "cells": 5473,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "fire_moth",
+      "name": "Fire Moth",
+      "parts": 17,
+      "cells": 5033,
+      "faults": 0,
+      "apertures": {
+        "points": 8,
+        "open": 8,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 1
+    },
+    {
+      "id": "crossbow",
+      "name": "Crossbow",
+      "parts": 19,
+      "cells": 10352,
+      "faults": 0,
+      "apertures": {
+        "points": 42,
+        "open": 42,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "ebon_jaguar",
+      "name": "Ebon Jaguar",
+      "parts": 19,
+      "cells": 9382,
+      "faults": 0,
+      "apertures": {
+        "points": 2,
+        "open": 2,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "huntsman",
+      "name": "Huntsman",
+      "parts": 18,
+      "cells": 7711,
+      "faults": 0,
+      "apertures": {
+        "points": 8,
+        "open": 8,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 0
+    },
+    {
+      "id": "kingfisher",
+      "name": "Kingfisher",
+      "parts": 17,
+      "cells": 10724,
+      "faults": 0,
+      "apertures": {
+        "points": 3,
+        "open": 3,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 1
+    },
+    {
+      "id": "turkina",
+      "name": "Turkina",
+      "parts": 21,
+      "cells": 14868,
+      "faults": 0,
+      "apertures": {
+        "points": 34,
+        "open": 34,
+        "blocked": []
+      },
+      "acceptedBarrelTrials": 2
+    }
+  ]
+}
