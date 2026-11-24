@@ -173,7 +173,7 @@ Campaign Operations' Chaos Campaign numbers (`ChaosRules`): `starting_wp`, `trac
 `skill_levels` (`{green|regular|veteran|elite: [gunnery, piloting]}`), and `support`, the optional
 Support Points numbers (`SupportShop`, `MechRepair`, `IntroTech`): `max_wp_per_month`, `equipment_rating`,
 `rating_modifier`, `lance_size`, repair/rearm/hire/heal/train costs, `hire_multiplier`,
-`idle_training_multiplier`, `clan_multiplier`, `intro_weapons`/`intro_melee` (the Introductory Rules
+`idle_training_multiplier`, `clan_multiplier`, `purchase_intro_per_ton`/`purchase_standard_per_ton`, `sell_share`, `market_size` (`MechMarket`), `intro_weapons`/`intro_melee` (the Introductory Rules
 Equipment Table as weapon ids) and `recruit_names`. Keys starting with `_` are notes
 saying which values are the book's and which are our picks.
 
