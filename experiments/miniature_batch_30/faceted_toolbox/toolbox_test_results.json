@@ -1,0 +1,26 @@
+[
+  {
+    "name": "square edges retain all 64 corner cells",
+    "pass": true
+  },
+  {
+    "name": "selective corner cut only removes named corner",
+    "pass": true
+  },
+  {
+    "name": "triangular prism has a pointed side",
+    "pass": true
+  },
+  {
+    "name": "wedge preserves distinct cross-section",
+    "pass": true
+  },
+  {
+    "name": "mirrored wedge has identical occupied volume",
+    "pass": true
+  },
+  {
+    "name": "invalid section vertex count rejected",
+    "pass": true
+  }
+]
