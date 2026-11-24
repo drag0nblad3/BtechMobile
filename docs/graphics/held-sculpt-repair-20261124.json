@@ -337,7 +337,7 @@
     },
     {
       "id": "pillager",
-      "status": "held",
+      "status": "shape-only divergent",
       "before": {
         "cells": 8136,
         "parts": 12,
@@ -369,24 +369,44 @@
         "parts": 12,
         "physical": 0,
         "physicalGroups": [],
-        "partIslands": 3,
+        "partIslands": 0,
         "weak": 0,
-        "faults": [
-          [
-            "ct",
-            "islands",
-            [
-              2468,
-              6,
-              1,
-              1
-            ]
-          ]
-        ],
+        "faults": [],
         "clear": 2,
         "total": 2
       },
       "log": [
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 6,
+          "moved": [
+            [
+              "9,29,3",
+              "8,29,6"
+            ],
+            [
+              "9,30,3",
+              "8,31,4"
+            ],
+            [
+              "9,29,4",
+              "8,30,6"
+            ],
+            [
+              "10,30,3",
+              "8,31,5"
+            ],
+            [
+              "9,30,4",
+              "7,31,5"
+            ],
+            [
+              "10,30,2",
+              "9,31,-3"
+            ]
+          ]
+        },
         {
           "part": "ct",
           "kind": "reseated tiny armor remnants on backed torso surface",
@@ -419,8 +439,8 @@
           "cells": 1,
           "moved": [
             [
-              "-10,30,3",
-              "-7,32,4"
+              "-11,30,2",
+              "-7,32,1"
             ]
           ]
         },
@@ -430,8 +450,8 @@
           "cells": 1,
           "moved": [
             [
-              "8,31,-3",
-              "8,31,-7"
+              "-10,30,3",
+              "-7,32,4"
             ]
           ]
         }
@@ -748,7 +768,7 @@
     },
     {
       "id": "shogun",
-      "status": "held",
+      "status": "shape-only divergent",
       "before": {
         "cells": 7844,
         "parts": 12,
@@ -779,22 +799,40 @@
         "parts": 12,
         "physical": 0,
         "physicalGroups": [],
-        "partIslands": 1,
+        "partIslands": 0,
         "weak": 0,
-        "faults": [
-          [
-            "ct",
-            "islands",
-            [
-              2493,
-              5
-            ]
-          ]
-        ],
+        "faults": [],
         "clear": 2,
         "total": 2
       },
       "log": [
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 5,
+          "moved": [
+            [
+              "10,31,-6",
+              "9,31,-8"
+            ],
+            [
+              "10,31,-5",
+              "9,30,-8"
+            ],
+            [
+              "10,31,-4",
+              "7,32,-7"
+            ],
+            [
+              "10,31,-3",
+              "8,32,-7"
+            ],
+            [
+              "10,31,-2",
+              "9,31,4"
+            ]
+          ]
+        },
         {
           "part": "ct",
           "kind": "reseated tiny armor remnants on backed torso surface",
@@ -812,19 +850,8 @@
           "cells": 1,
           "moved": [
             [
-              "9,31,3",
-              "8,31,5"
-            ]
-          ]
-        },
-        {
-          "part": "ct",
-          "kind": "reseated tiny armor remnants on backed torso surface",
-          "cells": 1,
-          "moved": [
-            [
               "10,31,2",
-              "7,32,4"
+              "9,30,4"
             ]
           ]
         },
