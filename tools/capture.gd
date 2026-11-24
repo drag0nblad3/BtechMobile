@@ -91,6 +91,7 @@ func _sample_company() -> void:
 		"Lt. Joss Marek fought, 1 kill.", "✓ Advance Attack (300 WP)", "✗ Frugal is the Word (300 WP)",
 		"Warchest: +300 WP, now 550 WP."])
 	c.wp = 550
+	c.sp = 120
 	CampaignStore.save(c)
 	BattleLaunch.open_campaign = true
 

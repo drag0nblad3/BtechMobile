@@ -170,7 +170,11 @@ The company's starting set-up (`CampaignRules`): `company_name`, `starting_lance
 Campaign Operations' Chaos Campaign numbers (`ChaosRules`): `starting_wp`, `track_cost_share`,
 `enemy_bv_percent`, `objectives` (`{id, title, wp, check, share?, enemy?, own?, own_at_most?, text}`;
 `check` is one of `ChaosObjective`'s checks), `options` (`{id, title, wp, range, text}`),
-`skill_levels` (`{green|regular|veteran|elite: [gunnery, piloting]}`). Keys starting with `_` are notes
+`skill_levels` (`{green|regular|veteran|elite: [gunnery, piloting]}`), and `support`, the optional
+Support Points numbers (`SupportShop`, `MechRepair`, `IntroTech`): `max_wp_per_month`, `equipment_rating`,
+`rating_modifier`, `lance_size`, repair/rearm/hire/heal/train costs, `hire_multiplier`,
+`idle_training_multiplier`, `clan_multiplier`, `intro_weapons`/`intro_melee` (the Introductory Rules
+Equipment Table as weapon ids) and `recruit_names`. Keys starting with `_` are notes
 saying which values are the book's and which are our picks.
 
 ## `data/training/campaign.json`

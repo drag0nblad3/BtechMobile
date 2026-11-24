@@ -46,7 +46,22 @@ func _run() -> void:
 		return
 	if not _check(c.contract == null and c.last_met >= 1, "contract not settled"):
 		return
-	print("CAMPAIGN SMOKE OK: ", " | ".join(c.last_report))
+	var back := CampaignScreen.new()
+	root.add_child(back)
+	await _frames(1)
+	(back.find_child("ConvertWp", true, false) as Button).pressed.emit()
+	await _frames(1)
+	var fix: Button = null
+	for n in back.find_children("Repair_*", "Button", true, false):
+		fix = n
+	if not _check(fix != null, "no repair button for the damaged 'Mech"):
+		return
+	fix.pressed.emit()
+	await _frames(1)
+	c = CampaignStore.load_company()
+	if not _check(c.sp > 0 and c.sp < 100 and c.converted == 100 and c.mechs[0].condition.is_empty(), "Support Points repair failed: %d SP" % c.sp):
+		return
+	print("CAMPAIGN SMOKE OK: ", " | ".join(c.last_report), " | SP left after repair: ", c.sp)
 	CampaignStore.delete()
 	quit(0)
 
