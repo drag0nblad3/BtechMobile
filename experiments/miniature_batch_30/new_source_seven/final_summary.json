@@ -1,0 +1,149 @@
+{
+  "totals": {
+    "models": 7,
+    "parts": 140,
+    "cells": 54875,
+    "faults": 0,
+    "clear": 118,
+    "samples": 118,
+    "scored": 4,
+    "changed": 2155
+  },
+  "models": [
+    {
+      "id": "solitaire",
+      "parts": 20,
+      "cells": 5441,
+      "faults": [],
+      "clear": 3,
+      "total": 3,
+      "photo": null
+    },
+    {
+      "id": "vulture_mk_iv",
+      "parts": 21,
+      "cells": 9991,
+      "faults": [],
+      "clear": 26,
+      "total": 26,
+      "photo": null
+    },
+    {
+      "id": "hellhound_conjurer",
+      "parts": 21,
+      "cells": 7382,
+      "faults": [],
+      "clear": 7,
+      "total": 7,
+      "photo": {
+        "before": 0.4686166666666666,
+        "after": 0.4939,
+        "views": [
+          {
+            "name": "plastic photo",
+            "cameraRms": 10.514573983088523,
+            "poseRms": {
+              "ra": 6.3490250909751875,
+              "la": 7.495193245390386,
+              "rl": 21.83660395822832,
+              "ll": 15.123745746120596
+            },
+            "before": 0.4686166666666666,
+            "after": 0.4939
+          }
+        ],
+        "changed": 585
+      }
+    },
+    {
+      "id": "koshi_standard",
+      "parts": 19,
+      "cells": 6459,
+      "faults": [],
+      "clear": 16,
+      "total": 16,
+      "photo": {
+        "before": 0.48758571428571434,
+        "after": 0.5012571428571428,
+        "views": [
+          {
+            "name": "TRO line illustration",
+            "cameraRms": 4.768449952695653,
+            "poseRms": {
+              "ra": 26.17731166842306,
+              "la": 17.70512655385077,
+              "rl": 22.08002679724846,
+              "ll": 16.03260560619855
+            },
+            "before": 0.48758571428571434,
+            "after": 0.5012571428571428
+          }
+        ],
+        "changed": 322
+      }
+    },
+    {
+      "id": "hawkwolf_hwk4f",
+      "parts": 19,
+      "cells": 8435,
+      "faults": [],
+      "clear": 40,
+      "total": 40,
+      "photo": {
+        "before": 0.2837166666666667,
+        "after": 0.30545,
+        "views": [
+          {
+            "name": "TRO line illustration",
+            "cameraRms": 7.142342793726006,
+            "poseRms": {
+              "ra": 7.297852548025392,
+              "la": 5.9528380312348315,
+              "rl": 17.83053212354341,
+              "ll": 16.90326936188209
+            },
+            "before": 0.2837166666666667,
+            "after": 0.30545
+          }
+        ],
+        "changed": 604
+      }
+    },
+    {
+      "id": "black_hawk_standard",
+      "parts": 21,
+      "cells": 7369,
+      "faults": [],
+      "clear": 18,
+      "total": 18,
+      "photo": null
+    },
+    {
+      "id": "dominator",
+      "parts": 19,
+      "cells": 9798,
+      "faults": [],
+      "clear": 8,
+      "total": 8,
+      "photo": {
+        "before": 0.4882833333333334,
+        "after": 0.5105333333333334,
+        "views": [
+          {
+            "name": "metal miniature photo",
+            "cameraRms": 17.537144883119897,
+            "poseRms": {
+              "ra": 13.184543601440216,
+              "la": 13.135734876262894,
+              "rl": 20.5186453774117,
+              "ll": 35.96295463694116
+            },
+            "before": 0.4882833333333334,
+            "after": 0.5105333333333334
+          }
+        ],
+        "changed": 644
+      }
+    }
+  ]
+}
