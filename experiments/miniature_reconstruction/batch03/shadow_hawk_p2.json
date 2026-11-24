@@ -847,21 +847,6 @@
               2
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -1,
-              35,
-              1
-            ],
-            [
-              1,
-              37,
-              5
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -932,35 +917,35 @@
                 "at": 37,
                 "polygon": [
                   [
-                    -1.88,
+                    -2.068,
                     -3.68
                   ],
                   [
-                    -0.94,
+                    -1.034,
                     -5.52
                   ],
                   [
-                    0.94,
+                    1.034,
                     -5.52
                   ],
                   [
-                    2.82,
+                    3.102,
                     -3.68
                   ],
                   [
-                    2.82,
+                    3.102,
                     -0.92
                   ],
                   [
-                    1.88,
+                    2.068,
                     0
                   ],
                   [
-                    -1.88,
+                    -2.068,
                     0
                   ],
                   [
-                    -2.82,
+                    -3.102,
                     -0.92
                   ]
                 ]
@@ -969,35 +954,35 @@
                 "at": 41,
                 "polygon": [
                   [
-                    -1.88,
+                    -2.068,
                     -5.52
                   ],
                   [
-                    -0.94,
+                    -1.034,
                     -8.28
                   ],
                   [
-                    0.94,
+                    1.034,
                     -8.28
                   ],
                   [
-                    2.82,
+                    3.102,
                     -5.52
                   ],
                   [
-                    2.82,
+                    3.102,
                     -1.84
                   ],
                   [
-                    1.88,
+                    2.068,
                     0
                   ],
                   [
-                    -1.88,
+                    -2.068,
                     0
                   ],
                   [
-                    -2.82,
+                    -3.102,
                     -1.84
                   ]
                 ]
@@ -1006,35 +991,35 @@
                 "at": 44,
                 "polygon": [
                   [
-                    -0.94,
+                    -1.034,
                     -4.6
                   ],
                   [
-                    -0.94,
+                    -1.034,
                     -6.44
                   ],
                   [
-                    0.94,
+                    1.034,
                     -6.44
                   ],
                   [
-                    1.88,
+                    2.068,
                     -4.6
                   ],
                   [
-                    1.88,
+                    2.068,
                     -1.84
                   ],
                   [
-                    1.88,
+                    2.068,
                     0
                   ],
                   [
-                    -0.94,
+                    -1.034,
                     0
                   ],
                   [
-                    -1.88,
+                    -2.068,
                     -1.84
                   ]
                 ]
@@ -1206,21 +1191,6 @@
               -5
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -3,
-              37,
-              -3
-            ],
-            [
-              -3,
-              39,
-              -1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -1629,21 +1599,6 @@
               -3
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -10,
-              31,
-              1
-            ],
-            [
-              -8,
-              32,
-              4
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -1883,21 +1838,6 @@
             ],
             [
               -9,
-              39,
-              6
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -12,
-              37,
-              5
-            ],
-            [
-              -10,
               39,
               6
             ]
@@ -2402,21 +2342,6 @@
             ]
           ],
           "mat": "recess"
-        },
-        {
-          "box": [
-            [
-              -11,
-              39,
-              -3
-            ],
-            [
-              -11,
-              41,
-              -1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -2810,21 +2735,6 @@
               -3
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              9,
-              40,
-              -1
-            ],
-            [
-              11,
-              41,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -3427,51 +3337,6 @@
             ]
           },
           "mat": "plate"
-        },
-        {
-          "box": [
-            [
-              -18,
-              25,
-              -1
-            ],
-            [
-              -15,
-              27,
-              1
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -12,
-              30,
-              -2
-            ],
-            [
-              -12,
-              32,
-              0
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -13,
-              30,
-              -2
-            ],
-            [
-              -11,
-              32,
-              0
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": []
@@ -3734,21 +3599,6 @@
               -10,
               21,
               3
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -6,
-              24,
-              -1
-            ],
-            [
-              -3,
-              26,
-              1
             ]
           ],
           "mat": "frame"
@@ -4161,36 +4011,6 @@
               -1
             ]
           ]
-        },
-        {
-          "box": [
-            [
-              -7,
-              11,
-              1
-            ],
-            [
-              -5,
-              12,
-              4
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -8,
-              13,
-              -1
-            ],
-            [
-              -6,
-              15,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -4399,21 +4219,6 @@
             ]
           ],
           "mat": "joint"
-        },
-        {
-          "box": [
-            [
-              -8,
-              3,
-              -1
-            ],
-            [
-              -6,
-              4,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -4590,7 +4395,7 @@
     "source_commit": "2779714f",
     "reason": "Restore genuine historical 100-pass review records; preserve subsequent proportion edits."
   },
-  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only.",
   "pass1": {
     "changes": [
       "Reduce central body depth and retain chest facets",
@@ -4908,26 +4713,291 @@
       ]
     }
   },
-  "pass2": {
-    "repairs": [
-      "ct: supported 20-cell local mass (gap 4)",
-      "lt: supported 31-cell local mass (gap 2)",
-      "la: supported 16-cell local mass (gap 3)",
-      "ll_shin: supported 17-cell local mass (gap 2)",
-      "hd → ct: local structural sleeve (gap 0)",
-      "lt_jet_vane → lt: local structural sleeve (gap 1)",
-      "lt_cannon → lt: local structural sleeve (gap 0)",
-      "rt_missiles → rt: local structural sleeve (gap 1)",
-      "la → lt: local structural sleeve (gap 0)",
-      "ll → ct: local structural sleeve (gap 3)",
-      "ll_shin → ll: local structural sleeve (gap 2)",
-      "ll_foot → ll_shin: local structural sleeve (gap 1)"
+  "experimental_photo_fit": {
+    "method": "Approximate manually traced visible part bounds; per-view orthographic camera and articulated pose; geometry changes gated by neutral voxel connectivity penalty. Not pixel-mask IoU; not a multi-angle validated plastic match.",
+    "references": [
+      {
+        "url": "https://unitcolorcompendium.com/wp-content/gallery/lyran-commonwealth/lyran_commonwealth_26th_arcturian_guards_carlyle_shadow_hawk_by_1N51.jpg",
+        "quality": "painted modern-style Shadow Hawk; feet cropped",
+        "baseline_rmse": 27.55755016587121,
+        "refined_rmse": 26.007918434796682,
+        "parameters": {
+          "yaw": 47,
+          "pitch": 8,
+          "roll": 4,
+          "la": 8,
+          "ra": -6,
+          "ll": -7,
+          "rl": 22,
+          "ll_shin": 0,
+          "rl_shin": 0,
+          "laSpread": -40,
+          "raSpread": 40,
+          "llSpread": -17,
+          "rlSpread": -2
+        },
+        "swap_bilateral": false,
+        "scale": 8.466822997705686,
+        "dx": 230.1923826012765,
+        "dy": 533.171273193728,
+        "regions": [
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              211,
+              160,
+              283,
+              239
+            ],
+            "projected": [
+              240.49236680968542,
+              165.93198618288744,
+              315.0822710324803,
+              231.56191419153646
+            ]
+          },
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              180,
+              220,
+              329,
+              328
+            ],
+            "projected": [
+              191.54008344228433,
+              196.92073411341772,
+              308.9329016468482,
+              327.90920240503067
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "lt",
+            "target": [
+              109,
+              195,
+              183,
+              282
+            ],
+            "projected": [
+              139.74127005216292,
+              199.79916522995404,
+              234.08708989457634,
+              291.2978260492591
+            ]
+          },
+          {
+            "part": "rt",
+            "model": "rt",
+            "target": [
+              304,
+              200,
+              366,
+              262
+            ],
+            "projected": [
+              260.24828242930386,
+              192.0319445732248,
+              339.75652406330653,
+              283.98750072527855
+            ]
+          },
+          {
+            "part": "lt_cannon",
+            "model": "lt_cannon",
+            "target": [
+              272,
+              146,
+              365,
+              250
+            ],
+            "projected": [
+              171.4999904778516,
+              168.49058108671852,
+              349.8809232458018,
+              232.0105231832694
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              107,
+              278,
+              184,
+              380
+            ],
+            "projected": [
+              96.47604913498768,
+              277.71024922439994,
+              203.64526280716132,
+              409.9593472432274
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              326,
+              256,
+              389,
+              365
+            ],
+            "projected": [
+              300.28204487903344,
+              261.5940133261287,
+              398.7803782641746,
+              390.59065064636707
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              130,
+              330,
+              222,
+              433
+            ],
+            "projected": [
+              150.4394456968983,
+              315.6800159053454,
+              226.98480418448756,
+              415.8043583802457
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              258,
+              331,
+              344,
+              425
+            ],
+            "projected": [
+              259.7323539864544,
+              318.7872229570719,
+              336.9325478283544,
+              407.8627483777275
+            ]
+          }
+        ]
+      }
     ],
-    "audit": {
-      "voxels": 4914,
-      "islands": [],
-      "parts": [],
-      "weak": []
+    "changes": [
+      {
+        "part": "hd",
+        "axis": "x",
+        "factor": 1.1
+      }
+    ],
+    "validation": {
+      "cells": 4668,
+      "whole_components": [
+        4440,
+        71,
+        71,
+        20,
+        17,
+        17,
+        16,
+        16
+      ],
+      "issues": [
+        {
+          "part": "ct",
+          "islands": 20
+        },
+        {
+          "part": "lt",
+          "islands": 31
+        },
+        {
+          "part": "rt",
+          "islands": 31
+        },
+        {
+          "part": "lt_jet_vane",
+          "parent": "lt",
+          "overlap": 0
+        },
+        {
+          "part": "rt_jet_vane",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "lt_cannon",
+          "parent": "lt",
+          "overlap": 3
+        },
+        {
+          "part": "rt_missiles",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "la",
+          "islands": 16
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 1
+        },
+        {
+          "part": "ra",
+          "islands": 16
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 1
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "islands": 17
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "islands": 17
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ],
+      "penalty": 419
     }
   }
 }
