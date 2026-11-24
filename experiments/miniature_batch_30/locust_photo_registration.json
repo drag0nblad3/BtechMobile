@@ -1,0 +1,2576 @@
+{
+  "status": "Approximate visible-mask diagnostic; no exact calibrated photograph fit claimed.",
+  "sculpt": "CGL A Game of Armored Combat CAT3500D base 6",
+  "sources": [
+    "https://jadedfalconer.com/Pictures/CGLminis/locust6.jpg",
+    "https://jadedfalconer.com/Pictures/1Light/20locust/Locust6.jpg"
+  ],
+  "anchors": {
+    "dorsal": [
+      0,
+      33,
+      0
+    ],
+    "nose": [
+      0,
+      27,
+      -12.5
+    ],
+    "l_pod": [
+      -10,
+      30,
+      0
+    ],
+    "r_pod": [
+      10,
+      30,
+      0
+    ],
+    "waist": [
+      0,
+      23,
+      1
+    ],
+    "antenna": [
+      0,
+      43,
+      2.4
+    ],
+    "rear": [
+      0,
+      29,
+      6
+    ]
+  },
+  "photos": [
+    {
+      "name": "catalog_quarter",
+      "url": "https://jadedfalconer.com/Pictures/CGLminis/locust6.jpg",
+      "size": [
+        500,
+        500
+      ],
+      "yaw": [
+        25,
+        65
+      ],
+      "rigid": {
+        "dorsal": [
+          251,
+          174
+        ],
+        "nose": [
+          207,
+          229
+        ],
+        "l_pod": [
+          216,
+          177
+        ],
+        "r_pod": [
+          291,
+          195
+        ],
+        "waist": [
+          257,
+          243
+        ],
+        "antenna": [
+          269,
+          120
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -6.5,
+                13,
+                6
+              ],
+              "pixel": [
+                234,
+                263
+              ]
+            },
+            {
+              "point": [
+                -6.5,
+                4,
+                1.5
+              ],
+              "pixel": [
+                197,
+                328
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -6.5,
+                1,
+                -3
+              ],
+              "pixel": [
+                177,
+                347
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                6.5,
+                13,
+                6
+              ],
+              "pixel": [
+                315,
+                259
+              ]
+            },
+            {
+              "point": [
+                6.5,
+                4,
+                1.5
+              ],
+              "pixel": [
+                305,
+                331
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                6.5,
+                1,
+                -3
+              ],
+              "pixel": [
+                307,
+                355
+              ],
+              "bend": true
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "cockpit",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              199,
+              219
+            ],
+            [
+              209,
+              207
+            ],
+            [
+              228,
+              195
+            ],
+            [
+              249,
+              198
+            ],
+            [
+              255,
+              208
+            ],
+            [
+              243,
+              222
+            ],
+            [
+              228,
+              236
+            ],
+            [
+              209,
+              237
+            ],
+            [
+              200,
+              230
+            ]
+          ]
+        },
+        {
+          "name": "main_body",
+          "parts": [
+            "ct",
+            "pelvis"
+          ],
+          "polygon": [
+            [
+              237,
+              174
+            ],
+            [
+              252,
+              168
+            ],
+            [
+              278,
+              173
+            ],
+            [
+              284,
+              196
+            ],
+            [
+              264,
+              216
+            ],
+            [
+              253,
+              233
+            ],
+            [
+              244,
+              243
+            ],
+            [
+              233,
+              243
+            ],
+            [
+              224,
+              235
+            ],
+            [
+              250,
+              218
+            ],
+            [
+              254,
+              202
+            ]
+          ]
+        },
+        {
+          "name": "right_hip",
+          "parts": [
+            "rhip"
+          ],
+          "polygon": [
+            [
+              261,
+              222
+            ],
+            [
+              275,
+              218
+            ],
+            [
+              290,
+              226
+            ],
+            [
+              295,
+              240
+            ],
+            [
+              289,
+              258
+            ],
+            [
+              277,
+              268
+            ],
+            [
+              263,
+              260
+            ],
+            [
+              255,
+              248
+            ],
+            [
+              255,
+              234
+            ]
+          ]
+        },
+        {
+          "name": "right_leg",
+          "parts": [
+            "rl",
+            "rl_shin",
+            "rl_foot"
+          ],
+          "polygon": [
+            [
+              283,
+              248
+            ],
+            [
+              305,
+              240
+            ],
+            [
+              319,
+              226
+            ],
+            [
+              328,
+              226
+            ],
+            [
+              329,
+              250
+            ],
+            [
+              323,
+              267
+            ],
+            [
+              313,
+              292
+            ],
+            [
+              315,
+              321
+            ],
+            [
+              323,
+              333
+            ],
+            [
+              342,
+              335
+            ],
+            [
+              343,
+              341
+            ],
+            [
+              323,
+              345
+            ],
+            [
+              318,
+              358
+            ],
+            [
+              300,
+              368
+            ],
+            [
+              291,
+              358
+            ],
+            [
+              275,
+              357
+            ],
+            [
+              274,
+              351
+            ],
+            [
+              295,
+              340
+            ],
+            [
+              295,
+              320
+            ],
+            [
+              300,
+              300
+            ],
+            [
+              300,
+              278
+            ],
+            [
+              305,
+              262
+            ],
+            [
+              290,
+              273
+            ]
+          ]
+        },
+        {
+          "name": "antenna",
+          "parts": [
+            "antenna",
+            "antenna_base"
+          ],
+          "polygon": [
+            [
+              245,
+              173
+            ],
+            [
+              252,
+              157
+            ],
+            [
+              266,
+              120
+            ],
+            [
+              271,
+              120
+            ],
+            [
+              264,
+              145
+            ],
+            [
+              256,
+              170
+            ],
+            [
+              258,
+              175
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "painted_front_left",
+      "url": "https://jadedfalconer.com/Pictures/1Light/20locust/Locust6.jpg",
+      "size": [
+        1000,
+        1000
+      ],
+      "yaw": [
+        25,
+        75
+      ],
+      "rigid": {
+        "dorsal": [
+          257,
+          191
+        ],
+        "nose": [
+          217,
+          228
+        ],
+        "l_pod": [
+          224,
+          199
+        ],
+        "r_pod": [
+          279,
+          205
+        ],
+        "waist": [
+          259,
+          245
+        ],
+        "antenna": [
+          271,
+          149
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -6.5,
+                13,
+                6
+              ],
+              "pixel": [
+                246,
+                281
+              ]
+            },
+            {
+              "point": [
+                -6.5,
+                4,
+                1.5
+              ],
+              "pixel": [
+                216,
+                325
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -6.5,
+                1,
+                -3
+              ],
+              "pixel": [
+                205,
+                337
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                6.5,
+                13,
+                6
+              ],
+              "pixel": [
+                314,
+                260
+              ]
+            },
+            {
+              "point": [
+                6.5,
+                4,
+                1.5
+              ],
+              "pixel": [
+                306,
+                321
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                6.5,
+                1,
+                -3
+              ],
+              "pixel": [
+                311,
+                339
+              ],
+              "bend": true
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "cockpit",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              214,
+              224
+            ],
+            [
+              231,
+              211
+            ],
+            [
+              249,
+              212
+            ],
+            [
+              258,
+              221
+            ],
+            [
+              248,
+              234
+            ],
+            [
+              230,
+              241
+            ],
+            [
+              217,
+              238
+            ]
+          ]
+        },
+        {
+          "name": "right_hip",
+          "parts": [
+            "rhip"
+          ],
+          "polygon": [
+            [
+              254,
+              230
+            ],
+            [
+              268,
+              226
+            ],
+            [
+              279,
+              235
+            ],
+            [
+              281,
+              247
+            ],
+            [
+              274,
+              260
+            ],
+            [
+              262,
+              263
+            ],
+            [
+              253,
+              255
+            ],
+            [
+              249,
+              242
+            ]
+          ]
+        },
+        {
+          "name": "left_leg",
+          "parts": [
+            "ll",
+            "ll_shin",
+            "ll_foot"
+          ],
+          "polygon": [
+            [
+              241,
+              260
+            ],
+            [
+              258,
+              264
+            ],
+            [
+              252,
+              280
+            ],
+            [
+              246,
+              291
+            ],
+            [
+              233,
+              309
+            ],
+            [
+              223,
+              325
+            ],
+            [
+              215,
+              334
+            ],
+            [
+              207,
+              337
+            ],
+            [
+              199,
+              331
+            ],
+            [
+              209,
+              320
+            ],
+            [
+              222,
+              307
+            ],
+            [
+              235,
+              286
+            ]
+          ]
+        },
+        {
+          "name": "right_leg",
+          "parts": [
+            "rl",
+            "rl_shin",
+            "rl_foot"
+          ],
+          "polygon": [
+            [
+              280,
+              256
+            ],
+            [
+              309,
+              243
+            ],
+            [
+              321,
+              242
+            ],
+            [
+              326,
+              258
+            ],
+            [
+              322,
+              276
+            ],
+            [
+              313,
+              297
+            ],
+            [
+              313,
+              317
+            ],
+            [
+              318,
+              329
+            ],
+            [
+              337,
+              335
+            ],
+            [
+              333,
+              340
+            ],
+            [
+              315,
+              340
+            ],
+            [
+              302,
+              346
+            ],
+            [
+              293,
+              341
+            ],
+            [
+              296,
+              325
+            ],
+            [
+              298,
+              302
+            ],
+            [
+              304,
+              278
+            ],
+            [
+              305,
+              265
+            ],
+            [
+              286,
+              273
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "painted_front_right",
+      "url": "https://jadedfalconer.com/Pictures/1Light/20locust/Locust6.jpg",
+      "size": [
+        1000,
+        1000
+      ],
+      "yaw": [
+        -75,
+        -20
+      ],
+      "rigid": {
+        "dorsal": [
+          756,
+          192
+        ],
+        "nose": [
+          808,
+          227
+        ],
+        "l_pod": [
+          745,
+          204
+        ],
+        "r_pod": [
+          791,
+          202
+        ],
+        "waist": [
+          760,
+          242
+        ],
+        "antenna": [
+          746,
+          149
+        ]
+      },
+      "chains": [
+        {
+          "root": "ll",
+          "child": "ll_shin",
+          "marks": [
+            {
+              "point": [
+                -6.5,
+                13,
+                6
+              ],
+              "pixel": [
+                734,
+                270
+              ]
+            },
+            {
+              "point": [
+                -6.5,
+                4,
+                1.5
+              ],
+              "pixel": [
+                728,
+                328
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                -6.5,
+                1,
+                -3
+              ],
+              "pixel": [
+                721,
+                343
+              ],
+              "bend": true
+            }
+          ]
+        },
+        {
+          "root": "rl",
+          "child": "rl_shin",
+          "marks": [
+            {
+              "point": [
+                6.5,
+                13,
+                6
+              ],
+              "pixel": [
+                762,
+                272
+              ]
+            },
+            {
+              "point": [
+                6.5,
+                4,
+                1.5
+              ],
+              "pixel": [
+                777,
+                319
+              ],
+              "bend": true
+            },
+            {
+              "point": [
+                6.5,
+                1,
+                -3
+              ],
+              "pixel": [
+                790,
+                337
+              ],
+              "bend": true
+            }
+          ]
+        }
+      ],
+      "regions": [
+        {
+          "name": "cockpit",
+          "parts": [
+            "hd"
+          ],
+          "polygon": [
+            [
+              769,
+              213
+            ],
+            [
+              788,
+              210
+            ],
+            [
+              806,
+              220
+            ],
+            [
+              815,
+              229
+            ],
+            [
+              810,
+              237
+            ],
+            [
+              795,
+              244
+            ],
+            [
+              778,
+              240
+            ],
+            [
+              769,
+              229
+            ]
+          ]
+        },
+        {
+          "name": "left_leg",
+          "parts": [
+            "ll",
+            "ll_shin",
+            "ll_foot"
+          ],
+          "polygon": [
+            [
+              723,
+              223
+            ],
+            [
+              739,
+              217
+            ],
+            [
+              747,
+              235
+            ],
+            [
+              744,
+              254
+            ],
+            [
+              738,
+              272
+            ],
+            [
+              735,
+              291
+            ],
+            [
+              739,
+              315
+            ],
+            [
+              739,
+              334
+            ],
+            [
+              731,
+              346
+            ],
+            [
+              719,
+              349
+            ],
+            [
+              712,
+              343
+            ],
+            [
+              722,
+              334
+            ],
+            [
+              720,
+              316
+            ],
+            [
+              719,
+              291
+            ],
+            [
+              723,
+              271
+            ],
+            [
+              720,
+              250
+            ]
+          ]
+        },
+        {
+          "name": "antenna",
+          "parts": [
+            "antenna",
+            "antenna_base"
+          ],
+          "polygon": [
+            [
+              753,
+              192
+            ],
+            [
+              749,
+              178
+            ],
+            [
+              743,
+              155
+            ],
+            [
+              744,
+              148
+            ],
+            [
+              749,
+              150
+            ],
+            [
+              756,
+              176
+            ],
+            [
+              765,
+              192
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "painted_rear_side",
+      "url": "https://jadedfalconer.com/Pictures/1Light/20locust/Locust6.jpg",
+      "size": [
+        1000,
+        1000
+      ],
+      "yaw": [
+        90,
+        155
+      ],
+      "rigid": {
+        "dorsal": [
+          248,
+          686
+        ],
+        "rear": [
+          284,
+          702
+        ],
+        "l_pod": [
+          220,
+          698
+        ],
+        "r_pod": [
+          271,
+          696
+        ],
+        "waist": [
+          238,
+          735
+        ],
+        "antenna": [
+          239,
+          646
+        ]
+      },
+      "chains": [],
+      "regions": [
+        {
+          "name": "rear_body",
+          "parts": [
+            "ct",
+            "pelvis",
+            "lt",
+            "rt"
+          ],
+          "polygon": [
+            [
+              209,
+              687
+            ],
+            [
+              229,
+              682
+            ],
+            [
+              253,
+              681
+            ],
+            [
+              282,
+              686
+            ],
+            [
+              300,
+              699
+            ],
+            [
+              291,
+              711
+            ],
+            [
+              276,
+              716
+            ],
+            [
+              273,
+              736
+            ],
+            [
+              254,
+              750
+            ],
+            [
+              235,
+              749
+            ],
+            [
+              217,
+              739
+            ],
+            [
+              208,
+              717
+            ]
+          ]
+        },
+        {
+          "name": "antenna",
+          "parts": [
+            "antenna",
+            "antenna_base"
+          ],
+          "polygon": [
+            [
+              244,
+              685
+            ],
+            [
+              239,
+              672
+            ],
+            [
+              236,
+              648
+            ],
+            [
+              240,
+              646
+            ],
+            [
+              245,
+              665
+            ],
+            [
+              251,
+              683
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "selected": "v1",
+  "trials": [
+    {
+      "variant": "hip_and_calves",
+      "qa": {
+        "faults": [],
+        "interfaces": {
+          "pelvis": {
+            "patches": 29,
+            "faces": {
+              "0,1,0": 47
+            }
+          },
+          "hd": {
+            "patches": 22,
+            "faces": {
+              "0,0,1": 35
+            }
+          },
+          "ct_laser": {
+            "patches": 6,
+            "faces": {
+              "0,0,1": 12
+            }
+          },
+          "antenna_base": {
+            "patches": 3,
+            "faces": {
+              "0,-1,0": 8
+            }
+          },
+          "antenna": {
+            "patches": 2,
+            "faces": {
+              "0,-1,0": 6
+            }
+          },
+          "lt": {
+            "patches": 19,
+            "faces": {
+              "1,0,0": 30
+            }
+          },
+          "la": {
+            "patches": 17,
+            "faces": {
+              "1,0,0": 28
+            }
+          },
+          "la_mg": {
+            "patches": 1,
+            "faces": {
+              "0,0,1": 6
+            }
+          },
+          "lhip": {
+            "patches": 4,
+            "faces": {
+              "1,0,0": 11
+            }
+          },
+          "ll": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "ll_shin": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "ll_foot": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 9
+            }
+          },
+          "rt": {
+            "patches": 19,
+            "faces": {
+              "-1,0,0": 30
+            }
+          },
+          "ra": {
+            "patches": 13,
+            "faces": {
+              "-1,0,0": 23
+            }
+          },
+          "ra_mg": {
+            "patches": 1,
+            "faces": {
+              "0,0,1": 6
+            }
+          },
+          "rhip": {
+            "patches": 4,
+            "faces": {
+              "-1,0,0": 11
+            }
+          },
+          "rl": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "rl_shin": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "rl_foot": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 9
+            }
+          }
+        },
+        "voxels": 2721,
+        "parts": 20,
+        "locations": [
+          "CT",
+          "HD",
+          "LA",
+          "LL",
+          "LT",
+          "RA",
+          "RL",
+          "RT"
+        ]
+      },
+      "result": [
+        {
+          "view": "catalog_quarter",
+          "camera": {
+            "yaw": 45,
+            "elev": 15,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 2297.9705285131836,
+            "tx": 258.73409414193026,
+            "ty": 231.74599382018408,
+            "rmse": 7.965532628504122
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                25,
+                0,
+                -20
+              ],
+              "ll_shin": [
+                -25,
+                0,
+                0
+              ],
+              "rl": [
+                -35,
+                0,
+                0
+              ],
+              "rl_shin": [
+                15,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 9.450579670485304,
+              "rl": 9.958711998316138
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.5935,
+              "reference_pixels": 391,
+              "model_pixels": 589
+            },
+            "main_body": {
+              "iou": 0.2998,
+              "reference_pixels": 479,
+              "model_pixels": 566
+            },
+            "right_hip": {
+              "iou": 0.3719,
+              "reference_pixels": 362,
+              "model_pixels": 361
+            },
+            "right_leg": {
+              "iou": 0.4842,
+              "reference_pixels": 936,
+              "model_pixels": 900
+            },
+            "antenna": {
+              "iou": 0.3411,
+              "reference_pixels": 103,
+              "model_pixels": 302
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.5935,
+              "reference_pixels": 391,
+              "model_pixels": 589
+            },
+            "main_body": {
+              "iou": 0.2998,
+              "reference_pixels": 479,
+              "model_pixels": 566
+            },
+            "right_hip": {
+              "iou": 0.3719,
+              "reference_pixels": 362,
+              "model_pixels": 361
+            },
+            "right_leg": {
+              "iou": 0.4842,
+              "reference_pixels": 936,
+              "model_pixels": 900
+            },
+            "antenna": {
+              "iou": 0.3411,
+              "reference_pixels": 103,
+              "model_pixels": 302
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_front_left",
+          "camera": {
+            "yaw": 50,
+            "elev": 5,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1802.8860013909011,
+            "tx": 259.85374745831865,
+            "ty": 238.25139993469227,
+            "rmse": 6.496854058918251
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                25,
+                0,
+                -15
+              ],
+              "ll_shin": [
+                -25,
+                0,
+                0
+              ],
+              "rl": [
+                -35,
+                0,
+                5
+              ],
+              "rl_shin": [
+                5,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 4.639395959377556,
+              "rl": 9.28307695031336
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.4208,
+              "reference_pixels": 229,
+              "model_pixels": 291
+            },
+            "right_hip": {
+              "iou": 0.2296,
+              "reference_pixels": 211,
+              "model_pixels": 196
+            },
+            "left_leg": {
+              "iou": 0.4928,
+              "reference_pixels": 283,
+              "model_pixels": 544
+            },
+            "right_leg": {
+              "iou": 0.5214,
+              "reference_pixels": 596,
+              "model_pixels": 539
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.4208,
+              "reference_pixels": 229,
+              "model_pixels": 291
+            },
+            "right_hip": {
+              "iou": 0.2275,
+              "reference_pixels": 211,
+              "model_pixels": 199
+            },
+            "left_leg": {
+              "iou": 0.4928,
+              "reference_pixels": 283,
+              "model_pixels": 544
+            },
+            "right_leg": {
+              "iou": 0.5214,
+              "reference_pixels": 596,
+              "model_pixels": 539
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_front_right",
+          "camera": {
+            "yaw": -55,
+            "elev": 5,
+            "roll": 3,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1797.2231419028308,
+            "tx": 760.2695072962316,
+            "ty": 238.47165542623793,
+            "rmse": 6.504206508044904
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                -5,
+                0,
+                10
+              ],
+              "ll_shin": [
+                -45,
+                0,
+                0
+              ],
+              "rl": [
+                -5,
+                0,
+                15
+              ],
+              "rl_shin": [
+                -15,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 10.586353455168767,
+              "rl": 3.3551873262570244
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.2524,
+              "reference_pixels": 268,
+              "model_pixels": 248
+            },
+            "left_leg": {
+              "iou": 0.4046,
+              "reference_pixels": 616,
+              "model_pixels": 533
+            },
+            "antenna": {
+              "iou": 0.4431,
+              "reference_pixels": 85,
+              "model_pixels": 156
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.2524,
+              "reference_pixels": 268,
+              "model_pixels": 248
+            },
+            "left_leg": {
+              "iou": 0.4046,
+              "reference_pixels": 616,
+              "model_pixels": 533
+            },
+            "antenna": {
+              "iou": 0.4431,
+              "reference_pixels": 85,
+              "model_pixels": 156
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_rear_side",
+          "camera": {
+            "yaw": 90,
+            "elev": 5,
+            "roll": 6,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1808.3534049686996,
+            "tx": 251.3787155922161,
+            "ty": 731.5040172352543,
+            "rmse": 17.572839258191387
+          },
+          "pose": {
+            "pose": {},
+            "residuals": {}
+          },
+          "original": {
+            "rear_body": {
+              "iou": 0.2659,
+              "reference_pixels": 1117,
+              "model_pixels": 297
+            },
+            "antenna": {
+              "iou": 0.2294,
+              "reference_pixels": 62,
+              "model_pixels": 147
+            }
+          },
+          "candidate": {
+            "rear_body": {
+              "iou": 0.2659,
+              "reference_pixels": 1117,
+              "model_pixels": 297
+            },
+            "antenna": {
+              "iou": 0.2294,
+              "reference_pixels": 62,
+              "model_pixels": 147
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        }
+      ],
+      "value": 0.3820285714285715,
+      "baseline": 0.3821785714285714
+    },
+    {
+      "variant": "longer_prow",
+      "qa": {
+        "faults": [],
+        "interfaces": {
+          "pelvis": {
+            "patches": 29,
+            "faces": {
+              "0,1,0": 47
+            }
+          },
+          "hd": {
+            "patches": 22,
+            "faces": {
+              "0,0,1": 35
+            }
+          },
+          "ct_laser": {
+            "patches": 6,
+            "faces": {
+              "0,0,1": 12
+            }
+          },
+          "antenna_base": {
+            "patches": 3,
+            "faces": {
+              "0,-1,0": 8
+            }
+          },
+          "antenna": {
+            "patches": 2,
+            "faces": {
+              "0,-1,0": 6
+            }
+          },
+          "lt": {
+            "patches": 19,
+            "faces": {
+              "1,0,0": 30
+            }
+          },
+          "la": {
+            "patches": 17,
+            "faces": {
+              "1,0,0": 28
+            }
+          },
+          "la_mg": {
+            "patches": 1,
+            "faces": {
+              "0,0,1": 6
+            }
+          },
+          "lhip": {
+            "patches": 4,
+            "faces": {
+              "1,0,0": 11
+            }
+          },
+          "ll": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "ll_shin": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "ll_foot": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 9
+            }
+          },
+          "rt": {
+            "patches": 19,
+            "faces": {
+              "-1,0,0": 30
+            }
+          },
+          "ra": {
+            "patches": 13,
+            "faces": {
+              "-1,0,0": 23
+            }
+          },
+          "ra_mg": {
+            "patches": 1,
+            "faces": {
+              "0,0,1": 6
+            }
+          },
+          "rhip": {
+            "patches": 4,
+            "faces": {
+              "-1,0,0": 11
+            }
+          },
+          "rl": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "rl_shin": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "rl_foot": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 9
+            }
+          }
+        },
+        "voxels": 2747,
+        "parts": 20,
+        "locations": [
+          "CT",
+          "HD",
+          "LA",
+          "LL",
+          "LT",
+          "RA",
+          "RL",
+          "RT"
+        ]
+      },
+      "result": [
+        {
+          "view": "catalog_quarter",
+          "camera": {
+            "yaw": 45,
+            "elev": 15,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 2297.9705285131836,
+            "tx": 258.73409414193026,
+            "ty": 231.74599382018408,
+            "rmse": 7.965532628504122
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                25,
+                0,
+                -20
+              ],
+              "ll_shin": [
+                -25,
+                0,
+                0
+              ],
+              "rl": [
+                -35,
+                0,
+                0
+              ],
+              "rl_shin": [
+                15,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 9.450579670485304,
+              "rl": 9.958711998316138
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.5935,
+              "reference_pixels": 391,
+              "model_pixels": 589
+            },
+            "main_body": {
+              "iou": 0.2998,
+              "reference_pixels": 479,
+              "model_pixels": 566
+            },
+            "right_hip": {
+              "iou": 0.3719,
+              "reference_pixels": 362,
+              "model_pixels": 361
+            },
+            "right_leg": {
+              "iou": 0.4842,
+              "reference_pixels": 936,
+              "model_pixels": 900
+            },
+            "antenna": {
+              "iou": 0.3411,
+              "reference_pixels": 103,
+              "model_pixels": 302
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.5827,
+              "reference_pixels": 391,
+              "model_pixels": 633
+            },
+            "main_body": {
+              "iou": 0.3022,
+              "reference_pixels": 479,
+              "model_pixels": 568
+            },
+            "right_hip": {
+              "iou": 0.3719,
+              "reference_pixels": 362,
+              "model_pixels": 361
+            },
+            "right_leg": {
+              "iou": 0.4842,
+              "reference_pixels": 936,
+              "model_pixels": 900
+            },
+            "antenna": {
+              "iou": 0.3411,
+              "reference_pixels": 103,
+              "model_pixels": 302
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_front_left",
+          "camera": {
+            "yaw": 50,
+            "elev": 5,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1802.8860013909011,
+            "tx": 259.85374745831865,
+            "ty": 238.25139993469227,
+            "rmse": 6.496854058918251
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                25,
+                0,
+                -15
+              ],
+              "ll_shin": [
+                -25,
+                0,
+                0
+              ],
+              "rl": [
+                -35,
+                0,
+                5
+              ],
+              "rl_shin": [
+                5,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 4.639395959377556,
+              "rl": 9.28307695031336
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.4208,
+              "reference_pixels": 229,
+              "model_pixels": 291
+            },
+            "right_hip": {
+              "iou": 0.2296,
+              "reference_pixels": 211,
+              "model_pixels": 196
+            },
+            "left_leg": {
+              "iou": 0.4928,
+              "reference_pixels": 283,
+              "model_pixels": 544
+            },
+            "right_leg": {
+              "iou": 0.5214,
+              "reference_pixels": 596,
+              "model_pixels": 539
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.399,
+              "reference_pixels": 229,
+              "model_pixels": 311
+            },
+            "right_hip": {
+              "iou": 0.2296,
+              "reference_pixels": 211,
+              "model_pixels": 196
+            },
+            "left_leg": {
+              "iou": 0.4928,
+              "reference_pixels": 283,
+              "model_pixels": 544
+            },
+            "right_leg": {
+              "iou": 0.5214,
+              "reference_pixels": 596,
+              "model_pixels": 539
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_front_right",
+          "camera": {
+            "yaw": -55,
+            "elev": 5,
+            "roll": 3,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1797.2231419028308,
+            "tx": 760.2695072962316,
+            "ty": 238.47165542623793,
+            "rmse": 6.504206508044904
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                -5,
+                0,
+                10
+              ],
+              "ll_shin": [
+                -45,
+                0,
+                0
+              ],
+              "rl": [
+                -5,
+                0,
+                15
+              ],
+              "rl_shin": [
+                -15,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 10.586353455168767,
+              "rl": 3.3551873262570244
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.2524,
+              "reference_pixels": 268,
+              "model_pixels": 248
+            },
+            "left_leg": {
+              "iou": 0.4046,
+              "reference_pixels": 616,
+              "model_pixels": 533
+            },
+            "antenna": {
+              "iou": 0.4431,
+              "reference_pixels": 85,
+              "model_pixels": 156
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.2385,
+              "reference_pixels": 268,
+              "model_pixels": 272
+            },
+            "left_leg": {
+              "iou": 0.4046,
+              "reference_pixels": 616,
+              "model_pixels": 533
+            },
+            "antenna": {
+              "iou": 0.4431,
+              "reference_pixels": 85,
+              "model_pixels": 156
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_rear_side",
+          "camera": {
+            "yaw": 90,
+            "elev": 5,
+            "roll": 6,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1808.3534049686996,
+            "tx": 251.3787155922161,
+            "ty": 731.5040172352543,
+            "rmse": 17.572839258191387
+          },
+          "pose": {
+            "pose": {},
+            "residuals": {}
+          },
+          "original": {
+            "rear_body": {
+              "iou": 0.2659,
+              "reference_pixels": 1117,
+              "model_pixels": 297
+            },
+            "antenna": {
+              "iou": 0.2294,
+              "reference_pixels": 62,
+              "model_pixels": 147
+            }
+          },
+          "candidate": {
+            "rear_body": {
+              "iou": 0.2659,
+              "reference_pixels": 1117,
+              "model_pixels": 297
+            },
+            "antenna": {
+              "iou": 0.2294,
+              "reference_pixels": 62,
+              "model_pixels": 147
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        }
+      ],
+      "value": 0.3790285714285715,
+      "baseline": 0.3821785714285714
+    },
+    {
+      "variant": "both",
+      "qa": {
+        "faults": [],
+        "interfaces": {
+          "pelvis": {
+            "patches": 29,
+            "faces": {
+              "0,1,0": 47
+            }
+          },
+          "hd": {
+            "patches": 22,
+            "faces": {
+              "0,0,1": 35
+            }
+          },
+          "ct_laser": {
+            "patches": 6,
+            "faces": {
+              "0,0,1": 12
+            }
+          },
+          "antenna_base": {
+            "patches": 3,
+            "faces": {
+              "0,-1,0": 8
+            }
+          },
+          "antenna": {
+            "patches": 2,
+            "faces": {
+              "0,-1,0": 6
+            }
+          },
+          "lt": {
+            "patches": 19,
+            "faces": {
+              "1,0,0": 30
+            }
+          },
+          "la": {
+            "patches": 17,
+            "faces": {
+              "1,0,0": 28
+            }
+          },
+          "la_mg": {
+            "patches": 1,
+            "faces": {
+              "0,0,1": 6
+            }
+          },
+          "lhip": {
+            "patches": 4,
+            "faces": {
+              "1,0,0": 11
+            }
+          },
+          "ll": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "ll_shin": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "ll_foot": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 9
+            }
+          },
+          "rt": {
+            "patches": 19,
+            "faces": {
+              "-1,0,0": 30
+            }
+          },
+          "ra": {
+            "patches": 13,
+            "faces": {
+              "-1,0,0": 23
+            }
+          },
+          "ra_mg": {
+            "patches": 1,
+            "faces": {
+              "0,0,1": 6
+            }
+          },
+          "rhip": {
+            "patches": 4,
+            "faces": {
+              "-1,0,0": 11
+            }
+          },
+          "rl": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "rl_shin": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 12
+            }
+          },
+          "rl_foot": {
+            "patches": 4,
+            "faces": {
+              "0,1,0": 9
+            }
+          }
+        },
+        "voxels": 2751,
+        "parts": 20,
+        "locations": [
+          "CT",
+          "HD",
+          "LA",
+          "LL",
+          "LT",
+          "RA",
+          "RL",
+          "RT"
+        ]
+      },
+      "result": [
+        {
+          "view": "catalog_quarter",
+          "camera": {
+            "yaw": 45,
+            "elev": 15,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 2297.9705285131836,
+            "tx": 258.73409414193026,
+            "ty": 231.74599382018408,
+            "rmse": 7.965532628504122
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                25,
+                0,
+                -20
+              ],
+              "ll_shin": [
+                -25,
+                0,
+                0
+              ],
+              "rl": [
+                -35,
+                0,
+                0
+              ],
+              "rl_shin": [
+                15,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 9.450579670485304,
+              "rl": 9.958711998316138
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.5935,
+              "reference_pixels": 391,
+              "model_pixels": 589
+            },
+            "main_body": {
+              "iou": 0.2998,
+              "reference_pixels": 479,
+              "model_pixels": 566
+            },
+            "right_hip": {
+              "iou": 0.3719,
+              "reference_pixels": 362,
+              "model_pixels": 361
+            },
+            "right_leg": {
+              "iou": 0.4842,
+              "reference_pixels": 936,
+              "model_pixels": 900
+            },
+            "antenna": {
+              "iou": 0.3411,
+              "reference_pixels": 103,
+              "model_pixels": 302
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.5827,
+              "reference_pixels": 391,
+              "model_pixels": 633
+            },
+            "main_body": {
+              "iou": 0.3022,
+              "reference_pixels": 479,
+              "model_pixels": 568
+            },
+            "right_hip": {
+              "iou": 0.3719,
+              "reference_pixels": 362,
+              "model_pixels": 361
+            },
+            "right_leg": {
+              "iou": 0.4842,
+              "reference_pixels": 936,
+              "model_pixels": 900
+            },
+            "antenna": {
+              "iou": 0.3411,
+              "reference_pixels": 103,
+              "model_pixels": 302
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_front_left",
+          "camera": {
+            "yaw": 50,
+            "elev": 5,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1802.8860013909011,
+            "tx": 259.85374745831865,
+            "ty": 238.25139993469227,
+            "rmse": 6.496854058918251
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                25,
+                0,
+                -15
+              ],
+              "ll_shin": [
+                -25,
+                0,
+                0
+              ],
+              "rl": [
+                -35,
+                0,
+                5
+              ],
+              "rl_shin": [
+                5,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 4.639395959377556,
+              "rl": 9.28307695031336
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.4208,
+              "reference_pixels": 229,
+              "model_pixels": 291
+            },
+            "right_hip": {
+              "iou": 0.2296,
+              "reference_pixels": 211,
+              "model_pixels": 196
+            },
+            "left_leg": {
+              "iou": 0.4928,
+              "reference_pixels": 283,
+              "model_pixels": 544
+            },
+            "right_leg": {
+              "iou": 0.5214,
+              "reference_pixels": 596,
+              "model_pixels": 539
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.399,
+              "reference_pixels": 229,
+              "model_pixels": 311
+            },
+            "right_hip": {
+              "iou": 0.2275,
+              "reference_pixels": 211,
+              "model_pixels": 199
+            },
+            "left_leg": {
+              "iou": 0.4928,
+              "reference_pixels": 283,
+              "model_pixels": 544
+            },
+            "right_leg": {
+              "iou": 0.5214,
+              "reference_pixels": 596,
+              "model_pixels": 539
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_front_right",
+          "camera": {
+            "yaw": -55,
+            "elev": 5,
+            "roll": 3,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1797.2231419028308,
+            "tx": 760.2695072962316,
+            "ty": 238.47165542623793,
+            "rmse": 6.504206508044904
+          },
+          "pose": {
+            "pose": {
+              "ll": [
+                -5,
+                0,
+                10
+              ],
+              "ll_shin": [
+                -45,
+                0,
+                0
+              ],
+              "rl": [
+                -5,
+                0,
+                15
+              ],
+              "rl_shin": [
+                -15,
+                0,
+                0
+              ]
+            },
+            "residuals": {
+              "ll": 10.586353455168767,
+              "rl": 3.3551873262570244
+            }
+          },
+          "original": {
+            "cockpit": {
+              "iou": 0.2524,
+              "reference_pixels": 268,
+              "model_pixels": 248
+            },
+            "left_leg": {
+              "iou": 0.4046,
+              "reference_pixels": 616,
+              "model_pixels": 533
+            },
+            "antenna": {
+              "iou": 0.4431,
+              "reference_pixels": 85,
+              "model_pixels": 156
+            }
+          },
+          "candidate": {
+            "cockpit": {
+              "iou": 0.2385,
+              "reference_pixels": 268,
+              "model_pixels": 272
+            },
+            "left_leg": {
+              "iou": 0.4046,
+              "reference_pixels": 616,
+              "model_pixels": 533
+            },
+            "antenna": {
+              "iou": 0.4431,
+              "reference_pixels": 85,
+              "model_pixels": 156
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        },
+        {
+          "view": "painted_rear_side",
+          "camera": {
+            "yaw": 90,
+            "elev": 5,
+            "roll": 6,
+            "distance": 400,
+            "target": [
+              0,
+              23,
+              1
+            ],
+            "scale": 1808.3534049686996,
+            "tx": 251.3787155922161,
+            "ty": 731.5040172352543,
+            "rmse": 17.572839258191387
+          },
+          "pose": {
+            "pose": {},
+            "residuals": {}
+          },
+          "original": {
+            "rear_body": {
+              "iou": 0.2659,
+              "reference_pixels": 1117,
+              "model_pixels": 297
+            },
+            "antenna": {
+              "iou": 0.2294,
+              "reference_pixels": 62,
+              "model_pixels": 147
+            }
+          },
+          "candidate": {
+            "rear_body": {
+              "iou": 0.2659,
+              "reference_pixels": 1117,
+              "model_pixels": 297
+            },
+            "antenna": {
+              "iou": 0.2294,
+              "reference_pixels": 62,
+              "model_pixels": 147
+            }
+          },
+          "method": "fixed camera and unchanged pivots; approximate visible part masks"
+        }
+      ],
+      "value": 0.37887857142857145,
+      "baseline": 0.3821785714285714
+    }
+  ]
+}
