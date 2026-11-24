@@ -1,0 +1,120 @@
+[
+  {
+    "n": "battleaxe",
+    "changes": [
+      "Angled shoulder cap and narrower inner shoulder",
+      "Extend and taper paired PPCs",
+      "Sloping knee armor and toe"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 6637,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "7b359e2ef4aa23376e5aa3d09e1fd6d1a4dd5805"
+  },
+  {
+    "n": "firestarter",
+    "changes": [
+      "Slender waist and chamfered chest",
+      "Distinct narrow sloping shoulder cap",
+      "Flamer nozzles with stepped necks",
+      "Taper calves and flare toes"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 2150,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "a35cfc909375454f03811c41a33f20b4ddcfea09"
+  },
+  {
+    "n": "jenner",
+    "changes": [
+      "Flatten projecting cockpit and broaden its rim",
+      "Shallow swept torso cap and rear exhaust",
+      "Stepped leg fronts"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 4130,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "9a7359d86207119458b4472b2f705e344c37bd45"
+  },
+  {
+    "n": "atlas",
+    "changes": [
+      "Lower and sink skull cockpit",
+      "Rounded shoulder contours",
+      "Separate wrist and clenched fist",
+      "Chest AC housing and asymmetric side armor"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 9863,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "fe1191f239ae16545d3ed2c5ea9eff095787e7d5"
+  },
+  {
+    "n": "wolverine",
+    "changes": [
+      "Broader upper chest with waist break",
+      "Angular cockpit, not rounded helmet",
+      "Autocannon hand grip and muzzle brake",
+      "Angular shoulder and articulated shin plate"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 4782,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "e7b691e46eaa6c0712f8243a8cebf8135b617bba"
+  },
+  {
+    "n": "marauder",
+    "changes": [
+      "Taper forward hull and lower profile rear",
+      "Recessed long cockpit prow",
+      "Forward pitched gun arm housings",
+      "Rearward knee and sloping calf",
+      "Lower integrated dorsal cannon mount"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 9420,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "fb80c41dfadb702e8af4d125f567fc64ad8742cb"
+  },
+  {
+    "n": "phoenix_hawk",
+    "changes": [
+      "Taper torso and shoulder masses",
+      "Narrow taller independent jump-pack shape",
+      "Rifle stock, long barrel and hand connection",
+      "Shaped calf and toe armor"
+    ],
+    "rejected": [],
+    "audit": {
+      "voxels": 3538,
+      "islands": [],
+      "parts": [],
+      "weak": []
+    },
+    "commit": "9cd6b9d1e4ab00848900f0a3ea2d1f2ce35149e5"
+  }
+]
