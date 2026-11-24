@@ -1,0 +1,288 @@
+[
+  {
+    "id": "banshee",
+    "parts": 22,
+    "voxels": 9059,
+    "baseline": 0.614425,
+    "selected": 0.614775,
+    "changed": 72,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 3.1033338778395922,
+        "pose": {
+          "ra": 5.537901983464526,
+          "rl": 42.806497447882876
+        }
+      }
+    ],
+    "referenceVariant": "BNC-3S vs game BNC-3E; body only, exclude separate gun/launcher masks",
+    "render": "banshee_views.svg"
+  },
+  {
+    "id": "charger",
+    "parts": 23,
+    "voxels": 7653,
+    "baseline": 0.5476,
+    "selected": 0.54775,
+    "changed": 40,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 3.7718986643245853,
+        "pose": {
+          "ra": 7.252642592043401,
+          "rl": 51.514894702624176
+        }
+      }
+    ],
+    "referenceVariant": "CGR-3K vs game CGR-1A1; body-only approximation",
+    "render": "charger_views.svg"
+  },
+  {
+    "id": "enforcer",
+    "parts": 20,
+    "voxels": 5828,
+    "baseline": 0.49367500000000003,
+    "selected": 0.49500000000000005,
+    "changed": 80,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 3.9549598478137438,
+        "pose": {
+          "ra": 22.070194643273073,
+          "rl": 34.82635883509266
+        }
+      }
+    ],
+    "referenceVariant": "ENF-5D vs game ENF-4R; generic barrel envelope only",
+    "render": "enforcer_views.svg"
+  },
+  {
+    "id": "hatchetman",
+    "parts": 23,
+    "voxels": 5183,
+    "baseline": 0.58535,
+    "selected": 0.5861000000000001,
+    "changed": 24,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 2.6259287738958013,
+        "pose": {
+          "ra": 7.713653565934384,
+          "rl": 24.00705903529212
+        }
+      }
+    ],
+    "referenceVariant": "HCT-3F",
+    "render": "hatchetman_views.svg"
+  },
+  {
+    "id": "highlander",
+    "parts": 23,
+    "voxels": 10120,
+    "baseline": 0.625,
+    "selected": 0.6272,
+    "changed": 164,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 4.33988036263444,
+        "pose": {
+          "ra": 8.97074326843268,
+          "rl": 54.31898181523549
+        }
+      }
+    ],
+    "referenceVariant": "HGN-694 vs HGN-732; body and generic barrel envelope",
+    "render": "highlander_views.svg"
+  },
+  {
+    "id": "jagermech",
+    "parts": 19,
+    "voxels": 6703,
+    "baseline": 0.46875,
+    "selected": 0.47259999999999996,
+    "changed": 200,
+    "faults": 0,
+    "attempts": 5,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 5.202123085251832,
+        "pose": {
+          "rl": 50.62793341379492
+        }
+      }
+    ],
+    "referenceVariant": "JM6-S / JM6-DGr body; battery geometry provisional",
+    "render": "jagermech_views.svg"
+  },
+  {
+    "id": "phoenix_hawk",
+    "parts": 24,
+    "voxels": 7282,
+    "baseline": 0.41788,
+    "selected": 0.41929999999999995,
+    "changed": 118,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 7.347221370893791,
+        "pose": {
+          "la": 14.422319179861866,
+          "ll": 40.898558677527234
+        }
+      }
+    ],
+    "referenceVariant": "PXH-1",
+    "render": "phoenix_hawk_views.svg"
+  },
+  {
+    "id": "trebuchet",
+    "parts": 21,
+    "voxels": 6168,
+    "baseline": 0.500175,
+    "selected": 0.50495,
+    "changed": 58,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 5.450875685420025,
+        "pose": {
+          "la": 8.14537887361919,
+          "rl": 31.23169361650308
+        }
+      }
+    ],
+    "referenceVariant": "TBT-5N",
+    "render": "trebuchet_views.svg"
+  },
+  {
+    "id": "warhammer",
+    "parts": 23,
+    "voxels": 8587,
+    "baseline": 0.5272,
+    "selected": 0.5297499999999999,
+    "changed": 146,
+    "faults": 0,
+    "attempts": 6,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 4.331858289558715,
+        "pose": {
+          "ra": 8.647508845997136,
+          "rl": 28.13158506706661
+        }
+      }
+    ],
+    "referenceVariant": "WHM-6R",
+    "render": "warhammer_views.svg"
+  },
+  {
+    "id": "raven",
+    "parts": 20,
+    "voxels": 7345,
+    "baseline": 0.46721428571428575,
+    "selected": 0.46721428571428575,
+    "changed": 0,
+    "faults": 0,
+    "attempts": 5,
+    "photoCount": 2,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 7.602288758965877,
+        "pose": {
+          "rl": 29.05711577955638
+        }
+      },
+      {
+        "name": "CGL Urban Lance frontal product photo",
+        "rmse": 4.113494288615398,
+        "pose": {
+          "ll": 50.87584566208488
+        }
+      }
+    ],
+    "referenceVariant": "CGL same-chassis additional view",
+    "render": "raven_two_view_views.svg"
+  },
+  {
+    "id": "urbanmech",
+    "parts": 17,
+    "voxels": 7388,
+    "baseline": 0.5795,
+    "selected": 0.5814125,
+    "changed": 262,
+    "faults": 0,
+    "attempts": 5,
+    "photoCount": 2,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 4.797524695353198,
+        "pose": {
+          "ll": 56.94094280279061
+        }
+      },
+      {
+        "name": "CamoSpecs UM-R60 painted frontal view",
+        "rmse": 2.882531775643846,
+        "pose": {
+          "ll": 34.33446824126519
+        }
+      }
+    ],
+    "referenceVariant": "CGL same-chassis additional view",
+    "render": "urbanmech_two_view_views.svg"
+  },
+  {
+    "id": "rifleman",
+    "parts": 19,
+    "voxels": 8010,
+    "baseline": 0.496225,
+    "selected": 0.49685,
+    "changed": 128,
+    "faults": 0,
+    "attempts": 5,
+    "photoCount": 1,
+    "cameras": [
+      {
+        "name": "catalog quarter/front",
+        "rmse": 9.632729770807135,
+        "pose": {
+          "ll": 37.64834686106279
+        }
+      }
+    ],
+    "referenceVariant": "RFL-3N",
+    "render": "rifleman_views.svg"
+  }
+]
