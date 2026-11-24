@@ -1,0 +1,6 @@
+# Photo-informed resculpts — round 4
+Six retrieved photos, manually estimated masks in 512px preview coordinates. Grasshopper front/side, Timber Wolf front/rear, Zeus front/quarter. Frozen registration across trial comparisons. Zeus photo mapping corrected by mirroring camera and swapping anatomical labels (not part IDs). Rigid errors 2.57–14.89px and limb errors up to 25.64px; not calibrated photogrammetry. Side-view Grasshopper far limb is not independently posed, front photo cuts off the bottom of one foot. The masks are approximate, some grouped visible-part outlines overlap, so scores are diagnostic only.
+
+Two major alternatives per chassis; Timber Wolf and Zeus retain full second alternatives; Grasshopper major alternatives rejected because side-view agreement dropped. Five targeted Grasshopper swaps tested, only chest replacement selected. All three candidates pass neutral structural audit, 58 parts, 52/52 sampled three-cell muzzle paths clear (not proof of full-depth bores). Zeus missile-port count reflects visible outer circles, not verified variant weapon count; exact variant mapping needs checking. No production assets touched.
+
+See annotations.json, *_trials.json, grasshopper_component_trials.json, zeus_handedness.json, *_final.json, summary.json and [actual neutral before/after projections](contact_sheet.svg). No Godot validation.
