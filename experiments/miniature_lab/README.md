@@ -527,3 +527,82 @@ device-render tests are outstanding. The actual source-voxel v12 render
 and v11/v12 comparison were provided in the conversation.
 
 **Do not merge v12 as production art on these proxy scores alone.**
+
+## Jenner v14: whole-anatomy sculpt rather than local patches
+
+**2021 Catalyst Game Labs CAT35729, base 63.** This is an experiment
+only. The shipped main Jenner and every other production asset remain untouched.
+The v12 control and previous v13 experiments remain available.
+
+The reproducible seven-pass generator make_jenner_v14.py starts from the
+isolated v12 JSON and reconstructs: (1) a compact hip saddle and torso
+rear depth; (2) the forward disc cockpit and canopy; (3) both angled
+shoulder fairings and distinct dual-laser pods; (4) both thigh/knee
+transitions; (5) substantial mid-calf armor; (6) real extended three-toe
+feet with physical separating cuts; (7) a raised dorsal sensor.
+
+| Pass | Source voxels |
+|---|---:|
+| v12 control | 15,126 |
+| 01 pelvis/CT | 14,766 |
+| 02 cockpit | 14,704 |
+| 03 shoulders/pods | 14,714 |
+| 04 thighs/knees | 14,820 |
+| 05 shins/calves | 15,016 |
+| 06 three-toe feet | 15,098 |
+| 07 dorsal sensor, final trial | 15,126 |
+
+The unchanged total voxel count is not a no-op: material was removed
+from the bulky torso and redistributed into recognized anatomy. CT loses
+170 voxels; each thigh gains 52, each shin gains 54, each calf plate
+gains 44, and each owned toe region gains **41 real voxels**.
+These are occupied source-voxel differences at pitch 0.04, not just
+extra polygon vertices.
+
+Independent JavaScript source-level audit: **30** individually connected
+owners; **29** fully backed 2×2 attachment patches; zero overlapping
+voxels or detached parts; largest joint-normal deviation **14.45 degrees**.
+Pivots, ancestry, original damage regions and paired laser muzzle
+locations are unchanged. Seven Python tests are committed in
+test_jenner_v14.py but **have not been executed in the current runtime**;
+Godot and Android are not available here. Check CI separately.
+
+### Camera and pose-adjusted reference checks
+
+Fit the camera and independently articulated left/right leg poses to
+the **unchanged v12** once for each reference, then freeze camera, lens
+assumption, crop and pose when evaluating the v14 candidate. All photos
+belong to the Catalyst 2021 plastic generation. The poor-fitting side
+view and unannotated rear-right photo remain **unscored**.
+
+| Provisional four-view 58px diagnostic | v12 | v14 |
+|---|---:|---:|
+| Painted front-left | 0.7141 | **0.7192** |
+| Painted front-right | **0.7356** | 0.7342 |
+| Painted rear-left | 0.7256 | **0.7324** |
+| Unpainted front | **0.7894** | 0.7879 |
+| Mean | 0.7412 | **0.7434** |
+
+These numbers are not miniature-accuracy percentages. The masks and
+landmarks are hand estimated, the actual lens/FOV is unknown, and two
+views slightly regress. The small mean gain does not establish that
+v14 is production-ready.
+
+[Five matching source-voxel views, v12 versus v14](generated/jenner_v12_v14_five_view_anatomy.svg)
+show front, front-three-quarter, side, rear, and elevated projections
+with identical camera/framing per pair. These are neutral-stance actual
+voxel projections, *not* in-engine Godot captures or posed/photo-aligned
+overlays. They can be recreated with render_whole_anatomy.py.
+
+Reproduce from repository root:
+
+    python experiments/miniature_lab/make_jenner_v14.py
+    python -m unittest discover -s experiments/miniature_lab -p test_jenner_v14.py -v
+    python experiments/miniature_lab/render_whole_anatomy.py
+    python experiments/miniature_lab/multisource_fit.py --control experiments/miniature_lab/jenner_assembly_v12.json --compare experiments/miniature_lab/jenner_assembly_v12.json experiments/miniature_lab/jenner_assembly_v14_trial.json --size 58
+
+**Next acceptance gates:** sharper calibrated true side/rear/top photo
+landmarks; score each CT/hip/shoulder/weapon/thigh/knee/calf/toe
+assembly in the registered pose; rerun all Python regressions; perform
+a Godot 4.5 rig, export, and battle-pose smoke test; only consider
+production promotion after human review of the actual engine render.
