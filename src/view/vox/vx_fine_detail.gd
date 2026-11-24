@@ -33,10 +33,10 @@ static func apply(model: VxModel) -> Dictionary:
 		var center: Vector3i = patch["center"]
 		var horizontal := Vector3i.RIGHT if normal.z != 0 else Vector3i.BACK
 		# Two narrow horizontal slots with a solid central rib.
-		for v in [-1, 1]:
+		for v: int in [-1, 1]:
 			for u in range(-1, 2):
-				var c := center + horizontal * u + Vector3i.UP * v
-				var backing := c - normal
+				var c: Vector3i = center + horizontal * u + Vector3i.UP * v
+				var backing: Vector3i = c - normal
 				var material: int = cells[backing]
 				if not accents.has(material):
 					accents[material] = model.colors.size()
