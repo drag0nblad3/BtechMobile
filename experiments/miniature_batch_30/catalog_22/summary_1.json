@@ -1,0 +1,236 @@
+[
+  {
+    "id": "annihilator",
+    "unit": "annihilator_anh2a",
+    "parts": 19,
+    "cells": 10402,
+    "faults": [],
+    "clear": 6,
+    "total": 6,
+    "score": {
+      "before": 0.41566666666666663,
+      "after": 0.4398500000000001,
+      "changed": 900,
+      "views": [
+        {
+          "name": "catalog plastic front quarter",
+          "cameraRms": 10.669969397935699,
+          "poseRms": {
+            "ra": 8.285584403014404,
+            "la": 7.0497464380420585,
+            "rl": 17.190171889464516,
+            "ll": 22.234023793106424
+          },
+          "before": 0.41566666666666663,
+          "after": 0.4398500000000001
+        }
+      ]
+    }
+  },
+  {
+    "id": "assassin",
+    "unit": "assassin_asn21",
+    "parts": 21,
+    "cells": 5654,
+    "faults": [],
+    "clear": 8,
+    "total": 8,
+    "score": {
+      "before": 0.4794333333333333,
+      "after": 0.5039166666666667,
+      "changed": 475,
+      "views": [
+        {
+          "name": "catalog plastic front quarter",
+          "cameraRms": 9.450585230750088,
+          "poseRms": {
+            "ra": 7.8341780595477735,
+            "la": 9.013611370102732,
+            "rl": 11.715572224611229,
+            "ll": 7.579941758390747
+          },
+          "before": 0.4794333333333333,
+          "after": 0.5039166666666667
+        }
+      ]
+    }
+  },
+  {
+    "id": "battle_cobra",
+    "unit": "battle_cobra_prime",
+    "parts": 21,
+    "cells": 8157,
+    "faults": [],
+    "clear": 4,
+    "total": 4,
+    "score": {
+      "before": 0.5831166666666666,
+      "after": 0.6085333333333333,
+      "changed": 566,
+      "views": [
+        {
+          "name": "catalog plastic front quarter",
+          "cameraRms": 6.229771280853971,
+          "poseRms": {
+            "ra": 8.148328058548351,
+            "la": 15.436615908926548,
+            "rl": 10.938495042181602,
+            "ll": 10.98379939772344
+          },
+          "before": 0.5831166666666666,
+          "after": 0.6085333333333333
+        }
+      ]
+    }
+  },
+  {
+    "id": "black_lanner",
+    "unit": "black_lanner_prime",
+    "parts": 21,
+    "cells": 8702,
+    "faults": [],
+    "clear": 19,
+    "total": 19,
+    "score": {
+      "before": 0.3967,
+      "after": 0.41453333333333336,
+      "changed": 390,
+      "views": [
+        {
+          "name": "catalog plastic quarter",
+          "cameraRms": 1.2746097098197944,
+          "poseRms": {
+            "ra": 5.043468151642491,
+            "la": 2.571718845466559,
+            "rl": 17.51142927027477,
+            "ll": 16.547389989511103
+          },
+          "before": 0.3967,
+          "after": 0.41453333333333336
+        }
+      ]
+    }
+  },
+  {
+    "id": "cicada",
+    "unit": "cicada_cda2a",
+    "parts": 15,
+    "cells": 4160,
+    "faults": [],
+    "clear": 2,
+    "total": 2,
+    "score": {
+      "before": 0.4818,
+      "after": 0.5117,
+      "changed": 349,
+      "views": [
+        {
+          "name": "catalog plastic front quarter",
+          "cameraRms": 5.426239705517227,
+          "poseRms": {
+            "rl": 14.500256497199377,
+            "ll": 18.502846405060115
+          },
+          "before": 0.4818,
+          "after": 0.5117
+        }
+      ]
+    }
+  },
+  {
+    "id": "clint",
+    "unit": "clint_clnt23t",
+    "parts": 19,
+    "cells": 6127,
+    "faults": [],
+    "clear": 1,
+    "total": 1,
+    "score": null
+  },
+  {
+    "id": "crockett",
+    "unit": "crockett_crk50031",
+    "parts": 19,
+    "cells": 11194,
+    "faults": [],
+    "clear": 14,
+    "total": 14,
+    "score": null
+  },
+  {
+    "id": "dervish",
+    "unit": "dervish_dv6m",
+    "parts": 21,
+    "cells": 8545,
+    "faults": [],
+    "clear": 24,
+    "total": 24,
+    "score": {
+      "before": 0.45515,
+      "after": 0.4822166666666667,
+      "changed": 482,
+      "views": [
+        {
+          "name": "catalog plastic front quarter",
+          "cameraRms": 1.461394718977888,
+          "poseRms": {
+            "ra": 8.58507359858897,
+            "la": 3.7233466980587195,
+            "rl": 17.01036571044295,
+            "ll": 17.542381322899875
+          },
+          "before": 0.45515,
+          "after": 0.4822166666666667
+        }
+      ]
+    }
+  },
+  {
+    "id": "devastator",
+    "unit": "devastator_dvs2",
+    "parts": 21,
+    "cells": 11493,
+    "faults": [],
+    "clear": 4,
+    "total": 4,
+    "score": {
+      "before": 0.5364833333333333,
+      "after": 0.5565166666666667,
+      "changed": 964,
+      "views": [
+        {
+          "name": "catalog plastic front quarter",
+          "cameraRms": 9.294656591736365,
+          "poseRms": {
+            "ra": 12.79429289558672,
+            "la": 4.760841877425849,
+            "rl": 18.281099476841558,
+            "ll": 17.073410519550826
+          },
+          "before": 0.5364833333333333,
+          "after": 0.5565166666666667
+        }
+      ]
+    }
+  },
+  {
+    "id": "emperor",
+    "unit": "emperor_emp6a",
+    "parts": 19,
+    "cells": 10062,
+    "faults": [],
+    "clear": 2,
+    "total": 4,
+    "score": null
+  },
+  {
+    "id": "exterminator",
+    "unit": "exterminator_ext4a",
+    "parts": 20,
+    "cells": 8070,
+    "faults": [],
+    "clear": 6,
+    "total": 6,
+    "score": null
+  }
+]
