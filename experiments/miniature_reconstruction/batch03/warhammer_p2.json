@@ -690,132 +690,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "erase": [
-            [
-              -5,
-              27,
-              5
-            ],
-            [
-              -5,
-              27,
-              5
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -8,
-              29,
-              4
-            ],
-            [
-              -8,
-              29,
-              4
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -7,
-              26,
-              3
-            ],
-            [
-              -7,
-              26,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -6,
-              25,
-              -5
-            ],
-            [
-              -6,
-              25,
-              -5
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -6,
-              26,
-              -6
-            ],
-            [
-              -6,
-              26,
-              -6
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -6,
-              27,
-              -7
-            ],
-            [
-              -6,
-              27,
-              -7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -8,
-              28,
-              3
-            ],
-            [
-              -8,
-              28,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -7,
-              28,
-              4
-            ],
-            [
-              -7,
-              28,
-              4
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -7,
-              35,
-              4
-            ],
-            [
-              -7,
-              35,
-              4
-            ]
-          ]
         }
       ],
       "detail": [
@@ -1084,35 +958,6 @@
               -1,
               37,
               -11
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "erase": [
-            [
-              -5,
-              36,
-              -5
-            ],
-            [
-              -5,
-              36,
-              -5
-            ]
-          ]
-        },
-        {
-          "box": [
-            [
-              -4,
-              34,
-              -5
-            ],
-            [
-              -4,
-              36,
-              -3
             ]
           ],
           "mat": "frame"
@@ -1517,259 +1362,6 @@
               2
             ]
           ]
-        },
-        {
-          "erase": [
-            [
-              -14,
-              34,
-              7
-            ],
-            [
-              -14,
-              34,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -13,
-              34,
-              7
-            ],
-            [
-              -13,
-              34,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -14,
-              35,
-              7
-            ],
-            [
-              -14,
-              35,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -12,
-              34,
-              7
-            ],
-            [
-              -12,
-              34,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -13,
-              35,
-              7
-            ],
-            [
-              -13,
-              35,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -11,
-              34,
-              7
-            ],
-            [
-              -11,
-              34,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -12,
-              35,
-              7
-            ],
-            [
-              -12,
-              35,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -11,
-              35,
-              7
-            ],
-            [
-              -11,
-              35,
-              7
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -13,
-              31,
-              8
-            ],
-            [
-              -13,
-              31,
-              8
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -12,
-              31,
-              8
-            ],
-            [
-              -12,
-              31,
-              8
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -13,
-              32,
-              8
-            ],
-            [
-              -13,
-              32,
-              8
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -12,
-              32,
-              8
-            ],
-            [
-              -12,
-              32,
-              8
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -16,
-              33,
-              -5
-            ],
-            [
-              -16,
-              33,
-              -5
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -16,
-              31,
-              -3
-            ],
-            [
-              -16,
-              31,
-              -3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -16,
-              32,
-              -4
-            ],
-            [
-              -16,
-              32,
-              -4
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -17,
-              33,
-              -4
-            ],
-            [
-              -17,
-              33,
-              -4
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -17,
-              33,
-              5
-            ],
-            [
-              -17,
-              33,
-              5
-            ]
-          ]
-        },
-        {
-          "box": [
-            [
-              -9,
-              27,
-              -1
-            ],
-            [
-              -7,
-              29,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -1969,21 +1561,6 @@
               14,
               36,
               -7
-            ]
-          ],
-          "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              11,
-              34,
-              -7
-            ],
-            [
-              13,
-              36,
-              -6
             ]
           ],
           "mat": "frame"
@@ -2432,201 +2009,6 @@
               -23
             ]
           ]
-        },
-        {
-          "loft": {
-            "axis": "z",
-            "sections": [
-              {
-                "at": -27,
-                "polygon": [
-                  [
-                    -18,
-                    19
-                  ],
-                  [
-                    -17,
-                    19
-                  ],
-                  [
-                    -16,
-                    20
-                  ],
-                  [
-                    -16,
-                    21
-                  ],
-                  [
-                    -17,
-                    22
-                  ],
-                  [
-                    -18,
-                    22
-                  ],
-                  [
-                    -19,
-                    21
-                  ],
-                  [
-                    -19,
-                    20
-                  ]
-                ]
-              },
-              {
-                "at": -9,
-                "polygon": [
-                  [
-                    -18,
-                    18
-                  ],
-                  [
-                    -16,
-                    18
-                  ],
-                  [
-                    -15,
-                    19
-                  ],
-                  [
-                    -15,
-                    22
-                  ],
-                  [
-                    -16,
-                    23
-                  ],
-                  [
-                    -18,
-                    23
-                  ],
-                  [
-                    -19,
-                    22
-                  ],
-                  [
-                    -19,
-                    19
-                  ]
-                ]
-              }
-            ]
-          },
-          "mat": "gun"
-        },
-        {
-          "erase": [
-            [
-              -18,
-              19,
-              3
-            ],
-            [
-              -18,
-              19,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -17,
-              19,
-              3
-            ],
-            [
-              -17,
-              19,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -18,
-              20,
-              3
-            ],
-            [
-              -18,
-              20,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -16,
-              19,
-              3
-            ],
-            [
-              -16,
-              19,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -17,
-              20,
-              3
-            ],
-            [
-              -17,
-              20,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -16,
-              20,
-              3
-            ],
-            [
-              -16,
-              20,
-              3
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -20,
-              23,
-              -6
-            ],
-            [
-              -20,
-              23,
-              -6
-            ]
-          ]
-        },
-        {
-          "box": [
-            [
-              -15,
-              27,
-              -1
-            ],
-            [
-              -14,
-              29,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -2922,21 +2304,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "box": [
-            [
-              -6,
-              22,
-              -1
-            ],
-            [
-              -5,
-              25,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ],
       "detail": [
@@ -3191,147 +2558,6 @@
             ]
           ],
           "mat": "frame"
-        },
-        {
-          "erase": [
-            [
-              -5,
-              5,
-              -1
-            ],
-            [
-              -5,
-              5,
-              -1
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              6,
-              -1
-            ],
-            [
-              -5,
-              6,
-              -1
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              5,
-              0
-            ],
-            [
-              -5,
-              5,
-              0
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              6,
-              0
-            ],
-            [
-              -5,
-              6,
-              0
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              5,
-              1
-            ],
-            [
-              -5,
-              5,
-              1
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              7,
-              0
-            ],
-            [
-              -5,
-              7,
-              0
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              6,
-              1
-            ],
-            [
-              -5,
-              6,
-              1
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              7,
-              1
-            ],
-            [
-              -5,
-              7,
-              1
-            ]
-          ]
-        },
-        {
-          "erase": [
-            [
-              -5,
-              7,
-              2
-            ],
-            [
-              -5,
-              7,
-              2
-            ]
-          ]
-        },
-        {
-          "box": [
-            [
-              -9,
-              13,
-              -1
-            ],
-            [
-              -7,
-              14,
-              1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -3540,35 +2766,6 @@
             ]
           ],
           "mat": "joint"
-        },
-        {
-          "erase": [
-            [
-              -9,
-              4,
-              -3
-            ],
-            [
-              -9,
-              4,
-              -3
-            ]
-          ]
-        },
-        {
-          "box": [
-            [
-              -9,
-              3,
-              -3
-            ],
-            [
-              -7,
-              5,
-              -1
-            ]
-          ],
-          "mat": "frame"
         }
       ]
     },
@@ -3596,23 +2793,6 @@
         7,
         24,
         0
-      ],
-      "add": [
-        {
-          "box": [
-            [
-              3,
-              23,
-              -1
-            ],
-            [
-              4,
-              25,
-              1
-            ]
-          ],
-          "mat": "frame"
-        }
       ]
     },
     {
@@ -3720,7 +2900,7 @@
     "geometry_source": "post-213 strong-joint 151-model sculpt",
     "reason": "Structural restoration retains 100-pass historic review lineage; no disconnected decorative parts."
   },
-  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only. Local structural support and short-gap repairs; not posed or photo calibrated.",
+  "experimental_notes": "Chassis-specific component resculpt based on existing source recipe and known visual anatomy; not photo-calibrated. Experimental only.",
   "pass1": {
     "changes": [],
     "rejected": [
@@ -4298,44 +3478,374 @@
       ]
     }
   },
-  "pass2": {
-    "repairs": [
-      "Tapered PPC extension on both weapon arms",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "ct: removed 1 unsupported detail cells",
-      "hd: removed 1 unsupported detail cells",
-      "lt: removed 8 unsupported detail cells",
-      "lt: removed 4 unsupported detail cells",
-      "lt: removed 1 unsupported detail cells",
-      "lt: removed 1 unsupported detail cells",
-      "lt: removed 1 unsupported detail cells",
-      "lt: removed 1 unsupported detail cells",
-      "lt: removed 1 unsupported detail cells",
-      "la: removed 6 unsupported detail cells",
-      "la: removed 1 unsupported detail cells",
-      "ll_shin: removed 9 unsupported detail cells",
-      "ll_foot: removed 1 unsupported detail cells",
-      "hd → ct: local structural sleeve (gap 0)",
-      "lt → ct: local structural sleeve (gap 2)",
-      "rt_srm → rt: local structural sleeve (gap 1)",
-      "la → lt: local structural sleeve (gap 1)",
-      "ll → ct: local structural sleeve (gap 2)",
-      "ll_shin → ll: local structural sleeve (gap 1)",
-      "ll_foot → ll_shin: local structural sleeve (gap 2)",
-      "rl → ct: local structural sleeve (gap 1)"
+  "experimental_photo_fit": {
+    "method": "Approximate manually traced visible part bounds; per-view orthographic camera and articulated pose; geometry changes gated by neutral voxel connectivity penalty. Not pixel-mask IoU; not a multi-angle validated plastic match.",
+    "references": [
+      {
+        "url": "https://i.imgur.com/9givM6F.jpeg",
+        "quality": "painted WHM-6R modern style",
+        "baseline_rmse": 11.325480438377047,
+        "refined_rmse": 11.325480438377047,
+        "parameters": {
+          "yaw": -46,
+          "pitch": -7,
+          "roll": 9,
+          "la": 21,
+          "ra": -30,
+          "ll": -9,
+          "rl": -27,
+          "ll_shin": -12,
+          "rl_shin": -9,
+          "laSpread": -30,
+          "raSpread": -2,
+          "llSpread": -3,
+          "rlSpread": 1
+        },
+        "swap_bilateral": false,
+        "scale": 5.434967325388959,
+        "dx": 231.56096721829914,
+        "dy": 377.6111320783582,
+        "regions": [
+          {
+            "part": "ct",
+            "model": "ct",
+            "target": [
+              204,
+              158,
+              293,
+              257
+            ],
+            "projected": [
+              202.93870546905742,
+              171.4652147662112,
+              301.993182741768,
+              258.62435711051216
+            ]
+          },
+          {
+            "part": "hd",
+            "model": "hd",
+            "target": [
+              233,
+              163,
+              275,
+              196
+            ],
+            "projected": [
+              217.28271176677143,
+              157.73318940211868,
+              261.5406631785347,
+              189.1176255554077
+            ]
+          },
+          {
+            "part": "lt",
+            "model": "lt",
+            "target": [
+              180,
+              170,
+              232,
+              205
+            ],
+            "projected": [
+              179.59158961475453,
+              166.00520809391645,
+              245.78458933500215,
+              231.60998967733028
+            ]
+          },
+          {
+            "part": "rt",
+            "model": "rt",
+            "target": [
+              285,
+              192,
+              332,
+              232
+            ],
+            "projected": [
+              262.86667350411966,
+              168.76559551214376,
+              339.2123265786099,
+              234.13034340701608
+            ]
+          },
+          {
+            "part": "rt_srm",
+            "model": "rt_srm",
+            "target": [
+              220,
+              129,
+              271,
+              170
+            ],
+            "projected": [
+              245.2211222462172,
+              157.0391478687428,
+              295.0123912136201,
+              190.19561487892875
+            ]
+          },
+          {
+            "part": "la",
+            "model": "la",
+            "target": [
+              106,
+              195,
+              207,
+              271
+            ],
+            "projected": [
+              91.98346167574374,
+              185.00197370666362,
+              202.39429753966326,
+              280.1440996423501
+            ]
+          },
+          {
+            "part": "ra",
+            "model": "ra",
+            "target": [
+              230,
+              222,
+              340,
+              320
+            ],
+            "projected": [
+              229.11182515662676,
+              226.44617114415757,
+              340.5396798904944,
+              318.79526480784403
+            ]
+          },
+          {
+            "part": "ll",
+            "model": "ll",
+            "target": [
+              187,
+              252,
+              246,
+              320
+            ],
+            "projected": [
+              192.16811058664706,
+              253.1748498083404,
+              243.6451860929897,
+              304.9738517872445
+            ]
+          },
+          {
+            "part": "rl",
+            "model": "rl",
+            "target": [
+              258,
+              256,
+              301,
+              320
+            ],
+            "projected": [
+              257.8529926452977,
+              252.81744664703626,
+              309.8594034277213,
+              308.7540539705255
+            ]
+          },
+          {
+            "part": "ll_shin",
+            "model": "ll_shin",
+            "target": [
+              184,
+              301,
+              231,
+              366
+            ],
+            "projected": [
+              190.68087440655506,
+              302.2108306316337,
+              239.9695832753282,
+              356.0449957262901
+            ]
+          },
+          {
+            "part": "rl_shin",
+            "model": "rl_shin",
+            "target": [
+              268,
+              304,
+              327,
+              373
+            ],
+            "projected": [
+              269.3212592009724,
+              303.25095284225216,
+              321.68136784815374,
+              359.0442710785897
+            ]
+          },
+          {
+            "part": "ll_foot",
+            "model": "ll_foot",
+            "target": [
+              172,
+              353,
+              251,
+              385
+            ],
+            "projected": [
+              163.56029335741812,
+              358.77251016131333,
+              243.43854320635282,
+              388.21832052096687
+            ]
+          },
+          {
+            "part": "rl_foot",
+            "model": "rl_foot",
+            "target": [
+              260,
+              357,
+              337,
+              400
+            ],
+            "projected": [
+              262.27666110528816,
+              350.62502230600217,
+              336.6577447585962,
+              397.4091976610526
+            ]
+          }
+        ]
+      }
     ],
-    "audit": {
-      "voxels": 7115,
-      "islands": [],
-      "parts": [],
-      "weak": []
+    "changes": [],
+    "validation": {
+      "cells": 7000,
+      "whole_components": [
+        4146,
+        1957,
+        412,
+        412,
+        9,
+        9,
+        8,
+        8,
+        6,
+        6,
+        4,
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "issues": [
+        {
+          "part": "ct",
+          "islands": 9
+        },
+        {
+          "part": "hd",
+          "islands": 1
+        },
+        {
+          "part": "lt",
+          "islands": 17
+        },
+        {
+          "part": "lt",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rt",
+          "islands": 17
+        },
+        {
+          "part": "rt_srm",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "la",
+          "islands": 7
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "overlap": 0
+        },
+        {
+          "part": "ra",
+          "islands": 7
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "overlap": 0
+        },
+        {
+          "part": "ll",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "ll_shin",
+          "islands": 9
+        },
+        {
+          "part": "ll_shin",
+          "parent": "ll",
+          "overlap": 0
+        },
+        {
+          "part": "ll_foot",
+          "islands": 1
+        },
+        {
+          "part": "ll_foot",
+          "parent": "ll_shin",
+          "overlap": 0
+        },
+        {
+          "part": "rl",
+          "parent": "ct",
+          "overlap": 0
+        },
+        {
+          "part": "rl_shin",
+          "islands": 9
+        },
+        {
+          "part": "rl_shin",
+          "parent": "rl",
+          "overlap": 0
+        },
+        {
+          "part": "rl_foot",
+          "islands": 1
+        },
+        {
+          "part": "rl_foot",
+          "parent": "rl_shin",
+          "overlap": 0
+        }
+      ],
+      "penalty": 2972
     }
   }
 }
