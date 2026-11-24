@@ -23,7 +23,24 @@ function repair(src,parts,maps,voids,points){let log=[],guard=new Set([...voids,
  // damage location or the cockpit glazing. No emitter relocation.
  for(let p of points){let o=owner(maps),blocked=p.keys.filter(k=>o.has(k));if(!blocked.length)continue;
  let allowed=blocked.every(k=>{let n=o.get(k),mat=maps[n].get(k);return by[n]?.loc===p.loc&&(/weapon|housing|ppc|pulse|lrm|srm|gun/.test(n)||mat==="gun"||mat==="frame")&&!["glass","glow"].includes(mat);});
- if(!allowed){log.push({kind:"blocked bore retained",loc:p.loc,point:p.p,owners:blocked.map(k=>[k,o.get(k),maps[o.get(k)].get(k)])});continue;}
+ if(!allowed){
+ // Confirm the opening was explicitly cut in a weapon belonging to this
+ // location. The overlapping helmet or hull must not fill that same bore.
+ const nativePart=src.parts.find(x=>by[x.name]?.loc===p.loc&&/weapon|housing|ppc|pulse|lrm|srm|gun/.test(x.name)&&[...(x.shapes||[]),...(x.add||[])].some(s=>s.erase&&p.keys.every(k=>V(k).every((v,i)=>v>=s.erase[0][i]&&v<=s.erase[1][i]))));
+ if(!nativePart||blocked.some(k=>!["armor","plate","edge","glass","glow","frame"].includes(maps[o.get(k)].get(k)))){log.push({kind:"blocked bore retained",loc:p.loc,point:p.p,owners:blocked.map(k=>[k,o.get(k),maps[o.get(k)].get(k)])});continue;}
+ for(const k of blocked){let n=o.get(k),mat=maps[n].get(k);if(["glass","glow"].includes(mat)){
+  // Preserve the optical material by moving it to the nearest suitable
+  // exposed armor cell beside the bore or a recessed emitter backstop.
+  const pos=V(k),options=[];for(let d of D)for(let step=1;step<=3;step++){let q=K(plus(pos,d,step)),who=o.get(q);if(!who||guard.has(q)||!["armor","plate","edge","frame"].includes(maps[who].get(q)))continue;if(by[who].loc!==by[n].loc)continue;let exposed=D.some(v=>!o.has(K(plus(V(q),v))));if(exposed)options.push({q,who,cost:step+(d[2]===0?0:.25)});}
+  options.sort((a,b)=>a.cost-b.cost);if(!options.length){log.push({kind:"optical backstop unavailable",point:p.p});continue;}
+  let q=options[0];maps[q.who].set(q.q,mat);log.push({kind:"optical material reseated clear of bore",from:k,to:q.q,material:mat});
+ }}
+ // Do not remove optical cells if no alternative was found.
+ if(log.some(x=>x.kind==="optical backstop unavailable"&&JSON.stringify(x.point)===JSON.stringify(p.p)))continue;
+ for(let k of blocked)maps[o.get(k)].delete(k);
+ log.push({kind:"authored weapon bore cleared across overlapping armor",loc:p.loc,point:p.p,cells:blocked.length});
+ continue;
+ }
  for(let k of blocked)maps[o.get(k)].delete(k);log.push({kind:"owning weapon bore recut",loc:p.loc,point:p.p,cells:blocked.length});
  }
  // Reconnect a disconnected part using a 2x2 backed rectangular section.
@@ -48,7 +65,14 @@ function repair(src,parts,maps,voids,points){let log=[],guard=new Set([...voids,
  // parallel paths to form a backed rectangular rib, never a long rod.
  let best2=null;
  for(let k of g){let c=V(k);for(let d of D){for(let step=1;step<=3;step++){let target=K(plus(c,d,step));if(!main.has(target))continue;for(let side of D.filter(x=>x.some((v,i)=>v&&d[i]===0))){let fill=new Set();let ok=true;for(let t=0;t<=step;t++)for(let q of [plus(c,d,t),plus(plus(c,d,t),side)]){let k=K(q);if(m.has(k))continue;if(o.has(k)||guard.has(k)){ok=false;break;}fill.add(k);}if(ok&&fill.size&&fill.size<=8&&(!best2||fill.size<best2.size))best2=fill;}break;}}}
- if(best2){let t=new Map(m);for(let k of best2)t.set(k,"frame");if(group(t).length<group(m).length){for(let k of best2)m.set(k,"frame");log.push({part:p.name,kind:"short reinforced internal rib",cells:best2.size});}}
+ if(best2){let t=new Map(m);for(let k of best2)t.set(k,"frame");if(group(t).length<group(m).length){for(let k of best2)m.set(k,"frame");log.push({part:p.name,kind:"short reinforced internal rib",cells:best2.size});continue;}}
+ // Tiny source armor remnants can be re-seated on their own torso mass.
+ // Conserve material and cell count, and require two existing face
+ // contacts (not a single-cell twig) for each replacement cell.
+ if(g.length<=6&&g.every(k=>["armor","plate","edge","frame","joint","recess"].includes(m.get(k)))){
+  let t=new Map(m),occ=new Map(o);for(let k of g){t.delete(k);occ.delete(k);}let moved=[];for(let k of g){let p0=V(k),choices=[];for(let q of main){let xyz=V(q);if(xyz.reduce((s,v,i)=>s+Math.abs(v-p0[i]),0)>5)continue;for(let d of D){let v=plus(xyz,d),key=K(v);if(occ.has(key)||guard.has(key))continue;let contacts=D.filter(dd=>t.has(K(plus(v,dd)))).length;if(contacts<2)continue;let dist=v.reduce((s,x,i)=>s+Math.abs(x-p0[i]),0);choices.push({key,dist,contacts});}}choices.sort((a,b)=>a.dist-b.dist||b.contacts-a.contacts);if(!choices.length)break;let q=choices[0].key;t.set(q,m.get(k));occ.set(q,p.name);moved.push([k,q]);}
+  if(moved.length===g.length&&group(t).length<group(m).length){maps[p.name]=t;log.push({part:p.name,kind:"reseated tiny armor remnants on backed torso surface",cells:moved.length,moved});break;}
+ }
  }}
  // Explicit parent interfaces: a solid 2x2 face and two backing layers on
  // both sides. Try a small collar on child and parent in free space.
@@ -65,7 +89,7 @@ function repair(src,parts,maps,voids,points){let log=[],guard=new Set([...voids,
  return log;
 }
 let cache=new Map(),out=[];
-for(let h of held){let row=summary.rows.find(x=>x.id===h.id),path=row.source,src=get(ORIGINAL,path);if(!cache.has(row.selectedFrom))cache.set(row.selectedFrom,get(EXP,ROOT+row.selectedFrom));let rec=cache.get(row.selectedFrom).find(x=>x.id===row.id);let n=L.native(src),base=L.own(n.maps).maps,maps=Object.fromEntries(Object.entries(base).map(([k,v])=>[k,new Map(v)]));for(let p of rec.patches)L.paint(maps[p.part],p.shapes,new Set());let points=ports(src),before=audit(n.parts,maps,points);if(before.cells!==rec.final.cells)throw Error("selection replay "+h.id);let log=repair(src,n.parts,maps,n.voids,points),after=audit(n.parts,maps,points);let status="held";if(strict(after)){let patches=[];for(let p of n.parts){let d=L.delta(base[p.name],maps[p.name]);if(d.count)patches.push({part:p.name,shapes:d.out});}let candidate=L.promote(src,{...rec,patches,final:after,selectedFrom:row.selectedFrom+" + defect repair"}).candidate;candidate.source_sculpt_promotion.defect_repair=true;let highPath=path.replace("_shape.json",".json"),high=get(ORIGINAL,highPath);if(high.source==="res://"+path){status="linked";}else if(L.compatible(src,high)){fs.writeFileSync(highPath,JSON.stringify(L.transfer(high,candidate),null,2)+"\n");status="transferred";}else status="shape-only divergent";fs.writeFileSync(path,JSON.stringify(candidate,null,2)+"\n");}out.push({id:h.id,status,before,after,log});console.log("DEFECT|"+h.id+"|"+status+"|"+JSON.stringify(after));}
+for(let h of held){let row=summary.rows.find(x=>x.id===h.id),path=row.source,src=get(ORIGINAL,path);if(!cache.has(row.selectedFrom))cache.set(row.selectedFrom,get(EXP,ROOT+row.selectedFrom));let rec=cache.get(row.selectedFrom).find(x=>x.id===row.id);let n=L.native(src),base=L.own(n.maps).maps,maps=Object.fromEntries(Object.entries(base).map(([k,v])=>[k,new Map(v)]));for(let p of rec.patches)L.paint(maps[p.part],p.shapes,new Set());let points=ports(src),before=audit(n.parts,maps,points);if(before.cells!==rec.final.cells)throw Error("selection replay "+h.id);let log=repair(src,n.parts,maps,n.voids,points),after=audit(n.parts,maps,points);let status="held";if(strict(after)){let patches=[];for(let p of n.parts){let d=L.delta(base[p.name],maps[p.name]);if(d.count)patches.push({part:p.name,shapes:d.out});}let candidate=L.promote(src,{...rec,patches,final:after,selectedFrom:row.selectedFrom+" + defect repair"}).candidate;candidate.source_sculpt_promotion.defect_repair=true;let highPath=path.replace("_shape.json",".json"),high=get(ORIGINAL,highPath);if(high.source==="res://"+path){status="linked";}else if(L.compatible(src,high)){fs.writeFileSync(highPath,JSON.stringify(L.transfer(high,candidate),null,2)+"\n");status="transferred";}else {status="shape-only divergent";const dir="experiments/divergent_mech_review_20261124";fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(dir+"/"+h.id+"_shape.json",JSON.stringify(candidate,null,2)+"\n");}if(status!=="shape-only divergent")fs.writeFileSync(path,JSON.stringify(candidate,null,2)+"\n");else fs.writeFileSync(path,git("show",ORIGINAL+":"+path));}out.push({id:h.id,status,before,after,log});console.log("DEFECT|"+h.id+"|"+status+"|"+JSON.stringify(after));}
 fs.writeFileSync("docs/graphics/held-sculpt-repair-20261124.json",JSON.stringify({rows:out},null,2)+"\n");
 console.log("DEFECT_SUMMARY|"+JSON.stringify(out.reduce((m,x)=>(m[x.status]=(m[x.status]||0)+1,m),{})));
 
@@ -75,7 +99,7 @@ fs.mkdirSync(reviewDir,{recursive:true});
 const alternatives=manifest.rows.filter(x=>x.status.startsWith("shape only"));
 for(const x of alternatives){
  const path=x.source,archive=reviewDir+"/"+x.id+"_shape.json";
- fs.copyFileSync(path,archive);
+ if(!fs.existsSync(archive))fs.copyFileSync(path,archive);
  fs.writeFileSync(path,git("show",ORIGINAL+":"+path));
 }
 fs.writeFileSync(reviewDir+"/README.md","# Divergent Mech source candidates\n\nThe 14 exact promoted B source candidates are preserved here for A/B review. Production shape recipes revert to the pre-promotion pair while the existing detailed A versions remain unchanged. The matching-camera Godot render script reads these candidates after they are archived. No winner is selected.\n");
