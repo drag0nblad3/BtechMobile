@@ -2,9 +2,9 @@ class_name CampaignBattle
 extends RefCounted
 ## Moves the company in and out of a battle. `prepare` puts each deployed
 ## 'Mech's damage and MechWarrior onto the units a ForceBuilder made for
-## them; `finish` writes the battle back: damage, wounds, deaths, kills and
-## experience, and returns an after-action report. Experience and healing
-## numbers are the app's own (CampaignRules). TODO(rules)
+## them; `finish` writes the battle back: damage, wounds, deaths and kills,
+## settles the contract's Warchest objectives and returns an after-action
+## report. Healing and skills are bought with Support Points between battles.
 
 ## Reasons a unit left the map without being wrecked.
 const LEFT_MAP := ["left the battlefield", "scattered off the battlefield", "pushed off the battlefield"]
@@ -60,12 +60,15 @@ static func kill_credit_from_frames(frames: Array) -> Dictionary:
 	return kill_credit(events)
 
 
-## Writes a finished battle back into the company. Returns report lines.
-static func finish(c: Campaign, rules: CampaignRules, state: GameState, roster: Dictionary,
-		won: bool, kills: Dictionary = {}) -> Array[String]:
+## Writes a finished battle back into the company and settles its
+## contract (Warchest). Returns the after-action report.
+static func finish(c: Campaign, state: GameState, roster: Dictionary, won: bool,
+		kills: Dictionary = {}, chaos: ChaosRules = null, side: int = 0) -> Array[String]:
 	var report: Array[String] = []
 	c.battles += 1
 	report.append("Battle %d: %s." % [c.battles, "victory" if won else "defeat"])
+	for p in c.pilots:
+		p.fought_last = false
 	for uid: int in roster:
 		var u := state.unit_by_id(uid)
 		var m := c.mech(roster[uid])
@@ -74,18 +77,17 @@ static func finish(c: Campaign, rules: CampaignRules, state: GameState, roster: 
 		var p := c.pilot(m.pilot_id)
 		report.append(_mech_result(u, m, p.name if p != null else "Unassigned"))
 		if p != null:
-			report.append(_pilot_result(rules, u, p, won, int(kills.get(uid, 0))))
-	var heal := rules.wounds_healed()
-	var healed := 0
-	for p in c.pilots:
-		if not p.dead and p.wounds > 0 and heal > 0:
-			p.wounds = maxi(0, p.wounds - heal)
-			healed += 1
-	if healed > 0:
-		report.append("Between battles each MechWarrior heals %d wound%s." % [heal, "" if heal == 1 else "s"])
+			report.append(_pilot_result(u, p, int(kills.get(uid, 0))))
+	if chaos != null and c.contract != null:
+		report.append_array(Warchest.settle(c, chaos, state, side))
 	c.log.append(report[0])
 	c.last_report = report.duplicate()
 	return report
+
+
+## The MechWarrior died with the 'Mech (or from wounds).
+static func pilot_killed(u: Unit) -> bool:
+	return u.pilot != null and (u.pilot.is_dead() or (u.destroyed and u.destroyed_reason in PILOT_KILLED))
 
 
 static func _mech_result(u: Unit, m: CampaignMech, pilot_name: String) -> String:
@@ -107,19 +109,18 @@ static func _mech_result(u: Unit, m: CampaignMech, pilot_name: String) -> String
 	return "%s needs repairs." % who
 
 
-static func _pilot_result(rules: CampaignRules, u: Unit, p: CampaignPilot, won: bool, kills: int) -> String:
+static func _pilot_result(u: Unit, p: CampaignPilot, kills: int) -> String:
 	p.battles += 1
 	p.kills += kills
+	p.fought_last = true
 	p.wounds = u.pilot.hits
-	if u.pilot.is_dead() or (u.destroyed and u.destroyed_reason in PILOT_KILLED):
+	if pilot_killed(u):
 		p.dead = true
 		p.wounds = Pilot.MAX_HITS
 		return "%s was killed in action." % p.name
-	var gained := rules.xp("battle") + rules.xp("kill") * kills + (rules.xp("win") if won else 0)
-	p.xp += gained
-	var text := "%s earned %d experience" % [p.name, gained]
+	var text := "%s fought" % p.name
 	if kills > 0:
-		text += " with %d kill%s" % [kills, "" if kills == 1 else "s"]
+		text += ", %d kill%s" % [kills, "" if kills == 1 else "s"]
 	if p.wounds > 0:
-		text += " and took %d wound%s" % [p.wounds, "" if p.wounds == 1 else "s"]
+		text += ", %d wound%s to heal" % [p.wounds, "" if p.wounds == 1 else "s"]
 	return text + "."

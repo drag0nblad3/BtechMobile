@@ -1,6 +1,6 @@
 extends SceneTree
 ## Headless campaign route: launcher -> campaign -> start company -> battle
-## -> end the battle -> company report written back.
+## -> take a contract -> end the battle -> report and Warchest written back.
 
 const OUT := "user://campaign.json"
 
@@ -26,8 +26,8 @@ func _run() -> void:
 		return
 	(screen.find_child("StartCompany", true, false) as Button).pressed.emit()
 	await _frames(1)
-	var fight := screen.find_child("FightButton", true, false) as Button
-	if not _check(fight != null and not fight.disabled, "fight button missing"):
+	var fight := screen.find_child("TakeContract0", true, false) as Button
+	if not _check(fight != null and not fight.disabled, "contract button missing"):
 		return
 	fight.pressed.emit()
 	await _frames(6)
@@ -43,6 +43,8 @@ func _run() -> void:
 	await _frames(1)
 	var c := CampaignStore.load_company()
 	if not _check(c != null and c.battles == 1 and CampaignStore.pending_roster().is_empty(), "battle not written back"):
+		return
+	if not _check(c.contract == null and c.last_met >= 1, "contract not settled"):
 		return
 	print("CAMPAIGN SMOKE OK: ", " | ".join(c.last_report))
 	CampaignStore.delete()

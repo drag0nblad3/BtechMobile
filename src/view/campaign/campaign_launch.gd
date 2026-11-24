@@ -1,14 +1,16 @@
 class_name CampaignLaunch
 extends RefCounted
-## Sets up the company's next battle: up to a lance of its ready 'Mechs
-## against an Inner Sphere starter lance of the nearest Battle Value, on a
-## random generated map. Contracts will replace this simple pick.
+## Sets up a contract's battle: up to a lance of the company's ready 'Mechs
+## against official designs sized to the contract's share of their BV, on
+## a random generated map, with the contract's standard mission (Forced
+## Withdrawal on, so crippled 'Mechs count) and chosen options.
 
 const LANCE := 4
 
 
 ## The battle, or null when nothing can fight. Saves the deployment.
-static func build(c: Campaign, db: UnitDb, rng: RandomNumberGenerator) -> GameState:
+static func build(c: Campaign, db: UnitDb, rng: RandomNumberGenerator,
+		k: Contract = null, chaos: ChaosRules = null) -> GameState:
 	var ids: Array = []
 	for m in c.ready_mechs():
 		if ids.size() < LANCE:
@@ -18,30 +20,21 @@ static func build(c: Campaign, db: UnitDb, rng: RandomNumberGenerator) -> GameSt
 	var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
 	for d in CampaignBattle.designs(c, ids):
 		fb.add(0, d)
-	var enemy := enemy_lance(db, fb.bv(0), rng)
-	for id: String in enemy:
+	var percent := k.enemy_percent if k != null else 100
+	for id in EnemyForce.pick(fb, fb.bv(0) * percent / 100, rng):
 		fb.add(1, id)
+	var dice := Dice.new(rng.randi())
+	if k != null:
+		fb.mission_id = k.mission_id
+		fb.forced_withdrawal = true
+		ChaosOptions.before(fb, k.chosen, dice, rng)
 	var maps := MapChoice.new()
 	maps.index = rng.randi_range(0, maps.themes.size() - 1)
 	maps.set_seed(rng.randi_range(1, 99999))
-	var state := fb.build(maps.build())
+	var state := fb.build(maps.build(), dice)
 	if state == null:
 		return null
+	if k != null and chaos != null:
+		ChaosOptions.after(state, k.chosen, chaos)
 	CampaignStore.save(c, CampaignBattle.prepare(c, state, 0, ids))
 	return state
-
-
-## One of the two Inner Sphere starter lances closest to `bv`.
-static func enemy_lance(db: UnitDb, bv: int, rng: RandomNumberGenerator) -> Array:
-	var scored: Array = []
-	for form in StarterFormations.all():
-		if String(form.get("kind", "")) != "lance":
-			continue
-		var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
-		for id in form.get("units", []):
-			fb.add(1, String(id))
-		scored.append([absi(fb.bv(1) - bv), form.get("units", [])])
-	scored.sort_custom(func(a: Array, b: Array) -> bool: return a[0] < b[0])
-	if scored.is_empty():
-		return []
-	return scored[rng.randi_range(0, mini(1, scored.size() - 1))][1]

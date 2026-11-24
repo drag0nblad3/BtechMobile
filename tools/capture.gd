@@ -75,7 +75,7 @@ func _initialize() -> void:
 
 ## A company after one battle: one 'Mech hurt, its pilot wounded.
 func _sample_company() -> void:
-	var c := Campaign.create(CampaignRules.load_file())
+	var c := Campaign.create(CampaignRules.load_file(), ChaosRules.load_file())
 	var u := c.mechs[0].to_unit(UnitDb.load_dir(), 1, 0, Pilot.new())
 	u.armor[Location.LA] = 0
 	u.structure[Location.LA] -= 4
@@ -84,13 +84,13 @@ func _sample_company() -> void:
 	c.mechs[0].condition = MechCondition.lasting(u)
 	c.pilots[0].wounds = 1
 	c.pilots[1].kills = 1
-	c.pilots[1].xp = 3
 	for p in c.pilots:
-		p.xp = maxi(p.xp, 2)
 		p.battles = 1
 	c.battles = 1
 	c.last_report.assign(["Battle 1: victory.", "Captain Ada Rhee's Wolverine WVR-6R needs repairs.",
-		"Lt. Joss Marek earned 3 experience with 1 kill."])
+		"Lt. Joss Marek fought, 1 kill.", "✓ Advance Attack (300 WP)", "✗ Frugal is the Word (300 WP)",
+		"Warchest: +300 WP, now 550 WP."])
+	c.wp = 550
 	CampaignStore.save(c)
 	BattleLaunch.open_campaign = true
 

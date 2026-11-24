@@ -8,9 +8,9 @@ var name := "MechWarrior"
 var gunnery := 4
 var piloting := 5
 var wounds := 0  ## Pilot hits still unhealed (Pilot.MAX_HITS kills).
-var xp := 0
 var kills := 0
 var battles := 0
+var fought_last := false  ## Fought in the last contract (cheaper skill training).
 var dead := false
 
 
@@ -28,7 +28,7 @@ func to_pilot() -> Pilot:
 
 func to_dict() -> Dictionary:
 	return {"id": id, "name": name, "gunnery": gunnery, "piloting": piloting, "wounds": wounds,
-		"xp": xp, "kills": kills, "battles": battles, "dead": dead}
+		"kills": kills, "battles": battles, "fought_last": fought_last, "dead": dead}
 
 
 static func from_dict(d: Dictionary) -> CampaignPilot:
@@ -38,8 +38,8 @@ static func from_dict(d: Dictionary) -> CampaignPilot:
 	p.gunnery = int(d.get("gunnery", p.gunnery))
 	p.piloting = int(d.get("piloting", p.piloting))
 	p.wounds = int(d.get("wounds", 0))
-	p.xp = int(d.get("xp", 0))
 	p.kills = int(d.get("kills", 0))
 	p.battles = int(d.get("battles", 0))
+	p.fought_last = bool(d.get("fought_last", false))
 	p.dead = bool(d.get("dead", false))
 	return p

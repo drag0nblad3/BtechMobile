@@ -163,9 +163,15 @@ guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` 
 e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
 
 ## `data/campaign/rules.json`
-The app's own campaign numbers (`CampaignRules`; none are official, see rules-coverage):
-`company_name`, `starting_funds`, `starting_lance` (`[{design, pilot, gunnery, piloting}]`,
-designs from `data/units/`), `xp` (`battle`, `kill`, `win`), `wounds_healed_per_battle`.
+The company's starting set-up (`CampaignRules`): `company_name`, `starting_lance`
+(`[{design, pilot, gunnery, piloting}]`, designs from `data/units/`).
+
+## `data/campaign/chaos.json`
+Campaign Operations' Chaos Campaign numbers (`ChaosRules`): `starting_wp`, `track_cost_share`,
+`enemy_bv_percent`, `objectives` (`{id, title, wp, check, share?, enemy?, own?, own_at_most?, text}`;
+`check` is one of `ChaosObjective`'s checks), `options` (`{id, title, wp, range, text}`),
+`skill_levels` (`{green|regular|veteran|elite: [gunnery, piloting]}`). Keys starting with `_` are notes
+saying which values are the book's and which are our picks.
 
 ## `data/training/campaign.json`
 The training campaign (`TrainingCampaign`): `name`, `intro`, and `missions` in

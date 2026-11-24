@@ -1,0 +1,32 @@
+{
+  "_source": "Campaign Operations, Chaos Campaign rules (pp. 156-173). Numbers are the book's; where the book gives a range or leaves the choice to the GM, the pick is ours and marked 'pick'.",
+  "starting_wp": 1000,
+  "_starting_wp": "pick: the book leaves starting WP to the GM (p. 160); enough for one contract with some spare.",
+  "track_cost_share": 0.75,
+  "_track_cost_share": "p. 173: a track costs 75% of all its Objective and Option rewards.",
+  "enemy_bv_percent": [75, 100, 125],
+  "_enemy_bv_percent": "pick: tracks size the opposition as a percentage of the player's deployed force (p. 158); these are the sizes the book's examples use.",
+  "objectives": [
+    {"id": "advance_attack", "title": "Advance Attack", "wp": 300, "check": "enemy_down", "share": 0.5, "text": "Destroy or cripple at least half of the enemy force."},
+    {"id": "hammer", "title": "Hammer", "wp": 400, "check": "enemy_down", "share": 0.667, "text": "Destroy or cripple at least two-thirds of the enemy force."},
+    {"id": "bring_the_pain", "title": "Bring the Pain", "wp": 600, "check": "enemy_down", "share": 0.75, "text": "Destroy or cripple at least 75% of the enemy force."},
+    {"id": "annihilate", "title": "Annihilate", "wp": 500, "check": "enemy_down", "share": 1.0, "text": "Destroy or cripple the whole enemy force."},
+    {"id": "being_difficult", "title": "Being Difficult", "wp": 400, "check": "own_operational", "share": 0.667, "text": "Keep at least two-thirds of your force operational (not destroyed or crippled)."},
+    {"id": "stand_your_ground", "title": "Stand Your Ground", "wp": 250, "check": "own_survives", "share": 0.5, "text": "At least half of your force survives."},
+    {"id": "fight_another_day", "title": "Fight Another Day", "wp": 300, "check": "own_losses_below", "share": 0.5, "text": "Lose less than half of your force."},
+    {"id": "frugal", "title": "Frugal is the Word", "wp": 300, "check": "own_losses_at_most", "share": 0.1, "text": "Lose no more than 10% of your force."},
+    {"id": "bullet_time", "title": "Bullet Time", "wp": 100, "check": "no_pilot_deaths", "text": "Finish without losing a MechWarrior."},
+    {"id": "ferocity", "title": "Ferocity", "wp": 300, "check": "trade", "enemy": 0.5, "own": 0.5, "text": "Destroy half of the enemy force while losing less than half of yours."},
+    {"id": "preserve_your_force", "title": "Preserve Your Force", "wp": 350, "check": "trade", "enemy": 0.5, "own": 0.25, "own_at_most": true, "text": "Destroy or cripple half of the enemy force while losing no more than 25% of yours."}
+  ],
+  "options": [
+    {"id": "a_cut_above", "title": "A Cut Above", "wp": 125, "range": "75-200", "text": "Every enemy MechWarrior is one point better at Gunnery and Piloting."},
+    {"id": "bad_intel", "title": "Bad Intel", "wp": 125, "range": "75-200", "text": "One more enemy 'Mech joins, with a Veteran pilot."},
+    {"id": "bad_weather", "title": "Bad Weather", "wp": 125, "range": "75-200", "text": "Roll battlefield conditions for this fight."},
+    {"id": "elites", "title": "Elites", "wp": 200, "range": "125-300", "text": "Half of the enemy pilots are Elite."},
+    {"id": "heavy_fog", "title": "Heavy Fog", "wp": 200, "range": "125-300", "text": "The battle is fought in low visibility."}
+  ],
+  "_options": "wp = pick inside the book's range (p. 170-171). Bad Weather and Heavy Fog use the Core Rulebook's Battlefield Conditions Table and Low Visibility in place of Tactical Operations (TODO(rules)).",
+  "skill_levels": {"green": [5, 6], "regular": [4, 5], "veteran": [3, 4], "elite": [2, 3]},
+  "_skill_levels": "[gunnery, piloting] from the Recruitment table, p. 161."
+}

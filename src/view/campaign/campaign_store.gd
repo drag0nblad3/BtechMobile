@@ -45,10 +45,13 @@ static func pending_roster(path: String = PATH) -> Dictionary:
 	return out
 
 
-## Forgets an unfinished company battle (its autosave was replaced).
+## Forgets an unfinished company battle (its autosave was replaced): the
+## contract is abandoned, its cost already paid.
 static func drop_pending(path: String = PATH) -> void:
 	var c := load_company(path)
 	if c != null and not pending_roster(path).is_empty():
+		c.contract = null
+		c.offers.clear()
 		save(c, {}, path)
 
 
@@ -60,8 +63,9 @@ static func finish(state: GameState, player_side: int, winner: int, frames: Arra
 	if c == null or roster.is_empty():
 		return ""
 	var kills := CampaignBattle.kill_credit_from_frames(frames)
-	var report := CampaignBattle.finish(c, CampaignRules.load_file(), state, roster,
-			winner == player_side, kills)
+	var report := CampaignBattle.finish(c, state, roster, winner == player_side, kills,
+			ChaosRules.load_file(), player_side)
+	c.offers.clear()  # a new board after every contract
 	save(c, {}, path)
 	return "\n".join(report)
 

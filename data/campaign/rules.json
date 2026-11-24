@@ -1,13 +1,30 @@
 {
-  "_note": "The app's own campaign rules. The Core Rulebook leaves campaigns to other books (p. 212), so none of these numbers are official. TODO(rules): replace with an official campaign system if one is added.",
+  "_note": "The company's starting set-up: our pick of name, MechWarriors and starting lance (official designs from data/units). Campaign numbers come from Campaign Operations in chaos.json.",
   "company_name": "Kestrel's Irregulars",
-  "starting_funds": 0,
   "starting_lance": [
-    {"design": "wolverine_wvr6r", "pilot": "Captain Ada Rhee", "gunnery": 4, "piloting": 5},
-    {"design": "griffin_grf1n", "pilot": "Lt. Joss Marek", "gunnery": 4, "piloting": 5},
-    {"design": "shadow_hawk_shd2h", "pilot": "Sgt. Nia Okafor", "gunnery": 4, "piloting": 5},
-    {"design": "phoenix_hawk_pxh1", "pilot": "Cpl. Tomas Brand", "gunnery": 4, "piloting": 5}
-  ],
-  "xp": {"battle": 1, "kill": 1, "win": 1},
-  "wounds_healed_per_battle": 1
+    {
+      "design": "wolverine_wvr6r",
+      "pilot": "Captain Ada Rhee",
+      "gunnery": 4,
+      "piloting": 5
+    },
+    {
+      "design": "griffin_grf1n",
+      "pilot": "Lt. Joss Marek",
+      "gunnery": 4,
+      "piloting": 5
+    },
+    {
+      "design": "shadow_hawk_shd2h",
+      "pilot": "Sgt. Nia Okafor",
+      "gunnery": 4,
+      "piloting": 5
+    },
+    {
+      "design": "phoenix_hawk_pxh1",
+      "pilot": "Cpl. Tomas Brand",
+      "gunnery": 4,
+      "piloting": 5
+    }
+  ]
 }

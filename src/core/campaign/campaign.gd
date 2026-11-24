@@ -1,11 +1,16 @@
 class_name Campaign
 extends RefCounted
 ## A mercenary company that lasts from battle to battle: its 'Mechs with
-## their damage, its MechWarriors with wounds and experience, money, and a
-## log of battles. Plain data; CampaignBattle moves it in and out of games.
+## their damage, its MechWarriors with wounds and records, and a
+## log of battles, its Warchest and current contract. Plain data;
+## CampaignBattle moves it in and out of games.
 
 var name := ""
-var funds := 0
+var wp := 0  ## Warchest Points (Chaos Campaign).
+var on_debt := false  ## The last contract was taken on Warchest debt.
+var contract: Contract = null  ## The contract being fought, if any.
+var offers: Array[Contract] = []  ## Contracts on the board now.
+var last_met := 0  ## Objectives met in the last contract (salvage needs one).
 var battles := 0
 var mechs: Array[CampaignMech] = []
 var pilots: Array[CampaignPilot] = []
@@ -15,10 +20,10 @@ var _next_id := 1
 
 
 ## A new company from the starting lance in the rules file.
-static func create(rules: CampaignRules) -> Campaign:
+static func create(rules: CampaignRules, chaos: ChaosRules = null) -> Campaign:
 	var c := Campaign.new()
 	c.name = String(rules.data.get("company_name", "Mercenary Company"))
-	c.funds = int(rules.data.get("starting_funds", 0))
+	c.wp = chaos.starting_wp() if chaos != null else 0
 	for entry: Dictionary in rules.starting_lance():
 		var p := c.add_pilot(String(entry.get("pilot", "MechWarrior")),
 				int(entry.get("gunnery", 4)), int(entry.get("piloting", 5)))
@@ -74,7 +79,9 @@ func _take_id() -> int:
 
 
 func to_dict() -> Dictionary:
-	return {"version": 1, "name": name, "funds": funds, "battles": battles, "next_id": _next_id,
+	return {"version": 2, "name": name, "wp": wp, "on_debt": on_debt, "last_met": last_met,
+		"contract": contract.to_dict() if contract != null else {},
+		"offers": offers.map(func(k: Contract) -> Dictionary: return k.to_dict()), "battles": battles, "next_id": _next_id,
 		"mechs": mechs.map(func(m: CampaignMech) -> Dictionary: return m.to_dict()),
 		"pilots": pilots.map(func(p: CampaignPilot) -> Dictionary: return p.to_dict()),
 		"log": Array(log), "last_report": Array(last_report)}
@@ -83,7 +90,13 @@ func to_dict() -> Dictionary:
 static func from_dict(d: Dictionary) -> Campaign:
 	var c := Campaign.new()
 	c.name = String(d.get("name", ""))
-	c.funds = int(d.get("funds", 0))
+	c.wp = int(d.get("wp", 0))
+	c.on_debt = bool(d.get("on_debt", false))
+	c.last_met = int(d.get("last_met", 0))
+	var k: Dictionary = d.get("contract", {})
+	c.contract = Contract.from_dict(k) if not k.is_empty() else null
+	for o: Dictionary in d.get("offers", []):
+		c.offers.append(Contract.from_dict(o))
 	c.battles = int(d.get("battles", 0))
 	c._next_id = int(d.get("next_id", 1))
 	for m: Dictionary in d.get("mechs", []):
