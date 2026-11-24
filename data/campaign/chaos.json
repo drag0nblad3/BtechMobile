@@ -28,5 +28,31 @@
   ],
   "_options": "wp = pick inside the book's range (p. 170-171). Bad Weather and Heavy Fog use the Core Rulebook's Battlefield Conditions Table and Low Visibility in place of Tactical Operations (TODO(rules)).",
   "skill_levels": {"green": [5, 6], "regular": [4, 5], "veteran": [3, 4], "elite": [2, 3]},
-  "_skill_levels": "[gunnery, piloting] from the Recruitment table, p. 161."
+  "_skill_levels": "[gunnery, piloting] from the Recruitment table, p. 161.",
+  "support": {
+    "max_wp_per_month": 100,
+    "equipment_rating": "D",
+    "rating_modifier": {"A": 2.0, "B": 1.5, "C": 1.25, "D": 1.0, "F": 0.5},
+    "lance_size": 4,
+    "repair_armor_per_ton": 1,
+    "repair_structure_per_ton": 2,
+    "rearm_intro": 5,
+    "rearm_standard": 10,
+    "hire_mechwarrior": 100,
+    "hire_multiplier": {"green": 1, "regular": 2, "veteran": 3},
+    "heal_wound": 30,
+    "heals_per_month": 1,
+    "train_gunnery": 200,
+    "train_piloting": 150,
+    "idle_training_multiplier": 3,
+    "clan_multiplier": 2,
+    "purchase_intro_per_ton": 10,
+    "purchase_standard_per_ton": 20,
+    "sell_share": 0.5,
+    "market_size": 4,
+    "intro_weapons": ["ac2", "ac5", "ac10", "ac20", "flamer", "small_laser", "medium_laser", "large_laser", "lrm5", "lrm10", "lrm15", "lrm20", "machine_gun", "ppc", "srm2", "srm4", "srm6"],
+    "intro_melee": ["hatchet"],
+    "recruit_names": ["Mara Voss", "Eli Kade", "Rin Tavares", "Dov Hollis", "Asha Brandt", "Kit Morrow", "Sefa Ilunga", "Ivo Petrak", "Lena Quist", "Noor Haddad", "Bram Toller", "Yuki Arden"]
+  },
+  "_support": "Optional Support Points (pp. 161-164): WP convert to SP at WP x Base Force Size Modifier (lances, rounded up, fixed at creation) x Technology Rating Modifier, at most 100 WP per month out of a track. The book lets a force assume a D rating (x1.0) instead of working out its Equipment Rating. Costs from the Support Point Activity Cost Table (p. 163) and the Skill Advancement Table (p. 164). pick: each stop between contracts counts as one month; 'wait a month' adds another. TODO(rules): the SP table has no line for critical components; internal structure repair also restores them. Introductory Rules Equipment Table (p. 163): intro_weapons and intro_melee, with standard engine, gyro, cockpit, structure, armor, heat sinks and jump jets. recruit_names: our pick. Salvage (p. 173): with at least one Objective met, every enemy 'Mech destroyed or crippled on the field joins the company; salvage sells at half price (sell_share), and so (our pick) do the company's own 'Mechs. market_size: our pick, the 'Mechs for sale each month (official Inner Sphere designs; the book leaves availability to the GM)."
 }

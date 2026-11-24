@@ -80,6 +80,8 @@ static func finish(c: Campaign, state: GameState, roster: Dictionary, won: bool,
 			report.append(_pilot_result(u, p, int(kills.get(uid, 0))))
 	if chaos != null and c.contract != null:
 		report.append_array(Warchest.settle(c, chaos, state, side))
+		report.append_array(Salvage.claim(c, state, side))
+	SupportShop.new_month(c)
 	c.log.append(report[0])
 	c.last_report = report.duplicate()
 	return report

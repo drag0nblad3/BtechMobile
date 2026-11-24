@@ -11,6 +11,7 @@ var company: Campaign
 var chaos := ChaosRules.load_file()
 var _list: VBoxContainer
 var _confirm_retire := false
+var _note := ""  ## Why the last Support Points action didn't happen.
 
 
 func _ready() -> void:
@@ -53,6 +54,10 @@ func _build() -> void:
 		UiKit.label(_list, "Last battle", 26).modulate = Color(0.75, 0.85, 1.0)
 		UiKit.label(_list, "\n".join(company.last_report), UiKit.SMALL)
 	_contracts()
+	SupportPanel.header(_list, company, chaos, _act, _note)
+	UiSkin.rule(_list)
+	MarketPanel.market(_list, company, db, chaos, _act)
+	UiSkin.rule(_list)
 	UiKit.label(_list, "Roster", 26).modulate = Color(0.75, 0.85, 1.0)
 	for m in company.mechs:
 		_mech_row(m)
@@ -71,13 +76,22 @@ func _mech_row(m: CampaignMech) -> void:
 			"" if p.battles == 1 else "s", p.kills, "" if p.kills == 1 else "s"]
 		if p.wounds > 0 and not p.dead:
 			who += " · %d wound%s" % [p.wounds, "" if p.wounds == 1 else "s"]
-	var name_label := UiKit.label(_list, ("%s %s" % [def.name, def.model]) if def != null else m.design, UiKit.FONT)
+	var name_label := UiKit.label(_list, (("%s %s" % [def.name, def.model]) if def != null else m.design) + ("  (salvage)" if m.salvage else ""), UiKit.FONT)
 	name_label.modulate = Color(1.0, 0.9, 0.6)
 	UiKit.label(_list, who, UiKit.SMALL)
 	UiKit.label(_list, ConditionText.summary(m, db), UiKit.SMALL)
 	var tip := ConditionText.weakest(m, db)
 	if tip != "" and GameSettings.explain_level != ExplainLevel.OFF:
 		UiSkin.label(UiKit.label(_list, tip, UiKit.SMALL), "muted")
+	if def != null:
+		MarketPanel.sell_button(SupportPanel.mech_actions(_list, company, m, def, chaos, _act), company, m, db, chaos, _act)
+
+
+## Runs a SupportShop action, keeps why it failed, saves and redraws.
+func _act(action: Callable) -> void:
+	_note = String(action.call())
+	CampaignStore.save(company)
+	_build()
 
 
 func _contracts() -> void:

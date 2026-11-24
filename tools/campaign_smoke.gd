@@ -34,10 +34,11 @@ func _run() -> void:
 	if not _check(current_scene.get("in_campaign") == true, "battle is not a campaign battle"):
 		return
 	var ctl: GameController = current_scene.get("controller")
-	var mine := ctl.state.units_of_side(0)
+	var mine := ctl.state.all_units().filter(func(u: Unit) -> bool: return u.side == 0)
 	mine[0].armor[Location.LA] = 0
-	for u in ctl.state.units_of_side(1):
-		Damage.destroy_unit(u, "engine destroyed")
+	for u in ctl.state.all_units():  # hidden and reserve 'Mechs too
+		if u.side == 1:
+			Damage.destroy_unit(u, "engine destroyed")
 	ctl.state.game_over = true
 	current_scene.call("_on_event", GameEvent.new(GameEvent.GAME_OVER, {"winner": 0}))
 	await _frames(1)
@@ -46,7 +47,22 @@ func _run() -> void:
 		return
 	if not _check(c.contract == null and c.last_met >= 1, "contract not settled"):
 		return
-	print("CAMPAIGN SMOKE OK: ", " | ".join(c.last_report))
+	var back := CampaignScreen.new()
+	root.add_child(back)
+	await _frames(1)
+	(back.find_child("ConvertWp", true, false) as Button).pressed.emit()
+	await _frames(1)
+	if not _check(c.mechs.any(func(m: CampaignMech) -> bool: return m.salvage), "no salvage claimed"):
+		return
+	var fix := back.find_child("Repair_%s_armor" % c.mechs[0].id, true, false) as Button
+	if not _check(fix != null, "no repair button for the damaged 'Mech"):
+		return
+	fix.pressed.emit()
+	await _frames(1)
+	c = CampaignStore.load_company()
+	if not _check(c.sp > 0 and c.sp < 100 and c.converted == 100 and c.mechs[0].condition.is_empty(), "Support Points repair failed: %d SP" % c.sp):
+		return
+	print("CAMPAIGN SMOKE OK: ", " | ".join(c.last_report), " | SP left after repair: ", c.sp)
 	CampaignStore.delete()
 	quit(0)
 

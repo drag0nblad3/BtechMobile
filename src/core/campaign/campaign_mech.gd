@@ -8,6 +8,7 @@ var design := ""  ## UnitDef id.
 var condition: Dictionary = {}  ## MechCondition; empty = undamaged.
 var pilot_id := ""
 var written_off := false
+var salvage := false  ## Taken from the battlefield (Salvage).
 
 
 ## A battle Unit carrying this 'Mech's damage.
@@ -28,7 +29,7 @@ func can_deploy() -> bool:
 
 func to_dict() -> Dictionary:
 	return {"id": id, "design": design, "condition": condition, "pilot": pilot_id,
-		"written_off": written_off}
+		"written_off": written_off, "salvage": salvage}
 
 
 static func from_dict(d: Dictionary) -> CampaignMech:
@@ -38,4 +39,5 @@ static func from_dict(d: Dictionary) -> CampaignMech:
 	m.condition = d.get("condition", {})
 	m.pilot_id = String(d.get("pilot", ""))
 	m.written_off = bool(d.get("written_off", false))
+	m.salvage = bool(d.get("salvage", false))
 	return m

@@ -2,7 +2,7 @@ class_name ChaosRules
 extends RefCounted
 ## Campaign Operations' Chaos Campaign numbers (data/campaign/chaos.json):
 ## Warchest objectives and options, track cost, enemy force sizes, skill
-## levels. Where the book leaves a choice to the GM the file marks our pick.
+## levels and the optional Support Points tables. Where the book leaves a choice to the GM the file marks our pick.
 
 const PATH := "res://data/campaign/chaos.json"
 
@@ -50,3 +50,13 @@ func _find(list: Array, id: String) -> Dictionary:
 		if d.get("id", "") == id:
 			return d
 	return {}
+
+
+## The optional Support Points numbers (pp. 161-164).
+func support() -> Dictionary:
+	return data.get("support", {})
+
+
+## One Support Points number, e.g. sp("heal_wound").
+func sp(key: String) -> int:
+	return int(support().get(key, 0))
