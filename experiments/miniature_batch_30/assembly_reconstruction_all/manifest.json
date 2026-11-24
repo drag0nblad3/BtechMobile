@@ -1,0 +1,548 @@
+[
+  {
+    "id": "catapult",
+    "source": "cached_contour_batch_30/catapult_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "adder",
+    "source": "cached_contour_batch_30/adder_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "blackjack",
+    "source": "cached_contour_batch_30/blackjack_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "locust",
+    "source": "cached_contour_batch_30/locust_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "archer",
+    "source": "cached_contour_batch_30/archer_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "awesome",
+    "source": "cached_contour_batch_30/awesome_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "atlas",
+    "source": "cached_contour_batch_30/atlas_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_01.json",
+    "summaryFile": "summary_01.json"
+  },
+  {
+    "id": "banshee",
+    "source": "cached_contour_batch_30/banshee_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "battlemaster",
+    "source": "cached_contour_batch_30/battlemaster_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "centurion",
+    "source": "cached_contour_batch_30/centurion_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "charger",
+    "source": "cached_contour_batch_30/charger_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "enforcer",
+    "source": "cached_contour_batch_30/enforcer_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "hatchetman",
+    "source": "cached_contour_batch_30/hatchetman_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "highlander",
+    "source": "cached_contour_batch_30/highlander_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "hunchback",
+    "source": "cached_contour_batch_30/hunchback_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "jagermech",
+    "source": "cached_contour_batch_30/jagermech_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_02.json",
+    "summaryFile": "summary_02.json"
+  },
+  {
+    "id": "phoenix_hawk",
+    "source": "cached_contour_batch_30/phoenix_hawk_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_03.json",
+    "summaryFile": "summary_03.json"
+  },
+  {
+    "id": "trebuchet",
+    "source": "cached_contour_batch_30/trebuchet_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_03.json",
+    "summaryFile": "summary_03.json"
+  },
+  {
+    "id": "warhammer",
+    "source": "cached_contour_batch_30/warhammer_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_03.json",
+    "summaryFile": "summary_03.json"
+  },
+  {
+    "id": "crab",
+    "source": "cached_contour_batch_30/crab_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_03.json",
+    "summaryFile": "summary_03.json"
+  },
+  {
+    "id": "stalker",
+    "source": "cached_contour_batch_30/stalker_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_03.json",
+    "summaryFile": "summary_03.json"
+  },
+  {
+    "id": "panther",
+    "source": "cached_contour_batch_30/panther_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_03.json",
+    "summaryFile": "summary_03.json"
+  },
+  {
+    "id": "dragon",
+    "source": "cached_contour_batch_30/dragon_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_04.json",
+    "summaryFile": "summary_04.json"
+  },
+  {
+    "id": "cyclops",
+    "source": "cached_contour_batch_30/cyclops_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_04.json",
+    "summaryFile": "summary_04.json"
+  },
+  {
+    "id": "griffin",
+    "source": "cached_contour_batch_30/griffin_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_04.json",
+    "summaryFile": "summary_04.json"
+  },
+  {
+    "id": "wolverine",
+    "source": "cached_contour_batch_30/wolverine_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_04.json",
+    "summaryFile": "summary_04.json"
+  },
+  {
+    "id": "firestarter",
+    "source": "cached_contour_batch_30/firestarter_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_04.json",
+    "summaryFile": "summary_04.json"
+  },
+  {
+    "id": "shadow_hawk",
+    "source": "cached_contour_batch_30/shadow_hawk_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_04.json",
+    "summaryFile": "summary_04.json"
+  },
+  {
+    "id": "thunderbolt",
+    "source": "cached_contour_batch_30/thunderbolt_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_05.json",
+    "summaryFile": "summary_05.json"
+  },
+  {
+    "id": "marauder",
+    "source": "cached_contour_batch_30/marauder_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_05.json",
+    "summaryFile": "summary_05.json"
+  },
+  {
+    "id": "mad_dog",
+    "source": "component_reconstruction_30/mad_dog_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_05.json",
+    "summaryFile": "summary_05.json"
+  },
+  {
+    "id": "hellbringer",
+    "source": "component_reconstruction_30/hellbringer_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_05.json",
+    "summaryFile": "summary_05.json"
+  },
+  {
+    "id": "kit_fox",
+    "source": "component_reconstruction_30/kit_fox_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_05.json",
+    "summaryFile": "summary_05.json"
+  },
+  {
+    "id": "cougar",
+    "source": "component_reconstruction_30/cougar_selected.json",
+    "status": "retained control",
+    "deltaFile": "deltas_05.json",
+    "summaryFile": "summary_05.json"
+  },
+  {
+    "id": "shadow_cat",
+    "source": "component_reconstruction_30/shadow_cat_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_06.json",
+    "summaryFile": "summary_06.json"
+  },
+  {
+    "id": "viper",
+    "source": "batch_contour_search_next/viper_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_06.json",
+    "summaryFile": "summary_06.json"
+  },
+  {
+    "id": "gargoyle",
+    "source": "component_reconstruction_30/gargoyle_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_06.json",
+    "summaryFile": "summary_06.json"
+  },
+  {
+    "id": "executioner",
+    "source": "component_reconstruction_30/executioner_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_06.json",
+    "summaryFile": "summary_06.json"
+  },
+  {
+    "id": "grendel",
+    "source": "component_reconstruction_30/grendel_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_06.json",
+    "summaryFile": "summary_06.json"
+  },
+  {
+    "id": "turkina",
+    "source": "component_reconstruction_30/turkina_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_06.json",
+    "summaryFile": "summary_06.json"
+  },
+  {
+    "id": "nova",
+    "source": "component_reconstruction_30/nova_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_07.json",
+    "summaryFile": "summary_07.json"
+  },
+  {
+    "id": "timber_wolf",
+    "source": "component_reconstruction_30/timber_wolf_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_07.json",
+    "summaryFile": "summary_07.json"
+  },
+  {
+    "id": "fire_moth",
+    "source": "component_reconstruction_30/fire_moth_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_07.json",
+    "summaryFile": "summary_07.json"
+  },
+  {
+    "id": "dire_wolf",
+    "source": "component_reconstruction_30/dire_wolf_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_07.json",
+    "summaryFile": "summary_07.json"
+  },
+  {
+    "id": "warhawk",
+    "source": "photo_clan_heavy/warhawk_trials.json#selected.spec",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_07.json",
+    "summaryFile": "summary_07.json"
+  },
+  {
+    "id": "summoner",
+    "source": "component_reconstruction_30/summoner_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_07.json",
+    "summaryFile": "summary_07.json"
+  },
+  {
+    "id": "king_crab",
+    "source": "component_reconstruction_30/king_crab_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_08.json",
+    "summaryFile": "summary_08.json"
+  },
+  {
+    "id": "bushwacker",
+    "source": "component_reconstruction_30/bushwacker_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_08.json",
+    "summaryFile": "summary_08.json"
+  },
+  {
+    "id": "marauder_ii",
+    "source": "component_reconstruction_30/marauder_ii_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_08.json",
+    "summaryFile": "summary_08.json"
+  },
+  {
+    "id": "nightstar",
+    "source": "component_reconstruction_30/nightstar_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_08.json",
+    "summaryFile": "summary_08.json"
+  },
+  {
+    "id": "longbow",
+    "source": "component_reconstruction_30/longbow_selected.json",
+    "status": "photo-scored assembly",
+    "deltaFile": "deltas_08.json",
+    "summaryFile": "summary_08.json"
+  },
+  {
+    "id": "stormcrow",
+    "source": "cohort_clan_24/pass3_selected_1.json#stormcrow",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "mist_lynx",
+    "source": "cohort_clan_24/pass3_selected_1.json#mist_lynx",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "ice_ferret",
+    "source": "cohort_clan_24/pass3_selected_2.json#ice_ferret",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "nova_cat",
+    "source": "cohort_clan_24/pass3_selected_2.json#nova_cat",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "crossbow",
+    "source": "cohort_clan_24/pass3_selected_3.json#crossbow",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "ebon_jaguar",
+    "source": "cohort_clan_24/pass3_selected_3.json#ebon_jaguar",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "huntsman",
+    "source": "cohort_clan_24/pass3_selected_3.json#huntsman",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "kingfisher",
+    "source": "cohort_clan_24/pass3_selected_3.json#kingfisher",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_09.json",
+    "summaryFile": "summary_09.json"
+  },
+  {
+    "id": "orion",
+    "source": "cohort_is_24/selected_1.json#orion",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "crusader",
+    "source": "cohort_is_24/selected_1.json#crusader",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "grasshopper",
+    "source": "cohort_is_24/selected_1.json#grasshopper",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "wolfhound",
+    "source": "cohort_is_24/selected_1.json#wolfhound",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "zeus",
+    "source": "cohort_is_24/selected_1.json#zeus",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "cataphract",
+    "source": "cohort_is_24/selected_2.json#cataphract",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "axman",
+    "source": "cohort_is_24/axman_repaired.json#spec",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "victor",
+    "source": "cohort_is_24/selected_2.json#victor",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "thug",
+    "source": "cohort_is_24/selected_2.json#thug",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "spider",
+    "source": "cohort_is_24/selected_2.json#spider",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_10.json",
+    "summaryFile": "summary_10.json"
+  },
+  {
+    "id": "valkyrie",
+    "source": "cohort_is_24/selected_2.json#valkyrie",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "stinger",
+    "source": "cohort_is_24/selected_2.json#stinger",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "wasp",
+    "source": "cohort_is_24/selected_3.json#wasp",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "black_knight",
+    "source": "cohort_is_24/selected_3.json#black_knight",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "guillotine",
+    "source": "cohort_is_24/selected_3.json#guillotine",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "flashman",
+    "source": "cohort_is_24/selected_3.json#flashman",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "sentinel",
+    "source": "cohort_is_24/selected_3.json#sentinel",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "vindicator",
+    "source": "cohort_is_24/selected_3.json#vindicator",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  },
+  {
+    "id": "kintaro",
+    "source": "cohort_is_24/selected_3.json#kintaro",
+    "status": "unranked structural assemblies",
+    "deltaFile": "deltas_11.json",
+    "summaryFile": "summary_11.json"
+  }
+]

@@ -1,0 +1,107 @@
+{
+  "expected": 78,
+  "processed": 78,
+  "unique": 78,
+  "missing": [],
+  "unexpected": [],
+  "scored": 51,
+  "improved": 44,
+  "retained": 7,
+  "rejected": 0,
+  "blocked": 0,
+  "unrankedModels": 27,
+  "unrankedAlternatives": 78,
+  "unrankedDelta": 26077,
+  "trials": 1425,
+  "acceptedAssemblies": 73,
+  "acceptedParts": 282,
+  "symmetricAccepted": 56,
+  "photoAccepted": 26,
+  "multiViewPhotoAccepted": 14,
+  "multiViewModels": 21,
+  "usableMultiViewModels": 14,
+  "changed": 21146,
+  "views": 74,
+  "usableCameraViews": 61,
+  "before": 0.48350180827886724,
+  "after": 0.4905252194211018,
+  "faults": 0,
+  "clearBefore": 652,
+  "clearAfter": 652,
+  "muzzleTotal": 790,
+  "roundtripFailures": 0,
+  "worstView": -0.0016499999999999848,
+  "top": [
+    {
+      "id": "dragon",
+      "before": 0.5392875,
+      "after": 0.5719749999999999,
+      "changed": 1258
+    },
+    {
+      "id": "shadow_cat",
+      "before": 0.4758,
+      "after": 0.50196,
+      "changed": 591
+    },
+    {
+      "id": "crab",
+      "before": 0.5549571428571428,
+      "after": 0.5774142857142858,
+      "changed": 450
+    },
+    {
+      "id": "nova",
+      "before": 0.54758,
+      "after": 0.5693699999999999,
+      "changed": 503
+    },
+    {
+      "id": "kit_fox",
+      "before": 0.51766,
+      "after": 0.53646,
+      "changed": 298
+    },
+    {
+      "id": "dire_wolf",
+      "before": 0.48666666666666664,
+      "after": 0.5044,
+      "changed": 1088
+    },
+    {
+      "id": "summoner",
+      "before": 0.5054333333333334,
+      "after": 0.5216666666666666,
+      "changed": 392
+    },
+    {
+      "id": "king_crab",
+      "before": 0.5010800000000001,
+      "after": 0.51721,
+      "changed": 1052
+    },
+    {
+      "id": "shadow_hawk",
+      "before": 0.47852222222222224,
+      "after": 0.4944,
+      "changed": 687
+    },
+    {
+      "id": "fire_moth",
+      "before": 0.51678,
+      "after": 0.5276,
+      "changed": 300
+    }
+  ],
+  "familyCounts": {
+    "wedge": 17,
+    "faceted": 30,
+    "photo_intersection": 23,
+    "photo_consensus": 3
+  },
+  "groupCounts": {
+    "paired leg assembly": 35,
+    "paired arm assembly": 28,
+    "core assembly": 10
+  }
+}
