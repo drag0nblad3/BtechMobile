@@ -1,0 +1,3864 @@
+{
+  "scope": 149,
+  "batch": 10,
+  "attempted": 52,
+  "cumulativeAttempted": 149,
+  "remainingSourceAudit": 0,
+  "distinctReferenceImages": 11,
+  "modelsWithRegisteredAttempts": 11,
+  "sourceOnly": 41,
+  "selectedIndependentOfficialMultiView": 0,
+  "selectedSingleReference": 2,
+  "changed": 128,
+  "trials": 144,
+  "metrics": {
+    "physical": [
+      0,
+      0
+    ],
+    "weak": [
+      0,
+      0
+    ],
+    "partIslands": [
+      0,
+      0
+    ],
+    "clear": [
+      538,
+      538
+    ],
+    "total": [
+      538,
+      538
+    ],
+    "cells": [
+      323286,
+      323318
+    ]
+  },
+  "baselineVerified": true,
+  "coverageVerified": true,
+  "cumulativeRegisteredAttempts": 71,
+  "cumulativeDistinctReferenceViews": 94,
+  "cumulativeWithoutRegisteredAttempt": 78,
+  "cumulativeTwoReferencesAttempted": 23,
+  "rows": [
+    {
+      "id": "alfar",
+      "source": "data/voxels/alfar_shape.json",
+      "selectedFrom": "batch_01.json",
+      "before": {
+        "cells": 5864,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 10,
+        "total": 10
+      },
+      "after": {
+        "cells": 5864,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 10,
+        "total": 10
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "AL-B4 illustration, AL-A1 source variant differs and feet cropped",
+          "url": "https://www.mordel.net/images/tro/bm/bm48878.jpg",
+          "score": 0.5758,
+          "camera": {
+            "yaw": 30,
+            "elev": -5,
+            "roll": 6,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1149.2510526156202,
+            "tx": 264.78964377634026,
+            "ty": 227.41244587958073,
+            "rmse": 4.5494561544425975
+          },
+          "pose": {
+            "rl": 7.38716963632722,
+            "ll": 27.4199840906842
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.5758,
+              "reference_pixels": 34140,
+              "model_pixels": 38821
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_d.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Alfar"
+    },
+    {
+      "id": "blade",
+      "source": "data/voxels/blade_shape.json",
+      "selectedFrom": "batch_01.json",
+      "before": {
+        "cells": 4452,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 4452,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_a.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Blade_(BattleMech)"
+    },
+    {
+      "id": "bombard",
+      "source": "data/voxels/bombard_shape.json",
+      "selectedFrom": "batch_02.json",
+      "before": {
+        "cells": 4570,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 4570,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_a.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Bombard"
+    },
+    {
+      "id": "daedalus",
+      "source": "data/voxels/daedalus_shape.json",
+      "selectedFrom": "second_01.json",
+      "before": {
+        "cells": 5257,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 16
+      },
+      "after": {
+        "cells": 5257,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 16
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_a.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Daedalus_(BattleMech)"
+    },
+    {
+      "id": "dragoon",
+      "source": "data/voxels/dragoon_shape.json",
+      "selectedFrom": "batch_03.json",
+      "before": {
+        "cells": 6830,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "after": {
+        "cells": 6830,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_a.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Dragoon_(BattleMech)"
+    },
+    {
+      "id": "eagle",
+      "source": "data/voxels/eagle_shape.json",
+      "selectedFrom": "batch_03.json",
+      "before": {
+        "cells": 4533,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 4533,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_a.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/eagle.gif"
+    },
+    {
+      "id": "eisenfaust",
+      "source": "data/voxels/eisenfaust_shape.json",
+      "selectedFrom": "batch_03.json",
+      "before": {
+        "cells": 5554,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 5554,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "official technical illustration, perspective and feet cropped",
+          "url": "https://cfw.sarna.net/wiki/images/2/25/Eisenfaust.jpg",
+          "score": 0.6069,
+          "camera": {
+            "yaw": -40,
+            "elev": 0,
+            "roll": -6,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2688.1537267876465,
+            "tx": 197.0180345560705,
+            "ty": 250.82432651625496,
+            "rmse": 9.924463426090737
+          },
+          "pose": {
+            "rl": 21.908285663146813,
+            "ll": 25.4253337600058
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.6069,
+              "reference_pixels": 29813,
+              "model_pixels": 30175
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_d.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Eisenfaust_(BattleMech)"
+    },
+    {
+      "id": "exhumer",
+      "source": "data/voxels/exhumer_shape.json",
+      "selectedFrom": "batch_04.json",
+      "before": {
+        "cells": 7227,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 22,
+        "total": 22
+      },
+      "after": {
+        "cells": 7227,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 22,
+        "total": 22
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Exhumer"
+    },
+    {
+      "id": "flashfire",
+      "source": "data/voxels/flashfire_shape.json",
+      "selectedFrom": "second_02.json",
+      "before": {
+        "cells": 5648,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 18,
+        "total": 18
+      },
+      "after": {
+        "cells": 5648,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 18,
+        "total": 18
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Flashfire"
+    },
+    {
+      "id": "gravedigger",
+      "source": "data/voxels/gravedigger_shape.json",
+      "selectedFrom": "batch_05.json",
+      "before": {
+        "cells": 6625,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "after": {
+        "cells": 6625,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Gravedigger"
+    },
+    {
+      "id": "ha_otoko",
+      "source": "data/voxels/ha_otoko_shape.json",
+      "selectedFrom": "batch_05.json",
+      "before": {
+        "cells": 10870,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 60,
+        "total": 60
+      },
+      "after": {
+        "cells": 10870,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 60,
+        "total": 60
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/haotoko.gif"
+    },
+    {
+      "id": "hatamoto_hi",
+      "source": "data/voxels/hatamoto_hi_shape.json",
+      "selectedFrom": "batch_05.json",
+      "before": {
+        "cells": 6532,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 6532,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "hatamoto_kaze",
+      "source": "data/voxels/hatamoto_kaze_shape.json",
+      "selectedFrom": "batch_05.json",
+      "before": {
+        "cells": 7454,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "after": {
+        "cells": 7454,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "hatamoto_ku",
+      "source": "data/voxels/hatamoto_ku_shape.json",
+      "selectedFrom": "batch_05.json",
+      "before": {
+        "cells": 6417,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 6417,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "hatamoto_mizo",
+      "source": "data/voxels/hatamoto_mizo_shape.json",
+      "selectedFrom": "batch_05.json",
+      "before": {
+        "cells": 6240,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 6240,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_b.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "hel",
+      "source": "data/voxels/hel_shape.json",
+      "selectedFrom": "second_03.json",
+      "before": {
+        "cells": 6706,
+        "parts": 13,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 1,
+        "total": 1
+      },
+      "after": {
+        "cells": 6706,
+        "parts": 13,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 1,
+        "total": 1
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_c.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "hermes_iii",
+      "source": "data/voxels/hermes_iii_shape.json",
+      "selectedFrom": "batch_06.json",
+      "before": {
+        "cells": 4335,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 4335,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_c.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "hermit_crab",
+      "source": "data/voxels/hermit_crab_shape.json",
+      "selectedFrom": "batch_06.json",
+      "before": {
+        "cells": 6111,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 6111,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial 3D-printed Hermit Crab; both feet cropped",
+          "url": "https://images.dakkadakka.com/s/i/gallery/img/2023/2/9/1159610.png",
+          "score": 0.5698,
+          "camera": {
+            "yaw": -40,
+            "elev": -5,
+            "roll": -6,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 3289.774208693524,
+            "tx": 231.09916956069168,
+            "ty": 243.56976037070567,
+            "rmse": 32.16259614920612
+          },
+          "pose": {
+            "rl": 38.30844876683594,
+            "ll": 20.13167080162687
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.5698,
+              "reference_pixels": 37348,
+              "model_pixels": 45028
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_c.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Hermit_Crab"
+    },
+    {
+      "id": "hound",
+      "source": "data/voxels/hound_shape.json",
+      "selectedFrom": "batch_06.json",
+      "before": {
+        "cells": 6527,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "after": {
+        "cells": 6527,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_c.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Hound"
+    },
+    {
+      "id": "initiate",
+      "source": "data/voxels/initiate_shape.json",
+      "selectedFrom": "second_03.json",
+      "before": {
+        "cells": 7694,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 27,
+        "total": 27
+      },
+      "after": {
+        "cells": 7694,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 27,
+        "total": 27
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_c.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/initiate.gif"
+    },
+    {
+      "id": "jackrabbit",
+      "source": "data/voxels/jackrabbit_shape.json",
+      "selectedFrom": "second_03.json",
+      "before": {
+        "cells": 4870,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 4870,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "official technical illustration, extreme running pose and cropped toe",
+          "url": "https://cfw.sarna.net/wiki/images/f/f3/Jackrabbit.jpg",
+          "score": 0.51,
+          "camera": {
+            "yaw": -55,
+            "elev": 15,
+            "roll": 6,
+            "distance": 140,
+            "target": [
+              0,
+              24.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1792.631591440754,
+            "tx": 274.0492900767209,
+            "ty": 241.5530825829009,
+            "rmse": 5.561392815450012
+          },
+          "pose": {
+            "rl": 12.549976090914045,
+            "ll": 13.830311683238783
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.51,
+              "reference_pixels": 18714,
+              "model_pixels": 30883
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_d.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Jackrabbit"
+    },
+    {
+      "id": "jagermech_iii",
+      "source": "data/voxels/jagermech_iii_shape.json",
+      "selectedFrom": "batch_07.json",
+      "before": {
+        "cells": 8078,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 8078,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_c.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/JagerMech_III"
+    },
+    {
+      "id": "juggernaut",
+      "source": "data/voxels/juggernaut_shape.json",
+      "selectedFrom": "second_04.json",
+      "before": {
+        "cells": 9515,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 26,
+        "total": 26
+      },
+      "after": {
+        "cells": 9515,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 26,
+        "total": 26
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_d.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Juggernaut_(BattleMech)"
+    },
+    {
+      "id": "kabuto",
+      "source": "data/voxels/kabuto_shape.json",
+      "selectedFrom": "second_04.json",
+      "before": {
+        "cells": 4020,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "after": {
+        "cells": 4020,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_d.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/kabuto.gif"
+    },
+    {
+      "id": "katana",
+      "source": "data/voxels/katana_shape.json",
+      "selectedFrom": "batch_07.json",
+      "before": {
+        "cells": 6941,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 6941,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_d.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/katana.gif"
+    },
+    {
+      "id": "koschei",
+      "source": "data/voxels/koschei_shape.json",
+      "selectedFrom": "batch_08.json",
+      "before": {
+        "cells": 6001,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 6001,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "IWM KSC-3I product photograph; one foot lifted and one obscured by grass",
+          "url": "https://gamekastle.com/cdn/shop/files/product_69065.jpg?v=1692566343",
+          "score": 0.6577,
+          "camera": {
+            "yaw": -30,
+            "elev": 5,
+            "roll": 0,
+            "distance": 140,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1383.4422990692185,
+            "tx": 291.39713557469383,
+            "ty": 236.3035943527552,
+            "rmse": 9.748070152218398
+          },
+          "pose": {
+            "rl": 4.509242631674186,
+            "ll": 21.593428698874803,
+            "ra": 29.75410919365884
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.6577,
+              "reference_pixels": 17598,
+              "model_pixels": 21467
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_b.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Koschei"
+    },
+    {
+      "id": "koto",
+      "source": "data/voxels/koto_shape.json",
+      "selectedFrom": "batch_08.json",
+      "before": {
+        "cells": 4160,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "after": {
+        "cells": 4160,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_d.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Koto"
+    },
+    {
+      "id": "lightray",
+      "source": "data/voxels/lightray_shape.json",
+      "selectedFrom": "batch_08.json",
+      "before": {
+        "cells": 5526,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "after": {
+        "cells": 5526,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "painted Lightray miniature; variant unconfirmed",
+          "url": "https://i.imgur.com/Jwn4tC3.jpg",
+          "score": 0.4376,
+          "camera": {
+            "yaw": -10,
+            "elev": 0,
+            "roll": -3,
+            "distance": 400,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2649.1113157348645,
+            "tx": 256.8634226022111,
+            "ty": 160.97274327179036,
+            "rmse": 24.653543668427595
+          },
+          "pose": {
+            "rl": 80.65482716993361,
+            "ll": 82.80627589655766,
+            "ra": 28.095605842176433,
+            "la": 60.005629517241495
+          },
+          "fitOK": false,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.4376,
+              "reference_pixels": 12309,
+              "model_pixels": 8339
+            }
+          }
+        },
+        {
+          "class": "painted Lightray miniature; variant unconfirmed",
+          "url": "https://i.imgur.com/Jwn4tC3.jpg",
+          "score": 0.4825,
+          "camera": {
+            "yaw": 10,
+            "elev": 0,
+            "roll": -3,
+            "distance": 90,
+            "target": [
+              0,
+              23.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 596.2500599890566,
+            "tx": 257.8542992072181,
+            "ty": 161.03496074861044,
+            "rmse": 24.538676140377984
+          },
+          "pose": {
+            "rl": 75.90359129637979,
+            "ll": 81.38433950570463,
+            "ra": 26.138070044490206,
+            "la": 53.02356228782876
+          },
+          "fitOK": false,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.4825,
+              "reference_pixels": 12309,
+              "model_pixels": 8811
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_a.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/lightray_lgh-4w.gif"
+    },
+    {
+      "id": "lineholder",
+      "source": "data/voxels/lineholder_shape.json",
+      "selectedFrom": "batch_08.json",
+      "before": {
+        "cells": 6434,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 15,
+        "total": 15
+      },
+      "after": {
+        "cells": 6514,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 15,
+        "total": 15
+      },
+      "changed": 80,
+      "patches": [
+        {
+          "part": "ll_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  -8,
+                  8,
+                  -3
+                ],
+                [
+                  -8,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  8,
+                  -3
+                ],
+                [
+                  -4,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  9,
+                  -3
+                ],
+                [
+                  -8,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  9,
+                  -3
+                ],
+                [
+                  -4,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  9,
+                  -2
+                ],
+                [
+                  -8,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  -2
+                ],
+                [
+                  -3,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  9,
+                  -1
+                ],
+                [
+                  -8,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  -1
+                ],
+                [
+                  -3,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  9,
+                  0
+                ],
+                [
+                  -8,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  0
+                ],
+                [
+                  -3,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  9,
+                  1
+                ],
+                [
+                  -8,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  9,
+                  1
+                ],
+                [
+                  -3,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  -3
+                ],
+                [
+                  -8,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  10,
+                  -3
+                ],
+                [
+                  -4,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  -2
+                ],
+                [
+                  -8,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  -2
+                ],
+                [
+                  -3,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  -1
+                ],
+                [
+                  -8,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  -1
+                ],
+                [
+                  -3,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  0
+                ],
+                [
+                  -8,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  0
+                ],
+                [
+                  -3,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  1
+                ],
+                [
+                  -8,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  10,
+                  1
+                ],
+                [
+                  -3,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  10,
+                  2
+                ],
+                [
+                  -8,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  10,
+                  2
+                ],
+                [
+                  -4,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  11,
+                  -3
+                ],
+                [
+                  -8,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  11,
+                  -3
+                ],
+                [
+                  -4,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  11,
+                  2
+                ],
+                [
+                  -8,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  11,
+                  2
+                ],
+                [
+                  -4,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  12,
+                  -3
+                ],
+                [
+                  -8,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  12,
+                  -3
+                ],
+                [
+                  -4,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -8,
+                  12,
+                  2
+                ],
+                [
+                  -8,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -4,
+                  12,
+                  2
+                ],
+                [
+                  -4,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -9,
+                  8,
+                  -2
+                ],
+                [
+                  -9,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  -2
+                ],
+                [
+                  -3,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -9,
+                  8,
+                  -1
+                ],
+                [
+                  -9,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  -1
+                ],
+                [
+                  -3,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -9,
+                  8,
+                  0
+                ],
+                [
+                  -9,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  0
+                ],
+                [
+                  -3,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -9,
+                  8,
+                  1
+                ],
+                [
+                  -9,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  -3,
+                  8,
+                  1
+                ],
+                [
+                  -3,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 40
+        },
+        {
+          "part": "rl_shin",
+          "shapes": [
+            {
+              "box": [
+                [
+                  3,
+                  8,
+                  -3
+                ],
+                [
+                  3,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  8,
+                  -3
+                ],
+                [
+                  7,
+                  8,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  9,
+                  -3
+                ],
+                [
+                  3,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  9,
+                  -3
+                ],
+                [
+                  7,
+                  9,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  -2
+                ],
+                [
+                  2,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  9,
+                  -2
+                ],
+                [
+                  7,
+                  9,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  -1
+                ],
+                [
+                  2,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  9,
+                  -1
+                ],
+                [
+                  7,
+                  9,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  0
+                ],
+                [
+                  2,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  9,
+                  0
+                ],
+                [
+                  7,
+                  9,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  9,
+                  1
+                ],
+                [
+                  2,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  9,
+                  1
+                ],
+                [
+                  7,
+                  9,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  10,
+                  -3
+                ],
+                [
+                  3,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  -3
+                ],
+                [
+                  7,
+                  10,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  -2
+                ],
+                [
+                  2,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  -2
+                ],
+                [
+                  7,
+                  10,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  -1
+                ],
+                [
+                  2,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  -1
+                ],
+                [
+                  7,
+                  10,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  0
+                ],
+                [
+                  2,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  0
+                ],
+                [
+                  7,
+                  10,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  10,
+                  1
+                ],
+                [
+                  2,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  1
+                ],
+                [
+                  7,
+                  10,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  10,
+                  2
+                ],
+                [
+                  3,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  10,
+                  2
+                ],
+                [
+                  7,
+                  10,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  11,
+                  -3
+                ],
+                [
+                  3,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  11,
+                  -3
+                ],
+                [
+                  7,
+                  11,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  11,
+                  2
+                ],
+                [
+                  3,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  11,
+                  2
+                ],
+                [
+                  7,
+                  11,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  12,
+                  -3
+                ],
+                [
+                  3,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  12,
+                  -3
+                ],
+                [
+                  7,
+                  12,
+                  -3
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  3,
+                  12,
+                  2
+                ],
+                [
+                  3,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  7,
+                  12,
+                  2
+                ],
+                [
+                  7,
+                  12,
+                  2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  -2
+                ],
+                [
+                  2,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  8,
+                  8,
+                  -2
+                ],
+                [
+                  8,
+                  8,
+                  -2
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  -1
+                ],
+                [
+                  2,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  8,
+                  8,
+                  -1
+                ],
+                [
+                  8,
+                  8,
+                  -1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  0
+                ],
+                [
+                  2,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  8,
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  8,
+                  0
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  2,
+                  8,
+                  1
+                ],
+                [
+                  2,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            },
+            {
+              "box": [
+                [
+                  8,
+                  8,
+                  1
+                ],
+                [
+                  8,
+                  8,
+                  1
+                ]
+              ],
+              "mat": "armor"
+            }
+          ],
+          "count": 40
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.609,
+          0.6253
+        ],
+        "gain": 0.005099999999999993,
+        "names": [
+          "ll_shin",
+          "rl_shin"
+        ],
+        "axis": 0,
+        "sideMode": "both",
+        "mode": "expand",
+        "amount": 1
+      },
+      "views": [
+        {
+          "class": "CamoSpecs IWM KW1-LH2 original metal photograph; same variant",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/40_foxbatmercheadhunterlineholderc.jpg",
+          "score": 0.6048,
+          "camera": {
+            "yaw": -5,
+            "elev": 0,
+            "roll": 3,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 592.4128081538394,
+            "tx": 244.21026536008748,
+            "ty": 267.0003433586751,
+            "rmse": 10.995400450790122
+          },
+          "pose": {
+            "rl": 13.22035195078863,
+            "ll": 17.177804322174257,
+            "ra": 1.594736792288415,
+            "la": 17.074961993069643
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.6048,
+              "reference_pixels": 8051,
+              "model_pixels": 9748
+            },
+            "legR": {
+              "iou": 0.7169,
+              "reference_pixels": 1655,
+              "model_pixels": 1420
+            },
+            "legL": {
+              "iou": 0.5581,
+              "reference_pixels": 1539,
+              "model_pixels": 1440
+            }
+          }
+        },
+        {
+          "class": "CamoSpecs IWM KW1-LH2 original metal photograph; same variant",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/40_foxbatmercheadhunterlineholderc.jpg",
+          "score": 0.6193,
+          "camera": {
+            "yaw": 5,
+            "elev": 0,
+            "roll": 3,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 2633.1680799722603,
+            "tx": 244.72060706247635,
+            "ty": 266.97256924950625,
+            "rmse": 11.015343337863984
+          },
+          "pose": {
+            "rl": 14.65402675052776,
+            "ll": 20.15087984658987,
+            "ra": 3.1649548099822056,
+            "la": 17.264741091388927
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.6193,
+              "reference_pixels": 8051,
+              "model_pixels": 9101
+            },
+            "legR": {
+              "iou": 0.5272,
+              "reference_pixels": 1655,
+              "model_pixels": 1010
+            },
+            "legL": {
+              "iou": 0.5445,
+              "reference_pixels": 1539,
+              "model_pixels": 1462
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_a.json",
+      "referenceStatus": "provisional single image",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/lineholder.gif"
+    },
+    {
+      "id": "marshal",
+      "source": "data/voxels/marshal_shape.json",
+      "selectedFrom": "batch_08.json",
+      "before": {
+        "cells": 5612,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "after": {
+        "cells": 5612,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_d.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/marshal.gif"
+    },
+    {
+      "id": "nexus",
+      "source": "data/voxels/nexus_shape.json",
+      "selectedFrom": "batch_09.json",
+      "before": {
+        "cells": 4798,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 4798,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_e.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/nexus.gif"
+    },
+    {
+      "id": "onslaught",
+      "source": "data/voxels/onslaught_shape.json",
+      "selectedFrom": "batch_09.json",
+      "before": {
+        "cells": 8249,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 20,
+        "total": 20
+      },
+      "after": {
+        "cells": 8249,
+        "parts": 18,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 20,
+        "total": 20
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_e.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Onslaught_(BattleMech)"
+    },
+    {
+      "id": "orochi",
+      "source": "data/voxels/orochi_shape.json",
+      "selectedFrom": "batch_09.json",
+      "before": {
+        "cells": 9154,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "after": {
+        "cells": 9154,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_e.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Orochi"
+    },
+    {
+      "id": "phoenix",
+      "source": "data/voxels/phoenix_shape.json",
+      "selectedFrom": "second_05.json",
+      "before": {
+        "cells": 5509,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 5509,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_e.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Phoenix_(BattleMech)"
+    },
+    {
+      "id": "raijin",
+      "source": "data/voxels/raijin_shape.json",
+      "selectedFrom": "batch_10.json",
+      "before": {
+        "cells": 6276,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "after": {
+        "cells": 6228,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "changed": 48,
+      "patches": [
+        {
+          "part": "la_forearm",
+          "shapes": [
+            {
+              "erase": [
+                [
+                  -13,
+                  18,
+                  -3
+                ],
+                [
+                  -11,
+                  18,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  19,
+                  -3
+                ],
+                [
+                  -11,
+                  19,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  20,
+                  -3
+                ],
+                [
+                  -11,
+                  20,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  21,
+                  -3
+                ],
+                [
+                  -11,
+                  21,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  21,
+                  -2
+                ],
+                [
+                  -11,
+                  21,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  22,
+                  -3
+                ],
+                [
+                  -11,
+                  22,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  22,
+                  -2
+                ],
+                [
+                  -11,
+                  22,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  -13,
+                  23,
+                  -3
+                ],
+                [
+                  -11,
+                  23,
+                  -3
+                ]
+              ]
+            }
+          ],
+          "count": 24
+        },
+        {
+          "part": "ra_forearm",
+          "shapes": [
+            {
+              "erase": [
+                [
+                  10,
+                  18,
+                  -3
+                ],
+                [
+                  12,
+                  18,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  19,
+                  -3
+                ],
+                [
+                  12,
+                  19,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  20,
+                  -3
+                ],
+                [
+                  12,
+                  20,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  21,
+                  -3
+                ],
+                [
+                  12,
+                  21,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  21,
+                  -2
+                ],
+                [
+                  12,
+                  21,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  22,
+                  -3
+                ],
+                [
+                  12,
+                  22,
+                  -3
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  22,
+                  -2
+                ],
+                [
+                  12,
+                  22,
+                  -2
+                ]
+              ]
+            },
+            {
+              "erase": [
+                [
+                  10,
+                  23,
+                  -3
+                ],
+                [
+                  12,
+                  23,
+                  -3
+                ]
+              ]
+            }
+          ],
+          "count": 24
+        }
+      ],
+      "photoSelected": {
+        "scores": [
+          0.4342,
+          0.4079
+        ],
+        "gain": 0.001899999999999985,
+        "names": [
+          "la_forearm",
+          "ra_forearm"
+        ],
+        "axis": 2,
+        "sideMode": "front",
+        "mode": "taper",
+        "amount": 2
+      },
+      "views": [
+        {
+          "class": "unofficial RJN-101-A catalog render, nominal matching variant",
+          "url": "https://i.ebayimg.com/00/s/MTIwMFgxNTk5/z/WgoAAOSw5JZnEn2F/%24_57.PNG?set_id=880000500F",
+          "score": 0.4325,
+          "camera": {
+            "yaw": -25,
+            "elev": 25,
+            "roll": 6,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 971.0851569741474,
+            "tx": 275.7279564920579,
+            "ty": 297.06682571521924,
+            "rmse": 5.005987286168721
+          },
+          "pose": {
+            "rl": 9.464527549049482,
+            "ll": 8.014297817021902
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.4325,
+              "reference_pixels": 10917,
+              "model_pixels": 23504
+            }
+          }
+        },
+        {
+          "class": "unofficial RJN-101-A catalog render, nominal matching variant",
+          "url": "https://i.ebayimg.com/00/s/MTIwMFgxNTk5/z/WgoAAOSw5JZnEn2F/%24_57.PNG?set_id=880000500F",
+          "score": 0.4058,
+          "camera": {
+            "yaw": -35,
+            "elev": 20,
+            "roll": 6,
+            "distance": 90,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1038.0210842870163,
+            "tx": 274.98497823512315,
+            "ty": 299.3143337546577,
+            "rmse": 9.313628911868625
+          },
+          "pose": {
+            "rl": 8.219389292866305,
+            "ll": 5.863195700581754
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.4058,
+              "reference_pixels": 10917,
+              "model_pixels": 26516
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_b.json",
+      "referenceStatus": "provisional single image",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/raijin.gif"
+    },
+    {
+      "id": "rampage",
+      "source": "data/voxels/rampage_shape.json",
+      "selectedFrom": "batch_10.json",
+      "before": {
+        "cells": 8840,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 16
+      },
+      "after": {
+        "cells": 8840,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 16
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_e.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Rampage"
+    },
+    {
+      "id": "rattlesnake",
+      "source": "data/voxels/rattlesnake_shape.json",
+      "selectedFrom": "second_05.json",
+      "before": {
+        "cells": 2596,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 2596,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_e.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "razorback",
+      "source": "data/voxels/razorback_shape.json",
+      "selectedFrom": "second_05.json",
+      "before": {
+        "cells": 4501,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 4501,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "CamoSpecs physical Razorback; variant and obscured foot uncertain",
+          "url": "https://s3.amazonaws.com/cso-images/schemes/1_lgrazorback1.jpg",
+          "score": 0.4729,
+          "camera": {
+            "yaw": -50,
+            "elev": 5,
+            "roll": -6,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 4092.5329856134153,
+            "tx": 267.8497774035061,
+            "ty": 201.46627651670258,
+            "rmse": 11.476889803007278
+          },
+          "pose": {
+            "rl": 16.70478106321444,
+            "ll": 16.511944448425847
+          },
+          "fitOK": true,
+          "boundary": false,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.4729,
+              "reference_pixels": 10139,
+              "model_pixels": 18860
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_b.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/razorback.gif"
+    },
+    {
+      "id": "rook",
+      "source": "data/voxels/rook_shape.json",
+      "selectedFrom": "batch_11.json",
+      "before": {
+        "cells": 6051,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "after": {
+        "cells": 6051,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 8,
+        "total": 8
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Rook_(BattleMech)"
+    },
+    {
+      "id": "snake",
+      "source": "data/voxels/snake_shape.json",
+      "selectedFrom": "batch_11.json",
+      "before": {
+        "cells": 5611,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 7,
+        "total": 7
+      },
+      "after": {
+        "cells": 5611,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 7,
+        "total": 7
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/snake.gif"
+    },
+    {
+      "id": "striker",
+      "source": "data/voxels/striker_shape.json",
+      "selectedFrom": "batch_12.json",
+      "before": {
+        "cells": 6728,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 6728,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/striker.gif"
+    },
+    {
+      "id": "suburbanmech",
+      "source": "data/voxels/suburbanmech_shape.json",
+      "selectedFrom": "second_06.json",
+      "before": {
+        "cells": 4921,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 4921,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "swordsman",
+      "source": "data/voxels/swordsman_shape.json",
+      "selectedFrom": "batch_12.json",
+      "before": {
+        "cells": 5889,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 13,
+        "total": 13
+      },
+      "after": {
+        "cells": 5889,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 13,
+        "total": 13
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Swordsman"
+    },
+    {
+      "id": "talon",
+      "source": "data/voxels/talon_shape.json",
+      "selectedFrom": "second_07.json",
+      "before": {
+        "cells": 4239,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "after": {
+        "cells": 4239,
+        "parts": 16,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 3
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/talon.gif"
+    },
+    {
+      "id": "talos",
+      "source": "data/voxels/talos_shape.json",
+      "selectedFrom": "batch_13.json",
+      "before": {
+        "cells": 7070,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "after": {
+        "cells": 7070,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_f.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Talos_(BattleMech)"
+    },
+    {
+      "id": "titan",
+      "source": "data/voxels/titan_shape.json",
+      "selectedFrom": "batch_14.json",
+      "before": {
+        "cells": 10897,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 30,
+        "total": 30
+      },
+      "after": {
+        "cells": 10897,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 30,
+        "total": 30
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial Titan TI-1A sculpt render, matching nominal variant",
+          "url": "https://fbi.cults3d.com/uploaders/26666426/illustration-file/99486a69-4d31-4a30-916e-27fb67882d82/Titan1A.png",
+          "score": 0.5829,
+          "camera": {
+            "yaw": -20,
+            "elev": 0,
+            "roll": -3,
+            "distance": 220,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 1540.4453921909587,
+            "tx": 291.9623096398497,
+            "ty": 203.1222595869498,
+            "rmse": 20.944660657841823
+          },
+          "pose": {
+            "rl": 23.865601874627878,
+            "ll": 38.47708456828065,
+            "ra": 17.07714083270771,
+            "la": 42.72538720550102
+          },
+          "fitOK": false,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.5829,
+              "reference_pixels": 21254,
+              "model_pixels": 15896
+            }
+          }
+        },
+        {
+          "class": "unofficial Titan TI-1A sculpt render, matching nominal variant",
+          "url": "https://fbi.cults3d.com/uploaders/26666426/illustration-file/99486a69-4d31-4a30-916e-27fb67882d82/Titan1A.png",
+          "score": 0.6214,
+          "camera": {
+            "yaw": -30,
+            "elev": 0,
+            "roll": -3,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 3005.276780241651,
+            "tx": 292.1364456312861,
+            "ty": 204.96840916518394,
+            "rmse": 18.110800582347125
+          },
+          "pose": {
+            "rl": 14.830745076036433,
+            "ll": 29.13662112631836,
+            "ra": 15.00365073966333,
+            "la": 40.225767350699705
+          },
+          "fitOK": false,
+          "boundary": false,
+          "diagnosticOnly": false,
+          "masks": {
+            "silhouette": {
+              "iou": 0.6214,
+              "reference_pixels": 21254,
+              "model_pixels": 18184
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_d.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "toro",
+      "source": "data/voxels/toro_shape.json",
+      "selectedFrom": "batch_14.json",
+      "before": {
+        "cells": 3167,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "after": {
+        "cells": 3167,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_g.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Toro"
+    },
+    {
+      "id": "tsunami",
+      "source": "data/voxels/tsunami_shape.json",
+      "selectedFrom": "batch_14.json",
+      "before": {
+        "cells": 4834,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 4834,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_g.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "verfolger",
+      "source": "data/voxels/verfolger_shape.json",
+      "selectedFrom": "batch_14.json",
+      "before": {
+        "cells": 6189,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "after": {
+        "cells": 6189,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 6
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_g.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Verfolger"
+    },
+    {
+      "id": "von_rohrs_hebi",
+      "source": "data/voxels/von_rohrs_hebi_shape.json",
+      "selectedFrom": "batch_14.json",
+      "before": {
+        "cells": 6800,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "after": {
+        "cells": 6800,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_g.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": null
+    },
+    {
+      "id": "werewolf",
+      "source": "data/voxels/werewolf_shape.json",
+      "selectedFrom": "second_08.json",
+      "before": {
+        "cells": 5790,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "after": {
+        "cells": 5790,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [],
+      "resultFile": "batch_10_g.json",
+      "referenceStatus": "source audit only; new visual comparison still pending",
+      "unverifiedPriorIllustration": "https://www.sarna.net/wiki/Werewolf_(BattleMech)"
+    },
+    {
+      "id": "yu_huang",
+      "source": "data/voxels/yu_huang_shape.json",
+      "selectedFrom": "batch_15.json",
+      "before": {
+        "cells": 8574,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 15,
+        "total": 15
+      },
+      "after": {
+        "cells": 8574,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 15,
+        "total": 15
+      },
+      "changed": 0,
+      "patches": [],
+      "photoSelected": null,
+      "views": [
+        {
+          "class": "unofficial Yu Huang render, weapon effect and muzzle clipped; variant uncertain",
+          "url": "https://i.ebayimg.com/images/g/ze0AAeSwheNpA~Bn/s-l1600.jpg",
+          "score": 0.6143,
+          "camera": {
+            "yaw": 25,
+            "elev": 0,
+            "roll": 0,
+            "distance": 400,
+            "target": [
+              0,
+              22.5,
+              0
+            ],
+            "flipX": true,
+            "scale": 3099.719879879589,
+            "tx": 234.4496328912017,
+            "ty": 217.90623082625325,
+            "rmse": 9.519940391044077
+          },
+          "pose": {
+            "rl": 34.08113136065295,
+            "ll": 21.21421924731738
+          },
+          "fitOK": true,
+          "boundary": true,
+          "diagnosticOnly": true,
+          "masks": {
+            "silhouette": {
+              "iou": 0.6143,
+              "reference_pixels": 22122,
+              "model_pixels": 15865
+            }
+          }
+        }
+      ],
+      "resultFile": "batch_10_photo_c.json",
+      "referenceStatus": "diagnostic or failed registration",
+      "unverifiedPriorIllustration": "https://www.sarna.net/files/info/media/images/product_scans/tro_scans/mech/yuhuang.gif"
+    }
+  ],
+  "limitations": "149 unique chassis attempted; this does not mean 149 full photographic reconstructions. 52 exact final source audits, 11 reference registrations on 11 distinct images, only 2 selected modest single-image contour patches. 41 of this final batch did not receive new visual registration, and 78 of the whole 149 have no registered reference attempt in this experimental cycle. Cumulative counts follow earlier batch manifests. Five physical miniature photos, three unofficial render images, three technical drawings. No independently calibrated multi-view official match in this batch. Lineholder two leg-region masks non-regressing; Raijin unofficial render and no fitted arms. No Godot runtime or production validation. No main modifications."
+}
