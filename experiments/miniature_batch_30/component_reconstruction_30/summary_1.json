@@ -1,0 +1,1143 @@
+[
+  {
+    "id": "mad_dog",
+    "source": "prior cached contour pilot",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.33104285714285714,
+    "after": 0.3348857142857143,
+    "perView": [
+      {
+        "name": "front oblique thumbnail",
+        "before": 0.33104285714285714,
+        "after": 0.3348857142857143,
+        "cameraRms": 11.89379386261106
+      }
+    ],
+    "targets": [
+      {
+        "name": "la",
+        "score": 0.1202,
+        "cells": 516
+      },
+      {
+        "name": "la_forearm",
+        "score": 0.1202,
+        "cells": 222
+      },
+      {
+        "name": "ct",
+        "score": 0.1767,
+        "cells": 2968
+      }
+    ],
+    "selected": [
+      {
+        "part": "la_forearm",
+        "family": "photo_hull",
+        "delta": 116,
+        "before": 222,
+        "after": 160,
+        "score": 0.3324857142857143,
+        "local": 0.010099999999999998,
+        "perView": [
+          0.0014428571428571346
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ct",
+        "family": "photo_hull",
+        "delta": 802,
+        "before": 2968,
+        "after": 3178,
+        "score": 0.3348857142857143,
+        "local": 0.0169,
+        "perView": [
+          0.0024000000000000132
+        ],
+        "worstRegion": -0.0017000000000000348,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "la",
+        "family": "rounded",
+        "delta": 128,
+        "before": 516,
+        "after": 560,
+        "score": 0.33070000000000005,
+        "local": -0.0023999999999999994,
+        "perView": [
+          -0.00034285714285708924
+        ],
+        "worstRegion": -0.0023999999999999994,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "faceted",
+        "delta": 132,
+        "before": 516,
+        "after": 564,
+        "score": 0.33062857142857144,
+        "local": -0.0029,
+        "perView": [
+          -0.0004142857142857004
+        ],
+        "worstRegion": -0.0029,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "wedge",
+        "delta": 134,
+        "before": 516,
+        "after": 552,
+        "score": 0.3304142857142857,
+        "local": -0.004400000000000001,
+        "perView": [
+          -0.0006285714285714228
+        ],
+        "worstRegion": -0.004400000000000001,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "bell",
+        "delta": 116,
+        "before": 516,
+        "after": 588,
+        "score": 0.3306857142857143,
+        "local": -0.0025000000000000022,
+        "perView": [
+          -0.00035714285714283367
+        ],
+        "worstRegion": -0.0025000000000000022,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "photo_hull",
+        "delta": 116,
+        "before": 222,
+        "after": 160,
+        "score": 0.3324857142857143,
+        "local": 0.010099999999999998,
+        "perView": [
+          0.0014428571428571346
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ct",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ct",
+        "family": "photo_hull",
+        "delta": 802,
+        "before": 2968,
+        "after": 3178,
+        "score": 0.3348857142857143,
+        "local": 0.0169,
+        "perView": [
+          0.0024000000000000132
+        ],
+        "worstRegion": -0.0017000000000000348,
+        "status": "eligible"
+      }
+    ],
+    "changed": 918,
+    "faults": 0,
+    "clearBefore": 40,
+    "clearAfter": 40,
+    "muzzleTotal": 44,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "hellbringer",
+    "source": "prior cached contour pilot",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.4455166666666666,
+    "after": 0.4570999999999999,
+    "perView": [
+      {
+        "name": "front oblique thumbnail",
+        "before": 0.4455166666666666,
+        "after": 0.4570999999999999,
+        "cameraRms": 11.320201313807576
+      }
+    ],
+    "targets": [
+      {
+        "name": "la",
+        "score": 0.2973,
+        "cells": 515
+      },
+      {
+        "name": "la_forearm",
+        "score": 0.2973,
+        "cells": 260
+      },
+      {
+        "name": "ra",
+        "score": 0.408,
+        "cells": 515
+      }
+    ],
+    "selected": [
+      {
+        "part": "la",
+        "family": "photo_hull",
+        "delta": 309,
+        "before": 515,
+        "after": 416,
+        "score": 0.45439999999999997,
+        "local": 0.05059999999999998,
+        "perView": [
+          0.008883333333333354
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "la_forearm",
+        "family": "photo_hull",
+        "delta": 94,
+        "before": 260,
+        "after": 276,
+        "score": 0.4570999999999999,
+        "local": 0.016199999999999992,
+        "perView": [
+          0.0026999999999999247
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "la",
+        "family": "rounded",
+        "delta": 130,
+        "before": 515,
+        "after": 567,
+        "score": 0.44556666666666667,
+        "local": -0.00040000000000001146,
+        "perView": [
+          0.000050000000000050004
+        ],
+        "worstRegion": -0.00040000000000001146,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "faceted",
+        "delta": 134,
+        "before": 515,
+        "after": 571,
+        "score": 0.44528333333333325,
+        "local": -0.0020999999999999908,
+        "perView": [
+          -0.00023333333333336315
+        ],
+        "worstRegion": -0.0020999999999999908,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "wedge",
+        "delta": 137,
+        "before": 515,
+        "after": 554,
+        "score": 0.445,
+        "local": -0.0030999999999999917,
+        "perView": [
+          -0.0005166666666666098
+        ],
+        "worstRegion": -0.0030999999999999917,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "bell",
+        "delta": 118,
+        "before": 515,
+        "after": 595,
+        "score": 0.44541666666666674,
+        "local": -0.0013000000000000234,
+        "perView": [
+          -0.00009999999999987796
+        ],
+        "worstRegion": -0.0013000000000000234,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "photo_hull",
+        "delta": 309,
+        "before": 515,
+        "after": 416,
+        "score": 0.45439999999999997,
+        "local": 0.05059999999999998,
+        "perView": [
+          0.008883333333333354
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "la_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "wedge",
+        "delta": 46,
+        "before": 260,
+        "after": 254,
+        "score": 0.45260000000000006,
+        "local": -0.010799999999999976,
+        "perView": [
+          -0.0017999999999999128
+        ],
+        "worstRegion": -0.010799999999999976,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "photo_hull",
+        "delta": 94,
+        "before": 260,
+        "after": 276,
+        "score": 0.4570999999999999,
+        "local": 0.016199999999999992,
+        "perView": [
+          0.0026999999999999247
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ra",
+        "family": "rounded",
+        "delta": 130,
+        "before": 515,
+        "after": 567,
+        "score": 0.45565000000000005,
+        "local": -0.007899999999999963,
+        "perView": [
+          -0.0014499999999998403
+        ],
+        "worstRegion": -0.007899999999999963,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "delta": 134,
+        "before": 515,
+        "after": 571,
+        "score": 0.4542833333333333,
+        "local": -0.01579999999999998,
+        "perView": [
+          -0.0028166666666665785
+        ],
+        "worstRegion": -0.01579999999999998,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "delta": 138,
+        "before": 515,
+        "after": 567,
+        "score": 0.4539166666666666,
+        "local": -0.01759999999999995,
+        "perView": [
+          -0.003183333333333316
+        ],
+        "worstRegion": -0.01759999999999995,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "delta": 118,
+        "before": 515,
+        "after": 595,
+        "score": 0.45331666666666665,
+        "local": -0.02059999999999995,
+        "perView": [
+          -0.0037833333333332497
+        ],
+        "worstRegion": -0.02059999999999995,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "status": "insufficient change or shell connectivity/reference"
+      }
+    ],
+    "changed": 403,
+    "faults": 0,
+    "clearBefore": 8,
+    "clearAfter": 8,
+    "muzzleTotal": 8,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "kit_fox",
+    "source": "prior cached contour pilot",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.4753200000000001,
+    "after": 0.51766,
+    "perView": [
+      {
+        "name": "front oblique thumbnail",
+        "before": 0.4753200000000001,
+        "after": 0.51766,
+        "cameraRms": 2.014334681402434
+      }
+    ],
+    "targets": [
+      {
+        "name": "la",
+        "score": 0.394,
+        "cells": 346
+      },
+      {
+        "name": "la_forearm",
+        "score": 0.394,
+        "cells": 152
+      },
+      {
+        "name": "ra",
+        "score": 0.4101,
+        "cells": 346
+      }
+    ],
+    "selected": [
+      {
+        "part": "la",
+        "family": "photo_hull",
+        "delta": 276,
+        "before": 346,
+        "after": 264,
+        "score": 0.49306,
+        "local": 0.0887,
+        "perView": [
+          0.017739999999999922
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "la_forearm",
+        "family": "photo_hull",
+        "delta": 45,
+        "before": 152,
+        "after": 169,
+        "score": 0.50008,
+        "local": 0.03510000000000002,
+        "perView": [
+          0.007019999999999971
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "delta": 230,
+        "before": 346,
+        "after": 270,
+        "score": 0.51766,
+        "local": 0.08549999999999996,
+        "perView": [
+          0.01758000000000004
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "la",
+        "family": "rounded",
+        "delta": 76,
+        "before": 346,
+        "after": 386,
+        "score": 0.47502000000000005,
+        "local": -0.0015000000000000013,
+        "perView": [
+          -0.00030000000000002247
+        ],
+        "worstRegion": -0.0015000000000000013,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "faceted",
+        "delta": 88,
+        "before": 346,
+        "after": 398,
+        "score": 0.47408,
+        "local": -0.006200000000000039,
+        "perView": [
+          -0.0012400000000000744
+        ],
+        "worstRegion": -0.006200000000000039,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "wedge",
+        "delta": 87,
+        "before": 346,
+        "after": 383,
+        "score": 0.47756,
+        "local": 0.011199999999999988,
+        "perView": [
+          0.0022399999999999087
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "la",
+        "family": "bell",
+        "delta": 68,
+        "before": 346,
+        "after": 402,
+        "score": 0.47386,
+        "local": -0.007300000000000029,
+        "perView": [
+          -0.0014600000000000724
+        ],
+        "worstRegion": -0.007300000000000029,
+        "status": "photo rejection"
+      },
+      {
+        "part": "la",
+        "family": "photo_hull",
+        "delta": 276,
+        "before": 346,
+        "after": 264,
+        "score": 0.49306,
+        "local": 0.0887,
+        "perView": [
+          0.017739999999999922
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "la_forearm",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "la_forearm",
+        "family": "photo_hull",
+        "delta": 45,
+        "before": 152,
+        "after": 169,
+        "score": 0.50008,
+        "local": 0.03510000000000002,
+        "perView": [
+          0.007019999999999971
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ra",
+        "family": "rounded",
+        "delta": 76,
+        "before": 346,
+        "after": 386,
+        "score": 0.49532,
+        "local": -0.024300000000000044,
+        "perView": [
+          -0.0047599999999999865
+        ],
+        "worstRegion": -0.024300000000000044,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "faceted",
+        "delta": 88,
+        "before": 346,
+        "after": 398,
+        "score": 0.49240000000000006,
+        "local": -0.03600000000000003,
+        "perView": [
+          -0.007679999999999909
+        ],
+        "worstRegion": -0.03600000000000003,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ra",
+        "family": "bell",
+        "delta": 68,
+        "before": 346,
+        "after": 402,
+        "score": 0.496,
+        "local": -0.02040000000000003,
+        "perView": [
+          -0.0040799999999999725
+        ],
+        "worstRegion": -0.02040000000000003,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ra",
+        "family": "photo_hull",
+        "delta": 230,
+        "before": 346,
+        "after": 270,
+        "score": 0.51766,
+        "local": 0.08549999999999996,
+        "perView": [
+          0.01758000000000004
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "changed": 551,
+    "faults": 0,
+    "clearBefore": 2,
+    "clearAfter": 2,
+    "muzzleTotal": 2,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "cougar",
+    "source": "prior cached contour pilot",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.2575285714285714,
+    "after": 0.2646571428571428,
+    "perView": [
+      {
+        "name": "front oblique thumbnail",
+        "before": 0.2575285714285714,
+        "after": 0.2646571428571428,
+        "cameraRms": 9.071499412371855
+      }
+    ],
+    "targets": [
+      {
+        "name": "ll_foot",
+        "score": 0.2061,
+        "cells": 230
+      },
+      {
+        "name": "ll",
+        "score": 0.2061,
+        "cells": 180
+      },
+      {
+        "name": "ll_shin",
+        "score": 0.2061,
+        "cells": 174
+      }
+    ],
+    "selected": [
+      {
+        "part": "ll_foot",
+        "family": "photo_hull",
+        "delta": 151,
+        "before": 230,
+        "after": 133,
+        "score": 0.26339999999999997,
+        "local": 0.0411,
+        "perView": [
+          0.005871428571428583
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "photo_hull",
+        "delta": 74,
+        "before": 174,
+        "after": 146,
+        "score": 0.2646571428571428,
+        "local": 0.008800000000000002,
+        "perView": [
+          0.0012571428571428456
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "ll_foot",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_foot",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_foot",
+        "family": "wedge",
+        "delta": 56,
+        "before": 230,
+        "after": 214,
+        "score": 0.2585,
+        "local": 0.0068000000000000005,
+        "perView": [
+          0.000971428571428623
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_foot",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_foot",
+        "family": "photo_hull",
+        "delta": 151,
+        "before": 230,
+        "after": 133,
+        "score": 0.26339999999999997,
+        "local": 0.0411,
+        "perView": [
+          0.005871428571428583
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll",
+        "family": "rounded",
+        "delta": 36,
+        "before": 180,
+        "after": 182,
+        "score": 0.26337142857142853,
+        "local": -0.00020000000000000573,
+        "perView": [
+          -0.000028571428571433355
+        ],
+        "worstRegion": -0.00020000000000000573,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "faceted",
+        "delta": 36,
+        "before": 180,
+        "after": 190,
+        "score": 0.26337142857142853,
+        "local": -0.00020000000000000573,
+        "perView": [
+          -0.000028571428571433355
+        ],
+        "worstRegion": -0.00020000000000000573,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "wedge",
+        "delta": 52,
+        "before": 180,
+        "after": 188,
+        "score": 0.2630428571428571,
+        "local": -0.0025000000000000022,
+        "perView": [
+          -0.0003571428571428892
+        ],
+        "worstRegion": -0.0025000000000000022,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "bell",
+        "delta": 41,
+        "before": 180,
+        "after": 203,
+        "score": 0.26337142857142853,
+        "local": -0.00020000000000000573,
+        "perView": [
+          -0.000028571428571433355
+        ],
+        "worstRegion": -0.00020000000000000573,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "photo_hull",
+        "delta": 88,
+        "before": 180,
+        "after": 158,
+        "score": 0.26339999999999997,
+        "local": 0,
+        "perView": [
+          0
+        ],
+        "worstRegion": 0,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "delta": 38,
+        "before": 174,
+        "after": 204,
+        "score": 0.26237142857142853,
+        "local": -0.007200000000000012,
+        "perView": [
+          -0.0010285714285714342
+        ],
+        "worstRegion": -0.007200000000000012,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "photo_hull",
+        "delta": 74,
+        "before": 174,
+        "after": 146,
+        "score": 0.2646571428571428,
+        "local": 0.008800000000000002,
+        "perView": [
+          0.0012571428571428456
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "changed": 225,
+    "faults": 0,
+    "clearBefore": 22,
+    "clearAfter": 22,
+    "muzzleTotal": 22,
+    "roundTrip": true,
+    "unranked": []
+  },
+  {
+    "id": "shadow_cat",
+    "source": "prior cached contour pilot",
+    "status": "photo-scored replacement",
+    "views": 1,
+    "before": 0.46078,
+    "after": 0.4758,
+    "perView": [
+      {
+        "name": "reference thumbnail 1",
+        "before": 0.46078,
+        "after": 0.4758,
+        "cameraRms": 6.1850928576548165
+      }
+    ],
+    "targets": [
+      {
+        "name": "ll",
+        "score": 0.3608,
+        "cells": 251
+      },
+      {
+        "name": "ll_foot",
+        "score": 0.3608,
+        "cells": 224
+      },
+      {
+        "name": "ll_shin",
+        "score": 0.3608,
+        "cells": 218
+      }
+    ],
+    "selected": [
+      {
+        "part": "ll",
+        "family": "photo_hull",
+        "delta": 128,
+        "before": 251,
+        "after": 269,
+        "score": 0.46242,
+        "local": 0.008199999999999985,
+        "perView": [
+          0.0016399999999999748
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_foot",
+        "family": "photo_hull",
+        "delta": 137,
+        "before": 224,
+        "after": 165,
+        "score": 0.47409999999999997,
+        "local": 0.05840000000000001,
+        "perView": [
+          0.011679999999999968
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "photo_hull",
+        "delta": 89,
+        "before": 218,
+        "after": 277,
+        "score": 0.4758,
+        "local": 0.008500000000000008,
+        "perView": [
+          0.0017000000000000348
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "trials": [
+      {
+        "part": "ll",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll",
+        "family": "wedge",
+        "delta": 38,
+        "before": 251,
+        "after": 261,
+        "score": 0.46055999999999997,
+        "local": -0.0010999999999999899,
+        "perView": [
+          -0.00022000000000005349
+        ],
+        "worstRegion": -0.0010999999999999899,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll",
+        "family": "photo_hull",
+        "delta": 128,
+        "before": 251,
+        "after": 269,
+        "score": 0.46242,
+        "local": 0.008199999999999985,
+        "perView": [
+          0.0016399999999999748
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_foot",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_foot",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_foot",
+        "family": "wedge",
+        "delta": 46,
+        "before": 224,
+        "after": 222,
+        "score": 0.46299999999999997,
+        "local": 0.0029000000000000137,
+        "perView": [
+          0.0005799999999999694
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_foot",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_foot",
+        "family": "photo_hull",
+        "delta": 137,
+        "before": 224,
+        "after": 165,
+        "score": 0.47409999999999997,
+        "local": 0.05840000000000001,
+        "perView": [
+          0.011679999999999968
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      },
+      {
+        "part": "ll_shin",
+        "family": "rounded",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "faceted",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "wedge",
+        "delta": 36,
+        "before": 218,
+        "after": 226,
+        "score": 0.47356,
+        "local": -0.00269999999999998,
+        "perView": [
+          -0.0005399999999999849
+        ],
+        "worstRegion": -0.00269999999999998,
+        "status": "photo rejection"
+      },
+      {
+        "part": "ll_shin",
+        "family": "bell",
+        "status": "insufficient change or shell connectivity/reference"
+      },
+      {
+        "part": "ll_shin",
+        "family": "photo_hull",
+        "delta": 89,
+        "before": 218,
+        "after": 277,
+        "score": 0.4758,
+        "local": 0.008500000000000008,
+        "perView": [
+          0.0017000000000000348
+        ],
+        "worstRegion": 0,
+        "status": "eligible"
+      }
+    ],
+    "changed": 354,
+    "faults": 0,
+    "clearBefore": 2,
+    "clearAfter": 2,
+    "muzzleTotal": 2,
+    "roundTrip": true,
+    "unranked": []
+  }
+]
