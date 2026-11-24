@@ -1,0 +1,327 @@
+[
+  {
+    "id": "charger",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.37799999999999995,
+        "after": 0.3851333333333333,
+        "cameraRms": 8.27502799238668,
+        "poseRms": {
+          "rl": 28.608211185141567
+        }
+      }
+    ],
+    "baseline": 0.37799999999999995,
+    "candidate": 0.3851333333333333,
+    "changed": 420,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 410,
+      "misses": 94
+    },
+    "muzzles": {
+      "before": 8,
+      "after": 8,
+      "total": 11
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "enforcer",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.5302333333333333,
+        "after": 0.5384000000000001,
+        "cameraRms": 7.016453382695527,
+        "poseRms": {
+          "rl": 21.762468561512737
+        }
+      }
+    ],
+    "baseline": 0.5302333333333333,
+    "candidate": 0.5384000000000001,
+    "changed": 451,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 437,
+      "misses": 95
+    },
+    "muzzles": {
+      "before": 2,
+      "after": 2,
+      "total": 2
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "hatchetman",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.3652333333333333,
+        "after": 0.36976666666666663,
+        "cameraRms": 7.165146315177619,
+        "poseRms": {
+          "rl": 7.137606303317999
+        }
+      }
+    ],
+    "baseline": 0.3652333333333333,
+    "candidate": 0.36976666666666663,
+    "changed": 180,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 437,
+      "misses": 95
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 1
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "highlander",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.4618,
+        "after": 0.4723,
+        "cameraRms": 5.34196026777239,
+        "poseRms": {
+          "rl": 18.07384500762694
+        }
+      }
+    ],
+    "baseline": 0.4618,
+    "candidate": 0.4723,
+    "changed": 448,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 491,
+      "misses": 97
+    },
+    "muzzles": {
+      "before": 8,
+      "after": 8,
+      "total": 8
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "hunchback",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.49515,
+        "after": 0.5031,
+        "cameraRms": 2.7746085420527935,
+        "poseRms": {
+          "rl": 16.16256229311757
+        }
+      }
+    ],
+    "baseline": 0.49515,
+    "candidate": 0.5031,
+    "changed": 450,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 410,
+      "misses": 94
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 1
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "jagermech",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.4267666666666667,
+        "after": 0.4285333333333334,
+        "cameraRms": 5.186882769307763,
+        "poseRms": {
+          "rl": 16.73985280524755
+        }
+      }
+    ],
+    "baseline": 0.4267666666666667,
+    "candidate": 0.4285333333333334,
+    "changed": 390,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 478,
+      "misses": 82
+    },
+    "muzzles": {
+      "before": 2,
+      "after": 2,
+      "total": 4
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "phoenix_hawk",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.4382333333333333,
+        "after": 0.44436666666666663,
+        "cameraRms": 7.844246640342512,
+        "poseRms": {
+          "rl": 16.47906481936649
+        }
+      }
+    ],
+    "baseline": 0.4382333333333333,
+    "candidate": 0.44436666666666663,
+    "changed": 156,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 491,
+      "misses": 97
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 1
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "trebuchet",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.43629999999999997,
+        "after": 0.4405333333333334,
+        "cameraRms": 5.408753635216981,
+        "poseRms": {
+          "rl": 8.181091771217792
+        }
+      }
+    ],
+    "baseline": 0.43629999999999997,
+    "candidate": 0.4405333333333334,
+    "changed": 234,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 464,
+      "misses": 96
+    },
+    "muzzles": {
+      "before": 21,
+      "after": 21,
+      "total": 31
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "warhammer",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.5695666666666667,
+        "after": 0.5806,
+        "cameraRms": 5.146573525234194,
+        "poseRms": {
+          "rl": 22.958652967539898
+        }
+      },
+      {
+        "name": "painted front crop of montage",
+        "before": 0.5767333333333333,
+        "after": 0.5878333333333333,
+        "cameraRms": 4.838236009472472,
+        "poseRms": {
+          "rl": 20.94935376625668
+        }
+      }
+    ],
+    "baseline": 0.5731499999999999,
+    "candidate": 0.5842166666666667,
+    "changed": 809,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 437,
+      "misses": 95
+    },
+    "muzzles": {
+      "before": 8,
+      "after": 8,
+      "total": 8
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "crab",
+    "source": "next_reconstruction",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.6156999999999999,
+        "after": 0.6210666666666667,
+        "cameraRms": 6.414336734946033,
+        "poseRms": {
+          "ll": 14.207436468446893
+        }
+      },
+      {
+        "name": "painted side",
+        "before": 0.45726666666666665,
+        "after": 0.4570666666666667,
+        "cameraRms": 16.06693071468243,
+        "poseRms": {
+          "rl": 21.23846800188644
+        }
+      },
+      {
+        "name": "painted rear quarter",
+        "before": 0.6503,
+        "after": 0.6503,
+        "cameraRms": 8.814886346757998,
+        "poseRms": {}
+      }
+    ],
+    "baseline": 0.5527428571428571,
+    "candidate": 0.5549571428571428,
+    "changed": 188,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 468,
+      "misses": 92
+    },
+    "muzzles": {
+      "before": 0,
+      "after": 0,
+      "total": 3
+    },
+    "status": "provisional improvement"
+  }
+]
