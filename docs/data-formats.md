@@ -162,6 +162,11 @@ guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` 
 `"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
 e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
 
+## `data/campaign/rules.json`
+The app's own campaign numbers (`CampaignRules`; none are official, see rules-coverage):
+`company_name`, `starting_funds`, `starting_lance` (`[{design, pilot, gunnery, piloting}]`,
+designs from `data/units/`), `xp` (`battle`, `kill`, `win`), `wounds_healed_per_battle`.
+
 ## `data/training/campaign.json`
 The training campaign (`TrainingCampaign`): `name`, `intro`, and `missions` in
 order, each `{"id", "title", "scenario"` (a file in `data/scenarios/` with lessons),

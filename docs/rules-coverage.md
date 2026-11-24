@@ -319,3 +319,6 @@ Not in the Core Rulebook: these follow general Total Warfare practice, all `TODO
 - ✅ Generated maps (`MapGenerator`): whole 15 x 17 mapsheets (p. 223), 1, 2 (standard) or 4 sheets; themes Grassland, Woodland, Hills, River Valley, Lake Country, Badlands, City; repeatable seeds. No dry step over 2 levels, no buildings on the home-edge rows. Roads cross water on bridges (`GenBridges`); themes can recolour the ground.
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.
 - ⬜ Bridges as structures, fire and smoke.
+
+## Campaign (the app's own rules; the Core Rulebook leaves campaigns to other books, p. 212)
+- 🟡 Company between battles (`Campaign`, `CampaignBattle`, `MechCondition`, numbers in `data/campaign/rules.json`): armor, structure, critical slots, weapons and ammo carry over; heat, prone and turn state don't. MechWarrior wounds carry over and heal 1 per battle; a pilot dies at 6 hits or with the head/cockpit. Kills go to the last unit to damage the victim; experience is 1 per battle, kill and win. A 'Mech that lost its center torso or surrendered is gone; any other knocked-out 'Mech can be rebuilt; one that left the map is fine. `TODO(rules)`: all numbers are placeholders until an official campaign book (Mercenaries box, Hot Spots, Campaign Operations) is added.
