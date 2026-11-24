@@ -1,0 +1,62 @@
+{
+  "dragon": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/dragon99.jpg",
+      "https://mechpainters.org/wp-content/uploads/2026/03/366-2000-2000.jpg"
+    ],
+    "note": "Rounded shoulder drums, forward missile prow under squat cockpit, broad pelvis and layered shins."
+  },
+  "cyclops": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/cyclops4-6.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/09/D72hATxyMmFm-IMG_9795-copy-1024x1024.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/09/vTDtfQ0ajxoH-IMG_9798-copy-1024x1024.jpg"
+    ],
+    "note": "CP-11-A photographed; CP-10-Z game model. One-eyed visor, inset chest gun and tall narrow opposite rack; weapons not variant-verified."
+  },
+  "griffin": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/griffin1.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/09/286-3-1500-1500-1024x1024.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/09/286-2-1500-1500-1024x1024.jpg"
+    ],
+    "note": "Sloped shield shoulders, offset cylindrical rack, narrow face, long PPC and stout calf plates."
+  },
+  "wolverine": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/wolverine2.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/05/T2sZoianXhZI-Lyran_Royal_Guard_Wolverine-2-1024x1024.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/05/z5ojoGcjrf71-Lyran_Royal_Guard_Wolverine.3-1024x1024.jpg"
+    ],
+    "note": "Rounded chest, tall narrow cockpit, six-hole adjacent launcher, angled shoulder shields, short gun and visible hands."
+  },
+  "firestarter": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/firestarter3-18.jpg",
+      "https://mechpainters.org/wp-content/uploads/2026/06/425-2-1500-1500-1024x1024.jpg",
+      "https://mechpainters.org/wp-content/uploads/2026/06/425-3-1500-1500-1024x1024.jpg"
+    ],
+    "note": "Slim waist and long legs, rounded helmet, small shoulder caps, paired forearm nozzles."
+  },
+  "shadow_hawk": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/shadowhawk8.jpg",
+      "https://mechpainters.org/wp-content/uploads/2026/03/365-2000-2000.jpg"
+    ],
+    "note": "Offset roof cannon, square helmet, five-hole torso rack, chunky knees, broad split waist armor."
+  },
+  "thunderbolt": {
+    "src": [
+      "https://mechpainters.org/wp-content/uploads/2025/06/HyperMizutsune-Thunderbolt.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/05/IMG_4628.jpg"
+    ],
+    "note": "Low offset helmet, large cylindrical upper rack, deeply faceted chest, wide shin armor. Second photograph tagged TDR-7S but same plastic family; weapon comparison provisional."
+  },
+  "marauder": {
+    "src": [
+      "https://jadedfalconer.com/Pictures/CGLminis/marauder27.jpg",
+      "https://mechpainters.org/wp-content/uploads/2025/05/MBJ7QHxw3wNK-20250504_122427.jpg"
+    ],
+    "note": "Sloped elongated cockpit body, raised dorsal gun, two separated paired-bore arms, reverse-jointed legs and tarsal feet."
+  }
+}
