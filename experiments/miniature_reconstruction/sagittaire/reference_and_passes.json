@@ -1,7 +1,7 @@
 {
   "chassis": "Sagittaire SGT-8R",
   "source_model": "data/voxels/sagittaire.json",
-  "candidate": "experiments/miniature_reconstruction/sagittaire/sagittaire_candidate.json",
+  "candidate": "experiments/miniature_reconstruction/sagittaire/sagittaire_pass04.json",
   "sculpt_generation": "Catalyst Games 2023 Eridani Light Horse Hunter Lance CAT35763",
   "references": [
     {
@@ -36,6 +36,21 @@
         "May expose holes after voxelization",
         "Not yet compared using matched cameras"
       ]
+    },
+    {
+      "id": 2,
+      "operation": "resculpt central chest, cockpit, shoulder, arm and leg armor",
+      "status": "source_committed_unverified"
+    },
+    {
+      "id": 3,
+      "operation": "shape lower torso, knee shields, rear calves, tapered feet",
+      "status": "source_committed_unverified"
+    },
+    {
+      "id": 4,
+      "operation": "add shoulder hip knee and ankle joint backing",
+      "status": "source_committed_unverified"
     }
   ],
   "required_validation": [
@@ -45,7 +60,12 @@
     "Reject poorly calibrated views from numerical scoring",
     "Restore any removed cell necessary for connection"
   ],
-  "test_status": "not_run",
-  "render_status": "not_rendered",
-  "promotion_status": "blocked"
+  "test_status": "not_run_no_godot_runtime",
+  "render_status": "not_rendered_no_godot_runtime",
+  "promotion_status": "blocked",
+  "calibration_tools": [
+    "tools/fit_miniature_camera.py",
+    "tools/fit_miniature_pose.py"
+  ],
+  "calibration_status": "tools_committed_no_annotated_images_or_fitted_solutions"
 }
