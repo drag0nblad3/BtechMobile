@@ -1,0 +1,202 @@
+[
+  {
+    "id": "nova",
+    "parts": 19,
+    "cells": 8077,
+    "faults": [],
+    "clear": 12,
+    "total": 12,
+    "scores": [
+      {
+        "name": "Walmart near-front",
+        "before": 0.5087,
+        "after": 0.52848,
+        "cameraRMSE": 5.024736685129244,
+        "poseRMSE": {
+          "la": 5.355757105092498,
+          "ra": 8.398723815251778,
+          "ll": 13.868690344173446,
+          "rl": 9.313472710640886
+        }
+      },
+      {
+        "name": "Emporium elevated quarter",
+        "before": 0.52992,
+        "after": 0.54504,
+        "cameraRMSE": 2.3752765534981464,
+        "poseRMSE": {
+          "la": 2.2921921193589427,
+          "ra": 6.324232556379529,
+          "ll": 4.713307920654408,
+          "rl": 4.68965743547324
+        }
+      }
+    ],
+    "history": []
+  },
+  {
+    "id": "fire_moth",
+    "parts": 17,
+    "cells": 5301,
+    "faults": [],
+    "clear": 8,
+    "total": 8,
+    "scores": [
+      {
+        "name": "Gauntlet elevated front",
+        "before": 0.50404,
+        "after": 0.5083599999999999,
+        "cameraRMSE": 5.749051548003,
+        "poseRMSE": {
+          "la": 9.725208818817709,
+          "ra": 10.58028298156866,
+          "ll": 5.429489776421805,
+          "rl": 13.925280713925229
+        }
+      },
+      {
+        "name": "Emporium quarter",
+        "before": 0.5309200000000001,
+        "after": 0.5334000000000001,
+        "cameraRMSE": 5.794218676066326,
+        "poseRMSE": {
+          "la": 12.543990243823623,
+          "ra": 7.773074547178892,
+          "ll": 1.7346788051459803,
+          "rl": 9.699888091663308
+        }
+      }
+    ],
+    "history": [
+      {
+        "names": [
+          "ct",
+          "hd",
+          "lt",
+          "rt"
+        ],
+        "before": [
+          0.50404,
+          0.5309200000000001
+        ],
+        "after": [
+          0.51162,
+          0.54834
+        ],
+        "faults": [
+          [
+            "la",
+            "weak",
+            "lt"
+          ]
+        ],
+        "accepted": false
+      },
+      {
+        "names": [
+          "la",
+          "ra",
+          "la_forearm",
+          "ra_forearm",
+          "la_weapon",
+          "ra_weapon"
+        ],
+        "before": [
+          0.50404,
+          0.5309200000000001
+        ],
+        "after": [
+          0.5147,
+          0.49078
+        ],
+        "faults": [],
+        "accepted": false
+      },
+      {
+        "names": [
+          "ll_shin",
+          "rl_shin",
+          "ll_foot",
+          "rl_foot"
+        ],
+        "before": [
+          0.50404,
+          0.5309200000000001
+        ],
+        "after": [
+          0.49826000000000004,
+          0.52458
+        ],
+        "faults": [],
+        "accepted": false
+      },
+      {
+        "names": [
+          "ct",
+          "hd"
+        ],
+        "before": [
+          0.50404,
+          0.5309200000000001
+        ],
+        "after": [
+          0.5083599999999999,
+          0.5334000000000001
+        ],
+        "faults": [],
+        "accepted": true
+      },
+      {
+        "names": [
+          "la_weapon",
+          "ra_weapon"
+        ],
+        "before": [
+          0.5083599999999999,
+          0.5334000000000001
+        ],
+        "after": [
+          0.52092,
+          0.51894
+        ],
+        "faults": [],
+        "accepted": false
+      }
+    ]
+  },
+  {
+    "id": "timber_wolf",
+    "parts": 21,
+    "cells": 12000,
+    "faults": [],
+    "clear": 44,
+    "total": 44,
+    "scores": [
+      {
+        "name": "ToyWiz tabletop Prime",
+        "before": 0.4539285714285714,
+        "after": 0.6028,
+        "cameraRMSE": 3.7214015166967935,
+        "poseRMSE": {
+          "la": 1.1943890088172242,
+          "ra": 4.890027087574488,
+          "ll": 21.314715236377022,
+          "rl": 17.09259398590878
+        }
+      },
+      {
+        "name": "Catalyst 100mm enlarged sculpt quarter (secondary, scale/variant caveat)",
+        "before": 0.5059285714285714,
+        "after": 0.5600714285714286,
+        "cameraRMSE": 4.382128478050011,
+        "poseRMSE": {
+          "la": 3.3781779774810676,
+          "ra": 5.562305095163973,
+          "ll": 6.767290181584343,
+          "rl": 15.369343888816916
+        }
+      }
+    ],
+    "history": []
+  }
+]
