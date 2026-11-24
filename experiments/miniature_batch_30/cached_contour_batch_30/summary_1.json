@@ -1,0 +1,326 @@
+[
+  {
+    "id": "catapult",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.6183,
+        "after": 0.6196,
+        "cameraRms": 10.8697410191694,
+        "poseRms": {
+          "rl": 12.090589410336827
+        }
+      },
+      {
+        "name": "painted opposite quarter",
+        "before": 0.5425333333333334,
+        "after": 0.5493,
+        "cameraRms": 38.29435025205432,
+        "poseRms": {
+          "ll": 20.451507039883218
+        }
+      }
+    ],
+    "baseline": 0.5804166666666667,
+    "candidate": 0.58445,
+    "changed": 368,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 399,
+      "misses": 77
+    },
+    "muzzles": {
+      "before": 24,
+      "after": 24,
+      "total": 30
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "adder",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.6143333333333333,
+        "after": 0.6224333333333334,
+        "cameraRms": 8.393802428713645,
+        "poseRms": {
+          "rl": 4.812236666476715
+        }
+      }
+    ],
+    "baseline": 0.6143333333333333,
+    "candidate": 0.6224333333333334,
+    "changed": 188,
+    "trials": 22,
+    "faults": 0,
+    "cache": {
+      "hits": 369,
+      "misses": 73
+    },
+    "muzzles": {
+      "before": 2,
+      "after": 2,
+      "total": 2
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "blackjack",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.48943333333333333,
+        "after": 0.5029,
+        "cameraRms": 12.933085099202733,
+        "poseRms": {
+          "rl": 5.654741474590362
+        }
+      }
+    ],
+    "baseline": 0.48943333333333333,
+    "candidate": 0.5029,
+    "changed": 538,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 391,
+      "misses": 85
+    },
+    "muzzles": {
+      "before": 2,
+      "after": 2,
+      "total": 2
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "locust",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.41873333333333335,
+        "after": 0.4258333333333333,
+        "cameraRms": 2.7306421905602916,
+        "poseRms": {
+          "rl": 4.946635410425622
+        }
+      }
+    ],
+    "baseline": 0.41873333333333335,
+    "candidate": 0.4258333333333333,
+    "changed": 192,
+    "trials": 22,
+    "faults": 0,
+    "cache": {
+      "hits": 394,
+      "misses": 74
+    },
+    "muzzles": {
+      "before": 0,
+      "after": 0,
+      "total": 2
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "archer",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.323325,
+        "after": 0.331225,
+        "cameraRms": 6.2449574504374725,
+        "poseRms": {
+          "rl": 10.696183825019077
+        }
+      }
+    ],
+    "baseline": 0.323325,
+    "candidate": 0.331225,
+    "changed": 652,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 495,
+      "misses": 93
+    },
+    "muzzles": {
+      "before": 14,
+      "after": 14,
+      "total": 40
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "awesome",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.5397,
+        "after": 0.5492,
+        "cameraRms": 10.01019944131042,
+        "poseRms": {
+          "rl": 18.998753723756767
+        }
+      }
+    ],
+    "baseline": 0.5397,
+    "candidate": 0.5492,
+    "changed": 426,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 545,
+      "misses": 99
+    },
+    "muzzles": {
+      "before": 3,
+      "after": 3,
+      "total": 3
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "banshee",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.5025,
+        "after": 0.5202,
+        "cameraRms": 12.018380570661295,
+        "poseRms": {
+          "rl": 17.767223061207382
+        }
+      }
+    ],
+    "baseline": 0.5025,
+    "candidate": 0.5202,
+    "changed": 406,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 518,
+      "misses": 98
+    },
+    "muzzles": {
+      "before": 1,
+      "after": 1,
+      "total": 3
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "battlemaster",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.4186666666666667,
+        "after": 0.4229,
+        "cameraRms": 20.468110430436862,
+        "poseRms": {
+          "rl": 24.366011215590362
+        }
+      }
+    ],
+    "baseline": 0.4186666666666667,
+    "candidate": 0.4229,
+    "changed": 270,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 464,
+      "misses": 96
+    },
+    "muzzles": {
+      "before": 6,
+      "after": 6,
+      "total": 7
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "centurion",
+    "source": "cohort_18",
+    "views": [
+      {
+        "name": "catalog quarter",
+        "before": 0.48276666666666673,
+        "after": 0.4942333333333333,
+        "cameraRms": 7.236843431536484,
+        "poseRms": {
+          "rl": 7.973593435469788
+        }
+      }
+    ],
+    "baseline": 0.48276666666666673,
+    "candidate": 0.4942333333333333,
+    "changed": 534,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 464,
+      "misses": 96
+    },
+    "muzzles": {
+      "before": 8,
+      "after": 8,
+      "total": 11
+    },
+    "status": "provisional improvement"
+  },
+  {
+    "id": "atlas",
+    "source": "atlas round 3",
+    "views": [
+      {
+        "name": "catalog-front-quarter",
+        "before": 0.7133666666666666,
+        "after": 0.7146166666666667,
+        "cameraRms": 9.730815009021937,
+        "poseRms": {
+          "rl": 23.130033566395145,
+          "ll": 33.220449455963106,
+          "ra": 1.9716547738397336,
+          "la": 4.272533378031938
+        }
+      },
+      {
+        "name": "painted-frontal",
+        "before": 0.6624833333333332,
+        "after": 0.6632333333333332,
+        "cameraRms": 21.811290147521195,
+        "poseRms": {
+          "rl": 68.60420336267633,
+          "ll": 31.781535491438323,
+          "ra": 5.187678280282547,
+          "la": 16.98211960071188
+        }
+      }
+    ],
+    "baseline": 0.687925,
+    "candidate": 0.6889250000000001,
+    "changed": 156,
+    "trials": 24,
+    "faults": 0,
+    "cache": {
+      "hits": 595,
+      "misses": 105
+    },
+    "muzzles": {
+      "before": 3,
+      "after": 3,
+      "total": 21
+    },
+    "status": "provisional improvement"
+  }
+]
