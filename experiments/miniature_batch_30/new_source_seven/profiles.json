@@ -1,0 +1,254 @@
+[
+  {
+    "profile": [
+      "solitaire",
+      "Solitaire 3",
+      0.037,
+      "upright",
+      25,
+      5,
+      7,
+      5,
+      4,
+      41,
+      4,
+      4,
+      2.7,
+      3,
+      "crown",
+      "shield",
+      "hand",
+      "hand",
+      "",
+      "",
+      0,
+      0,
+      "Slim runner, angular shoulder fins and compact arms"
+    ],
+    "ref": "https://warhaus.com.au/products/battletech-core-box-2026",
+    "arm": [
+      0,
+      0
+    ],
+    "torso": [
+      2,
+      1
+    ]
+  },
+  {
+    "profile": [
+      "vulture_mk_iv",
+      "Vulture Mk IV Prime",
+      0.05,
+      "reverse",
+      25,
+      6,
+      9,
+      10,
+      8,
+      40,
+      4.5,
+      5,
+      3.7,
+      4.2,
+      "nose",
+      "round",
+      "long",
+      "long",
+      "",
+      "",
+      0,
+      0,
+      "Raked low beak, swept launcher banks and sloped thighs"
+    ],
+    "ref": "https://www.defiance-industries-wargaming.com/listing/1546461855/battletech-miniatures-mad-dog-mk-iv",
+    "arm": [
+      1,
+      1
+    ],
+    "torso": [
+      12,
+      12
+    ]
+  },
+  {
+    "profile": [
+      "hellhound_conjurer",
+      "Hellhound (Conjurer)",
+      0.047,
+      "upright",
+      24,
+      6,
+      9,
+      6,
+      5,
+      39,
+      4.5,
+      5,
+      3.4,
+      4,
+      "crown",
+      "shield",
+      "hand",
+      "long",
+      "",
+      "",
+      0,
+      0,
+      "Horned helmet, broad breastplate with central projecting plate, asymmetric cannon and fist"
+    ],
+    "ref": "https://www.walmart.com/ip/5253085582",
+    "arm": [
+      0,
+      1
+    ],
+    "torso": [
+      4,
+      2
+    ]
+  },
+  {
+    "profile": [
+      "koshi_standard",
+      "Koshi (Standard)",
+      0.037,
+      "upright",
+      23,
+      5,
+      7,
+      5,
+      5,
+      38,
+      3.8,
+      4.4,
+      3,
+      3.2,
+      "inset",
+      "round",
+      "rack",
+      "rack",
+      "",
+      "",
+      0,
+      0,
+      "Spherical projecting cockpit, shoulder circles, paired dorsal vents, dissimilar arm pods"
+    ],
+    "ref": "https://www.sarna.net/wiki/Koshi_(BattleMech)",
+    "arm": [
+      8,
+      8
+    ],
+    "torso": [
+      0,
+      0
+    ]
+  },
+  {
+    "profile": [
+      "hawkwolf_hwk4f",
+      "HawkWolf HWK-4F",
+      0.051,
+      "upright",
+      26,
+      6,
+      8,
+      6,
+      5,
+      41,
+      4.8,
+      5,
+      4,
+      4.4,
+      "crown",
+      "shield",
+      "rack",
+      "rack",
+      "",
+      "",
+      0,
+      0,
+      "Tall rectangular arm missile faces, central waist exposed, angled long shin armor"
+    ],
+    "ref": "https://www.sarna.net/wiki/HawkWolf",
+    "arm": [
+      15,
+      15
+    ],
+    "torso": [
+      5,
+      5
+    ]
+  },
+  {
+    "profile": [
+      "black_hawk_standard",
+      "Black Hawk (Standard)",
+      0.047,
+      "reverse",
+      24,
+      6,
+      8,
+      7,
+      5,
+      38,
+      4,
+      5,
+      3.6,
+      4.6,
+      "nose",
+      "round",
+      "rack",
+      "rack",
+      "",
+      "",
+      0,
+      0,
+      "Circular shoulders, narrow forward hull and blocky arm launcher groups"
+    ],
+    "ref": "https://www.sarna.net/wiki/Black_Hawk_(BattleMech)",
+    "arm": [
+      8,
+      8
+    ],
+    "torso": [
+      1,
+      1
+    ]
+  },
+  {
+    "profile": [
+      "dominator",
+      "Dominator (Standard)",
+      0.052,
+      "upright",
+      26,
+      7,
+      10,
+      6,
+      6,
+      42,
+      5,
+      5.5,
+      4,
+      4.5,
+      "crown",
+      "shield",
+      "hand",
+      "long",
+      "",
+      "",
+      0,
+      0,
+      "Broad shallow chest with inset rounded head, tall shoulders, right cannon and left fist"
+    ],
+    "ref": "https://ironwindmetals.com/index.php/contact/product/battletech-20-5187",
+    "arm": [
+      0,
+      1
+    ],
+    "torso": [
+      6,
+      1
+    ]
+  }
+]
