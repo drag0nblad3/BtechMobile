@@ -1,0 +1,72 @@
+[
+  {
+    "name": "battleaxe",
+    "voxels": 6927,
+    "components": [
+      6927
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "466a3eadd0953440e30023e672520b73bb5ce4fd"
+  },
+  {
+    "name": "firestarter",
+    "voxels": 2200,
+    "components": [
+      2200
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "92f0a823473c6a35e07aab962fa2d1d032a61ea3"
+  },
+  {
+    "name": "jenner",
+    "voxels": 4141,
+    "components": [
+      4141
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "9ea94a8a7c59c9a937a7abdf3f164172673db0e0"
+  },
+  {
+    "name": "atlas",
+    "voxels": 10969,
+    "components": [
+      10969
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "fa67fb12d3fc80d06fe55d9bd5f8e89c3b7c6f5e"
+  },
+  {
+    "name": "wolverine",
+    "voxels": 4962,
+    "components": [
+      4962
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "50db3eb6574ef90967e9b83ba9297597ed9894ad"
+  },
+  {
+    "name": "marauder",
+    "voxels": 9310,
+    "components": [
+      9310
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "2bf9f821c18e12646f9d4f888cc6a8b63f9c8c57"
+  },
+  {
+    "name": "phoenix_hawk",
+    "voxels": 3590,
+    "components": [
+      3590
+    ],
+    "partIslands": [],
+    "weakJoints": [],
+    "renderCommit": "8b06fe43daeca4f3d1c417104278723b43fec499"
+  }
+]
