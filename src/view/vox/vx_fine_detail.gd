@@ -1,8 +1,7 @@
 class_name VxFineDetail
 extends RefCounted
-## Local, backed micro-recesses on each existing chassis's armor surfaces.
-## No new silhouettes, arbitrary weapon ports, floating bits or joint changes.
-## Only cut flat armor with two solid backing layers and an intact perimeter.
+## Recessed details on the actual armor of each chassis, without changing
+## silhouettes, existing openings, moving joints or record-sheet damage roles.
 
 const PLATING := ["armor", "plate", "form", "edge", "trim"]
 
@@ -18,52 +17,81 @@ static func apply(model: VxModel) -> Dictionary:
 	for p: Dictionary in model.parts:
 		for c: Vector3i in p["cells"]:
 			owner[c] = p["name"]
+	var guarded := _guards(model)
 	var accents := {}
 	var cuts := 0
 	var panels := {}
+	var panel_count := 0
 	for p: Dictionary in model.parts:
 		var name_: String = p["name"]
 		var cells: Dictionary = p["cells"]
 		var normal := _normal(name_)
-		if normal == Vector3i.ZERO or cells.size() < 200:
+		if normal == Vector3i.ZERO or cells.size() < 100:
 			continue
-		var patch := _find_patch(cells, owner, eligible, normal, name_)
-		if patch.is_empty():
-			continue
-		var center: Vector3i = patch["center"]
+		var is_vent := name_ in ["ct", "lt", "rt"]
+		var limit := 3 if cells.size() > 15000 else (2 if cells.size() > 5000 else 1)
 		var horizontal := Vector3i.RIGHT if normal.z != 0 else Vector3i.BACK
-		# Two narrow horizontal slots with a solid central rib.
-		for v: int in [-1, 1]:
-			for u in range(-1, 2):
-				var c: Vector3i = center + horizontal * u + Vector3i.UP * v
-				var backing: Vector3i = c - normal
-				var material: int = cells[backing]
-				if not accents.has(material):
-					accents[material] = model.colors.size()
-					model.colors.append(model.colors[material].darkened(0.25))
-					model.roles.append(model.roles[material])
-				cells[backing] = accents[material]
-				cells.erase(c)
-				owner.erase(c)
-				cuts += 1
-		panels[name_] = {"center": center, "normal": normal, "cut_cells": 6}
-	return {"cut_cells": cuts, "panels": panels, "panel_count": panels.size()}
+		var part_panels := []
+		for i in limit:
+			var patch := _find_patch(cells, owner, eligible, guarded, normal)
+			if patch.is_empty():
+				break
+			var center: Vector3i = patch["center"]
+			var removed := 0
+			# Broad torso plates get twin backed slots. Limb and head
+			# armor gets one short inspection seam rather than more vents.
+			var rows: Array[int] = [-1, 1] if is_vent else [0]
+			for v: int in rows:
+				for u: int in range(-1, 2):
+					var c: Vector3i = center + horizontal * u + Vector3i.UP * v
+					var backing: Vector3i = c - normal
+					var material: int = cells[backing]
+					if not accents.has(material):
+						accents[material] = model.colors.size()
+						model.colors.append(model.colors[material].darkened(0.25))
+						model.roles.append(model.roles[material])
+					cells[backing] = accents[material]
+					cells.erase(c)
+					owner.erase(c)
+					removed += 1
+			cuts += removed
+			panel_count += 1
+			part_panels.append({"center": center, "normal": normal,
+				"kind": "twin_slot" if is_vent else "panel_seam", "cut_cells": removed})
+		if not part_panels.is_empty():
+			panels[name_] = part_panels
+	return {"cut_cells": cuts, "panels": panels, "panel_count": panel_count}
 
 
 static func _normal(name_: String) -> Vector3i:
-	# Avoid cockpit glazing, hands, weapons, joint caps, forward launch faces,
-	# feet and muzzle corridors. Only use main armor bodies and greaves.
-	if name_ == "ct":
+	# Never place a detail on forward weapon/optic faces or foot soles.
+	# Side panels on arms are considered only when made of ordinary armor.
+	if name_ in ["ct", "hd"]:
 		return Vector3i.BACK
-	if name_ in ["lt", "ll_shin", "ll_tarsus"]:
+	if name_ in ["lt", "la", "la_forearm", "ll", "ll_shin", "ll_tarsus"]:
 		return Vector3i.LEFT
-	if name_ in ["rt", "rl_shin", "rl_tarsus"]:
+	if name_ in ["rt", "ra", "ra_forearm", "rl", "rl_shin", "rl_tarsus"]:
 		return Vector3i.RIGHT
 	return Vector3i.ZERO
 
 
+static func _guards(model: VxModel) -> Dictionary:
+	var result := {}
+	# Protect the neighborhoods of all authored emitters, even rear weapons.
+	var radius := maxi(4, model.detail)
+	for table: Dictionary in [model.muzzles, model.jets]:
+		for loc: int in table:
+			for point: Vector3 in table[loc]:
+				var c := Vector3i(point.floor())
+				for x: int in range(-radius, radius + 1):
+					for y: int in range(-radius, radius + 1):
+						for z: int in range(-radius, radius + 1):
+							result[c + Vector3i(x, y, z)] = true
+	return result
+
+
 static func _find_patch(cells: Dictionary, owner: Dictionary, eligible: Dictionary,
-		normal: Vector3i, part_name: String) -> Dictionary:
+		guarded: Dictionary, normal: Vector3i) -> Dictionary:
 	var low := Vector3i(100000, 100000, 100000)
 	var high := -low
 	for c: Vector3i in cells:
@@ -74,33 +102,31 @@ static func _find_patch(cells: Dictionary, owner: Dictionary, eligible: Dictiona
 	var best := {}
 	var best_score := INF
 	for c: Vector3i in cells:
-		if not eligible.has(cells[c]) or owner.has(c + normal):
+		if not eligible.has(cells[c]) or owner.has(c + normal) or guarded.has(c):
 			continue
 		var offset := Vector3(c) - middle
-		# Prefer the center of a broad plate, away from its articulation ends.
 		var score := offset.length_squared() - 2.0 * offset.dot(Vector3(normal))
 		if score > best_score:
 			continue
-		if not _supported_patch(cells, owner, eligible, c, normal, horizontal):
+		if not _supported_patch(cells, owner, eligible, guarded, c, normal, horizontal):
 			continue
-		# Stable mirrored tie-break: compare y,z then absolute x from symmetry plane.
 		var tie := Vector3(c.y, c.z, absf(float(c.x) + 0.5))
 		if score == best_score and not best.is_empty():
 			var old: Vector3 = best["tie"]
 			if tie.x > old.x or (tie.x == old.x and tie.y > old.y) or (tie.x == old.x and tie.y == old.y and tie.z >= old.z):
 				continue
 		best_score = score
-		best = {"center": c, "tie": tie, "part": part_name}
+		best = {"center": c, "tie": tie}
 	return best
 
 
 static func _supported_patch(cells: Dictionary, owner: Dictionary, eligible: Dictionary,
-		center: Vector3i, normal: Vector3i, horizontal: Vector3i) -> bool:
-	for v in range(-2, 3):
-		for u in range(-2, 3):
-			var c := center + horizontal * u + Vector3i.UP * v
-			if not eligible.has(cells.get(c, -1)) or owner.has(c + normal):
+		guarded: Dictionary, center: Vector3i, normal: Vector3i, horizontal: Vector3i) -> bool:
+	for v: int in range(-2, 3):
+		for u: int in range(-2, 3):
+			var c: Vector3i = center + horizontal * u + Vector3i.UP * v
+			if not eligible.has(cells.get(c, -1)) or owner.has(c + normal) or guarded.has(c):
 				return false
-			if not cells.has(c - normal) or not cells.has(c - normal * 2):
+			if not eligible.has(cells.get(c - normal, -1)) or not cells.has(c - normal * 2):
 				return false
 	return true
