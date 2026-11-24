@@ -40,7 +40,7 @@ static func apply(model: VxModel) -> Dictionary:
 			var removed := 0
 			# Broad torso plates get twin backed slots. Limb and head
 			# armor gets one short inspection seam rather than more vents.
-			var rows: Array[int] = [-1, 1] if is_vent else [0]
+			var rows: Array = [-1, 1] if is_vent else [0]
 			for v: int in rows:
 				for u: int in range(-1, 2):
 					var c: Vector3i = center + horizontal * u + Vector3i.UP * v
