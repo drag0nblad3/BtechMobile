@@ -48,7 +48,7 @@ function repair(src,parts,maps,voids,points){let log=[],guard=new Set([...voids,
  // or authored voids. A small same-location rigid panel may be reassigned
  // to its actual support when the reassignment preserves geometry.
  const rigid=n=>{let p=by[n];while(p?.parent&&!p.joint)p=by[p.parent];return p?.name||n;};
- for(let pass=0;pass<4;pass++)for(const p of parts){let m=maps[p.name],cs=group(m);if(cs.length<=1)continue;
+ for(let pass=0;pass<16;pass++)for(const p of parts){let m=maps[p.name],cs=group(m);if(cs.length<=1)continue;
  for(const g of cs.slice(1)){let o=owner(maps),main=new Set(cs[0]),island=new Set(g),best=null;
  for(const k of g){let c=V(k);for(const d of D){let face=patch(c,d);if(!face.every(q=>island.has(K(q))))continue;
  for(let step=1;step<=5;step++){let end=face.map(q=>K(plus(q,d,step)));if(end.every(k=>main.has(k))){let fill=[];for(let t=1;t<step;t++)for(let q of face)fill.push(K(plus(q,d,t)));if(fill.length&&fill.every(k=>!o.has(k)&&!guard.has(k))&&(!best||fill.length<best.length))best=fill;break;}if(end.some(k=>o.has(k)||guard.has(k)))break;}}}
@@ -70,7 +70,7 @@ function repair(src,parts,maps,voids,points){let log=[],guard=new Set([...voids,
  // Conserve material and cell count, and require two existing face
  // contacts (not a single-cell twig) for each replacement cell.
  if(g.length<=6&&g.every(k=>["armor","plate","edge","frame","joint","recess"].includes(m.get(k)))){
-  let t=new Map(m),occ=new Map(o);for(let k of g){t.delete(k);occ.delete(k);}let moved=[];for(let k of g){let p0=V(k),choices=[];for(let q of main){let xyz=V(q);if(xyz.reduce((s,v,i)=>s+Math.abs(v-p0[i]),0)>5)continue;for(let d of D){let v=plus(xyz,d),key=K(v);if(occ.has(key)||guard.has(key))continue;let contacts=D.filter(dd=>t.has(K(plus(v,dd)))).length;if(contacts<2)continue;let dist=v.reduce((s,x,i)=>s+Math.abs(x-p0[i]),0);choices.push({key,dist,contacts});}}choices.sort((a,b)=>a.dist-b.dist||b.contacts-a.contacts);if(!choices.length)break;let q=choices[0].key;t.set(q,m.get(k));occ.set(q,p.name);moved.push([k,q]);}
+  let t=new Map(m),occ=new Map(o);for(let k of g){t.delete(k);occ.delete(k);}let moved=[];for(let k of g){let p0=V(k),choices=[];for(let q of main){let xyz=V(q);if(xyz.reduce((s,v,i)=>s+Math.abs(v-p0[i]),0)>8)continue;for(let d of D){let v=plus(xyz,d),key=K(v);if(occ.has(key)||guard.has(key))continue;let contacts=D.filter(dd=>t.has(K(plus(v,dd)))).length;if(contacts<2)continue;let dist=v.reduce((s,x,i)=>s+Math.abs(x-p0[i]),0);choices.push({key,dist,contacts});}}choices.sort((a,b)=>a.dist-b.dist||b.contacts-a.contacts);if(!choices.length)break;let q=choices[0].key;t.set(q,m.get(k));occ.set(q,p.name);moved.push([k,q]);}
   if(moved.length===g.length&&group(t).length<group(m).length){maps[p.name]=t;log.push({part:p.name,kind:"reseated tiny armor remnants on backed torso surface",cells:moved.length,moved});break;}
  }
  }}
