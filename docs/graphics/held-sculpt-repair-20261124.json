@@ -1,0 +1,875 @@
+{
+  "rows": [
+    {
+      "id": "argus",
+      "status": "transferred",
+      "before": {
+        "cells": 3085,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 2,
+        "faults": [
+          [
+            "la",
+            "weak",
+            "lt"
+          ],
+          [
+            "ra",
+            "weak",
+            "rt"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 3090,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "log": [
+        {
+          "part": "la",
+          "parent": "lt",
+          "kind": "solid backed joint collar",
+          "cells": 3
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "kind": "solid backed joint collar",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "battleaxe",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 4863,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              848,
+              504
+            ]
+          ]
+        ],
+        "clear": 18,
+        "total": 18
+      },
+      "after": {
+        "cells": 4867,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 18,
+        "total": 18
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "2x2 backed internal mount",
+          "cells": 4
+        }
+      ]
+    },
+    {
+      "id": "dragon_fire",
+      "status": "transferred",
+      "before": {
+        "cells": 4077,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              32,
+              31
+            ]
+          ]
+        ],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 4077,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "log": [
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 31
+        }
+      ]
+    },
+    {
+      "id": "jackal",
+      "status": "held",
+      "before": {
+        "cells": 4430,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 4
+      },
+      "after": {
+        "cells": 4430,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 4
+      },
+      "log": [
+        {
+          "kind": "blocked bore retained",
+          "loc": "HD",
+          "point": [
+            0.5,
+            36.5,
+            -9.5
+          ],
+          "owners": [
+            [
+              "0,36,-8",
+              "hd",
+              "glow"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jinggau",
+      "status": "held",
+      "before": {
+        "cells": 3809,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              59,
+              14,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      },
+      "after": {
+        "cells": 3809,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 7
+      },
+      "log": [
+        {
+          "kind": "blocked bore retained",
+          "loc": "HD",
+          "point": [
+            0,
+            33,
+            -13
+          ],
+          "owners": [
+            [
+              "0,33,-13",
+              "hd",
+              "armor"
+            ],
+            [
+              "0,33,-12",
+              "hd",
+              "glass"
+            ],
+            [
+              "0,33,-11",
+              "hd",
+              "armor"
+            ]
+          ]
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 14
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "ostwar",
+      "status": "held",
+      "before": {
+        "cells": 6057,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 5,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1921,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 6057,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 5,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1921,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "log": []
+    },
+    {
+      "id": "pillager",
+      "status": "held",
+      "before": {
+        "cells": 8136,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 7,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2463,
+              6,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 8136,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 7,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2463,
+              6,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      },
+      "log": []
+    },
+    {
+      "id": "quickdraw",
+      "status": "transferred",
+      "before": {
+        "cells": 3336,
+        "parts": 12,
+        "physical": 1,
+        "physicalGroups": [
+          6
+        ],
+        "partIslands": 1,
+        "weak": 2,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              541,
+              6
+            ]
+          ],
+          [
+            "la",
+            "weak",
+            "lt"
+          ],
+          [
+            "ra",
+            "weak",
+            "rt"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 3344,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "short reinforced internal rib",
+          "cells": 4
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "kind": "solid backed joint collar",
+          "cells": 2
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "kind": "solid backed joint collar",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "raptor",
+      "status": "held",
+      "before": {
+        "cells": 2986,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 17
+      },
+      "after": {
+        "cells": 2986,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 17
+      },
+      "log": [
+        {
+          "kind": "blocked bore retained",
+          "loc": "CT",
+          "point": [
+            -1,
+            28,
+            -14
+          ],
+          "owners": [
+            [
+              "-1,28,-14",
+              "hd",
+              "armor"
+            ],
+            [
+              "-1,28,-13",
+              "hd",
+              "armor"
+            ],
+            [
+              "-1,28,-12",
+              "hd",
+              "armor"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rattlesnake_ii",
+      "status": "held",
+      "before": {
+        "cells": 2263,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 4,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              30,
+              14,
+              10,
+              5,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      },
+      "after": {
+        "cells": 2263,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 6,
+        "total": 7
+      },
+      "log": [
+        {
+          "kind": "blocked bore retained",
+          "loc": "HD",
+          "point": [
+            0,
+            35,
+            -12
+          ],
+          "owners": [
+            [
+              "0,35,-12",
+              "hd",
+              "armor"
+            ],
+            [
+              "0,35,-11",
+              "hd",
+              "glass"
+            ],
+            [
+              "0,35,-10",
+              "hd",
+              "armor"
+            ]
+          ]
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 14
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 10
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 5
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "sagittaire",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 5486,
+        "parts": 14,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 1,
+        "faults": [
+          [
+            "rt_pulse",
+            "weak",
+            "rt"
+          ],
+          [
+            "ra",
+            "islands",
+            [
+              719,
+              178
+            ]
+          ]
+        ],
+        "clear": 4,
+        "total": 4
+      },
+      "after": {
+        "cells": 5498,
+        "parts": 14,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "log": [
+        {
+          "part": "ra",
+          "kind": "2x2 backed internal mount",
+          "cells": 4
+        },
+        {
+          "part": "rt_pulse",
+          "parent": "rt",
+          "kind": "solid backed joint collar",
+          "cells": 8
+        }
+      ]
+    },
+    {
+      "id": "shadow_hawk_iic",
+      "status": "held",
+      "before": {
+        "cells": 3378,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              52,
+              7,
+              4
+            ]
+          ]
+        ],
+        "clear": 11,
+        "total": 12
+      },
+      "after": {
+        "cells": 3378,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 12
+      },
+      "log": [
+        {
+          "kind": "blocked bore retained",
+          "loc": "HD",
+          "point": [
+            0,
+            35,
+            -12
+          ],
+          "owners": [
+            [
+              "0,35,-11",
+              "hd",
+              "glass"
+            ],
+            [
+              "0,35,-10",
+              "hd",
+              "armor"
+            ]
+          ]
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 7
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 4
+        }
+      ]
+    },
+    {
+      "id": "shogun",
+      "status": "held",
+      "before": {
+        "cells": 7844,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 6,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2488,
+              5,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 7844,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 6,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2488,
+              5,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      },
+      "log": []
+    },
+    {
+      "id": "tempest",
+      "status": "held",
+      "before": {
+        "cells": 4264,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              43,
+              6,
+              2
+            ]
+          ]
+        ],
+        "clear": 10,
+        "total": 11
+      },
+      "after": {
+        "cells": 4264,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 10,
+        "total": 11
+      },
+      "log": [
+        {
+          "kind": "blocked bore retained",
+          "loc": "HD",
+          "point": [
+            0,
+            34,
+            -12
+          ],
+          "owners": [
+            [
+              "0,34,-11",
+              "hd",
+              "glass"
+            ],
+            [
+              "0,34,-10",
+              "hd",
+              "armor"
+            ]
+          ]
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 6
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "thunder_hawk",
+      "status": "held",
+      "before": {
+        "cells": 6316,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2211,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 6316,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2211,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "log": []
+    }
+  ]
+}
