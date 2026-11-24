@@ -1,0 +1,14 @@
+function finish(lib,repair,row){
+ let s=lib.clone(row.spec),history=[];const K=v=>v.join(","),V=k=>k.split(",").map(Number),add=(a,b,n=1)=>a.map((x,i)=>x+b[i]*n),D=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+ function samples(s,m){let o=new Set(Object.values(m).flatMap(x=>[...x.keys()]));return Object.entries(s.muzzles).flatMap(([loc,v])=>(Array.isArray(v[0])?v:[v]).map(p=>({loc,p,keys:[0,1,2].map(z=>K([Math.floor(p[0]),Math.floor(p[1]),Math.floor(p[2])+z])).filter(k=>o.has(k))})))}
+ function bridge(spec,name){let p=spec.parts.find(x=>x.name===name),m=lib.raster(spec),par=m[p.parent],child=m[name],occ=new Map();for(let [n,mm] of Object.entries(m))for(let k of mm.keys())occ.set(k,n);let blocked=new Set(samples(spec,m).flatMap(({p})=>[0,1,2].map(z=>K([Math.floor(p[0]),Math.floor(p[1]),Math.floor(p[2])+z]))));let best=null;
+ for(let k of par.keys()){let c=V(k);for(let dir of D){if(par.has(K(add(c,dir))))continue;let ax=[0,1,2].filter(i=>!dir[i]),patch=[[0,0],[1,0],[0,1],[1,1]].map(([a,b])=>{let v=c.slice();v[ax[0]]+=a;v[ax[1]]+=b;return v});if(!patch.every(v=>par.has(K(v))&&par.has(K(add(v,dir,-1)))))continue;
+ let pending=[],nChild=0,valid=true;for(let n=1;n<=8;n++){for(let v of patch){let kk=K(add(v,dir,n)),o=occ.get(kk);if(o===name)nChild++;else if(o||blocked.has(kk)){valid=false;break}else pending.push(kk)}if(!valid)break;if(n>=2&&nChild>0&&pending.length&&pending.length<=28){let score=pending.length+.02*patch.reduce((a,v)=>a+v.reduce((q,x,i)=>q+(x-p.pivot[i])**2,0),0);if(!best||score<best.score)best={pending:pending.slice(),score};break}}}}
+ if(!best)return null;let t=lib.clone(spec),part=t.parts.find(x=>x.name===name);for(let k of best.pending){let v=V(k);part.shapes.push(lib.B(v,v.map(x=>x+1),"frame"))}let tm=lib.raster(t);if(lib.backed(tm[name],tm[p.parent]).patches&&lib.components(tm[name]).length===1)return {spec:t,cells:best.pending.length};return null;
+ }
+ for(let [name,type] of row.qa.faults){if(type!=="weak")continue;let fix=bridge(s,name);if(fix){s=fix.spec;history.push({part:name,action:"backed 2x2 socket extension",cells:fix.cells})}}
+ if(s.id==="scorpion"){let p=s.parts.find(x=>x.name==="lt_rack"),base=lib.clone(s);for(let dx of [-2,-3,-4,-5]){let t=lib.clone(base),q=t.parts.find(x=>x.name==="lt_rack");q.pivot[0]+=dx;for(let sh of q.shapes){if(sh.axis==="x"){for(let st of sh.sections)st.at+=dx}else for(let st of sh.sections)for(let a of st.polygon)a[0]+=dx}t.muzzles.LT=t.muzzles.LT.map(v=>[v[0]+dx,v[1],v[2]]);let a=repair(lib,t),m=lib.raster(a.spec),qa=lib.audit(a.spec,m);if(!qa.faults.length&&samples(a.spec,m).every(x=>!x.keys.length)){s=a.spec;history.push({part:"lt_rack",action:"move rack clear of cockpit",dx});break}}
+ }
+ let m=lib.raster(s),qa=lib.audit(s,m),a=samples(s,m);return {id:row.id,spec:s,qa,history,clear:a.filter(x=>!x.keys.length).length,total:a.length,blocked:a.filter(x=>x.keys.length)};
+}
+;finish
