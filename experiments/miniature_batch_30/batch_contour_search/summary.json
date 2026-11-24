@@ -1,0 +1,166 @@
+[
+  {
+    "id": "mad_dog",
+    "before": 0.32404285714285713,
+    "after": 0.33104285714285714,
+    "changed": 232,
+    "faults": 0,
+    "cache": {
+      "hits": 522,
+      "misses": 66
+    },
+    "muzzles": {
+      "before": [
+        40,
+        44
+      ],
+      "after": [
+        40,
+        44
+      ]
+    },
+    "regression": false,
+    "cam": 11.89379386261106,
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "narrow"
+      ]
+    ]
+  },
+  {
+    "id": "hellbringer",
+    "before": 0.44009999999999994,
+    "after": 0.4455166666666666,
+    "changed": 312,
+    "faults": 0,
+    "cache": {
+      "hits": 438,
+      "misses": 66
+    },
+    "muzzles": {
+      "before": [
+        8,
+        8
+      ],
+      "after": [
+        8,
+        8
+      ]
+    },
+    "regression": false,
+    "cam": 11.320201313807576,
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "retain control"
+      ],
+      [
+        "lower legs",
+        "flatten"
+      ],
+      [
+        "feet",
+        "rear bias"
+      ]
+    ]
+  },
+  {
+    "id": "kit_fox",
+    "before": 0.47016,
+    "after": 0.4753200000000001,
+    "changed": 152,
+    "faults": 0,
+    "cache": {
+      "hits": 474,
+      "misses": 58
+    },
+    "muzzles": {
+      "before": [
+        2,
+        2
+      ],
+      "after": [
+        2,
+        2
+      ]
+    },
+    "regression": false,
+    "cam": 2.014334681402434,
+    "trials": 24,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "broaden"
+      ],
+      [
+        "lower legs",
+        "narrow"
+      ],
+      [
+        "feet",
+        "flatten"
+      ]
+    ]
+  },
+  {
+    "id": "cougar",
+    "before": 0.24927142857142856,
+    "after": 0.2575285714285714,
+    "changed": 160,
+    "faults": 0,
+    "cache": {
+      "hits": 408,
+      "misses": 54
+    },
+    "muzzles": {
+      "before": [
+        22,
+        22
+      ],
+      "after": [
+        22,
+        22
+      ]
+    },
+    "regression": false,
+    "cam": 9.071499412371855,
+    "trials": 18,
+    "selected": [
+      [
+        "core",
+        "retain control"
+      ],
+      [
+        "arm links",
+        "narrow"
+      ],
+      [
+        "feet",
+        "rear bias"
+      ]
+    ]
+  }
+]
