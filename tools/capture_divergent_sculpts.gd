@@ -65,7 +65,10 @@ func _load_pair() -> void:
 	images.clear()
 	var id: String = IDS[index]
 	var high := VxFineCatalog.recipe("res://data/voxels/" + id + ".json")
-	var source := VxFineCatalog.recipe("res://data/voxels/" + id + "_shape.json")
+	var candidate_path := "res://experiments/divergent_mech_review_20261124/" + id + "_shape.json"
+	if not FileAccess.file_exists(candidate_path):
+		candidate_path = "res://data/voxels/" + id + "_shape.json"
+	var source := VxFineCatalog.recipe(candidate_path)
 	source["subdivide"] = high.get("subdivide", 2)
 	source["voxelize_lofts"] = high.get("voxelize_lofts", false)
 	var low := Vector3(INF, INF, INF)

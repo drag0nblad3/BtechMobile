@@ -17,7 +17,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/voxels/ docs/graphics/held-sculpt-repair-20261124.json
+          git add data/voxels/ docs/graphics/held-sculpt-repair-20261124.json experiments/divergent_mech_review_20261124/
           git commit -m "Repair held Mech source geometry with backed mounts and protected bores"
           git push origin HEAD:chatgpt/repair-held-sculpts-compare-20261124
   render:

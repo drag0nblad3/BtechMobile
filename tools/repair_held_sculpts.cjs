@@ -43,7 +43,7 @@ function repair(src,parts,maps,voids,points){let log=[],guard=new Set([...voids,
  if(moved)continue;
  // Tiny armor flakes may be dropped only if genuinely unsupported by any
  // adjacent geometry. Do not delete a substantial armor/weapon assembly.
- if(g.length<=3&&g.every(k=>["armor","plate","edge"].includes(m.get(k)))&&g.every(k=>D.every(d=>!o.has(K(plus(V(k),d)))||island.has(K(plus(V(k),d))))){for(let k of g)m.delete(k);log.push({part:p.name,kind:"unsupported armor flake",cells:g.length});continue;}
+ if(g.length<=3&&g.every(k=>["armor","plate","edge"].includes(m.get(k)))&&g.every(k=>D.every(d=>!o.has(K(plus(V(k),d)))||island.has(K(plus(V(k),d)))))){for(let k of g)m.delete(k);log.push({part:p.name,kind:"unsupported armor flake",cells:g.length});continue;}
  // A local collar can connect thin armor to its own mass. Test two
  // parallel paths to form a backed rectangular rib, never a long rod.
  let best2=null;
@@ -68,3 +68,15 @@ let cache=new Map(),out=[];
 for(let h of held){let row=summary.rows.find(x=>x.id===h.id),path=row.source,src=get(ORIGINAL,path);if(!cache.has(row.selectedFrom))cache.set(row.selectedFrom,get(EXP,ROOT+row.selectedFrom));let rec=cache.get(row.selectedFrom).find(x=>x.id===row.id);let n=L.native(src),base=L.own(n.maps).maps,maps=Object.fromEntries(Object.entries(base).map(([k,v])=>[k,new Map(v)]));for(let p of rec.patches)L.paint(maps[p.part],p.shapes,new Set());let points=ports(src),before=audit(n.parts,maps,points);if(before.cells!==rec.final.cells)throw Error("selection replay "+h.id);let log=repair(src,n.parts,maps,n.voids,points),after=audit(n.parts,maps,points);let status="held";if(strict(after)){let patches=[];for(let p of n.parts){let d=L.delta(base[p.name],maps[p.name]);if(d.count)patches.push({part:p.name,shapes:d.out});}let candidate=L.promote(src,{...rec,patches,final:after,selectedFrom:row.selectedFrom+" + defect repair"}).candidate;candidate.source_sculpt_promotion.defect_repair=true;let highPath=path.replace("_shape.json",".json"),high=get(ORIGINAL,highPath);if(high.source==="res://"+path){status="linked";}else if(L.compatible(src,high)){fs.writeFileSync(highPath,JSON.stringify(L.transfer(high,candidate),null,2)+"\n");status="transferred";}else status="shape-only divergent";fs.writeFileSync(path,JSON.stringify(candidate,null,2)+"\n");}out.push({id:h.id,status,before,after,log});console.log("DEFECT|"+h.id+"|"+status+"|"+JSON.stringify(after));}
 fs.writeFileSync("docs/graphics/held-sculpt-repair-20261124.json",JSON.stringify({rows:out},null,2)+"\n");
 console.log("DEFECT_SUMMARY|"+JSON.stringify(out.reduce((m,x)=>(m[x.status]=(m[x.status]||0)+1,m),{})));
+
+// Preserve both alternatives without breaking the production tier-pair tests.
+const reviewDir="experiments/divergent_mech_review_20261124";
+fs.mkdirSync(reviewDir,{recursive:true});
+const alternatives=manifest.rows.filter(x=>x.status.startsWith("shape only"));
+for(const x of alternatives){
+ const path=x.source,archive=reviewDir+"/"+x.id+"_shape.json";
+ fs.copyFileSync(path,archive);
+ fs.writeFileSync(path,git("show",ORIGINAL+":"+path));
+}
+fs.writeFileSync(reviewDir+"/README.md","# Divergent Mech source candidates\n\nThe 14 exact promoted B source candidates are preserved here for A/B review. Production shape recipes revert to the pre-promotion pair while the existing detailed A versions remain unchanged. The matching-camera Godot render script reads these candidates after they are archived. No winner is selected.\n");
+console.log("DIVERGENT_ARCHIVED|"+alternatives.length);
