@@ -1,0 +1,149 @@
+{
+  "id": "jenner-v16-reattach-after-resculpt",
+  "status": "experimental_candidate_not_promoted",
+  "sculpt": "Catalyst Games 2021 Inner Sphere Striker Lance Jenner / CAT35729 / base 63",
+  "control": "jenner_assembly_v15_trial.json",
+  "candidate": "jenner_assembly_v16_trial.json",
+  "method": "Rebuild entire thigh and forward knee housings BEFORE deciding joint cutting planes and rig pivots; don't reject good geometry solely for disconnects; never auto-fill a hidden bridge.",
+  "mechanical_rebuild": {
+    "thigh_sections": "3 to 4 loft sections, +1 real supported anterior knee-knuckle loft per side",
+    "knee_interface": {
+      "normal": [
+        0,
+        -1,
+        0.24
+      ],
+      "origin": [
+        0,
+        0.825,
+        -0.14
+      ]
+    },
+    "old_knee_pivot": {
+      "left": [
+        -0.37,
+        0.81,
+        -0.08
+      ],
+      "right": [
+        0.37,
+        0.81,
+        -0.08
+      ]
+    },
+    "new_knee_pivot": {
+      "left": [
+        -0.37,
+        0.79,
+        -0.16
+      ],
+      "right": [
+        0.37,
+        0.79,
+        -0.16
+      ]
+    },
+    "old_shin_pivot": {
+      "left": [
+        -0.37,
+        0.68,
+        0
+      ],
+      "right": [
+        0.37,
+        0.68,
+        0
+      ]
+    },
+    "new_shin_pivot": {
+      "left": [
+        -0.37,
+        0.68,
+        -0.14
+      ],
+      "right": [
+        0.37,
+        0.68,
+        -0.14
+      ]
+    },
+    "shape_policy": "Prefer real angled mating surfaces and revised pivots over removing sculpt improvements to satisfy previous partition geometry. No overlaps or extra hidden material.",
+    "original_main_models_touched": false
+  },
+  "source_voxel_audit": {
+    "pitch": 0.04,
+    "control_voxels": 15119,
+    "candidate_voxels": 15265,
+    "delta": 146,
+    "connected_components": 30,
+    "parent_child_attachments": 29,
+    "overlap_faults": 0,
+    "detached_faults": 0,
+    "failed_backed_contacts": 0,
+    "max_joint_normal_error_degrees": 14.45,
+    "knee_attachment_normal_error_degrees": 1.95,
+    "thigh_owner_per_side": {
+      "before": 541,
+      "after": 554
+    },
+    "knee_armor_per_side": {
+      "before": 164,
+      "after": 224
+    },
+    "unchanged_muzzles": true,
+    "unchanged_foot_and_toe_occupancy": true
+  },
+  "photo_fit": {
+    "method": "Approximate 58-pixel manually traced 2021 plastic photos; freeze rigid camera on v15, refit both leg poses from knee/ankle/foot landmarks only because physical shin pivots moved; do not optimize silhouette or independently change camera.",
+    "view_scores": [
+      {
+        "view": "painted front-left",
+        "v15": 0.7205,
+        "v16": 0.7151,
+        "camera_rmse": 0.0369
+      },
+      {
+        "view": "painted front-right",
+        "v15": 0.7302,
+        "v16": 0.7373,
+        "camera_rmse": 0.04
+      },
+      {
+        "view": "painted rear-left",
+        "v15": 0.7226,
+        "v16": 0.7163,
+        "camera_rmse": 0.0043
+      },
+      {
+        "view": "unpainted front",
+        "v15": 0.7841,
+        "v16": 0.7792,
+        "camera_rmse": 0.0472
+      }
+    ],
+    "old_mean": 0.7393,
+    "new_mean": 0.737,
+    "delta": -0.0024,
+    "excluded_views": [
+      "unregistered painted rear-right",
+      "oblique unpainted side with hidden leg and ~0.114 rigid residual"
+    ],
+    "caveat": "Not a measured sculpt accuracy percentage. Approximate photos and unknown lens parameters can change small relative rankings. Independent shape and visual human review still required."
+  },
+  "code_paths": [
+    "reattach_after_resculpt.py",
+    "make_jenner_v16.py",
+    "pose_recalibration.py",
+    "test_reattach_after_resculpt.py",
+    "test_jenner_v16.py",
+    "test_pose_recalibration.py"
+  ],
+  "render": "generated/jenner_v15_v16_reattached_thighs.svg",
+  "validation": {
+    "independent_js_source_raster_and_attachment_audit": "PASS",
+    "python_regression": "Committed, not executed in current sandbox",
+    "godot_engine_rig": "Not run",
+    "android": "Not built"
+  },
+  "next_steps": "Review actual rig articulation in Godot, higher quality calibrated side/top photo landmarks; refine hip/knee mass shape with per-part masks before production promotion."
+}
