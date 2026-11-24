@@ -1,0 +1,124 @@
+[
+  {
+    "id": "grasshopper",
+    "parts": 20,
+    "cells": 6991,
+    "faults": [],
+    "clear": 1,
+    "points": 1,
+    "major": false,
+    "scores": [
+      {
+        "view": "grasshopper view 1",
+        "before": 0.41586,
+        "after": 0.43048000000000003
+      },
+      {
+        "view": "grasshopper view 2",
+        "before": 0.27968000000000004,
+        "after": 0.29159999999999997
+      }
+    ],
+    "changedCells": 890
+  },
+  {
+    "id": "wolfhound",
+    "parts": 20,
+    "cells": 5317,
+    "faults": [],
+    "clear": 4,
+    "points": 4,
+    "major": true,
+    "scores": [
+      {
+        "view": "wolfhound view 1",
+        "before": 0.37248000000000003,
+        "after": 0.38917999999999997
+      },
+      {
+        "view": "wolfhound view 2",
+        "before": 0.25962,
+        "after": 0.26846
+      }
+    ],
+    "changedCells": 1664
+  },
+  {
+    "id": "longbow",
+    "parts": 19,
+    "cells": 14180,
+    "faults": [],
+    "clear": 50,
+    "points": 50,
+    "major": true,
+    "scores": [
+      {
+        "view": "longbow view 1",
+        "before": 0.4404199999999999,
+        "after": 0.54464
+      },
+      {
+        "view": "longbow view 2",
+        "before": 0.088575,
+        "after": 0.0902
+      }
+    ],
+    "changedCells": 9926
+  },
+  {
+    "id": "nightstar",
+    "parts": 19,
+    "cells": 12490,
+    "faults": [],
+    "clear": 4,
+    "points": 4,
+    "major": false,
+    "scores": [
+      {
+        "view": "nightstar view 1",
+        "before": 0.44132,
+        "after": 0.45546
+      },
+      {
+        "view": "nightstar view 2",
+        "before": 0.5088600000000001,
+        "after": 0.51418
+      }
+    ],
+    "changedCells": 2560
+  },
+  {
+    "id": "zeus",
+    "parts": 17,
+    "cells": 8840,
+    "faults": [],
+    "clear": 7,
+    "points": 7,
+    "major": true,
+    "scores": [
+      {
+        "view": "zeus view 1",
+        "before": 0.34828,
+        "after": 0.39211999999999997
+      }
+    ],
+    "changedCells": 3742
+  },
+  {
+    "id": "crusader",
+    "parts": 19,
+    "cells": 9384,
+    "faults": [],
+    "clear": 30,
+    "points": 30,
+    "major": false,
+    "scores": [
+      {
+        "view": "crusader view 1",
+        "before": 0.49555999999999994,
+        "after": 0.5151
+      }
+    ],
+    "changedCells": 574
+  }
+]
