@@ -1,0 +1,114 @@
+[
+  {
+    "id": "blackjack",
+    "parts": 17,
+    "cells": 5320,
+    "faults": [],
+    "photo": 0.5548900000000001
+  },
+  {
+    "id": "archer",
+    "parts": 21,
+    "cells": 8845,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "awesome",
+    "parts": 20,
+    "cells": 10211,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "banshee",
+    "parts": 19,
+    "cells": 8716,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "battlemaster",
+    "parts": 18,
+    "cells": 8383,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "centurion",
+    "parts": 20,
+    "cells": 5450,
+    "faults": [],
+    "photo": 0.51905
+  },
+  {
+    "id": "charger",
+    "parts": 17,
+    "cells": 6574,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "enforcer",
+    "parts": 17,
+    "cells": 6016,
+    "faults": [],
+    "photo": 0.48286250000000003
+  },
+  {
+    "id": "hatchetman",
+    "parts": 20,
+    "cells": 5442,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "highlander",
+    "parts": 19,
+    "cells": 8831,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "hunchback",
+    "parts": 18,
+    "cells": 6571,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "jagermech",
+    "parts": 19,
+    "cells": 6366,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "trebuchet",
+    "parts": 19,
+    "cells": 6080,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "catapult",
+    "parts": 19,
+    "cells": 7490,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "adder",
+    "parts": 17,
+    "cells": 5166,
+    "faults": [],
+    "photo": null
+  },
+  {
+    "id": "locust",
+    "parts": 19,
+    "cells": 3340,
+    "faults": [],
+    "photo": 0.33053749999999993
+  }
+]
