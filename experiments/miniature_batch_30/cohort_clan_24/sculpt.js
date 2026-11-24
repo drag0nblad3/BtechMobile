@@ -31,9 +31,9 @@ function sculpt(lib, row) {
   const cap=shoulder==="round"?loft("x",[[s-1,ellipse(sy,0,3,aw+1,16)],[s+2,ellipse(sy,0,4,aw+1,16)],[s+5,ellipse(sy,0,3,aw,16)]],"plate"):X([[s-1,sy-3,sy+3,-aw,aw,.08],[s+2,sy-4,sy+4,-aw-1,aw+1,shoulder==="shield"?.22:.1],[s+5,sy-3,sy+3,-aw,aw,.12]],"plate");
   const high=shoulder==="raised";
   sidePart(part,q,"a",loc,q+"t",[s,sy,0],high?[cap]:[cap,Y([yr(e,armx,aw*.7,0,aw*.7),yr(e+3,armx,aw,0,aw),yr(sy-2,armx,aw*.8,0,aw*.8)],"armor")],"shoulder");
-  const gy=high?sy:wrist+2,rz=Math.max(2,aw*.76),back=-Math.floor(aw*.8);
+  const gy=high?sy:wrist+2,rz=Math.max(2,aw*.76),back=high?-8:-Math.floor(aw*.8);
   if(high){
-    part(n+"_forearm",loc,n,[x,gy,0],[B([x-rz,gy-rz,back],[x+rz,gy+rz,2],"frame")],"elbow");
+    part(n+"_forearm",loc,n,[x,gy,0],[B([x-rz,gy-rz,back],[x+rz,gy+rz,-Math.floor(aw*.8)],"frame")],"elbow");
   } else {
     sidePart(part,q,"a_forearm",loc,n,[armx,e,0],[Y([yr(wrist,armx,rz,0,rz),yr(wrist+3,armx,aw,0,aw),yr(e,armx,aw*.7,0,aw*.7)],"plate")],"elbow");
   }
