@@ -56,10 +56,11 @@ func set_model(model: Node3D) -> void:
 		_model.queue_free()
 	_model = model
 	add_child(model)
-	if _team_ring == null:
-		_team_ring = _make_team_ring()
-		add_child(_team_ring)
-	_team_ring.visible = not unit.destroyed
+	if unit != null:
+		if _team_ring == null:
+			_team_ring = _make_team_ring()
+			add_child(_team_ring)
+		_team_ring.visible = not unit.destroyed
 	if unit != null and model.name == "Placeholder":
 		WeaponSockets.attach(model, unit.def)
 
