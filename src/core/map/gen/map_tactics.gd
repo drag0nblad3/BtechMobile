@@ -6,8 +6,8 @@ extends RefCounted
 
 static func assess(m: BattleMap, sight := true) -> Dictionary:
 	var center := MapMobility.center_cells(m)
-	var ns := MapMobility.axis(m, 0, center)
-	var ew := MapMobility.axis(m, 2, center)
+	var ns := MapMobility.axis(m, 0, center, sight)
+	var ew := MapMobility.axis(m, 2, center, sight)
 	var out := {"north_south": ns, "east_west": ew, "center_cells": center.size()}
 	if sight:
 		out["sight"] = sightlines(m)
