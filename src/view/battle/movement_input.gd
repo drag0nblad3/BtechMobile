@@ -23,6 +23,8 @@ var options: MoveOptions
 var preview: Vector3i
 var has_preview := false
 var before_move := Callable()  ## Called just before a move is submitted (training undo).
+var intel_mode := 0
+var _intel_colors := {}
 var smash := false  ## Fail building entry rolls on purpose (Destroy Checks).
 
 
@@ -215,7 +217,17 @@ func _select(u: Unit) -> void:
 	_replan()
 
 
+func cycle_intel() -> void:
+	intel_mode = (intel_mode + 1) % TacticalIntel.MODES.size()
+	_intel_colors.clear()
+	if selected != null and options != null:
+		_refresh()
+	else:
+		hud.set_tip("Tactical overlay: " + TacticalIntel.MODES[intel_mode] + " (select a moving unit)")
+
+
 func _replan() -> void:
+	_intel_colors.clear()
 	var keep := preview if has_preview else Vector3i.ZERO
 	var had := has_preview
 	options = MovePlanner.plan(controller.state, selected, mode)
@@ -249,6 +261,10 @@ func _refresh() -> void:
 	var base: Color = [COLOR_WALK, COLOR_RUN, COLOR_JUMP][mode]
 	for c in options.reachable_hexes():
 		hexes[c] = base
+	if intel_mode != 0:
+		if _intel_colors.is_empty():
+			_intel_colors = TacticalIntel.colors(controller.state, selected, options, mode, intel_mode)
+		hexes = _intel_colors.duplicate()
 	if has_preview:
 		var route: Array[Vector3i] = options.path_to(preview)
 		for i in route.size():
@@ -296,3 +312,5 @@ func _refresh() -> void:
 		hud.set_tip(tip + ("\n" + why if why != "" else ""))
 	else:
 		hud.set_tip("Tap a highlighted hex to preview the move." if GameSettings.explain_level != ExplainLevel.OFF else "")
+	if intel_mode != 0:
+		hud.set_tip(TacticalIntel.legend(intel_mode) + "\n" + hud.tip.text)
