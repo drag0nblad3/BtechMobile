@@ -34,6 +34,7 @@ var recorder := BattleRecorder.new()
 var undo_input := UndoInput.new()  ## Training: take back your last move.
 var _last_autosave_turn := -1
 var _autosave_pending := false
+var _sheet_refresh_pending := false
 var _tutorial_path := ""
 var startup_complete := false
 var _loading: BattleLoading
@@ -538,7 +539,7 @@ func _on_event(e: GameEvent) -> void:
 			if not deferred_visual:
 				units_layer.refresh_unit(e.data["unit_id"])
 				units_layer.react(e)
-			_show_sheet_if_open()
+			_queue_sheet_refresh(int(e.data["unit_id"]))
 		GameEvent.PHYSICAL:
 			if not deferred_visual:
 				units_layer.react(e)
@@ -553,7 +554,7 @@ func _on_event(e: GameEvent) -> void:
 				_refresh_arrivals.call_deferred()
 		GameEvent.UNIT_EXITED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(false)
-			_show_sheet_if_open()
+			_queue_sheet_refresh(int(e.data["unit_id"]))
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			if e.type == GameEvent.PHASE_CHANGED:
 				attacks.clear()
@@ -566,8 +567,10 @@ func _on_event(e: GameEvent) -> void:
 				attacks.begin.call_deferred()
 				_look_at_my_turn.call_deferred()
 		GameEvent.BUILDING:
-			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
+			if e.data["kind"] in ["collapsed", "bridge_collapsed"]:
 				map_view.rebuild()
+			elif e.data["kind"] in ["fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
+				map_view.queue_fire_refresh()
 		GameEvent.GAME_OVER:
 			var after := TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1)), practice)
 			if in_campaign:
@@ -580,6 +583,18 @@ func _on_event(e: GameEvent) -> void:
 	if not deferred_visual:
 		scars.on_event(e)
 		cinematic.on_event(e)
+
+
+func _queue_sheet_refresh(id: int) -> void:
+	if not hud.sheet_open or sheet_unit == null or sheet_unit.id != id or _sheet_refresh_pending:
+		return
+	_sheet_refresh_pending = true
+	_flush_sheet_refresh.call_deferred()
+
+
+func _flush_sheet_refresh() -> void:
+	_sheet_refresh_pending = false
+	_show_sheet_if_open()
 
 
 func _refresh_arrivals() -> void:

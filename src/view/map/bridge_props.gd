@@ -8,6 +8,8 @@ extends Node3D
 const VARIANTS := 3
 const MAX_SCARS := 10
 const STONE := VxBridgeGen.STONE
+const MAX_CACHED := 48
+static var _cache: Dictionary = {}
 
 var scars := {}  # Vector2i -> Array of [Vector3 voxel centre, float radius]
 var _by_coord := {}  # Vector2i -> MeshInstance3D
@@ -27,17 +29,33 @@ static func build(map: BattleMap, scar_list := {}) -> BridgeProps:
 		inst.position = HexLayout.to_world(t.coord, t.floor_level())
 		root.add_child(inst)
 		root._by_coord[t.coord] = inst
-		inst.mesh = root._scarred(t).mesh()
+		inst.mesh = root._mesh_for(t)
 	return root
 
 
-## The bridge hex's generator, with every scar so far carved out.
-func _scarred(t: MapTile) -> VxBridgeGen:
+func _shape(t: MapTile) -> Array:
 	var open: Array = []
 	for f in 6:
 		open.append(_open_edge(t, Hex.neighbor(t.coord, f)))
 	var rise := (t.bridge.level - t.floor_level()) * VxBuildingGen.PER_LEVEL + 1
-	var g := VxBridgeGen.make(rise, open, absi(hash(t.coord)) % VARIANTS)
+	return [rise, open, absi(hash(t.coord)) % VARIANTS]
+
+
+func _mesh_for(t: MapTile) -> ArrayMesh:
+	if not scars.get(t.coord, []).is_empty():
+		return _scarred(t).mesh()
+	var key := _shape(t)
+	if not _cache.has(key):
+		if _cache.size() >= MAX_CACHED:
+			_cache.erase(_cache.keys()[0])
+		_cache[key] = VxBridgeGen.make(key[0], key[1], key[2]).mesh()
+	return _cache[key]
+
+
+## The bridge hex's generator, with every scar so far carved out.
+func _scarred(t: MapTile) -> VxBridgeGen:
+	var key := _shape(t)
+	var g := VxBridgeGen.make(key[0], key[1], key[2])
 	for s: Array in scars.get(t.coord, []):
 		g.carve(s[0], s[1])
 	return g

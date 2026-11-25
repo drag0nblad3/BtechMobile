@@ -23,9 +23,11 @@ var _size := 0.05
 var _colors := PackedColorArray()
 var _paintable: Array[bool] = []  ## Independent of the source's damage role.
 var _paint_material: ShaderMaterial
+var paint_bounds := AABB()
+var _last_removed: Dictionary = {}
 
 
-func setup(spec: Dictionary, model: VxModel) -> void:
+func setup(spec: Dictionary, model: VxModel, bounds: AABB = AABB()) -> void:
 	part_name = spec["name"]
 	name = part_name + "_mesh"
 	loc = spec["loc"]
@@ -36,6 +38,7 @@ func setup(spec: Dictionary, model: VxModel) -> void:
 	_colors = model.colors
 	_paintable = paint_mask(model)
 	material_override = shared_material()
+	paint_bounds = bounds if bounds.size != Vector3.ZERO else bounds_of(original)
 	_setup_paint_space(model)
 
 
@@ -44,14 +47,9 @@ func setup(spec: Dictionary, model: VxModel) -> void:
 func _setup_paint_space(model: VxModel) -> void:
 	if original.is_empty():
 		return
-	var low := Vector3i(100000, 100000, 100000)
-	var high := Vector3i(-100000, -100000, -100000)
-	for c: Vector3i in original:
-		low = Vector3i(mini(low.x, c.x), mini(low.y, c.y), mini(low.z, c.z))
-		high = Vector3i(maxi(high.x, c.x), maxi(high.y, c.y), maxi(high.z, c.z))
 	set_instance_shader_parameter("paint_origin", _pivot * _size)
-	set_instance_shader_parameter("panel_min", Vector3(low) * _size)
-	var span := Vector3(high - low + Vector3i.ONE) * _size
+	set_instance_shader_parameter("panel_min", paint_bounds.position * _size)
+	var span := paint_bounds.size * _size
 	set_instance_shader_parameter("panel_span", span)
 	var largest: Dictionary = {}
 	for candidate: Dictionary in model.parts_at(loc):
@@ -60,6 +58,18 @@ func _setup_paint_space(model: VxModel) -> void:
 	var badge: bool = loc in [Location.LT, Location.RT] and String(largest.get("name", "")) == part_name
 	badge = badge and span.x > 0.16 and span.y > 0.16
 	set_instance_shader_parameter("badge_enabled", 1.0 if badge else 0.0)
+
+
+## Pure grid bounds, usable by the startup worker and shared mesh cache.
+static func bounds_of(grid: Dictionary) -> AABB:
+	if grid.is_empty():
+		return AABB()
+	var low := Vector3i(100000, 100000, 100000)
+	var high := Vector3i(-100000, -100000, -100000)
+	for c: Vector3i in grid:
+		low = Vector3i(mini(low.x, c.x), mini(low.y, c.y), mini(low.z, c.z))
+		high = Vector3i(maxi(high.x, c.x), maxi(high.y, c.y), maxi(high.z, c.z))
+	return AABB(Vector3(low), Vector3(high - low + Vector3i.ONE))
 
 
 ## A barrel or cockpit may still be damageable armor in the source recipe;
@@ -93,8 +103,9 @@ func set_paint(mat: ShaderMaterial) -> void:
 
 ## Keeps every original cell except those in `removed`.
 func set_removed(removed: Dictionary) -> void:
-	if removed.is_empty() and cells.size() == original.size():
+	if removed == _last_removed:
 		return
+	_last_removed = removed.duplicate()
 	var next := {}
 	for c: Vector3i in original:
 		if not removed.has(c):
@@ -109,10 +120,16 @@ func set_removed(removed: Dictionary) -> void:
 
 
 func set_wrecked(on: bool) -> void:
+	if not on:
+		var normal: Material = _paint_material if _paint_material else shared_material()
+		if material_override != normal:
+			material_override = normal
+		return
 	if _wreck_material == null:
 		_wreck_material = shared_material().duplicate()
 		_wreck_material.albedo_color = Color(0.32, 0.3, 0.28)
-	material_override = _wreck_material if on else (_paint_material if _paint_material else shared_material())
+	if material_override != _wreck_material:
+		material_override = _wreck_material
 
 
 ## Point in this part's local space for a grid coordinate.

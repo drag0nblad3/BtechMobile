@@ -24,6 +24,7 @@ static func prepare(path: String) -> Dictionary:
 		var data := surface(cells, cells, touching, model.colors, mask,
 				spec["pivot"], model.voxel_size)
 		data["touching"] = touching
+		data["paint_bounds"] = VxPart.bounds_of(cells)
 		result["parts"][part_name] = data
 	return result
 

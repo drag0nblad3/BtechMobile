@@ -28,6 +28,9 @@ var kick_amount := [0.0, 0.0]
 var arm_busy := [false, false]
 var _flames: Array[Node3D] = []
 var _smoke_clock := 0.0
+var _leg_signature := Vector3.INF
+var _leg_height := 0.0
+var _legs_were_walking := false
 
 
 func setup(m: VxMech) -> void:
@@ -156,16 +159,22 @@ func tumble(limb: Node3D, dir: float) -> void:
 
 
 func _process(delta: float) -> void:
-	if mech == null:
+	if mech == null or not mech.is_visible_in_tree():
 		return
 	_smoke(delta)
 	for f in _flames:
 		f.scale = Vector3.ONE * randf_range(0.75, 1.3)
 	if fallen:
+		_leg_signature = Vector3.INF
 		return
 	if walking:
 		phase = fposmod(phase + delta / cycle, 1.0)
-	mech.body.position.y = VxLegs.pose(mech, phase, walking, crouch, kick_amount, running)
+	var signature := Vector3(crouch, float(kick_amount[0]), float(kick_amount[1]))
+	if walking or _legs_were_walking or signature != _leg_signature:
+		_leg_height = VxLegs.pose(mech, phase, walking, crouch, kick_amount, running)
+		_leg_signature = signature
+	_legs_were_walking = walking
+	mech.body.position.y = _leg_height
 	var s := sin(phase * TAU) if walking else 0.0
 	var gait_lean := (0.22 if running else 0.1) if walking else 0.0
 	mech.body.rotation.x = -gait_lean - lean + flinch.x
