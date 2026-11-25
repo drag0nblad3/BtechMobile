@@ -44,6 +44,8 @@ static func action_rolls(state: GameState, u: Unit, path: Array[Vector3i], from:
 	if mode == MoveMode.Kind.RUN:
 		out.append_array(Surfaces.mud_rolls(state, u, path, from))
 		out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return int(a["index"]) < int(b["index"]))
+	for r in out:
+		r["mod"] = int(r["mod"]) + TerrainMaster.psr_mod(u, r["reason"])
 	return out
 
 

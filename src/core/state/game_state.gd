@@ -39,6 +39,7 @@ var artillery: Array[Dictionary] = []
 var smoke_pending: Array[Vector2i] = []
 ## Minefields (Minefields): [{hex, side, density 1-3, groups}].
 var minefields: Array[Dictionary] = []
+var formations: Array[Dictionary] = []  ## Formation bonuses per side (Formation).
 ## Weather, temperature and gravity for the whole map.
 var conditions := Conditions.new():
 	set(v):

@@ -1,7 +1,7 @@
 class_name Spa
 extends RefCounted
 ## Special Pilot Abilities (Campaign Operations pp. 70-82): which a
-## MechWarrior has, and their names and costs from data/pilot_abilities.json.
+## MechWarrior has (its own, or free from its formation), and their names and costs from data/pilot_abilities.json.
 ## Each ability's effect lives in its own file or a one-line hook.
 
 const PATH := "res://data/pilot_abilities.json"
@@ -18,23 +18,43 @@ const MANEUVERING_ACE := "maneuvering_ace"
 const MELEE_SPECIALIST := "melee_specialist"
 const OBLIQUE_ATTACKER := "oblique_attacker"
 const WEAPON_SPECIALIST := "weapon_specialist"
+const CLUSTER_HITTER := "cluster_hitter"
+const HUMAN_TRO := "human_tro"
+const RANGE_MASTER := "range_master"
+const TACTICAL_GENIUS := "tactical_genius"
+const TERRAIN_MASTER := "terrain_master"
 
 static var _data: Dictionary = {}
 
 
 ## An ability may carry a choice after a colon: "weapon_specialist:ppc".
 static func has(u: Unit, id: String) -> bool:
-	return choice(u, id) != "" or (u != null and u.pilot != null and u.pilot.abilities.has(id))
+	return choice(u, id) != "" or entries(u).has(id)
+
+
+## The MechWarrior's own abilities and the free ones from its formation.
+static func entries(u: Unit) -> Array[String]:
+	var out: Array[String] = []
+	if u != null and u.pilot != null:
+		out.append_array(u.pilot.abilities)
+	if u != null:
+		out.append_array(u.formation_spas)
+	return out
 
 
 ## The choice made for ability `id` ("ppc" for "weapon_specialist:ppc"), or "".
 static func choice(u: Unit, id: String) -> String:
-	if u == null or u.pilot == null:
-		return ""
-	for a in u.pilot.abilities:
+	var all_choices := choices(u, id)
+	return all_choices[0] if not all_choices.is_empty() else ""
+
+
+## Every choice made for ability `id` (Terrain Master can be bought more than once).
+static func choices(u: Unit, id: String) -> Array[String]:
+	var out: Array[String] = []
+	for a in entries(u):
 		if a.begins_with(id + ":"):
-			return a.substr(id.length() + 1)
-	return ""
+			out.append(a.substr(id.length() + 1))
+	return out
 
 
 ## Gives `p` ability `id` (with an optional choice); Lucky takes its

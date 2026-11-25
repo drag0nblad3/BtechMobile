@@ -115,7 +115,7 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 	var r := dice.roll_2d6()
 	var data := {"unit_id": u.id, "need": th.target(), "reason": reason, "mods": th.mods}
 	if r < th.target():
-		var again := Lucky.psr(dice, u)
+		var again := Lucky.psr(dice, u, state)
 		if again >= 0:
 			data["lucky_first"] = r
 			r = again

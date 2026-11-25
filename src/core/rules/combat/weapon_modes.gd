@@ -82,28 +82,29 @@ static func expected_per_hit(w: MountedWeapon) -> float:
 
 ## Rolls (if needed) how much of a hit lands: {n, roll, packets}.
 ## n is 0 for a plain single-packet weapon. `ams`: an anti-missile system
-## engaged (AntiMissile): -4 to the roll, a Streak counts as a 7.
+## engaged (AntiMissile): -4 to the roll, a Streak counts as a 7. `hitter`:
+## the Cluster Hitter SPA's +1 (Campaign Operations p. 73).
 static func cluster(w: MountedWeapon, fired: int, dice: Dice, ams := false, no_artemis := false,
-		narc := false, no_lock := false, range_mod := 0) -> Dictionary:
+		narc := false, no_lock := false, range_mod := 0, hitter := 0) -> Dictionary:
 	var d := Atm.profile(w)
 	if d.streak and not no_lock:
 		var sn := ClusterTable.hits(d.missiles, AntiMissile.STREAK_ROLL) if ams else d.missiles
 		return {"n": sn, "roll": AntiMissile.STREAK_ROLL if ams else 12, "packets": _packets(sn * d.damage, d.group * d.damage)}
 	if fired > 1:
-		var r := dice.roll_2d6()
+		var r := dice.roll_2d6() + hitter
 		var n := ClusterTable.hits(fired, r)
 		var p: Array[int] = []
 		for i in n:
 			p.append(d.damage)
 		return {"n": n, "roll": r, "packets": p}
 	if ammo_kind(w) == CLUSTER:
-		var r2 := dice.roll_2d6()
+		var r2 := dice.roll_2d6() + hitter
 		var pellets := ClusterTable.hits(d.damage, r2)
 		return {"n": pellets, "roll": r2, "packets": _packets(pellets, 1)}
 	if d.is_cluster():
 		var r3 := dice.roll_2d6()
 		var bonus := (artemis_bonus(w) if not no_artemis else 0) + (AntiMissile.CLUSTER_MOD if ams else 0) \
-				+ (Narc.CLUSTER_BONUS if narc else 0) + Apollo.cluster_mod(w, d) + range_mod
+				+ (Narc.CLUSTER_BONUS if narc else 0) + Apollo.cluster_mod(w, d) + range_mod + hitter
 		var m := 0 if r3 + bonus < 2 and range_mod == 0 else ClusterTable.hits(d.missiles, r3 + bonus)
 		return {"n": m, "roll": r3, "bonus": bonus, "packets": _packets(m * d.damage, d.group * d.damage)}
 	return {"n": 0, "roll": 0, "packets": [d.damage] as Array[int]}

@@ -311,6 +311,7 @@ func _unit_done() -> void:
 
 func _roll_initiative() -> void:
 	var r := Initiative.roll(dice, state.sides_alive(), InitiativeDie.bonuses(state))
+	TacticalGenius.apply(state, dice, r)
 	var forced := MissionFlow.forced_initiative(state)
 	if forced >= 0 and r["order"].has(forced):  # the mission hands this side the win
 		r["order"].erase(forced)
@@ -375,6 +376,7 @@ func _phase_rolls() -> void:
 	MobileObjectives.end_of_phase(state, dice, _emit_cb)
 	Psr.end_of_phase(state, dice, _emit_cb)
 	MobileObjectives.check(state, dice, _emit_cb)
+	Formation.check(state, _emit_cb)
 
 
 func _heat_and_end() -> void:

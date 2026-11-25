@@ -100,6 +100,9 @@ static func text(u: Unit) -> String:
 		t += ", ".join(tech) + "\n"
 	t += "MechWarrior: gunnery %d, piloting %d, hits %d/6%s\n" % [u.pilot.gunnery,
 			u.pilot.piloting, u.pilot.hits, "" if u.pilot.conscious else " (unconscious)"]
+	var spas := Spa.entries(u).map(func(a: String) -> String: return Spa.name_of(a.get_slice(":", 0)))
+	if not spas.is_empty():
+		t += "Abilities: %s\n" % ", ".join(spas)
 	var cond: Array[String] = []
 	if u.destroyed:
 		cond.append("[color=#ff6060]DESTROYED: %s[/color]" % u.destroyed_reason)
