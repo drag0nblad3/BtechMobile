@@ -2,7 +2,7 @@ class_name Nameplates
 extends Node3D
 ## Floating plates over the selected 'Mech and every 'Mech it can see: name,
 ## a health bar and, for enemies, its best to-hit number (PlateInfo). They
-## follow the unit views every frame and re-read the state a few times a second.
+## follow unit views each frame; rule forecasts refresh only when invalidated.
 
 const LIFT := 2.4        ## Height above the unit's hex.
 const REFRESH := 0.25    ## Seconds between state re-reads.
@@ -12,6 +12,8 @@ var units_layer: UnitsLayer
 var viewer_of: Callable  ## () -> Unit: the selected 'Mech, or null.
 var _plates: Dictionary = {}  ## unit id -> Label3D
 var _wait := 0.0
+var _dirty := true
+var _last_selection: Array = []
 
 
 func setup(s: GameState, layer: UnitsLayer, viewer: Callable) -> void:
@@ -59,12 +61,32 @@ func _process(delta: float) -> void:
 	_wait -= delta
 	if _wait <= 0.0:
 		_wait = REFRESH
-		refresh()
+		var viewer: Unit = viewer_of.call() if viewer_of.is_valid() else null
+		var selection := selection_key(viewer)
+		if _dirty or selection != _last_selection:
+			refresh()
+
+
+## Both controller events and completed animations can change visibility.
+func invalidate(_reason: Variant = null) -> void:
+	_dirty = true
+
+
+## These pre-declaration edits don't emit controller events.
+static func selection_key(viewer: Unit) -> Array:
+	if viewer == null:
+		return []
+	var key := [viewer.id, viewer.torso_twist, viewer.arms_flipped]
+	for w: MountedWeapon in viewer.weapons:
+		key.append(w.mode)
+	return key
 
 
 ## Re-reads who is visible from the selected 'Mech and what each plate says.
 func refresh() -> void:
 	var viewer: Unit = viewer_of.call() if viewer_of.is_valid() else null
+	_last_selection = selection_key(viewer)
+	_dirty = false
 	var shown := {}
 	for u in PlateInfo.visible_from(state, viewer):
 		var v: UnitView = units_layer.view_of(u)
