@@ -9,9 +9,12 @@ const DEFEND := "defend"
 const MOVE := "move"
 const FAST_MOVE := "fast_move"
 const REPAIR := "repair"
-const ORDERS := [ATTACK, SCOUT, DEFEND, MOVE, FAST_MOVE, REPAIR]
+const DROPSHIP := "dropship"
+const ORDERS := [ATTACK, SCOUT, DEFEND, MOVE, FAST_MOVE, REPAIR, DROPSHIP]
 const COMBAT := [ATTACK, SCOUT, DEFEND]
-const NAMES := {ATTACK: "Attack", SCOUT: "Scout", DEFEND: "Defend", MOVE: "Move", FAST_MOVE: "Fast Move", REPAIR: "Repair"}
+const NAMES := {ATTACK: "Attack", SCOUT: "Scout", DEFEND: "Defend", MOVE: "Move", FAST_MOVE: "Fast Move", REPAIR: "Repair",
+		DROPSHIP: "DropShip Move"}
+const OFF_MAP := Vector2i(-1, -1)  ## Zone of a lance aboard its DropShip.
 
 var id := ""
 var name := ""
@@ -21,6 +24,11 @@ var mech_ids: Array[String] = []
 var order := DEFEND
 var target := Vector2i(-1, -1)  ## Where a Move, Fast Move, Attack or Scout order goes.
 var fast_moved := false  ## Made a Fast Move last turn: no Move order now.
+var transit := 0  ## Turns left in the air on a DropShip Move (zone is OFF_MAP).
+
+
+func on_map() -> bool:
+	return zone != OFF_MAP
 
 
 ## Zones this order may travel. TODO(rules): Attack and Scout may step
@@ -38,7 +46,7 @@ func reach() -> int:
 
 func to_dict() -> Dictionary:
 	return {"id": id, "name": name, "side": side, "zone": [zone.x, zone.y], "mechs": Array(mech_ids),
-		"order": order, "target": [target.x, target.y], "fast_moved": fast_moved}
+		"order": order, "target": [target.x, target.y], "fast_moved": fast_moved, "transit": transit}
 
 
 static func from_dict(d: Dictionary) -> MapLance:
@@ -53,4 +61,5 @@ static func from_dict(d: Dictionary) -> MapLance:
 	var t: Array = d.get("target", [-1, -1])
 	l.target = Vector2i(int(t[0]), int(t[1]))
 	l.fast_moved = bool(d.get("fast_moved", false))
+	l.transit = int(d.get("transit", 0))
 	return l
