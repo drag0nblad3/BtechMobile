@@ -1,0 +1,41 @@
+{
+  "employers": [
+    "Vallis Industrial Cooperative",
+    "Meridian Port Authority",
+    "Peregrine Logistics",
+    "Freehold Defense Council"
+  ],
+  "rivals": [
+    "Black Lantern Company",
+    "Iron Kites",
+    "Red Meridian",
+    "Ash Hounds"
+  ],
+  "locations": [
+    "Orison Basin",
+    "Greyglass Reach",
+    "Kestrel's Ford",
+    "Copper Ridge",
+    "Vesper Crossing",
+    "Northfall"
+  ],
+  "hooks": {
+    "ambush": "Intercept a hostile patrol before it can complete its sweep.",
+    "annihilation": "Break the hostile formation contesting the district.",
+    "dominate": "Secure the operational ground before the opposition can consolidate.",
+    "extraction": "Recover the designated asset and move it to safety.",
+    "focal_point": "Take the key position and hold it against counterattack.",
+    "general_melee": "Engage the opposing force and clear the contested field.",
+    "control_the_field": "Secure the field and deny the opposition control.",
+    "hold_the_line": "Defend the assigned position against the approaching force.",
+    "objective_raid": "Raid the assigned objectives before the enemy can react.",
+    "sensor_check": "Gather intelligence and preserve the scouting force.",
+    "steel_rain": "Secure the marked ground under combat pressure.",
+    "urban_sweep": "Search the urban sector and secure the assigned objectives."
+  },
+  "dispatch": [
+    "Operations staff requests a readiness check before the next advance.",
+    "Command reminds lance leaders to coordinate movement and recovery.",
+    "Planning staff updates the next day's orders from confirmed reports."
+  ]
+}

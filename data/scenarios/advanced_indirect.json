@@ -1,0 +1,68 @@
+{
+  "name": "Advanced Tactical Academy: Fire Over the Ridge",
+  "map": "ridge_pass",
+  "bot_sides": [
+    1
+  ],
+  "bot_level": 2,
+  "units": [
+    {
+      "def": "archer_arc2r",
+      "side": 0,
+      "hex": "0415",
+      "facing": 0
+    },
+    {
+      "def": "wolverine_wvr6r",
+      "side": 0,
+      "hex": "0814",
+      "facing": 0
+    },
+    {
+      "def": "griffin_grf1n",
+      "side": 1,
+      "hex": "0804",
+      "facing": 3
+    },
+    {
+      "def": "shadow_hawk_shd2h",
+      "side": 1,
+      "hex": "1204",
+      "facing": 3
+    }
+  ],
+  "lessons": [
+    {
+      "event": "initiative",
+      "turn": 1,
+      "title": "Fire Over the Ridge",
+      "text": "Bring the Archer's LRMs to bear with a mobile spotter."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Movement",
+      "turn": 1,
+      "title": "Movement plan",
+      "text": "Keep the Archer behind the ridge where possible; send the Wolverine to a position that sees the target."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Weapon Attack",
+      "turn": 1,
+      "title": "Fire plan",
+      "text": "Choose indirect fire when direct line of sight is blocked. Check spotter movement and whether the spotter fires too."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Heat",
+      "turn": 1,
+      "title": "Review the tradeoffs",
+      "text": "Watch ammunition and heat; indirect attacks are not automatically better than direct attacks."
+    },
+    {
+      "event": "game_over",
+      "title": "Review",
+      "text": "Review the battle record and retry to improve your practice."
+    }
+  ]
+}

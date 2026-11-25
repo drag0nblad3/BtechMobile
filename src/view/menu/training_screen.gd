@@ -1,6 +1,6 @@
 class_name TrainingScreen
 extends Control
-## Six connected lessons with optional practice checks and retry records.
+## Basic and advanced connected lessons with practice checks and retry records.
 ## Each mission opens after the previous one is played, even after a loss.
 
 var campaign: TrainingCampaign
@@ -34,6 +34,9 @@ func _build() -> void:
 	var next := campaign.next_index(p)
 	for i in campaign.missions.size():
 		var m := campaign.missions[i]
+		if i == 0 or m.get("section", "") != campaign.missions[i - 1].get("section", ""):
+			UiSkin.rule(_list)
+			UiKit.label(_list, String(m.get("section", "Basic training")), 26)
 		var open := campaign.unlocked(i, p)
 		var record: Dictionary = p.get(m["id"], {})
 		var won: bool = record.get("won", false)
@@ -59,7 +62,7 @@ func _build() -> void:
 				checks.append(String(goal.get("title", "")))
 			UiKit.label(_list, "Practice (optional): " + "  ·  ".join(checks), UiKit.SMALL)
 	if campaign.finished(p):
-		UiKit.label(_list, "All six missions attempted. Retry to improve your practice record or win the remaining battles.", UiKit.SMALL)
+		UiKit.label(_list, "All missions attempted. Retry to improve your practice record or win the remaining battles.", UiKit.SMALL)
 
 
 ## Every lesson seen so far, to reread between games.

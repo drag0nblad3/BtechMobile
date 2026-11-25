@@ -79,7 +79,11 @@ static func finish(c: Campaign, state: GameState, roster: Dictionary, won: bool,
 		if p != null:
 			report.append(_pilot_result(u, p, int(kills.get(uid, 0))))
 	if chaos != null and c.contract != null:
+		var track := c.contract
 		report.append_array(Warchest.settle(c, chaos, state, side))
+		var narrative := CampaignStory.outcome(track, won, c.last_met)
+		if narrative != "":
+			report.append(narrative)
 		report.append_array(Salvage.claim(c, state, side))
 	SupportShop.new_month(c)
 	c.log.append(report[0])

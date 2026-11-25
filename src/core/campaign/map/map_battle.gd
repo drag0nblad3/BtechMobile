@@ -38,6 +38,11 @@ static func build(mc: MapCampaign, b: Dictionary, db: UnitDb, seed_value: int) -
 static func battlefield(mc: MapCampaign, z: Vector2i, _seed_value: int) -> BattleMap:
 	var terrain := mc.region.terrain_at(z)
 	var theme_id := String(mc.rules.get("terrains", {}).get(terrain, {}).get("theme", "grassland"))
+	var loc := mc.region.location_at(z)
+	var variants := {"factory": "industrial", "fortress": "fortified", "seaport": "coastal"}
+	var kind := String(loc.get("kind", ""))
+	if variants.has(kind):
+		theme_id = String(variants[kind])
 	var themes := MapTheme.load_all()
 	var theme: MapTheme = themes[0]
 	for t in themes:

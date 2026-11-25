@@ -1,0 +1,68 @@
+{
+  "name": "Advanced Tactical Academy: Signals and Shadows",
+  "map": "industrial_yard",
+  "bot_sides": [
+    1
+  ],
+  "bot_level": 2,
+  "units": [
+    {
+      "def": "men_shen_ms1o",
+      "side": 0,
+      "hex": "0516",
+      "facing": 0
+    },
+    {
+      "def": "hunchback_hbk4g",
+      "side": 0,
+      "hex": "1216",
+      "facing": 0
+    },
+    {
+      "def": "anubis_abs3l",
+      "side": 1,
+      "hex": "0502",
+      "facing": 3
+    },
+    {
+      "def": "centurion_cn9a",
+      "side": 1,
+      "hex": "1202",
+      "facing": 3
+    }
+  ],
+  "lessons": [
+    {
+      "event": "initiative",
+      "turn": 1,
+      "title": "Signals and Shadows",
+      "text": "Use your Men Shen's active probe against an opponent equipped with stealth and ECM."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Movement",
+      "turn": 1,
+      "title": "Movement plan",
+      "text": "Scout with the Men Shen; keep the supporting Hunchback close enough to exploit a target."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Weapon Attack",
+      "turn": 1,
+      "title": "Fire plan",
+      "text": "Compare to-hit previews against the Anubis at different ranges. ECM and stealth are not a blanket immunity to fire."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Heat",
+      "turn": 1,
+      "title": "Review the tradeoffs",
+      "text": "Use cover and range control rather than trusting electronics to win the battle."
+    },
+    {
+      "event": "game_over",
+      "title": "Review",
+      "text": "Review the battle record and retry to improve your practice."
+    }
+  ]
+}

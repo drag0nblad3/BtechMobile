@@ -112,6 +112,8 @@ func _contracts() -> void:
 		var rng := RandomNumberGenerator.new()
 		rng.randomize()
 		company.offers = ContractBoard.offer(chaos, rng)
+		for i in company.offers.size():
+			company.offers[i].story = CampaignStory.offer(company, company.offers[i], i)
 		CampaignStore.save(company)
 	_selected_contract = clampi(_selected_contract, 0, maxi(0, company.offers.size() - 1))
 	for i in company.offers.size():

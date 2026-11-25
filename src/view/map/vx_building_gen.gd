@@ -25,8 +25,16 @@ static func generate(type_id: String, levels: int, variant: int) -> VxBuildingGe
 	g.slab()
 	match type_id:
 		"civilian": VxBuildingStyles.house(g, levels)
-		"light": VxBuildingStyles.warehouse(g, levels)
-		"medium": VxBuildingStyles.office(g, levels)
+		"light":
+			if variant % 2 == 0:
+				VxBuildingStyles.warehouse(g, levels)
+			else:
+				VxFacilityStyles.hangar(g, levels)
+		"medium":
+			if variant % 2 == 0:
+				VxBuildingStyles.office(g, levels)
+			else:
+				VxFacilityStyles.utility(g, levels)
 		"heavy": VxBuildingStyles.tower(g, levels)
 		_: VxBuildingStyles.bunker(g, levels)
 	return g

@@ -6,6 +6,7 @@ extends RefCounted
 ## (options) that pay extra if at least one objective is met.
 
 var mission_id := ""
+var story: Dictionary = {}  ## Fictional briefing, persisted with the offer.
 var enemy_percent := 100
 var objectives: Array[String] = []
 var offered: Array[String] = []  ## Options the player may add.
@@ -40,12 +41,13 @@ func payout(rules: ChaosRules, met: Array[String]) -> int:
 
 func to_dict() -> Dictionary:
 	return {"mission": mission_id, "enemy_percent": enemy_percent, "objectives": Array(objectives),
-		"offered": Array(offered), "chosen": Array(chosen)}
+		"offered": Array(offered), "chosen": Array(chosen), "story": story.duplicate(true)}
 
 
 static func from_dict(d: Dictionary) -> Contract:
 	var c := Contract.new()
 	c.mission_id = String(d.get("mission", ""))
+	c.story = d.get("story", {}).duplicate(true)
 	c.enemy_percent = int(d.get("enemy_percent", 100))
 	for k in ["objectives", "offered", "chosen"]:
 		for id in d.get(k, []):

@@ -91,6 +91,7 @@ func _build() -> void:
 		MapHistoryPanel.build(_list, mc, _history_page, _show_history_page)
 		return
 	if _headquarters:
+		UiKit.label(_list, CampaignStory.dispatch(mc), UiKit.SMALL)
 		MapHqPanel.build(_list, mc, db, _build)
 		_add_abandon()
 		return

@@ -6,12 +6,12 @@ extends RefCounted
 
 ## Props per hex by terrain: [kind, count or chance below 1].
 const MIX := {
-	"clear": [["tuft", 3], ["flower", 0.25], ["rock", 0.12]],
+	"clear": [["tuft", 3], ["flower", 0.25], ["rock", 0.12], ["scrub", 0.18]],
 	"light_woods": [["tuft", 2], ["bush", 1]],
 	"heavy_woods": [["tuft", 1], ["bush", 2]],
 	"rough": [["rock", 5], ["tuft", 2]],
-	"rubble": [["chunk", 6]],
-	"pavement": [["tuft", 0.2]],
+	"rubble": [["chunk", 5], ["debris", 0.65]],
+	"pavement": [["tuft", 0.12], ["crate", 0.12], ["bollard", 0.14]],
 }
 const PLANTS := ["tuft", "flower", "bush"]
 
@@ -26,7 +26,13 @@ static func build(map: BattleMap) -> Node3D:
 		var rng := RandomNumberGenerator.new()
 		rng.seed = hash([t.coord, "scatter"])
 		var top := HexLayout.tile_top(t)
-		for entry: Array in MIX[t.terrain.id]:
+		var mix: Array = MIX[t.terrain.id]
+		if map.name.begins_with("Ash Fields") or map.name.begins_with("Alpine Pass"):
+			if t.terrain.id == "clear":
+				mix = [["rock", 0.6], ["scrub", 0.15]]
+			elif t.terrain.id == "rough":
+				mix = [["rock", 5]]
+		for entry: Array in mix:
 			var amount: float = entry[1]
 			var count := int(amount) if amount >= 1.0 else (1 if rng.randf() < amount else 0)
 			for i in count:
