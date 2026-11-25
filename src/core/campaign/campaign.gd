@@ -15,6 +15,7 @@ var sp := 0  ## Support Points (optional rule, pp. 161-164).
 var size_mod := 1  ## Base Force Size Modifier: lances at creation, fixed.
 var month := 1  ## Campaign months; each stop between contracts is one.
 var converted := 0  ## WP turned into SP this month (at most 100).
+var formation := ""  ## Formation Type the lance fights as ("" = none; CampaignFormation).
 var market: Array[String] = []  ## Design ids for sale this month (MechMarket).
 var done: Array[String] = []  ## Once-a-month jobs done: "train:<pilot>:g", "heal:<pilot>".
 var battles := 0
@@ -103,7 +104,7 @@ func _take_id() -> int:
 func to_dict() -> Dictionary:
 	return {"version": 3, "name": name, "wp": wp, "on_debt": on_debt, "last_met": last_met,
 		"sp": sp, "size_mod": size_mod, "month": month, "converted": converted, "done": Array(done),
-		"market": Array(market),
+		"market": Array(market), "formation": formation,
 		"contract": contract.to_dict() if contract != null else {},
 		"offers": offers.map(func(k: Contract) -> Dictionary: return k.to_dict()), "battles": battles, "next_id": _next_id,
 		"mechs": mechs.map(func(m: CampaignMech) -> Dictionary: return m.to_dict()),
@@ -122,6 +123,7 @@ static func from_dict(d: Dictionary) -> Campaign:
 	c.converted = int(d.get("converted", 0))
 	for k in d.get("done", []):
 		c.done.append(String(k))
+	c.formation = String(d.get("formation", ""))
 	for k in d.get("market", []):
 		c.market.append(String(k))
 	var k: Dictionary = d.get("contract", {})

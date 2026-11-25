@@ -53,6 +53,7 @@ func _build() -> void:
 	if not company.last_report.is_empty():
 		UiKit.label(_list, "Last battle", 26).modulate = Color(0.75, 0.85, 1.0)
 		UiKit.label(_list, "\n".join(company.last_report), UiKit.SMALL)
+	AbilityPanel.formation(_list, company, db, _act)
 	_contracts()
 	SupportPanel.header(_list, company, chaos, _act, _note)
 	UiSkin.rule(_list)
@@ -84,7 +85,9 @@ func _mech_row(m: CampaignMech) -> void:
 	if tip != "" and GameSettings.explain_level != ExplainLevel.OFF:
 		UiSkin.label(UiKit.label(_list, tip, UiKit.SMALL), "muted")
 	if def != null:
-		MarketPanel.sell_button(SupportPanel.mech_actions(_list, company, m, def, chaos, _act), company, m, db, chaos, _act)
+		var row := SupportPanel.mech_actions(_list, company, m, def, chaos, _act)
+		MarketPanel.sell_button(row, company, m, db, chaos, _act)
+		AbilityPanel.pilot(_list, row, company, p, def, chaos, _act)
 
 
 ## Runs a SupportShop action, keeps why it failed, saves and redraws.

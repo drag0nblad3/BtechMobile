@@ -3,7 +3,8 @@ extends RefCounted
 ## Sets up a contract's battle: up to a lance of the company's ready 'Mechs
 ## against official designs sized to the contract's share of their BV, on
 ## a random generated map, with the contract's standard mission (Forced
-## Withdrawal on, so crippled 'Mechs count) and chosen options.
+## Withdrawal on, so crippled 'Mechs count), chosen options and the
+## company's formation.
 
 const LANCE := 4
 
@@ -36,5 +37,7 @@ static func build(c: Campaign, db: UnitDb, rng: RandomNumberGenerator,
 		return null
 	if k != null and chaos != null:
 		ChaosOptions.after(state, k.chosen, chaos)
-	CampaignStore.save(c, CampaignBattle.prepare(c, state, 0, ids))
+	var roster := CampaignBattle.prepare(c, state, 0, ids)
+	CampaignFormation.apply(c, state)
+	CampaignStore.save(c, roster)
 	return state
