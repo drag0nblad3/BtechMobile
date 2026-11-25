@@ -35,8 +35,8 @@ func _run() -> void:
 	if not _check(grid != null and grid.get_child_count() == mc.region.width * mc.region.height, "zone grid missing tiles"):
 		return
 	for tile in grid.get_children():
-		var art := tile.get_node_or_null("ZoneArt") as MapZoneArt
-		if not _check(tile is Button and art != null and art.mouse_filter == Control.MOUSE_FILTER_IGNORE, "zone artwork blocks input or is missing"):
+		if not _check(tile is MapHexButton and tile._has_point(tile.size / 2.0)
+				and not tile._has_point(Vector2.ZERO), "hex hit area is incorrect"):
 			return
 	if not _check(screen.find_child("CaptureProgress", true, false) is ProgressBar, "capture progress missing"):
 		return

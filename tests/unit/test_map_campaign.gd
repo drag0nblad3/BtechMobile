@@ -100,3 +100,20 @@ func test_bot_and_winning() -> void:
 		loc["owner"] = 1
 	mc.turn = 20
 	check_eq(MapTurn.winner(mc), 1, "the defender outlasts the turn limit")
+
+func test_persistent_geography() -> void:
+	var mc := _campaign()
+	var z := Vector2i(2, 2)
+	var seed_value := MapGeography.battle_seed(mc.region, z)
+	var again := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
+	check_eq(MapGeography.battle_seed(again.region, z), seed_value)
+	check_eq(again.region.terrain, mc.region.terrain)
+	for route in MapGeography.roads(mc.region):
+		for i in range(1, route.size()):
+			check_eq(mc.region.distance(route[i - 1], route[i]), 1, "connected road")
+	var a := MapBattle.battlefield(mc, z, 1)
+	var b := MapBattle.battlefield(mc, z, 99)
+	check_eq(a.width, b.width)
+	for c: Vector2i in a.coords():
+		check_eq(a.get_tile(c).terrain.id, b.get_tile(c).terrain.id)
+		check_eq(a.get_tile(c).level, b.get_tile(c).level)

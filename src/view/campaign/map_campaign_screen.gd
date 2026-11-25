@@ -22,13 +22,17 @@ var _chosen := ""  ## Selected lance id.
 var _order := ""  ## Order waiting for a zone tap.
 var _note := ""
 var _confirm_quit := false
+var _map_mode := 0
+var _zoom := 1.0
+var _inspected := Vector2i(-1, -1)
+var _map_scroll: ScrollContainer
 
 
 func _ready() -> void:
 	rng.randomize()
-	if db == null:
-		db = UnitDb.load_dir()
 	mc = MapCampaignStore.load_campaign()
+	if mc != null and db == null:
+		db = UnitDb.load_dir()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	_list = UiKit.screen_body(self, "MAP CAMPAIGN", UiKit.close_overlay.bind(self))
@@ -36,15 +40,12 @@ func _ready() -> void:
 
 
 func _build() -> void:
+	var scroll_at := Vector2i.ZERO
+	if is_instance_valid(_map_scroll):
+		scroll_at = Vector2i(_map_scroll.scroll_horizontal, _map_scroll.scroll_vertical)
 	for ch in _list.get_children():  # out of the tree now, so new buttons keep their names
 		_list.remove_child(ch)
 		ch.queue_free()
-	var head := HBoxContainer.new()
-	_list.add_child(head)
-	var title := UiKit.label(head, "MAP CAMPAIGN", 32)
-	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiSkin.label(title, "heading")
-	UiSkin.rule(_list)
 	if mc == null:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
 		UiKit.button(_list, "START A CAMPAIGN", _start, Vector2(0, 70), "primary").name = "StartMapCampaign"
@@ -68,13 +69,41 @@ func _build() -> void:
 		UiKit.label(_list, "You took the region!" if mc.winner == 0 else "The campaign is lost.", 28)
 	if _note != "":
 		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
-	UiKit.label(_list, "Blue squares: your lances  ·  Red diamonds: enemy lances you can see (next to your lances, or found by a Scout order; ? = not seen)  ·  Blue/red landmark frames: ownership  ·  Gold cross: battle  ·  Gold ring: destination", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
-	MapZoneGrid.make(_list, mc, _tap_zone, mc.lance(_chosen))
-	MapLancePanel.lances(_list, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
+	var toolbar := HBoxContainer.new()
+	_list.add_child(toolbar)
+	for i in 4:
+		var mode := i
+		UiKit.button(toolbar, ["Terrain", "Objectives", "Intel", "Readiness"][i],
+			func(): _map_mode = mode; _build(), Vector2(0, 42), "selected" if i == _map_mode else "subtle")
+	UiKit.button(toolbar, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
+	UiKit.button(toolbar, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
+	var body := HBoxContainer.new()
+	body.custom_minimum_size.y = 410
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_list.add_child(body)
+	_map_scroll = ScrollContainer.new()
+	_map_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_map_scroll.size_flags_stretch_ratio = 1.5
+	_map_scroll.custom_minimum_size.x = 420
+	body.add_child(_map_scroll)
+	MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, _zoom, _inspected)
+	_map_scroll.set_deferred("scroll_horizontal", scroll_at.x)
+	_map_scroll.set_deferred("scroll_vertical", scroll_at.y)
+	var controls := ScrollContainer.new()
+	controls.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	controls.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	controls.custom_minimum_size.x = 330
+	body.add_child(controls)
+	var command := VBoxContainer.new()
+	command.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	controls.add_child(command)
+	if mc.region.has_zone(_inspected):
+		UiKit.label(command, MapZoneGrid.text_of(mc, _inspected), 17)
+	MapLancePanel.lances(command, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
 	if not mc.battles.is_empty():
-		MapLancePanel.battles(_list, mc, _fight)
+		MapLancePanel.battles(command, mc, _fight)
 	elif mc.winner < 0:
-		UiKit.button(_list, "END DAY", _end_turn, Vector2(0, 70), "primary").name = "EndTurn"
+		UiKit.button(_list, "END DAY", _end_turn, Vector2(0, 58), "primary").name = "EndTurn"
 	if not mc.log.is_empty():
 		UiKit.label(_list, "Log", 26).modulate = Color(0.75, 0.85, 1.0)
 		UiKit.label(_list, "\n".join(mc.log.slice(maxi(0, mc.log.size() - 8))), UiKit.SMALL)
@@ -84,6 +113,8 @@ func _build() -> void:
 
 
 func _start() -> void:
+	if db == null:
+		db = UnitDb.load_dir()
 	mc = MapCampaign.create(db, rng)
 	MapCampaignStore.save(mc)
 	_note = "Your company has landed on the south edge. Pick a lance, then an order."
@@ -112,6 +143,7 @@ func _pick_order(order: String) -> void:
 
 
 func _tap_zone(z: Vector2i) -> void:
+	_inspected = z
 	var l := mc.lance(_chosen)
 	if l != null and _order != "":
 		_note = MapOrders.give(mc, l, _order, z)

@@ -26,6 +26,8 @@ static func generate(rules: Dictionary, rng: RandomNumberGenerator) -> MapRegion
 			r.locations.append({"id": "%s%d" % [kind, n + 1], "kind": kind,
 				"name": town if kind in ["capital", "city"] else "%s %s" % [town, info["name"]],
 				"zone": z, "points": int(info["points"]), "benefit": String(info.get("benefit", "")), "owner": 1})
+	r.geography_seed = maxi(1, int(rng.state) & 0x7fffffff)
+	MapGeography.shape(r)
 	return r
 
 

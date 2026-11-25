@@ -7,6 +7,7 @@ extends RefCounted
 
 var width := 8
 var height := 6
+var geography_seed := 0  ## Stable battle terrain, separate from the combat dice.
 var terrain: Array[String] = []  ## Per zone, row by row.
 ## [{id, kind, name, zone: Vector2i, points, benefit, owner}]
 var locations: Array[Dictionary] = []
@@ -68,7 +69,8 @@ func to_dict() -> Dictionary:
 		var d := l.duplicate()
 		d["zone"] = [l["zone"].x, l["zone"].y]
 		locs.append(d)
-	return {"width": width, "height": height, "terrain": Array(terrain), "locations": locs}
+	return {"width": width, "height": height, "terrain": Array(terrain), "locations": locs,
+		"geography_seed": geography_seed}
 
 
 static func from_dict(d: Dictionary) -> MapRegion:
@@ -83,4 +85,7 @@ static func from_dict(d: Dictionary) -> MapRegion:
 		c["points"] = int(l["points"])
 		c["owner"] = int(l["owner"])
 		r.locations.append(c)
+	r.geography_seed = int(d.get("geography_seed", 0))
+	if r.geography_seed == 0:
+		r.geography_seed = maxi(1, int(hash([r.width, r.height, Array(r.terrain)])) & 0x7fffffff)
 	return r
