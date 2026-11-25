@@ -147,7 +147,7 @@ static func _initiative(d: Dictionary, level: int) -> String:
 	var parts: Array[String] = []
 	for side: int in d["rolls"]:
 		var b := int(d.get("bonus", {}).get(side, 0))
-		parts.append("%s %d%s" % [Names.side(side), d["rolls"][side], " (+%d Initiative Die)" % b if b > 0 else ""])
+		parts.append("%s %d%s" % [Names.side(side), d["rolls"][side], " (+%d bonus)" % b if b > 0 else ""])
 	var first: int = d["order"][0]
 	var t := "Initiative: %s. %s acts first." % [", ".join(parts), Names.side(first)]
 	for g: int in d.get("genius", []):

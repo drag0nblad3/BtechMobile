@@ -8,7 +8,7 @@ static func names(o: Object) -> Array:
 		return ["map", "units", "turn", "phase", "initiative_order", "side_order",
 				"order_index", "initiative_rolls", "declared_fire", "declared_physical",
 				"building_hits", "doomed_buildings", "initiative_die_rule",
-				"initiative_die", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "formations", "conditions", "sees_through",
+				"initiative_die", "initiative_bonus", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "formations", "conditions", "sees_through",
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
