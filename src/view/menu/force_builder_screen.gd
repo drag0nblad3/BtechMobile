@@ -106,6 +106,7 @@ func _ready() -> void:
 		_side_buttons.append(choose)
 	var roster_row := HBoxContainer.new()
 	roster_row.custom_minimum_size.y = 180
+	roster_row.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	roster_row.add_theme_constant_override("separation", 8)
 	forces.add_child(roster_row)
 	for side in 2:

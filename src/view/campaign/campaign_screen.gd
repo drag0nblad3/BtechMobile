@@ -35,7 +35,9 @@ func _ready() -> void:
 
 
 func _build() -> void:
-	UiKit.clear(_list)
+	for child in _list.get_children():
+		_list.remove_child(child)
+		child.queue_free()
 	var head := HBoxContainer.new()
 	_list.add_child(head)
 	var title := UiKit.label(head, company.name if company != null else "Campaign", 32)

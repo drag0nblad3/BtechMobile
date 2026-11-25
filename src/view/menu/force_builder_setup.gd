@@ -53,6 +53,8 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	var era_row := HBoxContainer.new()
 	history.add_child(era_row)
 	_era = OptionButton.new()
+	_era.fit_to_longest_item = false
+	_era.clip_text = true
 	_era.custom_minimum_size.y = 50
 	_era.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_era.add_theme_font_size_override("font_size", 17)
@@ -73,6 +75,8 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		builder.era_year = int(value)
 		_changed.call())
 	_policy = OptionButton.new()
+	_policy.fit_to_longest_item = false
+	_policy.clip_text = true
 	_policy.custom_minimum_size.y = 50
 	_policy.add_theme_font_size_override("font_size", 18)
 	for mode_name: String in EraAvailability.MODE_NAMES:
@@ -89,6 +93,8 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		faction_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 		UiSkin.label(faction_label, "section")
 		var picker_for_faction := OptionButton.new()
+		picker_for_faction.fit_to_longest_item = false
+		picker_for_faction.clip_text = true
 		picker_for_faction.custom_minimum_size.y = 50
 		picker_for_faction.tooltip_text = "Also paints this side's voxel 'Mechs and adds a stylized armor insignia. Historical restrictions are optional."
 		picker_for_faction.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -192,8 +198,10 @@ func _toggle_advanced() -> void:
 
 func refresh() -> void:
 	_era.select(EraAvailability.era_index(builder.era_year))
+	_era.tooltip_text = _era.get_item_text(_era.selected)
 	_year.set_value_no_signal(builder.era_year)
 	_policy.select(builder.availability_mode)
+	_policy.tooltip_text = _policy.get_item_text(_policy.selected)
 	for side in 2:
 		var paint := VxLivery.scheme(builder.factions[side])
 		_paint_swatches[side * 2].color = Color(String(paint["primary"]))
@@ -201,6 +209,7 @@ func refresh() -> void:
 		for i in EraAvailability.FACTIONS.size():
 			if EraAvailability.FACTIONS[i]["id"] == builder.factions[side]:
 				_factions[side].select(i)
+				_factions[side].tooltip_text = String(EraAvailability.FACTIONS[i]["name"]) + " — also sets this side's paint and insignia."
 				break
 	_budget_button.text = "BV LIMIT  •  %d per side  ▸" % builder.budget
 	_mission_button.text = "MISSION  •  %s  ▸" % builder.mission_name()
