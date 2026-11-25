@@ -22,3 +22,9 @@ func test_mount_ports_and_interception() -> void:
 	check(AttackEventMatch.intercepted({"pod_shot_down": true}))
 	check(AttackEventMatch.intercepted({"ams": true, "missiles": 0, "cluster_roll": 2}))
 	check(not AttackEventMatch.intercepted({"ams": true, "missiles": 4, "cluster_roll": 7}))
+
+
+func test_charge_self_damage_stays_with_contact() -> void:
+	var a := GameEvent.new(GameEvent.PHYSICAL, {"attacker_id": 1, "target_id": 2, "kind": "charge"})
+	check(AttackEventMatch.belongs(a, GameEvent.new(GameEvent.DAMAGE, {"source_id": 1, "unit_id": 1, "source": "charge (self)"})))
+	check(not AttackEventMatch.belongs(a, GameEvent.new(GameEvent.DAMAGE, {"source_id": 1, "unit_id": 1, "source": "ammo"})))

@@ -97,6 +97,8 @@ func _launch(group: Dictionary) -> void:
 	for entry: Dictionary in group["entries"]:
 		var event: GameEvent = entry["event"]
 		if event.type == GameEvent.DAMAGE or event.type == GameEvent.BUILDING:
+			if e.type == GameEvent.PHYSICAL and event.data.get("unit_id") == d.get("attacker_id") and event.type == GameEvent.DAMAGE:
+				continue
 			if not entry["points"].is_empty() and entry["points"][0] != Vector3.INF:
 				points.append(entry["points"][0])
 	if e.type == GameEvent.PHYSICAL:
@@ -113,6 +115,8 @@ func _launch(group: Dictionary) -> void:
 	var origin := origins[0]
 	var weapon := String(d.get("weapon_id", d.get("weapon", "")))
 	var target := tv.impact_point(origin) if tv != null and tv.visible else AttackVisualGeometry.hex_point(_state, d.get("target_hex", Hex.INVALID), origin)
+	if target == Vector3.INF and not points.is_empty():
+		target = points[0]
 	if target == Vector3.INF:
 		return
 	if AttackEventMatch.intercepted(d):

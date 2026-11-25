@@ -33,19 +33,38 @@ static func origins(view: UnitView, d: Dictionary) -> Array[Vector3]:
 		out.append(view.weapon_origin(weapon, i))
 		return out
 	var w := u.weapons[i]
+	var marker := view._find_socket(view._model, "muzzle_%d" % i)
+	if marker != null:
+		out.append(marker.global_position)
+		return out
+	if u.def.vehicle != null:
+		var bounds := view._model_bounds(view._model, Transform3D.IDENTITY)
+		var pos := bounds.get_center()
+		match w.loc:
+			VehicleLoc.FRONT: pos.z = bounds.position.z
+			VehicleLoc.REAR: pos.z = bounds.end.z
+			VehicleLoc.LEFT: pos.x = bounds.position.x
+			VehicleLoc.RIGHT: pos.x = bounds.end.x
+			VehicleLoc.TURRET:
+				pos.y = bounds.position.y + bounds.size.y * 0.8
+				pos.z = bounds.position.z
+		out.append(view.to_global(pos))
+		return out
 	if view._model is VxMech:
 		var m := view._model as VxMech
 		if not m.model.parts_at(w.loc).is_empty() and m.is_attached(m.part_at(w.loc)):
-			var ports := m.muzzles(w.loc)
-			var front: Array[Vector3] = []
-			for p: Vector3 in ports:
-				if (m.to_local(p).z > 0.0) == w.rear:
-					front.append(p)
-			if not front.is_empty():
-				ports = front
-			elif w.rear:
-				# No authored rear port: use a rear surface, never a forward barrel.
-				out.append(view.impact_location(w.loc, true))
+			var grid: Array = m.model.muzzles.get(w.loc, [])
+			var ports: Array[Vector3] = []
+			# Classify authored points in their rest grid, not the rotated rig.
+			for p: Vector3 in grid:
+				if (p.z > 0.0) == w.rear:
+					ports.append(m.part_at(w.loc).to_global(m.part_at(w.loc).local_of(p)))
+			if ports.is_empty():
+				var part := m.part_at(w.loc)
+				var bounds := part.get_aabb()
+				var face := bounds.get_center()
+				face.z = bounds.end.z if w.rear else bounds.position.z
+				out.append(part.to_global(face))
 				return out
 			var ordinal := 0
 			var count := 0

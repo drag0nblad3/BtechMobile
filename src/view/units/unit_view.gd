@@ -244,7 +244,7 @@ func impact_location(loc: int, rear: bool) -> Vector3:
 	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
 	var center := bounds.get_center()
 	var radius := bounds.size
-	if unit.def.vehicle != null:
+	if unit != null and unit.def.vehicle != null:
 		match loc:
 			VehicleLoc.FRONT: center.z = bounds.position.z
 			VehicleLoc.REAR: center.z = bounds.end.z
@@ -252,7 +252,7 @@ func impact_location(loc: int, rear: bool) -> Vector3:
 			VehicleLoc.RIGHT: center.x = bounds.end.x
 			VehicleLoc.TURRET: center.y = bounds.end.y
 		return global_transform * center
-	if unit.def.is_support():
+	if unit != null and unit.def.is_support():
 		return global_transform * center
 	match loc:
 		Location.HEAD:

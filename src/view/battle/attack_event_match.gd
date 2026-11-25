@@ -9,6 +9,8 @@ static func belongs(attack: GameEvent, event: GameEvent) -> bool:
 	var a := attack.data
 	var d := event.data
 	if event.type == GameEvent.DAMAGE:
+		if attack.type == GameEvent.PHYSICAL and String(a.get("kind", "")) in ["charge", "dfa"] and int(d.get("source_id", -2)) == int(a.get("attacker_id", -1)) and int(d.get("unit_id", -2)) == int(a.get("attacker_id", -1)):
+			return String(d.get("source", "")) == String(a["kind"]) + " (self)"
 		return int(d.get("source_id", -2)) == int(a.get("attacker_id", -1)) and int(d.get("unit_id", -2)) == int(a.get("target_id", -1)) and (String(d.get("source", "")) == String(a.get("weapon", "")) or String(d.get("source", "")) == String(a.get("kind", "")) or attack.type == GameEvent.WEAPON_FIRED)
 	if event.type == GameEvent.BUILDING:
 		return (d.get("kind") == "cover_hit" and d.get("unit_id") == a.get("target_id")) or (d.get("kind") == "shot" and d.get("unit_id") == a.get("attacker_id") and d.get("coord") == a.get("target_hex"))
