@@ -36,16 +36,16 @@ static func build(db: WeaponDb, usage: Dictionary) -> Array[Dictionary]:
 			"%s t • %d slots\n%s" % [k["tons"], k["slots"], note]))
 	for id: String in ArmorTypes.KINDS:
 		var k: Dictionary = ArmorTypes.KINDS[id]
-		out.append(entry("armor:" + id, k["name"] + " Armor", "Armor", "both",
-			"%s\nConstruction checker: %g%% of standard armor points per ton." % [k["about"], float(k["mult"]) * 100.0]))
+		out.append(entry("armor:" + id, String(k["name"]) + " Armor", "Armor", "both",
+			"%s\nConstruction checker: %.1f%% of standard armor points per ton." % [k["about"], float(k["mult"]) * 100.0]))
 	for id: String in StructureTypes.KINDS:
 		var k: Dictionary = StructureTypes.KINDS[id]
 		var note := "Damage consumes two structure points per point." if id == "composite" else "Each structure point absorbs two damage." if id == "reinforced" else "Weight-saving internal structure."
-		out.append(entry("structure:" + id, k["name"] + " Structure", "Structure", "both",
-			"%s\nConstruction checker: %g%% of standard structure weight." % [note, float(k["mult"]) * 100.0]))
+		out.append(entry("structure:" + id, String(k["name"]) + " Structure", "Structure", "both",
+			"%s\nConstruction checker: %.1f%% of standard structure weight." % [note, float(k["mult"]) * 100.0]))
 	for id: String in Gyro.SLOTS:
 		out.append(entry("gyro:" + id, id.capitalize() + " Gyro", "Gyro", "both",
-			"%d slots • %g%% of standard gyro weight before rounding.\nWeight depends on engine rating." % [Gyro.SLOTS[id], float(Gyro.WEIGHT[id]) * 100.0]))
+			"%d slots • %.1f%% of standard gyro weight before rounding.\nWeight depends on engine rating." % [Gyro.SLOTS[id], float(Gyro.WEIGHT[id]) * 100.0]))
 	var known := {}
 	for item: Dictionary in out:
 		known[item["id"]] = true
