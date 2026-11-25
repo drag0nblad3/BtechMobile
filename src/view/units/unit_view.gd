@@ -387,17 +387,20 @@ func apply_attack_record(record: Dictionary) -> void:
 ## Independent of faction paint and model geometry; hidden with its UnitView.
 func _make_team_ring() -> MeshInstance3D:
 	var mesh := TorusMesh.new()
-	mesh.inner_radius = 0.76
-	mesh.outer_radius = 0.82
+	mesh.inner_radius = 0.65
+	mesh.outer_radius = 0.95
 	mesh.rings = 32
 	mesh.ring_segments = 8
 	var material := StandardMaterial3D.new()
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.albedo_color = PlaceholderMech.SIDE_COLORS[unit.side % PlaceholderMech.SIDE_COLORS.size()].lightened(0.3)
+	material.albedo_color = PlaceholderMech.SIDE_COLORS[unit.side % PlaceholderMech.SIDE_COLORS.size()].lightened(0.18)
+	material.emission_enabled = true
+	material.emission = material.albedo_color
+	material.emission_energy_multiplier = 0.35
 	mesh.material = material
 	var ring := MeshInstance3D.new()
 	ring.name = "TeamRing"
 	ring.mesh = mesh
-	ring.position.y = 0.055
+	ring.position.y = 0.12
 	ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	return ring

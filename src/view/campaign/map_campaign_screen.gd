@@ -25,6 +25,7 @@ var _confirm_quit := false
 var _map_mode := 0
 var _zoom := 1.0
 var _inspected := Vector2i(-1, -1)
+var _zone_details := false
 var _map_scroll: ScrollContainer
 var _headquarters := false
 var _history := false
@@ -42,6 +43,7 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	_list = UiKit.screen_body(self, "MAP CAMPAIGN", UiKit.close_overlay.bind(self))
+	(_list.get_parent() as Control).size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_build()
 
 
@@ -90,35 +92,44 @@ func _build() -> void:
 		return
 	if _headquarters:
 		MapHqPanel.build(_list, mc, db, _build)
+		_add_abandon()
 		return
-	if _note != "":
-		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
-	var toolbar := HBoxContainer.new()
-	_list.add_child(toolbar)
-	for i in 5:
-		var mode := i
-		UiKit.button(toolbar, ["Terrain", "Objectives", "Intel", "Readiness", "Facilities"][i],
-			func(): _map_mode = mode; _build(), Vector2(0, 42), "selected" if i == _map_mode else "subtle")
-	UiKit.button(toolbar, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
-	UiKit.button(toolbar, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tabs.add_child(spacer)
+	var overlay := OptionButton.new()
+	overlay.custom_minimum_size = Vector2(165, 42)
+	overlay.add_theme_font_size_override("font_size", 19)
+	for label: String in ["Terrain", "Objectives", "Intel", "Readiness", "Facilities"]:
+		overlay.add_item(label)
+	overlay.select(_map_mode)
+	overlay.item_selected.connect(func(index: int): _map_mode = index; _build())
+	UiSkin.button(overlay, "subtle")
+	tabs.add_child(overlay)
+	UiKit.button(tabs, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
+	UiKit.button(tabs, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
 	var body := HBoxContainer.new()
-	body.custom_minimum_size.y = 445
+	body.custom_minimum_size.y = 300
+	body.add_theme_constant_override("separation", 6)
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_list.add_child(body)
 	_map_scroll = ScrollContainer.new()
 	_map_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_map_scroll.size_flags_stretch_ratio = 2.1
+	_map_scroll.size_flags_stretch_ratio = 1.0
 	_map_scroll.custom_minimum_size.x = 420
 	body.add_child(_map_scroll)
-	var grid := MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, _zoom, _inspected)
+	var safe := SafeArea.insets(get_viewport())
+	var map_width := get_viewport_rect().size.x - maxi(20, int(safe["left"]) + 8) - maxi(20, int(safe["right"]) + 8) - 24 - 320 - 24
+	var fit := MapZoneGrid.width_zoom(mc.region.width, map_width)
+	var grid := MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, fit * _zoom, _inspected)
 	grid.animate_transitions(_transitions)
 	_transitions.clear()
 	_map_scroll.set_deferred("scroll_horizontal", scroll_at.x)
 	_map_scroll.set_deferred("scroll_vertical", scroll_at.y)
 	var controls := ScrollContainer.new()
-	controls.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	controls.size_flags_horizontal = Control.SIZE_FILL
 	controls.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	controls.custom_minimum_size.x = 350
+	controls.custom_minimum_size.x = 320
 	body.add_child(controls)
 	var command := VBoxContainer.new()
 	command.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -127,8 +138,19 @@ func _build() -> void:
 		MapLancePanel.battles(command, mc, _fight)
 	elif mc.winner < 0:
 		UiKit.button(command, "END DAY", _end_turn, Vector2(0, 58), "primary").name = "EndTurn"
-	if mc.region.has_zone(_inspected):
-		UiKit.label(command, MapZoneGrid.text_of(mc, _inspected), 17)
+	if not _note.is_empty():
+		UiKit.label(command, _note, 17)
+	var inspect_tabs := HBoxContainer.new()
+	command.add_child(inspect_tabs)
+	var lance_tab := UiKit.button(inspect_tabs, "LANCES", func(): _zone_details = false; _build(), Vector2(0, 44), "selected" if not _zone_details else "subtle")
+	lance_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	lance_tab.add_theme_font_size_override("font_size", 17)
+	var zone_tab := UiKit.button(inspect_tabs, "ZONE", func(): _zone_details = true; _build(), Vector2(0, 44), "selected" if _zone_details else "subtle")
+	zone_tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	zone_tab.add_theme_font_size_override("font_size", 17)
+	zone_tab.disabled = not mc.region.has_zone(_inspected)
+	if _zone_details and mc.region.has_zone(_inspected):
+		UiKit.label(command, MapZoneGrid.text_of(mc, _inspected), 19)
 		UiKit.label(command, MapIntelligence.report(mc, _inspected), 16)
 		UiKit.label(command, MapCampaignLogistics.describe(mc, _inspected), 16)
 		UiKit.button(command, "Battlefield preview", _show_preview, Vector2(0, 46), "subtle")
@@ -137,10 +159,11 @@ func _build() -> void:
 			preview.custom_minimum_size.y = 160
 			command.add_child(preview)
 			preview.show_map(MapBattle.battlefield(mc, _inspected, 1))
-	MapLancePanel.lances(command, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
-	if not mc.log.is_empty():
-		UiKit.label(_list, "Log", 26).modulate = Color(0.75, 0.85, 1.0)
-		UiKit.label(_list, "\n".join(mc.log.slice(maxi(0, mc.log.size() - 8))), UiKit.SMALL)
+	else:
+		MapLancePanel.lances(command, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
+
+
+func _add_abandon() -> void:
 	var quit := UiKit.button(_list, "TAP AGAIN TO ABANDON THE CAMPAIGN" if _confirm_quit else "Abandon campaign",
 			_quit, Vector2(0, 52), "subtle")
 	quit.name = "AbandonMapCampaign"
@@ -163,6 +186,7 @@ func _start() -> void:
 
 
 func _select(id: String) -> void:
+	_zone_details = false
 	_chosen = id
 	_order = ""
 	_note = ""
@@ -184,6 +208,7 @@ func _pick_order(order: String) -> void:
 
 
 func _tap_zone(z: Vector2i) -> void:
+	_zone_details = true
 	_inspected = z
 	_preview_zone = Vector2i(-1, -1)
 	var l := mc.lance(_chosen)
@@ -202,6 +227,7 @@ func _tap_zone(z: Vector2i) -> void:
 
 
 func _end_turn() -> void:
+	_zone_details = false
 	var before := MapCampaignMotion.snapshot(mc)
 	MapBot.orders(mc, 1)
 	MapTurn.start(mc, Dice.new(rng.randi()))
@@ -247,6 +273,7 @@ func _show_preview() -> void:
 func _advance() -> void:
 	if MapOperations.advance(mc, db, rng):
 		_inspected = Vector2i(-1, -1)
+		_zone_details = false
 		_preview_zone = Vector2i(-1, -1)
 		_chosen = ""
 		_order = ""

@@ -37,6 +37,7 @@ static func markers(g: MapZoneGrid, z: Vector2i) -> void:
 	var at := g.center(z)
 	var r := g.radius
 	var font := ThemeDB.fallback_font
+	var font_size := clampi(roundi(r * 0.28), 11, 18)
 	var loc := mc.region.location_at(z)
 	if not loc.is_empty():
 		var tint := MapZoneArt.BLUE if int(loc["owner"]) == 0 else MapZoneArt.RED
@@ -47,8 +48,8 @@ static func markers(g: MapZoneGrid, z: Vector2i) -> void:
 		g.draw_string(font, p - Vector2(9, -4), tag, HORIZONTAL_ALIGNMENT_LEFT, -1, 11, tint)
 		if g.overlay == 1:
 			g.draw_polyline(MapHexButton.polygon(at, r - 1, true), tint, 3.0, true)
-		g.draw_string(font, at - Vector2(r * 0.68, -1), short_label(String(loc["name"]), font, r * 1.36),
-			HORIZONTAL_ALIGNMENT_CENTER, r * 1.36, 11, Color.WHITE)
+		g.draw_string(font, at - Vector2(r * 0.68, -1), short_label(String(loc["name"]), font, r * 1.36, font_size),
+			HORIZONTAL_ALIGNMENT_CENTER, r * 1.36, font_size, Color.WHITE)
 	var mine := ""
 	var foes := 0
 	var fit := 0
@@ -84,13 +85,13 @@ static func _counter(g: MapZoneGrid, at: Vector2, value: String, color: Color) -
 
 
 ## Prefer a whole place-name word, with an explicit ellipsis when abbreviated.
-static func short_label(full: String, font: Font, width: float) -> String:
-	if font.get_string_size(full, HORIZONTAL_ALIGNMENT_LEFT, -1, 11).x <= width:
+static func short_label(full: String, font: Font, width: float, font_size := 11) -> String:
+	if font.get_string_size(full, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x <= width:
 		return full
 	var first := full.get_slice(" ", 0)
-	if first != full and font.get_string_size(first + "…", HORIZONTAL_ALIGNMENT_LEFT, -1, 11).x <= width:
+	if first != full and font.get_string_size(first + "…", HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x <= width:
 		return first + "…"
 	var short := full
-	while not short.is_empty() and font.get_string_size(short + "…", HORIZONTAL_ALIGNMENT_LEFT, -1, 11).x > width:
+	while not short.is_empty() and font.get_string_size(short + "…", HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x > width:
 		short = short.left(-1)
 	return short + "…"

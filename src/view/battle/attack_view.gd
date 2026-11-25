@@ -93,4 +93,8 @@ static func secondary(ai: AttackInput, t: Unit) -> bool:
 
 
 static func _forecast(ai: AttackInput, level: int) -> String:
-	return VolleyForecast.summary(ai.controller.state, ai.attacker, ai._shot_list()) if level != ExplainLevel.OFF else ""
+	if level == ExplainLevel.OFF:
+		return ""
+	var f := VolleyForecast.estimate(ai.controller.state, ai.attacker, ai._shot_list())
+	return "Est. %.1f dmg · %d%% hit · +%d heat → %d" % [
+		f["damage"], roundi(float(f["any_hit"]) * 100), f["heat"], f["after"]]

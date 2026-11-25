@@ -11,7 +11,7 @@ const SPA_TIP := "Special abilities cost %d SP each. Green MechWarriors can't le
 static var open := ""  ## Pilot id whose ability list is showing.
 
 
-static func formation(list: VBoxContainer, c: Campaign, db: UnitDb, act: Callable) -> void:
+static func formation(list: VBoxContainer, c: Campaign, db: UnitDb, act: Callable, compact := false) -> void:
 	var cur := CampaignFormation.current(c, db)
 	var opts := CampaignFormation.options(c, db)
 	var text := "FORMATION  •  %s" % (FormationTypes.name_of(cur) if cur != "" else "None")
@@ -20,7 +20,9 @@ static func formation(list: VBoxContainer, c: Campaign, db: UnitDb, act: Callabl
 	var b := UiKit.button(list, text, act.bind(CampaignFormation.cycle.bind(c, db)), Vector2(0, 52))
 	b.name = "FormationButton"
 	b.disabled = opts.is_empty()
-	if GameSettings.explain_level != ExplainLevel.OFF:
+	b.tooltip_text = FORMATION_TIP
+	b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	if not compact and GameSettings.explain_level != ExplainLevel.OFF:
 		UiSkin.label(UiKit.label(list, FORMATION_TIP, UiKit.SMALL), "muted")
 
 

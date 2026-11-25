@@ -94,6 +94,16 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	return body
 
 
+## Action row outside screen_body's scrolling content.
+static func screen_footer(body: VBoxContainer) -> HBoxContainer:
+	var layout := body.get_parent().get_parent().get_parent() as VBoxContainer
+	var footer := HBoxContainer.new()
+	footer.name = "ScreenFooter"
+	footer.add_theme_constant_override("separation", 12)
+	layout.add_child(footer)
+	return footer
+
+
 static func close_overlay(screen: Control) -> void:
 	screen.hide()
 	screen.queue_free()
