@@ -24,6 +24,7 @@ var weapons: Array[Dictionary] = []  ## {label, locs: Array[int], kind: laser|ca
 var errors: PackedStringArray = []
 var quality_report: Dictionary = {}  ## Post-raster topology audit
 var _mat: Dictionary = {}  ## material name -> index
+var damage_orders: Dictionary = {}  ## Immutable cosmetic sequences; owned by this model.
 
 
 static func load_file(path: String) -> VxModel:
