@@ -1,5 +1,10 @@
 name: CI
-on: [push, pull_request, workflow_dispatch]
+# Avoid running the same feature commit as both push and PR CI.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch
 # Older shape-review pushes must not saturate the shared software renderer.
 concurrency:
   group: ci-${{ github.ref }}
@@ -207,6 +212,7 @@ jobs:
           set -o pipefail
           export XDG_DATA_HOME="$(mktemp -d)"
           timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/ui_smoke.gd 2>&1 | tee ui.log
+          export XDG_DATA_HOME="$(mktemp -d)"
           timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log

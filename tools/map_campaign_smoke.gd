@@ -75,12 +75,12 @@ func _run() -> void:
 	if not _check(mc.battles.size() == 1, "expected one battle, got %s (seed %d)" % [mc.battles, SEED]):
 		return
 	(screen.find_child("Fight_0", true, false) as Button).pressed.emit()
+	BattleLaunch.bot_sides = []
 	await _frames(6)
 	if not _check(current_scene.get("in_map_campaign") == true, "battle is not a map campaign battle"):
 		return
 	var ctl: GameController = current_scene.get("controller")
 	# Freeze automated play: this smoke verifies routing/persistence, not AI.
-	current_scene.get("bots").bot_sides.clear()
 	var mine := ctl.state.all_units().filter(func(u: Unit) -> bool: return u.side == 0)
 	if not _check(not mine.is_empty(), "no player units in encounter"):
 		return

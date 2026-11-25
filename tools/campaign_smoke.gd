@@ -50,10 +50,10 @@ func _run() -> void:
 	if not _check(fight != null and not fight.disabled, "contract button missing"):
 		return
 	fight.pressed.emit()
+	BattleLaunch.bot_sides = []
 	await _frames(6)
 	if not _check(current_scene.get("in_campaign") == true, "battle is not a campaign battle"):
 		return
-	current_scene.get("bots").bot_sides.clear()
 	var ctl: GameController = current_scene.get("controller")
 	if not _check(not formed or not ctl.state.formations.is_empty(), "the chosen formation wasn't set up"):
 		return
