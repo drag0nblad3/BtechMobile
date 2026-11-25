@@ -15,7 +15,7 @@ static func orders(mc: MapCampaign, side: int = 1) -> void:
 		var garrison := not loc.is_empty() and int(loc["owner"]) == side and not held.has(l.zone)
 		if not l.on_map():
 			continue
-		if mc.fit_mechs(l).is_empty() or MapOperations.should_repair(mc, l):
+		if mc.fit_mechs(l).is_empty() or (not garrison and _should_repair(mc, l)):
 			MapOrders.give(mc, l, MapLance.REPAIR)
 		elif garrison:
 			held[l.zone] = true
@@ -79,3 +79,24 @@ static func _goal(mc: MapCampaign, l: MapLance) -> Vector2i:
 			best = z
 			best_d = d
 	return best
+
+
+## Use an existing Repair order for substantially damaged mobile reserves
+## only if they are not immediately threatened and have repairable losses.
+static func _should_repair(mc: MapCampaign, l: MapLance) -> bool:
+	var damaged := 0
+	var repairable := 0
+	for id in l.mech_ids:
+		var m := mc.roster(l.side).mech(id)
+		if m == null or m.written_off:
+			continue
+		repairable += 1
+		var p := mc.roster(l.side).pilot(m.pilot_id)
+		if m.damaged() or p == null or p.dead or p.wounds > 0:
+			damaged += 1
+	if damaged == 0 or damaged * 2 < repairable:
+		return false
+	for foe in mc.lances_of(1 - l.side):
+		if foe.on_map() and not mc.fit_mechs(foe).is_empty() and mc.region.distance(l.zone, foe.zone) <= 1:
+			return false
+	return true

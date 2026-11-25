@@ -18,6 +18,7 @@ static func start(mc: MapCampaign, dice: Dice) -> Array[Dictionary]:
 	MapDrop.fly(mc)
 	_move(mc)
 	MapFog.scout(mc)
+	MapIntelligence.observe(mc)
 	for l in mc.lances:
 		if l.order == MapLance.REPAIR:
 			MapRepair.full(mc, l)
@@ -34,7 +35,6 @@ static func start(mc: MapCampaign, dice: Dice) -> Array[Dictionary]:
 			s["defender"] = (theirs[i] if att == mine[i] else mine[i]).id
 			s["mission"] = ScenarioTable.mission_for(s["scenario"], mc.rules)
 			mc.battles.append(s)
-	MapOperations.observe(mc)
 	return mc.battles
 
 
@@ -61,7 +61,7 @@ static func finish(mc: MapCampaign, db: UnitDb) -> Array[String]:
 	mc.winner = winner(mc)
 	mc.turn += 1
 	mc.log.append_array(news)
-	MapOperations.observe(mc)
+	MapIntelligence.observe(mc)
 	return news
 
 

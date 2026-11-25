@@ -1,7 +1,11 @@
-# Map campaign command expansion
+# Campaign command integration (#356)
 
-Rules boundary: Campaign Operations (4th printing), Map-Based Campaign, pp. 145–155: the GM selects geography, scope, complexity and objectives; key locations offer scenario-specific benefits. Consulted the map objectives and sample key-location sections and the official downloads/errata listing (https://battletech.com/downloads/). Existing strategic movement, encounters, fog, repairs, factory and port mechanics are retained. No added terrain movement penalties, attrition, supply consumption or tactical combat modifiers.
-
-New presentation: hex map, connected terrain, decorative road network, zoom/drag, legal target outlines, routes, visibility/ownership/logistics/readiness overlays, location inspection and on-demand map preview. Terrain baseline is repeatable per zone; combat alterations are not persisted. Intelligence records only observed zones and labels old information as stale. Headquarters exchanges are GM convenience options restricted to co-located, non-fighting units; no free repairs or pilot training. The defender may prioritize a repair order when substantially damaged and safe. Linked regions are explicitly GM-style continuation, with survivors and damage retained, not an official reward. Setup adjusts the region size, company size, defender skill and victory target; defaults match prior rules. Full battle reports and operation number are saved.
-
-Additional setup offers opt-in strict historical generation from the existing verified variant-specific MUL data, with an explicit no-pool error instead of fabricating availability. Strategic movement and capture animation uses only observed positions before and after a day. Limitations: no detailed logistics ledger or consumption, no exact geography stitching between tactical maps, no animated retreat after returning from a tactical battle. Strict historical campaigns retain four-unit lance structure; Clan force organization is not a new rule. Those require further work and verification of optional rules. Existing saves default missing fields, but new generation differs. 
+The passing cartography, HQ and historical setup implementations (#354, #355,
+#357) remain the source of truth. The competing branch's untyped empty
+Array/Array[UnitDef] failure is removed; explicit typed force pools are used.
+Retained enhancements: structured, paged after-action reports with region/day,
+exact historical year, one-lance setup and Elite defender option, facilities
+overlay, safe damage-aware AI repair, and preservation of formation membership
+and fresh landing intelligence across regions. Existing geometry, fog-safe
+motion, save defaults and published movement/repair rules are preserved.
+No new supply penalties or tactical rule changes. See map-campaign-expansion.md.

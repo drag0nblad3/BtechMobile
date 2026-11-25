@@ -44,6 +44,7 @@ const MARGIN := 18
 const PHASE_TAGS := ["INIT", "MOVE", "FIRE", "MELEE", "HEAT", "END"]
 
 var _phase_cells: Array[PanelContainer] = []
+var _displayed_phase := -1
 var _event_panel: PanelContainer
 var _event_label: Label
 var _event_tween: Tween
@@ -327,6 +328,9 @@ func show_side(content: Control) -> void:
 
 ## A narrow tactical timeline, independent of gameplay state.
 func set_phase(phase: int) -> void:
+	if _displayed_phase == phase:
+		return
+	_displayed_phase = phase
 	for i in _phase_cells.size():
 		var active := i == phase
 		var previous := i < phase

@@ -32,13 +32,12 @@ func _run() -> void:
 	await _frames(1)
 	var mc := screen.mc
 	var grid := screen.find_child("ZoneGrid", true, false) as MapZoneGrid
-	if not _check(grid != null and grid.mc == mc, "strategic canvas missing"):
+	if not _check(grid != null and grid.get_child_count() == mc.region.width * mc.region.height, "zone grid missing tiles"):
 		return
-	for x in mc.region.width:
-		for y in mc.region.height:
-			var z := Vector2i(x, y)
-			if not _check(grid.zone_at(grid.center(z)) == z, "hex hit test missed its center"):
-				return
+	for tile in grid.get_children():
+		if not _check(tile is MapHexButton and tile._has_point(tile.size / 2.0)
+				and not tile._has_point(Vector2.ZERO), "hex hit area is incorrect"):
+			return
 	if not _check(screen.find_child("CaptureProgress", true, false) is ProgressBar, "capture progress missing"):
 		return
 	# Use a real bridge garrison: the bot holds it, it has no automatic
@@ -99,6 +98,8 @@ func _run() -> void:
 	await _frames(1)
 	var after := MapCampaignStore.load_campaign()
 	if not _check(after != null and MapCampaignStore.pending().is_empty(), "battle not written back"):
+		return
+	if not _check(after.reports.size() == 1 and int(after.reports[0]["winner"]) == 0 and int(after.reports[0]["day"]) == 1, "after-action report not archived"):
 		return
 	if not _check(after.turn == 2 and after.battles.is_empty(), "seed %d: turn %d, remaining battles %s" % [SEED, after.turn, after.battles]):
 		return

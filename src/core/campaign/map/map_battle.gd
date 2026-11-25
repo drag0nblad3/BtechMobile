@@ -43,8 +43,6 @@ static func battlefield(mc: MapCampaign, z: Vector2i, _seed_value: int) -> Battl
 	for t in themes:
 		if t.id == theme_id:
 			theme = t
-	# The encounter seed still drives dice, not the landscape. A zone retains
-	# the same baseline battlefield on revisits (not prior battle damage).
 	return MapGenerator.build(theme, MapGenerator.SIZES[1], MapGeography.battle_seed(mc.region, z), TerrainDb.load_file())
 
 
@@ -70,8 +68,9 @@ static func finish(mc: MapCampaign, b: Dictionary, state: GameState, rosters: Ar
 			loser.zone = _fallback(mc, loser)
 			report.append("%s falls back." % loser.name)
 	mc.battles.erase(b)
-	mc.log.append(report[0])
-	mc.reports.append({"day": mc.turn, "operation": mc.operation, "zone": MapGeography.zone_label(mc.region, b["zone"]), "winner": winner, "lines": Array(report)})
+	mc.log.append_array(report)
+	MapCampaignHistory.record(mc, b["zone"], winner, report)
+	MapIntelligence.observe(mc)
 	return report
 
 
