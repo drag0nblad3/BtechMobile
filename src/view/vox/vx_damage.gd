@@ -62,11 +62,40 @@ func show_location(loc: int, armor_lost: float, rear_lost: float, structure_lost
 
 ## Rules state -> picture for every location of `u`.
 func show_unit(u: Unit) -> void:
+	show_record(u.def, u.armor, u.rear_armor, u.structure)
+
+
+func show_record(def: UnitDef, armor: Array, rear: Array, structure: Array) -> void:
 	for loc in Location.COUNT:
-		var full_s := StructureTable.points(u.def.tonnage, loc, u.def.quad)
-		show_location(loc, _lost(u.armor[loc], u.def.armor[loc]),
-				_lost(u.rear_armor[loc], u.def.rear_armor[loc]),
-				_lost(u.structure[loc], full_s), u.is_location_destroyed(loc))
+		var full_s := StructureTable.points(def.tonnage, loc, def.quad)
+		show_location(loc, _lost(armor[loc], def.armor[loc]),
+				_lost(rear[loc], def.rear_armor[loc]),
+				_lost(structure[loc], full_s), structure[loc] <= 0)
+
+
+## Locate the first newly removed voxel in the same deterministic crater
+## sequence the mesh will use at impact. No effect on the damage record.
+func crater_point(u: Unit, step: Dictionary) -> Vector3:
+	var loc := int(step.get("loc", -1))
+	if loc < 0 or loc >= Location.COUNT:
+		return Vector3.INF
+	var back := bool(step.get("rear", false)) and Location.HAS_REAR.has(loc)
+	var kind := "r" if back else "a"
+	var full := u.def.rear_armor[loc] if back else u.def.armor[loc]
+	var left := u.rear_armor[loc] if back else u.armor[loc]
+	var pips := int(step.get("armor", 0))
+	if pips <= 0:
+		return Vector3.INF
+	var order: Array = _orders.get("%d:%s" % [loc, kind], [])
+	var start := roundi(_lost(left + pips, full) * order.size())
+	var end := roundi(_lost(left, full) * order.size())
+	if start >= end or start >= order.size():
+		return Vector3.INF
+	var entry: Array = order[start]
+	var part: VxPart = _parts.get(entry[0])
+	if not is_instance_valid(part) or not part.is_inside_tree():
+		return Vector3.INF
+	return part.to_global(part.local_of(Vector3(entry[1]) + Vector3.ONE * 0.5))
 
 
 func order_size(loc: int, kind: String) -> int:

@@ -9,6 +9,10 @@ const BEAM_TIME := 0.18
 const PROJECTILE_TIME := 0.34
 
 
+static func arrival_time(weapon: String) -> float:
+	return 0.0 if style(weapon) in ["ppc", "laser", "flame"] else PROJECTILE_TIME
+
+
 ## Weapon families intentionally use different silhouettes and colors.
 static func style(weapon: String) -> String:
 	var w := weapon.to_lower()
@@ -18,7 +22,7 @@ static func style(weapon: String) -> String:
 		return "laser"
 	if "flamer" in w or "plasma" in w:
 		return "flame"
-	if "lrm" in w or "srm" in w or "mrm" in w or "atm" in w or "missile" in w or "rocket" in w:
+	if "lrm" in w or "srm" in w or "mrm" in w or "atm" in w or "missile" in w or "rocket" in w or "arrow" in w or "thunderbolt" in w:
 		return "missile"
 	return "ballistic"
 
@@ -49,14 +53,18 @@ static func spawn(holder: Node3D, start: Vector3, end: Vector3,
 	var hue := tint(kind)
 	var root := Node3D.new()
 	root.name = "ShotTrail"
+	root.set_meta("shot_from", start)
+	root.set_meta("shot_to", end)
+	root.set_meta("shot_hit", hit)
 	root.add_to_group("battle_shot")
 	holder.add_child(root)
 	var is_beam := kind in ["ppc", "laser", "flame"]
 	var radius := 0.025 if kind == "ppc" else 0.015
 	if not is_beam:
 		radius = 0.012
-	var core := _beam(root, start, end, radius, hue, 0.95)
-	var haze := _beam(root, start, end, radius * 3.2, hue, 0.24)
+	var trail_end := end if is_beam else start.lerp(end, 0.08)
+	var core := _beam(root, start, trail_end, radius, hue, 0.95)
+	var haze := _beam(root, start, trail_end, radius * 3.2, hue, 0.24)
 	var t := BEAM_TIME if is_beam else PROJECTILE_TIME
 	var fade := root.create_tween()
 	fade.set_parallel(true)
@@ -74,7 +82,21 @@ static func spawn(holder: Node3D, start: Vector3, end: Vector3,
 		orb.position = start
 		root.add_child(orb)
 		var travel := root.create_tween()
-		travel.tween_property(orb, "position", end, PROJECTILE_TIME)
+		travel.tween_method(func(t: float):
+			var p := start.lerp(end, t)
+			if kind == "missile":
+				p += Vector3.UP * sin(t * PI) * minf(2.2, start.distance_to(end) * 0.18)
+			orb.position = p
+			var tail := start.lerp(end, maxf(0.0, t - 0.08))
+			if kind == "missile":
+				tail += Vector3.UP * sin(maxf(0.0, t - 0.08) * PI) * minf(2.2, start.distance_to(end) * 0.18)
+			for line: MeshInstance3D in [core, haze]:
+				var span := p - tail
+				if span.length() > 0.001:
+					line.position = (p + tail) * 0.5
+					line.basis = Basis(Quaternion(Vector3.UP, span.normalized()))
+					(line.mesh as CylinderMesh).height = span.length()
+		, 0.0, 1.0, PROJECTILE_TIME)
 		travel.tween_property(orb, "transparency", 1.0, 0.08)
 	var dispose := root.create_tween()
 	dispose.tween_interval(t + (0.1 if not is_beam else 0.02))

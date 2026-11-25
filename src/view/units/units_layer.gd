@@ -6,6 +6,7 @@ signal busy_changed(busy: bool)
 
 var views: Dictionary = {}  # unit id -> UnitView
 var _playing := 0
+var attack_playing := false
 
 
 ## Hidden units only show for sides in `see_hidden` (the human players).
@@ -23,7 +24,7 @@ func view_of(u: Unit) -> UnitView:
 
 
 func is_busy() -> bool:
-	return _playing > 0
+	return _playing > 0 or attack_playing
 
 
 ## path/start come from the controller's UNIT_MOVED event.
@@ -39,7 +40,7 @@ func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int
 ## Re-reads a unit's condition (prone, destroyed, facing after a fall).
 func refresh_unit(unit_id: int) -> void:
 	var v: UnitView = views.get(unit_id)
-	if v and not is_busy():
+	if v and _playing == 0 and not attack_playing:
 		v.snap_to_state()
 
 
@@ -68,5 +69,12 @@ func reload_looks() -> void:
 
 func _on_done() -> void:
 	_playing -= 1
-	if _playing == 0:
+	if not is_busy():
 		busy_changed.emit(false)
+
+
+func set_attack_playing(on: bool) -> void:
+	if attack_playing == on:
+		return
+	attack_playing = on
+	busy_changed.emit(is_busy())

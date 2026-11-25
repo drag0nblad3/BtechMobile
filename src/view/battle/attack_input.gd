@@ -15,6 +15,7 @@ var hud: BattleHud
 var highlighter: HexHighlighter
 var aim_guide: BattleAimOverlay
 var bots: BotDriver
+var units_layer: UnitsLayer
 
 var attacker: Unit
 var target: Unit
@@ -94,7 +95,7 @@ func on_hex_tapped(c: Vector2i) -> bool:
 
 
 func on_confirm() -> void:
-	if attacker == null:
+	if attacker == null or (units_layer != null and units_layer.attack_playing):
 		return
 	var u := attacker
 	if is_weapon_phase():
@@ -178,7 +179,7 @@ func on_flip() -> void:
 
 
 func on_skip() -> void:
-	if attacker == null:
+	if attacker == null or (units_layer != null and units_layer.attack_playing):
 		return
 	var u := attacker
 	clear()
