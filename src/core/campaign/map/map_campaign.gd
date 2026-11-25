@@ -20,6 +20,8 @@ var battles: Array[Dictionary] = []  ## This turn's meetings still to fight (Map
 var log: Array[String] = []
 var scouted: Array[Vector2i] = []  ## Zones the invader's Scout orders saw this turn (MapFog).
 var winner := -1
+var operation := 1
+var intel: Dictionary = {}
 
 
 static func load_rules() -> Dictionary:
@@ -42,6 +44,7 @@ static func create(db: UnitDb, rng: RandomNumberGenerator, rules_in: Dictionary 
 	for i in ceili(ids.size() / float(LANCE)):
 		mc.add_lance(0, landing, ids.slice(i * LANCE, (i + 1) * LANCE))
 	mc._enemy_forces(db, rng)
+	MapIntelligence.observe(mc)
 	return mc
 
 
@@ -98,9 +101,14 @@ func _enemy_forces(db: UnitDb, rng: RandomNumberGenerator) -> void:
 	enemy = Campaign.new()
 	enemy.name = "Defenders"
 	var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
-	for m in player.mechs:
-		fb.add(0, m.design)
-	var target := fb.bv(0) / maxi(1, lances_of(0).size())
+	var total_bv := 0
+	for l in lances_of(0):
+		for id in l.mech_ids:
+			var m := player.mech(id)
+			var def := db.get_def(m.design) if m != null else null
+			if def != null and not m.written_off:
+				total_bv += fb.unit_bv(0, def)
+	var target := roundi(float(total_bv) / maxi(1, lances_of(0).size()))
 	var skill: Array = ChaosRules.load_file().data.get("skill_levels", {}).get(String(rules.get("enemy_skill", "regular")), [4, 5])
 	fb.skills[1] = Vector2i(int(skill[0]), int(skill[1]))
 	var spots: Array[Vector2i] = []
