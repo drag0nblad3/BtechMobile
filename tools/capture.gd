@@ -116,6 +116,9 @@ func _sample_map_campaign() -> void:
 
 
 func _process(_delta: float) -> bool:
+	# Count review frames after deployment, not while the loading cover is up.
+	if _scene.get("startup_complete") == false:
+		return false
 	_frames += 1
 	if _frames == 5:
 		match _mode:
