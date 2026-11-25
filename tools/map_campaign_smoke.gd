@@ -26,6 +26,15 @@ func _run() -> void:
 	(screen.find_child("StartMapCampaign", true, false) as Button).pressed.emit()
 	await _frames(1)
 	var mc := screen.mc
+	var grid := screen.find_child("ZoneGrid", true, false) as MapZoneGrid
+	if not _check(grid != null and grid.get_child_count() == mc.region.width * mc.region.height, "zone grid missing tiles"):
+		return
+	for tile in grid.get_children():
+		var art := tile.get_node_or_null("ZoneArt") as MapZoneArt
+		if not _check(tile is Button and art != null and art.mouse_filter == Control.MOUSE_FILTER_IGNORE, "zone artwork blocks input or is missing"):
+			return
+	if not _check(screen.find_child("CaptureProgress", true, false) is ProgressBar, "capture progress missing"):
+		return
 	var alpha := mc.lances_of(0)[0]
 	(screen.find_child("Lance_" + alpha.id, true, false) as Button).pressed.emit()
 	await _frames(1)
