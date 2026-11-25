@@ -1,0 +1,114 @@
+{
+  "name": "Fortified Crossroads",
+  "rows": [
+    "c0 c0 c0 c0 c0 c0 r0 p0 c0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 c0 r0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 r0 c0 c0",
+    "c0 c0 c0 c0 c0 c0 c0 p0 c0 r0 c0 c0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 c0 r0 c0 p0 c0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 r0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 c0 c0 c0 p0 r0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 c0 r0",
+    "r0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 r0 c0 c0 c0 c0",
+    "p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0",
+    "c0 c0 c0 r0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 r0 c0",
+    "c0 c0 c0 c0 c0 c0 c0 p0 c0 c0 r0 c0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 c0 c0 r0 p0 c0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 c0 r0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 r0 c0 c0",
+    "c0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 c0 r0 c0 p0 c0 c0 c0 c0 c0 c0 c0 c0",
+    "c0 r0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0 r0 c0 c0 c0",
+    "c0 c0 c0 c0 c0 c0 c0 p0 r0 c0 c0 c0 c0 c0 c0 c0"
+  ],
+  "buildings": [
+    {
+      "hex": "1404",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0705",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1305",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0606",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1206",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0507",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1107",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0408",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1008",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1410",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0711",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1311",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0612",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1212",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0513",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1113",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "0414",
+      "type": "hardened",
+      "height": 1
+    },
+    {
+      "hex": "1014",
+      "type": "hardened",
+      "height": 1
+    }
+  ]
+}

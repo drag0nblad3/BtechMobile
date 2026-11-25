@@ -25,6 +25,7 @@ static func mesh(kind: String, variant: int) -> ArrayMesh:
 			"flower": _flower(cells, rng)
 			"bush": _bush(cells, rng)
 			"rock": _rock(cells, rng, STONE)
+			"scrub", "crate", "bollard", "debris": VxDoodads.fill(cells, kind, rng)
 			_: _rock(cells, rng, CONCRETE, true)
 		_cache[key] = VxGrid.mesh(cells, PITCH, Vector3(0.5, 0, 0.5))
 	return _cache[key]
