@@ -1,13 +1,6 @@
 name: Official TRO illustration silhouette batches
 
 on:
-  pull_request:
-    paths:
-      - 'tools/score_tro_illustrations.py'
-      - 'tools/run_tro_batch.py'
-      - 'tests/tools/test_score_tro_illustrations.py'
-      - 'docs/graphics/tro-reference-art-index.json'
-      - '.github/workflows/voxel-tro-art-batches.yml'
   workflow_dispatch:
 
 permissions:

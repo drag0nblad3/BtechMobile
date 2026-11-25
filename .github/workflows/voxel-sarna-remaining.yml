@@ -1,14 +1,5 @@
 name: Remaining Sarna reference silhouettes (44)
 on:
-  pull_request:
-    paths:
-      - 'docs/graphics/sarna-reference-art-index.json'
-      - 'tools/run_tro_batch.py'
-      - 'tools/score_tro_illustrations.py'
-      - 'tools/reference_camera_sweep.gd'
-      - 'tools/reference_pose_sweep.gd'
-      - 'tools/score_reference_pose_candidates.py'
-      - '.github/workflows/voxel-sarna-remaining.yml'
   workflow_dispatch:
 permissions:
   contents: read

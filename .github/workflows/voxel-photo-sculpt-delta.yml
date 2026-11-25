@@ -1,11 +1,6 @@
 name: Camera-aware sculpt photo delta (diagnostic)
 
 on:
-  pull_request:
-    paths:
-      - 'data/voxels/*.json'
-      - 'tools/qa/photo_fit_delta.py'
-      - '.github/workflows/voxel-photo-sculpt-delta.yml'
   workflow_dispatch:
 
 permissions:

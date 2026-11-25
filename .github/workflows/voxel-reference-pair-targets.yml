@@ -1,15 +1,5 @@
 name: Pre-sculpt official-art pair target trial
 on:
-  pull_request:
-    paths:
-      - 'tools/compare_reference_pair_targets.py'
-      - 'docs/graphics/reference-pair-candidates.json'
-      - 'tests/tools/test_compare_reference_pair_targets.py'
-      - '.github/workflows/voxel-reference-pair-targets.yml'
-      - 'data/voxels/hellhound_conjurer.json'
-      - 'data/voxels/dominator.json'
-      - 'data/voxels/hawkwolf_hwk4f.json'
-      - 'data/voxels/black_hawk_standard.json'
   workflow_dispatch:
 
 permissions:
