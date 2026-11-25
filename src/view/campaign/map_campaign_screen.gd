@@ -102,12 +102,12 @@ func _build() -> void:
 	UiKit.button(toolbar, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
 	UiKit.button(toolbar, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
 	var body := HBoxContainer.new()
-	body.custom_minimum_size.y = 410
+	body.custom_minimum_size.y = 445
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_list.add_child(body)
 	_map_scroll = ScrollContainer.new()
 	_map_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_map_scroll.size_flags_stretch_ratio = 1.5
+	_map_scroll.size_flags_stretch_ratio = 2.1
 	_map_scroll.custom_minimum_size.x = 420
 	body.add_child(_map_scroll)
 	var grid := MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, _zoom, _inspected)
@@ -118,11 +118,15 @@ func _build() -> void:
 	var controls := ScrollContainer.new()
 	controls.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	controls.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	controls.custom_minimum_size.x = 330
+	controls.custom_minimum_size.x = 350
 	body.add_child(controls)
 	var command := VBoxContainer.new()
 	command.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	controls.add_child(command)
+	if not mc.battles.is_empty():
+		MapLancePanel.battles(command, mc, _fight)
+	elif mc.winner < 0:
+		UiKit.button(command, "END DAY", _end_turn, Vector2(0, 58), "primary").name = "EndTurn"
 	if mc.region.has_zone(_inspected):
 		UiKit.label(command, MapZoneGrid.text_of(mc, _inspected), 17)
 		UiKit.label(command, MapIntelligence.report(mc, _inspected), 16)
@@ -134,10 +138,6 @@ func _build() -> void:
 			command.add_child(preview)
 			preview.show_map(MapBattle.battlefield(mc, _inspected, 1))
 	MapLancePanel.lances(command, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
-	if not mc.battles.is_empty():
-		MapLancePanel.battles(command, mc, _fight)
-	elif mc.winner < 0:
-		UiKit.button(_list, "END DAY", _end_turn, Vector2(0, 58), "primary").name = "EndTurn"
 	if not mc.log.is_empty():
 		UiKit.label(_list, "Log", 26).modulate = Color(0.75, 0.85, 1.0)
 		UiKit.label(_list, "\n".join(mc.log.slice(maxi(0, mc.log.size() - 8))), UiKit.SMALL)

@@ -8,6 +8,7 @@ const DRILLS := "res://scenes/drills.tscn"
 var _menu: Control
 var _overlay: Control
 var _loading: BattleLoading
+var _continue: Button
 
 
 ## Android Back remains available with automatic back-to-exit disabled.
@@ -51,38 +52,40 @@ func _ready() -> void:
 	var subtitle := UiKit.label(box, "TACTICAL COMBAT SIMULATOR", UiKit.SMALL)
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	UiSkin.rule(box)
-	var actions := GridContainer.new()
-	actions.columns = 2
-	actions.add_theme_constant_override("h_separation", 12)
-	actions.add_theme_constant_override("v_separation", 12)
-	box.add_child(actions)
 	GameSettings.load_settings()
 	var new_player := GameSettings.training.is_empty()
-	var train := UiKit.button(actions, "TRAINING  ·  START HERE" if new_player else "TRAINING",
-		_open_training, Vector2(0, 76), "primary" if new_player else "secondary")
-	train.name = "TrainingButton"
-	var camp := UiKit.button(actions, "CAMPAIGN", _open_campaign, Vector2(0, 64))
-	camp.name = "CampaignButton"
-	camp.tooltip_text = "A mercenary company whose damage, wounds and experience carry from battle to battle"
-	var map_camp := UiKit.button(actions, "MAP CAMPAIGN", _open_map_campaign, Vector2(0, 64))
-	map_camp.name = "MapCampaignButton"
-	map_camp.tooltip_text = "Take a region zone by zone with a company of three lances"
-	var drills := UiKit.button(actions, "RULES DRILLS", _open_drills, Vector2(0, 58))
+	_continue = UiKit.button(box, "CONTINUE", _resume_latest, Vector2(0, 64), "primary")
+	_continue.name = "ContinueButton"
+	_refresh_continue()
+	var groups := HBoxContainer.new()
+	groups.add_theme_constant_override("separation", 12)
+	box.add_child(groups)
+	var play := UiKit.panel(groups)
+	play.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiKit.label(play, "PLAY", 26)
+	UiKit.button(play, "TRAINING  ·  START HERE" if new_player else "TRAINING",
+		_open_training, Vector2(0, 54), "primary" if new_player else "secondary").name = "TrainingButton"
+	UiKit.button(play, "QUICK BATTLE", _quick_battle, Vector2(0, 54)).name = "QuickBattleButton"
+	UiKit.button(play, "BUILD A BATTLE", _open_battle, Vector2(0, 54),
+		"secondary" if new_player else "primary").name = "BattleButton"
+	var campaigns := UiKit.panel(groups)
+	campaigns.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiKit.label(campaigns, "CAMPAIGNS", 26)
+	UiKit.button(campaigns, "MERCENARY CAMPAIGN", _open_campaign, Vector2(0, 52)).name = "CampaignButton"
+	UiKit.label(campaigns, "Manage a company, repair damage and fight contracts.", 18)
+	UiKit.button(campaigns, "MAP CAMPAIGN", _open_map_campaign, Vector2(0, 52)).name = "MapCampaignButton"
+	UiKit.label(campaigns, "Command lances, capture territory and fight encounters.", 18)
+	var tools := HBoxContainer.new()
+	box.add_child(tools)
+	var drills := UiKit.button(tools, "RULES DRILLS", _open_drills, Vector2(0, 48), "subtle")
 	drills.name = "DrillsButton"
-	drills.tooltip_text = "Quick questions on to-hit numbers, hit locations, missiles, heat and odds"
-	var quick := UiKit.button(actions, "QUICK BATTLE", _quick_battle, Vector2(0, 70))
-	quick.name = "QuickBattleButton"
-	quick.tooltip_text = "Two matched lances on a random map, you against the computer"
-	var battle := UiKit.button(actions, "BUILD A BATTLE", _open_battle, Vector2(0, 70),
-		"secondary" if new_player else "primary")
-	battle.name = "BattleButton"
-	var reference := UiKit.button(actions, "TECHNICAL READOUT", _open_reference, Vector2(0, 76))
+	var reference := UiKit.button(tools, "TECHNICAL READOUT", _open_reference, Vector2(0, 48), "subtle")
 	reference.name = "TechnicalReadoutButton"
-	var slots := UiKit.button(actions, "SAVE SLOTS", _open_slots, Vector2(0, 76))
+	var slots := UiKit.button(tools, "SAVE SLOTS", _open_slots, Vector2(0, 48), "subtle")
 	slots.name = "SaveSlotsButton"
-	for b: Button in [train, camp, map_camp, drills, quick, battle, reference, slots]:
+	for b: Button in [drills, reference, slots]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		b.custom_minimum_size.y = 76
+		b.add_theme_font_size_override("font_size", 19)
 	if BattleLaunch.open_training:
 		BattleLaunch.open_training = false
 		_open_training.call_deferred()
@@ -138,6 +141,7 @@ func _restore_menu() -> void:
 	_overlay = null
 	if is_inside_tree() and is_instance_valid(_menu):
 		_menu.show()
+		_refresh_continue()
 
 
 func _open_scene(title: String, path: String) -> void:
@@ -179,3 +183,40 @@ func _quick_battle() -> void:
 	if get_tree().change_scene_to_file(path) != OK:
 		BattleLaunch.pending = null
 		await _end_loading()
+
+
+## Most recently modified resumable operation in the active workspace.
+func _latest() -> String:
+	var best := ""
+	var newest := 0
+	for path: String in [CampaignStore.PATH, MapCampaignStore.PATH, BattleSave.SAVE_PATH]:
+		var resolved := SaveProfiles.resolve(path)
+		if not FileAccess.file_exists(resolved):
+			continue
+		var stamp := FileAccess.get_modified_time(resolved)
+		if stamp < newest:
+			continue
+		if path == BattleSave.SAVE_PATH and not BattleSave.has_game():
+			continue
+		best = path
+		newest = stamp
+	return best
+
+
+func _refresh_continue() -> void:
+	var latest := _latest()
+	_continue.disabled = latest.is_empty()
+	match latest:
+		BattleSave.SAVE_PATH: _continue.text = "CONTINUE  ·  SAVED BATTLE"
+		CampaignStore.PATH: _continue.text = "CONTINUE  ·  MERCENARY CAMPAIGN"
+		MapCampaignStore.PATH: _continue.text = "CONTINUE  ·  MAP CAMPAIGN"
+		_: _continue.text = "CONTINUE  ·  NO SAVED OPERATION"
+
+
+func _resume_latest() -> void:
+	match _latest():
+		BattleSave.SAVE_PATH:
+			BattleLaunch.load_autosave = true
+			await _open_scene("Saved battle", BattleLaunch.BATTLE_SCENE)
+		CampaignStore.PATH: await _open_campaign()
+		MapCampaignStore.PATH: await _open_map_campaign()

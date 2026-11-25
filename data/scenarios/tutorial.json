@@ -9,7 +9,7 @@
   ],
   "lessons": [
     {"event": "initiative", "turn": 1, "title": "Your first battle",
-     "text": "You command the red Wolverine at the bottom of the map. The computer flies the blue Commando at the top. Destroy it to win.\n\nDrag to pan the camera, pinch to zoom and twist with two fingers to orbit. Every turn begins with an initiative roll: the side that loses it must move first, so the winner gets to react."},
+     "text": "You command the Wolverine at the bottom of the map (red team ring). The computer controls the Commando at the top (blue team ring). Faction paint may differ from team colors. Destroy the Commando to win.\n\nDrag to pan the camera, pinch to zoom and twist with two fingers to orbit. Every turn begins with an initiative roll: the side that loses it must move first, so the winner gets to react."},
     {"event": "phase_changed", "phase": "Movement", "turn": 1, "title": "Moving",
      "text": "Tap your Wolverine. Highlighted hexes show where it can reach. The Walk button cycles through Walk, Run and Jump: running reaches farther but makes your own shots harder; jumping clears terrain and makes you hardest to hit.\n\nTap a hex to preview the path, use the Turn buttons to choose a facing, then Confirm. Your armor is thickest in front, so face the enemy."},
     {"event": "phase_changed", "phase": "Weapon Attack", "turn": 1, "title": "Shooting",

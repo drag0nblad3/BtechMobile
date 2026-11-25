@@ -38,7 +38,7 @@ func _run() -> void:
 					return
 				var first := screen.find_child("TrainingButton", true, false) as Button
 				var second := screen.find_child("CampaignButton", true, false) as Button
-				if first == null or second == null or second.position.x <= first.position.x:
+				if first == null or second == null or second.get_global_rect().position.x < first.get_global_rect().end.x:
 					printerr("LAYOUT_FAILED: launcher not using two columns")
 					quit(1)
 					return

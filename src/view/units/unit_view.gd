@@ -13,6 +13,7 @@ var unit: Unit
 var map: BattleMap
 var _yaw := 0.0  # Continuous yaw so turns never spin the long way round.
 var _model: Node3D
+var _team_ring: MeshInstance3D
 var field_visible := true  ## Deployment/hidden/exit visibility, independent of riders.
 
 
@@ -55,6 +56,11 @@ func set_model(model: Node3D) -> void:
 		_model.queue_free()
 	_model = model
 	add_child(model)
+	if unit != null:
+		if _team_ring == null:
+			_team_ring = _make_team_ring()
+			add_child(_team_ring)
+		_team_ring.visible = not unit.destroyed
 	if unit != null and model.name == "Placeholder":
 		WeaponSockets.attach(model, unit.def)
 
@@ -77,6 +83,8 @@ func set_field_visible(on: bool) -> void:
 
 func show_condition() -> void:
 	set_field_visible(field_visible)
+	if _team_ring != null:
+		_team_ring.visible = not unit.destroyed
 	if _model == null:
 		return
 	if UnitVoxels.sync(_model, unit):
@@ -374,3 +382,22 @@ func apply_attack_record(record: Dictionary) -> void:
 		vox.show_record(unit.def, record["armor"], record["rear"], record["structure"], record["destroyed"])
 	elif record["destroyed"]:
 		_tint(_model, Color(0.3, 0.3, 0.3))
+
+
+## Independent of faction paint and model geometry; hidden with its UnitView.
+func _make_team_ring() -> MeshInstance3D:
+	var mesh := TorusMesh.new()
+	mesh.inner_radius = 0.76
+	mesh.outer_radius = 0.82
+	mesh.rings = 32
+	mesh.ring_segments = 8
+	var material := StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = PlaceholderMech.SIDE_COLORS[unit.side % PlaceholderMech.SIDE_COLORS.size()].lightened(0.3)
+	mesh.material = material
+	var ring := MeshInstance3D.new()
+	ring.name = "TeamRing"
+	ring.mesh = mesh
+	ring.position.y = 0.055
+	ring.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	return ring

@@ -309,10 +309,15 @@ func _build_game_over(parent: Control) -> void:
 	parent.add_child(game_over_box)
 	game_over_label = _label(game_over_box, 34)
 	UiSkin.label(game_over_label, "heading")
-	game_over_detail = _label(game_over_box, FONT_SIZE)
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2(560, 160)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	game_over_box.add_child(scroll)
+	var report := UiKit.panel(scroll)
+	game_over_detail = _label(report, 20)
 	game_over_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	game_over_detail.custom_minimum_size.x = 760  # training debriefs run long
-	UiSkin.button(_button(game_over_box, "Analyze Battle", battle_forensics), "primary")
+	UiSkin.button(_button(game_over_box, "Analyze in Tactical Academy", battle_forensics), "primary")
 	_button(game_over_box, "New Battle", new_battle)
 
 

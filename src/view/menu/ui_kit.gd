@@ -51,8 +51,9 @@ static func landscape_scroll(parent: Control, inset: int = 24) -> ScrollContaine
 	var margin := MarginContainer.new()
 	parent.add_child(margin)
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, inset)
+	var safe := SafeArea.insets(parent.get_viewport())
+	for side: String in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, maxi(inset, int(safe.get(side, 0)) + 8))
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
@@ -67,8 +68,9 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	var margin := MarginContainer.new()
 	parent.add_child(margin)
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, inset)
+	var safe := SafeArea.insets(parent.get_viewport())
+	for side: String in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, maxi(inset, int(safe.get(side, 0)) + 8))
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 8)
 	margin.add_child(layout)

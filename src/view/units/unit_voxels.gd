@@ -9,12 +9,18 @@ const PATH := "res://data/voxels/%s.json"
 ## A unit-specific render may differ in visible armament from the shared chassis.
 ## Fall back to the established sprite model for ordinary variants.
 static func model_path(def: UnitDef) -> String:
-	var exact := PATH % def.id
-	return exact if FileAccess.file_exists(exact) else PATH % def.sprite
+	for stem: String in [def.id, def.sprite]:
+		if stem.is_empty():
+			continue
+		for suffix: String in ["", "_voxel"]:
+			var candidate := PATH % (stem + suffix)
+			if FileAccess.file_exists(candidate):
+				return candidate
+	return PATH % def.sprite
 
 
 static func startup_path(def: UnitDef) -> String:
-	if not GameSettings.voxel_mechs or def.sprite.is_empty() or def.is_support():
+	if not GameSettings.voxel_mechs or def.is_support():
 		return ""
 	var path := model_path(def)
 	return path if FileAccess.file_exists(path) else ""
