@@ -15,6 +15,11 @@ var _pinned: UnitDef
 var _weapons: OptionButton
 var _weapon_ids: Array[String] = []
 var _weapon_info: Label
+var _unit_filters: Dictionary = {}
+var _equipment_filters: Dictionary = {}
+var _unit_count: Label
+var _weapon_count: Label
+var _weapon_search: LineEdit
 
 
 func _ready() -> void:
@@ -48,6 +53,11 @@ func _ready() -> void:
 	_search.clear_button_enabled = true
 	left.add_child(_search)
 	_search.text_changed.connect(_filter)
+	_unit_filters = ReadoutFilters.unit_controls(left, _entries, func(_i: int): _filter(_search.text))
+	var unit_tools := ReadoutFilters.row(left)
+	_unit_count = UiKit.label(unit_tools, "", 18)
+	_unit_count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiKit.button(unit_tools, "Reset filters", _reset_units, Vector2(0, 44), "subtle").add_theme_font_size_override("font_size", 18)
 	_picker = OptionButton.new()
 	_picker.fit_to_longest_item = false
 	_picker.clip_text = true
@@ -68,18 +78,24 @@ func _ready() -> void:
 	var encyclopedia := VBoxContainer.new()
 	encyclopedia.name = "Equipment encyclopedia"
 	tabs.add_child(encyclopedia)
-	var query := LineEdit.new()
-	query.custom_minimum_size.y = 48
-	query.clear_button_enabled = true
-	query.placeholder_text = "Search weapons and ammunition"
-	encyclopedia.add_child(query)
+	_weapon_search = LineEdit.new()
+	_weapon_search.custom_minimum_size.y = 48
+	_weapon_search.clear_button_enabled = true
+	_weapon_search.placeholder_text = "Search weapons by name or type (optional)"
+	encyclopedia.add_child(_weapon_search)
+	_equipment_filters = ReadoutFilters.weapon_controls(encyclopedia, _db.weapons, func(_i: int): _filter_weapons(_weapon_search.text))
+	var weapon_tools := ReadoutFilters.row(encyclopedia)
+	_weapon_count = UiKit.label(weapon_tools, "", 18)
+	_weapon_count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiKit.button(weapon_tools, "Reset filters", _reset_weapons, Vector2(0, 44), "subtle").add_theme_font_size_override("font_size", 18)
+	UiKit.label(encyclopedia, "Browse all weapons below or narrow the list using search and filters.", 18)
 	_weapons = OptionButton.new()
 	_weapons.fit_to_longest_item = false
 	_weapons.clip_text = true
 	_weapons.custom_minimum_size.y = 48
 	encyclopedia.add_child(_weapons)
 	_weapon_info = UiKit.label(_scroll_body(encyclopedia), "", 20)
-	query.text_changed.connect(_filter_weapons)
+	_weapon_search.text_changed.connect(_filter_weapons)
 	_weapons.item_selected.connect(_weapon_selected)
 	_filter("")
 	_filter_weapons("")
@@ -105,33 +121,49 @@ static func design_heading(d: UnitDef) -> String:
 	else:
 		if d.tonnage > 0:
 			fields.append("%d t" % d.tonnage)
-		var role := String(d.source.get("role", "")).strip_edges()
-		if role.is_empty():
-			role = d.role.get_slice(":", 0).strip_edges()
-		if not role.is_empty() and role.length() <= 36:
+		var role := ReadoutFilters.role(d)
+		if not role.is_empty():
 			fields.append(role)
 		fields.append("%d BV" % d.bv)
 	return "  •  ".join(fields)
 
 
 func _filter(query: String) -> void:
+	var previous := _selected
 	_picker.clear()
 	_matches.clear()
-	var needle := query.strip_edges().to_lower()
+	var filters := ReadoutFilters.selected(_unit_filters, ["role"])
 	for d: UnitDef in _entries:
-		if needle != "" and not (d.display_name() + " " + d.role + " " + ForceCatalogCard.weapons_line(d)).to_lower().contains(needle):
-			continue
-		_matches.append(d)
+		if ReadoutFilters.unit_matches(d, query, filters):
+			_matches.append(d)
+	ReadoutFilters.sort_units(_matches, int(filters.get("sort", 0)))
+	for d: UnitDef in _matches:
 		_picker.add_item(design_heading(d))
+	_unit_count.text = "%d / %d designs" % [_matches.size(), _entries.size()]
+	_picker.disabled = _matches.is_empty()
 	if not _matches.is_empty():
-		_picker.select(0)
-		_select(0)
+		var index := maxi(0, _matches.find(previous))
+		_picker.select(index)
+		if previous != _matches[index]:
+			_select(index)
 	else:
 		_selected = null
 		_name_line.text = "No matching designs."
 		_details.text = ""
 		_viewer.select_design(null)
 		_compare()
+
+
+func _reset_units() -> void:
+	ReadoutFilters.reset(_unit_filters)
+	_search.clear()
+	_filter("")
+
+
+func _reset_weapons() -> void:
+	ReadoutFilters.reset(_equipment_filters)
+	_weapon_search.clear()
+	_filter_weapons("")
 
 
 func _select(index: int) -> void:
@@ -172,21 +204,29 @@ static func _alpha(d: UnitDef, heat: bool) -> int:
 
 
 func _filter_weapons(query: String) -> void:
+	var previous := ""
+	if _weapons.selected >= 0 and _weapons.selected < _weapon_ids.size():
+		previous = _weapon_ids[_weapons.selected]
 	_weapons.clear()
 	_weapon_ids.clear()
-	var ids := _db.weapons.by_id.keys()
-	ids.sort()
-	for id: String in ids:
-		var w := _db.weapons.get_def(id)
-		if not (w.name + " " + w.type + " " + id).to_lower().contains(query.to_lower()):
-			continue
-		_weapon_ids.append(id)
-		_weapons.add_item(w.name)
-	if not ids.is_empty() and not _weapon_ids.is_empty():
-		_weapons.select(0)
-		_weapon_selected(0)
+	var filters := ReadoutFilters.selected(_equipment_filters, ["type"])
+	var matches: Array[WeaponDef] = []
+	for w: WeaponDef in _db.weapons.by_id.values():
+		if ReadoutFilters.weapon_matches(w, query, filters):
+			matches.append(w)
+	matches.sort_custom(func(a: WeaponDef, b: WeaponDef) -> bool:
+		return a.name.naturalnocasecmp_to(b.name) < 0 if a.name != b.name else a.id < b.id)
+	for w: WeaponDef in matches:
+		_weapon_ids.append(w.id)
+		_weapons.add_item("%s  •  %s" % [w.name, w.tech.replace("_", " ").capitalize()])
+	_weapon_count.text = "%d / %d weapons" % [_weapon_ids.size(), _db.weapons.by_id.size()]
+	_weapons.disabled = _weapon_ids.is_empty()
+	if not _weapon_ids.is_empty():
+		var index := maxi(0, _weapon_ids.find(previous))
+		_weapons.select(index)
+		_weapon_selected(index)
 	else:
-		_weapon_info.text = "No matching weapons."
+		_weapon_info.text = "No matching weapons. Clear search or reset filters to browse all."
 
 
 func _weapon_selected(index: int) -> void:
