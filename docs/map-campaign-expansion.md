@@ -9,3 +9,6 @@ Reference: Campaign Operations, fourth printing, map-based campaigns pp. 146–1
 - Linked map campaigns are a GM-style optional framework (Narrative Campaigns, p. 145; Map-Based Campaigns, p. 146). Region advancement retains company personnel, condition, losses and history, regenerates the opponent and does not heal for free.
 - Persistent battlefield seed reproduces base terrain, not destruction from earlier battles. Tactical dice remain separate.
 - No claim of exhaustive Campaign Operations implementation. Full logistics, force transportation between worlds and historical roster restrictions require separate verified rules work.
+
+- Historical setup is optional: existing verified MUL availability checks filter both Inner Sphere force pools and factory output. Missing data causes a setup error instead of guessing. This is not Clan Star or multi-planet transportation implementation.
+- Logistics inspection reports existing benefits only; movement transitions use observed endpoints, not hidden enemy movements.

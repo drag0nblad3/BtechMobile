@@ -4,6 +4,19 @@ extends RefCounted
 
 
 static func build(parent: VBoxContainer, rules: Dictionary) -> void:
+	_choice(parent, "Historical availability", ["Unrestricted preset", "Verified MUL designs"],
+		[false, true], rules.get("historical", false), func(v: bool): rules["historical"] = v)
+	_choice(parent, "Year (historical mode)", ["3025", "3050", "3067", "3151"],
+		[3025, 3050, 3067, 3151], int(rules.get("era_year", 3025)), func(v: int): rules["era_year"] = v)
+	var factions := ["federated_suns", "draconis_combine", "capellan_confederation", "free_worlds_league", "lyran_commonwealth"]
+	var names := factions.map(func(id: String) -> String: return EraAvailability.faction_name(id))
+	for side in ["player_faction", "enemy_faction"]:
+		var key: String = side
+		_choice(parent, "Invader faction" if key == "player_faction" else "Defender faction", names, factions,
+			rules.get(key, "federated_suns" if key == "player_faction" else "draconis_combine"),
+			func(v: String): rules[key] = v)
+	_choice(parent, "Starting force", ["Three lances (12 Mechs)", "Two lances (8 Mechs)"],
+		[12, 8], rules.get("company_size", 12), func(v: int): rules["company_size"] = v)
 	_choice(parent, "Region size", ["Standard 8 × 6", "Large 10 × 8", "Extended 12 × 9"],
 		[Vector2i(8, 6), Vector2i(10, 8), Vector2i(12, 9)],
 		Vector2i(int(rules["width"]), int(rules["height"])),

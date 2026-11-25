@@ -14,6 +14,8 @@ var radius := 42.0
 var seen := {}
 var roads: Array = []
 var selected := Vector2i(-1, -1)
+var _motion: Array[Dictionary] = []
+var _motion_t := 1.0
 
 
 static func make(parent: Control, campaign: MapCampaign, on_tap: Callable, lance: MapLance,
@@ -80,10 +82,26 @@ func _draw() -> void:
 			route.assign([chosen.zone, chosen.target])
 		_route(route, Color("#ffe298"), 3.5)
 		draw_circle(center(chosen.target), radius * 0.19, Color("#ffe298"), false, 2.0, true)
+	for move in _motion:
+		var from := center(move["from"])
+		var to := center(move["to"])
+		var tint := MapZoneArt.BLUE if int(move["side"]) == 0 else MapZoneArt.RED
+		var at := from.lerp(to, _motion_t)
+		draw_circle(at, radius * (0.18 + 0.25 * _motion_t), Color(tint, 1.0 - _motion_t), false, 3.0, true)
 	if mc.region.has_zone(selected):
 		draw_polyline(MapHexButton.polygon(center(selected), radius - 2, true), Color.WHITE, 2.5, true)
 	if chosen != null and chosen.on_map():
 		draw_polyline(MapHexButton.polygon(center(chosen.zone), radius - 4, true), MapZoneArt.BLUE, 3.0, true)
+
+
+func animate_transitions(transitions: Array[Dictionary]) -> void:
+	if transitions.is_empty():
+		return
+	_motion.assign(transitions)
+	_motion_t = 0.0
+	var tween := create_tween()
+	tween.tween_method(func(t: float): _motion_t = t; queue_redraw(), 0.0, 1.0, 0.65)
+	tween.finished.connect(func(): _motion.clear(); queue_redraw())
 
 
 func _route(route: Array, color: Color, width: float) -> void:

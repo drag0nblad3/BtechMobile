@@ -183,3 +183,11 @@ func test_linked_region_retains_company() -> void:
 	var restored := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
 	check_eq(restored.operation, 2)
 	check_eq(int(restored.rules["width"]), 10)
+
+func test_historical_pool_only_verified() -> void:
+	var db := designs()
+	var availability := EraAvailability.new()
+	var pool := MapCampaignOptions.pool(db, 3025, "federated_suns")
+	for def: UnitDef in pool:
+		check_eq(availability.check(def.id, 3025, "federated_suns")["status"], "available")
+	check(MapCampaignOptions.pool(db, 3025, "invalid_faction").is_empty())

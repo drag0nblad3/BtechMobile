@@ -4,7 +4,7 @@ extends Control
 ## their orders, this turn's battles, and what happened. Saved by
 ## MapCampaignStore; separate from the Chaos Campaign company.
 
-const INTRO := "Take a planetary region with a company of three lances, using the map campaign rules from Campaign Operations. Each turn is a day: give every lance an order, then fight the battles where lances meet. Damage carries over, cities and forts repair you, and holding 80% of the region's points wins."
+const INTRO := "Take a planetary region using the map campaign rules from Campaign Operations. Each turn is a day: give every lance an order, then fight battles where lances meet. Damage carries over; capture valuable locations to reach your chosen objective threshold."
 const ORDER_TIP := {
 	MapLance.ATTACK: "Seek a battle, here or one zone over.",
 	MapLance.SCOUT: "Find the enemy without a full fight, and see 2 zones around you.",
@@ -29,6 +29,7 @@ var _map_scroll: ScrollContainer
 var _headquarters := false
 var _rules: Dictionary = {}
 var _preview_zone := Vector2i(-1, -1)
+var _transitions: Array[Dictionary] = []
 
 
 func _ready() -> void:
@@ -53,6 +54,8 @@ func _build() -> void:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
 		if _rules.is_empty():
 			_rules = MapCampaign.load_rules()
+		if not _note.is_empty():
+			UiKit.label(_list, _note, UiKit.SMALL)
 		MapCampaignSetup.build(_list, _rules)
 		UiKit.button(_list, "START A CAMPAIGN", _start, Vector2(0, 70), "primary").name = "StartMapCampaign"
 		return
@@ -98,7 +101,9 @@ func _build() -> void:
 	_map_scroll.size_flags_stretch_ratio = 1.5
 	_map_scroll.custom_minimum_size.x = 420
 	body.add_child(_map_scroll)
-	MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, _zoom, _inspected)
+	var grid := MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, _zoom, _inspected)
+	grid.animate_transitions(_transitions)
+	_transitions.clear()
 	_map_scroll.set_deferred("scroll_horizontal", scroll_at.x)
 	_map_scroll.set_deferred("scroll_vertical", scroll_at.y)
 	var controls := ScrollContainer.new()
@@ -112,6 +117,7 @@ func _build() -> void:
 	if mc.region.has_zone(_inspected):
 		UiKit.label(command, MapZoneGrid.text_of(mc, _inspected), 17)
 		UiKit.label(command, MapIntelligence.report(mc, _inspected), 16)
+		UiKit.label(command, MapCampaignLogistics.describe(mc, _inspected), 16)
 		UiKit.button(command, "Battlefield preview", _show_preview, Vector2(0, 46), "subtle")
 		if _preview_zone == _inspected:
 			var preview := MapPreview.new()
@@ -134,7 +140,14 @@ func _build() -> void:
 func _start() -> void:
 	if db == null:
 		db = UnitDb.load_dir()
-	mc = MapCampaign.create(db, rng, _rules.duplicate(true))
+	var rules := _rules.duplicate(true)
+	var company: Array = rules.get("starting_company", [])
+	rules["starting_company"] = company.slice(0, int(rules.get("company_size", 12)))
+	_note = MapCampaignOptions.prepare(rules, db)
+	if not _note.is_empty():
+		_build()
+		return
+	mc = MapCampaign.create(db, rng, rules)
 	MapCampaignStore.save(mc)
 	_note = "Your company has landed on the south edge. Pick a lance, then an order."
 	_build()
@@ -180,6 +193,7 @@ func _tap_zone(z: Vector2i) -> void:
 
 
 func _end_turn() -> void:
+	var before := MapCampaignMotion.snapshot(mc)
 	MapBot.orders(mc, 1)
 	MapTurn.start(mc, Dice.new(rng.randi()))
 	if mc.battles.is_empty():
@@ -189,6 +203,7 @@ func _end_turn() -> void:
 		_note = "%d battle%s to fight." % [mc.battles.size(), "" if mc.battles.size() == 1 else "s"]
 	_chosen = ""
 	_order = ""
+	_transitions = MapCampaignMotion.changes(mc, before)
 	MapCampaignStore.save(mc)
 	_build()
 
