@@ -148,6 +148,9 @@ func _ready() -> void:
 	if BattleLaunch.open_campaign:
 		BattleLaunch.open_campaign = false
 		open_campaign.call_deferred()
+	if BattleLaunch.open_map_campaign:
+		BattleLaunch.open_map_campaign = false
+		open_map_campaign.call_deferred()
 
 
 func _show_page(page: int) -> void:
@@ -286,6 +289,13 @@ func open_training() -> void:
 ## The campaign company between battles (see Campaign).
 func open_campaign() -> void:
 	var c := CampaignScreen.new()
+	c.db = db
+	add_child(c)
+
+
+## The map campaign: a region to take, lance by lance (see MapCampaign).
+func open_map_campaign() -> void:
+	var c := MapCampaignScreen.new()
 	c.db = db
 	add_child(c)
 

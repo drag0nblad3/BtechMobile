@@ -76,6 +76,12 @@ jobs:
           timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/campaign_smoke.gd 2>&1 | tee campaign-smoke.log
           grep -q "CAMPAIGN SMOKE OK" campaign-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" campaign-smoke.log
+      - name: Map campaign route smoke
+        run: |
+          set -o pipefail
+          timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/map_campaign_smoke.gd 2>&1 | tee map-campaign-smoke.log
+          grep -q "MAP CAMPAIGN SMOKE OK" map-campaign-smoke.log
+          ! grep -E "SCRIPT ERROR|Parse Error" map-campaign-smoke.log
       - name: Unit tests
         run: |
           set -o pipefail
