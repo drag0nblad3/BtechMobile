@@ -580,12 +580,22 @@ func _on_event(e: GameEvent) -> void:
 				after = CampaignStore.finish(s, 0, int(e.data.get("winner", -1)), recorder.frames)
 			if in_map_campaign:
 				after = MapCampaignStore.finish(s, int(e.data.get("winner", -1)), recorder.frames)
-			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), after)
 			attacks.clear()
 			movement.clear_selection()
+			_show_results(Explainer.text(e, s, ExplainLevel.OFF), after)
 	if not deferred_visual:
 		scars.on_event(e)
 		cinematic.on_event(e)
+
+
+## Wait for the existing presentation queue, not the rules or campaign writeback.
+func _show_results(result: String, after: String) -> void:
+	while units_layer.is_busy():
+		await units_layer.busy_changed
+	var detail := BattleResultSummary.describe(controller.state, recorder.frames, bots.bot_sides)
+	if not after.is_empty():
+		detail += "\n\n" + after
+	hud.show_game_over(result, detail)
 
 
 func _queue_sheet_refresh(id: int) -> void:
