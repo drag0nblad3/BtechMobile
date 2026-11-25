@@ -1,80 +1,147 @@
 class_name MapZoneGrid
 extends Control
-## The campaign region as a grid of zone buttons in offset-hex rows (odd
-## columns shifted down): terrain, key location (blue yours, red the
-## defender's) and the lances standing there. Tapping a zone calls `on_tap(zone)`.
+## Scalable hex cartography. The canvas owns hit testing, not rectangular buttons.
 
-const W := 132.0
-const H := 96.0
+const COLORS := {"plains": Color("#667d50"), "woods": Color("#315946"), "hills": Color("#827b59"), "badlands": Color("#9b704b"), "lakes": Color("#345e78"), "river": Color("#526d59"), "urban": Color("#68717c")}
+const BLUE := Color("#7cdaf5")
+const RED := Color("#f29282")
+const GOLD := Color("#ffd483")
+var mc: MapCampaign
+var chosen: MapLance
+var pending := ""
+var overlay := 0
+var selected := Vector2i(-1, -1)
+var zoom := 1.0
+var pan := Vector2.ZERO
+var _tap: Callable
+var _dragging := false
+var _origin := Vector2.ZERO
+var _last := Vector2.ZERO
+var _seen := {}
+var _route: Array[Vector2i] = []
 
 
-static func make(parent: Control, mc: MapCampaign, on_tap: Callable, chosen: MapLance) -> MapZoneGrid:
+static func make(parent: Control, campaign: MapCampaign, on_tap: Callable, lance: MapLance, order := "", layer := 0, inspect := Vector2i(-1, -1)) -> MapZoneGrid:
 	var g := MapZoneGrid.new()
 	g.name = "ZoneGrid"
-	g.custom_minimum_size = Vector2(mc.region.width * W, (mc.region.height + 0.5) * H)
+	g.mc = campaign
+	g.chosen = lance
+	g.pending = order
+	g.overlay = layer
+	g.selected = inspect
+	g._tap = on_tap
+	g._seen = MapFog.seen(campaign)
+	if lance != null and lance.on_map():
+		g._route = MapGeography.route(campaign.region, lance.zone, lance.target)
+	g.custom_minimum_size = Vector2(0, 410)
+	g.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	g.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	g.clip_contents = true
+	g.mouse_filter = Control.MOUSE_FILTER_STOP
 	parent.add_child(g)
-	for x in mc.region.width:
-		for y in mc.region.height:
-			g._zone(mc, Vector2i(x, y), on_tap, chosen)
 	return g
 
 
-func _zone(mc: MapCampaign, z: Vector2i, on_tap: Callable, chosen: MapLance) -> void:
-	var b := Button.new()
-	b.name = "Zone_%d_%d" % [z.x, z.y]
-	b.position = Vector2(z.x * W, z.y * H + (H * 0.5 if z.x % 2 == 1 else 0.0))
-	b.size = Vector2(W - 4, H - 4)
-	b.clip_text = true
-	b.add_theme_font_size_override("font_size", 14)
-	b.text = text_of(mc, z, true)
-	b.tooltip_text = text_of(mc, z)
-	b.pressed.connect(func(): on_tap.call(z))
-	add_child(b)
-	var loc := mc.region.location_at(z)
-	var tone := "subtle"
-	if chosen != null and z == chosen.zone:
-		tone = "selected"
-	elif chosen != null and z == chosen.target and chosen.target != chosen.zone:
-		tone = "primary"
-	elif mc.lances_of(0).any(func(l: MapLance) -> bool: return l.zone == z):
-		tone = "secondary"
-	UiSkin.button(b, tone)
-	for key in ["normal", "hover", "pressed", "disabled", "focus"]:
-		var style := b.get_theme_stylebox(key) as StyleBoxFlat
-		style.content_margin_top = 33
-		style.content_margin_bottom = 3
-		style.content_margin_left = 5
-		style.content_margin_right = 5
-		if not loc.is_empty() and tone == "subtle" and key != "focus":
-			var owner := int(loc["owner"])
-			style.border_color = MapZoneArt.BLUE if owner == 0 else MapZoneArt.RED if owner == 1 else UiSkin.BORDER
-	MapZoneArt.attach(b, mc, z, chosen)
+func _radius() -> float:
+	return maxf(1.0, minf((size.x - 24.0) / (mc.region.width * 1.5 + 0.5), (size.y - 24.0) / ((mc.region.height + 0.5) * sqrt(3.0)))) * zoom
 
 
-## Three short lines: terrain, location (with points), lances here (enemy
-## lances only where the player can see: MapFog).
-static func text_of(mc: MapCampaign, z: Vector2i, compact: bool = false) -> String:
-	var seen := MapFog.seen(mc)
-	var lines := [mc.region.terrain_at(z).capitalize()]
+func center(z: Vector2i) -> Vector2:
+	var r := _radius()
+	var extent := Vector2(mc.region.width * 1.5 + 0.5, (mc.region.height + 0.5) * sqrt(3.0)) * r
+	return (size - extent) * 0.5 + pan + Vector2(r * (1.0 + z.x * 1.5), r * sqrt(3.0) * (0.5 + z.y + 0.5 * (z.x % 2)))
+
+
+func polygon(z: Vector2i, inset := 0.0) -> PackedVector2Array:
+	var points := PackedVector2Array()
+	for i in 6:
+		points.append(center(z) + Vector2.from_angle(i * PI / 3.0) * maxf(1.0, _radius() - inset))
+	return points
+
+
+func zone_at(point: Vector2) -> Vector2i:
+	for x in mc.region.width:
+		for y in mc.region.height:
+			var z := Vector2i(x, y)
+			if Geometry2D.is_point_in_polygon(point, polygon(z)):
+				return z
+	return Vector2i(-1, -1)
+
+
+func set_zoom(value: float) -> void:
+	zoom = clampf(value, 1.0, 2.8)
+	if zoom == 1.0:
+		pan = Vector2.ZERO
+	queue_redraw()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			set_zoom(zoom + 0.25)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and event.pressed:
+			set_zoom(zoom - 0.25)
+		elif event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_dragging = true
+				_origin = event.position
+				_last = event.position
+			elif _dragging:
+				_dragging = false
+				if _origin.distance_to(event.position) < 10.0:
+					var z := zone_at(event.position)
+					if mc.region.has_zone(z):
+						_tap.call(z)
+		accept_event()
+	elif event is InputEventMouseMotion and _dragging:
+		if _origin.distance_to(event.position) >= 10.0 and zoom > 1.0:
+			pan += event.position - _last
+			pan = pan.clamp(-size * zoom * 0.45, size * zoom * 0.45)
+			queue_redraw()
+		_last = event.position
+		accept_event()
+
+
+func _draw() -> void:
+	if mc == null:
+		return
+	draw_rect(Rect2(Vector2.ZERO, size), Color("#10232d"))
+	for x in mc.region.width:
+		for y in mc.region.height:
+			_tile(Vector2i(x, y))
+	# Road network follows neighboring zones; decorative, no movement bonus.
+	if not mc.region.locations.is_empty():
+		var capital: Vector2i = mc.region.locations[0]["zone"]
+		for loc in mc.region.locations:
+			var road := MapGeography.route(mc.region, capital, loc["zone"])
+			for i in range(1, road.size()):
+				draw_line(center(road[i - 1]), center(road[i]), Color("#c7bc8b88"), 1.4, true)
+	for i in range(1, _route.size()):
+		draw_line(center(_route[i - 1]), center(_route[i]), GOLD, 3.5, true)
+		var a := center(_route[i - 1])
+		var b := center(_route[i])
+		var d := (b - a).normalized()
+		draw_colored_polygon(PackedVector2Array([b - d * 10, b - d * 23 + d.orthogonal() * 6, b - d * 23 - d.orthogonal() * 6]), GOLD)
+	for x in mc.region.width:
+		for y in mc.region.height:
+			MapCartography.markers(self, Vector2i(x, y))
+
+
+func _tile(z: Vector2i) -> void:
+	var p := polygon(z, 0.6)
+	var color: Color = COLORS.get(mc.region.terrain_at(z), Color("#56666a"))
 	var loc := mc.region.location_at(z)
-	if not loc.is_empty():
-		var place := String(loc["name"])
-		if compact:
-			place = place.replace(" Supply Depot", " Depot")
-		lines.append("%s %d" % [place, int(loc["points"])])
-	var mine := []
-	var foes := 0
-	for l in mc.lances:
-		if l.zone == z:
-			if l.side == 0:
-				mine.append(l.name.left(1))
-			elif MapFog.shows(mc, l, seen):
-				foes += 1
-	var units := " ".join(mine)
-	if foes > 0:
-		units += ("  " if units != "" else "") + "Enemy×%d" % foes
-	if units == "" and not seen.has(z) and int(mc.region.location_at(z).get("owner", 0)) == 1:
-		units = "?"
-	if units != "":
-		lines.append(units)
-	return "\n".join(lines)
+	if overlay == 1 and not loc.is_empty():
+		color = color.lerp(BLUE if int(loc["owner"]) == 0 else RED, 0.55)
+	elif overlay == 2 and not _seen.has(z):
+		color = color.darkened(0.48)
+	elif overlay == 3 and not loc.is_empty() and loc.get("benefit", "") in ["repair", "supply", "factory", "fortress", "dropport", "seaport"]:
+		color = color.lerp(GOLD, 0.38)
+	draw_colored_polygon(p, color)
+	MapCartography.terrain(self, z, color)
+	p.append(p[0])
+	draw_polyline(p, Color("#172c36"), 1.0, true)
+	if chosen != null and pending != "" and MapOrders.why_not(mc, chosen, pending, z) == "":
+		draw_polyline(p, BLUE, 2.2, true)
+	if z == selected or (chosen != null and z == chosen.zone):
+		draw_polyline(p, GOLD, 3.0, true)

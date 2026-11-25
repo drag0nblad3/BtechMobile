@@ -32,12 +32,13 @@ func _run() -> void:
 	await _frames(1)
 	var mc := screen.mc
 	var grid := screen.find_child("ZoneGrid", true, false) as MapZoneGrid
-	if not _check(grid != null and grid.get_child_count() == mc.region.width * mc.region.height, "zone grid missing tiles"):
+	if not _check(grid != null and grid.mc == mc, "strategic canvas missing"):
 		return
-	for tile in grid.get_children():
-		var art := tile.get_node_or_null("ZoneArt") as MapZoneArt
-		if not _check(tile is Button and art != null and art.mouse_filter == Control.MOUSE_FILTER_IGNORE, "zone artwork blocks input or is missing"):
-			return
+	for x in mc.region.width:
+		for y in mc.region.height:
+			var z := Vector2i(x, y)
+			if not _check(grid.zone_at(grid.center(z)) == z, "hex hit test missed its center"):
+				return
 	if not _check(screen.find_child("CaptureProgress", true, false) is ProgressBar, "capture progress missing"):
 		return
 	# Use a real bridge garrison: the bot holds it, it has no automatic

@@ -22,6 +22,13 @@ var _chosen := ""  ## Selected lance id.
 var _order := ""  ## Order waiting for a zone tap.
 var _note := ""
 var _confirm_quit := false
+var _grid: MapZoneGrid
+var _inspected := Vector2i(-1, -1)
+var _layer := 0
+var _panel := 0
+var _setup_options := {"size": 0, "skill": 1, "company": 2, "goal": 1}
+var _swap_mech := ""
+var _swap_lance := ""
 
 
 func _ready() -> void:
@@ -36,22 +43,20 @@ func _ready() -> void:
 
 
 func _build() -> void:
+	var zoom := _grid.zoom if is_instance_valid(_grid) else 1.0
+	var pan := _grid.pan if is_instance_valid(_grid) else Vector2.ZERO
+	_grid = null
 	for ch in _list.get_children():  # out of the tree now, so new buttons keep their names
 		_list.remove_child(ch)
 		ch.queue_free()
-	var head := HBoxContainer.new()
-	_list.add_child(head)
-	var title := UiKit.label(head, "MAP CAMPAIGN", 32)
-	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiSkin.label(title, "heading")
-	UiSkin.rule(_list)
 	if mc == null:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
+		MapCampaignPanels.setup(_list, _setup_options)
 		UiKit.button(_list, "START A CAMPAIGN", _start, Vector2(0, 70), "primary").name = "StartMapCampaign"
 		return
 	var need := ceili(mc.region.total_points() * float(mc.rules.get("victory_share", 0.8)))
-	var status := UiKit.label(_list, "Day %d of %d  ·  your points %d of %d needed (%d in all)" % [
-			mc.turn, int(mc.rules.get("turn_limit", 20)), mc.region.points(0), need,
+	var status := UiKit.label(_list, "OPERATION %d  ·  DAY %d/%d  ·  CONTROL %d/%d (%d total)" % [
+			mc.operation, mc.turn, int(mc.rules.get("turn_limit", 20)), mc.region.points(0), need,
 			mc.region.total_points()], UiKit.FONT)
 	status.name = "MapStatus"
 	var progress := ProgressBar.new()
@@ -66,25 +71,104 @@ func _build() -> void:
 	_list.add_child(progress)
 	if mc.winner >= 0:
 		UiKit.label(_list, "You took the region!" if mc.winner == 0 else "The campaign is lost.", 28)
+	var row := HBoxContainer.new()
+	row.add_theme_constant_override("separation", 10)
+	_list.add_child(row)
+	var left := VBoxContainer.new()
+	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	left.size_flags_stretch_ratio = 2.1
+	row.add_child(left)
+	var tools := HBoxContainer.new()
+	left.add_child(tools)
+	var layers := OptionButton.new()
+	for label in ["Terrain", "Ownership", "Intelligence", "Logistics", "Readiness"]:
+		layers.add_item(label)
+	layers.select(_layer)
+	layers.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	layers.item_selected.connect(func(i: int): _layer = i; _grid.overlay = i; _grid.queue_redraw())
+	tools.add_child(layers)
+	UiKit.button(tools, "−", func(): _grid.set_zoom(_grid.zoom - 0.25), Vector2(52, 44))
+	UiKit.button(tools, "+", func(): _grid.set_zoom(_grid.zoom + 0.25), Vector2(52, 44))
+	UiKit.button(tools, "FIT", func(): _grid.set_zoom(1.0), Vector2(65, 44))
+	_grid = MapZoneGrid.make(left, mc, _tap_zone, mc.lance(_chosen), _order, _layer, _inspected)
+	_grid.zoom = zoom
+	_grid.pan = pan
+	UiKit.label(left, "Blue: company  ·  Red: observed enemy  ·  Gold: selected / route  ·  Cyan: legal destination", 15)
+	var right := VBoxContainer.new()
+	right.custom_minimum_size.x = 330
+	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	row.add_child(right)
+	var tabs := HBoxContainer.new()
+	right.add_child(tabs)
+	for i in 3:
+		var idx := i
+		var tab := UiKit.button(tabs, ["Orders", "HQ", "History"][i], func(): _panel = idx; _build(), Vector2(0, 44), "selected" if i == _panel else "subtle")
+		tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tab.add_theme_font_size_override("font_size", 17)
+	var scroll := ScrollContainer.new()
+	scroll.custom_minimum_size.y = 370
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	right.add_child(scroll)
+	var details := VBoxContainer.new()
+	details.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(details)
 	if _note != "":
-		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
-	UiKit.label(_list, "Blue squares: your lances  ·  Red diamonds: enemy lances you can see (next to your lances, or found by a Scout order; ? = not seen)  ·  Blue/red landmark frames: ownership  ·  Gold cross: battle  ·  Gold ring: destination", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
-	MapZoneGrid.make(_list, mc, _tap_zone, mc.lance(_chosen))
-	MapLancePanel.lances(_list, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
-	if not mc.battles.is_empty():
-		MapLancePanel.battles(_list, mc, _fight)
-	elif mc.winner < 0:
-		UiKit.button(_list, "END DAY", _end_turn, Vector2(0, 70), "primary").name = "EndTurn"
-	if not mc.log.is_empty():
-		UiKit.label(_list, "Log", 26).modulate = Color(0.75, 0.85, 1.0)
-		UiKit.label(_list, "\n".join(mc.log.slice(maxi(0, mc.log.size() - 8))), UiKit.SMALL)
-	var quit := UiKit.button(_list, "TAP AGAIN TO ABANDON THE CAMPAIGN" if _confirm_quit else "Abandon campaign",
-			_quit, Vector2(0, 52), "subtle")
+		UiKit.label(details, _note, 17).modulate = Color(1.0, 0.85, 0.6)
+	if _panel == 0:
+		MapCampaignPanels.inspect(details, mc, _inspected, db)
+		MapLancePanel.lances(details, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
+		if not mc.battles.is_empty():
+			MapLancePanel.battles(details, mc, _fight)
+	elif _panel == 1:
+		MapCampaignPanels.company(details, mc, db, _hq_action, _swap_mech)
+	else:
+		MapCampaignPanels.history(details, mc)
+	if mc.battles.is_empty() and mc.winner < 0:
+		UiKit.button(right, "END DAY", _end_turn, Vector2(0, 56), "primary").name = "EndTurn"
+	elif mc.winner == 0:
+		UiKit.button(right, "NEXT OPERATION", _next_region, Vector2(0, 54), "primary")
+	var quit := UiKit.button(right, "CONFIRM ABANDON" if _confirm_quit else "Abandon", _quit, Vector2(0, 40), "subtle")
 	quit.name = "AbandonMapCampaign"
 
 
+func _next_region() -> void:
+	if MapOperations.next_region(mc, db, rng):
+		_chosen = ""
+		_order = ""
+		_inspected = Vector2i(-1, -1)
+		_note = "Company deployed to a new region. Damage and service records retained."
+		MapCampaignStore.save(mc)
+		_build()
+
+
+func _hq_action(l: MapLance, id: String, pilots: bool) -> void:
+	if _swap_mech == "":
+		_swap_mech = id
+		_swap_lance = l.id
+		_note = "Select another co-located unit to exchange " + ("pilots." if pilots else "lance assignments.")
+	else:
+		var other := mc.lance(_swap_lance)
+		var ok := false
+		if other != null:
+			ok = MapOperations.swap_pilots(mc, mc.player.mech(_swap_mech), mc.player.mech(id)) if pilots else MapOperations.swap_mechs(mc, other, _swap_mech, l, id)
+		_note = "Assignment updated." if ok else "Exchange unavailable: units must be co-located, eligible and not in battle."
+		_swap_mech = ""
+		_swap_lance = ""
+		if ok:
+			MapCampaignStore.save(mc)
+	_build()
+
+
 func _start() -> void:
-	mc = MapCampaign.create(db, rng)
+	var rules := MapCampaign.load_rules()
+	var scale := int(_setup_options["size"])
+	rules["width"] = [8, 10, 12][scale]
+	rules["height"] = [6, 8, 9][scale]
+	rules["enemy_skill"] = ["green", "regular", "veteran", "elite"][int(_setup_options["skill"])]
+	rules["starting_company"] = rules["starting_company"].slice(0, 4 * (int(_setup_options["company"]) + 1))
+	rules["victory_share"] = [0.6, 0.8, 1.0][int(_setup_options["goal"])]
+	mc = MapCampaign.create(db, rng, rules)
 	MapCampaignStore.save(mc)
 	_note = "Your company has landed on the south edge. Pick a lance, then an order."
 	_build()
@@ -92,6 +176,7 @@ func _start() -> void:
 
 func _select(id: String) -> void:
 	_chosen = id
+	_inspected = mc.lance(id).zone
 	_order = ""
 	_note = ""
 	_build()
@@ -112,6 +197,8 @@ func _pick_order(order: String) -> void:
 
 
 func _tap_zone(z: Vector2i) -> void:
+	_inspected = z
+	_panel = 0
 	var l := mc.lance(_chosen)
 	if l != null and _order != "":
 		_note = MapOrders.give(mc, l, _order, z)
@@ -160,5 +247,8 @@ func _quit() -> void:
 	else:
 		MapCampaignStore.delete()
 		mc = null
+		_chosen = ""
+		_order = ""
+		_inspected = Vector2i(-1, -1)
 		_confirm_quit = false
 	_build()
