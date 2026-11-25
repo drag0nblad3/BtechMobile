@@ -60,6 +60,9 @@ func _build() -> void:
 			_rules = MapCampaign.load_rules()
 		if not _note.is_empty():
 			UiKit.label(_list, _note, UiKit.SMALL)
+		HistoricalOperationsPanel.build(_list, _start_historical)
+		UiSkin.rule(_list)
+		UiKit.label(_list, "CUSTOM MAP CAMPAIGN", 25)
 		MapCampaignSetup.build(_list, _rules)
 		UiKit.button(_list, "START A CAMPAIGN", _start, Vector2(0, 70), "primary").name = "StartMapCampaign"
 		return
@@ -68,6 +71,9 @@ func _build() -> void:
 			mc.operation, int(mc.rules.get("operations", 1)), mc.turn, int(mc.rules.get("turn_limit", 20)), mc.region.points(0), need,
 			mc.region.total_points()], UiKit.FONT)
 	status.name = "MapStatus"
+	var historical_context := HistoricalOperations.context(mc)
+	if not historical_context.is_empty():
+		UiKit.label(_list, historical_context, 17)
 	var progress := ProgressBar.new()
 	progress.name = "CaptureProgress"
 	progress.custom_minimum_size.y = 14
@@ -168,6 +174,20 @@ func _add_abandon() -> void:
 	var quit := UiKit.button(_list, "TAP AGAIN TO ABANDON THE CAMPAIGN" if _confirm_quit else "Abandon campaign",
 			_quit, Vector2(0, 52), "subtle")
 	quit.name = "AbandonMapCampaign"
+
+
+func _start_historical(id: String) -> void:
+	if db == null:
+		db = UnitDb.load_dir()
+	var op := HistoricalOperations.find(id)
+	_note = HistoricalOperations.problem(op, db)
+	if not _note.is_empty():
+		_build()
+		return
+	mc = HistoricalOperations.create(op, db)
+	MapCampaignStore.save(mc)
+	_note = "Historical opening established. Your orders now determine the result."
+	_build()
 
 
 func _start() -> void:
