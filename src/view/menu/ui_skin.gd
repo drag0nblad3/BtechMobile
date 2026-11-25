@@ -18,14 +18,14 @@ static func backdrop(parent: Control) -> void:
 	var bg := ColorRect.new()
 	bg.color = BACKGROUND
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	parent.add_child(bg)
-	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var bar := ColorRect.new()
 	bar.color = AMBER.darkened(0.2)
+	bar.set_anchors_preset(Control.PRESET_TOP_WIDE)
+	bar.offset_bottom = 3
 	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	bg.add_child(bar)
-	bar.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-	bar.offset_bottom = 3
 
 
 static func panel_style(fill: Color = SURFACE, edge: Color = BORDER,

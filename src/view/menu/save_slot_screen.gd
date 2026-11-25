@@ -8,7 +8,13 @@ var _notice: Label
 func _ready() -> void:
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
-	var box := UiKit.screen_body(self, "SAVE SLOTS", UiKit.close_overlay.bind(self))
+	var scroll := UiKit.landscape_scroll(self)
+	var box := UiKit.panel(scroll)
+	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var head := HBoxContainer.new()
+	box.add_child(head)
+	UiKit.button(head, "Back", queue_free, Vector2(120, 52))
+	UiKit.label(head, "SAVE SLOTS", 32)
 	UiKit.label(box, "Choose an independent save workspace. Battles, replays and both campaign types autosave to the selected slot. Slot 1 contains your existing saves.", 20)
 	_notice = UiKit.label(box, "", 20)
 	_list = VBoxContainer.new()
@@ -24,8 +30,6 @@ func _draw() -> void:
 		var selected := slot == SaveProfiles.active()
 		var b := UiKit.button(_list, "Slot %d%s  •  %s" % [slot + 1, " (active)" if selected else "", SaveProfiles.contents(slot)], _select.bind(slot), Vector2(0, 56), "selected" if selected else "secondary")
 		b.name = "SaveSlot%d" % (slot + 1)
-		b.clip_text = true
-		b.tooltip_text = b.text
 	var resume := UiKit.button(_list, "Resume active battle", _resume, Vector2(0, 58), "primary")
 	resume.disabled = not BattleSave.has_game()
 

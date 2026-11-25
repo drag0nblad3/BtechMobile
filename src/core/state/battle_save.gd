@@ -51,7 +51,7 @@ static func load_game() -> Dictionary:
 
 
 static func has_game() -> bool:
-	var d := _read(SAVE_PATH, false)
+	var d := _read(SAVE_PATH)
 	return d.has("state") and not bool(d.get("finished", false)) \
 			and not bool(d.get("game_over", false))
 
@@ -92,7 +92,7 @@ static func _write(path: String, data: Dictionary) -> bool:
 	return err == OK
 
 
-static func _read(path: String, expand_frames := true) -> Dictionary:
+static func _read(path: String) -> Dictionary:
 	path = SaveProfiles.resolve(path)
 	if not FileAccess.file_exists(path):
 		return {}
@@ -102,7 +102,7 @@ static func _read(path: String, expand_frames := true) -> Dictionary:
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
 	if not parsed is Dictionary or not _supported(parsed):
 		return {}
-	if expand_frames and parsed.get("frame_encoding", "") == "property_delta":
+	if parsed.get("frame_encoding", "") == "property_delta":
 		var encoded: Array = parsed.get("frames", [])
 		var decoded := BattleFrameStorage.decode(encoded)
 		if decoded.size() != encoded.size():

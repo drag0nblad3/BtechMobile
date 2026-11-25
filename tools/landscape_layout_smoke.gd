@@ -43,20 +43,6 @@ func _run() -> void:
 					quit(1)
 					return
 			screen.free()
-		for screen: Control in [TrainingScreen.new(), CampaignScreen.new(), MapCampaignScreen.new(),
-				TechnicalReadout.new(), SaveSlotScreen.new()]:
-			viewport.add_child(screen)
-			for frame in 4:
-				await process_frame
-			var back := screen.find_child("MenuBack", true, false) as Button
-			var scroll := screen.find_child("ScreenScroll", true, false) as ScrollContainer
-			var bounds := Rect2(Vector2.ZERO, Vector2(dimensions))
-			if back == null or scroll == null or not bounds.encloses(back.get_global_rect()) \
-					or scroll.size.x < dimensions.x * 0.9 or scroll.size.y < 400.0:
-				printerr("LAYOUT_FAILED: narrow screen or inaccessible Back ", screen.get_script().resource_path)
-				quit(1)
-				return
-			screen.free()
 		viewport.free()
 	print("landscape layout smoke ok")
 	quit(0)

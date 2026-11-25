@@ -5,9 +5,6 @@ var _world: Node3D
 var _rig: CameraRig
 var _model: VxMech
 var _caption: Label
-var _preview: Button
-var _selected: UnitDef
-var _request := 0
 
 
 func _ready() -> void:
@@ -45,33 +42,6 @@ func _ready() -> void:
 	UiKit.button(controls, "-", func(): _rig.zoom(0.83), Vector2(68, 48))
 	UiKit.button(controls, "Fit", _fit, Vector2(85, 48))
 	_caption = UiKit.label(self, "", 17)
-	_preview = UiKit.button(self, "LOAD 3D MODEL", _load_selected, Vector2(0, 52), "selected")
-
-
-func select_design(def: UnitDef) -> void:
-	_request += 1
-	_selected = def
-	if is_instance_valid(_model):
-		_model.free()
-		_model = null
-	_preview.disabled = def == null
-	_caption.text = "Tap Load 3D Model to inspect the selected design." if def != null else "No design selected."
-
-
-func _load_selected() -> void:
-	if _selected == null:
-		return
-	var request := _request
-	var def := _selected
-	_preview.disabled = true
-	_caption.text = "Preparing 3D model…"
-	if BattleLoading.staged():
-		await get_tree().process_frame
-		await get_tree().process_frame
-	if request != _request:
-		return
-	show_design(def)
-	_preview.disabled = false
 
 
 func show_design(def: UnitDef) -> void:

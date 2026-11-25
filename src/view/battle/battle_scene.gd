@@ -475,8 +475,8 @@ func _toggle_sheet() -> void:
 		attacks._refresh()
 
 
-func _queue_sheet_refresh() -> void:
-	if hud.sheet_open and sheet_unit != null and not _sheet_refresh_pending:
+func _queue_sheet_refresh(id: int) -> void:
+	if hud.sheet_open and sheet_unit != null and sheet_unit.id == id and not _sheet_refresh_pending:
 		_sheet_refresh_pending = true
 		_flush_sheet_refresh.call_deferred()
 
@@ -551,7 +551,7 @@ func _on_event(e: GameEvent) -> void:
 			if not deferred_visual:
 				units_layer.refresh_unit(e.data["unit_id"])
 				units_layer.react(e)
-			_queue_sheet_refresh()
+			_queue_sheet_refresh(int(e.data["unit_id"]))
 		GameEvent.PHYSICAL:
 			if not deferred_visual:
 				units_layer.react(e)
@@ -566,7 +566,7 @@ func _on_event(e: GameEvent) -> void:
 				_refresh_arrivals.call_deferred()
 		GameEvent.UNIT_EXITED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(false)
-			_queue_sheet_refresh()
+			_queue_sheet_refresh(int(e.data["unit_id"]))
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			if e.type == GameEvent.PHASE_CHANGED:
 				attacks.clear()

@@ -11,6 +11,7 @@ var _parts: Dictionary        ## part name -> VxPart
 var _model_id := ""
 var _detail := 1
 var _model: VxModel
+var _last_locations: Dictionary = {}
 
 
 func _init(model: VxModel, parts: Dictionary) -> void:
@@ -46,6 +47,11 @@ func _order(loc: int, kind: String) -> Array:
 ## Fractions are 0 (untouched) .. 1 (all gone). Rebuilds only changed parts.
 func show_location(loc: int, armor_lost: float, rear_lost: float, structure_lost: float,
 		destroyed: bool) -> void:
+	var signature := [armor_lost, rear_lost, structure_lost, destroyed]
+	# A clean first record is already represented by the intact mesh.
+	if _last_locations.get(loc, [0.0, 0.0, 0.0, false]) == signature:
+		return
+	_last_locations[loc] = signature
 	var removed := {}  ## part name -> {cell: true}
 	_take(removed, loc, "a", armor_lost)
 	_take(removed, loc, "r", rear_lost)
