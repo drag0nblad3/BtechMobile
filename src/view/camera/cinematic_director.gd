@@ -95,7 +95,10 @@ func on_event(e: GameEvent) -> void:
 			if d.get("hit", false):
 				shot = {"kind": "pair", "unit_id": int(d.get("attacker_id", -1)),
 					"target_id": int(d.get("target_id", -1))}
-		GameEvent.AMMO_EXPLOSION, GameEvent.UNIT_DESTROYED, GameEvent.FALL:
+		GameEvent.UNIT_DESTROYED:
+			shot = {"kind": "destruction", "unit_id": int(d.get("unit_id", -1))}
+			urgent = true
+		GameEvent.AMMO_EXPLOSION, GameEvent.FALL:
 			shot = {"kind": "impact", "unit_id": int(d.get("unit_id", -1))}
 			urgent = true
 	if shot.is_empty():
@@ -175,6 +178,9 @@ func _next_shot() -> void:
 				_hold = HOLD_ACTION
 				if shot["kind"] == "missile" and other != null and other.visible:
 					_projectile.begin(id, int(shot["target_id"]))
+			"destruction":
+				rig.cinematic_frame(at, 8.5, yaw + 0.35, deg_to_rad(32.0))
+				_hold = 1.65
 			"impact":
 				rig.cinematic_frame(at, 7.8, yaw + 0.28, deg_to_rad(36.0))
 				_hold = HOLD_IMPACT
