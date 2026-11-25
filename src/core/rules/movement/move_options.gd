@@ -64,8 +64,9 @@ func path_to(k: Vector3i) -> Array[Vector3i]:
 	var cur := k
 	var start := start_key()
 	while cur != start:
-		out.push_front(cur)
+		out.append(cur)
 		cur = prev[cur]
+	out.reverse()
 	return out
 
 
