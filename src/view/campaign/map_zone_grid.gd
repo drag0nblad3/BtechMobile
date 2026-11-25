@@ -5,8 +5,7 @@ extends Control
 ## defender's) and the lances standing there. Tapping a zone calls `on_tap(zone)`.
 
 const W := 132.0
-const H := 92.0
-const OWNER_TINT := [Color(0.65, 0.85, 1.0), Color(1.0, 0.7, 0.62)]
+const H := 96.0
 
 
 static func make(parent: Control, mc: MapCampaign, on_tap: Callable, chosen: MapLance) -> MapZoneGrid:
@@ -26,8 +25,9 @@ func _zone(mc: MapCampaign, z: Vector2i, on_tap: Callable, chosen: MapLance) -> 
 	b.position = Vector2(z.x * W, z.y * H + (H * 0.5 if z.x % 2 == 1 else 0.0))
 	b.size = Vector2(W - 4, H - 4)
 	b.clip_text = true
-	b.add_theme_font_size_override("font_size", 15)
+	b.add_theme_font_size_override("font_size", 14)
 	b.text = text_of(mc, z)
+	b.tooltip_text = b.text
 	b.pressed.connect(func(): on_tap.call(z))
 	add_child(b)
 	var loc := mc.region.location_at(z)
@@ -39,8 +39,16 @@ func _zone(mc: MapCampaign, z: Vector2i, on_tap: Callable, chosen: MapLance) -> 
 	elif mc.lances_of(0).any(func(l: MapLance) -> bool: return l.zone == z):
 		tone = "secondary"
 	UiSkin.button(b, tone)
-	if not loc.is_empty() and tone == "subtle":
-		b.modulate = OWNER_TINT[int(loc["owner"])]
+	for key in ["normal", "hover", "pressed", "disabled", "focus"]:
+		var style := b.get_theme_stylebox(key) as StyleBoxFlat
+		style.content_margin_top = 33
+		style.content_margin_bottom = 3
+		style.content_margin_left = 5
+		style.content_margin_right = 5
+		if not loc.is_empty() and tone == "subtle" and key != "focus":
+			var owner := int(loc["owner"])
+			style.border_color = MapZoneArt.BLUE if owner == 0 else MapZoneArt.RED if owner == 1 else UiSkin.BORDER
+	MapZoneArt.attach(b, mc, z, chosen)
 
 
 ## Three short lines: terrain, location (with points), lances here.

@@ -62,11 +62,21 @@ func _build() -> void:
 			mc.turn, int(mc.rules.get("turn_limit", 20)), mc.region.points(0), need,
 			mc.region.total_points()], UiKit.FONT)
 	status.name = "MapStatus"
+	var progress := ProgressBar.new()
+	progress.name = "CaptureProgress"
+	progress.custom_minimum_size.y = 14
+	progress.max_value = maxi(1, need)
+	progress.value = mc.region.points(0)
+	progress.show_percentage = false
+	progress.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	progress.add_theme_stylebox_override("background", UiSkin.panel_style(UiSkin.SURFACE_HIGH, UiSkin.BORDER, 0, 5))
+	progress.add_theme_stylebox_override("fill", UiSkin.panel_style(UiSkin.CYAN.darkened(0.25), UiSkin.CYAN, 0, 5))
+	_list.add_child(progress)
 	if mc.winner >= 0:
 		UiKit.label(_list, "You took the region!" if mc.winner == 0 else "The campaign is lost.", 28)
 	if _note != "":
 		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
-	UiKit.label(_list, "Blue places are yours, red the defender's. Letters are your lances.", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
+	UiKit.label(_list, "Blue squares: your lances  ·  Red diamonds: enemy lances  ·  Blue/red landmark frames: ownership  ·  Gold cross: battle  ·  Gold ring: destination", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
 	MapZoneGrid.make(_list, mc, _tap_zone, mc.lance(_chosen))
 	MapLancePanel.lances(_list, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
 	if not mc.battles.is_empty():
