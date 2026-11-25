@@ -7,7 +7,7 @@ extends Control
 const INTRO := "Take a planetary region with a company of three lances, using the map campaign rules from Campaign Operations. Each turn is a day: give every lance an order, then fight the battles where lances meet. Damage carries over, cities and forts repair you, and holding 80% of the region's points wins."
 const ORDER_TIP := {
 	MapLance.ATTACK: "Seek a battle, here or one zone over.",
-	MapLance.SCOUT: "Find the enemy without a full fight.",
+	MapLance.SCOUT: "Find the enemy without a full fight, and see 2 zones around you.",
 	MapLance.DEFEND: "Hold here: +1 Initiative if attacked.",
 	MapLance.MOVE: "Move one zone.",
 	MapLance.FAST_MOVE: "Move two zones; no Move order next turn.",
@@ -68,7 +68,7 @@ func _build() -> void:
 		UiKit.label(_list, "You took the region!" if mc.winner == 0 else "The campaign is lost.", 28)
 	if _note != "":
 		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
-	UiKit.label(_list, "Blue squares: your lances  ·  Red diamonds: enemy lances  ·  Blue/red landmark frames: ownership  ·  Gold cross: battle  ·  Gold ring: destination", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
+	UiKit.label(_list, "Blue squares: your lances  ·  Red diamonds: enemy lances you can see (next to your lances, or found by a Scout order; ? = not seen)  ·  Blue/red landmark frames: ownership  ·  Gold cross: battle  ·  Gold ring: destination", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
 	MapZoneGrid.make(_list, mc, _tap_zone, mc.lance(_chosen))
 	MapLancePanel.lances(_list, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
 	if not mc.battles.is_empty():

@@ -17,6 +17,7 @@ extends RefCounted
 static func start(mc: MapCampaign, dice: Dice) -> Array[Dictionary]:
 	MapDrop.fly(mc)
 	_move(mc)
+	MapFog.scout(mc)
 	for l in mc.lances:
 		if l.order == MapLance.REPAIR:
 			MapRepair.full(mc, l)
@@ -49,6 +50,7 @@ static func finish(mc: MapCampaign, db: UnitDb) -> Array[String]:
 		for l in mc.lances:
 			if l.zone == z and l.side == int(loc["owner"]):
 				MapRepair.benefit(mc, l, String(loc["benefit"]), db)
+	news.append_array(MapFactory.produce(mc, db))
 	for l in mc.lances:
 		if not l.on_map():
 			continue  # still in the air: keeps its DropShip Move
@@ -78,6 +80,9 @@ static func _move(mc: MapCampaign) -> void:
 	for l in mc.lances:
 		var going := l.on_map() and l.reach() > 0 and mc.region.has_zone(l.target)
 		left[l.id] = l.reach() if going else 0
+		if going and MapFactory.sea_route(mc, l, l.target):
+			l.zone = l.target  # across the water, port to port
+			left[l.id] = 0
 	for step in 2:
 		var before := {}
 		for l in mc.lances:

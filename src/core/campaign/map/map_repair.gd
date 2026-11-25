@@ -26,7 +26,7 @@ static func full(mc: MapCampaign, l: MapLance) -> void:
 ## A held key location's benefit for a lance in its zone.
 static func benefit(mc: MapCampaign, l: MapLance, kind: String, db: UnitDb) -> void:
 	match kind:
-		"repair", "fortress":
+		"repair", "fortress", "factory":
 			full(mc, l)
 		"supply":
 			var c := mc.roster(l.side)

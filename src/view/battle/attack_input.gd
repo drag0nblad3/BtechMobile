@@ -222,13 +222,16 @@ func _toggle(key: Variant, on: bool) -> void:
 			if not ids.has(primary_id):
 				primary_id = ids[0] if not ids.is_empty() else -1
 	else:
-		if on:
+		if on and Spa.has(attacker, Spa.MELEE_MASTER):
+			pass  # the rules check sorts out which extra attacks fit
+		elif on:
 			if _alone(String(key)):
 				physical.clear()
 			else:
 				for k: String in physical.keys():
 					if _alone(k):
 						physical.erase(k)
+		if on:
 			physical[key] = true
 		else:
 			physical.erase(key)

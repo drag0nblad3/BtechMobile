@@ -19,9 +19,12 @@
     "city": {"name": "City", "points": 1, "count": 3, "benefit": "repair", "terrain": "urban"},
     "depot": {"name": "Supply Depot", "points": 1, "count": 2, "benefit": "supply"},
     "bridge": {"name": "Bridge", "points": 1, "count": 1, "benefit": "", "terrain": "river"},
-    "dropport": {"name": "DropPort", "points": 2, "count": 1, "benefit": "dropport", "terrain": "plains"}
+    "dropport": {"name": "DropPort", "points": 2, "count": 1, "benefit": "dropport", "terrain": "plains"},
+    "factory": {"name": "Factory", "points": 2, "count": 1, "benefit": "factory", "terrain": "urban"},
+    "seaport": {"name": "Seaport", "points": 1, "count": 2, "benefit": "seaport", "terrain": "lakes", "garrison": false}
   },
-  "town_names": ["Port Vale", "Rockford", "Halden", "Marrow Cross", "Tessick", "Greywater", "Ostrava", "Kellin", "Brask", "Solenne"],
+  "factory_designs": ["wolverine_wvr6r", "shadow_hawk_shd2h", "griffin_grf1n", "hunchback_hbk4g"],
+  "town_names": ["Port Vale", "Rockford", "Halden", "Marrow Cross", "Tessick", "Greywater", "Ostrava", "Kellin", "Brask", "Solenne", "Varnholt", "Dunmere", "Kesh"],
   "scenario_table": {
     "battle": ["extraction", "extraction", "hold_the_line", "hold_the_line", "standup", "standup", "hide_and_seek", "breakthrough", "breakthrough"],
     "scout": ["breakthrough", "breakthrough", "probe", "probe", "hide_and_seek", "hide_and_seek", "recon_raid", "recon_raid", "recon_raid"]

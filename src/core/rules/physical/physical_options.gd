@@ -152,23 +152,18 @@ static func _kick(state: GameState, a: Unit, t: Unit, leg: int) -> Dictionary:
 ## Validates a declaration [{kind, limb, target_id}]: two punches or one kick.
 static func declare(state: GameState, a: Unit, attacks: Array) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
-	var kicked := false
-	var used := {}
+	var master := Spa.has(a, Spa.MELEE_MASTER)
 	for req: Dictionary in attacks:
 		var t := state.unit_by_id(int(req["target_id"]))
 		for opt in for_target(state, a, t):
 			if opt["kind"] != req["kind"] or opt["limb"] != int(req["limb"]):
 				continue
-			if not opt["to_hit"].possible() or used.has(opt["limb"]) or kicked:
-				continue
-			var paired: bool = opt["kind"] == "punch" or opt["kind"] == "brush_off"  # one per arm
-			if not paired and not out.is_empty():
-				continue  # kicks, pushes and weapon swings are the only attack that turn
-			kicked = not paired
-			used[opt["limb"]] = true
+			if not opt["to_hit"].possible() or not MeleeMaster.fits(out, opt, master):
+				continue  # one attack per limb; kicks, pushes and swings stand alone
 			opt["attacker_id"] = a.id
 			opt["target_id"] = t.id
 			out.append(opt)
+			break
 	return out
 
 

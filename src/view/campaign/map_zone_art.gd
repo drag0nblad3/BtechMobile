@@ -28,8 +28,9 @@ static func attach(b: Button, mc: MapCampaign, z: Vector2i, chosen: MapLance) ->
 	var loc := mc.region.location_at(z)
 	a.kind = String(loc.get("kind", ""))
 	a.objective_owner = int(loc.get("owner", -1))
+	var seen := MapFog.seen(mc)
 	for l in mc.lances:
-		if l.zone == z:
+		if l.zone == z and MapFog.shows(mc, l, seen):
 			a.friendly = a.friendly or l.side == 0
 			a.hostile = a.hostile or l.side == 1
 	for battle in mc.battles:
@@ -132,6 +133,13 @@ func _objective(p: Vector2) -> void:
 		"dropport":  # a landing pad with a DropShip on it
 			draw_arc(p, 8, 0, TAU, 16, tint, 1.5)
 			_poly(p, [Vector2(0,-7), Vector2(4,3), Vector2(0,1), Vector2(-4,3)], tint)
+		"factory":  # a sawtooth roof and a chimney
+			_poly(p, [Vector2(-8,7), Vector2(-8,-1), Vector2(-4,-4), Vector2(-4,-1), Vector2(0,-4), Vector2(0,-1), Vector2(4,-4), Vector2(4,7)], tint)
+			draw_rect(Rect2(p + Vector2(5,-8), Vector2(3,15)), tint)
+		"seaport":  # an anchor
+			draw_line(p + Vector2(0,-7), p + Vector2(0,6), tint, 2)
+			draw_line(p + Vector2(-4,-4), p + Vector2(4,-4), tint, 2)
+			draw_arc(p + Vector2(0,1), 6, 0.2, PI - 0.2, 10, tint, 2)
 		_:
 			draw_circle(p, 5, tint)
 

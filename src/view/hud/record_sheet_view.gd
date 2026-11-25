@@ -35,6 +35,9 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	var st := SinkButtons.stealth_row(u, on_power)
 	if st != null:
 		box.add_child(st)
+	var ci := SinkButtons.intuition_row(u, on_power)
+	if ci != null:
+		box.add_child(ci)
 	return box
 
 

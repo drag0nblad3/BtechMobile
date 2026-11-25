@@ -481,6 +481,8 @@ func _show_sheet_if_open() -> void:
 				controller.request_sinks_off(sheet_unit, int(want.substr(6)))
 			elif want.begins_with("stealth:"):
 				controller.request_stealth(sheet_unit, want == "stealth:on")
+			elif want.begins_with("intuition:"):
+				controller.request_intuition(sheet_unit, want == "intuition:on")
 			else:
 				controller.request_power(sheet_unit, want)
 			_show_sheet_if_open()

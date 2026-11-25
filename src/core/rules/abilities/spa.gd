@@ -28,6 +28,9 @@ const FIST_FIRE := "fist_fire"
 const HOPPER := "hopper"
 const MARKSMAN := "marksman"
 const ZWEIHANDER := "zweihander"
+const MELEE_MASTER := "melee_master"
+const ENV_SPECIALIST := "env_specialist"
+const COMBAT_INTUITION := "combat_intuition"
 
 static var _data: Dictionary = {}
 

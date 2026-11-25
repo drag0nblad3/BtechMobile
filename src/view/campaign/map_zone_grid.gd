@@ -51,8 +51,10 @@ func _zone(mc: MapCampaign, z: Vector2i, on_tap: Callable, chosen: MapLance) -> 
 	MapZoneArt.attach(b, mc, z, chosen)
 
 
-## Three short lines: terrain, location (with points), lances here.
+## Three short lines: terrain, location (with points), lances here (enemy
+## lances only where the player can see: MapFog).
 static func text_of(mc: MapCampaign, z: Vector2i, compact: bool = false) -> String:
+	var seen := MapFog.seen(mc)
 	var lines := [mc.region.terrain_at(z).capitalize()]
 	var loc := mc.region.location_at(z)
 	if not loc.is_empty():
@@ -66,11 +68,13 @@ static func text_of(mc: MapCampaign, z: Vector2i, compact: bool = false) -> Stri
 		if l.zone == z:
 			if l.side == 0:
 				mine.append(l.name.left(1))
-			else:
+			elif MapFog.shows(mc, l, seen):
 				foes += 1
 	var units := " ".join(mine)
 	if foes > 0:
 		units += ("  " if units != "" else "") + "Enemy×%d" % foes
+	if units == "" and not seen.has(z) and int(mc.region.location_at(z).get("owner", 0)) == 1:
+		units = "?"
 	if units != "":
 		lines.append(units)
 	return "\n".join(lines)

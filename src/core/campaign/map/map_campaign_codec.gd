@@ -12,7 +12,8 @@ static func pack(mc: MapCampaign) -> Dictionary:
 	return {"version": 1, "turn": mc.turn, "winner": mc.winner, "region": mc.region.to_dict(),
 		"player": mc.player.to_dict(), "enemy": mc.enemy.to_dict(),
 		"lances": mc.lances.map(func(l: MapLance) -> Dictionary: return l.to_dict()),
-		"battles": meets, "log": Array(mc.log)}
+		"battles": meets, "log": Array(mc.log),
+		"scouted": mc.scouted.map(func(z: Vector2i) -> Array: return [z.x, z.y])}
 
 
 static func unpack(d: Dictionary, rules: Dictionary = {}) -> MapCampaign:
@@ -31,4 +32,6 @@ static func unpack(d: Dictionary, rules: Dictionary = {}) -> MapCampaign:
 		mc.battles.append(m)
 	for line in d.get("log", []):
 		mc.log.append(String(line))
+	for z: Array in d.get("scouted", []):
+		mc.scouted.append(Vector2i(int(z[0]), int(z[1])))
 	return mc

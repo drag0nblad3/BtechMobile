@@ -70,3 +70,25 @@ func test_initiative_die() -> void:
 	check_eq(s.initiative_die, {1: 1}, "winner drops its die; the other side takes one")
 	s.initiative_die_rule = false
 	check(InitiativeDie.bonuses(s).is_empty(), "off by default")
+
+
+func test_force_commanders() -> void:
+	var s := GameState.new(open_map(10, 10))
+	s.commander_rule = true
+	var green := mech("locust_lct1v", 0, hex_at(1, 1), 3, 1)
+	var vet := mech("locust_lct1v", 0, hex_at(2, 1), 3, 2)
+	vet.pilot.gunnery = 3
+	s.add_unit(green)
+	s.add_unit(vet)
+	s.add_unit(mech("atlas_as7d", 1, hex_at(1, 8), 0, 3))
+	var gc := GameController.new(s, 1)
+	gc.start_turn()
+	check_eq(int(s.commanders[0]), 2, "the best warrior leads")
+	check_eq(InitiativeDie.bonuses(s).get(0, 0), 0)
+	vet.destroyed = true
+	Commanders.check(s, func(_t: StringName, _d: Dictionary) -> void: pass)
+	check_eq(InitiativeDie.bonuses(s).get(0, 0), Commanders.PENALTY, "-2 Initiative once it's lost")
+	var plain := GameState.new(open_map(4, 4))
+	plain.add_unit(mech("locust_lct1v", 0, hex_at(1, 1), 3, 1))
+	Commanders.ensure(plain, func(_t: StringName, _d: Dictionary) -> void: pass)
+	check(plain.commanders.is_empty(), "off outside campaign battles")

@@ -13,6 +13,7 @@ extends RefCounted
 static func build(mc: MapCampaign, b: Dictionary, db: UnitDb, seed_value: int) -> Dictionary:
 	var lances := [_side_lance(mc, b, 0), _side_lance(mc, b, 1)]
 	var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
+	fb.commanders = true
 	var ids := [[], []]
 	for side in 2:
 		ids[side] = mc.fit_mechs(lances[side])
