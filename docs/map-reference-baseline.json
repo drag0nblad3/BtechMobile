@@ -1,0 +1,250 @@
+{
+  "source": "MegaMek/mm-data, data/boards; transcriptions of named published maps. Aggregate counts only; no board layouts included.",
+  "boards": [
+    {
+      "theme": "grassland",
+      "path": "GrassLands/16x17 Grasslands Open Terrain 2.board",
+      "sha": "08d16559288b39e2fc30d390562be1b41e4be930",
+      "hexes": 272,
+      "woods": 25,
+      "heavy": 4,
+      "water": 0,
+      "rough": 3,
+      "pavement": 0,
+      "raised": 54,
+      "building": 0,
+      "features": [
+        "rough",
+        "woods",
+        "foliage_elev"
+      ]
+    },
+    {
+      "theme": "grassland",
+      "path": "GrassLands/16x17 Grasslands Open Terrain 3.board",
+      "sha": "5cd321c93786728e6adb7d1149b407aa914b54f7",
+      "hexes": 272,
+      "woods": 26,
+      "heavy": 6,
+      "water": 4,
+      "rough": 3,
+      "pavement": 0,
+      "raised": 39,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev",
+        "rough",
+        "water"
+      ]
+    },
+    {
+      "theme": "hills",
+      "path": "GrassLands/16x17 Grasslands Rolling Hills 1.board",
+      "sha": "f690250465a4d197602014241f1517d0d63f08bf",
+      "hexes": 272,
+      "woods": 51,
+      "heavy": 0,
+      "water": 0,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 142,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev"
+      ]
+    },
+    {
+      "theme": "hills",
+      "path": "Map Set 3/16x17 Rolling Hills 2.board",
+      "sha": "2e51fbbb08abfb39952b2987e4d4a2e815289d68",
+      "hexes": 272,
+      "woods": 40,
+      "heavy": 0,
+      "water": 0,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 140,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev"
+      ]
+    },
+    {
+      "theme": "woodland",
+      "path": "Map Set 4/16x17 Heavy Forest 1.board",
+      "sha": "fe8e982178e55f99012c253b3b244368b90c7c76",
+      "hexes": 272,
+      "woods": 214,
+      "heavy": 98,
+      "water": 0,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 63,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev"
+      ]
+    },
+    {
+      "theme": "woodland",
+      "path": "Map Set 4/16x17 Heavy Forest 2.board",
+      "sha": "d64a82ce995c445a1895dd99f2d58037192d5f16",
+      "hexes": 272,
+      "woods": 220,
+      "heavy": 96,
+      "water": 0,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 54,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev"
+      ]
+    },
+    {
+      "theme": "river_valley",
+      "path": "Map Set 2/16x17 River Valley.board",
+      "sha": "a1e2094401e363de9c72f034cf5b40b0e826cfac",
+      "hexes": 272,
+      "woods": 50,
+      "heavy": 8,
+      "water": 26,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 89,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev",
+        "water"
+      ]
+    },
+    {
+      "theme": "river_valley",
+      "path": "GrassLands/16x17 Grasslands Streams.board",
+      "sha": "1528c78fa765aa06c387039e89e503de67bffed9",
+      "hexes": 272,
+      "woods": 13,
+      "heavy": 2,
+      "water": 74,
+      "rough": 1,
+      "pavement": 0,
+      "raised": 24,
+      "building": 0,
+      "features": [
+        "water",
+        "woods",
+        "foliage_elev",
+        "rough"
+      ]
+    },
+    {
+      "theme": "lakes",
+      "path": "GrassLands/16x17 Grasslands Lakes.board",
+      "sha": "3b4941513f59847d576e1dda4427aa461ab9b097",
+      "hexes": 272,
+      "woods": 21,
+      "heavy": 0,
+      "water": 44,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 77,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev",
+        "water"
+      ]
+    },
+    {
+      "theme": "lakes",
+      "path": "Map Set 4/16x17 Large Lakes 1.board",
+      "sha": "582072a4031d8ed8fd3d925fc796a27e22c3c1d3",
+      "hexes": 272,
+      "woods": 31,
+      "heavy": 4,
+      "water": 137,
+      "rough": 0,
+      "pavement": 0,
+      "raised": 58,
+      "building": 0,
+      "features": [
+        "woods",
+        "foliage_elev",
+        "water"
+      ]
+    },
+    {
+      "theme": "badlands",
+      "path": "Map Set 2/16x17 Desert Hills.board",
+      "sha": "2b49d311fcc6f9e688dd5f7e4fa706f6f7ed0c01",
+      "hexes": 272,
+      "woods": 0,
+      "heavy": 0,
+      "water": 0,
+      "rough": 15,
+      "pavement": 0,
+      "raised": 111,
+      "building": 0,
+      "features": [
+        "rough"
+      ]
+    },
+    {
+      "theme": "badlands",
+      "path": "Map Set 3/16x17 Desert Mountain 1.board",
+      "sha": "b28c88a136dee6ae66b4dee2f53df2a426f99531",
+      "hexes": 272,
+      "woods": 0,
+      "heavy": 0,
+      "water": 0,
+      "rough": 10,
+      "pavement": 0,
+      "raised": 131,
+      "building": 0,
+      "features": [
+        "rough"
+      ]
+    },
+    {
+      "theme": "urban",
+      "path": "Map Set 4/16x17 City Street Grid-Park 1.board",
+      "sha": "e6f1ddb6029ace0860c00aef63e3e6d68c728497",
+      "hexes": 272,
+      "woods": 12,
+      "heavy": 0,
+      "water": 16,
+      "rough": 0,
+      "pavement": 123,
+      "raised": 0,
+      "building": 0,
+      "features": [
+        "road",
+        "woods",
+        "foliage_elev",
+        "water"
+      ]
+    },
+    {
+      "theme": "urban",
+      "path": "Map Set 4/16x17 City Street Grid-Park 2.board",
+      "sha": "0d500d9748e2e8e8126de6ec88ff39a8816543f7",
+      "hexes": 272,
+      "woods": 0,
+      "heavy": 0,
+      "water": 0,
+      "rough": 0,
+      "pavement": 175,
+      "raised": 0,
+      "building": 0,
+      "features": [
+        "road"
+      ]
+    }
+  ]
+}
