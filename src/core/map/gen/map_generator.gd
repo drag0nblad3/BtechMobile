@@ -11,7 +11,34 @@ const SHEET_ROWS := 17
 const SIZES: Array[Vector2i] = [Vector2i(1, 1), Vector2i(2, 1), Vector2i(2, 2)]
 
 
-static func generate(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictionary:
+const MAX_CANDIDATES := 3
+
+
+## Keep good seeds untouched. Retry only gross tactical failures; the
+## original requested seed remains the stable identity of the battlefield.
+static func generate(t: MapTheme, sheets: Vector2i, seed_value: int, terrain: TerrainDb = null) -> Dictionary:
+	if terrain == null:
+		terrain = TerrainDb.load_file()
+	var best := {}
+	var best_penalty := INF
+	for attempt in MAX_CANDIDATES:
+		var layout_seed := seed_value + attempt * 104729
+		var candidate := generate_raw(t, sheets, layout_seed)
+		var report := MapTactics.assess(MapLoader.from_dict(candidate, terrain), false)
+		var p := MapTactics.penalty(report)
+		if p < best_penalty:
+			best = candidate
+			best_penalty = p
+			best["layout_seed"] = layout_seed
+		if best_penalty <= 0.0:
+			break
+	best["name"] = "%s #%d" % [t.name, seed_value]
+	best["seed"] = seed_value
+	return best
+
+
+## Unfiltered baseline for regression comparisons and generator tuning.
+static func generate_raw(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictionary:
 	var g := GenGrid.new(SHEET_COLS * sheets.x, SHEET_ROWS * sheets.y)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
@@ -34,7 +61,7 @@ static func generate(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictiona
 
 
 static func build(t: MapTheme, sheets: Vector2i, seed_value: int, terrain: TerrainDb) -> BattleMap:
-	return MapLoader.from_dict(generate(t, sheets, seed_value), terrain)
+	return MapLoader.from_dict(generate(t, sheets, seed_value, terrain), terrain)
 
 
 static func size_name(sheets: Vector2i) -> String:
