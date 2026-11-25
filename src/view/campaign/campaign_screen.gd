@@ -50,7 +50,7 @@ func _build() -> void:
 	_list.add_child(dashboard)
 	var company_card := UiKit.panel(dashboard)
 	company_card.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var wp := UiKit.label(company_card, "%d WP%s  ·  %d SP  ·  Month %d" % [
+	var wp := UiKit.label(company_card, "Warchest %d WP%s  ·  %d SP  ·  Month %d" % [
 		company.wp, " (debt)" if company.wp < 0 else "", company.sp, company.month], 26)
 	wp.name = "WarchestLabel"
 	UiKit.label(company_card, "%d/%d ready · %d battles fought" % [
