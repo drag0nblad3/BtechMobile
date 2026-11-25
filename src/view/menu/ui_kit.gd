@@ -80,7 +80,7 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	heading.autowrap_mode = TextServer.AUTOWRAP_OFF
 	heading.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
-	rule(layout)
+	UiSkin.rule(layout)
 	var scroll := ScrollContainer.new()
 	scroll.name = "ScreenScroll"
 	scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
