@@ -5,12 +5,15 @@ extends Control
 
 const BATTLE_MENU := "res://scenes/menu.tscn"
 const DRILLS := "res://scenes/drills.tscn"
+var _menu: Control
+var _overlay: Control
+var _loading: BattleLoading
 
 
 ## Android Back remains available with automatic back-to-exit disabled.
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		get_tree().quit()
+		_back()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -19,13 +22,23 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		if not key.pressed or key.echo or key.keycode != KEY_ESCAPE:
 			return
 		get_viewport().set_input_as_handled()
-		get_tree().quit()
+		_back()
+
+
+func _back() -> void:
+	if _loading != null:
+		return
+	if is_instance_valid(_overlay):
+		UiKit.close_overlay(_overlay)
+		return
+	get_tree().quit()
 
 
 func _ready() -> void:
 	set_anchors_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	var scroll := UiKit.landscape_scroll(self)
+	_menu = scroll.get_parent()
 	var box := UiKit.panel(scroll)
 	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 12)
@@ -54,7 +67,7 @@ func _ready() -> void:
 	var map_camp := UiKit.button(actions, "MAP CAMPAIGN", _open_map_campaign, Vector2(0, 64))
 	map_camp.name = "MapCampaignButton"
 	map_camp.tooltip_text = "Take a region zone by zone with a company of three lances"
-	var drills := UiKit.button(actions, "RULES DRILLS", func(): get_tree().change_scene_to_file(DRILLS), Vector2(0, 58))
+	var drills := UiKit.button(actions, "RULES DRILLS", _open_drills, Vector2(0, 58))
 	drills.name = "DrillsButton"
 	drills.tooltip_text = "Quick questions on to-hit numbers, hit locations, missiles, heat and odds"
 	var quick := UiKit.button(actions, "QUICK BATTLE", _quick_battle, Vector2(0, 70))
@@ -70,43 +83,99 @@ func _ready() -> void:
 	for b: Button in [train, camp, map_camp, drills, quick, battle, reference, slots]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.custom_minimum_size.y = 76
+	if BattleLaunch.open_training:
+		BattleLaunch.open_training = false
+		_open_training.call_deferred()
+	elif BattleLaunch.open_campaign:
+		BattleLaunch.open_campaign = false
+		_open_campaign.call_deferred()
+	elif BattleLaunch.open_map_campaign:
+		BattleLaunch.open_map_campaign = false
+		_open_map_campaign.call_deferred()
 
 
 func _open_training() -> void:
-	BattleLaunch.open_training = true
-	get_tree().change_scene_to_file(BATTLE_MENU)
+	await _open_screen("Training", func() -> Control: return TrainingScreen.new())
 
 
 func _open_campaign() -> void:
-	BattleLaunch.open_campaign = true
-	get_tree().change_scene_to_file(BATTLE_MENU)
+	await _open_screen("Campaign", func() -> Control: return CampaignScreen.new())
 
 
 func _open_map_campaign() -> void:
-	BattleLaunch.open_map_campaign = true
-	get_tree().change_scene_to_file(BATTLE_MENU)
-
-
-func _quick_battle() -> void:
-	var rng := RandomNumberGenerator.new()
-	rng.randomize()
-	var state := QuickBattle.build(UnitDb.load_dir(), rng)
-	if state == null:
-		_open_battle()
-		return
-	BattleLaunch.pending = state
-	BattleLaunch.bot_sides = [1]
-	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
-
-
-func _open_battle() -> void:
-	get_tree().change_scene_to_file(BATTLE_MENU)
-
+	await _open_screen("Map campaign", func() -> Control: return MapCampaignScreen.new())
 
 
 func _open_reference() -> void:
-	add_child(TechnicalReadout.new())
+	await _open_screen("Technical readout", func() -> Control: return TechnicalReadout.new())
 
 
 func _open_slots() -> void:
-	add_child(SaveSlotScreen.new())
+	await _open_screen("Save slots", func() -> Control: return SaveSlotScreen.new())
+
+
+func _open_drills() -> void:
+	await _open_scene("Rules drills", DRILLS)
+
+
+func _open_battle() -> void:
+	await _open_scene("Force builder", BATTLE_MENU)
+
+
+func _open_screen(title: String, factory: Callable) -> void:
+	if _loading != null or is_instance_valid(_overlay):
+		return
+	await _begin_loading(title)
+	_overlay = factory.call()
+	_overlay.tree_exited.connect(_restore_menu, CONNECT_ONE_SHOT)
+	_menu.hide()
+	add_child(_overlay)
+	_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	await _end_loading()
+
+
+func _restore_menu() -> void:
+	_overlay = null
+	if is_inside_tree() and is_instance_valid(_menu):
+		_menu.show()
+
+
+func _open_scene(title: String, path: String) -> void:
+	if _loading != null or is_instance_valid(_overlay):
+		return
+	await _begin_loading(title)
+	if get_tree().change_scene_to_file(path) != OK:
+		await _end_loading()
+
+
+func _begin_loading(title: String) -> void:
+	_loading = BattleLoading.new()
+	_loading.heading = "COMMAND INTERFACE  /  " + title.to_upper()
+	add_child(_loading)
+	await _loading.step("Opening " + title + "…", 10.0)
+
+
+func _end_loading() -> void:
+	await _loading.step("Ready", 100.0)
+	_loading.hide()
+	_loading.queue_free()
+	_loading = null
+
+
+func _quick_battle() -> void:
+	if _loading != null or is_instance_valid(_overlay):
+		return
+	await _begin_loading("Quick battle")
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	var db := UnitDb.load_dir()
+	await _loading.step("Selecting matched forces and battlefield", 40.0)
+	var state := QuickBattle.build(db, rng)
+	var path := BATTLE_MENU
+	if state != null:
+		BattleLaunch.pending = state
+		BattleLaunch.bot_sides = [1]
+		path = BattleLaunch.BATTLE_SCENE
+	if get_tree().change_scene_to_file(path) != OK:
+		BattleLaunch.pending = null
+		await _end_loading()
