@@ -73,6 +73,20 @@ static func _matches(goal: Dictionary, kind: String, data: Dictionary,
 		var wanted := player_side if goal["side"] == "player" else 1 - player_side
 		if unit.side != wanted:
 			return false
+	if goal.has("score_side"):
+		var scoring_side := player_side if goal["score_side"] == "player" else 1 - player_side
+		if int(data.get("side", -1)) != scoring_side:
+			return false
+	if goal.has("min_vp") and int(data.get("vp", 0)) < int(goal["min_vp"]):
+		return false
+	if goal.has("mod_label"):
+		var matched := false
+		for mod: Dictionary in data.get("mods", []):
+			if String(mod.get("label", "")) == String(goal["mod_label"]):
+				matched = true
+				break
+		if not matched:
+			return false
 	if goal.has("source_side"):
 		var source := state.unit_by_id(int(data.get("source_id", -1)))
 		var source_wanted := player_side if goal["source_side"] == "player" else 1 - player_side

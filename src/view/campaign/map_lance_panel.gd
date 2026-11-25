@@ -9,11 +9,13 @@ static func lances(list: VBoxContainer, mc: MapCampaign, chosen: String, on_sele
 	UiKit.label(list, "Your lances", 26).modulate = Color(0.75, 0.85, 1.0)
 	for l in mc.lances_of(0):
 		var id := l.id
-		var b := UiKit.button(list, line(mc, l), func(): on_select.call(id), Vector2(0, 56),
+		var b := UiKit.button(list, line(mc, l), func(): on_select.call(id), Vector2(0, 76),
 				"selected" if id == chosen else "subtle")
 		b.name = "Lance_" + id
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		b.clip_text = true
+		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		b.add_theme_font_size_override("font_size", 19)
+		b.tooltip_text = line(mc, l)
 		if id == chosen and can_order:
 			var row := HFlowContainer.new()
 			list.add_child(row)
@@ -28,8 +30,8 @@ static func lances(list: VBoxContainer, mc: MapCampaign, chosen: String, on_sele
 ## "Alpha Lance · Riverside · 4 of 4 fit · Attack → Hills".
 static func line(mc: MapCampaign, l: MapLance) -> String:
 	var at := where(mc, l.zone) if l.on_map() else "in the air"
-	var s := "%s  ·  %s  ·  %d of %d fit  ·  %s" % [l.name, at, mc.fit_mechs(l).size(),
-			l.mech_ids.size(), MapLance.NAMES[l.order]]
+	var s := "%s · %d/%d fit\n%s · %s" % [l.name, mc.fit_mechs(l).size(),
+			l.mech_ids.size(), at, MapLance.NAMES[l.order]]
 	var heading := l.reach() > 0 or l.order == MapLance.DROPSHIP
 	if heading and l.target != l.zone and mc.region.has_zone(l.target):
 		s += " → " + where(mc, l.target)

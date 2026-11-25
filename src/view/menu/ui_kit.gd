@@ -90,12 +90,24 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	return body
 
 
-## Keep menu chrome within the platform safe area while the backdrop bleeds.
+## Action row outside screen_body's scrolling content.
+static func screen_footer(body: VBoxContainer) -> HBoxContainer:
+	var layout := body.get_parent().get_parent().get_parent() as VBoxContainer
+	var footer := HBoxContainer.new()
+	footer.name = "ScreenFooter"
+	footer.add_theme_constant_override("separation", 12)
+	layout.add_child(footer)
+	return footer
+
+
+## Keep existing safe-area padding and refresh it when the parent resizes.
 static func apply_safe_margins(parent: Control, margin: MarginContainer, inset: int) -> void:
 	var update := func() -> void:
+		if not is_instance_valid(margin):
+			return
 		var safe := SafeArea.insets(parent.get_viewport())
-		for side in ["left", "right", "top", "bottom"]:
-			margin.add_theme_constant_override("margin_" + side, inset + maxi(0, int(safe[side])))
+		for side: String in ["left", "right", "top", "bottom"]:
+			margin.add_theme_constant_override("margin_" + side, maxi(inset, int(safe.get(side, 0)) + 8))
 	update.call()
 	parent.resized.connect(update)
 

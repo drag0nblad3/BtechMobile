@@ -1,0 +1,80 @@
+{
+  "name": "Advanced Tactical Academy: Combined Arms",
+  "map": "fortified_crossroads",
+  "bot_sides": [
+    1
+  ],
+  "bot_level": 2,
+  "units": [
+    {
+      "def": "timber_wolf_prime",
+      "side": 0,
+      "hex": "0416",
+      "facing": 0
+    },
+    {
+      "def": "fury_command_tank_c3s",
+      "side": 0,
+      "hex": "0816",
+      "facing": 0
+    },
+    {
+      "def": "elemental_ba_laser",
+      "side": 0,
+      "hex": "0516",
+      "facing": 0
+    },
+    {
+      "def": "warhammer_whm6r",
+      "side": 1,
+      "hex": "0402",
+      "facing": 3
+    },
+    {
+      "def": "centurion_cn9a",
+      "side": 1,
+      "hex": "0802",
+      "facing": 3
+    },
+    {
+      "def": "is_standard_ba_laser",
+      "side": 1,
+      "hex": "1202",
+      "facing": 3
+    }
+  ],
+  "lessons": [
+    {
+      "event": "initiative",
+      "turn": 1,
+      "title": "Combined Arms",
+      "text": "Command a Timber Wolf, a tank and Elemental battle armor against a mixed force."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Movement",
+      "turn": 1,
+      "title": "Movement plan",
+      "text": "Vehicles and battle armor have their own movement and damage rules. Check their record sheets; use the Elementals to screen approaches."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Weapon Attack",
+      "turn": 1,
+      "title": "Fire plan",
+      "text": "Use the tank's firing arcs and keep the infantry out of unsupported open ground."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Heat",
+      "turn": 1,
+      "title": "Review the tradeoffs",
+      "text": "An OmniMech can carry eligible battle armor; inspect transport and anti-Mech options when adjacent."
+    },
+    {
+      "event": "game_over",
+      "title": "Review",
+      "text": "Review the battle record and retry to improve your practice."
+    }
+  ]
+}

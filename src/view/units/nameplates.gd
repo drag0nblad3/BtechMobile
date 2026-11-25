@@ -24,8 +24,8 @@ func setup(s: GameState, layer: UnitsLayer, viewer: Callable) -> void:
 		var plate := Node3D.new()
 		plate.visible = false
 		add_child(plate)
-		var tint: Color = PlaceholderMech.SIDE_COLORS[u.side % PlaceholderMech.SIDE_COLORS.size()].lightened(0.55)
-		_label(plate, 32, 40, tint)       # name
+		var tint: Color = PlaceholderMech.SIDE_COLORS[u.side % PlaceholderMech.SIDE_COLORS.size()].lightened(0.22)
+		_label(plate, 36, 44, tint)       # name
 		_label(plate, 22, 0, Color.WHITE) # health bar
 		_label(plate, 28, -36, Color(1.0, 0.9, 0.55))  # attack
 		_plates[u.id] = plate
@@ -39,7 +39,7 @@ func _label(plate: Node3D, size: int, y: float, color: Color) -> Label3D:
 	l.pixel_size = 0.0008
 	l.font_size = size
 	l.offset = Vector2(0, y)
-	l.outline_size = 8
+	l.outline_size = 10
 	l.outline_modulate = Color(0, 0, 0, 0.9)
 	l.render_priority = 10
 	l.outline_render_priority = 9
@@ -105,7 +105,7 @@ func fill(plate: Node3D, u: Unit, viewer: Unit) -> void:
 	var name_l := plate.get_child(0) as Label3D
 	var bar_l := plate.get_child(1) as Label3D
 	var atk_l := plate.get_child(2) as Label3D
-	name_l.text = u.def.name
+	name_l.text = "%s · %s" % [Names.side(u.side).to_upper(), u.def.name]
 	var hp := PlateInfo.health(u)
 	var st := PlateInfo.status(u)
 	bar_l.text = PlateInfo.bar(hp) + ("  " + st if st != "" else "")

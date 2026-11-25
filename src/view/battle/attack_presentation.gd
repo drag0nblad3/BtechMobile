@@ -74,9 +74,16 @@ func _flush() -> void:
 			var duration := 0.24 if attack.type == GameEvent.PHYSICAL else ShotFx.arrival_time(String(attack.data.get("weapon_id", attack.data.get("weapon", ""))))
 			actions.append({"at": maxf(0.0, at - duration), "order": order, "callback": _launch.bind(group)})
 			order += 1
+		var destroyed := false
 		for entry: Dictionary in entries:
 			actions.append({"at": at, "order": order, "callback": _arrive.bind(entry)})
 			order += 1
+			var event: GameEvent = entry["event"]
+			if event.type == GameEvent.UNIT_DESTROYED:
+				var view: UnitView = _units.views.get(int(event.data.get("unit_id", -1)))
+				destroyed = destroyed or (view != null and view.visible)
+		if destroyed:
+			at += 0.65  # A visible kill gets a short presentation beat.
 		at += 0.12 if attack != null and attack.type == GameEvent.PHYSICAL else 0.085
 	actions.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
 		return int(a["order"]) < int(b["order"]) if is_equal_approx(a["at"], b["at"]) else float(a["at"]) < float(b["at"]))
@@ -87,7 +94,7 @@ func _flush() -> void:
 			timeline.tween_interval(delay)
 		timeline.tween_callback(action["callback"])
 		previous = float(action["at"])
-	timeline.tween_interval(0.20)
+	timeline.tween_interval(maxf(0.20, at - previous))
 	timeline.tween_callback(_flush)
 
 

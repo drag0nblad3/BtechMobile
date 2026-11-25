@@ -1,0 +1,209 @@
+{
+  "name": "Industrial Yard",
+  "rows": [
+    "c0 c0 c0 c0 p0 c0 c0 u0 c0 c0 c0 p0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 p0 c0 u0 c0 c0 c0 c0 p0 c0 c0 c0 u0",
+    "c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 p0 c0 c0 u0 c0",
+    "c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 p0 c0 u0 c0 c0",
+    "p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0",
+    "c0 c0 u0 c0 p0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+    "c0 u0 c0 c0 p0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+    "u0 c0 c0 c0 p0 c0 c0 c0 c0 u0 c0 p0 c0 c0 c0 c0",
+    "p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0",
+    "c0 c0 c0 c0 p0 c0 c0 u0 c0 c0 c0 p0 c0 c0 c0 c0",
+    "c0 c0 c0 c0 p0 c0 u0 c0 c0 c0 c0 p0 c0 c0 c0 u0",
+    "c0 c0 c0 c0 p0 c0 c0 c0 c0 c0 c0 p0 c0 c0 u0 c0",
+    "p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0 p0",
+    "c0 c0 c0 u0 p0 c0 c0 c0 c0 c0 c0 p0 u0 c0 c0 c0",
+    "c0 c0 u0 c0 p0 c0 c0 c0 c0 c0 c0 p0 c0 c0 c0 c0",
+    "c0 u0 c0 c0 p0 c0 c0 c0 c0 c0 u0 p0 c0 c0 c0 c0",
+    "u0 c0 c0 c0 p0 c0 c0 c0 c0 u0 c0 p0 c0 c0 c0 c0"
+  ],
+  "buildings": [
+    {
+      "hex": "0303",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "0603",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1003",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1403",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0104",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0804",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1604",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0106",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0906",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1606",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0307",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0707",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1107",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1407",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "0208",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0908",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1308",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1608",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "0210",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "0610",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0910",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1310",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0411",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "0811",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1111",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1511",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0212",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0612",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1012",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1312",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0314",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0614",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1014",
+      "type": "medium",
+      "height": 2
+    },
+    {
+      "hex": "1414",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0115",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "0815",
+      "type": "light",
+      "height": 1
+    },
+    {
+      "hex": "1615",
+      "type": "light",
+      "height": 1
+    }
+  ]
+}

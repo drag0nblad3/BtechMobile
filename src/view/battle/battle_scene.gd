@@ -38,6 +38,8 @@ var _sheet_refresh_pending := false
 var _objectives_refresh_pending := false
 var _tutorial_path := ""
 var startup_complete := false
+var _auto_move_pending := false
+var _auto_selecting := false
 var _loading: BattleLoading
 var preload_jobs := 0
 
@@ -125,6 +127,8 @@ func _resume_ui() -> void:
 		if String(f.get("text", "")) != "":
 			hud.log_view.add_line(String(f["text"]))
 	_update_status()
+	_auto_move_pending = true
+	_look_at_my_turn.call_deferred()
 	if controller.state.game_over:
 		hud.show_game_over("Battle finished")
 	elif controller.state.point_blank.is_empty() and controller.state.phase in [Phase.Kind.WEAPON_ATTACK, Phase.Kind.PHYSICAL_ATTACK]:
@@ -369,6 +373,9 @@ func _wire() -> void:
 			BattleLaunch.open_campaign = in_campaign
 			BattleLaunch.open_map_campaign = in_map_campaign
 			get_tree().change_scene_to_file("res://scenes/launcher.tscn" if training >= 0 or in_campaign or in_map_campaign else BattleLaunch.MENU_SCENE))
+	units_layer.busy_changed.connect(func(busy: bool):
+		if not busy and _auto_move_pending:
+			_look_at_my_turn.call_deferred())
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
 	attacks.target_chosen.connect(_frame_attack)
@@ -376,8 +383,10 @@ func _wire() -> void:
 
 
 func _focus_unit(u: Unit) -> void:
-	cinematic.manual_input()
-	rig.focus(units_layer.view_of(u).position)
+	if not _auto_selecting:
+		cinematic.manual_input()
+	if not _auto_selecting or not cinematic.enabled:
+		rig.focus(units_layer.view_of(u).position)
 	sheet_unit = u
 	_show_sheet_if_open()
 
@@ -417,13 +426,25 @@ func _look_at_mine() -> void:
 
 ## On the player's movement turn, bring their next 'Mech on screen.
 func _look_at_my_turn() -> void:
-	if cinematic.enabled or bots.is_bot_turn() or controller.state.game_over:
+	if not _auto_move_pending:
 		return
-	if controller.state.phase != Phase.Kind.MOVEMENT or movement.selected:
+	var s := controller.state
+	if bots.is_bot_turn() or s.game_over or s.phase != Phase.Kind.MOVEMENT:
+		_auto_move_pending = false
 		return
-	var p := controller.pending_units()
-	if not p.is_empty():
-		rig.focus(units_layer.view_of(p[0]).position)
+	if units_layer.is_busy():
+		return  # Retry after the presentation finishes.
+	_auto_move_pending = false
+	if movement.selected != null or not s.point_blank.is_empty():
+		return
+	for u: Unit in controller.pending_units():
+		var view := units_layer.view_of(u)
+		if view == null or not view.visible or s.hidden.has(u) or s.reserves.has(u):
+			continue
+		_auto_selecting = true
+		movement.select(u)
+		_auto_selecting = false
+		break
 
 
 func _on_tap(pos: Vector2) -> void:
@@ -568,6 +589,7 @@ func _on_event(e: GameEvent) -> void:
 				_queue_objectives_refresh()  # carried counters move with their 'Mechs
 			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
+				_auto_move_pending = true
 				_look_at_my_turn.call_deferred()
 		GameEvent.BUILDING:
 			if e.data["kind"] in ["collapsed", "bridge_collapsed", "flattened"]:
@@ -580,12 +602,22 @@ func _on_event(e: GameEvent) -> void:
 				after = CampaignStore.finish(s, 0, int(e.data.get("winner", -1)), recorder.frames)
 			if in_map_campaign:
 				after = MapCampaignStore.finish(s, int(e.data.get("winner", -1)), recorder.frames)
-			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), after)
 			attacks.clear()
 			movement.clear_selection()
+			_show_results(Explainer.text(e, s, ExplainLevel.OFF), after)
 	if not deferred_visual:
 		scars.on_event(e)
 		cinematic.on_event(e)
+
+
+## Wait for the existing presentation queue, not the rules or campaign writeback.
+func _show_results(result: String, after: String) -> void:
+	while units_layer.is_busy():
+		await units_layer.busy_changed
+	var detail := BattleResultSummary.describe(controller.state, recorder.frames, bots.bot_sides)
+	if not after.is_empty():
+		detail += "\n\n" + after
+	hud.show_game_over(result, detail)
 
 
 func _queue_sheet_refresh(id: int) -> void:
@@ -637,5 +669,5 @@ func _update_status() -> void:
 	if bots.is_bot_turn():
 		hud.set_tip("The computer is thinking. Its reasons appear in the log." if GameSettings.explain_level != ExplainLevel.OFF else "")
 	elif s.phase == Phase.Kind.MOVEMENT and GameSettings.explain_level != ExplainLevel.OFF:
-		hud.set_tip("Tap one of your 'Mechs to plan its move.")
+		hud.set_tip("Select a unit or tap a highlighted destination.")
 

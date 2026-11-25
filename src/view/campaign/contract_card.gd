@@ -1,14 +1,36 @@
 class_name ContractCard
 extends RefCounted
-## Draws one contract on the campaign screen: mission, enemy size,
-## objectives, toggleable options and cost, with a Take button.
-
+## One compact, selectable contract summary with optional briefing details.
 
 static func add(list: VBoxContainer, c: Campaign, k: Contract, rules: ChaosRules, index: int,
-		on_toggle: Callable, on_take: Callable) -> void:
+		on_toggle: Callable, on_select: Callable, selected: bool, expanded: bool) -> void:
 	var info := StandardMissions.info(k.mission_id)
-	var head := UiKit.label(list, "%s  ·  enemy %d%% of your BV" % [info.get("name", k.mission_id), k.enemy_percent], UiKit.FONT)
-	head.modulate = Color(1.0, 0.9, 0.6)
+	var why := Warchest.cant_take(c, k, rules)
+	var summary := "%s  ·  %d%% enemy BV  ·  %d WP cost  ·  %d WP max" % [
+		info.get("name", k.mission_id), k.enemy_percent, k.cost(rules), k.max_reward(rules)]
+	if not k.story.is_empty():
+		summary = String(k.story["title"]) + " · " + summary
+	if why != "":
+		summary += "  ·  Unavailable"
+	elif c.wp < k.cost(rules):
+		summary += "  ·  Debt"
+	var b := UiKit.button(list, summary + ("  ▴" if expanded else "  ▾"), on_select.bind(index),
+		Vector2(0, 52), "selected" if selected else "subtle")
+	b.name = "Contract_%d" % index
+	b.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	b.add_theme_font_size_override("font_size", 20)
+	b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	b.tooltip_text = why if why != "" else summary
+	if not expanded:
+		return
+	var briefing := UiKit.panel(list)
+	_details(briefing, k, rules, index, on_toggle)
+
+
+static func _details(list: VBoxContainer, k: Contract, rules: ChaosRules, index: int, on_toggle: Callable) -> void:
+	var info := StandardMissions.info(k.mission_id)
+	if not k.story.is_empty():
+		UiKit.label(list, String(k.story["briefing"]), UiKit.SMALL)
 	UiSkin.label(UiKit.label(list, String(info.get("summary", "")), UiKit.SMALL), "muted")
 	for id in k.objectives:
 		var o := rules.objective(id)
@@ -22,11 +44,3 @@ static func add(list: VBoxContainer, c: Campaign, k: Contract, rules: ChaosRules
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		b.add_theme_font_size_override("font_size", UiKit.SMALL)
-	var why := Warchest.cant_take(c, k, rules)
-	var cost := k.cost(rules)
-	var text := "TAKE CONTRACT  ·  %d WP" % cost
-	if why == "" and c.wp < cost:
-		text += "  (on Warchest debt)"
-	var take := UiKit.button(list, text if why == "" else why, on_take.bind(index), Vector2(0, 64), "primary")
-	take.name = "TakeContract%d" % index
-	take.disabled = why != ""

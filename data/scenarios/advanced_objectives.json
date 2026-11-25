@@ -1,0 +1,88 @@
+{
+  "name": "Advanced Tactical Academy: Hold the Junction",
+  "map": "industrial_yard",
+  "bot_sides": [
+    1
+  ],
+  "bot_level": 2,
+  "units": [
+    {
+      "def": "wolverine_wvr6r",
+      "side": 0,
+      "hex": "0516",
+      "facing": 0
+    },
+    {
+      "def": "hunchback_hbk4g",
+      "side": 0,
+      "hex": "1216",
+      "facing": 0
+    },
+    {
+      "def": "griffin_grf1n",
+      "side": 1,
+      "hex": "0502",
+      "facing": 3
+    },
+    {
+      "def": "centurion_cn9a",
+      "side": 1,
+      "hex": "1202",
+      "facing": 3
+    }
+  ],
+  "lessons": [
+    {
+      "event": "initiative",
+      "turn": 1,
+      "title": "Hold the Junction",
+      "text": "Capture the central junctions instead of chasing kills."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Movement",
+      "turn": 1,
+      "title": "Movement plan",
+      "text": "Send units toward the marked objective hexes. Check each objective's control radius."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Weapon Attack",
+      "turn": 1,
+      "title": "Fire plan",
+      "text": "Protect units holding the objectives. Fire support is valuable even when it does not score directly."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Heat",
+      "turn": 1,
+      "title": "Review the tradeoffs",
+      "text": "The turn limit matters: use the mission scoreboard to choose between attacking and holding."
+    },
+    {
+      "event": "game_over",
+      "title": "Review",
+      "text": "Review the battle record and retry to improve your practice."
+    }
+  ],
+  "mission": {
+    "name": "Hold the Junction",
+    "turns": 8,
+    "victory": "vp",
+    "unit_vp": false,
+    "scoring": "each",
+    "objectives": [
+      {
+        "hex": "0509",
+        "radius": 1,
+        "vp": 1
+      },
+      {
+        "hex": "1209",
+        "radius": 1,
+        "vp": 1
+      }
+    ],
+    "summary": "Control the marked junctions at the end of each turn."
+  }
+}

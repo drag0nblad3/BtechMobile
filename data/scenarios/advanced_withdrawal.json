@@ -1,0 +1,83 @@
+{
+  "name": "Advanced Tactical Academy: Break Contact",
+  "map": "fortified_crossroads",
+  "bot_sides": [
+    1
+  ],
+  "bot_level": 2,
+  "units": [
+    {
+      "def": "wolverine_wvr6r",
+      "side": 0,
+      "hex": "0314",
+      "facing": 0
+    },
+    {
+      "def": "jenner_jr7d",
+      "side": 0,
+      "hex": "0814",
+      "facing": 0
+    },
+    {
+      "def": "hunchback_hbk4g",
+      "side": 1,
+      "hex": "0405",
+      "facing": 3
+    },
+    {
+      "def": "shadow_hawk_shd2h",
+      "side": 1,
+      "hex": "1205",
+      "facing": 3
+    }
+  ],
+  "lessons": [
+    {
+      "event": "initiative",
+      "turn": 1,
+      "title": "Break Contact",
+      "text": "Move a screening force through the enemy line and exit rather than fight to destruction."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Movement",
+      "turn": 1,
+      "title": "Movement plan",
+      "text": "Your designated exit is the northern edge. Move toward it and preserve movement capacity."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Weapon Attack",
+      "turn": 1,
+      "title": "Fire plan",
+      "text": "A damaged unit may be more useful withdrawing than firing another volley. Protect rear armor while retreating or advancing."
+    },
+    {
+      "event": "phase_changed",
+      "phase": "Heat",
+      "turn": 1,
+      "title": "Review the tradeoffs",
+      "text": "Check the exit controls and mission scores. Destroying enemies is not the only route to success."
+    },
+    {
+      "event": "game_over",
+      "title": "Review",
+      "text": "Review the battle record and retry to improve your practice."
+    }
+  ],
+  "mission": {
+    "name": "Break Contact",
+    "turns": 10,
+    "victory": "vp",
+    "unit_vp": true,
+    "forced_withdrawal": true,
+    "exit": "enemy_home",
+    "exit_side": 0,
+    "exit_from_turn": 1,
+    "home_edges": [
+      "south",
+      "north"
+    ],
+    "summary": "Exit through the northern edge and preserve your force."
+  }
+}

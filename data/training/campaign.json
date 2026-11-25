@@ -1,6 +1,6 @@
 {
   "name": "Cadet Training",
-  "intro": "Join Kestrel's Lance for six short lessons, starting with movement and weapon attacks and ending with full-lance tactics. Each battle is real BattleTech combat, with optional practice checks that reward using what you learn. Losses still unlock the next lesson, and you can retry any mission to improve your record.",
+  "intro": "Join Kestrel's Lance for six short lessons, starting with movement and weapon attacks and ending with full-lance tactics. Each battle is real BattleTech combat, with optional practice checks that reward using what you learn. Losses still unlock the next lesson, and you can retry any mission to improve your record. After the basic course, the Advanced Tactical Academy puts specialist equipment and mission objectives into practice.",
   "missions": [
     {
       "id": "first_steps",
@@ -189,6 +189,175 @@
           "title": "Destroy an opposing unit",
           "event": "unit_destroyed",
           "side": "enemy"
+        }
+      ]
+    },
+    {
+      "id": "advanced_indirect",
+      "section": "Advanced Tactical Academy",
+      "title": "1. Fire Over the Ridge",
+      "scenario": "advanced_indirect",
+      "teaches": "Indirect LRM fire and spotters",
+      "briefing": "Bring the Archer's LRMs to bear with a mobile spotter. Keep the Archer behind the ridge where possible; send the Wolverine to a position that sees the target.",
+      "debrief_win": "Instructor Vey: Good work. Review the tactical record before the next exercise.",
+      "debrief_loss": "Instructor Vey: Review the objective and positioning, then retry or continue.",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Reposition a friendly unit",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "fire",
+          "title": "Declare a real attack",
+          "event": "fire_declared",
+          "side": "player",
+          "min_shots": 1
+        },
+        {
+          "id": "indirect",
+          "title": "Fire a shot with the indirect-fire modifier",
+          "event": "weapon_fired",
+          "side": "player",
+          "mod_label": "indirect fire",
+          "ammo_required": true
+        }
+      ]
+    },
+    {
+      "id": "advanced_electronic",
+      "section": "Advanced Tactical Academy",
+      "title": "2. Signals and Shadows",
+      "scenario": "advanced_electronic",
+      "teaches": "ECM, active probes and stealth armor",
+      "briefing": "Use your Men Shen's active probe against an opponent equipped with stealth and ECM. Scout with the Men Shen; keep the supporting Hunchback close enough to exploit a target.",
+      "debrief_win": "Instructor Vey: Good work. Review the tactical record before the next exercise.",
+      "debrief_loss": "Instructor Vey: Review the objective and positioning, then retry or continue.",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Reposition a friendly unit",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "fire",
+          "title": "Declare a real attack",
+          "event": "fire_declared",
+          "side": "player",
+          "min_shots": 1
+        },
+        {
+          "id": "good_shot",
+          "title": "Find a firing solution of 8 or better",
+          "event": "weapon_fired",
+          "side": "player",
+          "max_need": 8,
+          "ammo_required": true
+        }
+      ]
+    },
+    {
+      "id": "advanced_combined",
+      "section": "Advanced Tactical Academy",
+      "title": "3. Combined Arms",
+      "scenario": "advanced_combined",
+      "teaches": "Combat vehicles and battle armor",
+      "briefing": "Command a Timber Wolf, a tank and Elemental battle armor against a mixed force. Vehicles and battle armor have their own movement and damage rules. Check their record sheets; use the Elementals to screen approaches.",
+      "debrief_win": "Instructor Vey: Good work. Review the tactical record before the next exercise.",
+      "debrief_loss": "Instructor Vey: Review the objective and positioning, then retry or continue.",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Reposition a friendly unit",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "fire",
+          "title": "Declare attacks from two friendly units",
+          "event": "fire_declared",
+          "side": "player",
+          "min_shots": 1,
+          "distinct_units": 2
+        },
+        {
+          "id": "transport",
+          "title": "Board eligible infantry onto a transport",
+          "event": "transport",
+          "side": "player",
+          "kind": "board"
+        }
+      ]
+    },
+    {
+      "id": "advanced_objectives",
+      "section": "Advanced Tactical Academy",
+      "title": "4. Hold the Junction",
+      "scenario": "advanced_objectives",
+      "teaches": "Objective control and time limits",
+      "briefing": "Capture the central junctions instead of chasing kills. Send units toward the marked objective hexes. Check each objective's control radius.",
+      "debrief_win": "Instructor Vey: Good work. Review the tactical record before the next exercise.",
+      "debrief_loss": "Instructor Vey: Review the objective and positioning, then retry or continue.",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Reposition a friendly unit",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "fire",
+          "title": "Declare a real attack",
+          "event": "fire_declared",
+          "side": "player",
+          "min_shots": 1
+        },
+        {
+          "id": "score",
+          "title": "Score objective victory points",
+          "event": "mission",
+          "score_side": "player",
+          "kind": "vp",
+          "min_vp": 1
+        }
+      ]
+    },
+    {
+      "id": "advanced_withdrawal",
+      "section": "Advanced Tactical Academy",
+      "title": "5. Break Contact",
+      "scenario": "advanced_withdrawal",
+      "teaches": "Extraction, withdrawal and rear protection",
+      "briefing": "Move a screening force through the enemy line and exit rather than fight to destruction. Your designated exit is the northern edge. Move toward it and preserve movement capacity.",
+      "debrief_win": "Instructor Vey: Good work. Review the tactical record before the next exercise.",
+      "debrief_loss": "Instructor Vey: Review the objective and positioning, then retry or continue.",
+      "practice": [
+        {
+          "id": "move",
+          "title": "Reposition a friendly unit",
+          "event": "unit_moved",
+          "side": "player",
+          "min_hexes": 1
+        },
+        {
+          "id": "fire",
+          "title": "Declare a real attack",
+          "event": "fire_declared",
+          "side": "player",
+          "min_shots": 1
+        },
+        {
+          "id": "exit",
+          "title": "Exit one unit through the mission edge",
+          "event": "unit_exited",
+          "side": "player",
+          "kind": "mission"
         }
       ]
     }

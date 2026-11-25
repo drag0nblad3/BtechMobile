@@ -137,13 +137,13 @@ func _ready() -> void:
 	_button(shortcuts, "Pause", pause_toggled)
 	_button(shortcuts, "Log", log_toggled)
 	_button(shortcuts, "Sheet", sheet_toggled)
-	_button(shortcuts, "Next ▸", next_unit).tooltip_text = "Go to your next unit"
+	_button(shortcuts, "Next", next_unit).tooltip_text = "Go to your next unit"
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
-	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
+	cinematic_button = _button(shortcuts, "Camera", cinematic_toggled)
 	undo_button = _button(shortcuts, "Undo move", undo_move)
 	undo_button.tooltip_text = "Training: take back your last move (no dice rolled since)"
 	_tools_menu = MenuButton.new()
-	_tools_menu.text = "More ▾"
+	_tools_menu.text = "Tools"
 	_tools_menu.tooltip_text = "Save, replay and camera options"
 	shortcuts.add_child(_tools_menu)
 	UiSkin.button(_tools_menu, "subtle")
@@ -309,10 +309,15 @@ func _build_game_over(parent: Control) -> void:
 	parent.add_child(game_over_box)
 	game_over_label = _label(game_over_box, 34)
 	UiSkin.label(game_over_label, "heading")
-	game_over_detail = _label(game_over_box, FONT_SIZE)
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.custom_minimum_size = Vector2(560, 160)
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	game_over_box.add_child(scroll)
+	var report := UiKit.panel(scroll)
+	game_over_detail = _label(report, 20)
 	game_over_detail.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	game_over_detail.custom_minimum_size.x = 760  # training debriefs run long
-	UiSkin.button(_button(game_over_box, "Analyze Battle", battle_forensics), "primary")
+	UiSkin.button(_button(game_over_box, "Analyze in Tactical Academy", battle_forensics), "primary")
 	_button(game_over_box, "New Battle", new_battle)
 
 
@@ -406,12 +411,15 @@ func set_mode_label(text: String) -> void:
 
 
 func set_cinematic_label(enabled: bool) -> void:
-	cinematic_button.text = "Cine: On" if enabled else "Cine: Off"
+	cinematic_button.text = "Cinema"
+	cinematic_button.tooltip_text = "Cinematic camera: " + ("On" if enabled else "Off")
 	UiSkin.button(cinematic_button, "selected" if enabled else "secondary")
 
 
 func set_explain_label(level: int) -> void:
-	explain_button.text = "Explain: " + ExplainLevel.name_of(level)
+	explain_button.text = "Explain"
+	explain_button.tooltip_text = "Explanations: " + ExplainLevel.name_of(level) + " (tap to cycle)"
+	UiSkin.button(explain_button, "selected" if level != ExplainLevel.OFF else "secondary")
 
 
 func show_move_controls(visible_: bool) -> void:

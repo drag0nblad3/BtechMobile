@@ -35,10 +35,10 @@ static func refresh(ai: AttackInput) -> void:
 	if ai.target_hex != Hex.INVALID:
 		ai.hud.set_info("%s -> %s %s (%d hexes)%s" % [Names.unit(ai.attacker), _noun(ai), Hex.label(ai.target_hex),
 				Hex.distance(ai.attacker.coord, ai.target_hex), twist])
-		ai.hud.set_tip(VolleyForecast.summary(ai.controller.state, ai.attacker, ai._shot_list()) if level != ExplainLevel.OFF else "")
+		ai.hud.set_tip("")
 		if not ai.hud.sheet_open:
 			ai.hud.show_side(AttackPanel.build("Weapons at %s %s" % [_noun(ai), Hex.label(ai.target_hex)],
-				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode))
+				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode, _forecast(ai, level)))
 		return
 	if ai.target == null:
 		ai.hud.set_info("%s: tap an enemy (or a building) to aim%s" % [Names.unit(ai.attacker), twist])
@@ -57,10 +57,10 @@ static func refresh(ai: AttackInput) -> void:
 	ai.hud.set_info("%s -> %s (%d hexes)%s" % [Names.unit(ai.attacker), Names.unit(ai.target),
 			Hex.distance(ai.attacker.coord, ai.target.coord), twist])
 	if weapon:
-		ai.hud.set_tip(VolleyForecast.summary(ai.controller.state, ai.attacker, ai._shot_list()) if level != ExplainLevel.OFF else "")
+		ai.hud.set_tip("")
 		if not ai.hud.sheet_open:
 			var panel := AttackPanel.build("Weapons at " + Names.unit(ai.target),
-				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode)
+				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode, _forecast(ai, level))
 			var side: Control = AimPicker.wrap(panel, ai.target, ai.aims.get(ai.target.id, -1), ai._next_aim) \
 					if AimPicker.available(ai.attacker, ai.target) else panel
 			ai.hud.show_side(TagInput.wrap(side, ai) if TagInput.available(ai.controller.state, ai.attacker, ai.target) else side)
@@ -90,3 +90,11 @@ static func secondary(ai: AttackInput, t: Unit) -> bool:
 	var list := ai._shot_list()
 	list.append({"weapon": -1, "target_id": t.id})
 	return FireOptions.primary_target(ai.controller.state, ai.attacker, list) != t.id
+
+
+static func _forecast(ai: AttackInput, level: int) -> String:
+	if level == ExplainLevel.OFF:
+		return ""
+	var f := VolleyForecast.estimate(ai.controller.state, ai.attacker, ai._shot_list())
+	return "Est. %.1f dmg · %d%% hit · +%d heat → %d" % [
+		f["damage"], roundi(float(f["any_hit"]) * 100), f["heat"], f["after"]]
