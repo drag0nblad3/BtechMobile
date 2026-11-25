@@ -35,9 +35,14 @@ var undo_input := UndoInput.new()  ## Training: take back your last move.
 var _last_autosave_turn := -1
 var _autosave_pending := false
 var _tutorial_path := ""
+var startup_complete := false
+var _loading: BattleLoading
 
 
 func _ready() -> void:
+	_loading = BattleLoading.new()
+	add_child(_loading)
+	await _loading.step("Loading battle data and deployment orders", 10.0)
 	GameSettings.load_settings()
 	var saved := {}
 	if BattleLaunch.load_autosave:
@@ -58,6 +63,7 @@ func _ready() -> void:
 		controller = saved["controller"]
 		state = controller.state
 		recorder.frames = saved["frames"]
+	await _loading.step("Preparing mission and command systems", 18.0)
 	bots = BotDriver.new()
 	bots.controller = controller
 	bots.bot_sides = saved["bots"] if not saved.is_empty() else BattleLaunch.take_bots()
@@ -90,18 +96,25 @@ func _ready() -> void:
 				var player_side := 0 if not bots.bot_sides.has(0) else 1
 				practice.restore(recorder.frames, state, player_side)
 	add_child(BattleEnvironment.build(state.conditions))
-	_build_views(state)
+	await _build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
 	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
 	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
+	await _loading.step("Finalizing deployment and initiative", 94.0)
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
 		cinematic.introduce(state)
 	else:
 		_resume_ui()
+	# Keep the cover through the initial deferred autosave and first render.
+	await _loading.step("Battle ready", 100.0)
+	startup_complete = true
+	_loading.hide()
+	_loading.queue_free()
+	bots.set_process(true)
 
 
 func _resume_ui() -> void:
@@ -188,7 +201,14 @@ func _open_forensics() -> void:
 		hud.set_tip("Could not archive battle for analysis.")
 
 
+func _input(_event: InputEvent) -> void:
+	if not startup_complete:
+		get_viewport().set_input_as_handled()
+
+
 func _notification(what: int) -> void:
+	if not startup_complete:
+		return
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST and controller != null:
 		_toggle_pause()
 	elif what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
@@ -198,13 +218,20 @@ func _notification(what: int) -> void:
 func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
-	map_view.build(state.map)
+	await map_view.build_staged(state.map, _loading.step)
 	map_view.set_conditions(state.conditions)
+	await _loading.step("Placing mission objectives", 48.0)
 	objectives = ObjectiveMarkers.build(state)
 	add_child(objectives)
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
-	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
+	var see_hidden := [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side))
+	var roster := state.all_units()
+	for i in roster.size():
+		await _loading.step("Preparing unit %d of %d" % [i + 1, roster.size()],
+				50.0 + 34.0 * float(i) / maxf(1.0, roster.size()))
+		units_layer.build_one(state, roster[i], see_hidden, true)
+	await _loading.step("Restoring battlefield history and effects", 84.0)
 	add_child(scars)
 	scars.setup(state, units_layer, recorder.frames)
 	fx.setup(state, units_layer, map_view)
@@ -212,6 +239,7 @@ func _build_views(state: GameState) -> void:
 	add_child(fx)
 	add_child(audio)
 	audio.setup(state)
+	await _loading.step("Setting up tactical controls", 90.0)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -261,6 +289,7 @@ func _build_views(state: GameState) -> void:
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
+	bots.set_process(false)
 	var plates := Nameplates.new()
 	add_child(plates)
 	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
@@ -378,7 +407,7 @@ func _look_at_my_turn() -> void:
 
 
 func _on_tap(pos: Vector2) -> void:
-	if units_layer.attack_playing:
+	if not startup_complete or units_layer.attack_playing:
 		return
 	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)

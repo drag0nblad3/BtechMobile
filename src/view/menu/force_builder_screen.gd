@@ -19,15 +19,19 @@ var _pending_starter: Dictionary = {}
 var _pending_side := -1
 var _tabs: Array[Button] = []  ## FORCES, BATTLEFIELD
 var _pages: Array[Control] = []
+var _starting := false
 
 
 ## Android Back returns to the launcher without exiting the app.
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST and not _starting:
 		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if _starting:
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey:
 		var key := event as InputEventKey
 		if key.pressed and not key.echo and key.keycode == KEY_ESCAPE:
@@ -302,9 +306,24 @@ func open_map_campaign() -> void:
 
 
 func _start() -> void:
-	if not builder.ready_to_fight() or builder.bv(0) > builder.budget or builder.bv(1) > builder.budget:
+	if _starting or not builder.ready_to_fight() or builder.bv(0) > builder.budget or builder.bv(1) > builder.budget:
 		return
+	_starting = true
+	var loading := BattleLoading.new()
+	add_child(loading)
+	await loading.step("Generating battlefield", 2.0)
 	var map := map_picker.choice.build()
+	await loading.step("Assigning units and deployment positions", 6.0)
 	BattleLaunch.pending = builder.build(map)
+	if BattleLaunch.pending == null:
+		loading.queue_free()
+		_starting = false
+		_notify("Deployment could not be prepared.")
+		return
 	BattleLaunch.bot_sides = bot_sides.duplicate()
-	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
+	var error := get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
+	if error != OK:
+		BattleLaunch.pending = null
+		loading.queue_free()
+		_starting = false
+		_notify("Battle scene could not be opened.")

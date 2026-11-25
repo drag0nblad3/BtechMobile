@@ -12,12 +12,19 @@ var attack_playing := false
 ## Hidden units only show for sides in `see_hidden` (the human players).
 func build(state: GameState, see_hidden: Array = [0, 1]) -> void:
 	for u in state.all_units():
-		var v := UnitView.new()
-		add_child(v)
-		v.setup(u, state.map)
-		v.set_field_visible((not state.hidden.has(u) or see_hidden.has(u.side)) \
-				and not state.reserves.has(u) and not state.waiting.has(u) and not state.mission.exited.has(u.id))
-		views[u.id] = v
+		build_one(state, u, see_hidden)
+
+
+## Invisible reserves have a view/position, but need not allocate a model
+## until they enter the battle. Replay's synchronous build stays unchanged.
+func build_one(state: GameState, u: Unit, see_hidden: Array, defer_off_field := false) -> void:
+	var on_field := (not state.hidden.has(u) or see_hidden.has(u.side)) \
+			and not state.reserves.has(u) and not state.waiting.has(u) and not state.mission.exited.has(u.id)
+	var v := UnitView.new()
+	add_child(v)
+	v.setup(u, state.map, on_field or not defer_off_field)
+	v.set_field_visible(on_field)
+	views[u.id] = v
 
 
 func view_of(u: Unit) -> UnitView:
@@ -65,8 +72,9 @@ func react(e: GameEvent) -> void:
 
 func reload_looks() -> void:
 	for view: UnitView in views.values():
-		view.refresh_look()
-		view.show_condition()
+		if view._model != null:
+			view.refresh_look()
+			view.show_condition()
 
 
 func _on_done() -> void:
