@@ -18,6 +18,7 @@ var lances: Array[MapLance] = []
 var turn := 1
 var battles: Array[Dictionary] = []  ## This turn's meetings still to fight (MapTurn).
 var log: Array[String] = []
+var scouted: Array[Vector2i] = []  ## Zones the invader's Scout orders saw this turn (MapFog).
 var winner := -1
 
 
@@ -39,7 +40,7 @@ static func create(db: UnitDb, rng: RandomNumberGenerator, rules_in: Dictionary 
 		ids.append(m.id)
 	var landing := Vector2i(mc.region.width / 2, mc.region.height - 1)
 	for i in ceili(ids.size() / float(LANCE)):
-		mc._add_lance(0, landing, ids.slice(i * LANCE, (i + 1) * LANCE))
+		mc.add_lance(0, landing, ids.slice(i * LANCE, (i + 1) * LANCE))
 	mc._enemy_forces(db, rng)
 	return mc
 
@@ -76,9 +77,12 @@ func fit_mechs(l: MapLance) -> Array[String]:
 	return out
 
 
-func _add_lance(side: int, zone: Vector2i, ids: Array) -> MapLance:
+## A new lance of `side` at `zone` (ids stay unique after lances are lost).
+func add_lance(side: int, zone: Vector2i, ids: Array) -> MapLance:
 	var l := MapLance.new()
 	var n := lances_of(side).size()
+	while lance("%s%d" % ["p" if side == 0 else "e", n + 1]) != null:
+		n += 1
 	l.id = "%s%d" % ["p" if side == 0 else "e", n + 1]
 	l.name = ("%s Lance" % LANCE_NAMES[n % LANCE_NAMES.size()]) if side == 0 else "Defender Lance %d" % (n + 1)
 	l.side = side
@@ -101,8 +105,9 @@ func _enemy_forces(db: UnitDb, rng: RandomNumberGenerator) -> void:
 	fb.skills[1] = Vector2i(int(skill[0]), int(skill[1]))
 	var spots: Array[Vector2i] = []
 	for loc in region.locations:
-		spots.append(loc["zone"])
-	var capital := spots[0]
+		if bool(rules.get("locations", {}).get(loc["kind"], {}).get("garrison", true)):
+			spots.append(loc["zone"])
+	var capital: Vector2i = region.locations[0]["zone"]
 	for i in int(rules.get("enemy_reserve_lances", 1)):
 		spots.append(capital)
 	for z in spots:
@@ -112,4 +117,4 @@ func _enemy_forces(db: UnitDb, rng: RandomNumberGenerator) -> void:
 			var m := enemy.add_mech(d)
 			m.pilot_id = p.id
 			ids.append(m.id)
-		_add_lance(1, z, ids)
+		add_lance(1, z, ids)

@@ -50,3 +50,4 @@ static func add(th: ToHit, state: GameState, attacker: Unit, target: Unit = null
 		th.add("active probe", 0, "Its active probe sees through the murk at this range: no low visibility penalty.")
 		return
 	th.add("low visibility", MOD, "Murk covers the battlefield: +1 to every ranged attack. Passing the sensor check at the start of the phase would remove it.")
+	EnvSpecialist.add_attack(th, attacker, EnvSpecialist.LOW_VISIBILITY)

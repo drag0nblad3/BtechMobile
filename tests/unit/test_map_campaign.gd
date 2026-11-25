@@ -12,16 +12,16 @@ func _campaign(seed_n := 7) -> MapCampaign:
 func test_setup() -> void:
 	var mc := _campaign()
 	check_eq(mc.region.terrain.size(), 48)
-	check_eq(mc.region.locations.size(), 9)
-	check_eq(mc.region.total_points(), 21)
-	check_eq(mc.region.points(1), 21, "the defender holds everything")
+	check_eq(mc.region.locations.size(), 12)
+	check_eq(mc.region.total_points(), 25)
+	check_eq(mc.region.points(1), 25, "the defender holds everything")
 	check_eq(mc.lances_of(0).size(), 3, "a company of three lances")
-	check_eq(mc.lances_of(1).size(), 10, "a lance per location plus a reserve")
+	check_eq(mc.lances_of(1).size(), 11, "a lance per garrisoned location plus a reserve")
 	for loc in mc.region.locations:
 		check(loc["zone"].y < mc.region.height - 1, "nothing on the landing row")
 	var again := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
 	check_eq(again.region.locations[0]["zone"], mc.region.locations[0]["zone"], "saved")
-	check_eq(again.lances.size(), 13)
+	check_eq(again.lances.size(), 14)
 	check_eq(again.fit_mechs(again.lances[0]).size(), 4)
 
 
@@ -91,7 +91,7 @@ func test_bot_and_winning() -> void:
 	var mc := _campaign()
 	MapBot.orders(mc)
 	var defenders := mc.lances_of(1).filter(func(l: MapLance) -> bool: return l.order == MapLance.DEFEND)
-	check_eq(defenders.size(), 9, "garrisons hold")
+	check_eq(defenders.size(), 10, "garrisons hold")
 	check_eq(MapTurn.winner(mc), -1)
 	for loc in mc.region.locations:
 		loc["owner"] = 0

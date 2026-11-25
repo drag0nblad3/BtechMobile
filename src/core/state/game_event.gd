@@ -36,6 +36,7 @@ const PHYSICAL := &"physical"             # {attacker_id, target_id, kind, limb,
 const CHARGE_DECLARED := &"charge_declared" # {unit_id, target_id, kind: charge|dfa, need}
 const SKID := &"skid"                     # {unit_id, hexes, wanted} slid after a failed roll
 const DISPLACED := &"displaced"           # {unit_id, from: Vector3i, path: [Vector3i]}
+const COMMANDER := &"commander"           # {side, unit_id, lost}
 const FORMATION := &"formation"           # {kind: formed|lost, side, type, left?, abilities?}
 const MINEFIELD := &"minefield"           # {kind: laid|triggered|cleared|survived, coord, side, unit_id?, roll?, need?, hit?, groups?, density?}
 const BUILDING := &"building"             # {kind: flattened|entry_failed|destroy_check|shot|cover_hit|collapsed, coord, name, unit_id?, damage?, roll?, need?}

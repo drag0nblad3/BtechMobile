@@ -2,7 +2,8 @@ class_name SinkButtons
 extends RefCounted
 ## Record-sheet buttons to switch heat sinks off or back on at the End Phase
 ## (HeatSinkSwitch). They send "sinks:<n>" through the sheet's request callback.
-## Also the stealth armor switch (Stealth), which sends "stealth:on" / "stealth:off".
+## Also the stealth armor switch (Stealth), which sends "stealth:on" / "stealth:off",
+## and the Combat Intuition focus ("intuition:on" / "intuition:off").
 
 
 static func row(u: Unit, on_request: Callable) -> Control:
@@ -34,4 +35,16 @@ static func stealth_row(u: Unit, on_request: Callable) -> Control:
 	b.custom_minimum_size = Vector2(0, 58)
 	b.add_theme_font_size_override("font_size", 19)
 	b.pressed.connect(func() -> void: on_request.call("stealth:" + ("on" if off else "off")))
+	return b
+
+
+## Combat Intuition focus at the End Phase, or null without the ability.
+static func intuition_row(u: Unit, on_request: Callable) -> Control:
+	if CombatIntuition.problem(u) != "":
+		return null
+	var b := Button.new()
+	b.text = "Focus at End Phase (1 pilot hit, act last next turn): %s" % ("yes" if u.intuition_request else "no")
+	b.custom_minimum_size = Vector2(0, 58)
+	b.add_theme_font_size_override("font_size", 19)
+	b.pressed.connect(func() -> void: on_request.call("intuition:" + ("off" if u.intuition_request else "on")))
 	return b

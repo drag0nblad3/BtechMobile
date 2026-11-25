@@ -90,6 +90,12 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return VehicleText.event(s, d, level)
 		GameEvent.DESTROY_CHECK:
 			return AssetText.destroy_check(s, d, level)
+		GameEvent.COMMANDER:
+			if d["lost"]:
+				return "%s's commander, %s, is out of the fight: %s takes -2 on Initiative for the rest of the battle." % [
+						Names.side(d["side"]), _u(s, d), Names.side(d["side"])]
+			return "%s commands %s.%s" % [_u(s, d), Names.side(d["side"]),
+					" Losing the commander costs the side -2 Initiative." if level == ExplainLevel.FULL else ""]
 		GameEvent.FORMATION:
 			return "%s's %s is down to %d units and loses its formation bonuses." % [
 					Names.side(d["side"]), FormationTypes.name_of(d["type"]), d["left"]]

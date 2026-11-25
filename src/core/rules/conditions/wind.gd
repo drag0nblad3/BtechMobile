@@ -15,7 +15,7 @@ const MOD := 1
 static func add(th: ToHit, state: GameState, u: Unit) -> void:
 	if not applies(state, u):
 		return
-	th.add("wind", MOD, "Gale-force wind pushes the 'Mech around: +1 to every piloting roll outside buildings.")
+	EnvSpecialist.add_psr(th, u, EnvSpecialist.WIND, "wind", MOD, "Gale-force wind pushes the 'Mech around: +1 to every piloting roll outside buildings.")
 
 
 static func applies(state: GameState, u: Unit) -> bool:

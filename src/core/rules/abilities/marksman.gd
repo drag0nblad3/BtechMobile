@@ -6,7 +6,7 @@ extends RefCounted
 ## turn and no physical attack follows. With a working targeting computer
 ## the aimed shot also gets -2.
 ## TODO(rules): "stationary" read as no hexes entered and no jump (turning
-## in place allowed). The computer player doesn't use it.
+## in place allowed). The computer player uses it via BotAim.marksman.
 
 const TC_MOD := -2
 const LABEL := "marksman"

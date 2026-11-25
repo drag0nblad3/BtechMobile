@@ -9,11 +9,14 @@ const MAX_BONUS := 6
 
 
 ## Bonus per side for this turn's roll ({} when the rule is off).
-## Lasting bonuses (GameState.initiative_bonus) are added in.
+## Lasting bonuses (GameState.initiative_bonus) and a lost commander's -2
+## (Commanders) are added in.
 static func bonuses(state: GameState) -> Dictionary:
 	var out: Dictionary = state.initiative_die.duplicate() if state.initiative_die_rule else {}
 	for side: int in state.initiative_bonus:
 		out[side] = int(out.get(side, 0)) + int(state.initiative_bonus[side])
+	for side: int in state.commanders_lost:
+		out[side] = int(out.get(side, 0)) + Commanders.initiative(state, side)
 	return out
 
 

@@ -255,6 +255,14 @@ func request_stealth(unit: Unit, on: bool) -> bool:
 	return true
 
 
+## Asks to have the warrior focus at the End Phase (Combat Intuition).
+func request_intuition(unit: Unit, on: bool) -> bool:
+	if CombatIntuition.problem(unit) != "":
+		return false
+	unit.intuition_request = on
+	return true
+
+
 func set_torso_twist(unit: Unit, dir: int) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK) or unit.prone or unit.def.quad or unit.arms_flipped:
 		return false
@@ -280,7 +288,7 @@ func announce(unit: Unit, text: String) -> void:
 func pending_units() -> Array[Unit]:
 	var out: Array[Unit] = []
 	for u in state.units_of_side(state.active_side()):
-		if u.can_act() and not _done_in_phase(u):
+		if u.can_act() and not _done_in_phase(u) and CombatIntuition.may_go(state, u):
 			out.append(u)
 	out.append_array(CombatDrop.ready_units(state, state.active_side()))
 	return out
@@ -311,6 +319,8 @@ func _unit_done() -> void:
 
 
 func _roll_initiative() -> void:
+	Commanders.ensure(state, _emit_cb)
+	Commanders.check(state, _emit_cb)
 	var r := Initiative.roll(dice, state.sides_alive(), InitiativeDie.bonuses(state))
 	TacticalGenius.apply(state, dice, r)
 	var forced := MissionFlow.forced_initiative(state)
@@ -340,8 +350,11 @@ func _begin_phase(p: int) -> void:
 
 func _order_sides() -> void:
 	state.order_index = 0
-	state.side_order = UnequalNumbers.order(UnequalNumbers.eligible(state, _done_in_phase),
-			state.initiative_order)
+	var counts := UnequalNumbers.eligible(state, _done_in_phase)
+	var late := CombatIntuition.late_sides(state, _done_in_phase, counts)
+	state.side_order = UnequalNumbers.order(counts, state.initiative_order)
+	state.late_from = state.side_order.size() if not late.is_empty() else -1
+	state.side_order.append_array(late)
 
 
 func _advance_to_side_with_work() -> void:

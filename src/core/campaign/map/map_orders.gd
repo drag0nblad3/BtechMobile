@@ -17,6 +17,8 @@ static func why_not(mc: MapCampaign, l: MapLance, order: String, target: Vector2
 	if reach > 0 and target != l.zone:
 		if not mc.region.has_zone(target):
 			return "That zone isn't on the map."
+		if order == MapLance.MOVE and MapFactory.sea_route(mc, l, target):
+			return ""
 		if mc.region.distance(l.zone, target) > reach:
 			return "Too far: %s reaches %d zone%s." % [MapLance.NAMES[order], reach, "" if reach == 1 else "s"]
 	return ""

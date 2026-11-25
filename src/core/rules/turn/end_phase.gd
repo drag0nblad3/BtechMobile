@@ -13,6 +13,7 @@ static func run(state: GameState, dice: Dice, emit: Callable) -> void:
 		Stealth.apply(emit, u)
 		if u.destroyed or u.pilot.is_dead():
 			continue
+		CombatIntuition.apply(state, dice, emit, u)
 		if u.has_hit_slot(CritSlot.Kind.LIFE_SUPPORT) and submerged(state, u):
 			PilotDamage.wound(dice, emit, u, 1, "under water with life support damaged")
 		if not u.pilot.conscious and u.pilot.out_since_turn < state.turn \
