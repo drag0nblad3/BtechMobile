@@ -9,7 +9,8 @@ const ORDER := [-1, Location.HEAD, Location.CT, Location.LT, Location.RT,
 
 
 static func available(attacker: Unit, target: Unit) -> bool:
-	return target != null and (ToHitCalc.is_immobile(target) or TargetingComputer.working(attacker))
+	return target != null and (ToHitCalc.is_immobile(target) or TargetingComputer.working(attacker)
+			or Marksman.ready(attacker))
 
 
 ## The next location in ORDER that's still there.
@@ -23,13 +24,13 @@ static func next(target: Unit, aim: int) -> int:
 
 
 ## Applies the aim to fire options (their ToHit) where the weapon may aim.
-static func apply(state: GameState, target: Unit, options: Array, aim: int) -> void:
+static func apply(state: GameState, target: Unit, options: Array, aim: int, attacker: Unit = null) -> void:
 	if aim < 0:
 		return
 	for o: Dictionary in options:
 		var th: ToHit = o["to_hit"]
-		if th.possible() and AimedShot.problem(state, o["weapon"], target, aim, th) == "":
-			AimedShot.adjust(th, aim, o["weapon"])
+		if th.possible() and AimedShot.problem(state, o["weapon"], target, aim, th, attacker) == "":
+			AimedShot.adjust(th, aim, o["weapon"], attacker)
 
 
 ## Adds "aim" to shots at an aimed target.

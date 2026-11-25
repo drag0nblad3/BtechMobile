@@ -36,7 +36,7 @@ static func plan(s: GameState, u: Unit) -> Dictionary:
 			if kind == "push":
 				v = th.chance() * push_value(s, u, e)
 				why += ": %s" % _push_note(s, u, e)
-			elif kind == "kick":
+			elif kind == "kick" or kind == Zweihander.KIND:
 				var fall_risk := (1.0 - th.chance()) * (1.0 - Dice.chance_2d6(Psr.standing_mods(u).target()))
 				v -= fall_risk * Fall.damage_for(u, 0)
 			elif kind == "brush_off":

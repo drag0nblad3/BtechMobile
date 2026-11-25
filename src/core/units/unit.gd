@@ -75,6 +75,7 @@ var sc_active: bool = false  ## sc_failed engine criticals are owed after the mo
 var sc_failed: bool = false
 var formation_spas: Array[String] = []  ## Free abilities from its formation (Formation).
 var luck_used := 0  ## Lucky rerolls taken, own and the formation's (FormationLuck).
+var marksman_used := false  ## Fired a Marksman aimed shot: no other weapon, no physical attack (Marksman).
 var flat_out := false  ## Used Speed Demon's extra MP: no attacks this turn (SpeedDemon).
 var torso_twist: int = 0  ## -1 left, 0, +1 right (one hexside), weapon phase only.
 var arms_flipped := false  ## Arms reversed this turn (ArmFlip).
@@ -210,6 +211,7 @@ func reset_for_turn() -> void:
 	move_mode = -1
 	hexes_moved = 0
 	flat_out = false
+	marksman_used = false
 	torso_twist = 0
 	arms_flipped = false
 	tmm_zero = false

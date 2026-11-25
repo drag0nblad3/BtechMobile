@@ -223,16 +223,21 @@ func _toggle(key: Variant, on: bool) -> void:
 				primary_id = ids[0] if not ids.is_empty() else -1
 	else:
 		if on:
-			if String(key).begins_with("kick") or String(key).begins_with("push"):
+			if _alone(String(key)):
 				physical.clear()
 			else:
 				for k: String in physical.keys():
-					if k.begins_with("kick") or k.begins_with("push"):
+					if _alone(k):
 						physical.erase(k)
 			physical[key] = true
 		else:
 			physical.erase(key)
 	_refresh()
+
+
+## Attacks that must be the only physical attack this turn.
+static func _alone(key: String) -> bool:
+	return key.begins_with("kick") or key.begins_with("push") or key.begins_with(Zweihander.KIND)
 
 
 func _mode(key: Variant) -> void:

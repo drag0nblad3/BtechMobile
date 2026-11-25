@@ -8,16 +8,18 @@ extends RefCounted
 ## cover: legs can't be chosen, the cover modifier is dropped, and rolled
 ## leg hits are rerolled. A targeting computer (TargetingComputer) also
 ## allows aiming at a moving 'Mech: +3 instead of its -1, never the head,
-## not with pulse lasers; aimed pulse shots never get its -1.
+## not with pulse lasers; aimed pulse shots never get its -1. A Marksman
+## (Marksman) who stood still aims the same way without one.
 
 const HEAD_MOD := 3
 const NEEDS := 4
 
 
 ## Why `w` can't aim at `loc` on `target` ("" = it can).
-static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int, th: ToHit) -> String:
+static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int, th: ToHit,
+		attacker: Unit = null) -> String:
 	if not ToHitCalc.is_immobile(target):
-		if not _has(th, "targeting computer"):
+		if not _has(th, "targeting computer") and not Marksman.ready(attacker):
 			return "only an immobile target (shut down, pilot out, or legless) can be aimed at"
 		if w.def.pulse:
 			return "pulse lasers can't aim at a moving target"
@@ -39,15 +41,18 @@ static func problem(_state: GameState, w: MountedWeapon, target: Unit, loc: int,
 
 
 ## Turns a normal to-hit number into the aimed one.
-static func adjust(th: ToHit, loc: int, w: MountedWeapon) -> void:
+static func adjust(th: ToHit, loc: int, w: MountedWeapon, attacker: Unit = null) -> void:
 	th.aim_loc = loc
 	th.aim_covered = _covered(th)
 	_drop(th, "partial cover")
 	th.cover_hex = Hex.INVALID
 	if not _has(th, "target immobile"):
+		var had_tc := _has(th, "targeting computer")
 		_drop(th, "targeting computer")
 		th.add("aimed with targeting computer", TargetingComputer.MOBILE_AIM_MOD,
 				"The targeting computer can pick a location on a moving 'Mech: +3 instead of its usual -1.")
+		if Marksman.ready(attacker):
+			Marksman.adjust(th, had_tc)
 		return
 	if w.def.pulse:
 		_drop(th, "targeting computer")

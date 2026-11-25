@@ -22,7 +22,7 @@ static func names(o: Object) -> Array:
 				"voluntary_shutdown", "power_request", "masc_level", "sc_level",
 				"sc_lost", "has_moved", "has_fired", "has_physical", "move_mode",
 				"hexes_moved", "masc_used", "masc_active", "masc_failed",
-				"sc_used", "sc_active", "sc_failed", "flat_out", "formation_spas", "luck_used", "torso_twist",
+				"sc_used", "sc_active", "sc_failed", "flat_out", "formation_spas", "luck_used", "marksman_used", "torso_twist",
 				"arms_flipped", "landed", "tmm_zero", "heat_generated",
 				"outside_heat", "damage_this_phase", "psr_pending"]
 	if o is AssetState:
