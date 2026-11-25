@@ -17,9 +17,10 @@ static func plan(state: GameState, u: Unit, mode: int) -> MoveOptions:
 	var stuck := card.immobile() or u.asset.carried_by >= 0 or jumper or mode == MoveMode.Kind.JUMP
 	var mp := 0 if stuck else u.walk_mp()
 	var budget := ceili(mp / 2.0) if backward else mp
-	var opts := _search(state, u, mode, budget, backward, false)
+	var indexed := AssetStacking.occupancy(state, u)
+	var opts := _search(state, u, mode, budget, backward, false, indexed)
 	if budget > 0 and paved_bonus(state, u):
-		_merge(opts, _search(state, u, mode, budget + 1, backward, true))
+		_merge(opts, _search(state, u, mode, budget + 1, backward, true, indexed))
 		opts.budget = budget + 1
 	_leave_fire(state, u, opts)
 	return opts
@@ -50,7 +51,7 @@ static func paved_bonus(state: GameState, u: Unit) -> bool:
 
 
 static func _search(state: GameState, u: Unit, mode: int, budget: int, backward: bool,
-		road_only: bool) -> MoveOptions:
+		road_only: bool, indexed: Variant = null) -> MoveOptions:
 	var opts := MoveOptions.new()
 	opts.unit = u
 	opts.mode = mode
@@ -66,7 +67,7 @@ static func _search(state: GameState, u: Unit, mode: int, budget: int, backward:
 		var k: Vector3i = top[1]
 		if int(top[0]) > int(opts.cost[k]):
 			continue
-		for step in _steps(state, u, k, nimble, backward, road_only):
+		for step in _steps(state, u, k, nimble, backward, road_only, indexed):
 			var nk: Vector3i = step[0]
 			var ng: int = int(opts.cost[k]) + int(step[1])
 			if ng > budget or (opts.cost.has(nk) and int(opts.cost[nk]) <= ng):
@@ -74,15 +75,15 @@ static func _search(state: GameState, u: Unit, mode: int, budget: int, backward:
 			opts.cost[nk] = ng
 			opts.prev[nk] = k
 			var c := MoveOptions.coord_of(nk)
-			opts.can_end[nk] = c == u.coord or can_stop(state, u, c)
-			if c == u.coord or AssetStacking.can_pass(state, u, c):
+			opts.can_end[nk] = c == u.coord or can_stop(state, u, c, indexed)
+			if c == u.coord or AssetStacking.can_pass(state, u, c, indexed):
 				heap.push(ng, nk)  # an enemy hex can be entered to stop in, not crossed
 	return opts
 
 
 ## [[key, mp]]: turns (free for infantry), forward, and backward if declared.
 static func _steps(state: GameState, u: Unit, k: Vector3i, nimble: bool, backward: bool,
-		road_only: bool) -> Array:
+		road_only: bool, indexed: Variant = null) -> Array:
 	var c := MoveOptions.coord_of(k)
 	var out := []
 	var dirs: Array = range(6) if nimble else [k.z]
@@ -95,35 +96,36 @@ static func _steps(state: GameState, u: Unit, k: Vector3i, nimble: bool, backwar
 			if road_only and not Roads.is_road(state.map.get_tile(to)):
 				continue
 			var mp := AssetMoveCost.enter_cost(state, u, c, to, backward)
-			if mp == AssetMoveCost.PROHIBITED or not _may_step(state, u, to):
+			if mp == AssetMoveCost.PROHIBITED or not _may_step(state, u, to, indexed):
 				continue
 			out.append([MoveOptions.key(to, d), mp])
 	return out
 
 
 ## Entering a hex at all: friends or a hex it may stop in; no fire for foot troops.
-static func _may_step(state: GameState, u: Unit, c: Vector2i) -> bool:
+static func _may_step(state: GameState, u: Unit, c: Vector2i, indexed: Variant = null) -> bool:
 	var tile := state.map.get_tile(c)
 	if tile.on_fire and u.asset.card.kind == AssetCard.INFANTRY:
 		return false  # conventional infantry can't cross fire (p. 148)
-	return AssetStacking.can_pass(state, u, c) or AssetStacking.can_end(state, u, c)
+	return AssetStacking.can_pass(state, u, c, indexed) or AssetStacking.can_end(state, u, c, indexed)
 
 
 ## A legal place to finish: stacking, and never a burning hex (p. 148).
-static func can_stop(state: GameState, u: Unit, c: Vector2i) -> bool:
+static func can_stop(state: GameState, u: Unit, c: Vector2i, indexed: Variant = null) -> bool:
 	var tile := state.map.get_tile(c)
 	if tile == null or (tile.on_fire and not u.asset.card.has("FR")):
 		return false
-	return AssetStacking.can_end(state, u, c)
+	return AssetStacking.can_end(state, u, c, indexed)
 
 
 static func _jump(state: GameState, u: Unit) -> MoveOptions:
 	var opts := JumpPlanner.plan(state, u)
+	var indexed := AssetStacking.occupancy(state, u)
 	for k: Vector3i in opts.cost:
 		var c := MoveOptions.coord_of(k)
 		if c != u.coord:
 			opts.can_end[k] = AssetMoveCost.may_enter(u.asset.card, state.map.get_tile(c)) \
-					and can_stop(state, u, c)
+					and can_stop(state, u, c, indexed)
 	_leave_fire(state, u, opts)
 	return opts
 

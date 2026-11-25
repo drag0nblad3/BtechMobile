@@ -17,6 +17,9 @@ var _status: Label
 var _play_button: Button
 var _prev: Button
 var _next: Button
+var _map_snapshot: Dictionary = {}
+var _history_index := -1
+var _history: Dictionary = {}
 
 
 ## Deliberate Android Back navigation when automatic exit is disabled.
@@ -109,23 +112,38 @@ func _show_frame(index: int) -> void:
 		_status.text = "Replay frame cannot be loaded."
 		return
 	var first_frame := _map == null
-	if _map:
-		_map.queue_free()
-	if _units:
-		_units.queue_free()
-	if _objectives:
-		_objectives.queue_free()
+	var map_snapshot: Dictionary = frame["state"]["properties"]["map"]
+	if first_frame or map_snapshot != _map_snapshot:
+		if _map:
+			remove_child(_map)
+			_map.queue_free()
+		_map = MapView.new()
+		add_child(_map)
+		_map.build(state.map)
+		_map.set_conditions(state.conditions)
+		_map_snapshot = map_snapshot
+	else:
+		_map.set_conditions(state.conditions)
 	if _scars:
+		_scars.release_replay_smoke()
+		remove_child(_scars)
 		_scars.queue_free()
-	_map = MapView.new()
-	add_child(_map)
-	_map.build(state.map)
-	_units = UnitsLayer.new()
-	add_child(_units)
-	_units.build(state)
+	if _objectives:
+		remove_child(_objectives)
+		_objectives.queue_free()
+	if _units == null:
+		_units = UnitsLayer.new()
+		add_child(_units)
+	ReplayUnitViews.sync(_units, state)
 	_scars = BattleScars.new()
 	add_child(_scars)
-	_scars.setup(state, _units, _frames.slice(0, index + 1))
+	if index < _history_index:
+		_history_index = -1
+		_history = {}
+	if index > _history_index:
+		_history = BattleScarHistory.recover(_frames.slice(_history_index + 1, index + 1), _history)
+		_history_index = index
+	_scars.setup_history(state, _units, _history)
 	_objectives = ObjectiveMarkers.build(state)
 	add_child(_objectives)
 	if first_frame or index == 0:

@@ -13,11 +13,14 @@ var _smoke: Dictionary = {}
 
 
 func setup(state: GameState, units: UnitsLayer, frames: Array = []) -> void:
+	setup_history(state, units, BattleScarHistory.recover(frames))
+
+
+func setup_history(state: GameState, units: UnitsLayer, history: Dictionary) -> void:
 	_state = state
 	_units = units
-	var history := BattleScarHistory.recover(frames)
-	_deaths = history["deaths"]
-	for c: Vector2i in history["scorches"]:
+	_deaths = history.get("deaths", {}).duplicate()
+	for c: Vector2i in history.get("scorches", {}):
 		_scorch(c)
 	for tile: MapTile in state.map.tiles.values():
 		if tile.on_fire:
@@ -25,6 +28,16 @@ func setup(state: GameState, units: UnitsLayer, frames: Array = []) -> void:
 	for u: Unit in state.all_units():
 		if u.destroyed:
 			_wreck(u.id)
+
+
+## Smoke nodes are parented to unit views, not this scar layer.
+func release_replay_smoke() -> void:
+	for p: Node in _smoke.values():
+		if is_instance_valid(p):
+			if p.get_parent() != null:
+				p.get_parent().remove_child(p)
+			p.queue_free()
+	_smoke.clear()
 
 
 func on_event(e: GameEvent) -> void:

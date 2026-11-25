@@ -33,6 +33,7 @@ var off_field: HiddenInput
 var recorder := BattleRecorder.new()
 var undo_input := UndoInput.new()  ## Training: take back your last move.
 var _last_autosave_turn := -1
+var _autosave_pending := false
 var _tutorial_path := ""
 var startup_complete := false
 var _loading: BattleLoading
@@ -135,7 +136,24 @@ func _autosave() -> bool:
 			training, recorder.frames, _tutorial_path)
 	if not ok:
 		push_warning("Battle autosave could not be written.")
+	else:
+		_autosave_pending = false
 	return ok
+
+
+## Collapse several synchronous end-of-turn events into one durable write.
+func _queue_autosave() -> void:
+	if _autosave_pending:
+		return
+	_autosave_pending = true
+	_flush_autosave.call_deferred()
+
+
+func _flush_autosave() -> void:
+	if not _autosave_pending:
+		return
+	_autosave_pending = false
+	_autosave()
 
 
 func _save_battle() -> void:
@@ -293,6 +311,8 @@ func _build_views(state: GameState) -> void:
 	var plates := Nameplates.new()
 	add_child(plates)
 	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
+	controller.event.connect(plates.invalidate)
+	units_layer.busy_changed.connect(plates.invalidate)
 	off_field = HiddenInput.new()
 	off_field.controller = controller
 	off_field.hud = hud
@@ -499,9 +519,9 @@ func _on_event(e: GameEvent) -> void:
 					practice.completed_count(), practice.goals.size(), checks[checks.size() - 1]])
 	if e.type == GameEvent.ACTIVE_SIDE and s.turn > _last_autosave_turn:
 		_last_autosave_turn = s.turn
-		_autosave.call_deferred()
+		_queue_autosave()
 	if e.type == GameEvent.GAME_OVER:
-		_autosave.call_deferred()
+		_queue_autosave()
 		BattleSave.save_replay.call_deferred(recorder.frames)
 	var deferred_visual := fx.play(e)
 	if not deferred_visual:
