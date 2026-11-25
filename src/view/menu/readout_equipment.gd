@@ -1,10 +1,10 @@
 class_name ReadoutEquipment
 extends VBoxContainer
-## Populated two-pane weapon encyclopedia with searchable, filterable results.
-var _db: WeaponDb
-var _entries: Array[UnitDef] = []
+## Populated two-pane equipment encyclopedia with searchable, filterable results.
+var _catalog: Array[Dictionary] = []
+var _usage: Dictionary = {}
+var _matches: Array[Dictionary] = []
 var _weapons: ItemList
-var _weapon_ids: Array[String] = []
 var _weapon_info: Label
 var _equipment_filters: Dictionary = {}
 var _weapon_count: Label
@@ -12,20 +12,24 @@ var _weapon_search: LineEdit
 
 
 func setup(db: WeaponDb, entries: Array[UnitDef]) -> void:
-	_db = db
-	_entries = entries
+	_usage = ReadoutEquipmentUsage.index(entries)
+	_catalog = ReadoutEquipmentCatalog.build(db, _usage)
 	name = "Equipment encyclopedia"
 	_weapon_search = LineEdit.new()
 	_weapon_search.custom_minimum_size.y = 48
 	_weapon_search.clear_button_enabled = true
-	_weapon_search.placeholder_text = "Search weapons by name or type (optional)"
+	_weapon_search.placeholder_text = "Search equipment, weapons, ammunition (optional)"
 	add_child(_weapon_search)
-	_equipment_filters = ReadoutFilters.weapon_controls(self, _db, func(_i: int): _filter_weapons(_weapon_search.text))
+	var filters := ReadoutFilters.row(self)
+	var change := func(_i: int): _filter_weapons(_weapon_search.text)
+	_equipment_filters = {"category": ReadoutFilters.choice(filters, ReadoutEquipmentCatalog.categories(_catalog), change),
+		"tech": ReadoutFilters.choice(filters, ReadoutFilters.TECH.slice(0, 3), change),
+		"ammo": ReadoutFilters.choice(filters, ["Any equipment", "Ammo-fed weapons", "Ammo-free weapons"], change)}
 	var tools := ReadoutFilters.row(self)
 	_weapon_count = UiKit.label(tools, "", 18)
 	_weapon_count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiKit.button(tools, "Reset filters", _reset_weapons, Vector2(0, 44), "subtle").add_theme_font_size_override("font_size", 18)
-	UiKit.label(self, "Select a weapon from the list to view its stats. Search is optional.", 18)
+	UiKit.label(self, "Select an item to view its details. Search and category filters are optional.", 18)
 	var panes := ReadoutFilters.row(self)
 	panes.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_weapons = ItemList.new()
@@ -63,36 +67,42 @@ func _reset_weapons() -> void:
 
 func _filter_weapons(query: String) -> void:
 	var previous := ""
-	if _selected_index() >= 0 and _selected_index() < _weapon_ids.size():
-		previous = _weapon_ids[_selected_index()]
+	var selected := _selected_index()
+	if selected >= 0 and selected < _matches.size():
+		previous = String(_matches[selected]["id"])
 	_weapons.clear()
-	_weapon_ids.clear()
-	var filters := ReadoutFilters.selected(_equipment_filters, ["type"])
-	var matches: Array[WeaponDef] = []
-	for w: WeaponDef in _db.by_id.values():
-		if ReadoutFilters.weapon_matches(w, query, filters):
-			matches.append(w)
-	matches.sort_custom(func(a: WeaponDef, b: WeaponDef) -> bool:
-		return a.name.naturalnocasecmp_to(b.name) < 0 if a.name != b.name else a.id < b.id)
-	for w: WeaponDef in matches:
-		_weapon_ids.append(w.id)
-		_weapons.add_item("%s  •  %s" % [w.name, w.tech.replace("_", " ").capitalize()])
-	_weapon_count.text = "%d / %d weapons" % [_weapon_ids.size(), _db.by_id.size()]
-	if not _weapon_ids.is_empty():
-		var index := maxi(0, _weapon_ids.find(previous))
+	_matches.clear()
+	var filters := ReadoutFilters.selected(_equipment_filters, ["category"])
+	var index := 0
+	for item: Dictionary in _catalog:
+		if not ReadoutEquipmentCatalog.matches(item, query, filters):
+			continue
+		if item["id"] == previous:
+			index = _matches.size()
+		_matches.append(item)
+		_weapons.add_item("%s  •  %s" % [item["name"], _tech_label(String(item["tech"]))])
+	_weapon_count.text = "%d / %d equipment entries" % [_matches.size(), _catalog.size()]
+	if not _matches.is_empty():
 		_weapons.select(index)
 		_weapons.ensure_current_is_visible()
 		_weapon_selected(index)
 	else:
-		_weapon_info.text = "No matching weapons. Clear search or reset filters to browse all."
+		_weapon_info.text = "No matching equipment. Clear search or reset filters to browse all."
+
+
+static func _tech_label(tech: String) -> String:
+	return "General" if tech == "both" else tech.replace("_", " ").capitalize()
 
 
 func _weapon_selected(index: int) -> void:
-	if index < 0 or index >= _weapon_ids.size():
+	if index < 0 or index >= _matches.size():
 		return
-	var w := _db.get_def(_weapon_ids[index])
-	var compatible: Array[String] = []
-	for d: UnitDef in _entries:
-		if d.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].id == w.id):
-			compatible.append(d.display_name())
-	_weapon_info.text = "%s • %s • %s\nDamage %d maximum • Heat %d • Range %s\n%.2f tons • %d slots • BV %d • Ammo/ton %d\nMounted on %d catalog designs: %s" % [w.name, w.type, w.tech, w.max_damage(), w.heat, w.range_text(), w.tons, w.slots, w.bv, w.ammo_per_ton, compatible.size(), ", ".join(compatible.slice(0, 24))]
+	var item := _matches[index]
+	var users: Array = _usage.get(item["id"], [])
+	var names: Array[String] = []
+	for d: UnitDef in users.slice(0, 24):
+		names.append(d.display_name())
+	var suffix := " (first 24 shown)" if users.size() > 24 else ""
+	_weapon_info.text = "%s\n%s • %s\n\n%s\n\nInstalled on %d catalog designs%s" % [item["name"], item["category"], _tech_label(String(item["tech"])), item["about"], users.size(), suffix]
+	if not names.is_empty():
+		_weapon_info.text += "\n" + "\n".join(names)
