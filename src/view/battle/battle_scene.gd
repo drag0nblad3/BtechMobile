@@ -320,6 +320,8 @@ func _frame_attack(a: Unit, t: Unit) -> void:
 
 ## Next button: select the next unit still to act, or just look at the next one.
 func _next_unit() -> void:
+	if units_layer.attack_playing:
+		return
 	var current: Unit = movement.selected if movement.selected else attacks.attacker if attacks.attacker else sheet_unit
 	var u := UnitCycler.after(UnitCycler.candidates(controller, bots.bot_sides), current)
 	if u == null:

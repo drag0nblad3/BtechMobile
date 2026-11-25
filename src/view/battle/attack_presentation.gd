@@ -9,6 +9,7 @@ var _groups: Array[Dictionary] = []
 var _current: Dictionary = {}
 var _scheduled := false
 var _playing := false
+var _posed := {}
 
 
 func setup(fx: BattleFx, state: GameState, units: UnitsLayer) -> void:
@@ -44,6 +45,11 @@ func _flush() -> void:
 	_scheduled = false
 	if _groups.is_empty():
 		_playing = false
+		for id: int in _posed:
+			var v: UnitView = _units.views.get(id)
+			if v != null:
+				AttackVisualGeometry.apply_pose(v, {"twist": v.unit.torso_twist, "flip": v.unit.arms_flipped})
+		_posed.clear()
 		_units.set_attack_playing(false)
 		return
 	_playing = true
@@ -51,20 +57,32 @@ func _flush() -> void:
 	_groups.clear()
 	_current = {}
 	var timeline := create_tween()
+	# Stagger launches; preserve event-time snapshot order by sorting arrival
+	# callbacks on one clock. A lance alpha strike must not take 30 seconds.
+	var actions: Array[Dictionary] = []
+	var at := 0.34
+	var order := 0
 	for group: Dictionary in batch:
 		var attack: GameEvent = group.get("attack")
 		var entries: Array = group["entries"]
-		if attack == null:
-			for entry: Dictionary in entries:
-				timeline.tween_callback(_arrive.bind(entry))
-			continue
-		timeline.tween_callback(_launch.bind(group))
-		var duration := 0.24 if attack.type == GameEvent.PHYSICAL else ShotFx.arrival_time(String(attack.data.get("weapon_id", "")))
-		if duration > 0.0:
-			timeline.tween_interval(duration)
+		if attack != null:
+			var duration := 0.24 if attack.type == GameEvent.PHYSICAL else ShotFx.arrival_time(String(attack.data.get("weapon_id", attack.data.get("weapon", ""))))
+			actions.append({"at": maxf(0.0, at - duration), "order": order, "callback": _launch.bind(group)})
+			order += 1
 		for entry: Dictionary in entries:
-			timeline.tween_callback(_arrive.bind(entry))
-		timeline.tween_interval(0.08)
+			actions.append({"at": at, "order": order, "callback": _arrive.bind(entry)})
+			order += 1
+		at += 0.12 if attack != null and attack.type == GameEvent.PHYSICAL else 0.085
+	actions.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		return int(a["order"]) < int(b["order"]) if is_equal_approx(a["at"], b["at"]) else float(a["at"]) < float(b["at"]))
+	var previous := 0.0
+	for action: Dictionary in actions:
+		var delay := float(action["at"]) - previous
+		if delay > 0.0001:
+			timeline.tween_interval(delay)
+		timeline.tween_callback(action["callback"])
+		previous = float(action["at"])
+	timeline.tween_interval(0.20)
 	timeline.tween_callback(_flush)
 
 
@@ -79,7 +97,7 @@ func _launch(group: Dictionary) -> void:
 	for entry: Dictionary in group["entries"]:
 		var event: GameEvent = entry["event"]
 		if event.type == GameEvent.DAMAGE or event.type == GameEvent.BUILDING:
-			if not entry["points"].is_empty():
+			if not entry["points"].is_empty() and entry["points"][0] != Vector3.INF:
 				points.append(entry["points"][0])
 	if e.type == GameEvent.PHYSICAL:
 		var contact := points[0] if not points.is_empty() else (tv.global_position + Vector3.UP * 0.5 if tv != null and tv.visible else av.global_position)
@@ -88,6 +106,7 @@ func _launch(group: Dictionary) -> void:
 	if not AttackEventMatch.fired(d):
 		return
 	AttackVisualGeometry.apply_pose(av, group["pose"])
+	_posed[av.unit.id] = true
 	var origins := AttackSockets.origins(av, d)
 	if origins.is_empty() or origins[0] == Vector3.INF:
 		return
@@ -125,6 +144,8 @@ func _intercept(point: Vector3, weapon: String) -> void:
 func _arrive(entry: Dictionary) -> void:
 	var e: GameEvent = entry["event"]
 	var v: UnitView = _units.views.get(int(e.data.get("unit_id", -1)))
+	if e.type == GameEvent.DAMAGE and e.data.get("covered", false) and not entry["points"].is_empty():
+		VxBlast.spawn(_fx, entry["points"][0], "dust", int(e.data.get("source_id", 0)))
 	_fx.play_now(e, entry["points"])
 	if v != null and not entry["record"].is_empty() and not e.data.get("covered", false):
 		v.apply_attack_record(entry["record"])

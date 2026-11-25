@@ -67,7 +67,6 @@ func _impact(d: Dictionary, at: Vector3 = Vector3.INF) -> void:
 	VxBlast.spawn(self, point, "impact", seed)
 	if d.get("breached", false) or d.get("destroyed", false):
 		smoke.scar(id, loc)
-	
 	var power := clampf(float(amount) / 35.0, 0.0, 0.25)
 	if power > 0.1:
 		_shake(seed, power)

@@ -44,10 +44,13 @@ static func capture(state: GameState, units: UnitsLayer, e: GameEvent) -> Dictio
 			var point := Vector3.INF
 			if d.get("covered", false):
 				var attacker := state.unit_by_id(int(d.get("source_id", -1)))
-				point = hex_point(state, v.unit.coord, Vector3.INF)
-				if attacker != null:
-					var direction := (HexLayout.to_world(attacker.coord) - point).normalized()
-					point += Vector3(direction.x, 0, direction.z) * 0.4
+				var cover := v.unit.coord
+				if attacker != null and d.get("hill", false):
+					var traced: Dictionary = LineOfSight.check(state.map, attacker, v.unit)
+					var actual: Vector2i = traced.get("cover", Hex.INVALID)
+					if actual != Hex.INVALID:
+						cover = actual
+				point = hex_point(state, cover, HexLayout.to_world(attacker.coord) if attacker != null else Vector3.INF)
 			elif v._model is VxMech:
 				point = (v._model as VxMech).damage.crater_point(v.unit, step)
 			if point == Vector3.INF:

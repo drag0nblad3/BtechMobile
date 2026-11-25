@@ -50,10 +50,10 @@ func play_now(e: GameEvent, points: Array = []) -> void:
 		GameEvent.UNIT_DESTROYED:
 			_at_unit(e.data["unit_id"], "mech")
 		GameEvent.BUILDING:
-			_building(e.data)
+			_building(e.data, points[0] if not points.is_empty() else Vector3.INF)
 
 
-func _building(d: Dictionary) -> void:
+func _building(d: Dictionary, contact: Vector3 = Vector3.INF) -> void:
 	var t := _state.map.get_tile(d.get("coord", Hex.INVALID))
 	if t == null:
 		return
@@ -70,7 +70,7 @@ func _building(d: Dictionary) -> void:
 				hit = _map.buildings.scar(t.coord, from, int(d.get("damage", 10)))
 			elif t.bridge != null and _map.bridges != null:
 				hit = _map.bridges.scar(t.coord, from, int(d.get("damage", 10)))
-			VxBlast.spawn(self, hit, "impact" if d["kind"] in ["shot", "cover_hit"] else "dust", randi())
+			VxBlast.spawn(self, contact if contact != Vector3.INF else hit, "impact" if d["kind"] in ["shot", "cover_hit"] else "dust", randi())
 
 
 func _at_unit(unit_id: int, kind: String, jitter := Vector3.ZERO) -> void:
