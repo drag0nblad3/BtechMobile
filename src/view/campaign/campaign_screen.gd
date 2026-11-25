@@ -15,9 +15,9 @@ var _note := ""  ## Why the last Support Points action didn't happen.
 
 
 func _ready() -> void:
-	if db == null:
-		db = UnitDb.load_dir()
 	company = CampaignStore.load_company()
+	if company != null and db == null:
+		db = UnitDb.load_dir()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	_list = UiKit.screen_body(self, "CAMPAIGN", UiKit.close_overlay.bind(self))
@@ -116,6 +116,8 @@ func _toggle_option(index: int, id: String) -> void:
 
 
 func _start_company() -> void:
+	if db == null:
+		db = UnitDb.load_dir()
 	company = Campaign.create(CampaignRules.load_file(), chaos)
 	CampaignStore.save(company)
 	_build()

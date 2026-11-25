@@ -8,6 +8,9 @@ const MAX_LINES := 300
 var text: RichTextLabel
 var _size_index := 0
 var _lines: Array[String] = []
+var _flush_pending := false
+var _dirty := false
+var flush_count := 0  ## Diagnostic: number of actual text updates.
 
 
 func _ready() -> void:
@@ -61,10 +64,24 @@ func add_line(t: String, bold: bool = false, tone: String = "") -> void:
 	_lines.append("[b]%s[/b]" % line if bold else line)
 	if _lines.size() > MAX_LINES:
 		_lines = _lines.slice(-MAX_LINES)
+	_dirty = true
+	if visible and not _flush_pending:
+		_flush_pending = true
+		_flush.call_deferred()
+
+
+func _flush() -> void:
+	_flush_pending = false
+	if not _dirty or not visible:
+		return
 	text.text = "\n".join(_lines)
+	_dirty = false
+	flush_count += 1
 
 
 func cycle_size() -> void:
 	_size_index = (_size_index + 1) % HEIGHTS.size()
 	visible = HEIGHTS[_size_index] > 0
 	custom_minimum_size.y = HEIGHTS[_size_index]
+	if visible:
+		_flush()

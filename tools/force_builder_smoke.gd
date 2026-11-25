@@ -13,6 +13,8 @@ func _check_builder() -> void:
 	var screen := current_scene as ForceBuilderScreen
 	if not _verify(screen != null, "menu scene did not load"):
 		return
+	if not _verify(screen._setup == null, "hidden battlefield setup was built eagerly"):
+		return
 	var search := screen.find_child("UnitSearch", true, false) as LineEdit
 	if not _verify(search != null, "unit search missing"):
 		return
@@ -88,6 +90,15 @@ func _check_builder() -> void:
 		return
 	if not _verify(screen.builder.budget >= screen.builder.bv(1),
 			"budget accommodates selected Star"):
+		return
+	screen._show_page(1)
+	if not _verify(screen._setup != null and screen.map_picker._preview.map != null,
+			"battlefield page did not initialize on demand"):
+		return
+	var setup := screen._setup
+	screen._show_page(0)
+	screen._show_page(1)
+	if not _verify(screen._setup == setup, "battlefield setup unnecessarily recreated"):
 		return
 	print("force builder smoke ok")
 	quit(0)

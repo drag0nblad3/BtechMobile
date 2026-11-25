@@ -14,6 +14,7 @@ var _status: Label
 var _feedback: Label
 var _start_button: Button
 var _setup: ForceBuilderSetup
+var _has_saved_battle := false
 var _starter_confirm: ConfirmationDialog
 var _pending_starter: Dictionary = {}
 var _pending_side := -1
@@ -136,10 +137,7 @@ func _ready() -> void:
 		_rosters.append(roster)
 	_feedback = UiKit.label(forces, "", 18)
 	UiSkin.label(_feedback, "section")
-	_setup = ForceBuilderSetup.new()
-	_setup.build(field, builder, map_picker, bot_sides, _refresh, _notify,
-		{"continue": _continue_saved, "replay": _watch_saved_replay,
-		"forensics": _open_forensics, "training": open_training})
+	_has_saved_battle = BattleSave.has_game()
 	var footer := HBoxContainer.new()
 	footer.add_theme_constant_override("separation", 14)
 	layout.add_child(footer)
@@ -149,7 +147,7 @@ func _ready() -> void:
 	_start_button = UiKit.button(footer, "START BATTLE", _start,
 		Vector2(275, 68), "primary")
 	_start_button.name = "StartBattle"
-	if BattleSave.has_game():
+	if _has_saved_battle:
 		var resume := UiKit.button(footer, "CONTINUE", _continue_saved, Vector2(190, 68), "selected")
 		resume.tooltip_text = "Resume your saved battle"
 		footer.move_child(resume, _start_button.get_index())
@@ -174,6 +172,12 @@ func _ready() -> void:
 
 
 func _show_page(page: int) -> void:
+	if page == 1 and _setup == null:
+		_setup = ForceBuilderSetup.new()
+		_setup.build(_pages[1], builder, map_picker, bot_sides, _refresh, _notify,
+			{"continue": _continue_saved, "replay": _watch_saved_replay,
+			"forensics": _open_forensics, "training": open_training,
+			"has_saved_battle": _has_saved_battle})
 	for i in _pages.size():
 		_pages[i].visible = i == page
 		UiSkin.button(_tabs[i], "selected" if i == page else "subtle")
@@ -265,7 +269,8 @@ func _refresh() -> void:
 		_side_buttons[side].text = Names.side(side).to_upper()
 		UiSkin.button(_side_buttons[side], "selected" if side == _active_side else "subtle")
 	catalog.refresh()
-	_setup.refresh()
+	if _setup != null and _pages[1].visible:
+		_setup.refresh()
 	_tabs[0].text = "FORCES  •  %d vs %d" % [builder.rosters[0].size(), builder.rosters[1].size()]
 	_tabs[1].text = "BATTLEFIELD  •  %d BV" % builder.budget
 	var red := builder.bv(0)

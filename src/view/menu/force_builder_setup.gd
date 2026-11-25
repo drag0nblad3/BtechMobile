@@ -164,7 +164,7 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	_info = UiKit.label(_advanced, "", 17)
 	UiSkin.label(_info, "muted")
 	UiSkin.rule(box, UiSkin.BORDER)
-	if BattleSave.has_game():
+	if _options.get("has_saved_battle", false):
 		UiKit.button(box, "CONTINUE SAVED BATTLE", func():
 			_options["continue"].call(), Vector2(0, 56), "selected")
 	if BattleSave.has_replay():
