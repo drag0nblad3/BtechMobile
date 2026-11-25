@@ -92,17 +92,25 @@ func _build() -> void:
 		return
 	if _headquarters:
 		MapHqPanel.build(_list, mc, db, _build)
+		_add_abandon()
 		return
-	var toolbar := HBoxContainer.new()
-	_list.add_child(toolbar)
-	for i in 5:
-		var mode := i
-		UiKit.button(toolbar, ["Terrain", "Objectives", "Intel", "Readiness", "Facilities"][i],
-			func(): _map_mode = mode; _build(), Vector2(0, 42), "selected" if i == _map_mode else "subtle")
-	UiKit.button(toolbar, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
-	UiKit.button(toolbar, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tabs.add_child(spacer)
+	var overlay := OptionButton.new()
+	overlay.custom_minimum_size = Vector2(165, 42)
+	overlay.add_theme_font_size_override("font_size", 19)
+	for label: String in ["Terrain", "Objectives", "Intel", "Readiness", "Facilities"]:
+		overlay.add_item(label)
+	overlay.select(_map_mode)
+	overlay.item_selected.connect(func(index: int): _map_mode = index; _build())
+	UiSkin.button(overlay, "subtle")
+	tabs.add_child(overlay)
+	UiKit.button(tabs, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
+	UiKit.button(tabs, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
 	var body := HBoxContainer.new()
-	body.custom_minimum_size.y = maxf(430.0, get_viewport_rect().size.y - 235.0)
+	body.custom_minimum_size.y = 300
+	body.add_theme_constant_override("separation", 6)
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	_list.add_child(body)
 	_map_scroll = ScrollContainer.new()
@@ -153,9 +161,9 @@ func _build() -> void:
 			preview.show_map(MapBattle.battlefield(mc, _inspected, 1))
 	else:
 		MapLancePanel.lances(command, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
-	if not mc.log.is_empty():
-		UiKit.label(_list, "Log", 26).modulate = Color(0.75, 0.85, 1.0)
-		UiKit.label(_list, "\n".join(mc.log.slice(maxi(0, mc.log.size() - 8))), UiKit.SMALL)
+
+
+func _add_abandon() -> void:
 	var quit := UiKit.button(_list, "TAP AGAIN TO ABANDON THE CAMPAIGN" if _confirm_quit else "Abandon campaign",
 			_quit, Vector2(0, 52), "subtle")
 	quit.name = "AbandonMapCampaign"
