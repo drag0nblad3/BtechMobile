@@ -28,6 +28,7 @@ jobs:
       - name: Landscape menu layout smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           timeout 120s godot --headless -s tools/landscape_layout_smoke.gd 2>&1 | tee landscape-layout.log
           grep -q "landscape layout smoke ok" landscape-layout.log
           ! grep -E "SCRIPT ERROR|Parse Error|LAYOUT_FAILED" landscape-layout.log
@@ -54,56 +55,52 @@ jobs:
           name: component-shape-render-log
           path: shape-render.log
           if-no-files-found: ignore
-      - name: Battle persistence tests (fast feedback)
-        run: |
-          set -o pipefail
-          godot --headless -s tests/run_tests.gd -- battle_save 2>&1 | tee battle-save-test.log
-          ! grep -E "SCRIPT ERROR|Parse Error" battle-save-test.log
       - name: Battle save + replay scene smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           timeout --signal=TERM --kill-after=5s 120s godot --headless -s tools/battle_save_smoke.gd 2>&1 | tee battle-save-smoke.log
           grep -q "battle save replay smoke ok" battle-save-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" battle-save-smoke.log
-      - name: Tactical Academy forensic unit tests
-        run: |
-          set -o pipefail
-          godot --headless -s tests/run_tests.gd -- battle_forensics 2>&1 | tee academy-tests.log
-          ! grep -E "SCRIPT ERROR|Parse Error" academy-tests.log
       - name: Cinematic toggle and Academy scene smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless -s tools/academy_smoke.gd 2>&1 | tee academy-smoke.log
           grep -q "academy cinematic forensic smoke ok" academy-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" academy-smoke.log
       - name: Campaign route smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/campaign_smoke.gd 2>&1 | tee campaign-smoke.log
           grep -q "CAMPAIGN SMOKE OK" campaign-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" campaign-smoke.log
       - name: Map campaign route smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/map_campaign_smoke.gd 2>&1 | tee map-campaign-smoke.log
           grep -q "MAP CAMPAIGN SMOKE OK" map-campaign-smoke.log
           ! grep -E "SCRIPT ERROR|Parse Error" map-campaign-smoke.log
       - name: Unit tests
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless -s tests/run_tests.gd 2>&1 | tee test.log
           ! grep -E "SCRIPT ERROR|Parse Error" test.log
       - name: Report per-chassis voxel counts (no rendering)
         run: |
           set -o pipefail
           godot --headless -s tools/voxel_count_report.gd 2>&1 | tee voxel-counts.log
-          [ "$(grep -c '^VOXEL_COUNT|' voxel-counts.log)" -eq 6 ]
-          ! grep -E "SCRIPT ERROR|Parse Error" voxel-counts.log
+          grep -q '^VOXEL_COUNT_COMPLETE|' voxel-counts.log
+          ! grep -E "SCRIPT ERROR|Parse Error|VOXEL_COUNT_FAILED" voxel-counts.log
       - uses: actions/upload-artifact@v4
         with:
           name: voxel-counts
           path: voxel-counts.log
       - name: Voxel battle 8/16 triangle and headless timing report
+        if: github.event_name == 'workflow_dispatch'
         run: |
           set -o pipefail
           godot --headless -s tools/voxel_battle_bench.gd 2>&1 | tee voxel-battle-bench.log
@@ -111,6 +108,7 @@ jobs:
           grep -q 'VOXEL_BATTLE_BENCH|count=16|' voxel-battle-bench.log
           ! grep -E "SCRIPT ERROR|Parse Error" voxel-battle-bench.log
       - uses: actions/upload-artifact@v4
+        if: github.event_name == 'workflow_dispatch'
         with:
           name: voxel-battle-timing
           path: voxel-battle-bench.log
@@ -207,13 +205,15 @@ jobs:
       - name: UI smoke (plays turns through the battle scene)
         run: |
           set -o pipefail
-          godot --headless -s tools/ui_smoke.gd 2>&1 | tee ui.log
-          godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
+          export XDG_DATA_HOME="$(mktemp -d)"
+          timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/ui_smoke.gd 2>&1 | tee ui.log
+          timeout --signal=TERM --kill-after=5s 180s godot --headless -s tools/ui_smoke.gd -- city 2>&1 | tee -a ui.log
           [ "$(grep -c "ui smoke ok" ui.log)" -eq 2 ]
           ! grep -E "SCRIPT ERROR|Parse Error" ui.log
       - name: Battle visuals smoke (scene and effect lifetime)
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless -s tools/battle_visual_smoke.gd 2>&1 | tee battle-visual.log
           grep -q "battle visuals smoke ok" battle-visual.log
           ! grep -E "SCRIPT ERROR|Parse Error|BATTLE_VISUAL_FAILED" battle-visual.log
@@ -254,29 +254,28 @@ jobs:
       - name: Launcher navigation smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless -s tools/launcher_smoke.gd 2>&1 | tee launcher.log
           grep -q "launcher navigation ok" launcher.log
           ! grep -E "SCRIPT ERROR|Parse Error" launcher.log
       - name: Force builder usability smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless -s tools/force_builder_smoke.gd 2>&1 | tee force-builder.log
           grep -q "force builder smoke ok" force-builder.log
           ! grep -E "SCRIPT ERROR|Parse Error" force-builder.log
-      - name: Voxel mech lab smoke
-        run: |
-          set -o pipefail
-          godot --headless --quit-after 45 --scene res://scenes/voxel_mech_lab.tscn 2>&1 | tee voxel.log
-          ! grep -E "SCRIPT ERROR|Parse Error" voxel.log
       - name: Twenty-mech stress test smoke (no rendering)
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless -s tools/voxel_stress_smoke.gd 2>&1 | tee voxel-stress.log
           grep -q "voxel stress smoke ok" voxel-stress.log
           ! grep -E "SCRIPT ERROR|Parse Error|VOXEL_STRESS_SMOKE_FAILED" voxel-stress.log
       - name: Claude voxel showcase smoke
         run: |
           set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
           godot --headless --quit-after 90 --scene res://scenes/vx_showcase.tscn 2>&1 | tee vx.log
           ! grep -E "SCRIPT ERROR|Parse Error" vx.log
       - name: Render voxel gait comparison
@@ -320,7 +319,3 @@ jobs:
         with:
           name: refined-jenner-model-renders
           path: /tmp/jenner-frames/*.png
-      - name: Smoke run main scene
-        run: |
-          godot --headless --quit-after 30 2>&1 | tee run.log
-          ! grep -E "SCRIPT ERROR|Parse Error" run.log

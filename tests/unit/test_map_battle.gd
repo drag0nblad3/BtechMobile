@@ -48,3 +48,46 @@ func test_battlefield_follows_terrain() -> void:
 		if map.tiles[c].terrain.id.ends_with("woods"):
 			woods += 1
 	check(woods > 10, "a woodland battlefield: %d woods hexes" % woods)
+
+
+## A day's two distinct meetings must settle individually and advance once.
+func test_store_waits_for_final_meeting() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 11
+	var mc := MapCampaign.create(designs(), rng)
+	var players := mc.lances_of(0)
+	var foes := mc.lances_of(1)
+	for i in 2:
+		players[i].zone = foes[i].zone
+		MapOrders.give(mc, players[i], MapLance.ATTACK)
+	MapTurn.start(mc, LoadedDice.new())
+	check_eq(mc.battles.size(), 2, "two controlled meetings")
+	if mc.battles.size() != 2:
+		return
+	var path := "user://test_map_campaign_two_meetings.json"
+	MapCampaignStore.delete(path)
+	for i in 2:
+		var meeting := mc.battles[0]
+		var built := MapBattle.build(mc, meeting, designs(), 20 + i)
+		check(not built.is_empty(), "meeting %d builds" % i)
+		if built.is_empty():
+			MapCampaignStore.delete(path)
+			return
+		var state: GameState = built["state"]
+		for u in state.all_units():
+			if u.side == 1:
+				Damage.destroy_unit(u, "engine destroyed")
+		check(MapCampaignStore.save(mc, {"index": 0, "rosters": built["rosters"]}, path))
+		check(not MapCampaignStore.finish(state, 0, [], path).is_empty(), "meeting writes back")
+		check(MapCampaignStore.pending(path).is_empty(), "pending battle cleared")
+		mc = MapCampaignStore.load_campaign(path)
+		check(mc != null, "campaign reloads")
+		if mc == null:
+			MapCampaignStore.delete(path)
+			return
+		check_eq(mc.battles.size(), 1 - i, "only the completed meeting is removed")
+		check_eq(mc.turn, 1 if i == 0 else 2, "advance only after final meeting")
+		check_eq(MapCampaignStore.finish(state, 0, [], path), "", "duplicate finish is harmless")
+		if mc.battles.size() != 1 - i:
+			break
+	MapCampaignStore.delete(path)

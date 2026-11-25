@@ -35,6 +35,17 @@ func _run() -> void:
 		await _frames(1)
 		screen.call("_build")  # the first redraw renamed its buttons around the freed ones
 		await _frames(1)
+	# Offer generation has its own rules tests. Use a payable, conventional
+	# contract here so random options/mission types cannot derail repair QA.
+	var contract := Contract.new()
+	contract.mission_id = "annihilation"
+	contract.enemy_percent = 100
+	contract.objectives.assign(["advance_attack", "stand_your_ground"])
+	var company: Campaign = screen.company
+	company.offers.assign([contract])
+	CampaignStore.save(company)
+	screen.call("_build")
+	await _frames(1)
 	var fight := screen.find_child("TakeContract0", true, false) as Button
 	if not _check(fight != null and not fight.disabled, "contract button missing"):
 		return
@@ -42,6 +53,7 @@ func _run() -> void:
 	await _frames(6)
 	if not _check(current_scene.get("in_campaign") == true, "battle is not a campaign battle"):
 		return
+	current_scene.get("bots").bot_sides.clear()
 	var ctl: GameController = current_scene.get("controller")
 	if not _check(not formed or not ctl.state.formations.is_empty(), "the chosen formation wasn't set up"):
 		return
