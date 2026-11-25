@@ -19,6 +19,9 @@ var _origin := Vector2.ZERO
 var _last := Vector2.ZERO
 var _seen := {}
 var _route: Array[Vector2i] = []
+var _moves: Array[Dictionary] = []
+var _captures: Array[Vector2i] = []
+var _animation := 1.0
 
 
 static func make(parent: Control, campaign: MapCampaign, on_tap: Callable, lance: MapLance, order := "", layer := 0, inspect := Vector2i(-1, -1)) -> MapZoneGrid:
@@ -32,7 +35,10 @@ static func make(parent: Control, campaign: MapCampaign, on_tap: Callable, lance
 	g._tap = on_tap
 	g._seen = MapFog.seen(campaign)
 	if lance != null and lance.on_map():
-		g._route = MapGeography.route(campaign.region, lance.zone, lance.target)
+		if campaign.region.has_zone(lance.target) and (lance.order == MapLance.DROPSHIP or (lance.order == MapLance.MOVE and MapFactory.sea_route(campaign, lance, lance.target))):
+			g._route = [lance.zone, lance.target]
+		else:
+			g._route = MapGeography.route(campaign.region, lance.zone, lance.target)
 	g.custom_minimum_size = Vector2(0, 410)
 	g.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	g.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -102,6 +108,17 @@ func _gui_input(event: InputEvent) -> void:
 		accept_event()
 
 
+func animate_changes(moves: Array[Dictionary], captures: Array[Vector2i]) -> void:
+	if DisplayServer.get_name() == "headless":
+		return
+	_moves = moves
+	_captures = captures
+	_animation = 0.0
+	var tween := create_tween()
+	tween.tween_method(func(v: float): _animation = v; queue_redraw(), 0.0, 1.0, 0.85)
+	tween.finished.connect(func(): _moves.clear(); _captures.clear(); queue_redraw())
+
+
 func _draw() -> void:
 	if mc == null:
 		return
@@ -125,6 +142,16 @@ func _draw() -> void:
 	for x in mc.region.width:
 		for y in mc.region.height:
 			MapCartography.markers(self, Vector2i(x, y))
+	for move in _moves:
+		var a := center(move["from"])
+		var b := center(move["to"])
+		var color := BLUE if int(move["side"]) == 0 else RED
+		draw_line(a, b, color, 2.0, true)
+		var p := a.lerp(b, _animation)
+		draw_circle(p, 9.0, Color("#10232d"))
+		draw_arc(p, 9.0, 0, TAU, 24, color, 2.5, true)
+	for z in _captures:
+		draw_arc(center(z), _radius() * lerpf(0.2, 0.85, _animation), 0, TAU, 32, Color(GOLD, 1.0 - _animation), 3.0, true)
 
 
 func _tile(z: Vector2i) -> void:

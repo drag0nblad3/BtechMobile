@@ -102,7 +102,7 @@ func _enemy_forces(db: UnitDb, rng: RandomNumberGenerator) -> void:
 	enemy = Campaign.new()
 	enemy.name = "Defenders"
 	var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
-	for m in player.mechs:
+	for m in player.ready_mechs():
 		fb.add(0, m.design)
 	var target := fb.bv(0) / maxi(1, lances_of(0).size())
 	var skill: Array = ChaosRules.load_file().data.get("skill_levels", {}).get(String(rules.get("enemy_skill", "regular")), [4, 5])
@@ -114,9 +114,12 @@ func _enemy_forces(db: UnitDb, rng: RandomNumberGenerator) -> void:
 	var capital: Vector2i = region.locations[0]["zone"]
 	for i in int(rules.get("enemy_reserve_lances", 1)):
 		spots.append(capital)
+	var historic := bool(rules.get("historical", false))
+	var pool := MapOperations.historic_pool(db, rules, 1) if historic else []
 	for z in spots:
 		var ids: Array[String] = []
-		for d in EnemyForce.pick(fb, target, rng):
+		var picked := MapOperations.pick_force(fb, target, rng, pool) if historic else EnemyForce.pick(fb, target, rng)
+		for d in picked:
 			var p := enemy.add_pilot("Defender %d" % (enemy.pilots.size() + 1), fb.skills[1].x, fb.skills[1].y)
 			var m := enemy.add_mech(d)
 			m.pilot_id = p.id

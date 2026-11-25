@@ -3,6 +3,60 @@ extends RefCounted
 ## GM-style campaign configuration and intelligence. No new combat or repair rules.
 
 
+## Strict catalog selection is optional; an empty verified pool blocks setup.
+static func historic_pool(db: UnitDb, rules: Dictionary, side: int) -> Array[UnitDef]:
+	var out: Array[UnitDef] = []
+	var availability := EraAvailability.new()
+	var year := int(rules.get("era_year", 3025))
+	var factions: Array = rules.get("factions", ["mercenary", "draconis_combine"])
+	for def: UnitDef in db.by_id.values():
+		if def.is_support() or def.id.begins_with("test_"):
+			continue
+		if availability.check(def.id, year, String(factions[side])).get("status") == "available":
+			out.append(def)
+	out.sort_custom(func(a: UnitDef, b: UnitDef) -> bool: return a.id < b.id)
+	return out
+
+
+static func historic_roster(db: UnitDb, rules: Dictionary, rng: RandomNumberGenerator) -> bool:
+	if not rules.get("historical", false):
+		return true
+	var mine := historic_pool(db, rules, 0)
+	var foe := historic_pool(db, rules, 1)
+	if mine.is_empty() or foe.is_empty():
+		return false
+	var roster: Array = rules["starting_company"]
+	var allowed := {}
+	for d in mine:
+		allowed[d.id] = true
+	for entry: Dictionary in roster:
+		if not allowed.has(entry["design"]):
+			entry["design"] = mine[rng.randi_range(0, mine.size() - 1)].id
+	var factory: Array[String] = []
+	for d in mine:
+		factory.append(d.id)
+	rules["factory_designs"] = Array(factory)
+	return true
+
+
+static func pick_force(fb: ForceBuilder, target: int, rng: RandomNumberGenerator, pool: Array) -> Array[String]:
+	var best: Array[String] = []
+	if pool.is_empty():
+		return best
+	var gap := 1 << 30
+	for attempt in 80:
+		var ids: Array[String] = []
+		var bv := 0
+		for slot in MapCampaign.LANCE:
+			var def: UnitDef = pool[rng.randi_range(0, pool.size() - 1)]
+			ids.append(def.id)
+			bv += fb.unit_bv(1, def)
+		if absi(bv - target) < gap:
+			gap = absi(bv - target)
+			best = ids
+	return best
+
+
 static func observe(mc: MapCampaign) -> void:
 	var seen := MapFog.seen(mc)
 	for z: Vector2i in seen:

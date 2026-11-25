@@ -26,9 +26,12 @@ var _grid: MapZoneGrid
 var _inspected := Vector2i(-1, -1)
 var _layer := 0
 var _panel := 0
-var _setup_options := {"size": 0, "skill": 1, "company": 2, "goal": 1}
+var _setup_options := {"size": 0, "skill": 1, "company": 2, "goal": 1, "historical": false, "year": 3025, "player_faction": "mercenary", "enemy_faction": "draconis_combine"}
 var _swap_mech := ""
 var _swap_lance := ""
+var _swap_pilots := false
+var _moves: Array[Dictionary] = []
+var _captures: Array[Vector2i] = []
 
 
 func _ready() -> void:
@@ -52,6 +55,8 @@ func _build() -> void:
 	if mc == null:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
 		MapCampaignPanels.setup(_list, _setup_options)
+		if _note != "":
+			UiKit.label(_list, _note, 18)
 		UiKit.button(_list, "START A CAMPAIGN", _start, Vector2(0, 70), "primary").name = "StartMapCampaign"
 		return
 	var need := ceili(mc.region.total_points() * float(mc.rules.get("victory_share", 0.8)))
@@ -93,6 +98,10 @@ func _build() -> void:
 	_grid = MapZoneGrid.make(left, mc, _tap_zone, mc.lance(_chosen), _order, _layer, _inspected)
 	_grid.zoom = zoom
 	_grid.pan = pan
+	if not _moves.is_empty() or not _captures.is_empty():
+		_grid.animate_changes(_moves, _captures)
+		_moves = []
+		_captures = []
 	UiKit.label(left, "Blue: company  ·  Red: observed enemy  ·  Gold: selected / route  ·  Cyan: legal destination", 15)
 	var right := VBoxContainer.new()
 	right.custom_minimum_size.x = 330
@@ -116,10 +125,10 @@ func _build() -> void:
 	if _note != "":
 		UiKit.label(details, _note, 17).modulate = Color(1.0, 0.85, 0.6)
 	if _panel == 0:
-		MapCampaignPanels.inspect(details, mc, _inspected, db)
-		MapLancePanel.lances(details, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
 		if not mc.battles.is_empty():
 			MapLancePanel.battles(details, mc, _fight)
+		MapLancePanel.lances(details, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
+		MapCampaignPanels.inspect(details, mc, _inspected, db)
 	elif _panel == 1:
 		MapCampaignPanels.company(details, mc, db, _hq_action, _swap_mech)
 	else:
@@ -143,7 +152,8 @@ func _next_region() -> void:
 
 
 func _hq_action(l: MapLance, id: String, pilots: bool) -> void:
-	if _swap_mech == "":
+	if _swap_mech == "" or _swap_pilots != pilots:
+		_swap_pilots = pilots
 		_swap_mech = id
 		_swap_lance = l.id
 		_note = "Select another co-located unit to exchange " + ("pilots." if pilots else "lance assignments.")
@@ -168,6 +178,13 @@ func _start() -> void:
 	rules["enemy_skill"] = ["green", "regular", "veteran", "elite"][int(_setup_options["skill"])]
 	rules["starting_company"] = rules["starting_company"].slice(0, 4 * (int(_setup_options["company"]) + 1))
 	rules["victory_share"] = [0.6, 0.8, 1.0][int(_setup_options["goal"])]
+	rules["historical"] = bool(_setup_options["historical"])
+	rules["era_year"] = int(_setup_options["year"])
+	rules["factions"] = [_setup_options["player_faction"], _setup_options["enemy_faction"]]
+	if not MapOperations.historic_roster(db, rules, rng):
+		_note = "No verified catalog designs for one of these factions and years. Choose another combination or disable strict history."
+		_build()
+		return
 	mc = MapCampaign.create(db, rng, rules)
 	MapCampaignStore.save(mc)
 	_note = "Your company has landed on the south edge. Pick a lance, then an order."
@@ -215,6 +232,14 @@ func _tap_zone(z: Vector2i) -> void:
 
 
 func _end_turn() -> void:
+	var before := {}
+	var owners := {}
+	var seen := MapFog.seen(mc)
+	for l in mc.lances:
+		if l.on_map() and MapFog.shows(mc, l, seen):
+			before[l.id] = l.zone
+	for loc in mc.region.locations:
+		owners[loc["id"]] = loc["owner"]
 	MapBot.orders(mc, 1)
 	MapTurn.start(mc, Dice.new(rng.randi()))
 	if mc.battles.is_empty():
@@ -222,6 +247,13 @@ func _end_turn() -> void:
 		_note = "A quiet day." if news.is_empty() else " ".join(news)
 	else:
 		_note = "%d battle%s to fight." % [mc.battles.size(), "" if mc.battles.size() == 1 else "s"]
+	var now := MapFog.seen(mc)
+	for l in mc.lances:
+		if before.has(l.id) and l.on_map() and MapFog.shows(mc, l, now) and before[l.id] != l.zone:
+			_moves.append({"from": before[l.id], "to": l.zone, "side": l.side})
+	for loc in mc.region.locations:
+		if owners.get(loc["id"]) != loc["owner"]:
+			_captures.append(loc["zone"])
 	_chosen = ""
 	_order = ""
 	MapCampaignStore.save(mc)

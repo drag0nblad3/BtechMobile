@@ -18,9 +18,36 @@ static func setup(parent: Control, options: Dictionary) -> void:
 		picker.select(int(options[key]))
 		picker.item_selected.connect(func(i: int): options[key] = i)
 		grid.add_child(picker)
+	UiKit.label(grid, "Historical availability", 20)
+	var strict := CheckButton.new()
+	strict.text = "Verified MUL variants only"
+	strict.button_pressed = bool(options["historical"])
+	strict.toggled.connect(func(on: bool): options["historical"] = on)
+	grid.add_child(strict)
+	UiKit.label(grid, "Historical year", 20)
+	var year := SpinBox.new()
+	year.min_value = 2398
+	year.max_value = 3153
+	year.value = int(options["year"])
+	year.value_changed.connect(func(v: float): options["year"] = int(v))
+	grid.add_child(year)
+	for pair in [["player_faction", "Invader faction"], ["enemy_faction", "Defender faction"]]:
+		UiKit.label(grid, pair[1], 20)
+		var factions := OptionButton.new()
+		var key: String = pair[0]
+		for fact in EraAvailability.FACTIONS:
+			factions.add_item(String(fact["name"]))
+			factions.set_item_metadata(factions.item_count - 1, fact["id"])
+			if fact["id"] == options[key]:
+				factions.select(factions.item_count - 1)
+		factions.fit_to_longest_item = false
+		factions.clip_text = true
+		factions.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		factions.item_selected.connect(func(i: int): options[key] = factions.get_item_metadata(i))
+		grid.add_child(factions)
 
 
-static func inspect(parent: Control, mc: MapCampaign, z: Vector2i, db: UnitDb) -> void:
+static func inspect(parent: Control, mc: MapCampaign, z: Vector2i, _db: UnitDb) -> void:
 	if not mc.region.has_zone(z):
 		UiKit.label(parent, "Select a zone to inspect its terrain and facilities.", 17)
 		return
