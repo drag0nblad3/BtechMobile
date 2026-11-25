@@ -29,6 +29,10 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 		out.append(_push(state, a, t))
 		out.append_array(MeleeWeapons.options(state, a, t))
 	Tsm.boost(a, out)
+	if Spa.has(a, Spa.MELEE_SPECIALIST):  # Campaign Operations p. 77
+		for o in out:
+			if int(o.get("damage", 0)) > 0:
+				o["damage"] = int(o["damage"]) + 1
 	return out
 
 

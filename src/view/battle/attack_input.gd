@@ -15,6 +15,7 @@ var hud: BattleHud
 var highlighter: HexHighlighter
 var aim_guide: BattleAimOverlay
 var bots: BotDriver
+var units_layer: UnitsLayer
 
 var attacker: Unit
 var target: Unit
@@ -94,7 +95,7 @@ func on_hex_tapped(c: Vector2i) -> bool:
 
 
 func on_confirm() -> void:
-	if attacker == null:
+	if attacker == null or (units_layer != null and units_layer.attack_playing):
 		return
 	var u := attacker
 	if is_weapon_phase():
@@ -105,6 +106,50 @@ func on_confirm() -> void:
 		var list := AttackRows.physical_list(physical, target, target_hex)
 		clear()
 		controller.declare_physical(u, list)
+
+
+## Hint: pre-select the attack an Elite computer player would make; you still confirm.
+func on_hint() -> void:
+	if attacker == null:
+		return
+	var state := controller.state
+	if is_weapon_phase():
+		var h := Hint.fire(state, attacker, GameSettings.explain_level)
+		if h["twist"] == BotFire.FLIP:
+			controller.set_arms_flipped(attacker, true)
+		elif attacker.arms_flipped:
+			controller.set_arms_flipped(attacker, false)
+		if h["twist"] != BotFire.FLIP:
+			controller.set_torso_twist(attacker, h["twist"])
+		for i: int in h["modes"]:
+			controller.set_weapon_mode(attacker, i, h["modes"][i])
+		shots.clear()
+		aims.clear()
+		primary_id = -1
+		target_hex = Hex.INVALID
+		for sh: Dictionary in h["shots"]:
+			shots[int(sh["weapon"])] = int(sh["target_id"])
+			if primary_id < 0:
+				primary_id = int(sh["target_id"])
+			if sh.has("aim"):
+				aims[int(sh["target_id"])] = int(sh["aim"])
+		target = state.unit_by_id(primary_id) if primary_id >= 0 else target
+		_finish_hint(h["text"])
+		return
+	var p := Hint.physical(state, attacker, GameSettings.explain_level)
+	physical.clear()
+	for a: Dictionary in p["attacks"]:
+		target = state.unit_by_id(int(a["target_id"]))
+		target_hex = Hex.INVALID
+		physical["%s:%d" % [a["kind"], int(a["limb"])]] = true
+	_finish_hint(p["text"])
+
+
+func _finish_hint(text: String) -> void:
+	if target:
+		target_chosen.emit(attacker, target)
+	_refresh()
+	hud.set_tip(text + "\n" + hud.tip.text)
 
 
 func _pick_up_club() -> void:
@@ -134,7 +179,7 @@ func on_flip() -> void:
 
 
 func on_skip() -> void:
-	if attacker == null:
+	if attacker == null or (units_layer != null and units_layer.attack_playing):
 		return
 	var u := attacker
 	clear()

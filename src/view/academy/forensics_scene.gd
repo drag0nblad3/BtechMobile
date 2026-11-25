@@ -11,6 +11,7 @@ var _inspect: Button
 var _detail: Label
 var _moments: ItemList
 var _timeline: ItemList
+var _lessons: Array = []
 
 
 ## Deliberate Android Back navigation when automatic exit is disabled.
@@ -40,6 +41,7 @@ func _ready() -> void:
 			for u: Unit in state.all_units():
 				labels[str(u.id)] = {"name": u.def.display_name(), "side": u.side}
 	_report = BattleForensics.analyze(_frames, labels)
+	_lessons = BattleLessons.find(_report["timeline"], labels)
 	_build_ui()
 
 
@@ -80,6 +82,20 @@ func _build_ui() -> void:
 	split.add_theme_constant_override("separation", 14)
 	col.add_child(split)
 	var left := _panel(split, 0.45)
+	_label(left, "LESSONS  /  %d habits to work on" % _lessons.size(), 22)
+	var lessons := ItemList.new()
+	lessons.custom_minimum_size.y = 120
+	lessons.size_flags_vertical = SIZE_EXPAND_FILL
+	lessons.add_theme_font_size_override("font_size", 19)
+	UiSkin.list_control(lessons)
+	left.add_child(lessons)
+	for l: Dictionary in _lessons:
+		lessons.add_item("T%d · %s — %s" % [int(l["turn"]), l["title"], l["detail"]])
+	if _lessons.is_empty():
+		lessons.add_item("No common mistakes found in the record")
+	lessons.item_selected.connect(func(i: int) -> void:
+		if i < _lessons.size():
+			_select_frame(int(_lessons[i]["frame"]), "%s %s" % [_lessons[i]["detail"], _lessons[i]["lesson"]]))
 	_label(left, "DECISIVE MOMENTS  /  tap to inspect", 22)
 	_moments = ItemList.new()
 	_moments.size_flags_vertical = SIZE_EXPAND_FILL
@@ -94,7 +110,8 @@ func _build_ui() -> void:
 	_moments.item_selected.connect(_on_moment)
 	_label(left, "UNIT PERFORMANCE", 22)
 	var stat_scroll := ScrollContainer.new()
-	stat_scroll.custom_minimum_size.y = 175
+	stat_scroll.custom_minimum_size.y = 100
+	stat_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	stat_scroll.size_flags_vertical = SIZE_EXPAND_FILL
 	left.add_child(stat_scroll)
 	var unit_stats := VBoxContainer.new()
@@ -148,6 +165,7 @@ func _panel(parent: HBoxContainer, share: float) -> VBoxContainer:
 func _label(parent: Control, value: String, size: int) -> Label:
 	var label := Label.new()
 	label.text = value
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.add_theme_font_size_override("font_size", size)
 	UiSkin.label(label, "section" if size >= 22 else "muted" if size <= 18 else "body")
 	parent.add_child(label)

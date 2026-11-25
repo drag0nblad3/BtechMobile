@@ -21,6 +21,8 @@ var crouch := 0.0        ## 0 standing .. 1 deep knee bend
 var lean := 0.0          ## Extra forward pitch (jumps, lunges)
 var flinch := Vector2.ZERO  ## Hit reaction: x = pitch, y = roll
 var fallen := false
+var declared_twist := 0.0
+var declared_flip := false
 var twisting := false    ## A strike or shot owns the torso yaw
 var kick_amount := [0.0, 0.0]
 var arm_busy := [false, false]
@@ -169,14 +171,14 @@ func _process(delta: float) -> void:
 	mech.body.rotation.x = -gait_lean - lean + flinch.x
 	mech.body.rotation.z = s * 0.08 + flinch.y  # weight shifts onto the planted leg
 	if not twisting:
-		mech.pivots[mech.model.parts_at(Location.CT)[0]["name"]].rotation.y = s * 0.14
+		mech.pivots[mech.model.parts_at(Location.CT)[0]["name"]].rotation.y = declared_twist + s * 0.14
 	for side in 2:
 		var sh := mech.shoulders[side]
 		if mech.model.can_punch and mech.is_attached(sh) and not arm_busy[side]:
 			var code := "LA" if side == 0 else "RA"
 			var ready: float = float(mech.model.ready_arm.get(code, 0.0))
 			sh.rotation.z = float(mech.model.ready_roll.get(code, 0.0))
-			sh.rotation.x = ready + (-sin((phase + 0.5 * side) * TAU) * (
+			sh.rotation.x = (PI if declared_flip else ready) + (-sin((phase + 0.5 * side) * TAU) * (
 					0.8 if running else 0.55) if walking else 0.0)
 
 

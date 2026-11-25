@@ -16,6 +16,7 @@ static func check(dice: Dice, emit: Callable, u: Unit, c: Conditions = null) -> 
 	if u.shutdown:
 		_restart(dice, emit, u, need)
 		return
+	need = HotDog.need(u, need)
 	if need == 0:
 		return
 	var down := need >= 99 or not u.pilot.conscious

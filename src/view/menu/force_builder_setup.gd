@@ -25,6 +25,7 @@ var _conditions: Button
 var _withdrawal: Button
 var _hidden: Button
 var _initiative: Button
+var _formations: Button
 var _explanations: Button
 
 
@@ -52,6 +53,8 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	var era_row := HBoxContainer.new()
 	history.add_child(era_row)
 	_era = OptionButton.new()
+	_era.fit_to_longest_item = false
+	_era.clip_text = true
 	_era.custom_minimum_size.y = 50
 	_era.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_era.add_theme_font_size_override("font_size", 17)
@@ -72,6 +75,8 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		builder.era_year = int(value)
 		_changed.call())
 	_policy = OptionButton.new()
+	_policy.fit_to_longest_item = false
+	_policy.clip_text = true
 	_policy.custom_minimum_size.y = 50
 	_policy.add_theme_font_size_override("font_size", 18)
 	for mode_name: String in EraAvailability.MODE_NAMES:
@@ -88,6 +93,8 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 		faction_label.autowrap_mode = TextServer.AUTOWRAP_OFF
 		UiSkin.label(faction_label, "section")
 		var picker_for_faction := OptionButton.new()
+		picker_for_faction.fit_to_longest_item = false
+		picker_for_faction.clip_text = true
 		picker_for_faction.custom_minimum_size.y = 50
 		picker_for_faction.tooltip_text = "Also paints this side's voxel 'Mechs and adds a stylized armor insignia. Historical restrictions are optional."
 		picker_for_faction.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -148,6 +155,9 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	_initiative = UiKit.button(_advanced, "Initiative die", func():
 		builder.initiative_die = not builder.initiative_die
 		_changed.call(), Vector2(0, 52))
+	_formations = UiKit.button(_advanced, "Formations", func():
+		builder.formations = not builder.formations
+		_changed.call(), Vector2(0, 52))
 	_explanations = UiKit.button(_advanced, "Explanations", func():
 		GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level))
 		_changed.call(), Vector2(0, 52))
@@ -188,8 +198,10 @@ func _toggle_advanced() -> void:
 
 func refresh() -> void:
 	_era.select(EraAvailability.era_index(builder.era_year))
+	_era.tooltip_text = _era.get_item_text(_era.selected)
 	_year.set_value_no_signal(builder.era_year)
 	_policy.select(builder.availability_mode)
+	_policy.tooltip_text = _policy.get_item_text(_policy.selected)
 	for side in 2:
 		var paint := VxLivery.scheme(builder.factions[side])
 		_paint_swatches[side * 2].color = Color(String(paint["primary"]))
@@ -197,6 +209,7 @@ func refresh() -> void:
 		for i in EraAvailability.FACTIONS.size():
 			if EraAvailability.FACTIONS[i]["id"] == builder.factions[side]:
 				_factions[side].select(i)
+				_factions[side].tooltip_text = String(EraAvailability.FACTIONS[i]["name"]) + " — also sets this side's paint and insignia."
 				break
 	_budget_button.text = "BV LIMIT  •  %d per side  ▸" % builder.budget
 	_mission_button.text = "MISSION  •  %s  ▸" % builder.mission_name()
@@ -213,16 +226,18 @@ func refresh() -> void:
 	_hidden.text = "HIDDEN UNITS  •  %s" % (
 		"Off" if builder.hidden_side < 0 else Names.side(builder.hidden_side))
 	_initiative.text = "INITIATIVE DIE  •  %s" % ("On" if builder.initiative_die else "Off")
+	_formations.text = "FORMATION BONUSES  •  %s" % ("On" if builder.formations else "Off")
 	_explanations.text = "EXPLANATIONS  •  %s" % ExplainLevel.name_of(GameSettings.explain_level)
 	for side in 2:
 		_players[side].text = "%s: %s" % [
 			Names.side(side), "Computer" if bot_sides.has(side) else "Human"]
 	var weather := ", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "Clear"
-	_info.text = "AI: %s  •  Conditions: %s\nPilots: Red %s, Blue %s\nWithdrawal: %s  •  Hidden: %s\nInitiative die: %s  •  Explanations: %s" % [
+	_info.text = "AI: %s  •  Conditions: %s\nPilots: Red %s, Blue %s\nWithdrawal: %s  •  Hidden: %s\nInitiative die: %s  •  Formations: %s  •  Explanations: %s" % [
 		BotSkill.name_of(GameSettings.ai_level), weather,
 		BvSkill.preset_name(builder.skills[0].x, builder.skills[0].y),
 		BvSkill.preset_name(builder.skills[1].x, builder.skills[1].y),
 		"On" if builder.forced_withdrawal else "Off",
 		"Off" if builder.hidden_side < 0 else Names.side(builder.hidden_side),
 		"On" if builder.initiative_die else "Off",
+		"On" if builder.formations else "Off",
 		ExplainLevel.name_of(GameSettings.explain_level)]

@@ -1,0 +1,54 @@
+{
+  "_source": "Map-Based Campaign rules, Campaign Operations pp. 142-155. Orders, the Scenario Type table, key location benefits and the 80% victory are the book's; map size, location counts and points, force sizes and starting company are our picks ('pick').",
+  "width": 8,
+  "height": 6,
+  "victory_share": 0.8,
+  "turn_limit": 20,
+  "terrains": {
+    "plains": {"theme": "grassland", "weight": 4},
+    "woods": {"theme": "woodland", "weight": 3},
+    "hills": {"theme": "hills", "weight": 2},
+    "badlands": {"theme": "badlands", "weight": 1},
+    "lakes": {"theme": "lakes", "weight": 1},
+    "river": {"theme": "river_valley", "weight": 1},
+    "urban": {"theme": "urban", "weight": 0}
+  },
+  "locations": {
+    "capital": {"name": "Capital", "points": 10, "count": 1, "benefit": "repair", "terrain": "urban"},
+    "fortress": {"name": "Fortress", "points": 3, "count": 1, "benefit": "fortress"},
+    "city": {"name": "City", "points": 1, "count": 3, "benefit": "repair", "terrain": "urban"},
+    "depot": {"name": "Supply Depot", "points": 1, "count": 2, "benefit": "supply"},
+    "bridge": {"name": "Bridge", "points": 1, "count": 1, "benefit": "", "terrain": "river"}
+  },
+  "town_names": ["Port Vale", "Rockford", "Halden", "Marrow Cross", "Tessick", "Greywater", "Ostrava", "Kellin", "Brask", "Solenne"],
+  "scenario_table": {
+    "battle": ["extraction", "extraction", "hold_the_line", "hold_the_line", "standup", "standup", "hide_and_seek", "breakthrough", "breakthrough"],
+    "scout": ["breakthrough", "breakthrough", "probe", "probe", "hide_and_seek", "hide_and_seek", "recon_raid", "recon_raid", "recon_raid"]
+  },
+  "scenario_missions": {
+    "_note": "The app's missions that stand in for the Total Warfare scenarios (pick).",
+    "extraction": "extraction",
+    "hold_the_line": "hold_the_line",
+    "standup": "annihilation",
+    "hide_and_seek": "ambush",
+    "breakthrough": "objective_raid",
+    "probe": "sensor_check",
+    "recon_raid": "sensor_check"
+  },
+  "enemy_skill": "regular",
+  "enemy_reserve_lances": 1,
+  "starting_company": [
+    {"design": "wolverine_wvr6r", "pilot": "Captain Ada Rhee", "gunnery": 4, "piloting": 5},
+    {"design": "griffin_grf1n", "pilot": "Lt. Joss Marek", "gunnery": 4, "piloting": 5},
+    {"design": "shadow_hawk_shd2h", "pilot": "Sgt. Nia Okafor", "gunnery": 4, "piloting": 5},
+    {"design": "phoenix_hawk_pxh1", "pilot": "Cpl. Tomas Brand", "gunnery": 4, "piloting": 5},
+    {"design": "marauder_mad3r", "pilot": "Lt. Sven Ardal", "gunnery": 4, "piloting": 5},
+    {"design": "warhammer_whm6r", "pilot": "Sgt. Lia Moreau", "gunnery": 4, "piloting": 5},
+    {"design": "rifleman_rfl3n", "pilot": "Cpl. Oren Faust", "gunnery": 4, "piloting": 5},
+    {"design": "archer_arc2r", "pilot": "MechWarrior Ida Kwan", "gunnery": 4, "piloting": 5},
+    {"design": "jenner_jr7d", "pilot": "Lt. Remy Sato", "gunnery": 4, "piloting": 5},
+    {"design": "panther_pnt9r", "pilot": "Sgt. Dana Holt", "gunnery": 4, "piloting": 5},
+    {"design": "commando_com2d", "pilot": "Cpl. Juno Vale", "gunnery": 4, "piloting": 5},
+    {"design": "wasp_wsp1a", "pilot": "MechWarrior Teo Brandt", "gunnery": 4, "piloting": 5}
+  ]
+}

@@ -8,7 +8,7 @@ static func names(o: Object) -> Array:
 		return ["map", "units", "turn", "phase", "initiative_order", "side_order",
 				"order_index", "initiative_rolls", "declared_fire", "declared_physical",
 				"building_hits", "doomed_buildings", "initiative_die_rule",
-				"initiative_die", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "conditions", "sees_through",
+				"initiative_die", "initiative_bonus", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "formations", "conditions", "sees_through",
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
@@ -22,7 +22,7 @@ static func names(o: Object) -> Array:
 				"voluntary_shutdown", "power_request", "masc_level", "sc_level",
 				"sc_lost", "has_moved", "has_fired", "has_physical", "move_mode",
 				"hexes_moved", "masc_used", "masc_active", "masc_failed",
-				"sc_used", "sc_active", "sc_failed", "torso_twist",
+				"sc_used", "sc_active", "sc_failed", "flat_out", "formation_spas", "luck_used", "torso_twist",
 				"arms_flipped", "landed", "tmm_zero", "heat_generated",
 				"outside_heat", "damage_this_phase", "psr_pending"]
 	if o is AssetState:
@@ -62,7 +62,7 @@ static func names(o: Object) -> Array:
 		return ["type", "height"]
 	if o is Pilot:
 		return ["name", "gunnery", "piloting", "hits", "conscious", "roll_owed",
-				"out_since_turn"]
+				"out_since_turn", "abilities", "lucky", "quarry"]
 	if o is MountedWeapon:
 		return ["def", "loc", "rear", "destroyed", "exploded", "mode", "artemis",
 				"artemis_lost", "artemis_v", "apollo", "apollo_lost", "fired", "engaged", "narc_ammo", "ammo_kinds",

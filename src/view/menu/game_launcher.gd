@@ -1,11 +1,10 @@
 class_name GameLauncher
 extends Control
-## Start screen: training (first for new players), a quick battle, the force
-## builder, and the voxel graphics labs.
+## Start screen: training (first for new players), rules drills, a quick
+## battle and the force builder. Development labs remain standalone scenes.
 
 const BATTLE_MENU := "res://scenes/menu.tscn"
-const VOXEL_LAB := "res://scenes/voxel_mech_lab.tscn"
-const VX_SHOWCASE := "res://scenes/vx_showcase.tscn"
+const DRILLS := "res://scenes/drills.tscn"
 
 
 ## Android Back remains available with automatic back-to-exit disabled.
@@ -26,13 +25,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _ready() -> void:
 	set_anchors_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
-	var center := CenterContainer.new()
-	center.set_anchors_preset(PRESET_FULL_RECT)
-	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(center)
-	var box := UiKit.panel(center)
-	box.get_parent().custom_minimum_size.x = 550
-	box.add_theme_constant_override("separation", 18)
+	var scroll := UiKit.landscape_scroll(self)
+	var box := UiKit.panel(scroll)
+	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", 12)
 	var eyebrow := UiKit.label(box, "FIELD OPERATIONS  /  COMMAND INTERFACE", 18)
 	UiSkin.label(eyebrow, "section")
 	eyebrow.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -42,31 +38,52 @@ func _ready() -> void:
 	var subtitle := UiKit.label(box, "TACTICAL COMBAT SIMULATOR", UiKit.SMALL)
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	UiSkin.rule(box)
+	var actions := GridContainer.new()
+	actions.columns = 2
+	actions.add_theme_constant_override("h_separation", 12)
+	actions.add_theme_constant_override("v_separation", 12)
+	box.add_child(actions)
 	GameSettings.load_settings()
 	var new_player := GameSettings.training.is_empty()
-	var train := UiKit.button(box, "TRAINING  ·  START HERE" if new_player else "TRAINING",
+	var train := UiKit.button(actions, "TRAINING  ·  START HERE" if new_player else "TRAINING",
 		_open_training, Vector2(0, 76), "primary" if new_player else "secondary")
 	train.name = "TrainingButton"
-	var quick := UiKit.button(box, "QUICK BATTLE", _quick_battle, Vector2(0, 70))
+	var camp := UiKit.button(actions, "CAMPAIGN", _open_campaign, Vector2(0, 64))
+	camp.name = "CampaignButton"
+	camp.tooltip_text = "A mercenary company whose damage, wounds and experience carry from battle to battle"
+	var map_camp := UiKit.button(actions, "MAP CAMPAIGN", _open_map_campaign, Vector2(0, 64))
+	map_camp.name = "MapCampaignButton"
+	map_camp.tooltip_text = "Take a region zone by zone with a company of three lances"
+	var drills := UiKit.button(actions, "RULES DRILLS", func(): get_tree().change_scene_to_file(DRILLS), Vector2(0, 58))
+	drills.name = "DrillsButton"
+	drills.tooltip_text = "Quick questions on to-hit numbers, hit locations, missiles, heat and odds"
+	var quick := UiKit.button(actions, "QUICK BATTLE", _quick_battle, Vector2(0, 70))
 	quick.name = "QuickBattleButton"
 	quick.tooltip_text = "Two matched lances on a random map, you against the computer"
-	var battle := UiKit.button(box, "BUILD A BATTLE", _open_battle, Vector2(0, 70),
+	var battle := UiKit.button(actions, "BUILD A BATTLE", _open_battle, Vector2(0, 70),
 		"secondary" if new_player else "primary")
 	battle.name = "BattleButton"
-	var labs := HBoxContainer.new()
-	labs.add_theme_constant_override("separation", 10)
-	box.add_child(labs)
-	var lab := UiKit.button(labs, "VOXEL LAB", _open_lab, Vector2(0, 52), "subtle")
-	lab.name = "VoxelLabButton"
-	var vx := UiKit.button(labs, "VOXEL SHOWCASE", _open_vx, Vector2(0, 52), "subtle")
-	vx.name = "VxShowcaseButton"
-	for b in [lab, vx]:
+	var reference := UiKit.button(actions, "TECHNICAL READOUT", _open_reference, Vector2(0, 76))
+	reference.name = "TechnicalReadoutButton"
+	var slots := UiKit.button(actions, "SAVE SLOTS", _open_slots, Vector2(0, 76))
+	slots.name = "SaveSlotsButton"
+	for b: Button in [train, camp, map_camp, drills, quick, battle, reference, slots]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		b.add_theme_font_size_override("font_size", UiKit.SMALL)
+		b.custom_minimum_size.y = 76
 
 
 func _open_training() -> void:
 	BattleLaunch.open_training = true
+	get_tree().change_scene_to_file(BATTLE_MENU)
+
+
+func _open_campaign() -> void:
+	BattleLaunch.open_campaign = true
+	get_tree().change_scene_to_file(BATTLE_MENU)
+
+
+func _open_map_campaign() -> void:
+	BattleLaunch.open_map_campaign = true
 	get_tree().change_scene_to_file(BATTLE_MENU)
 
 
@@ -86,9 +103,10 @@ func _open_battle() -> void:
 	get_tree().change_scene_to_file(BATTLE_MENU)
 
 
-func _open_lab() -> void:
-	get_tree().change_scene_to_file(VOXEL_LAB)
+
+func _open_reference() -> void:
+	add_child(TechnicalReadout.new())
 
 
-func _open_vx() -> void:
-	get_tree().change_scene_to_file(VX_SHOWCASE)
+func _open_slots() -> void:
+	add_child(SaveSlotScreen.new())

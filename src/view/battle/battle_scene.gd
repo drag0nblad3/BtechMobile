@@ -9,6 +9,7 @@ var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
 var audio := BattleAudio.new()
+var atmosphere := BattleAtmosphere.new()
 var scars := BattleScars.new()
 var aim_guides := BattleAimOverlay.new()
 var units_layer: UnitsLayer
@@ -25,19 +26,31 @@ var tutorial: Tutorial
 var practice: TrainingPractice
 var lessons: LessonCard
 var training := -1  ## Training campaign mission index, -1 outside training.
+var in_campaign := false  ## A campaign company battle (CampaignStore).
+var in_map_campaign := false  ## A map campaign meeting (MapCampaignStore).
 var objectives: Node3D
 var off_field: HiddenInput
 var recorder := BattleRecorder.new()
+var undo_input := UndoInput.new()  ## Training: take back your last move.
 var _last_autosave_turn := -1
+var _autosave_pending := false
 var _tutorial_path := ""
+var startup_complete := false
+var _loading: BattleLoading
 
 
 func _ready() -> void:
+	_loading = BattleLoading.new()
+	add_child(_loading)
+	await _loading.step("Loading battle data and deployment orders", 10.0)
 	GameSettings.load_settings()
 	var saved := {}
 	if BattleLaunch.load_autosave:
 		BattleLaunch.load_autosave = false
 		saved = BattleSave.load_game()
+	if not BattleLaunch.restore_snapshot.is_empty():
+		saved = BattleSave.restore(BattleLaunch.restore_snapshot, UnitDb.load_dir(), TerrainDb.load_file())
+		BattleLaunch.restore_snapshot = {}
 	var state: GameState
 	if saved.is_empty():
 		state = BattleLaunch.take()
@@ -50,6 +63,7 @@ func _ready() -> void:
 		controller = saved["controller"]
 		state = controller.state
 		recorder.frames = saved["frames"]
+	await _loading.step("Preparing mission and command systems", 18.0)
 	bots = BotDriver.new()
 	bots.controller = controller
 	bots.bot_sides = saved["bots"] if not saved.is_empty() else BattleLaunch.take_bots()
@@ -66,6 +80,14 @@ func _ready() -> void:
 		bots.lessons = lessons
 	training = int(saved["training"]) if not saved.is_empty() else BattleLaunch.training_mission
 	BattleLaunch.training_mission = -1
+	if saved.is_empty() and not BattleLaunch.campaign:
+		CampaignStore.drop_pending()  # its autosave is about to be replaced
+	in_campaign = not CampaignStore.pending_roster().is_empty()
+	BattleLaunch.campaign = false
+	if saved.is_empty() and not BattleLaunch.map_campaign:
+		MapCampaignStore.drop_pending()
+	in_map_campaign = not MapCampaignStore.pending().is_empty()
+	BattleLaunch.map_campaign = false
 	if training >= 0:
 		var campaign := TrainingCampaign.load_file()
 		if training < campaign.missions.size():
@@ -74,17 +96,25 @@ func _ready() -> void:
 				var player_side := 0 if not bots.bot_sides.has(0) else 1
 				practice.restore(recorder.frames, state, player_side)
 	add_child(BattleEnvironment.build(state.conditions))
-	_build_views(state)
+	await _build_views(state)
 	_wire()
 	hud.set_explain_label(GameSettings.explain_level)
 	hud.set_cinematic_label(GameSettings.cinematic_camera)
 	hud.pause_menu.set_voxel_label(GameSettings.voxel_mechs)
 	hud.pause_menu.set_shake_label(GameSettings.camera_shake)
+	await _loading.step("Finalizing deployment and initiative", 94.0)
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
+		cinematic.introduce(state)
 	else:
 		_resume_ui()
+	# Keep the cover through the initial deferred autosave and first render.
+	await _loading.step("Battle ready", 100.0)
+	startup_complete = true
+	_loading.hide()
+	_loading.queue_free()
+	bots.set_process(true)
 
 
 func _resume_ui() -> void:
@@ -105,7 +135,24 @@ func _autosave() -> bool:
 			training, recorder.frames, _tutorial_path)
 	if not ok:
 		push_warning("Battle autosave could not be written.")
+	else:
+		_autosave_pending = false
 	return ok
+
+
+## Collapse several synchronous end-of-turn events into one durable write.
+func _queue_autosave() -> void:
+	if _autosave_pending:
+		return
+	_autosave_pending = true
+	_flush_autosave.call_deferred()
+
+
+func _flush_autosave() -> void:
+	if not _autosave_pending:
+		return
+	_autosave_pending = false
+	_autosave()
 
 
 func _save_battle() -> void:
@@ -122,6 +169,7 @@ func _toggle_pause() -> void:
 		hud.pause_menu.set_message("The battle is stopped until you resume.")
 	get_tree().paused = opening
 	audio.set_paused(opening)
+	atmosphere.set_paused(opening)
 
 
 func _exit_to_menu() -> void:
@@ -130,6 +178,8 @@ func _exit_to_menu() -> void:
 		return
 	get_tree().paused = false
 	BattleLaunch.open_training = training >= 0
+	BattleLaunch.open_campaign = in_campaign
+	BattleLaunch.open_map_campaign = in_map_campaign
 	get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
 
 
@@ -151,7 +201,14 @@ func _open_forensics() -> void:
 		hud.set_tip("Could not archive battle for analysis.")
 
 
+func _input(_event: InputEvent) -> void:
+	if not startup_complete:
+		get_viewport().set_input_as_handled()
+
+
 func _notification(what: int) -> void:
+	if not startup_complete:
+		return
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST and controller != null:
 		_toggle_pause()
 	elif what == NOTIFICATION_APPLICATION_PAUSED and controller != null:
@@ -161,19 +218,28 @@ func _notification(what: int) -> void:
 func _build_views(state: GameState) -> void:
 	map_view = MapView.new()
 	add_child(map_view)
-	map_view.build(state.map)
+	await map_view.build_staged(state.map, _loading.step)
 	map_view.set_conditions(state.conditions)
+	await _loading.step("Placing mission objectives", 48.0)
 	objectives = ObjectiveMarkers.build(state)
 	add_child(objectives)
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
-	units_layer.build(state, [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side)))
+	var see_hidden := [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side))
+	var roster := state.all_units()
+	for i in roster.size():
+		await _loading.step("Preparing unit %d of %d" % [i + 1, roster.size()],
+				50.0 + 34.0 * float(i) / maxf(1.0, roster.size()))
+		units_layer.build_one(state, roster[i], see_hidden, true)
+	await _loading.step("Restoring battlefield history and effects", 84.0)
 	add_child(scars)
 	scars.setup(state, units_layer, recorder.frames)
 	fx.setup(state, units_layer, map_view)
+	fx.scars = scars
 	add_child(fx)
 	add_child(audio)
 	audio.setup(state)
+	await _loading.step("Setting up tactical controls", 90.0)
 	var highlighter := HexHighlighter.new()
 	add_child(highlighter)
 	highlighter.setup(state.map)
@@ -194,11 +260,16 @@ func _build_views(state: GameState) -> void:
 	add_child(cinematic)
 	cinematic.setup(rig, units_layer)
 	cinematic.set_enabled(GameSettings.cinematic_camera)
+	fx.attacks.visual_event.connect(audio.on_event)
+	fx.attacks.visual_event.connect(atmosphere.on_event)
+	fx.attacks.visual_event.connect(cinematic.on_event)
 	gestures = TouchGestures.new()
 	add_child(gestures)
 	hud = BattleHud.new()
 	add_child(hud)
 	audio.attach_ui(hud)
+	add_child(atmosphere)
+	atmosphere.setup(hud, audio, state, bots.bot_sides)
 	movement = MovementInput.new()
 	movement.controller = controller
 	movement.highlighter = highlighter
@@ -213,13 +284,17 @@ func _build_views(state: GameState) -> void:
 	attacks.highlighter = highlighter
 	attacks.aim_guide = aim_guides
 	attacks.bots = bots
+	attacks.units_layer = units_layer
 	movement.bots = bots
 	add_child(attacks)
 	bots.units_layer = units_layer
 	add_child(bots)
+	bots.set_process(false)
 	var plates := Nameplates.new()
 	add_child(plates)
 	plates.setup(state, units_layer, func() -> Unit: return attacks.attacker if attacks.attacker else movement.selected)
+	controller.event.connect(plates.invalidate)
+	units_layer.busy_changed.connect(plates.invalidate)
 	off_field = HiddenInput.new()
 	off_field.controller = controller
 	off_field.hud = hud
@@ -240,6 +315,7 @@ func _wire() -> void:
 	hud.top_down_toggled.connect(func(): cinematic.manual_input(); rig.toggle_top_down())
 	hud.cinematic_toggled.connect(_toggle_cinematic)
 	hud.mode_toggled.connect(movement.on_mode_toggled)
+	hud.intel_cycled.connect(movement.cycle_intel)
 	hud.turn_left.connect(movement.on_turn.bind(-1))
 	hud.turn_right.connect(movement.on_turn.bind(1))
 	hud.confirm.connect(movement.on_confirm)
@@ -263,11 +339,15 @@ func _wire() -> void:
 	hud.pause_menu.voxel_toggled.connect(_toggle_voxels)
 	hud.pause_menu.shake_toggled.connect(_toggle_shake)
 	hud.next_unit.connect(_next_unit)
+	undo_input.setup(self)
+	hud.hint.connect(func(): movement.on_hint() if controller.state.phase == Phase.Kind.MOVEMENT else attacks.on_hint())
 	hud.exit_battle.connect(_exit_to_menu)
 	hud.watch_replay.connect(_watch_replay)
 	hud.battle_forensics.connect(_open_forensics)
 	hud.new_battle.connect(func():
 			BattleLaunch.open_training = training >= 0
+			BattleLaunch.open_campaign = in_campaign
+			BattleLaunch.open_map_campaign = in_map_campaign
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
@@ -293,6 +373,8 @@ func _frame_attack(a: Unit, t: Unit) -> void:
 
 ## Next button: select the next unit still to act, or just look at the next one.
 func _next_unit() -> void:
+	if units_layer.attack_playing:
+		return
 	var current: Unit = movement.selected if movement.selected else attacks.attacker if attacks.attacker else sheet_unit
 	var u := UnitCycler.after(UnitCycler.candidates(controller, bots.bot_sides), current)
 	if u == null:
@@ -325,6 +407,8 @@ func _look_at_my_turn() -> void:
 
 
 func _on_tap(pos: Vector2) -> void:
+	if not startup_complete or units_layer.attack_playing:
+		return
 	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c == Hex.INVALID:
@@ -408,6 +492,7 @@ func _on_event(e: GameEvent) -> void:
 	hud.show_combat_event(e)
 	hud.roll_feed.add_event(e, s)
 	recorder.record(e, s, explanation)
+	undo_input.refresh()
 	if practice != null:
 		var player_side := 0 if not bots.bot_sides.has(0) else 1
 		var checks := practice.observe(e, s, player_side)
@@ -416,12 +501,14 @@ func _on_event(e: GameEvent) -> void:
 					practice.completed_count(), practice.goals.size(), checks[checks.size() - 1]])
 	if e.type == GameEvent.ACTIVE_SIDE and s.turn > _last_autosave_turn:
 		_last_autosave_turn = s.turn
-		_autosave.call_deferred()
+		_queue_autosave()
 	if e.type == GameEvent.GAME_OVER:
-		_autosave.call_deferred()
+		_queue_autosave()
 		BattleSave.save_replay.call_deferred(recorder.frames)
-	fx.play(e)
-	audio.on_event(e)
+	var deferred_visual := fx.play(e)
+	if not deferred_visual:
+		audio.on_event(e)
+		atmosphere.on_event(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:
@@ -430,22 +517,24 @@ func _on_event(e: GameEvent) -> void:
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z,
 				int(e.data.get("mode", -1)))
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
-			units_layer.refresh_unit(e.data["unit_id"])
-			units_layer.react(e)
+			if not deferred_visual:
+				units_layer.refresh_unit(e.data["unit_id"])
+				units_layer.react(e)
 			_show_sheet_if_open()
 		GameEvent.PHYSICAL:
-			units_layer.react(e)
+			if not deferred_visual:
+				units_layer.react(e)
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
 			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
-			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(true)
 			units_layer.refresh_unit(e.data["unit_id"])
 		GameEvent.WAVE:
-			for u in s.units:
-				units_layer.view_of(u).visible = not s.hidden.has(u)
-				units_layer.refresh_unit(u.id)
+			# Waves emits its roll before placing the arriving units.
+			if e.data.get("arrived", false):
+				_refresh_arrivals.call_deferred()
 		GameEvent.UNIT_EXITED:
-			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(false)
 			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			if e.type == GameEvent.PHASE_CHANGED:
@@ -462,12 +551,25 @@ func _on_event(e: GameEvent) -> void:
 			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
 				map_view.rebuild()
 		GameEvent.GAME_OVER:
-			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), TrainingScreen.finish(training, s, bots.bot_sides,
-					int(e.data.get("winner", -1)), practice))
+			var after := TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1)), practice)
+			if in_campaign:
+				after = CampaignStore.finish(s, 0, int(e.data.get("winner", -1)), recorder.frames)
+			if in_map_campaign:
+				after = MapCampaignStore.finish(s, int(e.data.get("winner", -1)), recorder.frames)
+			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), after)
 			attacks.clear()
 			movement.clear_selection()
-	scars.on_event(e)
-	cinematic.on_event(e)
+	if not deferred_visual:
+		scars.on_event(e)
+		cinematic.on_event(e)
+
+
+func _refresh_arrivals() -> void:
+	for u: Unit in controller.state.units:
+		var v := units_layer.view_of(u)
+		if v != null and not v.field_visible and not controller.state.mission.exited.has(u.id):
+			v.set_field_visible(true)
+			v.snap_to_state()
 
 
 func _rebuild_objectives() -> void:

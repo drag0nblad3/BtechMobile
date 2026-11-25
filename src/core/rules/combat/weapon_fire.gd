@@ -61,12 +61,22 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	PpcCapacitor.discharge(attacker, w)
 	var roll := dice.roll_2d6()
 	var need := th.target()
+	var lucky_first := -1  # the missed roll Lucky threw away
+	if roll < need:
+		var again := Lucky.attack(dice, attacker, w, need, state)
+		if again >= 0:
+			lucky_first = roll
+			roll = again
 	var hit := roll >= need
+	if not th.mods.any(func(m: Dictionary) -> bool: return m["label"] == "secondary target"):
+		BloodStalker.mark(state, attacker, target)
 	var data := {"attacker_id": attacker.id, "target_id": target.id, "weapon": Atm.profile(w).name,
 			"weapon_id": w.def.id, "weapon_index": attacker.weapons.find(w), "roll": roll, "need": need, "hit": hit,
 			"mods": th.mods, "missiles": 0, "shots": shots, "mode": w.mode}
 	if decoy != null:
 		data["nemesis"] = true
+	if lucky_first >= 0:
+		data["lucky_first"] = lucky_first
 	if RotaryAc.check_jam(w, shots, roll):
 		data["jammed"] = true
 	if not hit:
@@ -111,7 +121,7 @@ static func resolve(state: GameState, dice: Dice, emit: Callable, attacker: Unit
 	if w.def.large_missile:
 		ams_on = false  # already rolled against for this large missile
 	var c := WeaponModes.cluster(w, shots, dice, ams_on, jam != "", th.narc_homing, angel,
-			GaussWeapons.cluster_mod(w.def, dist))
+			GaussWeapons.cluster_mod(w.def, dist), 1 if Spa.has(attacker, Spa.CLUSTER_HITTER) else 0)
 	if th.narc_homing:
 		data["narc_homing"] = true
 	if was_ams:
@@ -228,4 +238,4 @@ static func hit_with(state: GameState, dice: Dice, emit: Callable, target: Unit,
 	Damage.announce(emit, target)
 	HeadHit.check(dice, emit, target, steps)
 	HullBreach.after_damage(state, dice, emit, target, steps)
-	CriticalHits.after_damage(state, dice, emit, target, steps, hl["tac"])
+	CriticalHits.after_damage(state, dice, emit, target, steps, hl["tac"], HumanTro.mod(state, source_id))

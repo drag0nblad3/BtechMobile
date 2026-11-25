@@ -20,7 +20,7 @@ static func crits_for_roll(roll: int) -> int:
 
 
 static func after_damage(state: GameState, dice: Dice, emit: Callable, u: Unit,
-		steps: Array[Dictionary], tac: bool) -> void:
+		steps: Array[Dictionary], tac: bool, attacker_mod := 0) -> void:
 	var checked := {}
 	for i in steps.size():
 		var st: Dictionary = steps[i]
@@ -30,7 +30,7 @@ static func after_damage(state: GameState, dice: Dice, emit: Callable, u: Unit,
 		if checked.has(loc) or (not st["breached"] and not first_tac) or u.destroyed:
 			continue
 		checked[loc] = true
-		var mod := -1 if st.get("case2", false) else 0  # CASE II (p. 91)
+		var mod := (-1 if st.get("case2", false) else 0) + attacker_mod  # CASE II (p. 91), Human TRO
 		if first_tac and not st["breached"]:
 			mod += int(armor_tac)
 		if st["destroyed"]:

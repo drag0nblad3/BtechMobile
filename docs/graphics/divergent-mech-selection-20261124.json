@@ -1,0 +1,149 @@
+{
+  "decision": "Retain all existing A versions, as selected by the user after reviewing twenty paired Godot renders.",
+  "date": "2026-11-24",
+  "a_reference": "00d4f7db1c60e7559a375e6e6234deb63a88ce19",
+  "b_archive_commit": "db42d07dac5e0a2e1ed4d2a029ffcdd084909379",
+  "review_pr": 323,
+  "models": [
+    {
+      "id": "hel",
+      "selected": "A",
+      "shape_blob": "2d7b8686e5b58dd40ac1f4af9fe7b444315cbf3f",
+      "detailed_blob": "990b19d63be6873ec04b469245b1fb4ce81ec22b",
+      "alternative": "experiments/divergent_mech_review_20261124/hel_shape.json"
+    },
+    {
+      "id": "katana",
+      "selected": "A",
+      "shape_blob": "8cf9a91ea219b501637f82270537eada01c7975e",
+      "detailed_blob": "6bfc978043e1d02f9784d64707efaa4b2b663a7a",
+      "alternative": "experiments/divergent_mech_review_20261124/katana_shape.json"
+    },
+    {
+      "id": "kodiak",
+      "selected": "A",
+      "shape_blob": "1241be3b29b430eaa5bcef94da1b756c98262350",
+      "detailed_blob": "f3d99a47979473a325d511f0e2e76eabe1e55564",
+      "alternative": "experiments/divergent_mech_review_20261124/kodiak_shape.json"
+    },
+    {
+      "id": "legionnaire",
+      "selected": "A",
+      "shape_blob": "007d69259614516d246166721049e87ebff2fe16",
+      "detailed_blob": "db33e588976e78a291e57057cc85c274141a80af",
+      "alternative": "experiments/divergent_mech_review_20261124/legionnaire_shape.json"
+    },
+    {
+      "id": "malice",
+      "selected": "A",
+      "shape_blob": "7b45b331ac48e88cf41c297b528e4125e4439076",
+      "detailed_blob": "3eec53786b84a80f93c83337ce5d90f66c7a949d",
+      "alternative": "experiments/divergent_mech_review_20261124/malice_shape.json"
+    },
+    {
+      "id": "nightsky",
+      "selected": "A",
+      "shape_blob": "d8e7ea1ea03164bc282a82cbd65e69a998f216b2",
+      "detailed_blob": "b36bfe06590d9ee519b6ec12a48cac17d6c8b748",
+      "alternative": "experiments/divergent_mech_review_20261124/nightsky_shape.json"
+    },
+    {
+      "id": "penetrator",
+      "selected": "A",
+      "shape_blob": "8501e1a86d9b577a1ffd69bacdcb5411792f7c76",
+      "detailed_blob": "9db3a346feed2f09129a97309650974abbe47a9a",
+      "alternative": "experiments/divergent_mech_review_20261124/penetrator_shape.json"
+    },
+    {
+      "id": "rook",
+      "selected": "A",
+      "shape_blob": "723306c931e9fa9af2b025d74192ccde5ac5f8d8",
+      "detailed_blob": "58fbc5e4838fbcb1f63ffe39615207aa33dd22a6",
+      "alternative": "experiments/divergent_mech_review_20261124/rook_shape.json"
+    },
+    {
+      "id": "scarabus",
+      "selected": "A",
+      "shape_blob": "f778a82b49351658787c6a4fc42b8890b042960b",
+      "detailed_blob": "757d930c83717de73b2cdc01b87cfe90af5768ca",
+      "alternative": "experiments/divergent_mech_review_20261124/scarabus_shape.json"
+    },
+    {
+      "id": "spartan",
+      "selected": "A",
+      "shape_blob": "52390fbe81a878d9fa2c521911defbfb34b6428c",
+      "detailed_blob": "5de391c850bd724deb6d146d21bd8749c9270e60",
+      "alternative": "experiments/divergent_mech_review_20261124/spartan_shape.json"
+    },
+    {
+      "id": "spector",
+      "selected": "A",
+      "shape_blob": "707f037d2d57a3478690022765e46670aa7683b7",
+      "detailed_blob": "4fd3ff82d498c1ddc75400f5d1c2347ef420ed7f",
+      "alternative": "experiments/divergent_mech_review_20261124/spector_shape.json"
+    },
+    {
+      "id": "starslayer",
+      "selected": "A",
+      "shape_blob": "8824d129813a5fdeafa6485c8296506e9fdf8f7e",
+      "detailed_blob": "0621ec308dafb497c3fbcdab429e3a0ead3d7915",
+      "alternative": "experiments/divergent_mech_review_20261124/starslayer_shape.json"
+    },
+    {
+      "id": "thunder_stallion",
+      "selected": "A",
+      "shape_blob": "9c0eacf8c43b04b276e13d937de27fe5f692b11c",
+      "detailed_blob": "348fe26ebc2322cb7ef09b1bedf96648dad4d7ca",
+      "alternative": "experiments/divergent_mech_review_20261124/thunder_stallion_shape.json"
+    },
+    {
+      "id": "ymir",
+      "selected": "A",
+      "shape_blob": "fd726b49aa97f9ad732c566bf1b417cc2f564674",
+      "detailed_blob": "948aa834ed9c1391ccbaeb6a3d2add870b962ccf",
+      "alternative": "experiments/divergent_mech_review_20261124/ymir_shape.json"
+    },
+    {
+      "id": "battleaxe",
+      "selected": "A",
+      "shape_blob": "233c99e342da4d81b58850c528134b4bfa19796a",
+      "detailed_blob": "e341b36bf629f8b1e0ab8a096994118d8c11fd12",
+      "alternative": "experiments/divergent_mech_review_20261124/battleaxe_shape.json"
+    },
+    {
+      "id": "ostwar",
+      "selected": "A",
+      "shape_blob": "c3a55121400787290300ec8ac954cfb5d2484767",
+      "detailed_blob": "c784882abe1db79ca8e7d55bbb8db3d8ae5c7495",
+      "alternative": "experiments/divergent_mech_review_20261124/ostwar_shape.json"
+    },
+    {
+      "id": "pillager",
+      "selected": "A",
+      "shape_blob": "418476a584c0cba991d08b16e85fb33b53cd26f1",
+      "detailed_blob": "4ad7608de326106aa16f064ea2b558082ec176bc",
+      "alternative": "experiments/divergent_mech_review_20261124/pillager_shape.json"
+    },
+    {
+      "id": "sagittaire",
+      "selected": "A",
+      "shape_blob": "dd5a8d3554744ec19c5923dd81a8c3616a4c8e6a",
+      "detailed_blob": "2b373fb74b490deeb29ee82e1dd01bd272b0d289",
+      "alternative": "experiments/divergent_mech_review_20261124/sagittaire_shape.json"
+    },
+    {
+      "id": "shogun",
+      "selected": "A",
+      "shape_blob": "611752490e0610fa17bb28973f3cfebcefb7d760",
+      "detailed_blob": "debf689e5527b63c4f54b43ccd8e0472eb5315fe",
+      "alternative": "experiments/divergent_mech_review_20261124/shogun_shape.json"
+    },
+    {
+      "id": "thunder_hawk",
+      "selected": "A",
+      "shape_blob": "0f50f965c6bac32b55055de44d9df602f8cc7b7e",
+      "detailed_blob": "af6676da1e58d3e43714457b1a427d71330c774c",
+      "alternative": "experiments/divergent_mech_review_20261124/thunder_hawk_shape.json"
+    }
+  ]
+}

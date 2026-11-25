@@ -19,15 +19,19 @@ var _pending_starter: Dictionary = {}
 var _pending_side := -1
 var _tabs: Array[Button] = []  ## FORCES, BATTLEFIELD
 var _pages: Array[Control] = []
+var _starting := false
 
 
 ## Android Back returns to the launcher without exiting the app.
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST and not _starting:
 		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
+	if _starting:
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey:
 		var key := event as InputEventKey
 		if key.pressed and not key.echo and key.keycode == KEY_ESCAPE:
@@ -106,6 +110,7 @@ func _ready() -> void:
 		_side_buttons.append(choose)
 	var roster_row := HBoxContainer.new()
 	roster_row.custom_minimum_size.y = 180
+	roster_row.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	roster_row.add_theme_constant_override("separation", 8)
 	forces.add_child(roster_row)
 	for side in 2:
@@ -145,6 +150,12 @@ func _ready() -> void:
 	if BattleLaunch.open_training:
 		BattleLaunch.open_training = false
 		open_training.call_deferred()
+	if BattleLaunch.open_campaign:
+		BattleLaunch.open_campaign = false
+		open_campaign.call_deferred()
+	if BattleLaunch.open_map_campaign:
+		BattleLaunch.open_map_campaign = false
+		open_map_campaign.call_deferred()
 
 
 func _show_page(page: int) -> void:
@@ -280,10 +291,39 @@ func open_training() -> void:
 	add_child(t)
 
 
+## The campaign company between battles (see Campaign).
+func open_campaign() -> void:
+	var c := CampaignScreen.new()
+	c.db = db
+	add_child(c)
+
+
+## The map campaign: a region to take, lance by lance (see MapCampaign).
+func open_map_campaign() -> void:
+	var c := MapCampaignScreen.new()
+	c.db = db
+	add_child(c)
+
+
 func _start() -> void:
-	if not builder.ready_to_fight() or builder.bv(0) > builder.budget or builder.bv(1) > builder.budget:
+	if _starting or not builder.ready_to_fight() or builder.bv(0) > builder.budget or builder.bv(1) > builder.budget:
 		return
+	_starting = true
+	var loading := BattleLoading.new()
+	add_child(loading)
+	await loading.step("Generating battlefield", 2.0)
 	var map := map_picker.choice.build()
+	await loading.step("Assigning units and deployment positions", 6.0)
 	BattleLaunch.pending = builder.build(map)
+	if BattleLaunch.pending == null:
+		loading.queue_free()
+		_starting = false
+		_notify("Deployment could not be prepared.")
+		return
 	BattleLaunch.bot_sides = bot_sides.duplicate()
-	get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
+	var error := get_tree().change_scene_to_file(BattleLaunch.BATTLE_SCENE)
+	if error != OK:
+		BattleLaunch.pending = null
+		loading.queue_free()
+		_starting = false
+		_notify("Battle scene could not be opened.")

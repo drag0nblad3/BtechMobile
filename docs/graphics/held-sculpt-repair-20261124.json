@@ -1,0 +1,986 @@
+{
+  "rows": [
+    {
+      "id": "argus",
+      "status": "transferred",
+      "before": {
+        "cells": 3085,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 2,
+        "faults": [
+          [
+            "la",
+            "weak",
+            "lt"
+          ],
+          [
+            "ra",
+            "weak",
+            "rt"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 3090,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "log": [
+        {
+          "part": "la",
+          "parent": "lt",
+          "kind": "solid backed joint collar",
+          "cells": 3
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "kind": "solid backed joint collar",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "battleaxe",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 4863,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              848,
+              504
+            ]
+          ]
+        ],
+        "clear": 18,
+        "total": 18
+      },
+      "after": {
+        "cells": 4867,
+        "parts": 15,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 18,
+        "total": 18
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "2x2 backed internal mount",
+          "cells": 4
+        }
+      ]
+    },
+    {
+      "id": "dragon_fire",
+      "status": "transferred",
+      "before": {
+        "cells": 4077,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              32,
+              31
+            ]
+          ]
+        ],
+        "clear": 5,
+        "total": 5
+      },
+      "after": {
+        "cells": 4077,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 5,
+        "total": 5
+      },
+      "log": [
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 31
+        }
+      ]
+    },
+    {
+      "id": "jackal",
+      "status": "linked",
+      "before": {
+        "cells": 4430,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 3,
+        "total": 4
+      },
+      "after": {
+        "cells": 4429,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "log": [
+        {
+          "kind": "optical material reseated clear of bore",
+          "from": "0,36,-8",
+          "to": "-2,36,-8",
+          "material": "glow"
+        },
+        {
+          "kind": "authored weapon bore cleared across overlapping armor",
+          "loc": "HD",
+          "point": [
+            0.5,
+            36.5,
+            -9.5
+          ],
+          "cells": 1
+        }
+      ]
+    },
+    {
+      "id": "jinggau",
+      "status": "transferred",
+      "before": {
+        "cells": 3809,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              59,
+              14,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      },
+      "after": {
+        "cells": 3806,
+        "parts": 17,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 7,
+        "total": 7
+      },
+      "log": [
+        {
+          "kind": "optical material reseated clear of bore",
+          "from": "0,33,-12",
+          "to": "0,34,-12",
+          "material": "glass"
+        },
+        {
+          "kind": "authored weapon bore cleared across overlapping armor",
+          "loc": "HD",
+          "point": [
+            0,
+            33,
+            -13
+          ],
+          "cells": 3
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 14
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "ostwar",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 6057,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 5,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              1921,
+              2,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 6057,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 2,
+          "moved": [
+            [
+              "9,31,-3",
+              "8,33,-2"
+            ],
+            [
+              "9,31,-2",
+              "8,33,-1"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "-10,31,2",
+              "-8,34,2"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "-9,31,3",
+              "-8,33,3"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "8,31,-4",
+              "7,33,-3"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pillager",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 8136,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 7,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2463,
+              6,
+              2,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 8136,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 6,
+          "moved": [
+            [
+              "9,29,3",
+              "8,29,6"
+            ],
+            [
+              "9,30,3",
+              "8,31,4"
+            ],
+            [
+              "9,29,4",
+              "8,30,6"
+            ],
+            [
+              "10,30,3",
+              "8,31,5"
+            ],
+            [
+              "9,30,4",
+              "7,31,5"
+            ],
+            [
+              "10,30,2",
+              "9,31,-3"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 2,
+          "moved": [
+            [
+              "-9,29,4",
+              "-8,29,6"
+            ],
+            [
+              "-9,30,4",
+              "-8,31,5"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "8,27,4",
+              "7,26,5"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "-11,30,2",
+              "-7,32,1"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "-10,30,3",
+              "-7,32,4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quickdraw",
+      "status": "transferred",
+      "before": {
+        "cells": 3336,
+        "parts": 12,
+        "physical": 1,
+        "physicalGroups": [
+          6
+        ],
+        "partIslands": 1,
+        "weak": 2,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              541,
+              6
+            ]
+          ],
+          [
+            "la",
+            "weak",
+            "lt"
+          ],
+          [
+            "ra",
+            "weak",
+            "rt"
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 3344,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "short reinforced internal rib",
+          "cells": 4
+        },
+        {
+          "part": "la",
+          "parent": "lt",
+          "kind": "solid backed joint collar",
+          "cells": 2
+        },
+        {
+          "part": "ra",
+          "parent": "rt",
+          "kind": "solid backed joint collar",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "raptor",
+      "status": "transferred",
+      "before": {
+        "cells": 2986,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 16,
+        "total": 17
+      },
+      "after": {
+        "cells": 2983,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 17,
+        "total": 17
+      },
+      "log": [
+        {
+          "kind": "authored weapon bore cleared across overlapping armor",
+          "loc": "CT",
+          "point": [
+            -1,
+            28,
+            -14
+          ],
+          "cells": 3
+        }
+      ]
+    },
+    {
+      "id": "rattlesnake_ii",
+      "status": "transferred",
+      "before": {
+        "cells": 2263,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 4,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              30,
+              14,
+              10,
+              5,
+              2
+            ]
+          ]
+        ],
+        "clear": 6,
+        "total": 7
+      },
+      "after": {
+        "cells": 2260,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 7,
+        "total": 7
+      },
+      "log": [
+        {
+          "kind": "optical material reseated clear of bore",
+          "from": "0,35,-11",
+          "to": "0,36,-11",
+          "material": "glass"
+        },
+        {
+          "kind": "authored weapon bore cleared across overlapping armor",
+          "loc": "HD",
+          "point": [
+            0,
+            35,
+            -12
+          ],
+          "cells": 3
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 14
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 5
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 5
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "sagittaire",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 5486,
+        "parts": 14,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 1,
+        "faults": [
+          [
+            "rt_pulse",
+            "weak",
+            "rt"
+          ],
+          [
+            "ra",
+            "islands",
+            [
+              719,
+              178
+            ]
+          ]
+        ],
+        "clear": 4,
+        "total": 4
+      },
+      "after": {
+        "cells": 5498,
+        "parts": 14,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 4,
+        "total": 4
+      },
+      "log": [
+        {
+          "part": "ra",
+          "kind": "2x2 backed internal mount",
+          "cells": 4
+        },
+        {
+          "part": "rt_pulse",
+          "parent": "rt",
+          "kind": "solid backed joint collar",
+          "cells": 8
+        }
+      ]
+    },
+    {
+      "id": "shadow_hawk_iic",
+      "status": "transferred",
+      "before": {
+        "cells": 3378,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              52,
+              7,
+              4
+            ]
+          ]
+        ],
+        "clear": 11,
+        "total": 12
+      },
+      "after": {
+        "cells": 3376,
+        "parts": 20,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 12,
+        "total": 12
+      },
+      "log": [
+        {
+          "kind": "optical material reseated clear of bore",
+          "from": "0,35,-11",
+          "to": "-1,35,-11",
+          "material": "glass"
+        },
+        {
+          "kind": "authored weapon bore cleared across overlapping armor",
+          "loc": "HD",
+          "point": [
+            0,
+            35,
+            -12
+          ],
+          "cells": 2
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 5
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 4
+        }
+      ]
+    },
+    {
+      "id": "shogun",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 7844,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 6,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2488,
+              5,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          ]
+        ],
+        "clear": 2,
+        "total": 2
+      },
+      "after": {
+        "cells": 7844,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 2,
+        "total": 2
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 5,
+          "moved": [
+            [
+              "10,31,-6",
+              "9,31,-8"
+            ],
+            [
+              "10,31,-5",
+              "9,30,-8"
+            ],
+            [
+              "10,31,-4",
+              "7,32,-7"
+            ],
+            [
+              "10,31,-3",
+              "8,32,-7"
+            ],
+            [
+              "10,31,-2",
+              "9,31,4"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "-11,31,2",
+              "-10,31,4"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "10,31,2",
+              "9,30,4"
+            ]
+          ]
+        },
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "-8,32,3",
+              "-8,32,4"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tempest",
+      "status": "transferred",
+      "before": {
+        "cells": 4264,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 2,
+        "weak": 0,
+        "faults": [
+          [
+            "hd",
+            "islands",
+            [
+              43,
+              6,
+              2
+            ]
+          ]
+        ],
+        "clear": 10,
+        "total": 11
+      },
+      "after": {
+        "cells": 4262,
+        "parts": 19,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 11,
+        "total": 11
+      },
+      "log": [
+        {
+          "kind": "optical material reseated clear of bore",
+          "from": "0,34,-11",
+          "to": "-1,34,-11",
+          "material": "glass"
+        },
+        {
+          "kind": "authored weapon bore cleared across overlapping armor",
+          "loc": "HD",
+          "point": [
+            0,
+            34,
+            -12
+          ],
+          "cells": 2
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 4
+        },
+        {
+          "part": "hd",
+          "support": "hd_weapon",
+          "kind": "same-rigid material ownership correction",
+          "cells": 2
+        }
+      ]
+    },
+    {
+      "id": "thunder_hawk",
+      "status": "shape-only divergent",
+      "before": {
+        "cells": 6316,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 1,
+        "weak": 0,
+        "faults": [
+          [
+            "ct",
+            "islands",
+            [
+              2211,
+              1
+            ]
+          ]
+        ],
+        "clear": 0,
+        "total": 0
+      },
+      "after": {
+        "cells": 6316,
+        "parts": 12,
+        "physical": 0,
+        "physicalGroups": [],
+        "partIslands": 0,
+        "weak": 0,
+        "faults": [],
+        "clear": 0,
+        "total": 0
+      },
+      "log": [
+        {
+          "part": "ct",
+          "kind": "reseated tiny armor remnants on backed torso surface",
+          "cells": 1,
+          "moved": [
+            [
+              "2,29,-11",
+              "3,30,-10"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

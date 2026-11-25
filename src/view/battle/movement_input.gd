@@ -22,6 +22,9 @@ var mode := MoveMode.Kind.WALK
 var options: MoveOptions
 var preview: Vector3i
 var has_preview := false
+var before_move := Callable()  ## Called just before a move is submitted (training undo).
+var intel_mode := 0
+var _intel_colors := {}
 var smash := false  ## Fail building entry rolls on purpose (Destroy Checks).
 
 
@@ -84,6 +87,19 @@ func on_turn(step: int) -> void:
 			return
 
 
+## Hint: preview the move an Elite computer player would make, with its reasons.
+func on_hint() -> void:
+	if selected == null or controller.state.phase != Phase.Kind.MOVEMENT:
+		return
+	var h := Hint.move(controller.state, selected, GameSettings.explain_level)
+	if h["mode"] != mode:
+		mode = h["mode"]
+		_replan()
+	if options.can_reach(h["key"]):
+		_set_preview(h["key"])
+	hud.set_tip(h["text"] + "\n" + hud.tip.text)
+
+
 func on_confirm() -> void:
 	if selected and has_preview:
 		var u := selected
@@ -94,6 +110,8 @@ func on_confirm() -> void:
 			hud.set_tip(why)
 			return
 		clear_selection()
+		if before_move.is_valid():
+			before_move.call()
 		controller.submit_move(u, k, mode, -1, false, sm)
 
 
@@ -127,6 +145,8 @@ func on_prone() -> void:
 
 
 func on_smash() -> void:
+	if selected == null or options == null:
+		return
 	smash = not smash
 	_refresh()
 
@@ -175,6 +195,8 @@ func clear_selection() -> void:
 	marker.visible = false
 	hud.show_move_controls(false)
 	hud.leave_button.visible = false
+	hud.charge_button.visible = false
+	hud.smash_button.visible = false
 	hud.masc_button.visible = false
 	hud.sc_button.visible = false
 	hud.prone_button.visible = false
@@ -199,7 +221,17 @@ func _select(u: Unit) -> void:
 	_replan()
 
 
+func cycle_intel() -> void:
+	intel_mode = (intel_mode + 1) % TacticalIntel.MODES.size()
+	_intel_colors.clear()
+	if selected != null and options != null:
+		_refresh()
+	else:
+		hud.set_tip("Tactical overlay: " + TacticalIntel.MODES[intel_mode] + " (select a moving unit)")
+
+
 func _replan() -> void:
+	_intel_colors.clear()
 	var keep := preview if has_preview else Vector3i.ZERO
 	var had := has_preview
 	options = MovePlanner.plan(controller.state, selected, mode)
@@ -233,6 +265,10 @@ func _refresh() -> void:
 	var base: Color = [COLOR_WALK, COLOR_RUN, COLOR_JUMP][mode]
 	for c in options.reachable_hexes():
 		hexes[c] = base
+	if intel_mode != 0:
+		if _intel_colors.is_empty():
+			_intel_colors = TacticalIntel.colors(controller.state, selected, options, mode, intel_mode)
+		hexes = _intel_colors.duplicate()
 	if has_preview:
 		var route: Array[Vector3i] = options.path_to(preview)
 		for i in route.size():
@@ -280,3 +316,5 @@ func _refresh() -> void:
 		hud.set_tip(tip + ("\n" + why if why != "" else ""))
 	else:
 		hud.set_tip("Tap a highlighted hex to preview the move." if GameSettings.explain_level != ExplainLevel.OFF else "")
+	if intel_mode != 0:
+		hud.set_tip(TacticalIntel.legend(intel_mode) + "\n" + hud.tip.text)

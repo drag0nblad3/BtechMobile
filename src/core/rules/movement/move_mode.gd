@@ -31,7 +31,7 @@ static func budget(unit: Unit, k: int) -> int:
 	if k == Kind.JUMP:
 		return 0 if unit.prone else unit.jump_mp()
 	var mp := unit.run_mp() if k == Kind.RUN else unit.walk_mp()
-	return mp - (2 if unit.prone else 0)
+	return mp + SpeedDemon.bonus(unit, k) - (2 if unit.prone else 0)
 
 
 ## To-hit penalty on the mover's own attacks (-1 = stood still).

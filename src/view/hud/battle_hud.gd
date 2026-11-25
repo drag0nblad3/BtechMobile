@@ -33,6 +33,9 @@ signal battle_forensics
 signal pause_toggled
 signal exit_battle
 signal next_unit  ## Go to the next of your units (camera + selection).
+signal undo_move  ## Training: take back your last move.
+signal intel_cycled
+signal hint  ## Ask what the computer would do in your place (Hint).
 
 const FONT_SIZE := 24
 const BUTTON_SIZE := Vector2(140, 60)
@@ -57,6 +60,7 @@ var masc_button: Button
 var sc_button: Button
 var explain_button: Button
 var cinematic_button: Button
+var undo_button: Button  ## Training only, while a move can be taken back.
 var attack_button: Button
 var skip_button: Button
 var twist_buttons: Array[Button] = []
@@ -135,6 +139,8 @@ func _ready() -> void:
 	_button(shortcuts, "Next ▸", next_unit).tooltip_text = "Go to your next unit"
 	explain_button = _button(shortcuts, "Explain", explain_cycled)
 	cinematic_button = _button(shortcuts, "Cine: Off", cinematic_toggled)
+	undo_button = _button(shortcuts, "Undo move", undo_move)
+	undo_button.tooltip_text = "Training: take back your last move (no dice rolled since)"
 	_tools_menu = MenuButton.new()
 	_tools_menu.text = "More ▾"
 	_tools_menu.tooltip_text = "Save, replay and camera options"
@@ -146,6 +152,7 @@ func _ready() -> void:
 	popup.add_item("Top-down map", 2)
 	popup.add_item("Battle analysis", 3)
 	popup.add_item("Performance overlay", 4)
+	popup.add_item("Cycle tactical intelligence", 5)
 	popup.id_pressed.connect(_on_tool_action)
 	for b in shortcuts.get_children():
 		if b is Button:
@@ -207,6 +214,7 @@ func _ready() -> void:
 	_move_actions = [prone_button, charge_button, smash_button, masc_button, sc_button, leave_button]
 	for b in _move_actions:
 		b.visible = false
+	_button(move_bar, "Hint", hint).tooltip_text = "What would an Elite computer player do here?"
 	_button(move_bar, "Cancel", cancel)
 	UiSkin.button(_button(move_bar, "Confirm", confirm), "primary")
 	refresh_move_actions()
@@ -214,6 +222,7 @@ func _ready() -> void:
 	twist_buttons = [_button(attack_bar, "◀ Twist", twist_left), _button(attack_bar, "Twist ▶", twist_right)]
 	flip_button = _button(attack_bar, "Flip arms", flip_arms)
 	flip_button.visible = false
+	_button(attack_bar, "Hint", hint).tooltip_text = "What would an Elite computer player do here?"
 	skip_button = _button(attack_bar, "Hold Fire", attack_skip)
 	attack_button = _button(attack_bar, "Fire", attack_confirm)
 	UiSkin.button(attack_button, "danger")
@@ -241,6 +250,7 @@ func _on_tool_action(id: int) -> void:
 		2: top_down_toggled.emit()
 		3: battle_forensics.emit()
 		4: perf_readout.visible = not perf_readout.visible
+		5: intel_cycled.emit()
 
 
 ## Refresh the Actions button from the same eligibility flags MovementInput sets.
@@ -308,6 +318,7 @@ func _build_game_over(parent: Control) -> void:
 ## Replaces the side panel's content (record sheet, weapon list...).
 func show_side(content: Control) -> void:
 	for c in side_box.get_children():
+		side_box.remove_child(c)
 		c.queue_free()
 	if content:
 		side_box.add_child(content)

@@ -162,6 +162,25 @@ guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` 
 `"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
 e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
 
+## `data/pilot_abilities.json`
+Special Pilot Abilities the app plays (`Spa`): `abilities` as `{id, name, cost, max?, summary}`. Names and
+costs are Campaign Operations'; summaries are our own words. A MechWarrior's abilities live on `Pilot.abilities`.
+
+## `data/campaign/rules.json`
+The company's starting set-up (`CampaignRules`): `company_name`, `starting_lance`
+(`[{design, pilot, gunnery, piloting}]`, designs from `data/units/`).
+
+## `data/campaign/chaos.json`
+Campaign Operations' Chaos Campaign numbers (`ChaosRules`): `starting_wp`, `track_cost_share`,
+`enemy_bv_percent`, `objectives` (`{id, title, wp, check, share?, enemy?, own?, own_at_most?, text}`;
+`check` is one of `ChaosObjective`'s checks), `options` (`{id, title, wp, range, text}`),
+`skill_levels` (`{green|regular|veteran|elite: [gunnery, piloting]}`), and `support`, the optional
+Support Points numbers (`SupportShop`, `MechRepair`, `IntroTech`): `max_wp_per_month`, `equipment_rating`,
+`rating_modifier`, `lance_size`, repair/rearm/hire/heal/train costs, `hire_multiplier`,
+`idle_training_multiplier`, `clan_multiplier`, `purchase_intro_per_ton`/`purchase_standard_per_ton`, `sell_share`, `market_size` (`MechMarket`), `intro_weapons`/`intro_melee` (the Introductory Rules
+Equipment Table as weapon ids) and `recruit_names`. Keys starting with `_` are notes
+saying which values are the book's and which are our picks.
+
 ## `data/training/campaign.json`
 The training campaign (`TrainingCampaign`): `name`, `intro`, and `missions` in
 order, each `{"id", "title", "scenario"` (a file in `data/scenarios/` with lessons),

@@ -9,6 +9,8 @@ const BATTLE_SCENE := "res://scenes/main.tscn"
 static var pending: GameState = null
 ## Continue the last saved live battle instead of creating a new one.
 static var load_autosave := false
+## Training undo: a BattleSave capture to restart the battle scene from.
+static var restore_snapshot := {}
 ## Optional frame to inspect when opening the last recorded replay.
 static var replay_focus := -1
 ## Sides the computer plays in the next battle.
@@ -19,6 +21,14 @@ static var tutorial_path := ""
 static var training_mission := -1
 ## Open the training campaign screen when the menu loads (after a lesson).
 static var open_training := false
+## The next battle is the campaign company's (CampaignStore holds its roster).
+static var campaign := false
+## Open the campaign screen when the menu loads (after a company battle).
+static var open_campaign := false
+## The next battle is a map campaign meeting (MapCampaignStore holds it).
+static var map_campaign := false
+## Open the map campaign screen when the menu loads.
+static var open_map_campaign := false
 ## Computer skill (BotSkill.Level) for the next battle; -1 uses GameSettings.
 static var bot_level := -1
 

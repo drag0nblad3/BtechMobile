@@ -1,0 +1,23 @@
+{
+  "_source": "Special Pilot Abilities, Campaign Operations pp. 70-82: ids, names and point costs are the book's; summaries are our own words. Only abilities the app can play are listed.",
+  "abilities": [
+    {"id": "blood_stalker", "name": "Blood Stalker", "cost": 2, "summary": "Picks one enemy as its quarry: -1 to hit it, +2 to hit anything else, until the quarry is destroyed or leaves the field."},
+    {"id": "cluster_hitter", "name": "Cluster Hitter", "cost": 2, "summary": "+1 on the cluster roll for missiles, Ultra and rotary autocannons, and LB-X cluster shots."},
+    {"id": "eagles_eyes", "name": "Eagle's Eyes", "cost": 2, "summary": "Works like an active probe out to 1 hex (adds 1 hex to a real probe), and minefields are 2 harder to set off."},
+    {"id": "forward_observer", "name": "Forward Observer", "cost": 1, "summary": "Spots for indirect fire without the +1 on its own attacks."},
+    {"id": "hot_dog", "name": "Hot Dog", "cost": 2, "summary": "-1 to the rolls that avoid a heat shutdown or an ammo cook-off."},
+    {"id": "human_tro", "name": "Human TRO", "cost": 1, "summary": "Knows every design by heart: +1 on the roll for critical hits from its attacks."},
+    {"id": "jumping_jack", "name": "Jumping Jack", "cost": 2, "summary": "Jumping costs only +1 to its own attacks instead of +3."},
+    {"id": "lucky", "name": "Lucky", "cost": 1, "max": 4, "summary": "Each point buys one reroll of a failed attack roll or piloting roll per battle; the second roll stands."},
+    {"id": "maneuvering_ace", "name": "Maneuvering Ace", "cost": 2, "summary": "A two-legged 'Mech can step sideways like a four-legged one; a four-legged 'Mech does it for 1 MP less."},
+    {"id": "melee_specialist", "name": "Melee Specialist", "cost": 1, "summary": "-1 to hit with physical attacks, and punches, kicks and melee weapons do 1 more damage."},
+    {"id": "multi_tasker", "name": "Multi-Tasker", "cost": 2, "summary": "Secondary targets cost 1 less to hit."},
+    {"id": "oblique_attacker", "name": "Oblique Attacker", "cost": 1, "summary": "-1 to hit with indirect fire, and it can fire indirectly at a target no friend can see."},
+    {"id": "range_master", "name": "Range Master", "cost": 2, "choices": ["medium", "long"], "summary": "Swaps one range band's modifier with short range's: no penalty at that range, that penalty up close."},
+    {"id": "sniper", "name": "Sniper", "cost": 3, "summary": "Range modifiers are halved: +1 at medium range, +2 at long."},
+    {"id": "speed_demon", "name": "Speed Demon", "cost": 2, "summary": "+1 running MP, but a 'Mech that uses it can't attack that turn."},
+    {"id": "tactical_genius", "name": "Tactical Genius", "cost": 3, "summary": "Rerolls the side's Initiative when it loses; the second roll stands."},
+    {"id": "terrain_master", "name": "Terrain Master", "cost": 3, "choices": ["forest_ranger", "mountaineer", "frogman", "swamp_beast"], "summary": "One specialty per purchase. Forest Ranger: woods cost 1 MP less, +1 to be hit in woods after walking. Mountaineer: rough, rubble and each level change cost 1 MP less, -1 on rubble rolls. Frogman: water deeper than depth 1 costs 1 MP less. Swamp Beast: -1 on mud rolls."},
+    {"id": "weapon_specialist", "name": "Weapon Specialist", "cost": 3, "summary": "-2 to hit with one chosen kind of weapon."}
+  ]
+}

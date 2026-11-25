@@ -9,8 +9,12 @@ const MAX_BONUS := 6
 
 
 ## Bonus per side for this turn's roll ({} when the rule is off).
+## Lasting bonuses (GameState.initiative_bonus) are added in.
 static func bonuses(state: GameState) -> Dictionary:
-	return state.initiative_die.duplicate() if state.initiative_die_rule else {}
+	var out: Dictionary = state.initiative_die.duplicate() if state.initiative_die_rule else {}
+	for side: int in state.initiative_bonus:
+		out[side] = int(out.get(side, 0)) + int(state.initiative_bonus[side])
+	return out
 
 
 ## After a roll: the winner drops its die, the worst loser gains or raises one.

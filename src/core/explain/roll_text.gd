@@ -59,7 +59,7 @@ static func _roll(what: String, d: Dictionary) -> String:
 	var need := int(d.get("need", 0))
 	if need > 12:
 		return "%s  ·  needed %d (impossible)  ·  " % [what, need]
-	return "%s  ·  rolled %d, needed %d+  ·  " % [what, int(d.get("roll", 0)), need]
+	return "%s  ·  rolled %d%s, needed %d+  ·  " % [what, int(d.get("roll", 0)), LuckyText.note(d), need]
 
 
 static func _who(s: GameState, id: Variant) -> String:

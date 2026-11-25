@@ -1,6 +1,6 @@
 class_name BattleSave
 extends RefCounted
-## Single-slot compressed autosave and a separate last-battle replay.
+## Compressed autosave and last-battle replay in the active save profile.
 ## Saves contain data only; no arbitrary Godot objects/scripts are loaded.
 
 const VERSION := 1
@@ -67,10 +67,11 @@ static func load_replay() -> Array:
 
 
 static func has_replay() -> bool:
-	return FileAccess.file_exists(REPLAY_PATH)
+	return FileAccess.file_exists(SaveProfiles.resolve(REPLAY_PATH))
 
 
 static func _write(path: String, data: Dictionary) -> bool:
+	path = SaveProfiles.resolve(path)
 	var tmp := path + ".tmp"
 	var file := FileAccess.open_compressed(tmp, FileAccess.WRITE, FileAccess.COMPRESSION_ZSTD)
 	if file == null:
@@ -87,6 +88,7 @@ static func _write(path: String, data: Dictionary) -> bool:
 
 
 static func _read(path: String) -> Dictionary:
+	path = SaveProfiles.resolve(path)
 	if not FileAccess.file_exists(path):
 		return {}
 	var file := FileAccess.open_compressed(path, FileAccess.READ, FileAccess.COMPRESSION_ZSTD)

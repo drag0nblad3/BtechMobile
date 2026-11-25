@@ -72,7 +72,7 @@ func _run() -> void:
 			or not lab.stress_count_button.disabled:
 		_fail("60-mode did not start or count selection changed during loading")
 		return
-	if not is_equal_approx(lab._distance, 52.0):
+	if not is_equal_approx(lab._distance, VoxelStressTest.camera_distance(VoxelStressTest.LARGE_TARGET_COUNT)):
 		_fail("60-mode needs wider camera fit")
 		return
 	for i in 3:
@@ -93,11 +93,12 @@ func _run() -> void:
 		_fail("Start button did not create stress controller")
 		return
 	var stress: VoxelStressTest = lab._stress
-	if not is_equal_approx(lab._distance, 31.5):
+	var fit_distance := VoxelStressTest.camera_distance(VoxelStressTest.TARGET_COUNT)
+	if not is_equal_approx(lab._distance, fit_distance):
 		_fail("Stress test must initially fit the bigger hangar in frame")
 		return
 	lab.zoom_out_button.pressed.emit()
-	if lab._distance <= 31.5:
+	if lab._distance <= fit_distance:
 		_fail("Zoom - must work in stress mode")
 		return
 	lab.zoom_reset_button.pressed.emit()
@@ -126,6 +127,9 @@ func _run() -> void:
 	if unique.size() != 20:
 		_fail("Stress targets overlap")
 		return
+	# Seed and stop automatic ticking before checking the explicit damage path.
+	stress.set_process(false)
+	stress._rng.seed = 74021
 	var hits := 0
 	for i in 5:
 		if stress.ping_random_model() > 0:

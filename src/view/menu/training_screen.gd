@@ -49,10 +49,11 @@ func _build() -> void:
 		var record: Dictionary = p.get(m["id"], {})
 		var won: bool = record.get("won", false)
 		var mark := "✓ " if won else ("· " if p.has(m["id"]) else ("▶ " if open else ""))
-		var b := UiKit.button(_list, "%s%s   —   %s%s" % [mark, m["title"], m["teaches"], "" if open else "  (locked)"],
+		var b := UiKit.button(_list, "%s%s%s" % [mark, m["title"], "" if open else "  (locked)"],
 				start.bind(i), Vector2(0, 64))
 		b.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		b.disabled = not open
+		UiKit.label(_list, String(m["teaches"]), UiKit.SMALL)
 		UiSkin.button(b, "selected" if won else "primary" if i == next and open else "secondary")
 		if not record.is_empty():
 			var best := int(record.get("practice", 0))

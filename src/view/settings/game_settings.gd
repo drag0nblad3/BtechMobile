@@ -17,6 +17,8 @@ static var paint_factions: Array[String] = ["federated_suns", "clan_wolf"]
 static var sound_master := 0.85
 static var sound_effects := 0.9
 static var sound_ui := 0.65
+static var sound_music := 0.35
+static var radio_chatter := true
 static var sound_muted := false
 static var camera_shake := true
 static var _loaded := false
@@ -40,6 +42,8 @@ static func load_settings() -> void:
 		sound_master = clampf(float(cfg.get_value("audio", "master", 0.85)), 0.0, 1.0)
 		sound_effects = clampf(float(cfg.get_value("audio", "effects", 0.9)), 0.0, 1.0)
 		sound_ui = clampf(float(cfg.get_value("audio", "ui", 0.65)), 0.0, 1.0)
+		sound_music = clampf(float(cfg.get_value("audio", "music", 0.35)), 0.0, 1.0)
+		radio_chatter = bool(cfg.get_value("audio", "radio", true))
 		sound_muted = bool(cfg.get_value("audio", "muted", false))
 		camera_shake = bool(cfg.get_value("camera", "shake", true))
 
@@ -136,3 +140,13 @@ static func set_cinematic_camera(enabled: bool) -> void:
 	cfg.load(PATH)
 	cfg.set_value("camera", "cinematic", enabled)
 	cfg.save(PATH)
+
+
+static func set_sound_music(value: float) -> void:
+	sound_music = clampf(value, 0.0, 1.0)
+	_save_audio("music", sound_music)
+
+
+static func set_radio_chatter(on: bool) -> void:
+	radio_chatter = on
+	_save_audio("radio", on)

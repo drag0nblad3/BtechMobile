@@ -90,6 +90,9 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return VehicleText.event(s, d, level)
 		GameEvent.DESTROY_CHECK:
 			return AssetText.destroy_check(s, d, level)
+		GameEvent.FORMATION:
+			return "%s's %s is down to %d units and loses its formation bonuses." % [
+					Names.side(d["side"]), FormationTypes.name_of(d["type"]), d["left"]]
 		GameEvent.MINEFIELD:
 			return MineText.describe(s, d, level)
 		GameEvent.BUILDING:
@@ -144,9 +147,11 @@ static func _initiative(d: Dictionary, level: int) -> String:
 	var parts: Array[String] = []
 	for side: int in d["rolls"]:
 		var b := int(d.get("bonus", {}).get(side, 0))
-		parts.append("%s %d%s" % [Names.side(side), d["rolls"][side], " (+%d Initiative Die)" % b if b > 0 else ""])
+		parts.append("%s %d%s" % [Names.side(side), d["rolls"][side], " (+%d bonus)" % b if b > 0 else ""])
 	var first: int = d["order"][0]
 	var t := "Initiative: %s. %s acts first." % [", ".join(parts), Names.side(first)]
+	for g: int in d.get("genius", []):
+		t += " %s's Tactical Genius rerolled its Initiative." % Names.side(g)
 	if level == ExplainLevel.FULL:
 		t += " Losing initiative means moving first; the winner sees your moves before making theirs."
 	return t
@@ -161,6 +166,8 @@ static func _moved(s: GameState, d: Dictionary, level: int) -> String:
 		return "%s stands still." % _u(s, d) + (" Its shots get no movement penalty." if level == ExplainLevel.FULL else "")
 	var t := "%s %s %d hex%s (%d MP)." % [_u(s, d), MoveMode.verb_for(s.unit_by_id(d["unit_id"]), mode),
 			hexes, "" if hexes == 1 else "es", d["mp"]]
+	if d.get("flat_out", false):
+		t += " Speed Demon: it used the extra MP, so it can't attack this turn."
 	if level == ExplainLevel.OFF:
 		return t
 	var own := MoveMode.attacker_mod(mode)

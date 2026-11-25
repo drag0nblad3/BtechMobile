@@ -29,10 +29,10 @@ var debris: Array[Node3D] = []
 var _centers: Dictionary = {}  ## Location -> grid center of its first part
 
 
-static func from_file(path: String) -> VxMech:
+static func from_file(path: String, fine: bool = false) -> VxMech:
 	var m := VxMech.new()
-	m.cache_path = path
-	m.model = VxRenderCache.model_at(path)
+	m.cache_path = "" if fine else path
+	m.model = VxFineCatalog.build(path) if fine else VxRenderCache.model_at(path)
 	m.build()
 	return m
 
@@ -110,16 +110,20 @@ func _mark_touching() -> void:
 
 ## Matches the voxels to the unit's record sheet; drops destroyed limbs.
 func show_unit(u: Unit) -> void:
-	damage.show_unit(u)
+	show_record(u.def, u.armor, u.rear_armor, u.structure, u.destroyed)
+
+
+func show_record(def: UnitDef, armor: Array, rear: Array, structure: Array, destroyed: bool) -> void:
+	damage.show_record(def, armor, rear, structure)
 	wounded.clear()
 	for loc in Location.COUNT:
-		var full := StructureTable.points(u.def.tonnage, loc, u.def.quad)
-		if u.structure[loc] < full and not u.is_location_destroyed(loc):
-			wounded[loc] = 1.0 - float(u.structure[loc]) / full
+		var full := StructureTable.points(def.tonnage, loc, def.quad)
+		if full > 0 and structure[loc] < full and structure[loc] > 0:
+			wounded[loc] = 1.0 - float(structure[loc]) / full
 	for loc in [Location.LA, Location.RA, Location.LL, Location.RL]:
-		if u.is_location_destroyed(loc) and not lost.has(loc):
+		if structure[loc] <= 0 and not lost.has(loc) and not model.parts_at(loc).is_empty():
 			drop_limb(loc)
-	set_wrecked(u.destroyed)
+	set_wrecked(destroyed)
 
 
 func set_side(value: int) -> void:

@@ -13,22 +13,32 @@ var unit: Unit
 var map: BattleMap
 var _yaw := 0.0  # Continuous yaw so turns never spin the long way round.
 var _model: Node3D
+var field_visible := true  ## Deployment/hidden/exit visibility, independent of riders.
 
 
-func setup(u: Unit, battle_map: BattleMap) -> void:
+func setup(u: Unit, battle_map: BattleMap, materialize := true) -> void:
 	unit = u
 	map = battle_map
 	name = "Unit_%d" % u.id
 	add_to_group(GROUP)
-	if u.def.asset != null:
-		set_model(PlaceholderAsset.build(u.def, u.side))
-	elif u.def.vehicle != null:
-		set_model(PlaceholderAsset.build_vehicle(u.def, u.side))
-	elif u.def.battle_armor != null:
-		set_model(PlaceholderAsset.build_squad(u.def, u.side))
+	if materialize:
+		ensure_model()
+	else:
+		field_visible = false
+	snap_to_state()
+
+
+func ensure_model() -> void:
+	if _model != null:
+		return
+	if unit.def.asset != null:
+		set_model(PlaceholderAsset.build(unit.def, unit.side))
+	elif unit.def.vehicle != null:
+		set_model(PlaceholderAsset.build_vehicle(unit.def, unit.side))
+	elif unit.def.battle_armor != null:
+		set_model(PlaceholderAsset.build_squad(unit.def, unit.side))
 	else:
 		refresh_look()
-	snap_to_state()
 
 
 ## Choose the strongest supported representation without touching the Unit.
@@ -57,10 +67,18 @@ func snap_to_state() -> void:
 
 
 ## Prone 'Mechs lie on their side; wrecks also darken.
+func set_field_visible(on: bool) -> void:
+	field_visible = on
+	visible = field_visible and unit.carrier_id() < 0
+	if visible and _model == null and map != null:
+		ensure_model()
+		snap_to_state()
+
+
 func show_condition() -> void:
+	set_field_visible(field_visible)
 	if _model == null:
 		return
-	visible = unit.carrier_id() < 0  # riders ride inside or on top
 	if UnitVoxels.sync(_model, unit):
 		return
 	var down := unit.prone or (unit.destroyed and not unit.def.is_support())
@@ -235,7 +253,7 @@ static func fallback_muzzle(bounds: AABB, location: int, rear: bool,
 func impact_location(loc: int, rear: bool) -> Vector3:
 	if _model is VxMech:
 		var voxel := _model as VxMech
-		if not voxel.model.parts_at(loc).is_empty():
+		if not voxel.model.parts_at(loc).is_empty() and voxel.is_attached(voxel.part_at(loc)):
 			var part := voxel.part_at(loc)
 			var bounds := part.get_aabb()
 			var where := bounds.get_center()
@@ -244,6 +262,16 @@ func impact_location(loc: int, rear: bool) -> Vector3:
 	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
 	var center := bounds.get_center()
 	var radius := bounds.size
+	if unit != null and unit.def.vehicle != null:
+		match loc:
+			VehicleLoc.FRONT: center.z = bounds.position.z
+			VehicleLoc.REAR: center.z = bounds.end.z
+			VehicleLoc.LEFT: center.x = bounds.position.x
+			VehicleLoc.RIGHT: center.x = bounds.end.x
+			VehicleLoc.TURRET: center.y = bounds.end.y
+		return global_transform * center
+	if unit != null and unit.def.is_support():
+		return global_transform * center
 	match loc:
 		Location.HEAD:
 			center.y = bounds.position.y + radius.y * 0.91
@@ -337,3 +365,12 @@ func _hex_pos(c: Vector2i) -> Vector3:
 	elif unit.on_roof and Roofs.has_roof(t):
 		p.y += t.building.height * HexLayout.LEVEL_HEIGHT
 	return p
+
+
+## Apply the event-time record, not the already-resolved final combat state.
+func apply_attack_record(record: Dictionary) -> void:
+	if _model is VxMech:
+		var vox := _model as VxMech
+		vox.show_record(unit.def, record["armor"], record["rear"], record["structure"], record["destroyed"])
+	elif record["destroyed"]:
+		_tint(_model, Color(0.3, 0.3, 0.3))

@@ -16,6 +16,8 @@ static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit, kind := "")
 		th.impossible = "Physical attacks need an adjacent target"
 	elif a.prone:
 		th.impossible = "Can't make physical attacks while prone"
+	elif a.flat_out:
+		th.impossible = SpeedDemon.NO_ATTACK
 	elif absi(level_diff(state, a, t)) > 1:
 		th.impossible = "Target is too far above or below you"
 	else:
@@ -28,6 +30,8 @@ static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit, kind := "")
 static func add(th: ToHit, state: GameState, a: Unit, t: Unit, terrain: bool = true,
 		cover: bool = true) -> void:
 	th.add("Piloting", a.pilot.piloting, "Physical attacks use piloting skill, not gunnery.")
+	if Spa.has(a, Spa.MELEE_SPECIALIST):
+		th.add("Melee Specialist", -1, "Melee Specialist: -1 to hit with physical attacks.")
 	ToHitCalc.add_movement(th, a, t)
 	if t.asset != null:
 		AssetFire.add_target_mods(th, state, t)
@@ -37,6 +41,7 @@ static func add(th: ToHit, state: GameState, a: Unit, t: Unit, terrain: bool = t
 		var tw := LineOfSight.woods_value(tile) if tile else 0
 		if tw > 0:
 			th.add("target in woods", tw, "Woods get in the way of fists and feet too.")
+		TerrainMaster.add_cover(th, state, t)
 		if cover and ToHitCalc.in_partial_cover(state.map, t):
 			th.add("partial cover", 1, "The target's legs are under water.")
 		elif BuildingRules.half_inside(state.map, t):

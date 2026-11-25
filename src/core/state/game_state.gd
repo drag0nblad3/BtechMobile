@@ -26,6 +26,7 @@ var doomed_buildings: Array[Vector2i] = []
 ## Optional Initiative Die rule and the dice in play: side -> bonus.
 var initiative_die_rule := false
 var initiative_die: Dictionary = {}
+var initiative_bonus: Dictionary = {}  ## Side -> lasting Initiative bonus (map campaign Defend order, fortress).
 ## Heat dealt to hexes this phase (Fire): Vector2i -> int.
 var fire_heat: Dictionary = {}
 ## Spotters for indirect fire: unit id -> {target, turn}.
@@ -39,6 +40,7 @@ var artillery: Array[Dictionary] = []
 var smoke_pending: Array[Vector2i] = []
 ## Minefields (Minefields): [{hex, side, density 1-3, groups}].
 var minefields: Array[Dictionary] = []
+var formations: Array[Dictionary] = []  ## Formation bonuses per side (Formation).
 ## Weather, temperature and gravity for the whole map.
 var conditions := Conditions.new():
 	set(v):
@@ -73,9 +75,10 @@ func add_unit(u: Unit) -> void:
 
 
 func unit_by_id(unit_id: int) -> Unit:
-	for u in all_units():
-		if u.id == unit_id:
-			return u
+	for group: Array in [units, hidden, reserves, waiting]:
+		for u: Unit in group:
+			if u.id == unit_id:
+				return u
 	return null
 
 

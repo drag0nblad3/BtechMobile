@@ -28,9 +28,13 @@ static func working(u: Unit) -> bool:
 
 
 ## Does the attacker's probe cut through smoke, fog and murk to this target?
+## Eagle's Eyes (SPA, Campaign Operations p. 74) works as a 1-hex probe,
+## or adds 1 hex to a real one.
 static func clears(state: GameState, attacker: Unit, target: Unit) -> bool:
-	return target != null and working(attacker) \
-			and Hex.distance(attacker.coord, target.coord) <= range_of(attacker.def) \
+	var eyes := 1 if Spa.has(attacker, Spa.EAGLES_EYES) and not attacker.destroyed and not attacker.shutdown else 0
+	var reach := (range_of(attacker.def) if working(attacker) else 0) + eyes
+	return target != null and reach > 0 \
+			and Hex.distance(attacker.coord, target.coord) <= reach \
 			and not Ecm.jammed(state, attacker)
 
 

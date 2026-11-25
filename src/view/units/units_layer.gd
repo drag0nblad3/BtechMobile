@@ -6,16 +6,25 @@ signal busy_changed(busy: bool)
 
 var views: Dictionary = {}  # unit id -> UnitView
 var _playing := 0
+var attack_playing := false
 
 
 ## Hidden units only show for sides in `see_hidden` (the human players).
 func build(state: GameState, see_hidden: Array = [0, 1]) -> void:
 	for u in state.all_units():
-		var v := UnitView.new()
-		add_child(v)
-		v.setup(u, state.map)
-		v.visible = (not state.hidden.has(u) or see_hidden.has(u.side)) and not state.reserves.has(u) and not state.waiting.has(u)
-		views[u.id] = v
+		build_one(state, u, see_hidden)
+
+
+## Invisible reserves have a view/position, but need not allocate a model
+## until they enter the battle. Replay's synchronous build stays unchanged.
+func build_one(state: GameState, u: Unit, see_hidden: Array, defer_off_field := false) -> void:
+	var on_field := (not state.hidden.has(u) or see_hidden.has(u.side)) \
+			and not state.reserves.has(u) and not state.waiting.has(u) and not state.mission.exited.has(u.id)
+	var v := UnitView.new()
+	add_child(v)
+	v.setup(u, state.map, on_field or not defer_off_field)
+	v.set_field_visible(on_field)
+	views[u.id] = v
 
 
 func view_of(u: Unit) -> UnitView:
@@ -23,7 +32,7 @@ func view_of(u: Unit) -> UnitView:
 
 
 func is_busy() -> bool:
-	return _playing > 0
+	return _playing > 0 or attack_playing
 
 
 ## path/start come from the controller's UNIT_MOVED event.
@@ -39,7 +48,7 @@ func play_move(unit_id: int, path: Array, from_coord: Vector2i, from_facing: int
 ## Re-reads a unit's condition (prone, destroyed, facing after a fall).
 func refresh_unit(unit_id: int) -> void:
 	var v: UnitView = views.get(unit_id)
-	if v and not is_busy():
+	if v and _playing == 0 and not attack_playing:
 		v.snap_to_state()
 
 
@@ -63,10 +72,19 @@ func react(e: GameEvent) -> void:
 
 func reload_looks() -> void:
 	for view: UnitView in views.values():
-		view.refresh_look()
+		if view._model != null:
+			view.refresh_look()
+			view.show_condition()
 
 
 func _on_done() -> void:
 	_playing -= 1
-	if _playing == 0:
+	if not is_busy():
 		busy_changed.emit(false)
+
+
+func set_attack_playing(on: bool) -> void:
+	if attack_playing == on:
+		return
+	attack_playing = on
+	busy_changed.emit(is_busy())

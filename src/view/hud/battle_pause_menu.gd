@@ -22,13 +22,11 @@ func _ready() -> void:
 	shade.mouse_filter = Control.MOUSE_FILTER_STOP
 	shade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(shade)
-	var center := CenterContainer.new()
-	center.set_anchors_preset(Control.PRESET_FULL_RECT)
-	add_child(center)
+	var scroll := UiKit.landscape_scroll(self)
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(470, 0)
+	panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	panel.add_theme_stylebox_override("panel", UiSkin.panel_style(UiSkin.SURFACE, UiSkin.AMBER, 24, 14))
-	center.add_child(panel)
+	scroll.add_child(panel)
 	var box := VBoxContainer.new()
 	box.add_theme_constant_override("separation", 16)
 	panel.add_child(box)
@@ -45,13 +43,24 @@ func _ready() -> void:
 	_message.add_theme_font_size_override("font_size", 21)
 	UiSkin.label(_message, "muted")
 	box.add_child(_message)
-	_voxel_button = _add_button(box, "Voxel 'Mechs: On", func(): voxel_toggled.emit())
+	var split := HBoxContainer.new()
+	split.add_theme_constant_override("separation", 24)
+	box.add_child(split)
+	var actions := VBoxContainer.new()
+	actions.size_flags_horizontal = SIZE_EXPAND_FILL
+	actions.add_theme_constant_override("separation", 12)
+	split.add_child(actions)
+	_add_button(actions, "Resume Battle", func(): resumed.emit(), "primary")
+	_add_button(actions, "Save Battle", func(): save_requested.emit())
+	_add_button(actions, "Save & Exit to Menu", func(): exit_requested.emit(), "subtle")
+	var settings := VBoxContainer.new()
+	settings.size_flags_horizontal = SIZE_EXPAND_FILL
+	settings.add_theme_constant_override("separation", 12)
+	split.add_child(settings)
+	_voxel_button = _add_button(settings, "Voxel 'Mechs: On", func(): voxel_toggled.emit())
+	_shake_button = _add_button(settings, "Camera shake: On", func(): shake_toggled.emit())
 	var audio_settings := BattleAudioSettings.new()
-	box.add_child(audio_settings)
-	_shake_button = _add_button(box, "Camera shake: On", func(): shake_toggled.emit())
-	_add_button(box, "Resume Battle", func(): resumed.emit(), "primary")
-	_add_button(box, "Save Battle", func(): save_requested.emit())
-	_add_button(box, "Save & Exit to Menu", func(): exit_requested.emit(), "subtle")
+	settings.add_child(audio_settings)
 
 
 func set_message(value: String) -> void:

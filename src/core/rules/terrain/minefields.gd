@@ -65,7 +65,7 @@ static func enter(state: GameState, dice: Dice, emit: Callable, u: Unit, c: Vect
 	for f: Dictionary in state.minefields.duplicate():
 		if f["hex"] != c or u.destroyed:
 			continue
-		var need: int = NEED[int(f["density"])]
+		var need: int = NEED[int(f["density"])] + (2 if Spa.has(u, Spa.EAGLES_EYES) else 0)  # Campaign Operations p. 74
 		var roll := dice.roll_2d6()
 		var d := {"kind": "triggered", "coord": c, "side": f["side"], "unit_id": u.id, "roll": roll,
 				"need": need, "hit": roll >= need, "groups": f["groups"], "density": f["density"]}

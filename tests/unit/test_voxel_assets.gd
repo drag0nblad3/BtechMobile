@@ -35,3 +35,32 @@ func test_rejects_asset_over_cap() -> void:
 	d["voxel_cap"] = 50001
 	var m := VoxelAsset.model_from_dict(d)
 	check(not m.errors.is_empty(), "a recipe may not raise the hard cap")
+
+
+## Check the authored mass before any subdivision, bevel or repair can hide
+## gaps. Independent soldiers are intentional; disconnected limbs are not.
+func test_support_source_assemblies_are_connected() -> void:
+	for id: String in IDS:
+		var data: Dictionary = JsonFile.read("res://data/voxels/assets/%s.json" % id)
+		var m := VxModel.new()
+		for material: Dictionary in data["materials"]:
+			m._mat[material["name"]] = m.colors.size()
+			m.colors.append(Color(material["color"]))
+			m.roles.append(material.get("role", "armor"))
+		for p: Dictionary in data["parts"]:
+			m._add_part(p)
+		check(m.errors.is_empty(), "%s source painter issues" % id)
+		var squad: bool = data.get("asset_kind") in ["infantry", "battle_armor"]
+		var occupied := {}
+		for p: Dictionary in m.parts:
+			var cells: Dictionary = p["cells"]
+			if squad:
+				check_eq(VxIntegrity.components(cells).size(), 1,
+					"%s: %s has unsupported equipment or limbs" % [id, p["name"]])
+			for c: Vector3i in cells:
+				occupied[c] = true
+		check_eq(VxIntegrity.components(occupied).size(), m.parts.size() if squad else 1,
+			"%s: independent physical assemblies" % id)
+		var n := int(data.get("subdivide", 1))
+		check(occupied.size() * n * n * n <= VoxelAsset.MAX_VOXELS,
+			"%s source geometry exceeds the pre-bevel budget" % id)

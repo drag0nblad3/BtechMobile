@@ -20,6 +20,7 @@ static func plan(state: GameState, unit: Unit) -> MoveOptions:
 	opts.can_end[start] = true
 	if opts.budget <= 0:
 		return opts
+	var indexed := AssetStacking.occupancy(state, unit)
 	var ceiling := Roofs.floor_of(state.map, unit) + opts.budget
 	var layer: Array[Vector2i] = [unit.coord]
 	var seen := {unit.coord: true}
@@ -35,7 +36,7 @@ static func plan(state: GameState, unit: Unit) -> MoveOptions:
 					continue
 				seen[n] = true
 				next.append(n)
-				var ok := AssetStacking.can_end(state, unit, n) and (unit.ba == null or BaMoveCost.may_enter(tile))
+				var ok := AssetStacking.can_end(state, unit, n, indexed) and (unit.ba == null or BaMoveCost.may_enter(tile))
 				for f in 6:
 					var k := MoveOptions.key(n, f)
 					opts.cost[k] = d
