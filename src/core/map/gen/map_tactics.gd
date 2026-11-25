@@ -22,6 +22,7 @@ static func penalty(report: Dictionary) -> float:
 		var a: Dictionary = report[key]
 		p += 12.0 * maxf(0.0, 0.85 - float(a["shared"]))
 		p += 3.0 * maxi(0, 2 - int(a["exits"]))
+		p += 0.75 * maxi(0, 2 - int(a["independent_bands"]))
 		p += 2.0 * maxi(0, 4 - int(a["shared_center"]))
 		p += 4.0 * maxf(0.0, 0.50 - float(a["center_balance"]))
 		p += maxi(0, 8 - mini(int(a["deploy_a"]), int(a["deploy_b"])))
