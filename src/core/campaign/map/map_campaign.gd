@@ -22,6 +22,7 @@ var scouted: Array[Vector2i] = []  ## Zones the invader's Scout orders saw this 
 var winner := -1
 var operation := 1
 var intel: Dictionary = {}
+var reports: Array[Dictionary] = []  ## Full after-action reports, across regions.
 
 
 static func load_rules() -> Dictionary:

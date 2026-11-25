@@ -12,7 +12,11 @@ const TRIES := 80
 ## Design ids for side 1 of `fb` (uses that side's skill for BV).
 static func pick(fb: ForceBuilder, target_bv: int, rng: RandomNumberGenerator,
 		allowed: Array[UnitDef] = []) -> Array[String]:
-	var pool := allowed if not allowed.is_empty() else designs(fb.units)
+	var pool: Array[UnitDef] = allowed
+	if pool.is_empty():
+		pool = designs(fb.units)
+	if pool.is_empty():
+		return []
 	var best: Array[String] = []
 	var best_gap := 1 << 30
 	for t in TRIES:

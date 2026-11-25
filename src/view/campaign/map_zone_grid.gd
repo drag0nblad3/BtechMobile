@@ -64,6 +64,12 @@ func _draw() -> void:
 			var color: Color = COLORS.get(terrain, Color("#53656a"))
 			if overlay == 2 and not seen.has(z):
 				color = color.darkened(0.45)
+			elif overlay == 4:
+				var loc := mc.region.location_at(z)
+				if not loc.is_empty() and loc.get("benefit", "") in ["repair", "fortress", "supply", "factory", "dropport", "seaport"]:
+					color = color.lerp(MapZoneArt.GOLD, 0.45)
+				else:
+					color = color.darkened(0.35)
 			draw_colored_polygon(poly, color)
 			draw_polyline(MapHexButton.polygon(at, radius, true), color.darkened(0.4), 1.0, true)
 			MapCartography.land(self, at, radius, terrain, z)

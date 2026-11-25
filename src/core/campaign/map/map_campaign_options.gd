@@ -6,8 +6,11 @@ extends RefCounted
 
 static func pool(db: UnitDb, year: int, faction: String) -> Array[UnitDef]:
 	var availability := EraAvailability.new()
-	return EnemyForce.designs(db).filter(func(d: UnitDef) -> bool:
-		return availability.check(d.id, year, faction).get("status") == "available")
+	var out: Array[UnitDef] = []
+	for d: UnitDef in EnemyForce.designs(db):
+		if availability.check(d.id, year, faction).get("status") == "available":
+			out.append(d)
+	return out
 
 
 ## Resolve the preset into real available designs, preserving approximate

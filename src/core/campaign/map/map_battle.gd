@@ -69,6 +69,7 @@ static func finish(mc: MapCampaign, b: Dictionary, state: GameState, rosters: Ar
 			report.append("%s falls back." % loser.name)
 	mc.battles.erase(b)
 	mc.log.append_array(report)
+	MapCampaignHistory.record(mc, b["zone"], winner, report)
 	MapIntelligence.observe(mc)
 	return report
 

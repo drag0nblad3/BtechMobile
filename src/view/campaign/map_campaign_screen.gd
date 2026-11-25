@@ -27,6 +27,8 @@ var _zoom := 1.0
 var _inspected := Vector2i(-1, -1)
 var _map_scroll: ScrollContainer
 var _headquarters := false
+var _history := false
+var _history_page := 0
 var _rules: Dictionary = {}
 var _preview_zone := Vector2i(-1, -1)
 var _transitions: Array[Dictionary] = []
@@ -78,7 +80,14 @@ func _build() -> void:
 		UiKit.label(_list, "You took the region!" if mc.winner == 0 else "The campaign is lost.", 28)
 		if mc.winner == 0 and mc.operation < int(mc.rules.get("operations", 1)):
 			UiKit.button(_list, "NEXT REGION", _advance, Vector2(0, 58), "primary")
-	UiKit.button(_list, "BACK TO MAP" if _headquarters else "COMPANY HQ", func(): _headquarters = not _headquarters; _build(), Vector2(0, 42), "subtle")
+	var tabs := HBoxContainer.new()
+	_list.add_child(tabs)
+	UiKit.button(tabs, "MAP", func(): _headquarters = false; _history = false; _build(), Vector2(0, 42), "subtle")
+	UiKit.button(tabs, "COMPANY HQ", func(): _headquarters = true; _history = false; _build(), Vector2(0, 42), "subtle")
+	UiKit.button(tabs, "HISTORY", func(): _headquarters = false; _history = true; _build(), Vector2(0, 42), "subtle").name = "CampaignHistory"
+	if _history:
+		MapHistoryPanel.build(_list, mc, _history_page, _show_history_page)
+		return
 	if _headquarters:
 		MapHqPanel.build(_list, mc, db, _build)
 		return
@@ -86,9 +95,9 @@ func _build() -> void:
 		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
 	var toolbar := HBoxContainer.new()
 	_list.add_child(toolbar)
-	for i in 4:
+	for i in 5:
 		var mode := i
-		UiKit.button(toolbar, ["Terrain", "Objectives", "Intel", "Readiness"][i],
+		UiKit.button(toolbar, ["Terrain", "Objectives", "Intel", "Readiness", "Facilities"][i],
 			func(): _map_mode = mode; _build(), Vector2(0, 42), "selected" if i == _map_mode else "subtle")
 	UiKit.button(toolbar, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
 	UiKit.button(toolbar, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
@@ -244,3 +253,8 @@ func _advance() -> void:
 		_note = "Next region: surviving company and damage retained."
 		MapCampaignStore.save(mc)
 		_build()
+
+
+func _show_history_page(page: int) -> void:
+	_history_page = page
+	_build()

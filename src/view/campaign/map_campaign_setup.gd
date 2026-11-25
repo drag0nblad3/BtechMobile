@@ -6,8 +6,15 @@ extends RefCounted
 static func build(parent: VBoxContainer, rules: Dictionary) -> void:
 	_choice(parent, "Historical availability", ["Unrestricted preset", "Verified MUL designs"],
 		[false, true], rules.get("historical", false), func(v: bool): rules["historical"] = v)
-	_choice(parent, "Year (historical mode)", ["3025", "3050", "3067", "3151"],
-		[3025, 3050, 3067, 3151], int(rules.get("era_year", 3025)), func(v: int): rules["era_year"] = v)
+	UiKit.label(parent, "Exact year (historical mode)", 17)
+	var year := SpinBox.new()
+	year.min_value = 2398
+	year.max_value = 3153
+	year.step = 1
+	year.custom_minimum_size.y = 52
+	year.value = int(rules.get("era_year", 3025))
+	year.value_changed.connect(func(v: float): rules["era_year"] = int(v))
+	parent.add_child(year)
 	var factions := ["federated_suns", "draconis_combine", "capellan_confederation", "free_worlds_league", "lyran_commonwealth"]
 	var names := factions.map(func(id: String) -> String: return EraAvailability.faction_name(id))
 	for side in ["player_faction", "enemy_faction"]:
@@ -15,14 +22,14 @@ static func build(parent: VBoxContainer, rules: Dictionary) -> void:
 		_choice(parent, "Invader faction" if key == "player_faction" else "Defender faction", names, factions,
 			rules.get(key, "federated_suns" if key == "player_faction" else "draconis_combine"),
 			func(v: String): rules[key] = v)
-	_choice(parent, "Starting force", ["Three lances (12 Mechs)", "Two lances (8 Mechs)"],
-		[12, 8], rules.get("company_size", 12), func(v: int): rules["company_size"] = v)
+	_choice(parent, "Starting force", ["Three lances (12 Mechs)", "Two lances (8 Mechs)", "One lance (4 Mechs)"],
+		[12, 8, 4], rules.get("company_size", 12), func(v: int): rules["company_size"] = v)
 	_choice(parent, "Region size", ["Standard 8 × 6", "Large 10 × 8", "Extended 12 × 9"],
 		[Vector2i(8, 6), Vector2i(10, 8), Vector2i(12, 9)],
 		Vector2i(int(rules["width"]), int(rules["height"])),
 		func(v: Vector2i): rules["width"] = v.x; rules["height"] = v.y)
-	_choice(parent, "Defender skill", ["Green", "Regular", "Veteran"],
-		["green", "regular", "veteran"], rules.get("enemy_skill", "regular"),
+	_choice(parent, "Defender skill", ["Green", "Regular", "Veteran", "Elite"],
+		["green", "regular", "veteran", "elite"], rules.get("enemy_skill", "regular"),
 		func(v: String): rules["enemy_skill"] = v)
 	_choice(parent, "Campaign victory target", ["60% of objectives", "80% of objectives", "All objectives"],
 		[0.6, 0.8, 1.0], rules.get("victory_share", 0.8),

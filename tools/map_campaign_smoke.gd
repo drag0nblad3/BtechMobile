@@ -99,6 +99,8 @@ func _run() -> void:
 	var after := MapCampaignStore.load_campaign()
 	if not _check(after != null and MapCampaignStore.pending().is_empty(), "battle not written back"):
 		return
+	if not _check(after.reports.size() == 1 and int(after.reports[0]["winner"]) == 0 and int(after.reports[0]["day"]) == 1, "after-action report not archived"):
+		return
 	if not _check(after.turn == 2 and after.battles.is_empty(), "seed %d: turn %d, remaining battles %s" % [SEED, after.turn, after.battles]):
 		return
 	var damaged := after.player.mech(damaged_id)
