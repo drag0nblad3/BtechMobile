@@ -51,8 +51,7 @@ static func landscape_scroll(parent: Control, inset: int = 24) -> ScrollContaine
 	var margin := MarginContainer.new()
 	parent.add_child(margin)
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, inset)
+	apply_safe_margins(parent, margin, inset)
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
@@ -67,8 +66,7 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	var margin := MarginContainer.new()
 	parent.add_child(margin)
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, inset)
+	apply_safe_margins(parent, margin, inset)
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 8)
 	margin.add_child(layout)
@@ -90,6 +88,16 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	var body := panel(scroll)
 	body.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	return body
+
+
+## Keep menu chrome within the platform safe area while the backdrop bleeds.
+static func apply_safe_margins(parent: Control, margin: MarginContainer, inset: int) -> void:
+	var update := func() -> void:
+		var safe := SafeArea.insets(parent.get_viewport())
+		for side in ["left", "right", "top", "bottom"]:
+			margin.add_theme_constant_override("margin_" + side, inset + maxi(0, int(safe[side])))
+	update.call()
+	parent.resized.connect(update)
 
 
 static func close_overlay(screen: Control) -> void:
