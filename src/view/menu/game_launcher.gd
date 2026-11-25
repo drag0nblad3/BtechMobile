@@ -63,7 +63,9 @@ func _ready() -> void:
 	var battle := UiKit.button(actions, "BUILD A BATTLE", _open_battle, Vector2(0, 70),
 		"secondary" if new_player else "primary")
 	battle.name = "BattleButton"
-	for b: Button in [train, camp, map_camp, drills, quick, battle]:
+	var reference := UiKit.button(actions, "TECHNICAL READOUT", _open_reference, Vector2(0, 76))
+	reference.name = "TechnicalReadoutButton"
+	for b: Button in [train, camp, map_camp, drills, quick, battle, reference]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.custom_minimum_size.y = 76
 
@@ -98,3 +100,7 @@ func _quick_battle() -> void:
 func _open_battle() -> void:
 	get_tree().change_scene_to_file(BATTLE_MENU)
 
+
+
+func _open_reference() -> void:
+	add_child(TechnicalReadout.new())
