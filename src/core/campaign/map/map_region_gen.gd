@@ -13,6 +13,19 @@ static func generate(rules: Dictionary, rng: RandomNumberGenerator) -> MapRegion
 	var terrains: Dictionary = rules.get("terrains", {})
 	for i in r.width * r.height:
 		r.terrain.append(_weighted(terrains, rng))
+	# Grow neighboring terrain into coherent regions without changing the
+	# location-placement RNG stream.
+	var geography := RandomNumberGenerator.new()
+	geography.seed = rng.state
+	for pass_index in 2:
+		var previous := r.terrain.duplicate()
+		for y in r.height:
+			for x in r.width:
+				var z := Vector2i(x, y)
+				var near := r.neighbors(z)
+				if not near.is_empty() and geography.randf() < 0.68:
+					var n: Vector2i = near[geography.randi_range(0, near.size() - 1)]
+					r.terrain[y * r.width + x] = previous[n.y * r.width + n.x]
 	var names: Array = rules.get("town_names", []).duplicate()
 	var taken := {}
 	for kind: String in rules.get("locations", {}):
@@ -26,6 +39,7 @@ static func generate(rules: Dictionary, rng: RandomNumberGenerator) -> MapRegion
 			r.locations.append({"id": "%s%d" % [kind, n + 1], "kind": kind,
 				"name": town if kind in ["capital", "city"] else "%s %s" % [town, info["name"]],
 				"zone": z, "points": int(info["points"]), "benefit": String(info.get("benefit", "")), "owner": 1})
+	MapGeography.connect_river(r)
 	return r
 
 

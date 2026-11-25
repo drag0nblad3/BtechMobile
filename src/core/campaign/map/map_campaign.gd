@@ -20,6 +20,9 @@ var battles: Array[Dictionary] = []  ## This turn's meetings still to fight (Map
 var log: Array[String] = []
 var scouted: Array[Vector2i] = []  ## Zones the invader's Scout orders saw this turn (MapFog).
 var winner := -1
+var operation := 1
+var reports: Array[Dictionary] = []
+var intel: Dictionary = {}  ## "x,y" -> last observed day and strength.
 
 
 static func load_rules() -> Dictionary:
@@ -42,6 +45,7 @@ static func create(db: UnitDb, rng: RandomNumberGenerator, rules_in: Dictionary 
 	for i in ceili(ids.size() / float(LANCE)):
 		mc.add_lance(0, landing, ids.slice(i * LANCE, (i + 1) * LANCE))
 	mc._enemy_forces(db, rng)
+	MapOperations.observe(mc)
 	return mc
 
 

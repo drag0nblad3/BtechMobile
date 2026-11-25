@@ -35,7 +35,7 @@ static func build(mc: MapCampaign, b: Dictionary, db: UnitDb, seed_value: int) -
 
 
 ## A generated map for the zone's terrain theme.
-static func battlefield(mc: MapCampaign, z: Vector2i, seed_value: int) -> BattleMap:
+static func battlefield(mc: MapCampaign, z: Vector2i, _seed_value: int) -> BattleMap:
 	var terrain := mc.region.terrain_at(z)
 	var theme_id := String(mc.rules.get("terrains", {}).get(terrain, {}).get("theme", "grassland"))
 	var themes := MapTheme.load_all()
@@ -43,7 +43,9 @@ static func battlefield(mc: MapCampaign, z: Vector2i, seed_value: int) -> Battle
 	for t in themes:
 		if t.id == theme_id:
 			theme = t
-	return MapGenerator.build(theme, MapGenerator.SIZES[1], seed_value, TerrainDb.load_file())
+	# The encounter seed still drives dice, not the landscape. A zone retains
+	# the same baseline battlefield on revisits (not prior battle damage).
+	return MapGenerator.build(theme, MapGenerator.SIZES[1], MapGeography.battle_seed(mc.region, z), TerrainDb.load_file())
 
 
 static func initiative(mc: MapCampaign, l: MapLance, z: Vector2i) -> int:
@@ -69,6 +71,7 @@ static func finish(mc: MapCampaign, b: Dictionary, state: GameState, rosters: Ar
 			report.append("%s falls back." % loser.name)
 	mc.battles.erase(b)
 	mc.log.append(report[0])
+	mc.reports.append({"day": mc.turn, "operation": mc.operation, "zone": MapGeography.zone_label(mc.region, b["zone"]), "winner": winner, "lines": Array(report)})
 	return report
 
 

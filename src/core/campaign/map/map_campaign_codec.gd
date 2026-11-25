@@ -13,12 +13,18 @@ static func pack(mc: MapCampaign) -> Dictionary:
 		"player": mc.player.to_dict(), "enemy": mc.enemy.to_dict(),
 		"lances": mc.lances.map(func(l: MapLance) -> Dictionary: return l.to_dict()),
 		"battles": meets, "log": Array(mc.log),
-		"scouted": mc.scouted.map(func(z: Vector2i) -> Array: return [z.x, z.y])}
+		"scouted": mc.scouted.map(func(z: Vector2i) -> Array: return [z.x, z.y]),
+		"operation": mc.operation, "reports": Array(mc.reports), "intel": mc.intel,
+		"rules": mc.rules}
 
 
 static func unpack(d: Dictionary, rules: Dictionary = {}) -> MapCampaign:
 	var mc := MapCampaign.new()
-	mc.rules = rules if not rules.is_empty() else MapCampaign.load_rules()
+	mc.rules = rules if not rules.is_empty() else d.get("rules", MapCampaign.load_rules())
+	mc.operation = int(d.get("operation", 1))
+	mc.intel = d.get("intel", {})
+	for report: Dictionary in d.get("reports", []):
+		mc.reports.append(report)
 	mc.turn = int(d.get("turn", 1))
 	mc.winner = int(d.get("winner", -1))
 	mc.region = MapRegion.from_dict(d.get("region", {}))
