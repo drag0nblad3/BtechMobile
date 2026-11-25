@@ -20,17 +20,7 @@ func _ready() -> void:
 	company = CampaignStore.load_company()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
-	var margin := MarginContainer.new()
-	margin.set_anchors_preset(PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 24)
-	add_child(margin)
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	margin.add_child(scroll)
-	_list = UiKit.panel(scroll)
-	_list.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_list = UiKit.screen_body(self, "CAMPAIGN", UiKit.close_overlay.bind(self))
 	_build()
 
 
@@ -42,8 +32,9 @@ func _build() -> void:
 	_list.add_child(head)
 	var title := UiKit.label(head, company.name if company != null else "Campaign", 32)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_OFF
+	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	UiSkin.label(title, "heading")
-	UiKit.button(head, "Back", queue_free, Vector2(140, 60))
 	UiSkin.rule(_list)
 	if company == null:
 		UiKit.label(_list, INTRO, UiKit.SMALL)

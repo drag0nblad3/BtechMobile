@@ -15,17 +15,7 @@ func _ready() -> void:
 		db = UnitDb.load_dir()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
-	var margin := MarginContainer.new()
-	margin.set_anchors_preset(PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 24)
-	add_child(margin)
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	margin.add_child(scroll)
-	_list = UiKit.panel(scroll)
-	_list.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_list = UiKit.screen_body(self, "TRAINING", UiKit.close_overlay.bind(self))
 	_build()
 
 
@@ -36,10 +26,11 @@ func _build() -> void:
 	_list.add_child(head)
 	var title := UiKit.label(head, campaign.name, 32)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_OFF
+	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	UiSkin.label(title, "heading")
 	if not campaign.notebook(p).is_empty():
 		UiKit.button(head, "Notebook", _show_notebook, Vector2(180, 60))
-	UiKit.button(head, "Back", queue_free, Vector2(140, 60))
 	UiSkin.rule(_list)
 	UiKit.label(_list, campaign.intro, UiKit.SMALL)
 	var next := campaign.next_index(p)
@@ -80,6 +71,8 @@ func _show_notebook() -> void:
 	_list.add_child(head)
 	var title := UiKit.label(head, "Rules notebook", 32)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_OFF
+	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	title.modulate = Color(1.0, 0.85, 0.45)
 	UiKit.button(head, "Missions", _build, Vector2(180, 60))
 	var last := ""

@@ -181,7 +181,7 @@ func _exit_to_menu() -> void:
 	BattleLaunch.open_training = training >= 0
 	BattleLaunch.open_campaign = in_campaign
 	BattleLaunch.open_map_campaign = in_map_campaign
-	get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
+	get_tree().change_scene_to_file("res://scenes/launcher.tscn" if training >= 0 or in_campaign or in_map_campaign else BattleLaunch.MENU_SCENE)
 
 
 func _watch_replay() -> void:
@@ -366,7 +366,7 @@ func _wire() -> void:
 			BattleLaunch.open_training = training >= 0
 			BattleLaunch.open_campaign = in_campaign
 			BattleLaunch.open_map_campaign = in_map_campaign
-			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
+			get_tree().change_scene_to_file("res://scenes/launcher.tscn" if training >= 0 or in_campaign or in_map_campaign else BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
 	attacks.target_chosen.connect(_frame_attack)

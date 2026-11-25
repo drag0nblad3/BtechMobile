@@ -24,14 +24,11 @@ func _ready() -> void:
 	_entries.append_array(_db.sorted_vehicles())
 	_entries.append_array(_db.sorted_battle_armor())
 	_entries.append_array(_db.sorted_assets())
-	var scroll := UiKit.landscape_scroll(self, 16)
-	var box := UiKit.panel(scroll)
-	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var head := HBoxContainer.new()
-	box.add_child(head)
-	UiKit.button(head, "Back", queue_free, Vector2(110, 48))
-	UiKit.label(head, "TECHNICAL READOUT  /  FIELD DATABASE", 30)
+	var box := UiKit.screen_body(self, "TECHNICAL READOUT  /  FIELD DATABASE",
+			UiKit.close_overlay.bind(self), 16)
 	var tabs := TabContainer.new()
+	tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tabs.custom_minimum_size.y = 440
 	box.add_child(tabs)
 	var designs := HBoxContainer.new()
 	designs.name = "Units & comparison"
@@ -41,6 +38,8 @@ func _ready() -> void:
 	designs.add_child(left)
 	_search = LineEdit.new()
 	_search.placeholder_text = "Search chassis, variant, role or weapon"
+	_search.custom_minimum_size.y = 48
+	_search.clear_button_enabled = true
 	left.add_child(_search)
 	_search.text_changed.connect(_filter)
 	_picker = OptionButton.new()
@@ -86,14 +85,19 @@ func _filter(query: String) -> void:
 		_picker.select(0)
 		_select(0)
 	else:
+		_selected = null
 		_details.text = "No matching designs."
+		_viewer.select_design(null)
+		_compare()
 
 
 func _select(index: int) -> void:
+	if index < 0 or index >= _matches.size():
+		return
 	_selected = _matches[index]
 	var d := _selected
 	_details.text = "%s\n%s • %d BV • %s\nWalk/run/jump %d/%d/%d • Armor %d\nHeat dissipation %d • %s\n%s" % [d.display_name(), ForceCatalogCard.description(d), d.bv, d.tech_base.replace("_", " "), d.walk_mp, d.run_mp(), d.jump_mp, d.total_armor(), d.heat_sinks * d.heat_per_sink(), d.role, ForceCatalogCard.weapons_line(d)]
-	_viewer.show_design(d)
+	_viewer.select_design(d)
 	_compare()
 
 
