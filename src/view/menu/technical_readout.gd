@@ -28,6 +28,7 @@ func _ready() -> void:
 	var box := UiKit.screen_body(self, "TECHNICAL READOUT  /  FIELD DATABASE",
 			UiKit.close_overlay.bind(self), 16)
 	var tabs := TabContainer.new()
+	tabs.name = "ReadoutTabs"
 	tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	tabs.custom_minimum_size.y = 440
@@ -54,7 +55,9 @@ func _ready() -> void:
 	left.add_child(_picker)
 	_picker.item_selected.connect(_select)
 	var info := _scroll_body(left)
+	info.get_parent().name = "ReadoutDetailsScroll"
 	_name_line = UiKit.label(info, "", 25)
+	_name_line.name = "UnitHeading"
 	_details = UiKit.label(info, "", 20)
 	UiSkin.rule(info, UiSkin.BORDER)
 	var pin := UiKit.button(info, "Pin selected unit for comparison", _pin, Vector2(0, 48))
@@ -102,7 +105,9 @@ static func design_heading(d: UnitDef) -> String:
 	else:
 		if d.tonnage > 0:
 			fields.append("%d t" % d.tonnage)
-		var role := d.role.get_slice(":", 0).strip_edges()
+		var role := String(d.source.get("role", "")).strip_edges()
+		if role.is_empty():
+			role = d.role.get_slice(":", 0).strip_edges()
 		if not role.is_empty() and role.length() <= 36:
 			fields.append(role)
 		fields.append("%d BV" % d.bv)
@@ -138,7 +143,7 @@ func _select(index: int) -> void:
 	if d.asset != null or d.vehicle != null or d.battle_armor != null:
 		_details.text = "%s\n%s" % [ForceCatalogCard.description(d), ForceCatalogCard.weapons_line(d)]
 	else:
-		_details.text = "%s • %s\nWalk / run / jump  %d / %d / %d\nArmor  %d  •  Heat dissipation  %d\nWEAPONS  %s\n%s" % [d.weight_class(), d.tech_base.replace("_", " "), d.walk_mp, d.run_mp(), d.jump_mp, d.total_armor(), d.heat_sinks * d.heat_per_sink(), ForceCatalogCard.weapons_line(d), d.role.get_slice(":", 1).strip_edges()]
+		_details.text = "%s • %s\nWalk / run / jump  %d / %d / %d\nArmor  %d  •  Heat dissipation  %d\nWEAPONS  %s\n%s" % [d.weight_class(), d.tech_base.replace("_", " "), d.walk_mp, d.run_mp(), d.jump_mp, d.total_armor(), d.heat_sinks * d.heat_per_sink(), ForceCatalogCard.weapons_line(d), d.role.substr(d.role.find(":") + 1).strip_edges() if ":" in d.role else d.role]
 	_viewer.select_design(d)
 	_compare()
 
