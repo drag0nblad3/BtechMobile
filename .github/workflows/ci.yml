@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-  workflow_dispatch
+  workflow_dispatch:
 # Older shape-review pushes must not saturate the shared software renderer.
 concurrency:
   group: ci-${{ github.ref }}

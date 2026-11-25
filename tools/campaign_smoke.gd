@@ -33,8 +33,6 @@ func _run() -> void:
 	if formed:
 		form.pressed.emit()
 		await _frames(1)
-		screen.call("_build")  # the first redraw renamed its buttons around the freed ones
-		await _frames(1)
 	# Offer generation has its own rules tests. Use a payable, conventional
 	# contract here so random options/mission types cannot derail repair QA.
 	var contract := Contract.new()
