@@ -20,12 +20,14 @@ var _pending_side := -1
 var _tabs: Array[Button] = []  ## FORCES, BATTLEFIELD
 var _pages: Array[Control] = []
 var _starting := false
+var _layout: Control
+var _overlay: Control
 
 
 ## Android Back returns to the launcher without exiting the app.
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST and not _starting:
-		get_tree().change_scene_to_file("res://scenes/launcher.tscn")
+		_back()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -36,7 +38,16 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		var key := event as InputEventKey
 		if key.pressed and not key.echo and key.keycode == KEY_ESCAPE:
 			get_viewport().set_input_as_handled()
-			get_tree().change_scene_to_file("res://scenes/launcher.tscn")
+			_back()
+
+
+func _back() -> void:
+	if _starting:
+		return
+	if is_instance_valid(_overlay):
+		UiKit.close_overlay(_overlay)
+		return
+	get_tree().change_scene_to_file("res://scenes/launcher.tscn")
 
 
 func _ready() -> void:
@@ -48,17 +59,21 @@ func _ready() -> void:
 	set_anchors_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	var margin := MarginContainer.new()
-	margin.set_anchors_preset(PRESET_FULL_RECT)
+	add_child(margin)
+	margin.set_anchors_and_offsets_preset(PRESET_FULL_RECT)
+	_layout = margin
 	for side in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + side, 18)
-	add_child(margin)
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 8)
 	margin.add_child(layout)
 	var heading := HBoxContainer.new()
 	layout.add_child(heading)
+	UiKit.button(heading, "BACK", _back, Vector2(110, 52), "subtle").name = "MenuBack"
 	var title := UiKit.label(heading, "FORCE BUILDER  /  SKIRMISH", 27)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	title.autowrap_mode = TextServer.AUTOWRAP_OFF
+	title.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	UiSkin.label(title, "heading")
 	var steps := UiKit.label(heading, "SEARCH → ADD → DEPLOY", 16)
 	steps.autowrap_mode = TextServer.AUTOWRAP_OFF
@@ -286,23 +301,40 @@ func _open_forensics() -> void:
 
 ## The connected training games with lessons (see TrainingCampaign).
 func open_training() -> void:
+	if is_instance_valid(_overlay):
+		return
 	var t := TrainingScreen.new()
 	t.db = db
-	add_child(t)
+	_open_overlay(t)
 
 
 ## The campaign company between battles (see Campaign).
 func open_campaign() -> void:
+	if is_instance_valid(_overlay):
+		return
 	var c := CampaignScreen.new()
 	c.db = db
-	add_child(c)
+	_open_overlay(c)
 
 
 ## The map campaign: a region to take, lance by lance (see MapCampaign).
 func open_map_campaign() -> void:
+	if is_instance_valid(_overlay):
+		return
 	var c := MapCampaignScreen.new()
 	c.db = db
-	add_child(c)
+	_open_overlay(c)
+
+
+func _open_overlay(screen: Control) -> void:
+	_overlay = screen
+	_layout.hide()
+	screen.tree_exited.connect(func():
+		_overlay = null
+		if is_inside_tree() and is_instance_valid(_layout):
+			_layout.show(), CONNECT_ONE_SHOT)
+	add_child(screen)
+	screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
 
 func _start() -> void:

@@ -55,7 +55,7 @@ func _ready() -> void:
 	for l: Label in [title, _score]:
 		l.autowrap_mode = TextServer.AUTOWRAP_OFF  # wrapping labels collapse inside an HBox
 	_score.size_flags_vertical = SIZE_SHRINK_CENTER
-	UiKit.button(head, "MENU", _leave, Vector2(130, 52), "subtle")
+	UiKit.button(head, "BACK", _leave, Vector2(130, 52), "subtle").name = "MenuBack"
 	var chips := HBoxContainer.new()
 	chips.add_theme_constant_override("separation", 6)
 	box.add_child(chips)

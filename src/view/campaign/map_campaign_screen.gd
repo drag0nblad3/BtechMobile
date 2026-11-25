@@ -30,15 +30,7 @@ func _ready() -> void:
 	mc = MapCampaignStore.load_campaign()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
-	var margin := MarginContainer.new()
-	margin.set_anchors_preset(PRESET_FULL_RECT)
-	for side in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, 24)
-	add_child(margin)
-	var scroll := ScrollContainer.new()
-	margin.add_child(scroll)
-	_list = UiKit.panel(scroll)
-	_list.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_list = UiKit.screen_body(self, "MAP CAMPAIGN", UiKit.close_overlay.bind(self))
 	_build()
 
 
@@ -51,7 +43,6 @@ func _build() -> void:
 	var title := UiKit.label(head, "MAP CAMPAIGN", 32)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(title, "heading")
-	UiKit.button(head, "Back", queue_free, Vector2(140, 60))
 	UiSkin.rule(_list)
 	if mc == null:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
