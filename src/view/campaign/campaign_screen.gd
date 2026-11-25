@@ -10,6 +10,9 @@ var db: UnitDb
 var company: Campaign
 var chaos := ChaosRules.load_file()
 var _list: VBoxContainer
+var _footer: HBoxContainer
+var _selected_contract := 0
+var _expanded_contract := -1
 var _confirm_retire := false
 var _note := ""  ## Why the last Support Points action didn't happen.
 
@@ -21,10 +24,13 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	_list = UiKit.screen_body(self, "CAMPAIGN", UiKit.close_overlay.bind(self))
+	_footer = UiKit.screen_footer(_list)
 	_build()
 
 
 func _build() -> void:
+	UiKit.clear(_footer)
+	_footer.visible = company != null
 	for child in _list.get_children():
 		_list.remove_child(child)
 		child.queue_free()
@@ -44,12 +50,15 @@ func _build() -> void:
 	_list.add_child(dashboard)
 	var company_card := UiKit.panel(dashboard)
 	company_card.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	var wp := UiKit.label(company_card, "Warchest: %d WP%s  ·  battles fought: %d" % [company.wp,
-			"  (in debt)" if company.wp < 0 else "", company.battles], UiKit.FONT)
+	var wp := UiKit.label(company_card, "%d WP%s  ·  %d SP  ·  Month %d" % [
+		company.wp, " (debt)" if company.wp < 0 else "", company.sp, company.month], 26)
 	wp.name = "WarchestLabel"
-	var formation_card := UiKit.panel(dashboard)
-	formation_card.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	AbilityPanel.formation(formation_card, company, db, _act)
+	UiKit.label(company_card, "%d/%d ready · %d battles fought" % [
+		company.ready_mechs().size(), company.mechs.size(), company.battles], 18)
+	var formation_card := VBoxContainer.new()
+	formation_card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	dashboard.add_child(formation_card)
+	AbilityPanel.formation(formation_card, company, db, _act, true)
 	_contracts()
 	if not company.last_report.is_empty():
 		var report := UiKit.panel(_list)
@@ -104,12 +113,38 @@ func _contracts() -> void:
 		rng.randomize()
 		company.offers = ContractBoard.offer(chaos, rng)
 		CampaignStore.save(company)
+	_selected_contract = clampi(_selected_contract, 0, maxi(0, company.offers.size() - 1))
 	for i in company.offers.size():
-		var card := UiKit.panel(_list)
-		ContractCard.add(card, company, company.offers[i], chaos, i, _toggle_option, _take)
-	if GameSettings.explain_level != ExplainLevel.OFF:
-		UiSkin.label(UiKit.label(_list, WP_TIP, UiKit.SMALL), "muted")
+		ContractCard.add(_list, company, company.offers[i], chaos, i, _toggle_option,
+			_select_contract, i == _selected_contract, i == _expanded_contract)
+	_build_next_action()
 	UiSkin.rule(_list)
+
+
+func _select_contract(index: int) -> void:
+	_expanded_contract = -1 if _expanded_contract == index else index
+	_selected_contract = index
+	_build()
+
+
+func _build_next_action() -> void:
+	if company.offers.is_empty():
+		return
+	var k := company.offers[_selected_contract]
+	var why := Warchest.cant_take(company, k, chaos)
+	var info := StandardMissions.info(k.mission_id)
+	var note := "%s · %d WP" % [info.get("name", k.mission_id), k.cost(chaos)]
+	if why != "":
+		note = why
+	elif company.wp < k.cost(chaos):
+		note += " · Warchest debt"
+	var status := UiKit.label(_footer, note, 18)
+	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var take := UiKit.button(_footer, "TAKE CONTRACT", _take.bind(_selected_contract),
+		Vector2(240, 58), "primary")
+	take.name = "TakeContract%d" % _selected_contract
+	take.disabled = why != ""
+	take.tooltip_text = WP_TIP if why == "" else why
 
 
 func _toggle_option(index: int, id: String) -> void:
@@ -125,6 +160,8 @@ func _toggle_option(index: int, id: String) -> void:
 func _start_company() -> void:
 	if db == null:
 		db = UnitDb.load_dir()
+	_selected_contract = 0
+	_expanded_contract = -1
 	company = Campaign.create(CampaignRules.load_file(), chaos)
 	CampaignStore.save(company)
 	_build()
