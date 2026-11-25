@@ -34,12 +34,7 @@ func setup(spec: Dictionary, model: VxModel) -> void:
 	_pivot = spec["pivot"]
 	_size = model.voxel_size
 	_colors = model.colors
-	_paintable.resize(model.roles.size())
-	for i in model.roles.size():
-		_paintable[i] = model.roles[i] == "armor"
-	for material_name: String in model._mat:
-		if _is_unpainted(String(material_name)):
-			_paintable[int(model._mat[material_name])] = false
+	_paintable = paint_mask(model)
 	material_override = shared_material()
 	_setup_paint_space(model)
 
@@ -69,6 +64,17 @@ func _setup_paint_space(model: VxModel) -> void:
 
 ## A barrel or cockpit may still be damageable armor in the source recipe;
 ## that must not make its gunmetal or glass into camouflaged plating.
+static func paint_mask(model: VxModel) -> Array[bool]:
+	var mask: Array[bool] = []
+	mask.resize(model.roles.size())
+	for i in model.roles.size():
+		mask[i] = model.roles[i] == "armor"
+	for material_name: String in model._mat:
+		if _is_unpainted(material_name):
+			mask[int(model._mat[material_name])] = false
+	return mask
+
+
 static func _is_unpainted(mat_name: String) -> bool:
 	var key := mat_name.to_lower()
 	for token in ["gun", "barrel", "muzzle", "bore", "port", "glow", "light",
@@ -115,38 +121,16 @@ func local_of(grid: Vector3) -> Vector3:
 
 
 func rebuild() -> void:
-	var faces: Array = [{}, {}, {}, {}, {}, {}]  ## per direction: slice -> {Vector2i: Color}
-	var count := 0
-	for c: Vector3i in cells:
-		var material_index: int = cells[c]
-		var color: Color = _colors[material_index]
-		var role_alpha := 1.0 if _paintable[material_index] else 0.25
-		if _near_hole(c):
-			color = color.lerp(SCORCH, 0.3)
-		for f in 6:
-			var d: Vector3i = DIRS[f]
-			if cells.has(c + d):
-				continue
-			var axis := 0 if d.x != 0 else (1 if d.y != 0 else 2)
-			var shaded := Color(color * SHADE[f], role_alpha * (0.5 if touching.has(c + d) else 1.0))
-			var slices: Dictionary = faces[f]
-			if not slices.has(c[axis]):
-				slices[c[axis]] = {}
-			slices[c[axis]][Vector2i(c[(axis + 1) % 3], c[(axis + 2) % 3])] = shaded
-			count += 1
-	mesh = VxMesher.build(faces, _pivot, _size)
+	apply_surface(VxPreparedGeometry.surface(cells, original, touching, _colors,
+			_paintable, _pivot, _size))
+
+
+func apply_surface(data: Dictionary) -> void:
+	var arrays: Array = data["arrays"]
+	mesh = VxMesher.upload(arrays)
 	@warning_ignore("integer_division")
-	triangles = mesh.get_faces().size() / 3 if mesh else 0
-	faces_before_merge = count
-
-
-func _near_hole(c: Vector3i) -> bool:
-	if cells.size() == original.size():
-		return false
-	for d in DIRS:
-		if original.has(c + d) and not cells.has(c + d):
-			return true
-	return false
+	triangles = arrays[Mesh.ARRAY_VERTEX].size() / 3 if not arrays.is_empty() else 0
+	faces_before_merge = int(data["faces"])
 
 
 ## One material for every voxel part keeps draw state changes low on phones.

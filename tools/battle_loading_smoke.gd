@@ -8,6 +8,9 @@ func _initialize() -> void:
 
 func _run() -> void:
 	BattleLoading.force_staged = true
+	GameSettings.load_settings()
+	GameSettings.set_voxel_mechs(true)
+	VxRenderCache.clear()
 	var db := UnitDb.load_dir()
 	var state := ScenarioLoader.load_file("res://data/scenarios/test_skirmish.json", TerrainDb.load_file(), db)
 	# No rules changes during loading; leave one model in the reserve list.
@@ -33,6 +36,8 @@ func _run() -> void:
 		if battle.controller != null and not _check(battle.controller.history.is_empty() or loader.stage >= 94.0, "no combat before final stage"):
 			return
 	if not _check(samples.size() >= 5 and battle.hud != null and battle.units_layer != null, "stages completed and HUD ready"):
+		return
+	if not _check(battle.preload_jobs > 0, "worker prepared real battle geometry"):
 		return
 	var v: UnitView = battle.units_layer.view_of(reserve)
 	if not _check(v != null and not v.visible and v._model == null, "reserve did not build expensive model"):

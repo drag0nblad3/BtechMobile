@@ -8,6 +8,8 @@ var stage := 0.0
 var status: Label
 var bar: ProgressBar
 var heading := "DEPLOYMENT  /  PREPARING BATTLE"
+var _activity: Label
+var _clock := 0.0
 
 
 static func staged() -> bool:
@@ -48,10 +50,15 @@ func _ready() -> void:
 	bar.add_theme_stylebox_override("background", UiSkin.panel_style(UiSkin.SURFACE_HIGH, UiSkin.BORDER, 0, 4))
 	bar.add_theme_stylebox_override("fill", UiSkin.panel_style(UiSkin.CYAN, UiSkin.CYAN, 0, 4))
 	column.add_child(bar)
-	var note := Label.new()
-	note.text = "Combat begins once deployment is ready."
-	UiSkin.label(note, "muted")
-	column.add_child(note)
+	_activity = Label.new()
+	_activity.text = "Preparing systems"
+	UiSkin.label(_activity, "muted")
+	column.add_child(_activity)
+
+
+func _process(delta: float) -> void:
+	_clock += delta
+	_activity.text = "Preparing systems" + ".".repeat(int(_clock * 4.0) % 4)
 
 
 func step(message: String, completed: float) -> void:

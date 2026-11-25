@@ -17,13 +17,18 @@ func build(state: GameState, see_hidden: Array = [0, 1]) -> void:
 
 ## Invisible reserves have a view/position, but need not allocate a model
 ## until they enter the battle. Replay's synchronous build stays unchanged.
-func build_one(state: GameState, u: Unit, see_hidden: Array, defer_off_field := false) -> void:
-	var on_field := (not state.hidden.has(u) or see_hidden.has(u.side)) \
+static func on_field(state: GameState, u: Unit, see_hidden: Array) -> bool:
+	return (not state.hidden.has(u) or see_hidden.has(u.side)) \
 			and not state.reserves.has(u) and not state.waiting.has(u) and not state.mission.exited.has(u.id)
+
+
+func build_one(state: GameState, u: Unit, see_hidden: Array, defer_off_field := false,
+		prepared: Dictionary = {}) -> void:
+	var shown := on_field(state, u, see_hidden)
 	var v := UnitView.new()
 	add_child(v)
-	v.setup(u, state.map, on_field or not defer_off_field)
-	v.set_field_visible(on_field)
+	v.setup(u, state.map, shown or not defer_off_field, prepared)
+	v.set_field_visible(shown)
 	views[u.id] = v
 
 

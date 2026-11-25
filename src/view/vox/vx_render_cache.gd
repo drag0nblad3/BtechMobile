@@ -15,11 +15,11 @@ static var _geometry: Dictionary = {}
 static var _team_materials: Dictionary = {}
 
 
-static func model_at(path: String) -> VxModel:
+static func model_at(path: String, prepared: VxModel = null) -> VxModel:
 	if _models.has(path):
 		_touch(path)
 		return _models[path]
-	var model := VxModel.load_file(path)
+	var model := prepared if prepared != null else VxModel.load_file(path)
 	_remember_model(path, model)
 	return model
 
@@ -61,6 +61,10 @@ static func clear() -> void:
 
 static func stats() -> Dictionary:
 	return {"models": _models.size(), "cells": _cells, "meshes": _geometry.size()}
+
+
+static func ready(path: String) -> bool:
+	return _models.has(path) and _geometry.has(path)
 
 
 static func geometry_at(path: String) -> Dictionary:

@@ -29,15 +29,15 @@ var debris: Array[Node3D] = []
 var _centers: Dictionary = {}  ## Location -> grid center of its first part
 
 
-static func from_file(path: String, fine: bool = false) -> VxMech:
+static func from_file(path: String, fine: bool = false, prepared: Dictionary = {}) -> VxMech:
 	var m := VxMech.new()
 	m.cache_path = "" if fine else path
-	m.model = VxFineCatalog.build(path) if fine else VxRenderCache.model_at(path)
-	m.build()
+	m.model = VxFineCatalog.build(path) if fine else VxRenderCache.model_at(path, prepared.get("model"))
+	m.build({} if fine else prepared.get("parts", {}))
 	return m
 
 
-func build() -> void:
+func build(prepared_parts: Dictionary = {}) -> void:
 	body = Node3D.new()
 	body.name = "Body"
 	add_child(body)
@@ -67,7 +67,7 @@ func build() -> void:
 			"ankle": ankles[side] = joint
 			"hock": hocks[side] = joint
 			"shoulder": shoulders[side] = joint
-	_mark_touching()
+	_mark_touching(prepared_parts)
 	if hips[0] and knees[0] and ankles[0]:
 		thigh = absf(knees[0].position.y)
 		var lower: Node3D = hocks[0] if hocks[0] else ankles[0]
@@ -82,7 +82,7 @@ func build() -> void:
 
 
 ## Every part learns which neighbor cells belong to other parts, then meshes.
-func _mark_touching() -> void:
+func _mark_touching(prepared_parts: Dictionary = {}) -> void:
 	var cached := VxRenderCache.geometry_at(cache_path) if cache_path != "" else {}
 	if not cached.is_empty():
 		for key: String in parts:
@@ -92,6 +92,15 @@ func _mark_touching() -> void:
 			p.triangles = entry["triangles"]
 			p.faces_before_merge = entry["faces"]
 			p.touching = entry["touching"]
+		return
+	if not prepared_parts.is_empty() and prepared_parts.size() == parts.size():
+		for key: String in parts:
+			var p: VxPart = parts[key]
+			var entry: Dictionary = prepared_parts[key]
+			p.touching = entry["touching"]
+			p.apply_surface(entry)
+		if cache_path != "":
+			VxRenderCache.remember(cache_path, parts)
 		return
 	var owner_of := {}
 	for spec in model.parts:

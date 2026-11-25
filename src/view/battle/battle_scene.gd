@@ -37,6 +37,7 @@ var _autosave_pending := false
 var _tutorial_path := ""
 var startup_complete := false
 var _loading: BattleLoading
+var preload_jobs := 0
 
 
 func _ready() -> void:
@@ -216,6 +217,19 @@ func _notification(what: int) -> void:
 
 
 func _build_views(state: GameState) -> void:
+	var see_hidden := [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side))
+	var roster := state.all_units()
+	var queue := VxBuildQueue.new()
+	add_child(queue)
+	if BattleLoading.staged():
+		var paths: Array[String] = []
+		for u: Unit in roster:
+			if not UnitsLayer.on_field(state, u, see_hidden):
+				continue
+			var path := UnitVoxels.startup_path(u.def)
+			if not path.is_empty() and not paths.has(path):
+				paths.append(path)
+		queue.begin(paths)
 	map_view = MapView.new()
 	add_child(map_view)
 	await map_view.build_staged(state.map, _loading.step)
@@ -225,12 +239,16 @@ func _build_views(state: GameState) -> void:
 	add_child(objectives)
 	units_layer = UnitsLayer.new()
 	add_child(units_layer)
-	var see_hidden := [0, 1].filter(func(side: int) -> bool: return not bots.bot_sides.has(side))
-	var roster := state.all_units()
 	for i in roster.size():
 		await _loading.step("Preparing unit %d of %d" % [i + 1, roster.size()],
 				50.0 + 34.0 * float(i) / maxf(1.0, roster.size()))
-		units_layer.build_one(state, roster[i], see_hidden, true)
+		var u: Unit = roster[i]
+		var prepared := {}
+		if UnitsLayer.on_field(state, u, see_hidden):
+			prepared = await queue.take(UnitVoxels.startup_path(u.def))
+		units_layer.build_one(state, u, see_hidden, true, prepared)
+	preload_jobs = queue.jobs_completed
+	queue.queue_free()
 	await _loading.step("Restoring battlefield history and effects", 84.0)
 	add_child(scars)
 	scars.setup(state, units_layer, recorder.frames)

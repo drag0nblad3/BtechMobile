@@ -16,19 +16,19 @@ var _model: Node3D
 var field_visible := true  ## Deployment/hidden/exit visibility, independent of riders.
 
 
-func setup(u: Unit, battle_map: BattleMap, materialize := true) -> void:
+func setup(u: Unit, battle_map: BattleMap, materialize := true, prepared: Dictionary = {}) -> void:
 	unit = u
 	map = battle_map
 	name = "Unit_%d" % u.id
 	add_to_group(GROUP)
 	if materialize:
-		ensure_model()
+		ensure_model(prepared)
 	else:
 		field_visible = false
 	snap_to_state()
 
 
-func ensure_model() -> void:
+func ensure_model(prepared: Dictionary = {}) -> void:
 	if _model != null:
 		return
 	if unit.def.asset != null:
@@ -38,14 +38,14 @@ func ensure_model() -> void:
 	elif unit.def.battle_armor != null:
 		set_model(PlaceholderAsset.build_squad(unit.def, unit.side))
 	else:
-		refresh_look()
+		refresh_look(prepared)
 
 
 ## Choose the strongest supported representation without touching the Unit.
-func refresh_look() -> void:
+func refresh_look(prepared: Dictionary = {}) -> void:
 	if unit.def.is_support():
 		return
-	var voxel := UnitVoxels.choose(unit.def, unit.side)
+	var voxel := UnitVoxels.choose(unit.def, unit.side, prepared)
 	var sprite := SpriteMech.try_build(unit.def) if voxel == null else null
 	set_model(voxel if voxel else sprite if sprite else PlaceholderMech.build(unit.def, unit.side))
 
