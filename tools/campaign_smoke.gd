@@ -36,7 +36,8 @@ func _run() -> void:
 	# Offer generation has its own rules tests. Use a payable, conventional
 	# contract here so random options/mission types cannot derail repair QA.
 	var contract := Contract.new()
-	contract.mission_id = "annihilation"
+	# Restricted complications cannot randomly hold half the lance in waves.
+	contract.mission_id = "focal_point"
 	contract.enemy_percent = 100
 	contract.objectives.assign(["advance_attack", "stand_your_ground"])
 	var company: Campaign = screen.company
