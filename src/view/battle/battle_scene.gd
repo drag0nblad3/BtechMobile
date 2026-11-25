@@ -190,6 +190,7 @@ func _build_views(state: GameState) -> void:
 	add_child(scars)
 	scars.setup(state, units_layer, recorder.frames)
 	fx.setup(state, units_layer, map_view)
+	fx.scars = scars
 	add_child(fx)
 	add_child(audio)
 	audio.setup(state)
@@ -234,6 +235,7 @@ func _build_views(state: GameState) -> void:
 	attacks.highlighter = highlighter
 	attacks.aim_guide = aim_guides
 	attacks.bots = bots
+	attacks.units_layer = units_layer
 	movement.bots = bots
 	add_child(attacks)
 	bots.units_layer = units_layer
@@ -350,6 +352,8 @@ func _look_at_my_turn() -> void:
 
 
 func _on_tap(pos: Vector2) -> void:
+	if units_layer.attack_playing:
+		return
 	cinematic.manual_input()
 	var c := HexPicker.pick(rig.camera, pos, controller.state.map)
 	if c == Hex.INVALID:
@@ -446,7 +450,7 @@ func _on_event(e: GameEvent) -> void:
 	if e.type == GameEvent.GAME_OVER:
 		_autosave.call_deferred()
 		BattleSave.save_replay.call_deferred(recorder.frames)
-	fx.play(e)
+	var deferred_visual := fx.play(e)
 	audio.on_event(e)
 	atmosphere.on_event(e)
 	if tutorial:
@@ -457,11 +461,13 @@ func _on_event(e: GameEvent) -> void:
 			units_layer.play_move(e.data["unit_id"], e.data["path"], Vector2i(from.x, from.y), from.z,
 				int(e.data.get("mode", -1)))
 		GameEvent.DAMAGE, GameEvent.FALL, GameEvent.STAND, GameEvent.WENT_PRONE, GameEvent.UNIT_DESTROYED, GameEvent.SHUTDOWN, GameEvent.TRANSPORT:
-			units_layer.refresh_unit(e.data["unit_id"])
-			units_layer.react(e)
+			if not deferred_visual:
+				units_layer.refresh_unit(e.data["unit_id"])
+				units_layer.react(e)
 			_show_sheet_if_open()
 		GameEvent.PHYSICAL:
-			units_layer.react(e)
+			if not deferred_visual:
+				units_layer.react(e)
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
 			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
@@ -497,7 +503,8 @@ func _on_event(e: GameEvent) -> void:
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), after)
 			attacks.clear()
 			movement.clear_selection()
-	scars.on_event(e)
+	if not deferred_visual:
+		scars.on_event(e)
 	cinematic.on_event(e)
 
 

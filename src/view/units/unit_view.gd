@@ -235,7 +235,7 @@ static func fallback_muzzle(bounds: AABB, location: int, rear: bool,
 func impact_location(loc: int, rear: bool) -> Vector3:
 	if _model is VxMech:
 		var voxel := _model as VxMech
-		if not voxel.model.parts_at(loc).is_empty():
+		if not voxel.model.parts_at(loc).is_empty() and voxel.is_attached(voxel.part_at(loc)):
 			var part := voxel.part_at(loc)
 			var bounds := part.get_aabb()
 			var where := bounds.get_center()
@@ -244,6 +244,16 @@ func impact_location(loc: int, rear: bool) -> Vector3:
 	var bounds := _model_bounds(_model, Transform3D.IDENTITY)
 	var center := bounds.get_center()
 	var radius := bounds.size
+	if unit.def.vehicle != null:
+		match loc:
+			VehicleLoc.FRONT: center.z = bounds.position.z
+			VehicleLoc.REAR: center.z = bounds.end.z
+			VehicleLoc.LEFT: center.x = bounds.position.x
+			VehicleLoc.RIGHT: center.x = bounds.end.x
+			VehicleLoc.TURRET: center.y = bounds.end.y
+		return global_transform * center
+	if unit.def.is_support():
+		return global_transform * center
 	match loc:
 		Location.HEAD:
 			center.y = bounds.position.y + radius.y * 0.91
@@ -337,3 +347,12 @@ func _hex_pos(c: Vector2i) -> Vector3:
 	elif unit.on_roof and Roofs.has_roof(t):
 		p.y += t.building.height * HexLayout.LEVEL_HEIGHT
 	return p
+
+
+## Apply the event-time record, not the already-resolved final combat state.
+func apply_attack_record(record: Dictionary) -> void:
+	if _model is VxMech:
+		var vox := _model as VxMech
+		vox.show_record(unit.def, record["armor"], record["rear"], record["structure"], record["destroyed"])
+	elif record["destroyed"]:
+		_tint(_model, Color(0.3, 0.3, 0.3))
