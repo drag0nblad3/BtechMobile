@@ -9,10 +9,14 @@ func _initialize() -> void:
 	var terrain := TerrainDb.load_file()
 	for theme in MapTheme.load_all():
 		for seed_value in range(1, seeds + 1):
+			var start := Time.get_ticks_usec()
 			var raw := MapGenerator.generate_raw(theme, Vector2i.ONE, seed_value)
+			var raw_ms := (Time.get_ticks_usec() - start) / 1000.0
+			start = Time.get_ticks_usec()
 			var selected := MapGenerator.generate(theme, Vector2i.ONE, seed_value, terrain)
-			_report("raw", theme.id, raw, terrain)
-			_report("screened", theme.id, selected, terrain)
+			var screened_ms := (Time.get_ticks_usec() - start) / 1000.0
+			_report("raw", theme.id, raw, terrain, raw_ms)
+			_report("screened", theme.id, selected, terrain, screened_ms)
 	if args.size() >= 2:
 		var refs: Dictionary = JsonFile.read("res://docs/map-reference-baseline.json")
 		for entry: Dictionary in refs["boards"]:
@@ -28,10 +32,11 @@ func _initialize() -> void:
 	quit()
 
 
-func _report(kind: String, theme: String, board: Dictionary, terrain: TerrainDb) -> void:
+func _report(kind: String, theme: String, board: Dictionary, terrain: TerrainDb, generation_ms := 0.0) -> void:
 	var m := MapLoader.from_dict(board, terrain)
 	var report := MapTactics.assess(m)
 	var mix := MapStats.new(m)
 	print("MAP_QUALITY|", JSON.stringify({"kind": kind, "theme": theme, "name": m.name,
 		"width": m.width, "height": m.height, "layout_seed": board.get("layout_seed", board.get("seed", -1)),
-		"penalty": MapTactics.penalty(report), "tactics": report, "terrain": mix.summary()}))
+		"penalty": MapTactics.penalty(report), "tactics": report, "terrain": mix.summary(),
+		"generation_ms": generation_ms}))
