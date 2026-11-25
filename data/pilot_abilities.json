@@ -1,0 +1,10 @@
+{
+  "_source": "Special Pilot Abilities, Campaign Operations pp. 70-82: ids, names and point costs are the book's; summaries are our own words. Only abilities the app can play are listed.",
+  "abilities": [
+    {"id": "blood_stalker", "name": "Blood Stalker", "cost": 2, "summary": "Picks one enemy as its quarry: -1 to hit it, +2 to hit anything else, until the quarry is destroyed or leaves the field."},
+    {"id": "lucky", "name": "Lucky", "cost": 1, "max": 4, "summary": "Each point buys one reroll of a failed attack roll or piloting roll per battle; the second roll stands."},
+    {"id": "multi_tasker", "name": "Multi-Tasker", "cost": 2, "summary": "Secondary targets cost 1 less to hit."},
+    {"id": "sniper", "name": "Sniper", "cost": 3, "summary": "Range modifiers are halved: +1 at medium range, +2 at long."},
+    {"id": "speed_demon", "name": "Speed Demon", "cost": 2, "summary": "+1 running MP, but a 'Mech that uses it can't attack that turn."}
+  ]
+}

@@ -113,9 +113,16 @@ static func roll(dice: Dice, emit: Callable, u: Unit, reason: String, mod: int,
 		Wind.add(th, state, u)
 	Surfaces.add_psr(th, state, u)
 	var r := dice.roll_2d6()
+	var data := {"unit_id": u.id, "need": th.target(), "reason": reason, "mods": th.mods}
+	if r < th.target():
+		var again := Lucky.psr(dice, u)
+		if again >= 0:
+			data["lucky_first"] = r
+			r = again
 	var ok := r >= th.target()
-	emit.call(GameEvent.PSR, {"unit_id": u.id, "roll": r, "need": th.target(), "ok": ok,
-			"reason": reason, "mods": th.mods})
+	data["roll"] = r
+	data["ok"] = ok
+	emit.call(GameEvent.PSR, data)
 	return ok
 
 

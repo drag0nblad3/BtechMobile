@@ -58,6 +58,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 		target = path[-1] if not path.is_empty() else from
 		charge_target_id = -1
 	var mp: int = opts.cost.get(target, 0)
+	SpeedDemon.after_move(unit, mode, mp, opts.budget)
 	unit.hexes_moved = Hex.distance(unit.coord, MoveOptions.coord_of(target)) \
 			if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(path, unit.coord)
 	var decks := Bridges.decks_entered(state.map, MoveOptions.coord_of(from), path, mode == MoveMode.Kind.JUMP)
@@ -73,7 +74,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	unit.heat_generated += MoveMode.heat(mode, unit.hexes_moved, JumpJets.improved(unit.def)) if moved else 0
 	unit.outside_heat += Fire.move_heat(state.map, path, MoveOptions.coord_of(from), mode == MoveMode.Kind.JUMP)
 	emit.call(GameEvent.UNIT_MOVED, {"unit_id": unit.id, "from": from, "path": path,
-			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved})
+			"mode": unit.move_mode, "mp": mp, "hexes": unit.hexes_moved, "flat_out": unit.flat_out})
 	var under := HiddenUnits.enemy_at(state, unit.side, unit.coord) if mode == MoveMode.Kind.JUMP else null
 	if under:  # landed on a hidden enemy: it's found and the jumper is shoved aside
 		HiddenUnits.reveal(state, emit, under, "an enemy jumped onto its hex", true)
@@ -108,7 +109,7 @@ static func run(state: GameState, dice: Dice, emit: Callable, unit: Unit, target
 	for h in found:  # each may answer with a point-blank attack (PointBlank)
 		if h.can_act() and not unit.destroyed:
 			state.point_blank.append({"unit_id": h.id, "target_id": unit.id})
-	if charge_target_id >= 0 and not unit.prone:
+	if charge_target_id >= 0 and not unit.prone and not unit.flat_out:
 		if not moved:  # charging from the hex next door still spends MP
 			unit.move_mode = mode
 		Charge.declare(state, emit, unit, state.unit_by_id(charge_target_id), opts.budget - mp)

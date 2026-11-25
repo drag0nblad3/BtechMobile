@@ -10,8 +10,8 @@ static func describe(e: GameEvent, s: GameState, level: int, seen: Dictionary = 
 		GameEvent.PSR:
 			if level == ExplainLevel.OFF:
 				return "" if d["ok"] else "%s fails a piloting roll (%s)." % [who, d["reason"]]
-			var t := "%s piloting roll (%s): rolled %d, needed %d: %s" % [who, d["reason"],
-					d["roll"], d["need"], "OK" if d["ok"] else "FAILED"]
+			var t := "%s piloting roll (%s): rolled %d%s, needed %d: %s" % [who, d["reason"],
+					d["roll"], LuckyText.note(d), d["need"], "OK" if d["ok"] else "FAILED"]
 			return t + ModsText.lines(d["mods"], level, seen)
 		GameEvent.FALL:
 			var t := "%s falls (%s) onto its %s and takes %d damage." % [who, d["reason"],

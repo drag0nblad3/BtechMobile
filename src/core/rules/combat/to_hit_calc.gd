@@ -13,6 +13,9 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		return th
 	if attacker.asset != null:
 		return AssetFire.to_hit(state, attacker, w, target)
+	if attacker.flat_out:
+		th.impossible = SpeedDemon.NO_ATTACK
+		return th
 	th.impossible = BaFire.problem(state, attacker)
 	if th.impossible != "":
 		return th
@@ -143,6 +146,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
 		th.add("secondary target", 1, "Every target after your primary one costs +1.")
+	SpaToHit.add(th, state, attacker, target, br, secondary)
 	return th
 
 

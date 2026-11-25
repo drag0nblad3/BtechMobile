@@ -16,6 +16,8 @@ static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit, kind := "")
 		th.impossible = "Physical attacks need an adjacent target"
 	elif a.prone:
 		th.impossible = "Can't make physical attacks while prone"
+	elif a.flat_out:
+		th.impossible = SpeedDemon.NO_ATTACK
 	elif absi(level_diff(state, a, t)) > 1:
 		th.impossible = "Target is too far above or below you"
 	else:

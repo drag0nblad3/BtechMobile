@@ -320,6 +320,14 @@ Not in the Core Rulebook: these follow general Total Warfare practice, all `TODO
 - ✅ Tapping an empty hex explains its movement cost, cover and cooling.
 - ⬜ Bridges as structures, fire and smoke.
 
+## Special Pilot Abilities (Campaign Operations pp. 70-82; `src/core/rules/abilities/`, `data/pilot_abilities.json`)
+- ✅ Sniper (`SpaToHit`): range modifiers halved (+1 medium, +2 long).
+- ✅ Multi-Tasker (`SpaToHit`): secondary targets 1 cheaper. 🟡 `TODO(rules)`: written for Total Warfare's +1/+2; the Core Rulebook's flat +1 becomes +0.
+- ✅ Blood Stalker (`BloodStalker`): -1 against the quarry, +2 against others, until the quarry is destroyed or leaves. 🟡 `TODO(rules)`: the first primary target fired at becomes the quarry (the player doesn't name it).
+- ✅ Speed Demon (`SpeedDemon`): +1 running MP; a 'Mech that spends it can't make weapon or physical attacks (or charge) that turn.
+- ✅ Lucky (`Lucky`): 1-4 rerolls per battle of failed attack or piloting rolls; the reroll stands. 🟡 `TODO(rules)`: spent automatically on every failed piloting roll and on missed attacks needing 10 or less from weapons doing 5+ damage.
+- ⬜ Who has them: campaign MechWarriors and formation bonuses (coming next); not in quick battles yet.
+
 ## Campaign (Campaign Operations, Chaos Campaign pp. 156-173; the Core Rulebook leaves campaigns to other books, p. 212)
 - ✅ Company between battles (`Campaign`, `CampaignBattle`, `MechCondition`): armor, structure, critical slots, weapons and ammo carry over; heat, prone and turn state don't. MechWarrior wounds carry over until healed. A pilot dies at 6 hits or with the head/cockpit. Kills go to the last unit to damage the victim. A 'Mech that left the map is fine. 🟡 `TODO(rules)`: "Truly Destroyed" (Strategic Operations p. 175, not in the app) is taken as a lost center torso, and a 'Mech that surrendered is lost.
 - ✅ Warchest Points (`Warchest`, `Contract`, `ChaosRules`, `data/campaign/chaos.json`): a contract costs 75% of all it could pay (p. 173); each objective met pays its WP; chosen options pay only if an objective is met (p. 160); Warchest debt allowed, never twice in a row. 🟡 Starting WP, enemy sizes (75/100/125% of your BV) and option WP inside the book's ranges are our picks (the book leaves them to the GM).
