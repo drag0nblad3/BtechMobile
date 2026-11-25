@@ -3,9 +3,9 @@ extends RefCounted
 ## Replays cosmetic marks from the existing packed GameEvent ledger.
 ## Reads snapshot coordinates directly; no rule reconstruction or rolls.
 
-static func recover(frames: Array) -> Dictionary:
-	var fires: Dictionary = {}
-	var deaths: Dictionary = {}
+static func recover(frames: Array, previous: Dictionary = {}) -> Dictionary:
+	var fires: Dictionary = previous.get("scorches", {}).duplicate()
+	var deaths: Dictionary = previous.get("deaths", {}).duplicate()
 	for frame: Dictionary in frames:
 		for fact: Dictionary in frame.get("events", []):
 			var data: Dictionary = BattleCodec.unpack(fact.get("data", {}), null, null)
