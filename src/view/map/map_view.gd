@@ -16,6 +16,14 @@ var building_scars := {}  ## Cosmetic wall holes per hex; kept across rebuilds.
 var bridges: BridgeProps
 var bridge_scars := {}  ## The same for bridge stonework.
 var weather_tint := Color.WHITE
+static var _terrain_mesh: Mesh
+static var _terrain_noise: NoiseTexture2D
+var _rebuild_pending := false
+var _geometry_dirty := false
+var _effects_dirty := false
+var _fires: Node3D
+var geometry_builds := 0  ## Diagnostics for smoke tests.
+var effects_builds := 0
 
 
 func build(battle_map: BattleMap) -> void:
@@ -40,19 +48,23 @@ func _build_tasks() -> Array:
 		["Preparing water", func(): add_child(WaterSurfaces.build(map))],
 		["Constructing bridges", _build_bridges],
 		["Constructing buildings", _build_buildings],
-		["Preparing environmental effects", func(): add_child(FireProps.build(map))],
+		["Preparing environmental effects", _build_fire],
 		["Finishing battlefield", func(): add_child(_ground_plane())],
 	]
 
 
 func _build_terrain() -> void:
-	var noise := _noise_texture()
-	var mesh := HexMesh.prism(HexLayout.HEX_SIZE * INSET)
+	geometry_builds += 1
+	if _terrain_noise == null:
+		_terrain_noise = _noise_texture()
+	if _terrain_mesh == null:
+		_terrain_mesh = HexMesh.prism(HexLayout.HEX_SIZE * INSET)
+	var range_ := map.level_range()
 	var by_type := {}  # [TerrainType, surface] -> Array[MapTile]
 	for t: MapTile in map.tiles.values():
 		by_type.get_or_add([t.terrain, t.surface], []).append(t)
 	for key: Array in by_type:
-		add_child(_prism_layer(mesh, by_type[key], key[0], noise, key[1]))
+		add_child(_prism_layer(_terrain_mesh, by_type[key], key[0], _terrain_noise, range_, key[1]))
 
 
 
@@ -66,21 +78,53 @@ func _build_buildings() -> void:
 	add_child(buildings)
 
 
-## Redraws everything, e.g. after a building collapses into rubble.
+func _build_fire() -> void:
+	effects_builds += 1
+	_fires = FireProps.build(map)
+	add_child(_fires)
+
+
+## Full rebuild for changed terrain; detach immediately so old geometry
+## cannot overlap the replacement for a frame.
 func rebuild() -> void:
 	for c in get_children():
+		remove_child(c)
 		c.queue_free()
 	build(map)
 
 
+## Multiple synchronous combat events can invalidate the same layer.
+## Smoke/fire never need to regenerate terrain or buildings.
+func queue_refresh(geometry: bool) -> void:
+	_geometry_dirty = _geometry_dirty or geometry
+	_effects_dirty = true
+	if not _rebuild_pending:
+		_rebuild_pending = true
+		_flush_refresh.call_deferred()
+
+
+func _flush_refresh() -> void:
+	_rebuild_pending = false
+	var geometry := _geometry_dirty
+	var effects := _effects_dirty
+	_geometry_dirty = false
+	_effects_dirty = false
+	if geometry:
+		rebuild()
+	elif effects:
+		if is_instance_valid(_fires):
+			remove_child(_fires)
+			_fires.queue_free()
+		_build_fire()
+
+
 func _prism_layer(mesh: Mesh, tiles: Array, terrain: TerrainType, noise: Texture2D,
-		surface := "") -> MultiMeshInstance3D:
+		range_: Vector2i, surface := "") -> MultiMeshInstance3D:
 	var mm := MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.use_colors = true
 	mm.mesh = mesh
 	mm.instance_count = tiles.size()
-	var range_ := map.level_range()
 	for i in tiles.size():
 		var t: MapTile = tiles[i]
 		var top := HexLayout.tile_top(t)

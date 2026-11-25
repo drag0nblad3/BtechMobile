@@ -11,8 +11,6 @@ var _list: VBoxContainer
 func _ready() -> void:
 	GameSettings.load_settings()
 	campaign = TrainingCampaign.load_file()
-	if db == null:
-		db = UnitDb.load_dir()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	_list = UiKit.screen_body(self, "TRAINING", UiKit.close_overlay.bind(self))
@@ -85,6 +83,8 @@ func _show_notebook() -> void:
 
 
 func start(i: int) -> void:
+	if db == null:
+		db = UnitDb.load_dir()
 	var path := campaign.scenario_path(i)
 	BattleLaunch.pending = ScenarioLoader.load_file(path, TerrainDb.load_file(), db)
 	BattleLaunch.bot_sides = JsonFile.read(path).get("bot_sides", [1])

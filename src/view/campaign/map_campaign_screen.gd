@@ -25,9 +25,9 @@ var _confirm_quit := false
 
 func _ready() -> void:
 	rng.randomize()
-	if db == null:
-		db = UnitDb.load_dir()
 	mc = MapCampaignStore.load_campaign()
+	if mc != null and db == null:
+		db = UnitDb.load_dir()
 	set_anchors_and_offsets_preset(PRESET_FULL_RECT)
 	UiSkin.backdrop(self)
 	_list = UiKit.screen_body(self, "MAP CAMPAIGN", UiKit.close_overlay.bind(self))
@@ -83,6 +83,8 @@ func _build() -> void:
 
 
 func _start() -> void:
+	if db == null:
+		db = UnitDb.load_dir()
 	mc = MapCampaign.create(db, rng)
 	MapCampaignStore.save(mc)
 	_note = "Your company has landed on the south edge. Pick a lance, then an order."

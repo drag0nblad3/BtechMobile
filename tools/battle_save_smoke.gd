@@ -15,6 +15,31 @@ func _run() -> void:
 	if not _check(battle != null and battle.controller.state.turn == 1,
 			"battle scene did not start"):
 		return
+	var map_view: MapView = battle.map_view
+	var geo := map_view.geometry_builds
+	var effects := map_view.effects_builds
+	var buildings := map_view.buildings
+	map_view.queue_refresh(false)
+	map_view.queue_refresh(false)
+	await process_frame
+	if not _check(map_view.geometry_builds == geo and map_view.effects_builds == effects + 1
+			and map_view.buildings == buildings, "smoke updates rebuilt static geometry or did not coalesce"):
+		return
+	map_view.queue_refresh(true)
+	map_view.queue_refresh(false)
+	await process_frame
+	if not _check(map_view.geometry_builds == geo + 1 and map_view.effects_builds == effects + 2,
+			"geometry refresh did not subsume effects"):
+		return
+	var log_view: CombatLogView = battle.hud.log_view
+	await process_frame
+	var flushes := log_view.flush_count
+	for i in 12:
+		log_view.add_line("Batch probe %d" % i)
+	await process_frame
+	if not _check(log_view.flush_count == flushes + 1 and log_view.text.text.contains("Batch probe 11"),
+			"combat log did not retain and coalesce burst"):
+		return
 	var before: GameController = battle.controller
 	if not _check(battle._autosave(), "could not save the live scene"):
 		return

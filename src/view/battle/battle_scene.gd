@@ -21,6 +21,8 @@ var movement: MovementInput
 var attacks: AttackInput
 var explainer: Explainer
 var sheet_unit: Unit
+var _sheet_refresh_pending := false
+var _objectives_refresh_pending := false
 var bots: BotDriver
 var tutorial: Tutorial
 var practice: TrainingPractice
@@ -473,6 +475,17 @@ func _toggle_sheet() -> void:
 		attacks._refresh()
 
 
+func _queue_sheet_refresh() -> void:
+	if hud.sheet_open and sheet_unit != null and not _sheet_refresh_pending:
+		_sheet_refresh_pending = true
+		_flush_sheet_refresh.call_deferred()
+
+
+func _flush_sheet_refresh() -> void:
+	_sheet_refresh_pending = false
+	_show_sheet_if_open()
+
+
 func _show_sheet_if_open() -> void:
 	if hud.sheet_open and sheet_unit:
 		var power := func(want: String) -> void:
@@ -538,12 +551,12 @@ func _on_event(e: GameEvent) -> void:
 			if not deferred_visual:
 				units_layer.refresh_unit(e.data["unit_id"])
 				units_layer.react(e)
-			_show_sheet_if_open()
+			_queue_sheet_refresh()
 		GameEvent.PHYSICAL:
 			if not deferred_visual:
 				units_layer.react(e)
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
-			_rebuild_objectives()
+			_queue_objectives_refresh()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(true)
 			units_layer.refresh_unit(e.data["unit_id"])
@@ -553,7 +566,7 @@ func _on_event(e: GameEvent) -> void:
 				_refresh_arrivals.call_deferred()
 		GameEvent.UNIT_EXITED:
 			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(false)
-			_show_sheet_if_open()
+			_queue_sheet_refresh()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			if e.type == GameEvent.PHASE_CHANGED:
 				attacks.clear()
@@ -561,13 +574,15 @@ func _on_event(e: GameEvent) -> void:
 					movement.clear_selection()
 			_update_status()
 			if e.type == GameEvent.ACTIVE_SIDE:
-				_rebuild_objectives()  # carried counters move with their 'Mechs
+				_queue_objectives_refresh()  # carried counters move with their 'Mechs
 			if e.type == GameEvent.ACTIVE_SIDE:
 				attacks.begin.call_deferred()
 				_look_at_my_turn.call_deferred()
 		GameEvent.BUILDING:
-			if e.data["kind"] in ["collapsed", "bridge_collapsed", "fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
-				map_view.rebuild()
+			if e.data["kind"] in ["collapsed", "bridge_collapsed", "flattened"]:
+				map_view.queue_refresh(true)
+			elif e.data["kind"] in ["fire", "smoke", "smoke_thins", "inferno", "fire_out"]:
+				map_view.queue_refresh(false)
 		GameEvent.GAME_OVER:
 			var after := TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1)), practice)
 			if in_campaign:
@@ -590,10 +605,22 @@ func _refresh_arrivals() -> void:
 			v.snap_to_state()
 
 
+func _queue_objectives_refresh() -> void:
+	if not _objectives_refresh_pending:
+		_objectives_refresh_pending = true
+		_flush_objectives_refresh.call_deferred()
+
+
+func _flush_objectives_refresh() -> void:
+	_objectives_refresh_pending = false
+	_rebuild_objectives()
+
+
 func _rebuild_objectives() -> void:
 	var no_obj: bool = controller.state.mission.def == null or controller.state.mission.def.objectives.is_empty()
 	if no_obj and controller.state.minefields.is_empty() and objectives.get_child_count() == 0:
 		return
+	remove_child(objectives)
 	objectives.queue_free()
 	objectives = ObjectiveMarkers.build(controller.state)
 	add_child(objectives)
