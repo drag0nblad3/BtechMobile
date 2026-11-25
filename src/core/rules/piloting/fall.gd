@@ -13,8 +13,9 @@ static func damage_for(u: Unit, levels: int) -> int:
 
 
 ## `side` forces the side hit (FiringArc.REAR for a missed death from above).
+## `seatbelt_mod` changes the pilot's roll (Hopper: -2).
 static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: int,
-		reason: String, side: int = -1) -> void:
+		reason: String, side: int = -1, seatbelt_mod := 0) -> void:
 	levels = Avalanche.slide(state, dice, emit, u, levels)
 	if side < 0:
 		side = FiringArc.REAR if dice.d6() == 1 else FiringArc.FRONT
@@ -42,14 +43,16 @@ static func fall(state: GameState, dice: Dice, emit: Callable, u: Unit, levels: 
 	HullBreach.check_exposed(state, emit, u)
 	BaShakeOff.on_fall(state, dice, emit, u)
 	if not u.destroyed:
-		seatbelt(dice, emit, u, levels)
+		seatbelt(dice, emit, u, levels, seatbelt_mod)
 
 
-static func seatbelt(dice: Dice, emit: Callable, u: Unit, levels: int) -> void:
+static func seatbelt(dice: Dice, emit: Callable, u: Unit, levels: int, mod := 0) -> void:
 	var th := ToHit.new()
 	th.add("Piloting", u.pilot.piloting, "Your MechWarrior's piloting skill is the base number.")
 	if levels > 0:
 		th.add("fell %d level%s" % [levels, "" if levels == 1 else "s"], levels, "")
+	if mod != 0:
+		th.add("Hopper", mod, "A Hopper rides the fall better: -2.")
 	if ToHitCalc.is_immobile(u) or th.target() > 12:
 		PilotDamage.wound(dice, emit, u, 1, "fall")
 		return

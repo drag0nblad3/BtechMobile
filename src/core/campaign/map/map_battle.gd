@@ -13,6 +13,7 @@ extends RefCounted
 static func build(mc: MapCampaign, b: Dictionary, db: UnitDb, seed_value: int) -> Dictionary:
 	var lances := [_side_lance(mc, b, 0), _side_lance(mc, b, 1)]
 	var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
+	fb.commanders = true
 	var ids := [[], []]
 	for side in 2:
 		ids[side] = mc.fit_mechs(lances[side])
@@ -34,7 +35,7 @@ static func build(mc: MapCampaign, b: Dictionary, db: UnitDb, seed_value: int) -
 
 
 ## A generated map for the zone's terrain theme.
-static func battlefield(mc: MapCampaign, z: Vector2i, seed_value: int) -> BattleMap:
+static func battlefield(mc: MapCampaign, z: Vector2i, _seed_value: int) -> BattleMap:
 	var terrain := mc.region.terrain_at(z)
 	var theme_id := String(mc.rules.get("terrains", {}).get(terrain, {}).get("theme", "grassland"))
 	var themes := MapTheme.load_all()
@@ -42,7 +43,7 @@ static func battlefield(mc: MapCampaign, z: Vector2i, seed_value: int) -> Battle
 	for t in themes:
 		if t.id == theme_id:
 			theme = t
-	return MapGenerator.build(theme, MapGenerator.SIZES[1], seed_value, TerrainDb.load_file())
+	return MapGenerator.build(theme, MapGenerator.SIZES[1], MapGeography.battle_seed(mc.region, z), TerrainDb.load_file())
 
 
 static func initiative(mc: MapCampaign, l: MapLance, z: Vector2i) -> int:
@@ -67,7 +68,8 @@ static func finish(mc: MapCampaign, b: Dictionary, state: GameState, rosters: Ar
 			loser.zone = _fallback(mc, loser)
 			report.append("%s falls back." % loser.name)
 	mc.battles.erase(b)
-	mc.log.append(report[0])
+	mc.log.append_array(report)
+	MapIntelligence.observe(mc)
 	return report
 
 

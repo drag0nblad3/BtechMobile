@@ -12,16 +12,16 @@ func _campaign(seed_n := 7) -> MapCampaign:
 func test_setup() -> void:
 	var mc := _campaign()
 	check_eq(mc.region.terrain.size(), 48)
-	check_eq(mc.region.locations.size(), 8)
-	check_eq(mc.region.total_points(), 19)
-	check_eq(mc.region.points(1), 19, "the defender holds everything")
+	check_eq(mc.region.locations.size(), 12)
+	check_eq(mc.region.total_points(), 25)
+	check_eq(mc.region.points(1), 25, "the defender holds everything")
 	check_eq(mc.lances_of(0).size(), 3, "a company of three lances")
-	check_eq(mc.lances_of(1).size(), 9, "a lance per location plus a reserve")
+	check_eq(mc.lances_of(1).size(), 11, "a lance per garrisoned location plus a reserve")
 	for loc in mc.region.locations:
 		check(loc["zone"].y < mc.region.height - 1, "nothing on the landing row")
 	var again := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
 	check_eq(again.region.locations[0]["zone"], mc.region.locations[0]["zone"], "saved")
-	check_eq(again.lances.size(), 12)
+	check_eq(again.lances.size(), 14)
 	check_eq(again.fit_mechs(again.lances[0]).size(), 4)
 
 
@@ -91,7 +91,7 @@ func test_bot_and_winning() -> void:
 	var mc := _campaign()
 	MapBot.orders(mc)
 	var defenders := mc.lances_of(1).filter(func(l: MapLance) -> bool: return l.order == MapLance.DEFEND)
-	check_eq(defenders.size(), 8, "garrisons hold")
+	check_eq(defenders.size(), 10, "garrisons hold")
 	check_eq(MapTurn.winner(mc), -1)
 	for loc in mc.region.locations:
 		loc["owner"] = 0
@@ -100,3 +100,94 @@ func test_bot_and_winning() -> void:
 		loc["owner"] = 1
 	mc.turn = 20
 	check_eq(MapTurn.winner(mc), 1, "the defender outlasts the turn limit")
+
+func test_persistent_geography() -> void:
+	var mc := _campaign()
+	var z := Vector2i(2, 2)
+	var seed_value := MapGeography.battle_seed(mc.region, z)
+	var again := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
+	check_eq(MapGeography.battle_seed(again.region, z), seed_value)
+	check_eq(again.region.terrain, mc.region.terrain)
+	for route in MapGeography.roads(mc.region):
+		for i in range(1, route.size()):
+			check_eq(mc.region.distance(route[i - 1], route[i]), 1, "connected road")
+	var a := MapBattle.battlefield(mc, z, 1)
+	var b := MapBattle.battlefield(mc, z, 99)
+	check_eq(a.width, b.width)
+	for c: Vector2i in a.coords():
+		check_eq(a.get_tile(c).terrain.id, b.get_tile(c).terrain.id)
+		check_eq(a.get_tile(c).level, b.get_tile(c).level)
+
+func test_hq_transfers_and_restrictions() -> void:
+	var mc := _campaign()
+	var a := mc.lances_of(0)[0]
+	var b := mc.lances_of(0)[1]
+	var m := a.mech_ids[0]
+	var n := b.mech_ids[0]
+	var pilot_m := mc.player.mech(m).pilot_id
+	var pilot_n := mc.player.mech(n).pilot_id
+	check(MapHeadquarters.swap_pilots(mc, a, b, m, n))
+	check_eq(mc.player.mech(m).pilot_id, pilot_n)
+	check_eq(mc.player.mech(n).pilot_id, pilot_m)
+	check(MapHeadquarters.swap_mechs(mc, a, b, m, n))
+	check(a.mech_ids.has(n) and b.mech_ids.has(m))
+	b.zone = mc.region.neighbors(a.zone)[0]
+	check(not MapHeadquarters.swap_mechs(mc, a, b, n, m), "remote transfer rejected")
+	b.zone = a.zone
+	b.order = MapLance.MOVE
+	check(not MapHeadquarters.swap_pilots(mc, a, b, n, m), "orders already issued")
+
+
+func test_stale_intelligence() -> void:
+	var mc := _campaign()
+	var p := mc.lances_of(0)[0]
+	var enemy := mc.lances_of(1)[0]
+	enemy.zone = p.zone
+	MapIntelligence.observe(mc)
+	var z := p.zone
+	var key := MapIntelligence.key(z)
+	var observed: Dictionary = mc.intel[key].duplicate()
+	for l in mc.lances_of(0):
+		l.zone = Vector2i(0, 0)
+	enemy.zone = Vector2i(1, 0)
+	MapIntelligence.observe(mc)
+	check_eq(mc.intel[key], observed, "unseen report does not leak updated enemy position")
+	check(MapIntelligence.report(mc, z).begins_with("Last known"))
+	var restored := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
+	check_eq(int(restored.intel[key]["lances"]), int(observed["lances"]))
+
+
+func test_linked_region_retains_company() -> void:
+	var mc := _campaign()
+	mc.rules["operations"] = 2
+	mc.rules["width"] = 10
+	mc.rules["height"] = 8
+	var m := mc.player.mech(mc.lances_of(0)[0].mech_ids[0])
+	var pilot := mc.player.pilot(m.pilot_id)
+	m.condition = {"armor": [0]}
+	pilot.wounds = 1
+	pilot.kills = 3
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 543
+	check(not MapOperations.advance(mc, designs(), rng), "requires victory")
+	mc.winner = 0
+	check(MapOperations.advance(mc, designs(), rng))
+	check_eq(mc.operation, 2)
+	check_eq(mc.region.width, 10)
+	check_eq(mc.turn, 1)
+	check_eq(mc.winner, -1)
+	check_eq(mc.player.mech(m.id).condition, {"armor": [0]})
+	check_eq(mc.player.pilot(pilot.id).wounds, 1)
+	check_eq(mc.player.pilot(pilot.id).kills, 3)
+	check(not MapOperations.advance(mc, designs(), rng), "no extra regions")
+	var restored := MapCampaignCodec.unpack(JSON.parse_string(JSON.stringify(MapCampaignCodec.pack(mc))))
+	check_eq(restored.operation, 2)
+	check_eq(int(restored.rules["width"]), 10)
+
+func test_historical_pool_only_verified() -> void:
+	var db := designs()
+	var availability := EraAvailability.new()
+	var pool := MapCampaignOptions.pool(db, 3025, "federated_suns")
+	for def: UnitDef in pool:
+		check_eq(availability.check(def.id, 3025, "federated_suns")["status"], "available")
+	check(MapCampaignOptions.pool(db, 3025, "invalid_faction").is_empty())

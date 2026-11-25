@@ -23,6 +23,14 @@ const HUMAN_TRO := "human_tro"
 const RANGE_MASTER := "range_master"
 const TACTICAL_GENIUS := "tactical_genius"
 const TERRAIN_MASTER := "terrain_master"
+const DODGE := "dodge"
+const FIST_FIRE := "fist_fire"
+const HOPPER := "hopper"
+const MARKSMAN := "marksman"
+const ZWEIHANDER := "zweihander"
+const MELEE_MASTER := "melee_master"
+const ENV_SPECIALIST := "env_specialist"
+const COMBAT_INTUITION := "combat_intuition"
 
 static var _data: Dictionary = {}
 

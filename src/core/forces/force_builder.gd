@@ -27,6 +27,7 @@ var availability_mode := EraAvailability.Mode.OFF
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 var initiative_die := false  ## Use the optional Initiative Die rule.
+var commanders := false  ## Force commanders (campaign battles, Commanders).
 var formations := false  ## Each side forms up for its formation bonuses (Formation).
 var conditions := Conditions.new()  ## Battlefield conditions.
 ## "" = free battle (last side standing), "random" = roll on the Standard
@@ -199,6 +200,7 @@ func build(map: BattleMap, dice: Dice = null) -> GameState:
 		return null
 	var state := GameState.new(map)
 	state.initiative_die_rule = initiative_die
+	state.commander_rule = commanders
 	state.conditions = conditions
 	notes = []
 	var setup := {}

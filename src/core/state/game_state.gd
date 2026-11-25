@@ -13,6 +13,7 @@ var initiative_order: Array[int] = []
 var side_order: Array[int] = []
 ## Index into side_order of the side that acts next.
 var order_index: int = 0
+var late_from: int = -1  ## side_order index where Combat Intuition units act, -1 none
 var initiative_rolls: Dictionary = {}  # side -> 2d6 total
 ## Weapon attacks declared this phase, resolved together at its end:
 ## [{attacker_id, weapon_index, target_id, to_hit: ToHit}].
@@ -25,8 +26,11 @@ var building_hits: Dictionary = {}
 var doomed_buildings: Array[Vector2i] = []
 ## Optional Initiative Die rule and the dice in play: side -> bonus.
 var initiative_die_rule := false
+var commander_rule := false  ## Force commanders (Commanders), on in campaign battles
 var initiative_die: Dictionary = {}
 var initiative_bonus: Dictionary = {}  ## Side -> lasting Initiative bonus (map campaign Defend order, fortress).
+var commanders: Dictionary = {}  ## Side -> commander unit id (Commanders).
+var commanders_lost: Dictionary = {}  ## Side -> true once its commander is out (Commanders).
 ## Heat dealt to hexes this phase (Fire): Vector2i -> int.
 var fire_heat: Dictionary = {}
 ## Spotters for indirect fire: unit id -> {target, turn}.

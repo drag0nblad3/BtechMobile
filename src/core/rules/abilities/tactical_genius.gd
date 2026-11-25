@@ -1,11 +1,10 @@
 class_name TacticalGenius
 extends RefCounted
 ## Tactical Genius SPA (Campaign Operations p. 80): the force commander may
-## reroll the side's Initiative, and the second roll stands. Here a side
-## that lost Initiative rerolls once if any of its MechWarriors still on the
-## field has it; a reroll that ties is rolled again.
-## TODO(rules): there is no force commander yet, so any MechWarrior with the
-## ability counts, and the reroll is taken whenever the side lost.
+## reroll the side's Initiative, and the second roll stands. A side that
+## lost Initiative rerolls once if its commander (Commanders) is still in
+## the fight and has it; a reroll that ties is rolled again.
+## TODO(rules): the reroll is taken whenever the side lost.
 
 
 ## Changes `r` from Initiative.roll in place; lists the sides that rerolled.
@@ -31,6 +30,9 @@ static func apply(state: GameState, dice: Dice, r: Dictionary) -> void:
 
 
 static func _has_genius(state: GameState, side: int) -> bool:
+	if state.commanders.has(side):
+		var c := Commanders.of(state, side)
+		return c != null and not Commanders.lost(state, side) and Spa.has(c, Spa.TACTICAL_GENIUS)
 	for u in state.units_of_side(side):
 		if not u.destroyed and Spa.has(u, Spa.TACTICAL_GENIUS):
 			return true

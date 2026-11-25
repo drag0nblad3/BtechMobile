@@ -45,13 +45,14 @@ static func declare(state: GameState, attacker: Unit, shots: Array) -> Array[Dic
 		var th := ToHitCalc.weapon(state, attacker, attacker.weapons[wi], target,
 				target.id != primary)
 		var aim := int(s.get("aim", -1))
-		if aim >= 0 and th.possible() and AimedShot.problem(state, attacker.weapons[wi], target, aim, th) == "":
-			AimedShot.adjust(th, aim, attacker.weapons[wi])
+		if aim >= 0 and th.possible() and AimedShot.problem(state, attacker.weapons[wi], target, aim, th, attacker) == "":
+			AimedShot.adjust(th, aim, attacker.weapons[wi], attacker)
 		if not th.possible():
 			continue
 		used[wi] = true
 		out.append({"attacker_id": attacker.id, "weapon_index": wi,
 				"target_id": target.id, "to_hit": th})
+	out = Marksman.filter(out)
 	if attacker.ba != null:
 		out = BaSwarm.filter(BaLegAttack.filter(out, attacker), attacker)
 	if attacker.asset != null:

@@ -4,14 +4,15 @@ extends Control
 ## their orders, this turn's battles, and what happened. Saved by
 ## MapCampaignStore; separate from the Chaos Campaign company.
 
-const INTRO := "Take a planetary region with a company of three lances, using the map campaign rules from Campaign Operations. Each turn is a day: give every lance an order, then fight the battles where lances meet. Damage carries over, cities and forts repair you, and holding 80% of the region's points wins."
+const INTRO := "Take a planetary region using the map campaign rules from Campaign Operations. Each turn is a day: give every lance an order, then fight battles where lances meet. Damage carries over; capture valuable locations to reach your chosen objective threshold."
 const ORDER_TIP := {
 	MapLance.ATTACK: "Seek a battle, here or one zone over.",
-	MapLance.SCOUT: "Find the enemy without a full fight.",
+	MapLance.SCOUT: "Find the enemy without a full fight, and see 2 zones around you.",
 	MapLance.DEFEND: "Hold here: +1 Initiative if attacked.",
 	MapLance.MOVE: "Move one zone.",
 	MapLance.FAST_MOVE: "Move two zones; no Move order next turn.",
-	MapLance.REPAIR: "Stay and fix every 'Mech; Green recruits fill empty seats."}
+	MapLance.REPAIR: "Stay and fix every 'Mech; Green recruits fill empty seats.",
+	MapLance.DROPSHIP: "Fly anywhere: 2 days, or 1 to or from a DropPort you hold."}
 
 var db: UnitDb
 var mc: MapCampaign
@@ -21,6 +22,14 @@ var _chosen := ""  ## Selected lance id.
 var _order := ""  ## Order waiting for a zone tap.
 var _note := ""
 var _confirm_quit := false
+var _map_mode := 0
+var _zoom := 1.0
+var _inspected := Vector2i(-1, -1)
+var _map_scroll: ScrollContainer
+var _headquarters := false
+var _rules: Dictionary = {}
+var _preview_zone := Vector2i(-1, -1)
+var _transitions: Array[Dictionary] = []
 
 
 func _ready() -> void:
@@ -35,22 +44,24 @@ func _ready() -> void:
 
 
 func _build() -> void:
+	var scroll_at := Vector2i.ZERO
+	if is_instance_valid(_map_scroll):
+		scroll_at = Vector2i(_map_scroll.scroll_horizontal, _map_scroll.scroll_vertical)
 	for ch in _list.get_children():  # out of the tree now, so new buttons keep their names
 		_list.remove_child(ch)
 		ch.queue_free()
-	var head := HBoxContainer.new()
-	_list.add_child(head)
-	var title := UiKit.label(head, "MAP CAMPAIGN", 32)
-	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiSkin.label(title, "heading")
-	UiSkin.rule(_list)
 	if mc == null:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
+		if _rules.is_empty():
+			_rules = MapCampaign.load_rules()
+		if not _note.is_empty():
+			UiKit.label(_list, _note, UiKit.SMALL)
+		MapCampaignSetup.build(_list, _rules)
 		UiKit.button(_list, "START A CAMPAIGN", _start, Vector2(0, 70), "primary").name = "StartMapCampaign"
 		return
 	var need := ceili(mc.region.total_points() * float(mc.rules.get("victory_share", 0.8)))
-	var status := UiKit.label(_list, "Day %d of %d  ·  your points %d of %d needed (%d in all)" % [
-			mc.turn, int(mc.rules.get("turn_limit", 20)), mc.region.points(0), need,
+	var status := UiKit.label(_list, "Region %d/%d · Day %d/%d · Points %d/%d (%d total)" % [
+			mc.operation, int(mc.rules.get("operations", 1)), mc.turn, int(mc.rules.get("turn_limit", 20)), mc.region.points(0), need,
 			mc.region.total_points()], UiKit.FONT)
 	status.name = "MapStatus"
 	var progress := ProgressBar.new()
@@ -65,15 +76,59 @@ func _build() -> void:
 	_list.add_child(progress)
 	if mc.winner >= 0:
 		UiKit.label(_list, "You took the region!" if mc.winner == 0 else "The campaign is lost.", 28)
+		if mc.winner == 0 and mc.operation < int(mc.rules.get("operations", 1)):
+			UiKit.button(_list, "NEXT REGION", _advance, Vector2(0, 58), "primary")
+	UiKit.button(_list, "BACK TO MAP" if _headquarters else "COMPANY HQ", func(): _headquarters = not _headquarters; _build(), Vector2(0, 42), "subtle")
+	if _headquarters:
+		MapHqPanel.build(_list, mc, db, _build)
+		return
 	if _note != "":
 		UiKit.label(_list, _note, UiKit.SMALL).modulate = Color(1.0, 0.85, 0.6)
-	UiKit.label(_list, "Blue squares: your lances  ·  Red diamonds: enemy lances  ·  Blue/red landmark frames: ownership  ·  Gold cross: battle  ·  Gold ring: destination", UiKit.SMALL).modulate = Color(0.8, 0.8, 0.8)
-	MapZoneGrid.make(_list, mc, _tap_zone, mc.lance(_chosen))
-	MapLancePanel.lances(_list, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
+	var toolbar := HBoxContainer.new()
+	_list.add_child(toolbar)
+	for i in 4:
+		var mode := i
+		UiKit.button(toolbar, ["Terrain", "Objectives", "Intel", "Readiness"][i],
+			func(): _map_mode = mode; _build(), Vector2(0, 42), "selected" if i == _map_mode else "subtle")
+	UiKit.button(toolbar, "−", func(): _zoom = maxf(0.75, _zoom - 0.25); _build(), Vector2(50, 42))
+	UiKit.button(toolbar, "+", func(): _zoom = minf(2.0, _zoom + 0.25); _build(), Vector2(50, 42))
+	var body := HBoxContainer.new()
+	body.custom_minimum_size.y = 410
+	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_list.add_child(body)
+	_map_scroll = ScrollContainer.new()
+	_map_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_map_scroll.size_flags_stretch_ratio = 1.5
+	_map_scroll.custom_minimum_size.x = 420
+	body.add_child(_map_scroll)
+	var grid := MapZoneGrid.make(_map_scroll, mc, _tap_zone, mc.lance(_chosen), _order, _map_mode, _zoom, _inspected)
+	grid.animate_transitions(_transitions)
+	_transitions.clear()
+	_map_scroll.set_deferred("scroll_horizontal", scroll_at.x)
+	_map_scroll.set_deferred("scroll_vertical", scroll_at.y)
+	var controls := ScrollContainer.new()
+	controls.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	controls.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	controls.custom_minimum_size.x = 330
+	body.add_child(controls)
+	var command := VBoxContainer.new()
+	command.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	controls.add_child(command)
+	if mc.region.has_zone(_inspected):
+		UiKit.label(command, MapZoneGrid.text_of(mc, _inspected), 17)
+		UiKit.label(command, MapIntelligence.report(mc, _inspected), 16)
+		UiKit.label(command, MapCampaignLogistics.describe(mc, _inspected), 16)
+		UiKit.button(command, "Battlefield preview", _show_preview, Vector2(0, 46), "subtle")
+		if _preview_zone == _inspected:
+			var preview := MapPreview.new()
+			preview.custom_minimum_size.y = 160
+			command.add_child(preview)
+			preview.show_map(MapBattle.battlefield(mc, _inspected, 1))
+	MapLancePanel.lances(command, mc, _chosen, _select, _pick_order, mc.battles.is_empty() and mc.winner < 0)
 	if not mc.battles.is_empty():
-		MapLancePanel.battles(_list, mc, _fight)
+		MapLancePanel.battles(command, mc, _fight)
 	elif mc.winner < 0:
-		UiKit.button(_list, "END DAY", _end_turn, Vector2(0, 70), "primary").name = "EndTurn"
+		UiKit.button(_list, "END DAY", _end_turn, Vector2(0, 58), "primary").name = "EndTurn"
 	if not mc.log.is_empty():
 		UiKit.label(_list, "Log", 26).modulate = Color(0.75, 0.85, 1.0)
 		UiKit.label(_list, "\n".join(mc.log.slice(maxi(0, mc.log.size() - 8))), UiKit.SMALL)
@@ -85,7 +140,14 @@ func _build() -> void:
 func _start() -> void:
 	if db == null:
 		db = UnitDb.load_dir()
-	mc = MapCampaign.create(db, rng)
+	var rules := _rules.duplicate(true)
+	var company: Array = rules.get("starting_company", [])
+	rules["starting_company"] = company.slice(0, int(rules.get("company_size", 12)))
+	_note = MapCampaignOptions.prepare(rules, db)
+	if not _note.is_empty():
+		_build()
+		return
+	mc = MapCampaign.create(db, rng, rules)
 	MapCampaignStore.save(mc)
 	_note = "Your company has landed on the south edge. Pick a lance, then an order."
 	_build()
@@ -113,6 +175,8 @@ func _pick_order(order: String) -> void:
 
 
 func _tap_zone(z: Vector2i) -> void:
+	_inspected = z
+	_preview_zone = Vector2i(-1, -1)
 	var l := mc.lance(_chosen)
 	if l != null and _order != "":
 		_note = MapOrders.give(mc, l, _order, z)
@@ -129,6 +193,7 @@ func _tap_zone(z: Vector2i) -> void:
 
 
 func _end_turn() -> void:
+	var before := MapCampaignMotion.snapshot(mc)
 	MapBot.orders(mc, 1)
 	MapTurn.start(mc, Dice.new(rng.randi()))
 	if mc.battles.is_empty():
@@ -138,6 +203,7 @@ func _end_turn() -> void:
 		_note = "%d battle%s to fight." % [mc.battles.size(), "" if mc.battles.size() == 1 else "s"]
 	_chosen = ""
 	_order = ""
+	_transitions = MapCampaignMotion.changes(mc, before)
 	MapCampaignStore.save(mc)
 	_build()
 
@@ -163,3 +229,18 @@ func _quit() -> void:
 		mc = null
 		_confirm_quit = false
 	_build()
+
+func _show_preview() -> void:
+	_preview_zone = _inspected
+	_build()
+
+
+func _advance() -> void:
+	if MapOperations.advance(mc, db, rng):
+		_inspected = Vector2i(-1, -1)
+		_preview_zone = Vector2i(-1, -1)
+		_chosen = ""
+		_order = ""
+		_note = "Next region: surviving company and damage retained."
+		MapCampaignStore.save(mc)
+		_build()

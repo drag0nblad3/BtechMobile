@@ -13,7 +13,7 @@ static func play(v: UnitView, d: Dictionary, contact: Vector3) -> void:
 	var side := 0 if limb in [Location.LA, Location.LL] else 1
 	if kind in ["kick", "dfa"]:
 		m.anim.kick(side)
-	elif kind in ["punch", "hatchet", "sword", "club", "push"]:
+	elif kind in ["punch", "hatchet", "sword", "club", "push", "zweihander"]:
 		var joint := m.shoulders[side]
 		if m.is_attached(joint):
 			var local := joint.get_parent() as Node3D

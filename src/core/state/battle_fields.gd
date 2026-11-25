@@ -6,23 +6,23 @@ extends RefCounted
 static func names(o: Object) -> Array:
 	if o is GameState:
 		return ["map", "units", "turn", "phase", "initiative_order", "side_order",
-				"order_index", "initiative_rolls", "declared_fire", "declared_physical",
-				"building_hits", "doomed_buildings", "initiative_die_rule",
-				"initiative_die", "initiative_bonus", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "formations", "conditions", "sees_through",
+				"order_index", "late_from", "initiative_rolls", "declared_fire", "declared_physical",
+				"building_hits", "doomed_buildings", "initiative_die_rule", "commander_rule",
+				"initiative_die", "initiative_bonus", "commanders", "commanders_lost", "fire_heat", "spotting", "tagged", "tag_used", "artillery", "smoke_pending", "minefields", "formations", "conditions", "sees_through",
 				"mission", "hidden", "point_blank", "reserves", "waiting", "ecm_clear",
 				"game_over", "winner"]
 	if o is Unit:
 		return ["id", "def", "side", "coord", "facing", "pilot", "asset", "vehicle", "ba", "armor",
 				"rear_armor", "structure", "armor_partial", "rear_partial", "structure_partial", "weapons", "ammo", "slots", "heat",
 				"engine_hits", "gyro_hits", "sensor_hits", "heat_sinks_lost",
-				"sinks_off", "sinks_off_request", "stealth_off", "stealth_request", "melee_lost", "club",
+				"sinks_off", "sinks_off_request", "stealth_off", "stealth_request", "intuition_request", "intuition_turn", "melee_lost", "club",
 				"destroyed", "destroyed_reason", "destroyed_announced", "prone",
 				"flooded", "ecm_lost", "probe_lost", "tc_lost", "narc_pods",
 				"drop_turn", "carry_arm", "on_roof", "on_bridge", "shutdown",
 				"voluntary_shutdown", "power_request", "masc_level", "sc_level",
 				"sc_lost", "has_moved", "has_fired", "has_physical", "move_mode",
 				"hexes_moved", "masc_used", "masc_active", "masc_failed",
-				"sc_used", "sc_active", "sc_failed", "flat_out", "formation_spas", "luck_used", "torso_twist",
+				"sc_used", "sc_active", "sc_failed", "flat_out", "formation_spas", "luck_used", "marksman_used", "torso_twist",
 				"arms_flipped", "landed", "tmm_zero", "heat_generated",
 				"outside_heat", "damage_this_phase", "psr_pending"]
 	if o is AssetState:

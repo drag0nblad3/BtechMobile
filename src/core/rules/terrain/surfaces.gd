@@ -51,7 +51,7 @@ static func add_psr(th: ToHit, state: GameState, u: Unit) -> void:
 		return
 	var tile := state.map.get_tile(u.coord)
 	if tile != null and tile.surface == ICE:
-		th.add("on ice", ICE_MOD, "Treacherous footing: +1 to any piloting roll made on ice.")
+		EnvSpecialist.add_psr(th, u, EnvSpecialist.ICE, "on ice", ICE_MOD, "Treacherous footing: +1 to any piloting roll made on ice.")
 
 
 ## Extra heat shed in the Heat Phase by a 'Mech that ended its move in snow.

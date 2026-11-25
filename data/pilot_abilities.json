@@ -3,13 +3,20 @@
   "abilities": [
     {"id": "blood_stalker", "name": "Blood Stalker", "cost": 2, "summary": "Picks one enemy as its quarry: -1 to hit it, +2 to hit anything else, until the quarry is destroyed or leaves the field."},
     {"id": "cluster_hitter", "name": "Cluster Hitter", "cost": 2, "summary": "+1 on the cluster roll for missiles, Ultra and rotary autocannons, and LB-X cluster shots."},
+    {"id": "combat_intuition", "name": "Combat Intuition", "cost": 3, "summary": "In the End Phase it can focus on the enemy, taking 1 pilot hit (no consciousness roll), to act after every other unit next turn."},
+    {"id": "dodge", "name": "Dodge", "cost": 2, "summary": "Once a turn, when punched, kicked or swung at, rolls Piloting; if that roll beats the attack by more, the attack misses. One roll covers every physical attack that turn."},
     {"id": "eagles_eyes", "name": "Eagle's Eyes", "cost": 2, "summary": "Works like an active probe out to 1 hex (adds 1 hex to a real probe), and minefields are 2 harder to set off."},
+    {"id": "env_specialist", "name": "Environmental Specialist", "cost": 2, "choices": ["wind", "ice", "low_visibility"], "summary": "In its chosen conditions, the piloting penalties they cause are halved, and if they hurt shooting its own attacks get -1."},
+    {"id": "fist_fire", "name": "Fist Fire", "cost": 2, "summary": "After a punch or arm weapon swing lands, fires one direct-fire energy or ballistic weapon in that arm at -1 to hit, into the same location. The arm needs all four actuators working."},
     {"id": "forward_observer", "name": "Forward Observer", "cost": 1, "summary": "Spots for indirect fire without the +1 on its own attacks."},
+    {"id": "hopper", "name": "Hopper", "cost": 1, "summary": "Losing a leg isn't an automatic fall: a Piloting roll keeps the 'Mech standing, and if it falls anyway the MechWarrior gets -2 on the roll to avoid injury."},
     {"id": "hot_dog", "name": "Hot Dog", "cost": 2, "summary": "-1 to the rolls that avoid a heat shutdown or an ammo cook-off."},
     {"id": "human_tro", "name": "Human TRO", "cost": 1, "summary": "Knows every design by heart: +1 on the roll for critical hits from its attacks."},
     {"id": "jumping_jack", "name": "Jumping Jack", "cost": 2, "summary": "Jumping costs only +1 to its own attacks instead of +3."},
     {"id": "lucky", "name": "Lucky", "cost": 1, "max": 4, "summary": "Each point buys one reroll of a failed attack roll or piloting roll per battle; the second roll stands."},
     {"id": "maneuvering_ace", "name": "Maneuvering Ace", "cost": 2, "summary": "A two-legged 'Mech can step sideways like a four-legged one; a four-legged 'Mech does it for 1 MP less."},
+    {"id": "marksman", "name": "Marksman", "cost": 2, "summary": "Standing still, can aim one weapon at any location on a moving 'Mech as a targeting computer would (not the head). Only that weapon fires and no physical attack follows; with a working targeting computer the aimed shot gets -2."},
+    {"id": "melee_master", "name": "Melee Master", "cost": 2, "summary": "Can make one extra punch, kick, club or hatchet attack in the Physical Attack Phase, as long as each limb is still used only once."},
     {"id": "melee_specialist", "name": "Melee Specialist", "cost": 1, "summary": "-1 to hit with physical attacks, and punches, kicks and melee weapons do 1 more damage."},
     {"id": "multi_tasker", "name": "Multi-Tasker", "cost": 2, "summary": "Secondary targets cost 1 less to hit."},
     {"id": "oblique_attacker", "name": "Oblique Attacker", "cost": 1, "summary": "-1 to hit with indirect fire, and it can fire indirectly at a target no friend can see."},
@@ -18,6 +25,7 @@
     {"id": "speed_demon", "name": "Speed Demon", "cost": 2, "summary": "+1 running MP, but a 'Mech that uses it can't attack that turn."},
     {"id": "tactical_genius", "name": "Tactical Genius", "cost": 3, "summary": "Rerolls the side's Initiative when it loses; the second roll stands."},
     {"id": "terrain_master", "name": "Terrain Master", "cost": 3, "choices": ["forest_ranger", "mountaineer", "frogman", "swamp_beast"], "summary": "One specialty per purchase. Forest Ranger: woods cost 1 MP less, +1 to be hit in woods after walking. Mountaineer: rough, rubble and each level change cost 1 MP less, -1 on rubble rolls. Frogman: water deeper than depth 1 costs 1 MP less. Swamp Beast: -1 on mud rolls."},
-    {"id": "weapon_specialist", "name": "Weapon Specialist", "cost": 3, "summary": "-2 to hit with one chosen kind of weapon."}
+    {"id": "weapon_specialist", "name": "Weapon Specialist", "cost": 3, "summary": "-2 to hit with one chosen kind of weapon."},
+    {"id": "zweihander", "name": "Zweihander", "cost": 2, "summary": "Punches or swings a hatchet or sword with both hands at a target in front: +1 damage per 10 tons (2 with active TSM), counting broken actuators in both arms. A hit risks a critical hit on the attacking arm (both arms when unarmed); a miss needs a Piloting roll like a missed kick."}
   ]
 }

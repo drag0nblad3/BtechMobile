@@ -19,6 +19,7 @@ static func build(c: Campaign, db: UnitDb, rng: RandomNumberGenerator,
 	if ids.is_empty():
 		return null
 	var fb := ForceBuilder.new(db, ForceBuilder.BUDGETS.back())
+	fb.commanders = true
 	for d in CampaignBattle.designs(c, ids):
 		fb.add(0, d)
 	var percent := k.enemy_percent if k != null else 100
