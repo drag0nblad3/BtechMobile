@@ -68,7 +68,7 @@ static func unit_matches(d: UnitDef, phrase: String, filters: Dictionary) -> boo
 			if d.bv < 1500 or d.bv >= 2000: return false
 		4:
 			if d.bv < 2000: return false
-	return ForceCatalogQuery.matches(d, phrase)
+	return ForceCatalogQuery.matches(d, phrase) or (not phrase.strip_edges().is_empty() and role(d).to_lower().contains(phrase.strip_edges().to_lower()))
 
 
 static func weapon_matches(w: WeaponDef, phrase: String, filters: Dictionary) -> bool:
@@ -112,6 +112,7 @@ static func choice(parent: Control, options: Array, change: Callable) -> OptionB
 	for value in options:
 		button.add_item(String(value).capitalize() if String(value) == String(value).to_lower() else String(value))
 		button.set_item_metadata(button.item_count - 1, value)
+	button.select(0)
 	button.item_selected.connect(change)
 	parent.add_child(button)
 	return button
