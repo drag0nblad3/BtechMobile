@@ -92,6 +92,9 @@ func _sample_company() -> void:
 		"Warchest: +300 WP, now 550 WP."])
 	c.wp = 550
 	c.sp = 120
+	c.pilots[0].abilities.append("jumping_jack")
+	c.formation = CampaignFormation.options(c, UnitDb.load_dir()).front() if not CampaignFormation.options(c, UnitDb.load_dir()).is_empty() else ""
+	AbilityPanel.open = c.pilots[1].id
 	CampaignStore.save(c)
 	BattleLaunch.open_campaign = true
 

@@ -12,6 +12,8 @@ var kills := 0
 var battles := 0
 var fought_last := false  ## Fought in the last contract (cheaper skill training).
 var dead := false
+var abilities: Array[String] = []  ## Special Pilot Abilities ("id" or "id:choice"; SpaShop).
+var spa_month := -99  ## Campaign month of the last ability learned.
 
 
 func can_fight() -> bool:
@@ -23,12 +25,15 @@ func to_pilot() -> Pilot:
 	var p := Pilot.new(gunnery, piloting)
 	p.name = name
 	p.hits = wounds
+	for a in abilities:
+		Spa.grant(p, a.get_slice(":", 0), 1, a.get_slice(":", 1) if a.contains(":") else "")
 	return p
 
 
 func to_dict() -> Dictionary:
 	return {"id": id, "name": name, "gunnery": gunnery, "piloting": piloting, "wounds": wounds,
-		"kills": kills, "battles": battles, "fought_last": fought_last, "dead": dead}
+		"kills": kills, "battles": battles, "fought_last": fought_last, "dead": dead,
+		"abilities": Array(abilities), "spa_month": spa_month}
 
 
 static func from_dict(d: Dictionary) -> CampaignPilot:
@@ -42,4 +47,7 @@ static func from_dict(d: Dictionary) -> CampaignPilot:
 	p.battles = int(d.get("battles", 0))
 	p.fought_last = bool(d.get("fought_last", false))
 	p.dead = bool(d.get("dead", false))
+	for a in d.get("abilities", []):
+		p.abilities.append(String(a))
+	p.spa_month = int(d.get("spa_month", -99))
 	return p

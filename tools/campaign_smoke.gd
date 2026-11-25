@@ -26,6 +26,15 @@ func _run() -> void:
 		return
 	(screen.find_child("StartCompany", true, false) as Button).pressed.emit()
 	await _frames(1)
+	var form := screen.find_child("FormationButton", true, false) as Button
+	if not _check(form != null, "formation button missing"):
+		return
+	var formed := not form.disabled
+	if formed:
+		form.pressed.emit()
+		await _frames(1)
+		screen.call("_build")  # the first redraw renamed its buttons around the freed ones
+		await _frames(1)
 	var fight := screen.find_child("TakeContract0", true, false) as Button
 	if not _check(fight != null and not fight.disabled, "contract button missing"):
 		return
@@ -34,6 +43,8 @@ func _run() -> void:
 	if not _check(current_scene.get("in_campaign") == true, "battle is not a campaign battle"):
 		return
 	var ctl: GameController = current_scene.get("controller")
+	if not _check(not formed or not ctl.state.formations.is_empty(), "the chosen formation wasn't set up"):
+		return
 	var mine := ctl.state.all_units().filter(func(u: Unit) -> bool: return u.side == 0)
 	mine[0].armor[Location.LA] = 0
 	for u in ctl.state.all_units():  # hidden and reserve 'Mechs too
