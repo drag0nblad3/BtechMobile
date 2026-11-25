@@ -70,7 +70,7 @@ func snap_to_state() -> void:
 func set_field_visible(on: bool) -> void:
 	field_visible = on
 	visible = field_visible and unit.carrier_id() < 0
-	if visible and _model == null:
+	if visible and _model == null and map != null:
 		ensure_model()
 		snap_to_state()
 
