@@ -9,6 +9,8 @@ extends RefCounted
 ## A 'Mech that declared a charge or death from above can't spot (p. 62).
 ## Assets spot too, with fixed movement modifiers (AssetIndirect).
 ## A TAG-designated target counts as spotted by the TAG 'Mech (Tag, p. 200).
+## A Forward Observer spotter (SPA, Campaign Operations p. 75) adds no +1
+## for also shooting. TODO(rules): its -1 for artillery it spots isn't in.
 
 
 ## Best friendly 'Mech that can see the target (lowest added modifier), or null.
@@ -43,12 +45,14 @@ static func add_mods(th: ToHit, state: GameState, spotter: Unit, target: Unit = 
 		th.add("spotter %s" % MoveMode.verb(spotter.move_mode), m, "Your spotter's own movement spoils its aim for you too.")
 	if target != null and Tag.designator(state, spotter.side, target) == spotter:
 		th.add("TAG", 0, "%s designated the target with TAG, so it spots without the +1 for also shooting." % Names.unit(spotter))
+	elif _spotter_fires(state, spotter) and Spa.has(spotter, Spa.FORWARD_OBSERVER):
+		th.add("spotter firing", 0, "%s is a Forward Observer: it spots without the +1 for also shooting." % Names.unit(spotter))
 	elif _spotter_fires(state, spotter):
 		th.add("spotter firing", 1, "Your spotter is also shooting this phase, so it's busier: +1.")
 
 
 static func _spotter_mod(state: GameState, u: Unit) -> int:
-	return move_mod(u) + (1 if _spotter_fires(state, u) else 0)
+	return move_mod(u) + (1 if _spotter_fires(state, u) and not Spa.has(u, Spa.FORWARD_OBSERVER) else 0)
 
 
 ## The spotter's movement modifier; Assets use fixed values (p. 145).

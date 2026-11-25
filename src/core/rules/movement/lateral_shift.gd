@@ -8,8 +8,16 @@ extends RefCounted
 const EXTRA_MP := 1
 
 
+## Maneuvering Ace (SPA, Campaign Operations p. 77) lets a two-legged
+## 'Mech with both legs shift too, and a four-legged one shift for 1 MP less.
 static func allowed(u: Unit) -> bool:
-	return Quad.intact(u) and not u.prone and not u.on_roof
+	var legs := Quad.intact(u) if u.def.quad else (Spa.has(u, Spa.MANEUVERING_ACE) and u.legs_destroyed() == 0 \
+			and u.vehicle == null and u.ba == null and u.asset == null)
+	return legs and not u.prone and not u.on_roof
+
+
+static func extra_mp(u: Unit) -> int:
+	return EXTRA_MP - (1 if u.def.quad and Spa.has(u, Spa.MANEUVERING_ACE) else 0)
 
 
 ## Is the step from `from` to `to` facing `f` a rearward one (straight back
@@ -34,5 +42,5 @@ static func steps(state: GameState, u: Unit, c: Vector2i, f: int, mode: int) -> 
 		var back := absi(d) == 2
 		var mp := MoveCost.enter_cost(state.map, c, to, mode, MovePlanner.max_level_change(u, back))
 		if mp != MoveCost.PROHIBITED and MovePlanner.can_pass(state, u, to):
-			out.append([MoveOptions.key(to, f), mp + EXTRA_MP])
+			out.append([MoveOptions.key(to, f), mp + extra_mp(u)])
 	return out

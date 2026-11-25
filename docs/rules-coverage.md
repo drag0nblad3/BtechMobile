@@ -326,6 +326,12 @@ Not in the Core Rulebook: these follow general Total Warfare practice, all `TODO
 - ✅ Blood Stalker (`BloodStalker`): -1 against the quarry, +2 against others, until the quarry is destroyed or leaves. 🟡 `TODO(rules)`: the first primary target fired at becomes the quarry (the player doesn't name it).
 - ✅ Speed Demon (`SpeedDemon`): +1 running MP; a 'Mech that spends it can't make weapon or physical attacks (or charge) that turn.
 - ✅ Lucky (`Lucky`): 1-4 rerolls per battle of failed attack or piloting rolls; the reroll stands. 🟡 `TODO(rules)`: spent automatically on every failed piloting roll and on missed attacks needing 10 or less from weapons doing 5+ damage.
+- ✅ Jumping Jack, Weapon Specialist, Oblique Attacker (`SpaToHit`): jumping +1 instead of +3; -2 with the chosen weapon (`"weapon_specialist:<weapon id>"`); -1 indirect, and indirect fire with no spotter (+1 indirect, target hex only).
+- ✅ Forward Observer (`IndirectFire`): spots without the +1 for also shooting. 🟡 `TODO(rules)`: its -1 to artillery it spots isn't in.
+- ✅ Hot Dog (`HotDog`): -1 to avoid heat shutdown and ammo cook-off.
+- ✅ Melee Specialist (`PhysicalMods`, `PhysicalOptions`): -1 to hit with physical attacks; punches, kicks and melee weapons +1 damage.
+- ✅ Eagle's Eyes (`ActiveProbe`, `Minefields`): a 1-hex active probe (or +1 hex to a real one); minefields 2 harder to set off.
+- ✅ Maneuvering Ace (`LateralShift`): a two-legged 'Mech can shift sideways like a quad; a quad shifts for 1 MP less.
 - ⬜ Who has them: campaign MechWarriors and formation bonuses (coming next); not in quick battles yet.
 
 ## Campaign (Campaign Operations, Chaos Campaign pp. 156-173; the Core Rulebook leaves campaigns to other books, p. 212)

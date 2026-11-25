@@ -30,6 +30,8 @@ static func can_reach(state: GameState, a: Unit, t: Unit, th: ToHit, kind := "")
 static func add(th: ToHit, state: GameState, a: Unit, t: Unit, terrain: bool = true,
 		cover: bool = true) -> void:
 	th.add("Piloting", a.pilot.piloting, "Physical attacks use piloting skill, not gunnery.")
+	if Spa.has(a, Spa.MELEE_SPECIALIST):
+		th.add("Melee Specialist", -1, "Melee Specialist: -1 to hit with physical attacks.")
 	ToHitCalc.add_movement(th, a, t)
 	if t.asset != null:
 		AssetFire.add_target_mods(th, state, t)

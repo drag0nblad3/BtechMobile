@@ -73,7 +73,7 @@ static func leg_heat_sinks(u: Unit) -> int:
 
 
 static func _ammo_check(state: GameState, dice: Dice, emit: Callable, u: Unit) -> void:
-	var need := ExtremeTemp.avoid(HeatScale.ammo_explosion_avoid(u.heat), state.conditions)
+	var need := HotDog.need(u, ExtremeTemp.avoid(HeatScale.ammo_explosion_avoid(u.heat), state.conditions))
 	if need == 0 or u.destroyed:
 		return
 	var bin := worst_bin(u)
