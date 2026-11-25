@@ -47,6 +47,9 @@
    "roads": 0, "woods": 0.04, "heavy": 0.2, "rough": 0.01, "rubble": 0.04,
    "street_every": 5, "buildings": 0.75, "bridge_type": "heavy",
    "colors": {"clear": "#66734e"},
-   "building_mix": {"civilian": 2, "light": 3, "medium": 3, "heavy": 2, "hardened": 1}, "max_height": 4}
+   "building_mix": {"civilian": 2, "light": 3, "medium": 3, "heavy": 2, "hardened": 1}, "max_height": 4},
+  {"id":"open_grassland","name":"Open Plains","blurb":"Low rises and scattered copses create long firing lanes, with isolated covered approaches.","levels":[0.8,0.15,0.04,0.01],"hill_scale":0.07,"water":0.01,"deep":0.2,"river_chance":0.08,"roads":0,"woods":0.1,"heavy":0.2,"woods_scale":0.18,"rough":0.015,"buildings":0},
+  {"id":"heavy_forest","name":"Heavy Forest","blurb":"A dense forest with clearings and narrow road approaches. Fast and jumping units have more options, but slow units need to plan their routes.","levels":[0.77,0.19,0.04],"hill_scale":0.08,"water":0.01,"deep":0.15,"river_chance":0.05,"roads":1,"woods":0.72,"heavy":0.43,"woods_scale":0.13,"rough":0.01,"buildings":0},
+  {"id":"desert_hills","name":"Desert Hills","blurb":"Bare hills and ridges provide elevation cover with little rough ground or vegetation.","levels":[0.52,0.24,0.14,0.07,0.025,0.005],"hill_scale":0.1,"water":0,"deep":0,"river_chance":0,"roads":0,"woods":0,"heavy":0,"rough":0.055,"buildings":0,"colors":{"clear":"#a8895a","rough":"#8c6a45"}}
  ]
 }

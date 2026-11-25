@@ -11,12 +11,45 @@ const SHEET_ROWS := 17
 const SIZES: Array[Vector2i] = [Vector2i(1, 1), Vector2i(2, 1), Vector2i(2, 2)]
 
 
-static func generate(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictionary:
+const MAX_CANDIDATES := 3
+
+
+## Keep good seeds untouched. Retry only gross tactical failures; the
+## original requested seed remains the stable identity of the battlefield.
+static func generate(t: MapTheme, sheets: Vector2i, seed_value: int, terrain: TerrainDb = null) -> Dictionary:
+	if terrain == null:
+		terrain = TerrainDb.load_file()
+	var best := {}
+	var best_penalty := INF
+	var original := {}
+	for attempt in MAX_CANDIDATES:
+		var layout_seed := seed_value + maxi(0, attempt - 1) * 104729
+		var candidate := generate_raw(t, sheets, layout_seed, attempt > 0)
+		if attempt == 0:
+			original = candidate.duplicate(true)
+		elif attempt == 1 and candidate == original:
+			continue  # No river repair was needed; avoid auditing identical terrain.
+		var report := MapTactics.assess(MapLoader.from_dict(candidate, terrain), false)
+		var p := MapTactics.penalty(report)
+		if p < best_penalty:
+			best = candidate
+			best_penalty = p
+			best["layout_seed"] = layout_seed
+			best["layout_repaired"] = attempt > 0
+		if best_penalty <= 0.0:
+			break
+	best["name"] = "%s #%d" % [t.name, seed_value]
+	best["seed"] = seed_value
+	return best
+
+
+## Unfiltered baseline for regression comparisons and generator tuning.
+static func generate_raw(t: MapTheme, sheets: Vector2i, seed_value: int, repair := false) -> Dictionary:
 	var g := GenGrid.new(SHEET_COLS * sheets.x, SHEET_ROWS * sheets.y)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed_value
 	GenElevation.apply(g, t, seed_value)
-	GenRiver.apply(g, t, rng, seed_value)
+	GenRiver.apply(g, t, rng, seed_value, repair)
 	GenElevation.relax(g)
 	GenTown.streets(g, t, rng)
 	GenRoads.apply(g, t, rng)
@@ -34,7 +67,7 @@ static func generate(t: MapTheme, sheets: Vector2i, seed_value: int) -> Dictiona
 
 
 static func build(t: MapTheme, sheets: Vector2i, seed_value: int, terrain: TerrainDb) -> BattleMap:
-	return MapLoader.from_dict(generate(t, sheets, seed_value), terrain)
+	return MapLoader.from_dict(generate(t, sheets, seed_value, terrain), terrain)
 
 
 static func size_name(sheets: Vector2i) -> String:
