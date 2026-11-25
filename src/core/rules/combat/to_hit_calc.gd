@@ -74,10 +74,12 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 	var los := LineOfSight.check(state.map, attacker, target)
 	var spotter: Unit = null
 	var pod := false
+	var oblique := false  # Oblique Attacker: indirect fire with no spotter
 	if los["blocked"]:
 		pod = Narc.indirect(state, attacker, w, target)
 		spotter = IndirectFire.spotter(state, attacker, target) if Atm.profile(w).indirect and not pod else null
-		if pod:
+		oblique = spotter == null and not pod and Atm.profile(w).indirect and Spa.has(attacker, Spa.OBLIQUE_ATTACKER)
+		if pod or oblique:
 			los = LineOfSight.none()  # no spotter: only the target's own hex counts (p. 188)
 		elif spotter == null:
 			th.impossible = "No line of sight (%s)%s" % [los["reason"],
@@ -107,9 +109,11 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		br += 1
 	th.add("Gunnery", attacker.pilot.gunnery, "Your MechWarrior's gunnery skill is the base number.")
 	add_movement(th, attacker, target, point_blank)
-	th.indirect = spotter != null or pod
+	th.indirect = spotter != null or pod or oblique
 	if pod:
 		Narc.add_indirect(th)
+	elif oblique:
+		th.add("indirect fire", 1, "No friend can see the target, but this Oblique Attacker works out where it is.")
 	elif spotter:
 		IndirectFire.add_mods(th, state, spotter, target)
 		th.spotter_id = spotter.id
@@ -146,7 +150,7 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		add_arm_actuators(th, attacker, w.loc)
 	if secondary:
 		th.add("secondary target", 1, "Every target after your primary one costs +1.")
-	SpaToHit.add(th, state, attacker, target, br, secondary)
+	SpaToHit.add(th, state, attacker, w, target, br, secondary)
 	return th
 
 
