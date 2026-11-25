@@ -21,9 +21,14 @@ static func generate(t: MapTheme, sheets: Vector2i, seed_value: int, terrain: Te
 		terrain = TerrainDb.load_file()
 	var best := {}
 	var best_penalty := INF
+	var original := {}
 	for attempt in MAX_CANDIDATES:
 		var layout_seed := seed_value + maxi(0, attempt - 1) * 104729
 		var candidate := generate_raw(t, sheets, layout_seed, attempt > 0)
+		if attempt == 0:
+			original = candidate.duplicate(true)
+		elif attempt == 1 and candidate == original:
+			continue  # No river repair was needed; avoid auditing identical terrain.
 		var report := MapTactics.assess(MapLoader.from_dict(candidate, terrain), false)
 		var p := MapTactics.penalty(report)
 		if p < best_penalty:
