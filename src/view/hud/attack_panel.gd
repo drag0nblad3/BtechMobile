@@ -49,6 +49,8 @@ static func _add_row(box: VBoxContainer, o: Dictionary, selected: Dictionary, le
 		b.text = "%s  %d+ (%s)" % [o["label"], th.target(), Names.pct(th.chance())]
 		if extra.begins_with("(aimed at"):
 			b.text += " ↗"
+		elif o["key"] is String and not extra.is_empty():
+			b.text += " · " + extra
 		b.button_pressed = selected.has(o["key"])
 		b.toggled.connect(func(on: bool): on_toggle.call(o["key"], on))
 	else:
@@ -70,7 +72,9 @@ static func _add_row(box: VBoxContainer, o: Dictionary, selected: Dictionary, le
 		info.tooltip_text = description
 		info.name = "WeaponDetails"
 	if o.has("mode") and on_mode.is_valid():
-		var mb := UiKit.button(row, "Mode", func(): on_mode.call(o["key"]), Vector2(66, 46), "subtle")
+		var short_mode := String(o["mode"]).get_slice(" (", 0).get_slice(":", 0)
+		var mb := UiKit.button(row, short_mode, func(): on_mode.call(o["key"]), Vector2(94, 46), "subtle")
+		mb.clip_text = true
 		mb.add_theme_font_size_override("font_size", 16)
 		mb.tooltip_text = String(o["mode"]) + " · tap to change"
 	box.add_child(detail)
