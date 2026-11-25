@@ -13,13 +13,21 @@ static func model_path(def: UnitDef) -> String:
 	return exact if FileAccess.file_exists(exact) else PATH % def.sprite
 
 
-static func choose(def: UnitDef, side: int) -> VxMech:
-	if not GameSettings.voxel_mechs or def.sprite.is_empty():
-		return null
+static func startup_path(def: UnitDef) -> String:
+	if not GameSettings.voxel_mechs or def.sprite.is_empty() or def.is_support():
+		return ""
 	var path := model_path(def)
-	if not FileAccess.file_exists(path):
+	return path if FileAccess.file_exists(path) else ""
+
+
+static func choose(def: UnitDef, side: int, prepared: Dictionary = {}) -> VxMech:
+	var path := startup_path(def)
+	if path.is_empty():
 		return null
-	var mech := VxMech.from_file(path)
+	var model: VxModel = prepared.get("model")
+	if model != null and not model.errors.is_empty():
+		return null
+	var mech := VxMech.from_file(path, false, prepared)
 	if not mech.model.errors.is_empty():
 		mech.free()
 		return null

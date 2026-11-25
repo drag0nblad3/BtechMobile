@@ -11,6 +11,11 @@ const INSET := 0.04
 ## {slice: int -> {Vector2i(u, v): Color}}; alpha encodes temporary
 ## face inset and paint eligibility; UV2.x keeps the paint mask.
 static func build(faces: Array, pivot: Vector3, size: float) -> ArrayMesh:
+	return upload(surface_arrays(faces, pivot, size))
+
+
+## CPU-only mesh arrays.
+static func surface_arrays(faces: Array, pivot: Vector3, size: float) -> Array:
 	var verts := PackedVector3Array()
 	var normals := PackedVector3Array()
 	var cols := PackedColorArray()
@@ -22,13 +27,20 @@ static func build(faces: Array, pivot: Vector3, size: float) -> ArrayMesh:
 		for slice: int in faces[f]:
 			_merge_slice(faces[f][slice], axis, sgn, slice, f, pivot, size, verts, normals, cols, roles)
 	if verts.is_empty():
-		return null
+		return []
 	var arrays: Array = []
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = verts
 	arrays[Mesh.ARRAY_NORMAL] = normals
 	arrays[Mesh.ARRAY_COLOR] = cols
 	arrays[Mesh.ARRAY_TEX_UV2] = roles
+	return arrays
+
+
+## Main thread only.
+static func upload(arrays: Array) -> ArrayMesh:
+	if arrays.is_empty():
+		return null
 	var mesh := ArrayMesh.new()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	return mesh
