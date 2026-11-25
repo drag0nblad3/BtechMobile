@@ -8,13 +8,13 @@ const PATH := "user://map_campaign.json"
 
 
 static func exists(path: String = PATH) -> bool:
-	return FileAccess.file_exists(path)
+	return FileAccess.file_exists(SaveProfiles.resolve(path))
 
 
 static func _read(path: String) -> Dictionary:
 	if not exists(path):
 		return {}
-	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(SaveProfiles.resolve(path)))
 	return d if d is Dictionary else {}
 
 
@@ -34,7 +34,7 @@ static func save(mc: MapCampaign, pending: Dictionary = {}, path: String = PATH)
 				out[str(uid)] = r[uid]
 			rs.append(out)
 		d["pending"] = {"index": int(pending["index"]), "rosters": rs}
-	var f := FileAccess.open(path, FileAccess.WRITE)
+	var f := FileAccess.open(SaveProfiles.resolve(path), FileAccess.WRITE)
 	if f == null:
 		return false
 	f.store_string(JSON.stringify(d, "  "))
@@ -79,4 +79,4 @@ static func finish(state: GameState, winner: int, frames: Array, path: String = 
 
 static func delete(path: String = PATH) -> void:
 	if exists(path):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SaveProfiles.resolve(path)))

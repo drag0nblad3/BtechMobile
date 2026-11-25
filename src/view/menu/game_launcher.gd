@@ -65,7 +65,9 @@ func _ready() -> void:
 	battle.name = "BattleButton"
 	var reference := UiKit.button(actions, "TECHNICAL READOUT", _open_reference, Vector2(0, 76))
 	reference.name = "TechnicalReadoutButton"
-	for b: Button in [train, camp, map_camp, drills, quick, battle, reference]:
+	var slots := UiKit.button(actions, "SAVE SLOTS", _open_slots, Vector2(0, 76))
+	slots.name = "SaveSlotsButton"
+	for b: Button in [train, camp, map_camp, drills, quick, battle, reference, slots]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.custom_minimum_size.y = 76
 
@@ -104,3 +106,7 @@ func _open_battle() -> void:
 
 func _open_reference() -> void:
 	add_child(TechnicalReadout.new())
+
+
+func _open_slots() -> void:
+	add_child(SaveSlotScreen.new())

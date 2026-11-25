@@ -8,13 +8,13 @@ const PATH := "user://campaign.json"
 
 
 static func exists(path: String = PATH) -> bool:
-	return FileAccess.file_exists(path)
+	return FileAccess.file_exists(SaveProfiles.resolve(path))
 
 
 static func load_company(path: String = PATH) -> Campaign:
 	if not exists(path):
 		return null
-	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(SaveProfiles.resolve(path)))
 	return Campaign.from_dict(d) if d is Dictionary else null
 
 
@@ -25,7 +25,7 @@ static func save(c: Campaign, roster: Dictionary = {}, path: String = PATH) -> b
 		for uid: int in roster:
 			r[str(uid)] = roster[uid]
 		d["battle"] = r
-	var f := FileAccess.open(path, FileAccess.WRITE)
+	var f := FileAccess.open(SaveProfiles.resolve(path), FileAccess.WRITE)
 	if f == null:
 		return false
 	f.store_string(JSON.stringify(d, "  "))
@@ -36,7 +36,7 @@ static func save(c: Campaign, roster: Dictionary = {}, path: String = PATH) -> b
 static func pending_roster(path: String = PATH) -> Dictionary:
 	if not exists(path):
 		return {}
-	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(SaveProfiles.resolve(path)))
 	var out := {}
 	if d is Dictionary:
 		var r: Dictionary = d.get("battle", {})
@@ -72,4 +72,4 @@ static func finish(state: GameState, player_side: int, winner: int, frames: Arra
 
 static func delete(path: String = PATH) -> void:
 	if exists(path):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SaveProfiles.resolve(path)))
