@@ -26,6 +26,7 @@ var practice: TrainingPractice
 var lessons: LessonCard
 var training := -1  ## Training campaign mission index, -1 outside training.
 var in_campaign := false  ## A campaign company battle (CampaignStore).
+var in_map_campaign := false  ## A map campaign meeting (MapCampaignStore).
 var objectives: Node3D
 var off_field: HiddenInput
 var recorder := BattleRecorder.new()
@@ -75,6 +76,10 @@ func _ready() -> void:
 		CampaignStore.drop_pending()  # its autosave is about to be replaced
 	in_campaign = not CampaignStore.pending_roster().is_empty()
 	BattleLaunch.campaign = false
+	if saved.is_empty() and not BattleLaunch.map_campaign:
+		MapCampaignStore.drop_pending()
+	in_map_campaign = not MapCampaignStore.pending().is_empty()
+	BattleLaunch.map_campaign = false
 	if training >= 0:
 		var campaign := TrainingCampaign.load_file()
 		if training < campaign.missions.size():
@@ -140,6 +145,7 @@ func _exit_to_menu() -> void:
 	get_tree().paused = false
 	BattleLaunch.open_training = training >= 0
 	BattleLaunch.open_campaign = in_campaign
+	BattleLaunch.open_map_campaign = in_map_campaign
 	get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE)
 
 
@@ -281,6 +287,7 @@ func _wire() -> void:
 	hud.new_battle.connect(func():
 			BattleLaunch.open_training = training >= 0
 			BattleLaunch.open_campaign = in_campaign
+			BattleLaunch.open_map_campaign = in_map_campaign
 			get_tree().change_scene_to_file(BattleLaunch.MENU_SCENE))
 	movement.unit_selected.connect(_focus_unit)
 	attacks.attacker_selected.connect(_focus_unit)
@@ -479,6 +486,8 @@ func _on_event(e: GameEvent) -> void:
 			var after := TrainingScreen.finish(training, s, bots.bot_sides, int(e.data.get("winner", -1)), practice)
 			if in_campaign:
 				after = CampaignStore.finish(s, 0, int(e.data.get("winner", -1)), recorder.frames)
+			if in_map_campaign:
+				after = MapCampaignStore.finish(s, int(e.data.get("winner", -1)), recorder.frames)
 			hud.show_game_over(Explainer.text(e, s, ExplainLevel.OFF), after)
 			attacks.clear()
 			movement.clear_selection()

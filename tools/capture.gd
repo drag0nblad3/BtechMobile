@@ -6,7 +6,8 @@ extends SceneTree
 ## map=<id> (battle start on that map) · gen=<theme>[:seed] (generated two-sheet map) ·
 ## jump (mid-air jump-jet preview) · tutorial (training battle, first lesson) · rolls (sample roll feed) ·
 ## launcher (first screen) · training (the training campaign screen) · notebook (its notebook, two missions played) ·
-## campaign (company screen after one battle; replaces user://campaign.json).
+## campaign (company screen after one battle; replaces user://campaign.json) ·
+## mapcampaign (a fresh map campaign; replaces user://map_campaign.json).
 
 var _frames := 0
 var _scene: Node
@@ -68,7 +69,9 @@ func _initialize() -> void:
 		GameSettings.training = {"first_steps": {"won": true, "kills": 1}, "woods": {"won": false, "kills": 0}}
 	if _mode == "campaign":
 		_sample_company()
-	var path := "res://scenes/launcher.tscn" if _mode == "launcher" else "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training or BattleLaunch.open_campaign else "res://scenes/main.tscn"
+	if _mode == "mapcampaign":
+		_sample_map_campaign()
+	var path := "res://scenes/launcher.tscn" if _mode == "launcher" else "res://scenes/menu.tscn" if _mode.ends_with("menu") or BattleLaunch.open_training or BattleLaunch.open_campaign or BattleLaunch.open_map_campaign else "res://scenes/main.tscn"
 	_scene = load(path).instantiate()
 	root.add_child(_scene)
 
@@ -97,6 +100,19 @@ func _sample_company() -> void:
 	AbilityPanel.open = c.pilots[1].id
 	CampaignStore.save(c)
 	BattleLaunch.open_campaign = true
+
+
+## A fresh map campaign (seed 7) with two lances' orders given.
+func _sample_map_campaign() -> void:
+	var rng := RandomNumberGenerator.new()
+	rng.seed = 7
+	var mc := MapCampaign.create(UnitDb.load_dir(), rng)
+	var ls := mc.lances_of(0)
+	MapOrders.give(mc, ls[0], MapLance.ATTACK, mc.region.neighbors(ls[0].zone)[0])
+	MapOrders.give(mc, ls[1], MapLance.FAST_MOVE, Vector2i(ls[1].zone.x + 2, ls[1].zone.y - 1))
+	mc.log.append("Your company has landed.")
+	MapCampaignStore.save(mc)
+	BattleLaunch.open_map_campaign = true
 
 
 func _process(_delta: float) -> bool:
