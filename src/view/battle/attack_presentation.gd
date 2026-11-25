@@ -24,10 +24,12 @@ func collect(e: GameEvent) -> bool:
 		_groups.append(_current)
 	elif e.type in [GameEvent.DAMAGE, GameEvent.UNIT_DESTROYED, GameEvent.AMMO_EXPLOSION, GameEvent.FALL, GameEvent.SHUTDOWN] or (e.type == GameEvent.BUILDING and e.data.get("kind") in ["shot", "cover_hit"]):
 		var entry := AttackVisualGeometry.capture(_state, _units, e)
-		if not _current.is_empty() and (AttackEventMatch.belongs(_current["attack"], e) or (e.type in [GameEvent.UNIT_DESTROYED, GameEvent.AMMO_EXPLOSION, GameEvent.FALL, GameEvent.SHUTDOWN] and e.data.get("unit_id") == _current["attack"].data.get("target_id"))):
+		if not _current.is_empty():
+			# Criticals and secondary explosions may interleave cluster hits.
+			# Preserve order, but only aim a projectile at direct contacts.
+			entry["direct"] = AttackEventMatch.belongs(_current["attack"], e)
 			_current["entries"].append(entry)
 		else:
-			_current = {}
 			_groups.append({"entries": [entry]})
 	elif e.type in [GameEvent.PHASE_CHANGED, GameEvent.ACTIVE_SIDE, GameEvent.TURN_STARTED, GameEvent.GAME_OVER]:
 		_current = {}
@@ -96,13 +98,15 @@ func _launch(group: Dictionary) -> void:
 	var points: Array[Vector3] = []
 	for entry: Dictionary in group["entries"]:
 		var event: GameEvent = entry["event"]
-		if event.type == GameEvent.DAMAGE or event.type == GameEvent.BUILDING:
+		if entry.get("direct", false) and (event.type == GameEvent.DAMAGE or event.type == GameEvent.BUILDING):
 			if e.type == GameEvent.PHYSICAL and event.data.get("unit_id") == d.get("attacker_id") and event.type == GameEvent.DAMAGE:
 				continue
 			if not entry["points"].is_empty() and entry["points"][0] != Vector3.INF:
 				points.append(entry["points"][0])
 	if e.type == GameEvent.PHYSICAL:
 		var contact := points[0] if not points.is_empty() else (tv.global_position + Vector3.UP * 0.5 if tv != null and tv.visible else av.global_position)
+		if not d.get("hit", false):
+			contact += Vector3(0.35, 0.25, 0.35)
 		MeleeContact.play(av, d, contact)
 		return
 	if not AttackEventMatch.fired(d):
@@ -127,6 +131,10 @@ func _launch(group: Dictionary) -> void:
 	if not d.get("hit", false):
 		ShotFx.spawn(_fx, origin, target + ShotFx.miss_offset(int(d.get("attacker_id", 0)), int(d.get("target_id", 0)), weapon), weapon, false)
 		return
+	if d.get("ams", false) and ShotFx.style(weapon) == "missile":
+		var stopped := origin.lerp(target, 0.72)
+		ShotFx.spawn(_fx, origin, stopped, weapon, false)
+		_intercept(stopped, weapon)
 	if points.is_empty():
 		if tv != null and d.has("narc_loc"):
 			target = tv.impact_location(int(d["narc_loc"]), false)

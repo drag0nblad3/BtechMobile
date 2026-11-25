@@ -29,7 +29,7 @@ static func capture(state: GameState, units: UnitsLayer, e: GameEvent) -> Dictio
 	var points: Array[Vector3] = []
 	if v != null:
 		var u := v.unit
-		record = {"armor": u.armor.duplicate(), "rear": u.rear_armor.duplicate(), "structure": u.structure.duplicate(), "destroyed": u.destroyed}
+		record = {"armor": u.armor.duplicate(), "rear": u.rear_armor.duplicate(), "structure": u.structure.duplicate(), "destroyed": u.destroyed, "facing": u.facing, "prone": u.prone}
 	if e.type == GameEvent.BUILDING:
 		var point := hex_point(state, d.get("coord", Hex.INVALID), Vector3.INF)
 		if point != Vector3.INF:

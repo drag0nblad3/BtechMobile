@@ -57,6 +57,9 @@ func _run() -> void:
 	await create_timer(0.6).timeout
 	if not _check(not is_instance_valid(trail), "shot FX frees itself"):
 		return
+	# Exercise the actual event queue, not just a free-standing projectile.
+	if not await _resolved_attack(scene):
+		return
 	# A real jump-capable unit must take off, reach an arc, and clean up.
 	var jumper: Unit = null
 	for unit: Unit in scene.controller.state.units:
@@ -94,3 +97,54 @@ func _check(ok: bool, description: String) -> bool:
 		printerr("BATTLE_VISUAL_FAILED: ", description)
 		quit(1)
 	return ok
+
+
+func _resolved_attack(scene: Node) -> bool:
+	var state: GameState = scene.controller.state
+	var a: Unit = null
+	var b: Unit = null
+	var wi := -1
+	for u: Unit in state.units:
+		for i in u.weapons.size():
+			if ShotFx.style(u.weapons[i].def.id) == "ballistic":
+				a = u
+				wi = i
+				break
+		if a != null:
+			break
+	for u: Unit in state.units:
+		if a != null and u.side != a.side and u.armor[Location.CT] >= 3 and scene.units_layer.view_of(u)._model is VxMech:
+			b = u
+			break
+	if not _check(a != null and b != null, "scenario has ballistic attacker and voxel target"):
+		return false
+	var v: UnitView = scene.units_layer.view_of(b)
+	var m := v._model as VxMech
+	var before := _remaining(m)
+	var w := a.weapons[wi]
+	var fired := GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": a.id, "target_id": b.id, "weapon_id": w.def.id, "weapon": w.def.name, "weapon_index": wi, "hit": true})
+	scene.fx.play(fired)
+	var steps := Damage.apply(b, Location.CT, 3)
+	var damage := GameEvent.new(GameEvent.DAMAGE, {"source_id": a.id, "unit_id": b.id, "source": w.def.name, "amount": 3, "loc": Location.CT, "rear": false, "steps": steps})
+	var expected: Vector3 = AttackVisualGeometry.capture(state, scene.units_layer, damage)["points"][0]
+	scene.fx.play(damage)
+	if not _check(_remaining(m) == before and scene.units_layer.attack_playing, "armor waits for visual impact"):
+		return false
+	await process_frame
+	await process_frame
+	await create_timer(0.10).timeout
+	var found := false
+	for trail: Node in get_nodes_in_group("battle_shot"):
+		if trail.has_meta("shot_to") and (trail.get_meta("shot_to") as Vector3).is_equal_approx(expected):
+			found = true
+	if not _check(found, "projectile endpoint equals resolved armor contact"):
+		return false
+	await create_timer(0.75).timeout
+	return _check(_remaining(m) < before and not scene.units_layer.attack_playing, "arrival applies damage and unlocks input")
+
+
+func _remaining(m: VxMech) -> int:
+	var total := 0
+	for p: VxPart in m.parts.values():
+		total += p.cells.size()
+	return total

@@ -22,7 +22,7 @@ static func style(weapon: String) -> String:
 		return "laser"
 	if "flamer" in w or "plasma" in w:
 		return "flame"
-	if "lrm" in w or "srm" in w or "mrm" in w or "atm" in w or "missile" in w or "rocket" in w:
+	if "lrm" in w or "srm" in w or "mrm" in w or "atm" in w or "missile" in w or "rocket" in w or "arrow" in w or "thunderbolt" in w:
 		return "missile"
 	return "ballistic"
 
@@ -53,6 +53,9 @@ static func spawn(holder: Node3D, start: Vector3, end: Vector3,
 	var hue := tint(kind)
 	var root := Node3D.new()
 	root.name = "ShotTrail"
+	root.set_meta("shot_from", start)
+	root.set_meta("shot_to", end)
+	root.set_meta("shot_hit", hit)
 	root.add_to_group("battle_shot")
 	holder.add_child(root)
 	var is_beam := kind in ["ppc", "laser", "flame"]
