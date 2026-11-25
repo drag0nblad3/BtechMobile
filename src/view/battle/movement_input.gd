@@ -34,7 +34,9 @@ func on_hex_tapped(c: Vector2i) -> void:
 	if controller.state.game_over or (bots and bots.is_bot_turn()):
 		return
 	var u := _pending_at(c)
-	if u and u != selected and controller.pending_units().has(u):
+	if u == selected and selected != null and not has_preview:
+		_set_preview(options.start_key())
+	elif u and u != selected and controller.pending_units().has(u):
 		_select(u)
 	elif selected and has_preview and MoveOptions.coord_of(preview) == c:
 		on_confirm()
