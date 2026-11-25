@@ -75,7 +75,7 @@ static func fired(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> 
 			res += " (aimed shots need 4+ on 1D6)"
 	if level == ExplainLevel.OFF:
 		return "%s: %s" % [who, res]
-	var t := "%s: rolled %d, needed %d: %s" % [who, d["roll"], d["need"], res]
+	var t := "%s: rolled %d%s, needed %d: %s" % [who, d["roll"], LuckyText.note(d), d["need"], res]
 	if d["need"] <= 2:
 		t += " (2 or less always hits)"
 	return t + ModsText.lines(d["mods"], level, seen)

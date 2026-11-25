@@ -162,6 +162,10 @@ guided scenario (see `data/scenarios/tutorial.json`): each lesson has `"event"` 
 `"unit_side"` (acting or hit unit, or the attacker), `"kind"` (the event's `kind`,
 e.g. "kick"), `"min_heat"`, and the `"title"` and `"text"` shown once.
 
+## `data/pilot_abilities.json`
+Special Pilot Abilities the app plays (`Spa`): `abilities` as `{id, name, cost, max?, summary}`. Names and
+costs are Campaign Operations'; summaries are our own words. A MechWarrior's abilities live on `Pilot.abilities`.
+
 ## `data/campaign/rules.json`
 The company's starting set-up (`CampaignRules`): `company_name`, `starting_lance`
 (`[{design, pilot, gunnery, piloting}]`, designs from `data/units/`).

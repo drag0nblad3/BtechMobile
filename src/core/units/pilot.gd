@@ -13,6 +13,9 @@ var hits: int = 0
 var conscious: bool = true
 var roll_owed: bool = false   ## Took a hit this phase; consciousness roll pending.
 var out_since_turn: int = -1  ## Turn the warrior was knocked out.
+var abilities: Array[String] = []  ## Special Pilot Abilities (Spa ids).
+var lucky := 0  ## Lucky rerolls left this battle (Lucky).
+var quarry := -1  ## Blood Stalker's target: unit id, -1 none yet, -2 used up.
 
 
 func _init(gun: int = 4, pilot: int = 5) -> void:
