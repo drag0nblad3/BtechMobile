@@ -35,7 +35,7 @@ static func refresh(ai: AttackInput) -> void:
 	if ai.target_hex != Hex.INVALID:
 		ai.hud.set_info("%s -> %s %s (%d hexes)%s" % [Names.unit(ai.attacker), _noun(ai), Hex.label(ai.target_hex),
 				Hex.distance(ai.attacker.coord, ai.target_hex), twist])
-		ai.hud.set_tip(Advisor.volley(ai.controller.state, ai.attacker, ai._shot_list(), level))
+		ai.hud.set_tip(VolleyForecast.summary(ai.controller.state, ai.attacker, ai._shot_list()) if level != ExplainLevel.OFF else "")
 		if not ai.hud.sheet_open:
 			ai.hud.show_side(AttackPanel.build("Weapons at %s %s" % [_noun(ai), Hex.label(ai.target_hex)],
 				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode))
@@ -57,7 +57,7 @@ static func refresh(ai: AttackInput) -> void:
 	ai.hud.set_info("%s -> %s (%d hexes)%s" % [Names.unit(ai.attacker), Names.unit(ai.target),
 			Hex.distance(ai.attacker.coord, ai.target.coord), twist])
 	if weapon:
-		ai.hud.set_tip(Advisor.volley(ai.controller.state, ai.attacker, ai._shot_list(), level))
+		ai.hud.set_tip(VolleyForecast.summary(ai.controller.state, ai.attacker, ai._shot_list()) if level != ExplainLevel.OFF else "")
 		if not ai.hud.sheet_open:
 			var panel := AttackPanel.build("Weapons at " + Names.unit(ai.target),
 				AttackRows.weapons(ai.controller.state, ai.attacker, options(ai), ai.shots, ai._here()), ai._selected_here(), level, ai._toggle, ai._mode)

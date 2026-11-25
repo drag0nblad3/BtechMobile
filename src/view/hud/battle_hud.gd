@@ -34,6 +34,7 @@ signal pause_toggled
 signal exit_battle
 signal next_unit  ## Go to the next of your units (camera + selection).
 signal undo_move  ## Training: take back your last move.
+signal intel_cycled
 signal hint  ## Ask what the computer would do in your place (Hint).
 
 const FONT_SIZE := 24
@@ -151,6 +152,7 @@ func _ready() -> void:
 	popup.add_item("Top-down map", 2)
 	popup.add_item("Battle analysis", 3)
 	popup.add_item("Performance overlay", 4)
+	popup.add_item("Cycle tactical intelligence", 5)
 	popup.id_pressed.connect(_on_tool_action)
 	for b in shortcuts.get_children():
 		if b is Button:
@@ -248,6 +250,7 @@ func _on_tool_action(id: int) -> void:
 		2: top_down_toggled.emit()
 		3: battle_forensics.emit()
 		4: perf_readout.visible = not perf_readout.visible
+		5: intel_cycled.emit()
 
 
 ## Refresh the Actions button from the same eligibility flags MovementInput sets.

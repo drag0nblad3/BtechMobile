@@ -261,6 +261,7 @@ func _wire() -> void:
 	hud.top_down_toggled.connect(func(): cinematic.manual_input(); rig.toggle_top_down())
 	hud.cinematic_toggled.connect(_toggle_cinematic)
 	hud.mode_toggled.connect(movement.on_mode_toggled)
+	hud.intel_cycled.connect(movement.cycle_intel)
 	hud.turn_left.connect(movement.on_turn.bind(-1))
 	hud.turn_right.connect(movement.on_turn.bind(1))
 	hud.confirm.connect(movement.on_confirm)
