@@ -81,7 +81,7 @@ static func options(ai: AttackInput) -> Array:
 	if ai.target_hex != Hex.INVALID:
 		return BuildingFire.options(ai.controller.state, ai.attacker, ai.target_hex)
 	var opts := FireOptions.for_target(ai.controller.state, ai.attacker, ai.target, secondary(ai, ai.target))
-	AimPicker.apply(ai.controller.state, ai.target, opts, ai.aims.get(ai.target.id, -1))
+	AimPicker.apply(ai.controller.state, ai.target, opts, ai.aims.get(ai.target.id, -1), ai.attacker)
 	return opts
 
 

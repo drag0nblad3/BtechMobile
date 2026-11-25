@@ -64,14 +64,15 @@ static func resolve_pending(state: GameState, dice: Dice, emit: Callable, u: Uni
 		if u.prone or u.destroyed:
 			return
 		var levels := int(p.get("fall_levels", 0))
-		if p.get("auto_fall", false) or ToHitCalc.is_immobile(u):
+		var hop := Hopper.applies(u, p)
+		if (p.get("auto_fall", false) and not hop) or ToHitCalc.is_immobile(u):
 			Fall.fall(state, dice, emit, u, levels, p["reason"])
 			return
 		var others := extra - maxi(0, int(p["mod"]))
 		var mod := int(p["mod"]) + others
 		if not roll(dice, emit, u, p["reason"], mod, state, p.get("jump", false)):
 			if not _dfa_takes_fall(state, u):
-				Fall.fall(state, dice, emit, u, levels, p["reason"])
+				Fall.fall(state, dice, emit, u, levels, p["reason"], -1, Hopper.SEATBELT_MOD if hop else 0)
 			return
 
 

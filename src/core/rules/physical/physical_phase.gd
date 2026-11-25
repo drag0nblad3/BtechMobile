@@ -9,6 +9,7 @@ extends RefCounted
 
 static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 	var steps: Array[Dictionary] = []
+	var dodges := {}  # unit id -> Dodge margin, rolled once a turn
 	for d in state.declared_physical:
 		if d.has("target_hex"):
 			BuildingMelee.resolve(state, emit, state.unit_by_id(d["attacker_id"]), d)
@@ -32,10 +33,12 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 		var roll := dice.roll_2d6()
 		var need := th.target()
 		var hit := roll >= need and need <= 12
+		var dodged := hit and Dodge.beats(Dodge.margin(state, dice, emit, t, dodges), roll, need)
+		hit = hit and not dodged
 		emit.call(GameEvent.PHYSICAL, {"attacker_id": a.id, "target_id": t.id,
 				"kind": d["kind"], "limb": d["limb"], "roll": roll, "need": need,
 				"hit": hit, "damage": d["damage"] if hit else 0, "mods": th.mods,
-				"tsm": d.get("tsm", false)})
+				"tsm": d.get("tsm", false), "dodged": dodged})
 		if d["kind"] == "push":
 			if hit:
 				steps.append({"kind": "push", "attacker": a, "target": t,
@@ -43,10 +46,13 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 			continue
 		var is_kick: bool = d["kind"] == "kick"
 		if not hit:
-			if is_kick:
-				a.psr_pending.append({"reason": "missed a kick", "mod": 0})
+			if is_kick or d["kind"] == Zweihander.KIND:
+				a.psr_pending.append({"reason": "missed a kick" if is_kick else "missed a two-handed blow", "mod": 0})
 			continue
-		_strike(state, dice, emit, a, t, d)
+		var hl := _strike(state, dice, emit, a, t, d)
+		FistFire.follow_up(state, dice, emit, a, t, d, hl)
+		if d["kind"] == Zweihander.KIND:
+			Zweihander.strain(state, dice, emit, a, d)
 		if is_kick:
 			t.psr_pending.append({"reason": "was kicked", "mod": 0})
 		elif d["kind"] == "club":
@@ -62,8 +68,8 @@ static func resolve(state: GameState, dice: Dice, emit: Callable) -> void:
 			ChargeResolve.displace(state, dice, emit, step)
 
 
-## Damage from a punch or kick, on the table the option chose.
-static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Unit, d: Dictionary) -> void:
+## Damage from a punch or kick, on the table the option chose; returns the hit location.
+static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Unit, d: Dictionary) -> Dictionary:
 	var arc_id := FiringArc.arc(t.coord, t.facing, a.coord)
 	var hl: Dictionary
 	match String(d.get("table", "punch")):
@@ -77,6 +83,7 @@ static func _strike(state: GameState, dice: Dice, emit: Callable, a: Unit, t: Un
 			hl = HitTable.roll_punch(dice, arc_id, t.def.quad)
 	var dmg := WaterCombat.physical_damage(state.map, t, hl["loc"], d["damage"])
 	WeaponFire.hit_with(state, dice, emit, t, arc_id, dmg, a.id, d["kind"], hl, Hex.INVALID, ["physical"])
+	return hl
 
 
 static func _push(state: GameState, dice: Dice, emit: Callable, step: Dictionary, steps: Array[Dictionary]) -> void:
