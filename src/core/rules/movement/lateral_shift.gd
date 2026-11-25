@@ -30,7 +30,7 @@ static func is_backward(from: Vector2i, to: Vector2i, f: int) -> bool:
 
 
 ## Sideways steps from hex `c` facing `f`: [[key, mp], ...].
-static func steps(state: GameState, u: Unit, c: Vector2i, f: int, mode: int) -> Array:
+static func steps(state: GameState, u: Unit, c: Vector2i, f: int, mode: int, indexed: Variant = null) -> Array:
 	var out := []
 	if not allowed(u):
 		return out
@@ -41,6 +41,6 @@ static func steps(state: GameState, u: Unit, c: Vector2i, f: int, mode: int) -> 
 		var to := Hex.neighbor(c, Hex.rotate(f, d))
 		var back := absi(d) == 2
 		var mp := MoveCost.enter_cost(state.map, c, to, mode, MovePlanner.max_level_change(u, back))
-		if mp != MoveCost.PROHIBITED and MovePlanner.can_pass(state, u, to):
+		if mp != MoveCost.PROHIBITED and MovePlanner.can_pass(state, u, to, indexed):
 			out.append([MoveOptions.key(to, f), mp + extra_mp(u)])
 	return out

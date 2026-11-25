@@ -75,9 +75,10 @@ func add_unit(u: Unit) -> void:
 
 
 func unit_by_id(unit_id: int) -> Unit:
-	for u in all_units():
-		if u.id == unit_id:
-			return u
+	for group: Array in [units, hidden, reserves, waiting]:
+		for u: Unit in group:
+			if u.id == unit_id:
+				return u
 	return null
 
 
