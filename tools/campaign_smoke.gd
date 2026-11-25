@@ -48,6 +48,18 @@ func _run() -> void:
 	var fight := screen.find_child("TakeContract0", true, false) as Button
 	if not _check(fight != null and not fight.disabled, "contract button missing"):
 		return
+	var footer := screen.find_child("ScreenFooter", true, false)
+	var scroll := screen.find_child("ScreenScroll", true, false)
+	if not _check(footer != null and footer.is_ancestor_of(fight) and not scroll.is_ancestor_of(fight), "contract action must stay outside scrolling content"):
+		return
+	var summary := screen.find_child("Contract_0", true, false) as Button
+	if not _check(summary != null and screen._expanded_contract == -1, "contract summary starts collapsed"):
+		return
+	summary.pressed.emit()
+	await _frames(1)
+	if not _check(screen._expanded_contract == 0, "contract tap expands briefing"):
+		return
+	fight = screen.find_child("TakeContract0", true, false) as Button
 	fight.pressed.emit()
 	BattleLaunch.bot_sides = []
 	await _frames(6)
