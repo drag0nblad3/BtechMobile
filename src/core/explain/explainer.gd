@@ -90,6 +90,9 @@ static func text(e: GameEvent, s: GameState, level: int, seen: Dictionary = {}) 
 			return VehicleText.event(s, d, level)
 		GameEvent.DESTROY_CHECK:
 			return AssetText.destroy_check(s, d, level)
+		GameEvent.FORMATION:
+			return "%s's %s is down to %d units and loses its formation bonuses." % [
+					Names.side(d["side"]), FormationTypes.name_of(d["type"]), d["left"]]
 		GameEvent.MINEFIELD:
 			return MineText.describe(s, d, level)
 		GameEvent.BUILDING:
@@ -147,6 +150,8 @@ static func _initiative(d: Dictionary, level: int) -> String:
 		parts.append("%s %d%s" % [Names.side(side), d["rolls"][side], " (+%d Initiative Die)" % b if b > 0 else ""])
 	var first: int = d["order"][0]
 	var t := "Initiative: %s. %s acts first." % [", ".join(parts), Names.side(first)]
+	for g: int in d.get("genius", []):
+		t += " %s's Tactical Genius rerolled its Initiative." % Names.side(g)
 	if level == ExplainLevel.FULL:
 		t += " Losing initiative means moving first; the winner sees your moves before making theirs."
 	return t

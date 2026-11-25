@@ -25,6 +25,7 @@ var _conditions: Button
 var _withdrawal: Button
 var _hidden: Button
 var _initiative: Button
+var _formations: Button
 var _explanations: Button
 
 
@@ -148,6 +149,9 @@ func build(parent: Control, b: ForceBuilder, picker: MapPicker,
 	_initiative = UiKit.button(_advanced, "Initiative die", func():
 		builder.initiative_die = not builder.initiative_die
 		_changed.call(), Vector2(0, 52))
+	_formations = UiKit.button(_advanced, "Formations", func():
+		builder.formations = not builder.formations
+		_changed.call(), Vector2(0, 52))
 	_explanations = UiKit.button(_advanced, "Explanations", func():
 		GameSettings.set_explain_level(ExplainLevel.next(GameSettings.explain_level))
 		_changed.call(), Vector2(0, 52))
@@ -213,16 +217,18 @@ func refresh() -> void:
 	_hidden.text = "HIDDEN UNITS  •  %s" % (
 		"Off" if builder.hidden_side < 0 else Names.side(builder.hidden_side))
 	_initiative.text = "INITIATIVE DIE  •  %s" % ("On" if builder.initiative_die else "Off")
+	_formations.text = "FORMATION BONUSES  •  %s" % ("On" if builder.formations else "Off")
 	_explanations.text = "EXPLANATIONS  •  %s" % ExplainLevel.name_of(GameSettings.explain_level)
 	for side in 2:
 		_players[side].text = "%s: %s" % [
 			Names.side(side), "Computer" if bot_sides.has(side) else "Human"]
 	var weather := ", ".join(builder.conditions.names()) if not builder.conditions.is_clear() else "Clear"
-	_info.text = "AI: %s  •  Conditions: %s\nPilots: Red %s, Blue %s\nWithdrawal: %s  •  Hidden: %s\nInitiative die: %s  •  Explanations: %s" % [
+	_info.text = "AI: %s  •  Conditions: %s\nPilots: Red %s, Blue %s\nWithdrawal: %s  •  Hidden: %s\nInitiative die: %s  •  Formations: %s  •  Explanations: %s" % [
 		BotSkill.name_of(GameSettings.ai_level), weather,
 		BvSkill.preset_name(builder.skills[0].x, builder.skills[0].y),
 		BvSkill.preset_name(builder.skills[1].x, builder.skills[1].y),
 		"On" if builder.forced_withdrawal else "Off",
 		"Off" if builder.hidden_side < 0 else Names.side(builder.hidden_side),
 		"On" if builder.initiative_die else "Off",
+		"On" if builder.formations else "Off",
 		ExplainLevel.name_of(GameSettings.explain_level)]

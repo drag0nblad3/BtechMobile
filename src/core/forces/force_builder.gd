@@ -27,6 +27,7 @@ var availability_mode := EraAvailability.Mode.OFF
 var rosters: Array = [[], []]  ## Per side: Array[String] of UnitDef ids.
 var skills: Array[Vector2i] = [Vector2i(4, 5), Vector2i(4, 5)]  ## Per side: (gunnery, piloting).
 var initiative_die := false  ## Use the optional Initiative Die rule.
+var formations := false  ## Each side forms up for its formation bonuses (Formation).
 var conditions := Conditions.new()  ## Battlefield conditions.
 ## "" = free battle (last side standing), "random" = roll on the Standard
 ## Mission Table, else a StandardMissions id.
@@ -237,6 +238,11 @@ func build(map: BattleMap, dice: Dice = null) -> GameState:
 		SteelRain.reserve_side(state, setup["drop"])
 	if hidden_side >= 0:
 		HiddenUnits.place_side(state, hidden_side)
+	if formations:
+		for side in 2:
+			var t := Formation.auto(state, side)
+			if t != "":
+				notes.append("%s fights as a %s." % [Names.side(side), FormationTypes.name_of(t)])
 	return state
 
 
