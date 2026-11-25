@@ -32,6 +32,10 @@ func _run() -> void:
 				quit(1)
 				return
 			if screen is GameLauncher:
+				if screen.find_child("VoxelLabButton", true, false) != null or screen.find_child("VxShowcaseButton", true, false) != null:
+					printerr("LAYOUT_FAILED: development labs exposed")
+					quit(1)
+					return
 				var first := screen.find_child("TrainingButton", true, false) as Button
 				var second := screen.find_child("CampaignButton", true, false) as Button
 				if first == null or second == null or second.position.x <= first.position.x:
