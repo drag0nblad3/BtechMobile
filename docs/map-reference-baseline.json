@@ -245,6 +245,52 @@
       "features": [
         "road"
       ]
+    },
+    {
+      "theme": "urban",
+      "path": "Map Pack City/City Districts/16x17 Business District.board",
+      "sha": "d2eec5e7f2af6de5c255edaeb1121751517d3ee4",
+      "hexes": 272,
+      "woods": 0,
+      "heavy": 0,
+      "water": 0,
+      "rough": 0,
+      "pavement": 270,
+      "raised": 0,
+      "building": 69,
+      "features": [
+        "bldg_elev",
+        "pavement",
+        "building",
+        "bldg_cf",
+        "road",
+        "bldg_fluff"
+      ]
+    },
+    {
+      "theme": "urban",
+      "path": "Map Pack City/City Districts/16x17 Shopping District.board",
+      "sha": "026d374f4a9b57f0b55ec2926a7d4bcd43af2e63",
+      "hexes": 272,
+      "woods": 6,
+      "heavy": 0,
+      "water": 3,
+      "rough": 0,
+      "pavement": 259,
+      "raised": 2,
+      "building": 90,
+      "features": [
+        "pavement",
+        "bldg_elev",
+        "building",
+        "bldg_cf",
+        "road",
+        "bldg_fluff",
+        "fluff",
+        "woods",
+        "foliage_elev",
+        "water"
+      ]
     }
   ]
 }
