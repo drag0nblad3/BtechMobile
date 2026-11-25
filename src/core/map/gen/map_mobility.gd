@@ -23,11 +23,11 @@ static func edge(m: BattleMap, side: int) -> Array[Vector2i]:
 	return out
 
 
-static func costs(m: BattleMap, starts: Array[Vector2i], limit: int = STEP_LIMIT) -> Dictionary:
+static func costs(m: BattleMap, starts: Array[Vector2i], limit: int = STEP_LIMIT, axis_side := -1, band := -1) -> Dictionary:
 	var dist := {}
 	var heap := MinHeap.new()
 	for c in starts:
-		if usable(m.get_tile(c)):
+		if usable(m.get_tile(c)) and _in_band(m, c, axis_side, band):
 			dist[c] = 0
 			heap.push(0, c)
 	while not heap.is_empty():
@@ -38,7 +38,7 @@ static func costs(m: BattleMap, starts: Array[Vector2i], limit: int = STEP_LIMIT
 			continue
 		for f in 6:
 			var n := Hex.neighbor(c, f)
-			if not usable(m.get_tile(n)):
+			if not usable(m.get_tile(n)) or not _in_band(m, n, axis_side, band):
 				continue
 			var step := MoveCost.enter_cost(m, c, n, MoveMode.Kind.WALK)
 			if step <= 0 or step > limit:
@@ -78,7 +78,27 @@ static func center_cells(m: BattleMap) -> Array[Vector2i]:
 	return out
 
 
-static func axis(m: BattleMap, side: int, center: Array[Vector2i]) -> Dictionary:
+## Count traversable, non-overlapping thirds perpendicular to the advance.
+## A genuine alternative route in a different band cannot share a choke hex.
+static func _in_band(m: BattleMap, c: Vector2i, side: int, band: int) -> bool:
+	if side < 0 or band < 0:
+		return true
+	var o := Hex.to_offset(c)
+	var along := o.x if side < 2 else o.y
+	var size := m.width if side < 2 else m.height
+	return mini(2, floori(3.0 * along / maxi(1, size))) == band
+
+
+static func routes(m: BattleMap, side: int, starts: Array[Vector2i], ends: Array[Vector2i]) -> int:
+	var count := 0
+	for band in 3:
+		var d := costs(m, starts, STEP_LIMIT, side, band)
+		if nearest(d, ends) < UNREACHABLE:
+			count += 1
+	return count
+
+
+static func axis(m: BattleMap, side: int, center: Array[Vector2i], detailed := false) -> Dictionary:
 	var a := edge(m, side)
 	var b := edge(m, side + 1)
 	var da := costs(m, a)
@@ -97,7 +117,15 @@ static func axis(m: BattleMap, side: int, center: Array[Vector2i]) -> Dictionary
 	for c in center:
 		if da.has(c) and db.has(c):
 			shared_center += 1
-	return {"deploy_a": a.size(), "deploy_b": b.size(), "shared": float(common) / maxi(1, usable_count),
+	var out := {"deploy_a": a.size(), "deploy_b": b.size(), "shared": float(common) / maxi(1, usable_count),
 		"exits": mini(exit_bands(m, da, side + 1), exit_bands(m, db, side)),
 		"center_a": ca, "center_b": cb, "center_balance": ratio, "shared_center": shared_center,
 		"cross_mp": maxi(nearest(da, b), nearest(db, a))}
+	if detailed:
+		out["independent_bands"] = mini(routes(m, side, a, b), routes(m, side, b, a))
+		var slow_a := costs(m, a, 3)
+		var slow_b := costs(m, b, 3)
+		out["slow_cross_mp"] = maxi(nearest(slow_a, b), nearest(slow_b, a))
+		out["slow_center_a"] = nearest(slow_a, center)
+		out["slow_center_b"] = nearest(slow_b, center)
+	return out
