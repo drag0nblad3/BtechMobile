@@ -9,7 +9,7 @@ const INK := Color("#0d1c2a")
 
 var terrain := ""
 var kind := ""
-var owner := -1
+var objective_owner := -1
 var friendly := false
 var hostile := false
 var meeting := false
@@ -21,12 +21,13 @@ static func attach(b: Button, mc: MapCampaign, z: Vector2i, chosen: MapLance) ->
 	var a := MapZoneArt.new()
 	a.name = "ZoneArt"
 	a.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	a.clip_contents = true
 	a.position = Vector2(4, 4)
 	a.size = Vector2(b.size.x - 8, 27)
 	a.terrain = mc.region.terrain_at(z)
 	var loc := mc.region.location_at(z)
 	a.kind = String(loc.get("kind", ""))
-	a.owner = int(loc.get("owner", -1))
+	a.objective_owner = int(loc.get("owner", -1))
 	for l in mc.lances:
 		if l.zone == z:
 			a.friendly = a.friendly or l.side == 0
@@ -107,7 +108,7 @@ func _landscape(ground: Color) -> void:
 
 
 func _objective(p: Vector2) -> void:
-	var tint := BLUE if owner == 0 else RED if owner == 1 else Color.WHITE
+	var tint := BLUE if objective_owner == 0 else RED if objective_owner == 1 else Color.WHITE
 	draw_rect(Rect2(p - Vector2(11, 11), Vector2(22, 22)), INK)
 	draw_rect(Rect2(p - Vector2(11, 11), Vector2(22, 22)), tint, false, 1.5)
 	match kind:

@@ -26,8 +26,8 @@ func _zone(mc: MapCampaign, z: Vector2i, on_tap: Callable, chosen: MapLance) -> 
 	b.size = Vector2(W - 4, H - 4)
 	b.clip_text = true
 	b.add_theme_font_size_override("font_size", 14)
-	b.text = text_of(mc, z)
-	b.tooltip_text = b.text
+	b.text = text_of(mc, z, true)
+	b.tooltip_text = text_of(mc, z)
 	b.pressed.connect(func(): on_tap.call(z))
 	add_child(b)
 	var loc := mc.region.location_at(z)
@@ -52,11 +52,14 @@ func _zone(mc: MapCampaign, z: Vector2i, on_tap: Callable, chosen: MapLance) -> 
 
 
 ## Three short lines: terrain, location (with points), lances here.
-static func text_of(mc: MapCampaign, z: Vector2i) -> String:
+static func text_of(mc: MapCampaign, z: Vector2i, compact: bool = false) -> String:
 	var lines := [mc.region.terrain_at(z).capitalize()]
 	var loc := mc.region.location_at(z)
 	if not loc.is_empty():
-		lines.append("%s %d" % [String(loc["name"]), int(loc["points"])])
+		var place := String(loc["name"])
+		if compact:
+			place = place.replace(" Supply Depot", " Depot")
+		lines.append("%s %d" % [place, int(loc["points"])])
 	var mine := []
 	var foes := 0
 	for l in mc.lances:
