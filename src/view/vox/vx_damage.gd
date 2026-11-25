@@ -6,8 +6,6 @@ extends RefCounted
 ## show the same scars. Cosmetic only; never feeds back into the rules.
 
 const STRUCTURE_SHOWN := 0.7  ## Share of structure voxels gone just before the location dies.
-static var _cached_orders: Dictionary = {}
-
 var _orders: Dictionary = {}  ## "loc:kind" -> Array of [part name, cell]
 var _parts: Dictionary        ## part name -> VxPart
 var _model_id := ""
@@ -18,10 +16,9 @@ func _init(model: VxModel, parts: Dictionary) -> void:
 	_parts = parts
 	_model_id = model.id
 	_detail = model.detail
-	var cache_id := model.get_instance_id()
 	var cacheable := not model.quality_report.has("fine_catalog")
-	if cacheable and _cached_orders.has(cache_id):
-		_orders = _cached_orders[cache_id]
+	if cacheable and not model.damage_orders.is_empty():
+		_orders = model.damage_orders
 		return
 	for loc in Location.COUNT:
 		var front: Array = []
@@ -41,7 +38,7 @@ func _init(model: VxModel, parts: Dictionary) -> void:
 		_orders["%d:r" % loc] = _craters(rear, "%d:r" % loc)
 		_orders["%d:s" % loc] = _craters(inner, "%d:s" % loc)
 	if cacheable:
-		_cached_orders[cache_id] = _orders
+		model.damage_orders = _orders
 
 
 ## Fractions are 0 (untouched) .. 1 (all gone). Rebuilds only changed parts.
