@@ -56,6 +56,25 @@ func manual_input() -> void:
 	_queue.clear()
 
 
+## Opening flyover only for fresh battles with cinematic mode enabled.
+## Never reveals hidden/deferred units or blocks tactical input.
+func introduce(state: GameState) -> void:
+	if not enabled or _manual > 0.0:
+		return
+	_queue.clear()
+	var sides := {}
+	for u: Unit in state.units:
+		var view: UnitView = units.views.get(u.id)
+		if view == null or not view.visible or state.hidden.has(u) or sides.has(u.side):
+			continue
+		sides[u.side] = true
+		_queue.append({"kind": "intro", "unit_id": u.id})
+		if _queue.size() >= MAX_QUEUE:
+			break
+	if not _queue.is_empty():
+		_next_shot()
+
+
 func on_event(e: GameEvent) -> void:
 	if not enabled:
 		return
@@ -135,6 +154,9 @@ func _next_shot() -> void:
 		var at := v.global_position
 		var yaw := float(rig.capture_pose()["yaw"])
 		match shot["kind"]:
+			"intro":
+				rig.cinematic_frame(at, 12.0, yaw + 0.9, deg_to_rad(25.0))
+				_hold = 2.0
 			"follow":
 				_tracking = id
 				rig.cinematic_frame(at, 10.5, yaw + 0.22, deg_to_rad(42.0))

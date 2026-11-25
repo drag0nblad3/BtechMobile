@@ -9,6 +9,7 @@ var controller: GameController
 var map_view: MapView
 var fx := BattleFx.new()
 var audio := BattleAudio.new()
+var atmosphere := BattleAtmosphere.new()
 var scars := BattleScars.new()
 var aim_guides := BattleAimOverlay.new()
 var units_layer: UnitsLayer
@@ -97,6 +98,7 @@ func _ready() -> void:
 	if saved.is_empty():
 		controller.start_turn()
 		_look_at_mine()
+		cinematic.introduce(state)
 	else:
 		_resume_ui()
 
@@ -136,6 +138,7 @@ func _toggle_pause() -> void:
 		hud.pause_menu.set_message("The battle is stopped until you resume.")
 	get_tree().paused = opening
 	audio.set_paused(opening)
+	atmosphere.set_paused(opening)
 
 
 func _exit_to_menu() -> void:
@@ -215,6 +218,8 @@ func _build_views(state: GameState) -> void:
 	hud = BattleHud.new()
 	add_child(hud)
 	audio.attach_ui(hud)
+	add_child(atmosphere)
+	atmosphere.setup(hud, audio, state, bots.bot_sides)
 	movement = MovementInput.new()
 	movement.controller = controller
 	movement.highlighter = highlighter
@@ -443,6 +448,7 @@ func _on_event(e: GameEvent) -> void:
 		BattleSave.save_replay.call_deferred(recorder.frames)
 	fx.play(e)
 	audio.on_event(e)
+	atmosphere.on_event(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:

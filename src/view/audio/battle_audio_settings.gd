@@ -11,6 +11,12 @@ func _ready() -> void:
 	_slider("Master", GameSettings.sound_master, GameSettings.set_sound_master)
 	_slider("Effects", GameSettings.sound_effects, GameSettings.set_sound_effects)
 	_slider("UI", GameSettings.sound_ui, GameSettings.set_sound_ui)
+	_slider("Music", GameSettings.sound_music, GameSettings.set_sound_music)
+	var radio := CheckButton.new()
+	radio.text = "Radio chatter captions"
+	radio.button_pressed = GameSettings.radio_chatter
+	radio.toggled.connect(GameSettings.set_radio_chatter)
+	add_child(radio)
 	var muted := CheckButton.new()
 	muted.text = "Mute all sound"
 	muted.button_pressed = GameSettings.sound_muted
