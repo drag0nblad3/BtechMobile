@@ -1,11 +1,9 @@
 class_name GameLauncher
 extends Control
 ## Start screen: training (first for new players), rules drills, a quick
-## battle, the force builder, and the voxel graphics labs.
+## battle and the force builder. Development labs remain standalone scenes.
 
 const BATTLE_MENU := "res://scenes/menu.tscn"
-const VOXEL_LAB := "res://scenes/voxel_mech_lab.tscn"
-const VX_SHOWCASE := "res://scenes/vx_showcase.tscn"
 const DRILLS := "res://scenes/drills.tscn"
 
 
@@ -68,16 +66,6 @@ func _ready() -> void:
 	for b: Button in [train, camp, map_camp, drills, quick, battle]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.custom_minimum_size.y = 76
-	var labs := HBoxContainer.new()
-	labs.add_theme_constant_override("separation", 10)
-	box.add_child(labs)
-	var lab := UiKit.button(labs, "VOXEL LAB", _open_lab, Vector2(0, 52), "subtle")
-	lab.name = "VoxelLabButton"
-	var vx := UiKit.button(labs, "VOXEL SHOWCASE", _open_vx, Vector2(0, 52), "subtle")
-	vx.name = "VxShowcaseButton"
-	for b in [lab, vx]:
-		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		b.add_theme_font_size_override("font_size", UiKit.SMALL)
 
 
 func _open_training() -> void:
@@ -110,10 +98,3 @@ func _quick_battle() -> void:
 func _open_battle() -> void:
 	get_tree().change_scene_to_file(BATTLE_MENU)
 
-
-func _open_lab() -> void:
-	get_tree().change_scene_to_file(VOXEL_LAB)
-
-
-func _open_vx() -> void:
-	get_tree().change_scene_to_file(VX_SHOWCASE)
