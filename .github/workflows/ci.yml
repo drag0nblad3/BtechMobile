@@ -60,6 +60,13 @@ jobs:
           name: component-shape-render-log
           path: shape-render.log
           if-no-files-found: ignore
+      - name: Staged battle loading smoke
+        run: |
+          set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
+          timeout 120s godot --headless -s tools/battle_loading_smoke.gd 2>&1 | tee battle-loading.log
+          grep -q "battle loading smoke ok" battle-loading.log
+          ! grep -E "SCRIPT ERROR|Parse Error|BATTLE_LOADING_FAILED" battle-loading.log
       - name: Battle save + replay scene smoke
         run: |
           set -o pipefail

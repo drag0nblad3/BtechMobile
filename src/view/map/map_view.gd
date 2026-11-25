@@ -20,6 +20,32 @@ var weather_tint := Color.WHITE
 
 func build(battle_map: BattleMap) -> void:
 	map = battle_map
+	for task: Array in _build_tasks():
+		task[1].call()
+
+
+func build_staged(battle_map: BattleMap, progress: Callable) -> void:
+	map = battle_map
+	var tasks := _build_tasks()
+	for i in tasks.size():
+		await progress.call(tasks[i][0], 22.0 + 24.0 * float(i) / tasks.size())
+		tasks[i][1].call()
+
+
+func _build_tasks() -> Array:
+	return [
+		["Building terrain", _build_terrain],
+		["Placing woods", func(): add_child(WoodsProps.build(map))],
+		["Placing ground details", func(): add_child(GroundScatter.build(map))],
+		["Preparing water", func(): add_child(WaterSurfaces.build(map))],
+		["Constructing bridges", _build_bridges],
+		["Constructing buildings", _build_buildings],
+		["Preparing environmental effects", func(): add_child(FireProps.build(map))],
+		["Finishing battlefield", func(): add_child(_ground_plane())],
+	]
+
+
+func _build_terrain() -> void:
 	var noise := _noise_texture()
 	var mesh := HexMesh.prism(HexLayout.HEX_SIZE * INSET)
 	var by_type := {}  # [TerrainType, surface] -> Array[MapTile]
@@ -27,15 +53,17 @@ func build(battle_map: BattleMap) -> void:
 		by_type.get_or_add([t.terrain, t.surface], []).append(t)
 	for key: Array in by_type:
 		add_child(_prism_layer(mesh, by_type[key], key[0], noise, key[1]))
-	add_child(WoodsProps.build(map))
-	add_child(GroundScatter.build(map))
-	add_child(WaterSurfaces.build(map))
+
+
+
+func _build_bridges() -> void:
 	bridges = BridgeProps.build(map, bridge_scars)
 	add_child(bridges)
+
+
+func _build_buildings() -> void:
 	buildings = BuildingProps.build(map, building_scars)
 	add_child(buildings)
-	add_child(FireProps.build(map))
-	add_child(_ground_plane())
 
 
 ## Redraws everything, e.g. after a building collapses into rubble.

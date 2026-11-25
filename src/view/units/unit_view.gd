@@ -16,20 +16,29 @@ var _model: Node3D
 var field_visible := true  ## Deployment/hidden/exit visibility, independent of riders.
 
 
-func setup(u: Unit, battle_map: BattleMap) -> void:
+func setup(u: Unit, battle_map: BattleMap, materialize := true) -> void:
 	unit = u
 	map = battle_map
 	name = "Unit_%d" % u.id
 	add_to_group(GROUP)
-	if u.def.asset != null:
-		set_model(PlaceholderAsset.build(u.def, u.side))
-	elif u.def.vehicle != null:
-		set_model(PlaceholderAsset.build_vehicle(u.def, u.side))
-	elif u.def.battle_armor != null:
-		set_model(PlaceholderAsset.build_squad(u.def, u.side))
+	if materialize:
+		ensure_model()
+	else:
+		field_visible = false
+	snap_to_state()
+
+
+func ensure_model() -> void:
+	if _model != null:
+		return
+	if unit.def.asset != null:
+		set_model(PlaceholderAsset.build(unit.def, unit.side))
+	elif unit.def.vehicle != null:
+		set_model(PlaceholderAsset.build_vehicle(unit.def, unit.side))
+	elif unit.def.battle_armor != null:
+		set_model(PlaceholderAsset.build_squad(unit.def, unit.side))
 	else:
 		refresh_look()
-	snap_to_state()
 
 
 ## Choose the strongest supported representation without touching the Unit.
@@ -61,6 +70,9 @@ func snap_to_state() -> void:
 func set_field_visible(on: bool) -> void:
 	field_visible = on
 	visible = field_visible and unit.carrier_id() < 0
+	if visible and _model == null:
+		ensure_model()
+		snap_to_state()
 
 
 func show_condition() -> void:
