@@ -111,6 +111,7 @@ static func choice(parent: Control, options: Array, change: Callable) -> OptionB
 	button.add_theme_font_size_override("font_size", 18)
 	for value in options:
 		button.add_item(String(value).capitalize() if String(value) == String(value).to_lower() else String(value))
+		button.set_item_metadata(button.item_count - 1, value)
 	button.item_selected.connect(change)
 	parent.add_child(button)
 	return button
@@ -122,6 +123,20 @@ static func selected(controls: Dictionary, text_keys: Array = []) -> Dictionary:
 		var button: OptionButton = controls[key]
 		out[key] = (button.get_item_metadata(button.selected) if button.selected > 0 else "") if key in text_keys else button.selected
 	return out
+
+
+static func unit_controls(parent: Control, entries: Array[UnitDef], change: Callable) -> Dictionary:
+	var first := row(parent)
+	var second := row(parent)
+	return {"kind": choice(first, KINDS, change), "weight": choice(first, WEIGHTS, change),
+		"tech": choice(first, TECH, change), "role": choice(second, roles(entries), change),
+		"bv": choice(second, BV, change), "sort": choice(second, SORT, change)}
+
+
+static func weapon_controls(parent: Control, db: WeaponDb, change: Callable) -> Dictionary:
+	var line := row(parent)
+	return {"type": choice(line, types(db), change),
+		"tech": choice(line, TECH.slice(0, 3), change), "ammo": choice(line, AMMO, change)}
 
 
 static func reset(controls: Dictionary) -> void:
