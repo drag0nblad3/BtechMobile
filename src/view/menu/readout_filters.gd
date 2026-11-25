@@ -11,7 +11,8 @@ const AMMO := ["Any ammo", "Uses ammo", "No ammo bins"]
 
 
 static func role(d: UnitDef) -> String:
-	var published := String(d.source.get("role", "")).strip_edges()
+	var raw: Variant = d.source.get("role", "")
+	var published := str(raw).strip_edges() if raw is String else ""
 	if published.is_empty():
 		published = d.role.get_slice(":", 0).strip_edges()
 	return published if published.length() <= 36 else ""
