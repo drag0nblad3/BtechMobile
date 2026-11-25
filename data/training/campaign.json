@@ -215,6 +215,14 @@
           "event": "fire_declared",
           "side": "player",
           "min_shots": 1
+        },
+        {
+          "id": "indirect",
+          "title": "Fire a shot with the indirect-fire modifier",
+          "event": "weapon_fired",
+          "side": "player",
+          "mod_label": "indirect fire",
+          "ammo_required": true
         }
       ]
     },
@@ -241,6 +249,14 @@
           "event": "fire_declared",
           "side": "player",
           "min_shots": 1
+        },
+        {
+          "id": "good_shot",
+          "title": "Find a firing solution of 8 or better",
+          "event": "weapon_fired",
+          "side": "player",
+          "max_need": 8,
+          "ammo_required": true
         }
       ]
     },
@@ -263,10 +279,18 @@
         },
         {
           "id": "fire",
-          "title": "Declare a real attack",
+          "title": "Declare attacks from two friendly units",
           "event": "fire_declared",
           "side": "player",
-          "min_shots": 1
+          "min_shots": 1,
+          "distinct_units": 2
+        },
+        {
+          "id": "transport",
+          "title": "Board eligible infantry onto a transport",
+          "event": "transport",
+          "side": "player",
+          "kind": "board"
         }
       ]
     },
@@ -293,6 +317,14 @@
           "event": "fire_declared",
           "side": "player",
           "min_shots": 1
+        },
+        {
+          "id": "score",
+          "title": "Score objective victory points",
+          "event": "mission",
+          "score_side": "player",
+          "kind": "vp",
+          "min_vp": 1
         }
       ]
     },
@@ -319,6 +351,13 @@
           "event": "fire_declared",
           "side": "player",
           "min_shots": 1
+        },
+        {
+          "id": "exit",
+          "title": "Exit one unit through the mission edge",
+          "event": "unit_exited",
+          "side": "player",
+          "kind": "mission"
         }
       ]
     }

@@ -31,3 +31,16 @@ func test_contract_story_is_stable_and_survives_save() -> void:
 	c.battles = 1
 	c.last_met = 0
 	check(CampaignStory.offer(c, k, 0)["briefing"].contains("setback"))
+
+
+func test_specialist_practice_filters_real_events() -> void:
+	var s := ScenarioLoader.load_file("res://data/scenarios/advanced_indirect.json", terrain(), designs())
+	var p := TrainingPractice.from_mission({"practice": [
+		{"event": "weapon_fired", "side": "player", "mod_label": "indirect fire"},
+		{"event": "mission", "score_side": "player", "kind": "vp", "min_vp": 1}]})
+	p.observe(GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": s.units[0].id, "mods": []}), s, 0)
+	p.observe(GameEvent.new(GameEvent.MISSION, {"side": 1, "kind": "vp", "vp": 3}), s, 0)
+	check_eq(p.completed_count(), 0)
+	p.observe(GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": s.units[0].id, "mods": [{"label": "indirect fire"}]}), s, 0)
+	p.observe(GameEvent.new(GameEvent.MISSION, {"side": 0, "kind": "vp", "vp": 1}), s, 0)
+	check_eq(p.completed_count(), 2)

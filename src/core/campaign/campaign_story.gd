@@ -6,11 +6,11 @@ extends RefCounted
 const PATH := "res://data/campaign/story.json"
 
 static func offer(c: Campaign, k: Contract, index: int) -> Dictionary:
-	var data := JsonFile.read(PATH)
+	var data: Dictionary = JsonFile.read(PATH)
 	var employers: Array = data["employers"]
 	var rivals: Array = data["rivals"]
 	var locations: Array = data["locations"]
-	var seed_value := int(hash([c.name, c.battles / 3])) & 0x7fffffff
+	var seed_value := int(hash([c.name, floori(c.battles / 3.0)])) & 0x7fffffff
 	var employer := String(employers[(seed_value + index) % employers.size()])
 	var rival := String(rivals[seed_value % rivals.size()])
 	var site := String(locations[(seed_value + c.battles + index) % locations.size()])
@@ -33,11 +33,24 @@ static func outcome(k: Contract, won: bool, met: int) -> String:
 
 
 static func dispatch(mc: MapCampaign) -> String:
-	var data := JsonFile.read(PATH)
+	var data: Dictionary = JsonFile.read(PATH)
 	var lines: Array = data["dispatch"]
 	var i := (mc.operation + mc.turn) % lines.size()
 	var ready := mc.player.ready_mechs().size()
 	var capital := ""
 	if not mc.region.locations.is_empty():
 		capital = String(mc.region.locations[0].get("name", ""))
-	return "Operations briefing · %s · %d ready 'Mechs. %s" % [capital, ready, lines[i]]
+	var situation := "Establish a foothold before committing the main force."
+	var held := mc.region.points(0)
+	var target := ceili(mc.region.total_points() * float(mc.rules.get("victory_share", 0.8)))
+	if mc.winner == 0:
+		situation = "Regional objectives secured. Prepare the next deployment."
+	elif mc.winner == 1:
+		situation = "Regional operation closed. Review the company losses and results."
+	elif ready <= 4:
+		situation = "Readiness is low. Prioritize recovery and concentrate fit formations."
+	elif held > 0 and held * 2 >= target:
+		situation = "Maintain captured positions while preparing the final advance."
+	elif held > 0:
+		situation = "The foothold is established; expand control without overextending."
+	return "Operations briefing · %s · %d ready 'Mechs. %s %s" % [capital, ready, situation, lines[i]]
