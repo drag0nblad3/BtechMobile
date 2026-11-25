@@ -40,14 +40,21 @@ func _build() -> void:
 		UiKit.label(_list, INTRO, UiKit.SMALL)
 		UiKit.button(_list, "START A COMPANY", _start_company, Vector2(0, 70), "primary").name = "StartCompany"
 		return
-	var wp := UiKit.label(_list, "Warchest: %d WP%s  ·  battles fought: %d" % [company.wp,
+	var dashboard := HBoxContainer.new()
+	_list.add_child(dashboard)
+	var company_card := UiKit.panel(dashboard)
+	company_card.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var wp := UiKit.label(company_card, "Warchest: %d WP%s  ·  battles fought: %d" % [company.wp,
 			"  (in debt)" if company.wp < 0 else "", company.battles], UiKit.FONT)
 	wp.name = "WarchestLabel"
-	if not company.last_report.is_empty():
-		UiKit.label(_list, "Last battle", 26).modulate = Color(0.75, 0.85, 1.0)
-		UiKit.label(_list, "\n".join(company.last_report), UiKit.SMALL)
-	AbilityPanel.formation(_list, company, db, _act)
+	var formation_card := UiKit.panel(dashboard)
+	formation_card.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	AbilityPanel.formation(formation_card, company, db, _act)
 	_contracts()
+	if not company.last_report.is_empty():
+		var report := UiKit.panel(_list)
+		UiKit.label(report, "Last battle", 26)
+		UiKit.label(report, "\n".join(company.last_report), UiKit.SMALL)
 	SupportPanel.header(_list, company, chaos, _act, _note)
 	UiSkin.rule(_list)
 	MarketPanel.market(_list, company, db, chaos, _act)
@@ -92,16 +99,16 @@ func _act(action: Callable) -> void:
 
 func _contracts() -> void:
 	UiKit.label(_list, "Contracts", 26).modulate = Color(0.75, 0.85, 1.0)
-	if GameSettings.explain_level != ExplainLevel.OFF:
-		UiSkin.label(UiKit.label(_list, WP_TIP, UiKit.SMALL), "muted")
 	if company.offers.is_empty():
 		var rng := RandomNumberGenerator.new()
 		rng.randomize()
 		company.offers = ContractBoard.offer(chaos, rng)
 		CampaignStore.save(company)
 	for i in company.offers.size():
-		UiSkin.rule(_list)
-		ContractCard.add(_list, company, company.offers[i], chaos, i, _toggle_option, _take)
+		var card := UiKit.panel(_list)
+		ContractCard.add(card, company, company.offers[i], chaos, i, _toggle_option, _take)
+	if GameSettings.explain_level != ExplainLevel.OFF:
+		UiSkin.label(UiKit.label(_list, WP_TIP, UiKit.SMALL), "muted")
 	UiSkin.rule(_list)
 
 
