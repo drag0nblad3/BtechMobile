@@ -51,9 +51,7 @@ static func landscape_scroll(parent: Control, inset: int = 24) -> ScrollContaine
 	var margin := MarginContainer.new()
 	parent.add_child(margin)
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var safe := SafeArea.insets(parent.get_viewport())
-	for side: String in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, maxi(inset, int(safe.get(side, 0)) + 8))
+	apply_safe_margins(parent, margin, inset)
 	var scroll := ScrollContainer.new()
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.follow_focus = true
@@ -68,9 +66,7 @@ static func screen_body(parent: Control, title: String, back: Callable,
 	var margin := MarginContainer.new()
 	parent.add_child(margin)
 	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	var safe := SafeArea.insets(parent.get_viewport())
-	for side: String in ["left", "right", "top", "bottom"]:
-		margin.add_theme_constant_override("margin_" + side, maxi(inset, int(safe.get(side, 0)) + 8))
+	apply_safe_margins(parent, margin, inset)
 	var layout := VBoxContainer.new()
 	layout.add_theme_constant_override("separation", 8)
 	margin.add_child(layout)
@@ -102,6 +98,18 @@ static func screen_footer(body: VBoxContainer) -> HBoxContainer:
 	footer.add_theme_constant_override("separation", 12)
 	layout.add_child(footer)
 	return footer
+
+
+## Keep existing safe-area padding and refresh it when the parent resizes.
+static func apply_safe_margins(parent: Control, margin: MarginContainer, inset: int) -> void:
+	var update := func() -> void:
+		if not is_instance_valid(margin):
+			return
+		var safe := SafeArea.insets(parent.get_viewport())
+		for side: String in ["left", "right", "top", "bottom"]:
+			margin.add_theme_constant_override("margin_" + side, maxi(inset, int(safe.get(side, 0)) + 8))
+	update.call()
+	parent.resized.connect(update)
 
 
 static func close_overlay(screen: Control) -> void:

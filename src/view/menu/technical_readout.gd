@@ -6,14 +6,14 @@ var _entries: Array[UnitDef] = []
 var _matches: Array[UnitDef] = []
 var _search: LineEdit
 var _picker: OptionButton
+var _name_line: Label
 var _details: Label
 var _comparison: Label
 var _viewer: ReadoutModel
 var _selected: UnitDef
 var _pinned: UnitDef
-var _weapons: OptionButton
-var _weapon_ids: Array[String] = []
-var _weapon_info: Label
+var _unit_filters: Dictionary = {}
+var _unit_count: Label
 
 
 func _ready() -> void:
@@ -27,14 +27,19 @@ func _ready() -> void:
 	var box := UiKit.screen_body(self, "TECHNICAL READOUT  /  FIELD DATABASE",
 			UiKit.close_overlay.bind(self), 16)
 	var tabs := TabContainer.new()
+	tabs.name = "ReadoutTabs"
 	tabs.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	tabs.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	tabs.custom_minimum_size.y = 440
+	box.get_parent().size_flags_vertical = Control.SIZE_EXPAND_FILL
 	box.add_child(tabs)
 	var designs := HBoxContainer.new()
 	designs.name = "Units & comparison"
+	designs.add_theme_constant_override("separation", 12)
 	tabs.add_child(designs)
 	var left := VBoxContainer.new()
 	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	left.size_flags_stretch_ratio = 1.15
 	designs.add_child(left)
 	_search = LineEdit.new()
 	_search.placeholder_text = "Search chassis, variant, role or weapon"
@@ -42,53 +47,93 @@ func _ready() -> void:
 	_search.clear_button_enabled = true
 	left.add_child(_search)
 	_search.text_changed.connect(_filter)
+	_unit_filters = ReadoutFilters.unit_controls(left, _entries, func(_i: int): _filter(_search.text))
+	var unit_tools := ReadoutFilters.row(left)
+	_unit_count = UiKit.label(unit_tools, "", 18)
+	_unit_count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	UiKit.button(unit_tools, "Reset filters", _reset_units, Vector2(0, 44), "subtle").add_theme_font_size_override("font_size", 18)
 	_picker = OptionButton.new()
 	_picker.fit_to_longest_item = false
 	_picker.clip_text = true
 	_picker.custom_minimum_size.y = 48
 	left.add_child(_picker)
 	_picker.item_selected.connect(_select)
-	_details = UiKit.label(left, "", 20)
-	var pin := UiKit.button(left, "Pin selected unit for comparison", _pin, Vector2(0, 48))
+	_picker.name = "UnitResults"
+	var info := _scroll_body(left)
+	info.get_parent().name = "ReadoutDetailsScroll"
+	_name_line = UiKit.label(info, "", 25)
+	_name_line.name = "UnitHeading"
+	_details = UiKit.label(info, "", 20)
+	UiSkin.rule(info, UiSkin.BORDER)
+	var pin := UiKit.button(info, "Pin selected unit for comparison", _pin, Vector2(0, 48))
 	pin.name = "PinComparison"
-	_comparison = UiKit.label(left, "", 18)
+	_comparison = UiKit.label(info, "", 18)
 	_viewer = ReadoutModel.new()
 	designs.add_child(_viewer)
-	var encyclopedia := VBoxContainer.new()
+	var encyclopedia := ReadoutEquipment.new()
 	encyclopedia.name = "Equipment encyclopedia"
 	tabs.add_child(encyclopedia)
-	var query := LineEdit.new()
-	query.placeholder_text = "Search weapons and ammunition"
-	encyclopedia.add_child(query)
-	_weapons = OptionButton.new()
-	_weapons.fit_to_longest_item = false
-	_weapons.clip_text = true
-	_weapons.custom_minimum_size.y = 48
-	encyclopedia.add_child(_weapons)
-	_weapon_info = UiKit.label(encyclopedia, "", 20)
-	query.text_changed.connect(_filter_weapons)
-	_weapons.item_selected.connect(_weapon_selected)
+	encyclopedia.setup(_db.weapons, _entries)
 	_filter("")
-	_filter_weapons("")
+
+
+static func _scroll_body(parent: Control) -> VBoxContainer:
+	var scroll := ScrollContainer.new()
+	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus = true
+	parent.add_child(scroll)
+	var body := VBoxContainer.new()
+	body.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	body.add_theme_constant_override("separation", 8)
+	scroll.add_child(body)
+	return body
+
+
+static func design_heading(d: UnitDef) -> String:
+	var fields := PackedStringArray([d.display_name()])
+	if d.asset != null:
+		fields.append("%d BSP" % d.asset.bsp)
+	else:
+		if d.tonnage > 0:
+			fields.append("%d t" % d.tonnage)
+		var role := ReadoutFilters.role(d)
+		if not role.is_empty():
+			fields.append(role)
+		fields.append("%d BV" % d.bv)
+	return "  •  ".join(fields)
 
 
 func _filter(query: String) -> void:
+	var previous := _selected
 	_picker.clear()
 	_matches.clear()
-	var needle := query.strip_edges().to_lower()
+	var filters := ReadoutFilters.selected(_unit_filters, ["role"])
 	for d: UnitDef in _entries:
-		if needle != "" and not (d.display_name() + " " + d.role + " " + ForceCatalogCard.weapons_line(d)).to_lower().contains(needle):
-			continue
-		_matches.append(d)
-		_picker.add_item(d.display_name())
+		if ReadoutFilters.unit_matches(d, query, filters):
+			_matches.append(d)
+	ReadoutFilters.sort_units(_matches, int(filters.get("sort", 0)))
+	for d: UnitDef in _matches:
+		_picker.add_item(design_heading(d))
+	_unit_count.text = "%d / %d designs" % [_matches.size(), _entries.size()]
+	_picker.disabled = _matches.is_empty()
 	if not _matches.is_empty():
-		_picker.select(0)
-		_select(0)
+		var index := maxi(0, _matches.find(previous))
+		_picker.select(index)
+		if previous != _matches[index]:
+			_select(index)
 	else:
 		_selected = null
-		_details.text = "No matching designs."
+		_name_line.text = "No matching designs."
+		_details.text = ""
 		_viewer.select_design(null)
 		_compare()
+
+
+func _reset_units() -> void:
+	ReadoutFilters.reset(_unit_filters)
+	_search.clear()
+	_filter("")
 
 
 func _select(index: int) -> void:
@@ -96,7 +141,11 @@ func _select(index: int) -> void:
 		return
 	_selected = _matches[index]
 	var d := _selected
-	_details.text = "%s\n%s • %d BV • %s\nWalk/run/jump %d/%d/%d • Armor %d\nHeat dissipation %d • %s\n%s" % [d.display_name(), ForceCatalogCard.description(d), d.bv, d.tech_base.replace("_", " "), d.walk_mp, d.run_mp(), d.jump_mp, d.total_armor(), d.heat_sinks * d.heat_per_sink(), d.role, ForceCatalogCard.weapons_line(d)]
+	_name_line.text = design_heading(d)
+	if d.asset != null or d.vehicle != null or d.battle_armor != null:
+		_details.text = "%s\n%s" % [ForceCatalogCard.description(d), ForceCatalogCard.weapons_line(d)]
+	else:
+		_details.text = "%s • %s\nWalk / run / jump  %d / %d / %d\nArmor  %d  •  Heat dissipation  %d\nWEAPONS  %s\n%s" % [d.weight_class(), d.tech_base.replace("_", " "), d.walk_mp, d.run_mp(), d.jump_mp, d.total_armor(), d.heat_sinks * d.heat_per_sink(), ForceCatalogCard.weapons_line(d), d.role.substr(d.role.find(":") + 1).strip_edges() if ":" in d.role else d.role]
 	_viewer.select_design(d)
 	_compare()
 
@@ -123,29 +172,3 @@ static func _alpha(d: UnitDef, heat: bool) -> int:
 			n += w.heat if heat else w.max_damage()
 	return n
 
-
-func _filter_weapons(query: String) -> void:
-	_weapons.clear()
-	_weapon_ids.clear()
-	var ids := _db.weapons.by_id.keys()
-	ids.sort()
-	for id: String in ids:
-		var w := _db.weapons.get_def(id)
-		if not (w.name + " " + w.type + " " + id).to_lower().contains(query.to_lower()):
-			continue
-		_weapon_ids.append(id)
-		_weapons.add_item(w.name)
-	if not ids.is_empty() and not _weapon_ids.is_empty():
-		_weapons.select(0)
-		_weapon_selected(0)
-	else:
-		_weapon_info.text = "No matching weapons."
-
-
-func _weapon_selected(index: int) -> void:
-	var w := _db.weapons.get_def(_weapon_ids[index])
-	var compatible: Array[String] = []
-	for d: UnitDef in _entries:
-		if d.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].id == w.id):
-			compatible.append(d.display_name())
-	_weapon_info.text = "%s • %s • %s\nDamage %d maximum • Heat %d • Range %s\n%.2f tons • %d slots • BV %d • Ammo/ton %d\nMounted on %d catalog designs: %s" % [w.name, w.type, w.tech, w.max_damage(), w.heat, w.range_text(), w.tons, w.slots, w.bv, w.ammo_per_ton, compatible.size(), ", ".join(compatible.slice(0, 24))]

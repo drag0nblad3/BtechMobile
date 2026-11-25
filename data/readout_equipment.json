@@ -1,0 +1,236 @@
+{
+  "_note": "Readout-only summaries of existing game systems; 'both' means the entry is generic, not a declaration of historical availability. Variable sizes are not flattened to fictitious fixed values. See DesignItems, DesignWeight and corresponding rules.",
+  "entries": [
+    {
+      "id": "targeting_computer",
+      "name": "Targeting Computer",
+      "category": "Fire control",
+      "tech": "both",
+      "about": "Improves eligible direct-fire attacks by 1; permits certain aimed shots at moving targets. Weight and slots depend on linked weapon tonnage and subsystem technology."
+    },
+    {
+      "id": "artemis",
+      "name": "Artemis IV FCS",
+      "category": "Fire control",
+      "tech": "both",
+      "about": "Adds 2 to eligible missile cluster rolls. 1 t per launcher; see WeaponModes."
+    },
+    {
+      "id": "artemis_v",
+      "name": "Artemis V FCS",
+      "category": "Fire control",
+      "tech": "clan",
+      "about": "Adds 3 to eligible missile cluster rolls; uses matching guided ammunition. 1.5 t, 2 slots."
+    },
+    {
+      "id": "apollo",
+      "name": "Apollo FCS",
+      "category": "Fire control",
+      "tech": "both",
+      "about": "Removes the MRM's negative cluster modifier; also supports saturation mode. 1 t, 1 slot."
+    },
+    {
+      "id": "capacitor",
+      "name": "PPC Capacitor",
+      "category": "Fire control",
+      "tech": "both",
+      "about": "Charge before firing; adds 5 damage and 5 heat to a charged shot. Holding charge generates heat. 1 t, 1 slot."
+    },
+    {
+      "id": "c3_master",
+      "name": "C3 Master",
+      "category": "Electronics",
+      "tech": "both",
+      "about": "Coordinates a C3 network and shares range brackets. 5 t, 5 slots."
+    },
+    {
+      "id": "c3_slave",
+      "name": "C3 Slave",
+      "category": "Electronics",
+      "tech": "both",
+      "about": "Connects to a C3 master to share range brackets. 1 t, 1 slot."
+    },
+    {
+      "id": "c3bs_master",
+      "name": "Boosted C3 Master",
+      "category": "Electronics",
+      "tech": "both",
+      "about": "Boosted C3 network master; only Angel ECM degrades a boosted member's link. 6 t, 6 slots."
+    },
+    {
+      "id": "c3bs_slave",
+      "name": "Boosted C3 Slave",
+      "category": "Electronics",
+      "tech": "both",
+      "about": "Boosted C3 network member. 3 t, 2 slots."
+    },
+    {
+      "id": "c3i",
+      "name": "Improved C3 (C3i)",
+      "category": "Electronics",
+      "tech": "both",
+      "about": "Masterless network of up to six units; shares range brackets. 2.5 t, 2 slots."
+    },
+    {
+      "id": "case",
+      "name": "CASE",
+      "category": "Protection",
+      "tech": "both",
+      "about": "Limits ammunition explosion damage transfer. Explicit installed CASE weighs 0.5 t in the game's construction calculation."
+    },
+    {
+      "id": "case2",
+      "name": "CASE II",
+      "category": "Protection",
+      "tech": "both",
+      "about": "Enhanced explosion protection; weight depends on subsystem technology (0.5 t Clan, 1 t Inner Sphere in the game's calculation)."
+    },
+    {
+      "id": "case_builtin",
+      "name": "Integral Clan CASE",
+      "category": "Protection",
+      "tech": "clan",
+      "about": "Clan BattleMechs have built-in CASE without additional equipment weight."
+    },
+    {
+      "id": "masc",
+      "name": "MASC",
+      "category": "Mobility",
+      "tech": "both",
+      "about": "Can double walking MP for running; consecutive use raises failure risk. Tons and slots depend on chassis tonnage and tech."
+    },
+    {
+      "id": "supercharger",
+      "name": "Supercharger",
+      "category": "Mobility",
+      "tech": "both",
+      "about": "Can increase running speed; repeated use increases failure risk and may damage the engine. 1 slot; weight depends on engine."
+    },
+    {
+      "id": "tsm",
+      "name": "Triple-Strength Myomer (TSM)",
+      "category": "Mobility",
+      "tech": "both",
+      "about": "At heat 9 or above, adds 2 walking MP and doubles eligible physical attack damage. 6 slots, no added weight."
+    },
+    {
+      "id": "jump_jet",
+      "name": "Standard Jump Jet",
+      "category": "Mobility",
+      "tech": "both",
+      "about": "Adds jumping movement; 1 slot per jet. Weight depends on chassis tonnage."
+    },
+    {
+      "id": "improved_jump_jet",
+      "name": "Improved Jump Jet",
+      "category": "Mobility",
+      "tech": "both",
+      "about": "Reduces jump heat relative to standard jets. 2 slots per jet; twice standard jet weight."
+    },
+    {
+      "id": "heat_sink",
+      "name": "Single Heat Sink",
+      "category": "Cooling",
+      "tech": "both",
+      "about": "Dissipates 1 heat per working sink. First ten are included in the engine; installation slots depend on engine capacity."
+    },
+    {
+      "id": "double_heat_sink",
+      "name": "Double Heat Sink",
+      "category": "Cooling",
+      "tech": "both",
+      "about": "Dissipates 2 heat per working sink. External sinks use 3 slots Inner Sphere or 2 Clan."
+    },
+    {
+      "id": "hatchet",
+      "name": "Hatchet",
+      "category": "Melee",
+      "tech": "both",
+      "about": "Physical weapon. Weight and critical slots scale with BattleMech tonnage."
+    },
+    {
+      "id": "sword",
+      "name": "Sword",
+      "category": "Melee",
+      "tech": "both",
+      "about": "Physical weapon. Weight and critical slots scale with BattleMech tonnage."
+    },
+    {
+      "id": "armor:standard",
+      "name": "Standard Armor",
+      "category": "Armor",
+      "tech": "both",
+      "about": "Baseline armor; the construction checker uses 16 points per ton."
+    },
+    {
+      "id": "armor:ferro_fibrous",
+      "name": "Ferro-Fibrous Armor",
+      "category": "Armor",
+      "tech": "both",
+      "about": "More armor points per ton than standard: 12% Inner Sphere, 20% Clan in the game's construction checker."
+    },
+    {
+      "id": "armor:light_ferro",
+      "name": "Light Ferro-Fibrous Armor",
+      "category": "Armor",
+      "tech": "both",
+      "about": "6% more armor points per ton in the construction checker."
+    },
+    {
+      "id": "armor:heavy_ferro",
+      "name": "Heavy Ferro-Fibrous Armor",
+      "category": "Armor",
+      "tech": "both",
+      "about": "24% more armor points per ton in the construction checker."
+    },
+    {
+      "id": "structure:standard",
+      "name": "Standard Internal Structure",
+      "category": "Structure",
+      "tech": "both",
+      "about": "Baseline internal structure; construction weight depends on chassis tonnage."
+    },
+    {
+      "id": "engine:standard",
+      "name": "Standard Fusion Engine",
+      "category": "Engine",
+      "tech": "both",
+      "about": "Baseline engine; weight depends on engine rating."
+    },
+    {
+      "id": "engine:xl",
+      "name": "XL Fusion Engine",
+      "category": "Engine",
+      "tech": "both",
+      "about": "Lightweight engine extending into the side torsos. Side-torso engine critical slots differ by subsystem technology."
+    },
+    {
+      "id": "engine:light",
+      "name": "Light Fusion Engine",
+      "category": "Engine",
+      "tech": "both",
+      "about": "Uses two engine slots in each side torso."
+    },
+    {
+      "id": "engine:compact",
+      "name": "Compact Fusion Engine",
+      "category": "Engine",
+      "tech": "both",
+      "about": "Fits in three center-torso slots; weight depends on engine rating."
+    },
+    {
+      "id": "cockpit:standard",
+      "name": "Standard Cockpit",
+      "category": "Cockpit",
+      "tech": "both",
+      "about": "Standard BattleMech cockpit. 3 t."
+    },
+    {
+      "id": "cockpit:small",
+      "name": "Small Cockpit",
+      "category": "Cockpit",
+      "tech": "both",
+      "about": "2 t, frees two head slots; +1 to piloting rolls."
+    }
+  ]
+}

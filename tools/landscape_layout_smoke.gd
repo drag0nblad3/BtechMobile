@@ -56,6 +56,22 @@ func _run() -> void:
 				printerr("LAYOUT_FAILED: narrow screen or inaccessible Back ", screen.get_script().resource_path)
 				quit(1)
 				return
+			if screen is TechnicalReadout:
+				var tabs := screen.find_child("ReadoutTabs", true, false) as TabContainer
+				var heading := screen.find_child("UnitHeading", true, false) as Label
+				if tabs == null or tabs.size.y < scroll.size.y - 32.0 or heading == null or not heading.text.contains("BV"):
+					printerr("LAYOUT_FAILED: readout not filling available height or missing identity")
+					quit(1)
+					return
+				var results := screen.find_child("EquipmentResults", true, false) as ItemList
+				var detail := screen.find_child("EquipmentDetails", true, false) as Label
+				tabs.current_tab = 1
+				for frame in 3:
+					await process_frame
+				if results == null or detail == null or results.item_count == 0 or results.get_selected_items().is_empty() or detail.text.is_empty() or results.size.y < 120.0:
+					printerr("LAYOUT_FAILED: equipment list empty or not visible by default")
+					quit(1)
+					return
 			screen.free()
 		viewport.free()
 	print("landscape layout smoke ok")
