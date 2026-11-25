@@ -12,14 +12,8 @@ var _comparison: Label
 var _viewer: ReadoutModel
 var _selected: UnitDef
 var _pinned: UnitDef
-var _weapons: OptionButton
-var _weapon_ids: Array[String] = []
-var _weapon_info: Label
 var _unit_filters: Dictionary = {}
-var _equipment_filters: Dictionary = {}
 var _unit_count: Label
-var _weapon_count: Label
-var _weapon_search: LineEdit
 
 
 func _ready() -> void:
@@ -75,30 +69,10 @@ func _ready() -> void:
 	_comparison = UiKit.label(info, "", 18)
 	_viewer = ReadoutModel.new()
 	designs.add_child(_viewer)
-	var encyclopedia := VBoxContainer.new()
-	encyclopedia.name = "Equipment encyclopedia"
+	var encyclopedia := ReadoutEquipment.new()
 	tabs.add_child(encyclopedia)
-	_weapon_search = LineEdit.new()
-	_weapon_search.custom_minimum_size.y = 48
-	_weapon_search.clear_button_enabled = true
-	_weapon_search.placeholder_text = "Search weapons by name or type (optional)"
-	encyclopedia.add_child(_weapon_search)
-	_equipment_filters = ReadoutFilters.weapon_controls(encyclopedia, _db.weapons, func(_i: int): _filter_weapons(_weapon_search.text))
-	var weapon_tools := ReadoutFilters.row(encyclopedia)
-	_weapon_count = UiKit.label(weapon_tools, "", 18)
-	_weapon_count.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	UiKit.button(weapon_tools, "Reset filters", _reset_weapons, Vector2(0, 44), "subtle").add_theme_font_size_override("font_size", 18)
-	UiKit.label(encyclopedia, "Browse all weapons below or narrow the list using search and filters.", 18)
-	_weapons = OptionButton.new()
-	_weapons.fit_to_longest_item = false
-	_weapons.clip_text = true
-	_weapons.custom_minimum_size.y = 48
-	encyclopedia.add_child(_weapons)
-	_weapon_info = UiKit.label(_scroll_body(encyclopedia), "", 20)
-	_weapon_search.text_changed.connect(_filter_weapons)
-	_weapons.item_selected.connect(_weapon_selected)
+	encyclopedia.setup(_db.weapons, _entries)
 	_filter("")
-	_filter_weapons("")
 
 
 static func _scroll_body(parent: Control) -> VBoxContainer:
@@ -160,12 +134,6 @@ func _reset_units() -> void:
 	_filter("")
 
 
-func _reset_weapons() -> void:
-	ReadoutFilters.reset(_equipment_filters)
-	_weapon_search.clear()
-	_filter_weapons("")
-
-
 func _select(index: int) -> void:
 	if index < 0 or index >= _matches.size():
 		return
@@ -202,39 +170,3 @@ static func _alpha(d: UnitDef, heat: bool) -> int:
 			n += w.heat if heat else w.max_damage()
 	return n
 
-
-func _filter_weapons(query: String) -> void:
-	var previous := ""
-	if _weapons.selected >= 0 and _weapons.selected < _weapon_ids.size():
-		previous = _weapon_ids[_weapons.selected]
-	_weapons.clear()
-	_weapon_ids.clear()
-	var filters := ReadoutFilters.selected(_equipment_filters, ["type"])
-	var matches: Array[WeaponDef] = []
-	for w: WeaponDef in _db.weapons.by_id.values():
-		if ReadoutFilters.weapon_matches(w, query, filters):
-			matches.append(w)
-	matches.sort_custom(func(a: WeaponDef, b: WeaponDef) -> bool:
-		return a.name.naturalnocasecmp_to(b.name) < 0 if a.name != b.name else a.id < b.id)
-	for w: WeaponDef in matches:
-		_weapon_ids.append(w.id)
-		_weapons.add_item("%s  •  %s" % [w.name, w.tech.replace("_", " ").capitalize()])
-	_weapon_count.text = "%d / %d weapons" % [_weapon_ids.size(), _db.weapons.by_id.size()]
-	_weapons.disabled = _weapon_ids.is_empty()
-	if not _weapon_ids.is_empty():
-		var index := maxi(0, _weapon_ids.find(previous))
-		_weapons.select(index)
-		_weapon_selected(index)
-	else:
-		_weapon_info.text = "No matching weapons. Clear search or reset filters to browse all."
-
-
-func _weapon_selected(index: int) -> void:
-	if index < 0 or index >= _weapon_ids.size():
-		return
-	var w := _db.weapons.get_def(_weapon_ids[index])
-	var compatible: Array[String] = []
-	for d: UnitDef in _entries:
-		if d.weapon_mounts.any(func(m: Dictionary) -> bool: return m["weapon"].id == w.id):
-			compatible.append(d.display_name())
-	_weapon_info.text = "%s • %s • %s\nDamage %d maximum • Heat %d • Range %s\n%.2f tons • %d slots • BV %d • Ammo/ton %d\nMounted on %d catalog designs: %s" % [w.name, w.type, w.tech, w.max_damage(), w.heat, w.range_text(), w.tons, w.slots, w.bv, w.ammo_per_ton, compatible.size(), ", ".join(compatible.slice(0, 24))]
