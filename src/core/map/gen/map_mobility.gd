@@ -91,11 +91,38 @@ static func _in_band(m: BattleMap, c: Vector2i, side: int, band: int) -> bool:
 
 static func routes(m: BattleMap, side: int, starts: Array[Vector2i], ends: Array[Vector2i]) -> int:
 	var count := 0
+	var goals := {}
+	for c in ends:
+		goals[c] = true
 	for band in 3:
-		var d := costs(m, starts, STEP_LIMIT, side, band)
-		if nearest(d, ends) < UNREACHABLE:
+		if _band_crosses(m, side, band, starts, goals):
 			count += 1
 	return count
+
+
+static func _band_crosses(m: BattleMap, side: int, band: int, starts: Array[Vector2i], goals: Dictionary) -> bool:
+	var queue: Array[Vector2i] = []
+	var seen := {}
+	for c in starts:
+		if _in_band(m, c, side, band):
+			seen[c] = true
+			queue.append(c)
+	var i := 0
+	while i < queue.size():
+		var c := queue[i]
+		i += 1
+		if goals.has(c):
+			return true
+		for f in 6:
+			var n := Hex.neighbor(c, f)
+			if seen.has(n) or not usable(m.get_tile(n)) or not _in_band(m, n, side, band):
+				continue
+			var forward := MoveCost.enter_cost(m, c, n, MoveMode.Kind.WALK)
+			var reverse := MoveCost.enter_cost(m, n, c, MoveMode.Kind.WALK)
+			if forward > 0 and reverse > 0 and maxi(forward, reverse) <= STEP_LIMIT:
+				seen[n] = true
+				queue.append(n)
+	return false
 
 
 static func axis(m: BattleMap, side: int, center: Array[Vector2i], detailed := false) -> Dictionary:
@@ -121,8 +148,8 @@ static func axis(m: BattleMap, side: int, center: Array[Vector2i], detailed := f
 		"exits": mini(exit_bands(m, da, side + 1), exit_bands(m, db, side)),
 		"center_a": ca, "center_b": cb, "center_balance": ratio, "shared_center": shared_center,
 		"cross_mp": maxi(nearest(da, b), nearest(db, a))}
+	out["independent_bands"] = routes(m, side, a, b)
 	if detailed:
-		out["independent_bands"] = mini(routes(m, side, a, b), routes(m, side, b, a))
 		var slow_a := costs(m, a, 3)
 		var slow_b := costs(m, b, 3)
 		out["slow_cross_mp"] = maxi(nearest(slow_a, b), nearest(slow_b, a))
