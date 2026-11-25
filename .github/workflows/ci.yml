@@ -25,6 +25,12 @@ jobs:
           mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
       - name: Import
         run: godot --headless --import
+      - name: Landscape menu layout smoke
+        run: |
+          set -o pipefail
+          timeout 120s godot --headless -s tools/landscape_layout_smoke.gd 2>&1 | tee landscape-layout.log
+          grep -q "landscape layout smoke ok" landscape-layout.log
+          ! grep -E "SCRIPT ERROR|Parse Error|LAYOUT_FAILED" landscape-layout.log
       - name: Render independent shape studies (no detail or APK)
         if: github.event_name == 'pull_request' && contains(github.head_ref, 'shape-')
         run: |

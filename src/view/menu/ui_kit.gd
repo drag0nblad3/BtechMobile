@@ -41,3 +41,17 @@ static func panel(parent: Control) -> VBoxContainer:
 static func clear(c: Node) -> void:
 	for ch in c.get_children():
 		ch.queue_free()
+
+
+## Width-filling landscape layout with vertical overflow fallback.
+static func landscape_scroll(parent: Control, inset: int = 24) -> ScrollContainer:
+	var margin := MarginContainer.new()
+	margin.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	for side in ["left", "right", "top", "bottom"]:
+		margin.add_theme_constant_override("margin_" + side, inset)
+	parent.add_child(margin)
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus = true
+	margin.add_child(scroll)
+	return scroll

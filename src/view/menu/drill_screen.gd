@@ -20,7 +20,7 @@ var _streak := 0
 var _prompt: Label
 var _feedback: Label
 var _score: Label
-var _choices: VBoxContainer
+var _choices: GridContainer
 var _next: Button
 var _chips: Array[Button] = []
 
@@ -43,11 +43,9 @@ func _ready() -> void:
 	_rng.randomize()
 	_db = UnitDb.load_dir()
 	_terrain = TerrainDb.load_file()
-	var center := CenterContainer.new()
-	center.set_anchors_preset(PRESET_FULL_RECT)
-	add_child(center)
-	var box := UiKit.panel(center)
-	box.get_parent().custom_minimum_size.x = 900
+	var scroll := UiKit.landscape_scroll(self)
+	var box := UiKit.panel(scroll)
+	box.get_parent().size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 12)
 	var head := HBoxContainer.new()
 	box.add_child(head)
@@ -69,8 +67,10 @@ func _ready() -> void:
 	UiSkin.rule(box)
 	_prompt = UiKit.label(box, "", 24)
 	_prompt.custom_minimum_size.y = 70
-	_choices = VBoxContainer.new()
-	_choices.add_theme_constant_override("separation", 8)
+	_choices = GridContainer.new()
+	_choices.columns = 2
+	_choices.add_theme_constant_override("h_separation", 8)
+	_choices.add_theme_constant_override("v_separation", 8)
 	box.add_child(_choices)
 	_feedback = UiKit.label(box, "", UiKit.SMALL)
 	_feedback.custom_minimum_size.y = 56
@@ -94,6 +94,7 @@ func _ask() -> void:
 	for i in _q["choices"].size():
 		var b := UiKit.button(_choices, _q["choices"][i], _answer.bind(i), Vector2(0, 54))
 		b.name = "Choice%d" % i
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_next.disabled = true
 	_show_score()
 

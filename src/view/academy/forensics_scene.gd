@@ -110,7 +110,8 @@ func _build_ui() -> void:
 	_moments.item_selected.connect(_on_moment)
 	_label(left, "UNIT PERFORMANCE", 22)
 	var stat_scroll := ScrollContainer.new()
-	stat_scroll.custom_minimum_size.y = 175
+	stat_scroll.custom_minimum_size.y = 100
+	stat_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	stat_scroll.size_flags_vertical = SIZE_EXPAND_FILL
 	left.add_child(stat_scroll)
 	var unit_stats := VBoxContainer.new()
@@ -164,6 +165,7 @@ func _panel(parent: HBoxContainer, share: float) -> VBoxContainer:
 func _label(parent: Control, value: String, size: int) -> Label:
 	var label := Label.new()
 	label.text = value
+	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	label.add_theme_font_size_override("font_size", size)
 	UiSkin.label(label, "section" if size >= 22 else "muted" if size <= 18 else "body")
 	parent.add_child(label)
