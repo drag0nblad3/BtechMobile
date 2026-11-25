@@ -40,6 +40,8 @@ func _run() -> void:
 			return
 	if not _check(screen.find_child("CaptureProgress", true, false) is ProgressBar, "capture progress missing"):
 		return
+	if not _check(is_equal_approx(MapZoneGrid.width_zoom(8, 800.0) * MapZoneGrid.BASE_RADIUS * 12.5 + 12, 800.0), "default map zoom should fill available width"):
+		return
 	# Use a real bridge garrison: the bot holds it, it has no automatic
 	# repair benefit, and no other enemy is allowed into this fixture.
 	var alpha := mc.lances_of(0)[0]
@@ -68,6 +70,8 @@ func _run() -> void:
 	await _frames(1)
 	screen.call("_tap_zone", foe.zone)
 	await _frames(1)
+	if not _check(screen._zone_details, "tapping a zone opens its details"):
+		return
 	if not _check(alpha.order == MapLance.ATTACK and alpha.target == foe.zone, "order not given"):
 		return
 	(screen.find_child("EndTurn", true, false) as Button).pressed.emit()
