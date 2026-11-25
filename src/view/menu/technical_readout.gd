@@ -58,6 +58,7 @@ func _ready() -> void:
 	_picker.custom_minimum_size.y = 48
 	left.add_child(_picker)
 	_picker.item_selected.connect(_select)
+	_picker.name = "UnitResults"
 	var info := _scroll_body(left)
 	info.get_parent().name = "ReadoutDetailsScroll"
 	_name_line = UiKit.label(info, "", 25)
@@ -70,6 +71,7 @@ func _ready() -> void:
 	_viewer = ReadoutModel.new()
 	designs.add_child(_viewer)
 	var encyclopedia := ReadoutEquipment.new()
+	encyclopedia.name = "Equipment encyclopedia"
 	tabs.add_child(encyclopedia)
 	encyclopedia.setup(_db.weapons, _entries)
 	_filter("")
