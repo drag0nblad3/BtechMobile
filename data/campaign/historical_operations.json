@@ -1,0 +1,702 @@
+{
+  "operations": [
+    {
+      "id": "benet",
+      "title": "Sword and Dragon — Benet III",
+      "date": "7 June 3049",
+      "year": 3049,
+      "player": "Sorenson's Sabres",
+      "enemy": "McKinnon's Raiders",
+      "summary": "A Kuritan company raids the Fox's Teeth base near Aurora Badlands. Direct your three lances and decide whether to press the attack or withdraw.",
+      "historical_result": "Both commands claimed success; the Sabres eventually withdrew.",
+      "fidelity": "Documented opposing company rosters; base variants with seven provisional substitutions. Regional positions, timing, objectives and skill values are game adaptations.",
+      "sources": [
+        "https://www.sarna.net/wiki/Sorenson%27s_Sabres",
+        "https://www.sarna.net/wiki/McKinnon%27s_Company",
+        "https://www.sarna.net/wiki/Starterbook%3A_Sword_and_Dragon"
+      ],
+      "player_faction": "draconis_combine",
+      "enemy_faction": "federated_suns",
+      "terrain_rows": [
+        "badlands badlands hills hills plains",
+        "badlands hills plains plains badlands",
+        "hills badlands plains badlands hills",
+        "badlands plains plains hills badlands",
+        "plains badlands plains plains hills"
+      ],
+      "locations": [
+        {
+          "name": "Fox's Teeth base",
+          "kind": "capital",
+          "zone": [
+            2,
+            0
+          ],
+          "points": 3,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Aurora Badlands approach",
+          "kind": "depot",
+          "zone": [
+            1,
+            1
+          ],
+          "points": 2,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Outer ridge",
+          "kind": "fortress",
+          "zone": [
+            3,
+            1
+          ],
+          "points": 2,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Landing approach",
+          "kind": "dropport",
+          "zone": [
+            2,
+            4
+          ],
+          "points": 1,
+          "benefit": "",
+          "owner": 0
+        }
+      ],
+      "player_lances": [
+        {
+          "name": "Command Lance",
+          "zone": [
+            2,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Daniel Sorenson",
+              "design": "hatamoto_chi_htm27t"
+            },
+            {
+              "pilot": "Grace Shiro",
+              "design": "jenner_jr7k"
+            },
+            {
+              "pilot": "Emory Wilk",
+              "design": "dragon_drg1n",
+              "recorded_variant": "DRG-1G Grand Dragon",
+              "note": "Exact variant missing; Dragon DRG-1N is a period substitute."
+            },
+            {
+              "pilot": "Shakir Jerrar",
+              "design": "hunchback_hbk4g"
+            }
+          ]
+        },
+        {
+          "name": "Fire Lance",
+          "zone": [
+            1,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Dana Utsonomiya",
+              "design": "longbow_lgb0w"
+            },
+            {
+              "pilot": "Andrew Martin",
+              "design": "charger_cgr1a1",
+              "recorded_variant": "CGR-1A9",
+              "note": "Exact variant missing; CGR-1A1 is a period substitute."
+            },
+            {
+              "pilot": "Sharron Burgoz",
+              "design": "trebuchet_tbt5n",
+              "recorded_variant": "TBT-7K",
+              "note": "Exact variant missing; TBT-5N is a period substitute."
+            },
+            {
+              "pilot": "Seyla Teresa Martinez",
+              "design": "panther_pnt9r"
+            }
+          ]
+        },
+        {
+          "name": "Pursuit Lance",
+          "zone": [
+            3,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Albert Benton",
+              "design": "mongoose_mon67"
+            },
+            {
+              "pilot": "Jasmine Rubach",
+              "design": "hermes_ii_her2s",
+              "recorded_variant": "HER-4K Hermes II",
+              "note": "Chassis naming conflicts with the available HER-4K Hermes III record; use period HER-2S pending verification."
+            },
+            {
+              "pilot": "Elden Berardinelli",
+              "design": "spider_sdr5v",
+              "recorded_variant": "SDR-5K",
+              "note": "Exact variant missing; SDR-5V is a period substitute."
+            },
+            {
+              "pilot": "James MacParland",
+              "design": "whitworth_wth1"
+            }
+          ]
+        }
+      ],
+      "enemy_lances": [
+        {
+          "name": "Command Lance",
+          "zone": [
+            2,
+            0
+          ],
+          "members": [
+            {
+              "pilot": "Ian McKinnon",
+              "design": "black_knight_bl6knt"
+            },
+            {
+              "pilot": "George Lytton",
+              "design": "cataphract_ctf1x",
+              "recorded_variant": "CTF-2X",
+              "note": "Exact variant missing; CTF-1X is a period substitute, not verified as his equipment."
+            },
+            {
+              "pilot": "Austin Vorster",
+              "design": "hatchetman_hct3f"
+            },
+            {
+              "pilot": "Daniel Waylen",
+              "design": "enforcer_enf4r",
+              "recorded_variant": "ENF-3R",
+              "note": "Roster transcription reports ENF-3R; use available ENF-4R pending source verification."
+            }
+          ]
+        },
+        {
+          "name": "Medium Lance",
+          "zone": [
+            1,
+            1
+          ],
+          "members": [
+            {
+              "pilot": "Paul Danton",
+              "design": "centurion_cn9a"
+            },
+            {
+              "pilot": "Hiro Chipende",
+              "design": "dervish_dv6m"
+            },
+            {
+              "pilot": "Dave Hill",
+              "design": "jagermech_jm6s"
+            },
+            {
+              "pilot": "Henrik Dekker",
+              "design": "javelin_jvn10n"
+            }
+          ]
+        },
+        {
+          "name": "Recon Lance",
+          "zone": [
+            3,
+            1
+          ],
+          "members": [
+            {
+              "pilot": "Ross McKinnon",
+              "design": "wolfhound_wlf1"
+            },
+            {
+              "pilot": "Mateo Alvarez",
+              "design": "assassin_asn21"
+            },
+            {
+              "pilot": "Robert Grey",
+              "design": "hornet_hnt151"
+            },
+            {
+              "pilot": "Sara Lytton",
+              "design": "commando_com2d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "galtor",
+      "title": "Galtor III — Black Widow operation",
+      "date": "3025",
+      "year": 3025,
+      "player": "Black Widow Company",
+      "enemy": "21st Illician Rangers",
+      "summary": "Under Combine contract, the Black Widows encounter Federated Suns-aligned Illician Rangers on Galtor III. Seize operational ground and recover control of the sector.",
+      "historical_result": "The wider Galtor campaign ended in a Combine defeat.",
+      "fidelity": "Documented Black Widow company roster (one substitution) and Grant's four documented chassis; opposing variants, two additional lance compositions, map and objectives reconstructed, not exact.",
+      "sources": [
+        "https://www.sarna.net/wiki/Battle_of_Galtor_(3025)",
+        "https://www.sarna.net/wiki/Black_Widow_Company",
+        "https://www.sarna.net/wiki/21st_Illician_Rangers",
+        "https://www.sarna.net/wiki/Levon_Grant"
+      ],
+      "player_faction": "wolfs_dragoons",
+      "enemy_faction": "federated_suns",
+      "terrain_rows": [
+        "plains urban plains hills woods",
+        "woods plains plains woods hills",
+        "plains hills plains woods plains",
+        "woods plains plains hills woods",
+        "plains plains plains plains plains"
+      ],
+      "locations": [
+        {
+          "name": "Ranger command position",
+          "kind": "capital",
+          "zone": [
+            2,
+            0
+          ],
+          "points": 3,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Salvage sector",
+          "kind": "depot",
+          "zone": [
+            1,
+            1
+          ],
+          "points": 2,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Screening ridge",
+          "kind": "city",
+          "zone": [
+            3,
+            1
+          ],
+          "points": 2,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Dragoon rally point",
+          "kind": "dropport",
+          "zone": [
+            2,
+            4
+          ],
+          "points": 1,
+          "benefit": "",
+          "owner": 0
+        }
+      ],
+      "player_lances": [
+        {
+          "name": "Command Lance",
+          "zone": [
+            2,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Natasha Kerensky",
+              "design": "warhammer_whm6r"
+            },
+            {
+              "pilot": "Colin Maclaren",
+              "design": "marauder_mad3r"
+            },
+            {
+              "pilot": "Lynn Sheridan",
+              "design": "crusader_crd3r"
+            },
+            {
+              "pilot": "John Hayes",
+              "design": "griffin_grf1n"
+            }
+          ]
+        },
+        {
+          "name": "Fire Lance",
+          "zone": [
+            1,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Takiro Ikeda",
+              "design": "archer_arc2r"
+            },
+            {
+              "pilot": "Miklos Delius",
+              "design": "archer_arc2r"
+            },
+            {
+              "pilot": "Nikolai Koniev",
+              "design": "wasp_wsp1a"
+            },
+            {
+              "pilot": "Alex Ward",
+              "design": "stinger_stg3r"
+            }
+          ]
+        },
+        {
+          "name": "Recon Lance",
+          "zone": [
+            3,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "John Clavell",
+              "design": "rifleman_rfl3n"
+            },
+            {
+              "pilot": "Piet Nichols",
+              "design": "phoenix_hawk_pxh1",
+              "recorded_variant": "PXH-1K",
+              "note": "Exact variant missing; PXH-1 is a period substitute."
+            },
+            {
+              "pilot": "Simon Fraser",
+              "design": "stinger_stg3r"
+            },
+            {
+              "pilot": "Mohammar Jahan",
+              "design": "stinger_stg3r"
+            }
+          ]
+        }
+      ],
+      "enemy_lances": [
+        {
+          "name": "Grant's Lance",
+          "zone": [
+            2,
+            0
+          ],
+          "members": [
+            {
+              "pilot": "Unnamed warrior 1",
+              "design": "stinger_stg3r"
+            },
+            {
+              "pilot": "Unnamed warrior 2",
+              "design": "stinger_stg3r"
+            },
+            {
+              "pilot": "Unnamed warrior 3",
+              "design": "griffin_grf1n"
+            },
+            {
+              "pilot": "Unnamed warrior 4",
+              "design": "archer_arc2r"
+            }
+          ]
+        },
+        {
+          "name": "Ranger screening lance (reconstructed)",
+          "zone": [
+            1,
+            1
+          ],
+          "members": [
+            {
+              "pilot": "Unnamed warrior 1",
+              "design": "wolverine_wvr6r"
+            },
+            {
+              "pilot": "Unnamed warrior 2",
+              "design": "shadow_hawk_shd2h"
+            },
+            {
+              "pilot": "Unnamed warrior 3",
+              "design": "wasp_wsp1a"
+            },
+            {
+              "pilot": "Unnamed warrior 4",
+              "design": "griffin_grf1n"
+            }
+          ]
+        },
+        {
+          "name": "Ranger reserve (reconstructed)",
+          "zone": [
+            3,
+            1
+          ],
+          "members": [
+            {
+              "pilot": "Unnamed warrior 1",
+              "design": "centurion_cn9a"
+            },
+            {
+              "pilot": "Unnamed warrior 2",
+              "design": "rifleman_rfl3n"
+            },
+            {
+              "pilot": "Unnamed warrior 3",
+              "design": "phoenix_hawk_pxh1"
+            },
+            {
+              "pilot": "Unnamed warrior 4",
+              "design": "stinger_stg3r"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "misery",
+      "title": "Misery — Dragoon counteroffensive",
+      "date": "23 April 3028",
+      "year": 3028,
+      "player": "Black Widow Company",
+      "enemy": "DCMS advance elements",
+      "summary": "The Dragoons advance from Farsund into the contested Hamar Valley. Command a company-scale operation against Ryuken and Galedon formations; the larger planetary conflict is outside the playable sector.",
+      "historical_result": "Wolf's Dragoons prevailed in the wider campaign.",
+      "fidelity": "Named Dragoon company roster (one substitution); DCMS lineups selected from the published Misery assignment table, not individual historical machines. Schematic geography and game objectives.",
+      "sources": [
+        "https://battletech.com/wp-content/uploads/10%20Previews/CAT35621_HTP%20Misery_Preview.pdf",
+        "https://www.sarna.net/wiki/Battle_of_Misery",
+        "https://www.sarna.net/wiki/Black_Widow_Company"
+      ],
+      "player_faction": "wolfs_dragoons",
+      "enemy_faction": "draconis_combine",
+      "conditions": {
+        "cold": 2,
+        "snowfall": true
+      },
+      "terrain_rows": [
+        "hills hills badlands hills hills",
+        "hills plains hills plains hills",
+        "badlands plains plains hills badlands",
+        "hills plains plains plains hills",
+        "hills plains plains plains hills"
+      ],
+      "locations": [
+        {
+          "name": "Opdal approach",
+          "kind": "capital",
+          "zone": [
+            2,
+            0
+          ],
+          "points": 3,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Hamar Valley sector",
+          "kind": "depot",
+          "zone": [
+            1,
+            1
+          ],
+          "points": 2,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Highland approach",
+          "kind": "fortress",
+          "zone": [
+            3,
+            1
+          ],
+          "points": 2,
+          "benefit": "",
+          "owner": 1
+        },
+        {
+          "name": "Farsund rally sector",
+          "kind": "dropport",
+          "zone": [
+            2,
+            4
+          ],
+          "points": 1,
+          "benefit": "",
+          "owner": 0
+        }
+      ],
+      "player_lances": [
+        {
+          "name": "Command Lance",
+          "zone": [
+            2,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Natasha Kerensky",
+              "design": "warhammer_whm6r"
+            },
+            {
+              "pilot": "Colin Maclaren",
+              "design": "marauder_mad3r"
+            },
+            {
+              "pilot": "Lynn Sheridan",
+              "design": "crusader_crd3r"
+            },
+            {
+              "pilot": "John Hayes",
+              "design": "griffin_grf1n"
+            }
+          ]
+        },
+        {
+          "name": "Fire Lance",
+          "zone": [
+            1,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "Takiro Ikeda",
+              "design": "archer_arc2r"
+            },
+            {
+              "pilot": "Miklos Delius",
+              "design": "archer_arc2r"
+            },
+            {
+              "pilot": "Nikolai Koniev",
+              "design": "wasp_wsp1a"
+            },
+            {
+              "pilot": "Alex Ward",
+              "design": "stinger_stg3r"
+            }
+          ]
+        },
+        {
+          "name": "Recon Lance",
+          "zone": [
+            3,
+            4
+          ],
+          "members": [
+            {
+              "pilot": "John Clavell",
+              "design": "rifleman_rfl3n"
+            },
+            {
+              "pilot": "Piet Nichols",
+              "design": "phoenix_hawk_pxh1",
+              "recorded_variant": "PXH-1K",
+              "note": "Exact variant missing; PXH-1 is a period substitute."
+            },
+            {
+              "pilot": "Simon Fraser",
+              "design": "stinger_stg3r"
+            },
+            {
+              "pilot": "Mohammar Jahan",
+              "design": "stinger_stg3r"
+            }
+          ]
+        }
+      ],
+      "enemy_lances": [
+        {
+          "name": "Ryuken advance lance (RAT selection)",
+          "zone": [
+            2,
+            0
+          ],
+          "members": [
+            {
+              "pilot": "Unnamed warrior 1",
+              "design": "dragon_drg1n"
+            },
+            {
+              "pilot": "Unnamed warrior 2",
+              "design": "panther_pnt9r"
+            },
+            {
+              "pilot": "Unnamed warrior 3",
+              "design": "hunchback_hbk4g"
+            },
+            {
+              "pilot": "Unnamed warrior 4",
+              "design": "jenner_jr7d"
+            }
+          ]
+        },
+        {
+          "name": "Galedon screening lance (RAT selection)",
+          "zone": [
+            1,
+            1
+          ],
+          "members": [
+            {
+              "pilot": "Unnamed warrior 1",
+              "design": "jenner_jr7d"
+            },
+            {
+              "pilot": "Unnamed warrior 2",
+              "design": "stinger_stg3r"
+            },
+            {
+              "pilot": "Unnamed warrior 3",
+              "design": "griffin_grf1n"
+            },
+            {
+              "pilot": "Unnamed warrior 4",
+              "design": "wolverine_wvr6r"
+            }
+          ]
+        },
+        {
+          "name": "DCMS reserve (RAT selection)",
+          "zone": [
+            3,
+            1
+          ],
+          "members": [
+            {
+              "pilot": "Unnamed warrior 1",
+              "design": "stalker_stk3f"
+            },
+            {
+              "pilot": "Unnamed warrior 2",
+              "design": "archer_arc2r"
+            },
+            {
+              "pilot": "Unnamed warrior 3",
+              "design": "panther_pnt9r"
+            },
+            {
+              "pilot": "Unnamed warrior 4",
+              "design": "shadow_hawk_shd2h"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

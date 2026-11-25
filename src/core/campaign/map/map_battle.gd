@@ -27,6 +27,9 @@ static func build(mc: MapCampaign, b: Dictionary, db: UnitDb, seed_value: int) -
 	var state := fb.build(battlefield(mc, b["zone"], seed_value), dice)
 	if state == null:
 		return {}
+	var historical: Dictionary = mc.rules.get("historical_operation", {})
+	if historical.has("conditions"):
+		state.conditions = Conditions.from_dict(historical["conditions"])
 	for side in 2:
 		state.initiative_bonus[side] = initiative(mc, lances[side], b["zone"])
 	var rosters := [CampaignBattle.prepare(mc.player, state, 0, ids[0]),
