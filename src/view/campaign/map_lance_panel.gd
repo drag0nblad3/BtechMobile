@@ -22,14 +22,16 @@ static func lances(list: VBoxContainer, mc: MapCampaign, chosen: String, on_sele
 				var ob := UiKit.button(row, MapLance.NAMES[o], func(): on_order.call(o), Vector2(150, 54),
 						"primary" if l.order == o else "secondary")
 				ob.name = "Order_" + o
-				ob.disabled = MapOrders.why_not(mc, l, o, l.zone) != ""
+				ob.disabled = MapOrders.can_take(mc, l, o) != ""
 
 
 ## "Alpha Lance · Riverside · 4 of 4 fit · Attack → Hills".
 static func line(mc: MapCampaign, l: MapLance) -> String:
-	var s := "%s  ·  %s  ·  %d of %d fit  ·  %s" % [l.name, where(mc, l.zone), mc.fit_mechs(l).size(),
+	var at := where(mc, l.zone) if l.on_map() else "in the air"
+	var s := "%s  ·  %s  ·  %d of %d fit  ·  %s" % [l.name, at, mc.fit_mechs(l).size(),
 			l.mech_ids.size(), MapLance.NAMES[l.order]]
-	if l.reach() > 0 and l.target != l.zone and mc.region.has_zone(l.target):
+	var heading := l.reach() > 0 or l.order == MapLance.DROPSHIP
+	if heading and l.target != l.zone and mc.region.has_zone(l.target):
 		s += " → " + where(mc, l.target)
 	return s
 

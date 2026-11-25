@@ -129,6 +129,9 @@ func _objective(p: Vector2) -> void:
 			draw_line(p + Vector2(-8,4), p + Vector2(8,4), tint, 2)
 			for x: int in [-5, 0, 5]:
 				draw_line(p + Vector2(x,-3), p + Vector2(x,4), tint, 2)
+		"dropport":  # a landing pad with a DropShip on it
+			draw_arc(p, 8, 0, TAU, 16, tint, 1.5)
+			_poly(p, [Vector2(0,-7), Vector2(4,3), Vector2(0,1), Vector2(-4,3)], tint)
 		_:
 			draw_circle(p, 5, tint)
 

@@ -11,7 +11,8 @@ const ORDER_TIP := {
 	MapLance.DEFEND: "Hold here: +1 Initiative if attacked.",
 	MapLance.MOVE: "Move one zone.",
 	MapLance.FAST_MOVE: "Move two zones; no Move order next turn.",
-	MapLance.REPAIR: "Stay and fix every 'Mech; Green recruits fill empty seats."}
+	MapLance.REPAIR: "Stay and fix every 'Mech; Green recruits fill empty seats.",
+	MapLance.DROPSHIP: "Fly anywhere: 2 days, or 1 to or from a DropPort you hold."}
 
 var db: UnitDb
 var mc: MapCampaign

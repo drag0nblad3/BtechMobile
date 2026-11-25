@@ -33,7 +33,8 @@ static func _goal(mc: MapCampaign, l: MapLance) -> Vector2i:
 	var best_d := 1 << 20
 	var spots: Array[Vector2i] = []
 	for o in mc.lances_of(1 - l.side):
-		spots.append(o.zone)
+		if o.on_map():
+			spots.append(o.zone)
 	for loc in mc.region.locations:
 		if int(loc["owner"]) != l.side:
 			spots.append(loc["zone"])
