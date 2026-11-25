@@ -7,22 +7,22 @@ extends RefCounted
 ## `on_power(want)`: if given, a button to shut down or restart by choice,
 ## and heat sink switches (want "sinks:<n>").
 static func build(u: Unit, on_power: Callable = Callable()) -> Control:
-	var l := RichTextLabel.new()
-	l.bbcode_enabled = true
-	l.fit_content = true
-	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	l.add_theme_font_size_override("normal_font_size", 19)
-	l.add_theme_font_size_override("bold_font_size", 21)
-	l.add_theme_color_override("default_color", UiSkin.TEXT)
-	l.add_theme_color_override("font_selected_color", UiSkin.AMBER)
-	l.text = AssetSheetView.text(u) if u.asset != null else VehicleSheetView.text(u) if u.vehicle != null else BaSheetView.text(u) if u.ba != null else text(u)
 	if u.def.is_support():
-		return l
+		return _rich(AssetSheetView.text(u) if u.asset != null else VehicleSheetView.text(u) if u.vehicle != null else BaSheetView.text(u))
+	var box := VBoxContainer.new()
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", 6)
+	var full := text(u)
+	var split := full.find("\n")
+	box.add_child(_rich(full.substr(0, split)))
+	var doll := MechDamageDoll.new()
+	doll.unit = u
+	doll.name = "MechDamageDoll"
+	box.add_child(doll)
+	box.add_child(_rich(full.substr(split + 1)))
 	var want := power_choice(u)
 	if not on_power.is_valid() or u.destroyed:
-		return l
-	var box := VBoxContainer.new()
-	box.add_child(l)
+		return box
 	if want[0] != null:
 		var b := Button.new()
 		b.text = want[1]
@@ -39,6 +39,19 @@ static func build(u: Unit, on_power: Callable = Callable()) -> Control:
 	if ci != null:
 		box.add_child(ci)
 	return box
+
+
+static func _rich(value: String) -> RichTextLabel:
+	var l := RichTextLabel.new()
+	l.bbcode_enabled = true
+	l.fit_content = true
+	l.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	l.add_theme_font_size_override("normal_font_size", 19)
+	l.add_theme_font_size_override("bold_font_size", 21)
+	l.add_theme_color_override("default_color", UiSkin.TEXT)
+	l.add_theme_color_override("font_selected_color", UiSkin.AMBER)
+	l.text = value
+	return l
 
 
 ## [request to send, button text], or [null, ""] when there's nothing to offer.

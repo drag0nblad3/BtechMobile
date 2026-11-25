@@ -564,6 +564,8 @@ func _on_event(e: GameEvent) -> void:
 				units_layer.refresh_unit(e.data["unit_id"])
 				units_layer.react(e)
 			_queue_sheet_refresh(int(e.data["unit_id"]))
+		GameEvent.CRITICAL, GameEvent.HULL_BREACH, GameEvent.AMMO_EXPLOSION, GameEvent.PILOT_HIT, GameEvent.HEAT, GameEvent.CONSCIOUSNESS, GameEvent.HEAT_SINKS_SWITCHED, GameEvent.STEALTH:
+			_queue_sheet_refresh(int(e.data["unit_id"]))
 		GameEvent.PHYSICAL:
 			if not deferred_visual:
 				units_layer.react(e)
