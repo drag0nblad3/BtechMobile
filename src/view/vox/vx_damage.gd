@@ -6,55 +6,54 @@ extends RefCounted
 ## show the same scars. Cosmetic only; never feeds back into the rules.
 
 const STRUCTURE_SHOWN := 0.7  ## Share of structure voxels gone just before the location dies.
-static var _cached_orders: Dictionary = {}
-
 var _orders: Dictionary = {}  ## "loc:kind" -> Array of [part name, cell]
 var _parts: Dictionary        ## part name -> VxPart
 var _model_id := ""
 var _detail := 1
+var _model: VxModel
 
 
 func _init(model: VxModel, parts: Dictionary) -> void:
 	_parts = parts
+	_model = model
 	_model_id = model.id
 	_detail = model.detail
-	var cache_id := model.get_instance_id()
-	var cacheable := not model.quality_report.has("fine_catalog")
-	if cacheable and _cached_orders.has(cache_id):
-		_orders = _cached_orders[cache_id]
-		return
-	for loc in Location.COUNT:
-		var front: Array = []
-		var rear: Array = []
-		var inner: Array = []
-		for spec in model.parts_at(loc):
-			var cells: Dictionary = spec["cells"]
-			for c: Vector3i in cells:
-				var entry := [spec["name"], c]
-				if model.roles[cells[c]] == "structure":
-					inner.append(entry)
-				elif Location.HAS_REAR.has(loc) and c.z > 0:
-					rear.append(entry)
-				else:
-					front.append(entry)
-		_orders["%d:a" % loc] = _craters(front, "%d:a" % loc)
-		_orders["%d:r" % loc] = _craters(rear, "%d:r" % loc)
-		_orders["%d:s" % loc] = _craters(inner, "%d:s" % loc)
-	if cacheable:
-		_cached_orders[cache_id] = _orders
+	if not model.quality_report.has("fine_catalog"):
+		_orders = model.damage_orders
+
+
+## Generate only the requested region, and only when damage actually
+## requires it. Traversal order and seed match the former eager build.
+func _order(loc: int, kind: String) -> Array:
+	var key := "%d:%s" % [loc, kind]
+	if _orders.has(key):
+		return _orders[key]
+	var selected: Array = []
+	for spec in _model.parts_at(loc):
+		var cells: Dictionary = spec["cells"]
+		for c: Vector3i in cells:
+			var region := "a"
+			if _model.roles[cells[c]] == "structure":
+				region = "s"
+			elif Location.HAS_REAR.has(loc) and c.z > 0:
+				region = "r"
+			if region == kind:
+				selected.append([spec["name"], c])
+	_orders[key] = _craters(selected, key)
+	return _orders[key]
 
 
 ## Fractions are 0 (untouched) .. 1 (all gone). Rebuilds only changed parts.
 func show_location(loc: int, armor_lost: float, rear_lost: float, structure_lost: float,
 		destroyed: bool) -> void:
 	var removed := {}  ## part name -> {cell: true}
-	_take(removed, "%d:a" % loc, armor_lost)
-	_take(removed, "%d:r" % loc, rear_lost)
+	_take(removed, loc, "a", armor_lost)
+	_take(removed, loc, "r", rear_lost)
 	var limb := Location.is_arm(loc) or Location.is_leg(loc)
 	var gone := structure_lost * STRUCTURE_SHOWN
 	if destroyed:
 		gone = 0.3 if limb else 0.95  # A lost limb drops off mostly whole.
-	_take(removed, "%d:s" % loc, gone)
+	_take(removed, loc, "s", gone)
 	for p: VxPart in _parts.values():
 		if p.loc == loc:
 			p.set_removed(removed.get(p.part_name, {}))
@@ -86,7 +85,7 @@ func crater_point(u: Unit, step: Dictionary) -> Vector3:
 	var pips := int(step.get("armor", 0))
 	if pips <= 0:
 		return Vector3.INF
-	var order: Array = _orders.get("%d:%s" % [loc, kind], [])
+	var order := _order(loc, kind)
 	var start := roundi(_lost(left + pips, full) * order.size())
 	var end := roundi(_lost(left, full) * order.size())
 	if start >= end or start >= order.size():
@@ -99,11 +98,13 @@ func crater_point(u: Unit, step: Dictionary) -> Vector3:
 
 
 func order_size(loc: int, kind: String) -> int:
-	return _orders["%d:%s" % [loc, kind]].size()
+	return _order(loc, kind).size()
 
 
-func _take(removed: Dictionary, key: String, fraction: float) -> void:
-	var order: Array = _orders[key]
+func _take(removed: Dictionary, loc: int, kind: String, fraction: float) -> void:
+	if fraction <= 0.0:
+		return
+	var order := _order(loc, kind)
 	var n := roundi(clampf(fraction, 0.0, 1.0) * order.size())
 	for i in n:
 		var entry: Array = order[i]

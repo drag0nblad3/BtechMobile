@@ -87,6 +87,8 @@ func set_paint(mat: ShaderMaterial) -> void:
 
 ## Keeps every original cell except those in `removed`.
 func set_removed(removed: Dictionary) -> void:
+	if removed.is_empty() and cells.size() == original.size():
+		return
 	var next := {}
 	for c: Vector3i in original:
 		if not removed.has(c):
@@ -95,7 +97,7 @@ func set_removed(removed: Dictionary) -> void:
 		for c: Vector3i in next.keys():  # Shot-loose voxels don't float.
 			if DIRS.all(func(d: Vector3i) -> bool: return not next.has(c + d)):
 				next.erase(c)
-	if next.size() != cells.size():
+	if next != cells:
 		cells = next
 		rebuild()
 
