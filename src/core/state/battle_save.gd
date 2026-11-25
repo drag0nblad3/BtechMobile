@@ -3,7 +3,8 @@ extends RefCounted
 ## Compressed autosave and last-battle replay in the active save profile.
 ## Saves contain data only; no arbitrary Godot objects/scripts are loaded.
 
-const VERSION := 1
+const VERSION := 2
+const LEGACY_VERSION := 1
 const SAVE_PATH := "user://battle_autosave.zst"
 const REPLAY_PATH := "user://last_battle_replay.zst"
 
@@ -18,7 +19,7 @@ static func capture(c: GameController, bots: Array, skill: int,
 
 
 static func restore(d: Dictionary, db: UnitDb, terrain: TerrainDb) -> Dictionary:
-	if int(d.get("schema", -1)) != VERSION or not d.has("state") \
+	if not _supported(d) or not d.has("state") \
 			or not d.has("seed") or not d.has("rng"):
 		return {}
 	var s: GameState = BattleCodec.unpack(d["state"], db, terrain)
@@ -77,7 +78,11 @@ static func _write(path: String, data: Dictionary) -> bool:
 	if file == null:
 		push_error("Cannot write battle save: " + str(FileAccess.get_open_error()))
 		return false
-	file.store_string(JSON.stringify(data))
+	var payload := data.duplicate()
+	if int(payload.get("schema", -1)) == VERSION and payload.get("frames") is Array:
+		payload["frames"] = BattleFrameStorage.encode(payload["frames"])
+		payload["frame_encoding"] = "property_delta"
+	file.store_string(JSON.stringify(payload))
 	file.flush()
 	file = null
 	var err := DirAccess.rename_absolute(ProjectSettings.globalize_path(tmp),
@@ -95,6 +100,17 @@ static func _read(path: String) -> Dictionary:
 	if file == null:
 		return {}
 	var parsed: Variant = JSON.parse_string(file.get_as_text())
-	if parsed is Dictionary and int(parsed.get("schema", -1)) == VERSION:
-		return parsed
-	return {}
+	if not parsed is Dictionary or not _supported(parsed):
+		return {}
+	if parsed.get("frame_encoding", "") == "property_delta":
+		var encoded: Array = parsed.get("frames", [])
+		var decoded := BattleFrameStorage.decode(encoded)
+		if decoded.size() != encoded.size():
+			return {}
+		parsed["frames"] = decoded
+		parsed.erase("frame_encoding")
+	return parsed
+
+
+static func _supported(data: Dictionary) -> bool:
+	return int(data.get("schema", -1)) in [LEGACY_VERSION, VERSION]

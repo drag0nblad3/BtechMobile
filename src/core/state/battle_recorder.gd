@@ -26,14 +26,19 @@ func record(e: GameEvent, state: GameState, explanation: String) -> void:
 			"event": String(e.type), "text": explanation,
 			"data": BattleCodec.pack(e.data)}
 	if FRAMED.has(e.type):
+		var packed: Dictionary = BattleCodec.pack(state)
+		if not frames.is_empty():
+			packed = BattleFrameStorage.share(packed, frames[-1].get("state", {}))
 		frames.append({"turn": state.turn, "phase": state.phase,
 				"event": String(e.type), "text": explanation,
-				"state": BattleCodec.pack(state), "events": [fact]})
+				"state": packed, "events": [fact]})
 	elif not frames.is_empty():
-		var last: Dictionary = frames[frames.size() - 1]
-		var events: Array = last.get("events", [])
+		# Undo/save captures share the prior frame; use copy-on-write for its ledger.
+		var last: Dictionary = frames[-1].duplicate()
+		var events: Array = last.get("events", []).duplicate()
 		events.append(fact)
 		last["events"] = events
+		frames[-1] = last
 
 
 static func state_at(frame: Dictionary, db: UnitDb, terrain: TerrainDb) -> GameState:

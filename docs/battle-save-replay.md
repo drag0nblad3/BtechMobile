@@ -30,7 +30,7 @@ battle_autosave.zst and last_battle_replay.zst. The replay is independent of the
 
 ## Format and compatibility
 
-The compressed payload contains JSON, schema 1. A live save stores the complete
+The compressed payload contains JSON, schema 2; schema 1 files remain readable. Replay frames are encoded as lossless property deltas between full checkpoints every 32 frames. The loader expands them into the existing full-frame interface, sharing unchanged packed data in memory. Live state and RNG remain full snapshots. A live save stores the complete
 GameState and nested Unit, MissionState and BattleMap objects, pending declarations,
 the controller event history, **both** RandomNumberGenerator.seed and
 RandomNumberGenerator.state as decimal strings, bot side assignments and skill,
@@ -59,9 +59,7 @@ Rewinding never changes the live battle and consumes no gameplay randomness.
    plus the saved map and Unit state, never used for combat or movement rules.
 5. Tutorial popup progress is not saved separately; lesson cards may repeat
    after resuming a training battle.
-6. One save slot and one replay archive are supported. Snapshots are not
-   size capped; long battles may consume significant storage. A future
-   optimization is delta snapshots and a configurable storage budget.
+6. Save profiles hold independent saves and replays. Delta snapshots omit unchanged properties, but there is no hard storage budget. Long battles still need device memory and save-time profiling.
 7. Godot CI checks battle save unit tests and scene smoke. **Pending verification:** Android pause/resume, landscape HUD fit, and performance on long high-unit-count battles.
 
 ## Testing
