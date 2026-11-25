@@ -68,7 +68,8 @@ static func finish(mc: MapCampaign, b: Dictionary, state: GameState, rosters: Ar
 			loser.zone = _fallback(mc, loser)
 			report.append("%s falls back." % loser.name)
 	mc.battles.erase(b)
-	mc.log.append(report[0])
+	mc.log.append_array(report)
+	MapIntelligence.observe(mc)
 	return report
 
 

@@ -13,7 +13,7 @@ static func orders(mc: MapCampaign, side: int = 1) -> void:
 	for l in mc.lances_of(side):
 		var loc := mc.region.location_at(l.zone)
 		var garrison := not loc.is_empty() and int(loc["owner"]) == side and not held.has(l.zone)
-		if mc.fit_mechs(l).is_empty():
+		if mc.fit_mechs(l).is_empty() or (not garrison and mc.fit_mechs(l).size() * 2 < l.mech_ids.size()):
 			MapOrders.give(mc, l, MapLance.REPAIR)
 		elif garrison:
 			held[l.zone] = true
