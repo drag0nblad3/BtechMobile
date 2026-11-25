@@ -1,0 +1,86 @@
+name: Tactical map quality
+on:
+  pull_request:
+    paths:
+      - 'src/core/map/gen/**'
+      - 'data/map_themes.json'
+      - 'tests/unit/test_map_tactics.gd'
+      - 'tools/map_quality_report.gd'
+      - 'tools/map_reference_board.gd'
+      - 'docs/map-reference-baseline.json'
+      - '.github/workflows/map-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: map-quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot
+        run: |
+          wget -q https://github.com/godotengine/godot/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          unzip -q Godot_v4.5.1-stable_linux.x86_64.zip
+          mv Godot_v4.5.1-stable_linux.x86_64 /usr/local/bin/godot
+      - name: Import
+        run: godot --headless --import
+      - name: Fetch optional pinned external reference boards
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, urllib.parse, urllib.request
+          from concurrent.futures import ThreadPoolExecutor
+          root = pathlib.Path('/tmp/map-references')
+          root.mkdir(exist_ok=True)
+          revision = 'd3019d7591aba8e8197890563d3b28507a3c7c41'
+          boards = json.loads(pathlib.Path('docs/map-reference-baseline.json').read_text())['boards']
+          def fetch(board):
+              name = board['path']
+              try:
+                  url = 'https://raw.githubusercontent.com/MegaMek/mm-data/' + revision + '/data/boards/' + urllib.parse.quote(name)
+                  with urllib.request.urlopen(url, timeout=15) as response:
+                      data = response.read()
+                  blob = hashlib.sha1(('blob %d\0' % len(data)).encode() + data).hexdigest()
+                  if blob != board['sha']:
+                      raise ValueError('reference blob differs from recorded digest')
+                  path = root / name
+                  path.parent.mkdir(parents=True, exist_ok=True)
+                  path.write_bytes(data)
+                  return 1
+              except Exception as exc:
+                  print(f'Optional reference unavailable: {name}: {exc}')
+                  return 0
+          with ThreadPoolExecutor(max_workers=4) as pool:
+              print('References available:', sum(pool.map(fetch, boards)), '/', len(boards))
+          PY
+      - name: Run raw, screened and reference map comparison
+        run: |
+          set -o pipefail
+          timeout 120s godot --headless -s tools/map_quality_report.gd -- 3 /tmp/map-references 2>&1 | tee map-quality.log
+          ! grep -E "SCRIPT ERROR|Parse Error" map-quality.log
+          python3 - <<'PY'
+          import json, pathlib, statistics
+          from collections import defaultdict
+          rows = [json.loads(line.split('|', 1)[1]) for line in pathlib.Path('map-quality.log').read_text().splitlines() if line.startswith('MAP_QUALITY|')]
+          groups = defaultdict(list)
+          for row in rows:
+              groups[row['kind']].append(row)
+          expected = 3 * len(json.loads(pathlib.Path('data/map_themes.json').read_text())['themes'])
+          assert len(groups['raw']) == len(groups['screened']) == expected
+          def mean(rows, fn):
+              return statistics.mean(map(fn, rows))
+          print('kind | maps | mean penalty | independent routes (mean) | medium LOS | long LOS | generation ms')
+          for kind, group in sorted(groups.items()):
+              print(f"{kind} | {len(group)} | {mean(group, lambda r:r['penalty']):.2f} | {mean(group, lambda r: (r['tactics']['north_south']['independent_bands'] + r['tactics']['east_west']['independent_bands'])/2):.2f} | {mean(group, lambda r:r['tactics']['sight']['medium']['visible']):.1%} | {mean(group, lambda r:r['tactics']['sight']['long']['visible']):.1%} | {mean(group, lambda r:r['generation_ms']):.1f}")
+          raw = {(r['theme'], r['name']):r['penalty'] for r in groups['raw']}
+          assert all(r['penalty'] <= raw[(r['theme'],r['name'])] + 1e-6 for r in groups['screened'])
+          print('MAP_QUALITY_COMPLETE')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tactical-map-quality
+          path: map-quality.log
