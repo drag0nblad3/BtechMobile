@@ -8,7 +8,7 @@ extends RefCounted
 ## options: [{key, label, to_hit: ToHit, extra: String}], selected: {key: true}.
 ## A row with a "mode" text also gets a button that calls on_mode(key).
 static func build(title: String, options: Array, selected: Dictionary, level: int,
-		on_toggle: Callable, on_mode: Callable = Callable()) -> Control:
+		on_toggle: Callable, on_mode: Callable = Callable(), forecast: String = "") -> Control:
 	var box := VBoxContainer.new()
 	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var head := Label.new()
@@ -18,6 +18,11 @@ static func build(title: String, options: Array, selected: Dictionary, level: in
 	UiSkin.label(head, "heading")
 	box.add_child(head)
 	UiSkin.rule(box, UiSkin.CYAN)
+	if not forecast.is_empty():
+		var summary := UiKit.label(box, forecast, 17)
+		summary.name = "VolleyForecast"
+		UiSkin.label(summary, "body")
+		UiSkin.rule(box)
 	for o: Dictionary in options:
 		var th: ToHit = o["to_hit"]
 		var b := CheckButton.new()
