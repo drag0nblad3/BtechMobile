@@ -118,9 +118,14 @@ func _enemy_forces(db: UnitDb, rng: RandomNumberGenerator) -> void:
 	var capital: Vector2i = region.locations[0]["zone"]
 	for i in int(rules.get("enemy_reserve_lances", 1)):
 		spots.append(capital)
+	var pool: Array[UnitDef] = []
+	if rules.get("historical", false):
+		pool = MapCampaignOptions.pool(db, int(rules["era_year"]), String(rules["enemy_faction"]))
+		if pool.is_empty():
+			return
 	for z in spots:
 		var ids: Array[String] = []
-		for d in EnemyForce.pick(fb, target, rng):
+		for d in EnemyForce.pick(fb, target, rng, pool):
 			var p := enemy.add_pilot("Defender %d" % (enemy.pilots.size() + 1), fb.skills[1].x, fb.skills[1].y)
 			var m := enemy.add_mech(d)
 			m.pilot_id = p.id
