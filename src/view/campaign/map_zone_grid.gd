@@ -10,7 +10,8 @@ var mc: MapCampaign
 var chosen: MapLance
 var pending_order := ""
 var overlay := 0  ## terrain, objectives, intelligence, readiness
-var radius := 42.0
+const BASE_RADIUS := 42.0
+var radius := BASE_RADIUS
 var seen := {}
 var roads: Array = []
 var selected := Vector2i(-1, -1)
@@ -45,6 +46,11 @@ static func make(parent: Control, campaign: MapCampaign, on_tap: Callable, lance
 			b.pressed.connect(on_tap.bind(z))
 			g.add_child(b)
 	return g
+
+
+## Fill the map's available width at default zoom. Vertical overflow remains pannable.
+static func width_zoom(columns: int, available_width: float) -> float:
+	return clampf((available_width - 12.0) / (BASE_RADIUS * (columns * 1.5 + 0.5)), 0.75, 3.5)
 
 
 func center(z: Vector2i) -> Vector2:
