@@ -13,6 +13,7 @@ var unit: Unit
 var map: BattleMap
 var _yaw := 0.0  # Continuous yaw so turns never spin the long way round.
 var _model: Node3D
+var field_visible := true  ## Deployment/hidden/exit visibility, independent of riders.
 
 
 func setup(u: Unit, battle_map: BattleMap) -> void:
@@ -57,10 +58,15 @@ func snap_to_state() -> void:
 
 
 ## Prone 'Mechs lie on their side; wrecks also darken.
+func set_field_visible(on: bool) -> void:
+	field_visible = on
+	visible = field_visible and unit.carrier_id() < 0
+
+
 func show_condition() -> void:
+	set_field_visible(field_visible)
 	if _model == null:
 		return
-	visible = unit.carrier_id() < 0  # riders ride inside or on top
 	if UnitVoxels.sync(_model, unit):
 		return
 	var down := unit.prone or (unit.destroyed and not unit.def.is_support())

@@ -10,10 +10,11 @@ extends RefCounted
 static func for_target(state: GameState, attacker: Unit, target: Unit,
 		secondary: bool = false) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
+	var los_cache := {}
 	for i in attacker.weapons.size():
 		var w := attacker.weapons[i]
 		out.append({"index": i, "weapon": w,
-				"to_hit": ToHitCalc.weapon(state, attacker, w, target, secondary)})
+				"to_hit": ToHitCalc.weapon(state, attacker, w, target, secondary, false, los_cache)})
 	return out
 
 

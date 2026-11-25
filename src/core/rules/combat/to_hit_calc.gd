@@ -6,7 +6,7 @@ extends RefCounted
 
 ## `point_blank`: a hidden unit's ambush shot (PointBlank), no target movement modifier.
 static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: Unit,
-		secondary: bool = false, point_blank := false) -> ToHit:
+		secondary: bool = false, point_blank := false, los_cache: Variant = null) -> ToHit:
 	var th := ToHit.new()
 	if target == null or target.destroyed:
 		th.impossible = "No target"
@@ -71,7 +71,14 @@ static func weapon(state: GameState, attacker: Unit, w: MountedWeapon, target: U
 		th.impossible = wc["impossible"]
 		return th
 	th.legs_only = wc["legs_only"]
-	var los := LineOfSight.check(state.map, attacker, target)
+	# Cache only within a synchronous, unchanged attacker/target pair.
+	var los: Dictionary
+	if los_cache == null:
+		los = LineOfSight.check(state.map, attacker, target)
+	else:
+		if not los_cache.has("direct"):
+			los_cache["direct"] = LineOfSight.check(state.map, attacker, target)
+		los = los_cache["direct"]
 	var spotter: Unit = null
 	var pod := false
 	var oblique := false  # Oblique Attacker: indirect fire with no spotter

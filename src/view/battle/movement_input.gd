@@ -145,6 +145,8 @@ func on_prone() -> void:
 
 
 func on_smash() -> void:
+	if selected == null or options == null:
+		return
 	smash = not smash
 	_refresh()
 
@@ -193,6 +195,8 @@ func clear_selection() -> void:
 	marker.visible = false
 	hud.show_move_controls(false)
 	hud.leave_button.visible = false
+	hud.charge_button.visible = false
+	hud.smash_button.visible = false
 	hud.masc_button.visible = false
 	hud.sc_button.visible = false
 	hud.prone_button.visible = false

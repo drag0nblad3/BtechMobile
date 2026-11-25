@@ -15,7 +15,8 @@ func build(state: GameState, see_hidden: Array = [0, 1]) -> void:
 		var v := UnitView.new()
 		add_child(v)
 		v.setup(u, state.map)
-		v.visible = (not state.hidden.has(u) or see_hidden.has(u.side)) and not state.reserves.has(u) and not state.waiting.has(u)
+		v.set_field_visible((not state.hidden.has(u) or see_hidden.has(u.side)) \
+				and not state.reserves.has(u) and not state.waiting.has(u) and not state.mission.exited.has(u.id))
 		views[u.id] = v
 
 
@@ -65,6 +66,7 @@ func react(e: GameEvent) -> void:
 func reload_looks() -> void:
 	for view: UnitView in views.values():
 		view.refresh_look()
+		view.show_condition()
 
 
 func _on_done() -> void:

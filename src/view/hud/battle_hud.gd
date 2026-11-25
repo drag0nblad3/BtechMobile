@@ -318,6 +318,7 @@ func _build_game_over(parent: Control) -> void:
 ## Replaces the side panel's content (record sheet, weapon list...).
 func show_side(content: Control) -> void:
 	for c in side_box.get_children():
+		side_box.remove_child(c)
 		c.queue_free()
 	if content:
 		side_box.add_child(content)

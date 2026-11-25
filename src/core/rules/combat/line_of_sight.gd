@@ -61,9 +61,10 @@ static func woods_value(tile: MapTile) -> int:
 
 ## Traces both sides of a divided line and keeps the one worse for the attacker.
 static func _best(map: BattleMap, a: Vector2i, b: Vector2i, a_lvl: int, b_lvl: int, cover_floor: int) -> Dictionary:
-	var r1 := _trace(map, Hex.line(a, b), a_lvl, b_lvl, cover_floor)
+	var primary := Hex.line(a, b)
+	var r1 := _trace(map, primary, a_lvl, b_lvl, cover_floor)
 	var alt := Hex.line(a, b, -1.0)
-	if alt == Hex.line(a, b):
+	if alt == primary:
 		return r1
 	var r2 := _trace(map, alt, a_lvl, b_lvl, cover_floor)
 	if r1["blocked"] != r2["blocked"]:
