@@ -6,10 +6,24 @@ const MODES := ["Movement", "Incoming damage", "Cover", "Movement defense", "Ene
 
 static func colors(state: GameState, u: Unit, options: MoveOptions, mode: int, overlay: int) -> Dictionary:
 	var out := {}
+	# Cover and range don't depend on the route or final facing.
+	var ranges := {}
+	if overlay == 4:
+		for e: Unit in state.units:
+			if e.side == u.side or e.destroyed:
+				continue
+			var profiles: Array[int] = []
+			for w: MountedWeapon in e.weapons:
+				profiles.append(Atm.profile(w).long_range)
+			ranges[e] = profiles
 	for c: Vector2i in options.reachable_hexes():
-		var key: Vector3i = options.end_keys_in(c)[0]
-		var moved := int(options.cost.get(key, 0)) > 0
-		var hexes := Hex.distance(u.coord, c) if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(options.path_to(key), u.coord)
+		var moved := false
+		var hexes := 0
+		var key := Vector3i.ZERO
+		if overlay == 1 or overlay == 3:
+			key = options.end_keys_in(c)[0]
+			moved = int(options.cost.get(key, 0)) > 0
+			hexes = Hex.distance(u.coord, c) if mode == MoveMode.Kind.JUMP else MoveOptions.hexes_entered(options.path_to(key), u.coord)
 		var value := 0.0
 		match overlay:
 			1:
@@ -21,11 +35,10 @@ static func colors(state: GameState, u: Unit, options: MoveOptions, mode: int, o
 				value = clampf(float(ToHitCalc.target_movement_mod(hexes, moved and mode == MoveMode.Kind.JUMP)) / 5.0, 0, 1)
 			4:
 				var count := 0
-				for e: Unit in state.units:
-					if e.side == u.side or e.destroyed:
-						continue
-					for w: MountedWeapon in e.weapons:
-						if Hex.distance(e.coord, c) <= Atm.profile(w).long_range:
+				for e: Unit in ranges:
+					var distance := Hex.distance(e.coord, c)
+					for reach: int in ranges[e]:
+						if distance <= reach:
 							count += 1
 				value = clampf(float(count) / 12.0, 0, 1)
 		var good := Color(0.18, 0.8, 0.64, 0.40)

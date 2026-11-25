@@ -478,14 +478,14 @@ func _on_event(e: GameEvent) -> void:
 		GameEvent.INITIATIVE, GameEvent.SCAN, GameEvent.OBJECTIVE, GameEvent.MINEFIELD:
 			_rebuild_objectives()
 		GameEvent.UNIT_REVEALED, GameEvent.COMBAT_DROP:
-			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = true
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(true)
 			units_layer.refresh_unit(e.data["unit_id"])
 		GameEvent.WAVE:
-			for u in s.units:
-				units_layer.view_of(u).visible = not s.hidden.has(u)
-				units_layer.refresh_unit(u.id)
+			# Waves emits its roll before placing the arriving units.
+			if e.data.get("arrived", false):
+				_refresh_arrivals.call_deferred()
 		GameEvent.UNIT_EXITED:
-			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).visible = false
+			units_layer.view_of(s.unit_by_id(e.data["unit_id"])).set_field_visible(false)
 			_show_sheet_if_open()
 		GameEvent.ACTIVE_SIDE, GameEvent.PHASE_CHANGED:
 			if e.type == GameEvent.PHASE_CHANGED:
@@ -513,6 +513,14 @@ func _on_event(e: GameEvent) -> void:
 	if not deferred_visual:
 		scars.on_event(e)
 		cinematic.on_event(e)
+
+
+func _refresh_arrivals() -> void:
+	for u: Unit in controller.state.units:
+		var v := units_layer.view_of(u)
+		if v != null and not v.field_visible and not controller.state.mission.exited.has(u.id):
+			v.set_field_visible(true)
+			v.snap_to_state()
 
 
 func _rebuild_objectives() -> void:

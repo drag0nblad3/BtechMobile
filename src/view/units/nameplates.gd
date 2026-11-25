@@ -18,7 +18,7 @@ func setup(s: GameState, layer: UnitsLayer, viewer: Callable) -> void:
 	state = s
 	units_layer = layer
 	viewer_of = viewer
-	for u in s.units:
+	for u in s.all_units():
 		var plate := Node3D.new()
 		plate.visible = false
 		add_child(plate)
@@ -48,9 +48,14 @@ func _label(plate: Node3D, size: int, y: float, color: Color) -> Label3D:
 
 func _process(delta: float) -> void:
 	for id: int in _plates:
+		var plate: Node3D = _plates[id]
+		if not plate.visible:
+			continue
 		var v := units_layer.views.get(id) as Node3D
-		if v:
-			_plates[id].position = v.position + Vector3(0, LIFT, 0)
+		if v and v.visible:
+			plate.position = v.position + Vector3(0, LIFT, 0)
+		else:
+			plate.visible = false
 	_wait -= delta
 	if _wait <= 0.0:
 		_wait = REFRESH
@@ -62,11 +67,15 @@ func refresh() -> void:
 	var viewer: Unit = viewer_of.call() if viewer_of.is_valid() else null
 	var shown := {}
 	for u in PlateInfo.visible_from(state, viewer):
-		shown[u.id] = u
+		var v: UnitView = units_layer.view_of(u)
+		if v != null and v.visible:
+			shown[u.id] = u
 	for id: int in _plates:
 		var plate: Node3D = _plates[id]
 		plate.visible = shown.has(id)
 		if plate.visible:
+			var v: UnitView = units_layer.views[id]
+			plate.position = v.position + Vector3(0, LIFT, 0)
 			fill(plate, shown[id], viewer)
 
 

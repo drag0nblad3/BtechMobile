@@ -144,7 +144,7 @@ func _launch(group: Dictionary) -> void:
 			target = tv.impact_location(int(d["narc_loc"]), false)
 		points.append(target)
 	for i in points.size():
-		if get_tree().get_nodes_in_group("battle_shot").size() >= ShotFx.MAX_ACTIVE:
+		if get_tree().get_node_count_in_group("battle_shot") >= ShotFx.MAX_ACTIVE:
 			break
 		var from := origins[i % origins.size()]
 		VxFx.flash(_fx, from, 0.07)

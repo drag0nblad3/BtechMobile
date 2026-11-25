@@ -108,6 +108,7 @@ func _show_frame(index: int) -> void:
 		_playing = false
 		_status.text = "Replay frame cannot be loaded."
 		return
+	var first_frame := _map == null
 	if _map:
 		_map.queue_free()
 	if _units:
@@ -127,7 +128,7 @@ func _show_frame(index: int) -> void:
 	_scars.setup(state, _units, _frames.slice(0, index + 1))
 	_objectives = ObjectiveMarkers.build(state)
 	add_child(_objectives)
-	if index == 0:
+	if first_frame or index == 0:
 		var bounds := HexLayout.map_bounds(state.map)
 		_rig.bounds = bounds
 		_rig.snap(bounds.get_center(), 22.0)

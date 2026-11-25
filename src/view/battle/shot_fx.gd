@@ -47,7 +47,7 @@ static func miss_offset(attacker: int, target: int, weapon: String) -> Vector3:
 
 static func spawn(holder: Node3D, start: Vector3, end: Vector3,
 		weapon: String, hit: bool) -> Node3D:
-	if start.distance_to(end) < 0.12:
+	if start.distance_to(end) < 0.12 or holder.get_tree().get_node_count_in_group("battle_shot") >= MAX_ACTIVE:
 		return null
 	var kind := style(weapon)
 	var hue := tint(kind)
@@ -94,8 +94,9 @@ static func spawn(holder: Node3D, start: Vector3, end: Vector3,
 				var span := p - tail
 				if span.length() > 0.001:
 					line.position = (p + tail) * 0.5
-					line.basis = Basis(Quaternion(Vector3.UP, span.normalized()))
-					(line.mesh as CylinderMesh).height = span.length()
+					# Scale an existing cylinder instead of regenerating its mesh each frame.
+					line.basis = Basis(Quaternion(Vector3.UP, span.normalized())) * Basis.from_scale(
+						Vector3(1.0, span.length() / (line.mesh as CylinderMesh).height, 1.0))
 		, 0.0, 1.0, PROJECTILE_TIME)
 		travel.tween_property(orb, "transparency", 1.0, 0.08)
 	var dispose := root.create_tween()
