@@ -94,14 +94,18 @@ static func _tech_label(tech: String) -> String:
 	return "General" if tech == "both" else tech.replace("_", " ").capitalize()
 
 
+func refresh_usage() -> void:
+	_weapon_selected(_selected_index())
+
+
 func _weapon_selected(index: int) -> void:
 	if index < 0 or index >= _matches.size():
 		return
 	var item := _matches[index]
 	var users: Array = _usage.get(item["id"], [])
 	var names: Array[String] = []
-	for d: UnitDef in users.slice(0, 24):
-		names.append(d.display_name())
+	for d: UnitDef in UnitFavorites.prioritized(users, UnitFavorites.design_id).slice(0, 24):
+		names.append(UnitFavorites.caption(d.id, d.display_name()))
 	var suffix := " (first 24 shown)" if users.size() > 24 else ""
 	_weapon_info.text = "%s\n%s • %s\n\n%s\n\nInstalled on %d catalog designs%s" % [item["name"], item["category"], _tech_label(String(item["tech"])), item["about"], users.size(), suffix]
 	if not names.is_empty():
