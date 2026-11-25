@@ -57,7 +57,7 @@ static func physical(state: GameState, attacker: Unit, target: Unit, hex := Hex.
 			else PhysicalOptions.for_target(state, attacker, target)
 	for o in opts:
 		var key := "%s:%d" % [o["kind"], o["limb"]]
-		var lbl: String = o["kind"].capitalize()
+		var lbl: String = String(o.get("label", o["kind"])).capitalize()
 		if o["limb"] >= 0:
 			lbl += " (%s)" % Location.code_for(attacker.def, o["limb"])
 		rows.append({"key": key, "label": lbl, "to_hit": o["to_hit"],

@@ -18,6 +18,8 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 	if BaSwarm.on(t) == a.id and not a.def.is_support():
 		return BaBrushOff.options(state, a, t)
 	var out: Array[Dictionary] = []
+	if a.marksman_used:
+		return out  # a Marksman shot is the whole turn's attack (Campaign Operations p. 79)
 	if a.def.is_support() or (t.asset != null and t.asset.card.kind == AssetCard.VTOL):
 		return out  # Assets make no physical attacks; VTOLs can't be hit by them (p. 145)
 	if not a.def.quad:  # no arms: no punches, pushes or swings (p. 238)
@@ -33,6 +35,7 @@ static func for_target(state: GameState, a: Unit, t: Unit) -> Array[Dictionary]:
 		for o in out:
 			if int(o.get("damage", 0)) > 0:
 				o["damage"] = int(o["damage"]) + 1
+	out.append_array(Zweihander.options(state, a, t, out))
 	return out
 
 

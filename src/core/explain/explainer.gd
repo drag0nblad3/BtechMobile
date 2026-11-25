@@ -192,7 +192,7 @@ static func _declared(s: GameState, d: Dictionary, level: int) -> String:
 
 const PHYS_VERBS := {"punch": "punches", "kick": "kicks", "push": "pushes",
 		"charge": "charges", "dfa": "jumps on", "hatchet": "hacks at",
-		"sword": "slashes", "club": "clubs", "brush_off": "swats at"}
+		"sword": "slashes", "club": "clubs", "brush_off": "swats at", "zweihander": "swings two-handed at"}
 
 
 static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary) -> String:
@@ -200,6 +200,8 @@ static func _physical(s: GameState, d: Dictionary, level: int, seen: Dictionary)
 	if d["limb"] >= 0:
 		who += " (%s)" % Location.name_for(s.unit_by_id(d["attacker_id"]).def, d["limb"]).to_lower()
 	var res := "HIT for %d" % d["damage"] if d["hit"] else "miss"
+	if d.get("dodged", false):
+		res = "dodged (Dodge)"
 	if d["hit"] and d.get("tsm", false) and level != ExplainLevel.OFF:
 		res += " (doubled: its triple-strength myomer is hot)" if level == ExplainLevel.FULL else " (TSM)"
 	if d.get("why", "") != "":

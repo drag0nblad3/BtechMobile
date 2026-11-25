@@ -169,6 +169,7 @@ func declare_fire(unit: Unit, shots: Array) -> bool:
 	if not _may_act(unit, Phase.Kind.WEAPON_ATTACK):
 		return false
 	var decl := FireOptions.declare(state, unit, shots)
+	unit.marksman_used = decl.any(func(d: Dictionary) -> bool: return d.has("to_hit") and Marksman.on(d["to_hit"]))
 	state.declared_fire.append_array(decl)
 	IndirectFire.record(state, decl)
 	AssetIndirect.record(state, unit, decl)

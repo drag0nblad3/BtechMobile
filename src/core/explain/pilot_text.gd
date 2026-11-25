@@ -8,6 +8,9 @@ static func describe(e: GameEvent, s: GameState, level: int, seen: Dictionary = 
 	var who := Names.unit(s.unit_by_id(d["unit_id"]))
 	match e.type:
 		GameEvent.PSR:
+			if d["reason"] == "dodge":
+				return "%s rolls to dodge: %d against %d, a margin of %+d. Each physical attack this turn that hits by less misses." % [
+						who, d["roll"], d["need"], int(d["roll"]) - int(d["need"])]
 			if level == ExplainLevel.OFF:
 				return "" if d["ok"] else "%s fails a piloting roll (%s)." % [who, d["reason"]]
 			var t := "%s piloting roll (%s): rolled %d%s, needed %d: %s" % [who, d["reason"],
