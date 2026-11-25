@@ -202,7 +202,7 @@ func test_delta_frames_round_trip_and_legacy_restore() -> void:
 	check(encoded[13]["state_delta"].has("map"), "changed terrain is stored")
 	check(encoded[32].has("state"), "periodic checkpoint")
 	var decoded := BattleFrameStorage.decode(encoded)
-	check_eq(decoded, recorder.frames, "lossless random access")
+	check(decoded == recorder.frames, "lossless random access")
 	for i in [36, 1, 13, 0, 32]:
 		var s := BattleRecorder.state_at(decoded[i], designs(), terrain())
 		check_eq(s.unit_by_id(2).heat, 0 if i == 0 else i - 1)
@@ -211,9 +211,13 @@ func test_delta_frames_round_trip_and_legacy_restore() -> void:
 	var payload := BattleSave.capture(c, [], 0, -1, recorder.frames)
 	check(BattleSave._write(path, payload))
 	var restored := BattleSave._read(path)
-	check_eq(restored.get("frames", []), recorder.frames)
+	check(restored.get("frames", []) == JSON.parse_string(JSON.stringify(recorder.frames)),
+			"disk round trip preserves all JSON values")
 	payload["schema"] = 1
-	check(not BattleSave.restore(payload, designs(), terrain()).is_empty(), "legacy save remains readable")
+	check(BattleSave._write(path, payload), "legacy save writable")
+	var legacy := BattleSave._read(path)
+	check(not BattleSave.restore(legacy, designs(), terrain()).is_empty(), "legacy save remains readable")
+	check(legacy.get("frames", []) == restored.get("frames", []), "legacy and delta frames agree")
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 
 
