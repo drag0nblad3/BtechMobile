@@ -39,6 +39,10 @@ func _run() -> void:
 		return
 	if not _check(battle.preload_jobs > 0, "worker prepared real battle geometry"):
 		return
+	await process_frame
+	if state.phase == Phase.Kind.MOVEMENT and not battle.controller.pending_units().is_empty():
+		if not _check(battle.movement.selected != null and battle.controller.pending_units().has(battle.movement.selected), "first eligible mover auto-selected"):
+			return
 	var v: UnitView = battle.units_layer.view_of(reserve)
 	if not _check(v != null and not v.visible and v._model == null, "reserve did not build expensive model"):
 		return
