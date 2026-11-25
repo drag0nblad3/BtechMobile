@@ -42,6 +42,7 @@ func build(prepared_parts: Dictionary = {}) -> void:
 	body.name = "Body"
 	add_child(body)
 	var size := model.voxel_size
+	var cached := VxRenderCache.geometry_at(cache_path) if cache_path != "" else {}
 	# Build all joints before attaching children. Authored add-on details
 	# can legitimately precede their parent in the JSON and must still follow
 	# the right knee/arm when it animates.
@@ -57,7 +58,8 @@ func build(prepared_parts: Dictionary = {}) -> void:
 		joint.position = (spec["pivot"] - base) * size
 		parent.add_child(joint)
 		var part := VxPart.new()
-		part.setup(spec, model)
+		var geometry: Dictionary = cached.get(spec["name"], prepared_parts.get(spec["name"], {}))
+		part.setup(spec, model, geometry.get("paint_bounds", AABB()))
 		joint.add_child(part)
 		parts[spec["name"]] = part
 		var side := 0 if spec["loc"] in [Location.LT, Location.LA, Location.LL] else 1

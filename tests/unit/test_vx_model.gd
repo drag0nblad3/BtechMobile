@@ -44,6 +44,14 @@ func test_damage_matches_record_sheet() -> void:
 	var again := VxMech.from_file(PATH)
 	again.show_unit(u)
 	check_eq(again.voxel_count(), mech.voxel_count(), "same sheet, same picture")
+	var meshes := {}
+	for key: String in mech.parts:
+		meshes[key] = mech.parts[key].mesh
+	mech.show_unit(u)
+	for key: String in mech.parts:
+		check(mech.parts[key].mesh == meshes[key], "unchanged record keeps mesh: " + key)
+	mech.damage.show_location(Location.CT, 0.0, 0.0, 0.0, false)
+	check_eq(mech.voxel_count(), full, "repair restores intact geometry")
 	mech.free()
 	again.free()
 

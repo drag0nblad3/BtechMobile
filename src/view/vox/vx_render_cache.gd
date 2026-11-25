@@ -81,7 +81,7 @@ static func remember(path: String, parts: Dictionary) -> void:
 	for name: String in parts:
 		var p: VxPart = parts[name]
 		geometry[name] = {"mesh": p.mesh, "triangles": p.triangles,
-				"faces": p.faces_before_merge, "touching": p.touching}
+				"faces": p.faces_before_merge, "touching": p.touching, "paint_bounds": p.paint_bounds}
 	_geometry[path] = geometry
 
 
