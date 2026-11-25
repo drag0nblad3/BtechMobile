@@ -2,6 +2,9 @@ class_name AttackPresentation
 extends Node
 ## Buffers the synchronous rules event burst; schedules cosmetic shots and
 ## snapshots in emission order. Never rolls dice or writes a live Unit.
+signal visual_event(event: GameEvent)
+signal trail_created(trail: Node3D)
+
 var _fx: BattleFx
 var _state: GameState
 var _units: UnitsLayer
@@ -91,6 +94,7 @@ func _flush() -> void:
 func _launch(group: Dictionary) -> void:
 	var e: GameEvent = group["attack"]
 	var d := e.data
+	visual_event.emit(e)
 	var av: UnitView = _units.views.get(int(d.get("attacker_id", -1)))
 	if av == null or not av.visible:
 		return
@@ -144,7 +148,9 @@ func _launch(group: Dictionary) -> void:
 			break
 		var from := origins[i % origins.size()]
 		VxFx.flash(_fx, from, 0.07)
-		ShotFx.spawn(_fx, from, points[i], weapon, true)
+		var trail := ShotFx.spawn(_fx, from, points[i], weapon, true)
+		if trail != null:
+			trail_created.emit(trail)
 
 
 func _intercept(point: Vector3, weapon: String) -> void:
@@ -155,6 +161,7 @@ func _intercept(point: Vector3, weapon: String) -> void:
 
 func _arrive(entry: Dictionary) -> void:
 	var e: GameEvent = entry["event"]
+	visual_event.emit(e)
 	var v: UnitView = _units.views.get(int(e.data.get("unit_id", -1)))
 	if e.type == GameEvent.DAMAGE and e.data.get("covered", false) and not entry["points"].is_empty():
 		VxBlast.spawn(_fx, entry["points"][0], "dust", int(e.data.get("source_id", 0)))

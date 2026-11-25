@@ -123,6 +123,8 @@ func _resolved_attack(scene: Node) -> bool:
 	var before := _remaining(m)
 	var w := a.weapons[wi]
 	var fired := GameEvent.new(GameEvent.WEAPON_FIRED, {"attacker_id": a.id, "target_id": b.id, "weapon_id": w.def.id, "weapon": w.def.name, "weapon_index": wi, "hit": true})
+	var endpoints: Array[Vector3] = []
+	scene.fx.attacks.trail_created.connect(func(trail: Node3D): endpoints.append(trail.get_meta("shot_to")))
 	scene.fx.play(fired)
 	var steps := Damage.apply(b, Location.CT, 3)
 	var damage := GameEvent.new(GameEvent.DAMAGE, {"source_id": a.id, "unit_id": b.id, "source": w.def.name, "amount": 3, "loc": Location.CT, "rear": false, "steps": steps})
@@ -130,16 +132,9 @@ func _resolved_attack(scene: Node) -> bool:
 	scene.fx.play(damage)
 	if not _check(_remaining(m) == before and scene.units_layer.attack_playing, "armor waits for visual impact"):
 		return false
-	await process_frame
-	await process_frame
-	await create_timer(0.10).timeout
-	var found := false
-	for trail: Node in get_nodes_in_group("battle_shot"):
-		if trail.has_meta("shot_to") and (trail.get_meta("shot_to") as Vector3).is_equal_approx(expected):
-			found = true
-	if not _check(found, "projectile endpoint equals resolved armor contact"):
+	await create_timer(1.2).timeout
+	if not _check(endpoints.any(func(p: Vector3): return p.is_equal_approx(expected)), "projectile endpoint equals resolved armor contact"):
 		return false
-	await create_timer(0.75).timeout
 	return _check(_remaining(m) < before and not scene.units_layer.attack_playing, "arrival applies damage and unlocks input")
 
 

@@ -214,6 +214,9 @@ func _build_views(state: GameState) -> void:
 	add_child(cinematic)
 	cinematic.setup(rig, units_layer)
 	cinematic.set_enabled(GameSettings.cinematic_camera)
+	fx.attacks.visual_event.connect(audio.on_event)
+	fx.attacks.visual_event.connect(atmosphere.on_event)
+	fx.attacks.visual_event.connect(cinematic.on_event)
 	gestures = TouchGestures.new()
 	add_child(gestures)
 	hud = BattleHud.new()
@@ -453,8 +456,9 @@ func _on_event(e: GameEvent) -> void:
 		_autosave.call_deferred()
 		BattleSave.save_replay.call_deferred(recorder.frames)
 	var deferred_visual := fx.play(e)
-	audio.on_event(e)
-	atmosphere.on_event(e)
+	if not deferred_visual:
+		audio.on_event(e)
+		atmosphere.on_event(e)
 	if tutorial:
 		lessons.add(tutorial.on_event(e, s))
 	match e.type:
@@ -507,7 +511,7 @@ func _on_event(e: GameEvent) -> void:
 			movement.clear_selection()
 	if not deferred_visual:
 		scars.on_event(e)
-	cinematic.on_event(e)
+		cinematic.on_event(e)
 
 
 func _rebuild_objectives() -> void:
