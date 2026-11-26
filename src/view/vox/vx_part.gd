@@ -32,7 +32,9 @@ func setup(spec: Dictionary, model: VxModel, bounds: AABB = AABB()) -> void:
 	name = part_name + "_mesh"
 	loc = spec["loc"]
 	original = spec["cells"]
-	cells = original.duplicate()
+	# Intact cells are read-only. Damage constructs a replacement dictionary
+	# in set_removed, so avoid duplicating every high-density model at launch.
+	cells = original
 	_pivot = spec["pivot"]
 	_size = model.voxel_size
 	_colors = model.colors

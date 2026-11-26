@@ -46,13 +46,19 @@ func _on_touch(e: InputEventScreenTouch) -> void:
 		else:
 			_moved = true  # Multi-touch is never a tap.
 	else:
+		# A touch may begin on a HUD control and end over the battlefield.
+		# It is not a map tap unless this recognizer saw the press.
+		if not _touches.has(e.index):
+			return
 		_touches.erase(e.index)
-		if _touches.is_empty():
+		if _touches.is_empty() and not e.canceled:
 			_end_press(e.position)
+		if e.canceled:
+			_moved = true
 
 
 func _on_drag(e: InputEventScreenDrag) -> void:
-	if not _touches.has(e.index):
+	if not _touches.has(e.index) or not e.position.is_finite() or not e.relative.is_finite():
 		return
 	if _touches.size() == 1:
 		_touches[e.index] = e.position
@@ -66,7 +72,7 @@ func _on_drag(e: InputEventScreenDrag) -> void:
 	_touches[e.index] = e.position
 	var v0 := before - other
 	var v1 := e.position - other
-	if v0.length() > 1.0:
+	if v0.length() > 1.0 and v1.length() > 1.0:
 		var scale := v1.length() / v0.length()
 		var rotation := v0.angle_to(v1)
 		if absf(scale - 1.0) > 0.004:

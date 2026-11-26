@@ -55,6 +55,8 @@ func shake(strength: float, seed: int) -> void:
 
 ## Drag the map: screen pixels -> ground movement, scaled by zoom.
 func pan(screen_delta: Vector2) -> void:
+	if not screen_delta.is_finite():
+		return
 	var k := _goal_dist * 0.0022
 	var right := Vector3(cos(_goal_yaw), 0, -sin(_goal_yaw))
 	var fwd := Vector3(-sin(_goal_yaw), 0, -cos(_goal_yaw))
@@ -64,14 +66,19 @@ func pan(screen_delta: Vector2) -> void:
 
 ## factor > 1 zooms in.
 func zoom(factor: float) -> void:
+	if not is_finite(factor) or factor <= 0.0:
+		return
 	_goal_dist = clampf(_goal_dist / maxf(factor, 0.01), MIN_DIST, MAX_DIST)
 
 
 func orbit(delta_yaw: float) -> void:
-	_goal_yaw += delta_yaw
+	if is_finite(delta_yaw):
+		_goal_yaw = wrapf(_goal_yaw + delta_yaw, -PI, PI)
 
 
 func tilt(delta_pitch: float) -> void:
+	if not is_finite(delta_pitch):
+		return
 	_goal_pitch = clampf(_goal_pitch + delta_pitch, MIN_PITCH, MAX_PITCH)
 
 
