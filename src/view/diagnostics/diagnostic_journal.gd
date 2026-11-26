@@ -70,8 +70,8 @@ static func end_status(value: String) -> String:
 	var lines := value.strip_edges().split("\n", false)
 	if lines.is_empty():
 		return "no session"
-	var last := lines[-1].split(" | ", false, 2)
-	var marker: String = last[1] if last.size() >= 2 else ""
+	var last := lines[-1].split("|", true, 2)
+	var marker: String = last[1].strip_edges() if last.size() >= 2 else ""
 	if marker == "SESSION_CLEAN_EXIT":
 		return "clean"
 	if marker == "SESSION_PAUSED":
