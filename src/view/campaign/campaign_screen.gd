@@ -66,10 +66,10 @@ func _build() -> void:
 		UiKit.label(report, "\n".join(company.last_report), UiKit.SMALL)
 	SupportPanel.header(_list, company, chaos, _act, _note)
 	UiSkin.rule(_list)
-	MarketPanel.market(_list, company, db, chaos, _act)
+	MarketPanel.market(_list, company, db, chaos, _act, _build)
 	UiSkin.rule(_list)
 	UiKit.label(_list, "Roster", 26).modulate = Color(0.75, 0.85, 1.0)
-	for m in company.mechs:
+	for m: CampaignMech in UnitFavorites.prioritized(company.mechs, func(mech: CampaignMech) -> String: return mech.design):
 		_mech_row(m)
 	var retire := UiKit.button(_list, "TAP AGAIN TO RETIRE THE COMPANY" if _confirm_retire else "Retire company",
 			_retire, Vector2(0, 52), "subtle")
@@ -86,7 +86,11 @@ func _mech_row(m: CampaignMech) -> void:
 			"" if p.battles == 1 else "s", p.kills, "" if p.kills == 1 else "s"]
 		if p.wounds > 0 and not p.dead:
 			who += " · %d wound%s" % [p.wounds, "" if p.wounds == 1 else "s"]
-	var name_label := UiKit.label(_list, (("%s %s" % [def.name, def.model]) if def != null else m.design) + ("  (salvage)" if m.salvage else ""), UiKit.FONT)
+	var identity := HBoxContainer.new()
+	_list.add_child(identity)
+	UnitFavorites.button(identity, m.design, _build)
+	var name_label := UiKit.label(identity, (("%s %s" % [def.name, def.model]) if def != null else m.design) + ("  (salvage)" if m.salvage else ""), UiKit.FONT)
+	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	name_label.modulate = Color(1.0, 0.9, 0.6)
 	UiKit.label(_list, who, UiKit.SMALL)
 	UiKit.label(_list, ConditionText.summary(m, db), UiKit.SMALL)

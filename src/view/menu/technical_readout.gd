@@ -7,6 +7,7 @@ var _matches: Array[UnitDef] = []
 var _search: LineEdit
 var _picker: OptionButton
 var _name_line: Label
+var _favorite: Button
 var _details: Label
 var _comparison: Label
 var _viewer: ReadoutModel
@@ -61,7 +62,12 @@ func _ready() -> void:
 	_picker.name = "UnitResults"
 	var info := _scroll_body(left)
 	info.get_parent().name = "ReadoutDetailsScroll"
-	_name_line = UiKit.label(info, "", 25)
+	var identity := HBoxContainer.new()
+	info.add_child(identity)
+	_name_line = UiKit.label(identity, "", 25)
+	_name_line.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_favorite = UiKit.button(identity, "☆", _toggle_favorite, Vector2(48, 48), "subtle")
+	_favorite.name = "FavoriteUnit"
 	_name_line.name = "UnitHeading"
 	_details = UiKit.label(info, "", 20)
 	UiSkin.rule(info, UiSkin.BORDER)
@@ -74,6 +80,9 @@ func _ready() -> void:
 	encyclopedia.name = "Equipment encyclopedia"
 	tabs.add_child(encyclopedia)
 	encyclopedia.setup(_db.weapons, _entries)
+	tabs.tab_changed.connect(func(index: int):
+		if index == 1:
+			encyclopedia.refresh_usage())
 	_filter("")
 
 
@@ -113,8 +122,9 @@ func _filter(query: String) -> void:
 		if ReadoutFilters.unit_matches(d, query, filters):
 			_matches.append(d)
 	ReadoutFilters.sort_units(_matches, int(filters.get("sort", 0)))
+	_matches.assign(UnitFavorites.prioritized(_matches, UnitFavorites.design_id))
 	for d: UnitDef in _matches:
-		_picker.add_item(design_heading(d))
+		_picker.add_item(UnitFavorites.caption(d.id, design_heading(d)))
 	_unit_count.text = "%d / %d designs" % [_matches.size(), _entries.size()]
 	_picker.disabled = _matches.is_empty()
 	if not _matches.is_empty():
@@ -128,6 +138,13 @@ func _filter(query: String) -> void:
 		_details.text = ""
 		_viewer.select_design(null)
 		_compare()
+	UnitFavorites.style(_favorite, _selected.id if _selected != null else "")
+
+
+func _toggle_favorite() -> void:
+	if _selected != null:
+		UnitFavorites.toggle(_selected.id)
+		_filter(_search.text)
 
 
 func _reset_units() -> void:
@@ -142,6 +159,7 @@ func _select(index: int) -> void:
 	_selected = _matches[index]
 	var d := _selected
 	_name_line.text = design_heading(d)
+	UnitFavorites.style(_favorite, d.id)
 	if d.asset != null or d.vehicle != null or d.battle_armor != null:
 		_details.text = "%s\n%s" % [ForceCatalogCard.description(d), ForceCatalogCard.weapons_line(d)]
 	else:

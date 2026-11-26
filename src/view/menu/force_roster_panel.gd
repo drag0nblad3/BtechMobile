@@ -9,15 +9,17 @@ var _budget: ProgressBar
 var _rows: VBoxContainer
 var _side := 0
 var _remove: Callable
+var _on_favorite: Callable
 var _templates: MenuButton
 var _choose_template: Callable
 var _builder: ForceBuilder
 
 
 func build(parent: Control, side: int, on_select: Callable,
-		on_remove: Callable, on_template: Callable) -> void:
+		on_remove: Callable, on_template: Callable, on_favorite: Callable = Callable()) -> void:
 	_side = side
 	_remove = on_remove
+	_on_favorite = on_favorite
 	_choose_template = on_template
 	frame = PanelContainer.new()
 	frame.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -115,7 +117,7 @@ func refresh(builder: ForceBuilder, db: UnitDb, active: bool) -> void:
 	var roster: Array = builder.rosters[_side]
 	if roster.is_empty():
 		UiSkin.label(UiKit.label(_rows, "No units yet. Choose one from the catalog.", 16), "muted")
-	for i in roster.size():
+	for i in UnitFavorites.indices(roster, func(id: String) -> String: return id):
 		var idx := i
 		var d: UnitDef = db.get_def(roster[i])
 		var row := HBoxContainer.new()
@@ -129,6 +131,7 @@ func refresh(builder: ForceBuilder, db: UnitDb, active: bool) -> void:
 		name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		name.max_lines_visible = 2
 		UiSkin.label(name)
+		UnitFavorites.button(row, d.id, _on_favorite)
 		var remove := UiKit.button(row, "×", func(): _remove.call(_side, idx),
 			Vector2(52, 50), "subtle")
 		remove.name = "RemoveUnit"

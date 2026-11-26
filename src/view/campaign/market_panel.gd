@@ -7,7 +7,7 @@ extends RefCounted
 static var armed := ""  ## Mech id waiting for the second tap on Sell.
 
 
-static func market(list: VBoxContainer, c: Campaign, db: UnitDb, rules: ChaosRules, act: Callable) -> void:
+static func market(list: VBoxContainer, c: Campaign, db: UnitDb, rules: ChaosRules, act: Callable, redraw: Callable = Callable()) -> void:
 	UiKit.label(list, "'Mechs for sale this month", 26).modulate = Color(0.75, 0.85, 1.0)
 	var rng := RandomNumberGenerator.new()
 	rng.randomize()
@@ -15,11 +15,14 @@ static func market(list: VBoxContainer, c: Campaign, db: UnitDb, rules: ChaosRul
 		MechMarket.stock(c, db, rules, rng)
 		CampaignStore.save(c)
 	var row := SupportPanel.flow(list)
-	for i in c.market.size():
+	for i in UnitFavorites.indices(c.market, func(id: String) -> String: return id):
 		var def := db.get_def(c.market[i])
 		if def == null:
 			continue
-		var b := SupportPanel.small_button(row, "Buy %s %s (%d t, %s) · %d SP" % [def.name, def.model, def.tonnage,
+		var item := HBoxContainer.new()
+		row.add_child(item)
+		UnitFavorites.button(item, def.id, redraw)
+		var b := SupportPanel.small_button(item, "Buy %s %s (%d t, %s) · %d SP" % [def.name, def.model, def.tonnage,
 				"Introductory" if IntroTech.is_intro(def, rules) else "Standard", MechMarket.price(def, rules)],
 				act.bind(MechMarket.buy.bind(c, def.id, db, rules)))
 		b.name = "Buy%d" % i

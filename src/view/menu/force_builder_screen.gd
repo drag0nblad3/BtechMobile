@@ -83,7 +83,7 @@ func _ready() -> void:
 	body.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	body.add_theme_constant_override("separation", 12)
 	layout.add_child(body)
-	catalog = ForceCatalog.new(db, _on_add, builder)
+	catalog = ForceCatalog.new(db, _on_add, builder, _refresh)
 	catalog.build(body)
 	var right := VBoxContainer.new()
 	right.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -132,7 +132,7 @@ func _ready() -> void:
 		var idx := side
 		var roster := ForceRosterPanel.new()
 		roster.build(roster_row, idx, func(): _select_side(idx), _on_remove,
-			_choose_starter)
+			_choose_starter, _refresh)
 		_rosters.append(roster)
 	_feedback = UiKit.label(forces, "", 18)
 	UiSkin.label(_feedback, "section")
@@ -336,7 +336,8 @@ func _open_overlay(screen: Control) -> void:
 	screen.tree_exited.connect(func():
 		_overlay = null
 		if is_inside_tree() and is_instance_valid(_layout):
-			_layout.show(), CONNECT_ONE_SHOT)
+			_layout.show()
+			_refresh(), CONNECT_ONE_SHOT)
 	add_child(screen)
 	screen.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 

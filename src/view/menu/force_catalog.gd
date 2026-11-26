@@ -16,6 +16,8 @@ var weight := 0  ## ForceCatalogQuery.CLASSES index, 0 = all.
 var sort_by := 0  ## ForceCatalogQuery.SORTS index.
 var _context_key := ""
 var _on_add: Callable
+var _on_favorite: Callable
+var _favorite_revision := -1
 var _config := {}
 var _shown := PAGE_SIZE
 var _cards: Array[Dictionary] = []
@@ -30,10 +32,12 @@ var _class_row: HBoxContainer
 var _sort: Button
 
 
-func _init(unit_db: UnitDb, on_add: Callable, force_builder: ForceBuilder) -> void:
+func _init(unit_db: UnitDb, on_add: Callable, force_builder: ForceBuilder,
+		on_favorite: Callable = Callable()) -> void:
 	db = unit_db
 	builder = force_builder
 	_on_add = on_add
+	_on_favorite = on_favorite
 
 
 func build(parent: Control) -> void:
@@ -130,8 +134,15 @@ func _matches() -> Array[Dictionary]:
 					not verified_only or builder.availability_for(active_side, d.id)["status"] == "available"))
 			if variants.is_empty():
 				continue
-			var index := int(_config.get(g[0].chassis, 0)) % variants.size()
-			matches.append({"def": variants[index], "group": variants})
+			variants = UnitFavorites.prioritized(variants, UnitFavorites.design_id)
+			var key: String = g[0].chassis if not String(g[0].chassis).is_empty() else g[0].id
+			var selected := String(_config.get(key, ""))
+			var index := 0
+			for i in variants.size():
+				if variants[i].id == selected:
+					index = i
+					break
+			matches.append({"def": variants[index], "group": variants, "key": key})
 	else:
 		var source: Array = db.sorted_vehicles() if category == 1 else (
 			db.sorted_battle_armor() if category == 2 else db.sorted_assets())
@@ -141,12 +152,16 @@ func _matches() -> Array[Dictionary]:
 					not verified_only or builder.availability_for(active_side, def.id)["status"] == "available"):
 				matches.append({"def": def, "group": [def]})
 	ForceCatalogQuery.sort(matches, sort_by, builder, active_side)
-	return matches
+	var ordered: Array[Dictionary] = []
+	ordered.assign(UnitFavorites.prioritized(matches, func(entry: Dictionary) -> String:
+		return UnitFavorites.first_favorite(entry["group"])))
+	return ordered
 
 
 func _draw() -> void:
 	if _list == null:
 		return
+	_favorite_revision = UnitFavorites.revision
 	UiKit.clear(_list)
 	_cards.clear()
 	for i in _tab_buttons.size():
@@ -167,20 +182,30 @@ func _draw() -> void:
 		var entry: Dictionary = matches[i]
 		var def: UnitDef = entry["def"]
 		var group: Array = entry["group"]
-		var group_key: String = def.chassis
+		var group_key: String = entry.get("key", def.id)
 		var card := ForceCatalogCard.build(_list, def, group,
 			func(): _on_add.call(active_side, def.id),
 			func():
-				_config[group_key] = int(_config.get(group_key, 0)) + 1
-				_draw())
+				_config[group_key] = group[(group.find(def) + 1) % group.size()].id
+				_draw(), _favorites_changed)
 		_cards.append(card)
 	_more.visible = count < matches.size()
 	_context_key = "%d:%s" % [builder.era_year, builder.factions[active_side]]
 	refresh()
 
 
+func _favorites_changed() -> void:
+	if _on_favorite.is_valid():
+		_on_favorite.call()
+	else:
+		_draw()
+
+
 func refresh() -> void:
 	if _list == null:
+		return
+	if _favorite_revision != UnitFavorites.revision:
+		_draw()
 		return
 	if verified_only and _context_key != ("%d:%s" % [builder.era_year, builder.factions[active_side]]):
 		rebuild()

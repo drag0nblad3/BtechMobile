@@ -3,11 +3,15 @@ extends RefCounted
 ## Compact, budget-aware catalog cards; all combat data comes from UnitDef.
 
 static func build(parent: Control, def: UnitDef, variants: Array,
-		on_add: Callable, on_variant: Callable) -> Dictionary:
+		on_add: Callable, on_variant: Callable, on_favorite: Callable = Callable()) -> Dictionary:
 	var box := UiKit.panel(parent)
 	box.add_theme_constant_override("separation", 2)
-	var name := UiKit.label(box, def.display_name(), 21)
+	var heading := HBoxContainer.new()
+	box.add_child(heading)
+	var name := UiKit.label(heading, def.display_name(), 21)
+	name.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	UiSkin.label(name, "body")
+	UnitFavorites.button(heading, def.id, on_favorite)
 	var summary := UiKit.label(box, description(def) + "  •  " + weapons_line(def), 16)
 	summary.autowrap_mode = TextServer.AUTOWRAP_OFF
 	summary.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
@@ -25,7 +29,7 @@ static func build(parent: Control, def: UnitDef, variants: Array,
 	var info := UiKit.label(text, "", 15)
 	UiSkin.label(info, "muted")
 	if variants.size() > 1:
-		var cycle := UiKit.button(actions, "CONFIG %d/%d" % [variants.find(def) + 1, variants.size()],
+		var cycle := UiKit.button(actions, ("%sCONFIG %d/%d" % ["★ " if not UnitFavorites.first_favorite(variants).is_empty() and not UnitFavorites.has(def.id) else "", variants.find(def) + 1, variants.size()]),
 			on_variant, Vector2(120, 48), "subtle")
 		cycle.add_theme_font_size_override("font_size", 15)
 	var add := UiKit.button(actions, "ADD", on_add, Vector2(150, 48), "primary")
