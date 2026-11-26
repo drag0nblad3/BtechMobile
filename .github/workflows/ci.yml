@@ -35,6 +35,15 @@ jobs:
           timeout 120s godot --headless -s tools/battle_loading_smoke.gd 2>&1 | tee battle-loading.log
           grep -q "battle loading smoke ok" battle-loading.log
           ! grep -E "SCRIPT ERROR|Parse Error|BATTLE_LOADING_FAILED" battle-loading.log
+      - name: Quick battle camera navigation (real Mobile renderer)
+        run: |
+          set -o pipefail
+          export XDG_DATA_HOME="$(mktemp -d)"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq mesa-vulkan-drivers xvfb
+          timeout --signal=TERM --kill-after=5s 180s xvfb-run -a godot --rendering-method mobile --rendering-driver vulkan --resolution 1280x720 --max-fps 30 -s tools/quick_battle_camera_smoke.gd 2>&1 | tee quick-camera.log
+          grep -q "quick battle camera smoke ok" quick-camera.log
+          ! grep -E "SCRIPT ERROR|Parse Error|QUICK_CAMERA_FAILED|VK_ERROR_DEVICE_LOST" quick-camera.log
       - name: Battle save + replay scene smoke
         run: |
           set -o pipefail

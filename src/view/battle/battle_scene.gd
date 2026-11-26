@@ -49,6 +49,10 @@ func _ready() -> void:
 	add_child(_loading)
 	await _loading.step("Loading battle data and deployment orders", 10.0)
 	GameSettings.load_settings()
+	# On Android do not retain previous battles' high-density meshes during
+	# the next deployment's peak CPU/GPU allocation.
+	if OS.get_name() == "Android":
+		VxRenderCache.clear()
 	var saved := {}
 	if BattleLaunch.load_autosave:
 		BattleLaunch.load_autosave = false
