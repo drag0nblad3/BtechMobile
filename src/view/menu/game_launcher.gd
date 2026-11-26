@@ -83,7 +83,9 @@ func _ready() -> void:
 	reference.name = "TechnicalReadoutButton"
 	var slots := UiKit.button(tools, "SAVE SLOTS", _open_slots, Vector2(0, 48), "subtle")
 	slots.name = "SaveSlotsButton"
-	for b: Button in [drills, reference, slots]:
+	var diagnostics := UiKit.button(tools, "CRASH LOGS", _open_diagnostics, Vector2(0, 48), "subtle")
+	diagnostics.name = "CrashLogsButton"
+	for b: Button in [drills, reference, slots, diagnostics]:
 		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		b.add_theme_font_size_override("font_size", 19)
 	if BattleLaunch.open_training:
@@ -115,6 +117,10 @@ func _open_reference() -> void:
 
 func _open_slots() -> void:
 	await _open_screen("Save slots", func() -> Control: return SaveSlotScreen.new())
+
+
+func _open_diagnostics() -> void:
+	await _open_screen("Crash logs", func() -> Control: return CrashLogScreen.new())
 
 
 func _open_drills() -> void:
@@ -174,6 +180,7 @@ func _quick_battle() -> void:
 	rng.randomize()
 	var db := UnitDb.load_dir()
 	await _loading.step("Selecting matched forces and battlefield", 40.0)
+	CrashMonitor.note("QUICK_BATTLE", "rng_seed=%d" % rng.seed)
 	var state := QuickBattle.build(db, rng)
 	var path := BATTLE_MENU
 	if state != null:

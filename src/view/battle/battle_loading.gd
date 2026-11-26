@@ -65,6 +65,7 @@ func step(message: String, completed: float) -> void:
 	stage = maxf(stage, clampf(completed, 0.0, 100.0))
 	status.text = message
 	bar.value = stage
+	CrashMonitor.note("LOADING", "%s | %.0f%% | %s" % [heading, stage, message])
 	if staged():
 		await get_tree().process_frame
 		await get_tree().process_frame

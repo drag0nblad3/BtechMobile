@@ -21,6 +21,7 @@ static func build(db: UnitDb, rng: RandomNumberGenerator) -> GameState:
 	var maps := MapChoice.new()
 	maps.index = rng.randi_range(0, maps.themes.size() - 1)
 	maps.set_seed(rng.randi_range(1, 99999))
+	CrashMonitor.note("QUICK_MAP", "theme=%s seed=%d sheets=%s" % [maps.theme().name, maps.seed_value, maps.sheets()])
 	return fb.build(maps.build())
 
 

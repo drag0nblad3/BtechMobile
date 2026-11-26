@@ -45,6 +45,8 @@ var preload_jobs := 0
 
 
 func _ready() -> void:
+	CrashMonitor.battle_active = true
+	CrashMonitor.note("BATTLE", "scene entered")
 	_loading = BattleLoading.new()
 	add_child(_loading)
 	await _loading.step("Loading battle data and deployment orders", 10.0)
@@ -72,6 +74,9 @@ func _ready() -> void:
 		controller = saved["controller"]
 		state = controller.state
 		recorder.frames = saved["frames"]
+	var design_ids: Array = state.all_units().map(func(u: Unit) -> String: return u.def.id)
+	CrashMonitor.note("BATTLE_MAP", "%s %dx%d | units=%s | voxels=%s cinematic=%s" % [
+		state.map.name, state.map.width, state.map.height, str(design_ids), GameSettings.voxel_mechs, GameSettings.cinematic_camera])
 	await _loading.step("Preparing mission and command systems", 18.0)
 	bots = BotDriver.new()
 	bots.controller = controller
@@ -121,9 +126,15 @@ func _ready() -> void:
 	# Keep the cover through the initial deferred autosave and first render.
 	await _loading.step("Battle ready", 100.0)
 	startup_complete = true
+	CrashMonitor.note("BATTLE_READY", "turn=%d phase=%d" % [state.turn, state.phase])
 	_loading.hide()
 	_loading.queue_free()
 	bots.set_process(true)
+
+
+func _exit_tree() -> void:
+	CrashMonitor.battle_active = false
+	CrashMonitor.note("BATTLE", "scene exited")
 
 
 func _resume_ui() -> void:
@@ -256,6 +267,7 @@ func _build_views(state: GameState) -> void:
 		var prepared := {}
 		if UnitsLayer.on_field(state, u, see_hidden):
 			prepared = await queue.take(UnitVoxels.startup_path(u.def))
+		CrashMonitor.note("MODEL", "building unit=%d design=%s" % [u.id, u.def.id])
 		units_layer.build_one(state, u, see_hidden, true, prepared)
 	preload_jobs = queue.jobs_completed
 	queue.queue_free()
@@ -532,6 +544,9 @@ func _cycle_explain() -> void:
 
 
 func _on_event(e: GameEvent) -> void:
+	if e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_MOVED,
+			GameEvent.FIRE_DECLARED, GameEvent.WEAPON_FIRED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]:
+		CrashMonitor.note("GAME_EVENT", "%s turn=%d phase=%d" % [e.type, controller.state.turn, controller.state.phase])
 	var s := controller.state
 	var bold := e.type in [GameEvent.TURN_STARTED, GameEvent.PHASE_CHANGED, GameEvent.UNIT_DESTROYED, GameEvent.GAME_OVER]
 	var explanation := explainer.describe(e, s)
