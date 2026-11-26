@@ -26,6 +26,9 @@ func _run() -> void:
 		return
 	(screen.find_child("StartCompany", true, false) as Button).pressed.emit()
 	await _frames(1)
+	var opening: Campaign = screen.company
+	if not _check(opening.wp == 1000 and ContractBoard.affordable_index(opening, screen.chaos) >= 0, "at least one opening contract affordable at unchanged starting WP"):
+		return
 	var form := screen.find_child("FormationButton", true, false) as Button
 	if not _check(form != null, "formation button missing"):
 		return

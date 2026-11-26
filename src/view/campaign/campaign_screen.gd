@@ -119,7 +119,17 @@ func _contracts() -> void:
 		for i in company.offers.size():
 			company.offers[i].story = CampaignStory.offer(company, company.offers[i], i)
 		CampaignStore.save(company)
+	var replacement := ContractBoard.ensure_opening_choice(company, chaos)
+	if replacement >= 0:
+		company.offers[replacement].story = CampaignStory.offer(company, company.offers[replacement], replacement)
+		CampaignStore.save(company)
 	_selected_contract = clampi(_selected_contract, 0, maxi(0, company.offers.size() - 1))
+	# On initial entry prefer a debt-free offer, without overriding an
+	# explicitly expanded contract or a later deliberate debt decision.
+	if company.battles == 0 and _expanded_contract == -1 and not company.offers.is_empty() and company.offers[_selected_contract].cost(chaos) > company.wp:
+		var affordable := ContractBoard.affordable_index(company, chaos)
+		if affordable >= 0:
+			_selected_contract = affordable
 	for i in company.offers.size():
 		ContractCard.add(_list, company, company.offers[i], chaos, i, _toggle_option,
 			_select_contract, i == _selected_contract, i == _expanded_contract)
@@ -142,8 +152,9 @@ func _build_next_action() -> void:
 	var note := "%s · %d WP" % [info.get("name", k.mission_id), k.cost(chaos)]
 	if why != "":
 		note = why
-	elif company.wp < k.cost(chaos):
-		note += " · Warchest debt"
+	else:
+		var remaining := company.wp - k.cost(chaos)
+		note += " · %d WP left" % remaining if remaining >= 0 else " · %d WP debt" % -remaining
 	var status := UiKit.label(_footer, note, 18)
 	status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	var take := UiKit.button(_footer, "TAKE CONTRACT", _take.bind(_selected_contract),
