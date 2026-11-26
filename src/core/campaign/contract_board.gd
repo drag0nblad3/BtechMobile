@@ -33,7 +33,7 @@ static func offer(rules: ChaosRules, rng: RandomNumberGenerator, count: int = 3)
 
 
 ## Preserve an existing board whenever a debt-free choice is available.
-## For older unfought companies with a smaller Warchest, offer a low-cost
+## For any unfought company with no affordable offer, provide a low-cost
 ## track using the same legal objective/option mix and full price formula.
 ## No effect on later campaigns, active contracts or company balances.
 static func ensure_opening_choice(company: Campaign, rules: ChaosRules) -> int:

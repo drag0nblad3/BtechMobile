@@ -1,7 +1,7 @@
 {
   "_source": "Campaign Operations, Chaos Campaign rules (pp. 156-173). Numbers are the book's; where the book gives a range or leaves the choice to the GM, the pick is ours and marked 'pick'.",
-  "starting_wp": 1600,
-  "_starting_wp": "pick: the book leaves starting WP to the GM (p. 160); covers the most expensive generated opening contract (1425 WP), plus one month's maximum 100 WP support conversion and a 75 WP reserve.",
+  "starting_wp": 1000,
+  "_starting_wp": "pick: the book leaves starting WP to the GM (p. 160); enough for one contract with some spare.",
   "track_cost_share": 0.75,
   "_track_cost_share": "p. 173: a track costs 75% of all its Objective and Option rewards.",
   "enemy_bv_percent": [75, 100, 125],
