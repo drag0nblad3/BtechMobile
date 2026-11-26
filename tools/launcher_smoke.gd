@@ -18,7 +18,7 @@ func _test_navigation() -> void:
 			"developer labs should not occupy the player launcher"):
 		return
 	for name: String in ["TrainingButton", "CampaignButton", "MapCampaignButton",
-			"TechnicalReadoutButton", "SaveSlotsButton"]:
+			"TechnicalReadoutButton", "SaveSlotsButton", "CrashLogsButton"]:
 		var launcher := current_scene as GameLauncher
 		(launcher.find_child(name, true, false) as Button).pressed.emit()
 		await process_frame
