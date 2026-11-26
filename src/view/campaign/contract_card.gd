@@ -13,7 +13,9 @@ static func add(list: VBoxContainer, c: Campaign, k: Contract, rules: ChaosRules
 	if why != "":
 		summary += "  ·  Unavailable"
 	elif c.wp < k.cost(rules):
-		summary += "  ·  Debt"
+		summary += "  ·  %d WP debt" % (k.cost(rules) - c.wp)
+	else:
+		summary += "  ·  %d WP left" % (c.wp - k.cost(rules))
 	var b := UiKit.button(list, summary + ("  ▴" if expanded else "  ▾"), on_select.bind(index),
 		Vector2(0, 52), "selected" if selected else "subtle")
 	b.name = "Contract_%d" % index
