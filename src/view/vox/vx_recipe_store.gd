@@ -46,8 +46,9 @@ static func read(path: String, root: String = ROOT) -> Variant:
 ## Match the legacy nonrecursive directory listing, with stable path order.
 static func paths(dir_path: String = ROOT, root: String = ROOT) -> PackedStringArray:
 	var found := {}
-	for path: String in JsonFile.list_dir(dir_path):
-		found[path] = true
+	if DirAccess.dir_exists_absolute(dir_path):
+		for path: String in JsonFile.list_dir(dir_path):
+			found[path] = true
 	for key: String in _entries(root):
 		var path := root.path_join(key)
 		if path.get_base_dir() == dir_path.trim_suffix("/"):
