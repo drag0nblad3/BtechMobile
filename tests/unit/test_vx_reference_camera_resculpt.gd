@@ -12,7 +12,7 @@ const CHASSIS := {
 
 
 func _recipe(chassis: String, suffix: String) -> Dictionary:
-	return JsonFile.read("res://data/voxels/%s%s.json" % [chassis, suffix])
+	return VxRecipeStore.read("res://data/voxels/%s%s.json" % [chassis, suffix])
 
 
 func _part(data: Dictionary, name: String) -> Dictionary:

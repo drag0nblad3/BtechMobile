@@ -67,8 +67,8 @@ func test_variants_have_eight_damageable_locations() -> void:
 
 
 func test_source_variants_preserve_base_chassis() -> void:
-	var raw: Dictionary = JsonFile.read("res://data/voxels/spider_sdr10k.json")
-	var original: Dictionary = JsonFile.read(raw["source"])
+	var raw: Dictionary = VxRecipeStore.read("res://data/voxels/spider_sdr10k.json")
+	var original: Dictionary = VxRecipeStore.read(raw["source"])
 	var count: int = original["parts"].size()
 	var expanded := VxVariant.resolve(original, raw)
 	check_eq(original["parts"].size(), count, "shared Spider source is not mutated")
@@ -83,7 +83,7 @@ func test_source_variants_preserve_base_chassis() -> void:
 
 
 func test_nova_cat_has_separate_physical_missile_ports() -> void:
-	var raw: Dictionary = JsonFile.read("res://data/voxels/nova_cat.json")
+	var raw: Dictionary = VxRecipeStore.read("res://data/voxels/nova_cat.json")
 	raw["subdivide"] = 1
 	var m := VxModel.from_dict(raw)
 	check(m.errors.is_empty(), "Nova Cat original sculpt: " + ", ".join(m.errors))
@@ -106,7 +106,7 @@ func test_new_chassis_use_connected_masses_and_solid_joints() -> void:
 	# Inspect coarse authored volumes before subdivision; a single face-touching
 	# component or a hidden floating island is not an acceptable model.
 	for chassis in ["rook", "nova_cat"]:
-		var raw: Dictionary = JsonFile.read("res://data/voxels/" + chassis + ".json")
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/" + chassis + ".json")
 		raw["subdivide"] = 1
 		var m := VxModel.from_dict(raw)
 		for part: Dictionary in m.parts:

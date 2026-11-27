@@ -8,7 +8,7 @@ const DIRECTIONS := [
 
 
 func _source_model(chassis: String) -> VxModel:
-	var raw: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % chassis)
+	var raw: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % chassis)
 	raw["subdivide"] = 1
 	return VxModel.from_dict(raw)
 

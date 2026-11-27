@@ -9,7 +9,7 @@ const CHASSIS := [
 
 
 static func _data(id: String) -> Dictionary:
-    return JsonFile.read("res://data/voxels/" + id + ".json")
+    return VxRecipeStore.read("res://data/voxels/" + id + ".json")
 
 
 static func _part(recipe: Dictionary, name: String) -> Dictionary:

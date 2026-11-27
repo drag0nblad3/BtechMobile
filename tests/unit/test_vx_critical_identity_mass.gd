@@ -7,16 +7,16 @@ extends TestCase
 func test_all_critical_models_have_different_primary_geometry() -> void:
 	var visited := 0
 	var vertex_edits := 0
-	for file: String in DirAccess.get_files_at("res://data/voxels"):
+	for file: String in VxRecipeStore.files("res://data/voxels"):
 		if not file.ends_with("_shape.json"):
 			continue
-		var source: Dictionary = JsonFile.read("res://data/voxels/" + file)
+		var source: Dictionary = VxRecipeStore.read("res://data/voxels/" + file)
 		var study: Dictionary = source.get("blind_identity_resculpt", {})
 		if study.is_empty():
 			continue
 		visited += 1
 		var chassis := file.trim_suffix("_shape.json")
-		var final_recipe: Dictionary = JsonFile.read("res://data/voxels/" + chassis + ".json")
+		var final_recipe: Dictionary = VxRecipeStore.read("res://data/voxels/" + chassis + ".json")
 		var final_study: Dictionary = final_recipe.get("blind_identity_resculpt", {})
 		check_eq(study.get("revision", ""), final_study.get("revision", ""),
 				"%s source and detailed shapes must share revisions" % chassis)
@@ -31,10 +31,10 @@ func test_all_critical_models_have_different_primary_geometry() -> void:
 
 func test_authored_signature_modules_have_thick_structural_roots() -> void:
 	var reviewed := 0
-	for file: String in DirAccess.get_files_at("res://data/voxels"):
+	for file: String in VxRecipeStore.files("res://data/voxels"):
 		if not file.ends_with("_shape.json"):
 			continue
-		var recipe: Dictionary = JsonFile.read("res://data/voxels/" + file)
+		var recipe: Dictionary = VxRecipeStore.read("res://data/voxels/" + file)
 		var modules: Array = recipe.get("blind_identity_weapon_modules", [])
 		if modules.is_empty():
 			continue

@@ -2,7 +2,7 @@ extends TestCase
 ## Variant overlays must follow the parent sculpt without leftover weapon noses.
 
 static func _read(name: String) -> Dictionary:
-    return JsonFile.read("res://data/voxels/" + name + ".json")
+    return VxRecipeStore.read("res://data/voxels/" + name + ".json")
 
 
 func test_conjurer_7_uses_rebuilt_parent_pulse_gun_origin() -> void:

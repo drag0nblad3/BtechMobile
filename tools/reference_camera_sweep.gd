@@ -15,8 +15,8 @@ func _init() -> void:
         quit(1)
         return
     output = args[0]
-    var profile: Dictionary = JsonFile.read(args[1])
-    var registry: Dictionary = JsonFile.read(args[2])
+    var profile: Dictionary = VxRecipeStore.read(args[1])
+    var registry: Dictionary = VxRecipeStore.read(args[2])
     for candidate: Dictionary in registry.get("candidates", []):
         _score_camera_grid(profile, candidate)
     DirAccess.make_dir_recursive_absolute(output)
@@ -43,11 +43,11 @@ func _score_camera_grid(profile: Dictionary, candidate: Dictionary) -> void:
         var subfolder: String = {"archetype": "assets", "vehicle": "vehicles",
             "battle_armor": "battle_armor"}.get(pair[0], "")
         path = "res://data/voxels/%s/%s.json" % [subfolder, pair[1]]
-    elif not FileAccess.file_exists(path):
+    elif not VxRecipeStore.exists(path):
         path = "res://data/voxels/%s.json" % model_id
-    var raw: Dictionary = JsonFile.read(path)
+    var raw: Dictionary = VxRecipeStore.read(path)
     if not asset and raw.has("source"):
-        raw = VxVariant.resolve(JsonFile.read(String(raw["source"])), raw)
+        raw = VxVariant.resolve(VxRecipeStore.read(String(raw["source"])), raw)
     raw = raw.duplicate(true)
     raw["subdivide"] = 1
     var model: VxModel = VoxelAsset.model_from_dict(raw) if asset else VxModel.from_dict(raw)

@@ -20,7 +20,7 @@ func _init() -> void:
 		output = args[0]
 	var fingerprints := {}
 	var diagnostics := {}
-	var paths := DirAccess.get_files_at("res://data/voxels")
+	var paths := VxRecipeStore.files("res://data/voxels")
 	paths.sort()
 	for filename: String in paths:
 		var is_shape := filename.ends_with("_shape.json")

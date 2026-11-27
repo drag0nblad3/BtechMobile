@@ -5,7 +5,7 @@ extends TestCase
 
 
 static func _source(chassis: String) -> Dictionary:
-	return JsonFile.read("res://data/voxels/" + chassis + ".json")
+	return VxRecipeStore.read("res://data/voxels/" + chassis + ".json")
 
 
 static func _part(data: Dictionary, name: String) -> Dictionary:

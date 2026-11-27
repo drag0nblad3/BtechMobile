@@ -55,7 +55,7 @@ const MISSILES := [
 
 
 func _data(chassis: String, detail: String) -> Dictionary:
-	return JsonFile.read("res://data/voxels/%s%s.json" % [chassis, detail])
+	return VxRecipeStore.read("res://data/voxels/%s%s.json" % [chassis, detail])
 
 
 func _part(raw: Dictionary, name: String) -> Dictionary:

@@ -22,7 +22,7 @@ func test_each_asset_has_strict_fifty_thousand_voxel_ceiling() -> void:
 func test_asset_selection_uses_rules_kind_and_motive() -> void:
 	for id in ["test_tank", "test_hover", "test_apc", "test_vtol",
 			"test_foot", "test_jump", "test_elementals", "test_lrm_carrier"]:
-		var d: Dictionary = JsonFile.read("res://tests/fixtures/assets/%s.json" % id)
+		var d: Dictionary = VxRecipeStore.read("res://tests/fixtures/assets/%s.json" % id)
 		var def := UnitDef.from_dict(d)
 		var recipe := VoxelAsset.recipe_for(def)
 		check(recipe != "", "%s needs a matching voxel recipe" % id)

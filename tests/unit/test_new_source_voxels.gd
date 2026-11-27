@@ -32,7 +32,7 @@ func test_solitaire_has_sunk_front_cockpit_and_both_hands() -> void:
 
 
 func test_vulture_is_digitigrade_with_24_open_torso_ports() -> void:
-	var d: Dictionary = JsonFile.read(VULTURE)
+	var d: Dictionary = VxRecipeStore.read(VULTURE)
 	d["subdivide"] = 1
 	var m := VxModel.from_dict(d)
 	check(m.errors.is_empty(), "Vulture: " + ", ".join(m.errors))
@@ -52,7 +52,7 @@ func test_each_omni_configuration_has_correct_muzzle_counts() -> void:
 	var counts := {"a": 10, "b": 15, "c": 0, "d": 12, "e": 12}
 	for config: String in counts:
 		var path := "res://data/voxels/vulture_mk_iv_" + config + ".json"
-		var v: Dictionary = JsonFile.read(path)
+		var v: Dictionary = VxRecipeStore.read(path)
 		check_eq(v.get("source", ""), VULTURE, config + " overlays source chassis")
 		check_eq(v.get("unit", ""), "vulture_mk_iv_" + config)
 		check(not v.get("part_overlays", []).is_empty(),
@@ -74,7 +74,7 @@ const ADDED_CHASSIS := [
 func test_all_seven_new_chassis_are_independent_and_connected() -> void:
 	var distinct := {}
 	for chassis: String in ADDED_CHASSIS:
-		var d: Dictionary = JsonFile.read("res://data/voxels/" + chassis + ".json")
+		var d: Dictionary = VxRecipeStore.read("res://data/voxels/" + chassis + ".json")
 		check(not d.is_empty(), chassis + " source shape exists")
 		check_eq(d.get("id", ""), chassis)
 		check(not distinct.has(chassis), "no reused chassis identifiers")
@@ -110,7 +110,7 @@ func test_variant_ports_follow_real_record_sheet_rack_size() -> void:
 	]
 	for item: Array in checks:
 		var path := "res://data/voxels/" + str(item[0]) + ".json"
-		var d: Dictionary = JsonFile.read(path)
+		var d: Dictionary = VxRecipeStore.read(path)
 		var muzzles: Dictionary = d.get("muzzles", {})
 		var ports: Array = muzzles.get(str(item[1]), [])
 		check_eq(ports.size(), int(item[2]),
@@ -135,5 +135,5 @@ func test_all_twenty_source_designs_have_renderable_base_or_variant() -> void:
 		check(not d.sprite.is_empty(), id + " has an art identifier")
 		if d.sprite in ["mauler", "hatamoto_chi"]:
 			continue  # Mature pre-existing art from the same chassis.
-		check(FileAccess.file_exists(UnitVoxels.model_path(d)),
+		check(VxRecipeStore.exists(UnitVoxels.model_path(d)),
 				id + " has its own source-aligned voxel model or overlay")

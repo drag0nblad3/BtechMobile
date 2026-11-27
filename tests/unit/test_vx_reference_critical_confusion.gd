@@ -18,7 +18,7 @@ const SPOT_CHECK := ["chameleon", "lancelot", "icarus_ii", "sentinel",
 
 
 func _recipe(chassis: String, suffix: String) -> Dictionary:
-	return JsonFile.read("res://data/voxels/%s%s.json" % [chassis, suffix])
+	return VxRecipeStore.read("res://data/voxels/%s%s.json" % [chassis, suffix])
 
 
 func _first_y_loft(part: Dictionary) -> Dictionary:

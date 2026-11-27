@@ -40,8 +40,8 @@ func _run() -> void:
 			# Keep the existing low-tier primary lofts and all fine-grid cuts
 			# intact; add only the same selected pelvis support operations.
 			var shape_path := ROOT + id.trim_suffix("_voxel") + "_shape.json"
-			if not sockets.is_empty() and FileAccess.file_exists(shape_path):
-				var shape: Dictionary = JsonFile.read(shape_path)
+			if not sockets.is_empty() and VxRecipeStore.exists(shape_path):
+				var shape: Dictionary = VxRecipeStore.read(shape_path)
 				for socket: Dictionary in sockets:
 					_append(shape, "ct", "add", socket)
 				_write(shape_path, shape)

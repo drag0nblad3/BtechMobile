@@ -1,7 +1,0 @@
-{
-  "source": "res://data/voxels/jenner_shape.json",
-  "id": "jenner_voxel",
-  "name": "Jenner — full polygon voxel sculpture",
-  "subdivide": 2,
-  "voxelize_lofts": true
-}

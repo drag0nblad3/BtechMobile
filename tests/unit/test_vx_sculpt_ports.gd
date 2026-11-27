@@ -22,7 +22,7 @@ const DETAILS := [
 
 
 func _model(chassis: String, tier: String) -> VxModel:
-	var data: Dictionary = JsonFile.read("res://data/voxels/%s%s.json" % [chassis, tier])
+	var data: Dictionary = VxRecipeStore.read("res://data/voxels/%s%s.json" % [chassis, tier])
 	data["subdivide"] = 1
 	return VxModel.from_dict(data)
 
@@ -90,7 +90,7 @@ func test_new_accessories_have_broad_face_contacts_to_parent() -> void:
 func test_accessory_geometry_does_not_overlap_parent_in_authored_recipe() -> void:
 	for tier: String in ["", "_shape"]:
 		for spec: Dictionary in DETAILS:
-			var data: Dictionary = JsonFile.read("res://data/voxels/%s%s.json" % [
+			var data: Dictionary = VxRecipeStore.read("res://data/voxels/%s%s.json" % [
 				spec["chassis"], tier])
 			var raw := VxModel.new()
 			for material: Dictionary in data.get("materials", []):

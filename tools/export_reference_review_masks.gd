@@ -17,7 +17,7 @@ func _init() -> void:
     if not args.is_empty():
         destination = args[0]
     if args.size() > 1:
-        var file: Variant = JsonFile.read(args[1])
+        var file: Variant = VxRecipeStore.read(args[1])
         if not file is Dictionary:
             printerr("MODEL_MASK_EXPORT: invalid stance file " + args[1])
             quit(1)
@@ -51,7 +51,7 @@ func _mechs() -> void:
         if file.ends_with("_shape.json") or file.ends_with("_voxel.json"):
             continue
         var id := file.get_basename()
-        if FileAccess.file_exists(folder + id + "_shape.json"):
+        if VxRecipeStore.exists(folder + id + "_shape.json"):
             continue
         _export(folder + file, id, true)
 
@@ -68,10 +68,10 @@ func _assets(folder: String, prefix: String) -> void:
 func _export(path: String, id: String, mech: bool) -> void:
     if not selected_ids.is_empty() and not selected_ids.has(id):
         return
-    var raw: Dictionary = JsonFile.read(path)
+    var raw: Dictionary = VxRecipeStore.read(path)
     var data: Dictionary = raw
     if mech and raw.has("source"):
-        var base: Dictionary = JsonFile.read(String(raw["source"]))
+        var base: Dictionary = VxRecipeStore.read(String(raw["source"]))
         data = VxVariant.resolve(base, raw)
     data = data.duplicate(true)
     data["subdivide"] = 1

@@ -4,11 +4,11 @@ extends TestCase
 
 func test_new_shape_sculpts_have_matching_unit_and_detail_manifest() -> void:
 	var checked := 0
-	for filename: String in DirAccess.get_files_at("res://data/voxels"):
+	for filename: String in VxRecipeStore.files("res://data/voxels"):
 		if not filename.ends_with("_shape.json"):
 			continue
 		var name := filename.trim_suffix("_shape.json")
-		var raw: Variant = JsonFile.read("res://data/voxels/" + filename)
+		var raw: Variant = VxRecipeStore.read("res://data/voxels/" + filename)
 		if not (raw is Dictionary) or not bool(raw.get("exclusive_parts", false)):
 			continue
 		# Review-campaign source sculpts are covered by their existing tests.
@@ -24,10 +24,10 @@ func test_new_shape_sculpts_have_matching_unit_and_detail_manifest() -> void:
 		var detail_path := "res://data/voxels/%s.json" % name
 		if name == "rook":
 			detail_path = "res://data/voxels/rook_nh1b.json"
-		check(FileAccess.file_exists(detail_path), name + " missing high-detail manifest")
-		if not FileAccess.file_exists(detail_path):
+		check(VxRecipeStore.exists(detail_path), name + " missing high-detail manifest")
+		if not VxRecipeStore.exists(detail_path):
 			continue
-		var detail: Variant = JsonFile.read(detail_path)
+		var detail: Variant = VxRecipeStore.read(detail_path)
 		check(detail is Dictionary, name + " malformed display manifest")
 		if not (detail is Dictionary):
 			continue
@@ -36,7 +36,7 @@ func test_new_shape_sculpts_have_matching_unit_and_detail_manifest() -> void:
 		check(int(detail.get("subdivide", 0)) >= 2, name + " insufficient detail")
 		checked += 1
 	check_eq(checked, 88, "expected all 88 imported chassis sources and display manifests")
-	check(FileAccess.file_exists("res://data/voxels/wolf_trap_tora.json"),
+	check(VxRecipeStore.exists("res://data/voxels/wolf_trap_tora.json"),
 			"Wolf Trap source requires sprite-compatible manifest")
 
 

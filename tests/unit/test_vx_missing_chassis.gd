@@ -4,7 +4,7 @@ extends TestCase
 const IDS := ["tian_zong","jackalope","rattlesnake_ii","stealth","hermes","marauder_ii","thunder","champion","uziel","galahad","dragon_fire","cerberus","bane","locust_iic","mad_cat_mk_ii","shiro","grand_dragon","gunsmith","gladiator","shadow_hawk_iic","huntsman","cougar","ebon_jaguar","kingfisher","arctic_wolf","avatar","battle_cobra","black_lanner","griffin_iic","highlander_iic","jenner_iic","jinggau","peacekeeper","raptor","sunder","tempest","templar","thunderbolt_iic","glass_spider","tiburon","toro","rattlesnake"]
 
 func _raw(id: String, high: bool) -> Dictionary:
-	return JsonFile.read("res://data/voxels/%s%s.json" % [id, "" if high else "_shape"])
+	return VxRecipeStore.read("res://data/voxels/%s%s.json" % [id, "" if high else "_shape"])
 
 
 func test_missing_chassis_have_official_records_and_fifty_geometric_passes() -> void:

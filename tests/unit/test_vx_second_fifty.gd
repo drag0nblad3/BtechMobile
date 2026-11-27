@@ -7,10 +7,10 @@ func test_every_shape_source_received_fifty_additional_review_stages() -> void:
 	var count := 0
 	var edited := 0
 	var views := ["front", "side", "rear", "top", "three_quarter"]
-	for path: String in DirAccess.get_files_at("res://data/voxels"):
+	for path: String in VxRecipeStore.files("res://data/voxels"):
 		if not path.ends_with("_shape.json"):
 			continue
-		var raw: Dictionary = JsonFile.read("res://data/voxels/" + path)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/" + path)
 		# The two 50-cycle campaigns covered the historical 151-source catalog.
 		# New imported chassis have separate structural audits, not fabricated
 		# provenance for review work that has not happened yet.
@@ -31,10 +31,10 @@ func test_every_shape_source_received_fifty_additional_review_stages() -> void:
 
 
 func test_second_pass_did_not_disrupt_mirrors_or_kinematic_hierarchy() -> void:
-	for path: String in DirAccess.get_files_at("res://data/voxels"):
+	for path: String in VxRecipeStore.files("res://data/voxels"):
 		if not path.ends_with("_shape.json"):
 			continue
-		var raw: Dictionary = JsonFile.read("res://data/voxels/" + path)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/" + path)
 		var known := {}
 		var all_names: Array[String] = []
 		for item: Dictionary in raw.get("parts", []):
