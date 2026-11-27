@@ -14,7 +14,7 @@ static func model_path(def: UnitDef) -> String:
 			continue
 		for suffix: String in ["", "_voxel"]:
 			var candidate := PATH % (stem + suffix)
-			if FileAccess.file_exists(candidate):
+			if VxRecipeStore.exists(candidate):
 				return candidate
 	return PATH % def.sprite
 
@@ -23,7 +23,7 @@ static func startup_path(def: UnitDef) -> String:
 	if not GameSettings.voxel_mechs or def.is_support():
 		return ""
 	var path := model_path(def)
-	return path if FileAccess.file_exists(path) else ""
+	return path if VxRecipeStore.exists(path) else ""
 
 
 static func choose(def: UnitDef, side: int, prepared: Dictionary = {}) -> VxMech:

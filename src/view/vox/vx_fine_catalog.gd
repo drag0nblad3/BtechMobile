@@ -9,10 +9,7 @@ const MAX_SOURCE_DEPTH := 8
 
 static func paths() -> PackedStringArray:
 	var result := PackedStringArray()
-	for file: String in DirAccess.get_files_at(ROOT):
-		if not file.ends_with(".json"):
-			continue
-		var path := ROOT + file
+	for path: String in VxRecipeStore.paths(ROOT)
 		if canonical(path) == path:
 			result.append(path)
 	result.sort()
@@ -26,7 +23,7 @@ static func canonical(path: String) -> String:
 		return path
 	var stem := path.trim_suffix("_shape.json")
 	for candidate: String in [stem + ".json", stem + "_voxel.json"]:
-		if FileAccess.file_exists(candidate):
+		if VxRecipeStore.exists(candidate):
 			return candidate
 	return path
 
@@ -34,7 +31,7 @@ static func canonical(path: String) -> String:
 static func recipe(path: String, depth: int = 0) -> Dictionary:
 	if depth >= MAX_SOURCE_DEPTH:
 		return {}
-	var raw: Variant = JsonFile.read(path)
+	var raw: Variant = VxRecipeStore.read(path)
 	if not raw is Dictionary:
 		return {}
 	var data: Dictionary = raw

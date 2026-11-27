@@ -11,7 +11,7 @@ const IDS := [
 
 func test_each_asset_has_strict_fifty_thousand_voxel_ceiling() -> void:
 	for id: String in IDS:
-		var data: Dictionary = JsonFile.read("res://data/voxels/assets/%s.json" % id)
+		var data: Dictionary = VxRecipeStore.read("res://data/voxels/assets/%s.json" % id)
 		check_eq(int(data.get("voxel_cap", 0)), 50000)
 		var m := VoxelAsset.model_from_dict(data)
 		check(m.errors.is_empty(), "%s painter issues: %s" % [id, m.errors])
@@ -26,12 +26,12 @@ func test_asset_selection_uses_rules_kind_and_motive() -> void:
 		var def := UnitDef.from_dict(d)
 		var recipe := VoxelAsset.recipe_for(def)
 		check(recipe != "", "%s needs a matching voxel recipe" % id)
-		check(FileAccess.file_exists(VoxelAsset.DIR + recipe + ".json"),
+		check(VxRecipeStore.exists(VoxelAsset.DIR + recipe + ".json"),
 			"%s recipe exists: %s" % [id, recipe])
 
 
 func test_rejects_asset_over_cap() -> void:
-	var d: Dictionary = JsonFile.read("res://data/voxels/assets/tracked_tank.json")
+	var d: Dictionary = VxRecipeStore.read("res://data/voxels/assets/tracked_tank.json")
 	d["voxel_cap"] = 50001
 	var m := VoxelAsset.model_from_dict(d)
 	check(not m.errors.is_empty(), "a recipe may not raise the hard cap")
@@ -41,7 +41,7 @@ func test_rejects_asset_over_cap() -> void:
 ## gaps. Independent soldiers are intentional; disconnected limbs are not.
 func test_support_source_assemblies_are_connected() -> void:
 	for id: String in IDS:
-		var data: Dictionary = JsonFile.read("res://data/voxels/assets/%s.json" % id)
+		var data: Dictionary = VxRecipeStore.read("res://data/voxels/assets/%s.json" % id)
 		var m := VxModel.new()
 		for material: Dictionary in data["materials"]:
 			m._mat[material["name"]] = m.colors.size()
