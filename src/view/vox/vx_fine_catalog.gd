@@ -9,7 +9,7 @@ const MAX_SOURCE_DEPTH := 8
 
 static func paths() -> PackedStringArray:
 	var result := PackedStringArray()
-	for path: String in VxRecipeStore.paths(ROOT)
+	for path: String in VxRecipeStore.paths(ROOT):
 		if canonical(path) == path:
 			result.append(path)
 	result.sort()
