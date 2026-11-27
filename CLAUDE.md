@@ -31,6 +31,7 @@ Battle mode first; campaign layer later.
   `data/graphics/voxel_chassis.json`, and
   `docs/voxel-mech-prototype.md`. Don't treat either set as read-only or
   assume the two use interchangeable coordinate systems or mesh formats.
+- Voxel JSON is packed per chassis in `data/voxels/_catalog/`. Read, compare and edit individual records or named parts with `tools/pack_voxel_catalog.py` (`list`, `parts`, `extract`, `diff`, `replace`, `verify`); use `repack` for new recipes and changed source links. Do not commit loose duplicate recipes. See `docs/graphics/voxel-catalog-consolidation.md`.
 - Before changing an existing chassis, read **both** versions (if available),
   the relevant tests, and the integration plan in
   `docs/graphics/voxel-integration-plan.md`. Bring improvements across by

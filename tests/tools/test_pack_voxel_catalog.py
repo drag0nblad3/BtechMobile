@@ -40,8 +40,22 @@ class VoxelCatalogPackTests(unittest.TestCase):
     def test_stage_and_verify_every_shipped_recipe(self):
         root = SCRIPT.parents[1] / "data/voxels"
         source = PACKER.source_files(root)
-        # Once the full migration lands, this preflight test should switch to
-        # comparing the checked-in index against the packed catalog.
+        catalog = root / "_catalog"
+        if (catalog / "index.json").is_file():
+            self.assertFalse(source, "shipped catalog must not have loose shadow records")
+            count, shards = PACKER.verify_packed(catalog)
+            self.assertGreaterEqual(count, 633)
+            self.assertLess(shards, count)
+            self.assertGreater(shards, 100)
+            with tempfile.TemporaryDirectory() as tmp:
+                unpacked = Path(tmp) / "recipes"
+                self.assertEqual(PACKER.unpack(catalog, unpacked), count)
+                staged = Path(tmp) / "repacked"
+                self.assertEqual(PACKER.pack(unpacked, staged), (count, shards))
+                # Byte-exact roundtrip, including every shard and index entry.
+                for path in catalog.glob("*.json"):
+                    self.assertEqual(path.read_bytes(), (staged / path.name).read_bytes(), path.name)
+            return
         self.assertGreater(len(source), 100)
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "catalog"

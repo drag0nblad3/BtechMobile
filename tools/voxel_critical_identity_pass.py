@@ -9,6 +9,7 @@ import argparse
 import json
 import math
 from pathlib import Path
+from pack_voxel_catalog import read_recipe, write_recipe
 from vx_blind_identity import paint
 
 REV = "2026-11-22-critical-chassis-identity-geometry-v1"
@@ -333,7 +334,7 @@ def main(root):
         row={}
         for suffix,label in (("_shape","coarse"),("","detailed")):
             path=root/"data/voxels"/(name+suffix+".json")
-            d=json.loads(path.read_text())
+            d=read_recipe(root/"data/voxels",path)
             before={k:json.dumps(d.get(k),sort_keys=True) for k in ("unit","legs","weapons","jets")}
             if d.get("blind_identity_resculpt",{}).get("revision")==REV:
                 changed=d["blind_identity_resculpt"]["modified_polygon_vertices"]
@@ -345,7 +346,7 @@ def main(root):
             for k,v in before.items():
                 if json.dumps(d.get(k),sort_keys=True)!=v:
                     raise ValueError("modified official record sheet "+name+":"+k)
-            path.write_text(json.dumps(d,indent=2)+"\n")
+            write_recipe(root/"data/voxels",path,d)
             row[label]={"contour_vertices":changed,
                         "weapon_modules":len(d.get("blind_identity_weapon_modules",[]))}
         report["models"][name]=row
