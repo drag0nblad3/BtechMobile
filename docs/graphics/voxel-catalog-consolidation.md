@@ -1,10 +1,10 @@
-# Voxel catalog consolidation — phase 1 preflight
+# Voxel catalog consolidation
 
 The logical resource name remains `res://data/voxels/<relative-name>.json`
 (including support subdirectories). Recipe IDs are not unique across variants
 and shape studies, so never use the recipe's `id` as a storage key.
 
-The proposed physical layout is `data/voxels/_catalog/`: one shard per Mech chassis (following explicit source chains and the
+The physical layout is `data/voxels/_catalog/`: one shard per Mech chassis (following explicit source chains and the
 _shape/_voxel suffixes; no arbitrary prefix matching), one shard each for assets, vehicles, battle armor, and an index.
 Each shard is valid JSON, one compact object per line, sorted by logical path.
 An entry holds the original dictionary under `recipe` and the relative path
@@ -51,3 +51,22 @@ for byte. Source or recipe ID changes require a full repack. Run reindex if
 an edit was interrupted between the two atomic file replacements. Avoid
 concurrent writers. A full recipe edit should still be followed by geometry
 and rig verification; the tool is not a sculpting validator.
+
+## Migrated catalog maintenance
+
+The original 633 recipes were byte-verified before removing their loose
+files. The 295-file layout is stored in data/voxels/_catalog. All Godot
+model tests and audit tools use VxRecipeStore instead of filesystem
+enumeration. Python reference tools use logical_paths/read_recipe/write_recipe.
+
+    python3 tools/pack_voxel_catalog.py verify
+    python3 tools/pack_voxel_catalog.py unpack --output /tmp/editable-voxel-tree
+    python3 tools/pack_voxel_catalog.py repack --output /tmp/new-voxel-catalog
+
+Unpack extracts exact compacted recipe bytes. Repack stages the complete
+catalog including any new or revised loose authoring overrides and validates
+the result; it does not overwrite the live catalog. For source/ID changes or
+adding a new recipe, use repack, review its output, replace the old catalog
+as a whole and remove the incorporated loose files. Older repair trial tools
+can still produce loose overrides; do not commit those overrides without
+repacking. Ordinary part/recipe edits use replace instead.

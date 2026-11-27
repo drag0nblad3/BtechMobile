@@ -29,8 +29,8 @@ func test_all_missing_mechs_have_backed_joint_contacts() -> void:
 
 func test_source_and_detailed_recipes_keep_same_structural_shapes() -> void:
 	for id: String in MECHS:
-		var lo: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
-		var hi: Dictionary = JsonFile.read("res://data/voxels/%s.json" % id)
+		var lo: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
+		var hi: Dictionary = VxRecipeStore.read("res://data/voxels/%s.json" % id)
 		check_eq(lo.get("unit", ""), hi.get("unit", ""), id + " official unit")
 		check_eq(lo.get("muzzles", {}), hi.get("muzzles", {}),
 				id + " authored muzzle coordinates unchanged between LODs")

@@ -7,6 +7,7 @@ Each index entry is [shard filename, UTF-8 byte offset, byte length].
 """
 import argparse
 import difflib
+import fnmatch
 import json
 import os
 import re
@@ -313,10 +314,94 @@ def replace_record(catalog, key, candidate, part=None):
     return shard
 
 
+
+def verify_packed(catalog):
+    """Read-only validation of offsets, record ownership and source chains."""
+    indexed = load_index(catalog)
+    scanned = {}
+    for path in sorted(catalog.glob("*.json")):
+        if path.name == "index.json":
+            continue
+        records = scan_shard(path)
+        if scanned.keys() & records.keys():
+            raise ValueError(f"duplicate logical paths: {path}")
+        scanned.update(records)
+    if scanned != indexed:
+        raise ValueError("catalog index differs from physical shard records")
+    recipes = {key: read_record(catalog, key, indexed)[0] for key in indexed}
+    for key in indexed:
+        if indexed[key][0] != shard_for(key, recipes):
+            raise ValueError(f"incorrect chassis grouping: {key}")
+    return len(indexed), len(set(v[0] for v in indexed.values())) + 1
+
+
+def logical_paths(root, directory="", pattern="*.json"):
+    """Legacy-compatible nonrecursive logical paths, including loose overrides."""
+    folder = root / directory
+    found = set(folder.glob(pattern))
+    catalog = root / "_catalog"
+    if (catalog / "index.json").is_file():
+        for key in load_index(catalog):
+            path = root / key
+            if path.parent == folder and fnmatch.fnmatchcase(path.name, pattern):
+                found.add(path)
+    return sorted(found)
+
+
+def read_recipe(root, path):
+    if path.is_file():
+        return json.loads(path.read_bytes())
+    return extract(root / "_catalog", path.relative_to(root).as_posix())
+
+
+def write_recipe(root, path, recipe):
+    """Update an existing record; do not silently recreate loose originals."""
+    catalog = root / "_catalog"
+    key = path.relative_to(root).as_posix()
+    if path.is_file() or not (catalog / "index.json").is_file():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(pretty(recipe), encoding="utf-8")
+    else:
+        replace_record(catalog, key, recipe)
+
+
+def unpack(catalog, out):
+    """Extract exact compacted recipe bytes for older batch authoring tools."""
+    if out.exists():
+        raise ValueError("unpack output must be a new directory")
+    entries = load_index(catalog)
+    verify_packed(catalog)
+    out.mkdir(parents=True)
+    for key in sorted(entries):
+        rel = Path(key)
+        if rel.is_absolute() or ".." in rel.parts or "\\" in key:
+            raise ValueError(f"invalid logical path: {key}")
+        _, raw = read_record(catalog, key, entries)
+        header = b'{"path":' + json.dumps(key, ensure_ascii=False).encode("utf-8") + b',"recipe":'
+        if not raw.startswith(header) or not raw.endswith(b"}"):
+            raise ValueError(f"invalid record wrapper: {key}")
+        target = out / rel
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw[len(header):-1] + b"\n")
+    return len(entries)
+
+
+def repack(root, out):
+    """Stage a complete catalog including loose authoring overrides/new records."""
+    with tempfile.TemporaryDirectory() as tmp:
+        source = Path(tmp) / "recipes"
+        unpack(root / "_catalog", source)
+        for path in source_files(root):
+            target = source / path.relative_to(root)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(path.read_bytes())
+        return pack(source, out)
+
+
 def edit_main(argv):
     parser = argparse.ArgumentParser(description="Inspect and edit packed voxel recipes")
     sub = parser.add_subparsers(dest="command", required=True)
-    for command in ("list", "parts", "extract", "replace", "diff", "reindex"):
+    for command in ("list", "parts", "extract", "replace", "diff", "reindex", "verify", "unpack", "repack"):
         p = sub.add_parser(command)
         p.add_argument("--catalog", type=Path, default=Path("data/voxels/_catalog"))
         if command in ("parts", "extract", "replace", "diff"):
@@ -325,8 +410,8 @@ def edit_main(argv):
             p.add_argument("--part")
         if command in ("replace", "diff"):
             p.add_argument("input", type=Path)
-        if command == "extract":
-            p.add_argument("--output", type=Path)
+        if command in ("extract", "unpack", "repack"):
+            p.add_argument("--output", type=Path, required=command != "extract")
     args = parser.parse_args(argv)
     catalog = args.catalog
     if args.command == "list":
@@ -352,10 +437,18 @@ def edit_main(argv):
         print(f"VOXEL_REPLACE_OK|{logical_key(args.key)}|{shard}")
     elif args.command == "reindex":
         print(f"VOXEL_REINDEX_OK|recipes={reindex(catalog)}")
+    elif args.command == "verify":
+        records, files = verify_packed(catalog)
+        print(f"VOXEL_VERIFY_OK|recipes={records}|files={files}")
+    elif args.command == "unpack":
+        print(f"VOXEL_UNPACK_OK|recipes={unpack(catalog, args.output)}")
+    elif args.command == "repack":
+        records, files = repack(catalog.parent, args.output)
+        print(f"VOXEL_REPACK_OK|recipes={records}|files={files}")
 
 
 def main():
-    if len(sys.argv) > 1 and sys.argv[1] in ("list", "parts", "extract", "replace", "diff", "reindex"):
+    if len(sys.argv) > 1 and sys.argv[1] in ("list", "parts", "extract", "replace", "diff", "reindex", "verify", "unpack", "repack"):
         edit_main(sys.argv[1:])
         return
     parser = argparse.ArgumentParser(description=__doc__)

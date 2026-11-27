@@ -7,8 +7,8 @@ const CHASSIS := ["jenner_iic", "locust_iic", "mad_cat_mk_ii", "marauder_ii",
 
 func test_resculpted_eight_keep_equivalent_source_tiers_and_rigs() -> void:
 	for id: String in CHASSIS:
-		var low: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
-		var high: Dictionary = JsonFile.read("res://data/voxels/%s.json" % id)
+		var low: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
+		var high: Dictionary = VxRecipeStore.read("res://data/voxels/%s.json" % id)
 		check_eq(low.get("reference_sculpt_batch", ""),
 				"distinctive-eight-20261123", id + " review lineage")
 		check(not bool(low.get("reference_sculpt_approved", true)),
@@ -30,7 +30,7 @@ func test_resculpted_eight_keep_equivalent_source_tiers_and_rigs() -> void:
 
 func test_reference_lofts_have_positive_area_and_increasing_sections() -> void:
 	for id: String in CHASSIS:
-		var recipe: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
+		var recipe: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 		for part: Dictionary in recipe["parts"]:
 			for s: Dictionary in part.get("shapes", []):
 				if not s.has("loft"):
@@ -51,9 +51,9 @@ func test_reference_lofts_have_positive_area_and_increasing_sections() -> void:
 
 func test_signature_openings_and_gait_remain_distinctive() -> void:
 	for id: String in ["jenner_iic", "locust_iic", "mad_cat_mk_ii"]:
-		var d: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
+		var d: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 		check_eq(d["legs"], "digitigrade", id + " reverse knee")
-	var mad: Dictionary = JsonFile.read("res://data/voxels/mad_cat_mk_ii_shape.json")
+	var mad: Dictionary = VxRecipeStore.read("res://data/voxels/mad_cat_mk_ii_shape.json")
 	var ports := 0
 	for p: Dictionary in mad["parts"]:
 		if p["name"] in ["lt_weapon", "rt_weapon"]:

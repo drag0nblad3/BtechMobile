@@ -81,11 +81,11 @@ func test_nonjoint_cosmetic_detail_does_not_get_welded() -> void:
 
 func test_source_catalog_mirrors_and_lofts_are_well_formed() -> void:
 	var visited := 0
-	for f: String in DirAccess.get_files_at("res://data/voxels"):
+	for f: String in VxRecipeStore.files("res://data/voxels"):
 		if not f.ends_with("_shape.json"):
 			continue
 		visited += 1
-		var raw: Dictionary = JsonFile.read("res://data/voxels/" + f)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/" + f)
 		var prior := {}
 		for p: Dictionary in raw.get("parts", []):
 			if p.has("mirror"):

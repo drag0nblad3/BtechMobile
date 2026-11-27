@@ -8,6 +8,7 @@ import copy
 import json
 import math
 from pathlib import Path
+from pack_voxel_catalog import logical_paths, read_recipe, write_recipe
 
 ROOT = Path(__file__).resolve().parents[1]
 VOX = ROOT / "data" / "voxels"
@@ -138,16 +139,19 @@ def is_already_done(d):
 
 
 def write(path, d):
-    path.write_text(json.dumps(d, indent=2) + "\n")
+    if path.is_relative_to(VOX):
+        write_recipe(VOX, path, d)
+    else:
+        path.write_text(json.dumps(d, indent=2) + "\n")
 
 
 def main():
     audit = {"mechs": {}, "assets": {}, "stages": FOCUS, "source_changed": 0}
-    for low_path in sorted(VOX.glob("*_shape.json")):
+    for low_path in logical_paths(VOX, pattern="*_shape.json"):
         name = low_path.name[:-11]
         high_path = VOX / (name + ".json")
-        paths = [low_path] + ([high_path] if high_path.exists() else [])
-        original = [json.loads(p.read_text()) for p in paths]
+        paths = [low_path] + ([high_path] if high_path in logical_paths(VOX) else [])
+        original = [read_recipe(VOX, p) for p in paths]
         if all(is_already_done(d) for d in original):
             audit["mechs"][name] = {"passes": 100, "already_reviewed": True}
             continue
@@ -167,8 +171,8 @@ def main():
             write(p, d)
             audit["source_changed"] += 1
         audit["mechs"][name] = {"passes": 100, "new_review_cycles": 50, "edited_vertices": sum(scores[0]), "stages_with_changes": sum(x > 0 for x in scores[0])}
-    for asset_path in sorted(ART.glob("*.json")):
-        model = json.loads(asset_path.read_text())
+    for asset_path in logical_paths(VOX, directory="assets"):
+        model = read_recipe(VOX, asset_path)
         if is_already_done(model):
             audit["assets"][asset_path.stem] = {"passes": 100, "already_reviewed": True}
             continue

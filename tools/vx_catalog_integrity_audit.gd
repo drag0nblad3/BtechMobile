@@ -15,13 +15,13 @@ func _init() -> void:
 				"before": 0, "after": 0, "rejoined": 0,
 				"joint_contacts": 0, "added": 0, "empty_parts": 0, "rig_islands": 0, "floating_islands": 0,
 				"weak_joint_contacts": 0, "mass_reinforced": 0}}
-	for file: String in DirAccess.get_files_at("res://data/voxels"):
+	for file: String in VxRecipeStore.files("res://data/voxels"):
 		if not file.ends_with(".json"):
 			continue
 		if high == file.ends_with("_shape.json"):
 			continue
 		var path := "res://data/voxels/" + file
-		var raw: Dictionary = JsonFile.read(path)
+		var raw: Dictionary = VxRecipeStore.read(path)
 		if not high and raw.get("parts", []).is_empty():
 			continue
 		var model: VxModel
@@ -42,10 +42,10 @@ func _init() -> void:
 		report["totals"]["mechs"] += 1
 		if not model.errors.is_empty():
 			report["warnings"].append("%s: %s" % [file, ", ".join(model.errors)])
-	for file: String in DirAccess.get_files_at("res://data/voxels/assets"):
+	for file: String in VxRecipeStore.files("res://data/voxels/assets"):
 		if not file.ends_with(".json"):
 			continue
-		var raw: Dictionary = JsonFile.read("res://data/voxels/assets/" + file)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/assets/" + file)
 		if not high:
 			raw["subdivide"] = 1
 		var model := VoxelAsset.model_from_dict(raw)

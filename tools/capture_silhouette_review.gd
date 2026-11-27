@@ -68,7 +68,7 @@ func _load_chassis(index: int) -> void:
         active.free()
     var id: String = IDS[index]
     var high := "res://data/voxels/%s_voxel.json" % id
-    var path := high if FileAccess.file_exists(high) else "res://data/voxels/%s.json" % id
+    var path := high if VxRecipeStore.exists(high) else "res://data/voxels/%s.json" % id
     active = VxMech.from_file(path)
     if not active.model.errors.is_empty() or active.voxel_count() == 0:
         printerr("SILHOUETTE_RENDER_ERROR|invalid model|%s|%s" %

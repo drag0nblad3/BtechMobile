@@ -21,7 +21,7 @@ const ADDED := {
 
 func test_new_assemblies_have_valid_parents_and_one_connected_mass() -> void:
 	for id: String in ADDED:
-		var raw: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 		raw["subdivide"] = 1
 		var m := VxModel.from_dict(raw)
 		check(m.errors.is_empty(), "%s: loader errors %s" % [id, m.errors])
@@ -40,7 +40,7 @@ func test_new_assemblies_have_valid_parents_and_one_connected_mass() -> void:
 
 func test_sculpts_keep_all_damage_locations_and_legal_parent_order() -> void:
 	for id: String in IDS:
-		var raw: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 		var seen := {}
 		var locs := {}
 		for p: Dictionary in raw.get("parts", []):
@@ -58,7 +58,7 @@ func test_sculpts_keep_all_damage_locations_and_legal_parent_order() -> void:
 
 
 func test_sagittaire_has_asymmetric_shoulders_with_real_emitter_bores() -> void:
-	var raw: Dictionary = JsonFile.read("res://data/voxels/sagittaire_shape.json")
+	var raw: Dictionary = VxRecipeStore.read("res://data/voxels/sagittaire_shape.json")
 	raw["subdivide"] = 1
 	var m := VxModel.from_dict(raw)
 	check_eq(m.part("lt_ppc")["loc"], Location.LT)
@@ -78,7 +78,7 @@ func test_launchers_have_individual_open_ports_not_painted_dots() -> void:
 			{"id": "battleaxe", "part": "rt_srm6", "count": 6},
 			{"id": "battleaxe", "part": "rt_lrm5", "count": 5},
 			{"id": "thunderbolt", "part": "rt_rack", "count": 15}]:
-		var raw: Dictionary = JsonFile.read(
+		var raw: Dictionary = VxRecipeStore.read(
 				"res://data/voxels/%s_shape.json" % spec["id"])
 		raw["subdivide"] = 1
 		var authored: Dictionary = {}
@@ -107,7 +107,7 @@ func test_launchers_have_individual_open_ports_not_painted_dots() -> void:
 
 func test_cannon_barrels_mirror_into_the_correct_arm_rig() -> void:
 	for id: String in ["warhammer", "marauder"]:
-		var raw: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 		raw["subdivide"] = 1
 		var m := VxModel.from_dict(raw)
 		var l: Dictionary = m.part("la_ppc")

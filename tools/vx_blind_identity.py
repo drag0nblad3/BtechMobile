@@ -10,6 +10,7 @@ import json
 import math
 import random
 from pathlib import Path
+from pack_voxel_catalog import logical_paths, read_recipe
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
@@ -66,7 +67,7 @@ def paint(cells, shapes):
 
 
 def model_points(path):
-    recipe = json.loads(path.read_text())
+    recipe = read_recipe(path.parent, path)
     parts = {}
     for part in recipe["parts"]:
         if part.get("mirror"):
@@ -108,7 +109,7 @@ def projection(points, view):
 
 def run(root, out):
     out.mkdir(parents=True, exist_ok=True)
-    paths = sorted(root.glob("*_shape.json"))
+    paths = logical_paths(root, pattern="*_shape.json")
     names, vectors, pictures = [], [], []
     for path in paths:
         pts = model_points(path)

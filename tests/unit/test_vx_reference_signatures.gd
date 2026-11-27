@@ -19,7 +19,7 @@ const WEAPON_PARTS := {
 
 
 func _data(id: String, tier: String = "_shape") -> Dictionary:
-	return JsonFile.read("res://data/voxels/%s%s.json" % [id, tier])
+	return VxRecipeStore.read("res://data/voxels/%s%s.json" % [id, tier])
 
 
 func _part(data: Dictionary, name: String) -> Dictionary:
@@ -30,7 +30,7 @@ func _part(data: Dictionary, name: String) -> Dictionary:
 
 
 func test_canonical_gaits_stay_specific_to_each_chassis() -> void:
-	var expected: Dictionary = JsonFile.read(
+	var expected: Dictionary = VxRecipeStore.read(
 			"res://tests/fixtures/voxel_reference_cohorts.json").get("gaits", {})
 	check(expected.size() >= 60, "historical gait contracts retained")
 	for id: String in expected:

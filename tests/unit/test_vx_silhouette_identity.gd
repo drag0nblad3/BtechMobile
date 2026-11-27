@@ -8,8 +8,8 @@ func test_six_reference_signature_recipes_load_at_both_detail_levels() -> void:
 			"phoenix_hawk", "hel", "ymir"]:
 		var shape_name := "res://data/voxels/%s_shape.json" % chassis
 		var final_name := "res://data/voxels/%s.json" % chassis
-		var source: Dictionary = JsonFile.read(shape_name)
-		var detailed: Dictionary = JsonFile.read(final_name)
+		var source: Dictionary = VxRecipeStore.read(shape_name)
+		var detailed: Dictionary = VxRecipeStore.read(final_name)
 		check(not String(source.get("silhouette_signature_revision", "")).is_empty(),
 				"%s has an authored silhouette correction" % chassis)
 		check_eq(source.get("silhouette_signature_revision", ""),

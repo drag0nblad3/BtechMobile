@@ -10,8 +10,8 @@ const CHASSIS := [
 
 func test_reference_fourteen_preserve_source_tiers_and_rig_ancestry() -> void:
 	for id: String in CHASSIS:
-		var low: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
-		var high: Dictionary = JsonFile.read("res://data/voxels/%s.json" % id)
+		var low: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
+		var high: Dictionary = VxRecipeStore.read("res://data/voxels/%s.json" % id)
 		check_eq(low.get("reference_sculpt_batch", ""), "remaining-fourteen-reference-20261123",
 				id + " review lineage")
 		check(not bool(low.get("reference_sculpt_approved", true)), id + " visual sign-off pending")
@@ -32,7 +32,7 @@ func test_reference_fourteen_preserve_source_tiers_and_rig_ancestry() -> void:
 
 func test_reference_fourteen_contours_are_noncollapsed_and_monotone() -> void:
 	for id: String in CHASSIS:
-		var raw: Dictionary = JsonFile.read("res://data/voxels/%s_shape.json" % id)
+		var raw: Dictionary = VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 		for p: Dictionary in raw["parts"]:
 			for s: Dictionary in p.get("shapes", []):
 				if not s.has("loft"):
@@ -52,14 +52,14 @@ func test_reference_fourteen_contours_are_noncollapsed_and_monotone() -> void:
 
 
 func test_original_and_successor_rattlesnake_gaits_differ() -> void:
-	var original: Dictionary = JsonFile.read("res://data/voxels/rattlesnake_shape.json")
-	var successor: Dictionary = JsonFile.read("res://data/voxels/rattlesnake_ii_shape.json")
+	var original: Dictionary = VxRecipeStore.read("res://data/voxels/rattlesnake_shape.json")
+	var successor: Dictionary = VxRecipeStore.read("res://data/voxels/rattlesnake_ii_shape.json")
 	check_eq(original["legs"], "digitigrade")
 	check_eq(successor["legs"], "plantigrade")
 
 
 func test_shiro_sword_and_pennant_attachments_exist() -> void:
-	var shiro: Dictionary = JsonFile.read("res://data/voxels/shiro_shape.json")
+	var shiro: Dictionary = VxRecipeStore.read("res://data/voxels/shiro_shape.json")
 	var found_sword := false
 	var fin_count := 0
 	for p: Dictionary in shiro["parts"]:

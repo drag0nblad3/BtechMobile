@@ -66,7 +66,7 @@ func _load_pair() -> void:
 	var id: String = IDS[index]
 	var high := VxFineCatalog.recipe("res://data/voxels/" + id + ".json")
 	var candidate_path := "res://experiments/divergent_mech_review_20261124/" + id + "_shape.json"
-	if not FileAccess.file_exists(candidate_path):
+	if not VxRecipeStore.exists(candidate_path):
 		candidate_path = "res://data/voxels/" + id + "_shape.json"
 	var source := VxFineCatalog.recipe(candidate_path)
 	source["subdivide"] = high.get("subdivide", 2)

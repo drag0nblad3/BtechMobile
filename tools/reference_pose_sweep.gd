@@ -16,8 +16,8 @@ func _init() -> void:
         quit(1)
         return
     output = args[0]
-    stance_catalog = JsonFile.read(args[1])
-    var report: Dictionary = JsonFile.read(args[2])
+    stance_catalog = VxRecipeStore.read(args[1])
+    var report: Dictionary = VxRecipeStore.read(args[2])
     for trial: Dictionary in report.get("candidates", []):
         _export_candidates(trial)
     DirAccess.make_dir_recursive_absolute(output)
@@ -43,11 +43,11 @@ func _model_for(id: String) -> VxModel:
         var subfolder: String = {"archetype": "assets", "vehicle": "vehicles",
             "battle_armor": "battle_armor"}.get(pieces[0], "")
         path = "res://data/voxels/%s/%s.json" % [subfolder, pieces[1]]
-    elif not FileAccess.file_exists(path):
+    elif not VxRecipeStore.exists(path):
         path = "res://data/voxels/%s.json" % id
-    var raw: Dictionary = JsonFile.read(path)
+    var raw: Dictionary = VxRecipeStore.read(path)
     if not asset and raw.has("source"):
-        raw = VxVariant.resolve(JsonFile.read(String(raw["source"])), raw)
+        raw = VxVariant.resolve(VxRecipeStore.read(String(raw["source"])), raw)
     raw = raw.duplicate(true)
     raw["subdivide"] = 1
     return VoxelAsset.model_from_dict(raw) if asset else VxModel.from_dict(raw)

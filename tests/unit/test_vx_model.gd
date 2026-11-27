@@ -13,7 +13,7 @@ func test_hunchback_loads_with_every_location() -> void:
 
 
 func test_mirror_flips_cells_and_location() -> void:
-	var d: Dictionary = JsonFile.read(PATH)
+	var d: Dictionary = VxRecipeStore.read(PATH)
 	d["subdivide"] = 1  # compare authored cells, before bevels
 	var m := VxModel.from_dict(d)
 	var la := m.part("la")
@@ -97,7 +97,7 @@ func test_reverse_knee_bends_backward() -> void:
 
 
 func test_subdivide_scales_grid() -> void:
-	var d: Dictionary = JsonFile.read(PATH)
+	var d: Dictionary = VxRecipeStore.read(PATH)
 	d["subdivide"] = 1
 	var coarse := VxModel.from_dict(d)
 	var fine := VxModel.load_file(PATH)
@@ -118,7 +118,7 @@ func test_greedy_mesh_merges_faces() -> void:
 
 func test_claude_catapult_launcher_holes_align_with_all_30_muzzles() -> void:
 	# Check the authored (coarse) grid; subdivide would scale every coordinate.
-	var d: Dictionary = JsonFile.read("res://data/voxels/catapult.json")
+	var d: Dictionary = VxRecipeStore.read("res://data/voxels/catapult.json")
 	d["subdivide"] = 1
 	var m := VxModel.from_dict(d)
 	check(m.errors.is_empty(), "Catapult JSON should load without errors")
@@ -181,7 +181,7 @@ func test_mirror_inherits_the_reflected_parent() -> void:
 
 
 func test_cannon_arm_preserves_weapon_and_rig_without_source_part_counts() -> void:
-	var d: Dictionary = JsonFile.read("res://data/voxels/wolverine_shape.json")
+	var d: Dictionary = VxRecipeStore.read("res://data/voxels/wolverine_shape.json")
 	var m := VxModel.from_dict(d)
 	check(m.muzzles.has(Location.RA), "cannon muzzle is still present")
 	check(not m.parts_at(Location.RA).is_empty(), "gun arm retains its damage location")
@@ -195,7 +195,7 @@ func test_cannon_arm_preserves_weapon_and_rig_without_source_part_counts() -> vo
 
 
 func test_forward_disc_has_rounded_relative_width() -> void:
-	var d: Dictionary = JsonFile.read("res://data/voxels/jenner_shape.json")
+	var d: Dictionary = VxRecipeStore.read("res://data/voxels/jenner_shape.json")
 	var head: Dictionary = {}
 	for part: Dictionary in d["parts"]:
 		if part.get("name", "") == "hd":

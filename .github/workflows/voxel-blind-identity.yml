@@ -21,10 +21,13 @@ jobs:
       - name: Validate catalog and create local report
         run: |
           python - <<'PY'
-          import json,glob,shutil
+          import json,glob,shutil,sys
+          from pathlib import Path
+          sys.path.insert(0,'tools')
+          from pack_voxel_catalog import logical_paths
           path='/tmp/voxel-blind/blind_confusion_report.json'
           d=json.load(open(path))
-          expected=len(glob.glob('data/voxels/*_shape.json'))
+          expected=len(logical_paths(Path('data/voxels'),pattern='*_shape.json'))
           assert expected==d['model_count'] and expected>=151
           assert len(d['models'])==expected
           assert all(len(m['closest'])==5 for m in d['models'])

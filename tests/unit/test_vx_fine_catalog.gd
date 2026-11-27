@@ -45,7 +45,7 @@ func test_backed_fine_panel_cuts_only_real_armor() -> void:
 func test_catalog_has_one_fine_entry_per_shape_and_variant() -> void:
 	var paths := VxFineCatalog.paths()
 	check(paths.size() >= 300, "catalog includes current shipped recipes")
-	for file: String in DirAccess.get_files_at(VxFineCatalog.ROOT):
+	for file: String in VxRecipeStore.files(VxFineCatalog.ROOT):
 		if file.ends_with(".json"):
 			check(paths.has(VxFineCatalog.canonical(VxFineCatalog.ROOT + file)), file)
 	var variant := VxFineCatalog.recipe("res://data/voxels/spider_sdr10k.json")

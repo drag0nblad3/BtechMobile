@@ -127,7 +127,7 @@ func test_mounted_hatchet_arm_has_readable_ready_pose() -> void:
 
 
 static func _recipe(id: String) -> Dictionary:
-	return JsonFile.read("res://data/voxels/%s_shape.json" % id)
+	return VxRecipeStore.read("res://data/voxels/%s_shape.json" % id)
 
 
 static func _model(id: String) -> VxModel:

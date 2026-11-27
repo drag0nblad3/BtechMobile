@@ -6,7 +6,7 @@ const RIG := ["ct", "hd", "lt", "rt", "la", "ra", "ll", "rl"]
 
 
 func _cohorts() -> Array:
-	return JsonFile.read(MANIFEST).get("cohorts", [])
+	return VxRecipeStore.read(MANIFEST).get("cohorts", [])
 
 
 func _path(chassis: String, tier: String) -> String:
@@ -14,7 +14,7 @@ func _path(chassis: String, tier: String) -> String:
 
 
 func _data(chassis: String, tier: String) -> Dictionary:
-	return JsonFile.read(_path(chassis, tier))
+	return VxRecipeStore.read(_path(chassis, tier))
 
 
 func _part(data: Dictionary, name: String) -> Dictionary:
@@ -37,7 +37,7 @@ func test_every_registered_source_is_present_once() -> void:
 		for chassis: String in cohort["models"]:
 			check(not seen.has(chassis), "duplicate reference cohort %s" % chassis)
 			seen[chassis] = true
-			check(FileAccess.file_exists(_path(chassis, "_shape")),
+			check(VxRecipeStore.exists(_path(chassis, "_shape")),
 					"missing source profile %s" % chassis)
 	check_eq(seen.size(), 260, "13 historical batches accounted for")
 
@@ -73,7 +73,7 @@ func test_authored_detail_tiers_retain_primary_anatomy() -> void:
 		for chassis: String in cohort["models"]:
 			if chassis in cohort.get("shapeOnly", []):
 				continue
-			check(FileAccess.file_exists(_path(chassis, "")), "missing detailed tier %s" % chassis)
+			check(VxRecipeStore.exists(_path(chassis, "")), "missing detailed tier %s" % chassis)
 			var low := _data(chassis, "_shape")
 			var high := _data(chassis, "")
 			if high.has("source"):

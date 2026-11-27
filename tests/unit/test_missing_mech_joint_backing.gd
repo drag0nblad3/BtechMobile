@@ -20,7 +20,7 @@ func test_imported_sculpts_have_backed_contacts_not_fake_welds() -> void:
 func test_imported_sculpts_preserve_muzzle_and_silhouette_anchors() -> void:
 	for id: String in SAMPLE:
 		var path := "res://data/voxels/" + id + "_shape.json"
-		var raw: Dictionary = JsonFile.read(path)
+		var raw: Dictionary = VxRecipeStore.read(path)
 		var m := VxModel.load_file(path)
 		check_eq(m.legs, raw.get("legs", "plantigrade"), id + " gait")
 		check_eq(m.muzzles.size(), raw.get("muzzles", {}).size(), id + " mounts")

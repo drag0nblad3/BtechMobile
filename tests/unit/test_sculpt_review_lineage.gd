@@ -12,11 +12,10 @@ func test_repaired_sculpts_keep_review_history_and_ordered_stations() -> void:
 	for chassis: String in REPAIRED:
 		for suffix: String in ["_shape", ""]:
 			var path := "res://data/voxels/%s%s.json" % [chassis, suffix]
-			var file := FileAccess.open(path, FileAccess.READ)
-			check(file != null, "Missing voxel recipe: " + path)
-			if file == null:
+			check(VxRecipeStore.exists(path), "Missing voxel recipe: " + path)
+			if not VxRecipeStore.exists(path):
 				continue
-			var data: Variant = JSON.parse_string(file.get_as_text())
+			var data: Variant = VxRecipeStore.read(path)
 			check(data is Dictionary, "Invalid JSON recipe: " + path)
 			if not data is Dictionary:
 				continue

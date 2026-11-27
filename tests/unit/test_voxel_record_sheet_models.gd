@@ -8,10 +8,10 @@ const BATTLE_ARMOR := ["elemental_ba_ap_gauss","elemental_ba_flamer","elemental_
 func test_all_vehicle_records_have_individual_fifty_pass_voxel_models() -> void:
 	for id: String in VEHICLES:
 		var path := "res://data/voxels/vehicles/%s.json" % id
-		check(FileAccess.file_exists(path), id + " has a distinct vehicle sculpt")
-		if not FileAccess.file_exists(path):
+		check(VxRecipeStore.exists(path), id + " has a distinct vehicle sculpt")
+		if not VxRecipeStore.exists(path):
 			continue
-		var d: Dictionary = JsonFile.read(path)
+		var d: Dictionary = VxRecipeStore.read(path)
 		check_eq(d.get("official_unit", ""), id, id + " backed by official sheet")
 		check_eq(int(d.get("voxel_cap", 0)), 50000, id + " strict cap")
 		check_eq(int(d.get("art_quality_passes", 0)), 50, id + " 50 source edits")
@@ -27,10 +27,10 @@ func test_all_vehicle_records_have_individual_fifty_pass_voxel_models() -> void:
 func test_all_record_sheet_battle_armor_have_distinct_squads_and_weapons() -> void:
 	for id: String in BATTLE_ARMOR:
 		var path := "res://data/voxels/battle_armor/%s.json" % id
-		check(FileAccess.file_exists(path), id + " squad recipe")
-		if not FileAccess.file_exists(path):
+		check(VxRecipeStore.exists(path), id + " squad recipe")
+		if not VxRecipeStore.exists(path):
 			continue
-		var d: Dictionary = JsonFile.read(path)
+		var d: Dictionary = VxRecipeStore.read(path)
 		check_eq(d.get("official_unit", ""), id)
 		check_eq(int(d.get("voxel_cap", 0)), 50000)
 		check_eq(int(d.get("art_quality_passes", 0)), 50)
@@ -60,7 +60,7 @@ func test_record_support_source_assemblies_are_connected() -> void:
 
 
 func _check_source_assembly(folder: String, id: String, expected: int) -> void:
-	var data: Dictionary = JsonFile.read("res://data/voxels/%s/%s.json" % [folder, id])
+	var data: Dictionary = VxRecipeStore.read("res://data/voxels/%s/%s.json" % [folder, id])
 	var model := VxModel.new()
 	for material: Dictionary in data["materials"]:
 		model._mat[material["name"]] = model.colors.size()
