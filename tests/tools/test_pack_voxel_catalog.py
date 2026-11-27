@@ -37,6 +37,20 @@ class VoxelCatalogPackTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 PACKER.pack(root, out)
 
+    def test_stage_and_verify_every_shipped_recipe(self):
+        root = SCRIPT.parents[1] / "data/voxels"
+        source = PACKER.source_files(root)
+        # Once the full migration lands, this preflight test should switch to
+        # comparing the checked-in index against the packed catalog.
+        self.assertGreater(len(source), 100)
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "catalog"
+            count, shards = PACKER.pack(root, out)
+            self.assertEqual(count, len(source))
+            self.assertLessEqual(shards, 18)
+            self.assertEqual(PACKER.source_files(root), source)
+            print(f"VOXEL_PACK_OK|recipes={count}|files={shards}|source_unchanged=1")
+
     def test_compact_does_not_change_string_or_number_tokens(self):
         raw = ' { "text": "a  b\\n", "x": 1.2500e-2, "y": -0.0 } '
         self.assertEqual(PACKER.compact(raw),
