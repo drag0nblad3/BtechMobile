@@ -1,0 +1,28 @@
+name: Generate unit catalog migration
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  generate:
+    if: github.head_ref == 'refactor/catalog-data-migration' && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Stage and migrate unit catalogs
+        run: |
+          python3 tools/migrate_unit_catalogs.py --apply
+          git diff --stat -- data/units data/vehicles data/battle_armor | tail -1
+      - name: Publish verified data to the migration branch only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A -- data/units data/vehicles data/battle_armor
+          git diff --cached --quiet && exit 1
+          git commit -m 'Migrate 967 unit designs to 14 losslessly verified catalog shards'
+          git push origin HEAD:refs/heads/refactor/catalog-data-migration

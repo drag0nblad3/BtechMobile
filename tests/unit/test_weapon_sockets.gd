@@ -3,7 +3,7 @@ extends TestCase
 
 
 func _def(id: String) -> UnitDef:
-	return UnitDef.from_dict(JsonFile.read("res://data/units/" + id + ".json"),
+	return UnitDef.from_dict(UnitCatalog.record("res://data/units/" + id + ".json"),
 		WeaponDb.load_file())
 
 

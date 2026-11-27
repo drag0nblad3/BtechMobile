@@ -45,7 +45,7 @@ func test_chassis_catalog_maps_to_existing_unit_data() -> void:
 	for profile in entries:
 		var id := str(profile["id"])
 		if id != "prototype":
-			check(FileAccess.file_exists("res://data/units/%s.json" % id),
+			check(not UnitCatalog.record("res://data/units/%s.json" % id).is_empty(),
 					"model profile does not match a game unit: " + id)
 
 
