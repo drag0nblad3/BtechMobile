@@ -60,6 +60,14 @@ static func paths(dir_path: String = ROOT, root: String = ROOT) -> PackedStringA
 	return out
 
 
+## Filename-only listing for legacy audit tools, preserving directory semantics.
+static func files(dir_path: String = ROOT, root: String = ROOT) -> PackedStringArray:
+	var out := PackedStringArray()
+	for path: String in paths(dir_path, root):
+		out.append(path.get_file())
+	return out
+
+
 static func _key(path: String, root: String) -> String:
 	var prefix := root.trim_suffix("/") + "/"
 	return path.trim_prefix(prefix) if path.begins_with(prefix) else ""
