@@ -120,7 +120,7 @@ func test_koshi_three_models_keep_separate_art_and_weapon_muzzles() -> void:
 
 func test_solitaire_3_large_laser_is_in_right_torso() -> void:
     var recipe := _data("solitaire")
-    var installed: Dictionary = JsonFile.read("res://data/units/solitaire_3.json")
+    var installed: Dictionary = UnitCatalog.record("res://data/units/solitaire_3.json")
     check("c_improved_heavy_large_laser" in installed["equipment"]["RT"],
         "right-torso heavy large laser is official variant equipment")
     check_eq((recipe["muzzles"]["LT"] as Array).size(), 2,
@@ -134,7 +134,7 @@ func test_solitaire_3_large_laser_is_in_right_torso() -> void:
 
 func test_dominator_head_laser_points_to_the_rear() -> void:
     var recipe := _data("dominator")
-    var installed: Dictionary = JsonFile.read("res://data/units/dominator.json")
+    var installed: Dictionary = UnitCatalog.record("res://data/units/dominator.json")
     check("c_er_small_laser@rear" in installed["equipment"]["HD"],
         "rear direction is based on the official record sheet")
     var origin: Array = recipe["muzzles"]["HD"]

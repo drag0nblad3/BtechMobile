@@ -44,14 +44,15 @@ def catalog():
     results={}
     for folder in ("units","vehicles","battle_armor","assets"):
         for path in (ROOT/"data"/folder).glob("*.json"):
-            raw=json.loads(path.read_text())
-            for unit in raw.get("configs",[raw]):
-                model=str(unit.get("model",raw.get("model","")) or "")
-                ident=raw["id"]+"_"+model.lower().replace(" ","_") if "configs" in raw else raw["id"]
-                source=unit.get("source",raw.get("source",{}))
-                results[ident]={"name":raw["name"],"model":model,
-                  "bv":int(unit.get("bv",raw.get("bv",0)) or 0),
-                  "ton":float(raw.get("tonnage",0) or 0),"mul_id":source.get("mul_id")}
+            container=json.loads(path.read_text())
+            for raw in container if isinstance(container,list) else [container]:
+                for unit in raw.get("configs",[raw]):
+                    model=str(unit.get("model",raw.get("model","")) or "")
+                    ident=raw["id"]+"_"+model.lower().replace(" ","_") if "configs" in raw else raw["id"]
+                    source=unit.get("source",raw.get("source",{}))
+                    results[ident]={"name":raw["name"],"model":model,
+                      "bv":int(unit.get("bv",raw.get("bv",0)) or 0),
+                      "ton":float(raw.get("tonnage",0) or 0),"mul_id":source.get("mul_id")}
     return results
 
 
