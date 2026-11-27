@@ -1,6 +1,6 @@
 class_name UnitDef
 extends RefCounted
-## Static unit design (one variant), loaded from data/units/<id>.json.
+## Static unit design (one variant), loaded from the official unit catalog.
 ## Data only: runtime damage lives in Unit. See docs/data-formats.md.
 
 ## Heat sinks that come free with every engine (no weight, no slots). A big
