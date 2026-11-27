@@ -28,10 +28,10 @@ var damage_orders: Dictionary = {}  ## Immutable cosmetic sequences; owned by th
 
 
 static func load_file(path: String) -> VxModel:
-	var d: Variant = JsonFile.read(path)
+	var d: Variant = VxRecipeStore.read(path)
 	# Keep source-only geometry manifests from the silhouette refinement stack.
 	if d is Dictionary and d.has("source"):
-		var base: Variant = JsonFile.read(str(d["source"]))
+		var base: Variant = VxRecipeStore.read(str(d["source"]))
 		if base is Dictionary:
 			d = VxVariant.resolve(base, d)
 		else:

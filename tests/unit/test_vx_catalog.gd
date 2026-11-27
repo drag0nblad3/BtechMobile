@@ -7,11 +7,10 @@ extends TestCase
 func test_every_voxel_mech_covers_every_location() -> void:
 	var flip := {"LA": "RA", "RA": "LA", "LT": "RT", "RT": "LT", "LL": "RL", "RL": "LL"}
 	var files := 0
-	for f in DirAccess.get_files_at("res://data/voxels"):
-		if not f.ends_with(".json"):
-			continue
+	for path: String in VxRecipeStore.paths():
+		var f := path.get_file()
 		files += 1
-		var d: Dictionary = JsonFile.read("res://data/voxels/" + f)
+		var d: Dictionary = VxRecipeStore.read(path)
 		var loc_of := {}
 		for p: Dictionary in d.get("parts", []):
 			if p.has("loc"):

@@ -81,10 +81,10 @@ static func build_record_squad(def: UnitDef, side: int) -> Node3D:
 
 
 static func _build_file(path: String, side: int) -> Node3D:
-	if not FileAccess.file_exists(path):
+	if not VxRecipeStore.exists(path):
 		return null
 	var id := path.get_file().get_basename()
-	var data: Variant = JsonFile.read(path)
+	var data: Variant = VxRecipeStore.read(path)
 	if not data is Dictionary:
 		return null
 	var model := model_from_dict(data)
