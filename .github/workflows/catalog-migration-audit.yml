@@ -1,0 +1,33 @@
+name: Catalog migration audit
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  audit:
+    if: github.head_ref == 'refactor/catalog-data-migration' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inventory direct path consumers
+        run: |
+          git grep -nE 'data/(units|vehicles|battle_armor|voxels)(/|["\x27]|$)' -- src tests tools .github experiments scenes ':!tools/pack_voxel_catalog.py' || true
+          echo '--- other directory enumeration ---'
+          git grep -nE 'DirAccess\.(get_files_at|open)|FileAccess\.(file_exists|get_file_as_string|open)|\.glob\(|\.rglob\(' -- src tests tools | grep -Ei 'voxel|unit|vehicle|armor|catalog' || true
+      - name: Stage and verify all voxel records
+        run: python3 tools/pack_voxel_catalog.py --output /tmp/packed-voxels
+      - name: Unit design key inventory
+        run: |
+          python3 - <<'PY'
+          import collections, json
+          from pathlib import Path
+          for name in ['units','vehicles','battle_armor']:
+              paths = sorted(Path('data',name).glob('*.json'))
+              d = [(p,json.loads(p.read_text())) for p in paths]
+              print(name,len(d),'keys',collections.Counter(k for _,r in d for k in r))
+              print('tech',collections.Counter(r.get('tech_base') for _,r in d))
+              print('motive',collections.Counter(str(r.get('motive',r.get('vehicle',{}).get('motive'))) for _,r in d))
+              print('id mismatch',[(p.name,r.get('id')) for p,r in d if p.stem!=r.get('id')][:20])
+              print('duplicates',[(k,v) for k,v in collections.Counter(r.get('id') for _,r in d).items() if v>1])
+          PY
